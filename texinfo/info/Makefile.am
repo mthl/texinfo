@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.7 2004-10-20 17:47:11 karl Exp $
+# $Id: Makefile.am,v 1.8 2004-10-28 14:03:27 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -9,8 +9,6 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-noinst_PROGRAMS = makedoc
 
 # Use `ginfo' for building to avoid confusion with the standard `info'
 # target.  Removes the `g' in the install rule before applying any
@@ -29,20 +27,8 @@ DEFS += -DLOCALEDIR=\"$(localedir)\" -DINFODIR=\"$(infodir)\" \
 	-DINFODIR2=\"$(infodir2)\"
 LDADD = ../lib/libtxi.a $(TERMLIBS) $(LIBINTL)
 
-# The files `doc.c', `key.c' and `funs.h' are created by ./makedoc run over the
-# source files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
-# listing the functions found.  `doc.c' is a structure containing pointers
-# to those functions along with completable names and documentation strings.
-
-generated_sources = doc.c key.c funs.h
-
-# The following hack is necessary to hint make before the automatic
-# dependencies are built.
-BUILT_SOURCES = funs.h
-
 EXTRA_DIST = README pcterm.c
 
-makedoc_SOURCES = makedoc.c
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
   filesys.c filesys.h footnotes.c footnotes.h gc.c gc.h \
@@ -55,6 +41,24 @@ nodist_ginfo_SOURCES = doc.c funs.h
 infokey_SOURCES = infokey.c infokey.h key.h
 nodist_infokey_SOURCES = key.c funs.h
 
+# The files `doc.c', `key.c' and `funs.h' are created by ./makedoc run over the
+# source files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
+# listing the functions found.  `doc.c' is a structure containing pointers
+# to those functions along with completable names and documentation strings.
+#
+generated_sources = doc.c key.c funs.h
+
+# We need a linear ordering to prevent race condition in parallel make.
+# See the node ``(automake)Multiple Outputs'' for an explanation.
+doc.c: key.c
+key.c: funs.h
+
+# These files are not distributed.
+DISTCLEANFILES = $(generated_sources)
+
+noinst_PROGRAMS = makedoc
+makedoc_SOURCES = makedoc.c
+
 # Files with Info commands defined that makedoc should read.
 cmd_sources = $(srcdir)/session.c $(srcdir)/echo-area.c $(srcdir)/infodoc.c \
   $(srcdir)/m-x.c $(srcdir)/indices.c $(srcdir)/nodemenu.c \
@@ -65,5 +69,6 @@ $(generated_sources): makedoc$(EXEEXT) $(cmd_sources)
 	rm -f $(generated_sources)
 	$(top_builddir)/$(native_tools)/info/makedoc $(cmd_sources)
 
-# These files are not distributed.
-DISTCLEANFILES = $(generated_sources)
+# The following hack is necessary to hint make before the automatic
+# dependencies are built.
+BUILT_SOURCES = funs.h
