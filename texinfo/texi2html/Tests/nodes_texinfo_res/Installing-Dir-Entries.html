@@ -89,7 +89,7 @@ after copying the Info file into its proper installed location.
 <a name="IDX419"></a>
 <p>In order for the Info file to work with <code>install-info</code>, you include
 the commands <code>@dircategory</code> and
-<code>@direntry</code><small class="dots">...</small><code>@end direntry</code> in the Texinfo source
+<code>@direntry</code>&hellip;<code>@end direntry</code> in the Texinfo source
 file.  Use <code>@direntry</code> to specify the menu entries to add to the
 Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
@@ -98,8 +98,8 @@ in this manual:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
-* install-info: (texinfo)Invoking install-info. ...
-...
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
 @end direntry
 </pre></td></tr></table>
 <p>Here's what this produces in the Info file:
@@ -107,8 +107,8 @@ in this manual:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
-* install-info: (texinfo)Invoking install-info. ...
-...
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
 END-INFO-DIR-ENTRY
 </pre></td></tr></table>
 

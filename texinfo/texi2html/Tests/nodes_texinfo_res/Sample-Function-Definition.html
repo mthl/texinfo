@@ -104,16 +104,16 @@ function or a primitive function; special forms and macros
 do not make sense in <code>apply</code>.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(setq f 'list)
-     =&gt; list
+     &rArr; list
 (apply f 'x 'y 'z)
 error--&gt; Wrong type argument: listp, z
 (apply '+ 1 2 '(3 4))
-     =&gt; 10
+     &rArr; 10
 (apply '+ '(1 2 3 4))
-     =&gt; 10
+     &rArr; 10
 
 (apply 'append '((a b c) nil (x y z) nil))
-     =&gt; (a b c x y z)
+     &rArr; (a b c x y z)
 </pre></td></tr></table>
 <p>An interesting example of using <code>apply</code> is found in the description
 of <code>mapcar</code>.

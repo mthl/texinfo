@@ -14,7 +14,7 @@ $PREFIX = 'sing';
 # -expand
 # if set to "tex" (or, "info") expand @iftex and @tex (or, @ifinfo) sections
 # else, neither expand @iftex, @tex, nor @ifinfo sections
-@EXPAND = ("tex");
+@EXPAND = ('html', 'tex');
 
 # if set, creates one html file per node
 $SPLIT = 'node';

@@ -92,7 +92,7 @@ the same format.)
 
 </p><p>The template for a definition looks like this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
@@ -101,7 +101,7 @@ the same format.)
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-word count
 This command moves point forward @var{count} words
-(or backward if @var{count} is negative). ...
+(or backward if @var{count} is negative). &hellip;
 @end deffn
 </pre></td></tr></table>
 
@@ -113,7 +113,7 @@ This command moves point forward @var{count} words
 <a name="IDX260"></a>
 </dt>
 <dd><p>This function moves point forward <var>count</var> words
-(or backward if <var>count</var> is negative). <small class="dots">...</small>
+(or backward if <var>count</var> is negative). &hellip;
 </p></dd></dl>
 </blockquote>
 
@@ -122,7 +122,7 @@ category contains spaces, as in the phrase `Interactive Command',
 write braces around it.  For example:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
-...
+&hellip;
 @end deffn
 </pre></td></tr></table>
 
@@ -145,7 +145,7 @@ particular kinds of variables.
 similar to the template for a generalized definition, except that you
 do not need to specify the category:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
 </pre></td></tr></table>
@@ -155,7 +155,7 @@ do not need to specify the category:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@defun buffer-end flag
 This function returns @code{(point-min)} if @var{flag}
 is less than 1, @code{(point-max)} otherwise.
-...
+&hellip;
 @end defun
 </pre></td></tr></table>
 
@@ -167,7 +167,7 @@ is less than 1, @code{(point-max)} otherwise.
 <a name="IDX261"></a>
 </dt>
 <dd><p>This function returns <code>(point-min)</code> if <var>flag</var> is less than 1,
-<code>(point-max)</code> otherwise.  <small class="dots">...</small>
+<code>(point-max)</code> otherwise.  &hellip;
 </p></dd></dl>
 </blockquote>
 

@@ -160,7 +160,7 @@ a file `<tt>sfile</tt>'.
 <p>Alias modules are the simplest kind of module:
 
 </p><dl compact="compact">
-<dt><code> <var>mname</var> -a <var>aliases</var><small class="dots">...</small>
+<dt><code> <var>mname</var> -a <var>aliases</var>&hellip;
 </code></dt>
 <dd><p>This represents the simplest way of defining a module
 <var>mname</var>.  The `<samp>-a</samp>' flags the definition as a
@@ -216,7 +216,7 @@ U first-dir/sdir/sfile
 <h3 class="appendixsubsec"> C.1.2 Regular modules </h3>
 
 <dl compact="compact">
-<dt><code> <var>mname</var> [ options ] <var>dir</var> [ <var>files</var><small class="dots">...</small> ]
+<dt><code> <var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]
 </code></dt>
 <dd><p>In the simplest case, this form of module definition
 reduces to `<samp><var>mname</var> <var>dir</var></samp>'.  This defines
@@ -287,7 +287,7 @@ $
 
 <p>A module definition can refer to other modules by
 including `<samp>&amp;<var>module</var></samp>' in its definition.
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><var>mname</var> [ options ] <var>&amp;module</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><var>mname</var> [ options ] <var>&amp;module</var>&hellip;
 </pre></td></tr></table>
 <p>Then getting the module creates a subdirectory for each such
 module, in the directory containing the module.  For
@@ -616,7 +616,7 @@ template (see section <a href="#SEC175">Rcsinfo</a>).  (obsolete)
 complete.  It receives the log message and some
 additional information and can store the log message in
 a file, or mail it to appropriate persons, or maybe
-post it to a local newsgroup, or<small class="dots">...</small>  Your
+post it to a local newsgroup, or&hellip;  Your
 imagination is the limit!
 </p></dd>
 </dl>

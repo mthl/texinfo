@@ -1,3 +1,19 @@
+2003-10-19  Patrice Dumas  <dumas@centre-cired.fr>
+	
+	* texi2html.pl, texi2html.init, examples/html32.init: don't expand
+	html automatically, only if it is in @EXPAND. Put html in @EXPAND.
+	USE_ISO is now in the default case, but false in html32.init.
+	new hash, %iso_symbols for USE_ISO symbols. Rewroted in the public
+	domain in texi2html.init. Use iso symbols in preformatted environment
+	too.
+	When removing texi @-commands with arguments (@table, @deffn...) are
+	better handled. Ignore content of @anchor, @footnote, @*ref when 
+	removing texi.
+	* doc/texi2html.texi: merge content of doc/custpage.texi, 
+	doc/custhtml.texi in doc/texi2html.texi.
+	* Tests/formatting/formatting.texi: test for all the constructs in 
+	the @copying/@end copying section (to test remove_texi).
+
 2003-10-17  Derek Price  <derek@ximbiot.com>
 
 	* doc/stamp-vti, doc/version.texi: Regenerated.

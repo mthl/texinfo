@@ -87,7 +87,7 @@ functions, such as C and C++.
 </p><dl compact="compact">
 <dd><a name="IDX274"></a>
 </dd>
-<dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><p>The <code>@deftypefn</code> command is the general definition command for
 functions and similar entities that may take arguments and that are
@@ -101,16 +101,16 @@ particular entity, and its arguments, if any.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
-...
+&hellip;
 @end deftypefn
 </pre></td></tr></table>
 
-<p>(where the text before the &quot;<small class="dots">...</small>&quot;, shown above as two lines, would
+<p>(where the text before the &quot;&hellip;&quot;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
-...
+&hellip;
 </pre></td></tr></table>
 <p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
@@ -125,7 +125,7 @@ above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.
 
 </p><p>The template for <code>@deftypefn</code> is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
 <var>body-of-description</var>
 @end deftypefn
 </pre></td></tr></table>
@@ -144,7 +144,7 @@ paragraphs.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn stacks private push
         (@var{s}:in out stack;
         @var{n}:in integer)
-...
+&hellip;
 @end deftypefn
 </pre></td></tr></table>
 
@@ -160,29 +160,29 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 <var>name</var>.
 
 </p></dd>
-<dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><a name="IDX275"></a>
 <p>The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
-`<samp>@deftypefn Function <small class="dots">...</small></samp>'.
+`<samp>@deftypefn Function &hellip;</samp>'.
 
 </p>
 <p>Thus,
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
-...
+&hellip;
 @end deftypefun
 </pre></td></tr></table>
 
 <p>produces the following in Info:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">-- Function: int foobar (int FOO, float BAR)
-...
+&hellip;
 </pre></td></tr></table>
 <p>The template is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-description</var>
 @end deftypefun
 </pre></td></tr></table>

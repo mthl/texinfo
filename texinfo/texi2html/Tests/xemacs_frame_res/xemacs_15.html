@@ -699,7 +699,7 @@ utilities, and has been introduced to XEmacs for the version 20.3.
 currently, although it does in Perl.
 
 </p></dd>
-<dt><kbd> [ <small class="dots">...</small> ]
+<dt><kbd> [ &hellip; ]
 </kbd></dt>
 <dd><a name="IDX454"></a>
 <a name="IDX455"></a>
@@ -734,7 +734,7 @@ immediately after a range.  (You can replace one individual character
 the set.
 
 </p></dd>
-<dt><kbd> [^ <small class="dots">...</small> ]
+<dt><kbd> [^ &hellip; ]
 </kbd></dt>
 <dd><a name="IDX457"></a>
 <p>`<samp>[^</samp>' begins a <em>complement character set</em>, which matches any
@@ -813,13 +813,13 @@ between form an expression that matches anything that either <var>a</var> or
 but no other string.
 
 </p><p>`<samp>\|</samp>' applies to the largest possible surrounding expressions.  Only a
-surrounding `<samp>\( <small class="dots">...</small> \)</samp>' grouping can limit the grouping power of
+surrounding `<samp>\( &hellip; \)</samp>' grouping can limit the grouping power of
 `<samp>\|</samp>'.
 
 </p><p>Full backtracking capability exists to handle multiple uses of `<samp>\|</samp>'.
 
 </p></dd>
-<dt><kbd> \( <small class="dots">...</small> \)
+<dt><kbd> \( &hellip; \)
 </kbd></dt>
 <dd><a name="IDX464"></a>
 <a name="IDX465"></a>
@@ -842,7 +842,7 @@ on.  Thus, `<samp>ba\(na\)*</samp>' matches `<samp>bananana</samp>', etc., with 
 
 <p>This last application is not a consequence of the idea of a
 parenthetical grouping; it is a separate feature that happens to be
-assigned as a second meaning to the same `<samp>\( <small class="dots">...</small> \)</samp>' construct
+assigned as a second meaning to the same `<samp>\( &hellip; \)</samp>' construct
 because there is no conflict in practice between the two meanings.
 Here is an explanation of this feature:
 
@@ -850,19 +850,19 @@ Here is an explanation of this feature:
 <dt><kbd> \<var>digit</var>
 </kbd></dt>
 <dd><p>matches the same text that matched the <var>digit</var>th occurrence of a
-`<samp>\( <small class="dots">...</small> \)</samp>' construct.
+`<samp>\( &hellip; \)</samp>' construct.
 
-</p><p>In other words, after the end of a `<samp>\( <small class="dots">...</small> \)</samp>' construct.  the
+</p><p>In other words, after the end of a `<samp>\( &hellip; \)</samp>' construct.  the
 matcher remembers the beginning and end of the text matched by that
 construct.  Then, later on in the regular expression, you can use
 `<samp>\</samp>' followed by <var>digit</var> to match that same text, whatever it
 may have been.
 
-</p><p>The strings matching the first nine `<samp>\( <small class="dots">...</small> \)</samp>' constructs
+</p><p>The strings matching the first nine `<samp>\( &hellip; \)</samp>' constructs
 appearing in a regular expression are assigned numbers 1 through 9 in
 the order that the open parentheses appear in the regular expression.
 So you can use `<samp>\1</samp>' through `<samp>\9</samp>' to refer to the text matched
-by the corresponding `<samp>\( <small class="dots">...</small> \)</samp>' constructs.
+by the corresponding `<samp>\( &hellip; \)</samp>' constructs.
 
 </p><p>For example, `<samp>\(.*\)\1</samp>' matches any newline-free string that is
 composed of two identical halves.  The `<samp>\(.*\)</samp>' matches the first
@@ -870,20 +870,20 @@ half, which may be anything, but the `<samp>\1</samp>' that follows must match
 the same exact text.
 
 </p></dd>
-<dt><kbd> \(?: <small class="dots">...</small> \)
+<dt><kbd> \(?: &hellip; \)
 </kbd></dt>
 <dd><a name="IDX467"></a>
 <a name="IDX468"></a>
 <p>is called a <em>shy</em> grouping operator, and it is used just like
-`<samp>\( <small class="dots">...</small> \)</samp>', except that it does not cause the matched
+`<samp>\( &hellip; \)</samp>', except that it does not cause the matched
 substring to be recorded for future reference.
 
-</p><p>This is useful when you need a lot of grouping `<samp>\( <small class="dots">...</small> \)</samp>'
+</p><p>This is useful when you need a lot of grouping `<samp>\( &hellip; \)</samp>'
 constructs, but only want to remember one or two - or if you have
 more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
 
-</p><p>Using `<samp>\(?: <small class="dots">...</small> \)</samp>' rather than `<samp>\( <small class="dots">...</small> \)</samp>' when you
+</p><p>Using `<samp>\(?: &hellip; \)</samp>' rather than `<samp>\( &hellip; \)</samp>' when you
 don't need the captured substrings ought to speed up your programs some,
 since it shortens the code path followed by the regular expression
 engine, as well as the amount of memory allocation and string copying it

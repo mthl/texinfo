@@ -82,11 +82,11 @@ ul.toc {list-style: none}
 
 <p>You use the Texinfo <code>@macro</code> command to define a macro, like this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, ...}
-<var>text</var> ... \<var>param1</var>\ ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, &hellip;}
+<var>text</var> &hellip; \<var>param1</var>\ &hellip;
 @end macro
 </pre></td></tr></table>
-<p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, <small class="dots">...</small> correspond to
+<p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, &hellip; correspond to
 arguments supplied when the macro is subsequently used in the document
 (described in the next section).
 
@@ -131,7 +131,7 @@ call to itself, you must define it with `<samp>@rmacro</samp>', like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@rmacro rmac {arg}
 a\arg\b
 @end rmacro
-...
+&hellip;
 @rmac{1@rmac{text}2}
 </pre></td></tr></table>
 <p>This produces the output `a1atextb2b'.  With `<samp>@macro</samp>' instead of

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.72 2003-10-17 13:12:39 dprice Exp $
+# $Id: texi2html.pl,v 1.73 2003-10-19 13:15:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -290,6 +290,7 @@ our $cell;
 our $list_item;
 our $comment;
 our $def_line;
+our $def_line_no_texi;
 our $raw;
 our $heading;
 our $paragraph;
@@ -326,6 +327,7 @@ our %style_map_pre;
 our %paragraph_style;
 our %things_map;
 our %pre_map;
+our %iso_symbols;
 our %to_skip;
 our %to_skip_texi;
 our %css_map;
@@ -771,13 +773,13 @@ my %text_macros = (
      'ifplaintext' => 0, 
      'ifinfo' => 0,
      'ifxml' => 0,
-     'ifhtml' => 1, 
-     'html' => 'raw', 
+     'ifhtml' => 0, 
+     'html' => 0, 
      'tex' => 0, 
-     'xml' => 'raw',
+     'xml' => 0,
      'titlepage' => 1, 
      'documentdescription' => 1, 
-     'ifnothtml' => 0, 
+     'ifnothtml' => 1, 
      'ifnottex' => 1, 
      'ifnotplaintext' => 1, 
      'ifnotinfo' => 1,
@@ -954,22 +956,14 @@ sub set_expansion($$)
     my $region = shift;
     my $set = shift;
     $set = 1 if (!defined($set));
-    if ($region ne 'html')
+    if ($set)
     {
-         if ($set)
-         {
-             push (@Texi2HTML::Config::EXPAND, $region) unless (grep {$_ eq $region} @Texi2HTML::Config::EXPAND);
-         }
-         else
-         {
-             @Texi2HTML::Config::EXPAND = grep {$_ ne $region} @Texi2HTML::Config::EXPAND;
-         }
-     }
-     else
-     { # special case for html, as it is true by default, removing it from
-       # EXPAND won't change anything
-         $text_macros{'ifhtml'} = $set;
-     }
+         push (@Texi2HTML::Config::EXPAND, $region) unless (grep {$_ eq $region} @Texi2HTML::Config::EXPAND);
+    }
+    else
+    {
+         @Texi2HTML::Config::EXPAND = grep {$_ ne $region} @Texi2HTML::Config::EXPAND;
+    }
 }
 	 
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
@@ -1072,7 +1066,7 @@ $T2H_OPTIONS -> {'iftex'} =
 $T2H_OPTIONS -> {'ifplaintext'} =
 {
  type => '!',
- linkage => sub { set_expansion('ifplaintext', $_[1]); },
+ linkage => sub { set_expansion('plaintext', $_[1]); },
  verbose => "expand ifplaintext sections",
 };
 
@@ -1664,7 +1658,8 @@ push @special_regions, 'tex' if ($Texi2HTML::Config::L2H);
 
 foreach my $expanded (@Texi2HTML::Config::EXPAND)
 {
-    $text_macros{"if$expanded"} = 1;
+    $text_macros{"if$expanded"} = 1 if (exists($text_macros{"if$expanded"}));
+    next unless (exists($text_macros{$expanded}));
     if (grep {$_ eq $expanded} @special_regions)
     {
          $text_macros{$expanded} = 'special'; 
@@ -1676,15 +1671,6 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     else
     {
          $text_macros{$expanded} = 1; 
-    }
-}
-
-# This is usefull in case html isn't expanded
-foreach my $region (@raw_regions, @special_regions)
-{
-    if (exists ($text_macros{"if$region"}) and !$text_macros{"if$region"})
-    {
-         $text_macros{$region} = 0;
     }
 }
 
@@ -1878,13 +1864,11 @@ my $anchor_num = 0;
 #
 if ($Texi2HTML::Config::USE_ISO)
 {
-    $Texi2HTML::Config::things_map{'bullet'} = "&bull;";
-    $Texi2HTML::Config::things_map{'copyright'} = "&copy;";
-    $Texi2HTML::Config::things_map{'dots'} = "&hellip;";
-    $Texi2HTML::Config::things_map{'equiv'} = "&equiv;";
-    $Texi2HTML::Config::things_map{'expansion'} = "&rarr;";
-    $Texi2HTML::Config::things_map{'point'} = "&lowast;";
-    $Texi2HTML::Config::things_map{'result'} = "&rArr;";
+    foreach my $thing (keys(%Texi2HTML::Config::iso_symbols))
+    {
+         $Texi2HTML::Config::things_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
+         $Texi2HTML::Config::pre_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
+    }
 }
 
 # process a css file
@@ -6087,12 +6071,17 @@ sub do_text($;$)
     return $text if ($state->{'keep_texi'});
     if (defined($state) and !$state->{'preformatted'} and !$state->{'code_style'})
     {
-	# FIXME: Please comment as to why this is done:
+        # in normal text `` and '' serve as quotes, --- is for a long dash 
+        # and -- for a medium dash.
+        # (see texinfo.txi, @node Conventions)
         $text =~ s/``/"/go;
         $text =~ s/''/"/go;
         $text =~ s/-(--?)/$1/go;
     }
-    return $text if ($state->{'remove_texi'});
+    if ($state->{'remove_texi'})
+    {
+        return $text;
+    }
     return &$Texi2HTML::Config::protect_html($text);
 }
 
@@ -8091,7 +8080,7 @@ sub scan_line($$$$;$)
         }
     }
     # an index entry at beginning of line is handled here FIXME why ?
-    if (!$state->{'raw'} and !$state->{'verb'} and /^\@(\w+?)index\s+(.*)/ and ($1 ne 'print'))
+    if (!$state->{'raw'} and !$state->{'verb'} and !$state->{'remove_texi'} and /^\@(\w+?)index\s+(.*)/ and ($1 ne 'print'))
     {
         if ($state->{'keep_texi'})
         {
@@ -8160,17 +8149,16 @@ sub scan_line($$$$;$)
             {
                  if ($state->{'keep_texi'})
                  {
-                    add_prev($text, $stack, $1 . $state->{'verb'});
-                    $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
+                     add_prev($text, $stack, $1 . $state->{'verb'});
+                     $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
                  }
                  elsif ($state->{'remove_texi'})
                  {
-                    add_prev($text, $stack, $1);
+                     add_prev($text, $stack, $1);
                  }
                  else
                  {
-                    add_prev($text, $stack, do_text($1, $state));
-                    #$state->{'code_style'}--; # no need, verb is closed too
+                     add_prev($text, $stack, do_text($1, $state));
                  }
                  delete $state->{'verb'};
                  next;
@@ -8510,7 +8498,44 @@ sub scan_line($$$$;$)
             }
             # the following macros are not modified but just ignored 
             # if we are removing texi
-            next if ($state->{'remove_texi'});
+            if ($macro =~ /^tex_(\d+)$/o)
+            {
+                add_prev ($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
+                next;
+            }
+            if ($state->{'remove_texi'})
+            {
+                 if ((($macro =~ /^(\w+?)index$/) and ($1 ne 'print')) or 
+                      ($macro eq 'itemize') or ($macro =~ /^(|v|f)table$/)
+                      or ($macro eq 'multitable'))
+                 {
+                      return;
+                 }
+                 elsif ($macro eq 'enumerate')
+                 {
+                      my $spec;
+                      ($_, $spec) = parse_enumerate ($_);
+                      return if (/^\s*$/);
+                      next;
+                 }
+                 elsif (defined($Texi2HTML::Config::def_map{$macro}))
+                 {
+                     my ($style, $category, $name, $type, $class, $arguments);
+                     ($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_); 
+                     $category = substitute_line($category) if (defined($category));
+                     # FIXME -- --- ''... should be protected (not by makeinfo)
+                     $name = remove_texi($name) if (defined($name));
+                     # FIXME -- --- ''... should be protected (not by makeinfo)
+                     $type = remove_texi($type) if (defined($type));
+                     # FIXME -- --- ''... should be protected (not by makeinfo)
+                     $class = remove_texi($class) if (defined($class));
+                     # FIXME -- --- ''... should be protected 
+                     $arguments = remove_texi($arguments) if (defined($arguments));
+                     add_prev ($text, $stack, &$Texi2HTML::Config::def_line_no_texi($category, $name, $type, $arguments));
+                     return;
+                }
+                next;
+            }
             if (($macro =~ /^(\w+?)index$/) and ($1 ne 'print'))
             {
                 add_prev($text, $stack, do_index_entry_label($state));
@@ -8529,11 +8554,6 @@ sub scan_line($$$$;$)
                     # reopen a preformatted format if it was interrupted by the macro
                     begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 }
-                next;
-            }
-            if ($macro =~ /^tex_(\d+)$/o)
-            {
-                add_prev ($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
                 next;
             }
             if ($macro =~ /^itemx?$/)
@@ -8811,52 +8831,60 @@ sub scan_line($$$$;$)
                 {
                     my $style = pop @$stack;
                     my $result;
+                    my $macro = $style->{'style'};
                     if ($state->{'remove_texi'})
                     {
-                        add_prev ($text, $stack, $texi_map{$style->{'style'}}) if (defined($texi_map{$style->{'style'}}));
-                        add_prev ($text, $stack, $style->{'text'});
-                        if ($code_style_map{$style->{'style'}})
+                        add_prev ($text, $stack, $texi_map{$macro}) if (defined($texi_map{$macro}));
+                        if ($code_style_map{$macro})
                         {
                              $state->{'code_style'}--;
+                        }
+                        if (($macro eq 'anchor') or ($macro =~ /^(x|px|info|)ref$/o) or ($macro eq 'footnote'))
+                        {
+                            $state->{'keep_texi'}--;
+                        }
+                        else
+                        {
+                             add_prev ($text, $stack, $style->{'text'});
                         }
                         next;
                     }
 
-                    if ($style->{'style'})
+                    if ($macro)
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
-                        if (($state->{'keep_texi'} > 1) and (($style->{'style'} eq 'anchor') or ($style->{'style'} =~ /^(x|px|info|)ref$/o) or ($style->{'style'} eq 'footnote')))
+                        if (($state->{'keep_texi'} > 1) and (($macro eq 'anchor') or ($macro =~ /^(x|px|info|)ref$/o) or ($macro eq 'footnote')))
                         { 
                             $state->{'keep_texi'}--;
-                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
+                            $result = '@' . $macro . '{' . $style->{'text'} . '}';
                         }
-                        elsif ($style->{'style'} eq 'anchor')
+                        elsif ($macro eq 'anchor')
                         {
                             $state->{'keep_texi'}--;
                             $result = do_anchor_label($style->{'text'});
                         }
-                        elsif ($style->{'style'} =~ /^(x|px|info|)ref$/o)
+                        elsif ($macro =~ /^(x|px|info|)ref$/o)
                         {
                             $state->{'keep_texi'}--;
-                            $result = do_xref($style->{'style'}, $style->{'text'}, $state, $line_nr);
+                            $result = do_xref($macro, $style->{'text'}, $state, $line_nr);
                         }
-                        elsif ($style->{'style'} eq 'footnote')
+                        elsif ($macro eq 'footnote')
                         {
                              $state->{'keep_texi'}--;
-                             $result = do_footnote($style->{'style'}, $style->{'text'}, $state);
+                             $result = do_footnote($macro, $style->{'text'}, $state);
                         }
                         elsif($state->{'keep_texi'})
                         { # don't expand macros in anchor and ref
-                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
+                            $result = '@' . $macro . '{' . $style->{'text'} . '}';
                         }
-                        elsif ($style->{'style'} eq 'image')
+                        elsif ($macro eq 'image')
                         {
-                            $result = do_image($style->{'style'}, $style->{'text'}, $state, $line_nr);
+                            $result = do_image($macro, $style->{'text'}, $state, $line_nr);
                         }
                         else
                         {
 				#print STDERR "DO_SIMPLE $style->{'style'}\n";
-                             $result = do_simple($style->{'style'}, $style->{'text'}, $state, $line_nr, $style->{'no_open'}, $style->{'no_close'});
+                             $result = do_simple($macro, $style->{'text'}, $state, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                              if ($state->{'code_style'} < 0)
                              {
                                   echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_.", $line_nr);
@@ -9703,7 +9731,15 @@ Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
 pass_texi();
 dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
 # do copyright notice inserted in comment at the begining of the files
-$copying_comment = &$Texi2HTML::Config::comment(remove_texi(@copying_lines)) . "\n" if (@copying_lines);
+if (@copying_lines)
+{
+    $copying_comment = remove_texi(@copying_lines);
+    while ($copying_comment =~ /-->/) # --> ends an html comment !
+    { 
+        $copying_comment =~ s/-->/->/go;
+    }
+    $copying_comment = &$Texi2HTML::Config::comment($copying_comment) . "\n";
+}
 pass_structure();
 dump_texi(\@doc_lines, 'first', \@doc_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
 #dump_texi(\@doc_lines, 'first') if ($T2H_DEBUG & $DEBUG_TEXI);

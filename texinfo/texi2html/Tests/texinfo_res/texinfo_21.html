@@ -122,7 +122,7 @@ see section <a href="#SEC271">Installing an Info File</a>.
 <tr><td align="left" valign="top"><a href="#SEC264">20.1.3 Options for <code>makeinfo</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify fill-column and other options.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC265">20.1.4 Pointer Validation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to check that pointers point somewhere.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC266">20.1.5 Running <code>makeinfo</code> inside Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run <code>makeinfo</code> from Emacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC267">20.1.6 The <code>texinfo-format<small class="dots">...</small></code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two Info formatting commands written
+<tr><td align="left" valign="top"><a href="#SEC267">20.1.6 The <code>texinfo-format&hellip;</code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two Info formatting commands written
                                   in Emacs Lisp are an alternative
                                   to <code>makeinfo</code>.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC268">20.1.7 Batch Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to format for Info in Emacs Batch mode.</td></tr>
@@ -242,7 +242,7 @@ columns:
 </pre></td></tr></table>
 <p>You can write two or more options in sequence, like this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --no-split --fill-column=70 ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --no-split --fill-column=70 &hellip;
 </pre></td></tr></table>
 
 <p>This would keep the Info file together as one possibly very long
@@ -762,7 +762,7 @@ variable in your `<tt>.emacs</tt>' initialization file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 20.1.6 The <code>texinfo-format<small class="dots">...</small></code> Commands </h3>
+<h3 class="subsection"> 20.1.6 The <code>texinfo-format&hellip;</code> Commands </h3>
 
 <p>In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the <code>texinfo-format-region</code> command.  This formats the
@@ -916,7 +916,7 @@ Node: overview^?104
 Node: info file^?1271
 Node: printed manual^?4853
 Node: conventions^?6855
-...
+&hellip;
 </pre></td></tr></table>
 
 <p>(But `<tt>test-texinfo</tt>' had far more nodes than are shown here.)  Each of
@@ -1084,7 +1084,7 @@ this:
 * Texinfo: (texinfo).  With one source file, make
                        either a printed manual using
                        @TeX{} or an Info file.
-...
+&hellip;
 </pre></td></tr></table>
 <p>Each of these menu entries points to the `Top' node of the Info file
 that is named in parentheses.  (The menu entry does not need to
@@ -1316,7 +1316,7 @@ after copying the Info file into its proper installed location.
 <a name="IDX419"></a>
 <p>In order for the Info file to work with <code>install-info</code>, you include
 the commands <code>@dircategory</code> and
-<code>@direntry</code><small class="dots">...</small><code>@end direntry</code> in the Texinfo source
+<code>@direntry</code>&hellip;<code>@end direntry</code> in the Texinfo source
 file.  Use <code>@direntry</code> to specify the menu entries to add to the
 Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
@@ -1325,8 +1325,8 @@ in this manual:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
-* install-info: (texinfo)Invoking install-info. ...
-...
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
 @end direntry
 </pre></td></tr></table>
 <p>Here's what this produces in the Info file:
@@ -1334,8 +1334,8 @@ in this manual:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
-* install-info: (texinfo)Invoking install-info. ...
-...
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
 END-INFO-DIR-ENTRY
 </pre></td></tr></table>
 
@@ -1394,7 +1394,7 @@ for an explanation of how the `<tt>dir</tt>' file works).  It's most often
 run as part of software installation, or when constructing a `<tt>dir</tt>' file
 for all manuals on a system.  Synopsis:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]... [<var>info-file</var> [<var>dir-file</var>]]
+</p><table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
 </pre></td></tr></table>
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time

@@ -265,15 +265,15 @@ which are not at the ends of sentences.
 
 </p><p>For example,
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts ...
-The s.o.p. has three parts ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts &hellip;
+The s.o.p. has three parts &hellip;
 </pre></td></tr></table>
 
 <p>produces
 
 </p><blockquote>
-<p>The s.o.p. has three parts <small class="dots">...</small><br>
-The s.o.p. has three parts <small class="dots">...</small>
+<p>The s.o.p. has three parts &hellip;<br>
+The s.o.p. has three parts &hellip;
 </p></blockquote>
 
 
@@ -621,8 +621,8 @@ with these commands because you can use them next to other text; without
 the braces, the formatters would be confused.  See section <a href="texinfo_29.html#SEC320">@-Command Syntax</a>, for further information.)
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC185">13.4.1 <code>@dots</code>{} (<small class="dots">...</small>) and <code>@enddots</code>{} (<small class="enddots">....</small>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to insert dots <small class="dots">...</small></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC186">13.4.2 <code>@bullet</code>{} (*)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to insert a bullet.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC185">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">....</small>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to insert dots &hellip;</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC186">13.4.2 <code>@bullet</code>{} (&bull;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to insert a bullet.</td></tr>
 </table>
 
 
@@ -645,10 +645,10 @@ the braces, the formatters would be confused.  See section <a href="texinfo_29.h
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.4.1 <code>@dots</code>{} (<small class="dots">...</small>) and <code>@enddots</code>{} (<small class="enddots">....</small>) </h3>
+<h3 class="subsection"> 13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">....</small>) </h3>
 
 <p>Use the <code>@dots{}</code> command to generate an ellipsis, which is
-three dots in a row, appropriately spaced, like this: `<small class="dots">...</small>'.  Do
+three dots in a row, appropriately spaced, like this: `&hellip;'.  Do
 not simply write three periods in the input file; that would work for
 the Info file output, but would produce the wrong amount of space
 between the periods in the printed manual.
@@ -677,12 +677,12 @@ end-of-sentence ellipsis (four dots) <small class="enddots">....</small>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.4.2 <code>@bullet</code>{} (*) </h3>
+<h3 class="subsection"> 13.4.2 <code>@bullet</code>{} (&bull;) </h3>
 
 <p>Use the <code>@bullet{}</code> command to generate a large round dot, or
 the closest possible thing to one.  In Info, an asterisk is used.
 
-</p><p>Here is a bullet: *
+</p><p>Here is a bullet: &bull;
 
 </p><p>When you use <code>@bullet</code> in <code>@itemize</code>, you do not need to
 type the braces, because <code>@itemize</code> supplies them.
@@ -928,8 +928,8 @@ literal `<samp>\</samp>'.
 <p>In Texinfo, code is often illustrated in examples that are delimited
 by <code>@example</code> and <code>@end example</code>, or by <code>@lisp</code> and
 <code>@end lisp</code>.  In such examples, you can indicate the results of
-evaluation or an expansion using `<samp>=&gt;</samp>' or
-`<samp>==&gt;</samp>'.  Likewise, there are commands to insert glyphs
+evaluation or an expansion using `<samp>&rArr;</samp>' or
+`<samp>&rarr;</samp>'.  Likewise, there are commands to insert glyphs
 to indicate
 printed output, error messages, equivalence of expressions, and the
 location of point.
@@ -940,12 +940,12 @@ left- and right-hand braces.
 
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC194">13.9.1 Glyphs Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC195">13.9.2 <code>@result{}</code> (=&gt;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to show the result of expression.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC196">13.9.3 <code>@expansion{}</code> (==&gt;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate an expansion.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC195">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to show the result of expression.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC196">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate an expansion.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC197">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate printed output.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC198">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate an error message.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC199">13.9.6 <code>@equiv{}</code> (==): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate equivalence.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC200">13.9.7 <code>@point{}</code> (-!-): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate the location of point.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC199">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate equivalence.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC200">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to indicate the location of point.</td></tr>
 </table>
 
 
@@ -973,12 +973,12 @@ left- and right-hand braces.
 <p>Here are the different glyph commands:
 
 </p><dl compact="compact">
-<dt> =&gt;
+<dt> &rArr;
 </dt>
 <dd><p><code>@result{}</code> points to the result of an expression.
 
 </p></dd>
-<dt> ==&gt;
+<dt> &rarr;
 </dt>
 <dd><p><code>@expansion{}</code> shows the results of a macro expansion.
 
@@ -994,24 +994,24 @@ left- and right-hand braces.
 message.
 
 </p></dd>
-<dt> ==
+<dt> &equiv;
 </dt>
 <dd><p><code>@equiv{}</code> indicates the exact equivalence of two forms.
 
 </p></dd>
-<dt> -!-
+<dt> &lowast;
 </dt>
 <dd><p><code>@point{}</code> shows the location of point.
 </p></dd>
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC195">13.9.2 <code>@result{}</code> (=&gt;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC196">13.9.3 <code>@expansion{}</code> (==&gt;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC195">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC196">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC197">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC198">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC199">13.9.6 <code>@equiv{}</code> (==): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC200">13.9.7 <code>@point{}</code> (-!-): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC199">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC200">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 
@@ -1034,18 +1034,18 @@ message.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.9.2 <code>@result{}</code> (=&gt;): Indicating Evaluation </h3>
+<h3 class="subsection"> 13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation </h3>
 
 <p>Use the <code>@result{}</code> command to indicate the result of
 evaluating an expression.
 
-</p><p>The <code>@result{}</code> command is displayed as `<samp>=&gt;</samp>' in Info
+</p><p>The <code>@result{}</code> command is displayed as `<samp>&rArr;</samp>' in Info
 and as a double stemmed arrow in the printed output.
 
 </p><p>Thus, the following,
 
 </p><table><tr><td>&nbsp;</td><td><pre class="lisp">(cdr '(1 2 3))
-     =&gt; (2 3)
+     &rArr; (2 3)
 </pre></td></tr></table>
 
 <p>may be read as &quot;<code>(cdr '(1 2 3))</code> evaluates to <code>(2 3)</code>&quot;.
@@ -1070,13 +1070,13 @@ and as a double stemmed arrow in the printed output.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.9.3 <code>@expansion{}</code> (==&gt;): Indicating an Expansion </h3>
+<h3 class="subsection"> 13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion </h3>
 
 <p>When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
 <code>@expansion{}</code> command.
 
-</p><p>The <code>@expansion{}</code> command is displayed as `<samp>==&gt;</samp>'
+</p><p>The <code>@expansion{}</code> command is displayed as `<samp>&rarr;</samp>'
 in Info and as a long arrow with a flat base in the printed output.
 
 </p><p>For example, the following
@@ -1091,8 +1091,8 @@ in Info and as a long arrow with a flat base in the printed output.
 <p>produces
 
 </p><table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
-     ==&gt; (car (cdr (cdr '(a b c))))
-     =&gt; c
+     &rarr; (car (cdr (cdr '(a b c))))
+     &rArr; c
 </pre></td></tr></table>
 
 <p>which may be read as:
@@ -1143,7 +1143,7 @@ last line.
 </p><table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
      -| foo
      -| bar
-     =&gt; bar
+     &rArr; bar
 </pre></td></tr></table>
 
 <p>In a Texinfo source file, this example is written as follows:
@@ -1224,12 +1224,12 @@ when you evaluate the expression:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.9.6 <code>@equiv{}</code> (==): Indicating Equivalence </h3>
+<h3 class="subsection"> 13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence </h3>
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
 
-</p><p>The <code>@equiv{}</code> command is displayed as `<samp>==</samp>' in Info
+</p><p>The <code>@equiv{}</code> command is displayed as `<samp>&equiv;</samp>' in Info
 and as a three parallel horizontal lines in the printed output.
 
 </p><p>Thus,
@@ -1241,7 +1241,7 @@ and as a three parallel horizontal lines in the printed output.
 
 <p>produces
 
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) == (list 'keymap)
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
 </pre></td></tr></table>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
@@ -1267,7 +1267,7 @@ identical results to evaluating <code>(list 'keymap)</code>.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 13.9.7 <code>@point{}</code> (-!-): Indicating Point in a Buffer </h3>
+<h3 class="subsection"> 13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer </h3>
 
 <p>Sometimes you need to show an example of text in an Emacs buffer.  In
 such examples, the convention is to include the entire contents of the
@@ -1279,21 +1279,21 @@ in the text in the buffer.  (The symbol for point, of course, is not
 part of the text in the buffer; it indicates the place <em>between</em>
 two characters where point is located.)
 
-</p><p>The <code>@point{}</code> command is displayed as `<samp>-!-</samp>' in Info
+</p><p>The <code>@point{}</code> command is displayed as `<samp>&lowast;</samp>' in Info
 and as a small five pointed star in the printed output.
 
 </p><p>The following example shows the contents of buffer `<tt>foo</tt>' before
 and after evaluating a Lisp command to insert the word <code>changed</code>.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
-This is the -!-contents of foo.
+This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>
 <table><tr><td>&nbsp;</td><td><pre class="example">(insert &quot;changed &quot;)
-     =&gt; nil
+     &rArr; nil
 ---------- Buffer: foo ----------
-This is the changed -!-contents of foo.
+This is the changed &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>
@@ -1378,8 +1378,8 @@ marker might end up starting a line.
 </p><p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">...a sample footnote@footnote{Here is the sample
-footnote.}; in the Texinfo source...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source&hellip;
 </pre></td></tr></table>
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, `<samp>.};</samp>' is the sequence.  This is normal (the
@@ -1467,7 +1467,7 @@ formatted for Info in the separate node style:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
-&quot;hex&quot;. ...
+&quot;hex&quot;. &hellip;
 </pre></td></tr></table></li></ul>
 
 <p>A Texinfo file may be formatted into an Info file with either footnote

@@ -100,13 +100,13 @@ indent those paragraphs that need to be filled and indented.
 <code>texinfo-format-buffer</code> to refill a paragraph in the Info file
 <em>after</em> all the other processing has been done.  For this reason,
 you can not use <code>@refill</code> with a paragraph containing either
-<code>@*</code> or <code>@w{ <small class="dots">...</small> }</code> since the refilling action will
+<code>@*</code> or <code>@w{ &hellip; }</code> since the refilling action will
 override those two commands.
 
 </p><p>The <code>texinfo-format-region</code> and <code>texinfo-format-buffer</code>
 commands now automatically append <code>@refill</code> to the end of each
 paragraph that should be filled.  They do not append <code>@refill</code> to
-the ends of paragraphs that contain <code>@*</code> or <code>@w{ <small class="dots">...</small>}</code>
+the ends of paragraphs that contain <code>@*</code> or <code>@w{ &hellip;}</code>
 and therefore do not refill or indent them.
 
 </p>

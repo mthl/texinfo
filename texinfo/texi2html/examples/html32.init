@@ -12,6 +12,9 @@ $BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" ali
 $MENU_PRE_STYLE = '';
 
 $TOC_LIST_STYLE ='';
+
+$USE_ISO = 0;
+
 # This lines are inserted before and after the shortcontents 
 $BEFORE_OVERVIEW = "";
 $AFTER_OVERVIEW = '';

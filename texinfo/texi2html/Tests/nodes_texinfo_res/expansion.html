@@ -78,13 +78,13 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3 class="subsection"> 13.9.3 <code>@expansion{}</code> (==&gt;): Indicating an Expansion </h3>
+<h3 class="subsection"> 13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion </h3>
 
 <p>When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
 <code>@expansion{}</code> command.
 
-</p><p>The <code>@expansion{}</code> command is displayed as `<samp>==&gt;</samp>'
+</p><p>The <code>@expansion{}</code> command is displayed as `<samp>&rarr;</samp>'
 in Info and as a long arrow with a flat base in the printed output.
 
 </p><p>For example, the following
@@ -99,8 +99,8 @@ in Info and as a long arrow with a flat base in the printed output.
 <p>produces
 
 </p><table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
-     ==&gt; (car (cdr (cdr '(a b c))))
-     =&gt; c
+     &rarr; (car (cdr (cdr '(a b c))))
+     &rArr; c
 </pre></td></tr></table>
 
 <p>which may be read as:

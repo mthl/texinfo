@@ -86,7 +86,7 @@ entities:
 </p><dl compact="compact">
 <dd><a name="IDX266"></a>
 </dd>
-<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><p>The <code>@deffn</code> command is the general definition command for
 functions, interactive commands, and similar entities that may take
@@ -117,17 +117,17 @@ the example above, we used `<samp>@var{nchars}</samp>' in this way.
 
 </p><p>The template for <code>@deffn</code> is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
 <a name="IDX267"></a>
 </dd>
-<dt><code> @defun <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @defun <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
-<small class="dots">...</small></samp>'.
+&hellip;</samp>'.
 
 </p>
 <p>For example,
@@ -146,7 +146,7 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 
 </p><p>The template is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
 </pre></td></tr></table>
@@ -154,21 +154,21 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 
 </p><a name="IDX268"></a>
 </dd>
-<dt><code> @defmac <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @defmac <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
-<code>@defmac</code> is equivalent to `<samp>@deffn Macro <small class="dots">...</small></samp>' and
+<code>@defmac</code> is equivalent to `<samp>@deffn Macro &hellip;</samp>' and
 works like <code>@defun</code>.
 
 </p><a name="IDX269"></a>
 </dd>
-<dt><code> @defspec <var>name</var> <var>arguments</var><small class="dots">...</small>
+<dt><code> @defspec <var>name</var> <var>arguments</var>&hellip;
 </code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to `<samp>@deffn {Special Form}
-<small class="dots">...</small></samp>' and works like <code>@defun</code>.
+&hellip;</samp>' and works like <code>@defun</code>.
 </p></dd>
 </dl>
 

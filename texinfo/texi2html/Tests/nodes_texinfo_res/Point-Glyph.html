@@ -78,7 +78,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3 class="subsection"> 13.9.7 <code>@point{}</code> (-!-): Indicating Point in a Buffer </h3>
+<h3 class="subsection"> 13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer </h3>
 
 <p>Sometimes you need to show an example of text in an Emacs buffer.  In
 such examples, the convention is to include the entire contents of the
@@ -90,21 +90,21 @@ in the text in the buffer.  (The symbol for point, of course, is not
 part of the text in the buffer; it indicates the place <em>between</em>
 two characters where point is located.)
 
-</p><p>The <code>@point{}</code> command is displayed as `<samp>-!-</samp>' in Info
+</p><p>The <code>@point{}</code> command is displayed as `<samp>&lowast;</samp>' in Info
 and as a small five pointed star in the printed output.
 
 </p><p>The following example shows the contents of buffer `<tt>foo</tt>' before
 and after evaluating a Lisp command to insert the word <code>changed</code>.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
-This is the -!-contents of foo.
+This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>
 <table><tr><td>&nbsp;</td><td><pre class="example">(insert &quot;changed &quot;)
-     =&gt; nil
+     &rArr; nil
 ---------- Buffer: foo ----------
-This is the changed -!-contents of foo.
+This is the changed &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
 </pre></td></tr></table>

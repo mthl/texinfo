@@ -71,7 +71,7 @@ which revisions they are.
 substitution</em> (or <em>keyword expansion</em>) to help
 identifying the files.  Embedded strings of the form
 <code>$<var>keyword</var>$</code> and
-<code>$<var>keyword</var>:<small class="dots">...</small>$</code> in a file are replaced
+<code>$<var>keyword</var>:&hellip;$</code> in a file are replaced
 with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
@@ -182,7 +182,7 @@ co -r first</code>, the keyword expands to `<samp>Name: first</samp>'.
 header containing the <small>RCS</small> filename, the revision
 number, the author, and the date (UTC).  Existing log
 messages are <em>not</em> replaced.  Instead, the new log
-message is inserted after <code>$<i></i>Log:<small class="dots">...</small>$</code>.
+message is inserted after <code>$<i></i>Log:&hellip;$</code>.
 Each new line is prefixed with the same string which
 precedes the <code>$Log</code> keyword.  For example, if the
 file contains:
