@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2e\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-10-01 11:05-0700\n"
+"POT-Creation-Date: 2004-12-08 09:57-0800\n"
 "PO-Revision-Date: 2002-11-08 09:13GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mere information.\n"
 
-#: info/info.c:295 makeinfo/makeinfo.c:764 util/install-info.c:1266
+#: info/info.c:295 makeinfo/makeinfo.c:766 util/install-info.c:1266
 #: util/texindex.c:343
 #, fuzzy, c-format
 msgid ""
@@ -1119,7 +1119,7 @@ msgstr "Gå til linjeslutning"
 msgid "Move to the start of the line"
 msgstr "Gå til linjestart"
 
-#: info/session.c:860 makeinfo/node.c:1380
+#: info/session.c:860 makeinfo/node.c:1425
 msgid "Next"
 msgstr "Næste"
 
@@ -1748,117 +1748,117 @@ msgstr "%s: tilvalg '-W %s' er flertydigt\n"
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: tilvalg '-W %s' tillader ikke en parameter\n"
 
-#: makeinfo/cmds.c:518 makeinfo/cmds.c:540
+#: makeinfo/cmds.c:520 makeinfo/cmds.c:542
 #, fuzzy, c-format
 msgid "arguments to @%s ignored"
 msgstr "Ugyldigt argument til %c%s"
 
-#: makeinfo/cmds.c:583
+#: makeinfo/cmds.c:585
 msgid "January"
 msgstr "januar"
 
-#: makeinfo/cmds.c:583
+#: makeinfo/cmds.c:585
 msgid "February"
 msgstr "februar"
 
-#: makeinfo/cmds.c:583
+#: makeinfo/cmds.c:585
 msgid "March"
 msgstr "marts"
 
-#: makeinfo/cmds.c:583
+#: makeinfo/cmds.c:585
 msgid "April"
 msgstr "april"
 
-#: makeinfo/cmds.c:583
+#: makeinfo/cmds.c:585
 msgid "May"
 msgstr "maj"
 
-#: makeinfo/cmds.c:584
+#: makeinfo/cmds.c:586
 msgid "June"
 msgstr "juni"
 
-#: makeinfo/cmds.c:584
+#: makeinfo/cmds.c:586
 msgid "July"
 msgstr "juli"
 
-#: makeinfo/cmds.c:584
+#: makeinfo/cmds.c:586
 msgid "August"
 msgstr "august"
 
-#: makeinfo/cmds.c:584
+#: makeinfo/cmds.c:586
 msgid "September"
 msgstr "september"
 
-#: makeinfo/cmds.c:584
+#: makeinfo/cmds.c:586
 msgid "October"
 msgstr "oktober"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:587
 msgid "November"
 msgstr "november"
 
-#: makeinfo/cmds.c:585
+#: makeinfo/cmds.c:587
 msgid "December"
 msgstr "december"
 
-#: makeinfo/cmds.c:934
+#: makeinfo/cmds.c:936
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "usandsynligt tegn %c i @var"
 
-#: makeinfo/cmds.c:977
+#: makeinfo/cmds.c:979
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc parameter er kun versaler, derfor ingen virkning"
 
-#: makeinfo/cmds.c:1032
+#: makeinfo/cmds.c:1034
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "'{' forventedes, men fandt '%c'"
 
-#: makeinfo/cmds.c:1072
+#: makeinfo/cmds.c:1074
 msgid "end of file inside verb block"
 msgstr "filslutning inden i en verb-blok"
 
-#: makeinfo/cmds.c:1080
+#: makeinfo/cmds.c:1082
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "'}' forventedes, men fandt '%c'"
 
-#: makeinfo/cmds.c:1110
+#: makeinfo/cmds.c:1112
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr ""
 
-#: makeinfo/cmds.c:1288
+#: makeinfo/cmds.c:1305
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s er forældet"
 
-#: makeinfo/cmds.c:1397
+#: makeinfo/cmds.c:1414
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp kræver et positivt tal, ikke '%s'"
 
-#: makeinfo/cmds.c:1746 makeinfo/cmds.c:1802 makeinfo/footnote.c:82
+#: makeinfo/cmds.c:1763 makeinfo/cmds.c:1819 makeinfo/footnote.c:82
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Ugyldigt argument til %c%s"
 
-#: makeinfo/cmds.c:1756 makeinfo/makeinfo.c:4125
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1758 makeinfo/cmds.c:1788 makeinfo/makeinfo.c:4127
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:1772
+#: makeinfo/cmds.c:1789
 #, fuzzy, c-format
 msgid "Bad argument to @%s"
 msgstr "Ugyldigt argument til %c%s"
 
-#: makeinfo/cmds.c:1786
+#: makeinfo/cmds.c:1803
 msgid "insert"
 msgstr ""
 
@@ -1895,12 +1895,12 @@ msgid "Method"
 msgstr "Metode"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2191
+#: makeinfo/defun.c:644 makeinfo/xml.c:2195
 msgid "of"
 msgstr "for"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2196
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2200
 msgid "on"
 msgstr "på"
 
@@ -1964,11 +1964,11 @@ msgstr ""
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: makeinfo/html.c:418
+#: makeinfo/html.c:422
 msgid "[unexpected] no html tag to pop"
 msgstr "[uventet] ingen html-mærker at \"pop\"'e"
 
-#: makeinfo/html.c:722
+#: makeinfo/html.c:752
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[uventet] ugyldigt emnenavn: '%s'"
@@ -2052,104 +2052,104 @@ msgstr ""
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "'@end' forventede '%s', men fandt '%s'"
 
-#: makeinfo/insertion.c:1332
+#: makeinfo/insertion.c:1337
 #, c-format
 msgid "No matching `%cend %s'"
 msgstr "Mangler en tilsvarende '%cend %s'"
 
-#: makeinfo/insertion.c:1580
+#: makeinfo/insertion.c:1592
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s kræver et bogstav eller ciffer"
 
-#: makeinfo/insertion.c:1675
+#: makeinfo/insertion.c:1687
 msgid "end of file inside verbatim block"
 msgstr "filslutning indeni en verbatim-blok"
 
-#: makeinfo/insertion.c:1901
+#: makeinfo/insertion.c:1913
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s giver ingen mening i en '@%s'-blok"
 
-#: makeinfo/insertion.c:1937
+#: makeinfo/insertion.c:1949
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu fundet før første @node, opretter 'Top' emne"
 
-#: makeinfo/insertion.c:1938
+#: makeinfo/insertion.c:1950
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "måske skulle dit @top emne indsættes i @ifnottex i stedet for @ifinfo?"
 
-#: makeinfo/insertion.c:1950
+#: makeinfo/insertion.c:1962
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu fundet før første emne, opretter emnet 'Top'"
 
-#: makeinfo/insertion.c:2006
+#: makeinfo/insertion.c:2018
 #, c-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: makeinfo/insertion.c:2020
+#: makeinfo/insertion.c:2032
 #, fuzzy, c-format
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s giver ingen mening i en '@%s'-blok"
 
-#: makeinfo/insertion.c:2051
+#: makeinfo/insertion.c:2063
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "Uparret '%c%s'"
 
-#: makeinfo/insertion.c:2056
+#: makeinfo/insertion.c:2068
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "'%c%s' kræver noget efterfølgende"
 
-#: makeinfo/insertion.c:2062
+#: makeinfo/insertion.c:2074
 #, fuzzy, c-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Ugyldigt parameter '%s', '%s', benytter '%s'"
 
-#: makeinfo/insertion.c:2159
+#: makeinfo/insertion.c:2171
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s giver ingen mening i en '@%s'-blok"
 
-#: makeinfo/insertion.c:2168
+#: makeinfo/insertion.c:2180
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "@itemx giver ingen mening i en '%s'-blok"
 
-#: makeinfo/insertion.c:2344
+#: makeinfo/insertion.c:2356
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s fundet udenfor en indsætningsblok"
 
-#: makeinfo/lang.c:459
+#: makeinfo/lang.c:580
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s er ikke en gyldig ISO 639 sprogkode"
 
-#: makeinfo/lang.c:534
+#: makeinfo/lang.c:655
 #, fuzzy, c-format
 msgid "unrecognized encoding name `%s'"
 msgstr "ukendt indkodningsnavn '%s'"
 
-#: makeinfo/lang.c:542
+#: makeinfo/lang.c:663
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "beklager, indkodningen '%s' understøttes ikke"
 
-#: makeinfo/lang.c:594
+#: makeinfo/lang.c:715
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ugyldig indkodet tegn '%s'"
 
-#: makeinfo/lang.c:884
+#: makeinfo/lang.c:1009
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s kræver 'i' eller 'j' som parameter, ikke '%c'"
 
-#: makeinfo/lang.c:888
+#: makeinfo/lang.c:1013
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s kræver et enkelt tegn 'i' eller 'j' som parameter"
@@ -2198,7 +2198,7 @@ msgstr "For mange fejl! Gav op.\n"
 msgid "%s:%d: warning: "
 msgstr "%s:%d: advarsel: "
 
-#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2252
+#: makeinfo/makeinfo.c:321 makeinfo/makeinfo.c:2260
 #, c-format
 msgid "Misplaced %c"
 msgstr "Fejlplaceret %c"
@@ -2433,161 +2433,161 @@ msgstr ""
 "  makeinfo --number-sections xxx.texi  skriv Info med nummererede afsnit\n"
 "  makeinfo --no-split xxx.texi         skriv én Info-fil, uanset størrelsen\n"
 
-#: makeinfo/makeinfo.c:601
+#: makeinfo/makeinfo.c:603
 #, c-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:645 makeinfo/makeinfo.c:671 makeinfo/makeinfo.c:690
-#: makeinfo/makeinfo.c:720 makeinfo/makeinfo.c:741
+#: makeinfo/makeinfo.c:647 makeinfo/makeinfo.c:673 makeinfo/makeinfo.c:692
+#: makeinfo/makeinfo.c:722 makeinfo/makeinfo.c:743
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: %s parameter skal være et tal, ikke '%s'.\n"
 
-#: makeinfo/makeinfo.c:658
+#: makeinfo/makeinfo.c:660
 #, fuzzy, c-format
 msgid "%s: could not open macro expansion output `%s'"
 msgstr "Kunne ikke åbne makroudfoldelses-uddata '%s'"
 
-#: makeinfo/makeinfo.c:663
+#: makeinfo/makeinfo.c:665
 #, fuzzy, c-format
 msgid "%s: ignoring second macro expansion output `%s'.\n"
 msgstr "Kunne ikke åbne makroudfoldelses-uddata '%s'"
 
-#: makeinfo/makeinfo.c:705
+#: makeinfo/makeinfo.c:707
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent parameter skal være tal/'none'/'asis', ikke '%s'.\n"
 
-#: makeinfo/makeinfo.c:730
+#: makeinfo/makeinfo.c:732
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
 
-#: makeinfo/makeinfo.c:804
+#: makeinfo/makeinfo.c:806
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filparameter.\n"
 
-#: makeinfo/makeinfo.c:995 makeinfo/makeinfo.c:3974
+#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3989
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
 
-#: makeinfo/makeinfo.c:998
+#: makeinfo/makeinfo.c:1000
 #, c-format
 msgid "Expected `%s'"
 msgstr "Forventede '%s'"
 
-#: makeinfo/makeinfo.c:1477
+#: makeinfo/makeinfo.c:1479
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Kan ikke oprette kataloget '%s': %s"
 
-#: makeinfo/makeinfo.c:1523
+#: makeinfo/makeinfo.c:1525
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Ingen '%s' fundet i '%s'"
 
-#: makeinfo/makeinfo.c:1603
+#: makeinfo/makeinfo.c:1605
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Undlader makroudfoldelse til standard-ud, da Info-uddata sendes der.\n"
 
-#: makeinfo/makeinfo.c:1636
+#: makeinfo/makeinfo.c:1638
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Producerer %s file '%s' ud fra '%s'.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1673
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Dette er %s, produceret med makeinfo version %s ud fra %s.\n"
 
-#: makeinfo/makeinfo.c:1707
+#: makeinfo/makeinfo.c:1709
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner makro uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
-#: makeinfo/makeinfo.c:1771
+#: makeinfo/makeinfo.c:1773
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Fjerner uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
-#: makeinfo/makeinfo.c:2032
+#: makeinfo/makeinfo.c:2034
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Ukendt kommando '%s'"
 
-#: makeinfo/makeinfo.c:2054
+#: makeinfo/makeinfo.c:2056
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Benyt parenteser for at angive en kommando som parameter til @%s"
 
-#: makeinfo/makeinfo.c:2306
+#: makeinfo/makeinfo.c:2314
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s forventede '{...}'"
 
-#: makeinfo/makeinfo.c:2319
+#: makeinfo/makeinfo.c:2327
 msgid "Unmatched }"
 msgstr "Uparret }"
 
-#: makeinfo/makeinfo.c:2367
+#: makeinfo/makeinfo.c:2375
 msgid "NO_NAME!"
 msgstr "INTET_NAVN!"
 
-#: makeinfo/makeinfo.c:2388
+#: makeinfo/makeinfo.c:2396
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s mangler højre parentes"
 
-#: makeinfo/makeinfo.c:3299
+#: makeinfo/makeinfo.c:3307
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-fil '%s' (for HTML) er ulæselig: %s"
 
-#: makeinfo/makeinfo.c:3305
+#: makeinfo/makeinfo.c:3313
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Ingen '%s' fundet i '%s'"
 
-#: makeinfo/makeinfo.c:3437
+#: makeinfo/makeinfo.c:3445
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-fil '%s' (for tekst) er ulæselig: %s"
 
-#: makeinfo/makeinfo.c:3446
+#: makeinfo/makeinfo.c:3454
 msgid "@image missing filename argument"
 msgstr "@image mangler filnavnsparameter"
 
-#: makeinfo/makeinfo.c:3658
+#: makeinfo/makeinfo.c:3673
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3659
+#: makeinfo/makeinfo.c:3674
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Ingen værdi for '%s'}"
 
-#: makeinfo/makeinfo.c:3711
+#: makeinfo/makeinfo.c:3726
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kræver et navn"
 
-#: makeinfo/makeinfo.c:3817
+#: makeinfo/makeinfo.c:3832
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nåede filslutning før samhørende @end %s"
 
-#: makeinfo/makeinfo.c:4065
+#: makeinfo/makeinfo.c:4080
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for langt til ekspansion; blev ikke ekspanderet"
@@ -2630,128 +2630,128 @@ msgstr "* kolonne %d: uddata = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "Emne '%s' er tidligere defineret på linje %d"
 
-#: makeinfo/node.c:601
+#: makeinfo/node.c:647
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "Formatterer emne %s...\n"
 
-#: makeinfo/node.c:669
+#: makeinfo/node.c:715
 #, fuzzy, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Emne '%s' kræver en sektionsopdelende kommando (f.eks. %c%s)"
 
-#: makeinfo/node.c:832
+#: makeinfo/node.c:878
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Intet emnenavn angivet for '%c%s'-kommandoen"
 
-#: makeinfo/node.c:873 makeinfo/node.c:1107
+#: makeinfo/node.c:919 makeinfo/node.c:1152
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Mål '%s' og emne '%s' ender med at have samme filnavn"
 
-#: makeinfo/node.c:876
+#: makeinfo/node.c:922
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Denne @anchor-kommando er ignoreret; referencer til den vil ikke virke"
 
-#: makeinfo/node.c:878 makeinfo/node.c:1110
+#: makeinfo/node.c:924 makeinfo/node.c:1155
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Omdøb dette mål eller brug tilvalget '--no-split'"
 
-#: makeinfo/node.c:908
+#: makeinfo/node.c:954
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Uventet streng i slutningen af opdelt HTML-fil '%s'"
 
-#: makeinfo/node.c:947
+#: makeinfo/node.c:992
 msgid "Next:"
 msgstr "Næste:"
 
-#: makeinfo/node.c:963
+#: makeinfo/node.c:1008
 msgid "Previous:"
 msgstr "Forrige:"
 
-#: makeinfo/node.c:977
+#: makeinfo/node.c:1022
 msgid "Up:"
 msgstr "Op:"
 
-#: makeinfo/node.c:1104
+#: makeinfo/node.c:1149
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Målene '%s' og '%s' ender med at have samme filnavn"
 
-#: makeinfo/node.c:1109
+#: makeinfo/node.c:1154
 msgid "@anchor command ignored; references to it will not work"
 msgstr "@anchor-kommandoen ignoreres. Referencer til den vil ikke fungere"
 
-#: makeinfo/node.c:1303
+#: makeinfo/node.c:1348
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s reference til ikke-eksisterende emne '%s'"
 
-#: makeinfo/node.c:1319
+#: makeinfo/node.c:1364
 msgid "Menu"
 msgstr "Menu"
 
-#: makeinfo/node.c:1321
+#: makeinfo/node.c:1366
 msgid "Cross"
 msgstr "Kryds"
 
-#: makeinfo/node.c:1403
+#: makeinfo/node.c:1448
 #, fuzzy, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr "'Næste'-felt i emne '%s' blive ikke peget på"
 
-#: makeinfo/node.c:1406
+#: makeinfo/node.c:1451
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Dette emne (%s) har den ugyldige 'Forrige'"
 
-#: makeinfo/node.c:1418
+#: makeinfo/node.c:1463
 msgid "Prev"
 msgstr "Forrige"
 
-#: makeinfo/node.c:1461
+#: makeinfo/node.c:1506
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Feltet 'Forrige' i emne '%s' bliver ikke peget på"
 
-#: makeinfo/node.c:1465
+#: makeinfo/node.c:1510
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Dette emne (%s) har den ugyldige 'Næste'-felt"
 
-#: makeinfo/node.c:1477
+#: makeinfo/node.c:1522
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1480
+#: makeinfo/node.c:1525
 msgid "Up"
 msgstr "Op"
 
-#: makeinfo/node.c:1546
+#: makeinfo/node.c:1591
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Emnet '%s' mangler menupunkt for '%s' på trods af at det er dens 'Op'-mål"
 
-#: makeinfo/node.c:1575
+#: makeinfo/node.c:1620
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "emne '%s' blev refereret %d gange"
 
-#: makeinfo/node.c:1589
+#: makeinfo/node.c:1634
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "ikke-refereret emne '%s'"
 
-#: makeinfo/node.c:1679
+#: makeinfo/node.c:1724
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1683
+#: makeinfo/node.c:1728
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Kan ikke oprette kataloget '%s': %s"
@@ -2799,12 +2799,12 @@ msgstr "Indhold"
 msgid "Short Contents"
 msgstr "Kort indhold"
 
-#: makeinfo/xml.c:1601
+#: makeinfo/xml.c:1605
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image-fil '%s' er ulæselig: %s"
 
-#: makeinfo/xml.c:2059
+#: makeinfo/xml.c:2063
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.100 2004-12-06 01:25:51 karl Exp $
+$Id: NEWS,v 1.101 2004-12-13 13:36:32 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -40,7 +40,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
   . some cross-compiling support in configure && make.
-  . new configure option --disable-install-warnings, for TeX
+  . new configure option --disable-install-warnings, for TeX.
     distributions which do have the files installed.
   . automake 1.9.3.
 

@@ -236,3 +236,6 @@ set args -I /u/karl/gnu/src/groff/doc -o /dev/null -E groff.out groff.texinfo
 # Unknown command `&quot;urgen'.
 set args --html --force -o /tmp/i.out --no-split $ttests/idxaccent.tex
 #set args --force -o /tmp/i.out --no-split $ttests/idxangle.tex
+
+# extra blank line
+set args -E - $ttests/mac-idx2.tex -o /dev/null
