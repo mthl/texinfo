@@ -1,3 +1,10 @@
+2003-10-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\shortcontbf): cmb10 scaled \magstep1, not cmb12,
+	since cmb12 is not a standard font.
+	Report from: Staszek Wawrykiewicz <staw@gust.org.pl>,
+	16 Oct 2003 06:44:40 +0200.
+
 2003-10-14  Karl Berry  <karl@gnu.org>
 
 	* lib/xstrdup.c: put old version back, we're not ready for gnulib
