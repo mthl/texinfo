@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.46 2003-11-18 19:47:58 dirt Exp $
+   $Id: makeinfo.c,v 1.47 2003-11-19 01:48:51 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3926,12 +3926,16 @@ cm_value (arg, start_pos, end_pos)
          popped the brace stack, which restored in_fixed_width_font,
          among other things.  */
 
+      /* Docbook does not have menus, so the warnings about undefined flags
+         inside menus are bogus (makeinfo warns even if they are defined.)
+         So just skip them.  */
+
       if (value)
         execute_string ("%s", value);
-      else
+      else if (!(docbook && in_menu))
 	{
-	  warning (_("undefined flag: %s"), name);
-        add_word_args (_("{No value for `%s'}"), name);
+          warning (_("undefined flag: %s"), name);
+          add_word_args (_("{No value for `%s'}"), name);
 	}
 
       free (name);
