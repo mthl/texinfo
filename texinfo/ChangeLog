@@ -1,3 +1,47 @@
+2002-11-11 18:14  feloy
+
+	* makeinfo/xml.c: Better <bookinfo> support
+
+2002-11-11 13:37  feloy
+
+	* makeinfo/: cmds.c, insertion.c, xml.c, xml.h: Better use of
+	<bookinfo> and <abstract> with docbook output
+
+2002-11-11 01:57  feloy
+
+	* makeinfo/: defun.c, xml.c, xml.h: Removed all references to
+	docbook.[ch] which was the old sources for docbook output, replaced
+	by xml.[ch]
+
+2002-11-10 23:31  feloy
+
+	* makeinfo/: insertion.c, xml.c, xml.h: Some bugfixes in docbook
+	output
+
+2002-11-09 18:47  feloy
+
+	* makeinfo/insertion.c: In Docbook, Copying paragraph is not
+	inserted at @copying/@end copying point.
+
+2002-11-08 21:01  feloy
+
+	* makeinfo/xml.c: take care of indexterm at beginning of table
+
+2002-11-08 20:52  feloy
+
+	* makeinfo/xml.c: Text before first @item in @table is inserted as
+	the <title> of <variablelist>
+
+2002-11-08 20:24  feloy
+
+	* makeinfo/xml.c: subsubheading is simplesect and not sect3
+
+2002-11-08 19:13  feloy
+
+	* makeinfo/: makeinfo.c, xml.c, xml.h: makeinfo/xml.c (xml_id):
+	Added more forbidden characters makeinfo/{xml.c,xml.h,makeinfo.c}:
+	Defined xml_in_xref_token variable
+
 2002-11-07    <karl@gnu.org>
 
 	* makeinfo/sectioning.c: doc.
