@@ -4838,13 +4838,6 @@ width0pt\relax} \fi
 % we need not redefine '\', '{' and '}'.
 %
 % Inspired by LaTeX's verbatim command set [latex.ltx]
-%% Include LaTeX hack for completeness -- never know
-%% \begingroup
-%% \catcode`|=0 \catcode`[=1
-%% \catcode`]=2\catcode`\{=12\catcode`\}=12\catcode`\ =\active
-%% \catcode`\\=12|gdef|doverbatim#1@end verbatim[
-%% #1|endgroup|def|Everbatim[]|end[verbatim]]
-%% |endgroup
 %
 \begingroup
   \catcode`\ =\active
@@ -4852,7 +4845,9 @@ width0pt\relax} \fi
   % ignore everything up to the first ^^M, that's the newline at the end
   % of the @verbatim input line itself.  Otherwise we get an extra blank
   % line in the output.
-  \gdef\doverbatim#1^^M#2@end verbatim{#2\end verbatim}%
+  \xdef\doverbatim#1^^M#2@end verbatim{#2\noexpand\end\gobble verbatim}%
+  % We really want {...\end verbatim} in the body of the macro, but
+  % without the active space; thus we have to use \xdef and \gobble.
 \endgroup
 %
 \def\verbatim{%
