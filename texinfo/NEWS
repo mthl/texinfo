@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.81 2004-04-11 17:56:45 karl Exp $
+$Id: NEWS,v 1.82 2004-04-18 13:19:18 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -18,7 +18,7 @@ because the historical method of doing copyright permissions using
 @ifinfo failed to output copyright information in the HTML (or XML)
 formats.  The manual has detailed explanations and examples.  For
 convenience, here's a url to one of the relevant sections:
-  http://texinfo.org/manual/Document-Permissions.html
+  http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
 

@@ -1,3 +1,7 @@
+2004-04-18  Karl Berry  <karl@gnu.org>
+
+	* util/dir-example: diff updates.
+
 2004-04-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex: remove trailing blanks.  suggestion from Jim.
