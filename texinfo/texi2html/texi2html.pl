@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.15 2003-01-23 16:38:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.16 2003-01-23 18:30:22 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -420,7 +420,7 @@ $DEBUG_L2H   = 128;
 $BIBRE = '\[[\w\/-]+\]';        # RE for a bibliography reference
 $FILERE = '[\/\w.+-]+';         # RE for a file name
 $VARRE = '[^\s\{\}]+';          # RE for a variable name
-$NODERE = '[^,:]+';             # RE for a node name
+$NODERE = '[^:]+';             # RE for a node name
 $NODESRE = '[^:]+';             # RE for a list of node names
 
 $ERROR = "***";                 # prefix for errors
@@ -1946,7 +1946,10 @@ sub pass1
                 warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODESRE$/o;
                 # request of "Richard Y. Kim" <ryk@ap.com>
                 s/^\@node\s+//;
-                ($node, $node_next, $node_prev, $node_up) = split(/,/);
+                # cedilla @,{c} has a , which could be confused with a , between
+                # nodes. We protect it before splitting.
+                my @nodes = split(/,/, &protect_cedilla($_));
+                ($node, $node_next, $node_prev, $node_up) = &unprotect_cedilla (@nodes);
                 if ($node)
                 {
                     &normalise_node($node);
@@ -4654,6 +4657,14 @@ sub t2h_print_lines
     return $cnt;
 }
 
+# protect the , in @,{}
+sub protect_cedilla
+{
+    my $text = shift;
+    $text =~ s/\@,\{(\w)\}/$;6$1/g;
+    return $text;
+}
+
 sub protect_texi
 {
     # protect @ { } ` '
@@ -4678,6 +4689,18 @@ sub protect_html
     $what =~ s/\</\&lt;/go;
     $what =~ s/\>/\&gt;/go;
     return($what);
+}
+
+sub unprotect_cedilla
+{
+    my @result = ();
+    while (@_)
+    {
+        my $text = shift;
+        $text =~ s/$;6(\w)/\@,\{$1\}/g;
+        push @result, $text;
+    }
+    return @result;
 }
 
 sub unprotect_texi
