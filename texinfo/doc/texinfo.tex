@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-09-23.17}
+\def\texinfoversion{2003-09-24.08}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -4303,17 +4303,17 @@ width0pt\relax} \fi
 \def\unnsecentry#1#2#3#4{\dosecentry{#1}{#4}}
 
 % Subsections.
-\let\numsubsecentry=\numsecentry
-\let\appsubsecentry=\numsecentry
-\let\unnsubsecentry=\unnsecentry
+\def\numsubsecentry#1#2#3#4{\dosubsecentry{#2\labelspace#1}{#4}}
+\let\appsubsecentry=\numsubsecentry
+\def\unnsubsecentry#1#2#3#4{\dosubsecentry{#1}{#4}}
 
 % And subsubsections.
-\let\numsubsubsecentry=\numsecentry
-\let\appsubsubsecentry=\numsecentry
-\let\unnsubsubsecentry=\unnsecentry
+\def\numsubsubsecentry#1#2#3#4{\dosubsubsecentry{#2\labelspace#1}{#4}}
+\let\appsubsubsecentry=\numsubsubsecentry
+\def\unnsubsubsecentry#1#2#3#4{\dosubsubsecentry{#1}{#4}}
 
 % This parameter controls the indentation of the various levels.
-\newdimen\tocindent \tocindent = 3pc
+\newdimen\tocindent \tocindent = 2pc
 
 % Now for the actual typesetting. In all these, #1 is the text and #2 is the
 % page number.
