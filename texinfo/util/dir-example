@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.10 2002-12-23 22:17:02 karl Exp $
+$Id: dir-example,v 1.11 2003-01-03 13:55:10 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -85,7 +85,7 @@ GNU programming tools
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
 * automake: (automake).		Making Makefile.in's
-* bison: (bison).	GNU parser generator (yacc replacement).
+* bison: (bison).       GNU parser generator (Yacc replacement).
 * egcs: (egcs).                 Experimental GNU C compiler.
 * Flex: (flex).                 A fast scanner generator.
 * g77: (g77).                   GNU Fortran 77 compiler.
