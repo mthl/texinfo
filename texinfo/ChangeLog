@@ -1,3 +1,11 @@
+2005-01-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\chapmacro) <Ynothingkeyword>: failed to
+	\gdef\thischapter inside the group, resulting in "Chapter 1:"
+	appearing in the headline of an @unnumbered.
+	help-texinfo bug report from: <tdovera@libero.it>,
+	27 Jan 2005 11:45:31 +0100.
+
 2005-01-28  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi <verbose>: rename variable to verb, since
