@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.44 2004-11-18 15:00:52 karl Exp $
+# $Id: configure.ac,v 1.45 2004-11-19 13:08:46 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -186,6 +186,7 @@ gl_FUNC_MKSTEMP
 AC_CANONICAL_HOST
 AC_ARG_ENABLE(multiplatform,
   [  --enable-multiplatform      put executables in bin/PLATFORM])
+# if enable_multiplatform is set in the environment, use that.
 test "x$enable_multiplatform" = xyes \
 && test "x$bindir" = 'x${exec_prefix}/bin' \
 && bindir="$bindir/$host"
@@ -199,8 +200,9 @@ AC_ARG_ENABLE(install-warnings,
       no) install_warnings=false ;;
        *) AC_MSG_ERROR(bad value ${enableval} for --enable-install-warnings) ;;
    esac],
-   [install_warnings=true])
-AM_CONDITIONAL(INSTALL_WARNINGS, $install_warnings)
+   [install_warnings=${enable_install_warnings-true}])
+AM_CONDITIONAL(INSTALL_WARNINGS,
+   test x"$install_warnings" = xtrue || test x"$install_warnings" = xyes)
 
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c --intl
