@@ -1,5 +1,5 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.2 2003-06-01 23:41:23 karl Exp $
+   $Id: macro.c,v 1.3 2003-09-04 00:00:18 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -653,7 +653,7 @@ define_macro (mactype, recursive)
           depth--;
           last_end = "macro";
         }
-      if (*line == COMMAND_PREFIX && strncmp (line + 1, "end rmacro", 9) == 0)
+      if (*line == COMMAND_PREFIX && strncmp (line + 1, "end rmacro", 10) == 0)
         {
           depth--;
           last_end = "rmacro";
