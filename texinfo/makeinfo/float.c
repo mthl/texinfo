@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.5 2003-11-27 11:30:21 dirt Exp $
+   $Id: float.c,v 1.6 2003-11-28 03:29:53 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -53,6 +53,17 @@ add_new_float (id, title, type)
     free (new->number);
     new->number = xstrdup (s);
   }
+
+  /* Plain text output needs sectioning number and its title,
+     when listing floats.  */
+  if (!html && !xml && no_headers)
+    {
+      new->section = current_sectioning_number ();
+      if (strlen (new->section) == 0)
+        new->section_name = current_sectioning_name ();
+      else
+        new->section_name = "";
+    }
 
   new->next = float_stack;
   float_stack = new;
@@ -156,52 +167,90 @@ cm_listoffloats ()
                       temp->title);
                   add_word ("<br>\n");
                 }
-              else if (!no_headers)
+              else
                 {
                   char *entry;
                   char *title = expansion (temp->title, 0);
-                  int len = 5 + strlen (temp->number) + strlen (title);
-                  int shortened = 0;
+
+                  int len = strlen (temp->number) + strlen (title);
+                  int aux_chars_len;
+                  int column_width;
                   int i = 0;
 
-                  /* Shorten long titles by looking for a space before the 45.
-                     char.  */
-                  if (len > 37)
+                  if (no_headers)
                     {
-                      len = 37 - strlen (temp->number) - 5;
-                      shortened = 1;
-                      while (title[len] != ' ')
-                        len--;
-                      len += strlen (temp->number) + 9;
+                      column_width = 48;
+                      /* Add the width of " :\0" */
+                      aux_chars_len = 3;
+                    }
+                  else
+                    {
+                      column_width = 37;
+                      /* Add the width of "*  :\0" */
+                      aux_chars_len = 5;
                     }
 
-                  entry = xmalloc (len);
-                  if (shortened)
-                    len -= 5;
+                  if (len + aux_chars_len > column_width)
+                    { /* Shorten long titles by looking for a space before the
+                         45.  char.  */
+                      aux_chars_len += 4;
+                      len = column_width - strlen (temp->number) - aux_chars_len;
+                      while (title[len] != ' ')
+                        len--;
+                      len += strlen (temp->number);
+                      entry = xmalloc (len + aux_chars_len);
 
-                  snprintf (entry, len, "* %s %s", temp->number, title);
+                      if (no_headers)
+                        snprintf (entry, len + 2, "%s %s", temp->number, title);
+                      else
+                        snprintf (entry, len + 4, "* %s %s", temp->number, title);
 
-                  if (shortened)
-                    strcat (entry, " ...");
-                  strcat (entry, ":");
+                      strcat (entry, " ...:");
+                    }
+                  else
+                    {
+                      entry = xmalloc (len + aux_chars_len);
+
+                      if (no_headers)
+                        snprintf (entry, len + aux_chars_len, "%s %s:",
+                            temp->number, title);
+                      else
+                        snprintf (entry, len + aux_chars_len, "* %s %s:",
+                            temp->number, title);
+                    }
 
                   insert_string (entry);
 
                   i = strlen (entry);
-                  while (i < 41)
+                  while (i < column_width + 4)
                     {
                       insert (' ');
                       i++;
                     }
 
-                  insert_string (temp->id);
+                  if (no_headers)
+                    {
+                      if (strlen (temp->section) > 0)
+                        { /* We got your number.  */
+                          insert_string (_("See "));
+                          insert_string (temp->section);
+                        }
+                      else
+                        { /* Sigh, @float in an @unnumbered. :-\  */
+                          insert_string ("\n          ");
+                          insert_string (_("See "));
+                          insert_string ("``");
+                          insert_string (expansion (temp->section_name, 0));
+                          insert_string ("''");
+                        }
+                    }
+                  else
+                    insert_string (temp->id);
+
                   insert_string (".\n");
 
                   free (entry);
                   free (title);
-                }
-              else
-                {
                 }
             }
           temp = temp->next;

@@ -1,5 +1,15 @@
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/float.h: new section and section_name properties in
+	float_elt struct.
+
+	* makeinfo/float.c (add_new_float): save current section number and
+	title for plain text output.
+	(cm_listoffloats): list floats with no_headers too, following
+	printindex @example.
+
+2003-11-28  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/sectioning.h:
 	* makeinfo/sectioning.c (current_sectioning_number)
 	(current_sectioning_title): new functions.

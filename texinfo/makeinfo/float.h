@@ -1,5 +1,5 @@
 /* float.h -- declarations for the float environment.
-   $Id: float.h,v 1.2 2003-11-24 03:19:16 dirt Exp $
+   $Id: float.h,v 1.3 2003-11-28 03:29:53 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -29,6 +29,8 @@ typedef struct float_elt
   char *type;
   char *title;
   char *number;
+  char *section;
+  char *section_name;
 } FLOAT_ELT;
 
 /* Information retrieval about the current float env.  */
