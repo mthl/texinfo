@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.24 2003-04-18 17:12:57 karl Exp $
+dnl $Id: configure.ac,v 1.25 2003-04-18 18:21:20 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -32,11 +32,6 @@ AC_MINIX
 AC_CHECK_FUNC(sigblock, , AC_CHECK_LIB(bsd, sigblock))
 
 dnl Checks for header files.
-dnl Do not use <ncurses/termcap.h> unless we're linking with ncurses.
-if test "x$termlib" = xncurses; then
-  dnl Use AC_CHECK_HEADERS so the HAVE_*_H symbol gets defined.
-  AC_CHECK_HEADERS(ncurses/termcap.h)
-fi
 AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
@@ -134,6 +129,13 @@ if test -n "$ac_cv_var_ospeed" \
   TERMLIBS="${TERMLIBS} -l${ac_cv_var_ospeed}"
 fi
 AC_SUBST(TERMLIBS)dnl
+
+dnl Do not use <ncurses/termcap.h> unless we're linking with ncurses.
+dnl Must come after the termlib tests.
+if test "x$termlib" = xncurses; then
+  dnl Use AC_CHECK_HEADERS so the HAVE_*_H symbol gets defined.
+  AC_CHECK_HEADERS(ncurses/termcap.h)
+fi
 
 dnl gnulib.
 UTILS_FUNC_MKSTEMP
