@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.9 2003-09-10 14:16:09 karl Exp $
+   $Id: system.h,v 1.10 2003-10-28 01:33:44 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -60,10 +60,6 @@ extern char *substring ();
 
 #define _(String) gettext (String)
 #define N_(String) (String)
-
-#if !defined (HAVE_LC_MESSAGES) && !defined (LC_MESSAGES)
-#define LC_MESSAGES (-1)
-#endif
 
 #ifdef STDC_HEADERS
 #define getopt system_getopt
