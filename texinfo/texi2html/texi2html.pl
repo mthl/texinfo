@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.11 2003-01-14 14:27:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.12 2003-01-16 16:25:00 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -4435,7 +4435,7 @@ sub do_acronym
 
 sub do_accent
 {
-    return "&$_[0]acute;" if $_[1] eq 'H';
+    return "$_[0]''" if $_[1] eq 'H';
     return "$_[0]." if $_[1] eq 'dotaccent';
     return "$_[0]*" if $_[1] eq 'ringaccent';
     return "$_[0]".'[' if $_[1] eq 'tieaccent';
