@@ -1,5 +1,5 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.3 2003-09-04 00:00:18 karl Exp $
+   $Id: macro.c,v 1.4 2003-09-21 00:46:22 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1000,14 +1000,15 @@ typedef struct alias_struct
 
 static alias_type *aliases; 
 
-/* @alias */
+/* @alias aname = cmdname */
+
 void
 cm_alias ()
 {
   alias_type *a = xmalloc (sizeof (alias_type));
 
   skip_whitespace ();
-  get_until_in_line (1, "=", &(a->alias));
+  get_until_in_line (0, "=", &(a->alias));
   canon_white (a->alias);
 
   discard_until ("=");
