@@ -1,3 +1,17 @@
+2003-11-08  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (HELP2MAN): invoke explicitly from $(srcdir), in
+	case . is not in PATH.
+
+	* configure.ac (AC_CONFIG_HEADERS): apparent AM_CONFIG_HEADERS is
+	obsolete now, and we get to use AC_CONFIG_HEADERS again.
+
+	* doc/texinfo.txi (Fonts): mention <lineannotation> feature in
+	Docbook feature.
+
+	* doc/texinfo.txi (itemx): warn not to use blank lines between
+	@itemx's.
+
 2003-11-08  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_i, cm_b, cm_r): for Docbook, use <lineannotation>
