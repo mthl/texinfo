@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.6 2003-07-16 13:35:36 karl Exp $
+   $Id: system.h,v 1.7 2003-09-08 14:13:25 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -191,30 +191,42 @@ extern int strcoll ();
 #   define HAVE_LONG_FILENAMES(dir)  (pathconf (dir, _PC_NAME_MAX) > 12)
 #   define NULL_DEVICE	"/dev/null"
 #   define DEFAULT_INFOPATH "c:/djgpp/info;/usr/local/info;/usr/info;."
-#  else  /* !__DJGPP__ */
+    /* DJGPP supports /dev/null, which is okay for Unix aficionados,
+       shell scripts and Makefiles, but interactive DOS die-hards
+       would probably want to have NUL as well.  */
+#   define ALSO_NULL_DEVICE  "NUL"
+#  else  /* O_BINARY && !__DJGPP__ */
 #   define HAVE_LONG_FILENAMES(dir)  (0)
 #   define NULL_DEVICE	"NUL"
-#  endif /* !__DJGPP__ */
+#  endif /* O_BINARY && !__DJGPP__ */
 #  define SET_SCREEN_SIZE_HELPER terminal_prep_terminal()
 #  define DEFAULT_INFO_PRINT_COMMAND ">PRN"
-# else   /* !__MSDOS__ */
+# else   /* O_BINARY && !__MSDOS__ */
 #  define setmode(f,m)  _setmode(f,m)
 #  define HAVE_LONG_FILENAMES(dir)   (1)
 #  define NULL_DEVICE	"NUL"
-# endif  /* !__MSDOS__ */
-# define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
-# define FOPEN_RBIN	"rb"
-# define FOPEN_WBIN	"wb"
-# define IS_SLASH(c)	((c) == '/' || (c) == '\\')
-# define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')
-# define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || ((n)[0] && (n)[1] == ':'))
+# endif  /* O_BINARY && !__MSDOS__ */
+# ifdef __unix__
+#  /* i.e., cygwin */
+#  define DEFAULT_TMPDIR	"/tmp/"
+#  define PATH_SEP	":"
+# else  /* O_BINARY && !__unix__ */
+#  define DEFAULT_TMPDIR	"c:/"
+#  define PATH_SEP	";"
+# endif /* O_BINARY && !__unix__ */
+  /* Back to any O_BINARY system.  */
 # define FILENAME_CMP	strcasecmp
 # define FILENAME_CMPN	strncasecmp
-# define PATH_SEP	";"
-# define STRIP_DOT_EXE	1
-# define DEFAULT_TMPDIR	"c:/"
+# define FOPEN_RBIN	"rb"
+# define FOPEN_WBIN	"wb"
+# define HAVE_DRIVE(n)	((n)[0] && (n)[1] == ':')
+# define IS_SLASH(c)	((c) == '/' || (c) == '\\')
+# define IS_ABSOLUTE(n)	(IS_SLASH((n)[0]) || ((n)[0] && (n)[1] == ':'))
 # define PIPE_USE_FORK	0
-#else  /* not O_BINARY */
+# define SET_BINARY(f)  do {if (!isatty(f)) setmode(f,O_BINARY);} while(0)
+# define STRIP_DOT_EXE	1
+
+#else  /* not O_BINARY, i.e., Unix */
 # define SET_BINARY(f)	(void)0
 # define FOPEN_RBIN	"r"
 # define FOPEN_WBIN	"w"
@@ -235,12 +247,8 @@ extern int strcoll ();
 # define PIPE_USE_FORK	1
 #endif /* not O_BINARY */
 
-/* DJGPP supports /dev/null, which is okay for Unix aficionados,
-   shell scripts and Makefiles, but interactive DOS die-hards
-   would probably want to have NUL as well.  */
-#ifdef __DJGPP__
-# define ALSO_NULL_DEVICE  "NUL"
-#else
+/* Everything but DJGPP.  */
+#ifndef ALSO_NULL_DEVICE
 # define ALSO_NULL_DEVICE  ""
 #endif
 
