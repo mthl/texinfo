@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.9 2003-09-15 15:49:07 karl Exp $
+   $Id: session.c,v 1.10 2003-10-27 21:12:40 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -2165,10 +2165,13 @@ info_menu_or_ref_item (window, count, key, builder, ask_p)
                         else if (window->point < refs[which]->start)
                           break;
                       }
-                    if (closest == -1)
-                      which--;
-                    else
-                      which = closest;
+		    if (which > 0)
+		      {
+			if (closest == -1)
+			  which--;
+			else
+			  which = closest;
+		      }
                   }
 
                 defentry = (REFERENCE *)xmalloc (sizeof (REFERENCE));
