@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.21 2002-12-01 14:35:39 karl Exp $
+$Id: NEWS,v 1.22 2002-12-05 20:39:54 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -143,7 +143,8 @@ convenience, here's a url to one of the relevant sections:
     (rather than in addition to) the url for info and dvi output.
   . @footnote works in an @item for a @table.
 * texinfo.tex:
-  . latest version always at ftp://ftp.gnu.org/gnu/texinfo.tex (and mirrors).
+  . latest version always at ftp://ftp.gnu.org/gnu/texinfo/texinfo.tex
+    (and mirrors).
   . implements @macro.
   . implements @paragraphindent (except asis).
   . @emph and @i use true italic type (cmti) instead of slanted (cmsl).
