@@ -1,7 +1,7 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.5 2002-11-12 18:48:52 feloy Exp $
+   $Id: lang.c,v 1.6 2003-03-30 19:07:13 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -665,9 +665,9 @@ cm_special_char (arg)
       else if (strcmp (command, "ae") == 0)
         add_encoded_char ("aelig",  command);
       else if (strcmp (command, "OE") == 0)
-        add_word ("&#140;", command);
+        add_encoded_char ("#140", command);
       else if (strcmp (command, "oe") == 0)
-        add_word ("&#156;", command);
+        add_encoded_char ("#156", command);
       else if (strcmp (command, "AA") == 0)
         add_encoded_char ("Aring", command);
       else if (strcmp (command, "aa") == 0)
