@@ -1,7 +1,8 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.13 2002-11-27 01:10:46 karl Exp $
+   $Id: insertion.c,v 1.14 2003-01-02 23:46:29 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -901,6 +902,7 @@ end_insertion (type)
       current_indent -= default_indentation_increment;
       if (html)
         add_word ("</dl>\n");
+      close_insertion_paragraph ();
       break;
 
     case itemize:
