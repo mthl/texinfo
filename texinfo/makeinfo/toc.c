@@ -1,7 +1,7 @@
 /* toc.c -- table of contents handling.
-   $Id: toc.c,v 1.4 2003-10-29 18:32:17 karl Exp $
+   $Id: toc.c,v 1.5 2003-10-29 18:38:38 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
