@@ -1,3 +1,7 @@
+2004-08-25   Akim Demaille  <akim@epita.fr>
+
+	* util/Makefile.am (texinfo.cat): Fix for srcdir != builddir.
+
 2004-08-25  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: @ is also ok for the first character of xref_files.
