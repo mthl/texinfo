@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.3 2002-11-05 03:04:26 karl Exp $
+   $Id: sectioning.c,v 1.4 2002-11-07 16:13:36 karl Exp $
 
    Copyright (C) 1999, 2001, 2002 Free Software Foundation, Inc.
 
@@ -426,10 +426,6 @@ sectioning_html (level, cmd)
       add_word_args ("%sTOC%d\">", a_name, toc_ref_count++);
       toc_anchor = substring (starting_pos + sizeof (a_name) - 1,
                               output_paragraph + output_paragraph_offset);
-      /* This must be added after toc_anchor is extracted, since
-	 toc_anchor cannot include the closing </a>.  For details,
-	 see toc.c:toc_add_entry and toc.c:contents_update_html.  */
-      add_word ("</a>");
     }
   starting_pos = output_paragraph + output_paragraph_offset;
 
@@ -472,6 +468,8 @@ sectioning_html (level, cmd)
   if (outstanding_node)
     outstanding_node = 0;
 
+  if (!current_node || !*current_node)
+    add_word ("</a>");
   add_word_args ("</h%d>", level + 2);
   close_paragraph();
   filling_enabled = 1;
