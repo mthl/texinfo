@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
+@c $Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3995,9 +3995,9 @@ texi2dvi --texinfo=@@setcontentsaftertitlepage foo.texi
 @section @code{@@bye} File Ending
 @findex bye
 
-An @code{@@bye} command terminates @TeX{} or Info formatting.  None of
-the formatting commands reading anything following @code{@@bye}.  The
-@code{@@bye} command should be on a line by itself.
+An @code{@@bye} command terminates Texinfo processing.  None of the
+formatters read anything following @code{@@bye}.  The @code{@@bye}
+command should be on a line by itself.
 
 If you wish, you may follow the @code{@@bye} line with notes. These
 notes will not be formatted and will not appear in either Info or a
@@ -16784,7 +16784,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
+$Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16849,7 +16849,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
+@@comment $Id: texinfo.txi,v 1.11 2002-11-05 02:40:32 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
