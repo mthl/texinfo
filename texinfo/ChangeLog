@@ -1,5 +1,18 @@
 2004-07-15  Werner Lemberg  <wl@gnu.org>
 
+	* doc/texinfo.tex (\s): New command to typeset text with a slanted
+		font.
+	* doc/texinfo.txi: Document @s.
+
+	* makeinfo/cmds.c (command_table): Add @s.
+	(cm_s): New function.  Currently the same as cm_i -- it probably
+		has to be adapted to Docbook and XML.
+	* makeinfo/cmds.h: Add prototype for cm_s.
+
+	* NEWS: Document new command @s.
+
+2004-07-15  Werner Lemberg  <wl@gnu.org>
+
 	* doc/texinfo.tex (\TeX): Adjust \spacefactor to make it act like a
 		lowercase letter, not like a period.
 
