@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS--Concurrent Versions System v1.11.5.1: 1. Overview</title>
+<title>CVS--Concurrent Versions System v1.12.0.1: 1. Overview</title>
 
-<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: 1. Overview">
-<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: 1. Overview">
+<meta name="description" content="CVS--Concurrent Versions System v1.12.0.1: 1. Overview">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.12.0.1: 1. Overview">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -99,7 +99,7 @@ the work when each developer is done.
 <p><small>CVS</small> started out as a bunch of shell scripts written by
 Dick Grune, posted to the newsgroup
 <code>comp.sources.unix</code> in the volume 6
-release of December, 1986.  While no actual code from
+release of July, 1986.  While no actual code from
 these shell scripts is present in the current version
 of <small>CVS</small> much of the <small>CVS</small> conflict resolution algorithms
 come from them.
@@ -369,7 +369,9 @@ $ cvs commit backend.c
 <p><small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &quot;Added an optimization pass.&quot;,
 save the temporary file, and exit the editor.
-</p><p>The environment variable <code>$CVSEDITOR</code> determines
+</p><a name="IDX9"></a>
+<a name="IDX10"></a>
+<p>The environment variable <code>$CVSEDITOR</code> determines
 which editor is started.  If <code>$CVSEDITOR</code> is not
 set, then if the environment variable <code>$EDITOR</code> is
 set, it will be used. If both <code>$CVSEDITOR</code> and
@@ -377,7 +379,7 @@ set, it will be used. If both <code>$CVSEDITOR</code> and
 which will vary with your operating system, for example
 <code>vi</code> for unix or <code>notepad</code> for Windows
 NT/95.
-</p><a name="IDX9"></a>
+</p><a name="IDX11"></a>
 <p>In addition, <small>CVS</small> checks the <code>$VISUAL</code> environment
 variable.  Opinions vary on whether this behavior is desirable and
 whether future releases of <small>CVS</small> should check <code>$VISUAL</code> or

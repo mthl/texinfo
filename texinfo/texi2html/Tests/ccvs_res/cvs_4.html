@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS--Concurrent Versions System v1.11.5.1: 4. Revisions</title>
+<title>CVS--Concurrent Versions System v1.12.0.1: 4. Revisions</title>
 
-<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: 4. Revisions">
-<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: 4. Revisions">
+<meta name="description" content="CVS--Concurrent Versions System v1.12.0.1: 4. Revisions">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.12.0.1: 4. Revisions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -193,7 +193,7 @@ on how you use <small>CVS</small> the revision numbers might change several time
 between two releases.  As an example, some of the
 source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
-<a name="IDX95"></a>
+<a name="IDX101"></a>
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 ci.c            5.21
 co.c            5.9
@@ -208,12 +208,12 @@ rcslex.c        5.11
 rcsmap.c        5.2
 rcsutil.c       5.10
 </pre></td></tr></table>
-<a name="IDX96"></a>
-<a name="IDX97"></a>
-<a name="IDX98"></a>
-<a name="IDX99"></a>
-<a name="IDX100"></a>
-<a name="IDX101"></a>
+<a name="IDX102"></a>
+<a name="IDX103"></a>
+<a name="IDX104"></a>
+<a name="IDX105"></a>
+<a name="IDX106"></a>
+<a name="IDX107"></a>
 <p>You can use the <code>tag</code> command to give a symbolic name to a
 certain revision of a file.  You can use the `<samp>-v</samp>' flag to the
 <code>status</code> command to see all tags that a file has, and
@@ -238,8 +238,8 @@ then you won't constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
 taginfo file (see section <a href="cvs_8.html#SEC78">User-defined logging</a>).
-</p><a name="IDX102"></a>
-<a name="IDX103"></a>
+</p><a name="IDX108"></a>
+<a name="IDX109"></a>
 <p>The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
@@ -280,8 +280,8 @@ T parser.c
 <p>(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See section <a href="cvs_6.html#SEC65">Recursive behavior</a>.)
-</p><a name="IDX104"></a>
-<a name="IDX105"></a>
+</p><a name="IDX110"></a>
+<a name="IDX111"></a>
 <p>The <code>checkout</code> command has a flag, `<samp>-r</samp>', that lets you check out
 a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module `<samp>tc</samp>' at
@@ -453,12 +453,12 @@ information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
 commands with taginfo (see section <a href="cvs_8.html#SEC78">User-defined logging</a>).</em>
-</p><a name="IDX106"></a>
-<a name="IDX107"></a>
-<a name="IDX108"></a>
-<a name="IDX109"></a>
-<a name="IDX110"></a>
-<a name="IDX111"></a>
+</p><a name="IDX112"></a>
+<a name="IDX113"></a>
+<a name="IDX114"></a>
+<a name="IDX115"></a>
+<a name="IDX116"></a>
+<a name="IDX117"></a>
 <p>To delete a tag, specify the `<samp>-d</samp>' option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
@@ -475,10 +475,10 @@ trigger warnings and will not be deleted.
 <code>-B</code> option, think again and ask your <small>CVS</small> administrator about it (if
 that isn't you).  There is almost certainly another way to accomplish what you
 want to accomplish.</em>
-</p><a name="IDX112"></a>
-<a name="IDX113"></a>
-<a name="IDX114"></a>
-<a name="IDX115"></a>
+</p><a name="IDX118"></a>
+<a name="IDX119"></a>
+<a name="IDX120"></a>
+<a name="IDX121"></a>
 <p>When we say <em>move</em> a tag, we mean to make the same
 name point to different revisions.  For example, the
 <code>stable</code> tag may currently point to revision 1.4
@@ -500,8 +500,8 @@ name are ignored with a warning message.
 <code>-B</code> option, think again and ask your <small>CVS</small> administrator about it (if
 that isn't you).  There is almost certainly another way to accomplish what you
 want to accomplish.</em>
-</p><a name="IDX116"></a>
-<a name="IDX117"></a>
+</p><a name="IDX122"></a>
+<a name="IDX123"></a>
 <p>When we say <em>rename</em> a tag, we mean to make a
 different name point to the same revisions as the old
 tag.  For example, one may have misspelled the tag name
@@ -603,15 +603,16 @@ File: driver.c          Status: Up-to-date
     Sticky Options:     (none)
 
 </pre></td></tr></table>
-<a name="IDX118"></a>
-<a name="IDX119"></a>
-<a name="IDX120"></a>
+<a name="IDX124"></a>
+<a name="IDX125"></a>
+<a name="IDX126"></a>
 <p>The sticky tags will remain on your working files until
 you delete them with `<samp>cvs update -A</samp>'.  The
-`<samp>-A</samp>' option retrieves the version of the file from
-the head of the trunk, and forgets any sticky tags,
-dates, or options.
-</p><a name="IDX121"></a>
+`<samp>-A</samp>' option merges local changes into the version of the
+file from the head of the trunk, removing any sticky tags,
+dates, or options.  See <a href="cvs_16.html#SEC152">update--Bring work tree in sync with repository</a> for more on the operation
+of <code>cvs update</code>.
+</p><a name="IDX127"></a>
 <p>The most common use of sticky tags is to identify which
 branch one is working on, as described in
 <a href="cvs_5.html#SEC57">Accessing branches</a>.  However, non-branch

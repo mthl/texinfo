@@ -301,8 +301,7 @@ as regular Texinfo commands).  This is especially useful for including
 automatically generated output in a Texinfo manual.  Here is an example;
 the output you see is just the same as the input, with a line
 <code>@verbatim</code> before and a line <code>@end verbatim</code> after.
-</p><pre>
-This is an example of text written in a @verbatim
+</p><pre>This is an example of text written in a @verbatim
 block.  No character substitutions are made.  All commands
 are ignored, until `&lt;at&gt;end verbatim'.
 
@@ -310,7 +309,6 @@ In the printed manual, the text is typeset in a
 fixed-width font, and not indented or filled.  All
 spaces and blank lines are significant, including tabs.
 </pre>
-
 <p>Write a <code>@verbatim</code> command at the beginning of a line by itself.
 This line will disappear from the output.  Mark the end of the verbatim
 block with a <code>@end verbatim</code> command, also written at the
@@ -326,13 +324,11 @@ expand&lt;tab&gt;me
 @end verbatim
 </pre></td></tr></table>
 <p>produces
-</p><pre>
-{
+</p><pre>{
 	@command with strange characters: @'e 
 expand	me
 }
 </pre>
-
 <p>Since the lines containing <code>@verbatim</code> and <code>@end verbatim</code>
 produce no output, tyically you should put a blank line before the
 <code>@verbatim</code> and another blank line after the <code>@end

@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS--Concurrent Versions System v1.11.5.1: D. All environment variables which affect CVS</title>
+<title>CVS--Concurrent Versions System v1.12.0.1: D. All environment variables which affect CVS</title>
 
-<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: D. All environment variables which affect CVS">
-<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: D. All environment variables which affect CVS">
+<meta name="description" content="CVS--Concurrent Versions System v1.12.0.1: D. All environment variables which affect CVS">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.12.0.1: D. All environment variables which affect CVS">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,20 +43,20 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 that affect <small>CVS</small>.
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX292"></a>
+<a name="IDX310"></a>
 </p></dd>
 <dt><code> $CVSIGNORE
 </code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should ignore. See section <a href="cvs_18.html#SEC175">Ignoring files via cvsignore</a>.
-</p><a name="IDX293"></a>
+</p><a name="IDX311"></a>
 </dd>
 <dt><code> $CVSWRAPPERS
 </code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
 <small>CVS</small> should treat as wrappers. See section <a href="cvs_18.html#SEC164">The cvswrappers file</a>.
-</p><a name="IDX294"></a>
-<a name="IDX295"></a>
+</p><a name="IDX312"></a>
+<a name="IDX313"></a>
 </dd>
 <dt><code> $CVSREAD
 </code></dt>
@@ -64,6 +64,16 @@ that affect <small>CVS</small>.
 try hard to make the files in your working directory
 read-only.  When this is not set, the default behavior
 is to permit modification of your working files.
+</p><a name="IDX314"></a>
+</dd>
+<dt><code> $CVSREADONLYFS
+</code></dt>
+<dd><p>Turns on read-only repository mode. This allows one to
+check out from a read-only repository, such as within
+an anoncvs server, or from a CDROM repository.
+</p><p>It has the same effect as if the `<samp>-R</samp>' command-line
+option is used. This can also allow the use of
+read-only NFS repositories.
 </p></dd>
 <dt><code> $CVSUMASK
 </code></dt>
@@ -84,31 +94,39 @@ the file `<tt>CVS/Root</tt>'), so normally you only need to
 worry about this when initially checking out a working
 directory.
 </p></dd>
-<dt><code> $EDITOR
-</code></dt>
 <dt><code> $CVSEDITOR
 </code></dt>
+<dd><p><a name="IDX315"></a>
+</p></dd>
+<dt><code> $EDITOR
+</code></dt>
+<dd><p><a name="IDX316"></a>
+</p></dd>
 <dt><code> $VISUAL
 </code></dt>
-<dd><p>Specifies the program to use for recording log messages
+<dd><p><a name="IDX317"></a>
+Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
-<code>$EDITOR</code>.  See <a href="cvs_1.html#SEC6">Committing your changes</a>.
-</p><a name="IDX296"></a>
+<code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
+See <a href="cvs_1.html#SEC6">Committing your changes</a> for more or
+<a href="cvs_16.html#SEC117">Global options</a> for alternative ways of specifying a
+log editor.
+</p><a name="IDX318"></a>
 </dd>
 <dt><code> $PATH
 </code></dt>
 <dd><p>If <code>$RCSBIN</code> is not set, and no path is compiled
 into <small>CVS</small>, it will use <code>$PATH</code> to try to find all
 programs it uses.
-</p><a name="IDX297"></a>
+</p><a name="IDX319"></a>
 </dd>
 <dt><code> $HOME
 </code></dt>
-<dd><p><a name="IDX298"></a>
+<dd><p><a name="IDX320"></a>
 </p></dd>
 <dt><code> $HOMEPATH
 </code></dt>
-<dd><p><a name="IDX299"></a>
+<dd><p><a name="IDX321"></a>
 </p></dd>
 <dt><code> $HOMEDRIVE
 </code></dt>
@@ -118,7 +136,7 @@ just checks for <code>HOME</code>.  On Windows NT, the system will
 set <code>HOMEDRIVE</code>, for example to `<samp>d:</samp>' and <code>HOMEPATH</code>,
 for example to `<tt>\joe</tt>'.  On Windows 95, you'll
 probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
-</p><a name="IDX300"></a>
+</p><a name="IDX322"></a>
 </dd>
 <dt><code> $CVS_RSH
 </code></dt>
@@ -145,18 +163,18 @@ see section <a href="cvs_2.html#SEC31">Using the client with password authentica
 </p></dd>
 <dt><code> $CVS_CLIENT_PORT
 </code></dt>
-<dd><p>Used in client-server mode when accessing the server
-via Kerberos, GSSAPI, or <small>CVS</small>'s password authentication if the port is not
-specified in $CVSROOT.
+<dd><p>Used in client-server mode to set the port to use when accessing the server
+via Kerberos, GSSAPI, or <small>CVS</small>'s password authentication protocol
+if the port is not specified in the CVSROOT.
 see section <a href="cvs_2.html#SEC26">Remote repositories</a>
-</p><a name="IDX301"></a>
+</p><a name="IDX323"></a>
 </dd>
 <dt><code> $CVS_RCMD_PORT
 </code></dt>
 <dd><p>Used in client-server mode.  If set, specifies the port
 number to be used when accessing the <small>RCMD</small> demon on
 the server side. (Currently not used for Unix clients).
-</p><a name="IDX302"></a>
+</p><a name="IDX324"></a>
 </dd>
 <dt><code> $CVS_CLIENT_LOG
 </code></dt>
@@ -165,7 +183,7 @@ mode.  If set, everything sent to the server is logged
 into `<tt><code>$CVS_CLIENT_LOG</code>.in</tt>' and everything
 sent from the server is logged into
 `<tt><code>$CVS_CLIENT_LOG</code>.out</tt>'.
-</p><a name="IDX303"></a>
+</p><a name="IDX325"></a>
 </dd>
 <dt><code> $CVS_SERVER_SLEEP
 </code></dt>
@@ -173,7 +191,7 @@ sent from the server is logged into
 client-server mode.  If set, delays the start of the
 server child process the specified amount of
 seconds so that you can attach to it with a debugger.
-</p><a name="IDX304"></a>
+</p><a name="IDX326"></a>
 </dd>
 <dt><code> $CVS_IGNORE_REMOTE_ROOT
 </code></dt>
@@ -183,25 +201,36 @@ file when the `<samp>-d</samp>' global option is specified.
 Later versions of <small>CVS</small> do not rewrite
 `<tt>CVS/Root</tt>', so <code>CVS_IGNORE_REMOTE_ROOT</code> has no
 effect.
-</p><a name="IDX305"></a>
+</p><a name="IDX327"></a>
+</dd>
+<dt><code> $CVS_LOCAL_BRANCH_NUM
+</code></dt>
+<dd><p>Setting this variable allows some control over the
+branch number that is assigned. This is specifically to
+support the local commit feature of CVSup. If one sets
+<code>CVS_LOCAL_BRANCH_NUM</code> to (say) 1000 then branches
+the local repository, the revision numbers will look
+like 1.66.1000.xx. There is almost a dead-set certainty
+that there will be no conflicts with version numbers.
+</p><a name="IDX328"></a>
 </dd>
 <dt><code> $COMSPEC
 </code></dt>
 <dd><p>Used under OS/2 only.  It specifies the name of the
 command interpreter and defaults to <small>CMD.EXE</small>.
-</p><a name="IDX306"></a>
+</p><a name="IDX329"></a>
 </dd>
 <dt><code> $TMPDIR
 </code></dt>
-<dd><p><a name="IDX307"></a>
+<dd><p><a name="IDX330"></a>
 </p></dd>
 <dt><code> $TMP
 </code></dt>
-<dd><p><a name="IDX308"></a>
+<dd><p><a name="IDX331"></a>
 </p></dd>
 <dt><code> $TEMP
 </code></dt>
-<dd><p><a name="IDX309"></a>
+<dd><p><a name="IDX332"></a>
 Directory in which temporary files are located.
 The <small>CVS</small> server uses
 <code>TMPDIR</code>.  See section <a href="cvs_16.html#SEC117">Global options</a>, for a
@@ -216,6 +245,15 @@ client uses <code>TMPDIR</code>, and if it is not set, uses
 if your server and client are both running <small>CVS</small>
 1.9.10 or later, <small>CVS</small> will not invoke an external
 <code>patch</code> program.
+</p><a name="IDX333"></a>
+</dd>
+<dt><code> $CVS_PID
+</code></dt>
+<dd><p>This is the process identification (aka pid) number of
+the <small>CVS</small> process. It is often useful in the
+programs and/or scripts specified by the
+`<tt>commitinfo</tt>', `<tt>verifymsg</tt>', `<tt>loginfo</tt>'
+files.
 </p></dd>
 </dl>
 

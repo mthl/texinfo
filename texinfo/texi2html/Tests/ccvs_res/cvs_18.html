@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CVS--Concurrent Versions System v1.11.5.1: C. Reference manual for Administrative files</title>
+<title>CVS--Concurrent Versions System v1.12.0.1: C. Reference manual for Administrative files</title>
 
-<meta name="description" content="CVS--Concurrent Versions System v1.11.5.1: C. Reference manual for Administrative files">
-<meta name="keywords" content="CVS--Concurrent Versions System v1.11.5.1: C. Reference manual for Administrative files">
+<meta name="description" content="CVS--Concurrent Versions System v1.12.0.1: C. Reference manual for Administrative files">
+<meta name="keywords" content="CVS--Concurrent Versions System v1.12.0.1: C. Reference manual for Administrative files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -322,22 +322,22 @@ options, which supply additional information concerning
 the module.
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX248"></a>
+<a name="IDX257"></a>
 </p></dd>
 <dt><code> -d <var>name</var>
 </code></dt>
 <dd><p>Name the working directory something other than the
 module name.
-</p><a name="IDX249"></a>
-<a name="IDX250"></a>
+</p><a name="IDX258"></a>
+<a name="IDX259"></a>
 </dd>
 <dt><code> -e <var>prog</var>
 </code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are exported.  <var>prog</var> runs with a single
 argument, the module name.
-</p><a name="IDX251"></a>
-<a name="IDX252"></a>
+</p><a name="IDX260"></a>
+<a name="IDX261"></a>
 </dd>
 <dt><code> -i <var>prog</var>
 </code></dt>
@@ -346,18 +346,20 @@ module are committed.  <var>prog</var> runs with a single
 argument, the full pathname of the affected directory
 in a source repository.  The `<tt>commitinfo</tt>',
 `<tt>loginfo</tt>', and `<tt>verifymsg</tt>' files provide other
-ways to call a program on commit.
-</p><a name="IDX253"></a>
-<a name="IDX254"></a>
+ways to call a program on commit.  See <a href="#SEC163">How the modules file &quot;program options&quot; programs are run</a> for
+information on how <var>prog</var> is called.
+</p><a name="IDX262"></a>
+<a name="IDX263"></a>
 </dd>
 <dt><code> -o <var>prog</var>
 </code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
-argument, the module name.
-</p><a name="IDX255"></a>
-<a name="IDX256"></a>
-<a name="IDX257"></a>
+argument, the module name.  See <a href="#SEC163">How the modules file &quot;program options&quot; programs are run</a> for
+information on how <var>prog</var> is called.
+</p><a name="IDX264"></a>
+<a name="IDX265"></a>
+<a name="IDX266"></a>
 </dd>
 <dt><code> -s <var>status</var>
 </code></dt>
@@ -368,8 +370,8 @@ secondarily according to the module name.  This option
 has no other meaning.  You can use this option for
 several things besides status: for instance, list the
 person that is responsible for this module.
-</p><a name="IDX258"></a>
-<a name="IDX259"></a>
+</p><a name="IDX267"></a>
+<a name="IDX268"></a>
 </dd>
 <dt><code> -t <var>prog</var>
 </code></dt>
@@ -379,8 +381,8 @@ with two arguments: the module name and the symbolic
 tag specified to <code>rtag</code>.  It is not run
 when <code>tag</code> is executed.  Generally you will find
 that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-defined logging</a>).
-</p><a name="IDX260"></a>
-<a name="IDX261"></a>
+</p><a name="IDX269"></a>
+<a name="IDX270"></a>
 </dd>
 <dt><code> -u <var>prog</var>
 </code></dt>
@@ -388,7 +390,8 @@ that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-d
 update</samp>' is executed from the top-level directory of the
 checked-out module.  <var>prog</var> runs with a single
 argument, the full path to the source repository for
-this module.
+this module.  See <a href="#SEC163">How the modules file &quot;program options&quot; programs are run</a> for
+information on how <var>prog</var> is called.
 </p></dd>
 </dl>
 
@@ -419,14 +422,25 @@ directory. The path is searched for this program.
 repository set just to a path),
 the program will be executed from the newly checked-out tree, if
 found there, or alternatively searched for in the path if not.
-</p><p>The commit and update programs are locally-based, and are run as
+</p><a name="IDX271"></a>
+<a name="IDX272"></a>
+<a name="IDX273"></a>
+<a name="IDX274"></a>
+<a name="IDX275"></a>
+<a name="IDX276"></a>
+<a name="IDX277"></a>
+<a name="IDX278"></a>
+<p>The commit and update programs are locally-based, and are run as
 follows:-
-</p><p>The program is always run locally. One must
+</p><p>The program is run locally in local mode and in a copy of the sandbox in on
+the server in client/server mode.  One must
 re-checkout the tree one is using if these options are updated in the
 modules administrative file. The file CVS/Checkin.prog contains the
 value of the option `-i' set in the modules file, and similarly for
-the file CVS/Update.prog and `-u'. The program is always executed from
-the top level of the checked-out copy on the client. Again, the program
+the file CVS/Update.prog and `-u' (see section <a href="#SEC162">Module options</a>). The program is
+executed from
+the current working directory on the client and the top level of
+the copy of the sandbox created on the server.  Again, the program
 is first searched for in the checked-out copy and then using the path.
 </p><p>The programs are all run after the operation has effectively
 completed.
@@ -577,7 +591,7 @@ imagination is the limit!
 all have a common format.  The purpose of the files are
 described later on.  The common syntax is described
 here.
-</p><a name="IDX262"></a>
+</p><a name="IDX279"></a>
 <p>Each line contains the following:
 </p><ul>
 <li><p>
@@ -627,21 +641,21 @@ supply to it.  The full path to the current source
 repository is appended to the template, followed by the
 file names of any files involved in the commit (added,
 removed, and modified files).
-</p><a name="IDX263"></a>
+</p><a name="IDX280"></a>
 <p>The first line with a regular expression matching the
 directory within the repository will be used.  If the
 command returns a non-zero exit status the commit will
 be aborted.
-</p><a name="IDX264"></a>
+</p><a name="IDX281"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-</p><a name="IDX265"></a>
+</p><a name="IDX282"></a>
 <p>All occurrences of the name `<samp>ALL</samp>' appearing as a
 regular expression are used in addition to the first
 matching regular expression or the name `<samp>DEFAULT</samp>'.
-</p><a name="IDX266"></a>
-<a name="IDX267"></a>
+</p><a name="IDX283"></a>
+<a name="IDX284"></a>
 <p>The command will be run in the root of the workspace
 containing the new versions of any files the user would like
 to modify (commit), <em>or in a copy of the workspace on
@@ -692,14 +706,14 @@ keyword is not supported.  If more than one matching
 line is found, the first one is used.  This can be
 useful for specifying a default verification script in a
 directory, and then overriding it in a subdirectory.
-</p><a name="IDX268"></a>
+</p><a name="IDX285"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-</p><a name="IDX269"></a>
+</p><a name="IDX286"></a>
 <p>If the verification script exits with a non-zero exit status,
 the commit is aborted.
-</p><a name="IDX270"></a>
+</p><a name="IDX287"></a>
 <p>In the default configuration, CVS allows the
 verification script to change the log message. This is
 controlled via the RereadLogAfterVerify CVSROOT/config
@@ -834,7 +848,7 @@ keyword is not supported.  If more than one matching
 line is found, the first one is used.  This can be
 useful for specifying a default edit script in a
 module, and then overriding it in a subdirectory.
-</p><a name="IDX271"></a>
+</p><a name="IDX288"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
@@ -1105,10 +1119,15 @@ template.
 file.
 </p><p>When <small>CVS</small> is accessing a remote repository,
 the contents of `<tt>rcsinfo</tt>' at the time a directory
-is first checked out will specify a template which does
-not then change.  If you edit `<tt>rcsinfo</tt>' or its
-templates, you may need to check out a new working
-directory.
+is first checked out will specify a template. This
+template will be updated on all `<samp>cvs update</samp>'
+commands. It will also be added to new directories
+added with a `<samp>cvs add new-directry</samp>' command.
+In versions of <small>CVS</small> prior to version 1.12, the
+`<tt>CVS/Template</tt>' file was not updated. If the
+<small>CVS</small> server is at version 1.12 or higher an older
+client may be used and the `<tt>CVS/Template</tt>' will
+be updated from the server.
 </p><hr size="6">
 <a name="NOD173"></a>
 <a name="SEC175"></a>
@@ -1146,8 +1165,8 @@ archive files, and editor backup files; and other names
 that are usually artifacts of assorted utilities.
 Currently, the default list of ignored file name
 patterns is:
-</p><a name="IDX272"></a>
-<a name="IDX273"></a>
+</p><a name="IDX289"></a>
+<a name="IDX290"></a>
 <table><tr><td>&nbsp;</td><td class="example"><pre>
     RCS     SCCS    CVS     CVS.adm
     RCSLOG  cvslog.*
@@ -1321,7 +1340,7 @@ internal variables are:
 </p><dl compact="compact">
 <dt><code> CVSROOT
 </code></dt>
-<dd><p><a name="IDX274"></a>
+<dd><p><a name="IDX291"></a>
 This is the absolute path to the current <small>CVS</small> root directory.
 See section <a href="cvs_2.html#SEC9">The Repository</a>, for a description of the various
 ways to specify this, but note that the internal
@@ -1330,7 +1349,7 @@ of the access method information.
 </p></dd>
 <dt><code> RCSBIN
 </code></dt>
-<dd><p><a name="IDX275"></a>
+<dd><p><a name="IDX292"></a>
 In <small>CVS</small> 1.9.18 and older, this specified the
 directory where <small>CVS</small> was looking for <small>RCS</small>
 programs.  Because <small>CVS</small> no longer runs <small>RCS</small>
@@ -1339,22 +1358,22 @@ error.
 </p></dd>
 <dt><code> CVSEDITOR
 </code></dt>
-<dd><p><a name="IDX276"></a>
-</p></dd>
-<dt><code> VISUAL
-</code></dt>
-<dd><p><a name="IDX277"></a>
+<dd><p><a name="IDX293"></a>
 </p></dd>
 <dt><code> EDITOR
 </code></dt>
-<dd><p><a name="IDX278"></a>
+<dd><p><a name="IDX294"></a>
+</p></dd>
+<dt><code> VISUAL
+</code></dt>
+<dd><p><a name="IDX295"></a>
 These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section <a href="cvs_16.html#SEC117">Global options</a>, for how
 to specify this.
 </p></dd>
 <dt><code> USER
 </code></dt>
-<dd><p><a name="IDX279"></a>
+<dd><p><a name="IDX296"></a>
 Username of the user running <small>CVS</small> (on the <small>CVS</small>
 server machine).
 When using pserver, this is the user specified in the repository
@@ -1367,7 +1386,7 @@ Do not confuse this with the environment variable of the same name.
 <p>If you want to pass a value to the administrative files
 which the user who is running <small>CVS</small> can specify,
 use a user variable.
-<a name="IDX280"></a>
+<a name="IDX297"></a>
 To expand a user variable, the
 administrative file contains
 <code>${=<var>variable</var>}</code>.  To set a user variable,
@@ -1392,11 +1411,11 @@ there is no way to quote a `<samp>$</samp>' character so that
 </p><p>Environment variables passed to administrative files are:
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX281"></a>
+<a name="IDX298"></a>
 </p></dd>
 <dt><code> CVS_USER
 </code></dt>
-<dd><p><a name="IDX282"></a>
+<dd><p><a name="IDX299"></a>
 The <small>CVS</small>-specific username provided by the user, if it
 can be provided (currently just for the pserver access
 method), and to the empty string otherwise.  (<code>CVS_USER</code>
@@ -1405,12 +1424,12 @@ is used to map <small>CVS</small> usernames to system usernames.)
 </p></dd>
 <dt><code> LOGNAME
 </code></dt>
-<dd><p><a name="IDX283"></a>
+<dd><p><a name="IDX300"></a>
 The username of the system user.
 </p></dd>
 <dt><code> USER
 </code></dt>
-<dd><p><a name="IDX284"></a>
+<dd><p><a name="IDX301"></a>
 Same as <code>LOGNAME</code>.
 Do not confuse this with the internal variable of the same name.
 </p></dd>
@@ -1444,7 +1463,7 @@ Extraneous spaces or tabs are not permitted.
 </p><p>Currently defined keywords are:
 </p><dl compact="compact">
 <dd><p>
-<a name="IDX285"></a>
+<a name="IDX302"></a>
 </p></dd>
 <dt><code> RCSBIN=<var>bindir</var>
 </code></dt>
@@ -1453,7 +1472,7 @@ Extraneous spaces or tabs are not permitted.
 <var>bindir</var> directory.  Current versions of <small>CVS</small>
 do not run <small>RCS</small> programs; for compatibility this
 setting is accepted, but it does nothing.
-</p><a name="IDX286"></a>
+</p><a name="IDX303"></a>
 </dd>
 <dt><code> SystemAuth=<var>value</var>
 </code></dt>
@@ -1463,7 +1482,7 @@ for users in the system's user database if not found in
 pserver users must exist in `<tt>CVSROOT/passwd</tt>'.
 The default is `<samp>yes</samp>'.  For more on pserver, see
 <a href="cvs_2.html#SEC29">Direct connection with password authentication</a>.
-</p><a name="IDX287"></a>
+</p><a name="IDX304"></a>
 </dd>
 <dt><code> TopLevelAdmin=<var>value</var>
 </code></dt>
@@ -1479,7 +1498,7 @@ subdirectories.  The `<tt>CVS</tt>' directory created there
 will mean you don't have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
 `<tt>CVS/Template</tt>' file (see section <a href="cvs_2.html#SEC19">How data is stored in the working directory</a>).
-</p><a name="IDX288"></a>
+</p><a name="IDX305"></a>
 </dd>
 <dt><code> LockDir=<var>directory</var>
 </code></dt>
@@ -1505,7 +1524,7 @@ put them another place, and therefore the repository
 could become corrupted.  <small>CVS</small> 1.10 does not support
 LockDir but it will print a warning if run on a
 repository with LockDir enabled.
-</p><a name="IDX289"></a>
+</p><a name="IDX306"></a>
 </dd>
 <dt><code> LogHistory=<var>value</var>
 </code></dt>
@@ -1514,8 +1533,8 @@ Default of `<samp>TOEFWUCGMAR</samp>' (or simply `<samp>all</samp>') will log
 all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
 `<tt>*,v</tt>' files, use `<samp>LogHistory=TMAR</samp>'.)
-</p><a name="IDX290"></a>
-<a name="IDX291"></a>
+</p><a name="IDX307"></a>
+<a name="IDX308"></a>
 </dd>
 <dt><code> RereadLogAfterVerify=<var>value</var>
 </code></dt>
@@ -1533,6 +1552,28 @@ one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</em>
 </p><p>See section <a href="#SEC168">Verifying log messages</a>, for more information on how verifymsg
 may be used.
+</p><a name="IDX309"></a>
+</dd>
+<dt><code> UserAdminOptions=<var>value</var>
+</code></dt>
+<dd><p>Control what options will be allowed with the <code>cvs admin</code>
+command (see section <a href="cvs_16.html#SEC119">admin--Administration</a>) for users not in the <code>cvsadmin</code> group.
+The <var>value</var> string is a list of single character options
+which should be allowed.  If a user who is not a member of the
+<code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
+option which is not listed they will will receive an error message
+reporting that the option is restricted.
+</p><p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
+ignore the <code>UserAdminOptions</code> keyword (see section <a href="cvs_16.html#SEC119">admin--Administration</a>).
+</p><p>When not specified, <code>UserAdminOptions</code> defaults to
+`<samp>k</samp>'.  In other words, it defaults to allowing
+users outside of the <code>cvsadmin</code> group to use the
+<code>cvs admin</code> command only to change the default keyword
+expansion mode for files.
+</p><p>As an example, to restrict users not in the <code>cvsadmin</code>
+group to using <code>cvs admin</code> to change the default keyword
+substitution mode, lock revisions, unlock revisions, and
+replace the log message, use `<samp>UserAdminOptions=klum</samp>'.
 </p></dd>
 </dl>
 

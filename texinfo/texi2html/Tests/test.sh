@@ -136,6 +136,9 @@ test_texi macros
 test_texi macros simple_macro.texi
 test_texi macros pass0_macros.texi
 test_texi sectionning
+test_texi sectionning first_section_no_node.texi
+test_texi sectionning nodes_before_top.texi
+test_texi sectionning nodes_test.texi
 test_texi formatting imbrications.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html

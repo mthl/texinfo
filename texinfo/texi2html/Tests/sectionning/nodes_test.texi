@@ -1,0 +1,27 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename nodes_test
+
+Garbage
+
+@node first,node1,lop,lop
+@c @subsection s1
+node in first but not the first...
+
+@node lop, first, ,(gcc) 
+@top
+
+@menu
+* first::
+* node1::
+@end menu
+
+@node Top
+This is the top node...
+
+@node node1
+@unnumbered
+node1 text
+
+
+@bye

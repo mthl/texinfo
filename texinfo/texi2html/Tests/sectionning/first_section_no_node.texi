@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename first_section_no_node
+
+Garbage
+
+@node Top
+Top node
+
+@node second node
+
+second node
+
+@bye
