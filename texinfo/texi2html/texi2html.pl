@@ -343,11 +343,11 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.3 2001-05-01 21:33:44 dprice Exp $
+# $Id: texi2html.pl,v 1.4 2001-09-18 22:25:46 dprice Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = <<EOT;
-http://www.mathematik.uni-kl.de/~obachman/Texi2html
+http://texi2html.cvshome.org
 EOT
 
 # Authors:  
@@ -356,13 +356,13 @@ Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
             Olaf Bachmann <obachman\@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman\@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html\@mathematik.uni-kl.de>
+Maintained by: Many creative people <dev\@texi2html.cvshome.org>
+Send bugs and suggestions to <users\@texi2html.cvshome.org>
 EOT
 
 # Address:
 $T2H_ADDRESS = <<EOT;
-<a href=\"../index.html\">Olaf Bachmann</a>
+by an unknown user
 EOT
 
 # Version: set in configure.in
