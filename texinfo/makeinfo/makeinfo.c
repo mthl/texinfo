@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.21 2003-03-06 14:05:30 karl Exp $
+   $Id: makeinfo.c,v 1.22 2003-03-07 19:22:53 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -836,7 +836,7 @@ self_delimiting (character)
 {
   /* @; and @\ are not Texinfo commands, but they are listed here
      anyway.  I don't know why.  --karl, 10aug96.  */
-  return strchr ("~{|}`^\\@?=;:.-,*\'\" !\n\t", character) != NULL;
+  return strchr ("~{|}`^\\@?=;:./-,*\'\" !\n\t", character) != NULL;
 }
 
 /* Clear whitespace from the front and end of string. */

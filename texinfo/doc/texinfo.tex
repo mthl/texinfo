@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-03-07.05}
+\def\texinfoversion{2003-03-07.10}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -71,11 +71,11 @@
 \message{Basics,}
 \chardef\other=12
 
-% We never want plain's outer \+ definition in Texinfo.
+% We never want plain's \outer definition of \+ in Texinfo.
 % For @tex, we can use \tabalign.
 \let\+ = \relax
 
-% Save some parts of plain tex whose names we will redefine.
+% Save some plain tex macros whose names we will redefine.
 \let\ptexb=\b
 \let\ptexbullet=\bullet
 \let\ptexc=\c
@@ -92,6 +92,7 @@
 \let\ptexless=<
 \let\ptexplus=+
 \let\ptexrbrace=\}
+\let\ptexslash=\/
 \let\ptexstar=\*
 \let\ptext=\t
 
@@ -536,6 +537,9 @@
 
 % @* forces a line break.
 \def\*{\hfil\break\hbox{}\ignorespaces}
+
+% @/ allows a line break.
+\let\/=\allowbreak
 
 % @. is an end-of-sentence period.
 \def\.{.\spacefactor=3000 }
@@ -4429,6 +4433,7 @@ width0pt\relax} \fi
   \let\{=\ptexlbrace
   \let\+=\tabalign
   \let\}=\ptexrbrace
+  \let\/=\ptexslash
   \let\*=\ptexstar
   \let\t=\ptext
   %

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
+@c $Id: texinfo.txi,v 1.31 2003-03-07 19:22:12 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6441,13 +6441,19 @@ is the url itself); in Info and DVI output, but not in HTML output, the
 url is also output.
 
 @cindex Man page, reference to
-The third argument, on the other hand, if specified is also the text to
-display, but the url is @emph{not} output in any format.  This is useful
-when the text is already sufficiently referential, as in a man page.  If
+The third argument, if specified, is the text to display, but in this
+case the url is @emph{not} output in any format.  This is useful when
+the text is already sufficiently referential, as in a man page.  If
 the third argument is given, the second argument is ignored.
 
-The simple one argument form, where the url is both the target and the
-text of the link:
+If the url is long enough to cause problems with line breaking, you
+may find it useful to insert @code{@@/} at places where a line break
+would be acceptable (after @samp{/} characters, for instance).  This
+tells @TeX{} to allow (but not force) a line break at those places.
+@xref{Line Breaks}.
+
+Here is an example of the simple one argument form, where the url is
+both the target and the text of the link:
 
 @example
 The official GNU ftp site is @@uref@{ftp://ftp.gnu.org/gnu@}.
@@ -6509,11 +6515,11 @@ Some people prefer to display url's in the unambiguous format:
 @end display
 
 @noindent
-@cindex <URL convention, not used
+@cindex <URL: convention, not used
 You can use this form in the input file if you wish.  We feel it's not
-necessary to clutter up the output with the extra @samp{<URL:} and
-@samp{>}, since any software that tries to detect url's in text already
-has to detect them without the @samp{<URL:} to be useful.
+necessary to include the @samp{<URL:} and @samp{>} in the output,
+since any software that tries to detect url's in text already has to
+detect them without the @samp{<URL:} to be useful.
 
 
 @node Marking Text
@@ -10467,23 +10473,24 @@ Start a new printed page if not enough space on this one.
 
 
 @node Line Breaks
-@section @code{@@*}: Generate Line Breaks
+@section @code{@@*} and @code{@@/}: Generate and Allow Line Breaks
 @findex * @r{(force line break)}
+@findex / @r{(allow line break)}
 @cindex Line breaks
 @cindex Breaks in a line
+@cindex Force line break
+@cindex Allow line break
 
 The @code{@@*} command forces a line break in both the printed manual and
-in Info.@refill
+in Info.  The @code{@@/} command allows a line break (printed manual only).
 
-@need 700
-For example,
+Here is an example with @code{@@*}:
 
 @example
 This line @@* is broken @@*in two places.
 @end example
 
-@noindent
-produces
+@noindent produces
 
 @example
 @group
@@ -10493,23 +10500,29 @@ in two places.
 @end group
 @end example
 
-The @code{@@*} command is often used in a file's copyright page:
-
-@example
-@group
-This is edition 2.0 of the Texinfo documentation,@@*
-and is for @dots{}
-@end group
-@end example
-
-@noindent
-In this case, the @code{@@*} command keeps @TeX{} from stretching the
-line across the whole page in an ugly manner.
-
 Do not write an @code{@@refill} command at the end of a paragraph
 containing an @code{@@*} command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
-break.@refill
+break.  @xref{Refilling Paragraphs}.
+
+The @code{@@/} command can be useful within a url
+(@pxref{uref,,@code{@@uref}}), which tend to be long and are otherwise
+unbreakable.  For example:
+
+@example
+The official Texinfo home page is on the GNU web site:
+@@uref@{http://www.gnu.org/@@/software/@@/gnu/@@/texinfo@}.
+@end example
+
+@noindent produces
+
+@display
+The official Texinfo home page is on the GNU web site:
+@uref{http://www.gnu.org/@/software/@/gnu/@/texinfo}.
+@end display
+
+@noindent Without the @code{@@/} commands, @TeX{} would have nowhere to
+break the line.  @code{@@/} has no effect in the online output.
 
 
 @node - and hyphenation
@@ -15213,6 +15226,9 @@ Insert a discretionary hyphenation point.  @xref{- and hyphenation}.
 Produce a period that really does end a sentence (usually after an
 end-of-sentence capital letter).  @xref{Ending a Sentence}.
 
+@item @/
+Produces no output, but allows a line break.  @xref{Line Breaks}.
+
 @item @@:
 Indicate to @TeX{} that an immediately preceding period, question
 mark, exclamation mark, or colon does not end a sentence.  Prevent
@@ -16853,7 +16869,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
+$Id: texinfo.txi,v 1.31 2003-03-07 19:22:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16916,7 +16932,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.31 2003-03-07 19:22:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

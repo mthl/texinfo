@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.16 2003-01-12 15:18:24 karl Exp $
+   $Id: cmds.c,v 1.17 2003-03-07 19:22:52 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -94,6 +94,7 @@ COMMAND command_table[] = {
   { ",", cm_accent_cedilla, MAYBE_BRACE_ARGS },
   { "-", cm_no_op, NO_BRACE_ARGS },
   { ".", insert_self, NO_BRACE_ARGS },
+  { "/", cm_no_op, NO_BRACE_ARGS },
   { ":", cm_no_op, NO_BRACE_ARGS },
   { "=", cm_accent, MAYBE_BRACE_ARGS },
   { "?", insert_self, NO_BRACE_ARGS },

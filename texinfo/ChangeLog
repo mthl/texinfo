@@ -1,3 +1,14 @@
+2003-03-07    <karl@gnu.org>
+
+	* doc/texinfo.tex (\/): new command to allow a line break.
+	(\ptexslash): for saving/restoring primitive \/ in @tex.
+	* makeinfo/cmds.c (command_table): add "/" (as cm_no_op).
+	* makeinfo/makeinfo.c (self_delimiting): add /.
+	* doc/texinfo.txi (Line Breaks, Command Summary): document it.
+	Suggestion from wl.
+
+	* doc/texinfo.tex (\hyphenation): time-stamp.
+
 2003-03-06    <karl@gnu.org>
 
 	* info/session.c (nearest_xref): new fn.
