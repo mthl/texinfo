@@ -1,5 +1,7 @@
 2004-10-01  Karl Berry  <karl@gnu.org>
 
+	* lib/Makefile.am (libtxi_a_SOURCES): add getopt_.h.
+
 	* configure.ac: bump version to 4.7.90, although we're not really
 		pretesting yet.  (I need a distribution to check an
 		automake issue.)
