@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.7 2003-03-22 17:34:38 karl Exp $
+   $Id: session.c,v 1.8 2003-03-22 17:41:16 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -2024,12 +2024,6 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
    This is not the same logic as in info.el.  Info-get-token prefers
    searching backwards to searching forwards, and has a hardwired search
    limit of 200 chars (in Emacs 21.2).  */
-
-/* We don't need anything fancy.  */
-#ifdef MIN
-#undef MIN
-#endif
-#define MIN(a,b) ((a) < (b) ? (a) : (b))
 
 static REFERENCE **
 nearest_xref (xref_list, pos)
