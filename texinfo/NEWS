@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.17 2002-11-14 18:47:07 karl Exp $
+$Id: NEWS,v 1.18 2002-11-14 21:51:39 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -28,6 +28,7 @@ convenience, here's a url to one of the relevant sections:
 * makeinfo:
   . html output for @defun and friends now has font changes.
   . html output has some class attributes.
+  . xml and docbook output improved in many details.
 * texinfo.tex:
   . new Italian translations, txi-it.tex.
   . pdf bookmarks for unnumbered sections work.
