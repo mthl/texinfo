@@ -1,3 +1,7 @@
+2003-05-12    <karl@gnu.org>
+
+	* config.{guess,sub}: update from gnulib.
+
 2003-05-10    <karl@gnu.org>
 
 	* makeinfo/index.c (sort_index): allocate the sorted index in new
