@@ -1,3 +1,21 @@
+2003-01-17    <karl@gnu.org>
+
+	Thu Jan 16 10:28:32 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
+	* doc/texinfo.tex (\refx): Set locally \indexdummies before expanding
+	  the \csname, in case there are macros; foreign accents, for example.
+	Bug report from Dumas Patrice <dumas@centre-cired.fr>.
+
+	* makeinfo/makeinfo.c (COMMAND_CHAR): new macro, and exclude ^ and
+	_ from command names.
+	(read_token): call it.
+
+	* makeinfo/makeinfo.h (command_char): move to makeinfo.c, since
+	it's only used in one place.
+
+2003-01-16    <karl@gnu.org>
+
+	* TODO: @else
+
 2003-01-12    <karl@gnu.org>
 
 	* doc/texinfo.tex (\dounmacro): simplify method for removing from

@@ -161,3 +161,6 @@ set args -o - --docbook $ttests/idxangle.tex
 
 # node positions in tag table don't reflect copying text.
 set args -o - $ttests/copyinglong.tex
+
+# @nabla^2 is taken as the macro name, including the ^2.
+set args -o - $ttests/math.tex
