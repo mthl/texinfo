@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.5\n"
-"POT-Creation-Date: 2003-05-12 13:40-0700\n"
+"POT-Creation-Date: 2003-05-17 09:28-0700\n"
 "PO-Revision-Date: 2003-02-06 16:03GMT\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -227,11 +227,11 @@ msgstr ""
 "\n"
 "* Menü: \"%s\" indislerini içeren düðümler:\n"
 
-#: info/info.c:265 info/infokey.c:884
+#: info/info.c:265 info/infokey.c:883
 msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneðini kullanýn.\n"
 
-#: info/info.c:284 info/infokey.c:139 makeinfo/makeinfo.c:710
+#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
 #: util/install-info.c:1252 util/texindex.c:344
 #, c-format
 msgid ""
@@ -331,7 +331,7 @@ msgstr ""
 "baþla\n"
 "  info -f ./foo.info         dir'i aramadan ./foo.info dosyasýný göster\n"
 
-#: info/info.c:603 info/infokey.c:903 makeinfo/makeinfo.c:486
+#: info/info.c:603 info/infokey.c:902 makeinfo/makeinfo.c:485
 #: util/install-info.c:428 util/texindex.c:292
 msgid ""
 "\n"
@@ -841,91 +841,91 @@ msgstr "%s, %s üzerinden çaðrýlabilir."
 msgid "There is no function named `%s'"
 msgstr "`%s' isimli bir iþlev yok"
 
-#: info/infokey.c:164
+#: info/infokey.c:163
 msgid "incorrect number of arguments"
 msgstr "argüman sayýsý yanlýþ"
 
-#: info/infokey.c:194
+#: info/infokey.c:193
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "`%s' girdi dosyasý açýlamýyor"
 
-#: info/infokey.c:207
+#: info/infokey.c:206
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "`%s' çýktý dosyasý oluþturulamýyor"
 
-#: info/infokey.c:217
+#: info/infokey.c:216
 #, c-format
 msgid "error writing to `%s'"
 msgstr "`%s''e yazma hatasý"
 
-#: info/infokey.c:222
+#: info/infokey.c:221
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "`%s' çýktý dosyasýný kapatmada hata"
 
-#: info/infokey.c:443
+#: info/infokey.c:442
 msgid "key sequence too long"
 msgstr "anahtar sýralamasý çok uzun"
 
-#: info/infokey.c:521
+#: info/infokey.c:520
 msgid "missing key sequence"
 msgstr "anahtar sýralamasý kayýp"
 
-#: info/infokey.c:600
+#: info/infokey.c:599
 msgid "NUL character (\\000) not permitted"
 msgstr "NUL karakterine (\\000) izin verilmiyor"
 
-#: info/infokey.c:629
+#: info/infokey.c:628
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "NUL karakterine (^%c) izin verilmiyor"
 
-#: info/infokey.c:652
+#: info/infokey.c:651
 msgid "missing action name"
 msgstr "kayýp eylem adý"
 
-#: info/infokey.c:667 info/infokey.c:733
+#: info/infokey.c:666 info/infokey.c:732
 msgid "section too long"
 msgstr "bölüm çok uzun"
 
-#: info/infokey.c:673
+#: info/infokey.c:672
 #, c-format
 msgid "unknown action `%s'"
 msgstr "bilinmeyen eylem `%s'"
 
-#: info/infokey.c:682
+#: info/infokey.c:681
 msgid "action name too long"
 msgstr "eylem adý çok uzun"
 
-#: info/infokey.c:694
+#: info/infokey.c:693
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "`%s' eylemini izleyen fazladan karakterler"
 
-#: info/infokey.c:704
+#: info/infokey.c:703
 msgid "missing variable name"
 msgstr "kayýp deðiþken adý"
 
-#: info/infokey.c:712
+#: info/infokey.c:711
 msgid "missing `=' immediately after variable name"
 msgstr "deðiþken adýndan hemen sonra kayýp `=' "
 
-#: info/infokey.c:719
+#: info/infokey.c:718
 msgid "variable name too long"
 msgstr "deðiþken adý çok uzun"
 
-#: info/infokey.c:741
+#: info/infokey.c:740
 msgid "value too long"
 msgstr "deðer çok uzun"
 
-#: info/infokey.c:875
+#: info/infokey.c:874
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "\"%s\", satýr %u: "
 
-#: info/infokey.c:891
+#: info/infokey.c:890
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -993,11 +993,11 @@ msgstr ""
 "Geçersiz infokey dosyasý `%s' (hatalý bölüm kodu) -- güncellemek için "
 "infokey yürütün"
 
-#: info/infomap.c:1723
+#: info/infomap.c:1722
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Infokey dosyasýnda hatalý veri -- bazý tuþ baðlantýlarý yoksayýldý"
 
-#: info/infomap.c:1774
+#: info/infomap.c:1773
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "Infokey dosyasýnda hatalý veri -- bazý deðiþken ayarlarý yoksayýldý"
 
@@ -1822,11 +1822,11 @@ msgstr "@sp pozitif bir sayýsal argüman gerektirir, `%s' deðil"
 msgid "Bad argument to %c%s"
 msgstr "%c%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4274
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
 msgid "none"
 msgstr "yok"
 
@@ -1912,21 +1912,21 @@ msgstr "Dipnotlar"
 msgid "Untitled"
 msgstr "Adsýz"
 
-#: makeinfo/html.c:187
+#: makeinfo/html.c:190
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:262
+#: makeinfo/html.c:265
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:357
+#: makeinfo/html.c:360
 msgid "[unexpected] no html tag to pop"
 msgstr "hayýr :"
 
-#: makeinfo/html.c:565
+#: makeinfo/html.c:568
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[beklenmeyen] geçersiz düðüm ismi: `%s'"
@@ -1951,17 +1951,17 @@ msgstr "Ýndeks `%s' zaten mevcut"
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "Bilinmeyen indeks `%1$s' ve/veya @synindex içinde `%2$s'"
 
-#: makeinfo/index.c:679
+#: makeinfo/index.c:680
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex içinde bilinmeyen indeks `%s'"
 
-#: makeinfo/index.c:722
+#: makeinfo/index.c:723
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "`%s' indeks girdisi tüm düðümlerin dýþýnda"
 
-#: makeinfo/index.c:725 makeinfo/index.c:766
+#: makeinfo/index.c:726 makeinfo/index.c:767
 msgid "(outside of any node)"
 msgstr "(tüm düðümlerin dýþýnda)"
 
@@ -2121,31 +2121,31 @@ msgstr "@quote arg.ý yalnýzca tek argümanlý makrolarda yararlý"
 msgid "mismatched @end %s with @%s"
 msgstr "@%s ile eþleþmeyen @end %s"
 
-#: makeinfo/makeinfo.c:320
+#: makeinfo/makeinfo.c:319
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: uyarý: "
 
-#: makeinfo/makeinfo.c:343
+#: makeinfo/makeinfo.c:342
 msgid "Too many errors!  Gave up.\n"
 msgstr "Çok sayýda hata!  Vazgeçildi.\n"
 
-#: makeinfo/makeinfo.c:354 makeinfo/makeinfo.c:2095
+#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2094
 #, c-format
 msgid "Misplaced %c"
 msgstr "Yanlýþ yerleþtirilmiþ %c"
 
-#: makeinfo/makeinfo.c:374
+#: makeinfo/makeinfo.c:373
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Daha fazla bilgi için `%s --help' yazýn.\n"
 
-#: makeinfo/makeinfo.c:377
+#: makeinfo/makeinfo.c:376
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Kullaným: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
-#: makeinfo/makeinfo.c:380
+#: makeinfo/makeinfo.c:379
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2154,7 +2154,7 @@ msgstr ""
 "Info dosyalarý çevrimiçi Emacs ya da tek baþýna GNU Info'yla okunmak için "
 "uygundur.\n"
 
-#: makeinfo/makeinfo.c:384
+#: makeinfo/makeinfo.c:383
 #, c-format
 msgid ""
 "General options:\n"
@@ -2178,7 +2178,7 @@ msgstr ""
 "  -v, --verbose               ne yapýlýyor olduðunu açýklar.\n"
 "      --version               sürüm bilgisini görüntüler ve çýkar.\n"
 
-#: makeinfo/makeinfo.c:398
+#: makeinfo/makeinfo.c:397
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2191,7 +2191,7 @@ msgstr ""
 "      --html                 Info yerine HTML çýktýsý üretir.\n"
 "      --xml                  Info yerine XML (TexinfoML) çýktýsý üretir.\n"
 
-#: makeinfo/makeinfo.c:405
+#: makeinfo/makeinfo.c:404
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
@@ -2222,7 +2222,7 @@ msgstr ""
 "  -o, --output=DOSYA         çýktýyý DOSYA'ya yazar (bölünmüþ HTML ise "
 "dizine).\n"
 
-#: makeinfo/makeinfo.c:419
+#: makeinfo/makeinfo.c:418
 #, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2258,14 +2258,14 @@ msgstr ""
 "      --spilt-size=NUM        Info dosyalarýný NUM boyutuna böler (öntanýmlý "
 "%d).\n"
 
-#: makeinfo/makeinfo.c:436
+#: makeinfo/makeinfo.c:435
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE        include FILE in HTML <style> output;\n"
 "                                  read stdin if FILE is -.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:442
+#: makeinfo/makeinfo.c:441
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2284,7 +2284,7 @@ msgstr ""
 "  -U VAR                         VAR deðiþkeninin tanýmýný, @clear ile "
 "olduðu gibi geri alýr.\n"
 
-#: makeinfo/makeinfo.c:451
+#: makeinfo/makeinfo.c:450
 msgid ""
 "Conditional processing in input:\n"
 "  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
@@ -2309,7 +2309,7 @@ msgstr ""
 "  --no-iftex        @iftex ve @tex metin iþlemez.\n"
 "  --no-ifxml        @ifxml ve @xml metin iþlemez.\n"
 
-#: makeinfo/makeinfo.c:465
+#: makeinfo/makeinfo.c:464
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -2323,7 +2323,7 @@ msgstr ""
 "  eðer Info oluþturuluyorsa, --ifinfo açýk, diðerleri kapalýdýr;\n"
 "  eðer salt metin oluþturuluyorsa, --ifplaintext açýk, diðerleri kapalýdýr;\n"
 
-#: makeinfo/makeinfo.c:473
+#: makeinfo/makeinfo.c:472
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                     write Info to foo's @setfilename\n"
@@ -2350,76 +2350,76 @@ msgstr ""
 "  makeinfo --no-split foo.texi          ne büyüklükte olursa olsun tek Info "
 "dosyasý yazar\n"
 
-#: makeinfo/makeinfo.c:591 makeinfo/makeinfo.c:614 makeinfo/makeinfo.c:676
-#: makeinfo/makeinfo.c:697
+#: makeinfo/makeinfo.c:590 makeinfo/makeinfo.c:613 makeinfo/makeinfo.c:675
+#: makeinfo/makeinfo.c:696
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%1$s: %2$s arg sayýsal olmalýdýr, `%3$s' deðil.\n"
 
-#: makeinfo/makeinfo.c:604
+#: makeinfo/makeinfo.c:603
 #, c-format
 msgid "Couldn't open macro expansion output `%s'"
 msgstr "Makro geniþleme çýktýsý açýlamadý `%s'"
 
-#: makeinfo/makeinfo.c:607
+#: makeinfo/makeinfo.c:606
 msgid "Cannot specify more than one macro expansion output"
 msgstr "Birden fazla makro geniþleme çýktýsý belirtilemez"
 
-#: makeinfo/makeinfo.c:645
+#: makeinfo/makeinfo.c:644
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%1$s: --paragraph-indent arg. sayýsal/`none'/`asis' olmalýdýr, `%2$s' "
 "deðil.\n"
 
-#: makeinfo/makeinfo.c:686
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%1$s: --footnote-style arg. `separate' ya da `end' olmalýdýr, `%2$s' deðil.\n"
 
-#: makeinfo/makeinfo.c:745
+#: makeinfo/makeinfo.c:744
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: dosya argümaný eksik.\n"
 
-#: makeinfo/makeinfo.c:933
+#: makeinfo/makeinfo.c:932
 #, c-format
 msgid "Expected `%s'"
 msgstr "`%s' gerekir"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1397
 msgid "File exists, but is not a directory"
 msgstr "Dosya mevcut, ancak bir dizin deðil"
 
-#: makeinfo/makeinfo.c:1399
+#: makeinfo/makeinfo.c:1398
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "`%1$s' dizini oluþturulamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:1447
+#: makeinfo/makeinfo.c:1446
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "`%2$s' içinde `%1$s' yok"
 
-#: makeinfo/makeinfo.c:1529
+#: makeinfo/makeinfo.c:1528
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Makro geniþlemesini, Info çýktýsý da oraya gittiðinden, stdout'a "
 "atlatýyor.\n"
 
-#: makeinfo/makeinfo.c:1559
+#: makeinfo/makeinfo.c:1558
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "`%3$s''den %1$s dosya `%2$s' yapýlýyor.\n"
 
-#: makeinfo/makeinfo.c:1594
+#: makeinfo/makeinfo.c:1593
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Bu %1$s, makeinfo sürümü %2$s tarafýndan, %3$s'den üretilmiþtir.\n"
 
-#: makeinfo/makeinfo.c:1616
+#: makeinfo/makeinfo.c:1615
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2427,102 +2427,102 @@ msgstr ""
 "%1$s: Makro çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --"
 "force kullanýnýz.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1670
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%1$s: Çýktý dosyasý `%2$s' hatalardan dolayý siliniyor; korumak için --force "
 "kullanýnýz.\n"
 
-#: makeinfo/makeinfo.c:1922
+#: makeinfo/makeinfo.c:1921
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Bilinmeyen komut `%s'"
 
-#: makeinfo/makeinfo.c:1944
+#: makeinfo/makeinfo.c:1943
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "@%s'e argüman olarak bir komut vermek için {} kullanýn"
 
-#: makeinfo/makeinfo.c:2137
+#: makeinfo/makeinfo.c:2136
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s `{...}' bekledi"
 
-#: makeinfo/makeinfo.c:2167
+#: makeinfo/makeinfo.c:2166
 msgid "Unmatched }"
 msgstr "Eþleþmemiþ }"
 
-#: makeinfo/makeinfo.c:2217
+#: makeinfo/makeinfo.c:2216
 msgid "NO_NAME!"
 msgstr "ÝSÝMSÝZ!"
 
-#: makeinfo/makeinfo.c:2238
+#: makeinfo/makeinfo.c:2237
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s eksik kapama }"
 
-#: makeinfo/makeinfo.c:3035
+#: makeinfo/makeinfo.c:3034
 msgid "First argument to cross-reference may not be empty"
 msgstr "Çapraz baþvuru kurulacak ilk argüman boþ olmayabilir"
 
-#: makeinfo/makeinfo.c:3095 makeinfo/makeinfo.c:3313 makeinfo/xml.c:1422
+#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
 msgid "see "
 msgstr "bkz "
 
-#: makeinfo/makeinfo.c:3095
+#: makeinfo/makeinfo.c:3094
 msgid "See "
 msgstr "Bkz "
 
-#: makeinfo/makeinfo.c:3241
+#: makeinfo/makeinfo.c:3240
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "`.' ya da `,' çapraz baþvuruyu izlemelidir, %c'yi deðil"
 
-#: makeinfo/makeinfo.c:3289
+#: makeinfo/makeinfo.c:3288
 msgid "First argument to @inforef may not be empty"
 msgstr "@inforef'e ilk argüman boþ olmayabilir"
 
-#: makeinfo/makeinfo.c:3521
+#: makeinfo/makeinfo.c:3520
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image dosyasý `%1$s' (HTML için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3527
+#: makeinfo/makeinfo.c:3526
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "`%2$s' içinde `%1$s' yok"
 
-#: makeinfo/makeinfo.c:3613
+#: makeinfo/makeinfo.c:3612
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image dosyasý `%1$s' (metin için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3622
+#: makeinfo/makeinfo.c:3621
 msgid "@image missing filename argument"
 msgstr "@image eksik dosyaadý argümaný"
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3819
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3821
+#: makeinfo/makeinfo.c:3820
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "(`%s' için deðer yok)"
 
-#: makeinfo/makeinfo.c:3876
+#: makeinfo/makeinfo.c:3875
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bir isim gerektirir"
 
-#: makeinfo/makeinfo.c:3982
+#: makeinfo/makeinfo.c:3981
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Eþleþen @end %s'den önce dosya sonuna ulaþýldý"
 
-#: makeinfo/makeinfo.c:4213
+#: makeinfo/makeinfo.c:4212
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' geniþleme için çok uzun; geniþletilmedi"
@@ -2712,7 +2712,7 @@ msgstr "%cüst'lü düðüm bir bölüm olarak zaten var"
 msgid "Here is the %ctop node"
 msgstr "Ýþte %cüst düðüm"
 
-#: makeinfo/sectioning.c:555
+#: makeinfo/sectioning.c:554
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%cüst, %cdüðümden önce kullanýldý, %s'e öntanýmlanýyor"

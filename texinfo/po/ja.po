@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
-"POT-Creation-Date: 2003-05-12 13:40-0700\n"
+"POT-Creation-Date: 2003-05-17 09:28-0700\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -221,11 +221,11 @@ msgstr ""
 "\n"
 "* メニュー: \"%s\" を含む見出し項目\n"
 
-#: info/info.c:265 info/infokey.c:884
+#: info/info.c:265 info/infokey.c:883
 msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
-#: info/info.c:284 info/infokey.c:139 makeinfo/makeinfo.c:710
+#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
 #: util/install-info.c:1252 util/texindex.c:344
 #, c-format
 msgid ""
@@ -329,7 +329,7 @@ msgstr ""
 "Email によるバグレポートは bug-texinfo@gnu.org、\n"
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
-#: info/info.c:603 info/infokey.c:903 makeinfo/makeinfo.c:486
+#: info/info.c:603 info/infokey.c:902 makeinfo/makeinfo.c:485
 #: util/install-info.c:428 util/texindex.c:292
 #, fuzzy
 msgid ""
@@ -842,91 +842,91 @@ msgstr "%s は %s を通じて呼び出せます"
 msgid "There is no function named `%s'"
 msgstr "`%s' という機能はありません"
 
-#: info/infokey.c:164
+#: info/infokey.c:163
 msgid "incorrect number of arguments"
 msgstr "引数の数字が間違っています"
 
-#: info/infokey.c:194
+#: info/infokey.c:193
 #, c-format
 msgid "cannot open input file `%s'"
 msgstr "入力ファイル `%s' を開けません"
 
-#: info/infokey.c:207
+#: info/infokey.c:206
 #, c-format
 msgid "cannot create output file `%s'"
 msgstr "出力ファイル `%s' を作成できません"
 
-#: info/infokey.c:217
+#: info/infokey.c:216
 #, c-format
 msgid "error writing to `%s'"
 msgstr "`%s' への書き込み中のエラー"
 
-#: info/infokey.c:222
+#: info/infokey.c:221
 #, c-format
 msgid "error closing output file `%s'"
 msgstr "出力ファイル `%s' を閉じる際のエラー"
 
-#: info/infokey.c:443
+#: info/infokey.c:442
 msgid "key sequence too long"
 msgstr "キー入力列が長すぎます"
 
-#: info/infokey.c:521
+#: info/infokey.c:520
 msgid "missing key sequence"
 msgstr "キー入力列を欠いています"
 
-#: info/infokey.c:600
+#: info/infokey.c:599
 msgid "NUL character (\\000) not permitted"
 msgstr "NUL 文字 (\\000) は使えません"
 
-#: info/infokey.c:629
+#: info/infokey.c:628
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "NUL 文字 (^%c) は使えません"
 
-#: info/infokey.c:652
+#: info/infokey.c:651
 msgid "missing action name"
 msgstr "アクション名を欠いています"
 
-#: info/infokey.c:667 info/infokey.c:733
+#: info/infokey.c:666 info/infokey.c:732
 msgid "section too long"
 msgstr "セクションが長すぎます"
 
-#: info/infokey.c:673
+#: info/infokey.c:672
 #, c-format
 msgid "unknown action `%s'"
 msgstr "不明なアクション `%s'"
 
-#: info/infokey.c:682
+#: info/infokey.c:681
 msgid "action name too long"
 msgstr "アクション名が長すぎます"
 
-#: info/infokey.c:694
+#: info/infokey.c:693
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "アクション `%s' に余分な文字が続いています"
 
-#: info/infokey.c:704
+#: info/infokey.c:703
 msgid "missing variable name"
 msgstr "変数名を欠いています"
 
-#: info/infokey.c:712
+#: info/infokey.c:711
 msgid "missing `=' immediately after variable name"
 msgstr "変数名の直後の `=' を欠いています"
 
-#: info/infokey.c:719
+#: info/infokey.c:718
 msgid "variable name too long"
 msgstr "変数名が長すぎます"
 
-#: info/infokey.c:741
+#: info/infokey.c:740
 msgid "value too long"
 msgstr "値が長すぎます"
 
-#: info/infokey.c:875
+#: info/infokey.c:874
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "\"%s\", %u 行目: "
 
-#: info/infokey.c:891
+#: info/infokey.c:890
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
@@ -999,13 +999,13 @@ msgstr ""
 "infokey ファイル `%s' が不適切です (セクションコードが不正です) -- infokey を"
 "実行して更新しましょう"
 
-#: info/infomap.c:1723
+#: info/infomap.c:1722
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 "infokey ファイルに不正なデータがあります -- 幾つかのキーバインドが無視されま"
 "した"
 
-#: info/infomap.c:1774
+#: info/infomap.c:1773
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "infokey ファイルに不正なデータがあります -- 幾つかの変数設定が無視されました"
@@ -1825,11 +1825,11 @@ msgstr "@sp には `%s' ではなく、正の数値を与えなければなりません"
 msgid "Bad argument to %c%s"
 msgstr "%c%s に対する不正な引数"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4272
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
 msgid "asis"
 msgstr "そのまま"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4274
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
 msgid "none"
 msgstr "なし"
 
@@ -1916,21 +1916,21 @@ msgstr "脚注"
 msgid "Untitled"
 msgstr "無題"
 
-#: makeinfo/html.c:187
+#: makeinfo/html.c:190
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:262
+#: makeinfo/html.c:265
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:357
+#: makeinfo/html.c:360
 msgid "[unexpected] no html tag to pop"
 msgstr ""
 
-#: makeinfo/html.c:565
+#: makeinfo/html.c:568
 #, fuzzy, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "不適切なノード名です: `%s'"
@@ -1955,17 +1955,17 @@ msgstr "見出し `%s' は既に存在します"
 msgid "Unknown index `%s' and/or `%s' in @synindex"
 msgstr "@synindex に、知らない見出し `%s' や `%s' があります"
 
-#: makeinfo/index.c:679
+#: makeinfo/index.c:680
 #, c-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex に、知らない見出し `%s' があります"
 
-#: makeinfo/index.c:722
+#: makeinfo/index.c:723
 #, c-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "見出し `%s' のエントリはあらゆるノードの外側です"
 
-#: makeinfo/index.c:725 makeinfo/index.c:766
+#: makeinfo/index.c:726 makeinfo/index.c:767
 msgid "(outside of any node)"
 msgstr "(あらゆるノードの外側)"
 
@@ -2122,31 +2122,31 @@ msgstr "@quote-arg は、引数を一つ与えたときのみ有効です"
 msgid "mismatched @end %s with @%s"
 msgstr "@%2$s と一致しない @end %1$s"
 
-#: makeinfo/makeinfo.c:320
+#: makeinfo/makeinfo.c:319
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: 警告: "
 
-#: makeinfo/makeinfo.c:343
+#: makeinfo/makeinfo.c:342
 msgid "Too many errors!  Gave up.\n"
 msgstr "エラーが多すぎます!  諦めました。\n"
 
-#: makeinfo/makeinfo.c:354 makeinfo/makeinfo.c:2095
+#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2094
 #, c-format
 msgid "Misplaced %c"
 msgstr "間違った位置に %c"
 
-#: makeinfo/makeinfo.c:374
+#: makeinfo/makeinfo.c:373
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "詳しくは `%s --help' を実行してください。\n"
 
-#: makeinfo/makeinfo.c:377
+#: makeinfo/makeinfo.c:376
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "使い方: %s [オプション]... TEXINFOファイル...\n"
 
-#: makeinfo/makeinfo.c:380
+#: makeinfo/makeinfo.c:379
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2154,7 +2154,7 @@ msgstr ""
 "Texinfo ソース文書を様々な形式で読めるように変換します。デフォルトでは\n"
 "オンラインで Emacs や単独の GNU Info で読むのに適した Info ファイルです。\n"
 
-#: makeinfo/makeinfo.c:384
+#: makeinfo/makeinfo.c:383
 #, c-format
 msgid ""
 "General options:\n"
@@ -2180,7 +2180,7 @@ msgstr ""
 "  -v, --verbose               行なわれる事を説明する。\n"
 "      --version               バージョン情報を表示して終了する。\n"
 
-#: makeinfo/makeinfo.c:398
+#: makeinfo/makeinfo.c:397
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2196,7 +2196,7 @@ msgstr ""
 "                              つけないと標準出力に書き込む\n"
 "      --xml                 Info ではなく XML (TexinfoML) 形式で出力する。\n"
 
-#: makeinfo/makeinfo.c:405
+#: makeinfo/makeinfo.c:404
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2221,7 +2221,7 @@ msgstr ""
 "  -o, --output=FILE         FILE へ出力する (分割 HTML の場合ディレクト"
 "リ)。\n"
 
-#: makeinfo/makeinfo.c:419
+#: makeinfo/makeinfo.c:418
 #, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2253,14 +2253,14 @@ msgstr ""
 "                                だと、既存の字下げをそのまま使う。\n"
 "      --split-size=NUM        Info ファイルサイズを NUM で分割 (default %d)\n"
 
-#: makeinfo/makeinfo.c:436
+#: makeinfo/makeinfo.c:435
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE        include FILE in HTML <style> output;\n"
 "                                  read stdin if FILE is -.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:442
+#: makeinfo/makeinfo.c:441
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2277,7 +2277,7 @@ msgstr ""
 "  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
 "  -U VAR                         変数 VAR を未定義にする。@clear と同じ。\n"
 
-#: makeinfo/makeinfo.c:451
+#: makeinfo/makeinfo.c:450
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2300,7 +2300,7 @@ msgstr ""
 "     --no-ifinfo   @ifinfo テクストを処理しない。\n"
 "     --no-iftex    @iftex や @tex テクストを処理しない。\n"
 
-#: makeinfo/makeinfo.c:465
+#: makeinfo/makeinfo.c:464
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -2313,7 +2313,7 @@ msgstr ""
 "  HTML を生成するなら --ifhtml が有効で他は無効です。\n"
 "  Info やプレインテクストを生成するなら --ifinfo が有効で他は無効です。\n"
 
-#: makeinfo/makeinfo.c:473
+#: makeinfo/makeinfo.c:472
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2335,76 +2335,76 @@ msgstr ""
 "  makeinfo --number-sections foo.texi  節に番号を付けた Info を出力\n"
 "  makeinfo --no-split foo.texi         大きさに関わらず一つの Info を出力\n"
 
-#: makeinfo/makeinfo.c:591 makeinfo/makeinfo.c:614 makeinfo/makeinfo.c:676
-#: makeinfo/makeinfo.c:697
+#: makeinfo/makeinfo.c:590 makeinfo/makeinfo.c:613 makeinfo/makeinfo.c:675
+#: makeinfo/makeinfo.c:696
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
 
-#: makeinfo/makeinfo.c:604
+#: makeinfo/makeinfo.c:603
 #, c-format
 msgid "Couldn't open macro expansion output `%s'"
 msgstr "マクロ拡張出力 `%s' を開けません"
 
-#: makeinfo/makeinfo.c:607
+#: makeinfo/makeinfo.c:606
 msgid "Cannot specify more than one macro expansion output"
 msgstr "複数のマクロ拡張出力を指定できません"
 
-#: makeinfo/makeinfo.c:645
+#: makeinfo/makeinfo.c:644
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: makeinfo/makeinfo.c:686
+#: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
 "    なりません。\n"
 
-#: makeinfo/makeinfo.c:745
+#: makeinfo/makeinfo.c:744
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: makeinfo/makeinfo.c:933
+#: makeinfo/makeinfo.c:932
 #, c-format
 msgid "Expected `%s'"
 msgstr "ここでは `%s' が要求されます"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1397
 msgid "File exists, but is not a directory"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1399
+#: makeinfo/makeinfo.c:1398
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "ディレクトリ `%s' を作成できません: %s"
 
-#: makeinfo/makeinfo.c:1447
+#: makeinfo/makeinfo.c:1446
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "`%2$s' に `%1$s' が見つかりません"
 
-#: makeinfo/makeinfo.c:1529
+#: makeinfo/makeinfo.c:1528
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr "%s: Info の出力を行なうので、マクロ拡張を標準出力に出力しません。\n"
 
-#: makeinfo/makeinfo.c:1559
+#: makeinfo/makeinfo.c:1558
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "`%3$s' から %1$s ファイル `%2$s' を作成します。\n"
 
-#: makeinfo/makeinfo.c:1594
+#: makeinfo/makeinfo.c:1593
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr ""
 "これは %1$s、%3$s より makeinfo バージョン %2$s によって作成されました。\n"
 
-#: makeinfo/makeinfo.c:1616
+#: makeinfo/makeinfo.c:1615
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2412,102 +2412,102 @@ msgstr ""
 "%s: エラーにより、マクロ出力ファイル `%s' を削除します。\n"
 "       -- 残したい場合には `--force' オプションを使ってください。\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1670
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: エラーにより、出力ファイル `%s' を削除します。\n"
 "       -- 残したい場合には `--force' オプションを使ってください。\n"
 
-#: makeinfo/makeinfo.c:1922
+#: makeinfo/makeinfo.c:1921
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "知らないコマンド `%s'"
 
-#: makeinfo/makeinfo.c:1944
+#: makeinfo/makeinfo.c:1943
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: makeinfo/makeinfo.c:2137
+#: makeinfo/makeinfo.c:2136
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s には `{...}' が必要です"
 
-#: makeinfo/makeinfo.c:2167
+#: makeinfo/makeinfo.c:2166
 msgid "Unmatched }"
 msgstr "対応のない }"
 
-#: makeinfo/makeinfo.c:2217
+#: makeinfo/makeinfo.c:2216
 msgid "NO_NAME!"
 msgstr "名前が無い！"
 
-#: makeinfo/makeinfo.c:2238
+#: makeinfo/makeinfo.c:2237
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "閉じるブレースのない %c%s"
 
-#: makeinfo/makeinfo.c:3035
+#: makeinfo/makeinfo.c:3034
 msgid "First argument to cross-reference may not be empty"
 msgstr "相互参照への第一引数が空であってはなりません"
 
-#: makeinfo/makeinfo.c:3095 makeinfo/makeinfo.c:3313 makeinfo/xml.c:1422
+#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
 msgid "see "
 msgstr "see "
 
-#: makeinfo/makeinfo.c:3095
+#: makeinfo/makeinfo.c:3094
 msgid "See "
 msgstr "See "
 
-#: makeinfo/makeinfo.c:3241
+#: makeinfo/makeinfo.c:3240
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "`.' や ',' は %c ではなく、相互参照に続けられなければなりません"
 
-#: makeinfo/makeinfo.c:3289
+#: makeinfo/makeinfo.c:3288
 msgid "First argument to @inforef may not be empty"
 msgstr "@inforef への第一引数は空であってはなりません"
 
-#: makeinfo/makeinfo.c:3521
+#: makeinfo/makeinfo.c:3520
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
 
-#: makeinfo/makeinfo.c:3527
+#: makeinfo/makeinfo.c:3526
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "`%2$s' に `%1$s' が見つかりません"
 
-#: makeinfo/makeinfo.c:3613
+#: makeinfo/makeinfo.c:3612
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image ファイル `%s' (text 用) が読めません: %s"
 
-#: makeinfo/makeinfo.c:3622
+#: makeinfo/makeinfo.c:3621
 msgid "@image missing filename argument"
 msgstr "@image にファイル名が与えられていません"
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3819
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3821
+#: makeinfo/makeinfo.c:3820
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{`%s' の値がない}"
 
-#: makeinfo/makeinfo.c:3876
+#: makeinfo/makeinfo.c:3875
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s には名前が必要です"
 
-#: makeinfo/makeinfo.c:3982
+#: makeinfo/makeinfo.c:3981
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "@end %s の対応の前にファイルの終りに出くわしました"
 
-#: makeinfo/makeinfo.c:4213
+#: makeinfo/makeinfo.c:4212
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
@@ -2694,7 +2694,7 @@ msgstr "%ctop のノードは、セクションとして既に存在します"
 msgid "Here is the %ctop node"
 msgstr "ここは %ctop ノードです"
 
-#: makeinfo/sectioning.c:555
+#: makeinfo/sectioning.c:554
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop が %cnode の前に使われました、%s に決めうちします"

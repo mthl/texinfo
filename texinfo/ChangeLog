@@ -1,3 +1,7 @@
+2003-05-17    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.5.91.
+
 2003-05-16    <karl@gnu.org>
 
 	* makeinfo/index.c (sort_index): don't deref NULL.  Report from Jan.
