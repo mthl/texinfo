@@ -1,3 +1,12 @@
+2003-09-10  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/sectioning.c (section_alist): add entry for centerchap,
+	so at least makeinfo does not bomb out.  (No centering is actually
+	done.)  From: Denys Duchier <duchier@ps.uni-sb.de>, 10 Sep 2003
+	21:35:24 +0200.
+
+	* lib/system.h: __CYGWIN__ in comments, too.
+
 2003-09-09  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: --include=m4.  From Werner.
