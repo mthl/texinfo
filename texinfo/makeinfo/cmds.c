@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.11 2002-11-04 22:16:02 karl Exp $
+   $Id: cmds.c,v 1.12 2002-11-05 03:04:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -428,7 +428,7 @@ cm_dots (arg)
         xml_insert_entity ("hellip");
       else
         add_word (html && !in_fixed_width_font
-                  ? "<small>...</small>" : "...");
+                  ? "<small class=\"dots\">...</small>" : "...");
     }
 }
 
@@ -448,7 +448,7 @@ cm_enddots (arg)
 	}
       else
 	add_word (html && !in_fixed_width_font 
-                  ? "<small>...</small>." : "....");
+                  ? "<small class=\"enddots\">....</small>" : "....");
     }
 }
 

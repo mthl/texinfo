@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.9 2002-11-04 21:28:10 karl Exp $
+   $Id: makeinfo.c,v 1.10 2002-11-05 03:04:26 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -1716,7 +1716,7 @@ handle_menu_entry ()
 
       if (had_menu_commentary)
         {
-          add_word ("<ul>\n");
+          add_word ("<ul class=\"menu\">\n");
           had_menu_commentary = 0;
           in_paragraph = 0;
         }
@@ -1736,7 +1736,7 @@ handle_menu_entry ()
       if (next_menu_item_number <= 9)
 	{
 	  add_word(" accesskey=");
-	  add_word_args("%d", next_menu_item_number);
+	  add_word_args("\"%d\"", next_menu_item_number);
 	  next_menu_item_number++;
 	}
       add_word (" href=\"");

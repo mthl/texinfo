@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.4 2002-11-04 21:28:10 karl Exp $
+   $Id: node.c,v 1.5 2002-11-05 03:04:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -919,8 +919,9 @@ cm_node ()
 	}
 
       if (splitting || !no_headers)
-        { /* Navigation bar.   The <p> avoids the links area running
-             on with old Lynxen.  */
+        { /* Navigation bar. */
+          add_word ("<div class=\"node\">\n");
+          /* The <p> avoids the links area running on with old Lynxen. */
           add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
           add_word_args ("%s<a name=\"", _("Node:"));
           tem = expand_node_name (node);
@@ -933,7 +934,7 @@ cm_node ()
               tem = expansion (next, 0);
 	      add_word (",\n");
 	      add_word (_("Next:"));
-	      add_word ("<a rel=next accesskey=n href=\"");
+	      add_word ("<a rel=\"next\" accesskey=\"n\" href=\"");
 	      add_anchor_name (tem, 1);
 	      add_word_args ("\">%s</a>", tem);
               free (tem);
@@ -943,7 +944,7 @@ cm_node ()
               tem = expansion (prev, 0);
 	      add_word (",\n");
 	      add_word (_("Previous:"));
-	      add_word ("<a rel=previous accesskey=p href=\"");
+	      add_word ("<a rel=\"previous\" accesskey=\"p\" href=\"");
 	      add_anchor_name (tem, 1);
 	      add_word_args ("\">%s</a>", tem);
               free (tem);
@@ -953,7 +954,7 @@ cm_node ()
               tem = expansion (up, 0);
 	      add_word (",\n");
 	      add_word (_("Up:"));
-	      add_word ("<a rel=up accesskey=u href=\"");
+	      add_word ("<a rel=\"up\" accesskey=\"u\" href=\"");
 	      add_anchor_name (tem, 1);
 	      add_word_args ("\">%s</a>", tem);
               free (tem);
@@ -961,6 +962,7 @@ cm_node ()
           /* html fixxme: we want a `top' or `contents' link here.  */
 
           add_word_args ("\n%s<br>\n", splitting ? "<hr>" : "");
+      	  add_word ("</div>\n");
         }
     }
   else if (docbook)

@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: index.c,v 1.2 2002-11-05 03:04:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2002 Free Software Foundation, Inc.
 
@@ -682,7 +682,7 @@ cm_printindex ()
       xml_sort_index = 0;
       close_paragraph ();
       if (html)
-	add_word ("<ul compact>");
+	add_word_args ("<ul class=\"index-%s\" compact>", index_name);
       else if (!no_headers && !docbook)
 	add_word ("* Menu:\n\n");
       

@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.2 2002-10-14 21:25:11 karl Exp $
+   $Id: sectioning.c,v 1.3 2002-11-05 03:04:26 karl Exp $
 
    Copyright (C) 1999, 2001, 2002 Free Software Foundation, Inc.
 
@@ -413,7 +413,8 @@ sectioning_html (level, cmd)
   old_no_indent = no_indent;
   no_indent = 1;
 
-  add_word_args ("<h%d>", level + 2); /* level 0 (chapter) is <h2> */
+  /* level 0 (chapter) is <h2> */
+  add_word_args ("<h%d class=\"%s\">", level + 2, cmd);
 
   /* If we are outside of any node, produce an anchor that
      the TOC could refer to.  */
