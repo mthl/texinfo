@@ -1,3 +1,11 @@
+2004-08-19  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\multitable): \def\item to \crcr, instead of
+		\let, to avoid errors with a nested @itemize inside
+		@multitable.
+	Report from: Pierre-Luc Veilleux <plv@centretiv.com>,
+	18 Aug 2004 13:26:00 -0400.
+
 2004-08-19  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\scanmacro): Make backslash active, not other,
