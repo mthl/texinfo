@@ -1,0 +1,10 @@
+#!/bin/sh
+# Created 2003-08-29, Karl Berry.  Public domain.
+# (Thanks to Akim Demaille.)
+
+echo "Bootstrapping CVS Texinfo with:"
+
+cmd="autoreconf --verbose --install --force"
+echo $cmd
+$cmd
+

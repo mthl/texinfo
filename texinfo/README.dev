@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.5 2003-02-22 02:08:34 karl Exp $
+$Id: README.dev,v 1.6 2003-08-29 00:29:17 karl Exp $
 README.dev - Texinfo developer information.
 
   Copyright (C) 2002, 2003 Free Software Foundation, Inc.
@@ -11,11 +11,10 @@ The development sources for Texinfo is available through anonymous cvs
 at Savannah, see
   http://savannah.gnu.org/cvs/?group=texinfo
 
-This distribution uses automake 1.7.3 and autoconf 2.57.  If you are
-getting the Texinfo sources from cvs, or change the Texinfo
+This distribution uses whatever versions of automake, autoconf, and
+gettext are listed in NEWS; usually the latest ones released.  If you
+are getting the Texinfo sources from cvs, or change the Texinfo
 configure.ac, you'll need to have these tools installed to (re)build.
-Sometimes patches to them are necessary for Texinfo; such patches will
-be in the ./util subdirectory if they exist.
 
 Here's the order in which to run the tools for a fresh build:
 
@@ -28,12 +27,13 @@ Here's the order in which to run the tools for a fresh build:
 
 (with arguments to taste, of course.)  Or you can run
 
-  autoreconf -fvi -I m4
+  ./bootstrap
 
 instead of the various auto* tools.
 
 If you want to rebuild the man pages and other generated files, set
 the environment variable TEXINFO_MAINT.  You'll need help2man installed.
+
 
 One final note: If you would like to contribute to the GNU project by
 implementing additional documentation output formats for Texinfo, that

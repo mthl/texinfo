@@ -1,3 +1,10 @@
+2003-08-28  Karl Berry  <karl@gnu.org>
+
+	* bootstrap: new file (cvs only).
+	* README.dev: mention it.
+	Report from hanwen@cs.uu.nl, sample script from
+	Akim Demaille <akim@epita.fr>.
+
 2003-08-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/node.c (cm_node): add <LINK> tags. This will produce a
