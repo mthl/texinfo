@@ -54,9 +54,13 @@ ref to @,{c} @ref{@,{c}}.
 @section With brace @"{i}
 @node with dotless @"{@dotless{i}},,,Umlaut
 @section With dotless @"{@dotless{i}}
-@iftex
-ref to setref @ref{ref}.
-@end iftex
+
+before footnote @xref{footanchor}.
+
+@footnote{@anchor{footanchor}}
+
+after footnote @xref{footanchor}.
+
 @node @"o,,,Umlaut
 @section @"o
 Ref to an anchor at the end of the doc 

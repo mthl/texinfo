@@ -1,4 +1,13 @@
 2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: footnotes better handled, they have a separated
+	stack, state and text.
+	footnotes, anchors and refs can be mixed with better results.
+	$value{_title}... have only their texinfo expanded during
+	pass_texi, including values, macros and so on and the html
+	is generated during pass_text.
+	* Tests/*: minor changes, more tests.
+
+2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: macros splitted by 3 paragraphs are better handled.
 	more isolation of formatting.
 	better generation of index keys from commands, with more macros

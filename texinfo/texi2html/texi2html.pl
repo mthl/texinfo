@@ -228,7 +228,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.34 2003-04-02 13:02:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.35 2003-04-02 18:21:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -616,7 +616,7 @@ $complex_format_map =
  },
  smalldisplay =>
  {
- # FIXME font is forbidden in pre. It is deprecated too.
+ # FIXME font is deprecated
   'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\"><font size=\"$T2h_SMALL_FONT_SIZE\">"},
   'end' => q{'</font></td></tr></table>'},
   'pre_style' => 'style="font-family: serif"'
@@ -1742,7 +1742,7 @@ sub l2h_ExtractFromHtml($)
         my $l_l2h = $T2H_L2H;
         $T2H_L2H = 0;
         $line = $l2h_to_latex{$count};
-        $line = substitute_text(0, $line);
+        $line = substitute_text({}, $line);
         $line = "<!-- l2h: ". __LINE__ . " use texi2html -->" . $line
             if ($T2H_DEBUG & $DEBUG_L2H);
         $T2H_L2H = $l_l2h;
@@ -1924,16 +1924,22 @@ my $do_contents;            # do table of contents if true
 my $do_scontents;           # do short table of contents if true
 my $has_top;                # true if there is a @top command
 
-sub pass_texi
+sub initialise_state_texi($)
 {
-    my $first_line = 1;         # is it the first line
-    my $state;                  # holds the informations about the context
-                                # to pass it down to the functions
+    my $state = shift;
     $state->{'menu'} = 0;           # number of opened menus      
     $state->{'titlepage'} = 0;      # number of opened titlepages
     $state->{'level'} = 0;          # current sectionning level
     $state->{'complex_format'} = 0; # number of opened complex formats
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
+}
+
+sub pass_texi
+{
+    my $first_line = 1;         # is it the first line
+    my $state = {};             # holds the informations about the context
+                                # to pass it down to the functions
+    initialise_state_texi($state);
 
  INPUT_LINE: while ($_ = next_line())
     {
@@ -2928,13 +2934,13 @@ sub do_names()
 {
     foreach my $node (%nodes)
     {
-        $nodes{$node}->{'html'} = substitute_text (1, $nodes{$node}->{'texi'});
+        $nodes{$node}->{'html'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'html'};
     }
     foreach my $number (keys(%sections))
     {
         my $section = $sections{$number};
-        $section->{'name'} = substitute_text (1, $section->{'texi'});
+        $section->{'name'} = substitute_line ($section->{'texi'});
         $section->{'html'} = $section->{'number'} . " " . $section->{'name'};
         $section->{'html'} =~ s/^\s*//;
     }
@@ -3055,7 +3061,8 @@ sub enter_index_entry($$$$$$)
         unless (exists ($index_properties->{$prefix}));
     $key =~ s/\s+$//;
     $key =~ s/^\s*//;
-    my $html_key = substitute_text(1, $key);
+    # FIXME do it later, with the context
+    my $html_key = substitute_line($key);
     # The $key is only usefull for alphabetical sorting
     $key = remove_texi($key);
     warn "$WARN Index entry before document\n", return 
@@ -3248,13 +3255,20 @@ sub GetIndex($)
 
 my @foot_lines = ();           # footnotes
 
+sub initialise_state($)
+{
+    my $state = shift;
+    $state->{'preformatted'} = 0; 
+    $state->{'keep_texi'} = 0;
+    $state->{'format_stack'} = [ {'format' => "noformat"} ];
+    $state->{'paragraph_style'} = [ '' ]; 
+    $state->{'preformatted_stack'} = [ '' ]; 
+}
+
 sub pass_text()
 {
     my %state;
-    $state{'preformatted'} = 0; 
-    $state{'format_stack'} = [ {'format' => "noformat"} ];
-    $state{'paragraph_style'} = [ '' ]; 
-    $state{'preformatted_stack'} = [ '' ]; 
+    initialise_state (\%state);
     my @stack;
     my $text;
     my $doc_nr;
@@ -3273,11 +3287,11 @@ sub pass_text()
     }
 
     # prepare %T2H_THISDOC
-    $T2H_THISDOC{fulltitle} = $value{'_title'} || $value{'_settitle'} || "Untitled Document";
-    $T2H_THISDOC{title} = $value{'_settitle'} || $T2H_THISDOC{fulltitle};
-    $T2H_THISDOC{author} = $value{'_author'};
-    $T2H_THISDOC{subtitle} = $value{'_subtitle'};
-    $T2H_THISDOC{shorttitle} = $value{'_shorttitle'};
+    $T2H_THISDOC{fulltitle} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || "Untitled Document";
+    $T2H_THISDOC{title} = substitute_line($value{'_settitle'}) || $T2H_THISDOC{fulltitle};
+    $T2H_THISDOC{author} = substitute_line($value{'_author'});
+    $T2H_THISDOC{subtitle} =  substitute_line($value{'_subtitle'});
+    $T2H_THISDOC{shorttitle} =  substitute_line($value{'_shorttitle'});
 
     for my $key (keys %T2H_THISDOC)
     {
@@ -4080,14 +4094,14 @@ sub begin_deff ($$$$)
         warn "$ERROR bad $state->{'deff'}, no type\n";
         return '';
     }
-    $type = substitute_text(1, $type);
+    $type = substitute_line($type);
     $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
     unless ($name)
     {
         warn "$ERROR bad $state->{'deff'} nothing after the type\n";
         return '';
     }
-    $name = substitute_text(1, $name);
+    $name = substitute_line($name);
     $line = '' if (!$line);
     print "# def ($tag): {$type} {$name}" . "$line"
         if $T2H_DEBUG & $DEBUG_DEF;
@@ -4105,7 +4119,7 @@ sub begin_deff ($$$$)
         if ($T2H_DEF_TABLE)
         {
             $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
-            $result .= substitute_text(1, $line);
+            $result .= substitute_line($line);
             $result .= "</td>\n";
             $result .= "<td align=\"right\">";
             $result .= "$type</td>\n</tr>\n";
@@ -4115,18 +4129,18 @@ sub begin_deff ($$$$)
             #FIXME <u> is deprecated in xhtml 1.1
             #use <span style="text-description: underline"> ?
             $result .= "<u>$type</u> <b>$name</b>";
-            $result .= substitute_text(1, $line);
+            $result .= substitute_line($line);
         }
     }
     elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
         || $tag eq 'deftypeop' || $tag eq 'defcv'
         || $tag eq 'defop')
     {
-        $ftype = substitute_text(1, $ftype);
+        $ftype = substitute_line($ftype);
         if ($T2H_DEF_TABLE)
         {
             $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
-            $result .= substitute_text(1, $line);
+            $result .= substitute_line($line);
             $result .= "</td>\n";
             $result .= "<td align=\"right\">";
             $result .= "$type of $ftype</td>\n</tr>\n";
@@ -4134,14 +4148,14 @@ sub begin_deff ($$$$)
         else
         {
             $result .= "<u>$type</u> $ftype <b>$name</b>";
-            $result .= substitute_text(1, $line);
+            $result .= substitute_line($line);
         }
     }
     else
     {
         warn "$ERROR Unknown definition type: $tag\n";
         $result .= "<u>$type</u> <b>$name</b>";
-        $result .= substitute_text(1, $line);
+        $result .= substitute_line($line);
     }
     $result .= do_index_entry_label($state);
     $result .= "</dt>\n" if (!$T2H_DEF_TABLE);
@@ -4395,10 +4409,10 @@ sub menu_entry($$)
 {
     my $menu_entry = shift;
     my $file = shift;
-    my $name = substitute_text(1, $menu_entry->{'name'});
+    my $name = substitute_line($menu_entry->{'name'});
     my $node_texi = normalise_space($menu_entry->{'node'});
-    my $node = substitute_text (1, $node_texi);
-    my $descr = substitute_text(1, $menu_entry->{'descr'});
+    my $node = substitute_line($node_texi);
+    my $descr = substitute_line($menu_entry->{'descr'});
 
     my $entry;
     my $element = $nodes{$node_texi};
@@ -4472,11 +4486,11 @@ sub do_menu_comment($)
     return '';
 }
 
-sub do_xref
+sub do_xref($$$)
 {
     my $macro = shift;
     my $text = shift;
-    my $file = shift;
+    my $state = shift;
 
     my $result = '';
     
@@ -4493,11 +4507,12 @@ sub do_xref
     my $i;
     for ($i = 0; $i < @args; $i++)
     {
-        # FIXME the state isn't transmitted, thus the $state->{'element'}
-        # for example isn't there (usefull to do href in xref, anchor). 
-        # What else should be transmitted ? This happens at other places.
-        $args[$i] = substitute_text(1, $args[$i]);
+        $args[$i] = substitute_text({ 'element' => $state->{'element'}, 
+           'preformatted' => $state->{'preformatted'},  'no_paragraph' => 1,
+           'keep_texi' => $state->{'keep_texi'} }, 
+           $args[$i]);
     }
+    #print STDERR "(@args)\n";
     if ($macro eq 'inforef')
     {# inforef 
         warn "$ERROR Wrong number of arguments: \@$macro" ."$text" unless @args == 3;
@@ -4522,7 +4537,7 @@ sub do_xref
             {
                 $element = $element->{'with_section'};
             }
-            my $href = href($element, $file);
+            my $href = href($element, $state->{'element'}->{'file'});
             my $section = $args[2] || $args[1];
             $result = do_internal_ref ($macro, $href, $section || $args[0], $section || $element->{'name'}, $element->{'section'});
         }
@@ -4598,10 +4613,22 @@ sub do_internal_ref($$$$$)
 sub do_anchor($$)
 {
     my $anchor = shift;
-    my $file = shift;
+    my $state = shift;
     $anchor = normalise_space($anchor);
+    # if the anchor is in a footnote we update the file. The refs appearing
+    # before the anchor will be wrong 
+    $nodes{$anchor}->{'file'} = $state->{'element'}->{'file'} if ($state->{'element'}->{'footnote'});
     return do_label($nodes{$anchor}->{'id'});
 }
+
+# This is a virtual element used to have the right hrefs for index entries
+# and anchors in footnotes
+my $footnote_element = 
+{ 
+    'id' => 'SEC_Foot',
+    'file' => $docu_foot,
+    'footnote' => 1
+};    
 
 sub do_footnote($$$)
 {
@@ -4609,6 +4636,7 @@ sub do_footnote($$$)
     my $text = shift;
     my $state = shift;
 
+    $text .= "\n";
     $foot_num++;
     my $docid  = "DOCF$foot_num";
     my $footid = "FOOT$foot_num";
@@ -4618,8 +4646,12 @@ sub do_footnote($$$)
     { 
         $from_file = $state->{'element'}->{'file'};
     }
+    my %state;
+    initialise_state (\%state);
+    $state{'element'} = $footnote_element;
+    
     push(@foot_lines, "<h3>" . t2h_anchor($footid, "$from_file#$docid", $foot) . "</h3>\n");
-    push(@foot_lines, "$text\n");
+    push(@foot_lines, substitute_text(\%state, map {$_ = $_."\n"} split (/\n/, $text)));
     my $file = '';
     $file = $docu_foot if ($T2H_SPLIT);
     return t2h_anchor($docid, "$file#$footid", $foot);
@@ -4892,17 +4924,9 @@ sub do_index_summary($$)
     return $summary;
 }
 
-sub remove_texi($)
+sub remove_texi(@)
 {
-    my $line = shift;
-    my @stack = ();
-    my $text = '';
-    my %state = ( 
-        'remove_texi' => 1,
-        'paragraph_style' => [ '' ]);
-    scan_line($line, \$text, \@stack, \%state);
-    close_stack (\$text, \@stack, \%state);
-    return $text;
+    return substitute_text ({ 'remove_texi' => 1 }, @_);
 }
 
 # return undef if the line shouldn't be kept
@@ -5063,27 +5087,27 @@ sub scan_texi($$)
         }
         elsif (s/^\@shorttitle\s+(.*)$//)
         {
-             $value{'_shorttitle'} = substitute_text(1, $1);
+             $value{'_shorttitle'} = substitute_texi(undef, $1);
         }
         elsif(s/^\@setfilename\s+(.*)$//)
         {
-             $value{'_setfilename'} = substitute_text(1, $1);
+             $value{'_setfilename'} = substitute_texi(undef, $1);
         }
         elsif(s/^\@settitle\s+(.*)$//)
         {
-              $value{'_settitle'} = substitute_text(1, $1);
+              $value{'_settitle'} = substitute_texi(undef, $1);
         }
         elsif(s/^\@author\s+(.*)$//)
         {
-             $value{'_author'}   .= substitute_text(1, $1)."\n";
+             $value{'_author'}   .= substitute_texi(undef, $1)."\n";
         }
         elsif(s/^\@subtitle\s+(.*)$//)
         {
-             $value{'_subtitle'} .= substitute_text(1, $1)."\n";
+             $value{'_subtitle'} .= substitute_texi(undef, $1)."\n";
         }
         elsif(s/^\@title\s+(.*)$//)
         {
-             $value{'_title'}    .= substitute_text(1, $1)."\n";
+             $value{'_title'}    .= substitute_texi(undef, $1)."\n";
         }
         else
         {
@@ -5249,7 +5273,6 @@ sub scan_texi($$)
             }
             elsif ($macro eq 'value')
             {
-                #FIXME pertusus: what is the e modifier ?
                 if (s/^{($VARRE)}//)
                 {
                     $_ = get_value($1) . $_;
@@ -5414,7 +5437,7 @@ sub scan_texi($$)
                        return '';
                     }
                     $anchor_num++;
-                    $nodes{$anchor} = { 'node' => 0, 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $anchor_num};
+                    $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $anchor_num};
                     push @{$state->{'place'}}, $nodes{$anchor};
                 }
                 else
@@ -5564,7 +5587,14 @@ sub scan_line($$$$)
     }
     if (/^\@(\w+?)index\s+(.*)/ and ($1 ne 'print'))
     {
-        add_prev($text, $stack, do_index_entry_label($state));
+        if ($state->{'keep_texi'})
+        {
+            add_prev($text, $stack, $_);
+        }
+        else
+        {
+            add_prev($text, $stack, do_index_entry_label($state));
+        }
         return;
     }
 
@@ -5800,18 +5830,6 @@ sub scan_line($$$$)
                 add_prev ($text, $stack, do_preformatted($paragraph->{'text'}, $state));
                 next;
             }
-            if ($macro eq 'value')
-            {
-                if (s/^{($VARRE)}//)
-                {
-                    $_ = get_value($1) . $_;
-                }
-		else
-                {
-                    print STDERR "Bug: bad value not allready catched\n";
-                }
-                next;
-            }
             if (s/^{//)
             {
                 if ($macro eq 'verb')
@@ -5826,13 +5844,8 @@ sub scan_line($$$$)
                         $state->{'verb'} = $1;
                     }
                 } #FIXME what to do if remove_texi and anchor/ref/footnote ?
-                $state->{'keep_texi'}++ if ($macro eq 'anchor' or $macro =~ /^(x|px|info|)ref$/o);
+                $state->{'keep_texi'}++ if ($macro eq 'anchor' or ($macro =~ /^(x|px|info|)ref$/o) or $macro eq 'footnote');
                 push (@$stack, { 'style' => $macro, 'text' => '' });
-                # if the macro is a footnote we begin a paragraph
-                if ($macro eq 'footnote')
-                {
-                    begin_paragraph($stack, $state);
-                }
                 next;
             }
             if ($state->{'keep_texi'})
@@ -5951,7 +5964,6 @@ sub scan_line($$$$)
                     {
                         $is_extra = 1;
                     }
-		    #push @$stack, { 'format' => $state->{'deff'}, 'text' => '' };
                     $macro =~ s/x$//o;
                     add_prev ($text, $stack, begin_deff($macro, $_, $state, $is_extra));
                     return;
@@ -6089,40 +6101,33 @@ sub scan_line($$$$)
                         add_prev ($text, $stack, $style->{'text'});
                         next;
                     }
-                    if ($style->{'format'} and ($style->{'format'} eq 'paragraph'))
-                    {
-                        my $top_stack = top_stack($stack);
-                        # When closing a footnote we must first close the paragraph
-                        if ($top_stack and $top_stack->{'style'} and ($top_stack->{'style'} eq 'footnote'))
-                        {
-                            add_prev($text, $stack, do_paragraph($style->{'text'}, $state));
-                            # If the footnote appeared within a paragraph, 
-                            # we must restore the state
-                            $state->{'paragraph'} = 1 if ($state->{'paragraph_nr'});
-                        }
-                        $style = pop @$stack;
-                    }
                             
                     if ($style->{'style'})
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
-                        if ($style->{'style'} eq 'anchor')
-                        {
-                            $result = do_anchor($style->{'text'}, $state->{'element'}->{'file'});
+                        if (($state->{'keep_texi'} > 1) and (($style->{'style'} eq 'anchor') or ($style->{'style'} =~ /^(x|px|info|)ref$/o) or ($style->{'style'} eq 'footnote')))
+                        { 
                             $state->{'keep_texi'}--;
+                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
+                        }
+                        elsif ($style->{'style'} eq 'anchor')
+                        {
+                            $state->{'keep_texi'}--;
+                            $result = do_anchor($style->{'text'}, $state);
                         }
                         elsif ($style->{'style'} =~ /^(x|px|info|)ref$/o)
                         {
-                            $result = do_xref($style->{'style'}, $style->{'text'}, $state->{'element'}->{'file'});
                             $state->{'keep_texi'}--;
+                            $result = do_xref($style->{'style'}, $style->{'text'}, $state);
+                        }
+                        elsif ($style->{'style'} eq 'footnote')
+                        {
+                             $state->{'keep_texi'}--;
+                             $result = do_footnote($style->{'style'}, $style->{'text'}, $state);
                         }
                         elsif($state->{'keep_texi'})
                         { # don't expand macros in anchor and ref
                             $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
-                        }
-                        elsif ($style->{'style'} eq 'footnote')
-                        {
-                            $result = do_footnote($style->{'style'}, $style->{'text'}, $state);
                         }
                         elsif ($style->{'style'} eq 'image')
                         {
@@ -6666,31 +6671,57 @@ sub print_elements($)
     }
 }
 
+sub substitute_line($)
+{
+    my $line = shift;
+    return substitute_text({ 'no_paragraph' => 1 }, $line);
+}
+
 sub substitute_text($@)
 {
-    my $no_paragraph = shift;
+    my $state = shift;
     my @stack = ();
-    my %state = ();
     my $text = '';
     my $result = '';
-    if ($no_paragraph)
-    {
-        $state{'no_paragraph'} = 1;
-    }
-    #delete $state{'paragraph'} = 0;
-    $state{'paragraph_style'} = [ '' ];
+    $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'});
+    $state->{'keep_texi'} = 0 unless exists($state->{'keep_texi'});
     
     while (@_)
     {
         my $line = shift @_;
         next unless (defined($line));
-        scan_line ($line, \$text, \@stack, \%state);
+        scan_line ($line, \$text, \@stack, $state);
         next if (@stack);
         $result .= $text;
         $text = '';
     }
-    close_stack (\$text, \@stack, \%state);
+    close_stack (\$text, \@stack, $state);
     return $result . $text;
+}
+
+sub substitute_texi($@)
+{
+    my $state = shift;
+    my $result = '';
+    unless (defined($state))
+    {
+        $state = {};
+        initialise_state_texi($state);
+    }
+    
+    while (@_)
+    {
+        my $line = shift @_;
+        next unless (defined($line));
+        my $text = scan_texi ($line, $state);
+        unless (defined($text))
+        {
+            last if ($state->{'bye'});
+            next;
+        }
+        $result .= $text;
+    }
+    return $result;
 }
 
 # $name           :   anchor name
@@ -6761,6 +6792,16 @@ sub do_index_entry_label($$)
     my $state = shift;
     my $entry = shift @index_labels;
     
+    # In case the index entry is on a footnote page, we must change 
+    # the index informations
+    if ($state->{'element'}->{'footnote'})
+    {
+        # this isn't needed, the footnote allready imposes a label distinct
+        # than the element id, however it doesn't hurt.
+        $entry->{'label'} = 'IDX' . ++$idx_num unless ($entry->{'label'});
+        $entry->{'element'} = $state->{'element'};
+    }
+ 
     #print STDERR "adding $entry->{'html_key'} $entry->{'label'}\n";
     my $label = do_label($entry->{'label'}) if ($entry->{'label'});
     $label .= "\n" if ($label and !$state->{'preformatted'});

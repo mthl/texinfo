@@ -127,6 +127,7 @@ if [ ! -z $1 ]; then
 fi
 
 test_texi GermanNodeTest nodetest.texi
+test_texi formatting nodetest.texi "-split chapter"
 test_texi index_table
 test_texi macros
 test_texi macros simple_macro.texi
@@ -139,6 +140,7 @@ test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
 test_texi xemacs_frame xemacs.texi "-split chapter -frames"
+test_texi texinfo info-stnd.texi "-split chapter"
 test_texi texinfo texinfo.txi "-split chapter" txi success ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter" texinfo
 

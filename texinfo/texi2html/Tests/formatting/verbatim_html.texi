@@ -241,6 +241,11 @@ in that case in info. tex doesn't like the paragraph break in the ref
 node, within ref a footnote @footnote{with empty line
 
 before before}}.
+
+Conversely, a ref in a footnote
+@footnote{ This is a ref @ref{First node} }
+
+
 @end ifnottex
 
 Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
