@@ -1,5 +1,9 @@
 2003-11-15  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (quotation): document it.
+	* doc/texinfo.tex (\quotation): accept optional argument.
+	(\doquotation): new macro to test for and typeset it.
+
 	* doc/texinfo.txi (Multitable Rows): document @headitem.
 
 	* doc/texinfo.tex (\headitem): error by default, redefine inside
