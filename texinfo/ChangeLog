@@ -1,5 +1,6 @@
 2003-10-29  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Def Cmd Template): shorten.
 	* makeinfo/makeinfo.c: help message.
 	* doc/texinfo.tex: version update.
 	* makeinfo/texinfo.dtd: update copyright.
