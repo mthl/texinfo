@@ -1,3 +1,16 @@
+2003-11-28  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/sectioning.h:
+	* makeinfo/sectioning.c (current_sectioning_number)
+	(current_sectioning_title): new functions.
+
+	* makeinfo/sectioning.c (get_sectioning_number): moved space char at
+	the end of numbers to ...
+	(insert_and_underscore, sectioning_html): here.
+	(get_sectioning_number, insert_and_underscore): keep track of the last
+	number/title to be used by @float, @cindex like commands that need to
+	know in which section they are used.
+
 2003-11-27  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_math): new function that encloses @math

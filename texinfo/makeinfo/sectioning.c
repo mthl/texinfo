@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.22 2003-11-25 09:51:38 dirt Exp $
+   $Id: sectioning.c,v 1.23 2003-11-28 03:24:26 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -82,6 +82,13 @@ static char *scoring_characters = "*=-.";
 /* Amount to offset the name of sectioning commands to levels by. */
 static int section_alist_offset = 0;
 
+/* These two variables are for @float, @cindex like commands that need to know
+   in which section they are used.  */
+/* Last value returned by get_sectioning_number.  */
+static char *last_sectioning_number;
+/* Last title used by sectioning_underscore, etc.  */
+static char *last_sectioning_title;
+
 
 /* num == ENUM_SECT_NO  means unnumbered (should never call this)
    num == ENUM_SECT_YES means numbered
@@ -115,12 +122,14 @@ get_sectioning_number (level, num)
   if ((num == ENUM_SECT_APP)
       && (i == 0)
       && (enum_marker == APPENDIX_MAGIC))
-    sprintf (p, _("Appendix %c "), numbers[i] + 64);
-  else if (docbook)
-    /* Docbook shouldn't get the space.  */
-    sprintf (p, "%d", numbers[i]);
+    sprintf (p, _("Appendix %c"), numbers[i] + 64);
   else
-    sprintf (p, "%d ", numbers[i]);
+    sprintf (p, "%d", numbers[i]);
+
+  /* Poor man's cache :-)  */
+  if (last_sectioning_number)
+    free (last_sectioning_number);
+  last_sectioning_number = xstrdup (s);
 
   return s;
 }
@@ -266,6 +275,23 @@ current_chapter_number ()
     }
 }
 
+/* Returns number of the last sectioning command used.  */
+char *
+current_sectioning_number ()
+{
+  if (enum_marker == UNNUMBERED_MAGIC || !number_sections)
+    return xstrdup ("");
+  else
+    return xstrdup (last_sectioning_number);
+}
+
+/* Returns arguments of the last sectioning command used.  */
+char *
+current_sectioning_name ()
+{
+  return xstrdup (last_sectioning_title);
+}
+
 /* insert_and_underscore, sectioning_underscore and sectioning_html call this.  */
 
 static char *
@@ -402,6 +428,11 @@ insert_and_underscore (level, with_char, cmd)
   get_rest_of_line (0, &temp);
   starting_pos = output_paragraph + output_paragraph_offset;
 
+  /* Poor man's cache for section title.  */
+  if (last_sectioning_title)
+    free (last_sectioning_title);
+  last_sectioning_title = xstrdup (temp);
+
   index = search_sectioning (cmd);
   if (index < 0)
     {
@@ -415,7 +446,7 @@ insert_and_underscore (level, with_char, cmd)
      output.  */
 
   /* Step 1: produce "X.Y" and add it to Info output.  */
-  add_word (handle_enum_increment (level, index));
+  add_word_args ("%s ", handle_enum_increment (level, index));
 
   /* Step 2: add "SECTION-NAME" to both Info and macro-expanded output.  */
   if (macro_expansion_output_stream && !executing_string)
@@ -504,7 +535,7 @@ sectioning_html (level, cmd)
     }
 
   /* Produce "X.Y" and add it to HTML output.  */
-  add_word (handle_enum_increment (level, index));
+  add_word_args ("%s ", handle_enum_increment (level, index));
 
   /* add the section name to both HTML and macro-expanded output.  */
   if (macro_expansion_output_stream && !executing_string)
