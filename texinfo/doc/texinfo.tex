@@ -447,17 +447,6 @@
 }
 
 
-% Single-spacing is done by various environments (specifically, in
-% \nonfillstart and \quotations).
-\newskip\singlespaceskip \singlespaceskip = 12.5pt
-\def\singlespace{%
-  % Why was this kern here?  It messes up equalizing space above and below
-  % environments.  --karl, 6may93
-  %{\advance \baselineskip by -\singlespaceskip
-  %\kern \baselineskip}%
-  \setleading\singlespaceskip
-}
-
 %% Simple single-character @ commands
 
 % @@ prints an @
@@ -4358,7 +4347,6 @@ width0pt\relax} \fi
   \inENV % This group ends at the end of the body
   \hfuzz = 12pt % Don't be fussy
   \sepspaces % Make spaces be word-separators rather than space tokens.
-  \singlespace
   \let\par = \lisppar % don't ignore blank lines
   \obeylines % each line of input is a line of output
   \parskip = 0pt
@@ -4473,7 +4461,6 @@ width0pt\relax} \fi
 \def\quotation{%
   \begingroup\inENV %This group ends at the end of the @quotation body
   {\parskip=0pt \aboveenvbreak}% because \aboveenvbreak inserts \parskip
-  \singlespace
   \parindent=0pt
   % We have retained a nonzero parskip for the environment, since we're
   % doing normal filling. So to avoid extra space below the environment...
