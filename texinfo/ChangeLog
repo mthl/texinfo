@@ -1,3 +1,8 @@
+2002-12-23    <karl@gnu.org>
+
+	* doc/texinfo.txi (example): note that Texinfo commands are
+		expanded, plus other changes.  Suggestion from Nelson Beebe.
+
 2002-12-20    <karl@gnu.org>
 
 	* config.guess: update from prep.
