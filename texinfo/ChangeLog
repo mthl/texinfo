@@ -1,3 +1,17 @@
+2004-11-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (euro): new node, documenting new command,
+		@euro{}, for the Euro currency symbol.
+	* doc/texinfo.tex (\euro): new command, along with \eurofont to
+	support it.  The following extra font support is also related to
+	supporting @euro{}:
+	(\bfstylename): define this.
+	(\textnominalsize .. \ssecnominalsize): new macros.
+	(\textfonts .. \ssecfonts): define \curfontsize.
+	* makeinfo/cmds.c (command_table): add euro.
+	* makeinfo/lang.c (cm_special_char): handle euro.
+	(iso8859_15_map): new global.	
+
 2004-11-18  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\ptexnewwrite): Save \newwrite.

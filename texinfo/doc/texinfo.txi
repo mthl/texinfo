@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.115 2004-10-07 12:13:02 karl Exp $
+@c $Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -440,6 +440,7 @@ Special Insertions
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
                                  and the copyright symbol.
+* euro::                        How to insert the Euro currency symbol.
 * pounds::                      How to insert the pounds currency symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
@@ -9991,6 +9992,7 @@ These are:
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
                                  and the copyright symbol.
+* euro::                        How to insert the Euro currency symbol.
 * pounds::                      How to insert the pounds currency symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
@@ -10525,14 +10527,38 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 @samp{R} inside a circle; in Info, this is @samp{(R)}.
 
 
+@node euro
+@section @code{@@euro}@{@} (@euro{}): Euro currency symbol
+@findex euro
+
+Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
+possible, this is the symbol for the Euro currency, invented as part
+of the European economic unification relatively recently.  In plain
+Info, it is the word @samp{Euro }.  (The space is included in the text
+transliteration since typically there would be no space after the
+symbol, so it would be inappropriate to have a space in the source document.)
+
+Texinfo cannot magically synthesize support for the Euro symbol where
+the underlying system (fonts, software, whatever) does not support
+it.  Therefore, in many cases it is preferable to use the word
+``Euro''.  (In banking circles, the abbreviation for the Euro is EUR.)
+
+@cindex ISO 8859-15
+@cindex Latin 9
+In order to get the Euro symbol in encoded Info output, for example,
+it is necessary to specify @code{@@documentencoding ISO-8859-15}.
+(@xref{documentencoding}.)  The Euro symbol is in ISO 8859-15 (aka
+Latin@tie{}9), and is @emph{not} in the more widely-used and supported
+ISO 8859-1 (Latin@tie{}1).
+
+
 @node pounds
 @section @code{@@pounds}@{@} (@pounds{}): Pounds Sterling
 @findex pounds
 
-Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  In a
-printed manual, this is the symbol for the currency pounds sterling.
-In Info, it is a @samp{#}.  Other currency symbols are unfortunately not
-available.
+Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
+possible, this is the symbol for the currency pounds sterling.  In
+Info, it is a @samp{#}.
 
 
 @node minus
@@ -13332,16 +13358,22 @@ The @code{@@documentencoding} command declares the input document
 encoding.  Write it on a line by itself, with a valid encoding
 specification following.
 
-At present, Texinfo supports only three encodings:
+At present, Texinfo supports only these encodings:
 
 @table @code
 @item US-ASCII
 This has no particular effect, but it's included for completeness.
+
 @itemx ISO-8859-1
+@itemx ISO-8859-15
 @item ISO-8859-2
-These specify the standard encodings for Western European and
-Eastern European languages, respectively.  A full description of the
-encodings is beyond our scope here;
+These specify the standard encodings for Western European (the first
+two) and Eastern European languages (the third), respectively.  ISO
+8859-15 replaces some little-used characters from 8859-1 (e.g.,
+precomposed fractions) with more commonly needed ones, such as the
+Euro symbol.
+
+A full description of the encodings is beyond our scope here;
 @uref{http://czyborra.com/charsets/iso8859.html} is one of many useful
 references.
 @end table
@@ -13351,11 +13383,11 @@ Specifying an encoding @var{enc} has the following effects:
 @opindex --enable-encoding
 @cindex Local Variables: section, for encoding
 @cindex Info output, and encoding
-In Info output, if the option @option{--enable-encoding} is also given
+In Info output, if the option @option{--enable-encoding} is given
 to @command{makeinfo}, a so-called `Local Variables' section
 (@pxref{File Variables,,,emacs,The GNU Emacs Manual}) is output
 including @var{enc}.  This allows Info readers to set the encoding
-appropriately:
+appropriately.
 
 @example
 Local Variables:
@@ -13369,7 +13401,7 @@ End:
 In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
 section of the HTML, that specifies @var{enc}.  Web servers and
 browsers cooperate to use this information so the correct encoding is
-used to display the page.
+used to display the page, if supported by the system.
 
 @example
 <meta http-equiv="Content-Type" content="text/html;
@@ -17041,6 +17073,10 @@ Optionally, start list with @var{number-or-letter}.  Pair with
 Indicate to the reader the exact equivalence of two forms with a
 glyph: @samp{@equiv{}}.  @xref{Equivalence}.@refill
 
+@item @@euro@{@}
+Generate the Euro currency sign.
+@xref{euro,,@code{@@euro@{@}}}.
+
 @item @@error@{@}
 Indicate to the reader with a glyph that the following text is
 an error message: @samp{@error{}}.  @xref{Error Glyph}.@refill
@@ -18356,7 +18392,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.115 2004-10-07 12:13:02 karl Exp $
+$Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18422,7 +18458,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.115 2004-10-07 12:13:02 karl Exp $
+@comment $Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

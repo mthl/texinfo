@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.52 2004-08-02 14:10:41 karl Exp $
+   $Id: cmds.c,v 1.53 2004-11-22 23:57:33 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -183,6 +183,7 @@ COMMAND command_table[] = {
   { "env", cm_code, BRACE_ARGS },
   { "equiv", cm_equiv, BRACE_ARGS },
   { "error", cm_error, BRACE_ARGS },
+  { "euro", cm_special_char, BRACE_ARGS },
   { "evenfooting", cm_ignore_line, NO_BRACE_ARGS },
   { "evenheading", cm_ignore_line, NO_BRACE_ARGS },
   { "everyfooting", cm_ignore_line, NO_BRACE_ARGS },
