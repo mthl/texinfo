@@ -1,3 +1,8 @@
+2002-11-12    <karl@gnu.org>
+
+	* makeinfo/Makefile.am (makeinfo_SOURCES): remove docbook.[ch],
+	per feloy the docbook stuff is in xml.[ch] now.
+
 2002-11-12 19:48  feloy
 
 	* makeinfo/: lang.c, makeinfo.c: (docbook) Entities for accented
