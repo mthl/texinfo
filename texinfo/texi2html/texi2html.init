@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.58 2003-12-10 10:44:40 pertusus Exp $
+# $Id: texi2html.init,v 1.59 2003-12-15 22:59:19 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1449,6 +1449,54 @@ $pre_map{'dots'} = '...';
 $pre_map{'enddots'} = '....';
 #$pre_map{'br'} = "\n";
 
+# ascii representation of @-commands
+%ascii_simple_map = (
+           "*", "\n",     # HTML+
+           ' ', ' ',
+           "\t", "\t",
+           "\n", "\n",
+           '-', '',  # hyphenation hint
+           '|', '',  # used in formatting commands @evenfooting and friends
+           '/', '',
+           ':', '',
+           '!', '!',
+           '?', '?',
+           '.', '.',
+           '@', '@',
+           '}', '}',
+           '{', '{',
+);
+
+%ascii_things_map = (
+               'TeX'          => 'TeX',
+               'bullet'       => '*',
+               'copyright' => '(C)',
+               'dots'         => '...',
+               'enddots'      => '....',
+               'equiv'        => '==',
+# i18n
+               'error'        => 'error-->',
+               'expansion'    => '==>',
+               'minus'        => '-',
+               'point'        => '-!-',
+               'print'        => '-|',
+               'result'       => '=>',
+               'aa'           => 'aa',
+               'AA'           => 'AA',
+               'ae'           => 'ae',
+               'oe'           => 'oe', 
+               'AE'           => 'AE',
+               'OE'           => 'OE',
+               'o'            =>  '/o',
+               'O'            =>  '/O',
+               'ss'           => 'ss',
+               'l'            => '/l',
+               'L'            => '/L',
+               'exclamdown'   => '?',
+               'questiondown' => '!',
+               'pounds'       => '#'
+);
+
 # taken from
 #Latin extended additionnal
 #http://www.alanwood.net/unicode/latin_extended_additional.html
@@ -1490,7 +1538,7 @@ $pre_map{'enddots'} = '....';
                'pounds'       => '00A3'
              );
 
-%ascii_map = (
+%ascii_character_map = (
             ' ' => '0020',
             '!' => '0021',
             '"' => '0022',
@@ -1961,20 +2009,29 @@ sub default_accent($$)
               #return $text;
          }
     }
-    return $text if ($accent eq 'dotless');
     #return $text . '=' if ($accent eq '=');
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
+    return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return $text . '&lt;' if ($accent eq 'v');
+    return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return ascii_accents($text, $accent);
+}
+
+sub ascii_accents($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return $text if ($accent eq 'dotless');
+    #return $text . '=' if ($accent eq '=');
     return $text . $accent if (defined($accent_map{$accent}));
     return $text . "''" if ($accent eq 'H');
     return $text . '.' if ($accent eq 'dotaccent');
-    return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '*' if ($accent eq 'ringaccent');
     return $text . '[' if ($accent eq 'tieaccent');
     return $text . '(' if ($accent eq 'u');
     return $text . '_' if ($accent eq 'ubaraccent');
     return '.' . $text  if ($accent eq 'udotaccent');
-    return $text . '&lt;' if ($accent eq 'v');
-    return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return $text . '<' if ($accent eq 'v');
     return $text . ',' if ($accent eq ','); 
 }
 

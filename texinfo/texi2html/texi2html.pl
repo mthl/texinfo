@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.92 2003-12-10 12:30:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.93 2003-12-15 22:59:19 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -342,7 +342,9 @@ our %paragraph_style;
 our %things_map;
 our %pre_map;
 our %utf8_map;
-our %ascii_map;
+our %ascii_character_map;
+our %ascii_simple_map;
+our %ascii_things_map;
 our %iso_symbols;
 our %to_skip;
 our %css_map;
@@ -433,6 +435,7 @@ sub T2H_GPL_style($$$$$)
     my $text = shift;
     my $no_close = shift;
     my $no_open = shift;
+    my $style_stack = shift;
 
     my $do_quotes = 0;
     if ($style =~ s/^\"//)
@@ -443,7 +446,7 @@ sub T2H_GPL_style($$$$$)
     {                       # custom
         no strict "refs";
         $style = 'Texi2HTML::Config::' . $style;
-        $text = &$style($text, $texi_style);
+        $text = &$style($text, $texi_style, $style_stack);
         use strict "refs";
     }
     elsif ($style ne '')
@@ -1289,7 +1292,7 @@ $T2H_OPTIONS -> {'no-menu'} =
 $T2H_OPTIONS -> {'number'} =
 {
  type => '!',
- linkage => $Texi2HTML::Config::NUMBER_SECTIONS,
+ linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
  verbose => 'use numbered sections',
 };
 
@@ -1808,7 +1811,6 @@ if (@ARGV > 1)
 # $T2H_DEBUG and $T2H_VERBOSE are shorthands
 my $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
-
 
 #+++############################################################################
 #                                                                              #
@@ -4726,9 +4728,9 @@ sub cross_manual_protect_text($)
         }
         elsif ($text =~ s/^(.)//o)
         {
-             if (exists($Texi2HTML::Config::ascii_map{$1}))
+             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
              {
-                  $result .= '_' . lc($Texi2HTML::Config::ascii_map{$1});
+                  $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$1});
              }
         }
         else
@@ -4865,7 +4867,8 @@ sub enter_index_entry($$$$$$)
     my $entry = $key;
     # The $key is only usefull for alphabetical sorting
     # FIXME if the index is a code index we should have $state->{'code_style'}=1
-    # or add @code{} to the $key, otherwise --- will be changed to --.
+    # or add @code{} to the $key, otherwise --- will be changed to -- and more
+    # importantly `` to "
     $key = remove_texi($key);
     return if ($key =~ /^\s*$/);
     while (exists $index->{$prefix}->{$key})
@@ -5066,6 +5069,7 @@ sub initialise_state($)
     $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'}); 
     $state->{'preformatted_stack'} = [ '' ] unless exists($state->{'preformatted_stack'}); 
     $state->{'menu'} = 0 unless exists($state->{'menu'}); 
+    $state->{'style_stack'} = [] unless exists($state->{'style_stack'});
     # if there is no $state->{'element'} the first element is used
     $state->{'element'} = $elements_list[0] unless (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'});
 }
@@ -6172,11 +6176,7 @@ sub do_insertcopying($)
 {
     my $state = shift;
     return '' unless @{$region_lines{'copying'}};
-    return substitute_text({ 'element' => $state->{'element'}, 
-           'preformatted' => $state->{'preformatted'},
-           'keep_texi' => $state->{'keep_texi'},
-           'code_style' => $state->{'code_style'} },
-           @{$region_lines{'copying'}});
+    return substitute_text(duplicate_state($state), @{$region_lines{'copying'}});
 }
 
 sub get_deff_index($$)
@@ -6568,13 +6568,9 @@ sub menu_link($$;$)
     my $file = $state->{'element'}->{'file'};
     my $node_name = normalise_node($menu_entry->{'node'});
     
-    my $substitution_state = { 'no_paragraph' => 1, 'element' => $state->{'element'}, 
-       'preformatted' => $state->{'preformatted'}, 
-       'code_style' => $state->{'code_style'},
-       'preformatted_stack' => $state->{'preformatted_stack'} };
-         
-    my $name = substitute_text($substitution_state, $menu_entry->{'name'});
-    my $node = substitute_text($substitution_state, $menu_entry->{'node'});
+    my $substitution_state = duplicate_state($state);
+    my $name = substitute_line($menu_entry->{'name'}, $substitution_state);
+    my $node = substitute_line($menu_entry->{'node'}, $substitution_state);
 
     if (($name ne '') and !$state->{'preformatted'} and $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
     {
@@ -6693,13 +6689,10 @@ sub do_xref($$$$)
     }
     
     my $i;
+    my $new_state = duplicate_state($state);
     for ($i = 0; $i < 5; $i++)
     {
-        $args[$i] = substitute_text({ 'element' => $state->{'element'}, 
-           'preformatted' => $state->{'preformatted'}, 
-           'code_style' => $state->{'code_style'}, 'no_paragraph' => 1,
-           'keep_texi' => $state->{'keep_texi'}, 'preformatted_stack' => $state->{'preformatted_stack'} }, 
-           $args[$i]);
+        $args[$i] = substitute_line($args[$i], $new_state);
     }
     #print STDERR "(@args)\n";
     
@@ -6879,13 +6872,26 @@ sub do_image($$$$)
     return &$Texi2HTML::Config::image(&$Texi2HTML::Config::protect_text($image), &$Texi2HTML::Config::protect_text($base), $state->{'preformatted'}, $file_name);
 }
 
-sub apply_style($$;$$$)
+sub duplicate_state($)
+{
+    my $state = shift;
+    my $new_state = { 'element' => $state->{'element'}, 
+           'preformatted' => $state->{'preformatted'}, 
+           'code_style' => $state->{'code_style'}, 
+           'keep_texi' => $state->{'keep_texi'}, 
+           'preformatted_stack' => $state->{'preformatted_stack'} 
+    };
+    return $new_state;
+}
+
+sub apply_style($$$$$$)
 {
     my $texi_style = shift;
     my $text = shift;
     my $preformatted = shift;
     my $no_open = shift;
     my $no_close = shift;
+    my $style_stack = shift;
     my $style;
     if ($preformatted)
     {
@@ -6897,7 +6903,7 @@ sub apply_style($$;$$$)
     }
     if (defined($style))
     {                           # known style
-        $text = &$Texi2HTML::Config::style ($style, $texi_style, $text, $no_close, $no_open);
+        $text = &$Texi2HTML::Config::style ($style, $texi_style, $text, $no_close, $no_open, $style_stack);
     }
     return($text);
 }
@@ -8856,6 +8862,7 @@ sub scan_line($$$$;$)
                       $state->{'code_style'}++;
                 }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
+                push (@{$state->{'style_stack'}}, $macro) if ($Texi2HTML::Config::style_map{$macro});
                 next;
             }
 
@@ -8958,7 +8965,7 @@ sub scan_line($$$$;$)
                  {
                      my ($style, $category, $name, $type, $class, $arguments);
                      ($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_); 
-                     $category = substitute_line($category) if (defined($category));
+                     $category = remove_texi($category) if (defined($category));
                      # FIXME -- --- ''... should be protected (not by makeinfo)
                      $name = remove_texi($name) if (defined($name));
                      # FIXME -- --- ''... should be protected (not by makeinfo)
@@ -9103,6 +9110,7 @@ sub scan_line($$$$;$)
                     $state->{'deff'} = $macro;
                     my ($style, $category, $name, $type, $class, $arguments);
                     ($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_); 
+                    # duplicate_state ?
                     $category = substitute_line($category) if (defined($category));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     $name = substitute_line($name) if (defined($name));
@@ -9324,6 +9332,11 @@ sub scan_line($$$$;$)
                         else
                         {
 				#print STDERR "DO_SIMPLE $style->{'style'}\n";
+                             if ($Texi2HTML::Config::style_map{$macro} and !$style->{'no_close'})
+                             {
+                                 my $style = pop @{$state->{'style_stack'}};
+                                 print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
+                             }
                              $result = do_simple($macro, $style->{'text'}, $state, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                              if ($state->{'code_style'} < 0)
                              {
@@ -9658,7 +9671,7 @@ sub do_simple($$$;$$$)
         }
         else 
         {
-             $result = apply_style($macro, $text, $state->{'preformatted'}, $no_open, $no_close);
+             $result = apply_style($macro, $text, $state->{'preformatted'}, $no_open, $no_close, $state->{'style_stack'});
              if (!$no_close and $code_style_map{$macro})
              {
                   $state->{'code_style'}--;
@@ -10139,10 +10152,13 @@ sub print_elements($)
     }
 }
 
-sub substitute_line($)
+sub substitute_line($;$)
 {
     my $line = shift;
-    return substitute_text({ 'no_paragraph' => 1 }, $line);
+    my $state = shift;
+    $state = {} if (!defined($state));
+    $state->{'no_paragraph'} = 1;
+    return substitute_text($state, $line);
 }
 
 sub substitute_text($@)

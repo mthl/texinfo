@@ -1,3 +1,12 @@
+2003-12-15  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add hashes for the ascii
+	representations of @-commands and a function for ascii accents.
+	Give style functions the style @-command stack.
+	New function duplicate_state to be used when special text is expanded 
+	within a normal context.
+	substitute_line accepts a $state argument.
+
 2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* INTRODUCTION, NEWS, README, TODO, texi2html.1.in, doc/TODO: bring

@@ -35,7 +35,7 @@ This file records noteworthy changes.
   leading T2H_ is stripped from variable, hashes and array names. You should 
   change your variable names for the new release. As the global variables 
   (%THISDOC, $THIS_SECTION...) are in the Texi2HTML namespace you should use,
-  for example $Texi2HTML::THISDOC{'fulltitle'} now.
+  for example, $Texi2HTML::THISDOC{'fulltitle'} now.
   functions from the main program should now be qualified in the main
   namespace. t2h_ is stripped from the function names too.
   t2h_anchor is now a function reference in init file, and thus should 
