@@ -1,20 +1,20 @@
-<!-- $Id: texinfo.dtd,v 1.4 2004-12-19 15:08:55 karl Exp $
-   Document Type Definition for Texinfo.
+<!-- $Id: texinfo.dtd,v 1.5 2005-02-13 23:02:13 karl Exp $
+   Document Type Definition for Texinfo (makeinfo --xml).
 
-   Author: Philippe Martin (feloy@free.fr)
-   Contributors:
-           Karl Eichwalder (keichwa@gmx.net)
-           Alper Ersoy (dirt@gtk.org)
-
-   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+  Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
+   Author: Philippe Martin (feloy@free.fr)
+   Contributors:
+           Karl Eichwalder (keichwa@gmx.net)
+           Alper Ersoy (dirt@gtk.org)
+           Karl Berry (karl@gnu.org)
 -->
 
-<!-- ENTITIES -->
+<!-- * ENTITIES * -->
 
 <!-- Meta-information -->
 <!ENTITY % metainformation "setfilename | settitle | dircategory
@@ -34,7 +34,6 @@
 <!ENTITY % titlepage_cmds "author | booktitle | booksubtitle">
 
 <!-- block -->
-<!-- ***** -->
 <!ENTITY % block "menu | para | quotation | example | smallexample | lisp
                   | smalllisp | cartouche | copying
                   | format | smallformat | display
@@ -42,19 +41,16 @@
                   | table | multitable | definition">
 
 <!-- API definitions -->
-<!-- *************** -->
 <!ENTITY % definition.cmds "defcategory | deffunction | defvariable | defparam
                             | defdelimiter | deftype | defparamtype | defdatatype
                             | defclass | defclassvar | defoperation">
 
 <!-- Headings -->
-<!-- ******** -->
 <!ENTITY % headings "majorheading | chapheading | heading | subheading
                      | subsubheading">
 
 
 <!-- Sectioning -->
-<!-- ********** -->
 <!ENTITY % section.level1 "top | chapter | unnumbered | appendix">
 
 <!ENTITY % section.level2 "section | unnumberedsec | appendixsec">
@@ -97,7 +93,6 @@
 
 
 <!-- Inline -->
-<!-- ****** -->
 <!ENTITY % Inline.emphasize "strong | emph">
 <!ENTITY % Inline.fonts "b | i | r | sansserif | slanted | titlefont | tt">
 <!ENTITY % Inline.footnote "footnote">
@@ -113,12 +108,9 @@
             | %Inline.footnote; ">
 
 
-<!-- ************ -->
-<!-- * ELEMENTS * -->
-<!-- ************ -->
+<!--  * ELEMENTS * -->
 
 <!-- TOP Level Element -->
-<!-- ***************** -->
 <!ELEMENT texinfo ((%metainformation; | titlepage | node | %block; | %toc;
                     | %variables; | %lang;)* )>
 <!ATTLIST texinfo xml:lang (%languagecodes;) 'en'>
@@ -150,7 +142,6 @@
 <!ELEMENT booksubtitle (#PCDATA | %Inline.phrase;)*>
 
 <!-- NODES -->
-<!-- ***** -->
 <!ELEMENT node (nodename, nodenext?, nodeprev?, nodeup?,
                 (%section.all; | %block; | %toc; | %lang; | image)*) >
 
@@ -159,9 +150,8 @@
 <!ELEMENT nodeprev (#PCDATA)>
 <!ELEMENT nodeup   (#PCDATA)>
 
-<!-- SECTIONING -->
-<!-- ********** -->
 
+<!-- SECTIONING -->
 <!ELEMENT top           (title?, (%section.level1.content;))>
 
 <!ELEMENT chapter       (title?, (%section.level1.content;))>
@@ -190,8 +180,8 @@
 <!-- Negative Indentation in Blocks -->
 <!ELEMENT exdent       (#PCDATA | %Inline.phrase;)*>
 
+
 <!-- BLOCK Elements -->
-<!-- ************** -->
 
 <!ELEMENT quotation    (%block; | %Inline.phrase; | exdent)*>
 <!ELEMENT documentdescription (#PCDATA | %block; | %Inline.phrase;)*>
