@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.89 2003-12-05 16:25:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.90 2003-12-05 19:14:51 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1713,7 +1713,7 @@ Usage: texi2html  [OPTIONS] TEXINFO-FILE
 Translates Texinfo source documentation to HTML.
 EOT
 my $T2H_FAILURE_TEXT = <<EOT;
-Try 'texi2html -help' for usage instructions.
+Try 'texi2html --help' for usage instructions.
 EOT
 
 my $options = new Getopt::MySimple;
@@ -1723,7 +1723,7 @@ eval {Getopt::Long::Configure("pass_through");};
 my $Configure_failed = $@ && <<EOT;
 **WARNING: Parsing of obsolete command-line options could have failed.
            Consider to use only documented command-line options (run
-           'texi2html -help 2' for a complete list) or upgrade to perl
+           'texi2html --help 2' for a complete list) or upgrade to perl
            version 5.005 or higher.
 EOT
 # FIXME getOptions is called 2 times, and thus adds 2 times the default 

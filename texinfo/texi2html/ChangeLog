@@ -1,3 +1,7 @@
+2003-12-05  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.pl: Suggest `--help' rather than `-help' in error messages.
+
 2003-12-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: @sp without arg is considered to be @sp 1
