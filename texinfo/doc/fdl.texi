@@ -1,3 +1,4 @@
+
 @node GNU Free Documentation License
 @appendixsec GNU Free Documentation License
 
@@ -399,3 +400,4 @@ to permit their use in free software.
 @c Local Variables:
 @c ispell-local-pdict: "ispell-dict"
 @c End:
+
