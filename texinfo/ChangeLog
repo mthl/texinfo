@@ -1,3 +1,23 @@
+2003-07-28  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/html.c (process_css_file): @c (for @charset) should
+	also put us into import_state.
+
+	* doc/texinfo.txi (Conditional Nesting): new section; also change
+	other conditional sections slightly.
+
+	* doc/texinfo.tex (\doignoretext, \doignoretextyyy): Only look for
+	conditionals at the beginning of a line, to avoid problems with a
+	commented conditional.  Fix from: Stepan Kasal
+	<kasal@math.cas.cz>, 28 Jul 2003 02:50:41 +0200.
+
+2003-07-27  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\doignore): Rewritten to handle nesting.
+	  (\ignoremorecommands, \obstexwarn, \ifwarnedobs): No longer needed.
+	  (\nestedignore): No longer needed.
+	  (\readauxfile): Remove reference to \warnedobstrue.
+
 2003-07-27  Karl Berry  <karl@gnu.org>
 
 	* util/dir-example: lowercase automake.
