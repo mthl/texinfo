@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Texinfo 4.0i\n"
-"POT-Creation-Date: 2002-11-12 16:27-0800\n"
+"POT-Creation-Date: 2002-11-13 04:36-0800\n"
 "PO-Revision-Date: 2002-02-25 23:06+01:00\n"
 "Last-Translator: Trond Endrestøl <trond@ramstind.gtf.ol.no>\n"
 "Language-Team: Norwegian-bokmål <no@li.org>\n"
@@ -2441,7 +2441,7 @@ msgstr "%c%s mangler avsluttende krøllparentes"
 msgid "First argument to cross-reference may not be empty"
 msgstr "Det første argumentet til kryssreferanser kan ikke være tomt"
 
-#: makeinfo/makeinfo.c:3036 makeinfo/makeinfo.c:3254 makeinfo/xml.c:1420
+#: makeinfo/makeinfo.c:3036 makeinfo/makeinfo.c:3254 makeinfo/xml.c:1421
 msgid "see "
 msgstr "se "
 
