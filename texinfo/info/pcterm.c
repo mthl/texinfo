@@ -1,5 +1,5 @@
 /* pc_term.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.2 2003-03-22 17:43:05 karl Exp $
+   $Id: pcterm.c,v 1.3 2003-03-31 21:43:27 karl Exp $
 
    Copyright (C) 1998, 1999, 2003 Free Software Foundation, Inc.
 
@@ -68,7 +68,7 @@ pc_up_line (void)
 {
   int x, y;
   ScreenGetCursor (&y, &x);
-  ScreenSetCursor (max (y-1, 0), x);
+  ScreenSetCursor (MAX (y-1, 0), x);
 }
 
 /* Move the cursor down one line. */
