@@ -1,0 +1,29 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+@vtable @bullet
+@item var1
+@itemx var2
+var1 et var2
+@end vtable
+
+@ftable @bullet
+@item fun1
+@itemx fun2
+fun1 et fun2
+@end ftable
+
+@printindex fn
+@printindex vr
+
+@contents
+@bye
+

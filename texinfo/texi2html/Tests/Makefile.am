@@ -1,5 +1,5 @@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
-     viper_monolithic texi2html xemacs_frame
+     viper_monolithic texi2html xemacs_frame index_html formatting macros
 
 
 test:

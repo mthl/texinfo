@@ -4,6 +4,7 @@
 	array until @end tag. Remove PROTECTTAG
 	remove unneeded push of index entry for vtable or ftable which
 	created 2 indices entry
+	* Tests: added more tests
 
 2003-02-13  Patrice Dumas <dumas@centre-cired.fr>
 

@@ -1,0 +1,30 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+Some html:
+
+@html
+<p> some @@ @code{bidule} {
+@macro{
+</p>
+@end html
+
+Now verbatim:
+
+@verbatim
+@ @bidule @{ { }
+and so on {{{
+@end verbatim
+
+
+@contents
+@bye
+

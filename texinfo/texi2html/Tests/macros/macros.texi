@@ -1,0 +1,35 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+@macro macro1 {arg1, arg2 }
+result of a macro with \arg1\ and 
+@include file.texi
+\arg2\
+@end macro
+
+Right. @macro1 { @samp{first arg
+
+no ?}, second arg}
+
+@macro macro2 { arg }
+With a doubles arg \arg\ and re \arg\
+
+@end macro
+
+@macro2 { a simple @code{
+arg}
+}
+
+@macro2 { arg with comma , here }
+
+@contents
+@bye
+

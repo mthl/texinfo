@@ -117,6 +117,7 @@ test_texi texi2html
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
+test_texi xemacs_frame xemacs.texi "-split chapter -frames"
 test_texi texinfo texinfo.txi "-split chapter" success ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter"
 
