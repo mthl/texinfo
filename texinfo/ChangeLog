@@ -1,3 +1,13 @@
+2003-10-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\chapterzzz,...,\unnumberedsubsubseczzz): make
+	section number settings \global.  Otherwise, when chapters are
+	@included, they are ineffective and every chapter is numbered 1.
+	For instance, the Emacs and Elisp manuals.  Thanks to Stepan for
+	analysis.
+
+	* doc/texinfo.tex: add arch-tag for miles.
+
 2003-10-08  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\onepageout): At the beginning of \shipout, call
