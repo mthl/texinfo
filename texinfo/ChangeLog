@@ -1,3 +1,18 @@
+2003-07-24    <karl@gnu.org>
+
+	* makeinfo/sectioning.c (what_section): take additional SECNAME
+		argument; change callers.
+	* makeinfo/sectioning.h (what_section): remove redundant decl.
+	* makeinfo/node.c (cm_node): change what_section call here, too.
+	Report from: Dumas Patrice <dumas@centre-cired.fr>,
+	22 Jul 2003 13:09:19 +0200.
+
+	* doc/texinfo.tex (\doheading,\dosubheading,\dosubsubheading):
+	rationalize names.
+	(\heading,\subheading,\subsubheading): change
+	calls.  (yesterday's patch called the undefined
+	\subsecheadingyyy, etc.)
+
 2003-07-23  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\heading, \subheading, \subsubheading): Call

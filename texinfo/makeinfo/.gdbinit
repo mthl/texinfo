@@ -199,3 +199,6 @@ set args -o - $ttests/defmacp.tex
 
 set args -o /dev/null -I ../doc ../doc/info-stnd.texi
 set args -o /dev/null $ttests/env.tex
+
+# css class wrong for lowered sections.
+set args --force -o /tmp/h --html --no-split $ttests/loweraise.tex

@@ -961,9 +961,9 @@ AC_DEFUN([AC_ISC_POSIX],
   ]
 )
 
-#serial 2
+#serial 3
 
-# On some systems (e.g., HPUX-10.20, SunOS4.1.4, solaris2.5.1), mkstemp has the
+# On some hosts (e.g., HP-UX 10.20, SunOS 4.1.4, Solaris 2.5.1), mkstemp has a
 # silly limit that it can create no more than 26 files from a given template.
 # Other systems lack mkstemp altogether.  On either type of system, arrange
 # to use the replacement function.
