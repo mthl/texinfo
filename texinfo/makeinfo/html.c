@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.15 2003-05-13 17:05:45 karl Exp $
+   $Id: html.c,v 1.16 2003-05-13 21:07:55 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -153,7 +153,8 @@ append_char (buf, c)
     buffer_type *buf;
     int c;
 {
-  char str[2] = { c, 0 };
+  char str[2] = { 0, 0 };
+  str[0] = c;  /* appease SGI compiler */
 
   if (buf->length + 1 >= buf->size)
     {
