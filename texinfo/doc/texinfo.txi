@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.64 2003-08-12 13:35:56 karl Exp $
+@c $Id: texinfo.txi,v 1.65 2003-09-04 00:45:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12913,7 +12913,7 @@ customized output in the Info file.
 @menu
 * Defining Macros::             Defining and undefining new commands.
 * Invoking Macros::             Using a macro, once you've defined it.
-* Macro Details::               Beyond basic macro usage.
+* Macro Details::               Limitations of Texinfo macros.
 * alias::                       Command aliases.
 * definfoenclose::              Customized highlighting.
 @end menu
@@ -13118,6 +13118,9 @@ option (@ref{Format with texi2dvi}).
 
 @itemize @bullet
 @item
+As mentioned earlier, macro names must consist entirely of letters.
+
+@item
 All macros are expanded inside at least one @TeX{} group.  This means
 that @code{@@set} and other such commands have no effect inside a
 macro.
@@ -13155,6 +13158,30 @@ something involving \arg\ somehow
 @end example
 
 @end itemize
+
+The @command{makeinfo} implementation also has limitations:
+
+@itemize
+@item
+@code{@@verbatim} and macros do not mix; for instance, you can't start
+a verbatim block inside a macro and end it outside.  (@xref{verbatim}.)
+
+@item
+Macros that completely define macros are ok, but it's not possible to
+have incorrectly nested macro definitions.  That is, @code{@@macro}
+and @code{@@end macro} (likewise for @code{@@rmacro}) must be
+correctly paired.  For example, you cannot start a macro definition
+within a macro, and then end the nested definition outside the macro.
+
+@item
+@code{@@rmacro} is a kludge.
+
+@end itemize
+
+One more limitation is common to both implementations: white space is
+ignored at the beginnings of 
+Future major revisions of Texinfo may ease some of these limitations
+(by introducing a new macro syntax).
 
 
 @node alias
@@ -17195,7 +17222,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.64 2003-08-12 13:35:56 karl Exp $
+$Id: texinfo.txi,v 1.65 2003-09-04 00:45:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17258,7 +17285,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.64 2003-08-12 13:35:56 karl Exp $
+@comment $Id: texinfo.txi,v 1.65 2003-09-04 00:45:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
