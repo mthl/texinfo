@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
+@c $Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8168,12 +8168,13 @@ paragraphs (@pxref{Command Syntax}).
 @cindex Rounded rectangles, around examples
 
 In a printed manual, the @code{@@cartouche} command draws a box with
-rounded corners around its contents.  You can use this command to
-further highlight an example or quotation.  For instance, you could
-write a manual in which one type of example is surrounded by a cartouche
-for emphasis.
+rounded corners around its contents.  In HTML, a normal rectangle is
+drawn (that's the best HTML can do).  @code{@@cartouche} has no effect
+in Info output.
 
-@code{@@cartouche} has no effect in Info output.
+You can use this command to further highlight an example or quotation.
+For instance, you could write a manual in which one type of example is
+surrounded by a cartouche for emphasis.
 
 For example,
 
@@ -8190,8 +8191,8 @@ For example,
 surrounds the two-line example with a box with rounded corners, in the
 printed manual.
 
-In a printed manual or in HTML output, the example looks like this (if
-you're reading this in Info, you'll see the @code{@@cartouche} had no effect):
+The output from the example looks like this (if you're reading this in
+Info, you'll see the @code{@@cartouche} had no effect):
 
 @cartouche
 @example
@@ -17281,7 +17282,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
+$Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17344,7 +17345,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
+@comment $Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
