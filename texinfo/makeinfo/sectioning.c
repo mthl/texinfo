@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.7 2003-03-22 17:39:12 karl Exp $
+   $Id: sectioning.c,v 1.8 2003-03-22 17:40:54 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -397,12 +397,6 @@ insert_and_underscore (level, with_char, cmd)
 /* Insert the text following input_text_offset up to the end of the
    line as an HTML heading element of the appropriate `level' and
    tagged as an anchor for the current node.. */
-
-/* We don't need anything fancy.  */
-#ifdef MIN
-#undef MIN
-#endif
-#define MIN(a,b) ((a) < (b) ? (a) : (b))
 
 void
 sectioning_html (level, cmd)
