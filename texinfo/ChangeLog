@@ -1,3 +1,8 @@
+2002-11-24    <karl@gnu.org>
+
+	* doc/texinfo.txi (Multiple Spaces): xref tie rather w for
+	unbreakable spaces.
+
 2002-11-22    <karl@gnu.org>
 
 	* doc/texinfo.txi: editorial changes from Max's editor.
