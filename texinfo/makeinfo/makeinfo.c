@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.77 2005-04-04 20:07:11 kasal Exp $
+   $Id: makeinfo.c,v 1.78 2005-04-04 21:21:22 kasal Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -390,8 +390,8 @@ Options for Info and plain text:\n\
       --fill-column=NUM       break Info lines at NUM characters (default %d).\n\
       --footnote-style=STYLE  output footnotes in Info according to STYLE:\n\
                                 `separate' to put them in their own node;\n\
-                                `end' to put them at the end of the node\n\
-                                  in which they are defined (default).\n\
+                                `end' to put them at the end of the node, in\n\
+                                which they are defined (this is the default).\n\
       --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n\
                                 If VAL is `none', do not indent; if VAL is\n\
                                 `asis', preserve existing indentation.\n\

@@ -1,8 +1,8 @@
 2005-04-04  Stepan Kasal  <kasal@ucw.cz>
 
-	* makeinfo/makeinfo.c (usage): Add indentation to the examples, so
-	  that help2man can recognize them; fix indentation of some other
-	  options.
+	* makeinfo/makeinfo.c (usage): Add indentation to the examples and
+	  fix the indentation of the --footnote-style option, so that
+	  help2man can recognize these; also some cosmetic indentation fixes.
 	* doc/Makefile.am (makeinfo.1): Add a sed command to postprocess
 	  the generated manpage.
 	* doc/makefile.1: Refresh.

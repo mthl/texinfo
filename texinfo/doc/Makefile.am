@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.25 2005-04-04 20:07:10 kasal Exp $
+# $Id: Makefile.am,v 1.26 2005-04-04 21:21:22 kasal Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -94,7 +94,7 @@ $(srcdir)/install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
 $(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	@name="translate Texinfo documents" && $(man_rule_bin)
 	mv $@ $@.tmp
-	sed '/^\.IP$$/N;/\nin which/D;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
+	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
 	rm $@.tmp
 	
 $(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
