@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.64 2003-10-08 15:16:01 karl Exp $
+$Id: NEWS,v 1.65 2003-10-29 19:11:27 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -22,6 +22,10 @@ convenience, here's a url to one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* Language:
+  . new commands @docbook, @ifdocbook, @ifnotdocbook.
+* makeinfo:
+  . improved XML output.
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.

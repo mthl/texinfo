@@ -1,3 +1,9 @@
+2003-10-29  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c: help message.
+	* doc/texinfo.tex: version update.
+	* makeinfo/texinfo.dtd: update copyright.
+
 2003-10-28  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c: output correct elements for @command,
