@@ -1,3 +1,10 @@
+2003-11-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Multitable Rows): document @headitem.
+
+	* doc/texinfo.tex (\headitem): error by default, redefine inside
+	@multitable (= \dotable).  New command suggested by Arnold.
+
 2003-11-15  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (fatal): New function. Use it.
