@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.6 2002-10-15 21:55:18 karl Exp $
+   $Id: cmds.c,v 1.7 2002-10-26 23:12:28 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -559,24 +559,24 @@ cm_code (arg)
     xml_insert_element (CODE, arg);
   else
     {
-  extern int printing_index;
+      extern int printing_index;
 
-  if (arg == START)
-    {
-      in_fixed_width_font++;
+      if (arg == START)
+        {
+          in_fixed_width_font++;
 
-      if (html)
+          if (html)
+            insert_html_tag (arg, "code");
+          else if (!printing_index)
+            add_char ('`');
+        }
+      else if (html)
         insert_html_tag (arg, "code");
-      else if (!printing_index)
-        add_char ('`');
-    }
-  else if (html)
-    insert_html_tag (arg, "code");
-  else
-    {
-      if (!printing_index)
-        add_meta_char ('\'');
-    }
+      else
+        {
+          if (!printing_index)
+            add_meta_char ('\'');
+        }
     }
 }
 
@@ -610,9 +610,10 @@ cm_url (arg, start, end)
   else if (html)
     {
       if (arg == START)
-        add_word ("&lt;<code>");
-      else
-	add_word ("</code>&gt;");
+        add_word ("&lt;");
+      insert_html_tag (arg, "code");
+      if (arg != START)
+        add_word ("&gt;");
     }
   else
     if (arg == START)
@@ -878,25 +879,9 @@ cm_r (arg)
     xml_insert_element (R, arg);
   else
     {
-      extern int printing_index;
+      if (html)
+	insert_html_tag (arg, "");
 
-      /* People use @r{} in index entries like this:
-	 
-      @findex foo@r{, some text}
-      
-      This is supposed to produce output as if the entry were saying
-      "@code{foo}, some text", since the "fn" index is typeset as
-      @code.  The following attempts to do the same in HTML.  Note that
-      this relies on the fact that only @code bumps up the variable
-      in_fixed_width_font while processing index entries in HTML mode.  */
-      if (html && printing_index)
-	{
-	  int level = in_fixed_width_font;
-	  
-	  while (level--)
-	    insert_html_tag (arg == START ? END : START, "code");
-	}
-      
       not_fixed_width (arg);
     }
 }
@@ -1137,7 +1122,7 @@ cm_center ()
   execute_string ("%s", (char *)line);
   free (line);
   uninhibit_output_flushing ();
-   if (html)
+  if (html)
     add_word ("</div>");
 
    else

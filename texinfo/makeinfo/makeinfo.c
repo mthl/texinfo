@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.5 2002-10-09 16:32:40 karl Exp $
+   $Id: makeinfo.c,v 1.6 2002-10-26 23:12:28 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -695,7 +695,7 @@ There is NO warranty.  You may redistribute this software\n\
 under the terms of the GNU General Public License.\n\
 For more information about these matters, see the files named COPYING.\n"),
                   "2002");
-          exit (0);
+          xexit (0);
           break;
 
         case 'w': /* --html */
@@ -1370,7 +1370,7 @@ insert_toplevel_subdirectory (output_filename)
 	    errmsg = _("File exists, but is not a directory");
           line_error (_("Can't create directory `%s': %s"),
                       output_filename, errmsg);
-          exit (1);
+          xexit (1);
         }
       strcat (output_filename, "/");
     }

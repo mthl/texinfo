@@ -153,4 +153,6 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 # --xml complains about @sp.
 #set args -o - --xml $ttests/sp.tex
 
-set args --html -o - $ttests/enump.tex
+# crash on elisp manual.
+#set args --html --no-split -o /dev/shm/elisp.html -I $gnu/src/elisp* elisp.texi
+set args --html --no-split -o /dev/shm/elisp.html $ttests/variables.tex --force

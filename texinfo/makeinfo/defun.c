@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: defun.c,v 1.2 2002-10-26 23:12:28 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -22,6 +22,8 @@
 #include "docbook.h"
 #include "insertion.h"
 #include "makeinfo.h"
+#include "cmds.h"
+#include "html.h"
 
 
 #define DEFUN_SELF_DELIMITING(c) \
@@ -239,7 +241,13 @@ process_defun_args (defun_args, auto_var_p)
         }
 
       if (DEFUN_SELF_DELIMITING (defun_arg[0]))
-        add_char (defun_arg[0]);
+        {
+          /* Within @deffn and friends, texinfo.tex makes parentheses
+             sans serif and brackets bold.  We use roman instead.  */
+          insert_html_tag (START, "");
+          add_char (defun_arg[0]);
+          insert_html_tag (END, "");
+        }
       else if (defun_arg[0] == '&')
         if (html)
           {
@@ -506,30 +514,34 @@ defun_internal (type, x_p)
         case defvr:
         case deftp:
           /* <i> is for the following function arguments.  */
-          add_word ("<b>");
+          insert_html_tag (START, "b");
           execute_string ("%s", defined_name);
-          add_word ("</b><i>");
+          insert_html_tag (END, "b");
+          insert_html_tag (START, "i");
           break;
         case deftypefn:
         case deftypevr:
           execute_string ("%s ", type_name);
-          add_word ("<b>");
+          insert_html_tag (START, "b");
           execute_string ("%s", defined_name);
-          add_word ("</b><i>");
+          insert_html_tag (END, "b");
+          insert_html_tag (START, "i");
           break;
         case defcv:
         case defop:
-          add_word ("<b>");
+          insert_html_tag (START, "b");
           execute_string ("%s", defined_name);
-          add_word ("</b><i>");
+          insert_html_tag (END, "b");
+          insert_html_tag (START, "i");
           break;
         case deftypemethod:
         case deftypeop:
         case deftypeivar:
           execute_string ("%s ", type_name2);
-          add_word ("<b>");
+          insert_html_tag (START, "b");
           execute_string ("%s", defined_name);
-          add_word ("</b><i>");
+          insert_html_tag (END, "b");
+          insert_html_tag (START, "i");
           break;
         }
     } /* if (html)... */
@@ -602,7 +614,7 @@ defun_internal (type, x_p)
         case deftp:
         case deftypefn:
         case deftypevr:
-          add_word ("</i>"); /* close italic area for arguments */
+          insert_html_tag (END, "i"); /* close italic area for arguments */
           /* put the rest into the second column */
 	  add_word ("</td>\n");
           add_html_elt ("<td align=\"right\">");
@@ -618,14 +630,14 @@ defun_internal (type, x_p)
         case defop:
         case deftypemethod:
         case deftypeop:
-	  add_word ("</i>");
+          insert_html_tag (END, "i");
 	  add_word ("</td>\n");
 	  add_html_elt ("<td align=\"right\">");
 	  execute_string ("%s %s %s", category, _("on"), type_name);
 	  break;
 
         case deftypeivar:
-	  add_word ("</i>");
+          insert_html_tag (END, "i");
 	  add_word ("</td>\n");
 	  add_html_elt ("<td align=\"right\">");
 	  execute_string ("%s %s %s", category, _("of"), type_name);
