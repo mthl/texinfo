@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.41 2003-11-09 13:51:14 karl Exp $
+$Id: dir-example,v 1.42 2003-11-10 14:37:51 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -43,10 +43,11 @@ Text creation and manipulation
 * Diff: (diff).                 Comparing and merging programs.
 * Ed: (ed).                     Line editor.
 * Gawk: (gawk).                 A text scanning and processing language.
+* Wdiff: (wdiff).               Word difference finder.
 * grep: (grep).                 Print lines matching a pattern.
 * m4: (m4).			General-purpose text macro processor.
 * sed: (sed).                   Stream EDitor.
-* Wdiff: (wdiff).               Word difference finder.
+
 
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
