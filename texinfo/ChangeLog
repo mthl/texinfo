@@ -1,5 +1,18 @@
 2002-10-31    <karl@gnu.org>
 
+	* doc/texinfo.tex (\mathactive): new fn.
+	(\math): call it, to change definitions of active characters.
+	(\ptex{gtr,hat,less,plus}): save original characters.
+	Report from wl.
+
+	* doc/texinfo.tex (\itemzzz): \penalty10001 instead of 10000
+        before the putative \parskip.
+        (\aboveenvbreak): insert \parskip if penalty!=10000,
+        rather than <10000. Otherwise, @item some long item label /
+        @example has too little spacing.
+	Report from: Werner LEMBERG <wl@gnu.org>,
+	26 Apr 2002 08:37:41 +0200 (CEST).
+
 	* makeinfo/makeinfo.c (executing_macro): new static.
 	(read_command): set it, if we execute a macro.
 	(add_char): if it is set, call html_output_head.
