@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.6 2002-10-25 00:32:50 karl Exp $
+# $Id: Makefile.am,v 1.7 2003-03-26 16:02:03 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -14,7 +14,7 @@
 AUTOMAKE_OPTIONS = 1.4 readme-alpha
 
 # Additional files to distribute.
-EXTRA_DIST = COPYING.DOC INSTALL.generic INTRODUCTION config.rpath djgpp 
+EXTRA_DIST = INSTALL.generic INTRODUCTION config.rpath djgpp 
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.

@@ -80,7 +80,6 @@ $GNULIBSRC/config/missing	.
 $GNULIBSRC/config/mkinstalldirs	.
 #
 $GNULIBSRC/doc/COPYING		.
-$GNULIBSRC/doc/COPYING.DOC	.
 $GNULIBSRC/doc/INSTALL		./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi		doc
 #
