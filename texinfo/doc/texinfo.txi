@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
+@c $Id: texinfo.txi,v 1.118 2004-11-26 13:40:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17482,7 +17482,7 @@ Highlight @var{text} that is a literal example of a sequence of
 characters.  Used for single characters, for statements, and often for
 entire shell commands.  @xref{samp, , @code{@@samp}}.@refill
 
-@item @@sansserif@@var{text}@}
+@item @@sansserif@{@var{text}@}
 Print @var{text} in a @sansserif{sans serif} font if possible.  No
 effect in Info.  @xref{Fonts}.
 
@@ -18410,7 +18410,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
+$Id: texinfo.txi,v 1.118 2004-11-26 13:40:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18476,7 +18476,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.118 2004-11-26 13:40:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
