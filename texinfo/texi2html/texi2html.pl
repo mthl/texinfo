@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.87 2003-12-01 00:35:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.88 2003-12-01 23:50:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -517,6 +517,7 @@ our %valid_index;
 our %sec2level;
 our %code_style_map;
 our %keep_texi_map;
+our %region_lines;
 
 # Some global variables are set in the script, and used in the subroutines
 # they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
@@ -793,6 +794,11 @@ $sec2level{'centerchap'} = 1;
                #'pounds', '&pound;'
             );
 
+%region_lines = (
+          'titlepage'            => [ ],
+          'documentdescription'  => [ ],
+          'copying'              => [ ],
+);
 
 # a hash associating a format @thing / @end thing with the type of the format
 # 'complex' 'simple' 'deff' 'list' 'menu' 'paragraph_style'
@@ -867,6 +873,7 @@ my %text_macros = (
      'xml' => 0,
      'titlepage' => 1, 
      'documentdescription' => 1, 
+     'copying' => 1, 
      'ifnothtml' => 1, 
      'ifnottex' => 1, 
      'ifnotplaintext' => 1, 
@@ -2718,7 +2725,6 @@ my $fh_name = 'FH000';
 my @lines = ();             # whole document
 my @lines_numbers = ();     # line number, originating file associated with 
                             # whole document 
-my @copying_lines = ();     # lines between @copying and @end copying
 my $macros;                 # macros. reference on a hash
 my %info_enclose;           # macros defined with definfoenclose
 my $texi_line_number = { 'file_name' => '', 'line_nr' => 0, 'macro' => '' };
@@ -2728,7 +2734,6 @@ sub initialise_state_texi($)
     my $state = shift;
     $state->{'texi'} = 1;           # for substitute_text and close_stack: 
                                     # 1 if pass_texi/scan_texi is to be used
-    $state->{'copying'} = 0;        # number of opened copying
 }
 
 my @first_lines = ();
@@ -2767,7 +2772,7 @@ sub pass_texi()
         }
 	#print STDERR "line_nr $texi_line_number->{'line_nr'} :$_";
         my $chomped_line = $_;
-        if (scan_texi ($_, \$text, \@stack, $state, $texi_line_number) and !$state->{'copying'} and chomp($chomped_line))
+        if (scan_texi ($_, \$text, \@stack, $state, $texi_line_number) and chomp($chomped_line))
         {
         #print STDERR "scan_texi line_nr $texi_line_number->{'line_nr'}\n";
             push (@lines_numbers, { 'file_name' => $texi_line_number->{'file_name'},
@@ -2785,17 +2790,10 @@ sub pass_texi()
         $_ = $text;
         $text = '';
         next if !defined($_);
-        if (!$state->{'copying'})
-        {
-            push @lines, split_lines ($_);
-        }
-        else
-        {
-            push @copying_lines, split_lines ($_);
-        }
+        push @lines, split_lines ($_);
         last if ($state->{'bye'});
     }
-    if (@stack or $state->{'macro'} or $state->{'ignored'} or $state->{'macro_name'} or $state->{'raw'} or $state->{'copying'})
+    if (@stack or $state->{'macro'} or $state->{'ignored'} or $state->{'macro_name'} or $state->{'raw'})
     {
 	    #dump_stack(\$text, \@stack, $state);
         close_stack(\$text, \@stack, $state, $texi_line_number);
@@ -2878,17 +2876,14 @@ sub initialise_state_structure($)
     $state->{'structure'} = 1;      # for substitute_text and close_stack: 
                                     # 1 if pass_structure/scan_structure is 
                                     # to be used
-    $state->{'titlepage'} = 0;      # number of opened titlepages
     $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'level'} = 0;          # current sectionning level
-    $state->{'documentdescription'} = 0; # number of opened documentdescription
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
+    delete ($state->{'region_lines'}) unless (defined($state->{'region_lines'}));
 }
 
 my @doc_lines = ();         # whole document
-my @documentdescription_lines = ();   # documentdescription lines
-my @titlepage_lines = ();   # titlepage lines
 my @doc_numbers = ();       # whole document line numbers and file names
 my @nodes_list = ();        # nodes in document reading order
                             # each member is a reference on a hash
@@ -2965,13 +2960,9 @@ sub pass_structure()
                 if (@stack and $tag eq 'node' or defined($sec2level{$tag}))
                 {
                     close_stack(\$text, \@stack, $state, $line_nr);
-                    if ($state->{'documentdescription'})
+                    if (exists($state->{'region_lines'}))
                     {
-                        push @documentdescription_lines, split_lines ($text);
-                    }
-                    elsif ($state->{'titlepage'})
-                    {
-                        push @titlepage_lines, split_lines ($text);
+                        push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines ($text);
                     }
                     else
                     {
@@ -3173,14 +3164,9 @@ sub pass_structure()
                     push @{$elements_list[-1]->{'index_names'}}, { 'name' => $1, 'place' => $placed_elements };
                     $state->{'place'} = $placed_elements;
                 }
-                #next if ($state->{'titlepage'});
-                if ($state->{'documentdescription'})
+                if (exists($state->{'region_lines'}))
                 {
-                    push @documentdescription_lines, $_;
-                }
-                elsif ($state->{'titlepage'})
-                {
-                    push @titlepage_lines, $_;
+                    push @{$region_lines{$state->{'region_lines'}->{'format'}}}, $_;
                 }
                 else
                 {
@@ -3190,7 +3176,7 @@ sub pass_structure()
                 next;
             }
         }
-        if (scan_structure ($_, \$text, \@stack, $state, $line_nr) and !($state->{'titlepage'} or $state->{'documentdescription'}))
+        if (scan_structure ($_, \$text, \@stack, $state, $line_nr) and !(exists($state->{'region_lines'})))
         {
             push (@doc_numbers, $line_nr);
         }
@@ -3198,13 +3184,9 @@ sub pass_structure()
         $_ = $text;
         $text = '';
         next if (!defined($_));
-        if ($state->{'documentdescription'})
+        if ($state->{'region_lines'})
         {
-            push @documentdescription_lines, split_lines ($_);
-        }
-        elsif ($state->{'titlepage'})
-        {
-            push @titlepage_lines, split_lines ($_);
+            push @{$region_lines{$state->{'region_lines'}->{'format'}}}, split_lines ($_);
         }
         else
         {
@@ -3214,10 +3196,9 @@ sub pass_structure()
     if (@stack)
     {
         close_stack(\$text, \@stack, $state, $line_nr);
-        push @doc_lines, split_lines ($text) if ($text and !$state->{'titlepage'} and !$state->{'documentdescription'});
+        push @doc_lines, split_lines ($text) if ($text and (!exists($state->{'region_lines'})));
     }
-    echo_warn ("At end of document, $state->{'titlepage'} titlepage not closed") if ($state->{'titlepage'});
-    echo_warn ("At end of document, $state->{'documentdescription'} documentdescription not closed") if ($state->{'documentdescription'});
+    echo_warn ("At end of document, $state->{'region_lines'}->{'number'} $state->{'region_lines'}->{'format'} not closed") if (exists($state->{'region_lines'}));
     print STDERR "# end of pass structure\n" if $T2H_VERBOSE;
 }
 
@@ -4633,6 +4614,8 @@ sub do_names()
 #                                                                              #
 #---############################################################################
 
+# FIXME what to do with index entries appearing in @copying 
+# @documentdescription and @titlepage
 sub enter_index_entry($$$$$$)
 {
     my $prefix = shift;
@@ -4994,8 +4977,8 @@ sub pass_text()
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
     $Texi2HTML::TITLEPAGE = '';
-    $Texi2HTML::TITLEPAGE = substitute_text({}, @titlepage_lines)
-        if (@titlepage_lines);
+    $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
+        if (@{$region_lines{'titlepage'}});
     &$Texi2HTML::Config::titlepage();
 
     ############################################################################
@@ -5950,25 +5933,6 @@ sub do_text_macro($$$$)
     return ($line, $text);
 }
 
-sub save_line_state($$)
-{
-    my $state = shift;
-    my $tag = shift;
-    my $saved_state;
-    $saved_state->{'after_element'} = 1 if ($state->{'after_element'});
-    $state->{"$tag" . '_line_state'} = $saved_state;
-}
-
-sub retrieve_line_state($$)
-{
-    my $state = shift;
-    my $tag = shift;
-    my $key = "$tag" . '_line_state';
-    $state->{'after_element'} = 1;
-    delete $state->{'after_element'} unless ($state->{$key}->{'after_element'});
-    delete $state->{$key};
-}
-
 # do regions handled specially, currently only tex, going throug latex2html
 sub do_special ($$)
 {
@@ -5985,12 +5949,12 @@ sub do_special ($$)
 sub do_insertcopying($)
 {
     my $state = shift;
-    return '' unless @copying_lines;
+    return '' unless @{$region_lines{'copying'}};
     return substitute_text({ 'element' => $state->{'element'}, 
            'preformatted' => $state->{'preformatted'},
            'keep_texi' => $state->{'keep_texi'},
            'code_style' => $state->{'code_style'} },
-           @copying_lines);
+           @{$region_lines{'copying'}});
 }
 
 sub get_deff_index($$)
@@ -7210,7 +7174,7 @@ sub scan_texi($$$$;$)
             {
                 pop @{$state->{'text_macro_stack'}};
                 # we keep menu and titlepage for the following pass
-                if ((($end_tag eq 'menu') and $text_macros{'menu'}) or ($end_tag eq 'titlepage') or ($end_tag eq 'documentdescription') or $state->{'arg_expansion'})
+                if ((($end_tag eq 'menu') and $text_macros{'menu'}) or ($region_lines{$end_tag}) or $state->{'arg_expansion'})
                 {
                      add_prev($text, $stack, "\@end${space}$end_tag");
                 }
@@ -7224,19 +7188,6 @@ sub scan_texi($$$$;$)
             elsif ($text_macros{$end_tag})
             {
                 echo_error ("\@end $end_tag without corresponding element", $line_nr);
-            }
-            elsif ($end_tag eq 'copying')
-            {
-                if ($state->{'copying'})
-                {
-                    $state->{'copying'}--;
-                    return if (/^\s*$/);
-                }
-                else
-                {
-                    echo_error ("\@end $end_tag but no opening of $end_tag", $line_nr);
-                    #warn "$ERROR \@end $end_tag but no opening of $end_tag\n";
-                }
             }
             else
             {
@@ -7343,7 +7294,7 @@ sub scan_texi($$$$;$)
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later
                 my $macro_kept;
-                if ($state->{'raw'} or (($macro eq 'menu') and $text_macros{'menu'}) or ($macro eq 'titlepage') or ($macro eq 'documentdescription') or $state->{'arg_expansion'})
+                if ($state->{'raw'} or (($macro eq 'menu') and $text_macros{'menu'}) or (exists($region_lines{$macro})) or $state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, $tag);
                     $macro_kept = 1;
@@ -7354,11 +7305,6 @@ sub scan_texi($$$$;$)
                 }
                 next if $macro_kept;
                 #dump_stack ($text, $stack, $state);
-                return if (/^\s*$/);
-            }
-            elsif ($macro eq 'copying')
-            {
-                $state->{'copying'}++;
                 return if (/^\s*$/);
             }
             elsif ($macro eq 'value')
@@ -7562,7 +7508,7 @@ sub scan_structure($$$$;$)
     local $_ = $line;
     #print STDERR "SCAN_STRUCTURE: $line";
     #dump_stack ($text, $stack, $state); 
-    if (!$state->{'raw'} and !$state->{'special'} and !$state->{'documentdescription'})
+    if (!$state->{'raw'} and !$state->{'special'} and (!exists($state->{'region_lines'})))
     { 
         if (!$state->{'verb'} and $state->{'menu'} and /^\*/o)
         {
@@ -7705,10 +7651,21 @@ sub scan_structure($$$$;$)
                and ($end_tag eq $state->{'text_macro_stack'}->[-1]))
             {
                 pop @{$state->{'text_macro_stack'}};
-                if (($end_tag eq 'titlepage') or ($end_tag eq 'documentdescription'))
+                if (exists($region_lines{$end_tag}))
                 {
-                     $state->{$end_tag}--;
-                     retrieve_line_state ($state, $end_tag) if ($state->{$end_tag} == 0);
+                     print STDERR "Bug: end_tag $end_tag ne $state->{'region_lines'}->{'format'}" 
+                         if ( $end_tag ne $state->{'region_lines'}->{'format'});
+                     $state->{'region_lines'}->{'number'}--;
+                     if ($state->{'region_lines'}->{'number'} == 0)
+                     {
+                         $state->{'after_element'} = 1;
+                         delete $state->{'after_element'} unless 
+                             ($state->{'region_lines'}->{'after_element'});
+                         delete $state->{'region_lines'}->{'number'};
+                         delete $state->{'region_lines'}->{'format'};
+                         delete $state->{'region_lines'}->{'after_element'};
+                         delete $state->{'region_lines'};
+                     }
 		     #dump_stack($text, $stack, $state); 
                 }
                 if ($end_tag eq 'menu')
@@ -7841,12 +7798,22 @@ sub scan_structure($$$$;$)
                     push @{$state->{'text_macro_stack'}}, $macro;
                     #print STDERR "MENU (text_macro_stack: @{$state->{'text_macro_stack'}})\n";
                 }
-                elsif ($macro eq 'titlepage' or $macro eq 'documentdescription')
+                elsif (exists($region_lines{$macro}))
                 {
-                    $state->{$macro}++;
-                    if ($state->{$macro} == 1)
+                    if (exists($state->{'region_lines'}) and ($state->{'region_lines'}->{'format'} ne $macro))
                     {
-                        save_line_state($state, $macro);
+                         echo_error("\@$macro not allowed within $state->{'region_lines'}->{'format'}", $line_nr);
+                         next;
+                    }
+                    if (!exists($state->{'region_lines'}))
+                    {
+                         $state->{'region_lines'}->{'format'} = $macro;
+                         $state->{'region_lines'}->{'number'} = 1;
+                         $state->{'region_lines'}->{'after_element'} = 1 if ($state->{'after_element'});
+                    }
+                    else
+                    {
+                         $state->{'region_lines'}->{'number'}++;
                     }
                     push @{$state->{'text_macro_stack'}}, $macro;
                 }
@@ -8066,7 +8033,7 @@ sub scan_structure($$$$;$)
                     }
                     if (($style->{'style'} eq 'titlefont') and ($style->{'text'} =~ /\S/))
                     {
-                        $state->{'element'}->{'titlefont'} = $style->{'text'} unless ($state->{'titlepage'} or defined($state->{'element'}->{'titlefont'})) ;
+                        $state->{'element'}->{'titlefont'} = $style->{'text'} unless ((exists($state->{'region_lines'}) and ($state->{'region_lines'}->{'format'} eq 'titlepage')) or defined($state->{'element'}->{'titlefont'})) ;
                     }
                     if ($style->{'style'})
                     {
@@ -9591,7 +9558,7 @@ sub close_stack($$$$;$$)
 
     # cancel paragraph states
     $state->{'paragraph_style'} = [ '' ] unless (defined($close_paragraph) or defined($format));
-    return ($text, $stack, $state, $new_stack) unless (@$stack or $state->{'raw'} or $state->{'macro'} or $state->{'macro_name'} or $state->{'ignored'} or $state->{'copying'});
+    return ($text, $stack, $state, $new_stack) unless (@$stack or $state->{'raw'} or $state->{'macro'} or $state->{'macro_name'} or $state->{'ignored'});
     
     my $stack_level = $#$stack + 1;
     my $string = '';
@@ -9637,12 +9604,6 @@ sub close_stack($$$$;$$)
             #print STDERR "scan_texi ($string)\n";
             scan_texi ($string, $text, $stack, $state, $line_nr);
             $string = '';
-        }
-        if ($state->{'copying'})
-        {
-            $string .= '@end copying ' x $state->{'copying'};
-            echo_warn ("closing $state->{'copying'} copying", $line_nr); 
-            #warn "$WARN closing $state->{'copying'} copying\n"; 
         }
     }
     elsif ($state->{'verb'})
@@ -10127,16 +10088,6 @@ if (defined($Texi2HTML::Config::MACRO_EXPAND))
     my @texi_lines = (@first_lines, @lines);
     dump_texi(\@texi_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND);
 }
-# do copyright notice inserted in comment at the begining of the files
-if (@copying_lines)
-{
-    $copying_comment = remove_texi(@copying_lines);
-    while ($copying_comment =~ /-->/) # --> ends an html comment !
-    { 
-        $copying_comment =~ s/-->/->/go;
-    }
-    $copying_comment = &$Texi2HTML::Config::comment($copying_comment) . "\n";
-}
 pass_structure();
 if ($T2H_DEBUG & $DEBUG_TEXI)
 {
@@ -10151,9 +10102,9 @@ if ($T2H_DEBUG & $DEBUG_TEXI)
 exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
 rearrange_elements();
 do_names();
-if (@documentdescription_lines)
+if (@{$region_lines{'documentdescription'}})
 {
-    $documentdescription = remove_texi(@documentdescription_lines); 
+    $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
     my @documentdescription = split (/\n/, $documentdescription);
     $documentdescription = shift @documentdescription;
     chomp $documentdescription;
@@ -10162,6 +10113,16 @@ if (@documentdescription_lines)
         chomp $line;
         $documentdescription .= ' ' . $line;
     }
+}
+# do copyright notice inserted in comment at the begining of the files
+if (@{$region_lines{'copying'}})
+{
+    $copying_comment = remove_texi(@{$region_lines{'copying'}});
+    while ($copying_comment =~ /-->/) # --> ends an html comment !
+    { 
+        $copying_comment =~ s/-->/->/go;
+    }
+    $copying_comment = &$Texi2HTML::Config::comment($copying_comment) . "\n";
 }
 &$Texi2HTML::Config::toc_body(\@elements_list, $do_contents, $do_scontents);
 &$Texi2HTML::Config::css_lines(\@css_import_lines, \@css_rule_lines);

@@ -5,4 +5,12 @@ copying_not_closed.texi(,5) texte
 copying_not_closed.texi(,6) 
 copying_not_closed.texi(,7) @insertcopying
 copying_not_closed.texi(,8) 
-(,)  
+copying_not_closed.texi(,9) @copying
+copying_not_closed.texi(,10) 
+copying_not_closed.texi(,11) This is a copyright notice
+copying_not_closed.texi(,12) 
+copying_not_closed.texi(,13) 
+copying_not_closed.texi(,14) @copying
+copying_not_closed.texi(,15) 
+copying_not_closed.texi(,16) And a second one (?)
+copying_not_closed.texi(,17) 

@@ -1,4 +1,4 @@
-info-stnd.texi(,2) @comment $Id: info-stnd.passtexi,v 1.3 2003-12-01 00:38:29 pertusus Exp $
+info-stnd.texi(,2) @comment $Id: info-stnd.passtexi,v 1.4 2003-12-01 23:54:51 pertusus Exp $
 info-stnd.texi(,3) @comment %**start of header
 info-stnd.texi(,4) @setfilename info-stnd.info
 ./version-stnd.texi(,1) 
@@ -8,6 +8,28 @@ info-stnd.texi(,8) @syncodeindex fn cp
 info-stnd.texi(,9) @syncodeindex ky cp
 info-stnd.texi(,10) @comment %**end of header
 info-stnd.texi(,11) 
+info-stnd.texi(,12) @copying
+info-stnd.texi(,13) This manual is for GNU Info (version 4.2, 23 March 2002),
+info-stnd.texi(,14) a program for viewing documents in Info format (usually created from
+info-stnd.texi(,15) Texinfo source files).
+info-stnd.texi(,16) 
+info-stnd.texi(,17) Copyright @copyright{} 1992, 93, 96, 97, 98, 99, 2001, 02
+info-stnd.texi(,18) Free Software Foundation, Inc.
+info-stnd.texi(,19) 
+info-stnd.texi(,20) @quotation
+info-stnd.texi(,21) Permission is granted to copy, distribute and/or modify this document
+info-stnd.texi(,22) under the terms of the GNU Free Documentation License, Version 1.1 or
+info-stnd.texi(,23) any later version published by the Free Software Foundation; with no
+info-stnd.texi(,24) Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+info-stnd.texi(,25) and with the Back-Cover Texts as in (a) below.  A copy of the
+info-stnd.texi(,26) license is included in the section entitled ``GNU Free Documentation
+info-stnd.texi(,27) License.''
+info-stnd.texi(,28) 
+info-stnd.texi(,29) (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+info-stnd.texi(,30) this GNU Manual, like GNU software.  Copies published by the Free
+info-stnd.texi(,31) Software Foundation raise funds for GNU development.''
+info-stnd.texi(,32) @end quotation
+info-stnd.texi(,33) @end copying
 info-stnd.texi(,34) 
 info-stnd.texi(,35) @dircategory Texinfo documentation system
 info-stnd.texi(,40) 

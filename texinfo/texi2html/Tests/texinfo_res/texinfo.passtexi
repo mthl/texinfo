@@ -1,4 +1,4 @@
-texinfo.txi(,2) @c $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $
+texinfo.txi(,2) @c $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $
 texinfo.txi(,3) @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 texinfo.txi(,4) @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 texinfo.txi(,5) 
@@ -32,6 +32,27 @@ texinfo.txi(,32) @c finalout
 texinfo.txi(,33) 
 texinfo.txi(,34) @comment %**end of header
 texinfo.txi(,35) 
+texinfo.txi(,36) @copying
+texinfo.txi(,37) This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+texinfo.txi(,38) a documentation system that can produce both online information and a
+texinfo.txi(,39) printed manual from a single source.
+texinfo.txi(,40) 
+texinfo.txi(,41) Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+texinfo.txi(,42) Free Software Foundation, Inc.
+texinfo.txi(,43) 
+texinfo.txi(,44) @quotation
+texinfo.txi(,45) Permission is granted to copy, distribute and/or modify this document
+texinfo.txi(,46) under the terms of the GNU Free Documentation License, Version 1.1 or
+texinfo.txi(,47) any later version published by the Free Software Foundation; with no
+texinfo.txi(,48) Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+texinfo.txi(,49) and with the Back-Cover Texts as in (a) below.  A copy of the license is
+texinfo.txi(,50) included in the section entitled ``GNU Free Documentation License.''
+texinfo.txi(,51) 
+texinfo.txi(,52) (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+texinfo.txi(,53) this GNU Manual, like GNU software.  Copies published by the Free
+texinfo.txi(,54) Software Foundation raise funds for GNU development.''
+texinfo.txi(,55) @end quotation
+texinfo.txi(,56) @end copying
 texinfo.txi(,57) 
 texinfo.txi(,58) @dircategory Texinfo documentation system
 texinfo.txi(,66) 
@@ -16154,14 +16175,14 @@ texinfo.txi(,16642) Here are some notes on the example:
 texinfo.txi(,16643) 
 texinfo.txi(,16644) @itemize @bullet
 texinfo.txi(,16645) @item
-texinfo.txi(,16646) @cindex $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $ comment
-texinfo.txi(,16647) @cindex CVS $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $, in Texinfo
-texinfo.txi(,16648) @cindex RCS $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $, in Texinfo
-texinfo.txi(,16649) The @samp{$Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+texinfo.txi(,16646) @cindex $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $ comment
+texinfo.txi(,16647) @cindex CVS $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $, in Texinfo
+texinfo.txi(,16648) @cindex RCS $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $, in Texinfo
+texinfo.txi(,16649) The @samp{$Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 texinfo.txi(,16650) Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 texinfo.txi(,16651) systems, which expand it into a string such as:
 texinfo.txi(,16652) @example
-texinfo.txi(,16653) $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $
+texinfo.txi(,16653) $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $
 texinfo.txi(,16654) @end example
 texinfo.txi(,16655) (This is useful in all sources that use version control, not just manuals.)
 texinfo.txi(,16656) 
@@ -16210,7 +16231,7 @@ texinfo.txi(,16698) @c We do the first part of this with @example instead of @ve
 texinfo.txi(,16699) @c because the literal @setfilename and @include confuse Automake.  Argh.
 texinfo.txi(,16700) @example
 texinfo.txi(,16701) \input texinfo    @@c -*-texinfo-*-
-texinfo.txi(,16702) @@comment $Id: texinfo.passtexi,v 1.24 2003-12-01 00:38:29 pertusus Exp $
+texinfo.txi(,16702) @@comment $Id: texinfo.passtexi,v 1.25 2003-12-01 23:54:51 pertusus Exp $
 texinfo.txi(,16703) @@comment %**start of header
 texinfo.txi(,16704) @@setfilename sample.info
 texinfo.txi(,16705) @@include version.texi
