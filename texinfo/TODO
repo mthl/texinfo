@@ -1,4 +1,4 @@
-$Id: TODO,v 1.10 2003-07-01 12:25:55 karl Exp $
+$Id: TODO,v 1.11 2003-09-28 22:39:12 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -10,6 +10,15 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   notice and this notice are preserved.
 
 * General:
+  - Many free programs are documented in formats other than Texinfo,
+    and it would be nice to have Info versions of their manuals too.
+    For instance, gpg (http://www.gnupg.org/(en)/documentation/index.html),
+    netpbm (http://netpbm.sourceforge.net/doc/),
+    and Ghostscript (ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/gnu/).
+    The latter two are in html; there is an html2texi program at
+    http://www.uncg.edu/~wlestes/software/html2texi, although it won't
+    convert such complex documentation for free.
+    
   - Support installation of manuals in different languages, along these lines:
     . support a LINGUAS file or variable saying which subdirs LL in the
       source to descend into (under doc/).
