@@ -1,5 +1,10 @@
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/footnote.c (cm_footnote, output_pending_notes): provide
+	back link from footnote marker.
+
+2003-11-19  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.c (cm_insert_copying): remove blockquote from
 	copying_text when inside bookinfo and the output format is Docbook.
 

@@ -1,5 +1,5 @@
 /* footnote.c -- footnotes for Texinfo.
-   $Id: footnote.c,v 1.4 2002-11-05 03:04:26 karl Exp $
+   $Id: footnote.c,v 1.5 2003-11-19 06:53:48 dirt Exp $
 
    Copyright (C) 1998, 1999, 2002 Free Software Foundation, Inc.
 
@@ -237,9 +237,12 @@ cm_footnote ()
      `fn-<n>', though that's unlikely. */
   if (html)
     {
+      /* Hyperlink also serves as an anchor (mnemonic: fnd is footnote
+         definition.)  */
       add_html_elt ("<a rel=\"footnote\" href=");
-      add_word_args ("\"#fn-%d\"><sup>%s</sup></a>",
-		     current_footnote_number, marker);
+      add_word_args ("\"#fn-%d\" name=\"fnd-%d\"><sup>%s</sup></a>",
+		     current_footnote_number, current_footnote_number,
+                     marker);
     }
   else
     /* Your method should at least insert MARKER. */
@@ -290,13 +293,10 @@ output_pending_notes ()
     return;
 
   if (html)
-    { /* The type= attribute is used just in case some weirdo browser
-         out there doesn't use numbers by default.  Since we rely on the
-         browser to produce the footnote numbers, we need to make sure
-         they ARE indeed numbers.  Pre-HTML4 browsers seem to not care.  */
+    {
       add_word ("<div class=\"footnote\">\n<hr>\n<h4>");
       add_word (_("Footnotes"));
-      add_word ("</h4>\n<ol type=\"1\">\n");
+      add_word ("</h4>\n");
     }
   else
     switch (footnote_style)
@@ -346,8 +346,11 @@ output_pending_notes ()
         if (html)
           {
 	    /* Make the text of every footnote begin a separate paragraph.  */
-            add_word_args ("<li><a name=\"fn-%d\"></a>\n<p>",
-			   footnote->number);
+            add_word ("<p class=\"footnote\"><small>");
+            /* Make footnote number a link to its definition.  */
+            add_word_args ("[<a name=\"fn-%d\" href=\"#fnd-%d\">%d</a>]",
+			   footnote->number, footnote->number, footnote->number);
+            add_word ("</small> ");
             already_outputting_pending_notes++;
             execute_string ("%s", footnote->note);
             already_outputting_pending_notes--;
@@ -372,7 +375,7 @@ output_pending_notes ()
       }
 
     if (html)
-      add_word ("</ol><hr></div>");
+      add_word ("<hr></div>");
     close_paragraph ();
     free (array);
   }
