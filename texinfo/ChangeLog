@@ -1,3 +1,10 @@
+2003-11-07  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (*.1) [MAINTAINER_MODE]: use this conditional
+	instead of TEXINFO_MAINT, now that we have it.
+	* configure.ac (TEXINFO_MAINT): no longer needed, since we call
+	AM_MAINTAINER_MODE.
+
 2003-11-06  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: ok, restore --force since it doesn't help Alper
