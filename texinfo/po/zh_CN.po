@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2003-05-18 08:36-0700\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2003-05-29 15:37-0700\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -227,7 +228,7 @@ msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
 #: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
-#: util/install-info.c:1252 util/texindex.c:344
+#: util/install-info.c:1225 util/texindex.c:343
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -245,11 +246,11 @@ msgstr ""
 msgid "no index entries found for `%s'\n"
 msgstr "找不到含有“%s”的索引\n"
 
-#: info/info.c:560
+#: info/info.c:562
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 
-#: info/info.c:567
+#: info/info.c:569
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -318,8 +319,8 @@ msgstr ""
 "  info --show-options emacs  从 emacs 的命令行选项节点开始\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是搜索目录\n"
 
-#: info/info.c:603 info/infokey.c:902 makeinfo/makeinfo.c:485
-#: util/install-info.c:428 util/texindex.c:292
+#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:485
+#: util/install-info.c:401 util/texindex.c:291
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -331,72 +332,72 @@ msgstr ""
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:637
+#: info/info.c:639
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "无法找到节点“%s”。"
 
-#: info/info.c:638
+#: info/info.c:640
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:639
+#: info/info.c:641
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:640
+#: info/info.c:642
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:641
+#: info/info.c:643
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:642
+#: info/info.c:644
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:643
+#: info/info.c:645
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:644
+#: info/info.c:646
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:645
+#: info/info.c:647
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:646
+#: info/info.c:648
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:647
+#: info/info.c:649
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:648
+#: info/info.c:650
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:649
+#: info/info.c:651
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:650
+#: info/info.c:652
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:651
+#: info/info.c:653
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:652
+#: info/info.c:654
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 
@@ -1779,11 +1780,11 @@ msgstr "@sp 需要正数参数，而不是“%s”"
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4293
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4295
 msgid "none"
 msgstr "none"
 
@@ -2084,7 +2085,7 @@ msgstr "%s：%d：警告："
 msgid "Too many errors!  Gave up.\n"
 msgstr "过多的错误！放弃。\n"
 
-#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2094
+#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2095
 #, c-format
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
@@ -2322,140 +2323,140 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: makeinfo/makeinfo.c:932
+#: makeinfo/makeinfo.c:933
 #, c-format
 msgid "Expected `%s'"
 msgstr "应为“%s”"
 
-#: makeinfo/makeinfo.c:1397
+#: makeinfo/makeinfo.c:1398
 msgid "File exists, but is not a directory"
 msgstr "文件存在，但不是目录"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1399
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: makeinfo/makeinfo.c:1446
+#: makeinfo/makeinfo.c:1447
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:1528
+#: makeinfo/makeinfo.c:1529
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1558
+#: makeinfo/makeinfo.c:1559
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
-#: makeinfo/makeinfo.c:1593
+#: makeinfo/makeinfo.c:1594
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
 
-#: makeinfo/makeinfo.c:1615
+#: makeinfo/makeinfo.c:1616
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1670
+#: makeinfo/makeinfo.c:1671
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1921
+#: makeinfo/makeinfo.c:1922
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: makeinfo/makeinfo.c:1943
+#: makeinfo/makeinfo.c:1944
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: makeinfo/makeinfo.c:2136
+#: makeinfo/makeinfo.c:2137
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要“{...}”"
 
-#: makeinfo/makeinfo.c:2166
+#: makeinfo/makeinfo.c:2167
 msgid "Unmatched }"
 msgstr "不匹配的 }"
 
-#: makeinfo/makeinfo.c:2216
+#: makeinfo/makeinfo.c:2217
 msgid "NO_NAME!"
 msgstr "无名字！"
 
-#: makeinfo/makeinfo.c:2237
+#: makeinfo/makeinfo.c:2238
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: makeinfo/makeinfo.c:3055
+#: makeinfo/makeinfo.c:3056
 msgid "First argument to cross-reference may not be empty"
 msgstr "交叉引用的第一个参数不能为空"
 
-#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3116 makeinfo/makeinfo.c:3334 makeinfo/xml.c:1423
 msgid "see "
 msgstr "参阅 "
 
-#: makeinfo/makeinfo.c:3115
+#: makeinfo/makeinfo.c:3116
 msgid "See "
 msgstr "参阅 "
 
-#: makeinfo/makeinfo.c:3261
+#: makeinfo/makeinfo.c:3262
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "“.”或“,”之后必须为交叉引用，而不是 %c"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3310
 msgid "First argument to @inforef may not be empty"
 msgstr "@inforef 的第一个参数不能为空"
 
-#: makeinfo/makeinfo.c:3541
+#: makeinfo/makeinfo.c:3542
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: makeinfo/makeinfo.c:3547
+#: makeinfo/makeinfo.c:3548
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:3633
+#: makeinfo/makeinfo.c:3634
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image 文件“%s”(对文本)不可读：%s"
 
-#: makeinfo/makeinfo.c:3642
+#: makeinfo/makeinfo.c:3643
 msgid "@image missing filename argument"
 msgstr "@image 遗漏文件名参数"
 
-#: makeinfo/makeinfo.c:3840
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3841
+#: makeinfo/makeinfo.c:3842
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{没有“%s”的值}"
 
-#: makeinfo/makeinfo.c:3896
+#: makeinfo/makeinfo.c:3897
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: makeinfo/makeinfo.c:4002
+#: makeinfo/makeinfo.c:4003
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: makeinfo/makeinfo.c:4233
+#: makeinfo/makeinfo.c:4234
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "“%.40s...”扩展起来太长；未扩展"
@@ -2669,21 +2670,17 @@ msgstr "@image 文件“%s”不可读：%s"
 msgid "%s: warning: "
 msgstr "%s：警告："
 
-#: util/install-info.c:178 util/install-info.c:191
-msgid "virtual memory exhausted"
-msgstr "虚拟内存耗尽"
-
-#: util/install-info.c:234
+#: util/install-info.c:207
 #, c-format
 msgid " for %s"
 msgstr ""
 
-#: util/install-info.c:388
+#: util/install-info.c:361
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\t试用“%s --help”以获得选项的完整列表。\n"
 
-#: util/install-info.c:396
+#: util/install-info.c:369
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2750,7 +2747,7 @@ msgstr ""
 "                     文件自身的信息来判断它们。\n"
 " --version         显示版本信息并退出。\n"
 
-#: util/install-info.c:451
+#: util/install-info.c:424
 #, fuzzy, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2785,97 +2782,97 @@ msgstr ""
 "\n"
 "* 菜单：\n"
 
-#: util/install-info.c:476
+#: util/install-info.c:449
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s：即无法读入 (%s) 也无法创建 (%s)\n"
 
-#: util/install-info.c:567
+#: util/install-info.c:540
 #, c-format
 msgid "%s: empty file"
 msgstr "%s：空文件"
 
-#: util/install-info.c:894 util/install-info.c:934
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY 没有匹配的 END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:929
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY 没有匹配的 START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1178 util/install-info.c:1188
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s：Info 目录只应该指定一次。\n"
 
-#: util/install-info.c:1223
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s：Info 文件只应该指定一次。\n"
 
-#: util/install-info.c:1272
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "多余的命令行参数“%s”"
 
-#: util/install-info.c:1276
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr "没有指定输出文件；试用 --help 以获得更多信息。"
 
-#: util/install-info.c:1279
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 
-#: util/install-info.c:1301
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "“%s”中没有 info 目录条目"
 
-#: util/install-info.c:1416
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "在文件“%2$s”中菜单项“%1$s”已存在"
 
-#: util/install-info.c:1439
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到关于“%s”的条目；未删除"
 
-#: util/texindex.c:251
+#: util/texindex.c:250
 msgid "display this help and exit"
 msgstr "显示该求助信息并退出"
 
-#: util/texindex.c:253
+#: util/texindex.c:252
 msgid "keep temporary files around after processing"
 msgstr "在处理之后保留临时文件"
 
-#: util/texindex.c:255
+#: util/texindex.c:254
 msgid "do not keep temporary files around after processing (default)"
 msgstr "在处理之后删除临时文件 (默认)"
 
-#: util/texindex.c:257
+#: util/texindex.c:256
 msgid "send output to FILE"
 msgstr "将输出送入 FILE"
 
-#: util/texindex.c:259
+#: util/texindex.c:258
 msgid "display version information and exit"
 msgstr "显示版本信息并退出"
 
-#: util/texindex.c:270
+#: util/texindex.c:269
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "用法：%s [选项]... 文件...\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:270
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "为每个 TeX 输出文件生成排序的索引。\n"
 
-#: util/texindex.c:274
+#: util/texindex.c:273
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#: util/texindex.c:276
+#: util/texindex.c:275
 msgid ""
 "\n"
 "Options:\n"
@@ -2883,26 +2880,29 @@ msgstr ""
 "\n"
 "选项：\n"
 
-#: util/texindex.c:905 util/texindex.c:939 util/texindex.c:1015
-#: util/texindex.c:1043
+#: util/texindex.c:904 util/texindex.c:938 util/texindex.c:1014
+#: util/texindex.c:1042
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s：不是 texinfo 索引文件"
 
-#: util/texindex.c:1000
+#: util/texindex.c:999
 #, c-format
 msgid "failure reopening %s"
 msgstr "重新打开 %s 失败"
 
-#: util/texindex.c:1256
+#: util/texindex.c:1255
 #, c-format
 msgid "No page number in %s"
 msgstr "%s 中没有页码"
 
-#: util/texindex.c:1328
+#: util/texindex.c:1327
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "条目 %s 出现在具有次要名称的条目之后"
+
+#~ msgid "virtual memory exhausted"
+#~ msgstr "虚拟内存耗尽"
 
 #~ msgid "No `%s.png' or `.jpg', and no extension supplied"
 #~ msgstr "不是“%s.png”或“.jpg”，而且没有给出扩展名"

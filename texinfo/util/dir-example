@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.32 2003-05-19 12:16:59 karl Exp $
+$Id: dir-example,v 1.33 2003-05-29 22:54:18 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -155,14 +155,30 @@ Emacs
 * WoMan: (woman).       Browse UN*X Manual Pages `Wo (without) Man'.
 
 GNU Gettext Utilities
-* Gettext: (gettext).                           GNU gettext utilities.
-* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
-* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
-* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
-* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
+* ISO3166: (gettext)Country Codes.             ISO 3166 country codes.
+* ISO639: (gettext)Language Codes.             ISO 639 language codes.
+* autopoint: (gettext)autopoint Invocation.    Copy gettext infrastructure.
+* gettext: (gettext).                          GNU gettext utilities.
+* xgettext: (gettext)xgettext Invocation.      Extract strings into a PO file.
+* gettextize: (gettext)gettextize Invocation.  Prepare a package for gettext.
+* msgattrib: (gettext)msgattrib Invocation.    Select part of a PO file.
+* msgcat: (gettext)msgcat Invocation.          Combine several PO files.
+* msgcmp: (gettext)msgcmp Invocation.          Compare a PO file and template.
+* msgcomm: (gettext)msgcomm Invocation.        Match two PO files.
+* msgconv: (gettext)msgconv Invocation.        Convert PO file to encoding.
+* msgen: (gettext)msgen Invocation.            Create an English PO file.
+* msgexec: (gettext)msgexec Invocation.        Process a PO file.
+* msgfilter: (gettext)msgfilter Invocation.    Pipe a PO file through a filter.
+* msgfmt: (gettext)msgfmt Invocation.          Make MO files out of PO files.
+* msggrep: (gettext)msggrep Invocation.        Select part of a PO file.
+* msginit: (gettext)msginit Invocation.        Create a fresh PO file.
+* msgmerge: (gettext)msgmerge Invocation.      Update a PO file from template.
+* msgunfmt: (gettext)msgunfmt Invocation.      Uncompile MO file into PO file.
+* msguniq: (gettext)msguniq Invocation.        Unify duplicates for PO file.
 
 Software libraries
 * Annotate: (annotate).         High-level GDB to GUI's.
+* autosprintf: (autosprintf).   GNU autosprintf for printf formats in C++.
 * Bfd: (bfd).                   The Binary File Descriptor library.
 * CVS protocol: (cvsclient).    CVS client/server protocol specification.
 * Gdb-Internals: (gdbint).      The GNU debugger's internals.

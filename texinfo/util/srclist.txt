@@ -28,7 +28,7 @@ $GETTEXT/intl/gmo.h		intl
 $GETTEXT/intl/hash-string.h	intl
 $GETTEXT/intl/intl-compat.c	intl
 $GETTEXT/intl/l10nflist.c	intl
-$GETTEXT/intl/libgnuintl.h	intl
+$GETTEXT/intl/libgnuintl.h.in	intl
 $GETTEXT/intl/loadinfo.h	intl
 $GETTEXT/intl/loadmsgcat.c	intl
 $GETTEXT/intl/localcharset.c	intl
@@ -47,7 +47,7 @@ $GETTEXT/intl/ref-del.sin	intl
 $GETTEXT/intl/textdomain.c	intl
 #
 $GETTEXT/po/Makefile.in.in	po
-$GETTEXT/po/Makevars		po
+$GETTEXT/po/Makevars.template	po
 $GETTEXT/po/Rules-quot		po
 $GETTEXT/po/boldquot.sed	po
 $GETTEXT/po/en@boldquot.header	po

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.55 2003-05-18 15:51:14 karl Exp $
+$Id: NEWS,v 1.56 2003-05-29 22:54:17 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -57,7 +57,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . new Romanian (ro) translation.
   . variables now declared const where appropriate.
-  . automake 1.7.5.
+  . gettext 0.12.1, automake 1.7.5.
 
 
 4.5 (4 February 2003)

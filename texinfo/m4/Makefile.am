@@ -1,4 +1,4 @@
-EXTRA_DIST = \
+EXTRA_DIST = nls.m4 po.m4  \
   check-decl.m4 \
   codeset.m4 \
   gettext.m4 \

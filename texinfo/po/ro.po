@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.5.91\n"
-"POT-Creation-Date: 2003-05-18 08:36-0700\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2003-05-29 15:37-0700\n"
 "PO-Revision-Date: 2003-05-17 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <buzdugan@voyager.net>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -233,7 +234,7 @@ msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
 #: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
-#: util/install-info.c:1252 util/texindex.c:344
+#: util/install-info.c:1225 util/texindex.c:343
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -251,13 +252,13 @@ msgstr ""
 msgid "no index entries found for `%s'\n"
 msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
 
-#: info/info.c:560
+#: info/info.c:562
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
 msgstr ""
 "  -b, --speech-friendly        fii prietenos cu sintetizatoarele de "
 "vorbire.\n"
 
-#: info/info.c:567
+#: info/info.c:569
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -339,8 +340,8 @@ msgstr ""
 "                               comandã pentru emacs\n"
 "  info -f ./foo.info        aratã fiºierul ./foo.info, nu cãuta dir\n"
 
-#: info/info.c:603 info/infokey.c:902 makeinfo/makeinfo.c:485
-#: util/install-info.c:428 util/texindex.c:292
+#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:485
+#: util/install-info.c:401 util/texindex.c:291
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -352,72 +353,72 @@ msgstr ""
 "întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
 "Texinfo homepage: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:637
+#: info/info.c:639
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Nu pot gãsi nodul `%s'."
 
-#: info/info.c:638
+#: info/info.c:640
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Nu pot gãsi nodul `(%s)%s'."
 
-#: info/info.c:639
+#: info/info.c:641
 msgid "Cannot find a window!"
 msgstr "Nu pot gãsi o fereastrã!"
 
-#: info/info.c:640
+#: info/info.c:642
 msgid "Point doesn't appear within this window's node!"
 msgstr "Punctul nu apare în interiorul nodului acestei ferestre!"
 
-#: info/info.c:641
+#: info/info.c:643
 msgid "Cannot delete the last window."
 msgstr "Nu pot ºterge ultima fereastrã."
 
-#: info/info.c:642
+#: info/info.c:644
 msgid "No menu in this node."
 msgstr "Nici un meniu în acest nod"
 
-#: info/info.c:643
+#: info/info.c:645
 msgid "No footnotes in this node."
 msgstr "Nici o notã de subsol în acest nod."
 
-#: info/info.c:644
+#: info/info.c:646
 msgid "No cross references in this node."
 msgstr "Nici o referinþã la acelaºi pasaj în acest nod."
 
-#: info/info.c:645
+#: info/info.c:647
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Nici un pointer `%s' pentru acest nod."
 
-#: info/info.c:646
+#: info/info.c:648
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Comandã Info necunoscutã `%c';încercaþi `?' pentru ajutor."
 
-#: info/info.c:647
+#: info/info.c:649
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Terminalul de tip `%s' nu e destul de deºtept sã ruleze Info."
 
-#: info/info.c:648
+#: info/info.c:650
 msgid "You are already at the last page of this node."
 msgstr "Sunteþi deja la ultima paginã a acestui nod."
 
-#: info/info.c:649
+#: info/info.c:651
 msgid "You are already at the first page of this node."
 msgstr "Sunteþi deja la prima paginã a acestui nod."
 
-#: info/info.c:650
+#: info/info.c:652
 msgid "Only one window."
 msgstr "O singurã fereastrã."
 
-#: info/info.c:651
+#: info/info.c:653
 msgid "Resulting window would be too small."
 msgstr "Fereastra rezultantã ar fi prea micã."
 
-#: info/info.c:652
+#: info/info.c:654
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Nu e destul spaþiu pentru o fereastrã de ajutor, ºtergeþi altã fereastrã."
@@ -1846,11 +1847,11 @@ msgstr "@sp necesitã un argument numeric pozitiv, nu `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Argument nepotrivit pentru %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4293
 msgid "asis"
 msgstr "aºacume"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4295
 msgid "none"
 msgstr "nimic"
 
@@ -2153,7 +2154,7 @@ msgstr "%s:%d: avertisment: "
 msgid "Too many errors!  Gave up.\n"
 msgstr "Prea multe erori!  Am renunþat.\n"
 
-#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2094
+#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2095
 #, c-format
 msgid "Misplaced %c"
 msgstr "%c nelalocul lui"
@@ -2411,42 +2412,42 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: makeinfo/makeinfo.c:932
+#: makeinfo/makeinfo.c:933
 #, c-format
 msgid "Expected `%s'"
 msgstr "Am aºteptat `%s'"
 
-#: makeinfo/makeinfo.c:1397
+#: makeinfo/makeinfo.c:1398
 msgid "File exists, but is not a directory"
 msgstr "Fiºierul existã, dar nu este un director"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1399
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Nu pot crea directorul `%s': %s"
 
-#: makeinfo/makeinfo.c:1446
+#: makeinfo/makeinfo.c:1447
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Nici un `%s' nu a fost gãsit în `%s'"
 
-#: makeinfo/makeinfo.c:1528
+#: makeinfo/makeinfo.c:1529
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Omite expasiunea macro la ieºire întrucât ieºirea Info merge acolo.\n"
 
-#: makeinfo/makeinfo.c:1558
+#: makeinfo/makeinfo.c:1559
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "Creez fiºierul %s `%s' din `%s'.\n"
 
-#: makeinfo/makeinfo.c:1593
+#: makeinfo/makeinfo.c:1594
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Acesta este %s, produs de makeinfo versiunea %s din %s.\n"
 
-#: makeinfo/makeinfo.c:1615
+#: makeinfo/makeinfo.c:1616
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2454,102 +2455,102 @@ msgstr ""
 "%s: ªterg fiºierul de ieºire macro `%s' din cauza erorilor; folosiþi --force "
 "pentru a-l pãstra.\n"
 
-#: makeinfo/makeinfo.c:1670
+#: makeinfo/makeinfo.c:1671
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-l "
 "pãstra.\n"
 
-#: makeinfo/makeinfo.c:1921
+#: makeinfo/makeinfo.c:1922
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Comandã necunoscutã `%s'"
 
-#: makeinfo/makeinfo.c:1943
+#: makeinfo/makeinfo.c:1944
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: makeinfo/makeinfo.c:2136
+#: makeinfo/makeinfo.c:2137
 #, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s am aºteptat paranteze"
 
-#: makeinfo/makeinfo.c:2166
+#: makeinfo/makeinfo.c:2167
 msgid "Unmatched }"
 msgstr "} fãrã pereche"
 
-#: makeinfo/makeinfo.c:2216
+#: makeinfo/makeinfo.c:2217
 msgid "NO_NAME!"
 msgstr "NICI_UN_NUME"
 
-#: makeinfo/makeinfo.c:2237
+#: makeinfo/makeinfo.c:2238
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s lipseºte paranteza de închidere"
 
-#: makeinfo/makeinfo.c:3055
+#: makeinfo/makeinfo.c:3056
 msgid "First argument to cross-reference may not be empty"
 msgstr "Primul argument cãtre referinþã nu poate fi gol"
 
-#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3116 makeinfo/makeinfo.c:3334 makeinfo/xml.c:1423
 msgid "see "
 msgstr "vezi "
 
-#: makeinfo/makeinfo.c:3115
+#: makeinfo/makeinfo.c:3116
 msgid "See "
 msgstr "Vezi "
 
-#: makeinfo/makeinfo.c:3261
+#: makeinfo/makeinfo.c:3262
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "`.' sau `,' trebuie sã urmeze o referinþã, not %c"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3310
 msgid "First argument to @inforef may not be empty"
 msgstr "Primul argument pentru @inforef nu poate fi gol"
 
-#: makeinfo/makeinfo.c:3541
+#: makeinfo/makeinfo.c:3542
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "Fiºierul @image `%s' (pentru HTML) nu poate fi citit: %s"
 
-#: makeinfo/makeinfo.c:3547
+#: makeinfo/makeinfo.c:3548
 #, c-format
 msgid "No such file `%s'"
 msgstr "Nici un fiºier `%s'"
 
-#: makeinfo/makeinfo.c:3633
+#: makeinfo/makeinfo.c:3634
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "Fiºierul @image `%s' (pentru text) nu poate fi citit: %s"
 
-#: makeinfo/makeinfo.c:3642
+#: makeinfo/makeinfo.c:3643
 msgid "@image missing filename argument"
 msgstr "@image lipseºte fiºierul argument."
 
-#: makeinfo/makeinfo.c:3840
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "undefined flag: %s"
 msgstr "marcaj nedefinit: %s"
 
-#: makeinfo/makeinfo.c:3841
+#: makeinfo/makeinfo.c:3842
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Nici o valoare pentru `%s'}"
 
-#: makeinfo/makeinfo.c:3896
+#: makeinfo/makeinfo.c:3897
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s necesitã un nume"
 
-#: makeinfo/makeinfo.c:4002
+#: makeinfo/makeinfo.c:4003
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Am ajuns la eof înainte de a potrivi @end %s"
 
-#: makeinfo/makeinfo.c:4233
+#: makeinfo/makeinfo.c:4234
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' este prea lung pentru expansiune; nu a fost expandat"
@@ -2766,21 +2767,17 @@ msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
 msgid "%s: warning: "
 msgstr "%s: avertisment: "
 
-#: util/install-info.c:178 util/install-info.c:191
-msgid "virtual memory exhausted"
-msgstr "memoria virtualã epuizatã"
-
-#: util/install-info.c:234
+#: util/install-info.c:207
 #, c-format
 msgid " for %s"
 msgstr " pentru %s"
 
-#: util/install-info.c:388
+#: util/install-info.c:361
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tÎncercaþi `%s --help' pentru o lipsã completã de opþiuni.\n"
 
-#: util/install-info.c:396
+#: util/install-info.c:369
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2852,7 +2849,7 @@ msgstr ""
 "                     determinate din informaþiile din fiºierul Info.\n"
 " --version         afiºeazã informaþii depre versiune ºi terminã.\n"
 
-#: util/install-info.c:451
+#: util/install-info.c:424
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2889,103 +2886,103 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: util/install-info.c:476
+#: util/install-info.c:449
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: nu am putut citi (%s) ºi nu am putut crea (%s)\n"
 
-#: util/install-info.c:567
+#: util/install-info.c:540
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: fiºier gol"
 
-#: util/install-info.c:894 util/install-info.c:934
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY fãrã un END-INFO-DIR-ENTRY corespunzãtor"
 
-#: util/install-info.c:929
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY fãrã un  START-INFO-DIR-ENTRY corespunzãtor"
 
-#: util/install-info.c:1178 util/install-info.c:1188
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Specificã directorul Info o singurã datã.\n"
 
-#: util/install-info.c:1223
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Specificã fiºierul Info o singurã datã.\n"
 
-#: util/install-info.c:1272
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "argument suplimentar în linia de comandã `%s'"
 
-#: util/install-info.c:1276
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier de intrare specificat; încercaþi --help pentru informaþii "
 "suplimentare."
 
-#: util/install-info.c:1279
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier dir specificat; încercaþi --help pentru informaþii "
 "suplimentare."
 
-#: util/install-info.c:1301
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nici o intrare dir info în `%s'"
 
-#: util/install-info.c:1416
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "articol meniu `%s' existã deja, pentru fiºier `%s'"
 
-#: util/install-info.c:1439
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nici o intrare gãsitã pentru `%s'; n-am ºters nimic"
 
-#: util/texindex.c:251
+#: util/texindex.c:250
 msgid "display this help and exit"
 msgstr "afiºeazã acest mesaj ºi terminã"
 
-#: util/texindex.c:253
+#: util/texindex.c:252
 msgid "keep temporary files around after processing"
 msgstr "pãstreazã fiºierele temporare dupã procesare"
 
-#: util/texindex.c:255
+#: util/texindex.c:254
 msgid "do not keep temporary files around after processing (default)"
 msgstr "nu pãstra fiºierele temporare dupã procesare (implicit)"
 
-#: util/texindex.c:257
+#: util/texindex.c:256
 msgid "send output to FILE"
 msgstr "trimite ieºire în FIªIER"
 
-#: util/texindex.c:259
+#: util/texindex.c:258
 msgid "display version information and exit"
 msgstr "afiºeazã informaþii despre versiune ºi terminã"
 
-#: util/texindex.c:270
+#: util/texindex.c:269
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Folosire: %s [OPÞIUNI]... FIªIER...\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:270
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "Genereazã un index sortat pentru fiecare FIªIER de ieºire TeX.\n"
 
-#: util/texindex.c:274
+#: util/texindex.c:273
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr ""
 "De obicei FIªIER... este specificat ca `foo.%c%c' pentru un document 'foo."
 "texi'.\n"
 
-#: util/texindex.c:276
+#: util/texindex.c:275
 msgid ""
 "\n"
 "Options:\n"
@@ -2993,23 +2990,26 @@ msgstr ""
 "\n"
 "Opþiuni:\n"
 
-#: util/texindex.c:905 util/texindex.c:939 util/texindex.c:1015
-#: util/texindex.c:1043
+#: util/texindex.c:904 util/texindex.c:938 util/texindex.c:1014
+#: util/texindex.c:1042
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: nu este un fiºier index texinfo"
 
-#: util/texindex.c:1000
+#: util/texindex.c:999
 #, c-format
 msgid "failure reopening %s"
 msgstr "am eºuat sã redeschid %s"
 
-#: util/texindex.c:1256
+#: util/texindex.c:1255
 #, c-format
 msgid "No page number in %s"
 msgstr "Nici un numãr de paginã în %s"
 
-#: util/texindex.c:1328
+#: util/texindex.c:1327
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "intrarea %s urmeazã o intrare cu nume secundar"
+
+#~ msgid "virtual memory exhausted"
+#~ msgstr "memoria virtualã epuizatã"
