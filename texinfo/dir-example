@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.5 2002-09-12 21:27:15 karl Exp $
+$Id: dir-example,v 1.6 2002-09-20 01:05:52 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -54,6 +54,7 @@ GNU Packages
 
 GNU programming tools
 * As: (as).                     Assembler.
+* Autoconf: (autoconf).         Create source code configuration scripts
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * Bison: (bison).               LALR(1) parser generator.
 * CVS: (cvs).                   Concurrent versions system for source control.
@@ -122,7 +123,6 @@ GNU Emacs Lisp
 * W3: (w3).                     WWW browser.
 
 GNU programming support
-* Autoconf: (autoconf).         Automatic generation of package configuration.
 * Configure: (configure).       Cygnus configure.
 * Gnats: (gnats).               Cygnus bug tracking system.
 * Remsync: (remsync).           Remote synchronization of directory trees.
@@ -212,8 +212,18 @@ Individual utilities
 * aid: (id-utils)aid invocation.                Matching strings.
 * ar: (binutils)ar.                             Create/modify/extract archives.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
-* autoreconf: (autoconf)Invoking autoreconf.    Remake multiple configure's.
-* autoscan: (autoconf)Invoking autoscan.        Automate initial configure.in.
+* autoconf: (autoconf)autoconf Invocation.
+                                How to create configuration scripts
+* autoheader: (autoconf)autoheader Invocation.
+                                How to create configuration templates
+* autom4te: (autoconf)Invoking autom4te.
+                                The Autoconf executables backbone
+* autoreconf: (autoconf)autoreconf Invocation.
+                                Remaking multiple `configure' scripts
+* autoscan: (autoconf)autoscan Invocation.
+                                Semi-automatic `configure.ac' writing
+* autoupdate: (autoconf)autoupdate Invocation.
+                                Automatic update of `configure.ac'
 * awk: (gawk)Invoking gawk.                     Text processing and scanning.
 * basename: (sh-utils)basename invocation.      Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
@@ -227,6 +237,10 @@ Individual utilities
 * cksum: (textutils)cksum invocation.           Print POSIX CRC checksum.
 * cmp: (diff)Invoking cmp.                      Character-by-character diff.
 * comm: (textutils)comm invocation.             Compare sorted files by line.
+* config.status: (autoconf)config.status Invocation.
+                                Recreating a configuration
+* configure: (autoconf)configure Invocation.
+                                Configuring a package
 * cp: (fileutils)cp invocation.                 Copy files.
 * csplit: (textutils)csplit invocation.         Split by context.
 * cut: (textutils)cut invocation.               Print selected parts of lines.
@@ -271,7 +285,8 @@ Individual utilities
 * hostname: (sh-utils)hostname invocation.      Print or set system name.
 * id: (sh-utils)id invocation.                  Print real/effective uid/gid.
 * idx: (id-utils)idx invocation.                Testing mkid scanners.
-* ifnames: (autoconf)Invoking ifnames.          List conditionals in source.
+* ifnames: (autoconf)ifnames Invocation.
+                                Listing the conditionals in source code
 * iid: (id-utils)iid invocation.                Interactive complex queries.
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
@@ -355,6 +370,8 @@ Individual utilities
 * tcal: (gcal)Invoking tcal.                    Run Gcal with tomorrow's date.
 * tee: (sh-utils)tee invocation.                Redirect to multiple files.
 * test: (sh-utils)test invocation.              File/string tests.
+* testsuite: (autoconf)testsuite Invocation.
+                                Running an Autotest test suite
 * tex: (web2c)tex invocation.                   Typesetting.
 * tftopl: (web2c)TFtoPL invocation.             TFM -> property list.
 * touch: (fileutils)touch invocation.           Change file timestamps.
