@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.3 2002-09-24 15:33:52 karl Exp $
+# $Id: Makefile.am,v 1.4 2002-09-26 21:57:01 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -10,8 +10,17 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-bin_PROGRAMS = install-info texindex
+bin_PROGRAMS = ginstall-info texindex
 bin_SCRIPTS = texi2dvi
+
+# Use `ginstall-info' in the definition of PROGRAMS and in dependencies
+# because automake generates an install-info target in every Makefile (a
+# bug, IMHO, but this is easier than patching Automake.)
+ginstall_info_SOURCES = install-info.c 
+
+# Transform `ginstall-info' to `install-info' before applying any
+# user-specified name transformations.
+transform = s/ginstall-info/install-info/; @program_transform_name@
 
 localedir = $(datadir)/locale
 INCLUDES = -I$(top_srcdir)/lib -I../intl -DLOCALEDIR=\"$(localedir)\"
@@ -24,6 +33,6 @@ LDADD = ../lib/libtxi.a @LIBINTL@
 # install-info will be built on every make, and make distcleancheck will
 # fail.  (These bugs have been reported [several times] to bug-automake.)
 # 
-EXTRA_DIST = README automake.diff deref.c dir-example fix-info-dir fixfonts \
+EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   fixref.gawk gen-dir-node install-info-html outline.gawk prepinfo.awk \
   tex3patch texi-docstring-magic.el texi2dvi
