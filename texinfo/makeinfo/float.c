@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.1 2003-11-23 23:19:04 dirt Exp $
+   $Id: float.c,v 1.2 2003-11-24 03:19:16 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -97,4 +97,24 @@ char *
 current_float_id ()
 {
   return float_stack->id;
+}
+
+char *
+get_float_ref (id)
+    char *id;
+{
+  FLOAT_ELT *temp = float_stack;
+
+  while (temp)
+    {
+      if (STREQ (id, temp->id))
+        {
+          char *s = xmalloc (strlen (temp->type) + strlen (temp->number) + 2);
+          sprintf (s, "%s %s", temp->type, temp->number);
+          return s;
+        }
+      temp = temp->next;
+    }
+
+  return NULL;
 }

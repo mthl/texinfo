@@ -1,5 +1,11 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/float.h:
+	* makeinfo/float.c (get_float_ref): new function to retrieve a float's
+	number by its id.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.c (end_insertion): indent the first paragraph
 	after @float.
 
