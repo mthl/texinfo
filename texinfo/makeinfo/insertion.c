@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.23 2003-07-16 22:26:28 karl Exp $
+   $Id: insertion.c,v 1.24 2003-08-08 15:58:25 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1136,7 +1136,7 @@ cm_smalldisplay ()
 void
 cm_direntry ()
 {
-  if (html || xml)
+  if (html || xml || no_headers)
     command_name_condition ();
   else
     begin_insertion (direntry);
