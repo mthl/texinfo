@@ -4,21 +4,30 @@
 do_tidy='no'
 which tidy 2>&1 > /dev/null && do_tidy='yes'
 
+LANG=C
+export LANG
+LC_ALL=C
+export LC_ALL
+
 test_texi(){
 dir=$1; shift
 texi_file=$1 ;shift
 options=$1; shift
+suffix=$1; shift
 fail=$1; shift
 ignore_tags=$1; shift
 test_tidy=$1;shift
 wc=$1; shift
 [ -z $fail ] && fail='success'
 [ -z $wc ] && wc=0
-[ -z $texi_file ] && texi_file=$dir.texi
+[ -z $suffix ] && suffix=texi
+[ -z $texi_file ] && texi_file=$dir.$suffix
 [ -z $ignore_tags ] && ignore_tags=no
 [ -z $test_tidy ] && test_tidy=yes
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
+basename=`basename $texi_file .$suffix`
+stderr_file=$basename.2
 echo "making test: $dir/$texi_file"
 if [ ! -d $dir ]; then
 	echo "  !!! no dir $dir"
@@ -28,9 +37,9 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm *.html *.htm *.png) > /dev/null 2>&1
+(cd $dir && rm $basename*.html $basename*.htm $basename*.png) > /dev/null 2>&1
 export T2H_HOME=../..
-(cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/res.2 > /dev/null
+(cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -40,7 +49,7 @@ fi
 
 if [ $wc != 'no' ]; then
 echo "  stderr line count:"
-res_wc=`<$dir/res.2 wc -l`
+res_wc=`<$dir/$stderr_file wc -l`
 if [ $res_wc != $wc ]; then echo "    !!! bad line count: $res_wc != $wc"
 else echo "    passed"
 fi
@@ -120,13 +129,17 @@ fi
 test_texi GermanNodeTest nodetest.texi
 test_texi sectionning
 test_texi formatting verbatim_html.texi "-l2h -expand tex"
+test_texi macros
+test_texi macros simple_macro.texi
+test_texi macros pass0_macros.texi
 test_texi texi2html
+test_texi macro macros.texi "-verbose"
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
 test_texi xemacs_frame xemacs.texi "-split chapter -frames"
-test_texi texinfo texinfo.txi "-split chapter" success ignore_tags
-test_texi ccvs cvs.texinfo "-split chapter"
+test_texi texinfo texinfo.txi "-split chapter" txi success ignore_tags
+test_texi ccvs cvs.texinfo "-split chapter" texinfo
 
 exit
 #examples of syntax
