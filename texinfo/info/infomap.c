@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.5 2003-01-24 19:04:54 karl Exp $
+   $Id: infomap.c,v 1.6 2003-04-01 14:22:29 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1493,7 +1493,7 @@ fetch_user_maps()
 #endif
 	if (filename == NULL || (f = open(filename, O_RDONLY)) == (-1))
 	{
-		if (filename)
+		if (filename && errno != ENOENT)
 		{
 			info_error(filesys_error_string(filename, errno));
 			free(filename);
