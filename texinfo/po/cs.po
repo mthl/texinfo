@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
-"POT-Creation-Date: 2002-04-01 06:10-0800\n"
+"POT-Creation-Date: 2002-09-03 16:25-0700\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -232,7 +232,7 @@ msgid "Try --help for more information.\n"
 msgstr "Více informací mù¾ete získat pomocí pøepínaèe --help.\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:689
-#: util/install-info.c:1224 util/texindex.c:338
+#: util/install-info.c:1225 util/texindex.c:338
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -338,7 +338,7 @@ msgstr ""
 "zasílejte na adresu <cs@li.org> (èesky).\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:474
-#: util/install-info.c:421 util/texindex.c:286
+#: util/install-info.c:422 util/texindex.c:286
 #, fuzzy
 msgid ""
 "\n"
@@ -421,156 +421,156 @@ msgstr "Výsledné okno by bylo pøíli¹ malé."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Není volné místo pro okno nápovìdy, prosím sma¾te nìkteré okno."
 
-#: info/infodoc.c:45 info/infodoc.c:94
+#: info/infodoc.c:46 info/infodoc.c:95
 #, fuzzy
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
 msgstr "Základní pøíkazy v Info oknech\n"
 
-#: info/infodoc.c:48
+#: info/infodoc.c:49
 #, fuzzy
 msgid "\\%-10[quit-help]  Quit this help.\n"
 msgstr "  %-10s  Ukonèení prohlí¾ení nápovìdy.\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:50
 #, fuzzy
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "  %-10s  Celkové ukonèení Infa.\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:51
 #, fuzzy
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Vyvolání prùvodce Infem.\n"
 
 # Udìlat patch na podtr¾ení
-#: info/infodoc.c:52 info/infodoc.c:101
+#: info/infodoc.c:53 info/infodoc.c:102
 #, fuzzy
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
 msgstr "Výbìr dal¹ích uzlù:\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:55
 #, fuzzy
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
 
-#: info/infodoc.c:55
+#: info/infodoc.c:56
 #, fuzzy
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
 
-#: info/infodoc.c:56
+#: info/infodoc.c:57
 #, fuzzy
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "  %-10s  Pøesun \"nahoru\" z aktuálního uzlu.\n"
 
-#: info/infodoc.c:57
+#: info/infodoc.c:58
 #, fuzzy
 msgid ""
 "\\%-10[menu-item]  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
 msgstr "              Vybírání polo¾ky menu zpùsobí zobrazení tohoto uzlu.\n"
 
-#: info/infodoc.c:59
+#: info/infodoc.c:60
 #, fuzzy
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Následování køí¾ového odkazu. Ète název odkazu.\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:61
 #, fuzzy
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Pøesun na poslední uzel zobrazený v tomto oknì.\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:62
 #, fuzzy
 msgid ""
 "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:63
 #, fuzzy
 msgid ""
 "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
 "node.\n"
 msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
 
-#: info/infodoc.c:63
+#: info/infodoc.c:64
 #, fuzzy
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Následování hypertextového odkazu pod kurzorem.\n"
 
-#: info/infodoc.c:64
+#: info/infodoc.c:65
 #, fuzzy
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
 msgstr "  %-10s  Pøesun do `adresáøového' uzlu. Rovnocenné s `g (DIR)'.\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:66
 #, fuzzy
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "  %-10s  Pøesun do nejvy¹¹ího (Top) uzlu. Rovnocenné s `g Top'.\n"
 
-#: info/infodoc.c:67 info/infodoc.c:115
+#: info/infodoc.c:68 info/infodoc.c:116
 #, fuzzy
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
 msgstr "Pøesun uvnitø uzlu:\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "  %-10s  Následující stránka.\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "  %-10s  Pøedchozí stránka.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:72
 #, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10s  Pøesun na zaèátek aktuálního uzlu.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:73
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:74
 #, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
 msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:75
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
 msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
 
-#: info/infodoc.c:76 info/infodoc.c:124
+#: info/infodoc.c:77 info/infodoc.c:125
 #, fuzzy
 msgid ""
 "Other commands:\n"
 "---------------\n"
 msgstr "Dal¹í pøíkazy:\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:79
 #, fuzzy
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  Výbìr první ... deváté polo¾ky menu uzlu.\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:80
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
 msgstr "  %-10s  Zobrazení poslední polo¾ky menu uzlu.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:81
 #, fuzzy
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
@@ -579,14 +579,14 @@ msgid ""
 "found.\n"
 msgstr "              uzlu, na který ukazuje první nalezená polo¾ka.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 #, fuzzy
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              Také mù¾ete zadat jméno souboru ve tvaru (SOUBOR)UZEL.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:85
 #, fuzzy
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
@@ -594,7 +594,7 @@ msgid ""
 msgstr ""
 "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto øetìzce.\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:87
 #, fuzzy
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
@@ -603,171 +603,171 @@ msgid ""
 msgstr ""
 "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto øetìzce.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Ukonèení prohlí¾ení nápovìdy.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Celkové ukonèení Infa.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Vyvolání prùvodce Infem.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Pøesun \"nahoru\" z aktuálního uzlu.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
 msgstr "  %-10s  Vybrání polo¾ky menu zadané pomocí názvu.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 msgid "              Picking a menu item causes another node to be selected.\n"
 msgstr "              Vybírání polo¾ky menu zpùsobí zobrazení tohoto uzlu.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Následování køí¾ového odkazu. Ète název odkazu.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Pøesun na poslední uzel zobrazený v tomto oknì.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Následování hypertextového odkazu pod kurzorem.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Pøesun do `adresáøového' uzlu. Rovnocenné s `g (DIR)'.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Pøesun do nejvy¹¹ího (Top) uzlu. Rovnocenné s `g Top'.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Následující stránka.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Pøedchozí stránka.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Pøesun na zaèátek aktuálního uzlu.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  Výbìr první ... deváté polo¾ky menu uzlu.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:128
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Zobrazení poslední polo¾ky menu uzlu.\n"
 
-#: info/infodoc.c:128
+#: info/infodoc.c:129
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
 msgstr ""
 "  %-10s  Hledání zadaného øetìzce v rejstøíku tohoto Info souboru a výbìr\n"
 
-#: info/infodoc.c:129
+#: info/infodoc.c:130
 msgid ""
 "              file, and select the node referenced by the first entry "
 "found.\n"
 msgstr "              uzlu, na který ukazuje první nalezená polo¾ka.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Pøesun na uzel zadaný pomocí jména.\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:132
 msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              Také mù¾ete zadat jméno souboru ve tvaru (SOUBOR)UZEL.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:133
 #, fuzzy, c-format
 msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  Hledání zadaného øetìzce v tomto Info souboru.\n"
 
-#: info/infodoc.c:133 info/infodoc.c:135
+#: info/infodoc.c:134 info/infodoc.c:136
 msgid ""
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
 "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto øetìzce.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:135
 #, fuzzy, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Hledání zadaného øetìzce v tomto Info souboru.\n"
 
-#: info/infodoc.c:313
+#: info/infodoc.c:314
 msgid "The current search path is:\n"
 msgstr "Aktuální hledací cesta je:\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:317
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
 msgstr "Pøíkazy dostupné v Info oknech:\n"
 
-#: info/infodoc.c:319
+#: info/infodoc.c:320
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr "Pøíkazy dostupné v zobrazovacím poli:\n"
 
-#: info/infodoc.c:340
+#: info/infodoc.c:341
 #, fuzzy, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -776,7 +776,7 @@ msgstr ""
 "Následující pøíkazy mohou být vykonány pouze pomocí M-x:\n"
 "\n"
 
-#: info/infodoc.c:343
+#: info/infodoc.c:344
 #, fuzzy
 msgid ""
 "The following commands cannot be invoked at all:\n"
@@ -785,67 +785,67 @@ msgstr ""
 "Následující pøíkazy mohou být vykonány pouze pomocí M-x:\n"
 "\n"
 
-#: info/infodoc.c:367
+#: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- Pou¾ijte `\\[history-node]' nebo `\\[kill-node]' pro ukonèení ---\n"
 
-#: info/infodoc.c:477
+#: info/infodoc.c:478
 msgid "Display help message"
 msgstr "Zobrazení nápovìdy"
 
-#: info/infodoc.c:495
+#: info/infodoc.c:496
 msgid "Visit Info node `(info)Help'"
 msgstr "Zobrazení Info uzlu `(info)Help'"
 
-#: info/infodoc.c:638
+#: info/infodoc.c:639
 msgid "Print documentation for KEY"
 msgstr "Zobrazení dokumentace ke KLÁVESE"
 
-#: info/infodoc.c:650
+#: info/infodoc.c:651
 #, c-format
 msgid "Describe key: %s"
 msgstr "Popis klávesy: %s"
 
-#: info/infodoc.c:660
+#: info/infodoc.c:661
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s je nedefinováno."
 
-#: info/infodoc.c:676 info/infodoc.c:703
+#: info/infodoc.c:677 info/infodoc.c:704
 #, c-format
 msgid "%s is undefined."
 msgstr "%s je nedefinováno."
 
-#: info/infodoc.c:724
+#: info/infodoc.c:725
 #, c-format
 msgid "%s is defined to %s."
 msgstr "Klávesa %s je definována pro pøíkaz %s."
 
-#: info/infodoc.c:1151
+#: info/infodoc.c:1152
 msgid "Show what to type to execute a given command"
 msgstr "Ukázání co napsat pro spu¹tìní daného pøíkazu"
 
-#: info/infodoc.c:1155
+#: info/infodoc.c:1156
 msgid "Where is command: "
 msgstr "Kde je pøíkaz: "
 
-#: info/infodoc.c:1177
+#: info/infodoc.c:1178
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "Pøíkaz `%s' není na ¾ádné klávese"
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "Pøíkaz %s mù¾e být vyvolán pouze pomocí %s."
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "Pøíkaz %s mù¾e být vyvolán pomocí %s."
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Funkce `%s' není známa"
@@ -950,49 +950,49 @@ msgid ""
 "  --version            display version information and exit.\n"
 msgstr ""
 
-#: info/infomap.c:1397
+#: info/infomap.c:1398
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr ""
 
-#: info/infomap.c:1400
+#: info/infomap.c:1401
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr ""
 
-#: info/infomap.c:1413
+#: info/infomap.c:1414
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr ""
 
-#: info/infomap.c:1431
+#: info/infomap.c:1432
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1437
+#: info/infomap.c:1438
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1450
+#: info/infomap.c:1451
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1470
+#: info/infomap.c:1471
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 
-#: info/infomap.c:1608
+#: info/infomap.c:1609
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 
-#: info/infomap.c:1659
+#: info/infomap.c:1660
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 
@@ -1021,7 +1021,7 @@ msgstr "Nastavení vý¹ky obrazovky"
 msgid "Set screen height to (%d): "
 msgstr "Vý¹ka obrazovky (%d): "
 
-#: info/makedoc.c:161 info/makedoc.c:169
+#: info/makedoc.c:162 info/makedoc.c:170
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
@@ -1029,7 +1029,7 @@ msgstr ""
 "Pøi zpracování zdrojového souboru jsou vkládány tyto soubory:\n"
 "\n"
 
-#: info/makedoc.c:553
+#: info/makedoc.c:554
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Se souborem %s nelze pracovat.\n"
@@ -1650,80 +1650,80 @@ msgstr "Nastavení promìnné %s na hodnotu (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Nastavení promìnné %s na hodnotu (%s): "
 
-#: info/window.c:1164
+#: info/window.c:1165
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Znaèky jsou zastatalé ***"
 
-#: info/window.c:1175
+#: info/window.c:1176
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), øádkù ----, "
 
-#: info/window.c:1182
+#: info/window.c:1183
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, øádkù: %d --%s--"
 
-#: info/window.c:1186
+#: info/window.c:1187
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, øádkù: %d --%s--"
 
-#: info/window.c:1193
+#: info/window.c:1194
 #, c-format
 msgid " Subfile: %s"
 msgstr " Podsoubor: %s"
 
-#: lib/getopt.c:675
+#: lib/getopt.c:694
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: pøepínaè `%s' není jednoznaèný\n"
 
-#: lib/getopt.c:700
+#: lib/getopt.c:719
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: pøepínaè `--%s' musí být zadán bez argumentu\n"
 
-#: lib/getopt.c:705
+#: lib/getopt.c:724
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: pøepínaè `%c%s' musí být zadán bez argumentu\n"
 
-#: lib/getopt.c:723 lib/getopt.c:896
+#: lib/getopt.c:742 lib/getopt.c:915
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: pøepínaè `%s' vy¾aduje argument\n"
 
-#: lib/getopt.c:752
+#: lib/getopt.c:771
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: neznámý pøepínaè `--%s'\n"
 
-#: lib/getopt.c:756
+#: lib/getopt.c:775
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: neznámý pøepínaè `%c%s'\n"
 
-#: lib/getopt.c:782
+#: lib/getopt.c:801
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: neznámý pøepínaè -- %c\n"
 
-#: lib/getopt.c:785
+#: lib/getopt.c:804
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: neznámý pøepínaè -- %c\n"
 
-#: lib/getopt.c:815 lib/getopt.c:945
+#: lib/getopt.c:834 lib/getopt.c:964
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: pøepínaè vy¾aduje argument -- %c\n"
 
-#: lib/getopt.c:862
+#: lib/getopt.c:881
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: pøepínaè `-W %s' není jednoznaèný\n"
 
-#: lib/getopt.c:880
+#: lib/getopt.c:899
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: pøepínaè `-W %s' musí být zadán bez argumentu\n"
@@ -2420,34 +2420,34 @@ msgstr "Vstupní soubor skonèil a pøíkaz `@end %s' nebyl nalezen"
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
 
-#: makeinfo/multi.c:226
+#: makeinfo/multi.c:227
 msgid "Missing } in @multitable template"
 msgstr "Chybìjící } v @multitable vzoru"
 
-#: makeinfo/multi.c:302
+#: makeinfo/multi.c:303
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "ignoruji zbloudilý text `%s' po pøíkazu @multitable"
 
-#: makeinfo/multi.c:375
+#: makeinfo/multi.c:376
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Pøíli¹ mnoho sloupcù v multitabulkové polo¾ce (max %d)"
 
-#: makeinfo/multi.c:426
+#: makeinfo/multi.c:427
 #, c-format
 msgid "Cannot select column #%d in multitable"
 msgstr "sloupec #%d v multitabulce nelze vybrat"
 
-#: makeinfo/multi.c:529
+#: makeinfo/multi.c:530
 msgid "ignoring @tab outside of multitable"
 msgstr "pøíkaz `@tab' ignorován, je mimo multitabulku"
 
-#: makeinfo/multi.c:565
+#: makeinfo/multi.c:566
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Vícesloupcový výstup z posledního øádku:\n"
 
-#: makeinfo/multi.c:568
+#: makeinfo/multi.c:569
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* sloupec #%d: výstup = %s\n"
@@ -2626,26 +2626,26 @@ msgstr "%s: Obsah bìl být zde, ale nebyl nalezen"
 msgid "@image file `%s' unreadable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: util/install-info.c:151
+#: util/install-info.c:152
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: varování: "
 
-#: util/install-info.c:176 util/install-info.c:189
+#: util/install-info.c:177 util/install-info.c:190
 msgid "virtual memory exhausted"
 msgstr "virtuální pamì» vyèerpána"
 
-#: util/install-info.c:232
+#: util/install-info.c:233
 #, c-format
 msgid " for %s"
 msgstr " pro %s"
 
-#: util/install-info.c:381
+#: util/install-info.c:382
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "Více informací získáte pøíkazem `%s --help'.\n"
 
-#: util/install-info.c:389
+#: util/install-info.c:390
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2717,7 +2717,7 @@ msgstr ""
 "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky\n"
 "k pøekladu zasílejte na <cs@li.org> (èesky).\n"
 
-#: util/install-info.c:444
+#: util/install-info.c:445
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2755,60 +2755,60 @@ msgstr ""
 "\n"
 "* Menu:\n"
 
-#: util/install-info.c:467
+#: util/install-info.c:468
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: %s nelze èíst a %s nelze vytvoøit\n"
 
-#: util/install-info.c:551
+#: util/install-info.c:552
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: prázdný soubor"
 
-#: util/install-info.c:866 util/install-info.c:906
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY bez odpovídajícího END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:901
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY bez pøedchozího START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1150 util/install-info.c:1160
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Info adresáø zadejte pouze jednou.\n"
 
-#: util/install-info.c:1195
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info soubor zadejte pouze jednou.\n"
 
-#: util/install-info.c:1244
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "nadbyteèný argument `%s' v pøíkazovém øádku"
 
-#: util/install-info.c:1248
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Vstupní soubor nezadán; pou¾itím pøepínaèe --help získáte bli¾¹í informace."
 
-#: util/install-info.c:1251
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Adresáø nebyl zadán; pou¾itím pøepínaèe `--help' získáte bli¾¹í informace"
 
-#: util/install-info.c:1273
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "v Info adresáøi `%s' není ¾ádná polo¾ka"
 
-#: util/install-info.c:1388
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "polo¾ka menu `%s' ji¾ pro soubor `%s' existuje"
 
-#: util/install-info.c:1411
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "pro `%s' nebyly nalezeny ¾ádné polo¾ky"

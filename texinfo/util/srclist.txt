@@ -82,6 +82,7 @@ $GNULIBSRC/lib/strcasecmp.c	lib
 $GNULIBSRC/lib/strdup.c		lib
 $GNULIBSRC/lib/strerror.c	lib
 $GNULIBSRC/lib/strncasecmp.c	lib
+$GNULIBSRC/lib/xalloc.h		lib
 $GNULIBSRC/lib/xstrdup.c	lib
 #
 $GNULIBSRC/m4/codeset.m4	m4

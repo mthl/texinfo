@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2002-04-01 06:10-0800\n"
+"POT-Creation-Date: 2002-09-03 16:25-0700\n"
 "PO-Revision-Date: 2002-04-11 00:21GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -164,7 +164,8 @@ msgid "Index entry: "
 msgstr "Indeksindgang:"
 
 #: info/indices.c:332
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
 msgstr "Gå til næste fundne indekspunkt fra sidste '\\[index-search]'-kommando"
 
 #: info/indices.c:342
@@ -205,7 +206,8 @@ msgstr "Ingen tilgængelige info-filer har \"%s\" i sit index."
 
 #: info/indices.c:632
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr "Gennemtrævl alle kendte Info-filers indekser for en tekst og opbyg en menu"
+msgstr ""
+"Gennemtrævl alle kendte Info-filers indekser for en tekst og opbyg en menu"
 
 #: info/indices.c:636
 msgid "Index apropos: "
@@ -224,7 +226,8 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mere information.\n"
 
-#: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:689 util/install-info.c:1224 util/texindex.c:338
+#: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:689
+#: util/install-info.c:1225 util/texindex.c:338
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -254,7 +257,8 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -292,7 +296,8 @@ msgstr ""
 "      --dribble=FILNAVN        gem brugerens tastetryk i FILNAVN.\n"
 "  -f, --file=FILNAVN           angiv Info fil, der skal besøges.\n"
 "  -h, --help                   vis denne hjælp og afslut.\n"
-"      --index-search=TEKST     gå til det punkt, indeks-indgang TEKST angiver.\n"
+"      --index-search=TEKST     gå til det punkt, indeks-indgang TEKST "
+"angiver.\n"
 "  -n, --node=EMNENAVN          angiv emner i først besøgte Info-fil.\n"
 "  -o, --output=FILNAVN         udlæs de valgte emner til FILNAVN.\n"
 "  -R, --raw-escapes            fjern ikke ANSI-escapekoder fra manualsider\n"
@@ -306,16 +311,19 @@ msgstr ""
 "den  søges i alle 'katalog'-filer angivet i miljøvariablen INFOPATH.\n"
 "Hvis ikke dette parameter er angivet, samler info alle 'katalog'-filer\n"
 " og viser resultatet.\n"
-"Resterende parametre angiver navne på menupunkter i forhold til startpunktet.\n"
+"Resterende parametre angiver navne på menupunkter i forhold til "
+"startpunktet.\n"
 "\n"
 "Eksempler:\n"
 "  info                       viser top-niveau katalog menu\n"
 "  info emacs                 start ved emnet emacs i topniveau kataloget\n"
 "  info emacs buffers         start ved emnet 'buffers' i emacs-manualen\n"
-"  info --show-options emacs  start ved emnet med emacs' kommandolinje tilvalg\n"
+"  info --show-options emacs  start ved emnet med emacs' kommandolinje "
+"tilvalg\n"
 "  info -f ./xxx.info         vis filen ./xxx.info uden at søge i katalog\n"
 
-#: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:474 util/install-info.c:421 util/texindex.c:286
+#: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:474
+#: util/install-info.c:422 util/texindex.c:286
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -397,7 +405,7 @@ msgstr "Det resulterende vindue ville være for lille."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Ikke nok plads til et hjælpevindue. Fjern venligst et vindue."
 
-#: info/infodoc.c:45 info/infodoc.c:94
+#: info/infodoc.c:46 info/infodoc.c:95
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -405,19 +413,19 @@ msgstr ""
 "Grundlæggende kommandoer i Info-vinduer\n"
 "***************************************\n"
 
-#: info/infodoc.c:48
+#: info/infodoc.c:49
 msgid "\\%-10[quit-help]  Quit this help.\n"
 msgstr "\\%-10[quit-help]  Afslut denne hjælp.\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:50
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "\\%-10[quit]  Afslut hele Info-programmet.\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:51
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Kør info introduktionen.\n"
 
-#: info/infodoc.c:52 info/infodoc.c:101
+#: info/infodoc.c:53 info/infodoc.c:102
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -425,19 +433,19 @@ msgstr ""
 "Valg af ander emnder:\n"
 "---------------------\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:55
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgstr "\\%-10[next-node]  Flyt til emnet 'næste' i dette emne.\n"
 
-#: info/infodoc.c:55
+#: info/infodoc.c:56
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgstr "\\%-10[prev-node]  Flyt til emnet 'Forrige' i dette emne.\n"
 
-#: info/infodoc.c:56
+#: info/infodoc.c:57
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "\\%-10[up-node]  Flyt til emnet 'Op' i dette emne.\n"
 
-#: info/infodoc.c:57
+#: info/infodoc.c:58
 msgid ""
 "\\%-10[menu-item]  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
@@ -445,35 +453,51 @@ msgstr ""
 "\\%-10[menu-item]  Vælg menupunkt angivet ved navn.\n"
 "              Valg af menupunkt vælger et andet emne.\n"
 
-#: info/infodoc.c:59
-msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr "\\%-10[xref-item]  Følg en krydshenvisning.  Indlæser referencens navn.\n"
-
 #: info/infodoc.c:60
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr ""
+"\\%-10[xref-item]  Følg en krydshenvisning.  Indlæser referencens navn.\n"
+
+#: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "\\%-10[history-node]  Flyt til vinduets sidste synlige emne-felt.\n"
 
-#: info/infodoc.c:61
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr "\\%-10[move-to-next-xref]  Hop til næste hypertekst-henvisning i dette emne.\n"
-
 #: info/infodoc.c:62
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
-msgstr "\\%-10[move-to-prev-xref]  Hop til næste hypertekst-henvisning i dette emne.\n"
+msgid ""
+"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr ""
+"\\%-10[move-to-next-xref]  Hop til næste hypertekst-henvisning i dette "
+"emne.\n"
 
 #: info/infodoc.c:63
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  Følg hypertekst-henvisningen under markøren.\n"
+msgid ""
+"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+"node.\n"
+msgstr ""
+"\\%-10[move-to-prev-xref]  Hop til næste hypertekst-henvisning i dette "
+"emne.\n"
 
 #: info/infodoc.c:64
-msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
-msgstr "\\%-10[dir-node]  Flyt til emnet 'katalog'. Svarer til 'g (KATALOG)'.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Følg hypertekst-henvisningen under "
+"markøren.\n"
 
 #: info/infodoc.c:65
-msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgid ""
+"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+"node] (DIR)'.\n"
+msgstr ""
+"\\%-10[dir-node]  Flyt til emnet 'katalog'. Svarer til 'g (KATALOG)'.\n"
+
+#: info/infodoc.c:66
+msgid ""
+"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Gå til emnet Top. Svarer til '\\[goto-node] Top'.\n"
 
-#: info/infodoc.c:67 info/infodoc.c:115
+#: info/infodoc.c:68 info/infodoc.c:116
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -481,31 +505,31 @@ msgstr ""
 "Bevægelser indenfor et emne:\n"
 "----------------------------\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:70
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "\\%-10[scroll-forward]  Rul en side frem.\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:71
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "\\%-10[scroll-backward]  Rul en side tilbage.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Gå til starten af emnet.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:73
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Gå til enden af emnet.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:74
 msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
 msgstr "\\%-10[scroll-forward]  Rul 1 linje frem.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:75
 msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
 msgstr "\\%-10[scroll-backward]  Rul en linje tilbage.\n"
 
-#: info/infodoc.c:76 info/infodoc.c:124
+#: info/infodoc.c:77 info/infodoc.c:125
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -513,23 +537,27 @@ msgstr ""
 "Andre kommandoer:\n"
 "-----------------\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 msgstr "\\%-10[menu-digit]  Vælg første til niende punkt i emnets menu.\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Vælg sidste punkt i emnets menu.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:81
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of "
+"this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
-"\\%-10[index-search]  Søg efter den angivne streng i denne Infos indeksindgange\n"
-"              og vælg det emne, der refereres til af den først fundne indgang.\n"
+"\\%-10[index-search]  Søg efter den angivne streng i denne Infos "
+"indeksindgange\n"
+"              og vælg det emne, der refereres til af den først fundne "
+"indgang.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -537,7 +565,7 @@ msgstr ""
 "\\%-10[goto-node]  Gå til emne angivet ved navn.\n"
 "              Du kan også medtage filnavn, som (FILNAVN)EMNENAVN.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:85
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -545,160 +573,169 @@ msgstr ""
 "\\%-10[search]  Søg fremad efter en given streng\n"
 "              og vælg emnet med den næste forekomst.\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is found.\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
 msgstr ""
 "\\%-10[search-backward]  Sæg baglæns efter en given streng\n"
 "              og vælg emnet med den forrige forekomst.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Afslut hjælp.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Afslut hele Info-programmet.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Kør info introduktionen.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Flyt til emnet 'næste' i dette emne.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Flyt til emnet 'Forrige' i dette emne.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Gå et niveau op.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
 msgstr "  %-10s  Vælg menupunkt angivet ved navn.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 msgid "              Picking a menu item causes another node to be selected.\n"
 msgstr "              Valg af menupunkt vælger et andet emne.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Følg en krydshenvisning.  Indlæser referencens navn.\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Flyt til vinduets sidste synlige emne-felt.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Hop til næste hypertekst-lænke i dette emne.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Følg hypertekst-lænken under markøren.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Flyt til emnet 'katalog'. Svarer til 'g (KATALOG)'.\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Gå til emnet Top. Svarer til 'g Top'.\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Rul en side frem.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Rul en side tilbage.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Gå til starten af emnet.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Gå til enden af emnet.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Rul 1 linje frem.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Rul en linje tilbage.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  Vælg første ... niende punkt i emnets menu.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:128
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Vælg sidste punkt i emnets menu.\n"
 
-#: info/infodoc.c:128
-#, c-format
-msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
-msgstr "  %-10s  Søg efter en angivet tekst i denne Info-fils indeksindgange,\n"
-
 #: info/infodoc.c:129
-msgid "              file, and select the node referenced by the first entry found.\n"
-msgstr "              og vælg det emne, der refereres til af den først fundne indgang.\n"
+#, c-format
+msgid ""
+"  %-10s  Search for a specified string in the index entries of this Info\n"
+msgstr ""
+"  %-10s  Søg efter en angivet tekst i denne Info-fils indeksindgange,\n"
 
 #: info/infodoc.c:130
+msgid ""
+"              file, and select the node referenced by the first entry "
+"found.\n"
+msgstr ""
+"              og vælg det emne, der refereres til af den først fundne "
+"indgang.\n"
+
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Gå til emne angivet ved navn.\n"
 
-#: info/infodoc.c:131
-msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+#: info/infodoc.c:132
+msgid ""
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              Du kan også medtage filnavn, som (FILNAVN)EMNENAVN.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:133
 #, c-format
 msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  Søg fremad efter en given streng,\n"
 
-#: info/infodoc.c:133 info/infodoc.c:135
-msgid "              and select the node in which the next occurrence is found.\n"
+#: info/infodoc.c:134 info/infodoc.c:136
+msgid ""
+"              and select the node in which the next occurrence is found.\n"
 msgstr "              og vælg emne med den næste forekomst.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:135
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Søg baglæns efter en given streng\n"
 
-#: info/infodoc.c:313
+#: info/infodoc.c:314
 msgid "The current search path is:\n"
 msgstr "Den nuværende søgesti er:\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:317
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -706,7 +743,7 @@ msgstr ""
 "Tilgængelige kommandoer i infovinduer:\n"
 "\n"
 
-#: info/infodoc.c:319
+#: info/infodoc.c:320
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -714,7 +751,7 @@ msgstr ""
 "Tilgængelige kommandoer i ekko-område:\n"
 "\n"
 
-#: info/infodoc.c:340
+#: info/infodoc.c:341
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -723,7 +760,7 @@ msgstr ""
 "Følgende kommandoer kan kun køres via %s:\n"
 "\n"
 
-#: info/infodoc.c:343
+#: info/infodoc.c:344
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -731,66 +768,67 @@ msgstr ""
 "Følgende kommandoer kan slet ikke køres:\n"
 "\n"
 
-#: info/infodoc.c:367
+#: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr "--- Benyt '\\[history-node]' eller '\\[kill-node]' for at afslutte ---\n"
+msgstr ""
+"--- Benyt '\\[history-node]' eller '\\[kill-node]' for at afslutte ---\n"
 
-#: info/infodoc.c:477
+#: info/infodoc.c:478
 msgid "Display help message"
 msgstr "Vis hjælp"
 
-#: info/infodoc.c:495
+#: info/infodoc.c:496
 msgid "Visit Info node `(info)Help'"
 msgstr "Besøg infoemnet '(info)Help'"
 
-#: info/infodoc.c:638
+#: info/infodoc.c:639
 msgid "Print documentation for KEY"
 msgstr "Vis dokumentation for TAST"
 
-#: info/infodoc.c:650
+#: info/infodoc.c:651
 #, c-format
 msgid "Describe key: %s"
 msgstr "Beskriv tast: %s"
 
-#: info/infodoc.c:660
+#: info/infodoc.c:661
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s er ikke defineret."
 
-#: info/infodoc.c:676 info/infodoc.c:703
+#: info/infodoc.c:677 info/infodoc.c:704
 #, c-format
 msgid "%s is undefined."
 msgstr "%s er ikke defineret."
 
-#: info/infodoc.c:724
+#: info/infodoc.c:725
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s er defineret til %s."
 
-#: info/infodoc.c:1151
+#: info/infodoc.c:1152
 msgid "Show what to type to execute a given command"
 msgstr "Vis hvad der skal tastes, for at udføre en given kommando"
 
-#: info/infodoc.c:1155
+#: info/infodoc.c:1156
 msgid "Where is command: "
 msgstr "Hvor er kommando: "
 
-#: info/infodoc.c:1177
+#: info/infodoc.c:1178
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "'%s' er ikke på nogen taster"
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s kan kun udføres via %s."
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s kan udføres via %s."
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Der er ingen funktion kaldet '%s'"
@@ -894,7 +932,8 @@ msgid ""
 msgstr ""
 "Brug: %s [TILVALG]... [INDDATA-FIL]\n"
 "\n"
-"Oversæt en infokey-kildefil til en infokey-fil. Læser INDDATA-FIL (som standard\n"
+"Oversæt en infokey-kildefil til en infokey-fil. Læser INDDATA-FIL (som "
+"standard\n"
 "$HOME/.infokey) og skriver oversat fil til (som standard) $HOME/.info.\n"
 "\n"
 "Tilvalg:\n"
@@ -905,48 +944,58 @@ msgstr ""
 "Oversæt infokey-kildefil til infokey-fil. Læser INDDATA-FIL (standard\n"
 "$HOME/.infokey) og skriver oversat key-fil til $HOME/.info.\n"
 
-#: info/infomap.c:1397
+#: info/infomap.c:1398
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Ignorerer ugyldig infokey-fil '%s' - for lille"
 
-#: info/infomap.c:1400
+#: info/infomap.c:1401
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Ignorerer ugyldig infokey-fil '%s' - for stor"
 
-#: info/infomap.c:1413
+#: info/infomap.c:1414
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Fejl under læsning af infokey-fil '%s' - \"short read\""
 
-#: info/infomap.c:1431
+#: info/infomap.c:1432
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "Ugyldig infokey-fil '%s' (ugyldige magiske tal) -- kør infokey for at opdatere den"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Ugyldig infokey-fil '%s' (ugyldige magiske tal) -- kør infokey for at "
+"opdatere den"
 
-#: info/infomap.c:1437
+#: info/infomap.c:1438
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Din infokey-fil '%s' er for gammel -- kør infokey for at opdatere den"
 
-#: info/infomap.c:1450
+#: info/infomap.c:1451
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "Ugyldig infokey-fil '%s' (ugyldig afsnitslængde) -- kør infokey for at opdatere den"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Ugyldig infokey-fil '%s' (ugyldig afsnitslængde) -- kør infokey for at "
+"opdatere den"
 
-#: info/infomap.c:1470
+#: info/infomap.c:1471
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "Ugyldig infokey-fil '%s' (ugyldig afsnitskode) -- kør infokey for at opdatere den"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Ugyldig infokey-fil '%s' (ugyldig afsnitskode) -- kør infokey for at "
+"opdatere den"
 
-#: info/infomap.c:1608
+#: info/infomap.c:1609
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Ugyldige data i infokey-fil -- visse tastebindinger blev ignoreret"
 
-#: info/infomap.c:1659
+#: info/infomap.c:1660
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "Ugyldige data i infokey-fil -- visse variabelindstillinger blev ignoreret"
+msgstr ""
+"Ugyldige data i infokey-fil -- visse variabelindstillinger blev ignoreret"
 
 #: info/m-x.c:70
 msgid "Read the name of an Info command and describe it"
@@ -973,7 +1022,7 @@ msgstr "Sæt højden på det viste vindue"
 msgid "Set screen height to (%d): "
 msgstr "Sæt skærmhøjden til (%d): "
 
-#: info/makedoc.c:161 info/makedoc.c:169
+#: info/makedoc.c:162 info/makedoc.c:170
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
@@ -981,7 +1030,7 @@ msgstr ""
 "   Kildetekster gennemtrævlet for at inkludere filen;\n"
 "\n"
 
-#: info/makedoc.c:553
+#: info/makedoc.c:554
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Kunne ikke bearbejde filen %s.\n"
@@ -1025,8 +1074,12 @@ msgstr "Referencen forsvandt! (%s)."
 
 #: info/session.c:170
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "Velkommen til Info version %s. Skriv \\[get-help-window] for hjælp.  \\[menu-item] for menupunkt."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Velkommen til Info version %s. Skriv \\[get-help-window] for hjælp.  \\[menu-"
+"item] for menupunkt."
 
 #: info/session.c:643
 msgid "Move down to the next line"
@@ -1110,7 +1163,8 @@ msgid "Scroll forward in this window staying within node"
 msgstr "Rul frem i vinduet i samme emne"
 
 #: info/session.c:1253
-msgid "Scroll forward in this window staying within node and set default window size"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
 msgstr "Rul frem i vinduet i samme emne og sæt standard vinduesstørrelse"
 
 #: info/session.c:1261
@@ -1126,8 +1180,11 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Rul tilbage i vinduet indenfor samme emne"
 
 #: info/session.c:1286
-msgid "Scroll backward in this window staying within node and set default window size"
-msgstr "Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
 
 #: info/session.c:1294
 msgid "Move to the start of this node"
@@ -1375,7 +1432,8 @@ msgstr "Skriver emnet %s..."
 
 #: info/session.c:3274
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr "Udskriv indholdet af dette emne (ved videreførsel gennem INFO_PRINT_COMMAND)"
+msgstr ""
+"Udskriv indholdet af dette emne (ved videreførsel gennem INFO_PRINT_COMMAND)"
 
 #: info/session.c:3310
 #, c-format
@@ -1529,7 +1587,9 @@ msgstr "Når \"On\", vises og skjules fodnoter automatisk"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr "Når \"On\", ændres størrelsen på andre vinduer, når det vindues oprettes eller fjernes"
+msgstr ""
+"Når \"On\", ændres størrelsen på andre vinduer, når det vindues oprettes "
+"eller fjernes"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1541,7 +1601,8 @@ msgstr "Når \"On\", vil fejl aktivere systemklokken"
 
 #: info/variables.c:53
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr "Når \"On\", vil info fjerne eventuelle afkomprimerede filer, den laver."
+msgstr ""
+"Når \"On\", vil info fjerne eventuelle afkomprimerede filer, den laver."
 
 #: info/variables.c:56
 msgid "When \"On\", the portion of the matched search string is highlighted"
@@ -1585,80 +1646,80 @@ msgstr "Sæt %s til værdien (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Sæt %s til værdien (%s): "
 
-#: info/window.c:1164
+#: info/window.c:1165
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Mærker (tags) er forældede ***"
 
-#: info/window.c:1175
+#: info/window.c:1176
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linjer ---, "
 
-#: info/window.c:1182
+#: info/window.c:1183
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d linjer -%s--"
 
-#: info/window.c:1186
+#: info/window.c:1187
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d linjer -%s--"
 
-#: info/window.c:1193
+#: info/window.c:1194
 #, c-format
 msgid " Subfile: %s"
 msgstr " Underfil: %s"
 
-#: lib/getopt.c:675
+#: lib/getopt.c:694
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: tilvalg '%s' er flertydig\n"
 
-#: lib/getopt.c:700
+#: lib/getopt.c:719
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: tilvalg '--%s' tillader ikke en parameter\n"
 
-#: lib/getopt.c:705
+#: lib/getopt.c:724
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: tilvalg '%c%s' tillader ikke en parameter\n"
 
-#: lib/getopt.c:723 lib/getopt.c:896
+#: lib/getopt.c:742 lib/getopt.c:915
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: tilvalg '%s' kræver en parameter\n"
 
-#: lib/getopt.c:752
+#: lib/getopt.c:771
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: ukendt tilvalg '--%s'\n"
 
-#: lib/getopt.c:756
+#: lib/getopt.c:775
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: ukendt tilvalg '%c%s'\n"
 
-#: lib/getopt.c:782
+#: lib/getopt.c:801
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: ugyldigt tilvalg -- %c\n"
 
-#: lib/getopt.c:785
+#: lib/getopt.c:804
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: ugyldigt tilvalg -- %c\n"
 
-#: lib/getopt.c:815 lib/getopt.c:945
+#: lib/getopt.c:834 lib/getopt.c:964
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: tilvalg kræver en parameter -- %c\n"
 
-#: lib/getopt.c:862
+#: lib/getopt.c:881
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: tilvalg '-W %s' er flertydigt\n"
 
-#: lib/getopt.c:880
+#: lib/getopt.c:899
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: tilvalg '-W %s' tillader ikke en parameter\n"
@@ -1789,11 +1850,13 @@ msgstr "Instansvariabel"
 msgid "Method"
 msgstr "Metode"
 
-#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615 makeinfo/defun.c:631 makeinfo/defun.c:671
+#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615
+#: makeinfo/defun.c:631 makeinfo/defun.c:671
 msgid "of"
 msgstr "for"
 
-#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482 makeinfo/defun.c:624 makeinfo/defun.c:676
+#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482
+#: makeinfo/defun.c:624 makeinfo/defun.c:676
 msgid "on"
 msgstr "på"
 
@@ -1914,7 +1977,8 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu fundet før første @node, opretter 'Top' emne"
 
 #: makeinfo/insertion.c:1319
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "måske skulle dit @top emne indsættes i @ifnottex i stedet for @ifinfo?"
 
 #: makeinfo/insertion.c:1331
@@ -2049,8 +2113,10 @@ msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
-"Oversæt Texinfo kildedokumentation til flere andre formater, som standard til\n"
-"Info-filer, der er lavet til at blive læst på skærmen med Emacs eller GNU Info.\n"
+"Oversæt Texinfo kildedokumentation til flere andre formater, som standard "
+"til\n"
+"Info-filer, der er lavet til at blive læst på skærmen med Emacs eller GNU "
+"Info.\n"
 
 #: makeinfo/makeinfo.c:380
 #, c-format
@@ -2061,7 +2127,8 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
+"      --reference-limit=NUM   warn about at most NUM references (default %"
+"d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
@@ -2071,7 +2138,8 @@ msgstr ""
 "      --help                  vis denne hjælp og afslut.\n"
 "      --no-validate           undertryk validering af emne-krydsreferencer.\n"
 "      --no-warn               undertryk advarsler (men ikke fejl).\n"
-"      --reference-limit=ANTAL advar højst om ANTAL referencer (standard %d).\n"
+"      --reference-limit=ANTAL advar højst om ANTAL referencer (standard %"
+"d).\n"
 "  -v, --verbose               forklar, hvad der sker.\n"
 "      --version               vis versionsoplysninger og afslut.\n"
 
@@ -2093,7 +2161,8 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
 "                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and menus\n"
+"      --no-headers          suppress node separators, Node: lines, and "
+"menus\n"
 "                              from Info output (thus producing plain text)\n"
 "                              or from HTML (thus producing shorter output);\n"
 "                              also, write to standard output by default.\n"
@@ -2105,9 +2174,11 @@ msgstr ""
 "Generelle uddatatilvalg:\n"
 "  -E, --macro-expand FIL    send makroekspanderet kildetekst til FIL.\n"
 "                            ignorér eventuelle @setfilename.\n"
-"      --no-headers          undertryk emneadskillere, Node:­linjer og menuer\n"
+"      --no-headers          undertryk emneadskillere, Node:­linjer og "
+"menuer\n"
 "                             fra Infos uddata (og lav dermed simpel tekst)\n"
-"                             og skriv som udgangspunkt til standard-ud.n      --no-split            undertryk opdeling af Info eller HTML-uddata,\n"
+"                             og skriv som udgangspunkt til standard-ud."
+"n      --no-split            undertryk opdeling af Info eller HTML-uddata,\n"
 "                            lav kun én uddatafil.\n"
 "      --number-sections     lav afsnits- og sektionsnumre.\n"
 "  -o, --output=FILE         send til FIL (katalog i tilfældet opdelt HTML),\n"
@@ -2118,28 +2189,37 @@ msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
 "                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
 "                                `end' to put them at the end of the node\n"
 "                                  in which they are defined (default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Tilvalg for Info og ren tekst:\n"
-"      --enable-encoding       konstruér specialtegn i Infouddata i henhold til\n"
+"      --enable-encoding       konstruér specialtegn i Infouddata i henhold "
+"til\n"
 "                                @documentencoding.\n"
-"      --fill-column=ANTAL     opdel Info-linjer ved ANTAL tegn (standard %d).\n"
+"      --fill-column=ANTAL     opdel Info-linjer ved ANTAL tegn (standard %"
+"d).\n"
 "      --footnote-style=STIL   vis fodnoter i Info med valgt STIL:\n"
-"                                `separate' for at placere dem i deres eget emne;\n"
-"                                `end' for at placere dem i slutningen af det emne,\n"
+"                                `separate' for at placere dem i deres eget "
+"emne;\n"
+"                                `end' for at placere dem i slutningen af det "
+"emne,\n"
 "                                  de er defineret(standard).\n"
-"      --paragraph-indent=ANTAL indryk Info-afsnit med ANTAL mellemrum (standard %d).\n"
-"                                Hvis ANTAL er 'none' indrykkes ikke. Hvis ANTAL er\n"
+"      --paragraph-indent=ANTAL indryk Info-afsnit med ANTAL mellemrum "
+"(standard %d).\n"
+"                                Hvis ANTAL er 'none' indrykkes ikke. Hvis "
+"ANTAL er\n"
 "                                `asis', bevares eksisterende indrykning.\n"
-"      --split-size=ANTAL      opdel Info-filer ved størrelsen ANTAL (standard %d).\n"
+"      --split-size=ANTAL      opdel Info-filer ved størrelsen ANTAL "
+"(standard %d).\n"
 
 #: makeinfo/makeinfo.c:433
 msgid ""
@@ -2154,7 +2234,8 @@ msgstr ""
 "      --commands-in-node-names   tillad @-kommandoer i emnenavne.\n"
 "  -D VAR                         definér variablen VAR som med @set.\n"
 "  -I KATALOG                     tilføj KATALOG til @include-søgestien.\n"
-"  -P KATALOG                     indsæt KATALOG forrest i @include-søgestien.\n"
+"  -P KATALOG                     indsæt KATALOG forrest i @include-"
+"søgestien.\n"
 "  -U VAR                         afdefinér variablen VAR som med @clear.\n"
 
 #: makeinfo/makeinfo.c:442
@@ -2173,7 +2254,8 @@ msgstr ""
 "  --ifhtml          behandl @ifhtml og @html selvom der ikke laves HTML.\n"
 "  --ifinfo          behandl @ifinfo-tekst selvom der laves HTML.\n"
 "  --ifplaintext     behandl @ifplaintext selvom der ikke laves ren tekst.\n"
-"  --iftex           behandl @iftex og @tex-tekster; underforstår --no-split.\n"
+"  --iftex           behandl @iftex og @tex-tekster; underforstår --no-"
+"split.\n"
 "  --no-ifhtml       behandl ikke @ifhtml og @html-tekst.\n"
 "  --no-ifinfo       behandl ikke @ifinfo-tekst.\n"
 "  --no-ifplaintext  behandl ikke @ifplaintext-tekst.\n"
@@ -2187,9 +2269,11 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 msgstr ""
 "  Standarden for @if... betingelser afhænger af uddataformatet:\n"
-"  hvis der laves HTML, er --ifhtml aktiveret, mens de andre er deaktiverede;\n"
+"  hvis der laves HTML, er --ifhtml aktiveret, mens de andre er "
+"deaktiverede;\n"
 "  hvis der laves Info er --ifinfo aktiveret og de andre er deaktiverede;\n"
-"  hvis der laves ren tekst er --ifplaintext aktiveret og de andre deaktiverede.\n"
+"  hvis der laves ren tekst er --ifplaintext aktiveret og de andre "
+"deaktiverede.\n"
 
 #: makeinfo/makeinfo.c:461
 msgid ""
@@ -2200,7 +2284,8 @@ msgid ""
 "  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
 "  makeinfo --no-headers foo.texi        write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi          write one Info file however big\n"
 msgstr ""
@@ -2214,7 +2299,8 @@ msgstr ""
 "  makeinfo --number-sections xxx.texi  skriv Info med nummererede afsnit\n"
 "  makeinfo --no-split xxx.texi         skriv én Info-fil, uanset størrelsen\n"
 
-#: makeinfo/makeinfo.c:570 makeinfo/makeinfo.c:593 makeinfo/makeinfo.c:655 makeinfo/makeinfo.c:676
+#: makeinfo/makeinfo.c:570 makeinfo/makeinfo.c:593 makeinfo/makeinfo.c:655
+#: makeinfo/makeinfo.c:676
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: %s parameter skal være et tal, ikke '%s'.\n"
@@ -2231,12 +2317,14 @@ msgstr "Kan ikke angive mere end én makroudfoldelses-uddata"
 #: makeinfo/makeinfo.c:624
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr "%s: --paragraph-indent parameter skal være tal/'none'/'asis', ikke '%s'.\n"
+msgstr ""
+"%s: --paragraph-indent parameter skal være tal/'none'/'asis', ikke '%s'.\n"
 
 #: makeinfo/makeinfo.c:665
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
+msgstr ""
+"%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
 
 #: makeinfo/makeinfo.c:723
 #, c-format
@@ -2265,7 +2353,8 @@ msgstr "Ingen '%s' fundet i '%s'"
 #: makeinfo/makeinfo.c:1496
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr "%s: Undlader makroudfoldelse til standard-ud, da Info-uddata sendes der.\n"
+msgstr ""
+"%s: Undlader makroudfoldelse til standard-ud, da Info-uddata sendes der.\n"
 
 #: makeinfo/makeinfo.c:1526
 #, c-format
@@ -2279,13 +2368,16 @@ msgstr "Dette er %s, produceret med makeinfo version %s ud fra %s.\n"
 
 #: makeinfo/makeinfo.c:1583
 #, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s: Fjerner makro uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Fjerner makro uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
 #: makeinfo/makeinfo.c:1627
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s: Fjerner uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
+msgstr ""
+"%s: Fjerner uddatafil '%s' grundet fejl; brug --force for at beholde.\n"
 
 #: makeinfo/makeinfo.c:1853
 #, c-format
@@ -2375,34 +2467,34 @@ msgstr "Nåede filslutning før samhørende @end %s"
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for langt til ekspansion; blev ikke ekspanderet"
 
-#: makeinfo/multi.c:226
+#: makeinfo/multi.c:227
 msgid "Missing } in @multitable template"
 msgstr "Manglende } i @multitable skabelon"
 
-#: makeinfo/multi.c:302
+#: makeinfo/multi.c:303
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "ignorerer vildfaren tekst '%s' efter @multitable"
 
-#: makeinfo/multi.c:375
+#: makeinfo/multi.c:376
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "For mange søjler i 'multitable' element (maks %d)"
 
-#: makeinfo/multi.c:426
+#: makeinfo/multi.c:427
 #, c-format
 msgid "Cannot select column #%d in multitable"
 msgstr "Kan ikke vælge kolonne %d i 'multitable'"
 
-#: makeinfo/multi.c:529
+#: makeinfo/multi.c:530
 msgid "ignoring @tab outside of multitable"
 msgstr "ignorerer @tab udenfor 'multitable'"
 
-#: makeinfo/multi.c:565
+#: makeinfo/multi.c:566
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Flerkolonne uddata fra sidste række:\n"
 
-#: makeinfo/multi.c:568
+#: makeinfo/multi.c:569
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* kolonne %d: uddata = %s\n"
@@ -2519,7 +2611,8 @@ msgstr "Op"
 #: makeinfo/node.c:1523
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Emnet '%s' mangler menupunkt for '%s' på trods af at det er dens 'Op'-mål"
+msgstr ""
+"Emnet '%s' mangler menupunkt for '%s' på trods af at det er dens 'Op'-mål"
 
 #: makeinfo/node.c:1552
 #, c-format
@@ -2579,26 +2672,26 @@ msgstr "%s: 'Indhold' burde være her, men blev ikke fundet"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image-fil '%s' er ulæselig: %s"
 
-#: util/install-info.c:151
+#: util/install-info.c:152
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: advarsel: "
 
-#: util/install-info.c:176 util/install-info.c:189
+#: util/install-info.c:177 util/install-info.c:190
 msgid "virtual memory exhausted"
 msgstr "virtuel hukommelse opbrugt"
 
-#: util/install-info.c:232
+#: util/install-info.c:233
 #, c-format
 msgid " for %s"
 msgstr " for %s"
 
-#: util/install-info.c:381
+#: util/install-info.c:382
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPrøv '%s --help' for en komplet tilvalgsliste.\n"
 
-#: util/install-info.c:389
+#: util/install-info.c:390
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2613,8 +2706,10 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with whitespace.\n"
-"                     If you specify more than one entry, they are all added.\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -2664,7 +2759,7 @@ msgstr ""
 "                     informationerne i selve Info-filen.\n"
 " --version         vis denne versions-information og afslut.\n"
 
-#: util/install-info.c:444
+#: util/install-info.c:445
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2690,7 +2785,8 @@ msgstr ""
 "%s\tDette er toppen af INFO-træet\n"
 "\n"
 "  Dette (katalog emnet) indeholder en menu med hovedemner.\n"
-"  Afslut med \"q\", \"?\" viser alle Info-kommandoer, \"d\" returnerer hertil,\n"
+"  Afslut med \"q\", \"?\" viser alle Info-kommandoer, \"d\" returnerer "
+"hertil,\n"
 "  \"h\" introducerer nybegyndere for Info,\n"
 "  \"mEmacs<Return>\" besøger Emacs-manualen, osv.\n"
 "\n"
@@ -2699,58 +2795,58 @@ msgstr ""
 "\n"
 "* Menu:\n"
 
-#: util/install-info.c:467
+#: util/install-info.c:468
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: kunne ikke læse (%s) og kunne ikke oprette (%s)\n"
 
-#: util/install-info.c:551
+#: util/install-info.c:552
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tom fil"
 
-#: util/install-info.c:866 util/install-info.c:906
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY uden tilhørende END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:901
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY uden tilhørende START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1150 util/install-info.c:1160
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Angiv kun Info-kataloget én gang.\n"
 
-#: util/install-info.c:1195
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Angiv kun Info-filen én gang.\n"
 
-#: util/install-info.c:1244
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "overskydende kommandolinjeparameter '%s'"
 
-#: util/install-info.c:1248
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr "Ingen inddatafil angivet; prøv --help for mere information."
 
-#: util/install-info.c:1251
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr "Intet katalog angivet; prøv --help for mere information."
 
-#: util/install-info.c:1273
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "ingen infokatalog-indgang i '%s'"
 
-#: util/install-info.c:1388
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "menupunkt '%s' eksisterer allerede i filen '%s'"
 
-#: util/install-info.c:1411
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "ingen indgange fundet for '%s'; intet slettet"
@@ -2797,7 +2893,8 @@ msgstr ""
 "\n"
 "Tilvalg:\n"
 
-#: util/texindex.c:887 util/texindex.c:921 util/texindex.c:997 util/texindex.c:1025
+#: util/texindex.c:887 util/texindex.c:921 util/texindex.c:997
+#: util/texindex.c:1025
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: ikke en texinfo indeksfil"

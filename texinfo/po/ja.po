@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
-"POT-Creation-Date: 2002-04-01 06:10-0800\n"
+"POT-Creation-Date: 2002-09-03 16:25-0700\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:689
-#: util/install-info.c:1224 util/texindex.c:338
+#: util/install-info.c:1225 util/texindex.c:338
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -330,7 +330,7 @@ msgstr ""
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:474
-#: util/install-info.c:421 util/texindex.c:286
+#: util/install-info.c:422 util/texindex.c:286
 #, fuzzy
 msgid ""
 "\n"
@@ -412,51 +412,51 @@ msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "ヘルプウィンドウ用の場所が足りません、ウィンドウを一つ削除してください。"
 
-#: info/infodoc.c:45 info/infodoc.c:94
+#: info/infodoc.c:46 info/infodoc.c:95
 #, fuzzy
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
 msgstr "Info ウィンドウ内の基本コマンド\n"
 
-#: info/infodoc.c:48
+#: info/infodoc.c:49
 #, fuzzy
 msgid "\\%-10[quit-help]  Quit this help.\n"
 msgstr "  %-10s  このヘルプを終了する。\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:50
 #, fuzzy
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "  %-10s  Info も一緒に終了する。\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:51
 #, fuzzy
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Info チュートリアルを起動する。\n"
 
-#: info/infodoc.c:52 info/infodoc.c:101
+#: info/infodoc.c:53 info/infodoc.c:102
 #, fuzzy
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
 msgstr "他のノードを選択する:\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:55
 #, fuzzy
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgstr "  %-10s  このノードの `次' のノードへ移動する。\n"
 
-#: info/infodoc.c:55
+#: info/infodoc.c:56
 #, fuzzy
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgstr "  %-10s  このノードの `前' のノードへ移動する。\n"
 
-#: info/infodoc.c:56
+#: info/infodoc.c:57
 #, fuzzy
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "  %-10s  このノードから `上' へ移動する。\n"
 
-#: info/infodoc.c:57
+#: info/infodoc.c:58
 #, fuzzy
 msgid ""
 "\\%-10[menu-item]  Pick menu item specified by name.\n"
@@ -464,104 +464,104 @@ msgid ""
 msgstr ""
 "             メニューアイテムの選択で、他のノードが選択される事になる。\n"
 
-#: info/infodoc.c:59
+#: info/infodoc.c:60
 #, fuzzy
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  相互参照を辿る。参照名を読み取る。\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:61
 #, fuzzy
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "  %-10s  このウィンドウで最後に見たノードへ移動する。\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:62
 #, fuzzy
 msgid ""
 "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  このノード内の次のハイパーリンクへスキップする。\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:63
 #, fuzzy
 msgid ""
 "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
 "node.\n"
 msgstr "  %-10s  このノード内の次のハイパーリンクへスキップする。\n"
 
-#: info/infodoc.c:63
+#: info/infodoc.c:64
 #, fuzzy
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  カーソル位置のハイパーリンクを辿る。\n"
 
-#: info/infodoc.c:64
+#: info/infodoc.c:65
 #, fuzzy
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
 msgstr "  %-10s  `ディレクトリ' ノードへ移動。`g (DIR)' と同じ。\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:66
 #, fuzzy
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "  %-10s  Top ノードへ移動。`g Top' と同じ。\n"
 
-#: info/infodoc.c:67 info/infodoc.c:115
+#: info/infodoc.c:68 info/infodoc.c:116
 #, fuzzy
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
 msgstr "ノード内での移動:\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "  %-10s  1 ページ分前方へ進める。\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "  %-10s  1 ページ分後方へ戻す。\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:72
 #, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:73
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:74
 #, fuzzy
 msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
 msgstr "  %-10s  1 行分前方へすすめる。\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:75
 #, fuzzy
 msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
 msgstr "  %-10s  1 行分後方へ戻す。\n"
 
-#: info/infodoc.c:76 info/infodoc.c:124
+#: info/infodoc.c:77 info/infodoc.c:125
 #, fuzzy
 msgid ""
 "Other commands:\n"
 "---------------\n"
 msgstr "その他のコマンド:\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:79
 #, fuzzy
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  ノードメニューの最初から 9 番目迄のアイテムを選択する。\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:80
 #, fuzzy
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
 msgstr "  %-10s  ノードメニューの最後のアイテムを選択する。\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:81
 #, fuzzy
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
@@ -570,7 +570,7 @@ msgid ""
 "found.\n"
 msgstr "          最初に見つかった項目が参照しているノードを選択する。\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 #, fuzzy
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
@@ -579,14 +579,14 @@ msgstr ""
 "               (ファイル名)ノード名 の様に、ファイル名を含めることができま"
 "す。\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:85
 #, fuzzy
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr "               見つかったものが含まれているノードを選択する。\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:87
 #, fuzzy
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
@@ -594,173 +594,173 @@ msgid ""
 "found.\n"
 msgstr "               見つかったものが含まれているノードを選択する。\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  このヘルプを終了する。\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Info も一緒に終了する。\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Info チュートリアルを起動する。\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  このノードの `次' のノードへ移動する。\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  このノードの `前' のノードへ移動する。\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  このノードから `上' へ移動する。\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
 msgstr "  %-10s  名前で指定したメニューアイテムを選択する。\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 msgid "              Picking a menu item causes another node to be selected.\n"
 msgstr ""
 "             メニューアイテムの選択で、他のノードが選択される事になる。\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  相互参照を辿る。参照名を読み取る。\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  このウィンドウで最後に見たノードへ移動する。\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  このノード内の次のハイパーリンクへスキップする。\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  カーソル位置のハイパーリンクを辿る。\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  `ディレクトリ' ノードへ移動。`g (DIR)' と同じ。\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Top ノードへ移動。`g Top' と同じ。\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  1 ページ分前方へ進める。\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  1 ページ分後方へ戻す。\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  1 行分前方へすすめる。\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  1 行分後方へ戻す。\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  ノードメニューの最初から 9 番目迄のアイテムを選択する。\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:128
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  ノードメニューの最後のアイテムを選択する。\n"
 
-#: info/infodoc.c:128
+#: info/infodoc.c:129
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
 msgstr ""
 "  %-10s  現在の Info ファイルのインデックス項目で、文字列を指定して検索し、\n"
 
-#: info/infodoc.c:129
+#: info/infodoc.c:130
 msgid ""
 "              file, and select the node referenced by the first entry "
 "found.\n"
 msgstr "          最初に見つかった項目が参照しているノードを選択する。\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  名前で指定されたノードに移動する。\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:132
 msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "               (ファイル名)ノード名 の様に、ファイル名を含めることができま"
 "す。\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:133
 #, fuzzy, c-format
 msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  現在の Info ファイル全体を、指定された文字列で前方検索し、\n"
 
-#: info/infodoc.c:133 info/infodoc.c:135
+#: info/infodoc.c:134 info/infodoc.c:136
 msgid ""
 "              and select the node in which the next occurrence is found.\n"
 msgstr "               見つかったものが含まれているノードを選択する。\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:135
 #, fuzzy, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "\\\\  %-10s  現在の Info ファイルを、指定された文字列で後方検索し、\n"
 
-#: info/infodoc.c:313
+#: info/infodoc.c:314
 msgid "The current search path is:\n"
 msgstr "現在の検索パス:\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:317
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
 msgstr "Info ウィンドウで利用可能なコマンド:\n"
 
-#: info/infodoc.c:319
+#: info/infodoc.c:320
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr "エコー領域で利用可能なコマンド:\n"
 
-#: info/infodoc.c:340
+#: info/infodoc.c:341
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -769,7 +769,7 @@ msgstr ""
 "以下のコマンドは、%s を通じてのみ起動できます:\n"
 "\n"
 
-#: info/infodoc.c:343
+#: info/infodoc.c:344
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -777,67 +777,67 @@ msgstr ""
 "以下のコマンドは、全く起動する事ができません:\n"
 "\n"
 
-#: info/infodoc.c:367
+#: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr ""
 "--- 終了するには `\\[history-node]' か `\\[kill-node]' を使ってください ---\n"
 
-#: info/infodoc.c:477
+#: info/infodoc.c:478
 msgid "Display help message"
 msgstr "使い方を表示する"
 
-#: info/infodoc.c:495
+#: info/infodoc.c:496
 msgid "Visit Info node `(info)Help'"
 msgstr "`(info)Help' ノードに移動する"
 
-#: info/infodoc.c:638
+#: info/infodoc.c:639
 msgid "Print documentation for KEY"
 msgstr "キー操作を表示する"
 
-#: info/infodoc.c:650
+#: info/infodoc.c:651
 #, c-format
 msgid "Describe key: %s"
 msgstr "キーの説明: %s"
 
-#: info/infodoc.c:660
+#: info/infodoc.c:661
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s は定義されていません。"
 
-#: info/infodoc.c:676 info/infodoc.c:703
+#: info/infodoc.c:677 info/infodoc.c:704
 #, c-format
 msgid "%s is undefined."
 msgstr "%s は定義されていません"
 
-#: info/infodoc.c:724
+#: info/infodoc.c:725
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s は %s に定義されています。"
 
-#: info/infodoc.c:1151
+#: info/infodoc.c:1152
 msgid "Show what to type to execute a given command"
 msgstr "与えられたコマンドを実行するのに、何をタイプするかを表示する"
 
-#: info/infodoc.c:1155
+#: info/infodoc.c:1156
 msgid "Where is command: "
 msgstr "どのコマンド: "
 
-#: info/infodoc.c:1177
+#: info/infodoc.c:1178
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "`%s' はキー割り当てされていません"
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s は %s を通じてのみ呼び出せます。"
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s は %s を通じて呼び出せます"
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "`%s' という機能はありません"
@@ -954,22 +954,22 @@ msgstr ""
 "バグレポートは bug-texinfo@gnu.org へ、\n"
 "一般的な質問や議論は help-texinfo@gnu.org へ。\n"
 
-#: info/infomap.c:1397
+#: info/infomap.c:1398
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "不適切な infokey ファイル `%s' を無視します - 小さすぎます"
 
-#: info/infomap.c:1400
+#: info/infomap.c:1401
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "不適切な infokey ファイル `%s' を無視します - 大きすぎます"
 
-#: info/infomap.c:1413
+#: info/infomap.c:1414
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "infokey ファイル `%s' 読込み中のエラー -- 全て読込めませんでした"
 
-#: info/infomap.c:1431
+#: info/infomap.c:1432
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -977,13 +977,13 @@ msgstr ""
 "infokey ファイル `%s' が不適切 (マジック番号が違う) です -- infokey を実行し"
 "て更新しましょう"
 
-#: info/infomap.c:1437
+#: info/infomap.c:1438
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
 "あなたの infokey ファイル `%s' は古いです -- infokey を実行して更新しましょう"
 
-#: info/infomap.c:1450
+#: info/infomap.c:1451
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -991,7 +991,7 @@ msgstr ""
 "infokey ファイル `%s' が不適切です (セクション長が不正です) -- infokey を実行"
 "して更新しましょう"
 
-#: info/infomap.c:1470
+#: info/infomap.c:1471
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -999,13 +999,13 @@ msgstr ""
 "infokey ファイル `%s' が不適切です (セクションコードが不正です) -- infokey を"
 "実行して更新しましょう"
 
-#: info/infomap.c:1608
+#: info/infomap.c:1609
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 "infokey ファイルに不正なデータがあります -- 幾つかのキーバインドが無視されま"
 "した"
 
-#: info/infomap.c:1659
+#: info/infomap.c:1660
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "infokey ファイルに不正なデータがあります -- 幾つかの変数設定が無視されました"
@@ -1035,7 +1035,7 @@ msgstr "表示されるウィンドウの高さを設定"
 msgid "Set screen height to (%d): "
 msgstr "スクリーンの高さをセット (%d): "
 
-#: info/makedoc.c:161 info/makedoc.c:169
+#: info/makedoc.c:162 info/makedoc.c:170
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
@@ -1043,7 +1043,7 @@ msgstr ""
 "   このファイルを作る元になったファイル:\n"
 "\n"
 
-#: info/makedoc.c:553
+#: info/makedoc.c:554
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "ファイル %s を上手く処理できません。\n"
@@ -1660,80 +1660,80 @@ msgstr "%s に値を設定 (%d): "
 msgid "Set %s to value (%s): "
 msgstr "%s に値を設定 (%s): "
 
-#: info/window.c:1164
+#: info/window.c:1165
 msgid "--*** Tags out of Date ***"
 msgstr "--*** 旧式のタグ ***"
 
-#: info/window.c:1175
+#: info/window.c:1176
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), 行数 ----, "
 
-#: info/window.c:1182
+#: info/window.c:1183
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d 行 --%s--"
 
-#: info/window.c:1186
+#: info/window.c:1187
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d 行 --%s--"
 
-#: info/window.c:1193
+#: info/window.c:1194
 #, c-format
 msgid " Subfile: %s"
 msgstr " 副ファイル: %s"
 
-#: lib/getopt.c:675
+#: lib/getopt.c:694
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: オプション `%s' は曖昧です\n"
 
-#: lib/getopt.c:700
+#: lib/getopt.c:719
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: オプション `--%s' は引数が不要です\n"
 
-#: lib/getopt.c:705
+#: lib/getopt.c:724
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: オプション `%c%s' は引数が不要です\n"
 
-#: lib/getopt.c:723 lib/getopt.c:896
+#: lib/getopt.c:742 lib/getopt.c:915
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: オプション `%s' には、引数が必要です\n"
 
-#: lib/getopt.c:752
+#: lib/getopt.c:771
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: `--%s' は認識できないオプションです\n"
 
-#: lib/getopt.c:756
+#: lib/getopt.c:775
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: `%c%s' は認識できないオプションです\n"
 
-#: lib/getopt.c:782
+#: lib/getopt.c:801
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: 不正なオプション -- %c\n"
 
-#: lib/getopt.c:785
+#: lib/getopt.c:804
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: 無効なオプション -- %c\n"
 
-#: lib/getopt.c:815 lib/getopt.c:945
+#: lib/getopt.c:834 lib/getopt.c:964
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: オプションは引数を要求します -- %c\n"
 
-#: lib/getopt.c:862
+#: lib/getopt.c:881
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: `-W %s' オプションが曖昧です\n"
 
-#: lib/getopt.c:880
+#: lib/getopt.c:899
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: `-W %s' オプションには引数が不要です\n"
@@ -2473,34 +2473,34 @@ msgstr "@end %s の対応の前にファイルの終りに出くわしました"
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
 
-#: makeinfo/multi.c:226
+#: makeinfo/multi.c:227
 msgid "Missing } in @multitable template"
 msgstr "@multitable テンプレートに } がありません"
 
-#: makeinfo/multi.c:302
+#: makeinfo/multi.c:303
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "@multitable の後ろのテクスト `%s' を無視します"
 
-#: makeinfo/multi.c:375
+#: makeinfo/multi.c:376
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "マルチテーブル項目内のカラム数が多すぎます(最大 %d)"
 
-#: makeinfo/multi.c:426
+#: makeinfo/multi.c:427
 #, c-format
 msgid "Cannot select column #%d in multitable"
 msgstr "マルチテーブル内では、第 %d 行を選択できません"
 
-#: makeinfo/multi.c:529
+#: makeinfo/multi.c:530
 msgid "ignoring @tab outside of multitable"
 msgstr "マルチテーブルの外側の @tab を無視します"
 
-#: makeinfo/multi.c:565
+#: makeinfo/multi.c:566
 msgid "** Multicolumn output from last row:\n"
 msgstr "** マルチカラムの最後の列から出力\n"
 
-#: makeinfo/multi.c:568
+#: makeinfo/multi.c:569
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* 第 %d カラム: 出力 = %s\n"
@@ -2678,26 +2678,26 @@ msgstr "%s: TOC がここにあるはずなのに、見つかりません"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image ファイル `%s' が読めません: %s"
 
-#: util/install-info.c:151
+#: util/install-info.c:152
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: 警告: "
 
-#: util/install-info.c:176 util/install-info.c:189
+#: util/install-info.c:177 util/install-info.c:190
 msgid "virtual memory exhausted"
 msgstr "仮想メモリを使い果たしました"
 
-#: util/install-info.c:232
+#: util/install-info.c:233
 #, c-format
 msgid " for %s"
 msgstr " %s"
 
-#: util/install-info.c:381
+#: util/install-info.c:382
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\t完全な オプションリストを得るには `%s --help' を実行してください。\n"
 
-#: util/install-info.c:389
+#: util/install-info.c:390
 #, fuzzy, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2769,7 +2769,7 @@ msgstr ""
 "Email によるバグレポートは bug-texinfo@gnu.org、\n"
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
-#: util/install-info.c:444
+#: util/install-info.c:445
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2807,60 +2807,60 @@ msgstr ""
 "\n"
 "* メニュー:\n"
 
-#: util/install-info.c:467
+#: util/install-info.c:468
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: (%s) を読めず、(%s) を作成できませんでした\n"
 
-#: util/install-info.c:551
+#: util/install-info.c:552
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: 空のファイル"
 
-#: util/install-info.c:866 util/install-info.c:906
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY に対応する END-INFO-DIR-ENTRY がありません"
 
-#: util/install-info.c:901
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY に対応する START-INFO-DIR-ENTRY がありません"
 
-#: util/install-info.c:1150 util/install-info.c:1160
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Info ディレクトリは一度だけ指定してください。\n"
 
-#: util/install-info.c:1195
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info ファイルは一度だけ指定してください。\n"
 
-#: util/install-info.c:1244
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "コマンドライン引数が多すぎます `%s'"
 
-#: util/install-info.c:1248
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "入力ファイルが指定されていません -- 詳しくは --help 付で実行してください。"
 
-#: util/install-info.c:1251
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "dir ファイルが指定されていません -- 詳しくは --help 付で実行して下さい。"
 
-#: util/install-info.c:1273
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' に Info dir 用の項目がありません"
 
-#: util/install-info.c:1388
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "メニュー項目 `%s' は、`%s' に既に存在します"
 
-#: util/install-info.c:1411
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' 項目が見つかりません -- 何も削除しませんでした"

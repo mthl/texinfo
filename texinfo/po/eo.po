@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1a\n"
-"POT-Creation-Date: 2002-04-01 06:10-0800\n"
+"POT-Creation-Date: 2002-09-03 16:25-0700\n"
 "PO-Revision-Date: 2002-03-13 10:05+06:00\n"
 "Last-Translator: Sergio Pokrovskij <pok@iis.nsk.su>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion \"--help\".\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:689
-#: util/install-info.c:1224 util/texindex.c:338
+#: util/install-info.c:1225 util/texindex.c:338
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -324,7 +324,7 @@ msgstr ""
 " info -f ./um.info          eligu la dosieron ./um.info sen atenti \"dir\"\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:474
-#: util/install-info.c:421 util/texindex.c:286
+#: util/install-info.c:422 util/texindex.c:286
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -407,7 +407,7 @@ msgstr "La fenestro rezultos tro malgranda."
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Mankas spaco por helpa fenestro, bv forigi iun fenestron."
 
-#: info/infodoc.c:45 info/infodoc.c:94
+#: info/infodoc.c:46 info/infodoc.c:95
 msgid ""
 "Basic Commands in Info Windows\n"
 "******************************\n"
@@ -415,19 +415,19 @@ msgstr ""
 "La cxefaj komandoj info-fenestraj\n"
 "*********************************\n"
 
-#: info/infodoc.c:48
+#: info/infodoc.c:49
 msgid "\\%-10[quit-help]  Quit this help.\n"
 msgstr "\\%-10[quit-help]  Forlasu cxi tiun helpon.\n"
 
-#: info/infodoc.c:49
+#: info/infodoc.c:50
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "\\%-10[quit-help]  Forlasu la tutan Info.\n"
 
-#: info/infodoc.c:50
+#: info/infodoc.c:51
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Voku la lernilon pri Info.\n"
 
-#: info/infodoc.c:52 info/infodoc.c:101
+#: info/infodoc.c:53 info/infodoc.c:102
 msgid ""
 "Selecting other nodes:\n"
 "----------------------\n"
@@ -435,22 +435,22 @@ msgstr ""
 "Por elekti aliajn nodojn:\n"
 "-------------------------\n"
 
-#: info/infodoc.c:54
+#: info/infodoc.c:55
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
 msgstr ""
 "\\%-10[next-node]  Iru al la tujsekva (\"Next\") nodo de cxi tiu nodo.\n"
 
-#: info/infodoc.c:55
+#: info/infodoc.c:56
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
 msgstr ""
 "\\%-10[prev-node]  Iru al la jxusantauxa (\"Previous\") nodo de cxi tiu "
 "nodo.\n"
 
-#: info/infodoc.c:56
+#: info/infodoc.c:57
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
 msgstr "\\%-10[up-node]  Iru al la tujsupra (\"Up\") nodo de cxi tiu nodo.\n"
 
-#: info/infodoc.c:57
+#: info/infodoc.c:58
 msgid ""
 "\\%-10[menu-item]  Pick menu item specified by name.\n"
 "              Picking a menu item causes another node to be selected.\n"
@@ -458,25 +458,25 @@ msgstr ""
 "\\%-10[menu-item]  Elektu menueron indikitan per nomo.\n"
 "      Elekto de menuero kauxzas transiron en alian nodon.\n"
 
-#: info/infodoc.c:59
+#: info/infodoc.c:60
 msgid ""
 "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr ""
 "\\%-10[xref-item]  Sekvu referencon  (legante la nomon de la referenco).\n"
 
-#: info/infodoc.c:60
+#: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr ""
 "\\%-10[history-node]  Revenu al la Lasta nodo vizitita en cxi tiu fenestro.\n"
 
-#: info/infodoc.c:61
+#: info/infodoc.c:62
 msgid ""
 "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
 msgstr ""
 "\\%-10[move-to-next-xref]  Saltu sur la sekvan hipertekstan ligilon en cxi "
 "tiu nodo.\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:63
 msgid ""
 "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
 "node.\n"
@@ -484,14 +484,14 @@ msgstr ""
 "\\%-10[move-to-prev-xref]  Saltu sur la sekvan hipertekstan ligilon en cxi "
 "tiu nodo.\n"
 
-#: info/infodoc.c:63
+#: info/infodoc.c:64
 msgid ""
 "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
 msgstr ""
 "\\%-10[select-reference-this-line]  Iru laux la subkursora hiperteksta "
 "ligo.\n"
 
-#: info/infodoc.c:64
+#: info/infodoc.c:65
 msgid ""
 "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
 "node] (DIR)'.\n"
@@ -499,12 +499,12 @@ msgstr ""
 "\\%-10[dir-node]  Iru al la cxefkataloga nodo.  Ekvivalentas al \"g (DIR)"
 "\".\n"
 
-#: info/infodoc.c:65
+#: info/infodoc.c:66
 msgid ""
 "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "\\%-10[top-node]  Iru al la radika nodo.  Ekvivalentas al \"g Top\".\n"
 
-#: info/infodoc.c:67 info/infodoc.c:115
+#: info/infodoc.c:68 info/infodoc.c:116
 msgid ""
 "Moving within a node:\n"
 "---------------------\n"
@@ -512,31 +512,31 @@ msgstr ""
 "Por movigxi ene de nodo:\n"
 "------------------------\n"
 
-#: info/infodoc.c:69
+#: info/infodoc.c:70
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "\\%-10[scroll-forward]  Unu pagxon antauxen.\n"
 
-#: info/infodoc.c:70
+#: info/infodoc.c:71
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "\\%-10[scroll-backward]  Unu pagxon malantauxen.\n"
 
-#: info/infodoc.c:71
+#: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Iru al la komenco de cxi tiu nodo.\n"
 
-#: info/infodoc.c:72
+#: info/infodoc.c:73
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Iru al la fino de cxi tiu nodo.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:74
 msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
 msgstr "\\%-10[scroll-forward]  Unu pagxon antauxen.\n"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:75
 msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
 msgstr "\\%-10[scroll-backward]  Unu pagxon malantauxen.\n"
 
-#: info/infodoc.c:76 info/infodoc.c:124
+#: info/infodoc.c:77 info/infodoc.c:125
 msgid ""
 "Other commands:\n"
 "---------------\n"
@@ -544,17 +544,17 @@ msgstr ""
 "Ceteraj komandoj:\n"
 "-----------------\n"
 
-#: info/infodoc.c:78
+#: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
 msgstr ""
 "\\%-10[menu-digit]  Elektu resp. la unuan ... la nauxan eron el cxi-noda "
 "menuo.\n"
 
-#: info/infodoc.c:79
+#: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
 msgstr "\\%-10[last-menu-item]  Elektu la lastan eron de cxi-noda menuo.\n"
 
-#: info/infodoc.c:80
+#: info/infodoc.c:81
 msgid ""
 "\\%-10[index-search]  Search for a specified string in the index entries of "
 "this Info\n"
@@ -566,7 +566,7 @@ msgstr ""
 "      tiu info-dosiero kaj elektu la nodon referencatan de la unua trovita "
 "artikolo.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:83
 msgid ""
 "\\%-10[goto-node]  Move to node specified by name.\n"
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
@@ -574,7 +574,7 @@ msgstr ""
 "\\%-10[goto-node]  Iru al nodo indikita per nomo.\n"
 "      Ankaux la dosiernomon vi povas inkludi, kiel en (DOSIERO)NODO.\n"
 
-#: info/infodoc.c:84
+#: info/infodoc.c:85
 msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
@@ -582,7 +582,7 @@ msgstr ""
 "\\%-10[search]  Sercxu sube aperon de donita signocxeno kaj\n"
 "      vizitu la nodon en kiu trovigxos la sekva apero.\n"
 
-#: info/infodoc.c:86
+#: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
 "              and select the node in which the previous occurrence is "
@@ -591,116 +591,116 @@ msgstr ""
 "\\%-10[search-backward]  Sercxu supre aperon de donita signocxeno kaj\n"
 "      vizitu la nodon en kiu trovigxos la jxusantauxa apero.\n"
 
-#: info/infodoc.c:97
+#: info/infodoc.c:98
 #, c-format
 msgid "  %-10s  Quit this help.\n"
 msgstr "  %-10s  Forlasu cxi tiun helpon.\n"
 
-#: info/infodoc.c:98
+#: info/infodoc.c:99
 #, c-format
 msgid "  %-10s  Quit Info altogether.\n"
 msgstr "  %-10s  Forlasu la tutan Info.\n"
 
-#: info/infodoc.c:99
+#: info/infodoc.c:100
 #, c-format
 msgid "  %-10s  Invoke the Info tutorial.\n"
 msgstr "  %-10s  Voku la lernilon pri Info.\n"
 
-#: info/infodoc.c:103
+#: info/infodoc.c:104
 #, c-format
 msgid "  %-10s  Move to the `next' node of this node.\n"
 msgstr "  %-10s  Iru al la tujsekva (\"Next\") nodo de cxi tiu nodo.\n"
 
-#: info/infodoc.c:104
+#: info/infodoc.c:105
 #, c-format
 msgid "  %-10s  Move to the `previous' node of this node.\n"
 msgstr "  %-10s  Iru al la jxusantauxa (\"Previous\") nodo de cxi tiu nodo.\n"
 
-#: info/infodoc.c:105
+#: info/infodoc.c:106
 #, c-format
 msgid "  %-10s  Move `up' from this node.\n"
 msgstr "  %-10s  Iru al la tujsupra (\"Up\") nodo de cxi tiu nodo.\n"
 
-#: info/infodoc.c:106
+#: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Pick menu item specified by name.\n"
 msgstr "  %-10s  Iru al la tajpota menuero.\n"
 
-#: info/infodoc.c:107
+#: info/infodoc.c:108
 msgid "              Picking a menu item causes another node to be selected.\n"
 msgstr "      Elekto de menuero kauxzas transiron en alian nodon.\n"
 
-#: info/infodoc.c:108
+#: info/infodoc.c:109
 #, c-format
 msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10s  Sekvu reFerencon  (legante la nomon de la referenco).\n"
 
-#: info/infodoc.c:109
+#: info/infodoc.c:110
 #, c-format
 msgid "  %-10s  Move to the last node seen in this window.\n"
 msgstr "  %-10s  Revenu al la Lasta nodo vizitita en cxi tiu fenestro.\n"
 
-#: info/infodoc.c:110
+#: info/infodoc.c:111
 #, c-format
 msgid "  %-10s  Skip to next hypertext link within this node.\n"
 msgstr "  %-10s  Saltu sur la sekvan hipertekstan ligilon en cxi tiu nodo.\n"
 
-#: info/infodoc.c:111
+#: info/infodoc.c:112
 #, c-format
 msgid "  %-10s  Follow the hypertext link under cursor.\n"
 msgstr "  %-10s  Iru laux la subkursora hiperteksta ligo.\n"
 
-#: info/infodoc.c:112
+#: info/infodoc.c:113
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
 msgstr "  %-10s  Iru al la cxefkataloga nodo.  Ekvivalentas al \"g (DIR)\".\n"
 
-#: info/infodoc.c:113
+#: info/infodoc.c:114
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
 msgstr "  %-10s  Iru al la radika nodo.  Ekvivalentas al \"g Top\".\n"
 
-#: info/infodoc.c:117
+#: info/infodoc.c:118
 #, c-format
 msgid "  %-10s  Scroll forward a page.\n"
 msgstr "  %-10s  Unu pagxon antauxen.\n"
 
-#: info/infodoc.c:118
+#: info/infodoc.c:119
 #, c-format
 msgid "  %-10s  Scroll backward a page.\n"
 msgstr "  %-10s  Unu pagxon malantauxen.\n"
 
-#: info/infodoc.c:119
+#: info/infodoc.c:120
 #, c-format
 msgid "  %-10s  Go to the beginning of this node.\n"
 msgstr "  %-10s  Iru al la komenco de cxi tiu nodo.\n"
 
-#: info/infodoc.c:120
+#: info/infodoc.c:121
 #, c-format
 msgid "  %-10s  Go to the end of this node.\n"
 msgstr "  %-10s  Iru al la fino de cxi tiu nodo.\n"
 
-#: info/infodoc.c:121
+#: info/infodoc.c:122
 #, c-format
 msgid "  %-10s  Scroll forward 1 line.\n"
 msgstr "  %-10s  Unu pagxon antauxen.\n"
 
-#: info/infodoc.c:122
+#: info/infodoc.c:123
 #, c-format
 msgid "  %-10s  Scroll backward 1 line.\n"
 msgstr "  %-10s  Unu pagxon malantauxen.\n"
 
-#: info/infodoc.c:126
+#: info/infodoc.c:127
 #, c-format
 msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
 msgstr "  %-10s  Elektu resp. la unuan ... la nauxan eron de cxi-noda menuo.\n"
 
-#: info/infodoc.c:127
+#: info/infodoc.c:128
 #, c-format
 msgid "  %-10s  Pick last item in node's menu.\n"
 msgstr "  %-10s  Elektu la lastan eron de cxi-noda menuo.\n"
 
-#: info/infodoc.c:128
+#: info/infodoc.c:129
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
@@ -708,43 +708,43 @@ msgstr ""
 "  %-10s  Sercxu indikotan signocxenon en la indeksaj artikoloj de cxi tiu "
 "Info-\n"
 
-#: info/infodoc.c:129
+#: info/infodoc.c:130
 msgid ""
 "              file, and select the node referenced by the first entry "
 "found.\n"
 msgstr ""
 "      dosiero kaj elektu la nodon referencatan de la unua trovita artikolo.\n"
 
-#: info/infodoc.c:130
+#: info/infodoc.c:131
 #, c-format
 msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Vizitu nodon indikotan per la nomo.\n"
 
-#: info/infodoc.c:131
+#: info/infodoc.c:132
 msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "      Ankaux la dosiernomon vi povas inkludi, kiel en (DOSIERO)NODO.\n"
 
-#: info/infodoc.c:132
+#: info/infodoc.c:133
 #, c-format
 msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  Sercxu sube indikotan signocxenon,\n"
 
-#: info/infodoc.c:133 info/infodoc.c:135
+#: info/infodoc.c:134 info/infodoc.c:136
 msgid ""
 "              and select the node in which the next occurrence is found.\n"
 msgstr "        kaj vizitu la nodon en kiu trovigxos la sekva apero.\n"
 
-#: info/infodoc.c:134
+#: info/infodoc.c:135
 #, c-format
 msgid "  %-10s  Search backward for a specified string\n"
 msgstr "  %-10s  Sercxu indikotan signocxenon supre en la dosiero,\n"
 
-#: info/infodoc.c:313
+#: info/infodoc.c:314
 msgid "The current search path is:\n"
 msgstr "La kuranta sercxvojo estas:\n"
 
-#: info/infodoc.c:316
+#: info/infodoc.c:317
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -752,7 +752,7 @@ msgstr ""
 "Komandoj disponeblaj en Info-fenestroj:\n"
 "\n"
 
-#: info/infodoc.c:319
+#: info/infodoc.c:320
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
@@ -760,7 +760,7 @@ msgstr ""
 "Komandoj disponeblaj en la ehxozono:\n"
 "\n"
 
-#: info/infodoc.c:340
+#: info/infodoc.c:341
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -769,7 +769,7 @@ msgstr ""
 "La sekvaj komandoj vokeblas nur per  %s:\n"
 "\n"
 
-#: info/infodoc.c:343
+#: info/infodoc.c:344
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -777,66 +777,66 @@ msgstr ""
 "La sekvaj komandoj neniel vokeblas:\n"
 "\n"
 
-#: info/infodoc.c:367
+#: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
 msgstr "--- Uzu \"\\[history-node]\" aux \"\\[kill-node]\" por eliri ---\n"
 
-#: info/infodoc.c:477
+#: info/infodoc.c:478
 msgid "Display help message"
 msgstr "Eligu helpomesagxon"
 
-#: info/infodoc.c:495
+#: info/infodoc.c:496
 msgid "Visit Info node `(info)Help'"
 msgstr "Vizitu la Info-nodon \"(info)Help\""
 
-#: info/infodoc.c:638
+#: info/infodoc.c:639
 msgid "Print documentation for KEY"
 msgstr "Eligu la informon pri KLAVO"
 
-#: info/infodoc.c:650
+#: info/infodoc.c:651
 #, c-format
 msgid "Describe key: %s"
 msgstr "Priskribu klavon: %s"
 
-#: info/infodoc.c:660
+#: info/infodoc.c:661
 #, c-format
 msgid "ESC %s is undefined."
 msgstr "ESC %s estas nedifinita."
 
-#: info/infodoc.c:676 info/infodoc.c:703
+#: info/infodoc.c:677 info/infodoc.c:704
 #, c-format
 msgid "%s is undefined."
 msgstr "%s estas nedifinita."
 
-#: info/infodoc.c:724
+#: info/infodoc.c:725
 #, c-format
 msgid "%s is defined to %s."
 msgstr "%s estas ligita al %s."
 
-#: info/infodoc.c:1151
+#: info/infodoc.c:1152
 msgid "Show what to type to execute a given command"
 msgstr "Montru, kion tajpi por plenumi koncernan komandon"
 
-#: info/infodoc.c:1155
+#: info/infodoc.c:1156
 msgid "Where is command: "
 msgstr "Kie estas la komando: "
 
-#: info/infodoc.c:1177
+#: info/infodoc.c:1178
 #, c-format
 msgid "`%s' is not on any keys"
 msgstr "neniu klavo trovita por la komando \"%s\""
 
-#: info/infodoc.c:1183
+#: info/infodoc.c:1184
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s vokeblas nur per %s."
 
-#: info/infodoc.c:1186
+#: info/infodoc.c:1187
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s vokeblas per %s."
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:1191
 #, c-format
 msgid "There is no function named `%s'"
 msgstr "Malestas funkcio nomata \"%s\""
@@ -945,52 +945,52 @@ msgstr ""
 " --help                   Eligu cxi tiun helpeton kaj finu.\n"
 " --version                Eligu la version de la programo kaj finu.\n"
 
-#: info/infomap.c:1397
+#: info/infomap.c:1398
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "La misa infoklava dosiero \"%s\" ignorita (tro mallonga)"
 
-#: info/infomap.c:1400
+#: info/infomap.c:1401
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "La misa infoklava dosiero \"%s\" ignorita (tro longa)"
 
-#: info/infomap.c:1413
+#: info/infomap.c:1414
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Eraro dum lego de infoklava dosiero \"%s\" (tro frue elcxerpita)"
 
-#: info/infomap.c:1431
+#: info/infomap.c:1432
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (magiaj nombroj); aktualigu gxin per infokey"
 
-#: info/infomap.c:1437
+#: info/infomap.c:1438
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Via infoklava dosiero \"%s\" malaktualas; aktualigu gxin per infokey"
 
-#: info/infomap.c:1450
+#: info/infomap.c:1451
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (misa sekcilongo) -- aktualigu gxin per infokey"
 
-#: info/infomap.c:1470
+#: info/infomap.c:1471
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (misa sekcikodo); aktualigu gxin per infokey"
 
-#: info/infomap.c:1608
+#: info/infomap.c:1609
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Misaj datumoj en infoklava dosiero -- iuj klavasociajxoj ne validos"
 
-#: info/infomap.c:1659
+#: info/infomap.c:1660
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ne validos"
@@ -1020,7 +1020,7 @@ msgstr "Fiksu la alton de la prezentata fenestro"
 msgid "Set screen height to (%d): "
 msgstr "Alto de la ekrano estu (%d): "
 
-#: info/makedoc.c:161 info/makedoc.c:169
+#: info/makedoc.c:162 info/makedoc.c:170
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
@@ -1028,7 +1028,7 @@ msgstr ""
 "   La fontodosieroj tralaboritaj por fari cxi tiun dosieron:\n"
 "\n"
 
-#: info/makedoc.c:553
+#: info/makedoc.c:554
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "Maleblas prilabori la dosieron %s.\n"
@@ -1649,80 +1649,80 @@ msgstr "Variablo %s ricevu la valoron (%d): "
 msgid "Set %s to value (%s): "
 msgstr "%s ricevu la valoron (%s): "
 
-#: info/window.c:1164
+#: info/window.c:1165
 msgid "--*** Tags out of Date ***"
 msgstr "--*** Etikedoj malaktualigxis ***"
 
-#: info/window.c:1175
+#: info/window.c:1176
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linioj ----, "
 
-#: info/window.c:1182
+#: info/window.c:1183
 #, c-format
 msgid "-%s---Info: %s, %d lines --%s--"
 msgstr "-%s---Info: %s, %d linioj --%s--"
 
-#: info/window.c:1186
+#: info/window.c:1187
 #, c-format
 msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d linioj --%s--"
 
-#: info/window.c:1193
+#: info/window.c:1194
 #, c-format
 msgid " Subfile: %s"
 msgstr " Subdosiero: %s"
 
-#: lib/getopt.c:675
+#: lib/getopt.c:694
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: opcio \"%s\" estas ambigua\n"
 
-#: lib/getopt.c:700
+#: lib/getopt.c:719
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: opcio \"--%s\" ne toleras argumenton\n"
 
-#: lib/getopt.c:705
+#: lib/getopt.c:724
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: opcio \"%c%s\" ne toleras argumenton\n"
 
-#: lib/getopt.c:723 lib/getopt.c:896
+#: lib/getopt.c:742 lib/getopt.c:915
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: opcio \"%s\" bezonas argumenton\n"
 
-#: lib/getopt.c:752
+#: lib/getopt.c:771
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: nekonata opcio \"--%s\"\n"
 
-#: lib/getopt.c:756
+#: lib/getopt.c:775
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: nekonata opcio \"%c%s\"\n"
 
-#: lib/getopt.c:782
+#: lib/getopt.c:801
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: misa opcio -- %c\n"
 
-#: lib/getopt.c:785
+#: lib/getopt.c:804
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: nevalida opcio -- %c\n"
 
-#: lib/getopt.c:815 lib/getopt.c:945
+#: lib/getopt.c:834 lib/getopt.c:964
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: opcio bezonas argumenton -- %c\n"
 
-#: lib/getopt.c:862
+#: lib/getopt.c:881
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: opcio \"-W %s\" estas ambigua\n"
 
-#: lib/getopt.c:880
+#: lib/getopt.c:899
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: opcio \"-W %s\" ne toleras argumenton\n"
@@ -2476,34 +2476,34 @@ msgstr "Pli frue ol la para @end %s renkontigxis dosierfino"
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
 
-#: makeinfo/multi.c:226
+#: makeinfo/multi.c:227
 msgid "Missing } in @multitable template"
 msgstr "Mankas \"}\" en la sxablono de @multitable"
 
-#: makeinfo/multi.c:302
+#: makeinfo/multi.c:303
 #, c-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "la misa teksto \"%s\" post @multitable estas ignorita"
 
-#: makeinfo/multi.c:375
+#: makeinfo/multi.c:376
 #, c-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Tro da kolumnoj en elemento de \"multitable\" (%d maksimume)"
 
-#: makeinfo/multi.c:426
+#: makeinfo/multi.c:427
 #, c-format
 msgid "Cannot select column #%d in multitable"
 msgstr "Maleblas elekti %d-an kolumnon en \"multitable\"."
 
-#: makeinfo/multi.c:529
+#: makeinfo/multi.c:530
 msgid "ignoring @tab outside of multitable"
 msgstr "komando @tab ekster \"multitable\"; ignorita"
 
-#: makeinfo/multi.c:565
+#: makeinfo/multi.c:566
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Multekolumna eligo el la lasta linio:\n"
 
-#: makeinfo/multi.c:568
+#: makeinfo/multi.c:569
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* kolumno %d-a: eligajxo = %s\n"
@@ -2681,26 +2681,26 @@ msgstr "%s: cxi tie mankas enhavtabelo"
 msgid "@image file `%s' unreadable: %s"
 msgstr "dosiero \"%s\" en la komando @image estas nelegebla: %s"
 
-#: util/install-info.c:151
+#: util/install-info.c:152
 #, c-format
 msgid "%s: warning: "
 msgstr "%s: averto: "
 
-#: util/install-info.c:176 util/install-info.c:189
+#: util/install-info.c:177 util/install-info.c:190
 msgid "virtual memory exhausted"
 msgstr "virtuala memoro elcxerpitas"
 
-#: util/install-info.c:232
+#: util/install-info.c:233
 #, c-format
 msgid " for %s"
 msgstr " por %s"
 
-#: util/install-info.c:381
+#: util/install-info.c:382
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPor ricevi kompletan liston da opcioj tajpu \"%s --help\".\n"
 
-#: util/install-info.c:389
+#: util/install-info.c:390
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
@@ -2769,7 +2769,7 @@ msgstr ""
 "                    ili determinigxos el la informoj de la Info-dosiero.\n"
 "--version         Eligu la nomon, la version de la programo kaj eliru.\n"
 
-#: util/install-info.c:444
+#: util/install-info.c:445
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2804,58 +2804,58 @@ msgstr ""
 "\n"
 "* Menu:\n"
 
-#: util/install-info.c:467
+#: util/install-info.c:468
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: ne povas legi (%s) kaj ne povas krei (%s)\n"
 
-#: util/install-info.c:551
+#: util/install-info.c:552
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: malplena dosiero"
 
-#: util/install-info.c:866 util/install-info.c:906
+#: util/install-info.c:867 util/install-info.c:907
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY sen para END-INFO-DIR-ENTRY"
 
-#: util/install-info.c:901
+#: util/install-info.c:902
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY sen para START-INFO-DIR-ENTRY"
 
-#: util/install-info.c:1150 util/install-info.c:1160
+#: util/install-info.c:1151 util/install-info.c:1161
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Indiku la Info-katalogon solfoje.\n"
 
-#: util/install-info.c:1195
+#: util/install-info.c:1196
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Indiku la Info-dosieron solfoje.\n"
 
-#: util/install-info.c:1244
+#: util/install-info.c:1245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "troa argumento komandlinia: \"%s\""
 
-#: util/install-info.c:1248
+#: util/install-info.c:1249
 msgid "No input file specified; try --help for more information."
 msgstr "Mankas enigdosiero; provu --help por pluaj informoj."
 
-#: util/install-info.c:1251
+#: util/install-info.c:1252
 msgid "No dir file specified; try --help for more information."
 msgstr "Mankas dosiero Info-katalogo (dir); provu --help por pluaj informoj."
 
-#: util/install-info.c:1273
+#: util/install-info.c:1274
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "Nenia informo por Info-katalogo trovigxis en \"%s\""
 
-#: util/install-info.c:1388
+#: util/install-info.c:1389
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "menuero \"%s\" jam ekzistas (por la dosiero \"%s\")"
 
-#: util/install-info.c:1411
+#: util/install-info.c:1412
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "Trovigxis nenia informo Info-kataloga pri \"%s\"; nenio igxis forigita"
