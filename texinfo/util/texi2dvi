@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.17 2003-05-08 12:22:27 karl Exp $
+# $Id: texi2dvi,v 1.18 2003-05-13 13:23:13 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.17 $'
+rcs_revision='$Revision: 1.18 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.5) $rcs_version
@@ -388,7 +388,7 @@ for command_line_filename in ${1+"$@"}; do
       EMPTY)
         TEXINPUTS=$TEXINPUTS$path_sep
         ;;
-      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expansed.
+      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expanded.
         TEXINPUTS=$TEXINPUTS$path_sep$dir
         ;;
       *)
@@ -480,6 +480,12 @@ for command_line_filename in ${1+"$@"}; do
         fi
       fi
       ;;
+  esac
+
+  # If possible, make TeX report decent error locations.
+  tex_args=
+  case `$tex --help </dev/null 2>&1` in
+   *file-line-error-style*) tex_args='--file-line-error-style';;
   esac
 
   # Expand macro commands in the original source file using Makeinfo.
@@ -584,7 +590,7 @@ $textra" "$filename_input" >$filename_xtr
     # Finally, run TeX.
     # Prevent $ESCAPE from being interpreted by the shell if it happens
     # to be `/'.
-    $batch tex_args="\\${escape}nonstopmode\ \\${escape}input"
+    $batch tex_args="$tex_args \\${escape}nonstopmode\ \\${escape}input"
     cmd="$tex $tex_args $filename_input"
     $verbose "Running $cmd ..."
     if $cmd >&5; then :; else
