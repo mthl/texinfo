@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
-"POT-Creation-Date: 2002-11-13 04:36-0800\n"
+"POT-Creation-Date: 2002-12-01 06:36-0800\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:696
-#: util/install-info.c:1250 util/texindex.c:346
+#: util/install-info.c:1252 util/texindex.c:346
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1683,57 +1683,57 @@ msgstr "-%s%s-Info: (%s)%s, %d 行 --%s--"
 msgid " Subfile: %s"
 msgstr " 副ファイル: %s"
 
-#: lib/getopt.c:692 lib/getopt.c:704
+#: lib/getopt.c:688 lib/getopt.c:700
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: オプション `%s' は曖昧です\n"
 
-#: lib/getopt.c:737 lib/getopt.c:741
+#: lib/getopt.c:733 lib/getopt.c:737
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: オプション `--%s' は引数が不要です\n"
 
-#: lib/getopt.c:750 lib/getopt.c:755
+#: lib/getopt.c:746 lib/getopt.c:751
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: オプション `%c%s' は引数が不要です\n"
 
-#: lib/getopt.c:791 lib/getopt.c:804 lib/getopt.c:1093 lib/getopt.c:1106
+#: lib/getopt.c:787 lib/getopt.c:800 lib/getopt.c:1089 lib/getopt.c:1102
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: オプション `%s' には、引数が必要です\n"
 
-#: lib/getopt.c:842 lib/getopt.c:845
+#: lib/getopt.c:838 lib/getopt.c:841
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: `--%s' は認識できないオプションです\n"
 
-#: lib/getopt.c:853 lib/getopt.c:856
+#: lib/getopt.c:849 lib/getopt.c:852
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: `%c%s' は認識できないオプションです\n"
 
-#: lib/getopt.c:903 lib/getopt.c:906
+#: lib/getopt.c:899 lib/getopt.c:902
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: 不正なオプション -- %c\n"
 
-#: lib/getopt.c:912 lib/getopt.c:915
+#: lib/getopt.c:908 lib/getopt.c:911
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: 無効なオプション -- %c\n"
 
-#: lib/getopt.c:962 lib/getopt.c:973 lib/getopt.c:1159 lib/getopt.c:1172
+#: lib/getopt.c:958 lib/getopt.c:969 lib/getopt.c:1155 lib/getopt.c:1168
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: オプションは引数を要求します -- %c\n"
 
-#: lib/getopt.c:1025 lib/getopt.c:1036
+#: lib/getopt.c:1021 lib/getopt.c:1032
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: `-W %s' オプションが曖昧です\n"
 
-#: lib/getopt.c:1060 lib/getopt.c:1072
+#: lib/getopt.c:1056 lib/getopt.c:1068
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: `-W %s' オプションには引数が不要です\n"
@@ -1800,35 +1800,35 @@ msgstr "全て大文字の @sc 引数、従って効果がありません"
 msgid "`{' expected, but saw `%c'"
 msgstr "`{' があるはずですが、`%c' でした"
 
-#: makeinfo/cmds.c:797
+#: makeinfo/cmds.c:807
 msgid "end of file inside verb block"
 msgstr "verb ブロック内でファイル末尾となりました"
 
-#: makeinfo/cmds.c:805
+#: makeinfo/cmds.c:815
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "`}' があるはずですが、`%c' でした"
 
-#: makeinfo/cmds.c:970
+#: makeinfo/cmds.c:983
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s は廃れた命令です"
 
-#: makeinfo/cmds.c:1049
+#: makeinfo/cmds.c:1062
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp には `%s' ではなく、正の数値を与えなければなりません"
 
-#: makeinfo/cmds.c:1384 makeinfo/cmds.c:1410 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1397 makeinfo/cmds.c:1423 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s に対する不正な引数"
 
-#: makeinfo/cmds.c:1394 makeinfo/makeinfo.c:4156
+#: makeinfo/cmds.c:1407 makeinfo/makeinfo.c:4156
 msgid "asis"
 msgstr "そのまま"
 
-#: makeinfo/cmds.c:1396 makeinfo/makeinfo.c:4158
+#: makeinfo/cmds.c:1409 makeinfo/makeinfo.c:4158
 msgid "none"
 msgstr "なし"
 
@@ -1982,54 +1982,54 @@ msgstr "`@end' には `%s' が必要ですが、`%s' が見つかりました"
 msgid "No matching `%cend %s'"
 msgstr "`%cend %s' との対応が見つかりません"
 
-#: makeinfo/insertion.c:1147
+#: makeinfo/insertion.c:1151
 #, c-format
 msgid "%s requires letter or digit"
 msgstr "%s には英数文字が必要です"
 
-#: makeinfo/insertion.c:1227
+#: makeinfo/insertion.c:1231
 msgid "end of file inside verbatim block"
 msgstr "verbatim ブロック中でファイルの末尾となりました"
 
-#: makeinfo/insertion.c:1406
+#: makeinfo/insertion.c:1410
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
 
-#: makeinfo/insertion.c:1407
+#: makeinfo/insertion.c:1411
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべきでは？"
 
-#: makeinfo/insertion.c:1419
+#: makeinfo/insertion.c:1423
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "@detailmenu が最初のノード以前に現れました。`頂点' ノードを作ります"
 
-#: makeinfo/insertion.c:1434
+#: makeinfo/insertion.c:1438
 #, c-format
 msgid "Unmatched `%c%s'"
 msgstr "`%c%s' との対応が見つかりません"
 
-#: makeinfo/insertion.c:1441
+#: makeinfo/insertion.c:1445
 #, c-format
 msgid "`%c%s' needs something after it"
 msgstr "`%c%s' の後ろには何かが必要です"
 
-#: makeinfo/insertion.c:1447
+#: makeinfo/insertion.c:1451
 #, c-format
 msgid "Bad argument to `%s', `%s', using `%s'"
 msgstr "`%s' に対する不正な引数 `%s'。`%s' を使います"
 
-#: makeinfo/insertion.c:1543
+#: makeinfo/insertion.c:1547
 #, c-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%2$s' ブロック内側での @%1$s は、あまり意味がありません"
 
-#: makeinfo/insertion.c:1552
+#: makeinfo/insertion.c:1556
 #, c-format
 msgid "@itemx not meaningful inside `%s' block"
 msgstr "`%s' ブロック内側での @itemx は、あまり意味がありません"
 
-#: makeinfo/insertion.c:1736
+#: makeinfo/insertion.c:1740
 #, c-format
 msgid "%c%s found outside of an insertion block"
 msgstr "挿入ブロック外で、%c%s が見つかりました"
@@ -2423,7 +2423,7 @@ msgstr "閉じるブレースのない %c%s"
 msgid "First argument to cross-reference may not be empty"
 msgstr "相互参照への第一引数が空であってはなりません"
 
-#: makeinfo/makeinfo.c:3036 makeinfo/makeinfo.c:3254 makeinfo/xml.c:1421
+#: makeinfo/makeinfo.c:3036 makeinfo/makeinfo.c:3254 makeinfo/xml.c:1422
 msgid "see "
 msgstr "see "
 
@@ -2679,7 +2679,7 @@ msgstr "簡易目次"
 msgid "%s: TOC should be here, but it was not found"
 msgstr "%s: TOC がここにあるはずなのに、見つかりません"
 
-#: makeinfo/xml.c:1189
+#: makeinfo/xml.c:1190
 #, c-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image ファイル `%s' が読めません: %s"
@@ -2776,7 +2776,7 @@ msgstr ""
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
 #: util/install-info.c:451
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -2792,7 +2792,7 @@ msgid ""
 "  In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
 "  to select it.\n"
 "\n"
-"* Menu:\n"
+"%s\n"
 msgstr ""
 "これが、(dir)Top と呼ばれる Info 階層の最上位ノードの含められている\n"
 ".../info/dir ファイルです。\n"
@@ -2813,60 +2813,60 @@ msgstr ""
 "\n"
 "* メニュー:\n"
 
-#: util/install-info.c:474
+#: util/install-info.c:476
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)\n"
 msgstr "%s: (%s) を読めず、(%s) を作成できませんでした\n"
 
-#: util/install-info.c:565
+#: util/install-info.c:567
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: 空のファイル"
 
-#: util/install-info.c:892 util/install-info.c:932
+#: util/install-info.c:894 util/install-info.c:934
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY に対応する END-INFO-DIR-ENTRY がありません"
 
-#: util/install-info.c:927
+#: util/install-info.c:929
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY に対応する START-INFO-DIR-ENTRY がありません"
 
-#: util/install-info.c:1176 util/install-info.c:1186
+#: util/install-info.c:1178 util/install-info.c:1188
 #, c-format
 msgid "%s: Specify the Info directory only once.\n"
 msgstr "%s: Info ディレクトリは一度だけ指定してください。\n"
 
-#: util/install-info.c:1221
+#: util/install-info.c:1223
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info ファイルは一度だけ指定してください。\n"
 
-#: util/install-info.c:1270
+#: util/install-info.c:1272
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "コマンドライン引数が多すぎます `%s'"
 
-#: util/install-info.c:1274
+#: util/install-info.c:1276
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "入力ファイルが指定されていません -- 詳しくは --help 付で実行してください。"
 
-#: util/install-info.c:1277
+#: util/install-info.c:1279
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "dir ファイルが指定されていません -- 詳しくは --help 付で実行して下さい。"
 
-#: util/install-info.c:1299
+#: util/install-info.c:1301
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' に Info dir 用の項目がありません"
 
-#: util/install-info.c:1414
+#: util/install-info.c:1416
 #, c-format
 msgid "menu item `%s' already exists, for file `%s'"
 msgstr "メニュー項目 `%s' は、`%s' に既に存在します"
 
-#: util/install-info.c:1437
+#: util/install-info.c:1439
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' 項目が見つかりません -- 何も削除しませんでした"
