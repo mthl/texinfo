@@ -1,3 +1,36 @@
+2003-10-26  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AM_MAINTAINER_MODE): enable, to avoid lossage
+	when Texinfo sources are imported into other
+	repositories (NetBSD, TeX Live).
+	Most recently suggested by Thomas Klausner
+	<wiz@danbala.ifoer.tuwien.ac.at>, 9 Sep 2003 14:57:09 +0200.
+
+	* makeinfo/node.c (validate_file): ensure tem1 && tem2 before
+	running STREQ.  Report from: Akim Demaille <akim@epita.fr>,
+	13 Oct 2003 10:43:10 +0200.
+
+	* doc/Makefile.am (infokey.1): new target.
+	(man_MANS): include infokey.1.
+	Noticed this in Debian diff.
+	
+	* util/texi2dvi: check for tex up front; inspired by Debian diff.
+
+	* TODO: makeinfo -E should do simple macro expansion, not
+	validity checking (even syntax, for @tex processing).
+
+	From: Stepan Kasal <kasal@ucw.cz>, 24 Oct 2003 19:10:02 +0200.
+	Start at making makeinfo -E behave more like a macro preprocessor,
+		avoiding consistency checks.
+	* makeinfo/insertion.c (cm_menu,cm_detailmenu): avoid checks if
+	macro_expansion_output_stream.
+	* makeinfo/makeinfo.c (main): set validating=0 if
+	macro_expansion_output_stream.
+
+	* util/texi2dvi (comment_iftex_sed): don't think we need to
+	comment out @ifhtml sections here, makeinfo will not expand them
+	by default.
+
 2003-10-25  Karl Berry  <karl@gnu.org>
 
 	* info/info.c: --raw-escapes affects Info files, not just man

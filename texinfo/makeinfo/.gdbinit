@@ -220,3 +220,5 @@ set args --html -o - $ttests/exverb.tex
 
 # no macro expansion in @item of @table.
 set args -E - -o /dev/null $ttests/macitem.tex
+
+set args  --commands-in-node-names $ttests/assignments.texi
