@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.24 2004-11-30 02:03:23 karl Exp $
+   $Id: node.c,v 1.25 2004-11-30 13:26:50 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -977,7 +977,14 @@ cm_node (void)
           add_html_block_elt ("<div class=\"node\">\n");
           /* The <p> avoids the links area running on with old Lynxen. */
           add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
-          add_html_names (node);
+
+          /* In the split HTML case, there's no point in adding the
+             old-style converted names, since the filename is wrong.  */
+          tem = expand_node_name (node);
+          add_word ("<a name=\"");
+          add_anchor_name (tem, 0);
+          add_word ("\"></a>\n");
+          free (tem);
 
           if (next)
             {

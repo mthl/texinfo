@@ -1,3 +1,11 @@
+2004-11-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Quotations and Examples): @quotation does not
+	reduce interparagraph spacing.
+	
+	* makeinfo/node.c (cm_node) <html>: do not bother calling
+	add_html_nodes in the split case, the filename is wrong.
+
 2004-11-29  Karl Berry  <karl@gnu.org>
 
 	Support for writing <a name="..."> using the old-style node name
