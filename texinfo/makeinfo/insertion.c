@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.30 2003-10-20 22:30:33 karl Exp $
+   $Id: insertion.c,v 1.31 2003-10-26 15:12:45 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1451,7 +1451,7 @@ cm_flushright ()
 void
 cm_menu ()
 {
-  if (current_node == NULL)
+  if (current_node == NULL && !macro_expansion_output_stream)
     {
       warning (_("@menu seen before first @node, creating `Top' node"));
       warning (_("perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"));
@@ -1464,7 +1464,7 @@ cm_menu ()
 void
 cm_detailmenu ()
 {
-  if (current_node == NULL)
+  if (current_node == NULL && !macro_expansion_output_stream)
     { /* Problems anyway, @detailmenu should always be inside @menu.  */
       warning (_("@detailmenu seen before first node, creating `Top' node"));
       execute_string ("@node top\n@top Top\n");
