@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.4 2001-09-15 09:34:50 reiter Exp $
+# $Id: texi2html.init,v 1.5 2001-09-17 17:27:42 dprice Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -529,6 +529,18 @@ my $T2H_WORDS_PT =
  'section' => 'Se&ccedil;&atilde;o',
 };
 
+my $T2H_WORDS_FR =
+{
+ 'ToC_Title' => 'Table des mati&egrav;res',
+ 'Overview_Title' => 'R&eacute;sum&eacute;e du contenu',
+ 'Index_Title' => 'Index',
+ 'About_Title' => 'A propos de ce document',
+ 'Footnotes_Title' => 'Notes de bas de page',
+ 'See' => 'Voir',
+ 'see' => 'voir',
+ 'section' => 'section',
+};
+
 my $T2H_WORDS =
 {
  'en' => $T2H_WORDS_EN,
@@ -536,7 +548,8 @@ my $T2H_WORDS =
  'nl' => $T2H_WORDS_NL,
  'es' => $T2H_WORDS_ES,
  'no' => $T2H_WORDS_NO,
- 'pt' => $T2H_WORDS_PT
+ 'pt' => $T2H_WORDS_PT,
+ 'fr' => $T2H_WORDS_FR
 };
 
 my @MONTH_NAMES_EN =
@@ -582,6 +595,14 @@ my @MONTH_NAMES_PT =
      'Novembro', 'Dezembro'
     );
 
+my @MONTH_NAMES_FR =
+(
+ 'Janvier', 'F&eacute;vrier', 'Mars', 'Avril', 'Mai',
+ 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre',
+ 'Novembre', 'D&eacute;cembre'
+);
+
+
 
 my $MONTH_NAMES =
 {
@@ -590,7 +611,8 @@ my $MONTH_NAMES =
  'es' => \@MONTH_NAMES_ES,
  'nl' => \@MONTH_NAMES_NL,
  'no' => \@MONTH_NAMES_NO,
- 'pt' => \@MONTH_NAMES_PT
+ 'pt' => \@MONTH_NAMES_PT,
+ 'fr' => \@MONTH_NAMES_FR
 };
 
 ########################################################################

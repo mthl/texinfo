@@ -1,5 +1,11 @@
 2001-09-17  Derek Price  <dprice@collab.net>
 
+	* texi2html.init (T2H_WORDS_FR, MONTH_NAMES_FR): Add French
+	translations.
+	(Patch from Dumas Patrice <dumas@centre-cired.fr>.)
+
+2001-09-17  Derek Price  <dprice@collab.net>
+
 	* texi2html.1.in (AVAILABILITY): Add detail.
 
 2001-09-17  Derek Price  <dprice@collab.net>
