@@ -1,5 +1,11 @@
 2001-08-10  Derek Price  <dprice@collab.net>
 
+	* INTRODUCTION: Fix email addresses and links.
+	* README: Ditto.
+	* NEWS: Update.
+
+2001-08-10  Derek Price  <dprice@collab.net>
+
 	* doc/Makefile.am: Made a few changes so we can build in a dir other
 	than $(srcdir).
 	(Bug report from Richard Pixley <rpixley@zhone.com>.)

@@ -16,7 +16,7 @@ sheets, etc), split documents at various levels and use 'latex2html' to
 convert @tex sections.
 
 'texi2html' should reasonably convert all Texinfo 4.0 constructs. If
-not, please send a bug report to 'texi2html@mathematik.uni-kl.de'.
+not, please send a bug report to 'users@texi2html.cvshome.org'.
 
 
 To create HTML of texinfo documents
@@ -75,15 +75,14 @@ texi2html's synopsis.
 More information
 ================
 
-Texi2html's home page can be found at
-http://www.mathematik.uni-kl.de/~obachman/Texi2Html/.
+Texi2html's home page can be found at http://texi2html.cvshome.org
 
 The newest version of Texi2html can be obtained from
-http://www.mathematik.uni-kl.de/~obachman/Texi2Html/Distrib
+http://texi2html.cvshome.org/servlets/ProjectDownloadList
 or, via anonymous cvs (see
-http://www.mathematik.uni-kl.de/~obachman/Texi2Html/ for instructions).
+http://texi2html.cvshome.org/servlets/ProjectSource for instructions).
 
-Send email to texi2html@mathematik.uni-kl.de for bug reports, enhancement
+Send email to users@texi2html.cvshome.org for bug reports, enhancement
 suggestions, authoring questions and general discussion.
 
 
