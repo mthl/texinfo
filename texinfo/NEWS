@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.79 2003-11-24 12:09:36 dirt Exp $
+$Id: NEWS,v 1.80 2003-11-29 00:13:46 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -41,13 +41,15 @@ convenience, here's a url to one of the relevant sections:
     - accented dotless i supported.
   . XML output: new tags to preserve more source features.
   . Docbook output:
-    - upgraded DTD to Docbook XML 4.2, no longer using SGML.
-    - improved translation in general; for instance.
+    - upgraded DTD to Docbook XML 4.2, no longer using Docbook SGML.
+    - improved translation in general, for instance:
     - line annotations and marked quotations.
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.
 * texinfo.tex:
+  . @defun names are now printed in typewriter (instead of bold), and
+    arguments are printed in slanted typewriter (instead of slanted).
   . @tex and @iftex code is executed inside a TeX group, so that any
     changes must be prefixed with \global resp. @global to be effective.
     (This change was actually made years ago, but never made it into the NEWS.)
@@ -56,7 +58,8 @@ convenience, here's a url to one of the relevant sections:
     --no-raw-escapes overrides this.
 * Distribution:
   . new script gendocs.sh (not installed), for use by GNU maintainers in
-    getting their manuals on the GNU web site.  Documented in maintain.texi.
+    getting their manuals on the GNU web site.  Documented in
+    maintain.texi (http://www.gnu.org/prep/maintain_toc.html).
   . New translation: nb.
   . automake 1.7.9, autoconf 2.59.
 

@@ -1,3 +1,7 @@
+2003-11-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: document @deftypecv.
+
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_comment): do not perform expansion.
