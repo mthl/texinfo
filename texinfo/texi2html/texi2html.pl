@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.103 2004-02-06 00:13:42 pertusus Exp $
+# $Id: texi2html.pl,v 1.104 2004-02-06 23:37:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6161,7 +6161,6 @@ sub do_external_ref($)
          else
          {
              $file .= "/";
-#print STDERR "!!!$Texi2HTML::Config::EXTERNAL_DIR\n";
              $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if (defined($Texi2HTML::Config::EXTERNAL_DIR));
          }
     }

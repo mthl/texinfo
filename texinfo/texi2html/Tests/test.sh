@@ -228,6 +228,7 @@ test_texi formatting copying_not_closed.texi "" 1
 test_texi formatting titlepage_not_closed.texi "" 1
 test_texi formatting test_refs.texi "-init cross_manual.init"
 test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter" 0 texi chapter_test_refs
+test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes" 0 texi node_test_refs
 test_texi texi2html 
 test_texi viper_monolithic viper.texi "-ifinfo"
 test_texi viper viper.texi "-split chapter -ifinfo"

@@ -2,31 +2,79 @@ test_refs.texi(,2)
 test_refs.texi(,4) @node Top
 test_refs.texi(,5) @top Test refs
 test_refs.texi(,6) 
-test_refs.texi(,7) Testing node:
-test_refs.texi(,8) 
-test_refs.texi(,9) @verb{: a  node :} @ref{ a  node ,,, manual}@*
-test_refs.texi(,10) @example
-test_refs.texi(,11) mono : manual.html#a-node
-test_refs.texi(,12) split: ../manual/a-node.html#a-node
-test_refs.texi(,13) @end example
-test_refs.texi(,14) 
-test_refs.texi(,15) @verb{:!_"#$%&'()*+-./:;<=>?[\]^_`|~:} @ref{!_"#$%&'()*+-./:;<=>?[\]^_`|~,,,manual}@*
-test_refs.texi(,16) @example
-test_refs.texi(,17) mono : manual.html#_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003a_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e 
-test_refs.texi(,18) split: ../manual/_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003a_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e.html#_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003a_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e 
-test_refs.texi(,19) @end example
-test_refs.texi(,20) 
-test_refs.texi(,21) @verb{:Top:} @ref{ top ,,, manual}@* 
-test_refs.texi(,22) @example
-test_refs.texi(,23) mono : manual.html#Top
-test_refs.texi(,24) split: ../manual/index.html#Top
-test_refs.texi(,25) @end example
-test_refs.texi(,26) 
-test_refs.texi(,27) Testing manual name:
-test_refs.texi(,28) 
-test_refs.texi(,29) @verb{:../manual/doc.texi:} @ref{node,,, ../manual/doc.texi}@*
-test_refs.texi(,30) @example
-test_refs.texi(,31) mono : doc.html#node
-test_refs.texi(,32) split: ../doc/node.html#node
-test_refs.texi(,33) @end example
-test_refs.texi(,34) 
+test_refs.texi(,7) @menu
+test_refs.texi(,8) * other nodes::
+test_refs.texi(,9) @end menu
+test_refs.texi(,10) 
+test_refs.texi(,11) @subheading Testing distant nodes
+test_refs.texi(,12) 
+test_refs.texi(,13) @verb{: a  node :} @ref{ a  node ,,, manual}@*
+test_refs.texi(,14) @example
+test_refs.texi(,15) mono : manual.html#a-node
+test_refs.texi(,16) split: ../manual/a-node.html#a-node
+test_refs.texi(,17) @end example
+test_refs.texi(,18) 
+test_refs.texi(,19) @verb{;:;} @ref{:,,,manual}
+test_refs.texi(,20) @example
+test_refs.texi(,21) mono : manual.html#_003a
+test_refs.texi(,22) split: ../manual/_003a.html#_003a
+test_refs.texi(,23) @end example
+test_refs.texi(,24) 
+test_refs.texi(,25) @verb{:Top:} @ref{ top ,,, manual}@* 
+test_refs.texi(,26) @example
+test_refs.texi(,27) mono : manual.html#Top
+test_refs.texi(,28) split: ../manual/index.html#Top
+test_refs.texi(,29) @end example
+test_refs.texi(,30) 
+test_refs.texi(,31) @subheading Testing manual name
+test_refs.texi(,32) 
+test_refs.texi(,33) @verb{:../manual/doc.texi:} @ref{node,,, ../manual/doc.texi}@*
+test_refs.texi(,34) @example
+test_refs.texi(,35) mono : doc.html#node
+test_refs.texi(,36) split: ../doc/node.html#node
+test_refs.texi(,37) @end example
+test_refs.texi(,38) 
+test_refs.texi(,39) @subheading Testing local nodes
+test_refs.texi(,40) 
+test_refs.texi(,41) @verb{:!_"#$%&'()*+-./;<=>?[\]^_`|~:} @ref{!_"#$%&'()*+-./;<=>?[\]^_`|~}@*
+test_refs.texi(,42) @example
+test_refs.texi(,43) target: #_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+test_refs.texi(,44) @end example
+test_refs.texi(,45) 
+test_refs.texi(,46) @verb{:Top:} @ref{ Top}
+test_refs.texi(,47) @example
+test_refs.texi(,48) target: #Top
+test_refs.texi(,49) @end example
+test_refs.texi(,50) 
+test_refs.texi(,51) @verb{: local   node:} @ref{  local   node}
+test_refs.texi(,52) @example
+test_refs.texi(,53) target: #local-node
+test_refs.texi(,54) @end example
+test_refs.texi(,55) 
+test_refs.texi(,56) @node other nodes, !_"#$%&'()*+-./;<=>?[\]^_`|~, Top, Top
+test_refs.texi(,57) @chapter Chapter with nodes
+test_refs.texi(,58) 
+test_refs.texi(,59) @example
+test_refs.texi(,60) id: other-nodes
+test_refs.texi(,61) @end example
+test_refs.texi(,62) 
+test_refs.texi(,63) @verb{:Top:} @ref{ Top}
+test_refs.texi(,64) @example
+test_refs.texi(,65) target: #Top
+test_refs.texi(,66) @end example
+test_refs.texi(,67) 
+test_refs.texi(,68) @menu
+test_refs.texi(,69) * !_"#$%&'()*+-./;<=>?[\]^_`|~::
+test_refs.texi(,70) * local node::
+test_refs.texi(,71) @end menu
+test_refs.texi(,72) 
+test_refs.texi(,73) @node !_"#$%&'()*+-./;<=>?[\]^_`|~,local   node,other nodes,Top
+test_refs.texi(,74) @example
+test_refs.texi(,75) id: _0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
+test_refs.texi(,76) @end example
+test_refs.texi(,77) 
+test_refs.texi(,78) @node  local   node,,!_"#$%&'()*+-./;<=>?[\]^_`|~,Top
+test_refs.texi(,79) @example
+test_refs.texi(,80) id: local-node
+test_refs.texi(,81) @end example
+test_refs.texi(,82) 

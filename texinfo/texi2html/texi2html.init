@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.67 2004-02-06 00:13:42 pertusus Exp $
+# $Id: texi2html.init,v 1.68 2004-02-06 23:37:44 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -702,6 +702,7 @@ sub T2H_DEFAULT_print_section
 sub T2H_DEFAULT_one_section($)
 {
     my $fh = shift;
+    main::print_lines($fh, $Texi2HTML::THIS_HEADER);
     main::print_lines($fh);
     print $fh "$SMALL_RULE\n";
     &$print_foot_navigation($fh);

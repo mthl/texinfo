@@ -1,2 +1,21 @@
 $EXTERNAL_DIR = undef;
 $NEW_CROSSREF_STYLE = 1;
+#$USE_NODES = 1;
+#$NODE_FILES = 1;
+
+$node_file_name = \&cross_ref_node_file_name;
+
+sub cross_ref_node_file_name($)
+{
+    my $node = shift;
+    $node->{'id'} = $node->{'cross_manual_target'};
+    my $node_file = $node->{'cross_manual_target'} . ".$NODE_FILE_EXTENSION";
+    my $file;
+    $file =  $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
+    if (defined($node->{'file'}))
+    {
+         $file = $node->{'file'};
+         $node_file = $node->{'node_file'};
+    }
+    return ($file, $node_file);
+}

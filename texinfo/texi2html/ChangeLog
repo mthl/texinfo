@@ -1,3 +1,10 @@
+2004-02-07  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* T2h_unicode.pm, T2h_nounicode.pm: make global variables lexical
+	variables.
+	* texi2html.init: output header if there is only one section.
+	* Tests/: more tests for the new cross references scheme.
+
 2004-02-06  Derek Price  <derek@ximbiot.com>
 
 	* T2h_unicode.pm, T2h_nounicode.pm: Declare some otherwise undeclared
