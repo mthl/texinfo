@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.14 2002-11-12 18:34:07 feloy Exp $
+   $Id: xml.c,v 1.15 2002-11-13 12:35:35 karl Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -1224,8 +1224,9 @@ xml_asterisk ()
 /*
  *     INDEX
  */
-/* Used to separate primary and secondary entries in an index */
-#define INDEX_SEP ", "
+/* Used to separate primary and secondary entries in an index -- we need
+   to have real multilivel indexing support, not just string analysis.  */
+#define INDEX_SEP "@this string will never appear@" /* was , */
 
 xml_insert_indexterm (indexterm, index)
     char *indexterm;
