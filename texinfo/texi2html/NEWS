@@ -2,12 +2,20 @@ This file records noteworthy changes.
 
 1.72 ()
 
+* NEW FEATURES
+  ------------
+
 * Handle texinfo 4.7 constructs:
   @caption, @shortcaption, @ordf, @ordm, @registeredsymbol, @deftypecv, 
   @LaTeX, @indicateurl, @docbook, @ifdocbook, @ifnotdocbook, @comma, 
   @headitem, @quotation second arg, @acronym second arg.
   @url is now a synonym for @uref. @ at the end of a @def* line continues the
   line.
+
+* BUG FIXES
+  ---------
+
+* Re enable compatibility with perl older that 5.6.
 
 1.70 (March 24 2004)
 

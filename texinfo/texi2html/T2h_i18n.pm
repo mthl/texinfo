@@ -30,7 +30,10 @@ use strict;
 use File::Copy;
 use Data::Dumper;
 
-our (@ISA, @EXPORT);
+use vars qw(
+@ISA
+@EXPORT
+);
 
 use Exporter;
 @ISA = qw(Exporter);

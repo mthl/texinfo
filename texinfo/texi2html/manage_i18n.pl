@@ -48,7 +48,10 @@ my $template_file = "$i18n_dir/$template";
 my @source_files = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm', 
  'examples/roff.init', 'examples/noheaders.init');
 
-our $LANGUAGES; 
+use vars qw(
+$LANGUAGES 
+$T2H_OBSOLETE_STRINGS
+);
 
 # Strings not in code
 my $template_strings =
@@ -69,7 +72,6 @@ my $template_strings =
 };
 
 # Handle per language files
-our $T2H_OBSOLETE_STRINGS = {};
 $Data::Dumper::Sortkeys = 1;
 
 if (@ARGV < 1)

@@ -1,3 +1,9 @@
+2004-06-27  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl, T2h_i18n.pm, manage_i18n.pl: Re enable compatibility 
+	with perl older that 5.6, by changing most of our to use vars, and 
+	some other to my.
+
 2004-06-13  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* texi2html.pl: split close_stack in 2, one for the last pass the other

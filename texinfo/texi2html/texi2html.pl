@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.115 2004-06-21 22:04:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.116 2004-06-27 13:43:26 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -118,9 +118,6 @@ my $DEBUG_L2H   = 128;
 my $ERROR = "***";                 # prefix for errors
 my $WARN  = "**";                  # prefix for warnings
 
-# FIXME [^\s] doesn't seems to work in texi2html, although it works when
-# called as texi2html.pl ?? With perl (revision 5.0 version 8 subversion 0)
-# previously was [^\s\{\}]+
 my $VARRE = '[\w\-]+';          # RE for a variable name
 my $NODERE = '[^:]+';             # RE for node names
 
@@ -144,7 +141,6 @@ my $conf_file_name = 'Config' ;
 {
 package Texi2HTML::Config;
 
-our $I = \&Texi2HTML::I18n::get_string;
 
 sub load($) 
 {
@@ -160,247 +156,261 @@ sub load($)
 
 # customization options variables
 
-our $DEBUG;
-our $PREFIX;
-our $VERBOSE;
-our $SUBDIR;
-our $IDX_SUMMARY;
-our $SPLIT;
-our $SHORT_REF;
-our @EXPAND;
-our $EXPAND;
-#our $TOC;
-our $TOP;
-our $DOCTYPE ;
-our $FRAMESET_DOCTYPE ;
-our $CHECK ;
-our $TEST ;
-our $DUMP_TEXI;
-our $MACRO_EXPAND;
-our $USE_GLOSSARY ;
-our $INVISIBLE_MARK ;
-our $USE_ISO ;
-our $TOP_FILE ;
-our $TOC_FILE;
-our $FRAMES;
-our $SHOW_MENU;
-our $NUMBER_SECTIONS;
-our $USE_NODES;
-our $USE_UNICODE;
-our $NODE_FILES;
-our $NODE_NAME_IN_MENU;
-our $AVOID_MENU_REDUNDANCY;
-our $SECTION_NAVIGATION;
-our $SHORTEXTN ;
-our $EXTENSION;
-our $OUT ;
-our $NOVALIDATE;
-our $DEF_TABLE ;
-our $LANG ;
-our $DO_CONTENTS;
-our $DO_SCONTENTS;
-our $SEPARATED_FOOTNOTES;
-our $TOC_LINKS;
-our $L2H ;
-our $L2H_L2H ;
-our $L2H_SKIP ;
-our $L2H_TMP ;
-our $L2H_CLEAN ;
-our $L2H_FILE;
-our $L2H_HTML_VERSION;
-our $EXTERNAL_DIR;
-our @INCLUDE_DIRS ;
-our @PREPEND_DIRS ;
-our $IGNORE_PREAMBLE_TEXT;
-our @CSS_FILES;
+use vars qw(
+$DEBUG
+$PREFIX
+$VERBOSE
+$SUBDIR
+$IDX_SUMMARY
+$SPLIT
+$SHORT_REF
+@EXPAND
+$EXPAND
+$TOP
+$DOCTYPE 
+$FRAMESET_DOCTYPE 
+$CHECK 
+$TEST 
+$DUMP_TEXI
+$MACRO_EXPAND
+$USE_GLOSSARY 
+$INVISIBLE_MARK 
+$USE_ISO 
+$TOP_FILE 
+$TOC_FILE
+$FRAMES
+$SHOW_MENU
+$NUMBER_SECTIONS
+$USE_NODES
+$USE_UNICODE
+$NODE_FILES
+$NODE_NAME_IN_MENU
+$AVOID_MENU_REDUNDANCY
+$SECTION_NAVIGATION
+$SHORTEXTN 
+$EXTENSION
+$OUT 
+$NOVALIDATE
+$DEF_TABLE 
+$LANG 
+$DO_CONTENTS
+$DO_SCONTENTS
+$SEPARATED_FOOTNOTES
+$TOC_LINKS
+$L2H 
+$L2H_L2H 
+$L2H_SKIP 
+$L2H_TMP 
+$L2H_CLEAN 
+$L2H_FILE
+$L2H_HTML_VERSION
+$EXTERNAL_DIR
+@INCLUDE_DIRS 
+@PREPEND_DIRS 
+$IGNORE_PREAMBLE_TEXT
+@CSS_FILES
+);
 
 # customization variables
-our $ENCODING;
-our $DOCUMENT_ENCODING;
-our $MENU_PRE_STYLE;
-our $CENTER_IMAGE;
-our $EXAMPLE_INDENT_CELL;
-our $SMALL_EXAMPLE_INDENT_CELL;
-our $SMALL_FONT_SIZE;
-our $SMALL_RULE;
-our $DEFAULT_RULE;
-our $MIDDLE_RULE;
-our $BIG_RULE;
-our $TOP_HEADING;
-our $INDEX_CHAPTER;
-our $SPLIT_INDEX;
-our $HREF_DIR_INSTEAD_FILE;
-our $AFTER_BODY_OPEN;
-our $PRE_BODY_CLOSE;
-our $EXTRA_HEAD;
-our $VERTICAL_HEAD_NAVIGATION;
-our $WORDS_IN_PAGE;
-our $ICONS;
-our $UNNUMBERED_SYMBOL_IN_MENU;
-our $MENU_SYMBOL;
-our $OPEN_QUOTE_SYMBOL;
-our $CLOSE_QUOTE_SYMBOL;
-our $TOC_LIST_STYLE;
-our $TOC_LIST_ATTRIBUTE;
-our $TOP_NODE_FILE;
-our $NODE_FILE_EXTENSION;
-our $BEFORE_OVERVIEW;
-our $AFTER_OVERVIEW;
-our $BEFORE_TOC_LINES;
-our $AFTER_TOC_LINES;
-our $NEW_CROSSREF_STYLE;;
-our %ACTIVE_ICONS;
-our %NAVIGATION_TEXT;
-our %PASSIVE_ICONS;
-our %BUTTONS_GOTO;
-our %BUTTONS_EXAMPLE;
-our @CHAPTER_BUTTONS;
-our @MISC_BUTTONS;
-our @SECTION_BUTTONS;
-our @SECTION_FOOTER_BUTTONS;
-our @NODE_FOOTER_BUTTONS;
+use vars qw(
+$ENCODING
+$DOCUMENT_ENCODING
+$MENU_PRE_STYLE
+$CENTER_IMAGE
+$EXAMPLE_INDENT_CELL
+$SMALL_EXAMPLE_INDENT_CELL
+$SMALL_FONT_SIZE
+$SMALL_RULE
+$DEFAULT_RULE
+$MIDDLE_RULE
+$BIG_RULE
+$TOP_HEADING
+$INDEX_CHAPTER
+$SPLIT_INDEX
+$HREF_DIR_INSTEAD_FILE
+$AFTER_BODY_OPEN
+$PRE_BODY_CLOSE
+$EXTRA_HEAD
+$VERTICAL_HEAD_NAVIGATION
+$WORDS_IN_PAGE
+$ICONS
+$UNNUMBERED_SYMBOL_IN_MENU
+$MENU_SYMBOL
+$OPEN_QUOTE_SYMBOL
+$CLOSE_QUOTE_SYMBOL
+$TOC_LIST_STYLE
+$TOC_LIST_ATTRIBUTE
+$TOP_NODE_FILE
+$NODE_FILE_EXTENSION
+$BEFORE_OVERVIEW
+$AFTER_OVERVIEW
+$BEFORE_TOC_LINES
+$AFTER_TOC_LINES
+$NEW_CROSSREF_STYLE
+%ACTIVE_ICONS
+%NAVIGATION_TEXT
+%PASSIVE_ICONS
+%BUTTONS_GOTO
+%BUTTONS_EXAMPLE
+@CHAPTER_BUTTONS
+@MISC_BUTTONS
+@SECTION_BUTTONS
+@SECTION_FOOTER_BUTTONS
+@NODE_FOOTER_BUTTONS
+);
 
 # customization variables which may be guessed in the script
 #our $ADDRESS;
-our $BODYTEXT;
-our $CSS_LINES;
-our $DOCUMENT_DESCRIPTION;
+use vars qw(
+$BODYTEXT
+$CSS_LINES
+$DOCUMENT_DESCRIPTION
+);
 
 # I18n
-our $LANGUAGES;
+use vars qw(
+$I
+$LANGUAGES
+);
 
 # customizable subroutines references
-our $print_section;
-our $one_section;
-our $end_section;
-our $print_Top_header;
-our $print_Top_footer;
-our $print_Top;
-our $print_Toc;
-our $print_Overview;
-our $print_Footnotes;
-our $print_About;
-our $print_misc_header;
-our $print_misc_footer;
-our $print_misc;
-our $print_section_header;
-our $print_section_footer;
-our $print_chapter_header;
-our $print_chapter_footer;
-our $print_page_head;
-our $print_page_foot;
-our $print_head_navigation;
-our $print_foot_navigation;
-our $button_icon_img;
-our $print_navigation;
-our $about_body;
-our $print_frame;
-our $print_toc_frame;
-our $toc_body;
-our $titlepage;
-our $css_lines;
-our $print_redirection_page;
-our $init_out;
-our $finish_out;
-our $node_file_name;
-our $element_file_name;
+use vars qw(
+$print_section
+$one_section
+$end_section
+$print_Top_header
+$print_Top_footer
+$print_Top
+$print_Toc
+$print_Overview
+$print_Footnotes
+$print_About
+$print_misc_header
+$print_misc_footer
+$print_misc
+$print_section_header
+$print_section_footer
+$print_chapter_header
+$print_chapter_footer
+$print_page_head
+$print_page_foot
+$print_head_navigation
+$print_foot_navigation
+$button_icon_img
+$print_navigation
+$about_body
+$print_frame
+$print_toc_frame
+$toc_body
+$titlepage
+$css_lines
+$print_redirection_page
+$init_out
+$finish_out
+$node_file_name
+$element_file_name
 
-our $protect_text;
-our $anchor;
-our $def_item;
-our $def;
-our $menu;
-our $menu_link;
-our $menu_description;
-our $menu_comment;
-our $simple_menu_link;
-our $ref_beginning;
-our $info_ref;
-our $book_ref;
-our $external_ref;
-our $internal_ref;
-our $table_item;
-our $table_line;
-our $row;
-our $cell;
-our $list_item;
-our $comment;
-our $def_line;
-our $def_line_no_texi;
-our $raw;
-our $heading;
-our $paragraph;
-our $preformatted;
-our $foot_line_and_ref;
-our $foot_section;
-our $address;
-our $image;
-our $index_entry_label;
-our $index_entry;
-our $index_letter;
-our $print_index;
-our $index_summary;
-our $summary_letter;
-our $complex_format;
-our $cartouche;
-our $sp;
-our $definition_category;
-our $table_list;
-our $copying_comment;
-our $index_summary_file_entry;
-our $index_summary_file_end;
-our $index_summary_file_begin;
-our $style;
-our $format;
-our $normal_text;
-our $empty_line;
-our $unknown;
-our $unknown_style;
-our $float;
-our $caption_shortcaption;
-our $listoffloats;
-our $listoffloats_entry;
-our $listoffloats_caption;
-our $listoffloats_float_style;
-our $listoffloats_style;
-our $acronym;
-our $quotation;
-our $quotation_prepend_text;
+$protect_text
+$anchor
+$def_item
+$def
+$menu
+$menu_link
+$menu_description
+$menu_comment
+$simple_menu_link
+$ref_beginning
+$info_ref
+$book_ref
+$external_ref
+$internal_ref
+$table_item
+$table_line
+$row
+$cell
+$list_item
+$comment
+$def_line
+$def_line_no_texi
+$raw
+$heading
+$paragraph
+$preformatted
+$foot_line_and_ref
+$foot_section
+$address
+$image
+$index_entry_label
+$index_entry
+$index_letter
+$print_index
+$index_summary
+$summary_letter
+$complex_format
+$cartouche
+$sp
+$definition_category
+$table_list
+$copying_comment
+$index_summary_file_entry
+$index_summary_file_end
+$index_summary_file_begin
+$style
+$format
+$normal_text
+$empty_line
+$unknown
+$unknown_style
+$float
+$caption_shortcaption
+$listoffloats
+$listoffloats_entry
+$listoffloats_caption
+$listoffloats_float_style
+$listoffloats_style
+$acronym
+$quotation
+$quotation_prepend_text
 
-our $PRE_ABOUT;
-our $AFTER_ABOUT;
+$PRE_ABOUT
+$AFTER_ABOUT
+);
 
 # hash which entries might be redefined by the user
-our $complex_format_map;
-our %accent_map;
-our %def_map;
-our %format_map;
-our %simple_map;
-our %simple_map_pre;
-our %simple_map_texi;
-our %style_map;
-our %style_map_pre;
-our %style_map_texi;
-our %unformatted_text_simple_map_texi;
-our %unformatted_text_style_map_texi;
-our %unformatted_text_texi_map;
-our %paragraph_style;
-our %things_map;
-our %pre_map;
-our %texi_map;
-our %unicode_map;
-our %unicode_diacritical;
-our %ascii_character_map;
-our %ascii_simple_map;
-our %ascii_things_map;
-our %perl_charset_to_html;
-our %iso_symbols;
-our %to_skip;
-our %css_map;
-our %special_list_commands;
-our %accent_letters;
-our %unicode_accents;
-our %special_accents;
+use vars qw(
+$complex_format_map
+%accent_map
+%def_map
+%format_map
+%simple_map
+%simple_map_pre
+%simple_map_texi
+%style_map
+%style_map_pre
+%style_map_texi
+%unformatted_text_simple_map_texi
+%unformatted_text_style_map_texi
+%unformatted_text_texi_map
+%paragraph_style
+%things_map
+%pre_map
+%texi_map
+%unicode_map
+%unicode_diacritical
+%ascii_character_map
+%ascii_simple_map
+%ascii_things_map
+%perl_charset_to_html
+%iso_symbols
+%to_skip
+%css_map
+%special_list_commands
+%accent_letters
+%unicode_accents
+%special_accents
+);
+
+$I = \&Texi2HTML::I18n::get_string;
 
 $toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
@@ -707,17 +717,23 @@ if ($USE_UNICODE eq '@USE_UNICODE@')
 
 }
 
-our %value;
-our %user_sub;
+use vars qw(
+%value
+);
+
+# This is deprecated
+#our %user_sub;
 
 # variables which might be redefined by the user but aren't likely to be  
 # they seem to be in the main namespace
-our $index_properties;
-our %predefined_index;
-our %valid_index;
-our %sec2level;
-our %code_style_map;
-our %region_lines;
+use vars qw(
+$index_properties
+%predefined_index
+%valid_index
+%sec2level
+%code_style_map
+%region_lines
+);
 
 # Some global variables are set in the script, and used in the subroutines
 # they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
@@ -866,15 +882,15 @@ $index_properties =
            'verb'    => 1,
 );
 
-our $simple_map_ref = \%Texi2HTML::Config::simple_map;
-our $simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
-our $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
-our $style_map_ref = \%Texi2HTML::Config::style_map;
-our $style_map_pre_ref = \%Texi2HTML::Config::style_map_pre;
-our $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
-our $things_map_ref = \%Texi2HTML::Config::things_map;
-our $pre_map_ref = \%Texi2HTML::Config::pre_map;
-our $texi_map_ref = \%Texi2HTML::Config::texi_map;
+my $simple_map_ref = \%Texi2HTML::Config::simple_map;
+my $simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
+my $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+my $style_map_ref = \%Texi2HTML::Config::style_map;
+my $style_map_pre_ref = \%Texi2HTML::Config::style_map_pre;
+my $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+my $things_map_ref = \%Texi2HTML::Config::things_map;
+my $pre_map_ref = \%Texi2HTML::Config::pre_map;
+my $texi_map_ref = \%Texi2HTML::Config::texi_map;
 
 # delete from hash if we are using te new interface
 foreach my $code (keys(%code_style_map))
@@ -884,7 +900,7 @@ foreach my $code (keys(%code_style_map))
 }
 
 # no paragraph in these commands
-our %no_paragraph_macro = (
+my %no_paragraph_macro = (
            'xref'         => 1,
            'ref'          => 1,
            'pxref'        => 1,
@@ -1086,7 +1102,7 @@ foreach my $key (keys(%fake_format))
 
 # A hash associating style @-comand with the type, 'accent', real 'style',
 # 'simple' style, or 'special'.
-our %style_type = (); 
+my %style_type = (); 
 foreach my $style (keys(%Texi2HTML::Config::style_map))
 {
     $style_type{$style} = 'style';
@@ -1322,9 +1338,9 @@ sub set_encoding($)
     }
 }
 
-our %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
-our %cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
-our %cross_ref_style_map_texi = ();
+my %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
+my %cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
+my %cross_ref_style_map_texi = ();
 
 foreach my $command (keys(%Texi2HTML::Config::style_map_texi))
 {
