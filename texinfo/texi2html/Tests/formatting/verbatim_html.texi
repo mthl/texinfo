@@ -124,6 +124,14 @@ tex \TeX
 
 Same that @@html (but empty following line not ignored).
 
+Test of @@math
+Here some @math{\frac{x^i}{\tan y}}.
+
+A sc: @sc{ieee}, and another one in example:
+@example
+@sc{aeei}
+@end example
+
 @ifnottex
 ignore @ignore ignored
 
@@ -249,6 +257,15 @@ before before}}.
 Conversely, a ref in a footnote
 @footnote{ This is a ref @ref{First node} }
 
+A footnote with an example
+@footnote{
+@example
+
+
+An example
+
+@end example
+}
 
 @end ifnottex
 

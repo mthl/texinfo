@@ -37,7 +37,7 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm $basename*.html $basename*.htm $basename*.png) > /dev/null 2>&1
+(cd $dir && rm $basename*.html $basename*.htm $basename*.png $basename.firstpass) > /dev/null 2>&1
 export T2H_HOME=../..
 (cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
@@ -46,6 +46,9 @@ if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
 elif [ $ret != 0 -a $fail = 'success' ]; then echo "    !!! no success";
 else echo "    passed"
 fi
+
+# generate a dump of the first pass
+(cd $dir && perl -w ../../texi2html.pl -test $options -dump_texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
 echo "  stderr line count:"
