@@ -1,5 +1,5 @@
 \input texinfo    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.2 2002-10-25 00:44:39 karl Exp $
+@comment $Id: info-stnd.texi,v 1.3 2002-11-06 00:41:54 karl Exp $
 @comment %**start of header
 @setfilename info-stnd.info
 @include version-stnd.texi
@@ -1809,15 +1809,16 @@ Here is a list of the variables that you can set in Info.
 @table @code
 @item automatic-footnotes
 @vindex automatic-footnotes
-When set to @code{On}, footnotes appear and disappear automatically.
-This variable is @code{On} by default.  When a node is selected, a
-window containing the footnotes which appear in that node is created,
-and the footnotes are displayed within the new window.  The window that
-Info creates to contain the footnotes is called @samp{*Footnotes*}.  If
-a node is selected which contains no footnotes, and a @samp{*Footnotes*}
-window is on the screen, the @samp{*Footnotes*} window is deleted.
-Footnote windows created in this fashion are not automatically tiled so
-that they can use as little of the display as is possible.
+When set to @code{On}, footnotes appear and disappear automatically;
+else, they appear at the bottom of the node text.  This variable is
+@code{Off} by default.  When a node is selected, a window containing
+the footnotes which appear in that node is created, and the footnotes
+are displayed within the new window.  The window that Info creates to
+contain the footnotes is called @samp{*Footnotes*}.  If a node is
+selected which contains no footnotes, and a @samp{*Footnotes*} window
+is on the screen, the @samp{*Footnotes*} window is deleted.  Footnote
+windows created in this fashion are not automatically tiled so that
+they can use as little of the display as is possible.
 
 @item automatic-tiling
 @vindex automatic-tiling
