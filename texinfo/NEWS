@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.78 2003-11-23 14:12:18 karl Exp $
+$Id: NEWS,v 1.79 2003-11-24 12:09:36 dirt Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -31,6 +31,8 @@ convenience, here's a url to one of the relevant sections:
   . @quotation now accepts an optional parameter for labelling the text
       as a `Note', `Tip', etc.
 * makeinfo:
+  . All outputs:
+    - sections are numbered by default.
   . HTML output:
     - include node name in <title> with split output.
     - @multicolumn fractions become percentages.
