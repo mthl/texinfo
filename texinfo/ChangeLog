@@ -1,3 +1,7 @@
+2004-04-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/tests/copying: force POSIX language setting.
+
 2004-04-19  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_code): use <samp> for commands other than
