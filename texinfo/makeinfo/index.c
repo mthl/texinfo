@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.11 2003-11-24 21:56:11 dirt Exp $
+   $Id: index.c,v 1.12 2003-11-24 23:26:07 dirt Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -837,8 +837,9 @@ cm_printindex ()
 
                       if (number_sections)
                         {
-                          if (strncmp (section_name, "Appendix", 8) == 0)
-                            idx = 10;
+                          char *trans = (char *) _("Appendix");
+                          if (strncmp (section_name, trans, strlen (trans)) == 0)
+                            idx = strlen (trans) + 2;
                           else
                             while (section_name[idx]
                                 && (isdigit (section_name[idx])

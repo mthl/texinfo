@@ -1,3 +1,8 @@
+2003-11-25  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/index.c (cm_printindex): made Appendix matching locale
+	aware.
+
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/index.c (cm_printindex): also catch Appendix and A.1 kind
