@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
+@c $Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14578,15 +14578,16 @@ foo.texi}, or give the @samp{--pdf} option to @command{texi2dvi}.
 Adobe Systems some years ago for document interchange, based on their
 PostScript language.  A @uref{http://www.foolabs.com/xpdf/, PDF
 reader} for the X window system is freely available, as is the
-@uref{http://partners.adobe.com/asn/developer/technotes/, definition
+@uref{http://partners.adobe.com/asn/acrobat/sdk/public/docs/, definition
 of the file format}.  At present, there are no @samp{@@ifpdf} or
 @samp{@@pdf} commands as with the other output formats.
 
-Despite the `portable' in the name, PDF files are nowhere near as
-portable in practice as the plain ASCII formats (Info, HTML) that
-Texinfo supports (DVI portability is arguable).  They also tend to be
-much larger.  Nevertheless, a PDF file does preserve an actual printed
-document on a screen as faithfully as possible, so it has its place.
+PDF files require special software to be displayed, unlike the plain
+ASCII formats (Info, HTML) that Texinfo supports.  They also tend to
+be much larger than the DVI files output by @TeX{} by default.
+Nevertheless, a PDF file does preserve, in a self-contained way, an
+actual printed document on a screen as faithfully as possible, so it
+has its place.
 
 
 @node Obtaining TeX
@@ -18172,7 +18173,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
+$Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18238,7 +18239,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.98 2004-04-29 14:19:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
