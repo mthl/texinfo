@@ -1,3 +1,9 @@
+2003-11-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: in itemize, apply the command to the
+	inside of the paragraph or preformatted section.
+	titlefont don't open paragraphs.
+
 2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: keep texi as is in @image and protect html characters.
