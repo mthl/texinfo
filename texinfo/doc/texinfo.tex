@@ -571,7 +571,7 @@
 \def\vfilllimit{0.7}
 %
 \def\group{\begingroup
-  \ifnum\catcode13=\active \else
+  \ifnum\catcode`\^^M=\active \else
     \errhelp = \groupinvalidhelp
     \errmessage{@group invalid in context where filling is enabled}%
   \fi
@@ -2711,7 +2711,7 @@ width0pt\relax} \fi
 % losing inside @example, for instance.
 %
 \def\set{\begingroup\catcode` =10
-  \catcode`\-=12 \catcode`\_=12 % Allow - and _ in VAR.
+  \catcode`\-=\other \catcode`\_=\other % Allow - and _ in VAR.
   \parsearg\setxxx}
 \def\setxxx#1{\setyyy#1 \endsetyyy}
 \def\setyyy#1 #2\endsetyyy{%
@@ -4752,7 +4752,7 @@ width0pt\relax} \fi
 %
 % [Knuth] p. 380
 \def\uncatcodespecials{%
-  \def\do##1{\catcode`##1=12}\dospecials}
+  \def\do##1{\catcode`##1=\other}\dospecials}
 %
 % [Knuth] pp. 380,381,391
 % Disable Spanish ligatures ?` and !` of \tt font
@@ -4821,7 +4821,7 @@ width0pt\relax} \fi
 %
 % [Knuth] p. 382; only eat outer {}
 \begingroup
-  \catcode`[=1\catcode`]=2\catcode`\{=12\catcode`\}=12
+  \catcode`[=1\catcode`]=2\catcode`\{=\other\catcode`\}=\other
   \gdef\doverb{#1[\def\next##1#1}[##1\endgroup]\next]
 \endgroup
 %
