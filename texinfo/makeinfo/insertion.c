@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: insertion.c,v 1.2 2002-09-27 18:01:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -1150,7 +1150,13 @@ handle_verbatim_environment (find_end_verbatim)
 	  break;
 	}
 
-      add_char (character);
+      if (html && character == '&' && escape_html)
+	add_word ("&amp;");
+      else if (html && character == '<' && escape_html)
+	add_word ("&lt;");
+      else
+	add_char (character);
+
       input_text_offset++;
     }
 
