@@ -1,0 +1,46 @@
+$USE_ISO = 0;
+$ENCODING = 'utf-8';
+
+foreach my $key(%utf8_accents)
+{
+    $style_map{$key} = '&t2h_utf8_accent';
+}
+
+foreach my $key (%things_map)
+{
+    if (exists($utf8_map{$key}) and ($utf8_map{$key} ne ''))
+    {
+        $things_map{$key} = chr(hex($utf8_map{$key}));
+    }
+}
+
+sub t2h_utf8_accent($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return  chr(hex($Texi2HTML::Config::utf8_accents{$accent}->{$text}))
+        if (defined($Texi2HTML::Config::utf8_accents{$accent}->{$text}));
+    return $text . $accent if (defined($Texi2HTML::Config::accent_map{$accent}));
+    return $text . "''" if ($accent eq 'H');
+    return $text . '.' if ($accent eq 'dotaccent');
+    return $text . '*' if ($accent eq 'ringaccent');
+    return $text . '[' if ($accent eq 'tieaccent');
+    return $text . '(' if ($accent eq 'u');
+    return $text . '_' if ($accent eq 'ubaraccent');
+    return '.' . $text  if ($accent eq 'udotaccent');
+    return $text . '<' if ($accent eq 'v');
+    return $text . ',' if ($accent eq ','); 
+}
+
+
+$normal_text       = \&t2h_utf8_normal_text;
+
+sub t2h_utf8_normal_text($)
+{
+    my $text = shift;
+    $text =~ s/---/\x{2014}/g;
+    $text =~ s/--/\x{2013}/g;
+    $text =~ s/``/\x{201C}/g;
+    $text =~ s/''/\x{201D}/g;
+    return $text;
+}

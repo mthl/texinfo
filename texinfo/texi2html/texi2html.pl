@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.90 2003-12-05 19:14:51 dprice Exp $
+# $Id: texi2html.pl,v 1.91 2003-12-10 10:44:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -341,11 +341,14 @@ our %style_map_pre;
 our %paragraph_style;
 our %things_map;
 our %pre_map;
+our %utf8_map;
+our %ascii_map;
 our %iso_symbols;
 our %to_skip;
 our %css_map;
 our %special_list_commands;
 our %accent_letters;
+our %utf8_accents;
 our %special_accents;
 
 $toc_body                 = \&T2H_GPL_toc_body;
@@ -4271,6 +4274,7 @@ sub rearrange_elements()
         {
             my $node = $nodes{$key};
             next if ($node->{'external_node'} or $node->{'index_page'} or defined($node->{'file'}));
+# FIXME use the proposal explained on the texinfo list
             my $name = remove_texi($node->{'texi'});
             $name =~ s/[^\w\.\-]/-/g;
             my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
@@ -4524,6 +4528,164 @@ sub rearrange_elements()
         }
     }
 }
+
+# This function is used to construct a link name from a node name as 
+# described in the proposal I posted on texinfo-pretest.
+sub cross_manual_links()
+{
+    my %things_map_kept = %Texi2HTML::Config::things_map;
+    foreach my $key (keys(%Texi2HTML::Config::utf8_map))
+    {
+        if ($Texi2HTML::Config::utf8_map{$key} ne '')
+        {
+            $Texi2HTML::Config::things_map{$key} = '_' . lc($Texi2HTML::Config::utf8_map{$key});
+        }
+        $Texi2HTML::Config::things_map{'error'} = 'error-->';
+        $Texi2HTML::Config::things_map{'print'} = '-|';
+        $Texi2HTML::Config::things_map{'enddots'} = '....';
+        $Texi2HTML::Config::things_map{'TeX'} = 'TeX';
+    }
+    my %style_map_kept = %Texi2HTML::Config::style_map;
+    foreach my $key (keys(%Texi2HTML::Config::style_map))
+    {
+        if (!exists ($Texi2HTML::Config::utf8_accents{$key}))
+        {
+            $Texi2HTML::Config::style_map{$key} = '';
+        }
+        else
+        {
+            $Texi2HTML::Config::style_map{$key} = '&cross_manual_accent';
+        }
+         $Texi2HTML::Config::style_map{'sc'} = '&cross_manual_sc';
+         $Texi2HTML::Config::style_map{'email'} = '&cross_manual_email';
+    }
+    my %simple_map_kept = %Texi2HTML::Config::simple_map;
+    foreach my $key (keys(%Texi2HTML::Config::simple_map))
+    {
+        if ($key eq "*" or $key eq " " or $key eq "\t" or $key eq "\n")
+        {
+            $Texi2HTML::Config::simple_map{$key} = ' ';
+        }
+        elsif ($key eq '!' or $key eq '?' or $key eq '.' or $key eq '@' or $key eq '{' or $key eq '}')
+        {
+            $Texi2HTML::Config::simple_map{$key} = $key;
+        }
+    }
+    my $image_kept = $Texi2HTML::Config::image;
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
+    my $protect_text_kept = $Texi2HTML::Config::protect_text;
+    $Texi2HTML::Config::normal_text = \&cross_manual_normal_text;
+    $Texi2HTML::Config::protect_text = \&cross_manual_protect_text;
+    $Texi2HTML::Config::image = \&cross_manual_image;
+    foreach my $key (keys(%nodes))
+    {
+        my $node = $nodes{$key};
+        next if ($node->{'external_node'} or $node->{'index_page'});
+       # my $name = remove_texi($node->{'texi'});
+       # $name =~ s/[^\w\.\-]/-/g;
+        if (!defined($node->{'texi'}))
+        {
+            foreach my $key (keys(%$node))
+            {
+                #print STDERR "$key:$node->{$key}!!!\n";
+            }
+        }
+        else 
+        {
+            $node->{'cross_manual_target'} = substitute_line($node->{'texi'});
+            #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
+        }
+    }
+    %Texi2HTML::Config::things_map = %things_map_kept;
+    %Texi2HTML::Config::style_map = %style_map_kept;
+    %Texi2HTML::Config::simple_map = %simple_map_kept;
+    $Texi2HTML::Config::normal_text =  $normal_text_kept;
+    $Texi2HTML::Config::protect_text =  $protect_text_kept;
+    $Texi2HTML::Config::image =  $image_kept;
+}
+
+sub Texi2HTML::Config::cross_manual_accent($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return '_' . lc($Texi2HTML::Config::utf8_accents{$accent}->{$text})
+        if (defined($Texi2HTML::Config::utf8_accents{$accent}->{$text}));
+    return $text . $accent if (defined($Texi2HTML::Config::accent_map{$accent}));
+    return $text . "''" if ($accent eq 'H');
+    return $text . '.' if ($accent eq 'dotaccent');
+    return $text . '*' if ($accent eq 'ringaccent');
+    return $text . '[' if ($accent eq 'tieaccent');
+    return $text . '(' if ($accent eq 'u');
+    return $text . '_' if ($accent eq 'ubaraccent');
+    return '.' . $text  if ($accent eq 'udotaccent');
+    return $text . '<' if ($accent eq 'v');
+    return $text . ',' if ($accent eq ','); 
+}
+
+sub Texi2HTML::Config::cross_manual_sc
+{
+    return uc($_[0]);
+}
+
+
+sub Texi2HTML::Config::cross_manual_email($$)
+{
+    my $arg = shift;
+    my $command = shift;
+    my ($mail, $text);
+    ($mail, $text) = split /,\s*/, $arg;
+    $mail =~ s/\s*$//;
+    $mail =~ s/^\s*//;
+    return $text if ($text ne '');
+    return $mail;
+}
+
+sub cross_manual_image($$$$)
+{
+   my $file = shift;
+   my $base = shift;
+   my $preformatted = shift;
+   my $file_name = shift;
+   return $base;
+}
+
+sub cross_manual_protect_text($)
+{
+   my $text = shift;
+   $text = normalise_space($text);
+   my $result = '';
+   while ($text ne '')
+   {
+        if ($text =~ s/^([A-Za-z0-9]+)//o)
+        {
+             $result .= $1;
+        }
+        elsif ($text =~ s/^ //o)
+        {
+             $result .= '-';
+        }
+        elsif ($text =~ s/^(.)//o)
+        {
+             if (exists($Texi2HTML::Config::ascii_map{$1}))
+             {
+                  $result .= '_' . lc($Texi2HTML::Config::ascii_map{$1});
+             }
+        }
+        else
+        {
+             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
+             sleep 1;
+        }    
+   }
+   
+   return $result;
+}
+
+sub cross_manual_normal_text($)
+{
+    my $text = shift;
+    return $text;
+}        
 
 # find parent element which is a top element, or a node within the top section
 sub get_top($)
@@ -10035,7 +10197,7 @@ sub do_index_entry_label($)
 # decompose a decimal number on a given base. The algorithm looks like
 # the division with growing powers (division suivant les puissances
 # croissantes) ?
-sub decompose ($$)
+sub decompose($$)
 {  
     my $number = shift;
     my $base = shift;
@@ -10113,6 +10275,8 @@ if ($T2H_DEBUG & $DEBUG_TEXI)
 exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
 rearrange_elements();
 do_names();
+# FIXME use that when we use it anywhere. 
+cross_manual_links();
 if (@{$region_lines{'documentdescription'}})
 {
     $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 

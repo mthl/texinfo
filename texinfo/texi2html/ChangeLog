@@ -1,3 +1,13 @@
+2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, TODO: add hashes for unicode encodings
+	of accented letter and characters.
+	A function cross_manual_links can expand node name according to the 
+	proposal I made on the texinfo-pretest list (currently unused).
+
+	* examples/utf8.init: add an init file for outputting of utf8 encoded
+	characters.
+
 2003-12-05  Derek Price  <derek@ximbiot.com>
 
 	* texi2html.pl: Suggest `--help' rather than `-help' in error messages.
