@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.4 2002-10-26 23:12:28 karl Exp $
+   $Id: html.c,v 1.5 2002-10-27 23:52:54 wl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -174,6 +174,9 @@ insert_html_tag (start_or_end, tag)
      int start_or_end;
      char *tag;
 {
+  char *old_tag = NULL;
+  int do_return = 0;
+
   if (!paragraph_is_open && (start_or_end == START))
     {
       /* Need to compensate for the <p> we are about to insert, or
@@ -183,30 +186,29 @@ insert_html_tag (start_or_end, tag)
       add_word ("<p>");
     }
 
-  if (start_or_end == START)
-    {
-      if (htmlstack
-          && (strcmp (htmlstack->tag, tag) == 0))
-        return;
-    }
-  else
-    {
-      if (htmlstack && htmlstack->next
-          && (strcmp (htmlstack->next->tag, tag) == 0))
-        return;
-    }
+  if (start_or_end != START)
+    pop_tag (tag);
+
+  if (htmlstack)
+    old_tag = htmlstack->tag;
+
+  if (htmlstack
+      && (strcmp (htmlstack->tag, tag) == 0))
+    do_return = 1;
 
   if (start_or_end == START)
+    push_tag (tag);
+
+  if (do_return)
+    return;
+
+  /* texinfo.tex doesn't support more than one font attribute
+     at the same time.  */
+  if ((start_or_end == START) && old_tag && *old_tag)
     {
-      /* texinfo.tex doesn't support more than one font attribute
-         at the same time.  */
-      if (htmlstack && *(htmlstack->tag))
-        {
-          add_word ("</");
-          add_word (htmlstack->tag);
-          add_char ('>');
-        }
-      push_tag (tag);
+      add_word ("</");
+      add_word (old_tag);
+      add_char ('>');
     }
 
   if (*tag)
@@ -218,15 +220,11 @@ insert_html_tag (start_or_end, tag)
       add_char ('>');
     }
 
-  if (start_or_end != START)
+  if ((start_or_end != START) && old_tag && *old_tag)
     {
-      pop_tag ();
-      if (htmlstack && *(htmlstack->tag))
-        {
-          add_char ('<');
-          add_word (htmlstack->tag);
-          add_char ('>');
-        }
+      add_char ('<');
+      add_word (old_tag);
+      add_char ('>');
     }
 }
 

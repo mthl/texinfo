@@ -1,3 +1,8 @@
+2002-10-27  Werner Lemberg  <wl@gnu.org>
+
+	* makeinfo/html.c (insert_html_tag): Fix handling of nested,
+	identical tags.
+
 2002-10-27    <karl@gnu.org>
 
 	* configure.ac (AM_INIT_AUTOMAKE): add dist-bzip2 option.
