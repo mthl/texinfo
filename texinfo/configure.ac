@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.45 2004-11-19 13:08:46 karl Exp $
+# $Id: configure.ac,v 1.46 2004-12-02 16:33:17 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -200,7 +200,7 @@ AC_ARG_ENABLE(install-warnings,
       no) install_warnings=false ;;
        *) AC_MSG_ERROR(bad value ${enableval} for --enable-install-warnings) ;;
    esac],
-   [install_warnings=${enable_install_warnings-true}])
+   [install_warnings=true])
 AM_CONDITIONAL(INSTALL_WARNINGS,
    test x"$install_warnings" = xtrue || test x"$install_warnings" = xyes)
 

@@ -1,3 +1,7 @@
+2004-12-02  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (install-warnings): simplify default case.  From te.
+
 2004-12-01  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.7.90.
