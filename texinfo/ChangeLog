@@ -1,5 +1,20 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/xml.h:
+	* makeinfo/xml.c (xml_get_assoc_for_id, xml_associate_title_with_id):
+	new functions.
+	(xml_insert_indexentry): call execute_string(xref) instead of creating
+	references directly.
+
+	* makeinfo/makeinfo.c (cm_xref): check to see if xref is being made to
+	an @unnumbered, and only one argument is given.  issue a warning, use
+	@unnumbered's title as the third argument.
+
+	* makeinfo/sectioning.c (sectioning_underscore): keep track of
+	unnumbered sections, and their node names.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/sectioning.c (sectioning_underscore): for Docbook, always
 	provide label attribute for chapter and unnumbered.
 	(handle_enum_increment): simplified enumeration constraints, and

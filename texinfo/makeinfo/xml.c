@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.36 2003-11-19 00:49:57 dirt Exp $
+   $Id: xml.c,v 1.37 2003-11-21 15:25:28 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -946,6 +946,48 @@ xml_open_section (level, name)
     xml_node_level = level;
 }
 
+/* To be able to properly xref unnumbered sections with only one parameter,
+   we have to keep track of their titles and use as the missing parameters.  */
+typedef struct
+{
+  char *id;
+  char *title;
+} UNNUMBERED_LABEL;
+
+static UNNUMBERED_LABEL **unnumbered_labels = NULL;
+static int unnumbered_assoc_count = 0;
+
+char *
+xml_get_assoc_for_id (id)
+  char *id;
+{ /* Return the title, if its id matches the parameter.  */
+  int i;
+  for (i = 0; i < unnumbered_assoc_count; i++)
+    if (unnumbered_labels[i] && STREQ (id, unnumbered_labels[i]->id))
+      return unnumbered_labels[i]->title;
+  /* Tough luck.  */
+  return "";
+}
+
+void
+xml_associate_title_with_id (nodename, title)
+  char *nodename;
+  char *title;
+{
+  /* Check to see if this node already has an associated title with it.  */
+  if (unnumbered_assoc_count && strlen (xml_get_assoc_for_id (xml_id (nodename))))
+    return;
+
+  unnumbered_labels = (UNNUMBERED_LABEL **) xrealloc (unnumbered_labels,
+      (unnumbered_assoc_count + 1) * sizeof (UNNUMBERED_LABEL *));
+
+  /* Associated Titles.  */
+  unnumbered_labels[unnumbered_assoc_count] = xmalloc (sizeof (UNNUMBERED_LABEL));
+  unnumbered_labels[unnumbered_assoc_count]->id = xml_id (nodename);
+  unnumbered_labels[unnumbered_assoc_count]->title = xstrdup (title);
+  unnumbered_assoc_count++;
+}
+
 void
 xml_start_menu_entry (tem)
     char *tem;
@@ -1670,8 +1712,9 @@ xml_insert_indexentry (entry, node)
       execute_string (entry);
     }
   add_word_args (", %s", _("see "));
-  xml_insert_element_with_attribute (XREF, START, "linkend=\"%s\"", xml_id (node));
-  xml_insert_element (XREF, END);
+
+  /* Don't link to @unnumbered sections directly.  */
+  execute_string ("%cxref{%s}", COMMAND_PREFIX, xstrdup (node));
 
   if (primary)
     {

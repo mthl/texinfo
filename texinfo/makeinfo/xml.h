@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.14 2003-11-17 10:10:00 dirt Exp $
+   $Id: xml.h,v 1.15 2003-11-21 15:25:28 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -94,5 +94,6 @@ enum xml_element
 
 extern void xml_insert_element (/* int name, int arg */);
 extern char *xml_id (/* char *id */);
+extern char *xml_get_assoc_for_id (/* char *id */);
 
 #endif /* XML_H */
