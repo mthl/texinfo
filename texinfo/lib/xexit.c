@@ -1,5 +1,5 @@
 /* xexit.c -- exit with attention to return values and closing stdout.
-   $Id: xexit.c,v 1.2 2003-05-18 20:01:21 karl Exp $
+   $Id: xexit.c,v 1.3 2003-05-18 20:01:51 karl Exp $
 
    Copyright (C) 1999, 2003 Free Software Foundation, Inc.
 
@@ -50,12 +50,12 @@ xexit (exit_status)
 {
   if (ferror (stdout))
     {
-      fputs (stderr, "ferror on stdout");
+      fputs (stderr, _("ferror on stdout"));
       exit_status = 1;
     }
   else if (fflush (stdout) != 0)
     {
-      fputs (stderr, "fflush error on stdout");
+      fputs (stderr, _("fflush error on stdout"));
       exit_status = 1;
     }
 
