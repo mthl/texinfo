@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.7 2002-10-26 23:12:28 karl Exp $
+   $Id: cmds.c,v 1.8 2002-10-31 22:06:28 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -22,6 +22,7 @@
 #include "defun.h"
 #include "files.h"
 #include "footnote.h"
+#include "html.h"
 #include "insertion.h"
 #include "lang.h"
 #include "macro.h"
@@ -893,7 +894,17 @@ cm_titlefont (arg)
   if (xml)
     xml_insert_element (TITLEFONT, arg);
   else
-  not_fixed_width (arg);
+   {
+     not_fixed_width (arg);
+     if (html)
+	{
+	  html_title_written = 1; /* suppress title from @settitle */
+	  if (arg == START)
+	    add_word ("<h1><span class=\"titlefont\">");
+	  else
+	    add_word ("</span></h1>\n");
+	}
+   }
 }
 
 /* Various commands are no-op's. */
