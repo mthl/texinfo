@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
+@c $Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14386,11 +14386,9 @@ Format the current buffer for Info.@refill
 @findex makeinfo-buffer
 @end table
 
-When you invoke either @code{makeinfo-region} or
-@code{makeinfo-buffer}, Emacs prompts for a file name, offering the
-name of the visited file as the default.  You can edit the default
-file name in the minibuffer if you wish, before pressing @key{RET} to
-start the @code{makeinfo} process.@refill
+When you invoke @code{makeinfo-region} the output goes to a temporary
+buffer.  When you invoke @code{makeinfo-buffer} output goes to the
+file set with @code{@@setfilename} (@pxref{setfilename}).
 
 The Emacs @code{makeinfo-region} and @code{makeinfo-buffer} commands
 run the @code{makeinfo} program in a temporary shell buffer.  If
@@ -16786,7 +16784,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
+$Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16851,7 +16849,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
+@comment $Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
