@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: txitextest,v 1.1 2003-01-31 16:26:23 karl Exp $
+# $Id: txitextest,v 1.2 2003-02-01 13:26:26 karl Exp $
 # Test texinfo.tex changes by running various manuals through with an
 # old version, saving the .ps result from dvips, doing the same with a
 # new version, and comparing.  Idea from Stepan Kasal.
@@ -11,12 +11,13 @@ tsrc=/u/texinfo/src
 PATH=$tsrc/util:$PATH
 
 tdoc=$tsrc/doc
-manuals="$tdoc/texinfo.txi $tdoc/info.texi $tdoc/info-stnd.texi"
+default_manuals="$tdoc/texinfo.txi $tdoc/info.texi $tdoc/info-stnd.texi"
 
 olddir=$HOME/gnu/src/gnulib/config
 newdir=$tdoc
 tempdir=/u/texinfo/@tests/testdir
 full=false
+manuals=
 
 while test $# -gt 0; do
   case $1 in
@@ -30,6 +31,9 @@ while test $# -gt 0; do
   shift
 done
 
+test -z "$manuals" && manuals=$default_manuals
+initial_dir=`pwd`
+
 cd $tempdir || exit 1
 rm -f *
 
@@ -41,6 +45,7 @@ run_tex() \
 
 for manual in $manuals; do
   mandir=`dirname $manual`
+  test $mandir = . && mandir=$initial_dir
   manual_base=`basename "$manual" | sed 's/\.[^.]*$//'`
   
   rm -f $manual_base.* texinfo.tex
@@ -48,15 +53,18 @@ for manual in $manuals; do
 
   if $full; then
     # instead of comparing, do full test of just the new texinfo.tex.
-    set -x
+    echo "$0: testing $manual_base... (tex)"
     texi2dvi $manual
+    echo "$0: testing $manual_base... (pdf)"
     texi2dvi --pdf $manual
    
   else
+    echo "$0: testing $manual_base... (new)"
     run_tex
     dvips $manual_base -o || exit 1
     mv $manual_base.ps new.$manual_base.ps
 
+    echo "$0: testing $manual_base... (old)"
     rm -f $manual_base.* texinfo.tex
     ln -s $olddir/texinfo.tex texinfo.tex
     run_tex

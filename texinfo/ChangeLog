@@ -1,5 +1,24 @@
 2003-01-31    <karl@gnu.org>
 
+	* doc/texinfo.tex (\groupbox): \newbox.(\vfilllimit): new \def.
+	(\group): insert an explicit \page if the group is
+	big, and doesn't fit on the current page.
+	Otherwise, the previous page gets stretched unreasonably.
+	From: Werner LEMBERG <wl@gnu.org>,
+	31 Jan 2003 19:19:33 +0100.
+
+	* doc/texinfo.tex (\defargscommonending): insert \penalty10002.
+	(\parsebodycommon): check for \penalty10002 to
+	allow a breakpoint between @def's, not 10000.
+
+	* doc/texinfo.tex (\defargscommonending): new macro.
+	(\defunargs, etc.): call it, instead of repeating code.
+	(No functional change.)
+
+	* info/filesys.c (extract_colon_unit): return last colon unit
+	before claiming we're done.  Report from: Alexandre Duret-Lutz
+	<duret_g@lrde.epita.fr>, 31 Jan 2003 18:18:22 +0100.
+
 	* configure.ac: version 4.4.
 
 2003-01-30    <karl@gnu.org>
