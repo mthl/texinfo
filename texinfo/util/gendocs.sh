@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.6 2003-11-04 13:45:56 karl Exp $
+# $Id: gendocs.sh,v 1.7 2003-11-23 14:11:27 karl Exp $
 # 
 # Copyright (C) 2003 Free Software Foundation, Inc.
 #
@@ -35,7 +35,7 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendoc
 : ${GENDOCS_TEMPLATE_DIR="."}
 unset CDPATH
 
-rcs_revision='$Revision: 1.6 $'
+rcs_revision='$Revision: 1.7 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version
@@ -135,8 +135,6 @@ if test ! -r $GENDOCS_TEMPLATE_DIR/gendocs_template; then
 fi
 
 echo Generating output formats for $srcfile
-# remove any old junk
-rm -rf $outdir/
 
 echo Generating info files...
 ${MAKEINFO} -o $PACKAGE.info $srcfile
@@ -192,10 +190,13 @@ else
 fi
 (
   cd ${split_html_dir} || exit 1
-  tar -czf ../$outdir/$PACKAGE_html_node.tar.gz -- *.html
+  tar -czf ../$outdir/${PACKAGE}_html_node.tar.gz -- *.html
 )
-html_node_tgz_size="`calcsize $outdir/$PACKAGE_html_node.tar.gz`"
-mv ${split_html_dir} $outdir/html_node
+html_node_tgz_size="`calcsize $outdir/${PACKAGE}_html_node.tar.gz`"
+rm -f $outdir/html_node/*.html
+mkdir -p $outdir/html_node/
+mv ${split_html_dir}/*.html $outdir/html_node/
+rmdir ${split_html_dir}
 
 echo Making .tar.gz for sources...
 srcfiles=`ls *.texinfo *.texi *.txi 2>/dev/null`

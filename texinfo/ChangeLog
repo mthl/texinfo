@@ -19,6 +19,9 @@
 
 2003-11-22  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\tocentry): same as \entry, no second 1pt of
+	stretch.  And a couple doc fixes.
+
 	* doc/texinfo.txi (Conventions): finally, get rid of @vskip
 	-@baselineskip kludge, we handle index entries after @item's now.
 
