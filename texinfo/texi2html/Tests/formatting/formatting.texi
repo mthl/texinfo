@@ -254,7 +254,18 @@ def--fn
 @end deffn
  
 @deffn fset @var{i} a g
-with @@var@{i@} on the line
+@deffnx {cmde} truc {}
+@deffnx Command {log trap} {}
+@deffnx Command { log trap1} {}  
+@deffnx Command {log trap2 } {}
+@deffnx cmde @b{id ule} truc
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@deffnx @b{id @samp{i} ule}    
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+Various deff lines
 @end deffn
 
 @defvr c--ategory d--efvr_name

@@ -1,5 +1,13 @@
 2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl, texi2html.init: more robust handling of deffn lines.
+	The argument may be in bracket, therefore there is no difference
+	beteen arg and other item specification for def like commands.
+	* Tests: test for more deffn lines, and for @-commands in floats.
+	* doc/texi2html.texi: update.
+
+2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: close quotes within html elements. Apply commands
 	to @item lines in table after leading and trailing spaces removal.
 	* Tests: regenerate.

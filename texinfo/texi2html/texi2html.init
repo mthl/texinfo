@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.79 2005-01-15 23:45:30 pertusus Exp $
+# $Id: texi2html.init,v 1.80 2005-01-31 00:44:40 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2627,15 +2627,15 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
 
 %def_map = (
     # basic commands
-    'deffn', [ 'f', '{category', '{name', 'arg' ],
-    'defvr', [ 'v', '{category', '{name' ],
-    'deftypefn', [ 'f', '{category', '{type', '{name', 'arg' ],
-    'deftypeop', [ 'f', '{category', '{class' , '{type', '{name', 'arg' ],
-    'deftypevr', [ 'v', '{category', '{type', '{name' ],
-    'defcv', [ 'v', '{category', '{class' , '{name' ],
-    'deftypecv', [ 'v', '{category', '{class' , '{type', '{name' ],
-    'defop', [ 'f', '{category', '{class' , '{name', 'arg' ],
-    'deftp', [ 't', '{category', '{name', 'arg' ],
+    'deffn', [ 'f', 'category', 'name', 'arg' ],
+    'defvr', [ 'v', 'category', 'name' ],
+    'deftypefn', [ 'f', 'category', 'type', 'name', 'arg' ],
+    'deftypeop', [ 'f', 'category', 'class' , 'type', 'name', 'arg' ],
+    'deftypevr', [ 'v', 'category', 'type', 'name' ],
+    'defcv', [ 'v', 'category', 'class' , 'name' ],
+    'deftypecv', [ 'v', 'category', 'class' , 'type', 'name' ],
+    'defop', [ 'f', 'category', 'class' , 'name', 'arg' ],
+    'deftp', [ 't', 'category', 'name', 'arg' ],
     # basic x commands
     # shortcuts
     # i18n

@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.122 2005-01-16 01:18:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.123 2005-01-31 00:44:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6901,24 +6901,30 @@ sub top_stack($)
 }
 
 # return the next element with balanced {}
-sub next_bracketed ($$)
+sub next_bracketed($$)
 {
     my $line = shift;
     my $line_nr = shift;
     my $opened_braces = 0;
     my $result = '';
+    my $spaces;
+    if ($line =~ /^(\s*)$/)
+    {
+        return ('','',$1);
+    }
     while ($line !~ /^\s*$/)
     {
 #print STDERR "next_bracketed($opened_braces): $result !!! $line";
         if (!$opened_braces)
-        {
-            $line =~ s/^\s*//;
+        { # beginning of item
+            $line =~ s/^(\s*)//;
+            $spaces = $1;
             #if ($line =~ s/^([^\{\}\s]+)//)
-            if ($line =~ s/^([^\{\}]+?)(\s)/$2/ or $line =~ s/^([^\{\}]+?)$//)
+            if ($line =~ s/^([^\{\}]+?)(\s+)/$2/ or $line =~ s/^([^\{\}]+?)$//)
             {
-                my $text = $1;
-                $text =~ s/\s*$//;
-                return ($text, $line);
+                $result = $1;
+                $result =~ s/\s*$//;
+                return ($result, $line, $spaces);
             }
             elsif ($line =~ s/^([^\{\}]+?)([\{\}])/$2/)
             {
@@ -6929,7 +6935,7 @@ sub next_bracketed ($$)
         {
             $result .= $1;
         }
-        if ($line =~ s/^(\{|\})//)
+        if ($line =~ s/^([\{\}])//)
         {
             my $brace = $1;
             $opened_braces++ if ($brace eq '{');
@@ -6942,13 +6948,13 @@ sub next_bracketed ($$)
                 next;
             }
             $result .= $brace;
-            return ($result, $line) if ($opened_braces == 0);
+            return ($result, $line, $spaces) if ($opened_braces == 0);
         }
     }
     if ($opened_braces)
     {
         echo_error("'{' not closed in specification", $line_nr);
-        return ($result . ( '}' x $opened_braces), '');
+        return ($result . ( '}' x $opened_braces), '', $spaces);
     }
     print STDERR "BUG: at the end of next_bracketed\n";
     return undef;
@@ -7278,10 +7284,13 @@ sub parse_def($$$)
     while (@args)
     {
         my $arg = shift @args;
-        if ($arg =~ s/^\{//)
+        if (defined($arg))
         {
+            # backward compatibility, it was possible to have a { in front.
+            $arg =~  s/^\{//;
             my $item;
-            ($item, $line) = next_bracketed($line, $line_nr);
+            my $spaces;
+            ($item, $line,$spaces) = next_bracketed($line, $line_nr);
             last if (!defined($item));
             $item =~ s/^\{(.*)\}$/$1/ if ($item =~ /^\{/);
             if ($arg eq 'category')
@@ -7299,6 +7308,10 @@ sub parse_def($$$)
             elsif ($arg eq 'class')
             {
                 $class = $item;
+            }
+            elsif ($arg eq 'arg')
+            { 
+                $line = $spaces . $item . $line;
             }
         }
         else
@@ -7413,7 +7426,8 @@ sub parse_multitable($$)
         my $line_orig = $line;
         while ($line !~ /^\s*$/)
         {
-            ($element, $line) = next_bracketed ($line, $line_nr);
+            my $spaces;
+            ($element, $line, $spaces) = next_bracketed($line, $line_nr);
             if ($element =~ /^\{/)
             {
                 $table_width++; 
@@ -8441,6 +8455,7 @@ sub scan_texi($$$$;$)
 
     while(1)
     {
+        # scan_texi
         #print STDERR "WHILE:$_";
         #dump_stack($text, $stack, $state);
 
@@ -9052,7 +9067,7 @@ sub scan_structure($$$$;$)
 
     while(1)
     {
-        #
+        # scan structure
 	#print STDERR "WHILE\n";
 	#dump_stack($text, $stack, $state);
 
@@ -9621,8 +9636,9 @@ sub scan_line($$$$;$)
 
     while(1)
     {
-	    #print STDERR "WHILE: $_";
-#        dump_stack($text, $stack, $state);
+        # scan_line
+        #print STDERR "WHILE: $_";
+        #dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
         {
@@ -10472,15 +10488,18 @@ sub scan_line($$$$;$)
                 }
                 chomp $leading_text;
             }
+            # a brace closed, at the end of line. If in cmd_line we remove
+            # the end of line, such that the end of line is detected
+            elsif ($state->{'cmd_line'} and /^$/)
+            {
+                chomp $_;
+            }
             add_prev($text, $stack, do_text($leading_text, $state));
 #if ($state->{'cmd_line'}){print STDERR "CMD_LINE\n"; dump_stack($text, $stack, $state);}
             if (defined($brace) and ($brace eq '{'))
             {
                 add_prev($text, $stack, '{');
-                if ($state->{'keep_texi'} or $state->{'remove_texi'})
-                {
-                }
-                else
+                unless ($state->{'keep_texi'} or $state->{'remove_texi'})
                 {
                     echo_error ("'{' without macro before: $_", $line_nr);
                 }
@@ -10489,19 +10508,19 @@ sub scan_line($$$$;$)
             { # A @macroname{ ...} is closed
                 if (@$stack and defined($stack->[-1]->{'style'}))
                 {
-                    my $style = pop @$stack;
-                    my $result;
-                    my $macro = $style->{'style'};
-                    # that command is closed by an end of line
-                    if ($macro eq 'cmd_line' and defined($brace) and ($_ ne ''))
+                    my $macro = $stack->[-1]->{'style'};
+                    if (($macro eq 'cmd_line') and  $brace and ($brace eq '}'))
                     {
-                         #dump_stack($text, $stack, $state);
-                         echo_error ("A '}' without opening '{' before: $_", $line_nr);
-                         add_prev($text, $stack, '}') if ($state->{'keep_texi'});
+                         add_prev($text, $stack, '}');
+                         unless ($state->{'keep_texi'} or $state->{'remove_texi'})
+                         {
+                             echo_error ("A '}' without opening '{' before: $_", $line_nr);
+                         }
                          next;
                     }
+                    my $style = pop @$stack;
+                    my $result;
                     if (ref($style_map_ref->{$macro}) eq 'HASH')
-                    #if (exists($style_args{$macro}))
                     {
                          push (@{$style->{'args'}}, $style->{'text'});
                          $style->{'fulltext'} .= $style->{'text'};
@@ -10563,6 +10582,7 @@ sub scan_line($$$$;$)
                              if (! $category) # category cannot be 0
                              {
                                   echo_warn("Bad definition line $_", $line_nr);
+                                  delete $state->{'cmd_line'};
                                   return '';
                              }
                              my $index_label = do_index_entry_label ($state,$line_nr) if ($name ne '');
@@ -10582,7 +10602,14 @@ sub scan_line($$$$;$)
                 }
                 else
                 {
-                    echo_error ("'}' without opening '{' before: $_", $line_nr);
+                    echo_error("'}' without opening '{' before: $_", $line_nr);
+                    # we cannot be in cmd_line as the stack is empty
+                    if ($state->{'cmd_line'})
+                    {
+                        print STDERR "Bug: state->{'cmd_line'} true but stack empty\n";
+                        dump_stack($text, $stack, $state);
+                        delete $state->{'cmd_line'};
+                    }
                     add_prev($text, $stack, '}') if ($state->{'keep_texi'});
                 }
             }
@@ -11267,7 +11294,7 @@ sub close_stack($$$$;$$$)
     
     # cancel paragraph states
     $state->{'paragraph_style'} = [ '' ] unless (defined($close_paragraph) or defined($format));
-    #print STDERR "sub close_statck\n";
+    #print STDERR "sub_close_stack\n";
     return $new_stack unless (@$stack);
     
     my $stack_level = $#$stack + 1;

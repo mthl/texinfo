@@ -1,5 +1,27 @@
 This file records noteworthy changes.
 
+1.74 ()
+
+* COMPATIBILITY
+  -------------
+
+* The argument on def like commands line (@deffn and friends) may be 
+  bracketed, therefore there is no difference between this element and 
+  others. There is no need of items with { in front in the %def_map
+  anymore.
+
+* NEW FEATURES
+  ------------
+
+* More @-commands are available to the user, that were ignored before.
+  Most of these @-commands are those related with structure or printed 
+  output.
+
+* BUG FIXES
+  ---------
+
+* many deffn and friends line parsing bugs fixed.
+
 1.72 (December 29 2004)
 
 * NEW FEATURES

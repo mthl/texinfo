@@ -2722,15 +2722,14 @@ with the index type (@samp{f} for function, @samp{v} for variable,
 @samp{t} for type).
 
 The remaining of the array describes how to interpret the text following
-the definition command on the definition command line. If the entry begins
-with @samp{@{}, then the corresponding item is the next bracketed item
-or the next word. The remaining of the entry word specify what corresponds
-with this item. Currently the word may be @samp{category}, @samp{name},
-@samp{type}, @samp{class} and @samp{arg}.
+the definition command on the definition command line. 
+The entry item specify what corresponds
+with the next bracketed item or word. Currently the possibilities are
+@samp{category}, @samp{name}, @samp{type}, @samp{class} and @samp{arg}.
 
 For example if we have
 @example
-def_map@{'defvr'@} = [ 'v', '@{category', '@{name' ];
+def_map@{'defvr'@} = [ 'v', 'category', 'name' ];
 @end example
 
 The first bracketed item following @code{@@defvr} is considered
