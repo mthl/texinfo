@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.2 2002-10-09 16:32:40 karl Exp $
+   $Id: html.c,v 1.3 2002-10-16 14:15:28 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -48,17 +48,17 @@ html_output_head ()
   if (document_encoding_code != no_encoding)
     add_word_args ("; charset=%s",
                    encoding_table[document_encoding_code].ecname);
-  add_word ("\" />\n");
+  add_word ("\">\n");
 
   if (!document_description)
     document_description = html_title;
 
-  add_word_args ("<meta name=\"description\" content=\"%s\" />\n",
+  add_word_args ("<meta name=\"description\" content=\"%s\">\n",
                  document_description);
-  add_word_args ("<meta name=\"generator\" content=\"makeinfo %s\" />\n",
+  add_word_args ("<meta name=\"generator\" content=\"makeinfo %s\">\n",
                  VERSION);
   add_word ("<link href=\"http://www.gnu.org/software/texinfo/\" \
-rel=\"generator-home\" />\n");
+rel=\"generator-home\">\n");
 
   if (copying_text)
     { /* copying_text has already been fully expanded in
