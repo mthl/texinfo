@@ -1,5 +1,20 @@
 2002-09-26    <karl@gnu.org>
 
+	* lib/Makefile.am (lintxi_a_SOURCES): include xalloc.h.
+
+	* doc/Makefile.am (EXTRA_DIST): skip macro.texi and userdoc.texi now.
+	(common_mandeps): new var.
+	(*.1): use that, and depend on the source files with the version strings
+	instead of the binaries.  Suggestion from Alexandre.
+
+	* util/Makefile.am (bin_PROGRAMS, ginstall_info_SOURCES,
+	transform): build as ginstall-info, to avoid clashing with the
+	install-info target inserted by Automake.  (Suggestion from Akim.)
+
+	* Makefile.am (distcleancheck_listfiles): new definition so
+	distcheck doesn't complain about our generated files in info/,
+	which are conditionalized on TEXINFO_MAINT.
+
 	* lib/gettext.h: update from gettext 0.11.5.
 
 2002-09-24    <karl@gnu.org>
