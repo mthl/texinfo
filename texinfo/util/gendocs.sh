@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.3 2003-10-26 11:56:12 karl Exp $
+# $Id: gendocs.sh,v 1.4 2003-10-28 22:37:46 karl Exp $
 # 
 # Copyright (C) 2003 Free Software Foundation, Inc.
 #
@@ -29,6 +29,54 @@ srcdir=`pwd`
 scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs.sh"
 templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs_template"
 
+rcs_revision='$Revision: 1.4 $'
+rcs_version=`set - $rcs_revision; echo $2`
+program=`echo $0 | sed -e 's!.*/!!'`
+version="gendocs.sh $rcs_version
+
+Copyright (C) 2003 Free Software Foundation, Inc.
+There is NO warranty.  You may redistribute this software
+under the terms of the GNU General Public License.
+For more information about these matters, see the files named COPYING."
+
+usage="Usage: $prog [OPTION]... PACKAGE MANUAL-TITLE
+
+Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
+
+Options:
+  -o OUTDIR   write to OUTDIR, instead of manual/.
+  --help      display this help and exit successfully.
+  --version   display version information and exit successfully.
+
+Simple example: $prog emacs \"GNU Emacs Manual\"
+
+Typical sequence:
+  cd YOURPACKAGESOURCE/doc
+  wget \"$scripturl\"
+  wget \"$templateurl\"
+  $prog YOURMANUAL \"GNU YOURMANUAL - One-line description\"
+
+Output will be in a new subdirectory \"manual\" (by default, use -o OUTDIR
+to override).  Move all the new files into your web CVS tree, as
+explained in the Web Pages node of maintain.texi:
+http://www.gnu.org/prep/maintain_toc.html
+
+MANUAL-TITLE is included as part of the HTML <title> of the overall
+manual/index.html file.  It should include the name of the package being
+documented.  manual/index.html is created by substitution from the file
+$GENDOCS_TEMPLATE_DIR/gendocs_template; you can modify this generic
+version for your own purposes, if you like.
+
+If you have several manuals, you'll need to run this script several
+times with different YOURMANUAL values, specifying a different output
+directory with -o each time.  Then write (by hand) an overall index.html
+with links to them all.
+
+You can set the environment variables MAKEINFO, TEXI2DVI, and DVIPS to
+control the programs that get executed, and GENDOCS_TEMPLATE_DIR to
+control where the gendocs_template file is looked for.
+"
+
 : ${MAKEINFO="makeinfo"}
 : ${TEXI2DVI="texi2dvi"}
 : ${DVIPS="dvips"}
@@ -41,47 +89,31 @@ calcsize()
   echo $size
 }
 
-curdate="`date '+%B %d, %Y'`"
+outdir=manual
+PACKAGE=
+MANUAL_TITLE=
 
-if test $# -eq 2; then
-  PACKAGE=$1
-  MANUAL_TITLE=$2
-  echo Generating the manual for $PACKAGE
-else
-  cat <<END_HELP
-Usage: $prog PACKAGE MANUAL_TITLE
-
-Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
-Example: $prog emacs \"GNU Emacs Manual\"
-
-Typical sequence:
-  cd YOURPACKAGESOURCE/doc
-  wget "$scripturl"
-  wget "$templateurl"
-  $prog YOURMANUAL "GNU YOURMANUAL - One-line description"
-
-Output will be in a new subdirectory "manual".  Move all the new files
-into your web CVS tree, as explained in the Web Pages node of maintain.texi:
-http://www.gnu.org/prep/maintain_toc.html
-
-MANUAL_TITLE is included as part of the HTML <title> of the overall
-manual/index.html file.  It should include the name of the package being
-documented.  manual/index.html is created by substitution from the file
-$GENDOCS_TEMPLATE_DIR/gendocs_template; you can modify this generic
-version for your own purposes, if you like.
-
-If you have several manuals, you'll need to run this script several
-times with different YOURMANUAL values, and move the contents of the
-resulting manual/ directory after each run to a different subdirectory
-on your web pages.  Then make (by hand) an overall index.html with links
-to them all.
-
-You can set the environment variables MAKEINFO, TEXI2DVI, and DVIPS to
-control the programs that get executed, and GENDOCS_TEMPLATE_DIR to
-control where the gendocs_template file is looked for.
-END_HELP
-  exit 1
-fi
+while test $# -gt 0; do
+  case $1 in
+    --help) echo "$usage"; exit 0;;
+    --version) echo "$version"; exit 0;;
+    -o) shift; outdir=$1;;
+    -*)
+      echo "$0: Unknown or ambiguous option \`$1'." >&2
+      echo "$0: Try \`--help' for more information." >&2
+      exit 1;;
+    *)
+      if test -z "$PACKAGE"; then
+        PACKAGE=$1
+      elif test -z "$MANUAL_TITLE"; then
+        MANUAL_TITLE=$1
+      else
+        echo "$0: extra non-option argument \`$1'." >&2
+        exit 1
+      fi;;
+  esac
+  shift
+done
 
 if test -s $srcdir/$PACKAGE.texinfo; then
   srcfile=$srcdir/$PACKAGE.texinfo
@@ -100,15 +132,15 @@ if test ! -r $GENDOCS_TEMPLATE_DIR/gendocs_template; then
   exit 1
 fi
 
-echo Creating manual for the package $PACKAGE
+echo Generating output formats for $srcfile
 # remove any old junk
-rm -rf manual
+rm -rf $outdir/
 
 echo Generating info files...
 ${MAKEINFO} -o $PACKAGE.info $srcfile
-mkdir -p manual/
-tar czf manual/$PACKAGE-info.tar.gz $PACKAGE.info*
-info_tgz_size="`calcsize manual/$PACKAGE-info.tar.gz`"
+mkdir -p $outdir/
+tar czf $outdir/$PACKAGE-info.tar.gz $PACKAGE.info*
+info_tgz_size="`calcsize $outdir/$PACKAGE-info.tar.gz`"
 # do not mv the info files, there's no point in having them available
 # separately on the web.
 
@@ -120,32 +152,32 @@ echo Generating postscript...
 ${DVIPS} $PACKAGE -o
 gzip -f -9 $PACKAGE.ps
 ps_gz_size="`calcsize $PACKAGE.ps.gz`"
-mv $PACKAGE.ps.gz manual/
+mv $PACKAGE.ps.gz $outdir/
 
 # compress/finish dvi:
 gzip -f -9 $PACKAGE.dvi
 dvi_gz_size="`calcsize $PACKAGE.dvi.gz`"
-mv $PACKAGE.dvi.gz manual/
+mv $PACKAGE.dvi.gz $outdir/
 
 echo Generating pdf ...
 ${TEXI2DVI} --pdf $srcfile
 pdf_size="`calcsize $PACKAGE.pdf`"
-mv $PACKAGE.pdf manual/
+mv $PACKAGE.pdf $outdir/
 
 echo Generating ASCII...
 ${MAKEINFO} -o - --no-split --no-headers $srcfile > ${srcdir}/$PACKAGE.txt
 ascii_size="`calcsize $PACKAGE.txt`"
-gzip -f -9 -c $PACKAGE.txt >manual/$PACKAGE.txt.gz
-ascii_gz_size="`calcsize manual/$PACKAGE.txt.gz`"
-mv $PACKAGE.txt manual/
+gzip -f -9 -c $PACKAGE.txt >$outdir/$PACKAGE.txt.gz
+ascii_gz_size="`calcsize $outdir/$PACKAGE.txt.gz`"
+mv $PACKAGE.txt $outdir/
 
 echo Generating monolithic html...
 rm -rf $PACKAGE.html  # in case a directory is left over
 ${MAKEINFO} --no-split --html $srcfile
 html_mono_size="`calcsize $PACKAGE.html`"
-gzip -f -9 -c $PACKAGE.html >manual/$PACKAGE.html.gz
-html_mono_gz_size="`calcsize manual/$PACKAGE.html.gz`"
-mv $PACKAGE.html manual/
+gzip -f -9 -c $PACKAGE.html >$outdir/$PACKAGE.html.gz
+html_mono_gz_size="`calcsize $outdir/$PACKAGE.html.gz`"
+mv $PACKAGE.html $outdir/
 
 echo Generating html by node...
 ${MAKEINFO} --html $srcfile
@@ -158,17 +190,18 @@ else
 fi
 (
   cd ${split_html_dir} || exit 1
-  tar -czf ../manual/$PACKAGE_html_node.tar.gz -- *.html
+  tar -czf ../$outdir/$PACKAGE_html_node.tar.gz -- *.html
 )
-html_node_tgz_size="`calcsize manual/$PACKAGE_html_node.tar.gz`"
-mv ${split_html_dir} manual/html_node
+html_node_tgz_size="`calcsize $outdir/$PACKAGE_html_node.tar.gz`"
+mv ${split_html_dir} $outdir/html_node
 
 echo Making .tar.gz for sources...
 srcfiles=`ls *.texinfo *.texi *.txi 2>/dev/null`
-tar czfh manual/$PACKAGE.texi.tar.gz $srcfiles
-texi_tgz_size="`calcsize manual/$PACKAGE.texi.tar.gz`"
+tar czfh $outdir/$PACKAGE.texi.tar.gz $srcfiles
+texi_tgz_size="`calcsize $outdir/$PACKAGE.texi.tar.gz`"
 
 echo Writing index file...
+curdate="`date '+%B %d, %Y'`"
 sed \
    -e "s/%%TITLE%%/$MANUAL_TITLE/g" \
    -e "s/%%DATE%%/$curdate/g" \
@@ -185,6 +218,6 @@ sed \
    -e "s/%%TEXI_TGZ_SIZE%%/$texi_tgz_size/g" \
    -e "s,%%SCRIPTURL%%,$scripturl,g" \
    -e "s/%%SCRIPTNAME%%/$prog/g" \
-$GENDOCS_TEMPLATE_DIR/gendocs_template >manual/index.html
+$GENDOCS_TEMPLATE_DIR/gendocs_template >$outdir/index.html
 
-echo "Done!  See manual/ subdirectory for new files."
+echo "Done!  See $outdir/ subdirectory for new files."
