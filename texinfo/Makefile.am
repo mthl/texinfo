@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.4 2002-09-24 15:33:52 karl Exp $
+# $Id: Makefile.am,v 1.5 2002-09-26 21:55:56 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -28,6 +28,11 @@ SUBDIRS = intl m4 lib info makeinfo po util doc
 
 # for gettext.
 ACLOCAL_AMFLAGS = -I m4
+
+# In case TEXINFO_MAINT is set during make distcheck; in this case, the
+# simple doc-related files generated in info/ make distcleancheck fail.
+distcleancheck_listfiles = \
+  find -type f -exec sh -c 'test -f $(srcdir)/{} || echo {}'
 
 # One special target for installers to use by hand if desired.
 install-tex:
