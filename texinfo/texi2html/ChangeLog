@@ -1,3 +1,15 @@
+2003-02-19  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: T2H_DEFAULT_button_icon_img behaves
+	better when it has some undef arguments
+	the variables which may be redefined by the user are now global. 
+	They are grouped in texi2html.init, and also in the Declaration in 
+	texi2html.pl and sorted by class.
+	new elements in %T2H_THISDOC for items which are global but shouldn't
+	be redefined by the user (instead of $T2H_HOMEPAGE, $THISPROG...).
+	t2h_Init_global has been removed and the code scattered according to
+	the principles above
+	other minor fixes
+
 2003-02-18  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: handle @verbatim, and @html differently. Added 
 	push_until function which shift from a lines array and push to another 

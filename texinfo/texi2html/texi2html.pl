@@ -36,7 +36,18 @@ use strict;
 # Perl pragma to control optional warnings
 # use warnings;
 
-# Declarations
+# Declarations. Empty lines separate the different classes of variables:
+
+# latex2html variables
+# customization options variables
+# customization variables
+# customization variables which may be guessed in the script
+# customizable subroutines references
+# global variables set in the script, and used in the subroutines
+# hash which entries might be redefined by the user
+# variables which might be redefined by the user but aren't likely to
+# be  
+# variable which shouldn't be global FIXME
 use vars qw(
             $ADDRESS
             $ANTI_ALIAS
@@ -52,7 +63,6 @@ use vars qw(
             $EXTERNAL_IMAGES
             $EXTERNAL_UP_LINK
             $EXTERNAL_UP_TITLE
-            $FH
             $FIGURE_SCALE_FACTOR
             $HTML_VERSION
             $IMAGES_ONLY
@@ -79,59 +89,122 @@ use vars qw(
             $SHORT_INDEX
             $SHOW_SECTION_NUMBERS
             $SPLIT
-            $T2H_ADDRESS
-            $T2H_AFTER_ABOUT
-            $T2H_AFTER_BODY_OPEN
-            $T2H_AUTHORS
-            $T2H_BODYTEXT
-            $T2H_BUTTONS
-            $T2H_EXTRA_HEAD
-            $T2H_HAS_TOP_HEADING
-            $T2H_HOMEPAGE
-            $T2H_ICONS
-            $T2H_OBSOLETE_OPTIONS
-            $T2H_OVERVIEW
-            $T2H_PRE_BODY_CLOSE
-            $T2H_THIS_SECTION
-            $T2H_TOC
-            $T2H_TODAY
-            $T2H_TOP
-            $T2H_USER
             $TEXDEFS
-            $THISPROG
             $TITLE
             $TITLES_LANGUAGE
             $TMP
             $VERBOSE
             $WORDS_IN_NAVIGATION_PANEL_TITLES
             $WORDS_IN_PAGE
-            $complex_format_map
-            $index_properties
+
+            $T2H_PREFIX
+            $T2H_VERBOSE
+            $T2H_IDX_SUMMARY
+            $T2H_SPLIT
+            $T2H_SHORT_REF
+            $T2H_EXPAND
+            $T2H_TOC
+            $T2H_TOP
+            $T2H_DOCTYPE 
+            $T2H_FRAMESET_DOCTYPE 
+            $T2H_CHECK 
+            $T2H_TEST 
+            $T2H_USE_GLOSSARY 
+            $T2H_INVISIBLE_MARK 
+            $T2H_USE_ISO 
+            $T2H_TOP_FILE 
+            $T2H_TOC_FILE
+            $T2H_FRAMES
+            $T2H_SHOW_MENU
+            $T2H_NUMBER_SECTIONS
+            $T2H_NODE_NAME_IN_MENU
+            $T2H_AVOID_MENU_REDUNDANCY
+            $T2H_SECTION_NAVIGATION
+            $T2H_SHORTEXTN 
+            $T2H_OUT 
+            $T2H_DEF_TABLE 
+            $T2H_LANG 
+            $T2H_L2H 
+            $T2H_L2H_L2H 
+            $T2H_L2H_SKIP 
+            $T2H_L2H_TMP 
+            $T2H_L2H_CLEAN 
+            @T2H_INCLUDE_DIRS 
+
+            $T2H_CENTER_IMAGE
+            $T2H_EXAMPLE_INDENT_CELL
+            $T2H_SMALL_EXAMPLE_INDENT_CELL
+            $T2H_SMALL_FONT_SIZE
+            $T2H_TOP_HEADING
+            $T2H_INDEX_CHAPTER
+            $T2H_SPLIT_INDEX
+            $T2H_HREF_DIR_INSTEAD_FILE
+            $T2H_AFTER_BODY_OPEN
+            $T2H_PRE_BODY_CLOSE
+            $T2H_EXTRA_HEAD
+            $T2H_VERTICAL_HEAD_NAVIGATION
+            $T2H_WORDS_IN_PAGE
+            $T2H_ICONS
             %T2H_ACTIVE_ICONS
-            %T2H_BUTTONS_EXAMPLE
+            %T2H_NAVIGATION_TEXT
+            %T2H_PASSIVE_ICONS
             %T2H_BUTTONS_GOTO
+            @T2H_CHAPTER_BUTTONS
+            @T2H_MISC_BUTTONS
+            @T2H_SECTION_BUTTONS
+
+            $T2H_ADDRESS
+            $T2H_BODYTEXT
+
+            $T2H_print_section
+            $T2H_print_Top_header
+            $T2H_print_Top_footer
+            $T2H_print_Top
+            $T2H_print_Toc
+            $T2H_print_Overview
+            $T2H_print_Footnotes
+            $T2H_print_About
+            $T2H_print_misc_header
+            $T2H_print_misc_footer
+            $T2H_print_misc
+            $T2H_print_chapter_header
+            $T2H_print_chapter_footer
+            $T2H_print_page_head
+            $T2H_print_page_foot
+            $T2H_print_head_navigation
+            $T2H_print_foot_navigation
+            $T2H_button_icon_img
+            $T2H_print_navigation
+            $T2H_about_body
+            $T2H_print_frame
+            $T2H_print_toc_frame
+            $T2H_PRE_ABOUT
+            $T2H_AFTER_ABOUT
+
+            $T2H_OVERVIEW
+            $T2H_THIS_SECTION
             %T2H_HREF
             %T2H_NAME
-            %T2H_NAVIGATION_TEXT
             %T2H_NODE
-            %T2H_PASSIVE_ICONS
             %T2H_THISDOC
+
+            %value
+            %user_sub
+
+            $complex_format_map
+            $index_properties
             %accent_map
             %def_map
             %format_map
-            %l2h_img
             %predefined_index
             %simple_map
             %style_map
             %things_map
             %to_skip
-            %user_sub
             %valid_index
             %sec2level
-            %value
-            @T2H_CHAPTER_BUTTONS
-            @T2H_MISC_BUTTONS
-            @T2H_SECTION_BUTTONS
+
+            %l2h_img
            );
 
 #++##############################################################################
@@ -144,13 +217,13 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.26 2003-02-18 18:50:42 pertusus Exp $
+# $Id: texi2html.pl,v 1.27 2003-02-19 16:00:22 pertusus Exp $
 
 # Homepage:
-$T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
+my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
 
 # Authors:
-$T2H_AUTHORS = <<EOT;
+my $T2H_AUTHORS = <<EOT;
 Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
             Olaf Bachmann <obachman\@mathematik.uni-kl.de>
@@ -161,7 +234,9 @@ EOT
 
 # Version: set in configure.in
 my $THISVERSION = '@T2H_VERSION@';
-$THISPROG = "texi2html $THISVERSION"; # program name and version
+my $THISPROG = "texi2html $THISVERSION"; # program name and version
+
+my $T2H_TODAY; # date set by pretty_date
 
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
@@ -572,8 +647,6 @@ $| = 1;
 select(STDOUT);
 $| = 1;
 
-%value = ();                       # hold texinfo variables, see also -D
-
 my $init_file;
 #
 # called on -init-file
@@ -616,6 +689,7 @@ sub SetDocumentLanguage
 ##
 ## obsolete cmd line options
 ##
+my $T2H_OBSOLETE_OPTIONS;
 $T2H_OBSOLETE_OPTIONS -> {'no-section_navigation'} =
 {
  type => '!',
@@ -710,6 +784,7 @@ foreach my $i ('@sysconfdir@/texi2htmlrc', "$home/.texi2htmlrc")
     }
 }
 
+%value = ();                       # hold texinfo variables, see also -D
 
 #+++############################################################################
 #                                                                              #
@@ -724,7 +799,6 @@ my $T2H_FAILURE_TEXT = <<EOT;
 Try 'texi2html -help' for usage instructions.
 EOT
 my $options = new Getopt::MySimple;
-
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
 eval {Getopt::Long::Configure("pass_through");};
@@ -1253,6 +1327,7 @@ sub l2h_FromHtml($)
     my($text) = @_;
     my($done, $to_do, $count);
     $to_do = $text;
+    $done = '';
     while ($to_do =~ /([^\000]*)<!-- l2h_replace $l2h_name ([0-9]+) -->([^\000]*)/)
     {
         $to_do = $1;
@@ -1483,12 +1558,12 @@ sub build_simple_substitutions ()
         $subst_code .= "\$text =~ " . $subst_command ."{([a-z])}/&\${1}$accent_map{$accent_macro};/gi;\n";
     }
     $subst_code .= "return \$text;\n";
-#print STDERR "$subst_code";
     eval("sub simple_substitutions(\$) { $subst_code }");
 }
 
 my $has_top = 0;            # did I see a top node?
 my $has_top_command = 0;    # did I see @top for automatic pointers?
+my $has_top_heading = 0;    # did I see content in top ?
 my @html_stack = ();        # HTML elements stack
 my $html_element = '';      # current HTML element
 
@@ -1912,7 +1987,7 @@ sub pass1
                         while (@fractions)
                         {
                             my $fraction = shift @fractions;
-                            unless ($fraction =~ /^(\d*\.\d+)|(\d+)$/)
+                            unless ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
                             { 
                                 warn "$ERROR column fraction not a number: $fraction";
                             }
@@ -2477,7 +2552,7 @@ sub pass1
                             $name =~ /index/i);
                     if ($in_top && /heading/)
                     {
-                        $T2H_HAS_TOP_HEADING = 1;
+                        $has_top_heading = 1;
                         $_ = debug("<h$level>$name</h$level>\n", __LINE__);
                         html_push_if('body');
                         print "# top heading, section $name, level $level\n"
@@ -2764,7 +2839,7 @@ sub EnterIndexEntry($$$$$$)
     {
         $key .= ' ';
     }
-    ;
+
     my $id;
     if ($lines->[$#lines] =~ /^<!--docid::(.+)::-->$/)
     {
@@ -3507,7 +3582,6 @@ sub pass4
     my $text;
     my $name;
     my $end_of_para = 0;        # true if last line is <p>
-    my $in_html = 0;            # am I inside an HTML section
     my $in_verbatim = 0;        # am I inside a verbatim section
 
     # APA: There aint no paragraph before the first one!
@@ -3519,18 +3593,13 @@ sub pass4
         #
         # handle @html / @end html and @verbatim / @end verbatim
         #
-        if ($in_html)
+        if (/^\@html\s*/)
         {
-            if(/^\@end\s+html\s*$/)
-	    {
-                $in_html = 0;
-            }
-            else
-            {
-                push(@doc_lines, $_);
-            }
+            $end_of_para = 0;
+            push_until ('html', \@lines3, \@doc_lines);
             next;
         }
+
         if ($in_verbatim)
         {
             if(/^\@end\s+verbatim\s*$/)
@@ -3549,12 +3618,6 @@ sub pass4
             $in_verbatim = 1;
             $end_of_para = 0;
 	    push(@doc_lines, "<pre>\n");
-            next;
-        }
-        if (/^\@html\s*/)
-        {
-            $in_html = 1;
-            $end_of_para = 0;
             next;
         }
         #
@@ -3629,7 +3692,8 @@ sub pass5
     $T2H_L2H = l2h_ToHtml()        if ($T2H_L2H);
     $T2H_L2H = l2h_InitFromHtml()  if ($T2H_L2H);
 
-    T2H_InitGlobals();
+    my $FH;
+    #T2H_InitGlobals();
 
     # fix node2up, node2prev, node2next, if desired
     if ($has_top_command)
@@ -3656,6 +3720,10 @@ sub pass5
         s/\s*$//;
         $T2H_THISDOC{$key} = $_;
     }
+    $T2H_THISDOC{program} = $THISPROG;
+    $T2H_THISDOC{program_homepage} = $T2H_HOMEPAGE;
+    $T2H_THISDOC{program_authors} = $T2H_AUTHORS;
+    $T2H_THISDOC{today} = $T2H_TODAY;
 
     # if no sections, then simply print document as is
     unless (@sections)
@@ -3780,7 +3848,7 @@ sub pass5
         $T2H_THIS_SECTION = $T2H_TOP;
         $T2H_HREF{This} = $T2H_HREF{Top};
         $T2H_NAME{This} = $T2H_NAME{Top};
-        &$T2H_print_Top(\*FILE);
+        &$T2H_print_Top(\*FILE, $has_top_heading);
 
         if ($T2H_SPLIT)
         {
@@ -4796,6 +4864,8 @@ sub t2h_print_label($$)
 SetDocumentLanguage('en') unless ($T2H_LANG);
 # APA: There's got to be a better way:
 $things_map{'today'} = pretty_date();
+$T2H_TODAY = pretty_date();  # like "20 September 1993";
+my $T2H_USER = "unknown";
 if ($T2H_TEST)
 {
     # to generate files similar to reference ones to be able to check for
@@ -4806,8 +4876,6 @@ if ($T2H_TEST)
 } 
 else
 { 
-    # Identity:
-    $T2H_TODAY = pretty_date();  # like "20 September 1993"
     # the eval prevents this from breaking on system which do not have
     # a proper getpwuid implemented
     eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
@@ -4815,6 +4883,17 @@ else
     # implemented there.
     $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
+
+# Set the default body text, inserted between <body ... >
+$T2H_BODYTEXT = 'lang="' . $T2H_LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($T2H_BODYTEXT));
+
+# this is used in footer
+unless (defined($T2H_ADDRESS))
+{
+    $T2H_ADDRESS = "by <i>$T2H_USER</i> " if $T2H_USER;
+    $T2H_ADDRESS .= "on <i>$T2H_TODAY</i>";
+}
+
 open_file($docu);
 pass1();
 pass2();
