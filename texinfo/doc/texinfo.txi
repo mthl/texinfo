@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
+@c $Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12071,31 +12071,38 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 @cindex XML, including raw
 @cindex plain @TeX{}
 
-Inside a region delineated by @code{@@iftex} and @code{@@end iftex}, you
-can embed some raw @TeX{} commands.  Info will ignore these commands
-since they are only in that part of the file which is seen by @TeX{}.
-You can write the @TeX{} commands as you would write them in a normal
-@TeX{} file, except that you must replace the @samp{\} used by @TeX{}
-with an @samp{@@}.  For example, in the @code{@@titlepage} section of a
+Inside a region delineated by @code{@@iftex} and @code{@@end iftex},
+you can embed some raw @TeX{} commands.  The Texinfo processors will
+ignore such a region unless @TeX{} output is being produced.  You can
+write the @TeX{} commands as you would write them in a normal @TeX{}
+file, except that you must replace the @samp{\} used by @TeX{} with an
+@samp{@@}.  For example, in the @code{@@titlepage} section of a
 Texinfo file, you can use the @TeX{} command @code{@@vskip} to format
 the copyright page.  (The @code{@@titlepage} command causes Info to
 ignore the region automatically, as it does with the @code{@@iftex}
 command.)
 
-However, many features of plain @TeX{} will not work, as they are
-overridden by Texinfo features.
+However, most features of plain @TeX{} will not work within
+@code{@@iftex}, as they are overridden by Texinfo features.  The
+purpose of @code{@@iftex} is to provide conditional processing for the
+Texinfo source, not provide access to underlying formatting features.
 
 @findex tex
 You can enter plain @TeX{} completely, and use @samp{\} in the @TeX{}
 commands, by delineating a region with the @code{@@tex} and @code{@@end
-tex} commands.  (The @code{@@tex} command also causes Info to ignore the
-region, like the @code{@@iftex} command.)  The sole exception is that the
+tex} commands.  All plain @TeX{} commands and category codes are
+restored within an @code{@@tex} region.  The sole exception is that the
 @code{@@} character still introduces a command, so that @code{@@end tex}
-can be recognized properly.
+can be recognized properly.  As with @code{@@iftex}, Texinfo
+processors will ignore such a region unless @TeX{} output is being produced.
+
+@findex \gdef @r{within @code{@@tex}}
+In complex cases, you may wish to define new @TeX{} macros within
+@code{@@tex}.  You must use @code{\gdef} to do this, not @code{\def},
+because @code{@@tex} regions are processed in a @TeX{} group.
 
 @cindex Mathematical expressions
-For example, here is a mathematical expression written in
-plain @TeX{}:
+As an example, here is a mathematical expression written in plain @TeX{}:
 
 @example
 @@tex
@@ -16875,7 +16882,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
+$Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16938,7 +16945,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
+@comment $Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
