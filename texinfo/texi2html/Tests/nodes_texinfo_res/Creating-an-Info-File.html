@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 20.1 Creating an Info File</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20.1 Creating an Info File">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.1 Creating an Info File">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD247"></a>
+<a name="SEC261"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="makeinfo-advantages.html#SEC262" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 20.1 Creating an Info File </h2>
+
+<p><code>makeinfo</code> is a program that converts a Texinfo file into an Info
+file, HTML file, or plain text.  <code>texinfo-format-region</code> and
+<code>texinfo-format-buffer</code> are GNU Emacs functions that convert
+Texinfo to Info.
+</p><p>For information on installing the Info file in the Info system,
+see section <a href="Installing-an-Info-File.html#SEC271">Installing an Info File</a>.
+</p><table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="makeinfo-advantages.html#SEC262">20.1.1 <code>makeinfo</code> Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>makeinfo</code> provides better error checking.</td></tr>
+<tr><td align="left" valign="top"><a href="Invoking-makeinfo.html#SEC263">20.1.2 Running <code>makeinfo</code> from a Shell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run <code>makeinfo</code> from a shell.</td></tr>
+<tr><td align="left" valign="top"><a href="makeinfo-options.html#SEC264">20.1.3 Options for <code>makeinfo</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify fill-column and other options.</td></tr>
+<tr><td align="left" valign="top"><a href="Pointer-Validation.html#SEC265">20.1.4 Pointer Validation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to check that pointers point somewhere.</td></tr>
+<tr><td align="left" valign="top"><a href="makeinfo-in-Emacs.html#SEC266">20.1.5 Running <code>makeinfo</code> inside Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run <code>makeinfo</code> from Emacs.</td></tr>
+<tr><td align="left" valign="top"><a href="texinfo-format-commands.html#SEC267">20.1.6 The <code>texinfo-format<small>...</small></code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two Info formatting commands written
+                                  in Emacs Lisp are an alternative
+                                  to <code>makeinfo</code>.</td></tr>
+<tr><td align="left" valign="top"><a href="Batch-Formatting.html#SEC268">20.1.7 Batch Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to format for Info in Emacs Batch mode.</td></tr>
+<tr><td align="left" valign="top"><a href="Tag-and-Split-Files.html#SEC269">20.1.8 Tag Files and Split Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How tagged and split files help Info
+                                  to run better.</td></tr>
+<tr><td align="left" valign="top"><a href="makeinfo-html.html#SEC270">20.1.9 Generating HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Generating HTML output.</td></tr>
+</table>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

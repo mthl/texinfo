@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 8.6 @pxref</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 8.6 @pxref">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.6 @pxref">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD102"></a>
+<a name="SEC116"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="ref.html#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="inforef.html#SEC117" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 8.6 <code>@pxref</code> </h2>
+
+<p>The parenthetical reference command, <code>@pxref</code>, is nearly the
+same as <code>@xref</code>, but you use it <em>only</em> inside parentheses
+and you do <em>not</em> type a comma or period after the command's
+closing brace.  The command differs from <code>@xref</code> in two
+ways:</p><ol>
+<li><p>
+TeX typesets the reference for the printed manual with a lower case
+`see' rather than an upper case `See'.</p></li><li><p>
+The Info formatting commands automatically end the reference with a
+closing colon or period.</p></li></ol>
+
+<p>Because one type of formatting automatically inserts closing
+punctuation and the other does not, you should use <code>@pxref</code>
+<em>only</em> inside parentheses as part of another sentence.  Also, you
+yourself should not insert punctuation after the reference, as you do
+with <code>@xref</code>.</p><p><code>@pxref</code> is designed so that the output looks right and works
+right between parentheses both in printed output and in an Info file.
+In a printed manual, a closing comma or period should not follow a
+cross reference within parentheses; such punctuation is wrong.  But in
+an Info file, suitable closing punctuation must follow the cross
+reference so Info can recognize its end.  <code>@pxref</code> spares you
+the need to use complicated methods to put a terminator into one form
+of the output and not the other.</p><p>With one argument, a parenthetical cross reference looks like
+this:</p><a name="IDX113"></a>
+<table><tr><td>&nbsp;</td><td class="example"><pre>
+... storms cause flooding (@pxref{Hurricanes}) ...
+</pre></td></tr></table>
+<p>which produces
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+... storms cause flooding (*Note Hurricanes::) ...
+</pre></td></tr></table>
+<p>and
+</p><blockquote>
+
+<p><small>...</small> storms cause flooding (see Section 6.7 [Hurricanes], page 72) <small>...</small>
+</p></blockquote>
+
+<p>With two arguments, a parenthetical cross reference has this
+template:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+... (@pxref{<var>node-name</var>, <var>cross-reference-name</var>}) ...
+</pre></td></tr></table>
+<p>which produces
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+... (*Note <var>cross-reference-name</var>: <var>node-name</var>.) ...
+</pre></td></tr></table>
+<p>and
+</p><blockquote>
+
+<p><small>...</small> (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) <small>...</small>
+</p></blockquote>
+
+<p><code>@pxref</code> can be used with up to five arguments just like
+<code>@xref</code> (see section <a href="xref.html#SEC108"><code>@xref</code></a>).</p><blockquote>
+
+<p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
+reference.  Do not try to use <code>@pxref</code> as a clause in a sentence.
+It will look bad in either the Info file, the printed output, or
+both.</p><p>Also, parenthetical cross references look best at the ends of sentences.
+Although you may write them in the middle of a sentence, that location
+breaks up the flow of text.</p></blockquote>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="ref.html#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="inforef.html#SEC117" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

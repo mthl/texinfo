@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD104"></a>
+<a name="SEC118"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="inforef.html#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 8.8 <code>@uref{<var>url</var>[, <var>text</var>][, <var>replacement</var>]}</code> </h2>
+
+<p><code>@uref</code> produces a reference to a uniform resource locator (url).
+It takes one mandatory argument, the url, and two optional arguments
+which control the text that is displayed.  In HTML output, <code>@uref</code>
+produces a link you can follow.
+</p><p>The second argument, if specified, is the text to display (the default
+is the url itself); in Info and DVI output, but not in HTML output, the
+url is also output.
+</p><a name="IDX114"></a>
+<p>The third argument, on the other hand, if specified is also the text to
+display, but the url is <em>not</em> output in any format.  This is useful
+when the text is already sufficiently referential, as in a man page.  If
+the third argument is given, the second argument is ignored.
+</p><p>The simple one argument form, where the url is both the target and the
+text of the link:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
+</pre></td></tr></table>
+<p>produces:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
+</pre></td></tr></table>
+<p>An example of the two-argument form:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
+holds programs and texts.
+</pre></td></tr></table>
+<p>produces:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
+holds programs and texts.
+</pre></td></tr></table>
+<p>that is, the Info output is this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+The official GNU ftp site (ftp://ftp.gnu.org/gnu)
+holds programs and texts.
+</pre></td></tr></table>
+<p>and the HTML output is this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
+holds programs and texts.
+</pre></td></tr></table>
+<p>An example of the three-argument form:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+The @uref{/man.cgi/1/ls,,ls(1)} program ...
+</pre></td></tr></table>
+<p>produces:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+The <a href="/man.cgi/1/ls">ls(1)</a> program ...
+</pre></td></tr></table>
+<p>but with HTML:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program ...
+</pre></td></tr></table>
+<p>To merely indicate a url without creating a link people can follow, use
+<code>@url</code> (see section <a href="url.html#SEC135"><code>@url</code></a>).
+</p><p>Some people prefer to display url's in the unambiguous format:
+</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+&lt;URL:http://<var>host</var>/<var>path</var>&gt;
+</pre></td></tr></table>
+<a name="IDX115"></a>
+<p>You can use this form in the input file if you wish.  We feel it's not
+necessary to clutter up the output with the extra `<samp>&lt;URL:</samp>' and
+`<samp>&gt;</samp>', since any software that tries to detect url's in text already
+has to detect them without the `<samp>&lt;URL:</samp>' to be useful.
+</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="inforef.html#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Cross-References.html#SEC104" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

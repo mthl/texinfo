@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 20.1.8 Tag Files and Split Files</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20.1.8 Tag Files and Split Files">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.1.8 Tag Files and Split Files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD255"></a>
+<a name="SEC269"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Batch-Formatting.html#SEC268" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="makeinfo-html.html#SEC270" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC261" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h3> 20.1.8 Tag Files and Split Files </h3>
+
+<p>If a Texinfo file has more than 30,000 bytes,
+<code>texinfo-format-buffer</code> automatically creates a tag table
+for its Info file;  <code>makeinfo</code> always creates a tag table.  With
+a <em>tag table</em>, Info can jump to new nodes more quickly than it can
+otherwise.</p><a name="IDX412"></a>
+<p>In addition, if the Texinfo file contains more than about 70,000
+bytes, <code>texinfo-format-buffer</code> and <code>makeinfo</code> split the
+large Info file into shorter <em>indirect</em> subfiles of about 50,000
+bytes each.  Big files are split into smaller files so that Emacs does
+not need to make a large buffer to hold the whole of a large Info
+file; instead, Emacs allocates just enough memory for the small, split-off
+file that is needed at the time.  This way, Emacs avoids wasting
+memory when you run Info.  (Before splitting was implemented, Info
+files were always kept short and <em>include files</em> were designed as
+a way to create a single, large printed manual out of the smaller Info
+files.  See section <a href="Include-Files.html#SEC297">Include Files</a>, for more information.  Include files are
+still used for very large documents, such as <cite>The Emacs Lisp
+Reference Manual</cite>, in which each chapter is a separate file.)</p><p>When a file is split, Info itself makes use of a shortened version of
+the original file that contains just the tag table and references to
+the files that were split off.  The split-off files are called
+<em>indirect</em> files.</p><p>The split-off files have names that are created by appending `<samp>-1</samp>',
+`<samp>-2</samp>', `<samp>-3</samp>' and so on to the file name specified by the
+<code>@setfilename</code> command.  The shortened version of the original file
+continues to have the name specified by <code>@setfilename</code>.</p><p>At one stage in writing this document, for example, the Info file was saved
+as the file `<tt>test-texinfo</tt>' and that file looked like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+Info file: test-texinfo,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: new-texinfo-manual.texinfo
+
+^_
+Indirect:
+test-texinfo-1: 102
+test-texinfo-2: 50422
+test-texinfo-3: 101300
+^_^L
+Tag table:
+(Indirect)
+Node: overview^?104
+Node: info file^?1271
+Node: printed manual^?4853
+Node: conventions^?6855
+...
+</pre></td></tr></table>
+<p>(But `<tt>test-texinfo</tt>' had far more nodes than are shown here.)  Each of
+the split-off, indirect files, `<tt>test-texinfo-1</tt>',
+`<tt>test-texinfo-2</tt>', and `<tt>test-texinfo-3</tt>', is listed in this file
+after the line that says `<samp>Indirect:</samp>'.  The tag table is listed after
+the line that says `<samp>Tag table:</samp>'. </p><p>In the list of indirect files, the number following the file name
+records the cumulative number of bytes in the preceding indirect files,
+not counting the file list itself, the tag table, or the permissions
+text in each file.  In the tag table, the number following the node name
+records the location of the beginning of the node, in bytes from the
+beginning of the (unsplit) output.
+</p><p>If you are using <code>texinfo-format-buffer</code> to create Info files,
+you may want to run the <code>Info-validate</code> command.  (The
+<code>makeinfo</code> command does such a good job on its own, you do not
+need <code>Info-validate</code>.)  However, you cannot run the <kbd>M-x
+Info-validate</kbd> node-checking command on indirect files.  For
+information on how to prevent files from being split and how to
+validate the structure of the nodes, see <a href="Using-Info-validate.html#SEC315">Running <code>Info-validate</code></a>.</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Batch-Formatting.html#SEC268" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="makeinfo-html.html#SEC270" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-an-Info-File.html#SEC261" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
