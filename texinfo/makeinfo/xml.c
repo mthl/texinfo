@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.9 2002-11-08 20:01:37 feloy Exp $
+   $Id: xml.c,v 1.10 2002-11-10 22:31:04 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -172,6 +172,9 @@ element texinfoml_element_list [] = {
   { "",                    0, 0 }, /* BOOKINFO (docbook) */
   { "",                    0, 0 }, /* ABSTRACT (docbook) */
   { "",                    0, 0 }, /* REPLACEABLE (docbook) */
+  { "",                    0, 0 }, /* ENVAR (docbook) */
+  { "",                    0, 0 }, /* COMMENT (docbook) */
+
   { "para",                0, 0 } /* Must be last */
   /* name / contains para / contained in para */
 };
@@ -253,13 +256,13 @@ element docbook_element_list [] = {
 
   { "itemizedlist",        0, 0 }, /* ITEMIZE */
   { "",                    0, 0 }, /* ITEMFUNCTION */
-  { "listitem",            1, 0 },
+  { "listitem",            1, 0 }, /* ITEM */
   { "orderedlist",         0, 0 }, /* ENUMERATE */
   { "variablelist",        0, 0 }, /* TABLE */
   { "varlistentry",        0, 0 }, /* TABLEITEM */
   { "term",                0, 0 }, /* TABLETERM */
 
-  { "indexterm",           0, 1 },
+  { "indexterm",           0, 1 }, /* INDEXTERM */
 
   { "xref",                0, 1 }, /* XREF */
   { "link",                0, 1 }, /* XREFNODENAME */
@@ -284,7 +287,7 @@ element docbook_element_list [] = {
 
   { "",                    0, 0 }, /* GROUP */
 
-  { "index",               0, 0 }, /* PRINTINDEX */
+  { "index",               0, 1 }, /* PRINTINDEX */
   { "",                    0, 1 }, /* ANCHOR */
   { "",                    0, 1 }, /* IMAGE */
   { "primary",             0, 1 }, /* PRIMARY */
@@ -307,6 +310,8 @@ element docbook_element_list [] = {
   { "bookinfo",            0, 0 },
   { "abstract",            1, 0 },
   { "replaceable",         0, 0 },
+  { "envar",               0, 1 },
+  { "comment",             0, 0 },
 
   { "para",                0, 0 } /* Must be last */
   /* name / contains para / contained in para */
@@ -340,6 +345,9 @@ replace_element replace_elements [] = {
   { CODE, VAR, -1 },
   { EMPH, CODE, REPLACEABLE },
   { VAR, VAR, -1},
+  { VAR, B, EMPH},
+  { B, CODE, ENVAR},
+  { CODE, I, EMPH},
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
@@ -364,6 +372,8 @@ static int in_abstract = 0;
 
 static int xml_in_item[256];
 static int xml_table_level = 0;
+
+static int in_table_title = 0;
 
 static int in_indexentry = 0;
 static int in_secondary = 0;
@@ -616,6 +626,15 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   if (arg == START && !xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_indent ();
 
+  if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title 
+      && arg == START && elt != TABLEITEM && elt != TABLETERM
+      && !in_indexterm && xml_current_element() == TABLE)
+    {
+      in_table_title = 1;
+      xml_insert_element (TITLE, START);
+    }
+
+
   if (arg == START)
     xml_push_current_element (elt);
   else
@@ -822,7 +841,6 @@ xml_end_menu ()
 }
 
 static int xml_last_character;
-static int in_table_title = 0;
 
 void
 xml_add_char (character)
@@ -833,7 +851,7 @@ xml_add_char (character)
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
 
-  if (xml_table_level && !xml_in_item[xml_table_level] && !in_table_title 
+  if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title 
       && !cr_or_whitespace (character) && !in_indexterm)
     {
       in_table_title = 1;
