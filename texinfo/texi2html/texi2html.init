@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.70 2004-02-11 09:13:34 pertusus Exp $
+# $Id: texi2html.init,v 1.71 2004-02-24 01:55:14 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -575,6 +575,10 @@ $BODYTEXT = undef;
 # there is no @documentencoding, set in init_out 
 $ENCODING = undef;
 
+# if undef set to @documentdescription. If there is no @documentdescription,
+# set in page_head
+$DOCUMENTDESCRIPTION = undef;
+
 ########################################################################
 # Control of Page layout:
 # You can make changes of the Page layout at two levels:
@@ -888,7 +892,10 @@ sub T2H_DEFAULT_print_page_head($)
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
     $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
-    my $description = $longtitle;
+    my $description = $DOCUMENTDESCRIPTION;
+    $description = $longtitle if (!defined($description));
+    $description = "<meta name=\"description\" content=\"$description\">" if
+         ($description ne '');
     $description = $Texi2HTML::THISDOC{'documentdescription'} if (defined($Texi2HTML::THISDOC{'documentdescription'}));
     print $fh <<EOT;
 $DOCTYPE
@@ -900,7 +907,7 @@ $Texi2HTML::THISDOC{program_authors}
 <head>
 <title>$longtitle</title>
 
-<meta name="description" content="$description">
+$description
 <meta name="keywords" content="$longtitle">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">

@@ -1,3 +1,13 @@
+2004-02-23  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* Makefile.am: ask for a version above 1.7 for automake.
+	* Makefile.in...: regenerate with automake 1.8.2 autoconf 2.59.
+	* texi2tml.pl, texi2html.init, examples/chm.init: add a new variable
+	$DOCUMENTDESCRIPTION. If it is undef, @documentdescription is used
+	or the long title. If it is set but empty no description <meta> element
+	is used, if it isn't empty, the value is used in the description
+	<meta> element.
+
 2004-02-11  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* Makefile.am: add T2h_i18n.pm texi2html.init MySimple.pm and l2h.init

@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.108 2004-02-11 21:42:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.109 2004-02-24 01:55:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -263,6 +263,7 @@ our @NODE_FOOTER_BUTTONS;
 #our $ADDRESS;
 our $BODYTEXT;
 our $CSS_LINES;
+our $DOCUMENTDESCRIPTION;
 
 # I18n
 our $LANGUAGES;
@@ -5451,7 +5452,7 @@ sub pass_text()
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
     $Texi2HTML::THISDOC{'today'} = $T2H_TODAY;
-    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
+#    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 
     $Texi2HTML::THISDOC{'toc_file'} = $docu_toc if ($Texi2HTML::Config::SPLIT); 
@@ -10833,16 +10834,16 @@ if ($T2H_DEBUG & $DEBUG_TEXI)
 exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
 rearrange_elements();
 do_names();
-if (@{$region_lines{'documentdescription'}})
+if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENTDESCRIPTION)))
 {
-    $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
+    my $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
     my @documentdescription = split (/\n/, $documentdescription);
-    $documentdescription = shift @documentdescription;
-    chomp $documentdescription;
+    $Texi2HTML::Config::DOCUMENTDESCRIPTION = shift @documentdescription;
+    chomp $Texi2HTML::Config::DOCUMENTDESCRIPTION;
     foreach my $line (@documentdescription)
     {
         chomp $line;
-        $documentdescription .= ' ' . $line;
+        $Texi2HTML::Config::DOCUMENTDESCRIPTION .= ' ' . $line;
     }
 }
 # do copyright notice inserted in comment at the begining of the files

@@ -16,6 +16,7 @@ $DEFAULT_RULE = '';
 $MIDDLE_RULE = '';
 $BIG_RULE = '';
 
+$DOCUMENTDESCRIPTION = '';
 $SEPARATED_FOOTNOTES = 0;
 
 $index_summary_file_entry = \&chm_index_summary_file_entry;

@@ -10,8 +10,6 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
   - Singular manual style
   - How complicated could it be to get a creation of XML, what about SGML ?
 
-* Fix `make distcheck'
-
 * document css classes, and have similar classes with makeinfo
 -  makeinfo classes:
 ul menu, 
