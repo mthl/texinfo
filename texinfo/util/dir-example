@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.2 2002-09-27 20:32:42 karl Exp $
+$Id: dir-example,v 1.3 2002-10-02 17:39:18 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -53,6 +53,26 @@ GNU Packages
 * Wdiff: (wdiff).               Word-by-word comparison.
 * Wget: (wget).                 URL download.
 
+Texinfo documentation system
+* Info: (info).                 Documentation browsing system.
+* Texinfo: (texinfo).           The GNU documentation format.
+* info standalone: (info-stnd).                 Standalone Info reader.
+* infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
+* install-info: (texinfo)Invoking install-info. Updating info/dir entries.
+* makeinfo: (texinfo)makeinfo options.          Translate Texinfo source.
+* texi2dvi: (texinfo)Format with texi2dvi.      Printing Texinfo documentation.
+* texindex: (texinfo)Format with tex/texindex.  Sorting Texinfo index files.
+
+Printing Tools
+* a2ps: (a2ps).                    PostScript Generating Utility
+* PreScript: (a2ps) PreScript.     Input language for a2ps
+* card: (a2ps) card.               Print Reference Cards
+* fixps: (a2ps) fixps.             Fixing Some Ill Designed PostScript Files
+* fixnt: (a2ps) fixnt.             Fixing Microsoft NT PostScript Files
+* pdiff: (a2ps) pdiff.             Produce Pretty Comparison of Files
+* psmandup: (a2ps) psmandup.       Printing Duplex on Simplex Printers
+* psset: (a2ps) psset.             Inserting calls to setpagedevice
+
 GNU programming tools
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts
@@ -78,27 +98,7 @@ GNU programming tools
 * Libtool: (libtool).           Generic library support script.
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
 
-Texinfo documentation system
-* Info: (info).                 Documentation browsing system.
-* Texinfo: (texinfo).           The GNU documentation format.
-* info standalone: (info-stnd).                 Standalone Info reader.
-* infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
-* install-info: (texinfo)Invoking install-info. Updating info/dir entries.
-* makeinfo: (texinfo)makeinfo options.          Translate Texinfo source.
-* texi2dvi: (texinfo)Format with texi2dvi.      Printing Texinfo documentation.
-* texindex: (texinfo)Format with tex/texindex.  Sorting Texinfo index files.
-
-Printing Tools
-* a2ps: (a2ps).                    PostScript Generating Utility
-* PreScript: (a2ps) PreScript.     Input language for a2ps
-* card: (a2ps) card.               Print Reference Cards
-* fixps: (a2ps) fixps.             Fixing Some Ill Designed PostScript Files
-* fixnt: (a2ps) fixnt.             Fixing Microsoft NT PostScript Files
-* pdiff: (a2ps) pdiff.             Produce Pretty Comparison of Files
-* psmandup: (a2ps) psmandup.       Printing Duplex on Simplex Printers
-* psset: (a2ps) psset.             Inserting calls to setpagedevice
-
-GNU Emacs Lisp
+GNU Emacs
 * Elisp: (elisp).               GNU Emacs Lisp reference manual.
 * Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
 
@@ -176,13 +176,6 @@ GNU music project
 * pmx2ly: (lilypond)Invoking pmx2ly::          Importing PMX.
 * musedata2ly: (lilypond)Invoking musedata2ly::Importing Musedata.
 * mup2ly: (lilypond)Invoking mup2ly::          Importing MUP.
-
-GNU admin
-
-Linux
-* dosemu: (dosemu).             Linux DOS emulator.
-* gpm: (gpm).                   Linux general purpose mouse interface.
-* linux-faq: (linux-faq).       The Linux FAQ List.
 
 TeX
 * Afm2tfm: (dvips)Invoking afm2tfm.  Making Type 1 fonts available to TeX.
