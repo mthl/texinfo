@@ -2002,7 +2002,7 @@ where each line of input produces a line of output.}
 
 
 \message{tables,}
-% Tables -- @table, @ftable, @vtable, @item(x), @kitem(x), @xitem(x).
+% Tables -- @table, @ftable, @vtable, @item(x).
 
 % default indentation of table text
 \newdimen\tableindent \tableindent=.8in
@@ -2014,7 +2014,7 @@ where each line of input produces a line of output.}
 % used internally for \itemindent minus \itemmargin
 \newdimen\itemmax
 
-% Note @table, @vtable, and @vtable define @item, @itemx, etc., with
+% Note @table, @ftable, and @vtable define @item, @itemx, etc., with
 % these defs.
 % They also define \itemindex
 % to index the item name in whatever manner is desired (perhaps none).
@@ -2026,22 +2026,10 @@ where each line of input produces a line of output.}
 \def\internalBitem{\smallbreak \parsearg\itemzzz}
 \def\internalBitemx{\itemxpar \parsearg\itemzzz}
 
-\def\internalBxitem "#1"{\def\xitemsubtopix{#1} \smallbreak \parsearg\xitemzzz}
-\def\internalBxitemx "#1"{\def\xitemsubtopix{#1} \itemxpar \parsearg\xitemzzz}
-
-\def\internalBkitem{\smallbreak \parsearg\kitemzzz}
-\def\internalBkitemx{\itemxpar \parsearg\kitemzzz}
-
-\def\kitemzzz #1{\dosubind {kw}{\code{#1}}{for {\bf \lastfunction}}%
-                 \itemzzz {#1}}
-
-\def\xitemzzz #1{\dosubind {kw}{\code{#1}}{for {\bf \xitemsubtopic}}%
-                 \itemzzz {#1}}
-
 \def\itemzzz #1{\begingroup %
   \advance\hsize by -\rightskip
   \advance\hsize by -\tableindent
-  \setbox0=\hbox{\itemfont{#1}}%
+  \setbox0=\hbox{\itemindicate{#1}}%
   \itemindex{#1}%
   \nobreak % This prevents a break before @itemx.
   %
@@ -2095,69 +2083,54 @@ where each line of input produces a line of output.}
   \fi
 }
 
-\def\item{\errmessage{@item while not in a table}}
-\def\itemx{\errmessage{@itemx while not in a table}}
-\def\kitem{\errmessage{@kitem while not in a table}}
-\def\kitemx{\errmessage{@kitemx while not in a table}}
-\def\xitem{\errmessage{@xitem while not in a table}}
-\def\xitemx{\errmessage{@xitemx while not in a table}}
-
-% Contains a kludge to get @end[description] to work.
-\def\description{\tablez{\dontindex}{1}{}{}{}{}}
+\def\item{\errmessage{@item while not in a list environment}}
+\def\itemx{\errmessage{@itemx while not in a list environment}}
 
 % @table, @ftable, @vtable.
-\def\table{\begingroup\inENV\obeylines\obeyspaces\tablex}
-{\obeylines\obeyspaces%
-\gdef\tablex #1^^M{%
-\tabley\dontindex#1        \endtabley}}
-
-\def\ftable{\begingroup\inENV\obeylines\obeyspaces\ftablex}
-{\obeylines\obeyspaces%
-\gdef\ftablex #1^^M{%
-\tabley\fnitemindex#1        \endtabley
-\def\Eftable{\endgraf\afterenvbreak\endgroup}%
-\let\Etable=\relax}}
-
-\def\vtable{\begingroup\inENV\obeylines\obeyspaces\vtablex}
-{\obeylines\obeyspaces%
-\gdef\vtablex #1^^M{%
-\tabley\vritemindex#1        \endtabley
-\def\Evtable{\endgraf\afterenvbreak\endgroup}%
-\let\Etable=\relax}}
-
-\def\dontindex #1{}
-\def\fnitemindex #1{\doind {fn}{\code{#1}}}%
-\def\vritemindex #1{\doind {vr}{\code{#1}}}%
-
-{\obeyspaces
-\gdef\tabley#1#2 #3 #4 #5 #6 #7\endtabley{\endgroup%
-\tablez{#1}{#2}{#3}{#4}{#5}{#6}}%
+\def\table{%
+  \begingroup\inENV
+  \let\itemindex\gobble
+  \tablex
 }
-
-\def\tablez #1#2#3#4#5#6{%
-\aboveenvbreak %
-\begingroup %
-\def\Edescription{\Etable}% Necessary kludge.
-\let\itemindex=#1%
-\ifnum 0#3>0 \advance \leftskip by #3\mil \fi %
-\ifnum 0#4>0 \tableindent=#4\mil \fi %
-\ifnum 0#5>0 \advance \rightskip by #5\mil \fi %
-\def\itemfont{#2}%
-\itemmax=\tableindent %
-\advance \itemmax by -\itemmargin %
-\advance \leftskip by \tableindent %
-\exdentamount=\tableindent
-\parindent = 0pt
-\parskip = \smallskipamount
-\ifdim \parskip=0pt \parskip=2pt \fi%
-\def\Etable{\endgraf\afterenvbreak\endgroup}%
-\let\item = \internalBitem %
-\let\itemx = \internalBitemx %
-\let\kitem = \internalBkitem %
-\let\kitemx = \internalBkitemx %
-\let\xitem = \internalBxitem %
-\let\xitemx = \internalBxitemx %
+\def\ftable{%
+  \begingroup\inENV
+  \def\itemindex ##1{\doind {fn}{\code{##1}}}%
+  \tablex
 }
+\def\vtable{%
+  \begingroup\inENV
+  \def\itemindex ##1{\doind {vr}{\code{##1}}}%
+  \tablex
+}
+\def\tablex#1{%
+  \def\itemindicate{#1}%
+  \parsearg\tabley
+}
+\def\tabley#1{%
+  {%
+    \makevalueexpandable
+    \edef\temp{\noexpand\tablez #1\space\space\space}%
+    \expandafter
+  }\temp \endtablez
+}
+\def\tablez #1 #2 #3 #4\endtablez{%
+  \aboveenvbreak
+  \ifnum 0#1>0 \advance \leftskip by #1\mil \fi
+  \ifnum 0#2>0 \tableindent=#2\mil \fi
+  \ifnum 0#3>0 \advance \rightskip by #3\mil \fi
+  \itemmax=\tableindent
+  \advance \itemmax by -\itemmargin
+  \advance \leftskip by \tableindent
+  \exdentamount=\tableindent
+  \parindent = 0pt
+  \parskip = \smallskipamount
+  \ifdim \parskip=0pt \parskip=2pt \fi
+  \let\item = \internalBitem
+  \let\itemx = \internalBitemx
+}
+\def\Etable{\endgraf\afterenvbreak\endgroup}
+\let\Eftable\Etable
+\let\Evtable\Etable
 
 % This is the counter used by @enumerate, which is really @itemize
 
