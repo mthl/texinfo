@@ -1,3 +1,7 @@
+2004-12-21  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xref.c: doc fix.
+
 2004-12-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/html.c (cm_node) <html>: need old-style names in the normal

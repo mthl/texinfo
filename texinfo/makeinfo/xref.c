@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.3 2004-11-01 18:24:15 karl Exp $
+   $Id: xref.c,v 1.4 2004-12-21 17:28:35 karl Exp $
 
    Copyright (C) 2004 Free Software Foundation, Inc.
 
@@ -49,7 +49,7 @@ add_xref_punctuation (void)
         add_char ('.');
       else if (next_char != ',' && next_char != '.')
         /* period and comma terminate xrefs, and nothing else.  Instead
-           of generating an Info references that can't be followed,
+           of generating an Info reference that can't be followed,
            though, just insert a period.  Not pretty, but functional.  */
         add_char ('.');
     }
