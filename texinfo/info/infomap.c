@@ -1,7 +1,7 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.2 2002-09-28 20:46:16 karl Exp $
+   $Id: infomap.c,v 1.3 2003-01-09 18:03:14 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -131,6 +131,9 @@ keymap_bind_keyseq (map, keyseq, keyentry)
           if (*s != '\0')
             {
               m[c].type = ISKMAP;
+              /* Here we are casting the Keymap pointer returned from
+                 keymap_make_keymap to an InfoCommand pointer.  Ugh.
+                 Should really be using a union.  */
               m[c].function = (InfoCommand *)keymap_make_keymap ();
             }
           break;
