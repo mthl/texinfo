@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.37 2004-04-11 17:56:45 karl Exp $
+# $Id: configure.ac,v 1.38 2004-04-21 12:57:46 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -144,7 +144,7 @@ if test "x$termlib" = xncurses; then
 fi
 
 # gnulib.
-UTILS_FUNC_MKSTEMP
+gl_FUNC_MKSTEMP
 
 # For teTeX and TeX Live.
 AC_CANONICAL_HOST

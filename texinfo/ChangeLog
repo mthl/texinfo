@@ -1,3 +1,8 @@
+2004-04-21  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (gl_FUNC_MKSTEMP): rename from UTILS_FUNC_MKSTEMP,
+	per new gnulib code.
+
 2004-04-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/tests/copying: force POSIX language setting.
