@@ -1,7 +1,7 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.52 2004-12-19 17:02:23 karl Exp $
+   $Id: xml.c,v 1.53 2005-01-17 00:25:15 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1249,6 +1249,8 @@ xml_add_char (int character)
       insert_string ("&amp;");
   else if (character == '<' && escape_html)
       insert_string ("&lt;");
+  else if (character == '>' && escape_html)
+      insert_string ("&gt;");
   else if (character == '\n' && !xml_keep_space)
     {
       if (!xml_in_para && xml_just_after_element && !multitable_active)

@@ -1,5 +1,11 @@
 2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
 
+	* makeinfo/insertion.c (handle_verbatim_environment): do HTML
+		conversions, to make ]]> work.
+	* makeinfo/xml.c (xml_add_char): also escape >.
+
+2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
+
 	* makeinfo/cmds.c (cm_tie): use &nbsp; for HTML, &#xa0; for
 		XML/Docbook.
 
