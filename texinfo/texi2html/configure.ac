@@ -39,27 +39,7 @@ AC_SUBST([USE_UNICODE])
 
 dnl Checks for programs.
 AC_ARG_VAR([PERL], [The path to the `perl' executable.])
-if test -z "$PERL"; then
-  AC_PATH_PROG([PERL], [perl], [perl], [/opt/perl5/bin:"$PATH"])
-
-  case "$PERL" in
-    /*)
-      ;;
-
-    *)
-      AC_MSG_ERROR([No path set for PERL and no `perl' found in PATH.])
-      ;;
-  esac
-fi
-case "$PERL" in
-  /*)
-    ;;
-
-  *)
-    AC_MSG_WARN(
-      [Relative paths to `perl' will prevent texi2html from running.])
-    ;;
-esac
+AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
 AC_PROG_INSTALL
 
