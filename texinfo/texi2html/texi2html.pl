@@ -32,6 +32,8 @@ use strict;
 require 5.004;
 # used in case of tests, to revert to "C" locale.
 use POSIX qw(setlocale LC_ALL LC_CTYPE);
+# used to find a relative path back to the current working directory
+use File::Spec;
 #
 # According to
 # larry.jones@sdrc.com (Larry Jones)
@@ -53,7 +55,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.102 2004-02-03 22:35:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.103 2004-02-06 00:13:42 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -244,6 +246,7 @@ our $BEFORE_OVERVIEW;
 our $AFTER_OVERVIEW;
 our $BEFORE_TOC_LINES;
 our $AFTER_TOC_LINES;
+our $NEW_CROSSREF_STYLE;;
 our %ACTIVE_ICONS;
 our %NAVIGATION_TEXT;
 our %PASSIVE_ICONS;
@@ -590,6 +593,36 @@ foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi)
     }
 }
 
+my %special_style = (
+           #'xref'      => ['keep','normal','normal','keep','normal'],
+           'xref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'ref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'pxref'         => { 'args' => ['keep','keep','keep','keep','keep'],
+               'function' => \&main::do_xref },
+           'inforef'      => { 'args' => ['keep','keep','keep'], 
+               'function' => \&main::do_xref },
+           'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
+           'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
+           'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
+);
+
+# @image is replaced by the first arg in strings
+$style_map_texi{'image'} = { 'args' => ['keep'],
+       'function' => \&t2h_default_no_texi_image }
+    unless (defined($style_map_texi{'image'}));
+
+foreach my $special (keys(%special_style))
+{
+    $style_map{$special} = $special_style{$special}
+          unless (defined($style_map{$special}));
+    $style_map_pre{$special} = $special_style{$special}
+          unless (defined($style_map_pre{$special}));
+    $style_map_texi{$special} = { 'args' => ['keep'],
+        'function' => \&t2h_remove_command }
+          unless (defined($style_map_texi{$special}));
+}
 # @T2H_UNICODE_FILE@
 
 if ($0 =~ /\.pl$/)
@@ -765,11 +798,21 @@ $index_properties =
            'verb'    => 1,
 );
 
+our $simple_map_ref = \%Texi2HTML::Config::simple_map;
+our $simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
+our $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+our $style_map_ref = \%Texi2HTML::Config::style_map;
+our $style_map_pre_ref = \%Texi2HTML::Config::style_map_pre;
+our $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+our $things_map_ref = \%Texi2HTML::Config::things_map;
+our $pre_map_ref = \%Texi2HTML::Config::pre_map;
+our $texi_map_ref = \%Texi2HTML::Config::texi_map;
+
 # delete from hash if we are using te new interface
 foreach my $code (keys(%code_style_map))
 {
     delete ($code_style_map{$code}) 
-       if (ref($Texi2HTML::Config::style_map{$code}) eq 'HASH');
+       if (ref($style_map_ref->{$code}) eq 'HASH');
 }
 
 # no paragraph in these commands
@@ -781,45 +824,15 @@ our %no_paragraph_macro = (
            'anchor'       => 1,
 );
 
-our %special_style = (
-           #'xref'      => ['keep','normal','normal','keep','normal'],
-           'xref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'ref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'pxref'         => { 'args' => ['keep','keep','keep','keep','keep'],
-               'function' => \&main::do_xref },
-           'inforef'      => { 'args' => ['keep','keep','keep'], 
-               'function' => \&main::do_xref },
-           'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
-           'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
-           'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
-);
-
-# @image is replaced by the first arg in strings
-$Texi2HTML::Config::style_map_texi{'image'} = { 'args' => ['keep'],
-       'function' => \&Texi2HTML::Config::t2h_default_no_texi_image }
-    unless (defined($Texi2HTML::Config::style_map_texi{'image'}));
-
-foreach my $special (keys(%special_style))
-{
-    $Texi2HTML::Config::style_map{$special} = $special_style{$special}
-          unless (defined($Texi2HTML::Config::style_map{$special}));
-    $Texi2HTML::Config::style_map_pre{$special} = $special_style{$special}
-          unless (defined($Texi2HTML::Config::style_map_pre{$special}));
-    $Texi2HTML::Config::style_map_texi{$special} = { 'args' => ['keep'],
-        'function' => \&Texi2HTML::Config::t2h_remove_command }
-          unless (defined($Texi2HTML::Config::style_map_texi{$special}));
-}
 
 #foreach my $command (keys(%Texi2HTML::Config::style_map))
 #{
-#    next unless (ref($Texi2HTML::Config::style_map{$command}) eq 'HASH');
+#    next unless (ref($style_map_ref->{$command}) eq 'HASH');
 #    print STDERR "CMD: $command\n";
-#    die "Bug: no args for $command in style_map\n" unless defined($Texi2HTML::Config::style_map{$command}->{'args'});
-#    die "Bug: no args for $command in style_map_pre\n" unless defined($Texi2HTML::Config::style_map_pre{$command}->{'args'});
-#    die "Bug: non existence of args for $command in style_map_texi\n" unless (exists($Texi2HTML::Config::style_map_texi{$command}->{'args'}));
-#    die "Bug: no args for $command in style_map_texi\n" unless defined($Texi2HTML::Config::style_map_texi{$command}->{'args'});
+#    die "Bug: no args for $command in style_map\n" unless defined($style_map_ref->{$command}->{'args'});
+#    die "Bug: no args for $command in style_map_pre\n" unless defined($style_map_pre_ref->{$command}->{'args'});
+#    die "Bug: non existence of args for $command in style_map_texi\n" unless (exists($style_map_texi_ref->{$command}->{'args'}));
+#    die "Bug: no args for $command in style_map_texi\n" unless defined($style_map_texi_ref->{$command}->{'args'});
 #}
 
 #
@@ -952,12 +965,10 @@ foreach my $style (keys(%Texi2HTML::Config::style_map))
 {
     $style_type{$style} = 'style';
 }
-foreach my $accent (keys(%Texi2HTML::Config::unicode_accents))
+foreach my $accent (keys(%Texi2HTML::Config::unicode_accents), 'tieaccent', 'dotless')
 {
     $style_type{$accent} = 'accent';
 }
-$style_type{'tieaccent'} = 'accent';
-$style_type{'dotless'} = 'accent';
 foreach my $simple ('ctrl', 'w', 'url')
 {
     $style_type{$simple} = 'simple';
@@ -966,7 +977,6 @@ foreach my $special ('footnote', 'ref', 'xref', 'pxref', 'inforef', 'anchor', 'i
 {
     $style_type{$special} = 'special';
 }
-
 
 # raw formats which are expanded especially
 my @raw_regions = ('html', 'verbatim', 'tex', 'xml');
@@ -1993,6 +2003,18 @@ $T2H_DEBUG |= $DEBUG_TEXI if ($Texi2HTML::Config::DUMP_TEXI);
 # file name buisness
 #
 
+# this is directly pasted over from latex2html
+sub getcwd
+{
+    local($_) = `pwd`;
+
+    die "'pwd' failed (out of memory?)\n"
+        unless length;
+    chop;
+    $_;
+}
+
+
 my $docu_dir;            # directory of the document
 my $docu_name;           # basename of the document
 my $docu_rdir;           # directory for the output
@@ -2105,6 +2127,45 @@ unless (-w $result_rdir)
     die "$ERROR $docu_rdir not writable\n";
 }
 
+# relative path leading to the working directory from the document directory
+my $path_to_working_dir = $docu_rdir;
+if ($docu_rdir ne '')
+{
+    my $cwd = getcwd;
+    my $docu_path = $docu_rdir;
+    $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
+    my @result = ();
+    foreach my $element (split /\//, File::Spec->canonpath($docu_path))
+    {
+        if ($element eq '')
+        {
+            push @result, '';
+        }
+        elsif ($element eq '..')
+        {
+            if (@result and ($result[-1] eq ''))
+            {
+                print STDERR "Too much .. in absolute file name\n";
+            }
+            elsif (@result and ($result[-1] ne '..'))
+            {
+                pop @result;
+            }
+            else
+            {
+                push @result, $element;
+            }
+        }
+        else
+        {
+            push @result, $element;
+        }
+    }
+    $path_to_working_dir = File::Spec->abs2rel($cwd, join ('/', @result));
+    $path_to_working_dir =~ s|.*/||;
+    $path_to_working_dir .= '/' unless($path_to_working_dir eq '');
+}
+
 # extension
 if ($Texi2HTML::Config::SHORTEXTN)
 {
@@ -2183,8 +2244,8 @@ if ($Texi2HTML::Config::USE_ISO)
 {
     foreach my $thing (keys(%Texi2HTML::Config::iso_symbols))
     {
-         $Texi2HTML::Config::things_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
-         $Texi2HTML::Config::pre_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
+         $things_map_ref->{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
+         $pre_map_ref->{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
     }
 }
 
@@ -2553,7 +2614,7 @@ sub to_html()
     }
     else
     {
-        if (getcwd() =~ /\./)
+        if (main::getcwd() =~ /\./)
         {
             warn "$ERROR Warning l2h: current dir contains a dot. Use /tmp as l2h_tmp dir \n";
             $dotbug = 1;
@@ -2588,18 +2649,6 @@ sub to_html()
         return 1;
     }
 }
-
-# this is directly pasted over from latex2html
-sub getcwd
-{
-    local($_) = `pwd`;
-
-    die "'pwd' failed (out of memory?)\n"
-        unless length;
-    chop;
-    $_;
-}
-
 
 ##########################
 # Third stage: Extract generated contents from latex2html run
@@ -6046,7 +6095,7 @@ sub do_paragraph($$)
     my $align = '';
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
     
-    if (exists($Texi2HTML::Config::style_map{$paragraph_command}) and
+    if (exists($style_map_ref->{$paragraph_command}) and
        !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}))
     { 
         if ($format eq 'itemize')
@@ -6056,7 +6105,7 @@ sub do_paragraph($$)
             $text = $text . "\n";
         }
     }
-    elsif (exists($Texi2HTML::Config::things_map{$paragraph_command}))
+    elsif (exists($things_map_ref->{$paragraph_command}))
     {
         $paragraph_command_formatted = do_simple($paragraph_command, '', $state);
     }
@@ -6076,12 +6125,12 @@ sub do_preformatted($$)
     $pre_style = $state->{'preformatted_stack'}->[-1]->{'pre_style'} if ($state->{'preformatted_stack'}->[-1]->{'pre_style'});
     $class = $state->{'preformatted_stack'}->[-1]->{'class'};
     print STDERR "BUG: !state->{'preformatted_stack'}->[-1]->{'class'}\n" unless ($class);
-    if (exists($Texi2HTML::Config::style_map{$leading_command}) and
+    if (exists($style_map_ref->{$leading_command}) and
        !exists($Texi2HTML::Config::special_list_commands{$format}->{$leading_command}) and ($style_type{$leading_command} eq 'style'))
     {
         $text = do_simple($leading_command, $text, $state,[$text]) if ($format eq 'itemize');
     }
-    elsif (exists($Texi2HTML::Config::things_map{$leading_command}))
+    elsif (exists($things_map_ref->{$leading_command}))
     {
         $leading_command_formatted = do_simple($leading_command, '', $state);
     }
@@ -6094,15 +6143,74 @@ sub do_external_ref($)
     my $file = '';
     if ($node =~ s/^\((.+?)\)//)
     {
-         $file = $1 . "/";
-         $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if ($Texi2HTML::Config::EXTERNAL_DIR);
+         $file = $1;
+         if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+         {
+             $file =~ s/\.[^\.]*$//;
+             $file =~ s/^.*\///;
+             $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if (defined($Texi2HTML::Config::EXTERNAL_DIR));
+             if ($Texi2HTML::Config::SPLIT)
+             {
+                 $file .= '/';
+             }
+             else
+             {
+                 $file .= '.' . $Texi2HTML::Config::NODE_FILE_EXTENSION;
+             }
+         }
+         else
+         {
+             $file .= "/";
+#print STDERR "!!!$Texi2HTML::Config::EXTERNAL_DIR\n";
+             $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if (defined($Texi2HTML::Config::EXTERNAL_DIR));
+         }
     }
-    return $file unless ($node ne '');
+    if ($node eq '')
+    {
+         if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+         {
+             return $file . '#Top';
+         }
+         else
+         {
+             return $file;
+         }
+    }
     $node = normalise_node($node);
-    $node = remove_texi($node);
-    $node =~ s/[^\w\.\-]/-/g;
-    $node = $Texi2HTML::Config::TOP_NODE_FILE if ($node eq 'Top');
-    return $file . $node . ".$Texi2HTML::Config::NODE_FILE_EXTENSION";
+#print STDERR "NEW_CROSSREF_STYLE $Texi2HTML::Config::NEW_CROSSREF_STYLE $nodes{$node}, $nodes{$node}->{'cross_manual_target'}\n";
+    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+    {
+         if (exists($nodes{$node}) and ($nodes{$node}->{'cross_manual_target'})) 
+         {
+              $node = $nodes{$node}->{'cross_manual_target'};
+         }
+         else 
+         {
+              $node = Texi2HTML::Config::t2h_cross_manual_line($node);
+         }
+    }
+    else
+    {
+         $node = remove_texi($node);
+         $node =~ s/[^\w\.\-]/-/g;
+    }
+    my $target = $node;
+    $node = $Texi2HTML::Config::TOP_NODE_FILE if ($node =~ /^top$/i);
+    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+    {
+        if ($Texi2HTML::Config::SPLIT)
+        {
+            return $file . $node . ".$Texi2HTML::Config::NODE_FILE_EXTENSION" . '#' . $target;
+        }
+        else
+        {
+            return $file . '#' . $target;
+        }
+    }
+    else
+    {
+        return $file . $node . ".$Texi2HTML::Config::NODE_FILE_EXTENSION";
+    }
 }
 
 # return 1 if the following tag shouldn't begin a line
@@ -6314,7 +6422,7 @@ sub parse_format_command($$)
     my $line = shift;
     my $tag = shift;
     my $command = 'asis';
-    if (($line =~ /^\s*\@([A-Za-z]\w*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z]\w*)(\{\})?\s/) and ($Texi2HTML::Config::things_map{$1} or defined($Texi2HTML::Config::style_map{$1})))
+    if (($line =~ /^\s*\@([A-Za-z]\w*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z]\w*)(\{\})?\s/) and ($things_map_ref->{$1} or defined($style_map_ref->{$1})))
     {
         $line =~ s/^\s*\@([A-Za-z]\w*)(\{\})?\s*//;
         $command = $1;
@@ -6890,7 +6998,10 @@ sub do_image($$$$)
         $args[3] = do_text($args[3]);
         $base = $args[3] if ($args[3] =~ /\S/);
     }
-    return &$Texi2HTML::Config::image(&$Texi2HTML::Config::protect_text($image), &$Texi2HTML::Config::protect_text($base), $state->{'preformatted'}, $file_name);
+    return &$Texi2HTML::Config::image(
+    &$Texi2HTML::Config::protect_text($path_to_working_dir . $image),
+    &$Texi2HTML::Config::protect_text($base), 
+    $state->{'preformatted'}, &$Texi2HTML::Config::protect_text($file_name));
 }
 
 sub duplicate_state($)
@@ -8166,12 +8277,12 @@ sub scan_structure($$$$;$)
                 {
                     if ($1 eq 'code')
                     {
-                        $Texi2HTML::Config::style_map{'kbd'} = $Texi2HTML::Config::style_map{'code'};
-                        $Texi2HTML::Config::style_map_pre{'kbd'} = $Texi2HTML::Config::style_map_pre{'code'};
+                        $style_map_ref->{'kbd'} = $style_map_ref->{'code'};
+                        $style_map_pre_ref->{'kbd'} = $style_map_pre_ref->{'code'};
                     }
                     elsif ($1 eq 'example')
                     {
-                        $Texi2HTML::Config::style_map_pre{'kbd'} = $Texi2HTML::Config::style_map_pre{'code'};
+                        $style_map_pre_ref->{'kbd'} = $style_map_pre_ref->{'code'};
                     }
                     elsif ($1 ne 'distinct')
                     {
@@ -8936,13 +9047,13 @@ sub scan_line($$$$;$)
                 }
             }
             # a macro which should be like @macroname{}. We handle it...
-            elsif ($Texi2HTML::Config::things_map{$macro})
+            elsif ($things_map_ref->{$macro})
             {
                 echo_warn ("$macro requires {}", $line_nr);
                 add_prev ($text, $stack, do_simple($macro, '', $state));
             }
             # a macro like @macroname
-            elsif (defined($Texi2HTML::Config::simple_map{$macro}))
+            elsif (defined($simple_map_ref->{$macro}))
             {
                 add_prev($text, $stack, do_simple($macro, '', $state));
             }
@@ -9283,7 +9394,7 @@ sub scan_line($$$$;$)
                     my $style = pop @$stack;
                     my $result;
                     my $macro = $style->{'style'};
-                    if (ref($Texi2HTML::Config::style_map{$macro}) eq 'HASH')
+                    if (ref($style_map_ref->{$macro}) eq 'HASH')
                     #if (exists($style_args{$macro}))
                     {
                          push (@{$style->{'args'}}, $style->{'text'});
@@ -9296,7 +9407,7 @@ sub scan_line($$$$;$)
                          #}
                          $style->{'text'} = $style->{'fulltext'};
                          $state->{'keep_texi'} = 0 if (#$state->{'keep_texi'} 
-                             ($Texi2HTML::Config::style_map{$macro}->{'args'}->[$style->{'arg_nr'}] eq 'keep') 
+                             ($style_map_ref->{$macro}->{'args'}->[$style->{'arg_nr'}] eq 'keep') 
                              and ($state->{'keep_nr'} == 1));
                     }
                     $state->{'no_paragraph'}-- if ($no_paragraph_macro{$macro});
@@ -9310,7 +9421,7 @@ sub scan_line($$$$;$)
                         }
                         else
                         {
-                            if ($Texi2HTML::Config::style_map{$macro} and !$style->{'no_close'} and (defined($style_type{'$macro'})) and (($style_type{'$macro'} eq 'style') or ($style_type{'$macro'} eq 'accent')))
+                            if ($style_map_ref->{$macro} and !$style->{'no_close'} and (defined($style_type{'$macro'})) and (($style_type{'$macro'} eq 'style') or ($style_type{'$macro'} eq 'accent')))
                             {
                                 my $style = pop @{$state->{'style_stack'}};
                                 print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
@@ -9341,10 +9452,10 @@ sub scan_line($$$$;$)
         {
              add_prev($text, $stack, do_text($1, $state));
              if (@$stack and defined($stack->[-1]->{'style'})
-                  and (ref($Texi2HTML::Config::style_map{$stack->[-1]->{'style'}}) eq 'HASH'))
+                  and (ref($style_map_ref->{$stack->[-1]->{'style'}}) eq 'HASH'))
              {
                   my $macro = $stack->[-1]->{'style'};
-                  my $style_args = $Texi2HTML::Config::style_map{$macro}->{'args'};
+                  my $style_args = $style_map_ref->{$macro}->{'args'};
                   if (exists($style_args->[$stack->[-1]->{'arg_nr'} + 1]))
                   {
                        push (@{$stack->[-1]->{'args'}}, $stack->[-1]->{'text'});
@@ -9401,9 +9512,9 @@ sub open_arg($$$)
     my $macro = shift;
     my $arg_nr = shift;
     my $state = shift;
-    if (ref($Texi2HTML::Config::style_map{$macro}) eq 'HASH')
+    if (ref($style_map_ref->{$macro}) eq 'HASH')
     {
-         my $arg = $Texi2HTML::Config::style_map{$macro}->{'args'}->[$arg_nr];
+         my $arg = $style_map_ref->{$macro}->{'args'}->[$arg_nr];
          if ($arg eq 'code' and !$state->{'keep_texi'})
          {
              $state->{'code_style'}++;
@@ -9425,9 +9536,9 @@ sub close_arg($$$)
     my $macro = shift;
     my $arg_nr = shift;
     my $state = shift;
-    if (ref($Texi2HTML::Config::style_map{$macro}) eq 'HASH')
+    if (ref($style_map_ref->{$macro}) eq 'HASH')
     {
-         my $arg = $Texi2HTML::Config::style_map{$macro}->{'args'}->[$arg_nr];
+         my $arg = $style_map_ref->{$macro}->{'args'}->[$arg_nr];
          if ($arg eq 'code' and !$state->{'keep_texi'})
          {
              $state->{'code_style'}--;
@@ -9480,12 +9591,12 @@ sub add_term($$$$;$)
     my $term = pop @$stack;
     my $command_formatted;
     chomp ($term->{'text'});
-    if (exists($Texi2HTML::Config::style_map{$format->{'command'}}) and 
+    if (exists($style_map_ref->{$format->{'command'}}) and 
        !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and ($style_type{$format->{'command'}} eq 'style'))
     {
          $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state, [$term->{'text'}]); 
     }
-    elsif (exists($Texi2HTML::Config::things_map{$format->{'command'}}))
+    elsif (exists($things_map_ref->{$format->{'command'}}))
     {
         $command_formatted = do_simple($format->{'command'}, '', $state);
     }
@@ -9651,7 +9762,7 @@ sub add_item($$$$;$)
     if (!$format->{'first'} or ($item->{'text'} =~ /\S/o))
     {
         my $formatted_command;
-        if (defined($format->{'command'}) and exists($Texi2HTML::Config::things_map{$format->{'command'}}))
+        if (defined($format->{'command'}) and exists($things_map_ref->{$format->{'command'}}))
         {
              $formatted_command = do_simple($format->{'command'}, '', $state);
         }
@@ -9687,7 +9798,7 @@ sub do_simple($$$;$$$$)
     $arg_nr = @$args - 1 if (defined($args));
     
 #print STDERR "DO_SIMPLE $macro $arg_nr $args @$args\n" if (defined($args));
-    if (defined($Texi2HTML::Config::simple_map{$macro}))
+    if (defined($simple_map_ref->{$macro}))
     {
         if ($state->{'keep_texi'})
         {
@@ -9696,18 +9807,18 @@ sub do_simple($$$;$$$$)
         elsif ($state->{'remove_texi'})
         {
 #print STDERR "DO_SIMPLE remove_texi $macro\n";
-             return  $Texi2HTML::Config::simple_map_texi{$macro};
+             return  $simple_map_texi_ref->{$macro};
         }
         elsif ($state->{'preformatted'})
         {
-             return $Texi2HTML::Config::simple_map_pre{$macro};
+             return $simple_map_pre_ref->{$macro};
         }
         else
         {
-             return $Texi2HTML::Config::simple_map{$macro};
+             return $simple_map_ref->{$macro};
         }
     }
-    if (defined($Texi2HTML::Config::things_map{$macro}))
+    if (defined($things_map_ref->{$macro}))
     {
         if ($state->{'keep_texi'})
         {
@@ -9715,20 +9826,20 @@ sub do_simple($$$;$$$$)
         }
         elsif ($state->{'remove_texi'})
         {
-             $result =  $Texi2HTML::Config::texi_map{$macro};
+             $result =  $texi_map_ref->{$macro};
 #print STDERR "DO_SIMPLE remove_texi texi_map $macro\n";
         }
         elsif ($state->{'preformatted'})
         {
-             $result = $Texi2HTML::Config::pre_map{$macro};
+             $result = $pre_map_ref->{$macro};
         }
         else 
         {
-             $result = $Texi2HTML::Config::things_map{$macro};
+             $result = $things_map_ref->{$macro};
         }
         return $result . $text;
     }
-    elsif (defined($Texi2HTML::Config::style_map{$macro}))
+    elsif (defined($style_map_ref->{$macro}))
     {
         if ($state->{'keep_texi'})
         {
@@ -9739,16 +9850,16 @@ sub do_simple($$$;$$$$)
              my $style;
              if ($state->{'remove_texi'})
              {
-#print STDERR "REMOVE $macro, $Texi2HTML::Config::style_map_texi{$macro}, fun $Texi2HTML::Config::style_map_texi{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_ascii_accent;
-                  $style = $Texi2HTML::Config::style_map_texi{$macro};
+#print STDERR "REMOVE $macro, $style_map_texi_ref->{$macro}, fun $style_map_texi_ref->{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_ascii_accent;
+                  $style = $style_map_texi_ref->{$macro};
              }
              elsif ($state->{'preformatted'})
              {
-                  $style = $Texi2HTML::Config::style_map_pre{$macro};
+                  $style = $style_map_pre_ref->{$macro};
              }
              else
              {
-                  $style = $Texi2HTML::Config::style_map{$macro};
+                  $style = $style_map_ref->{$macro};
              }
              if (defined($style))
              {                           # known style
@@ -10119,8 +10230,11 @@ sub close_paragraph($$$;$)
     #dump_stack($text, $stack, $state);
     my $new_stack = close_stack($text, $stack, $state, $line_nr, 1);
     my $top_stack = top_stack($stack);
-if ($top_stack and !defined($top_stack->{'format'})){print STDERR "!!!!!";
-dump_stack($text, $stack, $state);}
+    if ($top_stack and !defined($top_stack->{'format'}))
+    { #debug
+         print STDERR "Bug: no format on top stack\n";
+         dump_stack($text, $stack, $state);
+    }
     if ($top_stack and ($top_stack->{'format'} eq 'paragraph'))
     {
         my $paragraph = pop @$stack;
@@ -10387,9 +10501,6 @@ set_document_language('en') unless ($lang_set);
 # APA: There's got to be a better way:
 $T2H_TODAY = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20 September 1993";
 $T2H_USER = &$I('unknown');
-$Texi2HTML::Config::things_map{'today'} = $T2H_TODAY;
-$Texi2HTML::Config::pre_map{'today'} = $T2H_TODAY;
-$Texi2HTML::Config::texi_map{'today'} = $T2H_TODAY;
 
 if ($Texi2HTML::Config::TEST)
 {
@@ -10409,6 +10520,9 @@ else
     # implemented there.
     $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
+$things_map_ref->{'today'} = $T2H_TODAY;
+$pre_map_ref->{'today'} = $T2H_TODAY;
+$texi_map_ref->{'today'} = $T2H_TODAY;
 
 open_file($docu, $texi_line_number);
 Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)

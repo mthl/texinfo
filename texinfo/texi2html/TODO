@@ -38,9 +38,15 @@ h1 titlefont (@titlefont),
 (see http://www.w3.org/TR/REC-html40/types.html#h-6.12 and
 http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
-* implement the cross references stuff discussed on the texinfo list.
-
 * Document Texi2HTML::THIS_ELEMENT
+
+* Test the back path stuff for images.
+
+* Test T2h_nounicode.
+  Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
+  implement the cross references stuff discussed on the texinfo list to 
+  generate targets.
+
 
 * handle right things like
 -> error with @item on same line than @table

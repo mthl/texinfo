@@ -1,3 +1,18 @@
+2004-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 
+	when called with --test, @today value is fixed.
+	Find the relative path leading back to the current directory from
+	the output directory, such that the path to the image files are right.
+	Use a ref on the Texi2HTML::Config hashes such that changing the
+	hash used is easy. This is used in T2h_unicode.pm and 
+	T2h_nounicode.pm for expansion of nodes in external refs.
+	Add special styles early.
+	A new variable NEW_CROSSREF_STYLE. If true the new scheme for html 
+	cross refs proposed onthe texinfo list is used for @ref.
+	* Tests/formatting/test_refs.texi, Tests/formatting/cross_refs.init: 
+	new files used to test the new cross ref scheme.
+
 2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: call the $index_summary_file_* 

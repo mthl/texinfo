@@ -21,7 +21,7 @@
 #-##############################################################################
 
 # This requires perl version 5 or higher
-require 5.008;
+require 5.0;
 
 #package Texi2HTML::Config;
 
@@ -33,6 +33,39 @@ sub set_encoding($)
     return undef;
 }
 
+%cross_ref_texi_map = %texi_map;
+%cross_ref_simple_map_texi = %simple_map_texi;
+%cross_ref_style_map_texi = ();
+
+foreach my $command (keys(%style_map_texi))
+{
+    $cross_ref_style_map_texi{$command} = {}; 
+    foreach my $key (keys (%{$style_map_texi{$command}}))
+    {
+#print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
+         $cross_ref_style_map_texi{$command}->{$key} = 
+              $style_map_texi{$command}->{$key};
+    }
+}
+
+foreach my $key (keys(%unicode_map))
+{
+    if ($unicode_map{$key} ne '')
+    {
+        $cross_ref_texi_map{$key} = '_' . lc($unicode_map{$key});
+    }
+}
+
+$cross_ref_simple_map_texi{"\n"} = ' ';
+
+foreach my $key (keys(%cross_ref_style_map_texi))
+{
+    if (($unicode_accents{$key} or ($key eq 'tieaccent') or ($key eq 'dotless')) 
+        and (ref($cross_ref_style_map_texi{$key}) eq 'HASH'))
+    {
+        $cross_ref_style_map_texi{$key}->{'function'} = \&cross_manual_accent;
+    }
+}
 
 # This function is used to construct a link name from a node name as 
 # described in the proposal I posted on texinfo-pretest.
@@ -40,34 +73,16 @@ sub cross_manual_links($$)
 {
     my $nodes_hash = shift;
     my $cross_reference_hash = shift;
-    my %texi_map_kept = %texi_map;
-    foreach my $key (keys(%unicode_map))
-    {
-        if ($unicode_map{$key} ne '')
-        {
-            $texi_map{$key} = '_' . lc($unicode_map{$key});
-        }
-    }
-    my %kept_accents = ();
-    foreach my $key (keys(%style_map_texi))
-    {
-        if (($main::style_type{$key} eq 'accent') and (ref($style_map_texi{$key}) eq 'HASH'))
-        {
-            $kept_accents{$key} = $style_map_texi{$key}->{'function'};
-            $style_map_texi{$key}->{'function'} = \&cross_manual_accent;
-        }
-    }
-    my %simple_map_kept = %simple_map_texi;
-    $simple_map_texi{"\n"} = ' ';
 
+    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $main::texi_map_ref = \%cross_ref_texi_map;
     my $normal_text_kept = $normal_text;
-    my $protect_text_kept = $protect_text;
     $normal_text = \&cross_manual_normal_text;
-    #$protect_text = \&cross_manual_protect_text;
     foreach my $key (keys(%$nodes_hash))
     {
         my $node = $nodes_hash->{$key};
-        next if ($node->{'external_node'} or $node->{'index_page'});
+        next if ($node->{'index_page'});
         if (!defined($node->{'texi'}))
         {
             # begin debug section 
@@ -80,25 +95,42 @@ sub cross_manual_links($$)
         else 
         {
             $node->{'cross_manual_target'} = main::remove_texi($node->{'texi'});
-            if (defined($cross_reference_hash->{$node->{'cross_manual_target'}}))
+            unless ($node->{'external_node'})
             {
-                main::echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_hash->{$node->{'cross_manual_target'}}'");
-            }
-            else 
-            {
-                $cross_reference_hash->{$node->{'cross_manual_target'}} = $node->{'texi'};
+                if (defined($cross_reference_hash->{$node->{'cross_manual_target'}}))
+                {
+                    main::echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_hash->{$node->{'cross_manual_target'}}'");
+                }
+                else 
+                {
+                    $cross_reference_hash->{$node->{'cross_manual_target'}} = $node->{'texi'};
+                }
             }
             #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
         }
     }
-    %texi_map = %texi_map_kept;
-    %simple_map_texi = %simple_map_kept;
-    foreach my $key (keys(%kept_accents))
-    {
-         $style_map_texi{$key}->{'function'} = $kept_accents{$key};
-    }
     $normal_text = $normal_text_kept;
-    #$protect_text = $protect_text_kept;
+    $main::simple_map_texi_ref = \%simple_map_texi;
+    $main::style_map_texi_ref = \%style_map_texi;
+    $main::texi_map_ref = \%texi_map;
+}
+
+sub t2h_cross_manual_line($)
+{
+    my $text = shift;
+    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $main::texi_map_ref = \%cross_ref_texi_map;
+    my $normal_text_kept = $normal_text;
+    $normal_text = \&cross_manual_normal_text;
+    
+    my $cross_ref = main::remove_texi($text);
+
+    $normal_text = $normal_text_kept;
+    $main::simple_map_texi_ref = \%simple_map_texi;
+    $main::style_map_texi_ref = \%style_map_texi;
+    $main::texi_map_ref = \%texi_map;
+    return $cross_ref;
 }
 
 sub cross_manual_accent($$)
@@ -150,11 +182,5 @@ sub cross_manual_normal_text($)
    
    return $result;
 }
-
-#sub cross_manual_normal_text($)
-#{
-#    my $text = shift;
-#    return $text;
-#}
 
 1;

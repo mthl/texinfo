@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.66 2004-02-03 22:35:57 pertusus Exp $
+# $Id: texi2html.init,v 1.67 2004-02-06 00:13:42 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -273,6 +273,9 @@ $DO_SCONTENTS = 0;
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
 
+# new style for crossrefs
+$NEW_CROSSREF_STYLE = 0;
+
 # if set and menu entry equals menu description, then do not print 
 # menu description.
 # Likewise, if node name equals entry name, do not print entry name.
@@ -516,6 +519,20 @@ sub t2h_default_init_out()
     );
     # Set the default body text, inserted between <body ... >
     $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
+    if (!defined($EXTERNAL_DIR))
+    {
+         if ($NEW_CROSSREF_STYLE)
+         {
+             if ($SPLIT) 
+             {
+                 $EXTERNAL_DIR = '../';
+             }
+             else
+             {
+                 $EXTERNAL_DIR = '';
+             }
+         }
+    }
     $ENCODING = $DOCUMENT_ENCODING if (!defined($ENCODING));
     my $to_encoding;
     if (defined($ENCODING))

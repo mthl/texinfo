@@ -1,0 +1,2 @@
+$EXTERNAL_DIR = undef;
+$NEW_CROSSREF_STYLE = 1;
