@@ -1,3 +1,9 @@
+2004-12-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/html.c (cm_node) <html>: need old-style names in the normal
+	(not no_headers) html case, too, of course.
+	(add_html_names): canon_white the new name, too.
+
 2004-12-19  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.7.93.

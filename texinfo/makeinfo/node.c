@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.26 2004-12-15 15:12:58 karl Exp $
+   $Id: node.c,v 1.27 2004-12-20 23:56:07 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -520,6 +520,7 @@ add_html_names (char *node)
   }
 
   /* Always output the new scheme.  */
+  canon_white (tem);
   add_word ("<a name=\"");
   add_anchor_name (tem, 0);
   add_word ("\"></a>\n");
@@ -978,13 +979,11 @@ cm_node (void)
           /* The <p> avoids the links area running on with old Lynxen. */
           add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
 
-          /* In the split HTML case, there's no point in adding the
-             old-style converted names, since the filename is wrong.  */
-          tem = expand_node_name (node);
-          add_word ("<a name=\"");
-          add_anchor_name (tem, 0);
-          add_word ("\"></a>\n");
-          free (tem);
+          /* In the split HTML case, the filename is wrong for the 
+             old-style converted names, but we'll add them anyway, for
+             consistency.  (And we need them in the normal (not
+             no_headers) nonsplit case.)  */
+          add_html_names (node);
 
           if (next)
             {
