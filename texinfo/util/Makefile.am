@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.9 2003-11-03 23:53:41 karl Exp $
+# $Id: Makefile.am,v 1.10 2003-11-04 19:56:21 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -35,5 +35,5 @@ LDADD = ../lib/libtxi.a $(LIBINTL)
 # 
 EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
-  install-info-html outline.gawk \ 
+  install-info-html outline.gawk \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi txitextest
