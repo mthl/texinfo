@@ -1,3 +1,7 @@
+2003-05-06    <karl@gnu.org>
+
+	* util/dir-example: finish getting rid of GNU packages.
+
 2003-05-04    <karl@gnu.org>
 
 	* doc/texinfo.tex (\itemizey): if no arg to @itemize, default to
