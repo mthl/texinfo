@@ -62,11 +62,11 @@ ul.toc {list-style: none}
 <p>  Many Emacs commands operate on an arbitrary contiguous
 part of the current buffer. You can select text in two ways:
 </p><ul>
-<li><p>
-You use special keys to select text by defining a region between point
+<li>
+<p>You use special keys to select text by defining a region between point
 and the mark. 
-</p></li><li><p>
-If you are running XEmacs under X, you can also select text
+</p></li><li>
+<p>If you are running XEmacs under X, you can also select text
 with the mouse. 
 </p></li></ul>
 
@@ -235,22 +235,22 @@ the mark at the new location with point back at its original location.
 <p>  Once you have created an active region, you can do many things to
 the text in it:
 </p><ul>
-<li><p>
-Kill it with <kbd>C-w</kbd> (see section <a href="#SEC87">Deletion and Killing</a>).
-</p></li><li><p>
-Save it in a register with <kbd>C-x r s</kbd> (see section <a href="xemacs_13.html#SEC102">Registers</a>).
-</p></li><li><p>
-Save it in a buffer or a file (see section <a href="#SEC100">Accumulating Text</a>).
-</p></li><li><p>
-Convert case with <kbd>C-x C-l</kbd> or <kbd>C-x C-u</kbd> <br>(see section <a href="xemacs_23.html#SEC214">Case Conversion Commands</a>).
-</p></li><li><p>
-Evaluate it as Lisp code with <kbd>M-x eval-region</kbd> (see section <a href="xemacs_25.html#SEC258">Evaluating Emacs-Lisp Expressions</a>).
-</p></li><li><p>
-Fill it as text with <kbd>M-q</kbd> (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
-</p></li><li><p>
-Print hardcopy with <kbd>M-x print-region</kbd> (see section <a href="xemacs_29.html#SEC345">Hardcopy Output</a>).
-</p></li><li><p>
-Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a href="xemacs_22.html#SEC192">Indentation</a>).
+<li>
+<p>Kill it with <kbd>C-w</kbd> (see section <a href="#SEC87">Deletion and Killing</a>).
+</p></li><li>
+<p>Save it in a register with <kbd>C-x r s</kbd> (see section <a href="xemacs_13.html#SEC102">Registers</a>).
+</p></li><li>
+<p>Save it in a buffer or a file (see section <a href="#SEC100">Accumulating Text</a>).
+</p></li><li>
+<p>Convert case with <kbd>C-x C-l</kbd> or <kbd>C-x C-u</kbd> <br>(see section <a href="xemacs_23.html#SEC214">Case Conversion Commands</a>).
+</p></li><li>
+<p>Evaluate it as Lisp code with <kbd>M-x eval-region</kbd> (see section <a href="xemacs_25.html#SEC258">Evaluating Emacs-Lisp Expressions</a>).
+</p></li><li>
+<p>Fill it as text with <kbd>M-q</kbd> (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
+</p></li><li>
+<p>Print hardcopy with <kbd>M-x print-region</kbd> (see section <a href="xemacs_29.html#SEC345">Hardcopy Output</a>).
+</p></li><li>
+<p>Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a href="xemacs_22.html#SEC192">Indentation</a>).
 </p></li></ul>
 
 <hr size="6">
@@ -430,16 +430,16 @@ background indicates highlighted text. You can triple-click to select
 whole lines. 
 </p><p>To select an arbitrary region of text:
 </p><ol>
-<li><p>
-Move the mouse cursor over the character at the beginning of the region of
+<li>
+<p>Move the mouse cursor over the character at the beginning of the region of
 text you want to select.
-</p></li><li><p>
-Press and hold the left mouse button. 
-</p></li><li><p>
-While holding the left mouse button down, drag the cursor to the
+</p></li><li>
+<p>Press and hold the left mouse button. 
+</p></li><li>
+<p>While holding the left mouse button down, drag the cursor to the
 character at the end of the region of text you want to select.
-</p></li><li><p>
-Release the left mouse button.
+</p></li><li>
+<p>Release the left mouse button.
 </p></li></ol>
 <p>The selected region of text is highlighted.
 </p><p>  Once a region of text is selected, it becomes the primary X selection
@@ -1076,12 +1076,12 @@ dragging the cursor over the text you want to copy.  The text becomes the
 primary X selection and is highlighted.  The highlighted region is also
 the Emacs selected region.
 </p><ul>
-<li><p>
-Since the region is the primary X selection, you can go to a different X
+<li>
+<p>Since the region is the primary X selection, you can go to a different X
 application and click the middle mouse button: the text that you selected in
 the previous application is pasted into the current application.
-</p></li><li><p>
-Since the region is the Emacs selected region, you can use all region
+</p></li><li>
+<p>Since the region is the Emacs selected region, you can use all region
 commands (<kbd>C-w, M-w</kbd> etc.) as well as the options of the <b>Edit</b>
 menu to manipulate the selected text.
 </p></li></ul>
@@ -1135,26 +1135,26 @@ window, the clipboard will eventually consume a lot of memory.
 </p><p>In summary, some X applications (such as `<tt>xterm</tt>') allow one to paste
 text in them from XEmacs in the following way:
 </p><ul>
-<li><p>
-Drag out a region of text in Emacs with the left mouse button,
+<li>
+<p>Drag out a region of text in Emacs with the left mouse button,
 making that text be the <b>Primary</b> selection.
-</p></li><li><p>
-Click the middle button in the other application, pasting the <b>Primary</b>
+</p></li><li>
+<p>Click the middle button in the other application, pasting the <b>Primary</b>
 selection. 
 </p></li></ul>
 
 <p>With some other applications (notably, the OpenWindows and Motif tools) you
 must use this method instead:
 </p><ul>
-<li><p>
-Drag out a region of text in Emacs with the left mouse button,
+<li>
+<p>Drag out a region of text in Emacs with the left mouse button,
 making that text be the <b>Primary</b> selection.
-</p></li><li><p>
-Copy the selected text to the <b>Clipboard</b> selection by selecting the
+</p></li><li>
+<p>Copy the selected text to the <b>Clipboard</b> selection by selecting the
 <b>Copy</b> menu item from the <b>Edit</b> menu, or by hitting the <b>Copy</b>
 key on your keyboard.
-</p></li><li><p>
-Paste the text in the other application by selecting <b>Paste</b> from its
+</p></li><li>
+<p>Paste the text in the other application by selecting <b>Paste</b> from its
 menu, or by hitting the <b>Paste</b> key on your keyboard.
 </p></li></ul>
 
@@ -1290,12 +1290,12 @@ with the mouse.
 mouse and text selected with point and the mark by setting the variable
 <code>zmacs-regions</code> to <code>nil</code>.  In that case:
 </p><ul>
-<li><p>
-The text selected with the mouse becomes both the X selection and the
+<li>
+<p>The text selected with the mouse becomes both the X selection and the
 Emacs selected region. You can use menu-bar commands as well as Emacs
 region commands on it. 
-</p></li><li><p>
-The text selected with point and the mark is not highlighted. You can
+</p></li><li>
+<p>The text selected with point and the mark is not highlighted. You can
 only use Emacs region commands on it, not the menu-bar items. 
 </p></li></ul>
 
@@ -1313,13 +1313,13 @@ for example, <kbd>C-w</kbd> only works immediately after activating the
 region.
 </p><p>More specifically:
 </p><ul>
-<li><p>
-Commands that operate on the region only work if the region is active.
-</p></li><li><p>
-Only a very small set of commands causes the region to become active--
+<li>
+<p>Commands that operate on the region only work if the region is active.
+</p></li><li>
+<p>Only a very small set of commands causes the region to become active--
 those commands whose semantics are to mark an area, such as <code>mark-defun</code>.
-</p></li><li><p>
-The region is deactivated after each command that is executed, except that
+</p></li><li>
+<p>The region is deactivated after each command that is executed, except that
 motion commands do not change whether the region is active or not.
 </p></li></ul>
 

@@ -259,13 +259,13 @@ recognized with the GNU double initial hyphen syntax.  (The reverse
 is not true.)
 </p><p>The following subsections list:
 </p><ul>
-<li><p> 
-Command line arguments that you can always use
-</p></li><li><p> 
-Command line arguments that have to appear at the beginning of the
+<li> 
+<p>Command line arguments that you can always use
+</p></li><li> 
+<p>Command line arguments that have to appear at the beginning of the
 argument list
-</p></li><li><p>
-Command line arguments that are only relevant if you are running XEmacs
+</p></li><li>
+<p>Command line arguments that are only relevant if you are running XEmacs
 under X
 </p></li></ul>
 
@@ -793,20 +793,20 @@ when looking for them.
 </p><dl compact="compact">
 <dt><code> version-specific
 </code></dt>
-<dd><p><a name="IDX115"></a>
-directories are specific to the version of XEmacs they belong to and
+<dd><a name="IDX115"></a>
+<p>directories are specific to the version of XEmacs they belong to and
 typically reside under `<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;</tt>'.
 </p></dd>
 <dt><code> site-specific
 </code></dt>
-<dd><p><a name="IDX116"></a>
-directories are independent of the version of XEmacs they belong to and
+<dd><a name="IDX116"></a>
+<p>directories are independent of the version of XEmacs they belong to and
 typically reside under `<tt>&lt;root&gt;/lib/xemacs</tt>'
 </p></dd>
 <dt><code> architecture-specific
 </code></dt>
-<dd><p><a name="IDX117"></a>
-directories are specific both to the version of XEmacs and the
+<dd><a name="IDX117"></a>
+<p>directories are specific both to the version of XEmacs and the
 architecture it runs on and typically reside under
 `<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;/&lt;ARCHITECTURE&gt;</tt>'.
 </p></dd>
@@ -819,15 +819,15 @@ aiding in debugging any problems which come up.
 </p><dl compact="compact">
 <dt><code> lisp-directory
 </code></dt>
-<dd><p><a name="IDX118"></a>
-Contains the version-specific location of the Lisp files that come with
+<dd><a name="IDX118"></a>
+<p>Contains the version-specific location of the Lisp files that come with
 the core distribution of XEmacs.  XEmacs will search it recursively to a
 depth of 1 when setting up <code>load-path</code>.
 </p></dd>
 <dt><code> load-path
 </code></dt>
-<dd><p><a name="IDX119"></a>
-Is where XEmacs searches for XEmacs Lisp files with commands like
+<dd><a name="IDX119"></a>
+<p>Is where XEmacs searches for XEmacs Lisp files with commands like
 <code>load-library</code>.
 <a name="IDX120"></a>
 It contains the package lisp directories (see further down) and the
@@ -838,8 +838,8 @@ version-specific core Lisp directories.  If the environment variable
 </p></dd>
 <dt><code> Info-directory-list
 </code></dt>
-<dd><p><a name="IDX122"></a>
-Contains the location of info files.  (See <a href="../info/">(info)</a>.)  It contains
+<dd><a name="IDX122"></a>
+<p>Contains the location of info files.  (See <a href="../info/">(info)</a>.)  It contains
 the package info directories and the version-specific core
 documentation.  Moreover, XEmacs will add `<tt>/usr/info</tt>',
 `<tt>/usr/local/info</tt>' as well as the directories of the environment
@@ -849,14 +849,14 @@ to <code>Info-directory-list</code>.
 </p></dd>
 <dt><code> exec-directory
 </code></dt>
-<dd><p><a name="IDX124"></a>
-Is the directory of architecture-dependent files that come with XEmacs,
+<dd><a name="IDX124"></a>
+<p>Is the directory of architecture-dependent files that come with XEmacs,
 especially executable programs intended for XEmacs to invoke.
 </p></dd>
 <dt><code> exec-path
 </code></dt>
-<dd><p><a name="IDX125"></a>
-Is the path for executables which XEmacs may want to start.  It contains
+<dd><a name="IDX125"></a>
+<p>Is the path for executables which XEmacs may want to start.  It contains
 the package executable paths as well as <code>exec-directory</code>, and the
 directories of the environment variables <code>PATH</code>
 <a name="IDX126"></a>
@@ -865,22 +865,22 @@ and <code>EMACSPATH</code>.
 </p></dd>
 <dt><code> doc-directory
 </code></dt>
-<dd><p><a name="IDX128"></a>
-Is the directory containing the architecture-specific `<tt>DOC</tt>' file
+<dd><a name="IDX128"></a>
+<p>Is the directory containing the architecture-specific `<tt>DOC</tt>' file
 that contains documentation for XEmacs' commands.
 </p></dd>
 <dt><code> data-directory
 </code></dt>
-<dd><p><a name="IDX129"></a>
-Is the version-specific directory that contains core data files XEmacs uses.
+<dd><a name="IDX129"></a>
+<p>Is the version-specific directory that contains core data files XEmacs uses.
 It may be initialized from the <code>EMACSDATA</code>
 <a name="IDX130"></a>
 environment variable.
 </p></dd>
 <dt><code> data-directory-list
 </code></dt>
-<dd><p><a name="IDX131"></a>
-Is the path where XEmacs looks for data files.  It contains package data
+<dd><a name="IDX131"></a>
+<p>Is the path where XEmacs looks for data files.  It contains package data
 directories as well as <code>data-directory</code>.
 </p></dd>
 </dl>

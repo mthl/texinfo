@@ -1,3 +1,19 @@
+2003-08-11  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: don't always open paragraphs 
+	in tables and such, only when needed.
+	option -output obsoletes -out_file and -subdir. It is the
+	same than -out_file when output is not split, and the same than
+	-subdir when it is split.
+	Handle empty indices.
+	Handle better @-commands with letters mixed with other characters.
+	Be more carefull about NUMBER_SECTION, such that nothing is numbered
+	when it is false.
+	Support for @documentencoding.
+	* Tests/*: add tests from the doc directory in formatting.
+	* doc/*: add a section about installation and make the manual more
+	makeinfo friendly. 
+
 2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.init, Tests/test.sh, Tests/ccvs: don't expand info

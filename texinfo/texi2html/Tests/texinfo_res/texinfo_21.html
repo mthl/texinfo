@@ -245,14 +245,14 @@ file and would also set the fill column to 70.
 </p><dl compact="compact">
 <dt><code> -D <var>var</var>
 </code></dt>
-<dd><p><a name="IDX358"></a>
-Cause the variable <var>var</var> to be defined.  This is equivalent to
+<dd><a name="IDX358"></a>
+<p>Cause the variable <var>var</var> to be defined.  This is equivalent to
 <code>@set <var>var</var></code> in the Texinfo file (see section <a href="texinfo_17.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p></dd>
 <dt><code> --commands-in-node-names
 </code></dt>
-<dd><p><a name="IDX359"></a>
-Allow <code>@</code>-commands in node names.  This is not recommended, as it
+<dd><a name="IDX359"></a>
+<p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
 `<samp>--no-validate</samp>' is used.  See section <a href="#SEC265">Pointer Validation</a>, for more
@@ -260,16 +260,16 @@ details.
 </p></dd>
 <dt><code> --docbook
 </code></dt>
-<dd><p><a name="IDX360"></a>
-Generate DocBook output rather than Info.  
+<dd><a name="IDX360"></a>
+<p>Generate DocBook output rather than Info.  
 </p></dd>
 <dt><code> --error-limit=<var>limit</var>
 </code></dt>
 <dt><code> -e <var>limit</var>
 </code></dt>
-<dd><p><a name="IDX361"></a>
+<dd><a name="IDX361"></a>
 <a name="IDX362"></a>
-Set the maximum number of errors that <code>makeinfo</code> will report
+<p>Set the maximum number of errors that <code>makeinfo</code> will report
 before exiting (on the assumption that continuing would be useless);
 default 100.
 </p></dd>
@@ -277,9 +277,9 @@ default 100.
 </code></dt>
 <dt><code> -f <var>width</var>
 </code></dt>
-<dd><p><a name="IDX363"></a>
+<dd><a name="IDX363"></a>
 <a name="IDX364"></a>
-Specify the maximum number of columns in a line; this is the right-hand
+<p>Specify the maximum number of columns in a line; this is the right-hand
 edge of a line.  Paragraphs that are filled will be filled to this
 width.  (Filling is the process of breaking up and connecting lines so
 that lines are the same length as or shorter than the number specified
@@ -290,9 +290,9 @@ is 72.  Ignored with `<samp>--html</samp>'.
 </code></dt>
 <dt><code> -s <var>style</var>
 </code></dt>
-<dd><p><a name="IDX365"></a>
+<dd><a name="IDX365"></a>
 <a name="IDX366"></a>
-Set the footnote style to <var>style</var>, either `<samp>end</samp>' for the end
+<p>Set the footnote style to <var>style</var>, either `<samp>end</samp>' for the end
 node style (the default) or `<samp>separate</samp>' for the separate node style.
 The value set by this option overrides the value set in a Texinfo file
 by an <code>@footnotestyle</code> command (see section <a href="texinfo_14.html#SEC201">Footnotes</a>).  When the
@@ -305,31 +305,31 @@ the end of the current node.  Ignored with `<samp>--html</samp>'.
 </code></dt>
 <dt><code> -F
 </code></dt>
-<dd><p><a name="IDX367"></a>
+<dd><a name="IDX367"></a>
 <a name="IDX368"></a>
-Ordinarily, if the input file has errors, the output files are not
+<p>Ordinarily, if the input file has errors, the output files are not
 created.  With this option, they are preserved.
 </p></dd>
 <dt><code> --help
 </code></dt>
 <dt><code> -h
 </code></dt>
-<dd><p><a name="IDX369"></a>
+<dd><a name="IDX369"></a>
 <a name="IDX370"></a>
-Print a usage message listing all available options, then exit successfully.
+<p>Print a usage message listing all available options, then exit successfully.
 </p></dd>
 <dt><code> --html
 </code></dt>
-<dd><p><a name="IDX371"></a>
-Generate HTML output rather than Info.  See section <a href="#SEC270">Generating HTML</a>.  By
+<dd><a name="IDX371"></a>
+<p>Generate HTML output rather than Info.  See section <a href="#SEC270">Generating HTML</a>.  By
 default, the HTML output is split into one output file per source node,
 and the split output is written into a subdirectory with the name of the
 top-level info file.
 </p></dd>
 <dt><code> -I <var>dir</var>
 </code></dt>
-<dd><p><a name="IDX372"></a>
-Append <var>dir</var> to the directory search list for finding files that
+<dd><a name="IDX372"></a>
+<p>Append <var>dir</var> to the directory search list for finding files that
 are included using the <code>@include</code> command.  By default,
 <code>makeinfo</code> searches only the current directory.  If <var>dir</var> is
 not given, the current directory `<tt>.</tt>' is appended.  Note that
@@ -349,14 +349,14 @@ that does not support <code>@macro</code>.
 </p></dd>
 <dt><code> --no-headers
 </code></dt>
-<dd><p><a name="IDX373"></a>
+<dd><a name="IDX373"></a>
 <a name="IDX374"></a>
 <a name="IDX375"></a>
 <a name="IDX376"></a>
 <a name="IDX377"></a>
 <a name="IDX378"></a>
 <a name="IDX379"></a>
-For Info output, do not include menus or node separator lines in the
+<p>For Info output, do not include menus or node separator lines in the
 output.  This results in a simple plain text file that you can (for
 example) send in email without complications, or include in a
 distribution (as in an `<tt>INSTALL</tt>' file).
@@ -370,10 +370,10 @@ overridden by `<samp>-o</samp>').
 </p></dd>
 <dt><code> --no-split
 </code></dt>
-<dd><p><a name="IDX381"></a>
+<dd><a name="IDX381"></a>
 <a name="IDX382"></a>
 <a name="IDX383"></a>
-Suppress the splitting stage of <code>makeinfo</code>.  By default, large
+<p>Suppress the splitting stage of <code>makeinfo</code>.  By default, large
 output files (where the size is greater than 70k bytes) are split into
 smaller subfiles.  For Info output, each one is approximately 50k bytes.
 For HTML output, each file contains one node (see section <a href="#SEC270">Generating HTML</a>).
@@ -382,31 +382,31 @@ For HTML output, each file contains one node (see section <a href="#SEC270">Gene
 </code></dt>
 <dt><code> --no-validate
 </code></dt>
-<dd><p><a name="IDX384"></a>
+<dd><a name="IDX384"></a>
 <a name="IDX385"></a>
 <a name="IDX386"></a>
-Suppress the pointer-validation phase of <code>makeinfo</code>.  This can also
+<p>Suppress the pointer-validation phase of <code>makeinfo</code>.  This can also
 be done with the <code>@novalidate</code> command (see section <a href="texinfo_20.html#SEC245">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
 checks are made to ensure that cross references can be resolved, etc.
 See section <a href="#SEC265">Pointer Validation</a>.
 </p></dd>
 <dt><code> --no-warn
 </code></dt>
-<dd><p><a name="IDX387"></a>
-Suppress warning messages (but <em>not</em> error messages).  You might
+<dd><a name="IDX387"></a>
+<p>Suppress warning messages (but <em>not</em> error messages).  You might
 want this if the file you are creating has examples of Texinfo cross
 references within it, and the nodes that are referenced do not actually
 exist.
 </p></dd>
 <dt><code> --number-sections
 </code></dt>
-<dd><p><a name="IDX388"></a>
-Output chapter, section, and appendix numbers as in printed manuals.
+<dd><a name="IDX388"></a>
+<p>Output chapter, section, and appendix numbers as in printed manuals.
 </p></dd>
 <dt><code> --no-number-footnotes
 </code></dt>
-<dd><p><a name="IDX389"></a>
-Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
+<dd><a name="IDX389"></a>
+<p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
 numbers each footnote sequentially in a single node, resetting the
 current footnote number to 1 at the start of each node.
 </p></dd>
@@ -414,9 +414,9 @@ current footnote number to 1 at the start of each node.
 </code></dt>
 <dt><code> -o <var>file</var>
 </code></dt>
-<dd><p><a name="IDX390"></a>
+<dd><a name="IDX390"></a>
 <a name="IDX391"></a>
-Specify that the output should be directed to <var>file</var> and not to the
+<p>Specify that the output should be directed to <var>file</var> and not to the
 file name specified in the <code>@setfilename</code> command found in the
 Texinfo source (see section <a href="texinfo_4.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is `<samp>-</samp>', output
 goes to standard output and `<samp>--no-split</samp>' is implied.  For split
@@ -425,8 +425,8 @@ HTML nodes are written (see section <a href="#SEC270">Generating HTML</a>).
 </p></dd>
 <dt><code> -P <var>dir</var>
 </code></dt>
-<dd><p><a name="IDX392"></a>
-Prepend <var>dir</var> to the directory search list for <code>@include</code>.
+<dd><a name="IDX392"></a>
+<p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
 If <var>dir</var> is not given, the current directory `<tt>.</tt>' is prepended.
 See `<samp>-I</samp>' for more details.
 </p></dd>
@@ -434,9 +434,9 @@ See `<samp>-I</samp>' for more details.
 </code></dt>
 <dt><code> -p <var>indent</var>
 </code></dt>
-<dd><p><a name="IDX393"></a>
+<dd><a name="IDX393"></a>
 <a name="IDX394"></a>
-Set the paragraph indentation style to <var>indent</var>.  The value set by
+<p>Set the paragraph indentation style to <var>indent</var>.  The value set by
 this option overrides the value set in a Texinfo file by an
 <code>@paragraphindent</code> command (see section <a href="texinfo_4.html#SEC65">Paragraph Indenting</a>).  The value
 of <var>indent</var> is interpreted as follows:
@@ -460,9 +460,9 @@ of <var>indent</var> is interpreted as follows:
 </code></dt>
 <dt><code> -r <var>limit</var>
 </code></dt>
-<dd><p><a name="IDX395"></a>
+<dd><a name="IDX395"></a>
 <a name="IDX396"></a>
-Set the value of the number of references to a node that
+<p>Set the value of the number of references to a node that
 <code>makeinfo</code> will make without reporting a warning.  If a node has more
 than this number of references in it, <code>makeinfo</code> will make the
 references but also report a warning.  The default is 1000.
@@ -474,8 +474,8 @@ references but also report a warning.  The default is 1000.
 </p></dd>
 <dt><code> --verbose
 </code></dt>
-<dd><p><a name="IDX397"></a>
-Cause <code>makeinfo</code> to display messages saying what it is doing.
+<dd><a name="IDX397"></a>
+<p>Cause <code>makeinfo</code> to display messages saying what it is doing.
 Normally, <code>makeinfo</code> only outputs messages if there are errors or
 warnings.
 </p></dd>
@@ -483,14 +483,14 @@ warnings.
 </code></dt>
 <dt><code> -V
 </code></dt>
-<dd><p><a name="IDX398"></a>
+<dd><a name="IDX398"></a>
 <a name="IDX399"></a>
-Print the version number, then exit successfully.
+<p>Print the version number, then exit successfully.
 </p></dd>
 <dt><code> --xml
 </code></dt>
-<dd><p><a name="IDX400"></a>
-Generate XML output rather than Info.  
+<dd><a name="IDX400"></a>
+<p>Generate XML output rather than Info.  
 </p></dd>
 </dl>
 
@@ -521,28 +521,28 @@ option or the <code>@novalidate</code> command in the source file (see section <
 Info file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
 </p><ol>
-<li><p>
-If a `Next', `Previous', or `Up' node reference is a reference to a
+<li>
+<p>If a `Next', `Previous', or `Up' node reference is a reference to a
 node in the current file and is not an external reference such as to
 `<tt>(dir)</tt>', then the referenced node must exist.
-</p></li><li><p>
-In every node, if the `Previous' node is different from the `Up' node,
+</p></li><li>
+<p>In every node, if the `Previous' node is different from the `Up' node,
 then the node pointed to by the `Previous' field must have a `Next'
 field which points back to this node.
-</p></li><li><p>
-Every node except the `Top' node must have an `Up' pointer.
-</p></li><li><p>
-The node referenced by an `Up' pointer must itself reference the current
+</p></li><li>
+<p>Every node except the `Top' node must have an `Up' pointer.
+</p></li><li>
+<p>The node referenced by an `Up' pointer must itself reference the current
 node through a menu item, unless the node referenced by `Up'
 has the form `(<var>file</var>)'.
-</p></li><li><p>
-If the `Next' reference of a node is not the same as the `Next' reference
+</p></li><li>
+<p>If the `Next' reference of a node is not the same as the `Next' reference
 of the `Up' reference, then the node referenced by the `Next' pointer
 must have a `Previous' pointer that points back to the current node.
 This rule allows the last node in a section to point to the first node
 of the next chapter.
-</p></li><li><p>
-Every node except `Top' should be referenced by at least one other node,
+</p></li><li>
+<p>Every node except `Top' should be referenced by at least one other node,
 either via the `Previous' or `Next' links, or via a menu or a
 cross-reference.
 </p></li></ol>
@@ -653,16 +653,16 @@ output.
 </kbd></dt>
 <dt><kbd> M-x makeinfo-kill-job
 </kbd></dt>
-<dd><p><a name="IDX408"></a>
-Kill the current running <code>makeinfo</code> job
+<dd><a name="IDX408"></a>
+<p>Kill the current running <code>makeinfo</code> job
 (from <code>makeinfo-region</code> or <code>makeinfo-buffer</code>).
 </p></dd>
 <dt><kbd> C-c C-m C-l
 </kbd></dt>
 <dt><kbd> M-x makeinfo-recenter-output-buffer
 </kbd></dt>
-<dd><p><a name="IDX409"></a>
-Redisplay the <code>makeinfo</code> shell buffer to display its most recent
+<dd><a name="IDX409"></a>
+<p>Redisplay the <code>makeinfo</code> shell buffer to display its most recent
 output.
 </p></dd>
 </dl>
@@ -1088,10 +1088,10 @@ name, not `<samp>gdb.info</samp>'.
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
 ways to specify its location:
 </p><ol>
-<li><p>
-Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
-</p></li><li><p>
-If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
+<li>
+<p>Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
+</p></li><li>
+<p>If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
 file, in its directory; and then add the name of that directory to the
 <code>Info-directory-list</code> variable in your personal or site
 initialization file.
@@ -1100,8 +1100,8 @@ must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
 each of the listed directories.  (In Emacs version 18, you can set the
 <code>Info-directory</code> variable to the name of only one
 directory.)
-</p></li><li><p>
-Specify the Info directory name in the <code>INFOPATH</code> environment
+</p></li><li>
+<p>Specify the Info directory name in the <code>INFOPATH</code> environment
 variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
 (Only you and others who set this environment variable will be able to
 find Info files whose location is specified this way.)
@@ -1144,22 +1144,22 @@ file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
 your `<tt>autoexec.bat</tt>' file or in the Registry.  Each type of shell
 uses a different syntax.
 </p><ul>
-<li><p>
-In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
+<li>
+<p>In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
 variable as follows:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
-</li><li><p>
-In a `<tt>.profile</tt>' file, you would achieve the same effect by
+</li><li>
+<p>In a `<tt>.profile</tt>' file, you would achieve the same effect by
 writing:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
-</li><li><p>
+</li><li>
 <a name="IDX415"></a>
-In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+<p>In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
@@ -1314,8 +1314,8 @@ open `<tt><var>dir-file</var>.gz</tt>'.
 </p><dl compact="compact">
 <dt><code> --delete
 </code></dt>
-<dd><p><a name="IDX423"></a>
-Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
+<dd><a name="IDX423"></a>
+<p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
 an optional `<samp>.info</samp>' in either one).  Don't insert any new entries.
 </p></dd>
@@ -1323,18 +1323,18 @@ an optional `<samp>.info</samp>' in either one).  Don't insert any new entries.
 </code></dt>
 <dt><code> -d <var>name</var>
 </code></dt>
-<dd><p><a name="IDX424"></a>
+<dd><a name="IDX424"></a>
 <a name="IDX425"></a>
-Specify file name of the Info directory file.  This is equivalent to
+<p>Specify file name of the Info directory file.  This is equivalent to
 using the <var>dir-file</var> argument.
 </p></dd>
 <dt><code> --entry=<var>text</var>
 </code></dt>
 <dt><code> -e <var>text</var>
 </code></dt>
-<dd><p><a name="IDX426"></a>
+<dd><a name="IDX426"></a>
 <a name="IDX427"></a>
-Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
+<p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
 form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
 added.  If you don't specify any entries, they are determined from
@@ -1344,55 +1344,55 @@ information in the Info file itself.
 </code></dt>
 <dt><code> -h
 </code></dt>
-<dd><p><a name="IDX428"></a>
+<dd><a name="IDX428"></a>
 <a name="IDX429"></a>
-Display a usage message listing basic usage and all available options,
+<p>Display a usage message listing basic usage and all available options,
 then exit successfully.
 </p></dd>
 <dt><code> --info-file=<var>file</var>
 </code></dt>
 <dt><code> -i <var>file</var>
 </code></dt>
-<dd><p><a name="IDX430"></a>
+<dd><a name="IDX430"></a>
 <a name="IDX431"></a>
-Specify Info file to install in the directory.
+<p>Specify Info file to install in the directory.
 Equivalent to using the <var>info-file</var> argument.
 </p></dd>
 <dt><code> --info-dir=<var>dir</var>
 </code></dt>
 <dt><code> -D <var>dir</var>
 </code></dt>
-<dd><p><a name="IDX432"></a>
+<dd><a name="IDX432"></a>
 <a name="IDX433"></a>
-Specify the directory where `<tt>dir</tt>' resides.
+<p>Specify the directory where `<tt>dir</tt>' resides.
 Equivalent to `<samp>--dir-file=<var>dir</var>/dir</samp>'.
 </p></dd>
 <dt><code> --item=<var>text</var>
 </code></dt>
-<dd><p><a name="IDX434"></a>
-Same as `<samp>--entry=<var>text</var></samp>'.  An Info directory entry is actually
+<dd><a name="IDX434"></a>
+<p>Same as `<samp>--entry=<var>text</var></samp>'.  An Info directory entry is actually
 a menu item.
 </p></dd>
 <dt><code> --quiet
 </code></dt>
-<dd><p><a name="IDX435"></a>
-Suppress warnings.
+<dd><a name="IDX435"></a>
+<p>Suppress warnings.
 </p></dd>
 <dt><code> --remove
 </code></dt>
 <dt><code> -r
 </code></dt>
-<dd><p><a name="IDX436"></a>
+<dd><a name="IDX436"></a>
 <a name="IDX437"></a>
-Same as `<samp>--delete</samp>'.
+<p>Same as `<samp>--delete</samp>'.
 </p></dd>
 <dt><code> --section=<var>sec</var>
 </code></dt>
 <dt><code> -s <var>sec</var>
 </code></dt>
-<dd><p><a name="IDX438"></a>
+<dd><a name="IDX438"></a>
 <a name="IDX439"></a>
-Put this file's entries in section <var>sec</var> of the directory.  If you
+<p>Put this file's entries in section <var>sec</var> of the directory.  If you
 specify more than one section, all the entries are added in each of the
 sections.  If you don't specify any sections, they are determined from
 information in the Info file itself.
@@ -1401,10 +1401,10 @@ information in the Info file itself.
 </code></dt>
 <dt><code> -V
 </code></dt>
-<dd><p><a name="IDX440"></a>
+<dd><a name="IDX440"></a>
 <a name="IDX441"></a>
 <a name="IDX442"></a>
-Display version information and exit successfully.
+<p>Display version information and exit successfully.
 </p></dd>
 </dl>
 

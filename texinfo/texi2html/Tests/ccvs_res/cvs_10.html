@@ -130,9 +130,9 @@ performed to that file in the repository, one can
 classify a file in a number of states.  The states, as
 reported by the <code>status</code> command, are:
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX136"></a>
-</p></dd>
+</dd>
 <dt> Up-to-date
 </dt>
 <dd><p>The file is identical with the latest revision in the
@@ -140,61 +140,61 @@ repository for the branch in use.
 </p></dd>
 <dt> Locally Modified
 </dt>
-<dd><p><a name="IDX137"></a>
-You have edited the file, and not yet committed your changes.
+<dd><a name="IDX137"></a>
+<p>You have edited the file, and not yet committed your changes.
 </p></dd>
 <dt> Locally Added
 </dt>
-<dd><p><a name="IDX138"></a>
-You have added the file with <code>add</code>, and not yet
+<dd><a name="IDX138"></a>
+<p>You have added the file with <code>add</code>, and not yet
 committed your changes.
 </p></dd>
 <dt> Locally Removed
 </dt>
-<dd><p><a name="IDX139"></a>
-You have removed the file with <code>remove</code>, and not yet
+<dd><a name="IDX139"></a>
+<p>You have removed the file with <code>remove</code>, and not yet
 committed your changes.
 </p></dd>
 <dt> Needs Checkout
 </dt>
-<dd><p><a name="IDX140"></a>
-Someone else has committed a newer revision to the
+<dd><a name="IDX140"></a>
+<p>Someone else has committed a newer revision to the
 repository.  The name is slightly misleading; you will
 ordinarily use <code>update</code> rather than
 <code>checkout</code> to get that newer revision.
 </p></dd>
 <dt> Needs Patch
 </dt>
-<dd><p><a name="IDX141"></a>
-Like Needs Checkout, but the <small>CVS</small> server will send
+<dd><a name="IDX141"></a>
+<p>Like Needs Checkout, but the <small>CVS</small> server will send
 a patch rather than the entire file.  Sending a patch or
 sending an entire file accomplishes the same thing.
 </p></dd>
 <dt> Needs Merge
 </dt>
-<dd><p><a name="IDX142"></a>
-Someone else has committed a newer revision to the repository, and you
+<dd><a name="IDX142"></a>
+<p>Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
 </p></dd>
 <dt> Unresolved Conflict
 </dt>
-<dd><p><a name="IDX143"></a>
-A file with the same name as this new file has been added to the repository
+<dd><a name="IDX143"></a>
+<p>A file with the same name as this new file has been added to the repository
 from a second workspace.  This file will need to be moved out of the way
 to allow an <code>update</code> to complete.
 </p></dd>
 <dt> File had conflicts on merge
 </dt>
-<dd><p><a name="IDX144"></a>
-This is like Locally Modified, except that a previous
+<dd><a name="IDX144"></a>
+<p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
 resolve the conflict as described in <a href="#SEC86">Conflicts example</a>.
 </p></dd>
 <dt> Unknown
 </dt>
-<dd><p><a name="IDX145"></a>
-<small>CVS</small> doesn't know anything about this file.  For
+<dd><a name="IDX145"></a>
+<p><small>CVS</small> doesn't know anything about this file.  For
 example, you have created a new file and have not run
 <code>add</code>.
 </p></dd>
@@ -713,13 +713,13 @@ below) to a watched file.
 <dd><p>Another user has abandoned editing a file (other than by committing changes).
 They can do this in several ways, by:
 </p><ul>
-<li><p>
-applying the <code>cvs unedit</code> command (described below) to the file
-</p></li><li><p>
-applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC149">release--Indicate that a Module is no longer in use</a>) to the file's parent directory
+<li>
+<p>applying the <code>cvs unedit</code> command (described below) to the file
+</p></li><li>
+<p>applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC149">release--Indicate that a Module is no longer in use</a>) to the file's parent directory
 (or recursively to a directory more than one level up)
-</p></li><li><p>
-deleting the file and allowing <code>cvs update</code> to recreate it
+</p></li><li>
+<p>deleting the file and allowing <code>cvs update</code> to recreate it
 </p></li></ul>
 
 </dd>

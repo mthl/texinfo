@@ -83,29 +83,29 @@ their own set of subwindows.
 
 <p>Each XEmacs frame displays a variety of information:
 </p><ul>
-<li><p>
-The biggest area usually displays the text you are editing.  It may
+<li>
+<p>The biggest area usually displays the text you are editing.  It may
 consist of one window or of two or more windows if you need to look at two
 buffers a the same time.
-</p></li><li><p>
-Below each text window's last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
+</p></li><li>
+<p>Below each text window's last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
 is in inverse video if the terminal supports that.  If there are several
 XEmacs windows in one frame, each window has its own mode line.
-</p></li><li><p>
-At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
+</p></li><li>
+<p>At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
 window</em>(see section <a href="#SEC9">The Echo Area</a>).  It is used by XEmacs to exchange information
 with the user.  There is only one echo area per XEmacs frame.
-</p></li><li><p>
-If you are running XEmacs under a graphical windowing system, a
+</p></li><li>
+<p>If you are running XEmacs under a graphical windowing system, a
 menu bar at the top of the frame makes shortcuts to several of the
 commands available (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
-</p></li><li><p>
-Under a graphical windowing system, a
+</p></li><li>
+<p>Under a graphical windowing system, a
 toolbar at the top of the frame, just under the menu bar if it exists,
 provides &quot;one-touch&quot; shortcuts to several commands.  (Not yet
 documented.)
-</p></li><li><p>
-Under a graphical windowing system, a
+</p></li><li>
+<p>Under a graphical windowing system, a
 gutter at the top (under the toolbar) and/or bottom of the frame
 provides advanced GUI facilities like tab controls for rapid switching
 among related windows and progress bars for time-consuming operations
@@ -215,8 +215,8 @@ for accessing the value now called `point'.
 <p>  The line at the bottom of the frame (below the mode line) is the
 <em>echo area</em>.  XEmacs uses this area to communicate with the user:
 </p><ul>
-<li><p>
-  <em>Echoing</em> means printing out the characters that the user types.  XEmacs
+<li>
+<p>  <em>Echoing</em> means printing out the characters that the user types.  XEmacs
 never echoes single-character commands.  Multi-character commands are
 echoed only if you pause while typing them: As soon as you pause for more
 than one second in the middle of a command, all the characters of the command
@@ -225,13 +225,13 @@ the command.  Once echoing has started, the rest of the command is echoed
 immediately as you type it.  This behavior is designed to give confident
 users fast response, while giving hesitant users maximum feedback.  You
 can change this behavior by setting a variable (see section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>).
-</p></li><li><p>
-  If you issue a command that cannot be executed, XEmacs may print an
+</p></li><li>
+<p>  If you issue a command that cannot be executed, XEmacs may print an
 <em>error message</em> in the echo area.  Error messages are accompanied by
 a beep or by flashing the frame.  Any input you have typed ahead is
 thrown away when an error happens.
-</p></li><li><p>
-  Some commands print informative messages in the echo area.  These
+</p></li><li>
+<p>  Some commands print informative messages in the echo area.  These
 messages look similar to error messages, but are not announced with a
 beep and do not throw away input.  Sometimes a message tells you what the
 command has done, when this is not obvious from looking at the text being
@@ -241,8 +241,8 @@ used to print a message describing the character position of point in the
 text and its current column in the window.  Commands that take a long time
 often display messages ending in `<samp>...</samp>' while they are working, and
 add `<samp>done</samp>' at the end when they are finished.
-</p></li><li><p>
-  The echo area is also used to display the <em>minibuffer</em>, a window
+</p></li><li>
+<p>  The echo area is also used to display the <em>minibuffer</em>, a window
 that is used for reading arguments to commands, such as the name of a
 file to be edited.  When the minibuffer is in use, the echo area displays
 with a prompt string that usually ends with a colon.  The cursor
@@ -736,22 +736,22 @@ is called with one argument, the frame just created.
 <p>If you are working with multiple frames, some special information
 applies:
 </p><ul>
-<li><p>
-Two variables, <code>frame-title-format</code> and
+<li>
+<p>Two variables, <code>frame-title-format</code> and
 <code>frame-icon-title-format</code> determine the title of the frame and
 the title of the icon that results if you shrink the frame.
 </p><a name="IDX16"></a>
 <a name="IDX17"></a>
-</li><li><p>
-The variables <code>auto-lower-frame</code> and <code>auto-raise-frame</code>
+</li><li>
+<p>The variables <code>auto-lower-frame</code> and <code>auto-raise-frame</code>
 position a frame. If true, <code>auto-lower-frame</code> lowers a frame to
 the bottom when it is no longer selected. If true,
 <code>auto-raise-frame</code> raises a frame to the top when it is
 selected. Under X, most ICCCM-compliant window managers will have
 options to do this for you, but these variables are provided in case you
 are using a broken window manager.
-</p></li><li><p>
-There is a new frame/modeline format directive, %S, which expands to
+</p></li><li>
+<p>There is a new frame/modeline format directive, %S, which expands to
 the name of the current frame (a frame's name is distinct from its
 title; the name is used for resource lookup, among other things, and the
 title is simply what appears above the window.)

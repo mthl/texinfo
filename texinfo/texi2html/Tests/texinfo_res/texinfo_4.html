@@ -260,8 +260,8 @@ with a line that looks like this:
 
 <p>This line serves two functions:
 </p><ol>
-<li><p>
-When the file is processed by TeX, the `<samp>\input texinfo</samp>' command
+<li>
+<p>When the file is processed by TeX, the `<samp>\input texinfo</samp>' command
 tells TeX to load the macros needed for processing a Texinfo file.
 These are in a file called `<tt>texinfo.tex</tt>', which should have been
 installed on your system along with either the TeX or Texinfo
@@ -270,8 +270,8 @@ a command, exactly as Texinfo uses `<samp>@</samp>'.  The `<tt>texinfo.tex</tt>'
 file causes the switch from `<samp>\</samp>' to `<samp>@</samp>'; before the switch
 occurs, TeX requires `<samp>\</samp>', which is why it appears at the
 beginning of the file.
-</p></li><li><p>
-When the file is edited in GNU Emacs, the `<samp>-*-texinfo-*-</samp>' mode
+</p></li><li>
+<p>When the file is edited in GNU Emacs, the `<samp>-*-texinfo-*-</samp>' mode
 specification tells Emacs to use Texinfo mode.
 </p></li></ol>
 
@@ -977,18 +977,18 @@ formats, one for documents which are printed on one side of each sheet of paper
 sides of each sheet (double-sided printing).
 You can specify these formats in different ways:
 </p><ul>
-<li><p>
-The conventional way is to write an <code>@setchapternewpage</code> command
+<li>
+<p>The conventional way is to write an <code>@setchapternewpage</code> command
 before the title page commands, and then have the <code>@end
 titlepage</code> command start generating page headings in the manner desired.
 (See section <a href="#SEC64"><code>@setchapternewpage</code>:</a>.)
-</p></li><li><p>
-Alternatively, you can use the <code>@headings</code> command to prevent page
+</p></li><li>
+<p>Alternatively, you can use the <code>@headings</code> command to prevent page
 headings from being generated or to start them for either single or
 double-sided printing.  (Write an <code>@headings</code> command immediately
 after the <code>@end titlepage</code> command.  See section <a href="#SEC58">The <code>@headings</code> Command</a>, for more information.)
-</p></li><li><p>
-Or, you may specify your own page heading and footing format.
+</p></li><li>
+<p>Or, you may specify your own page heading and footing format.
 See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for detailed
 information about page headings and footings.
 </p></li></ul>
@@ -1191,13 +1191,13 @@ file.
 commands and does not appear in the printed document.
 </p><p>Generally, a master menu is divided into parts.
 </p><ul>
-<li><p>
-The first part contains the major nodes in the Texinfo file: the nodes
+<li>
+<p>The first part contains the major nodes in the Texinfo file: the nodes
 for the chapters, chapter-like sections, and the appendices.
-</p></li><li><p>
-The second part contains nodes for the indices.
-</p></li><li><p>
-The third and subsequent parts contain a listing of the other, lower
+</p></li><li>
+<p>The second part contains nodes for the indices.
+</p></li><li>
+<p>The third and subsequent parts contain a listing of the other, lower
 level nodes, often ordered by chapter.  This way, rather than go
 through an intermediary menu, an inquirer can go directly to a
 particular node when searching for specific information.  These menu

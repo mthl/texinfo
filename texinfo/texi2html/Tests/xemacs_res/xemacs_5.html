@@ -297,10 +297,10 @@ the end of a prefix results in a valid key sequence.  For example,
 two-character key sequence starting with <kbd>C-x</kbd> for each valid
 keystroke, giving numerous possibilities.  Here are some samples:
 </p><ul>
-<li><p>
-<kbd>[(control x) (c)]</kbd>
-</p></li><li><p>
-<kbd>[(control x) (control c)]</kbd>
+<li>
+<p><kbd>[(control x) (c)]</kbd>
+</p></li><li>
+<p><kbd>[(control x) (control c)]</kbd>
 </p></li></ul>
 
 <p>  Adding one character to a prefix key does not have to form a complete
@@ -519,34 +519,34 @@ controlling set include <code>XK_Caps_Lock</code> or <code>XK_Shift_Lock</code>.
 being used to control it.
 </p><p>A client needing to use an extra modifier, for example <code>Meta</code>, should:
 </p><ol>
-<li><p>
-Scan the existing modifier mappings.
+<li>
+<p>Scan the existing modifier mappings.
 </p><ol>
-<li><p>
-If it finds a modifier that contains a keycode whose set of keysyms 
+<li>
+<p>If it finds a modifier that contains a keycode whose set of keysyms 
 includes <code>XK_Meta_L</code> or <code>XK_Meta_R</code>, it should use that 
 modifier bit.
-</p></li><li><p>
-If there is no existing modifier controlled by <code>XK_Meta_L</code> or 
+</p></li><li>
+<p>If there is no existing modifier controlled by <code>XK_Meta_L</code> or 
 <code>XK_Meta_R</code>, it should select an unused modifier bit (one with 
 an empty controlling set) and:
 </p></li></ol>
 
-</li><li><p>
-If there is a keycode with <code>XL_Meta_L</code> in its set of keysyms, 
+</li><li>
+<p>If there is a keycode with <code>XL_Meta_L</code> in its set of keysyms, 
 add that keycode to the set for the chosen modifier, and then:
 </p><ol>
-<li><p>
-If there is a keycode with <code>XL_Meta_R</code> in its set of keysyms, 
+<li>
+<p>If there is a keycode with <code>XL_Meta_R</code> in its set of keysyms, 
 add that keycode to the set for the chosen modifier, and then:
-</p></li><li><p>
-If the controlling set is still empty, interact with the user to 
+</p></li><li>
+<p>If the controlling set is still empty, interact with the user to 
 select one or more keys to be <code>Meta</code>.
 </p></li></ol>
 
 
-</li><li><p>
-If there are no unused modifier bits, ask the user to take corrective action.
+</li><li>
+<p>If there are no unused modifier bits, ask the user to take corrective action.
 </p></li></ol>
 
 <p> This means that the <code>Mod1</code> modifier does not necessarily mean 
@@ -738,12 +738,12 @@ a program, and comparing or merging two or three files.
 
 <p>There are two ways of selecting an item from a pull-down menu:
 </p><ul>
-<li><p>
-Select an item in the menu bar by moving the cursor over it and click the
+<li>
+<p>Select an item in the menu bar by moving the cursor over it and click the
 left mouse-button.  Then move the cursor over the menu item you want to choose
 and click left again.
-</p></li><li><p>
-Select an item in the menu bar by moving the cursor over it and click and
+</p></li><li>
+<p>Select an item in the menu bar by moving the cursor over it and click and
 hold the left mouse-button.  With the mouse-button depressed, move the
 cursor over the menu item you want, then release it to make your selection. 
 </p></li></ul>
@@ -758,10 +758,10 @@ text.  See section <a href="xemacs_12.html#SEC95">Using X Selections</a>, for re
 </p><p>There are also <kbd>M-x</kbd> equivalents for each menu item.  To find the
 equivalent for any left-button menu item, do the following:
 </p><ol>
-<li><p>
-Type <kbd>C-h k</kbd> to get the <code>Describe Key</code> prompt. 
-</p></li><li><p>
-Select the menu item and click. 
+<li>
+<p>Type <kbd>C-h k</kbd> to get the <code>Describe Key</code> prompt. 
+</p></li><li>
+<p>Select the menu item and click. 
 </p></li></ol>
 
 <p>Emacs displays the function associated with the menu item in a separate
@@ -1310,12 +1310,12 @@ added to the menu bar itself.
 </p><p><var>menu-items</var> is a list of menu item descriptions.  Each menu item
 should be a vector of three elements:
 </p><ul>
-<li><p> 
-A string, which is the name of the menu item
-</p></li><li><p> 
-A symbol naming a command, or a form to evaluate
-</p></li><li><p> 
-<code>t</code> or <code>nil</code> to indicate whether the item is selectable
+<li> 
+<p>A string, which is the name of the menu item
+</p></li><li> 
+<p>A symbol naming a command, or a form to evaluate
+</p></li><li> 
+<p><code>t</code> or <code>nil</code> to indicate whether the item is selectable
 </p></li></ul>
 
 <p>The optional argument <var>before</var> is the name of the menu before which

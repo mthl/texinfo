@@ -26,7 +26,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: extfile.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: extfile.texi,v 1.2 2003-08-12 09:08:13 pertusus Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -34,6 +34,9 @@
 @c Description:
 @c   Here you can find the description on the
 @c   extension file.
+@c
+@c It is likely that this has been obsoleted by the -init-file
+@c way of doing things.
 @c
 @c ========================================================
 @chapter Extension file

@@ -88,8 +88,8 @@ different text for the printed manual and the Info output.
 <li><p> Commands for HTML, Info, or TeX.
 </p></li><li><p> Commands for not HTML, Info, or TeX.
 </p></li><li><p> Raw TeX or HTML commands.
-</p></li><li><p>
-Substituting text for all formats, and testing if a flag is set or clear.
+</p></li><li>
+<p>Substituting text for all formats, and testing if a flag is set or clear.
 </p></li></ul>
 
 <table class="menu" border="0" cellspacing="0">
@@ -505,16 +505,16 @@ you need to change when you record an update to a manual.  See section <a href="
 Automake distributions, and full texts.
 </p><p>Here is an example adapted from <a href="../make/index.html">(make)Top</a> section `Overview' in <cite>The GNU Make Manual</cite>):
 </p><ol>
-<li><p>
-Set the flags:
+<li>
+<p>Set the flags:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
 </pre></td></tr></table>
-</li><li><p>
-Write text for the <code>@copying</code> section (see section <a href="texinfo_4.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
+</li><li>
+<p>Write text for the <code>@copying</code> section (see section <a href="texinfo_4.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @copying
 This is Edition @value{EDITION},
@@ -527,8 +527,8 @@ Copyright ...
 Permission is granted ...
 @end copying
 </pre></td></tr></table>
-</li><li><p>
-Write text for the title page, for people reading the printed manual:
+</li><li>
+<p>Write text for the title page, for people reading the printed manual:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @title GNU Make
@@ -543,8 +543,8 @@ Write text for the title page, for people reading the printed manual:
 
 <p>(On a printed cover, a date listing the month and the year looks less
 fussy than a date listing the day as well as the month and year.)
-</p></li><li><p>
-Write text for the Top node, for people reading the Info file:
+</p></li><li>
+<p>Write text for the Top node, for people reading the Info file:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifnottex
 @node Top

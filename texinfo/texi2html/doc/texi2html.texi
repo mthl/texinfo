@@ -25,7 +25,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: texi2html.texi,v 1.3 2001-09-15 09:37:50 reiter Exp $
+@c $Id: texi2html.texi,v 1.4 2003-08-12 09:08:13 pertusus Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -83,7 +83,7 @@ END-INFO-DIR-ENTRY
 * Texi2html: (texi2html).  Texinfo to HTML Converter.
 @end direntry
 @c --------------------------------------------------------
-@ifinfo
+@ifnottex
 This file documents the texi2html script which converts
 Texinfo into HTML.
 
@@ -115,7 +115,7 @@ of this manual into another language, under the above
 conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
-@end ifinfo
+@end ifnottex
 @c --------------------------------------------------------
 @titlepage
 @title Texinfo to HTML Converter
@@ -158,7 +158,7 @@ Cover art by Etienne Suvasa.
 @contents
 @c
 @ifnottex
-@node Top, Overview, (dir), (dir)
+@node Top
 @top Texi2html
 @c @page
 @c ========================================================
@@ -168,10 +168,15 @@ Cover art by Etienne Suvasa.
 
 This Manual (Edition @value{MANUAL_ED}, last updated at
 @value{MANUAL_UPD}) describes the @command{texi2html} Perl
-script which converters
+script which converts
 @c The following construct allows me to get
 @c real URL link in HTML and working refs in
 @c info.
+@c (pertusus: some support for html cross manual now
+@c exists in texi2html, but it implies having the texinfo
+@c html manual at the right place, which isn't the case
+@c in most cases). And also the resulting ref is less
+@c pretty in info.
 @ifhtml
 @uref{http://www.texinfo.org,Texinfo}
 @end ifhtml
@@ -179,10 +184,6 @@ script which converters
 Texinfo (@pxref{Top,,Texinfo,Texinfo})
 @end ifnothtml
 into @acronym{HTML}.
-
-@c @inforef{Top, Top, Texinfo} does not work yet ;-)
-@c here we should paste a @inforef or @xref on the
-@c Texinfo manual.
 
 Please send bug reports about this manual to Karl Heinz
 Marbaise @email{khmarbaise@@gmx.de}. Please state exact
@@ -196,13 +197,13 @@ construction and of course incomplete ;-)
 @end example
 
 @c The following line within a menu does not work!
+@c (pertusus: what doesn't work ?)
 @c * Why texi2html and not Makeinfo?:whytexi2html.      Why texi2html and not makeinfo?.
-@ifinfo
 @menu
 @c * MenuName:NodeName.       Description.
 * Overview::                  Overview about @command{texi2html}.
 * Installation::              Installation process.
-* Customizing::               Customizing.
+* Customizing files::               Customizing.
 * CustomizingExpand::         Customizing what gets expanded.
 * CustomizingPage::           Customizing page layout.
 * CustHTML::                  Customizing HTML.
@@ -219,8 +220,10 @@ construction and of course incomplete ;-)
 
 --- Overview ---
 
-* whytexi2html::              Why @file{texi2html} and
-                                not @file{makeinfo}?.
+* Why texi2html and not Makeinfo?:whytexi2html.      Why 
+                  @file{texi2html} and not @file{makeinfo}?
+@c * whytexi2html::              Why @file{texi2html} and
+@c                               not @file{makeinfo}?.
 
 
 --- Installation process ---
@@ -284,10 +287,9 @@ construction and of course incomplete ;-)
 * Indexcp::                   Concept Index.
 @end detailmenu
 @end menu
-@end ifinfo
 @end ifnottex
 @c ========================================================
-@node Overview, HowToGetHTML, Top, Top
+@node Overview
 @chapter Overview about @command{texi2html}
 @uref{http://www.texinfo.org,Texinfo} is the official
 documentation format of the @uref{http://www.gnu.org,GNU}
@@ -302,11 +304,11 @@ of writing all documentation new in @acronym{HTML}, cause
 there is so much documentation in Texinfo all over
 the world.
 
-A few time ago @command{makeinfo} wasn't able to produce
-@acronym{HTML} output format, but there are needth to have
+Some time ago @command{makeinfo} wasn't able to produce
+@acronym{HTML} output format, but there were needs to have
 @acronym{HTML}. This was the borning hour for
 @command{texi2html}. The basic purpose of @file{texi2html}
-is to convert Texinfo documents into HTML.
+is to convert Texinfo documents into @acronym{HTML}.
 
 
 @menu
@@ -314,7 +316,7 @@ is to convert Texinfo documents into HTML.
 * whytexi2html::       Why texi2html and not makeinfo?.
 @end menu
 @c --------------------------------------------------------
-@node HowToGetHTML, whytexi2html, Overview, Overview
+@node HowToGetHTML
 @section Ways to get HTML
 You would like to @acronym{HTML} files out of your Texinfo
 files? There exist two ways which you can go.
@@ -323,11 +325,12 @@ This first is to use @command{makeinfo} itself to produce
 @command{texi2html}.
 
 @c --------------------------------------------------------
-@node whytexi2html, Installation, HowToGetHTML, Overview
+@node whytexi2html
 @section Why @file{texi2html} and not @file{makeinfo}?
 The basic idea of @command{makeinfo}'s @acronym{HTML}
-output was to get an readable @acronym{HTML} output.
-Nothing sophisticated nor good styling just readable.
+output was to get a readable @acronym{HTML} output.
+Nothing sophisticated.
+@c nor good styling just readable.
 
 The current development of texi2html is going into
 different direction.
@@ -338,42 +341,65 @@ supported using differnt command line options and of course
 possible changings of the initialization file to fit your
 own needs.
 
-The main disadvantage of @acronym{makeinfo}'s
-@acronym{HTML} output is your getting only one big file.
-This is of course readable but not very usable. The problem
-of this is, while you like to have splitted chapters or
-nodes the Texinfo source has to be read at minimum twice
-times. This makes it impossible to implement this in
-@command{makeinfo}. This would result in complete new
-implementation of @command{makeinfo}'s source.
+@c The main disadvantage of @acronym{makeinfo}'s
+@c @acronym{HTML} output is your getting only one big file.
+@c This is of course readable but not very usable. The problem
+@c of this is, while you like to have splitted chapters or
+@c nodes the Texinfo source has to be read at minimum twice
+@c times. This makes it impossible to implement this in
+@c @command{makeinfo}. This would result in complete new
+@c implementation of @command{makeinfo}'s source.
 
 @c think more about this????
-In contrast to the HTML produced by @command{makeinfo
+In contrast to the @acronym{HTML} produced by @command{makeinfo
 --html} (the @command{makeinfo} program is part of the
-Texinfo distribution), the HTML output of @file{texi2html}
-is highly configurable. Among other differences, with
-@command{texi2html} allows you to customize your entire
-page layout (like headers, footers, style sheets, etc),
-split documents at various levels, and use
+Texinfo distribution), the @acronym{HTML} output of @file{texi2html}
+is highly configurable. Among other differences, 
+@command{texi2html} allows you to customize the entire
+page layout (like headers, footers, style sheets, etc)
+and the low level @acronym{HTML} formatting, to 
+split documents at various levels, and to use
 @command{latex2html} to convert @code{@@tex} sections.
 
 @command{texi2html} should reasonably convert all Texinfo
-4.0 constructs. If not, please send a bug report to
-@email{texi2html@@mathematik.uni-kl.de}.
+4.6 constructs. If not, please send a bug report to
+@c @email{texi2html@@mathematik.uni-kl.de}.
+@email{users@@texi2html.cvshome.org}.
 
 @c ========================================================
-@node Installation, Customizing, whytexi2html, Top
+@node Installation
 @chapter Installation of @command{texi2html}
 @cindex Installation
-description of the installation process.
-What do you need?
-How?
+
+To run @command{texi2html} you need @command{perl} version 
+5.004 or above. The current version has not been tested
+extensively on versions below 5.6, however.
+
+@command{texi2html} is a standard Automake-based distribution.
+If you have a source version, you should run @command{./configure}
+to regenerate the script file @file{texi2html}. This leads to
+the inclusion in @file{texi2html.pl} of @file{MySimple.pm} which 
+handles the command line options, @file{texi2html.init} the 
+default configuration file and @file{T2h_i18n} used for 
+internationalisation.
+
+To make the documentation run @command{make}.
+ 
+Installing @command{texi2html} in you path should be sufficient 
+to run it. In case you want to use a configuration file for
+@command{latex2html} when using @command{latex2html} to 
+convert @code{@@tex} sections, or you want to have some
+default configuration files you should install these files 
+in a suitable directory (usually @file{/usr/share/texi2html} or
+@file{/usr/local/share/texi2html}). @command{make install} will
+do that for you.
 
 @c ========================================================
-@node Customizing, CustomizingExpand, Installation, Top
+@node Customizing files
 @chapter Customizing files
 @cindex Installation
 @opindex frames
+
 @c 4.) Customizing files to output
 @c   ==> -out_file, -prefix, -subdir, -split, -frames etc
 Result based on using @option{-frames}
@@ -386,7 +412,7 @@ whatever this is ;-)
 
 
 @c ========================================================
-@node CustomizingExpand, CustomizingPage, Customizing, Top
+@node CustomizingExpand
 @chapter Customizing what gets expanded
 @c 5.) Customizing what gets expanded
 @c   ==> -expand, and latex2html
@@ -397,24 +423,18 @@ Test starting.
 Take a look at optionexpand.
 
 @c ========================================================
-@node CustomizingPage, CustHTML, CustomizingExpand, Top
 @include custpage.texi
 @c ========================================================
-@node CustHTML, InitFile, CustomizingPage, Top
 @include custhtml.texi
 @c ========================================================
-@node InitFile, IFOs, CustHTML, Top
 @include initfile.texi
 @c --------------------------------------------------------
-@node IFOs, Options, InitFile, Top
 @include ifo.texi
 @c ========================================================
 @c @include extfile.texi obsolete now, is not documented!
 @c ========================================================
-@node Options, Reference, IFOs, Top
 @include options.texi
 @c ========================================================
-@node Reference, Indexop, Options, Top
 @include reference.texi
 @c ========================================================
 @c commandline option index.

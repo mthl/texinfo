@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: custhtml.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
+@c $Id: custhtml.texi,v 1.3 2003-08-12 09:08:13 pertusus Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -34,6 +34,7 @@
 @c   BODY, PRE- and AFTER Body.
 @c
 @c ========================================================
+@node CustHTML
 @chapter Customizing HTML
 If you like to read the following section, it is assumed
 you are famillar with @acronym{HTML}. If not, you shouldn't

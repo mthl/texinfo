@@ -196,9 +196,9 @@ may wish to put the files from that project into
 <small>CVS</small>, and preserve the revision history of the
 files.
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX90"></a>
-</p></dd>
+</dd>
 <dt> From RCS
 </dt>
 <dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
@@ -323,26 +323,26 @@ but modules can be convenient in grouping together
 related files and directories.
 </p><p>In simple cases these steps are sufficient to define a module.
 </p><ol>
-<li><p>
-Get a working copy of the modules file.
+<li>
+<p>Get a working copy of the modules file.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout CVSROOT/modules
 $ cd CVSROOT
 </pre></td></tr></table>
-</li><li><p>
-Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
+</li><li>
+<p>Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
 following line to define the module `<samp>tc</samp>':
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 tc   yoyodyne/tc
 </pre></td></tr></table>
-</li><li><p>
-Commit your changes to the modules file.
+</li><li>
+<p>Commit your changes to the modules file.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs commit -m &quot;Added the tc module.&quot; modules
 </pre></td></tr></table>
-</li><li><p>
-Release the modules module.
+</li><li>
+<p>Release the modules module.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ..
 $ cvs release -d CVSROOT

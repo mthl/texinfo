@@ -470,8 +470,8 @@ for setting up the <small>CVS</small> server.
 </p></dd>
 <dt><code> cvs commit: warning: editor session failed
 </code></dt>
-<dd><p><a name="IDX317"></a>
-This means that the editor which <small>CVS</small> is using exits with a nonzero
+<dd><a name="IDX317"></a>
+<p>This means that the editor which <small>CVS</small> is using exits with a nonzero
 exit status.  Some versions of vi will do this even when there was not
 a problem editing the file.  If so, point the
 <code>CVSEDITOR</code> environment variable to a small script
@@ -517,9 +517,9 @@ what the problem was.  If the client is non-Windows,
 the problem, the next steps depend largely on which
 access method you are using.
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX318"></a>
-</p></dd>
+</dd>
 <dt><code> :ext:
 </code></dt>
 <dd><p>Try running the rsh program from the command line.  For
@@ -648,16 +648,16 @@ others allow you to set the limit for each service separately.)
 <p>Here is a list of problems which do not fit into the
 above categories.  They are in no particular order.
 </p><ul>
-<li><p>
-On Windows, if there is a 30 second or so delay when
+<li>
+<p>On Windows, if there is a 30 second or so delay when
 you run a <small>CVS</small> command, it may mean that you have
 your home directory set to `<tt>C:/</tt>', for example (see
 <code>HOMEDRIVE</code> and <code>HOMEPATH</code> in
 <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).  <small>CVS</small> expects the home
 directory to not end in a slash, for example `<tt>C:</tt>'
 or `<tt>C:\cvs</tt>'.
-</p></li><li><p>
-If you are running <small>CVS</small> 1.9.18 or older, and
+</p></li><li>
+<p>If you are running <small>CVS</small> 1.9.18 or older, and
 <code>cvs update</code> finds a conflict and tries to
 merge, as described in <a href="cvs_10.html#SEC86">Conflicts example</a>, but
 doesn't tell you there were conflicts, then you may

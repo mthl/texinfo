@@ -193,6 +193,8 @@ test_texi sectionning before_node_and_section.texi "" 2
 test_texi formatting formatting.texi
 test_texi formatting simplest.texi "-css-file file.css"
 test_texi formatting nodetest.texi "-split chapter"
+test_texi formatting testkb.texi
+test_texi formatting umlaut.texi
 test_texi formatting imbrications.texi "" 2
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting tex.texi "-l2h -expand tex" "no"

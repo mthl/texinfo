@@ -83,18 +83,18 @@ ul.toc {list-style: none}
 <p>Due to unavoidable disparities in the TeX and <code>makeinfo</code>
 implementations, Texinfo macros have the following limitations.
 </p><ul>
-<li><p>
-All macros are expanded inside at least one TeX group.  This means
+<li>
+<p>All macros are expanded inside at least one TeX group.  This means
 that <code>@set</code> and other such commands will have no effect inside a
 macro.
-</p></li><li><p>
-Macros containing a command which must be on a line by itself, such as a
+</p></li><li>
+<p>Macros containing a command which must be on a line by itself, such as a
 conditional, cannot be invoked in the middle of a line.
-</p></li><li><p>
-Commas in macro arguments, even if escaped by a backslash, don't
+</p></li><li>
+<p>Commas in macro arguments, even if escaped by a backslash, don't
 always work.
-</p></li><li><p>
-The TeX implementation cannot construct macros that define macros in
+</p></li><li>
+<p>The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -110,8 +110,8 @@ something involving \arg\ somehow
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
 </pre></td></tr></table>
-</li><li><p>
-It is best to avoid comments inside macro definitions.
+</li><li>
+<p>It is best to avoid comments inside macro definitions.
 </p></li></ul>
 
 <p>If some macro feature causes errors when producing the printed version

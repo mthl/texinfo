@@ -89,15 +89,15 @@ info [<var>option</var>]... [<var>menu-item</var>...]
 </pre></td></tr></table>
 <p>The program accepts the following options:
 </p><dl compact="compact">
-<dd><p>
-<a name="ANC1"></a>
+<dd>
+<p><a name="ANC1"></a>
 </p></dd>
 <dt><code> --apropos=<var>string</var>
 </code></dt>
-<dd><p><a name="IDX1"></a>
+<dd><a name="IDX1"></a>
 <a name="IDX2"></a>
 <a name="IDX3"></a>
-Specify a string to search in every index of every Info file installed
+<p>Specify a string to search in every index of every Info file installed
 on your system.  Info looks up the named <var>string</var> in all the indices
 it can find, prints the results to standard output, and then exits.  If
 you are not sure which Info file explains certain issues, this option is
@@ -137,8 +137,8 @@ can be used later to replay the same sequence of commands, see the
 </code></dt>
 <dt><code> -f <var>filename</var>
 </code></dt>
-<dd><p><a name="IDX7"></a>
-Specify a particular Info file to visit.  By default, Info visits
+<dd><a name="IDX7"></a>
+<p>Specify a particular Info file to visit.  By default, Info visits
 the file <code>dir</code>; if you use this option, Info will start with
 <code>(<var>filename</var>)Top</code> as the first file and node.
 </p><a name="IDX8"></a>
@@ -175,9 +175,9 @@ files extensions<a name="DOCF2" href="info-stnd_fot.html#FOOT2">(2)</a>.
 </p></dd>
 <dt><code> --index-search <var>string</var>
 </code></dt>
-<dd><p><a name="IDX14"></a>
+<dd><a name="IDX14"></a>
 <a name="IDX15"></a>
-After processing all command-line arguments, go to the index in the Info
+<p>After processing all command-line arguments, go to the index in the Info
 file and search for index entries which matche <var>string</var>.  If such an
 entry is found, the Info session begins with displaying the node pointed
 to by the first matching index entry; press <kbd>,</kbd> to step through the
@@ -192,8 +192,8 @@ exact name of that node.
 </code></dt>
 <dt><code> -n <var>nodename</var>
 </code></dt>
-<dd><p><a name="IDX16"></a>
-Specify a particular node to visit in the initial file that Info
+<dd><a name="IDX16"></a>
+<p>Specify a particular node to visit in the initial file that Info
 loads.  This is especially useful in conjunction with
 <code>--file</code><a name="DOCF3" href="info-stnd_fot.html#FOOT3">(3)</a>.  You may specify <code>--node</code> multiple times; for
 an interactive Info, each <var>nodename</var> is visited in its own window,
@@ -204,9 +204,9 @@ for a non-interactive Info (such as when <code>--output</code> is given) each
 </code></dt>
 <dt><code> -o <var>filename</var>
 </code></dt>
-<dd><p><a name="IDX17"></a>
+<dd><a name="IDX17"></a>
 <a name="IDX18"></a>
-Specify <var>filename</var> as the name of a file to which to direct output.
+<p>Specify <var>filename</var> as the name of a file to which to direct output.
 Each node that Info visits will be output to <var>filename</var> instead of
 interactively viewed.  A value of <code>-</code> for <var>filename</var> specifies
 the standard output.
@@ -263,8 +263,8 @@ persons to catch the output and convert it to audible speech.
 </p></dd>
 <dt><code> --subnodes
 </code></dt>
-<dd><p><a name="IDX25"></a>
-This option only has meaning when given in conjunction with
+<dd><a name="IDX25"></a>
+<p>This option only has meaning when given in conjunction with
 <code>--output</code>.  It means to recursively output the nodes appearing in
 the menus of each node being output.  Menu items which resolve to
 external Info files are not output, and neither are menu items which are
@@ -272,8 +272,8 @@ members of an index.  Each node is only output once.
 </p></dd>
 <dt><code> --version
 </code></dt>
-<dd><p><a name="IDX26"></a>
-Prints the version information of Info and exits.
+<dd><a name="IDX26"></a>
+<p>Prints the version information of Info and exits.
 </p><p><a name="ANC3"></a>
 <a name="IDX27"></a>
 <a name="IDX28"></a>
@@ -288,8 +288,8 @@ for a more general way of altering GNU Info's key bindings.)
 </p></dd>
 <dt><code> <var>menu-item</var>
 </code></dt>
-<dd><p><a name="IDX29"></a>
-<a name="ANC4"></a>
+<dd><a name="IDX29"></a>
+<p><a name="ANC4"></a>
 Info treats its remaining arguments as the names of menu items.  The
 first argument is a menu item in the initial node visited (generally
 <code>dir</code>), the second argument is a menu item in the first argument's

@@ -82,33 +82,33 @@ ul.toc {list-style: none}
 
 <p>This section describes the general conventions used in all Texinfo documents.
 </p><ul>
-<li><p>
-All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
+<li>
+<p>All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
 `<samp>}</samp>' can appear in a Texinfo file and stand for themselves.
 `<samp>@</samp>' is the escape character which introduces commands, while
 `<samp>{</samp>' and `<samp>}</samp>' are used to surround arguments to certain
 commands.  To put one of these special characters into the document, put
 an `<samp>@</samp>' character in front of it, like this: `<samp>@@</samp>',
 `<samp>@{</samp>', and `<samp>@}</samp>'.
-</p></li><li><p>
-It is customary in TeX to use doubled single-quote characters to
+</p></li><li>
+<p>It is customary in TeX to use doubled single-quote characters to
 begin and end quotations: <tt>``<small class="dots">...</small>''</tt>.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled
 quotation marks, 
 and Info converts doubled single-quote characters to <small>ASCII</small>
 double-quotes: <tt>``<small class="dots">...</small>''</tt> becomes <tt>&quot;<small class="dots">...</small>&quot;</tt>.
-</p></li><li><p>
-Use three hyphens in a row, `<samp>--</samp>', for a dash--like this.  In
+</p></li><li>
+<p>Use three hyphens in a row, `<samp>--</samp>', for a dash--like this.  In
 TeX, a single or double hyphen produces a printed dash that is
 shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
-</p></li><li><p>
-To prevent a paragraph from being indented in the printed manual, put
+</p></li><li>
+<p>To prevent a paragraph from being indented in the printed manual, put
 the command <code>@noindent</code> on a line by itself before the
 paragraph.
-</p></li><li><p>
-If you mark off a region of the Texinfo file with the <code>@iftex</code>
+</p></li><li>
+<p>If you mark off a region of the Texinfo file with the <code>@iftex</code>
 and <code>@end iftex</code> commands, that region will appear only in
 the printed copy; in that region, you can use certain commands
 borrowed from plain TeX that you cannot use in Info.  Conversely,

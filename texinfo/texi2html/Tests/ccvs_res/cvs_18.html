@@ -380,9 +380,9 @@ the subdirectory `<samp>first-dir/sdir</samp>'.
 options, which supply additional information concerning
 the module.
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX251"></a>
-</p></dd>
+</dd>
 <dt><code> -d <var>name</var>
 </code></dt>
 <dd><p>Name the working directory something other than the
@@ -638,13 +638,13 @@ here.
 </p><a name="IDX261"></a>
 <p>Each line contains the following:
 </p><ul>
-<li><p>
-A regular expression.  This is a basic regular
+<li>
+<p>A regular expression.  This is a basic regular
 expression in the syntax used by GNU emacs.
-</p></li><li><p>
-A whitespace separator--one or more spaces and/or tabs.
-</p></li><li><p>
-A file name or command-line template.
+</p></li><li>
+<p>A whitespace separator--one or more spaces and/or tabs.
+</p></li><li>
+<p>A file name or command-line template.
 </p></li></ul>
 
 
@@ -1251,8 +1251,8 @@ that it should ignore while running <code>update</code>,
 <code>import</code> and <code>release</code>.
 This list is constructed in the following way.
 </p><ul>
-<li><p>
-The list is initialized to include certain file name
+<li>
+<p>The list is initialized to include certain file name
 patterns: names associated with <small>CVS</small>
 administration, or with other common source control
 systems; common names for patch files, object files,
@@ -1273,20 +1273,20 @@ patterns is:
     *.Z     *.elc   *.ln
     core
 </pre></td></tr></table>
-</li><li><p>
-The per-repository list in
+</li><li>
+<p>The per-repository list in
 `<tt>$CVSROOT/CVSROOT/cvsignore</tt>' is appended to
 the list, if that file exists.
-</p></li><li><p>
-The per-user list in `<tt>.cvsignore</tt>' in your home
+</p></li><li>
+<p>The per-user list in `<tt>.cvsignore</tt>' in your home
 directory is appended to the list, if it exists.
-</p></li><li><p>
-Any entries in the environment variable
+</p></li><li>
+<p>Any entries in the environment variable
 <code>$CVSIGNORE</code> is appended to the list.
-</p></li><li><p>
-Any `<samp>-I</samp>' options given to <small>CVS</small> is appended.
-</p></li><li><p>
-As <small>CVS</small> traverses through your directories, the contents
+</p></li><li>
+<p>Any `<samp>-I</samp>' options given to <small>CVS</small> is appended.
+</p></li><li>
+<p>As <small>CVS</small> traverses through your directories, the contents
 of any `<tt>.cvsignore</tt>' will be appended to the list.
 The patterns found in `<tt>.cvsignore</tt>' are only valid
 for the directory that contains them, not for
@@ -1451,8 +1451,8 @@ internal variables are:
 </p><dl compact="compact">
 <dt><code> CVSROOT
 </code></dt>
-<dd><p><a name="IDX273"></a>
-This is the absolute path to the current <small>CVS</small> root directory.
+<dd><a name="IDX273"></a>
+<p>This is the absolute path to the current <small>CVS</small> root directory.
 See section <a href="cvs_2.html#SEC9">The Repository</a>, for a description of the various
 ways to specify this, but note that the internal
 variable contains just the directory and not any
@@ -1460,8 +1460,8 @@ of the access method information.
 </p></dd>
 <dt><code> RCSBIN
 </code></dt>
-<dd><p><a name="IDX274"></a>
-In <small>CVS</small> 1.9.18 and older, this specified the
+<dd><a name="IDX274"></a>
+<p>In <small>CVS</small> 1.9.18 and older, this specified the
 directory where <small>CVS</small> was looking for <small>RCS</small>
 programs.  Because <small>CVS</small> no longer runs <small>RCS</small>
 programs, specifying this internal variable is now an
@@ -1469,23 +1469,23 @@ error.
 </p></dd>
 <dt><code> CVSEDITOR
 </code></dt>
-<dd><p><a name="IDX275"></a>
-</p></dd>
+<dd><a name="IDX275"></a>
+</dd>
 <dt><code> EDITOR
 </code></dt>
-<dd><p><a name="IDX276"></a>
-</p></dd>
+<dd><a name="IDX276"></a>
+</dd>
 <dt><code> VISUAL
 </code></dt>
-<dd><p><a name="IDX277"></a>
-These all expand to the same value, which is the editor
+<dd><a name="IDX277"></a>
+<p>These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section <a href="cvs_16.html#SEC118">Global options</a>, for how
 to specify this.
 </p></dd>
 <dt><code> USER
 </code></dt>
-<dd><p><a name="IDX278"></a>
-Username of the user running <small>CVS</small> (on the <small>CVS</small>
+<dd><a name="IDX278"></a>
+<p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
 server machine).
 When using pserver, this is the user specified in the repository
 specification which need not be the same as the username the
@@ -1522,13 +1522,14 @@ there is no way to quote a `<samp>$</samp>' character so that
 `<samp>$</samp>' represents itself.
 </p><p>Environment variables passed to administrative files are:
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX280"></a>
-</p></dd>
+
+</dd>
 <dt><code> CVS_USER
 </code></dt>
-<dd><p><a name="IDX281"></a>
-The <small>CVS</small>-specific username provided by the user, if it
+<dd><a name="IDX281"></a>
+<p>The <small>CVS</small>-specific username provided by the user, if it
 can be provided (currently just for the pserver access
 method), and to the empty string otherwise.  (<code>CVS_USER</code>
 and <code>USER</code> may differ when `<tt>$CVSROOT/CVSROOT/passwd</tt>'
@@ -1536,13 +1537,13 @@ is used to map <small>CVS</small> usernames to system usernames.)
 </p></dd>
 <dt><code> LOGNAME
 </code></dt>
-<dd><p><a name="IDX282"></a>
-The username of the system user.
+<dd><a name="IDX282"></a>
+<p>The username of the system user.
 </p></dd>
 <dt><code> USER
 </code></dt>
-<dd><p><a name="IDX283"></a>
-Same as <code>LOGNAME</code>.
+<dd><a name="IDX283"></a>
+<p>Same as <code>LOGNAME</code>.
 Do not confuse this with the internal variable of the same name.
 </p></dd>
 </dl>
@@ -1580,9 +1581,9 @@ value.  Note that this syntax is very strict.
 Extraneous spaces or tabs are not permitted.
 </p><p>Currently defined keywords are:
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX284"></a>
-</p></dd>
+</dd>
 <dt><code> RCSBIN=<var>bindir</var>
 </code></dt>
 <dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told

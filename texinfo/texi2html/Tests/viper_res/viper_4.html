@@ -62,22 +62,22 @@ ul.toc {list-style: none}
 
 <p>Customization can be done in 2 ways.
 </p><ul>
-<li><p>
+<li>
 <a name="IDX129"></a>
 <a name="IDX130"></a>
-Elisp code in a `<tt>.viper</tt>' file in your home directory.  Viper
+<p>Elisp code in a `<tt>.viper</tt>' file in your home directory.  Viper
 loads `<tt>.viper</tt>' just before it does the binding for mode
 hooks.  This is recommended for experts only.
-</p></li><li><p>
+</p></li><li>
 <a name="IDX131"></a>
-Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
+<p>Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
 'viper)</code> line.  This method is <em>not</em> recommended, unless you know what
 you are doing.  Only two variables, <code>viper-mode</code> and
 <code>viper-custom-file-name</code>, are supposed to be customized in `<tt>.emacs</tt>',
 prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.
-</p></li><li><p>
+</p></li><li>
 <a name="IDX132"></a>
-By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
+<p>By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
 customization widget, which lets you change the values of Viper
 customizable variables easily. This method is good for novice and
 experts alike. The customization code in the form of Lisp commands will be
@@ -431,15 +431,15 @@ hit the <kbd>C-j</kbd> key.
 </p></dd>
 <dt><code> viper-replace-overlay-cursor-color  &quot;Red&quot;
 </code></dt>
-<dd><p><a name="IDX134"></a>
-Cursor color when it is inside the replacement region.
+<dd><a name="IDX134"></a>
+<p>Cursor color when it is inside the replacement region.
 This has effect only on color displays and only when Emacs runs as an X
 application.
 </p></dd>
 <dt><code> viper-insert-state-cursor-color nil
 </code></dt>
-<dd><p><a name="IDX135"></a>
-If set to a valid color, this will be the cursor color when Viper is in
+<dd><a name="IDX135"></a>
+<p>If set to a valid color, this will be the cursor color when Viper is in
 insert state.
 </p></dd>
 <dt><code> viper-replace-region-end-delimiter &quot;$&quot;
@@ -1006,22 +1006,22 @@ See section <a href="#SEC30">Vi Macros</a>, for more information on Vi macros.
 </code></dt>
 <dt><code> viper-heading-end
 </code></dt>
-<dd><p><a name="IDX203"></a>
+<dd><a name="IDX203"></a>
 <a name="IDX204"></a>
 <a name="IDX205"></a>
 <a name="IDX206"></a>
-Regular Expressions for <kbd>[[</kbd> and <kbd>]]</kbd>.  Note that Emacs defines
+<p>Regular Expressions for <kbd>[[</kbd> and <kbd>]]</kbd>.  Note that Emacs defines
 Regexps for paragraphs and sentences.  See <a href="../emacs/Paragraphs.html">(emacs)Paragraphs</a> section `Paragraphs and Sentences' in <cite>The GNU Emacs Manual</cite>, for details.
 </p></dd>
 <dt><code> M-x viper-set-expert-level
 </code></dt>
-<dd><p><a name="IDX207"></a>
-Change your user level interactively.
+<dd><a name="IDX207"></a>
+<p>Change your user level interactively.
 </p></dd>
 <dt><code> viper-smart-suffix-list  '(&quot;&quot; &quot;tex&quot; &quot;c&quot; &quot;cc&quot; &quot;el&quot; &quot;p&quot;)
 </code></dt>
-<dd><p><a name="IDX208"></a>
-Viper supports Emacs-style file completion when it prompts the user for a
+<dd><a name="IDX208"></a>
+<p>Viper supports Emacs-style file completion when it prompts the user for a
 file name.  However, in many cases, the same directory may contain files
 with identical prefix but different suffixes, e.g., prog.c, prog.o,
 paper.tex, paper.dvi.  In such cases, completion will stop at the `.'.
@@ -1038,9 +1038,9 @@ the intended file name, hitting return will accept it.
 </p></dd>
 <dt><code> viper-insertion-ring-size  14
 </code></dt>
-<dd><p><a name="IDX209"></a>
+<dd><a name="IDX209"></a>
 <a name="IDX210"></a>
-Viper remembers what was previously inserted in Insert and Replace states.
+<p>Viper remembers what was previously inserted in Insert and Replace states.
 Several such recent insertions are kept in a special ring of strings of size
 <code>viper-insertion-ring-size</code>.
 If you enter Insert or Replace state you can reinsert strings from this
@@ -1069,10 +1069,10 @@ major modes.
 </p></dd>
 <dt><code> viper-command-ring-size  14
 </code></dt>
-<dd><p><a name="IDX211"></a>
+<dd><a name="IDX211"></a>
 <a name="IDX212"></a>
 <a name="IDX213"></a>
-Viper keeps track of the recent history of destructive
+<p>Viper keeps track of the recent history of destructive
 commands, such as <kbd>dw</kbd>, <kbd>i</kbd>, etc.
 In Vi state,
 the most recent command can be re-executed by hitting `<kbd>.</kbd>', as in Vi.
@@ -1125,14 +1125,14 @@ if the user accidentally switches to another Viper state by typing <kbd>ESC</kbd
 </p></dd>
 <dt><code> M-x viper-go-away
 </code></dt>
-<dd><p><a name="IDX214"></a>
-Make Viper disappear from the face of your running Emacs instance.  If your
+<dd><a name="IDX214"></a>
+<p>Make Viper disappear from the face of your running Emacs instance.  If your
 fingers start aching again, <kbd>M-x viper-mode</kbd> might save your day.
 </p></dd>
 <dt><code> M-x toggle-viper-mode
 </code></dt>
-<dd><p><a name="IDX215"></a>
-Toggle Viperization of Emacs on and off.
+<dd><a name="IDX215"></a>
+<p>Toggle Viperization of Emacs on and off.
 </p></dd>
 </dl>
 
@@ -1172,14 +1172,14 @@ Windows (or under some other window system for which a port of GNU Emacs 20
 is available).  Clicking the mouse when Emacs is invoked in an Xterm window
 (using <code>emacs -nw</code>) will do no good.
 </p><dl compact="compact">
-<dd><p>
+<dd>
 <a name="IDX219"></a>
 <a name="IDX220"></a>
-</p></dd>
+</dd>
 <dt><code> viper-mouse-search-key  (meta shift 1)
 </code></dt>
-<dd><p><a name="IDX221"></a>
-This variable controls the <em>mouse-search</em> feature of Viper.  The
+<dd><a name="IDX221"></a>
+<p>This variable controls the <em>mouse-search</em> feature of Viper.  The
 default value
 states that holding Meta and Shift keys while clicking mouse button 1
 should initiate search for a region under the mouse pointer (defined
@@ -1226,8 +1226,8 @@ occurred with all leading and trailing spaces and tabs removed.
 </dd>
 <dt><code> viper-mouse-insert-key (meta shift 2)
 </code></dt>
-<dd><p><a name="IDX223"></a>
-This variable controls the <em>mouse-insert</em> feature of Viper.
+<dd><a name="IDX223"></a>
+<p>This variable controls the <em>mouse-insert</em> feature of Viper.
 The above default value states that
 holding Meta and Shift keys while clicking mouse button 2
 should insert the region surrounding the

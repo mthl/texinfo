@@ -62,17 +62,17 @@ ul.toc {list-style: none}
 <p>  Emacs has many commands designed to understand the syntax of programming
 languages such as Lisp and C.  These commands can:
 </p><ul>
-<li><p>
-Move over or kill balanced expressions or <em>sexps</em> (see section <a href="#SEC217">Lists and Sexps</a>).
-</p></li><li><p>
-Move over or mark top-level balanced expressions (<em>defuns</em>, in Lisp;
+<li>
+<p>Move over or kill balanced expressions or <em>sexps</em> (see section <a href="#SEC217">Lists and Sexps</a>).
+</p></li><li>
+<p>Move over or mark top-level balanced expressions (<em>defuns</em>, in Lisp;
 functions, in C).
-</p></li><li><p>
-Show how parentheses balance (see section <a href="#SEC224">Automatic Display of Matching Parentheses</a>).
-</p></li><li><p>
-Insert, kill, or align comments (see section <a href="#SEC225">Manipulating Comments</a>).
-</p></li><li><p>
-Follow the usual indentation conventions of the language
+</p></li><li>
+<p>Show how parentheses balance (see section <a href="#SEC224">Automatic Display of Matching Parentheses</a>).
+</p></li><li>
+<p>Insert, kill, or align comments (see section <a href="#SEC225">Manipulating Comments</a>).
+</p></li><li>
+<p>Follow the usual indentation conventions of the language
 (see section <a href="#SEC219">Indentation for Programs</a>).
 </p></li></ul>
 
@@ -1354,8 +1354,8 @@ class browser.  See <a href="../ebrowse/index.html">(ebrowse)Top</a> section `To
 
 <p>  Here is how tag syntax is defined for the most popular languages:
 </p><ul>
-<li><p>
-In C code, any C function or typedef is a tag, and so are definitions of
+<li>
+<p>In C code, any C function or typedef is a tag, and so are definitions of
 <code>struct</code>, <code>union</code> and <code>enum</code>.  You can tag function
 declarations and external variables in addition to function definitions
 by giving the `<samp>--declarations</samp>' option to <code>etags</code>.
@@ -1364,20 +1364,20 @@ tags, unless you specify `<samp>--no-defines</samp>' when making the tags table.
 Similarly, global variables are tags, unless you specify
 `<samp>--no-globals</samp>'.  Use of `<samp>--no-globals</samp>' and `<samp>--no-defines</samp>'
 can make the tags table file much smaller.
-</p></li><li><p>
-In C++ code, in addition to all the tag constructs of C code, member
+</p></li><li>
+<p>In C++ code, in addition to all the tag constructs of C code, member
 functions are also recognized, and optionally member variables if you
 use the `<samp>--members</samp>' option.  Tags for variables and functions in
 classes are named `<samp><var>class</var>::<var>variable</var></samp>' and
 `<samp><var>class</var>::<var>function</var></samp>'.  <code>operator</code> functions tags are
 named, for example `<samp>operator+</samp>'.
-</p></li><li><p>
-In Java code, tags include all the constructs recognized in C++, plus
+</p></li><li>
+<p>In Java code, tags include all the constructs recognized in C++, plus
 the <code>interface</code>, <code>extends</code> and <code>implements</code> constructs.
 Tags for variables and functions in classes are named
 `<samp><var>class</var>.<var>variable</var></samp>' and `<samp><var>class</var>.<var>function</var></samp>'.
-</p></li><li><p>
-In LaTeX text, the argument of any of the commands <code>\chapter</code>,
+</p></li><li>
+<p>In LaTeX text, the argument of any of the commands <code>\chapter</code>,
 <code>\section</code>, <code>\subsection</code>, <code>\subsubsection</code>,
 <code>\eqno</code>, <code>\label</code>, <code>\ref</code>, <code>\cite</code>, <code>\bibitem</code>,
 <code>\part</code>, <code>\appendix</code>, <code>\entry</code>, or <code>\index</code>, is a
@@ -1393,21 +1393,21 @@ export TEXTAGS
 
 <p>specifies (using Bourne shell syntax) that the commands `<samp>\def</samp>',
 `<samp>\newcommand</samp>' and `<samp>\newenvironment</samp>' also define tags.
-</p></li><li><p>
-In Lisp code, any function defined with <code>defun</code>, any variable
+</p></li><li>
+<p>In Lisp code, any function defined with <code>defun</code>, any variable
 defined with <code>defvar</code> or <code>defconst</code>, and in general the first
 argument of any expression that starts with `<samp>(def</samp>' in column zero, is
 a tag.
-</p></li><li><p>
-In Scheme code, tags include anything defined with <code>def</code> or with a
+</p></li><li>
+<p>In Scheme code, tags include anything defined with <code>def</code> or with a
 construct whose name starts with `<samp>def</samp>'.  They also include variables
 set with <code>set!</code> at top level in the file.
 </p></li></ul>
 
 <p>  Several other languages are also supported:
 </p><ul>
-<li><p>
-In Ada code, functions, procedures, packages, tasks, and types are
+<li>
+<p>In Ada code, functions, procedures, packages, tasks, and types are
 tags.  Use the `<samp>--packages-only</samp>' option to create tags for
 packages only.
 </p><p>With Ada, it is possible to have the same name used for different
@@ -1446,39 +1446,39 @@ qualifier:
 <p>So, as an example, <kbd>M-x find-tag bidule/b</kbd> will go directly to the
 body of the package <var>bidule</var> while <kbd>M-x find-tag bidule</kbd> will
 just search for any tag <var>bidule</var>.
-</p></li><li><p>
-In assembler code, labels appearing at the beginning of a line,
+</p></li><li>
+<p>In assembler code, labels appearing at the beginning of a line,
 followed by a colon, are tags.
-</p></li><li><p>
-In Bison or Yacc input files, each rule defines as a tag the nonterminal
+</p></li><li>
+<p>In Bison or Yacc input files, each rule defines as a tag the nonterminal
 it constructs.  The portions of the file that contain C code are parsed
 as C code.
-</p></li><li><p>
-In Cobol code, tags are paragraph names; that is, any word starting in
+</p></li><li>
+<p>In Cobol code, tags are paragraph names; that is, any word starting in
 column 8 and followed by a period.
-</p></li><li><p>
-In Erlang code, the tags are the functions, records, and macros defined
+</p></li><li>
+<p>In Erlang code, the tags are the functions, records, and macros defined
 in the file.
-</p></li><li><p>
-In Fortran code, functions, subroutines and blockdata are tags.
-</p></li><li><p>
-In makefiles, targets are tags.
-</p></li><li><p>
-In Objective C code, tags include Objective C definitions for classes,
+</p></li><li>
+<p>In Fortran code, functions, subroutines and blockdata are tags.
+</p></li><li>
+<p>In makefiles, targets are tags.
+</p></li><li>
+<p>In Objective C code, tags include Objective C definitions for classes,
 class categories, methods, and protocols.
-</p></li><li><p>
-In Pascal code, the tags are the functions and procedures defined in
+</p></li><li>
+<p>In Pascal code, the tags are the functions and procedures defined in
 the file.
-</p></li><li><p>
-In Perl code, the tags are the procedures defined by the <code>sub</code>,
+</p></li><li>
+<p>In Perl code, the tags are the procedures defined by the <code>sub</code>,
 <code>my</code> and <code>local</code> keywords.  Use `<samp>--globals</samp>' if you want
 to tag global variables.
-</p></li><li><p>
-In PostScript code, the tags are the functions.
-</p></li><li><p>
-In Prolog code, a tag name appears at the left margin.
-</p></li><li><p>
-In Python code, <code>def</code> or <code>class</code> at the beginning of a line
+</p></li><li>
+<p>In PostScript code, the tags are the functions.
+</p></li><li>
+<p>In Prolog code, a tag name appears at the left margin.
+</p></li><li>
+<p>In Python code, <code>def</code> or <code>class</code> at the beginning of a line
 generate a tag.
 </p></li></ul>
 
@@ -1680,8 +1680,8 @@ etags --regex=@emacs.tags *.[ch] */*.[ch]
 <p>  Here are some more examples.  The regexps are quoted to protect them
 from shell interpretation.
 </p><ul>
-<li><p>
-Tag Octave files:
+<li>
+<p>Tag Octave files:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
@@ -1693,13 +1693,13 @@ etags --language=none \
 <p>Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
 to it.
-</p></li><li><p>
-Tag Tcl files:
+</p></li><li>
+<p>Tag Tcl files:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
 </pre></td></tr></table>
-</li><li><p>
-Tag VHDL files:
+</li><li>
+<p>Tag VHDL files:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
@@ -1759,14 +1759,14 @@ strings, they are evaluated and must return an appropriate string.
 </pre></td></tr></table>
 <p>The example defines the tags table alist in the following way:
 </p><ul>
-<li><p>
-Anything in the directory `<tt>/usr/src/public/perl/</tt>' 
+<li>
+<p>Anything in the directory `<tt>/usr/src/public/perl/</tt>' 
 should use the `<tt>TAGS</tt>' file `<tt>/usr/src/public/perl/perl-3.0/TAGS</tt>'. 
-</p></li><li><p>
-Files ending in `<tt>.el</tt>' should use the `<tt>TAGS</tt>' file
+</p></li><li>
+<p>Files ending in `<tt>.el</tt>' should use the `<tt>TAGS</tt>' file
 `<tt>/usr/local/emacs/src/TAGS</tt>'. 
-</p></li><li><p>
-Anything in or below the directory `<tt>/jbw/gnu/</tt>' should use the 
+</p></li><li>
+<p>Anything in or below the directory `<tt>/jbw/gnu/</tt>' should use the 
 `<tt>TAGS</tt>' file `<tt>/usr15/degree/stud/jbw/gnu/TAGS</tt>'.  
 </p></li></ul>
 
@@ -2311,10 +2311,10 @@ the task of understanding a Fortran program well enough to indent it
 properly:
 </p><a name="IDX1006"></a>
 <ul>
-<li><p>
-Two nested `<samp>do</samp>' loops never share a `<samp>continue</samp>' statement.
-</p></li><li><p>
-The same character appears in column 5 of all continuation lines.  It
+<li>
+<p>Two nested `<samp>do</samp>' loops never share a `<samp>continue</samp>' statement.
+</p></li><li>
+<p>The same character appears in column 5 of all continuation lines.  It
 is the value of the variable <code>fortran-continuation-char</code>.
 By default, this character is `<samp>$</samp>'.
 </p></li></ul>

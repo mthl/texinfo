@@ -1300,15 +1300,15 @@ in such directories will typically produce an error
 message.  One way to get those changes back into the
 repository is as follows:
 </p><ul>
-<li><p>
-Get a new working directory.
-</p></li><li><p>
-Copy the files from the working directory from before
+<li>
+<p>Get a new working directory.
+</p></li><li>
+<p>Copy the files from the working directory from before
 the failure over to the new working directory (do not
 copy the contents of the `<tt>CVS</tt>' directories, of
 course).
-</p></li><li><p>
-Working in the new working directory, use commands such
+</p></li><li>
+<p>Working in the new working directory, use commands such
 as <code>cvs update</code> and <code>cvs diff</code> to figure out
 what has changed, and then when you are ready, commit
 the changes into the repository.
@@ -2325,14 +2325,14 @@ or abnormally.  However, there are a few cases in which
 the server does not or cannot remove the temporary
 directory, for example:
 </p><ul>
-<li><p>
-If the server aborts due to an internal server error,
+<li>
+<p>If the server aborts due to an internal server error,
 it may preserve the directory to aid in debugging
-</p></li><li><p>
-If the server is killed in a way that it has no way of
+</p></li><li>
+<p>If the server is killed in a way that it has no way of
 cleaning up (most notably, `<samp>kill -KILL</samp>' on unix).
-</p></li><li><p>
-If the system shuts down without an orderly shutdown,
+</p></li><li>
+<p>If the system shuts down without an orderly shutdown,
 which tells the server to clean up.
 </p></li></ul>
 

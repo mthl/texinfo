@@ -83,10 +83,10 @@ ul.toc {list-style: none}
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
 ways to specify its location:
 </p><ol>
-<li><p>
-Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
-</p></li><li><p>
-If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
+<li>
+<p>Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
+</p></li><li>
+<p>If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
 file, in its directory; and then add the name of that directory to the
 <code>Info-directory-list</code> variable in your personal or site
 initialization file.
@@ -95,8 +95,8 @@ must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
 each of the listed directories.  (In Emacs version 18, you can set the
 <code>Info-directory</code> variable to the name of only one
 directory.)
-</p></li><li><p>
-Specify the Info directory name in the <code>INFOPATH</code> environment
+</p></li><li>
+<p>Specify the Info directory name in the <code>INFOPATH</code> environment
 variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
 (Only you and others who set this environment variable will be able to
 find Info files whose location is specified this way.)
@@ -139,22 +139,22 @@ file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
 your `<tt>autoexec.bat</tt>' file or in the Registry.  Each type of shell
 uses a different syntax.
 </p><ul>
-<li><p>
-In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
+<li>
+<p>In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
 variable as follows:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
-</li><li><p>
-In a `<tt>.profile</tt>' file, you would achieve the same effect by
+</li><li>
+<p>In a `<tt>.profile</tt>' file, you would achieve the same effect by
 writing:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
-</li><li><p>
+</li><li>
 <a name="IDX415"></a>
-In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+<p>In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
