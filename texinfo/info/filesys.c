@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.5 2004-04-11 17:56:45 karl Exp $
+   $Id: filesys.c,v 1.6 2004-07-30 17:17:40 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -281,12 +281,12 @@ extract_colon_unit (char *string, int *idx)
   if (!string || i >= strlen (string))
     return NULL;
 
+  if (!string[i]) /* end of string */
+    return NULL;
+
   /* Advance to next PATH_SEP.  */
   while (string[i] && string[i] != PATH_SEP[0])
     i++;
-
-  if (!string[i] && i == start) /* end of string, and didn't advance */
-    return NULL;
 
   {
     char *value = xmalloc ((i - start) + 1);
