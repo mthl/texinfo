@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.41 2004-10-11 18:16:46 karl Exp $
+# $Id: configure.ac,v 1.42 2004-10-17 20:50:24 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -91,18 +91,25 @@ AC_CANONICAL_BUILD
 # so that make compiles the native tools first.
 #
 if test "$cross_compiling" = no; then
-    native_tools=
+  native_tools=
 else
-    native_tools=tools
-    test -d "$native_tools" || mkdir "$native_tools"
-    confdir=`(cd "$srcdir";pwd)`
-    rm -f config.status
-    # Make sure the secondary configure won't complain
-    # that it's "already configured."
-    cd "$native_tools"
-    tools_only=1 $confdir/configure --build=${build} --host=${build} \
-	--disable-rpath --disable-nls
-    cd ..
+  native_tools=tools
+  test -d "$native_tools" || mkdir "$native_tools"
+  confdir=`(cd "$srcdir";pwd)`
+  echo "doing configure of native tools (${build})"
+  cd "$native_tools" || exit 1
+  # Make sure the secondary configure won't complain
+  # that it's "already configured."
+  rm -f config.status
+  # Run secondary configure in alternate environment or
+  # it gets the wrong CC etc.  env -i gives this build host configure
+  # a clean environment.
+  env -i CC=${BUILD_CC} AR=${BUILD_AR} RANLIB=${BUILD_RANLIB} PATH=${PATH} \
+      tools_only=1 \
+    ${confdir}/configure --build=${build} --host=${build} \
+                         --disable-rpath --disable-nls
+  cd .. || exit 1
+  echo "Continuing with main configure (${host})"
 fi
 AC_SUBST(native_tools)
 AM_CONDITIONAL(TOOLS_ONLY, [[test "x$tools_only" = x1]])
