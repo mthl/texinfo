@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.9 2003-04-02 13:26:02 karl Exp $
+# $Id: Makefile.am,v 1.10 2003-10-27 00:16:11 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -14,7 +14,7 @@
 info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 DISTCLEANFILES = texinfo texinfo-* info*.info*
 
-man_MANS = info.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 \
+man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 \
            info.5 texinfo.5
 HELP2MAN = help2man
 noinst_SCRIPTS = $(HELP2MAN)
@@ -61,7 +61,9 @@ if TEXINFO_MAINT
 common_mandeps = $(top_srcdir)/configure.ac $(HELP2MAN)
 info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	$(HELP2MAN) --name="read Info documents" `basename $< .c` >$@
-install-info.1: $(top_srcdir)/util/install-info.c $(top_srcdir)/configure.ac $(HELP2MAN)
+infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
+	$(HELP2MAN) --name="compile customizations for Info" `basename $< .c` >$@
+install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
 	$(HELP2MAN) --name="update info/dir entries" `basename $< .c` >$@
 makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	$(HELP2MAN) --name="translate Texinfo documents" `basename $< .c` >$@
