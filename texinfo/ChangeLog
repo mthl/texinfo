@@ -1,3 +1,7 @@
+2003-07-03    <karl@gnu.org>
+
+	* doc/info.texi: copy from Emacs (with revisions by Luc).
+
 2003-07-02   Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Add thumbpdf support.
