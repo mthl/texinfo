@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.62 2004-07-11 21:51:18 karl Exp $
+   $Id: makeinfo.c,v 1.63 2004-07-12 14:05:37 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -437,6 +437,8 @@ Conditional processing in input:\n\
   --no-ifplaintext  do not process @ifplaintext text.\n\
   --no-iftex        do not process @iftex and @tex text.\n\
   --no-ifxml        do not process @ifxml and @xml text.\n\
+\n\
+  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n\
 "));
 
     puts (_("\

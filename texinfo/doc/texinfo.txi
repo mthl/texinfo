@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
+@c $Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6657,17 +6657,17 @@ not something else that should not be changed.@refill
 * code::                        Indicating program code.
 * kbd::                         Showing keyboard input.
 * key::                         Specifying keys.
-* samp::                        A literal sequence of characters.
-* verb::                        A verbatim sequence of characters.
+* samp::                        Indicating a literal sequence of characters.
+* verb::                        Indicating a verbatim sequence of characters.
 * var::                         Indicating metasyntactic variables.
 * env::                         Indicating environment variables.
 * file::                        Indicating file names.
 * command::                     Indicating command names.
 * option::                      Indicating option names.
 * dfn::                         Specifying definitions.
-* cite::                        Referring to books not in the  Info system.
+* cite::                        Referring to books not in the Info system.
 * acronym::                     Indicating acronyms.
-* indicateurl::                 Indicating a World Wide Web reference.
+* indicateurl::                 Indicating an example URL.
 * email::                       Indicating an electronic mail address.
 @end menu
 
@@ -6687,46 +6687,65 @@ The commands serve a variety of purposes:@refill
 
 @table @code
 @item @@code@{@var{sample-code}@}
-Indicate text that is a literal example of a piece of a program.@refill
+Indicate text that is a literal example of a piece of a program.
+@xref{code,,@code{@@code}}.
 
 @item @@kbd@{@var{keyboard-characters}@}
-Indicate keyboard input.@refill
+Indicate keyboard input.
+@xref{kbd,,@code{@@kbd}}.
 
 @item @@key@{@var{key-name}@}
-Indicate the conventional name for a key on a keyboard.@refill
+Indicate the conventional name for a key on a keyboard.
+@xref{key,,@code{@@key}}.
 
 @item @@samp@{@var{text}@}
-Indicate text that is a literal example of a sequence of characters.@refill
+Indicate text that is a literal example of a sequence of characters.
+@xref{samp,,@code{@@samp}}.
+
+@item @@verb@{@var{text}@}
+Write a verbatim sequence of characters.
+@xref{verb,,@code{@@verb}}.
 
 @item @@var@{@var{metasyntactic-variable}@}
-Indicate a metasyntactic variable.@refill
+Indicate a metasyntactic variable.
+@xref{var,,@code{@@var}}.
 
 @item @@env@{@var{environment-variable}@}
-Indicate an environment variable.@refill
+Indicate an environment variable.
+@xref{env,,@code{@@kenv}}.
 
 @item @@file@{@var{file-name}@}
-Indicate the name of a file.@refill
+Indicate the name of a file.
+@xref{file,,@code{@@file}}.
 
 @item @@command@{@var{command-name}@}
-Indicate the name of a command.@refill
+Indicate the name of a command.
+@xref{command,,@code{@@command}}.
 
 @item @@option@{@var{option}@}
-Indicate a command-line option.@refill
+Indicate a command-line option.
+@xref{option,,@code{@@option}}.
 
 @item @@dfn@{@var{term}@}
-Indicate the introductory or defining use of a term.@refill
+Indicate the introductory or defining use of a term.
+@xref{dfn,,@code{@@dfn}}.
 
 @item @@cite@{@var{reference}@}
-Indicate the name of a book.@refill
+Indicate the name of a book.
+@xref{cite,,@code{@@cite}}.
 
 @item @@acronym@{@var{acronym}@}
-Indicate an acronym.@refill
+Indicate an acronym.
+@xref{acronym,,@code{@@acronym}}.
 
 @item @@indicateurl@{@var{uniform-resource-locator}@}
-Indicate a uniform resource locator for the World Wide Web.
+Indicate an example (nonfunctional) uniform resource locator.
+@xref{indicateurl,,@code{@@indicateurl}}.  (Use @code{@@url}
+(@pxref{url,,@code{url}}) for live url's.)
 
 @item @@email@{@var{email-address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
+@xref{email,,@code{@@email}}.
 
 @ignore
 @item @@ctrl@{@var{ctrl-char}@}
@@ -14864,8 +14883,7 @@ MS-DOS/MS-Windows).
 For the specified format, process @samp{@@if@var{format}} and
 @samp{@@@var{format}} commands even if not generating the given output
 format.  For instance, if @option{--iftex} is specified, then
-@samp{@@iftex} and @samp{@@tex} blocks will be read.  This can be useful
-when postprocessing the output.
+@samp{@@iftex} and @samp{@@tex} blocks will be read.  
 
 @item --macro-expand=@var{file}
 @itemx -E @var{file}
@@ -14914,9 +14932,10 @@ output by default---can be overridden with @option{-o}.
 @itemx --no-ifxml
 @opindex --no-ifxml
 Do not process @samp{@@if@var{format}} and @samp{@@@var{format}}
-commands even if generating the given format.  For instance, if
-@option{--no-ifhtml} is specified, then @samp{@@ifhtml} and
-@samp{@@html} blocks will not be read.
+commands, and do process @samp{@@ifnot@var{format}}, even if
+generating the given format.  For instance, if @option{--no-ifhtml} is
+specified, then @samp{@@ifhtml} and @samp{@@html} blocks will not be
+read, and @samp{@@ifnothtml} blocks will be.
 
 @item --no-split
 @opindex --no-split
@@ -18186,7 +18205,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
+$Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18252,7 +18271,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
+@comment $Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,14 @@
+2004-07-12  Karl Berry  <karl@gnu.org>
+
+	* texinfo/texinfo.txi (Useful Highlighting): Include
+		cross-references to each of the commands.  Suggestion from
+		Wolfgang Pausch, 12 Jul 2004 08:26:28 +0200.
+
+	* texinfo/texinfo.txi (Invoking makeinfo),
+	* makeinfo/makeinfo.c: mention that --if-noFORMAT also processes
+	@ifnotFORMAT blocks.
+	Suggestion from Stepan.
+
 2004-07-11  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (discard_until): leave input_text_offset at
