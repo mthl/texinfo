@@ -1,4 +1,4 @@
-$Id: TODO,v 1.6 2003-01-27 13:05:44 karl Exp $
+$Id: TODO,v 1.7 2003-03-24 20:40:06 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -104,6 +104,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Incorporate an X-based viewer, perhaps tkinfo
       http://www.math.ucsb.edu/~boldt/tkinfo/
     or saxinfo.
+  - Write technical definition of Info format.
 
 * PDF:
   - make each letter of the index (A, B, ...) a section in the TOC.
