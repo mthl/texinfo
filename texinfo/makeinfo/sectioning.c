@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.11 2003-07-14 13:20:18 karl Exp $
+   $Id: sectioning.c,v 1.12 2003-07-25 00:02:24 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -162,10 +162,15 @@ search_sectioning (text)
   return -1;
 }
 
-/* Return an integer which identifies the type section present in TEXT. */
+/* Return an integer which identifies the type of section present in
+   TEXT -- 1 for @top, 2 for chapters, ..., 5 for subsubsections (as
+   specified in section_alist).  We take into account any @lowersections
+   and @raisesections.  If SECNAME is non-NULL, also return the
+   corresponding section name.  */
 int
-what_section (text)
+what_section (text, secname)
      char *text;
+     char **secname;
 {
   int index, j;
   char *temp;
@@ -205,7 +210,30 @@ what_section (text)
       if (return_val < 0)
         return_val = 0;
       else if (return_val > 5)
-          return_val = 5;
+        return_val = 5;
+
+      if (secname)
+        {
+          int i;
+          int alist_size = sizeof (section_alist) / sizeof(section_alist_type);
+          /* Find location of offset sectioning entry, but don't go off
+             either end of the array.  */
+          int index_offset = MAX (index - section_alist_offset, 0);
+          index_offset = MIN (index_offset, alist_size - 1);
+
+          /* Also make sure we don't go into the next "group" of
+             sectioning changes, e.g., change from an @appendix to an
+             @heading or some such.  */
+#define SIGN(expr) ((expr) < 0 ? -1 : 1)
+          for (i = index; i != index_offset; i -= SIGN (section_alist_offset))
+            {
+              /* As it happens, each group has unique .num/.toc values.  */
+              if (section_alist[i].num != section_alist[index_offset].num
+                  || section_alist[i].toc != section_alist[index_offset].toc)
+                break;
+            }
+          *secname = section_alist[i].name;
+        }
       return return_val;
     }
   return -1;
@@ -215,21 +243,25 @@ void
 sectioning_underscore (cmd)
      char *cmd;
 {
+  char *temp, *secname;
+  int level;
+  
   /* If we're not indenting the first paragraph, we shall make it behave
      like @noindent is called directly after the section heading. */
   if (! do_first_par_indent)
     cm_noindent ();
 
+  temp = xmalloc (2 + strlen (cmd));
+  temp[0] = COMMAND_PREFIX;
+  strcpy (&temp[1], cmd);
+  level = what_section (temp, &secname);
+  level -= 2;
+  if (level < 0)
+    level = 0;
+  free (temp);
+
   if (xml)
     {
-      char *temp;
-      int level;
-      temp = xmalloc (2 + strlen (cmd));
-      temp[0] = COMMAND_PREFIX;
-      strcpy (&temp[1], cmd);
-      level = what_section (temp);
-      level -= 2;
-      free (temp);
       xml_close_sections (level);
       /* Mark the beginning of the section
          If the next command is printindex, we will remove
@@ -237,44 +269,26 @@ sectioning_underscore (cmd)
       flush_output ();
       xml_last_section_output_position = output_paragraph_offset;
 
-      xml_insert_element (xml_element (cmd), START);
+      xml_insert_element (xml_element (secname), START);
       xml_insert_element (TITLE, START);
-      xml_open_section (level, cmd);
+      xml_open_section (level, secname);
       get_rest_of_line (0, &temp);
       execute_string ("%s\n", temp);
       free (temp);
       xml_insert_element (TITLE, END);
     }
+  else if (html)
+    sectioning_html (level, secname);
   else
     {
-  char character;
-  char *temp;
-  int level;
-
-  temp = xmalloc (2 + strlen (cmd));
-  temp[0] = COMMAND_PREFIX;
-  strcpy (&temp[1], cmd);
-  level = what_section (temp);
-  free (temp);
-  level -= 2;
-
-  if (level < 0)
-    level = 0;
-
-  if (html)
-    sectioning_html (level, cmd);
-  else
-    {
-      character = scoring_characters[level];
-      insert_and_underscore (level, character, cmd);
-        }
+      char character = scoring_characters[level];
+      insert_and_underscore (level, character, secname);
     }
 }
 
-/* insert_and_underscore and sectioning_html are the
-   only functions which call this.
-   I have created this, because it was exactly the same
-   code in both functions. */
+
+/* insert_and_underscore and sectioning_html call this.  */
+
 static char *
 handle_enum_increment (level, index)
      int level;
@@ -419,10 +433,8 @@ sectioning_html (level, cmd)
   old_no_indent = no_indent;
   no_indent = 1;
 
-  /* level 0 (chapter) is <h2>, everything else is <h3>.  We don't want
-     to go lower than that because browsers then start rendering the
-     headings smaller than the text.  */
-  add_word_args ("<h%d class=\"%s\">", MIN (3, level + 2), cmd);
+  /* level 0 (chapter) is <h2>, and we go down from there.  */
+  add_word_args ("<h%d class=\"%s\">", level + 2, cmd);
 
   /* If we are outside of any node, produce an anchor that
      the TOC could refer to.  */
@@ -483,7 +495,7 @@ sectioning_html (level, cmd)
   if (outstanding_node)
     outstanding_node = 0;
 
-  add_word_args ("</h%d>", MIN (3, level + 2));
+  add_word_args ("</h%d>", level + 2);
   close_paragraph();
   filling_enabled = 1;
   no_indent = old_no_indent;
@@ -584,7 +596,8 @@ cm_top ()
             if (input_text_offset < input_text_length)
               input_text_offset++;
 
-            this_section = what_section (input_text + input_text_offset);
+            this_section = what_section (input_text + input_text_offset,
+                                         NULL);
 
             /* If we found a sectioning command, then give the top section
                a level of this section - 1. */
