@@ -1,5 +1,10 @@
 2002-10-09    <karl@gnu.org>
 
+	* doc/texinfo.txi: recommend free software directory categories
+	(suggestion from rms),
+        more info about @noindent (fut_nis@d3.dion.ne.jp and ryk@dspwiz.com),
+        version specification (spectorhome@rcn.com).
+
 	* makeinfo/{cmds,footnote,html,insertion,makeinfo,multi,node}.c:
 	use <br /> instead of plain <br>, for the sake of XHTML.  Likewise
         with <hr /> and <meta />, and quote all <meta> values.
