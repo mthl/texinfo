@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.9 2004-04-11 17:56:46 karl Exp $
+   $Id: infomap.c,v 1.10 2004-07-30 20:43:40 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -704,8 +704,8 @@ initialize_vi_like_keymaps ()
   map['H'].function = info_get_help_window;
   map['i'].function = info_index_search;
   map['I'].function = info_goto_invocation_node;
-  map['j'].function = info_down_line;
-  map['k'].function = info_up_line;
+  map['j'].function = info_next_line;
+  map['k'].function = info_prev_line;
   map['l'].function = info_history_node;
   map['m'].function = info_menu_item;
   map['n'].function = info_search_next;
@@ -1182,8 +1182,8 @@ static unsigned char default_vi_like_info_keys[] =
 	'H', NUL,			A_info_get_help_window,
 	'i', NUL,			A_info_index_search,
 	'I', NUL,			A_info_goto_invocation_node,
-	'j', NUL,			A_info_down_line,
-	'k', NUL,			A_info_up_line,
+	'j', NUL,			A_info_next_line,
+	'k', NUL,			A_info_prev_line,
 	'l', NUL,			A_info_history_node,
 	'm', NUL,			A_info_menu_item,
 	'n', NUL,			A_info_search_next,
