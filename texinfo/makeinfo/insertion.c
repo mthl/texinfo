@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.40 2003-11-19 05:26:00 dirt Exp $
+   $Id: insertion.c,v 1.41 2003-11-21 05:37:45 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1583,13 +1583,13 @@ cm_end ()
   char *temp;
   enum insertion_type type;
 
+  get_rest_of_line (0, &temp);
+
   if (!insertion_level)
     {
       line_error (_("Unmatched `%c%s'"), COMMAND_PREFIX, command);
       return;
     }
-
-  get_rest_of_line (0, &temp);
 
   if (temp[0] == 0)
     line_error (_("`%c%s' needs something after it"), COMMAND_PREFIX, command);

@@ -1,5 +1,19 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.c (cm_end): get rest of the line before returning
+	in case of error, so the parameter to @end does not get leaked into
+	the output document.
+
+	* makeinfo/makeinfo.c (discard_until): when the expected string is not
+	found, check to see if we are looking for @end, and if so issue a more
+	descriptive error message.
+	(execute_string): keep track of insertion stack to catch multiline
+	commands where they are not allowed.
+	Report from: Dumas Patrice <dumas@centre-cired.fr>, Wed, 18 Jun 2003
+	09:41:56 +0200.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/multi.c (multitable_item): start <tbody> immediately if
 	this a regular @item, and first in the table
 

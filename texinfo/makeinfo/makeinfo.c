@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.48 2003-11-19 03:05:37 dirt Exp $
+   $Id: makeinfo.c,v 1.49 2003-11-21 05:37:45 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -936,8 +936,16 @@ discard_until (string)
       input_text_offset = input_text_length - strlen (string);
 
       if (strcmp (string, "\n") != 0)
-        {
-          line_error (_("Expected `%s'"), string);
+        { /* Give a more descriptive feedback, if we are looking for ``@end ''
+             during macro execution.  That means someone used a multiline
+             command as an argument to, say, @section ... style commands.  */
+          char *end_block = xmalloc (7);
+          sprintf (end_block, "\n%cend ", COMMAND_PREFIX);
+          if (executing_string && strstr (string, end_block))
+            line_error (_("No multiline commands allowed here"));
+          else
+            line_error (_("Expected `%s'"), string);
+          free (end_block);
           return;
         }
     }
@@ -4234,6 +4242,7 @@ execute_string (format, va_alist)
   extern int xml_in_para;
   int xml_element_stack_start;
   int xml_para_at_start = xml_in_para;
+  int insertion_level_at_start = insertion_level;
 
   es = get_execution_string (EXECUTE_STRING_MAX);
   temp_string = es->string;
@@ -4259,6 +4268,23 @@ execute_string (format, va_alist)
   reader_loop ();
   free (input_filename);
 
+  popfile ();
+  executing_string--;
+  es->in_use = 0;
+
+  /* If insertion stack level changes during execution, that means a multiline
+     command is used inside braces or @section ... kind of commands.  */
+  if (insertion_level_at_start != insertion_level)
+    {
+      line_error (_("No multiline commands allowed here"));
+      /* We also need to keep insertion_level intact to make sure warnings are
+         issued for @end ... command.  */
+      while (insertion_level > insertion_level_at_start)
+        pop_insertion ();
+    }
+
+  /* Similar thing is also applicable to also XML and Docbook output.  Though
+     we silently balance the tags instead of complaining.  */
   if (xml)
     {
       while (xml_current_stack_index () > xml_element_stack_start)
@@ -4266,10 +4292,6 @@ execute_string (format, va_alist)
       if (!xml_para_at_start)
         xml_end_para ();
     }
-
-  popfile ();
-  executing_string--;
-  es->in_use = 0;
 }
 
 
