@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.2 2003-02-11 16:39:06 karl Exp $
+   $Id: indices.c,v 1.3 2003-08-13 13:52:32 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003 Free Software
    Foundation, Inc.
@@ -664,7 +664,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
           initialize_message_buffer ();
           printf_to_message_buffer
-            (_("\n* Menu: Nodes whoses indices contain \"%s\":\n"), line);
+            (_("\n* Menu: Nodes whose indices contain \"%s\":\n"), line);
           line_buffer = (char *)xmalloc (500);
 
           for (i = 0; apropos_list[i]; i++)
