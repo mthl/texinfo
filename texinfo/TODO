@@ -1,4 +1,4 @@
-$Id: TODO,v 1.15 2003-11-13 16:40:32 karl Exp $
+$Id: TODO,v 1.16 2003-11-19 05:46:25 dirt Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -82,7 +82,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 * Makeinfo:
   - Support image scaling, at least in HTML.
   - Try directory of main source file.
-  - Include node name in HTML <title> in split-node output.
   - Make makeinfo -E just do macro expansion, avoiding all error checks.
     That way, texi2dvi could run makeinfo --iftex -E.
   - A detexinfo program, like detex or delatex.  This command would
