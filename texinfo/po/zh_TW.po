@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-08 09:57-0800\n"
+"POT-Creation-Date: 2004-12-15 10:25-0800\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -123,15 +123,15 @@ msgstr "一個完成句:\n"
 msgid "%d completions:\n"
 msgstr "%d 個完成句:\n"
 
-#: info/echo-area.c:1084
+#: info/echo-area.c:1085
 msgid "Insert completion"
 msgstr "插入完成句"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1220
 msgid "Building completions..."
 msgstr "建立完成句中..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1340
 msgid "Scroll the completions window"
 msgstr "捲動完成句分隔視窗"
 

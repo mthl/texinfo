@@ -1,5 +1,7 @@
 2004-12-15  Karl Berry  <karl@gnu.org>
 
+	* pretest version 4.7.92.
+
 	* util/texinfo.dtd: merge with makeinfo/texinfo.dtd.
 	* makeinfo/texinfo.dtd, makeinfo/texinfo.xsl: remove.
 

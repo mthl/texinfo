@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.7\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-08 09:57-0800\n"
+"POT-Creation-Date: 2004-12-15 10:25-0800\n"
 "PO-Revision-Date: 2004-04-15 19:19+0300\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -128,15 +128,15 @@ msgstr "Bir tamamlama:\n"
 msgid "%d completions:\n"
 msgstr "%d tamamlama:\n"
 
-#: info/echo-area.c:1084
+#: info/echo-area.c:1085
 msgid "Insert completion"
 msgstr "Tamamlamayý yerleþtir"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1220
 msgid "Building completions..."
 msgstr "Tamamlamalarý oluþturuyor..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1340
 msgid "Scroll the completions window"
 msgstr "Tamamlama penceresini kaydýrýr"
 

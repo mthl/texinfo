@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-08 09:57-0800\n"
+"POT-Creation-Date: 2004-12-15 10:25-0800\n"
 "PO-Revision-Date: 2004-12-05 12:24+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -124,15 +124,15 @@ msgstr "Jedno uzupe³nienie:\n"
 msgid "%d completions:\n"
 msgstr "%d uzupe³nieñ:\n"
 
-#: info/echo-area.c:1084
+#: info/echo-area.c:1085
 msgid "Insert completion"
 msgstr "Wstawienie uzupe³nienia"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1220
 msgid "Building completions..."
 msgstr "Tworzenie uzupe³nieñ..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1340
 msgid "Scroll the completions window"
 msgstr "Przewijanie okna uzupe³nieñ"
 
