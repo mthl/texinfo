@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
+@c $Id: texinfo.txi,v 1.110 2004-08-27 22:22:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13594,9 +13594,10 @@ Twice: a,b & a,b.
 
 
 @node Macro Details
-@section Macro Details
+@section Macro Details and Caveats
 @cindex Macro details
 @cindex Details of macro usage
+@cindex Caveats for macro usage
 
 Due to unavoidable limitations, certain macro-related constructs cause
 problems with @TeX{}.  If you get macro-related errors when producing
@@ -13631,6 +13632,24 @@ It is best to avoid comments inside macro definitions.
 
 @item
 Macro arguments cannot cross lines.
+
+@item
+In general, you can't arbitrarily substitute a macro call for Texinfo
+command arguments, even when the text is the same.  It might work with
+some commands, it fails with others.  Best not to do it at all.  For
+instance, this fails:
+
+@example
+@@macro offmacro
+off
+@@end macro
+@@headings @@offmacro
+@end example
+
+@noindent
+You would expect this to be equivalent to @code{@@headings off}, but
+for @TeX{}nical reasons, it fails with a mysterious error message
+(@code{Paragraph ended before @@headings was complete}).
 
 @item
 Macros cannot define macros in the natural way.  To do this, you must
@@ -18324,7 +18343,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
+$Id: texinfo.txi,v 1.110 2004-08-27 22:22:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18390,7 +18409,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.110 2004-08-27 22:22:09 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
