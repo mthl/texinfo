@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.3 2001-05-01 21:33:44 dprice Exp $
+# $Id: texi2html.init,v 1.4 2001-09-15 09:34:50 reiter Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -74,7 +74,7 @@ $T2H_OPTIONS -> {expand} =
 };
 
 # - glossary
-#if set, uses section named `Footnotes' for glossary
+# If set, uses section named `Footnotes' for glossary.
 my $T2H_USE_GLOSSARY = 0;
 $T2H_OPTIONS -> {glossary} =
 {
@@ -127,7 +127,7 @@ $T2H_OPTIONS -> {I} =
 # -top_file
 # uses file of this name for top-level file
 # extension is manipulated appropriately, if necessary.
-# If empty, <basename of document>.html is used
+# If empty, <basename of document>.html is used.
 # Typically, you would set this to "index.html".
 my $T2H_TOP_FILE = '';
 $T2H_OPTIONS -> {top_file} =
@@ -139,9 +139,9 @@ $T2H_OPTIONS -> {top_file} =
 
 
 # -toc_file
-# uses file of this name for table of contents file
+# uses file of this name for table of contents.  File
 # extension is manipulated appropriately, if necessary.
-# If empty, <basename of document>_toc.html is used
+# If empty, <basename of document>_toc.html is used.
 my $T2H_TOC_FILE = '';
 $T2H_OPTIONS -> {toc_file} =
 {
@@ -195,7 +195,7 @@ my $T2H_AVOID_MENU_REDUNDANCY = 1;
 # if set to 'section' (resp. 'chapter') create one html file per (sub)section
 # (resp. chapter) and separate pages for Top, ToC, Overview, Index,
 # Glossary, About.
-# otherwise, create monolithic html file which contains whole document
+# Otherwise, create a monolithic html file that contains the whole document.
 #$T2H_SPLIT = 'section';
 my $T2H_SPLIT = '';
 $T2H_OPTIONS -> {split} =
@@ -220,8 +220,8 @@ $T2H_OPTIONS -> {sec_nav} =
 };
 
 # -subdir
-# if set put result files in this directory
-# if not set result files are put into current directory
+# If set, then put result files into the specified directory.
+# If not set, then result files are put into the current directory.
 #$T2H_SUBDIR = 'html';
 my $T2H_SUBDIR = '';
 $T2H_OPTIONS -> {subdir} =
@@ -232,8 +232,8 @@ $T2H_OPTIONS -> {subdir} =
 };
 
 # -short_extn
-# If this is set all HTML file will have extension ".htm" instead of
-# ".html". This is helpful when shipping the document to PC systems.
+# If this is set, then all HTML files will have extension ".htm" instead of
+# ".html". This is helpful when shipping the document to DOS-based systems.
 my $T2H_SHORTEXTN = 0;
 $T2H_OPTIONS -> {short_ext} =
 {
@@ -337,7 +337,7 @@ $T2H_OPTIONS -> {l2h} =
 # The following options are only relevant if $T2H_L2H is set
 #
 # -l2h_l2h
-# name/location of latex2html progam
+# name/location of latex2html program
 my $T2H_L2H_L2H = "latex2html";
 $T2H_OPTIONS -> {l2h_l2h} =
 {
@@ -348,8 +348,8 @@ $T2H_OPTIONS -> {l2h_l2h} =
 };
 
 # -l2h_skip
-# if set, skips actual call to latex2html tries to reuse previously generated
-# content, instead
+# If set, skips actual call to latex2html: tries to reuse previously generated
+# content, instead.
 my $T2H_L2H_SKIP = '';
 $T2H_OPTIONS -> {l2h_skip} =
 {
@@ -360,9 +360,9 @@ $T2H_OPTIONS -> {l2h_skip} =
 };
 
 # -l2h_tmp
-# if set, l2h uses this directory for temporarary files. The path
-# leading to this directory may not contain a dot (i.e., a "."),
-# otherwise, l2h will fail
+# If set, l2h uses the specified directory for temporary files.  The path
+# leading to this directory may not contain a dot (i.e., a ".");
+# otherwise, l2h will fail.
 my $T2H_L2H_TMP = '';
 $T2H_OPTIONS -> {l2h_tmp} =
 {
