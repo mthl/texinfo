@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.20 2003-10-29 18:32:17 karl Exp $
+   $Id: xml.c,v 1.21 2003-10-31 18:03:19 karl Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -125,6 +125,7 @@ element texinfoml_element_list [] = {
   { "smallformat",         0, 0, 1 },
   { "display",             0, 0, 1 },
   { "smalldisplay",        0, 0, 1 },
+  { "verbatim",            0, 0, 1 },
   { "footnote",            0, 1, 0 },
 
   { "itemize",             0, 0, 0 },
@@ -191,7 +192,6 @@ element texinfoml_element_list [] = {
   { "contents",            0, 0, 0 },
   { "shortcontents",       0, 0, 0 },
   { "documentlanguage",    0, 1, 0 },
-  { "verbatim",            0, 0, 1 },
 
   { "setvalue",            0, 0, 0 },
   { "clearvalue",          0, 0, 0 },
@@ -298,6 +298,7 @@ element docbook_element_list [] = {
   { "screen",              0, 1, 0 }, /* SMALLFORMAT */
   { "screen",              0, 1, 0 }, /* DISPLAY */
   { "screen",              0, 1, 0 }, /* SMALLDISPLAY */
+  { "screen",              0, 0, 0 }, /* VERBATIM */
   { "footnote",            0, 1, 0 },
 
   { "itemizedlist",        0, 0, 0 }, /* ITEMIZE */
@@ -364,7 +365,6 @@ element docbook_element_list [] = {
   { "",                    0, 0, 0 }, /* CONTENTS (xml) */
   { "",                    0, 0, 0 }, /* SHORTCONTENTS (xml) */
   { "",                    0, 0, 0 }, /* DOCUMENT LANGUAGE (xml) */
-  { "",                    0, 0, 0 }, /* VERBATIM (xml) */
 
   { "",                    0, 0, 0 }, /* SETVALUE (xml) */
   { "",                    0, 0, 0 }, /* CLEARVALUE (xml) */

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.32 2003-10-29 18:32:15 karl Exp $
+   $Id: insertion.c,v 1.33 2003-10-31 18:03:18 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1267,10 +1267,10 @@ handle_verbatim_environment (find_end_verbatim)
       for (i = current_indent; i > 0; i--)
         add_char (' ');
     }
-  else if (xml && !docbook)
+  else if (xml)
     {
-      escape_html = 0;
       xml_insert_element (VERBATIM, START);
+      escape_html = 0;
       add_word ("<![CDATA[");
     }
 
@@ -1310,7 +1310,7 @@ handle_verbatim_environment (find_end_verbatim)
       kill_self_indent (default_indentation_increment);
       add_word ("</pre>");
     }
-  else if (xml && !docbook)
+  else if (xml)
     {
       add_word ("]]>");
       xml_insert_element (VERBATIM, END);
