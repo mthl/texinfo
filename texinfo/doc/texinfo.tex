@@ -3215,7 +3215,10 @@ width0pt\relax} \fi
         %
         % Process the index entry with all font commands turned off, to
         % get the string to sort by.
-        {\indexnofonts \xdef\indexsorttmp{\the\toks0}}%
+        {\indexnofonts
+         \edef\temp{\the\toks0}% need full expansion
+         \xdef\indexsorttmp{\temp}%
+        }%
         %
         % Set up the complete index entry, with both the sort key and
         % the original text, including any font commands.  We write
