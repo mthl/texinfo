@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.14 2002-11-11 12:37:34 feloy Exp $
+   $Id: cmds.c,v 1.15 2002-11-26 00:27:59 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -756,7 +756,7 @@ cm_verb (arg)
   last_char_was_newline = 0;
 
   if (html)
-    add_word ("<pre>");
+    add_word ("<tt>");
 
   if (input_text_offset < input_text_length)
     {
@@ -778,18 +778,28 @@ cm_verb (arg)
       character = curchar ();
 
       if (character == '\n')
-        line_number++;
-      /*
-	Assume no newlines in END_VERBATIM
-      */
+        {
+          line_number++;
+          if (html)
+            add_word ("<br>\n");
+        }
+
+      else if (html && character == '<')
+        add_word ("&lt;");
+
+      else if (html && character == '&')
+        add_word ("&amp;");
+
       else if (character == delimiter)
-	{
+	{ /* Assume no newlines in END_VERBATIM. */
 	  seen_end = 1;
 	  input_text_offset++;
 	  break;
 	}
 
-      add_char (character);
+      else
+        add_char (character);
+
       input_text_offset++;
     }
 
@@ -806,8 +816,11 @@ cm_verb (arg)
     }
 
   if (html)
-    add_word ("</pre>");
+    add_word ("</tt>");
+
+  in_fixed_width_font--;
 }
+
 
 void
 cm_strong (arg, position)
