@@ -1,5 +1,5 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: lang.h,v 1.2 2002-11-07 16:10:19 karl Exp $
 
    Copyright (C) 1999, 2001 Free Software Foundation, Inc.
 
@@ -79,6 +79,7 @@ extern language_type language_table[];
  */
 typedef enum {
     no_encoding,
+    US_ASCII,
     ISO_8859_1,    /* default for en, de, */
     ISO_8859_2,    /* actualy not supported like the rest below */
     ISO_8859_3,
