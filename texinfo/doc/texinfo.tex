@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-23.13}
+\def\texinfoversion{2003-11-24.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3194,7 +3194,7 @@ width0pt\relax} \fi
 %
 % But wait, there is a catch there:
 % We'll have to check whether \lastskip is zero skip.  \ifdim is not
-% sufficient for this purpose, as it ignores stretch and string parts
+% sufficient for this purpose, as it ignores stretch and shrink parts
 % of the skip.  The only way seems to be to check the textual
 % representation of the skip.
 %
@@ -4407,7 +4407,7 @@ width0pt\relax} \fi
 % The text. (`r' is open on the right, `e' somewhat less so on the left.)
 \setbox0 = \hbox{\kern-.75pt \tensf error\kern-1.5pt}
 %
-\global\setbox\errorbox=\hbox to \dimen0{\hfil
+\setbox\errorbox=\hbox to \dimen0{\hfil
    \hsize = \dimen0 \advance\hsize by -5.8pt % Space to left+right.
    \advance\hsize by -2\dimen2 % Rules.
    \vbox{%
@@ -5242,7 +5242,7 @@ width0pt\relax} \fi
 % Be sure that we always have a definition for `(', etc.  For example,
 % if the fn name has parens in it, \boldbrax will not be in effect yet,
 % so TeX would otherwise complain about undefined control sequence.
-{%
+{
   \activeparens
   \global\let(=\lparen \global\let)=\rparen
   \global\let[=\lbrack \global\let]=\rbrack
