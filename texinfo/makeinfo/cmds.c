@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.50 2004-07-27 00:06:31 karl Exp $
+   $Id: cmds.c,v 1.51 2004-07-31 18:49:51 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -82,6 +82,7 @@ COMMAND command_table[] = {
   { "OE", cm_special_char, BRACE_ARGS },
   { "TeX", cm_TeX, BRACE_ARGS },
   { "aa", cm_special_char, BRACE_ARGS },
+  { "abbr", cm_abbr, BRACE_ARGS },
   { "acronym", cm_acronym, BRACE_ARGS },
   { "ae", cm_special_char, BRACE_ARGS },
   { "afivepaper", cm_ignore_line, NO_BRACE_ARGS },
@@ -647,26 +648,28 @@ cm_comment (void)
     cm_ignore_line ();
 }
 
+
+
 /* We keep acronyms with two arguments around, to be able to refer to them
    later with only one argument.  */
 static ACRONYM_DESC *acronyms_stack = NULL;
 
-void
-cm_acronym (int arg)
+static void
+cm_acronym_or_abbr (int arg, int is_abbr)
 {
-  char *acronym, *description;
+  char *aa, *description;
   unsigned len;
 
   /* We do everything at START.  */
   if (arg == END)
     return;
 
-  get_until_in_braces (",", &acronym);
+  get_until_in_braces (",", &aa);
   if (input_text[input_text_offset] == ',')
     input_text_offset++;
   get_until_in_braces ("}", &description);
 
-  canon_white (acronym);
+  canon_white (aa);
   canon_white (description);
 
   /* If not enclosed in braces, strip after comma to be compatible
@@ -677,7 +680,7 @@ cm_acronym (int arg)
       while (description[i] != ',')
         i++;
       /* For now, just terminate the string at comma.  */
-      description[i] = '\0';
+      description[i] = 0;
     }
 
   /* Get description out of braces.  */
@@ -686,14 +689,14 @@ cm_acronym (int arg)
 
   len = strlen (description);
   if (len && description[len-1] == '}')
-    description[len-1] = '\0';
+    description[len-1] = 0;
 
   /* Save new description.  */
   if (strlen (description) > 0)
     {
       ACRONYM_DESC *new = xmalloc (sizeof (ACRONYM_DESC));
 
-      new->acronym = xstrdup (acronym);
+      new->acronym = xstrdup (aa);
       new->description = xstrdup (description);
       new->next = acronyms_stack;
       acronyms_stack = new;
@@ -701,7 +704,7 @@ cm_acronym (int arg)
 
   if (html)
     {
-      add_word ("<acronym");
+      add_word (is_abbr ? "<abbr" : "<acronym");
 
       if (strlen (description) > 0)
         add_word_args (" title=\"%s\"", text_expansion (description));
@@ -714,9 +717,11 @@ cm_acronym (int arg)
 
           while (temp)
             {
-              if (STREQ (acronym, temp->acronym) && strlen (temp->description) > 0)
+              if (STREQ (aa, temp->acronym)
+                  && strlen (temp->description) > 0)
                 {
-                  add_word_args (" title=\"%s\"", text_expansion (temp->description));
+                  add_word_args (" title=\"%s\"",
+                                 text_expansion (temp->description));
                   break;
                 }
               temp = temp->next;
@@ -724,39 +729,51 @@ cm_acronym (int arg)
         }
 
       add_char ('>');
-      execute_string ("%s", acronym);
-      add_word ("</acronym>");
+      execute_string ("%s", aa);
+      add_word (is_abbr ? "</abbr>" : "</acronym>");
     }
   else if (docbook)
     {
-      xml_insert_element (ACRONYM, START);
-      execute_string ("%s", acronym);
-      xml_insert_element (ACRONYM, END);
+      xml_insert_element (is_abbr ? ABBREV : ACRONYM, START);
+      execute_string ("%s", aa);
+      xml_insert_element (is_abbr ? ABBREV : ACRONYM, END);
     }
   else if (xml)
     {
-      xml_insert_element (ACRONYM, START);
+      xml_insert_element (is_abbr ? ABBREV : ACRONYM, START);
 
-      xml_insert_element (ACRONYMWORD, START);
-      execute_string ("%s", acronym);
-      xml_insert_element (ACRONYMWORD, END);
+      xml_insert_element (is_abbr ? ABBREVWORD : ACRONYMWORD, START);
+      execute_string ("%s", aa);
+      xml_insert_element (is_abbr ? ABBREVWORD : ACRONYMWORD, END);
 
       if (strlen (description) > 0)
         {
-          xml_insert_element (ACRONYMDESC, START);
+          xml_insert_element (is_abbr ? ABBREVDESC : ACRONYMDESC, START);
           execute_string ("%s", description);
-          xml_insert_element (ACRONYMDESC, END);
+          xml_insert_element (is_abbr ? ABBREVDESC : ACRONYMDESC, END);
         }
 
-      xml_insert_element (ACRONYM, END);
+      xml_insert_element (is_abbr ? ABBREV : ACRONYM, END);
     }
   else
-    execute_string ("%s", acronym);
+    execute_string ("%s", aa);
 
   /* Put description into parenthesis after the acronym for all outputs
      except XML.  */
   if (strlen (description) > 0 && (!xml || docbook))
     add_word_args (" (%s)", description);
+}
+
+void
+cm_acronym (int arg)
+{
+  cm_acronym_or_abbr (arg, 0);
+}
+
+void
+cm_abbr (int arg)
+{
+  cm_acronym_or_abbr (arg, 1);
 }
 
 void

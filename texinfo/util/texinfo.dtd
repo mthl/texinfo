@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.1 2004-04-11 17:56:47 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.2 2004-07-31 18:49:51 karl Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -6,7 +6,7 @@
            Karl Eichwalder (keichwa@gmx.net)
            Alper Ersoy (dirt@gtk.org)
 
-   Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -100,7 +100,9 @@
 <!ENTITY % Inline.emphasize "strong | emph">
 <!ENTITY % Inline.smallcaps "sc">
 <!ENTITY % Inline.fonts "i | b | tt | r | titlefont">
-<!ENTITY % Inline.markup "code | command | env | file | option | samp | dfn | cite | key | kbd | var | acronym | url | dmn">
+<!ENTITY % Inline.markup "code | command | env | file | option | samp 
+                          | dfn | cite | key | kbd | var | acronym
+                          | abbrev | url | dmn">
 <!ENTITY % Inline.math "math">
 <!ENTITY % Inline.reference "xref | inforef | indexterm | email | uref | anchor">
 <!ENTITY % Inline.footnote "footnote">
@@ -324,6 +326,10 @@
 <!ELEMENT acronym (acronymword, acronymdesc?)>
 <!ELEMENT acronymword (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT acronymdesc (#PCDATA | %Inline.phrase;)*>
+
+<!ELEMENT abbrev (abbrevword, abbrevdesc?)>
+<!ELEMENT abbrevword (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT abbrevdesc (#PCDATA | %Inline.phrase;)*>
 
 <!-- math -->
 <!ELEMENT math    (#PCDATA | %Inline.phrase;)*>

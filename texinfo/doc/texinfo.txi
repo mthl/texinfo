@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
+@c $Id: texinfo.txi,v 1.106 2004-07-31 18:49:51 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -346,6 +346,7 @@ Indicating Definitions, Commands, etc.
 * option::                      Indicating option names.
 * dfn::                         Specifying definitions.
 * cite::                        Referring to books not in the  Info system.
+* abbr::                        Indicating abbreviations.
 * acronym::                     Indicating acronyms.
 * indicateurl::                 Indicating a World Wide Web reference.
 * email::                       Indicating an electronic mail address.
@@ -6666,6 +6667,7 @@ not something else that should not be changed.@refill
 * option::                      Indicating option names.
 * dfn::                         Specifying definitions.
 * cite::                        Referring to books not in the Info system.
+* abbr::                        Indicating abbreviations.
 * acronym::                     Indicating acronyms.
 * indicateurl::                 Indicating an example URL.
 * email::                       Indicating an electronic mail address.
@@ -6733,6 +6735,9 @@ Indicate the introductory or defining use of a term.
 @item @@cite@{@var{reference}@}
 Indicate the name of a book.
 @xref{cite,,@code{@@cite}}.
+
+@item @@abbr@{@var{abbreviation}@}
+Indicate an abbreviation.
 
 @item @@acronym@{@var{acronym}@}
 Indicate an acronym.
@@ -7374,32 +7379,76 @@ identify that control character: an uparrow followed by the character
 @end ignore
 
 
+@node abbr
+@subsection @code{@@abbr}@{@var{abbreviation}[, @var{meaning}]@}
+@findex abbr
+
+@cindex Abbreviations, tagging
+You can use the @code{@@abbr} command for general abbreviations.  The
+abbreviation is given as the single argument in braces, as in
+@samp{@@abbr@{Comput.@}}.  As a matter of style, or for particular
+abbreviations, you may prefer to omit periods, as in
+@samp{@@abbr@{Mr@} Stallman}.
+
+@code{@@abbr} accepts an optional second argument, intended to be used
+for the meaning of the abbreviation.
+
+If the abbreviation ends with a lowercase letter and a period, and is
+not at the end of a sentence, and has no second argument, remember to
+use the @code{@@.} command (@pxref{Not Ending a
+Sentence}) to get the correct spacing.  However, you do not have to
+use @code{@@.} within the abbreviation itself; Texinfo automatically
+assumes periods within the abbreivation do not end a sentence.
+
+@cindex <abbr> tag
+In @TeX{} and in the Info output, the first argument is printed as-is;
+if the second argument is present, it is printed in parentheses after
+the abbreviation.  In HTML and XML, the @code{<abbr>} tag is
+used; in Docbook, the @code{<abbrev>} tag is used.  For instance:
+
+@example
+@@abbr@{Comput. J., Computer Journal@}
+@end example
+
+@noindent produces:
+
+@display
+@abbr{Comput. J., Computer Journal}
+@end display
+
+For abbreviations consisting of all capital letters, you may prefer to
+use the @code{@@acronym} command instead.  See the next section for
+more on the usage of these two commands.
+
+
 @node acronym
 @subsection @code{@@acronym}@{@var{acronym}[, @var{meaning}]@}
 @findex acronym
 
 @cindex NASA, as acronym
-@cindex F.B.I., as acronym
-@cindex Abbreviations, tagging
 @cindex Acronyms, tagging
 Use the @code{@@acronym} command for abbreviations written in all
 capital letters, such as `@acronym{NASA}'.  The abbreviation is given as
 the single argument in braces, as in @samp{@@acronym@{NASA@}}.  As
-a matter of style, or for particular abbreviations, you may prefer to
-use periods, as in @samp{@@acronym@{F.B.I.@}}.
+a matter of style, or for particular acronyms, you may prefer to
+use periods, as in @samp{@@acronym@{N.A.S.A.@}}.
 
-If the acronym is at the end of a sentence, remember to use the
-special @code{@@.} and similar commands (@pxref{Ending a Sentence}).
+@code{@@acronym} accepts an optional second argument, intended to be
+used for the meaning of the acronym.
+
+If the acronym is at the end of a sentence, and if there is no second
+argument, remember to use the @code{@@.} or similar command
+(@pxref{Ending a Sentence}) to get the correct spacing.
 
 @cindex <acronym> tag
 In @TeX{}, the acronym is printed in slightly smaller font.  In the
-Info output, the argument is printed as-is.  In HTML, Docbook, and
-XML, the @code{<acronym>} tag is used.
+Info output, the argument is printed as-is.  In either format, if the
+second argument is present, it is printed in parentheses after the
+acronym.  In HTML, Docbook, and XML, the @code{<acronym>} tag is
+used.  
 
-@code{@@acronym} accepts an optional second argument, intended to be
-used for the meaning of the acronym.  If present, it is printed in
-parentheses after the acronym.  For instance (since GNU is a recursive
-acronym, we use @code{@@acronym} recursively):
+For instance (since GNU is a recursive acronym, we use
+@code{@@acronym} recursively):
 
 @example
 @@acronym@{GNU, @@acronym@{GNU@}'s Not Unix@}
@@ -7414,6 +7463,38 @@ acronym, we use @code{@@acronym} recursively):
 In some circumstances, it is conventional to print family names in all
 capitals.  Don't use @code{@@acronym} for this, since a name is not an
 acronym.  Use @code{@@sc} instead (@pxref{Smallcaps}).
+
+@code{@@abbr} and @code{@@acronym} are closely related commands: they
+both signal to the reader that a shortened form is being used, and
+possibly give a meaning.  When choosing whether to use these two
+commands, please bear the following in mind.
+
+@itemize @minus
+@item
+In standard English usage, acronyms are a subset of abbreviations:
+they include pronounceable words like `@acronym{NATO}', `radar', and
+`snafu', and some sources also include syllable acronyms like
+`Usenet', hybrids like `@acronym{SIGGRAPH}', and unpronounceable
+initialisms like `@acronym{FBI}'.
+
+@item
+In Texinfo, an acronym (but not an abbreviation) should consist only
+of capital letters and periods, no lowercase.
+
+@item
+In @TeX{}, an acronym (but not an abbreviation) is printed in a
+slightly smaller font.
+
+@item
+Some browsers place a dotted bottom border under abbreviations but not
+acronyms.
+
+@item
+It's not essential to use these commands for all abbreviations.  Text
+is perfectly readable without them, and for common abbreviations like
+`etc.@:', we consider them to be overkill.
+
+@end itemize
 
 
 @node indicateurl
@@ -7557,7 +7638,7 @@ Richard @sc{Stallman} founded @acronym{GNU}.
 @end display
 
 As shown here, we recommend using @code{@@acronym} for actual
-abbreviations (@pxref{acronym}), and reserving @code{@@sc} for special
+acronyms (@pxref{acronym}), and reserving @code{@@sc} for special
 cases where you want small caps.  The output is not the same
 (@code{@@acronym} prints in a smaller text font, not the small caps
 font), but more importantly it describes the actual text more
@@ -16248,7 +16329,7 @@ the text of the argument is recursively transformed:
 @example
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
 @@emph @@env @@file @@indicateurl @@kbd @@key
-@@samp @@sc @@strong @@t @@var @@w
+@@samp @@sc @@slanted @@strong @@t @@var @@w
 @end example
 
 @noindent For @code{@@sc}, any letters are capitalized.
@@ -16298,8 +16379,8 @@ according to the other rules.
 @item @code{@@tie}              @tab (space)
 @end multitable
 
-An @code{@@acronym} command is replaced by the first argument,
-followed by the second argument in parentheses, if present.
+An @code{@@acronym} or @code{@@abbr} command is replaced by the first
+argument, followed by the second argument in parentheses, if present.
 @xref{acronym}.
 
 An @code{@@email} command is replaced by the @var{text} argument if
@@ -16521,9 +16602,13 @@ Generate a tilde accent over the next character, as in @~N.
 Generate the uppercase and lowercase Scandinavian A-ring letters,
 respectively: @AA{}, @aa{}.  @xref{Inserting Accents}.
 
-@item @@acronym@{@var{abbrev}@}
-Tag @var{abbrev} as an acronym, that is, an abbreviation written in all
-capital letters, such as `NASA'.  @xref{acronym,, @code{acronym}}.
+@item @@abbr@{@var{abbreviation}@}
+Tag @var{abbreviation} as an abbreviation, such as `Comput.'.
+@xref{abbr,, @code{abbr}}.
+
+@item @@acronym@{@var{acronym}@}
+Tag @var{acronym} as an acronym, such as `NASA'.
+@xref{acronym,, @code{acronym}}.
 
 @item @@AE@{@}
 @itemx @@ae@{@}
@@ -18218,7 +18303,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
+$Id: texinfo.txi,v 1.106 2004-07-31 18:49:51 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18284,7 +18369,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.105 2004-07-28 12:42:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.106 2004-07-31 18:49:51 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

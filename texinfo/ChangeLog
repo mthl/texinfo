@@ -1,3 +1,11 @@
+2004-07-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi,
+	* doc/texinfo.tex,
+	* makeinfo/cmds.c, cmds.h, xml.c, xml.h,
+	* util/texinfo.dtd: new command @abbr, suggested by Paul Eggert,
+	who also sent the original documentation.
+
 2004-07-30  Karl Berry  <karl@gnu.org>
 
 	* info/infomap.c (initialize_vi_like_keymaps): bind j to

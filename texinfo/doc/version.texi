@@ -1,4 +1,4 @@
-@set UPDATED 27 July 2004
+@set UPDATED 31 July 2004
 @set UPDATED-MONTH July 2004
 @set EDITION 4.7
 @set VERSION 4.7

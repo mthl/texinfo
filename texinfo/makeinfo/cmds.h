@@ -1,5 +1,5 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.7 2004-07-25 00:17:21 wl Exp $
+   $Id: cmds.h,v 1.8 2004-07-31 18:49:51 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -109,6 +109,7 @@ extern void cm_LaTeX (int arg),
 
 /* Emphasis and markup.  */
 extern void cm_acronym (int arg),
+  cm_abbr (int arg),
   cm_b (int arg),
   cm_cite (int arg, int position),
   cm_code (int arg),
