@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.9 2002-11-04 21:28:10 karl Exp $
+   $Id: cmds.c,v 1.10 2002-11-04 21:34:05 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -900,9 +900,9 @@ cm_titlefont (arg)
 	{
 	  html_title_written = 1; /* suppress title from @settitle */
 	  if (arg == START)
-	    add_word ("<h1><span class=\"titlefont\">");
+	    add_word ("<h1 class=\"titlefont\">");
 	  else
-	    add_word ("</span></h1>\n");
+	    add_word ("</h1>\n");
 	}
    }
 }
