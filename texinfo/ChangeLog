@@ -1,3 +1,8 @@
+2003-12-02  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/insertion.c (begin_insertion): look for a newline before
+	@anchor and @caption commands in floatenv.
+
 2003-12-2 Arnold Robbins  <arnold@skeeve.com>
 
 	* makeinfo/insertion.c (end_insertion): Change tests for docbook

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.52 2003-12-02 11:04:00 dirt Exp $
+   $Id: insertion.c,v 1.53 2003-12-02 11:23:44 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -735,11 +735,11 @@ begin_insertion (type)
         start_of_end = get_until ("\n@end float", &text);
 
         /* Get the @anchor before the end of @float.  */
-        i = search_forward_until_pos ("@anchor{",
+        i = search_forward_until_pos ("\n@anchor{",
             save_input_text_offset, start_of_end);
         if (i > -1)
           {
-            input_text_offset = i + 8;
+            input_text_offset = i + 9;
             get_until_in_braces ("\n@end float", &anchor);
             input_text_offset = save_input_text_offset;
           }
@@ -747,11 +747,11 @@ begin_insertion (type)
           anchor = "";
 
         /* Get also the @caption.  */
-        i = search_forward_until_pos ("@caption{",
+        i = search_forward_until_pos ("\n@caption{",
             save_input_text_offset, start_of_end);
         if (i > -1)
           {
-            input_text_offset = i + 9;
+            input_text_offset = i + 10;
             get_until_in_braces ("\n@end float", &caption);
             input_text_offset = save_input_text_offset;
           }
