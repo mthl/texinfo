@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
+@c $Id: texinfo.txi,v 1.55 2003-07-25 18:47:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4317,7 +4317,7 @@ The @code{@@top} command is a special sectioning command that you use
 only after an @samp{@@node Top} line at the beginning of a Texinfo file.
 The @code{@@top} command tells the @code{makeinfo} formatter which node
 is the `Top' node, so it can use it as the root of the node tree if your
-manual uses implicit pointers.  It has the same typesetting effect as
+manual uses implicit node pointers.  It has the same typesetting effect as
 @code{@@unnumbered} (@pxref{unnumbered & appendix, , @code{@@unnumbered}
 and @code{@@appendix}}).  For detailed information, see @ref{makeinfo
 top command, , The @code{@@top} Command}.
@@ -4527,8 +4527,7 @@ subsection-like heading labelled with a letter and numbers; both of
 these commands produce headings that appear in the table of
 contents.@refill
 
-@node subsubsection, Raise/lower sections, unnumberedsubsec appendixsubsec subheading, Structuring
-@comment  node-name,  next,  previous,  up
+@node subsubsection
 @section The `subsub' Commands
 @cindex Subsub commands
 @findex subsubsection
@@ -4582,66 +4581,29 @@ This is a subsubsection
 @end group
 @end example
 
-@node Raise/lower sections,  , subsubsection, Structuring
-@comment  node-name,  next,  previous,  up
+
+@node Raise/lower sections
 @section @code{@@raisesections} and @code{@@lowersections}
 @findex raisesections
 @findex lowersections
 @cindex Raising and lowering sections
+@cindex Lowering and raising sections
 @cindex Sections, raising and lowering
 
-The @code{@@raisesections} and @code{@@lowersections} commands raise and
-lower the hierarchical level of chapters, sections, subsections and the
-like.  The @code{@@raisesections} command changes sections to chapters,
-subsections to sections, and so on.  The @code{@@lowersections} command
-changes chapters to sections, sections to subsections, and so on.
+The @code{@@raisesections} and @code{@@lowersections} commands
+implicitly raise and lower the hierarchical level of following
+chapters, sections and the other sectioning commands.
+
+That is, the @code{@@raisesections} command changes sections to
+chapters, subsections to sections, and so on.  Conversely, the
+@code{@@lowersections} command changes chapters to sections, sections
+to subsections, and so on.  Thus, an @code{@@lowersections} command
+cancels an @code{@@raisesections} command, and vice versa.
 
 @cindex Include files, and section levels
-An @code{@@lowersections} command is useful if you wish to include text
-that is written as an outer or standalone Texinfo file in another
-Texinfo file as an inner, included file.  If you write the command at
-the beginning of the file, all your @code{@@chapter} commands are
-formatted as if they were @code{@@section} commands, all your
-@code{@@section} command are formatted as if they were
-@code{@@subsection} commands, and so on.
-
-@need 1000
-@code{@@raisesections} raises a command one level in the chapter
-structuring hierarchy:@refill
-
-@example
-@group
- @r{Change}           @r{To}
-
-@@subsection     @@section,
-@@section        @@chapter,
-@@heading        @@chapheading,
-         @r{etc.}
-@end group
-@end example
-
-@need 1000
-@code{@@lowersections} lowers a command one level in the chapter
-structuring hierarchy:@refill
-
-@example
-@group
- @r{Change}           @r{To}
-
-@@chapter        @@section,
-@@subsection     @@subsubsection,
-@@heading        @@subheading,
-         @r{etc.}
-@end group
-@end example
-
-An @code{@@raisesections} or @code{@@lowersections} command changes only
-those structuring commands that follow the command in the Texinfo file.
-Write an @code{@@raisesections} or @code{@@lowersections} command on a
-line of its own.
-
-An @code{@@lowersections} command cancels an @code{@@raisesections}
-command, and vice versa.  Typically, the commands are used like this:
+You can use @code{@@lowersections} to include text written as an outer
+or standalone Texinfo file in another Texinfo file as an inner,
+included file.  Typical usage looks like this:
 
 @example
 @@lowersections
@@ -4649,15 +4611,31 @@ command, and vice versa.  Typically, the commands are used like this:
 @@raisesections
 @end example
 
-Without the @code{@@raisesections}, all the subsequent sections in your
-document will be lowered.
+@noindent (Without the @code{@@raisesections}, all the subsequent
+sections in the document would be lowered.)
 
-Repeated use of the commands continue to raise or lower the hierarchical
-level a step at a time.
+If the included file being lowered has a @code{@@top} node, you'll
+need to conditionalize its inclusion with a flag (@pxref{set value}).
 
-An attempt to raise above `chapters' reproduces chapter commands; an
-attempt to lower below `subsubsections' reproduces subsubsection
-commands.
+Another difficulty can arise with documents that use the (recommended)
+feature of @command{makeinfo} for implicitly determining node
+pointers.  Since @command{makeinfo} must assume a hierarchically
+organized document to determine the pointers, you cannot just
+arbitrarily sprinkle @code{@@raisesections} and @code{@@lowersections}
+commands in the document.  The final result has to have menus that
+take the raising and lowering into account.  Therefore, as a practical
+matter, you generally only want to raise or lower large chunks,
+usually in external files as shown above.
+
+Repeated use of the commands continue to raise or lower the
+hierarchical level a step at a time.  An attempt to raise above
+`chapter' reproduces chapter commands; an attempt to lower below
+`subsubsection' reproduces subsubsection commands.
+
+Write each @code{@@raisesections} and @code{@@lowersections} command
+on a line of its own.
+
+
 
 @node Nodes
 @chapter Nodes
@@ -17186,7 +17164,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
+$Id: texinfo.txi,v 1.55 2003-07-25 18:47:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17249,7 +17227,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
+@comment $Id: texinfo.txi,v 1.55 2003-07-25 18:47:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
