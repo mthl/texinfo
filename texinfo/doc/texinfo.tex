@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-23.06}
+\def\texinfoversion{2003-11-23.07}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -1372,10 +1372,11 @@ where each line of input produces a line of output.}
 \font\texti=cmmi10 scaled \mainmagstep
 \font\textsy=cmsy10 scaled \mainmagstep
 
-% A few fonts for @defun names.
+% A few fonts for @defun names and args.
 \setfont\defbf\bfshape{10}{\magstep1}
 \setfont\deftt\ttshape{10}{\magstep1}
-\def\df{\let\tentt=\deftt \let\tenbf = \defbf \bf}
+\setfont\defttsl\ttslshape{10}{\magstep1}
+\def\df{\let\tentt=\deftt \let\tenbf = \defbf \let\tenttsl=\defttsl \bf}
 
 % Fonts for indices, footnotes, small examples (9pt).
 \setfont\smallrm\rmshape{9}{1000}
@@ -5066,7 +5067,7 @@ width0pt\relax} \fi
 % \domakedefun \deffn \deffnx \deffnheader
 %
 % Define \deffn and \deffnx, without parameters.
-% \deffnheader has to be defined by explicitely.
+% \deffnheader has to be defined explicitly.
 %
 \def\domakedefun#1#2#3{%
   \def#1{%
@@ -5077,7 +5078,7 @@ width0pt\relax} \fi
   \def#2{\expandafter\dodefunx#1}%
 }
 
-% Untyped functions:
+% Untyped functions (@deffn, @defop):
 
 \makedefun{deffn} % category name args
 \def\deffnheader{\deffngeneral{}}
@@ -5093,11 +5094,10 @@ width0pt\relax} \fi
 \def\deffngeneral#1#2 #3 #4\endheader{%
   % Remember that \dosubin{fn}{xxx}{} is equivalent to \doind{fn}{xxx}.
   \dosubind{fn}{\code{#3}}{#1}%
-  \defname{#2}{}{#3}%
-  \defunargs{#4\unskip}%
+  \defname{#2}{}{#3}\ampdefunargs{#4\unskip}%
 }
 
-% Typed functions:
+% Typed functions (@deftypefn, @deftypeop):
 
 \makedefun{deftypefn} % category type name args
 \def\deftypefnheader{\deftypefngeneral{}}
@@ -5112,11 +5112,10 @@ width0pt\relax} \fi
 %
 \def\deftypefngeneral#1#2 #3 #4 #5\endheader{%
   \dosubind{fn}{\code{#4}}{#1}%
-  \defname{#2}{#3}{#4}%
-  \tclose{#5\unskip}%
+  \defname{#2}{#3}{#4}\normaldefunargs{#5\unskip}%
 }
 
-% Typed variables:
+% Typed variables (@deftypevr, @deftypecv):
 
 \makedefun{deftypevr}% category type var args
 \def\deftypevrheader{\deftypecvgeneral{}}
@@ -5131,11 +5130,10 @@ width0pt\relax} \fi
 %
 \def\deftypecvgeneral#1#2 #3 #4 #5\endheader{%
   \dosubind{vr}{\code{#4}}{#1}%
-  \defname{#2}{#3}{#4}#5\unskip
+  \defname{#2}{#3}{#4}\normaldefunargs{#5\unskip}%
 }
 
-% Untyped variables:
-
+% Untyped variables (@defvr, @defcv):
 \makedefun{defvr}% category var args
 \def\defvrheader#1 {\deftypevrheader{#1} {} }
 
@@ -5145,31 +5143,32 @@ width0pt\relax} \fi
 % \defcvof {category of}class var args
 \def\defcvof#1#2 {\deftypecvof{#1}#2 {} }
 
-% Type:
-
+% Type (@deftp):
 \makedefun{deftp}% category name args
 \def\deftpheader#1 #2 #3\endheader{%
   \doind{tp}{\code{#2}}%
-  \defname{#1}{}{#2}\bf #3\unskip
+  \defname{#1}{}{#2}\normaldefunargs{#3\unskip}%
 }
 
 % Remaining @defun-like shortcuts:
-\makedefun{defun}	\def\defunheader{\deffnheader{\putwordDeffunc} }
-\makedefun{defmac}	\def\defmacheader{\deffnheader{\putwordDefmac} }
-\makedefun{defspec}	\def\defspecheader{\deffnheader{\putwordDefspec} }
-\makedefun{deftypefun}	\def\deftypefunheader{\deftypefnheader{\putwordDeffunc} }
-\makedefun{defvar}	\def\defvarheader{\defvrheader{\putwordDefvar} }
-\makedefun{defopt}	\def\defoptheader{\defvrheader{\putwordDefopt} }
-\makedefun{deftypevar}	\def\deftypevarheader{\deftypevrheader{\putwordDefvar} }
-\makedefun{defmethod}	\def\defmethodheader{\defopon\putwordMethodon}
-\makedefun{deftypemethod} \def\deftypemethodheader{\deftypeopon\putwordMethodon}
-\makedefun{defivar}	\def\defivarheader{\defcvof\putwordInstanceVariableof}
-\makedefun{deftypeivar}	\def\deftypeivarheader{\deftypecvof\putwordInstanceVariableof}
+\makedefun{defun}     \def\defunheader{\deffnheader{\putwordDeffunc} }
+\makedefun{defmac}    \def\defmacheader{\deffnheader{\putwordDefmac} }
+\makedefun{defspec}   \def\defspecheader{\deffnheader{\putwordDefspec} }
+\makedefun{deftypefun}\def\deftypefunheader{\deftypefnheader{\putwordDeffunc} }
+\makedefun{defvar}    \def\defvarheader{\defvrheader{\putwordDefvar} }
+\makedefun{defopt}    \def\defoptheader{\defvrheader{\putwordDefopt} }
+\makedefun{deftypevar}\def\deftypevarheader{\deftypevrheader{\putwordDefvar} }
+\makedefun{defmethod} \def\defmethodheader{\defopon\putwordMethodon}
+\makedefun{deftypemethod}\def\deftypemethodheader{\deftypeopon\putwordMethodon}
+\makedefun{defivar}    \def\defivarheader{\defcvof\putwordInstanceVariableof}
+\makedefun{deftypeivar}\def\deftypeivarheader{\deftypecvof\putwordInstanceVariableof}
 
 % \defname, which formats the name of the @def (not the args).
 % #1 is the category, such as "Function".
 % #2 is the return type, if any.
 % #3 is the function name.
+% 
+% We are followed by (but not passed) the arguments, if any.
 %
 \def\defname#1#2#3{%
   % Get the values of \leftskip and \rightskip as they were outside the @def...
@@ -5203,7 +5202,15 @@ width0pt\relax} \fi
   \tolerance=10000 \hbadness=10000
   \exdentamount=\defbodyindent
   {%
-    \df   % defun fonts
+    % defun fonts. We use typewriter by default (used to be bold) because:
+    % . we're printing identifiers, they should be in tt in principle.
+    % . in languages with many accents, such as Czech or French, it's
+    %   common to leave accents off identifiers.  The result looks ok in
+    %   tt, but exceedingly strange in rm.
+    % . we don't want -- and --- to be treated as ligatures.
+    % . this still does not fix the ?` and !` ligatures, but so far no
+    %   one has made identifiers using them :).
+    \df \tt
     \def\temp{#2}% return value type
     \ifx\temp\empty\else \tclose{\temp} \fi
     #3% output function name
@@ -5214,15 +5221,21 @@ width0pt\relax} \fi
   % arguments will be output next, if any.
 }
 
-% This expands the args and terminates the paragraph they comprise.
+% This expands the args, with & being treated magically.
 %
-% Prevent hyphenation at `-' chars.
-%
-\def\defunargs#1{%
+\def\ampdefunargs{%
   \magicamp
-  \sl\hyphenchar\font=0
+  \normaldefunargs
+}
+
+% Print arguments in slanted typewriter, prevent hyphenation at `-' chars.
+% 
+\def\normaldefunargs#1{%
+  % use tt here (used to be sl) for the same reasons as we are now using
+  % tt for the names.
+  \df \ttsl \hyphenchar\font=0
   #1%
-  \sl\hyphenchar\font=45
+  \ttsl\hyphenchar\font=45
 }
 
 % We want ()&[] to print specially on the defun line.
@@ -5253,7 +5266,7 @@ width0pt\relax} \fi
 
 % If we encounter &foo, then turn on ()-hacking afterwards
 \newif\ifampseen
-\def\amprm#1 {\ampseentrue{\rm\&#1} }
+\def\amprm#1 {\ampseentrue{\bf\&#1 }}
 
 \def\parenfont{%
   \ifampseen
