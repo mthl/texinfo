@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.60 2003-07-27 11:53:38 karl Exp $
+$Id: NEWS,v 1.61 2003-08-22 13:06:44 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -26,6 +26,7 @@ convenience, here's a url to one of the relevant sections:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.
 * Distribution:
+  . New translation: nb.
   . automake 1.7.6.
 
 
