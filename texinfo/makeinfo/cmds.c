@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.55 2004-12-14 00:15:36 karl Exp $
+   $Id: cmds.c,v 1.56 2005-01-17 00:20:22 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1283,17 +1283,23 @@ cm_w (int arg)
 
 /* An unbreakable word space.  Same as @w{ } for makeinfo, but different
    for TeX (the space stretches and stretches, and does not inhibit
-   hyphenation).  */
+   hyphenation).  For XML and HTML, insert the non-breaking-space
+   character and entity, respectively */
 void
 cm_tie (int arg)
 {
   if (arg == START)
+    if (html)
+      insert_string ("&nbsp;");
+    else if (xml)
+      insert_string ("&#xa0;");
+    else
     {
       cm_w (START);
       add_char (' ');
     }
   else
-    cm_w (END);
+    if (!html && !xml) cm_w (END);
 }
 
 /* Explain that this command is obsolete, thus the user shouldn't

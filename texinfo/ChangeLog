@@ -1,3 +1,8 @@
+2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
+
+	* makeinfo/cmds.c (cm_tie): use &nbsp; for HTML, &#xa0; for
+		XML/Docbook.
+
 2005-01-15  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xref.c (cm_xref): output *note for @ref, instead of
