@@ -1,6 +1,3 @@
-\input texinfo @c -*-texinfo-*-
-
-@setfilename double_top
 
 @node ToP, top
 Top node
@@ -12,7 +9,6 @@ Top node
 
 @node top,,ToP,Top
 second node (@@node top,,ToP,Top).
-anchor@{TOP@} @anchor{TOP}.
+anchor@{TOP@} .
 ref to TOP: @ref{TOP}.
 
-@bye

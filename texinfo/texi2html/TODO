@@ -1,18 +1,13 @@
-This file conatins a list of things yet to be done (most
-important first):
+This file contains a list of things yet to be done (see also in doc/IDEAS):
 
-* Create detailed texinfo documentation
-
-* fix duplicate section entries when using unnumbered sections
-
-* use events (onmousover, etc) for anchors
-
-* use style-sheets for formatting of various elements (like @example,
-  etc).
+* Create detailed texinfo documentation (see in doc)
 
 * add sample init files for different layouts
-
-* split on @section
+  - use events (onmousover, etc) for anchors
+  - use style-sheets for formatting of various elements (like @example,
+  etc).
+  - xhtml with in line style
+  - Singular manual style
 
 * bring deftypemethod, etc up-to-date
 
@@ -20,6 +15,3 @@ important first):
   can be loaded in at run-time
 
 * Fix `make distcheck'
-
-* Create more comprehensive test suite.
-

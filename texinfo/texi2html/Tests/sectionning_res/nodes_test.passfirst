@@ -1,11 +1,7 @@
-\input texinfo @c -*-texinfo-*-
-
-@setfilename nodes_test
 
 Garbage
 
 @node first,node1,lop,lop
-@c @subsection s1
 node in first but not the first...
 
 @node lop, first,nonexistant node in prev for @@top,(texinfo) Copying 
@@ -30,4 +26,3 @@ node1 text
 Should be a warning for not being in menus and not having a menu entry in
 node1
 
-@bye

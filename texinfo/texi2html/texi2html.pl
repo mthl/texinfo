@@ -164,6 +164,7 @@ use vars qw(
             @T2H_CHAPTER_BUTTONS
             @T2H_MISC_BUTTONS
             @T2H_SECTION_BUTTONS
+            @T2H_SECTION_FOOTER_BUTTONS
 
             $T2H_ADDRESS
             $T2H_BODYTEXT
@@ -179,6 +180,7 @@ use vars qw(
             $T2H_print_misc_header
             $T2H_print_misc_footer
             $T2H_print_misc
+            $T2H_print_section_footer
             $T2H_print_chapter_header
             $T2H_print_chapter_footer
             $T2H_print_page_head
@@ -267,7 +269,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.44 2003-04-30 18:32:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.45 2003-05-02 18:20:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -297,7 +299,7 @@ my $T2H_TODAY; # date set by pretty_date
 #                                                                              #
 #---############################################################################
 
-my $DEBUG_TOC   =  1;
+#my $DEBUG_   =  1;
 my $DEBUG_INDEX =  2;
 my $DEBUG_TEXI  =  4;
 my $DEBUG_MACROS =  8;
@@ -1147,13 +1149,17 @@ if ($T2H_TOP_FILE =~ s/\..*$//)
 }
 
 # result files
-if (! $T2H_OUT && ($T2H_SPLIT =~ /section/i || $T2H_SPLIT =~ /node/i))
+if (! $T2H_OUT && $T2H_SPLIT =~ /section/i)
 {
     $T2H_SPLIT = 'section';
 }
+elsif (! $T2H_OUT && $T2H_SPLIT =~ /node/i)
+{
+    $T2H_SPLIT = 'node';
+}
 elsif (! $T2H_OUT && $T2H_SPLIT =~ /chapter/i)
 {
-    $T2H_SPLIT = 'chapter'
+    $T2H_SPLIT = 'chapter';
 }
 else
 {
@@ -1763,13 +1769,14 @@ my $footnote_element =
 
 my $do_contents;            # do table of contents if true
 my $do_scontents;           # do short table of contents if true
-my $has_top;                # true if there is a @top command
 
 sub initialise_state_texi($)
 {
     my $state = shift;
-    $state->{'texi'} = 1;           # for substitute_text and close_stack
+    $state->{'texi'} = 1;           # for substitute_text and close_stack 
+                                    # 1 if pass_texi/scan_texi is to be used
     $state->{'menu'} = 0;           # number of opened menus      
+    $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'titlepage'} = 0;      # number of opened titlepages
     $state->{'level'} = 0;          # current sectionning level
     $state->{'complex_format'} = 0; # number of opened complex formats
@@ -1829,6 +1836,8 @@ sub pass_texi()
                 {
                     warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODERE$/o;
                     my $node_ref;
+                    my $auto_directions;
+                    $auto_directions = 1 unless (/,/o);
                     my ($node, $node_next, $node_prev, $node_up) = split(/,/, $_);
                     $node =~ s/^\@node\s+// if ($node);
                     if ($node)
@@ -1852,6 +1861,7 @@ sub pass_texi()
                         $node_ref->{'node'} = 1;
                         $node_ref->{'texi'} = $node;
                         $node_ref->{'seen'} = 1;
+                        $node_ref->{'automatic_directions'} = $auto_directions;
                         $node_ref->{'level_modifier'} = $state->{'level'};
                         $node_ref->{'place'} = [];
                         $node_ref->{'current_place'} = [];
@@ -1871,10 +1881,13 @@ sub pass_texi()
                             if (!defined($node_top))
                             {
                                 $node_top = $node_ref;
+                                $node_top->{'texi'} = 'Top';
+                                delete $nodes{$node};
+                                $nodes{$node_top->{'texi'}} = $node_ref;
                             }
                             else
                             { # All the refs are going to point to the first Top
-                                warn "$WARN Top node allready exists `$node_ref->{'texi'}'\n";
+                                warn "$WARN Top node allready exists\n";
                             }
                         }
                         unless (@nodes_list)
@@ -1892,15 +1905,15 @@ sub pass_texi()
                 
                     if ($node_next)
                     {
-                        $node_ref->{'node_next'} = normalise_space($node_next);
+                        $node_ref->{'node_next'} = normalise_node($node_next);
                     }
                     if ($node_prev)
                     {
-                        $node_ref->{'node_prev'} = normalise_space($node_prev);
+                        $node_ref->{'node_prev'} = normalise_node($node_prev);
                     }
                     if ($node_up)
                     { 
-                        $node_ref->{'node_up'} = normalise_space($node_up);
+                        $node_ref->{'node_up'} = normalise_node($node_up);
                     }
                 }
                 elsif (defined($sec2level{$tag}))
@@ -1943,7 +1956,6 @@ sub pass_texi()
                                 $section_ref->{'number'} = '';
                                 $sections{0} = $section_ref;
                                 $element_top = $section_ref;
-                                $has_top = 1;
                             }
                             $sections{$num} = $section_ref;
                             if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
@@ -1971,7 +1983,7 @@ sub pass_texi()
                                 $node_texi = $state->{'node_ref'}->{'texi'};
                             }
                             print STDERR "# pass_texi node($node_ref)$node_texi, tag \@$tag($level) ref $section_ref, num,id $num,$docid\n   $name\n"
-                               if $T2H_DEBUG & $DEBUG_TOC;
+                               if $T2H_DEBUG & $DEBUG_ELEMENTS;
                         }
                         else 
                         {
@@ -2085,6 +2097,7 @@ sub skip($$$)
    {
        if ($line =~ /^\s+(\w+)/o and $to_skip{"end $1"})
        {
+           $state->{'detailmenu'}-- if ($1 eq 'detailmenu' and $state->{'detailmenu'});
            $line =~ s/^\s+(\w+)\s+//o;
        }
    }
@@ -2106,6 +2119,10 @@ sub skip($$$)
    elsif ($macro eq 'contents')
    {
        $do_contents = 1;
+   }
+   elsif ($macro eq 'detailmenu')
+   {
+       $state->{'detailmenu'}++;
    }
    elsif (($macro eq 'summarycontents') or ($macro eq 'shortcontents'))
    {
@@ -2147,14 +2164,17 @@ sub menu_entry_texi($$)
         $nodes{$node} = $node_menu_ref;
         $node_menu_ref->{'texi'} = $node;
     }
+    $node_menu_ref->{'menu_node'} = 1;
     if ($state->{'node_ref'})
     {
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
+	$node_menu_ref->{'menu_up_hash'}->{$state->{'node_ref'}->{'texi'}} = 1;
     }
     else
     {
         warn "$WARN menu without previous node";
     }
+    return if ($state->{'detailmenu'});
     if ($state->{'prev_menu_node'})
     {
         $node_menu_ref->{'menu_prev'} = $state->{'prev_menu_node'};
@@ -2270,7 +2290,7 @@ sub rearrange_elements()
             $section->{'number'} = "$toplevel_number.$section->{'number'}";
         }
         # find the previous section and the up section
-	$section->{'section_prev'} = $previous_sections[$section->{'level'}]
+        $section->{'section_prev'} = $previous_sections[$section->{'level'}]
             if (defined($previous_sections[$section->{'level'}]));
         $previous_sections[$section->{'level'}]->{'section_next'} = $section
             if (defined($previous_sections[$section->{'level'}]));
@@ -2286,17 +2306,21 @@ sub rearrange_elements()
                  $level--;
             }
             $section->{'section_up'} = $previous_sections[$level];
+            $section->{'section_up'}->{'child'} = $section unless ($section->{'section_prev'});
         }
         $previous_sections[$section->{'level'}] = $section;
         $section->{'up'} = $section->{'section_up'};
         $section->{'element_up'} = $section->{'section_up'};
-        print STDERR "# numbering section ($section->{'level'}): $section->{'number'}: $section->{'texi'}\n"
+        my $up = "NO_UP";
+        $up = $section->{'up'} if (defined($section->{'up'}));
+        print STDERR "# numbering section ($section->{'level'}): $section->{'number'}: (up: $up) $section->{'texi'}\n"
             if ($T2H_DEBUG and $DEBUG_ELEMENTS);
     }
 
     my @node_directions = ('node_prev', 'node_next', 'node_up');
     # handle nodes 
     # the node_prev... are texinfo strings, find the associated node references
+    print STDERR "# Resolve nodes directions\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $node (@nodes_list)
     {
         foreach my $direction (@node_directions)
@@ -2306,11 +2330,6 @@ sub rearrange_elements()
                 if ($nodes{$node->{$direction}} and $nodes{$node->{$direction}}->{'seen'})
                 {
                      $node->{$direction} = $nodes{$node->{$direction}};
-                }
-                elsif ($node->{$direction} =~ /^top$/i and defined($node_top))
-                {
-                    $nodes{$node->{$direction}} = $node_top;
-                    $node->{$direction} = $node_top;
                 }
                 elsif ($node->{$direction} =~ /^\(.*\)/)
                 { # ref to an external node
@@ -2333,20 +2352,12 @@ sub rearrange_elements()
                 }
             }
         }
-        # top node might be referenced with different case
-        foreach my $menu_direction (('menu_next', 'menu_up', 'menu_prev'))
-        {
-            last unless ($node_top);
-            if (exists ($node->{$menu_direction}) and $node->{$menu_direction}->{'texi'} =~ /^top$/i)
-            {
-                $nodes{$node->{$menu_direction}} = $node_top;
-                $node->{$menu_direction} = $node_top;
-            }
-        }
     }
     
     # nodes are attached to the section preceding them if not allready 
     # associated with a section
+    print STDERR "# Find the section associated with each node\n"
+        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     my $current_section = $sections_list[0];
     my $current;
     foreach my $element (@all_elements)
@@ -2383,13 +2394,12 @@ sub rearrange_elements()
             $current_section = $element;
         }
     }
+    print STDERR "# Complete nodes next prev and up based on menus and sections\n"
+        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $node (@nodes_list)
     {
-        # complete only if there is a @top command
-        # last unless ($has_top);
         # use values deduced from menus to complete missing up, next, prev
-        # FIXME we should better begin with next, prev given by sectionning
-        # commands
+        # or from sectionning commands if automatic sectionning
         if (!$node->{'first'} and !$node->{'top'} and !$node->{'menu_up'} and ($node->{'texi'} !~ /^top$/i) and $T2H_SHOW_MENU)
         {
             warn "$WARN `$node->{'texi'}' doesn't appear in menus\n";
@@ -2399,61 +2409,139 @@ sub rearrange_elements()
         {
             $node->{'up'} = $node->{'node_up'};
         }
-        elsif ($node->{'section_ref'} and $node->{'section_ref'}->{'up'} and $has_top)
-        { # complete up using sections if there is a @top
-            $node->{'up'} = $node->{'section_ref'}->{'up'};
+        elsif ($node->{'automatic_directions'} and $node->{'section_ref'} and defined($node->{'section_ref'}->{'up'}))
+        {
+            $node->{'up'} = get_node($node->{'section_ref'}->{'up'});
         }
         elsif ($node->{'menu_up'})
         {
             $node->{'up'} = $node->{'menu_up'};
         }
-
-        if (!$node->{'node_next'})
+        if ($node->{'up'} and !$node->{'up'}->{'external_node'})
         {
-            my $next;
-            # the next is the following node in the menu 
-            if ($node->{'menu_next'}) 
+            unless (defined($node->{'menu_up_hash'}) and ($node->{'menu_up_hash'}->{$node->{'up'}->{'texi'}}))
             {
-                $next = $node->{'menu_next'};
+                print STDERR "$WARN `$node->{'up'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node\n";
+                push @{$node->{'up_not_in_menu'}}, $node->{'up'}->{'texi'};
             }
-            # the next node is the node following the parent node in menu
-            elsif ($node->{'menu_up'})
+        }
+        if ($node->{'node_next'})
+        {
+            $node->{'next'} = $node->{'node_next'};
+        }
+        elsif ($node->{'texi'} eq 'Top')
+        {
+            $node->{'next'} = $node->{'menu_child'} if ($node->{'menu_child'});
+        }
+        elsif ($node->{'automatic_directions'})
+        {
+            if (defined($node->{'section_ref'}))
             {
-                my $current_node = $node->{'menu_up'};
-                while (!defined($current_node->{'menu_next'}) and defined($current_node->{'menu_up'}))
+                my $next;
+                my $section = $node->{'section_ref'};
+                if (defined($section->{'section_next'}))
                 {
-                    $current_node = $current_node->{'menu_up'};
+                    $next = get_node($section->{'section_next'})
                 }
-                if (defined($current_node->{'menu_next'}))
+		else 
                 {
-                    $next = $current_node->{'menu_next'};
+                    while (defined($section->{'section_up'}) and !defined($section->{'section_next'}))
+                    {
+                        $section = $section->{'section_up'};
+                    }
+                    if (defined($section->{'section_next'}))
+                    {
+                        $next = get_node($section->{'section_next'});
+                    }
                 }
-            }
-            if ($next)# and $next->{'seen'})
-            {
                 $node->{'next'} = $next;
             }
         }
-        if (!$node->{'node_prev'})
+        if (!defined($node->{'next'}) and $node->{'menu_next'})
         {
-            my $prev;
-            # the prev is the previous node in the menu 
-            if ($node->{'menu_prev'}) 
+            $node->{'next'} = $node->{'menu_next'};
+        }
+	
+        if ($node->{'node_prev'})
+        {
+            $node->{'prev'} = $node->{'node_prev'};
+        }
+        elsif ($node->{'automatic_directions'})
+        {
+            if (defined($node->{'section_ref'}))
             {
-                $prev = $node->{'menu_prev'};
-            }
-            # the prev node is the parent node
-            elsif ($node->{'menu_up'})
-            {
-                $prev = $node->{'menu_up'};
-            }
-            if ($prev)# or !$prev->{'seen'})
-            {
+                my $prev;
+                my $section = $node->{'section_ref'};
+                if (defined($section->{'section_prev'}))
+                {
+                    $prev = get_node($section->{'section_prev'});
+                }
+                elsif (defined($section->{'section_up'}))
+                {
+                    $prev = get_node($section->{'up'});
+                }
                 $node->{'prev'} = $prev;
             }
         }
+        if (!defined($node->{'prev'}) and $node->{'menu_prev'}) 
+        {
+            $node->{'prev'} = $node->{'menu_prev'};
+        }
+        # the prev node is the parent node
+        elsif (!defined($node->{'prev'}) and $node->{'menu_up'})
+        {
+            $node->{'prev'} = $node->{'menu_up'};
+        }
+    
+        # the following node is the node following in node reading order
+        # it is thus first the child, else the next, else the next following
+        # the up
+        if ($node->{'menu_child'})
+        {
+            $node->{'following'} = $node->{'menu_child'};
+        }
+        elsif ($node->{'automatic_directions'} and defined($node->{'section_ref'}) and defined($node->{'section_ref'}->{'child'}))
+        {
+            $node->{'following'} = get_node ($node->{'section_ref'}->{'child'});
+        }
+        elsif (defined($node->{'next'}))
+        {
+            $node->{'following'} = $node->{'next'};
+        }
+	else
+        {
+            my $up = $node->{'up'};
+            $node->{'following'} = $up if (defined($up) and grep {$_ eq $up->{'texi'}} @{$node->{'up_not_in_menu'}});
+            while ((!defined($node->{'following'})) and (defined($up)))
+            {
+                if (($node_top) and ($up eq $node_top))
+                { # if we are at Top, Top is following 
+                    $node->{'following'} = $node_top;
+                    $up = undef;
+                }
+                if (defined($up->{'next'}))
+                {
+                    $node->{'following'} = $up->{'next'};
+                }
+                elsif (defined($up->{'up'}))
+                {
+                    if (! grep { $_ eq $up->{'up'}->{'texi'} } @{$node->{'up_not_in_menu'}}) 
+                    { 
+                        $up = $up->{'up'};
+                    }
+                    else
+                    { # in that case we can go into a infinite loop
+                        $node->{'following'} = $up->{'up'};
+                    }
+                }
+                else
+                {
+                    $up = undef;
+                }
+            }
+        }
     }
-    # build the elements list 
+    print STDERR "# Build the elements list\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     if (!$T2H_USE_NODES)
     {
         #the only sectionning elements are sections
@@ -2506,22 +2594,23 @@ sub rearrange_elements()
     # FIXME Is it right for the last element ? Or should it be the last
     # with indices taken into account ?
     $element_first = $elements_list[0];
-    # If there is no @top section not top node the first node is the top element
+    # If there is no @top section no top node the first node is the top element
     $element_top = $node_top if (!defined($element_top) and defined($node_top));
     $element_top = $element_first unless (defined($element_top));
     $element_top->{'top'} = 1 if ($element_top->{'node'});
     $element_last = $elements_list[-1];
-    print STDERR "# find forward and back\n"
-        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    print STDERR "# find forward and back\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+    # FIXME et nodes ?
     # element_up is the up element except when the up element is the top element
     my $prev;
     foreach my $element (@elements_list)
     {
-        if ($element->{'toplevel'} and !$element->{'up'})
+        if ($element->{'toplevel'} and !defined($element->{'up'}))
         {
             $element->{'up'} = $element_top;
         }
         # FIXME up or element_up ? It is only used for reparenting with indices
+	# surement element_up sinon ca fait n'importe quoi avec les nodes
         push @{$element->{'up'}->{'childs'}}, $element if (defined($element->{'up'}));
         if ($prev)
         {
@@ -2533,6 +2622,53 @@ sub rearrange_elements()
         {
             $prev = $element;
         }
+        if (defined($element->{'node_ref'}))
+        {
+            $element->{'next'} = $element->{'node_ref'}->{'next'};
+            $element->{'prev'} = $element->{'node_ref'}->{'prev'};
+            $element->{'menu_next'} = $element->{'node_ref'}->{'menu_next'};
+            $element->{'menu_prev'} = $element->{'node_ref'}->{'menu_prev'};
+            $element->{'menu_child'} = $element->{'node_ref'}->{'menu_child'};
+            $element->{'menu_up'} = $element->{'node_ref'}->{'menu_up'};
+            $element->{'nodeup'} = $element->{'node_ref'}->{'up'};
+            $element->{'following'} = $element->{'node_ref'}->{'following'};
+        }
+        elsif (! $element->{'node'})
+        {
+            if (defined($element->{'section_next'}))
+            {
+                 $element->{'next'} = get_node($element->{'section_next'});
+            }
+            if (defined($element->{'section_prev'}))
+            {
+                 $element->{'prev'} = get_node($element->{'section_prev'});
+            }
+            if (defined($element->{'up'}))
+            {
+                 $element->{'nodeup'} = get_node($element->{'up'});
+            }
+            if ($element->{'child'})
+            {
+                $element->{'following'} = get_node($element->{'child'});
+            }
+            elsif ($element->{'next'})
+            {
+                $element->{'following'} = $element->{'next'};
+            }
+            elsif ($element->{'up'})
+            {
+                my $up = $element;
+                while ($up->{'up'} and !$element->{'following'})
+                {
+                    $up = $up->{'up'};
+                    if ($up->{'next_section'})
+                    {
+                        $element->{'following'} = get_node ($up->{'next_section'});
+                    }
+                }
+            }
+        }
+        $element->{'nodeup'} = $element->{'up'} if ($element->{'node'});
         next if ($element->{'node'} or $element->{'top'});
 
         if (defined($element->{'section_next'}))
@@ -2577,16 +2713,13 @@ sub rearrange_elements()
         {
             push @checked_elements, $element;
         }
-	#push @new_elements, $element;
-	#print STDERR "Add index pages for ($element) $element->{'texi'} (@checked_elements)\n";
+        #print STDERR "Add index pages for ($element) $element->{'texi'} (@checked_elements)\n";
         my $element_at_top = get_top($element);
-        my $forward = $element->{'forward'};
-        # count the additionnal pages and put the elements needing file name
-	# at the right places 
         my $current_element = { 'holder' => 1, 'texi' => 'HOLDER', 
             'place' => [], 'indices' => [] }; # current_element is the 
                                         # last element holding text
         my $back = $element->{'back'} if defined($element->{'back'}); # used to find back and forward
+        my $forward = $element->{'forward'}; #used to find forward of the last inserted element
         my $index_num = 0;
         foreach my $checked_element(@checked_elements)
         {
@@ -2601,12 +2734,19 @@ sub rearrange_elements()
                         push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
                     }
                 }
-                elsif ($checked_element->{'toplevel'})
-                { # there was an index_page added, this index_page is toplevel.
-                  # if the element is toplevel too then it begins a new 
-                  # chapter and it is the element_next for the last inserted 
-                  # toplevel index_page
-                    $current_element->{'element_next'} = $checked_element;
+		else
+                {  
+                    if ($checked_element->{'toplevel'})
+                    # there was an index_page added, this index_page is toplevel.
+                    # if the element is toplevel too then it begins a new 
+                    # chapter and it is the element_next for the last inserted 
+                    # toplevel index_page
+                    {
+                        $current_element->{'element_next'} = $checked_element;
+                    }
+                    $current_element->{'next'} = $checked_element;
+                    $current_element->{'following'} = $checked_element;
+                    $checked_element->{'prev'} = $current_element;
                 }
                 $current_element = $checked_element;
                 $checked_element->{'back'} = $back;
@@ -2625,10 +2765,12 @@ sub rearrange_elements()
                     my $first_page = shift @pages;
                     # debug
 		    my $next_texi = 'NO_NEXT';
-		    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
+		    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top) and  defined($element_at_top->{'element_next'}));
                     my $back_texi = 'NO_BACK';
                     $back_texi = $back->{'texi'} if (defined($back));
-		    print STDERR "# New index first page (top $element_at_top->{'texi'}, back $back_texi, current $current_element->{'texi'}, next $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
+                    my $top = 'NO_TOP';
+                    $top = $element_at_top->{'texi'} if defined($element_at_top);
+		    print STDERR "# New index first page (top $top, back $back_texi, current $current_element->{'texi'}, next $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                     push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page} ];
                     if (@pages)
                     {
@@ -2667,24 +2809,37 @@ sub rearrange_elements()
                         {
                             # debug
                             my $next_texi = 'NO_NEXT';
-			    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
-			    print STDERR "# New page (top $element_at_top->{'texi'}, back $back->{'texi'}, current $current_element->{'texi'}, next  $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
+			    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top) and defined($element_at_top->{'element_next'}));
+                            my $top = 'NO_TOP';
+                            $top = $element_at_top->{'texi'} if defined($element_at_top);
+			    print STDERR "# New page (top $top, back $back->{'texi'}, current $current_element->{'texi'}, next  $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                             $index_num++;
                             my $page = shift @pages;
                             $index_page = { 'index_page' => 1,
-                             'texi' => "$element->{'texi'}_index_page_$index_num",
+                             'texi' => "$element->{'texi'} index page $index_num",
                              'level' => $toplevel,
                              'toplevel' => 1,
                              'up' => $element_top,
                              'element_ref' => $element,
                              'element_next' => $element_at_top->{'element_next'},
                              'back' => $back,
+                             'prev' => $back,
+                             'next' => $current_element->{'next'},
+                             'following' => $current_element->{'following'},
+                             'nodeup' => $current_element->{'nodeup'},
                              'place' => [],
                              'page' => $page 
                             };
+                            while ($nodes{$index_page->{'texi'}})
+                            {
+                                $nodes{$index_page->{'texi'}} .= ' ';
+                            }
+                            $nodes{$index_page->{'texi'}} = $index_page;
                             push @{$current_element->{'indices'}->[-1]}, {'element' => $index_page, 'page' => $page };
                             push @new_elements, $index_page;
                             $back->{'forward'} = $index_page;
+                            $back->{'next'} = $index_page;
+                            $back->{'following'} = $index_page;
                             $back = $index_page;
                             $element_at_top->{'element_next'} = $index_page unless ($element_at_top->{'top'});
                             $element_at_top = $index_page;
@@ -2759,7 +2914,7 @@ sub rearrange_elements()
     {
         $element->{'this'} = $element;
         foreach my $direction (('Up', 'Forward', 'Back', 'Next', 
-            'Prev', 'FastForward', 'FastBack', 'This'))
+            'Prev', 'FastForward', 'FastBack', 'This', 'NodeUp', 'Following' ))
         {
             my $direction_no_caps = $direction;
             $direction_no_caps =~ tr/A-Z/a-z/;
@@ -2784,17 +2939,20 @@ sub rearrange_elements()
     if ($T2H_SPLIT)
     {
         my $cut_section = $toplevel;
-        my $cut_node = 1;
         my $doc_nr = -1;
         my @indices_list = ();
         if ($T2H_SPLIT eq 'section')
         {
            $cut_section = 2 if ($toplevel <= 2);
-           $cut_node = 2;
         }
         foreach my $element (@elements_list)
         {
-            $doc_nr++ if (((!$element->{'node'} or $element->{'element_added'}) and ($element->{'level'} <= $cut_section))
+            print STDERR "# Splitting ($T2H_SPLIT) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            $doc_nr++ if (
+               ($T2H_SPLIT eq 'node') or
+               (
+                 (!$element->{'node'} or $element->{'element_added'}) and ($element->{'level'} <= $cut_section)
+               )
                or $element->{'index_page'});
             $element->{'doc_nr'} = $doc_nr;
             $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
@@ -2861,41 +3019,56 @@ sub rearrange_elements()
         print STDERR "$element ";
         if ($element->{'node'})
         {
-             print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+            print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
         }
         elsif ($element->{'index_page'})
         {
-             print STDERR "index($element->{'id'}, doc_nr $element->{'doc_nr'}): $element->{'texi'}\n";
+            print STDERR "index($element->{'id'}, doc_nr $element->{'doc_nr'}): $element->{'texi'}\n";
         }
         elsif ($element->{'footnote'})
         {
-             print STDERR "footnotes($element->{'id'}, file $element->{'file'})\n";
+            print STDERR "footnotes($element->{'id'}, file $element->{'file'})\n";
         }
         else 
         {
-             my $number = "UNNUMBERED";
-             $number = $element->{'number'} if ($element->{'number'});
-             print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+            my $number = "UNNUMBERED";
+            $number = $element->{'number'} if ($element->{'number'});
+            print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
         }
         print STDERR "  TOP($toplevel) " if ($element->{'top'});
         print STDERR "  u: $element->{'up'}->{'texi'}\n" if (defined($element->{'up'}));
+        print STDERR "  ch: $element->{'child'}->{'texi'}\n" if (defined($element->{'child'}));
         print STDERR "  fb: $element->{'fastback'}->{'texi'}\n" if (defined($element->{'fastback'}));
         print STDERR "  b: $element->{'back'}->{'texi'}\n" if (defined($element->{'back'}));
         print STDERR "  p: $element->{'prev'}->{'texi'}\n" if (defined($element->{'prev'}));
         print STDERR "  n: $element->{'next'}->{'texi'}\n" if (defined($element->{'next'}));
+        print STDERR "  n_u: $element->{'nodeup'}->{'texi'}\n" if (defined($element->{'nodeup'}));
         print STDERR "  f: $element->{'forward'}->{'texi'}\n" if (defined($element->{'forward'}));
+        print STDERR "  follow: $element->{'following'}->{'texi'}\n" if (defined($element->{'following'}));
+	print STDERR "  m_p: $element->{'menu_prev'}->{'texi'}\n" if (defined($element->{'menu_prev'}));
+	print STDERR "  m_n: $element->{'menu_next'}->{'texi'}\n" if (defined($element->{'menu_next'}));
+	print STDERR "  m_u: $element->{'menu_up'}->{'texi'}\n" if (defined($element->{'menu_up'}));
+	print STDERR "  m_ch: $element->{'menu_child'}->{'texi'}\n" if (defined($element->{'menu_child'}));
 	print STDERR "  u_e: $element->{'element_up'}->{'texi'}\n" if (defined($element->{'element_up'}));
 	print STDERR "  n_e: $element->{'element_next'}->{'texi'}\n" if (defined($element->{'element_next'}));
         print STDERR "  ff: $element->{'fastforward'}->{'texi'}\n" if (defined($element->{'fastforward'}));
+        if (defined($element->{'menu_up_hash'}))
+        {
+            print STDERR "  parent nodes:\n";
+            foreach my $menu_up (keys%{$element->{'menu_up_hash'}})
+            {
+                print STDERR "   $menu_up ($element->{'menu_up_hash'}->{$menu_up})\n";
+            }
+        }
         if (defined($element->{'nodes'}))
         {
-             print STDERR "  nodes: $element->{'nodes'} (@{$element->{'nodes'}})\n";
-             foreach my $node (@{$element->{'nodes'}})
-             {
-                  my $beginning = "   ";
-                  $beginning = "  *" if ($node->{'with_section'});
-                  print STDERR "${beginning}$node->{'texi'}\n";
-             }
+            print STDERR "  nodes: $element->{'nodes'} (@{$element->{'nodes'}})\n";
+            foreach my $node (@{$element->{'nodes'}})
+            {
+                my $beginning = "   ";
+                $beginning = "  *" if ($node->{'with_section'});
+                print STDERR "${beginning}$node->{'texi'}\n";
+            }
         }
         print STDERR "  places: $element->{'place'}\n";
         foreach my $place(@{$element->{'place'}})
@@ -2933,11 +3106,21 @@ sub get_top($)
    return $up;
 }
 
+sub get_node($)
+{
+    my $element = shift;
+    return undef if (!defined($element));
+    return $element if ($element->{'node'});
+    return $element->{'node_ref'} if ($element->{'node_ref'});
+    return $element;
+}
 # get the html names from the texi for all elements
 sub do_names()
 {
     foreach my $node (%nodes)
     {
+        # FIXME for nodes and anchors we haven't the state defined
+        next if ($nodes{$node}->{'index_page'}); # some nodes are index pages.
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
     }
@@ -3410,6 +3593,7 @@ sub pass_text()
                         if ($new_element->{'doc_nr'} != $element->{'doc_nr'})
                         {
                             &$T2H_print_chapter_footer($FH) if $T2H_SPLIT eq 'chapter';
+                            &$T2H_print_section_footer($FH) if $T2H_SPLIT eq 'section';
 			    #print STDERR "Close file after $element->{'texi'}\n";
                             &$T2H_print_page_foot($FH);
                             close($FH);
@@ -3420,19 +3604,23 @@ sub pass_text()
                     print STDERR "# Writing elements:" if (! defined($element) and $T2H_VERBOSE);
                     $element = $new_element;
                     $state{'element'} = $element;
-		    #print STDERR "Doing hrefs for $element->{'texi'}\n";
+		    #print STDERR "Doing hrefs for $element->{'texi'} First ";
                     $T2H_HREF{'First'} = href($element_first, $element->{'file'});
+		    #print STDERR "Last ";
                     $T2H_HREF{'Last'} = href($element_last, $element->{'file'});
+		    #print STDERR "Index ";
                     $T2H_HREF{'Index'} = href($element_chapter_index, $element->{'file'}) if (defined($element_chapter_index));
+		    #print STDERR "Top ";
                     $T2H_HREF{'Top'} = href($element_top, $element->{'file'});
                     foreach my $direction (('Up', 'Forward', 'Back', 'Next', 
-                       'Prev', 'FastForward', 'FastBack', 'This'))
+                       'Prev', 'FastForward', 'FastBack', 'This', 'NodeUp', 'Following'))
                     {
                         my $elem = $element->{$direction};
                         $T2H_NODE{$direction} = undef;
                         $T2H_HREF{$direction} = undef;
                         next unless (defined($elem));
-                        if ($elem->{'node'} or $elem->{'external_node'})
+			#print STDERR "$direction ";
+                        if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'})
                         {
                             $T2H_NODE{$direction} = $elem->{'text'};
                         }
@@ -3440,7 +3628,7 @@ sub pass_text()
                         {
                             $T2H_NODE{$direction} = $elem->{'node_ref'}->{'text'};
                         }
-                        if ($elem->{'external_node'})
+                        if ($elem->{'external_node'} or ($elem->{'menu_node'} and ! $elem->{'seen'}))
                         {
                             $T2H_HREF{$direction} = '';
                         }
@@ -3450,7 +3638,7 @@ sub pass_text()
                         }
                         $T2H_NAME{$direction} = $elem->{'text'};
                     }   
-		    #print STDERR "Done hrefs for $element->{'texi'}\n";
+		    #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     if (! defined($FH))
                     {
                         my $file = $element->{'file'};
@@ -3549,12 +3737,14 @@ sub pass_text()
     ############################################################################
     # Print ToC, Overview, Footnotes
     #
-    delete $T2H_HREF{Prev};
-    delete $T2H_HREF{Next};
-    delete $T2H_HREF{Back};
-    delete $T2H_HREF{Forward};
-    delete $T2H_HREF{Up};
-
+    for my $direction (('Prev', 'Next', 'Back', 'Forward', 'Up', 'NodeUp', 'Following', 'This'))
+    {
+        delete $T2H_HREF{$direction};
+        # it is better to undef in case the refs are used, as if deleted, the
+        # refs are still on the old element (we could do both)
+        $T2H_NAME{$direction} = undef;
+        $T2H_NODE{$direction} = undef;
+    }
     if (@foot_lines)
     {
         print STDERR "# writing Footnotes in $docu_foot_file\n" if $T2H_VERBOSE;
@@ -3785,6 +3975,15 @@ sub normalise_space($)
     return $text;
 }
 
+sub normalise_node($)
+{
+    return undef unless (defined ($_[0]));
+    my $text = shift;
+    $text = normalise_space($text);
+    $text =~ s/^top$/Top/i;
+    return $text;
+}
+
 sub do_math($;$)
 {
     return l2h_ToLatex("\$".$_[0]."\$");
@@ -3793,7 +3992,7 @@ sub do_math($;$)
 sub do_anchor_label($)
 {
     my $anchor = shift;
-    $anchor = normalise_space($anchor);
+    $anchor = normalise_node($anchor);
     return &$t2h_anchor($nodes{$anchor}->{'id'});
 }
 
@@ -3804,7 +4003,7 @@ sub do_paragraph($$)
     my $state = shift;
     delete $state->{'paragraph'};
     $state->{'paragraph_nr'}--;
-    print STDERR "Bug text undef in do_paragraph" unless defined($text);
+    (print STDERR "Bug text undef in do_paragraph", return '') unless defined($text);
     my $align = '';
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
     return &$t2h_paragraph($text, $align);
@@ -4280,7 +4479,7 @@ sub menu_entry($)
     my $state = shift;
     my $menu_entry = $state->{'menu_entry'};
     my $file = $state->{'element'}->{'file'};
-    my $node_texi = normalise_space($menu_entry->{'node'});
+    my $node_texi = normalise_node($menu_entry->{'node'});
 
     my $substitution_state = { 'no_paragraph' => 1, 'element' => $state->{'element'}, 
        'preformatted' => $state->{'preformatted'}, 
@@ -4292,11 +4491,11 @@ sub menu_entry($)
 
     my $entry;
     my $element = $nodes{$node_texi};
-    if (($node_texi =~ /^top$/i) and defined($node_top))
-    {
-        $nodes{$node_texi} = $node_top;
-        $element = $node_top;
-    }
+    #if (($node_texi =~ /^top$/i) and defined($node_top))
+    #{
+    #    $nodes{$node_texi} = $node_top;
+    #    $element = $node_top;
+    #}
     if ($element->{'seen'})
     {
         if ($element->{'with_section'})
@@ -4370,7 +4569,7 @@ sub do_xref($$$)
     $text =~ s/\s+/ /gos; # remove useless spaces and newlines
     my @args = split(/\s*,\s*/, $text);
     $args[0] = normalise_space($args[0]);
-    my $node_texi = $args[0];
+    my $node_texi = normalise_node($args[0]);
     # a ref to a node in an info manual
     if (($macro ne 'inforef') and $args[0] =~ s/^\(([^\s\(\)]+)\)\s*//)
     {
@@ -4410,7 +4609,21 @@ sub do_xref($$$)
             {
                 $element = $element->{'with_section'};
             }
-            my $href = href($element, $state->{'element'}->{'file'});
+	    #print STDERR "href in ref `$node_texi': $_";
+            my $file = '';
+            if (defined($state->{'element'}))
+            {
+                $file = $state->{'element'}->{'file'};
+            }
+            else
+            {
+                print STDERR "$WARN \@$macro not in text (in anchor, node, section...)\n";
+                # if T2H_SPLIT the file is '' which ensures a href with the file
+                # name. if ! T2H_SPLIT the 2 file will be the same thus there
+                # won't be the file name
+                $file = $element->{'file'} unless ($T2H_SPLIT);
+            }
+            my $href = href($element, $file);
             my $section = $args[2] || $args[1];
             $result = &$t2h_internal_ref ($macro, $href, $section || $args[0], $section || $element->{'name'}, $element->{'section'});
         }
@@ -4691,7 +4904,7 @@ sub scan_texi($$$$)
             }
             if ($node)
             {
-                menu_entry_texi(normalise_space($node), $state);
+                menu_entry_texi(normalise_node($node), $state);
                 add_prev($text, $stack, $menu_line);
                 return;
             }
@@ -4921,6 +5134,7 @@ sub scan_texi($$$$)
 	{
             add_prev($text, $stack, $1);
             my $end_tag = $2;
+            $state->{'detailmenu'}-- if ($end_tag eq 'detailmenu' and $state->{'detailmenu'});
             next if ($to_skip{"end $end_tag"});
             if (defined($state->{'text_macro_stack'}) 
                and @{$state->{'text_macro_stack'}} 
@@ -5312,10 +5526,10 @@ sub scan_texi($$$$)
                     if ($style->{'style'} eq 'anchor')
                     {
                         my $anchor = $style->{'text'};
-                        $anchor = normalise_space($anchor);
+                        $anchor = normalise_node($anchor);
                         if ($nodes{$anchor})
                         {
-                            warn "$ERROR Duplicate node found: $anchor\n";
+                            warn "$ERROR Duplicate node for anchor found: $anchor\n";
                             next;
                         }
                         $anchor_num++;
@@ -5338,7 +5552,10 @@ sub scan_texi($$$$)
                     }
                     else
                     {
-                         $result = '{' . $style->{'text'} . '}';
+                        $result = '{' . $style->{'text'};
+                        # don't close { if we are closing stack as we are not 
+                        # sure this is a licit { ... } construct.
+                        $result .= '}' unless $state->{'close_stack'};
                     }
                     add_prev ($text, $stack, $result);
                     #print STDERR "MACRO end $style->{'style'} remaining: $_";
@@ -6063,7 +6280,7 @@ sub scan_line($$$$)
                         add_prev ($text, $stack, $style->{'text'});
                         next;
                     }
-                            
+
                     if ($style->{'style'})
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
@@ -6505,16 +6722,17 @@ sub close_stack($$$;$$)
                 push @$new_stack, { 'style' => $style, 'text' => '', 'no_open' => 1 };
                 $string .= '} ';
             }
-	    else
+            else
             {
                 dump_stack ($text, $stack, $state) if (!defined($style)); 
                 $string .= '} ';
-                warn "$WARN closing $style\n"; 
+                warn "$WARN closing $style\n" if ($style); 
             }
         }
     }
     $state->{'no_close'} = 1 if ($close_paragraph);
-    #print STDERR "scan_line in close_stack\n";
+    $state->{'close_stack'} = 1;
+    #print STDERR "scan_line in close_stack ($string)\n" if ($string);
     if ($state->{'texi'})
     {
         scan_texi ($string, $text, $stack, $state) if ($string);
@@ -6524,6 +6742,7 @@ sub close_stack($$$;$$)
         scan_line ($string, $text, $stack, $state) if ($string);
     }
     $state->{'no_close'} = 0;
+    $state->{'close_stack'} = 0;
     $state->{'verb'} = $verb if ($verb);
     return ($text, $stack, $state, $new_stack);
 }
@@ -6716,10 +6935,18 @@ sub t2h_print_lines($;$)
 {
     my ($fh, $lines) = @_;
     $lines = $T2H_THIS_SECTION unless $lines;
+    my @cnt;
+    my $cnt = 0;
     for my $line (@$lines)
     {
         print $fh $line;
+	if ($T2H_WORDS_IN_PAGE and ($T2H_SPLIT eq 'node'))
+        {
+            @cnt = split(/\W*\s+\W*/, $line);
+            $cnt += scalar(@cnt);
+        }
     }
+    return $cnt;
 }
 
 sub protect_html($)

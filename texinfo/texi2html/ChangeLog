@@ -1,3 +1,25 @@
+2003-05-02  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: 3 split commands: split at
+	chapter, section or for every node (previously node and section 
+	where the same than node now).
+	specific section footer.
+	find prev and next like makeinfo.
+	new directions, for nodes: NodeUp (up for node) and Following (next
+	node in reading order).
+	if in detailmenu menu entries are not used to find next and prev.
+	only one Top in nodes and anchors. Any case combination accepted
+	for any reference.
+	don't close { when not associated with an @command.
+	reintroduced code for counting words.
+	new possibilities for buttons. If this is a ref to a scalar, the
+	text appears in navigation. If it is an array, the first element
+	is a direction used for the href, the second element is a scalar
+	ref for the text (see makeinfo.init in examples for an example).
+	* Tests/*: test for recursive nodes references and other little
+	tests
+	* examples/*: new directory for examples of config files. There
+	is a file which tries to have an output which looks like makeinfo
+	--html output (makeinfo.init).
 
 2003-04-30  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: add the node as element when there 

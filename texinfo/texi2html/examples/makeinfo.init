@@ -1,0 +1,32 @@
+# -*-perl-*-
+$T2H_TOP_FILE = 'index.html';
+
+$T2H_SHOW_MENU = 1;
+
+$T2H_USE_NODES = 1;
+
+$T2H_SPLIT = 'node';
+
+$T2H_SECTION_NAVIGATION = 1;
+
+$T2H_SHORT_REF = 1;
+
+$T2H_NODE_NAME_IN_MENU = 1;
+
+$T2H_AVOID_MENU_REDUNDANCY = 0;
+
+$T2H_SPLIT_INDEX = 0;
+
+$T2H_MENU_SYMBOL = '*';
+
+$T2H_WORDS_IN_PAGE = 200;
+
+@T2H_SECTION_BUTTONS =
+    (
+     \"node: ", \$T2H_NODE{This}, [ 'Next', \$T2H_NODE{Next} ] , \",", [ 'Prev', \$T2H_NODE{Prev} ], \",", [ 'NodeUp', \$T2H_NODE{NodeUp} ], 'Following'
+    );
+
+$T2H_NAVIGATION_TEXT{Following} = ' &gt; ';
+
+@T2H_MISC_BUTTONS = @T2H_SECTION_BUTTONS;
+1

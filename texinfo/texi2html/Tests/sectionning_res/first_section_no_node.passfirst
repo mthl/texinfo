@@ -1,0 +1,16 @@
+
+Garbage
+
+@unnumbered before nodes
+
+in unnumbered
+
+@node Top
+@top top section
+Top node
+
+@node second node,,,(dir)
+@section second
+
+second node
+

@@ -1,6 +1,3 @@
-\input texinfo @c -*-texinfo-*-
-
-@setfilename no_section
 
 Garbage
 
@@ -14,14 +11,11 @@ Top node
 
 @node second node,,top,TOP
 second node (@@node second node,,top,TOP).
-@c anchor TOP: @anchor{TOP}.
 
 @menu
 * other node::
 @end menu
 
 @node other node,,,second node
-@c anchor top @anchor{top}.
 ref to TOP @ref{TOP}.
 
-@bye

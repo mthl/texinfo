@@ -1,0 +1,45 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename rec_nodes
+
+
+@node ToP
+Top node
+
+@menu
+* second node::
+* node following second::
+@end menu
+
+@node second node,,Top,Top
+second node (@@node second node,,top,TOP).
+@c anchor TOP: @anchor{TOP}.
+
+@menu
+* other node::
+* second node::
+@end menu
+
+@node other node,,,second node
+@c anchor top @anchor{top}.
+@c ref to TOP @ref{TOP}.
+
+@menu 
+* other node::
+@end menu
+
+@node node up node following second,,,node following second
+@menu
+* node following second::
+@end menu
+
+in node up node following second
+
+@node node following second,,,node up node following second
+
+in node following second
+@menu
+* node up node following second::
+@end menu
+
+@bye

@@ -14,6 +14,7 @@ dir=$1; shift
 texi_file=$1 ;shift
 options=$1; shift
 suffix=$1; shift
+basename=$1; shift
 fail=$1; shift
 ignore_tags=$1; shift
 test_tidy=$1;shift
@@ -26,7 +27,7 @@ wc=$1; shift
 [ -z $test_tidy ] && test_tidy=yes
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
-basename=`basename $texi_file .$suffix`
+[ -z $basename ] && basename=`basename $texi_file .$suffix`
 stderr_file=$basename.2
 echo "making test: $dir/$texi_file $options"
 if [ ! -d $dir ]; then
@@ -134,6 +135,7 @@ test_texi GermanNodeTest nodetest.texi
 test_texi formatting nodetest.texi "-split chapter"
 test_texi index_table
 test_texi index_table index_split.texi "-split chapter -init index_test.init"
+test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top_file index_nodes.html"
 test_texi macros
 test_texi macros simple_macro.texi
 test_texi macros pass0_macros.texi
@@ -145,6 +147,10 @@ test_texi sectionning no_section.texi
 test_texi sectionning no_section_no_top.texi
 test_texi sectionning first_section_and_nodes.texi
 test_texi sectionning double_top.texi
+test_texi sectionning rec_nodes.texi
+test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top_file makeinfo_rec_nodes.html" texi makeinfo_rec_nodes
+test_texi sectionning ref_in_anchor.texi
+test_texi sectionning brace_not_closed.texi
 test_texi formatting imbrications.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html
@@ -153,7 +159,7 @@ test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
 test_texi xemacs_frame xemacs.texi "-split chapter -frames"
 test_texi texinfo info-stnd.texi "-split chapter"
-test_texi texinfo texinfo.txi "-split chapter" txi success ignore_tags
+test_texi texinfo texinfo.txi "-split chapter" txi texinfo success ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter" texinfo
 
 exit

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.27 2003-04-30 18:32:34 pertusus Exp $
+# $Id: texi2html.init,v 1.28 2003-05-02 18:20:30 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -97,15 +97,16 @@ $T2H_NUMBER_SECTIONS = 1;
 # if set the nodes are used as sectionning elements
 $T2H_USE_NODES = 0;
 
-# -split section|chapter|none
-# if set to 'section' (resp. 'chapter') create one html file per (sub)section
-# (resp. chapter) and separate pages for Top, ToC, Overview, Index,
+# -split section|chapter|node|none
+# if set to 'section' (resp. 'chapter') create one html file per section
+# (resp. chapter), if set to 'node' create one html file per per node or 
+# sectionning element; separate pages for Top, ToC, Overview, Index,
 # Glossary, About.
 # Otherwise, create a monolithic html file that contains the whole document.
 #$T2H_SPLIT = 'section';
 $T2H_SPLIT = '';
 
-# -section_navigation|-no-section_navigation
+# -sec_nav|-nosec_nav
 # if set, then navigation panels are printed at the beginning of each section
 # and, possibly at the end (depending on whether or not there were more than
 # $T2H_WORDS_IN_PAGE  words on page
@@ -259,13 +260,6 @@ $T2H_WORDS_IN_PAGE = 300;
 # if this is set, then a vertical navigation panel is used
 $T2H_VERTICAL_HEAD_NAVIGATION = 0;
 
-@T2H_CHAPTER_BUTTONS =
-    (
-     'FastBack', 'FastForward', ' ',
-     ' ', ' ', ' ', ' ',
-     'Top', 'Contents', 'Index', 'About',
-    );
-
 # specify in this array which "buttons" should appear in which order
 # in the navigation panel for sections; use ' ' for empty buttons (space)
 @T2H_SECTION_BUTTONS =
@@ -277,6 +271,21 @@ $T2H_VERTICAL_HEAD_NAVIGATION = 0;
 
 # buttons for misc stuff
 @T2H_MISC_BUTTONS = ('Top', 'Contents', 'Index', 'About');
+
+# buttons for chapter file footers
+# (and headers but only if T2H_SECTION_NAVIGATION is false)
+@T2H_CHAPTER_BUTTONS =
+    (
+     'FastBack', 'FastForward', ' ',
+     ' ', ' ', ' ', ' ',
+     'Top', 'Contents', 'Index', 'About',
+    );
+
+# buttons for section file footers
+@T2H_SECTION_FOOTER_BUTTONS =
+    (
+     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
+    );
 
 $T2H_ICONS = 0;
 
@@ -293,6 +302,8 @@ $T2H_ICONS = 0;
      'Prev',        '',
      'Up',          '',
      'Next',        '',
+     'NodeUp',      '',
+     'Following',   '',
      'Forward',     '',
      'FastForward', '',
      'About' ,      '',
@@ -313,6 +324,8 @@ $T2H_ICONS = 0;
      'Prev',        '',
      'Up',          '',
      'Next',        '',
+     'NodeUp',      '',
+     'Following',   '',
      'Forward',     '',
      'FastForward', '',
      'About',       '',
@@ -333,6 +346,8 @@ $T2H_ICONS = 0;
      'Prev',        'Prev',
      'Up',          ' Up ',
      'Next',        'Next',
+     'NodeUp',      'node up',
+     'Following',   'following node',
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',
@@ -351,6 +366,8 @@ $T2H_ICONS = 0;
      'Prev',        'previous section on same level',
      'Up',          'up section',
      'Next',        'next section on same level',
+     'NodeUp',      'up node',
+     'Following',   'node following in node reading order',
      'Forward',     'next section in reading order',
      'FastForward', 'next chapter',
      'About' ,      'about (this page)',
@@ -395,9 +412,11 @@ $T2H_BODYTEXT = undef;
 # (all values are w.r.t. 'This' section)
 # Next        -- next node of texinfo
 # Prev        -- previous node of texinfo
-# Up          -- up node of texinfo
+# NodeUp      -- up node of texinfo
+# Following   -- following node in node reading order, taking menu into account
 # Forward     -- next node in reading order
 # Back        -- previous node in reading order
+# Up          -- parent given by sectionning commands
 # FastForward -- if leave node, up and next, else next node
 # FastBackward-- if leave node, up and prev, else prev node
 #
@@ -434,6 +453,7 @@ $T2H_print_About	      = \&T2H_DEFAULT_print_About;
 $T2H_print_misc_header	      = \&T2H_DEFAULT_print_misc_header;
 $T2H_print_misc_footer	      = \&T2H_DEFAULT_print_misc_footer;
 $T2H_print_misc		      = \&T2H_DEFAULT_print_misc;
+$T2H_print_section_footer     = \&T2H_DEFAULT_print_section_footer;
 $T2H_print_chapter_header     = \&T2H_DEFAULT_print_chapter_header;
 $T2H_print_chapter_footer     = \&T2H_DEFAULT_print_chapter_footer;
 $T2H_print_page_head	      = \&T2H_DEFAULT_print_page_head;
@@ -454,10 +474,17 @@ sub T2H_DEFAULT_print_section
 {
     my $fh = shift;
     my $buttons = \@T2H_SECTION_BUTTONS;
-    &$T2H_print_head_navigation($fh, $buttons) if $T2H_SECTION_NAVIGATION;
-    my $nw = t2h_print_lines($fh);
+    if ($T2H_SECTION_NAVIGATION)
+    {
+        &$T2H_print_head_navigation($fh, $buttons);
+    }
+    else
+    {
+        t2h_print_lines($fh, $T2H_THIS_HEADER);
+    }
+    my $nw = t2h_print_lines($fh); 
     if (defined $T2H_SPLIT
-        and ($T2H_SPLIT eq 'section' && $T2H_SECTION_NAVIGATION))
+        and (($T2H_SPLIT eq 'node') && $T2H_SECTION_NAVIGATION))
     {
         &$T2H_print_foot_navigation($fh, $buttons, $nw);
     }
@@ -572,6 +599,20 @@ sub T2H_DEFAULT_print_misc
     t2h_print_lines($fh);
     &$T2H_print_misc_footer($fh, $buttons);
 }
+##################################################################
+# section_footer is only called if T2H_SPLIT eq 'section'
+# section_footer: after print_section of last section, before print_page_foot
+#
+
+sub T2H_DEFAULT_print_section_footer
+{
+   my $fh = shift;
+   if ($T2H_SECTION_NAVIGATION)
+   {
+       my $buttons = \@T2H_SECTION_FOOTER_BUTTONS;
+       &$T2H_print_navigation($fh, $buttons);
+   }
+}
 
 ###################################################################
 # chapter_header and chapter_footer are only called if
@@ -676,7 +717,7 @@ EOT
 EOT
     }
     elsif (defined $T2H_SPLIT
-           and ($T2H_SPLIT eq 'section'))
+           and ($T2H_SPLIT eq 'node'))
     {
         print $fh "<hr size=\"1\">\n";
     }
@@ -741,6 +782,32 @@ sub T2H_DEFAULT_print_navigation
         {
             &$button($fh, $vertical);
         }
+        elsif (ref($button) eq 'SCALAR')
+        {
+            print $fh "$$button" if defined($$button);
+        }
+        elsif (ref($button) eq 'ARRAY')
+        {
+            my $text = $button->[1];
+            my $button_href = $button->[0];
+            if (defined($button_href) and !ref($button_href) 
+               and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
+            {             # use given text
+                if ($T2H_HREF{$button_href})
+                {
+                  print $fh "" .
+                        &$t2h_anchor('',
+                                    $T2H_HREF{$button_href},
+                                    $$text
+                                   ) 
+                                    ;
+                }
+                else
+                {
+                  print $fh $$text;
+                }
+            }
+        }
         elsif ($button eq ' ')
         {                       # handle space button
             print $fh
@@ -757,12 +824,12 @@ sub T2H_DEFAULT_print_navigation
             {                   # use icon
                 print $fh '' .
                     &$t2h_anchor('',
-                                $T2H_HREF{$button},
-                                &$T2H_button_icon_img($button,
-                                                    $T2H_ACTIVE_ICONS{$button},
-                                                      $T2H_NAME{$button}),
-                                $btitle
-                               );
+                        $T2H_HREF{$button},
+                        &$T2H_button_icon_img($button,
+                                             $T2H_ACTIVE_ICONS{$button},
+                                             $T2H_NAME{$button}),
+                        $btitle
+                      );
             }
             else
             {                   # use text
@@ -915,6 +982,8 @@ my %T2H_BUTTONS_EXAMPLE =
      'Prev',        '1.2.2',
      'Up',          '1.2',
      'Next',        '1.2.4',
+     'NodeUp',      '1.2',
+     'Following',   '1.2.4',
      'Forward',     '1.2.4',
      'FastForward', '2',
      'About',       ' &nbsp; ',
@@ -949,7 +1018,7 @@ EOT
 
     for my $button (@T2H_SECTION_BUTTONS)
     {
-        next if $button eq ' ' || ref($button) eq 'CODE';
+        next if $button eq ' ' || ref($button) eq 'CODE' || ref($button) eq 'SCALAR' || ref($button) eq 'ARRAY';
         $about .= "  <tr>\n    <td align=\"center\">";
         $about .=
             ($T2H_ICONS && $T2H_ACTIVE_ICONS{$button} ?

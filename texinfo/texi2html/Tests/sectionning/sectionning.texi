@@ -77,7 +77,7 @@ first node chapter text
 
 between node, node without sectionning node
 
-@node Second node,,,Top
+@node Second node,Third node unnumbered,,Top
 
 Second node text
 
@@ -91,7 +91,7 @@ second node chapter text.
 unnumbered chapter text.
 
 
-@node Last node no description,,,Top
+@node Last node no description,,Third node unnumbered,Top
 
 @contents
 @bye

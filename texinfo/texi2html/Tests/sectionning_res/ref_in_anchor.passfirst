@@ -1,0 +1,7 @@
+
+@node Top
+Top node
+
+anchor@{TOP@} @anchor{TOP @ref{Top}}.
+ref to TOP @@ref@{Top@}: @ref{TOP @ref{Top}}.
+
