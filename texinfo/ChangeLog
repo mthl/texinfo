@@ -1,3 +1,19 @@
+Fri Oct 31 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/xml.[ch]:
+	* makeinfo/insertion.c (handle_verbatim_environment): use
+	<![[CDATA...]]> for @verbatim in docbook output too.
+
+2003-10-31  Karl Berry  <karl@gnu.org>
+
+	* TODO: image scaling in html needed.
+	* makeinfo/cmds.c (cm_strong): only give the warning if we're
+	actually producing Info output.
+
+	* makeinfo/cmds.c (cm_strong): reword message and check for only
+	*Note:, not *Note:*.  From: Kevin Ryde <user42@zip.com.au>, 31 Oct
+	2003 06:19:05 +1000.
+
 2003-10-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Def Cmd Template): shorten.
