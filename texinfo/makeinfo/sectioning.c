@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.5 2002-11-08 02:16:48 karl Exp $
+   $Id: sectioning.c,v 1.6 2002-11-08 02:21:07 karl Exp $
 
    Copyright (C) 1999, 2001, 2002 Free Software Foundation, Inc.
 
@@ -428,7 +428,10 @@ sectioning_html (level, cmd)
                               output_paragraph + output_paragraph_offset);
       /* This must be added after toc_anchor is extracted, since
          toc_anchor cannot include the closing </a>.  For details,
-         see toc.c:toc_add_entry and toc.c:contents_update_html.  */
+         see toc.c:toc_add_entry and toc.c:contents_update_html.
+         
+         Also, the anchor close must be output before the section name
+         in case the name itself contains an anchor. */
       add_word ("</a>");
     }
   starting_pos = output_paragraph + output_paragraph_offset;
