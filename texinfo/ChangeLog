@@ -1,9 +1,9 @@
 2003-11-07  Karl Berry  <karl@gnu.org>
 
+	* bootstrap: nothing to do to bootstrap (I think).
+
 	* doc/Makefile.am (texinfo): remove the special rule, it seems to
 		be fixed.
-
-	* doc/Makefile.am: try commenting out special case for texinfo.
 
 	* Makefile.am (AUTOMAKE_OPTIONS): bump to 1.7.8.
 	* doc/version.texi, doc/version-stnd.texi: cvs add these again,
