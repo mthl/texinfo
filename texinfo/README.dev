@@ -1,4 +1,4 @@
-$Id: README.dev,v 1.3 2002-12-29 17:47:20 karl Exp $
+$Id: README.dev,v 1.4 2003-01-29 07:38:22 wl Exp $
 README.dev - Texinfo developer information.
 
   Copyright (C) 2002 Free Software Foundation, Inc.
@@ -18,14 +18,18 @@ Sometimes patches to them are necessary for Texinfo; such patches will
 be in the ./util subdirectory if they exist.
 
 Here's the order in which to run the tools for a fresh build:
-  autoheader   # creates config.in, not necessarily needed every time
-  aclocal      # for a new version of automake
+
+  autoheader    # creates config.in, not necessarily needed every time
+  aclocal -I m4 # for a new version of automake
   automake
   autoconf
   configure CFLAGS=-g
   make
 
-(with arguments to taste, of course.)  Or you can run autoreconf -fvi
+(with arguments to taste, of course.)  Or you can run
+
+  autoreconf -fvi -I m4
+
 instead of the various auto* tools.
 
 If you want to rebuild the man pages and other generated files, set
