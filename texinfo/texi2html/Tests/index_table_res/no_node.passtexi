@@ -45,4 +45,4 @@ no_node.texi(,45) @printindex cp
 no_node.texi(,46) Text of chapter
 no_node.texi(,47) @cindex Chapter2
 no_node.texi(,48) 
-no_node.texi(,49) 
+no_node.texi(,49) @bye

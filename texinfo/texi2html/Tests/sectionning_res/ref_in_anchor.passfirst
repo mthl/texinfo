@@ -6,4 +6,3 @@ ref_in_anchor.texi(,7)
 ref_in_anchor.texi(,8) anchor@{TOP@} @anchor{TOP @ref{Top}}.
 ref_in_anchor.texi(,9) ref to TOP @@ref@{Top@}: @ref{TOP @ref{Top}}.
 ref_in_anchor.texi(,10) 
-ref_in_anchor.texi(,11) 

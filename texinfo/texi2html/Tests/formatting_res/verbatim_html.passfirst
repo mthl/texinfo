@@ -71,7 +71,7 @@ verbatim_html.texi(,71)
 verbatim_html.texi(,72) 
 verbatim_html.texi(,73) 
 verbatim_html.texi(,74) A list with bullet
-verbatim_html.texi(,76) Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @item on the same line than item
+verbatim_html.texi(,76) Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} verbatim_html.texi(,76) @item on the same line than item
 verbatim_html.texi(,77) some text
 verbatim_html.texi(,78) @item
 verbatim_html.texi(,79) more text @end itemize
@@ -291,4 +291,3 @@ verbatim_html.texi(,320) after end example
 verbatim_html.texi(,321) 
 verbatim_html.texi(,322) 
 verbatim_html.texi(,323) 
-verbatim_html.texi(,324) 

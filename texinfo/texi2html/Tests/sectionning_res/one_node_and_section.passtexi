@@ -19,4 +19,4 @@ one_node_and_section.texi(,19) ref to ref @ref{ref}.
 one_node_and_section.texi(,20) 
 one_node_and_section.texi(,21) Some text@footnote{A footnote}.
 one_node_and_section.texi(,22) 
-one_node_and_section.texi(,23) 
+one_node_and_section.texi(,23) @bye

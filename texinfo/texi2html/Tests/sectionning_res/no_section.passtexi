@@ -15,12 +15,14 @@ no_section.texi(,15) @end menu
 no_section.texi(,16) 
 no_section.texi(,17) @node second node,,top,TOP
 no_section.texi(,18) second node (@@node second node,,top,TOP).
+no_section.texi(,19) @c anchor TOP: @anchor{TOP}.
 no_section.texi(,20) 
 no_section.texi(,21) @menu
 no_section.texi(,22) * other node::
 no_section.texi(,23) @end menu
 no_section.texi(,24) 
 no_section.texi(,25) @node other node,,,second node
+no_section.texi(,26) @c anchor top @anchor{top}.
 no_section.texi(,27) ref to TOP @ref{TOP}.
 no_section.texi(,28) 
-no_section.texi(,29) 
+no_section.texi(,29) @bye

@@ -23,4 +23,4 @@ tex.texi(,25)
 tex.texi(,26) Test of @@math
 tex.texi(,27) Here some @math{\frac{x^i}{\tan y}}.
 tex.texi(,28) 
-tex.texi(,29) 
+tex.texi(,29) @bye

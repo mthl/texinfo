@@ -1,3 +1,18 @@
+2003-11-25  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: format titlepage lines, resulting
+	text is put in $Texi2HTML::TITLEPAGE. Use a new function reference
+	$titlepage to finalize $Texi2HTML::TITLEPAGE.
+	titles, subtitles and authors are put in arrays in 
+	$Texi2HTML::THISDOC{'titles'} and so on...
+	All the skipped commands are kept for the second pass.
+	Handle @noindent and @exdent like other skipped commands. A new
+	type of skipped commands 'whitespace' with newline skipped
+	and 'space' no newline skipped.
+	change name of functions to default_`function'.
+
+	* examples/roff.init: add a roff formatter added.
+
 2003-11-20  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: Echoes error messages when loading

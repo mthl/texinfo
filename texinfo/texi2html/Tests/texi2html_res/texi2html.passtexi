@@ -1,7 +1,69 @@
+texi2html.texi(,2) @c
+texi2html.texi(,3) @c This is the ``Texinfo to HTML Converter'' manual which
+texi2html.texi(,4) @c which is part of the ``texi2html'' distribution.
+texi2html.texi(,5) @c
+texi2html.texi(,6) @c License:
+texi2html.texi(,7) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+texi2html.texi(,8) @c
+texi2html.texi(,9) @c    This program is free software; you can redistribute it
+texi2html.texi(,10) @c    and/or modify it under the terms of the GNU General Public
+texi2html.texi(,11) @c    License as published by the Free Software Foundation;
+texi2html.texi(,12) @c    either version 2 of the License, or (at your option) any
+texi2html.texi(,13) @c    later version.
+texi2html.texi(,14) @c
+texi2html.texi(,15) @c    This program is distributed in the hope that it will be
+texi2html.texi(,16) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+texi2html.texi(,17) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+texi2html.texi(,18) @c    PURPOSE.  See the GNU General Public License for more
+texi2html.texi(,19) @c    details.
+texi2html.texi(,20) @c
+texi2html.texi(,21) @c    You should have received a copy of the GNU General
+texi2html.texi(,22) @c    Public License along with this program; if not, write to
+texi2html.texi(,23) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+texi2html.texi(,24) @c    330, Boston, MA  02111-1307  USA
+texi2html.texi(,25) @c
+texi2html.texi(,26) @c
+texi2html.texi(,27) @c Revisions:
+texi2html.texi(,28) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+texi2html.texi(,29) @c
+texi2html.texi(,30) @c Author:
+texi2html.texi(,31) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+texi2html.texi(,32) @c
+texi2html.texi(,33) @c --------------------------------------------------------
+texi2html.texi(,34) @c
+texi2html.texi(,35) @c Currently most of the material is copied out of
+texi2html.texi(,36) @c texi2html.init file. It's just a start point.
+texi2html.texi(,37) @c In other words this is a draft manual ;-)
+texi2html.texi(,38) @c
 texi2html.texi(,39) @setfilename texi2html.info
+texi2html.texi(,40) @c --------------------------------------------------------
+texi2html.texi(,41) @c Edition and last update date of the manual which might
+texi2html.texi(,42) @c differ to the scripts last update date etc.
+texi2html.texi(,45) @c
+texi2html.texi(,48) @c
+texi2html.texi(,49) @c Get the version of the script itself through
+texi2html.texi(,50) @c configure/autoconf etc.
+texi2html.texi(,51) @c version.texi is automatically generated through
+texi2html.texi(,52) @c configure/autoconf.
 ./version.texi(,1) 
+texi2html.texi(,54) @c --------------------------------------------------------
+texi2html.texi(,55) @c Index for command line options
 texi2html.texi(,56) @defcodeindex op
+texi2html.texi(,57) @c --------------------------------------------------------
 texi2html.texi(,58) @settitle Texinfo to HTML
+texi2html.texi(,59) @c @setchapternewpage on
+texi2html.texi(,60) @setchapternewpage odd
+texi2html.texi(,61) @footnotestyle separate
+texi2html.texi(,65) @c --------------------------------------------------------
+texi2html.texi(,66) @c support old style Info Dir entries.
+texi2html.texi(,76) @c --------------------------------------------------------
+texi2html.texi(,77) @c Informations for install-info.
+texi2html.texi(,78) @c I think the conversion script should be found
+texi2html.texi(,79) @c where the documentation system lives.
+texi2html.texi(,80) @c What do you think?
+texi2html.texi(,81) @dircategory Texinfo documentation system
+texi2html.texi(,85) @c --------------------------------------------------------
+texi2html.texi(,119) @c --------------------------------------------------------
 texi2html.texi(,120) @titlepage
 texi2html.texi(,121) @title Texinfo to HTML Converter
 texi2html.texi(,122) @subtitle Manual Edition 0.21
@@ -12,7 +74,8 @@ texi2html.texi(,126) @author Karl Berry
 texi2html.texi(,127) @author Olaf Bachmann
 texi2html.texi(,128) @author and many others.
 texi2html.texi(,129) @author Karl Heinz Marbaise (manual)
-texi2html.texi(,130) 
+texi2html.texi(,130) @page
+texi2html.texi(,131) @vskip 0pt plus 1filll
 texi2html.texi(,132) Copyright @copyright{} Lionel Cons@*
 texi2html.texi(,133) Copyright @copyright{} Karl Berry@*
 texi2html.texi(,134) Copyright @copyright{} Olaf Bachmann@*
@@ -37,17 +100,30 @@ texi2html.texi(,152) by the Free Software Foundation.
 texi2html.texi(,153) @sp 2
 texi2html.texi(,154) Cover art by Etienne Suvasa.
 texi2html.texi(,155) @end titlepage
+texi2html.texi(,156) @c ========================================================
 texi2html.texi(,157) @summarycontents
 texi2html.texi(,158) @contents
+texi2html.texi(,159) @c
 texi2html.texi(,161) @node Top, Overview, (dir), (dir)
 texi2html.texi(,162) @top Texi2html
+texi2html.texi(,163) @c @page
+texi2html.texi(,164) @c ========================================================
+texi2html.texi(,165) @c @node Top, Overview, (dir), (dir)
+texi2html.texi(,166) @c @top
+texi2html.texi(,167) @c @chapter About
 texi2html.texi(,168) 
 texi2html.texi(,169) This Manual (Edition 0.21, last updated at
 texi2html.texi(,170) 14. August 2000) describes the @command{texi2html} Perl
 texi2html.texi(,171) script which converters
+texi2html.texi(,172) @c The following construct allows me to get
+texi2html.texi(,173) @c real URL link in HTML and working refs in
+texi2html.texi(,174) @c info.
 texi2html.texi(,176) @uref{http://www.texinfo.org,Texinfo}
 texi2html.texi(,181) into @acronym{HTML}.
 texi2html.texi(,182) 
+texi2html.texi(,183) @c @inforef{Top, Top, Texinfo} does not work yet ;-)
+texi2html.texi(,184) @c here we should paste a @inforef or @xref on the
+texi2html.texi(,185) @c Texinfo manual.
 texi2html.texi(,186) 
 texi2html.texi(,187) Please send bug reports about this manual to Karl Heinz
 texi2html.texi(,188) Marbaise @email{khmarbaise@@gmx.de}. Please state exact
@@ -60,6 +136,9 @@ texi2html.texi(,194) This manual is currently under
 texi2html.texi(,195) construction and of course incomplete ;-)
 texi2html.texi(,196) @end example
 texi2html.texi(,197) 
+texi2html.texi(,198) @c The following line within a menu does not work!
+texi2html.texi(,199) @c * Why texi2html and not Makeinfo?:whytexi2html.      Why texi2html and not makeinfo?.
+texi2html.texi(,289) @c ========================================================
 texi2html.texi(,290) @node Overview, HowToGetHTML, Top, Top
 texi2html.texi(,291) @chapter Overview about @command{texi2html}
 texi2html.texi(,292) @uref{http://www.texinfo.org,Texinfo} is the official
@@ -67,6 +146,7 @@ texi2html.texi(,293) documentation format of the @uref{http://www.gnu.org,GNU}
 texi2html.texi(,294) project. It uses a single source file to produce both
 texi2html.texi(,295) online information and printed output.
 texi2html.texi(,296) 
+texi2html.texi(,297) @c much thinking about ...
 texi2html.texi(,298) It is often proposed to have a way to produce
 texi2html.texi(,299) @acronym{HTML} from Texinfo sources, like the GNU-Info
 texi2html.texi(,300) format. It is much simpler to create one converter instead
@@ -85,6 +165,7 @@ texi2html.texi(,312) @menu
 texi2html.texi(,313) * HowToGetHTML::       Ways to get HTML files.
 texi2html.texi(,314) * whytexi2html::       Why texi2html and not makeinfo?.
 texi2html.texi(,315) @end menu
+texi2html.texi(,316) @c --------------------------------------------------------
 texi2html.texi(,317) @node HowToGetHTML, whytexi2html, Overview, Overview
 texi2html.texi(,318) @section Ways to get HTML
 texi2html.texi(,319) You would like to @acronym{HTML} files out of your Texinfo
@@ -93,6 +174,7 @@ texi2html.texi(,321) This first is to use @command{makeinfo} itself to produce
 texi2html.texi(,322) @acronym{HTML} output. The second is to use
 texi2html.texi(,323) @command{texi2html}.
 texi2html.texi(,324) 
+texi2html.texi(,325) @c --------------------------------------------------------
 texi2html.texi(,326) @node whytexi2html, Installation, HowToGetHTML, Overview
 texi2html.texi(,327) @section Why @file{texi2html} and not @file{makeinfo}?
 texi2html.texi(,328) The basic idea of @command{makeinfo}'s @acronym{HTML}
@@ -117,6 +199,7 @@ texi2html.texi(,346) times. This makes it impossible to implement this in
 texi2html.texi(,347) @command{makeinfo}. This would result in complete new
 texi2html.texi(,348) implementation of @command{makeinfo}'s source.
 texi2html.texi(,349) 
+texi2html.texi(,350) @c think more about this????
 texi2html.texi(,351) In contrast to the HTML produced by @command{makeinfo
 texi2html.texi(,352) --html} (the @command{makeinfo} program is part of the
 texi2html.texi(,353) Texinfo distribution), the HTML output of @file{texi2html}
@@ -130,6 +213,7 @@ texi2html.texi(,360) @command{texi2html} should reasonably convert all Texinfo
 texi2html.texi(,361) 4.0 constructs. If not, please send a bug report to
 texi2html.texi(,362) @email{texi2html@@mathematik.uni-kl.de}.
 texi2html.texi(,363) 
+texi2html.texi(,364) @c ========================================================
 texi2html.texi(,365) @node Installation, Customizing, whytexi2html, Top
 texi2html.texi(,366) @chapter Installation of @command{texi2html}
 texi2html.texi(,367) @cindex Installation
@@ -137,10 +221,13 @@ texi2html.texi(,368) description of the installation process.
 texi2html.texi(,369) What do you need?
 texi2html.texi(,370) How?
 texi2html.texi(,371) 
+texi2html.texi(,372) @c ========================================================
 texi2html.texi(,373) @node Customizing, CustomizingExpand, Installation, Top
 texi2html.texi(,374) @chapter Customizing files
 texi2html.texi(,375) @cindex Installation
 texi2html.texi(,376) @opindex frames
+texi2html.texi(,377) @c 4.) Customizing files to output
+texi2html.texi(,378) @c   ==> -out_file, -prefix, -subdir, -split, -frames etc
 texi2html.texi(,379) Result based on using @option{-frames}
 texi2html.texi(,380) 
 texi2html.texi(,381) @example
@@ -150,16 +237,56 @@ texi2html.texi(,384) Explanation of the output differences against default,
 texi2html.texi(,385) whatever this is ;-)
 texi2html.texi(,386) 
 texi2html.texi(,387) 
+texi2html.texi(,388) @c ========================================================
 texi2html.texi(,389) @node CustomizingExpand, CustomizingPage, Customizing, Top
 texi2html.texi(,390) @chapter Customizing what gets expanded
+texi2html.texi(,391) @c 5.) Customizing what gets expanded
+texi2html.texi(,392) @c   ==> -expand, and latex2html
 texi2html.texi(,393) Test starting.
 texi2html.texi(,394) 
 texi2html.texi(,395) @option{-expand info}
 texi2html.texi(,396) @option{-expand tex}
 texi2html.texi(,397) Take a look at optionexpand.
 texi2html.texi(,398) 
+texi2html.texi(,399) @c ========================================================
 texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,1) 
+./custpage.texi(,1) @c
+./custpage.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./custpage.texi(,3) @c which is part of the ``texi2html'' distribution.
+./custpage.texi(,4) @c
+./custpage.texi(,5) @c License:
+./custpage.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./custpage.texi(,7) @c
+./custpage.texi(,8) @c    This program is free software; you can redistribute it
+./custpage.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./custpage.texi(,10) @c    License as published by the Free Software Foundation;
+./custpage.texi(,11) @c    either version 2 of the License, or (at your option) any
+./custpage.texi(,12) @c    later version.
+./custpage.texi(,13) @c
+./custpage.texi(,14) @c    This program is distributed in the hope that it will be
+./custpage.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./custpage.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./custpage.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./custpage.texi(,18) @c    details.
+./custpage.texi(,19) @c
+./custpage.texi(,20) @c    You should have received a copy of the GNU General
+./custpage.texi(,21) @c    Public License along with this program; if not, write to
+./custpage.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./custpage.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./custpage.texi(,24) @c
+./custpage.texi(,25) @c
+./custpage.texi(,26) @c Revisions:
+./custpage.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./custpage.texi(,28) @c
+./custpage.texi(,29) @c Author:
+./custpage.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./custpage.texi(,31) @c
+./custpage.texi(,32) @c Description:
+./custpage.texi(,33) @c   Here are the informations about customizing page
+./custpage.texi(,34) @c   layout.
+./custpage.texi(,35) @c
+./custpage.texi(,36) @c ========================================================
 ./custpage.texi(,37) @chapter Customizing page layout
 ./custpage.texi(,38) This chapter is designed to help you to change the
 ./custpage.texi(,39) complete layout of the @acronym{HTML} output if you like to
@@ -182,6 +309,7 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,56) * CustPageSectionPages::    .
 ./custpage.texi(,57) * CustPageMiscPage::        .
 ./custpage.texi(,58) @end menu
+./custpage.texi(,59) @c --------------------------------------------------------
 ./custpage.texi(,60) @node TipsNewDesign,CustPagePhil,CustomizingPage,CustomizingPage
 ./custpage.texi(,61) @section Tips how to create a new site design
 ./custpage.texi(,62) 
@@ -189,21 +317,26 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,64) up a new design with @command{texi2html}.
 ./custpage.texi(,65) 
 ./custpage.texi(,66) 
+./custpage.texi(,67) @c --------------------------------------------------------
 ./custpage.texi(,68) @node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
 ./custpage.texi(,69) @section Page Layout and the philosophy
 ./custpage.texi(,70) 
 ./custpage.texi(,71) @menu
 ./custpage.texi(,72) * CustPagePhilNav:: Navigation panels.
 ./custpage.texi(,73) @end menu
+./custpage.texi(,74) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custpage.texi(,75) @node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
 ./custpage.texi(,76) @subsection Navigation panels
 ./custpage.texi(,77) 
 ./custpage.texi(,78) Head and foot Navigation panels.
 ./custpage.texi(,79) 
+./custpage.texi(,80) @c --------------------------------------------------------
 ./custpage.texi(,81) @node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
 ./custpage.texi(,82) @section Top Page
+./custpage.texi(,83) @c --------------------------------------------------------
 ./custpage.texi(,84) @node CustPageSectionPages,CustPageMiscPage,CustPageTopPage,CustomizingPage
 ./custpage.texi(,85) @section Section Pages
+./custpage.texi(,86) @c --------------------------------------------------------
 ./custpage.texi(,87) @node CustPageMiscPage,CustPagePageHeadToc,CustPageSectionPages,CustomizingPage
 ./custpage.texi(,88) @section Misc pages
 ./custpage.texi(,89) Here you can find information about the creation of the
@@ -220,6 +353,7 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,100) * CustPagePageFoot::    .
 ./custpage.texi(,101) @end menu
 ./custpage.texi(,102) 
+./custpage.texi(,103) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custpage.texi(,104) @node CustPagePageHeadToc,CustPagePageHead,CustPageMiscPage,CustPageMiscPage
 ./custpage.texi(,105) @subsection Table Of Contents
 ./custpage.texi(,106) 
@@ -244,10 +378,13 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,125) (@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
 ./custpage.texi(,126) 
 ./custpage.texi(,127) 
+./custpage.texi(,128) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custpage.texi(,129) @node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
 ./custpage.texi(,130) @subsection Page header
 ./custpage.texi(,131) Page Head @code{T2H_DEFAULT_print_page_head}
 ./custpage.texi(,132) 
+./custpage.texi(,133) @c references on T2H_DOCTYPE
+./custpage.texi(,134) @c               T2H_AUTHORS
 ./custpage.texi(,135) @example
 ./custpage.texi(,136) sub T2H_DEFAULT_print_page_head
 ./custpage.texi(,137) @{
@@ -277,12 +414,50 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,161) @}
 ./custpage.texi(,162) @end example
 ./custpage.texi(,163) 
+./custpage.texi(,164) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custpage.texi(,165) @node CustPagePageFoot, ,CustPagePageHead,CustPageMiscPage
 ./custpage.texi(,166) @subsection Page footer
 ./custpage.texi(,167) 
 ./custpage.texi(,168) Page Foot @code{T2H_DEFAULT_print_page_foot}
+texi2html.texi(,402) @c ========================================================
 texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,1) 
+./custhtml.texi(,1) @c
+./custhtml.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./custhtml.texi(,3) @c which is part of the ``texi2html'' distribution.
+./custhtml.texi(,4) @c
+./custhtml.texi(,5) @c License:
+./custhtml.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./custhtml.texi(,7) @c
+./custhtml.texi(,8) @c    This program is free software; you can redistribute it
+./custhtml.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./custhtml.texi(,10) @c    License as published by the Free Software Foundation;
+./custhtml.texi(,11) @c    either version 2 of the License, or (at your option) any
+./custhtml.texi(,12) @c    later version.
+./custhtml.texi(,13) @c
+./custhtml.texi(,14) @c    This program is distributed in the hope that it will be
+./custhtml.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./custhtml.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./custhtml.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./custhtml.texi(,18) @c    details.
+./custhtml.texi(,19) @c
+./custhtml.texi(,20) @c    You should have received a copy of the GNU General
+./custhtml.texi(,21) @c    Public License along with this program; if not, write to
+./custhtml.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./custhtml.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./custhtml.texi(,24) @c
+./custhtml.texi(,25) @c
+./custhtml.texi(,26) @c Revisions:
+./custhtml.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./custhtml.texi(,28) @c
+./custhtml.texi(,29) @c Author:
+./custhtml.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./custhtml.texi(,31) @c
+./custhtml.texi(,32) @c Description:
+./custhtml.texi(,33) @c   Here are the informations about customizing HTML
+./custhtml.texi(,34) @c   BODY, PRE- and AFTER Body.
+./custhtml.texi(,35) @c
+./custhtml.texi(,36) @c ========================================================
 ./custhtml.texi(,37) @chapter Customizing HTML
 ./custhtml.texi(,38) If you like to read the following section, it is assumed
 ./custhtml.texi(,39) you are famillar with @acronym{HTML}. If not, you shouldn't
@@ -298,6 +473,7 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,49) 
 ./custhtml.texi(,50) How to do changes of the customization...
 ./custhtml.texi(,51) needed steps.
+./custhtml.texi(,52) @c examples.
 ./custhtml.texi(,53) 
 ./custhtml.texi(,54) @menu
 ./custhtml.texi(,55) * CustHTMLBody::        Customizing BODY Text.
@@ -306,6 +482,7 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,58) * CustHTMLPreBodyText:: Customizing Head.
 ./custhtml.texi(,59) * CustHTMLAfterBody::   Customizing Head.
 ./custhtml.texi(,60) @end menu
+./custhtml.texi(,61) @c --------------------------------------------------------
 ./custhtml.texi(,62) @node CustHTMLBody,CustHTMLBodyText,,CustHTML
 ./custhtml.texi(,63) @section Body
 ./custhtml.texi(,64) 
@@ -314,6 +491,7 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,67) * CustHTMLPreBodyText:: PRE Body Text.
 ./custhtml.texi(,68) * CustHTMLAfterBody::   After Body Text.
 ./custhtml.texi(,69) @end menu
+./custhtml.texi(,70) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custhtml.texi(,71) @node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
 ./custhtml.texi(,72) @subsection Body Text
 ./custhtml.texi(,73) 
@@ -330,8 +508,10 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,84) If you like to change the basic color combination, you can
 ./custhtml.texi(,85) change the entry @var{T2H_BODYTEXT}.
 ./custhtml.texi(,86) 
+./custhtml.texi(,87) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custhtml.texi(,88) @node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
 ./custhtml.texi(,89) @subsection Body Text
+./custhtml.texi(,90) @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 ./custhtml.texi(,91) @node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
 ./custhtml.texi(,92) @subsection After Body Text
 ./custhtml.texi(,93) 
@@ -389,15 +569,55 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml-header.htmltexi(,19) $T2H_AFTER_BODY_OPEN
 ./custhtml.texi(,127) @end example
 ./custhtml.texi(,128) 
+./custhtml.texi(,129) @c --------------------------------------------------------
 ./custhtml.texi(,130) @node CustHTMLHead,,CustHTMLAfterBody,CustHTML
 ./custhtml.texi(,131) @section Head
+texi2html.texi(,405) @c ========================================================
 texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
 ./initfile.texi(,1) 
+./initfile.texi(,1) @c
+./initfile.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./initfile.texi(,3) @c which is part of the ``texi2html'' distribution.
+./initfile.texi(,4) @c
+./initfile.texi(,5) @c License:
+./initfile.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./initfile.texi(,7) @c
+./initfile.texi(,8) @c    This program is free software; you can redistribute it
+./initfile.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./initfile.texi(,10) @c    License as published by the Free Software Foundation;
+./initfile.texi(,11) @c    either version 2 of the License, or (at your option) any
+./initfile.texi(,12) @c    later version.
+./initfile.texi(,13) @c
+./initfile.texi(,14) @c    This program is distributed in the hope that it will be
+./initfile.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./initfile.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./initfile.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./initfile.texi(,18) @c    details.
+./initfile.texi(,19) @c
+./initfile.texi(,20) @c    You should have received a copy of the GNU General
+./initfile.texi(,21) @c    Public License along with this program; if not, write to
+./initfile.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./initfile.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./initfile.texi(,24) @c
+./initfile.texi(,25) @c
+./initfile.texi(,26) @c Revisions:
+./initfile.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./initfile.texi(,28) @c
+./initfile.texi(,29) @c Author:
+./initfile.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./initfile.texi(,31) @c
+./initfile.texi(,32) @c Description:
+./initfile.texi(,33) @c   Here you can find the description on the
+./initfile.texi(,34) @c   initialization files.
+./initfile.texi(,35) @c
+./initfile.texi(,36) @c ========================================================
 ./initfile.texi(,37) @chapter Initialization file
+./initfile.texi(,38) @c
 ./initfile.texi(,39) @cindex configure
 ./initfile.texi(,40) @cindex texi2html.init
 ./initfile.texi(,41) @cindex texi2htmlrc, global initialization
 ./initfile.texi(,42) @cindex .texi2htmlrc, user initialization
+./initfile.texi(,43) @c
 ./initfile.texi(,44) @opindex sysconfdir
 ./initfile.texi(,45) @opindex init_file
 ./initfile.texi(,46) @file{texi2html.init}
@@ -411,6 +631,7 @@ texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
 ./initfile.texi(,54) * InitFileLoad::       Loadable initialization file.
 ./initfile.texi(,55) @end menu
 ./initfile.texi(,56) 
+./initfile.texi(,57) @c --------------------------------------------------------
 ./initfile.texi(,58) @node InitFileBasics,InitFileGlobal,InitFile,InitFile
 ./initfile.texi(,59) @section The basics about init files
 ./initfile.texi(,60) 
@@ -439,18 +660,59 @@ texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
 ./initfile.texi(,83) @uref{http://www.singular.uni-kl.de/Manual/html/}
 ./initfile.texi(,84) 
 ./initfile.texi(,85) 
+./initfile.texi(,86) @c --------------------------------------------------------
 ./initfile.texi(,87) @node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
 ./initfile.texi(,88) @section Global initialization file
+./initfile.texi(,89) @c --------------------------------------------------------
 ./initfile.texi(,90) @node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
 ./initfile.texi(,91) @section User initialization file
+./initfile.texi(,92) @c --------------------------------------------------------
 ./initfile.texi(,93) @node InitFileLoad,,InitFileUser,InitFile
 ./initfile.texi(,94) @section Loadable initialization file
 ./initfile.texi(,95) @opindex init_file
 ./initfile.texi(,96) @option{-init_file}
 ./initfile.texi(,97) 
+./initfile.texi(,98) @c @ref{InitFile}
 ./initfile.texi(,99) 
+texi2html.texi(,408) @c --------------------------------------------------------
 texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,1) 
+./ifo.texi(,1) @c
+./ifo.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./ifo.texi(,3) @c which is part of the ``texi2html'' distribution.
+./ifo.texi(,4) @c
+./ifo.texi(,5) @c License:
+./ifo.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./ifo.texi(,7) @c
+./ifo.texi(,8) @c    This program is free software; you can redistribute it
+./ifo.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./ifo.texi(,10) @c    License as published by the Free Software Foundation;
+./ifo.texi(,11) @c    either version 2 of the License, or (at your option) any
+./ifo.texi(,12) @c    later version.
+./ifo.texi(,13) @c
+./ifo.texi(,14) @c    This program is distributed in the hope that it will be
+./ifo.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./ifo.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./ifo.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./ifo.texi(,18) @c    details.
+./ifo.texi(,19) @c
+./ifo.texi(,20) @c    You should have received a copy of the GNU General
+./ifo.texi(,21) @c    Public License along with this program; if not, write to
+./ifo.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./ifo.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./ifo.texi(,24) @c
+./ifo.texi(,25) @c
+./ifo.texi(,26) @c Revisions:
+./ifo.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./ifo.texi(,28) @c
+./ifo.texi(,29) @c Author:
+./ifo.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./ifo.texi(,31) @c
+./ifo.texi(,32) @c Description:
+./ifo.texi(,33) @c   Here you can find the description on the
+./ifo.texi(,34) @c   initialization files options.
+./ifo.texi(,35) @c
+./ifo.texi(,36) @c --------------------------------------------------------
 ./ifo.texi(,37) @section Initialization file options
 ./ifo.texi(,38) This section describes in detail all options that can be used
 ./ifo.texi(,39) only in the initialization file (@file{texi2html.init}),
@@ -473,6 +735,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,56) * IFOhrefDirInsteadFile:: HREF Dir Instead file.
 ./ifo.texi(,57) @end menu
 ./ifo.texi(,58) 
+./ifo.texi(,59) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,60) @node IFOnumber, IFOmenu, IFOs, IFOs
 ./ifo.texi(,61) @subsection Number sections.
 ./ifo.texi(,62) @vindex T2H_NUMBER_SECTIONS
@@ -482,8 +745,10 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,66) 
 ./ifo.texi(,67) @var{$T2H_NODE_NAME_IN_MENU} = 0;
 ./ifo.texi(,68) 
+./ifo.texi(,69) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,70) @node IFOmenu, IFOCenterImage, IFOnumber, IFOs
 ./ifo.texi(,71) @subsection Avoid menu redundancy
+./ifo.texi(,72) @c not sure if correct?
 ./ifo.texi(,73) @cindex menu, redundancy
 ./ifo.texi(,74) @vindex T2H_AVOID_MENU_REDUNDANCY
 ./ifo.texi(,75) If set, and menu entry equals menu description, then do not print
@@ -491,6 +756,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,77) not print entry name.
 ./ifo.texi(,78) @var{$T2H_AVOID_MENU_REDUNDANCY} = 1;
 ./ifo.texi(,79) 
+./ifo.texi(,80) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,81) @node IFOCenterImage, IFOExampleIndentCell, IFOmenu, IFOs
 ./ifo.texi(,82) @subsection Center Image
 ./ifo.texi(,83) @cindex images, center
@@ -499,6 +765,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,86) otherwise, do not center by default
 ./ifo.texi(,87) @var{$T2H_CENTER_IMAGE} = 1;
 ./ifo.texi(,88) 
+./ifo.texi(,89) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,90) @node IFOExampleIndentCell, IFOSampleIndentCell, IFOCenterImage, IFOs
 ./ifo.texi(,91) @subsection Example Indent Cell
 ./ifo.texi(,92) @cindex example, indentation
@@ -508,6 +775,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,96) @code{<td></td>}
 ./ifo.texi(,97) @var{$T2H_EXAMPLE_INDENT_CELL} = '<td>&nbsp;</td>';
 ./ifo.texi(,98) 
+./ifo.texi(,99) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,100) @node IFOSampleIndentCell, IFOSmallFontSize, IFOExampleIndentCell, IFOs
 ./ifo.texi(,101) @subsection Small Example Indent
 ./ifo.texi(,102) @cindex example, small indent
@@ -515,6 +783,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,104) same as above, only for @code{@@small}
 ./ifo.texi(,105) $T2H_SMALL_EXAMPLE_INDENT_CELL = "<td>&nbsp;</td>";
 ./ifo.texi(,106) 
+./ifo.texi(,107) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,108) @node IFOSmallFontSize, IFOTopHeading, IFOSampleIndentCell, IFOs
 ./ifo.texi(,109) @subsection Small Font Size
 ./ifo.texi(,110) @cindex Font Size, small
@@ -522,15 +791,19 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,112) # font size for @@small
 ./ifo.texi(,113) $T2H_SMALL_FONT_SIZE = "-1";
 ./ifo.texi(,114) 
+./ifo.texi(,115) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,116) @node IFOTopHeading, IFOIndexChapter, IFOSmallFontSize, IFOs
 ./ifo.texi(,117) @subsection Top Heading
 ./ifo.texi(,118) @vindex T2H_TOP_HEADING
 ./ifo.texi(,119) if non-empty, and no @code{@@..heading} appeared in Top
+./ifo.texi(,120) @c here should be a reference to Texinfo Manual
+./ifo.texi(,121) @c @@heading ??
 ./ifo.texi(,122) node, then use this as header for top node/section,
 ./ifo.texi(,123) otherwise use value of  @code{@@settitle} or
 ./ifo.texi(,124) @code{@@shorttitle} (in that order)
 ./ifo.texi(,125) $T2H_TOP_HEADING = "";
 ./ifo.texi(,126) 
+./ifo.texi(,127) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,128) @node IFOIndexChapter, IFOSplitIndex, IFOTopHeading, IFOs
 ./ifo.texi(,129) @subsection Index Chapter
 ./ifo.texi(,130) @cindex Chapter, Index
@@ -539,6 +812,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,133) use first chapter whose name matches @strong{index} (case insensitive)
 ./ifo.texi(,134) $T2H_INDEX_CHAPTER = "";
 ./ifo.texi(,135) 
+./ifo.texi(,136) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,137) @node IFOSplitIndex, IFOhrefDirInsteadFile, IFOIndexChapter, IFOs
 ./ifo.texi(,138) @subsection Split Index
 ./ifo.texi(,139) @cindex Index, split
@@ -549,16 +823,57 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,144) 
 ./ifo.texi(,145) $T2H_SPLIT_INDEX = 100;
 ./ifo.texi(,146) 
+./ifo.texi(,147) @c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ./ifo.texi(,148) @node IFOhrefDirInsteadFile, , IFOSplitIndex, IFOs
 ./ifo.texi(,149) @subsection HREF Dir Instead File.
+./ifo.texi(,150) @c Not very good? :-/
 ./ifo.texi(,151) @cindex HREF Dir instead file
 ./ifo.texi(,152) @vindex T2H_HREF_DIR_INSTEAD_FILE
 ./ifo.texi(,153) if set (e.g., to @file{index.html}) replace @strong{HREF}'s
 ./ifo.texi(,154) to this file  (i.e., to @file{index.html}) by @file{./}
 ./ifo.texi(,155) 
 ./ifo.texi(,156) $T2H_HREF_DIR_INSTEAD_FILE = "";
+texi2html.texi(,411) @c ========================================================
+texi2html.texi(,412) @c @include extfile.texi obsolete now, is not documented!
+texi2html.texi(,413) @c ========================================================
 texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,1) 
+./options.texi(,1) @c
+./options.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./options.texi(,3) @c which is part of the ``texi2html'' distribution.
+./options.texi(,4) @c
+./options.texi(,5) @c License:
+./options.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./options.texi(,7) @c
+./options.texi(,8) @c    This program is free software; you can redistribute it
+./options.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./options.texi(,10) @c    License as published by the Free Software Foundation;
+./options.texi(,11) @c    either version 2 of the License, or (at your option) any
+./options.texi(,12) @c    later version.
+./options.texi(,13) @c
+./options.texi(,14) @c    This program is distributed in the hope that it will be
+./options.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./options.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./options.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./options.texi(,18) @c    details.
+./options.texi(,19) @c
+./options.texi(,20) @c    You should have received a copy of the GNU General
+./options.texi(,21) @c    Public License along with this program; if not, write to
+./options.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./options.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./options.texi(,24) @c
+./options.texi(,25) @c
+./options.texi(,26) @c Revisions:
+./options.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./options.texi(,28) @c
+./options.texi(,29) @c Author:
+./options.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./options.texi(,31) @c
+./options.texi(,32) @c Description:
+./options.texi(,33) @c   Here you can find the description on the
+./options.texi(,34) @c   command line options.
+./options.texi(,35) @c
+./options.texi(,36) @c ========================================================
 ./options.texi(,37) @chapter Command Line Options
 ./options.texi(,38) 
 ./options.texi(,39) @menu
@@ -589,6 +904,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,64) @end menu
 ./options.texi(,65) 
 ./options.texi(,66) 
+./options.texi(,67) @c --------------------------------------------------------
 ./options.texi(,68) @node OptionDebug, OptionDocType, Options, Options
 ./options.texi(,69) @section Debugging
 ./options.texi(,70) @cindex Debugging
@@ -616,6 +932,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,92) @var{$DEBUG_USER}  = 64;
 ./options.texi(,93) @var{$DEBUG_L2H}   = 128;
 ./options.texi(,94) 
+./options.texi(,95) @c --------------------------------------------------------
 ./options.texi(,96) @node OptionDocType, OptionCheck, OptionDebug, Options
 ./options.texi(,97) @section DocType
 ./options.texi(,98) @cindex HTML, Doc Type
@@ -627,6 +944,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,104) <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 ./options.texi(,105) @end example
 ./options.texi(,106) 
+./options.texi(,107) @c --------------------------------------------------------
 ./options.texi(,108) @node OptionCheck, OptionExpand, OptionDocType, Options
 ./options.texi(,109) @section Check
 ./options.texi(,110) @cindex Texinfo, checking
@@ -636,6 +954,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,114) if set, only check files and give the list of all things
 ./options.texi(,115) that look like untranslated Texinfo commands
 ./options.texi(,116) 
+./options.texi(,117) @c --------------------------------------------------------
 ./options.texi(,118) @node OptionExpand, OptionGlossary, OptionCheck, Options
 ./options.texi(,119) @section Expand
 ./options.texi(,120) @opindex expand
@@ -646,7 +965,9 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,125) sections else, neither expand @code{@@iftex}, @code{@@tex},
 ./options.texi(,126) nor @code{@@ifinfo} sections
 ./options.texi(,127) 
+./options.texi(,128) @c $T2H_EXPAND = "info";
 ./options.texi(,129) 
+./options.texi(,130) @c --------------------------------------------------------
 ./options.texi(,131) @node OptionGlossary, OptionInvisible, OptionExpand, Options
 ./options.texi(,132) @section Glossary
 ./options.texi(,133) @cindex HTML, Glossary
@@ -656,6 +977,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,137) @option{-glossary}
 ./options.texi(,138) if set, uses section named @strong{Footnotes} for glossary
 ./options.texi(,139) 
+./options.texi(,140) @c --------------------------------------------------------
 ./options.texi(,141) @node OptionInvisible, OptionIso, OptionGlossary, Options
 ./options.texi(,142) @section Invisible
 ./options.texi(,143) @cindex Mark, invisible
@@ -677,6 +999,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,159) # $T2H_INVISIBLE_MARK = '&#160;';
 ./options.texi(,160) @end example
 ./options.texi(,161) 
+./options.texi(,162) @c --------------------------------------------------------
 ./options.texi(,163) @node OptionIso, OptionInclude, OptionInvisible, Options
 ./options.texi(,164) @section Iso
 ./options.texi(,165) @cindex ISO8859
@@ -690,6 +1013,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,173) 
 ./options.texi(,174) $T2H_USE_ISO = 0;
 ./options.texi(,175) 
+./options.texi(,176) @c --------------------------------------------------------
 ./options.texi(,177) @node OptionInclude, OptionTopFile, OptionIso, Options
 ./options.texi(,178) @section Include Directory
 ./options.texi(,179) @vindex Include directories
@@ -703,6 +1027,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,187) 
 ./options.texi(,188) @@T2H_INCLUDE_DIRS = (".");
 ./options.texi(,189) 
+./options.texi(,190) @c --------------------------------------------------------
 ./options.texi(,191) @node OptionTopFile, OptionTocFile, OptionInclude, Options
 ./options.texi(,192) @section Top File
 ./options.texi(,193) @cindex Top Level file
@@ -717,6 +1042,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,202) 
 ./options.texi(,203) $T2H_TOP_FILE = "";
 ./options.texi(,204) 
+./options.texi(,205) @c --------------------------------------------------------
 ./options.texi(,206) @node OptionTocFile, OptionFrames, OptionTopFile, Options
 ./options.texi(,207) @section Table Of content File
 ./options.texi(,208) @cindex Table of content file
@@ -729,6 +1055,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,215) 
 ./options.texi(,216) $T2H_TOC_FILE = "";
 ./options.texi(,217) 
+./options.texi(,218) @c --------------------------------------------------------
 ./options.texi(,219) @node OptionFrames, OptionMenu, OptionTocFile, Options
 ./options.texi(,220) @section Frames
 ./options.texi(,221) @vindex HTML, frames
@@ -741,6 +1068,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,228) 
 ./options.texi(,229) $T2H_FRAMES = 0;
 ./options.texi(,230) 
+./options.texi(,231) @c --------------------------------------------------------
 ./options.texi(,232) @node OptionMenu, OptionNumber, OptionFrames, Options
 ./options.texi(,233) @section Menus
 ./options.texi(,234) @cindex HTML, menu
@@ -753,6 +1081,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,241) 
 ./options.texi(,242) $T2H_SHOW_MENU = 1;
 ./options.texi(,243) 
+./options.texi(,244) @c --------------------------------------------------------
 ./options.texi(,245) @node OptionNumber, OptionSplit, OptionMenu, Options
 ./options.texi(,246) @section Number sections
 ./options.texi(,247) @cindex Section numbering
@@ -763,7 +1092,12 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,252) if set, number sections and show section names and numbers
 ./options.texi(,253) in references and menus
 ./options.texi(,254) 
+./options.texi(,255) @c Just think about it?
+./options.texi(,256) @c @defvar $T2H_NUMBER_SECTIONS
+./options.texi(,257) @c @c = 1;
+./options.texi(,258) @c @end defvar
 ./options.texi(,259) 
+./options.texi(,260) @c --------------------------------------------------------
 ./options.texi(,261) @node OptionSplit, OptionSectionNavigation, OptionNumber, Options
 ./options.texi(,262) @section Split
 ./options.texi(,263) @cindex HTML, split
@@ -780,6 +1114,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,274) #$T2H_SPLIT = 'section';
 ./options.texi(,275) $T2H_SPLIT = undef;
 ./options.texi(,276) 
+./options.texi(,277) @c --------------------------------------------------------
 ./options.texi(,278) @node OptionSectionNavigation, OptionSubDir, OptionSplit, Options
 ./options.texi(,279) @section Section navigation
 ./options.texi(,280) @cindex HTML, Navigation
@@ -796,7 +1131,12 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,291) if you do not want to have section navigation on
 ./options.texi(,292) @option{-split chapter}
 ./options.texi(,293) 
+./options.texi(,294) @c @vindex T2H_SECTION_NAVIGATION
+./options.texi(,295) @c @defvar $T2H_SECTION_NAVIGATION
+./options.texi(,296) @c = 1;
+./options.texi(,297) @c @end defvar
 ./options.texi(,298) 
+./options.texi(,299) @c --------------------------------------------------------
 ./options.texi(,300) @node OptionSubDir, OptionShortExt, OptionSectionNavigation, Options
 ./options.texi(,301) @section Subdirectory
 ./options.texi(,302) @cindex Subdirectory
@@ -805,8 +1145,10 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,305) If set, then put result files in the specified directory.
 ./options.texi(,306) If not set, then result files are put into the current directory.
 ./options.texi(,307) 
+./options.texi(,308) @c #$T2H_SUBDIR = 'html';
 ./options.texi(,309) @var{$T2H_SUBDIR} = undef;
 ./options.texi(,310) 
+./options.texi(,311) @c --------------------------------------------------------
 ./options.texi(,312) @node OptionShortExt, OptionPrefix, OptionSubDir, Options
 ./options.texi(,313) @section Short extension
 ./options.texi(,314) @cindex HTML, .htm extension
@@ -821,6 +1163,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,323) shipping the document to DOS-based systems.
 ./options.texi(,324) @var{$T2H_SHORTEXTN} = 0;
 ./options.texi(,325) 
+./options.texi(,326) @c --------------------------------------------------------
 ./options.texi(,327) @node OptionPrefix, OptionOutput, OptionShortExt, Options
 ./options.texi(,328) @section Prefix
 ./options.texi(,329) @cindex Prefix
@@ -833,6 +1176,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,336) 
 ./options.texi(,337) @var{$T2H_PREFIX} = "";
 ./options.texi(,338) 
+./options.texi(,339) @c --------------------------------------------------------
 ./options.texi(,340) @node OptionOutput, OptionShortRef, OptionPrefix, Options
 ./options.texi(,341) @section Output filename
 ./options.texi(,342) @cindex Output filename
@@ -845,6 +1189,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,349) If set, generate monolithic document output @acronym{HTML}
 ./options.texi(,350) into @file{filename}.
 ./options.texi(,351) 
+./options.texi(,352) @c --------------------------------------------------------
 ./options.texi(,353) @node OptionShortRef, OptionIndexSummary, OptionOutput, Options
 ./options.texi(,354) @section Short Cross References
 ./options.texi(,355) @cindex References, short
@@ -854,6 +1199,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,359) @option{-short_ref}
 ./options.texi(,360) if set cross-references are given without section numbers
 ./options.texi(,361) 
+./options.texi(,362) @c --------------------------------------------------------
 ./options.texi(,363) @node OptionIndexSummary, OptionVerbose, OptionShortRef, Options
 ./options.texi(,364) @section Index Summary
 ./options.texi(,365) @cindex Index, Summary
@@ -867,6 +1213,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,373) form @strong{$key\t$ref} sorted alphabetically (case
 ./options.texi(,374) matters).
 ./options.texi(,375) 
+./options.texi(,376) @c --------------------------------------------------------
 ./options.texi(,377) @node OptionVerbose, OptionLanguage, OptionIndexSummary, Options
 ./options.texi(,378) @section Verbose output
 ./options.texi(,379) @cindex Output, verbose
@@ -877,6 +1224,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,384) @option{-verbose}
 ./options.texi(,385) if set, chatter about what we are doing.
 ./options.texi(,386) 
+./options.texi(,387) @c --------------------------------------------------------
 ./options.texi(,388) @node OptionLanguage, OptionL2H, OptionVerbose, Options
 ./options.texi(,389) @section Language Support
 ./options.texi(,390) @cindex Language Support
@@ -893,9 +1241,25 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,401) 
 ./options.texi(,402) If you don't give a @option{-lang} then we got it from the
 ./options.texi(,403) Texinfo source file (@@documentlanguage
+./options.texi(,404) @c Put a table with the language codes here!
+./options.texi(,405) @c Or better put a reference into the Texinfo
+./options.texi(,406) @c Manual, which has a table of ISO 639-Codes.
+./options.texi(,407) @c
+./options.texi(,408) @c Currently the @xref etc. does not work with
+./options.texi(,409) @c external documents, cause we don't know
+./options.texi(,410) @c reference (anchor) value or there is no way
+./options.texi(,411) @c to get it.
+./options.texi(,412) @c The following reference does only work correctly
+./options.texi(,413) @c in Info!!!
 ./options.texi(,414) @pxref{documentlanguage,,,Texinfo}). If there is no
 ./options.texi(,415) @code{@@documentlanguage} we use the default @code{en} for
 ./options.texi(,416) the language.
+./options.texi(,417) @c
+./options.texi(,418) @c put some information about Month names etc. here
+./options.texi(,419) @c $MONTH_NAMES !!
+./options.texi(,420) @c Supplemental should be a naming scheme for variables in
+./options.texi(,421) @c different languages (MONTH_NAMES_DE etc.)
+./options.texi(,422) @c --------------------------------------------------------
 ./options.texi(,423) @node OptionL2H, , OptionLanguage, Options
 ./options.texi(,424) @section La@TeX{}2HTML for @code{@@math} and @code{@@tex}
 ./options.texi(,425) @cindex La@TeX{}2HTML
@@ -914,6 +1278,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,438) * OptionL2Htmp::    Temporary files for La@TeX{}2HTML.
 ./options.texi(,439) @end menu
 ./options.texi(,440) 
+./options.texi(,441) @c --------------------------------------------------------
 ./options.texi(,442) @node OptionL2HL2H, OptionL2HSkip, OptionL2H, OptionL2H
 ./options.texi(,443) @subsection Where to find @command{latex2html}
 ./options.texi(,444) @cindex location, La@TeX{}2HTML
@@ -923,6 +1288,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,448) @option{-l2h_l2h}
 ./options.texi(,449) name/location of @command{latex2html} program.
 ./options.texi(,450) 
+./options.texi(,451) @c --------------------------------------------------------
 ./options.texi(,452) @node OptionL2HSkip, OptionL2Htmp, OptionL2HL2H, OptionL2H
 ./options.texi(,453) @subsection Skip calling La@TeX{}2HTML
 ./options.texi(,454) @cindex La@TeX{}2HTML, skip calling
@@ -932,6 +1298,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,458) If set, skips actual call to @command{latex2html}: tries to
 ./options.texi(,459) reuse previously generated content, instead.
 ./options.texi(,460) 
+./options.texi(,461) @c --------------------------------------------------------
 ./options.texi(,462) @node OptionL2Htmp, , OptionL2HSkip, OptionL2H
 ./options.texi(,463) @subsection Temporary files for La@TeX{}2HTML
 ./options.texi(,464) @cindex Temporary, La@TeX{}2HTML
@@ -942,8 +1309,45 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,469) If set, l2h uses this directory for temporary files.  The
 ./options.texi(,470) path leading to this directory may not contain a dot (i.e.,
 ./options.texi(,471) a @samp{.}); otherwise, l2h will fail.
+texi2html.texi(,416) @c ========================================================
 texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,1) 
+./reference.texi(,1) @c
+./reference.texi(,2) @c This file is part of the ``Texinfo to HTML Converter'' manual
+./reference.texi(,3) @c which is part of the ``texi2html'' distribution.
+./reference.texi(,4) @c
+./reference.texi(,5) @c License:
+./reference.texi(,6) @c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+./reference.texi(,7) @c
+./reference.texi(,8) @c    This program is free software; you can redistribute it
+./reference.texi(,9) @c    and/or modify it under the terms of the GNU General Public
+./reference.texi(,10) @c    License as published by the Free Software Foundation;
+./reference.texi(,11) @c    either version 2 of the License, or (at your option) any
+./reference.texi(,12) @c    later version.
+./reference.texi(,13) @c
+./reference.texi(,14) @c    This program is distributed in the hope that it will be
+./reference.texi(,15) @c    useful, but WITHOUT ANY WARRANTY; without even the implied
+./reference.texi(,16) @c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+./reference.texi(,17) @c    PURPOSE.  See the GNU General Public License for more
+./reference.texi(,18) @c    details.
+./reference.texi(,19) @c
+./reference.texi(,20) @c    You should have received a copy of the GNU General
+./reference.texi(,21) @c    Public License along with this program; if not, write to
+./reference.texi(,22) @c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+./reference.texi(,23) @c    330, Boston, MA  02111-1307  USA
+./reference.texi(,24) @c
+./reference.texi(,25) @c
+./reference.texi(,26) @c Revisions:
+./reference.texi(,27) @c $Id: texi2html.passtexi,v 1.4 2003-11-25 10:35:28 pertusus Exp $
+./reference.texi(,28) @c
+./reference.texi(,29) @c Author:
+./reference.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+./reference.texi(,31) @c
+./reference.texi(,32) @c Description:
+./reference.texi(,33) @c   Here you can find the description on all
+./reference.texi(,34) @c   subs in the original Perl file.
+./reference.texi(,35) @c
+./reference.texi(,36) @c ========================================================
 ./reference.texi(,37) @appendix Function Reference
 ./reference.texi(,38) 
 ./reference.texi(,39) @menu
@@ -951,6 +1355,11 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,41) * Refpphead::              Print page head.
 ./reference.texi(,42) @end menu
 ./reference.texi(,43) 
+./reference.texi(,44) @c Global variables:
+./reference.texi(,45) @c T2H_USER which is created throught main part
+./reference.texi(,46) @c (texi2html.pl)
+./reference.texi(,47) @c You can use it. (On Windows? On Unix ?)
+./reference.texi(,48) @c --------------------------------------------------------
 ./reference.texi(,49) @node Refptocframe,Refpphead,,Reference
 ./reference.texi(,50) @appendixsec Print ToC Frame
 ./reference.texi(,51) 
@@ -962,6 +1371,7 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,57) @end defun
 ./reference.texi(,58) 
 ./reference.texi(,59) 
+./reference.texi(,60) @c --------------------------------------------------------
 ./reference.texi(,61) @node Refpphead,,Refptocframe,Reference
 ./reference.texi(,62) @appendixsec Print Page Head
 ./reference.texi(,63) @defun T2H_DEFAULT_print_page_head (FileName)
@@ -969,14 +1379,20 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,65) Description of the subroutine.
 ./reference.texi(,66) What does it do? Which parameters it needs etc.
 ./reference.texi(,67) @end defun
+texi2html.texi(,419) @c ========================================================
+texi2html.texi(,420) @c commandline option index.
 texi2html.texi(,421) @node Indexop, Indexvr, Reference, Top
 texi2html.texi(,422) @appendix Indices
 texi2html.texi(,423) @appendixsec Command Line Option Index
 texi2html.texi(,424) @printindex op
+texi2html.texi(,425) @c --------------------------------------------------------
 texi2html.texi(,426) @node Indexvr, Indexcp, Indexop, Top
 texi2html.texi(,427) @appendixsec Variable Index
 texi2html.texi(,428) @printindex vr
+texi2html.texi(,429) @c --------------------------------------------------------
 texi2html.texi(,430) @node Indexcp, , Indexvr, Top
 texi2html.texi(,431) @appendixsec Concept Index
 texi2html.texi(,432) @printindex cp
-texi2html.texi(,435) 
+texi2html.texi(,433) @c printindex init file options dito.
+texi2html.texi(,434) @c concept index.
+texi2html.texi(,435) @bye

@@ -17,4 +17,4 @@ first_section_no_node.texi(,17) @section second
 first_section_no_node.texi(,18) 
 first_section_no_node.texi(,19) second node
 first_section_no_node.texi(,20) 
-first_section_no_node.texi(,21) 
+first_section_no_node.texi(,21) @bye

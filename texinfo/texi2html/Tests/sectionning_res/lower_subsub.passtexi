@@ -44,4 +44,4 @@ lower_subsub.texi(,44) @subsubsection Lowered subsubsection
 lower_subsub.texi(,45) @raisesections
 lower_subsub.texi(,46) 
 lower_subsub.texi(,47) @contents
-lower_subsub.texi(,48) 
+lower_subsub.texi(,48) @bye

@@ -39,5 +39,7 @@ pass0_macros.texi(,39) @defindex chose    machin
 pass0_macros.texi(,40) after
 pass0_macros.texi(,41) 
 pass0_macros.texi(,42) @trucindex index truc
+pass0_macros.texi(,43) @c @choseindex index
+pass0_macros.texi(,44) @c @machinindex machin
 pass0_macros.texi(,45) 
-pass0_macros.texi(,46) Before bye 
+pass0_macros.texi(,46) Before bye @bye

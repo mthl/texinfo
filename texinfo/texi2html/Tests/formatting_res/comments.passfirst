@@ -3,15 +3,15 @@ comments.texi(,3) @node Top
 comments.texi(,4) @top
 comments.texi(,5) @subheading Comment like:
 comments.texi(,6) 
-comments.texi(,10) Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+comments.texi(,10) Text line followed by a comment on the same line and another below comments.texi(,10) Text line after the comment followed by a comment comments.texi(,10) Text line after the text line followed by the comment.
 comments.texi(,11) 
 comments.texi(,12) Example with comments 2 lines
 comments.texi(,13) @example 
-comments.texi(,16) line second line @end example
+comments.texi(,16) line comments.texi(,16) second line comments.texi(,16) @end example
 comments.texi(,17) 
 comments.texi(,18) Example with comments 1 line
 comments.texi(,19) @example
-comments.texi(,21) line @end example
+comments.texi(,21) line comments.texi(,21) @end example
 comments.texi(,22) 
 comments.texi(,23) No comments
 comments.texi(,24) @example
@@ -19,10 +19,10 @@ comments.texi(,25) line
 comments.texi(,26) @end example
 comments.texi(,27) 
 comments.texi(,28) The same but with oddfooting instead of comment:
-comments.texi(,32) Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+comments.texi(,32) Text line followed by a comment on the same line and another below comments.texi(,32) Text line after the comment followed by a comment comments.texi(,32) Text line after the text line followed by the comment.
 comments.texi(,33) 
-comments.texi(,47) @@afourpaper @@smallbook @@headings @@oddfooting @@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading @@need @@setchapternewpage @@raisesections comments.texi(,47) @@lowersections comments.texi(,47) @@kbdinputstyle code something
-comments.texi(,52) @@afourpaper @@afourlatex @@afourwide 
+comments.texi(,47) @@afourpaper comments.texi(,47) @@smallbook comments.texi(,47) @@headings comments.texi(,47) @@oddfooting comments.texi(,47) @@everyheading comments.texi(,47) @@everyfooting comments.texi(,47) @@evenheading comments.texi(,47) @@evenfooting comments.texi(,47) @@oddheading comments.texi(,47) @@need comments.texi(,47) @@setchapternewpage comments.texi(,47) @@raisesections comments.texi(,47) @@lowersections comments.texi(,47) @@kbdinputstyle code something
+comments.texi(,52) @@afourpaper comments.texi(,52) @@afourlatex comments.texi(,52) @@afourwide comments.texi(,52) 
 comments.texi(,54) @@definfoenclose phoo,//,\\  
 comments.texi(,55) //bar\\
 comments.texi(,56) 
@@ -41,7 +41,7 @@ comments.texi(,70)
 comments.texi(,71) Commands doesn't accept anything after a non numerical arg on the line
 comments.texi(,72) and ignore things after a numerical arg
 comments.texi(,73) 
-comments.texi(,82) @@paragraphindent asis @@paragraphindent 0 @@paragraphindent none @@paragraphindent 4 @@firstparagraphindent none @@exampleindent 6 @@footnotestyle @@footnotestyle 
+comments.texi(,82) @@paragraphindent asis comments.texi(,82) @@paragraphindent 0 comments.texi(,82) @@paragraphindent none comments.texi(,82) @@paragraphindent 4 comments.texi(,82) @@firstparagraphindent none comments.texi(,82) @@exampleindent 6 comments.texi(,82) @@footnotestyle comments.texi(,82) @@footnotestyle comments.texi(,82) 
 comments.texi(,89) 
 comments.texi(,90) @subheading command removed
 comments.texi(,91) 
@@ -55,17 +55,17 @@ comments.texi(,98) Test text after finalout
 comments.texi(,99)  a word after finalout
 comments.texi(,100) Line after finalout
 comments.texi(,101) 
-comments.texi(,102) @@page  @@noindent  @@refill  something
+comments.texi(,102) @@page  @@noindent @@refill  something
 comments.texi(,103) 
 comments.texi(,104) noindent at beginning of line
-comments.texi(,105)   
+comments.texi(,105) 
 comments.texi(,106) noindent on the preceding line
 comments.texi(,107)   noindent after space at beginning of line
 comments.texi(,108)          page at beginning of line
 comments.texi(,109) 
 comments.texi(,110) After page on it's own line.
 comments.texi(,111) 
-comments.texi(,112) @@page    @@noindent     @@refill  @@novalidate  something
+comments.texi(,112) @@page    @@noindent @@refill  @@novalidate  something
 comments.texi(,113) 
 comments.texi(,114) @@contents  something
 comments.texi(,115) 
@@ -75,7 +75,7 @@ comments.texi(,124)
 comments.texi(,125) Only valid between iftex:
 comments.texi(,127) Unknown ???
 comments.texi(,129) 
-comments.texi(,130) @@exdent  line after exdent
+comments.texi(,130) @@exdent line after exdent
 comments.texi(,131) 
 comments.texi(,132) And now sp:
 comments.texi(,133) Text line followed by a comment on the same line and another below @sp 1
@@ -119,4 +119,3 @@ comments.texi(,170) @chapter last
 comments.texi(,171) 
 comments.texi(,173) @ref{machin}
 comments.texi(,174) 
-comments.texi(,175) 

@@ -45,7 +45,8 @@ my @known_languages = ('en', 'de', 'nl', 'es', 'no', 'pt', 'fr'); # The supporte
 #my $template = 'template';
 my $template = 'en';
 my $template_file = "$i18n_dir/$template";
-my @source_files = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm');
+my @source_files = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm', 
+ 'examples/roff.init', 'examples/noheaders.init');
 
 our $LANGUAGES; 
 

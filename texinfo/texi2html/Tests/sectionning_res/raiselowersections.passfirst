@@ -16,7 +16,7 @@ raiselowersections.texi(,18)
 raiselowersections.texi(,20) 
 raiselowersections.texi(,22) 
 ./section_file.texi(,1) 
-./section_file.texi(,2) \input texinfo 
+./section_file.texi(,2) \input texinfo ./section_file.texi(,2) 
 ./section_file.texi(,11) 
 ./section_file.texi(,12) @node Chapter in included file
 ./section_file.texi(,13) @chapter Chapter in included file
@@ -44,4 +44,3 @@ raiselowersections.texi(,32)
 raiselowersections.texi(,33) Second chapter
 raiselowersections.texi(,34) 
 raiselowersections.texi(,35) 
-raiselowersections.texi(,36) 

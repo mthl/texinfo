@@ -22,4 +22,3 @@ no_section.texi(,24)
 no_section.texi(,25) @node other node,,,second node
 no_section.texi(,27) ref to TOP @ref{TOP}.
 no_section.texi(,28) 
-no_section.texi(,29) 

@@ -9,6 +9,10 @@ imbrications.texi(,9) @menu
 imbrications.texi(,10) * First node::    node 1
 imbrications.texi(,11) * name:Second node.    node 2
 imbrications.texi(,12) @end menu
+imbrications.texi(,13) @c * node in table::
+imbrications.texi(,14) @c * node in example::
+imbrications.texi(,15) @c * node in flushright::
+imbrications.texi(,16) @c *node in defun -> bug
 imbrications.texi(,17) @node First node
 imbrications.texi(,18) @chapter first node chapter
 imbrications.texi(,19) 
@@ -29,6 +33,9 @@ imbrications.texi(,42)
 imbrications.texi(,43) @menu
 imbrications.texi(,44) * node within defun menu::
 imbrications.texi(,45) @end menu
+imbrications.texi(,46) @c makeinfo accepts the following but cannot properly close defun
+imbrications.texi(,47) @c @node node within defun menu
+imbrications.texi(,48) @c @section within menu
 imbrications.texi(,49) 
 imbrications.texi(,50) end of the function
 imbrications.texi(,51) @end deffn
@@ -39,9 +46,13 @@ imbrications.texi(,55)
 imbrications.texi(,56) 
 imbrications.texi(,57) @table @bullet
 imbrications.texi(,58) @item item
+imbrications.texi(,59) @c @node node in table
+imbrications.texi(,60) @c @chapter in table
 imbrications.texi(,61) @end table
 imbrications.texi(,62) 
 imbrications.texi(,63) @example
+imbrications.texi(,64) @c @node node in example
+imbrications.texi(,65) @c @chapter example
 imbrications.texi(,66) 
 imbrications.texi(,67) an example
 imbrications.texi(,68) @end example
@@ -77,6 +88,8 @@ imbrications.texi(,108) @flushright
 imbrications.texi(,109) 
 imbrications.texi(,110) is the text
 imbrications.texi(,111) flushed right ?
+imbrications.texi(,112) @c @node node in flushright
+imbrications.texi(,113) @c @chapter flushright
 imbrications.texi(,114) 
 imbrications.texi(,115) 
 imbrications.texi(,116) @end flushright
@@ -202,4 +215,4 @@ imbrications.texi(,235) @unnumberedsubsec
 imbrications.texi(,236) 
 imbrications.texi(,237) 
 imbrications.texi(,238) @contents
-imbrications.texi(,239) 
+imbrications.texi(,239) @bye

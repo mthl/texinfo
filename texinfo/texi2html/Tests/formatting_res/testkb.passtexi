@@ -1,9 +1,13 @@
 testkb.texi(,2) @setfilename testkb.info
 testkb.texi(,3) @documentlanguage de
 testkb.texi(,4) @documentencoding ASCII
+testkb.texi(,5) @setchapternewpage on
+testkb.texi(,6) @footnotestyle separate
+testkb.texi(,7) @c
 testkb.texi(,11) @titlepage
 testkb.texi(,12) @title Test for @@def stuff
 testkb.texi(,13) @end titlepage
+testkb.texi(,14) @c ----------------------------------------------------------------------------
 testkb.texi(,15) @node Top,Overview,,(dir)
 testkb.texi(,16) @chapter Test 1
 testkb.texi(,17) Hier kann eine Erkl@"arung zum Thema stehen oder auch nicht.
@@ -11,6 +15,7 @@ testkb.texi(,18) Noch mehr erkl@"arungen zu dem Thema.
 testkb.texi(,19) @menu
 testkb.texi(,20) * Overview::.       Methode four.
 testkb.texi(,21) @end menu
+testkb.texi(,22) @c ----------------------------------------------------------------------------
 testkb.texi(,23) @node Overview,,Top,Top
 testkb.texi(,24) @chapter Class
 testkb.texi(,25) Here you can read many things I need for this documentation.
@@ -196,4 +201,4 @@ testkb.texi(,204) @printindex ky
 testkb.texi(,205) @appendixsec Var Index
 testkb.texi(,206) @printindex vr
 testkb.texi(,207) @contents
-testkb.texi(,208) 
+testkb.texi(,208) @bye

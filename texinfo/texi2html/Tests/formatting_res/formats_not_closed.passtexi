@@ -44,4 +44,4 @@ formats_not_closed.texi(,44) @deffn truc bidule machin
 formats_not_closed.texi(,45) @deffnx truc chose args
 formats_not_closed.texi(,46) @defvar type1 var bidule
 formats_not_closed.texi(,47) 
-formats_not_closed.texi(,48) 
+formats_not_closed.texi(,48) @bye

@@ -1,3 +1,9 @@
+nodetest_for_makeinfo.texi(,2) @c
+nodetest_for_makeinfo.texi(,3) @c It is not possible to test for @,{c} in 
+nodetest_for_makeinfo.texi(,4) @c nodename cause makeinfo can not
+nodetest_for_makeinfo.texi(,5) @c handle cedilla's in node names. A cedilla
+nodetest_for_makeinfo.texi(,6) @c has a comma which was recognized a as
+nodetest_for_makeinfo.texi(,7) @c delimiter between node parts (next,previous etc.)
 nodetest_for_makeinfo.texi(,8) @setfilename nodetest_for_makeinfo.info
 nodetest_for_makeinfo.texi(,9) @node Top,Umlaut,(dir)
 nodetest_for_makeinfo.texi(,10) @top
@@ -15,6 +21,7 @@ nodetest_for_makeinfo.texi(,21) * tilde accent::         tilde accent.
 nodetest_for_makeinfo.texi(,22) * cedilla accent::       cedilla accent.
 nodetest_for_makeinfo.texi(,23) * rest::                 rest @@aa@{@} etc.
 nodetest_for_makeinfo.texi(,24) @end menu
+nodetest_for_makeinfo.texi(,25) @c
 nodetest_for_makeinfo.texi(,26) @node Umlaut,,Top,Top
 nodetest_for_makeinfo.texi(,27) @chapter Umlaut
 nodetest_for_makeinfo.texi(,28) @menu
@@ -34,6 +41,7 @@ nodetest_for_makeinfo.texi(,41) * @"U::    @"U.
 nodetest_for_makeinfo.texi(,42) * @ss{}::    @ss{}.
 nodetest_for_makeinfo.texi(,43) * no section::  Node without sectioning command.
 nodetest_for_makeinfo.texi(,44) @end menu
+nodetest_for_makeinfo.texi(,45) @c
 nodetest_for_makeinfo.texi(,46) @node @"a,,,Umlaut
 nodetest_for_makeinfo.texi(,47) @section @"a
 nodetest_for_makeinfo.texi(,48) ref to @m_cedilla{c} @ref{cedilla}.
@@ -82,6 +90,7 @@ nodetest_for_makeinfo.texi(,90) @node @ss{},,,Umlaut
 nodetest_for_makeinfo.texi(,91) @section @ss{}
 nodetest_for_makeinfo.texi(,92) @node no section,,,Umlaut
 nodetest_for_makeinfo.texi(,93) This is a node without sectioning command.
+nodetest_for_makeinfo.texi(,94) @c
 nodetest_for_makeinfo.texi(,95) @node acute accent,,Top,Top
 nodetest_for_makeinfo.texi(,96) @chapter acute accent
 nodetest_for_makeinfo.texi(,97) @menu
@@ -98,6 +107,7 @@ nodetest_for_makeinfo.texi(,107) * @'O::    @'O.
 nodetest_for_makeinfo.texi(,108) * @'U::    @'U.
 nodetest_for_makeinfo.texi(,109) * @'Y::    @'Y.
 nodetest_for_makeinfo.texi(,110) @end menu
+nodetest_for_makeinfo.texi(,111) @c
 nodetest_for_makeinfo.texi(,112) @node @'a,,,acute accent
 nodetest_for_makeinfo.texi(,113) @section @'a
 nodetest_for_makeinfo.texi(,114) With brace @'{a}. Testing ' " ` ^.
@@ -127,6 +137,7 @@ nodetest_for_makeinfo.texi(,137) This is a ref to @"u (@pxref{@"u, ,@"u}).
 nodetest_for_makeinfo.texi(,138) Another one, with node only (@pxref{@"a, ,}).
 nodetest_for_makeinfo.texi(,139) 
 nodetest_for_makeinfo.texi(,143) 
+nodetest_for_makeinfo.texi(,144) @c
 nodetest_for_makeinfo.texi(,145) @node grave accent,,Top,Top
 nodetest_for_makeinfo.texi(,146) @chapter grave accent
 nodetest_for_makeinfo.texi(,147) @menu
@@ -143,6 +154,7 @@ nodetest_for_makeinfo.texi(,157) * @`I::    @`I.
 nodetest_for_makeinfo.texi(,158) * @`O::    @`O.
 nodetest_for_makeinfo.texi(,159) * @`U::    @`U.
 nodetest_for_makeinfo.texi(,160) @end menu
+nodetest_for_makeinfo.texi(,161) @c
 nodetest_for_makeinfo.texi(,162) @node @`a,,,grave accent
 nodetest_for_makeinfo.texi(,163) @section @`a
 nodetest_for_makeinfo.texi(,164) @node @`e,,,grave accent
@@ -167,6 +179,7 @@ nodetest_for_makeinfo.texi(,182) @node @`O,,,grave accent
 nodetest_for_makeinfo.texi(,183) @section @`O
 nodetest_for_makeinfo.texi(,184) @node @`U,,,grave accent
 nodetest_for_makeinfo.texi(,185) @section @`U
+nodetest_for_makeinfo.texi(,186) @c
 nodetest_for_makeinfo.texi(,187) @node circumflex accent,,Top,Top
 nodetest_for_makeinfo.texi(,188) @chapter circumflex accent
 nodetest_for_makeinfo.texi(,189) @menu
@@ -183,6 +196,7 @@ nodetest_for_makeinfo.texi(,199) * @^I::    @^I.
 nodetest_for_makeinfo.texi(,200) * @^O::    @^O.
 nodetest_for_makeinfo.texi(,201) * @^U::    @^U.
 nodetest_for_makeinfo.texi(,202) @end menu
+nodetest_for_makeinfo.texi(,203) @c
 nodetest_for_makeinfo.texi(,204) @node @^a,,,circumflex accent
 nodetest_for_makeinfo.texi(,205) @section @^a
 nodetest_for_makeinfo.texi(,206) @node @^e,,,circumflex accent
@@ -209,6 +223,7 @@ nodetest_for_makeinfo.texi(,226) @node @^O,,,circumflex accent
 nodetest_for_makeinfo.texi(,227) @section @^O
 nodetest_for_makeinfo.texi(,228) @node @^U,,,circumflex accent
 nodetest_for_makeinfo.texi(,229) @section @^U
+nodetest_for_makeinfo.texi(,230) @c
 nodetest_for_makeinfo.texi(,231) @node tilde accent,,Top,Top
 nodetest_for_makeinfo.texi(,232) @chapter tilde accent
 nodetest_for_makeinfo.texi(,233) @menu
@@ -218,6 +233,7 @@ nodetest_for_makeinfo.texi(,236) * @~o::    @~o.
 nodetest_for_makeinfo.texi(,237) * @~A::    @~A.
 nodetest_for_makeinfo.texi(,238) * @~O::    @~O.
 nodetest_for_makeinfo.texi(,239) @end menu
+nodetest_for_makeinfo.texi(,240) @c
 nodetest_for_makeinfo.texi(,241) @node @~a,,,tilde accent
 nodetest_for_makeinfo.texi(,242) @section @~a
 nodetest_for_makeinfo.texi(,243) @node @~n,,,tilde accent
@@ -230,16 +246,19 @@ nodetest_for_makeinfo.texi(,249) @node @~O,,,tilde accent
 nodetest_for_makeinfo.texi(,250) @section @~O
 nodetest_for_makeinfo.texi(,251) This marks the @anchor{x-spot}spot.
 nodetest_for_makeinfo.texi(,252) A second one with accented char @anchor{@'o-o}.
+nodetest_for_makeinfo.texi(,253) @c
 nodetest_for_makeinfo.texi(,254) @node cedilla accent,,Top,Top
 nodetest_for_makeinfo.texi(,255) @chapter cedilla accent
 nodetest_for_makeinfo.texi(,256) @menu
 nodetest_for_makeinfo.texi(,257) * cedilla ::    @m_cedilla{c}.
 nodetest_for_makeinfo.texi(,258) * Cedilla ::    @m_cedilla{C}.
 nodetest_for_makeinfo.texi(,259) @end menu
+nodetest_for_makeinfo.texi(,260) @c
 nodetest_for_makeinfo.texi(,261) @node cedilla,,,cedilla accent
 nodetest_for_makeinfo.texi(,262) @section @m_cedilla{c}
 nodetest_for_makeinfo.texi(,263) @node Cedilla ,,,cedilla accent
 nodetest_for_makeinfo.texi(,264) @section @m_cedilla{C}
+nodetest_for_makeinfo.texi(,265) @c
 nodetest_for_makeinfo.texi(,266) @node rest,,Top,Top
 nodetest_for_makeinfo.texi(,267) @chapter rest
 nodetest_for_makeinfo.texi(,268) @menu
@@ -265,6 +284,7 @@ nodetest_for_makeinfo.texi(,287) * @dotless{i}::  @dotless{i} dotless i.
 nodetest_for_makeinfo.texi(,288) * i:: i
 nodetest_for_makeinfo.texi(,289) * @dotless{j}::  @dotless{j} dotless j.
 nodetest_for_makeinfo.texi(,290) @end menu
+nodetest_for_makeinfo.texi(,291) @c
 nodetest_for_makeinfo.texi(,292) @node @aa{},,,rest
 nodetest_for_makeinfo.texi(,293) @section @aa{}
 nodetest_for_makeinfo.texi(,294) @node @ae{},,,rest
@@ -334,4 +354,4 @@ nodetest_for_makeinfo.texi(,357) @node node,,,(dir)
 nodetest_for_makeinfo.texi(,358) @node @^{E},,,(dor)
 nodetest_for_makeinfo.texi(,359) 
 nodetest_for_makeinfo.texi(,360) @contents
-nodetest_for_makeinfo.texi(,361) 
+nodetest_for_makeinfo.texi(,361) @bye

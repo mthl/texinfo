@@ -28,4 +28,4 @@ nodes_before_top.texi(,28) second node
 nodes_before_top.texi(,29) 
 nodes_before_top.texi(,30) 
 nodes_before_top.texi(,31) 
-nodes_before_top.texi(,32) 
+nodes_before_top.texi(,32) @bye

@@ -14,4 +14,4 @@ double_top.texi(,14) second node (@@node top,,ToP,Top).
 double_top.texi(,15) anchor@{TOP@} @anchor{TOP}.
 double_top.texi(,16) ref to TOP: @ref{TOP}.
 double_top.texi(,17) 
-double_top.texi(,18) 
+double_top.texi(,18) @bye

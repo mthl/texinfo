@@ -16,4 +16,4 @@ one_section.texi(,16) ref to ref @ref{ref}.
 one_section.texi(,17) 
 one_section.texi(,18) Some text.
 one_section.texi(,19) 
-one_section.texi(,20) 
+one_section.texi(,20) @bye

@@ -17,4 +17,4 @@ one_node.texi(,17) ref to ref @ref{ref}.
 one_node.texi(,18) 
 one_node.texi(,19) Some text.
 one_node.texi(,20) 
-one_node.texi(,21) 
+one_node.texi(,21) @bye

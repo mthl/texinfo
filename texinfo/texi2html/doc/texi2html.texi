@@ -2039,11 +2039,7 @@ For more on internationalization, see @ref{Internationalization}.
 
 @cindex skipped command
 
-The ignored commands are the keys of two hashes: @variable{%to_skip_texi}
-for commands skipped during the first pass (expansion of macros and values)
-and @variable{%to_skip} for the commands skipped during the second pass
-(determination of the document structure).
-
+The ignored commands are the keys of a hashe: @variable{%to_skip}
 The associated value determines how things following the ignored
 command are handled. There are four possibilities:
 
@@ -2051,11 +2047,13 @@ command are handled. There are four possibilities:
 @item @code{1}
 only the command is ignored,
 @item @code{space}
-spaces following the command are skipped,
+spaces (but no new line) following the command are skipped,
 @item @code{arg}
 an argument following the command is skipped,
 @item @code{line}
-The line following the command is skipped.
+The line following the command is skipped,
+@item @code{whitespace}
+spaces and new lines following the command are skipped.
 @end table
 
 @c --------------------------------------------------------

@@ -51,4 +51,4 @@ split_chapter_index.texi(,51) In subsection 1
 split_chapter_index.texi(,52) 
 split_chapter_index.texi(,53) @cindex printindex subsection 2
 split_chapter_index.texi(,54) 
-split_chapter_index.texi(,55) 
+split_chapter_index.texi(,55) @bye

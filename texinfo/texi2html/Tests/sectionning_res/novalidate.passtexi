@@ -31,4 +31,4 @@ novalidate.texi(,31) @chapter a chapter
 novalidate.texi(,32) 
 novalidate.texi(,33) second node
 novalidate.texi(,34) 
-novalidate.texi(,35) 
+novalidate.texi(,35) @bye

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.85 2003-11-22 21:21:41 pertusus Exp $
+# $Id: texi2html.pl,v 1.86 2003-11-25 10:35:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -270,6 +270,7 @@ our $about_body;
 our $print_frame;
 our $print_toc_frame;
 our $toc_body;
+our $titlepage;
 our $css_lines;
 our $print_redirection_page;
 
@@ -341,7 +342,6 @@ our %things_map;
 our %pre_map;
 our %iso_symbols;
 our %to_skip;
-our %to_skip_texi;
 our %css_map;
 our %special_list_commands;
 our %accent_letters;
@@ -695,7 +695,7 @@ $index_properties =
 	      'unnumberedsubsubsec', 4,
 	      'subsubheading', 4,
 	      'appendixsubsubsec', 4,
-             );
+         );
 
 # the reverse mapping. There is an entry for each sectionning command.
 # The value is a ref on an array containing at each index the corresponding
@@ -735,11 +735,6 @@ $sec2level{'majorheading'} = 1;
 $sec2level{'chapheading'} = 1;
 # this one could be centered...
 $sec2level{'centerchap'} = 1;
-
-#foreach my $command (keys(%level2sec))
-#{
-#   print STDERR "$command: $level2sec{$command}, @{$level2sec{$command}}\n";
-#}
 
 #
 # This map is used when texi elements are removed and replaced 
@@ -795,7 +790,7 @@ $sec2level{'centerchap'} = 1;
                #'questiondown', '&iquest;',
                'pounds', 'pound sterling'
                #'pounds', '&pound;'
-              );
+            );
 
 
 # a hash associating a format @thing / @end thing with the type of the format
@@ -2808,35 +2803,45 @@ sub skip_texi($$$)
     if ($macro eq 'bye')
     {
         $state->{'bye'} = 1;
-        $line = "\n";
+        $line = "";
         $text = "\@$macro\n";
     }
     elsif ($macro eq 'end')
     {
-        if ($line =~ /^\s+(\w+)/o and $Texi2HTML::Config::to_skip_texi{"end $1"})
+        if ($line =~ /^\s+(\w+)/o and $Texi2HTML::Config::to_skip{"end $1"})
         {
             $line =~ s/^(\s+\w+\s*)//o;
             $text = "\@$macro" . $1;
         }
         
     }
-    elsif ($Texi2HTML::Config::to_skip_texi{$macro} eq 'arg')
+    elsif ($Texi2HTML::Config::to_skip{$macro} eq 'arg')
     {
         $line =~ s/(\s+\S*)//o;
         $text = "\@$macro" . $1;
     }
-    elsif ($Texi2HTML::Config::to_skip_texi{$macro} eq 'line')
+    elsif ($Texi2HTML::Config::to_skip{$macro} eq 'line')
     {
         $text = "\@$macro" . $line;
         $line = '';
         #chomp $line;
     }
-    elsif ($Texi2HTML::Config::to_skip_texi{$macro} eq 'space')
+    elsif ($Texi2HTML::Config::to_skip{$macro} eq 'whitespace')
     {
         $line =~ s/(\s*)//o;
         $text = "\@$macro" . $1;
     }
-    $line = undef if (!defined($line) or $line eq '');
+    elsif ($Texi2HTML::Config::to_skip{$macro} eq 'space')
+    {
+        $line =~ s/([ \t]*)//o;
+        $text = "\@$macro" . $1;
+    }
+    else
+    {
+        $text = "\@$macro";
+    }
+    #$line = undef if (!defined($line) or $line eq '');
+    $line = '' if (!defined($line));
     return ($line, $text);
 }
 
@@ -2871,6 +2876,7 @@ sub initialise_state_structure($)
 
 my @doc_lines = ();         # whole document
 my @documentdescription_lines = ();   # documentdescription lines
+my @titlepage_lines = ();   # titlepage lines
 my @doc_numbers = ();       # whole document line numbers and file names
 my @nodes_list = ();        # nodes in document reading order
                             # each member is a reference on a hash
@@ -2947,10 +2953,13 @@ sub pass_structure()
                 if (@stack and $tag eq 'node' or defined($sec2level{$tag}))
                 {
                     close_stack(\$text, \@stack, $state, $line_nr);
-                    next if ($state->{'titlepage'});
                     if ($state->{'documentdescription'})
                     {
                         push @documentdescription_lines, split_lines ($text);
+                    }
+                    elsif ($state->{'titlepage'})
+                    {
+                        push @titlepage_lines, split_lines ($text);
                     }
                     else
                     {
@@ -3152,10 +3161,14 @@ sub pass_structure()
                     push @{$elements_list[-1]->{'index_names'}}, { 'name' => $1, 'place' => $placed_elements };
                     $state->{'place'} = $placed_elements;
                 }
-                next if ($state->{'titlepage'});
+                #next if ($state->{'titlepage'});
                 if ($state->{'documentdescription'})
                 {
                     push @documentdescription_lines, $_;
+                }
+                elsif ($state->{'titlepage'})
+                {
+                    push @titlepage_lines, $_;
                 }
                 else
                 {
@@ -3172,10 +3185,14 @@ sub pass_structure()
         next if (@stack);
         $_ = $text;
         $text = '';
-        next if ($state->{'titlepage'} or !defined($_));
+        next if (!defined($_));
         if ($state->{'documentdescription'})
         {
             push @documentdescription_lines, split_lines ($_);
+        }
+        elsif ($state->{'titlepage'})
+        {
+            push @titlepage_lines, split_lines ($_);
         }
         else
         {
@@ -3271,6 +3288,10 @@ sub skip($$$)
         #chomp $line;
     }
     elsif ($Texi2HTML::Config::to_skip{$macro} eq 'space')
+    {
+        $line =~ s/[ \t]*//o;
+    } 
+    elsif ($Texi2HTML::Config::to_skip{$macro} eq 'whitespace')
     {
         $line =~ s/\s*//o;
     } 
@@ -4895,6 +4916,7 @@ sub pass_text()
 
     for my $key (keys %Texi2HTML::THISDOC)
     {
+        next if (ref($Texi2HTML::THISDOC{$key}));
         $Texi2HTML::THISDOC{$key} =~ s/\s*$//;
     }
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
@@ -4906,6 +4928,19 @@ sub pass_text()
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 
     $Texi2HTML::THISDOC{'toc_file'} = $docu_toc if ($Texi2HTML::Config::SPLIT); 
+    $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
+    $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
+    $Texi2HTML::THISDOC{'titles'} = [] if (!defined($Texi2HTML::THISDOC{'titles'}));
+    foreach my $element (('authors', 'subtitles', 'titles'))
+    {
+        my $i;
+        for ($i = 0; $i < $#{$Texi2HTML::THISDOC{$element}} + 1; $i++) 
+        {
+            chomp ($Texi2HTML::THISDOC{$element}->[$i]);
+            $Texi2HTML::THISDOC{$element}->[$i] = substitute_line($Texi2HTML::THISDOC{$element}->[$i]);
+            #print STDERR "$element:$i: $Texi2HTML::THISDOC{$element}->[$i]\n";
+        }
+    }
     # prepare TOC, OVERVIEW
     if ($Texi2HTML::Config::SPLIT)
     {
@@ -4946,6 +4981,10 @@ sub pass_text()
          'Footnotes', &$I('Footnotes'),
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
+    $Texi2HTML::TITLEPAGE = '';
+    $Texi2HTML::TITLEPAGE = substitute_text({}, @titlepage_lines)
+        if (@titlepage_lines);
+    &$Texi2HTML::Config::titlepage();
 
     ############################################################################
     # print frame and frame toc file
@@ -6936,27 +6975,6 @@ sub scan_texi($$$$;$)
     
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
-    #print STDERR "SCAN_TEXI: $line";
-    if (!$state->{'raw'} and !$state->{'macro'} and !$state->{'verb'} and !$state->{'ignored'} and !$state->{'macro_name'} and !$state->{'arg_expansion'})
-    {
-        # noindent at beginning of line is special, it removes spaces, but 
-        # no new lines. Same for exdent 
-        my $next_tag = next_tag($_);
-        if ($next_tag eq 'noindent' or $next_tag eq 'exdent')
-        { # FIXME exdent should be handled differently
-            unless (/^\s*\@$next_tag\s*$/)
-            {
-                s/^(\s*)\@$next_tag\s*/$1/;
-            }
-        }
-        elsif ((/^\@(\w+)\s/o and $Texi2HTML::Config::to_skip_texi{$1}) or (/^\@(\w+)$/o and $Texi2HTML::Config::to_skip_texi{$1}) or (/^\@end\s+(\w+)\s/o and $Texi2HTML::Config::to_skip_texi{"end $1"}) or (/^\@end\s+(\w+)$/o and $Texi2HTML::Config::to_skip_texi{"end $1"}))
-        {
-            s/^\@$next_tag//;
-            my $line;
-            ($_, $line) = skip_texi($_, $next_tag, $state);
-            return unless (defined($_));
-        }
-    }
 
     while(1)
     {
@@ -6970,12 +6988,12 @@ sub scan_texi($$$$;$)
             {
                  delete $state->{'ignored'};
                  #dump_stack($text, $stack, $state);
-	# MACRO_ARG => keep ignored text
-		 if ($state->{'arg_expansion'})
-		 {
-		     add_prev ($text, $stack, $1);
-		     next;
-		 }
+                 # MACRO_ARG => keep ignored text
+                 if ($state->{'arg_expansion'})
+                 {
+                     add_prev ($text, $stack, $1);
+                     next;
+                 }
                  return if /^\s*$/o;
                  next;
             }
@@ -7217,12 +7235,11 @@ sub scan_texi($$$$;$)
             add_prev($text, $stack, $1);
             my $macro = $2;
             #print STDERR "MACRO $macro\n";
-            if ($Texi2HTML::Config::to_skip_texi{$macro})
+            if ($Texi2HTML::Config::to_skip{$macro})
             {
                  my $line;
                  ($_, $line) = skip_texi($_, $macro, $state);
-                 add_prev ($text, $stack, $line) if ($state->{'arg_expansion'});
-                 return unless (defined($_));
+                 add_prev ($text, $stack, $line); 
                  next;
             }
             # pertusus: it seems that value substitution are performed after
@@ -7744,14 +7761,17 @@ sub scan_structure($$$$;$)
             elsif($macro eq 'author' and  s/^\s+(.*)$//)
             {
                  $value{'_author'}   .= substitute_texi_line($1)."\n";
+                 push @{$Texi2HTML::THISDOC{'authors'}}, substitute_texi_line($1);
             }
             elsif($macro eq 'subtitle' and s/^\s+(.*)$//)
             {
                  $value{'_subtitle'} .= substitute_texi_line($1)."\n";
+                 push @{$Texi2HTML::THISDOC{'subtitles'}}, substitute_texi_line($1);
             }
             elsif($macro eq 'title' and s/^\s+(.*)$//)
             {
                 $value{'_title'}    .= substitute_texi_line($1)."\n";
+                push @{$Texi2HTML::THISDOC{'titles'}}, substitute_texi_line($1);
             }
             else
             {
@@ -8253,8 +8273,8 @@ sub scan_line($$$$;$)
 
     while(1)
     {
-    #print STDERR "WHILE: $_";
-    #dump_stack($text, $stack, $state);
+        #print STDERR "WHILE: $_";
+        #dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
         {
@@ -9605,11 +9625,11 @@ sub close_stack($$$$;$$)
     }
     
     #debugging
-    my $print_format = 'NO FORMAT';
-    $print_format = $format if ($format);
-    my $print_close_paragraph = 'close everything';
-    $print_close_paragraph = 'close paragraph without duplicating' if (defined($close_paragraph));
-    $print_close_paragraph = $close_paragraph if ($close_paragraph);
+    #my $print_format = 'NO FORMAT';
+    #$print_format = $format if ($format);
+    #my $print_close_paragraph = 'close everything';
+    #$print_close_paragraph = 'close paragraph without duplicating' if (defined($close_paragraph));
+    #$print_close_paragraph = $close_paragraph if ($close_paragraph);
     #print STDERR "Close_stack: format $print_format, close_paragraph: $print_close_paragraph\n";
     
     while ($stack_level--)

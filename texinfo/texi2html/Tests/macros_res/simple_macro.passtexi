@@ -217,4 +217,4 @@ simple_macro.texi(,234)
 simple_macro.texi(,235) ==================================
 simple_macro.texi(,236) 
 simple_macro.texi(,237) @contents
-simple_macro.texi(,238) 
+simple_macro.texi(,238) @bye

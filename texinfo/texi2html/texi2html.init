@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.55 2003-11-22 21:21:41 pertusus Exp $
+# $Id: texi2html.init,v 1.56 2003-11-25 10:35:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -564,6 +564,7 @@ sub t2h_default_set_body_text()
 # $Texi2HTML::THIS_HEADER   -- lines preceding navigation panel of 'This' section
 # $Texi2HTML::OVERVIEW      -- lines of short table of contents
 # $Texi2HTML::TOC_LINES     -- lines of table of contents
+# $Texi2HTML::TITLEPAGE     -- lines of title page
 ## FIXME: $T2H_TOP           -- lines of Top texinfo node
 
 #
@@ -596,6 +597,7 @@ $about_body		      = \&T2H_DEFAULT_about_body;
 $print_frame              = \&T2H_DEFAULT_print_frame;
 $print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
 #$toc_body                 = \&T2H_DEFAULT_toc_body;
+$titlepage                 = \&T2H_DEFAULT_titlepage;
 $css_lines                 = \&T2H_DEFAULT_css_lines;
 $print_redirection_page   = \&T2H_DEFAULT_print_redirection_page;
 
@@ -684,28 +686,19 @@ sub T2H_DEFAULT_print_Top
         #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
         print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
             unless ($has_top_heading);
-        $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION)
+        $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
     {
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview
-        print $fh
-            "<div align=\"center\">\n<h1>",
-                join("</h1>\n<h1>", split(/\n/,  $Texi2HTML::THISDOC{fulltitle})),
-                    "</h1>\n";
-        print $fh "<h2>$Texi2HTML::THISDOC{subtitle}</h2>\n"
-          if $Texi2HTML::THISDOC{subtitle};
-        print $fh "$Texi2HTML::THISDOC{author}\n" if $Texi2HTML::THISDOC{author};
-        print $fh <<EOT;
-</div>
-$DEFAULT_RULE
-<p></p>
-EOT
-        print $fh '<h2> ' . &$I('Overview') . ": </h2>\n"
-             . "<blockquote>\n";
-        $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
-        print $fh "</blockquote>\n";
+        print $fh $Texi2HTML::TITLEPAGE;
+        if (@{$Texi2HTML::OVERVIEW})
+        {
+             print $fh '<h2> ' . &$I('Overview:') . "</h2>\n" . "<blockquote>\n";
+             my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
+             print $fh "</blockquote>\n";
+        }
     }
     &$print_Top_footer($fh, $buttons);
 }
@@ -1288,6 +1281,32 @@ EOT
     return $about;
 }
 
+sub T2H_DEFAULT_titlepage()
+{
+    my $result = '';
+    if (@{$Texi2HTML::THISDOC{'titles'}} 
+        or @{$Texi2HTML::THISDOC{'subtitles'}} 
+        or @{$Texi2HTML::THISDOC{'authors'}})
+    {     
+        $result = "<div align=\"center\">\n";
+        foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
+        {
+            $result .= '<h1>' . $title . "</h1>\n";
+        }    
+        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
+        {
+            $result .= '<h2>' . $title . "</h2>\n";
+        }
+        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
+        {
+            $result .= $title . "<br>\n";
+        }
+        $result .= "</div>\n$DEFAULT_RULE\n";
+    }
+
+    $Texi2HTML::TITLEPAGE = $result . $Texi2HTML::TITLEPAGE;
+}
+
 # i18n
 sub T2H_DEFAULT_print_redirection_page($)
 {
@@ -1453,10 +1472,10 @@ $pre_map{'enddots'} = '....';
       'cite',       'cite',
       'code',       'code',
       'command',    'code',
-      'ctrl',       '&ctrl', 
+      'ctrl',       '&default_ctrl', 
       'dfn',        'em', 
       'dmn',        '',   
-      'email',      '&email', 
+      'email',      '&default_email', 
       'emph',       'em',
       'env',        'code',
       'file',       '"tt', 
@@ -1467,25 +1486,25 @@ $pre_map{'enddots'} = '....';
       'option',     '"samp', 
       'r',          '',
       'samp',       '"samp', 
-      'sc',         '&sc',
+      'sc',         '&default_sc',
       'strong',     'strong',
       't',          'tt',
-      'uref',       '&uref',
-      'url',        '&url',
+      'uref',       '&default_uref',
+      'url',        '&default_url',
       'var',        'var',
       'verb',       'tt',
-      'titlefont',  '&titlefont',
+      'titlefont',  '&default_titlefont',
       'w',          '',
-      'H',          '&accent',
-      'dotaccent',  '&accent',
-      'ringaccent', '&accent',
-      'tieaccent',  '&accent',
-      'u',          '&accent',
-      'ubaraccent', '&accent',
-      'udotaccent', '&accent',
-      'v',          '&accent',
-      ',',          '&accent',
-      'dotless',    '&accent'
+      'H',          '&default_accent',
+      'dotaccent',  '&default_accent',
+      'ringaccent', '&default_accent',
+      'tieaccent',  '&default_accent',
+      'u',          '&default_accent',
+      'ubaraccent', '&default_accent',
+      'udotaccent', '&default_accent',
+      'v',          '&default_accent',
+      ',',          '&default_accent',
+      'dotless',    '&default_accent'
      );
 
 #FIXME texinfo uses dotaccent, ringaccent, v with 'o'
@@ -1516,10 +1535,10 @@ $pre_map{'enddots'} = '....';
 
 foreach my $accent (keys(%accent_map))
 {
-    $style_map{$accent} = '&accent';
+    $style_map{$accent} = '&default_accent';
 }
 
-sub accent($$)
+sub default_accent($$)
 {
     my $text = shift;
     my $accent = shift;
@@ -1548,22 +1567,22 @@ sub accent($$)
     return $text . ',' if ($accent eq ','); 
 }
 
-sub sc($$)
+sub default_sc($$)
 {
     return '<small>' . uc($_[0]) . '</small>';
 }
 
-sub ctrl($$)
+sub default_ctrl($$)
 {
    return "^$_[0]";
 }
 
-sub sc_pre($$)
+sub default_sc_pre($$)
 {
     return uc($_[0]);
 }
 
-sub titlefont($$)
+sub default_titlefont($$)
 {
     return "<h1 class=\"titlefont\">$_[0]</h1>" if ($_[0] =~ /\S/);
     return '';
@@ -1576,7 +1595,7 @@ sub titlefont($$)
 #{
 #    return '&lt;<code>' . $_[0] . '</code>&gt;';
 #}
-sub url ($$)
+sub default_url ($$)
 {
     my $url = shift;
     my $command = shift;
@@ -1586,7 +1605,7 @@ sub url ($$)
     return &$anchor('', $url, $url);
 }
 
-sub uref($$)
+sub default_uref($$)
 {
     my $arg = shift;
     my $command = shift;
@@ -1600,7 +1619,7 @@ sub uref($$)
     return &$anchor('', $url, $text);
 }
 
-sub email($$)
+sub default_email($$)
 {
     my $arg = shift;
     my $command = shift;
@@ -1615,7 +1634,7 @@ sub email($$)
 
 # This is used for style in preformatted sections
 %style_map_pre = %style_map;
-$style_map_pre{'sc'} = '&sc_pre';
+$style_map_pre{'sc'} = '&default_sc_pre';
 $style_map_pre{'titlefont'} = '';
 
 %format_map = (
@@ -1718,36 +1737,32 @@ foreach my $key (keys(%def_map))
 # 
 # if the value is 'line' then the remaining of the line is skipped
 # if the value is 'arg' then an argument is skipped
-# if the value is 'space' space following the macro is skipped
+# if the value is 'space' space but no newline following the macro is skipped
+# if the value is 'whitespace' space following the macro is skipped
 # otherwise only the macro, or @end macro is skipped
 # 
 %to_skip = (
-        # not needed after pass_structure
+        # not needed for formatting
         'raisesections', 'line',
         'lowersections', 'line',
         'contents', 1,
         'shortcontents', 1,
         'summarycontents', 1,
-        'detailmenu', 'space',
+        'detailmenu', 'whitespace',
         'end detailmenu', 1,
         'novalidate', 1,
-     );
-
-%to_skip_texi = (
+        'bye', 'line',
         # comments
         'comment', 'line',
         'c', 'line',
-        # not needed after pass_texi
-        'bye', 'line',
         # unsupported commands (formatting)
-        #'sp', 'arg',
         # ???
         'dircategory', 'line',
         'pagesizes', 'line', # can have 2 args 
         'finalout', 1,
         'page', 1,
         'refill', 1,
-        'noindent', 1,
+        'noindent', 'space',
         'need', 'line',
         'paragraphindent', 'line', # in fact accepts only none asis 
                              # or a number and forbids anything else on the line
@@ -1773,9 +1788,9 @@ foreach my $key (keys(%def_map))
         # ???
         'filbreak', 1,
         # unsupported formats/features
-        'group', 'space',
+        'group', 'whitespace',
         'end group', 1,
-        'exdent', 1,  
+        'exdent', 'space',  
      );
 
 # map mapping css specification to style
@@ -2040,6 +2055,7 @@ sub t2h_default_simple_menu_link($$$$$$)
     my $node = shift;
     my $name = shift;
     my $ending = shift;
+    $ending = '' if (!defined($ending));
     if (($entry eq '') or $NODE_NAME_IN_MENU or $preformatted)
     {
         $name .= ':' if ($name ne '');
