@@ -1,3 +1,8 @@
+2005-03-27  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_INIT): quote address.
+	(AC_PREREQ): move to after AC_INIT, per current recommendation.
+
 2005-03-25  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/Makefile.am: help2man should use the native binaries in the

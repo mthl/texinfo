@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.54 2005-03-25 13:55:14 kasal Exp $
+# $Id: configure.ac,v 1.55 2005-03-27 14:15:59 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,12 +9,13 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
+AC_INIT([GNU Texinfo], [4.8], [bug-texinfo@gnu.org])
 AC_PREREQ(2.59)# Minimum Autoconf version required.
 #
-AC_INIT([GNU Texinfo], [4.8], bug-texinfo@gnu.org)
 AC_CONFIG_HEADERS(config.h:config.in)# Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
-AM_INIT_AUTOMAKE([dist-bzip2])
+#
+AM_INIT_AUTOMAKE([dist-bzip2 readme-alpha])
 
 # When the Texinfo source is imported into other repositories
 # (NetBSD and TeX Live), timestamps are generally not preserved.  This
