@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.42 2003-03-24 13:36:11 karl Exp $
+$Id: NEWS,v 1.43 2003-04-03 11:47:30 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -28,6 +28,8 @@ convenience, here's a url to one of the relevant sections:
   . search for image files in the include file search path.
   . --html output now uses <h3> at the smallest.
   . under --html, @cartouche now outputs a <table> with a border.
+* texinfo.tex:
+  . new Polish translation txi-pl.tex.
 * info:
   . RET now goes to the nearest xref (rather like Emacs Info),
     instead of the next xref starting on the current line.
