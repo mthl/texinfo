@@ -1,3 +1,10 @@
+2003-09-12  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/tests/html-manuals: include -I../../doc for case when
+	version-stnd.texi is in build tree.
+	From: ezra peisach <epeisach@med-xtal.bu.edu>, 
+	12 Sep 2003 13:53:32 -0400.
+
 2003-09-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Cartouche): document that @cartouche needs to
