@@ -1,16 +1,15 @@
-$Id: TODO,v 1.26 2004-11-22 23:57:32 karl Exp $
+$Id: TODO,v 1.27 2005-03-05 22:35:06 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004 Free Software Foundation.
+  2001, 2002, 2003, 2004, 2005 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
 * General:
-  - @euro{}.
   - Support installation of manuals in different languages, along these lines:
     . support a LINGUAS file or variable saying which subdirs LL in the
       source to descend into (under doc/).
@@ -26,6 +25,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     For a test case, see texinfo cvs, with its one translated manual
     (info-fr.texi).
     From Wojciech Polak.
+  - Or even multibyte languages like Japanese, see msg:
+    http://lists.gnu.org/archive/html/bug-texinfo/2005-03/msg00000.html
   - Monitor and improve the dir categories in existing manuals,
     following the Free Software Directory categories.  Much mail to
     developers has already been sent, what's needed now is to check new
@@ -102,6 +103,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     table of contents and index files.  Eliminate all the crazy
     multiple redefinitions of every Texinfo command in different contexts.
   - Support input in any encoding and language, via ec or Latin Modern fonts.
+  - Or even Unicode, e.g., UTF-8, maybe assume enctex for the TeX work.
   - Reasonable way to change fonts from the default (some work has been
     done), to allow for PostScript fonts, for example.
   - @multitable: handle @hsep and @vsep.

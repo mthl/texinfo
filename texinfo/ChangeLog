@@ -1,3 +1,7 @@
+2005-03-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (General Index): Rename from Concept Index.
+
 2005-02-28  Stepan Kasal  <kasal@ucw.cz>
 
 	* util/texi2dvi: When running bibtex, improve quoting and again,
