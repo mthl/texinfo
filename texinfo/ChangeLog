@@ -1,3 +1,10 @@
+2003-01-06    <karl@gnu.org>
+
+	* doc/texinfo.txi (table): mention @option as a useful indicating
+	command, and need for blank lines before and
+	after.  Suggestion from: Kevin Ryde
+	<user42@zip.com.au>, 03 Jan 2003 10:02:55 +1000.
+
 2003-01-05    <karl@gnu.org>
 
 	* util/texi2dvi: make egrep a variable (EGREP).  Suggestion from:
