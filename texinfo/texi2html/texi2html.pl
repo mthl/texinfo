@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.117 2004-10-05 22:59:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.118 2004-10-08 11:41:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2223,6 +2223,17 @@ Try 'texi2html --help' for usage instructions.
 EOT
 
 my $options = new Getopt::MySimple;
+
+$T2H_OPTIONS -> {'help'} = 
+{ 
+ type => ':i', 
+ default => '',
+ linkage => sub {$options->helpOptions($_[1]); 
+    print "\nSend bugs and suggestions to <users\@texi2html.cvshome.org>\n";
+    exit (0);},
+ verbose => "print help and exit"
+};
+
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
 eval {Getopt::Long::Configure("pass_through");};

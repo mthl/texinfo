@@ -1,3 +1,8 @@
+2004-10-08  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: add a mail address to the --help screen (idea from 
+	Karl Berry).
+
 2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* configure.in: add the lines asked for by Thomas Esser for addition
