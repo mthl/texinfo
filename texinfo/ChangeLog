@@ -1,5 +1,20 @@
 2003-01-24    <karl@gnu.org>
 
+	* doc/texinfo.tex: These changes allow ' in node and anchor names:
+	(\internalsetq): use @ instead of ' as the escape
+	character for .aux files.
+	(\xrdef): don't need to play games with \ now.
+	(\readauxfile): don't set catcode' to 0, and do
+	set catcode@ to 0.
+
+	These changes allow \ in node and anchor names
+	(this worked once, but we broke it somewhere along the line):
+	(\setref, \xrefX, \dosetq, \refx): call \otherbackslash.
+	(\otherbackslash): new macro to make an active
+	backslash expand to a literal `\' character with
+	catcode other.
+
+
 	* configure.ac: pretest version 4.3c.
 
 	* doc/texinfo.tex (\smallenvironments): remove, and change callers.
