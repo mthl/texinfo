@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.6 2003-11-15 02:13:59 dirt Exp $
+   $Id: multi.c,v 1.7 2003-11-21 02:10:41 dirt Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -433,6 +433,8 @@ multitable_item ()
         add_word ("<thead>\n");
       else if (after_headitem)
         add_word ("\n</thead><tbody>\n");
+      else if (first_row)
+        add_word ("<tbody>\n");
 
       if (seen_column_fractions)
         add_word_args ("<tr align=\"left\"><td valign=\"top\" width=\"%d%%\">",

@@ -1,3 +1,8 @@
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/multi.c (multitable_item): start <tbody> immediately if
+	this a regular @item, and first in the table
+
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/footnote.c (output_pending_notes): always output footnotes
