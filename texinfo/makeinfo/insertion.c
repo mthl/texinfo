@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.9 2002-11-05 03:04:26 karl Exp $
+   $Id: insertion.c,v 1.10 2002-11-09 17:47:33 feloy Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -465,7 +465,7 @@ begin_insertion (type)
          For html, we output it specifically in html_output_head. 
          For plain text, there's no way to hide it, so the author must
           use @insertcopying in the desired location.  */
-      if (!html && !no_headers)
+      if (!html && !no_headers && !docbook)
         cm_insert_copying ();
       break;
       
