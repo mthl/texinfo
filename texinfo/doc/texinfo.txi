@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
+@c $Id: texinfo.txi,v 1.94 2003-11-29 00:13:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -507,8 +507,12 @@ The Definition Commands
 * Variables Commands::          Commands for variables and similar entities.
 * Typed Functions::             Commands for functions in typed languages.
 * Typed Variables::             Commands for variables in typed languages.
-* Abstract Objects::            Commands for object-oriented programming.
 * Data Types::                  The definition command for data types.
+* Abstract Objects::            Commands for object-oriented programming.
+
+Abstract Objects
+* Object-Oriented Variables::
+* Object-Oriented Methods::
 
 Conditionally Visible Text
 
@@ -9537,8 +9541,10 @@ option to @command{makeinfo} (@pxref{makeinfo options}).
 @findex udotaccent
 @cindex Underdot accent
 @findex v @r{(check accent)}
+@cindex Hacek accent
 @cindex Check accent
-@multitable {@@questiondown@{@}} {Output} {macron/overbar accent}
+@cindex Caron accent
+@multitable {@@questiondown@{@}} {Output} {hacek/check/caron accent}
 @item Command               @tab Output         @tab What
 @item @t{@@"o}              @tab @"o            @tab umlaut accent
 @item @t{@@'o}              @tab @'o            @tab acute accent
@@ -9554,7 +9560,7 @@ option to @command{makeinfo} (@pxref{makeinfo options}).
 @item @t{@@u@{o@}}          @tab @u{o}          @tab breve accent
 @item @t{@@ubaraccent@{o@}} @tab @ubaraccent{o} @tab underbar accent
 @item @t{@@udotaccent@{o@}} @tab @udotaccent{o} @tab underdot accent
-@item @t{@@v@{o@}}          @tab @v{o}          @tab hacek or check accent
+@item @t{@@v@{o@}}          @tab @v{o}          @tab hacek/check/caron accent
 @end multitable
 
 This table lists the Texinfo commands for inserting other characters
@@ -11191,8 +11197,8 @@ can be used for other programming languages.@refill
 * Variables Commands::          Commands for variables and similar entities.
 * Typed Functions::             Commands for functions in typed languages.
 * Typed Variables::             Commands for variables in typed languages.
-* Abstract Objects::            Commands for object-oriented programming.
 * Data Types::                  The definition command for data types.
+* Abstract Objects::            Commands for object-oriented programming.
 @end menu
 
 @node Functions Commands
@@ -11677,28 +11683,90 @@ The template is:
 @var{name}.@refill
 @end table
 
+
+@node Data Types
+@subsection Data Types
+
+Here is the command for data types:@refill
+
+@table @code
+@findex deftp
+@item @@deftp @var{category} @var{name} @var{attributes}@dots{}
+The @code{@@deftp} command is the generic definition command for data
+types.  The command is written at the beginning of a line and is
+followed on the same line by the category, by the name of the type
+(which is a word like @code{int} or @code{float}), and then by names of
+attributes of objects of that type.  Thus, you could use this command
+for describing @code{int} or @code{float}, in which case you could use
+@code{data type} as the category.  (A data type is a category of
+certain objects for purposes of deciding which operations can be
+performed on them.)@refill
+
+In Lisp, for example,  @dfn{pair} names a particular data
+type, and an object of that type has two slots called the
+@sc{car} and the @sc{cdr}.  Here is how you would write the first line
+of a definition of @code{pair}.@refill
+
+@example
+@group
+@@deftp @{Data type@} pair car cdr
+@dots{}
+@@end deftp
+@end group
+@end example
+
+@need 950
+The template is:
+
+@example
+@group
+@@deftp @var{category} @var{name-of-type} @var{attributes}@dots{}
+@var{body-of-definition}
+@@end deftp
+@end group
+@end example
+
+@code{@@deftp} creates an entry in the index of data types.
+@end table
+
+
 @node Abstract Objects
 @subsection Object-Oriented Programming
+
+@cindex Object-oriented programming
 
 Here are the commands for formatting descriptions about abstract
 objects, such as are used in object-oriented programming.  A class is
 a defined type of abstract object.  An instance of a class is a
 particular object that has the type of the class.  An instance
 variable is a variable that belongs to the class but for which each
-instance has its own value.@refill
+instance has its own value.
 
 In a definition, if the name of a class is truly a name defined in the
-programming system for a class, then you should write an @code{@@code}
-around it.  Otherwise, it is printed in the usual text font.@refill
+programming system, then you should mark it with @code{@@code}.  By
+default, it is printed in the usual text font.
+
+@menu
+* Variables: Object-Oriented Variables:
+* Methods: Object-Oriented Methods:
+@end menu
+
+@node Object-Oriented Variables
+@subsubsection Object-Oriented Variables
+
+@cindex Variables, object-oriented
+
+These commands allow you to define different sorts of variables in
+object-oriented programming languages.
 
 @table @code
-@findex defcv
 @item @@defcv @var{category} @var{class} @var{name}
+@findex defcv
 The @code{@@defcv} command is the general definition command for
 variables associated with classes in object-oriented programming.  The
 @code{@@defcv} command is followed by three arguments: the category of
 thing being defined, the class to which it belongs, and its
-name.  Thus,@refill
+name.  For instance:
 
 @example
 @group
@@ -11708,52 +11776,104 @@ name.  Thus,@refill
 @end group
 @end example
 
-@noindent
-illustrates how you would write the first line of a definition of the
-@code{border-pattern} class option of the class @code{Window}.@refill
-
-The template is:
-@example
-@group
-@@defcv @var{category} @var{class} @var{name}
+@noindent produces:
+@defcv {Class Option} Window border-pattern
 @dots{}
-@@end defcv
-@end group
-@end example
+@end defcv
 
 @code{@@defcv} creates an entry in the index of variables.
 
-@findex defivar
-@item @@defivar @var{class} @var{name}
-The @code{@@defivar} command is the definition command for instance
-variables in object-oriented programming.  @code{@@defivar} is
-equivalent to @samp{@@defcv @{Instance Variable@} @dots{}}@refill
+@item @@deftypecv @var{category} @var{class} @var{data-type} @var{name}
+@findex deftypecv
+The @code{@@deftypecv} command is the definition command for typed
+class variables in object-oriented programming.  It is analogous to
+@code{@@defcv} with the addition of the @var{data-type} parameter to
+specify the type of the instance variable.  Ordinarily, the data type
+is a programming language construct that should be marked with
+@code{@@code}. For instance:
 
-The template is:
 @example
 @group
-@@defivar @var{class} @var{instance-variable-name}
-@var{body-of-definition}
+@@deftypecv @{Class Option@} Window @@code@{int@} border-pattern
+@dots{}
+@@end deftypecv
+@end group
+@end example
+
+@noindent produces:
+
+@deftypecv {Class Option} Window @code{int} border-pattern
+@dots{}
+@end deftypecv
+
+@code{@@deftypecv} creates an entry in the index of variables.
+
+@item @@defivar @var{class} @var{name}
+@findex defivar
+The @code{@@defivar} command is the definition command for instance
+variables in object-oriented programming.  @code{@@defivar} is
+equivalent to @samp{@@defcv @{Instance Variable@} @dots{}}.  For
+instance:
+
+@example
+@group
+@@defivar Window border-pattern
+@dots{}
 @@end defivar
 @end group
 @end example
 
+@noindent produces:
+
+@defivar Window border-pattern
+@dots{}
+@end defivar
+
 @code{@@defivar} creates an entry in the index of variables.
 
-@findex deftypeivar
 @item @@deftypeivar @var{class} @var{data-type} @var{name}
+@findex deftypeivar
 The @code{@@deftypeivar} command is the definition command for typed
-instance variables in object-oriented programming.  It is similar to
+instance variables in object-oriented programming.  It is analogous to
 @code{@@defivar} with the addition of the @var{data-type} parameter to
-specify the type of the instance variable.  @code{@@deftypeivar} creates an
-entry in the index of variables.
+specify the type of the instance variable.  Ordinarily, the data type
+is a programming language construct that should be marked with
+@code{@@code}. For instance:
+
+@example
+@group
+@@deftypeivar Window @@code@{int@} border-pattern
+@dots{}
+@@end deftypeivar
+@end group
+@end example
+
+@noindent produces:
+
+@deftypeivar Window @code{int} border-pattern
+@dots{}
+@end deftypeivar
+
+@code{@@deftypeivar} creates an entry in the index of variables.
+
+@end table
+
+@node Object-Oriented Methods
+@subsubsection Object-Oriented Methods
+
+@cindex Methods, object-oriented
+
+These commands allow you to define different sorts of function-like
+entities resembling methods in object-oriented programming languages.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+
+@table @code
 
 @findex defop
 @item @@defop @var{category} @var{class} @var{name} @var{arguments}@dots{}
-The @code{@@defop} command is the general definition command for
-entities that may resemble methods in object-oriented programming.
-These entities take arguments, as functions do, but are associated with
-particular classes of objects.@refill
+The @code{@@defop} command is the general definition command for these
+method-like entities.
 
 For example, some systems have constructs called @dfn{wrappers} that
 are associated with classes as methods are, but that act more like
@@ -11835,21 +11955,7 @@ For example:
 
 @noindent
 illustrates the definition for a method called @code{bar-method} of
-the class @code{bar-class}.  The method takes an argument.@refill
-
-The template is:
-
-@example
-@group
-@@defmethod @var{class} @var{method-name} @var{arguments}@dots{}
-@var{body-of-definition}
-@@end defmethod
-@end group
-@end example
-
-@code{@@defmethod} creates an entry, such as `@code{bar-method} on
-@code{bar-class}', in the index of functions.@refill
-
+the class @code{bar-class}.  The method takes an argument.
 
 @item @@deftypemethod @var{class} @var{data-type} @var{name} @var{arguments}@dots{}
 @findex defmethod
@@ -11860,51 +11966,6 @@ to the @code{@@defmethod} command with the addition of the
 
 @end table
 
-
-@node Data Types
-@subsection Data Types
-
-Here is the command for data types:@refill
-
-@table @code
-@findex deftp
-@item @@deftp @var{category} @var{name} @var{attributes}@dots{}
-The @code{@@deftp} command is the generic definition command for data
-types.  The command is written at the beginning of a line and is
-followed on the same line by the category, by the name of the type
-(which is a word like @code{int} or @code{float}), and then by names of
-attributes of objects of that type.  Thus, you could use this command
-for describing @code{int} or @code{float}, in which case you could use
-@code{data type} as the category.  (A data type is a category of
-certain objects for purposes of deciding which operations can be
-performed on them.)@refill
-
-In Lisp, for example,  @dfn{pair} names a particular data
-type, and an object of that type has two slots called the
-@sc{car} and the @sc{cdr}.  Here is how you would write the first line
-of a definition of @code{pair}.@refill
-
-@example
-@group
-@@deftp @{Data type@} pair car cdr
-@dots{}
-@@end deftp
-@end group
-@end example
-
-@need 950
-The template is:
-
-@example
-@group
-@@deftp @var{category} @var{name-of-type} @var{attributes}@dots{}
-@var{body-of-definition}
-@@end deftp
-@end group
-@end example
-
-@code{@@deftp} creates an entry in the index of data types.
-@end table
 
 @node Def Cmd Conventions
 @section Conventions for Writing Definitions
@@ -15903,6 +15964,11 @@ the category, the name of the type (which is a word like @samp{int} or
 @samp{float}), and then the names of attributes of objects of that type.
 @xref{Definition Commands}, and @ref{Data Types}.
 
+@item @@deftypecv @var{category} @var{class} @var{data-type} @var{name}
+@itemx @@deftypecvx @var{category} @var{class} @var{data-type} @var{name}
+Format a description for a typed class variable in object-oriented programming.
+@xref{Definition Commands}, and @ref{Abstract Objects}.
+
 @item @@deftypefn @var{classification} @var{data-type} @var{name} @var{arguments}@dots{}
 @itemx @@deftypefnx @var{classification} @var{data-type} @var{name} @var{arguments}@dots{}
 Format a description for a function or similar entity that may take
@@ -17287,7 +17353,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
+$Id: texinfo.txi,v 1.94 2003-11-29 00:13:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17350,7 +17416,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
+@comment $Id: texinfo.txi,v 1.94 2003-11-29 00:13:09 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
