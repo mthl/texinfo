@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.27 2003-10-13 00:36:01 karl Exp $
+   $Id: insertion.c,v 1.28 2003-10-14 14:33:30 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -685,7 +685,6 @@ begin_insertion (type)
       break;
 
     case rawhtml:
-      xml_no_para++;
       escape_html = 0;
       break;
 
@@ -848,7 +847,6 @@ end_insertion (type)
       break;
 
     case rawhtml:
-      xml_no_para--;
       escape_html = 1;
       break;
 
