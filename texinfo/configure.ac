@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.30 2003-06-10 20:50:03 karl Exp $
+dnl $Id: configure.ac,v 1.31 2003-10-27 01:36:18 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -15,9 +15,17 @@ AC_INIT([GNU Texinfo], [4.6])
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_CONFIG_HEADER(config.h:config.in)dnl Keep filename to 8.3 for MS-DOS.
 AM_INIT_AUTOMAKE([dist-bzip2])
-dnl
+
+dnl When the Texinfo source is imported into other repositories
+dnl (NetBSD and TeX Live), timestamps are generally not preserved.  This
+dnl causes lots of annoyance, so --enable-maintainer-mode.  Sorry.
+AM_MAINTAINER_MODE
+
+dnl We use this in doc/Makefile.am to avoid running help2man unless
+dnl explicitly desired.  (I set TEXINFO_MAINT in my .bash_login.)
 AM_CONDITIONAL(TEXINFO_MAINT, test -n "$TEXINFO_MAINT")
 
+dnl
 dnl Checks for programs.
 AC_PROG_CC
 AC_PROG_GCC_TRADITIONAL
