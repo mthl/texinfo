@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.26 2003-01-07 14:21:49 karl Exp $
+$Id: NEWS,v 1.27 2003-01-10 13:11:08 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -31,6 +31,8 @@ convenience, here's a url to one of the relevant sections:
   . new translation txi-tr.tex.
   . bug fix: <>| and other characters do not disappear when they are
     first on a line in @verbatim.
+* info:
+  . arrow keys once again work in isearch contexts under Solaris.
 * install-info:
   . bug fix: don't translate the `* Menu' info keyword.
 * Distribution:
