@@ -1,3 +1,8 @@
+2005-01-25  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile (texmf_dvips, texmf_pdftex_misc): new paths to
+	match teTeX.  tex-k mail from peb, 25 Jan 2005 15:45:37 +0100.
+
 2005-01-23  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (findprog): split $PATH at $path_sep, not spaces.
