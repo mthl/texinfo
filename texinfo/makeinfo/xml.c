@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.34 2003-11-18 22:20:58 karl Exp $
+   $Id: xml.c,v 1.35 2003-11-19 00:27:34 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1552,6 +1552,10 @@ xml_begin_index ()
   tmp[l] = '\0';
   while (*p != '<')
     p++;
+  while (*p != ' ')
+    p++;
+  /* ... and its label attribute.  */
+  p++;
   while (*p != ' ')
     p++;
 

@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.14 2003-10-29 18:32:16 karl Exp $
+   $Id: sectioning.c,v 1.15 2003-11-19 00:27:34 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -82,6 +82,8 @@ static char *scoring_characters = "*=-.";
 /* Amount to offset the name of sectioning commands to levels by. */
 static int section_alist_offset = 0;
 
+static char * handle_enum_increment ();
+
 
 /* num == ENUM_SECT_NO  means unnumbered (should never call this)
    num == ENUM_SECT_YES means numbered
@@ -116,6 +118,9 @@ get_sectioning_number (level, num)
       && (i == 0)
       && (enum_marker == APPENDIX_MAGIC))
     sprintf (p, _("Appendix %c "), numbers[i] + 64);
+  else if (docbook)
+    /* Docbook shouldn't get the space.  */
+    sprintf (p, "%d", numbers[i]);
   else
     sprintf (p, "%d ", numbers[i]);
 
@@ -274,7 +279,15 @@ sectioning_underscore (cmd)
 	  flush_output ();
 	  xml_last_section_output_position = output_paragraph_offset;
 
-	  xml_insert_element (xml_element (secname), START);
+          if (STREQ (cmd, "unnumbered") || STREQ (cmd, "chapter")
+              || enum_marker == UNNUMBERED_MAGIC)
+            {
+              xml_insert_element_with_attribute (xml_element (secname), START, "label=\"%s\"",
+                  handle_enum_increment (level, search_sectioning (cmd)));
+            }
+          else
+            xml_insert_element (xml_element (secname), START);
+
 	  xml_insert_element (TITLE, START);
 	  xml_open_section (level, secname);
 	  get_rest_of_line (0, &temp);
@@ -309,14 +322,14 @@ handle_enum_increment (level, index)
      int index;
 {
   /* special for unnumbered */
-  if (number_sections && section_alist[index].num == ENUM_SECT_NO)
+  if ((number_sections || docbook) && section_alist[index].num == ENUM_SECT_NO)
     {
       if (level == 0
           && enum_marker != UNNUMBERED_MAGIC)
         enum_marker = UNNUMBERED_MAGIC;
     }
   /* enumerate only things which are allowed */
-  if (number_sections && section_alist[index].num)
+  if ((number_sections || docbook) && section_alist[index].num)
     {
       /* reset the marker if we get into enumerated areas */
       if (section_alist[index].num == ENUM_SECT_YES
@@ -350,7 +363,7 @@ handle_enum_increment (level, index)
           return xstrdup
             (get_sectioning_number (level, section_alist[index].num));
         }
-    } /* if (number_sections)... */
+    } /* if (number_sections || docbook)... */
 
   return xstrdup ("");
 }
