@@ -197,52 +197,111 @@ sub T2H_ROFF_titlepage ()
 # This map is used in preformatted environments
 %pre_map = %things_map;
 
-%style_map = (
-      'acronym',    '',
-      'asis',       '',
-      'b',          ['\fB', '\fR'],
-      'cite',       ['\fI', '\fR'],
-      'code',       ['\fR\&\f(CW', '\fR'],
-      'command',    ['\fR\&\f(CW', '\fR'],
-      'ctrl',       ['\fR\&\f(CW', '\fR'], 
-      'dfn',        ['\fI', '\fR'], 
-      'dmn',        '',
-      'email',      ['\fB', '\fR'], 
-      'emph',       ['\fI', '\fR'],
-      'env',        ['\fR\&\f(CW', '\fR'],
-      'file',       ['\fR\&\f(CW', '\fR', '"'], 
-      'i',          ['\fI', '\fR'],
-      'kbd',        ['\fR\&\f(CW', '\fR'],
-      'key',        ['\fR\&\f(CW', '\fR'],
-      'math',       ['\fR\&\f(CW', '\fR'],
-      'option',     ['\fR\&\f(CW', '\fR', '"'], 
-      'r',          ['\fR', ''],
-      'samp',       ['\fR\&\f(CW', '\fR', '"'], 
-      'sc',         '&roff_sc',
-      'strong',     ['\fB', '\fR'],
-      't',          ['\fR\&\f(CW', '\fR'],
-      'uref',       '&default_uref',
-      'url',        '&default_url',
-      'var',        ['\fI', '\fR'],
-      'verb',       ['\fR\&\f(CW', '\fR'],
-      'titlefont',  ["\n.sz +10\n.ce\n", "\n.sz -10\n"],
-      'w',          '',
-      'H',          '&roff_accent',
-      'dotaccent',  '&roff_accent',
-      'ringaccent', '&roff_accent',
-      'tieaccent',  '&roff_accent',
-      'u',          '&roff_accent',
-      'ubaraccent', '&roff_accent',
-      'udotaccent', '&roff_accent',
-      'v',          '&roff_accent',
-      ',',          '&roff_accent',
-      'dotless',    ''
-     );
+#%style_map = (
+#      'acronym',    '',
+#      'asis',       '',
+#      'b',          ['\fB', '\fR'],
+#      'cite',       ['\fI', '\fR'],
+#      'code',       ['\fR\&\f(CW', '\fR'],
+#      'command',    ['\fR\&\f(CW', '\fR'],
+#      'ctrl',       ['\fR\&\f(CW', '\fR'], 
+#      'dfn',        ['\fI', '\fR'], 
+#      'dmn',        '',
+#      'email',      ['\fB', '\fR'], 
+#      'emph',       ['\fI', '\fR'],
+#      'env',        ['\fR\&\f(CW', '\fR'],
+#      'file',       ['\fR\&\f(CW', '\fR', '"'], 
+#      'i',          ['\fI', '\fR'],
+#      'kbd',        ['\fR\&\f(CW', '\fR'],
+#      'key',        ['\fR\&\f(CW', '\fR'],
+#      'math',       ['\fR\&\f(CW', '\fR'],
+#      'option',     ['\fR\&\f(CW', '\fR', '"'], 
+#      'r',          ['\fR', ''],
+#      'samp',       ['\fR\&\f(CW', '\fR', '"'], 
+#      'sc',         '&roff_sc',
+#      'strong',     ['\fB', '\fR'],
+#      't',          ['\fR\&\f(CW', '\fR'],
+#      'uref',       '&default_uref',
+#      'url',        '&default_url',
+#      'var',        ['\fI', '\fR'],
+#      'verb',       ['\fR\&\f(CW', '\fR'],
+#      'titlefont',  ["\n.sz +10\n.ce\n", "\n.sz -10\n"],
+#      'w',          '',
+#      'H',          '&roff_accent',
+#      'dotaccent',  '&roff_accent',
+#      'ringaccent', '&roff_accent',
+#      'tieaccent',  '&roff_accent',
+#      'u',          '&roff_accent',
+#      'ubaraccent', '&roff_accent',
+#      'udotaccent', '&roff_accent',
+#      'v',          '&roff_accent',
+#      ',',          '&roff_accent',
+#      'dotless',    ''
+#     );
 
+my @bold_commands = ('strong', 'b', 'email');
+my @italic_commands = ('cite', 'dfn', 'emph', 'i', 'var');
+my @fixed_command = ('code', 'command', 'ctrl', 'env', 'file', 'kbd', 'key',
+   'math', 'option', 'samp', 't', 'verb');
 
-foreach my $accent (keys(%accent_map))
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
-    $style_map{$accent} = '&roff_accent';
+     #$style_map{$accent_command} = { 'function' => \&t2h_roff_accent };
+     $style_map{$accent_command} = '&roff_accent';
+}
+#foreach my $accent (keys(%accent_map))
+#{
+#    $style_map{$accent} = '&roff_accent';
+#}
+
+foreach my $command (keys(%style_map))
+{
+    delete $style_map{$command}->{'attribute'} if (exists($style_map{$command}->{'attribute'}));
+    if (grep {$_ eq $command} @bold_commands)
+    {
+        delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
+        $style_map{$command}->{'begin'} = '\fB';
+        $style_map{$command}->{'end'} = '\fR';
+        next;
+    }
+    elsif (grep {$_ eq $command} @italic_commands)
+    {
+        delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
+        $style_map{$command}->{'begin'} = '\fI';
+        $style_map{$command}->{'end'} = '\fR';
+        next;
+    }
+    elsif (grep {$_ eq $command} @fixed_commands)
+    {
+        delete $style_map{$command}->{'function'} if (exists($style_map{$command}->{'function'}));
+        $style_map{$command}->{'begin'} = '\fR\&\f(CW';
+        $style_map{$command}->{'end'} = '\fR';
+        next;
+    }
+}
+
+delete $style_map{'titlefont'}->{'function'} if (exists($style_map{'titlefont'}->{'function'}));
+$style_map{'titlefont'}->{'begin'} = "\n.sz +10\n.ce\n";
+$style_map{'titlefont'}->{'end'} = "\n.sz -10\n";
+
+delete $style_map{'r'}->{'function'} if (exists($style_map{'r'}->{'function'}));
+$style_map{'r'}->{'begin'} = '\r';
+#$style_map{'r'}->{'end'} = '';
+
+$style_map{'sc'} = '&roff_sc';
+
+foreach my $command (keys(%style_map))
+{
+    if (ref($style_map{$command}) ne 'HASH')
+    {
+         $style_map_pre{$command} = $style_map{$command};
+         next;
+    }
+    $style_map_pre{$command} = {};
+    foreach my $key (keys(%{$style_map{$command}}))
+    {
+        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
+    }
 }
 
 %special_accents = (
@@ -260,14 +319,6 @@ sub roff_accent($$)
 {
     my $text = shift;
     my $accent = shift;
-    if (defined($accent_letters{$accent}))
-    {
-         if ($text !~ /^[$accent_letters{$accent}]$/)
-         {
-              main::echo_warn ("\@$accent only valid with `$accent_letters{$accent}', not `$text'");
-              #return $text;
-         }
-    }
     return $text if ($accent eq 'dotless');
     return "\\($accent_map{$accent}${text}" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return "\\(o${text}"  if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
@@ -299,46 +350,7 @@ sub roff_ctrl($$)
    return "\\*^$_[0]";
 }
 
-# This is used for style in preformatted sections
-%style_map_pre = %style_map;
-
-$style = \&T2H_ROFF_style;
 $format = \&T2H_ROFF_format;
-
-sub T2H_ROFF_style($$$$$)
-{
-    my $style_map_entry = shift;
-    my $macro = shift;
-    my $text = shift;
-    my $no_close = shift;
-    my $no_open = shift;
-
-    if (ref($style_map_entry) eq 'ARRAY')
-    {
-        my $quotes = 0;
-        $quotes = 1 if (defined($style_map_entry->[2]) and ($style_map_entry->[2] eq '"'));
-        my $result = '';
-        $result .= '\(if' if ($quotes and !$no_open);
-        $result .= $style_map_entry->[0] . $text . $style_map_entry->[1];
-        $result .= '\(is' if ($quotes and !$no_close); 
-        return $result;
-    }
-    elsif ($style_map_entry =~ s/^&//)
-    {
-         no strict "refs";
-         $style_map_entry = 'Texi2HTML::Config::' . $style_map_entry;
-         return &$style_map_entry($text, $macro);
-         use strict "refs";
-    }
-    elsif ($style_map_entry eq '')
-    {
-         return $text;
-    }
-    else
-    {
-         print STDERR "Bug for $macro, no known style\n";
-    }
-}
 
 sub T2H_ROFF_format($$$)
 {

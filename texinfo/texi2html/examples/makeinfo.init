@@ -33,8 +33,9 @@ $init_out = \&makeinfo_like_init_out;
 
 sub makeinfo_like_init_out()
 {
-   &$default_init_out();
+   my $encoding = &$default_init_out();
    $NAVIGATION_TEXT{'Following'} = ' &gt; ';
+   return $encoding;
 }
 
 

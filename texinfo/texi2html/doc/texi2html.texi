@@ -943,6 +943,7 @@ initialization files.
 * Customizing section::
 * Customizing footer::
 * Special pages::             Customizing table of contents, top, about page.
+* File names::                Customizing the file names.
 @end menu
 
 @c --------------------------------------------------------
@@ -1127,6 +1128,7 @@ This array is used for the navigation panel buttons present at the begining
 of sectioning elements. If split at node or section they are also used 
 at the page footer, and in the case of section navigation at the page header.
 @item @@SECTION_FOOTER_BUTTONS
+@itemx @@NODE_FOOTER_BUTTONS
 This array is used for the navigation panel buttons present at the footer
 of pages when split at node or at section. 
 
@@ -1331,10 +1333,11 @@ values set with @code{@@set} or @code{@@setfilename} and other similar
 The following function reference may be redefined to be called after 
 texinfo processing and before document generation:
 
-@deffn {Function Reference} init_out
+@deftypefn {Function Reference} $encoding init_out
 This function perform the initialization of variables and any other
-task before document outputting. 
-@end deffn
+task before document outputting. It returns the encoding used for the
+output files.
+@end deftypefn
 
 In the default case the @variable{$BODYTEXT} (@pxref{Customizing header}) 
 and the hashes @variable{%NAVIGATION_TEXT} (@pxref{Button specifications}) and  
@@ -1349,8 +1352,9 @@ my $default_init_out = $init_out;
 $init_out = \&makeinfo_like_init_out;
 sub makeinfo_like_init_out() 
 @{
-   &$default_init_out();
+   my $encoding = &$default_init_out();
    $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
+   return $encoding;
 @}
 @end example
 
@@ -1392,9 +1396,11 @@ It is possible to add lines to the text within the @code{<head>}
 Similarly it is possible to add text just after the @code{<body>} 
 element with the variable @variable{$AFTER_BODY_OPEN}.
 These variables are empty by default.
-The encoding of the document is defined by @variable{$ENCODING} if
-no @code{@@documentencoding} appears in the document. The default is
-a @samp{iso-8859-1} encoding.
+The encoding of the texinfo file is defined by @variable{$DOCUMENT_ENCODING} 
+if no @code{@@documentencoding} appears in the document. 
+The default is a @samp{en-ascii} encoding.
+The encoding of the resulting document is defined by
+@variable{$ENCODING}. The default is the @code{$DOCUMENT_ENCODING}.
 
 The @code{<body>} element attributes may be set by defining the
 variable @variable{$BODYTEXT}. If you want to define that variable
@@ -1715,8 +1721,52 @@ All the other function call @variable{$print_misc} which in turn calls
 @variable{$print_misc_header} for the headers and  @variable{$print_misc_footer} 
 for the footers.
 
+@c --------------------------------------------------------
+@node File names
+@section Customizing the file names
 
-@c @include custhtml.texi
+It is possible to specify the file names with more control than with the
+command line options (@pxref{Output files}). Two function references enable 
+that customization. One is usefull in case @variable{$NODE_FILES} is true
+and it is used to customize the node file name itself and is also used 
+to produce a file name with a redirection leading to the node file.
+
+@deftypefn {Function Reference} {($node_file $redirection_node_file)} node_file_name $node
+@var{$node} is a hash reference with the following interesting keys (there
+are much more keys):
+@table @code
+@item texi
+The texinfo node name.
+@item with_section
+True if associated with a section.
+@end table
+The result is the node file name @var{$node_file}, and the file containing
+a redirection to the node @var{$redirection_node_file}.
+@end deftypefn
+
+The other is usefull if @code{$NODE_FILES} isn't true. It is used to 
+customize the file associated with each element.
+@deftypefn {Function Reference} $file element_file_name $element $is_top $docu_name
+@var{$element} is a hash reference with the following interesting keys (there
+are much more keys):
+@table @code
+@item texi
+The texinfo element name.
+@item number
+The number associated with a section.
+@item doc_nr
+A number incremented whenever a new file should begin, based on how the 
+document is split (@pxref{Splitting output}).
+@item text
+The element text.
+@item name
+The element text without section number.
+@end table
+@var{$is_top} is true if the element is considered as the top element.
+@var{$docu_name} is the basename of the texinfo manual.
+The result is the element file name.
+@end deftypefn
+
 @c ========================================================
 @node Customizing HTML
 @chapter Customizing @acronym{HTML} and text style in init files
@@ -1733,8 +1783,9 @@ the main program and initialization files may
 be redefined.
 
 @menu
-* Two contexts::                 there are two different contexts for command
-                                 expansion: normal text and preformatted text.
+* Three contexts::               there are three different contexts for command
+                                 expansion: normal text, preformatted text and
+                                 strings.
 * Commands without argument:: 
 * Style and accent commands::    
 * Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image} and @code{@@sp}
@@ -1758,15 +1809,18 @@ be redefined.
 @end menu
 
 @c --------------------------------------------------------
-@node Two contexts
-@section Two contexts for command and text expansion: preformatted and normal
+@node Three contexts
+@section Three contexts for expansions: preformatted, normal and string
 
-There are two contexts of interest, one is the normal context, the other
-is a special context, called the @dfn{preformatted} context. The preformatted
+There are three contexts of interest, one is the normal context, the other
+is a special context, called the @dfn{preformatted} context and the last is
+the string context. The preformatted
 context occurs when the spacing between words is kept. This is the
 case, for example, in @code{@@display} or @code{@@example} regions, and in 
 menu comments (@pxref{Menus}). The preformatted regions are usually
 rendered in @code{<pre>} elements in @acronym{HTML}.
+The string context occurs when rendering strings without formatting elements,
+in comments or titles for example.
 
 Some @acronym{HTML} elements are not allowed in preformatted context.
 This is the case for @code{<table>}, for example.
@@ -1869,15 +1923,17 @@ leads to the same than
 @@TeX@{@} something
 @end example
 
-Each of these categories of commands have two associated hashes, one for normal
-context, the other for preformatted context. The keys of the hashes are the 
+Each of these categories of commands have three associated hashes, one 
+for normal
+context, the other for preformatted context and the last in strings. The 
+keys of the hashes are the 
 command names, the associated value is the text replacing the command.
 
 The hashes are:
-@multitable {one nonlettered character} {in normal text} {in preformatted text}
-@item command type @tab in normal text @tab in preformatted text
-@item one nonlettered character @tab @variable{%simple_map} @tab @variable{%simple_map_pre}
-@item nothing in braces @tab @variable{%things_map} @tab @variable{%pre_map}
+@multitable {one nonlettered character} {normal text} {preformatted text} {string}
+@item command type @tab normal text @tab preformatted text @tab string
+@item one nonlettered character @tab @variable{%simple_map} @tab @variable{%simple_map_pre} @tab @variable{%simple_map_texi}
+@item nothing in braces @tab @variable{%things_map} @tab @variable{%pre_map} @tab @variable{%texi_map}
 @end multitable
 
 To change the @acronym{HTML} resulting from these constructs, just change the
@@ -1900,8 +1956,8 @@ commands taking argument (@code{@@'}, @code{@@udotaccent}, @code{@@dotless})
 and miscalleneous commands (@code{@@email}, @code{@@verb}, @code{@@w}, 
 @code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by two hash in the
 default case, 
-@variable{%style_map} for normal context and @variable{%style_map_pre} for
-preformatted context. 
+@variable{%style_map} for normal context, @variable{%style_map_pre} for
+preformatted context and @variable{%style_map_texi} in string context. 
 
 The key of the hashes are the command names. There are two possibilities for
 the values corresponding with two interfaces. The values may be strings or 
@@ -2094,7 +2150,8 @@ are processed by redefining the following function reference:
 
 @deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $style_stack
 @var{$command} is the @@-command, @var{$style} is the value associated with 
-the @var{$command} in the @code{%style_map} or @code{%style_map_pre} hashes.
+the @var{$command} in the @code{%style_map}, @code{%style_map_pre} 
+or @code{%style_map_texi} hashes.
 The @var{$text} is the text appearing within the @@-command braces.
 @var{args} is a reference on an array contening the command arguments 
 formatted according to the same conventions than with the reference hash style
@@ -2789,7 +2846,7 @@ different parts of a menu:
 is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
 holds informations about the current context. The only key which could be
 of interest is @code{preformatted}, true if the context is a preformatted
-context. @xref{Two contexts}. 
+context. @xref{Three contexts}. 
 @var{$node} is the node name, @var{$name} is the
 name of the node, and @var{$ending} is the text ending the link entry.
 @end deftypefn
@@ -2971,7 +3028,8 @@ formatted as explained above. This function modifies the reference.
 
 Commands not specified above which don't appear in the hashes 
 @c @variable{%things_map} @variable{%pre_map}
-@variable{%simple_map}, @variable{%simple_map_pre} are processed by the 
+@variable{%simple_map}, @variable{%simple_map_pre} or
+@variable{%simple_map_texi} are processed by the 
 following function reference
 
 @deftypefn {Function Reference} {($result_line, $result, $result_text, $message)} unknown $command $line
@@ -2985,7 +3043,8 @@ with line number added by @command{texi2html}.
 @end deftypefn
 
 Commands with braces not specified above 
-nor in @variable{%style_map} and @variable{%style_map_pre} are processed 
+nor in @variable{%style_map}, @variable{%style_map_pre} and
+@variable{%style_map_texi} are processed 
 by the following function reference
 
 @deftypefn {Function Reference} {($result, $result_text, $message)} unknown_style $command $text

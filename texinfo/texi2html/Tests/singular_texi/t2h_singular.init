@@ -120,6 +120,8 @@ $VERTICAL_HEAD_NAVIGATION = 1;
    'Up', 'Top', 'Contents', 'Index', 'About' 
   );
 
+@NODE_FOOTER_BUTTONS = @SECTION_BUTTONS;
+
 # buttons for misc stuff
 @MISC_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 
