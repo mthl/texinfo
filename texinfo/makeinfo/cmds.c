@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.37 2003-11-24 14:40:12 dirt Exp $
+   $Id: cmds.c,v 1.38 2003-11-25 10:33:31 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -583,7 +583,7 @@ cm_acronym (arg)
      int arg;
 {
   if (html)
-    insert_html_tag (arg, small_tag);
+    insert_html_tag (arg, "acronym");
   else if (xml)
     xml_insert_element (ACRONYM, arg);
 }
