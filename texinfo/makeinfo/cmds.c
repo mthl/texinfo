@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.32 2003-11-15 02:13:59 dirt Exp $
+   $Id: cmds.c,v 1.33 2003-11-17 07:32:26 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1152,11 +1152,6 @@ cm_settitle ()
       execute_string ("%s", title);
       xml_in_book_title = 0;
       xml_insert_element (SETTITLE, END);
-      if (docbook && !xml_in_bookinfo)
-	{
-	  xml_insert_element (BOOKINFO, START);
-	  xml_in_bookinfo = 1;
-	}
     }
   else
     get_rest_of_line (0, &title);
