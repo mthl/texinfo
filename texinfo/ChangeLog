@@ -1,3 +1,7 @@
+2003-11-11  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/cmds.c (cm_sp): disabled parameter expansion.
+
 2003-11-10  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c:

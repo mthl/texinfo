@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.28 2003-11-10 17:04:08 dirt Exp $
+   $Id: cmds.c,v 1.29 2003-11-11 02:08:48 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1177,7 +1177,9 @@ cm_sp ()
   int lines;
   char *line;
 
-  get_rest_of_line (1, &line);
+  /* Due to tricky stuff in execute_string(), @value{} can't be expanded.
+     So there is really no reason to enable expansion for @sp parameters.  */
+  get_rest_of_line (0, &line);
 
   if (sscanf (line, "%d", &lines) != 1 || lines <= 0)
     line_error (_("@sp requires a positive numeric argument, not `%s'"), line);
