@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
+@c $Id: texinfo.txi,v 1.46 2003-05-26 13:10:52 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2668,7 +2668,8 @@ M-x texinfo-sequential-node-update
 
 Certain pieces of information must be provided at the beginning of a
 Texinfo file, such as the name for the output file(s), the title of the
-document, and the Top node.
+document, and the Top node.  A table of contents is also generally
+generated.
 
 This chapter expands on the minimal complete Texinfo source file
 previously given (@pxref{Six Parts}).
@@ -2735,7 +2736,7 @@ Permission is granted to @dots{}
 Published by @dots{}
 @@end titlepage
 
-@@c So the toc is printed in the right place.
+@@c So the toc is printed at the start.
 @@contents
 
 @@ifnottex
@@ -4115,15 +4116,15 @@ corresponding entries in the full table of contents rather than the text
 of the document. The links in the full table of contents point to the
 main text of the document.
 
-The contents commands can be placed either at the very end of the file,
-after any indices (see the previous section) and just before the
-@code{@@bye} (see the next section), or near the beginning of the file,
-after the @code{@@end titlepage} (@pxref{titlepage}).  The advantage to
-the former is that then the contents output is always up to date,
-because it reflects the processing just done.  The advantage to the
-latter is that the contents are printed in the proper place, thus you do
-not need to rearrange the DVI file with @command{dviselect} or shuffle
-paper.
+The contents commands can be placed either at the very end of the
+file, after any indices (see the previous section) and just before the
+@code{@@bye} (see the next section), or near the beginning of the
+file, after the @code{@@end titlepage} (@pxref{titlepage}).  The
+advantage to the former is that then the contents output is always up
+to date, because it reflects the processing just done.  The advantage
+to the latter is that the contents are printed in the proper place,
+thus you do not need to rearrange the DVI file (with
+@command{dviselect}, for example), or shuffle paper.
 
 @findex setcontentsaftertitlepage
 @findex setshortcontentsaftertitlepage
@@ -17187,7 +17188,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
+$Id: texinfo.txi,v 1.46 2003-05-26 13:10:52 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17250,7 +17251,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.46 2003-05-26 13:10:52 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,12 @@
+2003-05-26    <karl@gnu.org>
+
+	* doc/texinfo.txi (Contents): trim excess words.
+
+2003-05-25    <karl@gnu.org>
+
+	* util/texi2dvi: extra quotes for the tex_args assignment in
+	--batch mode.
+
 2003-05-19    <karl@gnu.org>
 
 	* lib/xexit.c: translate fflush error messages, add newlines
