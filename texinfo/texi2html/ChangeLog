@@ -1,3 +1,7 @@
+2003-09-22  Derek Price  <derek@ximbiot.com>
+
+	* NEWS: Reorganize.  Note some more changes.
+
 2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl: source 'Config' file in the configuration directories 

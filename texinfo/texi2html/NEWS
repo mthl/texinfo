@@ -2,14 +2,49 @@ This file records noteworthy changes.
 
 1.68 ()
 
-* Many bug fixes.
+* COMPATIBILITY
+
+* The main configuration files are now `/etc/texi2html/Config' and
+  `~/.texi2html/Config'.  `/etc/texi2htmlrc' and `~/.texi2htmlrc' will no
+  longer be sourced and any existing site or user configuration must be moved
+  to the new locations if you wish it to be used by the new version of
+  Texi2HTML.
+
+* Translation files are now stored in TEXI2HTMLLIB/i18n/*,
+  /etc/texi2html/i18n/*, ~/texi2html/i18n/*, and sourced in that order.  The
+  old T2H_LANGUAGES hash is now ignored.  Please see the documentation for the
+  format of the new translation files.
+
+* We've standardized on GNU-style `--' prefixed long options, rather than the
+  old single-dash prefixed long options in the help, but the single-dash style
+  is still accepted on the command line for the time being.
+
+
+* NEW FEATURES
+
+* Many changes towards output of stricter HTML.
+
+* The test suite is much more comprehensive.
+
 * @ifhtml works!
+
+
+* BUG FIXES
+
+* Many miscellaneous bug fixes.
+
+
+* FOR DEVELOPERS
+
 * Standardized on Autoconf 2.57 & Automake 1.7.5.
+
 * The --enable-maintainer-mode option is now required by configure to enable
   what is considered the maintainer-specific portions of Makefiles.  This
   includes the portions which automatically rebuild the configure and build
   files (configure, aclocal, Makefile.in, etc) when configure.in or other
   dependencies are changed.
+
+
 
 1.66 (June 8 2002)
 * Many bug fixes.
