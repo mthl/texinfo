@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.24 2003-08-08 15:58:25 karl Exp $
+   $Id: insertion.c,v 1.25 2003-08-20 18:58:15 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1476,8 +1476,8 @@ cm_end ()
 
   if (type == bad_type)
     {
-      line_error (_("Bad argument to `%s', `%s', using `%s'"),
-           command, temp, insertion_type_pname (current_insertion_type ()));
+      line_error (_("Bad argument `%s' to `@%s', using `%s'"),
+           temp, command, insertion_type_pname (current_insertion_type ()));
     }
   if (xml && type == menu) /* fixme */
     {
