@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.26 2003-04-27 14:00:47 karl Exp $
+$Id: dir-example,v 1.27 2003-05-06 22:56:34 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -35,19 +35,14 @@ Basics
 * File permissions: (coreutils)File permissions.  Access modes.
 * Date input formats: (coreutils)Date input formats.
 
-GNU Packages
-* UUCP: (uucp).                 Copying between machines, offline.
-* Wdiff: (wdiff).               Word-by-word comparison.
-* Wget: (wget).                 URL download.
-
 Text creation and manipulation
 * Diff: (diff).                 Comparing and merging programs.
 * Ed: (ed).                     Line editor.
 * Gawk: (gawk).                 A text scanning and processing language.
-* Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * grep: (grep).                 Print lines matching a pattern.
 * m4: (m4).			General-purpose text macro processor.
 * sed: (sed).                   Stream EDitor.
+* Wdiff: (wdiff).               Word difference finder.
 
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
@@ -71,6 +66,10 @@ Compression
 Email
 * Anubis: (anubis).             The GNU outgoing mail processor.
 * Mailutils: (mailutils).       Utilities & library for mailboxes, protocols.
+
+Network applications
+* Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
+* Wget: (wget).                 Non-interactive network downloader.
 
 Typesetting
 * Groff: (groff).               The GNU troff document formatting system.
@@ -210,7 +209,7 @@ TeX
 * TeXDraw: (texdraw).           Drawing PostScript diagrams within TeX.
 * Web2c: (web2c).               TeX, Metafont, and their companion programs.
 
-DOS 
+DOS
 * GNUish: (gnuish).             GNU utilities for DOS.
 * Mtools: (mtools).             Access DOS disks from Unix.
 
