@@ -32,14 +32,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Info 4.2: 12. Customizing Key Bindings and Variables</title>
+<title>GNU Info: 12. Customizing Key Bindings and Variables</title>
 
-<meta name="description" content="GNU Info 4.2: 12. Customizing Key Bindings and Variables">
-<meta name="keywords" content="GNU Info 4.2: 12. Customizing Key Bindings and Variables">
+<meta name="description" content="GNU Info: 12. Customizing Key Bindings and Variables">
+<meta name="keywords" content="GNU Info: 12. Customizing Key Bindings and Variables">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 12. Customizing Key Bindings and Variables </h1>
+<h1 class="chapter"> 12. Customizing Key Bindings and Variables </h1>
 
 <p>For those whose editor/pager of choice is not Emacs and who are not
 entirely satisfied with the --vi-keys option (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>), GNU
@@ -78,7 +93,7 @@ key bindings and variable settings contained therein.
 efficiency and because its design was lifted wholesale from the GNU Less
 program, which also does it that way.  It must be created by compiling a
 textual source file using the <code>infokey</code> command.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC18">12.1 Invoking <code>infokey</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC19">12.2 <code>infokey</code> source format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -103,14 +118,14 @@ textual source file using the <code>infokey</code> command.
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.1 Invoking <code>infokey</code> </h2>
+<h2 class="section"> 12.1 Invoking <code>infokey</code> </h2>
 
 <p><code>infokey</code> compiles a source file
 (`<tt>$HOME/.infokey</tt>'<a name="DOCF8" href="info-stnd_fot.html#FOOT8">(8)</a> by default) containing Info customizations
 into a binary format (`<tt>$HOME/.info</tt>' by default).  GNU Info reads
 the binary file at startup to override the default key bindings and
 variable definitions.  Synopsis:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 infokey [<var>option</var>...] [<var>input-file</var>]
 </pre></td></tr></table>
 <p>Besides the standard `<samp>--help</samp>' and `<samp>--version</samp>', the only
@@ -135,12 +150,12 @@ write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.2 <code>infokey</code> source format </h2>
+<h2 class="section"> 12.2 <code>infokey</code> source format </h2>
 
 <p>The format of the source file read by <code>infokey</code> is most easily
 illustrated by example.  For instance, here is a sample `<tt>.infokey</tt>'
 source file suitable for aficionados of <code>vi</code> or <code>less</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 #info
 j       next-line
 k       prev-line
@@ -179,7 +194,7 @@ The start of this section is indicated by a line containing just
 <code>#info</code> by itself.  If this is the first section in the source
 file, the <code>#info</code> line can be omitted.  The rest of this section
 consists of lines of the form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 <var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
 </pre></td></tr></table>
 <p>Whitespace is any sequence of one or more spaces and/or tabs.  Comment
@@ -285,7 +300,7 @@ default key binding may be disabled by overriding it in the `<tt>.info</tt>'
 file with the action <code>invalid</code>.  In addition, <em>all</em> default
 key bindings can be disabled by adding this line <em>anywhere</em> in the
 relevant section:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 #stop
 </pre></td></tr></table>
 <p>This will cause GNU Info to ignore all the default key commands for that

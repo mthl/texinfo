@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: A. @-Command List</title>
+<title>Texinfo: A. @-Command List</title>
 
-<meta name="description" content="GNU Texinfo 4.2: A. @-Command List">
-<meta name="keywords" content="GNU Texinfo 4.2: A. @-Command List">
+<meta name="description" content="Texinfo: A. @-Command List">
+<meta name="keywords" content="Texinfo: A. @-Command List">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,11 +77,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> A. @-Command List </h1>
+<h1 class="appendix"> A. @-Command List </h1>
 
 <p>Here is an alphabetical list of the @-commands in Texinfo.  Square
 brackets, <tt>[</tt> <tt>]</tt>, indicate optional arguments; an ellipsis,
-`<samp><small>...</small></samp>', indicates repeated text.
+`<samp><small class="dots">...</small></samp>', indicates repeated text.
 </p><dl compact="compact">
 <dt><code> @<var>whitespace</var>
 </code></dt>
@@ -336,9 +351,9 @@ object-oriented programming.  Takes three arguments: the category of
 thing being defined, the class to which it belongs, and its name.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deffnx <var>category</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deffnx <var>category</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a function, interactive command, or similar
 entity that may take arguments.  <code>@deffn</code> takes as arguments the
@@ -361,30 +376,30 @@ it in strings that precede and follow the text.  See section <a href="texinfo_19
 </code></dt>
 <dd><p>This command formats a description for an instance variable in
 object-oriented programming.  The command is equivalent to `<samp>@defcv
-{Instance Variable} <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+{Instance Variable} <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @defmac <var>macroname</var> <var>arguments</var><small>...</small>
+<dt><code> @defmac <var>macroname</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @defmacx <var>macroname</var> <var>arguments</var><small>...</small>
+<dt><code> @defmacx <var>macroname</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a macro.  The command is equivalent to
-`<samp>@deffn Macro <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+`<samp>@deffn Macro <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @defmethod <var>class</var> <var>method-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defmethod <var>class</var> <var>method-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @defmethodx <var>class</var> <var>method-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defmethodx <var>class</var> <var>method-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a method in object-oriented programming.  The
-command is equivalent to `<samp>@defop Method <small>...</small></samp>'.  Takes as
+command is equivalent to `<samp>@defop Method <small class="dots">...</small></samp>'.  Takes as
 arguments the name of the class of the method, the name of the
 method, and its arguments, if any.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @defopx <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defopx <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for an operation in object-oriented programming.
 <code>@defop</code> takes as arguments the overall name of the category of
@@ -396,29 +411,29 @@ operation, and its arguments, if any.  See section <a href="texinfo_16.html#SEC2
 <dt><code> @defoptx <var>option-name</var>
 </code></dt>
 <dd><p>Format a description for a user option.  The command is equivalent to
-`<samp>@defvr {User Option} <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+`<samp>@defvr {User Option} <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @defspec <var>special-form-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defspec <var>special-form-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @defspecx <var>special-form-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defspecx <var>special-form-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a special form.  The command is equivalent to
-`<samp>@deffn {Special Form} <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>,
+`<samp>@deffn {Special Form} <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>,
 and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @deftp <var>category</var> <var>name-of-type</var> <var>attributes</var><small>...</small>
+<dt><code> @deftp <var>category</var> <var>name-of-type</var> <var>attributes</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deftpx <var>category</var> <var>name-of-type</var> <var>attributes</var><small>...</small>
+<dt><code> @deftpx <var>category</var> <var>name-of-type</var> <var>attributes</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a data type.  <code>@deftp</code> takes as arguments
 the category, the name of the type (which is a word like `<samp>int</samp>' or
 `<samp>float</samp>'), and then the names of attributes of objects of that type.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC224">Data Types</a>.
 </p></dd>
-<dt><code> @deftypefn <var>classification</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefn <var>classification</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deftypefnx <var>classification</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefnx <var>classification</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a function or similar entity that may take
 arguments and that is typed.  <code>@deftypefn</code> takes as arguments the
@@ -426,12 +441,12 @@ classification of entity being described, the type, the name of the
 entity, and its arguments, if any.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @deftypefun <var>data-type</var> <var>function-name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefun <var>data-type</var> <var>function-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deftypefunx <var>data-type</var> <var>function-name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefunx <var>data-type</var> <var>function-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a function in a typed language.
-The command is equivalent to `<samp>@deftypefn Function <small>...</small></samp>'.
+The command is equivalent to `<samp>@deftypefn Function <small class="dots">...</small></samp>'.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
 <dt><code> @deftypeivar <var>class</var> <var>data-type</var> <var>variable-name</var>
@@ -441,16 +456,16 @@ See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a hre
 <dd><p>Format a description for a typed instance variable in object-oriented
 programming. See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC223">Object-Oriented Programming</a>.
 </p></dd>
-<dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>method-name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>method-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deftypemethodx <var>class</var> <var>data-type</var> <var>method-name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypemethodx <var>class</var> <var>data-type</var> <var>method-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a typed method in object-oriented programming.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @deftypeopx <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypeopx <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for a typed operation in object-oriented programming.
 See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC223">Object-Oriented Programming</a>.
@@ -460,7 +475,7 @@ See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a hre
 <dt><code> @deftypevarx <var>data-type</var> <var>variable-name</var>
 </code></dt>
 <dd><p>Format a description for a variable in a typed language.  The command is
-equivalent to `<samp>@deftypevr Variable <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
+equivalent to `<samp>@deftypevr Variable <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
 <dt><code> @deftypevr <var>classification</var> <var>data-type</var> <var>name</var>
 </code></dt>
@@ -471,12 +486,12 @@ language--an entity that records a value.  Takes as arguments the
 classification of entity being described, the type, and the name of the
 entity.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
-<dt><code> @defun <var>function-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defun <var>function-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
-<dt><code> @defunx <var>function-name</var> <var>arguments</var><small>...</small>
+<dt><code> @defunx <var>function-name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Format a description for functions.  The command is equivalent to
-`<samp>@deffn Function <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+`<samp>@deffn Function <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
 <dt><code> @defvar <var>variable-name</var>
@@ -484,7 +499,7 @@ entity.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, a
 <dt><code> @defvarx <var>variable-name</var>
 </code></dt>
 <dd><p>Format a description for variables.  The command is equivalent to
-`<samp>@defvr Variable <small>...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
+`<samp>@defvr Variable <small class="dots">...</small></samp>'.  See section <a href="texinfo_16.html#SEC214">Definition Commands</a>, and
 <a href="texinfo_16.html#SEC217">Def Cmds in Detail</a>.
 </p></dd>
 <dt><code> @defvr <var>category</var> <var>name</var>
@@ -550,7 +565,7 @@ See section <a href="texinfo_14.html#SEC183">Inserting Accents</a>.
 </p></dd>
 <dt><code> @dots{}
 </code></dt>
-<dd><p>Insert an ellipsis: `<samp><small>...</small></samp>'.
+<dd><p>Insert an ellipsis: `<samp><small class="dots">...</small></samp>'.
 See section <a href="texinfo_14.html#SEC185"><code>@dots</code></a>.
 </p></dd>
 <dt><code> @email{<var>address</var>[, <var>displayed-text</var>]}
@@ -574,7 +589,7 @@ See section <a href="texinfo_10.html#SEC128"><code>@env</code></a>.
 </p></dd>
 <dt><code> @enddots{}
 </code></dt>
-<dd><p>Generate an end-of-sentence of ellipsis, like this <small>....</small>
+<dd><p>Generate an end-of-sentence of ellipsis, like this <small class="enddots">....</small>
 See section <a href="texinfo_14.html#SEC185"><code>@dots{}</code></a>.
 </p></dd>
 <dt><code> @enumerate [<var>number-or-letter</var>]
@@ -1080,30 +1095,30 @@ menus rather than tables of contents.  A synonym for
 <dt><code> @smallbook
 </code></dt>
 <dd><p>Cause TeX to produce a printed manual in a 7 by 9.25 inch format
-rather than the regular 8.5 by 11 inch format.  See section <a href="texinfo_20.html#SEC255">Printing Small Books</a>.  Also, see <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>.
+rather than the regular 8.5 by 11 inch format.  See section <a href="texinfo_20.html#SEC255">Printing Small Books</a>.  Also, see <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
 </p></dd>
 <dt><code> @smalldisplay
 </code></dt>
 <dd><p>Begin a kind of example.  Like <code>@smallexample</code> (narrow margins, no
 filling), but do not select the fixed-width font.  Pair with <code>@end
-smalldisplay</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>.
+smalldisplay</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
 </p></dd>
 <dt><code> @smallexample
 </code></dt>
 <dd><p>Indent text to indicate an example.  Do not fill, select fixed-width
 font, narrow the margins.  In printed manuals, print text in a smaller
 font than with <code>@example</code>.  Pair with <code>@end smallexample</code>.
-See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>.
+See section <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
 </p></dd>
 <dt><code> @smallformat
 </code></dt>
 <dd><p>Begin a kind of example.  Like <code>@smalldisplay</code>, but do not narrow
-the margins.  Pair with <code>@end smallformat</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>.
+the margins.  Pair with <code>@end smallformat</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
 </p></dd>
 <dt><code> @smalllisp
 </code></dt>
 <dd><p>Begin an example of Lisp code.  Same as <code>@smallexample</code>.  Pair
-with <code>@end smalllisp</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>.
+with <code>@end smalllisp</code>.  See section <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
 </p></dd>
 <dt><code> @sp <var>n</var>
 </code></dt>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy</title>
+<title>Texinfo: 19. Formatting and Printing Hardcopy</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy">
-<meta name="keywords" content="GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy">
+<meta name="description" content="Texinfo: 19. Formatting and Printing Hardcopy">
+<meta name="keywords" content="Texinfo: 19. Formatting and Printing Hardcopy">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 19. Formatting and Printing Hardcopy </h1>
+<h1 class="chapter"> 19. Formatting and Printing Hardcopy </h1>
 
 <p>There are three major shell commands for making a printed manual from a
 Texinfo file: one for converting the Texinfo file into a file that will be
@@ -75,7 +90,7 @@ mode instead of shell commands.  In addition to the three commands to
 format a file, sort the indices, and print the result, Texinfo mode
 offers key bindings for commands to recenter the output buffer, show the
 print queue, and delete a job from the print queue.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC245">19.1 Use TeX</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Use TeX to format for hardcopy.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC246">19.2 Format with <code>tex</code> and <code>texindex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to format with explicit shell commands.</td></tr>
@@ -114,7 +129,7 @@ print queue, and delete a job from the print queue.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.1 Use TeX </h2>
+<h2 class="section"> 19.1 Use TeX </h2>
 
 <p>The typesetting program called TeX is used for formatting a Texinfo
 file.  TeX is a very powerful typesetting program and, if used correctly,
@@ -142,11 +157,11 @@ process them differently to make an Info file (see section <a href="texinfo_21.h
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.2 Format with <code>tex</code> and <code>texindex</code> </h2>
+<h2 class="section"> 19.2 Format with <code>tex</code> and <code>texindex</code> </h2>
 
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 tex foo.texi
 </pre></td></tr></table>
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
@@ -175,7 +190,7 @@ arguments to give to <code>texindex</code>.
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use `<samp>??</samp>' as shell wildcards and give the command in this
 form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texindex foo.??
 </pre></td></tr></table>
 <p>This command will run <code>texindex</code> on all the unsorted index files,
@@ -233,7 +248,7 @@ avoid them with the <code>@novalidate</code> command, which you must give
 <em>before</em> the <code>@setfilename</code> command
 (see section <a href="texinfo_4.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @novalidate
 @setfilename myfile.info
@@ -261,7 +276,7 @@ your file would look approximately like this:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.3 Format with <code>texi2dvi</code> </h2>
+<h2 class="section"> 19.3 Format with <code>texi2dvi</code> </h2>
 
 <p>The <code>texi2dvi</code> command automatically runs both <code>tex</code> and
 <code>texindex</code> as many times as necessary to produce a DVI file with
@@ -270,7 +285,7 @@ sorted indices and all cross-references resolved.  It simplifies the
 described in the previous section.
 </p><p>To run <code>texi2dvi</code> on an input file `<tt>foo.texi</tt>', do this (where
 `<samp>prompt$ </samp>' is your shell prompt):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 prompt$ <kbd>texi2dvi foo.texi</kbd>
 </pre></td></tr></table>
 <p>As shown in this example, the input filenames to <code>texi2dvi</code> must
@@ -307,14 +322,14 @@ see section <a href="#SEC253">Preparing for TeX</a>).
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.4 Shell Print Using <code>lpr -d</code> </h2>
+<h2 class="section"> 19.4 Shell Print Using <code>lpr -d</code> </h2>
 
 <p>The precise command to print a DVI file depends on your system
 installation.  Two common ones are `<samp>dvips foo.dvi -o</samp>' and `<samp>lpr
 -d foo.dvi</samp>'.  
 </p><p>For example, the following commands will (perhaps) suffice to sort the
 indices, format, and print the <cite>Bison Manual</cite>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 tex bison.texinfo
 texindex bison.??
 tex bison.texinfo
@@ -323,7 +338,7 @@ lpr -d bison.dvi
 <p>(Remember that the shell commands may be different at your site; but
 these are commonly used versions.)
 </p><p>Using the <code>texi2dvi</code> shell script (see the previous section):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texi2dvi bison.texinfo
 lpr -d bison.dvi
 # or perhaps dvips bison.dvi -o
@@ -347,7 +362,7 @@ should be able to set up your network software to send files to that
 queue.  In some cases, the version of <code>lpr</code> which comes with your
 network software will have a special option to send a file to specific
 queues, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 lpr -Qdvi -hprint.server.domain bison.dvi
 </pre></td></tr></table>
 </li><li><p> Convert the DVI file to a Postscript or PCL file and send it to your
@@ -376,7 +391,7 @@ directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.5 From an Emacs Shell </h2>
+<h2 class="section"> 19.5 From an Emacs Shell </h2>
 
 <p>You can give formatting and printing commands from a shell within GNU
 Emacs.  To create a shell within Emacs, type <kbd>M-x shell</kbd>.  In this
@@ -387,7 +402,7 @@ on a slow machine, this can be very convenient.
 </p><p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
 here is how to use <code>texi2dvi</code> to format and print <cite>Using and
 Porting GNU CC</cite> from a shell within Emacs:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texi2dvi gcc.texinfo
 lpr -d gcc.dvi
 </pre></td></tr></table>
@@ -412,7 +427,7 @@ and printing in Texinfo mode.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.6 Formatting and Printing in Texinfo Mode </h2>
+<h2 class="section"> 19.6 Formatting and Printing in Texinfo Mode </h2>
 
 <p>Texinfo mode provides several predefined key commands for TeX
 formatting and printing.  These include commands for sorting indices,
@@ -487,7 +502,7 @@ commands are run to show its most recent output.
 
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
@@ -501,7 +516,7 @@ and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
 as you would any other shell buffer.
 </p><p>The formatting and print commands depend on the values of several variables.
 The default values are:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
      Variable                              Default value
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
@@ -543,7 +558,7 @@ the <kbd>M-x customize</kbd> command.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.7 Using the Local Variables List </h2>
+<h2 class="section"> 19.7 Using the Local Variables List </h2>
 
 <p>Yet another way to apply the TeX formatting command to a Texinfo file
 is to put that command in a <em>local variables list</em> at the end of the
@@ -553,7 +568,7 @@ commands as a <code>compile-command</code> and have Emacs run it by typing
 `<tt>*compilation*</tt>' buffer in which Emacs runs the compile command.
 For example, at the end of the `<tt>gdb.texinfo</tt>' file, after the
 <code>@bye</code>, you could put the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
@@ -579,11 +594,11 @@ this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.8 TeX Formatting Requirements Summary </h2>
+<h2 class="section"> 19.8 TeX Formatting Requirements Summary </h2>
 
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
 </pre></td></tr></table>
@@ -591,7 +606,7 @@ this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section
 process a Texinfo file and the second command opens auxiliary files.
 </p><p>Every Texinfo file must end with a line that terminates TeX's
 processing and forces out unfinished pages:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @bye
 </pre></td></tr></table>
 <p>Strictly speaking, these lines are all a Texinfo file needs to be
@@ -630,7 +645,7 @@ contents.  (And of course most manuals contain a body of text as well.)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.9 Preparing for TeX </h2>
+<h2 class="section"> 19.9 Preparing for TeX </h2>
 
 <p>TeX needs to know where to find the `<tt>texinfo.tex</tt>' file that the
 `<samp>\input texinfo</samp>' command on the first line reads.  The
@@ -672,22 +687,22 @@ might read), is to set the <code>TEXINPUTS</code> environment variable in your
 `<tt>.cshrc</tt>' or `<tt>.profile</tt>' file.
 </p><p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
 whether you use a Bourne shell-compatible (<code>sh</code>, <code>bash</code>,
-<code>ksh</code>, <small>...</small>) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
+<code>ksh</code>, <small class="dots">...</small>) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
 command interpreter.  The latter read the `<tt>.cshrc</tt>' file for
 initialization information, and the former read `<tt>.profile</tt>'.
 </p><p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
 sequence:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>In a `<tt>.profile</tt>' file, you could use the following <code>sh</code> command
 sequence:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
 </pre></td></tr></table>
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>It is customary for DOS/Windows users to put such commands in the
@@ -702,7 +717,7 @@ directory `<tt>/usr/lib/tex/macros</tt>'.
 disadvantage is that then updating `<tt>texinfo.tex</tt>' requires
 redumping.)  You can do this by running this command, assuming
 `<tt>epsf.tex</tt>' is findable by TeX:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 initex texinfo @dump
 </pre></td></tr></table>
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to
@@ -727,14 +742,14 @@ subdirectory `<tt>web2c</tt>' of your TeX installation.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.10 Overfull &quot;hboxes&quot; </h2>
+<h2 class="section"> 19.10 Overfull &quot;hboxes&quot; </h2>
 
 <p>TeX is sometimes unable to typeset a line without extending it into
 the right margin.  This can occur when TeX comes upon what it
 interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 <a name="IDX343"></a>
@@ -754,7 +769,7 @@ can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you're lucky) avoiding many of the bad line breaks,
 like this:
 </p><a name="IDX344"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 @tex
 \global\emergencystretch = .9\hsize
 @end tex
@@ -776,7 +791,7 @@ problem if you are correcting a draft.
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @finalout
 </pre></td></tr></table>
 <hr size="6">
@@ -798,14 +813,14 @@ before the <code>@titlepage</code> command:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.11 Printing &quot;Small&quot; Books </h2>
+<h2 class="section"> 19.11 Printing &quot;Small&quot; Books </h2>
 
 <p>By default, TeX typesets pages for printing in an 8.5 by 11 inch
 format.  However, you can direct TeX to typeset a document in a 7 by
 9.25 inch format that is suitable for bound books by inserting the
 following command on a line by itself at the beginning of the Texinfo
 file, before the title page:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @smallbook
 </pre></td></tr></table>
 <p>(Since many books are about 7 by 9.25 inches, this command might better
@@ -815,7 +830,7 @@ called the <code>@smallbook</code> command by comparison to the 8.5 by 11 inch f
 start-of-header and end-of-header lines, the Texinfo mode TeX
 region formatting command, <code>texinfo-tex-region</code>, will format the
 region in &quot;small&quot; book size (see section <a href="texinfo_4.html#SEC45">Start of Header</a>).
-</p><p>See section <a href="texinfo_11.html#SEC148"><code>@small<small>...</small></code> Block Commands</a>, for information about
+</p><p>See section <a href="texinfo_11.html#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>, for information about
 commands that make it easier to produce examples for a smaller manual.
 </p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format with <code>@smallbook</code> that do not
 require changing the source file.
@@ -838,14 +853,14 @@ require changing the source file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.12 Printing on A4 Paper </h2>
+<h2 class="section"> 19.12 Printing on A4 Paper </h2>
 
 <p>You can tell TeX to format a document for printing on European size
 A4 paper (or A5) with the <code>@afourpaper</code> (or <code>@afivepaper</code>)
 command.  Write the command on a line by itself near the beginning of
 the Texinfo file, before the title page.  For example, this is how you
 would write the header for this manual:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo    @c -*-texinfo-*-
 @c %**start of header
 @setfilename texinfo
@@ -879,16 +894,16 @@ wide format.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes </h2>
+<h2 class="section"> 19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes </h2>
 
 <p>You can explicitly specify the height and (optionally) width of the main
 text area on the page with the <code>@pagesizes</code> command.  Write this
 on a line by itself near the beginning of the Texinfo file, before the
 title page.  The height comes first, then the width if desired,
 separated by a comma.  Examples:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @pagesizes 200mm,150mm  </pre></td></tr></table><p>and
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @pagesizes 11.5in      </pre></td></tr></table>
 <a name="IDX352"></a>
 <a name="IDX353"></a>
@@ -922,13 +937,13 @@ require changing the source file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.14 Cropmarks and Magnification </h2>
+<h2 class="section"> 19.14 Cropmarks and Magnification </h2>
 <p>You can (attempt to) direct TeX to print cropmarks at the corners of
 pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</code>
 command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @iftex
 @cropmarks
 @end iftex
@@ -955,7 +970,7 @@ write this command between <code>@tex</code> and <code>@end tex</code>
 is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @tex
 \mag=1200
 @end tex
@@ -986,7 +1001,7 @@ magnifications.  Be prepared to experiment.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.15 PDF Output </h2>
+<h2 class="section"> 19.15 PDF Output </h2>
 
 <p>You can generate a PDF output file from Texinfo source by using the
 <code>pdftex</code> program to process your file instead of plain

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 16. Conditionally Visible Text</title>
+<title>Texinfo: 16. Conditionally Visible Text</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 16. Conditionally Visible Text">
-<meta name="keywords" content="GNU Texinfo 4.2: 16. Conditionally Visible Text">
+<meta name="description" content="Texinfo: 16. Conditionally Visible Text">
+<meta name="keywords" content="Texinfo: 16. Conditionally Visible Text">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 16. Conditionally Visible Text </h1>
+<h1 class="chapter"> 16. Conditionally Visible Text </h1>
 
 <p>Sometimes it is good to use different text for different output formats.
 For example, you can use the <em>conditional commands</em> to specify
@@ -77,7 +92,7 @@ different text for the printed manual and the Info output.
 Substituting text for all formats, and testing if a flag is set or clear.
 </p></li></ul>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC228">16.1 Conditional Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying text for HTML, Info, or TeX.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC229">16.2 Conditional Not Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying text for not HTML, Info, or TeX.</td></tr>
@@ -106,7 +121,7 @@ Substituting text for all formats, and testing if a flag is set or clear.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 16.1 Conditional Commands </h2>
+<h2 class="section"> 16.1 Conditional Commands </h2>
 
 <p>Texinfo has a pair of commands for each output format, to allow
 conditional inclusion of text for a particular output format.
@@ -128,7 +143,7 @@ appear only in HTML output.  And for <code>@ifplaintext</code> and
 <code>@end ifplaintext</code>, which specify text to appear only in plain
 text output.
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @iftex
 This text will appear only in the printed manual.
 @end iftex
@@ -166,17 +181,17 @@ version of the manual you are reading.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 16.2 Conditional Not Commands </h2>
+<h2 class="section"> 16.2 Conditional Not Commands </h2>
 
 <p>You can specify text to be included in any output format <em>other</em>
-than some given one with the <code>@ifnot<small>...</small></code> commands:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+than some given one with the <code>@ifnot<small class="dots">...</small></code> commands:
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @ifnothtml ... @end ifnothtml
 @ifnotinfo ... @end ifnotinfo
 @ifnotplaintext ... @end ifnotplaintext
 @ifnottex ... @end ifnottex
 </pre></td></tr></table>
-<p>(The <code>@ifnot<small>...</small></code> command and the <code>@end</code> command must
+<p>(The <code>@ifnot<small class="dots">...</small></code> command and the <code>@end</code> command must
 appear on lines by themselves in your actual source file.)
 </p><p>If the output file is <em>not</em> being made for the given format, the
 region is included.  Otherwise, it is ignored.
@@ -184,7 +199,7 @@ region is included.  Otherwise, it is ignored.
 text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 <code>@ifnotplaintext</code>, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 This will be in Info, but not plain text.
 </pre></td></tr></table>
 <p>The regions delimited by these commands are ordinary Texinfo source as
@@ -209,7 +224,7 @@ with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 16.3 Raw Formatter Commands </h2>
+<h2 class="section"> 16.3 Raw Formatter Commands </h2>
 
 <p>Inside a region delineated by <code>@iftex</code> and <code>@end iftex</code>, you
 can embed some raw TeX commands.  Info will ignore these commands
@@ -233,7 +248,7 @@ can be recognized properly.
 </p><a name="IDX292"></a>
 <p>For example, here is a mathematical expression written in
 plain TeX:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @tex
 $$ \chi^2 = \sum_{i=1}^N
           \left (y_i - (a + b x_i)
@@ -245,8 +260,8 @@ you are reading this in Info, you will not see the equation that appears
 in the printed manual.
 </p><a name="IDX293"></a>
 <a name="IDX294"></a>
-<p>Analogously, you can use <code>@ifhtml <small>...</small> @end ifhtml</code> to delimit
-a region to be included in HTML output only, and <code>@html <small>...</small>
+<p>Analogously, you can use <code>@ifhtml <small class="dots">...</small> @end ifhtml</code> to delimit
+a region to be included in HTML output only, and <code>@html <small class="dots">...</small>
 @end html</code> for a region of raw HTML (again, except that <code>@</code> is
 still the escape character, so the <code>@end</code> command can be
 recognized.)
@@ -269,7 +284,7 @@ recognized.)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 16.4 <code>@set</code>, <code>@clear</code>, and <code>@value</code> </h2>
+<h2 class="section"> 16.4 <code>@set</code>, <code>@clear</code>, and <code>@value</code> </h2>
 
 <p>You can direct the Texinfo formatting commands to format or ignore parts
 of a Texinfo file with the <code>@set</code>, <code>@clear</code>, <code>@ifset</code>,
@@ -298,7 +313,7 @@ is ignored.  If <var>flag</var> is clear, text through the following
 </p></dd>
 </dl>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC232">16.4.1 <code>@set</code> and <code>@value</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expand a flag variable to a string.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC233">16.4.2 <code>@ifset</code> and <code>@ifclear</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Format a region if a flag is set.</td></tr>
@@ -324,7 +339,7 @@ is ignored.  If <var>flag</var> is clear, text through the following
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 16.4.1 <code>@set</code> and <code>@value</code> </h3>
+<h3 class="subsection"> 16.4.1 <code>@set</code> and <code>@value</code> </h3>
 
 <p>You use the <code>@set</code> command to specify a value for a flag, which is
 later expanded by the <code>@value</code> command.
@@ -333,14 +348,14 @@ letters and numerals in a flag name, not `<samp>-</samp>' or `<samp>_</samp>'--t
 will work in some contexts, but not all, due to limitations in TeX.
 </p><p>The value is the remainder of the input line, and can contain anything.
 </p><p>Write the <code>@set</code> command like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo This is a string.
 </pre></td></tr></table>
 <p>This sets the value of the flag <code>foo</code> to &quot;This is a string.&quot;.
 </p><p>The Texinfo formatters then replace an <code>@value{<var>flag</var>}</code>
 command with the string to which <var>flag</var> is set.  Thus, when
 <code>foo</code> is set as shown above, the Texinfo formatters convert this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @value{foo}
 to this:
 This is a string.
@@ -348,28 +363,28 @@ This is a string.
 <p>You can write an <code>@value</code> command within a paragraph; but you
 must write an <code>@set</code> command on a line of its own.
 </p><p>If you write the <code>@set</code> command like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo
 </pre></td></tr></table>
 <p>without specifying a string, the value of <code>foo</code> is the empty string.
 </p><p>If you clear a previously set flag with <code>@clear <var>flag</var></code>, a
 subsequent <code>@value{flag}</code> command will report an error.
 </p><p>For example, if you set <code>foo</code> as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set how-much very, very, very
 </pre></td></tr></table>
 <p>then the formatters transform
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
 into
 It is a very, very, very wet day.
 </pre></td></tr></table>
 <p>If you write
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @clear how-much
 </pre></td></tr></table>
 <p>then the formatters transform
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
 into
 It is a {No value for &quot;how-much&quot;} wet day.
@@ -393,7 +408,7 @@ It is a {No value for &quot;how-much&quot;} wet day.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 16.4.2 <code>@ifset</code> and <code>@ifclear</code> </h3>
+<h3 class="subsection"> 16.4.2 <code>@ifset</code> and <code>@ifclear</code> </h3>
 
 <p>When a <var>flag</var> is set, the Texinfo formatting commands format text
 between subsequent pairs of <code>@ifset <var>flag</var></code> and <code>@end
@@ -402,7 +417,7 @@ commands do <em>not</em> format the text.  <code>@ifclear</code> operates
 analogously.
 </p><p>Write the conditionally formatted text between <code>@ifset <var>flag</var></code>
 and <code>@end ifset</code> commands, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifset <var>flag</var>
 <var>conditional-text</var>
 @end ifset
@@ -410,7 +425,7 @@ and <code>@end ifset</code> commands, like this:
 <p>For example, you can create one document that has two variants, such as
 a manual for a `large' and `small' model:
 </p><a name="IDX295"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 You can use this machine to dig up shrubs
 without hurting them.
 
@@ -436,7 +451,7 @@ ignore the text between the <code>@ifset large</code> and <code>@end ifset</code
 commands.  In the formatted output, that text does not appear; in both
 printed and Info output, you see only the lines that say, &quot;You can use
 this machine to dig up shrubs without hurting them.  Remember to replant
-promptly <small>...</small>&quot;.
+promptly <small class="dots">...</small>&quot;.
 </p><a name="IDX296"></a>
 <p>If a flag is cleared with an <code>@clear <var>flag</var></code> command, then
 the formatting commands format text between subsequent pairs of
@@ -445,7 +460,7 @@ is set with <code>@set <var>flag</var></code>, then the formatting commands do
 <em>not</em> format text between an <code>@ifclear</code> and an <code>@end
 ifclear</code> command; rather, they ignore that text.  An <code>@ifclear</code>
 command looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifclear <var>flag</var>
 </pre></td></tr></table>
 <hr size="6">
@@ -467,7 +482,7 @@ command looks like this:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 16.4.3 <code>@value</code> Example </h3>
+<h3 class="subsection"> 16.4.3 <code>@value</code> Example </h3>
 
 <p>You can use the <code>@value</code> command to minimize the number of places
 you need to change when you record an update to a manual.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>, for an example of this same principle can work with
@@ -476,7 +491,7 @@ Automake distributions, and full texts.
 </p><ol>
 <li><p>
 Set the flags:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
@@ -484,7 +499,7 @@ Set the flags:
 </pre></td></tr></table>
 </li><li><p>
 Write text for the <code>@copying</code> section (see section <a href="texinfo_4.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @copying
 This is Edition @value{EDITION},
 last updated @value{UPDATED},
@@ -498,7 +513,7 @@ Permission is granted ...
 </pre></td></tr></table>
 </li><li><p>
 Write text for the title page, for people reading the printed manual:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @title GNU Make
 @subtitle A Program for Directing Recompilation
@@ -513,7 +528,7 @@ Write text for the title page, for people reading the printed manual:
 fussy than a date listing the day as well as the month and year.)
 </p></li><li><p>
 Write text for the Top node, for people reading the Info file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifnottex
 @node Top
 @top Make
@@ -524,7 +539,7 @@ Write text for the Top node, for people reading the Info file:
 </pre></td></tr></table>
 <p>After you format the manual, the <code>@value</code> constructs have been
 expanded, so the output contains text like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is Edition 0.35 Beta, last updated 14 August 1992,
 of `The GNU Make Manual', for `make', Version 3.63 Beta.
 </pre></td></tr></table></li></ol>

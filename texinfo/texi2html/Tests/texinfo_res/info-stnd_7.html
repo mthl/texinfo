@@ -32,14 +32,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Info 4.2: 7. Selecting Cross References</title>
+<title>GNU Info: 7. Selecting Cross References</title>
 
-<meta name="description" content="GNU Info 4.2: 7. Selecting Cross References">
-<meta name="keywords" content="GNU Info 4.2: 7. Selecting Cross References">
+<meta name="description" content="GNU Info: 7. Selecting Cross References">
+<meta name="keywords" content="GNU Info: 7. Selecting Cross References">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,14 +78,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 7. Selecting Cross References </h1>
+<h1 class="chapter"> 7. Selecting Cross References </h1>
 
 <p>We have already discussed the `<samp>Next</samp>', `<samp>Prev</samp>', and `<samp>Up</samp>'
 pointers which appear at the top of a node.  In addition to these
 pointers, a node may contain other pointers which refer you to a
 different node, perhaps in another Info file.  Such pointers are called
 <em>cross references</em>, or <em>xrefs</em> for short.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC8">7.1 Parts of an Xref</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a cross reference is made of.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC9">7.2 Selecting Xrefs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for selecting menu or note items.</td></tr>
@@ -95,7 +110,7 @@ different node, perhaps in another Info file.  Such pointers are called
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.1 Parts of an Xref </h2>
+<h2 class="section"> 7.1 Parts of an Xref </h2>
 
 <p>Cross references have two major parts: the first part is called the
 <em>label</em>; it is the name that you can use to refer to the cross
@@ -105,7 +120,7 @@ the node that the cross reference points to.
 label appears, and then the target.  For example, in the sample menu
 cross reference below, the single colon separates the label from the
 target.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Foo Label: Foo Target.        More information about Foo.
 </pre></td></tr></table>
 <p>Note the `<samp>.</samp>' which ends the name of the target.  The `<samp>.</samp>' is
@@ -113,7 +128,7 @@ not part of the target; it serves only to let Info know where the target
 name ends.
 </p><p>A shorthand way of specifying references allows two adjacent colons to
 stand for a target name which is the same as the label name:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Foo Commands::                Commands pertaining to Foo.
 </pre></td></tr></table>
 <p>In the above example, the name of the target is the same as the name of
@@ -150,17 +165,17 @@ references.
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.2 Selecting Xrefs </h2>
+<h2 class="section"> 7.2 Selecting Xrefs </h2>
 
 <p>The following table lists the Info commands which operate on menu items.
 </p><dl compact="compact">
 <dt> <kbd>1</kbd> (<code>menu-digit</code>)
 </dt>
-<dt> <kbd>2</kbd> <small>...</small> <kbd>9</kbd>
+<dt> <kbd>2</kbd> <small class="dots">...</small> <kbd>9</kbd>
 </dt>
 <dt> <kbd>M-1</kbd>, vi-like operation
 </dt>
-<dt> <kbd>M-2</kbd> <small>...</small> <kbd>M-9</kbd>, vi-like operation
+<dt> <kbd>M-2</kbd> <small class="dots">...</small> <kbd>M-9</kbd>, vi-like operation
 </dt>
 <dd><p><a name="IDX192"></a>
 <a name="IDX193"></a>

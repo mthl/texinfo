@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 4. Ending a Texinfo File</title>
+<title>Texinfo: 4. Ending a Texinfo File</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 4. Ending a Texinfo File">
-<meta name="keywords" content="GNU Texinfo 4.2: 4. Ending a Texinfo File">
+<meta name="description" content="Texinfo: 4. Ending a Texinfo File">
+<meta name="keywords" content="Texinfo: 4. Ending a Texinfo File">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,14 +77,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 4. Ending a Texinfo File </h1>
+<h1 class="chapter"> 4. Ending a Texinfo File </h1>
 
 <p>The end of a Texinfo file should include commands to create indices and
 (perhaps) to generate both the full and summary tables of contents.
 Finally, it must include the <code>@bye</code> command that marks the last
 line to be processed.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Index
 @unnumbered Index
 
@@ -80,7 +95,7 @@ line to be processed.
 
 @bye
 </pre></td></tr></table>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC69">4.1 Printing Indices and Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to print an index in hardcopy and
                                   generate index menus in Info.</td></tr>
@@ -107,7 +122,7 @@ line to be processed.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.1 Printing Indices and Menus </h2>
+<h2 class="section"> 4.1 Printing Indices and Menus </h2>
 
 <p>To print an index means to include it as part of a manual or Info file.
 This does not happen automatically just because you use <code>@cindex</code>
@@ -162,7 +177,7 @@ command with a suitable section or chapter command (usually
 and put the index into the table of contents.  Precede the
 <code>@unnumbered</code> command with an <code>@node</code> line.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @node Variable Index
 @unnumbered Variable Index
 
@@ -195,7 +210,7 @@ since then readers have only one place to look (see section <a href="texinfo_13.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.2 Generating a Table of Contents </h2>
+<h2 class="section"> 4.2 Generating a Table of Contents </h2>
 
 <p>The <code>@chapter</code>, <code>@section</code>, and other structuring commands
 supply the information to make up a table of contents, but they do not
@@ -259,11 +274,11 @@ contents after the <code>@end titlepage</code>; the second prints both the
 short contents and the main contents.  In either case, any subsequent
 <code>@contents</code> or <code>@shortcontents</code> is ignored (unless no
 <code>@end titlepage</code> is ever encountered).
-</p><p>You need to include the <code>@set<small>...</small>contentsaftertitlepage</code>
+</p><p>You need to include the <code>@set<small class="dots">...</small>contentsaftertitlepage</code>
 commands early in the document (just after <code>@setfilename</code>, for
 example).  We recommend using <code>texi2dvi</code> (see section <a href="texinfo_20.html#SEC247">Format with <code>texi2dvi</code></a>) to specify this without altering the source file at all.  For
 example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
 </pre></td></tr></table>
 <hr size="6">
@@ -285,7 +300,7 @@ texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.3 <code>@bye</code> File Ending </h2>
+<h2 class="section"> 4.3 <code>@bye</code> File Ending </h2>
 
 <p>An <code>@bye</code> command terminates TeX or Info formatting.  None of
 the formatting commands reading anything following <code>@bye</code>.  The
@@ -293,7 +308,7 @@ the formatting commands reading anything following <code>@bye</code>.  The
 </p><p>If you wish, you may follow the <code>@bye</code> line with notes. These
 notes will not be formatted and will not appear in either Info or a
 printed manual; it is as if text after <code>@bye</code> were within
-<code>@ignore</code> <small>...</small> <code>@end ignore</code>.  Also, you may follow the
+<code>@ignore</code> <small class="dots">...</small> <code>@end ignore</code>.  Also, you may follow the
 <code>@bye</code> line with a local variables list for Emacs.
 See section <a href="texinfo_20.html#SEC251">Using Local Variables and the Compile Command</a>,
 for more information.

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 14. Making and Preventing Breaks</title>
+<title>Texinfo: 14. Making and Preventing Breaks</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
-<meta name="keywords" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
+<meta name="description" content="Texinfo: 14. Making and Preventing Breaks">
+<meta name="keywords" content="Texinfo: 14. Making and Preventing Breaks">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 14. Making and Preventing Breaks </h1>
+<h1 class="chapter"> 14. Making and Preventing Breaks </h1>
 
 <p>Usually, a Texinfo file is processed both by TeX and by one of the
 Info formatting commands.  Line, paragraph, or page breaks sometimes
@@ -78,7 +93,7 @@ two pages.  Conversely, you may want to force a page break where none
 would occur normally.  Fortunately, problems like these do not often
 arise.  When they do, use the break, break prevention, or pagination
 commands.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD192">* Break Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Cause and prevent splits.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC207">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to force a single line to use two lines.</td></tr>
@@ -92,7 +107,7 @@ commands.
 
 <a name="NOD192"></a>
 <a name="SEC206"></a>
-<h2> Break Commands </h2>
+<h2 class="heading"> Break Commands </h2>
 
 <p>The break commands create or allow line and paragraph breaks:
 </p><dl compact="compact">
@@ -159,16 +174,16 @@ files do not have pages.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.1 <code>@*</code>: Generate Line Breaks </h2>
+<h2 class="section"> 14.1 <code>@*</code>: Generate Line Breaks </h2>
 
 <p>The <code>@*</code> command forces a line break in both the printed manual and
 in Info.
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line @* is broken @*in two places.
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line
  is broken
 in two places.
@@ -176,7 +191,7 @@ in two places.
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
 </p><p>The <code>@*</code> command is often used in a file's copyright page:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is edition 2.0 of the Texinfo documentation,@*
 and is for ...
 </pre></td></tr></table>
@@ -211,7 +226,7 @@ break.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate </h2>
+<h2 class="section"> 14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate </h2>
 
 <p>Although TeX's hyphenation algorithm is generally pretty good, it
 does miss useful hyphenation points from time to time.  (Or, far more
@@ -230,7 +245,7 @@ word containing <code>@-</code>.
 </code></dt>
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
 put a `<samp>-</samp>' at each hyphenation point.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @hyphenation{man-u-script man-u-scripts}
 </pre></td></tr></table><p>TeX only uses the specified hyphenation points when the
 words match exactly, so give all necessary variants.
@@ -257,14 +272,14 @@ words match exactly, so give all necessary variants.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks </h2>
+<h2 class="section"> 14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks </h2>
 
 <p><code>@w{<var>text</var>}</code> outputs <var>text</var> and prohibits line breaks
 within <var>text</var>.
 </p><p>You can use the <code>@w</code> command to prevent TeX from automatically
 hyphenating a long name or phrase that happens to fall near the end of a
 line.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 </pre></td></tr></table>
 <p>produces
@@ -277,7 +292,7 @@ You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 <p>You can also use <code>@w</code> to produce a non-breakable space:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 None of the formatters will break at this@w{ }space.
 </pre></td></tr></table>
 <hr size="6">
@@ -299,13 +314,13 @@ None of the formatters will break at this@w{ }space.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines </h2>
+<h2 class="section"> 14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines </h2>
 
 <p>A line beginning with and containing only <code>@sp <var>n</var></code>
 generates <var>n</var> blank lines of space in both the printed manual and
 the Info file.  <code>@sp</code> also forces a paragraph break.  For
 example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @sp 2
 </pre></td></tr></table>
 <p>generates two blank lines.
@@ -329,7 +344,7 @@ example,
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.5 <code>@page</code>: Start a New Page </h2>
+<h2 class="section"> 14.5 <code>@page</code>: Start a New Page </h2>
 
 <p>A line containing only <code>@page</code> starts a new page in a printed
 manual.  The command has no effect on Info files since they are not
@@ -354,7 +369,7 @@ section of a Texinfo file to start the copyright page.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.6 <code>@group</code>: Prevent Page Breaks </h2>
+<h2 class="section"> 14.6 <code>@group</code>: Prevent Page Breaks </h2>
 
 <p>The <code>@group</code> command (on a line by itself) is used inside an
 <code>@example</code> or similar construct to begin an unsplittable vertical
@@ -371,7 +386,7 @@ common is that each line of input produces a line of output.)  In
 other contexts, <code>@group</code> can cause anomalous vertical
 spacing.
 </p><p>This formatting requirement means that you should write:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @example
 @group
 ...
@@ -410,7 +425,7 @@ TeX.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks </h2>
+<h2 class="section"> 14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks </h2>
 
 <p>A line containing only <code>@need <var>n</var></code> starts
 a new page in a printed manual if fewer than <var>n</var> mils (thousandths
@@ -420,7 +435,7 @@ effect on Info files since they are not paginated.
 </p><p>This paragraph is preceded by an <code>@need</code> command that tells
 TeX to start a new page if fewer than 800 mils (eight-tenths
 inch) remain on the page.  It looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @need 800
 This paragraph is preceded by ...
 </pre></td></tr></table>

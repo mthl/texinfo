@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 6. Nodes</title>
+<title>Texinfo: 6. Nodes</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 6. Nodes">
-<meta name="keywords" content="GNU Texinfo 4.2: 6. Nodes">
+<meta name="description" content="Texinfo: 6. Nodes">
+<meta name="keywords" content="Texinfo: 6. Nodes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 6. Nodes </h1>
+<h1 class="chapter"> 6. Nodes </h1>
 
 <p><em>Nodes</em> are the primary segments of a Texinfo file.  They do not
 themselves impose a hierarchical or any other kind of structure on a file.
@@ -72,7 +87,7 @@ can carry you to a pointed-to node or to a node listed in a menu.  Node
 pointers and menus provide structure for Info files just as chapters,
 sections, subsections, and the like, provide structure for printed
 books.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC86">6.1 Two Paths</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Different commands to structure
                                   Info output and printed output.</td></tr>
@@ -101,7 +116,7 @@ books.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.1 Two Paths </h2>
+<h2 class="section"> 6.1 Two Paths </h2>
 
 <p>The node and menu commands and the chapter structuring commands are
 technically independent of each other:
@@ -146,7 +161,7 @@ matching structure in the Info output.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.2 Node and Menu Illustration </h2>
+<h2 class="section"> 6.2 Node and Menu Illustration </h2>
 
 <p>Here is a copy of the diagram shown earlier that illustrates a Texinfo
 file with three chapters, each of which contains two sections.
@@ -155,7 +170,7 @@ bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
 called the `Top' node, and `Up' node pointers carry you closer to the
 root.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
                           Top
                            |
          -------------------------------------
@@ -168,7 +183,7 @@ root.
    1.1      1.2       2.1      2.2       3.1      3.2
 </pre></td></tr></table>
 <p>The fully-written command to start Chapter 2 would be this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
 </pre></td></tr></table>
@@ -194,14 +209,14 @@ a chapter or chapter-level node.)
 <p>To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
 2.  (See section <a href="texinfo_8.html#SEC97">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     @menu
     * Sect. 2.1::    Description of this section.
     * Sect. 2.2::
     @end menu
 </pre></td></tr></table>
 <p>Write the node for Sect. 2.1 like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
@@ -219,7 +234,7 @@ which.)
 </p><p>Here is the beginning of the chapter in this manual called &quot;Ending a
 Texinfo File&quot;.  This shows an <code>@node</code> line followed by a comment
 line, an <code>@chapter</code> line, and then by indexing lines.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node    Ending a File, Structuring, Beginning a File, Top
 @comment node-name,     next,        previous,         up
 @chapter Ending a Texinfo File
@@ -246,7 +261,7 @@ line, an <code>@chapter</code> line, and then by indexing lines.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.3 The <code>@node</code> Command </h2>
+<h2 class="section"> 6.3 The <code>@node</code> Command </h2>
 
 <p>A <em>node</em> is a segment of text that begins at an <code>@node</code>
 command and continues until the next <code>@node</code> command.  The
@@ -287,7 +302,7 @@ Texinfo file that you intend to format for printing, even if you do not
 intend to format it for Info.  (Cross references, such as the one at the
 end of this sentence, are made with <code>@xref</code> and related commands;
 see <a href="texinfo_9.html#SEC104">Cross References</a>.)
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC89">6.3.1 Choosing Node and Pointer Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to choose node and pointer names.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC90">6.3.2 How to Write an <code>@node</code> Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to write an <code>@node</code> line.</td></tr>
@@ -316,7 +331,7 @@ see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.1 Choosing Node and Pointer Names </h3>
+<h3 class="subsection"> 6.3.1 Choosing Node and Pointer Names </h3>
 
 <p>The name of a node identifies the node.  The pointers enable
 you to reach other nodes and consist of the names of those nodes.
@@ -357,12 +372,12 @@ in the printed output.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.2 How to Write an <code>@node</code> Line </h3>
+<h3 class="subsection"> 6.3.2 How to Write an <code>@node</code> Line </h3>
 
 <p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
 at the beginning of a line and then the name of the node, like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node <var>node-name</var>
 </pre></td></tr></table>
 <p>If you are using GNU Emacs, you can use the update node commands
@@ -378,7 +393,7 @@ arguments are for which pointers.  This comment line is especially useful
 if you are not familiar with Texinfo.
 </p><p>The template for a fully-written-out node line with `Next', `Previous',
 and `Up' pointers looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first
@@ -413,7 +428,7 @@ much easier for people to find the node.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.3 <code>@node</code> Line Tips </h3>
+<h3 class="subsection"> 6.3.3 <code>@node</code> Line Tips </h3>
 
 <p>Here are three suggestions:
 </p><ul>
@@ -451,7 +466,7 @@ capitalized; others are not.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.4 <code>@node</code> Line Requirements </h3>
+<h3 class="subsection"> 6.3.4 <code>@node</code> Line Requirements </h3>
 
 <p>Here are several requirements for <code>@node</code> lines:
 </p><ul>
@@ -481,7 +496,7 @@ rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="texinfo_21.html#SEC265">Pointer Validation</a>.
 </p><p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
@@ -502,11 +517,11 @@ You cannot use parentheses in node names, because a node name such as
 Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 </p><p>For example, the following is a section title:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
 <p>The corresponding node name is:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 unnumberedsec appendixsec heading
 </pre></td></tr></table>
 <a name="IDX105"></a>
@@ -533,7 +548,7 @@ Case is significant.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.5 The First Node </h3>
+<h3 class="subsection"> 6.3.5 The First Node </h3>
 
 <p>The first node of a Texinfo file is the <em>Top</em> node, except in an
 included file (see section <a href="texinfo_25.html#SEC297">Include Files</a>).  The Top node should contain a
@@ -569,7 +584,7 @@ an Info file in the `<tt>info</tt>' directory.
 can maintain automatically with the texinfo mode commands):
 </p><p>Or you can leave the pointers off entirely and let the tools implicitly
 define them.  This is recommended.  Thus:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Top
 </pre></td></tr></table>
 <hr size="6">
@@ -591,7 +606,7 @@ define them.  This is recommended.  Thus:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.6 The <code>@top</code> Sectioning Command </h3>
+<h3 class="subsection"> 6.3.6 The <code>@top</code> Sectioning Command </h3>
 
 <p>A special sectioning command, <code>@top</code> should be used with the
 <code>@node Top</code> line.  The <code>@top</code> sectioning command tells
@@ -612,7 +627,7 @@ these formatters.  Also, you can use <code>@chapter</code> or
 <code>@unnumbered</code> when you use the Texinfo updating commands to
 create or update pointers and menus.
 </p><p>Thus, in practice, a Top node starts like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Top
 @top Your Manual Title
 </pre></td></tr></table>
@@ -635,7 +650,7 @@ create or update pointers and menus.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.4 Creating Pointers with <code>makeinfo</code> </h2>
+<h2 class="section"> 6.4 Creating Pointers with <code>makeinfo</code> </h2>
 
 <p>The <code>makeinfo</code> program has a feature for automatically defining
 node pointers for a hierarchically organized file.
@@ -677,19 +692,19 @@ printed.  In those cases, you will need to explicitly specify the pointers.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets </h2>
+<h2 class="section"> 6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets </h2>
 
 <p>An <em>anchor</em> is a position in your document, labeled so that
 cross-references can refer to it, just as they can to nodes.  You create
 an anchor with the <code>@anchor</code> command, and give the label as a
 normal brace-delimited argument.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This marks the @anchor{x-spot}spot.
 ...
 @xref{x-spot,,the spot}.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This marks the spot.
 ...
 See [the spot], page 1.

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 20. Creating and Installing Info Files</title>
+<title>Texinfo: 20. Creating and Installing Info Files</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 20. Creating and Installing Info Files">
-<meta name="keywords" content="GNU Texinfo 4.2: 20. Creating and Installing Info Files">
+<meta name="description" content="Texinfo: 20. Creating and Installing Info Files">
+<meta name="keywords" content="Texinfo: 20. Creating and Installing Info Files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,10 +77,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 20. Creating and Installing Info Files </h1>
+<h1 class="chapter"> 20. Creating and Installing Info Files </h1>
 
 <p>This chapter describes how to create and install Info files.  See section <a href="texinfo_2.html#SEC5">Info files</a>, for general information about the file format itself.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC261">20.1 Creating an Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC271">20.2 Installing an Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -90,7 +105,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.1 Creating an Info File </h2>
+<h2 class="section"> 20.1 Creating an Info File </h2>
 
 <p><code>makeinfo</code> is a program that converts a Texinfo file into an Info
 file, HTML file, or plain text.  <code>texinfo-format-region</code> and
@@ -98,14 +113,14 @@ file, HTML file, or plain text.  <code>texinfo-format-region</code> and
 Texinfo to Info.
 </p><p>For information on installing the Info file in the Info system,
 see section <a href="#SEC271">Installing an Info File</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC262">20.1.1 <code>makeinfo</code> Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>makeinfo</code> provides better error checking.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC263">20.1.2 Running <code>makeinfo</code> from a Shell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run <code>makeinfo</code> from a shell.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC264">20.1.3 Options for <code>makeinfo</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify fill-column and other options.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC265">20.1.4 Pointer Validation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to check that pointers point somewhere.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC266">20.1.5 Running <code>makeinfo</code> inside Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run <code>makeinfo</code> from Emacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC267">20.1.6 The <code>texinfo-format<small>...</small></code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two Info formatting commands written
+<tr><td align="left" valign="top"><a href="#SEC267">20.1.6 The <code>texinfo-format<small class="dots">...</small></code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Two Info formatting commands written
                                   in Emacs Lisp are an alternative
                                   to <code>makeinfo</code>.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC268">20.1.7 Batch Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to format for Info in Emacs Batch mode.</td></tr>
@@ -133,7 +148,7 @@ see section <a href="#SEC271">Installing an Info File</a>.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.1 <code>makeinfo</code> Preferred </h3>
+<h3 class="subsection"> 20.1.1 <code>makeinfo</code> Preferred </h3>
 
 <p>The <code>makeinfo</code> utility creates an Info file from a Texinfo source
 file more quickly than either of the Emacs formatting commands and
@@ -167,19 +182,19 @@ circumstances, they format short regions or buffers more quickly than
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.2 Running <code>makeinfo</code> from a Shell </h3>
+<h3 class="subsection"> 20.1.2 Running <code>makeinfo</code> from a Shell </h3>
 
 <p>To create an Info file from a Texinfo file, type <code>makeinfo</code>
 followed by the name of the Texinfo file.  Thus, to create the Info
 file for Bison, type the following to the shell:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 makeinfo bison.texinfo
 </pre></td></tr></table>
 <p>(You can run a shell inside Emacs by typing <kbd>M-x shell</kbd>.)
 </p><p>Sometimes you will want to specify options.  For example, if you wish
 to discover which version of <code>makeinfo</code> you are using,
 type:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 makeinfo --version
 </pre></td></tr></table>
 <p>See section <a href="#SEC264">Options for <code>makeinfo</code></a>, for more information.
@@ -202,7 +217,7 @@ makeinfo --version
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.3 Options for <code>makeinfo</code> </h3>
+<h3 class="subsection"> 20.1.3 Options for <code>makeinfo</code> </h3>
 
 <p>The <code>makeinfo</code> command takes a number of options.  Most often,
 options are used to set the value of the fill column and specify the
@@ -212,11 +227,11 @@ for the long option names as long as they are unique.
 </p><p>For example, you could use the following shell command to create an Info
 file for `<tt>bison.texinfo</tt>' in which each line is filled to only 68
 columns:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 makeinfo --fill-column=68 bison.texinfo
 </pre></td></tr></table>
 <p>You can write two or more options in sequence, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 makeinfo --no-split --fill-column=70 ...
 </pre></td></tr></table>
 <p>This would keep the Info file together as one possibly very long
@@ -493,7 +508,7 @@ Generate XML output rather than Info.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.4 Pointer Validation </h3>
+<h3 class="subsection"> 20.1.4 Pointer Validation </h3>
 
 <p>If you do not suppress pointer validation with the `<samp>--no-validate</samp>'
 option or the <code>@novalidate</code> command in the source file (see section <a href="texinfo_20.html#SEC245">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
@@ -531,7 +546,7 @@ cross-reference.
 they use commands like <code>@value</code> and <code>@definfoenclose</code> in
 node definitions and cross-references inconsistently.  Consider the
 following example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set nodename Node 1
 
 @node @value{nodename}, Node 2, Top, Top
@@ -582,7 +597,7 @@ option is given.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.5 Running <code>makeinfo</code> inside Emacs </h3>
+<h3 class="subsection"> 20.1.5 Running <code>makeinfo</code> inside Emacs </h3>
 
 <p>You can run <code>makeinfo</code> in GNU Emacs Texinfo mode by using either the
 <code>makeinfo-region</code> or the <code>makeinfo-buffer</code> commands.  In
@@ -651,7 +666,7 @@ job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href=
 edit-options</kbd> or the <kbd>M-x set-variable</kbd> command, or by setting the
 variable in your `<tt>.emacs</tt>' initialization file.
 </p><p>For example, you could write the following in your `<tt>.emacs</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq makeinfo-options
       &quot;--paragraph-indent=0 --no-split
        --fill-column=70 --verbose&quot;)
@@ -680,7 +695,7 @@ variable in your `<tt>.emacs</tt>' initialization file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.6 The <code>texinfo-format<small>...</small></code> Commands </h3>
+<h3 class="subsection"> 20.1.6 The <code>texinfo-format<small class="dots">...</small></code> Commands </h3>
 
 <p>In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the <code>texinfo-format-region</code> command.  This formats the
@@ -734,14 +749,14 @@ provides better error checking (see section <a href="#SEC266">Running <code>make
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.7 Batch Formatting </h3>
+<h3 class="subsection"> 20.1.7 Batch Formatting </h3>
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
 including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
 </p><p>Here is a shell command to format all the files that end in
 `<tt>.texinfo</tt>' in the current directory:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 emacs -batch -funcall batch-texinfo-format *.texinfo
 </pre></td></tr></table>
 <p>Emacs processes all the files listed on the command line, even if an
@@ -773,7 +788,7 @@ use that Emacs for anything else until the command finishes.)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.8 Tag Files and Split Files </h3>
+<h3 class="subsection"> 20.1.8 Tag Files and Split Files </h3>
 
 <p>If a Texinfo file has more than 30,000 bytes,
 <code>texinfo-format-buffer</code> automatically creates a tag table
@@ -804,7 +819,7 @@ the files that were split off.  The split-off files are called
 continues to have the name specified by <code>@setfilename</code>.
 </p><p>At one stage in writing this document, for example, the Info file was saved
 as the file `<tt>test-texinfo</tt>' and that file looked like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Info file: test-texinfo,    -*-Text-*-
 produced by texinfo-format-buffer
 from file: new-texinfo-manual.texinfo
@@ -860,7 +875,7 @@ validate the structure of the nodes, see <a href="texinfo_27.html#SEC315">Runnin
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.9 Generating HTML </h3>
+<h3 class="subsection"> 20.1.9 Generating HTML </h3>
 
 <p>Besides generating output in the Info format, you can use the
 `<samp>--html</samp>' option to generate output in HTML format, for installation
@@ -921,12 +936,12 @@ at `<tt>../&lt;info-document&gt;/</tt>'.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.2 Installing an Info File </h2>
+<h2 class="section"> 20.2 Installing an Info File </h2>
 
 <p>Info files are usually kept in the `<tt>info</tt>' directory.  You can read
 Info files using the standalone Info program or the Info reader built
 into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an introduction to Info.)
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC272">20.2.1 The Directory File `<tt>dir</tt>'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The top level menu for all Info files.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC273">20.2.2 Listing a New Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Listing a new Info file.</td></tr>
@@ -956,7 +971,7 @@ into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an intro
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
+<h3 class="subsection"> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
 
 <p>For Info to work, the `<tt>info</tt>' directory must contain a file that
 serves as a top level directory for the Info system.  By convention,
@@ -966,7 +981,7 @@ within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
 </p><p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
@@ -986,7 +1001,7 @@ of the `<tt>emacs</tt>' file.
 </p><p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
 node of the Emacs manual looks like this in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 <p>In this case, the `<tt>dir</tt>' file name is written in upper case
@@ -1011,13 +1026,13 @@ true in general, it is a special case for `<tt>dir</tt>'.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.2.2 Listing a New Info File </h3>
+<h3 class="subsection"> 20.2.2 Listing a New Info File </h3>
 
 <p>To add a new Info file to your system, you must write a menu entry to
 add to the menu in the `<tt>dir</tt>' file in the `<tt>info</tt>' directory.
 For example, if you were adding documentation for GDB, you would write
 the following new entry:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * GDB: (gdb).           The source-level C debugger.
 </pre></td></tr></table>
 <p>The first part of the menu entry is the menu entry name, followed by a
@@ -1049,7 +1064,7 @@ name, not `<samp>gdb.info</samp>'.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.2.3 Info Files in Other Directories </h3>
+<h3 class="subsection"> 20.2.3 Info Files in Other Directories </h3>
 
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
 ways to specify its location:
@@ -1076,14 +1091,14 @@ find Info files whose location is specified this way.)
 <p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
 directory, you could add an entry like this to the menu in the
 standard `<tt>dir</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
 written as the second part of the menu entry.
 </p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
 </p><a name="IDX413"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
@@ -1112,20 +1127,20 @@ uses a different syntax.
 <li><p>
 In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
 variable as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
 </li><li><p>
 In a `<tt>.profile</tt>' file, you would achieve the same effect by
 writing:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
 </li><li><p>
 <a name="IDX415"></a>
 In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
@@ -1141,7 +1156,7 @@ colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
 is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using <code>sh</code> syntax):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 INFOPATH=/local/info:
 export INFOPATH
 </pre></td></tr></table>
@@ -1172,7 +1187,7 @@ special CTRL-_ characters that Info needs will be present.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.2.4 Installing Info Directory Files </h3>
+<h3 class="subsection"> 20.2.4 Installing Info Directory Files </h3>
 
 <p>When you install an Info file onto your system, you can use the program
 <code>install-info</code> to update the Info directory file `<tt>dir</tt>'.
@@ -1182,12 +1197,12 @@ after copying the Info file into its proper installed location.
 <a name="IDX419"></a>
 <p>In order for the Info file to work with <code>install-info</code>, you include
 the commands <code>@dircategory</code> and
-<code>@direntry</code><small>...</small><code>@end direntry</code> in the Texinfo source
+<code>@direntry</code><small class="dots">...</small><code>@end direntry</code> in the Texinfo source
 file.  Use <code>@direntry</code> to specify the menu entries to add to the
 Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
 in this manual:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
@@ -1196,7 +1211,7 @@ in this manual:
 @end direntry
 </pre></td></tr></table>
 <p>Here's what this produces in the Info file:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
@@ -1214,7 +1229,7 @@ will not notice them.
 each usage specifies the `current' category; any subsequent
 <code>@direntry</code> commands will add to that category.  
 </p><p>Here are some recommended <code>@dircategory</code> categories:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+</p><table><tr><td>&nbsp;</td><td><pre class="display">
 GNU packages
 GNU programming tools
 GNU programming documentation
@@ -1245,14 +1260,14 @@ as a whole in the appropriate other category.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.2.5 Invoking install-info </h3>
+<h3 class="subsection"> 20.2.5 Invoking install-info </h3>
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
 top-level `<tt>dir</tt>' file in the Info system (see the previous sections
 for an explanation of how the `<tt>dir</tt>' file works).  It's most often
 run as part of software installation, or when constructing a `<tt>dir</tt>' file
 for all manuals on a system.  Synopsis:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 install-info [<var>option</var>]... [<var>info-file</var> [<var>dir-file</var>]]
 </pre></td></tr></table>
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options

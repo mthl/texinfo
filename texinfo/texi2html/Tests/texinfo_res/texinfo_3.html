@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2. Using Texinfo Mode</title>
+<title>Texinfo: 2. Using Texinfo Mode</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2. Using Texinfo Mode">
-<meta name="keywords" content="GNU Texinfo 4.2: 2. Using Texinfo Mode">
+<meta name="description" content="Texinfo: 2. Using Texinfo Mode">
+<meta name="keywords" content="Texinfo: 2. Using Texinfo Mode">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. Using Texinfo Mode </h1>
+<h1 class="chapter"> 2. Using Texinfo Mode </h1>
 
 <p>You may edit a Texinfo file with any text editor you choose.  A Texinfo
 file is no different from any other <small>ASCII</small> file.  However, GNU Emacs
@@ -73,7 +88,7 @@ features of the Texinfo formatting language.  So if you are reading this
 manual straight through from the beginning, you may want to skim through
 this chapter briefly and come back to it after reading succeeding
 chapters which describe the Texinfo formatting language in detail.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD16">* Texinfo Mode Overview</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How Texinfo mode can help you.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC23">2.1 The Usual GNU Emacs Editing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Texinfo mode adds to GNU Emacs' general
@@ -88,7 +103,7 @@ chapters which describe the Texinfo formatting language in detail.
 
 <a name="NOD16"></a>
 <a name="SEC22"></a>
-<h2> Texinfo Mode Overview </h2>
+<h2 class="heading"> Texinfo Mode Overview </h2>
 
 <p>Texinfo mode provides special features for working with Texinfo
 files.
@@ -134,7 +149,7 @@ used @-commands and for creating node pointers and menus.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.1 The Usual GNU Emacs Editing Commands </h2>
+<h2 class="section"> 2.1 The Usual GNU Emacs Editing Commands </h2>
 
 <p>In most cases, the usual Text mode commands work the same in Texinfo
 mode as they do in Text mode.  Texinfo mode adds new editing commands
@@ -188,7 +203,7 @@ ones.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.2 Inserting Frequently Used Commands </h2>
+<h2 class="section"> 2.2 Inserting Frequently Used Commands </h2>
 
 <p>Texinfo mode provides commands to insert various frequently used
 @-commands into the buffer.  You can use these commands to save
@@ -309,7 +324,7 @@ move out from between braces by typing <kbd>C-f</kbd>.)
 </p></dd>
 </dl>
 
-<p>To put a command such as <code>@code{<small>...</small>}</code> around an
+<p>To put a command such as <code>@code{<small class="dots">...</small>}</code> around an
 <em>existing</em> word, position the cursor in front of the word and type
 <kbd>C-u 1 C-c C-c c</kbd>.  This makes it easy to edit existing plain text.
 The value of the prefix argument tells Emacs how many words following
@@ -363,7 +378,7 @@ words.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.3 Showing the Section Structure of a File </h2>
+<h2 class="section"> 2.3 Showing the Section Structure of a File </h2>
 
 <p>You can show the section structure of a Texinfo file by using the
 <kbd>C-c C-s</kbd> command (<code>texinfo-show-structure</code>).  This command
@@ -437,7 +452,7 @@ about the page commands.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.4 Updating Nodes and Menus </h2>
+<h2 class="section"> 2.4 Updating Nodes and Menus </h2>
 
 <p>Texinfo mode provides commands for automatically creating or updating
 menus and node pointers.  The commands are called &quot;update&quot; commands
@@ -447,7 +462,7 @@ have worked on it; but you can use them to insert the `Next',
 and to create menus in a file that has none.
 </p><p>If you do not use the updating commands, you need to write menus and
 node pointers by hand, which is a tedious task.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD21">* Updating Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Five major updating commands.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC28">2.4.1 Updating Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to structure a Texinfo file for
@@ -459,7 +474,7 @@ node pointers by hand, which is a tedious task.
 
 <a name="NOD21"></a>
 <a name="SEC27"></a>
-<h3> The Updating Commands </h3>
+<h3 class="subheading"> The Updating Commands </h3>
 
 <p>You can use the updating commands to:
 </p><ul>
@@ -520,7 +535,7 @@ constructing the master menu.  (See section <a href="texinfo_4.html#SEC59">The T
 </p><p>For <code>texinfo-master-menu</code> to work, the Texinfo file must have a
 `Top' node and at least one subsequent node.
 </p><p>After extensively editing a Texinfo file, you can type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u M-x texinfo-master-menu
 or
 C-u C-c C-u m
@@ -586,7 +601,7 @@ already exists.  (Use the <code>texinfo-master-menu</code> command for
 that.)
 </p><p>When working on a document that does not merit a master menu, you can
 type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-u C-a
 or
 C-u M-x texinfo-all-menus-update
@@ -623,7 +638,7 @@ insert missing <code>@node</code> lines into a file.  (See section <a href="#SEC
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 2.4.1 Updating Requirements </h3>
+<h3 class="subsection"> 2.4.1 Updating Requirements </h3>
 
 <p>To use the updating commands, you must organize the Texinfo file
 hierarchically with chapters, sections, subsections, and the like.
@@ -639,18 +654,18 @@ node, must be followed by a line with a structuring command such as
 <code>@unnumberedsubsec</code>.
 </p><p>Each <code>@node</code> line/structuring-command line combination
 must look either like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node     Comments,  Minimum, Conventions, Overview
 @comment  node-name, next,    previous,    up
 @section Comments
 </pre></td></tr></table>
 <p>or like this (without the <code>@comment</code> line):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Comments, Minimum, Conventions, Overview
 @section Comments
 </pre></td></tr></table>
 <p>or like this (without the explicit node pointers):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Comments
 @section Comments
 </pre></td></tr></table>
@@ -670,7 +685,7 @@ hierarchically organized Texinfo file that lacks `Next', `Previous' and
 formatted with <code>makeinfo</code>, you have no need for the update node
 commands.  (See section <a href="texinfo_21.html#SEC261">Creating an Info File</a>, for more information about
 <code>makeinfo</code>.)  However, both <code>makeinfo</code> and the
-<code>texinfo-format-<small>...</small></code> commands require that you insert menus in
+<code>texinfo-format-<small class="dots">...</small></code> commands require that you insert menus in
 the file.
 </p><hr size="6">
 <a name="NOD23"></a>
@@ -691,7 +706,7 @@ the file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 2.4.2 Other Updating Commands </h3>
+<h3 class="subsection"> 2.4.2 Other Updating Commands </h3>
 
 <p>In addition to the five major updating commands, Texinfo mode
 possesses several less frequently used updating commands:
@@ -711,7 +726,7 @@ names.  Since node names should be more concise than section or
 chapter titles, you must manually edit node names so inserted.
 </p><p>For example, the following marks a whole buffer as a region and inserts
 <code>@node</code> lines and titles throughout:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x h C-u M-x texinfo-insert-node-lines
 </pre></td></tr></table>
 <p>This command inserts titles as node names in <code>@node</code> lines; the
@@ -777,7 +792,7 @@ sequentially updates all the nodes in the region.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.5 Formatting for Info </h2>
+<h2 class="section"> 2.5 Formatting for Info </h2>
 
 <p>Texinfo mode provides several commands for formatting part or all of a
 Texinfo file for Info.  Often, when you are writing a document, you
@@ -819,14 +834,14 @@ want to format only part of a file--that is, a region.
 </dl>
 
 <p>For example, after writing a Texinfo file, you can type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-u m
 or
 C-u M-x texinfo-master-menu
 </pre></td></tr></table>
 <p>This updates all the nodes and menus.  Then type the following to create
 an Info file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-m C-b
 or
 M-x makeinfo-buffer
@@ -853,7 +868,7 @@ include a line that has <code>@setfilename</code> in its header.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.6 Formatting and Printing </h2>
+<h2 class="section"> 2.6 Formatting and Printing </h2>
 
 <p>Typesetting and printing a Texinfo file is a multi-step process in which
 you first create a file for printing (called a DVI file), and then
@@ -934,20 +949,20 @@ commands, such as <code>tex-show-print-queue</code>.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.7 Texinfo Mode Summary </h2>
+<h2 class="section"> 2.7 Texinfo Mode Summary </h2>
 
 <p>In Texinfo mode, each set of commands has default keybindings that
 begin with the same keys.  All the commands that are custom-created
 for Texinfo mode begin with <kbd>C-c</kbd>.  The keys are somewhat
 mnemonic.
 </p><a name="SEC33"></a>
-<h3> Insert Commands </h3>
+<h3 class="subheading"> Insert Commands </h3>
 
 <p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
 first letter of the @-command to be inserted.  (It might make more
 sense mnemonically to use <kbd>C-c C-i</kbd>, for `custom insert', but
 <kbd>C-c C-c</kbd> is quick to type.)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-c c       Insert `<samp>@code</samp>'.
 C-c C-c d       Insert `<samp>@dfn</samp>'.
 C-c C-c e       Insert `<samp>@end</samp>'.
@@ -964,19 +979,19 @@ C-c C-c C-d     Insert a node's section title
                 in a menu entry line.
 </pre></td></tr></table>
 <a name="SEC34"></a>
-<h3> Show Structure </h3>
+<h3 class="subheading"> Show Structure </h3>
 
 <p>The <code>texinfo-show-structure</code> command is often used within a
 narrowed region.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-s         List all the headings.
 </pre></td></tr></table>
 <a name="SEC35"></a>
-<h3> The Master Update Command </h3>
+<h3 class="subheading"> The Master Update Command </h3>
 
 <p>The <code>texinfo-master-menu</code> command creates a master menu; and can
 be used to update every node and menu in a file as well.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u m
 M-x texinfo-master-menu
                 Create or update a master menu.
@@ -986,24 +1001,24 @@ C-u C-c C-u m   With <kbd>C-u</kbd> as a prefix argument, first
                 menus, and then create a master menu.
 </pre></td></tr></table>
 <a name="SEC36"></a>
-<h3> Update Pointers </h3>
+<h3 class="subheading"> Update Pointers </h3>
 
 <p>The update pointer commands are invoked by typing <kbd>C-c C-u</kbd> and
 then either <kbd>C-n</kbd> for <code>texinfo-update-node</code> or <kbd>C-e</kbd> for
 <code>texinfo-every-node-update</code>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u C-n     Update a node.
 C-c C-u C-e     Update every node in the buffer.
 </pre></td></tr></table>
 <a name="SEC37"></a>
-<h3> Update Menus </h3>
+<h3 class="subheading"> Update Menus </h3>
 
 <p>Invoke the  update menu commands by typing <kbd>C-c C-u</kbd>
 and then either <kbd>C-m</kbd> for <code>texinfo-make-menu</code> or
 <kbd>C-a</kbd> for <code>texinfo-all-menus-update</code>.  To update
 both nodes and menus at the same time, precede <kbd>C-c C-u
 C-a</kbd> with <kbd>C-u</kbd>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u C-m     Make or update a menu.
 
 C-c C-u C-a     Make or update all
@@ -1014,7 +1029,7 @@ C-u C-c C-u C-a With <kbd>C-u</kbd> as a prefix argument,
                 then create or update all menus.
 </pre></td></tr></table>
 <a name="SEC38"></a>
-<h3> Format for Info </h3>
+<h3 class="subheading"> Format for Info </h3>
 
 <p>The Info formatting commands that are written in Emacs Lisp are
 invoked by typing <kbd>C-c C-e</kbd> and then either <kbd>C-r</kbd> for a region
@@ -1022,26 +1037,26 @@ or <kbd>C-b</kbd> for the whole buffer.
 </p><p>The Info formatting commands that are written in C and based on the
 <code>makeinfo</code> program are invoked by typing <kbd>C-c C-m</kbd> and then
 either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.
-</p><p>Use the <code>texinfo-format<small>...</small></code> commands:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><p>Use the <code>texinfo-format<small class="dots">...</small></code> commands:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-e C-r     Format the region.
 C-c C-e C-b     Format the buffer.
 </pre></td></tr></table>
 <p>Use <code>makeinfo</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-m C-r     Format the region.
 C-c C-m C-b     Format the buffer.
 C-c C-m C-l     Recenter the <code>makeinfo</code> output buffer.
 C-c C-m C-k     Kill the <code>makeinfo</code> formatting job.
 </pre></td></tr></table>
 <a name="SEC39"></a>
-<h3> Typeset and Print </h3>
+<h3 class="subheading"> Typeset and Print </h3>
 
 <p>The TeX typesetting and printing commands are invoked by typing
 <kbd>C-c C-t</kbd> and then another control command: <kbd>C-r</kbd> for
 <code>texinfo-tex-region</code>, <kbd>C-b</kbd> for <code>texinfo-tex-buffer</code>,
 and so on.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-t C-r     Run TeX on the region.
 C-c C-t C-b     Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-i     Run <code>texindex</code>.
@@ -1053,11 +1068,11 @@ C-c C-t C-x     Quit a currently stopped TeX formatting job.
 C-c C-t C-l     Recenter the output buffer.
 </pre></td></tr></table>
 <a name="SEC40"></a>
-<h3> Other Updating Commands </h3>
+<h3 class="subheading"> Other Updating Commands </h3>
 
 <p>The remaining updating commands do not have standard keybindings because
 they are rarely used.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x texinfo-insert-node-lines
                 Insert missing <code>@node</code> lines in region.
                 With <kbd>C-u</kbd> as a prefix argument,

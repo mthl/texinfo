@@ -32,14 +32,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Info 4.2: 5. Selecting a Node</title>
+<title>GNU Info: 5. Selecting a Node</title>
 
-<meta name="description" content="GNU Info 4.2: 5. Selecting a Node">
-<meta name="keywords" content="GNU Info 4.2: 5. Selecting a Node">
+<meta name="description" content="GNU Info: 5. Selecting a Node">
+<meta name="keywords" content="GNU Info: 5. Selecting a Node">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 5. Selecting a Node </h1>
+<h1 class="chapter"> 5. Selecting a Node </h1>
 
 <p>This section details the numerous Info commands which select a new node
 to view in the current window.
@@ -234,7 +249,7 @@ nodes which reside in one of the Info files that were loaded in the
 current Info session; if the desired node resides in some other file,
 you must type the node exactly as it appears in that Info file, and you
 must include the Info file of the other file.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 <code>g(emacs)Buffers</code>
 </pre></td></tr></table>
 <p>finds the node `<samp>Buffers</samp>' in the Info file `<tt>emacs</tt>'.
@@ -280,7 +295,7 @@ In other words, you can specify a complete path which descends through
 the menu hierarchy of a particular Info file starting at the
 `<samp>(dir)</samp>' node.  This has the same effect as if you typed the menu
 item sequence on Info's command line, see <a href="info-stnd_2.html#ANC4">Info command-line arguments processing</a>.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
  <kbd>G Texinfo,Overview,Reporting Bugs <kbd>RET</kbd></kbd>
 </pre></td></tr></table>
 <p>displays the node `<samp>Reporting Bugs</samp>' in the Texinfo manual.  (You
@@ -305,10 +320,10 @@ the window which contained the killed node.
 <dd><p><a name="IDX156"></a>
 <a name="IDX157"></a>
 Read the name of a file and selects the entire file.  The command
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 <code>C-x C-f <var>filename</var></code>
 </pre></td></tr></table><p>is equivalent to typing
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 <code>g(<var>filename</var>)*</code>
 </pre></td></tr></table>
 </dd>

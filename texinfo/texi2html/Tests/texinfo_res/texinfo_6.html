@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 5. Chapter Structuring</title>
+<title>Texinfo: 5. Chapter Structuring</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 5. Chapter Structuring">
-<meta name="keywords" content="GNU Texinfo 4.2: 5. Chapter Structuring">
+<meta name="description" content="Texinfo: 5. Chapter Structuring">
+<meta name="keywords" content="Texinfo: 5. Chapter Structuring">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,7 +77,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 5. Chapter Structuring </h1>
+<h1 class="chapter"> 5. Chapter Structuring </h1>
 
 <p>The <em>chapter structuring</em> commands divide a document into a hierarchy of
 chapters, sections, subsections, and subsubsections.  These commands
@@ -79,9 +94,9 @@ format.
 intended only as an Info file and not as a printable document.  If you
 do, you might still use chapter structuring commands to create a
 heading at the top of each node--but you don't need to.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC73">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A manual is like an upside down tree <small>...</small></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC73">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A manual is like an upside down tree <small class="dots">...</small></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC74">5.2 Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to divide a manual into parts.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC75">5.3 <code>@top</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The <code>@top</code> command, part of the `Top' node.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC76">5.4 <code>@chapter</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -114,7 +129,7 @@ heading at the top of each node--but you don't need to.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.1 Tree Structure of Sections </h2>
+<h2 class="section"> 5.1 Tree Structure of Sections </h2>
 
 <p>A Texinfo file is usually structured like a book with chapters,
 sections, subsections, and the like.  This structure can be visualized
@@ -123,7 +138,7 @@ and the levels corresponding to chapters, sections, subsection, and
 subsubsections.
 </p><p>Here is a diagram that shows a Texinfo file with three chapters,
 each of which has two sections.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
                           Top
                            |
          -------------------------------------
@@ -138,7 +153,7 @@ each of which has two sections.
 </pre></td></tr></table>
 <p>In a Texinfo file that has this structure, the beginning of Chapter 2
 looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node    Chapter 2,  Chapter 3, Chapter 1, top
 @chapter Chapter 2
 </pre></td></tr></table>
@@ -164,7 +179,7 @@ following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and s
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.2 Structuring Command Types </h2>
+<h2 class="section"> 5.2 Structuring Command Types </h2>
 
 <p>The chapter structuring commands fall into four groups or series, each
 of which contains structuring commands corresponding to the
@@ -241,7 +256,7 @@ do not.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.3 <code>@top</code> </h2>
+<h2 class="section"> 5.3 <code>@top</code> </h2>
 
 <p>The <code>@top</code> command is a special sectioning command that you use
 only after an `<samp>@node Top</samp>' line at the beginning of a Texinfo file.
@@ -271,14 +286,14 @@ HTML output, not TeX.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.4 <code>@chapter</code> </h2>
+<h2 class="section"> 5.4 <code>@chapter</code> </h2>
 
 <p><code>@chapter</code> identifies a chapter in the document.  Write the
 command at the beginning of a line and follow it on the same line by
 the title of the chapter.
 </p><p>For example, this chapter in this manual is entitled &quot;Chapter
 Structuring&quot;; the <code>@chapter</code> line looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @chapter Chapter Structuring
 </pre></td></tr></table>
 <p>In TeX, the <code>@chapter</code> command creates a chapter in the
@@ -287,7 +302,7 @@ automatically.
 </p><p>In Info, the <code>@chapter</code> command causes the title to appear on a
 line by itself, with a line of asterisks inserted underneath.  Thus,
 in Info, the above example produces the following output:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Chapter Structuring
 *******************
 </pre></td></tr></table>
@@ -314,7 +329,7 @@ This kind of stylistic choice is not usually offered by Texinfo.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.5 <code>@unnumbered</code> and <code>@appendix</code> </h2>
+<h2 class="section"> 5.5 <code>@unnumbered</code> and <code>@appendix</code> </h2>
 
 <p>Use the <code>@unnumbered</code> command to create a chapter that appears
 in a printed manual without chapter numbers of any kind.  Use the
@@ -346,7 +361,7 @@ were creating a chapter.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.6 <code>@majorheading</code>, <code>@chapheading</code> </h2>
+<h2 class="section"> 5.6 <code>@majorheading</code>, <code>@chapheading</code> </h2>
 
 <p>The <code>@majorheading</code> and <code>@chapheading</code> commands put
 chapter-like headings in the body of a document.
@@ -380,7 +395,7 @@ of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.7 <code>@section</code> </h2>
+<h2 class="section"> 5.7 <code>@section</code> </h2>
 
 <p>In a printed manual, an <code>@section</code> command identifies a
 numbered section within a chapter.  The section title appears in the
@@ -388,18 +403,18 @@ table of contents.  In Info, an <code>@section</code> command provides a
 title for a segment of text, underlined with `<samp>=</samp>'.
 </p><p>This section is headed with an <code>@section</code> command and looks like
 this in the Texinfo file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @section @code{@@section}
 </pre></td></tr></table>
 <p>To create a section, write the <code>@section</code> command at the
 beginning of a line and follow it on the same line by the section
 title.
 </p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @section This is a section
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a section
 =================
 </pre></td></tr></table>
@@ -423,7 +438,7 @@ This is a section
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.8 <code>@unnumberedsec</code>, <code>@appendixsec</code>, <code>@heading</code> </h2>
+<h2 class="section"> 5.8 <code>@unnumberedsec</code>, <code>@appendixsec</code>, <code>@heading</code> </h2>
 
 <p>The <code>@unnumberedsec</code>, <code>@appendixsec</code>, and <code>@heading</code>
 commands are, respectively, the unnumbered, appendix-like, and
@@ -472,16 +487,16 @@ section-style heading that will not appear in the table of contents.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.9 The <code>@subsection</code> Command </h2>
+<h2 class="section"> 5.9 The <code>@subsection</code> Command </h2>
 
 <p>Subsections are to sections as sections are to chapters.
 (See section <a href="#SEC79"><code>@section</code></a>.)  In Info, subsection titles are
 underlined with `<samp>-</samp>'.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @subsection This is a subsection
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a subsection
 --------------------
 </pre></td></tr></table>
@@ -506,7 +521,7 @@ and are numbered three levels deep.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.10 The <code>@subsection</code>-like Commands </h2>
+<h2 class="section"> 5.10 The <code>@subsection</code>-like Commands </h2>
 
 <p>The <code>@unnumberedsubsec</code>, <code>@appendixsubsec</code>, and
 <code>@subheading</code> commands are, respectively, the unnumbered,
@@ -540,7 +555,7 @@ contents.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.11 The `subsub' Commands </h2>
+<h2 class="section"> 5.11 The `subsub' Commands </h2>
 
 <p>The fourth and lowest level sectioning commands in Texinfo are the
 `subsub' commands.  They are:
@@ -577,11 +592,11 @@ headings.
 
 <p>In Info,  `subsub' titles are underlined with periods.
 For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @subsubsection This is a subsubsection
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a subsubsection
 .......................
 </pre></td></tr></table>
@@ -604,7 +619,7 @@ This is a subsubsection
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.12 <code>@raisesections</code> and <code>@lowersections</code> </h2>
+<h2 class="section"> 5.12 <code>@raisesections</code> and <code>@lowersections</code> </h2>
 
 <p>The <code>@raisesections</code> and <code>@lowersections</code> commands raise and
 lower the hierarchical level of chapters, sections, subsections and the
@@ -621,7 +636,7 @@ formatted as if they were <code>@section</code> commands, all your
 <code>@subsection</code> commands, and so on.
 </p><p><code>@raisesections</code> raises a command one level in the chapter
 structuring hierarchy:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   Change           To
 
 @subsection     @section,
@@ -631,7 +646,7 @@ structuring hierarchy:
 </pre></td></tr></table>
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   Change           To
 
 @chapter        @section,
@@ -645,7 +660,7 @@ Write an <code>@raisesections</code> or <code>@lowersections</code> command on a
 line of its own.
 </p><p>An <code>@lowersections</code> command cancels an <code>@raisesections</code>
 command, and vice versa.  Typically, the commands are used like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @lowersections
 @include somefile.texi
 @raisesections

@@ -32,14 +32,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Info 4.2: 8. Manipulating Multiple Windows</title>
+<title>GNU Info: 8. Manipulating Multiple Windows</title>
 
-<meta name="description" content="GNU Info 4.2: 8. Manipulating Multiple Windows">
-<meta name="keywords" content="GNU Info 4.2: 8. Manipulating Multiple Windows">
+<meta name="description" content="GNU Info: 8. Manipulating Multiple Windows">
+<meta name="keywords" content="GNU Info: 8. Manipulating Multiple Windows">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 8. Manipulating Multiple Windows </h1>
+<h1 class="chapter"> 8. Manipulating Multiple Windows </h1>
 
 <p>A <em>window</em> is a place to show the text of a node.  Windows have a
 view area where the text of the node is displayed, and an associated
@@ -74,7 +89,7 @@ is only one <em>active</em> window, that is, the window in which the cursor
 appears.  There are commands available for creating windows, changing
 the size of windows, selecting which window is active, and for deleting
 windows.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC11">8.1 The Mode Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What appears in the mode line?</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC12">8.2 Window Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Manipulating windows in Info.</td></tr>
@@ -100,7 +115,7 @@ windows.
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.1 The Mode Line </h2>
+<h2 class="section"> 8.1 The Mode Line </h2>
 
 <p>A <em>mode line</em> is a line of inverse video which appears at the bottom
 of an Info window.  It describes the contents of the window just above
@@ -112,7 +127,7 @@ updated, and whether or not the Info file was compressed when stored on
 disk.
 </p><p>Here is a sample mode line for a window containing an uncompressed file
 named `<tt>dir</tt>', showing the node `<samp>Top</samp>'.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -----Info: (dir)Top, 40 lines --Top-------------------------------------
             ^^   ^   ^^^        ^^
           (file)Node #lines    where
@@ -121,13 +136,13 @@ named `<tt>dir</tt>', showing the node `<samp>Top</samp>'.
 indicated in the mode line with two small `<samp>z</samp>''s.  In addition, if
 the Info file containing the node has been split into subfiles, the name
 of the subfile containing the node appears in the modeline as well:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 --zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
 </pre></td></tr></table>
 <p>Truncation of long lines (as opposed to wrapping them to the next
 display line, see section <a href="info-stnd_4.html#SEC4">toggle-wrap</a>) is indicated by a
 `<samp>$</samp>' at the left edge of the mode line:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 --$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
 </pre></td></tr></table>
 <p>When Info makes a node internally, such that there is no corresponding
@@ -135,7 +150,7 @@ info file on disk, the name of the node is surrounded by asterisks
 (`<samp>*</samp>').  The name itself tells you what the contents of the window
 are; the sample mode line below shows an internally constructed node
 showing possible completions:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -----Info: *Completions*, 7 lines --All---------------------------------
 </pre></td></tr></table>
 <hr size="6">
@@ -157,7 +172,7 @@ showing possible completions:
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.2 Window Commands </h2>
+<h2 class="section"> 8.2 Window Commands </h2>
 
 <p>It can be convenient to view more than one node at a time.  To allow
 this, Info can display more than one <em>window</em>.  Each window has its
@@ -258,7 +273,7 @@ See section <a href="info-stnd_11.html#SEC16"><code>automatic-tiling</code></a>.
 <td valign="middle" align="left">[<a href="info-stnd_14.html#SEC23" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.3 The Echo Area </h2>
+<h2 class="section"> 8.3 The Echo Area </h2>
 
 <p>The <em>echo area</em> is a one line window which appears at the bottom of
 the screen.  It is used to display informative or error messages, and to
@@ -486,7 +501,7 @@ Insert as much of a completion as is possible.
 <a name="IDX298"></a>
 Display a window containing a list of the possible completions of what
 you have typed so far.  For example, if the available choices are:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 bar
 foliate
 food
@@ -495,7 +510,7 @@ forget
 <p>and you have typed an `<samp>f</samp>', followed by `<samp>?</samp>', Info will pop up a
 window showing a node called `<samp>*Completions*</samp>' which lists the
 possible completions like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 3 completions:
 foliate         food
 forget

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 3. Beginning a Texinfo File</title>
+<title>Texinfo: 3. Beginning a Texinfo File</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 3. Beginning a Texinfo File">
-<meta name="keywords" content="GNU Texinfo 4.2: 3. Beginning a Texinfo File">
+<meta name="description" content="Texinfo: 3. Beginning a Texinfo File">
+<meta name="keywords" content="Texinfo: 3. Beginning a Texinfo File">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,14 +77,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. Beginning a Texinfo File </h1>
+<h1 class="chapter"> 3. Beginning a Texinfo File </h1>
 
 <p>Certain pieces of information must be provided at the beginning of a
 Texinfo file, such as the name for the output file(s), the title of the
 document, and the Top node.
 </p><p>This chapter expands on the minimal complete Texinfo source file
 previously given (see section <a href="texinfo_2.html#SEC11">Six Parts of a Texinfo File</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC42">3.1 Sample Texinfo File Beginning</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A sample beginning for a Texinfo file.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC43">3.2 Texinfo File Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The first lines.</td></tr>
@@ -100,14 +115,14 @@ previously given (see section <a href="texinfo_2.html#SEC11">Six Parts of a Texi
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.1 Sample Texinfo File Beginning </h2>
+<h2 class="section"> 3.1 Sample Texinfo File Beginning </h2>
 
 <p>The following sample shows what is needed.  The elements given here are
 explained in more detail in the following sections.  Other commands are
 often included at the beginning of Texinfo files, but the ones here are
 the most critical.
 </p><p>See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>, for the full texts to be used in GNU manuals.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>infoname</var>.info
@@ -182,7 +197,7 @@ Published by ...
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.2 Texinfo File Header </h2>
+<h2 class="section"> 3.2 Texinfo File Header </h2>
 
 <p>Texinfo files start with at least three lines that provide Info and
 TeX with necessary information.  These are the <code>\input texinfo</code>
@@ -196,14 +211,14 @@ include them.
 include in the header.  <code>@synindex</code> (see section <a href="texinfo_13.html#SEC172"><code>@synindex</code></a>), for
 instance, is another command often included in the header.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>, for complete sample texts.
 </p><p>Thus, the beginning of a Texinfo file generally looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename sample.info
 @settitle Sample Manual 1.0
 @c %**end of header
 </pre></td></tr></table>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC44">3.2.1 The First Line of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The first line of a Texinfo file.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC45">3.2.2 Start of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Formatting a region requires this.</td></tr>
@@ -231,11 +246,11 @@ instance, is another command often included in the header.  See section <a href=
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.1 The First Line of a Texinfo File </h3>
+<h3 class="subsection"> 3.2.1 The First Line of a Texinfo File </h3>
 
 <p>Every Texinfo file that is to be the top-level input to TeX must begin
 with a line that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo   @c -*-texinfo-*-
 </pre></td></tr></table>
 <p>This line serves two functions:
@@ -274,10 +289,10 @@ specification tells Emacs to use Texinfo mode.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.2 Start of Header </h3>
+<h3 class="subsection"> 3.2.2 Start of Header </h3>
 
 <p>A start-of-header line is a Texinfo comment that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @c %**start of header
 </pre></td></tr></table>
 <p>Write the start-of-header line on the second line of a Texinfo file.
@@ -286,7 +301,7 @@ Follow the start-of-header line with <code>@setfilename</code> and
 globally affect the document formatting, such as <code>@synindex</code> or
 <code>@footnotestyle</code>; and then by an end-of-header line (see section <a href="#SEC48">End of Header</a>).
 </p><p>The start- and end-of-header lines allow you to format only part of a
-Texinfo file for Info or printing.  See section <a href="texinfo_21.html#SEC267">The <code>texinfo-format<small>...</small></code> Commands</a>.
+Texinfo file for Info or printing.  See section <a href="texinfo_21.html#SEC267">The <code>texinfo-format<small class="dots">...</small></code> Commands</a>.
 </p><p>The odd string of characters, `<samp>%**</samp>', is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
 change it if you wish by setting the <code>tex-start-of-header</code> and/or
@@ -310,11 +325,11 @@ change it if you wish by setting the <code>tex-start-of-header</code> and/or
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.3 <code>@setfilename</code>: Set the output file name </h3>
+<h3 class="subsection"> 3.2.3 <code>@setfilename</code>: Set the output file name </h3>
 
 <p>In order to serve as the primary input file for either <code>makeinfo</code>
 or TeX, a Texinfo file must contain a line that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @setfilename <var>info-file-name</var>
 </pre></td></tr></table>
 <p>Write the <code>@setfilename</code> command at the beginning of a line and
@@ -340,7 +355,7 @@ operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
 This occurs because the Info formatters split a long Info file into
 short indirect subfiles, and name them by appending `<samp>-1</samp>',
-`<samp>-2</samp>', <small>...</small>, `<samp>-10</samp>', `<samp>-11</samp>', and so on, to the original
+`<samp>-2</samp>', <small class="dots">...</small>, `<samp>-10</samp>', `<samp>-11</samp>', and so on, to the original
 file name.  (See section <a href="texinfo_21.html#SEC269">Tag Files and Split Files</a>.)  The subfile name
 `<tt>texinfo.info-10</tt>', for example, is too long for old systems with a
 14-character limit on filenames; so the Info file name for this document
@@ -377,11 +392,11 @@ also reads `<tt>texinfo.cnf</tt>' if that file is present on your system
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.4 <code>@settitle</code>: Set the document title </h3>
+<h3 class="subsection"> 3.2.4 <code>@settitle</code>: Set the document title </h3>
 
 <p>In order to be made into a printed manual, a Texinfo file must contain
 a line that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @settitle <var>title</var>
 </pre></td></tr></table>
 <p>Write the <code>@settitle</code> command at the beginning of a line and
@@ -437,11 +452,11 @@ See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for a detailed d
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.5 End of Header </h3>
+<h3 class="subsection"> 3.2.5 End of Header </h3>
 
 <p>Follow the header lines with an end-of-header line, which is a
 Texinfo comment that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @c %**end of header
 </pre></td></tr></table>
 <p>See section <a href="#SEC45">Start of Header</a>.
@@ -464,14 +479,14 @@ Texinfo comment that looks like this:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.3 Document Permissions </h2>
+<h2 class="section"> 3.3 Document Permissions </h2>
 
 <p>The copyright notice and copying permissions for a document need to
 appear in several places in the various Texinfo output formats.
 Therefore, Texinfo provides a command (<code>@copying</code>) to declare
 this text once, and another command (<code>@insertcopying</code>) to
 insert the text at appropriate points.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC50">3.3.1 <code>@copying</code>: Declare copying permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Declare the document's copying permissions.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC51">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to insert the permissions.</td></tr>
@@ -496,14 +511,14 @@ insert the text at appropriate points.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.3.1 <code>@copying</code>: Declare copying permissions </h3>
+<h3 class="subsection"> 3.3.1 <code>@copying</code>: Declare copying permissions </h3>
 
 <p>The <code>@copying</code> command should be given very early in the document;
 right after the header material (see section <a href="#SEC43">Texinfo File Header</a>) is the
 recommended location.  It conventionally consists of a sentence or two
 about what the program is, the legal copyright line, and the copying
 permissions.  Here is a skeletal example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @copying
 This manual is for <var>program</var> (version <var>version</var>),
 which ...
@@ -529,7 +544,7 @@ emit the copying information.  See the next section for details.
 <code>@copyright{}</code> command generates a `<samp>c</samp>' inside a circle.  In
 Info and plain text, it generates `<samp>(C)</samp>'.  The copyright notice
 itself has the following legally defined sequence:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Copyright &copy; <var>years</var> <var>copyright-owner</var>.
 </pre></td></tr></table>
 <a name="IDX74"></a>
@@ -566,11 +581,11 @@ additional information.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.3.2 <code>@insertcopying</code>: Include permissions text </h3>
+<h3 class="subsection"> 3.3.2 <code>@insertcopying</code>: Include permissions text </h3>
 
 <p>The <code>@insertcopying</code> command is simply written on a line by
 itself, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @insertcopying
 </pre></td></tr></table>
 <p>It inserts the text previously defined by <code>@copying</code>.  Legally, it
@@ -612,7 +627,7 @@ automatically at the beginning of the XML output file.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.4 Title and Copyright Pages </h2>
+<h2 class="section"> 3.4 Title and Copyright Pages </h2>
 
 <p>In hard copy output, the manual's name and author are usually printed on
 a title page.  Copyright information is usually printed on the back of
@@ -629,7 +644,7 @@ output.  Simply place any such leading material between
 <code>@ifplaintext</code> and <code>@end ifplaintext</code>; <code>makeinfo</code>
 includes this when writing plain text (`<samp>--no-headers</samp>'), along with
 an <code>@insertcopying</code>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC53">3.4.1 <code>@titlepage</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Create a title for the printed document.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC54">3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The <code>@titlefont</code>, <code>@center</code>,
@@ -663,7 +678,7 @@ an <code>@insertcopying</code>.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.1 <code>@titlepage</code> </h3>
+<h3 class="subsection"> 3.4.1 <code>@titlepage</code> </h3>
 
 <p>Start the material for the title page and following copyright page
 with <code>@titlepage</code> on a line by itself and end it with
@@ -728,7 +743,7 @@ page.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code> </h3>
+<h3 class="subsection"> 3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code> </h3>
 
 <p>You can use the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code>
 commands to create a title page for a printed document.  (This is the
@@ -737,24 +752,24 @@ first of the two methods for creating a title page in Texinfo.)
 the title itself.  You can use <code>@titlefont</code> more than once if you
 have an especially long title.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlefont{Texinfo}
 </pre></td></tr></table>
 <p>Use the <code>@center</code> command at the beginning of a line to center
 the remaining text on that line.  Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @center @titlefont{Texinfo}
 </pre></td></tr></table>
 <p>centers the title, which in this example is &quot;Texinfo&quot; printed
 in the title font.
 </p><p>Use the <code>@sp</code> command to insert vertical space.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @sp 2
 </pre></td></tr></table>
 <p>This inserts two blank lines on the printed page.  (See section <a href="texinfo_15.html#SEC210"><code>@sp</code></a>, for more information about the <code>@sp</code>
 command.)
 </p><p>A template for this method looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @sp 10
 @center @titlefont{<var>name-of-manual-when-printed</var>}
@@ -785,7 +800,7 @@ command.)
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.3 <code>@title</code>, <code>@subtitle</code>, and <code>@author</code> </h3>
+<h3 class="subsection"> 3.4.3 <code>@title</code>, <code>@subtitle</code>, and <code>@author</code> </h3>
 
 <p>You can use the <code>@title</code>, <code>@subtitle</code>, and <code>@author</code>
 commands to create a title page in which the vertical and horizontal
@@ -813,18 +828,18 @@ followed by an <code>@page</code> command line.)
 </p><p>There are two ways to use the <code>@author</code> command: you can write
 the name or names on the remaining part of the line that starts with
 an <code>@author</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @author by Jane Smith and John Doe
 </pre></td></tr></table>
 <p>or you can write the names one above each other by using two (or more)
 <code>@author</code> commands:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @author Jane Smith
 @author John Doe
 </pre></td></tr></table>
 <p>(Only the bottom name is underlined with a black rule.)
 </p><p>A template for this method looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @title <var>name-of-manual-when-printed</var>
 @subtitle <var>subtitle-if-any</var>
@@ -837,7 +852,7 @@ an <code>@author</code> command:
 <p>You may also combine the <code>@titlefont</code> method described in the
 previous section and <code>@title</code> method described in this one.  This
 may be useful if you have a very long title.  Here is a real-life example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @titlefont{GNU Software}
 @sp 1
@@ -866,7 +881,7 @@ may be useful if you have a very long title.  Here is a real-life example:
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.4 Copyright Page </h3>
+<h3 class="subsection"> 3.4.4 Copyright Page </h3>
 
 <p>By international treaty, the copyright notice for a book must be either
 on the title page or on the back of the title page.  When the copyright
@@ -879,7 +894,7 @@ commands.
 <p>Use the <code>@page</code> command to cause a page break.  To push the
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @vskip 0pt plus 1filll
 </pre></td></tr></table>
 <p>This is a TeX command that is not supported by the Info formatting
@@ -890,13 +905,13 @@ bottom of the page.  Note the use of three `<samp>l</samp>'s in the word
 `<samp>filll</samp>'; this is correct.
 </p><p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see section <a href="#SEC49">Document Permissions</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @insertcopying
 </pre></td></tr></table>
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
 </p><p>Here is an example putting all this together:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 ...
 @page
@@ -927,7 +942,7 @@ Cover art by ...
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.5 Heading Generation </h3>
+<h3 class="subsection"> 3.4.5 Heading Generation </h3>
 
 <p>The <code>@end titlepage</code> command must be written on a line by itself.
 It not only marks the end of the title and copyright pages, but also
@@ -977,7 +992,7 @@ single-sided printing.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.4.6 The <code>@headings</code> Command </h3>
+<h3 class="subsection"> 3.4.6 The <code>@headings</code> Command </h3>
 
 <p>The <code>@headings</code> command is rarely used.  It specifies what kind of
 page headings and footings to print on each page.  Usually, this is
@@ -1027,7 +1042,7 @@ double</code> after the <code>@end titlepage</code> command.
 </p><p>You can stop TeX from generating any page headings at all by
 writing <code>@headings off</code> on a line of its own immediately after the
 line containing the <code>@end titlepage</code> command, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @end titlepage
 @headings off
 </pre></td></tr></table>
@@ -1055,7 +1070,7 @@ See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for more informa
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.5 The `Top' Node and Master Menu </h2>
+<h2 class="section"> 3.5 The `Top' Node and Master Menu </h2>
 
 <p>The `Top' node is the node in which a reader enters an Info manual.  As
 such, it should begin with the <code>@insertcopying</code> command
@@ -1074,7 +1089,7 @@ print either an <code>@node</code> line or a menu; they appear only in Info;
 strictly speaking, you are not required to enclose these parts between
 <code>@ifnottex</code> and <code>@end ifnottext</code>, but it is simplest to do
 so.  See section <a href="texinfo_17.html#SEC227">Conditionally Visible Text</a>.)
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC60">3.5.1 Top Node Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC61">3.5.2 Parts of a Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1099,10 +1114,10 @@ so.  See section <a href="texinfo_17.html#SEC227">Conditionally Visible Text</a>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.5.1 Top Node Example </h3>
+<h3 class="subsection"> 3.5.1 Top Node Example </h3>
 
 <p>Here is an example of a Top node.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifnottex
 @node Top
 @top Sample Title
@@ -1137,7 +1152,7 @@ Additional general information.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.5.2 Parts of a Master Menu </h3>
+<h3 class="subsection"> 3.5.2 Parts of a Master Menu </h3>
 
 <p>A <em>master menu</em> is a detailed main menu listing all the nodes in a
 file.
@@ -1167,7 +1182,7 @@ treated as a menu entry.  (See section <a href="texinfo_8.html#SEC99">Writing a 
 information.)
 </p><p>For example, the master menu for this manual looks like the following
 (but has many more entries):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @menu
 * Copying Conditions::  Your rights.
 * Overview::            Texinfo in brief.
@@ -1209,12 +1224,12 @@ Beginning a Texinfo File
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.6 Global Document Commands </h2>
+<h2 class="section"> 3.6 Global Document Commands </h2>
 
 <p>Besides the basic commands mentioned in the previous sections, here are
 additional commands which affect the document as a whole.  They are
 generally all given before the Top node, if they are given at all.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC63">3.6.1 <code>@documentdescription</code>: Summary text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Document summary for the HTML output.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC64">3.6.2 <code>@setchapternewpage</code>:</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Start chapters on right-hand pages.</td></tr>
@@ -1241,7 +1256,7 @@ generally all given before the Top node, if they are given at all.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.6.1 <code>@documentdescription</code>: Summary text </h3>
+<h3 class="subsection"> 3.6.1 <code>@documentdescription</code>: Summary text </h3>
 
 <p>When producing HTML output for a document, <code>makeinfo</code> writes a
 `<samp>&lt;meta&gt;</samp>' element in the `<samp>&lt;head&gt;</samp>' to give some idea of the
@@ -1249,13 +1264,13 @@ content of the document.  By default, this <em>description</em> is the title
 of the document, taken from the <code>@settitle</code> command
 (see section <a href="#SEC47"><code>@settitle</code>: Set the document title</a>).  To change this, use the <code>@documentdescription</code>
 environment, as in:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @documentdescription
 descriptive text.
 @end documentdescription
 </pre></td></tr></table>
 <p>This will produce the following output in the `<samp>&lt;head&gt;</samp>' of the HTML:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 &lt;meta name=description content=&quot;descriptive text.&quot;&gt;
 </pre></td></tr></table>
 <p><code>@documentdescription</code> must be specified before the first node of
@@ -1279,7 +1294,7 @@ the document.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.6.2 <code>@setchapternewpage</code>: </h3>
+<h3 class="subsection"> 3.6.2 <code>@setchapternewpage</code>: </h3>
 
 <p>In an officially bound book, text is usually printed on both sides of
 the paper, chapters start on right-hand pages, and right-hand pages have
@@ -1295,7 +1310,7 @@ should format headers for printing on one or both sides of the paper
 line followed by its argument.
 </p><p>For example, you would write the following to cause each chapter to
 start on a fresh odd-numbered page:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @setchapternewpage odd
 </pre></td></tr></table>
 <p>You can specify one of three alternatives with the
@@ -1358,14 +1373,14 @@ you want.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.6.3 Paragraph Indenting </h3>
+<h3 class="subsection"> 3.6.3 Paragraph Indenting </h3>
 
 <p>The Texinfo processors may insert whitespace at the beginning of the
 first line of each paragraph, thereby indenting that paragraph.  You can
 use the <code>@paragraphindent</code> command to specify this indentation.
 Write an <code>@paragraphindent</code> command at the beginning of a line
 followed by either `<samp>asis</samp>' or a number:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @paragraphindent <var>indent</var>
 </pre></td></tr></table>
 <p>The indentation is according to the value of <var>indent</var>:
@@ -1415,13 +1430,13 @@ See section <a href="texinfo_28.html#SEC319">Refilling Paragraphs</a>, for furth
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.6.4 <code>@exampleindent</code>: Environment Indenting </h3>
+<h3 class="subsection"> 3.6.4 <code>@exampleindent</code>: Environment Indenting </h3>
 
 <p>The Texinfo processors indent each line of <code>@example</code> and similar
 environments.  You can use the <code>@exampleindent</code> command to specify
 this indentation.  Write an <code>@exampleindent</code> command at the
 beginning of a line followed by either `<samp>asis</samp>' or a number:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @exampleindent <var>indent</var>
 </pre></td></tr></table>
 <p>The indentation is according to the value of <var>indent</var>:
@@ -1465,7 +1480,7 @@ formatting commands indent paragraphs as specified.  See section <a href="#SEC45
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.7 Software Copying Permissions </h2>
+<h2 class="section"> 3.7 Software Copying Permissions </h2>
 
 <p>If the Texinfo file has a section containing the &quot;General Public
 License&quot; and the distribution information and a warranty disclaimer for

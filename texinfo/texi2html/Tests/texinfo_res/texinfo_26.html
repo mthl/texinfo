@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: E. Page Headings</title>
+<title>Texinfo: E. Page Headings</title>
 
-<meta name="description" content="GNU Texinfo 4.2: E. Page Headings">
-<meta name="keywords" content="GNU Texinfo 4.2: E. Page Headings">
+<meta name="description" content="Texinfo: E. Page Headings">
+<meta name="keywords" content="Texinfo: E. Page Headings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -62,13 +77,13 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> E. Page Headings </h1>
+<h1 class="appendix"> E. Page Headings </h1>
 
 <p>Most printed manuals contain headings along the top of every page
 except the title and copyright pages.  Some manuals also contain
 footings.  (Headings and footings have no meaning to Info, which is
 not paginated.)
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#NOD275">* Headings Introduced</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conventions for using page headings.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC305">E.1 Standard Heading Formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Standard page heading formats.</td></tr>
@@ -78,7 +93,7 @@ not paginated.)
 
 <a name="NOD275"></a>
 <a name="SEC304"></a>
-<h2> Headings Introduced </h2>
+<h2 class="heading"> Headings Introduced </h2>
 
 <p>Texinfo provides standard page heading formats for manuals that are
 printed on one side of each sheet of paper and for manuals that are
@@ -126,7 +141,7 @@ right part is set flushright.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> E.1 Standard Heading Formats </h2>
+<h2 class="section"> E.1 Standard Heading Formats </h2>
 
 <p>Texinfo provides two standard heading formats, one for manuals printed
 on one side of each sheet of paper, and the other for manuals printed
@@ -138,7 +153,7 @@ line in which the left-hand part contains the name of the chapter, the
 central part is blank, and the right-hand part contains the page
 number.
 </p><p>A single-sided page looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
    _______________________
   |                       |
   | chapter   page number |
@@ -163,7 +178,7 @@ blank, and the right part contains the title (specified by the
 (odd-numbered) page contains the name of the chapter, the central part
 is blank, and the right part contains the page number.
 </p><p>Two pages, side by side as in an open book, look like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
    _______________________     _______________________
   |                       |   |                       |
   | page number     title |   | chapter   page number |
@@ -195,7 +210,7 @@ manual.
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> E.2 Specifying the Type of Heading </h2>
+<h2 class="section"> E.2 Specifying the Type of Heading </h2>
 
 <p>TeX does not begin to generate page headings for a standard Texinfo
 file until it reaches the <code>@end titlepage</code> command.  Thus, the
@@ -249,7 +264,7 @@ the headers format with the <code>@headings double</code> command; see
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> E.3 How to Make Your Own Headings </h2>
+<h2 class="section"> E.3 How to Make Your Own Headings </h2>
 
 <p>You can use the standard headings provided with Texinfo or specify
 your own.  By default, Texinfo has no footers, so if you specify them,
@@ -276,7 +291,7 @@ specifications.
 </p><p>Here is how to tell TeX to place the chapter name at the left, the
 page number in the center, and the date at the right of every header
 for both even- and odd-numbered pages:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @headings off
 @everyheading @thischapter @| @thispage @| @today{}
 </pre></td></tr></table>
@@ -320,13 +335,13 @@ manuals that are printed on both sides of each sheet of paper.
 </p></dd>
 </dl>
 
-<p>Use the `<samp>@this<small>...</small></samp>' series of @-commands to
+<p>Use the `<samp>@this<small class="dots">...</small></samp>' series of @-commands to
 provide the names of chapters
 and sections and the page number.  You can use the
-`<samp>@this<small>...</small></samp>' commands in the left, center, or right portions
+`<samp>@this<small class="dots">...</small></samp>' commands in the left, center, or right portions
 of headers and footers, or anywhere else in a Texinfo file so long as
 they are between <code>@iftex</code> and <code>@end iftex</code> commands.
-</p><p>Here are the `<samp>@this<small>...</small></samp>' commands:
+</p><p>Here are the `<samp>@this<small class="dots">...</small></samp>' commands:
 </p><dl compact="compact">
 <dd><p>
 <a name="IDX456"></a>
@@ -370,7 +385,7 @@ current date, in `1 Jan 1900' format.
 </p><p>Other @-commands and text are printed in a header or footer just as
 if they were in the body of a page.  It is useful to incorporate text,
 particularly when you are writing drafts:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @headings off
 @everyheading @emph{Draft!} @| @thispage @| @thischapter
 @everyfooting @| @| Version: 0.27: @today{}
