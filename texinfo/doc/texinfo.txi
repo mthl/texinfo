@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.128 2004-12-29 15:06:41 karl Exp $
+@c $Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -38,7 +38,7 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997, 1998,
-1999, 2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+1999, 2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -1526,7 +1526,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2004 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2005 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -7382,7 +7382,7 @@ not at the end of a sentence, and has no second argument, remember to
 use the @code{@@.} command (@pxref{Not Ending a
 Sentence}) to get the correct spacing.  However, you do not have to
 use @code{@@.} within the abbreviation itself; Texinfo automatically
-assumes periods within the abbreivation do not end a sentence.
+assumes periods within the abbreviation do not end a sentence.
 
 @cindex <abbr> tag
 In @TeX{} and in the Info output, the first argument is printed as-is;
@@ -7681,7 +7681,7 @@ selects a @sansserif{sans serif} font;
 @findex slanted @r{(slanted font)}
 @cindex Slanted font
 @cindex Oblique font
-rselects a @slanted{slanted} font;
+selects a @slanted{slanted} font;
 
 @item @@t
 @findex t @r{(typewriter font)}
@@ -18362,7 +18362,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright (C) 2004 Free Software Foundation, Inc.
+Copyright (C) 2005 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -18451,7 +18451,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.128 2004-12-29 15:06:41 karl Exp $
+$Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18517,7 +18517,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.128 2004-12-29 15:06:41 karl Exp $
+@comment $Id: texinfo.txi,v 1.129 2005-01-04 14:30:02 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -18529,7 +18529,7 @@ This manual is for GNU Sample
 (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2004 Free Software Foundation, Inc.
+Copyright @copyright{} 2005 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -18628,7 +18628,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2004 Free Software Foundation, Inc.
+Copyright @copyright{} 2005 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -18659,7 +18659,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @copyright{} 2004 Free Software Foundation, Inc.
+Copyright @copyright{} 2005 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
