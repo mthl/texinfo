@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.40 2003-11-09 16:26:18 dirt Exp $
+   $Id: makeinfo.c,v 1.41 2003-11-14 03:55:54 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3117,13 +3117,12 @@ cm_xref (arg)
           if (!*arg4 && !*arg5)
             {
               char *arg1_id = xml_id (arg1);
-              if (*arg2)
+              if (*arg2 || *arg3)
                 {
                   xml_insert_element_with_attribute (XREFNODENAME, START,
                                                      "linkend=\"%s\"", arg1_id);
                   free (arg1_id);
-                  if (*arg2)
-                    execute_string (arg2);
+                  execute_string (*arg3 ? arg3 : arg2);
                   xml_insert_element (XREFNODENAME, END);
                 }
               else
@@ -3133,6 +3132,17 @@ cm_xref (arg)
                   free (arg1_id);
                   xml_pop_current_element ();
                 }
+            }
+          else if (*arg5)
+            {
+              add_word_args (_("See section ``%s'' in "), *arg3 ? arg3 : arg1);
+              xml_insert_element (CITE, START);
+              add_word (arg5);
+              xml_insert_element (CITE, END);
+            }
+          else if (*arg4)
+            {
+              /* Very sad, we are losing xrefs made to ``info only'' books.  */
             }
         }
       else if (xml)

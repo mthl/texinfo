@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.26 2003-11-10 17:04:10 dirt Exp $
+   $Id: xml.c,v 1.27 2003-11-14 03:55:54 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -283,7 +283,7 @@ element docbook_element_list [] = {
   { "firstterm",           0, 1, 0 }, /* DFN */
   { "emphasis",            0, 1, 0 }, /* EMPH */
   { "emphasis",            0, 1, 0 }, /* STRONG */
-  { "citation",            0, 1, 0 }, /* CITE */
+  { "citetitle",           0, 1, 0 }, /* CITE */
   { "",                    0, 1, 0 }, /* NOTFIXEDWIDTH */
   { "wordasword",          0, 1, 0 }, /* I */
   { "emphasis",            0, 1, 0 }, /* B */

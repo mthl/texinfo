@@ -1,3 +1,10 @@
+2003-11-14  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/makeinfo.c (cm_xref): make use of third and fifth arguments
+	of @xref with Docbook.
+
+	* makeinfo/xml.c: use Docbook citetitle for @cite.
+
 2003-11-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex: doc fixes.
