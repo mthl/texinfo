@@ -1,3 +1,9 @@
+2002-11-21    <karl@gnu.org>
+
+	* doc/texinfo.txi (Conventions): add item for blank lines as
+	paragraph separator.  Report from: Maxim Masiutin
+	<max@ritlabs.com>, 21 Nov 2002 00:03:07 +0200.
+
 2002-11-19    <karl@gnu.org>
 
 	* util/install-info.c (ensure_dirfile_exists): don't translate the `*
