@@ -1,3 +1,8 @@
+2003-04-28    <karl@gnu.org>
+
+	From Akim Demaille  <akim@epita.fr>:
+	* makeinfo/makeinfo.c (cm_value): Warn for undefined flags.
+
 2003-04-27    <karl@gnu.org>
 
 	* doc/texinfo.tex (\footnote, \smartitalicx): use \ptexslash

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.25 2003-04-20 23:46:45 karl Exp $
+   $Id: makeinfo.c,v 1.26 2003-04-28 14:03:20 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3768,7 +3768,10 @@ cm_value (arg, start_pos, end_pos)
       if (value)
         execute_string ("%s", value);
       else
+	{
+	  warning (_("undefined flag: %s"), name);
         add_word_args (_("{No value for `%s'}"), name);
+	}
 
       free (name);
     }
