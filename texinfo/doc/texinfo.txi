@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.36 2003-03-31 13:54:56 karl Exp $
+@c $Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9413,6 +9413,10 @@ braces around their argument (which is taken to be the next character).
 This is so as to make the source as convenient to type and read as
 possible, since accented characters are very common in some languages.
 
+To get the true accented characters output in Info, and not just the
+ASCII transliterations, you can use the @option{--enable-encoding}
+option to @command{makeinfo} (@pxref{makeinfo options}).
+
 @findex " @r{(umlaut accent)}
 @cindex Umlaut accent
 @findex ' @r{(umlaut accent)}
@@ -14130,6 +14134,7 @@ Generate DocBook output rather than Info.
 @opindex --enable-encoding
 Output accented and special characters in Info or plain text output
 based on @samp{@@documentencoding}.
+@xref{documentencoding,,@code{documentencoding}}, and @ref{Inserting Accents}.
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
@@ -16884,7 +16889,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.36 2003-03-31 13:54:56 karl Exp $
+$Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16947,7 +16952,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.36 2003-03-31 13:54:56 karl Exp $
+@comment $Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

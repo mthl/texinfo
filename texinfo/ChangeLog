@@ -1,3 +1,7 @@
+2003-04-08    <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (usage): avoid double blank line.
+
 2003-04-05    <karl@gnu.org>
 
 	* Makefile.am (all of them): use $(VAR) instead of @VAR@, since

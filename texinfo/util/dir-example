@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.23 2003-03-24 13:36:11 karl Exp $
+$Id: dir-example,v 1.24 2003-04-09 12:29:26 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -29,16 +29,13 @@ Basics
 * DC: (dc).                     Postfix desk calculator.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
+* Time: (time).                 Measuring program resource usage.
 
 * Common options: (coreutils)Common options.      Common options.
 * File permissions: (coreutils)File permissions.  Access modes.
 * Date input formats: (coreutils)Date input formats.
 
 GNU Packages
-* File utilities: (fileutils).  GNU file utilities.
-* Shell utilities: (sh-utils).  GNU shell utilities.
-* Text utilities: (textutils).  GNU text utilities.
-* Time: (time).                 Measuring program resource usage.
 * UUCP: (uucp).                 Copying between machines, offline.
 * Wdiff: (wdiff).               Word-by-word comparison.
 * Wget: (wget).                 URL download.

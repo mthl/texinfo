@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.44 2003-04-05 23:09:26 karl Exp $
+$Id: NEWS,v 1.45 2003-04-09 12:29:26 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -141,6 +141,7 @@ convenience, here's a url to one of the relevant sections:
   . supports xml and docbook output.
   . supports HTML splitting by node, which is now the default.
   . new option --split-size to control maximum size of split info files.
+  . new option --enable-encoding to enable 
 * info:
   . user-specified key bindings supported.
   . ANSI escape sequences (as produced by groff) removed from man output
