@@ -40,8 +40,9 @@ DIST_COMMON = README $(am__configure_deps) $(dist_i18n_DATA) \
 	$(dist_images_DATA) $(dist_pkgdata_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/check_texinfo.pl.in \
 	$(srcdir)/texi2html.1.in $(srcdir)/texi2html.pl \
-	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
-	TODO install-sh mdate-sh missing mkinstalldirs
+	$(srcdir)/texi2html.spec.in $(top_srcdir)/configure AUTHORS \
+	COPYING ChangeLog INSTALL NEWS TODO install-sh mdate-sh \
+	missing mkinstalldirs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -49,7 +50,8 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
-CONFIG_CLEAN_FILES = texi2html check_texinfo.pl texi2html.1
+CONFIG_CLEAN_FILES = texi2html check_texinfo.pl texi2html.1 \
+	texi2html.spec
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(pkgdatadir)"
 binSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
@@ -299,6 +301,8 @@ texi2html: $(top_builddir)/config.status $(srcdir)/texi2html.pl
 check_texinfo.pl: $(top_builddir)/config.status $(srcdir)/check_texinfo.pl.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 texi2html.1: $(top_builddir)/config.status $(srcdir)/texi2html.1.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+texi2html.spec: $(top_builddir)/config.status $(srcdir)/texi2html.spec.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-binSCRIPTS: $(bin_SCRIPTS)
 	@$(NORMAL_INSTALL)

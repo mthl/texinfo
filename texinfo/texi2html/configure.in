@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
-AC_INIT([texi2html], [1.70], [users@texi2html.cvshome.org])
+AC_INIT([texi2html], [1.71], [users@texi2html.cvshome.org])
 AM_INIT_AUTOMAKE([gnu 1.7 dist-bzip2])
 
 dnl Disable Autoconf, Automake, and some other maintainer tools without the
@@ -67,5 +67,6 @@ AC_CONFIG_FILES([\
                  Tests/Makefile \
                  doc/Makefile \
                  texi2html.1 \
+                 texi2html.spec \
                  ])
 AC_OUTPUT
