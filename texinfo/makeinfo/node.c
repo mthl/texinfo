@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.27 2004-12-20 23:56:07 karl Exp $
+   $Id: node.c,v 1.28 2005-04-01 17:18:24 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -760,7 +760,8 @@ cm_node (void)
                         search_forward ("\n* ", input_text_offset);
 
                       if (input_text_offset != -1)
-                        nodename_from_menu = glean_node_from_menu (0, 0);
+                        nodename_from_menu = glean_node_from_menu (0, 
+						     (enum reftype) 0);
 
                       if (nodename_from_menu)
                         {
