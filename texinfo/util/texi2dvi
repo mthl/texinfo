@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.25 2003-08-23 17:50:11 karl Exp $
+# $Id: texi2dvi,v 1.26 2003-10-26 15:09:08 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.25 $'
+rcs_revision='$Revision: 1.26 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.6) $rcs_version
@@ -221,12 +221,13 @@ utildir=$tmpdir/utils
 mkdir $utildir || exit 1
 
 # A sed script that preprocesses Texinfo sources in order to keep the
-# iftex sections only.  We want to remove non TeX sections, and
-# comment (with `@c texi2dvi') TeX sections so that makeinfo does not
-# try to parse them.  Nevertheless, while commenting TeX sections,
-# don't comment @macro/@end macro so that makeinfo does propagate
-# them.  Unfortunately makeinfo --iftex --no-ifhtml --no-ifinfo
-# doesn't work well enough (yet) to use that, so work around with sed.
+# iftex sections only.  We want to remove non TeX sections, and comment
+# (with `@c texi2dvi') TeX sections so that makeinfo does not try to
+# parse them.  Nevertheless, while commenting TeX sections, don't
+# comment @macro/@end macro so that makeinfo does propagate them.
+# Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
+# (yet), makeinfo can't parse the TeX commands, so work around with sed.
+# 
 comment_iftex_sed=$utildir/comment.sed
 cat <<EOF >$comment_iftex_sed
 /^@tex/,/^@end tex/{
@@ -237,12 +238,6 @@ cat <<EOF >$comment_iftex_sed
   /^@c texi2dvi@macro/,/^@c texi2dvi@end macro/{
     s/^@c texi2dvi//
   }
-}
-/^@html/,/^@end html/{
-  s/^/@c (texi2dvi)/
-}
-/^@ifhtml/,/^@end ifhtml/{
-  s/^/@c (texi2dvi)/
 }
 /^@ifnottex/,/^@end ifnottex/{
   s/^/@c (texi2dvi)/
