@@ -1,5 +1,8 @@
 2003-12-01  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\float, \listoffloats): new macros for new
+		@-commands -- skeletal implementation only now.
+
 	From: Aharon Robbins <arnold@skeeve.com>, 1 Dec 2003 17:43:12 +0200:
 	* makeinfo/float.h (current_float_type): declare.
 	* makeinfo/cmds.c (cm_colon): new fn.
