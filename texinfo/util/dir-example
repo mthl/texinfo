@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.18 2003-02-17 13:39:31 karl Exp $
+$Id: dir-example,v 1.19 2003-02-23 13:20:15 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -27,16 +27,14 @@ Basics
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * DC: (dc).                     Postfix desk calculator.
+* Finding files: (find).        Operating on files matching certain criteria.
 
 * Common options: (coreutils)Common options.      Common options.
 * File permissions: (coreutils)File permissions.  Access modes.
 * Date input formats: (coreutils)Date input formats.
 
 GNU Packages
-* Emacs: (emacs).               Extensible self-documenting text editor.
 * File utilities: (fileutils).  GNU file utilities.
-* Finding files: (find).        Operating on files matching certain criteria.
-* Font utilities: (fontu).      Programs for font manipulation.
 * Gcal: (gcal).                 GNU calendar program.
 * Groff: (groff).               The GNU troff document formatting system.
 * Gzip: (gzip).                 General (de)compression.
@@ -85,7 +83,7 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts
-* automake: (automake).         Making Makefile.in's
+* automake: (automake).		Making Makefile.in's.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * bison: (bison).               GNU parser generator (Yacc replacement).
 * CVS: (cvs).                   Concurrent versions system for source control.
@@ -114,6 +112,7 @@ Software development
 * Standards: (standards).       GNU coding standards.
 
 Emacs
+* Emacs: (emacs).               Extensible self-documenting text editor.
 * Elisp: (elisp).               GNU Emacs Lisp reference manual.
 * Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
 
@@ -208,6 +207,9 @@ TeX
 DOS 
 * GNUish: (gnuish).             GNU utilities for DOS.
 * Mtools: (mtools).             Access DOS disks from Unix.
+
+Graphics
+* Font utilities: (fontu).      Programs for font manipulation.
 
 Science
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
