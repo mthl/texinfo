@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.19 2003-01-27 13:56:20 karl Exp $
+dnl $Id: configure.ac,v 1.20 2003-01-27 14:01:50 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -61,7 +61,7 @@ AC_FUNC_VPRINTF
 dnl in theory only pre-sysvr3 systems needed this and it's not likely
 dnl that anyone compiling new texinfo still has such a thing? we'll see.
 dnl AC_FUNC_SETVBUF_REVERSED
-AC_CHECK_FUNCS(bzero getcwd memset setvbuf sigaction sigprocmask
+AC_CHECK_FUNCS(bzero getcwd memset setvbuf sigaction sigprocmask \
                sigsetmask strchr)
 dnl strerror, xmalloc, xrealloc, probably others should be added.
 AC_REPLACE_FUNCS(memcpy memmove strdup strcasecmp strerror strncasecmp)
