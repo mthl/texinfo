@@ -1,5 +1,13 @@
 2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* README,doc/texi2html.texi: update.
+	* buildt2h.sh: add this script, a simple wrapper around the sed 
+	one-liner that builds the texi2html script. The arguments are the 
+	files concatenated, determined by make.
+	* Makefile.am: handle buildt2h.sh.
+
+2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* INTRODUCTION: remove and merge content in...
 	* README: ...merge with INTRODUCTION content and update.
 	* Makefile.am,doc/Makefile.am: protect @ in sed one-liners

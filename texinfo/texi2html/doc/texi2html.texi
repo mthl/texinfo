@@ -198,8 +198,8 @@ of the @command{texi2html} Perl script which converts
 Texinfo (@pxref{Top,,Texinfo,Texinfo}) into @acronym{HTML}.
 @end ifinfo
 
-Please send bug reports concerning this manual to the Texi2HTML user
-discussion list @email{user@@texi2html.cvshome.org}.  Please state the exact
+Please send bug reports concerning this manual to the Texi2HTML developement
+list @email{dev@@texi2html.cvshome.org}. Please state the exact
 version of the manual which contains the bug, as given above.
 
 @ifinfo
@@ -224,7 +224,7 @@ version of the manual which contains the bug, as given above.
 * Changing the page layout::  Fine tuning of the page layout
 * Customizing HTML::          Fine tuning of the @acronym{HTML} elements
                               associated with the texinfo constructs
-* Internationalization::      Help translating !
+* Internationalization::      Help translating!
 * Indexop::                   Command Line Option Index
 * Indexvr::                   Variable Index
 * Indexcp::                   Concept Index
@@ -338,6 +338,8 @@ provided with the distribution.
 
 The latest version of the source code for @command{texi2html} should be
 available from @uref{http://texi2html.cvshome.org,texi2html.cvshome.org}.
+@command{texi2html} is also available with 
+@uref{http://www.tug.org/teTeX/,teTeX}.
 
 @c ========================================================
 @node Installation
@@ -345,29 +347,50 @@ available from @uref{http://texi2html.cvshome.org,texi2html.cvshome.org}.
 @cindex Installation
 @cindex configure
 
+@menu
+* Requirements::
+* Configuring and rebuilding::
+* Installing::
+* Advanced build features::
+@end menu
+
+@node Requirements
+@section Requirements
+
 To install @command{texi2html}, you must first obtain a copy of the
 source distribution.  @xref{Obtaining texi2html}.
 
-@command{texi2html} also requires @command{perl} version 
-5.00405 or above. An older perl 5 version with @code{File::Spec} is also
-likely to work.  The current version has 
+@command{texi2html} requires @command{perl} version 
+5.00405 or above to be run. An older perl 5 version with 
+@code{File::Spec} is also likely to work.  The current version has 
 been lightly tested on a wide range of perl, but has not been 
 tested extensively on versions of @command{perl} below 5.6.
 To play nice with encodings you 
 also need the @code{Encode} and @code{Unicode::Normalize} modules.
 
+To rebuild the script perl isn't required in most cases. For more
+information about advanced build features, see @ref{Advanced build features}.
+
+@node Configuring and rebuilding
+@section Configuring the source and rebuilding
+
 @command{texi2html} is a standard Automake-based distribution.
 If you have a source version, you should run @command{./configure}
-to regenerate the executable @file{texi2html} file.  @command{./configure}
+to configure the sources and @command{make} to build the script.  
+
+@command{./configure}
 accepts options to select the installation directory for the @file{texi2html}
 file, the default directories @command{texi2html} will use to look for
 configuration files, and other details.  Run @command{./configure --help} for
 more information.
+Running @command{./configure} creates @file{texi2html_configured.pl} from
+@file{texi2html.pl}, and also builds the @command{make} configuration
+files (@file{Makefile}s).
 
-Running @command{./configure} combines four files into the final
+Running @command{make} combines five files into the final
 @file{texi2html} program file:
 @itemize
-@item @file{texi2html.pl} contains the base program,
+@item @file{texi2html_configured.pl} contains the base program,
 @item @file{MySimple.pm} handles the command line options, 
 @item @file{texi2html.init} is the default configuration file, and 
 @item @file{T2h_i18n.pm} is used for internationalization.
@@ -375,9 +398,11 @@ Running @command{./configure} combines four files into the final
 documents.
 @end itemize
 
-Running @command{./configure} also builds the @command{make} configuration
-files (@file{Makefile}s).  To make the documentation run @command{make}.
+Running @command{make} also rebuilds the documentation if needed.
  
+@node Installing
+@section Installing
+
 @command{make install} performs the installation to the locations specified to
 the @command{./configure} script.  This usually involves placing the actual
 @file{texi2html} file someplace in your path, such as @file{/usr/local/bin} or
@@ -392,6 +417,50 @@ but depends on the value of the @longopt{pkgdatadir=@var{dir}} option passed to
 the @command{./configure} script. Files used for strings customization and
 internationalization are also searched for in the @file{i18n} directory
 of this directory. @xref{Using init files} for more. 
+
+@node Advanced build features
+@section Advanced build features
+
+This section documents features that are unlikely to be used but deserve
+a bit of documentation. 
+
+A @command{./configure} switch, 
+@longopt{with-unicode} allows to choose whether the unicode code should
+be used or not. The default is to detect it with a test. This
+code requires @code{Encode} and @code{Unicode::Normalize} modules.
+
+@command{perl} isn't 
+needed to build the script. the script is build by @file{./configure} 
+and a shell script launched by @command{make} which is a simple 
+wrapper around a @command{sed} one-liner. The @command{perl} command
+can be specified with the environment variable @code{$PERL}, otherwise
+it is detected. @command{perl} is required to rebuild the documentation
+as the @acronym{HTML} documentation is rebuild with @command{texi2html}
+itself.
+
+The translations are managed by a script @command{manage_i18n.pl}, created
+by @command{./configure}. @command{manage_i18n.pl} requires 
+@code{Data::Dumper} to function normally. If this module isn't there 
+@command{./configure} detects it and @command{manage_i18n.pl} doesn't
+really rebuild the translations, but only copy files. It is possible
+to use the @command{./configure} switch @longopt{enable-translations}
+to override the @command{./configure} detection. For more about 
+translations, see @ref{Internationalization}.
+
+It is possible to build from outside of the source directory, for example
+the following should work:
+
+@example
+tar xzvf texi2html-@value{VERSION}.tar.gz
+mkdir texi2html_build
+cd texi2html_build
+../texi2html-@value{VERSION}/configure && make
+@end example
+
+All these features enables to build @command{texi2html} on a platform 
+in order to run it on another platform, a kind of cross-building. The 
+@command{./configure} switches and @code{$PERL} allows to specify 
+everything needed for the build of the @command{texi2html} script.
 
 @c ========================================================
 @node Invoking texi2html
@@ -3375,7 +3444,7 @@ an example, see @ref{Strings}.
 After that you should run the command @command{./manage_i18n.pl merge} in
 the top directory, it should merge your file with the existing files in
 @file{translations.pl}, which is incorporated to the @file{texi2html} script
-by @command{./configure}.
+by @command{make}.
 
 @node New language
 @appendixsubsec Contributing translations to another language

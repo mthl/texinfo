@@ -19,13 +19,12 @@ texi2html_additional_scripts = \
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
-noinst_SCRIPTS = manage_i18n.pl
+noinst_SCRIPTS = manage_i18n.pl buildt2h.sh
 
 EXTRA_DIST = \
-	INTRODUCTION \
 	MySimple.pod \
 	autogen.sh \
-	manage_i18n.pl \
+	$(noinst_SCRIPTS) \
 	missing-texi2html \
 	texi2html.pl \
 	texi2html.spec \
@@ -120,12 +119,15 @@ dist_images_DATA = images/a_begin.gif \
 	images/xy_up.gif \
 	images/xy_up_gr.gif
 
+#texi2html: $(texi2html_sources)
+#	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
+#	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
+#	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
+#	    -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
+#	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" $< >$@
+#	chmod a+x $@
 texi2html: $(texi2html_sources)
-	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
-	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
-	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
-	    -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
-	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" $< >$@
+	$(srcdir)/buildt2h.sh $@ $^ 
 	chmod a+x $@
 
 texi2html.spec: texi2html.spec.in configure
