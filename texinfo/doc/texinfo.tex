@@ -89,6 +89,7 @@
 \let\ptexhat=^
 \let\ptexi=\i
 \let\ptexindent=\indent
+\let\ptexnoindent=\noindent
 \let\ptexlbrace=\{
 \let\ptexless=<
 \let\ptexplus=+
@@ -922,11 +923,14 @@ where each line of input produces a line of output.}
 \gdef\dosuppressfirstparagraphindent{%
   \gdef\indent{%
     \global\let\indent=\ptexindent
+    \global\let\noindent=\ptexnoindent
     \global\everypar = {}%
   }%
+  \gdef\noindent{}%
   \global\everypar = {%
     \kern-\parindent
     \global\let\indent=\ptexindent
+    \global\let\noindent=\ptexnoindent
     \global\everypar = {}%
   }%
 }%
@@ -4433,6 +4437,7 @@ width0pt\relax} \fi
   \let\!=\ptexexclam
   \let\i=\ptexi
   \let\indent=\ptexindent
+  \let\noindent=\ptexnoindent
   \let\{=\ptexlbrace
   \let\+=\tabalign
   \let\}=\ptexrbrace
@@ -6137,6 +6142,7 @@ width0pt\relax} \fi
 % Auto-number footnotes.  Otherwise like plain.
 \gdef\footnote{%
   \let\indent=\ptexindent
+  \let\noindent=\ptexnoindent
   \global\advance\footnoteno by \@ne
   \edef\thisfootno{$^{\the\footnoteno}$}%
   %
