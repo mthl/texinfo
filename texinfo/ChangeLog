@@ -1,5 +1,22 @@
 2002-09-26    <karl@gnu.org>
 
+	* lib/system.h [MIKTEX]: include gnu-miktex.h, define S_ISDIR.
+	[! MIKTEX]: declare substring.
+	From: Stephen Gildea <gildea@stop.mail-abuse.org>,
+	08 May 2002 18:12:58 -0400.
+
+	* doc/texinfo.tex: spurious \let when setting \mainmagstep.  
+	From: Stephen Gildea <gildea@stop.mail-abuse.org>,
+	08 May 2002 08:38:39 -0400.
+
+	* doc/texinfo.txi: copyright symbol: use @code{@copyright@{@}},
+	with the braces in the @code.
+	From: Paul Eggert <eggert@twinsun.com>, 1 Apr 2002 11:37:52 -0800.
+
+	* info/infodoc.c (replace_in_documentation): always allocate at
+	least one byte for replen, otherwise things crash when MALLOC_CHECK_=2.
+	From: "Andreas Herrmann" <AHERRMAN@de.ibm.com>.
+
 	* lib/Makefile.am (lintxi_a_SOURCES): include xalloc.h.
 
 	* doc/Makefile.am (EXTRA_DIST): skip macro.texi and userdoc.texi now.
