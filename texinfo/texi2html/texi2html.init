@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.81 2005-02-01 21:20:28 pertusus Exp $
+# $Id: texi2html.init,v 1.82 2005-02-12 17:39:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3192,7 +3192,7 @@ sub t2h_default_definition_category($$$)
     my $class = shift;
     my $style = shift;
 #    print STDERR "definition_category $name, class $class, style $style\n";
-    return undef if (!defined($name) or $name =~ /^\s*$/);
+    #return undef if (!defined($name) or $name =~ /^\s*$/);
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
@@ -3977,6 +3977,7 @@ sub t2h_default_def_line($$$$$)
    my $arguments = shift;
    my $index_label = shift;
    $index_label = '' if (!defined($index_label));
+   $category = '' if (!defined($category) or ($category =~ /^\s*$/));
    $name = '' if (!defined($name) or ($name =~ /^\s*$/));
    $type = '' if (!defined($type) or $type =~ /^\s*$/);
    if (!defined($arguments) or $arguments =~ /^\s*$/)

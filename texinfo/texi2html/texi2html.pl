@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.128 2005-02-07 04:52:46 dprice Exp $
+# $Id: texi2html.pl,v 1.129 2005-02-12 17:39:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -7293,7 +7293,7 @@ sub get_deff_index($$$)
     ($style, $category, $name, $type, $class, $arguments) = parse_def($tag, $line, $line_nr); 
     # FIXME -- --- ''... should be protected for name and maybe class
     $name = &$Texi2HTML::Config::definition_category($name, $class, $style);
-    return undef if (!$name or ($name =~ /^\s*$/));
+    return ($style, '') if (!defined($name) or ($name =~ /^\s*$/));
     return ($style, $name);
 }
 
@@ -10051,7 +10051,8 @@ sub scan_line($$$$;$)
             }
             # This is a @macroname{...} construct. We add it on top of stack
             # It will be handled when we encounter the '}'
-            if (s/^{//)
+            # There is a special case for def macros as @deffn{def} is licit
+            if (!$Texi2HTML::Config::def_map{$macro} and s/^{//)
             {
                 if ($macro eq 'verb')
                 {
@@ -10343,9 +10344,11 @@ sub scan_line($$$$;$)
                     #$category = substitute_line($category) if (defined($category));
                     $state->{'deff'}->{'style'} = $style;
                     $state->{'deff'}->{'category'} = substitute_line($category) if (defined($category));
+                    $state->{'deff'}->{'category'} = '' if (!defined($category));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     #$name = substitute_line($name) if (defined($name));
                     $state->{'deff'}->{'name'} = substitute_line($name) if (defined($name));
+                    $state->{'deff'}->{'name'} = '' if (!defined($name));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     #$type = substitute_line($type) if (defined($type));
                     $state->{'deff'}->{'type'} = substitute_line($type) if (defined($type));
@@ -10613,13 +10616,14 @@ sub scan_line($$$$;$)
                              $arguments = substitute_line($state->{'deff'}->{'arguments'}) if (defined($state->{'deff'}->{'arguments'}));
 
                              $category = &$Texi2HTML::Config::definition_category($category, $class, $def_style);
-                             if (! $category) # category cannot be 0
-                             {
-                                  echo_warn("Bad definition line $_", $line_nr);
-                                  delete $state->{'cmd_line'};
-                                  return '';
-                             }
-                             my $index_label = do_index_entry_label ($state,$line_nr) if ($name ne '');
+                             # not an error for makeinfo
+                             #if (! $category) # category cannot be 0
+                             #{
+                             #     echo_warn("Bad definition line $_", $line_nr);
+                             #     delete $state->{'cmd_line'};
+                             #     return '';
+                             #}
+                             my $index_label = do_index_entry_label($state,$line_nr) if ($name ne '');
                              add_prev($text, $stack, &$Texi2HTML::Config::def_line($category, $name, $type, $arguments, $index_label));
                         }
                         else

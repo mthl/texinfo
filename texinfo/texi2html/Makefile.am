@@ -145,16 +145,7 @@ i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
 translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
-#translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
-#                 examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no \
-#                 i18n/pt i18n/fr
-	## Make sure the following script runs and generates files in
-	## $(srcdir).
-#	cd $(srcdir); $(PERL) $(srcdir)/manage_i18n.pl all
-
 html-local: texi2html
-
-dist-local: texi2html
 
 clean-local:
 	-rm -f texi2html

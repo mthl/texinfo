@@ -261,6 +261,16 @@ def--fn
 @deffnx cmde @b{id ule} truc
 @deffnx cmde2 @b{id @samp{i} ule} truc
 @deffnx @b{id @samp{i} ule}    
+@deffnx 
+@deffnx aaa
+@deffnx {} {}
+@deffnx{}
+@deffnx{} machin
+@deffnx{} {bidule machin}
+@deffnx{truc} machin
+@deffnx{truc} { }
+@deffnx{truc}
+@deffnx{} {}
 @deffnx truc machin bidule chose and }
 @deffnx truc machin bidule chose and } after
 @deffnx truc machin bidule chose and {
