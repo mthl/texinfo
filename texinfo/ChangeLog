@@ -1,6 +1,7 @@
 2003-11-07  Karl Berry  <karl@gnu.org>
 
-	* bootstrap: nothing to do to bootstrap (I think).
+	* bootstrap: run the various auto* tools we need instead of
+		autoreconf, which copies in older versions of files.
 
 	* doc/Makefile.am (texinfo): remove the special rule, it seems to
 		be fixed.
