@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.8 2003-09-08 15:37:24 karl Exp $
+   $Id: system.h,v 1.9 2003-09-10 14:16:09 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -209,10 +209,10 @@ extern int strcoll ();
 # ifdef __CYGWIN__
 #  define DEFAULT_TMPDIR	"/tmp/"
 #  define PATH_SEP	":"
-# else  /* O_BINARY && !__unix__ */
+# else  /* O_BINARY && !__CYGWIN__ */
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
-# endif /* O_BINARY && !__unix__ */
+# endif /* O_BINARY && !__CYGWIN__ */
   /* Back to any O_BINARY system.  */
 # define FILENAME_CMP	strcasecmp
 # define FILENAME_CMPN	strncasecmp
