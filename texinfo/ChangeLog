@@ -1,3 +1,13 @@
+2003-09-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/macro.c (cm_alias): do not expand when calling
+	get_until_in_line, since xml/docbook expansion is empty.
+	Report from: Richard Kreuter <kreuter@anduril.rutgers.edu>,
+	17 Sep 2003 17:59:58 -0400.
+
+	* info/signals.c: Clear the screen when exiting from a SIGQUIT.
+	From: Wojciech Polak <polak@gnu.org>, 19 Sep 2003 10:27:28 +0200.
+
 2003-09-16  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\sectionheading): there is no need to insert

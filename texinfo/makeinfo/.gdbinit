@@ -205,3 +205,6 @@ set args --force -o /tmp/h --html --no-split $ttests/loweraise.tex
 
 # deffnx fails when after conditional.
 set args -o - tests/defxcond.txi
+
+# xml doesn't handle aliases.
+set args --xml -o - $ttests/alias.tex
