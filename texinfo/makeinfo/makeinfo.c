@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.50 2003-11-21 06:48:02 dirt Exp $
+   $Id: makeinfo.c,v 1.51 2003-11-21 09:26:27 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -4283,8 +4283,8 @@ execute_string (format, va_alist)
         pop_insertion ();
     }
 
-  /* Similar thing is also applicable to also XML and Docbook output.  Though
-     we silently balance the tags instead of complaining.  */
+  /* A similar check is also applicable to XML and Docbook formats.  Though we
+     silently balance the tags instead of complaining.  */
   if (xml)
     {
       while (xml_current_stack_index () > xml_element_stack_start)
