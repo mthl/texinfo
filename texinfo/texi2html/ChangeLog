@@ -1,3 +1,18 @@
+2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* manage_i18n.pl: remove and replace with...
+	* manage_i18n.pl.in: ... added
+	* configure.ac, manage_i18n.pl.in: detect whether it is possible to 
+	do the translations buildup (--enable-translations).
+	* doc/Makefile.am: rebuild texi2html as a dependency for the manual.
+	(trick from Derek).
+	* doc/texi2html.texi: sync.
+	* Makefile.am,manage_i18n.pl.in: add command line arguments to
+	manage_i18n.pl.in such that it is possible to build from outside of 
+	the source dir.
+	* Makefile.am: have texi2html depend on $(texi2html_SOURCES) otherwise
+	the texi2html isn't rebuild when out of date.
+
 2005-02-05  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Note use of Automake 1.9.3.
@@ -50,7 +65,7 @@
 	old perl. Report from Sven de Vries.
 	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
 	Report from ezra peisach.
-	* Tests/*: remove some $Id: ChangeLog,v 1.186 2005-02-05 17:36:06 dprice Exp $ rcs tags
+	* Tests/*: remove some $Id: ChangeLog,v 1.187 2005-02-06 16:35:37 pertusus Exp $ rcs tags
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 

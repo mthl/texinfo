@@ -2,6 +2,18 @@ This file records noteworthy changes.
 
 1.78 ()
 
+* BUG FIXES
+  ---------
+
+* The texi2html script is now created by make and not configure. 
+
+* It is possible to build the translation files from outside of the 
+  build directory.
+
+* In case it isn't possible to rebuild cleanly the translation files 
+  (no Data::Dumper), it is detected by configure and the files are simply
+  copied.
+
 * FOR DEVELOPERS
   --------------
 

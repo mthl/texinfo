@@ -21,11 +21,15 @@ EXTRA_DIST = \
 CLEANFILES = texi2html.1
 
 texi2html.html: texi2html.texi $(srcdir)/version.texi \
-  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
-  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm \
-  $(top_srcdir)/translations.pl
+  $(TEXI2HTML)
+#texi2html.html: texi2html.texi $(srcdir)/version.texi \
+#  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
+#  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
+
+$(TEXI2HTML):
+	@(cd $(top_builddir) && make texi2html)
 
 texi2html.1: texi2html.1.in ../config.status
 	@echo Generating $@...

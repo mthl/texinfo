@@ -3349,6 +3349,14 @@ strings.
 @vindex $LANGUAGES
 @vindex $T2H_OBSOLETE_STRINGS
 
+@menu
+* Supported language::
+* New language::
+@end menu
+
+@node Supported language
+@appendixsubsec Contributing to existing translations
+
 If the language is allready supported, then there will be a file 
 in the @file{i18n} directory with name the two-letter 
 ISO-639 language code. In that case you can enhance the translations by 
@@ -3359,10 +3367,13 @@ When a string contains a @samp{%} followed by @samp{@{} @var{name} @samp{@}}
 it means that the string will be expanded by @command{texi2html}. For
 an example, see @ref{Strings}.
 
-After that you should run the command @command{./manage_i18n.pl all} in
+After that you should run the command @command{./manage_i18n.pl merge} in
 the top directory, it should merge your file with the existing files in
 @file{translations.pl}, which is incorporated to the @file{texi2html} script
 by @command{./configure}.
+
+@node New language
+@appendixsubsec Contributing translations to another language
 
 If the language isn't currently supported, copy the @file{en} file in 
 @file{i18n} to a file with name the two-letter ISO-639 
@@ -3371,8 +3382,9 @@ language code of your language
 two-letter language code in the @file{manage_i18n.pl} file in the
 @code{@@known_languages} array. 
 
-After that you should similarly run the command 
-@command{./manage_i18n.pl all} in
+After that you should run the command 
+@command{./manage_i18n.pl update @var{lang}} and 
+@command{./manage_i18n.pl merge} in
 the top directory.
 
 Obsoleted strings are not removed from the files, they are still present
@@ -3400,15 +3412,29 @@ the what you want to substitute.
 Here is an example:
 
 @example
-return &$I('%@{name@} of %@{class@}', @{ 'name' => $name, 'class' => $class @});
+return &$I('%@{name@} of %@{class@}', 
+       @{ 'name' => $name, 'class' => $class @});
 @end example
 
 In that case @code{%@{name@}} is substituted by @code{$name} in the translated
 string.
 
-After that you should run the command @command{./manage_i18n.pl all} in the top
-directory, it should add your new strings to all the files in the @file{i18n}
-directory. 
+After that you should run the command @command{./manage_i18n.pl} in the top
+directory, to add your new strings to the template file, that is the 
+file for english and to all the files in the @file{i18n}
+directory. This is achieved with
+
+@example
+./manage_i18n.pl template
+./manage_i18n.pl update
+@end example
+
+And to merge the new translation files in @file{translations.pl}, do
+
+@example
+./manage_i18n.pl merge
+@end example
+
 
 @c --------------------------------------------------------
 @c commandline option index.

@@ -17,8 +17,7 @@ texi2html_additionnal_scripts = \
 	translations.pl \
 	l2h.init
 
-texi2html_SOURCES = $(texi2html_additionnal_scripts) \
-	texi2html.pl 
+texi2html_SOURCES = texi2html_configured.pl $(texi2html_additionnal_scripts)
 
 noinst_SCRIPTS = manage_i18n.pl
 
@@ -31,7 +30,8 @@ EXTRA_DIST = \
 	texi2html.pl \
 	texi2html.spec \
 	texi2html.spec.in \
-	$(texi2html_SOURCES)
+	texi2html.pl \
+	$(texi2html_additionnal_scripts)
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
@@ -120,7 +120,7 @@ dist_images_DATA = images/a_begin.gif \
 	images/xy_up.gif \
 	images/xy_up_gr.gif
 
-texi2html: texi2html_configured.pl $(texi2html_additional_scripts)
+texi2html: $(texi2html_SOURCES)
 	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
 	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
 	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
@@ -135,12 +135,22 @@ texi2html.spec: texi2html.spec.in configure
 	@cp texi2html.tmp $(srcdir)/$@
 	-@rm texi2html.tmp
 
-translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
-                 examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no \
-                 i18n/pt i18n/fr
+i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
+                 examples/noheaders.init
+	$(PERL) $(srcdir)/manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
+
+i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
+	$(PERL) $(srcdir)/manage_i18n.pl -d i18n -I . -I $(srcdir) update
+
+translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
+	$(PERL) $(srcdir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
+
+#translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
+#                 examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no \
+#                 i18n/pt i18n/fr
 	## Make sure the following script runs and generates files in
 	## $(srcdir).
-	cd $(srcdir); $(PERL) $(srcdir)/manage_i18n.pl all
+#	cd $(srcdir); $(PERL) $(srcdir)/manage_i18n.pl all
 
 clean-local:
 	-rm -f texi2html
