@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-19 09:16-0800\n"
+"POT-Creation-Date: 2004-12-21 16:20-0800\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -1094,7 +1094,7 @@ msgstr "移至本行結尾"
 msgid "Move to the start of the line"
 msgstr "移至本行開頭"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1424
 msgid "Next"
 msgstr "下一個"
 
@@ -2532,127 +2532,127 @@ msgstr "* 欄位 #%d: 輸出 = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "節點 `%s' 已在第 %d 行定義過了"
 
-#: makeinfo/node.c:647
+#: makeinfo/node.c:648
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "編排節點 %s 的格式中...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:716
 #, fuzzy, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "節點 `%s' 必須使用分段命令 (sectioning command) (例如: %c%s)"
 
-#: makeinfo/node.c:878
+#: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "`%c%s' 命令中未指定節點名稱"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1152
+#: makeinfo/node.c:920 makeinfo/node.c:1151
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr ""
 
-#: makeinfo/node.c:922
+#: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:924 makeinfo/node.c:1155
+#: makeinfo/node.c:925 makeinfo/node.c:1154
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 
-#: makeinfo/node.c:954
+#: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr ""
 
-#: makeinfo/node.c:992
+#: makeinfo/node.c:991
 msgid "Next:"
 msgstr "下一個:"
 
-#: makeinfo/node.c:1008
+#: makeinfo/node.c:1007
 msgid "Previous:"
 msgstr "上一個:"
 
-#: makeinfo/node.c:1022
+#: makeinfo/node.c:1021
 msgid "Up:"
 msgstr "上一層:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1148
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr ""
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1153
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1347
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s 參照到不存在的節點: `%s'"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1363
 msgid "Menu"
 msgstr "目錄"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1365
 msgid "Cross"
 msgstr ""
 
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1447
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1450
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "本節點 (%s) 的 前一個 (Prev) 節點有問題"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 msgid "Prev"
 msgstr "前一個"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1505
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr ""
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1509
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "本節點 (%s) 的 下一個 (Next) 節點有問題"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1524
 msgid "Up"
 msgstr "上一層"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1590
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1619
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "節點 `%s' 已被參照 %d 次"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1633
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "未被參照的節點 `%s'"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1723
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1727
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "無法建立輸出檔案 `%s'."

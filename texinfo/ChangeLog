@@ -1,5 +1,7 @@
 2004-12-21  Karl Berry  <karl@gnu.org>
 
+	* pretest version 4.7.94.
+
 	* makeinfo/xref.c: doc fix.
 
 2004-12-20  Karl Berry  <karl@gnu.org>

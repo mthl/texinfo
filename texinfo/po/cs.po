@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-19 09:16-0800\n"
+"POT-Creation-Date: 2004-12-21 16:20-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1121,7 +1121,7 @@ msgstr "Pøesun na konec øádku"
 msgid "Move to the start of the line"
 msgstr "Pøesun na zaèátek øádku"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1424
 msgid "Next"
 msgstr "Dal¹í"
 
@@ -2583,129 +2583,129 @@ msgstr "* sloupec #%d: výstup = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "Uzel `%s' ji¾ byl definován na øádku %d"
 
-#: makeinfo/node.c:647
+#: makeinfo/node.c:648
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "Formátování uzlu %s...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:716
 #, fuzzy, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Uzel `%s' vy¾aduje pøíkaz na vytváøení sekcí (tøeba %c%s)"
 
-#: makeinfo/node.c:878
+#: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Pøíkazu `%c%s' nebyl zadán název uzlu"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1152
+#: makeinfo/node.c:920 makeinfo/node.c:1151
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr ""
 
-#: makeinfo/node.c:922
+#: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:924 makeinfo/node.c:1155
+#: makeinfo/node.c:925 makeinfo/node.c:1154
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr ""
 
-#: makeinfo/node.c:954
+#: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr ""
 
-#: makeinfo/node.c:992
+#: makeinfo/node.c:991
 msgid "Next:"
 msgstr "Dal¹í:"
 
-#: makeinfo/node.c:1008
+#: makeinfo/node.c:1007
 msgid "Previous:"
 msgstr "Pøedchozí:"
 
-#: makeinfo/node.c:1022
+#: makeinfo/node.c:1021
 msgid "Up:"
 msgstr "Nahoru:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1148
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr ""
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1153
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1347
 #, fuzzy, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s se odkazuje na neexistující uzel `%s'"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1363
 msgid "Menu"
 msgstr "Menu"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1365
 msgid "Cross"
 msgstr "Odkaz"
 
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1447
 #, fuzzy, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr "Následující uzel uzlu `%s' neukazuje na tento"
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1450
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Tento uzel (%s) má chybný odkaz na pøedchozí uzel"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 msgid "Prev"
 msgstr "Pøedchozí"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1505
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Pøedchozí uzel uzlu `%s' neukazuje na tento"
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1509
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Tento uzel (%s) má chybný odkaz na následující uzel"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1524
 msgid "Up"
 msgstr "Nahoru"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1590
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Uzel `%s' postrádá polo¾ku menu pro `%s' navzdory tomu, ¾e je jeho vy¹¹ím "
 "uzlem"
 
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1619
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "na uzel `%s' se bylo odkazováno %d krát"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1633
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1723
 #, c-format
 msgid "Removing %s\n"
 msgstr ""
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1727
 #, fuzzy, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Výstupní soubor `%s' nelze vytvoøit."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-19 09:16-0800\n"
+"POT-Creation-Date: 2004-12-21 16:20-0800\n"
 "PO-Revision-Date: 2004-12-16 08:19+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1128,7 +1128,7 @@ msgstr "Сместиться в конец строки"
 msgid "Move to the start of the line"
 msgstr "Сместиться в начало строки"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1424
 msgid "Next"
 msgstr "Следующая"
 
@@ -2679,133 +2679,133 @@ msgstr "* колонка %d: вывод = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "Нода `%s' была ранее определена в строке %d"
 
-#: makeinfo/node.c:647
+#: makeinfo/node.c:648
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "Форматирование ноды %s...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:716
 #, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Для ноды `%s' требуется команда описания структуры глав (напр. %c%s)"
 
-#: makeinfo/node.c:878
+#: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Для команды `%c%s' не задано имя ноды"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1152
+#: makeinfo/node.c:920 makeinfo/node.c:1151
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Маркер `%s' и нода `%s' ссылаются на одно и то же имя файла"
 
-#: makeinfo/node.c:922
+#: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Данная команда @anchor игнорируется; ссылки на нее не будут работать"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1155
+#: makeinfo/node.c:925 makeinfo/node.c:1154
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Переименуйте этот маркер или используйте ключ `--no-split'"
 
-#: makeinfo/node.c:954
+#: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Неожиданная строка в конце разбитого HTML-файла `%s'"
 
-#: makeinfo/node.c:992
+#: makeinfo/node.c:991
 msgid "Next:"
 msgstr "Следующая:"
 
-#: makeinfo/node.c:1008
+#: makeinfo/node.c:1007
 msgid "Previous:"
 msgstr "Предыдущая:"
 
-#: makeinfo/node.c:1022
+#: makeinfo/node.c:1021
 msgid "Up:"
 msgstr "Вверх:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1148
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Маркеры `%s' и `%s' ссылаются на одно и то же имя файла"
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1153
 msgid "@anchor command ignored; references to it will not work"
 msgstr "Команда @anchor игнорируется; ссылки на нее не будут работать"
 
 #  здесь %s может быть `cross' или `menu'
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1347
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s на несуществующую ноду `%s' (возможно, неправильно описана структура "
 "глав?)"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1363
 msgid "Menu"
 msgstr "Ссылка из меню"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1365
 msgid "Cross"
 msgstr "Перекрестная ссылка"
 
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1447
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "На поле Next ноды `%s' нет ссылок (возможно, неправильно описана структура "
 "глав?)"
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1450
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "В этой ноде (%s) неправильный указатель Prev"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 msgid "Prev"
 msgstr "Предыдущая"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1505
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "На поле Prev ноды `%s' нет ссылок"
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1509
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "В этой ноде (%s) неправильный указатель Next"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr ""
 "В ноде `%s' нет поля Up (возможно, неправильно описана структура глав?)"
 
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1524
 msgid "Up"
 msgstr "Вверх"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1590
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Нода `%s' не имеет пункта меню для `%s', хотя на нее ссылается поле Up"
 
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1619
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "на ноду `%s' появилось %d ссылок"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1633
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "на ноду `%s' нет ссылок"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1723
 #, c-format
 msgid "Removing %s\n"
 msgstr "Удаление %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Невозможно удалить файл `%s': %s"

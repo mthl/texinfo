@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-19 09:16-0800\n"
+"POT-Creation-Date: 2004-12-21 16:20-0800\n"
 "PO-Revision-Date: 2004-12-06 08:00-05:00\n"
 "Last-Translator: Laurent Bourbeau <bourbeau@progiciels-bpi.ca>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -1167,7 +1167,7 @@ msgstr "Aller à la fin de la ligne"
 msgid "Move to the start of the line"
 msgstr "Aller au début de la ligne"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1424
 msgid "Next"
 msgstr "Noeud « Next »"
 
@@ -2743,138 +2743,138 @@ msgstr "* colonne #%d: sortie = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "Le noeud « %s » défini antérieurement à la ligne %d"
 
-#: makeinfo/node.c:647
+#: makeinfo/node.c:648
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "Écriture du noeud « %s »...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:716
 #, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Le noeud « %s » exige une commande de subdivision (i.e. %c%s)"
 
-#: makeinfo/node.c:878
+#: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Aucun nom de noeud spécifié pour la commande « %c%s »"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1152
+#: makeinfo/node.c:920 makeinfo/node.c:1151
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Ancre « %s » et mode « %s » pointe vers le même nom de fichier"
 
-#: makeinfo/node.c:922
+#: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
 msgstr ""
 "Commande @anchor ignorée; les références vers celle-ci ne fonctionneront pas"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1155
+#: makeinfo/node.c:925 makeinfo/node.c:1154
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Renommer cette ancre ou utiliser l'option « --no-split »"
 
-#: makeinfo/node.c:954
+#: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Chaîne inattendue à la fin du fichier morcelé HTML « %s »"
 
-#: makeinfo/node.c:992
+#: makeinfo/node.c:991
 msgid "Next:"
 msgstr "Noeud « Next »:"
 
 # Est-ce vraiment un message à traduire?
-#: makeinfo/node.c:1008
+#: makeinfo/node.c:1007
 msgid "Previous:"
 msgstr "Noeud « Previous »:"
 
 # Est-ce vraiment un message à traduire?
-#: makeinfo/node.c:1022
+#: makeinfo/node.c:1021
 msgid "Up:"
 msgstr "Noeud « Up »:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1148
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Ancre « %s » et mode « %s » pointe vers le même nom de fichier"
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1153
 msgid "@anchor command ignored; references to it will not work"
 msgstr ""
 "Commande @anchor ignorée; les références vers celle-ci ne fonctionneront pas"
 
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1347
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr ""
 "%s réfère à un noeud « %s » inexistant (à mois d'un sectionnement incorrect?)"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1363
 msgid "Menu"
 msgstr "Menu"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1365
 msgid "Cross"
 msgstr "Référence"
 
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1447
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
 "Le champ Next du noeud « %s » n'a pas de pointeur de retour en amont (à "
 "moins d'un sectionnement incorrect?)"
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1450
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Ce noeud (%s) a un noeud « Prev » erroné"
 
 # Est-ce vraiment un message à traduire?
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 msgid "Prev"
 msgstr "Noeud « Previous »"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1505
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Le champ Prev du noeud « %s » n'a pas de pointeur de retour en amont"
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1509
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Ce noeud (%s) a un noeud « Next » erroné"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "« %s » n'a pas de champ Up (à moins d'un sectionnement incorrect?)"
 
 # Est-ce vraiment un message à traduire?
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1524
 msgid "Up"
 msgstr "Noeud « Up »"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1590
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "Le noeud « %s » manque d'un item menu pour « %s » en dépit d'être son noeud "
 "« Up » cible"
 
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1619
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "Le noeud « %s » a été référencé %d fois"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1633
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "noeud « %s » non référencé"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1723
 #, c-format
 msgid "Removing %s\n"
 msgstr "Retrait de %s\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Ne peut enlever le fichier « %s »: %s"
