@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.9 2002-10-26 23:11:35 karl Exp $
+$Id: NEWS,v 1.10 2002-10-28 13:37:46 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -27,9 +27,11 @@ convenience, here's a url to one of the relevant sections:
 * makeinfo:
   . html output uses <br /> and <hr />, for the sake of HTML 4.01
     compatibility.  (We're still not completely compatible, though.)
+  . html output for @defun and friends now has font changes.
 * texinfo.tex:
   . new Italian translations, txi-it.tex.
   . pdf bookmarks for unnumbered sections work.
+  . type name for @defun and friends no longer extends into margin.
 * info:
   . crash when MALLOC_CHECK_=2 fixed.
 * install-info:

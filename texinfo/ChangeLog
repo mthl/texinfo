@@ -1,3 +1,7 @@
+2002-10-28    <karl@gnu.org>
+
+	* NEWS: mention Werner's fixes.
+
 2002-10-27  Werner Lemberg  <wl@gnu.org>
 
 	* makeinfo/html.c (insert_html_tag): Fix handling of nested,
