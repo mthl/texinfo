@@ -1,5 +1,9 @@
 2005-03-27  Karl Berry  <karl@gnu.org>
 
+	* util/texinfo.dtd: remove -- and ^L from inside comments, since
+	apparently XML cannot handle them.
+	Report from Torsten, bronger@physik.rwth-aachen.de.
+
 	* configure.ac (AC_INIT): quote address.
 	(AC_PREREQ): move to after AC_INIT, per current recommendation.
 

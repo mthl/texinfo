@@ -1,5 +1,5 @@
-<!-- $Id: texinfo.dtd,v 1.6 2005-02-14 00:20:27 karl Exp $
-   Document Type Definition for Texinfo (makeinfo --xml).
+<!-- $Id: texinfo.dtd,v 1.7 2005-03-27 14:32:41 karl Exp $
+   Document Type Definition for Texinfo XML output (dashdash xml).
 
   Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -111,7 +111,7 @@
             | %Inline.footnote; | %option.cmds; ">
 
 
-<!--  * ELEMENTS * -->
+<!-- * ELEMENTS * -->
 
 <!-- TOP Level Element -->
 <!ELEMENT texinfo ((%metainformation; | titlepage | node | %block; | %toc;
@@ -478,4 +478,3 @@
 <!ATTLIST sp
           lines CDATA #IMPLIED>
 <!ELEMENT printindex (#PCDATA)>
-
