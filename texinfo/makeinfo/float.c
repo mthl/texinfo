@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.2 2003-11-24 03:19:16 dirt Exp $
+   $Id: float.c,v 1.3 2003-11-24 14:40:12 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -21,8 +21,10 @@
 
 #include "system.h"
 #include "makeinfo.h"
+#include "cmds.h"
 #include "float.h"
 #include "sectioning.h"
+#include "xml.h"
 
 static FLOAT_ELT *float_stack = NULL;
 
@@ -67,7 +69,7 @@ count_floats_of_type_in_chapter (type, chapter)
 
   while (temp && strncmp (temp->number, chapter, l) == 0)
     {
-      if (STREQ (text_expansion (temp->type), type))
+      if (strlen (temp->id) > 0 && STREQ (text_expansion (temp->type), type))
         i++;
       temp = temp->next;
     }
@@ -117,4 +119,64 @@ get_float_ref (id)
     }
 
   return NULL;
+}
+
+void
+cm_listoffloats ()
+{
+  char *float_type;
+
+  get_rest_of_line (1, &float_type);
+
+  if (xml && !docbook)
+    {
+      xml_insert_element_with_attribute (LISTOFFLOATS, START,
+          "type=\"%s\"", text_expansion (float_type));
+      xml_insert_element (LISTOFFLOATS, END);
+    }
+  else if (!xml)
+    {
+      FLOAT_ELT *temp = (FLOAT_ELT *) reverse_list (float_stack);
+      FLOAT_ELT *new_start = temp;
+
+      if (html)
+        add_word ("<div class=\"listoffloats\">\n");
+      else if (!no_headers)
+        add_word ("* Menu:\n\n");
+
+      while (temp)
+        {
+          if (strlen (temp->id) > 0 && STREQ (float_type, temp->type))
+            {
+              if (html)
+                {
+                  /* A bit of space for HTML reabality.  */
+                  insert_string ("  ");
+                  execute_string ("@ref{%s, %s %s}", temp->id, temp->number,
+                      temp->title);
+                  add_word ("<br>\n");
+                }
+              else
+                {
+                }
+            }
+          temp = temp->next;
+        }
+
+      if (html)
+        {
+          inhibit_paragraph_indentation = 1;
+          add_word ("</div>\n\n");
+        }
+      else if (no_headers)
+        add_char ('\n');
+      else
+        insert ('\n');
+
+      /* Retain the original order of float stack.  */
+      temp = new_start;
+      float_stack = (FLOAT_ELT *) reverse_list (temp);
+    }
+
+  free (float_type);
 }

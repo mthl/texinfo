@@ -1,5 +1,16 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c: new command @listoffloats.
+
+	* makeinfo/float.c (count_floats_of_type_in_chapter): only count
+	floats with @anchors.
+	(cm_listoffloats): new function.
+
+	* makeinfo/insertion.c (end_insertion): do not prepend float type and
+	number if no @anchors.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/xml.c:
 	* makeinfo/xml.h: new element listoffloats.
 

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.48 2003-11-24 03:17:53 dirt Exp $
+   $Id: insertion.c,v 1.49 2003-11-24 14:40:12 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1043,11 +1043,12 @@ end_insertion (type)
 
           no_indent = 1;
 
-          /* Figure 1.1 - Title */
-          execute_string ("%s %s",
-              current_float_type (), current_float_number ());
+          /* Figure 1.1 - Title, only if float has an @anchor.  */
+          if (strlen (current_float_id ()) > 0)
+            execute_string ("%s %s - ",
+                current_float_type (), current_float_number ());
           if (strlen (current_float_title ()) > 0)
-            execute_string (" - %s", current_float_title ());
+            execute_string ("%s", current_float_title ());
 
           /* Indent the following paragraph. */
           inhibit_paragraph_indentation = 0;

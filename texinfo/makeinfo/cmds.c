@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.36 2003-11-23 23:38:13 dirt Exp $
+   $Id: cmds.c,v 1.37 2003-11-24 14:40:12 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -70,7 +70,7 @@ void
   cm_multitable (), cm_settitle (), cm_titlefont (), cm_titlepage (), 
   cm_titlepage_cmds (),
   cm_tie (), cm_tt (),
-  cm_float (), cm_caption (),
+  cm_float (), cm_caption (), cm_listoffloats (),
   cm_verbatim (), cm_verbatiminclude ();
 
 /* Conditionals. */
@@ -277,6 +277,7 @@ COMMAND command_table[] = {
   { "kindex", cm_kindex, NO_BRACE_ARGS },
   { "l", cm_special_char, BRACE_ARGS },
   { "lisp", cm_lisp, NO_BRACE_ARGS },
+  { "listoffloats", cm_listoffloats, NO_BRACE_ARGS },
   { "lowersections", cm_lowersections, NO_BRACE_ARGS },
   { "macro", cm_macro, NO_BRACE_ARGS },
   { "majorheading", cm_majorheading, NO_BRACE_ARGS },
