@@ -344,7 +344,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.20 2003-01-31 16:29:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.21 2003-02-03 15:33:23 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2234,25 +2234,6 @@ sub pass1
                 push(@lines, &debug("<div align=\"center\">\n", __LINE__));
                 s/\@center//;
             }
-            elsif ($tag eq 'setref')
-            {
-                my ($setref);
-                &protect_html;  # if setref contains '&' for instance
-                if (/^\@$tag\s*{($NODERE)}\s*$/)
-                {
-                    $setref = $1;
-                    $setref =~ s/\s+/ /go; # normalize
-                    $setref =~ s/ $//;
-                    $node2sec{$setref} = $name;
-                    $sec2node{$name} = $setref;
-                    $node2href{$setref} = "$docu_doc#$docid";
-                }
-                else
-                {
-                    warn "$ERROR Bad setref line: $_";
-                }
-                next;
-            }
             elsif ($tag eq 'lowersections')
             {
                 my ($sec, $level);
@@ -3611,7 +3592,6 @@ sub pass3
             push(@lines3, $_);
             next;
         }
-        &protect_texi ;
         #
         # split style substitutions
         #
