@@ -1,3 +1,7 @@
+2005-02-24  Stepan Kasal  <kasal@ucw.cz>
+
+	* util/texi2dvi (get_xref_files): No need to use ls, save a process.
+
 2005-02-22  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (absolute_filenames): Skip nonexistent directories.

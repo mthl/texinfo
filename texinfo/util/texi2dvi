@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.45 2005-02-22 14:42:13 karl Exp $
+# $Id: texi2dvi,v 1.46 2005-02-25 08:55:03 kasal Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.45 $'
+rcs_revision='$Revision: 1.46 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -358,12 +358,11 @@ get_xref_files ()
 {
   # Find all files having root filename with a two-letter extension,
   # saves the ones that are really Texinfo-related files.
-  # Use `ls' because some patterns are likely not to match.
   # - .?o?
   #   .toc, .log, LaTeX tables and lists, FiXme's .lox, maybe more.
   # - bu[0-9]*.aux
   #   Sub bibliography when using the LaTeX bibunits package.
-  for this_file in `(ls "$1".?o? "$1".aux bu[0-9]*.aux "$1".?? "$1".idx) 2>&6`
+  for this_file in "$1".?o? "$1".aux bu[0-9]*.aux "$1".?? "$1".idx
   do
     # If file is empty, skip it.
     test -s "$this_file" || continue
