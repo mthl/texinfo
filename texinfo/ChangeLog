@@ -1,3 +1,9 @@
+2004-08-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (exampleindent): document that the default is
+		different in TeX.
+	From: Simon Josefsson <jas@extundo.com>, 18 Aug 2004 13:44:32 +0200.
+
 2004-08-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\cslet): equivalent-or-better, and shorter,

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.107 2004-08-14 16:00:26 karl Exp $
+@c $Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4010,7 +4010,8 @@ beginning of a line followed by either @samp{asis} or a number:
 @@exampleindent @var{indent}
 @end example
 
-The indentation is according to the value of @var{indent}:
+@code{@@exampleindent} is ignored for HTML output.  Otherwise, the
+indentation is according to the value of @var{indent}:
 
 @table @asis
 @item @code{asis}
@@ -4025,8 +4026,9 @@ Indent environments by @var{n} space characters in Info output, by
 
 @end table
 
-The default value of @var{indent} is 5.  @code{@@exampleindent} is
-ignored for HTML output.
+The default value of @var{indent} is 5 spaces in Info, and 0.4@dmn{in}
+in @TeX{}, which is somewhat less.  (The reduction is to help @TeX{}
+fit more characters onto physical lines.)
 
 It is best to write the @code{@@exampleindent} command before the
 end-of-header line at the beginning of a Texinfo file, so the region
@@ -18310,7 +18312,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.107 2004-08-14 16:00:26 karl Exp $
+$Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18376,7 +18378,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.107 2004-08-14 16:00:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
