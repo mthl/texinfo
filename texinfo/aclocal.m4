@@ -11,7 +11,6 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
-# $Id: aclocal.m4,v 1.5 2002-09-26 22:01:10 karl Exp $
 # Source file used by aclocal in generating aclocal.m4.
 
 #serial 3
