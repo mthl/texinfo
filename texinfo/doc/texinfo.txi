@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.60 2003-08-05 14:04:05 karl Exp $
+@c $Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2670,7 +2670,14 @@ document, and the Top node.  A table of contents is also generally
 produced here.
 
 This chapter expands on the minimal complete Texinfo source file
-previously given (@pxref{Six Parts}).
+previously given (@pxref{Six Parts}).  It describes the numerous
+commands for handling the traditional frontmatter items in Texinfo.
+
+@cindex Frontmatter, text in
+Straight text outside of any command before the Top node should be
+avoided.  Such text is treated differently in the different output
+formats: visible in @TeX{} and HTML, by default not shown in Info
+readers, and so on.
 
 @menu
 * Sample Beginning::            A sample beginning for a Texinfo file.
@@ -2944,20 +2951,20 @@ anything on the line after the command is considered part of the title,
 including what would otherwise be a comment.
 
 The @code{@@settitle} command should precede everything that generates
-actual output in @TeX{}.
+actual output.  The best place for it is right after the
+@code{@@setfilename} command (see the previous section).
 
 @cindex <title> HTML tag
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
-the document @samp{<title>}.  It also becomes default document
-description in the @samp{<head>} part; see @ref{documentdescription},
-for how to change that.
+the document @samp{<title>}.  It also becomes the default document
+description in the @samp{<head>} part (@pxref{documentdescription}).
 
 The title in the @code{@@settitle} command does not affect the title as
 it appears on the title page.  Thus, the two do not need not match
 exactly.  A practice we recommend is to include the version or edition
 number of the manual in the @code{@@settitle} title; on the title page,
 the version number generally appears as a @code{@@subtitle} so it would
-be omitted from the @code{@@title}.  (@xref{titlepage}.)
+be omitted from the @code{@@title}.  @xref{titlepage}.
 
 Conventionally, when @TeX{} formats a Texinfo file for double-sided
 output, the title is printed in the left-hand (even-numbered) page
@@ -3217,8 +3224,8 @@ the sections below.
 @findex shorttitlepage
 @cindex Bastard title page
 @cindex Title page, bastard
-For extremely simple applications, and for the bastard title page in
-traditional book front matter, Texinfo also provides a command
+For extremely simple documents, and for the bastard title page in
+traditional book frontmatter, Texinfo also provides a command
 @code{@@shorttitlepage} which takes the rest of the line as the title.
 The argument is typeset on a page by itself and followed by a blank
 page.
@@ -3240,7 +3247,8 @@ have an especially long title.
 
 For HTML output, each @code{@@titlefont} command produces an
 @code{<h1>} heading, but the HTML document @code{<title>} is not
-affected.  For that, you have to use @code{@@settitle} (@pxref{settitle})
+affected.  For that, you must put an @code{@@settitle} command before
+the @code{@@titlefont} command (@pxref{settitle}).
 
 @need 700
 For example:
@@ -3307,7 +3315,8 @@ needed to adjust vertical spacing.
 
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
-or author.
+or author.  These commands are only effective in @TeX{} output,
+@command{makeinfo} ignores them.
 
 The @code{@@title} command produces a line in which the title is set
 flush to the left-hand side of the page in a larger than normal font.
@@ -17247,7 +17256,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.60 2003-08-05 14:04:05 karl Exp $
+$Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17310,7 +17319,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.60 2003-08-05 14:04:05 karl Exp $
+@comment $Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
