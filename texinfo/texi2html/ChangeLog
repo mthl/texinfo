@@ -1,3 +1,8 @@
+2003-02-13  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl: avoid using $_ in functions, as it is a global
+	variable, use my variables instead
+
 2003-02-12  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl: add prototype for the functions ; remove
