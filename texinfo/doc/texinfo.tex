@@ -4781,6 +4781,8 @@ width0pt\relax} \fi
   }
 \endgroup
 \def\setupverbatim{%
+  \nonfillstart
+  \advance\leftskip by -\defbodyindent
   % Easiest (and conventionally used) font for verbatim
   \tt
   \def\par{\leavevmode\egroup\box0\endgraf}%
@@ -4832,26 +4834,19 @@ width0pt\relax} \fi
 \endgroup
 %
 \def\verbatim{%
-  \def\Everbatim{\nonfillfinish\endgroup}%
+  \let\Everbatim\nonfillfinish
   \begingroup
-    \nonfillstart
-    \advance\leftskip by -\defbodyindent
-    \begingroup\setupverbatim\doverbatim
+    \setupverbatim\doverbatim
 }
 
 % @verbatiminclude FILE - insert text of file in verbatim environment.
 %
 \def\verbatiminclude{\parseargusing\filenamecatcodes\doverbatiminclude}
-\def\setupverbatiminclude{%
-  \nonfillstart
-  \advance\leftskip by -\defbodyindent
-  \setupverbatim
-}
 %
 \def\doverbatiminclude#1{%
   \begingroup
     \makevalueexpandable
-    \setupverbatiminclude
+    \setupverbatim
     \input\thisfile\space
   \nonfillfinish % contains \endgroup
 }
