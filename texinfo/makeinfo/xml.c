@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.30 2003-11-17 05:29:11 dirt Exp $
+   $Id: xml.c,v 1.31 2003-11-17 10:10:00 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -460,6 +460,7 @@ int xml_in_xref_token = 0;
 int xml_in_bookinfo = 0;
 int xml_in_book_title = 0;
 int xml_in_abstract = 0;
+int xml_in_copying = 0;
 
 /* We need to keep footnote state, because elements inside footnote may try
    to close the previous parent para.  */
@@ -589,6 +590,18 @@ static int
 xml_current_element ()
 {
   return element_stack[element_stack_index-1];
+}
+
+int
+xml_current_stack_index ()
+{
+  return element_stack_index;
+}
+
+void
+xml_end_current_element ()
+{
+  xml_insert_element (xml_current_element (), END);
 }
 
 static void
@@ -998,6 +1011,7 @@ xml_end_menu ()
 }
 
 static int xml_last_character;
+static int xml_in_legalnotice = 0;
 
 void
 xml_add_char (character)
@@ -1017,8 +1031,9 @@ xml_add_char (character)
       xml_insert_element (TITLE, START);
     }
 
-  if (!first_section_opened && !xml_in_abstract && !xml_in_book_title
-      && !xml_no_para && character != '\r' && character != '\n' && character != ' ')
+  if (!xml_in_copying && !first_section_opened && !xml_in_abstract
+      && !xml_in_book_title && !xml_no_para
+      && character != '\r' && character != '\n' && character != ' ')
     {
       if (!xml_in_bookinfo)
 	{
@@ -1027,6 +1042,15 @@ xml_add_char (character)
 	}
       xml_insert_element (ABSTRACT, START);
       xml_in_abstract = 1;
+    }
+
+  if (xml_in_copying && !xml_in_legalnotice)
+    {
+      xml_in_legalnotice = 1;
+      if (docbook)
+        xml_insert_element (QUOTATION, START);
+      else
+        xml_insert_element (COPYING, START);
     }
 
   if (xml_after_table_term && !xml_sort_index && !xml_in_xref_token)

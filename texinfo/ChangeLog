@@ -1,5 +1,19 @@
 2003-11-17  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.c (begin_insertion): keep @copying state.
+	use legalnotice instead of abstract for @copying.
+	(cm_insert_copying): removed redundant work arounds.
+
+	* makeinfo/makeinfo.c (execute_string): try to keep tags balanced with
+	Docbook and XML.
+
+	* makeinfo/xml.c
+	(xml_current_stack_index, xml_end_current_element): new functions.
+	(xml_add_char): enclose @copying text in a quotation element with
+	Docbook.
+
+2003-11-17  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c (cm_settitle): do not automatically start bookinfo
 	element after settitle.
 

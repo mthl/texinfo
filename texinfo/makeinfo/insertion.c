@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.37 2003-11-15 02:13:59 dirt Exp $
+   $Id: insertion.c,v 1.38 2003-11-17 10:09:59 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -465,6 +465,8 @@ begin_insertion (type)
         int start_of_end;
 	int save_paragraph_indentation;
 
+        xml_in_copying = 1;
+
         discard_until ("\n"); /* ignore remainder of @copying line */
         start_of_end = get_until ("\n@end copying", &text);
 
@@ -479,10 +481,12 @@ begin_insertion (type)
 
 	if (docbook)
 	  inhibit_paragraph_indentation = save_paragraph_indentation;
-	
+
+        xml_in_copying = 0;
+
         input_text_offset = start_of_end; /* go back to the @end to match */
       }
-      
+
       /* For info, output the copying text right away, so it will end up
          in the header of the Info file, before the first node, and thus
          get copied automatically to all the split files.  For xml, also
@@ -497,21 +501,14 @@ begin_insertion (type)
 	      xml_insert_element (BOOKINFO, START);
 	      xml_in_bookinfo = 1;
 	    }
-	  if (!xml_in_abstract)
-	    {
-	      xml_insert_element (ABSTRACT, START);
-	      xml_in_abstract = 1;
-	    }
+          xml_insert_element (LEGALNOTICE, START);
 	}
       if (!html && !no_headers)
-        cm_insert_copying (1);
-      if (docbook && xml_in_abstract)
-	{
-	  xml_insert_element (ABSTRACT, END);
-	  xml_in_abstract = 0;
-	}
+        cm_insert_copying ();
+      if (docbook)
+        xml_insert_element (LEGALNOTICE, END);
       break;
-      
+
     case quotation:
       /* @quotation does filling (@display doesn't).  */
       if (html)
@@ -786,9 +783,6 @@ end_insertion (type)
         {
         case ifinfo:
         case documentdescription:       
-          break;
-        case copying:
-          xml_insert_element (COPYING, END);
           break;
         case quotation:
           xml_insert_quotation ("", END);
@@ -1103,22 +1097,20 @@ cm_cartouche ()
 void
 cm_copying ()
 {
-  if (xml)
-    xml_insert_element (COPYING, START);
   begin_insertion (copying);
 }
 
 /* Not an insertion, despite the name, but it goes with cm_copying.  */
 void
-cm_insert_copying (docbook_dont_fix_tags)
-  int docbook_dont_fix_tags;
+cm_insert_copying ()
 {
   if (copying_text)
-    { /* insert_string rather than add_word because we've already done
+    {
+      if (xml)
+        xml_end_para ();
+      /* insert_string rather than add_word because we've already done
          full expansion on copying_text when we saved it.  */
       insert_string (copying_text);
-      if (docbook && !docbook_dont_fix_tags)
-        insert_string ("</para></abstract>");
       insert ('\n');
       
       /* Update output_position so that the node positions in the tag
