@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.8 2003-11-15 02:13:59 dirt Exp $
+<!-- $Id: texinfo.dtd,v 1.9 2003-12-02 12:20:19 dirt Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -348,6 +348,12 @@
 <!ENTITY rdquo      "">
 <!ENTITY mdash      "">
 <!ENTITY ndash      "">
+<!ENTITY period     "">
+<!ENTITY eosperiod  "">
+<!ENTITY quest      "">
+<!ENTITY eosquest   "">
+<!ENTITY excl       "">
+<!ENTITY eosexcl    "">
 
 <!ENTITY auml "">
 <!ENTITY ouml "">

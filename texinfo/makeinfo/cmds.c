@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.43 2003-12-01 17:35:26 karl Exp $
+   $Id: cmds.c,v 1.44 2003-12-02 12:20:19 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -70,7 +70,7 @@ void
   cm_flushright (), cm_finalout (), cm_cartouche (), cm_detailmenu (),
   cm_multitable (), cm_settitle (), cm_titlefont (), cm_titlepage (), 
   cm_titlepage_cmds (),
-  cm_tie (), cm_tt (),
+  cm_tie (), cm_colon (), cm_punct (), cm_tt (),
   cm_float (), cm_caption (), cm_listoffloats (),
   cm_verbatim (), cm_verbatiminclude ();
 
@@ -80,7 +80,6 @@ void cm_value (), cm_ifeq ();
 
 /* Options. */
 static void 
-  cm_colon (),
   cm_exampleindent (),
   cm_firstparagraphindent (),
   cm_paragraphindent ();
@@ -96,17 +95,17 @@ COMMAND command_table[] = {
   { "\t", insert_space, NO_BRACE_ARGS },
   { "\n", insert_space, NO_BRACE_ARGS },
   { " ", insert_space, NO_BRACE_ARGS },
-  { "!", insert_self, NO_BRACE_ARGS },
+  { "!", cm_punct, NO_BRACE_ARGS },
   { "\"", cm_accent_umlaut, MAYBE_BRACE_ARGS },
   { "'", cm_accent_acute, MAYBE_BRACE_ARGS },
   { "*", cm_asterisk, NO_BRACE_ARGS },
   { ",", cm_accent_cedilla, MAYBE_BRACE_ARGS },
   { "-", cm_no_op, NO_BRACE_ARGS },
-  { ".", insert_self, NO_BRACE_ARGS },
+  { ".", cm_punct, NO_BRACE_ARGS },
   { "/", cm_no_op, NO_BRACE_ARGS },
   { ":", cm_colon, NO_BRACE_ARGS },
   { "=", cm_accent, MAYBE_BRACE_ARGS },
-  { "?", insert_self, NO_BRACE_ARGS },
+  { "?", cm_punct, NO_BRACE_ARGS },
   { "@", insert_self, NO_BRACE_ARGS },
   { "\\", insert_self, NO_BRACE_ARGS },
   { "^", cm_accent_hat, MAYBE_BRACE_ARGS },
@@ -593,12 +592,26 @@ cm_comment ()
           int save_inhibit_indentation = inhibit_paragraph_indentation;
           int save_escape_html = escape_html;
           int save_xml_no_para = xml_no_para;
+          int i, just_after_dash = 0;
 
           inhibit_paragraph_indentation = 1;
           escape_html = 0;
           xml_no_para = 1;
 
-          add_word_args ("<!-- %s -->", line);
+          /* Crunch double hyphens in comments.  */
+          add_word ("<!-- ");
+          for (i = 0; i < strlen (line); i++)
+            {
+              if (line[i] != '-' || !just_after_dash)
+                add_char (line[i]);
+
+              if (line[i] == '-')
+                just_after_dash = 1;
+              else
+                just_after_dash = 0;
+            }
+          add_word(" -->", line);
+
           if (html || docbook)
             add_char ('\n');
 
@@ -1593,34 +1606,60 @@ cm_firstparagraphindent ()
   free (arg);
 }
 
-/* For DocBook, produce &period; for `.@:'. This gives the
- * processing software a fighting chance to treat it specially
- * by not adding extra space.
- *
- * Do this also for ?, !, and :.
- */
-
-static void
+/* For DocBook and XML, produce &period; for `.@:'. This gives the processing
+   software a fighting chance to treat it specially by not adding extra space.
+  
+   Do this also for ?, !, and :.  */
+void
 cm_colon ()
 {
-  if (docbook) {
-    if (strchr (".?!:", input_text[input_text_offset-3]) != NULL) {
-      output_paragraph_offset--;   /* erase literal character that's there */
-      switch (input_text[input_text_offset-3]) {
-      case '.':
-        xml_insert_entity ("period");
-	break;
-      case '?':
-        xml_insert_entity ("quest");
-	break;
-      case '!':
-        xml_insert_entity ("excl");
-	break;
-      case ':':
-        xml_insert_entity ("colon");
-	break;
-      }
+  if (xml)
+    {
+      if (strchr (".?!:", input_text[input_text_offset-3]) != NULL)
+        {
+          output_paragraph_offset--;   /* erase literal character that's there */
+          switch (input_text[input_text_offset-3])
+            {
+            case '.':
+              xml_insert_entity ("period");
+              break;
+            case '?':
+              xml_insert_entity ("quest");
+              break;
+            case '!':
+              xml_insert_entity ("excl");
+              break;
+            case ':':
+              xml_insert_entity ("colon");
+              break;
+            }
+        }
     }
-  }
-  /* @: is a no-op for the other output formats. */
+}
+
+/* Ending sentences explicitly.  Currently, only outputs entities for XML
+   output, for other formats it calls insert_self.  */
+void
+cm_punct (arg)
+     int arg;
+{
+  if (xml && !docbook)
+    {
+      switch (input_text[input_text_offset-1])
+        {
+        case '.':
+          xml_insert_entity ("eosperiod");
+          break;
+        case '?':
+          xml_insert_entity ("eosquest");
+          break;
+        case '!':
+          xml_insert_entity ("eosexcl");
+          break;
+        }
+    }
+  else
+    {
+      insert_self (arg);
+    }
 }

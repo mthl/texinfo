@@ -1,5 +1,15 @@
 2003-12-02  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_punct): new function to handle @., @! and @?
+	commands.
+	(cm_comment): crunch multiple dashes to a single dash for XML
+	validity.
+
+	* makeinfo/texinfo.dtd: new entities: period, eosperiod, quest,
+	eosquest, excl, eosexcl.
+
+2003-12-02  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.c (begin_insertion): look for a newline before
 	@anchor and @caption commands in floatenv.
 
