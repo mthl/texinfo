@@ -1,3 +1,8 @@
+2002-11-29 19:19  feloy
+
+	* makeinfo/xml.c: Fix the <para>&lt; bug in XML, reported by K.
+	Ryde
+
 2002-11-26    <karl@gnu.org>
 
 	* makeinfo/insertion.c (cm_insertion_copying): flush_output, so that
