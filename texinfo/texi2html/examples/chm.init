@@ -30,7 +30,7 @@ my $default_init_out = $init_out;
 
 $init_out = \&chm_init_out;
 
-our %chm_languages = (
+my %chm_languages = (
     'en'         => '0x409 English (United States)',
     'sq'         => '0x041c Albanian',
 #    'ar'         => '0x1401 Arabic (ALGERIA)',
@@ -135,19 +135,19 @@ our %chm_languages = (
     #''         => '',
 );
 
-our %hhk_global_property = (
+my %hhk_global_property = (
    'ImageType' => 'Folder',
 );
 
-our %hhc_global_property = (
+my %hhc_global_property = (
    'ImageType' => 'Folder',
 );
 
 # We prepare a environment for conversion of texi to unicode (maybe this 
 # could be in utf8.init ?)
-our %chm_texi_map = %texi_map;
-our %chm_simple_map_texi = %simple_map_texi;
-our %chm_style_map_texi = ();
+my %chm_texi_map = %texi_map;
+my %chm_simple_map_texi = %simple_map_texi;
+my %chm_style_map_texi = ();
 
 foreach my $command (keys(%style_map_texi))
 {

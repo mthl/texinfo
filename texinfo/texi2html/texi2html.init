@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.80 2005-01-31 00:44:40 pertusus Exp $
+# $Id: texi2html.init,v 1.81 2005-02-01 21:20:28 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1796,7 +1796,7 @@ $pre_map{'enddots'} = '....';
 #
 # Otherwithe the value is the html element used to enclose the text, and if
 # there is a " the resulting text is also enclosed within `'
-our %old_style_map = (
+my %old_style_map = (
       'acronym',    '',
       'asis',       '',
       'b',          'b',
@@ -2457,7 +2457,7 @@ sub t2h_remove_command($$$$)
 }
 
 # This is used for style in preformatted sections
-our %old_style_map_pre = %old_style_map;
+my %old_style_map_pre = %old_style_map;
 $old_style_map_pre{'sc'} = '&default_sc_pre';
 $old_style_map_pre{'titlefont'} = '';
 
