@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.13 2002-12-01 14:27:59 karl Exp $
+dnl $Id: configure.ac,v 1.14 2002-12-06 14:28:55 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -9,7 +9,7 @@ dnl This program is distributed in the hope that it will be useful, but
 dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 dnl
-AC_PREREQ(2.54)dnl Minimum Autoconf version required.
+AC_PREREQ(2.57)dnl Minimum Autoconf version required.
 dnl
 AC_INIT([GNU Texinfo], [4.3a])
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
