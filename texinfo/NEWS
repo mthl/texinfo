@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.3 2002-09-27 18:28:25 karl Exp $
+$Id: NEWS,v 1.4 2002-09-27 20:32:42 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -23,6 +23,7 @@ convenience, here's a url to one of the relevant sections:
 
 * texinfo.tex:
   . new Italian translations, txi-it.tex.
+  . pdf bookmarks for unnumbered sections work.
 * info:
   . crash when MALLOC_CHECK_=2 fixed.
 * Distribution:

@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.1 2002-09-24 15:33:52 karl Exp $
+$Id: dir-example,v 1.2 2002-09-27 20:32:42 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -34,7 +34,8 @@ GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Font utilities: (fontu).      Programs for font manipulation.
-* Gawk: (gawk.info).            A text scanning and processing language.
+* Gawk: (gawk).                 A text scanning and processing language.
+* Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * Gcal: (gcal).                 GNU calendar program.
 * Groff: (groff).               The GNU troff document formatting system.
 * Gzip: (gzip).                 General (de)compression.
@@ -120,6 +121,13 @@ GNU Emacs Lisp
 * VIPER: (viper).               The new VI-emulation mode in Emacs-19.29.
 * VM: (vm).                     Mail reader.
 * W3: (w3).                     WWW browser.
+
+GNU Gettext Utilities
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
 
 GNU programming support
 * Configure: (configure).       Cygnus configure.
@@ -223,7 +231,7 @@ Individual utilities
                                 Semi-automatic `configure.ac' writing
 * autoupdate: (autoconf)autoupdate Invocation.
                                 Automatic update of `configure.ac'
-* awk: (gawk)Invoking gawk.                     Text processing and scanning.
+* awk: (gawk)Invoking gawk.                     Text scanning and processing.
 * basename: (sh-utils)basename invocation.      Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
 * bzip2: (bzip2).               		(de)compression.
@@ -398,10 +406,3 @@ Individual utilities
 * yes: (sh-utils)yes invocation.                Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
 * zsh: (zsh).                                   An enhanced Bourne shell.
-
-GNU Gettext Utilities
-* Gettext: (gettext).                           GNU gettext utilities.
-* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
-* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
-* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
-* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.

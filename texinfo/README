@@ -1,4 +1,4 @@
-$Id: README,v 1.5 2002-09-26 22:01:10 karl Exp $
+$Id: README,v 1.6 2002-09-27 20:32:42 karl Exp $
 This is the README file for the GNU Texinfo distribution.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -17,13 +17,13 @@ Home page: http://www.gnu.org/software/texinfo/
   (list of mirrors at: http://www.gnu.org/server/list-mirrors.html)
 
 Mailing lists:
-- bug-texinfo@gnu.org for bug reports or enhancement suggestions,
-  archived at ftp://ftp-mailing-list-archives.gnu.org/bug-texinfo/.
-- help-texinfo@gnu.org for authoring questions and general discussion.
-  archived at ftp://ftp-mailing-list-archives.gnu.org/help-texinfo/.
-- texinfo-pretest@texinfo.org for pretests of new releases,
-  archived at ftp://ftp.texinfo.org/texinfo/texinfo-pretest-archive/.
-There are as yet no corresponding newsgroups.
+- bug-texinfo@gnu.org for bug reports or enhancement suggestions:
+  http://mail.gnu.org/pipermail/bug-texinfo
+- help-texinfo@gnu.org for authoring questions and general discussion:
+  http://mail.gnu.org/pipermail/help-texinfo
+- texinfo-pretest@texinfo.org for pretests of new releases:
+  ftp://ftp.texinfo.org/texinfo/texinfo-pretest-archive/
+There are no corresponding newsgroups.
 
 Bug reports:
  please include enough information for the maintainers to reproduce the

@@ -1,5 +1,20 @@
 2002-09-27    <karl@gnu.org>
 
+	* doc/Makefile.am (*.1): call the binary, not the source file.
+
+	* util/texindex.c (sort_in_core): int not off_t.
+	(main): cast argument to sort_in_core to int.
+	(sort_offline): nfiles parameter is not actually passed (or used);
+	need to pass &tempfiles[i] to sort_in_core.
+	From: Christopher League <league@contrapunctus.net>,
+	26 Apr 2002 22:45:45 -0400.
+
+	* doc/texinfo.tex (\unnumb...entry): make analogous to \...entry
+	(except when actually outputting the text, of course), so pdf
+	bookmarks can go to the right level.
+	From: Christopher League <league@contrapunctus.net>,
+	25 Apr 2002 15:29:24 -0400.
+
 	* install-sh: update from gnulib.
 
 	* makeinfo/insertion.c (handle_verbatim_environment): need to
