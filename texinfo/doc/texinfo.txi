@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
+@c $Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13439,7 +13439,8 @@ your file would look approximately like this:
 
 The @code{texi2dvi} command automatically runs both @code{tex} and
 @code{texindex} as many times as necessary to produce a DVI file with
-sorted indices and all cross-references resolved.  It simplifies the
+sorted indices and all cross-references resolved.  It is therefore
+simpler than manually executing the
 @code{tex}---@code{texindex}---@code{tex}---@code{tex} sequence
 described in the previous section.
 
@@ -13457,7 +13458,7 @@ texi2dvi foo.texi} instead of relying on the operating system to invoke
 the shell on the @samp{texi2dvi} script.
 
 Perhaps the most useful option to @code{texi2dvi} is
-@samp{--texinfo=@var{cmd}}.  This inserts @var{cmd} on a line by itself
+@samp{--command=@var{cmd}}.  This inserts @var{cmd} on a line by itself
 after the @code{@@setfilename} in a temporary copy of the input file
 before running @TeX{}.  With this, you can specify different printing
 formats, such as @code{@@smallbook} (@pxref{smallbook}),
@@ -13465,6 +13466,10 @@ formats, such as @code{@@smallbook} (@pxref{smallbook}),
 (@pxref{pagesizes}), without actually changing the document source.
 (You can also do this on a site-wide basis with @file{texinfo.cnf};
 @pxref{Preparing for TeX,,Preparing for @TeX{}}).
+
+@cindex La@TeX{}, processing with @command{texi2dvi}
+@command{texi2dvi} can also be used to process La@TeX{} files; simply
+run @samp{texi2dvi doc.tex}.
 
 For a list of other options, run @samp{texi2dvi --help}.
 
@@ -17049,7 +17054,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
+$Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17112,7 +17117,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

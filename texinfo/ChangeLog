@@ -1,3 +1,10 @@
+2003-05-07  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (textra_cmd): New.
+        (textra): Escape escapes from sed's evaluation.
+	Use them to support additional TeX/LaTeX commands.
+	Support --command as a synonym for --texinfo.
+
 2003-05-06    <karl@gnu.org>
 
 	* util/dir-example: finish getting rid of GNU packages.
