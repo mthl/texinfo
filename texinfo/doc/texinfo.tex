@@ -147,7 +147,6 @@
 \chardef\colonChar = `\:
 \chardef\commaChar = `\,
 \chardef\dotChar   = `\.
-\chardef\equalChar = `\=
 \chardef\exclamChar= `\!
 \chardef\questChar = `\?
 \chardef\semiChar  = `\;
@@ -4449,7 +4448,6 @@ width0pt\relax} \fi
   \catcode `\%=14
   \catcode `\+=\other
   \catcode `\"=\other
-  \catcode `\==\other
   \catcode `\|=\other
   \catcode `\<=\other
   \catcode `\>=\other
@@ -5119,7 +5117,6 @@ width0pt\relax} \fi
 \def\defparsebody#1#2#3{%
   \parsebodycommon{#1}{#2}{#3}%
   \def#2{\defxbodycommon \activeparens \spacesplit#3}%
-  \catcode\equalChar=\active
   \begingroup\obeylines\activeparens
   \spacesplit#3%
 }
@@ -5181,7 +5178,6 @@ width0pt\relax} \fi
 \def\defvarparsebody #1#2#3{%
   \parsebodycommon{#1}{#2}{#3}%
   \def#2{\defxbodycommon \spacesplit#3}%
-  \catcode\equalChar=\active
   \begingroup\obeylines
   \spacesplit#3%
 }
@@ -5290,7 +5286,6 @@ width0pt\relax} \fi
 
 \def\deffnheader #1#2#3{\doind {fn}{\code{#2}}%
 \begingroup\defname {#2}{#1}\defunargs{#3}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defun == @deffn Function
@@ -5300,7 +5295,6 @@ width0pt\relax} \fi
 \def\defunheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDeffunc}%
 \defunargs {#2}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @deftypefun int foobar (int @var{foo}, float @var{bar})
@@ -5314,7 +5308,6 @@ width0pt\relax} \fi
 \doind {fn}{\code{#2}}% Make entry in function index
 \begingroup\defname {\defheaderxcond#1\relax$.$#2}{\putwordDeftypefun}%
 \deftypefunargs {#3}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
@@ -5333,7 +5326,6 @@ width0pt\relax} \fi
 \begingroup
 \defname {\defheaderxcond#2\relax$.$#3}{#1}%
 \deftypefunargs {#4}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defmac == @deffn Macro
@@ -5343,7 +5335,6 @@ width0pt\relax} \fi
 \def\defmacheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDefmac}%
 \defunargs {#2}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defspec == @deffn Special Form
@@ -5353,7 +5344,6 @@ width0pt\relax} \fi
 \def\defspecheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDefspec}%
 \defunargs {#2}\endgroup %
-\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defop CATEGORY CLASS OPERATION ARG...
@@ -6652,13 +6642,6 @@ should work if nowhere else does.}
 \def+{{\tt \char 43}}
 \catcode`\$=\active
 \def${\ifusingit{{\sl\$}}\normaldollar}%$ font-lock fix
-
-% Set up an active definition for =, but don't enable it most of the time.
-{\catcode`\==\active
-\global\def={{\tt \char 61}}}
-
-\catcode`+=\active
-\catcode`\_=\active
 
 % If a .fmt file is being used, characters that might appear in a file
 % name cannot be active until we have parsed the command line.
