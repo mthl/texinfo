@@ -1,3 +1,8 @@
+2004-05-17  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh, gendocs_template: use package.format.tar.gz
+		consistently.  Before, -, _, and . were all used.
+
 2004-05-16  Karl Berry  <karl@gnu.org>
 
 	* lib/Makefile.am (libtxi_a_SOURCES): include strcase.h.
