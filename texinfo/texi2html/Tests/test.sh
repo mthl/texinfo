@@ -173,6 +173,8 @@ test_texi macros truc_machin.texi
 test_texi macros glossary.texi
 test_texi macros imbricated_macros.texi
 test_texi macros expansion_order.texi
+test_texi macros ifclear_in_macro.texi
+test_texi macros ifset_in_macro.texi
 test_texi sectionning
 test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top
 novalidate.html"
@@ -204,6 +206,8 @@ test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-l
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting nodetest.texi "-split chapter"
+test_texi formatting nodetest_latin1.texi 
+test_texi formatting nodetest_utf8.texi 
 test_texi formatting testkb.texi
 test_texi formatting umlaut.texi
 test_texi formatting imbrications.texi "" 2

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.99 2004-01-25 23:00:48 pertusus Exp $
+# $Id: texi2html.pl,v 1.100 2004-01-28 01:00:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -4428,7 +4428,7 @@ sub rearrange_elements()
         foreach my $key (keys(%nodes))
         {
             my $node = $nodes{$key};
-            next if ($node->{'external_node'} or $node->{'index_page'};
+            next if ($node->{'external_node'} or $node->{'index_page'});
             if (defined($Texi2HTML::Config::node_file_name))
             {
                  ($node->{'file'}, $node->{'node_file'}) =
@@ -6266,6 +6266,8 @@ sub begin_paragraph($$)
     {
         push @$stack, {'format' => 'preformatted', 'text' => '' };
         $state->{'preformatted_format'} = $command if ($command ne '1');
+        push @$stack, @{$state->{'paragraph_macros'}} if $state->{'paragraph_macros'};
+        delete $state->{'paragraph_macros'};
         return;
     }
     $state->{'paragraph'} = $command;
@@ -8304,8 +8306,8 @@ sub scan_line($$$$;$)
 
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
-#    print STDERR "SCAN_LINE: $line";
-#    dump_stack($text, $stack,  $state );
+    #print STDERR "SCAN_LINE: $line";
+    #dump_stack($text, $stack,  $state );
     my $new_menu_entry; # true if there is a new menu entry
     my $menu_description_in_format; # true if we are in a menu description 
                                 # but in another format section (@table....)
@@ -8598,7 +8600,7 @@ sub scan_line($$$$;$)
             }
 
             # we close all the style macros with braces
-            close_stack($text, $stack, $state, $line_nr, '');
+            my $new_stack = close_stack($text, $stack, $state, $line_nr, 1);
             $top_stack = top_stack($stack);
             if (!$top_stack or (!defined($top_stack->{'format'})))
             {
@@ -8619,6 +8621,8 @@ sub scan_line($$$$;$)
                 add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
             }
             
+            $state->{'paragraph_macros'} = $new_stack;
+
             $top_stack = top_stack($stack);
             if (!$top_stack or (!defined($top_stack->{'format'})))
             {
@@ -10077,19 +10081,23 @@ sub close_paragraph($$$;$)
     #my $macro = shift;
     #print STDERR "CLOSE_PARAGRAPH\n";
     #dump_stack($text, $stack, $state);
-    close_stack($text, $stack, $state, $line_nr, '');
+    my $new_stack = close_stack($text, $stack, $state, $line_nr, 1);
     my $top_stack = top_stack($stack);
-    if ($top_stack and $top_stack->{'format'} eq 'paragraph')
+if ($top_stack and !defined($top_stack->{'format'})){print STDERR "!!!!!";
+dump_stack($text, $stack, $state);}
+    if ($top_stack and ($top_stack->{'format'} eq 'paragraph'))
     {
         my $paragraph = pop @$stack;
         add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
+        $state->{'paragraph_macros'} = $new_stack;
         return 1;
 	#return "\@$macro ";
     }
-    elsif ($top_stack and $top_stack->{'format'} eq 'preformatted')
+    elsif ($top_stack and ($top_stack->{'format'} eq 'preformatted'))
     {
         my $paragraph = pop @$stack;
         add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
+        $state->{'paragraph_macros'} = $new_stack;
         return 1;
 	#return "\@$macro ";
     }

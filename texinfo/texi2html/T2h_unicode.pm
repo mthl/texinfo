@@ -50,9 +50,13 @@ sub t2h_utf8_accent($$)
                                                                                 
     my $text = $args->[0];
 
-# a&#777; to produce a lower case "a" with a hook above (ả).
-#    return  chr(hex($Texi2HTML::Config::unicode_accents{$accent}->{$text}))
-#        if (defined($Texi2HTML::Config::unicode_accents{$accent}->{$text}));
+    if ($accent eq 'dotless')
+    {
+        return "\x{0131}" if ($text eq 'i');
+        #return "\x{}" if ($text eq 'j'); # not found !
+        return $text;
+    }
+        
     return NFC($text . chr(hex($unicode_diacritical{$accent}))) 
         if (defined($unicode_diacritical{$accent}));
     return ascii_accents($text, $accent);

@@ -1,3 +1,15 @@
+2004-01-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: reopen styles in preformatted environments.
+	When there is a complex format or a table or the like the opened
+	styles are kept such that they are reopened when there is a paragraph
+	or a preformatted within the format.
+	* T2h_unicode.pm: use the right code point for dotless i.
+	* Tests/*: add tests for formats imbricated in style command.
+	add tests for latin1 and utf8 encoded files.
+	add tests for ifset and ifclear in macros.
+	* Makefile.am: add the new source files and init files.
+
 2004-01-25  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 

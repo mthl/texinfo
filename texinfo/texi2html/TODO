@@ -43,13 +43,7 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 * Document Texi2HTML::THIS_ELEMENT
 
 * handle right things like
-@code{
-@table @emph
-@item line
-text
-@end table
-}
-
+-> error with @item on same line than @table
 @xref{node,
 @table @emph
 @item line
@@ -57,18 +51,6 @@ text
 @end table
 }
 
-@ref{node, @uref{a,b}}
-
-@footnote{ @code{par1
-
-par2}}
-
 @code{
-@table @emph
-@item line
-@example
-  example
-@end example
-@end table
+@printindex cp
 }
-

@@ -53,6 +53,35 @@ end of the function
 @node node within defun menu
 @section the node is within menu
 
+Table imbricated in code:@*
+@code{
+in code
+@table @emph
+@item line
+text
+@end table
+}
+                           
+ref with uref within:@*                                                     
+@ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}
+
+footnote with code within:@*                                                                                
+@footnote{ in footnote  @code{par1
+                                                                                
+par2}}
+
+code with table and example within:@*                                                    
+@code{
+in code
+@table @emph
+@item line
+in code and table
+@example
+  in example
+@end example
+@end table
+}
+
 
 @table @bullet
 @item item

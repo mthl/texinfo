@@ -12,7 +12,8 @@ TEXINFO_TEX = doc/texinfo.tex
 #bin_SCRIPTS = texi2html
 bin_PROGRAMS = texi2html
 
-texi2html_SOURCES = texi2html.pl MySimple.pm translations.pl texi2html.init T2h_i18n.pm
+texi2html_SOURCES = texi2html.pl MySimple.pm translations.pl texi2html.init \
+    T2h_i18n.pm T2h_unicode.pm T2h_nounicode.pm
 noinst_SCRIPTS = manage_i18n.pl
 
 man_MANS = texi2html.1
@@ -21,12 +22,18 @@ EXTRA_DIST = \
 	INTRODUCTION \
 	MySimple.pod \
 	autogen.sh \
-	manage_i18n.pl
+	manage_i18n.pl \
+    translations.pl
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
 	examples/xhtml.init \
-	examples/html32.init 
+	examples/html32.init \
+    examples/book.init \
+    examples/noheaders.init \
+    examples/inlinestyle.init \
+    examples/utf8.init \
+    examples/roff.init	
 
 dist_i18n_DATA = i18n/en \
     i18n/de \
@@ -108,7 +115,9 @@ texi2html: \
 	$(srcdir)/MySimple.pm \
 	$(srcdir)/T2h_i18n.pm \
 	$(srcdir)/texi2html.init \
-	$(srcdir)/texi2html.pl
+	$(srcdir)/texi2html.pl \
+    $(srcdir)/T2h_nounicode.pm \
+    $(srcdir)/T2h_unicode.pm
 
 
 
