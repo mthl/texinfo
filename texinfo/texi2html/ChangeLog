@@ -1,3 +1,7 @@
+2003-07-31  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.pl (T2H_OPTIONS->{'no-expand'}): Remove useless linkage.
+
 2003-07-31  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: A new option -no-expand which does 

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.55 2003-07-31 15:40:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.56 2003-07-31 16:40:17 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -782,7 +782,6 @@ $T2H_OPTIONS -> {'expand'} =
 $T2H_OPTIONS -> {'no-expand'} =
 {
  type => '=s',
- linkage => \@Texi2HTML::Config::EXPAND,
  linkage => sub {@Texi2HTML::Config::EXPAND = grep {$_ ne $_[1]} @Texi2HTML::Config::EXPAND;},
  verbose => 'Don\'t expand the given section of texinfo source',
 };
