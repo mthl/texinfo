@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.24 2004-04-11 17:56:47 karl Exp $
+   $Id: sectioning.c,v 1.25 2004-07-05 22:23:23 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -393,7 +393,7 @@ sectioning_underscore (char *cmd)
 
 	  xml_insert_element (TITLE, START);
 	  xml_open_section (level, secname);
-	  execute_string (temp);
+	  execute_string ("%s", temp);
 	  xml_insert_element (TITLE, END);
 
 	  free (temp);

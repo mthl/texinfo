@@ -1,3 +1,11 @@
+2004-07-05  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xref.c (cm_email, cm_uref, et al.): 
+	* makeinfo/xml.c (xml_insert_indexentry, xml_insert_indexterm):
+	* makeinfo/sectioning.c (sectioning_underscore):
+	* makeinfo/makeinfo.c (cm_listoffloats): use %s, don't pass string to
+		execute_string.  Report from Christian Schenk.
+
 2004-07-02  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makinfo.c (execute_string): don't worry about

@@ -1,7 +1,7 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.47 2004-04-11 17:56:47 karl Exp $
+   $Id: xml.c,v 1.48 2004-07-05 22:23:24 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1691,14 +1691,14 @@ xml_insert_indexterm (char *indexterm, char *index)
       in_indexterm = 1;
       xml_insert_element (PRIMARY, START);
       if (primary)
-        execute_string (primary);
+        execute_string ("%s", primary);
       else
-        execute_string (indexterm);
+        execute_string ("%s", indexterm);
       xml_insert_element (PRIMARY, END);
       if (primary)
         {
           xml_insert_element (SECONDARY, START);
-          execute_string (secondary);
+          execute_string ("%s", secondary);
           xml_insert_element (SECONDARY, END);
         }
       xml_insert_element (INDEXTERM, END);
@@ -1862,7 +1862,7 @@ xml_insert_indexentry (char *entry, char *node)
         {
           xml_insert_element (SECONDARYIE, END);
           xml_insert_element (SECONDARYIE, START);
-          execute_string (secondary);
+          execute_string ("%s", secondary);
         }
       else
         {
@@ -1870,10 +1870,10 @@ xml_insert_indexentry (char *entry, char *node)
           xml_insert_element (INDEXENTRY, START);
           in_indexentry = 1;
           xml_insert_element (PRIMARYIE, START);
-          execute_string (primary);
+          execute_string ("%s", primary);
           xml_insert_element (PRIMARYIE, END);
           xml_insert_element (SECONDARYIE, START);
-          execute_string (secondary);
+          execute_string ("%s", secondary);
           in_secondary = 1;
         }
     }
@@ -1883,7 +1883,7 @@ xml_insert_indexentry (char *entry, char *node)
       xml_insert_element (INDEXENTRY, START);
       in_indexentry = 1;
       xml_insert_element (PRIMARYIE, START);
-      execute_string (entry);
+      execute_string ("%s", entry);
     }
   add_word (", ");
 

@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.7 2004-04-11 17:56:47 karl Exp $
+   $Id: float.c,v 1.8 2004-07-05 22:23:22 karl Exp $
 
    Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 
@@ -232,7 +232,7 @@ cm_listoffloats (void)
                   add_word ("\">");
 
                   if (strlen (float_type) > 0)
-                    execute_string (float_type);
+                    execute_string ("%s", float_type);
 
                   if (strlen (temp->id) > 0)
                     {
@@ -248,7 +248,7 @@ cm_listoffloats (void)
                           || strlen (temp->id) > 0)
                         insert_string (": ");
 
-                      execute_string (temp->title);
+                      execute_string ("%s", temp->title);
                     }
 
                   add_word ("</a>");
