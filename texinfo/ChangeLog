@@ -1,3 +1,18 @@
+2004-07-25  Werner Lemberg  <wl@gnu.org>
+
+	Rename @s to @slanted.
+
+	* doc/texinfo.tex (\s): Replace with...
+	(\slanted): This.
+	* doc/texinfo.txi: Updated.
+
+	* makeinfo/cmds.c (command_table): Add @slanted, not @s.
+	(cm_s): Replace with...
+	(cm_slanted): This.
+	* makeinfo/cmds.h: Add cm_slanted, not cm_s..
+
+	* NEWS: Updated.
+
 2004-07-24  Karl Berry  <karl@gnu.org>
 
 	* info/echo-area.c (ea_possible_completions),
