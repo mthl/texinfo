@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.6 2002-11-30 00:12:02 karl Exp $
+# $Id: Makefile.am,v 1.7 2002-11-30 16:24:16 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -73,3 +73,9 @@ endif
 
 # Do not create info files for distribution, but do create man pages.
 dist-info:
+
+# Do not try to build the info files in $(srcdir), since we don't
+# distribute them.  (This will be fixed for no-suffix info files such as
+# `texinfo' in automake 1.7.2, and is already fixed for normal info files.)
+texinfo: $(srcdir)/texinfo.txi version.texi
+	$(MAKEINFO) -I$(srcdir) texinfo.txi
