@@ -1,5 +1,9 @@
 2004-03-20  Derek Price  <derek@ximbiot.com>
 
+	* NEWS: Update Automake & Autoconf versions in developer info section.
+
+2004-03-20  Derek Price  <derek@ximbiot.com>
+
 	* .cvsignore: Ignore the distribution archives.
 	* Makefile.am (texi2html_SOURCES): Add and use to avoid having to
 	maintain two lists of files.

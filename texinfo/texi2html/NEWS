@@ -228,7 +228,7 @@ This file records noteworthy changes.
 * FOR DEVELOPERS
   --------------
 
-* Standardized on Autoconf 2.57 & Automake 1.7.5.
+* Standardized on Autoconf 2.59 & Automake 1.8.2
 
 * The --enable-maintainer-mode option is now required by configure to enable
   what is considered the maintainer-specific portions of Makefiles.  This
