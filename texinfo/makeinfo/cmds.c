@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.18 2003-04-21 01:02:39 karl Exp $
+   $Id: cmds.c,v 1.19 2003-09-25 18:06:52 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -832,8 +832,8 @@ cm_verb (arg)
 
 
 void
-cm_strong (arg, position)
-     int arg, position;
+cm_strong (arg, start_pos, end_pos)
+     int arg, start_pos, end_pos;
 {
   if (xml)
     xml_insert_element (STRONG, arg);
@@ -841,6 +841,13 @@ cm_strong (arg, position)
     insert_html_tag (arg, "strong");
   else
     add_char ('*');
+  
+  if (arg == END
+      && end_pos - start_pos >= 6
+      && strncmp (output_paragraph + start_pos, "*Note:*", 7) == 0)
+    /* Translators: "Note:" is literal here and should not be
+       translated.  @strong{Nota}, say, does not cause the problem.  */
+    warning (_("@strong{Note:} produces incorrect Info output; reword"));
 }
 
 void
