@@ -239,3 +239,6 @@ set args --html --force -o /tmp/i.out --no-split $ttests/idxaccent.tex
 
 # extra blank line
 set args -E - $ttests/mac-idx2.tex -o /dev/null
+
+# old-style anchor names
+set args --html --force -o - --no-split $ttests/nodestar.tex
