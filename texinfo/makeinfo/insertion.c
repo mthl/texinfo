@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.17 2003-02-13 16:09:38 karl Exp $
+   $Id: insertion.c,v 1.18 2003-02-24 14:40:47 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -130,7 +130,20 @@ char *
 get_item_function ()
 {
   char *item_function;
+  char *item_loc;
+  
   get_rest_of_line (0, &item_function);
+
+  /* If the document erroneously says
+       @itemize @bullet @item foobar
+     it's nicer to give an error up front than repeat `@bullet expected
+     braces' until we give up.  */
+  item_loc = strstr (item_function, "@item");
+  if (item_loc)
+    {
+      line_error (_("@item not allowed in argument to @itemize"));
+      *item_loc = 0;
+    }
 
   /* If we hit the end of text in get_rest_of_line, backing up
      input pointer will cause the last character of the last line
