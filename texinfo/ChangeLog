@@ -1,3 +1,13 @@
+2003-03-31    <karl@gnu.org>
+
+	* doc/texinfo.txi (documentencoding): mention that all processors
+	recognize the command.
+
+2003-03-30    <karl@gnu.org>
+
+	* makeinfo/lang.c (cm_special_character): incorrectly added html
+	sequences for @oe and @OE even in info output.
+
 2003-03-25    <karl@gnu.org>
 
 	* util/srclist.txt (COPYING): get from gnulib/doc, not gnulib.
