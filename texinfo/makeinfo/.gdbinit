@@ -214,3 +214,6 @@ set args -o - $ttests/markup.tex
 
 # @xml produces <para>.
 set args --xml -o - $ttests/xmlpara.tex
+
+# @example/@verbatim mixup.
+set args --html -o - $ttests/exverb.tex

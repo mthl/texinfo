@@ -1,3 +1,22 @@
+2003-10-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (handle_include): only close_paragraph if
+	!insertion_stack, else we get extra blank lines when
+	used inside @example.
+	* makeinfo/insertion.c (handle_verbatim_include): likewise, plus
+		move the indentation around.
+	Report from: Brian Gough <bjg@network-theory.co.uk>,
+	20 Oct 2003 14:36:49 +0100.
+
+	* makeinfo/makeinfo.c (close_paragraph): formatting changes to
+		minimize lines.
+
+	* makeinfo/insertion.c (end_insertion): for html output in the
+	example/etc. case, kill_self_indent to get rid of
+	leading whitespace.
+	Report from: Brian Gough <bjg@network-theory.co.uk>,
+	20 Oct 2003 14:36:49 +0100.
+
 2003-10-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\shortcontbf): cmb10 scaled \magstep1, not cmb12,
