@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
+@c $Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -591,7 +591,7 @@ Include Files
 * Using Include Files::         How to use the @code{@@include} command.
 * texinfo-multiple-files-update::  How to create and update nodes and
                                  menus when using included files.
-* Include File Requirements::   What @code{texinfo-multiple-files-update} expects.
+* Include Files Requirements::  What @code{texinfo-multiple-files-update} expects.
 * Sample Include File::         A sample outer file with included files
                                  within it; and a sample included file.
 * Include Files Evolution::     How use of the @code{@@include} command
@@ -1399,7 +1399,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2002 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2003 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -7695,6 +7695,18 @@ The contents of @var{filename} is printed in a verbatim environment
 (@pxref{verbatim,,@code{@@verbatim}}).  Generally, the file is printed
 exactly as it is, with all special characters and white space retained.
 
+The name of the file is taken literally, with a single exception:
+@code{@@value@{@var{var}@}} references are expanded.  This makes it
+possible to reliably include files in other directories in a
+distribution, for instance:
+
+@example
+@@include @@value@{top_srcdir@}/NEWS
+@end example
+
+@noindent (You still have to get @code{top_srcdir} defined in the
+first place.)
+
 
 @node lisp
 @section @code{@@lisp}: Marking a Lisp Example
@@ -7717,7 +7729,7 @@ library.@footnote{It would be straightforward to extend Texinfo to work
 in a similar fashion for C, Fortran, or other languages.}
 
 Mark the end of @code{@@lisp} with @code{@@end lisp} on a line by
-itself.@refill
+itself.
 
 
 @node small
@@ -16692,7 +16704,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright (C) 2002 Free Software Foundation, Inc.
+Copyright (C) 2003 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -16781,7 +16793,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
+$Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16846,7 +16858,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -16858,7 +16870,7 @@ This manual is for GNU Sample
 (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2002 Free Software Foundation, Inc.
+Copyright @copyright{} 2003 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -16957,7 +16969,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2002 Free Software Foundation, Inc.
+Copyright @copyright{} 2003 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -16988,7 +17000,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @copyright{} 2002 Free Software Foundation, Inc.
+Copyright @copyright{} 2003 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
@@ -17013,25 +17025,30 @@ conveniently small parts.
 * Using Include Files::         How to use the @code{@@include} command.
 * texinfo-multiple-files-update::  How to create and update nodes and
                                  menus when using included files.
-* Include File Requirements::   What @code{texinfo-multiple-files-update} expects.
+* Include Files Requirements::  What @code{texinfo-multiple-files-update} expects.
 * Sample Include File::         A sample outer file with included files
                                  within it; and a sample included file.
 * Include Files Evolution::     How use of the @code{@@include} command
                                  has changed over time.
 @end menu
 
-@node Using Include Files, texinfo-multiple-files-update, Include Files, Include Files
+@node Using Include Files
 @section How to Use Include Files
 @findex include
 
 To include another file within a Texinfo file, write the
 @code{@@include} command at the beginning of a line and follow it on
-the same line by the name of a file to be included.  For
-example:@refill
+the same line by the name of a file to be included.  For example:
 
 @example
 @@include buffers.texi
 @end example
+
+The name of the file is taken literally, with a single exception:
+@code{@@value@{@var{var}@}} references are expanded.  This makes it
+possible to reliably include files in other directories in a
+distribution.  @xref{verbatiminclude,,@code{@@verbatiminclude}}, for
+an example.
 
 An included file should simply be a segment of text that you expect to
 be included as is into the overall or @dfn{outer} Texinfo file; it
@@ -17040,7 +17057,7 @@ file.  In particular, you should not start an included file with a
 line saying @samp{\input texinfo}; if you do, that phrase is inserted
 into the output file as is.  Likewise, you should not end an included
 file with an @code{@@bye} command; nothing after @code{@@bye} is
-formatted.@refill
+formatted.
 
 In the past, you were required to write an @code{@@setfilename} line at the
 beginning of an included file, but no longer.  Now, it does not matter
@@ -17061,7 +17078,8 @@ whole file.  Either you must insert the menus and the `Next',
 Texinfo mode command, @code{texinfo-multiple-files-update}, that is
 designed for @code{@@include} files.@refill
 
-@node texinfo-multiple-files-update, Include File Requirements, Using Include Files, Include Files
+
+@node texinfo-multiple-files-update
 @section @code{texinfo-multiple-files-update}
 @findex texinfo-multiple-files-update
 
@@ -17138,9 +17156,9 @@ updates @strong{every} pointer and menu in @strong{all} the files and then inser
 master menu.@refill
 
 
-@node Include File Requirements
-@section Include File Requirements
-@cindex Include file requirements
+@node Include Files Requirements
+@section Include Files Requirements
+@cindex Include files requirements
 @cindex Requirements for include files
 
 If you plan to use the @code{texinfo-multiple-files-update} command,
@@ -17164,58 +17182,40 @@ should @emph{not} contain any nodes besides the single `Top' node.  The
 @code{texinfo-multiple-files-update} command will not process
 them.@refill
 
-@node Sample Include File, Include Files Evolution, Include File Requirements, Include Files
+
+@node Sample Include File
 @section Sample File with @code{@@include}
 @cindex Sample @code{@@include} file
 @cindex Include file sample
 @cindex @code{@@include} file sample
 
-Here is an example of a complete outer Texinfo file with @code{@@include} files
+Here is an example of an outer Texinfo file with @code{@@include} files
 within it before running @code{texinfo-multiple-files-update}, which
-would insert a main or master menu:@refill
+would insert a main or master menu:
 
 @example
 @group
 \input texinfo @@c -*-texinfo-*-
 @c %**start of header
-@@setfilename  include-example.info
+@@setfilename include-example.info
 @@settitle Include Example
 @c %**end of header
 @end group
 
-@group
-@@setchapternewpage odd
-@@titlepage
-@@sp 12
-@@center @@titlefont@{Include Example@}
-@@sp 2
-@@center by Whom Ever
-@end group
+... @xref{Sample Texinfo Files}, for
+examples of the rest of the frontmatter ...
 
 @group
-@@page
-@@vskip 0pt plus 1filll
-Copyright @@copyright@{@} 2002 Free Software Foundation, Inc.
-@@end titlepage
-@end group
-
-@group
-@@ifinfo
-@@node Top, First, , (dir)
-@@top Master Menu
-@@end ifinfo
+@@ifnottex
+@@node Top
+@@top Include Example 
+@@end ifnottex
 @end group
 
 @group
 @@include foo.texinfo
 @@include bar.texinfo
 @@include concept-index.texinfo
-@end group
-
-@group
-@@summarycontents
-@@contents
-
 @@bye
 @end group
 @end example
@@ -17224,7 +17224,7 @@ An included file, such as @file{foo.texinfo}, might look like this:
 
 @example
 @group
-@@node First, Second, , Top
+@@node First
 @@chapter First Chapter
 
 Contents of first chapter @dots{}
@@ -17245,7 +17245,7 @@ The full contents of @file{concept-index.texinfo} might be as simple as this:
 The outer Texinfo source file for @cite{The GNU Emacs Lisp Reference
 Manual} is named @file{elisp.texi}.  This outer file contains a master
 menu with 417 entries and a list of 41 @code{@@include}
-files.@refill
+files.
 
 
 @node Include Files Evolution
