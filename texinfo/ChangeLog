@@ -1,3 +1,7 @@
+2003-03-12    <karl@gnu.org>
+
+	* doc/texinfo.txi (Preparing for TeX): mention extra colons.
+
 2003-03-07    <karl@gnu.org>
 
 	* doc/texinfo.tex (\/): new command to allow a line break.
