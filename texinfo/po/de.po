@@ -54,10 +54,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.5.93\n"
-"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"Project-Id-Version: texinfo 4.6\n"
 "POT-Creation-Date: 2003-06-10 13:52-0700\n"
-"PO-Revision-Date: 2003-06-04 17:27:23+0200\n"
+"PO-Revision-Date: 2003-06-12 10:44:21+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -192,8 +191,7 @@ msgstr "Fußnoten können nicht angezeigt werden"
 
 #: info/footnotes.c:238
 msgid "Show the footnotes associated with this node in another window"
-msgstr ""
-"Zeige die zu diesem Knoten gehörenden Fußnoten in einem anderen Fenster"
+msgstr "Zeige die zu diesem Knoten gehörenden Fußnoten in einem anderen Fenster"
 
 #: info/footnotes.h:26
 msgid "---------- Footnotes ----------"
@@ -216,11 +214,8 @@ msgid "Index entry: "
 msgstr "Index-Eintrag: "
 
 #: info/indices.c:333
-msgid ""
-"Go to the next matching index item from the last `\\[index-search]' command"
-msgstr ""
-"Zum nächsten übereinstimmenden Index-Eintrag vom letzten »\\[index-search]«-"
-"Befehl gehen"
+msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgstr "Zum nächsten übereinstimmenden Index-Eintrag vom letzten »\\[index-search]«-Befehl gehen"
 
 #: info/indices.c:343
 msgid "No previous index search string."
@@ -317,8 +312,7 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -365,8 +359,7 @@ msgstr ""
 "  -R, --raw-escapes         ANSI-Escapes aus Manpages nicht entfernen\n"
 "      --restore=DATEI       die beginnenden Tasteneingaben von DATEI lesen\n"
 "  -O, --show-options, --usage\n"
-"                            zum Knoten mit den Optionen für den "
-"Befehlsaufruf\n"
+"                            zum Knoten mit den Optionen für den Befehlsaufruf\n"
 "                              gehen\n"
 "%s      --subnodes            Menüeinträge rekursiv ausgeben\n"
 "      --vi-keys             Tastenbindungen ähnlich zu vi und less benutzen\n"
@@ -375,19 +368,16 @@ msgstr ""
 "Der erste Parameter, der keine Option ist, ist der Menüeintrag, von dem aus\n"
 "gestartet werden soll; nach diesem Menüeintrag wird in allen »dir«-Datei\n"
 "gemäß dem INFOPATH gesucht.\n"
-"Wenn kein Menüeintrag angegeben wird, packt info alle »dir«-Dateien "
-"zusammen\n"
+"Wenn kein Menüeintrag angegeben wird, packt info alle »dir«-Dateien zusammen\n"
 "und zeigt das Ergebnis an.\n"
 "Verbleibende Parameter werden als Namen von Menüeinträgen des ersten zu\n"
 "besuchenden Knotens angesehen.\n"
 "\n"
 "Beispiele:\n"
 "  info                       das oberste »dir«-Menü anzeigen\n"
-"  info emacs                 beim emacs-Knoten im obersten »dir«-Menü "
-"beginnen\n"
+"  info emacs                 beim emacs-Knoten im obersten »dir«-Menü beginnen\n"
 "  info emacs buffers         beim buffers-Knoten im emacs-Manual beginnen\n"
-"  info --show-options emacs  beim Knoten mit den emacs-Kommandozeilen-"
-"Optionen\n"
+"  info --show-options emacs  beim Knoten mit den emacs-Kommandozeilen-Optionen\n"
 "                               beginnen\n"
 "  info -f ./foo.info         datei ./foo.info anzeigen\n"
 
@@ -400,8 +390,7 @@ msgid ""
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
 "\n"
-"Fehlerberichte (auf Englisch, mit LC_ALL=C) per E-Mail an bug-texinfo@gnu."
-"org\n"
+"Fehlerberichte (auf Englisch, mit LC_ALL=C) per E-Mail an bug-texinfo@gnu.org\n"
 "schicken, allgemeine Fragen und Gedankenaustausch an help-texinfo@gnu.org.\n"
 "Texinfos Homepage: http://www.gnu.org/software/texinfo/"
 
@@ -504,13 +493,11 @@ msgstr ""
 
 #: info/infodoc.c:55
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
-msgstr ""
-"\\%-10[next-node]  Zum nächsten Knoten (»next«) dieses Knotens gehen.\n"
+msgstr "\\%-10[next-node]  Zum nächsten Knoten (»next«) dieses Knotens gehen.\n"
 
 #: info/infodoc.c:56
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
-msgstr ""
-"\\%-10[prev-node]  Zum vorherigen Knoten (»prev«) dieses Knotens gehen.\n"
+msgstr "\\%-10[prev-node]  Zum vorherigen Knoten (»prev«) dieses Knotens gehen.\n"
 
 #: info/infodoc.c:57
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
@@ -526,53 +513,32 @@ msgstr ""
 "              Knotens.\n"
 
 #: info/infodoc.c:60
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  Einem Querverweis folgen. Liest den Namen des Verweises.\n"
+msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr "\\%-10[xref-item]  Einem Querverweis folgen. Liest den Namen des Verweises.\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr ""
-"\\%-10[history-node]  Zum letzten in diesem Fenster schon besuchten Knoten "
-"gehen.\n"
+msgstr "\\%-10[history-node]  Zum letzten in diesem Fenster schon besuchten Knoten gehen.\n"
 
 #: info/infodoc.c:62
-msgid ""
-"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Zur nächsten Verknüpfung auf dieser Seite "
-"springen.\n"
+msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr "\\%-10[move-to-next-xref]  Zur nächsten Verknüpfung auf dieser Seite springen.\n"
 
 #: info/infodoc.c:63
-msgid ""
-"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
-"node.\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]  Zur vorigen Verknüpfung auf dieser Seite "
-"springen.\n"
+msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
+msgstr "\\%-10[move-to-prev-xref]  Zur vorigen Verknüpfung auf dieser Seite springen.\n"
 
 #: info/infodoc.c:64
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Der Verknüpfung unter dem Cursor "
-"folgen.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  Der Verknüpfung unter dem Cursor folgen.\n"
 
 #: info/infodoc.c:65
-msgid ""
-"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-"node] (DIR)'.\n"
-msgstr ""
-"\\%-10[dir-node]  Zum »directory«-Knoten springen. Das gleiche wie »\\[goto-"
-"node] (DIR)«.\n"
+msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
+msgstr "\\%-10[dir-node]  Zum »directory«-Knoten springen. Das gleiche wie »\\[goto-node] (DIR)«.\n"
 
 #: info/infodoc.c:66
-msgid ""
-"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr ""
-"\\%-10[top-node]  Zum obersten Knoten springen. Das gleiche wie »\\[goto-"
-"node] Top«.\n"
+msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgstr "\\%-10[top-node]  Zum obersten Knoten springen. Das gleiche wie »\\[goto-node] Top«.\n"
 
 #: info/infodoc.c:68 info/infodoc.c:116
 msgid ""
@@ -616,24 +582,18 @@ msgstr ""
 
 #: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-msgstr ""
-"\\%-10[menu-digit]  Ersten ... neunten Eintrag aus dem Menü des Knotens "
-"wählen.\n"
+msgstr "\\%-10[menu-digit]  Ersten ... neunten Eintrag aus dem Menü des Knotens wählen.\n"
 
 #: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
-msgstr ""
-"\\%-10[last-menu-item]  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
+msgstr "\\%-10[last-menu-item]  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
 
 #: info/infodoc.c:81
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of "
-"this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  Eine Zeichenkette in den Indexeintägen dieser Info-"
-"Datei\n"
+"\\%-10[index-search]  Eine Zeichenkette in den Indexeintägen dieser Info-Datei\n"
 "              suchen und zu dem Knoten springen, auf den der erste\n"
 "              gefundene Eintrag verweist.\n"
 
@@ -656,11 +616,9 @@ msgstr ""
 #: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
+"              and select the node in which the previous occurrence is found.\n"
 msgstr ""
-"\\%-10[search-backward]  Angegebene Zeichenkette in Rückwärtsrichtung "
-"suchen\n"
+"\\%-10[search-backward]  Angegebene Zeichenkette in Rückwärtsrichtung suchen\n"
 "              und den Knoten wählen, in dem der nächste Eintrag gefunden\n"
 "              wurde.\n"
 
@@ -777,15 +735,11 @@ msgstr "  %-10s  Letzten Eintrag aus dem Menü des Knotens wählen.\n"
 
 #: info/infodoc.c:129
 #, c-format
-msgid ""
-"  %-10s  Search for a specified string in the index entries of this Info\n"
-msgstr ""
-"  %-10s  Eine Zeichenkette in den Indexeinträgen dieser Info-Datei suchen\n"
+msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
+msgstr "  %-10s  Eine Zeichenkette in den Indexeinträgen dieser Info-Datei suchen\n"
 
 #: info/infodoc.c:130
-msgid ""
-"              file, and select the node referenced by the first entry "
-"found.\n"
+msgid "              file, and select the node referenced by the first entry found.\n"
 msgstr ""
 "                    und zu dem Knoten springen, auf den der erste gefundene\n"
 "                    Eintrag verweist.\n"
@@ -796,20 +750,16 @@ msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Knoten nach Namen auswählen und dorthin springen. Ein\n"
 
 #: info/infodoc.c:132
-msgid ""
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
-msgstr ""
-"              Dateiname kann mit angegeben werden, also (DATEI)KNOTENNAME.\n"
+msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgstr "              Dateiname kann mit angegeben werden, also (DATEI)KNOTENNAME.\n"
 
 #: info/infodoc.c:133
 #, c-format
 msgid "  %-10s  Search forward for a specified string,\n"
-msgstr ""
-"  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den Knoten\n"
+msgstr "  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den Knoten\n"
 
 #: info/infodoc.c:134 info/infodoc.c:136
-msgid ""
-"              and select the node in which the next occurrence is found.\n"
+msgid "              and select the node in which the next occurrence is found.\n"
 msgstr "             wählen, in dem der nächste Eintrag gefunden wurde.\n"
 
 #: info/infodoc.c:135
@@ -856,8 +806,7 @@ msgstr ""
 
 #: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr ""
-"--- »\\[history-node]« oder »\\[kill-node]« benutzen, um zu beenden ---\n"
+msgstr "--- »\\[history-node]« oder »\\[kill-node]« benutzen, um zu beenden ---\n"
 
 #: info/infodoc.c:478
 msgid "Display help message"
@@ -1044,11 +993,8 @@ msgstr "Fehler beim Lesen der Infokey-Datei »%s« - zu kurzes Lesen"
 
 #: info/infomap.c:1546
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr ""
-"Ungültige Infokey-Datei »%s« (fehlerhafte Signatur) -- bitte mit infokey "
-"erneuern"
+msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr "Ungültige Infokey-Datei »%s« (fehlerhafte Signatur) -- bitte mit infokey erneuern"
 
 #: info/infomap.c:1552
 #, c-format
@@ -1057,29 +1003,21 @@ msgstr "Ihre Infokey-Datei »%s« ist veraltet -- bitte mit infokey erneuern"
 
 #: info/infomap.c:1565
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr ""
-"Ungültige Infokey-Datei »%s« (fehlerhafte Abschnittslänge) -- bitte mit "
-"infokey erneuern"
+msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr "Ungültige Infokey-Datei »%s« (fehlerhafte Abschnittslänge) -- bitte mit infokey erneuern"
 
 #: info/infomap.c:1585
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr ""
-"Ungültige Infokey-Datei »%s« (fehlerhafter Abschnittscode) -- bitte mit "
-"infokey erneuern"
+msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr "Ungültige Infokey-Datei »%s« (fehlerhafter Abschnittscode) -- bitte mit infokey erneuern"
 
 #: info/infomap.c:1722
 msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr ""
-"Fehlerhafte Daten in Infokey-Datei -- einige Tastaturbindungen ignoriert"
+msgstr "Fehlerhafte Daten in Infokey-Datei -- einige Tastaturbindungen ignoriert"
 
 #: info/infomap.c:1773
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr ""
-"Fehlerhafte Daten in Infokey-Datei -- einige Variableneinstellungen ignoriert"
+msgstr "Fehlerhafte Daten in Infokey-Datei -- einige Variableneinstellungen ignoriert"
 
 #: info/m-x.c:70
 msgid "Read the name of an Info command and describe it"
@@ -1161,12 +1099,8 @@ msgstr "Der Verweis ist verschwunden! (%s)."
 
 #: info/session.c:170
 #, c-format
-msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item."
-msgstr ""
-"Willkommen bei Info (Version %s). »\\[get-help-window]« eingeben für Hilfe, "
-"»\\[menu-item]« für Menüeintrag."
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgstr "Willkommen bei Info (Version %s). »\\[get-help-window]« eingeben für Hilfe, »\\[menu-item]« für Menüeintrag."
 
 #: info/session.c:643
 msgid "Move down to the next line"
@@ -1219,9 +1153,7 @@ msgstr "Adjustiere »vorigen« Knoten (Prev) in diesem Fenster."
 
 #: info/session.c:1051
 msgid "No `Prev' or `Up' for this node within this document."
-msgstr ""
-"Kein »voriges« (Prev) oder »aufwärts« (Up) für diesen Knoten innerhalb "
-"dieses Dokuments."
+msgstr "Kein »voriges« (Prev) oder »aufwärts« (Up) für diesen Knoten innerhalb dieses Dokuments."
 
 #: info/session.c:1054
 msgid "Moving Up in this window."
@@ -1245,16 +1177,14 @@ msgstr "In diesem Fenster vorwärts blättern"
 
 #: info/session.c:1237
 msgid "Scroll forward in this window and set default window size"
-msgstr ""
-"In diesem Fenster vorwärts blättern und die Standard-Fenstergröße setzen"
+msgstr "In diesem Fenster vorwärts blättern und die Standard-Fenstergröße setzen"
 
 #: info/session.c:1245
 msgid "Scroll forward in this window staying within node"
 msgstr "In diesem Fenster vorwärts blättern ohne den Knoten zu verlassen"
 
 #: info/session.c:1253
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
+msgid "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "In diesem Fenster vorwärts blättern (ohne den Knoten zu verlassen)\n"
 "     und Standard-Fenstergröße setzen"
@@ -1272,9 +1202,7 @@ msgid "Scroll backward in this window staying within node"
 msgstr "In diesem Fenster zurückblättern ohne den Knoten zu verlassen"
 
 #: info/session.c:1286
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
+msgid "Scroll backward in this window staying within node and set default window size"
 msgstr ""
 "In diesem Fenster zurück blättern (ohne den Knoten zu verlassen)\n"
 "     und Standard-Fenstergröße setzen"
@@ -1341,8 +1269,7 @@ msgstr "Aktuelles Fenster vergrößern (oder verkleinern)"
 
 #: info/session.c:1694
 msgid "Divide the available screen space among the visible windows"
-msgstr ""
-"Den vorhandenen Bildschirmplatz unter allen sichtbaren Fenstern aufteilen"
+msgstr "Den vorhandenen Bildschirmplatz unter allen sichtbaren Fenstern aufteilen"
 
 #: info/session.c:1701
 msgid "Toggle the state of line wrapping in the current window"
@@ -1547,8 +1474,7 @@ msgstr "Unterdatei »%s« wird durchsucht..."
 
 #: info/session.c:3666
 msgid "Read a string and search for it case-sensitively"
-msgstr ""
-"Eine Zeichenkette einlesen und danach gemäß Groß-/Kleinschreibung suchen"
+msgstr "Eine Zeichenkette einlesen und danach gemäß Groß-/Kleinschreibung suchen"
 
 #: info/session.c:3673
 msgid "Read a string and search for it"
@@ -1686,9 +1612,7 @@ msgstr "Wenn »On«, dann erscheinen und verschwinden Fußnoten automatisch"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr ""
-"Wenn »On«, dann werden beim Anlegen oder Löschen eines Fensters die anderen "
-"Fenster angepasst"
+msgstr "Wenn »On«, dann werden beim Anlegen oder Löschen eines Fensters die anderen Fenster angepasst"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1700,14 +1624,11 @@ msgstr "Wenn »On«, dann erzeugen Fehler ein akustisches Signal"
 
 #: info/variables.c:53
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr ""
-"Wenn »On«, dann behält Info keine Dateien im Speicher, die ausgepackt werden "
-"mussten"
+msgstr "Wenn »On«, dann behält Info keine Dateien im Speicher, die ausgepackt werden mussten"
 
 #: info/variables.c:56
 msgid "When \"On\", the portion of the matched search string is highlighted"
-msgstr ""
-"Wenn »On«, dann wird die übereinstimmende gefundene Zeichenkette markiert"
+msgstr "Wenn »On«, dann wird die übereinstimmende gefundene Zeichenkette markiert"
 
 #: info/variables.c:60
 msgid "Controls what happens when scrolling is requested at the end of a node"
@@ -1715,8 +1636,7 @@ msgstr "Kontrolliert, was passiert, wenn am Ende eines Knotens geblättert wird"
 
 #: info/variables.c:64
 msgid "The number lines to scroll when the cursor moves out of the window"
-msgstr ""
-"Anzahl der Zeilen zu blättern, wenn der Cursor aus dem Fenster bewegt wird"
+msgstr "Anzahl der Zeilen zu blättern, wenn der Cursor aus dem Fenster bewegt wird"
 
 #: info/variables.c:68
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
@@ -2109,11 +2029,8 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu vor ersten @node gefunden. »Top«-Knoten wird angelegt"
 
 #: makeinfo/insertion.c:1437
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"vielleicht sollte der @top-Knoten eher von @ifnottex als von @ifinfo "
-"umschlossen werden?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "vielleicht sollte der @top-Knoten eher von @ifnottex als von @ifinfo umschlossen werden?"
 
 #: makeinfo/insertion.c:1449
 msgid "@detailmenu seen before first node, creating `Top' node"
@@ -2188,7 +2105,7 @@ msgstr "%c%s erwartet einen einzelnen Buchstaben »i« oder »j» als Argument"
 #: makeinfo/macro.c:134
 #, c-format
 msgid "macro `%s' previously defined"
-msgstr "Macro »%s« früher definiert"
+msgstr "Makro »%s« früher definiert"
 
 #: makeinfo/macro.c:138
 #, c-format
@@ -2196,25 +2113,23 @@ msgid "here is the previous definition of `%s'"
 msgstr "hier ist die frühere Definition von »%s«"
 
 #: makeinfo/macro.c:364
-#, fuzzy, c-format
+#, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr ""
-"Dem \\ folgt in der Macro-Erweiterung »%s« anstelle von \\ oder einem "
-"Parameternamen"
+msgstr "Dem \\ in der Makro-Erweiterung folgt »%s« anstelle eines Parameternamens"
 
 #: makeinfo/macro.c:411
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
-msgstr "Macro »%s« in Zeile %d mit zuvielen Argumenten aufgerufen"
+msgstr "Makro »%s« in Zeile %d mit zuvielen Argumenten aufgerufen"
 
 #: makeinfo/macro.c:602
 #, c-format
 msgid "%cend macro not found"
-msgstr "%cend Macro nicht gefunden"
+msgstr "%cend Makro nicht gefunden"
 
 #: makeinfo/macro.c:640
 msgid "@quote-arg only useful for single-argument macros"
-msgstr "@quote-Argument nur sinnvoll, wenn das Macro nur ein Argument hat"
+msgstr "@quote-Argument nur sinnvoll, wenn das Makro nur ein Argument hat"
 
 #: makeinfo/macro.c:676
 #, c-format
@@ -2263,8 +2178,7 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %"
-"d).\n"
+"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
@@ -2272,11 +2186,9 @@ msgstr ""
 "      --error-limit=ZAHL      nach ZAHL Fehlern beenden (Standard %d)\n"
 "      --force                 Ausgabedatei auch bei Fehlern nicht löschen\n"
 "      --help                  diese Hilfe zeigen und beenden\n"
-"      --no-validate           Überprüfen der Knoten-Querverweise "
-"unterdrücken\n"
+"      --no-validate           Überprüfen der Knoten-Querverweise unterdrücken\n"
 "      --no-warn               Warnungen (aber keine Fehler) unterdrücken\n"
-"      --reference-limit=ZAHL  warne bei höchstens ZAHL Verweisen (Standard %"
-"d)\n"
+"      --reference-limit=ZAHL  warne bei höchstens ZAHL Verweisen (Standard %d)\n"
 "  -v, --verbose               ausführlich die Bearbeitungschritte anzeigen\n"
 "      --version               Programmversion anzeigen und beenden\n"
 
@@ -2298,8 +2210,7 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
 "                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and "
-"menus\n"
+"      --no-headers          suppress node separators, Node: lines, and menus\n"
 "                              from Info output (thus producing plain text)\n"
 "                              or from HTML (thus producing shorter output);\n"
 "                              also, write to standard output by default.\n"
@@ -2309,18 +2220,15 @@ msgid ""
 "  -o, --output=FILE         output to FILE (directory if split HTML),\n"
 msgstr ""
 "Allgemeine Ausgabe-Optionen:\n"
-"  -E, --macro-expand DATEI  originalen Quelltext mit expandierten Makros "
-"nach\n"
+"  -E, --macro-expand DATEI  originalen Quelltext mit expandierten Makros nach\n"
 "                            DATEI ausgeben, dabei @setfilename ignorieren\n"
-"      --no-headers          Knoten-Unterteiler, »Knoten:«-Kopfzeilen und "
-"Menüs\n"
+"      --no-headers          Knoten-Unterteiler, »Knoten:«-Kopfzeilen und Menüs\n"
 "                            unterdrücken in Info-Ausgabe (also nur Text\n"
 "                            erstellen) oder HTML (also kürzere Ausgabe);\n"
 "                            außerdem in die Standardausgabe schreiben\n"
 "      --no-split            Aufteilen langer Info-Dateien oder das Erzeugen\n"
 "                            einer HTML-Datei je Knoten unterdrücken\n"
-"      --number-sections     Kapitel-, Abschnitt- und Anhangzählungen "
-"ausgeben\n"
+"      --number-sections     Kapitel-, Abschnitt- und Anhangzählungen ausgeben\n"
 "  -o, --output=DATEI        Ausgabe nach DATEI (bzw. Verzeichnis wenn\n"
 "                            aufgeteiltes HTML)\n"
 
@@ -2330,37 +2238,30 @@ msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
 "                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
 "                                `end' to put them at the end of the node\n"
 "                                  in which they are defined (default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Optionen für Info und Nur-Text:\n"
-"      --enable-encoding       akzentuierte und spezielle Zeichen in die "
-"Info-\n"
+"      --enable-encoding       akzentuierte und spezielle Zeichen in die Info-\n"
 "                              Ausgabe gemäß @documentencoding ausgeben\n"
-"      --fill-column=ZAHL      Zeilen nach ZAHL Zeichen umbrechen (Standard %"
-"d)\n"
+"      --fill-column=ZAHL      Zeilen nach ZAHL Zeichen umbrechen (Standard %d)\n"
 "      --footnote-style=STIL   Fußnoten in Info gemäß STIL ausgeben:\n"
 "                                »separate«: Fußnoten in eigenen Knoten\n"
 "                                            platzieren;\n"
-"                                »end«: Fußnoten an das Ende des Knotens "
-"setzen,\n"
+"                                »end«: Fußnoten an das Ende des Knotens setzen,\n"
 "                                       in dem sie definiert sind (Standard)\n"
 "      --paragraph-indent=WERT Info-Absätze mit WERT Leerzeichen einziehen\n"
 "                                (Standard %d);\n"
 "                                WERT ist »none«: nicht einziehen;\n"
-"                                WERT ist »asis«: existierende Einzüge "
-"behalten\n"
-"      --split-size=GRÖSSE     in GRÖSSE große Dateien splitten (Standard %"
-"d)\n"
+"                                WERT ist »asis«: existierende Einzüge behalten\n"
+"      --split-size=GRÖSSE     in GRÖSSE große Dateien splitten (Standard %d)\n"
 
 #: makeinfo/makeinfo.c:433
 msgid ""
@@ -2385,8 +2286,7 @@ msgstr ""
 "      --commands-in-node-names   @-Befehle in Knotennamen zulassen\n"
 "  -D VAR                         eine Variable definieren (wie mit @set)\n"
 "  -I VERZ                        VERZ an den Suchpfad für @include anhängen\n"
-"  -P VERZ                        VERZ dem Suchpfad für @include "
-"voranstellen\n"
+"  -P VERZ                        VERZ dem Suchpfad für @include voranstellen\n"
 "  -U VAR                         eine Variable aufheben (wie mit @clear)\n"
 
 #: makeinfo/makeinfo.c:448
@@ -2407,8 +2307,7 @@ msgstr ""
 "  --ifhtml          @ifhtml und @html bearbeiten, selbst wenn kein HTML\n"
 "                      erzeugt wird\n"
 "  --ifinfo          @ifinfo bearbeiten, selbst wenn kein Info erzeugt wird\n"
-"  --ifplaintext     @ifplaintext bearbeiten, selbst wenn kein Text erzeugt "
-"wird\n"
+"  --ifplaintext     @ifplaintext bearbeiten, selbst wenn kein Text erzeugt wird\n"
 "  --iftex           @iftex und @tex bearbeiten; impliziert --no-split\n"
 "  --ifxml           @ifxml und @xml bearbeiten\n"
 "  --no-ifhtml       @ifhtml- und @html-Text nicht bearbeiten\n"
@@ -2425,8 +2324,7 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
-"  Die Voreinstellungen für die @if...-Bedingungen hängen vom Ausgabeformat "
-"ab:\n"
+"  Die Voreinstellungen für die @if...-Bedingungen hängen vom Ausgabeformat ab:\n"
 "  wird HTML erzeugt, ist --ifhtml an und die anderen sind aus;\n"
 "  wird Info erzeugt, ist --ifinfo an und die anderen sind aus;\n"
 "  wird reiner Text erzeugt, ist --ifplaintext an und die anderen sind aus;\n"
@@ -2442,8 +2340,7 @@ msgid ""
 "  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
 "  makeinfo --no-headers foo.texi        write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi          write one Info file however big\n"
 msgstr ""
@@ -2451,18 +2348,14 @@ msgstr ""
 "  makeinfo foo.texi                    Info gemäß @setfilename von foo\n"
 "                                         schreiben\n"
 "  makeinfo --html foo.texi             HTML gemäß @setfilename schreiben\n"
-"  makeinfo --xml foo.texi              Texinfo XML gemäß @setfilename "
-"schreiben\n"
-"  makeinfo --docbook foo.texi          DocBook XML gemäß @setfilename "
-"schreiben\n"
+"  makeinfo --xml foo.texi              Texinfo XML gemäß @setfilename schreiben\n"
+"  makeinfo --docbook foo.texi          DocBook XML gemäß @setfilename schreiben\n"
 "  makeinfo --no-headers foo.texi       reinen Text in Standardausgabe\n"
 "                                         schreiben\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  HTML ohne Menüs oder »Knoten«-"
-"Zeilen\n"
+"  makeinfo --html --no-headers foo.texi  HTML ohne Menüs oder »Knoten«-Zeilen\n"
 "  makeinfo --number-sections foo.texi    Info mit nummerierten Abschnitten\n"
-"  makeinfo --no-split foo.texi           nur eine Info-Datei (kann groß "
-"sein)\n"
+"  makeinfo --no-split foo.texi           nur eine Info-Datei (kann groß sein)\n"
 
 #: makeinfo/makeinfo.c:588 makeinfo/makeinfo.c:611 makeinfo/makeinfo.c:673
 #: makeinfo/makeinfo.c:694
@@ -2477,22 +2370,17 @@ msgstr "Ausgabedatei »%s« mit Makro-Expansionen kann nicht geöffnet werden"
 
 #: makeinfo/makeinfo.c:604
 msgid "Cannot specify more than one macro expansion output"
-msgstr ""
-"Mehr als eine Ausgabedatei mit Makro-Expansionen darf nicht angegeben werden"
+msgstr "Mehr als eine Ausgabedatei mit Makro-Expansionen darf nicht angegeben werden"
 
 #: makeinfo/makeinfo.c:642
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: Argument für --paragraph-indent muss numerisch, »none« oder »asis« sein, "
-"nicht »%s«.\n"
+msgstr "%s: Argument für --paragraph-indent muss numerisch, »none« oder »asis« sein, nicht »%s«.\n"
 
 #: makeinfo/makeinfo.c:683
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: Argument für --footnote-style muss »separate« oder »end« sein, nicht »%"
-"s«.\n"
+msgstr "%s: Argument für --footnote-style muss »separate« oder »end« sein, nicht »%s«.\n"
 
 #: makeinfo/makeinfo.c:742
 #, c-format
@@ -2521,9 +2409,7 @@ msgstr "Kein »%s« in »%s« gefunden"
 #: makeinfo/makeinfo.c:1527
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr ""
-"%s: Keine Makro-Auflösung nach der Standard-Ausgabe, da auch die Info-"
-"Ausgabe dorthin geht.\n"
+msgstr "%s: Keine Makro-Auflösung nach der Standard-Ausgabe, da auch die Info-Ausgabe dorthin geht.\n"
 
 #: makeinfo/makeinfo.c:1557
 #, c-format
@@ -2537,18 +2423,13 @@ msgstr "Dies ist %s, hergestellt von Makeinfo Version %s aus %s.\n"
 
 #: makeinfo/makeinfo.c:1614
 #, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Entferne Macro-Ausgabe-Datei »%s« wegen Fehler; --force benutzen, um "
-"Datei beizubehalten.\n"
+msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: Entferne Makro-Ausgabe-Datei »%s« wegen Fehler; --force benutzen, um Datei beizubehalten.\n"
 
 #: makeinfo/makeinfo.c:1669
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Entferne Ausgabe-Datei »%s« wegen Fehler; --force benutzen, um diese "
-"beizubehalten.\n"
+msgstr "%s: Entferne Ausgabe-Datei »%s« wegen Fehler; --force benutzen, um diese beizubehalten.\n"
 
 #: makeinfo/makeinfo.c:1920
 #, c-format
@@ -2558,9 +2439,7 @@ msgstr "Unbekannter Befehl »%s«"
 #: makeinfo/makeinfo.c:1942
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
-msgstr ""
-"Geschweifte Klammern verwenden, um einen Befehl als Argument an »@%s« zu "
-"geben"
+msgstr "Geschweifte Klammern verwenden, um einen Befehl als Argument an »@%s« zu geben"
 
 #: makeinfo/makeinfo.c:2135
 #, c-format
@@ -2706,8 +2585,7 @@ msgstr "Anker »%s« und Knoten »%s« zeigen auf gleichen Dateinamen."
 
 #: makeinfo/node.c:865
 msgid "This @anchor command ignored; references to it will not work"
-msgstr ""
-"Dieser @anchor-Befehl wird ignoriert, da Verweise auf ihn nicht funktionieren"
+msgstr "Dieser @anchor-Befehl wird ignoriert, da Verweise auf ihn nicht funktionieren"
 
 #: makeinfo/node.c:867 makeinfo/node.c:1092
 msgid "Rename this anchor or use the `--no-split' option"
@@ -2743,15 +2621,12 @@ msgstr "Anker »%s« und »%s« zeigen auf gleichen Dateinamen."
 
 #: makeinfo/node.c:1091
 msgid "@anchor command ignored; references to it will not work"
-msgstr ""
-"@anchor-Befehl wird ignoriert, da Referenzen auf ihn nicht funktionieren"
+msgstr "@anchor-Befehl wird ignoriert, da Referenzen auf ihn nicht funktionieren"
 
 #: makeinfo/node.c:1291
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%sverweis auf nicht existierenden Knoten »%s« (vielleicht @section statt "
-"@subsection o.ä.?)"
+msgstr "%sverweis auf nicht existierenden Knoten »%s« (vielleicht @section statt @subsection o.ä.?)"
 
 #: makeinfo/node.c:1308
 msgid "Menu"
@@ -2764,15 +2639,12 @@ msgstr "Quer"
 #: makeinfo/node.c:1394
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr ""
-"Auf das Feld »nächstes« (Next) des Knotens »%s« wird nicht verwiesen "
-"(vielleicht @section statt @subsection o.ä.?)"
+msgstr "Auf das Feld »nächstes« (Next) des Knotens »%s« wird nicht verwiesen (vielleicht @section statt @subsection o.ä.?)"
 
 #: makeinfo/node.c:1397
 #, c-format
 msgid "This node (%s) has the bad Prev"
-msgstr ""
-"Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld »voriges« (Prev)"
+msgstr "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld »voriges« (Prev)"
 
 #: makeinfo/node.c:1409
 msgid "Prev"
@@ -2786,15 +2658,12 @@ msgstr "Auf das Feld »voriges« (Prev) des Knotens »%s« wird nicht verwiesen"
 #: makeinfo/node.c:1456
 #, c-format
 msgid "This node (%s) has the bad Next"
-msgstr ""
-"Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld »nächstes« (Next)"
+msgstr "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld »nächstes« (Next)"
 
 #: makeinfo/node.c:1468
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr ""
-"»%s« hat kein Feld »aufwärts« (Up) (vielleicht @section statt @subsection o."
-"ä.?)"
+msgstr "»%s« hat kein Feld »aufwärts« (Up) (vielleicht @section statt @subsection o.ä.?)"
 
 #: makeinfo/node.c:1471
 msgid "Up"
@@ -2803,9 +2672,7 @@ msgstr "aufwärts"
 #: makeinfo/node.c:1537
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"Dem Knoten »%s« fehlt ein Menüeintrag für »%s«, obwohl er dessen Ziel für "
-"»aufwärts« (Up) ist"
+msgstr "Dem Knoten »%s« fehlt ein Menüeintrag für »%s«, obwohl er dessen Ziel für »aufwärts« (Up) ist"
 
 #: makeinfo/node.c:1566
 #, c-format
@@ -2896,10 +2763,8 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
+"                     plus zero or more extra lines starting with whitespace.\n"
+"                     If you specify more than one entry, they are all added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -2923,27 +2788,23 @@ msgstr ""
 "installieren oder löschen.\n"
 "\n"
 "Optionen:\n"
-" --delete          vorhandene Einträge für INFO-DATEI aus VERZ-DATEI "
-"löschen;\n"
+" --delete          vorhandene Einträge für INFO-DATEI aus VERZ-DATEI löschen;\n"
 "                     keine neuen Einträge einfügen\n"
 " --dir-file=NAME   Name der Info-Verzeichnis-Datei angeben. Gleichbedeutend\n"
 "                     mit dem VERZ-DATEI-Argument\n"
 " --entry=TEXT      TEXT als einen Info-Verzeichnis-Eintrag einfügen. TEXT\n"
-"                     soll die Form einer Zeile eines Info-Menüeintrags "
-"haben,\n"
+"                     soll die Form einer Zeile eines Info-Menüeintrags haben,\n"
 "                     zuzüglich mehrerer Extra-Zeilen (oder keiner), die mit\n"
 "                     Leerraum (»whitespace«) beginnen. Wenn mehr als ein\n"
 "                     Eintrag angegeben wird, werden alle hinzugefügt. Wenn\n"
 "                     kein Eintrag angegeben wird, wird der Eintragstext der\n"
 "                     Info-Datei selbst entnommen.\n"
 " --help            diese Hilfe zeigen\n"
-" --info-file=DATEI Info-Datei angeben, die im Verzeichnis zu installieren "
-"ist.\n"
+" --info-file=DATEI Info-Datei angeben, die im Verzeichnis zu installieren ist.\n"
 "                     Gleichbedeutend mit dem INFO-DATEI-Argument\n"
 " --info-dir=VERZ   wie --dir-file=VERZ/dir\n"
 " --item=TEXT       wie --entry TEXT\n"
-"                     Ein Info-Verzeichnis-Eintrag ist nämlich ein "
-"Menüeintrag.\n"
+"                     Ein Info-Verzeichnis-Eintrag ist nämlich ein Menüeintrag.\n"
 " --quiet           Warnungen unterdrücken\n"
 " --remove          wie --delete\n"
 " --section=ABSCHN  die Einträge dieser Datei in den Abschnitt ABSCHN des\n"
