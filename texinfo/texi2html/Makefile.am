@@ -26,6 +26,7 @@ EXTRA_DIST = \
 	autogen.sh \
 	manage_i18n.pl \
 	l2h.init \
+	texi2html.spec \
 	$(texi2html_SOURCES)
 
 dist_pkgdata_DATA = l2h.init \

@@ -4,8 +4,9 @@ info_TEXINFOS = texi2html.texi
 CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
              texi2html.ascii
 #
-htmldir = $(prefix)/html
-html_DATA    = texi2html.html
+texinfodata = $(datadir)/texinfo
+texinfohtmldir = $(texinfodata)/html
+texinfohtml_DATA    = texi2html.html
 
 # use the script out of the distribution NOT
 # an old one which is installed on the client.

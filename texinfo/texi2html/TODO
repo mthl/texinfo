@@ -40,7 +40,7 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Test the back path stuff for images.
 
-* Test T2h_nounicode.
+* Test refs with no unicode support.
   Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
 
 * look in texinfo/htmlxref.cnf for cross refs.

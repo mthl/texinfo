@@ -56,9 +56,9 @@ TEXINFOS = texi2html.texi
 TEXI2PDF = $(TEXI2DVI) --pdf --batch
 MAKEINFOHTML = $(MAKEINFO) --html
 AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS)
-am__installdirs = "$(DESTDIR)$(infodir)" "$(DESTDIR)$(htmldir)"
-htmlDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(html_DATA)
+am__installdirs = "$(DESTDIR)$(infodir)" "$(DESTDIR)$(texinfohtmldir)"
+texinfohtmlDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(texinfohtml_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
@@ -129,8 +129,9 @@ CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
              texi2html.ascii
 
 #
-htmldir = $(prefix)/html
-html_DATA = texi2html.html
+texinfodata = $(datadir)/texinfo
+texinfohtmldir = $(texinfodata)/html
+texinfohtml_DATA = texi2html.html
 
 # use the script out of the distribution NOT
 # an old one which is installed on the client.
@@ -289,22 +290,22 @@ maintainer-clean-aminfo:
 	  echo " rm -f $$i $$i-[0-9] $$i-[0-9][0-9] $$i_i[0-9] $$i_i[0-9][0-9]"; \
 	  rm -f $$i $$i-[0-9] $$i-[0-9][0-9] $$i_i[0-9] $$i_i[0-9][0-9]; \
 	done
-install-htmlDATA: $(html_DATA)
+install-texinfohtmlDATA: $(texinfohtml_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(htmldir)" || $(mkdir_p) "$(DESTDIR)$(htmldir)"
-	@list='$(html_DATA)'; for p in $$list; do \
+	test -z "$(texinfohtmldir)" || $(mkdir_p) "$(DESTDIR)$(texinfohtmldir)"
+	@list='$(texinfohtml_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(htmlDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(htmldir)/$$f'"; \
-	  $(htmlDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(htmldir)/$$f"; \
+	  echo " $(texinfohtmlDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(texinfohtmldir)/$$f'"; \
+	  $(texinfohtmlDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(texinfohtmldir)/$$f"; \
 	done
 
-uninstall-htmlDATA:
+uninstall-texinfohtmlDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(html_DATA)'; for p in $$list; do \
+	@list='$(texinfohtml_DATA)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f '$(DESTDIR)$(htmldir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(htmldir)/$$f"; \
+	  echo " rm -f '$(DESTDIR)$(texinfohtmldir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(texinfohtmldir)/$$f"; \
 	done
 tags: TAGS
 TAGS:
@@ -347,7 +348,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(INFO_DEPS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(infodir)" "$(DESTDIR)$(htmldir)"; do \
+	for dir in "$(DESTDIR)$(infodir)" "$(DESTDIR)$(texinfohtmldir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -392,7 +393,7 @@ info: info-am
 
 info-am: $(INFO_DEPS)
 
-install-data-am: install-htmlDATA install-info-am
+install-data-am: install-info-am install-texinfohtmlDATA
 
 install-exec-am:
 
@@ -445,18 +446,19 @@ pdf-am: $(PDFS)
 
 ps-am: $(PSS)
 
-uninstall-am: uninstall-htmlDATA uninstall-info-am
+uninstall-am: uninstall-info-am uninstall-texinfohtmlDATA
 
 .PHONY: all all-am check check-am clean clean-generic dist-info \
 	distclean distclean-generic distdir dvi dvi-am html html-am \
 	info info-am install install-am install-data install-data-am \
-	install-exec install-exec-am install-htmlDATA install-info \
-	install-info-am install-man install-strip installcheck \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip install-texinfohtmlDATA installcheck \
 	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-aminfo maintainer-clean-generic \
 	maintainer-clean-vti mostlyclean mostlyclean-aminfo \
 	mostlyclean-generic mostlyclean-vti pdf pdf-am ps ps-am \
-	uninstall uninstall-am uninstall-htmlDATA uninstall-info-am
+	uninstall uninstall-am uninstall-info-am \
+	uninstall-texinfohtmlDATA
 
 
 all: info texi2html.html
