@@ -1,5 +1,12 @@
 2003-05-13    <karl@gnu.org>
 
+	* makeinfo/html.c (append_char): appease sgi compiler.
+	* makeinfo/html.c (insert_html_tag): remove spurious arg to pop_tag,
+	From: ezra peisach <epeisach@med-xtal.bu.edu>, 13
+	May 2003 12:13:40 -0400.
+
+	Fix a few GCC warnings, reported by Jim Meyering:
+
 	* info/nodes.c: parenthesize assignment used as truth value.
 	* info/nodemenu.c (format_node_info): strcpy instead of sprintf,
 		since there's no format.
