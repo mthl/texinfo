@@ -15,8 +15,8 @@ can customize your entire page layout (like headers, footers, style
 sheets, etc), split documents at various levels and use 'latex2html' to
 convert @tex sections.
 
-'texi2html' should reasonably convert all Texinfo 4.6 constructs. If
-not, please send a bug report to 'users@texi2html.cvshome.org'.
+'texi2html' should reasonably convert all Texinfo 4.8 constructs. If
+not, please send a bug report to 'dev@texi2html.cvshome.org'.
 
 
 To create HTML of texinfo documents
@@ -46,7 +46,7 @@ options; with later settings overriding earlier ones.
 
 The default initialisation options are defined in the
 'texi2html.init' file contained in the Texi2html distribution (in
-fact, 'make' pastes this file into beginning of texi2html.pl and
+fact, 'configure' pastes this file into beginning of texi2html.pl and
 generates the actual 'texi2html' script this way.).
 
 To customize 'texi2html' it is best if you copy the appropriate
@@ -65,12 +65,10 @@ at the following sites:
 
 Documentation of texi2html
 ==========================
-The texi2html Texinfo manual is not complete, yet (we are working on
-it). In any case, you might want to have a look at the comments in the
-'texi2html.init' file for explanations about customizable parameters
-and at the (not up-to-date) texi2html man page for an overview of
-texi2html's synopsis.
-
+The texi2html Texinfo manual should be rather complete. In addition,
+ you might want to have a look at the comments in the 'texi2html.init' 
+file for explanations about customizable parameters and at the (not 
+up-to-date) texi2html man page for an overview of texi2html's synopsis.
 
 More information
 ================
@@ -82,8 +80,9 @@ http://texi2html.cvshome.org/servlets/ProjectDownloadList
 or, via anonymous cvs (see
 http://texi2html.cvshome.org/servlets/ProjectSource for instructions).
 
-Send email to users@texi2html.cvshome.org for bug reports, enhancement
-suggestions, authoring questions and general discussion.
+Send email to dev@texi2html.cvshome.org for bug reports, enhancement
+suggestions, and to users@texi2html.cvshome.org for authoring questions 
+and general discussion.
 
 
 Good luck and enjoy !!

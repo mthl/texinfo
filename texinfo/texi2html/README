@@ -92,12 +92,14 @@ WWW home page:
 http://texi2html.cvshome.org
 
 Mailing lists:
-- users@texi2html.cvshome.org for bug reports, enhancement
-  suggestions, authoring questions and general discussion.
-- to subscribe to this mailinglist, visit
+- users@texi2html.cvshome.org for enhancement suggestions, 
+  authoring questions and general discussion.
+  to subscribe to this mailinglist, visit
   http://texi2html.cvshome.org/servlets/ProjectMailingListList
   or send mail to users-subscribe@texi2html.cvshome.org .
-There is as yet no corresponding newsgroup. 
+- dev@texi2html.cvshome.org for bug reports, patches, discussions
+  about code.
+There are no corresponding newsgroups. 
 
 For bug reports, please include enough information for the maintainers
 to reproduce the problem.  Generally speaking, that means:
