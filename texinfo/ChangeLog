@@ -1,3 +1,25 @@
+2003-03-22    <karl@gnu.org>
+
+	* makeinfo/node.c (cm_node): output a space after the Node: and
+	similar headers, since Bob wants one.
+
+	* info/pcterm.c (MIN,MAX): moved to system.h.
+	* info/session.c (MIN): moved to system.h.
+	* makeinfo/sectioning.c (MIN): move to system.h.
+	* lib/system.h (MIN,MAX): define here.
+
+	* makeinfo/sectioning.c (sectioning_html): don't go smaller than <h3>.
+	Reported by Bob.
+	(MIN): new macro.
+
+	* info/session.c (MIN) [MIN]: #undef first if already #define'd.
+
+	* doc/texinfo.tex (\nodexxx): use a control sequence instead of
+	brackets to parse the parts of @node.  Otherwise node names with
+	brackets cause spurious output.  Reported by Bob.
+	(\xrefprintnodename): separate this out from
+	\xrefX, for easier redefining by Bob.
+
 2003-03-18    <karl@gnu.org>
 
 	* makeinfo/insertion.c (cm_item): ensure we don't go off the end
@@ -12093,6 +12115,11 @@ Mon Aug 15 14:33:51 1988  Robert J. Chassell  (bob at spiff)
 	* texinfo.tex:	Changed the (undocumented) @today command from a
 	Month Day, Year format to a Day Month Year format.  Left old
 	version commented out.
+
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
 
 
 Local Variables:

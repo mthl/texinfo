@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.22 2003-03-11 13:39:37 karl Exp $
+$Id: dir-example,v 1.23 2003-03-24 13:36:11 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -26,7 +26,6 @@ Basics
 * Bash: (bash).                 Bourne-Again SHell.
 * BC: (bc).                     Arbitrary precision calculator language.
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
-* Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * DC: (dc).                     Postfix desk calculator.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
@@ -37,10 +36,7 @@ Basics
 
 GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
-* Ptx: (ptx).                   Permuted index generator.
-* Shar utilities: (sharutils).  Shell archiver, uudecode/uuencode.
 * Shell utilities: (sh-utils).  GNU shell utilities.
-* tar: (tar).                   Making tape (or disk) archives.
 * Text utilities: (textutils).  GNU text utilities.
 * Time: (time).                 Measuring program resource usage.
 * UUCP: (uucp).                 Copying between machines, offline.
@@ -57,8 +53,8 @@ Text creation and manipulation
 * sed: (sed).                   Stream EDitor.
 
 Texinfo documentation system
-* Texinfo: (texinfo).           The GNU documentation format.
 * Info: (info).                 Documentation browsing system.
+* Texinfo: (texinfo).           The GNU documentation format.
 * info standalone: (info-stnd).                 Standalone Info reader.
 * infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
 * install-info: (texinfo)Invoking install-info. Updating info/dir entries.
@@ -66,7 +62,12 @@ Texinfo documentation system
 * texi2dvi: (texinfo)Format with texi2dvi.      Printing Texinfo documentation.
 * texindex: (texinfo)Format with tex/texindex.  Sorting Texinfo index files.
 
-Compression:
+Archiving
+* Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
+* Shar utilities: (sharutils).  Shell archiver, uuencode/uudecode.
+* Tar: (tar).                   Making tape or disk archives.
+
+Compression
 * bzip2: (bzip2).               General (de)compression of files (blocksort).
 * Gzip: (gzip).                 General (de)compression of files (lzw).
 
@@ -117,36 +118,36 @@ Software development
 * Standards: (standards).       GNU coding standards.
 
 Emacs
-* Emacs: (emacs).               Extensible self-documenting text editor.
-* Elisp: (elisp).               GNU Emacs Lisp reference manual.
-* Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
-
-* AUC TeX: (auctex).            Editing (La)TeX files.
 * Ada mode: (ada-mode). The GNU Emacs mode for editing Ada.
 * Autotype: (autotype). Convenient features for text that you enter frequently
                           in Emacs.
 * CC Mode: (ccmode).   Emacs mode for editing C, C++, Objective-C,
                           Java, Pike, and IDL code.
-* CL: (cl).             Partial Common Lisp support for Emacs Lisp.
+* CL: (cl).		Partial Common Lisp support for Emacs Lisp.
 * Dired-X: (dired-x).   Dired Extra Features.
+* EUDC: (eudc).   A client for directory servers (LDAP, PH)
 * Ebrowse: (ebrowse).   A C++ class browser for Emacs.
 * Ediff: (ediff).       A visual interface for comparing and merging programs.
-* Emacs FAQ: (efaq).    Frequently Asked Questions about Emacs.
+* Emacs: (emacs).	The extensible self-documenting text editor.
+* Elisp: (elisp).               GNU Emacs Lisp reference manual.
+* Emacs FAQ: (efaq).	Frequently Asked Questions about Emacs.
 * Emacs MIME: (emacs-mime).   The MIME de/composition library.
 * Eshell: (eshell).     A command shell implemented in Emacs Lisp.
-* EUDC: (eudc).   A client for directory servers (LDAP, PH)
-* Forms: (forms).       Emacs package for editing data bases
-                          by filling in forms.
+* Forms: (forms).	Emacs package for editing data bases
+			  by filling in forms.
 * Gnus: (gnus).         The newsreader Gnus.
-* IDLWAVE: (idlwave).   Major mode and shell for IDL and WAVE/CL files.
+* IDLWAVE: (idlwave).	Major mode and shell for IDL and WAVE/CL files.
+* Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
+
+* AUC TeX: (auctex).            Editing (La)TeX files.
+* MH-E: (mh-e).		Emacs interface to the MH mail system.
 * Message: (message).   Mail and news composition mode that goes with Gnus.
-* MH-E: (mh-e).         Emacs interface to the MH mail system.
-* PCL-CVS: (pcl-cvs).   Emacs front-end to CVS.
-* RefTeX: (reftex).     Emacs support for LaTeX cross-references and citations.
-* SC: (sc).             Supercite lets you cite parts of messages you're
-                          replying to, in flexible ways.
+* PCL-CVS: (pcl-cvs).	Emacs front-end to CVS.
+* RefTeX: (reftex).	Emacs support for LaTeX cross-references and citations.
+* SC: (sc).		Supercite lets you cite parts of messages you're
+			  replying to, in flexible ways.
 * Speedbar: (speedbar).        File/Tag summarizing utility.
-* VIP: (vip).           An older VI-emulation for Emacs.
+* VIP: (vip).		An older VI-emulation for Emacs.
 * VIPER: (viper).       The newest Emacs VI-emulation mode.
                           (also, A VI Plan for Emacs Rescue
                            or the VI PERil.)
@@ -285,10 +286,7 @@ Individual utilities
 * edit-pr: (gnats)Invoking edit-pr.             Changing bugs.
 * egrep: (grep)Invoking.                        grep -E.
 * eid: (id-utils)eid invocation.                Invoking an editor on matches.
-* emacsclient: (emacs)Emacs Server.             Connecting to a running Emacs.
-* emacsserver: (emacs)Emacs Server.             Connecting to a running Emacs.
 * env: (sh-utils)env invocation.                Modify the environment.
-* etags: (emacs)Create Tags Table.              Creating a TAGS table.
 * expand: (textutils)expand invocation.         Convert tabs to spaces.
 * expr: (sh-utils)expr invocation.              Evaluate expressions.
 * factor: (sh-utils)factor invocation.          Print prime factors

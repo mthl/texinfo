@@ -1,7 +1,7 @@
-$Id: NEWS,v 1.41 2003-03-13 01:56:47 karl Exp $
+$Id: NEWS,v 1.42 2003-03-24 13:36:11 karl Exp $
 This file records noteworthy changes.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
   2001, 2002, 2003 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -26,6 +26,7 @@ convenience, here's a url to one of the relevant sections:
   . new command @/ specifies an allowable breakpoint within a line.
 * makeinfo:
   . search for image files in the include file search path.
+  . --html output now uses <h3> at the smallest.
   . under --html, @cartouche now outputs a <table> with a border.
 * info:
   . RET now goes to the nearest xref (rather like Emacs Info),
