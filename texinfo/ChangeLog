@@ -1,3 +1,10 @@
+2003-11-14  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/cmds.c (cm_noindent): output continued paragraphs with
+	docbook and xml only when @noindent command is used.
+	(cm_noindent_cmd): new function.  Patch from Arnold Robbins
+	<arnold@skeeve.com>, 13 Nov 2003 15:43:02 +0200.
+
 2003-11-11  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_i, cm_b, cm_r): do not use lineannotation if we

@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.30 2003-11-11 04:12:17 dirt Exp $
+   $Id: cmds.c,v 1.31 2003-11-13 22:44:11 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -57,7 +57,7 @@ void
   cm_vtable (), cm_pxref (), cm_inforef (), cm_uref (), cm_email (),
   cm_quotation (), cm_display (), cm_smalldisplay (), cm_itemize (),
   cm_enumerate (), cm_tab (), cm_table (), cm_itemx (), 
-  cm_noindent (), cm_indent (),
+  cm_noindent (), cm_noindent_cmd (), cm_indent (),
   cm_setfilename (), cm_br (), cm_sp (), cm_page (), cm_group (),
   cm_center (), cm_ref (), cm_include (), cm_bye (), cm_item (), cm_end (),
   cm_kindex (), cm_cindex (), cm_findex (), cm_pindex (), cm_vindex (),
@@ -280,7 +280,7 @@ COMMAND command_table[] = {
   { "multitable", cm_multitable, NO_BRACE_ARGS },
   { "need", cm_ignore_line, NO_BRACE_ARGS },
   { "node", cm_node, NO_BRACE_ARGS },
-  { "noindent", cm_noindent, NO_BRACE_ARGS },
+  { "noindent", cm_noindent_cmd, NO_BRACE_ARGS },
   { "novalidate", cm_novalidate, NO_BRACE_ARGS },
   { "nwnode", cm_node, NO_BRACE_ARGS },
   { "o", cm_special_char, BRACE_ARGS },
@@ -1105,8 +1105,13 @@ cm_noindent ()
 {
   if (!inhibit_paragraph_indentation)
     inhibit_paragraph_indentation = -1;
-  else
-    xml_no_indent = 1;
+}
+
+void
+cm_noindent_cmd ()
+{
+  cm_noindent ();
+  xml_no_indent = 1;
 }
 
 /* Force indentation of the next paragraph. */
