@@ -1,3 +1,7 @@
+2004-09-01  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: show commands, allow / in description.
+
 2004-08-30  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (maybe_escaped_expansion): new routine, like
