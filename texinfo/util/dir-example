@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.30 2003-05-18 15:51:15 karl Exp $
+$Id: dir-example,v 1.31 2003-05-18 15:54:46 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -87,8 +87,11 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
+* Automake: (automake).		Making Makefile.in's.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * bison: (bison).               GNU parser generator (Yacc replacement).
+* Cpp: (cpp).		        The GNU C preprocessor.
+* Cpplib: (cppinternals).       Cpplib internals.
 * CVS: (cvs).                   Concurrent versions system for source control.
 * DejaGnu: (dejagnu).           Testing framework.
 * Gdb: (gdb).                   The GNU debugger.
@@ -96,6 +99,8 @@ Software development
 * Flex: (flex).                 A fast scanner generator.
 * g77: (g77).                   GNU Fortran 77 compiler.
 * Gasp: (gasp).                 GNU Assembler preprocessor.
+* gcc: (gcc).                   The GNU Compiler Collection.
+* gccint: (gccint).             Internals of the GNU Compiler Collection.
 * Gnats: (gnats).               Cygnus bug tracking system.
 * Gperf: (gperf).               Perfect hash function generator.
 * Gprof: (gprof).               Profiler.
@@ -429,12 +434,3 @@ Individual utilities
 * zgrep: (gzip)Overview.                        Search compressed files.
 * zmore: (gzip)Overview.                        Decompression output by pages.
 * zsh: (zsh).                                   An enhanced Bourne shell.
-
-Programming
-* Cpp: (cpp).		       The GNU C preprocessor.
-* Cpplib: (cppinternals).      Cpplib internals.
-* gcc: (gcc).                  The GNU Compiler Collection.
-* gccint: (gccint).            Internals of the GNU Compiler Collection.
-
-GNU programming tools
-* automake: (automake).		Making Makefile.in's
