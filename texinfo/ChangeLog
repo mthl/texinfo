@@ -1,3 +1,34 @@
+2002-11-04    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.2d.
+	* doc/fdl.texi: better line break to avoid overfull hbox.
+
+2002-11-04  Stephen Gildea
+
+        * makeinfo/{footnote.c,cmds.c,html.c,index.c,insertion.c,
+        makeinfo.c,node.c,toc.c,sectioning.c}: add a class attribute
+        to tags generated in special circumstances that wouldn't be
+        obvious to a user agent.
+
+        Quote all attribute values (for XHTML).
+
+2002-11-04    <karl@gnu.org>
+
+	* doc/texinfo.txi (File End): grammar.
+        
+        These changes from gildea:
+	* makeinfo/cmds.c (cm_titlepage): new fn, and use it for @titlepage.
+
+	* makeinfo/cmds.h (titlepage_cmd_present): new global.
+	* makeinfo/html.c (html_output_head): check titlepage_cmd_present
+	before outputting the <h1>.
+
+	* makeinfo/html.c (html_output_head): put a class on the <h1> from
+	settitle.
+
+	* makeinfo/cmds.c (cm_titlefont): put the class directly on the h1
+	rather than a separate <span> element.
+
 2002-10-31    <karl@gnu.org>
 
 	* doc/texinfo.tex (\mathactive): new fn.
