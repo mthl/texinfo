@@ -1,3 +1,22 @@
+2004-08-30  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (maybe_escaped_expansion): new routine, like
+		expansion but does HTML escapes.
+	* makeinfo/makeinfo.h (maybe_escaped_expansion): declare.
+	* makeinfo/index.c (cm_printindex): call it.
+	This is @cindex Kahrs, J@"urgen does not get
+	gawk.texi:23425: Unknown command `&quot;urgen'.
+	(in gawk 3.1.4).
+	Report from: Stepan Kasal <kasal@ucw.cz>, 24 Aug 2004 12:36:34 +0200.
+
+2004-08-29  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/node.c (split_file): do not search for output file
+		along the path when calling find_and_load (can cause seg
+		fault when cross-compiling).
+	From: Martin Husemann <martin@duskware.de>, 29 Aug 2004 08:40:33 +0200.
+	http://www.netbsd.org/cgi-bin/query-pr-single.pl?number=26791
+
 2004-08-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro details): more warnings about macro usage.

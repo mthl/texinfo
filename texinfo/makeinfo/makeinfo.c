@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.65 2004-07-27 00:06:31 karl Exp $
+   $Id: makeinfo.c,v 1.66 2004-08-30 22:11:39 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -3988,12 +3988,22 @@ execute_string (format, va_alist)
 
 
 /* Return what would be output for STR (in newly-malloced memory), i.e.,
-   expand Texinfo commands.  If IMPLICIT_CODE is set, expand @code{STR}.
-   This is generally used for short texts; filling, indentation, and
-   html escapes are disabled.  */
+   expand Texinfo commands according to the current output format.  If
+   IMPLICIT_CODE is set, expand @code{STR}.  This is generally used for
+   short texts; filling, indentation, and html escapes are disabled.  */
 
 char *
 expansion (char *str, int implicit_code)
+{
+  return maybe_escaped_expansion (str, implicit_code, 0);
+}
+
+
+/* Do HTML escapes according to DO_HTML_ESCAPE.  Needed in
+   cm_printindex, q.v.  */
+
+char *
+maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
 {
   char *result;
 
@@ -4008,7 +4018,7 @@ expansion (char *str, int implicit_code)
   filling_enabled = 0;
   indented_fill = 0;
   no_indent = 1;
-  escape_html = 0;
+  escape_html = do_html_escape;
 
   result = full_expansion (str, implicit_code);
 
@@ -4023,7 +4033,7 @@ expansion (char *str, int implicit_code)
 
 /* Expand STR (or @code{STR} if IMPLICIT_CODE is nonzero).  No change to
    any formatting parameters -- filling, indentation, html escapes,
-   etc., are not reset.  */
+   etc., are not reset.  Always returned in new memory.  */
 
 char *
 full_expansion (char *str, int implicit_code)

@@ -1,7 +1,7 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.14 2004-04-11 17:56:47 karl Exp $
+   $Id: makeinfo.h,v 1.15 2004-08-30 22:11:39 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free
    Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -316,6 +316,7 @@ extern GENERIC_LIST * reverse_list (GENERIC_LIST *list);
 extern char *info_trailer (void),
   *expansion (char *str, int implicit_code),
   *text_expansion (char *str),
+  *maybe_escaped_expansion (char *str, int implicit_code, int do_escape_html),
   *full_expansion (char *str, int implicit_code);
 
 extern void free_and_clear (char **pointer),

@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.15 2004-06-07 00:52:08 karl Exp $
+   $Id: index.c,v 1.16 2004-08-30 22:11:39 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -823,34 +823,28 @@ cm_printindex (void)
             }
 
           if (html)
-            /* fixme: html: we should use specific index anchors pointing
-           to the actual location of the indexed position (but then we
-           have to find something to wrap the anchor around). */
             {
-              /* In the HTML case, the expanded index entry is not
-                 good for us, since it was expanded for non-HTML mode
-                 inside sort_index.  So we need to HTML-escape and
-                 expand the original entry text here.  */
-              char *escaped_entry = xstrdup (index->entry_text);
-              char *expanded_entry;
+              /* For HTML, we need to expand and HTML-escape the
+                 original entry text, at the same time.  Consider
+                 @cindex J@"urgen.  We want J&uuml;urgen.  We can't
+                 expand and then escape since we'll end up with
+                 J&amp;uuml;rgen.  We can't escape and then expand
+                 because then `expansion' will see J@&quot;urgen, and
+                 @&quot;urgen is not a command.  */
+              char *html_entry =
+                maybe_escaped_expansion (index->entry_text, index->code, 1);
 
-              /* expansion() doesn't HTML-escape the argument, so need
-                 to do it separately.  */
-              escaped_entry = escape_string (escaped_entry);
-              expanded_entry = expansion (escaped_entry, index->code);
               add_html_block_elt_args ("\n<li><a href=\"%s#index-",
-                  (splitting && index->output_file)
-                   ? index->output_file : "");
+                  (splitting && index->output_file) ? index->output_file : "");
               add_escaped_anchor_name (index->entry_text);
               add_word_args ("-%d\">%s</a>: ", index->entry_number,
-                  expanded_entry);
-              free (escaped_entry);
-              free (expanded_entry);
+                  html_entry);
+              free (html_entry);
 
               add_word ("<a href=\"");
               if (index->node && *index->node)
                 {
-                  /* Make sure any non-macros in the node name are expanded.  */
+                  /* Ensure any non-macros in the node name are expanded.  */
                   char *expanded_index;
 
                   in_fixed_width_font++;
