@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.12 2002-11-05 03:04:26 karl Exp $
+   $Id: cmds.c,v 1.13 2002-11-05 19:30:57 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -1242,7 +1242,7 @@ cm_exdent ()
   int save_indent = current_indent;
   int save_in_fixed_width_font = in_fixed_width_font;
 
-  /* Read argument  */
+  /* Read argument.  */
   get_rest_of_line (0, &line);
 
   /* Exdent the output.  Actually this may be a no-op.   */
