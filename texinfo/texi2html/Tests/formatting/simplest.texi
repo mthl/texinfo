@@ -1,7 +1,0 @@
-\input texinfo @c -*-texinfo-*-
-
-@setfilename simplest
-
-@node Top
-
-This is a very simple texi manual.
