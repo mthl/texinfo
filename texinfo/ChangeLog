@@ -1,3 +1,21 @@
+2003-04-20    <karl@gnu.org>
+
+	* Installed changes from Jan:
+
+	2003-04-14  Jan Nieuwenhuizen  <janneke@gnu.org>
+	* info/display.c (display_update_one_window): Skip new style
+	image tag/cookie.
+
+	2003-04-09  Jan Nieuwenhuizen  <janneke@gnu.org>
+	* makeinfo/makeinfo.c (cm_image): Write ^@^H[image ...^@^H] tag.
+
+
+	* makeinfo/html.c (html_output_head): use <style> to get the
+	regular roman font instead of typewriter for @format and @display;
+	likewise to reduce the font size for @small*.  Suggestion from:
+	"Torsten Bronger" <bronger@physik.rwth-aachen.de>, 20 Apr 2003
+	11:03:59 +0200.
+
 2003-04-18    <karl@gnu.org>
 
 	* configure.ac (ncurses/termcap.h): move test to after termlib's

@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.2 2003-02-05 17:53:31 karl Exp $
+   $Id: display.c,v 1.3 2003-04-20 23:46:45 karl Exp $
 
-   Copyright (C) 1993, 97, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -152,6 +152,15 @@ display_update_one_window (win)
             {
               replen = win->width - pl_index + pl_ignore;
             }
+	  else if (*nodetext == '\0'
+		   && (nodetext + 1) < last_node_char
+		   && *(nodetext + 1) == '\b')
+	    {
+	      /* Found new style image tag/cookie \0\b[ or \0\b]
+		 Just skip for now.  */
+	      nodetext++;
+	      continue;
+	    }
           else
             {
               rep = printed_representation (*nodetext, pl_index);

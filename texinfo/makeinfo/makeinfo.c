@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.24 2003-04-08 14:13:54 karl Exp $
+   $Id: makeinfo.c,v 1.25 2003-04-20 23:46:45 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -2318,10 +2318,10 @@ add_char (character)
     {
       if (html || docbook)
         { /* Seems cleaner to use &nbsp; than an 8-bit char.  */
-	  int saved_escape_html = escape_html;
-	  escape_html = 0;
+          int saved_escape_html = escape_html;
+          escape_html = 0;
           add_word ("&nbsp");
-	  escape_html = saved_escape_html;
+          escape_html = saved_escape_html;
           character = ';';
         }
       else
@@ -3441,62 +3441,46 @@ cm_image (arg)
       char *pathname = NULL;
       char *fullname = xmalloc (strlen (name_arg)
                        + (ext_arg && *ext_arg ? strlen (ext_arg) + 1 : 4) + 1);
-
+      
+      if (ext_arg && *ext_arg)
+        {
+          sprintf (fullname, "%s.%s", name_arg, ext_arg);
+          if (access (fullname, R_OK) != 0)
+            pathname = get_file_info_in_path (fullname, include_files_path,
+                                              &file_info);
+        }
+      else
+        {
+          sprintf (fullname, "%s.png", name_arg);
+          if (access (fullname, R_OK) != 0)
+            {
+              pathname = get_file_info_in_path (fullname,
+                                               include_files_path, &file_info);
+              if (pathname == NULL)
+                {
+                  sprintf (fullname, "%s.jpg", name_arg);
+                  if (access (fullname, R_OK) != 0)
+                    pathname = get_file_info_in_path (fullname,
+                                               include_files_path, &file_info);
+                }
+            }
+        }
+      
       if (html)
         {
-          if (ext_arg && *ext_arg)
+          if (pathname == NULL && access (fullname, R_OK) != 0)
             {
-              sprintf (fullname, "%s.%s", name_arg, ext_arg);
-              if (access (fullname, R_OK) != 0)
-		{
-		  pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
-		  if (pathname != NULL && access (pathname, R_OK) != 0)
-		    {
-		      line_error(_("@image file `%s' (for HTML) not readable: %s"),
-				 fullname, strerror (errno));
-		      return;
-		    }
-		  else if (pathname == NULL)
-		    {
-		      line_error (_("No such file `%s'"),
-				  fullname);
-		      return;
-		    }
-		}
+              line_error(_("@image file `%s' (for HTML) not readable: %s"),
+                             fullname, strerror (errno));
+              return;
             }
-          else
+          if (pathname != NULL && access (pathname, R_OK) != 0)
             {
-	      sprintf (fullname, "%s.png", name_arg);
-	      if (access (fullname, R_OK) != 0)
-		{
-		  pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
-		  if (pathname != NULL && access (pathname, R_OK) != 0)
-		    {
-		      line_error(_("@image file `%s' (for HTML) not readable: %s"),
-				 fullname, strerror (errno));
-		      return;
-		    }
-
-		  sprintf (fullname, "%s.jpg", name_arg);
-		  if (access (fullname, R_OK) != 0)
-		    {
-		      pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
-		      if (pathname != NULL && access (pathname, R_OK) != 0)
-			{
-			  line_error(_("@image file `%s' (for HTML) not readable: %s"),
-				     fullname, strerror (errno));
-			  return;
-			}
-		      else if (pathname == NULL)
-			{
-			  line_error (_("No `%s.png' or `.jpg', and no extension supplied"),
-				      name_arg);
-			  return;
-			}
-		    }
-		}
+              line_error (_("No such file `%s'"),
+                          fullname);
+              return;
             }
-
+          
           add_html_elt ("<img src=");
           add_word_args ("\"%s\"", fullname);
           add_html_elt (" alt=");
@@ -3506,23 +3490,32 @@ cm_image (arg)
         xml_insert_docbook_image (name_arg);
       else if (xml)
         {
-          xml_insert_element_with_attribute (IMAGE, START, "width=\"%s\" height=\"%s\" alttext=\"%s\" extension=\"%s\"", w_arg, h_arg, alt_arg, ext_arg);
+          xml_insert_element_with_attribute (IMAGE, START, "width=\"%s\" height=\"%s\" alttext=\"%s\" extension=\"%s\"",
+                                             w_arg, h_arg, alt_arg, ext_arg);
           add_word (name_arg);
           xml_insert_element (IMAGE, END);
         }
       else
-        { /* Try to open foo.txt.  */
+        { /* Try to open foo.EXT or foo.txt.  */
           FILE *image_file;
-          strcpy (fullname, name_arg);
-          strcat (fullname, ".txt");
-          image_file = fopen (fullname, "r");
-	  if (image_file == NULL)
-	    {
-	      pathname = get_file_info_in_path (fullname, include_files_path, &file_info);
-	      if (pathname != NULL)
-		image_file = fopen (pathname, "r");
-	    }
-          if (image_file)
+          char *txtpath = NULL;
+          char *txtname = xmalloc (strlen (name_arg)
+                                   + (ext_arg && *ext_arg
+                                      ? strlen (ext_arg) + 1 : 4) + 1);
+          strcpy (txtname, name_arg);
+          strcat (txtname, ".txt");
+          image_file = fopen (txtname, "r");
+          if (image_file == NULL)
+            {
+              txtpath = get_file_info_in_path (txtname,
+                                               include_files_path, &file_info);
+              if (txtpath != NULL)
+                image_file = fopen (txtpath, "r");
+            }
+          
+          if (image_file != NULL
+              || access (fullname, R_OK) == 0
+              || (pathname != NULL && access (pathname, R_OK) == 0))
             {
               int ch;
               int save_inhibit_indentation = inhibit_paragraph_indentation;
@@ -3532,27 +3525,50 @@ cm_image (arg)
               filling_enabled = 0;
               last_char_was_newline = 0;
 
-              /* Maybe we need to remove the final newline if the image
-                 file is only one line to allow in-line images.  On the
-                 other hand, they could just make the file without a
-                 final newline.  */
-              while ((ch = getc (image_file)) != EOF)
-                add_char (ch);
+              /* Write magic ^@^H[image ...^@^H] cookie in the info file.  */
+              add_char ('\0');
+              add_word ("\010[image");
+
+              if (access (fullname, R_OK) == 0
+                  || pathname != NULL && access (pathname, R_OK) == 0)
+                add_word_args (" src=%s", fullname);
+
+              if (*alt_arg)
+                add_word_args (" alt=\"%s\"", alt_arg);
+              
+              if (image_file != NULL)
+                {
+                  add_word (" text=\"");
+                  /* Maybe we need to remove the final newline if the image
+                     file is only one line to allow in-line images.  On the
+                     other hand, they could just make the file without a
+                     final newline.  */
+                  while ((ch = getc (image_file)) != EOF)
+                    {
+                      if (ch == '"' || ch == '\\')
+                        add_char ('\\');
+                      add_char (ch);
+                    }
+                  add_char ('"');
+                  
+                  if (fclose (image_file) != 0)
+                    perror (txtname);
+                }
 
               inhibit_paragraph_indentation = save_inhibit_indentation;
               filling_enabled = save_filling_enabled;
 
-              if (fclose (image_file) != 0)
-                perror (fullname);
+              add_char ('\0');
+              add_word ("\010]"); 
             }
           else
             line_error (_("@image file `%s' (for text) unreadable: %s"),
-                        fullname, strerror (errno));
+                        txtname, strerror (errno));
         }
 
       free (fullname);
       if (pathname)
-	free (pathname);
+        free (pathname);
     }
   else
     line_error (_("@image missing filename argument"));

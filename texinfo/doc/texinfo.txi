@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
+@c $Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10268,7 +10268,7 @@ This chapter contains two footnotes.@refill
 @end ifinfo
 
 
-@c this should be described with figures when we have them
+@c This should be described along with figures when we have them;
 @c perhaps in the quotation/example chapter.
 @node Images
 @section Inserting Images
@@ -10278,7 +10278,18 @@ This chapter contains two footnotes.@refill
 @findex image
 
 You can insert an image given in an external file with the
-@code{@@image} command:
+@code{@@image} command.
+
+@menu
+* Image Syntax:: 
+* Image Scaling::
+@end menu
+
+
+@node Image Syntax
+@subsection Image Syntax
+
+Here is the basic synopsis of the @code{@@image} command:
 
 @example
 @@image@{@var{filename}, @r{[}@var{width}@r{]}, @r{[}@var{height}@r{]}, @r{[}@var{alttext}@r{]}, @r{[}@var{extension}@r{]}@}
@@ -10288,6 +10299,7 @@ You can insert an image given in an external file with the
 @cindex Image formats
 The @var{filename} argument is mandatory, and must not have an
 extension, because the different processors support different formats:
+
 @itemize @bullet
 @item
 @TeX{} reads the file @file{@var{filename}.eps} (Encapsulated PostScript
@@ -10296,12 +10308,11 @@ format).
 @pindex pdftex@r{, and images}
 PDF@TeX{} reads @file{@var{filename}.pdf} (Adobe's Portable Document Format).
 @item
-@code{makeinfo} uses @file{@var{filename}.txt} verbatim for
+@code{makeinfo} includes @file{@var{filename}.txt} verbatim for
 Info output (more or less as if it was an @code{@@example}).
 @item
-@code{makeinfo}
-uses the optional fifth argument to @code{@@image} for the extension if
-you supply it.  For example:
+@code{makeinfo} uses the optional fifth argument @var{extension} to
+@code{@@image} for the filename extension, if it is specified.  For example:
 
 @pindex XPM image format
 @example
@@ -10309,24 +10320,65 @@ you supply it.  For example:
 @end example
 
 @noindent
-will cause @samp{makeinfo --html} to try @file{foo.xpm}.
+will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
+
+@end itemize
+
+The @var{width} and @var{height} arguments are described in the next
+section.
+
+@cindex alt attribute for images
+@cindex alternate text for images
+When producing html, @code{makeinfo} sets the @dfn{alt attribute} for
+inline images to the optional fourth argument to @code{@@image}, if
+supplied.  If not supplied, @code{makeinfo} uses the full file name of
+the image being displayed.
 
 @cindex GIF, unsupported due to patents
 @cindex PNG image format
 @cindex JPG image format
-If you do not supply the optional fifth argument, @samp{makeinfo
----html} first tries @file{@var{filename}.png}; if that does not exist,
-it tries @file{@var{filename}.jpg}.  If that does not exist either, it
+If you do not supply the optional fifth argument, @code{makeinfo}
+first tries @file{@var{filename}.png}; if that does not exist, it
+tries @file{@var{filename}.jpg}.  If that does not exist either, it
 complains.  (We cannot support GIF format directly due to software
 patents.)
-@end itemize
 
+In Info output, @code{makeinfo} writes a reference to the binary image
+file (with the @file{.@var{extension}}, @file{.png}, or @file{.jpg}
+suffix) if it exists.  It also physically includes the @file{.txt}
+file if that exists.  This way, Info readers which can display images
+(such as the Emacs Info browser) can do so, whereas Info readers which
+can only use text (such as the standalone Info reader) can display the
+textual version.
+
+The implementation of this is to put the following construct into the
+Info output:
+
+@example
+^@^H[image src="@var{binaryfile}" text="@var{txtfile}"
+           alt="@var{alttext} ... ^@^H]
+@end example
+
+@noindent (If one of the files is not present, the corresponding argument
+is omitted.)
+
+The reason for mentioning this here is that older Info browsers (this
+feature was introduced in Texinfo version 4.6) will display the above
+literally, which, although not ideal, should not be harmful.
+
+
+@node Image Scaling
+@subsection Image Scaling
+
+@cindex Images, scaling
+@cindex Scaling images
 @cindex Width of images
 @cindex Height of images
 @cindex Aspect ratio of images
 @cindex Distorting images
-The optional @var{width} and @var{height} arguments specify the size to
-scale the image to (they are ignored for Info output).  If neither is
+The optional @var{width} and @var{height} arguments to the
+@code{@@image} command (see the previous section) specify the size to
+scale the image to.  They are ignored for Info output.  If neither is
 specified, the image is presented in its natural size (given in the
 file); if only one is specified, the other is scaled proportionately;
 and if both are specified, both are respected, thus possibly distorting
@@ -10386,13 +10438,6 @@ Texinfo distribution and is also available from
 figures.  Therefore, if you intend it to be displayed, be sure to leave
 a blank line before the command, or the output will run into the
 preceding text.
-
-@cindex alt attribute for images
-@cindex alternate text for images
-When producing html, @code{makeinfo} sets the @dfn{alt attribute} for
-inline images to the optional fourth argument to @code{@@image}, if
-supplied.  If not supplied, @code{makeinfo} uses the full file name of
-the image being displayed.
 
 
 @node Breaks
@@ -16889,7 +16934,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
+$Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16952,7 +16997,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.37 2003-04-09 12:29:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
