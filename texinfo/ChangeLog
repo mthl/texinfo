@@ -1,3 +1,8 @@
+2003-11-27  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/float.c (cm_listoffloats): made the layout in Info output
+	the same with indices.
+
 2003-11-25  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/float.c (cm_listoffloats): generate a menu for Info, with

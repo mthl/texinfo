@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.4 2003-11-25 12:05:49 dirt Exp $
+   $Id: float.c,v 1.5 2003-11-27 11:30:21 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -166,9 +166,9 @@ cm_listoffloats ()
 
                   /* Shorten long titles by looking for a space before the 45.
                      char.  */
-                  if (len > 45)
+                  if (len > 37)
                     {
-                      len = 45 - strlen (temp->number) - 5;
+                      len = 37 - strlen (temp->number) - 5;
                       shortened = 1;
                       while (title[len] != ' ')
                         len--;
@@ -188,14 +188,14 @@ cm_listoffloats ()
                   insert_string (entry);
 
                   i = strlen (entry);
-                  while (i < 60)
+                  while (i < 41)
                     {
                       insert (' ');
                       i++;
                     }
 
                   insert_string (temp->id);
-                  insert ('\n');
+                  insert_string (".\n");
 
                   free (entry);
                   free (title);
@@ -212,15 +212,13 @@ cm_listoffloats ()
           inhibit_paragraph_indentation = 1;
           add_word ("</div>\n\n");
         }
-      else if (no_headers)
-        add_char ('\n');
       else
         insert ('\n');
 
       /* Retain the original order of float stack.  */
       temp = new_start;
       float_stack = (FLOAT_ELT *) reverse_list (temp);
-    }
+    } /* !xml */
 
   free (float_type);
 }
