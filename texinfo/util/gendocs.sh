@@ -1,9 +1,9 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.8 2003-11-23 19:02:09 karl Exp $
+# $Id: gendocs.sh,v 1.9 2004-02-28 00:11:56 karl Exp $
 # 
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs.
 templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs_template"
 
 : ${MAKEINFO="makeinfo"}
-: ${TEXI2DVI="texi2dvi"}
+: ${TEXI2DVI="texi2dvi -t @finalout"}
 : ${DVIPS="dvips"}
 : ${DOCBOOK2TXT="docbook2txt"}
 : ${DOCBOOK2HTML="docbook2html"}
@@ -39,7 +39,7 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendoc
 : ${GENDOCS_TEMPLATE_DIR="."}
 unset CDPATH
 
-rcs_revision='$Revision: 1.8 $'
+rcs_revision='$Revision: 1.9 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version
@@ -58,6 +58,7 @@ See the GNU Maintainers document for a more extensive discussion:
 Options:
   -o OUTDIR   write files into OUTDIR, instead of manual/.
   --docbook   convert to DocBook too (xml, txt, html, pdf and ps).
+  --html ARG  pass indicated ARG to makeinfo for HTML targets.
   --help      display this help and exit successfully.
   --version   display version information and exit successfully.
 
@@ -98,6 +99,7 @@ calcsize()
 }
 
 outdir=manual
+html=
 PACKAGE=
 MANUAL_TITLE=
 
@@ -107,6 +109,7 @@ while test $# -gt 0; do
     --version) echo "$version"; exit 0;;
     -o) shift; outdir=$1;;
     --docbook) docbook=yes;;
+    --html) shift; html=$1;;
     -*)
       echo "$0: Unknown or ambiguous option \`$1'." >&2
       echo "$0: Try \`--help' for more information." >&2
@@ -172,7 +175,7 @@ pdf_size="`calcsize $PACKAGE.pdf`"
 mv $PACKAGE.pdf $outdir/
 
 echo Generating ASCII...
-${MAKEINFO} -o - --no-split --no-headers $srcfile > ${srcdir}/$PACKAGE.txt
+${MAKEINFO} -o $PACKAGE.txt --no-split --no-headers $srcfile
 ascii_size="`calcsize $PACKAGE.txt`"
 gzip -f -9 -c $PACKAGE.txt >$outdir/$PACKAGE.txt.gz
 ascii_gz_size="`calcsize $outdir/$PACKAGE.txt.gz`"
@@ -180,14 +183,14 @@ mv $PACKAGE.txt $outdir/
 
 echo Generating monolithic html...
 rm -rf $PACKAGE.html  # in case a directory is left over
-${MAKEINFO} --no-split --html $srcfile
+${MAKEINFO} --no-split --html $html $srcfile
 html_mono_size="`calcsize $PACKAGE.html`"
 gzip -f -9 -c $PACKAGE.html >$outdir/$PACKAGE.html.gz
 html_mono_gz_size="`calcsize $outdir/$PACKAGE.html.gz`"
 mv $PACKAGE.html $outdir/
 
 echo Generating html by node...
-${MAKEINFO} --html $srcfile
+${MAKEINFO} --html $html $srcfile
 if test -d $PACKAGE; then
   split_html_dir=$PACKAGE
 elif test -d $PACKAGE.html; then
