@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: F.5.2 Creating an Unsplit File</title>
+<title>Texinfo: F.5.2 Creating an Unsplit File</title>
 
-<meta name="description" content="GNU Texinfo 4.2: F.5.2 Creating an Unsplit File">
-<meta name="keywords" content="GNU Texinfo 4.2: F.5.2 Creating an Unsplit File">
+<meta name="description" content="Texinfo: F.5.2 Creating an Unsplit File">
+<meta name="keywords" content="Texinfo: F.5.2 Creating an Unsplit File">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> F.5.2 Creating an Unsplit File </h3>
+<h3 class="subsection"> F.5.2 Creating an Unsplit File </h3>
 
 <p>You can run <code>Info-validate</code> only on a single Info file that has a
 tag table.  The command will not work on the indirect subfiles that
@@ -78,11 +93,11 @@ nodes.
 <code>texinfo-format-buffer</code> from splitting a Texinfo file into
 smaller Info files, give a prefix to the <kbd>M-x
 texinfo-format-buffer</kbd> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u M-x texinfo-format-buffer
 </pre></td></tr></table>
 <p>or else
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-e C-b
 </pre></td></tr></table>
 <p>When you do this, Texinfo will not split the file and will not create

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 16.4.2 @ifset and @ifclear</title>
+<title>Texinfo: 16.4.2 @ifset and @ifclear</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 16.4.2 @ifset and @ifclear">
-<meta name="keywords" content="GNU Texinfo 4.2: 16.4.2 @ifset and @ifclear">
+<meta name="description" content="Texinfo: 16.4.2 @ifset and @ifclear">
+<meta name="keywords" content="Texinfo: 16.4.2 @ifset and @ifclear">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 16.4.2 <code>@ifset</code> and <code>@ifclear</code> </h3>
+<h3 class="subsection"> 16.4.2 <code>@ifset</code> and <code>@ifclear</code> </h3>
 
 <p>When a <var>flag</var> is set, the Texinfo formatting commands format text
 between subsequent pairs of <code>@ifset <var>flag</var></code> and <code>@end
@@ -72,7 +87,7 @@ commands do <em>not</em> format the text.  <code>@ifclear</code> operates
 analogously.
 </p><p>Write the conditionally formatted text between <code>@ifset <var>flag</var></code>
 and <code>@end ifset</code> commands, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifset <var>flag</var>
 <var>conditional-text</var>
 @end ifset
@@ -80,7 +95,7 @@ and <code>@end ifset</code> commands, like this:
 <p>For example, you can create one document that has two variants, such as
 a manual for a `large' and `small' model:
 </p><a name="IDX295"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 You can use this machine to dig up shrubs
 without hurting them.
 
@@ -106,7 +121,7 @@ ignore the text between the <code>@ifset large</code> and <code>@end ifset</code
 commands.  In the formatted output, that text does not appear; in both
 printed and Info output, you see only the lines that say, &quot;You can use
 this machine to dig up shrubs without hurting them.  Remember to replant
-promptly <small>...</small>&quot;.
+promptly <small class="dots">...</small>&quot;.
 </p><a name="IDX296"></a>
 <p>If a flag is cleared with an <code>@clear <var>flag</var></code> command, then
 the formatting commands format text between subsequent pairs of
@@ -115,7 +130,7 @@ is set with <code>@set <var>flag</var></code>, then the formatting commands do
 <em>not</em> format text between an <code>@ifclear</code> and an <code>@end
 ifclear</code> command; rather, they ignore that text.  An <code>@ifclear</code>
 command looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifclear <var>flag</var>
 </pre></td></tr></table>
 <hr size="1">

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}</title>
+<title>Texinfo: 8.8 @uref{url[, text][, replacement]}</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
+<meta name="description" content="Texinfo: 8.8 @uref{url[, text][, replacement]}">
+<meta name="keywords" content="Texinfo: 8.8 @uref{url[, text][, replacement]}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 8.8 <code>@uref{<var>url</var>[, <var>text</var>][, <var>replacement</var>]}</code> </h2>
+<h2 class="section"> 8.8 <code>@uref{<var>url</var>[, <var>text</var>][, <var>replacement</var>]}</code> </h2>
 
 <p><code>@uref</code> produces a reference to a uniform resource locator (url).
 It takes one mandatory argument, the url, and two optional arguments
@@ -79,49 +94,49 @@ when the text is already sufficiently referential, as in a man page.  If
 the third argument is given, the second argument is ignored.
 </p><p>The simple one argument form, where the url is both the target and the
 text of the link:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
 The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
 </pre></td></tr></table>
 <p>An example of the two-argument form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
 The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 </pre></td></tr></table>
 <p>that is, the Info output is this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 The official GNU ftp site (ftp://ftp.gnu.org/gnu)
 holds programs and texts.
 </pre></td></tr></table>
 <p>and the HTML output is this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
 holds programs and texts.
 </pre></td></tr></table>
 <p>An example of the three-argument form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 The @uref{/man.cgi/1/ls,,ls(1)} program ...
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
 The <a href="/man.cgi/1/ls">ls(1)</a> program ...
 </pre></td></tr></table>
 <p>but with HTML:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program ...
 </pre></td></tr></table>
 <p>To merely indicate a url without creating a link people can follow, use
 <code>@url</code> (see section <a href="url.html#SEC135"><code>@url</code></a>).
 </p><p>Some people prefer to display url's in the unambiguous format:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+</p><table><tr><td>&nbsp;</td><td><pre class="display">
 &lt;URL:http://<var>host</var>/<var>path</var>&gt;
 </pre></td></tr></table>
 <a name="IDX115"></a>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 18.4 @alias new=existing</title>
+<title>Texinfo: 18.4 @alias new=existing</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 18.4 @alias new=existing">
-<meta name="keywords" content="GNU Texinfo 4.2: 18.4 @alias new=existing">
+<meta name="description" content="Texinfo: 18.4 @alias new=existing">
+<meta name="keywords" content="Texinfo: 18.4 @alias new=existing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 18.4 `<samp>@alias <var>new</var>=<var>existing</var></samp>' </h2>
+<h2 class="section"> 18.4 `<samp>@alias <var>new</var>=<var>existing</var></samp>' </h2>
 
 <p>The `<samp>@alias</samp>' command defines a new command to be just like an
 existing one.  This is useful for defining additional markup names, thus
@@ -72,7 +87,7 @@ result may be the same.
 </p><p>Write the `<samp>@alias</samp>' command on a line by itself, followed by the
 new command name, an equals sign, and the existing command name.
 Whitespace around the equals sign is ignored.  Thus:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @alias <var>new</var> = <var>existing</var>
 </pre></td></tr></table>
 <p>For example, if your document contains citations for both books and
@@ -80,7 +95,7 @@ some other media (movies, for example), you might like to define a
 macro <code>@moviecite{}</code> that does the same thing as an ordinary
 <code>@cite{}</code> but conveys the extra semantic information as well.
 You'd do this as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @alias moviecite = cite
 </pre></td></tr></table>
 <p>Macros do not always have the same effect due to vagaries of argument

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.2 Optional and Repeated Arguments</title>
+<title>Texinfo: 15.2 Optional and Repeated Arguments</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.2 Optional and Repeated Arguments">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.2 Optional and Repeated Arguments">
+<meta name="description" content="Texinfo: 15.2 Optional and Repeated Arguments">
+<meta name="keywords" content="Texinfo: 15.2 Optional and Repeated Arguments">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 15.2 Optional and Repeated Arguments </h2>
+<h2 class="section"> 15.2 Optional and Repeated Arguments </h2>
 
 <p>Some entities take optional or repeated arguments, which may be
 specified by a distinctive glyph that uses square brackets and
@@ -74,7 +89,7 @@ straightforward function.
 Thus, [<var>optional-arg</var>] means that <var>optional-arg</var> is optional.
 An argument followed by an ellipsis is optional
 and may be repeated more than once.
-Thus, <var>repeated-args</var><small>...</small> stands for zero or more arguments.
+Thus, <var>repeated-args</var><small class="dots">...</small> stands for zero or more arguments.
 Parentheses are used when several arguments are grouped
 into additional levels of list structure in Lisp.
 </p><p>Here is the <code>@defspec</code> line of an example of an imaginary
@@ -82,7 +97,7 @@ special form:
 </p><blockquote>
 
 <dl>
-<dt><u>Special Form:</u> <b>foobar</b> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var><small>...</small>
+<dt><u>Special Form:</u> <b>foobar</b> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var><small class="dots">...</small>
 <a name="IDX263"></a>
 </dt>
 </dl>
@@ -97,7 +112,7 @@ form.
 </p><p>In a Texinfo source file, this <code>@defspec</code> line is written like
 this (except it would not be split over two lines, as it is in this
 example).
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defspec foobar (@var{var} [@var{from} @var{to}
      [@var{inc}]]) @var{body}@dots{}
 </pre></td></tr></table>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 9.1.15 @email{email-address[, displayed-text]}</title>
+<title>Texinfo: 9.1.15 @email{email-address[, displayed-text]}</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 9.1.15 @email{email-address[, displayed-text]}">
-<meta name="keywords" content="GNU Texinfo 4.2: 9.1.15 @email{email-address[, displayed-text]}">
+<meta name="description" content="Texinfo: 9.1.15 @email{email-address[, displayed-text]}">
+<meta name="keywords" content="Texinfo: 9.1.15 @email{email-address[, displayed-text]}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 9.1.15 <code>@email</code>{<var>email-address</var>[, <var>displayed-text</var>]} </h3>
+<h3 class="subsection"> 9.1.15 <code>@email</code>{<var>email-address</var>[, <var>displayed-text</var>]} </h3>
 
 <p>Use the <code>@email</code> command to indicate an electronic mail address.
 It takes one mandatory argument, the address, and one optional argument, the
@@ -73,11 +88,11 @@ text to display (the default is the address itself).
 the text to display if any.  In HTML output, <code>@email</code> produces a
 `<samp>mailto</samp>' link that usually brings up a mail composition window.
 For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Send bug reports to @email{bug-texinfo@@gnu.org},
 suggestions to the @email{bug-texinfo@@gnu.org, same place}.
 </pre></td></tr></table><p>produces
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
 Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
 suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
 </pre></td></tr></table>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.10 Overfull ``hboxes''</title>
+<title>Texinfo: 19.10 Overfull ``hboxes''</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.10 Overfull ``hboxes''">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.10 Overfull ``hboxes''">
+<meta name="description" content="Texinfo: 19.10 Overfull ``hboxes''">
+<meta name="keywords" content="Texinfo: 19.10 Overfull ``hboxes''">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,14 +78,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.10 Overfull &quot;hboxes&quot; </h2>
+<h2 class="section"> 19.10 Overfull &quot;hboxes&quot; </h2>
 
 <p>TeX is sometimes unable to typeset a line without extending it into
 the right margin.  This can occur when TeX comes upon what it
 interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 <a name="IDX343"></a>
@@ -90,7 +105,7 @@ can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you're lucky) avoiding many of the bad line breaks,
 like this:
 </p><a name="IDX344"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 @tex
 \global\emergencystretch = .9\hsize
 @end tex
@@ -112,7 +127,7 @@ problem if you are correcting a draft.
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @finalout
 </pre></td></tr></table>
 <hr size="1">

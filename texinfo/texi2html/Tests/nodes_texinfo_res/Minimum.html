@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have</title>
+<title>Texinfo: 1.8 What a Texinfo File Must Have</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
-<meta name="keywords" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
+<meta name="description" content="Texinfo: 1.8 What a Texinfo File Must Have">
+<meta name="keywords" content="Texinfo: 1.8 What a Texinfo File Must Have">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 1.8 What a Texinfo File Must Have </h2>
+<h2 class="section"> 1.8 What a Texinfo File Must Have </h2>
 
 <p>By convention, the namea of a Texinfo file ends with (in order of
 preference) one of the extensions `<tt>.texinfo</tt>', `<tt>.texi</tt>',
@@ -73,14 +88,14 @@ The shorter extensions are for operating systems that cannot handle long
 file names.
 </p><p>In order to be made into a printed manual and an Info file, a Texinfo
 file <strong>must</strong> begin with lines like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
 <p>The contents of the file follow this beginning, and then you
 <strong>must</strong> end a Texinfo file with a line like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @bye
 </pre></td></tr></table>
 <a name="IDX19"></a>
@@ -108,7 +123,7 @@ the formatters that the file is ended and to stop formatting.
 <p>Typically, you will not use quite such a spare format, but will include
 mode setting and start-of-header and end-of-header lines at the
 beginning of a Texinfo file, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>info-file-name</var>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 6.2 Node and Menu Illustration</title>
+<title>Texinfo: 6.2 Node and Menu Illustration</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 6.2 Node and Menu Illustration">
-<meta name="keywords" content="GNU Texinfo 4.2: 6.2 Node and Menu Illustration">
+<meta name="description" content="Texinfo: 6.2 Node and Menu Illustration">
+<meta name="keywords" content="Texinfo: 6.2 Node and Menu Illustration">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 6.2 Node and Menu Illustration </h2>
+<h2 class="section"> 6.2 Node and Menu Illustration </h2>
 
 <p>Here is a copy of the diagram shown earlier that illustrates a Texinfo
 file with three chapters, each of which contains two sections.
@@ -72,7 +87,7 @@ bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
 called the `Top' node, and `Up' node pointers carry you closer to the
 root.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
                           Top
                            |
          -------------------------------------
@@ -85,7 +100,7 @@ root.
    1.1      1.2       2.1      2.2       3.1      3.2
 </pre></td></tr></table>
 <p>The fully-written command to start Chapter 2 would be this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
 </pre></td></tr></table>
@@ -111,14 +126,14 @@ a chapter or chapter-level node.)
 <p>To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
 2.  (See section <a href="Menus.html#SEC97">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     @menu
     * Sect. 2.1::    Description of this section.
     * Sect. 2.2::
     @end menu
 </pre></td></tr></table>
 <p>Write the node for Sect. 2.1 like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
@@ -136,7 +151,7 @@ which.)
 </p><p>Here is the beginning of the chapter in this manual called &quot;Ending a
 Texinfo File&quot;.  This shows an <code>@node</code> line followed by a comment
 line, an <code>@chapter</code> line, and then by indexing lines.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node    Ending a File, Structuring, Beginning a File, Top
 @comment node-name,     next,        previous,         up
 @chapter Ending a Texinfo File

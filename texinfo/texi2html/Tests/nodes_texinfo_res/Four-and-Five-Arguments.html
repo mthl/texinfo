@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments</title>
+<title>Texinfo: 8.3.4 @xref with Four and Five Arguments</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
+<meta name="description" content="Texinfo: 8.3.4 @xref with Four and Five Arguments">
+<meta name="keywords" content="Texinfo: 8.3.4 @xref with Four and Five Arguments">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 8.3.4 <code>@xref</code> with Four and Five Arguments </h3>
+<h3 class="subsection"> 8.3.4 <code>@xref</code> with Four and Five Arguments </h3>
 
 <p>In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
@@ -72,17 +87,17 @@ a fifth argument specifies its title as a printed manual.
 <code>@xref</code> command to terminate the cross reference.  In the
 following examples, a clause follows a terminating comma.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
 </pre></td></tr></table>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{Electrical Effects, Lightning, Thunder and Lightning,
 weather, An Introduction to Meteorology}, for details.
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note Lightning: (weather)Electrical Effects, for details.
 </pre></td></tr></table>
 <p>The name of the Info file is enclosed in parentheses and precedes
@@ -101,12 +116,12 @@ reference refers when that reference is to another manual.
 version of <code>@xref</code>.  In this case, the third argument, the topic
 description, will be used as the cross reference name in Info.
 </p><p>The template looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
 <var>printed-manual-title</var>}, for details.
 </pre></td></tr></table>
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note <var>title-or-topic</var>: (<var>info-file-name</var>)<var>node-name</var>, for details.
 </pre></td></tr></table>
 <p>and
@@ -116,12 +131,12 @@ description, will be used as the cross reference name in Info.
 </p></blockquote>
 
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{Electrical Effects, , Thunder and Lightning,
 weather, An Introduction to Meteorology}, for details.
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note Thunder and Lightning: (weather)Electrical Effects,
 for details.
 </pre></td></tr></table>

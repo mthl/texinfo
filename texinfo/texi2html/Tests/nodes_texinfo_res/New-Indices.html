@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 12.5 Defining New Indices</title>
+<title>Texinfo: 12.5 Defining New Indices</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 12.5 Defining New Indices">
-<meta name="keywords" content="GNU Texinfo 4.2: 12.5 Defining New Indices">
+<meta name="description" content="Texinfo: 12.5 Defining New Indices">
+<meta name="keywords" content="Texinfo: 12.5 Defining New Indices">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,19 +78,19 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 12.5 Defining New Indices </h2>
+<h2 class="section"> 12.5 Defining New Indices </h2>
 
 <p>In addition to the predefined indices, you may use the
 <code>@defindex</code> and <code>@defcodeindex</code> commands to define new
 indices.  These commands create new indexing @-commands with which
 you mark index entries.  The <code>@defindex </code>command is used like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defindex <var>name</var>
 </pre></td></tr></table>
 <p>The name of an index should be a two letter word, such as `<samp>au</samp>'.
 For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defindex au
 </pre></td></tr></table>
 <p>This defines a new index, called the `<samp>au</samp>' index.  At the same
@@ -84,7 +99,7 @@ can use to make index entries.  Use the new indexing command just as
 you would use a predefined indexing command.
 </p><p>For example, here is a section heading followed by a concept index
 entry and two `<samp>au</samp>' index entries.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @section Cognitive Semantics
 @cindex kinesthetic image schemas
 @auindex Johnson, Mark
@@ -96,7 +111,7 @@ of the index with `<samp>index</samp>'; thus, defining an `<samp>au</samp>' inde
 leads to the automatic creation of an <code>@auindex</code> command.
 </p><p>Use the <code>@printindex</code> command to print the index, as you do with
 the predefined indices.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Author Index, Subject Index, , Top
 @unnumbered Author Index
 

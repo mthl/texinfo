@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 3.4.4 Copyright Page</title>
+<title>Texinfo: 3.4.4 Copyright Page</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 3.4.4 Copyright Page">
-<meta name="keywords" content="GNU Texinfo 4.2: 3.4.4 Copyright Page">
+<meta name="description" content="Texinfo: 3.4.4 Copyright Page">
+<meta name="keywords" content="Texinfo: 3.4.4 Copyright Page">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 3.4.4 Copyright Page </h3>
+<h3 class="subsection"> 3.4.4 Copyright Page </h3>
 
 <p>By international treaty, the copyright notice for a book must be either
 on the title page or on the back of the title page.  When the copyright
@@ -76,7 +91,7 @@ commands.
 <p>Use the <code>@page</code> command to cause a page break.  To push the
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @vskip 0pt plus 1filll
 </pre></td></tr></table>
 <p>This is a TeX command that is not supported by the Info formatting
@@ -87,13 +102,13 @@ bottom of the page.  Note the use of three `<samp>l</samp>'s in the word
 `<samp>filll</samp>'; this is correct.
 </p><p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see section <a href="Document-Permissions.html#SEC49">Document Permissions</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @insertcopying
 </pre></td></tr></table>
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
 </p><p>Here is an example putting all this together:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 ...
 @page

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2.7 Texinfo Mode Summary</title>
+<title>Texinfo: 2.7 Texinfo Mode Summary</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2.7 Texinfo Mode Summary">
-<meta name="keywords" content="GNU Texinfo 4.2: 2.7 Texinfo Mode Summary">
+<meta name="description" content="Texinfo: 2.7 Texinfo Mode Summary">
+<meta name="keywords" content="Texinfo: 2.7 Texinfo Mode Summary">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,20 +78,20 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 2.7 Texinfo Mode Summary </h2>
+<h2 class="section"> 2.7 Texinfo Mode Summary </h2>
 
 <p>In Texinfo mode, each set of commands has default keybindings that
 begin with the same keys.  All the commands that are custom-created
 for Texinfo mode begin with <kbd>C-c</kbd>.  The keys are somewhat
 mnemonic.
 </p><a name="SEC33"></a>
-<h3> Insert Commands </h3>
+<h3 class="subheading"> Insert Commands </h3>
 
 <p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
 first letter of the @-command to be inserted.  (It might make more
 sense mnemonically to use <kbd>C-c C-i</kbd>, for `custom insert', but
 <kbd>C-c C-c</kbd> is quick to type.)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-c c       Insert `<samp>@code</samp>'.
 C-c C-c d       Insert `<samp>@dfn</samp>'.
 C-c C-c e       Insert `<samp>@end</samp>'.
@@ -93,19 +108,19 @@ C-c C-c C-d     Insert a node's section title
                 in a menu entry line.
 </pre></td></tr></table>
 <a name="SEC34"></a>
-<h3> Show Structure </h3>
+<h3 class="subheading"> Show Structure </h3>
 
 <p>The <code>texinfo-show-structure</code> command is often used within a
 narrowed region.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-s         List all the headings.
 </pre></td></tr></table>
 <a name="SEC35"></a>
-<h3> The Master Update Command </h3>
+<h3 class="subheading"> The Master Update Command </h3>
 
 <p>The <code>texinfo-master-menu</code> command creates a master menu; and can
 be used to update every node and menu in a file as well.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u m
 M-x texinfo-master-menu
                 Create or update a master menu.
@@ -115,24 +130,24 @@ C-u C-c C-u m   With <kbd>C-u</kbd> as a prefix argument, first
                 menus, and then create a master menu.
 </pre></td></tr></table>
 <a name="SEC36"></a>
-<h3> Update Pointers </h3>
+<h3 class="subheading"> Update Pointers </h3>
 
 <p>The update pointer commands are invoked by typing <kbd>C-c C-u</kbd> and
 then either <kbd>C-n</kbd> for <code>texinfo-update-node</code> or <kbd>C-e</kbd> for
 <code>texinfo-every-node-update</code>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u C-n     Update a node.
 C-c C-u C-e     Update every node in the buffer.
 </pre></td></tr></table>
 <a name="SEC37"></a>
-<h3> Update Menus </h3>
+<h3 class="subheading"> Update Menus </h3>
 
 <p>Invoke the  update menu commands by typing <kbd>C-c C-u</kbd>
 and then either <kbd>C-m</kbd> for <code>texinfo-make-menu</code> or
 <kbd>C-a</kbd> for <code>texinfo-all-menus-update</code>.  To update
 both nodes and menus at the same time, precede <kbd>C-c C-u
 C-a</kbd> with <kbd>C-u</kbd>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-u C-m     Make or update a menu.
 
 C-c C-u C-a     Make or update all
@@ -143,7 +158,7 @@ C-u C-c C-u C-a With <kbd>C-u</kbd> as a prefix argument,
                 then create or update all menus.
 </pre></td></tr></table>
 <a name="SEC38"></a>
-<h3> Format for Info </h3>
+<h3 class="subheading"> Format for Info </h3>
 
 <p>The Info formatting commands that are written in Emacs Lisp are
 invoked by typing <kbd>C-c C-e</kbd> and then either <kbd>C-r</kbd> for a region
@@ -151,26 +166,26 @@ or <kbd>C-b</kbd> for the whole buffer.
 </p><p>The Info formatting commands that are written in C and based on the
 <code>makeinfo</code> program are invoked by typing <kbd>C-c C-m</kbd> and then
 either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.
-</p><p>Use the <code>texinfo-format<small>...</small></code> commands:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><p>Use the <code>texinfo-format<small class="dots">...</small></code> commands:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-e C-r     Format the region.
 C-c C-e C-b     Format the buffer.
 </pre></td></tr></table>
 <p>Use <code>makeinfo</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-m C-r     Format the region.
 C-c C-m C-b     Format the buffer.
 C-c C-m C-l     Recenter the <code>makeinfo</code> output buffer.
 C-c C-m C-k     Kill the <code>makeinfo</code> formatting job.
 </pre></td></tr></table>
 <a name="SEC39"></a>
-<h3> Typeset and Print </h3>
+<h3 class="subheading"> Typeset and Print </h3>
 
 <p>The TeX typesetting and printing commands are invoked by typing
 <kbd>C-c C-t</kbd> and then another control command: <kbd>C-r</kbd> for
 <code>texinfo-tex-region</code>, <kbd>C-b</kbd> for <code>texinfo-tex-buffer</code>,
 and so on.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-t C-r     Run TeX on the region.
 C-c C-t C-b     Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-i     Run <code>texindex</code>.
@@ -182,11 +197,11 @@ C-c C-t C-x     Quit a currently stopped TeX formatting job.
 C-c C-t C-l     Recenter the output buffer.
 </pre></td></tr></table>
 <a name="SEC40"></a>
-<h3> Other Updating Commands </h3>
+<h3 class="subheading"> Other Updating Commands </h3>
 
 <p>The remaining updating commands do not have standard keybindings because
 they are rarely used.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x texinfo-insert-node-lines
                 Insert missing <code>@node</code> lines in region.
                 With <kbd>C-u</kbd> as a prefix argument,

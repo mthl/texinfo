@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2.4.2 Other Updating Commands</title>
+<title>Texinfo: 2.4.2 Other Updating Commands</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2.4.2 Other Updating Commands">
-<meta name="keywords" content="GNU Texinfo 4.2: 2.4.2 Other Updating Commands">
+<meta name="description" content="Texinfo: 2.4.2 Other Updating Commands">
+<meta name="keywords" content="Texinfo: 2.4.2 Other Updating Commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 2.4.2 Other Updating Commands </h3>
+<h3 class="subsection"> 2.4.2 Other Updating Commands </h3>
 
 <p>In addition to the five major updating commands, Texinfo mode
 possesses several less frequently used updating commands:
@@ -83,7 +98,7 @@ names.  Since node names should be more concise than section or
 chapter titles, you must manually edit node names so inserted.
 </p><p>For example, the following marks a whole buffer as a region and inserts
 <code>@node</code> lines and titles throughout:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x h C-u M-x texinfo-insert-node-lines
 </pre></td></tr></table>
 <p>This command inserts titles as node names in <code>@node</code> lines; the

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 10.10 @exdent: Undoing a Line's Indentation</title>
+<title>Texinfo: 10.10 @exdent: Undoing a Line's Indentation</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 10.10 @exdent: Undoing a Line's Indentation">
-<meta name="keywords" content="GNU Texinfo 4.2: 10.10 @exdent: Undoing a Line's Indentation">
+<meta name="description" content="Texinfo: 10.10 @exdent: Undoing a Line's Indentation">
+<meta name="keywords" content="Texinfo: 10.10 @exdent: Undoing a Line's Indentation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 10.10 <code>@exdent</code>: Undoing a Line's Indentation </h2>
+<h2 class="section"> 10.10 <code>@exdent</code>: Undoing a Line's Indentation </h2>
 
 <p>The <code>@exdent</code> command removes any indentation a line might have.
 The command is written at the beginning of a line and applies only to
@@ -71,7 +86,7 @@ the text that follows the command that is on the same line.  Do not use
 braces around the text.  In a printed manual, the text on an
 <code>@exdent</code> line is printed in the roman font.
 </p><p><code>@exdent</code> is usually used within examples.  Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @example
 This line follows an @@example command.
 @exdent This line is exdented.
@@ -80,7 +95,7 @@ The @@end example comes on the next line.
 @end group
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line follows an @example command.
 This line is exdented.
 This line follows the exdented line.

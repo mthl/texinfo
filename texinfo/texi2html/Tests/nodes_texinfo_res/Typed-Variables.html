@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.4 Variables in Typed Languages</title>
+<title>Texinfo: 15.4.4 Variables in Typed Languages</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.4 Variables in Typed Languages">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.4 Variables in Typed Languages">
+<meta name="description" content="Texinfo: 15.4.4 Variables in Typed Languages">
+<meta name="keywords" content="Texinfo: 15.4.4 Variables in Typed Languages">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.4 Variables in Typed Languages </h3>
+<h3 class="subsection"> 15.4.4 Variables in Typed Languages </h3>
 
 <p>Variables in typed languages are handled in a manner similar to
 functions in typed languages.  See section <a href="Typed-Functions.html#SEC221">Functions in Typed Languages</a>.  The general
@@ -86,18 +101,18 @@ and is followed on the same line by the category of the entity
 being described, the data type, and the name of this particular
 entity.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevr {Global Flag} int enable
 ...
 @end deftypevr
 </pre></td></tr></table>
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Global Flag: int enable
 ...
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevr <var>category</var> <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevr
@@ -110,20 +125,20 @@ entity.
 </code></dt>
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
-to `<samp>@deftypevr Variable <small>...</small></samp>'.
+to `<samp>@deftypevr Variable <small class="dots">...</small></samp>'.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevar int fubar
 ...
 @end deftypevar
 </pre></td></tr></table>
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Variable: int fubar
 ...
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevar <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevar

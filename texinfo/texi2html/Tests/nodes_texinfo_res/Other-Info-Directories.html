@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories</title>
+<title>Texinfo: 20.2.3 Info Files in Other Directories</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
-<meta name="keywords" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
+<meta name="description" content="Texinfo: 20.2.3 Info Files in Other Directories">
+<meta name="keywords" content="Texinfo: 20.2.3 Info Files in Other Directories">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 20.2.3 Info Files in Other Directories </h3>
+<h3 class="subsection"> 20.2.3 Info Files in Other Directories </h3>
 
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
 ways to specify its location:
@@ -90,14 +105,14 @@ find Info files whose location is specified this way.)
 <p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
 directory, you could add an entry like this to the menu in the
 standard `<tt>dir</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
 written as the second part of the menu entry.
 </p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
 </p><a name="IDX413"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
@@ -126,20 +141,20 @@ uses a different syntax.
 <li><p>
 In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
 variable as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
 </li><li><p>
 In a `<tt>.profile</tt>' file, you would achieve the same effect by
 writing:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
 </li><li><p>
 <a name="IDX415"></a>
 In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
@@ -155,7 +170,7 @@ colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
 is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using <code>sh</code> syntax):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 INFOPATH=/local/info:
 export INFOPATH
 </pre></td></tr></table>

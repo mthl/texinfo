@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.5 From an Emacs Shell</title>
+<title>Texinfo: 19.5 From an Emacs Shell</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.5 From an Emacs Shell">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.5 From an Emacs Shell">
+<meta name="description" content="Texinfo: 19.5 From an Emacs Shell">
+<meta name="keywords" content="Texinfo: 19.5 From an Emacs Shell">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.5 From an Emacs Shell </h2>
+<h2 class="section"> 19.5 From an Emacs Shell </h2>
 
 <p>You can give formatting and printing commands from a shell within GNU
 Emacs.  To create a shell within Emacs, type <kbd>M-x shell</kbd>.  In this
@@ -74,7 +89,7 @@ on a slow machine, this can be very convenient.
 </p><p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
 here is how to use <code>texi2dvi</code> to format and print <cite>Using and
 Porting GNU CC</cite> from a shell within Emacs:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texi2dvi gcc.texinfo
 lpr -d gcc.dvi
 </pre></td></tr></table>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 1.5 @-commands</title>
+<title>Texinfo: 1.5 @-commands</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 1.5 @-commands">
-<meta name="keywords" content="GNU Texinfo 4.2: 1.5 @-commands">
+<meta name="description" content="Texinfo: 1.5 @-commands">
+<meta name="keywords" content="Texinfo: 1.5 @-commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 1.5 @-commands </h2>
+<h2 class="section"> 1.5 @-commands </h2>
 
 <p>In a Texinfo file, the commands that tell TeX how to typeset the
 printed manual and tell <code>makeinfo</code> and
@@ -98,7 +113,7 @@ followed by the command's arguments, in this case the chapter title, on
 the rest of the line.  (<code>@chapter</code> creates chapter titles.)
 </p></li><li><p>
 Write a command such as <code>@dots{}</code> wherever you wish but usually
-within a sentence. (<code>@dots{}</code> creates dots <small>...</small>)
+within a sentence. (<code>@dots{}</code> creates dots <small class="dots">...</small>)
 </p></li><li><p>
 Write a command such as <code>@code{<var>sample-code</var>}</code> wherever you
 wish (but usually within a sentence) with its argument,
@@ -108,7 +123,7 @@ marks text as being code.)
 Write a command such as <code>@example</code> on a line of its own; write the
 body-text on following lines; and write the matching <code>@end</code>
 command, <code>@end example</code> in this case, at the on a line of its own
-after the body-text. (<code>@example</code> <small>...</small> <code>@end example</code>
+after the body-text. (<code>@example</code> <small class="dots">...</small> <code>@end example</code>
 indents and typesets body-text as an example.)  It's usually ok to
 indent environment commands like this, but in complicated and
 hard-to-define circumstances the extra spaces cause extra space to

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 18.1 Defining Macros</title>
+<title>Texinfo: 18.1 Defining Macros</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 18.1 Defining Macros">
-<meta name="keywords" content="GNU Texinfo 4.2: 18.1 Defining Macros">
+<meta name="description" content="Texinfo: 18.1 Defining Macros">
+<meta name="keywords" content="Texinfo: 18.1 Defining Macros">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,15 +78,15 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 18.1 Defining Macros </h2>
+<h2 class="section"> 18.1 Defining Macros </h2>
 
 <p>You use the Texinfo <code>@macro</code> command to define a macro, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, ...}
 <var>text</var> ... \<var>param1</var>\ ...
 @end macro
 </pre></td></tr></table>
-<p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, <small>...</small> correspond to
+<p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, <small class="dots">...</small> correspond to
 arguments supplied when the macro is subsequently used in the document
 (described in the next section).
 </p><p>For a macro to work with TeX, <var>macroname</var> must consist entirely
@@ -105,7 +120,7 @@ other whitespace is treated according to the usual Texinfo rules.
 <a name="IDX311"></a>
 <p>To allow a macro to be used recursively, that is, in an argument to a
 call to itself, you must define it with `<samp>@rmacro</samp>', like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @rmacro rmac {arg}
 a\arg\b
 @end rmacro
@@ -120,7 +135,7 @@ a\arg\b
 <p>You can undefine a macro <var>foo</var> with <code>@unmacro <var>foo</var></code>.
 It is not an error to undefine a macro that is already undefined.
 For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @unmacro foo
 </pre></td></tr></table>
 <hr size="1">

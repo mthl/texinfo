@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.14 Cropmarks and Magnification</title>
+<title>Texinfo: 19.14 Cropmarks and Magnification</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.14 Cropmarks and Magnification">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.14 Cropmarks and Magnification">
+<meta name="description" content="Texinfo: 19.14 Cropmarks and Magnification">
+<meta name="keywords" content="Texinfo: 19.14 Cropmarks and Magnification">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,13 +78,13 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.14 Cropmarks and Magnification </h2>
+<h2 class="section"> 19.14 Cropmarks and Magnification </h2>
 <p>You can (attempt to) direct TeX to print cropmarks at the corners of
 pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</code>
 command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @iftex
 @cropmarks
 @end iftex
@@ -96,7 +111,7 @@ write this command between <code>@tex</code> and <code>@end tex</code>
 is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @tex
 \mag=1200
 @end tex

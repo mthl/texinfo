@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 13.9.5 @error{} (error--&gt;): Indicating an Error Message</title>
+<title>Texinfo: 13.9.5 @error{} (error--&gt;): Indicating an Error Message</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 13.9.5 @error{} (error--&gt;): Indicating an Error Message">
-<meta name="keywords" content="GNU Texinfo 4.2: 13.9.5 @error{} (error--&gt;): Indicating an Error Message">
+<meta name="description" content="Texinfo: 13.9.5 @error{} (error--&gt;): Indicating an Error Message">
+<meta name="keywords" content="Texinfo: 13.9.5 @error{} (error--&gt;): Indicating an Error Message">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,27 +78,27 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message </h3>
+<h3 class="subsection"> 13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message </h3>
 
 <p>A piece of code may cause an error when you evaluate it.  You can
 designate the error message with the <code>@error{}</code> command.
 </p><p>The <code>@error{}</code> command is displayed as `<samp>error--&gt;</samp>' in Info
 and as the word `error' in a box in the printed output.
 </p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @lisp
 (+ 23 'x)
 @error{} Wrong type argument: integer-or-marker-p, x
 @end lisp
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (+ 23 'x)
 error--&gt; Wrong type argument: integer-or-marker-p, x
 </pre></td></tr></table>
 <p>This indicates that the following error message is printed
 when you evaluate the expression:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 Wrong type argument: integer-or-marker-p, x
 </pre></td></tr></table>
 <p>`<samp>error--&gt;</samp>' itself is not part of the error message.

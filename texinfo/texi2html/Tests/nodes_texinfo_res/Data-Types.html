@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.6 Data Types</title>
+<title>Texinfo: 15.4.6 Data Types</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.6 Data Types">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.6 Data Types">
+<meta name="description" content="Texinfo: 15.4.6 Data Types">
+<meta name="keywords" content="Texinfo: 15.4.6 Data Types">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,14 +78,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.6 Data Types </h3>
+<h3 class="subsection"> 15.4.6 Data Types </h3>
 
 <p>Here is the command for data types:
 </p><dl compact="compact">
 <dd><p>
 <a name="IDX285"></a>
 </p></dd>
-<dt><code> @deftp <var>category</var> <var>name</var> <var>attributes</var><small>...</small>
+<dt><code> @deftp <var>category</var> <var>name</var> <var>attributes</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@deftp</code> command is the generic definition command for data
 types.  The command is written at the beginning of a line and is
@@ -85,13 +100,13 @@ performed on them.)
 type, and an object of that type has two slots called the
 <small>CAR</small> and the <small>CDR</small>.  Here is how you would write the first line
 of a definition of <code>pair</code>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftp {Data type} pair car cdr
 ...
 @end deftp
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftp <var>category</var> <var>name-of-type</var> <var>attributes</var>...
 <var>body-of-definition</var>
 @end deftp

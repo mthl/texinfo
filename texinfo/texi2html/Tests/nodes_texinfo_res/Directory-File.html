@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 20.2.1 The Directory File dir</title>
+<title>Texinfo: 20.2.1 The Directory File dir</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
-<meta name="keywords" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
+<meta name="description" content="Texinfo: 20.2.1 The Directory File dir">
+<meta name="keywords" content="Texinfo: 20.2.1 The Directory File dir">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
+<h3 class="subsection"> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
 
 <p>For Info to work, the `<tt>info</tt>' directory must contain a file that
 serves as a top level directory for the Info system.  By convention,
@@ -73,7 +88,7 @@ within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
 </p><p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
@@ -93,7 +108,7 @@ of the `<tt>emacs</tt>' file.
 </p><p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
 node of the Emacs manual looks like this in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 <p>In this case, the `<tt>dir</tt>' file name is written in upper case

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 7.5 Referring to Other Info Files</title>
+<title>Texinfo: 7.5 Referring to Other Info Files</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 7.5 Referring to Other Info Files">
-<meta name="keywords" content="GNU Texinfo 4.2: 7.5 Referring to Other Info Files">
+<meta name="description" content="Texinfo: 7.5 Referring to Other Info Files">
+<meta name="keywords" content="Texinfo: 7.5 Referring to Other Info Files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 7.5 Referring to Other Info Files </h2>
+<h2 class="section"> 7.5 Referring to Other Info Files </h2>
 
 <p>You can create a menu entry that enables a reader in Info to go to a
 node in another Info file by writing the file name in parentheses just
@@ -71,7 +86,7 @@ before the node name.  In this case, you should use the three-part menu
 entry format, which saves the reader from having to type the file
 name.
 </p><p>The format looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @menu
 * <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
@@ -80,7 +95,7 @@ name.
 <p>For example, to refer directly to the `<samp>Outlining</samp>' and
 `<samp>Rebinding</samp>' nodes in the <cite>Emacs Manual</cite>, you would write a
 menu like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                   editing outlines.
@@ -94,7 +109,7 @@ presumes that you are referring to the `Top' node.
 entries that list only file names.  These take you directly to the `Top'
 nodes of each Info document.  (See section <a href="Installing-an-Info-File.html#SEC271">Installing an Info File</a>.)
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Info: (info).         Documentation browsing system.
 * Emacs: (emacs).       The extensible, self-documenting
                         text editor.

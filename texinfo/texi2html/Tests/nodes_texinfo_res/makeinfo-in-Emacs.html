@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs</title>
+<title>Texinfo: 20.1.5 Running makeinfo inside Emacs</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs">
-<meta name="keywords" content="GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs">
+<meta name="description" content="Texinfo: 20.1.5 Running makeinfo inside Emacs">
+<meta name="keywords" content="Texinfo: 20.1.5 Running makeinfo inside Emacs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 20.1.5 Running <code>makeinfo</code> inside Emacs </h3>
+<h3 class="subsection"> 20.1.5 Running <code>makeinfo</code> inside Emacs </h3>
 
 <p>You can run <code>makeinfo</code> in GNU Emacs Texinfo mode by using either the
 <code>makeinfo-region</code> or the <code>makeinfo-buffer</code> commands.  In
@@ -132,7 +147,7 @@ job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href=
 edit-options</kbd> or the <kbd>M-x set-variable</kbd> command, or by setting the
 variable in your `<tt>.emacs</tt>' initialization file.
 </p><p>For example, you could write the following in your `<tt>.emacs</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq makeinfo-options
       &quot;--paragraph-indent=0 --no-split
        --fill-column=70 --verbose&quot;)

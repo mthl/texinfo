@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.3 @xref</title>
+<title>Texinfo: 8.3 @xref</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.3 @xref">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.3 @xref">
+<meta name="description" content="Texinfo: 8.3 @xref">
+<meta name="keywords" content="Texinfo: 8.3 @xref">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 8.3 <code>@xref</code> </h2>
+<h2 class="section"> 8.3 <code>@xref</code> </h2>
 
 <p>The <code>@xref</code> command generates a cross reference for the
 beginning of a sentence.  The Info formatting commands convert it into
@@ -71,7 +86,7 @@ an Info cross reference, which the Info `<samp>f</samp>' command can use to
 bring you directly to another node.  The TeX typesetting commands
 convert it into a page reference, or a reference to another book or
 manual.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="Reference-Syntax.html#NOD95">* Reference Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What a reference looks like and requires.</td></tr>
 <tr><td align="left" valign="top"><a href="One-Argument.html#SEC110">8.3.1 <code>@xref</code> with One Argument</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>@xref</code> with one argument.</td></tr>
@@ -82,14 +97,14 @@ manual.
 
 <a name="NOD95"></a>
 <a name="SEC109"></a>
-<h3> What a Reference Looks Like and Requires </h3>
+<h3 class="subheading"> What a Reference Looks Like and Requires </h3>
 
 <p>Most often, an Info cross reference looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note <var>node-name</var>::.
 </pre></td></tr></table>
 <p>or like this
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note <var>cross-reference-name</var>: <var>node-name</var>.
 </pre></td></tr></table>
 <p>In TeX, a cross reference looks like this:

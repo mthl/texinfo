@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name</title>
+<title>Texinfo: 3.2.3 @setfilename: Set the output file name</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name">
-<meta name="keywords" content="GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name">
+<meta name="description" content="Texinfo: 3.2.3 @setfilename: Set the output file name">
+<meta name="keywords" content="Texinfo: 3.2.3 @setfilename: Set the output file name">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,11 +78,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 3.2.3 <code>@setfilename</code>: Set the output file name </h3>
+<h3 class="subsection"> 3.2.3 <code>@setfilename</code>: Set the output file name </h3>
 
 <p>In order to serve as the primary input file for either <code>makeinfo</code>
 or TeX, a Texinfo file must contain a line that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @setfilename <var>info-file-name</var>
 </pre></td></tr></table>
 <p>Write the <code>@setfilename</code> command at the beginning of a line and
@@ -93,7 +108,7 @@ operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
 This occurs because the Info formatters split a long Info file into
 short indirect subfiles, and name them by appending `<samp>-1</samp>',
-`<samp>-2</samp>', <small>...</small>, `<samp>-10</samp>', `<samp>-11</samp>', and so on, to the original
+`<samp>-2</samp>', <small class="dots">...</small>, `<samp>-10</samp>', `<samp>-11</samp>', and so on, to the original
 file name.  (See section <a href="Tag-and-Split-Files.html#SEC269">Tag Files and Split Files</a>.)  The subfile name
 `<tt>texinfo.info-10</tt>', for example, is too long for old systems with a
 14-character limit on filenames; so the Info file name for this document

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 9.1.6 @var{metasyntactic-variable}</title>
+<title>Texinfo: 9.1.6 @var{metasyntactic-variable}</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 9.1.6 @var{metasyntactic-variable}">
-<meta name="keywords" content="GNU Texinfo 4.2: 9.1.6 @var{metasyntactic-variable}">
+<meta name="description" content="Texinfo: 9.1.6 @var{metasyntactic-variable}">
+<meta name="keywords" content="Texinfo: 9.1.6 @var{metasyntactic-variable}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 9.1.6 <code>@var</code>{<var>metasyntactic-variable</var>} </h3>
+<h3 class="subsection"> 9.1.6 <code>@var</code>{<var>metasyntactic-variable</var>} </h3>
 
 <p>Use the <code>@var</code> command to indicate metasyntactic variables.  A
 <em>metasyntactic variable</em> is something that stands for another piece of
@@ -81,7 +96,7 @@ is correct for them (see the next section).
 argument to all upper case.  In the printed manual and HTML output, the
 argument is printed in slanted type.  
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 To delete file @var{filename},
 type @samp{rm @var{filename}}.
 </pre></td></tr></table>
@@ -97,25 +112,25 @@ type @samp{rm @var{filename}}.
 use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
 </pre></td></tr></table>
 <p>This produces:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
 <p>In some documentation styles, metasyntactic variables are shown with
 angle brackets, for example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ..., type rm &lt;filename&gt;
 </pre></td></tr></table>
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
-to output the <code>&lt;<small>...</small>&gt;</code> format if you wish.)
+to output the <code>&lt;<small class="dots">...</small>&gt;</code> format if you wish.)
 </p><hr size="1">
 <p>
  <font size="-1">

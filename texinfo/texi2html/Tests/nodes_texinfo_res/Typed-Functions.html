@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages</title>
+<title>Texinfo: 15.4.3 Functions in Typed Languages</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages">
+<meta name="description" content="Texinfo: 15.4.3 Functions in Typed Languages">
+<meta name="keywords" content="Texinfo: 15.4.3 Functions in Typed Languages">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.3 Functions in Typed Languages </h3>
+<h3 class="subsection"> 15.4.3 Functions in Typed Languages </h3>
 
 <p>The <code>@deftypefn</code> command and its variations are for describing
 functions in languages in which you must declare types of variables and
@@ -72,7 +87,7 @@ functions, such as C and C++.
 <dd><p>
 <a name="IDX274"></a>
 </p></dd>
-<dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@deftypefn</code> command is the general definition command for
 functions and similar entities that may take arguments and that are
@@ -81,16 +96,16 @@ a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
 particular entity, and its arguments, if any.
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
 ...
 @end deftypefn
 </pre></td></tr></table>
-<p>(where the text before the &quot;<small>...</small>&quot;, shown above as two lines, would
+<p>(where the text before the &quot;<small class="dots">...</small>&quot;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 -- Library Function: int foobar (int FOO, float BAR)
 ...
 </pre></td></tr></table>
@@ -104,7 +119,7 @@ keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example
 above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.
 </p><p>The template for <code>@deftypefn</code> is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
 <var>body-of-description</var>
 @end deftypefn
@@ -116,7 +131,7 @@ such as Ada, you might consider using <code>@deftypefn</code> in a manner
 somewhat contrary to the convention described in the preceding
 paragraphs.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefn stacks private push
         (@var{s}:in out stack;
         @var{n}:in integer)
@@ -132,25 +147,25 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 </p><p><code>@deftypefn</code> creates an entry in the index of functions for
 <var>name</var>.
 </p></dd>
-<dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p><a name="IDX275"></a>
 The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
-`<samp>@deftypefn Function <small>...</small></samp>'.
+`<samp>@deftypefn Function <small class="dots">...</small></samp>'.
 </p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @deftypefun int foobar (int @var{foo}, float @var{bar})
 ...
 @end deftypefun
 </pre></td></tr></table>
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Function: int foobar (int FOO, float BAR)
 ...
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefun <var>type</var> <var>name</var> <var>arguments</var>...
 <var>body-of-description</var>
 @end deftypefun

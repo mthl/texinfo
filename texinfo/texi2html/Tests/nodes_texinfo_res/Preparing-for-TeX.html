@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.9 Preparing for TeX</title>
+<title>Texinfo: 19.9 Preparing for TeX</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.9 Preparing for TeX">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.9 Preparing for TeX">
+<meta name="description" content="Texinfo: 19.9 Preparing for TeX">
+<meta name="keywords" content="Texinfo: 19.9 Preparing for TeX">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.9 Preparing for TeX </h2>
+<h2 class="section"> 19.9 Preparing for TeX </h2>
 
 <p>TeX needs to know where to find the `<tt>texinfo.tex</tt>' file that the
 `<samp>\input texinfo</samp>' command on the first line reads.  The
@@ -105,22 +120,22 @@ might read), is to set the <code>TEXINPUTS</code> environment variable in your
 `<tt>.cshrc</tt>' or `<tt>.profile</tt>' file.
 </p><p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
 whether you use a Bourne shell-compatible (<code>sh</code>, <code>bash</code>,
-<code>ksh</code>, <small>...</small>) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
+<code>ksh</code>, <small class="dots">...</small>) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
 command interpreter.  The latter read the `<tt>.cshrc</tt>' file for
 initialization information, and the former read `<tt>.profile</tt>'.
 </p><p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
 sequence:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>In a `<tt>.profile</tt>' file, you could use the following <code>sh</code> command
 sequence:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
 </pre></td></tr></table>
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>It is customary for DOS/Windows users to put such commands in the
@@ -135,7 +150,7 @@ directory `<tt>/usr/lib/tex/macros</tt>'.
 disadvantage is that then updating `<tt>texinfo.tex</tt>' requires
 redumping.)  You can do this by running this command, assuming
 `<tt>epsf.tex</tt>' is findable by TeX:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 initex texinfo @dump
 </pre></td></tr></table>
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to

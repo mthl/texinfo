@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: D.4 Sample File with @include</title>
+<title>Texinfo: D.4 Sample File with @include</title>
 
-<meta name="description" content="GNU Texinfo 4.2: D.4 Sample File with @include">
-<meta name="keywords" content="GNU Texinfo 4.2: D.4 Sample File with @include">
+<meta name="description" content="Texinfo: D.4 Sample File with @include">
+<meta name="keywords" content="Texinfo: D.4 Sample File with @include">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,12 +78,12 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> D.4 Sample File with <code>@include</code> </h2>
+<h2 class="section"> D.4 Sample File with <code>@include</code> </h2>
 
 <p>Here is an example of a complete outer Texinfo file with <code>@include</code> files
 within it before running <code>texinfo-multiple-files-update</code>, which
 would insert a main or master menu:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo @c -*-texinfo-*-
 @setfilename  include-example.info
 @settitle Include Example
@@ -100,14 +115,14 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @bye
 </pre></td></tr></table>
 <p>An included file, such as `<tt>foo.texinfo</tt>', might look like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node First, Second, , Top
 @chapter First Chapter
 
 Contents of first chapter ...
 </pre></td></tr></table>
 <p>The full contents of `<tt>concept-index.texinfo</tt>' might be as simple as this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Concept Index
 @unnumbered Concept Index
 

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 10.12 @noindent: Omitting Indentation</title>
+<title>Texinfo: 10.12 @noindent: Omitting Indentation</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 10.12 @noindent: Omitting Indentation">
-<meta name="keywords" content="GNU Texinfo 4.2: 10.12 @noindent: Omitting Indentation">
+<meta name="description" content="Texinfo: 10.12 @noindent: Omitting Indentation">
+<meta name="keywords" content="Texinfo: 10.12 @noindent: Omitting Indentation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 10.12 <code>@noindent</code>: Omitting Indentation </h2>
+<h2 class="section"> 10.12 <code>@noindent</code>: Omitting Indentation </h2>
 
 <p>An example or other inclusion can break a paragraph into segments.
 Ordinarily, the formatters indent text that follows an example as a new
@@ -71,7 +86,7 @@ paragraph.  However, you can prevent this by writing <code>@noindent</code>
 at the beginning of a line by itself preceding the continuation
 text.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @example
 This is an example
 @end example
@@ -83,10 +98,10 @@ that follows after it.  (This whole example is between
 @code{@@display} and @code{@@end display}.)
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
-</pre><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="display">
+</pre><table><tr><td>&nbsp;</td><td><pre class="example"> 
 This is an example
-</pre></td></tr></table><pre style="font-family: serif">
+</pre></td></tr></table><pre class="display">
 
 This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line

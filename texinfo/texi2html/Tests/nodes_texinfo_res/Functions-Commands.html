@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities</title>
+<title>Texinfo: 15.4.1 Functions and Similar Entities</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities">
+<meta name="description" content="Texinfo: 15.4.1 Functions and Similar Entities">
+<meta name="keywords" content="Texinfo: 15.4.1 Functions and Similar Entities">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.1 Functions and Similar Entities </h3>
+<h3 class="subsection"> 15.4.1 Functions and Similar Entities </h3>
 
 <p>This section describes the commands for describing functions and similar
 entities:
@@ -71,7 +86,7 @@ entities:
 <dd><p>
 <a name="IDX266"></a>
 </p></dd>
-<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@deffn</code> command is the general definition command for
 functions, interactive commands, and similar entities that may take
@@ -83,7 +98,7 @@ described, the name of this particular entity, and its arguments, if
 any.  Terminate the definition with <code>@end deffn</code> on a line of its
 own.
 </p><p>For example, here is a definition:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
 @end deffn
@@ -97,20 +112,20 @@ values.  Within the text of the description, write an argument name
 explicitly with <code>@var</code> to refer to the value of the argument.  In
 the example above, we used `<samp>@var{nchars}</samp>' in this way.
 </p><p>The template for <code>@deffn</code> is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deffn <var>category</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
 <a name="IDX267"></a>
 </dd>
-<dt><code> @defun <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defun <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
-<small>...</small></samp>'.
+<small class="dots">...</small></samp>'.
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun set symbol new-value
 Change the value of the symbol @var{symbol}
 to @var{new-value}.
@@ -122,7 +137,7 @@ the <code>@defun</code> line automatically appear in italics or upper case as
 if they were enclosed in <code>@var</code>.  Terminate the definition with
 <code>@end defun</code> on a line of its own.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun <var>function-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defun
@@ -130,20 +145,20 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 <p><code>@defun</code> creates an entry in the index of functions.
 </p><a name="IDX268"></a>
 </dd>
-<dt><code> @defmac <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defmac <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
-<code>@defmac</code> is equivalent to `<samp>@deffn Macro <small>...</small></samp>' and
+<code>@defmac</code> is equivalent to `<samp>@deffn Macro <small class="dots">...</small></samp>' and
 works like <code>@defun</code>.
 </p><a name="IDX269"></a>
 </dd>
-<dt><code> @defspec <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defspec <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
 see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to `<samp>@deffn {Special Form}
-<small>...</small></samp>' and works like <code>@defun</code>.
+<small class="dots">...</small></samp>' and works like <code>@defun</code>.
 </p></dd>
 </dl>
 

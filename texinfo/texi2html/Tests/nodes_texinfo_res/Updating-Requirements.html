@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2.4.1 Updating Requirements</title>
+<title>Texinfo: 2.4.1 Updating Requirements</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2.4.1 Updating Requirements">
-<meta name="keywords" content="GNU Texinfo 4.2: 2.4.1 Updating Requirements">
+<meta name="description" content="Texinfo: 2.4.1 Updating Requirements">
+<meta name="keywords" content="Texinfo: 2.4.1 Updating Requirements">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 2.4.1 Updating Requirements </h3>
+<h3 class="subsection"> 2.4.1 Updating Requirements </h3>
 
 <p>To use the updating commands, you must organize the Texinfo file
 hierarchically with chapters, sections, subsections, and the like.
@@ -79,18 +94,18 @@ node, must be followed by a line with a structuring command such as
 <code>@unnumberedsubsec</code>.
 </p><p>Each <code>@node</code> line/structuring-command line combination
 must look either like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node     Comments,  Minimum, Conventions, Overview
 @comment  node-name, next,    previous,    up
 @section Comments
 </pre></td></tr></table>
 <p>or like this (without the <code>@comment</code> line):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Comments, Minimum, Conventions, Overview
 @section Comments
 </pre></td></tr></table>
 <p>or like this (without the explicit node pointers):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Comments
 @section Comments
 </pre></td></tr></table>
@@ -110,7 +125,7 @@ hierarchically organized Texinfo file that lacks `Next', `Previous' and
 formatted with <code>makeinfo</code>, you have no need for the update node
 commands.  (See section <a href="Creating-an-Info-File.html#SEC261">Creating an Info File</a>, for more information about
 <code>makeinfo</code>.)  However, both <code>makeinfo</code> and the
-<code>texinfo-format-<small>...</small></code> commands require that you insert menus in
+<code>texinfo-format-<small class="dots">...</small></code> commands require that you insert menus in
 the file.
 </p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.5 @ref</title>
+<title>Texinfo: 8.5 @ref</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.5 @ref">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.5 @ref">
+<meta name="description" content="Texinfo: 8.5 @ref">
+<meta name="keywords" content="Texinfo: 8.5 @ref">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,18 +78,18 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 8.5 <code>@ref</code> </h2>
+<h2 class="section"> 8.5 <code>@ref</code> </h2>
 
 <p><code>@ref</code> is nearly the same as <code>@xref</code> except that it does
 not generate a `See' in the printed output, just the reference itself.
 This makes it useful as the last part of a sentence.
 </p><p>For example,
 </p><a name="IDX111"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 For more information, see @ref{Hurricanes}.
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 For more information, see *Note Hurricanes::.
 </pre></td></tr></table>
 <p>and
@@ -89,7 +104,7 @@ in the Info format.  Bear in mind that your audience will be using
 both the printed and the Info format.
 </p><p>For example,
 </p><a name="IDX112"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 Sea surges are described in @ref{Hurricanes}.
 </pre></td></tr></table>
 <p>produces
@@ -99,7 +114,7 @@ Sea surges are described in @ref{Hurricanes}.
 </p></blockquote>
 
 <p>in a printed document, and the following in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Sea surges are described in *Note Hurricanes::.
 </pre></td></tr></table>
 <blockquote>

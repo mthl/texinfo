@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 13.11 Inserting Images</title>
+<title>Texinfo: 13.11 Inserting Images</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 13.11 Inserting Images">
-<meta name="keywords" content="GNU Texinfo 4.2: 13.11 Inserting Images">
+<meta name="description" content="Texinfo: 13.11 Inserting Images">
+<meta name="keywords" content="Texinfo: 13.11 Inserting Images">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,11 +78,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 13.11 Inserting Images </h2>
+<h2 class="section"> 13.11 Inserting Images </h2>
 
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
 </pre></td></tr></table>
 <a name="IDX230"></a>
@@ -89,7 +104,7 @@ Info output (more or less as if it was an <code>@example</code>).
 uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
 </p><a name="IDX233"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 @image{foo,,,,xpm}
 </pre></td></tr></table>
 <p>will cause `<samp>makeinfo --html</samp>' to try `<tt>foo.xpm</tt>'.
@@ -167,7 +182,7 @@ scaled point (65536sp = 1pt)
 <a name="IDX251"></a>
 <p>For example, the following will scale a file `<tt>ridt.eps</tt>' to one
 inch vertically, with the width scaled proportionately:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @image{ridt,,1in}
 </pre></td></tr></table>
 <a name="IDX252"></a>

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions</title>
+<title>Texinfo: 13.8 @math: Inserting Mathematical Expressions</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
-<meta name="keywords" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="description" content="Texinfo: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="keywords" content="Texinfo: 13.8 @math: Inserting Mathematical Expressions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,15 +78,15 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 13.8 <code>@math</code>: Inserting Mathematical Expressions </h2>
+<h2 class="section"> 13.8 <code>@math</code>: Inserting Mathematical Expressions </h2>
 
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @math{(a + b)(a + b) = a^2 + 2ab + b^2}
 </pre></td></tr></table>
 <p>This produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (a + b)(a + b) = a^2 + 2ab + b^2
 </pre></td></tr></table>
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
@@ -80,11 +95,11 @@ write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It's
 conventional to use `<samp>\</samp>' instead of `<samp>@</samp>' for these commands.
 As in:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @math{\sin 2\pi \equiv \cos 3\pi}
 </pre></td></tr></table>
 <p>which looks like the input in Info and HTML:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 \sin 2\pi \equiv \cos 3\pi
 </pre></td></tr></table>
 <a name="IDX224"></a>

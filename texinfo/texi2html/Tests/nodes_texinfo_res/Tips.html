@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: B. Tips and Hints</title>
+<title>Texinfo: B. Tips and Hints</title>
 
-<meta name="description" content="GNU Texinfo 4.2: B. Tips and Hints">
-<meta name="keywords" content="GNU Texinfo 4.2: B. Tips and Hints">
+<meta name="description" content="Texinfo: B. Tips and Hints">
+<meta name="keywords" content="Texinfo: B. Tips and Hints">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h1> B. Tips and Hints </h1>
+<h1 class="appendix"> B. Tips and Hints </h1>
 
 <p>Here are some tips for writing Texinfo documentation:
 </p><a name="IDX443"></a>
@@ -73,8 +88,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <li><p>
 Write in the present tense, not in the past or the future.
 </p></li><li><p>
-Write actively!  For example, write &quot;We recommend that <small>...</small>&quot; rather
-than &quot;It is recommended that <small>...</small>&quot;.
+Write actively!  For example, write &quot;We recommend that <small class="dots">...</small>&quot; rather
+than &quot;It is recommended that <small class="dots">...</small>&quot;.
 </p></li><li><p>
 Use 70 or 72 as your fill column.  Longer lines are hard to read.
 </p></li><li><p>
@@ -82,7 +97,7 @@ Include a copyright notice and copying permissions.
 </p></li></ul>
 
 <a name="SEC279"></a>
-<h4> Index, Index, Index! </h4>
+<h4 class="subsubheading"> Index, Index, Index! </h4>
 
 <p>Write many index entries, in different ways.
 Readers like indices; they are helpful and convenient.
@@ -118,7 +133,7 @@ after the section command, and write the indexing commands that refer to
 a paragraph before that paragraph.
 </p><p>In the example that follows, a blank line comes after the index
 entry for &quot;Leaping&quot;:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @section The Dog and the Fox
 @cindex Jumping, in general
 @cindex Leaping
@@ -135,7 +150,7 @@ readers can look up the concept in different ways.)
 </p></li></ul>
 
 <a name="SEC280"></a>
-<h4> Blank Lines </h4>
+<h4 class="subsubheading"> Blank Lines </h4>
 
 <ul>
 <li><p>
@@ -149,7 +164,7 @@ Always insert a blank line before an <code>@table</code> command and after an
 <code>@end table</code> command; but never insert a blank line after an
 <code>@table</code> command or before an <code>@end table</code> command.
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Types of fox:
 
 @table @samp
@@ -163,19 +178,19 @@ Also jump over lazy dogs.
 @noindent
 On the other hand, ...
 </pre></td></tr></table>
-<p>Insert blank lines before and after <code>@itemize</code> <small>...</small> <code>@end
-itemize</code> and <code>@enumerate</code> <small>...</small> <code>@end enumerate</code> in the
+<p>Insert blank lines before and after <code>@itemize</code> <small class="dots">...</small> <code>@end
+itemize</code> and <code>@enumerate</code> <small class="dots">...</small> <code>@end enumerate</code> in the
 same way.
 </p></li></ul>
 
 <a name="SEC281"></a>
-<h4> Complete Phrases </h4>
+<h4 class="subsubheading"> Complete Phrases </h4>
 
-<p>Complete phrases are easier to read than <small>...</small>
+<p>Complete phrases are easier to read than <small class="dots">...</small>
 </p><ul>
 <li><p>
 Write entries in an itemized list as complete sentences; or at least, as
-complete phrases.  Incomplete expressions <small>...</small> awkward <small>...</small> like
+complete phrases.  Incomplete expressions <small class="dots">...</small> awkward <small class="dots">...</small> like
 this.
 </p></li><li><p>
 Write the prefatory sentence or phrase for a multi-item list or table as
@@ -184,7 +199,7 @@ a complete expression.  Do not write &quot;You can set:&quot;; instead, write
 </p></li></ul>
 
 <a name="SEC282"></a>
-<h4> Editions, Dates and Versions </h4>
+<h4 class="subsubheading"> Editions, Dates and Versions </h4>
 
 <p>Include edition numbers, version numbers, and dates in the
 <code>@copying</code> text (for people reading the Texinfo file, and for the
@@ -194,7 +209,7 @@ output) and the Top node (for people reading the online output).
 </p><p>It is easiest to do this using <code>@set</code> and <code>@value</code>.
 See section <a href="value-Example.html#SEC234"><code>@value</code> Example</a>, and <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>.
 </p><a name="SEC283"></a>
-<h4> Definition Commands </h4>
+<h4 class="subsubheading"> Definition Commands </h4>
 
 <p>Definition commands are <code>@deffn</code>, <code>@defun</code>,
 <code>@defmac</code>, and the like, and enable you to write descriptions in
@@ -205,13 +220,13 @@ Write just one definition command for each entity you define with a
 definition command.  The automatic indexing feature creates an index
 entry that leads the reader to the definition.
 </p></li><li><p>
-Use <code>@table</code> <small>...</small> <code>@end table</code> in an appendix that
+Use <code>@table</code> <small class="dots">...</small> <code>@end table</code> in an appendix that
 contains a summary of functions, not <code>@deffn</code> or other definition
 commands.
 </p></li></ul>
 
 <a name="SEC284"></a>
-<h4> Capitalization </h4>
+<h4 class="subsubheading"> Capitalization </h4>
 
 <ul>
 <li><p>
@@ -227,12 +242,12 @@ TeX.
 </p></li></ul>
 
 <a name="SEC285"></a>
-<h4> Spaces </h4>
+<h4 class="subsubheading"> Spaces </h4>
 
 <p>Do not use spaces to format a Texinfo file, except inside of
-<code>@example</code> <small>...</small> <code>@end example</code> and similar commands.
+<code>@example</code> <small class="dots">...</small> <code>@end example</code> and similar commands.
 </p><p>For example, TeX fills the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     @kbd{C-x v}
     @kbd{M-x vc-next-action}
        Perform the next logical operation
@@ -249,13 +264,13 @@ version-controlled file corresponding to the current buffer.
 <p>In this case, the text should be formatted with
 <code>@table</code>, <code>@item</code>, and <code>@itemx</code>, to create a table.
 </p><a name="SEC286"></a>
-<h4> @code, @samp, @var, and `<samp>--</samp>' </h4>
+<h4 class="subsubheading"> @code, @samp, @var, and `<samp>--</samp>' </h4>
 
 <ul>
 <li><p>
 Use <code>@code</code> around Lisp symbols, including command names.
 For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 The main function is @code{vc-next-action}, ...
 </pre></td></tr></table>
 </li><li><p>
@@ -271,7 +286,7 @@ hyphens to two.
 </p></li></ul>
 
 <a name="SEC287"></a>
-<h4> Periods Outside of Quotes </h4>
+<h4 class="subsubheading"> Periods Outside of Quotes </h4>
 
 <p>Place periods and other punctuation marks <em>outside</em> of quotations,
 unless the punctuation is part of the quotation.  This practice goes
@@ -280,13 +295,13 @@ reader to distinguish between the contents of the quotation and the
 whole passage.
 </p><p>For example, you should write the following sentence with the period
 outside the end quotation marks:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Evidently, `<samp>au</samp>' is an abbreviation for ``author''.
 </pre></td></tr></table>
 <p>since `<samp>au</samp>' does <em>not</em> serve as an  abbreviation for
 `<samp>author.</samp>' (with a period following the word).
 </p><a name="SEC288"></a>
-<h4> Introducing New Terms </h4>
+<h4 class="subsubheading"> Introducing New Terms </h4>
 
 <ul>
 <li><p>
@@ -309,7 +324,7 @@ should expect to learn the meaning from this passage.
 </p></li></ul>
 
 <a name="SEC289"></a>
-<h4> @pxref </h4>
+<h4 class="subsubheading"> @pxref </h4>
 
 <p>Absolutely never use <code>@pxref</code> except in the special context for
 which it is designed: inside parentheses, with the closing parenthesis
@@ -318,7 +333,7 @@ automatically inserts closing punctuation and the other does not.  This
 means that the output looks right both in printed output and in an Info
 file, but only when the command is used inside parentheses.
 </p><a name="SEC290"></a>
-<h4> Invoking from a Shell </h4>
+<h4 class="subsubheading"> Invoking from a Shell </h4>
 
 <p>You can invoke programs such as Emacs, GCC, and <code>gawk</code> from a
 shell.  The documentation for each program should contain a section that
@@ -328,18 +343,18 @@ sections are all different, they are difficult for users to find.
 with the word `Invoking', as in `Invoking Emacs'; this way, users can
 find the section easily.
 </p><a name="SEC291"></a>
-<h4> ANSI C Syntax </h4>
+<h4 class="subsubheading"> ANSI C Syntax </h4>
 
 <p>When you use <code>@example</code> to describe a C function's calling
 conventions, use the ANSI C syntax, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 void dld_init (char *@var{path});
 </pre></td></tr></table>
 <p>And in the subsequent discussion, refer to the argument values by
 writing the same argument names, again highlighted with
 <code>@var</code>.
 </p><p>Avoid the obsolete style that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 #include &lt;dld.h&gt;
 
 dld_init (path)
@@ -353,10 +368,10 @@ state explicitly which header file holds the declaration or, better
 yet, name the header file used for a group of functions at the
 beginning of the section that describes the functions.
 </p><a name="SEC292"></a>
-<h4> Bad Examples </h4>
+<h4 class="subsubheading"> Bad Examples </h4>
 
 <p>Here are several examples of bad writing to avoid:
-</p><p>In this example, say, &quot; <small>...</small> you must <code>@dfn</code>{check
+</p><p>In this example, say, &quot; <small class="dots">...</small> you must <code>@dfn</code>{check
 in} the new version.&quot;  That flows better.
 </p><blockquote>
 
@@ -364,7 +379,7 @@ in} the new version.&quot;  That flows better.
 <code>@dfn</code>{check in}.
 </p></blockquote>
 
-<p>In the following example, say, &quot;<small>...</small> makes a unified interface such as VC
+<p>In the following example, say, &quot;<small class="dots">...</small> makes a unified interface such as VC
 mode possible.&quot;
 </p><blockquote>
 
@@ -381,7 +396,7 @@ everyone's changes so they do not step on each other.
 </p></blockquote>
 
 <a name="SEC293"></a>
-<h4> And Finally <small>...</small> </h4>
+<h4 class="subsubheading"> And Finally <small class="dots">...</small> </h4>
 
 <ul>
 <li><p>
@@ -391,7 +406,7 @@ sound in the name `Bach'.  But pronounce Texinfo as in `speck':
 </p></li><li><p>
 Write notes for yourself at the very end of a Texinfo file after the
 <code>@bye</code>.  None of the formatters process text after the
-<code>@bye</code>; it is as if the text were within <code>@ignore</code> <small>...</small>
+<code>@bye</code>; it is as if the text were within <code>@ignore</code> <small class="dots">...</small>
 <code>@end ignore</code>.
 </p></li></ul>
 

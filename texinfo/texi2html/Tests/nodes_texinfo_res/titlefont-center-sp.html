@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp</title>
+<title>Texinfo: 3.4.2 @titlefont, @center, and @sp</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp">
-<meta name="keywords" content="GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp">
+<meta name="description" content="Texinfo: 3.4.2 @titlefont, @center, and @sp">
+<meta name="keywords" content="Texinfo: 3.4.2 @titlefont, @center, and @sp">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code> </h3>
+<h3 class="subsection"> 3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code> </h3>
 
 <p>You can use the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code>
 commands to create a title page for a printed document.  (This is the
@@ -72,24 +87,24 @@ first of the two methods for creating a title page in Texinfo.)
 the title itself.  You can use <code>@titlefont</code> more than once if you
 have an especially long title.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlefont{Texinfo}
 </pre></td></tr></table>
 <p>Use the <code>@center</code> command at the beginning of a line to center
 the remaining text on that line.  Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @center @titlefont{Texinfo}
 </pre></td></tr></table>
 <p>centers the title, which in this example is &quot;Texinfo&quot; printed
 in the title font.
 </p><p>Use the <code>@sp</code> command to insert vertical space.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @sp 2
 </pre></td></tr></table>
 <p>This inserts two blank lines on the printed page.  (See section <a href="sp.html#SEC210"><code>@sp</code></a>, for more information about the <code>@sp</code>
 command.)
 </p><p>A template for this method looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @titlepage
 @sp 10
 @center @titlefont{<var>name-of-manual-when-printed</var>}

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 11.3 Making a Two-column Table</title>
+<title>Texinfo: 11.3 Making a Two-column Table</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
-<meta name="keywords" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
+<meta name="description" content="Texinfo: 11.3 Making a Two-column Table">
+<meta name="keywords" content="Texinfo: 11.3 Making a Two-column Table">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,13 +78,13 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 11.3 Making a Two-column Table </h2>
+<h2 class="section"> 11.3 Making a Two-column Table </h2>
 
 <p><code>@table</code> is similar to <code>@itemize</code> (see section <a href="itemize.html#SEC157"><code>@itemize</code></a>), but allows you to specify a name or heading line for
 each item.  The <code>@table</code> command is used to produce two-column
 tables, and is especially useful for glossaries, explanatory
 exhibits, and command-line option summaries.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="table.html#NOD146">* table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a two-column table.</td></tr>
 <tr><td align="left" valign="top"><a href="ftable-vtable.html#SEC161">11.3.1 <code>@ftable</code> and <code>@vtable</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Automatic indexing for two-column tables.</td></tr>
@@ -78,7 +93,7 @@ exhibits, and command-line option summaries.
 
 <a name="NOD146"></a>
 <a name="SEC160"></a>
-<h3> Using the <code>@table</code> Command </h3>
+<h3 class="subheading"> Using the <code>@table</code> Command </h3>
 
 <p>Use the <code>@table</code> command to produce two-column tables.
 </p><p>Write the <code>@table</code> command at the beginning of a line and follow
@@ -115,7 +130,7 @@ This puts a blank like in the Info file.  Except when the entries are
 very brief, a blank line looks better.
 </p><p>The following table, for example, highlights the text in the first
 column with an <code>@samp</code> command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @table @samp
 @item foo
 This is the text for

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence</title>
+<title>Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence">
-<meta name="keywords" content="GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence">
+<meta name="description" content="Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence">
+<meta name="keywords" content="Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,20 +78,20 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 13.9.6 <code>@equiv{}</code> (==): Indicating Equivalence </h3>
+<h3 class="subsection"> 13.9.6 <code>@equiv{}</code> (==): Indicating Equivalence </h3>
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
 </p><p>The <code>@equiv{}</code> command is displayed as `<samp>==</samp>' in Info
 and as a three parallel horizontal lines in the printed output.
 </p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (make-sparse-keymap) == (list 'keymap)
 </pre></td></tr></table>
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces

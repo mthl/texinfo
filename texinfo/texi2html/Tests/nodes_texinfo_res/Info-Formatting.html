@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2.5 Formatting for Info</title>
+<title>Texinfo: 2.5 Formatting for Info</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2.5 Formatting for Info">
-<meta name="keywords" content="GNU Texinfo 4.2: 2.5 Formatting for Info">
+<meta name="description" content="Texinfo: 2.5 Formatting for Info">
+<meta name="keywords" content="Texinfo: 2.5 Formatting for Info">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 2.5 Formatting for Info </h2>
+<h2 class="section"> 2.5 Formatting for Info </h2>
 
 <p>Texinfo mode provides several commands for formatting part or all of a
 Texinfo file for Info.  Often, when you are writing a document, you
@@ -105,14 +120,14 @@ want to format only part of a file--that is, a region.
 </dl>
 
 <p>For example, after writing a Texinfo file, you can type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-u m
 or
 C-u M-x texinfo-master-menu
 </pre></td></tr></table>
 <p>This updates all the nodes and menus.  Then type the following to create
 an Info file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-m C-b
 or
 M-x makeinfo-buffer

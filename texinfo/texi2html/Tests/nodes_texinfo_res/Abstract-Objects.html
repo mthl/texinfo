@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming</title>
+<title>Texinfo: 15.4.5 Object-Oriented Programming</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming">
+<meta name="description" content="Texinfo: 15.4.5 Object-Oriented Programming">
+<meta name="keywords" content="Texinfo: 15.4.5 Object-Oriented Programming">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.5 Object-Oriented Programming </h3>
+<h3 class="subsection"> 15.4.5 Object-Oriented Programming </h3>
 
 <p>Here are the commands for formatting descriptions about abstract
 objects, such as are used in object-oriented programming.  A class is
@@ -85,7 +100,7 @@ variables associated with classes in object-oriented programming.  The
 <code>@defcv</code> command is followed by three arguments: the category of
 thing being defined, the class to which it belongs, and its
 name.  Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defcv {Class Option} Window border-pattern
 ...
 @end defcv
@@ -93,7 +108,7 @@ name.  Thus,
 <p>illustrates how you would write the first line of a definition of the
 <code>border-pattern</code> class option of the class <code>Window</code>.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @defcv <var>category</var> <var>class</var> <var>name</var>
 ...
 @end defcv
@@ -105,9 +120,9 @@ name.  Thus,
 </code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
-equivalent to `<samp>@defcv {Instance Variable} <small>...</small></samp>'
+equivalent to `<samp>@defcv {Instance Variable} <small class="dots">...</small></samp>'
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @defivar <var>class</var> <var>instance-variable-name</var>
 <var>body-of-definition</var>
 @end defivar
@@ -124,7 +139,7 @@ specify the type of the instance variable.  <code>@deftypeivar</code> creates an
 entry in the index of variables.
 </p><a name="IDX281"></a>
 </dd>
-<dt><code> @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@defop</code> command is the general definition command for
 entities that may resemble methods in object-oriented programming.
@@ -148,7 +163,7 @@ example, window application developers need to know about the
 <code>expose</code> operation, but need not be concerned with whether a
 given class of windows has its own method to implement this operation.
 To describe this operation, you would write:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defop Operation windows expose
 </pre></td></tr></table>
 <p>The <code>@defop</code> command is written at the beginning of a line and
@@ -156,7 +171,7 @@ is followed on the same line by the overall name of the category of
 operation, the name of the class of the operation, the name of the
 operation, and its arguments, if any.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defop
@@ -165,7 +180,7 @@ operation, and its arguments, if any.
 <code>windows</code>', in the index of functions.
 </p><a name="IDX282"></a>
 </dd>
-<dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p>The <code>@deftypeop</code> command is the definition command for typed
 operations in object-oriented programming.  It is similar to
@@ -173,19 +188,19 @@ operations in object-oriented programming.  It is similar to
 specify the return type of the method.  <code>@deftypeop</code> creates an
 entry in the index of functions.
 </p></dd>
-<dt><code> @defmethod <var>class</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @defmethod <var>class</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p><a name="IDX283"></a>
 The <code>@defmethod</code> command is the definition command for methods
 in object-oriented programming.  A method is a kind of function that
 implements an operation for a particular class of objects and its
 subclasses.
-</p><p><code>@defmethod</code> is equivalent to `<samp>@defop Method <small>...</small></samp>'.
+</p><p><code>@defmethod</code> is equivalent to `<samp>@defop Method <small class="dots">...</small></samp>'.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
 arguments, if any.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @defmethod <code>bar-class</code> bar-method argument
 ...
 @end defmethod
@@ -193,7 +208,7 @@ arguments, if any.
 <p>illustrates the definition for a method called <code>bar-method</code> of
 the class <code>bar-class</code>.  The method takes an argument.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defmethod <var>class</var> <var>method-name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defmethod
@@ -201,7 +216,7 @@ the class <code>bar-class</code>.  The method takes an argument.
 <p><code>@defmethod</code> creates an entry, such as `<code>bar-method</code> on
 <code>bar-class</code>', in the index of functions.
 </p></dd>
-<dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+<dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p><a name="IDX284"></a>
 The <code>@deftypemethod</code> command is the definition command for methods

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode</title>
+<title>Texinfo: 19.6 Formatting and Printing in Texinfo Mode</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode">
+<meta name="description" content="Texinfo: 19.6 Formatting and Printing in Texinfo Mode">
+<meta name="keywords" content="Texinfo: 19.6 Formatting and Printing in Texinfo Mode">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.6 Formatting and Printing in Texinfo Mode </h2>
+<h2 class="section"> 19.6 Formatting and Printing in Texinfo Mode </h2>
 
 <p>Texinfo mode provides several predefined key commands for TeX
 formatting and printing.  These include commands for sorting indices,
@@ -138,7 +153,7 @@ commands are run to show its most recent output.
 
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
@@ -152,7 +167,7 @@ and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
 as you would any other shell buffer.
 </p><p>The formatting and print commands depend on the values of several variables.
 The default values are:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
      Variable                              Default value
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;

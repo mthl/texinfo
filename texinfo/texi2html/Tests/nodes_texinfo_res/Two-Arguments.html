@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.3.2 @xref with Two Arguments</title>
+<title>Texinfo: 8.3.2 @xref with Two Arguments</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.3.2 @xref with Two Arguments">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.3.2 @xref with Two Arguments">
+<meta name="description" content="Texinfo: 8.3.2 @xref with Two Arguments">
+<meta name="keywords" content="Texinfo: 8.3.2 @xref with Two Arguments">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,21 +78,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 8.3.2 <code>@xref</code> with Two Arguments </h3>
+<h3 class="subsection"> 8.3.2 <code>@xref</code> with Two Arguments </h3>
 
 <p>With two arguments, the second is used as the name of the Info cross
 reference, while the first is still the name of the node to which the
 cross reference points.
 </p><p>The template is like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{<var>node-name</var>, <var>cross-reference-name</var>}.
 </pre></td></tr></table>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{Electrical Effects, Lightning}.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *Note Lightning: Electrical Effects.
 </pre></td></tr></table>
 <p>and
@@ -89,11 +104,11 @@ cross reference points.
 <p>(Note that in the preceding example the closing brace is followed by a
 period; and that the node name is printed, not the cross reference name.)
 </p><p>You can write a clause after the cross reference, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @xref{Electrical Effects, Lightning}, for more info.
 </pre></td></tr></table>
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 *Note Lightning: Electrical Effects, for more info.
 </pre></td></tr></table>
 <p>and

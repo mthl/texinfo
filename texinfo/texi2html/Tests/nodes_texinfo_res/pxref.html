@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 8.6 @pxref</title>
+<title>Texinfo: 8.6 @pxref</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8.6 @pxref">
-<meta name="keywords" content="GNU Texinfo 4.2: 8.6 @pxref">
+<meta name="description" content="Texinfo: 8.6 @pxref">
+<meta name="keywords" content="Texinfo: 8.6 @pxref">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 8.6 <code>@pxref</code> </h2>
+<h2 class="section"> 8.6 <code>@pxref</code> </h2>
 
 <p>The parenthetical reference command, <code>@pxref</code>, is nearly the
 same as <code>@xref</code>, but you use it <em>only</em> inside parentheses
@@ -95,32 +110,32 @@ of the output and not the other.
 </p><p>With one argument, a parenthetical cross reference looks like
 this:
 </p><a name="IDX113"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 ... storms cause flooding (@pxref{Hurricanes}) ...
 </pre></td></tr></table>
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... storms cause flooding (*Note Hurricanes::) ...
 </pre></td></tr></table>
 <p>and
 </p><blockquote>
 
-<p><small>...</small> storms cause flooding (see Section 6.7 [Hurricanes], page 72) <small>...</small>
+<p><small class="dots">...</small> storms cause flooding (see Section 6.7 [Hurricanes], page 72) <small class="dots">...</small>
 </p></blockquote>
 
 <p>With two arguments, a parenthetical cross reference has this
 template:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... (@pxref{<var>node-name</var>, <var>cross-reference-name</var>}) ...
 </pre></td></tr></table>
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... (*Note <var>cross-reference-name</var>: <var>node-name</var>.) ...
 </pre></td></tr></table>
 <p>and
 </p><blockquote>
 
-<p><small>...</small> (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) <small>...</small>
+<p><small class="dots">...</small> (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) <small class="dots">...</small>
 </p></blockquote>
 
 <p><code>@pxref</code> can be used with up to five arguments just like

@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 10.7 @small... Block Commands</title>
+<title>Texinfo: 10.7 @small... Block Commands</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 10.7 @small... Block Commands">
-<meta name="keywords" content="GNU Texinfo 4.2: 10.7 @small... Block Commands">
+<meta name="description" content="Texinfo: 10.7 @small... Block Commands">
+<meta name="keywords" content="Texinfo: 10.7 @small... Block Commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,26 +78,26 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 10.7 <code>@small<small>...</small></code> Block Commands </h2>
+<h2 class="section"> 10.7 <code>@small<small class="dots">...</small></code> Block Commands </h2>
 
 <p>In addition to the regular <code>@example</code> and <code>@lisp</code> commands,
 Texinfo has &quot;small&quot; example-style commands.  These are
 <code>@smalldisplay</code>, <code>@smallexample</code>, <code>@smallformat</code>, and
 <code>@smalllisp</code>.
-</p><p>In TeX, the <code>@small<small>...</small></code> commands typeset text in a smaller
+</p><p>In TeX, the <code>@small<small class="dots">...</small></code> commands typeset text in a smaller
 font than the non-small example commands.  Consequently, many examples
 containing long lines fit on a page without needing to be shortened.
-</p><p>In Info, the <code>@small<small>...</small></code> commands are equivalent to their
+</p><p>In Info, the <code>@small<small class="dots">...</small></code> commands are equivalent to their
 non-small companion commands.
-</p><p>Mark the end of an <code>@small<small>...</small></code> block with a corresponding
-<code>@end small<small>...</small></code>.  For example, pair <code>@smallexample</code> with
+</p><p>Mark the end of an <code>@small<small class="dots">...</small></code> block with a corresponding
+<code>@end small<small class="dots">...</small></code>.  For example, pair <code>@smallexample</code> with
 <code>@end smallexample</code>.
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 This is an example of text written between <code>@smallexample</code> and
 <code>@end smallexample</code>.  In Info this text appears in its normal size;
 but in a 7 by 9.25 inch manual, this text appears in a smaller font.
 </pre></td></tr></table>
-<p>The <code>@small<small>...</small></code> commands make it easier to prepare manuals
+<p>The <code>@small<small class="dots">...</small></code> commands make it easier to prepare manuals
 without forcing you to edit examples by hand to fit them onto narrower
 pages.
 </p><p>As a general rule, a printed document looks better if you use only one

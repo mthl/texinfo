@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.6 A Sample Function Definition</title>
+<title>Texinfo: 15.6 A Sample Function Definition</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.6 A Sample Function Definition">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.6 A Sample Function Definition">
+<meta name="description" content="Texinfo: 15.6 A Sample Function Definition">
+<meta name="keywords" content="Texinfo: 15.6 A Sample Function Definition">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 15.6 A Sample Function Definition </h2>
+<h2 class="section"> 15.6 A Sample Function Definition </h2>
 
 <p>A function definition uses the <code>@defun</code> and <code>@end defun</code>
 commands.  The name of the function follows immediately after the
@@ -85,7 +100,7 @@ that this list is <em>appended</em> to the other arguments.
 As with <code>funcall</code>, <var>function</var> must either be a Lisp
 function or a primitive function; special forms and macros
 do not make sense in <code>apply</code>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq f 'list)
      =&gt; list
 (apply f 'x 'y 'z)
@@ -104,7 +119,7 @@ of <code>mapcar</code>.
 </blockquote>
 
 <p>In the Texinfo source file, this example looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun apply function &amp;rest arguments
 @code{apply} calls @var{function} with
 @var{arguments}, just like @code{funcall} but with one

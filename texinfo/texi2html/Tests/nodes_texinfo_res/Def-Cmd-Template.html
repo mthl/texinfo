@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.1 The Template for a Definition</title>
+<title>Texinfo: 15.1 The Template for a Definition</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.1 The Template for a Definition">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.1 The Template for a Definition">
+<meta name="description" content="Texinfo: 15.1 The Template for a Definition">
+<meta name="keywords" content="Texinfo: 15.1 The Template for a Definition">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 15.1 The Template for a Definition </h2>
+<h2 class="section"> 15.1 The Template for a Definition </h2>
 
 <p>The <code>@deffn</code> command is used for definitions of entities that
 resemble functions.  To write a definition using the <code>@deffn</code>
@@ -75,13 +90,13 @@ body.)  Finally, end the definition with an <code>@end deffn</code> command
 written on a line of its own.  (The other definition commands follow
 the same format.)
 </p><p>The template for a definition looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deffn <var>category</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deffn Command forward-word count
 This command moves point forward @var{count} words
 (or backward if @var{count} is negative). ...
@@ -95,14 +110,14 @@ This command moves point forward @var{count} words
 <a name="IDX260"></a>
 </dt>
 <dd><p>This function moves point forward <var>count</var> words
-(or backward if <var>count</var> is negative). <small>...</small>
+(or backward if <var>count</var> is negative). <small class="dots">...</small>
 </p></dd></dl>
 </blockquote>
 
 <p>Capitalize the category name like a title.  If the name of the
 category contains spaces, as in the phrase `Interactive Command',
 write braces around it.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deffn {Interactive Command} isearch-forward
 ...
 @end deffn
@@ -123,13 +138,13 @@ particular kinds of variables.
 </p><p>The template for a specialized definition, such as <code>@defun</code>, is
 similar to the template for a generalized definition, except that you
 do not need to specify the category:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defun
 </pre></td></tr></table>
 <p>Thus,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun buffer-end flag
 This function returns @code{(point-min)} if @var{flag}
 is less than 1, @code{(point-max)} otherwise.
@@ -144,7 +159,7 @@ is less than 1, @code{(point-max)} otherwise.
 <a name="IDX261"></a>
 </dt>
 <dd><p>This function returns <code>(point-min)</code> if <var>flag</var> is less than 1,
-<code>(point-max)</code> otherwise.  <small>...</small>
+<code>(point-max)</code> otherwise.  <small class="dots">...</small>
 </p></dd></dl>
 </blockquote>
 

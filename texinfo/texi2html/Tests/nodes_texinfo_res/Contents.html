@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 4.2 Generating a Table of Contents</title>
+<title>Texinfo: 4.2 Generating a Table of Contents</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 4.2 Generating a Table of Contents">
-<meta name="keywords" content="GNU Texinfo 4.2: 4.2 Generating a Table of Contents">
+<meta name="description" content="Texinfo: 4.2 Generating a Table of Contents">
+<meta name="keywords" content="Texinfo: 4.2 Generating a Table of Contents">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 4.2 Generating a Table of Contents </h2>
+<h2 class="section"> 4.2 Generating a Table of Contents </h2>
 
 <p>The <code>@chapter</code>, <code>@section</code>, and other structuring commands
 supply the information to make up a table of contents, but they do not
@@ -127,11 +142,11 @@ contents after the <code>@end titlepage</code>; the second prints both the
 short contents and the main contents.  In either case, any subsequent
 <code>@contents</code> or <code>@shortcontents</code> is ignored (unless no
 <code>@end titlepage</code> is ever encountered).
-</p><p>You need to include the <code>@set<small>...</small>contentsaftertitlepage</code>
+</p><p>You need to include the <code>@set<small class="dots">...</small>contentsaftertitlepage</code>
 commands early in the document (just after <code>@setfilename</code>, for
 example).  We recommend using <code>texi2dvi</code> (see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>) to specify this without altering the source file at all.  For
 example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
 </pre></td></tr></table>
 <hr size="1">

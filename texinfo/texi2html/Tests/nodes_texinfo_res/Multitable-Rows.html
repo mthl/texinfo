@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 11.4.2 Multitable Rows</title>
+<title>Texinfo: 11.4.2 Multitable Rows</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 11.4.2 Multitable Rows">
-<meta name="keywords" content="GNU Texinfo 4.2: 11.4.2 Multitable Rows">
+<meta name="description" content="Texinfo: 11.4.2 Multitable Rows">
+<meta name="keywords" content="Texinfo: 11.4.2 Multitable Rows">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 11.4.2 Multitable Rows </h3>
+<h3 class="subsection"> 11.4.2 Multitable Rows </h3>
 
 <p>After the <code>@multitable</code> command defining the column widths (see
 the previous section), you begin each row in the body of a multitable
@@ -72,7 +87,7 @@ Line breaks are not special within the table body, and you may break
 input lines in your source file as necessary.
 </p><p>Here is a complete example of a multi-column table (the text is from
 <cite>The GNU Emacs Manual</cite>, see <a href="../emacs/Split-Window.html">(emacs)Split Window</a> section `Splitting Windows' in <cite>The GNU Emacs Manual</cite>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @multitable @columnfractions .15 .45 .4
 @item Key @tab Command @tab Description
 @item C-x 2

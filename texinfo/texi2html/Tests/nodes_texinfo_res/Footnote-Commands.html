@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 13.10.1 Footnote Commands</title>
+<title>Texinfo: 13.10.1 Footnote Commands</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 13.10.1 Footnote Commands">
-<meta name="keywords" content="GNU Texinfo 4.2: 13.10.1 Footnote Commands">
+<meta name="description" content="Texinfo: 13.10.1 Footnote Commands">
+<meta name="keywords" content="Texinfo: 13.10.1 Footnote Commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,14 +78,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 13.10.1 Footnote Commands </h3>
+<h3 class="subsection"> 13.10.1 Footnote Commands </h3>
 
 <p>In Texinfo, footnotes are created with the <code>@footnote</code> command.
 This command is followed immediately by a left brace, then by the text
 of the footnote, and then by a terminating right brace.  Footnotes may
 be of any length (they will be broken across pages if necessary), but
 are usually short.  The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ordinary text@footnote{<var>text of footnote</var>}
 </pre></td></tr></table>
 <p>As shown here, the <code>@footnote</code> command should come right after the
@@ -78,7 +93,7 @@ text being footnoted, with no intervening space; otherwise, the footnote
 marker might end up starting a line.
 </p><p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ...a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source...
 </pre></td></tr></table>

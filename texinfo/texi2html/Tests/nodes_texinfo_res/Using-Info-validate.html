@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: F.5.1 Running Info-validate</title>
+<title>Texinfo: F.5.1 Running Info-validate</title>
 
-<meta name="description" content="GNU Texinfo 4.2: F.5.1 Running Info-validate">
-<meta name="keywords" content="GNU Texinfo 4.2: F.5.1 Running Info-validate">
+<meta name="description" content="Texinfo: F.5.1 Running Info-validate">
+<meta name="keywords" content="Texinfo: F.5.1 Running Info-validate">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,11 +78,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> F.5.1 Running <code>Info-validate</code> </h3>
+<h3 class="subsection"> F.5.1 Running <code>Info-validate</code> </h3>
 
 <p>To use <code>Info-validate</code>, visit the Info file you wish to check and
 type:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-validate
 </pre></td></tr></table>
 <p>Note that the <code>Info-validate</code> command requires an upper case
@@ -79,7 +94,7 @@ error messages will be displayed in a buffer called `<samp>*problems in
 info file*</samp>'.
 </p><p>For example, <code>Info-validate</code> was run on a test file that contained
 only the first node of this manual.  One of the messages said:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
 <p>This meant that the node called `<samp>Overview</samp>' had a `Next' pointer that
@@ -88,7 +103,7 @@ had only one node in it).
 </p><p>Now suppose we add a node named `<samp>Texinfo Mode</samp>' to our test case
 but we do not specify a `Previous' for this node.  Then we will get
 the following error message:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Texinfo Mode&quot;, should have Previous: Overview
 </pre></td></tr></table>
 <p>This is because every `Next' pointer should be matched by a

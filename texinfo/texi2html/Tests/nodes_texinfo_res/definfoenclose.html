@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting</title>
+<title>Texinfo: 18.5 definfoenclose: Customized Highlighting</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting">
-<meta name="keywords" content="GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting">
+<meta name="description" content="Texinfo: 18.5 definfoenclose: Customized Highlighting">
+<meta name="keywords" content="Texinfo: 18.5 definfoenclose: Customized Highlighting">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 18.5 `<samp>definfoenclose</samp>': Customized Highlighting </h2>
+<h2 class="section"> 18.5 `<samp>definfoenclose</samp>': Customized Highlighting </h2>
 
 <p>A <code>@definfoenclose</code> command may be used to define a highlighting
 command for Info, but not for TeX.  A command defined using
@@ -92,7 +107,7 @@ enclosure definition will override the built-in definition.
 is intended for new markup commands (see section <a href="Marking-Text.html#SEC119">Marking Words and Phrases</a>).
 </p><a name="IDX318"></a>
 <p>For example, you can write:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose phoo,//,\\
 </pre></td></tr></table>
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
@@ -100,7 +115,7 @@ formatting command that inserts `//' before and `\\' after the argument
 to <code>@phoo</code>.  You can then write <code>@phoo{bar}</code> wherever you
 want `//bar\\' highlighted in Info.
 </p><p>Also, for TeX formatting, you could write 
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @iftex
 @global@let@phoo=@i
 @end iftex
@@ -113,7 +128,7 @@ for <code>texinfo-format-buffer</code> or <code>texinfo-format-region</code>.  T
 the raw TeX commands do need to be in `<samp>@iftex</samp>'.
 </p><a name="IDX319"></a>
 <p>Here is another example: write
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose headword, , :
 </pre></td></tr></table>
 <p>near the beginning of the file, to define <code>@headword</code> as an Info

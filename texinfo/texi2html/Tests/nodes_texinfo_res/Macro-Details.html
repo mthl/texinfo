@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 18.3 Macro Details</title>
+<title>Texinfo: 18.3 Macro Details</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 18.3 Macro Details">
-<meta name="keywords" content="GNU Texinfo 4.2: 18.3 Macro Details">
+<meta name="description" content="Texinfo: 18.3 Macro Details">
+<meta name="keywords" content="Texinfo: 18.3 Macro Details">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 18.3 Macro Details </h2>
+<h2 class="section"> 18.3 Macro Details </h2>
 
 <p>Due to unavoidable disparities in the TeX and <code>makeinfo</code>
 implementations, Texinfo macros have the following limitations.
@@ -82,7 +97,7 @@ always work.
 The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifnottex
 @macro ctor {name, arg}
 @macro \name\

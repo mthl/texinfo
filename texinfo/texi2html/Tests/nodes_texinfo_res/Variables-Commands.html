@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities</title>
+<title>Texinfo: 15.4.2 Variables and Similar Entities</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
-<meta name="keywords" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
+<meta name="description" content="Texinfo: 15.4.2 Variables and Similar Entities">
+<meta name="keywords" content="Texinfo: 15.4.2 Variables and Similar Entities">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 15.4.2 Variables and Similar Entities </h3>
+<h3 class="subsection"> 15.4.2 Variables and Similar Entities </h3>
 
 <p>Here are the commands for defining variables and similar
 entities:
@@ -84,7 +99,7 @@ name of the entity.
 contains spaces, as in the name &quot;User Option&quot;, enclose it in braces.
 Otherwise, the second word will be mistaken for the name of the entity.
 For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defvr {User Option} fill-column
 This buffer-local variable specifies
 the maximum width of filled lines.
@@ -94,7 +109,7 @@ the maximum width of filled lines.
 <p>Terminate the definition with <code>@end defvr</code> on a line of its
 own.
 </p><p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defvr <var>category</var> <var>name</var>
 <var>body-of-definition</var>
 @end defvr
@@ -106,15 +121,15 @@ own.
 </code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
 <code>@defvar</code> is equivalent to `<samp>@defvr Variable
-<small>...</small></samp>'.
+<small class="dots">...</small></samp>'.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defvar kill-ring
 ...
 @end defvar
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defvar <var>name</var>
 <var>body-of-definition</var>
 @end defvar
@@ -129,7 +144,7 @@ own.
 The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
 taste; Emacs has many such (see <a href="../emacs/Variables.html">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to `<samp>@defvr {User
-Option} <small>...</small></samp>' and works like <code>@defvar</code>.
+Option} <small class="dots">...</small></samp>' and works like <code>@defvar</code>.
 </p></dd>
 </dl>
 

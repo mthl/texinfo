@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 2.4 Updating Nodes and Menus</title>
+<title>Texinfo: 2.4 Updating Nodes and Menus</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2.4 Updating Nodes and Menus">
-<meta name="keywords" content="GNU Texinfo 4.2: 2.4 Updating Nodes and Menus">
+<meta name="description" content="Texinfo: 2.4 Updating Nodes and Menus">
+<meta name="keywords" content="Texinfo: 2.4 Updating Nodes and Menus">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 2.4 Updating Nodes and Menus </h2>
+<h2 class="section"> 2.4 Updating Nodes and Menus </h2>
 
 <p>Texinfo mode provides commands for automatically creating or updating
 menus and node pointers.  The commands are called &quot;update&quot; commands
@@ -73,7 +88,7 @@ have worked on it; but you can use them to insert the `Next',
 and to create menus in a file that has none.
 </p><p>If you do not use the updating commands, you need to write menus and
 node pointers by hand, which is a tedious task.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="Updating-Commands.html#NOD21">* Updating Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Five major updating commands.</td></tr>
 <tr><td align="left" valign="top"><a href="Updating-Requirements.html#SEC28">2.4.1 Updating Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to structure a Texinfo file for
@@ -85,7 +100,7 @@ node pointers by hand, which is a tedious task.
 
 <a name="NOD21"></a>
 <a name="SEC27"></a>
-<h3> The Updating Commands </h3>
+<h3 class="subheading"> The Updating Commands </h3>
 
 <p>You can use the updating commands to:
 </p><ul>
@@ -146,7 +161,7 @@ constructing the master menu.  (See section <a href="The-Top-Node.html#SEC59">Th
 </p><p>For <code>texinfo-master-menu</code> to work, the Texinfo file must have a
 `Top' node and at least one subsequent node.
 </p><p>After extensively editing a Texinfo file, you can type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u M-x texinfo-master-menu
 or
 C-u C-c C-u m
@@ -212,7 +227,7 @@ already exists.  (Use the <code>texinfo-master-menu</code> command for
 that.)
 </p><p>When working on a document that does not merit a master menu, you can
 type the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-u C-a
 or
 C-u M-x texinfo-all-menus-update

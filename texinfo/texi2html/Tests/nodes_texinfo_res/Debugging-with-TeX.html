@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: F.2 Catching Errors with TeX Formatting</title>
+<title>Texinfo: F.2 Catching Errors with TeX Formatting</title>
 
-<meta name="description" content="GNU Texinfo 4.2: F.2 Catching Errors with TeX Formatting">
-<meta name="keywords" content="GNU Texinfo 4.2: F.2 Catching Errors with TeX Formatting">
+<meta name="description" content="Texinfo: F.2 Catching Errors with TeX Formatting">
+<meta name="keywords" content="Texinfo: F.2 Catching Errors with TeX Formatting">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> F.2 Catching Errors with TeX Formatting </h2>
+<h2 class="section"> F.2 Catching Errors with TeX Formatting </h2>
 
 <p>You can also catch mistakes when you format a file with TeX.
 </p><p>Usually, you will want to do this after you have run
@@ -72,7 +87,7 @@ the same file, because <code>texinfo-format-buffer</code> sometimes displays
 error messages that make more sense than TeX.  (See section <a href="Debugging-with-Info.html#SEC310">Catching Errors with Info Formatting</a>, for more information.)
 </p><p>For example, TeX was run on a Texinfo file, part of which is shown
 here:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ---------- Buffer: texinfo.texi ----------
 name of the Texinfo file as an extension.  The
 @samp{??} are `wildcards' that cause the shell to
@@ -83,7 +98,7 @@ indices.)@refill
 </pre></td></tr></table>
 <p>(The cross reference lacks a closing brace.)
 TeX produced the following output, after which it stopped:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ---------- Buffer: *tex-shell* ----------
 Runaway argument?
 {sorting indices, for more information about sorting
@@ -98,7 +113,7 @@ l.27
 </pre></td></tr></table>
 <p>In this case, TeX produced an accurate and
 understandable error message:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Paragraph ended before @xref was complete.
 </pre></td></tr></table>
 <p>`<samp>@par</samp>' is an internal TeX command of no relevance to Texinfo.
@@ -134,7 +149,7 @@ but TeX is able to continue processing anyhow.  For example, if you fail
 to end an itemized list with the <code>@end itemize</code> command, TeX will
 write a DVI file that you can print out.  The only error message that
 TeX will give you is the somewhat mysterious comment that
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@end occurred inside a group at level 1)
 </pre></td></tr></table>
 <p>However, if you print the DVI file, you will find that the text
@@ -151,7 +166,7 @@ first.
 TeX may stop in the
 beginning of its run and display output that looks like the following.
 The `<samp>*</samp>' indicates that TeX is waiting for input.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
 *

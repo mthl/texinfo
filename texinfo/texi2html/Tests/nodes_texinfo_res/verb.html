@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}</title>
+<title>Texinfo: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}">
-<meta name="keywords" content="GNU Texinfo 4.2: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}">
+<meta name="description" content="Texinfo: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}">
+<meta name="keywords" content="Texinfo: 9.1.5 @verb{&lt;char&gt;text&lt;char&gt;}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,19 +78,19 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 9.1.5 <code>@verb</code>{&lt;char&gt;<var>text</var>&lt;char&gt;} </h3>
+<h3 class="subsection"> 9.1.5 <code>@verb</code>{&lt;char&gt;<var>text</var>&lt;char&gt;} </h3>
 
 <p>Use the <code>@verb</code> command to print a verbatim sequence of
 characters.
 </p><p>Like LaTeX's <code>\verb</code> command, the verbatim text can be quoted using
 any unique delimiter character.  Enclose the verbatim text, including the
 delimiters, in braces.  Text is printed in a fixed-width font:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 How many @verb{|@|}-escapes does one need to print this
 @verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
 </pre></td></tr></table>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 How many <tt>@ </tt>-escapes does one need to print this
 <tt>@a @b @c</tt> string or these <tt>@'e?`{}!`\</tt> this?
 </pre></td></tr></table>

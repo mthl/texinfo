@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 3.2.2 Start of Header</title>
+<title>Texinfo: 3.2.2 Start of Header</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 3.2.2 Start of Header">
-<meta name="keywords" content="GNU Texinfo 4.2: 3.2.2 Start of Header">
+<meta name="description" content="Texinfo: 3.2.2 Start of Header">
+<meta name="keywords" content="Texinfo: 3.2.2 Start of Header">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,10 +78,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3> 3.2.2 Start of Header </h3>
+<h3 class="subsection"> 3.2.2 Start of Header </h3>
 
 <p>A start-of-header line is a Texinfo comment that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 @c %**start of header
 </pre></td></tr></table>
 <p>Write the start-of-header line on the second line of a Texinfo file.
@@ -75,7 +90,7 @@ Follow the start-of-header line with <code>@setfilename</code> and
 globally affect the document formatting, such as <code>@synindex</code> or
 <code>@footnotestyle</code>; and then by an end-of-header line (see section <a href="End-of-Header.html#SEC48">End of Header</a>).
 </p><p>The start- and end-of-header lines allow you to format only part of a
-Texinfo file for Info or printing.  See section <a href="texinfo-format-commands.html#SEC267">The <code>texinfo-format<small>...</small></code> Commands</a>.
+Texinfo file for Info or printing.  See section <a href="texinfo-format-commands.html#SEC267">The <code>texinfo-format<small class="dots">...</small></code> Commands</a>.
 </p><p>The odd string of characters, `<samp>%**</samp>', is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
 change it if you wish by setting the <code>tex-start-of-header</code> and/or

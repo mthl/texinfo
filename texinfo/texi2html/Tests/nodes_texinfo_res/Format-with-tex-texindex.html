@@ -31,14 +31,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Texinfo 4.2: 19.2 Format with tex and texindex</title>
+<title>Texinfo: 19.2 Format with tex and texindex</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 19.2 Format with tex and texindex">
-<meta name="keywords" content="GNU Texinfo 4.2: 19.2 Format with tex and texindex">
+<meta name="description" content="Texinfo: 19.2 Format with tex and texindex">
+<meta name="keywords" content="Texinfo: 19.2 Format with tex and texindex">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -63,11 +78,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2> 19.2 Format with <code>tex</code> and <code>texindex</code> </h2>
+<h2 class="section"> 19.2 Format with <code>tex</code> and <code>texindex</code> </h2>
 
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 tex foo.texi
 </pre></td></tr></table>
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
@@ -96,7 +111,7 @@ arguments to give to <code>texindex</code>.
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use `<samp>??</samp>' as shell wildcards and give the command in this
 form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texindex foo.??
 </pre></td></tr></table>
 <p>This command will run <code>texindex</code> on all the unsorted index files,
@@ -154,7 +169,7 @@ avoid them with the <code>@novalidate</code> command, which you must give
 <em>before</em> the <code>@setfilename</code> command
 (see section <a href="setfilename.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
 @novalidate
 @setfilename myfile.info
