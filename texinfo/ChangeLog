@@ -1,3 +1,9 @@
+2003-10-21  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: revision of mohit's original.
+	* util/Makefile.am (EXTRA_DIST): add gendocs.sh and
+		gendocs_template.
+
 2003-10-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (handle_include): only close_paragraph if
