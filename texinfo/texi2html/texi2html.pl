@@ -44,18 +44,8 @@ use vars qw(
             $ASCII_MODE
             $AUTO_LINK
             $AUTO_PREFIX
-            $BIBRE
-            $CHAPTEREND
             $CHILDLINE
             $DEBUG
-            $DEBUG_BIB
-            $DEBUG_DEF
-            $DEBUG_GLOSS
-            $DEBUG_HTML
-            $DEBUG_INDEX
-            $DEBUG_L2H
-            $DEBUG_TOC
-            $DEBUG_USER
             $DESTDIR
             $ERROR
             $EXTERNAL_FILE
@@ -64,7 +54,6 @@ use vars qw(
             $EXTERNAL_UP_TITLE
             $FH
             $FIGURE_SCALE_FACTOR
-            $FILERE
             $HTML_VERSION
             $IMAGES_ONLY
             $INFO
@@ -75,8 +64,6 @@ use vars qw(
             $MAX_LINK_DEPTH
             $MAX_SPLIT_DEPTH
             $NETSCAPE_HTML
-            $NODERE
-            $NODESRE
             $NOLATEX
             $NO_FOOTNODE
             $NO_IMAGES
@@ -89,7 +76,6 @@ use vars qw(
             $PS_IMAGES
             $REUSE
             $SCALABLE_FONTS
-            $SECTIONEND
             $SHORTEXTN
             $SHORT_INDEX
             $SHOW_SECTION_NUMBERS
@@ -117,98 +103,11 @@ use vars qw(
             $TITLE
             $TITLES_LANGUAGE
             $TMP
-            $TOPEND
-            $VARRE
             $VERBOSE
-            $WARN
             $WORDS_IN_NAVIGATION_PANEL_TITLES
             $WORDS_IN_PAGE
-            $after
-            $before
-            $bib_num
-            $button
-            $call
-            $changed
             $complex_format_map
-            $contents
-            $count
-            $counter
-            $d
-            $doc_num
-            $docid
-            $done
-            $dotbug
-            $elt
-            $end_tag
-            $entry
-            $ext
-            $extensions
-            $failed
-            $fh_name
-            $file
-            $first_index_chapter
-            $foot
-            $foot_num
-            $footid
-            $ftype
-            $full
-            $gloss_num
-            $h_content
-            $h_line
-            $hcontent
-            $html_num
-            $i
-            $id
-            $idx_num
-            $in
-            $in_titlepage
-            $index
             $index_properties
-            $init_file
-            $int_file
-            $is_extra
-            $key
-            $keys
-            $l
-            $l_l2h
-            $latex_file
-            $len
-            $letter
-            $level
-            $man
-            $match
-            $maximage
-            $next
-            $nn
-            $node
-            $node_next
-            $node_prev
-            $node_up
-            $nodes
-            $num
-            $old
-            $only_text
-            $options
-            $post
-            $pre
-            $prev_node
-            $previous
-            $progdir
-            $sec_num
-            $section
-            $string
-            $style
-            $sub
-            $subst_code
-            $tag
-            $texi_style
-            $to_do
-            $tocid
-            $toplevel
-            $type
-            $url
-            $use_bibliography
-            $what
             %T2H_ACTIVE_ICONS
             %T2H_BUTTONS_EXAMPLE
             %T2H_BUTTONS_GOTO
@@ -219,48 +118,21 @@ use vars qw(
             %T2H_PASSIVE_ICONS
             %T2H_THISDOC
             %accent_map
-            %bib2href
-            %context
             %def_map
             %format_map
-            %gloss2href
-            %idx2node
             %l2h_img
-            %node2href
-            %node2next
-            %node2prev
-            %node2sec
-            %node2up
-            %number2sec
             %predefined_index
-            %sec2level
-            %sec2node
-            %sec2seccount
-            %seccount2sec
-            %sec2number
-            %sec2index
-            %seen
             %simple_map
             %style_map
-            %tag2pro
             %things_map
             %to_skip
             %user_sub
             %valid_index
+            %sec2level
             %value
             @T2H_CHAPTER_BUTTONS
             @T2H_MISC_BUTTONS
             @T2H_SECTION_BUTTONS
-            @appendix_sec_num
-            @args
-            @doc_lines
-            @fhs
-            @foot_lines
-            @input_spool
-            @lines2
-            @lines3
-            @normal_sec_num
-            @sections
            );
 
 #++##############################################################################
@@ -273,7 +145,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.22 2003-02-06 11:52:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.23 2003-02-11 17:46:26 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -338,6 +210,7 @@ package main;
 #---############################################################################
 
 sub check();
+sub open_file($);
 
 #+++############################################################################
 #                                                                              #
@@ -345,32 +218,31 @@ sub check();
 #                                                                              #
 #---############################################################################
 
-$DEBUG_TOC   =  1;
-$DEBUG_INDEX =  2;
-$DEBUG_BIB   =  4;
-$DEBUG_GLOSS =  8;
-$DEBUG_DEF   = 16;
-$DEBUG_HTML  = 32;
-$DEBUG_USER  = 64;
-$DEBUG_L2H   = 128;
+my $DEBUG_TOC   =  1;
+my $DEBUG_INDEX =  2;
+my $DEBUG_BIB   =  4;
+my $DEBUG_GLOSS =  8;
+my $DEBUG_DEF   = 16;
+my $DEBUG_HTML  = 32;
+my $DEBUG_USER  = 64;
+my $DEBUG_L2H   = 128;
 
 
-$BIBRE = '\[[\w\/-]+\]';        # RE for a bibliography reference
-$FILERE = '[\/\w.+-]+';         # RE for a file name
-$VARRE = '[^\s\{\}]+';          # RE for a variable name
-$NODERE = '[^:]+';             # RE for a node name
-$NODESRE = '[^:]+';             # RE for a list of node names
+my $BIBRE = '\[[\w\/-]+\]';        # RE for a bibliography reference
+my $FILERE = '[\/\w.+-]+';         # RE for a file name
+my $VARRE = '[^\s\{\}]+';          # RE for a variable name
+my $NODERE = '[^:]+';             # RE for a node name
+my $NODESRE = '[^:]+';             # RE for a list of node names
 
-$ERROR = "***";                 # prefix for errors
-$WARN  = "**";                  # prefix for warnings
+my $ERROR = "***";                 # prefix for errors
+my $WARN  = "**";                  # prefix for warnings
 
                                 # program home page
-$PROTECTTAG = "_ThisIsProtected_"; # tag to recognize protected sections
+my $PROTECTTAG = "_ThisIsProtected_"; # tag to recognize protected sections
 
-$CHAPTEREND = "<!-- End chapter -->\n"; # to know where a chpater ends
-$SECTIONEND = "<!-- End section -->\n"; # to know where section ends
-$TOPEND     = "<!-- End top     -->\n"; # to know where top ends
-
+my $CHAPTEREND = "<!-- End chapter -->\n"; # to know where a chpater ends
+my $SECTIONEND = "<!-- End section -->\n"; # to know where section ends
+my $TOPEND     = "<!-- End top     -->\n"; # to know where top ends
 
 
 #
@@ -703,10 +575,9 @@ $| = 1;
 select(STDOUT);
 $| = 1;
 
+%value = ();                       # hold texinfo variables, see also -D
 
-%value = ();                    # hold texinfo variables, see also -D
-$use_bibliography = 1;
-
+my $init_file;
 #
 # called on -init-file
 sub LoadInitFile
@@ -714,7 +585,7 @@ sub LoadInitFile
     # First argument is option
     shift;
     # second argument is value of options
-    my $init_file = shift;
+    $init_file = shift;
     if (-f $init_file)
     {
         print "# reading initialization file from $init_file\n"
@@ -1043,34 +914,36 @@ foreach ('_author', '_title', '_subtitle',
 {
     $value{$_} = '';            # prevent -w warnings
 }
-%node2sec = ();                 # node to section name
-%sec2node = ();			# section to node name
-%sec2seccount = ();		# section to section count
-%seccount2sec = ();		# section count to section
-%sec2number = ();		# section to number
+my %node2sec = ();                 # node to section name
+my %sec2node = ();			# section to node name
+my %sec2seccount = ();		# section to section count
+my %seccount2sec = ();		# section count to section
+my %sec2number = ();		# section to number
 				# $number =~ ^[\dA-Z]+\.(\d+(\.\d+)*)?$
-%sec2index = ();                # 1 if section in index
-%number2sec = ();		# number to section
-%idx2node = ();                 # index keys to node
-%node2href = ();                # node to HREF
-%node2next = ();                # node to next
-%node2prev = ();                # node to prev
-%node2up   = ();                # node to up
-%bib2href = ();                 # bibliography reference to HREF
-%gloss2href = ();               # glossary term to HREF
-@sections = ();                 # list of sections
-%tag2pro = ();                  # protected sections
+my %sec2index = ();                # 1 if section in index
+my %number2sec = ();		# number to section
+my %idx2node = ();                 # index keys to node
+my %node2href = ();                # node to HREF
+my %node2next = ();                # node to next
+my %node2prev = ();                # node to prev
+my %node2up = ();                # node to up
+my %bib2href = ();                 # bibliography reference to HREF
+my %gloss2href = ();               # glossary term to HREF
+my @sections = ();                 # list of sections
+my %tag2pro = ();                  # protected sections
 
+my $first_index_chapter;
+my $index;                         # ref on a hash for the indexes
 #
 # initial indexes
 #
-$bib_num = 0;
-$foot_num = 0;
-$gloss_num = 0;
-$idx_num = 0;
-$sec_num = 0;
-$doc_num = 0;
-$html_num = 0;
+my $bib_num = 0;
+my $foot_num = 0;
+my $gloss_num = 0;
+my $idx_num = 0;
+my $sec_num = 0;
+my $doc_num = 0;
+my $html_num = 0;
 
 #
 # can I use ISO8859 characters? (HTML+)
@@ -1089,12 +962,13 @@ if ($T2H_USE_ISO)
 #
 # read texi2html extensions (if any)
 #
-$extensions = 'texi2html.ext';  # extensions in working directory
+my $extensions = 'texi2html.ext';  # extensions in working directory
 if (-f $extensions)
 {
     print "# reading extensions from $extensions\n" if $T2H_VERBOSE;
     require($extensions);
 }
+my $progdir;
 ($progdir = $0) =~ s/[^\/]+$//;
 if ($progdir && ($progdir ne './'))
 {
@@ -1169,7 +1043,7 @@ sub l2h_InitToLatex
     {
         unless (open(L2H_LATEX, ">$l2h_latex_file"))
         {
-            warn "$ERROR Error l2h: Can't open latex file '$latex_file' for writing\n";
+            warn "$ERROR Error l2h: Can't open latex file '$l2h_latex_file' for writing\n";
             return 0;
         }
         print "# l2h: use ${l2h_latex_file} as latex file\n" if ($T2H_VERBOSE);
@@ -1250,7 +1124,7 @@ sub l2h_FinishToLatex
 #
 sub l2h_ToHtml
 {
-    local($call, $ext, $dotbug);
+    my ($call, $dotbug);
     if ($T2H_L2H_SKIP)
     {
         print "# l2h: skipping latex2html run\n" if ($T2H_VERBOSE);
@@ -1330,7 +1204,8 @@ my @l2h_from_html;
 
 sub l2h_InitFromHtml
 {
-    local($h_line, $h_content, $count, %l2h_img);
+    local(%l2h_img);
+    my ($count, $h_line);
 
     if (! open(L2H_HTML, "<${l2h_html_file}"))
     {
@@ -1345,7 +1220,7 @@ sub l2h_InitFromHtml
         if ($h_line =~ /^<!-- l2h_begin $l2h_name ([0-9]+) -->/)
         {
             $count = $1;
-            $h_content = "";
+            my $h_content = "";
             while ($h_line = <L2H_HTML>)
             {
                 if ($h_line =~ /^<!-- l2h_end $l2h_name $count -->/)
@@ -1360,7 +1235,7 @@ sub l2h_InitFromHtml
                 }
                 $h_content = $h_content.$h_line;
             }
-            if ($hcontent)
+            if ($h_content)
             {
                 print "$ERROR Warning l2h: l2h_end $l2h_name $count not found\n"
                     if ($T2H_VERBOSE);
@@ -1398,20 +1273,19 @@ sub l2h_FromHtml
 }
 
 
-sub l2h_ExtractFromHtml
+sub l2h_ExtractFromHtml($)
 {
-    local($count) = @_;
+    my $count = shift;
     return $l2h_from_html[$count] if ($l2h_from_html[$count]);
     if ($count >= 0 && $count < $l2h_latex_count)
     {
         # now we are in trouble
-        local($l_l2h, $_);
-
+        local($_);
         $l2h_extract_error++;
         print "$ERROR l2h: can't extract content $count from html\n"
             if ($T2H_VERBOSE);
         # try simple (ordinary) substition (without l2h)
-        $l_l2h = $T2H_L2H;
+        my $l_l2h = $T2H_L2H;
         $T2H_L2H = 0;
         $_ = $l2h_to_latex{$count};
         $_ = &substitute_style($_);
@@ -1524,7 +1398,7 @@ sub l2h_FromCache
 
 # insert generated html into cache, move away images,
 # return transformed html
-$maximage = 1;
+my $maximage = 1;
 sub l2h_ToCache
 {
     my $count = shift;
@@ -1622,6 +1496,13 @@ my @lines = ();             # whole document
 my @toc_lines = ();            # table of contents
 my @stoc_lines = ();           # table of contents
 
+my @fhs = ();			# hold the file handles to read
+my @input_spool = ();		# spooled lines to read
+my $fh_name = 'FH000';
+my @appendix_sec_num; 
+my @normal_sec_num;
+
+
 sub pass1
 {
     my $name;
@@ -1631,6 +1512,7 @@ sub pass1
     my $node_next = '';         # current node next name
     my $node_prev = '';         # current node prev name
     my $node_up = '';           # current node up name
+    my $section;                # current section
     my $in_table = 0;           # am I inside a table 
               # holds the command used to format entries for tables ;
               # for multitable, in_table is like: $table_width:$current_column
@@ -1644,13 +1526,14 @@ sub pass1
     my $in_list = 0;            # am I inside a list
     my $in_html = 0;            # am I inside an HTML section
     my $first_line = 1;         # is it the first line
+    my $toplevel;
     my $dont_html = 0;          # don't protect HTML on this line
+    my $in_titlepage;           # am I inside the title page
     #my %macros = ();           # macros #FIXME: really unused ?
     my $macros;                 # macros. reference on a hash
 
     &html_reset;
     build_simple_substitutions();
-    &init_input;
 
  INPUT_LINE: while ($_ = &next_line)
     {
@@ -1666,8 +1549,8 @@ sub pass1
         #
         # parse texinfo tags
         #
-        $tag = '';
-        $end_tag = '';
+        my $tag = '';
+        my $end_tag = '';
         if (/^\s*\@end\s+(\w+)\b/)
         {
             $end_tag = $1;
@@ -1771,7 +1654,7 @@ sub pass1
                     }
 
                     # Extract macro arguments from within '{' and '}'.
-                    $len = $end - $start - 1;
+                    my $len = $end - $start - 1;
                     $args = ($len > 0) ? substr($after, $start + 1, $len) : '';
                     $after = substr($after, $end + 1);
                 }
@@ -1798,7 +1681,7 @@ sub pass1
                     @args = ($args);
                 }
                 my $macrobody = $macros->{$name}->{Body};
-                for ($i=0; $i<=$#args; $i++)
+                for (my $i=0; $i<=$#args; $i++)
                 {
                     $macrobody =~ s|\\$macros->{$name}->{Args}->[$i]\\|$args[$i]|g;
                 }
@@ -1940,10 +1823,10 @@ sub pass1
             {
                 if (/^\@include\s+($FILERE)\s*$/o)
                 {
-                    $file = LocateIncludeFile($1);
+                    my $file = LocateIncludeFile($1);
                     if ($file && -e $file)
                     {
-                        &open($file);
+                        open_file($file);
                         print "# including $file\n" if $T2H_VERBOSE;
                     }
                     else
@@ -2249,7 +2132,7 @@ sub pass1
             elsif (defined($user_sub{$tag}))
             {
                 s/^\@$tag\s+//;
-                $sub = $user_sub{$tag};
+                my $sub = $user_sub{$tag};
                 print "# user $tag = $sub, arg: $_" if $T2H_DEBUG & $DEBUG_USER;
                 if (defined(&$sub))
                 {
@@ -2266,15 +2149,12 @@ sub pass1
             {
                 # process definition commands
                 s/^\@$tag\s+//;
+                my $is_extra = 0;
                 if ($tag =~ /x$/)
                 {
                     # extra definition line
                     $tag = $`;
                     $is_extra = 1;
-                }
-                else
-                {
-                    $is_extra = 0;
                 }
                 while (/\{([^\{\}]*)\}/)
                 {
@@ -2285,20 +2165,21 @@ sub pass1
                     # restore $_ protecting {}
                     $_ = "$before$;7$contents$;8$after";
                 }
-                @args = split(/\s+/, &protect_html($_));
+                my @args = split(/\s+/, &protect_html($_));
                 foreach (@args)
                 {
                     s/$;9/ /g;  # unprotect spaces
                     s/$;7/\{/g; # ... {
                     s/$;8/\}/g; # ... }
                 }
-                $type = shift(@args);
+                my $type = shift(@args);
                 $type =~ s/^\{(.*)\}$/$1/;
                 print "# def ($tag): {$type} ", join(', ', @args), "\n"
                     if $T2H_DEBUG & $DEBUG_DEF;
                 $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
-                $name = shift(@args);
+                my $name = shift(@args);
                 $name =~ s/^\{(.*)\}$/$1/;
+                my $ftype;
                 if ($is_extra)
                 {
                     $_ = &debug($T2H_DEF_TABLE ? '' : '<dt>', __LINE__);
@@ -2603,7 +2484,7 @@ sub pass1
                 {
                     $name = $1;
                     $name = &normalise_space_style($name);
-                    $level = $sec2level{$tag};
+                    my $level = $sec2level{$tag};
                     # check for index
                     $first_index_chapter = $name
                         if ($level == 1 && !$first_index_chapter &&
@@ -2622,7 +2503,7 @@ sub pass1
                         {
                             unless (/^\@unnumbered/)
                             {
-                                my $number = &update_sec_num($tag, $level);
+                                my $number = update_sec_num($tag, $level);
                                 $name = $number . ' ' . $name if $T2H_NUMBER_SECTIONS;
                                 $sec2number{$name} = $number;
                                 $number2sec{$number} = $name;
@@ -2648,8 +2529,8 @@ sub pass1
                                             $T2H_SPLIT && $level == $toplevel));
                         }
                         $sec_num++;
-                        $docid = "SEC$sec_num";
-                        $tocid = (/^\@\w*heading/ ? undef : "TOC$sec_num");
+                        my $docid = "SEC$sec_num";
+                        my $tocid = (/^\@\w*heading/ ? undef : "TOC$sec_num");
                         # check biblio and glossary
                         $in_bibliography = ($name =~ /^([A-Z]|\d+)?(\.\d+)*\s*bibliography$/i);
                         $in_glossary = ($name =~ /^([A-Z]|\d+)?(\.\d+)*\s*glossary$/i);
@@ -2738,26 +2619,26 @@ sub pass1
             else
             {
                 # track variables
-                $value{$1} = Unprotect_texi($2), next if /^\@set\s+($VARRE)\s+(.*)$/o;
-                delete $value{$1}, next if /^\@clear\s+($VARRE)\s*$/o;
+                ($value{$1} = Unprotect_texi($2), next) if /^\@set\s+($VARRE)\s+(.*)$/o;
+                (delete $value{$1}, next) if /^\@clear\s+($VARRE)\s*$/o;
                 # store things
-                $value{'_shorttitle'} = Unprotect_texi($1), next if /^\@shorttitle\s+(.*)$/;
-                $value{'_setfilename'}   = Unprotect_texi($1), next if /^\@setfilename\s+(.*)$/;
-                $value{'_settitle'}      = Unprotect_texi($1), next if /^\@settitle\s+(.*)$/;
-                $value{'_author'}   .= Unprotect_texi($1)."\n", next if /^\@author\s+(.*)$/;
-                $value{'_subtitle'} .= Unprotect_texi($1)."\n", next if /^\@subtitle\s+(.*)$/;
-                $value{'_title'}    .= Unprotect_texi($1)."\n", next if /^\@title\s+(.*)$/;
+                ($value{'_shorttitle'} = Unprotect_texi($1), next) if /^\@shorttitle\s+(.*)$/;
+                ($value{'_setfilename'}   = Unprotect_texi($1), next) if /^\@setfilename\s+(.*)$/;
+                ($value{'_settitle'}      = Unprotect_texi($1), next) if /^\@settitle\s+(.*)$/;
+                ($value{'_author'}   .= Unprotect_texi($1)."\n", next) if /^\@author\s+(.*)$/;
+                ($value{'_subtitle'} .= Unprotect_texi($1)."\n", next) if /^\@subtitle\s+(.*)$/;
+                ($value{'_title'}    .= Unprotect_texi($1)."\n", next) if /^\@title\s+(.*)$/;
 
                 # list item
                 if (/^\s*\@itemx?\s+/)
                 {
-                    $what = $';
+                    my $what = $';
                     $what =~ s/\s+$//;
-                    if ($in_bibliography && $use_bibliography)
+                    if ($in_bibliography)
                     {
                         if ($what =~ /^$BIBRE$/o)
                         {
-                            $id = 'BIB' . ++$bib_num;
+                            my $id = 'BIB' . ++$bib_num;
                             $bib2href{$what} = "$docu_doc#$id";
                             print "# found bibliography for '$what' id $id\n"
                                 if $T2H_DEBUG & $DEBUG_BIB;
@@ -2766,8 +2647,8 @@ sub pass1
                     }
                     elsif ($in_glossary && $T2H_USE_GLOSSARY)
                     {
-                        $id = 'GLOSS' . ++$gloss_num;
-                        $entry = $what;
+                        my $id = 'GLOSS' . ++$gloss_num;
+                        my $entry = $what;
                         $entry =~ tr/A-Z/a-z/ unless $entry =~ /^[A-Z\s]+$/;
                         $gloss2href{$entry} = "$docu_doc#$id";
                         print "# found glossary for '$entry' id $id\n"
@@ -2838,11 +2719,6 @@ sub pass1
                     push(@lines, &html_debug('', __LINE__));
                     next;
                 }
-                elsif (/^\@tab\s+(.*)$/)
-                {
-                    push(@lines, "<td>$1</td>\n");
-                    next;
-                }
             }
         }
         # paragraph separator
@@ -2869,7 +2745,7 @@ sub pass1
         push(@lines, &debug("</div>\n", __LINE__))  if ($tag eq 'center');
     }
     # finish TOC
-    $level = 0;
+    my $level = 0;
     while ($level < $curlevel)
     {
         $curlevel--;
@@ -2902,7 +2778,6 @@ sub EnterIndexEntry
     $key = $_;
     $_ = &protect_html($_);
     my $html_key = substitute_style($_);
-    my $id;
     $key = remove_style($key);
     $key = remove_things($key);
     $_ = $key;
@@ -2913,6 +2788,7 @@ sub EnterIndexEntry
         $key .= ' ';
     }
     ;
+    my $id;
     if ($lines->[$#lines] =~ /^<!--docid::(.+)::-->$/)
     {
         $id = $1;
@@ -2945,10 +2821,10 @@ sub GetIndexEntries
 {
     my $normal = shift;
     my $code = shift;
-    my ($entries, $prefix, $key) = ({});
-    for $prefix (keys %$normal)
+    my $entries = {};
+    for my $prefix (keys %$normal)
     {
-        for $key (keys %{$index->{$prefix}})
+        for my $key (keys %{$index->{$prefix}})
         {
             $entries->{$key} = {%{$index->{$prefix}->{$key}}};
         }
@@ -2956,11 +2832,11 @@ sub GetIndexEntries
 
     if (defined($code))
     {
-        for $prefix (keys %$code)
+        for my $prefix (keys %$code)
         {
             unless (exists $normal->{$prefix})
             {
-                for $key (keys %{$index->{$prefix}})
+                for my $key (keys %{$index->{$prefix}})
                 {
                     $entries->{$key} = {%{$index->{$prefix}->{$key}}};
                     $entries->{$key}->{html_key} = "<code>$entries->{$key}->{html_key}</code>";
@@ -2997,11 +2873,11 @@ sub byAlpha
 sub GetIndexPages
 {
     my $entries = shift;
-    my (@Letters, $key);
+    my (@Letters);
     my ($EntriesByLetter, $Pages, $page) = ({}, [], {});
     my @keys = sort byAlpha keys %$entries;
 
-    for $key (@keys)
+    for my $key (@keys)
     {
         push @{$EntriesByLetter->{uc(substr($key,0, 1))}} , $entries->{$key};
     }
@@ -3021,8 +2897,8 @@ sub GetIndexPages
     if ($T2H_SPLIT_INDEX =~ /^\d+$/)
     {
         my $i = 0;
-        my ($prev_letter, $letter);
-        for $letter (@Letters)
+        my ($prev_letter);
+        for my $letter (@Letters)
         {
             if ($i > $T2H_SPLIT_INDEX)
             {
@@ -3053,14 +2929,14 @@ sub GetIndexSummary
     my $first_page = shift;
     my $Pages = shift;
     my $name = shift;
-    my ($page, $letter, $summary, $l1, $l2, $l);
+    my ($summary, $l1, $l2);
 
     $summary = '<table><tr><th valign="top">Jump to: &nbsp; </th><td>';
-    for $page ($first_page, @$Pages)
+    for my $page ($first_page, @$Pages)
     {
-        for $letter (@{$page->{Letters}})
+        for my $letter (@{$page->{Letters}})
         {
-            $l = t2h_anchor('', "$page->{href}#${name}_$letter",
+            my $l = t2h_anchor('', "$page->{href}#${name}_$letter",
                             "<b>$letter</b>",
                             0, 'style="text-decoration: none"')
                 . "\n &nbsp; \n";
@@ -3095,12 +2971,12 @@ sub PrintIndexPage
 <tr><td colspan="3"> <hr></td></tr>
 EOT
 
-    for $letter (@{$page->{Letters}})
+    for my $letter (@{$page->{Letters}})
     {
         push @$lines, '<tr><th>' .
             &t2h_anchor("${name}_$letter", '', protect_html($letter)) .
                 "</th><td></td><td></td></tr>\n";
-        for $entry (@{$page->{EntriesByLetter}->{$letter}})
+        for my $entry (@{$page->{EntriesByLetter}->{$letter}})
         {
             push @$lines,
                 "<tr><td></td><td valign=\"top\">" .
@@ -3141,12 +3017,11 @@ sub PrintIndex
 
     if ($T2H_IDX_SUMMARY)
     {
-        my $key;
         open(FHIDX, ">$docu_rdir$docu_name" . "_$name.idx")
             || die "Can't open > $docu_rdir$docu_name" . "_$name.idx for writing: $!\n";
         print "# writing $name index summary in $docu_rdir$docu_name" . "_$name.idx...\n" if $T2H_VERBOSE;
 
-        for $key (sort keys %$Entries)
+        for my $key (sort keys %$Entries)
         {
             print FHIDX "$key\t$Entries->{$key}->{href}\n";
         }
@@ -3167,7 +3042,7 @@ sub PrintIndex
     # Is it normal that it is undef ? Is Top the right thing ?
     # Why does it work in that case and produce the right output ?
     $node2prev{$section} = Sec2PrevNode($node2sec{$section});
-    $prev_node = $section;
+    my $prev_node = $section;
     # Update tree structure of document
     if (@$Pages)
     {
@@ -3328,8 +3203,8 @@ sub pass2
         while (/\@(x|px|info|)ref{([^{}]+)(}?)/)
         {
             # note: Texinfo may accept other characters
-            ($type, $nodes, $full) = ($1, $2, $3);
-            ($before, $after) = ($`, $');
+            my ($type, $nodes, $full) = ($1, $2, $3);
+            my ($before, $after) = ($`, $');
             if (! $full && $after)
             {
                 warn "$ERROR Bad xref (no ending } on line): $_";
@@ -3354,7 +3229,7 @@ sub pass2
             }
             unless ($full)
             {
-                $next = shift(@lines);
+                my $next = shift(@lines);
                 $next = &substitute_style($next);
                 chop($nodes);   # remove final newline
                 if ($next =~ /\}/)
@@ -3383,39 +3258,40 @@ sub pass2
                 }
             }
             $nodes =~ s/\s+/ /go; # remove useless spaces
-            @args = split(/\s*,\s*/, $nodes);
-            $node = $args[0];   # the node is always the first arg
-            $node = &normalise_space_style($node);
+            my @args = split(/\s*,\s*/, $nodes);
+            my $node = $args[0];   # the node is always the first arg
+            $node = normalise_space_style($node);
             if ($node =~ s/^\(([^\s\(\)]+)\)\s*//)
             {
                 $args[3] = $1 unless ($args[3]);
                 $args[0] = $node;
             }
-            $sec = $args[2] || $args[1] || $node2sec{$node};
-            $href = $node2href{$node};
+            my $sec = $args[2] || $args[1] || $node2sec{$node};
+            my $href = $node2href{$node};
             if (@args == 5)
             {                   # reference to another manual
                 $sec = $args[2] || $node;
-                $man = $args[4] || $args[3];
+                my $man = $args[4] || $args[3];
                 $_ = "${before}${type}$T2H_WORDS->{$T2H_LANG}->{'section'} `$sec' in \@cite{$man}$after";
             }
             elsif ($type =~ /Info/)
             {                   # inforef 
                 warn "$ERROR Wrong number of arguments: $_" unless @args == 3;
-                ($nn, $_, $in) = @args;
-                $_ = "${before}${type} file `$in', node `$nn'$after";
+                my ($nn, $in_file);
+                ($nn, $_, $in_file) = @args;
+                $_ = "${before}${type} file `$in_file', node `$nn'$after";
             }
             elsif (@args == 4)
             {        # ref to info file        
-                my $dummy;
-                ($nn, $dummy, $dummy, $in) = @args;
+                my ($dummy, $nn, $in_file);
+                ($nn, $dummy, $dummy, $in_file) = @args;
                 if ($nn)
                 {
-                    $_ = "${before}${type}Info `$in', node `$nn'$after";
+                    $_ = "${before}${type}Info `$in_file', node `$nn'$after";
                 }
                 else 
                 {
-                    $_ = "${before}${type}${in}$after";
+                    $_ = "${before}${type}${in_file}$after";
                 }
             }
             
@@ -3458,34 +3334,32 @@ sub pass2
         #
         unless (/^<h\d><a name=\"SEC\d/)
         {
-            if ($use_bibliography)
+            my $done = '';
+            while (/$BIBRE/o)
             {
-                $done = '';
-                while (/$BIBRE/o)
+                my ($pre, $what, $post) = ($`, $&, $');
+                my $href = $bib2href{$what};
+                if (defined($href) && $post !~ /^[^<]*<\/a>/)
                 {
-                    ($pre, $what, $post) = ($`, $&, $');
-                    $href = $bib2href{$what};
-                    if (defined($href) && $post !~ /^[^<]*<\/a>/)
-                    {
-                        $done .= $pre . &t2h_anchor('', $href, $what);
-                    }
-                    else
-                    {
-                        $done .= "$pre$what";
-                    }
-                    $_ = $post;
+                    $done .= $pre . &t2h_anchor('', $href, $what);
                 }
-                $_ = $done . $_;
+                else
+                {
+                    $done .= "$pre$what";
+                }
+                $_ = $post;
             }
+            $_ = $done . $_;
+
             if ($T2H_USE_GLOSSARY)
             {
-                $done = '';
+                my $done = '';
                 while (/\b\w+\b/)
                 {
-                    ($pre, $what, $post) = ($`, $&, $');
-                    $entry = $what;
+                    my ($pre, $what, $post) = ($`, $&, $');
+                    my $entry = $what;
                     $entry =~ tr/A-Z/a-z/ unless $entry =~ /^[A-Z\s]+$/;
-                    $href = $gloss2href{$entry};
+                    my $href = $gloss2href{$entry};
                     if (defined($href) && $post !~ /^[^<]*<\/a>/)
                     {
                         $done .= $pre . &t2h_anchor('', $href, $what);
@@ -3657,13 +3531,14 @@ sub pass4
         #
         # footnotes
         #
+        my ($before, $d, $after);
         while (/\@footnote([^\{\s]+)\{/)
         {
-            ($before, $d, $after) = ($`, $1, $');
+            my ($before, $d, $after) = ($`, $1, $');
             $_ = $after;
-            $text = '';
+            my $text = '';
             $after = '';
-            $failed = 1;
+            my $failed = 1;
             while (@lines3)
             {
                 if (/\}/)
@@ -3686,9 +3561,9 @@ sub pass4
             else
             {
                 $foot_num++;
-                $docid  = "DOCF$foot_num";
-                $footid = "FOOT$foot_num";
-                $foot = "($foot_num)";
+                my $docid  = "DOCF$foot_num";
+                my $footid = "FOOT$foot_num";
+                my $foot = "($foot_num)";
                 push(@foot_lines, "<h3>" . &t2h_anchor($footid, "$d#$docid", $foot) . "</h3>\n");
                 $text = "<p>$text" unless $text =~ /^\s*<p>/;
                 push(@foot_lines, "$text\n");
@@ -3730,10 +3605,9 @@ sub pass5
     # fix node2up, node2prev, node2next, if desired
     if ($has_top_command)
     {
-        for $section (keys %sec2number)
+        for my $section (keys %sec2number)
         {
-	    $node2href{$sec2node{$section}} =~ /SEC(\d+)$/;
-            $node = $sec2node{$section};
+            my $node = $sec2node{$section};
             $node2up{$node} = Sec2UpNode($section) unless $node2up{$node};
             $node2prev{$node} = Sec2PrevNode($section) unless $node2prev{$node};
             $node2next{$node} = Sec2NextNode($section) unless $node2next{$node};
@@ -3746,7 +3620,7 @@ sub pass5
     $T2H_THISDOC{author} = $value{'_author'};
     $T2H_THISDOC{subtitle} = $value{'_subtitle'};
     $T2H_THISDOC{shorttitle} = $value{'_shorttitle'};
-    for $key (keys %T2H_THISDOC)
+    for my $key (keys %T2H_THISDOC)
     {
         $_ = &substitute_style($T2H_THISDOC{$key});
         $_ = &unprotect_texi ($_);
@@ -3896,6 +3770,8 @@ sub pass5
     $T2H_NODE{This} = 'Top';
     $T2H_NAME{This} = $T2H_NAME{Top};
     $T2H_HREF{This} = $T2H_HREF{Top};
+    
+    my $previous;
     if ($T2H_SPLIT)
     {
         print "# writing " . scalar(@sections) .
@@ -3913,8 +3789,9 @@ sub pass5
         $previous = '';
     }
 
-    $counter = 0;
+    my $counter = 0;
     # loop through sections
+    my $section;
     while ($section = shift(@sections))
     {
         if ($T2H_SPLIT && ($T2H_SPLIT eq 'section' || $previous eq $CHAPTEREND))
@@ -3947,8 +3824,8 @@ sub pass5
             delete $T2H_NAME{Forward};
         }
 
-        $node = $node2up{$T2H_NODE{This}};
-        $T2H_HREF{Up} = $node2href{$node};
+        my $up_node = $node2up{$T2H_NODE{This}};
+        $T2H_HREF{Up} = $node2href{$up_node};
         if (! $T2H_HREF{Up} || $T2H_HREF{Up} eq $T2H_HREF{This})
         {
             $T2H_NAME{Up} = $T2H_NAME{Top};
@@ -3957,29 +3834,29 @@ sub pass5
         }
         else
         {
-            $T2H_NAME{Up} = &clean_name($node);
-            $T2H_NODE{Up} = $node;
+            $T2H_NAME{Up} = &clean_name($up_node);
+            $T2H_NODE{Up} = $up_node;
         }
 
-        $node = $node2prev{$T2H_NODE{This}};
-        $T2H_NAME{Prev} = &clean_name($node);
-        $T2H_HREF{Prev} = $node2href{$node};
-        $T2H_NODE{Prev} = $node;
+        my $prev_node = $node2prev{$T2H_NODE{This}};
+        $T2H_NAME{Prev} = &clean_name($prev_node);
+        $T2H_HREF{Prev} = $node2href{$prev_node};
+        $T2H_NODE{Prev} = $prev_node;
 
-	$node = Node2FastBack($T2H_NODE{This});
-        $T2H_NAME{FastBack} = &clean_name($node);
-        $T2H_HREF{FastBack} = $node2href{$node};
-        $T2H_NODE{FastBack} = $node;
+	my $fastback_node = Node2FastBack($T2H_NODE{This});
+        $T2H_NAME{FastBack} = &clean_name($fastback_node);
+        $T2H_HREF{FastBack} = $node2href{$fastback_node};
+        $T2H_NODE{FastBack} = $fastback_node;
 
-        $node = $node2next{$T2H_NODE{This}};
-        $T2H_NAME{Next} = &clean_name($node);
-        $T2H_HREF{Next} = $node2href{$node};
-        $T2H_NODE{Next} = $node;
+        my $next_node = $node2next{$T2H_NODE{This}};
+        $T2H_NAME{Next} = &clean_name($next_node);
+        $T2H_HREF{Next} = $node2href{$next_node};
+        $T2H_NODE{Next} = $next_node;
 
-	$node = Node2FastForward($T2H_NODE{This});
-        $T2H_NAME{FastForward} = &clean_name($node);
-        $T2H_HREF{FastForward} = $node2href{$node};
-        $T2H_NODE{FastForward} = $node;
+	my $fastforward_node = Node2FastForward($T2H_NODE{This});
+        $T2H_NAME{FastForward} = &clean_name($fastforward_node);
+        $T2H_HREF{FastForward} = $node2href{$fastforward_node};
+        $T2H_NODE{FastForward} = $fastforward_node;
 
         if (! defined($FH))
         {
@@ -4128,16 +4005,16 @@ sub clean_name
 # initialize or increments @appendix_sec_num for the appendix sectionning,
 # initialize or increments @normal_sec_num for the normal sections, 
 # return the sectionning number.
-sub update_sec_num
+sub update_sec_num($$)
 {
     my($name, $level) = @_;
     my $ret;
 
     $level--;                   # here we start at 0
-    if ($name =~ /^appendix/ || defined(@appendix_sec_num))
+    if ($name =~ /^appendix/ || @appendix_sec_num)
     {
         # appendix style
-        if (defined(@appendix_sec_num))
+        if (@appendix_sec_num)
         {
             &incr_sec_num($level, @appendix_sec_num);
         }
@@ -4150,7 +4027,7 @@ sub update_sec_num
     else
     {
         # normal style
-        if (defined(@normal_sec_num))
+        if (@normal_sec_num)
         {
             &incr_sec_num($level, @normal_sec_num);
         }
@@ -4166,16 +4043,15 @@ sub update_sec_num
 
 sub incr_sec_num
 {
-    local($level, $l);
-    $level = shift(@_);
+    my $level = shift;
     $_[$level]++;
-    foreach $l ($level+1 .. 3)
+    foreach my $l ($level+1 .. 3)
     {
         $_[$l] = 0;
     }
 }
 
-sub Sec2UpNode
+sub Sec2UpNode($)
 {
     my $sec = shift;
     my $num = $sec2number{$sec};
@@ -4324,9 +4200,9 @@ sub check()
     }
 }
 
-sub open
+sub open_file($)
 {
-    my($name) = @_;
+    my $name = shift;
 
     ++$fh_name;
     no strict "refs";
@@ -4339,14 +4215,6 @@ sub open
         warn "$ERROR Can't read file $name: $!\n";
     }
     use strict "refs";
-}
-
-sub init_input
-{
-    @fhs = ();			# hold the file handles to read
-    @input_spool = ();		# spooled lines to read
-    $fh_name = 'FH000';
-    &open($docu);
 }
 
 sub next_line
@@ -4370,9 +4238,9 @@ sub next_line
 }
 
 # used in pass 1, use &next_line
-sub skip_until
+sub skip_until($)
 {
-    local($tag) = @_;
+    my $tag = shift;
     local($_);
 
     while ($_ = &next_line)
@@ -4385,8 +4253,9 @@ sub skip_until
 # used in pass 1 for l2h use &next_line
 sub string_until
 {
-    local($tag) = @_;
-    local($_, $string);
+    my $tag = shift;
+    my $string = '';
+    local($_);
 
     while ($_ = &next_line)
     {
@@ -4401,40 +4270,38 @@ sub string_until
 # HTML stacking to have a better HTML output
 #
 
-sub html_reset
+sub html_reset()
 {
     @html_stack = ('html');
     $html_element = 'body';
 }
 
-sub html_push
+sub html_push($)
 {
-    local($what) = @_;
+    my $what = shift;
     push(@html_stack, $html_element);
     $html_element = $what;
 }
 
 # push the html element on the top the html stack if it is not a <p>
-sub html_push_if
+sub html_push_if($)
 {
-    local($what) = @_;
+    my $what = shift;
     push(@html_stack, $html_element)
         if ($html_element && $html_element ne 'p');
     $html_element = $what;
 }
 
-sub html_pop
+sub html_pop()
 {
     $html_element = pop(@html_stack);
 }
 
-sub html_pop_if
+sub html_pop_if(;@)
 {
-    local($elt);
-
     if (@_)
     {
-        foreach $elt (@_)
+        foreach my $elt (@_)
         {
             if ($elt eq $html_element)
             {
@@ -4749,9 +4616,9 @@ sub t2h_anchor
     return join('', @result);
 }
 
-sub doc_href
+sub doc_href($)
 {
-    local($num) = @_;
+    my $num = shift;
 
     return("${docu_name}_$num.$docu_ext");
 }
@@ -4761,14 +4628,14 @@ sub sec_href
     return $node2href{$sec2node{$_[0]}};
 }
 
-sub next_doc
+sub next_doc()
 {
     ++$doc_num;
     if ("$docu_rdir${docu_name}_$doc_num.$docu_ext" eq "$docu_top_file") {
         warn "$WARN Section $docu_rdir${docu_name}_$doc_num.$docu_ext would overwrite Top, continuing at $docu_rdir${docu_name}_".($doc_num+1).".$docu_ext";
         $doc_num++;
     }
-    $docu_doc = &doc_href($doc_num);
+    $docu_doc = doc_href($doc_num);
 }
 
 sub t2h_print_lines
@@ -4797,14 +4664,14 @@ sub t2h_print_lines
 }
 
 # protect the , in @,{}
-sub protect_cedilla
+sub protect_cedilla($)
 {
     my $text = shift;
     $text =~ s/\@,\{(\w)\}/$;6$1/g;
     return $text;
 }
 
-sub protect_texi
+sub protect_texi($)
 {
     # protect @ { } ` '
     my $text = shift;
@@ -4817,9 +4684,9 @@ sub protect_texi
     return $text;
 }
 
-sub protect_html
+sub protect_html($)
 {
-    local($what) = @_;
+    my $what = shift;
     # protect &, ", <, and >.
     # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
     # We may consider using that instead.
@@ -4832,7 +4699,7 @@ sub protect_html
     return($what);
 }
 
-sub unprotect_cedilla
+sub unprotect_cedilla(@)
 {
     my @result = ();
     while (@_)
@@ -4844,7 +4711,7 @@ sub unprotect_cedilla
     return @result;
 }
 
-sub unprotect_texi
+sub unprotect_texi($)
 {
     my $text = shift;
     $text =~ s/$;0/\@/go;
@@ -4856,16 +4723,16 @@ sub unprotect_texi
     return $text;
 }
 
-sub Unprotect_texi
+sub Unprotect_texi($)
 {
-    local $_ = shift;
-    $_ = &unprotect_texi($_);
-    return($_);
+    my $text = shift;
+    $text = &unprotect_texi($text);
+    return ($text);
 }
 
-sub unprotect_html
+sub unprotect_html($)
 {
-    local($what) = @_;
+    my $what = shift;
     # APA: Use
     # Character entity references (eg. &lt;)
     # instead of
@@ -4885,7 +4752,7 @@ sub t2h_print_label
     print $fh qq{<a name="$href"></a>\n};
 }
 
-sub main
+sub main()
 {
     SetDocumentLanguage('en') unless ($T2H_LANG);
     # APA: There's got to be a better way:
@@ -4907,6 +4774,7 @@ sub main
         # implemented there.
         $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
     }
+    open_file($docu);
     &pass1();
     &pass2();
     &pass3();
