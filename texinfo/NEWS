@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.28 2003-01-12 15:19:01 karl Exp $
+$Id: NEWS,v 1.29 2003-01-24 19:16:28 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -34,10 +34,14 @@ convenience, here's a url to one of the relevant sections:
   . new translation txi-tr.tex.
   . bug fix: <>| and other characters do not disappear when they are
     first on a line in @verbatim.
-* info:
-  . arrow keys once again work in isearch contexts under Solaris.
 * install-info:
   . bug fix: don't translate the `* Menu' info keyword.
+* info:
+  . CTRL-H is treated like DEL in incremental search.
+  . arrow keys once again work in isearch contexts under Solaris.
+* infokey:
+  . use .info key bindings before defaults.
+  . allow prefix keys to be disabled.
 * Distribution:
   . update to GNU FDL 1.2 (http://www.gnu.org/licenses/fdl.html).
   . getopt and other common library files updated from gnulib
