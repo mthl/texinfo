@@ -1,3 +1,9 @@
+2005-02-19  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: do not have -o (used by Autoconf/make) imply
+	--clean.  That results in TeX always running at least twice, since
+	the aux files are stuck (and removed) in the temp directory for clean.
+
 2005-02-18  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: call absolute_filenames on BIBINPUTS and
