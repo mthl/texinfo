@@ -1,3 +1,9 @@
+2003-04-10  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: labels were put 2 times in special
+	sections (Top, about, toc...).
+	in vtable, ftable and table, even with an empty first item we
+	begin a <dd> as only <dd> and <dt> are allowed to follow <dl>.
+
 2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: formatting put in texi2html.init
 	hrefs to anchors and index entries which are in footnotes are right

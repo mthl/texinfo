@@ -266,7 +266,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.37 2003-04-10 12:08:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.38 2003-04-10 13:08:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -5857,6 +5857,8 @@ sub scan_line($$$$)
                         }
 			else 
                         {
+                            # multitable without row... We use the special null
+                            # format which content is ignored
                             push @$stack, { 'format' => 'null', 'text' => ''};
                             push @$stack, { 'format' => 'null', 'text' => ''};
                         }
@@ -5869,6 +5871,7 @@ sub scan_line($$$$)
                     {
                         begin_paragraph($stack, $state);			
                     }
+                    #dump_stack ($text, $stack, $state);
                     return if ($macro eq 'multitable');
                     next;
                 }
@@ -6013,6 +6016,8 @@ sub add_term($$$;$)
         my $style = pop @$stack;
         add_prev($text, $stack, do_simple($style->{'style'}, $style->{'text'}, $state));
     }
+    # no <pre> allowed in <dt>, thus it is possible there is a @t added
+    # to have teletype in preformatted.
     if ($state->{'preformatted'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq 't'))
     {
         my $style = pop @$stack;
@@ -6094,7 +6099,7 @@ sub add_line($$$;$)
     #print STDERR "ADD_LINE\n";
     #dump_stack($text, $stack, $state);
     # as in pre the end of line are kept, we must explicitely abort empty
-    # preformatted, close_stack doesn't do that.
+    # preformatted, close_stack doesn't abort the empty preformatted regions.
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
     close_stack($text, $stack, $state, undef, 'line');
     my $line = pop @$stack;
@@ -6103,7 +6108,10 @@ sub add_line($$$;$)
     if ($first)
     {
         $format->{'first'} = 0;
-        add_prev($text, $stack, $line->{'text'}) if ($line->{'text'} =~ /[^\s]/o);
+        # we must have <dd> or <dt> following <dl> thus we do a 
+        # &$t2h_table_line here too, although it could have been nice to
+        # have a normal paragraph.
+        add_prev($text, $stack, &$t2h_table_line($line->{'text'})) if ($line->{'text'} =~ /[^\s]/o);
     }
     else
     {
@@ -6112,7 +6120,9 @@ sub add_line($$$;$)
     unless($end)
     {
         push (@$stack, { 'format' => 'term', 'text' => '' });
-        push (@$stack, { 'style' => 't', 'text' => '' }) if ($state->{'preformatted'});
+        # we cannot have a preformatted in table term (no <pre> in <dt>)
+        # thus we set teletyped style @t if there is no pre_style
+        push (@$stack, { 'style' => 't', 'text' => '' }) if ($state->{'preformatted'} and (!$state->{'preformatted_stack'}->[-1]));
         push (@$stack, { 'style' => $format->{'command'}, 'text' => '' }) if ($format->{'command'});
     }
     $format->{'term'} = 1;

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.21 2003-04-10 12:08:20 pertusus Exp $
+# $Id: texi2html.init,v 1.22 2003-04-10 13:08:24 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -477,8 +477,6 @@ sub T2H_DEFAULT_print_Top_header
     my $fh = shift;
     my $buttons = shift;
     &$T2H_print_page_head($fh, $buttons) if $T2H_SPLIT;
-    # this needs to be called, otherwise no label set
-    t2h_print_lines($fh, $T2H_THIS_HEADER);
     &$T2H_print_head_navigation($fh, $buttons);
 }
 sub T2H_DEFAULT_print_Top_footer
@@ -554,8 +552,6 @@ sub T2H_DEFAULT_print_misc_header
     my $fh = shift;
     my $buttons = shift;
     &$T2H_print_page_head($fh, $buttons) if $T2H_SPLIT;
-    # this needs to be called, otherwise, no labels are set
-    t2h_print_lines($fh, $T2H_THIS_HEADER);
     &$T2H_print_head_navigation($fh, $buttons);
 }
 sub T2H_DEFAULT_print_misc_footer
