@@ -1,5 +1,5 @@
 /* toc.c -- table of contents handling.
-   $Id: toc.c,v 1.2 2002-11-05 03:04:26 karl Exp $
+   $Id: toc.c,v 1.3 2002-11-07 16:13:59 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -17,7 +17,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Karl Heinz Marbaise <kama@hippo.fido.de>.  */
+   Originally written by Karl Heinz Marbaise <kama@hippo.fido.de>.  */
 
 #include "system.h"
 #include "makeinfo.h"
@@ -247,6 +247,9 @@ contents_update_html (fp)
           /* each toc entry is a list item.  */
           fputs ("<li>", fp);
 
+          /* Insert link -- to an external file if splitting, or
+             within the current document if not splitting.  */
+	  fprintf (fp, "<a ");
           /* For chapters (only), insert an anchor that the short contents
              will link to.  */
           if (toc_entry_alist[i]->level == 0)
@@ -259,13 +262,10 @@ contents_update_html (fp)
 		 ends, and use that in toc_FOO.  */
 	      while (*p && *p != '"')
 		p++;
-	      fprintf (fp, "<a name=\"toc_%.*s\"></a>\n    ",
+	      fprintf (fp, "name=\"toc_%.*s\" ",
 		       p - toc_entry_alist[i]->name, toc_entry_alist[i]->name);
 	    }
-
-          /* Insert link -- to an external file if splitting, or
-             within the current document if not splitting.  */
-	  fprintf (fp, "<a href=\"%s#%s</a>\n",
+	  fprintf (fp, "href=\"%s#%s</a>\n",
 		   splitting ? toc_entry_alist[i]->html_file : "",
 		   toc_entry_alist[i]->name);
         }
