@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 12. Searching and Replacement </h1>
+<h1 class="chapter"> 12. Searching and Replacement </h1>
 
 <p>  Like other editors, Emacs has commands for searching for occurrences of
 a string.  The principal search command is unusual in that it is
@@ -53,7 +68,7 @@ those of other editors.
 occurrences of one string and replaces them with another, Emacs has a fancy
 replacement command called <code>query-replace</code> which asks interactively
 which occurrences to replace.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC116">12.1 Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Search happens as you type the string.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC118">12.2 Non-Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify entire string and then search.</td></tr>
@@ -84,7 +99,7 @@ which occurrences to replace.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.1 Incremental Search </h2>
+<h2 class="section"> 12.1 Incremental Search </h2>
 
 <p>  An incremental search begins searching as soon as you type the first
 character of the search string.  As you type in the search string, Emacs
@@ -203,7 +218,7 @@ would need to type more to select one.
 the normal keybinding mechanism: simply add a binding to the 
 <code>isearch-mode-map</code>.  For example, to make the character
 <kbd>C-b</kbd> mean &quot;search backwards&quot; while in isearch-mode, do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
 </pre></td></tr></table>
 <p>These are the default bindings of isearch-mode:
@@ -300,7 +315,7 @@ is automatically added to the search string in isearch-mode.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 12.1.1 Slow Terminal Incremental Search </h3>
+<h3 class="subsection"> 12.1.1 Slow Terminal Incremental Search </h3>
 
 <p>  Incremental search on a slow terminal uses a modified style of display
 that is designed to take less time.  Instead of redisplaying the buffer at
@@ -339,7 +354,7 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.2 Non-Incremental Search </h2>
+<h2 class="section"> 12.2 Non-Incremental Search </h2>
 
 <p>  Emacs also has conventional non-incremental search commands, which require
 you type the entire search string before searching begins.
@@ -393,7 +408,7 @@ See section <a href="#SEC119">Word Search</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.3 Word Search </h2>
+<h2 class="section"> 12.3 Word Search </h2>
 
 <p>  Word search looks for a sequence of words without regard to how the
 words are separated.  More precisely, you type a string of many words,
@@ -446,7 +461,7 @@ is the traditional Emacs sequence of keys for word search.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.4 Regular Expression Search </h2>
+<h2 class="section"> 12.4 Regular Expression Search </h2>
 
 <p>  A <em>regular expression</em> (<em>regexp</em>, for short) is a pattern that
 denotes a (possibly infinite) set of strings.  Searching for matches
@@ -510,7 +525,7 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.5 Syntax of Regular Expressions </h2>
+<h2 class="section"> 12.5 Syntax of Regular Expressions </h2>
 
 <p>  Regular expressions have a syntax in which a few characters are
 special constructs and the rest are <em>ordinary</em>.  An ordinary
@@ -623,7 +638,7 @@ utilities, and has been introduced to XEmacs for the version 20.3.
 </p><p>Unfortunately, the non-greedy version of this quantifier does not exist
 currently, although it does in Perl.
 </p></dd>
-<dt><kbd> [ <small>...</small> ]
+<dt><kbd> [ <small class="dots">...</small> ]
 </kbd></dt>
 <dd><p><a name="IDX454"></a>
 <a name="IDX455"></a>
@@ -653,7 +668,7 @@ immediately after a range.  (You can replace one individual character
 </p><p>To include `<samp>^</samp>' in a set, put it anywhere but at the beginning of
 the set.
 </p></dd>
-<dt><kbd> [^ <small>...</small> ]
+<dt><kbd> [^ <small class="dots">...</small> ]
 </kbd></dt>
 <dd><p><a name="IDX457"></a>
 `<samp>[^</samp>' begins a <em>complement character set</em>, which matches any
@@ -718,11 +733,11 @@ between form an expression that matches anything that either <var>a</var> or
 </p><p>Thus, `<samp>foo\|bar</samp>' matches either `<samp>foo</samp>' or `<samp>bar</samp>'
 but no other string.
 </p><p>`<samp>\|</samp>' applies to the largest possible surrounding expressions.  Only a
-surrounding `<samp>\( <small>...</small> \)</samp>' grouping can limit the grouping power of
+surrounding `<samp>\( <small class="dots">...</small> \)</samp>' grouping can limit the grouping power of
 `<samp>\|</samp>'.
 </p><p>Full backtracking capability exists to handle multiple uses of `<samp>\|</samp>'.
 </p></dd>
-<dt><kbd> \( <small>...</small> \)
+<dt><kbd> \( <small class="dots">...</small> \)
 </kbd></dt>
 <dd><p><a name="IDX464"></a>
 <a name="IDX465"></a>
@@ -742,41 +757,41 @@ To record a matched substring for future reference.
 
 <p>This last application is not a consequence of the idea of a
 parenthetical grouping; it is a separate feature that happens to be
-assigned as a second meaning to the same `<samp>\( <small>...</small> \)</samp>' construct
+assigned as a second meaning to the same `<samp>\( <small class="dots">...</small> \)</samp>' construct
 because there is no conflict in practice between the two meanings.
 Here is an explanation of this feature:
 </p></dd>
 <dt><kbd> \<var>digit</var>
 </kbd></dt>
 <dd><p>matches the same text that matched the <var>digit</var>th occurrence of a
-`<samp>\( <small>...</small> \)</samp>' construct.
-</p><p>In other words, after the end of a `<samp>\( <small>...</small> \)</samp>' construct.  the
+`<samp>\( <small class="dots">...</small> \)</samp>' construct.
+</p><p>In other words, after the end of a `<samp>\( <small class="dots">...</small> \)</samp>' construct.  the
 matcher remembers the beginning and end of the text matched by that
 construct.  Then, later on in the regular expression, you can use
 `<samp>\</samp>' followed by <var>digit</var> to match that same text, whatever it
 may have been.
-</p><p>The strings matching the first nine `<samp>\( <small>...</small> \)</samp>' constructs
+</p><p>The strings matching the first nine `<samp>\( <small class="dots">...</small> \)</samp>' constructs
 appearing in a regular expression are assigned numbers 1 through 9 in
 the order that the open parentheses appear in the regular expression.
 So you can use `<samp>\1</samp>' through `<samp>\9</samp>' to refer to the text matched
-by the corresponding `<samp>\( <small>...</small> \)</samp>' constructs.
+by the corresponding `<samp>\( <small class="dots">...</small> \)</samp>' constructs.
 </p><p>For example, `<samp>\(.*\)\1</samp>' matches any newline-free string that is
 composed of two identical halves.  The `<samp>\(.*\)</samp>' matches the first
 half, which may be anything, but the `<samp>\1</samp>' that follows must match
 the same exact text.
 </p></dd>
-<dt><kbd> \(?: <small>...</small> \)
+<dt><kbd> \(?: <small class="dots">...</small> \)
 </kbd></dt>
 <dd><p><a name="IDX467"></a>
 <a name="IDX468"></a>
 is called a <em>shy</em> grouping operator, and it is used just like
-`<samp>\( <small>...</small> \)</samp>', except that it does not cause the matched
+`<samp>\( <small class="dots">...</small> \)</samp>', except that it does not cause the matched
 substring to be recorded for future reference.
-</p><p>This is useful when you need a lot of grouping `<samp>\( <small>...</small> \)</samp>'
+</p><p>This is useful when you need a lot of grouping `<samp>\( <small class="dots">...</small> \)</samp>'
 constructs, but only want to remember one or two -- or if you have
 more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
-</p><p>Using `<samp>\(?: <small>...</small> \)</samp>' rather than `<samp>\( <small>...</small> \)</samp>' when you
+</p><p>Using `<samp>\(?: <small class="dots">...</small> \)</samp>' rather than `<samp>\( <small class="dots">...</small> \)</samp>' when you
 don't need the captured substrings ought to speed up your programs some,
 since it shortens the code path followed by the regular expression
 engine, as well as the amount of memory allocation and string copying it
@@ -867,7 +882,7 @@ Lisp syntax, the string constant begins and ends with a double-quote.
 `<samp>\&quot;</samp>' stands for a double-quote as part of the regexp, `<samp>\\</samp>' for a
 backslash as part of the regexp, `<samp>\t</samp>' for a tab and `<samp>\n</samp>' for a
 newline.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 &quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
 </pre></td></tr></table>
 <p>This regexp contains four parts: a character set matching
@@ -895,7 +910,7 @@ times.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.6 Searching and Case </h2>
+<h2 class="section"> 12.6 Searching and Case </h2>
 
 <p>  All searches in Emacs normally ignore the case of the text they
 are searching through; if you specify searching for `<samp>FOO</samp>',
@@ -928,7 +943,7 @@ on your screen.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.7 Replacement Commands </h2>
+<h2 class="section"> 12.7 Replacement Commands </h2>
 
 <p>  Global search-and-replace operations are not needed as often in Emacs as
 they are in other editors, but they are available.  In addition to the
@@ -938,7 +953,7 @@ occurrence of a pattern, whether to replace it.
 </p><p>  The replace commands all replace one string (or regexp) with one
 replacement string.  It is possible to perform several replacements in
 parallel using the command <code>expand-region-abbrevs</code>.  See section <a href="xemacs_26.html#SEC287">Controlling Abbrev Expansion</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC124">12.7.1 Unconditional Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Replacing all matches for a string.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC125">12.7.2 Regexp Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Replacing all matches for a regexp.</td></tr>
@@ -965,7 +980,7 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 12.7.1 Unconditional Replacement </h3>
+<h3 class="subsection"> 12.7.1 Unconditional Replacement </h3>
 
 <dl compact="compact">
 <dt><kbd> M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
@@ -1010,7 +1025,7 @@ by word boundaries.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 12.7.2 Regexp Replacement </h3>
+<h3 class="subsection"> 12.7.2 Regexp Replacement </h3>
 
 <p>  <code>replace-string</code> replaces exact matches for a single string.  The
 similar command <code>replace-regexp</code> replaces any match for a specified
@@ -1021,12 +1036,12 @@ in <var>newstring</var> stands for the entire text being replaced.
 `<samp>\<var>d</var></samp>' in <var>newstring</var>, where <var>d</var> is a digit, stands for
 whatever matched the <var>d</var>'th parenthesized grouping in <var>regexp</var>.
 For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x replace-regexp <kbd>RET</kbd> c[ad]+r <kbd>RET</kbd> \&amp;-safe <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>would replace (for example) `<samp>cadr</samp>' with `<samp>cadr-safe</samp>' and `<samp>cddr</samp>'
 with `<samp>cddr-safe</samp>'.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>would perform exactly the opposite replacements.  To include a `<samp>\</samp>'
@@ -1050,11 +1065,11 @@ in the text to replace with, you must give `<samp>\\</samp>'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 12.7.3 Replace Commands and Case </h3>
+<h3 class="subsection"> 12.7.3 Replace Commands and Case </h3>
 
 <p>  If the arguments to a replace command are in lower case, the command
 preserves case when it makes a replacement.  Thus, the following command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x replace-string <kbd>RET</kbd> foo <kbd>RET</kbd> bar <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>replaces a lower-case `<samp>foo</samp>' with a lower case `<samp>bar</samp>', `<samp>FOO</samp>'
@@ -1086,7 +1101,7 @@ replacement string is not done.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 12.7.4 Query Replace </h3>
+<h3 class="subsection"> 12.7.4 Query Replace </h3>
 
 <dl compact="compact">
 <dt><kbd> M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
@@ -1214,7 +1229,7 @@ used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#S
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.8 Other Search-and-Loop Commands </h2>
+<h2 class="section"> 12.8 Other Search-and-Loop Commands </h2>
 
 <p>  Here are some other commands that find matches for a regular expression.
 They all operate from point to the end of the buffer.

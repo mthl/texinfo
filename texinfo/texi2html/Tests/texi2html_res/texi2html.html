@@ -11,14 +11,29 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo to HTML: Texi2html</title>
+<title>Texinfo to HTML Converter: Texi2html</title>
 
-<meta name="description" content="Texinfo to HTML: Texi2html">
-<meta name="keywords" content="Texinfo to HTML: Texi2html">
+<meta name="description" content="Texinfo to HTML Converter: Texi2html">
+<meta name="keywords" content="Texinfo to HTML Converter: Texi2html">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -44,11 +59,11 @@ Marbaise <a href="mailto:khmarbaise@gmx.de">khmarbaise@gmx.de</a>. Please state 
 version/edition of the manual (can be found at start of
 Texinfo source file; use the entry Id under Revisions).
 </p><p>Please note:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 This manual is currently under
 construction and of course incomplete ;-)
 </pre></td></tr></table>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC1">1. Overview about <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
@@ -59,19 +74,19 @@ construction and of course incomplete ;-)
 <tr><td align="left" valign="top"><a href="#SEC23">7. Initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Initialization files.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC28">7.5 Initialization file options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC39">8. Command Line Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC67">A. Function Reference</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reference Manual of functions.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 /// The Detailed Node Listing ///
 
 --- Overview ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 --- Installation process ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 --- Initialization file options ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Number sectioning.</td></tr>
@@ -84,7 +99,7 @@ construction and of course incomplete ;-)
 <tr><td align="left" valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC37">7.5.9 Split Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">HREF Dir Instead file.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 --- Command Line Options ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -111,13 +126,13 @@ construction and of course incomplete ;-)
 <tr><td align="left" valign="top"><a href="#SEC61">8.22 Verbose output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Verbose.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC62">8.23 Language Support</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Language.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">LaTeX2HTML.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 --- LaTeX2HTML for <code>@math</code> and <code>@tex</code> ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to find LaTeX2HTML.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 --- Indices ---
 
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC70">B. Indices</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Command Line Option Index.</td></tr>
@@ -143,7 +158,7 @@ construction and of course incomplete ;-)
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. Overview about <code>texi2html</code> </h1>
+<h1 class="chapter"> 1. Overview about <code>texi2html</code> </h1>
 <p><a href="http://www.texinfo.org">Texinfo</a> is the official
 documentation format of the <a href="http://www.gnu.org">GNU</a>
 project. It uses a single source file to produce both
@@ -159,7 +174,7 @@ HTML output format, but there are needth to have
 HTML. This was the borning hour for
 <code>texi2html</code>. The basic purpose of `<tt>texi2html</tt>'
 is to convert Texinfo documents into HTML.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC2">1.1 Ways to get HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Ways to get HTML files.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Why texi2html and not makeinfo?.</td></tr>
@@ -183,7 +198,7 @@ is to convert Texinfo documents into HTML.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.1 Ways to get HTML </h2>
+<h2 class="section"> 1.1 Ways to get HTML </h2>
 <p>You would like to HTML files out of your Texinfo
 files? There exist two ways which you can go.
 This first is to use <code>makeinfo</code> itself to produce
@@ -208,7 +223,7 @@ HTML output. The second is to use
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'? </h2>
+<h2 class="section"> 1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'? </h2>
 <p>The basic idea of <code>makeinfo</code>'s HTML
 output was to get an readable HTML output.
 Nothing sophisticated nor good styling just readable.
@@ -257,7 +272,7 @@ split documents at various levels, and use
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. Installation of <code>texi2html</code> </h1>
+<h1 class="chapter"> 2. Installation of <code>texi2html</code> </h1>
 <p>description of the installation process.
 What do you need?
 How?
@@ -280,9 +295,9 @@ How?
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. Customizing files </h1>
+<h1 class="chapter"> 3. Customizing files </h1>
 <p>Result based on using `<samp>-frames</samp>'
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 texi2html -V -frames texi2html.texi
 </pre></td></tr></table><p>Explanation of the output differences against default,
 whatever this is ;-)
@@ -305,7 +320,7 @@ whatever this is ;-)
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 4. Customizing what gets expanded </h1>
+<h1 class="chapter"> 4. Customizing what gets expanded </h1>
 <p>Test starting.
 </p><p>`<samp>-expand info</samp>'
 `<samp>-expand tex</samp>'
@@ -330,7 +345,7 @@ Take a look at optionexpand.
 </tr></table>
 
 <a name="SEC7"></a>
-<h1> 5. Customizing page layout </h1>
+<h1 class="chapter"> 5. Customizing page layout </h1>
 <p>This chapter is designed to help you to change the
 complete layout of the HTML output if you like to
 do so.
@@ -338,7 +353,7 @@ do so.
 aa) Navigation panels<br>
 b) Top page<br>
 c) Section pages<br>
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC8">5.1 Tips how to create a new site design</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC9">5.2 Page Layout and the philosophy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
@@ -366,7 +381,7 @@ c) Section pages<br>
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.1 Tips how to create a new site design </h2>
+<h2 class="section"> 5.1 Tips how to create a new site design </h2>
 
 <p>Here you can find information how you should work to pick
 up a new design with <code>texi2html</code>.
@@ -389,9 +404,9 @@ up a new design with <code>texi2html</code>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.2 Page Layout and the philosophy </h2>
+<h2 class="section"> 5.2 Page Layout and the philosophy </h2>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC10">5.2.1 Navigation panels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -414,7 +429,7 @@ up a new design with <code>texi2html</code>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 5.2.1 Navigation panels </h3>
+<h3 class="subsection"> 5.2.1 Navigation panels </h3>
 
 <p>Head and foot Navigation panels.
 </p><hr size="6">
@@ -436,7 +451,7 @@ up a new design with <code>texi2html</code>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.3 Top Page </h2>
+<h2 class="section"> 5.3 Top Page </h2>
 <hr size="6">
 <a name="NOD13"></a>
 <a name="SEC12"></a>
@@ -456,7 +471,7 @@ up a new design with <code>texi2html</code>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.4 Section Pages </h2>
+<h2 class="section"> 5.4 Section Pages </h2>
 <hr size="6">
 <a name="NOD14"></a>
 <a name="SEC13"></a>
@@ -476,14 +491,14 @@ up a new design with <code>texi2html</code>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.5 Misc pages </h2>
+<h2 class="section"> 5.5 Misc pages </h2>
 <p>Here you can find information about the creation of the
 <em>ToC</em> (<i>Table Of content</i>), About--Page
 etc. and specialy how to change them to get your own
 design.
 </p><p>ToC <code>T2H_DEFAULT_print_toc_frame</code> in
 `<tt>texi2html.init</tt>'
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC14">5.5.1 Table Of Contents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC15">5.5.2 Page header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">.</td></tr>
@@ -509,11 +524,11 @@ design.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 5.5.1 Table Of Contents </h3>
+<h3 class="subsection"> 5.5.1 Table Of Contents </h3>
 
 <p>The following code is the original code out of the
 initialization file (see section <a href="#SEC23">Initialization file</a>).
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 sub T2H_DEFAULT_print_toc_frame
 {
   my $fh = shift;
@@ -547,9 +562,9 @@ be changed more or less simple to fit you requirements
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 5.5.2 Page header </h3>
+<h3 class="subsection"> 5.5.2 Page header </h3>
 <p>Page Head <code>T2H_DEFAULT_print_page_head</code>
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 sub T2H_DEFAULT_print_page_head
 {
   my $fh = shift; 
@@ -596,7 +611,7 @@ EOT
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 5.5.3 Page footer </h3>
+<h3 class="subsection"> 5.5.3 Page footer </h3>
 
 <p>Page Foot <code>T2H_DEFAULT_print_page_foot</code>
 </p><hr size="6">
@@ -619,7 +634,7 @@ EOT
 </tr></table>
 
 <a name="SEC17"></a>
-<h1> 6. Customizing HTML </h1>
+<h1 class="chapter"> 6. Customizing HTML </h1>
 <p>If you like to read the following section, it is assumed
 you are famillar with HTML. If not, you shouldn't
 read this, cause you don't know what we are talking about.
@@ -630,7 +645,7 @@ header, body etc.
 part of the distribution as `<tt>texi2html.init</tt>'.
 </p><p>How to do changes of the customization...
 needed steps.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC18">6.1 Body</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing BODY Text.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC22">6.2 Head</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing Head.</td></tr>
@@ -657,9 +672,9 @@ needed steps.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.1 Body </h2>
+<h2 class="section"> 6.1 Body </h2>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC19">6.1.1 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC20">6.1.2 Body Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">PRE Body Text.</td></tr>
@@ -684,9 +699,9 @@ needed steps.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.1.1 Body Text </h3>
+<h3 class="subsection"> 6.1.1 Body Text </h3>
 
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 $T2H_BODYTEXT =
     . 'LANG=&quot;' . $T2H_LANG . '&quot; BGCOLOR=&quot;#FFFFFF&quot; '
     . 'TEXT=&quot;#000000&quot; LINK=&quot;#0000FF&quot; '
@@ -713,7 +728,7 @@ change the entry <var>T2H_BODYTEXT</var>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.1.2 Body Text </h3>
+<h3 class="subsection"> 6.1.2 Body Text </h3>
 <hr size="6">
 <a name="NOD22"></a>
 <a name="SEC21"></a>
@@ -733,9 +748,9 @@ change the entry <var>T2H_BODYTEXT</var>.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.1.3 After Body Text </h3>
+<h3 class="subsection"> 6.1.3 After Body Text </h3>
 
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 # text inserted after &lt;BODY ...&gt;
 $T2H_AFTER_BODY_OPEN = '';
 
@@ -756,7 +771,7 @@ See section <a href="#SEC41">DocType</a>.
 <code>T2H_DEFAULT_print_page_head</code>.
 </p><p>Detailed information can be found at
 <a href="#SEC15">Page header</a>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 
 &lt;HTML&gt;
 $T2H_DOCTYPE
@@ -797,7 +812,7 @@ $T2H_AFTER_BODY_OPEN
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.2 Head </h2>
+<h2 class="section"> 6.2 Head </h2>
 <hr size="6">
 <a name="NOD24"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -818,9 +833,9 @@ $T2H_AFTER_BODY_OPEN
 </tr></table>
 
 <a name="SEC23"></a>
-<h1> 7. Initialization file </h1>
+<h1 class="chapter"> 7. Initialization file </h1>
 <p>`<tt>texi2html.init</tt>'
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC24">7.1 The basics about init files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The basics about
                          initialization files.</td></tr>
@@ -848,7 +863,7 @@ $T2H_AFTER_BODY_OPEN
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.1 The basics about init files </h2>
+<h2 class="section"> 7.1 The basics about init files </h2>
 
 <p>Initialization options are read first from
 `<tt>/usr/local/etc/texi2htmlrc</tt>' (the exact location being
@@ -889,7 +904,7 @@ the means described above.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.2 Global initialization file </h2>
+<h2 class="section"> 7.2 Global initialization file </h2>
 <hr size="6">
 <a name="NOD27"></a>
 <a name="SEC26"></a>
@@ -909,7 +924,7 @@ the means described above.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.3 User initialization file </h2>
+<h2 class="section"> 7.3 User initialization file </h2>
 <hr size="6">
 <a name="NOD28"></a>
 <a name="SEC27"></a>
@@ -929,7 +944,7 @@ the means described above.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.4 Loadable initialization file </h2>
+<h2 class="section"> 7.4 Loadable initialization file </h2>
 <p>`<samp>-init_file</samp>'
 </p><hr size="6">
 <a name="NOD29"></a>
@@ -951,7 +966,7 @@ the means described above.
 </tr></table>
 
 <a name="SEC28"></a>
-<h2> 7.5 Initialization file options </h2>
+<h2 class="section"> 7.5 Initialization file options </h2>
 <p>This section describes in detail all options that can be used
 only in the initialization file (`<tt>texi2html.init</tt>'),
 and cannot be specified on the command line.
@@ -959,7 +974,7 @@ This means the only way to change those
 options is first to copy the original `<tt>texi2html.init</tt>'
 to e.g. `<tt>texi2html.init.myown</tt>' and make changes to fit
 your needs.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Number sectioning.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -992,7 +1007,7 @@ your needs.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.1 Number sections. </h3>
+<h3 class="subsection"> 7.5.1 Number sections. </h3>
 <p>if set, and <var>$T2H_NUMBER_SECTIONS</var> is set, then use node
 names in menu entries, instead of section names
 </p><p><var>$T2H_NODE_NAME_IN_MENU</var> = 0;
@@ -1015,7 +1030,7 @@ names in menu entries, instead of section names
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.2 Avoid menu redundancy </h3>
+<h3 class="subsection"> 7.5.2 Avoid menu redundancy </h3>
 <p>If set, and menu entry equals menu description, then do not print
 menu description.  Likewise, if node name equals entry name, do
 not print entry name.
@@ -1039,7 +1054,7 @@ not print entry name.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.3 Center Image </h3>
+<h3 class="subsection"> 7.5.3 Center Image </h3>
 <p>if set, center @image by default
 otherwise, do not center by default
 <var>$T2H_CENTER_IMAGE</var> = 1;
@@ -1062,7 +1077,7 @@ otherwise, do not center by default
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.4 Example Indent Cell </h3>
+<h3 class="subsection"> 7.5.4 Example Indent Cell </h3>
 <p>used as indentation for block enclosing command
 <code>@example</code>, etc If not empty, must be enclosed in
 <code>&lt;td&gt;&lt;/td&gt;</code>
@@ -1086,7 +1101,7 @@ otherwise, do not center by default
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.5 Small Example Indent </h3>
+<h3 class="subsection"> 7.5.5 Small Example Indent </h3>
 <p>same as above, only for <code>@small</code>
 $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
 </p><hr size="6">
@@ -1108,7 +1123,7 @@ $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.6 Small Font Size </h3>
+<h3 class="subsection"> 7.5.6 Small Font Size </h3>
 <p># font size for @small
 $T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
 </p><hr size="6">
@@ -1130,7 +1145,7 @@ $T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.7 Top Heading </h3>
+<h3 class="subsection"> 7.5.7 Top Heading </h3>
 <p>if non-empty, and no <code>@..heading</code> appeared in Top
 node, then use this as header for top node/section,
 otherwise use value of  <code>@settitle</code> or
@@ -1155,7 +1170,7 @@ $T2H_TOP_HEADING = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.8 Index Chapter </h3>
+<h3 class="subsection"> 7.5.8 Index Chapter </h3>
 <p>if set, use this chapter for <strong>Index</strong> button, else
 use first chapter whose name matches <strong>index</strong> (case insensitive)
 $T2H_INDEX_CHAPTER = &quot;&quot;;
@@ -1178,7 +1193,7 @@ $T2H_INDEX_CHAPTER = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.9 Split Index </h3>
+<h3 class="subsection"> 7.5.9 Split Index </h3>
 <p>if set and <var>$T2H_SPLIT</var> is set, then split index pages
 at the next letter after they have more than that many
 entries
@@ -1202,7 +1217,7 @@ entries
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.5.10 HREF Dir Instead File. </h3>
+<h3 class="subsection"> 7.5.10 HREF Dir Instead File. </h3>
 <p>if set (e.g., to `<tt>index.html</tt>') replace <strong>HREF</strong>'s
 to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 </p><p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
@@ -1226,9 +1241,9 @@ to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 </tr></table>
 
 <a name="SEC39"></a>
-<h1> 8. Command Line Options </h1>
+<h1 class="chapter"> 8. Command Line Options </h1>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC41">8.2 DocType</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">DocType (HTML)</td></tr>
@@ -1275,7 +1290,7 @@ to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.1 Debugging </h2>
+<h2 class="section"> 8.1 Debugging </h2>
 
 <p>`<samp>-debug</samp>'
 </p><p>debugging: 0 -- no debugging; other values; see beginning
@@ -1307,9 +1322,9 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.2 DocType </h2>
+<h2 class="section"> 8.2 DocType </h2>
 <p>`<samp>-doctype</samp>'
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
 </pre></td></tr></table>
 <hr size="6">
@@ -1331,7 +1346,7 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.3 Check </h2>
+<h2 class="section"> 8.3 Check </h2>
 <p>`<samp>-check</samp>'
 if set, only check files and give the list of all things
 that look like untranslated Texinfo commands
@@ -1354,7 +1369,7 @@ that look like untranslated Texinfo commands
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.4 Expand </h2>
+<h2 class="section"> 8.4 Expand </h2>
 <p>`<samp>-expand</samp>'
 if set to <strong>tex</strong> (or, <strong>info</strong>) expand
 <code>@iftex</code> and <code>@tex</code> (or, <code>@ifinfo</code>)
@@ -1379,7 +1394,7 @@ nor <code>@ifinfo</code> sections
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.5 Glossary </h2>
+<h2 class="section"> 8.5 Glossary </h2>
 <p>`<samp>-glossary</samp>'
 if set, uses section named <strong>Footnotes</strong> for glossary
 </p><hr size="6">
@@ -1401,7 +1416,7 @@ if set, uses section named <strong>Footnotes</strong> for glossary
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.6 Invisible </h2>
+<h2 class="section"> 8.6 Invisible </h2>
 <p>`<samp>-invisible</samp>'
 <var>$T2H_INVISIBLE_MARK</var> is the text used to create
 invisible destination anchors for index links (you can for
@@ -1411,7 +1426,7 @@ WWW browsers, including Netscape. For me, it
 works fine without it -- on the contrary: if there, it
 inserts space between headers and start of text (obachman
 3/99)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $T2H_INVISIBLE_MARK = &quot;&quot;;
 # $T2H_INVISIBLE_MARK = '&amp;#160;';
 </pre></td></tr></table>
@@ -1434,7 +1449,7 @@ $T2H_INVISIBLE_MARK = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.7 Iso </h2>
+<h2 class="section"> 8.7 Iso </h2>
 <p>`<samp>-iso</samp>'
 </p><p>if set, ISO8859 characters are used for special symbols
 (like Copyright <code>&copy;</code>, etc)
@@ -1458,7 +1473,7 @@ $T2H_INVISIBLE_MARK = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.8 Include Directory </h2>
+<h2 class="section"> 8.8 Include Directory </h2>
 <p>`<samp>-I</samp>'
 </p><p>list directories where <code>@include</code> files are searched for
 (besides the directory of the doc file) additional
@@ -1483,7 +1498,7 @@ $T2H_INVISIBLE_MARK = &quot;&quot;;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.9 Top File </h2>
+<h2 class="section"> 8.9 Top File </h2>
 <p>`<samp>-top_file</samp>'
 uses file of this name for top-level file
 extension is manipulated appropriately, if necessary.
@@ -1509,7 +1524,7 @@ Typically, you would set this to `<tt>index.html</tt>'.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.10 Table Of content File </h2>
+<h2 class="section"> 8.10 Table Of content File </h2>
 <p>`<samp>-toc_file</samp>'
 uses file of this name for table of contents.  File extension
 is manipulated appropriately, if necessary. If empty,
@@ -1534,7 +1549,7 @@ is manipulated appropriately, if necessary. If empty,
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.11 Frames </h2>
+<h2 class="section"> 8.11 Frames </h2>
 <p>`<samp>-frames</samp>'
 if set, output two additional files which use HTML 4.0
 <b>frames</b>.
@@ -1558,7 +1573,7 @@ if set, output two additional files which use HTML 4.0
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.12 Menus </h2>
+<h2 class="section"> 8.12 Menus </h2>
 <p>`<samp>-menu</samp>' or `<samp>-nomenu</samp>' if set, show the Texinfo
 menus
 </p><p>$T2H_SHOW_MENU = 1;
@@ -1581,7 +1596,7 @@ menus
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.13 Number sections </h2>
+<h2 class="section"> 8.13 Number sections </h2>
 <p>`<samp>-number</samp>' `<samp>-nonumber</samp>'
 if set, number sections and show section names and numbers
 in references and menus
@@ -1604,7 +1619,7 @@ in references and menus
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.14 Split </h2>
+<h2 class="section"> 8.14 Split </h2>
 <p>`<samp>-split section|chapter|none</samp>'
 if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
 HTML file per (sub)section (resp. chapter) and
@@ -1632,7 +1647,7 @@ $T2H_SPLIT = undef;
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.15 Section navigation </h2>
+<h2 class="section"> 8.15 Section navigation </h2>
 <p>`<samp>-section_navigation</samp>'|
 `<samp>-no-section_navigation</samp>'
 </p><p>if set, then navigation panels are printed at the beginning
@@ -1660,7 +1675,7 @@ if you do not want to have section navigation on
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.16 Subdirectory </h2>
+<h2 class="section"> 8.16 Subdirectory </h2>
 <p>`<samp>-subdir</samp>'
 If set, then put result files in the specified directory.
 If not set, then result files are put into the current directory.
@@ -1684,7 +1699,7 @@ If not set, then result files are put into the current directory.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.17 Short extension </h2>
+<h2 class="section"> 8.17 Short extension </h2>
 <p>`<samp>-short_extn</samp>'
 If this is set, then all HTML files will have extension
 `<tt>.htm</tt>' instead of `<tt>.html</tt>'. This is helpful when
@@ -1709,7 +1724,7 @@ shipping the document to DOS-based systems.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.18 Prefix </h2>
+<h2 class="section"> 8.18 Prefix </h2>
 <p>`<samp>-prefix</samp>'
 Set the output file prefix, prepended to all `<tt>.html</tt>',
 `<tt>.gif</tt>' and `<tt>.pl</tt>' files.
@@ -1734,7 +1749,7 @@ By default, this is the basename of the document
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.19 Output filename </h2>
+<h2 class="section"> 8.19 Output filename </h2>
 
 <p>`<samp>-o filename</samp>'|`<samp>-out_file</samp>'
 If set, generate monolithic document output HTML
@@ -1758,7 +1773,7 @@ into `<tt>filename</tt>'.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.20 Short Cross References </h2>
+<h2 class="section"> 8.20 Short Cross References </h2>
 <p>`<samp>-short_ref</samp>'
 if set cross-references are given without section numbers
 </p><hr size="6">
@@ -1780,7 +1795,7 @@ if set cross-references are given without section numbers
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.21 Index Summary </h2>
+<h2 class="section"> 8.21 Index Summary </h2>
 <p>`<samp>-idx_sum</samp>'
 If value is set, then for each <code>@prinindex $what</code>
 `<tt>$docu_name_$what.idx</tt>' is created which contains lines of the
@@ -1805,7 +1820,7 @@ matters).
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.22 Verbose output </h2>
+<h2 class="section"> 8.22 Verbose output </h2>
 <p>`<samp>-verbose</samp>'
 if set, chatter about what we are doing.
 </p><hr size="6">
@@ -1827,7 +1842,7 @@ if set, chatter about what we are doing.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.23 Language Support </h2>
+<h2 class="section"> 8.23 Language Support </h2>
 <p>`<samp>-lang</samp>'
 For page titles, use
 <code>$T2H_WORDS-&gt;{$T2H_LANG}-&gt;{...}</code> as title. To add
@@ -1858,11 +1873,11 @@ the language.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code> </h2>
+<h2 class="section"> 8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code> </h2>
 <p>`<samp>-l2h</samp>'
 if set, uses <code>latex2html</code> for generation of math
 content.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to find LaTeX2HTML.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1888,7 +1903,7 @@ content.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 8.24.1 Where to find <code>latex2html</code> </h3>
+<h3 class="subsection"> 8.24.1 Where to find <code>latex2html</code> </h3>
 <p>`<samp>-l2h_l2h</samp>'
 name/location of <code>latex2html</code> program.
 </p><hr size="6">
@@ -1910,7 +1925,7 @@ name/location of <code>latex2html</code> program.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 8.24.2 Skip calling LaTeX2HTML </h3>
+<h3 class="subsection"> 8.24.2 Skip calling LaTeX2HTML </h3>
 <p>`<samp>-l2h_skip</samp>'
 If set, skips actual call to <code>latex2html</code>: tries to
 reuse previously generated content, instead.
@@ -1933,7 +1948,7 @@ reuse previously generated content, instead.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 8.24.3 Temporary files for LaTeX2HTML </h3>
+<h3 class="subsection"> 8.24.3 Temporary files for LaTeX2HTML </h3>
 <p>`<samp>-l2h_tmp</samp>'
 If set, l2h uses this directory for temporary files.  The
 path leading to this directory may not contain a dot (i.e.,
@@ -1958,9 +1973,9 @@ a `<samp>.</samp>'); otherwise, l2h will fail.
 </tr></table>
 
 <a name="SEC67"></a>
-<h1> A. Function Reference </h1>
+<h1 class="appendix"> A. Function Reference </h1>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC68">A.1 Print ToC Frame</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC69">A.2 Print Page Head</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Print page head.</td></tr>
@@ -1985,7 +2000,7 @@ a `<samp>.</samp>'); otherwise, l2h will fail.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.1 Print ToC Frame </h2>
+<h2 class="appendixsec"> A.1 Print ToC Frame </h2>
 
 <dl>
 <dt><u>Function:</u> <b>T2H_DEFAULT_print_toc_frame</b> (FileName)
@@ -2014,7 +2029,7 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.2 Print Page Head </h2>
+<h2 class="appendixsec"> A.2 Print Page Head </h2>
 <dl>
 <dt><u>Function:</u> <b>T2H_DEFAULT_print_page_head</b> (FileName)
 <a name="IDX2"></a>
@@ -2041,7 +2056,7 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> B. Indices </h1>
+<h1 class="appendix"> B. Indices </h1>
 <hr size="6">
 <a name="SEC71"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2060,36 +2075,36 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> B.1 Command Line Option Index </h2>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" style="text-decoration: none"><b>C</b></a>
+<h2 class="appendixsec"> B.1 Command Line Option Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC71_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC71_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC71_2" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC71_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC71_3" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC71_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC71_4" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC71_4" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC71_5" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC71_5" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC71_6" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC71_6" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC71_7" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC71_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC71_8" style="text-decoration: none"><b>N</b></a>
+<a href="#SEC71_8" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC71_9" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC71_9" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC71_10" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC71_10" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC71_11" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC71_11" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC71_12" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC71_12" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC71_13" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC71_13" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-op">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC71_0">C</a></th><td></td><td></td></tr>
@@ -2154,33 +2169,33 @@ What does it do? Which parameters it needs etc.
 <tr><th><a name="SEC71_13">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61"><code>verbose</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" style="text-decoration: none"><b>C</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC71_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC71_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC71_2" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC71_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC71_3" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC71_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC71_4" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC71_4" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC71_5" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC71_5" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC71_6" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC71_6" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC71_7" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC71_7" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC71_8" style="text-decoration: none"><b>N</b></a>
+<a href="#SEC71_8" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC71_9" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC71_9" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC71_10" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC71_10" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC71_11" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC71_11" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC71_12" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC71_12" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC71_13" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC71_13" class="summary-letter"><b>V</b></a>
  &nbsp; 
 </td></tr></table><hr size="6">
 <a name="NOD72"></a>
@@ -2201,19 +2216,19 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> B.2 Variable Index </h2>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" style="text-decoration: none"><b>$</b></a>
+<h2 class="appendixsec"> B.2 Variable Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
 <br>
-<a href="#SEC72_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC72_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC72_2" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC72_2" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC72_3" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC72_3" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC72_4" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC72_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-vr">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC72_0">$</a></th><td></td><td></td></tr>
@@ -2279,16 +2294,16 @@ What does it do? Which parameters it needs etc.
 <tr><td></td><td valign="top"><a href="#SEC46"><code>T2H_USE_ISO</code></a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61"><code>T2H_VERBOSE</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" style="text-decoration: none"><b>$</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
 <br>
-<a href="#SEC72_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC72_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC72_2" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC72_2" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC72_3" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC72_3" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC72_4" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC72_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
 </td></tr></table><hr size="6">
 <a name="NOD73"></a>
@@ -2309,41 +2324,41 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC70" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> B.3 Concept Index </h2>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" style="text-decoration: none"><b>.</b></a>
+<h2 class="appendixsec"> B.3 Concept Index </h2>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC73_1" style="text-decoration: none"><b>@</b></a>
+<a href="#SEC73_1" class="summary-letter"><b>@</b></a>
  &nbsp; 
 <br>
-<a href="#SEC73_2" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC73_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC73_3" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC73_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC73_4" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC73_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC73_5" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC73_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC73_6" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC73_6" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC73_7" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC73_7" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC73_8" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC73_8" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC73_9" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC73_9" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC73_10" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC73_10" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC73_11" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC73_11" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC73_12" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC73_12" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC73_13" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC73_13" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC73_14" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC73_14" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC73_15" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC73_15" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC73_0">.</a></th><td></td><td></td></tr>
@@ -2437,38 +2452,38 @@ What does it do? Which parameters it needs etc.
 <tr><th><a name="SEC73_15">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61">Verbose output</a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" style="text-decoration: none"><b>.</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC73_1" style="text-decoration: none"><b>@</b></a>
+<a href="#SEC73_1" class="summary-letter"><b>@</b></a>
  &nbsp; 
 <br>
-<a href="#SEC73_2" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC73_2" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC73_3" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC73_3" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC73_4" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC73_4" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC73_5" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC73_5" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC73_6" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC73_6" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC73_7" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC73_7" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC73_8" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC73_8" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC73_9" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC73_9" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC73_10" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC73_10" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC73_11" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC73_11" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC73_12" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC73_12" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC73_13" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC73_13" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC73_14" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC73_14" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC73_15" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC73_15" class="summary-letter"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -2480,10 +2495,11 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC1">1. Overview about <code>texi2html</code></a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC2" href="#SEC2">1.1 Ways to get HTML</a></li>
     <li><a name="TOC3" href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></li>
   </ul></li>
@@ -2491,16 +2507,16 @@ What does it do? Which parameters it needs etc.
   <li><a name="TOC5" href="#SEC5">3. Customizing files</a></li>
   <li><a name="TOC6" href="#SEC6">4. Customizing what gets expanded</a></li>
   <li><a name="TOC7" href="#SEC7">5. Customizing page layout</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC8" href="#SEC8">5.1 Tips how to create a new site design</a></li>
     <li><a name="TOC9" href="#SEC9">5.2 Page Layout and the philosophy</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC10" href="#SEC10">5.2.1 Navigation panels</a></li>
     </ul></li>
     <li><a name="TOC11" href="#SEC11">5.3 Top Page</a></li>
     <li><a name="TOC12" href="#SEC12">5.4 Section Pages</a></li>
     <li><a name="TOC13" href="#SEC13">5.5 Misc pages</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC14" href="#SEC14">5.5.1 Table Of Contents</a></li>
       <li><a name="TOC15" href="#SEC15">5.5.2 Page header</a></li>
       <li><a name="TOC16" href="#SEC16">5.5.3 Page footer</a></li>
@@ -2508,9 +2524,9 @@ What does it do? Which parameters it needs etc.
 </li>
   </ul></li>
   <li><a name="TOC17" href="#SEC17">6. Customizing HTML</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC18" href="#SEC18">6.1 Body</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC19" href="#SEC19">6.1.1 Body Text</a></li>
       <li><a name="TOC20" href="#SEC20">6.1.2 Body Text</a></li>
       <li><a name="TOC21" href="#SEC21">6.1.3 After Body Text</a></li>
@@ -2518,13 +2534,13 @@ What does it do? Which parameters it needs etc.
     <li><a name="TOC22" href="#SEC22">6.2 Head</a></li>
   </ul></li>
   <li><a name="TOC23" href="#SEC23">7. Initialization file</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC24" href="#SEC24">7.1 The basics about init files</a></li>
     <li><a name="TOC25" href="#SEC25">7.2 Global initialization file</a></li>
     <li><a name="TOC26" href="#SEC26">7.3 User initialization file</a></li>
     <li><a name="TOC27" href="#SEC27">7.4 Loadable initialization file</a></li>
     <li><a name="TOC28" href="#SEC28">7.5 Initialization file options</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC29" href="#SEC29">7.5.1 Number sections.</a></li>
       <li><a name="TOC30" href="#SEC30">7.5.2 Avoid menu redundancy</a></li>
       <li><a name="TOC31" href="#SEC31">7.5.3 Center Image</a></li>
@@ -2539,7 +2555,7 @@ What does it do? Which parameters it needs etc.
 </li>
   </ul></li>
   <li><a name="TOC39" href="#SEC39">8. Command Line Options</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC40" href="#SEC40">8.1 Debugging</a></li>
     <li><a name="TOC41" href="#SEC41">8.2 DocType</a></li>
     <li><a name="TOC42" href="#SEC42">8.3 Check</a></li>
@@ -2564,7 +2580,7 @@ What does it do? Which parameters it needs etc.
     <li><a name="TOC61" href="#SEC61">8.22 Verbose output</a></li>
     <li><a name="TOC62" href="#SEC62">8.23 Language Support</a></li>
     <li><a name="TOC63" href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC64" href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></li>
       <li><a name="TOC65" href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></li>
       <li><a name="TOC66" href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></li>
@@ -2572,18 +2588,19 @@ What does it do? Which parameters it needs etc.
 </li>
   </ul></li>
   <li><a name="TOC67" href="#SEC67">A. Function Reference</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC68" href="#SEC68">A.1 Print ToC Frame</a></li>
     <li><a name="TOC69" href="#SEC69">A.2 Print Page Head</a></li>
   </ul></li>
   <li><a name="TOC70" href="#SEC70">B. Indices</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC71" href="#SEC71">B.1 Command Line Option Index</a></li>
     <li><a name="TOC72" href="#SEC72">B.2 Variable Index</a></li>
     <li><a name="TOC73" href="#SEC73">B.3 Concept Index</a></li>
   </ul>
 </li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_Overview"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2593,7 +2610,8 @@ What does it do? Which parameters it needs etc.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Short Table of Contents</h1>
-<ul style="list-style: none">
+<div class="shortcontents">
+<ul class="toc">
 <li><a name="TOC1" href="#SEC1">1. Overview about <code>texi2html</code></a></li>
 <li><a name="TOC4" href="#SEC4">2. Installation of <code>texi2html</code></a></li>
 <li><a name="TOC5" href="#SEC5">3. Customizing files</a></li>
@@ -2605,6 +2623,7 @@ What does it do? Which parameters it needs etc.
 <li><a name="TOC67" href="#SEC67">A. Function Reference</a></li>
 <li><a name="TOC70" href="#SEC70">B. Indices</a></li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">

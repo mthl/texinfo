@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 21. Editing Programs </h1>
+<h1 class="chapter"> 21. Editing Programs </h1>
 
 <p>  Emacs has many commands designed to understand the syntax of programming
 languages such as Lisp and C.  These commands can:
@@ -74,7 +89,7 @@ paragraph commands to work on.
 structure of a function (see section <a href="xemacs_14.html#SEC113">Selective Display</a>).  This feature causes
 only the lines that are indented less than a specified amount to appear
 on the screen.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC216">21.1 Major Modes for Programming Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Major modes for editing programs.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC217">21.2 Lists and Sexps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expressions with balanced parentheses.
@@ -113,7 +128,7 @@ on the screen.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.1 Major Modes for Programming Languages </h2>
+<h2 class="section"> 21.1 Major Modes for Programming Languages </h2>
 
 <p>  Emacs has several major modes for the programming languages Lisp, Scheme (a
 variant of Lisp), C, Fortran, and Muddle.  Ideally, a major mode should be
@@ -176,7 +191,7 @@ function receives no arguments.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.2 Lists and Sexps </h2>
+<h2 class="section"> 21.2 Lists and Sexps </h2>
 
 <p>  By convention, Emacs keys for dealing with balanced expressions are
 usually <kbd>Control-Meta-</kbd> characters.  They tend to be analogous in
@@ -343,7 +358,7 @@ See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.3 Defuns </h2>
+<h2 class="section"> 21.3 Defuns </h2>
 
 <p>  In Emacs, a parenthetical grouping at the top level in the buffer is
 called a <em>defun</em>.  The name derives from the fact that most
@@ -423,13 +438,13 @@ described above.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.4 Indentation for Programs </h2>
+<h2 class="section"> 21.4 Indentation for Programs </h2>
 
 <p>  The best way to keep a program properly indented (&quot;ground&quot;) is to
 use Emacs to re-indent it as you change the program.  Emacs has commands
 to indent properly either a single line, a specified number of lines, or
 all of the lines inside a single parenthetical grouping.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC220">21.4.1 Basic Program Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC221">21.4.2 Indenting Several Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to reindent many lines at once.</td></tr>
@@ -456,7 +471,7 @@ all of the lines inside a single parenthetical grouping.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.4.1 Basic Program Indentation Commands </h3>
+<h3 class="subsection"> 21.4.1 Basic Program Indentation Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> <kbd>TAB</kbd>
@@ -521,7 +536,7 @@ information on this behavior.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.4.2 Indenting Several Lines </h3>
+<h3 class="subsection"> 21.4.2 Indenting Several Lines </h3>
 
 <p>  Several commands are available to re-indent several lines of code
 which have been altered or moved to a different level in a list
@@ -584,7 +599,7 @@ to every line whose first character is between point and mark.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.4.3 Customizing Lisp Indentation </h3>
+<h3 class="subsection"> 21.4.3 Customizing Lisp Indentation </h3>
 
 <p>  The indentation pattern for a Lisp expression can depend on the function
 called by the expression.  For each Lisp function, you can choose among
@@ -682,7 +697,7 @@ until the end of the list.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.4.4 Customizing C Indentation </h3>
+<h3 class="subsection"> 21.4.4 Customizing C Indentation </h3>
 
 <p>  Two variables control which commands perform C indentation and when.
 </p><a name="IDX940"></a>
@@ -735,7 +750,7 @@ to the right of the start of its line.
 <a name="IDX942"></a>
 <p>  The variable <code>c-indent-level</code> controls the indentation for C
 statements with respect to the surrounding block.  In the example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
     {
       foo ();
 </pre></td></tr></table>
@@ -744,7 +759,7 @@ Its standard value is 2.
 </p><p>If the open-brace beginning the compound statement is not at the beginning
 of its line, the <code>c-indent-level</code> is added to the indentation of the
 line, not the column of the open-brace.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (losing) {
   do_this ();
 </pre></td></tr></table>
@@ -758,7 +773,7 @@ also added to the indentation of such a statement.  Normally this variable
 is zero.  Think of this variable as the imaginary position of the open
 brace, relative to the first non-blank character on the line.  By setting
 the variable to 4 and <code>c-indent-level</code> to 0, you can get this style:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y) {
     do_it ();
     }
@@ -777,7 +792,7 @@ brackets).  These lines are usually statements inside other statements,
 like the then-clauses of <code>if</code> statements and the bodies of
 <code>while</code> statements.  The <code>c-continued-statement-offset</code>
 parameter determines the difference in indentation between the two lines in:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
   do_it ();
 </pre></td></tr></table>
@@ -788,17 +803,17 @@ popular indentation styles correspond to a value of zero for
 <p>  <code>c-brace-offset</code> is the extra indentation given to a line that
 starts with an open-brace.  Its standard value is zero;
 compare:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
   {
 </pre></td></tr></table>
 <p>with:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
   do_it ();
 </pre></td></tr></table>
 <p>If you set <code>c-brace-offset</code> to 4, the first example becomes:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
       {
 </pre></td></tr></table>
@@ -807,7 +822,7 @@ if (x == y)
 arguments of a C function.  It is absolute: argument declarations receive
 exactly <code>c-argdecl-indent</code> spaces.  The standard value is 5 and
 results in code like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 char *
 index (string, char)
      char *string;
@@ -817,13 +832,13 @@ index (string, char)
 <p>  <code>c-label-offset</code> is the extra indentation given to a line that
 contains a label, a case statement, or a <code>default:</code> statement.  Its
 standard value is -2 and results in code like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 switch (c)
   {
   case 'x':
 </pre></td></tr></table>
 <p>If <code>c-label-offset</code> were zero, the same code would be indented as:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 switch (c)
   {
     case 'x':
@@ -853,7 +868,7 @@ source files of XEmacs.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.5 Automatic Display of Matching Parentheses </h2>
+<h2 class="section"> 21.5 Automatic Display of Matching Parentheses </h2>
 
 <p>  The Emacs parenthesis-matching feature shows you automatically how
 parentheses match in the text.  Whenever a self-inserting character that
@@ -898,7 +913,7 @@ match.  The default is 4000.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.6 Manipulating Comments </h2>
+<h2 class="section"> 21.6 Manipulating Comments </h2>
 
 <p>  The comment commands insert, kill and align comments.
 </p><dl compact="compact">
@@ -942,7 +957,7 @@ instead of at the comment column.  Comments which start with three
 semicolons are supposed to start at the left margin.  Emacs understands
 these conventions by indenting a double-semicolon comment using <kbd>TAB</kbd>
 and by not changing the indentation of a triple-semicolon comment at all.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ;; This function is just an example.
 ;;; Here either two or three semicolons are appropriate.
 (defun foo (x)
@@ -984,7 +999,7 @@ valid command which you could bind directly to a key if you wanted to.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.6.1 Multiple Lines of Comments </h3>
+<h3 class="subsection"> 21.6.1 Multiple Lines of Comments </h3>
 
 <p>  If you are typing a comment and want to continue it on another line,
 use the command <kbd>Meta-<kbd>LFD</kbd></kbd> (<code>indent-new-comment-line</code>),
@@ -1012,7 +1027,7 @@ the rest of the line becomes part of the new comment line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.6.2 Options Controlling Comments </h3>
+<h3 class="subsection"> 21.6.2 Options Controlling Comments </h3>
 
 <p>  The comment column is stored in the variable <code>comment-column</code>.  You
 can explicitly set it to a number.  Alternatively, the command <kbd>C-x ;</kbd>
@@ -1081,7 +1096,7 @@ comment and on the code in the preceding lines.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.7 Editing Without Unbalanced Parentheses </h2>
+<h2 class="section"> 21.7 Editing Without Unbalanced Parentheses </h2>
 
 <dl compact="compact">
 <dt><kbd> M-(
@@ -1128,7 +1143,7 @@ there is none), and indents with <kbd>LFD</kbd> after it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.8 Completion for Lisp Symbols </h2>
+<h2 class="section"> 21.8 Completion for Lisp Symbols </h2>
 
 <p>   Completion usually happens in the minibuffer.  An exception is
 completion for Lisp symbol names, which is available in all buffers.
@@ -1165,7 +1180,7 @@ completions is displayed in another window.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.9 Documentation Commands </h2>
+<h2 class="section"> 21.9 Documentation Commands </h2>
 
 <p>  As you edit Lisp code to be run in Emacs, you can use the commands
 <kbd>C-h f</kbd> (<code>describe-function</code>) and <kbd>C-h v</kbd>
@@ -1205,7 +1220,7 @@ from section 5.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.10 Change Logs </h2>
+<h2 class="section"> 21.10 Change Logs </h2>
 
 <p>  The Emacs command <kbd>M-x add-change-log-entry</kbd> helps you keep a record
 of when and why you have changed a program.  It assumes that you have a
@@ -1231,7 +1246,7 @@ line.  This is convenient for entering the contents of an entry, which must
 be indented.  See section <a href="xemacs_23.html#SEC197">Text Mode</a>.
 </p><p>  Here is an example of the formatting conventions used in the change log
 for Emacs:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
 
         * xdisp.c (try_window_id):
@@ -1272,7 +1287,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.11 Tags Tables </h2>
+<h2 class="section"> 21.11 Tags Tables </h2>
 
 <p>  A <em>tags table</em> is a description of how a multi-file program is
 broken up into files.  It lists the names of the component files and the
@@ -1297,7 +1312,7 @@ recorded is called a <em>tag</em>.
 <a name="IDX967"></a>
 <p>The Ebrowse is a separate facility tailored for C++, with tags and a
 class browser.  See <a href="../ebrowse/index.html">(ebrowse)Top</a> section `Top' in <cite>Ebrowse User's Manual</cite>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC233">21.11.1 Source File Tag Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tag syntax for various types of code and text files.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC234">21.11.2 Creating Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Creating a tags table with <code>etags</code>.</td></tr>
@@ -1327,7 +1342,7 @@ class browser.  See <a href="../ebrowse/index.html">(ebrowse)Top</a> section `To
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.1 Source File Tag Syntax </h3>
+<h3 class="subsection"> 21.11.1 Source File Tag Syntax </h3>
 
 <p>  Here is how tag syntax is defined for the most popular languages:
 </p><ul>
@@ -1363,7 +1378,7 @@ tag.
 environment variable <code>TEXTAGS</code> before invoking <code>etags</code>.  The
 value of this environment variable should be a colon-separated list of
 command names.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 TEXTAGS=&quot;def:newcommand:newenvironment&quot;
 export TEXTAGS
 </pre></td></tr></table>
@@ -1478,13 +1493,13 @@ generate a tag.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.2 Creating Tags Tables </h3>
+<h3 class="subsection"> 21.11.2 Creating Tags Tables </h3>
 
 <p>  The <code>etags</code> program is used to create a tags table file.  It knows
 the syntax of several languages, as described in
 <a href="#SEC233">Source File Tag Syntax</a>.
 Here is how to run <code>etags</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 etags <var>inputfiles</var>...
 </pre></td></tr></table>
 <p>The <code>etags</code> program reads the specified files, and writes a tags
@@ -1534,7 +1549,7 @@ may have problems listing them on the command line, because some systems
 have a limit on its length.  The simplest way to circumvent this limit
 is to tell <code>etags</code> to read the file names from its standard input,
 by typing a dash in place of the file names, like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 find . -name &quot;*.[chCH]&quot; -print | etags -
 </pre></td></tr></table>
 <p>  Use the option `<samp>--language=<var>name</var></samp>' to specify the language
@@ -1568,13 +1583,13 @@ explanation.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.3 Etags Regexps </h3>
+<h3 class="subsection"> 21.11.3 Etags Regexps </h3>
 
 <p>  The `<samp>--regex</samp>' option provides a general way of recognizing tags
 based on regexp matching.  You can freely intermix it with file names.
 Each `<samp>--regex</samp>' option adds to the preceding ones, and applies only
 to the following files.  The syntax is:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
 </pre></td></tr></table>
 <p>where <var>tagregexp</var> is used to match the lines to tag.  It is always
@@ -1604,7 +1619,7 @@ programming languages.
 </p><p>  The `<samp>-R</samp>' option deletes all the regexps defined with
 `<samp>--regex</samp>' options.  It applies to the file names following it, as
 you can see from the following example:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
 </pre></td></tr></table>
@@ -1620,7 +1635,7 @@ regular expression only for files of that language.  `<samp>etags --help</samp>'
 prints the list of languages recognised by <code>etags</code>.  The following
 example tags the <code>DEFVAR</code> macros in the Emacs source files.
 <code>etags</code> applies this regular expression to C files only:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
 </pre></td></tr></table>
 <p>This feature is particularly useful when storing a list of regular
@@ -1628,7 +1643,7 @@ expressions in a file.  The following option syntax instructs
 <code>etags</code> to read two files of regular expressions.  The regular
 expressions contained in the second file are matched without regard to
 case.
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex=@first-file --ignore-case-regex=@second-file
 </pre></td></tr></table>
 <p>A regex file contains one regular expressions per line.  Empty lines,
@@ -1639,12 +1654,12 @@ such files can be nested.  All the other lines are taken to be regular
 expressions.  For example, one can create a file called
 `<samp>emacs.tags</samp>' with the following contents (the first line in the
 file is a comment):
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
         -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
 </pre></td></tr></table>
 <p>and then use it like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --regex=@emacs.tags *.[ch] */*.[ch]
 </pre></td></tr></table>
 <p>  Here are some more examples.  The regexps are quoted to protect them
@@ -1652,7 +1667,7 @@ from shell interpretation.
 </p><ul>
 <li><p>
 Tag Octave files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
       --regex='/###key \(.*\)/\1/' \
@@ -1664,12 +1679,12 @@ line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
 to it.
 </p></li><li><p>
 Tag Tcl files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
 </pre></td></tr></table>
 </li><li><p>
 Tag VHDL files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
@@ -1695,7 +1710,7 @@ Tag VHDL files:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.4 Selecting a Tags Table </h3>
+<h3 class="subsection"> 21.11.4 Selecting a Tags Table </h3>
 
 <p>   At any time Emacs has one <em>selected</em> tags table, and all the commands
 for working with tags tables use the selected one.  To select a tags table,
@@ -1718,7 +1733,7 @@ assumed to name a tags file.  If they name a directory, the string
 `<tt>tags</tt>' is appended to them to get the file name.  If they are not 
 strings, they are evaluated and must return an appropriate string.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   (setq tag-table-alist
         '((&quot;/usr/src/public/perl/&quot; . &quot;/usr/src/public/perl/perl-3.0/&quot;)
           (&quot;\\.el$&quot; . &quot;/usr/local/emacs/src/&quot;)
@@ -1789,7 +1804,7 @@ variable <code>tag-table-alist</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.5 Finding a Tag </h3>
+<h3 class="subsection"> 21.11.5 Finding a Tag </h3>
 
 <p>  The most important thing that a tags table enables you to do is to find
 the definition of a specific tag.
@@ -1899,7 +1914,7 @@ function.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.6 Searching and Replacing with Tags Tables </h3>
+<h3 class="subsection"> 21.11.6 Searching and Replacing with Tags Tables </h3>
 
 <p>  The commands in this section visit and search all the files listed in the
 selected tags table, one by one.  For these commands, the tags table serves
@@ -1997,7 +2012,7 @@ file in the tags table and prepare to advance sequentially by files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.11.7 Tags Table Inquiries </h3>
+<h3 class="subsection"> 21.11.7 Tags Table Inquiries </h3>
 
 <dl compact="compact">
 <dt><kbd> M-x list-tags
@@ -2042,7 +2057,7 @@ regexp, and displays the tag names found.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.12 Fortran Mode </h2>
+<h2 class="section"> 21.12 Fortran Mode </h2>
 
 <p>  Fortran mode provides special motion commands for Fortran statements and
 subprograms, and indentation commands that understand Fortran conventions
@@ -2054,7 +2069,7 @@ unlike those of other languages.
 <p>  Use <kbd>M-x fortran-mode</kbd> to switch to this major mode.  Doing so calls
 the value of <code>fortran-mode-hook</code> as a function of no arguments if
 that variable has a non-<code>nil</code> value.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC241">21.12.1 Motion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving point by statements or subprograms.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC242">21.12.2 Fortran Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indentation commands for Fortran.</td></tr>
@@ -2083,7 +2098,7 @@ that variable has a non-<code>nil</code> value.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.12.1 Motion Commands </h3>
+<h3 class="subsection"> 21.12.1 Motion Commands </h3>
 
 <p>  Fortran mode provides special commands to move by subprograms (functions
 and subroutines) and by statements.  There is also a command to put the
@@ -2144,13 +2159,13 @@ region around one subprogram, which is convenient for killing it or moving it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.12.2 Fortran Indentation </h3>
+<h3 class="subsection"> 21.12.2 Fortran Indentation </h3>
 
 <p>  Special commands and features are available for indenting Fortran
 code.  They make sure various syntactic entities (line numbers, comment line
 indicators, and continuation line flags) appear in the columns that are
 required for standard Fortran.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC243">21.12.2.1 Fortran Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for indenting Fortran.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC244">21.12.2.2 Line Numbers and Continuation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How line numbers auto-indent.</td></tr>
@@ -2177,7 +2192,7 @@ required for standard Fortran.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 21.12.2.1 Fortran Indentation Commands </h4>
+<h4 class="subsubsection"> 21.12.2.1 Fortran Indentation Commands </h4>
 
 <dl compact="compact">
 <dt><kbd> <kbd>TAB</kbd>
@@ -2231,7 +2246,7 @@ comment lines.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 21.12.2.2 Line Numbers and Continuation </h4>
+<h4 class="subsubsection"> 21.12.2.2 Line Numbers and Continuation </h4>
 
 <p>  If a number is the first non-whitespace in the line, it is assumed to be
 a line number and is moved to columns 0 through 4.  (Columns are always
@@ -2271,7 +2286,7 @@ off this feature, set the variable <code>fortran-electric-line-number</code> to
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 21.12.2.3 Syntactic Conventions </h4>
+<h4 class="subsubsection"> 21.12.2.3 Syntactic Conventions </h4>
 
 <p>  Fortran mode assumes that you follow certain conventions that simplify
 the task of understanding a Fortran program well enough to indent it
@@ -2309,7 +2324,7 @@ followed.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 21.12.2.4 Variables for Fortran Indentation </h4>
+<h4 class="subsubsection"> 21.12.2.4 Variables for Fortran Indentation </h4>
 
 <p>  Several additional variables control how Fortran indentation works.
 </p><dl compact="compact">
@@ -2360,7 +2375,7 @@ this is 6.  Statement bodies are always indented at least this much.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.12.3 Comments </h3>
+<h3 class="subsection"> 21.12.3 Comments </h3>
 
 <p>  The usual Emacs comment commands assume that a comment can follow a line
 of code.  In Fortran, the standard comment syntax requires an entire line
@@ -2467,7 +2482,7 @@ which one is referred to.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.12.4 Columns </h3>
+<h3 class="subsection"> 21.12.4 Columns </h3>
 
 <dl compact="compact">
 <dt><kbd> C-c C-r
@@ -2521,7 +2536,7 @@ when a line gets too wide to be correct Fortran.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 21.12.5 Fortran Keyword Abbrevs </h3>
+<h3 class="subsection"> 21.12.5 Fortran Keyword Abbrevs </h3>
 
 <p>  Fortran mode provides many built-in abbrevs for common keywords and
 declarations.  These are the same sort of abbrevs that you can define
@@ -2555,7 +2570,7 @@ Fortran abbrevs and what they stand for.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 21.13 Asm Mode </h2>
+<h2 class="section"> 21.13 Asm Mode </h2>
 
 <p>Asm mode is a major mode for editing files of assembler code.  It
 defines these commands:

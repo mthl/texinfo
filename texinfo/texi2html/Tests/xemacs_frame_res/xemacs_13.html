@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 10. Registers </h1>
+<h1 class="chapter"> 10. Registers </h1>
 
 <p>  XEmacs <em>registers</em> are places in which you can save text or
 positions for later use.  Once you save text or a rectangle in a
@@ -67,7 +82,7 @@ view-register</kbd>.
 <a name="IDX351"></a>
 <p>  <kbd>M-x view-register</kbd> reads a register name as an argument and then
 displays the contents of the specified register.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC103">10.1 Saving Positions in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving positions in registers.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC104">10.2 Saving Text in Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving text in registers.</td></tr>
@@ -97,7 +112,7 @@ displays the contents of the specified register.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.1 Saving Positions in Registers </h2>
+<h2 class="section"> 10.1 Saving Positions in Registers </h2>
 
 <p>  Saving a position records a place in a buffer so that you can move
 back there later.  Moving to a saved position switches to that buffer
@@ -148,7 +163,7 @@ that were visiting files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.2 Saving Text in Registers </h2>
+<h2 class="section"> 10.2 Saving Text in Registers </h2>
 
 <p>  When you want to insert a copy of the same piece of text many times, it
 can be impractical to use the kill ring, since each subsequent kill moves
@@ -201,7 +216,7 @@ and the mark before it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.3 Saving Rectangles in Registers </h2>
+<h2 class="section"> 10.3 Saving Rectangles in Registers </h2>
 
 <p>  A register can contain a rectangle instead of lines of text.  The rectangle
 is represented as a list of strings.  See section <a href="xemacs_12.html#SEC101">Rectangles</a>, for basic
@@ -250,7 +265,7 @@ as sorting a rectangle.  See section <a href="xemacs_29.html#SEC336">Sorting Tex
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.4 Saving Window Configurations in Registers </h2>
+<h2 class="section"> 10.4 Saving Window Configurations in Registers </h2>
 
 <p>  You can save the window configuration of the selected frame in a
 register, or even the configuration of all windows in all frames, and
@@ -292,7 +307,7 @@ instead, use <kbd>C-u C-x r j <var>r</var></kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.5 Keeping Numbers in Registers </h2>
+<h2 class="section"> 10.5 Keeping Numbers in Registers </h2>
 
 <p>  There are commands to store a number in a register, to insert
 the number in the buffer in decimal, and to increment it.  These commands
@@ -338,16 +353,16 @@ sort of register contents into the buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.6 Keeping File Names in Registers </h2>
+<h2 class="section"> 10.6 Keeping File Names in Registers </h2>
 
 <p>  If you visit certain file names frequently, you can visit them more
 conveniently if you put their names in registers.  Here's the Lisp code
 used to put a file name in a register:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (set-register ?<var>r</var> '(file . <var>name</var>))
 </pre></td></tr></table>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
 </pre></td></tr></table>
 <p>puts the file name shown in register `<samp>z</samp>'.
@@ -373,7 +388,7 @@ restore a frame configuration.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 10.7 Bookmarks </h2>
+<h2 class="section"> 10.7 Bookmarks </h2>
 
 <p>  <em>Bookmarks</em> are somewhat like registers in that they record
 positions you can jump to.  Unlike registers, they have long names, and

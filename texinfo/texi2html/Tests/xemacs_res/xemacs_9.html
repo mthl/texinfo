@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 6. The Minibuffer </h1>
+<h1 class="chapter"> 6. The Minibuffer </h1>
 
 <p>  The <em>minibuffer</em> is the facility used by XEmacs commands to read
 arguments more complicated than a single number.  Minibuffer arguments
@@ -87,7 +102,7 @@ Echoing of keystrokes does not take place while the minibuffer is in
 use.
 </p></li></ul>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC61">6.1 Minibuffers for File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering file names with the minibuffer.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC62">6.2 Editing in the Minibuffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit in the minibuffer.</td></tr>
@@ -115,7 +130,7 @@ use.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.1 Minibuffers for File Names </h2>
+<h2 class="section"> 6.1 Minibuffers for File Names </h2>
 
 <p>  Sometimes the minibuffer starts out with text in it.  For example, when
 you are supposed to give a file name, the minibuffer starts out containing
@@ -123,7 +138,7 @@ the <em>default directory</em>, which ends with a slash.  This is to inform
 you which directory the file will be found in if you do not specify a
 directory.
 </p><p>  For example, the minibuffer might start out with these contents:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Find File: /u2/emacs/src/
 </pre></td></tr></table>
 <p>where `<samp>Find File: </samp>' is the prompt.  Typing <kbd>buffer.c</kbd>
@@ -138,7 +153,7 @@ Insert an absolute file name, one starting with a slash or a tilde,
 after the default directory.  For example, to specify the file
 `<tt>/etc/termcap</tt>', just insert that name, giving these minibuffer
 contents:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Find File: /u2/emacs/src//etc/termcap
 </pre></td></tr></table>
 <a name="IDX213"></a>
@@ -172,7 +187,7 @@ interpreted with respect to the same default directory.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.2 Editing in the Minibuffer </h2>
+<h2 class="section"> 6.2 Editing in the Minibuffer </h2>
 
 <p>  The minibuffer is an XEmacs buffer (albeit a peculiar one), and the
 usual XEmacs commands are available for editing the text of an argument
@@ -208,7 +223,7 @@ minibuffer gives you a list of possible completions.  See section <a href="xemac
 are asked for confirmation if there is no known completion for the text
 you typed. For example, if you attempted to visit a non-existent file,
 the minibuffer might read:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
         Find File: chocolate_bar.c [no completions, confirm]
 </pre></td></tr></table><p>If you press <kbd>Return</kbd> again, that confirms the filename. Otherwise,
 you can continue editing it. 
@@ -241,7 +256,7 @@ non-<code>nil</code>, recursive use of the minibuffer is always allowed.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.3 Completion </h2>
+<h2 class="section"> 6.3 Completion </h2>
 
 <p>  For certain kinds of arguments, you can use <em>completion</em> to enter
 the argument value.  Completion means that you type part of the
@@ -270,7 +285,7 @@ ignored for completion's sake if specified by program.
 you move the mouse over them.  Clicking the middle mouse button on any 
 highlighted completion will &quot;select&quot; it just as if you had typed it in
 and hit <kbd>RET</kbd>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC64">6.3.1 Completion Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC65">6.3.2 Completion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -297,7 +312,7 @@ and hit <kbd>RET</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.1 Completion Example </h3>
+<h3 class="subsection"> 6.3.1 Completion Example </h3>
 
 <p>  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
 the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
@@ -335,7 +350,7 @@ when completion is available.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.2 Completion Commands </h3>
+<h3 class="subsection"> 6.3.2 Completion Commands </h3>
 
 <p>  Here is a list of the completion commands defined in the minibuffer
 when completion is available.
@@ -454,7 +469,7 @@ to the previous completion (<code>previous-list-mode-item</code>).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.3 Strict Completion </h3>
+<h3 class="subsection"> 6.3.3 Strict Completion </h3>
 
 <p>  There are three different ways that <kbd>RET</kbd> can work in completing
 minibuffers, depending on how the argument will be used.
@@ -507,7 +522,7 @@ the list of completions is long, you can scroll it with <kbd>C-M-v</kbd>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 6.3.4 Completion Options </h3>
+<h3 class="subsection"> 6.3.4 Completion Options </h3>
 
 <p>  When completion is done on file names, certain file names are usually
 ignored.  The variable <code>completion-ignored-extensions</code> contains a
@@ -553,7 +568,7 @@ icomplete-mode</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.4 Minibuffer History </h2>
+<h2 class="section"> 6.4 Minibuffer History </h2>
 
 <p>  Every argument that you enter with the minibuffer is saved on a
 <em>minibuffer history list</em> so that you can use it again later in
@@ -649,7 +664,7 @@ list that most minibuffer arguments use.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 6.5 Repeating Minibuffer Commands </h2>
+<h2 class="section"> 6.5 Repeating Minibuffer Commands </h2>
 
 <p>  Every command that uses the minibuffer at least once is recorded on a
 special history list, together with the values of its arguments, so that

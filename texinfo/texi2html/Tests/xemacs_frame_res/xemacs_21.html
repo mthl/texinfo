@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 18. Major Modes </h1>
+<h1 class="chapter"> 18. Major Modes </h1>
 
 <p>  Emacs has many different <em>major modes</em>, each of which customizes
 Emacs for editing text of a particular sort.  The major modes are mutually
@@ -75,7 +90,7 @@ separate paragraphs.  This is so that the paragraph commands remain useful.
 See section <a href="xemacs_23.html#SEC208">Paragraphs</a>.  They also cause Auto Fill mode to use the definition of
 <kbd>TAB</kbd> to indent the new lines it creates.  This is because most lines
 in a program are usually indented.  See section <a href="xemacs_22.html#SEC192">Indentation</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC191">18.1 Choosing Major Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How major modes are specified or chosen.</td></tr>
 </table>
@@ -99,7 +114,7 @@ in a program are usually indented.  See section <a href="xemacs_22.html#SEC192">
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 18.1 Choosing Major Modes </h2>
+<h2 class="section"> 18.1 Choosing Major Modes </h2>
 
 <p>  You can select a major mode explicitly for the current buffer, but
 most of the time Emacs determines which mode to use based on the file
@@ -114,7 +129,7 @@ based on the file's name.  For example, files whose names end in
 <code>.c</code> are edited in C mode.  The variable <code>auto-mode-alist</code>
 controls the correspondence between file names and major mode.  Its value
 is a list in which each element has the form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (<var>regexp</var> . <var>mode-function</var>)
 </pre></td></tr></table>
 <p>For example, one element normally found in the list has the form
@@ -127,14 +142,14 @@ way to change this variable is with Lisp code.
 file by a special sort of text in the first non-blank line of the file.
 The mode name should appear in this line both preceded and followed by
 `<samp>-*-</samp>'.  Other text may appear on the line as well.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ;-*-Lisp-*-
 </pre></td></tr></table>
 <p>tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
 treat this line as a comment.  Such an explicit specification overrides any
 default mode based on the file name.
 </p><p>  Another format of mode specification is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -*-Mode: <var>modename</var>;-*-
 </pre></td></tr></table>
 <p>which allows other things besides the major mode name to be specified.

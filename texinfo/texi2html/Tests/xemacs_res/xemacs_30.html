@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 27. Customization </h1>
+<h1 class="chapter"> 27. Customization </h1>
 
 <p>  This chapter talks about various topics relevant to adapting the
 behavior of Emacs in minor ways.
@@ -53,7 +68,7 @@ later.  The only way an Emacs job can affect anything outside of it is
 by writing a file; in particular, the only way to make a customization
 `permanent' is to put something in your init file or other appropriate
 file to do the customization in each session.  See section <a href="#SEC377">The Init File</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC352">27.1 Minor Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Each minor mode is one feature you can turn on
                      independently of any others.</td></tr>
@@ -94,7 +109,7 @@ file to do the customization in each session.  See section <a href="#SEC377">The
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.1 Minor Modes </h2>
+<h2 class="section"> 27.1 Minor Modes </h2>
 
 <p>  Minor modes are options which you can use or not.  For example, Auto
 Fill mode is a minor mode in which <kbd>SPC</kbd> breaks lines between words
@@ -145,7 +160,7 @@ mode</samp>'.  See section <a href="xemacs_26.html#SEC285">Abbrevs</a>, for full
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.2 Variables </h2>
+<h2 class="section"> 27.2 Variables </h2>
 
 <p>  A <em>variable</em> is a Lisp symbol which has a value.  Variable names
 can contain any characters, but by convention they are words separated
@@ -170,7 +185,7 @@ appear in the Variable Index (see section <a href="xemacs_42.html#SEC415">Variab
 </p><p>  One example of a variable which is an option is <code>fill-column</code>, which
 specifies the position of the right margin (as a number of characters from
 the left margin) to be used by the fill commands (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC354">27.2.1 Examining and Setting Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examining or setting one variable's value.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC355">27.2.2 Easy Customization Interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Convenient and easy customization of variables.</td></tr>
@@ -198,7 +213,7 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.2.1 Examining and Setting Variables </h3>
+<h3 class="subsection"> 27.2.1 Examining and Setting Variables </h3>
 
 <dl compact="compact">
 <dt><kbd> C-h v
@@ -220,11 +235,11 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 (<code>describe-variable</code>), which reads a variable name using the
 minibuffer, with completion.  It prints both the value and the
 documentation of the variable.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-h v fill-column <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>prints something like:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 fill-column's value is 75
 
 Documentation:
@@ -240,7 +255,7 @@ variable name.
 set-variable</kbd> to set it.  This prompts for the variable name in the
 minibuffer (with completion), and then prompts for a Lisp expression for the
 new value using the minibuffer a second time.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x set-variable <kbd>RET</kbd> fill-column <kbd>RET</kbd> 75 <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>sets <code>fill-column</code> to 75, as if you had executed the Lisp expression
@@ -266,7 +281,7 @@ except where explicitly stated, affects only the current Emacs session.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.2.2 Easy Customization Interface </h3>
+<h3 class="subsection"> 27.2.2 Easy Customization Interface </h3>
 
 <p>  A convenient way to find the user option variables that you want to
 change, and then change them, is with <kbd>M-x customize</kbd> (or use a
@@ -276,7 +291,7 @@ the Emacs user options in a logically organized structure, then edit and
 set their values.  You can also use the customization buffer to save
 settings permanently.  (Not all Emacs user options are included in this
 structure as of yet, but we are adding the rest.)
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC356">27.2.2.1 Customization Groups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How options are classified in a structure.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC357">27.2.2.2 Changing an Option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit a value and set an option.</td></tr>
@@ -304,7 +319,7 @@ structure as of yet, but we are adding the rest.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.2.2.1 Customization Groups </h4>
+<h4 class="subsubsection"> 27.2.2.1 Customization Groups </h4>
 
 <p>  For customization purposes, user options are organized into
 <em>groups</em> to help you find them.  Groups are collected into bigger
@@ -312,7 +327,7 @@ groups, all the way up to a master group called <code>Emacs</code>.
 </p><p>  <kbd>M-x customize</kbd> (or <kbd>C-h C</kbd>) creates a customization buffer that
 shows the top-level <code>Emacs</code> group and the second-level groups immediately
 under it.  It looks like this, in part:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 /- Emacs group: ---------------------------------------------------\
       [State]: visible group members are all at standard settings.
    Customization of the One True Editor.
@@ -382,11 +397,11 @@ This is the way to set values in it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.2.2.2 Changing an Option </h4>
+<h4 class="subsubsection"> 27.2.2.2 Changing an Option </h4>
 
 <p>  Here is an example of what a user option looks like in the
 customization buffer:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Kill Ring Max: [Hide] 30
    [State]: this option is unchanged from its standard setting.
 Maximum length of kill ring before oldest elements are thrown away.
@@ -411,7 +426,7 @@ and edit it textually.  For example, you can type <kbd>M-d</kbd>, then insert
 another number.
 </p><p>  When you begin to alter the text, you will see the `<samp>[State]</samp>' line
 change to say that you have edited the value:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 [State]: you have edited the value as text, but not set the option.
 </pre></td></tr></table>
 <a name="IDX1480"></a>
@@ -419,7 +434,7 @@ change to say that you have edited the value:
 that, you must <em>set</em> the option.  To do this, invoke the word
 `<samp>[State]</samp>' and choose `<samp>Set for Current Session</samp>'.
 </p><p>  The state of the option changes visibly when you set it:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 [State]: you have set this option, but not saved it for future sessions.
 </pre></td></tr></table>
 <p>   You don't have to worry about specifying a value that is not valid;
@@ -440,7 +455,7 @@ take effect when you use the `<samp>Set for Current Session</samp>' operation.
 </p><p>  Some options have values with complex structure.  For example, the
 value of <code>load-path</code> is a list of directories.  Here is how it
 appears in the customization buffer:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Load Path:
 [INS] [DEL] [Current dir?]: /usr/local/share/emacs/19.34.94/site-lisp
 [INS] [DEL] [Current dir?]: /usr/local/share/emacs/site-lisp
@@ -512,7 +527,7 @@ operation for the group; these operations on the group apply to all
 options in the group and its subgroups.
 </p><p>  Near the top of the customization buffer there are two lines
 containing several active fields:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
  [Set] [Save] [Reset]  [Done]
 </pre></td></tr></table>
 <p>Invoking `<samp>[Done]</samp>' buries this customization buffer.  Each of the
@@ -537,13 +552,13 @@ items in the buffer that could meaningfully be set, saved or reset.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.2.2.3 Customizing Faces </h4>
+<h4 class="subsubsection"> 27.2.2.3 Customizing Faces </h4>
 
 <p>  In addition to user options, some customization groups also include
 faces.  When you show the contents of a group, both the user options and
 the faces in the group appear in the customization buffer.  Here is an
 example of how a face looks:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Custom Changed Face: (sample)
    [State]: this face is unchanged from its standard setting.
 Face used when the customize item has been changed.
@@ -592,7 +607,7 @@ get from invoking `<samp>[State]</samp>'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.2.2.4 Customizing Specific Items </h4>
+<h4 class="subsubsection"> 27.2.2.4 Customizing Specific Items </h4>
 
 <p>  Instead of finding the options you want to change by moving down
 through the structure of groups, you can specify the particular option,
@@ -676,7 +691,7 @@ faces that you have set but not saved.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.2.3 Editing Variable Values </h3>
+<h3 class="subsection"> 27.2.3 Editing Variable Values </h3>
 
 <dl compact="compact">
 <dt><kbd> M-x list-options
@@ -694,7 +709,7 @@ faces that you have set but not saved.
 an Emacs buffer named `<samp>*List Options*</samp>'.  Each option is shown with its
 documentation and its current value.  Here is what a portion of it might
 look like:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 ;; exec-path:
 (&quot;.&quot; &quot;/usr/local/bin&quot; &quot;/usr/ucb&quot; &quot;/bin&quot; &quot;/usr/bin&quot; &quot;/u2/emacs/etc&quot;)
 *List of directories to search programs to run in subprocesses.
@@ -758,7 +773,7 @@ it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.2.4 Local Variables </h3>
+<h3 class="subsection"> 27.2.4 Local Variables </h3>
 
 <dl compact="compact">
 <dt><kbd> M-x make-local-variable
@@ -822,7 +837,7 @@ Lisp function <code>setq-default</code>.  It works like <code>setq</code>.
 If there is a local value in the current buffer, the local value is
 not affected by <code>setq-default</code>; thus, the new global value may
 not be visible until you switch to another buffer, as in the case of:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq-default fill-column 75)
 </pre></td></tr></table>
 <p><code>setq-default</code> is the only way to set the global value of a variable
@@ -832,7 +847,7 @@ that has been marked with <code>make-variable-buffer-local</code>.
 This function takes a symbol as an argument and returns its default value.
 The argument is evaluated; usually you must quote it explicitly, as in
 the case of:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (default-value 'fill-column)
 </pre></td></tr></table>
 <hr size="6">
@@ -854,7 +869,7 @@ the case of:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.2.5 Local Variables in Files </h3>
+<h3 class="subsection"> 27.2.5 Local Variables in Files </h3>
 
 <p>  A file can contain a <em>local variables list</em>, which specifies the
 values to use for certain Emacs variables when that file is edited.
@@ -884,7 +899,7 @@ is ignored.  These are not real variables; setting them in any other
 context does not have the same effect.  If <code>mode</code> is used in a
 local variables list, it should be the first entry in the list.
 </p><p>Here is an example of a local variables list:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 ;;; Local Variables: ***
 ;;; mode:lisp ***
 ;;; comment-column:0 ***
@@ -918,14 +933,14 @@ section at the end of a file.
 </p><p>If the first line of a file contains two occurrences of <code>`-*-'</code>,
 XEmacs uses the information between them to determine what the major
 mode and variable settings should be.  For example, these are all legal:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         ;;; -*- mode: emacs-lisp -*-
         ;;; -*- mode: postscript; version-control: never -*-
         ;;; -*- tags-file-name: &quot;/foo/bar/TAGS&quot; -*-
 </pre></td></tr></table>
 <p>For historical reasons, the syntax <code>`-*- modename -*-'</code> is allowed
 as well; for example, you can use:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         ;;; -*- emacs-lisp -*-
 </pre></td></tr></table>
 <a name="IDX1503"></a>
@@ -955,7 +970,7 @@ and ignores this variable.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.3 Keyboard Macros </h2>
+<h2 class="section"> 27.3 Keyboard Macros </h2>
 
 <p>  A <em>keyboard macro</em> is a command defined by the user to abbreviate a
 sequence of keys.  For example, if you discover that you are about to type
@@ -1007,7 +1022,7 @@ what the effects of your commands are, and don't have to figure
 them out in your head.  When you are finished, the keyboard macro is
 defined and also has been executed once.  You can then execute the same
 set of commands again by invoking the macro.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC364">27.3.1 Basic Use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining and running keyboard macros.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC365">27.3.2 Naming and Saving Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Giving keyboard macros names; saving them in files.</td></tr>
@@ -1033,7 +1048,7 @@ set of commands again by invoking the macro.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.3.1 Basic Use </h3>
+<h3 class="subsection"> 27.3.1 Basic Use </h3>
 
 <p>  To start defining a keyboard macro, type <kbd>C-x (</kbd>
 (<code>start-kbd-macro</code>).  From then on, anything you type continues to be
@@ -1042,7 +1057,7 @@ appears in the mode line to remind you of what is going on.  When you are
 finished, the <kbd>C-x )</kbd> command (<code>end-kbd-macro</code>) terminates the
 definition, without becoming part of it. 
 </p><p>  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x ( M-f foo C-x )
 </pre></td></tr></table>
 <p>defines a macro to move forward a word and then insert `<samp>foo</samp>'.
@@ -1085,7 +1100,7 @@ a consequence it re-executes the macro as previously defined.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.3.2 Naming and Saving Keyboard Macros </h3>
+<h3 class="subsection"> 27.3.2 Naming and Saving Keyboard Macros </h3>
 
 <p>  To save a keyboard macro for longer than until you define the
 next one, you must give it a name using <kbd>M-x name-last-kbd-macro</kbd>.
@@ -1099,7 +1114,7 @@ macro, Emacs prints an error message and nothing is changed.
 <p>  Once a macro has a command name, you can save its definition in a file.
 You can then use it in another editing session.  First visit the file
 you want to save the definition in.  Then use the command:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x insert-kbd-macro <kbd>RET</kbd> <var>macroname</var> <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>This inserts some Lisp code that, when executed later, will define the same
@@ -1132,7 +1147,7 @@ load the file.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.3.3 Executing Macros With Variations </h3>
+<h3 class="subsection"> 27.3.3 Executing Macros With Variations </h3>
 
 <p>  You can use <kbd>C-x q</kbd> (<code>kbd-macro-query</code>), to get an effect similar
 to that of <code>query-replace</code>.  The macro asks you  each time
@@ -1181,7 +1196,7 @@ editing.  See section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.4 Customizing Key Bindings </h2>
+<h2 class="section"> 27.4 Customizing Key Bindings </h2>
 
 <p>  This section deals with the <em>keymaps</em> that define the bindings
 between keys and functions, and shows how you can customize these bindings.
@@ -1192,7 +1207,7 @@ between keys and functions, and shows how you can customize these bindings.
 use.  Like every Lisp function, a command has a function name, which is
 a Lisp symbol whose name usually consists of lower case letters and
 hyphens.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC368">27.4.1 Keymaps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Definition of the keymap data structure.
                Names of Emacs's standard keymaps.</td></tr>
@@ -1221,7 +1236,7 @@ hyphens.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.4.1 Keymaps </h3>
+<h3 class="subsection"> 27.4.1 Keymaps </h3>
 
 <p>  The bindings between characters and command functions are recorded in
 data structures called <em>keymaps</em>.  Emacs has many of these.  One, the
@@ -1333,14 +1348,14 @@ keymap for <kbd>C-x</kbd> commands is used.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.4.2 Changing Key Bindings </h3>
+<h3 class="subsection"> 27.4.2 Changing Key Bindings </h3>
 
 <p>  You can redefine an Emacs key by changing its entry in a keymap.
 You can change the global keymap, in which case the change is effective in
 all major modes except those that have their own overriding local
 definitions for the same key.  Or you can change the current buffer's
 local map, which affects all buffers using the same major mode.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC370">27.4.2.1 Changing Key Bindings Interactively</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC371">27.4.2.2 Changing Key Bindings Programmatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1366,7 +1381,7 @@ local map, which affects all buffers using the same major mode.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.4.2.1 Changing Key Bindings Interactively </h4>
+<h4 class="subsubsection"> 27.4.2.1 Changing Key Bindings Interactively </h4>
 
 <dl compact="compact">
 <dt><kbd> M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd>
@@ -1392,7 +1407,7 @@ the <code>define-key</code> function description.  The binding goes in
 the current buffer's local map, which is shared with other buffers in
 the same major mode.
 </p><p>The following example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x global-set-key <kbd>RET</kbd> C-f next-line <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>redefines <kbd>C-f</kbd> to move down a line.  The fact that <var>cmd</var> is
@@ -1405,7 +1420,7 @@ Thus, if you type <kbd>C-f</kbd> for <var>key</var>, Emacs enters
 the minibuffer immediately to read <var>cmd</var>.  But if you type
 <kbd>C-x</kbd>, another character is read; if that character is <kbd>4</kbd>,
 another character is read, and so on.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x global-set-key <kbd>RET</kbd> C-x 4 $ spell-other-window <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>redefines <kbd>C-x 4 $</kbd> to run the (fictitious) command
@@ -1439,7 +1454,7 @@ old definition to have the new definition instead.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.4.2.2 Changing Key Bindings Programmatically </h4>
+<h4 class="subsubsection"> 27.4.2.2 Changing Key Bindings Programmatically </h4>
 
 <p>  You can use the functions <code>global-set-key</code> and <code>define-key</code>
 to rebind keys under program control.
@@ -1502,7 +1517,7 @@ abbreviation as an alternate representation.)
 </p></li></ul>
 
 <p>Here are some examples of programmatically binding keys:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 
 ;;;  Bind <code>my-command</code> to <kbd>f1</kbd>
 (global-set-key 'f1 'my-command)                
@@ -1540,11 +1555,11 @@ abbreviation as an alternate representation.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 27.4.2.3 Using Strings for Changing Key Bindings </h4>
+<h4 class="subsubsection"> 27.4.2.3 Using Strings for Changing Key Bindings </h4>
 
 <p>  For backward compatibility, you can still use strings to represent
 key sequences.  Thus you can use commands like the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ;;; Bind <code>end-of-line</code> to <kbd>C-f</kbd>
 (global-set-key &quot;\C-f&quot; 'end-of-line)
 </pre></td></tr></table>
@@ -1552,7 +1567,7 @@ key sequences.  Thus you can use commands like the following:
 key sequence by using a single command.  This situation can 
 arise because in ASCII, <kbd>C-i</kbd> and <kbd>TAB</kbd> have
 the same representation.  Therefore, when Emacs sees:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-set-key &quot;\C-i&quot; 'end-of-line)
 </pre></td></tr></table>
 <p>it is unclear whether the user intended to bind <kbd>C-i</kbd> or <kbd>TAB</kbd>.
@@ -1560,11 +1575,11 @@ The solution XEmacs adopts is to bind both of these key
 sequences.
 </p><a name="IDX1525"></a>
 <p>After binding a command to two key sequences with a form like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         (define-key global-map &quot;\^X\^I&quot; 'command-1)
 </pre></td></tr></table>
 <p>it is possible to redefine only one of those sequences like so:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         (define-key global-map [(control x) (control i)] 'command-2)
         (define-key global-map [(control x) tab] 'command-3)
 </pre></td></tr></table>
@@ -1573,7 +1588,7 @@ talking to Emacs through an ASCII-only channel, you do not get any of
 these features.
 </p><p>Here is a table of pairs of key sequences that behave in a
 similar fashion:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         control h      backspace           
         control l      clear
         control i      tab 
@@ -1601,7 +1616,7 @@ similar fashion:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.4.3 Disabling Commands </h3>
+<h3 class="subsection"> 27.4.3 Disabling Commands </h3>
 
 <p>  Disabling a command marks it as requiring confirmation before it
 can be executed.  The purpose of disabling a command is to prevent
@@ -1610,13 +1625,13 @@ beginning users from executing it by accident and being confused.
 <code>disabled</code> property on the Lisp symbol for the command.  These
 properties are normally set by the user's init file with
 Lisp expressions such as:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (put 'delete-region 'disabled t)
 </pre></td></tr></table>
 <p>See section <a href="#SEC377">The Init File</a>.
 </p><p>  If the value of the <code>disabled</code> property is a string, that string
 is included in the message printed when the command is used:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (put 'delete-region 'disabled
      &quot;Text deleted this way cannot be yanked back!\n&quot;)
 </pre></td></tr></table>
@@ -1657,7 +1672,7 @@ programs.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.5 The Syntax Table </h2>
+<h2 class="section"> 27.5 The Syntax Table </h2>
 
 <p>  All the Emacs commands which parse words or balance parentheses are
 controlled by the <em>syntax table</em>.  The syntax table specifies which
@@ -1668,7 +1683,7 @@ installs in each buffer that uses that major mode.  The syntax table
 installed in the current buffer is the one that all commands use, so we
 call it &quot;the&quot; syntax table.  A syntax table is a Lisp object, a vector of
 length 256 whose elements are numbers.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC375">27.5.1 Information About Each Character</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What the syntax table records for each character.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC376">27.5.2 Altering Syntax Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to change the information.</td></tr>
@@ -1693,7 +1708,7 @@ length 256 whose elements are numbers.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.5.1 Information About Each Character </h3>
+<h3 class="subsection"> 27.5.1 Information About Each Character </h3>
 
 <p>  The syntax table entry for a character is a number that encodes six
 pieces of information:
@@ -1831,7 +1846,7 @@ comment terminator is a newline but not every newline ends a comment.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.5.2 Altering Syntax Information </h3>
+<h3 class="subsection"> 27.5.2 Altering Syntax Information </h3>
 
 <p>  It is possible to alter a character's syntax table entry by storing a new
 number in the appropriate element of the syntax table, but it would be hard
@@ -1903,7 +1918,7 @@ and some English to explain that string if necessary.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.6 The Init File </h2>
+<h2 class="section"> 27.6 The Init File </h2>
 
 <p>  When you start Emacs, it normally loads either `<tt>.xemacs/init.el</tt>'
 or the file `<tt>.emacs</tt>' (whichever comes first) in your home directory.
@@ -1923,7 +1938,7 @@ first; if it sets <code>inhibit-default-init</code> non-<code>nil</code>, then
 `<tt>default</tt>' is not loaded.
 </p><p>  If you have a large amount of code in your init file, you should
 byte-compile it to `<tt>~/.xemacs/init.elc</tt>' or `<tt>~/.emacs.elc</tt>'.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC378">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Syntax of constants in Emacs Lisp.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC379">27.6.2 Init File Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to do some things with an init file.</td></tr>
@@ -1949,7 +1964,7 @@ byte-compile it to `<tt>~/.xemacs/init.elc</tt>' or `<tt>~/.emacs.elc</tt>'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.6.1 Init File Syntax </h3>
+<h3 class="subsection"> 27.6.1 Init File Syntax </h3>
 
 <p>  The init file contains one or more Lisp function call
 expressions.  Each consists of a function name followed by
@@ -2026,7 +2041,7 @@ require one and some contexts require the other.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.6.2 Init File Examples </h3>
+<h3 class="subsection"> 27.6.2 Init File Examples </h3>
 
 <p>  Here are some examples of doing certain commonly desired things with
 Lisp expressions:
@@ -2034,7 +2049,7 @@ Lisp expressions:
 <li><p>
 Make <kbd>TAB</kbd> in C mode just insert a tab if point is in the middle of a
 line.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq c-tab-always-indent nil)
 </pre></td></tr></table>
 <p>Here we have a variable whose value is normally <code>t</code> for `true'
@@ -2042,7 +2057,7 @@ and the alternative is <code>nil</code> for `false'.
 </p></li><li><p>
 Make searches case sensitive by default (in all buffers that do not
 override this).
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq-default case-fold-search nil)
 </pre></td></tr></table>
 <p>This sets the default value, which is effective in all buffers that do
@@ -2051,7 +2066,7 @@ with <code>setq</code> affects only the current buffer's local value, which
 is probably not what you want to do in an init file.
 </p></li><li><p>
 Make Text mode the default mode for new buffers.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq default-major-mode 'text-mode)
 </pre></td></tr></table>
 <p>Note that <code>text-mode</code> is used because it is the command for entering
@@ -2059,7 +2074,7 @@ the mode we want.  A single-quote is written before it to make a symbol
 constant; otherwise, <code>text-mode</code> would be treated as a variable name.
 </p></li><li><p>
 Turn on Auto Fill mode automatically in Text mode and related modes.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq text-mode-hook
   '(lambda () (auto-fill-mode 1)))
 </pre></td></tr></table>
@@ -2071,7 +2086,7 @@ are not explained here; for mode hooks it is enough to know that
 <code>(auto-fill-mode 1)</code> is an expression that will be executed when
 Text mode is entered.  You could replace it with any other expression
 that you like, or with several expressions in a row.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq text-mode-hook 'turn-on-auto-fill)
 </pre></td></tr></table>
 <p>This is another way to accomplish the same result.
@@ -2080,7 +2095,7 @@ that you like, or with several expressions in a row.
 </p></li><li><p>
 Load the installed Lisp library named `<tt>foo</tt>' (actually a file
 `<tt>foo.elc</tt>' or `<tt>foo.el</tt>' in a standard Emacs directory).
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (load &quot;foo&quot;)
 </pre></td></tr></table>
 <p>When the argument to <code>load</code> is a relative pathname, not starting
@@ -2088,47 +2103,47 @@ with `<samp>/</samp>' or `<samp>~</samp>', <code>load</code> searches the direct
 <code>load-path</code> (see section <a href="xemacs_25.html#SEC255">Loading Libraries</a>).
 </p></li><li><p>
 Load the compiled Lisp file `<tt>foo.elc</tt>' from your home directory.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (load &quot;~/foo.elc&quot;)
 </pre></td></tr></table>
 <p>Here an absolute file name is used, so no searching is done.
 </p></li><li><p>
 Rebind the key <kbd>C-x l</kbd> to run the function <code>make-symbolic-link</code>.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-set-key &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (define-key global-map &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
 <p>Note once again the single-quote used to refer to the symbol
 <code>make-symbolic-link</code> instead of its value as a variable.
 </p></li><li><p>
 Do the same thing for C mode only.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (define-key c-mode-map &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
 </li><li><p>
 Bind the function key <kbd>F1</kbd> to a command in C mode.
 Note that the names of function keys must be lower case.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (define-key c-mode-map 'f1 'make-symbolic-link)
 </pre></td></tr></table>
 </li><li><p>
 Bind the shifted version of <kbd>F1</kbd> to a command.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (define-key c-mode-map '(shift f1) 'make-symbolic-link)
 </pre></td></tr></table>
 </li><li><p>
 Redefine all keys which now run <code>next-line</code> in Fundamental mode
 to run <code>forward-line</code> instead.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (substitute-key-definition 'next-line 'forward-line
                            global-map)
 </pre></td></tr></table>
 </li><li><p>
 Make <kbd>C-x C-v</kbd> undefined.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-unset-key &quot;\C-x\C-v&quot;)
 </pre></td></tr></table>
 <p>One reason to undefine a key is so that you can make it a prefix.
@@ -2138,12 +2153,12 @@ first.
 </p></li><li><p>
 Make `<samp>$</samp>' have the syntax of punctuation in Text mode.
 Note the use of a character constant for `<samp>$</samp>'.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
 </pre></td></tr></table>
 </li><li><p>
 Enable the use of the command <code>eval-expression</code> without confirmation.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (put 'eval-expression 'disabled nil)
 </pre></td></tr></table></li></ul>
 
@@ -2166,7 +2181,7 @@ Enable the use of the command <code>eval-expression</code> without confirmation.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.6.3 Terminal-Specific Initialization </h3>
+<h3 class="subsection"> 27.6.3 Terminal-Specific Initialization </h3>
 
 <p>  Each terminal type can have a Lisp library to be loaded into Emacs when
 it is run on that type of terminal.  For a terminal type named
@@ -2215,7 +2230,7 @@ initializations for terminals that do not have a library.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.7 Changing the Bell Sound </h2>
+<h2 class="section"> 27.7 Changing the Bell Sound </h2>
 
 <p>You can now change how the audible bell sounds using the variable
 <code>sound-alist</code>.
@@ -2252,7 +2267,7 @@ The symbol <code>t</code> here means use the default X beep.
 </dl>
 
 <p>For compatibility, elements of `sound-alist' may also be of the form:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ( <var>sound-name</var> . <var>&lt;sound&gt;</var> )
 ( <var>sound-name</var> <var>&lt;volume&gt;</var> <var>&lt;sound&gt;</var> )
 </pre></td></tr></table>
@@ -2335,7 +2350,7 @@ kernel of Emacs uses.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.8 Faces </h2>
+<h2 class="section"> 27.8 Faces </h2>
 
 <p>XEmacs has objects called extents and faces.  An <em>extent</em>
 is a region of text and a <em>face</em> is a collection of textual
@@ -2364,7 +2379,7 @@ the X resource manager.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.8.1 Customizing Faces </h3>
+<h3 class="subsection"> 27.8.1 Customizing Faces </h3>
 
 <p>You can change the face of an extent with the functions in
 this section.  All the functions prompt for a <var>face</var> as an
@@ -2525,7 +2540,7 @@ frame; otherwise, it is changed in all frames.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.9 Frame Components </h2>
+<h2 class="section"> 27.9 Frame Components </h2>
 
 <p>You can control the presence and position of most frame components, such
 as the menubar, toolbars, and gutters.
@@ -2551,7 +2566,7 @@ as the menubar, toolbars, and gutters.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.10 X Resources </h2>
+<h2 class="section"> 27.10 X Resources </h2>
 
 <p>Historically, XEmacs has used the X resource application class `<samp>Emacs</samp>'
 for its resources.  Unfortunately, GNU Emacs uses the same application
@@ -2568,18 +2583,18 @@ may be consulted to determine the application class being used.
 its own name or the same name as another, depending on the name passed to the 
 <code>make-frame</code> function.
 </p><p>You can specify resources for all frames with the syntax:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*parameter: value
 </pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*EmacsFrame.parameter:value
 </pre></td></tr></table>
 <p>You can specify resources for a particular frame with the syntax:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*FRAME-NAME.parameter: value
 </pre></td></tr></table>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC386">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling the size and position of frames.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC387">27.10.2 Iconic Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling whether frames come up iconic.</td></tr>
@@ -2608,19 +2623,19 @@ Emacs*FRAME-NAME.parameter: value
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.1 Geometry Resources </h3>
+<h3 class="subsection"> 27.10.1 Geometry Resources </h3>
 
 <p>To make the default size of all Emacs frames be 80 columns by 55 lines,
 do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*EmacsFrame.geometry: 80x55
 </pre></td></tr></table>
 <p>To set the geometry of a particular frame named `<samp>fred</samp>', do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*fred.geometry: 80x55
 </pre></td></tr></table>
 <p>Important! Do not use the following syntax:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*geometry: 80x55
 </pre></td></tr></table>
 <p>You should never use <code>*geometry</code> with any X application. It does
@@ -2631,7 +2646,7 @@ Emacs text pane to be 80x55 in characters, and telling the menubar pane
 to be 80x55 pixels, which is surely not what you want.
 </p><p>As a special case, this geometry specification also works (and sets the
 default size of all Emacs frames to 80 columns by 55 lines):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs.geometry: 80x55
 </pre></td></tr></table>
 <p>since that is the syntax used with most other applications (since most
@@ -2685,7 +2700,7 @@ frames created in various ways.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.2 Iconic Resources </h3>
+<h3 class="subsection"> 27.10.2 Iconic Resources </h3>
 
 <p>Analogous to <code>-geometry</code>, the <code>-iconic</code> command-line option
 sets the iconic flag of the ApplicationShell (<code>Emacs.iconic</code>) and
@@ -2711,7 +2726,7 @@ name) by using the <code>Emacs*FRAME-NAME.iconic</code> resource.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.3 Resource List </h3>
+<h3 class="subsection"> 27.10.3 Resource List </h3>
 
 <p>Emacs frames accept the following resources:
 </p><dl compact="compact">
@@ -2897,14 +2912,14 @@ resources are used to initialize the variables
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.4 Face Resources </h3>
+<h3 class="subsection"> 27.10.4 Face Resources </h3>
 
 <p>The attributes of faces are also per-frame. They can be specified as:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs.FACE_NAME.parameter: value
 </pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*FRAME_NAME.FACE_NAME.parameter: value
 </pre></td></tr></table>
 <p>Faces accept the following resources:
@@ -3006,12 +3021,12 @@ specified in the resource database, then XEmacs attempts to derive them
 from the font of the default face.  It can only succeed at this if you
 have specified the default font using the XLFD (X Logical Font
 Description) format, which looks like
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
 <p>If you use any of the other, less strict font name formats, some of which
 look like
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 lucidasanstypewriter-12
 fixed
 9x13
@@ -3039,7 +3054,7 @@ should use those forms.  See the man pages for `<samp>X(1)</samp>',
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.5 Widgets </h3>
+<h3 class="subsection"> 27.10.5 Widgets </h3>
 
 <p>There are several structural widgets between the terminal EmacsFrame
 widget and the top level ApplicationShell; the exact names and types of
@@ -3049,7 +3064,7 @@ subject to further change in the future, so you should avoid mentioning
 them in your resource database.  The above-mentioned syntaxes should be
 forward- compatible.  As of 19.13, the exact widget hierarchy is as
 follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 INVOCATION-NAME            &quot;shell&quot;       &quot;container&quot;     FRAME-NAME
 x-emacs-application-class  &quot;EmacsShell&quot;  &quot;EmacsManager&quot;  &quot;EmacsFrame&quot;
 </pre></td></tr></table>
@@ -3075,7 +3090,7 @@ XEmacs executable (usually `<samp>xemacs</samp>'), and
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.10.6 Menubar Resources </h3>
+<h3 class="subsection"> 27.10.6 Menubar Resources </h3>
 
 <p>As the menubar is implemented as a widget which is not a part of XEmacs
 proper, it does not use the face mechanism for specifying fonts and
@@ -3083,12 +3098,12 @@ colors: It uses whatever resources are appropriate to the type of widget
 which is used to implement it.
 </p><p>If Emacs was compiled to use only the Lucid Motif-lookalike menu widgets,
 then one way to specify the font of the menubar would be
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*menubar*font: *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
 <p>If both the Lucid Motif-lookalike menu widgets and X Font Sets are 
 configured to allow multilingual menubars, then one uses
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 *menubar*FontSet:       -*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*, \
                         -*-*-*-*-*-*-*-120-*-jisx0208.1983-0
 </pre></td></tr></table>
@@ -3098,7 +3113,7 @@ XLFD is acceptable; specifying more than one for a given registry
 resources (eg, menubars) are ignored in favor of the corresponding
 .fontSet resources.
 </p><p>If the Motif library is being used, then one would have to use 
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*menubar*fontList: *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
 <p>because the Motif library uses the <code>fontList</code> resource name instead
@@ -3124,7 +3139,7 @@ appropriate for the toolkit in use.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.11 Quitting and Aborting </h2>
+<h2 class="section"> 27.11 Quitting and Aborting </h2>
 
 <dl compact="compact">
 <dt><kbd> C-g
@@ -3213,11 +3228,11 @@ executing.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.12 Dealing With Emacs Trouble </h2>
+<h2 class="section"> 27.12 Dealing With Emacs Trouble </h2>
 
 <p>  This section describes various conditions in which Emacs fails to work,
 and how to recognize them and correct them.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC394">27.12.1 Recursive Editing Levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">`[...]' in mode line around the parentheses.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC395">27.12.2 Garbage on the Screen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Garbage on the screen.</td></tr>
@@ -3247,11 +3262,11 @@ and how to recognize them and correct them.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.1 Recursive Editing Levels </h3>
+<h3 class="subsection"> 27.12.1 Recursive Editing Levels </h3>
 
 <p>  Recursive editing levels are important and useful features of Emacs, but
 they can seem like malfunctions to the user who does not understand them.
-</p><p>  If the mode line has square brackets `<samp>[<small>...</small>]</samp>' around the parentheses
+</p><p>  If the mode line has square brackets `<samp>[<small class="dots">...</small>]</samp>' around the parentheses
 that contain the names of the major and minor modes, you have entered a
 recursive editing level.  If you did not do this on purpose, or if you
 don't understand what that means, you should just get out of the recursive
@@ -3276,7 +3291,7 @@ back to top level.  See section <a href="xemacs_29.html#SEC346">Recursive Editin
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.2 Garbage on the Screen </h3>
+<h3 class="subsection"> 27.12.2 Garbage on the Screen </h3>
 
 <p>  If the data on the screen looks wrong, the first thing to do is see
 whether the text is actually wrong.  Type <kbd>C-l</kbd>, to redisplay the
@@ -3312,7 +3327,7 @@ that have or lack specific features.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.3 Garbage in the Text </h3>
+<h3 class="subsection"> 27.12.3 Garbage in the Text </h3>
 
 <p>  If <kbd>C-l</kbd> shows that the text is wrong, try undoing the changes to it
 using <kbd>C-x u</kbd> until it gets back to a state you consider correct.  Also
@@ -3341,7 +3356,7 @@ To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.4 Spontaneous Entry to Incremental Search </h3>
+<h3 class="subsection"> 27.12.4 Spontaneous Entry to Incremental Search </h3>
 
 <p>  If Emacs spontaneously displays `<samp>I-search:</samp>' at the bottom of the
 screen, it means that the terminal is sending <kbd>C-s</kbd> and <kbd>C-q</kbd>
@@ -3371,7 +3386,7 @@ control to be used, until you can get a properly designed terminal.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.5 Emergency Escape </h3>
+<h3 class="subsection"> 27.12.5 Emergency Escape </h3>
 
 <p>  Because at times there have been bugs causing Emacs to loop without
 checking <code>quit-flag</code>, a special feature causes Emacs to be suspended
@@ -3381,7 +3396,7 @@ clears <code>quit-flag</code> (and quits!) quickly enough to prevent this from
 happening.
 </p><p>  When you resume Emacs after a suspension caused by multiple <kbd>C-g</kbd>, it
 asks two questions before going back to what it had been doing:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Auto-save? (y or n)
 Abort (and dump core)? (y or n)
 </pre></td></tr></table>
@@ -3422,7 +3437,7 @@ or to create another window and run another program.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.12.6 Help for Total Frustration </h3>
+<h3 class="subsection"> 27.12.6 Help for Total Frustration </h3>
 
 <p>  If using Emacs (or something else) becomes terribly frustrating and none
 of the techniques described above solve the problem, Emacs can still help
@@ -3453,7 +3468,7 @@ doctor know you are finished.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 27.13 Reporting Bugs </h2>
+<h2 class="section"> 27.13 Reporting Bugs </h2>
 
 <p>  Sometimes you will encounter a bug in Emacs.  Although we cannot promise
 we can or will fix the bug, and we might not even agree that it is a bug,
@@ -3478,7 +3493,7 @@ to do so effectively, you must know when and how to do it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.13.1 When Is There a Bug </h3>
+<h3 class="subsection"> 27.13.1 When Is There a Bug </h3>
 
 <p>  If Emacs executes an illegal instruction, or dies with an operating
 system error message that indicates a problem in the program (as opposed to
@@ -3534,7 +3549,7 @@ with the manual, one of them must be wrong, so report the bug.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 27.13.2 How to Report a Bug </h3>
+<h3 class="subsection"> 27.13.2 How to Report a Bug </h3>
 
 <p>  When you decide that there is a bug, it is important to report it and to
 report it in a way which is useful.  What is most useful is an exact
@@ -3608,7 +3623,7 @@ the last line is terminated, but tell that to the bugs).
 <a name="IDX1561"></a>
 <p>  The easy way to record the input to Emacs precisely is to write a
 dribble file; execute the Lisp expression:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (open-dribble-file &quot;~/dribble&quot;)
 </pre></td></tr></table>
 <p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the `<samp>*scratch*</samp>' buffer just after starting
@@ -3621,7 +3636,7 @@ dribble file until the Emacs process is killed.
 for the terminal from `<tt>/etc/termcap</tt>' (since that file is not identical
 on all machines), and the output that Emacs actually sent to the terminal.
 The way to collect this output is to execute the Lisp expression:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (open-termscript &quot;~/termscript&quot;)
 </pre></td></tr></table>
 <p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the `<samp>*scratch*</samp>' buffer

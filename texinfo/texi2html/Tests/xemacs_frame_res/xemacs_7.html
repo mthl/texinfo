@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 4. Basic Editing Commands </h1>
+<h1 class="chapter"> 4. Basic Editing Commands </h1>
 
 <p>  We now give the basics of how to enter text, make corrections, and
 save the text in a file.  If this material is new to you, you might
@@ -56,7 +71,7 @@ tutorial when available (see section <a href="xemacs_20.html#SEC183">Language En
 specific translation, give <kbd>C-h t</kbd> a prefix argument, like <kbd>C-u
 C-h t</kbd>.
 </p><p>  To clear the screen and redisplay, type <kbd>C-l</kbd> (<code>recenter</code>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 
 <tr><td align="left" valign="top"><a href="#SEC50">4.1 Inserting Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting text by simply typing it.</td></tr>
@@ -90,7 +105,7 @@ C-h t</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.1 Inserting Text </h2>
+<h2 class="section"> 4.1 Inserting Text </h2>
 
 <p>  To insert printing characters into the text you are editing, just type
 them.  This inserts the characters you type into the buffer at the
@@ -173,7 +188,7 @@ it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.2 Changing the Location of Point </h2>
+<h2 class="section"> 4.2 Changing the Location of Point </h2>
 
 <p>  To do more than insert characters, you have to know how to move point
 (see section <a href="xemacs_4.html#SEC8">Point</a>).  The simplest way to do this is with arrow keys, or by
@@ -371,7 +386,7 @@ it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, th
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.3 Erasing Text </h2>
+<h2 class="section"> 4.3 Erasing Text </h2>
 
 <dl compact="compact">
 <dt><kbd> <kbd>DEL</kbd>
@@ -432,7 +447,7 @@ line, it kills all the text up to the end of the line.  If you type
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.4 Files </h2>
+<h2 class="section"> 4.4 Files </h2>
 
 <p>  The commands described above are sufficient for creating and altering
 text in an Emacs buffer; the more advanced Emacs commands just make
@@ -443,7 +458,7 @@ the contents of a file in any way, including editing the file with
 Emacs, you must specify the file name.
 </p><p>  Consider a file named `<tt>/usr/rms/foo.c</tt>'.  To begin editing
 this file from Emacs, type:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
 </pre></td></tr></table>
 <p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
@@ -486,7 +501,7 @@ buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.5 Help </h2>
+<h2 class="section"> 4.5 Help </h2>
 
 <p>  If you forget what a key does, you can find out with the Help
 character, which is <kbd>C-h</kbd> (or <kbd>F1</kbd>, which is an alias for
@@ -515,7 +530,7 @@ a description of all the help facilities.  See section <a href="xemacs_11.html#S
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.6 Blank Lines </h2>
+<h2 class="section"> 4.6 Blank Lines </h2>
 
 <p>  Here are special commands and techniques for putting in and taking out
 blank lines.
@@ -574,7 +589,7 @@ nonblank line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.7 Continuation Lines </h2>
+<h2 class="section"> 4.7 Continuation Lines </h2>
 
 <p>  If you add too many characters to one line without breaking it with
 <kbd>RET</kbd>, the line will grow to occupy two (or more) lines on the
@@ -622,7 +637,7 @@ displayed.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.8 Cursor Position Information </h2>
+<h2 class="section"> 4.8 Cursor Position Information </h2>
 
 <p>  If you are accustomed to other display editors, you may be surprised
 that Emacs does not always display the page number or line number of
@@ -684,7 +699,7 @@ counts the lines in the
 <p>  The command <kbd>C-x =</kbd> (<code>what-cursor-position</code>) can be used to find out
 the column that the cursor is in, and other miscellaneous information about
 point.  It prints a line in the echo area that looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
 </pre></td></tr></table>
 <p>(In fact, this is the output produced when point is before `<samp>column
@@ -703,7 +718,7 @@ columns from the left edge of the window.
 beginning and the end temporarily invisible, <kbd>C-x =</kbd> prints
 additional text describing the current visible range.  For example, it
 might say:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
 </pre></td></tr></table>
 <p>where the two extra numbers give the smallest and largest character position
@@ -712,7 +727,7 @@ are the visible ones.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>
 </p><p>  If point is at the end of the buffer (or the end of the visible part),
 <kbd>C-x =</kbd> omits any description of the character after point.
 The output looks like
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 point=563026 of 563025(100%)  column 0
 </pre></td></tr></table>
 <hr size="6">
@@ -734,7 +749,7 @@ point=563026 of 563025(100%)  column 0
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.9 Numeric Arguments </h2>
+<h2 class="section"> 4.9 Numeric Arguments </h2>
 
 <p>  In mathematics and computer usage, the word <em>argument</em> means
 &quot;data provided to a function or operation.&quot;  Any Emacs command can be
@@ -753,7 +768,7 @@ command to move or act  in the opposite direction.
 Sun-type keyboards and labelled `<samp>Alt</samp>' on some other keyboards), the
 easiest way to specify a numeric argument is to type digits and/or a
 minus sign while holding down the <kbd>META</kbd> key.  For example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 M-5 C-n
 </pre></td></tr></table>
 <p>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,

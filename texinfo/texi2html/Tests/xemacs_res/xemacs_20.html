@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 17. World Scripts Support </h1>
+<h1 class="chapter"> 17. World Scripts Support </h1>
 
 <p>  If you compile XEmacs with Mule option, it supports a wide variety of
 world scripts, including Latin script, as well as Arabic script,
@@ -53,7 +68,7 @@ symbols, Japanese scripts (Hiragana, Katakana and Kanji), Korean scripts
 Russian, Serbian and Ukrainian).  These features have been merged from
 the modified version of Emacs known as MULE (for &quot;MULti-lingual
 Enhancement to GNU Emacs&quot;).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC182">17.1 What is Mule?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic concepts of Mule.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC183">17.2 Language Environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Setting things up for the language you use.</td></tr>
@@ -85,7 +100,7 @@ Enhancement to GNU Emacs&quot;).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.1 What is Mule? </h2>
+<h2 class="section"> 17.1 What is Mule? </h2>
 
 <p>Mule is the MUltiLingual Extension to XEmacs.  It provides facilities
 not only for handling text written in many different languages, but in
@@ -165,7 +180,7 @@ to world scripts, coding systems, and input methods.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.2 Language Environments </h2>
+<h2 class="section"> 17.2 Language Environments </h2>
 
 <p>  All supported character sets are supported in XEmacs buffers if it is
 compiled with Mule; there is no need to select a particular language in
@@ -225,7 +240,7 @@ environment.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.3 Input Methods </h2>
+<h2 class="section"> 17.3 Input Methods </h2>
 
 <p>  An <em>input method</em> is a kind of character conversion designed
 specifically for interactive input.  In XEmacs, typically each language
@@ -306,7 +321,7 @@ are in the minibuffer).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.4 Selecting an Input Method </h2>
+<h2 class="section"> 17.4 Selecting an Input Method </h2>
 
 <dl compact="compact">
 <dt><kbd> C-\
@@ -386,7 +401,7 @@ method, including the string that stands for it in the mode line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.5 Mule and Fonts </h2>
+<h2 class="section"> 17.5 Mule and Fonts </h2>
 
 <p>(This section is X11-specific.)
 </p><p>Text in XEmacs buffers is displayed using various faces.  In addition to
@@ -408,7 +423,7 @@ registry (as a string).
 charset with `<samp>&quot;ISO8859-5&quot;</samp>' as a default registry, and we want to
 use `<samp>&quot;koi8-r&quot;</samp>' instead, because fonts in that encoding are
 installed on our system.  Use:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
 </pre></td></tr></table>
 <p>(Please note that you probably also want to set font registry for
@@ -426,7 +441,7 @@ no comprehensive list of them, so you currently have to consult sources.
 </p><p>We know that there is a CCL program called `<samp>ccl-encode-koi8-r-font</samp>'
 that is used exactly for needed purpose: to convert characters between
 `<samp>ISO8859-5</samp>' encoding and `<samp>koi8-r</samp>'.  Use:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
 </pre></td></tr></table>
 <p>There are several more uses for CCL programs, not related to fonts, but
@@ -450,7 +465,7 @@ those uses are not described here.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.6 Coding Systems </h2>
+<h2 class="section"> 17.6 Coding Systems </h2>
 
 <p>  Users of various languages have established many more-or-less standard
 coding systems for representing them.  XEmacs does not use these coding
@@ -511,19 +526,19 @@ lines, that end-of-line conversion will be used.
 </p><p>  Each of the listed coding systems has three variants which specify
 exactly what to do for end-of-line conversion:
 </p><dl compact="compact">
-<dt><code> <small>...</small>-unix
+<dt><code> <small class="dots">...</small>-unix
 </code></dt>
 <dd><p>Don't do any end-of-line conversion; assume the file uses
 newline to separate lines.  (This is the convention normally used
 on Unix and GNU systems.)
 </p></dd>
-<dt><code> <small>...</small>-dos
+<dt><code> <small class="dots">...</small>-dos
 </code></dt>
 <dd><p>Assume the file uses carriage-return linefeed to separate lines,
 and do the appropriate conversion.  (This is the convention normally used
 on Microsoft systems.)
 </p></dd>
-<dt><code> <small>...</small>-mac
+<dt><code> <small class="dots">...</small>-mac
 </code></dt>
 <dd><p>Assume the file uses carriage-return to separate lines, and do the
 appropriate conversion.  (This is the convention normally used on the
@@ -567,7 +582,7 @@ the usual three variants to specify the kind of end-of-line conversion.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.7 Recognizing Coding Systems </h2>
+<h2 class="section"> 17.7 Recognizing Coding Systems </h2>
 
 <p>  Most of the time, XEmacs can recognize which coding system to use for
 any given file--once you have specified your preferences.
@@ -601,7 +616,7 @@ correspondence.  There is a special function
 <code>modify-coding-system-alist</code> for adding elements to this list.  For
 example, to read and write all `<samp>.txt</samp>' using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
 </pre></td></tr></table>
 <p>The first argument should be <code>file</code>, the second argument should be
@@ -609,7 +624,7 @@ a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.
 </p><a name="IDX722"></a>
 <p>  You can specify the coding system for a particular file using the
-`<samp>-*-<small>...</small>-*-</samp>' construct at the beginning of a file, or a local
+`<samp>-*-<small class="dots">...</small>-*-</samp>' construct at the beginning of a file, or a local
 variables list at the end (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).  You do this by
 defining a value for the &quot;variable&quot; named <code>coding</code>.  XEmacs does
 not really have a variable <code>coding</code>; instead of setting a variable,
@@ -643,7 +658,7 @@ the buffer using <code>set-buffer-file-coding-system</code> (see section <a href
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 17.8 Specifying a Coding System </h2>
+<h2 class="section"> 17.8 Specifying a Coding System </h2>
 
 <p>  In cases where XEmacs does not automatically choose the right coding
 system, you can use these commands to specify one:

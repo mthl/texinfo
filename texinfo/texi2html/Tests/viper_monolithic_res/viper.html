@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -41,7 +56,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Distribution </h1>
+<h1 class="unnumbered"> Distribution </h1>
 
 <p>Copyright &copy; 1995, 1996, 1997, 2001, 2002 Free Software Foundation, Inc.
 </p><p>Permission is granted to copy, distribute and/or modify this document
@@ -78,11 +93,11 @@ license to the document, as described in section 6 of the license.
 </tr></table>
 
 <a name="SEC2"></a>
-<h1> Viper </h1>
+<h1 class="unnumbered"> Viper </h1>
 
 <p>We believe that one or more of the following statements are adequate
 descriptions of Viper:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Viper Is a Package for Emacs Rebels;
 it is a VI Plan for Emacs Rescue
 and/or a venomous VI PERil.
@@ -112,19 +127,19 @@ be visited as needed.
 </p><p>Comments and bug reports are welcome.
 <code>kifer@cs.stonybrook.edu</code> is the current address for Viper bug reports.
 Please use the Ex command <kbd>:submitReport</kbd> for this purpose.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC3">1. Overview of Viper</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Read for a smoother start</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC14">2. Improvements over Vi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">New features, Improvements</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC25">3. Customization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to customize Viper</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC31">4. Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Vi and Ex Commands</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC51">Key Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Index of Vi and Ex Commands</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC52">Function Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Index of Viper Functions</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC53">Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Index of Viper Variables</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC54">Package Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Index of Packages Mentioned in this Document</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC55">Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Vi, Ex and Emacs concepts</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC50">Acknowledgments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
@@ -147,7 +162,7 @@ Please use the Ex command <kbd>:submitReport</kbd> for this purpose.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. Overview of Viper </h1>
+<h1 class="chapter"> 1. Overview of Viper </h1>
 
 <p>Viper is a Vi emulation on top of Emacs.  At the same time, Viper provides a
 virtually unrestricted access to Emacs facilities.  Perfect compatibility
@@ -164,7 +179,7 @@ in some cases, especially in the Vi Insert state. John Hawkins
 enables additional Emacs bindings under Viper.  These customizations can be
 included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 `<tt>http://www.eecs.umich.edu/~jshawkin/viper-sample</tt>'.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC4">1.1 Emacs Preliminaries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic concepts in Emacs.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC5">1.2 Loading Viper</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Loading and Preliminary Configuration.</td></tr>
@@ -194,7 +209,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.1 Emacs Preliminaries </h2>
+<h2 class="section"> 1.1 Emacs Preliminaries </h2>
 
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
@@ -312,11 +327,11 @@ functions directly, by typing <kbd>M-x function-name</kbd>.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.2 Loading Viper </h2>
+<h2 class="section"> 1.2 Loading Viper </h2>
 
 <p>The most common way to load it automatically is to include the following
 lines (in the given order!):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (setq viper-mode t)
 (require 'viper)
 </pre></td></tr></table>
@@ -341,7 +356,7 @@ on a buffer may be counter-productive.
 </p><p>Even if your `<tt>.emacs</tt>' file does not invoke Viper automatically,
 you can still load Viper and enter the Vi command state by typing the
 following from within Emacs:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 M-x viper-mode
 </pre></td></tr></table>
 <p>When Emacs first comes up, if you have not specified a file on the
@@ -374,7 +389,7 @@ toggles Viperization of Emacs on and off.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.3 States in Viper </h2>
+<h2 class="section"> 1.3 States in Viper </h2>
 
 <p>Viper has four states, Emacs, Vi, Insert, and Replace.
 </p><dl compact="compact">
@@ -394,7 +409,7 @@ Emacs runs on a dumb terminal or in an Xterm window).
 <dt>`<samp> Vi state
 </samp>'</dt>
 <dd><p>This is the Vi command mode.  Any of the Vi commands, such as <kbd>i, o, a</kbd>,
-<small>...</small>, will take you to Insert state.  All Vi commands may
+<small class="dots">...</small>, will take you to Insert state.  All Vi commands may
 be used in this mode.  Most Ex commands can also be used.
 For a full list of Ex commands supported by Viper, type
 <kbd>:</kbd> and then <kbd>TAB</kbd>.  To get help on any issue, including the Ex
@@ -455,7 +470,7 @@ bindings are turned off in Vi state as well.  This includes the bindings for
 key sequences that start with <kbd>C-c</kbd>, which practically means that all
 major mode bindings are unsupported.  See section <a href="#SEC25">Customization</a>, to find out how
 to allow Emacs keys in Insert state.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC7">1.3.1 Emacs State</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">This is the state you should learn more about when
                         you get up to speed with Viper.</td></tr>
@@ -485,7 +500,7 @@ to allow Emacs keys in Insert state.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.1 Emacs State </h3>
+<h3 class="subsection"> 1.3.1 Emacs State </h3>
 
 <p>You will be in this mode only by accident (hopefully).  This is the state
 Emacs is normally in (imagine!!).  Now leave it as soon as possible by
@@ -526,7 +541,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.2 Vi State </h3>
+<h3 class="subsection"> 1.3.2 Vi State </h3>
 
 <p>This is the Vi command mode.  When Viper is in Vi state, you will see the sign
 &lt;V&gt; in the mode line.  Most keys will work as in Vi.  The notable
@@ -600,14 +615,14 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 </p></dd>
 <dt>`<samp> Counts
 </samp>'</dt>
-<dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, <small>...</small>, etc., take counts.
+<dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, <small class="dots">...</small>, etc., take counts.
 </p></dd>
 <dt>`<samp> Regexps
 </samp>'</dt>
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `<samp>\u</samp>', `<samp>\L</samp>',
-<small>...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
+<small class="dots">...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
 Files specified to <kbd>:e</kbd> use <code>csh</code> regular expressions
 (globbing, wildcards, what have you).
 However, the function <code>viper-toggle-search-style</code>, bound to <kbd>C-c /</kbd>,
@@ -697,7 +712,7 @@ See section <a href="#SEC14">Improvements over Vi</a>, for more information.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.3 Insert State </h3>
+<h3 class="subsection"> 1.3.3 Insert State </h3>
 
 <p>To avoid confusing the beginner (at Viper level 1 and 2), Viper makes only the
 standard Vi keys available in Insert state.  The implication is that
@@ -763,7 +778,7 @@ the Insert state.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.4 Replace State </h3>
+<h3 class="subsection"> 1.3.4 Replace State </h3>
 
 <p>This state is entered through Vi replacement commands, such as <kbd>C</kbd>,
 <kbd>cw</kbd>, etc., or by typing <kbd>R</kbd>.  In Replace state, Viper puts &lt;R&gt; in
@@ -807,7 +822,7 @@ region.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.4 The Minibuffer </h2>
+<h2 class="section"> 1.4 The Minibuffer </h2>
 
 <p>The Minibuffer is where commands are entered in.  Editing can be done
 by commands from Insert state, namely:
@@ -878,7 +893,7 @@ See section <a href="#SEC29">Viper Specials</a>, for more details.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.5 Multiple Files in Viper </h2>
+<h2 class="section"> 1.5 Multiple Files in Viper </h2>
 
 <p>Viper can edit multiple files.  This means, for example that you never need
 to suffer through <code>No write since last change</code> errors.
@@ -970,7 +985,7 @@ other files. For example, use `:n3' to move to the third file in that list.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.6 Unimplemented Features </h2>
+<h2 class="section"> 1.6 Unimplemented Features </h2>
 
 <p>Unimplemented features include:
 </p><ul>
@@ -1008,12 +1023,12 @@ back to normal tabs.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. Improvements over Vi </h1>
+<h1 class="chapter"> 2. Improvements over Vi </h1>
 
 <p>Some common problems with Vi and Ex have been solved in Viper.  This
 includes better implementation of existing commands, new commands, and
 the facilities provided by Emacs.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC15">2.1 Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic Viper differences, Multi-file effects.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC16">2.2 Undo and Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Multiple undo, auto-save, backups and changes</td></tr>
@@ -1047,7 +1062,7 @@ the facilities provided by Emacs.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.1 Basics </h2>
+<h2 class="section"> 2.1 Basics </h2>
 
 <p>The Vi command set is based on the idea of combining motion commands
 with other commands.  The motion command is used as a text region
@@ -1126,7 +1141,7 @@ file.  See section <a href="#SEC25">Customization</a>, for details.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.2 Undo and Backups </h2>
+<h2 class="section"> 2.2 Undo and Backups </h2>
 
 <p>Viper provides multiple undo.  The number of undo's and the size is limited
 by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
@@ -1170,7 +1185,7 @@ can be any letters from a through z.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.3 History </h2>
+<h2 class="section"> 2.3 History </h2>
 
 <p>History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
@@ -1226,7 +1241,7 @@ expressions keep a history on those items.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.4 Macros and Registers </h2>
+<h2 class="section"> 2.4 Macros and Registers </h2>
 
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
@@ -1275,7 +1290,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.5 Completion </h2>
+<h2 class="section"> 2.5 Completion </h2>
 
 <p>Completion is done when you type <kbd>TAB</kbd>.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
@@ -1301,15 +1316,15 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.6 Improved Search </h2>
+<h2 class="section"> 2.6 Improved Search </h2>
 
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in `<tt>.viper</tt>' either by calling
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-buffer-search-enable)
 </pre></td></tr></table>
 <p>or by setting <code>viper-buffer-search-char</code> to, say, <kbd>f3</kbd>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (setq viper-buffer-search-char ?g)
 </pre></td></tr></table>
 <p>If the user calls <code>viper-buffer-search-enable</code> explicitly (the first
@@ -1336,7 +1351,7 @@ word by clicking on it.  See section <a href="#SEC29">Viper Specials</a>, for de
 them.  This is done through what is known as <em>faces</em> in Emacs.  The
 variable that controls how search patterns are highlighted is
 <code>viper-search-face</code>.  If you don't want any highlighting at all, put
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (copy-face 'default 'viper-search-face)
 </pre></td></tr></table><a name="IDX56"></a>
 
@@ -1368,7 +1383,7 @@ faces are grouped together under Viper's
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.7 Abbreviation Facilities </h2>
+<h2 class="section"> 2.7 Abbreviation Facilities </h2>
 
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
@@ -1405,13 +1420,13 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.8 Movement and Markers </h2>
+<h2 class="section"> 2.8 Movement and Markers </h2>
 
 <p>Viper can be set free from the line--limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your `<tt>.viper</tt>'
 contains
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 <code>(setq viper-ex-style-motion nil)</code>
 </pre></td></tr></table>
 <p>the motion will be a true screen editor motion.  One thing you must then
@@ -1447,7 +1462,7 @@ the value can be <code>reformed-vi</code> or <code>emacs</code>.
 </p><p>Changes to <code>viper-syntax-preference</code> should be done in the hooks to
 various major modes by executing <code>viper-set-syntax-preference</code> as in
 the following example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-set-syntax-preference nil &quot;emacs&quot;)
 </pre></td></tr></table>
 <a name="IDX60"></a>
@@ -1482,7 +1497,7 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.9 New Commands </h2>
+<h2 class="section"> 2.9 New Commands </h2>
 
 <p>These commands have no Vi analogs.
 </p><dl compact="compact">
@@ -1725,7 +1740,7 @@ notably, Vi style macros are much more powerful in Viper than in Vi.  See sectio
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.10 Useful Packages </h2>
+<h2 class="section"> 2.10 Useful Packages </h2>
 
 <p>Some Emacs packages are mentioned here as an aid to the new Viper user, to
 indicate what Viper is capable of.
@@ -1838,7 +1853,7 @@ and `<samp>wuarchive.wustl.edu</samp>'
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. Customization </h1>
+<h1 class="chapter"> 3. Customization </h1>
 
 <p>Customization can be done in 2 ways.
 </p><ul>
@@ -1870,7 +1885,7 @@ has to be done in Emacs Lisp in the `<tt>.viper</tt>' file.  For the common
 cases, examples are provided that you can use directly.
 </p></li></ul>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC26">3.1 Rudimentary Changes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Simple constant definitions.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC27">3.2 Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Enabling Emacs Keys, Rebinding keys, etc.</td></tr>
@@ -1898,7 +1913,7 @@ cases, examples are provided that you can use directly.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.1 Rudimentary Changes </h2>
+<h2 class="section"> 3.1 Rudimentary Changes </h2>
 
 <p>An easy way to customize Viper is to change the values of constants used in
 Viper.  Here is the list of the constants used in Viper and their default
@@ -2200,7 +2215,7 @@ replacement regions, you can change <code>viper-replace-overlay-face</code> by
 specifying a new face.  (Emacs faces are described in the Emacs Lisp
 reference.)  On a color display, the following customization method is
 usually most effective:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (set-face-foreground viper-replace-overlay-face &quot;DarkSlateBlue&quot;)
 (set-face-background viper-replace-overlay-face &quot;yellow&quot;)
 </pre></td></tr></table><p>For a complete list of colors available to you, evaluate the expression
@@ -2304,7 +2319,7 @@ the last chance to do customization before Viper is up and running.
 <p>You can reset some of these constants in Viper with the Ex command <kbd>:set</kbd>
 (when so indicated in the table).  Or you
 can include a line like this in your `<tt>.viper</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (setq viper-case-fold-search t)
 </pre></td></tr></table><a name="IDX136"></a>
 <a name="IDX137"></a>
@@ -2367,7 +2382,7 @@ can include a line like this in your `<tt>.viper</tt>' file:
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.2 Key Bindings </h2>
+<h2 class="section"> 3.2 Key Bindings </h2>
 
 <p>Viper lets you define hot keys, i.e., you can associate keyboard keys
 such as F1, Help, PgDn, etc., with Emacs Lisp functions (that may already
@@ -2378,7 +2393,7 @@ You can find out the preferred form of a key by typing <kbd>M-x
 describe-key-briefly</kbd> and then typing the key you want to know about.
 </p><p>Under the X Window System, every keyboard key emits its preferred form,
 so you can just type
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (global-set-key [f11] 'calendar)                        ; L1, Stop
 (global-set-key [f14] 'undo)                            ; L4, Undo
 </pre></td></tr></table>
@@ -2391,7 +2406,7 @@ those keys, you will have to find out which key sequences they emit
 by typing <kbd>C-q</kbd> and then the key (you should switch to Emacs state
 first).  Then you can bind those sequences to their preferred forms using
 <code>function-key-map</code> as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (cond ((string= (getenv &quot;TERM&quot;) &quot;xterm&quot;)
 (define-key function-key-map &quot;\e[192z&quot; [f11])    ; L1
 (define-key function-key-map &quot;\e[195z&quot; [f14])    ; L4, Undo
@@ -2421,11 +2436,11 @@ state.
 bind a key, say <kbd>C-v</kbd>, to the function that scrolls
 page down and to make <kbd>0</kbd> display information on the current buffer,
 putting this in `<tt>.viper</tt>' will do the trick in Vi state:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-vi-global-user-map &quot;\C-v&quot; 'scroll-down)
 </pre></td></tr></table>
 <p>To set a key globally,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
 (define-key viper-vi-global-user-map &quot;0&quot; 'viper-info-on-file)
 </pre></td></tr></table>
@@ -2433,11 +2448,11 @@ putting this in `<tt>.viper</tt>' will do the trick in Vi state:
 the global keymap has the lowest priority.
 To make sure that nothing will override a binding in Emacs state, you
 can write this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-emacs-global-user-map &quot;\C-c m&quot; 'smail)
 </pre></td></tr></table>
 <p>To customize the binding for <kbd>C-h</kbd> in Insert state:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-insert-global-user-map &quot;\C-h&quot; 'my-del-backwards-function)
 </pre></td></tr></table>
 <p>Each Emacs command key calls some lisp function.  If you have enabled the
@@ -2455,7 +2470,7 @@ states.  To this end, Viper provides the function
 </p><p>To modify keys in Emacs state for <code>my-favorite-major-mode</code>, the user
 needs to create a sparse keymap, say, <code>my-fancy-map</code>, bind whatever
 keys necessary in that keymap, and put
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-modify-major-mode 'dired-mode 'emacs-state my-fancy-map)
 </pre></td></tr></table>
 <p>in `<tt>~/.viper</tt>'.  To do the same in Vi and Insert states, you should use
@@ -2463,7 +2478,7 @@ keys necessary in that keymap, and put
 in effect in Replace state.  For instance, suppose that the user wants to
 use <kbd>dd</kbd> in Vi state under Dired mode to delete files, <kbd>u</kbd> to unmark
 files, etc.  The following code in `<tt>~/.viper</tt>' will then do the job:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq my-dired-modifier-map (make-sparse-keymap))
 (define-key my-dired-modifier-map &quot;dd&quot; 'dired-flag-file-deletion)
 (define-key my-dired-modifier-map &quot;u&quot; 'dired-unmark)
@@ -2473,7 +2488,7 @@ files, etc.  The following code in `<tt>~/.viper</tt>' will then do the job:
 <kbd>k</kbd>, <kbd>l</kbd>, etc., will move around in directory buffers, as in
 Vi.  Although this is not recommended, as these keys are bound to useful
 Dired functions, the trick can be accomplished via the following code:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq my-dired-vi-purist-map (make-sparse-keymap))
 (define-key my-dired-vi-purist-map &quot;k&quot; 'viper-previous-line)
 (define-key my-dired-vi-purist-map &quot;l&quot; 'viper-forward-char)
@@ -2511,7 +2526,7 @@ defined based on considerations other than the major mode.  This is done
 via the function <code>viper-add-local-keys</code>, which lets one specify bindings
 that should be in effect in the current buffer only and for a specific Viper
 state.  For instance,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (viper-add-local-keys 'vi-state '((&quot;ZZ&quot; . TeX-command-master)
                                  (&quot;ZQ&quot; . viper-save-kill-buffer)))
 </pre></td></tr></table>
@@ -2523,7 +2538,7 @@ that is included in a hook to some major mode.  For instance, the above
 expression
 could be called from a function, <code>my-tex-init</code>, which may be added to
 <code>tex-mode-hook</code> as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (add-hook 'tex-mode-hook 'my-tex-init)
 </pre></td></tr></table>
 <p>When TeX mode starts, the hook is executed and the above Lisp expression is
@@ -2534,7 +2549,7 @@ in the Mail mode buffers (the specifics of this depend on which mail
 package you are using, <code>rmail</code>, <code>mh-e</code>, <code>vm</code>, etc.
 For instance, here is how to do this for <code>mh-e</code>, the Emacs interface
 to MH:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (defun mh-add-vi-keys ()
   &quot;Set up ZZ for MH-e and XMH.&quot;
   (viper-add-local-keys 'vi-state '((&quot;ZZ&quot; . mh-send-letter))))
@@ -2579,7 +2594,7 @@ bindings in Emacs.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.2.1 Packages that Change Keymaps </h3>
+<h3 class="subsection"> 3.2.1 Packages that Change Keymaps </h3>
 
 <p>Viper is designed to coexist with all major and minor modes of Emacs.  This
 means that bindings set by those modes are generally available with Viper
@@ -2656,7 +2671,7 @@ several such minor modes and takes care of them, so the above trick
 is usually not necessary.  If you find that some minor mode, e.g.,
 <code>nasty-mode.el</code> interferes with Viper, putting the following in
 `<tt>.viper</tt>' should fix the problem:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (viper-harness-minor-mode &quot;nasty-mode&quot;)
 </pre></td></tr></table>
 <p>The argument to <code>viper-harness-minor-mode</code> is the name of the file for the
@@ -2665,7 +2680,7 @@ offending minor mode with the suffixes `<tt>.el</tt>' and `<tt>.elc</tt>' remove
 guidance here is to look into the file that defines the minor mode you are
 suspecting, say <code>nasty-mode.el</code>, and see if it has a variable called
 <code>nasty-mode-map</code>.  Then check if there is a statement of the form
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (define-key nasty-mode-map key function)
 </pre></td></tr></table>
 <p>that binds the misbehaving
@@ -2699,7 +2714,7 @@ doesn't need to be harnessed.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.3 Viper Specials </h2>
+<h2 class="section"> 3.3 Viper Specials </h2>
 
 <p>Viper extends Vi with a number of useful features.  This includes various
 search functions, histories of search strings, Ex commands, insertions, and
@@ -2741,7 +2756,7 @@ usual prompt <kbd>/</kbd> and will wait for input, as usual in Vi.
 If you don't like this behavior, you can &quot;unrecord&quot; these macros in your
 `<tt>~/.viper</tt>' file.  For instance, if you don't like the above feature, put
 this in `<tt>~/.viper</tt>':
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (viper-set-searchstyle-toggling-macros 'undefine)
 </pre></td></tr></table><a name="IDX199"></a>
 
@@ -2766,7 +2781,7 @@ can unbind `/' and `:' in <code>viper-dired-modifier-map</code> (for Dired) or i
 are undesirable, execute <code>viper-set-emacs-state-searchstyle-macros</code> with a
 non-nil argument.  This can be done either interactively, by supplying a
 prefix argument, or by placing
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (viper-set-emacs-state-searchstyle-macros 'undefine)
 </pre></td></tr></table><a name="IDX202"></a>
 <p>in the hook to the major mode (e.g., <code>dired-mode-hook</code>).
@@ -2824,7 +2839,7 @@ the ring.  If a larger ring size is needed, change the value of the above
 variable in the `<tt>~/.viper</tt>' file.
 </p><p>Since typing these sequences of keys may be tedious, it is suggested that the
 user should bind a function key, such as <kbd>f31</kbd>, as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-insert-global-user-map [f31]
             'viper-insert-prev-from-insertion-ring)
 </pre></td></tr></table><p>This binds <kbd>f31</kbd> (which is usually <kbd>R11</kbd> on a Sun workstation)
@@ -2854,7 +2869,7 @@ opposite direction.
 Since typing <kbd>C-c M-p</kbd> may be tedious, it is more convenient to bind an
 appropriate function to an unused function key on the keyboard and use that
 key.  For instance, the following
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-vi-global-user-map [f31]
             'viper-prev-destructive-command)
 </pre></td></tr></table><p>binds the key <kbd>f31</kbd> (which is usually <kbd>R11</kbd> on a Sun workstation)
@@ -2883,7 +2898,7 @@ in Viper's <em>Highlighting</em> customization subgroup.
 Prompts and Minibuffer messages are not affected.
 </p><p>Purists who do not like adornments in the minibuffer can always zap them by
 putting
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (copy-face 'default 'viper-minibuffer-vi-face)
 (copy-face 'default 'viper-minibuffer-insert-face)
 (copy-face 'default 'viper-minibuffer-emacs-face)
@@ -2910,7 +2925,7 @@ Toggle Viperization of Emacs on and off.
 <p>Viper provides some support for multi-file documents and programs.
 If a document consists of several files we can designate one of them as a
 master and put the following at the end of that file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 ;;; Local Variables:
 ;;; eval: (viper-setup-master-buffer &quot;file1&quot; &quot;file2&quot; &quot;file3&quot; &quot;file4&quot;)
 ;;; End:
@@ -2960,7 +2975,7 @@ feature, and the <kbd>Meta-Shift-Mouse-1</kbd> mouse action is already bound to
 something else, you can rebind the mouse-search feature by setting
 <code>viper-mouse-search-key</code> to something else in your <code>~/.viper</code>
 file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (setq viper-mouse-search-key '(meta 1))
 </pre></td></tr></table><p>This would bind mouse search to the action invoked by pressing the
 Meta key and clicking mouse button 1.  The allowed values of
@@ -2970,7 +2985,7 @@ Meta key and clicking mouse button 1.  The allowed values of
 </p><p>If the requested mouse action (e.g., (meta 1)) is already taken for other
 purposes then you have to confirm your intention by placing the following
 command in <code>~/.viper</code> after setting <code>viper-mouse-search-key</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (viper-bind-mouse-search-key 'force)
 </pre></td></tr></table>
 <p>You can also change this setting interactively, through the customization
@@ -3008,12 +3023,12 @@ case of a triple-click, the prefix argument is ignored.)
 already bound to something else.  If you want to use this feature and the
 default mouse action is already bound, you can rebind mouse-insert by
 placing this command in <code>~/.viper</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (setq viper-mouse-insert-key '(meta 2))
 </pre></td></tr></table><p>If you want to bind mouse-insert to an action even if this action is
 already taked for other purposes in Emacs, then you should add this command
 to <code>~/.viper</code>, after setting <code>viper-mouse-insert-key</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp"> 
 (viper-bind-mouse-insert-key 'force)
 </pre></td></tr></table>
 <p>This value can also be changed via the Emacs customization widget at the
@@ -3083,7 +3098,7 @@ used as a guiding example.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.4 Vi Macros </h2>
+<h2 class="section"> 3.4 Vi Macros </h2>
 
 <p>Viper supports much enhanced Vi-style macros and also facilitates the use
 of Emacs-style macros.  To define a temporary macro, it is generally more
@@ -3123,7 +3138,7 @@ vectors.  So, don't be confused when you see one (usually through the
 history of Ex commands).  For instance, if <kbd>gg</kbd> is defined by typing
 <kbd>l</kbd>, the up-arrow key and <kbd>M-x next-line</kbd>, its definition will look
 as follows in Emacs (in XEmacs, it looks slightly different, see below):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 [l up (meta x) n e x t - l i n e return]
 </pre></td></tr></table>
 <p>Second, Viper macros are defined in a WYSIWYG style.  This means that
@@ -3158,14 +3173,14 @@ it permanently available.  If you work your startup files with bare hands,
 here is how Viper saves the above macro so that it will be
 available in Viper's Insert state (and Replace state) in buffer <code>my-buf</code>
 only:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro &quot;gg&quot; 'insert-state
        [l up (meta x) n e x t - l i n e return]
        &quot;my-buf&quot;)
 </pre></td></tr></table>
 <p>To do the same for Vi state and all buffers with the major mode
 <code>cc-mode</code>, use:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro &quot;gg&quot; 'vi-state
        [l up (meta x) n e x t - l i n e return]
        'cc-mode)
@@ -3178,7 +3193,7 @@ instance, holding Meta and Control and pressing <kbd>f4</kbd> is represented as
 If all members of a vectors are printable characters (or sequences, such as
 <kbd>\e</kbd>, <kbd>\t</kbd>, for <kbd>ESC</kbd> and <kbd>TAB</kbd>), then they can also be represented as
 strings:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro &quot;aa&quot; 'vi-state  &quot;aaa\e&quot;  &quot;my-buffer&quot;)
 </pre></td></tr></table>
 <p>Thus, typing <kbd>aa</kbd> fast in Vi state will switch Viper to Insert state
@@ -3201,7 +3216,7 @@ needed only when the user needs to get rid of the macros that are already
 predefined in Viper.
 The syntax is:
 <a name="IDX231"></a>
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (viper-unrecord-kbd-macro macro state)
 </pre></td></tr></table>
 <p>The second argument must be <code>vi-state</code>, <code>insert-state</code>, or
@@ -3230,7 +3245,7 @@ makes Viper macro facility a <em>keyboard doubler</em>, so to speak.
 </p><p>Elsewhere (See section <a href="#SEC27">Key Bindings</a>, for details), we review
 the standard Emacs mechanism for binding function keys to commands.
 For instance,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-set-key [f13] 'repeat-complex-command)
 </pre></td></tr></table>
 <p>binds the key f13 to the Emacs function that repeats the last minibuffer
@@ -3247,7 +3262,7 @@ macro is executed.  Suppose now we wanted to bind the key sequence
 can type <kbd>M-x eval-last-sexp</kbd> followed by <kbd>C-x )</kbd>.
 If you answer positively to Viper's offer to save this macro in `<tt>~/.viper</tt>'
 for future uses, the following will be inserted in that file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro [f16 f16] 'vi-state
          [(meta x) e v a l - l a s t - s e x p]
          'lisp-interaction-mode)
@@ -3261,7 +3276,7 @@ usual).  The second macro executes the third-last command.
 </p><p>If you need to go deeper into the command history, you will have to use
 other commands, as described earlier in this section; or you can bind,
 say, <kbd>f12 \3</kbd> like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro [f12 \3] 'vi-state
                       [(meta x) r e p e a t - f r o m - h i s t o r y]
                       t)
@@ -3342,12 +3357,12 @@ currently defined.  To see all macros along with their definitions, type
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 4. Commands </h1>
+<h1 class="chapter"> 4. Commands </h1>
 
 <p>This section is a semi-automatically bowdlerized version of the Vi
 reference created by <br> `<samp>maart@cs.vu.nl</samp>' and others.  It can be
 found on the Vi archives.  This reference has been adapted for Viper.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC32">4.1 Groundwork</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Textual Conventions and Viper basics</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC33">4.2 Text Handling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving, Editing, Undoing.</td></tr>
@@ -3379,7 +3394,7 @@ found on the Vi archives.  This reference has been adapted for Viper.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.1 Groundwork </h2>
+<h2 class="section"> 4.1 Groundwork </h2>
 
 <p>The VI command set is based on the idea of combining motion commands
 with other commands.  The motion command is used as a text region
@@ -3556,7 +3571,7 @@ characters, such as European (non-English) letters, Cyrillic letters, etc.,
 the value can be <code>reformed-vi</code> or <code>emacs</code>.
 If you consider using different syntactic preferences for different major
 modes, you should execute, for example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-set-syntax-preference nil &quot;extended&quot;)
 </pre></td></tr></table>
 <p>in the appropriate major mode hooks.
@@ -3601,9 +3616,9 @@ inserts them automatically in front of the Ex command.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.2 Text Handling </h2>
+<h2 class="section"> 4.2 Text Handling </h2>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving, Searching</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC35">4.2.2 Marking</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Textmarkers in Viper and the Emacs Mark.</td></tr>
@@ -3635,7 +3650,7 @@ inserts them automatically in front of the Ex command.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.1 Move Commands </h3>
+<h3 class="subsection"> 4.2.1 Move Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  h  C-h
@@ -3847,7 +3862,7 @@ parentheses.  You can change this by setting
 This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
 </p><p>This latter feature is implemented as a vi-style keyboard macro.  If you
 don't want this macro, put
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-set-parsing-style-toggling-macro 'undefine)
 </pre></td></tr></table><a name="IDX267"></a>
 
@@ -3929,7 +3944,7 @@ don't want this macro, put
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.2 Marking </h3>
+<h3 class="subsection"> 4.2.2 Marking </h3>
 
 <p>Emacs mark is referred to in the region specifiers <kbd>r</kbd> and <kbd>R</kbd>.
 See section <a href="#SEC4">Emacs Preliminaries</a>, and See section <a href="#SEC15">Basics</a>, for explanation.  Also
@@ -4021,7 +4036,7 @@ it in a way that you didn't like.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.3 Appending Text </h3>
+<h3 class="subsection"> 4.2.3 Appending Text </h3>
 
 <p>See section <a href="#SEC47">Options</a>, to see how to change tab and shiftwidth size.  See the GNU
 Emacs manual, or try <kbd>C-ha tabs</kbd> (If you have turned Emacs help on).
@@ -4148,7 +4163,7 @@ functions doing the perusing can be bound to unused keyboard keys in the
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.4 Editing in Insert State </h3>
+<h3 class="subsection"> 4.2.4 Editing in Insert State </h3>
 
 <p>Minibuffer can be edited similarly to Insert state, and you can switch
 between Insert/Replace/Vi states at will.
@@ -4197,7 +4212,7 @@ current line.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.5 Deleting Text </h3>
+<h3 class="subsection"> 4.2.5 Deleting Text </h3>
 
 <p>There is one difference in text deletion that you should be
 aware of.  This difference comes from Emacs and was adopted in Viper
@@ -4269,7 +4284,7 @@ shiftwidth to the left (layout!).
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.6 Changing Text </h3>
+<h3 class="subsection"> 4.2.6 Changing Text </h3>
 
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  r&lt;char&gt;
@@ -4428,7 +4443,7 @@ See section <a href="#SEC29">Viper Specials</a>, for details.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.7 Search and Replace </h3>
+<h3 class="subsection"> 4.2.7 Search and Replace </h3>
 
 <p>See section <a href="#SEC32">Groundwork</a>, for Ex address syntax.  See section <a href="#SEC47">Options</a>, to see how to
 get literal (non-regular-expression) search and how to stop search from
@@ -4554,7 +4569,7 @@ can be used in &lt;repl&gt;</em>.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.8 Yanking </h3>
+<h3 class="subsection"> 4.2.8 Yanking </h3>
 
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  y&lt;move&gt;
@@ -4636,7 +4651,7 @@ be automatically down-cased.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 4.2.9 Undoing </h3>
+<h3 class="subsection"> 4.2.9 Undoing </h3>
 
 <dl compact="compact">
 <dt><kbd>  u U
@@ -4687,7 +4702,7 @@ that have a `<samp>~</samp>' appended to them.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.3 Display </h2>
+<h2 class="section"> 4.3 Display </h2>
 
 <dl compact="compact">
 <dt><kbd> C-g
@@ -4788,7 +4803,7 @@ initialization: half a page).
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.4 File and Buffer Handling </h2>
+<h2 class="section"> 4.4 File and Buffer Handling </h2>
 
 <p>In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don't
@@ -5023,7 +5038,7 @@ is typed in Minibuffer.  File completion and history are supported.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.5 Mapping </h2>
+<h2 class="section"> 4.5 Mapping </h2>
 
 <dl compact="compact">
 <dt><kbd> :map &lt;string&gt;
@@ -5133,7 +5148,7 @@ See section <a href="#SEC18">Macros and Registers</a>, for more info.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.6 Shell Commands </h2>
+<h2 class="section"> 4.6 Shell Commands </h2>
 
 <p>The symbol `<samp>%</samp>' is used in Ex shell commands to mean current file.  If
 you want a `<samp>%</samp>' in your command, it must be escaped as `<samp>\%</samp>'.
@@ -5234,7 +5249,7 @@ current).
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.7 Options </h2>
+<h2 class="section"> 4.7 Options </h2>
 
 <dl compact="compact">
 <dt><kbd> autoindent
@@ -5434,7 +5449,7 @@ considered `<samp>stuck</samp>' to the begin of the file.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.8 Emacs Related Commands </h2>
+<h2 class="section"> 4.8 Emacs Related Commands </h2>
 
 <dl compact="compact">
 <dt><kbd> C-\
@@ -5520,7 +5535,7 @@ you need.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 4.9 Mouse-bound Commands </h2>
+<h2 class="section"> 4.9 Mouse-bound Commands </h2>
 
 <p>The following two mouse actions are normally bound to special search and
 insert commands in of Viper:
@@ -5573,7 +5588,7 @@ See section <a href="#SEC29">Viper Specials</a>, for more details.
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Acknowledgments </h1>
+<h1 class="unnumbered"> Acknowledgments </h1>
 
 <p>Viper, formerly known as VIP-19, was written by Michael Kifer.  Viper is
 based on the original VIP package by Masahiko Sato and on its enhancement,
@@ -5583,7 +5598,7 @@ VIP 4.4, by Aamod Sane.  This manual is an adaptation of the manual for VIP
 useful features. Scott Bronson and Samuel Padgett contributed patches that
 were incorporated in this code.  Here is a hopefully complete list of
 contributors:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 aaronl@vitelus.com (Aaron Lehmann),
 ahg@panix.com (Al Gelders),
 amade@diagram.fr (Paul-Bernard Amade),
@@ -5658,122 +5673,122 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Key Index </h1>
+<h1 class="unnumbered"> Key Index </h1>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC51_0" style="text-decoration: none"><b>&quot;</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC51_0" class="summary-letter"><b>&quot;</b></a>
  &nbsp; 
-<a href="#SEC51_1" style="text-decoration: none"><b>#</b></a>
+<a href="#SEC51_1" class="summary-letter"><b>#</b></a>
  &nbsp; 
-<a href="#SEC51_2" style="text-decoration: none"><b>$</b></a>
+<a href="#SEC51_2" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#SEC51_3" style="text-decoration: none"><b>%</b></a>
+<a href="#SEC51_3" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC51_4" style="text-decoration: none"><b>&amp;</b></a>
+<a href="#SEC51_4" class="summary-letter"><b>&amp;</b></a>
  &nbsp; 
-<a href="#SEC51_5" style="text-decoration: none"><b>'</b></a>
+<a href="#SEC51_5" class="summary-letter"><b>'</b></a>
  &nbsp; 
-<a href="#SEC51_6" style="text-decoration: none"><b>(</b></a>
+<a href="#SEC51_6" class="summary-letter"><b>(</b></a>
  &nbsp; 
-<a href="#SEC51_7" style="text-decoration: none"><b>)</b></a>
+<a href="#SEC51_7" class="summary-letter"><b>)</b></a>
  &nbsp; 
-<a href="#SEC51_8" style="text-decoration: none"><b>*</b></a>
+<a href="#SEC51_8" class="summary-letter"><b>*</b></a>
  &nbsp; 
-<a href="#SEC51_9" style="text-decoration: none"><b>+</b></a>
+<a href="#SEC51_9" class="summary-letter"><b>+</b></a>
  &nbsp; 
-<a href="#SEC51_10" style="text-decoration: none"><b>,</b></a>
+<a href="#SEC51_10" class="summary-letter"><b>,</b></a>
  &nbsp; 
-<a href="#SEC51_11" style="text-decoration: none"><b>-</b></a>
+<a href="#SEC51_11" class="summary-letter"><b>-</b></a>
  &nbsp; 
-<a href="#SEC51_12" style="text-decoration: none"><b>.</b></a>
+<a href="#SEC51_12" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC51_13" style="text-decoration: none"><b>/</b></a>
+<a href="#SEC51_13" class="summary-letter"><b>/</b></a>
  &nbsp; 
-<a href="#SEC51_14" style="text-decoration: none"><b>0</b></a>
+<a href="#SEC51_14" class="summary-letter"><b>0</b></a>
  &nbsp; 
-<a href="#SEC51_15" style="text-decoration: none"><b>;</b></a>
+<a href="#SEC51_15" class="summary-letter"><b>;</b></a>
  &nbsp; 
-<a href="#SEC51_16" style="text-decoration: none"><b>&lt;</b></a>
+<a href="#SEC51_16" class="summary-letter"><b>&lt;</b></a>
  &nbsp; 
-<a href="#SEC51_17" style="text-decoration: none"><b>=</b></a>
+<a href="#SEC51_17" class="summary-letter"><b>=</b></a>
  &nbsp; 
-<a href="#SEC51_18" style="text-decoration: none"><b>&gt;</b></a>
+<a href="#SEC51_18" class="summary-letter"><b>&gt;</b></a>
  &nbsp; 
-<a href="#SEC51_19" style="text-decoration: none"><b>?</b></a>
+<a href="#SEC51_19" class="summary-letter"><b>?</b></a>
  &nbsp; 
-<a href="#SEC51_20" style="text-decoration: none"><b>@</b></a>
+<a href="#SEC51_20" class="summary-letter"><b>@</b></a>
  &nbsp; 
-<a href="#SEC51_21" style="text-decoration: none"><b>[</b></a>
+<a href="#SEC51_21" class="summary-letter"><b>[</b></a>
  &nbsp; 
-<a href="#SEC51_22" style="text-decoration: none"><b>\</b></a>
+<a href="#SEC51_22" class="summary-letter"><b>\</b></a>
  &nbsp; 
-<a href="#SEC51_23" style="text-decoration: none"><b>]</b></a>
+<a href="#SEC51_23" class="summary-letter"><b>]</b></a>
  &nbsp; 
-<a href="#SEC51_24" style="text-decoration: none"><b>^</b></a>
+<a href="#SEC51_24" class="summary-letter"><b>^</b></a>
  &nbsp; 
-<a href="#SEC51_25" style="text-decoration: none"><b>`</b></a>
+<a href="#SEC51_25" class="summary-letter"><b>`</b></a>
  &nbsp; 
-<a href="#SEC51_26" style="text-decoration: none"><b>{</b></a>
+<a href="#SEC51_26" class="summary-letter"><b>{</b></a>
  &nbsp; 
-<a href="#SEC51_27" style="text-decoration: none"><b>|</b></a>
+<a href="#SEC51_27" class="summary-letter"><b>|</b></a>
  &nbsp; 
-<a href="#SEC51_28" style="text-decoration: none"><b>}</b></a>
+<a href="#SEC51_28" class="summary-letter"><b>}</b></a>
  &nbsp; 
-<a href="#SEC51_29" style="text-decoration: none"><b>~</b></a>
+<a href="#SEC51_29" class="summary-letter"><b>~</b></a>
  &nbsp; 
 <br>
-<a href="#SEC51_30" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC51_30" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC51_31" style="text-decoration: none"><b>B</b></a>
+<a href="#SEC51_31" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC51_32" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC51_32" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC51_33" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC51_33" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC51_34" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC51_34" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC51_35" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC51_35" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC51_36" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC51_36" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC51_37" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC51_37" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC51_38" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC51_38" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC51_39" style="text-decoration: none"><b>J</b></a>
+<a href="#SEC51_39" class="summary-letter"><b>J</b></a>
  &nbsp; 
-<a href="#SEC51_40" style="text-decoration: none"><b>K</b></a>
+<a href="#SEC51_40" class="summary-letter"><b>K</b></a>
  &nbsp; 
-<a href="#SEC51_41" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC51_41" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC51_42" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC51_42" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC51_43" style="text-decoration: none"><b>N</b></a>
+<a href="#SEC51_43" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC51_44" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC51_44" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC51_45" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC51_45" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC51_46" style="text-decoration: none"><b>Q</b></a>
+<a href="#SEC51_46" class="summary-letter"><b>Q</b></a>
  &nbsp; 
-<a href="#SEC51_47" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC51_47" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC51_48" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC51_48" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC51_49" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC51_49" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC51_50" style="text-decoration: none"><b>U</b></a>
+<a href="#SEC51_50" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC51_51" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC51_51" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC51_52" style="text-decoration: none"><b>W</b></a>
+<a href="#SEC51_52" class="summary-letter"><b>W</b></a>
  &nbsp; 
-<a href="#SEC51_53" style="text-decoration: none"><b>X</b></a>
+<a href="#SEC51_53" class="summary-letter"><b>X</b></a>
  &nbsp; 
-<a href="#SEC51_54" style="text-decoration: none"><b>Y</b></a>
+<a href="#SEC51_54" class="summary-letter"><b>Y</b></a>
  &nbsp; 
-<a href="#SEC51_55" style="text-decoration: none"><b>Z</b></a>
+<a href="#SEC51_55" class="summary-letter"><b>Z</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-ky">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC51_0">&quot;</a></th><td></td><td></td></tr>
@@ -6109,118 +6124,118 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#IDX426"><code><kbd>zM</kbd></code></a></td><td valign="top"><a href="#SEC43">4.3 Display</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX460"><code><kbd>ZZ</kbd></code></a></td><td valign="top"><a href="#SEC44">4.4 File and Buffer Handling</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC51_0" style="text-decoration: none"><b>&quot;</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC51_0" class="summary-letter"><b>&quot;</b></a>
  &nbsp; 
-<a href="#SEC51_1" style="text-decoration: none"><b>#</b></a>
+<a href="#SEC51_1" class="summary-letter"><b>#</b></a>
  &nbsp; 
-<a href="#SEC51_2" style="text-decoration: none"><b>$</b></a>
+<a href="#SEC51_2" class="summary-letter"><b>$</b></a>
  &nbsp; 
-<a href="#SEC51_3" style="text-decoration: none"><b>%</b></a>
+<a href="#SEC51_3" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC51_4" style="text-decoration: none"><b>&amp;</b></a>
+<a href="#SEC51_4" class="summary-letter"><b>&amp;</b></a>
  &nbsp; 
-<a href="#SEC51_5" style="text-decoration: none"><b>'</b></a>
+<a href="#SEC51_5" class="summary-letter"><b>'</b></a>
  &nbsp; 
-<a href="#SEC51_6" style="text-decoration: none"><b>(</b></a>
+<a href="#SEC51_6" class="summary-letter"><b>(</b></a>
  &nbsp; 
-<a href="#SEC51_7" style="text-decoration: none"><b>)</b></a>
+<a href="#SEC51_7" class="summary-letter"><b>)</b></a>
  &nbsp; 
-<a href="#SEC51_8" style="text-decoration: none"><b>*</b></a>
+<a href="#SEC51_8" class="summary-letter"><b>*</b></a>
  &nbsp; 
-<a href="#SEC51_9" style="text-decoration: none"><b>+</b></a>
+<a href="#SEC51_9" class="summary-letter"><b>+</b></a>
  &nbsp; 
-<a href="#SEC51_10" style="text-decoration: none"><b>,</b></a>
+<a href="#SEC51_10" class="summary-letter"><b>,</b></a>
  &nbsp; 
-<a href="#SEC51_11" style="text-decoration: none"><b>-</b></a>
+<a href="#SEC51_11" class="summary-letter"><b>-</b></a>
  &nbsp; 
-<a href="#SEC51_12" style="text-decoration: none"><b>.</b></a>
+<a href="#SEC51_12" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC51_13" style="text-decoration: none"><b>/</b></a>
+<a href="#SEC51_13" class="summary-letter"><b>/</b></a>
  &nbsp; 
-<a href="#SEC51_14" style="text-decoration: none"><b>0</b></a>
+<a href="#SEC51_14" class="summary-letter"><b>0</b></a>
  &nbsp; 
-<a href="#SEC51_15" style="text-decoration: none"><b>;</b></a>
+<a href="#SEC51_15" class="summary-letter"><b>;</b></a>
  &nbsp; 
-<a href="#SEC51_16" style="text-decoration: none"><b>&lt;</b></a>
+<a href="#SEC51_16" class="summary-letter"><b>&lt;</b></a>
  &nbsp; 
-<a href="#SEC51_17" style="text-decoration: none"><b>=</b></a>
+<a href="#SEC51_17" class="summary-letter"><b>=</b></a>
  &nbsp; 
-<a href="#SEC51_18" style="text-decoration: none"><b>&gt;</b></a>
+<a href="#SEC51_18" class="summary-letter"><b>&gt;</b></a>
  &nbsp; 
-<a href="#SEC51_19" style="text-decoration: none"><b>?</b></a>
+<a href="#SEC51_19" class="summary-letter"><b>?</b></a>
  &nbsp; 
-<a href="#SEC51_20" style="text-decoration: none"><b>@</b></a>
+<a href="#SEC51_20" class="summary-letter"><b>@</b></a>
  &nbsp; 
-<a href="#SEC51_21" style="text-decoration: none"><b>[</b></a>
+<a href="#SEC51_21" class="summary-letter"><b>[</b></a>
  &nbsp; 
-<a href="#SEC51_22" style="text-decoration: none"><b>\</b></a>
+<a href="#SEC51_22" class="summary-letter"><b>\</b></a>
  &nbsp; 
-<a href="#SEC51_23" style="text-decoration: none"><b>]</b></a>
+<a href="#SEC51_23" class="summary-letter"><b>]</b></a>
  &nbsp; 
-<a href="#SEC51_24" style="text-decoration: none"><b>^</b></a>
+<a href="#SEC51_24" class="summary-letter"><b>^</b></a>
  &nbsp; 
-<a href="#SEC51_25" style="text-decoration: none"><b>`</b></a>
+<a href="#SEC51_25" class="summary-letter"><b>`</b></a>
  &nbsp; 
-<a href="#SEC51_26" style="text-decoration: none"><b>{</b></a>
+<a href="#SEC51_26" class="summary-letter"><b>{</b></a>
  &nbsp; 
-<a href="#SEC51_27" style="text-decoration: none"><b>|</b></a>
+<a href="#SEC51_27" class="summary-letter"><b>|</b></a>
  &nbsp; 
-<a href="#SEC51_28" style="text-decoration: none"><b>}</b></a>
+<a href="#SEC51_28" class="summary-letter"><b>}</b></a>
  &nbsp; 
-<a href="#SEC51_29" style="text-decoration: none"><b>~</b></a>
+<a href="#SEC51_29" class="summary-letter"><b>~</b></a>
  &nbsp; 
 <br>
-<a href="#SEC51_30" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC51_30" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC51_31" style="text-decoration: none"><b>B</b></a>
+<a href="#SEC51_31" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC51_32" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC51_32" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC51_33" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC51_33" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC51_34" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC51_34" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC51_35" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC51_35" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC51_36" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC51_36" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC51_37" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC51_37" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC51_38" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC51_38" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC51_39" style="text-decoration: none"><b>J</b></a>
+<a href="#SEC51_39" class="summary-letter"><b>J</b></a>
  &nbsp; 
-<a href="#SEC51_40" style="text-decoration: none"><b>K</b></a>
+<a href="#SEC51_40" class="summary-letter"><b>K</b></a>
  &nbsp; 
-<a href="#SEC51_41" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC51_41" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC51_42" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC51_42" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC51_43" style="text-decoration: none"><b>N</b></a>
+<a href="#SEC51_43" class="summary-letter"><b>N</b></a>
  &nbsp; 
-<a href="#SEC51_44" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC51_44" class="summary-letter"><b>O</b></a>
  &nbsp; 
-<a href="#SEC51_45" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC51_45" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC51_46" style="text-decoration: none"><b>Q</b></a>
+<a href="#SEC51_46" class="summary-letter"><b>Q</b></a>
  &nbsp; 
-<a href="#SEC51_47" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC51_47" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC51_48" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC51_48" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC51_49" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC51_49" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC51_50" style="text-decoration: none"><b>U</b></a>
+<a href="#SEC51_50" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC51_51" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC51_51" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC51_52" style="text-decoration: none"><b>W</b></a>
+<a href="#SEC51_52" class="summary-letter"><b>W</b></a>
  &nbsp; 
-<a href="#SEC51_53" style="text-decoration: none"><b>X</b></a>
+<a href="#SEC51_53" class="summary-letter"><b>X</b></a>
  &nbsp; 
-<a href="#SEC51_54" style="text-decoration: none"><b>Y</b></a>
+<a href="#SEC51_54" class="summary-letter"><b>Y</b></a>
  &nbsp; 
-<a href="#SEC51_55" style="text-decoration: none"><b>Z</b></a>
+<a href="#SEC51_55" class="summary-letter"><b>Z</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -6242,22 +6257,22 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Function Index </h1>
+<h1 class="unnumbered"> Function Index </h1>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC52_0" style="text-decoration: none"><b>!</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC52_0" class="summary-letter"><b>!</b></a>
  &nbsp; 
-<a href="#SEC52_1" style="text-decoration: none"><b>:</b></a>
+<a href="#SEC52_1" class="summary-letter"><b>:</b></a>
  &nbsp; 
 <br>
-<a href="#SEC52_2" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC52_2" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC52_3" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC52_3" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC52_4" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC52_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC52_5" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC52_5" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-fn">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC52_0">!</a></th><td></td><td></td></tr>
@@ -6395,18 +6410,18 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#IDX231"><code><code>viper-unrecord-kbd-macro</code></code></a></td><td valign="top"><a href="#SEC30">3.4 Vi Macros</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX185"><code><code>viper-zap-local-keys</code></code></a></td><td valign="top"><a href="#SEC27">3.2 Key Bindings</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC52_0" style="text-decoration: none"><b>!</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC52_0" class="summary-letter"><b>!</b></a>
  &nbsp; 
-<a href="#SEC52_1" style="text-decoration: none"><b>:</b></a>
+<a href="#SEC52_1" class="summary-letter"><b>:</b></a>
  &nbsp; 
 <br>
-<a href="#SEC52_2" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC52_2" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC52_3" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC52_3" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC52_4" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC52_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC52_5" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC52_5" class="summary-letter"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -6428,17 +6443,17 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Variable Index </h1>
+<h1 class="unnumbered"> Variable Index </h1>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC53_0" style="text-decoration: none"><b>B</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC53_0" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC53_1" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC53_1" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC53_2" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC53_2" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC53_3" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC53_3" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-vr">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC53_0">B</a></th><td></td><td></td></tr>
@@ -6518,13 +6533,13 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#IDX161"><code><code>viper-want-emacs-keys-in-vi</code></code></a></td><td valign="top"><a href="#SEC26">3.1 Rudimentary Changes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX189"><code><code>viper-want-emacs-keys-in-vi</code></code></a></td><td valign="top"><a href="#SEC28">3.2.1 Packages that Change Keymaps</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC53_0" style="text-decoration: none"><b>B</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC53_0" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC53_1" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC53_1" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC53_2" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC53_2" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC53_3" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC53_3" class="summary-letter"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -6546,21 +6561,21 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Package Index </h1>
+<h1 class="unnumbered"> Package Index </h1>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC54_0" style="text-decoration: none"><b>A</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC54_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC54_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC54_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC54_2" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC54_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC54_3" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC54_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC54_4" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC54_4" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC54_5" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC54_5" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-pg">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC54_0">A</a></th><td></td><td></td></tr>
@@ -6582,17 +6597,17 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><th><a name="SEC54_5">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX118"><code>vc.el</code></a></td><td valign="top"><a href="#SEC24">2.10 Useful Packages</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC54_0" style="text-decoration: none"><b>A</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC54_0" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC54_1" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC54_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC54_2" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC54_2" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC54_3" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC54_3" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC54_4" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC54_4" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC54_5" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC54_5" class="summary-letter"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 <hr size="6">
@@ -6614,62 +6629,62 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> Concept Index </h1>
+<h1 class="unnumbered"> Concept Index </h1>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC55_0" style="text-decoration: none"><b>#</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC55_0" class="summary-letter"><b>#</b></a>
  &nbsp; 
-<a href="#SEC55_1" style="text-decoration: none"><b>%</b></a>
+<a href="#SEC55_1" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC55_2" style="text-decoration: none"><b>.</b></a>
+<a href="#SEC55_2" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC55_3" style="text-decoration: none"><b>:</b></a>
+<a href="#SEC55_3" class="summary-letter"><b>:</b></a>
  &nbsp; 
-<a href="#SEC55_4" style="text-decoration: none"><b>&lt;</b></a>
+<a href="#SEC55_4" class="summary-letter"><b>&lt;</b></a>
  &nbsp; 
 <br>
-<a href="#SEC55_5" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC55_5" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC55_6" style="text-decoration: none"><b>B</b></a>
+<a href="#SEC55_6" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC55_7" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC55_7" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC55_8" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC55_8" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC55_9" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC55_9" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC55_10" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC55_10" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC55_11" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC55_11" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC55_12" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC55_12" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC55_13" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC55_13" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC55_14" style="text-decoration: none"><b>J</b></a>
+<a href="#SEC55_14" class="summary-letter"><b>J</b></a>
  &nbsp; 
-<a href="#SEC55_15" style="text-decoration: none"><b>K</b></a>
+<a href="#SEC55_15" class="summary-letter"><b>K</b></a>
  &nbsp; 
-<a href="#SEC55_16" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC55_16" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC55_17" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC55_17" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC55_18" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC55_18" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC55_19" style="text-decoration: none"><b>Q</b></a>
+<a href="#SEC55_19" class="summary-letter"><b>Q</b></a>
  &nbsp; 
-<a href="#SEC55_20" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC55_20" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC55_21" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC55_21" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC55_22" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC55_22" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC55_23" style="text-decoration: none"><b>U</b></a>
+<a href="#SEC55_23" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC55_24" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC55_24" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC55_25" style="text-decoration: none"><b>W</b></a>
+<a href="#SEC55_25" class="summary-letter"><b>W</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC55_0">#</a></th><td></td><td></td></tr>
@@ -6933,58 +6948,58 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#IDX257">WORDS</a></td><td valign="top"><a href="#SEC32">4.1 Groundwork</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX256">words</a></td><td valign="top"><a href="#SEC32">4.1 Groundwork</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC55_0" style="text-decoration: none"><b>#</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC55_0" class="summary-letter"><b>#</b></a>
  &nbsp; 
-<a href="#SEC55_1" style="text-decoration: none"><b>%</b></a>
+<a href="#SEC55_1" class="summary-letter"><b>%</b></a>
  &nbsp; 
-<a href="#SEC55_2" style="text-decoration: none"><b>.</b></a>
+<a href="#SEC55_2" class="summary-letter"><b>.</b></a>
  &nbsp; 
-<a href="#SEC55_3" style="text-decoration: none"><b>:</b></a>
+<a href="#SEC55_3" class="summary-letter"><b>:</b></a>
  &nbsp; 
-<a href="#SEC55_4" style="text-decoration: none"><b>&lt;</b></a>
+<a href="#SEC55_4" class="summary-letter"><b>&lt;</b></a>
  &nbsp; 
 <br>
-<a href="#SEC55_5" style="text-decoration: none"><b>A</b></a>
+<a href="#SEC55_5" class="summary-letter"><b>A</b></a>
  &nbsp; 
-<a href="#SEC55_6" style="text-decoration: none"><b>B</b></a>
+<a href="#SEC55_6" class="summary-letter"><b>B</b></a>
  &nbsp; 
-<a href="#SEC55_7" style="text-decoration: none"><b>C</b></a>
+<a href="#SEC55_7" class="summary-letter"><b>C</b></a>
  &nbsp; 
-<a href="#SEC55_8" style="text-decoration: none"><b>D</b></a>
+<a href="#SEC55_8" class="summary-letter"><b>D</b></a>
  &nbsp; 
-<a href="#SEC55_9" style="text-decoration: none"><b>E</b></a>
+<a href="#SEC55_9" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC55_10" style="text-decoration: none"><b>F</b></a>
+<a href="#SEC55_10" class="summary-letter"><b>F</b></a>
  &nbsp; 
-<a href="#SEC55_11" style="text-decoration: none"><b>G</b></a>
+<a href="#SEC55_11" class="summary-letter"><b>G</b></a>
  &nbsp; 
-<a href="#SEC55_12" style="text-decoration: none"><b>H</b></a>
+<a href="#SEC55_12" class="summary-letter"><b>H</b></a>
  &nbsp; 
-<a href="#SEC55_13" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC55_13" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC55_14" style="text-decoration: none"><b>J</b></a>
+<a href="#SEC55_14" class="summary-letter"><b>J</b></a>
  &nbsp; 
-<a href="#SEC55_15" style="text-decoration: none"><b>K</b></a>
+<a href="#SEC55_15" class="summary-letter"><b>K</b></a>
  &nbsp; 
-<a href="#SEC55_16" style="text-decoration: none"><b>L</b></a>
+<a href="#SEC55_16" class="summary-letter"><b>L</b></a>
  &nbsp; 
-<a href="#SEC55_17" style="text-decoration: none"><b>M</b></a>
+<a href="#SEC55_17" class="summary-letter"><b>M</b></a>
  &nbsp; 
-<a href="#SEC55_18" style="text-decoration: none"><b>P</b></a>
+<a href="#SEC55_18" class="summary-letter"><b>P</b></a>
  &nbsp; 
-<a href="#SEC55_19" style="text-decoration: none"><b>Q</b></a>
+<a href="#SEC55_19" class="summary-letter"><b>Q</b></a>
  &nbsp; 
-<a href="#SEC55_20" style="text-decoration: none"><b>R</b></a>
+<a href="#SEC55_20" class="summary-letter"><b>R</b></a>
  &nbsp; 
-<a href="#SEC55_21" style="text-decoration: none"><b>S</b></a>
+<a href="#SEC55_21" class="summary-letter"><b>S</b></a>
  &nbsp; 
-<a href="#SEC55_22" style="text-decoration: none"><b>T</b></a>
+<a href="#SEC55_22" class="summary-letter"><b>T</b></a>
  &nbsp; 
-<a href="#SEC55_23" style="text-decoration: none"><b>U</b></a>
+<a href="#SEC55_23" class="summary-letter"><b>U</b></a>
  &nbsp; 
-<a href="#SEC55_24" style="text-decoration: none"><b>V</b></a>
+<a href="#SEC55_24" class="summary-letter"><b>V</b></a>
  &nbsp; 
-<a href="#SEC55_25" style="text-decoration: none"><b>W</b></a>
+<a href="#SEC55_25" class="summary-letter"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
 
@@ -6998,16 +7013,17 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC1">Distribution</a></li>
   <li><a name="TOC2" href="#SEC2">Viper</a></li>
   <li><a name="TOC3" href="#SEC3">1. Overview of Viper</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC4" href="#SEC4">1.1 Emacs Preliminaries</a></li>
     <li><a name="TOC5" href="#SEC5">1.2 Loading Viper</a></li>
     <li><a name="TOC6" href="#SEC6">1.3 States in Viper</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC7" href="#SEC7">1.3.1 Emacs State</a></li>
       <li><a name="TOC8" href="#SEC8">1.3.2 Vi State</a></li>
       <li><a name="TOC9" href="#SEC9">1.3.3 Insert State</a></li>
@@ -7018,7 +7034,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
     <li><a name="TOC13" href="#SEC13">1.6 Unimplemented Features</a></li>
   </ul></li>
   <li><a name="TOC14" href="#SEC14">2. Improvements over Vi</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC15" href="#SEC15">2.1 Basics</a></li>
     <li><a name="TOC16" href="#SEC16">2.2 Undo and Backups</a></li>
     <li><a name="TOC17" href="#SEC17">2.3 History</a></li>
@@ -7031,20 +7047,20 @@ zapman@cc.gatech.edu (Jason Zapman II),
     <li><a name="TOC24" href="#SEC24">2.10 Useful Packages</a></li>
   </ul></li>
   <li><a name="TOC25" href="#SEC25">3. Customization</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC26" href="#SEC26">3.1 Rudimentary Changes</a></li>
     <li><a name="TOC27" href="#SEC27">3.2 Key Bindings</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC28" href="#SEC28">3.2.1 Packages that Change Keymaps</a></li>
     </ul></li>
     <li><a name="TOC29" href="#SEC29">3.3 Viper Specials</a></li>
     <li><a name="TOC30" href="#SEC30">3.4 Vi Macros</a></li>
   </ul></li>
   <li><a name="TOC31" href="#SEC31">4. Commands</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC32" href="#SEC32">4.1 Groundwork</a></li>
     <li><a name="TOC33" href="#SEC33">4.2 Text Handling</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC34" href="#SEC34">4.2.1 Move Commands</a></li>
       <li><a name="TOC35" href="#SEC35">4.2.2 Marking</a></li>
       <li><a name="TOC36" href="#SEC36">4.2.3 Appending Text</a></li>
@@ -7070,6 +7086,7 @@ zapman@cc.gatech.edu (Jason Zapman II),
   <li><a name="TOC54" href="#SEC54">Package Index</a></li>
   <li><a name="TOC55" href="#SEC55">Concept Index</a></li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">

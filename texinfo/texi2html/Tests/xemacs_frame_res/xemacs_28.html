@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 25. Sending Mail </h1>
+<h1 class="chapter"> 25. Sending Mail </h1>
 
 <p>  To send a message in Emacs, start by typing the command (<kbd>C-x m</kbd>)
 to select and initialize the `<samp>*mail*</samp>' buffer.  You can then edit the text
@@ -82,7 +97,7 @@ at once.  You can switch back to and complete an unsent message by using
 the normal buffer selection mechanisms.  
 </p><p><kbd>C-u C-x m</kbd> is another way to switch back to a message in progress:
 it will search for an existing, unsent mail message buffer and select it.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC297">25.1 The Format of the Mail Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Format of the mail being composed.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC298">25.2 Mail Header Fields</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Details of allowed mail header fields.</td></tr>
@@ -108,7 +123,7 @@ it will search for an existing, unsent mail message buffer and select it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 25.1 The Format of the Mail Buffer </h2>
+<h2 class="section"> 25.1 The Format of the Mail Buffer </h2>
 
 <p>  In addition to the <em>text</em> or contents, a message has <em>header
 fields</em>, which say who sent it, when, to whom, why, and so on.  Some header
@@ -119,7 +134,7 @@ you in order to send the message properly.
 and some are preinitialized in the buffer automatically at times.  You can
 insert or edit any header fields using ordinary editing commands.
 </p><p>  The line in the buffer that says:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 --text follows this line--
 </pre></td></tr></table>
 <a name="IDX1117"></a>
@@ -130,7 +145,7 @@ message actually sent.  The text used for the delimiter line is controlled
 by the variable <code>mail-header-separator</code>.
 </p><p>Here is an example of what the headers and text in the `<samp>*mail*</samp>' buffer
 might look like.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 To: rms@mc
 CC: mly@mc, rg@oz
 Subject: The XEmacs User's Manual
@@ -156,7 +171,7 @@ Please ignore this message.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 25.2 Mail Header Fields </h2>
+<h2 class="section"> 25.2 Mail Header Fields </h2>
 
 <p>  There are several header fields you can use in the `<samp>*mail*</samp>' buffer.
 Each header field starts with a field name at the beginning of a line,
@@ -223,7 +238,7 @@ any number of times, to specify many places to send the message.
 lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
 example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 To: foo@here, this@there,
   me@gnu.cambridge.mass.usa.earth.spiral3281
 </pre></td></tr></table>
@@ -266,7 +281,7 @@ This function, which is bound to <kbd>C-c C-a</kbd>, prompts you for an alias
 (with completion) and inserts its expansion at point.
 </p><p>In this version of Emacs, it is possible to have lines like the
 following in your `<tt>.mailrc</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
      alias someone &quot;John Doe &lt;doe@quux.com&gt;&quot;
 </pre></td></tr></table>
 <p>That is, if you want an address to have embedded spaces, simply surround
@@ -274,13 +289,13 @@ it with double-quotes.  The quotes are necessary because the format of
 the `<tt>.mailrc</tt>' file uses spaces as address delimiters.  
 </p><p>Aliases in the `<tt>.mailrc</tt>' file may be nested. For example, assume
 you define aliases like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
      alias group1 fred ethel
      alias group2 larry curly moe
      alias everybody group1 group2
 </pre></td></tr></table>
 <p>When you now type `<samp>everybody</samp>' on the `<samp>To</samp>' line, it will expand to:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
      fred, ethyl, larry, curly, moe
 </pre></td></tr></table>
 <p>Aliases may contain forward references; the alias of `<samp>everybody</samp>' in the
@@ -322,7 +337,7 @@ file when it is sent.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 25.3 Mail Mode </h2>
+<h2 class="section"> 25.3 Mail Mode </h2>
 
 <p>  The major mode used in the `<samp>*mail*</samp>' buffer is Mail mode.  Mail
 mode is similar to Text mode, but several commands are provided on

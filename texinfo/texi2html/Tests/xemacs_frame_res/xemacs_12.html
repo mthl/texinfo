@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 9. Selecting Text </h1>
+<h1 class="chapter"> 9. Selecting Text </h1>
 
 <p>  Many Emacs commands operate on an arbitrary contiguous
 part of the current buffer. You can select text in two ways:
@@ -73,7 +88,7 @@ with the mouse.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.1 The Mark and the Region </h2>
+<h2 class="section"> 9.1 The Mark and the Region </h2>
 <p> To specify the text for a command to operate on, set <em>the
 mark</em> at one end of it, and move point to the other end.  The text
 between point and the mark is called <em>the region</em>.  You can move
@@ -92,7 +107,7 @@ contains the text just inserted.
 </p><p>  Aside from delimiting the region, the mark is useful for marking
 a spot that you may want to go back to.  To make this feature more useful,
 Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC81">9.1.1 Setting the Mark</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to set the mark.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC82">9.1.2 Operating on the Region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of ways to operate on contents of the region.</td></tr>
@@ -119,7 +134,7 @@ Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.1.1 Setting the Mark </h3>
+<h3 class="subsection"> 9.1.1 Setting the Mark </h3>
 
 <p>  Here are some commands for setting the mark:
 </p><dl compact="compact">
@@ -215,7 +230,7 @@ the mark at the new location with point back at its original location.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.1.2 Operating on the Region </h3>
+<h3 class="subsection"> 9.1.2 Operating on the Region </h3>
 
 <p>  Once you have created an active region, you can do many things to
 the text in it:
@@ -257,7 +272,7 @@ Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.1.3 Commands to Mark Textual Objects </h3>
+<h3 class="subsection"> 9.1.3 Commands to Mark Textual Objects </h3>
 
 <p>  There are commands for placing point and the mark around a textual
 object such as a word, list, paragraph or page.
@@ -337,7 +352,7 @@ putting point at the beginning and the mark at the end.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.1.4 The Mark Ring </h3>
+<h3 class="subsection"> 9.1.4 The Mark Ring </h3>
 
 <p>  Aside from delimiting the region, the mark is also useful for marking
 a spot that you may want to go back to.  To make this feature more
@@ -387,7 +402,7 @@ in every buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.2 Selecting Text with the Mouse </h2>
+<h2 class="section"> 9.2 Selecting Text with the Mouse </h2>
 
 <p>  If you are using XEmacs under X, you can use the mouse pointer
 to select text. (The normal mouse pointer is an I-beam, the same
@@ -450,7 +465,7 @@ can use Emacs region commands on it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.3 Additional Mouse Operations </h2>
+<h2 class="section"> 9.3 Additional Mouse Operations </h2>
 
 <p>XEmacs also provides the following mouse functions.  Most of these are
 not bound to mouse gestures by default, but they are provided for your
@@ -458,7 +473,7 @@ customization pleasure.  For example, if you wanted <kbd>shift-left</kbd>
 (that is, holding down the <kbd>Shift</kbd> key and clicking the left mouse
 button) to delete the character at which you are pointing, then you
 could do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-set-key '(shift button1) 'mouse-del-char)
 </pre></td></tr></table>
 <a name="IDX310"></a>
@@ -598,7 +613,7 @@ selection is immediately disowned afterwards.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.4 Deletion and Killing </h2>
+<h2 class="section"> 9.4 Deletion and Killing </h2>
 
 <p>  Most commands that erase text from the buffer save it. You can get
 the text back if you change your mind, or you can move or copy it to
@@ -632,7 +647,7 @@ nontrivial data usually kill.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.4.1 Deletion </h3>
+<h3 class="subsection"> 9.4.1 Deletion </h3>
 
 <dl compact="compact">
 <dt><kbd> C-d
@@ -711,7 +726,7 @@ leaving a single space.  See section <a href="xemacs_22.html#SEC192">M-^</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.4.2 Killing by Lines </h3>
+<h3 class="subsection"> 9.4.2 Killing by Lines </h3>
 
 <dl compact="compact">
 <dt><kbd> C-k
@@ -760,7 +775,7 @@ current line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.4.3 Other Kill Commands </h3>
+<h3 class="subsection"> 9.4.3 Other Kill Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> C-w
@@ -831,7 +846,7 @@ sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.5 Yanking </h2>
+<h2 class="section"> 9.5 Yanking </h2>
 
 <p>  <em>Yanking</em> means getting back text which was killed. Some systems
 call this &quot;pasting&quot;.  The usual way to move or copy text is to kill it
@@ -857,7 +872,7 @@ and then yank it one or more times.
 </p></dd>
 </dl>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC92">9.5.1 The Kill Ring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where killed text is stored.  Basic yanking.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC93">9.5.2 Appending Kills</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Several kills in a row all yank together.</td></tr>
@@ -883,7 +898,7 @@ and then yank it one or more times.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.5.1 The Kill Ring </h3>
+<h3 class="subsection"> 9.5.1 The Kill Ring </h3>
 
 <p>  All killed text is recorded in the <em>kill ring</em>, a list of blocks of
 text that have been killed.  There is only one kill ring, used in all
@@ -930,7 +945,7 @@ does not actually cut anything.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.5.2 Appending Kills </h3>
+<h3 class="subsection"> 9.5.2 Appending Kills </h3>
 
 <p>  Normally, each kill command pushes a new block onto the kill ring.
 However, two or more kill commands in a row combine their text into a
@@ -945,7 +960,7 @@ beginning.  This way, any sequence of mixed forward and backward kill
 commands puts all the killed text into one entry without rearrangement.
 Numeric arguments do not break the sequence of appending kills.  For
 example, suppose the buffer contains:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is the first
 line of sample text
 and here is the third.
@@ -986,7 +1001,7 @@ in one place.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.5.3 Yanking Earlier Kills </h3>
+<h3 class="subsection"> 9.5.3 Yanking Earlier Kills </h3>
 
 <p>  To recover killed text that is no longer the most recent kill, you need
 the <kbd>Meta-y</kbd> (<code>yank-pop</code>) command.  You can use <kbd>M-y</kbd> only
@@ -1047,7 +1062,7 @@ ring; no more than that many blocks of killed text are saved.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.6 Using X Selections </h2>
+<h2 class="section"> 9.6 Using X Selections </h2>
 
 <p>In the X window system, mouse selections provide a simple mechanism for
 text transfer between different applications.  In a typical X
@@ -1066,7 +1081,7 @@ commands (<kbd>C-w, M-w</kbd> etc.) as well as the options of the <b>Edit</b>
 menu to manipulate the selected text.
 </p></li></ul>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC96">9.6.1 The Clipboard Selection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Pasting to the X clipboard.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC97">9.6.2 Miscellaneous X Selection Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Other operations on the selection.</td></tr>
@@ -1094,7 +1109,7 @@ menu to manipulate the selected text.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.6.1 The Clipboard Selection </h3>
+<h3 class="subsection"> 9.6.1 The Clipboard Selection </h3>
 
 <p>There are other kinds of X selections besides the <b>Primary</b> selection; one
 common one is the <b>Clipboard</b> selection.  Some applications prefer to
@@ -1157,7 +1172,7 @@ menu, or by hitting the <b>Paste</b> key on your keyboard.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.6.2 Miscellaneous X Selection Commands </h3>
+<h3 class="subsection"> 9.6.2 Miscellaneous X Selection Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> M-x x-copy-primary-selection
@@ -1217,7 +1232,7 @@ cut buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.6.3 X Cut Buffers </h3>
+<h3 class="subsection"> 9.6.3 X Cut Buffers </h3>
 
 <p>X cut buffers are a different, older way of transferring text between
 applications.  XEmacs supports cut buffers for compatibility
@@ -1258,7 +1273,7 @@ the X cut buffers.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 9.6.4 Active Regions </h3>
+<h3 class="subsection"> 9.6.4 Active Regions </h3>
 
 <p>  By default, both the text you select in an Emacs buffer using the
 click-and-drag mechanism and text you select by setting point and the
@@ -1368,7 +1383,7 @@ it when appropriate.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.7 Accumulating Text </h2>
+<h2 class="section"> 9.7 Accumulating Text </h2>
 
 <p>  Usually you copy or move text by killing it and yanking it, but there are
 other ways that are useful for copying one block of text in many places, or
@@ -1450,7 +1465,7 @@ while the file itself changes.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.8 Rectangles </h2>
+<h2 class="section"> 9.8 Rectangles </h2>
 
 <p>  The rectangle commands affect rectangular areas of text: all
 characters between a certain pair of columns, in a certain range of lines.

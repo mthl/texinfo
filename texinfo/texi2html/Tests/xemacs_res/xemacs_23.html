@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 20. Commands for Human Languages </h1>
+<h1 class="chapter"> 20. Commands for Human Languages </h1>
 
 <p>  The term <em>text</em> has two widespread meanings in our area of the
 computer field.  One is data that is a sequence of characters.  In this
@@ -64,7 +79,7 @@ Emacs in small ways for the syntactic conventions of text.  For text which
 contains embedded commands for text formatters, Emacs has other major modes,
 each for a particular text formatter.  Thus, for input to TeX, you can
 use TeX mode; for input to nroff, Nroff mode.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC197">20.1 Text Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The major modes for editing text files.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC198">20.1.1 Nroff Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The major mode for editing input to the formatter nroff.</td></tr>
@@ -97,7 +112,7 @@ use TeX mode; for input to nroff, Nroff mode.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.1 Text Mode </h2>
+<h2 class="section"> 20.1 Text Mode </h2>
 
 <p>  You should use Text mode--rather than Fundamental or Lisp mode--to
 edit files of text in a human language.  Invoke <kbd>M-x text-mode</kbd> to
@@ -123,11 +138,11 @@ mode, and Mail mode.  Your hook can look at the value of
 <code>major-mode</code> to see which of these modes is actually being entered.
 </p><p>  Two modes similar to Text mode are of use for editing text that is to
 be passed through a text formatter before achieving its final readable form.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC198">20.1.1 Nroff Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The major mode for editing input to the formatter nroff.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC199">20.1.2 TeX Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The major modes for editing input to the formatter TeX.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
   Another similar mode is used for editing outlines.  It allows you
 to view the text at various levels of detail.  You can view either
 the outline headings alone or both headings and text; you can also
@@ -156,7 +171,7 @@ level structure more visible.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.1 Nroff Mode </h3>
+<h3 class="subsection"> 20.1.1 Nroff Mode </h3>
 
 <p>  Nroff mode is a mode like Text mode but modified to handle nroff
 commands present in the text.  Invoke <kbd>M-x nroff-mode</kbd> to enter this
@@ -222,7 +237,7 @@ line following point.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.2 TeX Mode </h3>
+<h3 class="subsection"> 20.1.2 TeX Mode </h3>
 
 <p>  TeX is a powerful text formatter written by Donald Knuth; like GNU
 Emacs, it is free.  LaTeX is a simplified input format for TeX,
@@ -241,7 +256,7 @@ which mode is used.
 </p><p>  The commands <kbd>M-x plain-tex-mode</kbd> and <kbd>M-x latex-mode</kbd>
 explicitly select one of the variants of TeX mode.  Use these
 commands when <kbd>M-x tex-mode</kbd> does not guess right.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC200">20.1.2.1 TeX Editing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special commands for editing in TeX mode.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC201">20.1.2.2 TeX Printing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for printing part of a file with TeX.</td></tr>
@@ -253,7 +268,7 @@ for a distribution fee.
 9-track tape, $165.00 for two 4-track 1/4 inch cartridge tapes
 (foreign sites $150.00, for 1/2 inch, $175.00 for 1/4 inch, to cover
 the extra postage) payable to the University of Washington to:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+</p><table><tr><td>&nbsp;</td><td><pre class="display">
 The Director
 Northwest Computer Support Group,  DW-10
 University of Washington
@@ -286,7 +301,7 @@ in cpio format, blocked 5120 bytes, ASCII headers.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 20.1.2.1 TeX Editing Commands </h4>
+<h4 class="subsubsection"> 20.1.2.1 TeX Editing Commands </h4>
 
 <p>  Here are the special commands provided in TeX mode for editing the
 text of the file.
@@ -391,7 +406,7 @@ inserted between the two, and point is left there.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 20.1.2.2 TeX Printing Commands </h4>
+<h4 class="subsubsection"> 20.1.2.2 TeX Printing Commands </h4>
 
 <p>  You can invoke TeX as an inferior of Emacs on either the entire
 contents of the buffer or just a region at a time.  Running TeX in
@@ -499,7 +514,7 @@ exists and is not <code>nil</code>.  Emacs then calls the variable
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.1.3 Outline Mode </h3>
+<h3 class="subsection"> 20.1.3 Outline Mode </h3>
 
 <p>  Outline mode is a major mode similar to Text mode but intended for editing
 outlines.  It allows you to make parts of the text temporarily invisible
@@ -520,7 +535,7 @@ previous visible line.  For example, <kbd>C-n</kbd> moves onto the next visible
 line.  Killing an entire visible line, including its terminating newline,
 really kills all the following invisible lines as well; yanking
 everything back yanks the invisible lines and they remain invisible.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC203">20.1.3.1 Format of Outlines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What the text of an outline looks like.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC204">20.1.3.2 Outline Motion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special commands for moving through outlines.</td></tr>
@@ -546,7 +561,7 @@ everything back yanks the invisible lines and they remain invisible.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 20.1.3.1 Format of Outlines </h4>
+<h4 class="subsubsection"> 20.1.3.1 Format of Outlines </h4>
 
 <p>  Outline mode assumes that the lines in the buffer are of two types:
 <em>heading lines</em> and <em>body lines</em>.  A heading line represents a
@@ -557,7 +572,7 @@ heading lines with two stars between it and the next one-star heading
 are its subtopics; and so on.  Any line that is not a heading line is a
 body line.  Body lines belong to the preceding heading line.  Here is an
 example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Food
 
 This is the body,
@@ -625,7 +640,7 @@ line inside Emacs.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 20.1.3.2 Outline Motion Commands </h4>
+<h4 class="subsubsection"> 20.1.3.2 Outline Motion Commands </h4>
 
 <p>   Some special commands in Outline mode move backward and forward to
 heading lines.
@@ -698,7 +713,7 @@ backward to another heading that is less deeply nested.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 20.1.3.3 Outline Visibility Commands </h4>
+<h4 class="subsubsection"> 20.1.3.3 Outline Visibility Commands </h4>
 
 <p>  The other special commands of outline mode are used to make lines visible
 or invisible.  Their names all start with <code>hide</code> or <code>show</code>.
@@ -809,7 +824,7 @@ no visible indication of the presence of invisible lines.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.2 Words </h2>
+<h2 class="section"> 20.2 Words </h2>
 
 <p>  Emacs has commands for moving over or operating on words.  By convention,
 the keys for them are all <kbd>Meta-</kbd> characters.
@@ -913,7 +928,7 @@ delimiter.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.3 Sentences </h2>
+<h2 class="section"> 20.3 Sentences </h2>
 
 <p>  The Emacs commands for manipulating sentences and paragraphs are mostly
 on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
@@ -971,7 +986,7 @@ composing text.
 sentence.  It is a regexp that matches the last few characters of a
 sentence, together with the whitespace following the sentence.  Its
 normal value is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 &quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
 </pre></td></tr></table>
 <p>This example is explained in the section on regexps.  See section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>.
@@ -994,7 +1009,7 @@ normal value is:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.4 Paragraphs </h2>
+<h2 class="section"> 20.4 Paragraphs </h2>
 
 <p>  The Emacs commands for manipulating paragraphs are also <kbd>Meta-</kbd>
 keys.
@@ -1065,7 +1080,7 @@ pages.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.5 Pages </h2>
+<h2 class="section"> 20.5 Pages </h2>
 
 <p>  Files are often thought of as divided into <em>pages</em> by the
 <em>formfeed</em> character (ASCII Control-L, octal code 014).  For
@@ -1123,7 +1138,7 @@ the next page, and -1 means the previous one.
 where to break a page in two.  It prints the total number of lines in
 the current page in the echo area, then divides the lines into those
 preceding the current line and those following it, for example
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Page has 96 (72+25) lines
 </pre></td></tr></table>
 <p>  Notice that the sum is off by one; this is correct if point is not at the
@@ -1152,13 +1167,13 @@ which matches a formfeed character at the beginning of a line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.6 Filling Text </h2>
+<h2 class="section"> 20.6 Filling Text </h2>
 
 <p>  If you use Auto Fill mode, Emacs <em>fills</em> text (breaks it up into
 lines that fit in a specified width) as you insert it.  When you alter
 existing text it is often no longer be properly filled afterwards and
 you can use explicit commands for filling.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC211">20.6.1 Auto Fill Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Auto Fill mode breaks long lines automatically.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC212">20.6.2 Explicit Fill Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to refill paragraphs and center lines.</td></tr>
@@ -1184,7 +1199,7 @@ you can use explicit commands for filling.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.6.1 Auto Fill Mode </h3>
+<h3 class="subsection"> 20.6.1 Auto Fill Mode </h3>
 
 <p>  <em>Auto Fill</em> mode is a minor mode in which lines are broken
 automatically when they become too wide.  Breaking happens only when
@@ -1249,7 +1264,7 @@ permanently for yourself.  See section <a href="xemacs_30.html#SEC377">The Init 
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.6.2 Explicit Fill Commands </h3>
+<h3 class="subsection"> 20.6.2 Explicit Fill Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> M-q
@@ -1335,7 +1350,7 @@ uses that number as the new fill column.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 20.6.3 The Fill Prefix </h3>
+<h3 class="subsection"> 20.6.3 The Fill Prefix </h3>
 
 <p>  To fill a paragraph in which each line starts with a special marker
 (which might be a few spaces, giving an indented paragraph), use the
@@ -1404,7 +1419,7 @@ each group as a paragraph, using its indentation as a fill prefix.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 20.7 Case Conversion Commands </h2>
+<h2 class="section"> 20.7 Case Conversion Commands </h2>
 
 <p>  Emacs has commands for converting either a single word or any arbitrary
 range of text to upper case or to lower case.

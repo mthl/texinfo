@@ -12,51 +12,44 @@ $BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" ali
 $MENU_PRE_STYLE = '';
 
 $TOC_LIST_STYLE ='';
+# This lines are inserted before and after the shortcontents 
+$BEFORE_STOC_LINES = "";
+$AFTER_STOC_LINES = '';
+
+# This lines are inserted before and after the contents 
+$BEFORE_TOC_LINES = "";
+$AFTER_TOC_LINES = '';
+
+# html version for latex2html
+$L2H_HTML_VERSION = "3.2";
+
+# no css
+$CSS_LINES = "";
 
 $things_map{'oe'} = '&#156;';
 $things_map{'OE'} = '&#140;';
+$things_map{'dots'} = '<small>...</small>';
+$things_map{'enddots'} = '<small>....</small>';
 
 # an eval of these $complex_format_map->{what}->{'begin'} yields beginning
 # an eval of these $complex_format_map->{what}->{'end'} yields end
 
 # no style in html 3.2
-$complex_format_map =
+foreach my $complex_format (keys %$complex_format_map)
 {
- 'example' =>
- {
-  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => ''
- },
- 'smallexample' =>
- {
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2H_SMALL_FONT_SIZE\">"},
-  'end' => q{'</font></td></tr></table>'},
-  'pre_style' => ''
- },
- 'display' =>
- {
-  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => ''
- },
- 'smalldisplay' =>
- {
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2h_SMALL_FONT_SIZE\">"},
-  'end' => q{'</font></td></tr></table>'},
-  'pre_style' => ''
- }
-};
-
-$complex_format_map->{'lisp'} = $complex_format_map->{'example'};
-$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
-$complex_format_map->{'format'} = $complex_format_map->{'display'};
-$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
+    $complex_format_map->{$complex_format}->{'pre_style'} = "";
+}
 
 # formatting functions
 
 $summary_letter    = \&t2h_html32_summary_letter;
 $protect_html      = \&t2h_html32_protect_html;
+$heading           = \&t2h_html32_heading;
+$preformatted      = \&t2h_html32_preformatted;
+$raw               = \&t2h_html32_raw;
+$menu              = \&t2h_html32_menu;
+$foot_section      = \&t2h_html32_foot_section;
+$cartouche         = \&t2h_html32_cartouche;
 
 # &quot; is not in html 3.2
 sub t2h_html32_protect_html($)
@@ -73,6 +66,83 @@ sub t2h_html32_protect_html($)
     $what =~ s/\>/\&gt;/go;
     return($what);
 }
+
+# a preformatted section
+sub t2h_html32_preformatted($$$)
+{
+    my $text = shift;
+    return '' if ($text eq '');
+    return "<pre>$text</pre>";
+}
+
+# a heading for an element
+sub t2h_html32_heading($)
+{
+    my $element = shift;
+    return '' if ($element->{'text'} =~ /^\s*$/);
+    my $level = 3;
+    if (!$element->{'node'})
+    {
+	$level = $element->{'level'};
+        print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
+        $level = 1 if ($level == 0);
+    }
+    return "<h$level> $element->{'text'} </h$level>\n";
+}
+
+# formatting of raw regions
+# ih L2H is true another mechanism is used for tex
+sub t2h_html32_raw($$)
+{
+    my $style = shift;
+    my $text = shift;
+    if ($style eq 'verbatim' or $style eq 'tex')
+    {
+        return "<pre>" . &$protect_html($text) . '</pre>';
+    }
+    elsif ($style eq 'html')
+    {
+        return $text;
+    }
+    else
+    {
+        warn "$WARN (bug) unknown style $style\n";
+        return &$protect_html($text);
+    }
+}
+
+# a whole menu
+sub t2h_html32_menu($)
+{
+    my $text = shift;
+
+    if ($text =~ /\S/)
+    {
+        return "<table border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
+    }
+    return '';
+}
+
+# a simple menu entry ref in case we aren't in a standard menu context
+sub t2h_html32_foot_section($)
+{
+    my $lines = shift;
+    unshift @$lines, "$DEFAULT_RULE\n<h3>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h3>\n";
+    return $lines;
+}
+
+# a cartouche
+sub t2h_html32_cartouche($)
+{
+    my $text = shift;
+
+    if ($text =~ /\S/)
+    {
+        return "<table border=\"1\"><tr><td>\n" . $text . "</td></tr></table>\n";
+    }
+    return '';
+}
+
 
 # no style
 sub t2h_html32_summary_letter($$$)

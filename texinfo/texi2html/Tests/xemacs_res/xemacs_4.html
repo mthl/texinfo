@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. The XEmacs Frame </h1>
+<h1 class="chapter"> 1. The XEmacs Frame </h1>
 
 <dl compact="compact">
 <dt> Frame
@@ -113,7 +128,7 @@ selected window is the one that was last selected in that frame.
 windows, which can be in different XEmacs frames.  If you alter the text
 in an XEmacs buffer by editing it in one XEmacs window, the changes are
 visible in all XEmacs windows containing that buffer.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC8">1.1 Point</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The place in the text where editing commands operate.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC9">1.2 The Echo Area</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Short messages appear at the bottom of the frame.</td></tr>
@@ -144,7 +159,7 @@ visible in all XEmacs windows containing that buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.1 Point </h2>
+<h2 class="section"> 1.1 Point </h2>
 
 <p>  When XEmacs is running, the cursor shows the location at which editing
 commands will take effect.  This location is called <em>point</em>.  You
@@ -194,7 +209,7 @@ for accessing the value now called `point'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.2 The Echo Area </h2>
+<h2 class="section"> 1.2 The Echo Area </h2>
 
 <p>  The line at the bottom of the frame (below the mode line) is the
 <em>echo area</em>.  XEmacs uses this area to communicate with the user:
@@ -253,7 +268,7 @@ typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.3 The Mode Line </h2>
+<h2 class="section"> 1.3 The Mode Line </h2>
 
 <p>  Each text window's last line is a <em>mode line</em> which describes what is
 going on in that window.  When there is only one text window, the mode line
@@ -265,7 +280,7 @@ like `<samp>XEmacs: <var>something</var></samp>'.
 such as Dired.  The mode line then indicates the status of the
 subsystem.
 </p><p>  Normally, the mode line has the following appearance:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 --<var>ch</var>-XEmacs: <var>buf</var>      (<var>major</var> <var>minor</var>)----<var>pos</var>------
 </pre></td></tr></table>
 <p>This gives information about the buffer being displayed in the window: the
@@ -306,7 +321,7 @@ example, Rmail buffers display the current message number and the total
 number of messages.  Compilation buffers and Shell mode display the status
 of the subprocess.
 </p><p>  If XEmacs is currently inside a recursive editing level, square
-brackets (`<samp>[<small>...</small>]</samp>') appear around the parentheses that surround
+brackets (`<samp>[<small class="dots">...</small>]</samp>') appear around the parentheses that surround
 the modes.  If XEmacs is in one recursive editing level within another,
 double square brackets appear, and so on.  Since information on
 recursive editing applies to XEmacs in general and not to any one buffer,
@@ -317,7 +332,7 @@ any of them.  See section <a href="xemacs_29.html#SEC346">Recursive Editing Leve
 To enable this feature, type <kbd>M-x display-time</kbd>.  The information added
 to the mode line usually appears after the file name, before the mode names
 and their parentheses.  It looks like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 <var>hh</var>:<var>mm</var>pm <var>l.ll</var> [<var>d</var>]
 </pre></td></tr></table>
 <p>(Some fields may be missing if your operating system cannot support them.)
@@ -352,7 +367,7 @@ background colors appropriately.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.4 GUI Components </h2>
+<h2 class="section"> 1.4 GUI Components </h2>
 
 <p>When executed in a graphical windowing environment such as the X Window
 System or Microsoft Windows, XEmacs displays several graphical user
@@ -365,7 +380,7 @@ use as a shortcut for selecting any of several related buffers in a
 given frame.  Operating the GUI components is &quot;obvious&quot;:  click on the
 menubar to pull down a menu, on a button in the toolbar to invoke a
 function, and on a tab in the gutter to switch buffers.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC12">1.5 The XEmacs Menubar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How XEmacs uses the menubar.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC13">1.6 XEmacs Scrollbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How XEmacs uses scrollbars.</td></tr>
@@ -395,7 +410,7 @@ function, and on a tab in the gutter to switch buffers.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.5 The XEmacs Menubar </h2>
+<h2 class="section"> 1.5 The XEmacs Menubar </h2>
 
 <p>The XEmacs menubar is intended to be conformant to the usual conventions
 for menubars, although conformance is not yet perfect.  The menu at the
@@ -444,7 +459,7 @@ XEmacsen, the `<samp>Mule</samp>' menu will be moved under `<samp>Options</samp>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.6 XEmacs Scrollbars </h2>
+<h2 class="section"> 1.6 XEmacs Scrollbars </h2>
 
 <p>XEmacs scrollbars provide the usual interface.  Arrow buttons at either
 end allow for line by line scrolling, including autorepeat.  Clicking in
@@ -477,7 +492,7 @@ horizontal scrollbar.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.7 XEmacs Mode Lines </h2>
+<h2 class="section"> 1.7 XEmacs Mode Lines </h2>
 
 <p>When used in a windowing system, the XEmacs modelines can be dragged
 vertically. The effect is to resize the windows above and below the
@@ -509,7 +524,7 @@ the `<samp>Options</samp>' menu.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.8 XEmacs Toolbars </h2>
+<h2 class="section"> 1.8 XEmacs Toolbars </h2>
 
 <p>XEmacs has a default toolbar which provides shortcuts for some of the
 commonly used operations (such as opening files) and applications (such
@@ -538,7 +553,7 @@ mail-specific operations like sending, saving, and deleting messages.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.9 XEmacs Gutters </h2>
+<h2 class="section"> 1.9 XEmacs Gutters </h2>
 
 <p>Gutters are the most flexible of the GUI components described in this
 section.  In theory, the other GUI components could be implemented by
@@ -588,7 +603,7 @@ same mode are displayed on tabs in the gutter.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.10 Inhibiting Display of GUI Components </h2>
+<h2 class="section"> 1.10 Inhibiting Display of GUI Components </h2>
 
 <p>Use of GUI facilities is a personal thing.  Almost everyone agrees that
 drawing via keyboard-based &quot;turtle graphics&quot; is acceptable to hardly
@@ -644,7 +659,7 @@ visibility of specifically the left-side toolbar only, customize
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.11 Changing the Position, Orientation, and Appearance of GUI Components </h2>
+<h2 class="section"> 1.11 Changing the Position, Orientation, and Appearance of GUI Components </h2>
 
 <p>  #### Not documented yet.
 </p><hr size="6">
@@ -666,7 +681,7 @@ visibility of specifically the left-side toolbar only, customize
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.12 Using XEmacs Under the X Window System </h2>
+<h2 class="section"> 1.12 Using XEmacs Under the X Window System </h2>
 
 <p>XEmacs can be used with the X Window System and a window manager like
 MWM or TWM.  In that case, the X window manager opens, closes, and
@@ -697,7 +712,7 @@ in first.  This is normally bound to <kbd>C-x 5 b</kbd>.
 Use the variable <code>default-frame-plist</code>, which is a plist of default
 values for frame creation other than the first one.  These may be set in
 your init file, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   (setq default-frame-plist '(width 80 height 55))
 </pre></td></tr></table>
 <p>This variable has replaced <code>default-frame-alist</code>, which is
@@ -758,7 +773,7 @@ title is simply what appears above the window.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.13 Using XEmacs Under Microsoft Windows </h2>
+<h2 class="section"> 1.13 Using XEmacs Under Microsoft Windows </h2>
 
 <p>Use of XEmacs under MS Windows is not separately documented here, but
 most operations available under the X Window System are also available

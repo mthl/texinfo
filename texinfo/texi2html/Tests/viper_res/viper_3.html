@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,12 +57,12 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. Improvements over Vi </h1>
+<h1 class="chapter"> 2. Improvements over Vi </h1>
 
 <p>Some common problems with Vi and Ex have been solved in Viper.  This
 includes better implementation of existing commands, new commands, and
 the facilities provided by Emacs.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC15">2.1 Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic Viper differences, Multi-file effects.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC16">2.2 Undo and Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Multiple undo, auto-save, backups and changes</td></tr>
@@ -81,7 +96,7 @@ the facilities provided by Emacs.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.1 Basics </h2>
+<h2 class="section"> 2.1 Basics </h2>
 
 <p>The Vi command set is based on the idea of combining motion commands
 with other commands.  The motion command is used as a text region
@@ -160,7 +175,7 @@ file.  See section <a href="viper_4.html#SEC25">Customization</a>, for details.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.2 Undo and Backups </h2>
+<h2 class="section"> 2.2 Undo and Backups </h2>
 
 <p>Viper provides multiple undo.  The number of undo's and the size is limited
 by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
@@ -204,7 +219,7 @@ can be any letters from a through z.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.3 History </h2>
+<h2 class="section"> 2.3 History </h2>
 
 <p>History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
@@ -260,7 +275,7 @@ expressions keep a history on those items.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.4 Macros and Registers </h2>
+<h2 class="section"> 2.4 Macros and Registers </h2>
 
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
@@ -309,7 +324,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.5 Completion </h2>
+<h2 class="section"> 2.5 Completion </h2>
 
 <p>Completion is done when you type <kbd>TAB</kbd>.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
@@ -335,15 +350,15 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.6 Improved Search </h2>
+<h2 class="section"> 2.6 Improved Search </h2>
 
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in `<tt>.viper</tt>' either by calling
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-buffer-search-enable)
 </pre></td></tr></table>
 <p>or by setting <code>viper-buffer-search-char</code> to, say, <kbd>f3</kbd>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (setq viper-buffer-search-char ?g)
 </pre></td></tr></table>
 <p>If the user calls <code>viper-buffer-search-enable</code> explicitly (the first
@@ -370,7 +385,7 @@ word by clicking on it.  See section <a href="viper_4.html#SEC29">Viper Specials
 them.  This is done through what is known as <em>faces</em> in Emacs.  The
 variable that controls how search patterns are highlighted is
 <code>viper-search-face</code>.  If you don't want any highlighting at all, put
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (copy-face 'default 'viper-search-face)
 </pre></td></tr></table><a name="IDX56"></a>
 
@@ -402,7 +417,7 @@ faces are grouped together under Viper's
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.7 Abbreviation Facilities </h2>
+<h2 class="section"> 2.7 Abbreviation Facilities </h2>
 
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
@@ -439,13 +454,13 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.8 Movement and Markers </h2>
+<h2 class="section"> 2.8 Movement and Markers </h2>
 
 <p>Viper can be set free from the line--limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your `<tt>.viper</tt>'
 contains
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 <code>(setq viper-ex-style-motion nil)</code>
 </pre></td></tr></table>
 <p>the motion will be a true screen editor motion.  One thing you must then
@@ -481,7 +496,7 @@ the value can be <code>reformed-vi</code> or <code>emacs</code>.
 </p><p>Changes to <code>viper-syntax-preference</code> should be done in the hooks to
 various major modes by executing <code>viper-set-syntax-preference</code> as in
 the following example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-set-syntax-preference nil &quot;emacs&quot;)
 </pre></td></tr></table>
 <a name="IDX60"></a>
@@ -516,7 +531,7 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.9 New Commands </h2>
+<h2 class="section"> 2.9 New Commands </h2>
 
 <p>These commands have no Vi analogs.
 </p><dl compact="compact">
@@ -759,7 +774,7 @@ notably, Vi style macros are much more powerful in Viper than in Vi.  See sectio
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.10 Useful Packages </h2>
+<h2 class="section"> 2.10 Useful Packages </h2>
 
 <p>Some Emacs packages are mentioned here as an aid to the new Viper user, to
 indicate what Viper is capable of.

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 26. Reading Mail </h1>
+<h1 class="chapter"> 26. Reading Mail </h1>
 
 <p>XEmacs provides three separate mail-reading packages.  Each one comes with
 its own manual, which is included standard with the XEmacs distribution.
@@ -86,7 +101,7 @@ is not hard to obtain and install VM for that editor.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.1 Calendar Mode and the Diary </h2>
+<h2 class="section"> 26.1 Calendar Mode and the Diary </h2>
 
 <p>  Emacs provides the functions of a desk calendar, with a diary of
 planned or past events.  To enter the calendar, type <kbd>M-x calendar</kbd>;
@@ -100,7 +115,7 @@ particular date; <kbd>Buttons3</kbd> brings up a menu of commonly used
 calendar features that are independent of any particular date.  To exit
 the calendar, type <kbd>q</kbd>.  See <a href="../lispref/Calendar.html">Customizing the Calendar and Diary: (lispref)Calendar</a> section `Calendar' in <cite>The XEmacs Lisp Reference Manual</cite>, for customization
 information about the calendar and diary.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC302">26.1.1 Movement in the Calendar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving through the calendar; selecting a date.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC306">26.1.2 Scrolling the Calendar through Time</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bringing earlier or later months onto the screen.</td></tr>
@@ -134,7 +149,7 @@ information about the calendar and diary.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.1.1 Movement in the Calendar </h3>
+<h3 class="subsection"> 26.1.1 Movement in the Calendar </h3>
 
 <p>  Calendar mode lets you move through the calendar in logical units of
 time such as days, weeks, months, and years.  If you move outside the
@@ -143,7 +158,7 @@ automatically through time to make the selected date visible.  Moving to
 a date lets you view its holidays or diary entries, or convert it to other
 calendars; moving longer time periods is also useful simply to scroll the
 calendar.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC303">26.1.1.1 Motion by Integral Days, Weeks, Months, Years</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving by days, weeks, months, and years.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC304">26.1.1.2 Beginning or End of Week, Month or Year</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving to start/end of weeks, months, and years.</td></tr>
@@ -170,7 +185,7 @@ calendar.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.1.1.1 Motion by Integral Days, Weeks, Months, Years </h4>
+<h4 class="subsubsection"> 26.1.1.1 Motion by Integral Days, Weeks, Months, Years </h4>
 
 <p>  The commands for movement in the calendar buffer parallel the
 commands for movement in text.  You can move forward and backward by
@@ -267,7 +282,7 @@ arguments in Calendar mode even without the Meta modifier.  For example,
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.1.1.2 Beginning or End of Week, Month or Year </h4>
+<h4 class="subsubsection"> 26.1.1.2 Beginning or End of Week, Month or Year </h4>
 
 <p>  A week (or month, or year) is not just a quantity of days; we think of
 weeks (months, years) as starting on particular dates.  So Calendar mode
@@ -341,7 +356,7 @@ instead, set the variable <code>calendar-week-start-day</code> to 1.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.1.1.3 Particular Dates </h4>
+<h4 class="subsubsection"> 26.1.1.3 Particular Dates </h4>
 
 <p>  Calendar mode provides commands for moving to a particular date
 specified in various ways.
@@ -393,7 +408,7 @@ then centers the three-month calendar around that month.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.1.2 Scrolling the Calendar through Time </h3>
+<h3 class="subsection"> 26.1.2 Scrolling the Calendar through Time </h3>
 
 <p>  The calendar display scrolls automatically through time when you move out
 of the visible portion.  You can also scroll it manually.  Imagine that the
@@ -467,7 +482,7 @@ typing <kbd>C-u M-v</kbd> scrolls the calendar backward by a year.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.1.3 The Mark and the Region </h3>
+<h3 class="subsection"> 26.1.3 The Mark and the Region </h3>
 
 <p>  The concept of the mark applies to the calendar just as to any other
 buffer, but it marks a <em>date</em>, not a <em>position</em> in the buffer.
@@ -539,7 +554,7 @@ the old marks on the ring, one by one.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.1.4 Miscellaneous Calendar Commands </h3>
+<h3 class="subsection"> 26.1.4 Miscellaneous Calendar Commands </h3>
 
 <dl compact="compact">
 <dt><kbd> p d
@@ -614,7 +629,7 @@ calendar iconifies that frame.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.2 LaTeX Calendar </h2>
+<h2 class="section"> 26.2 LaTeX Calendar </h2>
 
 <p>   The Calendar LaTeX commands produce a buffer of LaTeX code that
 prints as a calendar.  Depending on the command you use, the printed
@@ -711,7 +726,7 @@ also (in weekly and monthly calendars only).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.2.1 Holidays </h3>
+<h3 class="subsection"> 26.2.1 Holidays </h3>
 
 <p>  The Emacs calendar knows about all major and many minor holidays,
 and can display them.
@@ -815,7 +830,7 @@ definition, even though it is wrong for some prior years.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.2.2 Times of Sunrise and Sunset </h3>
+<h3 class="subsection"> 26.2.2 Times of Sunrise and Sunset </h3>
 
 <p>  Special calendar commands can tell you, to within a minute or two, the
 times of sunrise and sunset for any date.
@@ -861,7 +876,7 @@ name before using these commands.  Here is an example of what to set:
 </p><a name="IDX1220"></a>
 <a name="IDX1221"></a>
 <a name="IDX1222"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (setq calendar-latitude 40.1)
 (setq calendar-longitude -88.2)
 (setq calendar-location-name &quot;Urbana, IL&quot;)
@@ -875,7 +890,7 @@ not supply them), you must set them yourself.  Here is an example:
 </p><a name="IDX1223"></a>
 <a name="IDX1224"></a>
 <a name="IDX1225"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (setq calendar-time-zone -360)
 (setq calendar-standard-time-zone-name &quot;CST&quot;)
 (setq calendar-daylight-time-zone-name &quot;CDT&quot;)
@@ -912,7 +927,7 @@ machine.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.2.3 Phases of the Moon </h3>
+<h3 class="subsection"> 26.2.3 Phases of the Moon </h3>
 
 <p>  These calendar commands display the dates and times of the phases of
 the moon (new moon, first quarter, full moon, last quarter).  This
@@ -965,7 +980,7 @@ Time (the Greenwich time zone) is used.  See section <a href="#SEC329">Daylight 
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.2.4 Conversion To and From Other Calendars </h3>
+<h3 class="subsection"> 26.2.4 Conversion To and From Other Calendars </h3>
 
 <p>  The Emacs calendar displayed is <em>always</em> the Gregorian calendar,
 sometimes called the &quot;new style&quot; calendar, which is used in most of
@@ -978,7 +993,7 @@ calendar displayed is the Gregorian, even for a date at which the
 Gregorian calendar did not exist.
 </p><p>  While Emacs cannot display other calendars, it can convert dates to
 and from several other calendars.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC314">26.3 Supported Calendar Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The calendars Emacs understands
                             (aside from Gregorian).</td></tr>
@@ -1010,7 +1025,7 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Em
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.3 Supported Calendar Systems </h2>
+<h2 class="section"> 26.3 Supported Calendar Systems </h2>
 
 <p>  The ISO commercial calendar is used largely in Europe.
 </p><a name="IDX1229"></a>
@@ -1087,7 +1102,7 @@ repeated in a cycle of sixty.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.4 Converting To Other Calendars </h2>
+<h2 class="section"> 26.4 Converting To Other Calendars </h2>
 
 <p>  The following commands describe the selected date (the date at point)
 in various other calendar systems:
@@ -1189,7 +1204,7 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Em
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.5 Converting From Other Calendars </h2>
+<h2 class="section"> 26.5 Converting From Other Calendars </h2>
 
 <p>  You can use the other supported calendars to specify a date to move
 to.  This section describes the commands for doing this using calendars
@@ -1292,7 +1307,7 @@ years, and then displays the list of yahrzeit dates.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.1 Converting from the Mayan Calendar </h3>
+<h3 class="subsection"> 26.5.1 Converting from the Mayan Calendar </h3>
 
 <p>  Here are the commands to select dates based on the Mayan calendar:
 </p><dl compact="compact">
@@ -1336,7 +1351,7 @@ calendar round (<code>calendar-previous-calendar-round-date</code>).
 <a name="IDX1265"></a>
 <p>  To understand these commands, you need to understand the Mayan calendars.
 The <em>long count</em> is a counting of days with these units:
-</p><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+</p><table><tr><td>&nbsp;</td><td><pre class="display">
 1 kin = 1 day&nbsp;&nbsp;&nbsp;1 uinal = 20 kin&nbsp;&nbsp;&nbsp;1 tun = 18 uinal
 1 katun = 20 tun&nbsp;&nbsp;&nbsp;1 baktun = 20 katun
 </pre></td></tr></table>
@@ -1399,7 +1414,7 @@ spelling.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.2 The Diary </h3>
+<h3 class="subsection"> 26.5.2 The Diary </h3>
 
 <p>  The Emacs diary keeps track of appointments or other events on a daily
 basis, in conjunction with the calendar.  To use the diary feature, you
@@ -1410,7 +1425,7 @@ date.
 </p><p>  By default, Emacs uses `<tt>~/diary</tt>' as the diary file.  This is the
 same file that the <code>calendar</code> utility uses.  A sample
 `<tt>~/diary</tt>' file is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 12/22/1988 Twentieth wedding anniversary!!
 &amp;1/1. Happy New Year!
 10/22 Ruth's birthday.
@@ -1429,7 +1444,7 @@ of the entries.  Such formatting is purely a matter of taste.
 provides a number of commands to let you view, add, and change diary
 entries.  You can also share diary entries with other users
 (see section <a href="#SEC333">Included Diary Files</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC319">26.5.3 Commands Displaying Diary Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing diary entries and associated calendar dates.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC320">26.5.4 The Diary File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering events in your diary.</td></tr>
@@ -1457,7 +1472,7 @@ entries.  You can also share diary entries with other users
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.3 Commands Displaying Diary Entries </h3>
+<h3 class="subsection"> 26.5.3 Commands Displaying Diary Entries </h3>
 
 <p>  Once you have created a `<tt>~/diary</tt>' file, you can use the calendar
 to view it.  You can also view today's events outside of Calendar mode.
@@ -1570,7 +1585,7 @@ diary-mail-entries</kbd>.  A prefix argument specifies how many days
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.4 The Diary File </h3>
+<h3 class="subsection"> 26.5.4 The Diary File </h3>
 
 <p>  Your <em>diary file</em> is a file that records events associated with
 particular dates.  The name of the diary file is specified by the
@@ -1596,7 +1611,7 @@ that would otherwise mark many different dates.
 name with no following blanks or punctuation, then the diary window
 display doesn't include that line; only the continuation lines appear.
 For example, this entry:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 02/11/1989
       Bill B. visits Princeton today
       2pm Cognitive Studies Committee meeting
@@ -1640,13 +1655,13 @@ the entire file with <kbd>s</kbd> (<code>show-all-diary-entries</code>).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.5 Date Formats </h3>
+<h3 class="subsection"> 26.5.5 Date Formats </h3>
 
 <p>  Here are some sample diary entries, illustrating different ways of
 formatting a date.  The examples all show dates in American order
 (month, day, year), but Calendar mode supports European order (day,
 month, year) as an option.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 4/20/93  Switch-over to new tabulation system
 apr. 25  Start tabulating annual results
 4/30  Results for April are due
@@ -1708,7 +1723,7 @@ it in full; case is not significant.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.6 Commands to Add to the Diary </h3>
+<h3 class="subsection"> 26.5.6 Commands to Add to the Diary </h3>
 
 <p>  While in the calendar, there are several commands to create diary
 entries:
@@ -1774,7 +1789,7 @@ exiting Emacs.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.7 Special Diary Entries </h3>
+<h3 class="subsection"> 26.5.7 Special Diary Entries </h3>
 
 <p>  In addition to entries based on calendar dates, the diary file can
 contain <em>sexp entries</em> for regular events such as anniversaries.
@@ -1813,7 +1828,7 @@ entry. The entry looks like this:
 </p><a name="IDX1301"></a>
 <p>  The effect of <kbd>i a</kbd> is to add a <code>diary-anniversary</code> sexp to your
 diary file.  You can also add one manually, for instance:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 %%(diary-anniversary 10 31 1948) Arthur's birthday
 </pre></td></tr></table>
 <p>This entry applies to October 31 in any year after 1948; `<samp>10 31
@@ -1825,7 +1840,7 @@ calculate the number of elapsed years.
 dates.  Here is a block diary entry that applies to all dates from June
 24, 1990 through July 10, 1990:
 </p><a name="IDX1302"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 %%(diary-block 6 24 1990 7 10 1990) Vacation
 </pre></td></tr></table>
 <p>The `<samp>6 24 1990</samp>' indicates the starting date and the `<samp>7 10 1990</samp>'
@@ -1844,7 +1859,7 @@ create one, select the starting date and use the <kbd>i c</kbd> command.  The
 command prompts for the length of interval, then inserts the entry,
 which looks like this:
 </p><a name="IDX1307"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 %%(diary-cyclic 50 3 1 1990) Renew medication
 </pre></td></tr></table>
 <p>This entry applies to March 1, 1990 and every 50th day following;
@@ -1863,7 +1878,7 @@ weeks, and months.  It is comparable to a crontab entry interpreted by
 the <code>cron</code> utility.  Here is a nonmarking, floating diary entry
 that applies to the last Thursday in November:
 </p><a name="IDX1308"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 &amp;%%(diary-float 11 4 -1) American Thanksgiving
 </pre></td></tr></table>
 <p>The 11 specifies November (the eleventh month), the 4 specifies Thursday
@@ -1882,7 +1897,7 @@ include the ones shown in this section, plus a few others (see section <a href="
 describe algorithmically.  Suppose you get paid on the 21st of the month
 if it is a weekday, and to the Friday before if the 21st is on a
 weekend.  The diary entry
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 &amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
@@ -1914,11 +1929,11 @@ entry does <em>not</em> apply to that date.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.5.8 Customizing the Calendar and Diary </h3>
+<h3 class="subsection"> 26.5.8 Customizing the Calendar and Diary </h3>
 
 <p>  There are many customizations that you can use to make the calendar and
 diary suit your personal tastes.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC325">26.5.8.1 Customizing the Calendar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defaults you can set.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC326">26.5.8.2 Customizing the Holidays</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining your own holidays.</td></tr>
@@ -1952,14 +1967,14 @@ diary suit your personal tastes.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.1 Customizing the Calendar </h4>
+<h4 class="subsubsection"> 26.5.8.1 Customizing the Calendar </h4>
 
 <p>  If you set the variable <code>view-diary-entries-initially</code> to
 <code>t</code>, calling up the calendar automatically displays the diary
 entries for the current date as well.  The diary dates appear only if
 the current date is visible.  If you add both of the following lines to
 your init file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq view-diary-entries-initially t)
 (calendar)
 </pre></td></tr></table>
@@ -2008,13 +2023,13 @@ current date is visible in the window.  One use of this hook is to
 replace today's date with asterisks; to do that, use the hook function
 <code>calendar-star-date</code>.
 </p><a name="IDX1317"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (add-hook 'today-visible-calendar-hook 'calendar-star-date)
 </pre></td></tr></table>
 <p>Another standard hook function marks the current date, either by
 changing its face or by adding an asterisk.  Here's how to use it:
 </p><a name="IDX1318"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 </pre></td></tr></table>
 <a name="IDX1319"></a>
@@ -2046,7 +2061,7 @@ the current date is <em>not</em> visible in the window.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.2 Customizing the Holidays </h4>
+<h4 class="subsubsection"> 26.5.8.2 Customizing the Holidays </h4>
 
 <p>  Emacs knows about holidays defined by entries on one of several lists.
 You can customize these lists of holidays to your own needs, adding or
@@ -2139,7 +2154,7 @@ arguments <var>args</var>.
 <p>  For example, suppose you want to add Bastille Day, celebrated in
 France on July 14.  You can do this by adding the following line
 to your init file:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
 </pre></td></tr></table>
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
@@ -2148,7 +2163,7 @@ fourteenth day of the seventh month (July).
 </p><p>  Many holidays occur on a specific day of the week, at a specific time
 of month.  Here is a holiday form describing Hurricane Supplication Day,
 celebrated in the Virgin Islands on the fourth Monday in August:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (holiday-float 8 1 4 &quot;Hurricane Supplication Day&quot;)
 </pre></td></tr></table>
 <p>Here the 8 specifies August, the 1 specifies Monday (Sunday is 0,
@@ -2158,7 +2173,7 @@ the month (1 specifies the first occurrence, 2 the second occurrence,
 so on).
 </p><p>  You can specify holidays that occur on fixed days of the Hebrew,
 Islamic, and Julian calendars too.  For example,
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (setq other-holidays
       '((holiday-hebrew 10 2 &quot;Last day of Hanukkah&quot;)
         (holiday-islamic 3 12 &quot;Mohammed's Birthday&quot;)
@@ -2173,7 +2188,7 @@ Julian calendar.
 <code>holiday-sexp</code> form.  For example, American presidential elections
 occur on the first Tuesday after the first Monday in November of years
 divisible by 4:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (holiday-sexp (if (= 0 (% year 4))
                    (calendar-gregorian-from-absolute
                  (1+ (calendar-dayname-on-or-before
@@ -2182,7 +2197,7 @@ divisible by 4:
               &quot;US Presidential Election&quot;))
 </pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (if (= 0 (% displayed-year 4))
     (fixed 11
            (extract-calendar-day
@@ -2199,7 +2214,7 @@ for example, add <code>(eclipses)</code> to <code>other-holidays</code>
 and write an Emacs Lisp function <code>eclipses</code> that returns a
 (possibly empty) list of the relevant Gregorian dates among the range
 visible in the calendar window, with descriptive strings, like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
 </pre></td></tr></table>
 <hr size="6">
@@ -2221,7 +2236,7 @@ visible in the calendar window, with descriptive strings, like this:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.3 Date Display Format </h4>
+<h4 class="subsubsection"> 26.5.8.3 Date Display Format </h4>
 
 <p>  You can customize the manner of displaying dates in the diary, in mode
 lines, and in messages by setting <code>calendar-date-display-form</code>.
@@ -2230,20 +2245,20 @@ This variable holds a list of expressions that can involve the variables
 string form, and <code>monthname</code> and <code>dayname</code>, which are both
 alphabetic strings.  In the American style, the default value of this
 list is as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 ((if dayname (concat dayname &quot;, &quot;)) monthname &quot; &quot; day &quot;, &quot; year)
 </pre></td></tr></table>
 <p>while in the European style this value is the default:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 ((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
 </pre></td></tr></table>
 <p>+
 The ISO standard date representation is this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (year &quot;-&quot; month &quot;-&quot; day)
 </pre></td></tr></table>
 <p>This specifies a typical American format:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (month &quot;/&quot; day &quot;/&quot; (substring year -2))
 </pre></td></tr></table>
 <hr size="6">
@@ -2265,7 +2280,7 @@ The ISO standard date representation is this:
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.4 Time Display Format </h4>
+<h4 class="subsubsection"> 26.5.8.4 Time Display Format </h4>
 
 <p>  The calendar and diary by default display times of day in the
 conventional American style with the hours from 1 through 12, minutes,
@@ -2277,12 +2292,12 @@ variable is a list of expressions that can involve the variables
 numbers in string form, and <code>am-pm</code> and <code>time-zone</code>, which are
 both alphabetic strings.  The default value of
 <code>calendar-time-display-form</code> is as follows:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (12-hours &quot;:&quot; minutes am-pm
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </pre></td></tr></table>
 <p>Here is a value that provides European style times:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (24-hours &quot;:&quot; minutes
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </pre></td></tr></table>
@@ -2307,7 +2322,7 @@ defined, and times like `<samp>21:07</samp>' if they are not.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.5 Daylight Savings Time </h4>
+<h4 class="subsubsection"> 26.5.8.5 Daylight Savings Time </h4>
 
 <p>  Emacs understands the difference between standard time and daylight
 savings time--the times given for sunrise, sunset, solstices,
@@ -2336,7 +2351,7 @@ savings time.
 daylight savings time for the holiday list  and for correcting times of
 day in the solar and lunar calculations.
 </p><p>  The values for Cambridge, Massachusetts are as follows:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (calendar-nth-named-day 1 0 4 year)
 (calendar-nth-named-day -1 0 10 year)
 </pre></td></tr></table>
@@ -2345,13 +2360,13 @@ the year specified by <code>year</code>, and the last Sunday of the tenth month
 (October) of that year.  If daylight savings time were
 changed to start on October 1, you would set
 <code>calendar-daylight-savings-starts</code> to this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (list 10 1 year)
 </pre></td></tr></table>
 <p>  For a more complex example, suppose daylight savings time begins on
 the first of Nisan on the Hebrew calendar.  You should set
 <code>calendar-daylight-savings-starts</code> to this value:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (calendar-gregorian-from-absolute
   (calendar-absolute-from-hebrew
     (list 1 1 (+ year 3760))))
@@ -2390,7 +2405,7 @@ values are 120.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.6 Customizing the Diary </h4>
+<h4 class="subsubsection"> 26.5.8.6 Customizing the Diary </h4>
 
 <p>  Ordinarily, the mode line of the diary buffer window indicates any
 holidays that fall on the date of the diary entries.  The process of
@@ -2445,7 +2460,7 @@ month&quot;, and so on, it should match regardless of the date being
 considered.
 </p><p>  The default value of <code>diary-date-forms</code> in the American style is
 this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ((month &quot;/&quot; day &quot;[^/0-9]&quot;)
  (month &quot;/&quot; day &quot;/&quot; year &quot;[^0-9]&quot;)
  (monthname &quot; *&quot; day &quot;[^,0-9]&quot;)
@@ -2467,7 +2482,7 @@ finishing the match.  Even if you use <code>backup</code>, the date pattern
 must absolutely not match more than a portion of the first word of the
 diary entry.  The default value of <code>diary-date-forms</code> in the
 European style is this list:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ((day &quot;/&quot; month &quot;[^/0-9]&quot;)
  (day &quot;/&quot; month &quot;/&quot; year &quot;[^0-9]&quot;)
  (backup day &quot; *&quot; monthname &quot;\\W+\\&lt;[^*0-9]&quot;)
@@ -2496,7 +2511,7 @@ the fourth pattern.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.7 Hebrew- and Islamic-Date Diary Entries </h4>
+<h4 class="subsubsection"> 26.5.8.7 Hebrew- and Islamic-Date Diary Entries </h4>
 
 <p>  Your diary file can have entries based on Hebrew or Islamic dates, as
 well as entries based on the world-standard Gregorian calendar.
@@ -2508,14 +2523,14 @@ you must do this:
 <a name="IDX1337"></a>
 <a name="IDX1338"></a>
 <a name="IDX1339"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 </pre></td></tr></table>
 <p>If you want Islamic-date entries, do this:
 </p><a name="IDX1340"></a>
 <a name="IDX1341"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
 </pre></td></tr></table>
@@ -2525,13 +2540,13 @@ date and `<samp>I</samp>' precedes an Islamic date.  Moreover, because the
 Hebrew and Islamic month names are not uniquely specified by the first
 three letters, you may not abbreviate them.  For example, a diary entry
 for the Hebrew date Heshvan 25 could look like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 HHeshvan 25 Happy Hebrew birthday!
 </pre></td></tr></table>
 <p>and would appear in the diary for any date that corresponds to Heshvan 25
 on the Hebrew calendar.  And here is  Islamic-date diary entry  that matches
 Dhu al-Qada 25:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 IDhu al-Qada 25 Happy Islamic birthday!
 </pre></td></tr></table>
 <p>and would appear in the diary for any date that corresponds to Dhu al-Qada 25
@@ -2608,7 +2623,7 @@ diary entry.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.8 Fancy Diary Display </h4>
+<h4 class="subsubsection"> 26.5.8.8 Fancy Diary Display </h4>
 
 <p>  Diary display works by preparing the diary buffer and then running the
 hook <code>diary-display-hook</code>.  The default value of this hook
@@ -2616,7 +2631,7 @@ hook <code>diary-display-hook</code>.  The default value of this hook
 then displays the buffer.  However, if you specify the hook as follows,
 </p><a name="IDX1348"></a>
 <a name="IDX1349"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (add-hook 'diary-display-hook 'fancy-diary-display)
 </pre></td></tr></table>
 <p>this enables fancy diary display.  It displays diary entries and
@@ -2641,7 +2656,7 @@ shown in the fancy diary buffer, set the variable
 <code>list-diary-entries-hook</code> to sort each day's diary entries by their
 time of day.  Add this line to your init file:
 </p><a name="IDX1352"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 (add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 </pre></td></tr></table>
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
@@ -2667,12 +2682,12 @@ first within each day.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.9 Included Diary Files </h4>
+<h4 class="subsubsection"> 26.5.8.9 Included Diary Files </h4>
 
 <p>  Fancy diary display also has the ability to process included diary
 files.  This permits a group of people to share a diary file for events
 that apply to all of them.  Lines in the diary file of this form:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 #include &quot;<var>filename</var>&quot;
 </pre></td></tr></table>
 <p>includes the diary entries from the file <var>filename</var> in the fancy
@@ -2684,7 +2699,7 @@ facility:
 <a name="IDX1354"></a>
 <a name="IDX1355"></a>
 <a name="IDX1356"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
 </pre></td></tr></table>
@@ -2709,7 +2724,7 @@ ordinary diary display shows the entries directly from your diary file.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.10 Sexp Entries and the Fancy Diary Display </h4>
+<h4 class="subsubsection"> 26.5.8.10 Sexp Entries and the Fancy Diary Display </h4>
 
 <p>  Sexp diary entries allow you to do more than just have complicated
 conditions under which a diary entry applies.  If you use the fancy
@@ -2718,30 +2733,30 @@ on the date itself.  For example, an anniversary diary entry can insert
 the number of years since the anniversary date into the text of the
 diary entry.  Thus the `<samp>%d</samp>' in this dairy entry:
 </p><a name="IDX1357"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">
 %%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 </pre></td></tr></table>
 <p>gets replaced by the age, so on October 31, 1990 the entry appears in
 the fancy diary buffer like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Arthur's birthday (42 years old)
 </pre></td></tr></table>
 <p>If the diary file instead contains this entry:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 %%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
 </pre></td></tr></table>
 <p>the entry in the fancy diary buffer for October 31, 1990 appears like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Arthur's 42nd birthday
 </pre></td></tr></table>
 <p>  Similarly, cyclic diary entries can interpolate the number of repetitions
 that have occurred:
 </p><a name="IDX1358"></a>
-<table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">
 %%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 </pre></td></tr></table>
 <p>looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Renew medication (5th time)
 </pre></td></tr></table>
 <p>in the fancy diary display on September 8, 1990.
@@ -2755,7 +2770,7 @@ to find the date being considered; its value is a list (<var>month</var>
 </p><p>  Suppose you get paid on the 21st of the month if it is a weekday, and
 on the Friday before if the 21st is on a weekend.  Here is how to write
 a sexp diary entry that matches those dates:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 &amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
@@ -2826,7 +2841,7 @@ calendar.
 </dl>
 
 <p>Thus including the diary entry
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 &amp;%%(diary-hebrew-date)
 </pre></td></tr></table>
 <p>causes every day's diary display to contain the equivalent date on the
@@ -2893,7 +2908,7 @@ the European style, the order of the parameters is changed to <var>day</var>,
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> 26.5.8.11 Customizing Appointment Reminders </h4>
+<h4 class="subsubsection"> 26.5.8.11 Customizing Appointment Reminders </h4>
 
 <p>  You can specify exactly how Emacs reminds you of an appointment, and
 how far in advance it begins doing so, by setting these variables:
@@ -2955,7 +2970,7 @@ is 5 seconds.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.6 Sorting Text </h2>
+<h2 class="section"> 26.6 Sorting Text </h2>
 
 <p>  XEmacs provides several commands for sorting text in a buffer.  All
 operate on the contents of the region (the text between point and the
@@ -3023,7 +3038,7 @@ is given below.
 </dl>
 
 <p>For example, if the buffer contains:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 whether the file has changed on disk since it was last visited or
@@ -3031,7 +3046,7 @@ saved.  If it has, you are asked to confirm that you want to change
 the buffer.
 </pre></td></tr></table>
 <p>then if you apply <kbd>M-x sort-lines</kbd> to the entire buffer you get:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 saved.  If it has, you are asked to confirm that you want to change
@@ -3040,7 +3055,7 @@ whether the file has changed on disk since it was last visited or
 </pre></td></tr></table>
 <p>where the upper case `O' comes before all lower case letters.  If you apply
 instead <kbd>C-u 2 M-x sort-fields</kbd> you get:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 saved.  If it has, you are asked to confirm that you want to change
 implemented, XEmacs also checks the first time you modify a buffer
 the buffer.
@@ -3084,7 +3099,7 @@ See section <a href="xemacs_12.html#SEC101">Rectangles</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.7 Running Shell Commands from XEmacs </h2>
+<h2 class="section"> 26.7 Running Shell Commands from XEmacs </h2>
 
 <p>  XEmacs has commands for passing single command lines to inferior shell
 processes; it can also run a shell interactively with input and output to
@@ -3114,7 +3129,7 @@ Full terminal emulation is available.
 </p></dd>
 </dl>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC338">26.7.1 Single Shell Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run one shell command and return.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC339">26.7.2 Interactive Inferior Shell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Permanent shell taking input via XEmacs.</td></tr>
@@ -3143,7 +3158,7 @@ Full terminal emulation is available.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.1 Single Shell Commands </h3>
+<h3 class="subsection"> 26.7.1 Single Shell Commands </h3>
 
 <p>  <kbd>M-!</kbd> (<code>shell-command</code>) reads a line of text using the
 minibuffer and creates an inferior shell to execute the line as a command.
@@ -3191,7 +3206,7 @@ the shell command.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.2 Interactive Inferior Shell </h3>
+<h3 class="subsection"> 26.7.2 Interactive Inferior Shell </h3>
 
 <p>  To run a subshell interactively with its typescript in an XEmacs
 buffer, use <kbd>M-x shell</kbd>.  This creates (or reuses) a buffer named
@@ -3273,7 +3288,7 @@ many commands are saved in your input history.  The default is 30.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.3 Shell Mode </h3>
+<h3 class="subsection"> 26.7.3 Shell Mode </h3>
 
 <p>  The shell buffer uses Shell mode, which defines several special keys
 attached to the <kbd>C-c</kbd> prefix.  They are chosen to resemble the usual
@@ -3402,7 +3417,7 @@ using <kbd>M-p</kbd> quickly and go past the desired command
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.4 Interactive Inferior Shell with Terminal Emulator </h3>
+<h3 class="subsection"> 26.7.4 Interactive Inferior Shell with Terminal Emulator </h3>
 
 <p>  To run a subshell in a terminal emulator, putting its typescript in an XEmacs
 buffer, use <kbd>M-x term</kbd>.  This creates (or reuses) a buffer named
@@ -3460,7 +3475,7 @@ This is done automatically by bash for version 1.15 and later.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.5 Term Mode </h3>
+<h3 class="subsection"> 26.7.5 Term Mode </h3>
 
 <p>  Term uses Term mode, which has two input modes:
 In line mode, Term basically acts like Shell mode.  See section <a href="#SEC340">Shell Mode</a>.
@@ -3517,7 +3532,7 @@ For example, <kbd>C-c C-x o</kbd> invokes the global binding of
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 26.7.6 Paging in the terminal emulator </h3>
+<h3 class="subsection"> 26.7.6 Paging in the terminal emulator </h3>
 
 <p>Term mode has a pager feature.  When the pager is enabled,
 term mode will pause at the end of each screenful.
@@ -3559,7 +3574,7 @@ to the Unix `<samp>more</samp>' program.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.8 Narrowing </h2>
+<h2 class="section"> 26.8 Narrowing </h2>
 
 <p>  <em>Narrowing</em> means focusing in on some portion of the buffer, making
 the rest temporarily invisible and inaccessible.  Cancelling the narrowing
@@ -3621,7 +3636,7 @@ buffer you narrowed down.  See section <a href="xemacs_7.html#SEC57">Cursor Posi
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.9 Hardcopy Output </h2>
+<h2 class="section"> 26.9 Hardcopy Output </h2>
 
 <p>  The XEmacs commands for making hardcopy derive their names from the
 Unix commands `<samp>print</samp>' and `<samp>lpr</samp>'.
@@ -3676,7 +3691,7 @@ example, the value could be <code>(&quot;-Pfoo&quot;)</code> to print on printer
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.10 Recursive Editing Levels </h2>
+<h2 class="section"> 26.10 Recursive Editing Levels </h2>
 
 <p>  A <em>recursive edit</em> is a situation in which you are using XEmacs
 commands to perform arbitrary editing while in the middle of another
@@ -3748,7 +3763,7 @@ was invoked from.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.11 Dissociated Press </h2>
+<h2 class="section"> 26.11 Dissociated Press </h2>
 
 <p>  <kbd>M-x dissociated-press</kbd> is a command for scrambling a file of text
 either word by word or character by character.  Starting from a buffer of
@@ -3813,7 +3828,7 @@ userenced and properbose.  Have fun.  Your buggestions are welcome.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.12 CONX </h2>
+<h2 class="section"> 26.12 CONX </h2>
 
 <p>Besides producing a file of scrambled text with Dissociated Press, you 
 can generate random sentences by using CONX.
@@ -3875,7 +3890,7 @@ To clear the database, use <code>M-x conx-init</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.13 Other Amusements </h2>
+<h2 class="section"> 26.13 Other Amusements </h2>
 
 <p>  If you are a little bit bored, you can try <kbd>M-x hanoi</kbd>.  If you are
 considerably bored, give it a numeric argument.  If you are very, very
@@ -3902,7 +3917,7 @@ bored, try an argument of 9.  Sit back and watch.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 26.14 Emulation </h2>
+<h2 class="section"> 26.14 Emulation </h2>
 
 <p>  XEmacs can be programmed to emulate (more or less) most other
 editors.  Standard facilities can emulate these:
@@ -3919,7 +3934,7 @@ allows almost no access to native XEmacs commands, to an
 &quot;expert&quot; mode that combines the most useful vi commands with
 the most useful XEmacs commands.
 </p><p>To start Viper, put the command
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-mode)
 </pre></td></tr></table>
 <p>in your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.

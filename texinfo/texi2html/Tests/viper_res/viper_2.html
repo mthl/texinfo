@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. Overview of Viper </h1>
+<h1 class="chapter"> 1. Overview of Viper </h1>
 
 <p>Viper is a Vi emulation on top of Emacs.  At the same time, Viper provides a
 virtually unrestricted access to Emacs facilities.  Perfect compatibility
@@ -59,7 +74,7 @@ in some cases, especially in the Vi Insert state. John Hawkins
 enables additional Emacs bindings under Viper.  These customizations can be
 included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 `<tt>http://www.eecs.umich.edu/~jshawkin/viper-sample</tt>'.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC4">1.1 Emacs Preliminaries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic concepts in Emacs.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC5">1.2 Loading Viper</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Loading and Preliminary Configuration.</td></tr>
@@ -89,7 +104,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.1 Emacs Preliminaries </h2>
+<h2 class="section"> 1.1 Emacs Preliminaries </h2>
 
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
@@ -207,11 +222,11 @@ functions directly, by typing <kbd>M-x function-name</kbd>.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.2 Loading Viper </h2>
+<h2 class="section"> 1.2 Loading Viper </h2>
 
 <p>The most common way to load it automatically is to include the following
 lines (in the given order!):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (setq viper-mode t)
 (require 'viper)
 </pre></td></tr></table>
@@ -236,7 +251,7 @@ on a buffer may be counter-productive.
 </p><p>Even if your `<tt>.emacs</tt>' file does not invoke Viper automatically,
 you can still load Viper and enter the Vi command state by typing the
 following from within Emacs:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 M-x viper-mode
 </pre></td></tr></table>
 <p>When Emacs first comes up, if you have not specified a file on the
@@ -269,7 +284,7 @@ toggles Viperization of Emacs on and off.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.3 States in Viper </h2>
+<h2 class="section"> 1.3 States in Viper </h2>
 
 <p>Viper has four states, Emacs, Vi, Insert, and Replace.
 </p><dl compact="compact">
@@ -289,7 +304,7 @@ Emacs runs on a dumb terminal or in an Xterm window).
 <dt>`<samp> Vi state
 </samp>'</dt>
 <dd><p>This is the Vi command mode.  Any of the Vi commands, such as <kbd>i, o, a</kbd>,
-<small>...</small>, will take you to Insert state.  All Vi commands may
+<small class="dots">...</small>, will take you to Insert state.  All Vi commands may
 be used in this mode.  Most Ex commands can also be used.
 For a full list of Ex commands supported by Viper, type
 <kbd>:</kbd> and then <kbd>TAB</kbd>.  To get help on any issue, including the Ex
@@ -350,7 +365,7 @@ bindings are turned off in Vi state as well.  This includes the bindings for
 key sequences that start with <kbd>C-c</kbd>, which practically means that all
 major mode bindings are unsupported.  See section <a href="viper_4.html#SEC25">Customization</a>, to find out how
 to allow Emacs keys in Insert state.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC7">1.3.1 Emacs State</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">This is the state you should learn more about when
                         you get up to speed with Viper.</td></tr>
@@ -380,7 +395,7 @@ to allow Emacs keys in Insert state.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.1 Emacs State </h3>
+<h3 class="subsection"> 1.3.1 Emacs State </h3>
 
 <p>You will be in this mode only by accident (hopefully).  This is the state
 Emacs is normally in (imagine!!).  Now leave it as soon as possible by
@@ -421,7 +436,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.2 Vi State </h3>
+<h3 class="subsection"> 1.3.2 Vi State </h3>
 
 <p>This is the Vi command mode.  When Viper is in Vi state, you will see the sign
 &lt;V&gt; in the mode line.  Most keys will work as in Vi.  The notable
@@ -495,14 +510,14 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 </p></dd>
 <dt>`<samp> Counts
 </samp>'</dt>
-<dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, <small>...</small>, etc., take counts.
+<dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, <small class="dots">...</small>, etc., take counts.
 </p></dd>
 <dt>`<samp> Regexps
 </samp>'</dt>
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `<samp>\u</samp>', `<samp>\L</samp>',
-<small>...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
+<small class="dots">...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
 Files specified to <kbd>:e</kbd> use <code>csh</code> regular expressions
 (globbing, wildcards, what have you).
 However, the function <code>viper-toggle-search-style</code>, bound to <kbd>C-c /</kbd>,
@@ -592,7 +607,7 @@ See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more info
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.3 Insert State </h3>
+<h3 class="subsection"> 1.3.3 Insert State </h3>
 
 <p>To avoid confusing the beginner (at Viper level 1 and 2), Viper makes only the
 standard Vi keys available in Insert state.  The implication is that
@@ -658,7 +673,7 @@ the Insert state.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 1.3.4 Replace State </h3>
+<h3 class="subsection"> 1.3.4 Replace State </h3>
 
 <p>This state is entered through Vi replacement commands, such as <kbd>C</kbd>,
 <kbd>cw</kbd>, etc., or by typing <kbd>R</kbd>.  In Replace state, Viper puts &lt;R&gt; in
@@ -702,7 +717,7 @@ region.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.4 The Minibuffer </h2>
+<h2 class="section"> 1.4 The Minibuffer </h2>
 
 <p>The Minibuffer is where commands are entered in.  Editing can be done
 by commands from Insert state, namely:
@@ -773,7 +788,7 @@ See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more details.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.5 Multiple Files in Viper </h2>
+<h2 class="section"> 1.5 Multiple Files in Viper </h2>
 
 <p>Viper can edit multiple files.  This means, for example that you never need
 to suffer through <code>No write since last change</code> errors.
@@ -865,7 +880,7 @@ other files. For example, use `:n3' to move to the third file in that list.
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.6 Unimplemented Features </h2>
+<h2 class="section"> 1.6 Unimplemented Features </h2>
 
 <p>Unimplemented features include:
 </p><ul>

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 19. Indentation </h1>
+<h1 class="chapter"> 19. Indentation </h1>
 
 <dl compact="compact">
 <dt><kbd> <kbd>TAB</kbd>
@@ -103,7 +118,7 @@ knows about many aspects of C syntax.
 <p>  In Text mode, <kbd>TAB</kbd> runs the command <code>tab-to-tab-stop</code>, which
 indents to the next tab stop column.  You can set the tab stops with
 <kbd>M-x edit-tab-stops</kbd>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC193">19.1 Indentation Commands and Techniques</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various commands and techniques for indentation.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC194">19.2 Tab Stops</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">You can set arbitrary &quot;tab stops&quot; and then
@@ -130,7 +145,7 @@ indents to the next tab stop column.  You can set the tab stops with
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.1 Indentation Commands and Techniques </h2>
+<h2 class="section"> 19.1 Indentation Commands and Techniques </h2>
 
 <p>  If you just want to insert a tab character in the buffer, you can type
 <kbd>C-q <kbd>TAB</kbd></kbd>.
@@ -205,7 +220,7 @@ mode.  See section <a href="xemacs_23.html#SEC196">Commands for Human Languages<
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.2 Tab Stops </h2>
+<h2 class="section"> 19.2 Tab Stops </h2>
 
 <p>  For typing in tables, you can use Text mode's definition of <kbd>TAB</kbd>,
 <code>tab-to-tab-stop</code>.  This command inserts indentation before point,
@@ -231,7 +246,7 @@ affects all.  If you make <code>tab-stop-list</code> local in one
 buffer <code>edit-tab-stops</code> in that buffer edits only the local
 settings.
 </p><p>  Below is the text representing ordinary tab stops every eight columns:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         :       :       :       :       :       :
 0         1         2         3         4
 0123456789012345678901234567890123456789012345678
@@ -261,7 +276,7 @@ for more information on that.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 19.3 Tabs vs. Spaces </h2>
+<h2 class="section"> 19.3 Tabs vs. Spaces </h2>
 
 <p>  Emacs normally uses both tabs and spaces to indent lines.  If you prefer,
 all indentation can be made from spaces only.  To request this, set
