@@ -2,6 +2,8 @@
 
 	* configure.ac: pretest version 4.5.90.
 
+	* Makefile.am (EXTRA_DIST): add onceonly.m4.
+
 	* makeinfo/makeinfo.c (main): new option --css-include.
 	(usage): add to --help message.
 	* makeinfo/makeinfo.h (css_include): new global.
