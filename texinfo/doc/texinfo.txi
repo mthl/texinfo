@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
+@c $Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7557,36 +7557,32 @@ This is a foo.
 @cindex Formatting examples
 @findex example
 
-The @code{@@example} command is used to indicate an example that is
-not part of the running text, such as computer input or output.
+The @code{@@example} environment is used to indicate an example that
+is not part of the running text, such as computer input or output.
+Write an @code{@@example} command at the beginning of a line by
+itself.  Mark the end of the example with an @code{@@end example}
+command, also written at the beginning of a line by itself.
 
-@example
-@group
-This is an example of text written between an
-@code{@@example} command
-and an @code{@@end example} command.
-The text is indented but not filled.
-@end group
+An @code{@@example} environment has the following characteristics:
 
-@group
-In the printed manual, the text is typeset in a
-fixed-width font, and extra spaces and blank lines are
-significant.  In the Info file, an analogous result is
-obtained by indenting each line with five spaces.
-@end group
-@end example
+@itemize
+@item Each line in the input file is a line in the output; that is,
+the source text is not filled as it normally is.
+@item Extra spaces and blank lines are significant.
+@item The output is indented.
+@item The output uses a fixed-width font (for formats where this is
+possible and meaningful).
+@item Texinfo commands @emph{are} expanded; if you want the input to
+be the output verbatim, use the @code{@@verbatim} environment instead
+(@pxref{verbatim,,@code{@@verbatim}}).
+@end itemize
 
-Write an @code{@@example} command at the beginning of a line by itself.
-Mark the end of the example
-with an @code{@@end example} command, also written at the beginning of a
-line by itself.@refill
-
-@need 700
 For example,
 
 @example
 @@example
-mv foo bar
+cp foo @@var@{dest1@}; \
+ cp foo @@var@{dest2@}
 @@end example
 @end example
 
@@ -7594,37 +7590,34 @@ mv foo bar
 produces
 
 @example
-mv foo bar
+cp foo @var{dest1}; \
+ cp foo @var{dest2}
 @end example
 
-The lines containing @code{@@example} and @code{@@end example}
-will disappear from the output.
-To make the output look good,
-you should put a blank line before the
-@code{@@example} and another blank line after the @code{@@end example}.
-Note that blank lines inside the beginning
-@code{@@example} and the ending @code{@@end example} will appear in
-the output.@refill
+The lines containing @code{@@example} and @code{@@end example} will
+disappear from the output.  To make the output look good, you should
+put a blank line before the @code{@@example} and another blank line
+after the @code{@@end example}.  Blank lines inside the beginning
+@code{@@example} and the ending @code{@@end example}, on the other
+hand, do appear in the output.
 
 @quotation
-@strong{Caution:} Do not use tabs in the lines of an example or anywhere
-else in Texinfo (except in verbatim environments)!  The @TeX{}
-implementation of Texinfo treats tabs as single spaces, and that is not
-what they look like.  (If necessary, in Emacs, you can use @kbd{M-x
-untabify} to convert tabs in a region to multiple spaces.)@refill
+@strong{Caution:} Do not use tabs in the lines of an example!  (Or
+anywhere else in Texinfo, except in verbatim environments.)  @TeX{}
+treats tabs as single spaces, and that is not what they look like.  In
+Emacs, you can use @kbd{M-x untabify} to convert tabs in a region to
+multiple spaces.
 @end quotation
 
 Examples are often, logically speaking, ``in the middle'' of a
-paragraph, and the text that continues after an example should not be
-indented.  The @code{@@noindent} command prevents a piece of text from
-being indented as if it were a new paragraph.
-@ifinfo
-(@xref{noindent}.)
-@end ifinfo
+paragraph, and the text that continues afterwards should not be
+indented, as in the example above.  The @code{@@noindent} command
+prevents a piece of text from being indented as if it were a new
+paragraph (@pxref{noindent,,@code{@@noindent}}.
 
-(The @code{@@code} command is used for examples of code that are
-embedded within sentences, not set off from preceding and following
-text.  @xref{code, , @code{@@code}}.)
+If you want to embed code fragments within sentences, instead of
+displaying them, use the @code{@@code} command or its relatives
+(@pxref{code,,@code{@@code}}).
 
 
 @node verbatim
@@ -16784,7 +16777,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
+$Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16849,7 +16842,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.21 2002-12-14 15:21:20 karl Exp $
+@comment $Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
