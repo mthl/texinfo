@@ -1,3 +1,9 @@
+2003-11-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (@turnoffactive): include @unsepspaces, so
+	spaces in anchor names don't expand in the .aux file.  From
+	Stepan.
+
 2003-11-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Abstract Objects): class names are no longer
