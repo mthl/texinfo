@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.20 2003-11-21 15:25:28 dirt Exp $
+   $Id: sectioning.c,v 1.21 2003-11-23 10:53:34 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -243,6 +243,29 @@ what_section (text, secname)
   return -1;
 }
 
+/* Returns current top level division (ie. chapter, unnumbered) number.
+   - For chapters, returns the number.
+   - For unnumbered sections, returns empty string.
+   - For appendices, returns A, B, etc. */
+char *
+current_chapter_number ()
+{
+  if (enum_marker == UNNUMBERED_MAGIC)
+    return xstrdup ("");
+  else if (enum_marker == APPENDIX_MAGIC)
+    {
+      char s[1];
+      sprintf (s, "%c", numbers[0] + 64);
+      return xstrdup (s);
+    }
+  else
+    {
+      char s[5];
+      sprintf (s, "%d", numbers[0]);
+      return xstrdup (s);
+    }
+}
+
 /* insert_and_underscore, sectioning_underscore and sectioning_html call this.  */
 
 static char *
@@ -256,9 +279,6 @@ handle_enum_increment (level, index)
        printed for their @unnumbered* children.  */
   int i;
 
-  if (!number_sections && !docbook)
-    return xstrdup ("");
-
   /* First constraint above.  */
   if (enum_marker == UNNUMBERED_MAGIC && level == 0)
     return xstrdup ("");
@@ -269,7 +289,8 @@ handle_enum_increment (level, index)
 
   /* Second constraint.  */
   numbers[level]++;
-  if (section_alist[index].num == ENUM_SECT_NO || enum_marker == UNNUMBERED_MAGIC)
+  if (section_alist[index].num == ENUM_SECT_NO || enum_marker == UNNUMBERED_MAGIC
+      || !number_sections)
     return xstrdup ("");
   else
     return xstrdup (get_sectioning_number (level, section_alist[index].num));

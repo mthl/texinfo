@@ -1,3 +1,22 @@
+2003-11-23  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/insertion.c (is_in_insertion_of_type): return the level
+	where the insertion is found.
+
+	* makeinfo/makeinfo.c (search_forward_until_pos): new function that
+	sets search_forward boundary.
+	(text_expansion): also reset docbook.
+
+	* makeinfo/sectioning.h:
+	* makeinfo/sectioning.c (current_chapter_number): new function that
+	returns top level chapter numbers.
+	(handle_enum_increment): always do the incrementation. but return
+	strings conditionally.
+
+	* makeinfo/xml.c: changed screen element's contained_in_para to 0 for
+	Docbook. @lisp/@smalllisp create programlisting.
+	(xml_insert_quotation): reimplemented quotation_stack handling.
+
 2003-11-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Conventions): finally, get rid of @vskip
@@ -125,7 +144,7 @@
 
 	* makeinfo/makeinfo.c (cm_xref): removed the warning about
 	@xrefs to @unnumbered sections, as there are many situations where
-	there is now way to fix them.
+	there is no way to fix them.
 
 	* makeinfo/insertion.c: removed lingering titlepage_cmd_present
 	declaration.

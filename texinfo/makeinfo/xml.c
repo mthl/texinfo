@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.38 2003-11-21 17:10:17 dirt Exp $
+   $Id: xml.c,v 1.39 2003-11-23 10:53:34 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -296,10 +296,10 @@ element docbook_element_list [] = {
   { "",                    1, 0, 0 }, /* CENTER */
   { "",                    0, 0, 0 }, /* DIRCATEGORY */
   { "blockquote",          1, 0, 0 }, /* QUOTATION */
-  { "screen",              0, 1, 0 },
-  { "screen",              0, 1, 0 }, /* SMALLEXAMPLE */
-  { "screen",              0, 1, 0 }, /* LISP */
-  { "screen",              0, 1, 0 }, /* SMALLLISP */
+  { "screen",              0, 0, 0 },
+  { "screen",              0, 0, 0 }, /* SMALLEXAMPLE */
+  { "programlisting",      0, 0, 0 }, /* LISP */
+  { "programlisting",      0, 0, 0 }, /* SMALLLISP */
   { "",                    1, 0, 0 }, /* CARTOUCHE */
   { "",                    1, 0, 0 }, /* COPYING */
   { "screen",              0, 1, 0 }, /* FORMAT */
@@ -1184,8 +1184,13 @@ xml_insert_footnote (note)
 /* We need to keep the quotation stack ourself, because insertion_stack
    loses item_function when we are closing the block, so we don't know
    what to close then.  */
-static char *quotation_stack[] = { NULL };
-static int quotation_level = 0;
+typedef struct quotation_elt
+{
+  struct quotation_elt *next;
+  char *type;
+} QUOTATION_ELT;
+
+static QUOTATION_ELT *quotation_stack = NULL;
 
 void
 xml_insert_quotation (type, arg)
@@ -1195,9 +1200,14 @@ xml_insert_quotation (type, arg)
   int quotation_started = 0;
 
   if (arg == START)
-    quotation_stack[quotation_level] = xstrdup(type);
+    {
+      QUOTATION_ELT *new = xmalloc (sizeof (QUOTATION_ELT));
+      new->type = xstrdup (type);
+      new->next = quotation_stack;
+      quotation_stack = new;
+    }
   else
-    type = quotation_stack[quotation_level-1];
+    type = quotation_stack->type;
 
   /* Make use of special quotation styles of Docbook if we can.  */
   if (docbook && strlen(type))
@@ -1227,13 +1237,15 @@ xml_insert_quotation (type, arg)
         execute_string ("@b{%s:} ", type);
     }
 
-  if (arg == START)
-    quotation_level ++;
-  else
-    free (quotation_stack[--quotation_level]);
-
-  if (quotation_level < 0)
-    printf ("*** quotation stack underflow (%d) ***\n", quotation_level);
+  if (arg == END)
+    {
+      QUOTATION_ELT *temp = quotation_stack;
+      if (temp == NULL)
+        return;
+      quotation_stack = quotation_stack->next;
+      free(temp->type);
+      free(temp);
+    }
 }
 
 /*

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.45 2003-11-21 18:34:52 dirt Exp $
+   $Id: insertion.c,v 1.46 2003-11-23 10:53:34 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -256,16 +256,21 @@ find_type_from_name (name)
    insertion type. */
 int
 is_in_insertion_of_type (type)
-  int type;
+    int type;
 {
   INSERTION_ELT *temp = insertion_stack;
+  int i = 1;
 
   if (!insertion_level)
     return 0;
 
-  while (temp = temp->next)
-    if (temp->insertion == type)
-      return 1;
+  while (temp)
+    {
+      if (temp->insertion == type)
+        return i;
+      temp = temp->next;
+      i++;
+    }
 
   return 0;
 }
@@ -1626,7 +1631,7 @@ cm_titlepage_cmds ()
 
   get_rest_of_line (1, &rest);
 
-  if  (!is_in_insertion_of_type (titlepage))
+  if (!is_in_insertion_of_type (titlepage))
     line_error (_("%c%s not meaningful outside `%ctitlepage' environment"),
         COMMAND_PREFIX, command, COMMAND_PREFIX);
 

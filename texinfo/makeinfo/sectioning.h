@@ -1,5 +1,5 @@
 /* sectioning.h -- all related stuff @chapter, @section... @contents
-   $Id: sectioning.h,v 1.2 2003-07-25 00:01:56 karl Exp $
+   $Id: sectioning.h,v 1.3 2003-11-23 10:53:34 dirt Exp $
 
    Copyright (C) 1999, 2003 Free Software Foundation, Inc.
 
@@ -40,6 +40,7 @@ extern int set_top_section_level ();
 
 extern void sectioning_html ();
 extern int what_section ();
+extern char *current_chapter_number ();
 
 /* The argument of @settitle, used for HTML. */
 extern char *title;
