@@ -1,5 +1,14 @@
 2001-09-18  Derek Price  <dprice@collab.net>
 
+	* doc/Makefile.am (texi2html_TEXINFOS): Remove version.texi - AM
+	includes it automatically.
+	(texi2html.html): Include version.texi as a dependency.
+	(texi2html.pdf): Use pdftex to create instead of ps2pdf - hyperlinks!
+
+	* doc/Makefile.in: Regenerated.
+
+2001-09-18  Derek Price  <dprice@collab.net>
+
 	* configure.in: Bump package version number.
 	* Makefile.am (AUTOMAKE_OPTIONS): Bump required Automake version to
 	1.5.
