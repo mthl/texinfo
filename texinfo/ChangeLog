@@ -1,5 +1,10 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/index.c (cm_printindex): also catch Appendix and A.1 kind
+	of numbers with --no-headers Info output.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.c (cm_example):
 	* makeinfo/xml.c (xml_insert_docbook_image, xml_begin_multitable):
 	moved common floatenv handling to ...
