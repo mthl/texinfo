@@ -1,3 +1,8 @@
+2004-07-15  Werner Lemberg  <wl@gnu.org>
+
+	* doc/texinfo.tex (\TeX): Adjust \spacefactor to make it act like a
+		lowercase letter, not like a period.
+
 2004-07-12  Karl Berry  <karl@gnu.org>
 
 	* texinfo/texinfo.txi (Useful Highlighting): Include
