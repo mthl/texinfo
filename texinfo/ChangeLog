@@ -1,3 +1,16 @@
+2004-07-11  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/node.c (split_file): fwrite Local Variables trailer so
+		it actually gets into the output of the top-level info
+		file; don't just insert_string.  
+	Report from: Werner LEMBERG, 11 Jul 2004 08:58:13 +0200.
+
+2004-07-10  Karl Berry  <karl@gnu.org>
+
+        * util/texi2pdf: new script.
+        * util/Makefile.am: install it.
+        * doc/texinfo.txi: document it.
+
 2004-07-05  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xref.c (cm_email, cm_uref, et al.): 

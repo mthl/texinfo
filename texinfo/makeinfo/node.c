@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.19 2004-04-11 17:56:47 karl Exp $
+   $Id: node.c,v 1.20 2004-07-11 13:24:59 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1886,7 +1886,7 @@ split_file (char *filename, int size)
       /* preserve local variables in info output.  */
       if (trailer)
         {
-          insert_string (trailer);
+          fwrite (trailer, 1, trailer_len, output_stream);
           free (trailer);
         }
 
