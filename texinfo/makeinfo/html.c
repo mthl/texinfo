@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.22 2003-11-06 05:13:23 dirt Exp $
+   $Id: html.c,v 1.23 2003-11-09 16:05:56 dirt Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -53,8 +53,8 @@ html_output_head ()
   /* When splitting, add current node's name to title if it's available and not
      Top.  */
   if (splitting && current_node && !STREQ (current_node, "Top"))
-    add_word_args ("<title>%s - %s</title>\n", html_title,
-        escape_string (xstrdup (current_node)));
+    add_word_args ("<title>%s - %s</title>\n",
+        escape_string (xstrdup (current_node)), html_title);
   else
     add_word_args ("<title>%s</title>\n",  html_title);
 

@@ -1,5 +1,9 @@
 2003-11-09  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/html.c (html_output_head): output node name in title first.
+
+2003-11-09  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/xml.c:
 	* makeinfo/xml.h: new Docbook elements for quotation: tip, note,
 	important, warning, caution.
