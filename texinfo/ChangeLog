@@ -1,3 +1,10 @@
+2003-12-01  Karl Berry  <karl@gnu.org>
+
+	From: Aharon Robbins <arnold@skeeve.com>, 1 Dec 2003 17:43:12 +0200:
+	* makeinfo/float.h (current_float_type): declare.
+	* makeinfo/cmds.c (cm_colon): new fn.
+	(command_table): use it for @:.
+
 2003-11-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (@turnoffactive): include @unsepspaces, so

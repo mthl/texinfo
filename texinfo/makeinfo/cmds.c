@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.42 2003-11-28 05:04:15 dirt Exp $
+   $Id: cmds.c,v 1.43 2003-12-01 17:35:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -80,6 +80,7 @@ void cm_value (), cm_ifeq ();
 
 /* Options. */
 static void 
+  cm_colon (),
   cm_exampleindent (),
   cm_firstparagraphindent (),
   cm_paragraphindent ();
@@ -103,7 +104,7 @@ COMMAND command_table[] = {
   { "-", cm_no_op, NO_BRACE_ARGS },
   { ".", insert_self, NO_BRACE_ARGS },
   { "/", cm_no_op, NO_BRACE_ARGS },
-  { ":", cm_no_op, NO_BRACE_ARGS },
+  { ":", cm_colon, NO_BRACE_ARGS },
   { "=", cm_accent, MAYBE_BRACE_ARGS },
   { "?", insert_self, NO_BRACE_ARGS },
   { "@", insert_self, NO_BRACE_ARGS },
@@ -1590,4 +1591,36 @@ cm_firstparagraphindent ()
     line_error (_("Bad argument to %c%s"), COMMAND_PREFIX, command);
 
   free (arg);
+}
+
+/* For DocBook, produce &period; for `.@:'. This gives the
+ * processing software a fighting chance to treat it specially
+ * by not adding extra space.
+ *
+ * Do this also for ?, !, and :.
+ */
+
+static void
+cm_colon ()
+{
+  if (docbook) {
+    if (strchr (".?!:", input_text[input_text_offset-3]) != NULL) {
+      output_paragraph_offset--;   /* erase literal character that's there */
+      switch (input_text[input_text_offset-3]) {
+      case '.':
+        xml_insert_entity ("period");
+	break;
+      case '?':
+        xml_insert_entity ("quest");
+	break;
+      case '!':
+        xml_insert_entity ("excl");
+	break;
+      case ':':
+        xml_insert_entity ("colon");
+	break;
+      }
+    }
+  }
+  /* @: is a no-op for the other output formats. */
 }
