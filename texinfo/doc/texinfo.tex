@@ -4992,6 +4992,95 @@ width0pt\relax} \fi
   \fi
 }
 
+% Without continued lines we'd just have:
+%   \def\parsedefunline#1{\parseargusing\activeparens{\parsedefunlineX#1}}
+%   \def\parsedefunlineX#1#2{\printdefunline #1#2\DefunTerm}
+% but with continuations, things are much more complicated.
+%
+\def\parsedefunline#1{%
+  \def\defunlinemacro{#1}% store \deffnheader (initially)
+  \parsedefunlineX
+}
+\def\parsedefunlineX{
+  \parseargusing\activeparens\parsedefunlineY
+}
+\def\parsedefunlineY#1{%
+  % We have to prepend a token to prevent brace stripping;
+  % \defunlinemacro just comes handy.
+  \defunchkspace\defunlinemacro#1\DefunMid\ \DefunMid\DefunTerm
+}
+\def\defunchkspace#1\ \DefunMid#2\DefunTerm{%
+  \def\temp{#2}%
+  \ifx\temp\empty
+    % The line doesn't end with `@ '; in this case, #1 ends with \DefunMid.
+    \let\next\defunchktab
+  \else
+    % `@ ' was found and stripped.
+    \let\next\defunloop
+  \fi
+  \next#1\^^I\DefunMid\DefunTerm
+}
+\def\defunchktab#1\^^I\DefunMid#2\DefunTerm{%
+  \def\temp{#2}%
+  \ifx\temp\empty
+    % The line doesn't end with `@TAB', either.
+    \let\next\defunchkfinish
+  \else
+    % `@TAB' was found and stripped.
+    \let\next\defunloop
+  \fi
+  \next#1\^^I\DefunMid\DefunTerm
+}
+\def\defunloop#1\^^I\DefunMid\DefunTerm{%
+  % Expand the \defunlinemacro token at the beginning of #1.
+  \expandafter\def\expandafter\defunlinemacro
+    \expandafter{#1 }%
+  \parsedefunlineX
+}
+\def\defunchkfinish#1\DefunMid\^^I%\DefunMid\DefunTerm -- stays here
+{%
+  % #1 starts with \defunlinemacro, which is expanded and its expansion
+  % starts with eg. \deffnheader.
+  \expandafter\replaceeols #1\^^M%\DefunMid\DefunTerm -- stays here
+}
+
+% Each occurence of `\^^M' or `<space>\^^M' is replaced by a single space.
+%
+% The parameters start with \deffnheader token, so trere is no risk braces
+% could be stripped at #1.  And we have a \DefunMid token just before
+% \DefunTerm, so we cannot loose braces at #2 either.  Uff!
+%
+\def\replaceeols#1\^^M#2\DefunTerm{%
+  \stripDefunMid #2%
+  \ifx\temp\empty
+    % This \^^M is the terminating one.
+    \printdefunline #1\DefunTerm
+  \else
+    \replaceeolsX#1\^^M \^^M#2\DefunTerm
+  \fi
+}
+\def\replaceeolsX#1 \^^M{\replaceeolsY#1\^^M}
+\def\replaceeolsY#1\^^M#2\^^M{\replaceeols#1 }
+\def\stripDefunMid#1\DefunMid{\def\temp{#1}}
+
+% \printdefunline \deffnheader text\DefunTerm
+%
+\def\printdefunline#1\DefunTerm{%
+  \begingroup
+    % call \deffnheader:
+    #1 \endheader
+    % common ending:
+    \interlinepenalty = 10000
+    \advance\rightskip by 0pt plus 1fil
+    \endgraf
+    \nobreak\vskip -\parskip
+    \penalty 10002  % signal to \startdefun and \dodefunx
+    % Some of the @defun-type tags do not enable magic parentheses,
+    % rendering the following check redundat.  But we don't optimize.
+    \checkparencounts
+  \endgroup
+}
+
 \def\Edefun{\endgraf\endgroup\medbreak}
 
 % \makedefun{deffn} creates \deffn, \deffnx and \Edeffn;
@@ -5012,28 +5101,10 @@ width0pt\relax} \fi
 \def\domakedefun#1#2#3{%
   \def#1{%
     \startdefun#1%
-    \parseargusing\activeparens{\printdefunline#3}%
+    \parsedefunline#3%
   }%
   % A tricky way to recycle the code defined above:
   \def#2{\expandafter\dodefunx#1}%
-}
-
-% \printdefunline \deffnheader {text}
-%
-\def\printdefunline#1#2{%
-  \begingroup
-    % call \deffnheader:
-    #1#2 \endheader
-    % common ending:
-    \interlinepenalty = 10000
-    \advance\rightskip by 0pt plus 1fil
-    \endgraf
-    \nobreak\vskip -\parskip
-    \penalty 10002  % signal to \startdefun and \dodefunx
-    % Some of the @defun-type tags do not enable magic parentheses,
-    % rendering the following check redundat.  But we don't optimize.
-    \checkparencounts
-  \endgroup
 }
 
 % Untyped functions:
