@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.43 2003-11-17 10:10:00 dirt Exp $
+   $Id: makeinfo.c,v 1.44 2003-11-17 11:41:12 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -4252,8 +4252,12 @@ execute_string (format, va_alist)
   free (input_filename);
 
   if (xml)
-    while (xml_current_stack_index () > xml_element_stack_start)
-      xml_end_current_element ();
+    {
+      while (xml_current_stack_index () > xml_element_stack_start)
+        xml_end_current_element ();
+      if (xml_in_copying)
+        xml_end_para ();
+    }
 
   popfile ();
   executing_string--;

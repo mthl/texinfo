@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.31 2003-11-17 10:10:00 dirt Exp $
+   $Id: xml.c,v 1.32 2003-11-17 11:41:12 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -435,9 +435,12 @@ replace_element replace_elements [] = {
   { VAR, B, EMPH},
   { B, CODE, ENVAR},
   { CODE, I, EMPH},
+  { SAMP, VAR, -1 },
   { FORMAT, BOOKINFO, ABSTRACT },
   { QUOTATION, ABSTRACT, -1},
   { LINEANNOTATION, LINEANNOTATION, -1 },
+  { LEGALNOTICE, ABSTRACT, -1 },
+  { QUOTATION, QUOTATION, -1 },
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
