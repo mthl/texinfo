@@ -1,6 +1,6 @@
 2002-11-26    <karl@gnu.org>
 
-	* doc/Makefile.am (texinfo, info-stnd.texi): depend on version
+	* doc/Makefile.am (texinfo): depend on version
 	files.  Report from: Kevin Ryde
 	<user42@zip.com.au>, 27 Nov 2002 07:52:57 +1000.
 
