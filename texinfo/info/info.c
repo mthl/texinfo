@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.4 2003-02-11 16:39:06 karl Exp $
+   $Id: info.c,v 1.5 2003-05-13 16:21:30 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -158,7 +158,7 @@ main (argc, argv)
   textdomain (PACKAGE);
 
   init_messages ();
-  
+
   while (1)
     {
       int option_character;
@@ -476,7 +476,7 @@ For more information about these matters, see the files named COPYING.\n"),
           begin_info_session (initial_node);
       }
 
-    xexit (0);
+    return 0;
   }
 }
 
@@ -563,7 +563,7 @@ info_short_help ()
   static const char speech_friendly_string[] = "";
 #endif
 
-    
+
   printf (_("\
 Usage: %s [OPTION]... [MENU-ITEM...]\n\
 \n\
