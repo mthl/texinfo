@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.129 2005-02-12 17:39:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.130 2005-02-13 00:59:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -7367,14 +7367,15 @@ sub begin_deff_item($$;$)
     my $stack = shift;
     my $state = shift;
     my $no_paragraph = shift;
+    # FIXME why?
     return if ($state->{'cmd_line'});
     #print STDERR "DEF push deff_item for $state->{'deff'}\n";
-    push @$stack, { 'format' => 'deff_item', 'text' => '' };
+    push @$stack, { 'format' => 'deff_item', 'text' => '', 'deff_line' => $state->{'deff_line'}};
     # there is no paragraph when a new deff just follows the deff we are
     # opening
     begin_paragraph($stack, $state) if ($state->{'preformatted'} and !$no_paragraph);
-    $state->{'deff'} = undef;
-    delete($state->{'deff'});
+    delete($state->{'deff_line'});
+    #delete($state->{'deff'});
     #dump_stack(undef, $stack, $state);
 }
 
@@ -8074,7 +8075,7 @@ sub do_def_line($$$$$)
     my $state = shift;
     my $line_nr = shift;
 
-    $state->{'deff'}->{'arguments'} = $arguments;
+    $state->{'deff_line'}->{'arguments'} = $arguments;
     return '';
 }
 
@@ -9620,10 +9621,10 @@ sub scan_line($$$$;$)
              add_prev($text, $stack, $_);
              return;
         }
-        else
+        elsif (!$state->{'raw'})
         {
             my $next_tag = next_tag($_);
-            if ($state->{'deff'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
+            if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
             {
                  begin_deff_item($stack, $state);
             }
@@ -9635,7 +9636,7 @@ sub scan_line($$$$;$)
         if (/^\s*$/)
         {
             #ignore the line if it just follows a deff
-            return if ($state->{'deff'});
+            return if ($state->{'deff_line'});
                     
             if ($state->{'paragraph'})
             { # An empty line ends a paragraph
@@ -9653,7 +9654,7 @@ sub scan_line($$$$;$)
         {
             #print STDERR "a line not empty and not in no paragraph format\n";
             my $next_tag = next_tag($_);
-            if ($state->{'deff'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
+            if ($state->{'deff_line'} and !defined($Texi2HTML::Config::def_map{$next_tag}))
             { # finish opening the deff, as this is not a deff tag, it can't be 
               # a deff macro with x
                 begin_deff_item($stack, $state);
@@ -10318,43 +10319,51 @@ sub scan_line($$$$;$)
                 # A deff like macro
                 if (defined($Texi2HTML::Config::def_map{$macro}))
                 {
-                    if ($state->{'deff'} and ("$state->{'deff'}->{'command'}x" eq $macro))
+                    my $top_format = top_format($stack);
+                    if (defined($top_format) and ("$top_format->{'format'}x" eq $macro))
+		    #if ($state->{'deff'} and ("$state->{'deff'}->{'command'}x" eq $macro))
                     {
                          $macro =~ s/x$//o;
+                         if (!$state->{'deff_line'})
+                         {# DEFx macro within a DEF paragraph
+                              close_stack($text, $stack, $state, $line_nr, undef, 'deff_item');
+                              my $format_ref = pop @$stack;
+                              add_prev($text, $stack, &$Texi2HTML::Config::def_item($format_ref->{'text'}));
+			 }
                          #print STDERR "DEFx $macro\n";
                     }
                     else
                     {
                          # The previous @def command isn't the same @def
                          # command. We begin the item for the previous @def
-                         # command and immediatly open the new one.
-                         begin_deff_item($stack, $state, 1) if ($state->{'deff'});
+                         # command and immediately open the new one.
+                         begin_deff_item($stack, $state, 1) if ($state->{'deff_line'});
                          $macro =~ s/x$//o;
                          #print STDERR "DEF begin $macro\n";
                          push @$stack, { 'format' => $macro, 'text' => '' };
                     }
                     #print STDERR "BEGIN_DEFF $macro\n";
                     #dump_stack ($text, $stack, $state);
-                    $state->{'deff'}->{'command'} = $macro;
+                    $state->{'deff_line'}->{'command'} = $macro;
                     my ($style, $category, $name, $type, $class, $arguments);
                     #($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_, $line_nr); 
                     ($style, $category, $name, $type, $class, $_) = parse_def($macro, $_, $line_nr); 
                     #print STDERR "AFTER parse_def $_";
                     # duplicate_state ?
                     #$category = substitute_line($category) if (defined($category));
-                    $state->{'deff'}->{'style'} = $style;
-                    $state->{'deff'}->{'category'} = substitute_line($category) if (defined($category));
-                    $state->{'deff'}->{'category'} = '' if (!defined($category));
+                    $state->{'deff_line'}->{'style'} = $style;
+                    $state->{'deff_line'}->{'category'} = substitute_line($category) if (defined($category));
+                    $state->{'deff_line'}->{'category'} = '' if (!defined($category));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     #$name = substitute_line($name) if (defined($name));
-                    $state->{'deff'}->{'name'} = substitute_line($name) if (defined($name));
-                    $state->{'deff'}->{'name'} = '' if (!defined($name));
+                    $state->{'deff_line'}->{'name'} = substitute_line($name) if (defined($name));
+                    $state->{'deff_line'}->{'name'} = '' if (!defined($name));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     #$type = substitute_line($type) if (defined($type));
-                    $state->{'deff'}->{'type'} = substitute_line($type) if (defined($type));
+                    $state->{'deff_line'}->{'type'} = substitute_line($type) if (defined($type));
                     # FIXME -- --- ''... should be protected (not by makeinfo)
                     #$class = substitute_line($class) if (defined($class));
-                    $state->{'deff'}->{'class'} = substitute_line($class) if (defined($class));
+                    $state->{'deff_line'}->{'class'} = substitute_line($class) if (defined($class));
                     # FIXME -- --- ''... should be protected 
                     open_cmd_line($stack, $state, ['keep'], \&do_def_line);
                     next;
@@ -10519,7 +10528,7 @@ sub scan_line($$$$;$)
             my $brace = $2;
             if (!defined($brace))#in a command line
             {
-                if (/^$/ and $state->{'end_of_line_protected'} and $state->{'deff'})
+                if (/^$/ and $state->{'end_of_line_protected'} and $state->{'deff_line'})
                 {
                      return;
                 }
@@ -10603,17 +10612,17 @@ sub scan_line($$$$;$)
                     add_prev($text, $stack, $result);
                     if ($state->{'cmd_line'} and ($style->{'style'} eq 'cmd_line'))
                     {
-                        if ($state->{'deff'})
+                        if ($state->{'deff_line'})
                         {
 #print STDERR "DO DEFF $state->{'deff'}->{'command'} $state->{'deff'}->{'arguments'}\n";
-                             my $def_style = $state->{'deff'}->{'style'};
-                             my $category = $state->{'deff'}->{'category'};
-                             my $class = $state->{'deff'}->{'class'};
-                             my $type = $state->{'deff'}->{'type'};
-                             my $name = $state->{'deff'}->{'name'};
+                             my $def_style = $state->{'deff_line'}->{'style'};
+                             my $category = $state->{'deff_line'}->{'category'};
+                             my $class = $state->{'deff_line'}->{'class'};
+                             my $type = $state->{'deff_line'}->{'type'};
+                             my $name = $state->{'deff_line'}->{'name'};
                              #my $arguments = $state->{'deff'}->{'arguments'};
                              my $arguments; 
-                             $arguments = substitute_line($state->{'deff'}->{'arguments'}) if (defined($state->{'deff'}->{'arguments'}));
+                             $arguments = substitute_line($state->{'deff_line'}->{'arguments'}) if (defined($state->{'deff_line'}->{'arguments'}));
 
                              $category = &$Texi2HTML::Config::definition_category($category, $class, $def_style);
                              # not an error for makeinfo

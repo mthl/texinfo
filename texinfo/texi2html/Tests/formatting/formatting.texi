@@ -271,12 +271,20 @@ def--fn
 @deffnx{truc} { }
 @deffnx{truc}
 @deffnx{} {}
+@deffnx {truc} followed by a comment
+@c comment
 @deffnx truc machin bidule chose and }
 @deffnx truc machin bidule chose and } after
 @deffnx truc machin bidule chose and {
 @deffnx truc machin bidule chose and { and after
 Various deff lines
+@deffnx {truc} after a deff item
+@c comment
+text in def item for second def item
+@deffnx {truc} deffnx before end deffn
 @end deffn
+
+
 
 @defvr c--ategory d--efvr_name
 d--efvr

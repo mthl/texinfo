@@ -1,5 +1,11 @@
 2005-02-12  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: handle def command with x (like @deffnx) within
+	deff command paragraph (construct is in octave manual).
+	* Tests/*: test for deffnx within deff command paragraph.
+
+2005-02-12  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl,texi2html.init: accept first arg for def like
 	commands. 
 	handle construct like @deffn{something} (bug report found on the 
