@@ -155,18 +155,18 @@ directory.
 <table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src/
 </pre></td></tr></table>
 
-<p>where `<samp>Find File: </samp>' is the prompt.  Typing <kbd>buffer.c</kbd>
-specifies the file `<tt>/u2/emacs/src/buffer.c</tt>'.  To find files in
+<p>where <samp>`Find File: '</samp> is the prompt.  Typing <kbd>buffer.c</kbd>
+specifies the file <tt>`/u2/emacs/src/buffer.c'</tt>.  To find files in
 nearby directories, use <kbd>..</kbd>; thus, if you type
 <kbd>../lisp/simple.el</kbd>, you will get the file named
-`<tt>/u2/emacs/lisp/simple.el</tt>'.  Alternatively, you can kill with
+<tt>`/u2/emacs/lisp/simple.el'</tt>.  Alternatively, you can kill with
 <kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
 </p>
 <p>  If you don't want any of the default, you can kill it with <kbd>C-a
 C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
 Insert an absolute file name, one starting with a slash or a tilde,
 after the default directory.  For example, to specify the file
-`<tt>/etc/termcap</tt>', just insert that name, giving these minibuffer
+<tt>`/etc/termcap'</tt>, just insert that name, giving these minibuffer
 contents:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src//etc/termcap
@@ -177,8 +177,8 @@ contents:
 <a name="IDX215"></a>
 <p>XEmacs gives a special meaning to a double slash (which is not normally
 a useful thing to write): it means, &quot;ignore everything before the
-second slash in the pair.&quot;  Thus, `<samp>/u2/emacs/src/</samp>' is ignored in
-the example above, and you get the file `<tt>/etc/termcap</tt>'.
+second slash in the pair.&quot;  Thus, <samp>`/u2/emacs/src/'</samp> is ignored in
+the example above, and you get the file <tt>`/etc/termcap'</tt>.
 </p>
 <a name="IDX216"></a>
 <p>If you set <code>insert-default-directory</code> to <code>nil</code>, the default
@@ -306,7 +306,7 @@ insert-buffer <kbd>RET</kbd></kbd> (for example).
 </p>
 <p>  Case is normally significant in completion because it is significant
 in most of the names that you can complete (buffer names, file names and
-command names).  Thus, `<samp>fo</samp>' does not complete to `<samp>Foo</samp>'.  When
+command names).  Thus, <samp>`fo'</samp> does not complete to <samp>`Foo'</samp>.  When
 you are completing a name in which case does not matter, case may be
 ignored for completion's sake if specified by program.
 </p>
@@ -349,20 +349,20 @@ and hit <kbd>RET</kbd>.
 
 <p>  A concrete example may help here.  If you type <kbd>M-x au <kbd>TAB</kbd></kbd>,
 the <kbd>TAB</kbd> looks for alternatives (in this case, command names) that
-start with `<samp>au</samp>'.  There are several, including
+start with <samp>`au'</samp>.  There are several, including
 <code>auto-fill-mode</code> and <code>auto-save-mode</code>--but they are all the
-same as far as <code>auto</code>, so the `<samp>au</samp>' in the minibuffer changes
-to `<samp>auto</samp>'.
+same as far as <code>auto</code>, so the <samp>`au'</samp> in the minibuffer changes
+to <samp>`auto'</samp>.
 </p>
 <p>  If you type <kbd>TAB</kbd> again immediately, there are multiple
 possibilities for the very next character--it could be any of
-`<samp>c-</samp>'--so no more characters are added; instead, <kbd>TAB</kbd>
+<samp>`c-'</samp>--so no more characters are added; instead, <kbd>TAB</kbd>
 displays a list of all possible completions in another window.
 </p>
 <p>  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
-`<samp>auto-f</samp>'.  The only command name starting this way is
+<samp>`auto-f'</samp>.  The only command name starting this way is
 <code>auto-fill-mode</code>, so completion fills in the rest of that.  You now
-have `<samp>auto-fill-mode</samp>' in the minibuffer after typing just <kbd>au
+have <samp>`auto-fill-mode'</samp> in the minibuffer after typing just <kbd>au
 <kbd>TAB</kbd> f <kbd>TAB</kbd></kbd>.  Note that <kbd>TAB</kbd> has this effect because in
 the minibuffer it is bound to the command <code>minibuffer-complete</code>
 when completion is available.
@@ -392,23 +392,23 @@ when completion is available.
 when completion is available.
 </p>
 <dl compact="compact">
-<dt><kbd> <kbd>TAB</kbd></kbd></dt>
+<dt> <kbd><kbd>TAB</kbd></kbd></dt>
 <dd><p>Complete the text in the minibuffer as much as possible
 (<code>minibuffer-complete</code>).
 </p></dd>
-<dt><kbd> <kbd>SPC</kbd></kbd></dt>
+<dt> <kbd><kbd>SPC</kbd></kbd></dt>
 <dd><p>Complete the minibuffer text, but don't go beyond one word
 (<code>minibuffer-complete-word</code>).
 </p></dd>
-<dt><kbd> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd><kbd>RET</kbd></kbd></dt>
 <dd><p>Submit the text in the minibuffer as the argument, possibly completing
 first as described below (<code>minibuffer-complete-and-exit</code>).
 </p></dd>
-<dt><kbd> ?</kbd></dt>
+<dt> <kbd>?</kbd></dt>
 <dd><p>Print a list of all possible completions of the text in the minibuffer
 (<code>minibuffer-list-completions</code>).
 </p></dd>
-<dt><kbd> <kbd>button2</kbd></kbd></dt>
+<dt> <kbd><kbd>button2</kbd></kbd></dt>
 <dd><p>Select the highlighted text under the mouse as a minibuffer response.
 When the minibuffer is being used to prompt the user for a completion,
 any valid completions which are visible on the screen will be highlighted
@@ -421,11 +421,11 @@ highlighted completion and exit the minibuffer.
 <a name="IDX220"></a>
 <a name="IDX221"></a>
 <p>  <kbd>SPC</kbd> completes much like <kbd>TAB</kbd>, but never goes beyond the
-next hyphen or space.  If you have `<samp>auto-f</samp>' in the minibuffer and
-type <kbd>SPC</kbd>, it finds that the completion is `<samp>auto-fill-mode</samp>',
-but it stops completing after `<samp>fill-</samp>'.  This gives
-`<samp>auto-fill-</samp>'.  Another <kbd>SPC</kbd> at this point completes all the
-way to `<samp>auto-fill-mode</samp>'.  <kbd>SPC</kbd> in the minibuffer when
+next hyphen or space.  If you have <samp>`auto-f'</samp> in the minibuffer and
+type <kbd>SPC</kbd>, it finds that the completion is <samp>`auto-fill-mode'</samp>,
+but it stops completing after <samp>`fill-'</samp>.  This gives
+<samp>`auto-fill-'</samp>.  Another <kbd>SPC</kbd> at this point completes all the
+way to <samp>`auto-fill-mode'</samp>.  <kbd>SPC</kbd> in the minibuffer when
 completion is available runs the command
 <code>minibuffer-complete-word</code>.
 </p>
@@ -435,7 +435,7 @@ window that displays a list of completions:
 <dl compact="compact">
 <dd><a name="IDX222"></a>
 </dd>
-<dt><kbd> button2up</kbd></dt>
+<dt> <kbd>button2up</kbd></dt>
 <dd><p>Clicking mouse button 2 on a completion in the list of possible
 completions chooses that completion (<code>mouse-choose-completion</code>).
 You normally use this command while point is in the minibuffer; but you
@@ -443,8 +443,8 @@ must click in the list of completions, not in the minibuffer itself.
 </p>
 <a name="IDX223"></a>
 </dd>
-<dt><kbd> <kbd>PRIOR</kbd></kbd></dt>
-<dt><kbd> M-v</kbd></dt>
+<dt> <kbd><kbd>PRIOR</kbd></kbd></dt>
+<dt> <kbd>M-v</kbd></dt>
 <dd><p>Typing <kbd>PRIOR</kbd> or <kbd>M-v</kbd>, while in the minibuffer, selects the
 window showing the completion list buffer
 (<code>switch-to-completions</code>).  This paves the way for using the
@@ -453,7 +453,7 @@ effect, but this way is more convenient.)
 </p>
 <a name="IDX224"></a>
 </dd>
-<dt><kbd> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd><kbd>RET</kbd></kbd></dt>
 <dd><p>Typing <kbd>RET</kbd> <em>in the completion list buffer</em> chooses the
 completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
@@ -461,17 +461,17 @@ the list of completions.
 </p>
 <a name="IDX225"></a>
 </dd>
-<dt><kbd> <kbd>RIGHT</kbd></kbd></dt>
-<dt><kbd> <kbd>TAB</kbd></kbd></dt>
-<dt><kbd> C-f</kbd></dt>
+<dt> <kbd><kbd>RIGHT</kbd></kbd></dt>
+<dt> <kbd><kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>C-f</kbd></dt>
 <dd><p>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
 </p>
 <a name="IDX226"></a>
 </dd>
-<dt><kbd> <kbd>LEFT</kbd></kbd></dt>
-<dt><kbd> C-b</kbd></dt>
+<dt> <kbd><kbd>LEFT</kbd></kbd></dt>
+<dt> <kbd>C-b</kbd></dt>
 <dd><p>Typing the left-arrow key <kbd>LEFT</kbd> or <kbd>C-b</kbd> <em>in the
 completion list buffer</em> moves point toward the beginning of the buffer,
 to the previous completion (<code>previous-list-mode-item</code>).
@@ -562,8 +562,8 @@ ignored.  The variable <code>completion-ignored-extensions</code> contains a
 list of strings; a file whose name ends in any of those strings is
 ignored as a possible completion.  The standard value of this variable
 has several elements including <code>&quot;.o&quot;</code>, <code>&quot;.elc&quot;</code>, <code>&quot;.dvi&quot;</code>
-and <code>&quot;~&quot;</code>.  The effect is that, for example, `<samp>foo</samp>' can
-complete to `<samp>foo.c</samp>' even though `<samp>foo.o</samp>' exists as well.
+and <code>&quot;~&quot;</code>.  The effect is that, for example, <samp>`foo'</samp> can
+complete to <samp>`foo.c'</samp> even though <samp>`foo.o'</samp> exists as well.
 However, if <em>all</em> the possible completions end in &quot;ignored&quot;
 strings, then they are not ignored.  Ignored extensions do not apply to
 lists of completions--those always mention all possible completions.
@@ -614,21 +614,21 @@ in the minibuffer.  They discard the old minibuffer contents, so you can
 think of them as moving through the history of previous arguments.
 </p>
 <dl compact="compact">
-<dt><kbd> <kbd>UP</kbd></kbd></dt>
-<dt><kbd> M-p</kbd></dt>
+<dt> <kbd><kbd>UP</kbd></kbd></dt>
+<dt> <kbd>M-p</kbd></dt>
 <dd><p>Move to the next earlier argument string saved in the minibuffer history
 (<code>previous-history-element</code>).
 </p></dd>
-<dt><kbd> <kbd>DOWN</kbd></kbd></dt>
-<dt><kbd> M-n</kbd></dt>
+<dt> <kbd><kbd>DOWN</kbd></kbd></dt>
+<dt> <kbd>M-n</kbd></dt>
 <dd><p>Move to the next later argument string saved in the minibuffer history
 (<code>next-history-element</code>).
 </p></dd>
-<dt><kbd> M-r <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-r <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Move to an earlier saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>previous-matching-history-element</code>).
 </p></dd>
-<dt><kbd> M-s <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-s <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Move to a later saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>next-matching-history-element</code>).
 </p></dd>
@@ -713,18 +713,18 @@ the command name.
 </p>
 <a name="IDX238"></a>
 <dl compact="compact">
-<dt><kbd> C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd></dt>
 <dd><p>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
 </p></dd>
-<dt><kbd> M-p</kbd></dt>
+<dt> <kbd>M-p</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to previous recorded command
 (<code>previous-history-element</code>).
 </p></dd>
-<dt><kbd> M-n</kbd></dt>
+<dt> <kbd>M-n</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to the next (more recent)
 recorded command (<code>next-history-element</code>).
 </p></dd>
-<dt><kbd> M-x list-command-history</kbd></dt>
+<dt> <kbd>M-x list-command-history</kbd></dt>
 <dd><p>Display the entire command history, showing all the commands
 <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> can repeat, most recent first.
 </p></dd>

@@ -122,19 +122,19 @@ commands.
 <p>The break commands create or allow line and paragraph breaks:
 </p>
 <dl compact="compact">
-<dt><code> @*</code></dt>
+<dt> <code>@*</code></dt>
 <dd><p>Force a line break.
 </p>
 </dd>
-<dt><code> @sp <var>n</var></code></dt>
+<dt> <code>@sp <var>n</var></code></dt>
 <dd><p>Skip <var>n</var> blank lines.
 </p>
 </dd>
-<dt><code> @-</code></dt>
+<dt> <code>@-</code></dt>
 <dd><p>Insert a discretionary hyphen.
 </p>
 </dd>
-<dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
+<dt> <code>@hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Define hyphen points in <var>hy-phen-a-ted words</var>.
 </p></dd>
 </dl>
@@ -143,7 +143,7 @@ commands.
 line:
 </p>
 <dl compact="compact">
-<dt><code> @w{<var>text</var>}</code></dt>
+<dt> <code>@w{<var>text</var>}</code></dt>
 <dd><p>Prevent <var>text</var> from being split and hyphenated across two lines.
 </p></dd>
 </dl>
@@ -152,15 +152,15 @@ line:
 files do not have pages.
 </p>
 <dl compact="compact">
-<dt><code> @page</code></dt>
+<dt> <code>@page</code></dt>
 <dd><p>Start a new page in the printed manual.
 </p>
 </dd>
-<dt><code> @group</code></dt>
+<dt> <code>@group</code></dt>
 <dd><p>Hold text together that must appear on one printed page.
 </p>
 </dd>
-<dt><code> @need <var>mils</var></code></dt>
+<dt> <code>@need <var>mils</var></code></dt>
 <dd><p>Start a new printed page if not enough space on this one.
 </p></dd>
 </dl>
@@ -252,16 +252,16 @@ unusual vocabulary or when fine-tuning for a printed edition, you may
 wish to help TeX out.  Texinfo supports two commands for this:
 </p>
 <dl compact="compact">
-<dt><code> @-</code></dt>
+<dt> <code>@-</code></dt>
 <dd><p>Insert a discretionary hyphen, i.e., a place where TeX can (but does
 not have to) hyphenate.  This is especially useful when you notice an
 overfull hbox is due to TeX missing a hyphenation (see section <a href="texinfo_20.html#SEC254">Overfull &quot;hboxes&quot;</a>).  TeX will not insert any hyphenation points itself into a
 word containing <code>@-</code>.
 </p>
 </dd>
-<dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
+<dt> <code>@hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
-put a `<samp>-</samp>' at each hyphenation point.  For example:
+put a <samp>`-'</samp> at each hyphenation point.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@hyphenation{man-u-script man-u-scripts}
 </pre></td></tr></table><p>TeX only uses the specified hyphenation points when the
 words match exactly, so give all necessary variants.
@@ -303,7 +303,7 @@ line.  For example:
 
 <p>produces
 </p>
-<blockquote><p>You can copy GNU software from `<samp>ftp.gnu.org</samp>'.
+<blockquote><p>You can copy GNU software from <samp>`ftp.gnu.org'</samp>.
 </p></blockquote>
 
 <a name="IDX257"></a>

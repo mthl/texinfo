@@ -177,12 +177,12 @@ Larger Units of Text
                                   several files at once.
 @end menu
 </pre></td></tr></table>
-<p>In a menu, every line that begins with an `<samp>* </samp>' is a <em>menu
+<p>In a menu, every line that begins with an <samp>`* '</samp> is a <em>menu
 entry</em>.  (Note the space after the asterisk.)  A line that does not
-start with an `<samp>* </samp>' may also appear in a menu.  Such a line is
+start with an <samp>`* '</samp> may also appear in a menu.  Such a line is
 not a menu entry but is a menu comment line that appears in the Info
-file.  In the example above, the line `<samp>Larger Units of Text</samp>' is a
-menu comment line; the two lines starting with `<samp>* </samp>' are menu
+file.  In the example above, the line <samp>`Larger Units of Text'</samp> is a
+menu comment line; the two lines starting with <samp>`* '</samp> are menu
 <a name="IDX110"></a>
 entries.  Space characters in a menu are preserved as-is; this allows
 you to format the menu as you wish.
@@ -335,14 +335,14 @@ Larger Units of Text
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
 </pre></td></tr></table>
-<p>In this example, the menu has two entries.  `<samp>Files</samp>' is both a menu
+<p>In this example, the menu has two entries.  <samp>`Files'</samp> is both a menu
 entry name and the name of the node referred to by that name.
-`<samp>Multiples</samp>' is the menu entry name; it refers to the node named
-`<samp>Buffers</samp>'. The line `<samp>Larger Units of Text</samp>' is a comment; it
+<samp>`Multiples'</samp> is the menu entry name; it refers to the node named
+<samp>`Buffers'</samp>. The line <samp>`Larger Units of Text'</samp> is a comment; it
 appears in the menu, but is not an entry.
 </p>
-<p>Since no file name is specified with either `<samp>Files</samp>' or
-`<samp>Buffers</samp>', they must be the names of nodes in the same Info file
+<p>Since no file name is specified with either <samp>`Files'</samp> or
+<samp>`Buffers'</samp>, they must be the names of nodes in the same Info file
 (see section <a href="#SEC103">Referring to Other Info Files</a>).
 </p>
 <hr size="6">
@@ -379,8 +379,8 @@ name.
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
 @end menu
 </pre></td></tr></table>
-<p>For example, to refer directly to the `<samp>Outlining</samp>' and
-`<samp>Rebinding</samp>' nodes in the <cite>Emacs Manual</cite>, you would write a
+<p>For example, to refer directly to the <samp>`Outlining'</samp> and
+<samp>`Rebinding'</samp> nodes in the <cite>Emacs Manual</cite>, you would write a
 menu like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@menu
@@ -393,7 +393,7 @@ menu like this:
 <p>If you do not list the node name, but only name the file, then Info
 presumes that you are referring to the `Top' node.
 </p>
-<p>The `<tt>dir</tt>' file that contains the main menu for Info has menu
+<p>The <tt>`dir'</tt> file that contains the main menu for Info has menu
 entries that list only file names.  These take you directly to the `Top'
 nodes of each Info document.  (See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>.)
 </p>
@@ -404,7 +404,7 @@ nodes of each Info document.  (See section <a href="texinfo_21.html#SEC271">Inst
                         text editor.
 </pre></td></tr></table>
 
-<p>(The `<tt>dir</tt>' top level directory for the Info system is an Info file,
+<p>(The <tt>`dir'</tt> top level directory for the Info system is an Info file,
 not a Texinfo file, but a menu entry looks the same in both types of
 file.)
 </p>

@@ -125,10 +125,10 @@ for the first time.  When you use the <code>import</code>
 command to track third-party sources, the <em>vendor
 tag</em> and <em>release tags</em> are useful.  The
 <em>vendor tag</em> is a symbolic name for the branch
-(which is always 1.1.1, unless you use the `<samp>-b
-<var>branch</var></samp>' flag--see <a href="#SEC111">Multiple vendor branches</a>.).  The
+(which is always 1.1.1, unless you use the <samp>`-b
+<var>branch</var>'</samp> flag--see <a href="#SEC111">Multiple vendor branches</a>.).  The
 <em>release tags</em> are symbolic names for a particular
-release, such as `<samp>FSF_0_04</samp>'.
+release, such as <samp>`FSF_0_04'</samp>.
 </p>
 <p>Note that <code>import</code> does <em>not</em> change the
 directory in which you invoke it.  In particular, it
@@ -139,7 +139,7 @@ directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
 </p>
 <a name="IDX200"></a>
 <p>Suppose you have the sources to a program called
-<code>wdiff</code> in a directory `<tt>wdiff-0.04</tt>',
+<code>wdiff</code> in a directory <tt>`wdiff-0.04'</tt>,
 and are going to make private modifications that you
 want to be able to use even when new releases are made
 in the future.  You start by importing the source to
@@ -148,9 +148,9 @@ your repository:
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd wdiff-0.04
 $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 </pre></td></tr></table>
-<p>The vendor tag is named `<samp>FSF_DIST</samp>' in the above
+<p>The vendor tag is named <samp>`FSF_DIST'</samp> in the above
 example, and the only release tag assigned is
-`<samp>WDIFF_0_04</samp>'.
+<samp>`WDIFF_0_04'</samp>.
 </p>
 <hr size="6">
 <a name="Update-imports"></a>
@@ -185,13 +185,13 @@ $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
 <p>For files that have not been modified locally, the newly created
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
-into the main trunk, and tell you to use `<samp>checkout -j</samp>' to do so:
+into the main trunk, and tell you to use <samp>`checkout -j'</samp> to do so:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
 </pre></td></tr></table>
 
 <p>The above command will check out the latest revision of
-`<samp>wdiff</samp>', merging the changes made on the vendor branch `<samp>FSF_DIST</samp>'
+<samp>`wdiff'</samp>, merging the changes made on the vendor branch <samp>`FSF_DIST'</samp>
 since yesterday into the working copy.  If any conflicts arise during
 the merge they should be resolved in the normal way (see section <a href="cvs_10.html#SEC86">Conflicts example</a>).  Then, the modified files may be committed.
 </p>
@@ -234,7 +234,7 @@ should do a merge like this even if <code>import</code> doesn't tell you to.
 to the latest vendor release by changing the `head'
 revision back to the vendor branch on all files.  For
 example, if you have a checked-out copy of the sources
-in `<tt>~/work.d/wdiff</tt>', and you want to revert to the
+in <tt>`~/work.d/wdiff'</tt>, and you want to revert to the
 vendor's version for all the files in that directory,
 you would type:
 </p>
@@ -242,8 +242,8 @@ you would type:
 $ cvs admin -bWDIFF .
 </pre></td></tr></table>
 
-<p>You must specify the `<samp>-bWDIFF</samp>' without any space
-after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC121">admin options</a>.
+<p>You must specify the <samp>`-bWDIFF'</samp> without any space
+after the <samp>`-b'</samp>.  See section <a href="cvs_16.html#SEC121">admin options</a>.
 </p>
 <hr size="6">
 <a name="Binary-files-in-imports"></a>
@@ -266,7 +266,7 @@ after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC121">admin opt
 </tr></table>
 <h2 class="section"> 13.4 How to handle binary files with cvs import </h2>
 
-<p>Use the `<samp>-k</samp>' wrapper option to tell import which
+<p>Use the <samp>`-k'</samp> wrapper option to tell import which
 files are binary.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 </p>
 <hr size="6">
@@ -303,12 +303,12 @@ that this information can supply information about
 the sources that you imported from the vendor.
 </p>
 <p>To maintain the keyword expansions supplied by the
-vendor, supply the `<samp>-ko</samp>' option to <code>cvs
+vendor, supply the <samp>`-ko'</samp> option to <code>cvs
 import</code> the first time you import the file.
 This will turn off keyword expansion
 for that file entirely, so if you want to be more
 selective you'll have to think about what you want
-and use the `<samp>-k</samp>' option to <code>cvs update</code> or
+and use the <samp>`-k'</samp> option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 </p>
 <hr size="6">
@@ -344,9 +344,9 @@ than anything else is just to all put them in <small>CVS</small> so
 that you at least have them in one place.
 </p>
 <p>For handling situations in which there may be more than
-one vendor, you may specify the `<samp>-b</samp>' option to
+one vendor, you may specify the <samp>`-b'</samp> option to
 <code>cvs import</code>.  It takes as an argument the vendor
-branch to import to.  The default is `<samp>-b 1.1.1</samp>'.
+branch to import to.  The default is <samp>`-b 1.1.1'</samp>.
 </p>
 <p>For example, suppose that there are two teams, the red
 team and the blue team, that are sending you sources.
@@ -359,7 +359,7 @@ vendor tag BLUE.  So the commands you might use are:
 $ cvs import -b 1.1.3 dir BLUE BLUE_1-5
 </pre></td></tr></table>
 <p>Note that if your vendor tag does not match your
-`<samp>-b</samp>' option, <small>CVS</small> will not detect this case!  For
+<samp>`-b'</samp> option, <small>CVS</small> will not detect this case!  For
 example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs import -b 1.1.3 dir RED RED_1-0

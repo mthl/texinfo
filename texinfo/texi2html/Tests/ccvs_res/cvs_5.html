@@ -156,7 +156,7 @@ example, assuming you're in a working copy:
 
 <p>This splits off a branch based on the current revisions
 in the working copy, assigning that branch the name
-`<samp>rel-1-0-patches</samp>'.
+<samp>`rel-1-0-patches'</samp>.
 </p>
 <p>It is important to understand that branches get created
 in the repository, not in the working copy.  Creating a
@@ -170,24 +170,24 @@ working copy, by using <code>rtag</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </pre></td></tr></table>
-<p>`<samp>-r rel-1-0</samp>' says that this branch should be
+<p><samp>`-r rel-1-0'</samp> says that this branch should be
 rooted at the revision that
-corresponds to the tag `<samp>rel-1-0</samp>'.  It need not
+corresponds to the tag <samp>`rel-1-0'</samp>.  It need not
 be the most recent revision - it's often useful to
 split a branch off an old revision (for example, when
 fixing a bug in a past release otherwise known to be
 stable).
 </p>
-<p>As with `<samp>tag</samp>', the `<samp>-b</samp>' flag tells
+<p>As with <samp>`tag'</samp>, the <samp>`-b'</samp> flag tells
 <code>rtag</code> to create a branch (rather than just a
 symbolic revision name).  Note that the numeric
-revision number that matches `<samp>rel-1-0</samp>' will
+revision number that matches <samp>`rel-1-0'</samp> will
 probably be different from file to file.
 </p>
 <p>So, the full effect of the command is to create a new
-branch - named `<samp>rel-1-0-patches</samp>' - in module
-`<samp>tc</samp>', rooted in the revision tree at the point tagged
-by `<samp>rel-1-0</samp>'.
+branch - named <samp>`rel-1-0-patches'</samp> - in module
+<samp>`tc'</samp>, rooted in the revision tree at the point tagged
+by <samp>`rel-1-0'</samp>.
 </p>
 <hr size="6">
 <a name="Accessing-branches"></a>
@@ -215,13 +215,13 @@ checking it out fresh from the repository, or by
 switching an existing working copy over to the branch.
 </p>
 <p>To check out a branch from the repository, invoke
-`<samp>checkout</samp>' with the `<samp>-r</samp>' flag, followed by
+<samp>`checkout'</samp> with the <samp>`-r'</samp> flag, followed by
 the tag name of the branch (see section <a href="#SEC56">Creating a branch</a>):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -r rel-1-0-patches tc
 </pre></td></tr></table>
 <p>Or, if you already have a working copy, you can switch
-it to a given branch with `<samp>update -r</samp>':
+it to a given branch with <samp>`update -r'</samp>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -r rel-1-0-patches tc
 </pre></td></tr></table>
@@ -234,8 +234,8 @@ $ cvs update -r rel-1-0-patches
 <p>It does not matter if the working copy was originally
 on the main trunk or on some other branch - the above
 command will switch it to the named branch.  And
-similarly to a regular `<samp>update</samp>' command,
-`<samp>update -r</samp>' merges any changes you have made,
+similarly to a regular <samp>`update'</samp> command,
+<samp>`update -r'</samp> merges any changes you have made,
 notifying you of conflicts where they occur.
 </p>
 <p>Once you have a working copy tied to a particular
@@ -246,8 +246,8 @@ leaving the main trunk and other branches unaffected.
 </p>
 <a name="IDX120"></a>
 <p>To find out what branch a working copy is on, you can
-use the `<samp>status</samp>' command.  In its output, look for
-the field named `<samp>Sticky tag</samp>' (see section <a href="cvs_4.html#SEC53">Sticky tags</a>)
+use the <samp>`status'</samp> command.  In its output, look for
+the field named <samp>`Sticky tag'</samp> (see section <a href="cvs_4.html#SEC53">Sticky tags</a>)
 - that's <small>CVS</small>'s way of telling you the branch, if
 any, of the current working files:
 </p>
@@ -281,14 +281,14 @@ File: backend.c         Status: Up-to-date
 
 </pre></td></tr></table>
 <p>Don't be confused by the fact that the branch numbers
-for each file are different (`<samp>1.7.2</samp>' and
-`<samp>1.4.2</samp>' respectively).  The branch tag is the
-same, `<samp>rel-1-0-patches</samp>', and the files are
+for each file are different (<samp>`1.7.2'</samp> and
+<samp>`1.4.2'</samp> respectively).  The branch tag is the
+same, <samp>`rel-1-0-patches'</samp>, and the files are
 indeed on the same branch.  The numbers simply reflect
 the point in each file's revision history at which the
 branch was made.  In the above example, one can deduce
-that `<samp>driver.c</samp>' had been through more changes than
-`<samp>backend.c</samp>' before this branch was created.
+that <samp>`driver.c'</samp> had been through more changes than
+<samp>`backend.c'</samp> before this branch was created.
 </p>
 <p>See <a href="#SEC58">Branches and revisions</a> for details about how
 branch numbers are constructed.
@@ -427,7 +427,7 @@ admin</code>.
 symbolic name to a branch the way <small>RCS</small> expects it
 to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
-`<tt>numbers.c</tt>' you can do this:
+<tt>`numbers.c'</tt> you can do this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs admin -NR4patches:1.4.2 numbers.c
 </pre></td></tr></table>
@@ -458,14 +458,14 @@ no way to see how the tag was assigned yesterday).
 <h2 class="section"> 5.6 Merging an entire branch </h2>
 
 <p>You can merge changes made on a branch into your working copy by giving
-the `<samp>-j <var>branchname</var></samp>' flag to the <code>update</code> subcommand.  With one
-`<samp>-j <var>branchname</var></samp>' option it merges the changes made between the
+the <samp>`-j <var>branchname</var>'</samp> flag to the <code>update</code> subcommand.  With one
+<samp>`-j <var>branchname</var>'</samp> option it merges the changes made between the
 greatest common ancestor (GCA) of the branch and the destination revision (in
 the simple case below the GCA is the point where the branch forked) and the
 newest revision on that branch into your working copy.
 </p>
 <a name="IDX121"></a>
-<p>The `<samp>-j</samp>' stands for &quot;join&quot;.
+<p>The <samp>`-j'</samp> stands for &quot;join&quot;.
 </p>
 <a name="IDX122"></a>
 <a name="IDX123"></a>
@@ -482,9 +482,9 @@ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                     +---------+    +---------+
 </pre></td></tr></table>
 
-<p>The branch 1.2.2 has been given the tag (symbolic name) `<samp>R1fix</samp>'.  The
-following example assumes that the module `<samp>mod</samp>' contains only one
-file, `<tt>m.c</tt>'.
+<p>The branch 1.2.2 has been given the tag (symbolic name) <samp>`R1fix'</samp>.  The
+following example assumes that the module <samp>`mod'</samp> contains only one
+file, <tt>`m.c'</tt>.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout mod               # Retrieve the latest revision, 1.4
 
@@ -503,7 +503,7 @@ new revision.  See section <a href="cvs_10.html#SEC86">Conflicts example</a>.
 you might be getting more conflicts than strictly necessary.  See
 <a href="#SEC64">Merging and keywords</a>, for information on how to avoid this.
 </p>
-<p>The <code>checkout</code> command also supports the `<samp>-j <var>branchname</var></samp>' flag.  The
+<p>The <code>checkout</code> command also supports the <samp>`-j <var>branchname</var>'</samp> flag.  The
 same effect as above could be achieved with this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -j R1fix mod
@@ -547,11 +547,11 @@ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
 </pre></td></tr></table>
 
 <p>where the starred line represents the merge from the
-`<samp>R1fix</samp>' branch to the main trunk, as just
+<samp>`R1fix'</samp> branch to the main trunk, as just
 discussed.
 </p>
 <p>Now suppose that development continues on the
-`<samp>R1fix</samp>' branch:
+<samp>`R1fix'</samp> branch:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">+-----+    +-----+    +-----+    +-----+    +-----+
 ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
@@ -572,7 +572,7 @@ which can have undesirable side effects.
 <p>So instead you need to specify that you only want to
 merge the changes on the branch which have not yet been
 merged into the trunk.  To do that you specify two
-`<samp>-j</samp>' options, and <small>CVS</small> merges the changes from
+<samp>`-j'</samp> options, and <small>CVS</small> merges the changes from
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 </p>
@@ -611,7 +611,7 @@ the trunk, and then use that tag for subsequent merges:
 </tr></table>
 <h2 class="section"> 5.8 Merging differences between any two revisions </h2>
 
-<p>With two `<samp>-j <var>revision</var></samp>' flags, the <code>update</code>
+<p>With two <samp>`-j <var>revision</var>'</samp> flags, the <code>update</code>
 (and <code>checkout</code>) command can merge the differences
 between any two revisions into your working file.
 </p>
@@ -632,10 +632,10 @@ multiple files.
 </p>
 <a name="IDX127"></a>
 <a name="IDX128"></a>
-<p>Specifying two `<samp>-j</samp>' options can also undo file
+<p>Specifying two <samp>`-j'</samp> options can also undo file
 removals or additions.  For example, suppose you have
 a file
-named `<tt>file1</tt>' which existed as revision 1.1, and
+named <tt>`file1'</tt> which existed as revision 1.1, and
 you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
@@ -686,11 +686,11 @@ cvs ci -m &quot;added d, removed a&quot;
 cvs update -A
 cvs update -jbranchtag
 </pre></td></tr></table>
-<p>After these commands are executed and a `<samp>cvs commit</samp>' is done,
-file `<tt>a</tt>' will be removed and file `<tt>d</tt>' added in the main branch.
+<p>After these commands are executed and a <samp>`cvs commit'</samp> is done,
+file <tt>`a'</tt> will be removed and file <tt>`d'</tt> added in the main branch.
 </p>
-<p>Note that using a single static tag (`<samp>-j <var>tagname</var></samp>')
-rather than a dynamic tag (`<samp>-j <var>branchname</var></samp>') to merge
+<p>Note that using a single static tag (<samp>`-j <var>tagname</var>'</samp>)
+rather than a dynamic tag (<samp>`-j <var>branchname</var>'</samp>) to merge
 changes from a branch will usually not remove files which were removed on the
 branch since <small>CVS</small> does not automatically add static tags to dead revisions.
 The exception to this rule occurs when
@@ -725,7 +725,7 @@ expanded differently in the revisions which you are
 merging.
 </p>
 <p>Therefore, you will often want to specify the
-`<samp>-kk</samp>' (see section <a href="cvs_12.html#SEC102">Substitution modes</a>) switch to the
+<samp>`-kk'</samp> (see section <a href="cvs_12.html#SEC102">Substitution modes</a>) switch to the
 merge command line.  By substituting just the name of
 the keyword, not the expanded value of that keyword,
 this option ensures that the revisions which you are
@@ -774,7 +774,7 @@ directory.  So, since the keyword changed from
 directory, which conflicted with the fact that your
 working directory had contained <code>Revision: 1.2</code>.
 </p>
-<p>Here is what happens if you had used `<samp>-kk</samp>':
+<p>Here is what happens if you had used <samp>`-kk'</samp>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cat file1
 key $<i></i>Revision: 1.2 $
@@ -796,19 +796,19 @@ directory need not change anything.  Therefore, there
 is no conflict.
 </p>
 <p><strong>WARNING: In versions of <small>CVS</small> prior to 1.12.2, there was a
-major problem with using `<samp>-kk</samp>' on merges.  Namely, `<samp>-kk</samp>'
+major problem with using <samp>`-kk'</samp> on merges.  Namely, <samp>`-kk'</samp>
 overrode any default keyword expansion mode set in the archive file in
 the repository.  This could, unfortunately for some users, cause data
 corruption in binary files (with a default keyword expansion mode set
-to `<samp>-kb</samp>').  Therefore, when a repository contained binary files,
-conflicts had to be dealt with manually rather than using `<samp>-kk</samp>' in
+to <samp>`-kb'</samp>).  Therefore, when a repository contained binary files,
+conflicts had to be dealt with manually rather than using <samp>`-kk'</samp> in
 a merge command.</strong>
 </p>
 <p>In <small>CVS</small> version 1.12.2 and later, the keyword expansion mode
 provided on the command line to any <small>CVS</small> command no longer
-overrides the `<samp>-kb</samp>' keyword expansion mode setting for binary
+overrides the <samp>`-kb'</samp> keyword expansion mode setting for binary
 files, though it will still override other default keyword expansion
-modes.  You can now safely merge using `<samp>-kk</samp>' to avoid spurious conflicts
+modes.  You can now safely merge using <samp>`-kk'</samp> to avoid spurious conflicts
 on lines containing RCS keywords, even when your repository contains
 binary files.
 </p>

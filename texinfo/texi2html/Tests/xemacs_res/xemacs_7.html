@@ -123,9 +123,9 @@ C-h t</kbd>.
 them.  This inserts the characters you type into the buffer at the
 cursor (that is, at <em>point</em>; see section <a href="xemacs_4.html#SEC8">Point</a>).  The cursor moves
 forward, and any text after the cursor moves forward too.  If the text
-in the buffer is `<samp>FOOBAR</samp>', with the cursor before the `<samp>B</samp>',
-then if you type <kbd>XX</kbd>, you get `<samp>FOOXXBAR</samp>', with the cursor
-still before the `<samp>B</samp>'.
+in the buffer is <samp>`FOOBAR'</samp>, with the cursor before the <samp>`B'</samp>,
+then if you type <kbd>XX</kbd>, you get <samp>`FOOXXBAR'</samp>, with the cursor
+still before the <samp>`B'</samp>.
 </p>
 <a name="IDX132"></a>
 <a name="IDX133"></a>
@@ -260,54 +260,54 @@ TTY's), but the latter are available on all terminals.
 <a name="IDX178"></a>
 <a name="IDX179"></a>
 <dl compact="compact">
-<dt><kbd> C-a</kbd></dt>
-<dt><kbd> HOME</kbd></dt>
+<dt> <kbd>C-a</kbd></dt>
+<dt> <kbd>HOME</kbd></dt>
 <dd><p>Move to the beginning of the line (<code>beginning-of-line</code>).
 </p></dd>
-<dt><kbd> C-e</kbd></dt>
-<dt><kbd> END</kbd></dt>
+<dt> <kbd>C-e</kbd></dt>
+<dt> <kbd>END</kbd></dt>
 <dd><p>Move to the end of the line (<code>end-of-line</code>).
 </p></dd>
-<dt><kbd> C-f</kbd></dt>
-<dt><kbd> RIGHT</kbd></dt>
+<dt> <kbd>C-f</kbd></dt>
+<dt> <kbd>RIGHT</kbd></dt>
 <dd><p>Move forward one character (<code>forward-char</code>).
 </p></dd>
-<dt><kbd> C-b</kbd></dt>
-<dt><kbd> LEFT</kbd></dt>
+<dt> <kbd>C-b</kbd></dt>
+<dt> <kbd>LEFT</kbd></dt>
 <dd><p>Move backward one character (<code>backward-char</code>).
 </p></dd>
-<dt><kbd> M-f</kbd></dt>
-<dt><kbd> C-RIGHT</kbd></dt>
+<dt> <kbd>M-f</kbd></dt>
+<dt> <kbd>C-RIGHT</kbd></dt>
 <dd><p>Move forward one word (<code>forward-word</code>).
 </p></dd>
-<dt><kbd> M-b</kbd></dt>
-<dt><kbd> C-LEFT</kbd></dt>
+<dt> <kbd>M-b</kbd></dt>
+<dt> <kbd>C-LEFT</kbd></dt>
 <dd><p>Move backward one word (<code>backward-word</code>).
 </p></dd>
-<dt><kbd> C-n</kbd></dt>
-<dt><kbd> DOWN</kbd></dt>
+<dt> <kbd>C-n</kbd></dt>
+<dt> <kbd>DOWN</kbd></dt>
 <dd><p>Move down one line, vertically (<code>next-line</code>).  This command
 attempts to keep the horizontal position unchanged, so if you start in
 the middle of one line, you end in the middle of the next.  When on the
 last line of text, <kbd>C-n</kbd> creates a new line and moves onto it.
 </p></dd>
-<dt><kbd> C-p</kbd></dt>
-<dt><kbd> UP</kbd></dt>
+<dt> <kbd>C-p</kbd></dt>
+<dt> <kbd>UP</kbd></dt>
 <dd><p>Move up one line, vertically (<code>previous-line</code>).
 </p></dd>
-<dt><kbd> C-v</kbd></dt>
-<dt><kbd> PGDN</kbd></dt>
+<dt> <kbd>C-v</kbd></dt>
+<dt> <kbd>PGDN</kbd></dt>
 <dd><p>Move down one page, vertically (<code>scroll-up</code>).
 </p></dd>
-<dt><kbd> M-v</kbd></dt>
-<dt><kbd> PGUP</kbd></dt>
+<dt> <kbd>M-v</kbd></dt>
+<dt> <kbd>PGUP</kbd></dt>
 <dd><p>Move up one page, vertically (<code>scroll-down</code>).
 </p></dd>
-<dt><kbd> C-l</kbd></dt>
+<dt> <kbd>C-l</kbd></dt>
 <dd><p>Clear the frame and reprint everything (<code>recenter</code>).  Text moves
 on the frame to bring point to the center of the window.
 </p></dd>
-<dt><kbd> M-r</kbd></dt>
+<dt> <kbd>M-r</kbd></dt>
 <dd><p>Move point to left margin, vertically centered in the window
 (<code>move-to-window-line</code>).  Text does not move on the screen.
 </p>
@@ -316,29 +316,29 @@ screen lines down from the top of the window (zero for the top line).  A
 negative argument counts lines from the bottom (-1 for the bottom
 line).
 </p></dd>
-<dt><kbd> C-t</kbd></dt>
+<dt> <kbd>C-t</kbd></dt>
 <dd><p>Transpose two characters, the ones before and after the cursor
 (<code>transpose-chars</code>).
 </p></dd>
-<dt><kbd> M-&lt;</kbd></dt>
-<dt><kbd> C-HOME</kbd></dt>
+<dt> <kbd>M-&lt;</kbd></dt>
+<dt> <kbd>C-HOME</kbd></dt>
 <dd><p>Move to the top of the buffer (<code>beginning-of-buffer</code>).  With
 numeric argument <var>n</var>, move to <var>n</var>/10 of the way from the top.
 See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments.
 </p></dd>
-<dt><kbd> M-&gt;</kbd></dt>
-<dt><kbd> C-END</kbd></dt>
+<dt> <kbd>M-&gt;</kbd></dt>
+<dt> <kbd>C-END</kbd></dt>
 <dd><p>Move to the end of the buffer (<code>end-of-buffer</code>).
 </p></dd>
-<dt><kbd> M-x goto-char</kbd></dt>
+<dt> <kbd>M-x goto-char</kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to buffer position <var>n</var>.
 Position 1 is the beginning of the buffer.
 </p></dd>
-<dt><kbd> M-g</kbd></dt>
+<dt> <kbd>M-g</kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to line number <var>n</var>
 (<code>goto-line</code>).  Line 1 is the beginning of the buffer.
 </p></dd>
-<dt><kbd> M-x set-goal-column</kbd></dt>
+<dt> <kbd>M-x set-goal-column</kbd></dt>
 <dd><a name="IDX180"></a>
 <p>Use the current column of point as the <em>semi-permanent goal column</em> for
 <kbd>C-n</kbd> and <kbd>C-p</kbd> (<code>set-goal-column</code>).  Henceforth, those
@@ -346,7 +346,7 @@ commands always move to this column in each line moved into, or as
 close as possible given the contents of the line.  This goal column remains
 in effect until canceled.
 </p></dd>
-<dt><kbd> C-u M-x set-goal-column</kbd></dt>
+<dt> <kbd>C-u M-x set-goal-column</kbd></dt>
 <dd><p>Cancel the goal column.  Henceforth, <kbd>C-n</kbd> and <kbd>C-p</kbd> once
 again try to avoid changing the horizontal position, as usual.
 </p></dd>
@@ -385,21 +385,21 @@ it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, th
 <h2 class="section"> 4.3 Erasing Text </h2>
 
 <dl compact="compact">
-<dt><kbd> <kbd>DEL</kbd></kbd></dt>
+<dt> <kbd><kbd>DEL</kbd></kbd></dt>
 <dd><p>Delete the character before or after point
 (<code>backward-or-forward-delete-char</code>).  You can customize
 this behavior by setting the variable <code>delete-key-deletes-forward</code>.
 </p></dd>
-<dt><kbd> C-d</kbd></dt>
+<dt> <kbd>C-d</kbd></dt>
 <dd><p>Delete the character after point (<code>delete-char</code>).
 </p></dd>
-<dt><kbd> C-k</kbd></dt>
+<dt> <kbd>C-k</kbd></dt>
 <dd><p>Kill to the end of the line (<code>kill-line</code>).
 </p></dd>
-<dt><kbd> M-d</kbd></dt>
+<dt> <kbd>M-d</kbd></dt>
 <dd><p>Kill forward to the end of the next word (<code>kill-word</code>).
 </p></dd>
-<dt><kbd> M-<kbd>DEL</kbd></kbd></dt>
+<dt> <kbd>M-<kbd>DEL</kbd></kbd></dt>
 <dd><p>Kill back to the beginning of the previous word
 (<code>backward-kill-word</code>).
 </p></dd>
@@ -451,7 +451,7 @@ operating system for you to retrieve later by name.  To look at or use
 the contents of a file in any way, including editing the file with
 Emacs, you must specify the file name.
 </p>
-<p>  Consider a file named `<tt>/usr/rms/foo.c</tt>'.  To begin editing
+<p>  Consider a file named <tt>`/usr/rms/foo.c'</tt>.  To begin editing
 this file from Emacs, type:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
@@ -471,8 +471,8 @@ the buffer for you to edit.  If you alter the text, you can <em>save</em>
 the new text in the file by typing <kbd>C-x C-s</kbd> (<code>save-buffer</code>) or
 choosing <b>Save Buffer</b> from the <b>File</b> menu.  This makes the changes
 permanent by copying the altered buffer contents back into the file
-`<tt>/usr/rms/foo.c</tt>'.  Until you save, the changes exist only inside
-Emacs, and the file `<tt>foo.c</tt>' is unaltered.
+<tt>`/usr/rms/foo.c'</tt>.  Until you save, the changes exist only inside
+Emacs, and the file <tt>`foo.c'</tt> is unaltered.
 </p>
 <p>  To create a file, visit the file with <kbd>C-x C-f</kbd> as if it already
 existed or choose <b>Open...</b> from the <b>File</b> menu and provide the
@@ -538,10 +538,10 @@ a description of all the help facilities.  See section <a href="xemacs_11.html#S
 blank lines.
 </p>
 <dl compact="compact">
-<dt><kbd> C-o</kbd></dt>
+<dt> <kbd>C-o</kbd></dt>
 <dd><p>Insert one or more blank lines after the cursor (<code>open-line</code>).
 </p></dd>
-<dt><kbd> C-x C-o</kbd></dt>
+<dt> <kbd>C-x C-o</kbd></dt>
 <dd><p>Delete all but one of many consecutive blank lines
 (<code>delete-blank-lines</code>).
 </p></dd>
@@ -656,21 +656,21 @@ Since text is stored in a way that makes it difficult to compute the
 information, it is not displayed all the time.
 </p>
 <dl compact="compact">
-<dt><kbd> M-x what-page</kbd></dt>
+<dt> <kbd>M-x what-page</kbd></dt>
 <dd><p>Print page number of point, and line number within page.
 </p></dd>
-<dt><kbd> M-x what-line</kbd></dt>
+<dt> <kbd>M-x what-line</kbd></dt>
 <dd><p>Print line number of point in the buffer.
 </p></dd>
-<dt><kbd> M-x line-number-mode</kbd></dt>
+<dt> <kbd>M-x line-number-mode</kbd></dt>
 <dd><p>Toggle automatic display of current line number.
 </p></dd>
-<dt><kbd> M-=</kbd></dt>
+<dt> <kbd>M-=</kbd></dt>
 <dd><p>Print number of lines and characters in the current region
 (<code>count-lines-region</code>).  See section <a href="xemacs_12.html#SEC79">Selecting Text</a>, for information about the
 region.
 </p></dd>
-<dt><kbd> C-x =</kbd></dt>
+<dt> <kbd>C-x =</kbd></dt>
 <dd><p>Print character code of character after point, character position of
 point, and column of point (<code>what-cursor-position</code>).
 </p></dd>
@@ -710,20 +710,20 @@ point.  It prints a line in the echo area that looks like this:
 <table><tr><td>&nbsp;</td><td><pre class="example">Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
 </pre></td></tr></table>
 
-<p>(In fact, this is the output produced when point is before `<samp>column
-53</samp>' in the example.)
+<p>(In fact, this is the output produced when point is before <samp>`column
+53'</samp> in the example.)
 </p>
-<p>  The four values after `<samp>Char:</samp>' describe the character that follows
+<p>  The four values after <samp>`Char:'</samp> describe the character that follows
 point, first by showing it and then by giving its character code in
 octal, decimal and hex. 
 </p>
-<p>  `<samp>point=</samp>' is followed by the position of point expressed as a character
+<p>  <samp>`point='</samp> is followed by the position of point expressed as a character
 count.  The front of the buffer counts as position 1, one character later
 as 2, and so on.  The next, larger number is the total number of characters
 in the buffer.  Afterward in parentheses comes the position expressed as a
 percentage of the total size.
 </p>
-<p>  `<samp>column</samp>' is followed by the horizontal position of point, in
+<p>  <samp>`column'</samp> is followed by the horizontal position of point, in
 columns from the left edge of the window.
 </p>
 <p>  If the buffer has been narrowed, making some of the text at the
@@ -780,7 +780,7 @@ command to move or act  in the opposite direction.
 <a name="IDX203"></a>
 <a name="IDX204"></a>
 <p>  If your keyboard has a <kbd>META</kbd> key (labelled with a diamond on
-Sun-type keyboards and labelled `<samp>Alt</samp>' on some other keyboards), the
+Sun-type keyboards and labelled <samp>`Alt'</samp> on some other keyboards), the
 easiest way to specify a numeric argument is to type digits and/or a
 minus sign while holding down the <kbd>META</kbd> key.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">M-5 C-n
@@ -835,11 +835,11 @@ of use of the individual command.
 </p>
 <p>  You can use a numeric argument to insert multiple copies of a
 character.  This is straightforward unless the character is a digit; for
-example, <kbd>C-u 6 4 a</kbd> inserts 64 copies of the character `<samp>a</samp>'.
+example, <kbd>C-u 6 4 a</kbd> inserts 64 copies of the character <samp>`a'</samp>.
 But this does not work for inserting digits; <kbd>C-u 6 4 1</kbd> specifies
 an argument of 641, rather than inserting anything.  To separate the
 digit to insert from the argument, type another <kbd>C-u</kbd>; for example,
-<kbd>C-u 6 4 C-u 1</kbd> does insert 64 copies of the character `<samp>1</samp>'.
+<kbd>C-u 6 4 C-u 1</kbd> does insert 64 copies of the character <samp>`1'</samp>.
 </p>
 <p>  We use the term &quot;prefix argument&quot; as well as &quot;numeric argument&quot; to
 emphasize that you type the argument before the command, and to

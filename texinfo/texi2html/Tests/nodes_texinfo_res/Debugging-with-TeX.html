@@ -120,9 +120,9 @@ understandable error message:
 <table><tr><td>&nbsp;</td><td><pre class="example">Paragraph ended before @xref was complete.
 </pre></td></tr></table>
 
-<p>`<samp>@par</samp>' is an internal TeX command of no relevance to Texinfo.
-`<samp>l.27</samp>' means that TeX detected the problem on line 27 of the
-Texinfo file.  The `<samp>?</samp>' is the prompt TeX uses in this
+<p><samp>`@par'</samp> is an internal TeX command of no relevance to Texinfo.
+<samp>`l.27'</samp> means that TeX detected the problem on line 27 of the
+Texinfo file.  The <samp>`?'</samp> is the prompt TeX uses in this
 circumstance.
 </p>
 <p>Unfortunately, TeX is not always so helpful, and sometimes you must
@@ -134,11 +134,11 @@ things.
 <ol>
 <li>
 You can tell TeX to continue running and ignore just this error by
-typing <kbd>RET</kbd> at the `<samp>?</samp>' prompt.
+typing <kbd>RET</kbd> at the <samp>`?'</samp> prompt.
 
 </li><li>
 You can tell TeX to continue running and to ignore all errors as best
-it can by typing <kbd>r <kbd>RET</kbd></kbd> at the `<samp>?</samp>' prompt.
+it can by typing <kbd>r <kbd>RET</kbd></kbd> at the <samp>`?'</samp> prompt.
 
 <p>This is often the best thing to do.  However, beware: the one error
 may produce a cascade of additional error messages as its consequences
@@ -148,11 +148,11 @@ producing such an avalanche of error messages, type <kbd>C-c</kbd> (or
 </p>
 </li><li>
 You can tell TeX to stop this run by typing <kbd>x <kbd>RET</kbd></kbd>
-at the `<samp>?</samp>' prompt.
+at the <samp>`?'</samp> prompt.
 </li></ol>
 
 <p>If you are running TeX inside Emacs, you need to switch to the shell
-buffer and line at which TeX offers the `<samp>?</samp>' prompt.
+buffer and line at which TeX offers the <samp>`?'</samp> prompt.
 </p>
 <p>Sometimes TeX will format a file without producing error messages even
 though there is a problem.  This usually occurs if a command is not ended
@@ -179,7 +179,7 @@ first.
 <p>If the Texinfo file lacks header lines,
 TeX may stop in the
 beginning of its run and display output that looks like the following.
-The `<samp>*</samp>' indicates that TeX is waiting for input.
+The <samp>`*'</samp> indicates that TeX is waiting for input.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
@@ -188,8 +188,8 @@ The `<samp>*</samp>' indicates that TeX is waiting for input.
 
 <p>In this case, simply type <kbd>\end <kbd>RET</kbd></kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command
-again. (Note the use of the backslash, `<samp>\</samp>'.  TeX uses `<samp>\</samp>'
-instead of `<samp>@</samp>'; and in this circumstance, you are working
+again. (Note the use of the backslash, <samp>`\'</samp>.  TeX uses <samp>`\'</samp>
+instead of <samp>`@'</samp>; and in this circumstance, you are working
 directly with TeX, not with Texinfo.)
 </p>
 <hr size="1">

@@ -287,7 +287,7 @@ do not.
 <h2 class="section"> 5.3 <code>@top</code> </h2>
 
 <p>The <code>@top</code> command is a special sectioning command that you use
-only after an `<samp>@node Top</samp>' line at the beginning of a Texinfo file.
+only after an <samp>`@node Top'</samp> line at the beginning of a Texinfo file.
 The <code>@top</code> command tells the <code>makeinfo</code> formatter which node
 is the `Top' node, so it can use it as the root of the node tree if your
 manual uses implicit pointers.  It has the same typesetting effect as
@@ -443,7 +443,7 @@ of asterisks underneath.  (See section <a href="#SEC76"><code>@chapter</code></a
 <p>In a printed manual, an <code>@section</code> command identifies a
 numbered section within a chapter.  The section title appears in the
 table of contents.  In Info, an <code>@section</code> command provides a
-title for a segment of text, underlined with `<samp>=</samp>'.
+title for a segment of text, underlined with <samp>`='</samp>.
 </p>
 <p>This section is headed with an <code>@section</code> command and looks like
 this in the Texinfo file:
@@ -494,14 +494,14 @@ heading-like equivalents of the <code>@section</code> command.
 (See section <a href="#SEC79"><code>@section</code></a>.)
 </p>
 <dl compact="compact">
-<dt><code> @unnumberedsec</code></dt>
+<dt> <code>@unnumberedsec</code></dt>
 <dd><p>The <code>@unnumberedsec</code> command may be used within an
 unnumbered chapter or within a regular chapter or appendix to
 provide an unnumbered section.
 </p>
 </dd>
-<dt><code> @appendixsec</code></dt>
-<dt><code> @appendixsection</code></dt>
+<dt> <code>@appendixsec</code></dt>
+<dt> <code>@appendixsection</code></dt>
 <dd><p><code>@appendixsection</code> is a longer spelling of the
 <code>@appendixsec</code> command; the two are synonymous.
 <a name="IDX92"></a>
@@ -510,7 +510,7 @@ provide an unnumbered section.
 command is used only within appendices.
 </p>
 </dd>
-<dt><code> @heading</code></dt>
+<dt> <code>@heading</code></dt>
 <dd><p>You may use the <code>@heading</code> command anywhere you wish for a
 section-style heading that will not appear in the table of contents.
 </p></dd>
@@ -539,7 +539,7 @@ section-style heading that will not appear in the table of contents.
 
 <p>Subsections are to sections as sections are to chapters.
 (See section <a href="#SEC79"><code>@section</code></a>.)  In Info, subsection titles are
-underlined with `<samp>-</samp>'.  For example,
+underlined with <samp>`-'</samp>.  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@subsection This is a subsection
 </pre></td></tr></table>
@@ -613,28 +613,28 @@ contents.
 `subsub' commands.  They are:
 </p>
 <dl compact="compact">
-<dt><code> @subsubsection</code></dt>
+<dt> <code>@subsubsection</code></dt>
 <dd><p>Subsubsections are to subsections as subsections are to sections.
 (See section <a href="#SEC81"><code>@subsection</code></a>.)  In a printed manual,
 subsubsection titles appear in the table of contents and are numbered
 four levels deep.
 </p>
 </dd>
-<dt><code> @unnumberedsubsubsec</code></dt>
+<dt> <code>@unnumberedsubsubsec</code></dt>
 <dd><p>Unnumbered subsubsection titles appear in the table of contents of a
 printed manual, but lack numbers.  Otherwise, unnumbered
 subsubsections are the same as subsubsections.  In Info, unnumbered
 subsubsections look exactly like ordinary subsubsections.
 </p>
 </dd>
-<dt><code> @appendixsubsubsec</code></dt>
+<dt> <code>@appendixsubsubsec</code></dt>
 <dd><p>Conventionally, appendix commands are used only for appendices and are
 lettered and numbered appropriately in a printed manual.  They also
 appear in the table of contents.  In Info, appendix subsubsections look
 exactly like ordinary subsubsections.
 </p>
 </dd>
-<dt><code> @subsubheading</code></dt>
+<dt> <code>@subsubheading</code></dt>
 <dd><p>The <code>@subsubheading</code> command may be used anywhere that you need
 a small heading that will not appear in the table of contents.  In
 Info, subsubheadings look exactly like ordinary subsubsection

@@ -128,7 +128,7 @@ information from the history file, use the <code>cvs
 history</code> command (see section <a href="cvs_16.html#SEC137">history--Show status of files and users</a>).
 </p>
 <p>Note: you can control what is logged to this file by using the
-`<samp>LogHistory</samp>' keyword in the `<tt>CVSROOT/config</tt>' file
+<samp>`LogHistory'</samp> keyword in the <tt>`CVSROOT/config'</tt> file
 (see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p>
 
@@ -160,10 +160,10 @@ times.  The script might append a message to a file
 listing the information and the programmer who created
 it, or send mail to a group of developers, or, perhaps,
 post a message to a particular newsgroup.  To log
-commits, use the `<tt>loginfo</tt>' file (see section <a href="cvs_18.html#SEC172">Loginfo</a>).
+commits, use the <tt>`loginfo'</tt> file (see section <a href="cvs_18.html#SEC172">Loginfo</a>).
 To log commits, checkouts, exports, and tags,
-respectively, you can also use the `<samp>-i</samp>',
-`<samp>-o</samp>', `<samp>-e</samp>', and `<samp>-t</samp>' options in the
+respectively, you can also use the <samp>`-i'</samp>,
+<samp>`-o'</samp>, <samp>`-e'</samp>, and <samp>`-t'</samp> options in the
 modules file.  For a more flexible way of giving
 notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
@@ -172,9 +172,9 @@ using <code>cvs watch on</code>.
 </p>
 <a name="IDX133"></a>
 <a name="IDX134"></a>
-<p>The `<tt>taginfo</tt>' file defines programs to execute
+<p>The <tt>`taginfo'</tt> file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
-command.  The `<tt>taginfo</tt>' file has the standard form
+command.  The <tt>`taginfo'</tt> file has the standard form
 for administrative files (see section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>), where each line is a regular expression
 followed by a command to execute.  The arguments passed
 to the command are, in order, the <var>tagname</var>,
@@ -191,7 +191,7 @@ commands.  In the taginfo file put:
 <table><tr><td>&nbsp;</td><td><pre class="example">ALL /usr/local/cvsroot/CVSROOT/loggit
 </pre></td></tr></table>
 
-<p>Where `<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>' contains the
+<p>Where <tt>`/usr/local/cvsroot/CVSROOT/loggit'</tt> contains the
 following script:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
@@ -232,7 +232,7 @@ Annotations for ssfile
 1.1          (mary     27-Mar-96): ssfile line 1
 1.2          (joe      28-Mar-96): ssfile line 2
 </pre></td></tr></table>
-<p>The file `<tt>ssfile</tt>' currently contains two lines.
+<p>The file <tt>`ssfile'</tt> currently contains two lines.
 The <code>ssfile line 1</code> line was checked in by
 <code>mary</code> on March 27.  Then, on March 28, <code>joe</code>
 added a line <code>ssfile line 2</code>, without modifying

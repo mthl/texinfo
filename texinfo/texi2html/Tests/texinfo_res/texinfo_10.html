@@ -184,59 +184,59 @@ entries.
 <p>The commands serve a variety of purposes:
 </p>
 <dl compact="compact">
-<dt><code> @code{<var>sample-code</var>}</code></dt>
+<dt> <code>@code{<var>sample-code</var>}</code></dt>
 <dd><p>Indicate text that is a literal example of a piece of a program.
 </p>
 </dd>
-<dt><code> @kbd{<var>keyboard-characters</var>}</code></dt>
+<dt> <code>@kbd{<var>keyboard-characters</var>}</code></dt>
 <dd><p>Indicate keyboard input.
 </p>
 </dd>
-<dt><code> @key{<var>key-name</var>}</code></dt>
+<dt> <code>@key{<var>key-name</var>}</code></dt>
 <dd><p>Indicate the conventional name for a key on a keyboard.
 </p>
 </dd>
-<dt><code> @samp{<var>text</var>}</code></dt>
+<dt> <code>@samp{<var>text</var>}</code></dt>
 <dd><p>Indicate text that is a literal example of a sequence of characters.
 </p>
 </dd>
-<dt><code> @var{<var>metasyntactic-variable</var>}</code></dt>
+<dt> <code>@var{<var>metasyntactic-variable</var>}</code></dt>
 <dd><p>Indicate a metasyntactic variable.
 </p>
 </dd>
-<dt><code> @env{<var>environment-variable</var>}</code></dt>
+<dt> <code>@env{<var>environment-variable</var>}</code></dt>
 <dd><p>Indicate an environment variable.
 </p>
 </dd>
-<dt><code> @file{<var>file-name</var>}</code></dt>
+<dt> <code>@file{<var>file-name</var>}</code></dt>
 <dd><p>Indicate the name of a file.
 </p>
 </dd>
-<dt><code> @command{<var>command-name</var>}</code></dt>
+<dt> <code>@command{<var>command-name</var>}</code></dt>
 <dd><p>Indicate the name of a command.
 </p>
 </dd>
-<dt><code> @option{<var>option</var>}</code></dt>
+<dt> <code>@option{<var>option</var>}</code></dt>
 <dd><p>Indicate a command-line option.
 </p>
 </dd>
-<dt><code> @dfn{<var>term</var>}</code></dt>
+<dt> <code>@dfn{<var>term</var>}</code></dt>
 <dd><p>Indicate the introductory or defining use of a term.
 </p>
 </dd>
-<dt><code> @cite{<var>reference</var>}</code></dt>
+<dt> <code>@cite{<var>reference</var>}</code></dt>
 <dd><p>Indicate the name of a book.
 </p>
 </dd>
-<dt><code> @acronym{<var>acronym</var>}</code></dt>
+<dt> <code>@acronym{<var>acronym</var>}</code></dt>
 <dd><p>Indicate an acronym.
 </p>
 </dd>
-<dt><code> @url{<var>uniform-resource-locator</var>}</code></dt>
+<dt> <code>@url{<var>uniform-resource-locator</var>}</code></dt>
 <dd><p>Indicate a uniform resource locator for the World Wide Web.
 </p>
 </dd>
-<dt><code> @email{<var>email-address</var>[, <var>displayed-text</var>]}</code></dt>
+<dt> <code>@email{<var>email-address</var>[, <var>displayed-text</var>]}</code></dt>
 <dd><p>Indicate an electronic mail address.
 </p>
 </dd>
@@ -277,8 +277,8 @@ keyword in a programming language.
 </p>
 <p>Use <code>@code</code> for command names in languages that resemble
 programming languages, such as Texinfo.  For example, <code>@code</code> and
-<code>@samp</code> are produced by writing `<samp>@code{@@code}</samp>' and
-`<samp>@code{@@samp}</samp>' in the Texinfo source, respectively.
+<code>@samp</code> are produced by writing <samp>`@code{@@code}'</samp> and
+<samp>`@code{@@samp}'</samp> in the Texinfo source, respectively.
 </p>
 <a name="IDX119"></a>
 <p>It is incorrect to alter the case of a word inside an <code>@code</code>
@@ -313,7 +313,7 @@ formatting commands to use single quotation marks around the text.
 For shell command names such as <code>ls</code> (use <code>@command</code>).
 
 </li><li>
-For shell options such as `<samp>-c</samp>' when such options stand alone (use
+For shell options such as <samp>`-c'</samp> when such options stand alone (use
 <code>@option</code>).
 
 </li><li>
@@ -326,7 +326,7 @@ For environment variable such as <code>TEXINPUTS</code> (use <code>@env</code>).
 
 </li><li>
 For a string of characters shorter than a syntactic token.  For example,
-if you are writing about `<samp>goto-ch</samp>', which is just a part of the
+if you are writing about <samp>`goto-ch'</samp>, which is just a part of the
 name for the <code>goto-char</code> Emacs Lisp function, you should use
 <code>@samp</code>.
 
@@ -400,21 +400,21 @@ following:
 <a name="IDX124"></a>
 <a name="IDX125"></a>
 </p><dl compact="compact">
-<dt>`<samp> code</samp>'</dt>
+<dt> <samp>`code'</samp></dt>
 <dd><p>Always use the same font for <code>@kbd</code> as <code>@code</code>.
 </p></dd>
-<dt>`<samp> example</samp>'</dt>
+<dt> <samp>`example'</samp></dt>
 <dd><p>Use the distinguishing font for <code>@kbd</code> only in <code>@example</code>
 and similar environments.
 </p></dd>
-<dt>`<samp> distinct</samp>'</dt>
+<dt> <samp>`distinct'</samp></dt>
 <dd><p>(the default) Always use the distinguishing font for <code>@kbd</code>.
 </p></dd>
 </dl>
 
 <p>You can embed another @-command inside the braces of an <code>@kbd</code>
 command.  Here, for example, is the way to describe a command that
-would be described more verbosely as &quot;press an `<samp>r</samp>' and then
+would be described more verbosely as &quot;press an <samp>`r'</samp> and then
 press the <kbd>RET</kbd> key&quot;:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@kbd{r @key{RET}}
@@ -481,35 +481,35 @@ includes one or more keys that are described by name.
 <a name="IDX129"></a>
 </p>
 <blockquote><dl compact="compact">
-<dt><tt> SPC</tt></dt>
+<dt> <tt>SPC</tt></dt>
 <dd><p>Space
 </p></dd>
-<dt><tt> RET</tt></dt>
+<dt> <tt>RET</tt></dt>
 <dd><p>Return
 </p></dd>
-<dt><tt> LFD</tt></dt>
+<dt> <tt>LFD</tt></dt>
 <dd><p>Linefeed (however, since most keyboards nowadays do not have a Linefeed key,
 it might be better to call this character <kbd>C-j</kbd>.
 </p></dd>
-<dt><tt> TAB</tt></dt>
+<dt> <tt>TAB</tt></dt>
 <dd><p>Tab
 </p></dd>
-<dt><tt> BS</tt></dt>
+<dt> <tt>BS</tt></dt>
 <dd><p>Backspace
 </p></dd>
-<dt><tt> ESC</tt></dt>
+<dt> <tt>ESC</tt></dt>
 <dd><p>Escape
 </p></dd>
-<dt><tt> DEL</tt></dt>
+<dt> <tt>DEL</tt></dt>
 <dd><p>Delete
 </p></dd>
-<dt><tt> SHIFT</tt></dt>
+<dt> <tt>SHIFT</tt></dt>
 <dd><p>Shift
 </p></dd>
-<dt><tt> CTRL</tt></dt>
+<dt> <tt>CTRL</tt></dt>
 <dd><p>Control
 </p></dd>
-<dt><tt> META</tt></dt>
+<dt> <tt>META</tt></dt>
 <dd><p>Meta
 </p></dd>
 </dl>
@@ -521,8 +521,8 @@ names of modifier keys.  When mentioning a character in which the
 modifier key is used, such as <kbd>Meta-a</kbd>, use the <code>@kbd</code> command
 alone; do not use the <code>@key</code> command; but when you are referring
 to the modifier key in isolation, use the <code>@key</code> command.  For
-example, write `<samp>@kbd{Meta-a}</samp>' to produce <kbd>Meta-a</kbd> and
-`<samp>@key{META}</samp>' to produce <kbd>META</kbd>.
+example, write <samp>`@kbd{Meta-a}'</samp> to produce <kbd>Meta-a</kbd> and
+<samp>`@key{META}'</samp> to produce <kbd>META</kbd>.
 </p>
 
 <hr size="6">
@@ -558,8 +558,8 @@ use the regexp @samp{foo$}.
 
 <p>produces
 </p>
-<blockquote><p>To match `<samp>foo</samp>' at the end of the line, use the regexp
-`<samp>foo$</samp>'.
+<blockquote><p>To match <samp>`foo'</samp> at the end of the line, use the regexp
+<samp>`foo$'</samp>.
 </p></blockquote>
 
 <p>Any time you are referring to single characters, you should use
@@ -582,9 +582,9 @@ period are outside of the braces:
 
 <p>This produces:
 </p>
-<blockquote><p>In English, the vowels are `<samp>a</samp>', `<samp>e</samp>',
-`<samp>i</samp>', `<samp>o</samp>', `<samp>u</samp>',  and sometimes
-`<samp>y</samp>'.
+<blockquote><p>In English, the vowels are <samp>`a'</samp>, <samp>`e'</samp>,
+<samp>`i'</samp>, <samp>`o'</samp>, <samp>`u'</samp>,  and sometimes
+<samp>`y'</samp>.
 </p></blockquote>
 
 
@@ -679,7 +679,7 @@ type @samp{rm @var{filename}}.
 
 <p>produces
 </p>
-<blockquote><p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
+<blockquote><p>To delete file <var>filename</var>, type <samp>`rm <var>filename</var>'</samp>.
 </p></blockquote>
 
 
@@ -709,7 +709,7 @@ angle brackets, for example:
 </pre></td></tr></table>
 
 <p>However, that is not the style that Texinfo uses.  (You can, of
-course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
+course, modify the sources to <tt>`texinfo.tex'</tt> and the Info formatting commands
 to output the <code>&lt;&hellip;&gt;</code> format if you wish.)
 </p>
 
@@ -783,8 +783,8 @@ the @file{/usr/local/emacs/lisp} directory.
 
 <p>produces
 </p>
-<blockquote><p>The `<tt>.el</tt>' files are in
-the `<tt>/usr/local/emacs/lisp</tt>' directory.
+<blockquote><p>The <tt>`.el'</tt> files are in
+the <tt>`/usr/local/emacs/lisp'</tt> directory.
 </p></blockquote>
 
 
@@ -824,7 +824,7 @@ For example:
 than using <code>@command</code>, if you regard it as a new English word,
 such as `Emacs' or `Bison'.
 </p>
-<p>When writing an entire shell command invocation, as in `<samp>ls -l</samp>',
+<p>When writing an entire shell command invocation, as in <samp>`ls -l'</samp>,
 you should use either <code>@samp</code> or <code>@code</code> at your discretion.
 </p>
 
@@ -850,15 +850,15 @@ you should use either <code>@samp</code> or <code>@code</code> at your discretio
 <h3 class="subsection"> 9.1.10 <code>@option</code>{<var>option-name</var>} </h3>
 
 <p>Use the <code>@option</code> command to indicate a command-line option; for
-example, `<samp>-l</samp>' or `<samp>--version</samp>' or
-`<samp>--output=<var>filename</var></samp>'.
+example, <samp>`-l'</samp> or <samp>`--version'</samp> or
+<samp>`--output=<var>filename</var>'</samp>.
 </p>
 <p><code>@option</code> is equivalent to <code>@samp</code> in its effects.
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">The option @option{-l} produces a long listing.
 </pre></td></tr></table><p>produces
-</p><blockquote><p>The option `<samp>-l</samp>' produces a long listing.
+</p><blockquote><p>The option <samp>`-l'</samp> produces a long listing.
 </p></blockquote>
 
 <p>In tables, putting options inside <code>@code</code> produces a
@@ -961,9 +961,9 @@ See section <a href="texinfo_9.html#SEC108"><code>@xref</code></a>.
 
 <p>Use the <code>@acronym</code> command for abbreviations written in all
 capital letters, such as `<acronym>NASA</acronym>'.  The abbreviation is given as
-the single argument in braces, as in `<samp>@acronym{NASA}</samp>'.  As
+the single argument in braces, as in <samp>`@acronym{NASA}'</samp>.  As
 a matter of style, or for particular abbreviations, you may prefer to
-use periods, as in `<samp>@acronym{F.B.I.}</samp>'.
+use periods, as in <samp>`@acronym{F.B.I.}'</samp>.
 </p>
 <p>In TeX and HTML, the argument is printed in a slightly smaller font
 size.  In Info or plain text output, this command changes nothing.
@@ -1032,7 +1032,7 @@ text to display (the default is the address itself).
 <a name="IDX131"></a>
 <p>In Info and TeX, the address is shown in angle brackets, preceded by
 the text to display if any.  In HTML output, <code>@email</code> produces a
-`<samp>mailto</samp>' link that usually brings up a mail composition window.
+<samp>`mailto'</samp> link that usually brings up a mail composition window.
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Send bug reports to @email{bug-texinfo@@gnu.org},
@@ -1124,9 +1124,9 @@ effect, a typographical element, such as the word `Caution' in the
 preceding example.
 </p>
 <p>In the Info output, <code>@emph</code> surrounds the text with underscores
-(`<samp>_</samp>'), and <code>@strong</code> puts asterisks around the text.
+(<samp>`_'</samp>), and <code>@strong</code> puts asterisks around the text.
 </p>
-<blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
+<blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word <samp>`Note'</samp>;
 Info will mistake the combination for a cross reference.  Use a phrase
 such as <strong>Please note</strong> or <strong>Caution</strong> instead.
 </p></blockquote>
@@ -1153,7 +1153,7 @@ such as <strong>Please note</strong> or <strong>Caution</strong> instead.
 </tr></table>
 <h3 class="subsection"> 9.2.2 <code>@sc</code>{<var>text</var>}: The Small Caps Font </h3>
 
-<p>Use the `<samp>@sc</samp>' command to set text in the printed and the HTML
+<p>Use the <samp>`@sc'</samp> command to set text in the printed and the HTML
 output in <small>A SMALL CAPS FONT</small> and set text in the Info file in upper
 case letters.  Write the text you want to be in small caps (where
 possible) between braces in lower case, like this:
@@ -1184,7 +1184,7 @@ with <code>@sc</code>, <code>makeinfo</code> warns about such usage.
 such as <small>CDR</small>, a word used in Lisp programming.  In this case, you
 should use the small caps font when the word refers to the second and
 subsequent elements of a list (the <small>CDR</small> of the list), but you
-should use `<samp>@code</samp>' when the word refers to the Lisp function of
+should use <samp>`@code'</samp> when the word refers to the Lisp function of
 the same spelling.
 </p>
 

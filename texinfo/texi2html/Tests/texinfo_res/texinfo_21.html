@@ -242,11 +242,11 @@ type:
 <p>The <code>makeinfo</code> command takes a number of options.  Most often,
 options are used to set the value of the fill column and specify the
 footnote style.  Each command line option is a word preceded by
-`<samp>--</samp>' or a letter preceded by `<samp>-</samp>'.  You can use abbreviations
+<samp>`--'</samp> or a letter preceded by <samp>`-'</samp>.  You can use abbreviations
 for the long option names as long as they are unique.
 </p>
 <p>For example, you could use the following shell command to create an Info
-file for `<tt>bison.texinfo</tt>' in which each line is filled to only 68
+file for <tt>`bison.texinfo'</tt> in which each line is filled to only 68
 columns:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --fill-column=68 bison.texinfo
@@ -262,28 +262,28 @@ file and would also set the fill column to 70.
 <p>The options are:
 </p>
 <dl compact="compact">
-<dt><code> -D <var>var</var></code></dt>
+<dt> <code>-D <var>var</var></code></dt>
 <dd><a name="IDX358"></a>
 <p>Cause the variable <var>var</var> to be defined.  This is equivalent to
 <code>@set <var>var</var></code> in the Texinfo file (see section <a href="texinfo_17.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
-<dt><code> --commands-in-node-names</code></dt>
+<dt> <code>--commands-in-node-names</code></dt>
 <dd><a name="IDX359"></a>
 <p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
 can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
-`<samp>--no-validate</samp>' is used.  See section <a href="#SEC265">Pointer Validation</a>, for more
+<samp>`--no-validate'</samp> is used.  See section <a href="#SEC265">Pointer Validation</a>, for more
 details.
 </p>
 </dd>
-<dt><code> --docbook</code></dt>
+<dt> <code>--docbook</code></dt>
 <dd><a name="IDX360"></a>
 <p>Generate DocBook output rather than Info.  
 </p>
 </dd>
-<dt><code> --error-limit=<var>limit</var></code></dt>
-<dt><code> -e <var>limit</var></code></dt>
+<dt> <code>--error-limit=<var>limit</var></code></dt>
+<dt> <code>-e <var>limit</var></code></dt>
 <dd><a name="IDX361"></a>
 <a name="IDX362"></a>
 <p>Set the maximum number of errors that <code>makeinfo</code> will report
@@ -291,8 +291,8 @@ before exiting (on the assumption that continuing would be useless);
 default 100.
 </p>
 </dd>
-<dt><code> --fill-column=<var>width</var></code></dt>
-<dt><code> -f <var>width</var></code></dt>
+<dt> <code>--fill-column=<var>width</var></code></dt>
+<dt> <code>-f <var>width</var></code></dt>
 <dd><a name="IDX363"></a>
 <a name="IDX364"></a>
 <p>Specify the maximum number of columns in a line; this is the right-hand
@@ -300,39 +300,39 @@ edge of a line.  Paragraphs that are filled will be filled to this
 width.  (Filling is the process of breaking up and connecting lines so
 that lines are the same length as or shorter than the number specified
 as the fill column.  Lines are broken between words.) The default value
-is 72.  Ignored with `<samp>--html</samp>'.
+is 72.  Ignored with <samp>`--html'</samp>.
 </p>
 </dd>
-<dt><code> --footnote-style=<var>style</var></code></dt>
-<dt><code> -s <var>style</var></code></dt>
+<dt> <code>--footnote-style=<var>style</var></code></dt>
+<dt> <code>-s <var>style</var></code></dt>
 <dd><a name="IDX365"></a>
 <a name="IDX366"></a>
-<p>Set the footnote style to <var>style</var>, either `<samp>end</samp>' for the end
-node style (the default) or `<samp>separate</samp>' for the separate node style.
+<p>Set the footnote style to <var>style</var>, either <samp>`end'</samp> for the end
+node style (the default) or <samp>`separate'</samp> for the separate node style.
 The value set by this option overrides the value set in a Texinfo file
 by an <code>@footnotestyle</code> command (see section <a href="texinfo_14.html#SEC201">Footnotes</a>).  When the
-footnote style is `<samp>separate</samp>', <code>makeinfo</code> makes a new node
+footnote style is <samp>`separate'</samp>, <code>makeinfo</code> makes a new node
 containing the footnotes found in the current node.  When the footnote
-style is `<samp>end</samp>', <code>makeinfo</code> places the footnote references at
-the end of the current node.  Ignored with `<samp>--html</samp>'.
+style is <samp>`end'</samp>, <code>makeinfo</code> places the footnote references at
+the end of the current node.  Ignored with <samp>`--html'</samp>.
 </p>
 </dd>
-<dt><code> --force</code></dt>
-<dt><code> -F</code></dt>
+<dt> <code>--force</code></dt>
+<dt> <code>-F</code></dt>
 <dd><a name="IDX367"></a>
 <a name="IDX368"></a>
 <p>Ordinarily, if the input file has errors, the output files are not
 created.  With this option, they are preserved.
 </p>
 </dd>
-<dt><code> --help</code></dt>
-<dt><code> -h</code></dt>
+<dt> <code>--help</code></dt>
+<dt> <code>-h</code></dt>
 <dd><a name="IDX369"></a>
 <a name="IDX370"></a>
 <p>Print a usage message listing all available options, then exit successfully.
 </p>
 </dd>
-<dt><code> --html</code></dt>
+<dt> <code>--html</code></dt>
 <dd><a name="IDX371"></a>
 <p>Generate HTML output rather than Info.  See section <a href="#SEC270">Generating HTML</a>.  By
 default, the HTML output is split into one output file per source node,
@@ -340,27 +340,27 @@ and the split output is written into a subdirectory with the name of the
 top-level info file.
 </p>
 </dd>
-<dt><code> -I <var>dir</var></code></dt>
+<dt> <code>-I <var>dir</var></code></dt>
 <dd><a name="IDX372"></a>
 <p>Append <var>dir</var> to the directory search list for finding files that
 are included using the <code>@include</code> command.  By default,
 <code>makeinfo</code> searches only the current directory.  If <var>dir</var> is
-not given, the current directory `<tt>.</tt>' is appended.  Note that
+not given, the current directory <tt>`.'</tt> is appended.  Note that
 <var>dir</var> can actually be a list of several directories separated by the
-usual path separator character (`<samp>:</samp>' on Unix, `<samp>;</samp>' on
+usual path separator character (<samp>`:'</samp> on Unix, <samp>`;'</samp> on
 MS-DOS/MS-Windows).
 </p>
 </dd>
-<dt><code> --macro-expand=<var>file</var></code></dt>
-<dt><code> -E <var>file</var></code></dt>
+<dt> <code>--macro-expand=<var>file</var></code></dt>
+<dt> <code>-E <var>file</var></code></dt>
 <dd><p>Output the Texinfo source with all the macros expanded to the named
 file.  Normally, the results of macro expansion are used internally by
 <code>makeinfo</code> and then discarded.  This option is used by
-<code>texi2dvi</code> if you are using an old version of `<tt>texinfo.tex</tt>'
+<code>texi2dvi</code> if you are using an old version of <tt>`texinfo.tex'</tt>
 that does not support <code>@macro</code>.
 </p>
 </dd>
-<dt><code> --no-headers</code></dt>
+<dt> <code>--no-headers</code></dt>
 <dd><a name="IDX373"></a>
 <a name="IDX374"></a>
 <a name="IDX375"></a>
@@ -371,19 +371,19 @@ that does not support <code>@macro</code>.
 <p>For Info output, do not include menus or node separator lines in the
 output.  This results in a simple plain text file that you can (for
 example) send in email without complications, or include in a
-distribution (as in an `<tt>INSTALL</tt>' file).
+distribution (as in an <tt>`INSTALL'</tt> file).
 </p>
 <a name="IDX380"></a>
-<p>For HTML output, likewise omit menus.  And if `<samp>--no-split</samp>' is also
+<p>For HTML output, likewise omit menus.  And if <samp>`--no-split'</samp> is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
 See section <a href="#SEC270">Generating HTML</a>.
 </p>
 <p>In both cases, write to standard output by default (can still be
-overridden by `<samp>-o</samp>').
+overridden by <samp>`-o'</samp>).
 </p>
 </dd>
-<dt><code> --no-split</code></dt>
+<dt> <code>--no-split</code></dt>
 <dd><a name="IDX381"></a>
 <a name="IDX382"></a>
 <a name="IDX383"></a>
@@ -393,8 +393,8 @@ smaller subfiles.  For Info output, each one is approximately 50k bytes.
 For HTML output, each file contains one node (see section <a href="#SEC270">Generating HTML</a>).
 </p>
 </dd>
-<dt><code> --no-pointer-validate</code></dt>
-<dt><code> --no-validate</code></dt>
+<dt> <code>--no-pointer-validate</code></dt>
+<dt> <code>--no-validate</code></dt>
 <dd><a name="IDX384"></a>
 <a name="IDX385"></a>
 <a name="IDX386"></a>
@@ -404,7 +404,7 @@ checks are made to ensure that cross references can be resolved, etc.
 See section <a href="#SEC265">Pointer Validation</a>.
 </p>
 </dd>
-<dt><code> --no-warn</code></dt>
+<dt> <code>--no-warn</code></dt>
 <dd><a name="IDX387"></a>
 <p>Suppress warning messages (but <em>not</em> error messages).  You might
 want this if the file you are creating has examples of Texinfo cross
@@ -412,39 +412,39 @@ references within it, and the nodes that are referenced do not actually
 exist.
 </p>
 </dd>
-<dt><code> --number-sections</code></dt>
+<dt> <code>--number-sections</code></dt>
 <dd><a name="IDX388"></a>
 <p>Output chapter, section, and appendix numbers as in printed manuals.
 </p>
 </dd>
-<dt><code> --no-number-footnotes</code></dt>
+<dt> <code>--no-number-footnotes</code></dt>
 <dd><a name="IDX389"></a>
 <p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
 numbers each footnote sequentially in a single node, resetting the
 current footnote number to 1 at the start of each node.
 </p>
 </dd>
-<dt><code> --output=<var>file</var></code></dt>
-<dt><code> -o <var>file</var></code></dt>
+<dt> <code>--output=<var>file</var></code></dt>
+<dt> <code>-o <var>file</var></code></dt>
 <dd><a name="IDX390"></a>
 <a name="IDX391"></a>
 <p>Specify that the output should be directed to <var>file</var> and not to the
 file name specified in the <code>@setfilename</code> command found in the
-Texinfo source (see section <a href="texinfo_4.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is `<samp>-</samp>', output
-goes to standard output and `<samp>--no-split</samp>' is implied.  For split
+Texinfo source (see section <a href="texinfo_4.html#SEC46"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is <samp>`-'</samp>, output
+goes to standard output and <samp>`--no-split'</samp> is implied.  For split
 HTML output, <var>file</var> is the name for the directory into which all
 HTML nodes are written (see section <a href="#SEC270">Generating HTML</a>).
 </p>
 </dd>
-<dt><code> -P <var>dir</var></code></dt>
+<dt> <code>-P <var>dir</var></code></dt>
 <dd><a name="IDX392"></a>
 <p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
-If <var>dir</var> is not given, the current directory `<tt>.</tt>' is prepended.
-See `<samp>-I</samp>' for more details.
+If <var>dir</var> is not given, the current directory <tt>`.'</tt> is prepended.
+See <samp>`-I'</samp> for more details.
 </p>
 </dd>
-<dt><code> --paragraph-indent=<var>indent</var></code></dt>
-<dt><code> -p <var>indent</var></code></dt>
+<dt> <code>--paragraph-indent=<var>indent</var></code></dt>
+<dt> <code>-p <var>indent</var></code></dt>
 <dd><a name="IDX393"></a>
 <a name="IDX394"></a>
 <p>Set the paragraph indentation style to <var>indent</var>.  The value set by
@@ -453,11 +453,11 @@ this option overrides the value set in a Texinfo file by an
 of <var>indent</var> is interpreted as follows:
 </p>
 <dl compact="compact">
-<dt> `<samp>asis</samp>'</dt>
+<dt> <samp>`asis'</samp></dt>
 <dd><p>Preserve any existing indentation at the starts of paragraphs.
 </p>
 </dd>
-<dt> `<samp>0</samp>' or `<samp>none</samp>'</dt>
+<dt> <samp>`0'</samp> or <samp>`none'</samp></dt>
 <dd><p>Delete any existing indentation.
 </p>
 </dd>
@@ -467,8 +467,8 @@ of <var>indent</var> is interpreted as follows:
 </dl>
 
 </dd>
-<dt><code> --reference-limit=<var>limit</var></code></dt>
-<dt><code> -r <var>limit</var></code></dt>
+<dt> <code>--reference-limit=<var>limit</var></code></dt>
+<dt> <code>-r <var>limit</var></code></dt>
 <dd><a name="IDX395"></a>
 <a name="IDX396"></a>
 <p>Set the value of the number of references to a node that
@@ -477,26 +477,26 @@ than this number of references in it, <code>makeinfo</code> will make the
 references but also report a warning.  The default is 1000.
 </p>
 </dd>
-<dt><code> -U <var>var</var></code></dt>
+<dt> <code>-U <var>var</var></code></dt>
 <dd><p>Cause <var>var</var> to be undefined.  This is equivalent to
 <code>@clear <var>var</var></code> in the Texinfo file (see section <a href="texinfo_17.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
 </p>
 </dd>
-<dt><code> --verbose</code></dt>
+<dt> <code>--verbose</code></dt>
 <dd><a name="IDX397"></a>
 <p>Cause <code>makeinfo</code> to display messages saying what it is doing.
 Normally, <code>makeinfo</code> only outputs messages if there are errors or
 warnings.
 </p>
 </dd>
-<dt><code> --version</code></dt>
-<dt><code> -V</code></dt>
+<dt> <code>--version</code></dt>
+<dt> <code>-V</code></dt>
 <dd><a name="IDX398"></a>
 <a name="IDX399"></a>
 <p>Print the version number, then exit successfully.
 </p>
 </dd>
-<dt><code> --xml</code></dt>
+<dt> <code>--xml</code></dt>
 <dd><a name="IDX400"></a>
 <p>Generate XML output rather than Info.  
 </p>
@@ -525,7 +525,7 @@ warnings.
 </tr></table>
 <h3 class="subsection"> 20.1.4 Pointer Validation </h3>
 
-<p>If you do not suppress pointer validation with the `<samp>--no-validate</samp>'
+<p>If you do not suppress pointer validation with the <samp>`--no-validate'</samp>
 option or the <code>@novalidate</code> command in the source file (see section <a href="texinfo_20.html#SEC245">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
 Info file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
@@ -534,7 +534,7 @@ really exist.  Here is a complete list of what is checked:
 <li>
 If a `Next', `Previous', or `Up' node reference is a reference to a
 node in the current file and is not an external reference such as to
-`<tt>(dir)</tt>', then the referenced node must exist.
+<tt>`(dir)'</tt>, then the referenced node must exist.
 
 </li><li>
 In every node, if the `Previous' node is different from the `Up' node,
@@ -588,7 +588,7 @@ always try to reference nodes consistently; e.g., in the above example,
 the second <code>@node</code> line should have also used <code>@value</code>.
 However, if, for some reason, you <em>must</em> reference node names
 inconsistently, and <code>makeinfo</code> fails to validate the file, you can
-use the `<samp>--commands-in-node-names</samp>' option to force <code>makeinfo</code>
+use the <samp>`--commands-in-node-names'</samp> option to force <code>makeinfo</code>
 to perform the expensive expansion of all node names it finds in the
 document.  This might considerably slow down the program, though;
 twofold increase in conversion time was measured for large documents
@@ -599,9 +599,9 @@ such as the Jargon file.
 general enough to be freely used.  For example, if the example above
 redefined <code>nodename</code> somewhere in the document, <code>makeinfo</code>
 will fail to convert it, even if invoked with the
-`<samp>--commands-in-node-names</samp>' option.
+<samp>`--commands-in-node-names'</samp> option.
 </p>
-<p>`<samp>--commands-in-node-names</samp>' has no effect if the `<samp>--no-validate</samp>'
+<p><samp>`--commands-in-node-names'</samp> has no effect if the <samp>`--no-validate'</samp>
 option is given.
 </p>
 
@@ -632,14 +632,14 @@ Texinfo mode, the commands are bound to <kbd>C-c C-m C-r</kbd> and <kbd>C-c
 C-m C-b</kbd> by default.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-m C-r</kbd></dt>
-<dt><kbd> M-x makeinfo-region</kbd></dt>
+<dt> <kbd>C-c C-m C-r</kbd></dt>
+<dt> <kbd>M-x makeinfo-region</kbd></dt>
 <dd><p>Format the current region for Info.
 <a name="IDX403"></a>
 </p>
 </dd>
-<dt><kbd> C-c C-m C-b</kbd></dt>
-<dt><kbd> M-x makeinfo-buffer</kbd></dt>
+<dt> <kbd>C-c C-m C-b</kbd></dt>
+<dt> <kbd>M-x makeinfo-buffer</kbd></dt>
 <dd><p>Format the current buffer for Info.
 <a name="IDX404"></a>
 </p></dd>
@@ -670,15 +670,15 @@ command is running or make the shell buffer display its most recent
 output.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-m C-k</kbd></dt>
-<dt><kbd> M-x makeinfo-kill-job</kbd></dt>
+<dt> <kbd>C-c C-m C-k</kbd></dt>
+<dt> <kbd>M-x makeinfo-kill-job</kbd></dt>
 <dd><a name="IDX408"></a>
 <p>Kill the current running <code>makeinfo</code> job
 (from <code>makeinfo-region</code> or <code>makeinfo-buffer</code>).
 </p>
 </dd>
-<dt><kbd> C-c C-m C-l</kbd></dt>
-<dt><kbd> M-x makeinfo-recenter-output-buffer</kbd></dt>
+<dt> <kbd>C-c C-m C-l</kbd></dt>
+<dt> <kbd>M-x makeinfo-recenter-output-buffer</kbd></dt>
 <dd><a name="IDX409"></a>
 <p>Redisplay the <code>makeinfo</code> shell buffer to display its most recent
 output.
@@ -692,9 +692,9 @@ job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href=
 <p>You can specify options for <code>makeinfo</code> by setting the
 <code>makeinfo-options</code> variable with either the <kbd>M-x
 edit-options</kbd> or the <kbd>M-x set-variable</kbd> command, or by setting the
-variable in your `<tt>.emacs</tt>' initialization file.
+variable in your <tt>`.emacs'</tt> initialization file.
 </p>
-<p>For example, you could write the following in your `<tt>.emacs</tt>' file:
+<p>For example, you could write the following in your <tt>`.emacs'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(setq makeinfo-options
       &quot;--paragraph-indent=0 --no-split
@@ -731,7 +731,7 @@ variable in your `<tt>.emacs</tt>' initialization file.
 <p>In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the <code>texinfo-format-region</code> command.  This formats the
 current region and displays the formatted text in a temporary buffer
-called `<samp>*Info Region*</samp>'.
+called <samp>`*Info Region*'</samp>.
 </p>
 <p>Similarly, you can format a buffer with the
 <code>texinfo-format-buffer</code> command.  This command creates a new
@@ -741,14 +741,14 @@ save the Info file under the name specified by the
 Texinfo file.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-e C-r</kbd></dt>
-<dt><kbd> <code>texinfo-format-region</code></kbd></dt>
+<dt> <kbd>C-c C-e C-r</kbd></dt>
+<dt> <kbd><code>texinfo-format-region</code></kbd></dt>
 <dd><p>Format the current region for Info.
 <a name="IDX410"></a>
 </p>
 </dd>
-<dt><kbd> C-c C-e C-b</kbd></dt>
-<dt><kbd> <code>texinfo-format-buffer</code></kbd></dt>
+<dt> <kbd>C-c C-e C-b</kbd></dt>
+<dt> <kbd><code>texinfo-format-buffer</code></kbd></dt>
 <dd><p>Format the current buffer for Info.
 <a name="IDX411"></a>
 </p></dd>
@@ -787,7 +787,7 @@ and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
 including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
 </p>
 <p>Here is a shell command to format all the files that end in
-`<tt>.texinfo</tt>' in the current directory:
+<tt>`.texinfo'</tt> in the current directory:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
 </pre></td></tr></table>
@@ -852,13 +852,13 @@ the original file that contains just the tag table and references to
 the files that were split off.  The split-off files are called
 <em>indirect</em> files.
 </p>
-<p>The split-off files have names that are created by appending `<samp>-1</samp>',
-`<samp>-2</samp>', `<samp>-3</samp>' and so on to the file name specified by the
+<p>The split-off files have names that are created by appending <samp>`-1'</samp>,
+<samp>`-2'</samp>, <samp>`-3'</samp> and so on to the file name specified by the
 <code>@setfilename</code> command.  The shortened version of the original file
 continues to have the name specified by <code>@setfilename</code>.
 </p>
 <p>At one stage in writing this document, for example, the Info file was saved
-as the file `<tt>test-texinfo</tt>' and that file looked like this:
+as the file <tt>`test-texinfo'</tt> and that file looked like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Info file: test-texinfo,    -*-Text-*-
 produced by texinfo-format-buffer
@@ -879,11 +879,11 @@ Node: conventions^?6855
 &hellip;
 </pre></td></tr></table>
 
-<p>(But `<tt>test-texinfo</tt>' had far more nodes than are shown here.)  Each of
-the split-off, indirect files, `<tt>test-texinfo-1</tt>',
-`<tt>test-texinfo-2</tt>', and `<tt>test-texinfo-3</tt>', is listed in this file
-after the line that says `<samp>Indirect:</samp>'.  The tag table is listed after
-the line that says `<samp>Tag table:</samp>'. 
+<p>(But <tt>`test-texinfo'</tt> had far more nodes than are shown here.)  Each of
+the split-off, indirect files, <tt>`test-texinfo-1'</tt>,
+<tt>`test-texinfo-2'</tt>, and <tt>`test-texinfo-3'</tt>, is listed in this file
+after the line that says <samp>`Indirect:'</samp>.  The tag table is listed after
+the line that says <samp>`Tag table:'</samp>. 
 </p>
 <p>In the list of indirect files, the number following the file name
 records the cumulative number of bytes in the preceding indirect files,
@@ -923,7 +923,7 @@ validate the structure of the nodes, see <a href="texinfo_27.html#SEC315">Runnin
 <h3 class="subsection"> 20.1.9 Generating HTML </h3>
 
 <p>Besides generating output in the Info format, you can use the
-`<samp>--html</samp>' option to generate output in HTML format, for installation
+<samp>`--html'</samp> option to generate output in HTML format, for installation
 on a web site (for example).  By default, the HTML output is split at
 node level.
 </p>
@@ -931,43 +931,43 @@ node level.
 The subdirectory is named according to the name from
 <code>@setfilename</code> with any extension removed; for example, HTML
 output for <code>@setfilename emacs.info</code> would be written into a
-subdirectory named `<samp>emacs</samp>'.  If that directory cannot be created
-for any reason, then `<samp>.html</samp>' is appended to the directory name, as
-in `<samp>emacs.html</samp>' (this is necessary because sometimes the info file
-is named without an extension, e.g., `<samp>texinfo</samp>').  If the
-`<samp><var>name</var>.html</samp>' directory can't be created either,
+subdirectory named <samp>`emacs'</samp>.  If that directory cannot be created
+for any reason, then <samp>`.html'</samp> is appended to the directory name, as
+in <samp>`emacs.html'</samp> (this is necessary because sometimes the info file
+is named without an extension, e.g., <samp>`texinfo'</samp>).  If the
+<samp>`<var>name</var>.html'</samp> directory can't be created either,
 <code>makeinfo</code> gives up.  In any case, the top-level output file within
-the directory is always named `<samp>index.html</samp>'.
+the directory is always named <samp>`index.html'</samp>.
 </p>
 <p>Monolithic output (<code>--no-split</code>) is named according to
 <code>@setfilename</code> or <code>--outfile</code>.  Cross-document node
 references are not supported in monolithic HTML.
 </p>
 <p>Texinfo input marked up with the <code>@ifhtml</code> command will produce
-output only with the `<samp>--html</samp>' option supplied.  Input marked up
+output only with the <samp>`--html'</samp> option supplied.  Input marked up
 with the <code>@html</code> is passed literally to the output (suppressing
-the normal escaping of input `<samp>&lt;</samp>', `<samp>&gt;</samp>' and `<samp>&amp;</samp>' characters
+the normal escaping of input <samp>`&lt;'</samp>, <samp>`&gt;'</samp> and <samp>`&amp;'</samp> characters
 which have special significance in HTML).
 </p>
-<p>The `<samp>--footnote-style</samp>' option is currently ignored for HTML output;
+<p>The <samp>`--footnote-style'</samp> option is currently ignored for HTML output;
 footnotes are linked to the end of the output file.
 </p>
 <p>The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
 exception is that HTML 3.2 tables are generated from the
 <code>@multitable</code> command, but tagged to degrade as well as possible
-in browsers without table support.  The HTML 4 `<samp>lang</samp>' attribute on
-the `<samp>&lt;html&gt;</samp>' attribute is also used.  Please report output from an
+in browsers without table support.  The HTML 4 <samp>`lang'</samp> attribute on
+the <samp>`&lt;html&gt;'</samp> attribute is also used.  Please report output from an
 error-free run of <code>makeinfo</code> which has browser portability problems
 as a bug.
 </p>
 <p>Navigation bars are inserted at the start of nodes, similarly to Info
-output.  The `<samp>--no-headers</samp>' option will suppress this if used with
-`<samp>--no-split</samp>'.  Header <code>&lt;link&gt;</code> elements in split output can
+output.  The <samp>`--no-headers'</samp> option will suppress this if used with
+<samp>`--no-split'</samp>.  Header <code>&lt;link&gt;</code> elements in split output can
 support info-like navigation with browsers like Lynx and Emacs W3
-which implement this HTML 1.0 feature.  `<samp>@xref</samp>' commands to
+which implement this HTML 1.0 feature.  <samp>`@xref'</samp> commands to
 other documents are generated assuming the other document is available
 in split HTML form, and installed in the same HTML documentation tree,
-at `<tt>../&lt;info-document&gt;/</tt>'.
+at <tt>`../&lt;info-document&gt;/'</tt>.
 </p>
 
 <hr size="6">
@@ -991,12 +991,12 @@ at `<tt>../&lt;info-document&gt;/</tt>'.
 </tr></table>
 <h2 class="section"> 20.2 Installing an Info File </h2>
 
-<p>Info files are usually kept in the `<tt>info</tt>' directory.  You can read
+<p>Info files are usually kept in the <tt>`info'</tt> directory.  You can read
 Info files using the standalone Info program or the Info reader built
 into Emacs.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for an introduction to Info.)
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC272">20.2.1 The Directory File `<tt>dir</tt>'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              The top level menu for all Info files.
+<tr><td align="left" valign="top"><a href="#SEC272">20.2.1 The Directory File <tt>`dir'</tt></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              The top level menu for all Info files.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC273">20.2.2 Listing a New Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Listing a new Info file.
 </td></tr>
@@ -1030,15 +1030,15 @@ into Emacs.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for an i
 <td valign="middle" align="left">[<a href="texinfo_32.html#SEC325" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
+<h3 class="subsection"> 20.2.1 The Directory File <tt>`dir'</tt> </h3>
 
-<p>For Info to work, the `<tt>info</tt>' directory must contain a file that
+<p>For Info to work, the <tt>`info'</tt> directory must contain a file that
 serves as a top level directory for the Info system.  By convention,
-this file is called `<tt>dir</tt>'.  (You can find the location of this file
+this file is called <tt>`dir'</tt>.  (You can find the location of this file
 within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
-<kbd>C-x C-f</kbd> to see the pathname to the `<tt>info</tt>' directory.)
+<kbd>C-x C-f</kbd> to see the pathname to the <tt>`info'</tt> directory.)
 </p>
-<p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
+<p>The <tt>`dir'</tt> file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
 this:
 </p>
@@ -1056,9 +1056,9 @@ that is named in parentheses.  (The menu entry does not need to
 specify the `Top' node, since Info goes to the `Top' node if no node
 name is mentioned.  See section <a href="texinfo_8.html#SEC103">Nodes in Other Info Files</a>.)
 </p>
-<p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
-`<tt>info</tt>' file and the `<samp>Emacs</samp>' entry points to the `Top' node
-of the `<tt>emacs</tt>' file.
+<p>Thus, the <samp>`Info'</samp> entry points to the `Top' node of the
+<tt>`info'</tt> file and the <samp>`Emacs'</samp> entry points to the `Top' node
+of the <tt>`emacs'</tt> file.
 </p>
 <p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
@@ -1067,9 +1067,9 @@ node of the Emacs manual looks like this in Info:
 <table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 
-<p>In this case, the `<tt>dir</tt>' file name is written in upper case
+<p>In this case, the <tt>`dir'</tt> file name is written in upper case
 letters--it can be written in either upper or lower case.  This is not
-true in general, it is a special case for `<tt>dir</tt>'.
+true in general, it is a special case for <tt>`dir'</tt>.
 </p>
 
 <hr size="6">
@@ -1094,7 +1094,7 @@ true in general, it is a special case for `<tt>dir</tt>'.
 <h3 class="subsection"> 20.2.2 Listing a New Info File </h3>
 
 <p>To add a new Info file to your system, you must write a menu entry to
-add to the menu in the `<tt>dir</tt>' file in the `<tt>info</tt>' directory.
+add to the menu in the <tt>`dir'</tt> file in the <tt>`info'</tt> directory.
 For example, if you were adding documentation for GDB, you would write
 the following new entry:
 </p>
@@ -1105,13 +1105,13 @@ the following new entry:
 colon.  The second part is the name of the Info file, in parentheses,
 followed by a period.  The third part is the description.
 </p>
-<p>The name of an Info file often has a `<tt>.info</tt>' extension.  Thus, the
-Info file for GDB might be called either `<tt>gdb</tt>' or `<tt>gdb.info</tt>'.
+<p>The name of an Info file often has a <tt>`.info'</tt> extension.  Thus, the
+Info file for GDB might be called either <tt>`gdb'</tt> or <tt>`gdb.info'</tt>.
 The Info reader programs automatically try the file name both with and
-without `<tt>.info</tt>'<a name="DOCF11" href="texinfo_fot.html#FOOT11">(11)</a>; so it is better to avoid
-clutter and not to write `<samp>.info</samp>' explicitly in the menu entry.  For
-example, the GDB menu entry should use just `<samp>gdb</samp>' for the file
-name, not `<samp>gdb.info</samp>'.
+without <tt>`.info'</tt><a name="DOCF11" href="texinfo_fot.html#FOOT11">(11)</a>; so it is better to avoid
+clutter and not to write <samp>`.info'</samp> explicitly in the menu entry.  For
+example, the GDB menu entry should use just <samp>`gdb'</samp> for the file
+name, not <samp>`gdb.info'</samp>.
 </p>
 
 <hr size="6">
@@ -1135,43 +1135,43 @@ name, not `<samp>gdb.info</samp>'.
 </tr></table>
 <h3 class="subsection"> 20.2.3 Info Files in Other Directories </h3>
 
-<p>If an Info file is not in the `<tt>info</tt>' directory, there are three
+<p>If an Info file is not in the <tt>`info'</tt> directory, there are three
 ways to specify its location:
 </p>
 <ol>
 <li>
-Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
+Write the pathname in the <tt>`dir'</tt> file as the second part of the menu.
 
 </li><li>
-If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
+If you are using Emacs, list the name of the file in a second <tt>`dir'</tt>
 file, in its directory; and then add the name of that directory to the
 <code>Info-directory-list</code> variable in your personal or site
 initialization file.
 
-<p>This variable tells Emacs where to look for `<tt>dir</tt>' files (the files
-must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
+<p>This variable tells Emacs where to look for <tt>`dir'</tt> files (the files
+must be named <tt>`dir'</tt>).  Emacs merges the files named <tt>`dir'</tt> from
 each of the listed directories.  (In Emacs version 18, you can set the
 <code>Info-directory</code> variable to the name of only one
 directory.)
 </p>
 </li><li>
 Specify the Info directory name in the <code>INFOPATH</code> environment
-variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
+variable in your <tt>`.profile'</tt> or <tt>`.cshrc'</tt> initialization file.
 (Only you and others who set this environment variable will be able to
 find Info files whose location is specified this way.)
 </li></ol>
 
-<p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
+<p>For example, to reach a test file in the <tt>`/home/bob/info'</tt>
 directory, you could add an entry like this to the menu in the
-standard `<tt>dir</tt>' file:
+standard <tt>`dir'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
 
-<p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
+<p>In this case, the absolute file name of the <tt>`info-test'</tt> file is
 written as the second part of the menu entry.
 </p>
-<p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
+<p>Alternatively, you could write the following in your <tt>`.emacs'</tt> file:
 </p>
 <a name="IDX413"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
@@ -1179,36 +1179,36 @@ written as the second part of the menu entry.
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
 </pre></td></tr></table>
-<p>This tells Emacs to merge the system `<tt>dir</tt>' file with the `<tt>dir</tt>'
-file in `<tt>/home/bob/info</tt>'.  Thus, Info will list the
-`<tt>/home/bob/info/info-test</tt>' file as a menu entry in the
-`<tt>/home/bob/info/dir</tt>' file.  Emacs does the merging only when
+<p>This tells Emacs to merge the system <tt>`dir'</tt> file with the <tt>`dir'</tt>
+file in <tt>`/home/bob/info'</tt>.  Thus, Info will list the
+<tt>`/home/bob/info/info-test'</tt> file as a menu entry in the
+<tt>`/home/bob/info/dir'</tt> file.  Emacs does the merging only when
 <kbd>M-x info</kbd> is first run, so if you want to set
 <code>Info-directory-list</code> in an Emacs session where you've already run
 <code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
-to recompose the `<tt>dir</tt>' file.
+to recompose the <tt>`dir'</tt> file.
 </p>
 <a name="IDX414"></a>
 <p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
-environment variable in your shell startup file, such as `<tt>.cshrc</tt>',
-`<tt>.profile</tt>' or `<tt>autoexec.bat</tt>'.  If you use a Bourne-compatible
+environment variable in your shell startup file, such as <tt>`.cshrc'</tt>,
+<tt>`.profile'</tt> or <tt>`autoexec.bat'</tt>.  If you use a Bourne-compatible
 shell such as <code>sh</code> or <code>bash</code> for your shell command
 interpreter, you set the <code>INFOPATH</code> environment variable in the
-`<tt>.profile</tt>' initialization file; but if you use <code>csh</code> or
-<code>tcsh</code>, you set the variable in the `<tt>.cshrc</tt>' initialization
+<tt>`.profile'</tt> initialization file; but if you use <code>csh</code> or
+<code>tcsh</code>, you set the variable in the <tt>`.cshrc'</tt> initialization
 file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
-your `<tt>autoexec.bat</tt>' file or in the Registry.  Each type of shell
+your <tt>`autoexec.bat'</tt> file or in the Registry.  Each type of shell
 uses a different syntax.
 </p>
 <ul>
 <li>
-In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
+In a <tt>`.cshrc'</tt> file, you could set the <code>INFOPATH</code>
 variable as follows:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
 </li><li>
-In a `<tt>.profile</tt>' file, you would achieve the same effect by
+In a <tt>`.profile'</tt> file, you would achieve the same effect by
 writing:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
@@ -1216,18 +1216,18 @@ export INFOPATH
 </pre></td></tr></table>
 </li><li>
 <a name="IDX415"></a>
-In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+In a <tt>`autoexec.bat'</tt> file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
 
-<p>The `<samp>.</samp>' indicates the current directory as usual.  Emacs uses the
+<p>The <samp>`.'</samp> indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's
 own <code>Info-directory-list</code> variable.  The stand-alone Info reader
-merges any files named `<tt>dir</tt>' in any directory listed in the
+merges any files named <tt>`dir'</tt> in any directory listed in the
 <code>INFOPATH</code> variable into a single menu presented to you in the node
-called `<samp>(dir)Top</samp>'.
+called <samp>`(dir)Top'</samp>.
 </p>
 <a name="IDX416"></a>
 <p>However you set <code>INFOPATH</code>, if its last character is a
@@ -1240,14 +1240,14 @@ the standard places.  For example (using <code>sh</code> syntax):
 export INFOPATH
 </pre></td></tr></table>
 
-<p>will search `<tt>/local/info</tt>' first, then the standard directories.
+<p>will search <tt>`/local/info'</tt> first, then the standard directories.
 Leading or doubled colons are not treated specially.
 </p>
 <a name="IDX417"></a>
-<p>When you create your own `<tt>dir</tt>' file for use with
+<p>When you create your own <tt>`dir'</tt> file for use with
 <code>Info-directory-list</code> or <code>INFOPATH</code>, it's easiest to start by
-copying an existing `<tt>dir</tt>' file and replace all the text after the
-`<samp>* Menu:</samp>' with your desired entries.  That way, the punctuation and
+copying an existing <tt>`dir'</tt> file and replace all the text after the
+<samp>`* Menu:'</samp> with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
 </p>
 
@@ -1273,7 +1273,7 @@ special CTRL-_ characters that Info needs will be present.
 <h3 class="subsection"> 20.2.4 Installing Info Directory Files </h3>
 
 <p>When you install an Info file onto your system, you can use the program
-<code>install-info</code> to update the Info directory file `<tt>dir</tt>'.
+<code>install-info</code> to update the Info directory file <tt>`dir'</tt>.
 Normally the makefile for the package runs <code>install-info</code>, just
 after copying the Info file into its proper installed location.
 </p>
@@ -1354,9 +1354,9 @@ as a whole in the appropriate other category.
 
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
-top-level `<tt>dir</tt>' file in the Info system (see the previous sections
-for an explanation of how the `<tt>dir</tt>' file works).  It's most often
-run as part of software installation, or when constructing a `<tt>dir</tt>' file
+top-level <tt>`dir'</tt> file in the Info system (see the previous sections
+for an explanation of how the <tt>`dir'</tt> file works).  It's most often
+run as part of software installation, or when constructing a <tt>`dir'</tt> file
 for all manuals on a system.  Synopsis:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
@@ -1364,7 +1364,7 @@ for all manuals on a system.  Synopsis:
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time
 defaults, and standard input is never used.  <code>install-info</code> can
-read only one Info file and write only one `<tt>dir</tt>' file per invocation.
+read only one Info file and write only one <tt>`dir'</tt> file per invocation.
 </p>
 <a name="IDX420"></a>
 <p>If <var>dir-file</var> (however specified) does not exist,
@@ -1376,28 +1376,28 @@ read only one Info file and write only one `<tt>dir</tt>' file per invocation.
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to
-open `<tt><var>dir-file</var>.gz</tt>'.
+open <tt>`<var>dir-file</var>.gz'</tt>.
 </p>
 <p>Options:
 </p>
 <dl compact="compact">
-<dt><code> --delete</code></dt>
+<dt> <code>--delete</code></dt>
 <dd><a name="IDX423"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
-an optional `<samp>.info</samp>' in either one).  Don't insert any new entries.
+an optional <samp>`.info'</samp> in either one).  Don't insert any new entries.
 </p>
 </dd>
-<dt><code> --dir-file=<var>name</var></code></dt>
-<dt><code> -d <var>name</var></code></dt>
+<dt> <code>--dir-file=<var>name</var></code></dt>
+<dt> <code>-d <var>name</var></code></dt>
 <dd><a name="IDX424"></a>
 <a name="IDX425"></a>
 <p>Specify file name of the Info directory file.  This is equivalent to
 using the <var>dir-file</var> argument.
 </p>
 </dd>
-<dt><code> --entry=<var>text</var></code></dt>
-<dt><code> -e <var>text</var></code></dt>
+<dt> <code>--entry=<var>text</var></code></dt>
+<dt> <code>-e <var>text</var></code></dt>
 <dd><a name="IDX426"></a>
 <a name="IDX427"></a>
 <p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
@@ -1407,50 +1407,50 @@ added.  If you don't specify any entries, they are determined from
 information in the Info file itself.
 </p>
 </dd>
-<dt><code> --help</code></dt>
-<dt><code> -h</code></dt>
+<dt> <code>--help</code></dt>
+<dt> <code>-h</code></dt>
 <dd><a name="IDX428"></a>
 <a name="IDX429"></a>
 <p>Display a usage message listing basic usage and all available options,
 then exit successfully.
 </p>
 </dd>
-<dt><code> --info-file=<var>file</var></code></dt>
-<dt><code> -i <var>file</var></code></dt>
+<dt> <code>--info-file=<var>file</var></code></dt>
+<dt> <code>-i <var>file</var></code></dt>
 <dd><a name="IDX430"></a>
 <a name="IDX431"></a>
 <p>Specify Info file to install in the directory.
 Equivalent to using the <var>info-file</var> argument.
 </p>
 </dd>
-<dt><code> --info-dir=<var>dir</var></code></dt>
-<dt><code> -D <var>dir</var></code></dt>
+<dt> <code>--info-dir=<var>dir</var></code></dt>
+<dt> <code>-D <var>dir</var></code></dt>
 <dd><a name="IDX432"></a>
 <a name="IDX433"></a>
-<p>Specify the directory where `<tt>dir</tt>' resides.
-Equivalent to `<samp>--dir-file=<var>dir</var>/dir</samp>'.
+<p>Specify the directory where <tt>`dir'</tt> resides.
+Equivalent to <samp>`--dir-file=<var>dir</var>/dir'</samp>.
 </p>
 </dd>
-<dt><code> --item=<var>text</var></code></dt>
+<dt> <code>--item=<var>text</var></code></dt>
 <dd><a name="IDX434"></a>
-<p>Same as `<samp>--entry=<var>text</var></samp>'.  An Info directory entry is actually
+<p>Same as <samp>`--entry=<var>text</var>'</samp>.  An Info directory entry is actually
 a menu item.
 </p>
 </dd>
-<dt><code> --quiet</code></dt>
+<dt> <code>--quiet</code></dt>
 <dd><a name="IDX435"></a>
 <p>Suppress warnings.
 </p>
 </dd>
-<dt><code> --remove</code></dt>
-<dt><code> -r</code></dt>
+<dt> <code>--remove</code></dt>
+<dt> <code>-r</code></dt>
 <dd><a name="IDX436"></a>
 <a name="IDX437"></a>
-<p>Same as `<samp>--delete</samp>'.
+<p>Same as <samp>`--delete'</samp>.
 </p>
 </dd>
-<dt><code> --section=<var>sec</var></code></dt>
-<dt><code> -s <var>sec</var></code></dt>
+<dt> <code>--section=<var>sec</var></code></dt>
+<dt> <code>-s <var>sec</var></code></dt>
 <dd><a name="IDX438"></a>
 <a name="IDX439"></a>
 <p>Put this file's entries in section <var>sec</var> of the directory.  If you
@@ -1459,8 +1459,8 @@ sections.  If you don't specify any sections, they are determined from
 information in the Info file itself.
 </p>
 </dd>
-<dt><code> --version</code></dt>
-<dt><code> -V</code></dt>
+<dt> <code>--version</code></dt>
+<dt> <code>-V</code></dt>
 <dd><a name="IDX440"></a>
 <a name="IDX441"></a>
 <a name="IDX442"></a>

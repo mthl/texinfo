@@ -100,36 +100,36 @@ the file (the <code>\input</code> line) does not show up in the output.
 <p>The <code>@setfilename</code> line specifies the name of the output file to
 be generated.  This name must be different from the name of the Texinfo
 file.  There are two conventions for choosing the name: you can either
-remove the extension (such as `<samp>.texi</samp>') entirely from the input file
-name, or, preferably, replace it with the `<samp>.info</samp>' extension.
+remove the extension (such as <samp>`.texi'</samp>) entirely from the input file
+name, or, preferably, replace it with the <samp>`.info'</samp> extension.
 </p>
 <a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
-<p>Although an explicit `<samp>.info</samp>' extension is preferable, some
+<p>Although an explicit <samp>`.info'</samp> extension is preferable, some
 operating systems cannot handle long file names.  You can run into a
 problem even when the file name you specify is itself short enough.
 This occurs because the Info formatters split a long Info file into
-short indirect subfiles, and name them by appending `<samp>-1</samp>',
-`<samp>-2</samp>', &hellip;, `<samp>-10</samp>', `<samp>-11</samp>', and so on, to the original
+short indirect subfiles, and name them by appending <samp>`-1'</samp>,
+<samp>`-2'</samp>, &hellip;, <samp>`-10'</samp>, <samp>`-11'</samp>, and so on, to the original
 file name.  (See section <a href="Tag-and-Split-Files.html#SEC269">Tag Files and Split Files</a>.)  The subfile name
-`<tt>texinfo.info-10</tt>', for example, is too long for old systems with a
+<tt>`texinfo.info-10'</tt>, for example, is too long for old systems with a
 14-character limit on filenames; so the Info file name for this document
-is `<tt>texinfo</tt>' rather than `<tt>texinfo.info</tt>'.  When <code>makeinfo</code>
+is <tt>`texinfo'</tt> rather than <tt>`texinfo.info'</tt>.  When <code>makeinfo</code>
 is running on operating systems such as MS-DOS which impose severe
 limits on file names, it may remove some characters from the original
 file name to leave enough space for the subfile suffix, thus producing
-files named `<tt>texin-10</tt>', `<tt>gcc.i12</tt>', etc.
+files named <tt>`texin-10'</tt>, <tt>`gcc.i12'</tt>, etc.
 </p>
 <p>When producing HTML output, <code>makeinfo</code> will replace any extension
-with `<samp>html</samp>', or add `<samp>.html</samp>' if the given name has no
+with <samp>`html'</samp>, or add <samp>`.html'</samp> if the given name has no
 extension.
 </p>
 <a name="IDX71"></a>
 <p>The <code>@setfilename</code> line produces no output when you typeset a
 manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
-also reads `<tt>texinfo.cnf</tt>' if that file is present on your system
+also reads <tt>`texinfo.cnf'</tt> if that file is present on your system
 (see section <a href="Preparing-for-TeX.html#SEC253">Preparing for TeX</a>).
 </p>
 

@@ -167,7 +167,7 @@ where necessary (rarely, we hope) to set coding systems directly.
 <a name="IDX698"></a>
 <a name="IDX699"></a>
 <p>  The command <kbd>C-h h</kbd> (<code>view-hello-file</code>) displays the file
-`<tt>etc/HELLO</tt>', which shows how to say &quot;hello&quot; in many languages.
+<tt>`etc/HELLO'</tt>, which shows how to say &quot;hello&quot; in many languages.
 This illustrates various scripts.
 </p>
 <p>  Keyboards, even in the countries where these character sets are used,
@@ -229,7 +229,7 @@ Latin-5, Norwegian, Polish, Romanian, Slovenian, Thai-XTIS, Vietnamese.
 <p>  Some operating systems let you specify the language you are using by
 setting locale environment variables.  XEmacs handles one common special
 case of this: if your locale name for character types contains the
-string `<samp>8859-<var>n</var></samp>', XEmacs automatically selects the
+string <samp>`8859-<var>n</var>'</samp>, XEmacs automatically selects the
 corresponding language environment.
 </p>
 <a name="IDX702"></a>
@@ -306,15 +306,15 @@ cycle through the alternatives.
 <p>  Sometimes it is useful to cut off input method processing so that the
 characters you have just entered will not combine with subsequent
 characters.  For example, in input method <code>latin-1-postfix</code>, the
-sequence <kbd>e '</kbd> combines to form an `<samp>e</samp>' with an accent.  What if
+sequence <kbd>e '</kbd> combines to form an <samp>`e'</samp> with an accent.  What if
 you want to enter them as separate characters?
 </p>
 <p>  One way is to type the accent twice; that is a special feature for
 entering the separate letter and accent.  For example, <kbd>e ' '</kbd> gives
-you the two characters `<samp>e'</samp>'.  Another way is to type another letter
+you the two characters <samp>`e''</samp>.  Another way is to type another letter
 after the <kbd>e</kbd>--something that won't combine with that--and
 immediately delete it.  For example, you could type <kbd>e e <kbd>DEL</kbd>
-'</kbd> to get separate `<samp>e</samp>' and `<samp>'</samp>'.
+'</kbd> to get separate <samp>`e'</samp> and <samp>`''</samp>.
 </p>
 <p>  Another method, more general but not quite as easy to type, is to use
 <kbd>C-\ C-\</kbd> between two characters to stop them from combining.  This
@@ -357,16 +357,16 @@ are in the minibuffer).
 <h2 class="section"> 17.4 Selecting an Input Method </h2>
 
 <dl compact="compact">
-<dt><kbd> C-\</kbd></dt>
+<dt> <kbd>C-\</kbd></dt>
 <dd><p>Enable or disable use of the selected input method.
 </p>
 </dd>
-<dt><kbd> C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Select a new input method for the current buffer.
 </p>
 </dd>
-<dt><kbd> C-h I <var>method</var> <kbd>RET</kbd></kbd></dt>
-<dt><kbd> C-h C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h I <var>method</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C-\ <var>method</var> <kbd>RET</kbd></kbd></dt>
 <dd><a name="IDX706"></a>
 <a name="IDX707"></a>
 <a name="IDX708"></a>
@@ -374,7 +374,7 @@ are in the minibuffer).
 By default, it describes the current input method (if any).
 </p>
 </dd>
-<dt><kbd> M-x list-input-methods</kbd></dt>
+<dt> <kbd>M-x list-input-methods</kbd></dt>
 <dd><p>Display a list of all the supported input methods.
 </p></dd>
 </dl>
@@ -453,23 +453,23 @@ user: font registry and so called <em>ccl-program</em>.
 for this character set.  For example, both the <code>ascii</code> and
 <code>latin-iso8859-1</code> charsets use the registry <code>&quot;ISO8859-1&quot;</code>.
 This field is used to choose an appropriate font when the user gives a
-general font specification such as `<samp>-*-courier-medium-r-*-140-*</samp>',
+general font specification such as <samp>`-*-courier-medium-r-*-140-*'</samp>,
 i.e. a 14-point upright medium-weight Courier font.
 </p>
 <p>You can set font registry for a charset using
-`<samp>set-charset-registry</samp>' function in one of your startup files.  This
+<samp>`set-charset-registry'</samp> function in one of your startup files.  This
 function takes two arguments: character set (as a symbol) and font
 registry (as a string).
 </p>
 <p>E. g., for Cyrillic texts Mule uses <code>cyrillic-iso8859-5</code>
-charset with `<samp>&quot;ISO8859-5&quot;</samp>' as a default registry, and we want to
-use `<samp>&quot;koi8-r&quot;</samp>' instead, because fonts in that encoding are
+charset with <samp>`&quot;ISO8859-5&quot;'</samp> as a default registry, and we want to
+use <samp>`&quot;koi8-r&quot;'</samp> instead, because fonts in that encoding are
 installed on our system.  Use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
 </pre></td></tr></table>
 <p>(Please note that you probably also want to set font registry for
-`<samp>ascii</samp>' charset so that mixed English/Cyrillic texts be displayed
+<samp>`ascii'</samp> charset so that mixed English/Cyrillic texts be displayed
 using the same font.)
 </p>
 <p>&quot;CCL-programs&quot; are a little special-purpose scripts defined within
@@ -478,13 +478,13 @@ are in different encoding from the encoding that is used by Mule for
 text in buffer.  Returning to the above example, we need to somehow tell
 XEmacs that we have different encodings of fonts and text and so it
 needs to convert characters between those encodings when displaying.
-That's what `<samp>set-charset-ccl-program</samp>' function is used for.  There
+That's what <samp>`set-charset-ccl-program'</samp> function is used for.  There
 are quite a few various CCL programs defined within XEmacs, and there is
 no comprehensive list of them, so you currently have to consult sources.
 </p>
-<p>We know that there is a CCL program called `<samp>ccl-encode-koi8-r-font</samp>'
+<p>We know that there is a CCL program called <samp>`ccl-encode-koi8-r-font'</samp>
 that is used exactly for needed purpose: to convert characters between
-`<samp>ISO8859-5</samp>' encoding and `<samp>koi8-r</samp>'.  Use:
+<samp>`ISO8859-5'</samp> encoding and <samp>`koi8-r'</samp>.  Use:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
 </pre></td></tr></table>
@@ -524,7 +524,7 @@ terminal, and in exchanging data with subprocesses.
 <p>  XEmacs assigns a name to each coding system.  Most coding systems are
 used for one language, and the name of the coding system starts with the
 language name.  Some coding systems are used for several languages;
-their names usually start with `<samp>iso</samp>'.  There are also special
+their names usually start with <samp>`iso'</samp>.  There are also special
 coding systems <code>binary</code> and <code>no-conversion</code> which do not
 convert printing characters at all.
 </p>
@@ -534,19 +534,19 @@ handles three different conventions for how to separate lines in a file:
 newline, carriage-return linefeed, and just carriage-return.
 </p>
 <dl compact="compact">
-<dt><kbd> C-h C <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Describe coding system <var>coding</var>.
 </p>
 </dd>
-<dt><kbd> C-h C <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-h C <kbd>RET</kbd></kbd></dt>
 <dd><p>Describe the coding systems currently in use.
 </p>
 </dd>
-<dt><kbd> M-x list-coding-systems</kbd></dt>
+<dt> <kbd>M-x list-coding-systems</kbd></dt>
 <dd><p>Display a list of all the supported coding systems.
 </p>
 </dd>
-<dt><kbd> C-u M-x list-coding-systems</kbd></dt>
+<dt> <kbd>C-u M-x list-coding-systems</kbd></dt>
 <dd><p>Display comprehensive list of specific details of all supported coding
 systems.
 </p></dd>
@@ -578,19 +578,19 @@ lines, that end-of-line conversion will be used.
 exactly what to do for end-of-line conversion:
 </p>
 <dl compact="compact">
-<dt><code> &hellip;-unix</code></dt>
+<dt> <code>&hellip;-unix</code></dt>
 <dd><p>Don't do any end-of-line conversion; assume the file uses
 newline to separate lines.  (This is the convention normally used
 on Unix and GNU systems.)
 </p>
 </dd>
-<dt><code> &hellip;-dos</code></dt>
+<dt> <code>&hellip;-dos</code></dt>
 <dd><p>Assume the file uses carriage-return linefeed to separate lines,
 and do the appropriate conversion.  (This is the convention normally used
 on Microsoft systems.)
 </p>
 </dd>
-<dt><code> &hellip;-mac</code></dt>
+<dt> <code>&hellip;-mac</code></dt>
 <dd><p>Assume the file uses carriage-return to separate lines, and do the
 appropriate conversion.  (This is the convention normally used on the
 Macintosh system.)
@@ -682,7 +682,7 @@ list.
 file.  The variable <code>file-coding-system-alist</code> specifies this
 correspondence.  There is a special function
 <code>modify-coding-system-alist</code> for adding elements to this list.  For
-example, to read and write all `<samp>.txt</samp>' using the coding system
+example, to read and write all <samp>`.txt'</samp> using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">(modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
@@ -694,12 +694,12 @@ the third argument says which coding system to use for these files.
 </p>
 <a name="IDX722"></a>
 <p>  You can specify the coding system for a particular file using the
-`<samp>-*-&hellip;-*-</samp>' construct at the beginning of a file, or a local
+<samp>`-*-&hellip;-*-'</samp> construct at the beginning of a file, or a local
 variables list at the end (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).  You do this by
 defining a value for the &quot;variable&quot; named <code>coding</code>.  XEmacs does
 not really have a variable <code>coding</code>; instead of setting a variable,
 it uses the specified coding system for the file.  For example,
-`<samp>-*-mode: C; coding: iso-8859-1;-*-</samp>' specifies use of the
+<samp>`-*-mode: C; coding: iso-8859-1;-*-'</samp> specifies use of the
 iso-8859-1 coding system, as well as C mode.
 </p>
 <a name="IDX723"></a>
@@ -737,26 +737,26 @@ the buffer using <code>set-buffer-file-coding-system</code> (see section <a href
 system, you can use these commands to specify one:
 </p>
 <dl compact="compact">
-<dt><kbd> C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Use coding system <var>coding</var> for the visited file
 in the current buffer.
 </p>
 </dd>
-<dt><kbd> C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Specify coding system <var>coding</var> for the immediately following
 command.
 </p>
 </dd>
-<dt><kbd> C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Use coding system <var>coding</var> for keyboard input.  (This feature is
 non-functional and is temporarily disabled.)
 </p>
 </dd>
-<dt><kbd> C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Use coding system <var>coding</var> for terminal output.
 </p>
 </dd>
-<dt><kbd> C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Use coding system <var>coding</var> for subprocess input and output
 in the current buffer.
 </p></dd>

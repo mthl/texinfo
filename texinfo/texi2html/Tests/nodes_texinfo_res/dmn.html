@@ -80,8 +80,8 @@ ul.toc {list-style: none}
 <hr size="1">
 <h3 class="subsection"> 13.2.4 <code>@dmn</code>{<var>dimension</var>}: Format a Dimension </h3>
 
-<p>At times, you may want to write `<samp>12pt</samp>' or
-`<samp>8.5in</samp>' with little or no space between the number and the
+<p>At times, you may want to write <samp>`12pt'</samp> or
+<samp>`8.5in'</samp> with little or no space between the number and the
 abbreviation for the dimension.  You can use the <code>@dmn</code> command
 to do this.  On seeing the command, TeX inserts just enough space
 for proper typesetting; the Info formatting commands insert no space
@@ -99,12 +99,12 @@ the dimension within braces.  For example,
 <blockquote><p>A4 paper is 8.27in wide.
 </p></blockquote>
 
-<p>Not everyone uses this style.  Some people prefer `<samp>8.27 in.@:</samp>'
-or `<samp>8.27 inches</samp>' to `<samp>8.27@dmn{in}</samp>' in the Texinfo file.
+<p>Not everyone uses this style.  Some people prefer <samp>`8.27 in.@:'</samp>
+or <samp>`8.27 inches'</samp> to <samp>`8.27@dmn{in}'</samp> in the Texinfo file.
 In these cases, however, the formatters may insert a line break between
 the number and the dimension, so use <code>@w</code> (see section <a href="w.html#SEC209"><code>@w</code>{<var>text</var>}: Prevent Line Breaks</a>).  Also, if
 you write a period after an abbreviation within a sentence, you should
-write `<samp>@:</samp>' after the period to prevent TeX from inserting extra
+write <samp>`@:'</samp> after the period to prevent TeX from inserting extra
 whitespace, as shown here.  See section <a href="Not-Ending-a-Sentence.html#SEC179">Not Ending a Sentence</a>.
 </p>
 

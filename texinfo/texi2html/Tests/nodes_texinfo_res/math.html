@@ -94,7 +94,7 @@ command.  Write the mathematical expression between braces, like this:
 <p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It's
-conventional to use `<samp>\</samp>' instead of `<samp>@</samp>' for these commands.
+conventional to use <samp>`\'</samp> instead of <samp>`@'</samp> for these commands.
 As in:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
 </pre></td></tr></table>
@@ -102,11 +102,11 @@ As in:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">\sin 2\pi \equiv \cos 3\pi
 </pre></td></tr></table>
 <a name="IDX224"></a>
-<p>Since `<samp>\</samp>' is an escape character inside <code>@math</code>, you can use
+<p>Since <samp>`\'</samp> is an escape character inside <code>@math</code>, you can use
 <code>@\</code> to get a literal backslash (<code>\\</code> will work in TeX,
-but you'll get the literal `<samp>\\</samp>' in Info).  <code>@\</code> is not
-defined outside of <code>@math</code>, since a `<samp>\</samp>' ordinarily produces a
-literal `<samp>\</samp>'.
+but you'll get the literal <samp>`\\'</samp> in Info).  <code>@\</code> is not
+defined outside of <code>@math</code>, since a <samp>`\'</samp> ordinarily produces a
+literal <samp>`\'</samp>.
 </p>
 
 <a name="IDX225"></a>

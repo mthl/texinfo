@@ -61,7 +61,7 @@ ul.toc {list-style: none}
 <h1 class="chapter"> 4. Commands </h1>
 
 <p>This section is a semi-automatically bowdlerized version of the Vi
-reference created by <br> `<samp>maart@cs.vu.nl</samp>' and others.  It can be
+reference created by <br> <samp>`maart@cs.vu.nl'</samp> and others.  It can be
 found on the Vi archives.  This reference has been adapted for Viper.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -139,7 +139,7 @@ use these commands to describe a region of text to operate on.
 <p>Viper adds two region descriptors, <kbd>r</kbd> and <kbd>R</kbd>.  These describe
 the Emacs regions (see section <a href="viper_3.html#SEC15">Basics</a>), but they are not movement commands.
 </p>
-<p>The command description uses angle brackets `<samp>&lt;&gt;</samp>' to indicate
+<p>The command description uses angle brackets <samp>`&lt;&gt;'</samp> to indicate
 metasyntactic variables, since the normal conventions of using simple
 text can be confusing with Viper where the commands themselves are
 characters.  Watch out where <kbd>&lt;</kbd> shift commands and <kbd>&lt;count&gt;</kbd> are
@@ -153,38 +153,38 @@ mentioned together!!!
 <a name="IDX241"></a>
 <a name="IDX242"></a>
 
-<p>`<samp>&lt;move&gt;</samp>' refers to the above movement commands, and `<samp>&lt;a-z&gt;</samp>'
-refers to registers or textmarkers from `<samp>a</samp>' to `<samp>z</samp>'.  Note
-that the `<samp>&lt;move&gt;</samp>'  is described by full move commands, that is to
+<p><samp>`&lt;move&gt;'</samp> refers to the above movement commands, and <samp>`&lt;a-z&gt;'</samp>
+refers to registers or textmarkers from <samp>`a'</samp> to <samp>`z'</samp>.  Note
+that the <samp>`&lt;move&gt;'</samp>  is described by full move commands, that is to
 say they will take counts, and otherwise behave like normal move commands.
 <a name="IDX243"></a>
-`<samp>&lt;address&gt;</samp>' refers to Ex line addresses, which include
+<samp>`&lt;address&gt;'</samp> refers to Ex line addresses, which include
 </p>
 <dl compact="compact">
-<dt><kbd> . &lt;No address&gt;</kbd></dt>
+<dt> <kbd>. &lt;No address&gt;</kbd></dt>
 <dd><p>Current line
 </p></dd>
-<dt><kbd> .+n .-n</kbd></dt>
+<dt> <kbd>.+n .-n</kbd></dt>
 <dd><p>Add or subtract for current line
 </p></dd>
-<dt><kbd> number</kbd></dt>
+<dt> <kbd>number</kbd></dt>
 <dd><p>Actual line number, use <kbd>.=</kbd> to get the line number
 </p></dd>
-<dt><kbd> '&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>'&lt;a-z&gt;</kbd></dt>
 <dd><p>Textmarker
 </p></dd>
-<dt><kbd> $</kbd></dt>
+<dt> <kbd>$</kbd></dt>
 <dd><p>Last line
 </p></dd>
-<dt><kbd> x,y</kbd></dt>
+<dt> <kbd>x,y</kbd></dt>
 <dd><p>Where x and y are one of the above
 </p></dd>
-<dt><kbd> %</kbd></dt>
+<dt> <kbd>%</kbd></dt>
 <dd><a name="IDX244"></a>
 <p>For the whole file, same as (1,$).
 </p></dd>
-<dt><kbd> /&lt;pat&gt;/</kbd></dt>
-<dt><kbd> ?&lt;pat&gt;?</kbd></dt>
+<dt> <kbd>/&lt;pat&gt;/</kbd></dt>
+<dt> <kbd>?&lt;pat&gt;?</kbd></dt>
 <dd><p>Next or previous line with pattern &lt;pat&gt;.
 </p>
 <p>Note that the pattern is allowed to contain newline character (inserted as
@@ -194,13 +194,13 @@ lines.
 </dl>
 
 <a name="IDX245"></a>
-<p>Note that `<samp>%</samp>' is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
-to mean current file.  If you want a `<samp>%</samp>' in your command, it must be
-escaped as `<samp>\%</samp>'. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
-command doesn't support the meta symbols `<samp>%</samp>' and `<samp>#</samp>', because
+<p>Note that <samp>`%'</samp> is used in Ex commands <kbd>:e</kbd> and <kbd>:r &lt;shell-cmd&gt;</kbd>
+to mean current file.  If you want a <samp>`%'</samp> in your command, it must be
+escaped as <samp>`\%'</samp>. Note that <kbd>:w</kbd> and the regular <kbd>:r &lt;file&gt;</kbd>
+command doesn't support the meta symbols <samp>`%'</samp> and <samp>`#'</samp>, because
 file history is a better mechanism.
 <a name="IDX246"></a>
-Similarly, `<samp>#</samp>' expands to the previous file.  The previous file is
+Similarly, <samp>`#'</samp> expands to the previous file.  The previous file is
 the first file in <kbd>:args</kbd> listing.  This defaults to previous window
 in the VI sense if you have one window only.
 </p>
@@ -209,26 +209,26 @@ in the VI sense if you have one window only.
 <a name="IDX249"></a>
 <a name="IDX250"></a>
 
-<p>Others like `<samp>&lt;args&gt; -- arguments</samp>', `<samp>&lt;cmd&gt; -- command</samp>' etc.
+<p>Others like <samp>`&lt;args&gt; -- arguments'</samp>, <samp>`&lt;cmd&gt; -- command'</samp> etc.
 should be fairly obvious.
 </p>
 
 <p>Common characters referred to include:
 </p>
 <dl compact="compact">
-<dt><kbd> &lt;sp&gt;</kbd></dt>
+<dt> <kbd>&lt;sp&gt;</kbd></dt>
 <dd><p>Space
 </p></dd>
-<dt><kbd> &lt;ht&gt;</kbd></dt>
+<dt> <kbd>&lt;ht&gt;</kbd></dt>
 <dd><p>Tab
 </p></dd>
-<dt><kbd> &lt;lf&gt;</kbd></dt>
+<dt> <kbd>&lt;lf&gt;</kbd></dt>
 <dd><p>Linefeed
 </p></dd>
-<dt><kbd> &lt;esc&gt;</kbd></dt>
+<dt> <kbd>&lt;esc&gt;</kbd></dt>
 <dd><p>Escape
 </p></dd>
-<dt><kbd> &lt;cr&gt;</kbd></dt>
+<dt> <kbd>&lt;cr&gt;</kbd></dt>
 <dd><p>Return, Enter
 </p></dd>
 </dl>
@@ -243,12 +243,12 @@ should be fairly obvious.
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 
-<p>We also use `<samp>word</samp>' for alphanumeric/non-alphanumeric words, and
-`<samp>WORD</samp>' for whitespace delimited words.  `<samp>char</samp>' refers to any
-ASCII character, `<samp>CHAR</samp>' to non-whitespace character.
-Brackets `<samp>[]</samp>' indicate optional parameters; `<samp>&lt;count&gt;</samp>' also
+<p>We also use <samp>`word'</samp> for alphanumeric/non-alphanumeric words, and
+<samp>`WORD'</samp> for whitespace delimited words.  <samp>`char'</samp> refers to any
+ASCII character, <samp>`CHAR'</samp> to non-whitespace character.
+Brackets <samp>`[]'</samp> indicate optional parameters; <samp>`&lt;count&gt;'</samp> also
 optional, usually defaulting to 1.  Brackets are elided for
-`<samp>&lt;count&gt;</samp>' to eschew obfuscation.
+<samp>`&lt;count&gt;'</samp> to eschew obfuscation.
 </p>
 <p>Viper's idea of Vi's words is slightly different from Vi.  First, Viper
 words understand Emacs symbol tables.  Therefore, all symbols declared to be
@@ -387,148 +387,148 @@ inserts them automatically in front of the Ex command.
 
 
 <dl compact="compact">
-<dt><kbd> &lt;count&gt;  h  C-h</kbd></dt>
+<dt> <kbd>&lt;count&gt;  h  C-h</kbd></dt>
 <dd><p>&lt;count&gt; chars to the left.
 </p></dd>
-<dt><kbd> &lt;count&gt;  j  &lt;lf&gt; C-n</kbd></dt>
+<dt> <kbd>&lt;count&gt;  j  &lt;lf&gt; C-n</kbd></dt>
 <dd><p>&lt;count&gt; lines downward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  l  &lt;sp&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  l  &lt;sp&gt;</kbd></dt>
 <dd><p>&lt;count&gt; chars to the right.
 </p></dd>
-<dt><kbd> &lt;count&gt;  k  C-p</kbd></dt>
+<dt> <kbd>&lt;count&gt;  k  C-p</kbd></dt>
 <dd><p>&lt;count&gt; lines upward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  $</kbd></dt>
+<dt> <kbd>&lt;count&gt;  $</kbd></dt>
 <dd><p>To the end of line &lt;count&gt; from the cursor.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ^</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ^</kbd></dt>
 <dd><p>To the first CHAR &lt;count&gt; - 1 lines lower.
 </p></dd>
-<dt><kbd> &lt;count&gt;  -</kbd></dt>
+<dt> <kbd>&lt;count&gt;  -</kbd></dt>
 <dd><p>To the first CHAR &lt;count&gt; lines higher.
 </p></dd>
-<dt><kbd> &lt;count&gt;  +  &lt;cr&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  +  &lt;cr&gt;</kbd></dt>
 <dd><p>To the first CHAR &lt;count&gt; lines lower.
 </p></dd>
-<dt><kbd>  0</kbd></dt>
+<dt>  <kbd>0</kbd></dt>
 <dd><p>To the first char of the line.
 </p></dd>
-<dt><kbd> &lt;count&gt; |</kbd></dt>
+<dt> <kbd>&lt;count&gt; |</kbd></dt>
 <dd><p>To column &lt;count&gt;
 </p></dd>
-<dt><kbd> &lt;count&gt;  f&lt;char&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  f&lt;char&gt;</kbd></dt>
 <dd><p>&lt;count&gt; &lt;char&gt;s to the right (find).
 </p></dd>
-<dt><kbd> &lt;count&gt;  t&lt;char&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  t&lt;char&gt;</kbd></dt>
 <dd><p>Till before &lt;count&gt; &lt;char&gt;s to the right.
 </p></dd>
-<dt><kbd> &lt;count&gt;  F&lt;char&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  F&lt;char&gt;</kbd></dt>
 <dd><p>&lt;count&gt; &lt;char&gt;s to the left.
 </p></dd>
-<dt><kbd> &lt;count&gt;  T&lt;char&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  T&lt;char&gt;</kbd></dt>
 <dd><p>Till after &lt;count&gt; &lt;char&gt;s to the left.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ;</kbd></dt>
 <dd><p>Repeat latest <kbd>f t F T</kbd> &lt;count&gt; times.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ,</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ,</kbd></dt>
 <dd><p>Repeat latest <kbd>f t F T</kbd>
 &lt;count&gt; times in opposite direction.
 </p></dd>
-<dt><kbd> &lt;count&gt;  w</kbd></dt>
+<dt> <kbd>&lt;count&gt;  w</kbd></dt>
 <dd><p>&lt;count&gt; words forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  W</kbd></dt>
+<dt> <kbd>&lt;count&gt;  W</kbd></dt>
 <dd><p>&lt;count&gt; WORDS forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  b</kbd></dt>
+<dt> <kbd>&lt;count&gt;  b</kbd></dt>
 <dd><p>&lt;count&gt; words backward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  B</kbd></dt>
+<dt> <kbd>&lt;count&gt;  B</kbd></dt>
 <dd><p>&lt;count&gt; WORDS backward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  e</kbd></dt>
+<dt> <kbd>&lt;count&gt;  e</kbd></dt>
 <dd><p>To the end of word &lt;count&gt; forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  E</kbd></dt>
+<dt> <kbd>&lt;count&gt;  E</kbd></dt>
 <dd><p>To the end of WORD &lt;count&gt; forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  G</kbd></dt>
+<dt> <kbd>&lt;count&gt;  G</kbd></dt>
 <dd><p>Go to line &lt;count&gt; (default end-of-file).
 </p></dd>
-<dt><kbd> &lt;count&gt;  H</kbd></dt>
+<dt> <kbd>&lt;count&gt;  H</kbd></dt>
 <dd><p>To line &lt;count&gt; from top of the screen (home).
 </p></dd>
-<dt><kbd> &lt;count&gt;  L</kbd></dt>
+<dt> <kbd>&lt;count&gt;  L</kbd></dt>
 <dd><p>To line &lt;count&gt; from bottom of the screen (last).
 </p></dd>
-<dt><kbd>  M</kbd></dt>
+<dt>  <kbd>M</kbd></dt>
 <dd><p>To the middle line of the screen.
 </p></dd>
-<dt><kbd> &lt;count&gt;  )</kbd></dt>
+<dt> <kbd>&lt;count&gt;  )</kbd></dt>
 <dd><p>&lt;count&gt; sentences forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  (</kbd></dt>
+<dt> <kbd>&lt;count&gt;  (</kbd></dt>
 <dd><p>&lt;count&gt; sentences backward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  }</kbd></dt>
+<dt> <kbd>&lt;count&gt;  }</kbd></dt>
 <dd><p>&lt;count&gt; paragraphs forward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  {</kbd></dt>
+<dt> <kbd>&lt;count&gt;  {</kbd></dt>
 <dd><p>&lt;count&gt; paragraphs backward.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ]]</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ]]</kbd></dt>
 <dd><p>To the &lt;count&gt;th heading.
 </p></dd>
-<dt><kbd> &lt;count&gt;  [[</kbd></dt>
+<dt> <kbd>&lt;count&gt;  [[</kbd></dt>
 <dd><p>To the &lt;count&gt;th previous heading.
 </p></dd>
-<dt><kbd> &lt;count&gt;  []</kbd></dt>
+<dt> <kbd>&lt;count&gt;  []</kbd></dt>
 <dd><p>To the end of &lt;count&gt;th heading.
 </p></dd>
-<dt><kbd>  m&lt;a-z&gt;</kbd></dt>
+<dt>  <kbd>m&lt;a-z&gt;</kbd></dt>
 <dd><p>Mark the cursor position with a letter.
 </p></dd>
-<dt><kbd>  `&lt;a-z&gt;</kbd></dt>
+<dt>  <kbd>`&lt;a-z&gt;</kbd></dt>
 <dd><p>To the mark.
 </p></dd>
-<dt><kbd>  '&lt;a-z&gt;</kbd></dt>
+<dt>  <kbd>'&lt;a-z&gt;</kbd></dt>
 <dd><p>To the first CHAR of the line with the mark.
 </p></dd>
-<dt><kbd> [&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>[&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of textmarker.
 </p></dd>
-<dt><kbd> ]&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>]&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of register.
 </p></dd>
-<dt><kbd>  ``</kbd></dt>
+<dt>  <kbd>``</kbd></dt>
 <dd><p>To the cursor position before the latest absolute
 jump (of which are examples <kbd>/</kbd> and <kbd>G</kbd>).
 </p></dd>
-<dt><kbd>  ''</kbd></dt>
+<dt>  <kbd>''</kbd></dt>
 <dd><p>To the first CHAR of the line on which the cursor
 was placed before the latest absolute jump.
 </p></dd>
-<dt><kbd> &lt;count&gt;  /&lt;string&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  /&lt;string&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th occurrence of &lt;string&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  /&lt;cr&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  /&lt;cr&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th occurrence of &lt;string&gt; from previous <kbd>/ or ?</kbd>.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ?&lt;string&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ?&lt;string&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th previous occurrence of &lt;string&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ?&lt;cr&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ?&lt;cr&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th previous occurrence of &lt;string&gt; from previous <kbd>? or /</kbd>.
 </p></dd>
-<dt><kbd>  n</kbd></dt>
+<dt>  <kbd>n</kbd></dt>
 <dd><p>Repeat latest <kbd>/</kbd> <kbd>?</kbd> (next).
 </p></dd>
-<dt><kbd>  N</kbd></dt>
+<dt>  <kbd>N</kbd></dt>
 <dd><p>Repeat latest search in opposite direction.
 </p></dd>
-<dt><kbd> C-c /</kbd></dt>
+<dt> <kbd>C-c /</kbd></dt>
 <dd><p>Without a prefix argument, this command toggles
 case-sensitive/case-insensitive search modes and plain vanilla/regular
 expression search.  With the prefix argument 1, i.e.,
@@ -540,11 +540,11 @@ this function.
 <a name="IDX265"></a>
 <a name="IDX266"></a>
 </p></dd>
-<dt><kbd>  %</kbd></dt>
+<dt>  <kbd>%</kbd></dt>
 <dd><p>Find the next bracket/parenthesis/brace and go to its match.
 By default, Viper ignores brackets/parentheses/braces that occur inside
 parentheses.  You can change this by setting
-<code>viper-parse-sexp-ignore-comments</code> to nil in your `<tt>.viper</tt>' file.
+<code>viper-parse-sexp-ignore-comments</code> to nil in your <tt>`.viper'</tt> file.
 This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
 </p>
 <p>This latter feature is implemented as a vi-style keyboard macro.  If you
@@ -553,7 +553,7 @@ don't want this macro, put
 <table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-parsing-style-toggling-macro 'undefine)
 </pre></td></tr></table><a name="IDX267"></a>
 
-<p>in your `<tt>~/.viper</tt>' file.
+<p>in your <tt>`~/.viper'</tt> file.
 </p>
 </dd>
 </dl>
@@ -642,40 +642,40 @@ the Emacs mark ring.
 <a name="IDX323"></a>
 
 <dl compact="compact">
-<dt><kbd> m&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>m&lt;a-z&gt;</kbd></dt>
 <dd><p>Mark the current file and position with the specified letter.
 </p></dd>
-<dt><kbd> m .</kbd></dt>
+<dt> <kbd>m .</kbd></dt>
 <dd><p>Set the Emacs mark (see section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>) at point.
 </p></dd>
-<dt><kbd> m ^</kbd></dt>
+<dt> <kbd>m ^</kbd></dt>
 <dd><p>Set the Emacs mark (see section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>) back to where it was last
 set with the <kbd>m.</kbd> command. This is useful when you set the mark with
 <kbd>m.</kbd>, but then some other command (such as <kbd>L</kbd> or <kbd>G</kbd>) changes
 it in a way that you didn't like.
 </p></dd>
-<dt><kbd> m &lt;</kbd></dt>
+<dt> <kbd>m &lt;</kbd></dt>
 <dd><p>Set the Emacs mark at beginning of buffer.
 </p></dd>
-<dt><kbd> m &gt;</kbd></dt>
+<dt> <kbd>m &gt;</kbd></dt>
 <dd><p>Set the Emacs mark at end of buffer.
 </p></dd>
-<dt><kbd> m ,</kbd></dt>
+<dt> <kbd>m ,</kbd></dt>
 <dd><p>Jump to the Emacs mark.
 </p></dd>
-<dt><kbd> :mark &lt;char&gt;</kbd></dt>
+<dt> <kbd>:mark &lt;char&gt;</kbd></dt>
 <dd><p>Mark position with text marker named &lt;char&gt;.  This is an Ex command.
 </p></dd>
-<dt><kbd> :k &lt;char&gt;</kbd></dt>
+<dt> <kbd>:k &lt;char&gt;</kbd></dt>
 <dd><p>Same as <kbd>:mark</kbd>.
 </p></dd>
-<dt><kbd> ``</kbd></dt>
+<dt> <kbd>``</kbd></dt>
 <dd><p>Exchange point and mark.
 </p></dd>
-<dt><kbd> ''</kbd></dt>
+<dt> <kbd>''</kbd></dt>
 <dd><p>Exchange point and mark and go to the first CHAR on line.
 </p></dd>
-<dt><kbd> '&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>'&lt;a-z&gt;</kbd></dt>
 <dd><p>Go to specified Viper mark.
 </p></dd>
 <dt><kbd></kbd></dt>
@@ -727,58 +727,58 @@ Also see options for word-wrap.
 <a name="IDX339"></a>
 
 <dl compact="compact">
-<dt><kbd> &lt;count&gt;  a</kbd></dt>
+<dt> <kbd>&lt;count&gt;  a</kbd></dt>
 <dd><p>&lt;count&gt; times after the cursor.
 </p></dd>
-<dt><kbd> &lt;count&gt;  A</kbd></dt>
+<dt> <kbd>&lt;count&gt;  A</kbd></dt>
 <dd><p>&lt;count&gt; times at the end of line.
 </p></dd>
-<dt><kbd> &lt;count&gt;  i</kbd></dt>
+<dt> <kbd>&lt;count&gt;  i</kbd></dt>
 <dd><p>&lt;count&gt; times before the cursor (insert).
 </p></dd>
-<dt><kbd> &lt;count&gt;  I</kbd></dt>
+<dt> <kbd>&lt;count&gt;  I</kbd></dt>
 <dd><p>&lt;count&gt; times before the first CHAR of the line
 </p></dd>
-<dt><kbd> &lt;count&gt;  o</kbd></dt>
+<dt> <kbd>&lt;count&gt;  o</kbd></dt>
 <dd><p>On a new line below the current (open).
 The count is only useful on a slow terminal.
 </p></dd>
-<dt><kbd> &lt;count&gt;  O</kbd></dt>
+<dt> <kbd>&lt;count&gt;  O</kbd></dt>
 <dd><p>On a new line above the current.
 The count is only useful on a slow terminal.
 </p></dd>
-<dt><kbd> &lt;count&gt;  &gt;&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &gt;&lt;move&gt;</kbd></dt>
 <dd><p>Shift the lines described by &lt;count&gt;&lt;move&gt; one
 shiftwidth to the right (layout!).
 </p></dd>
-<dt><kbd> &lt;count&gt;  &gt;&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &gt;&gt;</kbd></dt>
 <dd><p>Shift &lt;count&gt; lines one shiftwidth to the right.
 </p></dd>
-<dt><kbd> &lt;count&gt;  [&quot;&lt;a-z1-9&gt;]p</kbd></dt>
+<dt> <kbd>&lt;count&gt;  [&quot;&lt;a-z1-9&gt;]p</kbd></dt>
 <dd><p>Put the contents of the (default undo) buffer
 &lt;count&gt; times after the cursor.  The register will
 be automatically down-cased.
 </p></dd>
-<dt><kbd> &lt;count&gt;  [&quot;&lt;a-z1-9&gt;]P</kbd></dt>
+<dt> <kbd>&lt;count&gt;  [&quot;&lt;a-z1-9&gt;]P</kbd></dt>
 <dd><p>Put the contents of the (default undo) buffer
 &lt;count&gt; times before the cursor.  The register will
 </p></dd>
-<dt><kbd> [&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>[&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of textmarker.
 </p></dd>
-<dt><kbd> ]&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>]&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of register.
 </p></dd>
-<dt><kbd> &lt;count&gt;  .</kbd></dt>
+<dt> <kbd>&lt;count&gt;  .</kbd></dt>
 <dd><p>Repeat previous command &lt;count&gt; times.  For destructive
 commands as well as undo.
 </p></dd>
-<dt><kbd> f1 1 and f1 2</kbd></dt>
+<dt> <kbd>f1 1 and f1 2</kbd></dt>
 <dd><p>While <kbd>.</kbd> repeats the last destructive command,
 these two macros repeat the second-last and the third-last destructive
 commands.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for more information on Vi macros.
 </p></dd>
-<dt><kbd> C-c M-p and C-c M-n</kbd></dt>
+<dt> <kbd>C-c M-p and C-c M-n</kbd></dt>
 <dd><p>In Vi state,
 these commands help peruse the history of Vi's destructive commands.
 Successive typing of <kbd>C-c M-p</kbd> causes Viper to search the history in
@@ -790,7 +790,7 @@ then be executed by typing `<kbd>.</kbd>'.
 </p>
 <p>Since typing the above sequences of keys may be tedious, the
 functions doing the perusing can be bound to unused keyboard keys in the
-`<tt>~/.viper</tt>' file.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
+<tt>`~/.viper'</tt> file.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 </p></dd>
 </dl>
 <a name="IDX340"></a>
@@ -839,16 +839,16 @@ Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <a name="IDX356"></a>
 
 <dl compact="compact">
-<dt><kbd> C-v</kbd></dt>
+<dt> <kbd>C-v</kbd></dt>
 <dd><p>Deprive the next char of its special meaning (quoting).
 </p></dd>
-<dt><kbd> C-h</kbd></dt>
+<dt> <kbd>C-h</kbd></dt>
 <dd><p>One char back.
 </p></dd>
-<dt><kbd> C-w</kbd></dt>
+<dt> <kbd>C-w</kbd></dt>
 <dd><p>One word back.
 </p></dd>
-<dt><kbd> C-u</kbd></dt>
+<dt> <kbd>C-u</kbd></dt>
 <dd><p>Back to the begin of the change on the
 current line.
 </p>
@@ -884,7 +884,7 @@ current line.
 aware of.  This difference comes from Emacs and was adopted in Viper
 because we find it very useful.  In Vi, if you delete a line, say, and then
 another line, these two deletions are separated and are put back
-separately if you use the `<samp>p</samp>' command.  In Emacs (and Viper), successive
+separately if you use the <samp>`p'</samp> command.  In Emacs (and Viper), successive
 series of deletions that are <em>not interrupted</em> by other commands are
 lumped together, so the deleted text gets accumulated and can be put back
 as one chunk.  If you want to break a sequence of deletions so that the
@@ -895,26 +895,26 @@ character in any direction.
 <a name="IDX360"></a>
 
 <dl compact="compact">
-<dt><kbd> &lt;count&gt;  x</kbd></dt>
+<dt> <kbd>&lt;count&gt;  x</kbd></dt>
 <dd><p>Delete &lt;count&gt; chars under and after the cursor.
 </p></dd>
-<dt><kbd> &lt;count&gt;  X</kbd></dt>
+<dt> <kbd>&lt;count&gt;  X</kbd></dt>
 <dd><p>Delete &lt;count&gt; chars before the cursor.
 </p></dd>
-<dt><kbd> &lt;count&gt;  d&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  d&lt;move&gt;</kbd></dt>
 <dd><p>Delete from point to endpoint of &lt;count&gt;&lt;move&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  dd</kbd></dt>
+<dt> <kbd>&lt;count&gt;  dd</kbd></dt>
 <dd><p>Delete &lt;count&gt; lines.
 </p></dd>
-<dt><kbd>  D</kbd></dt>
+<dt>  <kbd>D</kbd></dt>
 <dd><p>The rest of the line.
 </p></dd>
-<dt><kbd> &lt;count&gt;  &lt;&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &lt;&lt;move&gt;</kbd></dt>
 <dd><p>Shift the lines described by &lt;count&gt;&lt;move&gt; one
 shiftwidth to the left (layout!).
 </p></dd>
-<dt><kbd> &lt;count&gt;  &lt;&lt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &lt;&lt;</kbd></dt>
 <dd><p>Shift &lt;count&gt; lines one shiftwidth to the left.
 </p></dd>
 </dl>
@@ -949,90 +949,90 @@ shiftwidth to the left (layout!).
 
 
 <dl compact="compact">
-<dt><kbd> &lt;count&gt;  r&lt;char&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  r&lt;char&gt;</kbd></dt>
 <dd><p>Replace &lt;count&gt; chars by &lt;char&gt; - no &lt;esc&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  R</kbd></dt>
+<dt> <kbd>&lt;count&gt;  R</kbd></dt>
 <dd><p>Overwrite the rest of the line,
 appending change <var>count - 1</var> times.
 </p></dd>
-<dt><kbd> &lt;count&gt;  s</kbd></dt>
+<dt> <kbd>&lt;count&gt;  s</kbd></dt>
 <dd><p>Substitute &lt;count&gt; chars.
 </p></dd>
-<dt><kbd> &lt;count&gt;  S</kbd></dt>
+<dt> <kbd>&lt;count&gt;  S</kbd></dt>
 <dd><p>Change &lt;count&gt; lines.
 </p></dd>
-<dt><kbd> &lt;count&gt;  c&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  c&lt;move&gt;</kbd></dt>
 <dd><p>Change from begin to endpoint of &lt;count&gt;&lt;move&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  cc</kbd></dt>
+<dt> <kbd>&lt;count&gt;  cc</kbd></dt>
 <dd><p>Change &lt;count&gt; lines.
 </p></dd>
-<dt><kbd> &lt;count&gt;  C</kbd></dt>
+<dt> <kbd>&lt;count&gt;  C</kbd></dt>
 <dd><p>The rest of the line and &lt;count&gt; - 1 next lines.
 </p></dd>
-<dt><kbd> &lt;count&gt;  =&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  =&lt;move&gt;</kbd></dt>
 <dd><p>Reindent the region described by move.
 </p></dd>
-<dt><kbd> &lt;count&gt;  ~</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ~</kbd></dt>
 <dd><p>Switch lower and upper cases.
 </p></dd>
-<dt><kbd> &lt;count&gt;  J</kbd></dt>
+<dt> <kbd>&lt;count&gt;  J</kbd></dt>
 <dd><p>Join &lt;count&gt; lines (default 2).
 </p></dd>
-<dt><kbd>  :[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
+<dt>  <kbd>:[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
 <dd><p>Substitute (on lines x through y) the pattern
 &lt;pat&gt; (default the last pattern) with &lt;repl&gt;.  Useful
-flags &lt;f&gt; are `<samp>g</samp>' for `<samp>global</samp>' (i.e. change every
-non-overlapping occurrence of &lt;pat&gt;) and `<samp>c</samp>' for
-`<samp>confirm</samp>' (type `<samp>y</samp>' to confirm a particular
-substitution, else `<samp>n</samp>' ).  Instead of <kbd>/</kbd> any
+flags &lt;f&gt; are <samp>`g'</samp> for <samp>`global'</samp> (i.e. change every
+non-overlapping occurrence of &lt;pat&gt;) and <samp>`c'</samp> for
+<samp>`confirm'</samp> (type <samp>`y'</samp> to confirm a particular
+substitution, else <samp>`n'</samp> ).  Instead of <kbd>/</kbd> any
 punctuation CHAR unequal to &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
 </p>
-<p>In Emacs, `<samp>\&amp;</samp>' stands for the last matched expression, so
+<p>In Emacs, <samp>`\&amp;'</samp> stands for the last matched expression, so
 <kbd>s/[ab]+/\&amp;\&amp;/</kbd> will double the string matched by <kbd>[ab]</kbd>.
-Viper doesn't treat `<samp>&amp;</samp>' specially, unlike Vi: use `<samp>\&amp;</samp>' instead.
+Viper doesn't treat <samp>`&amp;'</samp> specially, unlike Vi: use <samp>`\&amp;'</samp> instead.
 </p>
 <p>Viper does not parse search patterns and does not expand special symbols
-found there (e.g., `<samp>~</samp>' is not expanded to the result of the previous
+found there (e.g., <samp>`~'</samp> is not expanded to the result of the previous
 substitution).
 </p>
 <p>Note: <em>The newline character (inserted as <kbd>C-qC-j</kbd>)
 can be used in &lt;repl&gt;</em>.
 </p></dd>
-<dt><kbd>  :[x,y]copy [z]</kbd></dt>
+<dt>  <kbd>:[x,y]copy [z]</kbd></dt>
 <dd><p>Copy text between <kbd>x</kbd> and <kbd>y</kbd> to the position after <kbd>z</kbd>.
 </p></dd>
-<dt><kbd>  :[x,y]t [z]</kbd></dt>
+<dt>  <kbd>:[x,y]t [z]</kbd></dt>
 <dd><p>Same as <kbd>:copy</kbd>.
 </p></dd>
-<dt><kbd>  :[x,y]move [z]</kbd></dt>
+<dt>  <kbd>:[x,y]move [z]</kbd></dt>
 <dd><p>Move text between <kbd>x</kbd> and <kbd>y</kbd> to the position after <kbd>z</kbd>.
 </p></dd>
-<dt><kbd>  &amp;</kbd></dt>
+<dt>  <kbd>&amp;</kbd></dt>
 <dd><p>Repeat latest Ex substitute command, e.g.
 <kbd>:s/wrong/right</kbd>.
 </p></dd>
-<dt><kbd> :x,yp</kbd></dt>
-<dt><kbd> :g/Pat/p</kbd></dt>
-<dt><kbd> :v/Pat/p</kbd></dt>
+<dt> <kbd>:x,yp</kbd></dt>
+<dt> <kbd>:g/Pat/p</kbd></dt>
+<dt> <kbd>:v/Pat/p</kbd></dt>
 <dd><p>The above commands display certain buffer lines in a
 temporary buffer. The first form above displays the buffer lines between
 <kbd>x</kbd> and <kbd>y</kbd>. The second displays the lines of the buffer, which
 match a given pattern. The third form displays the lines that do <em>not</em>
 match the given pattern.
 </p></dd>
-<dt><kbd> #c&lt;move&gt;</kbd></dt>
+<dt> <kbd>#c&lt;move&gt;</kbd></dt>
 <dd><p>Change upper-case characters in the region to lower-case.
 </p></dd>
-<dt><kbd> #C&lt;move&gt;</kbd></dt>
+<dt> <kbd>#C&lt;move&gt;</kbd></dt>
 <dd><p>Change lower-case characters in the region to upper-case.
 </p></dd>
-<dt><kbd> #q&lt;move&gt;</kbd></dt>
+<dt> <kbd>#q&lt;move&gt;</kbd></dt>
 <dd><p>Insert specified string at the beginning of each line in the region
 </p></dd>
-<dt><kbd> C-c M-p and C-c M-n</kbd></dt>
+<dt> <kbd>C-c M-p and C-c M-n</kbd></dt>
 <dd><p>In Insert and Replace states, these keys are bound to commands that peruse
 the history of the text
 previously inserted in other insert or replace commands.  By repeatedly typing
@@ -1094,73 +1094,73 @@ get literal (non-regular-expression) search and how to stop search from
 wrapping around.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c /</kbd></dt>
+<dt> <kbd>C-c /</kbd></dt>
 <dd><p>Toggle case-sensitive search.  With prefix argument, toggle vanilla/regular
 expression search.
 </p></dd>
-<dt><kbd> &lt;count&gt;  /&lt;string&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  /&lt;string&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th occurrence of &lt;string&gt;.
 </p>
 <p>Viper does not parse search patterns and does not expand special symbols
-found there (e.g., `<samp>~</samp>' is not expanded to the result of the previous
+found there (e.g., <samp>`~'</samp> is not expanded to the result of the previous
 substitution).
 </p>
 </dd>
-<dt><kbd> &lt;count&gt;  ?&lt;string&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  ?&lt;string&gt;</kbd></dt>
 <dd><p>To the &lt;count&gt;th previous occurrence of &lt;string&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  g&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  g&lt;move&gt;</kbd></dt>
 <dd><p>Search for the text described by move.  (off by default)
 </p></dd>
-<dt><kbd> n</kbd></dt>
+<dt> <kbd>n</kbd></dt>
 <dd><p>Repeat latest <kbd>/</kbd> <kbd>?</kbd> (next).
 </p></dd>
-<dt><kbd> N</kbd></dt>
+<dt> <kbd>N</kbd></dt>
 <dd><p>Idem in opposite direction.
 </p></dd>
-<dt><kbd> %</kbd></dt>
+<dt> <kbd>%</kbd></dt>
 <dd><p>Find the next bracket and go to its match
 </p></dd>
-<dt><kbd> :[x,y]g/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:[x,y]g/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
 <dd><a name="IDX390"></a>
 <p>Search globally [from line x to y] for &lt;string&gt;
 and execute the Ex &lt;cmd&gt; on each occurrence.
 </p></dd>
-<dt><kbd> :[x,y]v/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:[x,y]v/&lt;string&gt;/&lt;cmd&gt;</kbd></dt>
 <dd><p>Execute &lt;cmd&gt; on the lines that don't match.
 </p></dd>
-<dt><kbd> #g&lt;move&gt;</kbd></dt>
+<dt> <kbd>#g&lt;move&gt;</kbd></dt>
 <dd><p>Execute the last keyboard macro for each line in the region.
 See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info.
 </p></dd>
-<dt><kbd> Q</kbd></dt>
+<dt> <kbd>Q</kbd></dt>
 <dd><p>Query Replace.
 </p></dd>
-<dt><kbd> :ta &lt;name&gt;</kbd></dt>
+<dt> <kbd>:ta &lt;name&gt;</kbd></dt>
 <dd><p>Search in the tags file where &lt;name&gt; is defined (file, line), and go to it.
 </p></dd>
-<dt><kbd>  :[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
+<dt>  <kbd>:[x,y]s/&lt;pat&gt;/&lt;repl&gt;/&lt;f&gt;</kbd></dt>
 <dd><p>Substitute (on lines x through y) the pattern &lt;pat&gt; (default the last
 pattern) with &lt;repl&gt;.  Useful
-flags &lt;f&gt; are `<samp>g</samp>' for `<samp>global</samp>' (i.e. change every
-non-overlapping occurrence of &lt;pat&gt;) and `<samp>c</samp>' for
-`<samp>confirm</samp>' (type `<samp>y</samp>' to confirm a particular
-substitution, else `<samp>n</samp>').  Instead of <kbd>/</kbd> any
+flags &lt;f&gt; are <samp>`g'</samp> for <samp>`global'</samp> (i.e. change every
+non-overlapping occurrence of &lt;pat&gt;) and <samp>`c'</samp> for
+<samp>`confirm'</samp> (type <samp>`y'</samp> to confirm a particular
+substitution, else <samp>`n'</samp>).  Instead of <kbd>/</kbd> any
 punctuation character other than &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
 </p>
 <p>Note: <em>The newline character (inserted as <kbd>C-qC-j</kbd>)
 can be used in &lt;repl&gt;</em>.
 </p></dd>
-<dt><kbd>  &amp;</kbd></dt>
+<dt>  <kbd>&amp;</kbd></dt>
 <dd><p>Repeat latest Ex substitute command, e.g. <kbd>:s/wrong/right</kbd>.
 </p></dd>
-<dt><kbd> :global /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
-<dt><kbd> :g /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
+<dt> <kbd>:global /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
+<dt> <kbd>:g /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
 <dd><p>Execute &lt;ex-command&gt; on all lines that match &lt;pattern&gt;.
 </p></dd>
-<dt><kbd> :vglobal /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
-<dt><kbd> :v /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
+<dt> <kbd>:vglobal /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
+<dt> <kbd>:v /&lt;pattern&gt;/&lt;ex-command&gt;</kbd></dt>
 <dd><p>Execute &lt;ex-command&gt; on all lines that do not match &lt;pattern&gt;.
 </p></dd>
 </dl>
@@ -1203,37 +1203,37 @@ can be used in &lt;repl&gt;</em>.
 
 
 <dl compact="compact">
-<dt><kbd> &lt;count&gt;  y&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  y&lt;move&gt;</kbd></dt>
 <dd><p>Yank from begin to endpoint of &lt;count&gt;&lt;move&gt;.
 </p></dd>
-<dt><kbd> &lt;count&gt;  &quot;&lt;a-z&gt;y&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &quot;&lt;a-z&gt;y&lt;move&gt;</kbd></dt>
 <dd><p>Yank from begin to endpoint of &lt;count&gt;&lt;move&gt; to register.
 </p></dd>
-<dt><kbd> &lt;count&gt;  &quot;&lt;A-Z&gt;y&lt;move&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt;  &quot;&lt;A-Z&gt;y&lt;move&gt;</kbd></dt>
 <dd><p>Yank from begin to endpoint of &lt;count&gt;&lt;move&gt; and append
 to register.
 </p></dd>
-<dt><kbd> &lt;count&gt;  yy</kbd></dt>
+<dt> <kbd>&lt;count&gt;  yy</kbd></dt>
 <dd><p>&lt;count&gt; lines.
 </p></dd>
-<dt><kbd> &lt;count&gt;  Y</kbd></dt>
+<dt> <kbd>&lt;count&gt;  Y</kbd></dt>
 <dd><p>Idem (should be equivalent to <kbd>y$</kbd> though).
 </p></dd>
-<dt><kbd>  m&lt;a-z&gt;</kbd></dt>
+<dt>  <kbd>m&lt;a-z&gt;</kbd></dt>
 <dd><p>Mark the cursor position with a letter.
 </p></dd>
-<dt><kbd> [&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>[&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of textmarker.
 </p></dd>
-<dt><kbd> ]&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>]&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of register.
 </p></dd>
-<dt><kbd> &lt;count&gt;  [&quot;&lt;a-z1-9&gt;]p</kbd></dt>
+<dt> <kbd>&lt;count&gt;  [&quot;&lt;a-z1-9&gt;]p</kbd></dt>
 <dd><p>Put the contents of the (default undo) buffer
 &lt;count&gt; times after the cursor.  The register will
 be automatically down-cased.
 </p></dd>
-<dt><kbd> &lt;count&gt;  [&quot;&lt;a-z1-9&gt;]P</kbd></dt>
+<dt> <kbd>&lt;count&gt;  [&quot;&lt;a-z1-9&gt;]P</kbd></dt>
 <dd><p>Put the contents of the (default undo) buffer
 &lt;count&gt; times before the cursor.  The register will
 </p></dd>
@@ -1276,21 +1276,21 @@ be automatically down-cased.
 
 
 <dl compact="compact">
-<dt><kbd>  u U</kbd></dt>
+<dt>  <kbd>u U</kbd></dt>
 <dd><p>Undo the latest change.
 </p></dd>
-<dt><kbd>  .</kbd></dt>
+<dt>  <kbd>.</kbd></dt>
 <dd><p>Repeat undo.
 </p></dd>
-<dt><kbd> :q!</kbd></dt>
+<dt> <kbd>:q!</kbd></dt>
 <dd><p>Quit Vi without writing.
 </p></dd>
-<dt><kbd> :e!</kbd></dt>
+<dt> <kbd>:e!</kbd></dt>
 <dd><p>Re-edit a messed-up file.
 </p></dd>
-<dt><kbd> :rec</kbd></dt>
+<dt> <kbd>:rec</kbd></dt>
 <dd><p>Recover file from autosave.  Viper also creates backup files
-that have a `<samp>~</samp>' appended to them.
+that have a <samp>`~'</samp> appended to them.
 </p></dd>
 </dl>
 <a name="IDX420"></a>
@@ -1323,50 +1323,50 @@ that have a `<samp>~</samp>' appended to them.
 
 
 <dl compact="compact">
-<dt><kbd> C-g</kbd></dt>
+<dt> <kbd>C-g</kbd></dt>
 <dd><p>At user level 1,
 give file name, status, current line number
 and relative position.<br>
 At user levels 2 and higher, abort the current command.
 </p></dd>
-<dt><kbd> C-c g</kbd></dt>
+<dt> <kbd>C-c g</kbd></dt>
 <dd><p>Give file name, status, current line number and relative position - all
 user levels.
 </p></dd>
-<dt><kbd> C-l</kbd></dt>
+<dt> <kbd>C-l</kbd></dt>
 <dd><p>Refresh the screen.
 </p></dd>
-<dt><kbd> &lt;count&gt; C-e</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-e</kbd></dt>
 <dd><p>Expose &lt;count&gt; more lines at bottom, cursor stays put (if possible).
 </p></dd>
-<dt><kbd> &lt;count&gt; C-y</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-y</kbd></dt>
 <dd><p>Expose &lt;count&gt; more lines at top, cursor stays put (if possible).
 </p></dd>
-<dt><kbd> &lt;count&gt; C-d</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-d</kbd></dt>
 <dd><p>Scroll &lt;count&gt; lines downward (default the number of the previous scroll;
 initialization: half a page).
 </p></dd>
-<dt><kbd> &lt;count&gt; C-u</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-u</kbd></dt>
 <dd><p>Scroll &lt;count&gt; lines upward (default the number of the previous scroll;
 initialization: half a page).
 </p></dd>
-<dt><kbd> &lt;count&gt; C-f</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-f</kbd></dt>
 <dd><p>&lt;count&gt; pages forward.
 </p></dd>
-<dt><kbd> &lt;count&gt; C-b</kbd></dt>
+<dt> <kbd>&lt;count&gt; C-b</kbd></dt>
 <dd><p>&lt;count&gt; pages backward (in older versions <kbd>C-b</kbd> only works without count).
 </p></dd>
-<dt><kbd> &lt;count&gt; z&lt;cr&gt;</kbd></dt>
-<dt><kbd> zH</kbd></dt>
+<dt> <kbd>&lt;count&gt; z&lt;cr&gt;</kbd></dt>
+<dt> <kbd>zH</kbd></dt>
 <dd><p>Put line &lt;count&gt; at the top of the window (default the current line).
 </p></dd>
-<dt><kbd> &lt;count&gt; z-</kbd></dt>
-<dt><kbd> zL</kbd></dt>
+<dt> <kbd>&lt;count&gt; z-</kbd></dt>
+<dt> <kbd>zL</kbd></dt>
 <dd><p>Put line &lt;count&gt; at the bottom of the window
 (default the current line).
 </p></dd>
-<dt><kbd> &lt;count&gt; z.</kbd></dt>
-<dt><kbd> zM</kbd></dt>
+<dt> <kbd>&lt;count&gt; z.</kbd></dt>
+<dt> <kbd>zM</kbd></dt>
 <dd><p>Put line &lt;count&gt; in the center of the window
 (default the current line).
 </p></dd>
@@ -1417,121 +1417,121 @@ put any space between the command and the modifier.
 <p>Note that many Ex commands, e.g., <kbd>:w</kbd>, accept command arguments. The
 effect is that the command would start acting on the current region. For
 instance, if the current region spans the lines 11 through 22, then if you
-type <kbd>1:w</kbd> you would see `<samp>:11,22w</samp>' in the minibuffer.
+type <kbd>1:w</kbd> you would see <samp>`:11,22w'</samp> in the minibuffer.
 </p>
 <dl compact="compact">
-<dt><kbd> :q</kbd></dt>
+<dt> <kbd>:q</kbd></dt>
 <dd><p>Quit buffer except if modified.
 </p></dd>
-<dt><kbd> :q!</kbd></dt>
+<dt> <kbd>:q!</kbd></dt>
 <dd><p>Quit buffer without checking.  In Viper, these two commands
 are identical.  Confirmation is required if exiting modified buffers that
 visit files.
 </p></dd>
-<dt><kbd> :suspend</kbd></dt>
-<dt><kbd> :stop</kbd></dt>
+<dt> <kbd>:suspend</kbd></dt>
+<dt> <kbd>:stop</kbd></dt>
 <dd><p>Suspend Viper
 </p></dd>
-<dt><kbd> :[x,y] w</kbd></dt>
+<dt> <kbd>:[x,y] w</kbd></dt>
 <dd><p>Write the file.  Viper makes sure that a final newline is always added to
 any file where this newline is missing.  This is done by setting Emacs
 variable <code>require-final-newline</code> to <code>t</code>.  If you don't like this
 feature, use <code>setq-default</code> to set <code>require-final-newline</code> to
-<code>nil</code>.  This must be done in `<tt>.viper</tt>' file.
+<code>nil</code>.  This must be done in <tt>`.viper'</tt> file.
 </p></dd>
-<dt><kbd> :[x,y] w &lt;name&gt;</kbd></dt>
+<dt> <kbd>:[x,y] w &lt;name&gt;</kbd></dt>
 <dd><p>Write to the file &lt;name&gt;.
 </p></dd>
-<dt><kbd> :[x,y] w&gt;&gt; &lt;name&gt;</kbd></dt>
+<dt> <kbd>:[x,y] w&gt;&gt; &lt;name&gt;</kbd></dt>
 <dd><p>Append the buffer to the file &lt;name&gt;.  There should be no space between
 <kbd>w</kbd> and <kbd>&gt;&gt;</kbd>.  Type space after the <kbd>&gt;&gt;</kbd> and see what happens.
 </p></dd>
-<dt><kbd> :w! &lt;name&gt;</kbd></dt>
+<dt> <kbd>:w! &lt;name&gt;</kbd></dt>
 <dd><p>Overwrite the file &lt;name&gt;.  In Viper, <kbd>:w</kbd> and <kbd>:w!</kbd> are identical.
 Confirmation is required for writing to an existing file (if this is not
 the file the buffer is visiting) or to a read-only file.
 </p></dd>
-<dt><kbd> :x,y w &lt;name&gt;</kbd></dt>
+<dt> <kbd>:x,y w &lt;name&gt;</kbd></dt>
 <dd><p>Write lines x through y to the file &lt;name&gt;.
 </p></dd>
-<dt><kbd> :wq</kbd></dt>
+<dt> <kbd>:wq</kbd></dt>
 <dd><p>Write the file and kill buffer.
 </p></dd>
-<dt><kbd> :r &lt;file&gt; [&lt;file&gt; ...]</kbd></dt>
+<dt> <kbd>:r &lt;file&gt; [&lt;file&gt; ...]</kbd></dt>
 <dd><p>Read file into a buffer, inserting its contents after the current line.
 </p></dd>
-<dt><kbd> :xit</kbd></dt>
+<dt> <kbd>:xit</kbd></dt>
 <dd><p>Same as <kbd>:wq</kbd>.
 </p></dd>
-<dt><kbd> :Write</kbd></dt>
-<dt><kbd> :W</kbd></dt>
+<dt> <kbd>:Write</kbd></dt>
+<dt> <kbd>:W</kbd></dt>
 <dd><p>Save all unsaved buffers, asking for confirmation.
 </p></dd>
-<dt><kbd> :WWrite</kbd></dt>
-<dt><kbd> :WW</kbd></dt>
+<dt> <kbd>:WWrite</kbd></dt>
+<dt> <kbd>:WW</kbd></dt>
 <dd><p>Like <kbd>W</kbd>, but without asking for confirmation.
 </p></dd>
-<dt><kbd> ZZ</kbd></dt>
+<dt> <kbd>ZZ</kbd></dt>
 <dd><p>Save current buffer and kill it.  If user level is 1, then save all files
 and kill Emacs.  Killing Emacs is the wrong way to use it, so you should
 switch to higher user levels as soon as possible.
 </p></dd>
-<dt><kbd> :x [&lt;file&gt;]</kbd></dt>
+<dt> <kbd>:x [&lt;file&gt;]</kbd></dt>
 <dd><p>Save and kill buffer.
 </p></dd>
-<dt><kbd> :x! [&lt;file&gt;]</kbd></dt>
+<dt> <kbd>:x! [&lt;file&gt;]</kbd></dt>
 <dd><p><kbd>:w![&lt;file&gt;]</kbd> and <kbd>:q</kbd>.
 </p></dd>
-<dt><kbd> :pre</kbd></dt>
+<dt> <kbd>:pre</kbd></dt>
 <dd><p>Preserve the file - autosave buffers.
 </p></dd>
-<dt><kbd> :rec</kbd></dt>
+<dt> <kbd>:rec</kbd></dt>
 <dd><p>Recover file from autosave.
 </p></dd>
-<dt><kbd> :f [&lt;file&gt;]</kbd></dt>
+<dt> <kbd>:f [&lt;file&gt;]</kbd></dt>
 <dd><p>without the argument, prints file name and character/line information afout
 the currently visited file. With an argument, sets the currently visited
-filename to `<tt>file</tt>'.
+filename to <tt>`file'</tt>.
 </p></dd>
-<dt><kbd> :cd [&lt;dir&gt;]</kbd></dt>
+<dt> <kbd>:cd [&lt;dir&gt;]</kbd></dt>
 <dd><p>Set the working directory to &lt;dir&gt; (default home directory).
 </p></dd>
-<dt><kbd> :pwd</kbd></dt>
+<dt> <kbd>:pwd</kbd></dt>
 <dd><p>Print present working directory.
 </p></dd>
-<dt><kbd> :e [+&lt;cmd&gt;] &lt;files&gt;</kbd></dt>
+<dt> <kbd>:e [+&lt;cmd&gt;] &lt;files&gt;</kbd></dt>
 <dd><p>Edit files.  If no filename is given, edit the file visited by the current
 buffer.  If buffer was modified or the file changed on disk, ask for
 confirmation.  Unlike Vi, Viper allows <kbd>:e</kbd> to take multiple arguments.
 The first file is edited the same way as in Vi.  The rest are visited
 in the usual Emacs way.
 </p></dd>
-<dt><kbd> :e! [+&lt;cmd&gt;] &lt;files&gt;</kbd></dt>
+<dt> <kbd>:e! [+&lt;cmd&gt;] &lt;files&gt;</kbd></dt>
 <dd><p>Re-edit file.  If no filename, re-edit current file.
 In Viper, unlike Vi, <kbd>e!</kbd> is identical to <kbd>:e</kbd>.  In both cases, the
 user is asked to confirm if there is a danger of discarding changes to a
 buffer.
 </p></dd>
-<dt><kbd> :q!</kbd></dt>
+<dt> <kbd>:q!</kbd></dt>
 <dd><p>Quit Vi without writing.
 </p></dd>
-<dt><kbd> C-^</kbd></dt>
+<dt> <kbd>C-^</kbd></dt>
 <dd><p>Edit the alternate (normally the previous) file.
 </p></dd>
-<dt><kbd> :rew</kbd></dt>
+<dt> <kbd>:rew</kbd></dt>
 <dd><p>Obsolete
 </p></dd>
-<dt><kbd> :args</kbd></dt>
+<dt> <kbd>:args</kbd></dt>
 <dd><p>List files not shown anywhere with counts for next
 </p></dd>
-<dt><kbd> :n [count]  [+&lt;cmd&gt;] [&lt;files&gt;]</kbd></dt>
+<dt> <kbd>:n [count]  [+&lt;cmd&gt;] [&lt;files&gt;]</kbd></dt>
 <dd><p>Edit &lt;count&gt; file, or edit files.  The count comes from <kbd>:args</kbd>.  
 </p></dd>
-<dt><kbd> :N [count] [+&lt;cmd&gt;] [&lt;files&gt;] </kbd></dt>
+<dt> <kbd>:N [count] [+&lt;cmd&gt;] [&lt;files&gt;]</kbd> </dt>
 <dd><p>Like <kbd>:n</kbd>, but the meaning of the variable
 <var>ex-cycle-other-window</var> is reversed.
 </p></dd>
-<dt><kbd> :b</kbd></dt>
+<dt> <kbd>:b</kbd></dt>
 <dd><p>Switch to another buffer.  If <var>ex-cycle-other-window</var> is <code>t</code>,
 switch in another window.  Buffer completion is supported.
 The variable <var>viper-read-buffer-function</var> controls which function is
@@ -1540,13 +1540,13 @@ but better alternatives are also available in Emacs (e.g.,
 <code>iswitchb-read-buffer</code>).
 <a name="IDX441"></a>
 </p></dd>
-<dt><kbd> :B</kbd></dt>
+<dt> <kbd>:B</kbd></dt>
 <dd><p>Like <kbd>:b</kbd>, but the meaning of <var>ex-cycle-other-window</var> is reversed.
 </p></dd>
-<dt><kbd> :&lt;address&gt;r &lt;name&gt;</kbd></dt>
+<dt> <kbd>:&lt;address&gt;r &lt;name&gt;</kbd></dt>
 <dd><p>Read the file &lt;name&gt; into the buffer after the line &lt;address&gt;.
 </p></dd>
-<dt><kbd> v, V, C-v</kbd></dt>
+<dt> <kbd>v, V, C-v</kbd></dt>
 <dd><p>Edit a file in current or another window, or in another frame.  File name
 is typed in Minibuffer.  File completion and history are supported.
 </p></dd>
@@ -1613,14 +1613,14 @@ is typed in Minibuffer.  File completion and history are supported.
 
 
 <dl compact="compact">
-<dt><kbd> :map &lt;string&gt;</kbd></dt>
+<dt> <kbd>:map &lt;string&gt;</kbd></dt>
 <dd><p>Start defining a Vi-style keyboard macro.
 For instance, typing
 <kbd>:map www</kbd> followed by <kbd>:!wc %</kbd> and then typing <kbd>C-x )</kbd>
 will cause <kbd>www</kbd> to run wc on
-current file (Vi replaces `<samp>%</samp>' with the current file name).
+current file (Vi replaces <samp>`%'</samp> with the current file name).
 </p></dd>
-<dt><kbd> C-x )</kbd></dt>
+<dt> <kbd>C-x )</kbd></dt>
 <dd><p>Finish defining a keyboard macro.
 In Viper, this command completes the process of defining all keyboard
 macros, whether they are Emacs-style or Vi-style.
@@ -1628,49 +1628,49 @@ This is a departure from Vi, needed to allow WYSIWYG mapping of
 keyboard macros and to permit the use of function keys and arbitrary Emacs
 functions in the macros.
 </p></dd>
-<dt><kbd> :unmap &lt;string&gt;</kbd></dt>
+<dt> <kbd>:unmap &lt;string&gt;</kbd></dt>
 <dd><p>Deprive &lt;string&gt; of its mappings in Vi state.
 </p></dd>
-<dt><kbd> :map! &lt;string&gt;</kbd></dt>
+<dt> <kbd>:map! &lt;string&gt;</kbd></dt>
 <dd><p>Map a macro for Insert state.
 </p></dd>
-<dt><kbd> :unmap! &lt;string&gt;</kbd></dt>
+<dt> <kbd>:unmap! &lt;string&gt;</kbd></dt>
 <dd><p>Deprive &lt;string&gt; of its mapping in Insert state (see <kbd>:unmap</kbd>).
 </p></dd>
-<dt><kbd> @&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>@&lt;a-z&gt;</kbd></dt>
 <dd><p>In Vi state,
 execute the contents of register as a command.
 </p></dd>
-<dt><kbd> @@</kbd></dt>
+<dt> <kbd>@@</kbd></dt>
 <dd><p>In Vi state,
 repeat last register command.
 </p></dd>
-<dt><kbd> @#</kbd></dt>
+<dt> <kbd>@#</kbd></dt>
 <dd><p>In Vi state,
 begin keyboard macro.  End with @&lt;a-z&gt;.  This will
 put the macro in the proper register.  Register will
 be automatically down-cased.
 See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info.
 </p></dd>
-<dt><kbd> @!&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>@!&lt;a-z&gt;</kbd></dt>
 <dd><p>In Vi state,
 yank anonymous macro to register
 </p></dd>
-<dt><kbd> *</kbd></dt>
+<dt> <kbd>*</kbd></dt>
 <dd><p>In Vi state,
 execute anonymous macro (defined by C-x( and C-x )).
 </p></dd>
-<dt><kbd> C-x e</kbd></dt>
+<dt> <kbd>C-x e</kbd></dt>
 <dd><p>Like <kbd>*</kbd>, but works in all Viper states.
 </p></dd>
-<dt><kbd> #g&lt;move&gt;</kbd></dt>
+<dt> <kbd>#g&lt;move&gt;</kbd></dt>
 <dd><p>Execute the last keyboard macro for each line in the region.
 See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info.
 </p></dd>
-<dt><kbd> [&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>[&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of textmarker.
 </p></dd>
-<dt><kbd> ]&lt;a-z&gt;</kbd></dt>
+<dt> <kbd>]&lt;a-z&gt;</kbd></dt>
 <dd><p>Show contents of register.
 </p></dd>
 </dl>
@@ -1709,17 +1709,17 @@ See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info
 <h2 class="section"> 4.6 Shell Commands </h2>
 
 
-<p>The symbol `<samp>%</samp>' is used in Ex shell commands to mean current file.  If
-you want a `<samp>%</samp>' in your command, it must be escaped as `<samp>\%</samp>'.
+<p>The symbol <samp>`%'</samp> is used in Ex shell commands to mean current file.  If
+you want a <samp>`%'</samp> in your command, it must be escaped as <samp>`\%'</samp>.
 <a name="IDX492"></a>
-However if `<samp>%</samp>' is the first character, it stands as the address for
+However if <samp>`%'</samp> is the first character, it stands as the address for
 the whole file.
 <a name="IDX493"></a>
-Similarly, `<samp>#</samp>' expands to the previous file.  The previous file is the
+Similarly, <samp>`#'</samp> expands to the previous file.  The previous file is the
 first file in <kbd>:args</kbd> listing.  This defaults to the previous file in
 the VI sense if you have one window.
 </p>
-<p>Symbols `<samp>%</samp>' and `<samp>#</samp>' are also used in the Ex commands <kbd>:e</kbd> and
+<p>Symbols <samp>`%'</samp> and <samp>`#'</samp> are also used in the Ex commands <kbd>:e</kbd> and
 <kbd>:r &lt;shell-cmd&gt;</kbd>.  The commands <kbd>:w</kbd> and the regular <kbd>:r
 &lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
 better mechanism.
@@ -1727,45 +1727,45 @@ better mechanism.
 <a name="IDX494"></a>
 
 <dl compact="compact">
-<dt><kbd> :sh</kbd></dt>
+<dt> <kbd>:sh</kbd></dt>
 <dd><p>Execute a subshell in another window
 </p></dd>
-<dt><kbd> :[x,y]!&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:[x,y]!&lt;cmd&gt;</kbd></dt>
 <dd><p>Execute a shell &lt;cmd&gt; [on lines x through y;
 % is replace by current file, \% is changed to %
 </p></dd>
-<dt><kbd> :[x,y]!! [&lt;args&gt;]</kbd></dt>
+<dt> <kbd>:[x,y]!! [&lt;args&gt;]</kbd></dt>
 <dd><p>Repeat last shell command [and append &lt;args&gt;].
 </p></dd>
-<dt><kbd> :!&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:!&lt;cmd&gt;</kbd></dt>
 <dd><p>Just execute command and display result in a buffer.
 </p></dd>
-<dt><kbd> :!! &lt;args&gt;</kbd></dt>
+<dt> <kbd>:!! &lt;args&gt;</kbd></dt>
 <dd><p>Repeat last shell command and append &lt;args&gt;
 </p></dd>
-<dt><kbd> &lt;count&gt; !&lt;move&gt;&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt; !&lt;move&gt;&lt;cmd&gt;</kbd></dt>
 <dd><p>The shell executes &lt;cmd&gt;, with standard
 input the lines described by &lt;count&gt;&lt;move&gt;,
 next the standard output replaces those lines
-(think of `<samp>cb</samp>', `<samp>sort</samp>', `<samp>nroff</samp>', etc.).
+(think of <samp>`cb'</samp>, <samp>`sort'</samp>, <samp>`nroff'</samp>, etc.).
 </p></dd>
-<dt><kbd> &lt;count&gt; !!&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>&lt;count&gt; !!&lt;cmd&gt;</kbd></dt>
 <dd><p>Give &lt;count&gt; lines as standard input to the
 shell &lt;cmd&gt;, next let the standard output
 replace those lines.
 </p></dd>
-<dt><kbd> :[x,y] w !&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:[x,y] w !&lt;cmd&gt;</kbd></dt>
 <dd><p>Let lines x to y be standard input for &lt;cmd&gt;
 (notice the &lt;sp&gt; between <kbd>w</kbd> and <kbd>!</kbd>).
 </p></dd>
-<dt><kbd> :&lt;address&gt;r !&lt;cmd&gt;</kbd></dt>
+<dt> <kbd>:&lt;address&gt;r !&lt;cmd&gt;</kbd></dt>
 <dd><p>Put the output of &lt;cmd&gt; after the line &lt;address&gt; (default current).
 </p></dd>
-<dt><kbd> :&lt;address&gt;r &lt;name&gt;</kbd></dt>
+<dt> <kbd>:&lt;address&gt;r &lt;name&gt;</kbd></dt>
 <dd><p>Read the file &lt;name&gt; into the buffer after the line &lt;address&gt; (default
 current).
 </p></dd>
-<dt><kbd> :make</kbd></dt>
+<dt> <kbd>:make</kbd></dt>
 <dd><p>Run the make command in the current directory.
 </p></dd>
 </dl>
@@ -1804,80 +1804,80 @@ current).
 
 
 <dl compact="compact">
-<dt><kbd> autoindent</kbd></dt>
-<dt><kbd> ai</kbd></dt>
+<dt> <kbd>autoindent</kbd></dt>
+<dt> <kbd>ai</kbd></dt>
 <dd><a name="IDX506"></a>
 <p>autoindent - In append mode after a &lt;cr&gt; the
 cursor will move directly below the first
 character on the previous line.
 This setting affects the current buffer only.
 </p></dd>
-<dt><kbd> autoindent-global</kbd></dt>
-<dt><kbd> ai-global</kbd></dt>
+<dt> <kbd>autoindent-global</kbd></dt>
+<dt> <kbd>ai-global</kbd></dt>
 <dd><p>Same as `autoindent', but affects all buffers.
 </p></dd>
-<dt><kbd> noautoindent</kbd></dt>
-<dt><kbd> noai</kbd></dt>
+<dt> <kbd>noautoindent</kbd></dt>
+<dt> <kbd>noai</kbd></dt>
 <dd><p>Cancel autoindent.
 </p></dd>
-<dt><kbd> noautoindent-global</kbd></dt>
-<dt><kbd> noai-g</kbd></dt>
+<dt> <kbd>noautoindent-global</kbd></dt>
+<dt> <kbd>noai-g</kbd></dt>
 <dd><p>Cancel autoindent-global.
 </p></dd>
-<dt><kbd> ignorecase</kbd></dt>
-<dt><kbd> ic</kbd></dt>
+<dt> <kbd>ignorecase</kbd></dt>
+<dt> <kbd>ic</kbd></dt>
 <dd><a name="IDX507"></a>
 <p>ignorecase - No distinction between upper and lower cases when searching.
 </p></dd>
-<dt><kbd> noignorecase</kbd></dt>
-<dt><kbd> noic</kbd></dt>
+<dt> <kbd>noignorecase</kbd></dt>
+<dt> <kbd>noic</kbd></dt>
 <dd><p>Cancel ignorecase.
 </p></dd>
-<dt><kbd> magic</kbd></dt>
-<dt><kbd> ma</kbd></dt>
+<dt> <kbd>magic</kbd></dt>
+<dt> <kbd>ma</kbd></dt>
 <dd><a name="IDX508"></a>
 <p>Regular expressions used in searches; nomagic means no regexps.
 </p></dd>
-<dt><kbd> nomagic</kbd></dt>
-<dt><kbd> noma</kbd></dt>
+<dt> <kbd>nomagic</kbd></dt>
+<dt> <kbd>noma</kbd></dt>
 <dd><p>Cancel magic.
 </p></dd>
-<dt><kbd> readonly</kbd></dt>
-<dt><kbd> ro</kbd></dt>
+<dt> <kbd>readonly</kbd></dt>
+<dt> <kbd>ro</kbd></dt>
 <dd><a name="IDX509"></a>
 <p>readonly - The file is not to be changed.
 If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
-<dt><kbd> noreadonly</kbd></dt>
-<dt><kbd> noro</kbd></dt>
+<dt> <kbd>noreadonly</kbd></dt>
+<dt> <kbd>noro</kbd></dt>
 <dd><p>Cancel readonly.
 </p></dd>
-<dt><kbd> shell=&lt;string&gt;</kbd></dt>
-<dt><kbd> sh=&lt;string&gt;</kbd></dt>
+<dt> <kbd>shell=&lt;string&gt;</kbd></dt>
+<dt> <kbd>sh=&lt;string&gt;</kbd></dt>
 <dd><a name="IDX510"></a>
 <p>shell - The program to be used for shell escapes
-(default `<samp>$SHELL</samp>' (default `<tt>/bin/sh</tt>')).
+(default <samp>`$SHELL'</samp> (default <tt>`/bin/sh'</tt>)).
 </p></dd>
-<dt><kbd> shiftwidth=&lt;count&gt;</kbd></dt>
-<dt><kbd> sw=&lt;count&gt;</kbd></dt>
+<dt> <kbd>shiftwidth=&lt;count&gt;</kbd></dt>
+<dt> <kbd>sw=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX511"></a>
 <a name="IDX512"></a>
 <p>shiftwidth - Gives the shiftwidth (default 8 positions).
 </p></dd>
-<dt><kbd> showmatch</kbd></dt>
-<dt><kbd> sm</kbd></dt>
+<dt> <kbd>showmatch</kbd></dt>
+<dt> <kbd>sm</kbd></dt>
 <dd><a name="IDX513"></a>
 <a name="IDX514"></a>
 <p>showmatch - Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it's on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there's no match, Vi will beep.
 </p></dd>
-<dt><kbd> noshowmatch</kbd></dt>
-<dt><kbd> nosm</kbd></dt>
+<dt> <kbd>noshowmatch</kbd></dt>
+<dt> <kbd>nosm</kbd></dt>
 <dd><p>Cancel showmatch.
 </p></dd>
-<dt><kbd> tabstop=&lt;count&gt;</kbd></dt>
-<dt><kbd> ts=&lt;count&gt;</kbd></dt>
+<dt> <kbd>tabstop=&lt;count&gt;</kbd></dt>
+<dt> <kbd>ts=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX515"></a>
 <a name="IDX516"></a>
 <p>tabstop - The length of a &lt;ht&gt;; warning: this is
@@ -1885,35 +1885,35 @@ only IN the editor, outside of it &lt;ht&gt;s have
 their normal length (default 8 positions).
 This setting affects the current buffer only.
 </p></dd>
-<dt><kbd> tabstop-global</kbd></dt>
-<dt><kbd> ts-g</kbd></dt>
+<dt> <kbd>tabstop-global</kbd></dt>
+<dt> <kbd>ts-g</kbd></dt>
 <dd><p>Same as `tabstop', but affects all buffers.
 </p></dd>
-<dt><kbd> wrapmargin=&lt;count&gt;</kbd></dt>
-<dt><kbd> wm=&lt;count&gt;</kbd></dt>
+<dt> <kbd>wrapmargin=&lt;count&gt;</kbd></dt>
+<dt> <kbd>wm=&lt;count&gt;</kbd></dt>
 <dd><a name="IDX517"></a>
 <a name="IDX518"></a>
 <p>wrapmargin - In append mode Vi automatically
 puts a &lt;lf&gt; whenever there is a &lt;sp&gt; or &lt;ht&gt;
 within &lt;wm&gt; columns from the right margin.
 </p></dd>
-<dt><kbd> wrapscan</kbd></dt>
-<dt><kbd> ws</kbd></dt>
+<dt> <kbd>wrapscan</kbd></dt>
+<dt> <kbd>ws</kbd></dt>
 <dd><a name="IDX519"></a>
 <p>wrapscan - When searching, the end is
-considered `<samp>stuck</samp>' to the begin of the file.
+considered <samp>`stuck'</samp> to the begin of the file.
 </p></dd>
-<dt><kbd> nowrapscan</kbd></dt>
-<dt><kbd> nows</kbd></dt>
+<dt> <kbd>nowrapscan</kbd></dt>
+<dt> <kbd>nows</kbd></dt>
 <dd><p>Cancel wrapscan.
 </p></dd>
-<dt><kbd> :set &lt;option&gt;</kbd></dt>
+<dt> <kbd>:set &lt;option&gt;</kbd></dt>
 <dd><p>Turn &lt;option&gt; on.
 </p></dd>
-<dt><kbd> :set no&lt;option&gt;</kbd></dt>
+<dt> <kbd>:set no&lt;option&gt;</kbd></dt>
 <dd><p>Turn &lt;option&gt; off.
 </p></dd>
-<dt><kbd> :set &lt;option&gt;=&lt;value&gt;</kbd></dt>
+<dt> <kbd>:set &lt;option&gt;=&lt;value&gt;</kbd></dt>
 <dd><p>Set &lt;option&gt; to &lt;value&gt;.
 </p></dd>
 </dl>
@@ -1963,7 +1963,7 @@ considered `<samp>stuck</samp>' to the begin of the file.
 <h2 class="section"> 4.8 Emacs Related Commands </h2>
 
 <dl compact="compact">
-<dt><kbd> C-\</kbd></dt>
+<dt> <kbd>C-\</kbd></dt>
 <dd><p>Begin Meta command in Vi or Insert states.  Most often used as C-\ x (M-x).
 </p>
 <p>Note: Emacs binds <kbd>C-\</kbd> to a function that offers to change the
@@ -1972,37 +1972,37 @@ binding.  However, it is still possible to switch the input method by typing
 <kbd>\ C-\</kbd> in the Vi command state and <kbd>C-z \ C-\</kbd> in the Insert state.
 Or you can use the MULE menu on the menubar.
 </p></dd>
-<dt><kbd> C-z</kbd></dt>
+<dt> <kbd>C-z</kbd></dt>
 <dd><p>In Insert and Replace states, prepare Viper to accept the next command and
 execute it as if Viper was in Vi state.  Then return to Insert state.
 </p>
 <p>In Vi state, switch to Emacs state; in Emacs state, switch to Vi state.
 </p></dd>
-<dt><kbd> C-c \</kbd></dt>
+<dt> <kbd>C-c \</kbd></dt>
 <dd><p>Switches to Vi state for the duration of a single command.  Then goes back
 to the original Viper state.  Works from Vi, Insert, Replace, and Emacs states.
 </p></dd>
-<dt><kbd> C-x0</kbd></dt>
+<dt> <kbd>C-x0</kbd></dt>
 <dd><p>Close Window
 </p></dd>
-<dt><kbd> C-x1</kbd></dt>
+<dt> <kbd>C-x1</kbd></dt>
 <dd><p>Close Other Windows
 </p></dd>
-<dt><kbd> C-x2</kbd></dt>
+<dt> <kbd>C-x2</kbd></dt>
 <dd><p>Split Window
 </p></dd>
-<dt><kbd> C-xo</kbd></dt>
+<dt> <kbd>C-xo</kbd></dt>
 <dd><p>Move among windows
 </p></dd>
-<dt><kbd> C-xC-f</kbd></dt>
+<dt> <kbd>C-xC-f</kbd></dt>
 <dd><p>Emacs find-file, useful in Insert state
 </p></dd>
-<dt><kbd> C-y</kbd></dt>
+<dt> <kbd>C-y</kbd></dt>
 <dd><p>Put back the last killed text.  Similar to Vi's <kbd>p</kbd>, but also works in
 Insert and Replace state.  This command doesn't work in Vi command state,
 since this binding is taken for something else.
 </p></dd>
-<dt><kbd> M-y</kbd></dt>
+<dt> <kbd>M-y</kbd></dt>
 <dd><p>Undoes the last <kbd>C-y</kbd> and puts another kill from the kill ring.
 Using this command, you can try may different kills until you find the one
 you need.
@@ -2044,8 +2044,8 @@ you need.
 insert commands in of Viper:
 </p>
 <dl compact="compact">
-<dt><kbd> S-Mouse-1 (Emacs)</kbd></dt>
-<dt><kbd> meta button1up (XEmacs)</kbd></dt>
+<dt> <kbd>S-Mouse-1 (Emacs)</kbd></dt>
+<dt> <kbd>meta button1up (XEmacs)</kbd></dt>
 <dd><p>Holding Shift (or Meta, if XEmacs) and clicking mouse button 1 will
 initiate search for 
 a region under the mouse pointer.
@@ -2055,8 +2055,8 @@ already bound to something else.
 See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more information.
 </p>
 </dd>
-<dt><kbd> S-Mouse-2 (Emacs)</kbd></dt>
-<dt><kbd> meta button2up (XEmacs)</kbd></dt>
+<dt> <kbd>S-Mouse-2 (Emacs)</kbd></dt>
+<dt> <kbd>meta button2up (XEmacs)</kbd></dt>
 <dd><p>Holding Shift (or Meta, if XEmacs) and clicking button 2 of the mouse will
 insert a region surrounding the mouse pointer.
 This command can also take a prefix argument.

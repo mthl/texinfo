@@ -101,14 +101,14 @@ the world.
 <p>A few time ago <code>makeinfo</code> wasn't able to produce
 <acronym>HTML</acronym> output format, but there are needth to have
 <acronym>HTML</acronym>. This was the borning hour for
-<code>texi2html</code>. The basic purpose of `<tt>texi2html</tt>'
+<code>texi2html</code>. The basic purpose of <tt>`texi2html'</tt>
 is to convert Texinfo documents into HTML.
 </p>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC2">1.1 Ways to get HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Ways to get HTML files.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Why texi2html and not makeinfo?.
+<tr><td align="left" valign="top"><a href="#SEC3">1.2 Why <tt>`texi2html'</tt> and not <tt>`makeinfo'</tt>?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Why texi2html and not makeinfo?.
 </td></tr>
 </table>
 <hr size="6">
@@ -156,7 +156,7 @@ This first is to use <code>makeinfo</code> itself to produce
 <td valign="middle" align="left">[<a href="#SEC70" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'? </h2>
+<h2 class="section"> 1.2 Why <tt>`texi2html'</tt> and not <tt>`makeinfo'</tt>? </h2>
 <p>The basic idea of <code>makeinfo</code>'s <acronym>HTML</acronym>
 output was to get an readable <acronym>HTML</acronym> output.
 Nothing sophisticated nor good styling just readable.
@@ -181,7 +181,7 @@ implementation of <code>makeinfo</code>'s source.
 </p>
 <p>In contrast to the HTML produced by <code>makeinfo
 --html</code> (the <code>makeinfo</code> program is part of the
-Texinfo distribution), the HTML output of `<tt>texi2html</tt>'
+Texinfo distribution), the HTML output of <tt>`texi2html'</tt>
 is highly configurable. Among other differences, with
 <code>texi2html</code> allows you to customize your entire
 page layout (like headers, footers, style sheets, etc),
@@ -236,7 +236,7 @@ How?
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 3. Customizing files </h1>
-<p>Result based on using `<samp>-frames</samp>'
+<p>Result based on using <samp>`-frames'</samp>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
 </pre></td></tr></table><p>Explanation of the output differences against default,
@@ -265,8 +265,8 @@ whatever this is ;-)
 <h1 class="chapter"> 4. Customizing what gets expanded </h1>
 <p>Test starting.
 </p>
-<p>`<samp>-expand info</samp>'
-`<samp>-expand tex</samp>'
+<p><samp>`-expand info'</samp>
+<samp>`-expand tex'</samp>
 Take a look at optionexpand.
 </p>
 <hr size="6">
@@ -455,7 +455,7 @@ etc. and specialy how to change them to get your own
 design.
 </p>
 <p><acronym>ToC</acronym> <code>T2H_DEFAULT_print_toc_frame</code> in
-`<tt>texi2html.init</tt>'
+<tt>`texi2html.init'</tt>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC14">5.5.1 Table Of Contents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> .
@@ -607,7 +607,7 @@ read this, cause you don't know what we are talking about.
 header, body etc.
 </p>
 <p>These are the defaults which are
-part of the distribution as `<tt>texi2html.init</tt>'.
+part of the distribution as <tt>`texi2html.init'</tt>.
 </p>
 
 <p>How to do changes of the customization...
@@ -812,7 +812,7 @@ $T2H_AFTER_BODY_OPEN
 
 <a name="SEC23"></a>
 <h1 class="chapter"> 7. Initialization file </h1>
-<p>`<tt>texi2html.init</tt>'
+<p><tt>`texi2html.init'</tt>
 </p>
 
 <table class="menu" border="0" cellspacing="0">
@@ -846,20 +846,20 @@ $T2H_AFTER_BODY_OPEN
 <h2 class="section"> 7.1 The basics about init files </h2>
 
 <p>Initialization options are read first from
-`<tt>/usr/local/etc/texi2htmlrc</tt>' (the exact location being
-changeable with the `<samp>--sysconfdir=dir</samp>' option to the
+<tt>`/usr/local/etc/texi2htmlrc'</tt> (the exact location being
+changeable with the <samp>`--sysconfdir=dir'</samp> option to the
 <code>configure</code> script), then from
-`<tt>$HOME/.texi2htmlrc</tt>', then any command-line options
-including `<samp>-init_file</samp>' option; with later settings
+<tt>`$HOME/.texi2htmlrc'</tt>, then any command-line options
+including <samp>`-init_file'</samp> option; with later settings
 overriding earlier ones.
 </p>
 <p>The default initialization options are defined in the
-`<tt>texi2html.init</tt>' file contained in the <b>Texi2html</b>
+<tt>`texi2html.init'</tt> file contained in the <b>Texi2html</b>
 distribution (which gets included near the beginning of the
 <code>texi2html</code> script that gets installed).
 </p>
-<p>To customize `<tt>texi2html</tt>' it is best if you copy the
-appropriate sections from the `<tt>texi2html.init</tt>'
+<p>To customize <tt>`texi2html'</tt> it is best if you copy the
+appropriate sections from the <tt>`texi2html.init'</tt>
 contents into an appropriate local initialization file,
 make the necessary changes there, and then have
 <code>texi2html</code> read this initialization file by one of
@@ -930,7 +930,7 @@ the means described above.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 7.4 Loadable initialization file </h2>
-<p>`<samp>-init_file</samp>'
+<p><samp>`-init_file'</samp>
 </p>
 
 <hr size="6">
@@ -955,11 +955,11 @@ the means described above.
 <a name="SEC28"></a>
 <h2 class="section"> 7.5 Initialization file options </h2>
 <p>This section describes in detail all options that can be used
-only in the initialization file (`<tt>texi2html.init</tt>'),
+only in the initialization file (<tt>`texi2html.init'</tt>),
 and cannot be specified on the command line.
 This means the only way to change those
-options is first to copy the original `<tt>texi2html.init</tt>'
-to e.g. `<tt>texi2html.init.myown</tt>' and make changes to fit
+options is first to copy the original <tt>`texi2html.init'</tt>
+to e.g. <tt>`texi2html.init.myown'</tt> and make changes to fit
 your needs.
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -1219,8 +1219,8 @@ entries
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 7.5.10 HREF Dir Instead File. </h3>
-<p>if set (e.g., to `<tt>index.html</tt>') replace <strong>HREF</strong>'s
-to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
+<p>if set (e.g., to <tt>`index.html'</tt>) replace <strong>HREF</strong>'s
+to this file  (i.e., to <tt>`index.html'</tt>) by <tt>`./'</tt>
 </p>
 <p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
 </p><hr size="6">
@@ -1306,7 +1306,7 @@ to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 </tr></table>
 <h2 class="section"> 8.1 Debugging </h2>
 
-<p>`<samp>-debug</samp>'
+<p><samp>`-debug'</samp>
 </p>
 <p>debugging: 0 -- no debugging; other values; see beginning
 of texi2html
@@ -1340,7 +1340,7 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.2 DocType </h2>
-<p>`<samp>-doctype</samp>'
+<p><samp>`-doctype'</samp>
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
 </pre></td></tr></table>
@@ -1364,7 +1364,7 @@ of texi2html
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.3 Check </h2>
-<p>`<samp>-check</samp>'
+<p><samp>`-check'</samp>
 if set, only check files and give the list of all things
 that look like untranslated Texinfo commands
 </p>
@@ -1388,7 +1388,7 @@ that look like untranslated Texinfo commands
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.4 Expand </h2>
-<p>`<samp>-expand</samp>'
+<p><samp>`-expand'</samp>
 if set to <strong>tex</strong> (or, <strong>info</strong>) expand
 <code>@iftex</code> and <code>@tex</code> (or, <code>@ifinfo</code>)
 sections else, neither expand <code>@iftex</code>, <code>@tex</code>,
@@ -1415,7 +1415,7 @@ nor <code>@ifinfo</code> sections
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.5 Glossary </h2>
-<p>`<samp>-glossary</samp>'
+<p><samp>`-glossary'</samp>
 if set, uses section named <strong>Footnotes</strong> for glossary
 </p>
 <hr size="6">
@@ -1438,10 +1438,10 @@ if set, uses section named <strong>Footnotes</strong> for glossary
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.6 Invisible </h2>
-<p>`<samp>-invisible</samp>'
+<p><samp>`-invisible'</samp>
 <var>$T2H_INVISIBLE_MARK</var> is the text used to create
 invisible destination anchors for index links (you can for
-instance use the `<tt>invisible.xbm</tt>' file shipped with
+instance use the <tt>`invisible.xbm'</tt> file shipped with
 this program). This is a workaround for a known bug of many
 <acronym>WWW</acronym> browsers, including Netscape. For me, it
 works fine without it -- on the contrary: if there, it
@@ -1471,7 +1471,7 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.7 Iso </h2>
-<p>`<samp>-iso</samp>'
+<p><samp>`-iso'</samp>
 </p>
 <p>if set, ISO8859 characters are used for special symbols
 (like Copyright <code>&copy;</code>, etc)
@@ -1498,11 +1498,11 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.8 Include Directory </h2>
-<p>`<samp>-I</samp>'
+<p><samp>`-I'</samp>
 </p>
 <p>list directories where <code>@include</code> files are searched for
 (besides the directory of the doc file) additional
-`<samp>-I</samp>' args are add to this list.
+<samp>`-I'</samp> args are add to this list.
 </p>
 <p>@T2H_INCLUDE_DIRS = (&quot;.&quot;);
 </p>
@@ -1526,11 +1526,11 @@ inserts space between headers and start of text (obachman
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.9 Top File </h2>
-<p>`<samp>-top_file</samp>'
+<p><samp>`-top_file'</samp>
 uses file of this name for top-level file
 extension is manipulated appropriately, if necessary.
-If empty, `<tt>&lt;basename of document&gt;.html</tt>' is used.
-Typically, you would set this to `<tt>index.html</tt>'.
+If empty, <tt>`&lt;basename of document&gt;.html'</tt> is used.
+Typically, you would set this to <tt>`index.html'</tt>.
 </p>
 <p>$T2H_TOP_FILE = &quot;&quot;;
 </p>
@@ -1554,10 +1554,10 @@ Typically, you would set this to `<tt>index.html</tt>'.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.10 Table Of content File </h2>
-<p>`<samp>-toc_file</samp>'
+<p><samp>`-toc_file'</samp>
 uses file of this name for table of contents.  File extension
 is manipulated appropriately, if necessary. If empty,
-`<tt>&lt;basename of document&gt;_toc.html</tt>' is used.
+<tt>`&lt;basename of document&gt;_toc.html'</tt> is used.
 </p>
 <p>$T2H_TOC_FILE = &quot;&quot;;
 </p>
@@ -1581,7 +1581,7 @@ is manipulated appropriately, if necessary. If empty,
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.11 Frames </h2>
-<p>`<samp>-frames</samp>'
+<p><samp>`-frames'</samp>
 if set, output two additional files which use HTML 4.0
 <b>frames</b>.
 </p>
@@ -1607,7 +1607,7 @@ if set, output two additional files which use HTML 4.0
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.12 Menus </h2>
-<p>`<samp>-menu</samp>' or `<samp>-nomenu</samp>' if set, show the Texinfo
+<p><samp>`-menu'</samp> or <samp>`-nomenu'</samp> if set, show the Texinfo
 menus
 </p>
 <p>$T2H_SHOW_MENU = 1;
@@ -1632,7 +1632,7 @@ menus
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.13 Number sections </h2>
-<p>`<samp>-number</samp>' `<samp>-nonumber</samp>'
+<p><samp>`-number'</samp> <samp>`-nonumber'</samp>
 if set, number sections and show section names and numbers
 in references and menus
 </p>
@@ -1657,7 +1657,7 @@ in references and menus
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.14 Split </h2>
-<p>`<samp>-split section|chapter|none</samp>'
+<p><samp>`-split section|chapter|none'</samp>
 if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
 <acronym>HTML</acronym> file per (sub)section (resp. chapter) and
 separate pages for Top, ToC, Overview, Index, Glossary,
@@ -1687,15 +1687,15 @@ $T2H_SPLIT = undef;
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.15 Section navigation </h2>
-<p>`<samp>-section_navigation</samp>'|
-`<samp>-no-section_navigation</samp>'
+<p><samp>`-section_navigation'</samp>|
+<samp>`-no-section_navigation'</samp>
 </p>
 <p>if set, then navigation panels are printed at the beginning
 of each section and, possibly at the end (depending on
 whether or not there were more than 
 <var>$T2H_WORDS_IN_PAGE</var> words on page). This is most useful
 if you do not want to have section navigation on
-`<samp>-split chapter</samp>'
+<samp>`-split chapter'</samp>
 </p>
 
 <hr size="6">
@@ -1718,7 +1718,7 @@ if you do not want to have section navigation on
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.16 Subdirectory </h2>
-<p>`<samp>-subdir</samp>'
+<p><samp>`-subdir'</samp>
 If set, then put result files in the specified directory.
 If not set, then result files are put into the current directory.
 </p>
@@ -1744,9 +1744,9 @@ If not set, then result files are put into the current directory.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.17 Short extension </h2>
-<p>`<samp>-short_extn</samp>'
+<p><samp>`-short_extn'</samp>
 If this is set, then all <acronym>HTML</acronym> files will have extension
-`<tt>.htm</tt>' instead of `<tt>.html</tt>'. This is helpful when
+<tt>`.htm'</tt> instead of <tt>`.html'</tt>. This is helpful when
 shipping the document to DOS-based systems.
 <var>$T2H_SHORTEXTN</var> = 0;
 </p>
@@ -1770,9 +1770,9 @@ shipping the document to DOS-based systems.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.18 Prefix </h2>
-<p>`<samp>-prefix</samp>'
-Set the output file prefix, prepended to all `<tt>.html</tt>',
-`<tt>.gif</tt>' and `<tt>.pl</tt>' files.
+<p><samp>`-prefix'</samp>
+Set the output file prefix, prepended to all <tt>`.html'</tt>,
+<tt>`.gif'</tt> and <tt>`.pl'</tt> files.
 By default, this is the basename of the document
 </p>
 <p><var>$T2H_PREFIX</var> = &quot;&quot;;
@@ -1798,9 +1798,9 @@ By default, this is the basename of the document
 </tr></table>
 <h2 class="section"> 8.19 Output filename </h2>
 
-<p>`<samp>-o filename</samp>'|`<samp>-out_file</samp>'
+<p><samp>`-o filename'</samp>|<samp>`-out_file'</samp>
 If set, generate monolithic document output <acronym>HTML</acronym>
-into `<tt>filename</tt>'.
+into <tt>`filename'</tt>.
 </p>
 <hr size="6">
 <a name="OptionShortRef"></a>
@@ -1822,7 +1822,7 @@ into `<tt>filename</tt>'.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.20 Short Cross References </h2>
-<p>`<samp>-short_ref</samp>'
+<p><samp>`-short_ref'</samp>
 if set cross-references are given without section numbers
 </p>
 <hr size="6">
@@ -1845,9 +1845,9 @@ if set cross-references are given without section numbers
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.21 Index Summary </h2>
-<p>`<samp>-idx_sum</samp>'
+<p><samp>`-idx_sum'</samp>
 If value is set, then for each <code>@prinindex $what</code>
-`<tt>$docu_name_$what.idx</tt>' is created which contains lines of the
+<tt>`$docu_name_$what.idx'</tt> is created which contains lines of the
 form <strong>$key\t$ref</strong> sorted alphabetically (case
 matters).
 </p>
@@ -1871,7 +1871,7 @@ matters).
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.22 Verbose output </h2>
-<p>`<samp>-verbose</samp>'
+<p><samp>`-verbose'</samp>
 if set, chatter about what we are doing.
 </p>
 <hr size="6">
@@ -1894,14 +1894,14 @@ if set, chatter about what we are doing.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.23 Language Support </h2>
-<p>`<samp>-lang</samp>'
+<p><samp>`-lang'</samp>
 For page titles, use
 <code>$T2H_WORDS-&gt;{$T2H_LANG}-&gt;{...}</code> as title. To add
 a new language, supply list of titles (see <var>$T2H_WORDS</var>),
 and use ISO 639 language codes (see e.g. perl module
-`<tt>Locale-Codes-1.02.tar.gz</tt>' for definitions).
+<tt>`Locale-Codes-1.02.tar.gz'</tt> for definitions).
 </p>
-<p>If you don't give a `<samp>-lang</samp>' then we got it from the
+<p>If you don't give a <samp>`-lang'</samp> then we got it from the
 Texinfo source file (@documentlanguage
 see <a href="Texinfo.html#documentlanguage">(Texinfo)documentlanguage</a>). If there is no
 <code>@documentlanguage</code> we use the default <code>en</code> for
@@ -1926,7 +1926,7 @@ the language.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code> </h2>
-<p>`<samp>-l2h</samp>'
+<p><samp>`-l2h'</samp>
 if set, uses <code>latex2html</code> for generation of math
 content.
 </p>
@@ -1957,7 +1957,7 @@ content.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 8.24.1 Where to find <code>latex2html</code> </h3>
-<p>`<samp>-l2h_l2h</samp>'
+<p><samp>`-l2h_l2h'</samp>
 name/location of <code>latex2html</code> program.
 </p>
 <hr size="6">
@@ -1980,7 +1980,7 @@ name/location of <code>latex2html</code> program.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 8.24.2 Skip calling LaTeX2HTML </h3>
-<p>`<samp>-l2h_skip</samp>'
+<p><samp>`-l2h_skip'</samp>
 If set, skips actual call to <code>latex2html</code>: tries to
 reuse previously generated content, instead.
 </p>
@@ -2004,10 +2004,10 @@ reuse previously generated content, instead.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 8.24.3 Temporary files for LaTeX2HTML </h3>
-<p>`<samp>-l2h_tmp</samp>'
+<p><samp>`-l2h_tmp'</samp>
 If set, l2h uses this directory for temporary files.  The
 path leading to this directory may not contain a dot (i.e.,
-a `<samp>.</samp>'); otherwise, l2h will fail.
+a <samp>`.'</samp>); otherwise, l2h will fail.
 </p><hr size="6">
 <a name="Reference"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2568,7 +2568,7 @@ What does it do? Which parameters it needs etc.
   <li><a name="TOC1" href="#SEC1">1. Overview about <code>texi2html</code></a>
   <ul class="toc">
     <li><a name="TOC2" href="#SEC2">1.1 Ways to get HTML</a></li>
-    <li><a name="TOC3" href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></li>
+    <li><a name="TOC3" href="#SEC3">1.2 Why <tt>`texi2html'</tt> and not <tt>`makeinfo'</tt>?</a></li>
   </ul></li>
   <li><a name="TOC4" href="#SEC4">2. Installation of <code>texi2html</code></a></li>
   <li><a name="TOC5" href="#SEC5">3. Customizing files</a></li>

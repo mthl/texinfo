@@ -127,7 +127,7 @@ unless it is to another manual altogether, in which case the cross
 reference names that manual.
 </p>
 <p>In Info, a cross reference results in an entry that you can follow using
-the Info `<samp>f</samp>' command.  (See <a href="../info/Help_002dAdv.html#Help_002dAdv">Some advanced Info commands: (info)Help-Adv</a>.)
+the Info <samp>`f'</samp> command.  (See <a href="../info/Help_002dAdv.html#Help_002dAdv">Some advanced Info commands: (info)Help-Adv</a>.)
 </p>
 <p>The various cross reference commands use nodes (or anchors,
 see section <a href="texinfo_7.html#SEC96"><code>@anchor</code></a>) to define cross reference locations.
@@ -164,24 +164,24 @@ references.
 <p>There are four different cross reference commands:
 </p>
 <dl compact="compact">
-<dt><code> @xref</code></dt>
+<dt> <code>@xref</code></dt>
 <dd><p>Used to start a sentence in the printed manual saying `See &hellip;'
-or an Info cross-reference saying `<samp>*Note <var>name</var>: <var>node</var>.</samp>'.
+or an Info cross-reference saying <samp>`*Note <var>name</var>: <var>node</var>.'</samp>.
 </p>
 </dd>
-<dt><code> @ref</code></dt>
+<dt> <code>@ref</code></dt>
 <dd><p>Used within or, more often, at the end of a sentence; same as
 <code>@xref</code> for Info; produces just the reference in the printed
 manual without a preceding `See'.
 </p>
 </dd>
-<dt><code> @pxref</code></dt>
+<dt> <code>@pxref</code></dt>
 <dd><p>Used within parentheses to make a reference that suits both an Info
 file and a printed book.  Starts with a lower case `see' within the
-printed manual. (`<samp>p</samp>' is for `parenthesis'.)
+printed manual. (<samp>`p'</samp> is for `parenthesis'.)
 </p>
 </dd>
-<dt><code> @inforef</code></dt>
+<dt> <code>@inforef</code></dt>
 <dd><p>Used to make a reference to an Info file for which there is no printed
 manual.
 </p></dd>
@@ -277,7 +277,7 @@ manual.  If omitted, the node name is used.
 
 </li><li>
 The name of the Info file in which the reference is located, if it is
-different from the current file.  You need not include any `<samp>.info</samp>'
+different from the current file.  You need not include any <samp>`.info'</samp>
 suffix on the file name, since Info readers try appending it
 automatically.
 
@@ -326,7 +326,7 @@ write <code>@xref</code> at the beginning of a sentence; write
 
 <p>The <code>@xref</code> command generates a cross reference for the
 beginning of a sentence.  The Info formatting commands convert it into
-an Info cross reference, which the Info `<samp>f</samp>' command can use to
+an Info cross reference, which the Info <samp>`f'</samp> command can use to
 bring you directly to another node.  The TeX typesetting commands
 convert it into a page reference, or a reference to another book or
 manual.
@@ -779,8 +779,8 @@ write:
 </p></blockquote>
 
 
-<p>In this example, `<samp>Top</samp>' is the name of the first node, and
-`<samp>Overview</samp>' is the name of the first section of the manual.
+<p>In this example, <samp>`Top'</samp> is the name of the first node, and
+<samp>`Overview'</samp> is the name of the first section of the manual.
 </p><hr size="6">
 <a name="ref"></a>
 <a name="SEC115"></a>
@@ -996,7 +996,7 @@ The Info file name.
 
 <p>Separate the arguments with commas, as with <code>@xref</code>.  Also, you
 must terminate the reference with a comma or period after the
-`<samp>}</samp>', as you do with <code>@xref</code>.
+<samp>`}'</samp>, as you do with <code>@xref</code>.
 </p>
 
 <p>The template is:
@@ -1018,7 +1018,7 @@ for more information.
 
 <p>and
 </p>
-<blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+<blockquote><p>See Info file <tt>`info'</tt>, node <samp>`Expert'</samp>, for more information.
 </p></blockquote>
 
 
@@ -1034,7 +1034,7 @@ for more information.
 
 <p>and
 </p>
-<blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+<blockquote><p>See Info file <tt>`info'</tt>, node <samp>`Expert'</samp>, for more information.
 </p></blockquote>
 
 <p>The converse of <code>@inforef</code> is <code>@cite</code>, which is used to
@@ -1122,9 +1122,9 @@ holds programs and texts.
 
 <a name="IDX115"></a>
 <p>You can use this form in the input file if you wish.  We feel it's not
-necessary to clutter up the output with the extra `<samp>&lt;URL:</samp>' and
-`<samp>&gt;</samp>', since any software that tries to detect url's in text already
-has to detect them without the `<samp>&lt;URL:</samp>' to be useful.
+necessary to clutter up the output with the extra <samp>`&lt;URL:'</samp> and
+<samp>`&gt;'</samp>, since any software that tries to detect url's in text already
+has to detect them without the <samp>`&lt;URL:'</samp> to be useful.
 </p>
 
 <hr size="6">

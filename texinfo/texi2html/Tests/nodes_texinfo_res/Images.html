@@ -92,13 +92,13 @@ ul.toc {list-style: none}
 extension, because the different processors support different formats:
 </p><ul>
 <li>
-TeX reads the file `<tt><var>filename</var>.eps</tt>' (Encapsulated PostScript
+TeX reads the file <tt>`<var>filename</var>.eps'</tt> (Encapsulated PostScript
 format).
 </li><li>
 <a name="IDX232"></a>
-PDFTeX reads `<tt><var>filename</var>.pdf</tt>' (Adobe's Portable Document Format).
+PDFTeX reads <tt>`<var>filename</var>.pdf'</tt> (Adobe's Portable Document Format).
 </li><li>
-<code>makeinfo</code> uses `<tt><var>filename</var>.txt</tt>' verbatim for
+<code>makeinfo</code> uses <tt>`<var>filename</var>.txt'</tt> verbatim for
 Info output (more or less as if it was an <code>@example</code>).
 </li><li>
 <code>makeinfo</code>
@@ -109,14 +109,14 @@ you supply it.  For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
 </pre></td></tr></table>
 
-<p>will cause `<samp>makeinfo --html</samp>' to try `<tt>foo.xpm</tt>'.
+<p>will cause <samp>`makeinfo --html'</samp> to try <tt>`foo.xpm'</tt>.
 </p>
 <a name="IDX234"></a>
 <a name="IDX235"></a>
 <a name="IDX236"></a>
-<p>If you do not supply the optional fifth argument, `<samp>makeinfo
----html</samp>' first tries `<tt><var>filename</var>.png</tt>'; if that does not exist,
-it tries `<tt><var>filename</var>.jpg</tt>'.  If that does not exist either, it
+<p>If you do not supply the optional fifth argument, <samp>`makeinfo
+---html'</samp> first tries <tt>`<var>filename</var>.png'</tt>; if that does not exist,
+it tries <tt>`<var>filename</var>.jpg'</tt>.  If that does not exist either, it
 complains.  (We cannot support GIF format directly due to software
 patents.)
 </p></li></ul>
@@ -176,15 +176,15 @@ dimension, namely:
 </dl>
 
 <a name="IDX251"></a>
-<p>For example, the following will scale a file `<tt>ridt.eps</tt>' to one
+<p>For example, the following will scale a file <tt>`ridt.eps'</tt> to one
 inch vertically, with the width scaled proportionately:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
 </pre></td></tr></table>
 <a name="IDX252"></a>
-<p>For <code>@image</code> to work with TeX, the file `<tt>epsf.tex</tt>' must be
+<p>For <code>@image</code> to work with TeX, the file <tt>`epsf.tex'</tt> must be
 installed somewhere that TeX can find it.  (The standard location is
-`<tt><var>texmf</var>/tex/generic/dvips/epsf.tex</tt>', where <var>texmf</var> is a
+<tt>`<var>texmf</var>/tex/generic/dvips/epsf.tex'</tt>, where <var>texmf</var> is a
 root of your TeX directory tree.)  This file is included in the
 Texinfo distribution and is also available from
 <a href="ftp://tug.org/tex/epsf.tex">ftp://tug.org/tex/epsf.tex</a>, among other places.

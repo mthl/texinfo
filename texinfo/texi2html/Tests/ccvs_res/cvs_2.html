@@ -86,23 +86,23 @@ repository name can start with an <em>access method</em>.
 For example, the access method <code>:local:</code> means to
 access a repository directory, so the repository
 <code>:local:/usr/local/cvsroot</code> means that the
-repository is in `<tt>/usr/local/cvsroot</tt>' on the
+repository is in <tt>`/usr/local/cvsroot'</tt> on the
 computer running <small>CVS</small>.  For information on other
 access methods, see <a href="#SEC26">Remote repositories</a>.
 </p>
 <p>If the access method is omitted, then if the repository
-starts with `<samp>/</samp>', then <code>:local:</code> is
-assumed.  If it does not start with `<samp>/</samp>' then either
+starts with <samp>`/'</samp>, then <code>:local:</code> is
+assumed.  If it does not start with <samp>`/'</samp> then either
 <code>:ext:</code> or <code>:server:</code> is assumed.  For
 example, if you have a local repository in
-`<tt>/usr/local/cvsroot</tt>', you can use
+<tt>`/usr/local/cvsroot'</tt>, you can use
 <code>/usr/local/cvsroot</code> instead of
 <code>:local:/usr/local/cvsroot</code>.  But if (under
 Windows NT, for example) your local repository is
-`<tt>c:\src\cvsroot</tt>', then you must specify the access
+<tt>`c:\src\cvsroot'</tt>, then you must specify the access
 method, as in <code>:local:c:/src/cvsroot</code>.
 </p>
-<p>The repository is split in two parts.  `<tt>$CVSROOT/CVSROOT</tt>' contains
+<p>The repository is split in two parts.  <tt>`$CVSROOT/CVSROOT'</tt> contains
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
 </p>
@@ -161,16 +161,16 @@ repository on the command line explicitly, with the
 <a name="IDX17"></a>
 <p>        Or you can set the <code>$CVSROOT</code> environment
 variable to an absolute path to the root of the
-repository, `<tt>/usr/local/cvsroot</tt>' in this example.
+repository, <tt>`/usr/local/cvsroot'</tt> in this example.
 To set <code>$CVSROOT</code>, <code>csh</code> and <code>tcsh</code>
-users should have this line in their `<tt>.cshrc</tt>' or
-`<tt>.tcshrc</tt>' files:
+users should have this line in their <tt>`.cshrc'</tt> or
+<tt>`.tcshrc'</tt> files:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">setenv CVSROOT /usr/local/cvsroot
 </pre></td></tr></table>
 
 <p><code>sh</code> and <code>bash</code> users should instead have these lines in their
-`<tt>.profile</tt>' or `<tt>.bashrc</tt>':
+<tt>`.profile'</tt> or <tt>`.bashrc'</tt>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">CVSROOT=/usr/local/cvsroot
 export CVSROOT
@@ -182,11 +182,11 @@ override the <code>$CVSROOT</code> environment variable.
 Once you've checked a working copy out from the
 repository, it will remember where its repository is
 (the information is recorded in the
-`<tt>CVS/Root</tt>' file in the working copy).
+<tt>`CVS/Root'</tt> file in the working copy).
 </p>
-<p>The <code>-d</code> option and the `<tt>CVS/Root</tt>' file both
+<p>The <code>-d</code> option and the <tt>`CVS/Root'</tt> file both
 override the <code>$CVSROOT</code> environment variable.  If
-<code>-d</code> option differs from `<tt>CVS/Root</tt>', the
+<code>-d</code> option differs from <tt>`CVS/Root'</tt>, the
 former is used.  Of course, for proper operation they
 should be two ways of referring to the same repository.
 </p>
@@ -304,9 +304,9 @@ directories):
 </pre></td></tr></table>
 <p>With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
-the name of the corresponding file with `<samp>,v</samp>'
+the name of the corresponding file with <samp>`,v'</samp>
 appended to the end.  Here is what the repository for
-the `<tt>yoyodyne/tc</tt>' directory might look like:
+the <tt>`yoyodyne/tc'</tt> directory might look like:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">  <code>$CVSROOT</code>
     |
     +--<tt>yoyodyne</tt>
@@ -338,7 +338,7 @@ store files in that format was a version control system
 known as <small>RCS</small>.  For a full
 description of the file format, see the <code>man</code> page
 <cite>rcsfile(5)</cite>, distributed with <small>RCS</small>, or the
-file `<tt>doc/RCSFILES</tt>' in the <small>CVS</small> source
+file <tt>`doc/RCSFILES'</tt> in the <small>CVS</small> source
 distribution.  This
 file format has become very common--many systems other
 than <small>CVS</small> or <small>RCS</small> can at least import history
@@ -370,7 +370,7 @@ rules see <a href="cvs_4.html#SEC48">Tags-Symbolic revisions</a>.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 2.2.2 File permissions </h3>
-<p>All `<samp>,v</samp>' files are created read-only, and you
+<p>All <samp>`,v'</samp> files are created read-only, and you
 should not change the permission of those files.  The
 directories inside the repository should be writable by
 the persons that have permission to modify the files in
@@ -396,7 +396,7 @@ if you want to allow read-only access to some directories
 (see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p>
 <p>Also note that users must have write access to the
-`<tt>CVSROOT/val-tags</tt>' file.  <small>CVS</small> uses it to keep
+<tt>`CVSROOT/val-tags'</tt> file.  <small>CVS</small> uses it to keep
 track of what tags are valid tag names (it is sometimes
 updated when tags are used, as well as when they are
 created).
@@ -425,7 +425,7 @@ watches, <a href="cvs_10.html#SEC90">Telling CVS to watch certain files</a>; -r,
 (see section <a href="#SEC26">Remote repositories</a>), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
 has no effect.  If you are connecting with <code>rsh</code>, you
-can set <code>CVSUMASK</code> in `<tt>.bashrc</tt>' or `<tt>.cshrc</tt>', as
+can set <code>CVSUMASK</code> in <tt>`.bashrc'</tt> or <tt>`.cshrc'</tt>, as
 described in the documentation for your operating
 system.  This behavior might change in future versions
 of <small>CVS</small>; do not rely on the setting of
@@ -520,9 +520,9 @@ something out, please let us know as described in
 
 <p>You will notice that sometimes <small>CVS</small> stores an
 <small>RCS</small> file in the <code>Attic</code>.  For example, if the
-<small>CVSROOT</small> is `<tt>/usr/local/cvsroot</tt>' and we are
-talking about the file `<tt>backend.c</tt>' in the
-directory `<tt>yoyodyne/tc</tt>', then the file normally
+<small>CVSROOT</small> is <tt>`/usr/local/cvsroot'</tt> and we are
+talking about the file <tt>`backend.c'</tt> in the
+directory <tt>`yoyodyne/tc'</tt>, then the file normally
 would be in
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">/usr/local/cvsroot/yoyodyne/tc/backend.c,v
@@ -567,9 +567,9 @@ non-<code>dead</code> state.
 </tr></table>
 <h3 class="subsection"> 2.2.5 The CVS directory in the repository </h3>
 
-<p>The `<tt>CVS</tt>' directory in each repository directory
+<p>The <tt>`CVS'</tt> directory in each repository directory
 contains information such as file attributes (in a file
-called `<tt>CVS/fileattr</tt>'.  In the
+called <tt>`CVS/fileattr'</tt>.  In the
 future additional files may be added to this directory,
 so implementations should silently ignore additional
 files.
@@ -578,17 +578,17 @@ files.
 later; for details see <a href="cvs_10.html#SEC94">Using watches with old versions of CVS</a>.
 </p>
 <p>The format of the fileattr file is a series of entries
-of the following form (where `<samp>{</samp>' and `<samp>}</samp>'
+of the following form (where <samp>`{'</samp> and <samp>`}'</samp>
 means the text between the braces can be repeated zero
 or more times):
 </p>
 <p><var>ent-type</var> <var>filename</var> &lt;tab&gt; <var>attrname</var> = <var>attrval</var>
   {; <var>attrname</var> = <var>attrval</var>} &lt;linefeed&gt;
 </p>
-<p><var>ent-type</var> is `<samp>F</samp>' for a file, in which case the entry specifies the
+<p><var>ent-type</var> is <samp>`F'</samp> for a file, in which case the entry specifies the
 attributes for that file.
 </p>
-<p><var>ent-type</var> is `<samp>D</samp>',
+<p><var>ent-type</var> is <samp>`D'</samp>,
 and <var>filename</var> empty, to specify default attributes
 to be used for newly added files.
 </p>
@@ -601,32 +601,32 @@ a program writing the fileattr file may
 rearrange them at its convenience.
 </p>
 <p>There is currently no way of quoting tabs or linefeeds in the
-filename, `<samp>=</samp>' in <var>attrname</var>,
-`<samp>;</samp>' in <var>attrval</var>, etc.  Note: some implementations also
+filename, <samp>`='</samp> in <var>attrname</var>,
+<samp>`;'</samp> in <var>attrval</var>, etc.  Note: some implementations also
 don't handle a NUL character in any of the fields, but
 implementations are encouraged to allow it.
 </p>
-<p>By convention, <var>attrname</var> starting with `<samp>_</samp>' is for an attribute given
+<p>By convention, <var>attrname</var> starting with <samp>`_'</samp> is for an attribute given
 special meaning by <small>CVS</small>; other <var>attrname</var>s are for user-defined attributes
 (or will be, once implementations start supporting user-defined attributes).
 </p>
 <p>Builtin attributes:
 </p>
 <dl compact="compact">
-<dt><code> _watched</code></dt>
+<dt> <code>_watched</code></dt>
 <dd><p>Present means the file is watched and should be checked out
 read-only.
 </p>
 </dd>
-<dt><code> _watchers</code></dt>
+<dt> <code>_watchers</code></dt>
 <dd><p>Users with watches for this file.  Value is
 <var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> }
 where <var>watcher</var> is a username, and <var>type</var>
 is zero or more of edit,unedit,commit separated by
-`<samp>+</samp>' (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
+<samp>`+'</samp> (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
 </p>
 </dd>
-<dt><code> _editors</code></dt>
+<dt> <code>_editors</code></dt>
 <dd><p>Users editing this file.  Value is
 <var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> }
 where <var>editor</var> is a username, and <var>val</var> is
@@ -644,15 +644,15 @@ Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
 D _watched=
 </pre></td></tr></table>
 
-<p>means that the file `<tt>file1</tt>' should be checked out
+<p>means that the file <tt>`file1'</tt> should be checked out
 read-only.  Furthermore, joe is watching for edits and
-mary is watching for commits.  The file `<tt>file2</tt>'
+mary is watching for commits.  The file <tt>`file2'</tt>
 should be checked out read-only; sue started editing it
-on 8 Jan 1975 in the directory `<tt>/home/sue/cvs</tt>' on
+on 8 Jan 1975 in the directory <tt>`/home/sue/cvs'</tt> on
 the machine <code>workstn1</code>.  Future files which are
 added should be checked out read-only.  To represent
 this example here, we have shown a space after
-`<samp>D</samp>', `<samp>Ffile1</samp>', and `<samp>Ffile2</samp>', but in fact
+<samp>`D'</samp>, <samp>`Ffile1'</samp>, and <samp>`Ffile2'</samp>, but in fact
 there must be a single tab character there and no spaces.
 </p>
 <hr size="6">
@@ -688,49 +688,49 @@ operating systems or databases.
 </p>
 <a name="IDX29"></a>
 <p>Any file in the repository with a name starting
-with `<tt>#cvs.rfl.</tt>' is a read lock.  Any file in
+with <tt>`#cvs.rfl.'</tt> is a read lock.  Any file in
 the repository with a name starting with
-`<tt>#cvs.wfl</tt>' is a write lock.  Old versions of <small>CVS</small>
+<tt>`#cvs.wfl'</tt> is a write lock.  Old versions of <small>CVS</small>
 (before <small>CVS</small> 1.5) also created files with names starting
-with `<tt>#cvs.tfl</tt>', but they are not discussed here.
-The directory `<tt>#cvs.lock</tt>' serves as a master
+with <tt>`#cvs.tfl'</tt>, but they are not discussed here.
+The directory <tt>`#cvs.lock'</tt> serves as a master
 lock.  That is, one must obtain this lock first before
 creating any of the other locks.
 </p>
-<p>To obtain a readlock, first create the `<tt>#cvs.lock</tt>'
+<p>To obtain a readlock, first create the <tt>`#cvs.lock'</tt>
 directory.  This operation must be atomic (which should
 be true for creating a directory under most operating
 systems).  If it fails because the directory already
 existed, wait for a while and try again.  After
-obtaining the `<tt>#cvs.lock</tt>' lock, create a file
-whose name is `<tt>#cvs.rfl.</tt>' followed by information
+obtaining the <tt>`#cvs.lock'</tt> lock, create a file
+whose name is <tt>`#cvs.rfl.'</tt> followed by information
 of your choice (for example, hostname and process
 identification number).  Then remove the
-`<tt>#cvs.lock</tt>' directory to release the master lock.
+<tt>`#cvs.lock'</tt> directory to release the master lock.
 Then proceed with reading the repository.  When you are
-done, remove the `<tt>#cvs.rfl</tt>' file to release the
+done, remove the <tt>`#cvs.rfl'</tt> file to release the
 read lock.
 </p>
 <p>To obtain a writelock, first create the
-`<tt>#cvs.lock</tt>' directory, as with a readlock.  Then
+<tt>`#cvs.lock'</tt> directory, as with a readlock.  Then
 check that there are no files whose names start with
-`<tt>#cvs.rfl.</tt>'.  If there are, remove
-`<tt>#cvs.lock</tt>', wait for a while, and try again.  If
+<tt>`#cvs.rfl.'</tt>.  If there are, remove
+<tt>`#cvs.lock'</tt>, wait for a while, and try again.  If
 there are no readers, then create a file whose name is
-`<tt>#cvs.wfl</tt>' followed by information of your choice
+<tt>`#cvs.wfl'</tt> followed by information of your choice
 (for example, hostname and process identification
-number).  Hang on to the `<tt>#cvs.lock</tt>' lock.  Proceed
+number).  Hang on to the <tt>`#cvs.lock'</tt> lock.  Proceed
 with writing the repository.  When you are done, first
-remove the `<tt>#cvs.wfl</tt>' file and then the
-`<tt>#cvs.lock</tt>' directory. Note that unlike the
-`<tt>#cvs.rfl</tt>' file, the `<tt>#cvs.wfl</tt>' file is just
+remove the <tt>`#cvs.wfl'</tt> file and then the
+<tt>`#cvs.lock'</tt> directory. Note that unlike the
+<tt>`#cvs.rfl'</tt> file, the <tt>`#cvs.wfl'</tt> file is just
 informational; it has no effect on the locking operation
 beyond what is provided by holding on to the
-`<tt>#cvs.lock</tt>' lock itself.
+<tt>`#cvs.lock'</tt> lock itself.
 </p>
 <p>Note that each lock (writelock or readlock) only locks
 a single directory in the repository, including
-`<tt>Attic</tt>' and `<tt>CVS</tt>' but not including
+<tt>`Attic'</tt> and <tt>`CVS'</tt> but not including
 subdirectories which represent other directories under
 version control.  To lock an entire tree, you need to
 lock each directory (note that if you fail to obtain
@@ -738,8 +738,8 @@ any lock you need, you must release the whole tree
 before waiting and trying again, to avoid deadlocks).
 </p>
 <p>Note also that <small>CVS</small> expects writelocks to control
-access to individual `<tt>foo,v</tt>' files.  <small>RCS</small> has
-a scheme where the `<tt>,foo,</tt>' file serves as a lock,
+access to individual <tt>`foo,v'</tt> files.  <small>RCS</small> has
+a scheme where the <tt>`,foo,'</tt> file serves as a lock,
 but <small>CVS</small> does not implement it and so taking out a
 <small>CVS</small> writelock is recommended.  See the comments at
 rcs_internal_lockfile in the <small>CVS</small> source code for
@@ -766,36 +766,36 @@ further discussion/rationale.
 </tr></table>
 <h3 class="subsection"> 2.2.7 How files are stored in the CVSROOT directory </h3>
 
-<p>The `<tt>$CVSROOT/CVSROOT</tt>' directory contains the
+<p>The <tt>`$CVSROOT/CVSROOT'</tt> directory contains the
 various administrative files.  In some ways this
 directory is just like any other directory in the
 repository; it contains <small>RCS</small> files whose names end
-in `<samp>,v</samp>', and many of the <small>CVS</small> commands operate
+in <samp>`,v'</samp>, and many of the <small>CVS</small> commands operate
 on it the same way.  However, there are a few
 differences.
 </p>
 <p>For each administrative file, in addition to the
 <small>RCS</small> file, there is also a checked out copy of the
 file.  For example, there is an <small>RCS</small> file
-`<tt>loginfo,v</tt>' and a file `<tt>loginfo</tt>' which
+<tt>`loginfo,v'</tt> and a file <tt>`loginfo'</tt> which
 contains the latest revision contained in
-`<tt>loginfo,v</tt>'.  When you check in an administrative
+<tt>`loginfo,v'</tt>.  When you check in an administrative
 file, <small>CVS</small> should print
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
 
 <p>and update the checked out copy in
-`<tt>$CVSROOT/CVSROOT</tt>'.  If it does not, there is
+<tt>`$CVSROOT/CVSROOT'</tt>.  If it does not, there is
 something wrong (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).  To add your own files
 to the files to be updated in this fashion, you can add
-them to the `<tt>checkoutlist</tt>' administrative file
+them to the <tt>`checkoutlist'</tt> administrative file
 (see section <a href="cvs_18.html#SEC177">The checkoutlist file</a>).
 </p>
 <a name="IDX30"></a>
 <a name="IDX31"></a>
 <a name="IDX32"></a>
-<p>By default, the `<tt>modules</tt>' file behaves as
+<p>By default, the <tt>`modules'</tt> file behaves as
 described above.  If the modules file is very large,
 storing it as a flat text file may make looking up
 modules slow (I'm not sure whether this is as much of a
@@ -805,8 +805,8 @@ making appropriate edits to the <small>CVS</small> source code
 one can store the modules file in a database which
 implements the <code>ndbm</code> interface, such as Berkeley
 db or GDBM.  If this option is in use, then the modules
-database will be stored in the files `<tt>modules.db</tt>',
-`<tt>modules.pag</tt>', and/or `<tt>modules.dir</tt>'.
+database will be stored in the files <tt>`modules.db'</tt>,
+<tt>`modules.pag'</tt>, and/or <tt>`modules.dir'</tt>.
 </p>
 <p>For information on the meaning of the various
 administrative files, see <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>.
@@ -835,7 +835,7 @@ administrative files, see <a href="cvs_18.html#SEC157">Reference manual for Admi
 
 <p>While we are discussing <small>CVS</small> internals which may
 become visible from time to time, we might as well talk
-about what <small>CVS</small> puts in the `<tt>CVS</tt>' directories
+about what <small>CVS</small> puts in the <tt>`CVS'</tt> directories
 in the working directories.  As with the repository,
 <small>CVS</small> handles this information and one can usually
 access it via <small>CVS</small> commands.  But in some cases it
@@ -848,7 +848,7 @@ programs which use those files, including future
 versions of the programs just mentioned and the
 command-line <small>CVS</small> client.
 </p>
-<p>The `<tt>CVS</tt>' directory contains several files.
+<p>The <tt>`CVS'</tt> directory contains several files.
 Programs which are reading this directory should
 silently ignore files which are in the directory but
 which are not documented here, to allow for future
@@ -863,14 +863,14 @@ managed by <small>CVS</small> probably will not be portable between
 such systems either.
 </p>
 <dl compact="compact">
-<dt>`<tt> Root</tt>'</dt>
+<dt> <tt>`Root'</tt></dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
 described in <a href="#SEC10">Telling CVS where your repository is</a>.
 </p>
 <a name="IDX33"></a>
 <a name="IDX34"></a>
 </dd>
-<dt>`<tt> Repository</tt>'</dt>
+<dt> <tt>`Repository'</tt></dt>
 <dd><p>This file contains the directory within the repository
 which the current directory corresponds with.  It can
 be either an absolute pathname or a relative pathname;
@@ -884,12 +884,12 @@ example, after the command
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
 </pre></td></tr></table>
 
-<p>`<tt>Root</tt>' will contain
+<p><tt>`Root'</tt> will contain
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">:local:/usr/local/cvsroot
 </pre></td></tr></table>
 
-<p>and `<tt>Repository</tt>' will contain either
+<p>and <tt>`Repository'</tt> will contain either
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">/usr/local/cvsroot/yoyodyne/tc
 </pre></td></tr></table>
@@ -899,15 +899,15 @@ example, after the command
 <table><tr><td>&nbsp;</td><td><pre class="example">yoyodyne/tc
 </pre></td></tr></table>
 <p>If the particular working directory does not correspond
-to a directory in the repository, then `<tt>Repository</tt>'
-should contain `<tt>CVSROOT/Emptydir</tt>'.
+to a directory in the repository, then <tt>`Repository'</tt>
+should contain <tt>`CVSROOT/Emptydir'</tt>.
 <a name="IDX35"></a>
 <a name="IDX36"></a>
 </p>
 <a name="IDX37"></a>
 <a name="IDX38"></a>
 </dd>
-<dt>`<tt> Entries</tt>'</dt>
+<dt> <tt>`Entries'</tt></dt>
 <dd><p>This file lists the files and directories in the
 working directory.
 The first character of each line indicates what sort of
@@ -915,26 +915,26 @@ line it is.  If the character is unrecognized, programs
 reading the file should silently skip that line, to
 allow for future expansion.
 </p>
-<p>If the first character is `<samp>/</samp>', then the format is:
+<p>If the first character is <samp>`/'</samp>, then the format is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">/<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
 </pre></td></tr></table>
 
-<p>where `<samp>[</samp>' and `<samp>]</samp>' are not part of the entry,
-but instead indicate that the `<samp>+</samp>' and conflict
+<p>where <samp>`['</samp> and <samp>`]'</samp> are not part of the entry,
+but instead indicate that the <samp>`+'</samp> and conflict
 marker are optional.  <var>name</var> is the name of the
 file within the directory.  <var>revision</var> is the
 revision that the file in the working derives from, or
-`<samp>0</samp>' for an added file, or `<samp>-</samp>' followed by a
+<samp>`0'</samp> for an added file, or <samp>`-'</samp> followed by a
 revision for a removed file.  <var>timestamp</var> is the
 timestamp of the file at the time that <small>CVS</small> created
 it; if the timestamp differs with the actual
 modification time of the file it means the file has
 been modified.  It is stored in
 the format used by the ISO C asctime() function (for
-example, `<samp>Sun Apr  7 01:29:26 1996</samp>').  One may
+example, <samp>`Sun Apr  7 01:29:26 1996'</samp>).  One may
 write a string which is not in that format, for
-example, `<samp>Result of merge</samp>', to indicate that the
+example, <samp>`Result of merge'</samp>, to indicate that the
 file should always be considered to be modified.  This
 is not a special case; to see whether a file is
 modified a program should take the timestamp of the file
@@ -945,9 +945,9 @@ written with conflict markers (see section <a href="cvs_10.html#SEC86">Conflicts
 Thus if <var>conflict</var> is subsequently the same as the actual
 modification time of the file it means that the user
 has obviously not resolved the conflict.  <var>options</var>
-contains sticky options (for example `<samp>-kb</samp>' for a
-binary file).  <var>tagdate</var> contains `<samp>T</samp>' followed
-by a tag name, or `<samp>D</samp>' for a date, followed by a
+contains sticky options (for example <samp>`-kb'</samp> for a
+binary file).  <var>tagdate</var> contains <samp>`T'</samp> followed
+by a tag name, or <samp>`D'</samp> for a date, followed by a
 sticky tag or date.  Note that if <var>timestamp</var>
 contains a pair of timestamps separated by a space,
 rather than a single timestamp, you are dealing with a
@@ -965,12 +965,12 @@ This rule is so that files do not appear to be modified
 merely because the timezone changed (for example, to or
 from summer time).
 </p>
-<p>If the first character of a line in `<tt>Entries</tt>' is
-`<samp>D</samp>', then it indicates a subdirectory.  `<samp>D</samp>'
+<p>If the first character of a line in <tt>`Entries'</tt> is
+<samp>`D'</samp>, then it indicates a subdirectory.  <samp>`D'</samp>
 on a line all by itself indicates that the program
-which wrote the `<tt>Entries</tt>' file does record
+which wrote the <tt>`Entries'</tt> file does record
 subdirectories (therefore, if there is such a line and
-no other lines beginning with `<samp>D</samp>', one knows there
+no other lines beginning with <samp>`D'</samp>, one knows there
 are no subdirectories).  Otherwise, the line looks
 like:
 </p>
@@ -982,69 +982,69 @@ all the <var>filler</var> fields should be silently ignored,
 for future expansion.  Programs which modify
 <code>Entries</code> files should preserve these fields.
 </p>
-<p>The lines in the `<tt>Entries</tt>' file can be in any order.
+<p>The lines in the <tt>`Entries'</tt> file can be in any order.
 </p>
 <a name="IDX39"></a>
 <a name="IDX40"></a>
 </dd>
-<dt>`<tt> Entries.Log</tt>'</dt>
+<dt> <tt>`Entries.Log'</tt></dt>
 <dd><p>This file does not record any information beyond that
-in `<tt>Entries</tt>', but it does provide a way to update
+in <tt>`Entries'</tt>, but it does provide a way to update
 the information without having to rewrite the entire
-`<tt>Entries</tt>' file, including the ability to preserve
+<tt>`Entries'</tt> file, including the ability to preserve
 the information even if the program writing
-`<tt>Entries</tt>' and `<tt>Entries.Log</tt>' abruptly aborts.
-Programs which are reading the `<tt>Entries</tt>' file
-should also check for `<tt>Entries.Log</tt>'.  If the latter
-exists, they should read `<tt>Entries</tt>' and then apply
-the changes mentioned in `<tt>Entries.Log</tt>'.  After
+<tt>`Entries'</tt> and <tt>`Entries.Log'</tt> abruptly aborts.
+Programs which are reading the <tt>`Entries'</tt> file
+should also check for <tt>`Entries.Log'</tt>.  If the latter
+exists, they should read <tt>`Entries'</tt> and then apply
+the changes mentioned in <tt>`Entries.Log'</tt>.  After
 applying the changes, the recommended practice is to
-rewrite `<tt>Entries</tt>' and then delete `<tt>Entries.Log</tt>'.
-The format of a line in `<tt>Entries.Log</tt>' is a single
+rewrite <tt>`Entries'</tt> and then delete <tt>`Entries.Log'</tt>.
+The format of a line in <tt>`Entries.Log'</tt> is a single
 character command followed by a space followed by a
 line in the format specified for a line in
-`<tt>Entries</tt>'.  The single character command is
-`<samp>A</samp>' to indicate that the entry is being added,
-`<samp>R</samp>' to indicate that the entry is being removed,
+<tt>`Entries'</tt>.  The single character command is
+<samp>`A'</samp> to indicate that the entry is being added,
+<samp>`R'</samp> to indicate that the entry is being removed,
 or any other character to indicate that the entire line
-in `<tt>Entries.Log</tt>' should be silently ignored (for
+in <tt>`Entries.Log'</tt> should be silently ignored (for
 future expansion).  If the second character of the line
-in `<tt>Entries.Log</tt>' is not a space, then it was
+in <tt>`Entries.Log'</tt> is not a space, then it was
 written by an older version of <small>CVS</small> (not documented
 here).
 </p>
 <p>Programs which are writing rather than reading can
-safely ignore `<tt>Entries.Log</tt>' if they so choose.
+safely ignore <tt>`Entries.Log'</tt> if they so choose.
 </p>
 <a name="IDX41"></a>
 <a name="IDX42"></a>
 </dd>
-<dt>`<tt> Entries.Backup</tt>'</dt>
+<dt> <tt>`Entries.Backup'</tt></dt>
 <dd><p>This is a temporary file.  Recommended usage is to
-write a new entries file to `<tt>Entries.Backup</tt>', and
-then to rename it (atomically, where possible) to `<tt>Entries</tt>'.
+write a new entries file to <tt>`Entries.Backup'</tt>, and
+then to rename it (atomically, where possible) to <tt>`Entries'</tt>.
 </p>
 <a name="IDX43"></a>
 <a name="IDX44"></a>
 </dd>
-<dt>`<tt> Entries.Static</tt>'</dt>
+<dt> <tt>`Entries.Static'</tt></dt>
 <dd><p>The only relevant thing about this file is whether it
 exists or not.  If it exists, then it means that only
 part of a directory was gotten and <small>CVS</small> will
 not create additional files in that directory.  To
 clear it, use the <code>update</code> command with the
-`<samp>-d</samp>' option, which will get the additional files
-and remove `<tt>Entries.Static</tt>'.
+<samp>`-d'</samp> option, which will get the additional files
+and remove <tt>`Entries.Static'</tt>.
 </p>
 <a name="IDX45"></a>
 <a name="IDX46"></a>
 <a name="IDX47"></a>
 <a name="IDX48"></a>
 </dd>
-<dt>`<tt> Tag</tt>'</dt>
+<dt> <tt>`Tag'</tt></dt>
 <dd><p>This file contains per-directory sticky tags or dates.
-The first character is `<samp>T</samp>' for a branch tag,
-`<samp>N</samp>' for a non-branch tag, or `<samp>D</samp>' for a date,
+The first character is <samp>`T'</samp> for a branch tag,
+<samp>`N'</samp> for a non-branch tag, or <samp>`D'</samp> for a date,
 or another character to mean the file should be
 silently ignored, for future expansion.  This character
 is followed by the tag or date.  Note that
@@ -1057,7 +1057,7 @@ tags and dates, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 <a name="IDX49"></a>
 <a name="IDX50"></a>
 </dd>
-<dt>`<tt> Notify</tt>'</dt>
+<dt> <tt>`Notify'</tt></dt>
 <dd><p>This file stores notifications (for example, for
 <code>edit</code> or <code>unedit</code>) which have not yet been
 sent to the server.  Its format is not yet documented
@@ -1066,19 +1066,19 @@ here.
 <a name="IDX51"></a>
 <a name="IDX52"></a>
 </dd>
-<dt>`<tt> Notify.tmp</tt>'</dt>
-<dd><p>This file is to `<tt>Notify</tt>' as `<tt>Entries.Backup</tt>'
-is to `<tt>Entries</tt>'.  That is, to write `<tt>Notify</tt>',
-first write the new contents to `<tt>Notify.tmp</tt>' and
+<dt> <tt>`Notify.tmp'</tt></dt>
+<dd><p>This file is to <tt>`Notify'</tt> as <tt>`Entries.Backup'</tt>
+is to <tt>`Entries'</tt>.  That is, to write <tt>`Notify'</tt>,
+first write the new contents to <tt>`Notify.tmp'</tt> and
 then (atomically where possible), rename it to
-`<tt>Notify</tt>'.
+<tt>`Notify'</tt>.
 </p>
 <a name="IDX53"></a>
 <a name="IDX54"></a>
 </dd>
-<dt>`<tt> Base</tt>'</dt>
+<dt> <tt>`Base'</tt></dt>
 <dd><p>If watches are in use, then an <code>edit</code> command
-stores the original copy of the file in the `<tt>Base</tt>'
+stores the original copy of the file in the <tt>`Base'</tt>
 directory.  This allows the <code>unedit</code> command to
 operate even if it is unable to communicate with the
 server.
@@ -1086,9 +1086,9 @@ server.
 <a name="IDX55"></a>
 <a name="IDX56"></a>
 </dd>
-<dt>`<tt> Baserev</tt>'</dt>
+<dt> <tt>`Baserev'</tt></dt>
 <dd><p>The file lists the revision for each of the files in
-the `<tt>Base</tt>' directory.  The format is:
+the <tt>`Base'</tt> directory.  The format is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </pre></td></tr></table>
@@ -1099,21 +1099,21 @@ future expansion.
 <a name="IDX57"></a>
 <a name="IDX58"></a>
 </dd>
-<dt>`<tt> Baserev.tmp</tt>'</dt>
-<dd><p>This file is to `<tt>Baserev</tt>' as `<tt>Entries.Backup</tt>'
-is to `<tt>Entries</tt>'.  That is, to write `<tt>Baserev</tt>',
-first write the new contents to `<tt>Baserev.tmp</tt>' and
+<dt> <tt>`Baserev.tmp'</tt></dt>
+<dd><p>This file is to <tt>`Baserev'</tt> as <tt>`Entries.Backup'</tt>
+is to <tt>`Entries'</tt>.  That is, to write <tt>`Baserev'</tt>,
+first write the new contents to <tt>`Baserev.tmp'</tt> and
 then (atomically where possible), rename it to
-`<tt>Baserev</tt>'.
+<tt>`Baserev'</tt>.
 </p>
 <a name="IDX59"></a>
 <a name="IDX60"></a>
 </dd>
-<dt>`<tt> Template</tt>'</dt>
+<dt> <tt>`Template'</tt></dt>
 <dd><p>This file contains the template specified by the
-`<tt>rcsinfo</tt>' file (see section <a href="cvs_18.html#SEC175">Rcsinfo</a>).  It is only used
+<tt>`rcsinfo'</tt> file (see section <a href="cvs_18.html#SEC175">Rcsinfo</a>).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
-`<tt>rcsinfo</tt>' directly.
+<tt>`rcsinfo'</tt> directly.
 </p></dd>
 </dl>
 
@@ -1139,15 +1139,15 @@ by the client; the non-client/server <small>CVS</small> consults
 <h2 class="section"> 2.4 The administrative files </h2>
 
 
-<p>The directory `<tt>$CVSROOT/CVSROOT</tt>' contains some <em>administrative
+<p>The directory <tt>`$CVSROOT/CVSROOT'</tt> contains some <em>administrative
 files</em>.  See section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>, for a complete description.
 You can use <small>CVS</small> without any of these files, but
 some commands work better when at least the
-`<tt>modules</tt>' file is properly set up.
+<tt>`modules'</tt> file is properly set up.
 </p>
-<p>The most important of these files is the `<tt>modules</tt>'
+<p>The most important of these files is the <tt>`modules'</tt>
 file.  It defines all modules in the repository.  This
-is a sample `<tt>modules</tt>' file.
+is a sample <tt>`modules'</tt> file.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">CVSROOT         CVSROOT
 modules         CVSROOT modules
@@ -1156,7 +1156,7 @@ rcs             gnu/rcs
 diff            gnu/diff
 tc              yoyodyne/tc
 </pre></td></tr></table>
-<p>The `<tt>modules</tt>' file is line oriented.  In its
+<p>The <tt>`modules'</tt> file is line oriented.  In its
 simplest form each line contains the name of the
 module, whitespace, and the directory where the module
 resides.  The directory is a path relative to
@@ -1164,7 +1164,7 @@ resides.  The directory is a path relative to
 above are examples of such lines.
 </p>
 
-<p>The line that defines the module called `<samp>modules</samp>'
+<p>The line that defines the module called <samp>`modules'</samp>
 uses features that are not explained here.
 See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full explanation of all the
 available features.
@@ -1190,7 +1190,7 @@ available features.
 <h3 class="subsection"> 2.4.1 Editing administrative files </h3>
 
 <p>You edit the administrative files in the same way that you would edit
-any other module.  Use `<samp>cvs checkout CVSROOT</samp>' to get a working
+any other module.  Use <samp>`cvs checkout CVSROOT'</samp> to get a working
 copy, edit it, and commit your changes in the normal way.
 </p>
 <p>It is possible to commit an erroneous administrative
@@ -1226,7 +1226,7 @@ development groups that work on separate projects
 without sharing any code.  All you have to do to have
 several repositories is to specify the appropriate
 repository, using the <code>CVSROOT</code> environment
-variable, the `<samp>-d</samp>' option to <small>CVS</small>, or (once
+variable, the <samp>`-d'</samp> option to <small>CVS</small>, or (once
 you have checked out a working directory) by simply
 allowing <small>CVS</small> to use the repository that was used
 to check out the working directory
@@ -1358,7 +1358,7 @@ can access the repository, turn off your <small>CVS</small>
 server, or similar mechanisms.  The details would
 depend on your operating system and how you have
 <small>CVS</small> set up.  To lock <small>CVS</small>, you would create
-`<tt>#cvs.rfl</tt>' locks in each repository directory.
+<tt>`#cvs.rfl'</tt> locks in each repository directory.
 See <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>, for more on <small>CVS</small> locks.
 Having said all this, if you just back up without any
 of these precautions, the results are unlikely to be
@@ -1382,7 +1382,7 @@ Get a new working directory.
 </li><li>
 Copy the files from the working directory from before
 the failure over to the new working directory (do not
-copy the contents of the `<tt>CVS</tt>' directories, of
+copy the contents of the <tt>`CVS'</tt> directories, of
 course).
 
 </li><li>
@@ -1428,9 +1428,9 @@ checked in before the move, or you figured out some
 other way to make sure that you don't lose any
 changes.  If you really do want to reuse the existing
 working directory, it should be possible with manual
-surgery on the `<tt>CVS/Repository</tt>' files.  You can
+surgery on the <tt>`CVS/Repository'</tt> files.  You can
 see <a href="#SEC19">How data is stored in the working directory</a>, for information on
-the `<tt>CVS/Repository</tt>' and `<tt>CVS/Root</tt>' files, but
+the <tt>`CVS/Repository'</tt> and <tt>`CVS/Root'</tt> files, but
 unless you are sure you want to bother, it probably
 isn't worth it.
 </p>
@@ -1477,7 +1477,7 @@ password in each created directory.  <code>cvs login</code> first instead
 on how you are connecting to the server.
 </p>
 <p>If <var>method</var> is not specified, and the repository
-name contains `<samp>:</samp>', then the default is <code>ext</code>
+name contains <samp>`:'</samp>, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
 described in <a href="#SEC28">Connecting with rsh</a>.
 </p>
@@ -1592,23 +1592,23 @@ trouble.
 </tr></table>
 <h3 class="subsection"> 2.9.2 Connecting with rsh </h3>
 
-<p><small>CVS</small> uses the `<samp>rsh</samp>' protocol to perform these
+<p><small>CVS</small> uses the <samp>`rsh'</samp> protocol to perform these
 operations, so the remote user host needs to have a
-`<tt>.rhosts</tt>' file which grants access to the local
+<tt>`.rhosts'</tt> file which grants access to the local
 user. Note that the program that <small>CVS</small> uses for this
-purpose may be specified using the `<tt>--with-rsh</tt>'
+purpose may be specified using the <tt>`--with-rsh'</tt>
 flag to configure.
 </p>
-<p>For example, suppose you are the user `<samp>mozart</samp>' on
-the local machine `<samp>toe.example.com</samp>', and the
-server machine is `<samp>faun.example.org</samp>'.  On
+<p>For example, suppose you are the user <samp>`mozart'</samp> on
+the local machine <samp>`toe.example.com'</samp>, and the
+server machine is <samp>`faun.example.org'</samp>.  On
 faun, put the following line into the file
-`<tt>.rhosts</tt>' in `<samp>bach</samp>''s home directory:
+<tt>`.rhosts'</tt> in <samp>`bach'</samp>'s home directory:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">toe.example.com  mozart
 </pre></td></tr></table>
 
-<p>Then test that `<samp>rsh</samp>' is working with
+<p>Then test that <samp>`rsh'</samp> is working with
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">rsh -l bach faun.example.org 'echo $PATH'
 </pre></td></tr></table>
@@ -1618,13 +1618,13 @@ to find the server.  Make sure that the path which
 <code>rsh</code> printed in the above example includes the
 directory containing a program named <code>cvs</code> which
 is the server.  You need to set the path in
-`<tt>.bashrc</tt>', `<tt>.cshrc</tt>', etc., not `<tt>.login</tt>'
-or `<tt>.profile</tt>'.  Alternately, you can set the
+<tt>`.bashrc'</tt>, <tt>`.cshrc'</tt>, etc., not <tt>`.login'</tt>
+or <tt>`.profile'</tt>.  Alternately, you can set the
 environment variable <code>CVS_SERVER</code> on the client
 machine to the filename of the server you want to use,
-for example `<tt>/usr/local/bin/cvs-1.6</tt>'.
+for example <tt>`/usr/local/bin/cvs-1.6'</tt>.
 </p>
-<p>There is no need to edit `<tt>inetd.conf</tt>' or start a
+<p>There is no need to edit <tt>`inetd.conf'</tt> or start a
 <small>CVS</small> server daemon.
 </p>
 <a name="IDX65"></a>
@@ -1637,7 +1637,7 @@ for rsh.  <code>:server:</code> specifies an internal rsh
 client, which is supported only by some <small>CVS</small> ports.
 <code>:ext:</code> specifies an external rsh program.  By
 default this is <code>rsh</code> (unless otherwise specified
-by the `<tt>--with-rsh</tt>' flag to configure) but you may set the
+by the <tt>`--with-rsh'</tt> flag to configure) but you may set the
 <code>CVS_RSH</code> environment variable to invoke another
 program which can access the remote server (for
 example, <code>remsh</code> on HP-UX 9 because <code>rsh</code> is
@@ -1645,25 +1645,25 @@ something different).  It must be a program which can
 transmit data to and from the server without modifying
 it; for example the Windows NT <code>rsh</code> is not
 suitable since it by default translates between CRLF
-and LF.  The OS/2 <small>CVS</small> port has a hack to pass `<samp>-b</samp>'
+and LF.  The OS/2 <small>CVS</small> port has a hack to pass <samp>`-b'</samp>
 to <code>rsh</code> to get around this, but since this could
 potentially cause problems for programs other than the
 standard <code>rsh</code>, it may change in the future.  If
 you set <code>CVS_RSH</code> to <code>SSH</code> or some other rsh
 replacement, the instructions in the rest of this
-section concerning `<tt>.rhosts</tt>' and so on are likely
+section concerning <tt>`.rhosts'</tt> and so on are likely
 to be inapplicable; consult the documentation for your rsh
 replacement.
 </p>
 <p>Continuing our example, supposing you want to access
-the module `<tt>foo</tt>' in the repository
-`<tt>/usr/local/cvsroot/</tt>', on machine
-`<tt>faun.example.org</tt>', you are ready to go:
+the module <tt>`foo'</tt> in the repository
+<tt>`/usr/local/cvsroot/'</tt>, on machine
+<tt>`faun.example.org'</tt>, you are ready to go:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
 
-<p>(The `<tt>bach@</tt>' can be omitted if the username is
+<p>(The <tt>`bach@'</tt> can be omitted if the username is
 the same on both the local and remote hosts.)
 </p>
 
@@ -1728,8 +1728,8 @@ some adjustments on both the server and client sides.
 <h4 class="subsubsection"> 2.9.3.1 Setting up the server for password authentication </h4>
 
 <p>First of all, you probably want to tighten the
-permissions on the `<tt>$CVSROOT</tt>' and
-`<tt>$CVSROOT/CVSROOT</tt>' directories.  See <a href="#SEC32">Security considerations with password authentication</a>, for more details.
+permissions on the <tt>`$CVSROOT'</tt> and
+<tt>`$CVSROOT/CVSROOT'</tt> directories.  See <a href="#SEC32">Security considerations with password authentication</a>, for more details.
 </p>
 <a name="IDX70"></a>
 <a name="IDX71"></a>
@@ -1743,7 +1743,7 @@ permissions on the `<tt>$CVSROOT</tt>' and
 <a name="IDX79"></a>
 <a name="IDX80"></a>
 <a name="IDX81"></a>
-<p>On the server side, the file `<tt>/etc/inetd.conf</tt>'
+<p>On the server side, the file <tt>`/etc/inetd.conf'</tt>
 needs to be edited so <code>inetd</code> knows to run the
 command <code>cvs pserver</code> when it receives a
 connection on the right port.  By default, the port
@@ -1754,17 +1754,17 @@ something else, though.  This can also be specified in the CVSROOT variable
 environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).
 </p>
 <p>        If your <code>inetd</code> allows raw port numbers in
-`<tt>/etc/inetd.conf</tt>', then the following (all on a
-single line in `<tt>inetd.conf</tt>') should be sufficient:
+<tt>`/etc/inetd.conf'</tt>, then the following (all on a
+single line in <tt>`inetd.conf'</tt>) should be sufficient:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">2401  stream  tcp  nowait  root  /usr/local/bin/cvs
 cvs -f --allow-root=/usr/cvsroot pserver
 </pre></td></tr></table>
 
 <p>(You could also use the
-`<samp>-T</samp>' option to specify a temporary directory.)
+<samp>`-T'</samp> option to specify a temporary directory.)
 </p>
-<p>The `<samp>--allow-root</samp>' option specifies the allowable
+<p>The <samp>`--allow-root'</samp> option specifies the allowable
 <small>CVSROOT</small> directory.  Clients which attempt to use a
 different <small>CVSROOT</small> directory will not be allowed to
 connect.  If there is more than one <small>CVSROOT</small>
@@ -1777,16 +1777,16 @@ to have <code>inetd</code> run a shell script which then invokes
 </p>
 <p>        If your <code>inetd</code> wants a symbolic service
 name instead of a raw port number, then put this in
-`<tt>/etc/services</tt>':
+<tt>`/etc/services'</tt>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvspserver      2401/tcp
 </pre></td></tr></table>
 
-<p>and put <code>cvspserver</code> instead of <code>2401</code> in `<tt>inetd.conf</tt>'.
+<p>and put <code>cvspserver</code> instead of <code>2401</code> in <tt>`inetd.conf'</tt>.
 </p>
 <p>If your system uses <code>xinetd</code> instead of <code>inetd</code>,
 the procedure is slightly different.
-Create a file called `<tt>/etc/xinetd.d/cvspserver</tt>' containing the following:
+Create a file called <tt>`/etc/xinetd.d/cvspserver'</tt> containing the following:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">service cvspserver
 {
@@ -1801,7 +1801,7 @@ Create a file called `<tt>/etc/xinetd.d/cvspserver</tt>' containing the followin
 }
 </pre></td></tr></table>
 
-<p>(If <code>cvspserver</code> is defined in `<tt>/etc/services</tt>', you can omit
+<p>(If <code>cvspserver</code> is defined in <tt>`/etc/services'</tt>, you can omit
 the <code>port</code> line.)
 </p>
 <p>        Once the above is taken care of, restart your
@@ -1818,12 +1818,12 @@ cleartext (almost--see <a href="#SEC32">Security considerations with password au
 file is generally used, so people don't compromise
 their regular passwords when they access the
 repository.  This file is
-`<tt>$CVSROOT/CVSROOT/passwd</tt>' (see section <a href="#SEC20">The administrative files</a>).  It uses a colon-separated
-format, similar to `<tt>/etc/passwd</tt>' on Unix systems,
+<tt>`$CVSROOT/CVSROOT/passwd'</tt> (see section <a href="#SEC20">The administrative files</a>).  It uses a colon-separated
+format, similar to <tt>`/etc/passwd'</tt> on Unix systems,
 except that it has fewer fields: <small>CVS</small> username,
 optional password, and an optional system username for
 <small>CVS</small> to run as if authentication succeeds.  Here is
-an example `<tt>passwd</tt>' file with five entries:
+an example <tt>`passwd'</tt> file with five entries:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">anonymous:
 bach:ULtgRLXo7NRxs
@@ -1835,7 +1835,7 @@ qproj:XR4EZcEs0szik:pubcvs
 <p>(The passwords are encrypted according to the standard
 Unix <code>crypt()</code> function, so it is possible to
 paste in passwords directly from regular Unix
-`<tt>/etc/passwd</tt>' files.)
+<tt>`/etc/passwd'</tt> files.)
 </p>
 <p>The first line in the example will grant access to any
 <small>CVS</small> client attempting to authenticate as user
@@ -1863,7 +1863,7 @@ shared: any client who successfully authenticates as
 as <code>melissa</code> does.  That way you could create a
 single, shared system user for each project in your
 repository, and give each developer their own line in
-the `<tt>$CVSROOT/CVSROOT/passwd</tt>' file.  The <small>CVS</small>
+the <tt>`$CVSROOT/CVSROOT/passwd'</tt> file.  The <small>CVS</small>
 username on each line would be different, but the
 system username would be the same.  The reason to have
 different <small>CVS</small> usernames is that <small>CVS</small> will log their
@@ -1888,7 +1888,7 @@ supplied a valid password).
 (and if the system-user field is omitted, then also
 omit the colon that would have separated it from the
 encrypted password).  For example, this would be a
-valid `<tt>$CVSROOT/CVSROOT/passwd</tt>' file:
+valid <tt>`$CVSROOT/CVSROOT/passwd'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">anonymous::pubcvs
 fish:rKa5jzULzmhOo:kfogel
@@ -1903,18 +1903,18 @@ even if the password is empty.
 </p>
 <p><small>CVS</small> can also fall back to use system authentication.
 When authenticating a password, the server first checks
-for the user in the `<tt>$CVSROOT/CVSROOT/passwd</tt>'
+for the user in the <tt>`$CVSROOT/CVSROOT/passwd'</tt>
 file.  If it finds the user, it will use that entry for
 authentication as described above.  But if it does not
-find the user, or if the <small>CVS</small> `<tt>passwd</tt>' file
+find the user, or if the <small>CVS</small> <tt>`passwd'</tt> file
 does not exist, then the server can try to authenticate
 the username and password using the operating system's
 user-lookup routines (this &quot;fallback&quot; behavior can be
 disabled by setting <code>SystemAuth=no</code> in the
-<small>CVS</small> `<tt>config</tt>' file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+<small>CVS</small> <tt>`config'</tt> file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p>
 <p>The default fallback behaviour is to look in 
-`<tt>/etc/passwd</tt>' for this system password unless your
+<tt>`/etc/passwd'</tt> for this system password unless your
 system has PAM (Pluggable Authentication Modules)
 and your <small>CVS</small> server executable was configured to
 use it at compile time (using <code>./configure --enable-pam</code> - see the
@@ -1922,8 +1922,8 @@ INSTALL file for more).  In this case, PAM will be consulted instead.
 This means that <small>CVS</small> can be configured to use any password
 authentication source PAM can be configured to use (possibilities
 include a simple UNIX password, NIS, LDAP, and others) in its
-global configuration file (usually `<tt>/etc/pam.conf</tt>'
-or possibly `<tt>/etc/pam.d/cvs</tt>').  See your PAM documentation
+global configuration file (usually <tt>`/etc/pam.conf'</tt>
+or possibly <tt>`/etc/pam.d/cvs'</tt>).  See your PAM documentation
 for more details on PAM configuration.
 </p>
 <p>Note that PAM is an experimental feature in <small>CVS</small> and feedback is
@@ -1938,21 +1938,21 @@ no more security than other methods.  See below for more.</strong>
 <p>CVS needs an &quot;auth&quot; and &quot;account&quot; module in the 
 PAM configuration file. A typical PAM configuration 
 would therefore have the following lines 
-in `<tt>/etc/pam.conf</tt>' to emulate the standard <small>CVS</small> 
-system `<tt>/etc/passwd</tt>' authentication:
+in <tt>`/etc/pam.conf'</tt> to emulate the standard <small>CVS</small> 
+system <tt>`/etc/passwd'</tt> authentication:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs	auth	    required	pam_unix.so
 cvs	account	    required	pam_unix.so
 </pre></td></tr></table>
-<p>The the equivalent `<tt>/etc/pam.d/cvs</tt>' would contain
+<p>The the equivalent <tt>`/etc/pam.d/cvs'</tt> would contain
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">auth	    required	pam_unix.so
 account	    required	pam_unix.so
 </pre></td></tr></table>
 <p>Some systems require a full path to the module so that
-`<tt>pam_unix.so</tt>' (Linux) would become something like 
-`<tt>/usr/lib/security/$ISA/pam_unix.so.1</tt>' (Sun Solaris).
-See the `<tt>contrib/pam</tt>' subdirectory of the <small>CVS</small>
+<tt>`pam_unix.so'</tt> (Linux) would become something like 
+<tt>`/usr/lib/security/$ISA/pam_unix.so.1'</tt> (Sun Solaris).
+See the <tt>`contrib/pam'</tt> subdirectory of the <small>CVS</small>
 source distribution for further example configurations.
 </p>
 <p>The PAM service name given above as &quot;cvs&quot; is just
@@ -1981,7 +1981,7 @@ all of their activities, users are often more willing to change their
 password on a regular basis.
 </p>
 <p>In the non-PAM configuration where the password is stored in the
-`<tt>CVSROOT/passwd</tt>' file, it is difficult to change passwords on a
+<tt>`CVSROOT/passwd'</tt> file, it is difficult to change passwords on a
 regular basis since only administrative users (or in some cases
 processes that act as an administrative user) are typicaly given
 access to modify this file.  Either there needs to be some
@@ -2000,17 +2000,17 @@ one of the other Client/Server access methods.  See the section on
 see section <a href="#SEC26">Remote repositories</a> for a list of other methods.
 </p>
 <p>Right now, the only way to put a password in the
-<small>CVS</small> `<tt>passwd</tt>' file is to paste it there from
+<small>CVS</small> <tt>`passwd'</tt> file is to paste it there from
 somewhere else.  Someday, there may be a <code>cvs
 passwd</code> command.
 </p>
-<p>Unlike many of the files in `<tt>$CVSROOT/CVSROOT</tt>', it
-is normal to edit the `<tt>passwd</tt>' file in-place,
+<p>Unlike many of the files in <tt>`$CVSROOT/CVSROOT'</tt>, it
+is normal to edit the <tt>`passwd'</tt> file in-place,
 rather than via <small>CVS</small>.  This is because of the
-possible security risks of having the `<tt>passwd</tt>'
+possible security risks of having the <tt>`passwd'</tt>
 file checked out to people's working copies.  If you do
-want to include the `<tt>passwd</tt>' file in checkouts of
-`<tt>$CVSROOT/CVSROOT</tt>', see <a href="cvs_18.html#SEC177">The checkoutlist file</a>.
+want to include the <tt>`passwd'</tt> file in checkouts of
+<tt>`$CVSROOT/CVSROOT'</tt>, see <a href="cvs_18.html#SEC177">The checkoutlist file</a>.
 </p>
 
 <hr size="6">
@@ -2072,7 +2072,7 @@ complaining that the password was incorrect, and
 nothing will be recorded.)
 </p>
 <p>The records are stored, by default, in the file
-`<tt>$HOME/.cvspass</tt>'.  That file's format is
+<tt>`$HOME/.cvspass'</tt>.  That file's format is
 human-readable, and to a degree human-editable, but
 note that the passwords are not stored in
 cleartext--they are trivially encoded to protect them
@@ -2100,7 +2100,7 @@ with the stored password.  So, for example
 server side, in which case you'll have to re-run
 <code>cvs login</code>).
 </p>
-<p>Note that if the `<samp>:pserver:</samp>' were not present in
+<p>Note that if the <samp>`:pserver:'</samp> were not present in
 the repository specification, <small>CVS</small> would assume it
 should use <code>rsh</code> to connect with the server
 instead (see section <a href="#SEC28">Connecting with rsh</a>).
@@ -2109,7 +2109,7 @@ instead (see section <a href="#SEC28">Connecting with rsh</a>).
 are running <small>CVS</small> commands from within it, there is
 no longer any need to specify the repository
 explicitly, because <small>CVS</small> can deduce the repository
-from the working copy's `<tt>CVS</tt>' subdirectory.
+from the working copy's <tt>`CVS'</tt> subdirectory.
 </p>
 <a name="IDX86"></a>
 <p>The password for a given remote repository can be
@@ -2155,11 +2155,11 @@ access implies fairly broad system access as well.  It
 might be possible to modify <small>CVS</small> to prevent that,
 but no one has done so as of this writing.
 </p>
-<p>Note that because the `<tt>$CVSROOT/CVSROOT</tt>' directory
-contains `<tt>passwd</tt>' and other files which are used
+<p>Note that because the <tt>`$CVSROOT/CVSROOT'</tt> directory
+contains <tt>`passwd'</tt> and other files which are used
 to check security, you must control the permissions on
 this directory as tightly as the permissions on
-`<tt>/etc</tt>'.  The same applies to the `<tt>$CVSROOT</tt>'
+<tt>`/etc'</tt>.  The same applies to the <tt>`$CVSROOT'</tt>
 directory itself and any directory
 above it in the tree.  Anyone who has write access to
 such a directory will have the ability to become any
@@ -2204,7 +2204,7 @@ authenticating with GSSAPI.
 <p>To do this, <small>CVS</small> needs to be compiled with GSSAPI
 support; when configuring <small>CVS</small> it tries to detect
 whether GSSAPI libraries using kerberos version 5 are
-present.  You can also use the `<tt>--with-gssapi</tt>'
+present.  You can also use the <tt>`--with-gssapi'</tt>
 flag to configure.
 </p>
 <p>The connection is authenticated using GSSAPI, but the
@@ -2215,7 +2215,7 @@ stream authentication.
 <p>The data transmitted is <em>not</em> encrypted by
 default.  Encryption support must be compiled into both
 the client and the server; use the
-`<tt>--enable-encrypt</tt>' configure option to turn it on.
+<tt>`--enable-encrypt'</tt> configure option to turn it on.
 You must then use the <code>-x</code> global option to
 request encryption.
 </p>
@@ -2225,7 +2225,7 @@ authentication server; see <a href="#SEC30">Setting up the server for password a
 Kerberos which provides for strong authentication, you
 will probably want to disable the ability to
 authenticate via cleartext passwords.  To do so, create
-an empty `<tt>CVSROOT/passwd</tt>' password file, and set
+an empty <tt>`CVSROOT/passwd'</tt> password file, and set
 <code>SystemAuth=no</code> in the config file
 (see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
 </p>
@@ -2234,7 +2234,7 @@ cvs/<var>hostname</var>, where <var>hostname</var> is the
 canonical name of the server host.  You will have to
 set this up as required by your GSSAPI mechanism.
 </p>
-<p>To connect using GSSAPI, use `<samp>:gserver:</samp>'.  For
+<p>To connect using GSSAPI, use <samp>`:gserver:'</samp>.  For
 example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
@@ -2276,17 +2276,17 @@ described in the previous section.
 <p>To do this, <small>CVS</small> needs to be compiled with kerberos
 support; when configuring <small>CVS</small> it tries to detect
 whether kerberos is present or you can use the
-`<tt>--with-krb4</tt>' flag to configure.
+<tt>`--with-krb4'</tt> flag to configure.
 </p>
 <p>The data transmitted is <em>not</em> encrypted by
 default.  Encryption support must be compiled into both
 the client and server; use the
-`<tt>--enable-encryption</tt>' configure option to turn it
+<tt>`--enable-encryption'</tt> configure option to turn it
 on.  You must then use the <code>-x</code> global option to
 request encryption.
 </p>
 <a name="IDX87"></a>
-<p>You need to edit `<tt>inetd.conf</tt>' on the server
+<p>You need to edit <tt>`inetd.conf'</tt> on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
 specify it in the <code>CVSROOT</code> (see section <a href="#SEC26">Remote repositories</a>)
@@ -2343,13 +2343,13 @@ inherent in the other remote access methods but still
 create a connection which uses the remote protocol.
 </p>
 <p>To connect using the <code>fork</code> method, use
-`<samp>:fork:</samp>' and the pathname to your local
+<samp>`:fork:'</samp> and the pathname to your local
 repository.  For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs -d :fork:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
 <a name="IDX89"></a>
-<p>As with <code>:ext:</code>, the server is called `<samp>cvs</samp>'
+<p>As with <code>:ext:</code>, the server is called <samp>`cvs'</samp>
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
 </p>
@@ -2404,9 +2404,9 @@ security.
 for a user: by inclusion, and by exclusion.
 </p>
 <p>        &quot;Inclusion&quot; means listing that user
-specifically in the `<tt>$CVSROOT/CVSROOT/readers</tt>'
+specifically in the <tt>`$CVSROOT/CVSROOT/readers'</tt>
 file, which is simply a newline-separated list of
-users.  Here is a sample `<tt>readers</tt>' file:
+users.  Here is a sample <tt>`readers'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">melissa
 splotnik
@@ -2425,26 +2425,26 @@ who has <em>write</em> access--if the file
 those users listed in it have write access, and
 everyone else has read-only access (of course, even the
 read-only users still need to be listed in the
-<small>CVS</small> `<tt>passwd</tt>' file).  The
-`<tt>writers</tt>' file has the same format as the
-`<tt>readers</tt>' file.
+<small>CVS</small> <tt>`passwd'</tt> file).  The
+<tt>`writers'</tt> file has the same format as the
+<tt>`readers'</tt> file.
 </p>
-<p>        Note: if your <small>CVS</small> `<tt>passwd</tt>'
+<p>        Note: if your <small>CVS</small> <tt>`passwd'</tt>
 file maps cvs users onto system users (see section <a href="#SEC30">Setting up the server for password authentication</a>), make sure you deny or grant
 read-only access using the <em>cvs</em> usernames, not
-the system usernames.  That is, the `<tt>readers</tt>' and
-`<tt>writers</tt>' files contain cvs usernames, which may
+the system usernames.  That is, the <tt>`readers'</tt> and
+<tt>`writers'</tt> files contain cvs usernames, which may
 or may not be the same as system usernames.
 </p>
 <p>        Here is a complete description of the server's
 behavior in deciding whether to grant read-only or
 read-write access:
 </p>
-<p>        If `<tt>readers</tt>' exists, and this user is
+<p>        If <tt>`readers'</tt> exists, and this user is
 listed in it, then she gets read-only access.  Or if
-`<tt>writers</tt>' exists, and this user is NOT listed in
+<tt>`writers'</tt> exists, and this user is NOT listed in
 it, then she also gets read-only access (this is true
-even if `<tt>readers</tt>' exists but she is not listed
+even if <tt>`readers'</tt> exists but she is not listed
 there).  Otherwise, she gets full read-write access.
 </p>
 <p>        Of course there is a conflict if the user is
@@ -2483,9 +2483,9 @@ directories.  They are named
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the `<samp>-T</samp>' global option (see section <a href="cvs_16.html#SEC118">Global options</a>), 
+the <samp>`-T'</samp> global option (see section <a href="cvs_16.html#SEC118">Global options</a>), 
 the <code>TMPDIR</code> environment variable (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>), 
-or, failing that, `<tt>/tmp</tt>'.
+or, failing that, <tt>`/tmp'</tt>.
 </p>
 <p>In most cases the server will remove the temporary
 directory when it is done, whether it finishes normally
@@ -2500,7 +2500,7 @@ it may preserve the directory to aid in debugging
 
 </li><li>
 If the server is killed in a way that it has no way of
-cleaning up (most notably, `<samp>kill -KILL</samp>' on unix).
+cleaning up (most notably, <samp>`kill -KILL'</samp> on unix).
 
 </li><li>
 If the system shuts down without an orderly shutdown,
@@ -2508,7 +2508,7 @@ which tells the server to clean up.
 </li></ul>
 
 <p>In cases such as this, you will need to manually remove
-the `<tt>cvs-serv<var>pid</var></tt>' directories.  As long as
+the <tt>`cvs-serv<var>pid</var>'</tt> directories.  As long as
 there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 </p>

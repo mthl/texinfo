@@ -201,7 +201,7 @@ not try to be everything for everyone.
 <dd>
 <p>Though the structure of your repository and modules
 file interact with your build system
-(e.g. `<tt>Makefile</tt>'s), they are essentially
+(e.g. <tt>`Makefile'</tt>s), they are essentially
 independent.
 </p>
 <p><small>CVS</small> does not dictate how you build anything.  It
@@ -210,14 +210,14 @@ you devise.
 </p>
 <p><small>CVS</small> does not dictate how to use disk space in the
 checked out working directories.  If you write your
-`<tt>Makefile</tt>'s or scripts in every directory so they
+<tt>`Makefile'</tt>s or scripts in every directory so they
 have to know the relative positions of everything else,
 you wind up requiring the entire repository to be
 checked out.
 </p>
 <p>If you modularize your work, and construct a build
 system that will share files (via links, mounts,
-<code>VPATH</code> in `<tt>Makefile</tt>'s, etc.), you can
+<code>VPATH</code> in <tt>`Makefile'</tt>s, etc.), you can
 arrange your disk usage however you like.
 </p>
 <p>But you have to remember that <em>any</em> such system is
@@ -225,7 +225,7 @@ a lot of work to construct and maintain.  <small>CVS</small> does
 not address the issues involved.
 </p>
 <p>Of course, you should place the tools created to
-support such a build system (scripts, `<tt>Makefile</tt>'s,
+support such a build system (scripts, <tt>`Makefile'</tt>s,
 etc) under <small>CVS</small>.
 </p>
 <p>Figuring out what files need to be rebuilt when
@@ -270,8 +270,8 @@ to spook the merge (i.e. <code>diff3</code>) command.
 non-textual or distributed conflicts in program logic.
 </p>
 <p>For example: Say you change the arguments to function
-<code>X</code> defined in file `<tt>A</tt>'.  At the same time,
-someone edits file `<tt>B</tt>', adding new calls to
+<code>X</code> defined in file <tt>`A'</tt>.  At the same time,
+someone edits file <tt>`B'</tt>, adding new calls to
 function <code>X</code> using the old arguments.  You are
 outside the realm of <small>CVS</small>'s competence.
 </p>
@@ -288,7 +288,7 @@ to keep a database of reported bugs and the status of
 each one (is it fixed?  in what release?  has the bug
 submitter agreed that it is fixed?).  For interfacing
 <small>CVS</small> to an external bug-tracking system, see the
-`<tt>rcsinfo</tt>' and `<tt>verifymsg</tt>' files
+<tt>`rcsinfo'</tt> and <tt>`verifymsg'</tt> files
 (see section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>).
 </p>
 <p>Another aspect of change control is keeping track of
@@ -298,7 +298,7 @@ in several files in a single <code>cvs commit</code>
 operation, <small>CVS</small> then forgets that those files were
 checked in together, and the fact that they have the
 same log message is the only thing tying them
-together.  Keeping a <small>GNU</small> style `<tt>ChangeLog</tt>'
+together.  Keeping a <small>GNU</small> style <tt>`ChangeLog'</tt>
 can help somewhat.
 </p>
 <p>Another aspect of change control, in some systems, is
@@ -327,8 +327,8 @@ there are subtle gotchas, however.
 releases go through various steps, with various
 approvals as needed.  Generally, one can accomplish
 this with <small>CVS</small> but it might be a little more work.
-In some cases you'll want to use the `<tt>commitinfo</tt>',
-`<tt>loginfo</tt>', `<tt>rcsinfo</tt>', or `<tt>verifymsg</tt>'
+In some cases you'll want to use the <tt>`commitinfo'</tt>,
+<tt>`loginfo'</tt>, <tt>`rcsinfo'</tt>, or <tt>`verifymsg'</tt>
 files, to require that certain steps be performed
 before cvs will allow a checkin.  Also consider whether
 features such as branches and tags can be used to
@@ -367,10 +367,10 @@ centralized <em>repository</em> (see section <a href="cvs_2.html#SEC9">The Repos
 section assumes that a repository is set up.
 </p>
 <p>Suppose you are working on a simple compiler.  The source
-consists of a handful of C files and a `<tt>Makefile</tt>'.
-The compiler is called `<samp>tc</samp>' (Trivial Compiler),
+consists of a handful of C files and a <tt>`Makefile'</tt>.
+The compiler is called <samp>`tc'</samp> (Trivial Compiler),
 and the repository is set up so that there is a module
-called `<samp>tc</samp>'.
+called <samp>`tc'</samp>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC5">1.3.1 Getting the source</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Creating a workspace
@@ -403,23 +403,23 @@ called `<samp>tc</samp>'.
 <h3 class="subsection"> 1.3.1 Getting the source </h3>
 
 <p>The first thing you must do is to get your own working copy of the
-source for `<samp>tc</samp>'.  For this, you use the <code>checkout</code> command:
+source for <samp>`tc'</samp>.  For this, you use the <code>checkout</code> command:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout tc
 </pre></td></tr></table>
 
-<p>This will create a new directory called `<tt>tc</tt>' and populate it with
+<p>This will create a new directory called <tt>`tc'</tt> and populate it with
 the source files.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
 $ ls
 CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
 </pre></td></tr></table>
-<p>The `<tt>CVS</tt>' directory is used internally by
+<p>The <tt>`CVS'</tt> directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove
 any of the files in it.
 </p>
-<p>You start your favorite editor, hack away at `<tt>backend.c</tt>', and a couple
+<p>You start your favorite editor, hack away at <tt>`backend.c'</tt>, and a couple
 of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
 you want to edit.  See section <a href="cvs_10.html#SEC83">Multiple developers</a>, for an explanation.
@@ -446,8 +446,8 @@ you want to edit.  See section <a href="cvs_10.html#SEC83">Multiple developers</
 <h3 class="subsection"> 1.3.2 Committing your changes </h3>
 
 <p>When you have checked that the compiler is still compilable you decide
-to make a new version of `<tt>backend.c</tt>'.  This will
-store your new `<tt>backend.c</tt>' in the repository and
+to make a new version of <tt>`backend.c'</tt>.  This will
+store your new <tt>`backend.c'</tt> in the repository and
 make it available to anyone else who is using that same
 repository.
 </p>
@@ -494,7 +494,7 @@ will not show up in future editor sessions.
 </p>
 <p>If you want to avoid
 starting an editor you can specify the log message on
-the command line using the `<samp>-m</samp>' flag instead, like
+the command line using the <samp>`-m'</samp> flag instead, like
 this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
@@ -541,19 +541,19 @@ Are you sure you want to release (and delete) directory `tc': n
 committed.  If history logging is enabled it also makes a note in the
 history file.  See section <a href="cvs_18.html#SEC178">The history file</a>.
 </p>
-<p>When you use the `<samp>-d</samp>' flag with <code>release</code>, it
+<p>When you use the <samp>`-d'</samp> flag with <code>release</code>, it
 also removes your working copy.
 </p>
 <p>In the example above, the <code>release</code> command wrote a couple of lines
-of output.  `<samp>? tc</samp>' means that the file `<tt>tc</tt>' is unknown to <small>CVS</small>.
-That is nothing to worry about: `<tt>tc</tt>' is the executable compiler,
+of output.  <samp>`? tc'</samp> means that the file <tt>`tc'</tt> is unknown to <small>CVS</small>.
+That is nothing to worry about: <tt>`tc'</tt> is the executable compiler,
 and it should not be stored in the repository.  See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>,
 for information about how to make that warning go away.
 See section <a href="cvs_16.html#SEC151">release output</a>, for a complete explanation of
 all possible output from <code>release</code>.
 </p>
-<p>`<samp>M driver.c</samp>' is more serious.  It means that the
-file `<tt>driver.c</tt>' has been modified since it was
+<p><samp>`M driver.c'</samp> is more serious.  It means that the
+file <tt>`driver.c'</tt> has been modified since it was
 checked out.
 </p>
 <p>The <code>release</code> command always finishes by telling
@@ -586,13 +586,13 @@ when <code>release</code> asks for confirmation.
 </tr></table>
 <h3 class="subsection"> 1.3.4 Viewing differences </h3>
 
-<p>You do not remember modifying `<tt>driver.c</tt>', so you want to see what
+<p>You do not remember modifying <tt>`driver.c'</tt>, so you want to see what
 has happened to that file.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
 $ cvs diff driver.c
 </pre></td></tr></table>
-<p>This command runs <code>diff</code> to compare the version of `<tt>driver.c</tt>'
+<p>This command runs <code>diff</code> to compare the version of <tt>`driver.c'</tt>
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.

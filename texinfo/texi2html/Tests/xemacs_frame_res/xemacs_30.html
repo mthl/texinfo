@@ -127,7 +127,7 @@ file to do the customization in each session.  See section <a href="#SEC377">The
 Fill mode is a minor mode in which <kbd>SPC</kbd> breaks lines between words
 as you type.  All the minor modes are independent of each other and of
 the selected major mode.  Most minor modes inform you in the mode line
-when they are on; for example, `<samp>Fill</samp>' in the mode line means that
+when they are on; for example, <samp>`Fill'</samp> in the mode line means that
 Auto Fill mode is on.
 </p>
 <p>  Append <code>-mode</code> to the name of a minor mode to get the name of a
@@ -149,14 +149,14 @@ becoming too long.  See section <a href="xemacs_23.html#SEC210">Filling Text</a>
 <a name="IDX1469"></a>
 <p>  Overwrite mode causes ordinary printing characters to replace existing
 text instead of moving it to the right.  For example, if point is in
-front of the `<samp>B</samp>' in `<samp>FOOBAR</samp>', and you type a <kbd>G</kbd> in Overwrite
-mode, it changes to `<samp>FOOGAR</samp>', instead of `<samp>FOOGBAR</samp>'.
+front of the <samp>`B'</samp> in <samp>`FOOBAR'</samp>, and you type a <kbd>G</kbd> in Overwrite
+mode, it changes to <samp>`FOOGAR'</samp>, instead of <samp>`FOOGBAR'</samp>.
 </p>
 <a name="IDX1470"></a>
 <a name="IDX1471"></a>
 <p>  Abbrev mode allows you to define abbreviations that automatically expand
-as you type them.  For example, `<samp>amd</samp>' might expand to `<samp>abbrev
-mode</samp>'.  See section <a href="xemacs_26.html#SEC285">Abbrevs</a>, for full information.
+as you type them.  For example, <samp>`amd'</samp> might expand to <samp>`abbrev
+mode'</samp>.  See section <a href="xemacs_26.html#SEC285">Abbrevs</a>, for full information.
 </p>
 <hr size="6">
 <a name="Variables"></a>
@@ -241,12 +241,12 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <h3 class="subsection"> 27.2.1 Examining and Setting Variables </h3>
 
 <dl compact="compact">
-<dt><kbd> C-h v</kbd></dt>
-<dt><kbd> M-x describe-variable</kbd></dt>
+<dt> <kbd>C-h v</kbd></dt>
+<dt> <kbd>M-x describe-variable</kbd></dt>
 <dd><p>Print the value and documentation of a variable.
 <a name="IDX1472"></a>
 </p></dd>
-<dt><kbd> M-x set-variable</kbd></dt>
+<dt> <kbd>M-x set-variable</kbd></dt>
 <dd><p>Change the value of a variable.
 </p></dd>
 </dl>
@@ -383,7 +383,7 @@ Interfacing to external utilities.
 group.  The other groups are listed because they are its contents.  But
 they are listed differently, without indentation and dashes, because
 <em>their</em> contents are not included.  Each group has a single-line
-documentation string; the <code>Emacs</code> group also has a `<samp>[State]</samp>'
+documentation string; the <code>Emacs</code> group also has a <samp>`[State]'</samp>
 line.
 </p>
 <a name="IDX1477"></a>
@@ -394,8 +394,8 @@ are also <em>active fields</em>; this means a field that does something
 when you <em>invoke</em> it.  To invoke an active field, either click on it
 with <kbd>Mouse-1</kbd>, or move point to it and type <kbd>RET</kbd>.
 </p>
-<p>  For example, the phrase `<samp>[Open]</samp>' that appears in a second-level
-group is an active field.  Invoking the `<samp>[Open]</samp>' field for a group
+<p>  For example, the phrase <samp>`[Open]'</samp> that appears in a second-level
+group is an active field.  Invoking the <samp>`[Open]'</samp> field for a group
 opens up a new customization buffer, which shows that group and its
 contents.  This field is a kind of hypertext link to another group.
 </p>
@@ -411,11 +411,11 @@ customization buffer which shows only the names of the groups (and
 options and faces), and their structure.
 </p>
 <p>  In this buffer, you can show the contents of a group by invoking
-`<samp>[+]</samp>'.  When the group contents are visible, this button changes to
-`<samp>[-]</samp>'; invoking that hides the group contents.
+<samp>`[+]'</samp>.  When the group contents are visible, this button changes to
+<samp>`[-]'</samp>; invoking that hides the group contents.
 </p>
 <p>  Each group, option or face name in this buffer has an active field
-which says `<samp>[Group]</samp>', `<samp>[Option]</samp>' or `<samp>[Face]</samp>'.  Invoking
+which says <samp>`[Group]'</samp>, <samp>`[Option]'</samp> or <samp>`[Face]'</samp>.  Invoking
 that active field creates an ordinary customization buffer showing just
 that group and its contents, just that option, or just that face.
 This is the way to set values in it.
@@ -448,29 +448,29 @@ customization buffer:
    [State]: this option is unchanged from its standard setting.
 Maximum length of kill ring before oldest elements are thrown away.
 </pre></td></tr></table>
-<p>  The text following `<samp>[Hide]</samp>', `<samp>30</samp>' in this case, indicates
-the current value of the option.  If you see `<samp>[Show]</samp>' instead of
-`<samp>[Hide]</samp>', it means that the value is hidden; the customization
+<p>  The text following <samp>`[Hide]'</samp>, <samp>`30'</samp> in this case, indicates
+the current value of the option.  If you see <samp>`[Show]'</samp> instead of
+<samp>`[Hide]'</samp>, it means that the value is hidden; the customization
 buffer initially hides values that take up several lines.  Invoke
-`<samp>[Show]</samp>' to show the value.
+<samp>`[Show]'</samp> to show the value.
 </p>
 <p>  The line after the option name indicates the <em>customization state</em>
 of the option: in the example above, it says you have not changed the
-option yet.  The word `<samp>[State]</samp>' at the beginning of this line is
+option yet.  The word <samp>`[State]'</samp> at the beginning of this line is
 active; you can get a menu of various operations by invoking it with
 <kbd>Mouse-1</kbd> or <kbd>RET</kbd>.  These operations are essential for
 customizing the variable.
 </p>
-<p>  The line after the `<samp>[State]</samp>' line displays the beginning of the
+<p>  The line after the <samp>`[State]'</samp> line displays the beginning of the
 option's documentation string.  If there are more lines of
-documentation, this line ends with `<samp>[More]</samp>'; invoke this to show
+documentation, this line ends with <samp>`[More]'</samp>; invoke this to show
 the full documentation string.
 </p>
-<p>  To enter a new value for `<samp>Kill Ring Max</samp>', move point to the value
+<p>  To enter a new value for <samp>`Kill Ring Max'</samp>, move point to the value
 and edit it textually.  For example, you can type <kbd>M-d</kbd>, then insert
 another number.
 </p>
-<p>  When you begin to alter the text, you will see the `<samp>[State]</samp>' line
+<p>  When you begin to alter the text, you will see the <samp>`[State]'</samp> line
 change to say that you have edited the value:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">[State]: you have edited the value as text, but not set the option.
@@ -478,7 +478,7 @@ change to say that you have edited the value:
 <a name="IDX1480"></a>
 <p>  Editing the value does not actually set the option variable.  To do
 that, you must <em>set</em> the option.  To do this, invoke the word
-`<samp>[State]</samp>' and choose `<samp>Set for Current Session</samp>'.
+<samp>`[State]'</samp> and choose <samp>`Set for Current Session'</samp>.
 </p>
 <p>  The state of the option changes visibly when you set it:
 </p>
@@ -496,11 +496,11 @@ type <kbd>M-<kbd>TAB</kbd></kbd> (<code>widget-complete</code>) to do completion
 </p>
 <p>  Some options have a small fixed set of possible legitimate values.
 These options don't let you edit the value textually.  Instead, an
-active field `<samp>[Value Menu]</samp>' appears before the value; invoke this
+active field <samp>`[Value Menu]'</samp> appears before the value; invoke this
 field to edit the value.  For a boolean &quot;on or off&quot; value, the active
-field says `<samp>[Toggle]</samp>', and it changes to the other value.
-`<samp>[Value Menu]</samp>' and `<samp>[Toggle]</samp>' edit the buffer; the changes
-take effect when you use the `<samp>Set for Current Session</samp>' operation.
+field says <samp>`[Toggle]'</samp>, and it changes to the other value.
+<samp>`[Value Menu]'</samp> and <samp>`[Toggle]'</samp> edit the buffer; the changes
+take effect when you use the <samp>`Set for Current Session'</samp> operation.
 </p>
 <p>  Some options have values with complex structure.  For example, the
 value of <code>load-path</code> is a list of directories.  Here is how it
@@ -522,10 +522,10 @@ List of directories to search for files to load....
 several editable or active fields.
 </p>
 <p>  You can edit any of the directory names.  To delete a directory from
-the list, invoke `<samp>[DEL]</samp>' on that line.  To insert a new directory in
-the list, invoke `<samp>[INS]</samp>' at the point where you want to insert it.
+the list, invoke <samp>`[DEL]'</samp> on that line.  To insert a new directory in
+the list, invoke <samp>`[INS]'</samp> at the point where you want to insert it.
 </p>
-<p>  You can also invoke `<samp>[Current dir?]</samp>' to switch between including
+<p>  You can also invoke <samp>`[Current dir?]'</samp> to switch between including
 a specific named directory in the path, and including <code>nil</code> in the
 path.  (<code>nil</code> in a search path means &quot;try the current
 directory.&quot;)
@@ -551,26 +551,26 @@ C-j</kbd>,
 <em>saving</em> the value changes it for future sessions as well.  This
 works by writing code into your init file so as to set the option
 variable again each time you start Emacs.  See section <a href="#SEC377">The Init File</a>.  To save
-the option, invoke `<samp>[State]</samp>' and select the `<samp>Save for Future
-Sessions</samp>' operation.
+the option, invoke <samp>`[State]'</samp> and select the <samp>`Save for Future
+Sessions'</samp> operation.
 </p>
 <p>  You can also restore the option to its standard value by invoking
-`<samp>[State]</samp>' and selecting the `<samp>Reset</samp>' operation.  There are
+<samp>`[State]'</samp> and selecting the <samp>`Reset'</samp> operation.  There are
 actually three reset operations:
 </p>
 <dl compact="compact">
-<dt>`<samp> Reset to Current</samp>'</dt>
+<dt> <samp>`Reset to Current'</samp></dt>
 <dd><p>If you have made some modifications and not yet set the option,
 this restores the text in the customization buffer to match
 the actual value.
 </p>
 </dd>
-<dt>`<samp> Reset to Saved</samp>'</dt>
+<dt> <samp>`Reset to Saved'</samp></dt>
 <dd><p>This restores the value of the option to the last saved value,
 and updates the text accordingly.
 </p>
 </dd>
-<dt>`<samp> Reset to Standard Settings</samp>'</dt>
+<dt> <samp>`Reset to Standard Settings'</samp></dt>
 <dd><p>This sets the option to its standard value, and updates the text
 accordingly.  This also eliminates any saved value for the option,
 so that you will get the standard value in future Emacs sessions.
@@ -578,8 +578,8 @@ so that you will get the standard value in future Emacs sessions.
 </dl>
 
 <p>  The state of a group indicates whether anything in that group has been
-edited, set or saved.  You can select `<samp>Set for Current Session</samp>',
-`<samp>Save for Future Sessions</samp>' and the various kinds of `<samp>Reset</samp>'
+edited, set or saved.  You can select <samp>`Set for Current Session'</samp>,
+<samp>`Save for Future Sessions'</samp> and the various kinds of <samp>`Reset'</samp>
 operation for the group; these operations on the group apply to all
 options in the group and its subgroups.
 </p>
@@ -589,7 +589,7 @@ containing several active fields:
 <table><tr><td>&nbsp;</td><td><pre class="smallexample"> [Set] [Save] [Reset]  [Done]
 </pre></td></tr></table>
 
-<p>Invoking `<samp>[Done]</samp>' buries this customization buffer.  Each of the
+<p>Invoking <samp>`[Done]'</samp> buries this customization buffer.  Each of the
 other fields performs an operation--set, save or reset--on each of the
 items in the buffer that could meaningfully be set, saved or reset.
 </p>
@@ -634,14 +634,14 @@ Attributes: [ ] Bold: [Toggle]  off (nil)
             [ ] Size: 
             [ ] Strikethru: off
 </pre></td></tr></table>
-<p>  Each face attribute has its own line.  The `<samp>[<var>x</var>]</samp>' field
+<p>  Each face attribute has its own line.  The <samp>`[<var>x</var>]'</samp> field
 before the attribute name indicates whether the attribute is
-<em>enabled</em>; `<samp>X</samp>' means that it is.  You can enable or disable the
+<em>enabled</em>; <samp>`X'</samp> means that it is.  You can enable or disable the
 attribute by invoking that field.  When the attribute is enabled, you
 can change the attribute value in the usual ways.
 </p>
 <p>See section <a href="#SEC382">Faces</a>, for description of how <code>face-frob-from-locale-first</code>
-variable affects changing `<samp>Bold</samp>' and `<samp>Italic</samp>' attributes.
+variable affects changing <samp>`Bold'</samp> and <samp>`Italic'</samp> attributes.
 </p>
 <p>  Setting, saving and resetting a face work like the same operations for
 options (see section <a href="#SEC357">Changing an Option</a>).
@@ -649,8 +649,8 @@ options (see section <a href="#SEC357">Changing an Option</a>).
 <p>  A face can specify different appearances for different types of
 display.  For example, a face can make text red on a color display, but
 use a bold font on a monochrome display.  To specify multiple
-appearances for a face, select `<samp>Show Display Types</samp>' in the menu you
-get from invoking `<samp>[State]</samp>'.
+appearances for a face, select <samp>`Show Display Types'</samp> in the menu you
+get from invoking <samp>`[State]'</samp>.
 </p>
 
 <hr size="6">
@@ -679,24 +679,24 @@ through the structure of groups, you can specify the particular option,
 face or group that you want to customize.
 </p>
 <dl compact="compact">
-<dt><kbd> M-x customize-option <kbd>RET</kbd> <var>option</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-option <kbd>RET</kbd> <var>option</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one option, <var>option</var>.
 </p></dd>
-<dt><kbd> M-x customize-face <kbd>RET</kbd> <var>face</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-face <kbd>RET</kbd> <var>face</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one face, <var>face</var>.
 </p></dd>
-<dt><kbd> M-x customize-group <kbd>RET</kbd> <var>group</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-group <kbd>RET</kbd> <var>group</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one group, <var>group</var>.
 </p></dd>
-<dt><kbd> M-x customize-apropos <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x customize-apropos <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with all the options, faces and groups
 that match <var>regexp</var>.
 </p></dd>
-<dt><kbd> M-x customize-saved </kbd></dt>
+<dt> <kbd>M-x customize-saved</kbd> </dt>
 <dd><p>Set up a customization buffer containing all options and faces that you
 have saved with customization buffers.
 </p></dd>
-<dt><kbd> M-x customize-customized</kbd></dt>
+<dt> <kbd>M-x customize-customized</kbd></dt>
 <dd><p>Set up a customization buffer containing all options and faces that you
 have customized but not saved.
 </p></dd>
@@ -719,7 +719,7 @@ only for the specified option.
 using <kbd>M-x customize-group</kbd>.  The immediate contents of the chosen
 group, including option variables, faces, and other groups, all appear
 as well.  However, these subgroups' own contents start out hidden.  You
-can show their contents in the usual way, by invoking `<samp>[Show]</samp>'.
+can show their contents in the usual way, by invoking <samp>`[Show]'</samp>.
 </p>
 <a name="IDX1491"></a>
 <p>  To control more precisely what to customize, you can use <kbd>M-x
@@ -759,17 +759,17 @@ faces that you have set but not saved.
 <h3 class="subsection"> 27.2.3 Editing Variable Values </h3>
 
 <dl compact="compact">
-<dt><kbd> M-x list-options</kbd></dt>
+<dt> <kbd>M-x list-options</kbd></dt>
 <dd><p>Display a buffer listing names, values, and documentation of all options.
 </p></dd>
-<dt><kbd> M-x edit-options</kbd></dt>
+<dt> <kbd>M-x edit-options</kbd></dt>
 <dd><p>Change option values by editing a list of options.
 </p></dd>
 </dl>
 
 <a name="IDX1494"></a>
 <p>  <kbd>M-x list-options</kbd> displays a list of all Emacs option variables in
-an Emacs buffer named `<samp>*List Options*</samp>'.  Each option is shown with its
+an Emacs buffer named <samp>`*List Options*'</samp>.  Each option is shown with its
 documentation and its current value.  Here is what a portion of it might
 look like:
 </p>
@@ -787,27 +787,27 @@ Automatically becomes local when set in any fashion.
 </pre></td></tr></table>
 <a name="IDX1495"></a>
 <p>  <kbd>M-x edit-options</kbd> goes one step further and immediately selects the
-`<samp>*List Options*</samp>' buffer; this buffer uses the major mode Options mode,
+<samp>`*List Options*'</samp> buffer; this buffer uses the major mode Options mode,
 which provides commands that allow you to point at an option and change its
 value:
 </p>
 <dl compact="compact">
-<dt><kbd> s</kbd></dt>
+<dt> <kbd>s</kbd></dt>
 <dd><p>Set the variable point is in or near to a new value read using the
 minibuffer.
 </p></dd>
-<dt><kbd> x</kbd></dt>
+<dt> <kbd>x</kbd></dt>
 <dd><p>Toggle the variable point is in or near: if the value was <code>nil</code>,
 it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 </p></dd>
-<dt><kbd> 1</kbd></dt>
+<dt> <kbd>1</kbd></dt>
 <dd><p>Set the variable point is in or near to <code>t</code>.
 </p></dd>
-<dt><kbd> 0</kbd></dt>
+<dt> <kbd>0</kbd></dt>
 <dd><p>Set the variable point is in or near to <code>nil</code>.
 </p></dd>
-<dt><kbd> n</kbd></dt>
-<dt><kbd> p</kbd></dt>
+<dt> <kbd>n</kbd></dt>
+<dt> <kbd>p</kbd></dt>
 <dd><p>Move to the next or previous variable.
 </p></dd>
 </dl>
@@ -834,13 +834,13 @@ it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 <h3 class="subsection"> 27.2.4 Local Variables </h3>
 
 <dl compact="compact">
-<dt><kbd> M-x make-local-variable</kbd></dt>
+<dt> <kbd>M-x make-local-variable</kbd></dt>
 <dd><p>Make a variable have a local value in the current buffer.
 </p></dd>
-<dt><kbd> M-x kill-local-variable</kbd></dt>
+<dt> <kbd>M-x kill-local-variable</kbd></dt>
 <dd><p>Make a variable use its global value in the current buffer.
 </p></dd>
-<dt><kbd> M-x make-variable-buffer-local</kbd></dt>
+<dt> <kbd>M-x make-variable-buffer-local</kbd></dt>
 <dd><p>Mark a variable so that setting it will make it local to the
 buffer that is current at that time.
 </p></dd>
@@ -943,17 +943,17 @@ value specified in the file.
 </p>
 <p>  A local variables list goes near the end of the file, in the last page.
 (It is often best to put it on a page by itself.)  The local variables list
-starts with a line containing the string `<samp>Local Variables:</samp>', and ends
-with a line containing the string `<samp>End:</samp>'.  In between come the
-variable names and values, one set per line, as `<samp><var>variable</var>:
-<var>value</var></samp>'.  The <var>value</var>s are not evaluated; they are used literally.
+starts with a line containing the string <samp>`Local Variables:'</samp>, and ends
+with a line containing the string <samp>`End:'</samp>.  In between come the
+variable names and values, one set per line, as <samp>`<var>variable</var>:
+<var>value</var>'</samp>.  The <var>value</var>s are not evaluated; they are used literally.
 </p>
 <p>  The line which starts the local variables list does not have to say
-just `<samp>Local Variables:</samp>'.  If there is other text before `<samp>Local
-Variables:</samp>', that text is called the <em>prefix</em>, and if there is other
+just <samp>`Local Variables:'</samp>.  If there is other text before <samp>`Local
+Variables:'</samp>, that text is called the <em>prefix</em>, and if there is other
 text after, that is called the <em>suffix</em>.  If a prefix or suffix are
 present, each entry in the local variables list should have the prefix
-before it and the suffix after it.  This includes the `<samp>End:</samp>' line.
+before it and the suffix after it.  This includes the <samp>`End:'</samp> line.
 The prefix and suffix are included to disguise the local variables list
 as a comment so the compiler or text formatter  will ignore it.
 If you do not need to disguise the local variables list as a comment in
@@ -974,7 +974,7 @@ local variables list, it should be the first entry in the list.
 ;;; comment-end:&quot;***&quot; ***
 ;;; End: ***
 </pre></td></tr></table>
-<p>  Note that the prefix is `<samp>;;; </samp>' and the suffix is `<samp> ***</samp>'.
+<p>  Note that the prefix is <samp>`;;; '</samp> and the suffix is <samp>` ***'</samp>.
 Note also that comments in the file begin with and end with the same
 strings.  Presumably the file contains code in a language which is
 enough like Lisp for Lisp mode to be useful but in which comments
@@ -985,7 +985,7 @@ the compiler or interpreter for that language reads the file.
 <p>  The start of the local variables list must be no more than 3000
 characters from the end of the file, and must be in the last page if the
 file is divided into pages.  Otherwise, Emacs will not notice it is
-there.  The purpose is twofold: a stray `<samp>Local Variables:</samp>' not in
+there.  The purpose is twofold: a stray <samp>`Local Variables:'</samp> not in
 the last page does not confuse Emacs, and Emacs never needs to search a
 long file that contains no page markers and has no local variables list.
 </p>
@@ -1051,27 +1051,27 @@ sequence of keys.  For example, if you discover that you are about to type
 macro to invoke <kbd>C-n C-d</kbd> and calling it with a repeat count of forty.
 </p>
 <dl compact="compact">
-<dt><kbd> C-x (</kbd></dt>
+<dt> <kbd>C-x (</kbd></dt>
 <dd><p>Start defining a keyboard macro (<code>start-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-x )</kbd></dt>
+<dt> <kbd>C-x )</kbd></dt>
 <dd><p>End the definition of a keyboard macro (<code>end-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-x e</kbd></dt>
+<dt> <kbd>C-x e</kbd></dt>
 <dd><p>Execute the most recent keyboard macro (<code>call-last-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-u C-x (</kbd></dt>
+<dt> <kbd>C-u C-x (</kbd></dt>
 <dd><p>Re-execute last keyboard macro, then add more keys to its definition.
 </p></dd>
-<dt><kbd> C-x q</kbd></dt>
+<dt> <kbd>C-x q</kbd></dt>
 <dd><p>When this point is reached during macro execution, ask for confirmation
 (<code>kbd-macro-query</code>).
 </p></dd>
-<dt><kbd> M-x name-last-kbd-macro</kbd></dt>
+<dt> <kbd>M-x name-last-kbd-macro</kbd></dt>
 <dd><p>Give a command name (for the duration of the session) to the most
 recently defined keyboard macro.
 </p></dd>
-<dt><kbd> M-x insert-kbd-macro</kbd></dt>
+<dt> <kbd>M-x insert-kbd-macro</kbd></dt>
 <dd><p>Insert in the buffer a keyboard macro's definition, as Lisp code.
 </p></dd>
 </dl>
@@ -1123,7 +1123,7 @@ set of commands again by invoking the macro.
 
 <p>  To start defining a keyboard macro, type <kbd>C-x (</kbd>
 (<code>start-kbd-macro</code>).  From then on, anything you type continues to be
-executed, but also becomes part of the definition of the macro.  `<samp>Def</samp>'
+executed, but also becomes part of the definition of the macro.  <samp>`Def'</samp>
 appears in the mode line to remind you of what is going on.  When you are
 finished, the <kbd>C-x )</kbd> command (<code>end-kbd-macro</code>) terminates the
 definition, without becoming part of it. 
@@ -1133,7 +1133,7 @@ definition, without becoming part of it.
 <table><tr><td>&nbsp;</td><td><pre class="example">C-x ( M-f foo C-x )
 </pre></td></tr></table>
 
-<p>defines a macro to move forward a word and then insert `<samp>foo</samp>'.
+<p>defines a macro to move forward a word and then insert <samp>`foo'</samp>.
 </p>
 <p>You can give <kbd>C-x )</kbd> a repeat count as an argument, in which case it
 repeats the macro that many times right after defining it, but defining
@@ -1480,14 +1480,14 @@ local map, which affects all buffers using the same major mode.
 <h4 class="subsubsection"> 27.4.2.1 Changing Key Bindings Interactively </h4>
 
 <dl compact="compact">
-<dt><kbd> M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Defines <var>key</var> globally to run <var>cmd</var>.
 </p></dd>
-<dt><kbd> M-x local-set-key <kbd>RET</kbd> <var>keys</var> <var>cmd</var> <kbd>RET</kbd> </kbd></dt>
+<dt> <kbd>M-x local-set-key <kbd>RET</kbd> <var>keys</var> <var>cmd</var> <kbd>RET</kbd></kbd> </dt>
 <dd><p>Defines <var>key</var> locally (in the major mode now in effect) to run
 <var>cmd</var>.
 </p></dd>
-<dt><kbd> M-x local-unset-key <kbd>RET</kbd> <var>keys</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x local-unset-key <kbd>RET</kbd> <var>keys</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Removes the local binding of <var>key</var>.
 </p></dd>
 </dl>
@@ -1563,10 +1563,10 @@ to rebind keys under program control.
 <a name="IDX1524"></a>
 
 <dl compact="compact">
-<dt><kbd>  <code>(global-set-key <var>keys</var> <var>cmd</var>)</code></kbd></dt>
+<dt>  <kbd><code>(global-set-key <var>keys</var> <var>cmd</var>)</code></kbd></dt>
 <dd><p>Defines <var>keys</var> globally to run <var>cmd</var>.
 </p></dd>
-<dt><kbd> <code>(define-key <var>keymap</var> <var>keys</var> <var>def</var>)</code></kbd></dt>
+<dt> <kbd><code>(define-key <var>keymap</var> <var>keys</var> <var>def</var>)</code></kbd></dt>
 <dd><p>Defines <var>keys</var> to run <var>def</var> in the keymap <var>keymap</var>.
 </p></dd>
 </dl>
@@ -1833,7 +1833,7 @@ pieces of information:
 The syntactic class of the character, represented as a small integer
 </li><li>
 The matching delimiter, for delimiter characters only
-(the matching delimiter of `<samp>(</samp>' is `<samp>)</samp>', and vice versa)
+(the matching delimiter of <samp>`('</samp> is <samp>`)'</samp>, and vice versa)
 </li><li>
 A flag saying whether the character is the first character of a
 two-character comment starting sequence
@@ -1849,71 +1849,71 @@ two-character comment ending sequence
 </li></ul>
 
 <p>  The syntactic classes are stored internally as small integers, but are
-usually described to or by the user with characters.  For example, `<samp>(</samp>'
+usually described to or by the user with characters.  For example, <samp>`('</samp>
 is used to specify the syntactic class of opening delimiters.  Here is a
 table of syntactic classes, with the characters that specify them.
 </p>
 <dl compact="compact">
-<dt>`<samp> -</samp>'</dt>
+<dt> <samp>`-'</samp></dt>
 <dd><p>The class of whitespace characters.  Please don't use the formerly
 advertised  , which is not supported by GNU Emacs.
 </p></dd>
-<dt>`<samp> w</samp>'</dt>
+<dt> <samp>`w'</samp></dt>
 <dd><p>The class of word-constituent characters.
 </p></dd>
-<dt>`<samp> _</samp>'</dt>
+<dt> <samp>`_'</samp></dt>
 <dd><p>The class of characters that are part of symbol names but not words.
-This class is represented by `<samp>_</samp>' because the character `<samp>_</samp>'
+This class is represented by <samp>`_'</samp> because the character <samp>`_'</samp>
 has this class in both C and Lisp.
 </p></dd>
-<dt>`<samp> .</samp>'</dt>
+<dt> <samp>`.'</samp></dt>
 <dd><p>The class of punctuation characters that do not fit into any other
 special class.
 </p></dd>
-<dt>`<samp> (</samp>'</dt>
+<dt> <samp>`('</samp></dt>
 <dd><p>The class of opening delimiters.
 </p></dd>
-<dt>`<samp> )</samp>'</dt>
+<dt> <samp>`)'</samp></dt>
 <dd><p>The class of closing delimiters.
 </p></dd>
-<dt>`<samp> '</samp>'</dt>
+<dt> <samp>`''</samp></dt>
 <dd><p>The class of expression-adhering characters.  These characters are
 part of a symbol if found within or adjacent to one, and are part
 of a following expression if immediately preceding one, but are like
 whitespace if surrounded by whitespace.
 </p></dd>
-<dt>`<samp> &quot;</samp>'</dt>
+<dt> <samp>`&quot;'</samp></dt>
 <dd><p>The class of string-quote characters.  They match each other in pairs,
 and the characters within the pair all lose their syntactic
-significance except for the `<samp>\</samp>' and `<samp>/</samp>' classes of escape
+significance except for the <samp>`\'</samp> and <samp>`/'</samp> classes of escape
 characters, which can be used to include a string-quote inside the
 string.
 </p></dd>
-<dt>`<samp> $</samp>'</dt>
+<dt> <samp>`$'</samp></dt>
 <dd><p>The class of self-matching delimiters.  This is intended for TeX's
-`<samp>$</samp>', which is used both to enter and leave math mode.  Thus,
-a pair of matching `<samp>$</samp>' characters surround each piece of math mode
-TeX input.  A pair of adjacent `<samp>$</samp>' characters act like a single
+<samp>`$'</samp>, which is used both to enter and leave math mode.  Thus,
+a pair of matching <samp>`$'</samp> characters surround each piece of math mode
+TeX input.  A pair of adjacent <samp>`$'</samp> characters act like a single
 one for purposes of matching.
 </p>
 </dd>
-<dt>`<samp> /</samp>'</dt>
+<dt> <samp>`/'</samp></dt>
 <dd><p>The class of escape characters that always just deny the following
 character its special syntactic significance.  The character after one
 of these escapes is always treated as alphabetic.
 </p></dd>
-<dt>`<samp> \</samp>'</dt>
+<dt> <samp>`\'</samp></dt>
 <dd><p>The class of C-style escape characters.  In practice, these are
-treated just like `<samp>/</samp>'-class characters, because the extra
+treated just like <samp>`/'</samp>-class characters, because the extra
 possibilities for C escapes (such as being followed by digits) have no
 effect on where the containing expression ends.
 </p></dd>
-<dt>`<samp> &lt;</samp>'</dt>
+<dt> <samp>`&lt;'</samp></dt>
 <dd><p>The class of comment-starting characters.  Only single-character
-comment starters (such as `<samp>;</samp>' in Lisp mode) are represented this
+comment starters (such as <samp>`;'</samp> in Lisp mode) are represented this
 way.
 </p></dd>
-<dt>`<samp> &gt;</samp>'</dt>
+<dt> <samp>`&gt;'</samp></dt>
 <dd><p>The class of comment-ending characters.  Newline has this syntax in
 Lisp mode.
 </p></dd>
@@ -1921,8 +1921,8 @@ Lisp mode.
 
 <a name="IDX1528"></a>
 <p>  The characters flagged as part of two-character comment delimiters can
-have other syntactic functions most of the time.  For example, `<samp>/</samp>' and
-`<samp>*</samp>' in C code, when found separately, have nothing to do with
+have other syntactic functions most of the time.  For example, <samp>`/'</samp> and
+<samp>`*'</samp> in C code, when found separately, have nothing to do with
 comments.  The comment-delimiter significance overrides when the pair of
 characters occur together in the proper order.  Only the list and sexp
 commands use the syntax table to find comments; the commands specifically
@@ -1984,16 +1984,16 @@ be omitted if no following characters are needed.
 The remaining characters are flags.  The flag characters allowed are:
 
 <dl compact="compact">
-<dt>`<samp> 1</samp>'</dt>
+<dt> <samp>`1'</samp></dt>
 <dd><p>Flag this character as the first of a two-character comment starting sequence.
 </p></dd>
-<dt>`<samp> 2</samp>'</dt>
+<dt> <samp>`2'</samp></dt>
 <dd><p>Flag this character as the second of a two-character comment starting sequence.
 </p></dd>
-<dt>`<samp> 3</samp>'</dt>
+<dt> <samp>`3'</samp></dt>
 <dd><p>Flag this character as the first of a two-character comment ending sequence.
 </p></dd>
-<dt>`<samp> 4</samp>'</dt>
+<dt> <samp>`4'</samp></dt>
 <dd><p>Flag this character as the second of a two-character comment ending sequence.
 </p></dd>
 </dl>
@@ -2028,27 +2028,27 @@ and some English to explain that string if necessary.
 </tr></table>
 <h2 class="section"> 27.6 The Init File </h2>
 
-<p>  When you start Emacs, it normally loads either `<tt>.xemacs/init.el</tt>'
-or the file `<tt>.emacs</tt>' (whichever comes first) in your home directory.
+<p>  When you start Emacs, it normally loads either <tt>`.xemacs/init.el'</tt>
+or the file <tt>`.emacs'</tt> (whichever comes first) in your home directory.
 This file, if it exists, should contain Lisp code.  It is called your
 initialization file or <em>init file</em>.  Use the command line switch
-`<samp>-q</samp>' to tell Emacs whether to load an init file (see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  Use the command line switch `<samp>-user-init-file</samp>'
+<samp>`-q'</samp> to tell Emacs whether to load an init file (see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  Use the command line switch <samp>`-user-init-file'</samp>
 (see section <a href="xemacs_6.html#SEC41">Command Line Switches and Arguments</a>) to tell Emacs to load a different file
-instead of `<tt>~/.xemacs/init.el</tt>'/`<tt>~/.emacs</tt>'.
+instead of <tt>`~/.xemacs/init.el'</tt>/<tt>`~/.emacs'</tt>.
 </p>
 <p>When the init file is read, the variable <code>user-init-file</code> says
 which init file was loaded.
 </p>
 <p>  At some sites there is a <em>default init file</em>, which is the
-library named `<tt>default.el</tt>', found via the standard search path for
+library named <tt>`default.el'</tt>, found via the standard search path for
 libraries.  The Emacs distribution contains no such library; your site
 may create one for local customizations.  If this library exists, it is
 loaded whenever you start Emacs.  But your init file, if any, is loaded
 first; if it sets <code>inhibit-default-init</code> non-<code>nil</code>, then
-`<tt>default</tt>' is not loaded.
+<tt>`default'</tt> is not loaded.
 </p>
 <p>  If you have a large amount of code in your init file, you should
-byte-compile it to `<tt>~/.xemacs/init.elc</tt>' or `<tt>~/.emacs.elc</tt>'.
+byte-compile it to <tt>`~/.xemacs/init.elc'</tt> or <tt>`~/.emacs.elc'</tt>.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC378">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Syntax of constants in Emacs Lisp.
@@ -2098,7 +2098,7 @@ They can be:
 <p>If a sequence of digits is followed by a period and another sequence
 of digits, it is interpreted as a floating point number.
 </p>
-<p>The number prefixes `<samp>#b</samp>', `<samp>#o</samp>', and `<samp>#x</samp>' are supported to
+<p>The number prefixes <samp>`#b'</samp>, <samp>`#o'</samp>, and <samp>`#x'</samp> are supported to
 represent numbers in binary, octal, and hexadecimal notation (or radix).
 </p>
 </dd>
@@ -2107,22 +2107,22 @@ represent numbers in binary, octal, and hexadecimal notation (or radix).
 features.  Use a double-quote character to begin and end a string constant.
 </p>
 <p>Newlines and special characters may be present literally in strings.  They
-can also be represented as backslash sequences: `<samp>\n</samp>' for newline,
-`<samp>\b</samp>' for backspace, `<samp>\r</samp>' for return, `<samp>\t</samp>' for tab,
-`<samp>\f</samp>' for formfeed (control-l), `<samp>\e</samp>' for escape, `<samp>\\</samp>' for a
-backslash, `<samp>\&quot;</samp>' for a double-quote, or `<samp>\<var>ooo</var></samp>' for the
+can also be represented as backslash sequences: <samp>`\n'</samp> for newline,
+<samp>`\b'</samp> for backspace, <samp>`\r'</samp> for return, <samp>`\t'</samp> for tab,
+<samp>`\f'</samp> for formfeed (control-l), <samp>`\e'</samp> for escape, <samp>`\\'</samp> for a
+backslash, <samp>`\&quot;'</samp> for a double-quote, or <samp>`\<var>ooo</var>'</samp> for the
 character whose octal code is <var>ooo</var>.  Backslash and double-quote are
 the only characters for which backslash sequences are mandatory.
 </p>
-<p>You can use `<samp>\C-</samp>' as a prefix for a control character, as in
-`<samp>\C-s</samp>' for ASCII Control-S, and `<samp>\M-</samp>' as a prefix for
-a Meta character, as in `<samp>\M-a</samp>' for Meta-A or `<samp>\M-\C-a</samp>' for
+<p>You can use <samp>`\C-'</samp> as a prefix for a control character, as in
+<samp>`\C-s'</samp> for ASCII Control-S, and <samp>`\M-'</samp> as a prefix for
+a Meta character, as in <samp>`\M-a'</samp> for Meta-A or <samp>`\M-\C-a'</samp> for
 Control-Meta-A.
 </p>
 </dd>
 <dt> Characters</dt>
-<dd><p>Lisp character constant syntax consists of a `<samp>?</samp>' followed by
-either a character or an escape sequence starting with `<samp>\</samp>'.
+<dd><p>Lisp character constant syntax consists of a <samp>`?'</samp> followed by
+either a character or an escape sequence starting with <samp>`\'</samp>.
 Examples: <code>?x</code>, <code>?\n</code>, <code>?\&quot;</code>, <code>?\)</code>.  Note that
 strings and characters are not interchangeable in Lisp; some contexts
 require one and some contexts require the other.
@@ -2217,17 +2217,17 @@ that you like, or with several expressions in a row.
 <code>(lambda () (auto-fill-mode 1))</code>.
 </p>
 </li><li>
-Load the installed Lisp library named `<tt>foo</tt>' (actually a file
-`<tt>foo.elc</tt>' or `<tt>foo.el</tt>' in a standard Emacs directory).
+Load the installed Lisp library named <tt>`foo'</tt> (actually a file
+<tt>`foo.elc'</tt> or <tt>`foo.el'</tt> in a standard Emacs directory).
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;foo&quot;)
 </pre></td></tr></table>
 <p>When the argument to <code>load</code> is a relative pathname, not starting
-with `<samp>/</samp>' or `<samp>~</samp>', <code>load</code> searches the directories in
+with <samp>`/'</samp> or <samp>`~'</samp>, <code>load</code> searches the directories in
 <code>load-path</code> (see section <a href="xemacs_25.html#SEC255">Loading Libraries</a>).
 </p>
 </li><li>
-Load the compiled Lisp file `<tt>foo.elc</tt>' from your home directory.
+Load the compiled Lisp file <tt>`foo.elc'</tt> from your home directory.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;~/foo.elc&quot;)
 </pre></td></tr></table>
@@ -2279,8 +2279,8 @@ a prefix, but <kbd>C-x C-v</kbd> must be freed of any non-prefix definition
 first.
 </p>
 </li><li>
-Make `<samp>$</samp>' have the syntax of punctuation in Text mode.
-Note the use of a character constant for `<samp>$</samp>'.
+Make <samp>`$'</samp> have the syntax of punctuation in Text mode.
+Note the use of a character constant for <samp>`$'</samp>.
 
 <table><tr><td>&nbsp;</td><td><pre class="example">(modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
 </pre></td></tr></table>
@@ -2313,21 +2313,21 @@ Enable the use of the command <code>eval-expression</code> without confirmation.
 
 <p>  Each terminal type can have a Lisp library to be loaded into Emacs when
 it is run on that type of terminal.  For a terminal type named
-<var>termtype</var>, the library is called `<tt>term/<var>termtype</var></tt>' and it is
+<var>termtype</var>, the library is called <tt>`term/<var>termtype</var>'</tt> and it is
 found by searching the directories <code>load-path</code> as usual and trying the
-suffixes `<samp>.elc</samp>' and `<samp>.el</samp>'.  Normally it appears in the
-subdirectory `<tt>term</tt>' of the directory where most Emacs libraries are
+suffixes <samp>`.elc'</samp> and <samp>`.el'</samp>.  Normally it appears in the
+subdirectory <tt>`term'</tt> of the directory where most Emacs libraries are
 kept.
 </p>
 <p>  The usual purpose of the terminal-specific library is to define the
 escape sequences used by the terminal's function keys using the library
-`<tt>keypad.el</tt>'.  See the file
-`<tt>term/vt100.el</tt>' for an example of how this is done.
+<tt>`keypad.el'</tt>.  See the file
+<tt>`term/vt100.el'</tt> for an example of how this is done.
 </p>
 <p>  When the terminal type contains a hyphen, only the part of the name
 before the first hyphen is significant in choosing the library name.
-Thus, terminal types `<samp>aaa-48</samp>' and `<samp>aaa-30-rv</samp>' both use
-the library `<tt>term/aaa</tt>'.  The code in the library can use
+Thus, terminal types <samp>`aaa-48'</samp> and <samp>`aaa-30-rv'</samp> both use
+the library <tt>`term/aaa'</tt>.  The code in the library can use
 <code>(getenv &quot;TERM&quot;)</code> to find the full terminal type name.
 </p>
 <a name="IDX1532"></a>
@@ -2383,20 +2383,20 @@ The first element of the list is the name of the sound being defined.
 Subsequent elements of the list are alternating keyword/value pairs:
 </p>
 <dl compact="compact">
-<dt><code> sound</code></dt>
+<dt> <code>sound</code></dt>
 <dd><p>A string of raw sound data, or the name of another sound to play.   
 The symbol <code>t</code> here means use the default X beep.
 </p>
 </dd>
-<dt><code> volume</code></dt>
+<dt> <code>volume</code></dt>
 <dd><p>An integer from 0-100, defaulting to <code>bell-volume</code>.
 </p>
 </dd>
-<dt><code> pitch</code></dt>
+<dt> <code>pitch</code></dt>
 <dd><p>If using the default X beep, the pitch (Hz) to generate.
 </p>
 </dd>
-<dt><code> duration</code></dt>
+<dt> <code>duration</code></dt>
 <dd><p>If using the default X beep, the duration (milliseconds).
 </p></dd>
 </dl>
@@ -2445,31 +2445,31 @@ packages may use other beep types, but these are the ones that the C
 kernel of Emacs uses.
 </p>
 <dl compact="compact">
-<dt><code> auto-save-error</code></dt>
+<dt> <code>auto-save-error</code></dt>
 <dd><p>An auto-save does not succeed
 </p>
 </dd>
-<dt><code> command-error</code></dt>
+<dt> <code>command-error</code></dt>
 <dd><p>The Emacs command loop catches an error
 </p>
 </dd>
-<dt><code> undefined-key</code></dt>
+<dt> <code>undefined-key</code></dt>
 <dd><p>You type a key that is undefined
 </p>
 </dd>
-<dt><code> undefined-click</code></dt>
+<dt> <code>undefined-click</code></dt>
 <dd><p>You use an undefined mouse-click combination
 </p>
 </dd>
-<dt><code> no-completion</code></dt>
+<dt> <code>no-completion</code></dt>
 <dd><p>Completion was not possible
 </p>
 </dd>
-<dt><code> y-or-n-p</code></dt>
+<dt> <code>y-or-n-p</code></dt>
 <dd><p>You type something other than the required <code>y</code> or <code>n</code>
 </p>
 </dd>
-<dt><code> yes-or-no-p       </code></dt>
+<dt> <code>yes-or-no-p</code>       </dt>
 <dd><p>You type something other than <code>yes</code> or <code>no</code>
 </p></dd>
 </dl>
@@ -2531,50 +2531,50 @@ this section.  All the functions prompt for a <var>face</var> as an
 argument; use completion for a list of possible values.
 </p>
 <dl compact="compact">
-<dt><kbd> M-x invert-face</kbd></dt>
+<dt> <kbd>M-x invert-face</kbd></dt>
 <dd><p>Swap the foreground and background colors of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x make-face-bold</kbd></dt>
+<dt> <kbd>M-x make-face-bold</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> bold.  When called from a
 program, returns <code>nil</code> if this is not possible.
 </p></dd>
-<dt><kbd> M-x make-face-bold-italic</kbd></dt>
+<dt> <kbd>M-x make-face-bold-italic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> bold italic.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-italic</kbd></dt>
+<dt> <kbd>M-x make-face-italic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> italic.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-unbold</kbd></dt>
+<dt> <kbd>M-x make-face-unbold</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> non-bold.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-unitalic</kbd></dt>
+<dt> <kbd>M-x make-face-unitalic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> non-italic.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-larger</kbd></dt>
+<dt> <kbd>M-x make-face-larger</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> a little larger.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-smaller</kbd></dt>
+<dt> <kbd>M-x make-face-smaller</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> a little smaller.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x set-face-background </kbd></dt>
+<dt> <kbd>M-x set-face-background</kbd> </dt>
 <dd><p>Change the background color of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-background-pixmap</kbd></dt>
+<dt> <kbd>M-x set-face-background-pixmap</kbd></dt>
 <dd><p>Change the background pixmap of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-font </kbd></dt>
+<dt> <kbd>M-x set-face-font</kbd> </dt>
 <dd><p>Change the font of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-foreground</kbd></dt>
+<dt> <kbd>M-x set-face-foreground</kbd></dt>
 <dd><p>Change the foreground color of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-underline-p</kbd></dt>
+<dt> <kbd>M-x set-face-underline-p</kbd></dt>
 <dd><p>Change whether the given <var>face</var> is underlined.
 </p></dd>
 </dl>
@@ -2715,19 +2715,19 @@ as the menubar, toolbars, and gutters.
 </tr></table>
 <h2 class="section"> 27.10 X Resources </h2>
 
-<p>Historically, XEmacs has used the X resource application class `<samp>Emacs</samp>'
+<p>Historically, XEmacs has used the X resource application class <samp>`Emacs'</samp>
 for its resources.  Unfortunately, GNU Emacs uses the same application
 class, and resources are not compatible between the two Emacsen.  This
 sharing of the application class often leads to trouble if you want to
 run both variants.
 </p>
-<p>Starting with XEmacs 21, XEmacs uses the class `<samp>XEmacs</samp>' if it finds
+<p>Starting with XEmacs 21, XEmacs uses the class <samp>`XEmacs'</samp> if it finds
 any XEmacs resources in the resource database when the X connection is
-initialized.  Otherwise, it will use the class `<samp>Emacs</samp>' for
+initialized.  Otherwise, it will use the class <samp>`Emacs'</samp> for
 backwards compatibility.  The variable <var>x-emacs-application-class</var>
 may be consulted to determine the application class being used.
 </p>
-<p>The examples in this section assume the application class is `<samp>Emacs</samp>'.
+<p>The examples in this section assume the application class is <samp>`Emacs'</samp>.
 </p>
 <p>The Emacs resources are generally set per-frame. Each Emacs frame can have 
 its own name or the same name as another, depending on the name passed to the 
@@ -2790,7 +2790,7 @@ do this:
 <table><tr><td>&nbsp;</td><td><pre class="example">Emacs*EmacsFrame.geometry: 80x55
 </pre></td></tr></table>
 
-<p>To set the geometry of a particular frame named `<samp>fred</samp>', do this:
+<p>To set the geometry of a particular frame named <samp>`fred'</samp>, do this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">Emacs*fred.geometry: 80x55
 </pre></td></tr></table>
@@ -2816,7 +2816,7 @@ default size of all Emacs frames to 80 columns by 55 lines):
 <p>since that is the syntax used with most other applications (since most
 other applications have only one top-level window, unlike Emacs).  In
 general, however, the top-level shell (the unmapped ApplicationShell
-widget named `<samp>Emacs</samp>' that is the parent of the shell widgets that
+widget named <samp>`Emacs'</samp> that is the parent of the shell widgets that
 actually manage the individual frames) does not have any interesting
 resources on it, and you should set the resources on the frames instead.
 </p>
@@ -2964,10 +2964,10 @@ your particular build of XEmacs was configured.
 </dd>
 <dt> <code>scrollBarPlacement</code> (class <code>ScrollBarPlacement</code>): string</dt>
 <dd><p>Where the horizontal and vertical scrollbars should be positioned.  This
-should be one of the four strings `<samp>BOTTOM_LEFT</samp>',
-`<samp>BOTTOM_RIGHT</samp>', `<samp>TOP_LEFT</samp>', and `<samp>TOP_RIGHT</samp>'.  Default is
-`<samp>BOTTOM_RIGHT</samp>' for the Motif and Lucid scrollbars and
-`<samp>BOTTOM_LEFT</samp>' for the Athena scrollbars.
+should be one of the four strings <samp>`BOTTOM_LEFT'</samp>,
+<samp>`BOTTOM_RIGHT'</samp>, <samp>`TOP_LEFT'</samp>, and <samp>`TOP_RIGHT'</samp>.  Default is
+<samp>`BOTTOM_RIGHT'</samp> for the Motif and Lucid scrollbars and
+<samp>`BOTTOM_LEFT'</samp> for the Athena scrollbars.
 </p>
 </dd>
 <dt> <code>topToolBarHeight</code> (class <code>TopToolBarHeight</code>): integer</dt>
@@ -3026,7 +3026,7 @@ initialize the variable <code>x-pointer-shape</code>.
 </dd>
 <dt> <code>selectionPointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over a selectable text region (an
-extent with the `<samp>highlight</samp>' property; for example, an Info
+extent with the <samp>`highlight'</samp> property; for example, an Info
 cross-reference).  This resource is used to initialize the variable
 <code>x-selection-pointer-shape</code>.
 </p>
@@ -3121,58 +3121,58 @@ supports <small>XPM</small>), to use as a background stipple.
 <p>These are the names of the predefined faces:
 </p>
 <dl compact="compact">
-<dt><code> default</code></dt>
+<dt> <code>default</code></dt>
 <dd><p>Everything inherits from this.
 </p>
 </dd>
-<dt><code> bold</code></dt>
+<dt> <code>bold</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find a
 bold version of the font of the default face.
 </p>
 </dd>
-<dt><code> italic</code></dt>
+<dt> <code>italic</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find
 an italic version of the font of the default face.
 </p>
 </dd>
-<dt><code> bold-italic</code></dt>
+<dt> <code>bold-italic</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find a
 bold-italic version of the font of the default face.
 </p>
 </dd>
-<dt><code> modeline</code></dt>
+<dt> <code>modeline</code></dt>
 <dd><p>This is the face that the modeline is displayed in.  If not specified in
 the resource database, it is determined from the default face by
 reversing the foreground and background colors.
 </p>
 </dd>
-<dt><code> highlight</code></dt>
+<dt> <code>highlight</code></dt>
 <dd><p>This is the face that highlighted extents (for example, Info
 cross-references and possible completions, when the mouse passes over
 them) are displayed in.
 </p>
 </dd>
-<dt><code> left-margin</code></dt>
-<dt><code> right-margin</code></dt>
+<dt> <code>left-margin</code></dt>
+<dt> <code>right-margin</code></dt>
 <dd><p>These are the faces that the left and right annotation margins are
 displayed in.
 </p>
 </dd>
-<dt><code> zmacs-region</code></dt>
+<dt> <code>zmacs-region</code></dt>
 <dd><p>This is the face that mouse selections are displayed in.
 </p> 
 </dd>
-<dt><code> isearch</code></dt>
+<dt> <code>isearch</code></dt>
 <dd><p>This is the face that the matched text being searched for is displayed
 in.
 </p>
 </dd>
-<dt><code> info-node</code></dt>
+<dt> <code>info-node</code></dt>
 <dd><p>This is the face of info menu items.  If unspecified, it is copied from
 <code>bold-italic</code>.
 </p>
 </dd>
-<dt><code> info-xref</code></dt>
+<dt> <code>info-xref</code></dt>
 <dd><p>This is the face of info cross-references.  If unspecified, it is copied
 from <code>bold</code>. (Note that, when the mouse passes over a
 cross-reference, the cross-reference's face is determined from a
@@ -3182,7 +3182,7 @@ combination of the <code>info-xref</code> and <code>highlight</code> faces.)
 
 <p>Other packages might define their own faces; to see a list of all faces,
 use any of the interactive face-manipulation commands such as
-<code>set-face-font</code> and type `<samp>?</samp>' when you are prompted for the
+<code>set-face-font</code> and type <samp>`?'</samp> when you are prompted for the
 name of a face.
 </p>
 <p>If the <code>bold</code>, <code>italic</code>, and <code>bold-italic</code> faces are not
@@ -3203,8 +3203,8 @@ fixed
 </pre></td></tr></table>
 <p>then XEmacs won't be able to guess the names of the bold and italic
 versions.  All X fonts can be referred to via XLFD-style names, so you
-should use those forms.  See the man pages for `<samp>X(1)</samp>',
-`<samp>xlsfonts(1)</samp>', and `<samp>xfontsel(1)</samp>'.
+should use those forms.  See the man pages for <samp>`X(1)'</samp>,
+<samp>`xlsfonts(1)'</samp>, and <samp>`xfontsel(1)'</samp>.
 </p>
 <hr size="6">
 <a name="Widgets"></a>
@@ -3240,8 +3240,8 @@ follows:
 x-emacs-application-class  &quot;EmacsShell&quot;  &quot;EmacsManager&quot;  &quot;EmacsFrame&quot;
 </pre></td></tr></table>
 <p>where INVOCATION-NAME is the terminal component of the name of the
-XEmacs executable (usually `<samp>xemacs</samp>'), and
-`<samp>x-emacs-application-class</samp>' is generally `<samp>Emacs</samp>'.
+XEmacs executable (usually <samp>`xemacs'</samp>), and
+<samp>`x-emacs-application-class'</samp> is generally <samp>`Emacs'</samp>.
 </p>
 <hr size="6">
 <a name="Menubar-Resources"></a>
@@ -3320,17 +3320,17 @@ appropriate for the toolkit in use.
 <h2 class="section"> 27.11 Quitting and Aborting </h2>
 
 <dl compact="compact">
-<dt><kbd> C-g</kbd></dt>
+<dt> <kbd>C-g</kbd></dt>
 <dd><p>Quit.  Cancel running or partially typed command.
 </p></dd>
-<dt><kbd> C-]</kbd></dt>
+<dt> <kbd>C-]</kbd></dt>
 <dd><p>Abort innermost recursive editing level and cancel the command which
 invoked it (<code>abort-recursive-edit</code>).
 </p></dd>
-<dt><kbd> M-x top-level</kbd></dt>
+<dt> <kbd>M-x top-level</kbd></dt>
 <dd><p>Abort all recursive editing levels that are currently executing.
 </p></dd>
-<dt><kbd> C-x u</kbd></dt>
+<dt> <kbd>C-x u</kbd></dt>
 <dd><p>Cancel an already-executed command, usually (<code>undo</code>).
 </p></dd>
 </dl>
@@ -3453,7 +3453,7 @@ and how to recognize them and correct them.
 <p>  Recursive editing levels are important and useful features of Emacs, but
 they can seem like malfunctions to the user who does not understand them.
 </p>
-<p>  If the mode line has square brackets `<samp>[&hellip;]</samp>' around the parentheses
+<p>  If the mode line has square brackets <samp>`[&hellip;]'</samp> around the parentheses
 that contain the names of the major and minor modes, you have entered a
 recursive editing level.  If you did not do this on purpose, or if you
 don't understand what that means, you should just get out of the recursive
@@ -3487,9 +3487,9 @@ entire screen.  If the text appears correct after this, the problem was
 entirely in the previous screen update.
 </p>
 <p>  Display updating problems often result from an incorrect termcap entry
-for the terminal you are using.  The file `<tt>etc/TERMS</tt>' in the Emacs
+for the terminal you are using.  The file <tt>`etc/TERMS'</tt> in the Emacs
 distribution gives the fixes for known problems of this sort.
-`<tt>INSTALL</tt>' contains general advice for these problems in one of its
+<tt>`INSTALL'</tt> contains general advice for these problems in one of its
 sections.  Very likely there is simply insufficient padding for certain
 display operations.  To investigate the possibility that you have this
 sort of problem, try Emacs on another terminal made by a different
@@ -3525,7 +3525,7 @@ try <kbd>C-h l</kbd> to find out what command you typed to produce the observed
 results.
 </p>
 <p>  If a large portion of text appears to be missing at the beginning or
-end of the buffer, check for the word `<samp>Narrow</samp>' in the mode line.
+end of the buffer, check for the word <samp>`Narrow'</samp> in the mode line.
 If it appears, the text is still present, but marked off-limits.
 To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>.
 </p>
@@ -3550,7 +3550,7 @@ To make it visible again, type <kbd>C-x n w</kbd>.  See section <a href="xemacs_
 </tr></table>
 <h3 class="subsection"> 27.12.4 Spontaneous Entry to Incremental Search </h3>
 
-<p>  If Emacs spontaneously displays `<samp>I-search:</samp>' at the bottom of the
+<p>  If Emacs spontaneously displays <samp>`I-search:'</samp> at the bottom of the
 screen, it means that the terminal is sending <kbd>C-s</kbd> and <kbd>C-q</kbd>
 according to the poorly designed xon/xoff &quot;flow control&quot; protocol.  You
 should try to prevent this by putting the terminal in a mode where it will
@@ -3559,7 +3559,7 @@ not use flow control, or by giving it enough padding that it will never send a
 control to be used, until you can get a properly designed terminal.
 </p>
 <p>  Information on how to do these things can be found in the file
-`<tt>INSTALL</tt>' in the Emacs distribution.
+<tt>`INSTALL'</tt> in the Emacs distribution.
 </p>
 <hr size="6">
 <a name="Emergency-Escape"></a>
@@ -3598,10 +3598,10 @@ Abort (and dump core)? (y or n)
 
 <p>Answer each one with <kbd>y</kbd> or <kbd>n</kbd> followed by <kbd>RET</kbd>.
 </p>
-<p>  Saying <kbd>y</kbd> to `<samp>Auto-save?</samp>' causes immediate auto-saving of all
+<p>  Saying <kbd>y</kbd> to <samp>`Auto-save?'</samp> causes immediate auto-saving of all
 modified buffers in which auto-saving is enabled.
 </p>
-<p>  Saying <kbd>y</kbd> to `<samp>Abort (and dump core)?</samp>' causes an illegal
+<p>  Saying <kbd>y</kbd> to <samp>`Abort (and dump core)?'</samp> causes an illegal
 instruction to be executed, dumping core.  This is to enable a wizard to
 figure out why Emacs was failing to quit in the first place.  Execution
 does not continue after a core dump.  If you answer <kbd>n</kbd>, execution
@@ -3781,18 +3781,18 @@ impossible.  But in any case, it is unnecessary work for us.
 </p>
 <p>  For example, suppose that you type <kbd>C-x C-f /glorp/baz.ugh
 <kbd>RET</kbd></kbd>, visiting a file which (you know) happens to be rather large,
-and Emacs prints out `<samp>I feel pretty today</samp>'.  The best way to report
+and Emacs prints out <samp>`I feel pretty today'</samp>.  The best way to report
 the bug is with a sentence like the preceding one, because it gives all the
 facts and nothing but the facts.
 </p>
 <p>  Do not assume that the problem is due to the size of the file and say,
-&quot;When I visit a large file, Emacs prints out `<samp>I feel pretty today</samp>'.&quot;
+&quot;When I visit a large file, Emacs prints out <samp>`I feel pretty today'</samp>.&quot;
 This is what we mean by &quot;guessing explanations&quot;.  The problem is just as
-likely to be due to the fact that there is a `<samp>z</samp>' in the file name.  If
+likely to be due to the fact that there is a <samp>`z'</samp> in the file name.  If
 this is so, then when we got your report, we would try out the problem with
-some &quot;large file&quot;, probably with no `<samp>z</samp>' in its name, and not find
+some &quot;large file&quot;, probably with no <samp>`z'</samp> in its name, and not find
 anything wrong.  There is no way in the world that we could guess that we
-should try visiting a file with a `<samp>z</samp>' in its name.
+should try visiting a file with a <samp>`z'</samp> in its name.
 </p>
 <p>  Alternatively, the problem might be due to the fact that the file starts
 with exactly 25 spaces.  For this reason, you should make sure that you
@@ -3852,7 +3852,7 @@ dribble file; execute the Lisp expression:
 <table><tr><td>&nbsp;</td><td><pre class="example">(open-dribble-file &quot;~/dribble&quot;)
 </pre></td></tr></table>
 
-<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the `<samp>*scratch*</samp>' buffer just after starting
+<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the <samp>`*scratch*'</samp> buffer just after starting
 Emacs.  From then on, all Emacs input will be written in the specified
 dribble file until the Emacs process is killed.
 </p>
@@ -3860,13 +3860,13 @@ dribble file until the Emacs process is killed.
 <a name="IDX1563"></a>
 <p>  For possible display bugs, it is important to report the terminal type
 (the value of environment variable <code>TERM</code>), the complete termcap entry
-for the terminal from `<tt>/etc/termcap</tt>' (since that file is not identical
+for the terminal from <tt>`/etc/termcap'</tt> (since that file is not identical
 on all machines), and the output that Emacs actually sent to the terminal.
 The way to collect this output is to execute the Lisp expression:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">(open-termscript &quot;~/termscript&quot;)
 </pre></td></tr></table>
-<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the `<samp>*scratch*</samp>' buffer
+<p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the <samp>`*scratch*'</samp> buffer
 just after starting Emacs.  From then on, all output from Emacs to the
 terminal will be written in the specified termscript file as well, until
 the Emacs process is killed.  If the problem happens when Emacs starts
@@ -3876,20 +3876,20 @@ See section <a href="#SEC377">The Init File</a>. Be warned: it is often difficul
 impossible, to fix a terminal-dependent bug without access to a terminal
 of the type that stimulates the bug.
 </p>
-<p>The newsgroup `<samp>comp.emacs.xemacs</samp>' may be used for bug reports,
+<p>The newsgroup <samp>`comp.emacs.xemacs'</samp> may be used for bug reports,
 other discussions and requests for assistance.  
 </p>
 <p>If you don't have access to this newgroup, you can subscribe to the
 mailing list version: the newsgroup is bidirectionally gatewayed into
-the mailing list `<samp>xemacs@xemacs.org</samp>'.
+the mailing list <samp>`xemacs@xemacs.org'</samp>.
 </p>
 <p>To be added or removed from this mailing list, send mail to
-`<samp>xemacs-request@xemacs.org</samp>'.  Do not send requests for addition
+<samp>`xemacs-request@xemacs.org'</samp>.  Do not send requests for addition
 to the mailing list itself.
 </p>
 <p>The mailing lists and newsgroups are archived on our anonymous FTP server,
-`<samp>ftp.xemacs.org</samp>', and at various other archive sites around the net. You 
-should also check the `<samp>FAQ</samp>' in `<samp>/pub/xemacs</samp>' on our anonymous 
+<samp>`ftp.xemacs.org'</samp>, and at various other archive sites around the net. You 
+should also check the <samp>`FAQ'</samp> in <samp>`/pub/xemacs'</samp> on our anonymous 
 FTP server. It provides some introductory information and help for initial 
 configuration problems.
 </p>

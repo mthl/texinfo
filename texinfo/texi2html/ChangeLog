@@ -1,3 +1,9 @@
+2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: close quotes within html elements. Apply commands
+	to @item lines in table after leading and trailing spaces removal.
+	* Tests: regenerate.
+
 2005-01-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle explicitely formats that don't

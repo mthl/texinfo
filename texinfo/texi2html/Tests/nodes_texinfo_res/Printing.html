@@ -95,22 +95,22 @@ the <code>texinfo-tex-buffer</code> command to format all of a
 buffer.
 </p>
 <dl compact="compact">
-<dt><kbd>  C-c C-t C-b</kbd></dt>
-<dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
+<dt>  <kbd>C-c C-t C-b</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-buffer</kbd></dt>
 <dd><a name="IDX63"></a>
 <p>Run <code>texi2dvi</code> on the buffer.  In addition to running TeX on the
 buffer, this command automatically creates or updates indices as
 needed.
 </p>
 </dd>
-<dt><kbd>  C-c C-t C-r</kbd></dt>
-<dt><kbd> M-x texinfo-tex-region</kbd></dt>
+<dt>  <kbd>C-c C-t C-r</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-region</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Run TeX on the region.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-i</kbd></dt>
-<dt><kbd> M-x texinfo-texindex</kbd></dt>
+<dt> <kbd>C-c C-t C-i</kbd></dt>
+<dt> <kbd>M-x texinfo-texindex</kbd></dt>
 <dd><p>Run <code>texindex</code> to sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.  The <code>texinfo-tex-region</code> command does
 not run <code>texindex</code> automatically; it only runs the <code>tex</code>
@@ -121,8 +121,8 @@ only when you format a buffer.  Now that the <code>texi2dvi</code> command
 exists, there is little or no need for this command.)
 </p>
 </dd>
-<dt><kbd> C-c C-t C-p</kbd></dt>
-<dt><kbd> M-x texinfo-tex-print</kbd></dt>
+<dt> <kbd>C-c C-t C-p</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-print</kbd></dt>
 <dd><a name="IDX65"></a>
 <p>Print the file (or the part of the file) previously formatted with
 <code>texinfo-tex-buffer</code> or <code>texinfo-tex-region</code>.
@@ -130,7 +130,7 @@ exists, there is little or no need for this command.)
 </dl>
 
 <p>For <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code> to work, the
-file <em>must</em> start with a `<samp>\input texinfo</samp>' line and must
+file <em>must</em> start with a <samp>`\input texinfo'</samp> line and must
 include an <code>@settitle</code> line.  The file must end with <code>@bye</code>
 on a line by itself.  (When you use <code>texinfo-tex-region</code>, you must
 surround the <code>@settitle</code> line with start-of-header and

@@ -94,7 +94,7 @@ around it.  Otherwise, it is printed in the usual text font.
 <dl compact="compact">
 <dd><a name="IDX278"></a>
 </dd>
-<dt><code> @defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
+<dt> <code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defcv</code> command is the general definition command for
 variables associated with classes in object-oriented programming.  The
 <code>@defcv</code> command is followed by three arguments: the category of
@@ -118,10 +118,10 @@ name.  Thus,
 </p>
 <a name="IDX279"></a>
 </dd>
-<dt><code> @defivar <var>class</var> <var>name</var></code></dt>
+<dt> <code>@defivar <var>class</var> <var>name</var></code></dt>
 <dd><p>The <code>@defivar</code> command is the definition command for instance
 variables in object-oriented programming.  <code>@defivar</code> is
-equivalent to `<samp>@defcv {Instance Variable} &hellip;</samp>'
+equivalent to <samp>`@defcv {Instance Variable} &hellip;'</samp>
 </p>
 <p>The template is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
@@ -132,7 +132,7 @@ equivalent to `<samp>@defcv {Instance Variable} &hellip;</samp>'
 </p>
 <a name="IDX280"></a>
 </dd>
-<dt><code> @deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
+<dt> <code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
 <dd><p>The <code>@deftypeivar</code> command is the definition command for typed
 instance variables in object-oriented programming.  It is similar to
 <code>@defivar</code> with the addition of the <var>data-type</var> parameter to
@@ -141,7 +141,7 @@ entry in the index of variables.
 </p>
 <a name="IDX281"></a>
 </dd>
-<dt><code> @defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt> <code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defop</code> command is the general definition command for
 entities that may resemble methods in object-oriented programming.
 These entities take arguments, as functions do, but are associated with
@@ -185,7 +185,7 @@ operation, and its arguments, if any.
 </p>
 <a name="IDX282"></a>
 </dd>
-<dt><code> @deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt> <code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@deftypeop</code> command is the definition command for typed
 operations in object-oriented programming.  It is similar to
 <code>@defop</code> with the addition of the <var>data-type</var> parameter to
@@ -193,14 +193,14 @@ specify the return type of the method.  <code>@deftypeop</code> creates an
 entry in the index of functions.
 </p>
 </dd>
-<dt><code> @defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt> <code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><a name="IDX283"></a>
 <p>The <code>@defmethod</code> command is the definition command for methods
 in object-oriented programming.  A method is a kind of function that
 implements an operation for a particular class of objects and its
 subclasses.
 </p>
-<p><code>@defmethod</code> is equivalent to `<samp>@defop Method &hellip;</samp>'.
+<p><code>@defmethod</code> is equivalent to <samp>`@defop Method &hellip;'</samp>.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
 arguments, if any.
@@ -226,7 +226,7 @@ the class <code>bar-class</code>.  The method takes an argument.
 </p>
 
 </dd>
-<dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dt> <code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><a name="IDX284"></a>
 <p>The <code>@deftypemethod</code> command is the definition command for methods
 in object-oriented typed languages, such as C++ and Java.  It is similar

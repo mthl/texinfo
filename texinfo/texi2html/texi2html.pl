@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.121 2005-01-15 23:45:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.122 2005-01-16 01:18:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -570,6 +570,11 @@ sub T2H_GPL_style($$$$$$$$$)
             $style = $1;
             $attribute_text = $2;
         }
+        if ($do_quotes)
+        {
+             $text = $OPEN_QUOTE_SYMBOL . "$text" if (!$no_open);
+             $text .= $CLOSE_QUOTE_SYMBOL if (!$no_close);
+        }
         $text = "<${style}$attribute_text>$text</$style>" ;
     }
     if (ref($style) eq 'HASH')
@@ -583,7 +588,7 @@ sub T2H_GPL_style($$$$$$$$$)
             $text = $text . $style->{'end'};
         }
     }
-    if ($do_quotes)
+    if ($do_quotes and !$use_attribute)
     {
         $text = $OPEN_QUOTE_SYMBOL . "$text" if (!$no_open);
         $text .= $CLOSE_QUOTE_SYMBOL if (!$no_close);
@@ -10736,7 +10741,14 @@ sub add_term($$$$;$)
     if (exists($style_map_ref->{$format->{'command'}}) and 
        !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and ($style_type{$format->{'command'}} eq 'style'))
     {
+         my $leading_spaces = '';
+         my $trailing_spaces = '';
+         $term->{'text'}  =~ s/^(\s*)//;
+         $leading_spaces = $1 if (defined($1));
+         $term->{'text'}  =~ s/(\s*)$//;
+         $trailing_spaces = $1 if (defined($1));
          $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state, [$term->{'text'}]); 
+         $term->{'text'} = $leading_spaces. $term->{'text'} .$trailing_spaces;
     }
     elsif (exists($things_map_ref->{$format->{'command'}}))
     {

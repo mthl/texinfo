@@ -119,10 +119,10 @@ can stop.  Depending on what you do next, you may or may not need to
 terminate the search explicitly with a <kbd>RET</kbd>.
 </p>
 <dl compact="compact">
-<dt><kbd> C-s</kbd></dt>
+<dt> <kbd>C-s</kbd></dt>
 <dd><p>Incremental search forward (<code>isearch-forward</code>).
 </p></dd>
-<dt><kbd> C-r</kbd></dt>
+<dt> <kbd>C-r</kbd></dt>
 <dd><p>Incremental search backward (<code>isearch-backward</code>).
 </p></dd>
 </dl>
@@ -134,10 +134,10 @@ terminate the search explicitly with a <kbd>RET</kbd>.
 <p>  <kbd>C-s</kbd> starts an incremental search.  <kbd>C-s</kbd> reads characters from
 the keyboard and positions the cursor at the first occurrence of the
 characters that you have typed.  If you type <kbd>C-s</kbd> and then <kbd>F</kbd>,
-the cursor moves right after the first `<samp>F</samp>'.  Type an <kbd>O</kbd>, and see
-the cursor move to after the first `<samp>FO</samp>'.  After another <kbd>O</kbd>, the
-cursor is after the first `<samp>FOO</samp>' after the place where you started the
-search.  Meanwhile, the search string `<samp>FOO</samp>' has been echoed in the
+the cursor moves right after the first <samp>`F'</samp>.  Type an <kbd>O</kbd>, and see
+the cursor move to after the first <samp>`FO'</samp>.  After another <kbd>O</kbd>, the
+cursor is after the first <samp>`FOO'</samp> after the place where you started the
+search.  Meanwhile, the search string <samp>`FOO'</samp> has been echoed in the
 echo area.
 </p>
 <p>  The echo area display ends with three dots when actual searching is going
@@ -160,7 +160,7 @@ only if the next command you want to type is a printing character,
 <kbd>DEL</kbd>, <kbd>ESC</kbd>, or another control character that is special
 within searches (<kbd>C-q</kbd>, <kbd>C-w</kbd>, <kbd>C-r</kbd>, <kbd>C-s</kbd>, or <kbd>C-y</kbd>).
 </p>
-<p>  Sometimes you search for `<samp>FOO</samp>' and find it, but were actually
+<p>  Sometimes you search for <samp>`FOO'</samp> and find it, but were actually
 looking for a different occurrence of it.  To move to the next occurrence
 of the search string, type another <kbd>C-s</kbd>.  Do this as often as
 necessary.  If you overshoot, you can cancel some <kbd>C-s</kbd>
@@ -171,23 +171,23 @@ typing just <kbd>C-s C-s</kbd>: the first <kbd>C-s</kbd> is the key that invokes
 incremental search, and the second <kbd>C-s</kbd> means &quot;search again&quot;.
 </p>
 <p>  If the specified string is not found at all, the echo area displays
-the text `<samp>Failing I-Search</samp>'.  The cursor is after the place where
+the text <samp>`Failing I-Search'</samp>.  The cursor is after the place where
 Emacs found as much of your string as it could.  Thus, if you search for
-`<samp>FOOT</samp>', and there is no `<samp>FOOT</samp>', the cursor may be after the
-`<samp>FOO</samp>' in `<samp>FOOL</samp>'.  At this point there are several things you
+<samp>`FOOT'</samp>, and there is no <samp>`FOOT'</samp>, the cursor may be after the
+<samp>`FOO'</samp> in <samp>`FOOL'</samp>.  At this point there are several things you
 can do.  If you mistyped the search string, correct it.  If you like the
 place you have found, you can type <kbd>RET</kbd> or some other Emacs command
 to &quot;accept what the search offered&quot;.  Or you can type <kbd>C-g</kbd>, which
 removes from the search string the characters that could not be found
-(the `<samp>T</samp>' in `<samp>FOOT</samp>'), leaving those that were found (the
-`<samp>FOO</samp>' in `<samp>FOOT</samp>').  A second <kbd>C-g</kbd> at that point cancels
+(the <samp>`T'</samp> in <samp>`FOOT'</samp>), leaving those that were found (the
+<samp>`FOO'</samp> in <samp>`FOOT'</samp>).  A second <kbd>C-g</kbd> at that point cancels
 the search entirely, returning point to where it was when the search
 started.
 </p>
 <p>  If a search is failing and you ask to repeat it by typing another
 <kbd>C-s</kbd>, it starts again from the beginning of the buffer.  Repeating
 a failing backward search with <kbd>C-r</kbd> starts again from the end.  This
-is called <em>wrapping around</em>.  `<samp>Wrapped</samp>' appears in the search
+is called <em>wrapping around</em>.  <samp>`Wrapped'</samp> appears in the search
 prompt once this has happened.
 </p>
 <a name="IDX411"></a>
@@ -271,40 +271,40 @@ the normal keybinding mechanism: simply add a binding to the
 <a name="IDX433"></a>
 
 <dl compact="compact">
-<dt><kbd> DEL</kbd></dt>
+<dt> <kbd>DEL</kbd></dt>
 <dd><p>Delete a character from the incremental search string (<code>isearch-delete-char</code>).
 </p></dd>
-<dt><kbd> RET</kbd></dt>
+<dt> <kbd>RET</kbd></dt>
 <dd><p>Exit incremental search (<code>isearch-exit</code>).
 </p></dd>
-<dt><kbd> C-q</kbd></dt>
+<dt> <kbd>C-q</kbd></dt>
 <dd><p>Quote special characters for incremental search (<code>isearch-quote-char</code>).
 </p></dd>
-<dt><kbd> C-s</kbd></dt>
+<dt> <kbd>C-s</kbd></dt>
 <dd><p>Repeat incremental search forward (<code>isearch-repeat-forward</code>).
 </p></dd>
-<dt><kbd> C-r</kbd></dt>
+<dt> <kbd>C-r</kbd></dt>
 <dd><p>Repeat incremental search backward (<code>isearch-repeat-backward</code>).
 </p></dd>
-<dt><kbd> C-y</kbd></dt>
+<dt> <kbd>C-y</kbd></dt>
 <dd><p>Pull rest of line from buffer into search string (<code>isearch-yank-line</code>).
 </p></dd>
-<dt><kbd> C-w</kbd></dt>
+<dt> <kbd>C-w</kbd></dt>
 <dd><p>Pull next word from buffer into search string (<code>isearch-yank-word</code>).
 </p></dd>
-<dt><kbd> C-g</kbd></dt>
+<dt> <kbd>C-g</kbd></dt>
 <dd><p>Cancels input back to what has been found successfully, or aborts the 
 isearch (<code>isearch-abort</code>).
 </p></dd>
-<dt><kbd> M-p</kbd></dt>
+<dt> <kbd>M-p</kbd></dt>
 <dd><p>Recall the previous element in the isearch history ring 
 (<code>isearch-ring-retreat</code>).
 </p></dd>
-<dt><kbd> M-n</kbd></dt>
+<dt> <kbd>M-n</kbd></dt>
 <dd><p>Recall the next element in the isearch history ring 
 (<code>isearch-ring-advance</code>).
 </p></dd>
-<dt><kbd> M-<kbd>TAB</kbd></kbd></dt>
+<dt> <kbd>M-<kbd>TAB</kbd></kbd></dt>
 <dd><p>Do completion on the elements in the isearch history ring 
 (<code>isearch-complete</code>).
 </p>
@@ -382,10 +382,10 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 you type the entire search string before searching begins.
 </p>
 <dl compact="compact">
-<dt><kbd> C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Search for <var>string</var>.
 </p></dd>
-<dt><kbd> C-r <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-r <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Search backward for <var>string</var>.
 </p></dd>
 </dl>
@@ -446,10 +446,10 @@ where the line breaks are in the source file.  Word search, allows you
 to search  without having to know the line breaks.
 </p>
 <dl compact="compact">
-<dt><kbd> C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Search for <var>words</var>, ignoring differences in punctuation.
 </p></dd>
-<dt><kbd> C-r <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>C-r <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Search backward for <var>words</var>, ignoring differences in punctuation.
 </p></dd>
 </dl>
@@ -565,96 +565,96 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <p>  Regular expressions have a syntax in which a few characters are
 special constructs and the rest are <em>ordinary</em>.  An ordinary
 character is a simple regular expression that matches that character and
-nothing else.  The special characters are `<samp>.</samp>', `<samp>*</samp>', `<samp>+</samp>',
-`<samp>?</samp>', `<samp>[</samp>', `<samp>]</samp>', `<samp>^</samp>', `<samp>$</samp>', and `<samp>\</samp>'; no new
+nothing else.  The special characters are <samp>`.'</samp>, <samp>`*'</samp>, <samp>`+'</samp>,
+<samp>`?'</samp>, <samp>`['</samp>, <samp>`]'</samp>, <samp>`^'</samp>, <samp>`$'</samp>, and <samp>`\'</samp>; no new
 special characters will be defined in the future.  Any other character
-appearing in a regular expression is ordinary, unless a `<samp>\</samp>'
+appearing in a regular expression is ordinary, unless a <samp>`\'</samp>
 precedes it.
 </p>
-<p>For example, `<samp>f</samp>' is not a special character, so it is ordinary, and
-therefore `<samp>f</samp>' is a regular expression that matches the string
-`<samp>f</samp>' and no other string.  (It does <em>not</em> match the string
-`<samp>ff</samp>'.)  Likewise, `<samp>o</samp>' is a regular expression that matches
-only `<samp>o</samp>'.
+<p>For example, <samp>`f'</samp> is not a special character, so it is ordinary, and
+therefore <samp>`f'</samp> is a regular expression that matches the string
+<samp>`f'</samp> and no other string.  (It does <em>not</em> match the string
+<samp>`ff'</samp>.)  Likewise, <samp>`o'</samp> is a regular expression that matches
+only <samp>`o'</samp>.
 </p>
 <p>Any two regular expressions <var>a</var> and <var>b</var> can be concatenated.  The
 result is a regular expression that matches a string if <var>a</var> matches
 some amount of the beginning of that string and <var>b</var> matches the rest of
 the string.
 </p>
-<p>As a simple example, we can concatenate the regular expressions `<samp>f</samp>'
-and `<samp>o</samp>' to get the regular expression `<samp>fo</samp>', which matches only
-the string `<samp>fo</samp>'.  Still trivial.  To do something more powerful, you
+<p>As a simple example, we can concatenate the regular expressions <samp>`f'</samp>
+and <samp>`o'</samp> to get the regular expression <samp>`fo'</samp>, which matches only
+the string <samp>`fo'</samp>.  Still trivial.  To do something more powerful, you
 need to use one of the special characters.  Here is a list of them:
 </p>
 <dl compact="compact">
-<dt><kbd> . (Period)</kbd></dt>
+<dt> <kbd>. (Period)</kbd></dt>
 <dd><a name="IDX446"></a>
 <p>is a special character that matches any single character except a newline.
-Using concatenation, we can make regular expressions like `<samp>a.b</samp>', which
-matches any three-character string that begins with `<samp>a</samp>' and ends with
-`<samp>b</samp>'.
+Using concatenation, we can make regular expressions like <samp>`a.b'</samp>, which
+matches any three-character string that begins with <samp>`a'</samp> and ends with
+<samp>`b'</samp>.
 </p>
 </dd>
-<dt><kbd> *</kbd></dt>
+<dt> <kbd>*</kbd></dt>
 <dd><a name="IDX447"></a>
 <p>is not a construct by itself; it is a quantifying suffix operator that
 means to repeat the preceding regular expression as many times as
-possible.  In `<samp>fo*</samp>', the `<samp>*</samp>' applies to the `<samp>o</samp>', so
-`<samp>fo*</samp>' matches one `<samp>f</samp>' followed by any number of `<samp>o</samp>'s.
-The case of zero `<samp>o</samp>'s is allowed: `<samp>fo*</samp>' does match
-`<samp>f</samp>'.
+possible.  In <samp>`fo*'</samp>, the <samp>`*'</samp> applies to the <samp>`o'</samp>, so
+<samp>`fo*'</samp> matches one <samp>`f'</samp> followed by any number of <samp>`o'</samp>s.
+The case of zero <samp>`o'</samp>s is allowed: <samp>`fo*'</samp> does match
+<samp>`f'</samp>.
 </p>
-<p>`<samp>*</samp>' always applies to the <em>smallest</em> possible preceding
-expression.  Thus, `<samp>fo*</samp>' has a repeating `<samp>o</samp>', not a
-repeating `<samp>fo</samp>'.
+<p><samp>`*'</samp> always applies to the <em>smallest</em> possible preceding
+expression.  Thus, <samp>`fo*'</samp> has a repeating <samp>`o'</samp>, not a
+repeating <samp>`fo'</samp>.
 </p>
-<p>The matcher processes a `<samp>*</samp>' construct by matching, immediately, as
+<p>The matcher processes a <samp>`*'</samp> construct by matching, immediately, as
 many repetitions as can be found; it is &quot;greedy&quot;.  Then it continues
 with the rest of the pattern.  If that fails, backtracking occurs,
-discarding some of the matches of the `<samp>*</samp>'-modified construct in
+discarding some of the matches of the <samp>`*'</samp>-modified construct in
 case that makes it possible to match the rest of the pattern.  For
-example, in matching `<samp>ca*ar</samp>' against the string `<samp>caaar</samp>', the
-`<samp>a*</samp>' first tries to match all three `<samp>a</samp>'s; but the rest of the
-pattern is `<samp>ar</samp>' and there is only `<samp>r</samp>' left to match, so this
-try fails.  The next alternative is for `<samp>a*</samp>' to match only two
-`<samp>a</samp>'s.  With this choice, the rest of the regexp matches
+example, in matching <samp>`ca*ar'</samp> against the string <samp>`caaar'</samp>, the
+<samp>`a*'</samp> first tries to match all three <samp>`a'</samp>s; but the rest of the
+pattern is <samp>`ar'</samp> and there is only <samp>`r'</samp> left to match, so this
+try fails.  The next alternative is for <samp>`a*'</samp> to match only two
+<samp>`a'</samp>s.  With this choice, the rest of the regexp matches
 successfully.
 </p>
 <p>Nested repetition operators can be extremely slow if they specify
 backtracking loops.  For example, it could take hours for the regular
-expression `<samp>\(x+y*\)*a</samp>' to match the sequence
-`<samp>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxz</samp>'.  The slowness is because
-Emacs must try each imaginable way of grouping the 35 `<samp>x</samp>''s before
+expression <samp>`\(x+y*\)*a'</samp> to match the sequence
+<samp>`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxz'</samp>.  The slowness is because
+Emacs must try each imaginable way of grouping the 35 <samp>`x'</samp>'s before
 concluding that none of them can work.  To make sure your regular
 expressions run fast, check nested repetitions carefully.
 </p>
 </dd>
-<dt><kbd> +</kbd></dt>
+<dt> <kbd>+</kbd></dt>
 <dd><a name="IDX448"></a>
-<p>is a quantifying suffix operator similar to `<samp>*</samp>' except that the
+<p>is a quantifying suffix operator similar to <samp>`*'</samp> except that the
 preceding expression must match at least once.  It is also &quot;greedy&quot;.
-So, for example, `<samp>ca+r</samp>' matches the strings `<samp>car</samp>' and
-`<samp>caaaar</samp>' but not the string `<samp>cr</samp>', whereas `<samp>ca*r</samp>' matches
+So, for example, <samp>`ca+r'</samp> matches the strings <samp>`car'</samp> and
+<samp>`caaaar'</samp> but not the string <samp>`cr'</samp>, whereas <samp>`ca*r'</samp> matches
 all three strings.
 </p>
 </dd>
-<dt><kbd> ?</kbd></dt>
+<dt> <kbd>?</kbd></dt>
 <dd><a name="IDX449"></a>
-<p>is a quantifying suffix operator similar to `<samp>*</samp>', except that the
+<p>is a quantifying suffix operator similar to <samp>`*'</samp>, except that the
 preceding expression can match either once or not at all.  For example,
-`<samp>ca?r</samp>' matches `<samp>car</samp>' or `<samp>cr</samp>', but does not match anything
+<samp>`ca?r'</samp> matches <samp>`car'</samp> or <samp>`cr'</samp>, but does not match anything
 else.
 </p>
 </dd>
-<dt><kbd> *?</kbd></dt>
+<dt> <kbd>*?</kbd></dt>
 <dd><a name="IDX450"></a>
-<p>works just like `<samp>*</samp>', except that rather than matching the longest
-match, it matches the shortest match.  `<samp>*?</samp>' is known as a
+<p>works just like <samp>`*'</samp>, except that rather than matching the longest
+match, it matches the shortest match.  <samp>`*?'</samp> is known as a
 <em>non-greedy</em> quantifier, a regexp construct borrowed from Perl.
 </p>
 <p>This construct is very useful for when you want to match the text inside
-a pair of delimiters.  For instance, `<samp>/\*.*?\*/</samp>' will match C
+a pair of delimiters.  For instance, <samp>`/\*.*?\*/'</samp> will match C
 comments in a string.  This could not easily be achieved without the use
 of a non-greedy quantifier.
 </p>
@@ -662,19 +662,19 @@ of a non-greedy quantifier.
 available in FSF Emacs.
 </p>
 </dd>
-<dt><kbd> +?</kbd></dt>
+<dt> <kbd>+?</kbd></dt>
 <dd><a name="IDX451"></a>
-<p>is the non-greedy version of `<samp>+</samp>'.
+<p>is the non-greedy version of <samp>`+'</samp>.
 </p>
 </dd>
-<dt><kbd> ??</kbd></dt>
+<dt> <kbd>??</kbd></dt>
 <dd><a name="IDX452"></a>
-<p>is the non-greedy version of `<samp>?</samp>'.
+<p>is the non-greedy version of <samp>`?'</samp>.
 </p>
 </dd>
-<dt><kbd> \{n,m\}</kbd></dt>
+<dt> <kbd>\{n,m\}</kbd></dt>
 <dd><a name="IDX453"></a>
-<p>serves as an interval quantifier, analogous to `<samp>*</samp>' or `<samp>+</samp>', but
+<p>serves as an interval quantifier, analogous to <samp>`*'</samp> or <samp>`+'</samp>, but
 specifies that the expression must match at least <var>n</var> times, but no
 more than <var>m</var> times.  This syntax is supported by most Unix regexp
 utilities, and has been introduced to XEmacs for the version 20.3.
@@ -683,83 +683,83 @@ utilities, and has been introduced to XEmacs for the version 20.3.
 currently, although it does in Perl.
 </p>
 </dd>
-<dt><kbd> [ &hellip; ]</kbd></dt>
+<dt> <kbd>[ &hellip; ]</kbd></dt>
 <dd><a name="IDX454"></a>
 <a name="IDX455"></a>
 <a name="IDX456"></a>
-<p>`<samp>[</samp>' begins a <em>character set</em>, which is terminated by a
-`<samp>]</samp>'.  In the simplest case, the characters between the two brackets
-form the set.  Thus, `<samp>[ad]</samp>' matches either one `<samp>a</samp>' or one
-`<samp>d</samp>', and `<samp>[ad]*</samp>' matches any string composed of just `<samp>a</samp>'s
-and `<samp>d</samp>'s (including the empty string), from which it follows that
-`<samp>c[ad]*r</samp>' matches `<samp>cr</samp>', `<samp>car</samp>', `<samp>cdr</samp>',
-`<samp>caddaar</samp>', etc.
+<p><samp>`['</samp> begins a <em>character set</em>, which is terminated by a
+<samp>`]'</samp>.  In the simplest case, the characters between the two brackets
+form the set.  Thus, <samp>`[ad]'</samp> matches either one <samp>`a'</samp> or one
+<samp>`d'</samp>, and <samp>`[ad]*'</samp> matches any string composed of just <samp>`a'</samp>s
+and <samp>`d'</samp>s (including the empty string), from which it follows that
+<samp>`c[ad]*r'</samp> matches <samp>`cr'</samp>, <samp>`car'</samp>, <samp>`cdr'</samp>,
+<samp>`caddaar'</samp>, etc.
 </p>
 <p>The usual regular expression special characters are not special inside a
 character set.  A completely different set of special characters exists
-inside character sets: `<samp>]</samp>', `<samp>-</samp>' and `<samp>^</samp>'.
+inside character sets: <samp>`]'</samp>, <samp>`-'</samp> and <samp>`^'</samp>.
 </p>
-<p>`<samp>-</samp>' is used for ranges of characters.  To write a range, write two
-characters with a `<samp>-</samp>' between them.  Thus, `<samp>[a-z]</samp>' matches any
+<p><samp>`-'</samp> is used for ranges of characters.  To write a range, write two
+characters with a <samp>`-'</samp> between them.  Thus, <samp>`[a-z]'</samp> matches any
 lower case letter.  Ranges may be intermixed freely with individual
-characters, as in `<samp>[a-z$%.]</samp>', which matches any lower case letter
-or `<samp>$</samp>', `<samp>%</samp>', or a period.
+characters, as in <samp>`[a-z$%.]'</samp>, which matches any lower case letter
+or <samp>`$'</samp>, <samp>`%'</samp>, or a period.
 </p>
-<p>To include a `<samp>]</samp>' in a character set, make it the first character.
-For example, `<samp>[]a]</samp>' matches `<samp>]</samp>' or `<samp>a</samp>'.  To include a
-`<samp>-</samp>', write `<samp>-</samp>' as the first character in the set, or put it
+<p>To include a <samp>`]'</samp> in a character set, make it the first character.
+For example, <samp>`[]a]'</samp> matches <samp>`]'</samp> or <samp>`a'</samp>.  To include a
+<samp>`-'</samp>, write <samp>`-'</samp> as the first character in the set, or put it
 immediately after a range.  (You can replace one individual character
-<var>c</var> with the range `<samp><var>c</var>-<var>c</var></samp>' to make a place to put the
-`<samp>-</samp>'.)  There is no way to write a set containing just `<samp>-</samp>' and
-`<samp>]</samp>'.
+<var>c</var> with the range <samp>`<var>c</var>-<var>c</var>'</samp> to make a place to put the
+<samp>`-'</samp>.)  There is no way to write a set containing just <samp>`-'</samp> and
+<samp>`]'</samp>.
 </p>
-<p>To include `<samp>^</samp>' in a set, put it anywhere but at the beginning of
+<p>To include <samp>`^'</samp> in a set, put it anywhere but at the beginning of
 the set.
 </p>
 </dd>
-<dt><kbd> [^ &hellip; ]</kbd></dt>
+<dt> <kbd>[^ &hellip; ]</kbd></dt>
 <dd><a name="IDX457"></a>
-<p>`<samp>[^</samp>' begins a <em>complement character set</em>, which matches any
-character except the ones specified.  Thus, `<samp>[^a-z0-9A-Z]</samp>'
+<p><samp>`[^'</samp> begins a <em>complement character set</em>, which matches any
+character except the ones specified.  Thus, <samp>`[^a-z0-9A-Z]'</samp>
 matches all characters <em>except</em> letters and digits.
 </p>
-<p>`<samp>^</samp>' is not special in a character set unless it is the first
-character.  The character following the `<samp>^</samp>' is treated as if it
-were first (thus, `<samp>-</samp>' and `<samp>]</samp>' are not special there).
+<p><samp>`^'</samp> is not special in a character set unless it is the first
+character.  The character following the <samp>`^'</samp> is treated as if it
+were first (thus, <samp>`-'</samp> and <samp>`]'</samp> are not special there).
 </p>
 <p>Note that a complement character set can match a newline, unless
 newline is mentioned as one of the characters not to match.
 </p>
 </dd>
-<dt><kbd> ^</kbd></dt>
+<dt> <kbd>^</kbd></dt>
 <dd><a name="IDX458"></a>
 <a name="IDX459"></a>
 <p>is a special character that matches the empty string, but only at the
 beginning of a line in the text being matched.  Otherwise it fails to
-match anything.  Thus, `<samp>^foo</samp>' matches a `<samp>foo</samp>' that occurs at
+match anything.  Thus, <samp>`^foo'</samp> matches a <samp>`foo'</samp> that occurs at
 the beginning of a line.
 </p>
-<p>When matching a string instead of a buffer, `<samp>^</samp>' matches at the
-beginning of the string or after a newline character `<samp>\n</samp>'.
+<p>When matching a string instead of a buffer, <samp>`^'</samp> matches at the
+beginning of the string or after a newline character <samp>`\n'</samp>.
 </p>
 </dd>
-<dt><kbd> $</kbd></dt>
+<dt> <kbd>$</kbd></dt>
 <dd><a name="IDX460"></a>
-<p>is similar to `<samp>^</samp>' but matches only at the end of a line.  Thus,
-`<samp>x+$</samp>' matches a string of one `<samp>x</samp>' or more at the end of a line.
+<p>is similar to <samp>`^'</samp> but matches only at the end of a line.  Thus,
+<samp>`x+$'</samp> matches a string of one <samp>`x'</samp> or more at the end of a line.
 </p>
-<p>When matching a string instead of a buffer, `<samp>$</samp>' matches at the end
-of the string or before a newline character `<samp>\n</samp>'.
+<p>When matching a string instead of a buffer, <samp>`$'</samp> matches at the end
+of the string or before a newline character <samp>`\n'</samp>.
 </p>
 </dd>
-<dt><kbd> \</kbd></dt>
+<dt> <kbd>\</kbd></dt>
 <dd><a name="IDX461"></a>
 <p>has two functions: it quotes the special characters (including
-`<samp>\</samp>'), and it introduces additional special constructs.
+<samp>`\'</samp>), and it introduces additional special constructs.
 </p>
-<p>Because `<samp>\</samp>' quotes special characters, `<samp>\$</samp>' is a regular
-expression that matches only `<samp>$</samp>', and `<samp>\[</samp>' is a regular
-expression that matches only `<samp>[</samp>', and so on.
+<p>Because <samp>`\'</samp> quotes special characters, <samp>`\$'</samp> is a regular
+expression that matches only <samp>`$'</samp>, and <samp>`\['</samp> is a regular
+expression that matches only <samp>`['</samp>, and so on.
 </p>
 
 </dd>
@@ -767,37 +767,37 @@ expression that matches only `<samp>[</samp>', and so on.
 
 <p><strong>Please note:</strong> For historical compatibility, special characters
 are treated as ordinary ones if they are in contexts where their special
-meanings make no sense.  For example, `<samp>*foo</samp>' treats `<samp>*</samp>' as
-ordinary since there is no preceding expression on which the `<samp>*</samp>'
+meanings make no sense.  For example, <samp>`*foo'</samp> treats <samp>`*'</samp> as
+ordinary since there is no preceding expression on which the <samp>`*'</samp>
 can act.  It is poor practice to depend on this behavior; quote the
 special character anyway, regardless of where it appears.
 </p>
-<p>For the most part, `<samp>\</samp>' followed by any character matches only
+<p>For the most part, <samp>`\'</samp> followed by any character matches only
 that character.  However, there are several exceptions: characters
-that, when preceded by `<samp>\</samp>', are special constructs.  Such
+that, when preceded by <samp>`\'</samp>, are special constructs.  Such
 characters are always ordinary when encountered on their own.  Here
-is a table of `<samp>\</samp>' constructs:
+is a table of <samp>`\'</samp> constructs:
 </p>
 <dl compact="compact">
-<dt><kbd> \|</kbd></dt>
+<dt> <kbd>\|</kbd></dt>
 <dd><a name="IDX462"></a>
 <a name="IDX463"></a>
 <p>specifies an alternative.
-Two regular expressions <var>a</var> and <var>b</var> with `<samp>\|</samp>' in
+Two regular expressions <var>a</var> and <var>b</var> with <samp>`\|'</samp> in
 between form an expression that matches anything that either <var>a</var> or
 <var>b</var> matches.
 </p>
-<p>Thus, `<samp>foo\|bar</samp>' matches either `<samp>foo</samp>' or `<samp>bar</samp>'
+<p>Thus, <samp>`foo\|bar'</samp> matches either <samp>`foo'</samp> or <samp>`bar'</samp>
 but no other string.
 </p>
-<p>`<samp>\|</samp>' applies to the largest possible surrounding expressions.  Only a
-surrounding `<samp>\( &hellip; \)</samp>' grouping can limit the grouping power of
-`<samp>\|</samp>'.
+<p><samp>`\|'</samp> applies to the largest possible surrounding expressions.  Only a
+surrounding <samp>`\( &hellip; \)'</samp> grouping can limit the grouping power of
+<samp>`\|'</samp>.
 </p>
-<p>Full backtracking capability exists to handle multiple uses of `<samp>\|</samp>'.
+<p>Full backtracking capability exists to handle multiple uses of <samp>`\|'</samp>.
 </p>
 </dd>
-<dt><kbd> \( &hellip; \)</kbd></dt>
+<dt> <kbd>\( &hellip; \)</kbd></dt>
 <dd><a name="IDX464"></a>
 <a name="IDX465"></a>
 <a name="IDX466"></a>
@@ -805,13 +805,13 @@ surrounding `<samp>\( &hellip; \)</samp>' grouping can limit the grouping power 
 </p>
 <ol>
 <li>
-To enclose a set of `<samp>\|</samp>' alternatives for other operations.
-Thus, `<samp>\(foo\|bar\)x</samp>' matches either `<samp>foox</samp>' or `<samp>barx</samp>'.
+To enclose a set of <samp>`\|'</samp> alternatives for other operations.
+Thus, <samp>`\(foo\|bar\)x'</samp> matches either <samp>`foox'</samp> or <samp>`barx'</samp>.
 
 </li><li>
-To enclose an expression for a suffix operator such as `<samp>*</samp>' to act
-on.  Thus, `<samp>ba\(na\)*</samp>' matches `<samp>bananana</samp>', etc., with any
-(zero or more) number of `<samp>na</samp>' strings.
+To enclose an expression for a suffix operator such as <samp>`*'</samp> to act
+on.  Thus, <samp>`ba\(na\)*'</samp> matches <samp>`bananana'</samp>, etc., with any
+(zero or more) number of <samp>`na'</samp> strings.
 
 </li><li>
 To record a matched substring for future reference.
@@ -819,46 +819,46 @@ To record a matched substring for future reference.
 
 <p>This last application is not a consequence of the idea of a
 parenthetical grouping; it is a separate feature that happens to be
-assigned as a second meaning to the same `<samp>\( &hellip; \)</samp>' construct
+assigned as a second meaning to the same <samp>`\( &hellip; \)'</samp> construct
 because there is no conflict in practice between the two meanings.
 Here is an explanation of this feature:
 </p>
 </dd>
-<dt><kbd> \<var>digit</var></kbd></dt>
+<dt> <kbd>\<var>digit</var></kbd></dt>
 <dd><p>matches the same text that matched the <var>digit</var>th occurrence of a
-`<samp>\( &hellip; \)</samp>' construct.
+<samp>`\( &hellip; \)'</samp> construct.
 </p>
-<p>In other words, after the end of a `<samp>\( &hellip; \)</samp>' construct.  the
+<p>In other words, after the end of a <samp>`\( &hellip; \)'</samp> construct.  the
 matcher remembers the beginning and end of the text matched by that
 construct.  Then, later on in the regular expression, you can use
-`<samp>\</samp>' followed by <var>digit</var> to match that same text, whatever it
+<samp>`\'</samp> followed by <var>digit</var> to match that same text, whatever it
 may have been.
 </p>
-<p>The strings matching the first nine `<samp>\( &hellip; \)</samp>' constructs
+<p>The strings matching the first nine <samp>`\( &hellip; \)'</samp> constructs
 appearing in a regular expression are assigned numbers 1 through 9 in
 the order that the open parentheses appear in the regular expression.
-So you can use `<samp>\1</samp>' through `<samp>\9</samp>' to refer to the text matched
-by the corresponding `<samp>\( &hellip; \)</samp>' constructs.
+So you can use <samp>`\1'</samp> through <samp>`\9'</samp> to refer to the text matched
+by the corresponding <samp>`\( &hellip; \)'</samp> constructs.
 </p>
-<p>For example, `<samp>\(.*\)\1</samp>' matches any newline-free string that is
-composed of two identical halves.  The `<samp>\(.*\)</samp>' matches the first
-half, which may be anything, but the `<samp>\1</samp>' that follows must match
+<p>For example, <samp>`\(.*\)\1'</samp> matches any newline-free string that is
+composed of two identical halves.  The <samp>`\(.*\)'</samp> matches the first
+half, which may be anything, but the <samp>`\1'</samp> that follows must match
 the same exact text.
 </p>
 </dd>
-<dt><kbd> \(?: &hellip; \)</kbd></dt>
+<dt> <kbd>\(?: &hellip; \)</kbd></dt>
 <dd><a name="IDX467"></a>
 <a name="IDX468"></a>
 <p>is called a <em>shy</em> grouping operator, and it is used just like
-`<samp>\( &hellip; \)</samp>', except that it does not cause the matched
+<samp>`\( &hellip; \)'</samp>, except that it does not cause the matched
 substring to be recorded for future reference.
 </p>
-<p>This is useful when you need a lot of grouping `<samp>\( &hellip; \)</samp>'
+<p>This is useful when you need a lot of grouping <samp>`\( &hellip; \)'</samp>
 constructs, but only want to remember one or two - or if you have
 more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
 </p>
-<p>Using `<samp>\(?: &hellip; \)</samp>' rather than `<samp>\( &hellip; \)</samp>' when you
+<p>Using <samp>`\(?: &hellip; \)'</samp> rather than <samp>`\( &hellip; \)'</samp> when you
 don't need the captured substrings ought to speed up your programs some,
 since it shortens the code path followed by the regular expression
 engine, as well as the amount of memory allocation and string copying it
@@ -869,27 +869,27 @@ measured or quantified as of this writing.
 available prior to XEmacs 20.3, nor is it available in FSF Emacs.
 </p>
 </dd>
-<dt><kbd> \w</kbd></dt>
+<dt> <kbd>\w</kbd></dt>
 <dd><a name="IDX469"></a>
 <p>matches any word-constituent character.  The editor syntax table
 determines which characters these are.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p>
 </dd>
-<dt><kbd> \W</kbd></dt>
+<dt> <kbd>\W</kbd></dt>
 <dd><a name="IDX470"></a>
 <p>matches any character that is not a word constituent.
 </p>
 </dd>
-<dt><kbd> \s<var>code</var></kbd></dt>
+<dt> <kbd>\s<var>code</var></kbd></dt>
 <dd><a name="IDX471"></a>
 <p>matches any character whose syntax is <var>code</var>.  Here <var>code</var> is a
-character that represents a syntax code: thus, `<samp>w</samp>' for word
-constituent, `<samp>-</samp>' for whitespace, `<samp>(</samp>' for open parenthesis,
+character that represents a syntax code: thus, <samp>`w'</samp> for word
+constituent, <samp>`-'</samp> for whitespace, <samp>`('</samp> for open parenthesis,
 etc.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>, for a list of syntax codes and the characters that
 stand for them.
 </p>
 </dd>
-<dt><kbd> \S<var>code</var></kbd></dt>
+<dt> <kbd>\S<var>code</var></kbd></dt>
 <dd><a name="IDX472"></a>
 <p>matches any character whose syntax is not <var>code</var>.
 </p></dd>
@@ -900,44 +900,44 @@ they don't use up any characters--but whether they match depends on the
 context.
 </p>
 <dl compact="compact">
-<dt><kbd> \`</kbd></dt>
+<dt> <kbd>\`</kbd></dt>
 <dd><a name="IDX473"></a>
 <p>matches the empty string, but only at the beginning
 of the buffer or string being matched against.
 </p>
 </dd>
-<dt><kbd> \'</kbd></dt>
+<dt> <kbd>\'</kbd></dt>
 <dd><a name="IDX474"></a>
 <p>matches the empty string, but only at the end of
 the buffer or string being matched against.
 </p>
 </dd>
-<dt><kbd> \=</kbd></dt>
+<dt> <kbd>\=</kbd></dt>
 <dd><a name="IDX475"></a>
 <p>matches the empty string, but only at point.
 (This construct is not defined when matching against a string.)
 </p>
 </dd>
-<dt><kbd> \b</kbd></dt>
+<dt> <kbd>\b</kbd></dt>
 <dd><a name="IDX476"></a>
 <p>matches the empty string, but only at the beginning or
-end of a word.  Thus, `<samp>\bfoo\b</samp>' matches any occurrence of
-`<samp>foo</samp>' as a separate word.  `<samp>\bballs?\b</samp>' matches
-`<samp>ball</samp>' or `<samp>balls</samp>' as a separate word.
+end of a word.  Thus, <samp>`\bfoo\b'</samp> matches any occurrence of
+<samp>`foo'</samp> as a separate word.  <samp>`\bballs?\b'</samp> matches
+<samp>`ball'</samp> or <samp>`balls'</samp> as a separate word.
 </p>
 </dd>
-<dt><kbd> \B</kbd></dt>
+<dt> <kbd>\B</kbd></dt>
 <dd><a name="IDX477"></a>
 <p>matches the empty string, but <em>not</em> at the beginning or
 end of a word.
 </p>
 </dd>
-<dt><kbd> \&lt;</kbd></dt>
+<dt> <kbd>\&lt;</kbd></dt>
 <dd><a name="IDX478"></a>
 <p>matches the empty string, but only at the beginning of a word.
 </p>
 </dd>
-<dt><kbd> \&gt;</kbd></dt>
+<dt> <kbd>\&gt;</kbd></dt>
 <dd><a name="IDX479"></a>
 <p>matches the empty string, but only at the end of a word.
 </p></dd>
@@ -947,15 +947,15 @@ end of a word.
 sentence together with any whitespace that follows.  It is given in Lisp
 syntax to enable you to distinguish the spaces from the tab characters.  In
 Lisp syntax, the string constant begins and ends with a double-quote.
-`<samp>\&quot;</samp>' stands for a double-quote as part of the regexp, `<samp>\\</samp>' for a
-backslash as part of the regexp, `<samp>\t</samp>' for a tab and `<samp>\n</samp>' for a
+<samp>`\&quot;'</samp> stands for a double-quote as part of the regexp, <samp>`\\'</samp> for a
+backslash as part of the regexp, <samp>`\t'</samp> for a tab and <samp>`\n'</samp> for a
 newline.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
 </pre></td></tr></table>
 
 <p>This regexp contains four parts: a character set matching
-period, `<samp>?</samp>' or `<samp>!</samp>'; a character set matching close-brackets,
+period, <samp>`?'</samp> or <samp>`!'</samp>; a character set matching close-brackets,
 quotes or parentheses, repeated any number of times; an alternative in
 backslash-parentheses that matches end-of-line, a tab or two spaces; and
 a character set matching whitespace characters, repeated any number of
@@ -983,10 +983,10 @@ times.
 <h2 class="section"> 12.6 Searching and Case </h2>
 
 <p>  All searches in Emacs normally ignore the case of the text they
-are searching through; if you specify searching for `<samp>FOO</samp>',
-`<samp>Foo</samp>' and `<samp>foo</samp>' are also considered a match.  Regexps, and in
-particular character sets, are included: `<samp>[aB]</samp>' matches `<samp>a</samp>'
-or `<samp>A</samp>' or `<samp>b</samp>' or `<samp>B</samp>'.
+are searching through; if you specify searching for <samp>`FOO'</samp>,
+<samp>`Foo'</samp> and <samp>`foo'</samp> are also considered a match.  Regexps, and in
+particular character sets, are included: <samp>`[aB]'</samp> matches <samp>`a'</samp>
+or <samp>`A'</samp> or <samp>`b'</samp> or <samp>`B'</samp>.
 </p>
 <p>  If you want a case-sensitive search, set the variable
 <code>case-fold-search</code> to <code>nil</code>.  Then all letters must match
@@ -1060,17 +1060,17 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <h3 class="subsection"> 12.7.1 Unconditional Replacement </h3>
 
 <dl compact="compact">
-<dt><kbd> M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Replace every occurrence of <var>string</var> with <var>newstring</var>.
 </p></dd>
-<dt><kbd> M-x replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Replace every match for <var>regexp</var> with <var>newstring</var>.
 </p></dd>
 </dl>
 
-<p>  To replace every instance of `<samp>foo</samp>' after point with `<samp>bar</samp>',
+<p>  To replace every instance of <samp>`foo'</samp> after point with <samp>`bar'</samp>,
 use the command <kbd>M-x replace-string</kbd> with the two arguments
-`<samp>foo</samp>' and `<samp>bar</samp>'.  Replacement occurs only after point: if you
+<samp>`foo'</samp> and <samp>`bar'</samp>.  Replacement occurs only after point: if you
 want to cover the whole buffer you must go to the beginning first.  By
 default, all occurrences up to the end of the buffer are replaced.  To
 limit replacement to part of the buffer, narrow to that part of the
@@ -1110,23 +1110,23 @@ similar command <code>replace-regexp</code> replaces any match for a specified
 pattern.
 </p>
 <p>  In <code>replace-regexp</code>, the <var>newstring</var> need not be constant.  It
-can refer to all or part of what is matched by the <var>regexp</var>.  `<samp>\&amp;</samp>'
+can refer to all or part of what is matched by the <var>regexp</var>.  <samp>`\&amp;'</samp>
 in <var>newstring</var> stands for the entire text being replaced.
-`<samp>\<var>d</var></samp>' in <var>newstring</var>, where <var>d</var> is a digit, stands for
+<samp>`\<var>d</var>'</samp> in <var>newstring</var>, where <var>d</var> is a digit, stands for
 whatever matched the <var>d</var>'th parenthesized grouping in <var>regexp</var>.
 For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> c[ad]+r <kbd>RET</kbd> \&amp;-safe <kbd>RET</kbd>
 </pre></td></tr></table>
 
-<p>would replace (for example) `<samp>cadr</samp>' with `<samp>cadr-safe</samp>' and `<samp>cddr</samp>'
-with `<samp>cddr-safe</samp>'.
+<p>would replace (for example) <samp>`cadr'</samp> with <samp>`cadr-safe'</samp> and <samp>`cddr'</samp>
+with <samp>`cddr-safe'</samp>.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</kbd>
 </pre></td></tr></table>
 
-<p>would perform exactly the opposite replacements.  To include a `<samp>\</samp>'
-in the text to replace with, you must give `<samp>\\</samp>'.
+<p>would perform exactly the opposite replacements.  To include a <samp>`\'</samp>
+in the text to replace with, you must give <samp>`\\'</samp>.
 </p>
 <hr size="6">
 <a name="Replacement-and-Case"></a>
@@ -1155,15 +1155,15 @@ preserves case when it makes a replacement.  Thus, the following command:
 <table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string <kbd>RET</kbd> foo <kbd>RET</kbd> bar <kbd>RET</kbd>
 </pre></td></tr></table>
 
-<p>replaces a lower-case `<samp>foo</samp>' with a lower case `<samp>bar</samp>', `<samp>FOO</samp>'
-with `<samp>BAR</samp>', and `<samp>Foo</samp>' with `<samp>Bar</samp>'.  If upper-case letters are
+<p>replaces a lower-case <samp>`foo'</samp> with a lower case <samp>`bar'</samp>, <samp>`FOO'</samp>
+with <samp>`BAR'</samp>, and <samp>`Foo'</samp> with <samp>`Bar'</samp>.  If upper-case letters are
 used in the second argument, they remain upper-case every time that
 argument is inserted.  If upper-case letters are used in the first
 argument, the second argument is always substituted exactly as given, with
 no case conversion.  Likewise, if the variable <code>case-replace</code> is set
 to <code>nil</code>, replacement is done without case conversion.  If
 <code>case-fold-search</code> is set to <code>nil</code>, case is significant in
-matching occurrences of `<samp>foo</samp>' to replace; also, case conversion of the
+matching occurrences of <samp>`foo'</samp> to replace; also, case conversion of the
 replacement string is not done.
 </p>
 <hr size="6">
@@ -1188,20 +1188,20 @@ replacement string is not done.
 <h3 class="subsection"> 12.7.4 Query Replace </h3>
 
 <dl compact="compact">
-<dt><kbd> M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
-<dt><kbd> M-x query-replace <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x query-replace <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Replace some occurrences of <var>string</var> with <var>newstring</var>.
 </p></dd>
-<dt><kbd> M-x query-replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
+<dt> <kbd>M-x query-replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Replace some matches for <var>regexp</var> with <var>newstring</var>.
 </p></dd>
 </dl>
 
 <a name="IDX480"></a>
 <a name="IDX481"></a>
-<p>  If you want to change only some of the occurrences of `<samp>foo</samp>' to
-`<samp>bar</samp>', not all of them, you can use <code>query-replace</code> instead of
-<kbd>M-%</kbd>.  This command finds occurrences of `<samp>foo</samp>' one by one,
+<p>  If you want to change only some of the occurrences of <samp>`foo'</samp> to
+<samp>`bar'</samp>, not all of them, you can use <code>query-replace</code> instead of
+<kbd>M-%</kbd>.  This command finds occurrences of <samp>`foo'</samp> one by one,
 displays each occurrence, and asks you whether to replace it.  A numeric
 argument to <code>query-replace</code> tells it to consider only occurrences
 that are bounded by word-delimiter characters.
@@ -1226,17 +1226,17 @@ or a match for <var>regexp</var> are:
 <a name="IDX492"></a>
 
 <dl compact="compact">
-<dt><kbd> <kbd>SPC</kbd></kbd></dt>
+<dt> <kbd><kbd>SPC</kbd></kbd></dt>
 <dd><p>to replace the occurrence with <var>newstring</var>.  This preserves case, just
 like <code>replace-string</code>, provided <code>case-replace</code> is non-<code>nil</code>,
 as it normally is.
 </p>
 </dd>
-<dt><kbd> <kbd>DEL</kbd></kbd></dt>
+<dt> <kbd><kbd>DEL</kbd></kbd></dt>
 <dd><p>to skip to the next occurrence without replacing this one.
 </p>
 </dd>
-<dt><kbd> , (Comma)</kbd></dt>
+<dt> <kbd>, (Comma)</kbd></dt>
 <dd><p>to replace this occurrence and display the result.  You are then
 prompted for another input character.  However, since the replacement has
 already been made, <kbd>DEL</kbd> and <kbd>SPC</kbd> are equivalent.  At this
@@ -1246,33 +1246,33 @@ This exits the <code>query-replace</code>.  If you want to do further
 replacement you must use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> to restart (see section <a href="xemacs_9.html#SEC69">Repeating Minibuffer Commands</a>).
 </p>
 </dd>
-<dt><kbd> <kbd>ESC</kbd></kbd></dt>
+<dt> <kbd><kbd>ESC</kbd></kbd></dt>
 <dd><p>to exit without doing any more replacements.
 </p>
 </dd>
-<dt><kbd> . (Period)</kbd></dt>
+<dt> <kbd>. (Period)</kbd></dt>
 <dd><p>to replace this occurrence and then exit.
 </p>
 </dd>
-<dt><kbd> !</kbd></dt>
+<dt> <kbd>!</kbd></dt>
 <dd><p>to replace all remaining occurrences without asking again.
 </p>
 </dd>
-<dt><kbd> ^</kbd></dt>
+<dt> <kbd>^</kbd></dt>
 <dd><p>to go back to the location of the previous occurrence (or what used to
 be an occurrence), in case you changed it by mistake.  This works by
 popping the mark ring.  Only one <kbd>^</kbd> in a row is allowed, because
 only one previous replacement location is kept during <code>query-replace</code>.
 </p>
 </dd>
-<dt><kbd> C-r</kbd></dt>
+<dt> <kbd>C-r</kbd></dt>
 <dd><p>to enter a recursive editing level, in case the occurrence needs to be
 edited rather than just replaced with <var>newstring</var>.  When you are
 done, exit the recursive editing level with <kbd>C-M-c</kbd> and the next
 occurrence will be displayed.  See section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</a>.
 </p>
 </dd>
-<dt><kbd> C-w</kbd></dt>
+<dt> <kbd>C-w</kbd></dt>
 <dd><p>to delete the occurrence, and then enter a recursive editing level as
 in <kbd>C-r</kbd>.  Use the recursive edit to insert text to replace the
 deleted occurrence of <var>string</var>.  When done, exit the recursive
@@ -1280,11 +1280,11 @@ editing level with <kbd>C-M-c</kbd> and the next occurrence will be
 displayed.
 </p>
 </dd>
-<dt><kbd> C-l</kbd></dt>
+<dt> <kbd>C-l</kbd></dt>
 <dd><p>to redisplay the screen and then give another answer.
 </p>
 </dd>
-<dt><kbd> C-h</kbd></dt>
+<dt> <kbd>C-h</kbd></dt>
 <dd><p>to display a message summarizing these options, then give another
 answer.
 </p></dd>
@@ -1325,34 +1325,34 @@ They all operate from point to the end of the buffer.
 <a name="IDX496"></a>
 <a name="IDX497"></a>
 <dl compact="compact">
-<dt><kbd> M-x occur</kbd></dt>
+<dt> <kbd>M-x occur</kbd></dt>
 <dd><p>Print each line that follows point and contains a match for the
 specified regexp.  A numeric argument specifies the number of context
 lines to print before and after each matching line; the default is
 none.
 </p>
 <a name="IDX498"></a>
-<p>The buffer `<samp>*Occur*</samp>' containing the output serves as a menu for
+<p>The buffer <samp>`*Occur*'</samp> containing the output serves as a menu for
 finding occurrences in their original context.  Find an occurrence
-as listed in `<samp>*Occur*</samp>', position point there, and type <kbd>C-c
+as listed in <samp>`*Occur*'</samp>, position point there, and type <kbd>C-c
 C-c</kbd>; this switches to the buffer that was searched and moves point to
 the original of the same occurrence.
 </p>
 </dd>
-<dt><kbd> M-x list-matching-lines</kbd></dt>
+<dt> <kbd>M-x list-matching-lines</kbd></dt>
 <dd><p>Synonym for <kbd>M-x occur</kbd>.
 </p>
 </dd>
-<dt><kbd> M-x count-matches</kbd></dt>
+<dt> <kbd>M-x count-matches</kbd></dt>
 <dd><p>Print the number of matches following point for the specified regexp.
 </p>
 </dd>
-<dt><kbd> M-x delete-non-matching-lines</kbd></dt>
+<dt> <kbd>M-x delete-non-matching-lines</kbd></dt>
 <dd><p>Delete each line that follows point and does not contain a match for
 the specified regexp.
 </p>
 </dd>
-<dt><kbd> M-x delete-matching-lines</kbd></dt>
+<dt> <kbd>M-x delete-matching-lines</kbd></dt>
 <dd><p>Delete each line that follows point and contains a match for the
 specified regexp.
 </p></dd>

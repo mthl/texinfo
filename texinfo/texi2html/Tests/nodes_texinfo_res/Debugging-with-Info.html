@@ -92,7 +92,7 @@ rest of this section presumes that you are using
 <p>If you have made a mistake with an @-command,
 <code>texinfo-format-region</code> will stop processing at or after the
 error and display an error message.  To see where in the buffer the
-error occurred, switch to the `<samp>*Info Region*</samp>' buffer; the cursor
+error occurred, switch to the <samp>`*Info Region*'</samp> buffer; the cursor
 will be in a position that is after the location of the error.  Also,
 the text will not be formatted after the place where the error
 occurred (or more precisely, where it was detected).
@@ -126,8 +126,8 @@ odd error messages.  For example, the following cross reference fails to format:
 </pre></td></tr></table>
 
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
-brace but displays a message that says `<samp>Unbalanced parentheses</samp>'
-rather than `<samp>Unbalanced braces</samp>'.  This is because the formatting
+brace but displays a message that says <samp>`Unbalanced parentheses'</samp>
+rather than <samp>`Unbalanced braces'</samp>.  This is because the formatting
 command looks for mismatches between braces as if they were
 parentheses.
 </p>

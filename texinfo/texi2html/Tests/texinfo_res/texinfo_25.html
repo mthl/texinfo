@@ -136,7 +136,7 @@ example:
 be included as is into the overall or <em>outer</em> Texinfo file; it
 should not contain the standard beginning and end parts of a Texinfo
 file.  In particular, you should not start an included file with a
-line saying `<samp>\input texinfo</samp>'; if you do, that phrase is inserted
+line saying <samp>`\input texinfo'</samp>; if you do, that phrase is inserted
 into the output file as is.  Likewise, you should not end an included
 file with an <code>@bye</code> command; nothing after <code>@bye</code> is
 formatted.
@@ -190,7 +190,7 @@ updates only the pointers in the first <code>@node</code> line of the
 included files or all of them:
 </p>
 <dl compact="compact">
-<dt><kbd> M-x texinfo-multiple-files-update</kbd></dt>
+<dt> <kbd>M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called without any arguments:
 </p>
 <ul class="toc">
@@ -208,7 +208,7 @@ Create or update a main menu in the outer file.
 </li></ul>
 
 </dd>
-<dt><kbd> C-u M-x texinfo-multiple-files-update</kbd></dt>
+<dt> <kbd>C-u M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with <kbd>C-u</kbd> as a prefix argument:
 </p>
 <ul class="toc">
@@ -225,7 +225,7 @@ is made from all the menus in all the included files.
 </li></ul>
 
 </dd>
-<dt><kbd> C-u 8 M-x texinfo-multiple-files-update</kbd></dt>
+<dt> <kbd>C-u 8 M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with a numeric prefix argument, such as <kbd>C-u 8</kbd>:
 </p>
 <ul class="toc">
@@ -354,14 +354,14 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 
 @bye
 </pre></td></tr></table>
-<p>An included file, such as `<tt>foo.texinfo</tt>', might look like this:
+<p>An included file, such as <tt>`foo.texinfo'</tt>, might look like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node First, Second, , Top
 @chapter First Chapter
 
 Contents of first chapter &hellip;
 </pre></td></tr></table>
-<p>The full contents of `<tt>concept-index.texinfo</tt>' might be as simple as this:
+<p>The full contents of <tt>`concept-index.texinfo'</tt> might be as simple as this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">@node Concept Index
 @unnumbered Concept Index
@@ -369,7 +369,7 @@ Contents of first chapter &hellip;
 @printindex cp
 </pre></td></tr></table>
 <p>The outer Texinfo source file for <cite>The GNU Emacs Lisp Reference
-Manual</cite> is named `<tt>elisp.texi</tt>'.  This outer file contains a master
+Manual</cite> is named <tt>`elisp.texi'</tt>.  This outer file contains a master
 menu with 417 entries and a list of 41 <code>@include</code>
 files.
 </p>

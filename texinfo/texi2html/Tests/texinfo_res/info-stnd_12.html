@@ -87,12 +87,12 @@ Info provides a way to define different key-to-command bindings and
 variable settings from the defaults described in this document.
 </p>
 <p>On startup, GNU Info looks for a configuration file in the invoker's
-HOME directory called `<tt>.info</tt>'<a name="DOCF7" href="info-stnd_fot.html#FOOT7">(7)</a>.  If it is present, and
+HOME directory called <tt>`.info'</tt><a name="DOCF7" href="info-stnd_fot.html#FOOT7">(7)</a>.  If it is present, and
 appears to contain Info configuration data, and was created with the
 current version of the <code>infokey</code> command, then Info adopts the
 key bindings and variable settings contained therein.
 </p>
-<p>The `<tt>.info</tt>' file contains compact, non-textual data for reasons of
+<p>The <tt>`.info'</tt> file contains compact, non-textual data for reasons of
 efficiency and because its design was lifted wholesale from the GNU Less
 program, which also does it that way.  It must be created by compiling a
 textual source file using the <code>infokey</code> command.
@@ -128,16 +128,16 @@ textual source file using the <code>infokey</code> command.
 
 
 <p><code>infokey</code> compiles a source file
-(`<tt>$HOME/.infokey</tt>'<a name="DOCF8" href="info-stnd_fot.html#FOOT8">(8)</a> by default) containing Info customizations
-into a binary format (`<tt>$HOME/.info</tt>' by default).  GNU Info reads
+(<tt>`$HOME/.infokey'</tt><a name="DOCF8" href="info-stnd_fot.html#FOOT8">(8)</a> by default) containing Info customizations
+into a binary format (<tt>`$HOME/.info'</tt> by default).  GNU Info reads
 the binary file at startup to override the default key bindings and
 variable definitions.  Synopsis:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">infokey [<var>option</var>&hellip;] [<var>input-file</var>]
 </pre></td></tr></table>
-<p>Besides the standard `<samp>--help</samp>' and `<samp>--version</samp>', the only
-option is `<samp>--output <var>file</var></samp>'.  This tells <code>infokey</code> to
-write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
+<p>Besides the standard <samp>`--help'</samp> and <samp>`--version'</samp>, the only
+option is <samp>`--output <var>file</var>'</samp>.  This tells <code>infokey</code> to
+write the binary data to <var>file</var> instead of <tt>`$HOME/.info'</tt>.
 </p>
 
 <hr size="6">
@@ -163,7 +163,7 @@ write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
 
 
 <p>The format of the source file read by <code>infokey</code> is most easily
-illustrated by example.  For instance, here is a sample `<tt>.infokey</tt>'
+illustrated by example.  For instance, here is a sample <tt>`.infokey'</tt>
 source file suitable for aficionados of <code>vi</code> or <code>less</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">#info
@@ -198,7 +198,7 @@ Each section starts with a line that identifies the type of section.
 Possible sections are:
 </p>
 <dl compact="compact">
-<dt><code> #info</code></dt>
+<dt> <code>#info</code></dt>
 <dd><p>Key bindings for Info windows.
 The start of this section is indicated by a line containing just
 <code>#info</code> by itself.  If this is the first section in the source
@@ -216,49 +216,49 @@ character.  A backslash followed by certain characters specifies input
 keystrokes as follows:
 </p>
 <dl compact="compact">
-<dt><code> \b</code></dt>
+<dt> <code>\b</code></dt>
 <dd><p>Backspace
 </p></dd>
-<dt><code> \e</code></dt>
+<dt> <code>\e</code></dt>
 <dd><p>Escape (ESC)
 </p></dd>
-<dt><code> \n</code></dt>
+<dt> <code>\n</code></dt>
 <dd><p>Newline
 </p></dd>
-<dt><code> \r</code></dt>
+<dt> <code>\r</code></dt>
 <dd><p>Return
 </p></dd>
-<dt><code> \t</code></dt>
+<dt> <code>\t</code></dt>
 <dd><p>Tab
 </p></dd>
-<dt><code> \ku</code></dt>
+<dt> <code>\ku</code></dt>
 <dd><p>Up arrow
 </p></dd>
-<dt><code> \kd</code></dt>
+<dt> <code>\kd</code></dt>
 <dd><p>Down arrow
 </p></dd>
-<dt><code> \kl</code></dt>
+<dt> <code>\kl</code></dt>
 <dd><p>Left arrow
 </p></dd>
-<dt><code> \kr</code></dt>
+<dt> <code>\kr</code></dt>
 <dd><p>Right arrow
 </p></dd>
-<dt><code> \kU</code></dt>
+<dt> <code>\kU</code></dt>
 <dd><p>Page Up
 </p></dd>
-<dt><code> \kD</code></dt>
+<dt> <code>\kD</code></dt>
 <dd><p>Page Down
 </p></dd>
-<dt><code> \kh</code></dt>
+<dt> <code>\kh</code></dt>
 <dd><p>HOME
 </p></dd>
-<dt><code> \ke</code></dt>
+<dt> <code>\ke</code></dt>
 <dd><p>END
 </p></dd>
-<dt><code> \kx</code></dt>
+<dt> <code>\kx</code></dt>
 <dd><p>Delete (DEL)
 </p></dd>
-<dt><code> \m<var>x</var></code></dt>
+<dt> <code>\m<var>x</var></code></dt>
 <dd><p>Meta-<var>x</var> where <var>x</var> is any character as described above.
 </p></dd>
 </dl>
@@ -268,7 +268,7 @@ be taken literally.  Characters which must be preceded by a backslash
 include caret, space, tab, and backslash itself.
 </p>
 </dd>
-<dt><code> #echo-area</code></dt>
+<dt> <code>#echo-area</code></dt>
 <dd><p>Key bindings for the echo area.
 The start of this section is indicated by a line containing just
 <code>#echo-area</code> by itself.  The rest of this section has a syntax
@@ -276,7 +276,7 @@ identical to that for the key definitions for the Info area, described
 above.
 </p>
 </dd>
-<dt><code> #var</code></dt>
+<dt> <code>#var</code></dt>
 <dd><p>Variable initializations.
 The start of this section is indicated by a line containing just
 <code>#var</code> by itself.  Following this line is a list of variable
@@ -291,9 +291,9 @@ are included in the value.
 <p>Blank lines and lines starting with <code>#</code> are ignored, except for
 the special section header lines.
 </p>
-<p>Key bindings defined in the `<tt>.info</tt>' file take precedence over GNU
-Info's default key bindings, whether or not `<samp>--vi-keys</samp>' is used.  A
-default key binding may be disabled by overriding it in the `<tt>.info</tt>'
+<p>Key bindings defined in the <tt>`.info'</tt> file take precedence over GNU
+Info's default key bindings, whether or not <samp>`--vi-keys'</samp> is used.  A
+default key binding may be disabled by overriding it in the <tt>`.info'</tt>
 file with the action <code>invalid</code>.  In addition, <em>all</em> default
 key bindings can be disabled by adding this line <em>anywhere</em> in the
 relevant section:
@@ -308,7 +308,7 @@ key bindings, you must supply enough new key bindings to enable all
 necessary actions.  Failure to bind any key to the <code>quit</code> command,
 for example, can lead to frustration.
 </p>
-<p>The order in which key bindings are defined in the `<tt>.info</tt>' file is
+<p>The order in which key bindings are defined in the <tt>`.info'</tt> file is
 not important, except that the command summary produced by the
 <code>get-help-window</code> command only displays the <em>first</em> key that
 is bound to each command.

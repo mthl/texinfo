@@ -63,7 +63,7 @@ ul.toc {list-style: none}
 
 <p>As long as you edit source files inside a working
 directory you can always find out the state of
-your files via `<samp>cvs status</samp>' and `<samp>cvs log</samp>'.
+your files via <samp>`cvs status'</samp> and <samp>`cvs log'</samp>.
 But as soon as you export the files from your
 development environment it becomes harder to identify
 which revisions they are.
@@ -115,12 +115,12 @@ a new revision of the file.
 <dl compact="compact">
 <dd><a name="IDX182"></a>
 </dd>
-<dt><code> $<i></i>Author$</code></dt>
+<dt> <code>$<i></i>Author$</code></dt>
 <dd><p>The login name of the user who checked in the revision.
 </p>
 <a name="IDX183"></a>
 </dd>
-<dt><code> $<i></i>CVSHeader</code></dt>
+<dt> <code>$<i></i>CVSHeader</code></dt>
 <dd><p>A standard header (similar to $<i></i>Header$, but with
 the CVS root stripped off). It contains the relative
 pathname of the <small>RCS</small> file to the CVS root, the
@@ -133,17 +133,17 @@ introduced to <small>CVS</small> and may cause problems with
 existing installations if $<i></i>CVSHeader$ is already
 in the files for a different purpose. This keyword may
 be excluded using the <code>KeywordExpansion=eCVSHeader</code>
-in the `<tt>CVSROOT/config</tt>' file. 
+in the <tt>`CVSROOT/config'</tt> file. 
 See <a href="#SEC103">Configuring Keyord Expansion</a> for more details.
 </p>
 <a name="IDX184"></a>
 </dd>
-<dt><code> $<i></i>Date$</code></dt>
+<dt> <code>$<i></i>Date$</code></dt>
 <dd><p>The date and time (UTC) the revision was checked in.
 </p>
 <a name="IDX185"></a>
 </dd>
-<dt><code> $<i></i>Header$</code></dt>
+<dt> <code>$<i></i>Header$</code></dt>
 <dd><p>A standard header containing the full pathname of the
 <small>RCS</small> file, the revision number, the date (UTC), the
 author, the state, and the locker (if locked).  Files
@@ -151,28 +151,28 @@ will normally never be locked when you use <small>CVS</small>.
 </p>
 <a name="IDX186"></a>
 </dd>
-<dt><code> $<i></i>Id$</code></dt>
+<dt> <code>$<i></i>Id$</code></dt>
 <dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
 filename is without a path.
 </p>
 <a name="IDX187"></a>
 </dd>
-<dt><code> $<i></i>Name$</code></dt>
+<dt> <code>$<i></i>Name$</code></dt>
 <dd><p>Tag name used to check out this file.  The keyword is
 expanded only if one checks out with an explicit tag
 name.  For example, when running the command <code>cvs
-co -r first</code>, the keyword expands to `<samp>Name: first</samp>'.
+co -r first</code>, the keyword expands to <samp>`Name: first'</samp>.
 </p>
 <a name="IDX188"></a>
 </dd>
-<dt><code> $<i></i>Locker$</code></dt>
+<dt> <code>$<i></i>Locker$</code></dt>
 <dd><p>The login name of the user who locked the revision
 (empty if not locked, which is the normal case unless
 <code>cvs admin -l</code> is in use).
 </p>
 <a name="IDX189"></a>
 </dd>
-<dt><code> $<i></i>Log$</code></dt>
+<dt> <code>$<i></i>Log$</code></dt>
 <dd><p>The log message supplied during commit, preceded by a
 header containing the <small>RCS</small> filename, the revision
 number, the author, and the date (UTC).  Existing log
@@ -192,7 +192,7 @@ file contains:
 </pre></td></tr></table>
 
 <p>then additional lines which are added when expanding
-the <code>$Log</code> keyword will be preceded by `<samp>   * </samp>'.
+the <code>$Log</code> keyword will be preceded by <samp>`   * '</samp>.
 Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 <em>comment leader</em> from the <small>RCS</small> file is not used.
 The <code>$Log</code> keyword is useful for
@@ -202,32 +202,32 @@ See section <a href="#SEC104">Problems with the $<i></i>Log$ keyword.</a>.
 </p>
 <a name="IDX190"></a>
 </dd>
-<dt><code> $<i></i>RCSfile$</code></dt>
+<dt> <code>$<i></i>RCSfile$</code></dt>
 <dd><p>The name of the RCS file without a path.
 </p>
 <a name="IDX191"></a>
 </dd>
-<dt><code> $<i></i>Revision$</code></dt>
+<dt> <code>$<i></i>Revision$</code></dt>
 <dd><p>The revision number assigned to the revision.
 </p>
 <a name="IDX192"></a>
 </dd>
-<dt><code> $<i></i>Source$</code></dt>
+<dt> <code>$<i></i>Source$</code></dt>
 <dd><p>The full pathname of the RCS file.
 </p>
 <a name="IDX193"></a>
 </dd>
-<dt><code> $<i></i>State$</code></dt>
+<dt> <code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
 assigned with <code>cvs admin -s</code>--see <a href="cvs_16.html#SEC121">admin options</a>.
 </p>
 <a name="IDX194"></a>
 </dd>
-<dt><code> Local keyword</code></dt>
-<dd><p>The <code>LocalKeyword</code> option in the `<tt>CVSROOT/config</tt>' file
+<dt> <code>Local keyword</code></dt>
+<dd><p>The <code>LocalKeyword</code> option in the <tt>`CVSROOT/config'</tt> file
 may be used to specify a local keyword which is to be
 used as an alias for one of the other keywords. For
-example, if the `<tt>CVSROOT/config</tt>' file contains
+example, if the <tt>`CVSROOT/config'</tt> file contains
 a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a
 file with the local keyword $<i></i>MYBSD$ will be
 expanded as if it were a $<i></i>CVSHeader$ keyword. If
@@ -265,7 +265,7 @@ conflicts that arise during an import of a new version.
 </p>
 <p>All keyword expansion except the local keyword may be
 disabled using the <code>KeywordExpansion</code> option in
-the `<tt>CVSROOT/config</tt>' file--see 
+the <tt>`CVSROOT/config'</tt> file--see 
 <a href="#SEC103">Configuring Keyord Expansion</a> for more details.
 </p>
 </dd>
@@ -358,27 +358,27 @@ magic <small>SCCS</small> phrase, like this:
 
 <p>Keyword substitution has its disadvantages.  Sometimes
 you might want the literal text string
-`<samp>$<i></i>Author$</samp>' to appear inside a file without
+<samp>`$<i></i>Author$'</samp> to appear inside a file without
 <small>CVS</small> interpreting it as a keyword and expanding it
-into something like `<samp>$<i></i>Author: ceder $</samp>'.
+into something like <samp>`$<i></i>Author: ceder $'</samp>.
 </p>
 <p>There is unfortunately no way to selectively turn off
-keyword substitution.  You can use `<samp>-ko</samp>'
+keyword substitution.  You can use <samp>`-ko'</samp>
 (see section <a href="#SEC102">Substitution modes</a>) to turn off keyword
 substitution entirely.
 </p>
 <p>In many cases you can avoid using keywords in
 the source, even though they appear in the final
 product.  For example, the source for this manual
-contains `<samp>$@asis{}Author$</samp>' whenever the text
-`<samp>$<i></i>Author$</samp>' should appear.  In <code>nroff</code>
+contains <samp>`$@asis{}Author$'</samp> whenever the text
+<samp>`$<i></i>Author$'</samp> should appear.  In <code>nroff</code>
 and <code>troff</code> you can embed the null-character
 <code>\&amp;</code> inside the keyword for a similar effect.
 </p>
 <p>It is also possible to specify an explicit list of
 keywords to include or exclude using the
 <code>KeywordExpand</code> option in the
-`<tt>CVSROOT/config</tt>' file-see <a href="#SEC103">Configuring Keyord Expansion</a>
+<tt>`CVSROOT/config'</tt> file-see <a href="#SEC103">Configuring Keyord Expansion</a>
 for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option-see
 <a href="#SEC99">Keyword List</a>.
@@ -406,30 +406,30 @@ for use with the <code>LocalKeyword</code> option-see
 
 <p>Each file has a stored default substitution mode, and
 each working directory copy of a file also has a
-substitution mode.  The former is set by the `<samp>-k</samp>'
+substitution mode.  The former is set by the <samp>`-k'</samp>
 option to <code>cvs add</code> and <code>cvs admin</code>; the
-latter is set by the `<samp>-k</samp>' or `<samp>-A</samp>' options to <code>cvs
+latter is set by the <samp>`-k'</samp> or <samp>`-A'</samp> options to <code>cvs
 checkout</code> or <code>cvs update</code>.  <code>cvs diff</code> also
-has a `<samp>-k</samp>' option.  For some examples,
+has a <samp>`-k'</samp> option.  For some examples,
 see <a href="cvs_9.html#SEC80">Handling binary files</a>, and <a href="cvs_5.html#SEC64">Merging and keywords</a>.
 </p>
 <p>The modes available are:
 </p>
 <dl compact="compact">
-<dt>`<samp> -kkv</samp>'</dt>
+<dt> <samp>`-kkv'</samp></dt>
 <dd><p>Generate keyword strings using the default form, e.g.
 <code>$<i></i>Revision: 5.7 $</code> for the <code>Revision</code>
 keyword.
 </p>
 </dd>
-<dt>`<samp> -kkvl</samp>'</dt>
-<dd><p>Like `<samp>-kkv</samp>', except that a locker's name is always
+<dt> <samp>`-kkvl'</samp></dt>
+<dd><p>Like <samp>`-kkv'</samp>, except that a locker's name is always
 inserted if the given revision is currently locked.
 The locker's name is only relevant if <code>cvs admin
 -l</code> is in use.
 </p>
 </dd>
-<dt>`<samp> -kk</samp>'</dt>
+<dt> <samp>`-kk'</samp></dt>
 <dd><p>Generate only keyword names in keyword strings; omit
 their values.  For example, for the <code>Revision</code>
 keyword, generate the string <code>$<i></i>Revision$</code>
@@ -439,7 +439,7 @@ substitution when comparing different revisions of a
 file (see section <a href="cvs_5.html#SEC64">Merging and keywords</a>).
 </p>
 </dd>
-<dt>`<samp> -ko</samp>'</dt>
+<dt> <samp>`-ko'</samp></dt>
 <dd><p>Generate the old keyword string, present in the working
 file just before it was checked in.  For example, for
 the <code>Revision</code> keyword, generate the string
@@ -448,21 +448,21 @@ the <code>Revision</code> keyword, generate the string
 string appeared when the file was checked in.
 </p>
 </dd>
-<dt>`<samp> -kb</samp>'</dt>
-<dd><p>Like `<samp>-ko</samp>', but also inhibit conversion of line
+<dt> <samp>`-kb'</samp></dt>
+<dd><p>Like <samp>`-ko'</samp>, but also inhibit conversion of line
 endings between the canonical form in which they are
 stored in the repository (linefeed only), and the form
 appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
 only to terminate lines, this is very similar to
-`<samp>-ko</samp>'.  For more information on binary files, see
+<samp>`-ko'</samp>.  For more information on binary files, see
 <a href="cvs_9.html#SEC80">Handling binary files</a>.  In <small>CVS</small> version 1.12.2 and later
-`<samp>-kb</samp>', as set by <code>cvs add</code>, <code>cvs admin</code>, or
-<code>cvs import</code> may not be overridden by a `<samp>-k</samp>' option
+<samp>`-kb'</samp>, as set by <code>cvs add</code>, <code>cvs admin</code>, or
+<code>cvs import</code> may not be overridden by a <samp>`-k'</samp> option
 specified on the command line.
 </p>
 </dd>
-<dt>`<samp> -kv</samp>'</dt>
+<dt> <samp>`-kv'</samp></dt>
 <dd><p>Generate only keyword values for keyword strings.  For
 example, for the <code>Revision</code> keyword, generate the string
 <code>5.7</code> instead of <code>$<i></i>Revision: 5.7 $</code>.
@@ -473,7 +473,7 @@ further keyword substitution cannot be performed once
 the keyword names are removed, so this option should be
 used with care.
 </p>
-<p>One often would like to use `<samp>-kv</samp>' with <code>cvs
+<p>One often would like to use <samp>`-kv'</samp> with <code>cvs
 export</code>--see section <a href="cvs_16.html#SEC135">export--Export sources from CVS, similar to checkout</a>.  But be aware that doesn't
 handle an export containing binary files correctly.
 </p>
@@ -519,7 +519,7 @@ expansion of all keywords except the configured local
 keyword.
 </p>
 <p>The <code>KeywordExpansion</code> option in the
-`<tt>CVSROOT/config</tt>' file is intended to allow for the
+<tt>`CVSROOT/config'</tt> file is intended to allow for the
 either the explicit exclusion of a keyword or list of
 keywords, or for the explicit inclusion of a keyword or
 a list of keywords. This list may include the
@@ -529,7 +529,7 @@ a list of keywords. This list may include the
 <code>=</code> and the next character may either be <code>i</code>
 to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
-the `<tt>CVSROOT/config</tt>' file:
+the <tt>`CVSROOT/config'</tt> file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">        # Add a &quot;MyBSD&quot; keyword and restrict keyword
         # expansion
@@ -564,7 +564,7 @@ for a repository that is configured in that manner.
 <p>If there is a desire to not have any RCS keywords
 expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
-using the `<tt>CVSROOT/config</tt>' line:
+using the <tt>`CVSROOT/config'</tt> line:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">	# Do not expand any RCS keywords
 	KeywordExpand=i

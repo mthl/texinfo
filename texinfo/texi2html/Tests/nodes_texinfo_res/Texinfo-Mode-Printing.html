@@ -87,56 +87,56 @@ recentering the display of the buffer in which the operations
 occur.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-t C-b</kbd></dt>
-<dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
+<dt> <kbd>C-c C-t C-b</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-buffer</kbd></dt>
 <dd><p>Run <code>texi2dvi</code> on the current buffer.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-r</kbd></dt>
-<dt><kbd> M-x texinfo-tex-region</kbd></dt>
+<dt> <kbd>C-c C-t C-r</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-region</kbd></dt>
 <dd><p>Run TeX on the current region.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-i</kbd></dt>
-<dt><kbd> M-x texinfo-texindex</kbd></dt>
+<dt> <kbd>C-c C-t C-i</kbd></dt>
+<dt> <kbd>M-x texinfo-texindex</kbd></dt>
 <dd><p>Sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-p</kbd></dt>
-<dt><kbd> M-x texinfo-tex-print</kbd></dt>
+<dt> <kbd>C-c C-t C-p</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-print</kbd></dt>
 <dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
 <code>texinfo-tex-buffer</code>.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-q</kbd></dt>
-<dt><kbd> M-x tex-show-print-queue</kbd></dt>
+<dt> <kbd>C-c C-t C-q</kbd></dt>
+<dt> <kbd>M-x tex-show-print-queue</kbd></dt>
 <dd><p>Show the print queue.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-d</kbd></dt>
-<dt><kbd> M-x texinfo-delete-from-print-queue</kbd></dt>
+<dt> <kbd>C-c C-t C-d</kbd></dt>
+<dt> <kbd>M-x texinfo-delete-from-print-queue</kbd></dt>
 <dd><p>Delete a job from the print queue; you will be prompted for the job
 number shown by a preceding <kbd>C-c C-t C-q</kbd> command
 (<code>texinfo-show-tex-print-queue</code>).
 </p>
 </dd>
-<dt><kbd> C-c C-t C-k</kbd></dt>
-<dt><kbd> M-x tex-kill-job</kbd></dt>
+<dt> <kbd>C-c C-t C-k</kbd></dt>
+<dt> <kbd>M-x tex-kill-job</kbd></dt>
 <dd><p>Kill the currently running TeX job started by either
 <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
 process running in the Texinfo shell buffer.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-x</kbd></dt>
-<dt><kbd> M-x texinfo-quit-job</kbd></dt>
+<dt> <kbd>C-c C-t C-x</kbd></dt>
+<dt> <kbd>M-x texinfo-quit-job</kbd></dt>
 <dd><p>Quit a TeX formatting job that has stopped because of an error by
 sending an <kbd>x</kbd> to it.  When you do this, TeX preserves a record
-of what it did in a `<tt>.log</tt>' file.
+of what it did in a <tt>`.log'</tt> file.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-l</kbd></dt>
-<dt><kbd> M-x tex-recenter-output-buffer</kbd></dt>
+<dt> <kbd>C-c C-t C-l</kbd></dt>
+<dt> <kbd>M-x tex-recenter-output-buffer</kbd></dt>
 <dd><p>Redisplay the shell buffer in which the TeX printing and formatting
 commands are run to show its most recent output.
 </p></dd>
@@ -150,12 +150,12 @@ C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
 </pre></td></tr></table>
 <p>The Texinfo mode TeX formatting commands start a subshell in Emacs
-called the `<tt>*tex-shell*</tt>'.  The <code>texinfo-tex-command</code>,
+called the <tt>`*tex-shell*'</tt>.  The <code>texinfo-tex-command</code>,
 <code>texinfo-texindex-command</code>, and <code>tex-dvi-print-command</code>
 commands are all run in this shell.
 </p>
-<p>You can watch the commands operate in the `<samp>*tex-shell*</samp>' buffer,
-and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
+<p>You can watch the commands operate in the <samp>`*tex-shell*'</samp> buffer,
+and you can switch to and from and use the <samp>`*tex-shell*'</samp> buffer
 as you would any other shell buffer.
 </p>
 <p>The formatting and print commands depend on the values of several variables.
@@ -175,14 +175,14 @@ tex-show-queue-command                    &quot;lpq&quot;
 </pre></td></tr></table>
 <p>You can change the values of these variables with the <kbd>M-x
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
-(see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
+(see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your <tt>`.emacs'</tt> initialization file
 (see <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
 </p>
 <a name="IDX333"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html#Easy-Customization">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
-be found in the `<samp>Development/Docs/Texinfo</samp>' group, once you invoke
+be found in the <samp>`Development/Docs/Texinfo'</samp> group, once you invoke
 the <kbd>M-x customize</kbd> command.
 </p>
 

@@ -190,14 +190,14 @@ delimiter, you can jump from chapter title to chapter title with the
 </p>
 <p>You may name a Texinfo file however you wish, but the convention is to
 end a Texinfo file name with one of the extensions
-`<tt>.texinfo</tt>', `<tt>.texi</tt>', `<tt>.txi</tt>', or `<tt>.tex</tt>'.  A longer
+<tt>`.texinfo'</tt>, <tt>`.texi'</tt>, <tt>`.txi'</tt>, or <tt>`.tex'</tt>.  A longer
 extension is preferred, since it is explicit, but a shorter extension
 may be necessary for operating systems that limit the length of file
 names.  GNU Emacs automatically enters Texinfo mode when you visit a
-file with a `<tt>.texinfo</tt>', `<tt>.texi</tt>' or `<tt>.txi</tt>'
+file with a <tt>`.texinfo'</tt>, <tt>`.texi'</tt> or <tt>`.txi'</tt>
 extension.  Also, Emacs switches to Texinfo mode
 when you visit a
-file that has `<samp>-*-texinfo-*-</samp>' in its first line.  If ever you are
+file that has <samp>`-*-texinfo-*-'</samp> in its first line.  If ever you are
 in another mode and wish to switch to Texinfo mode, type <code>M-x
 texinfo-mode</code>.
 </p>
@@ -235,45 +235,45 @@ keystrokes.
 first letter of the @-command:
 </p>
 <dl compact="compact">
-<dt><kbd>  C-c C-c c</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@code</kbd></dt>
+<dt>  <kbd>C-c C-c c</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@code</kbd></dt>
 <dd><a name="IDX32"></a>
 <p>Insert <code>@code{}</code> and put the
 cursor between the braces.
 </p>
 </dd>
-<dt><kbd>  C-c C-c d</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@dfn</kbd></dt>
+<dt>  <kbd>C-c C-c d</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@dfn</kbd></dt>
 <dd><a name="IDX33"></a>
 <p>Insert <code>@dfn{}</code> and put the
 cursor between the braces.
 </p>
 </dd>
-<dt><kbd>  C-c C-c e</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@end</kbd></dt>
+<dt>  <kbd>C-c C-c e</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@end</kbd></dt>
 <dd><a name="IDX34"></a>
 <p>Insert <code>@end</code> and attempt to insert the correct following word,
-such as `<samp>example</samp>' or `<samp>table</samp>'.  (This command does not handle
+such as <samp>`example'</samp> or <samp>`table'</samp>.  (This command does not handle
 nested lists correctly, but inserts the word appropriate to the
 immediately preceding list.)
 </p>
 </dd>
-<dt><kbd>  C-c C-c i</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@item</kbd></dt>
+<dt>  <kbd>C-c C-c i</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@item</kbd></dt>
 <dd><a name="IDX35"></a>
 <p>Insert <code>@item</code> and put the
 cursor at the beginning of the next line.
 </p>
 </dd>
-<dt><kbd>  C-c C-c k</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@kbd</kbd></dt>
+<dt>  <kbd>C-c C-c k</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@kbd</kbd></dt>
 <dd><a name="IDX36"></a>
 <p>Insert <code>@kbd{}</code> and put the
 cursor between the braces.
 </p>
 </dd>
-<dt><kbd>  C-c C-c n</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@node</kbd></dt>
+<dt>  <kbd>C-c C-c n</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@node</kbd></dt>
 <dd><a name="IDX37"></a>
 <p>Insert <code>@node</code> and a comment line
 listing the sequence for the `Next',
@@ -281,50 +281,50 @@ listing the sequence for the `Next',
 Leave point after the <code>@node</code>.
 </p>
 </dd>
-<dt><kbd>  C-c C-c o</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@noindent</kbd></dt>
+<dt>  <kbd>C-c C-c o</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@noindent</kbd></dt>
 <dd><a name="IDX38"></a>
 <p>Insert <code>@noindent</code> and put the
 cursor at the beginning of the next line.
 </p>
 </dd>
-<dt><kbd>  C-c C-c s</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@samp</kbd></dt>
+<dt>  <kbd>C-c C-c s</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@samp</kbd></dt>
 <dd><a name="IDX39"></a>
 <p>Insert <code>@samp{}</code> and put the
 cursor between the braces.
 </p>
 </dd>
-<dt><kbd>  C-c C-c t</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@table</kbd></dt>
+<dt>  <kbd>C-c C-c t</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@table</kbd></dt>
 <dd><a name="IDX40"></a>
 <p>Insert <code>@table</code> followed by a <kbd>SPC</kbd>
 and leave the cursor after the <kbd>SPC</kbd>.
 </p>
 </dd>
-<dt><kbd>  C-c C-c v</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@var</kbd></dt>
+<dt>  <kbd>C-c C-c v</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@var</kbd></dt>
 <dd><a name="IDX41"></a>
 <p>Insert <code>@var{}</code> and put the
 cursor between the braces.
 </p>
 </dd>
-<dt><kbd>  C-c C-c x</kbd></dt>
-<dt><kbd> M-x texinfo-insert-@example</kbd></dt>
+<dt>  <kbd>C-c C-c x</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-@example</kbd></dt>
 <dd><a name="IDX42"></a>
 <p>Insert <code>@example</code> and put the
 cursor at the beginning of the next line.
 </p>
 </dd>
-<dt><kbd> C-c C-c {</kbd></dt>
-<dt><kbd> M-x texinfo-insert-braces</kbd></dt>
+<dt> <kbd>C-c C-c {</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-braces</kbd></dt>
 <dd><a name="IDX43"></a>
 <p>Insert <code>{}</code> and put the cursor between the braces.
 </p>
 </dd>
-<dt><kbd> C-c C-c }</kbd></dt>
-<dt><kbd> C-c C-c ]</kbd></dt>
-<dt><kbd> M-x up-list</kbd></dt>
+<dt> <kbd>C-c C-c }</kbd></dt>
+<dt> <kbd>C-c C-c ]</kbd></dt>
+<dt> <kbd>M-x up-list</kbd></dt>
 <dd><a name="IDX44"></a>
 <p>Move from between a pair of braces forward past the closing brace.
 Typing <kbd>C-c C-c ]</kbd> is easier than typing <kbd>C-c C-c }</kbd>, which
@@ -337,7 +337,7 @@ move out from between braces by typing <kbd>C-f</kbd>.)
 <em>existing</em> word, position the cursor in front of the word and type
 <kbd>C-u 1 C-c C-c c</kbd>.  This makes it easy to edit existing plain text.
 The value of the prefix argument tells Emacs how many words following
-point to include between braces--`<samp>1</samp>' for one word, `<samp>2</samp>' for
+point to include between braces--<samp>`1'</samp> for one word, <samp>`2'</samp> for
 two words, and so on.  Use a negative argument to enclose the previous
 word or words.  If you do not specify a prefix argument, Emacs inserts
 the @-command string and positions the cursor between the braces.  This
@@ -348,7 +348,7 @@ within one line, such as <code>@kbd</code> and <code>@var</code>.
 with which different @-commands are used in the <cite>GNU Emacs
 Manual</cite> and the <cite>GDB Manual</cite>.  If you wish to add your own insert
 commands, you can bind a keyboard macro to a key, use abbreviations,
-or extend the code in `<tt>texinfo.el</tt>'.
+or extend the code in <tt>`texinfo.el'</tt>.
 </p>
 <a name="IDX45"></a>
 <a name="IDX46"></a>
@@ -400,24 +400,24 @@ shows the section structure of a Texinfo file by listing the lines
 that begin with the @-commands for <code>@chapter</code>,
 <code>@section</code>, and the like.  It constructs what amounts
 to a table of contents.  These lines are displayed in another buffer
-called the `<samp>*Occur*</samp>' buffer.  In that buffer, you can position
+called the <samp>`*Occur*'</samp> buffer.  In that buffer, you can position
 the cursor over one of the lines and use the <kbd>C-c C-c</kbd> command
 (<code>occur-mode-goto-occurrence</code>), to jump to the corresponding spot
 in the Texinfo file.
 </p>
 <dl compact="compact">
-<dt><kbd>  C-c C-s</kbd></dt>
-<dt><kbd> M-x texinfo-show-structure</kbd></dt>
+<dt>  <kbd>C-c C-s</kbd></dt>
+<dt> <kbd>M-x texinfo-show-structure</kbd></dt>
 <dd><a name="IDX48"></a>
 <p>Show the <code>@chapter</code>, <code>@section</code>, and such lines of a
 Texinfo file.
 </p>
 </dd>
-<dt><kbd>  C-c C-c</kbd></dt>
-<dt><kbd> M-x occur-mode-goto-occurrence</kbd></dt>
+<dt>  <kbd>C-c C-c</kbd></dt>
+<dt> <kbd>M-x occur-mode-goto-occurrence</kbd></dt>
 <dd><a name="IDX49"></a>
 <p>Go to the line in the Texinfo file corresponding to the line under the
-cursor in the `<tt>*Occur*</tt>' buffer.
+cursor in the <tt>`*Occur*'</tt> buffer.
 </p></dd>
 </dl>
 
@@ -550,8 +550,8 @@ node and menu in the whole Texinfo file.
 <p>The <code>texinfo-master-menu</code> command is the primary command:
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-u m</kbd></dt>
-<dt><kbd> M-x texinfo-master-menu</kbd></dt>
+<dt> <kbd>C-c C-u m</kbd></dt>
+<dt> <kbd>M-x texinfo-master-menu</kbd></dt>
 <dd><a name="IDX52"></a>
 <p>Create or update a master menu that includes all the other menus
 (incorporating the descriptions from pre-existing menus, if
@@ -582,8 +582,8 @@ file.
 <p>The commands are:
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-u C-n</kbd></dt>
-<dt><kbd> M-x texinfo-update-node</kbd></dt>
+<dt> <kbd>C-c C-u C-n</kbd></dt>
+<dt> <kbd>M-x texinfo-update-node</kbd></dt>
 <dd><a name="IDX53"></a>
 <p>Insert the `Next', `Previous', and `Up' pointers for the node that point is
 within (i.e., for the <code>@node</code> line preceding point).  If the
@@ -594,8 +594,8 @@ updates all <code>@node</code> lines in the region (which is the text
 between point and mark).
 </p>
 </dd>
-<dt><kbd> C-c C-u C-m</kbd></dt>
-<dt><kbd> M-x texinfo-make-menu</kbd></dt>
+<dt> <kbd>C-c C-u C-m</kbd></dt>
+<dt> <kbd>M-x texinfo-make-menu</kbd></dt>
 <dd><a name="IDX54"></a>
 <p>Create or update the menu in the node that point is within.
 With an argument (<kbd>C-u</kbd> as prefix argument, if
@@ -610,15 +610,15 @@ in the new menu that have the same node names.  If the node names are
 different, the descriptions are not copied to the new menu.
 </p>
 </dd>
-<dt><kbd> C-c C-u C-e</kbd></dt>
-<dt><kbd> M-x texinfo-every-node-update</kbd></dt>
+<dt> <kbd>C-c C-u C-e</kbd></dt>
+<dt> <kbd>M-x texinfo-every-node-update</kbd></dt>
 <dd><a name="IDX55"></a>
 <p>Insert or update the `Next', `Previous', and `Up' pointers for every
 node in the buffer.
 </p>
 </dd>
-<dt><kbd> C-c C-u C-a</kbd></dt>
-<dt><kbd> M-x texinfo-all-menus-update</kbd></dt>
+<dt> <kbd>C-c C-u C-a</kbd></dt>
+<dt> <kbd>M-x texinfo-all-menus-update</kbd></dt>
 <dd><a name="IDX56"></a>
 <p>Create or update all the menus in the buffer.  With an argument
 (<kbd>C-u</kbd> as prefix argument, if interactive), first insert
@@ -712,7 +712,7 @@ called `Conventions'.  The `Comments' section is within the `Overview'
 node, which is specified by the `Up' pointer.  (Instead of an
 <code>@comment</code> line, you may also write an <code>@ifinfo</code> line.)
 </p>
-<p>If a file has a `Top' node, it must be called `<samp>top</samp>' or `<samp>Top</samp>'
+<p>If a file has a `Top' node, it must be called <samp>`top'</samp> or <samp>`Top'</samp>
 and be the first node in the file.
 </p>
 <p>The menu updating commands create a menu of sections within a chapter,
@@ -754,7 +754,7 @@ the file.
 possesses several less frequently used updating commands:
 </p>
 <dl compact="compact">
-<dt><kbd> M-x texinfo-insert-node-lines</kbd></dt>
+<dt> <kbd>M-x texinfo-insert-node-lines</kbd></dt>
 <dd><a name="IDX57"></a>
 <p>Insert <code>@node</code> lines before the <code>@chapter</code>,
 <code>@section</code>, and other sectioning commands wherever they are
@@ -779,7 +779,7 @@ menu entries, a different action.  However, in both cases, you need to
 edit the inserted text.
 </p>
 </dd>
-<dt><kbd> M-x texinfo-multiple-files-update</kbd></dt>
+<dt> <kbd>M-x texinfo-multiple-files-update</kbd></dt>
 <dd><a name="IDX58"></a>
 <p>Update nodes and menus in a document built from several separate files.
 With <kbd>C-u</kbd> as a prefix argument, create and insert a master menu in
@@ -791,7 +791,7 @@ described in the appendix on <code>@include</code> files.
 See section <a href="texinfo_25.html#SEC299"><code>texinfo-multiple-files-update</code></a>.
 </p>
 </dd>
-<dt><kbd> M-x texinfo-indent-menu-description</kbd></dt>
+<dt> <kbd>M-x texinfo-indent-menu-description</kbd></dt>
 <dd><a name="IDX59"></a>
 <p>Indent every description in the menu following point to the specified
 column.  You can use this command to give yourself more space for
@@ -802,7 +802,7 @@ does not indent the second and subsequent lines of a multi-line
 description.
 </p>
 </dd>
-<dt><kbd> M-x texinfo-sequential-node-update</kbd></dt>
+<dt> <kbd>M-x texinfo-sequential-node-update</kbd></dt>
 <dd><a name="IDX60"></a>
 <p>Insert the names of the nodes immediately following and preceding the
 current node as the `Next' or `Previous' pointers regardless of those
@@ -848,10 +848,10 @@ want to format only part of a file--that is, a region.
 <dl compact="compact">
 <dd><a name="IDX61"></a>
 </dd>
-<dt><kbd>  C-c C-e C-r</kbd></dt>
-<dt><kbd> M-x texinfo-format-region</kbd></dt>
-<dt><kbd> C-c C-m C-r</kbd></dt>
-<dt><kbd> M-x makeinfo-region</kbd></dt>
+<dt>  <kbd>C-c C-e C-r</kbd></dt>
+<dt> <kbd>M-x texinfo-format-region</kbd></dt>
+<dt> <kbd>C-c C-m C-r</kbd></dt>
+<dt> <kbd>M-x makeinfo-region</kbd></dt>
 <dd><p>Format the current region for Info.
 </p></dd>
 </dl>
@@ -862,10 +862,10 @@ want to format only part of a file--that is, a region.
 <dl compact="compact">
 <dd><a name="IDX62"></a>
 </dd>
-<dt><kbd>  C-c C-e C-b</kbd></dt>
-<dt><kbd> M-x texinfo-format-buffer</kbd></dt>
-<dt><kbd> C-c C-m C-b</kbd></dt>
-<dt><kbd> M-x makeinfo-buffer</kbd></dt>
+<dt>  <kbd>C-c C-e C-b</kbd></dt>
+<dt> <kbd>M-x texinfo-format-buffer</kbd></dt>
+<dt> <kbd>C-c C-m C-b</kbd></dt>
+<dt> <kbd>M-x makeinfo-buffer</kbd></dt>
 <dd><p>Format the current buffer for Info.
 </p></dd>
 </dl>
@@ -925,22 +925,22 @@ the <code>texinfo-tex-buffer</code> command to format all of a
 buffer.
 </p>
 <dl compact="compact">
-<dt><kbd>  C-c C-t C-b</kbd></dt>
-<dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
+<dt>  <kbd>C-c C-t C-b</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-buffer</kbd></dt>
 <dd><a name="IDX63"></a>
 <p>Run <code>texi2dvi</code> on the buffer.  In addition to running TeX on the
 buffer, this command automatically creates or updates indices as
 needed.
 </p>
 </dd>
-<dt><kbd>  C-c C-t C-r</kbd></dt>
-<dt><kbd> M-x texinfo-tex-region</kbd></dt>
+<dt>  <kbd>C-c C-t C-r</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-region</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Run TeX on the region.
 </p>
 </dd>
-<dt><kbd> C-c C-t C-i</kbd></dt>
-<dt><kbd> M-x texinfo-texindex</kbd></dt>
+<dt> <kbd>C-c C-t C-i</kbd></dt>
+<dt> <kbd>M-x texinfo-texindex</kbd></dt>
 <dd><p>Run <code>texindex</code> to sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.  The <code>texinfo-tex-region</code> command does
 not run <code>texindex</code> automatically; it only runs the <code>tex</code>
@@ -951,8 +951,8 @@ only when you format a buffer.  Now that the <code>texi2dvi</code> command
 exists, there is little or no need for this command.)
 </p>
 </dd>
-<dt><kbd> C-c C-t C-p</kbd></dt>
-<dt><kbd> M-x texinfo-tex-print</kbd></dt>
+<dt> <kbd>C-c C-t C-p</kbd></dt>
+<dt> <kbd>M-x texinfo-tex-print</kbd></dt>
 <dd><a name="IDX65"></a>
 <p>Print the file (or the part of the file) previously formatted with
 <code>texinfo-tex-buffer</code> or <code>texinfo-tex-region</code>.
@@ -960,7 +960,7 @@ exists, there is little or no need for this command.)
 </dl>
 
 <p>For <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code> to work, the
-file <em>must</em> start with a `<samp>\input texinfo</samp>' line and must
+file <em>must</em> start with a <samp>`\input texinfo'</samp> line and must
 include an <code>@settitle</code> line.  The file must end with <code>@bye</code>
 on a line by itself.  (When you use <code>texinfo-tex-region</code>, you must
 surround the <code>@settitle</code> line with start-of-header and
@@ -1003,13 +1003,13 @@ first letter of the @-command to be inserted.  (It might make more
 sense mnemonically to use <kbd>C-c C-i</kbd>, for `custom insert', but
 <kbd>C-c C-c</kbd> is quick to type.)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-c c       Insert `<samp>@code</samp>'.
-C-c C-c d       Insert `<samp>@dfn</samp>'.
-C-c C-c e       Insert `<samp>@end</samp>'.
-C-c C-c i       Insert `<samp>@item</samp>'.
-C-c C-c n       Insert `<samp>@node</samp>'.
-C-c C-c s       Insert `<samp>@samp</samp>'.
-C-c C-c v       Insert `<samp>@var</samp>'.
+<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-c c       Insert <samp>`@code'</samp>.
+C-c C-c d       Insert <samp>`@dfn'</samp>.
+C-c C-c e       Insert <samp>`@end'</samp>.
+C-c C-c i       Insert <samp>`@item'</samp>.
+C-c C-c n       Insert <samp>`@node'</samp>.
+C-c C-c s       Insert <samp>`@samp'</samp>.
+C-c C-c v       Insert <samp>`@var'</samp>.
 C-c C-c {       Insert braces.
 C-c C-c ]
 C-c C-c }       Move out of enclosing braces.

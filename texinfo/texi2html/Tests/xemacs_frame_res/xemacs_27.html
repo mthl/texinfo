@@ -89,7 +89,7 @@ restore that mode.  <kbd>C-c C-c</kbd> also deletes spaces from the ends of
 lines, unless you give it a numeric argument.
 </p>
 <p>  The commands used in Picture mode all work in other modes (provided the
-`<tt>picture</tt>' library is loaded), but are only  bound to keys in
+<tt>`picture'</tt> library is loaded), but are only  bound to keys in
 Picture mode.  Note that the descriptions below talk of moving &quot;one
 column&quot; and so on, but all the picture mode commands handle numeric
 arguments as their normal equivalents do.
@@ -208,30 +208,30 @@ orthogonal or diagonal directions for motion after a &quot;self-inserting&quot;
 character.  This is useful for drawing lines in the buffer.
 </p>
 <dl compact="compact">
-<dt><kbd> C-c &lt;</kbd></dt>
+<dt> <kbd>C-c &lt;</kbd></dt>
 <dd><p>Move left after insertion (<code>picture-movement-left</code>).
 </p></dd>
-<dt><kbd> C-c &gt;</kbd></dt>
+<dt> <kbd>C-c &gt;</kbd></dt>
 <dd><p>Move right after insertion (<code>picture-movement-right</code>).
 </p></dd>
-<dt><kbd> C-c ^</kbd></dt>
+<dt> <kbd>C-c ^</kbd></dt>
 <dd><p>Move up after insertion (<code>picture-movement-up</code>).
 </p></dd>
-<dt><kbd> C-c .</kbd></dt>
+<dt> <kbd>C-c .</kbd></dt>
 <dd><p>Move down after insertion (<code>picture-movement-down</code>).
 </p></dd>
-<dt><kbd> C-c `</kbd></dt>
+<dt> <kbd>C-c `</kbd></dt>
 <dd><p>Move up and left (&quot;northwest&quot;) after insertion <br>(<code>picture-movement-nw</code>).
 </p></dd>
-<dt><kbd> C-c '</kbd></dt>
+<dt> <kbd>C-c '</kbd></dt>
 <dd><p>Move up and right (&quot;northeast&quot;) after insertion <br>
 (<code>picture-movement-ne</code>).
 </p></dd>
-<dt><kbd> C-c /</kbd></dt>
+<dt> <kbd>C-c /</kbd></dt>
 <dd><p>Move down and left (&quot;southwest&quot;) after insertion
 <br>(<code>picture-movement-sw</code>).
 </p></dd>
-<dt><kbd> C-c \</kbd></dt>
+<dt> <kbd>C-c \</kbd></dt>
 <dd><p>Move down and right (&quot;southeast&quot;) after insertion
 <br>(<code>picture-movement-se</code>).
 </p></dd>
@@ -321,20 +321,20 @@ text in ways that fit with the quarter-plane model.  The standard rectangle
 commands may also be useful (see section <a href="xemacs_12.html#SEC101">Rectangles</a>).
 </p>
 <dl compact="compact">
-<dt><kbd> C-c C-k</kbd></dt>
+<dt> <kbd>C-c C-k</kbd></dt>
 <dd><p>Clear out the region-rectangle (<code>picture-clear-rectangle</code>).  With
 argument, kill it.
 </p></dd>
-<dt><kbd> C-c C-w <var>r</var></kbd></dt>
+<dt> <kbd>C-c C-w <var>r</var></kbd></dt>
 <dd><p>Similar but save rectangle contents in register <var>r</var> first
 (<code>picture-clear-rectangle-to-register</code>).
 </p></dd>
-<dt><kbd> C-c C-y</kbd></dt>
+<dt> <kbd>C-c C-y</kbd></dt>
 <dd><p>Copy last killed rectangle into the buffer by overwriting, with upper
 left corner at point (<code>picture-yank-rectangle</code>).  With argument,
 insert instead.
 </p></dd>
-<dt><kbd> C-c C-x <var>r</var></kbd></dt>
+<dt> <kbd>C-c C-x <var>r</var></kbd></dt>
 <dd><p>Similar, but use the rectangle in register <var>r</var><br>
 (<code>picture-yank-rectangle-from-register</code>).
 </p></dd>

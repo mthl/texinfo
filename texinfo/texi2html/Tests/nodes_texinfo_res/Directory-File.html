@@ -78,15 +78,15 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3 class="subsection"> 20.2.1 The Directory File `<tt>dir</tt>' </h3>
+<h3 class="subsection"> 20.2.1 The Directory File <tt>`dir'</tt> </h3>
 
-<p>For Info to work, the `<tt>info</tt>' directory must contain a file that
+<p>For Info to work, the <tt>`info'</tt> directory must contain a file that
 serves as a top level directory for the Info system.  By convention,
-this file is called `<tt>dir</tt>'.  (You can find the location of this file
+this file is called <tt>`dir'</tt>.  (You can find the location of this file
 within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
-<kbd>C-x C-f</kbd> to see the pathname to the `<tt>info</tt>' directory.)
+<kbd>C-x C-f</kbd> to see the pathname to the <tt>`info'</tt> directory.)
 </p>
-<p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
+<p>The <tt>`dir'</tt> file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
 this:
 </p>
@@ -104,9 +104,9 @@ that is named in parentheses.  (The menu entry does not need to
 specify the `Top' node, since Info goes to the `Top' node if no node
 name is mentioned.  See section <a href="Other-Info-Files.html#SEC103">Nodes in Other Info Files</a>.)
 </p>
-<p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
-`<tt>info</tt>' file and the `<samp>Emacs</samp>' entry points to the `Top' node
-of the `<tt>emacs</tt>' file.
+<p>Thus, the <samp>`Info'</samp> entry points to the `Top' node of the
+<tt>`info'</tt> file and the <samp>`Emacs'</samp> entry points to the `Top' node
+of the <tt>`emacs'</tt> file.
 </p>
 <p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
@@ -115,9 +115,9 @@ node of the Emacs manual looks like this in Info:
 <table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 
-<p>In this case, the `<tt>dir</tt>' file name is written in upper case
+<p>In this case, the <tt>`dir'</tt> file name is written in upper case
 letters--it can be written in either upper or lower case.  This is not
-true in general, it is a special case for `<tt>dir</tt>'.
+true in general, it is a special case for <tt>`dir'</tt>.
 </p>
 
 <hr size="1">
