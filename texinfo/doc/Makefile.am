@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.15 2003-11-24 15:11:06 karl Exp $
+# $Id: Makefile.am,v 1.16 2003-11-24 16:32:50 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -27,7 +27,7 @@ TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex pdfcolor.tex texinfo.tex \
              fdl.texi \
-	     $(man_MANS) $(noinst_SCRIPTS) $(TXI_XLATE)
+	     $(man_MANS) $(TXI_XLATE)
 
 install-data-local:
 	@echo
