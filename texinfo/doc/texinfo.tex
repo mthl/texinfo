@@ -3062,6 +3062,7 @@ width0pt\relax} \fi
   \def\definedummyletter##1{%
     \expandafter\def\csname ##1\endcsname{\realbackslash ##1}%
   }%
+  \let\definedummyaccent\definedummyletter
   %
   % Do the redefinitions.
   \commondummies
@@ -3084,6 +3085,7 @@ width0pt\relax} \fi
   \def\definedummyletter##1{%
     \expandafter\def\csname ##1\endcsname{@##1}%
   }%
+  \let\definedummyaccent\definedummyletter
   %
   % Do the redefinitions.
   \commondummies
@@ -3164,18 +3166,18 @@ width0pt\relax} \fi
   \gdef\commondummiesnofonts{%
     % Control letters and accents.
     \definedummyletter{!}%
-    \definedummyletter{"}%
-    \definedummyletter{'}%
+    \definedummyaccent{"}%
+    \definedummyaccent{'}%
     \definedummyletter{*}%
-    \definedummyletter{,}%
+    \definedummyaccent{,}%
     \definedummyletter{.}%
     \definedummyletter{/}%
     \definedummyletter{:}%
-    \definedummyletter{=}%
+    \definedummyaccent{=}%
     \definedummyletter{?}%
-    \definedummyletter{^}%
-    \definedummyletter{`}%
-    \definedummyletter{~}%
+    \definedummyaccent{^}%
+    \definedummyaccent{`}%
+    \definedummyaccent{~}%
     \definedummyword{u}%
     \definedummyword{v}%
     \definedummyword{H}%
@@ -3223,13 +3225,16 @@ width0pt\relax} \fi
 % would be for a given command (usually its argument).
 %
 \def\indexnofonts{%
-  \def\definedummyword##1{%
+  % Accent commands should become @asis.
+  \def\definedummyaccent##1{%
     \expandafter\let\csname ##1\endcsname\asis
   }%
-  % We can just ignore the accent commands and other control letters.
+  % We can just ignore other control letters.
   \def\definedummyletter##1{%
     \expandafter\def\csname ##1\endcsname{}%
   }%
+  % Hopefully, all control words can become @asis.
+  \let\definedummyword\definedummyaccent
   %
   \commondummiesnofonts
   %
