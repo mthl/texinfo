@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
+@c $Id: texinfo.txi,v 1.69 2003-09-16 23:00:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8165,14 +8165,12 @@ for emphasis.
 For example,
 
 @example
-@group
 @@cartouche
 @@example
 % pwd
 /usr/local/share/emacs
 @@end example
 @@end cartouche
-@end group
 @end example
 
 @noindent
@@ -8182,19 +8180,18 @@ printed manual.
 In a printed manual or in HTML output, the example looks like this (if
 you're reading this in Info, you'll see the @code{@@cartouche} had no effect):
 
-@group
 @cartouche
 @example
 % pwd
 /usr/local/lib/emacs/info
 @end example
 @end cartouche
-@end group
 
 For proper output in HTML, it's necessary to put the
 @code{@@cartouche} around the @code{@@example}, and not the other way
 around.  This limitation of @command{makeinfo} may be removed one day.
 
+@code{@@cartouche} also implies @code{@@group} (@pxref{group}).
 
 @node Lists and Tables
 @chapter Lists and Tables
@@ -17235,7 +17232,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
+$Id: texinfo.txi,v 1.69 2003-09-16 23:00:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17298,7 +17295,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.68 2003-09-12 13:42:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.69 2003-09-16 23:00:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
