@@ -1,3 +1,9 @@
+2003-09-25  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_strong): warn if argument is exactly
+	"Note:", since that conflicts with Info usage.  Suggestion from
+	rms.
+
 2003-09-24  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\dosubind): must propagate penalty after all,

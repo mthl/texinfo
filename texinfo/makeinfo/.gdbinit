@@ -208,3 +208,6 @@ set args -o - tests/defxcond.txi
 
 # xml doesn't handle aliases.
 set args --xml -o - $ttests/alias.tex
+
+# warn if @strong{Note:}.
+set args -o - $ttests/markup.tex
