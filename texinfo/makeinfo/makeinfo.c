@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.58 2004-04-11 17:56:47 karl Exp $
+   $Id: makeinfo.c,v 1.59 2004-04-29 12:00:19 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -183,7 +183,8 @@ remember_error (void)
     {
       fprintf (stderr, _("Too many errors!  Gave up.\n"));
       flush_file_stack ();
-      cm_bye ();
+      if (errors_printed - max_error_level < 2)
+	cm_bye ();
       xexit (1);
     }
 }
