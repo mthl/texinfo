@@ -1,5 +1,8 @@
 2002-11-14    <karl@gnu.org>
 
+	* doc/texinfo.txi (math): emphasize that makeinfo does not interpret
+	the arg.
+
 	* config.{guess,sub}: update from prep.
 
 2002-11-13    <karl@gnu.org>
