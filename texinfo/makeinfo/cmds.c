@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.53 2004-11-22 23:57:33 karl Exp $
+   $Id: cmds.c,v 1.54 2004-11-26 00:48:35 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -282,6 +282,7 @@ COMMAND command_table[] = {
   { "ringaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "rmacro", cm_rmacro, NO_BRACE_ARGS },
   { "samp", cm_code, BRACE_ARGS },
+  { "sansserif", cm_sansserif, BRACE_ARGS },
   { "sc", cm_sc, BRACE_ARGS },
   { "section", cm_section, NO_BRACE_ARGS },
   { "set", cm_set, NO_BRACE_ARGS },
@@ -1164,7 +1165,7 @@ cm_slanted (int arg)
   if (docbook && !filling_enabled && !printing_index)
     xml_insert_element (LINEANNOTATION, arg);
   else if (xml)
-    xml_insert_element (I, arg);
+    xml_insert_element (SLANTED, arg);
   else if (html)
     insert_html_tag (arg, "i");
   else
@@ -1199,6 +1200,21 @@ cm_r (int arg)
     xml_insert_element (R, arg);
   else if (html)
     insert_html_tag_with_attribute (arg, "span", "class=\"roman\"");
+  else
+    not_fixed_width (arg);
+}
+
+void
+cm_sansserif (int arg)
+{
+  /* See cm_i comments.  */
+  extern int printing_index;
+  if (docbook && !filling_enabled && !printing_index)
+    xml_insert_element (LINEANNOTATION, arg);
+  else if (xml)
+    xml_insert_element (SANSSERIF, arg);
+  else if (html)
+    insert_html_tag_with_attribute (arg, "span", "class=\"sansserif\"");
   else
     not_fixed_width (arg);
 }

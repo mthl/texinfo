@@ -1,5 +1,15 @@
 2004-11-25  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Fonts): document new command @sansserif.
+	* doc/texinfo.tex (\sansserif): new command.
+	* makeinfo/cmds.h (cm_sansserif): new cmd.
+	* makeinfo/cmds.c (cm_sansserif): new cmd.
+	(command_table): add it.
+	* makeinfo/texinfo.dtd (Inline.fonts): add it; also slanted.
+	* makeinfo/xml.h (SANSSERIF, SLANTED): define these new elements.
+	* makeinfo/xml.c (texinfoml_element_list): add them.
+	From: Frank Küster, 21 Oct 2004 23:27:33 +0200, Debian bug#277754.
+
 	* doc/texinfo.txi (Quotations and Examples, end titlepage): state
 	that there must be only one space between the @end and its
 	argument.  Report from: christoph.sobotka, 26 Oct 2004 22:04:03 +0200.

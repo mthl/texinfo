@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.10 2004-11-11 18:34:28 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.11 2004-11-26 00:48:35 karl Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -100,7 +100,7 @@
 <!-- ****** -->
 <!ENTITY % Inline.emphasize "strong | emph">
 <!ENTITY % Inline.smallcaps "sc">
-<!ENTITY % Inline.fonts "i | b | tt | r | titlefont">
+<!ENTITY % Inline.fonts "b | i | r | sansserif | slanted | titlefont | tt">
 <!ENTITY % Inline.markup "code | command | env | file | option | samp | dfn | cite | key | kbd | var | acronym | url">
 <!ENTITY % Inline.reference "xref | inforef | indexterm | email | uref">
 

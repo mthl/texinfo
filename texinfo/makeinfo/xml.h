@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.23 2004-11-11 18:34:28 karl Exp $
+   $Id: xml.h,v 1.24 2004-11-26 00:48:35 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -67,7 +67,7 @@ enum xml_element
   ACRONYM, ACRONYMWORD, ACRONYMDESC,
   ABBREV, ABBREVWORD, ABBREVDESC,
   TT, CODE, COMMAND_TAG, ENV, FILE_TAG, OPTION, SAMP, KBD, URL, KEY,
-  VAR, SC, DFN, EMPH, STRONG, CITE, NOTFIXEDWIDTH, I, B, R,
+  VAR, SC, DFN, EMPH, STRONG, CITE, NOTFIXEDWIDTH, I, B, R, SLANTED, SANSSERIF,
   EXDENT,
   TITLE, 
   IFINFO, 

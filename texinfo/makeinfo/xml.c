@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.50 2004-11-11 18:34:28 karl Exp $
+   $Id: xml.c,v 1.51 2004-11-26 00:48:35 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -116,6 +116,8 @@ element texinfoml_element_list [] = {
   { "i",                   0, 1, 0 },
   { "b",                   0, 1, 0 },
   { "r",                   0, 1, 0 },
+  { "slanted",             0, 1, 0 },
+  { "sansserif",           0, 1, 0 },
 
   { "exdent",              0, 0, 0 },
 

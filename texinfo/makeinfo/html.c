@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.25 2004-04-19 23:04:52 karl Exp $
+   $Id: html.c,v 1.26 2004-11-26 00:48:35 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -310,9 +310,13 @@ rel=\"generator-home\" title=\"Texinfo Homepage\">\n");
 #define CSS_FONT_SMALL_CAPS "font-variant:small-caps"
     add_word_args ("  span.sc    { %s }\n", CSS_FONT_SMALL_CAPS);
 
-    /* Roman font class, closest we can come.  */
+    /* Roman (default) font class, closest we can come.  */
 #define CSS_FONT_ROMAN "font-family:serif; font-weight:normal;"
     add_word_args ("  span.roman { %s } \n", CSS_FONT_ROMAN);
+
+    /* Sans serif font class.  */
+#define CSS_FONT_SANSSERIF "font-family:sans-serif; font-weight:normal;"
+    add_word_args ("  span.sansserif { %s } \n", CSS_FONT_SANSSERIF);
 
     /* Write out any css code from the user's --css-file.  */
     if (css_inline)
