@@ -223,7 +223,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.30 2003-02-24 18:17:05 pertusus Exp $
+# $Id: texi2html.pl,v 1.31 2003-02-28 13:54:11 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -280,6 +280,22 @@ require "$ENV{T2H_HOME}/texi2html.init"
 require "$ENV{T2H_HOME}/MySimple.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/MySimple.pm" && -r "$ENV{T2H_HOME}/MySimple.pm");
+
+#+++############################################################################
+#                                                                              #
+# Initialization                                                               #
+# Pasted content of File $(srcdir)/T2h_i18n.pm: Internationalisation           #
+#                                                                              #
+#---############################################################################
+
+# leave this within comments, and keep the require statement
+# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/texi2html.init
+# exists.
+
+# @T2H_I18N@
+require "$ENV{T2H_HOME}/T2h_i18n.pm"
+    if ($0 =~ /\.pl$/ &&
+        -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
 package main;
 
@@ -679,23 +695,272 @@ sub LoadInitFile
     }
 }
 
+my $T2H_WORDS;
 #
 # called on -lang
 sub SetDocumentLanguage
 {
     my $lang = shift;
-    if (! exists($T2H_WORDS->{$lang}))
-    {
-        warn "$ERROR: Language specs for '$lang' do not exists. Reverting to '" .
-            ($T2H_LANG ? $T2H_LANG : "en") . "'\n";
-    }
-    else
+    $T2H_WORDS = T2h_i18n::set_language($lang);
+    if (defined($T2H_WORDS))
     {
         print "# using '$lang' as document language\n" if ($T2H_VERBOSE);
         $T2H_LANG = $lang;
     }
+    else
+    {
+        warn "$ERROR: Language specs for '$lang' do not exists. Reverting to '$T2H_LANG'\n";
+    }
 }
 
+# T2H_OPTIONS is a hash whose keys are the (long) names of valid
+# command-line options and whose values are a hash with the following keys:
+# type    ==> one of !|=i|:i|=s|:s (see GetOpt::Long for more info)
+# linkage ==> ref to scalar, array, or subroutine (see GetOpt::Long for more info)
+# verbose ==> short description of option (displayed by -h)
+# noHelp  ==> if 1 -> for "not so important options": only print description on -h 1
+#                2 -> for obsolete options: only print description on -h 2
+my $T2H_OPTIONS;
+$T2H_OPTIONS -> {debug} =
+{
+ type => '=i',
+ linkage => \$T2H_DEBUG,
+ verbose => 'output HTML with debuging information',
+};
+
+$T2H_OPTIONS -> {doctype} =
+{
+ type => '=s',
+ linkage => \$T2H_DOCTYPE,
+ verbose => 'document type which is output in header of HTML files',
+ noHelp => 1
+};
+
+$T2H_OPTIONS -> {frameset_doctype} =
+{
+ type => '=s',
+ linkage => \$T2H_FRAMESET_DOCTYPE,
+ verbose => 'document type for HTML frameset documents',
+ noHelp => 1
+};
+
+$T2H_OPTIONS -> {test} =
+{
+ type => '!',
+ linkage => \$T2H_TEST,
+ verbose => 'use predefined information to avoid differences with reference files',
+ noHelp => 1
+};
+
+$T2H_OPTIONS -> {expand} =
+{
+ type => '=s',
+ linkage => \$T2H_EXPAND,
+ verbose => 'Expand info|tex|none section of texinfo source',
+};
+
+$T2H_OPTIONS -> {glossary} =
+{
+ type => '!',
+ linkage => \$T2H_USE_GLOSSARY,
+ verbose => "if set, uses section named `Footnotes' for glossary",
+ noHelp  => 1,
+};
+
+
+$T2H_OPTIONS -> {invisible} =
+{
+ type => '=s',
+ linkage => \$T2H_INVISIBLE_MARK,
+ verbose => 'use text in invisble anchot',
+ noHelp  => 1,
+};
+
+$T2H_OPTIONS -> {iso} =
+{
+ type => 'iso',
+ linkage => \$T2H_USE_ISO,
+ verbose => 'if set, ISO8859 characters are used for special symbols (like copyright, etc)',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {I} =
+{
+ type => '=s',
+ linkage => \@T2H_INCLUDE_DIRS,
+ verbose => 'append $s to the @include search path',
+};
+
+$T2H_OPTIONS -> {top_file} =
+{
+ type => '=s',
+ linkage => \$T2H_TOP_FILE,
+ verbose => 'use $s as top file, instead of <docname>.html',
+};
+
+
+$T2H_OPTIONS -> {toc_file} =
+{
+ type => '=s',
+ linkage => \$T2H_TOC_FILE,
+ verbose => 'use $s as ToC file, instead of <docname>_toc.html',
+};
+
+$T2H_OPTIONS -> {frames} =
+{
+ type => '!',
+ linkage => \$T2H_FRAMES,
+ verbose => 'output files which use HTML 4.0 frames (experimental)',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {menu} =
+{
+ type => '!',
+ linkage => \$T2H_SHOW_MENU,
+ verbose => 'ouput Texinfo menus',
+};
+
+$T2H_OPTIONS -> {number} =
+{
+ type => '!',
+ linkage => \$T2H_NUMBER_SECTIONS,
+ verbose => 'use numbered sections'
+};
+
+
+$T2H_OPTIONS -> {split} =
+{
+ type => '=s',
+ linkage => \$T2H_SPLIT,
+ verbose => 'split document on section|chapter else no splitting',
+};
+
+$T2H_OPTIONS -> {sec_nav} =
+{
+ type => '!',
+ linkage => \$T2H_SECTION_NAVIGATION,
+ verbose => 'output navigation panels for each section',
+};
+
+$T2H_OPTIONS -> {subdir} =
+{
+ type => '=s',
+ linkage => \$T2H_SUBDIR,
+ verbose => 'put HTML files in directory $s, instead of $cwd',
+};
+
+$T2H_OPTIONS -> {short_ext} =
+{
+ type => '!',
+ linkage => \$T2H_SHORTEXTN,
+ verbose => 'use "htm" extension for output HTML files',
+};
+
+$T2H_OPTIONS -> {prefix} =
+{
+ type => '=s',
+ linkage => \$T2H_PREFIX,
+ verbose => 'use as prefix for output files, instead of <docname>',
+};
+
+$T2H_OPTIONS -> {out_file} =
+{
+ type => '=s',
+ linkage => sub {$T2H_OUT = $_[1]; $T2H_SPLIT = '';},
+ verbose => 'if set, all HTML output goes into file $s',
+};
+
+$T2H_OPTIONS -> {short_ref} =
+{
+ type => '!',
+ linkage => \$T2H_SHORT_REF,
+ verbose => 'if set, references are without section numbers',
+};
+
+$T2H_OPTIONS -> {idx_sum} =
+{
+ type => '!',
+ linkage => \$T2H_IDX_SUMMARY,
+ verbose => 'if set, also output index summary',
+ noHelp  => 1,
+};
+
+$T2H_OPTIONS -> {def_table} =
+{
+ type => '!',
+ linkage => \$T2H_DEF_TABLE,
+ verbose => 'if set, \@def.. are converted using tables.',
+ noHelp  => 1,
+};
+
+$T2H_OPTIONS -> {Verbose} =
+{
+ type => '!',
+ linkage => \$T2H_VERBOSE,
+ verbose => 'print progress info to stdout',
+};
+
+$T2H_OPTIONS -> {lang} =
+{
+ type => '=s',
+ linkage => sub {SetDocumentLanguage($_[1])},
+ verbose => 'use $s as document language (ISO 639 encoding)',
+};
+
+$T2H_OPTIONS -> {l2h} =
+{
+ type => '!',
+ linkage => \$T2H_L2H,
+ verbose => 'if set, uses latex2html for @math and @tex',
+};
+
+$T2H_OPTIONS -> {l2h_l2h} =
+{
+ type => '=s',
+ linkage => \$T2H_L2H_L2H,
+ verbose => 'program to use for latex2html translation',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {l2h_skip} =
+{
+ type => '!',
+ linkage => \$T2H_L2H_SKIP,
+ verbose => 'if set, tries to reuse previously latex2html output',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {l2h_tmp} =
+{
+ type => '=s',
+ linkage => \$T2H_L2H_TMP,
+ verbose => 'if set, uses $s as temporary latex2html directory',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {l2h_clean} =
+{
+ type => '!',
+ linkage => \$T2H_L2H_CLEAN,
+ verbose => 'if set, do not keep intermediate latex2html files for later reuse',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {D} =
+{
+ type => '=s',
+ linkage => sub {$value{$_[1]} = 1;},
+ verbose => 'equivalent to Texinfo "@set $s 1"',
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {init_file} =
+{
+ type => '=s',
+ linkage => \&LoadInitFile,
+ verbose => 'load init file $s'
+};
 ##
 ## obsolete cmd line options
 ##
@@ -2213,7 +2478,7 @@ sub pass1
             }
             elsif ($tag eq 'documentlanguage')
             {
-                SetDocumentLanguage($1) if (!$T2H_LANG && /documentlanguage\s*(\w+)/);
+                SetDocumentLanguage($1) if (!$T2H_WORDS && /documentlanguage\s*(\w+)/);
             }
             elsif (defined($def_map{$tag}))
             {
@@ -3528,9 +3793,9 @@ sub pass4
         (
          'First',   clean_name($sec2node{$sections[0]}),
          'Last',    clean_name($sec2node{$sections[$#sections]}),
-         'About',    $T2H_WORDS->{$T2H_LANG}->{'About_Title'},
-         'Contents', $T2H_WORDS->{$T2H_LANG}->{'ToC_Title'},
-         'Overview', $T2H_WORDS->{$T2H_LANG}->{'Overview_Title'},
+         'About',    $T2H_WORDS->{'About_Title'},
+         'Contents', $T2H_WORDS->{'ToC_Title'},
+         'Overview', $T2H_WORDS->{'Overview_Title'},
          'Index' ,   clean_name($T2H_INDEX_CHAPTER),
          'Top',      clean_name($T2H_TOP_HEADING || $T2H_THISDOC{'title'} || $T2H_THISDOC{'shorttitle'}),
         );
@@ -3742,7 +4007,7 @@ sub pass4
         open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $docu_foot;
-        $T2H_NAME{This} = $T2H_WORDS->{$T2H_LANG}->{'Footnotes_Title'};
+        $T2H_NAME{This} = $T2H_WORDS->{'Footnotes_Title'};
         $T2H_THIS_SECTION = \@foot_lines;
         &$T2H_print_Footnotes(\*FILE);
         close(FILE) if $T2H_SPLIT;
@@ -4361,15 +4626,15 @@ sub do_ref
     # note: Texinfo may accept other characters
     if ($type eq 'xref')
     {
-        $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} ";
+        $type = "$T2H_WORDS->{'See'} ";
     }
     elsif ($type eq 'pxref')
     {
-        $type = "$T2H_WORDS->{$T2H_LANG}->{'see'} ";
+        $type = "$T2H_WORDS->{'see'} ";
     }
     elsif ($type eq 'inforef')
     {
-         $type = "$T2H_WORDS->{$T2H_LANG}->{'See'} Info";
+         $type = "$T2H_WORDS->{'See'} Info";
     }
     else
     {
@@ -4391,7 +4656,7 @@ sub do_ref
     {                   # reference to another manual
          $sec = $args[2] || $node;
          my $man = $args[4] || $args[3];
-         $result = "${type}$T2H_WORDS->{$T2H_LANG}->{'section'} `$sec' in " . apply_style ('cite', $man);
+         $result = "${type}$T2H_WORDS->{'section'} `$sec' in " . apply_style ('cite', $man);
     }
     elsif ($type =~ /Info/)
     {                   # inforef 
@@ -4414,7 +4679,7 @@ sub do_ref
     elsif ($sec && $href && ! $T2H_SHORT_REF)
     {
         $result  = "$type";
-        $result .= "$T2H_WORDS->{$T2H_LANG}->{'section'} " if $type;
+        $result .= "$T2H_WORDS->{'section'} " if $type;
         $result .= t2h_anchor('', $href, $sec, 0, '', 1);
     }
     elsif ($href)
@@ -4895,10 +5160,10 @@ sub t2h_print_label($;$)
 }
 
 # main processing is called here
-SetDocumentLanguage('en') unless ($T2H_LANG);
+SetDocumentLanguage('en') unless ($T2H_WORDS);
 # APA: There's got to be a better way:
-$things_map{'today'} = pretty_date();
-$T2H_TODAY = pretty_date();  # like "20 September 1993";
+$things_map{'today'} = T2h_i18n::pretty_date($T2H_LANG);
+$T2H_TODAY = T2h_i18n::pretty_date($T2H_LANG);  # like "20 September 1993";
 my $T2H_USER = "unknown";
 if ($T2H_TEST)
 {

@@ -1,3 +1,9 @@
+2003-02-28  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init, T2h_i18n.pm: options specifications
+	moved from texi2html.init to texi2html.pl, such that texi2html.init
+	resembles a regular user init file. internationalization move
+	from texi2html.init to T2h_i18n.pm. 
+
 2003-02-24  Patrice Dumas <dumas@centre-cired.fr>
 	* Tests: small fixes, more tests showing brokeness of texi2html
 	for some features and info and tex differences. 
