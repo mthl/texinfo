@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
+@c $Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8736,15 +8736,15 @@ entirely on the same line as the @code{@@multitable} command.
 @cindex Line length, column widths as fraction of
 To specify column widths as fractions of the line length, write
 @code{@@columnfractions} and the decimal numbers (presumably less than
-1) after the @code{@@multitable} command, as in:
+1; a leading zero is allowed and ignored) after the
+@code{@@multitable} command, as in:
 
 @example
 @@multitable @@columnfractions .33 .33 .33
 @end example
 
-@noindent The fractions need not add up exactly to 1.0, as these do
-not.  This allows you to produce tables that do not need the full line
-length.  You can use a leading zero if you wish.
+The fractions need not add up exactly to 1.0, as these do not.  This
+allows you to produce tables that do not need the full line length.
 
 @item
 @cindex Prototype row, column widths defined by
@@ -8780,6 +8780,13 @@ the previous section), you begin each row in the body of a multitable
 with @code{@@item}, and separate the column entries with @code{@@tab}.
 Line breaks are not special within the table body, and you may break
 input lines in your source file as necessary.
+
+@findex headitem
+@cindex Heading row, in table
+@cindex <thead> HTML tag
+You can also use @code{@@headitem} instead of @code{@@item} to produce
+a @dfn{heading row}.  The @TeX{} output for such a row is in bold, and
+the HTML, XML, and Docbook output uses the @code{<thead>} tag.
 
 Here is a complete example of a multi-column table (the text is from
 @cite{The GNU Emacs Manual}, @pxref{Split Window,, Splitting Windows,
@@ -17288,7 +17295,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
+$Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17351,7 +17358,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
+@comment $Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
