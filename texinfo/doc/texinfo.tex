@@ -6076,13 +6076,6 @@ width0pt\relax} \fi
   \footstrut
   \futurelet\next\fo@t
 }
-% \fo@t, \f@@t, \f@t -- same as plain.
-% 
-% plain's \@foot does not have the \par; but we need it, because our
-% paragraph parameters have changed, and would otherwise be reverted by
-% the egroup before the paragraph is typeset.
-\def\@foot{\strut\par\egroup}
-
 }%end \catcode `\@=11
 
 % @| inserts a changebar to the left of the current line.  It should
