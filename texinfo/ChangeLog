@@ -1,3 +1,24 @@
+2002-10-31    <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (read_command): call html_output_head if
+	we're going to expand a macro. Otherwise a macro expansion first
+	in the document body comes out before the <html>.
+	Report from: Stephen Gildea <gildea@stop.mail-abuse.org>,
+	10 Jul 2002 13:35:13 -0400.
+
+	* util/texindex.c: texindex.c (need_initials, first_initial): New
+	globals.
+	(main): Clear them for each index.
+	(parsefile): Set need_initials when there is more than one
+	initial in this index.
+	(indexify): Do not emit \initial commands unless need_initials
+	is set.  Use toupper.
+
+	From: Zack Weinberg <zack@codesourcery.com>
+	Date: Tue, 26 Mar 2002 17:20:06 -0800
+
+	* lib/system.h: doc fix from gildea.
+
 2002-10-30    <karl@gnu.org>
 
         (Following reported by Bob Wilson.)
