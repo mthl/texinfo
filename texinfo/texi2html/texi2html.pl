@@ -97,8 +97,10 @@ use vars qw(
             $WORDS_IN_NAVIGATION_PANEL_TITLES
             $WORDS_IN_PAGE
 
+            $T2H_DEBUG
             $T2H_PREFIX
             $T2H_VERBOSE
+            $T2H_SUBDIR
             $T2H_IDX_SUMMARY
             $T2H_SPLIT
             $T2H_SHORT_REF
@@ -217,7 +219,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.27 2003-02-19 16:00:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.28 2003-02-19 17:33:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -4760,7 +4762,7 @@ sub next_doc()
     $docu_doc = doc_href($doc_num);
 }
 
-sub t2h_print_lines($$)
+sub t2h_print_lines($;$)
 {
     my ($fh, $lines) = @_;
 
@@ -4852,7 +4854,7 @@ sub unprotect_html($)
     return($what);
 }
 
-sub t2h_print_label($$)
+sub t2h_print_label($;$)
 {
     my $fh = shift;
     my $href = shift || $T2H_HREF{This};

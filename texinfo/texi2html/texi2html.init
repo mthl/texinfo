@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.14 2003-02-19 16:00:22 pertusus Exp $
+# $Id: texi2html.init,v 1.15 2003-02-19 17:33:14 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -30,7 +30,7 @@
 # noHelp  ==> if 1 -> for "not so important options": only print description on -h 1
 #                2 -> for obsolete options: only print description on -h 2
 
-my $T2H_DEBUG = 0;
+$T2H_DEBUG = 0;
 my $T2H_OPTIONS;
 $T2H_OPTIONS -> {debug} =
 {
@@ -242,7 +242,7 @@ $T2H_OPTIONS -> {sec_nav} =
 # If set, then put result files into the specified directory.
 # If not set, then result files are put into the current directory.
 #$T2H_SUBDIR = 'html';
-my $T2H_SUBDIR = '';
+$T2H_SUBDIR = '';
 $T2H_OPTIONS -> {subdir} =
 {
  type => '=s',
