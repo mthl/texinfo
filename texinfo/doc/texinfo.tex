@@ -83,11 +83,13 @@
 \let\ptexend=\end
 \let\ptexequiv=\equiv
 \let\ptexexclam=\!
+\let\ptexfootnote=\footnote
 \let\ptexgtr=>
 \let\ptexhat=^
 \let\ptexi=\i
 \let\ptexindent=\indent
 \let\ptexnoindent=\noindent
+\let\ptexinsert=\insert
 \let\ptexlbrace=\{
 \let\ptexless=<
 \let\ptexplus=+
@@ -171,6 +173,41 @@
 \newdimen\bindingoffset
 \newdimen\normaloffset
 \newdimen\pagewidth \newdimen\pageheight
+
+% For a final copy, take out the rectangles
+% that mark overfull boxes (in case you have decided
+% that the text looks ok even though it passes the margin).
+%
+\def\finalout{\overfullrule=0pt}
+
+% @| inserts a changebar to the left of the current line.  It should
+% surround any changed text.  This approach does *not* work if the
+% change spans more than two lines of output.  To handle that, we would
+% have adopt a much more difficult approach (putting marks into the main
+% vertical list for the beginning and end of each change).
+%
+\def\|{%
+  % \vadjust can only be used in horizontal mode.
+  \leavevmode
+  %
+  % Append this vertical mode material after the current line in the output.
+  \vadjust{%
+    % We want to insert a rule with the height and depth of the current
+    % leading; that is exactly what \strutbox is supposed to record.
+    \vskip-\baselineskip
+    %
+    % \vadjust-items are inserted at the left edge of the type.  So
+    % the \llap here moves out into the left-hand margin.
+    \llap{%
+      %
+      % For a thicker or thinner bar, change the `1pt'.
+      \vrule height\baselineskip width1pt
+      %
+      % This is the space between the bar and the text.
+      \hskip 12pt
+    }%
+  }%
+}
 
 % Sometimes it is convenient to have everything in the transcript file
 % and nothing on the terminal.  We don't just call \tracingall here,
@@ -557,6 +594,7 @@
     \errhelp = \groupinvalidhelp
     \errmessage{@group invalid in context where filling is enabled}%
   \fi
+  \startsavinginserts
   %
   % The \vtop we start below produces a box with normal height and large
   % depth; thus, TeX puts \baselineskip glue before it, and (when the
@@ -576,7 +614,8 @@
         \page
       \fi
     \fi
-    \copy\groupbox
+    \box\groupbox
+    \checkinserts
     \endgroup         % End the \group.
   }%
   %
@@ -2408,14 +2447,15 @@ where each line of input produces a line of output.}
 %
 \def\dotable#1{\bgroup
   \vskip\parskip
+  \startsavinginserts
   %
   % @headitem starts a heading row, which we typeset in bold.
   % Assignments have to be global since we are inside the implicit group
   % of an alignment entry.
-  \def\headitem{\crcrwithfootnotes\global\everytab={\bf}\the\everytab}%
+  \def\headitem{\crcrwithinserts \global\everytab={\bf}\the\everytab}%
   %
   % @item within a multitable starts a normal row, get rid of any bold.
-  \def\item{\crcrwithfootnotes\global\everytab={}}%
+  \def\item{\crcrwithinserts \global\everytab={}}%
   %
   % A \tab used to include \hskip1sp.  But then the space in a template
   % line is not enough.  That is bad.  So let's go back to just & until
@@ -2423,7 +2463,6 @@ where each line of input produces a line of output.}
   % nathan@acm.org, 20apr99.
   \def\tab{&\the\everytab}%
   %
-  \let\startfootins=\startsavedfootnote
   \tolerance=9500
   \hbadness=9500
   \setmultitablespacing
@@ -2434,7 +2473,7 @@ where each line of input produces a line of output.}
   %
   \def\Emultitable{%
     \global\setpercentfalse
-    \crcrwithfootnotes\crcr
+    \crcrwithinserts
     \egroup\egroup
   }%
   %
@@ -2497,6 +2536,7 @@ where each line of input produces a line of output.}
   % characters.
   \noindent\ignorespaces##\unskip\multistrut}\cr
 }
+\def\crcrwithinserts{\crcr\noalign{\checkinserts}}
 
 \def\setmultitablespacing{% test to see if user has set \multitablelinespace.
 % If so, do nothing. If not, give it an appropriate dimension based on
@@ -2525,25 +2565,6 @@ width0pt\relax} \fi
                                       %% than skip between lines in the table.
 \fi}
 
-% In case a @footnote appears inside an alignment, save the footnote
-% text to a box and make the \insert when a row of the table is
-% finished.  Otherwise, the insertion is lost, it never migrates to the
-% main vertical list.  --kasal, 22jan03.
-%
-\newbox\savedfootnotes
-%
-% \dotable \let's \startfootins to this, so that \dofootnote will call
-% it instead of starting the insertion right away.
-\def\startsavedfootnote{%
-  \global\setbox\savedfootnotes = \vbox\bgroup
-    \unvbox\savedfootnotes
-}
-\def\crcrwithfootnotes{%
-  \crcr
-  \ifvoid\savedfootnotes \else
-    \noalign{\insert\footins{\box\savedfootnotes}}%
-  \fi
-}
 
 \message{conditionals,}
 % Prevent errors for section commands.
@@ -4547,42 +4568,43 @@ width0pt\relax} \fi
 \def\cartouche{%
 \par  % can't be in the midst of a paragraph.
 \begingroup
-        \lskip=\leftskip \rskip=\rightskip
-        \leftskip=0pt\rightskip=0pt %we want these *outside*.
-        \cartinner=\hsize \advance\cartinner by-\lskip
-                          \advance\cartinner by-\rskip
-        \cartouter=\hsize
-        \advance\cartouter by 18.4pt % allow for 3pt kerns on either
-%                                    side, and for 6pt waste from
-%                                    each corner char, and rule thickness
-        \normbskip=\baselineskip \normpskip=\parskip \normlskip=\lineskip
-        % Flag to tell @lisp, etc., not to narrow margin.
-        \let\nonarrowing=\comment
-        \vbox\bgroup
-                \baselineskip=0pt\parskip=0pt\lineskip=0pt
-                \carttop
-                \hbox\bgroup
-                        \hskip\lskip
-                        \vrule\kern3pt
-                        \vbox\bgroup
-                                \hsize=\cartinner
-                                \kern3pt
-                                \begingroup
-                                        \baselineskip=\normbskip
-                                        \lineskip=\normlskip
-                                        \parskip=\normpskip
-                                        \vskip -\parskip
+  \startsavinginserts
+  \lskip=\leftskip \rskip=\rightskip
+  \leftskip=0pt\rightskip=0pt % we want these *outside*.
+  \cartinner=\hsize \advance\cartinner by-\lskip
+  \advance\cartinner by-\rskip
+  \cartouter=\hsize
+  \advance\cartouter by 18.4pt	% allow for 3pt kerns on either
+				% side, and for 6pt waste from
+				% each corner char, and rule thickness
+  \normbskip=\baselineskip \normpskip=\parskip \normlskip=\lineskip
+  % Flag to tell @lisp, etc., not to narrow margin.
+  \let\nonarrowing=\comment
+  \vbox\bgroup
+      \baselineskip=0pt\parskip=0pt\lineskip=0pt
+      \carttop
+      \hbox\bgroup
+	  \hskip\lskip
+	  \vrule\kern3pt
+	  \vbox\bgroup
+	      \kern3pt
+	      \hsize=\cartinner
+	      \baselineskip=\normbskip
+	      \lineskip=\normlskip
+	      \parskip=\normpskip
+	      \vskip -\parskip
+}
 \def\Ecartouche{%
-                                \endgroup
-                                \kern3pt
-                        \egroup
-                        \kern3pt\vrule
-                        \hskip\rskip
-                \egroup
-                \cartbot
-        \egroup
+	      \kern3pt
+	  \egroup
+	  \kern3pt\vrule
+	  \hskip\rskip
+      \egroup
+      \cartbot
+  \egroup
+  \checkinserts
 \endgroup
-}}
+}
 
 
 % This macro is called at the beginning of all the @example variants,
@@ -5945,7 +5967,8 @@ width0pt\relax} \fi
 \endgroup}
 
 
-% Footnotes.
+\message{footnotes,}
+% and other hacking with inserts
 
 \newcount \footnoteno
 
@@ -5958,8 +5981,6 @@ width0pt\relax} \fi
 
 % @footnotestyle is meaningful for info output only.
 \let\footnotestyle=\comment
-
-\let\ptexfootnote=\footnote
 
 {\catcode `\@=11
 %
@@ -5988,13 +6009,8 @@ width0pt\relax} \fi
 % \parseargline fail inside footnotes because the tokens are fixed when
 % the footnote is read.  --karl, 16nov96.
 %
-% The start of the footnote looks usually like this:
-\gdef\startfootins{\insert\footins\bgroup}
-%
-% ... but this macro is redefined inside @multitable.
-%
 \gdef\dofootnote{%
-  \startfootins
+  \insert\footins\bgroup
   % We want to typeset this text as a normal paragraph, even if the
   % footnote reference occurs in (for example) a display environment.
   % So reset some parameters.
@@ -6030,40 +6046,68 @@ width0pt\relax} \fi
 }
 }%end \catcode `\@=11
 
-% @| inserts a changebar to the left of the current line.  It should
-% surround any changed text.  This approach does *not* work if the
-% change spans more than two lines of output.  To handle that, we would
-% have adopt a much more difficult approach (putting marks into the main
-% vertical list for the beginning and end of each change).
+% In case a @footnote appears in a vbox, save the footnote text and create
+% the real \insert just after the vbox finished.  Otherwise, the insertion
+% would be lost.
+% Similarily, if a @footnote appears inside an alignment, save the footnote
+% text to a box and make the \insert when a row of the table is finished.
+% And the same can be done for other insert classes.  --kasal, 16nov03.
+
+% Replace the \insert primitive by a cheating macro.
+% Deeper inside, just make sure that the saved insertions are not spilled
+% out prematurely.
 %
-\def\|{%
-  % \vadjust can only be used in horizontal mode.
-  \leavevmode
-  %
-  % Append this vertical mode material after the current line in the output.
-  \vadjust{%
-    % We want to insert a rule with the height and depth of the current
-    % leading; that is exactly what \strutbox is supposed to record.
-    \vskip-\baselineskip
-    %
-    % \vadjust-items are inserted at the left edge of the type.  So
-    % the \llap here moves out into the left-hand margin.
-    \llap{%
-      %
-      % For a thicker or thinner bar, change the `1pt'.
-      \vrule height\baselineskip width1pt
-      %
-      % This is the space between the bar and the text.
-      \hskip 12pt
-    }%
-  }%
+\def\startsavinginserts{%
+  \ifx \insert\ptexinsert
+    \let\insert\saveinsert
+  \else
+    \let\checkinserts\relax
+  \fi
 }
 
-% For a final copy, take out the rectangles
-% that mark overfull boxes (in case you have decided
-% that the text looks ok even though it passes the margin).
+% This \insert replacements works for both \insert\footins{xx} and
+% \insert\footins\bgroup xx\egroup, but it doesn't work for \insert27{xx}.
 %
-\def\finalout{\overfullrule=0pt}
+\def\saveinsert#1{%
+  \edef\next{\noexpand\savetobox \makeSAVEname#1}%
+  \afterassignment\next
+  % swallow the left brace
+  \let\temp =
+}
+\def\makeSAVEname#1{\makecsname{SAVE\expandafter\gobble\string#1}}
+\def\savetobox#1{\global\setbox#1 = \vbox\bgroup \unvbox#1}
+
+\def\checksaveins#1{\ifvoid#1\else \placesaveins#1\fi}
+
+\def\placesaveins#1{%
+  \ptexinsert \csname\expandafter\gobblesave\string#1\endcsname
+    {\box#1}%
+}
+
+% eat @SAVE -- beware, all of them have catcode \other:
+{
+  \def\dospecials{\do S\do A\do V\do E} \uncatcodespecials  %  ;-)
+  \gdef\gobblesave @SAVE{}
+}
+
+% initialization:
+\def\newsaveins #1{%
+  \edef\next{\noexpand\newsaveinsX \makeSAVEname#1}%
+  \next
+}
+\def\newsaveinsX #1{%
+  \csname newbox\endcsname #1% \newbox cannot be pronounced, as it is outer
+  \expandafter\def\expandafter\checkinserts\expandafter{\checkinserts
+    \checksaveins#1}%
+}
+
+% initialize:
+\let\checkinserts\empty
+\newsaveins\footins
+\newsaveins\margin
+
+
+\message{figures,}
 
 % @image.  We use the macros from epsf.tex to support this.
 % If epsf.tex is not installed and @image is used, we complain.
