@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.7 2003-06-20 17:29:08 karl Exp $
+   $Id: defun.c,v 1.8 2003-08-20 19:12:26 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -730,15 +730,22 @@ cm_defun ()
 
   /* If we are adding to an already existing insertion, then make sure
      that we are already in an insertion of type TYPE. */
-  if (x_p && (!insertion_level || insertion_stack->insertion != type))
+  if (x_p)
     {
-      line_error (_("Must be in `@%s' environment to use `@%s'"),
-                  base_command, command);
-      discard_until ("\n");
-      return;
+      INSERTION_ELT *i = insertion_stack;
+      /* Skip over ifclear and ifset conditionals.  */
+      while (i && (i->insertion == ifset || i->insertion == ifclear))
+        i = i->next;
+        
+      if (!i || i->insertion != type)
+        {
+          line_error (_("Must be in `@%s' environment to use `@%s'"),
+                      base_command, command);
+          discard_until ("\n");
+          return;
+        }
     }
-  else
-    defun_internal (type, x_p);
 
+  defun_internal (type, x_p);
   free (base_command);
 }
