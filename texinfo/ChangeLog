@@ -1,3 +1,8 @@
+2004-05-16  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: force HTML output name, otherwise Emacs fails
+        with its "@setfilename ../...".
+
 2004-05-04  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (TEX): don't use the value when it ends in
