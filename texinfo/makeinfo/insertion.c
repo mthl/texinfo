@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.29 2003-10-20 17:00:22 karl Exp $
+   $Id: insertion.c,v 1.30 2003-10-20 22:30:33 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -545,9 +545,9 @@ begin_insertion (type)
       last_char_was_newline = 0;
 
       if (html)
-        /* Kludge alert: if <pre> is followed by a newline, IE3
-           renders an extra blank line before the pre-formatted block.
-           Other browsers seem to not mind one way or the other.  */
+        /* Kludge alert: if <pre> is followed by a newline, IE3,
+           mozilla, maybe others render an extra blank line before the
+           pre-formatted block.  So don't output a newline.  */
         add_word_args ("<pre class=\"%s\">", command);
 
       if (type != format && type != smallformat)
@@ -562,7 +562,6 @@ begin_insertion (type)
                 add_char (' ');
             }
         }
-
       break;
 
     case multitable:
@@ -1219,7 +1218,8 @@ handle_verbatim_environment (find_end_verbatim)
   int save_filling_enabled = filling_enabled;
   int save_inhibit_paragraph_indentation = inhibit_paragraph_indentation;
 
-  close_single_paragraph ();
+  if (!insertion_stack)
+    close_single_paragraph (); /* no blank lines if not at outer level */
   inhibit_paragraph_indentation = 1;
   filling_enabled = 0;
   in_fixed_width_font++;
@@ -1231,7 +1231,16 @@ handle_verbatim_environment (find_end_verbatim)
    */
 
   if (html)
-    add_word ("<pre class=\"verbatim\">");
+    { /* If inside @example, we'll be preceded by the indentation
+         already.  Browsers will ignore those spaces because we're about
+         to start another <pre> (don't ask me).  So, wipe them out for
+         cleanliness, and re-insert.  */
+      int i;
+      kill_self_indent (default_indentation_increment);
+      add_word ("<pre class=\"verbatim\">");
+      for (i = current_indent; i > 0; i--)
+        add_char (' ');
+    }
 
   while (input_text_offset < input_text_length)
     {
@@ -1239,9 +1248,8 @@ handle_verbatim_environment (find_end_verbatim)
 
       if (character == '\n')
         line_number++;
-      /*
-        Assume no newlines in END_VERBATIM
-      */
+
+      /* Assume no newlines in END_VERBATIM. */
       else if (find_end_verbatim && (character == COMMAND_PREFIX) /* @ */
           && (input_text_length - input_text_offset > sizeof (END_VERBATIM))
           && !strncmp (&input_text[input_text_offset+1], END_VERBATIM,
@@ -1266,7 +1274,10 @@ handle_verbatim_environment (find_end_verbatim)
     warning (_("end of file inside verbatim block"));
 
   if (html)
-    add_word ("</pre>");
+    { /* See comments in example case above.  */
+      kill_self_indent (default_indentation_increment);
+      add_word ("</pre>");
+    }
   
   in_fixed_width_font--;
   filling_enabled = save_filling_enabled;
