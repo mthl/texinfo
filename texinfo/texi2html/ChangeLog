@@ -3,6 +3,8 @@
 	sections (Top, about, toc...).
 	in vtable, ftable and table, even with an empty first item we
 	begin a <dd> as only <dd> and <dt> are allowed to follow <dl>.
+	Right labels are put in special sections and files are omitted
+	when the href is on the same file.
 
 2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: formatting put in texi2html.init
