@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.69 2003-09-18 23:59:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.70 2003-09-21 18:59:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -113,6 +113,7 @@ my $MAX_LEVEL = 4;
 my $MIN_LEVEL = 1;
 
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
+my $conf_file_name = 'Config' ;
 
 #+++############################################################################
 #                                                                              #
@@ -1565,10 +1566,17 @@ foreach my $i (@rc_files)
     {
 	print STDERR "# reading initialization file from $i\n"
 	    if ($T2H_VERBOSE);
+        print STDERR "Reading config from $i is obsolete, use texi2html/$conf_file_name instead\n";
         Texi2HTML::Config::load($i);
     }
 }
 
+foreach my $file (locate_init_file($conf_file_name, 1))
+{
+	print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
+    Texi2HTML::Config::load($file);
+}
+    
 #
 # %value hold texinfo variables, see also -D, -U
 # we predefine html (the output format) and texi2html (the translator)

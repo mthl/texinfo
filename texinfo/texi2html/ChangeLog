@@ -1,3 +1,11 @@
+2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl: source 'Config' file in the configuration directories 
+	instead of texi2htmlrc and ~/.texi2htmlrc for the system wide and
+	user configuration.
+	* manage_i18n.pl: language files are the files appearing in the 
+	i18n directory. Use 'en' for the file with english strings.
+
 2003-09-17  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: change 'about (this page)' to 

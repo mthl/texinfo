@@ -41,8 +41,8 @@ use Exporter;
 
 my $language;
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
-my $translation_file = 'translations.pl'; # file containing all the translations
-my @known_languages = ('de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
+#my $translation_file = 'translations.pl'; # file containing all the translations
+#my @known_languages = ('de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
                                                # languages
 
 ########################################################################

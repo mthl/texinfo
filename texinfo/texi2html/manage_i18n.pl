@@ -40,9 +40,10 @@ $| = 1;
 my $language;
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 my $translation_file = 'translations.pl'; # file containing all the translations
-my @known_languages = ('de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
+my @known_languages = ('en', 'de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
                                                # languages
-my $template = 'template';
+#my $template = 'template';
+my $template = 'en';
 my $template_file = "$i18n_dir/$template";
 my @source_files = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm');
 
@@ -81,6 +82,36 @@ sub update_language_file($);
 
 die "No suitable $i18n_dir directory\n" unless (-d $i18n_dir and -r $i18n_dir);
 
+sub get_languages
+{
+    unless (opendir DIR, $i18n_dir)
+    {
+         die "Cannot open dir $i18n_dir: $!\n";
+    }
+    my @languages = grep {
+         ! /^\./ &&
+         ! /\.(bak|orig|old|dpkg-old|rpmnew|rpmsave)$/ &&
+         ! /~$/ &&
+         ! /^#.*#$/ &&
+         -f $i18n_dir . '/' . $_
+    } readdir DIR;
+    closedir DIR;
+    my @known = @known_languages;
+    foreach my $lang (@languages)
+    {
+         if (grep {$_ eq $lang} @known)
+         {
+              @known = grep {$_ ne $lang} @known;
+         }
+         else
+         {
+             warn "Remark: you could update the known languages array for `$lang'\n";
+         }
+    }
+    warn "Remark: the following known languages have no corresponding file: @known\n" if (@known);
+    return @languages;
+}
+
 sub manage_i18n_files($)
 {
     my $command = shift;
@@ -111,6 +142,8 @@ sub manage_i18n_files($)
 
 sub merge_i18n_files
 {
+    my @languages = get_languages();
+    die "No languages found\n" unless (@languages);
     if (-f $translation_file)
     {
         unless (File::Copy::copy ($translation_file, "$translation_file.old"))
@@ -118,8 +151,9 @@ sub merge_i18n_files
             die "Error copying $translation_file to $translation_file.old\n";
         }
     }
+    #foreach my $lang ($template, @known_languages)
     die "open $translation_file failed" unless (open (TRANSLATIONS, ">$translation_file"));
-    foreach my $lang ($template, @known_languages)
+    foreach my $lang (@languages)
     {
          my $file = "$i18n_dir/$lang";
          next unless (-r $file);
@@ -197,7 +231,8 @@ sub update_language_hash($$$)
 sub update_i18n_files
 {
     die "No suitable $i18n_dir directory\n" unless (-d $i18n_dir and -w $i18n_dir);
-    my @languages = @known_languages;
+    #my @languages = @known_languages;
+    my @languages = get_languages();
     if (@ARGV)
     {
         @languages = ();
@@ -205,8 +240,9 @@ sub update_i18n_files
         {
             unless (grep {$lang eq $_} @known_languages)
             {
-                warn "Unsupported language `$lang'\n";
-                next;
+                #warn "Unsupported language `$lang'\n";
+                #next;
+                warn "Remark: you could update the known languages array for `$lang'\n";
             }
             push (@languages, $lang) unless (grep {$lang eq $_} @languages);
         }
@@ -238,11 +274,11 @@ sub update_i18n_files
 sub update_language_file($)
 {
     my $lang = shift;
-    unless (grep {$lang eq $_} @known_languages)
-    {
-        print STDERR "Unsupported language `$lang'\n";
-        return;
-    }
+    #unless (grep {$lang eq $_} @known_languages)
+    #{
+    #    print STDERR "Unsupported language `$lang'\n";
+    #    return;
+    #}
     my $file = "$i18n_dir/$lang";
 
     return unless (update_language_hash($file, $lang, $LANGUAGES->{'en'}));
