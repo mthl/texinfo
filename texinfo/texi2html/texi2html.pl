@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.126 2005-02-04 00:14:39 pertusus Exp $
+# $Id: texi2html.pl,v 1.127 2005-02-06 17:14:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -735,17 +735,6 @@ sub t2h_nounicode_cross_manual_accent($$)
     return ascii_accents($text, $accent);
 }
 
-$USE_UNICODE = '@USE_UNICODE@';
-if ($USE_UNICODE eq '@USE_UNICODE@')
-{
-    $USE_UNICODE = 1;
-    eval {
-        require Encode;
-        require Unicode::Normalize; 
-        Encode->import('encode');
-    };
-    $USE_UNICODE = 0 if ($@);
-}
 
 }
 
@@ -2321,6 +2310,30 @@ if ($T2H_VERBOSE)
 $Texi2HTML::Config::INVISIBLE_MARK = '<img src="invisible.xbm" alt="">' if $Texi2HTML::Config::INVISIBLE_MARK eq 'xbm';
 
 $T2H_DEBUG |= $DEBUG_TEXI if ($Texi2HTML::Config::DUMP_TEXI);
+
+# no user provided USE_UNICODE, use configure provided
+if (!defined($Texi2HTML::Config::USE_UNICODE))
+{
+    $Texi2HTML::Config::USE_UNICODE = '@USE_UNICODE@';
+}
+
+# no user provided nor configured, run time test
+if ($Texi2HTML::Config::USE_UNICODE eq '@' .'USE_UNICODE@')
+{
+    $Texi2HTML::Config::USE_UNICODE = 1;
+    eval {
+        require Encode;
+        require Unicode::Normalize; 
+        Encode->import('encode');
+    };
+    $Texi2HTML::Config::USE_UNICODE = 0 if ($@);
+}
+elsif ($Texi2HTML::Config::USE_UNICODE)
+{# user provided or set by configure
+    require Encode;
+    require Unicode::Normalize;
+    Encode->import('encode');
+}
 
 # Construct hashes used for cross references generation
 # Do it now as the user may have changed $USE_UNICODE
