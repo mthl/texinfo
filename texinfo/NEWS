@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.61 2003-08-22 13:06:44 karl Exp $
+$Id: NEWS,v 1.62 2003-09-05 00:44:50 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -25,6 +25,10 @@ convenience, here's a url to one of the relevant sections:
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.
+* texinfo.tex:
+  . @tex and @iftex code is executed inside a TeX group, so that any
+    changes must be prefixed with \global resp. @global to be effective.
+    (This change was actually made years ago, but never made it into the NEWS.)
 * Distribution:
   . New translation: nb.
   . automake 1.7.6.
