@@ -1,3 +1,28 @@
+2002-10-24    <karl@gnu.org>
+
+        2002-10-24  Alexandre Duret-Lutz  <adl@gnu.org>
+	* util/texi2dvi: Turn relative entries $TEXINPUTS and $INDEXSTYLE
+	into absolute paths.  (Allows --clean to work with relative dirs
+	in TEXINPUTS, etc.)
+
+	* doc/texinfo.tex: update \texinfoversion timestamp.
+
+2002-10-22    <karl@gnu.org>
+
+	2002-10-16  Werner Lemberg  <wl@gnu.org>
+
+	* texinfo.tex (\appendixbox): New macro to compute a
+	fixed-width box for the appendix entry in the TOC.
+	(\appendixzzz, \appendixentry): Use it.
+
+	(\shortconttt): New font.
+	(\summarycontents): Use it to set the font size of the \tt
+	font properly.
+
+	(\authortt): New macro.
+	(\authorfont): Use it to provide a proper font size for
+	@email used within @author.
+
 2002-10-21    <karl@gnu.org>
 
 	* automake 1.7.1.

@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.5 2002-10-21 13:48:40 karl Exp $
+dnl $Id: configure.ac,v 1.6 2002-10-25 00:32:50 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -11,7 +11,7 @@ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 dnl
 AC_PREREQ(2.54)dnl Minimum Autoconf version required.
 dnl
-AC_INIT([GNU Texinfo], [4.2b])
+AC_INIT([GNU Texinfo], [4.2c])
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_CONFIG_HEADER(config.h:config.in)dnl Keep filename to 8.3 for MS-DOS.
 AM_INIT_AUTOMAKE
@@ -125,20 +125,29 @@ if test -n "$ac_cv_var_ospeed" \
 fi
 AC_SUBST(TERMLIBS)dnl
 
+dnl gnulib.
+AC_DEFUN([texinfo_gnulib_macros],
+[
+  AC_REQUIRE([jm_PREREQ_TEMPNAME])dnl for mkstemp
+  AC_REQUIRE([UTILS_FUNC_MKSTEMP])
+])dnl
+texinfo_gnulib_macros
+
 dnl i18n support.  To update to a new version of gettext, run:
 dnl  gettextize -f -c --intl
 AM_GNU_GETTEXT_VERSION(0.11.5)
 AM_GNU_GETTEXT()
 
-AC_CONFIG_FILES([Makefile          \
-           doc/Makefile            \
-           info/Makefile           \
-           intl/Makefile           \
-           lib/Makefile            \
-           m4/Makefile		   \
-           makeinfo/Makefile       \
-           makeinfo/tests/Makefile \
-           po/Makefile.in	   \
-           util/Makefile           \
-           ])
+AC_CONFIG_FILES([
+  Makefile			\
+  doc/Makefile			\
+  info/Makefile			\
+  intl/Makefile			\
+  lib/Makefile			\
+  m4/Makefile			\
+  makeinfo/Makefile		\
+  makeinfo/tests/Makefile	\
+  po/Makefile.in		\
+  util/Makefile			\
+])
 AC_OUTPUT
