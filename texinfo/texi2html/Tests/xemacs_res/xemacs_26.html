@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>XEmacs User's Manual: Abbrevs</title>
+<title>XEmacs User's Manual: 23. Abbrevs</title>
 
-<meta name="description" content="XEmacs User's Manual: Abbrevs">
-<meta name="keywords" content="XEmacs User's Manual: Abbrevs">
+<meta name="description" content="XEmacs User's Manual: 23. Abbrevs">
+<meta name="keywords" content="XEmacs User's Manual: 23. Abbrevs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -24,113 +24,103 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="SEC285"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_25.html#SEC284" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC286" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC286" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_25.html#SEC251" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD259"></a>
+<a name="SEC285"></a>
 <h1> 23. Abbrevs </h1>
-<!--docid::SEC285::-->
-<p>
 
-  An <em>abbrev</em> is a word which <em>expands</em> into some
+<p>  An <em>abbrev</em> is a word which <em>expands</em> into some
 different text.  Abbrevs are defined by the user to expand in specific
 ways.  For example, you might define `<samp>foo</samp>' as an abbrev expanding to
 `<samp>find outer otter</samp>'.  With this abbrev defined, you would be able to
 get `<samp>find outer otter </samp>' into the buffer by typing <kbd>f o o <kbd>SPC</kbd></kbd>.
-</p>
-<p>
-
-<a name="IDX1234"></a>
-<a name="IDX1235"></a>
-  Abbrevs expand only when Abbrev mode (a minor mode) is enabled.
+</p><a name="IDX1060"></a>
+<a name="IDX1061"></a>
+<p>  Abbrevs expand only when Abbrev mode (a minor mode) is enabled.
 Disabling Abbrev mode does not cause abbrev definitions to be discarded,
 but they do not expand until Abbrev mode is enabled again.  The command
 <kbd>M-x abbrev-mode</kbd> toggles Abbrev mode; with a numeric argument, it
 turns Abbrev mode on if the argument is positive, off otherwise.
-See section <a href="xemacs_30.html#SEC352">27.1 Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
+See section <a href="xemacs_30.html#NOD326">Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
 on when the variable is non-<code>nil</code>.  The variable <code>abbrev-mode</code>
 automatically becomes local to the current buffer when it is set.
-</p>
-<p>
-
-  Abbrev definitions can be <em>mode-specific</em>---active only in one major
+</p><p>  Abbrev definitions can be <em>mode-specific</em>--active only in one major
 mode.  Abbrevs can also have <em>global</em> definitions that are active in
 all major modes.  The same abbrev can have a global definition and various
 mode-specific definitions for different major modes.  A mode-specific
 definition for the current major mode overrides a global definition.
-</p>
-<p>
-
- You can define Abbrevs interactively during an editing session.  You
+</p><p> You can define Abbrevs interactively during an editing session.  You
 can also save lists of abbrev definitions in files and reload them in later
 sessions.  Some users keep extensive lists of abbrevs that they load in
 every session.
-</p>
-<p>
-
-  A second kind of abbreviation facility is called the <em>dynamic
+</p><p>  A second kind of abbreviation facility is called the <em>dynamic
 expansion</em>.  Dynamic abbrev expansion happens only when you give an
 explicit command and the result of the expansion depends only on the
-current contents of the buffer.  See section <a href="xemacs_26.html#SEC290">23.5 Dynamic Abbrev Expansion</a>.
-</p>
-<p>
+current contents of the buffer.  See section <a href="#NOD264">Dynamic Abbrev Expansion</a>.
+</p><table border="0" cellspacing="0">
 
-<table border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="xemacs_26.html#SEC286">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining an abbrev, so it will expand when typed.</td></tr>
-<tr><td align="left" valign="top"><a href="xemacs_26.html#SEC287">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling expansion: prefixes, canceling expansion.</td></tr>
-<tr><td align="left" valign="top"><a href="xemacs_26.html#SEC288">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing or editing the entire list of defined abbrevs.</td></tr>
-<tr><td align="left" valign="top"><a href="xemacs_26.html#SEC289">23.4 Saving Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving the entire list of abbrevs for another session.</td></tr>
-<tr><td align="left" valign="top"><a href="xemacs_26.html#SEC290">23.5 Dynamic Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Abbreviations for words already in the buffer.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC286">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining an abbrev, so it will expand when typed.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC287">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling expansion: prefixes, canceling expansion.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC288">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing or editing the entire list of defined abbrevs.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC289">23.4 Saving Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving the entire list of abbrevs for another session.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC290">23.5 Dynamic Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Abbreviations for words already in the buffer.</td></tr>
 </table>
-<p>
 
-<a name="NODE_Defining Abbrevs"></a>
 <hr size="6">
-<a name="SEC286"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC287" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Up section"> Up </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC285" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC287" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD260"></a>
+<a name="SEC286"></a>
 <h2> 23.1 Defining Abbrevs </h2>
-<!--docid::SEC286::-->
-<p>
 
-</p>
 <dl compact="compact">
-<dt><kbd>C-x a g</kbd>
-<dd>Define an abbrev to expand into some text before point
+ <dt> C-x a g
+</dt>
+<dd><p>Define an abbrev to expand into some text before point
 (<code>add-global-abbrev</code>).
-<dt><kbd>C-x a l</kbd>
-<dd>Similar, but define an abbrev available only in the current major mode
+ </p> </dd>
+<dt> C-x a l
+</dt>
+<dd><p>Similar, but define an abbrev available only in the current major mode
 (<code>add-mode-abbrev</code>).
-<dt><kbd>C-x a i g</kbd>
-<dd>Define a word in the buffer as an abbrev (<code>inverse-add-global-abbrev</code>).
-<dt><kbd>C-x a i l</kbd>
-<dd>Define a word in the buffer as a mode-specific abbrev
+ </p> </dd>
+<dt> C-x a i g
+</dt>
+<dd><p>Define a word in the buffer as an abbrev (<code>inverse-add-global-abbrev</code>).
+ </p> </dd>
+<dt> C-x a i l
+</dt>
+<dd><p>Define a word in the buffer as a mode-specific abbrev
 (<code>inverse-add-mode-abbrev</code>).
-<dt><kbd>M-x kill-all-abbrevs</kbd>
-<dd>After this command, no abbrev definitions remain in effect.
+ </p> </dd>
+<dt> M-x kill-all-abbrevs
+</dt>
+<dd><p>After this command, no abbrev definitions remain in effect.
+</p></dd>
 </dl>
-<p>
 
-<a name="IDX1236"></a>
-<a name="IDX1237"></a>
-  The usual way to define an abbrev is to enter the text you want the
+<a name="IDX1062"></a>
+<a name="IDX1063"></a>
+<p>  The usual way to define an abbrev is to enter the text you want the
 abbrev to expand to, position point after it, and type <kbd>C-x a g</kbd>
 (<code>add-global-abbrev</code>).  This reads the abbrev itself using the
 minibuffer, and then defines it as an abbrev for one or more words
@@ -138,106 +128,83 @@ before point.  Use a numeric argument to say how many words before point
 should be taken as the expansion.  For example, to define the abbrev
 `<samp>foo</samp>' as in the example above, insert the text `<samp>find outer
 otter</samp>', then type <br><kbd>C-u 3 C-x a g f o o <kbd>RET</kbd></kbd>.
-</p>
-<p>
-
-  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
+</p><p>  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
 region as the expansion of the abbrev being defined.
-</p>
-<p>
-
-<a name="IDX1238"></a>
-<a name="IDX1239"></a>
-  The command <kbd>C-x a l</kbd> (<code>add-mode-abbrev</code>) is similar, but
+</p><a name="IDX1064"></a>
+<a name="IDX1065"></a>
+<p>  The command <kbd>C-x a l</kbd> (<code>add-mode-abbrev</code>) is similar, but
 defines a mode-specific abbrev.  Mode-specific abbrevs are active only in a
 particular major mode.  <kbd>C-x a l</kbd> defines an abbrev for the major mode
 in effect at the time <kbd>C-x a l</kbd> is typed.  The arguments work the
 same way they do for <kbd>C-x a g</kbd>.
-</p>
-<p>
-
-<a name="IDX1240"></a>
-<a name="IDX1241"></a>
-<a name="IDX1242"></a>
-<a name="IDX1243"></a>
-  If the text of an abbrev you want is already in the buffer instead of
+</p><a name="IDX1066"></a>
+<a name="IDX1067"></a>
+<a name="IDX1068"></a>
+<a name="IDX1069"></a>
+<p>  If the text of an abbrev you want is already in the buffer instead of
 the expansion, use command <kbd>C-x a i g</kbd> (<code>inverse-add-global-abbrev</code>)
 instead of <kbd>C-x a g</kbd>, or use <kbd>C-x a i l</kbd>
 (<code>inverse-add-mode-abbrev</code>) instead of <kbd>C-x a l</kbd>.  These commands
 are called &quot;inverse&quot; because they invert the meaning of the argument
-found in the buffer and the argument read using the minibuffer.</p>
-<p>
-
-  To change the definition of an abbrev, just add the new definition.  You
+found in the buffer and the argument read using the minibuffer.</p><p>  To change the definition of an abbrev, just add the new definition.  You
 will be asked to confirm if the abbrev has a prior definition.  To remove
 an abbrev definition, give a negative argument to <kbd>C-x a g</kbd> or <kbd>C-x
 a l</kbd>.  You must choose the command to specify whether to kill a global
 definition or a mode-specific definition for the current mode, since those
 two definitions are independent for one abbrev.
-</p>
-<p>
-
-<a name="IDX1244"></a>
-  <kbd>M-x kill-all-abbrevs</kbd> removes all existing abbrev definitions.
-</p>
-<p>
-
-<a name="NODE_Expanding Abbrevs"></a>
-<hr size="6">
-<a name="SEC287"></a>
+</p><a name="IDX1070"></a>
+<p>  <kbd>M-x kill-all-abbrevs</kbd> removes all existing abbrev definitions.
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC286" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC288" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Up section"> Up </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC286" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC288" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD261"></a>
+<a name="SEC287"></a>
 <h2> 23.2 Controlling Abbrev Expansion </h2>
-<!--docid::SEC287::-->
-<p>
 
-  An abbrev expands whenever it is in a buffer just before point and you
+<p>  An abbrev expands whenever it is in a buffer just before point and you
 type a self-inserting punctuation character (<kbd>SPC</kbd>, comma,
 etc.).  Most often an abbrev is used by inserting the abbrev followed
 by punctuation.
-</p>
-<p>
-
-<a name="IDX1245"></a>
-  Abbrev expansion preserves case; thus, `<samp>foo</samp>' expands into `<samp>find
+</p><a name="IDX1071"></a>
+<p>  Abbrev expansion preserves case; thus, `<samp>foo</samp>' expands into `<samp>find
 outer otter</samp>', `<samp>Foo</samp>' into `<samp>Find outer otter</samp>', and `<samp>FOO</samp>' into
 `<samp>FIND OUTER OTTER</samp>' or `<samp>Find Outer Otter</samp>' according to the
 variable <code>abbrev-all-caps</code> (a non-<code>nil</code> value chooses the first
-of the two expansions).</p>
-<p>
-
-   Two commands are available to control abbrev expansion:
-</p>
-<p>
-
-</p>
-<dl compact="compact">
-<dt><kbd>M-'</kbd>
-<dd>Separate a prefix from a following abbrev to be expanded
+of the two expansions).</p><p>   Two commands are available to control abbrev expansion:
+</p><dl compact="compact">
+ <dt> M-'
+</dt>
+<dd><p>Separate a prefix from a following abbrev to be expanded
 (<code>abbrev-prefix-mark</code>).
-<dt><kbd>C-x a e</kbd>
-<dd><a name="IDX1246"></a>
+ </p> </dd>
+<dt> C-x a e
+</dt>
+<dd><p><a name="IDX1072"></a>
 Expand the abbrev before point (<code>expand-abbrev</code>).
 This is effective even when Abbrev mode is not enabled.
-<dt><kbd>M-x unexpand-abbrev</kbd>
-<dd>Undo last abbrev expansion.
-<dt><kbd>M-x expand-region-abbrevs</kbd>
-<dd>Expand some or all abbrevs found in the region.
+ </p> </dd>
+<dt> M-x unexpand-abbrev
+</dt>
+<dd><p>Undo last abbrev expansion.
+ </p> </dd>
+<dt> M-x expand-region-abbrevs
+</dt>
+<dd><p>Expand some or all abbrevs found in the region.
+</p></dd>
 </dl>
-<p>
 
-<a name="IDX1247"></a>
-<a name="IDX1248"></a>
-  You may wish to expand an abbrev with a prefix attached.  For example,
+<a name="IDX1073"></a>
+<a name="IDX1074"></a>
+<p>  You may wish to expand an abbrev with a prefix attached.  For example,
 if `<samp>cnst</samp>' expands into `<samp>construction</samp>', you may want to use it
 to enter `<samp>reconstruction</samp>'.  It does not work to type <kbd>recnst</kbd>,
 because that is not necessarily a defined abbrev.  Instead, you can use
@@ -248,97 +215,72 @@ it has done its work.  Then insert the abbrev `<samp>cnst</samp>'.  The buffer
 now contains `<samp>re-cnst</samp>'.  Now insert a punctuation character to
 expand the abbrev `<samp>cnst</samp>' into `<samp>construction</samp>'.  The minus sign
 is deleted at this point by <kbd>M-'</kbd>.  The resulting text is the
-desired `<samp>reconstruction</samp>'.</p>
-<p>
-
-  If you actually want the text of the abbrev in the buffer, rather than
+desired `<samp>reconstruction</samp>'.</p><p>  If you actually want the text of the abbrev in the buffer, rather than
 its expansion, insert the following punctuation with <kbd>C-q</kbd>.  Thus,
 <kbd>foo C-q -</kbd> leaves `<samp>foo-</samp>' in the buffer.
-</p>
-<p>
-
-<a name="IDX1249"></a>
-  If you expand an abbrev by mistake, you can undo the expansion (replace
+</p><a name="IDX1075"></a>
+<p>  If you expand an abbrev by mistake, you can undo the expansion (replace
 the expansion by the original abbrev text) with <kbd>M-x unexpand-abbrev</kbd>.
 You can also use <kbd>C-_</kbd> (<code>undo</code>) to undo the expansion; but that
 will first undo the insertion of the punctuation character.
-</p>
-<p>
-
-<a name="IDX1250"></a>
-  <kbd>M-x expand-region-abbrevs</kbd> searches through the region for defined
+</p><a name="IDX1076"></a>
+<p>  <kbd>M-x expand-region-abbrevs</kbd> searches through the region for defined
 abbrevs, and  offers to replace each one it finds with its expansion.
 This command is useful if you have typed text using abbrevs but forgot
 to turn on Abbrev mode first.  It may also be useful together with a
 special set of abbrev definitions for making several global replacements at
 once.  The command is effective even if Abbrev mode is not enabled.
-</p>
-<p>
-
-<a name="NODE_Editing Abbrevs"></a>
-<hr size="6">
-<a name="SEC288"></a>
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC287" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC289" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Up section"> Up </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC287" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC289" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD262"></a>
+<a name="SEC288"></a>
 <h2> 23.3 Examining and Editing Abbrevs </h2>
-<!--docid::SEC288::-->
-<p>
 
-</p>
 <dl compact="compact">
-<dt><kbd>M-x list-abbrevs</kbd>
-<dd>Print a list of all abbrev definitions.
-<dt><kbd>M-x edit-abbrevs</kbd>
-<dd>Edit a list of abbrevs; you can add, alter, or remove definitions.
+ <dt> M-x list-abbrevs
+</dt>
+<dd><p>Print a list of all abbrev definitions.
+ </p> </dd>
+<dt> M-x edit-abbrevs
+</dt>
+<dd><p>Edit a list of abbrevs; you can add, alter, or remove definitions.
+</p></dd>
 </dl>
-<p>
 
-<a name="IDX1251"></a>
-  The output from <kbd>M-x list-abbrevs</kbd> looks like this:
-</p>
-<p>
-
-</p>
-<table><tr><td>&nbsp;</td><td class="example"><pre>(lisp-mode-abbrev-table)
+<a name="IDX1077"></a>
+<p>  The output from <kbd>M-x list-abbrevs</kbd> looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+(lisp-mode-abbrev-table)
 &quot;dk&quot;           0    &quot;define-key&quot;
 (global-abbrev-table)
 &quot;dfn&quot;          0    &quot;definition&quot;
-</pre></td></tr></table><p>
-
-(Some blank lines of no semantic significance, and some other abbrev
+</pre></td></tr></table>
+<p>(Some blank lines of no semantic significance, and some other abbrev
 tables, have been omitted.)
-</p>
-<p>
-
-  A line containing a name in parentheses is the header for abbrevs in a
+</p><p>  A line containing a name in parentheses is the header for abbrevs in a
 particular abbrev table; <code>global-abbrev-table</code> contains all the global
 abbrevs, and the other abbrev tables that are named after major modes
 contain the mode-specific abbrevs.
-</p>
-<p>
-
-  Within each abbrev table, each non-blank line defines one abbrev.  The
+</p><p>  Within each abbrev table, each non-blank line defines one abbrev.  The
 word at the beginning is the abbrev.  The number that appears is the number
 of times the abbrev has been expanded.  Emacs keeps track of this to help
 you see which abbrevs you actually use, in case you want to eliminate
 those that you don't use often.  The string at the end of the line is the
 expansion.
-</p>
-<p>
-
-<a name="IDX1252"></a>
-<a name="IDX1253"></a>
-<a name="IDX1254"></a>
-  <kbd>M-x edit-abbrevs</kbd> allows you to add, change or kill abbrev
+</p><a name="IDX1078"></a>
+<a name="IDX1079"></a>
+<a name="IDX1080"></a>
+<p>  <kbd>M-x edit-abbrevs</kbd> allows you to add, change or kill abbrev
 definitions by editing a list of them in an Emacs buffer.  The list has
 the format described above.  The buffer of abbrevs is called
 `<samp>*Abbrevs*</samp>', and is in Edit-Abbrevs mode.  This mode redefines the
@@ -346,154 +288,127 @@ key <kbd>C-c C-c</kbd> to install the abbrev definitions as specified in the
 buffer.  The  <code>edit-abbrevs-redefine</code> command does this.
 Any abbrevs not described in the buffer are eliminated when this is
 done.
-</p>
-<p>
-
-  <code>edit-abbrevs</code> is actually the same as <code>list-abbrevs</code>, except
+</p><p>  <code>edit-abbrevs</code> is actually the same as <code>list-abbrevs</code>, except
 that it selects the buffer `<samp>*Abbrevs*</samp>' whereas <code>list-abbrevs</code>
 merely displays it in another window.
-</p>
-<p>
-
-<a name="NODE_Saving Abbrevs"></a>
-<hr size="6">
-<a name="SEC289"></a>
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC288" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC290" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Up section"> Up </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC288" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC290" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD263"></a>
+<a name="SEC289"></a>
 <h2> 23.4 Saving Abbrevs </h2>
-<!--docid::SEC289::-->
-<p>
 
-  These commands allow you to keep abbrev definitions between editing
+<p>  These commands allow you to keep abbrev definitions between editing
 sessions.
-</p>
-<p>
-
-</p>
-<dl compact="compact">
-<dt><kbd>M-x write-abbrev-file</kbd>
-<dd>Write a file describing all defined abbrevs.
-<dt><kbd>M-x read-abbrev-file</kbd>
-<dd>Read such an abbrev file and define abbrevs as specified there.
-<dt><kbd>M-x quietly-read-abbrev-file</kbd>
-<dd>Similar, but do not display a message about what is going on.
-<dt><kbd>M-x define-abbrevs</kbd>
-<dd>Define abbrevs from buffer.
-<dt><kbd>M-x insert-abbrevs</kbd>
-<dd>Insert all abbrevs and their expansions into the buffer.
+</p><dl compact="compact">
+ <dt> M-x write-abbrev-file
+</dt>
+<dd><p>Write a file describing all defined abbrevs.
+ </p> </dd>
+<dt> M-x read-abbrev-file
+</dt>
+<dd><p>Read such an abbrev file and define abbrevs as specified there.
+ </p> </dd>
+<dt> M-x quietly-read-abbrev-file
+</dt>
+<dd><p>Similar, but do not display a message about what is going on.
+ </p> </dd>
+<dt> M-x define-abbrevs
+</dt>
+<dd><p>Define abbrevs from buffer.
+ </p> </dd>
+<dt> M-x insert-abbrevs
+</dt>
+<dd><p>Insert all abbrevs and their expansions into the buffer.
+</p></dd>
 </dl>
-<p>
 
-<a name="IDX1255"></a>
-  Use <kbd>M-x write-abbrev-file</kbd> to save abbrev definitions for use in
+<a name="IDX1081"></a>
+<p>  Use <kbd>M-x write-abbrev-file</kbd> to save abbrev definitions for use in
 a later session.  The command reads a file name using the minibuffer and
 writes a description of all current abbrev definitions into the
 specified file.  The text stored in the file looks like the output of
 <kbd>M-x list-abbrevs</kbd>.
-</p>
-<p>
-
-<a name="IDX1256"></a>
-<a name="IDX1257"></a>
-<a name="IDX1258"></a>
-  <kbd>M-x read-abbrev-file</kbd> prompts for a file name using the
+</p><a name="IDX1082"></a>
+<a name="IDX1083"></a>
+<a name="IDX1084"></a>
+<p>  <kbd>M-x read-abbrev-file</kbd> prompts for a file name using the
 minibuffer and reads the specified file, defining abbrevs according to
 its contents.  <kbd>M-x quietly-read-abbrev-file</kbd> is the same but does
 not display a message in the echo area; it is actually useful primarily
-in the init file.  See section <a href="xemacs_30.html#SEC377">27.6 The Init File</a>. If you give an empty argument to
+in the init file.  See section <a href="xemacs_30.html#NOD351">The Init File</a>. If you give an empty argument to
 either of these functions, the file name Emacs uses is the value of the
 variable <code>abbrev-file-name</code>, which is by default
 <code>&quot;~/.abbrev_defs&quot;</code>.
-</p>
-<p>
-
-<a name="IDX1259"></a>
-  Emacs offers to save abbrevs automatically if you have changed any of
+</p><a name="IDX1085"></a>
+<p>  Emacs offers to save abbrevs automatically if you have changed any of
 them, whenever it offers to save all files (for <kbd>C-x s</kbd> or <kbd>C-x
 C-c</kbd>).  Set the variable <code>save-abbrevs</code> to <code>nil</code> to inhibit
 this feature.
-</p>
-<p>
-
-<a name="IDX1260"></a>
-<a name="IDX1261"></a>
-  The commands <kbd>M-x insert-abbrevs</kbd> and <kbd>M-x define-abbrevs</kbd> are
+</p><a name="IDX1086"></a>
+<a name="IDX1087"></a>
+<p>  The commands <kbd>M-x insert-abbrevs</kbd> and <kbd>M-x define-abbrevs</kbd> are
 similar to the previous commands but work on text in an Emacs buffer.
 <kbd>M-x insert-abbrevs</kbd> inserts text into the current buffer before point,
 describing all current abbrev definitions; <kbd>M-x define-abbrevs</kbd> parses
-the entire current buffer and defines abbrevs accordingly.</p>
-<p>
-
-<a name="NODE_Dynamic Abbrevs"></a>
-<hr size="6">
-<a name="SEC290"></a>
+the entire current buffer and defines abbrevs accordingly.</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC289" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC289" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC285" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
+<a name="NOD264"></a>
+<a name="SEC290"></a>
 <h2> 23.5 Dynamic Abbrev Expansion </h2>
-<!--docid::SEC290::-->
-<p>
 
-  The abbrev facility described above operates automatically as you insert
+<p>  The abbrev facility described above operates automatically as you insert
 text, but all abbrevs must be defined explicitly.  By contrast,
 <em>dynamic abbrevs</em> allow the meanings of abbrevs to be determined
 automatically from the contents of the buffer, but dynamic abbrev expansion
 happens only when you request it explicitly.
-</p>
-<p>
-
-<a name="IDX1262"></a>
-<a name="IDX1263"></a>
-</p>
+</p><a name="IDX1088"></a>
+<a name="IDX1089"></a>
 <dl compact="compact">
-<dt><kbd>M-/</kbd>
-<dd>Expand the word in the buffer before point as a <em>dynamic abbrev</em>,
+ <dt> M-/
+</dt>
+<dd><p>Expand the word in the buffer before point as a <em>dynamic abbrev</em>,
 by searching in the buffer for words starting with that abbreviation
 (<code>dabbrev-expand</code>).
+</p></dd>
 </dl>
-<p>
 
-  For example, if the buffer contains `<samp>does this follow </samp>' and you type
+<p>  For example, if the buffer contains `<samp>does this follow </samp>' and you type
 <kbd>f o M-/</kbd>, the effect is to insert `<samp>follow</samp>' because that is the
 last word in the buffer that starts with `<samp>fo</samp>'.  A numeric argument to
 <kbd>M-/</kbd> says to take the second, third, etc. distinct expansion found
 looking backward from point.  Repeating <kbd>M-/</kbd> searches for an
 alternative expansion by looking farther back.  After the entire buffer
 before point has been considered, the buffer after point is searched.
-</p>
-<p>
-
-  Dynamic abbrev expansion is completely independent of Abbrev mode; the
+</p><p>  Dynamic abbrev expansion is completely independent of Abbrev mode; the
 expansion of a word with <kbd>M-/</kbd> is completely independent of whether it
 has a definition as an ordinary abbrev.
-</p>
-<p>
-
-<a name="NODE_Picture"></a>
-<hr size="6">
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC285" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left"> &nbsp; <td valign="middle" align="left">[<a href="xemacs.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <p>

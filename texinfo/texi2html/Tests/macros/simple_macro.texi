@@ -1,0 +1,240 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+Define a  simple macro
+@example
+@@macro macro1 @{arg1, arg2 @}
+result: @@emph@{\arg1\@} protected \\ -> \\arg1\\  @@emp@{\arg2\@}
+@@end macro
+@end example
+
+before macro @macro macro1 { arg1 , arg2 }
+result: @emph{\arg1\} protected \\ -> \\arg1\\ @emph{\arg2\}
+@end macro after end macro
+
+Calling (normal)
+@example
+the @@macro1 @{ @@samp@{f\irst arg@}, second arg @} after macro
+@end example
+==================================
+
+the @macro1 { @samp{f\irst arg}, second arg } after macro
+
+-----------------------------------
+
+the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg }
+after macro
+
+====================================
+
+Calling (one arg)
+@example
+@@macro1 @{ @@samp@{f\irst arg@}@}
+@end example
+==================================
+
+@macro1 { @samp{f\irst arg}}
+
+-----------------------------------
+
+result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{}
+
+====================================
+
+Calling (no args)
+@example
+@@macro1 @@samp@{f\irst arg@}, second arg
+@end example
+==================================
+
+@macro1 @samp{f\irst arg}, second arg
+
+-----------------------------------
+
+result: @emph{} protected \ -> \arg1\ @emph{} 
+@samp{f\irst arg}, second arg
+
+====================================
+
+@ifhtml
+Calling (three args)
+@example
+@@macro1 @{ @@samp@{f\irst arg@}, second arg, third arg@}
+@end example
+==================================
+
+@macro1 { @samp{f\irst arg}, second arg, third arg}
+
+-----------------------------------
+
+result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg}
+
+====================================
+@end ifhtml
+
+define a macro with one arg
+@example
+@@macro macro2 @{ arg @}
+we get \arg\ and another \arg\
+and a last one on another line \arg\
+
+and a last in another paragraph
+@@end macro
+@end example
+
+@macro macro2 { arg }
+we get \arg\ and another \arg\
+and another one on another line \arg\
+
+and a last in another paragraph
+@end macro
+
+Calling
+@example
+@@macro2 @{ arg, comma \, @}
+@end example
+==================================
+
+@macro2 { arg, comma \, }
+
+-----------------------------------
+
+we get arg, comma , and another arg, comma ,
+and another one another line arg, comma ,
+
+and a last in another paragraph
+
+==================================
+
+Calling
+@example
+@@macro2  arg,  comma \, 
+@end example
+==================================
+
+@macro2  arg,  comma \,
+
+-----------------------------------
+
+we get arg, comma \, and another arg, comma \,
+and another one on another line arg, comma \,
+
+and a last in another paragraph
+
+==================================
+
+
+@macro ab
+a
+
+b
+@end macro
+
+now @@set comma ,  
+@set comma ,
+
+@@set flagab @@ab 
+@set flagab @ab
+
+the values:
+
+======================================
+
+flagab: @value{flagab}
+
+--------------------------------------
+
+makeinfo result (the macro in set is expanded and all the resulting lines
+are replaced):
+
+flagab: a
+
+b
+
+======================================
+
+comma: @value{comma}
+
+Calling macro1 with value
+@example
+@@macro1 @{ arg1 @@value@{comma@} arg2 @}
+@end example
+=======================================
+
+@macro1 { arg1 @value{comma} arg2 }
+
+---------------------------------------
+
+makeinfo result (the comma don't separate args ; the value is expanded after
+arguments parsing):
+
+result: @emph{arg1 , arg2 } protected \ -> \arg1\ @emph{}
+
+=======================================
+
+In verbatim
+@verbatim
+comma: @value{comma}
+@macro1{ bidule, truc}
+@end verbatim
+
+@set argument arg 
+@set bodyarg \arg\ 
+
+Define macro
+@example
+@@macro testvaluebody @{ arg @}
+result: @@emph@{\@@value@{bodyarg@}\  @} 
+@@end macro
+@end example
+
+@macro testvaluebody { arg }
+result: @emph{\@value{bodyarg}\  }
+@end macro
+
+==================================
+
+@testvaluebody{macro_arg1}
+
+----------------------------------
+
+makeinfo result (according to error message, the value isn't expanded
+when the body is expanded; it is kept, but the second \ isn't):
+
+result: @emph{\\arg\  }
+
+==================================
+
+Define macro
+@example
+@@macro testvalue @{ arg , the@@value@{argument@} @}
+result: @@emph@{\arg\@} the \the\ thearg \thearg\ with value \the@@value@{argument@}\
+@@end macro
+@end example
+
+@macro testvalue { arg , the@value{argument} }
+result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
+@end macro
+
+==================================
+
+@testvalue{macro_arg1}
+
+----------------------------------
+
+makeinfo (breaks) result:
+
+result: @emph{macro_arg1} the \the thearg \thearg with value \thearg
+
+==================================
+
+@contents
+@bye

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.17 2003-03-06 18:54:37 pertusus Exp $
+# $Id: texi2html.init,v 1.18 2003-03-27 18:37:10 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -220,6 +220,13 @@ $T2H_INDEX_CHAPTER = '';
 # if set and $T2H_SPLIT is set, then split index pages at the next letter
 # after they have more than that many entries
 $T2H_SPLIT_INDEX = 100;
+
+# if set the nodes are not used as sectionning elements
+$T2H_NO_NODE = 1;
+
+# if set warning is emitted when the next of the previous node isn't the node
+# or the previous of the next node isn't the node
+$T2H_WARN_PREV_NEXT = 0;
 
 # if set (e.g., to index.html) replace hrefs to this file
 # (i.e., to index.html) by ./
@@ -744,7 +751,6 @@ sub T2H_DEFAULT_print_navigation
                                 &$T2H_button_icon_img($button,
                                                     $T2H_ACTIVE_ICONS{$button},
                                                       $T2H_NAME{$button}),
-                                0,
                                 $btitle
                                );
             }
@@ -755,7 +761,6 @@ sub T2H_DEFAULT_print_navigation
                         &t2h_anchor('',
                                     $T2H_HREF{$button},
                                     $T2H_NAVIGATION_TEXT{$button},
-                                    0,
                                     $btitle
                                    ),
                                        ']';

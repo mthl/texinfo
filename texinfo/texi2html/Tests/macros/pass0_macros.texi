@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+before syncodeindex @syncodeindex cp fn
+
+syncodeindex on its line
+@syncodeindex cp fn
+line following syncodeindex
+
+documentlanguage @documentlanguage  en  
+
+documentlanguage on its line
+@documentlanguage  en  
+line following documentlanguage
+
+double documentlanguage on its line
+@documentlanguage  en @documentlanguage  en  
+line following documentlanguage
+
+@documentlanguage  en  after documentlanguage
+
+Before bye @bye on bye line
+
+after bye

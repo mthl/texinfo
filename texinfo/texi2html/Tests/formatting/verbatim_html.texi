@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 
 @node Top,First node,(dir)
-@top
+@top Tests
 @menu
 * First node::    node 1
 * node @'{a}::    node with braces
@@ -140,6 +140,39 @@ text on the same line than end   @end  ftable
 works like @@ifnothtml
 @end ifnottex
 
+@multitable {@samp{bidule}}
+truc before table beginning @item first cell @tab ignored cell
+@itemx second row
+@end multitable
+
+before bad  multitable @multitable 6 7
+@item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+
+right multitable
+@multitable @columnfractions 6 7
+@item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+
+multitable beginning with @@tab
+@multitable {@samp{@verb{.something.}}} {sec}
+@tab after first tab 
+@item new line
+@end multitable
+
+A flushright
+@flushright some text flushed right
+@end flushright
+
+A center @center Centered line
+And a center after empty line
+
+@center centered line after empty line
+
+And a center at end of line @center
+And an empty center @center   
+
+An empty flushright @flushright
+
+@end flushright
 
 A verb follows:
 

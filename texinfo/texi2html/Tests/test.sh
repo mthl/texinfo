@@ -28,7 +28,7 @@ wc=$1; shift
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
 basename=`basename $texi_file .$suffix`
 stderr_file=$basename.2
-echo "making test: $dir/$texi_file"
+echo "making test: $dir/$texi_file $options"
 if [ ! -d $dir ]; then
 	echo "  !!! no dir $dir"
 	return
@@ -127,13 +127,13 @@ if [ ! -z $1 ]; then
 fi
 
 test_texi GermanNodeTest nodetest.texi
-test_texi sectionning
-test_texi formatting verbatim_html.texi "-l2h -expand tex"
+test_texi index_table
 test_texi macros
 test_texi macros simple_macro.texi
 test_texi macros pass0_macros.texi
+test_texi sectionning
+test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html
-test_texi macro macros.texi "-verbose"
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
