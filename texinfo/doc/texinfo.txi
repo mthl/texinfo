@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
+@c $Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -849,20 +849,21 @@ details of the HTML language and much related information, see
 
 @item DVI
 @cindex DVI output
-@pindex Dvips
-@pindex Xdvi
+@pindex dvips
+@pindex xdvi
 (Generated via @command{texi2dvi}.)  This DeVice Independent binary
 format is output by the @TeX{} typesetting program
-(@uref{http://tug.org}).  (Be aware that the Texinfo language is very
-different from and much stricter than @TeX{}'s usual languages, plain
-@TeX{} and La@TeX{}.  For more information on @TeX{} in general,
-please see the book @cite{@TeX{} for the Impatient}, available at
-@uref{http://savannah.gnu.org/projects/teximpatient}, among many other
-references.)  This is then read by a DVI `driver', which writes the
-actual device-specific commands that can be viewed or printed, notably
-Dvips for translation to PostScript (@pxref{dvips invocation,,, dvips,
-Dvips}) and Xdvi for viewing on an X display
+(@uref{http://tug.org}).  This is then read by a DVI `driver', which
+writes the actual device-specific commands that can be viewed or
+printed, notably Dvips for translation to PostScript (@pxref{dvips
+invocation,,, dvips, Dvips}) and Xdvi for viewing on an X display
 (@uref{http://sourceforge.net/projects/xdvi/}).  @xref{Hardcopy}.
+
+Be aware that the Texinfo language is very different from and much
+stricter than @TeX{}'s usual languages, plain @TeX{} and La@TeX{}.
+For more information on @TeX{} in general, please see the book
+@cite{@TeX{} for the Impatient}, available from
+@uref{http://savannah.gnu.org/projects/teximpatient}.
 
 @item PDF
 @cindex PDF output
@@ -879,10 +880,11 @@ see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 @item XML
 @cindex XML output
 @cindex DTD, for Texinfo XML
+@pindex texinfo.dtd
 (Generated via @command{makeinfo --xml}.)  XML is a generic syntax
 specification usable for any sort of content (see, for example,
 @uref{http://www.w3.org/XML/}).  The @command{makeinfo} xml output,
-unlike all the formats above, interprets very little of the  Texinfo
+unlike all the formats above, interprets very little of the Texinfo
 source.  Rather, it merely translates the Texinfo markup commands into
 XML syntax, for processing by further XML tools.  The particular
 syntax output is defined in the file @file{texinfo.dtd} included in
@@ -890,10 +892,12 @@ the Texinfo source distribution.
 
 @item Docbook
 @cindex Docbook output
-(Generated via @command{makeinfo --docbook}.)  This is an XML format
-of long standing used primarily for technical documentation.  See
-@uref{http://www.docbook.org}.  If you want to convert from Docbook
-@emph{to} Texinfo, please see @uref{http://docbook2X.sourceforge.net}.
+(Generated via @command{makeinfo --docbook}.)  This is an XML-based
+format developed some years ago, primarily for technical
+documentation.  It therefore bears some resemblance, in broad
+outlines, to Texinfo.  See @uref{http://www.docbook.org}.  If you want
+to convert from Docbook @emph{to} Texinfo, please see
+@uref{http://docbook2X.sourceforge.net}.
 
 @end table
 
@@ -17282,7 +17286,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
+$Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17345,7 +17349,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.86 2003-11-08 21:51:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
