@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.9 2003-03-24 14:06:30 karl Exp $
+   $Id: node.c,v 1.10 2003-04-29 23:05:48 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -595,7 +595,7 @@ cm_node ()
   filling_enabled = indented_fill = 0;
   if (!html || (html && splitting))
     current_footnote_number = 1;
-  
+
   if (verbose_mode)
     printf (_("Formatting node %s...\n"), node);
 
@@ -609,7 +609,7 @@ cm_node ()
       xml_begin_node ();
       if (!docbook)
 	{
-	  xml_insert_element (NODENAME, START);      
+	  xml_insert_element (NODENAME, START);
 	  if (macro_expansion_output_stream && !executing_string)
 	    me_execute_string (node);
 	  else
@@ -982,7 +982,7 @@ cm_node ()
       if (prev)
 	{
 	  xml_insert_element (NODEPREV, START);
-	  execute_string ("%s", prev);	    
+	  execute_string ("%s", prev);
 	  xml_insert_element (NODEPREV, END);
 	}
       if (up)
@@ -1044,6 +1044,9 @@ cm_anchor (arg)
 
   /* Parse the anchor text.  */
   anchor = get_xref_token (1);
+
+  /* Force all versions of "top" to be "Top". */
+  normalize_node_name (anchor);
 
   /* In HTML mode, need to actually produce some output.  */
   if (html)
@@ -1601,7 +1604,7 @@ last_node_p (tags)
         break;
       }
   }
-  
+
   return last;
 }
 
