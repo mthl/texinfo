@@ -1,3 +1,22 @@
+2002-10-15    <karl@gnu.org>
+
+	2002-10-14  Alexandre Duret-Lutz  <adl@gnu.org>
+	* util/texi2dvi (common, txincludes): Fix definitions so that
+	an empty $txincludes doesn't result in a empty path element
+	in TEXINPUTS.
+
+2002-10-14    <karl@gnu.org>
+
+	* info/infokey.c: copyright 2002 not 02.
+	* makeinfo/lang.c: copyright 2001 not 01.
+
+	* makeinfo/insertion.c (begin_insertion): for enumerate, set
+	in_paragraph=0 as we do for itemize.
+	Otherwise a </p> gets inserted at the next @item, which is wrong.
+
+	Report from: Janis Johnson <janis187@us.ibm.com>, 14 Oct 2002
+	12:35:30 -0700.
+
 2002-10-13    <karl@gnu.org>
 
 	* util/install-info.c (longopts): make --infodir a synonym for
@@ -3183,7 +3202,7 @@ Thu Feb 18 16:42:10 1999  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_dots, cm_enddots): Don't produce &#133; for
 	HTML, as too many browsers don't support it; use "..." in a
-	smaller font.
+	smaller font (with <small>).
 	(cm_top): Output the lang= attribute inside <html>.
 
 	* makeinfo/node.c (cm_node): Output the lang= attribute inside
