@@ -1,3 +1,14 @@
+2003-09-15  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: add &$Texi2HTML::Config::one_section
+	for formatting of document with only one section.
+	find when an element is the first element on a page.
+	add &$Texi2HTML::Config::end_section, called when an element is 
+	finished unless it is the end of a page and do less in print_section
+	Don't use $ADDRESS anymore. 
+	Change &$Texi2HTML::Config::external_ref such that it is easier to
+	internationalize.
+
 2003-09-13  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: mark strings of buttons, about, 

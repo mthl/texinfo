@@ -28,7 +28,15 @@ $SEPARATED_FOOTNOTES = 0;
      \"node: ", \$Texi2HTML::NODE{This}, [ 'Next', \$Texi2HTML::NODE{Next} ] , \",", [ 'Prev', \$Texi2HTML::NODE{Prev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
 
-$NAVIGATION_TEXT{Following} = ' &gt; ';
+my $default_set_buttons = $set_buttons_text;
+$set_buttons_text = \&makeinfo_like_set_buttons_text;
+
+sub makeinfo_like_set_buttons_text()
+{
+   &$default_set_buttons();
+   $NAVIGATION_TEXT{'Following'} = ' &gt; ';
+}
+
 
 @MISC_BUTTONS = @SECTION_BUTTONS;
 

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.67 2003-09-13 17:52:41 pertusus Exp $
+# $Id: texi2html.pl,v 1.68 2003-09-15 21:41:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -81,8 +81,6 @@ my $pkgdatadir;
 # whether configure was run or not
 $sysconfdir = eval '"@sysconfdir@"' if ('@sysconfdir@' ne '@' . 'sysconfdir@');
 $pkgdatadir = eval '"@datadir@/@PACKAGE@"' if ('@datadir@' ne '@' . 'datadir@');
-
-my $T2H_TODAY; # date set by pretty_date
 
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
@@ -229,7 +227,7 @@ our @SECTION_BUTTONS;
 our @SECTION_FOOTER_BUTTONS;
 
 # customization variables which may be guessed in the script
-our $ADDRESS;
+#our $ADDRESS;
 our $BODYTEXT;
 our $CSS_LINES;
 
@@ -238,6 +236,8 @@ our $LANGUAGES;
 
 # customizable subroutines references
 our $print_section;
+our $one_section;
+our $end_section;
 our $print_Top_header;
 our $print_Top_footer;
 our $print_Top;
@@ -399,89 +399,6 @@ sub T2H_GPL_toc_body($$$)
         push @{$Texi2HTML::OVERVIEW}, $AFTER_OVERVIEW;
     }
 }
-
-# formatting functions
-
-$ref_beginning     = \&t2h_gpl_ref_beginning;
-$info_ref          = \&t2h_gpl_info_ref;
-$book_ref          = \&t2h_gpl_book_ref;
-$external_ref      = \&t2h_gpl_external_ref;
-$internal_ref      = \&t2h_gpl_internal_ref;
-
-
-# beginning of a ref
-sub t2h_gpl_ref_beginning($)
-{
-    my $type = shift;
-    if ($type eq 'xref')
-    {
-        return &$I('See') . " ";
-    }
-    elsif ($type eq 'pxref')
-    {
-        return  &$I('see') . " ";
-    }
-    else
-    {
-         return '';
-    }
-}
-
-# ref to an info file
-sub t2h_gpl_info_ref($$$)
-{
-    my $node = shift;
-    my $file = shift;
-    my $name = shift;
-    $name = '' unless (defined($name));
-    $node = "$name: " . $node if ($name);
-    return &$anchor('', $file, $node);
-}
-
-# ref to a book
-sub t2h_gpl_book_ref($$)
-{
-    my $section = shift;
-    my $book = shift;
-    $book = main::apply_style ('cite', $book);
-    return $book unless ($section);
-    return &$I('section'). " `$section' in " . $book;
-}
-
-sub t2h_gpl_external_ref($$$)
-{
-    my $type = shift;
-    my $info = shift;
-    my $book = shift;
-
-    my $ref = &$ref_beginning($type);
-    $ref .= $info if ($info);
-    $ref .= " " if ($info and $book);
-    $ref .= $book if ($book);
-    return $ref;
-}
-
-# ref to a node or section in the document
-sub t2h_gpl_internal_ref($$$$$)
-{
-    my $type = shift;
-    my $href = shift;
-    my $short_name = shift;
-    my $name = shift;
-    my $is_section = shift;
-
-    my $begin = &$ref_beginning($type); 
-    if (! $SHORT_REF)
-    {
-        $begin .= &$I('section'). " " if ($begin and $is_section);
-        return $begin . &$anchor('', $href, $name);
-    }
-    else
-    {
-        return $begin . &$anchor('', $href, $short_name);
-    }
-}
-
 
 # @INIT@
 
@@ -913,10 +830,13 @@ $| = 1;
 select(STDOUT);
 $| = 1;
 
+my $I = \&Texi2HTML::I18n::get_string;
+
+my $T2H_TODAY; # date set by pretty_date
+my $T2H_USER; # user running the script
+
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
-
-my $I = \&Texi2HTML::I18n::get_string;
 
 #print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
@@ -4173,6 +4093,7 @@ sub rearrange_elements()
             $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
             #$node->{'file'} = $file if ($Texi2HTML::Config::SPLIT eq 'node');
             $node->{'node_file'} = $file;
+            #print STDERR "NODEFILE $node->{'texi'}: $node->{'node_file'}\n";
             if ($node->{'node'})
             {
                 $files{$file} = "node";
@@ -4181,7 +4102,7 @@ sub rearrange_elements()
             {
                 $files{$file} = "anchor";
             }
-	    else
+            else
             {
                 print STDERR "Bug: $node->{'texi'} not a node nor an anchor nor an index_page\n";
             }
@@ -4211,7 +4132,7 @@ sub rearrange_elements()
               );
             $doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
             $element->{'doc_nr'} = $doc_nr;
-            if ($Texi2HTML::Config::NODE_FILES and $Texi2HTML::Config::SPLIT eq 'node')
+            if ($Texi2HTML::Config::NODE_FILES and ($Texi2HTML::Config::SPLIT eq 'node'))
             {
                 my $node = get_node($element);
                 if ($node and $node->{'file'})
@@ -4274,7 +4195,8 @@ sub rearrange_elements()
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
             #if (!$element->{'node'} and (!$Texi2HTML::Config::NODE_FILES or ($Texi2HTML::Config::SPLIT ne 'node')))
-            if (!$element->{'node'} and (!$Texi2HTML::Config::USE_NODES))
+            #if (!$element->{'node'} and (!$Texi2HTML::Config::USE_NODES))
+            if (!$element->{'node'} and !($Texi2HTML::Config::USE_NODES and ($Texi2HTML::Config::SPLIT eq 'node')))
             { 
                 if ($element->{'nodes'})
                 {
@@ -4377,7 +4299,9 @@ sub rearrange_elements()
             {
                 my $beginning = "   ";
                 $beginning = "  *" if ($node->{'with_section'});
-                print STDERR "${beginning}$node->{'texi'}\n";
+                my $file = $node->{'file'};
+                $file = "file undef" if (! defined($node->{'file'}));
+                print STDERR "${beginning}$node->{'texi'} $file\n";
             }
         }
         print STDERR "  places: $element->{'place'}\n";
@@ -4760,6 +4684,8 @@ sub pass_text()
     &$Texi2HTML::Config::set_buttons_text();
     # prepare %Texi2HTML::THISDOC
     # FIXME 0 should be valid
+    $Texi2HTML::THISDOC{'user'} = $T2H_USER;
+    $Texi2HTML::THISDOC{'today'} = $T2H_TODAY;
     $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_shorttitlepage'}) || substitute_line($value{'_titlefont'});
     $Texi2HTML::THISDOC{'title'} = substitute_line($value{'_settitle'}) || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'shorttitle'} =  substitute_line($value{'_shorttitle'});
@@ -4873,6 +4799,7 @@ sub pass_text()
     my $index_pages_nr;
     my $index_nr = 0;
     my $line_nr;
+    my $first_section = 0; # 1 if it is the first section of a page
     while (@doc_lines)
     {
         unless ($index_pages)
@@ -4885,9 +4812,9 @@ sub pass_text()
                  next;
             }
             $line_nr = shift (@doc_numbers);
-	    #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $_" if ($line_nr);
+            #print STDERR "$line_nr->{'file_name'}($line_nr->{'macro'},$line_nr->{'line_nr'}) $_" if ($line_nr);
         }
-	#print STDERR "PASS_TEXT: $_";
+        #print STDERR "PASS_TEXT: $_";
         #dump_stack(\$text, \@stack, \%state);
         if (!$state{'raw'} and !$state{'verb'})
         {
@@ -4909,13 +4836,13 @@ sub pass_text()
                 if ($tag =~ /heading/)
                 {
                     $current_element = $sections{$sec_num};
-		    #print STDERR "HEADING $_";
+                    #print STDERR "HEADING $_";
                     if (! $element)
                     {
                         $new_element = shift @elements_list;
                         $element->{'has_heading'} = 1 if ($new_element->{'top'});
                     }
-		    else
+                    else
                     {
                         if ($element->{'top'})
                         {
@@ -4931,15 +4858,15 @@ sub pass_text()
                     $current_element = shift (@all_elements);
                     if ($current_element->{'node'})
                     {
-		         print STDERR 'NODE ' . "$current_element->{'texi'}($current_element->{'file'})" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-			 print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'} and ($T2H_DEBUG & $DEBUG_ELEMENTS));
+                         print STDERR 'NODE ' . "$current_element->{'texi'}($current_element->{'file'})" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                         print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'} and ($T2H_DEBUG & $DEBUG_ELEMENTS));
                     }
                     else
                     {
-			 print STDERR 'SECTION ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                         print STDERR 'SECTION ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     }
-		    print STDERR ": $_" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-		    # The element begins a new section if there is no previous
+                    print STDERR ": $_" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    # The element begins a new section if there is no previous
                     # or it is an element and not the current one or the 
                     # associated section (in case of node) is not the current one
                     if (!$element 
@@ -4960,7 +4887,7 @@ sub pass_text()
                 { # this is a new index section
                     $new_element = $index_pages->[$index_pages_nr]->{'element'};
                     $current_element = $index_pages->[$index_pages_nr]->{'element'};
-		    print STDERR "New index page '$new_element->{'texi'}' nr: $index_pages_nr\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    print STDERR "New index page '$new_element->{'texi'}' nr: $index_pages_nr\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     my $list_element = shift @elements_list;
                     die "element in index_pages $new_element->{'texi'} and in list $list_element->{'texi'} differs\n" unless ($list_element eq $new_element);
                 }
@@ -4969,7 +4896,7 @@ sub pass_text()
                     $index_nr = 0;
                     my $old = 'NO_OLD';
                     $old = $element->{'texi'} if (defined($element));
-		    print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     if ($element and ($new_element->{'doc_nr'} != $element->{'doc_nr'}) and @foot_lines and !$Texi2HTML::Config::SEPARATED_FOOTNOTES)
                     { # note that this can only happen if $Texi2HTML::Config::SPLIT
                         &$Texi2HTML::Config::foot_section (\@foot_lines);
@@ -4980,14 +4907,13 @@ sub pass_text()
                     # print the element that just finished
                     $Texi2HTML::THIS_SECTION = \@section_lines;
                     $Texi2HTML::THIS_HEADER = \@head_lines;
-		    #print STDERR "LINES: @section_lines";
-		    #$FH = finish_element($FH, $element, $new_element) if ($element);
                     if ($element)
                     {
-                        $FH = finish_element($FH, $element, $new_element);
+                        $FH = finish_element($FH, $element, $new_element, $first_section);
+                        $first_section = 0;
                         @section_lines = ();
                         @head_lines = ();
-                    } 
+                    }
                     else
                     {
                         print STDERR "# Writing elements:" if ($T2H_VERBOSE);
@@ -5041,21 +4967,18 @@ sub pass_text()
                         }
                         $Texi2HTML::NAME{$direction} = $elem->{'text'};
                         $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
-                    }   
-		    #print STDERR "\nDone hrefs for $element->{'texi'}\n";
+                    }
+                    #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     if (! defined($FH))
                     {
                         my $file = $element->{'file'};
-			#print STDERR "Open file for $element->{'texi'}\n";
-                        #open(FILE, "> $docu_rdir$file") ||
-                        #die "$ERROR: Can't open $docu_rdir$file for writing: $!\n";
                         print STDERR "\n" if ($T2H_VERBOSE and !$T2H_DEBUG);
                         print STDERR "# Writing to $docu_rdir$file " if $T2H_VERBOSE;
-                        #$FH = \*FILE;
                         $FH = open_out("$docu_rdir$file");
                         &$Texi2HTML::Config::print_page_head($FH);
                         &$Texi2HTML::Config::print_chapter_header($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
                         &$Texi2HTML::Config::print_section_header($FH) if $Texi2HTML::Config::SPLIT eq 'section';
+                        $first_section = 1;
                     }
                     print STDERR "." if ($T2H_VERBOSE);
                     print STDERR "\n" if ($T2H_DEBUG);
@@ -5093,7 +5016,6 @@ sub pass_text()
                 s/\s+(\w+)\s*//;
                 my $name = $1;
                 close_stack(\$text, \@stack, \%state, $line_nr, '');
-		#close_paragraph (\$text, \@stack, \%state, '');
                 close_paragraph (\$text, \@stack, \%state);
                 next if (!index_name2prefix($name) or $empty_indices{$name});
                 $printed_indices{$name} = 1;
@@ -5149,14 +5071,12 @@ sub pass_text()
             }
         }
         print STDERR "# Write the section $element->{'texi'}\n" if ($T2H_VERBOSE);
-        print_lines($FH);
-        &$Texi2HTML::Config::print_foot_navigation($FH);
-        &$Texi2HTML::Config::print_page_foot($FH);
+        &$Texi2HTML::Config::one_section($FH);
         close_out($FH);
-               #|| die "$ERROR: Error occurred when closing: $!\n";
         return;
     }
-    finish_element ($FH, $element, undef);
+
+    finish_element ($FH, $element, undef, $first_section);
 
     ############################################################################
     # Print ToC, Overview, Footnotes
@@ -5266,11 +5186,13 @@ sub pass_text()
     }
 }
 
-sub finish_element($$$)
+# print section, close file and undef FH if needed.
+sub finish_element($$$$)
 {
     my $FH = shift;
     my $element = shift;
     my $new_element = shift;
+    my $first_section = shift;
     if ($element->{'top'})
     {
         my $top_file = $docu_top_file;
@@ -5288,15 +5210,14 @@ sub finish_element($$$)
         if ($Texi2HTML::Config::SPLIT)
         {
             close_out($FH, $top_file);
-               #|| die "$ERROR: Error occurred when closing $top_file: $!\n";
             undef $FH;
         }
     }
     else
     {
-        print STDERR "# do element $element->{'texi'}\n" 
+        print STDERR "# do element $element->{'texi'}\n"
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        &$Texi2HTML::Config::print_section($FH);
+        &$Texi2HTML::Config::print_section($FH, $first_section);
         if (defined($new_element) and ($new_element->{'doc_nr'} != $element->{'doc_nr'}))
         {
              &$Texi2HTML::Config::print_chapter_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'chapter');
@@ -5306,12 +5227,27 @@ sub finish_element($$$)
              close_out($FH);
              undef $FH;
         }
-        elsif (!defined($new_element) and $Texi2HTML::Config::SPLIT)
-        { # end of last splitted section 
-            &$Texi2HTML::Config::print_chapter_footer($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
-            &$Texi2HTML::Config::print_page_foot($FH);
-            close_out($FH);
-               #|| die "$ERROR: Error occurred when closing: $!\n";
+        elsif (!defined($new_element))
+        {
+            if ($Texi2HTML::Config::SPLIT)
+            { # end of last splitted section
+                &$Texi2HTML::Config::print_chapter_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'chapter');
+                &$Texi2HTML::Config::print_section_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'section');
+                &$Texi2HTML::Config::print_page_foot($FH);
+                close_out($FH);
+            }
+            else
+            {
+                &$Texi2HTML::Config::end_section($FH, 1);
+            }
+        }
+        elsif ($new_element->{'top'})
+        {
+            &$Texi2HTML::Config::end_section($FH, 1);
+        }
+        else
+        {
+            &$Texi2HTML::Config::end_section($FH);
         }
     }
     return $FH;
@@ -5326,7 +5262,11 @@ sub do_node_files()
         next unless ($node->{'node_file'});
         my $redirection_file = $docu_doc;
         $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
-        print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" if (!$redirection_file);
+        if (!$redirection_file)
+        {
+             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n";
+             next;
+        }
         next if ($redirection_file eq $node->{'node_file'});
         my $file = "${docu_rdir}$node->{'node_file'}";
         $Texi2HTML::NODE{'This'} = $node->{'text'};
@@ -5566,10 +5506,11 @@ sub href($$)
     my $file = shift;
     return '' unless defined($element);
     my $href = '';
-    $href .= $element->{'file'} if ($file ne $element->{'file'});
     print STDERR "Bug: $element->{'texi'}, id undef\n" if (!defined($element->{'id'}));
     print STDERR "Bug: $element->{'texi'}, file undef\n" if (!defined($element->{'file'}));
-    return $href . "#$element->{'id'}";
+    $href .= $element->{'file'} if (defined($element->{'file'}) and $file ne $element->{'file'});
+    $href .= "#$element->{'id'}" if (defined($element->{'id'}));
+    return $href;
 }
 
 sub normalise_space($)
@@ -6299,8 +6240,6 @@ sub do_xref($$$$)
             $macro = 'xref';
             $args[3] = $args[2];
         }
-        my $info_ref;
-        $info_ref = &$Texi2HTML::Config::info_ref("($args[3])$args[0]", do_external_ref($node_texi), $args[1]) if ($args[3]);
         my $href = '';
         my $node_file = '';
         if ($args[3] ne '')
@@ -6317,9 +6256,7 @@ sub do_xref($$$$)
                 $section = $args[2];
             }
         } 
-        my $book_ref;
-        $book_ref = &$Texi2HTML::Config::book_ref($args[2] || $args[0], $args[4]) if ($args[4] ne '');
-        $result = &$Texi2HTML::Config::external_ref($macro, $info_ref, $book_ref, $section, $args[4], $node_file, $href, $args[1]);
+        $result = &$Texi2HTML::Config::external_ref($macro, $section, $args[4], $node_file, $href, $args[1]);
     }
     #elsif (@args == 5)
     #{                   # reference to another manual
@@ -9569,9 +9506,10 @@ sub do_index_entry_label($)
 set_document_language('en') unless ($lang_set);
 # APA: There's got to be a better way:
 $T2H_TODAY = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20 September 1993";
+$T2H_USER = &$I('unknown');
 $Texi2HTML::Config::things_map{'today'} = $T2H_TODAY;
 $Texi2HTML::Config::pre_map{'today'} = $T2H_TODAY;
-my $T2H_USER = "unknown";
+
 if ($Texi2HTML::Config::TEST)
 {
     # to generate files similar to reference ones to be able to check for
@@ -9592,11 +9530,11 @@ else
 }
 # Set the body text
 &$Texi2HTML::Config::set_body_text();
-# this is used in footer
-unless (defined($Texi2HTML::Config::ADDRESS))
-{
-    $Texi2HTML::Config::ADDRESS = &$Texi2HTML::Config::address($T2H_USER, $T2H_TODAY);
-}
+# this was used in footer
+#unless (defined($Texi2HTML::Config::ADDRESS))
+#{
+#    $Texi2HTML::Config::ADDRESS = &$Texi2HTML::Config::address($T2H_USER, $T2H_TODAY);
+#}
 
 open_file($docu, $texi_line_number);
 Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)

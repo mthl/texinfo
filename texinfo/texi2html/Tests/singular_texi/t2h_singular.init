@@ -55,9 +55,8 @@ sub T2H_SING_print_Top_footer
 	&$anchor('', $Texi2HTML::HREF{About}, "About this document") .
 	  "</blockquote>";
   
-  # undef for the number of words ensures that the navigation panel is 
-  # never printed
-  &$print_foot_navigation($fh, $buttons, undef);
+  &$print_foot_navigation($fh);
+  print $fh "$SMALL_RULE\n";
   if ($SPLIT)
   {
      &$print_navigation($fh, $buttons);

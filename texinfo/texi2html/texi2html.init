@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.45 2003-09-13 17:52:41 pertusus Exp $
+# $Id: texi2html.init,v 1.46 2003-09-15 21:41:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -490,7 +490,7 @@ sub t2h_default_set_buttons_text()
      'Following',   &$I('node following in node reading order'),
      'Forward',     &$I('next section in reading order'),
      'FastForward', &$I('next chapter'),
-     'About' ,      &$I('about (this page)'),
+     'About' ,      &$I('about (help)'),
      'First',       &$I('first section in reading order'),
      'Last',        &$I('last section in reading order'),
     );
@@ -500,10 +500,6 @@ sub t2h_default_set_buttons_text()
 # Values guessed if not set here
 #
 #######################################################################
-
-# this is used in footer
-$ADDRESS = undef;
-
 
 # Set the default body text, inserted between <body ... >
 $BODYTEXT = undef;
@@ -559,6 +555,7 @@ sub t2h_default_set_body_text()
 # $Texi2HTML::THISDOC{program_homepage} -- homepage for texi2html
 # $Texi2HTML::THISDOC{program_authors}  -- authors of texi2html
 # $Texi2HTML::THISDOC{today}            -- date formatted with pretty_date
+# $Texi2HTML::THISDOC{user}             -- user running the script
 #
 # and pointer to arrays of lines which need to be printed by main::print_lines
 # $Texi2HTML::THIS_SECTION  -- lines of 'This' section
@@ -571,6 +568,8 @@ sub t2h_default_set_body_text()
 # There are the following subs which control the layout:
 #
 $print_section            = \&T2H_DEFAULT_print_section;
+$end_section              = \&T2H_DEFAULT_end_section;
+$one_section              = \&T2H_DEFAULT_one_section;
 $print_Top_header         = \&T2H_DEFAULT_print_Top_header;
 $print_Top_footer	      = \&T2H_DEFAULT_print_Top_footer;
 $print_Top		      = \&T2H_DEFAULT_print_Top;
@@ -604,26 +603,37 @@ $print_redirection_page   = \&T2H_DEFAULT_print_redirection_page;
 sub T2H_DEFAULT_print_section
 {
     my $fh = shift;
+    my $first_in_page = shift;
+    my $previous_is_top = shift;
     my $buttons = \@SECTION_BUTTONS;
 
-    if ($SECTION_NAVIGATION)
+    if ($first_in_page and $SECTION_NAVIGATION)
     {
         &$print_head_navigation($fh, $buttons);
     }
     else
     { # got to do this here, as it isn't done in print_head_navigation
         main::print_lines($fh, $Texi2HTML::THIS_HEADER);
+        &$print_navigation($fh, $buttons) if ($SECTION_NAVIGATION);
     }
-    my $nw = main::print_lines($fh); 
+    my $nw = main::print_lines($fh);
     if (defined $SPLIT
         and (($SPLIT eq 'node') && $SECTION_NAVIGATION))
     {
-        &$print_foot_navigation($fh, $buttons, $nw);
+        &$print_foot_navigation($fh);
+        print $fh "$SMALL_RULE\n";
+        &$print_navigation($fh, $buttons) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
+                                    and $nw >= $WORDS_IN_PAGE));
     }
-    else
-    {
-        print $fh "$BIG_RULE\n";
-    }
+}
+
+sub T2H_DEFAULT_one_section($)
+{
+    my $fh = shift;
+    main::print_lines($fh);
+    print $fh "$SMALL_RULE\n";
+    &$print_foot_navigation($fh);
+    &$print_page_foot($fh);
 }
 
 ###################################################################
@@ -647,9 +657,8 @@ sub T2H_DEFAULT_print_Top_footer
     my $fh = shift;
     my $buttons = shift;
     my $nwords = shift;
-    # undef for the number of words ensures that the navigation panel is 
-    # never printed
-    &$print_foot_navigation($fh, $buttons, undef);
+    &$print_foot_navigation($fh);
+    print $fh "$SMALL_RULE\n";
     if ($SPLIT)
     {
         &$print_navigation($fh, $buttons);
@@ -696,7 +705,7 @@ EOT
         $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
         print $fh "</blockquote>\n";
     }
-    &$print_Top_footer($fh, $buttons, $nw);
+    &$print_Top_footer($fh, $buttons);
 }
 
 ###################################################################
@@ -733,9 +742,8 @@ sub T2H_DEFAULT_print_misc_footer
     my $fh = shift;
     my $buttons = shift;
     my $nwords = shift;
-    # undef for the number of words ensures that the navigation panel is 
-    # never printed
-    &$print_foot_navigation($fh, $buttons, undef);
+    &$print_foot_navigation($fh, $buttons);
+    print $fh "$SMALL_RULE\n";
     if ($SPLIT)
     {
         &$print_navigation($fh, $buttons);# if ($SPLIT ne 'node');
@@ -758,9 +766,10 @@ sub T2H_DEFAULT_print_misc
 
 sub T2H_DEFAULT_print_section_footer
 {
-   my $fh = shift;
-   my $buttons = \@SECTION_FOOTER_BUTTONS;
-   &$print_navigation($fh, $buttons);
+    my $fh = shift;
+    my $buttons = \@SECTION_FOOTER_BUTTONS;
+    &$end_section ($fh, 1);
+    &$print_navigation($fh, $buttons);
 }
 
 ###################################################################
@@ -780,7 +789,8 @@ sub T2H_DEFAULT_print_chapter_header
     { # in this case print_navigation is called here. 
         my $fh = shift;
         my $buttons = \@CHAPTER_BUTTONS;
-        &$print_navigation($fh, $buttons);
+        &$print_head_navigation($fh, $buttons); #do that instead ?
+        #&$print_head_navigation($fh, $buttons); # FIXME VERTICAL_HEAD_NAVIGATION ?
         print $fh "\n$MIDDLE_RULE\n";
     }
 }
@@ -789,6 +799,8 @@ sub T2H_DEFAULT_print_chapter_footer
 {
     my $fh = shift;
     my $buttons = \@CHAPTER_BUTTONS;
+    &$print_foot_navigation($fh);
+    print $fh "$BIG_RULE\n";
     &$print_navigation($fh, $buttons);
 }
 
@@ -799,7 +811,7 @@ sub T2H_DEFAULT_print_section_header
     { # in this case print_navigation is called here. 
         my $fh = shift;
         my $buttons = \@SECTION_BUTTONS;
-        &$print_head_navigation($fh, $buttons);
+        &$print_head_navigation($fh, $buttons); 
     }
 }
 
@@ -837,16 +849,48 @@ $AFTER_BODY_OPEN
 EOT
 }
 
-sub T2H_DEFAULT_print_page_foot
+sub program_string()
+{
+    my $user = $Texi2HTML::THISDOC{'user'};
+    my $date = $Texi2HTML::THISDOC{'today'};
+    $user = '' if (!defined($user));
+    $date = '' if (!defined($date));
+    my $program_homepage = "<a href=\"$Texi2HTML::THISDOC{program_homepage}\"><i>$Texi2HTML::THISDOC{program}</i></a>";
+    if (($user ne '') and ($date ne ''))
+    {
+        return  &$I('This document was generated by <i>%{user}</i> on <i>%{date}</i> using %{program_homepage_href}.', {
+           'user' => $user, 'date' => $date, 'program_homepage_href' => $program_homepage });
+    }
+    elsif ($user ne '')
+    {
+        return  &$I('This document was generated by <i>%{user}</i> using %{program_homepage_href}.', {
+           'user' => $user, 'program_homepage_href' => $program_homepage });
+    }
+    elsif ($date ne '')
+    {
+        return  &$I('This document was generated on <i>%{date}</i> using %{program_homepage_href}.', {
+           'date' => $date, 'program_homepage_href' => $program_homepage });
+    }
+    return &$I('This document was generated using %{program_homepage_href}.', {
+       'program_homepage_href' => $program_homepage });
+}
+
+sub T2H_DEFAULT_end_section($$)
 {
     my $fh = shift;
-    print $fh "<p>\n" .
-" <font size=\"-1\">\n" .
-&$I('  This document was generated %{who_and_when_generated} using %{program_homepage_href}.',
-  { 'who_and_when_generated' => $ADDRESS,
-    'program_homepage_href' => "<a href=\"$Texi2HTML::THISDOC{program_homepage}\"><i>$Texi2HTML::THISDOC{program}</i></a>"
-  }) . "\n";
+    my $end_foot_navigation;
+    &$print_foot_navigation($fh) if ($end_foot_navigation);
+    print $fh "$BIG_RULE\n";
+}
+
+sub T2H_DEFAULT_print_page_foot($)
+{
+    my $fh = shift;
+    my $program_string = program_string();
     print $fh <<EOT;
+<p>
+ <font size="-1">
+  $program_string
  </font>
  <br>
 $PRE_BODY_CLOSE
@@ -890,8 +934,6 @@ EOT
 sub T2H_DEFAULT_print_foot_navigation
 {
     my $fh = shift;
-    my $buttons = shift;
-    my $nwords = shift;
     if ($VERTICAL_HEAD_NAVIGATION)
     {
         print $fh <<EOT;
@@ -900,13 +942,6 @@ sub T2H_DEFAULT_print_foot_navigation
 </table>
 EOT
     }
-    print $fh "$SMALL_RULE\n";
-    # We print navigation only if $nwords is defined; This should only 
-    # happen when split at nodes.
-    # if split at chapters or sections, print_chapter_footer or
-    # print_section_footer will do the job.
-    &$print_navigation($fh, $buttons) if (!defined($WORDS_IN_PAGE) or (defined ($nwords)
-                                    and $nwords >= $WORDS_IN_PAGE))
 }
 
 ######################################################################
@@ -995,7 +1030,8 @@ sub T2H_DEFAULT_print_navigation
                         $Texi2HTML::HREF{$button},
                         &$button_icon_img($button,
                                    $ACTIVE_ICONS{$button},
-                                   $Texi2HTML::NAME{$button}),
+                                   #$Texi2HTML::NAME{$button}),
+                                   $Texi2HTML::NO_TEXI{$button}),
                         $btitle
                       );
             }
@@ -1017,7 +1053,8 @@ sub T2H_DEFAULT_print_navigation
                 $ICONS && $PASSIVE_ICONS{$button} ?
                     &$button_icon_img($button,
                                           $PASSIVE_ICONS{$button},
-                                          $Texi2HTML::NAME{$button}) :
+                                          #$Texi2HTML::NAME{$button}) :
+                                          $Texi2HTML::NO_TEXI{$button}) :
 
                                               "[" . $NAVIGATION_TEXT{$button} . "]";
         }
@@ -1124,10 +1161,7 @@ sub T2H_DEFAULT_css_lines ($$)
 # and all global variables like $ADDRESS are not available.
 $PRE_ABOUT = sub
 {
-    return &$I('  This document was generated %{who_and_when_generated} using %{program_homepage_href}.',
-  { 'who_and_when_generated' => $ADDRESS,
-    'program_homepage_href' => "<a href=\"$Texi2HTML::THISDOC{program_homepage}\"><i>$Texi2HTML::THISDOC{program}</i></a>"
-  }) . "\n";
+    return '  ' . program_string() .  "\n";
 };
 
 # If customizing $AFTER_ABOUT, be sure to put the content inside <p></p>.
@@ -1712,9 +1746,6 @@ $menu_link         = \&t2h_default_menu_link;
 $menu_comment      = \&t2h_default_menu_comment;
 $menu_description  = \&t2h_default_menu_description;
 $simple_menu_link = \&t2h_default_simple_menu_link;
-#$ref_beginning     = \&t2h_default_ref_beginning;
-#$info_ref          = \&t2h_default_info_ref;
-#$book_ref          = \&t2h_default_book_ref;
 $external_ref      = \&t2h_default_external_ref;
 $internal_ref      = \&t2h_default_internal_ref;
 $table_item        = \&t2h_default_table_item;
@@ -1988,51 +2019,22 @@ sub t2h_default_menu_comment($)
    return '';
 }
 
-# format the beginning of a reference to something. This is not the 
-# the actual link to the referenced object, but the text introducing
-# the link.
-#
-# argument:
-# type of the reference: xref (reference at the beginning of a sentence),
-# pxref (reference in a parenthesis),  
-sub t2h_default_ref_beginning($)
-{
-}
-
-# format a reference to an info node and file with optionnaly a cross 
-# reference name.
+# format a reference external to the generated manual. This produces a full 
+# reference with introductive words and the reference itself.
 #
 # arguments:
+# type of the reference: xref (reference at the beginning of a sentence),
+#     pxref (reference in a parenthesis),  
+# section in the book. This might be undef.
+# book name.
 # node and file name formatted according to the convention used in info
 #     '(file)node' and no node means the Top node.
 # href linking to the html page containing the referenced node. A typical
 #     use for this href is a href attribute in an <a> element
 # an optionnal cross reference name
-sub t2h_default_info_ref($$$)
-{
-}
-
-# format a reference to a book.
-#
-# arguments:
-# section in the book. This might be undef.
-# book name.
-sub t2h_default_book_ref($$)
-{
-}
-
-# format a reference external to the generated manual. This produces a full 
-# reference with introductive words and the reference itself.
-#
-# arguments:
-# type of the reference (xref, pxref,... see ref_beginning above).
-# optionnal formatted reference to an html info page
-# optionnal formatted reference to a book
-sub t2h_default_external_ref($$$$$$$$)
+sub t2h_default_external_ref($$$$$$)
 {
     my $type = shift;
-    my $info_ref = shift;
-    my $book_ref = shift;
     my $section = shift;
     my $book = shift;
     my $file_node = shift;
@@ -2101,7 +2103,8 @@ sub t2h_default_external_ref($$$$$$$$)
 # produces a full reference with introductive words and the reference itself.
 #
 # arguments:
-# type of the reference (xref, pxref,... see ref_beginning above).
+# type of the reference: xref (reference at the beginning of a sentence),
+#     pxref (reference in a parenthesis),  
 # href linking to the html page containing the node or the section. A typical
 #     use for this href is a href attribute in an <a> element
 # short name for this reference
