@@ -1,5 +1,11 @@
 2004-12-29  Derek Price  <derek@ximbiot.com>
 
+	* configure.in: Update for 1.72 release.
+	* Makefile.in, aclocal.m4, configure, Tests/Makefile.in,
+	doc/Makefile.in, doc/stamp-vti, doc/version.texi: Regenerated.
+
+2004-12-29  Derek Price  <derek@ximbiot.com>
+
 	* README: Remove obsolete note about using shar for binary attachments
 	to mailing lists.
 
