@@ -2698,24 +2698,22 @@ width0pt\relax} \fi
 % Since we want to separate VAR from REST-OF-LINE (which might be
 % empty), we can't just use \parsearg; we have to insert a space of our
 % own to delimit the rest of the line, and then take it out again if we
-% didn't need it.  Make sure the catcode of space is correct to avoid
-% losing inside @example, for instance.
+% didn't need it.
+% We rely on the fact that \parsearg sets \catcode`\ =10.
 %
-\def\set{\begingroup\catcode` =10
-  \catcode`\-=\other \catcode`\_=\other % Allow - and _ in VAR.
-  \parsearg\setxxx}
+\def\set{\parseargusing{\catcode`\-=\other \catcode`\_=\other}\setxxx}
 \def\setxxx#1{\setyyy#1 \endsetyyy}
 \def\setyyy#1 #2\endsetyyy{%
   \def\temp{#2}%
-  \ifx\temp\empty \global\expandafter\let\csname SET#1\endcsname = \empty
-  \else \setzzz{#1}#2\endsetzzz % Remove the trailing space \setxxx inserted.
+  \edef\next{\gdef\makecsname{SET#1}}%
+  \ifx\temp\empty
+    \next{}%
+  \else
+    \setzzz#2\endsetzzz
   \fi
-  \endgroup
 }
-% Can't use \xdef to pre-expand #2 and save some time, since \temp or
-% \next or other control sequences that we've defined might get us into
-% an infinite loop. Consider `@set foo @cite{bar}'.
-\def\setzzz#1#2 \endsetzzz{\expandafter\gdef\csname SET#1\endcsname{#2}}
+% Remove the trailing space \setxxx inserted.
+\def\setzzz#1 \endsetzzz{\next{#1}}
 
 % @clear VAR clears (i.e., unsets) the variable VAR.
 %
