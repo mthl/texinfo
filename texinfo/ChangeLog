@@ -1,3 +1,10 @@
+2004-04-12  Paul Eggert  <eggert@twinsun.com>
+
+	* doc/Makefile.am (info.1, infokey.1, install-info.1,
+	makeinfo.1, texi2dvi.1, texindex.1): Don't use $< in ordinary
+	rules; it's not portable.
+	* util/Makefile.am (texinfo.cat): Likewise.
+
 2004-04-12  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: update from berlios.

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.17 2004-04-11 17:56:45 karl Exp $
+# $Id: Makefile.am,v 1.18 2004-04-13 00:07:51 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -58,17 +58,17 @@ install-tex:
 if MAINTAINER_MODE
 common_mandeps = $(top_srcdir)/configure.ac
 info.1: $(top_srcdir)/info/info.c $(common_mandeps)
-	$(HELP2MAN) --name="read Info documents" `basename $< .c` >$@
+	$(HELP2MAN) --name="read Info documents" `basename $@ .1` >$@
 infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	$(HELP2MAN) --name="compile customizations for Info" `basename $< .c` >$@
+	$(HELP2MAN) --name="compile customizations for Info" `basename $@ .1` >$@
 install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
-	$(HELP2MAN) --name="update info/dir entries" `basename $< .c` >$@
+	$(HELP2MAN) --name="update info/dir entries" `basename $@ .1` >$@
 makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
-	$(HELP2MAN) --name="translate Texinfo documents" `basename $< .c` >$@
+	$(HELP2MAN) --name="translate Texinfo documents" `basename $@ .1` >$@
 texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
-	$(HELP2MAN) --name="print Texinfo documents" `basename $< .c` >$@
+	$(HELP2MAN) --name="print Texinfo documents" `basename $@ .1` >$@
 texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
-	$(HELP2MAN) --name="sort Texinfo index files" `basename $< .c` >$@
+	$(HELP2MAN) --name="sort Texinfo index files" `basename $@ .1` >$@
 endif
 
 # Do not create info files for distribution.

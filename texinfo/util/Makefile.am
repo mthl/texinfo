@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.11 2004-04-11 17:56:47 karl Exp $
+# $Id: Makefile.am,v 1.12 2004-04-13 00:07:51 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -32,7 +32,7 @@ pkgdata_DATA = texinfo.cat
 # we don't actually use version.texi in the rule, but it's one way of
 # noticing when the version changes.
 texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
-	sed 's/__VERSION__/@VERSION@/g' $< >$@
+	sed 's/__VERSION__/@VERSION@/g' texinfo-cat.in >$@
 
 # Most of these are for fun.  The only one that's really supported is texi2dvi.
 # 
