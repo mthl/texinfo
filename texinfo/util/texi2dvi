@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.41 2005-02-09 19:14:52 karl Exp $
+# $Id: texi2dvi,v 1.42 2005-02-11 13:35:14 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.41 $'
+rcs_revision='$Revision: 1.42 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -107,7 +107,8 @@ verb=false      # echo for verbose mode
 orig_pwd=`pwd`
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS -- except for Cygwin, where it might be inherited.
+# directories in TEXINPUTS -- except for Cygwin, where COMSPEC might be
+# inherited, but : is used.
 if test -n "$COMSPEC$ComSpec" && uname | grep -iv cygwin >/dev/null; then
   path_sep=";"
 else
@@ -135,6 +136,12 @@ findprog ()
     if test -x "$dir/$1" && test ! -d "$dir/$1"; then
       foundprog=true
       break
+
+    # But on cygwin, test -x foo will not find foo.exe.  So also check
+    # for that.
+    elif test -x "$dir/$1.exe"; then
+      foundprog=true
+      break      
     fi
   done
   IFS=$saveIFS
