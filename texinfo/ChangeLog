@@ -1,5 +1,11 @@
 2002-11-07    <karl@gnu.org>
 
+	* makeinfo/sectioning.c: doc.
+	* makeinfo/sectioning.c: revert last change, it breaks gcc.
+
+	* makeinfo/xml.c (xml-add_char): don't insert BOOKINFO and ABSTRACT
+	if executing_string.  From Jos? Fonseca.
+
 	* configure.ac: pretest version 4.2e.
 
 	From: José Fonseca <j_r_fonseca@yahoo.co.uk>,
