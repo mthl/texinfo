@@ -1,5 +1,9 @@
 2003-01-05    <karl@gnu.org>
 
+	* util/texi2dvi: make egrep a variable (EGREP).  Suggestion from:
+	Kurt Hornik <hornik@ci.tuwien.ac.at>.
+	Also, replace fgrep with grep.
+
 	* doc/Makefile.am (TXI_XLATE): include txi-tr.tex from Alper Ersoy
 	<dirt@gtk.org>.
 
