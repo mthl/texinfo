@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.71 2003-10-15 10:07:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.72 2003-10-17 13:12:39 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6087,10 +6087,10 @@ sub do_text($;$)
     return $text if ($state->{'keep_texi'});
     if (defined($state) and !$state->{'preformatted'} and !$state->{'code_style'})
     {
+	# FIXME: Please comment as to why this is done:
         $text =~ s/``/"/go;
         $text =~ s/''/"/go;
-        $text =~ s/-(--?)/$1/g;
-        #$text =~ s/---/--/go;
+        $text =~ s/-(--?)/$1/go;
     }
     return $text if ($state->{'remove_texi'});
     return &$Texi2HTML::Config::protect_html($text);
