@@ -1,4 +1,4 @@
-$Id: TODO,v 1.17 2003-11-19 06:53:49 dirt Exp $
+$Id: TODO,v 1.18 2003-11-21 14:53:33 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -89,7 +89,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     the way to a speller.  An option would be to NOT strip comments out.
     makeinfo --no-headers comes close.
   - If node name contains an @ command, complain explicitly.
-  - Call Ghostscript to get ASCII/jpg output for the @image command.
   - Better HTML output: allow settable background color, table colors
     and spacing, <head> meta tags, etc.
   - Rewrite completely to simplify generation of different formats.
@@ -159,3 +158,7 @@ Ideas that will not be implemented:
 
 - Split HTML output by chapter.
   [Then cross-references in HTML cannot be generated consistently.]
+
+- Call Ghostscript to get ASCII/jpg output for the @image command.
+  [makeinfo should not try to be make, or assume it knows how the user
+   wants to generate images.  Too many different methods are possible.]
