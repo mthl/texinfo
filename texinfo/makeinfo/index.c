@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.14 2004-04-11 17:56:47 karl Exp $
+   $Id: index.c,v 1.15 2004-06-07 00:52:08 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -180,8 +180,8 @@ index_add_arg (char *name)
         flush_output ();
 
       new->next = the_indices[which];
-      new->entry_text = index_entry;
       new->entry = NULL;
+      new->entry_text = index_entry;
       /* Since footnotes are handled at the very end of the document,
          node name in the non-split HTML outputs always show the last
          node.  We artificially make it ``Footnotes''.  */
@@ -197,6 +197,11 @@ index_add_arg (char *name)
           else
             new->section_name = "";
         }
+      else
+        {
+          new->section = NULL;
+          new->section_name = NULL;
+        }
       new->code = tem->code;
       new->defining_line = line_number - 1;
       new->output_line = no_headers ? output_line_number : node_line_number;
@@ -204,9 +209,6 @@ index_add_arg (char *name)
          something that goes away, for example, inside a macro.
          (see the findexerr test).  */
       new->defining_file = xstrdup (input_filename);
-      the_indices[which] = new;
-
-      new->entry_number = index_counter;
 
       if (html && splitting)
         {
@@ -215,6 +217,11 @@ index_add_arg (char *name)
           else
             new->output_file = xstrdup ("");
         }
+      else
+        new->output_file = NULL;        
+
+      new->entry_number = index_counter;
+      the_indices[which] = new;
 
 #if 0
       /* The index breaks if there are colons in the entry.
@@ -832,7 +839,8 @@ cm_printindex (void)
               escaped_entry = escape_string (escaped_entry);
               expanded_entry = expansion (escaped_entry, index->code);
               add_html_block_elt_args ("\n<li><a href=\"%s#index-",
-                  (splitting ? index->output_file : ""), index_name);
+                  (splitting && index->output_file)
+                   ? index->output_file : "");
               add_escaped_anchor_name (index->entry_text);
               add_word_args ("-%d\">%s</a>: ", index->entry_number,
                   expanded_entry);
