@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.22 2003-10-31 16:45:09 karl Exp $
+   $Id: cmds.c,v 1.23 2003-10-31 16:47:02 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -863,12 +863,14 @@ cm_strong (arg, start_pos, end_pos)
   else
     add_char ('*');
   
-  if (arg == END
+  if (!xml && !html && !docbook && !no_headers
+      && arg == END
       && end_pos - start_pos >= 6
       && strncmp (output_paragraph + start_pos, "*Note:*", 6) == 0)
     /* Translators: "Note:" is literal here and should not be
        translated.  @strong{Nota}, say, does not cause the problem.  */
     warning (_("@strong{Note:} produces a spurious cross-reference in Info; reword to avoid that"));
+
 }
 
 void
