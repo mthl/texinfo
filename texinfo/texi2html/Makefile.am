@@ -10,6 +10,12 @@ i18ndir = $(pkgdatadir)/i18n
 TEXINFO_TEX = doc/texinfo.tex
 
 bin_SCRIPTS = texi2html
+texi2html_SOURCES = \
+	MySimple.pm \
+	T2h_i18n.pm \
+	texi2html.init \
+	texi2html.pl 
+
 noinst_SCRIPTS = manage_i18n.pl
 man_MANS = texi2html.1
 
@@ -18,11 +24,8 @@ EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
 	manage_i18n.pl \
-	translations.pl \
-	T2h_i18n.pm \
-	texi2html.init \
-	MySimple.pm \
-    l2h.init
+	l2h.init \
+	$(texi2html_SOURCES)
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
@@ -111,8 +114,4 @@ dist_images_DATA = images/a_begin.gif \
 	images/xy_up.gif \
 	images/xy_up_gr.gif
 
-texi2html: \
-	$(srcdir)/MySimple.pm \
-	$(srcdir)/T2h_i18n.pm \
-	$(srcdir)/texi2html.init \
-	$(srcdir)/texi2html.pl 
+texi2html: $(texi2html_SOURCES)

@@ -1,3 +1,12 @@
+2004-03-20  Derek Price  <derek@ximbiot.com>
+
+	* .cvsignore: Ignore the distribution archives.
+	* Makefile.am (texi2html_SOURCES): Add and use to avoid having to
+	maintain two lists of files.
+	* configure.in: Update to version 1.68 for release.
+	* Makefile.in, configure: Regenerated.
+	* doc/stamp-vti, doc/version.texi: Regenerated.
+
 2004-02-26  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* texi2html.pl, texi2html.init: change $DOCUMENTDESCRIPTION to

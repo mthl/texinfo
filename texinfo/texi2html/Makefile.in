@@ -41,8 +41,7 @@ DIST_COMMON = README $(am__configure_deps) $(dist_i18n_DATA) \
 	$(srcdir)/Makefile.in $(srcdir)/check_texinfo.pl.in \
 	$(srcdir)/texi2html.1.in $(srcdir)/texi2html.pl \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
-	TODO config.guess config.sub install-sh mdate-sh missing \
-	mkinstalldirs
+	TODO install-sh mdate-sh missing mkinstalldirs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -154,6 +153,12 @@ i18ndir = $(pkgdatadir)/i18n
 # in the top-level distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 bin_SCRIPTS = texi2html
+texi2html_SOURCES = \
+	MySimple.pm \
+	T2h_i18n.pm \
+	texi2html.init \
+	texi2html.pl 
+
 noinst_SCRIPTS = manage_i18n.pl
 man_MANS = texi2html.1
 EXTRA_DIST = \
@@ -161,11 +166,8 @@ EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
 	manage_i18n.pl \
-	translations.pl \
-	T2h_i18n.pm \
-	texi2html.init \
-	MySimple.pm \
-    l2h.init
+	l2h.init \
+	$(texi2html_SOURCES)
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
@@ -775,11 +777,7 @@ uninstall-man: uninstall-man1
 	uninstall-man1
 
 
-texi2html: \
-	$(srcdir)/MySimple.pm \
-	$(srcdir)/T2h_i18n.pm \
-	$(srcdir)/texi2html.init \
-	$(srcdir)/texi2html.pl 
+texi2html: $(texi2html_SOURCES)
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
