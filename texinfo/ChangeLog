@@ -1,3 +1,15 @@
+2004-06-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: Various doc fixes.
+	(\dosubindsanitize): propagate the same penalty
+	>10000, don't just use \nobreak.
+	(\sectionheading): insert a final penalty of
+	10001, not 10000.  This causes \aboveenvbreak to
+	insert \parskip glue, cancelling the
+	\vskip-\parskip done here.  Otherwise, when (e.g.)
+	@section is followed immediately by @example, the
+	example can be shrunk up above the section title.
+
 2004-06-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\commondummies, \indexnofonts): dummy-up @comma.
