@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-04-20.17}
+\def\texinfoversion{2003-04-21.17}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -895,7 +895,7 @@ where each line of input produces a line of output.}
 % switch the definition of this back and forth according to WORD.  By
 % default, we suppress indentation.
 % 
-\let\suppressfirstparagraphindent=\dosuppressfirstparagraphindent
+\def\suppressfirstparagraphindent{\dosuppressfirstparagraphindent}
 \newdimen\currentparindent
 %
 \def\insertword{insert}
@@ -903,9 +903,9 @@ where each line of input produces a line of output.}
 \def\firstparagraphindent{\parsearg\dofirstparagraphindent}
 \def\dofirstparagraphindent#1{%
   \def\temp{#1}%
-  \ifx\temp\suppressword
+  \ifx\temp\noneword
     \let\suppressfirstparagraphindent = \dosuppressfirstparagraphindent
-  \else\ifx\temp\defaultword
+  \else\ifx\temp\insertword
     \let\suppressfirstparagraphindent = \relax
   \else
     \errhelp = \EMsimple
@@ -919,7 +919,7 @@ where each line of input produces a line of output.}
 % We also make \indent itself not actually do anything until the next
 % paragraph.
 % 
-\gdef\suppressfirstparagraphindent{%
+\gdef\dosuppressfirstparagraphindent{%
   \gdef\indent{%
     \global\let\indent=\ptexindent
     \global\everypar = {}%
