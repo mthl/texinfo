@@ -3,6 +3,15 @@
 	* makeinfo/xml.c: Fix the <para>&lt; bug in XML, reported by K.
 	Ryde
 
+2002-11-29    <karl@gnu.org>
+
+	* lib/strdup.c: gnulib update.
+
+2002-11-29  Alexandre Duret-Lutz  <adl@gnu.org>
+
+	* doc/Makefile.am (.texi.info, texinfo): Remove.  Automake 1.7+
+	no longer output info files in the source tree.
+
 2002-11-26    <karl@gnu.org>
 
 	* makeinfo/insertion.c (cm_insertion_copying): flush_output, so that
