@@ -2,6 +2,10 @@ define redo
 file makeinfo
 end
 
+define out
+p output_paragraph[0]@output_paragraph_offset
+end
+
 set env MALLOC_CHECK_ 2
 set env ttests ../../@tests
 
@@ -192,3 +196,6 @@ set args -o $ttests/tbook.html --html --no-split $ttests/tbook.tex
 
 # long css seg fault
 set args -o - --html --no-split --css-include=$ttests/test.css $ttests/tbook.tex
+
+# spurious <p> in info output
+set args -o - $ttests/defmacp.tex

@@ -1,3 +1,15 @@
+2003-06-20    <karl@gnu.org>
+
+	* makeinfo/defun.c (process_defun_args): only insert the HTML
+	start/end tags if we're actually generating html.
+	Report from: Shawn Betts <sabetts@sfu.ca>, 12 Jun 2003
+	16:48:50 -0700.
+
+	* TODO: support translated manuals, from polak@gnu.org.
+
+	* doc/texinfo.txi: Edit Options node no longer exists in the Emacs
+		manual.  From: Luc Teirlinck <teirllm@dms.auburn.edu>.
+
 2003-06-18    <karl@gnu.org>
 
 	* config.{guess,sub}, install-sh, lib/xalloc.h: update from gnulib.
