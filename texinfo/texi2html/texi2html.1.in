@@ -1,4 +1,4 @@
-.TH TEXI2HTML 1 "@T2H_DATE@"
+.TH TEXI2HTML 1 "@PACKAGE_DATE@"
 .AT 3
 .SH NAME
 texi2html \- a Texinfo to HTML converter
@@ -125,7 +125,7 @@ file.
 Otherwise it creates only one file:
 .B foo.html
 .SH VERSION
-This is \fItexi2html\fP version @T2H_VERSION@, @T2H_DATE@.
+This is \fItexi2html\fP version @PACKAGE_VERSION@, @PACKAGE_DATE@.
 .SH AUTHOR
 Texi2html was originally written by is Lionel Cons, CERN IT/DIS/OSE,
 Lionel.Cons@cern.ch.  Over time, many other people around the net

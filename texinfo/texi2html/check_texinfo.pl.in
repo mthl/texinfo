@@ -1,4 +1,4 @@
-#@BANGPERL@
+#! @PERL@
 #+##############################################################################
 #
 # check_texinfo.pl: Extract texinfo commands from files

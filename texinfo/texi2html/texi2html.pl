@@ -1,4 +1,4 @@
-#@BANGPERL@
+#! @PERL@
 'di ';
 'ig 00 ';
 #+##############################################################################
@@ -293,7 +293,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.48 2003-06-16 14:41:23 pertusus Exp $
+# $Id: texi2html.pl,v 1.49 2003-06-16 17:04:46 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -309,7 +309,7 @@ Send bugs and suggestions to <users\@texi2html.cvshome.org>
 EOT
 
 # Version: set in configure.in
-my $THISVERSION = '@T2H_VERSION@';
+my $THISVERSION = '@PACKAGE_VERSION@';
 my $THISPROG = "texi2html $THISVERSION"; # program name and version
 
 my $T2H_TODAY; # date set by pretty_date

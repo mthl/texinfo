@@ -2,6 +2,15 @@ This file records noteworthy changes.
 
 1.68 ()
 
+* Many bug fixes.
+* @ifhtml works!
+* Standardized on Autoconf 2.57 & Automake 1.7.5.
+* The --enable-maintainer-mode option is now required by configure to enable
+  what is considered the maintainer-specific portions of Makefiles.  This
+  includes the portions which automatically rebuild the configure and build
+  files (configure, aclocal, Makefile.in, etc) when configure.in or other
+  dependencies are changed.
+
 1.66 (June 8 2002)
 * Many bug fixes.
 

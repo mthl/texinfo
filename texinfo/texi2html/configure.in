@@ -1,19 +1,21 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
-AC_INIT()
-AM_INIT_AUTOMAKE(texi2html, 1.67)
-dnl Misc variable settings
-T2H_DATE=2002-06-08
-T2H_VERSION=${VERSION}
+AC_INIT([texi2html], [1.67], [users@texi2html.cvshome.org])
+AM_INIT_AUTOMAKE([gnu 1.5 dist-bzip2])
 
-AC_SUBST(T2H_DATE)
-AC_SUBST(T2H_VERSION)
-INIT="$srcdir"/texi2html.init
-AC_SUBST_FILE(INIT)
-MYSIMPLE="$srcdir"/MySimple.pm
-AC_SUBST_FILE(MYSIMPLE)
-T2H_I18N="$srcdir"/T2h_i18n.pm
-AC_SUBST_FILE(T2H_I18N)
+dnl Disable Autoconf, Automake, and some other maintainer tools without the
+dnl --enable-maintainer-mode argument.
+AM_MAINTAINER_MODE
+
+dnl Misc variable settings
+PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.in`
+AC_SUBST([PACKAGE_DATE])
+INIT=$srcdir/texi2html.init
+AC_SUBST_FILE([INIT])
+MYSIMPLE=$srcdir/MySimple.pm
+AC_SUBST_FILE([MYSIMPLE])
+T2H_I18N=$srcdir/T2h_i18n.pm
+AC_SUBST_FILE([T2H_I18N])
 
 dnl Checks for programs.
 AC_PATH_PROG(PERL, perl, /usr/bin/env perl, /opt/perl5/bin:"$PATH")
@@ -36,17 +38,14 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 
 dnl Checks for library functions.
 
-dnl Blah
-AC_ARG_PROGRAM
+AC_CONFIG_FILES([texi2html:texi2html.pl], [chmod +x texi2html])
+AC_CONFIG_FILES([check_texinfo.pl], [chmod +x check_texinfo.pl])
 
-# We want sysconfdir and mandir to be expanded when
-# the default-prefix is used.
-test "x$prefix" = xNONE && prefix=$ac_default_prefix
-eval "sysconfdir=$sysconfdir"
-eval "mandir=$mandir"
-# We could be cleverer about handling special characters in the values
-# of $sysconfdir or $mandir, but automake doesn't so we won't either.
-
-extrasub='s%@BANGPERL@%! @PERL@%'
-
-AC_OUTPUT(Makefile texi2html.1 texi2html:texi2html.pl doc/Makefile Tests/Makefile check_texinfo.pl)
+dnl The bulk config files.
+AC_CONFIG_FILES([\
+                 Makefile \
+                 Tests/Makefile \
+                 doc/Makefile \
+		 texi2html.1 \
+                 ])
+AC_OUTPUT

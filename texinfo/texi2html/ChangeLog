@@ -1,3 +1,45 @@
+2003-06-16  Derek Price  <derek@ximbiot.com>
+
+	* NEWS: Add some of Patrice's features, note new AC/AM versions, note
+	--enable-maintainer-mode requirement.
+	* Makefile.am (all): Remove automake supplied target.
+	(texi2html): Update dependencies.
+	(EXTRA_DIST): Update these.
+	(MAINTAINER_CLEAN_FILES): Remove automatically included files.
+	(TEXI2HTML): Remove unused variable.
+	(AUTOMAKE_OPTIONS): Move to...
+	* configure.in (AM_INIT_AUTOMAKE): ...here.
+	(AC_ARG_PROGRAM): Remove call - AM_INIT_AUTOMAKE handles it.
+	(T2H_VERSION): Rename to...
+	(PACKAGE_VERSION): ...to avoid extra cruft since Autoconf already sets
+	this automatically.
+	(T2H_DATE): Rename to...
+	(PACKAGE_DATE): ...this in keeping with Autoconf naming convention and
+	set it automatically using mdate-sh.
+	(extrasub): Remove uneeded cruft.
+	(AM_MAINTAINER_MODE): Call this macro to make things easier on
+	inexperienced users.
+	(AC_OUTPUT): Move these files into...
+	(AC_CONFIG_FILES): ...calls to this macro and update some calls to set
+	the executable bit on files which need it.
+	* check_texinfo.pl.in: s/@BANGPERL@/! @PERL@/g;
+	* texi2html.1.in: s/@T2H_VERSION@/@PACKAGE_VERSION@/g;
+	s/@T2H_DATE@/@PACKAGE_DATE@/g.
+	* texi2html.init: Correct opening comment.
+	* texi2html.pl: s/@BANGPERL@/! @PERL@/g;
+	s/@T2H_VERSION@/@PACKAGE_VERSION@/g.
+	* Tests/Makefile.am (test): Rename to...
+	(check-local): ...this to conform with Automake requirements & GNU
+	standards.
+	(clean): Rename to...
+	(clean-local): ...for compatibility with Automake.
+
+	* Makefile.in: Regenerated.
+	* aclocal.m4: Ditto.
+	* configure: Ditto.
+	* Tests/Makefile.in: Ditto.
+	* doc/Makefile.in: Ditto.
+
 2003-06-16  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: @include replaced by an empty line
 	no end of line after last line when expanding macros
