@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
+@c $Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -444,10 +444,11 @@ Inserting Ellipsis and Bullets
 * dots::                        How to insert dots @dots{}
 * bullet::                      How to insert a bullet.
 
-Inserting @TeX{} and the Copyright Symbol
+Inserting @TeX{} and Legal Symbols: @copyright{}, @registeredsymbol{}
 
-* tex::                         How to insert the @TeX{} logo.
-* copyright symbol::            How to use @code{@@copyright@{@}}.
+* tex::                         The @TeX{} logo.
+* copyright symbol::            The copyright symbol (c in a circle).
+* registered symbol::           The registered symbol (R in a circle).
 
 Glyphs for Examples
 
@@ -9665,17 +9666,18 @@ type the braces, because @code{@@itemize} supplies them.
 
 
 @node TeX and copyright
-@section Inserting @TeX{} and the Copyright Symbol
+@section Inserting @TeX{} and Legal Symbols: @copyright{}, @registeredsymbol{}
 
 The logo `@TeX{}' is typeset in a special fashion and it needs an
-@@-command.  The copyright symbol, `@copyright{}', is also special.
-Each of these commands is followed by a pair of braces, @samp{@{@}},
-without any whitespace between the name of the command and the
-braces.@refill
+@@-command.  The copyright and registered symbols, `@copyright{}' and
+`@registeredsymbol{}', is also special.  Each of these commands is
+followed by a pair of braces, @samp{@{@}}, without any whitespace
+between the name of the command and the braces.
 
 @menu
-* tex::                         How to insert the @TeX{} logo.
-* copyright symbol::            How to use @code{@@copyright@{@}}.
+* tex::                         The @TeX{} logo.
+* copyright symbol::            The copyright symbol (c in a circle).
+* registered symbol::           The registered symbol (R in a circle).
 @end menu
 
 
@@ -9685,18 +9687,27 @@ braces.@refill
 
 Use the @code{@@TeX@{@}} command to generate `@TeX{}'.  In a printed
 manual, this is a special logo that is different from three ordinary
-letters.  In Info, it just looks like @samp{TeX}.  The
-@code{@@TeX@{@}} command is unique among Texinfo commands in that the
-@samp{T} and the @samp{X} are in upper case.@refill
+letters.  In Info, it just looks like @samp{TeX}.  The spelling of the
+@code{@@TeX@{@}} command is unique among Texinfo commands in that it
+uses both uppercase and lowercase letters.
 
 
 @node copyright symbol
 @subsection @code{@@copyright@{@}} (@copyright{})
 @findex copyright
 
-Use the @code{@@copyright@{@}} command to generate `@copyright{}'.  In
-a printed manual, this is a @samp{c} inside a circle, and in Info,
-this is @samp{(C)}.
+Use the @code{@@copyright@{@}} command to generate the copyright
+symbol, `@copyright{}'.  Where possible, this is a @samp{c}
+inside a circle; in Info, this is @samp{(C)}.
+
+
+@node registered symbol
+@subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
+@findex registeredsymbol
+
+Use the @code{@@registeredsymbol@{@}} command to generate the
+registered symbol, `@registeredsymbol{}'.  Where possible, this is an
+@samp{R} inside a circle; in Info, this is @samp{(R)}.
 
 
 @node pounds
@@ -15802,7 +15813,8 @@ menus instead.  @xref{Contents, , Generating a Table of
 Contents}.@refill
 
 @item @@copyright@{@}
-Generate a copyright symbol.  @xref{copyright symbol,, @code{@@copyright@{@}}}.
+Generate the copyright symbol.  @xref{copyright symbol,,
+@code{@@copyright@{@}}}.
 
 @ignore
 @item @@ctrl@{@var{ctrl-char}@}
@@ -16396,6 +16408,10 @@ has been done.  No effect on @TeX{}, which always refills.  This command
 is no longer needed, since all formatters now automatically refill.
 @xref{Refilling Paragraphs}.@refill
 
+@item @@registeredsymbol@{@}
+Generate the registered symbol.  @xref{registered symbol,,
+@code{@@registeredsymbol@{@}}}.
+
 @item @@result@{@}
 Indicate the result of an expression to the reader with a special
 glyph: @samp{@result{}}.  @xref{result, , @code{@@result}}.@refill
@@ -16560,7 +16576,7 @@ and @ref{itemx, , @code{@@itemx}}.@refill
 
 @item @@TeX@{@}
 Insert the logo @TeX{}.  @xref{TeX and copyright, , Inserting @TeX{}
-and @copyright{}}.@refill
+and @copyright{}}.
 
 @item @@tex
 Enter @TeX{} completely.  Pair with @code{@@end tex}.  @xref{Raw
@@ -17265,7 +17281,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
+$Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17328,7 +17344,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.85 2003-11-08 16:02:57 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
