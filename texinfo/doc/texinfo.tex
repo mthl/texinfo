@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-08.14}
+\def\texinfoversion{2003-01-10.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
@@ -290,7 +290,7 @@
       \egroup % \vbox from first cropmarks clause
       \fi
     }% end of \shipout\vbox
-  }% end of group with \turnoffactive
+  }% end of group with \normalturnoffactive
   \advancepageno
   \ifnum\outputpenalty>-20000 \else\dosupereject\fi
 }
@@ -3617,10 +3617,7 @@ width0pt\relax} \fi
 % We don't substitute the actual chapter name into \thischapter
 % because we don't want its macros evaluated now.
 \xdef\thischapter{\putwordChapter{} \the\chapno: \noexpand\thischaptername}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash chapentry{\the\toks0}%
-                                  {\the\chapno}}}%
-\temp
+\writetocentry{chap}{#1}{{\the\chapno}}
 \donoderef
 \global\let\section = \numberedsec
 \global\let\subsection = \numberedsubsec
@@ -3642,10 +3639,7 @@ width0pt\relax} \fi
 \gdef\thissection{#1}%
 \gdef\thischaptername{#1}%
 \xdef\thischapter{\putwordAppendix{} \appendixletter: \noexpand\thischaptername}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash appendixentry{\the\toks0}%
-                       {\appendixletter}}}%
-\temp
+\writetocentry{appendix}{#1}{{\appendixletter}}
 \appendixnoderef
 \global\let\section = \appendixsec
 \global\let\subsection = \appendixsubsec
@@ -3679,9 +3673,7 @@ width0pt\relax} \fi
 %
 \unnumbchapmacro {#1}%
 \gdef\thischapter{#1}\gdef\thissection{#1}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash unnumbchapentry{\the\toks0}{\the\chapno}}}%
-\temp
+\writetocentry{unnumbchap}{#1}{{\the\chapno}}
 \unnumbnoderef
 \global\let\section = \unnumberedsec
 \global\let\subsection = \unnumberedsubsec
@@ -3694,10 +3686,7 @@ width0pt\relax} \fi
 \def\seczzz #1{%
 \subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
 \gdef\thissection{#1}\secheading {#1}{\the\chapno}{\the\secno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash secentry{\the\toks0}%
-                                  {\the\chapno}{\the\secno}}}%
-\temp
+\writetocentry{sec}{#1}{{\the\chapno}{\the\secno}}
 \donoderef
 \nobreak
 }
@@ -3708,10 +3697,7 @@ width0pt\relax} \fi
 \def\appendixsectionzzz #1{%
 \subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
 \gdef\thissection{#1}\secheading {#1}{\appendixletter}{\the\secno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash secentry{\the\toks0}%
-                                  {\appendixletter}{\the\secno}}}%
-\temp
+\writetocentry{sec}{#1}{{\appendixletter}{\the\secno}}
 \appendixnoderef
 \nobreak
 }
@@ -3720,10 +3706,7 @@ width0pt\relax} \fi
 \def\unnumberedsecyyy #1{\unnmhead1{#1}} % normally calls unnumberedseczzz
 \def\unnumberedseczzz #1{%
 \plainsecheading {#1}\gdef\thissection{#1}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash unnumbsecentry%
-  {\the\toks0}{\the\chapno}{\the\secno}}}%
-\temp
+\writetocentry{unnumbsec}{#1}{{\the\chapno}{\the\secno}}
 \unnumbnoderef
 \nobreak
 }
@@ -3734,10 +3717,7 @@ width0pt\relax} \fi
 \def\numberedsubseczzz #1{%
 \gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
 \subsecheading {#1}{\the\chapno}{\the\secno}{\the\subsecno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash subsecentry{\the\toks0}%
-                                    {\the\chapno}{\the\secno}{\the\subsecno}}}%
-\temp
+\writetocentry{subsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
 \donoderef
 \nobreak
 }
@@ -3747,10 +3727,7 @@ width0pt\relax} \fi
 \def\appendixsubseczzz #1{%
 \gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
 \subsecheading {#1}{\appendixletter}{\the\secno}{\the\subsecno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash subsecentry{\the\toks0}%
-                                {\appendixletter}{\the\secno}{\the\subsecno}}}%
-\temp
+\writetocentry{subsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}}
 \appendixnoderef
 \nobreak
 }
@@ -3759,10 +3736,7 @@ width0pt\relax} \fi
 \def\unnumberedsubsecyyy #1{\unnmhead2{#1}} %normally calls unnumberedsubseczzz
 \def\unnumberedsubseczzz #1{%
 \plainsubsecheading {#1}\gdef\thissection{#1}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash unnumbsubsecentry%
-  {\the\toks0}{\the\chapno}{\the\secno}{\the\subsecno}}}%
-\temp
+\writetocentry{unnumbsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
 \unnumbnoderef
 \nobreak
 }
@@ -3774,10 +3748,7 @@ width0pt\relax} \fi
 \gdef\thissection{#1}\global\advance \subsubsecno by 1 %
 \subsubsecheading {#1}
   {\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash subsubsecentry{\the\toks0}%
-  {\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}}%
-\temp
+\writetocentry{subsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
 \donoderef
 \nobreak
 }
@@ -3788,10 +3759,7 @@ width0pt\relax} \fi
 \gdef\thissection{#1}\global\advance \subsubsecno by 1 %
 \subsubsecheading {#1}
   {\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash subsubsecentry{\the\toks0}%
-  {\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}}}%
-\temp
+\writetocentry{subsubsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
 \appendixnoderef
 \nobreak
 }
@@ -3800,10 +3768,7 @@ width0pt\relax} \fi
 \def\unnumberedsubsubsecyyy #1{\unnmhead3{#1}} %normally unnumberedsubsubseczzz
 \def\unnumberedsubsubseczzz #1{%
 \plainsubsubsecheading {#1}\gdef\thissection{#1}%
-\toks0 = {#1}%
-\edef\temp{\noexpand\writetocentry{\realbackslash unnumbsubsubsecentry%
-  {\the\toks0}{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}}%
-\temp
+\writetocentry{unnumbsubsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
 \unnumbnoderef
 \nobreak
 }
@@ -4022,16 +3987,22 @@ width0pt\relax} \fi
 % Called from @chapter, etc.  We supply {\folio} at the end of the
 % argument, which will end up as the last argument to the \...entry macro.
 %
-% We open the .toc file here instead of at @setfilename or any other
-% fixed time so that @contents can be put in the document anywhere.
+% Usage: \writetocentry{chap}{The Name of The Game}{{\the\chapno}}
+% We open the .toc file for writing here instead of at @setfilename (or
+% any other fixed time) so that @contents can be anywhere in the document.
 %
 \newif\iftocfileopened
-\def\writetocentry#1{%
+\def\writetocentry#1#2#3{%
   \iftocfileopened\else
     \immediate\openout\tocfile = \jobname.toc
     \global\tocfileopenedtrue
   \fi
-  \iflinks \write\tocfile{#1{\folio}}\fi
+  %
+  \iflinks
+    \toks0 = {#2}%
+    \edef\temp{\write\tocfile{\realbackslash #1entry{\the\toks0}#3{\folio}}}%
+    \temp
+  \fi
   %
   % Tell \shipout to create a page destination if we're doing pdf, which
   % will be the target of the links in the table of contents.  We can't
