@@ -89,21 +89,18 @@ by the Free Software Foundation.
 @c  Define some macros which affect markup and add to the
 @c  index simultaneously.
 @macro longopt {arg}
-@option{--\arg\}
 @opindex \arg\
-
+@option{--\arg\}
 @end macro
 
 @macro shortopt {arg}
-@option{-\arg\}
 @opindex \arg\
-
+@option{-\arg\}
 @end macro
 
 @macro variable {arg}
-@var{\arg\}
 @vindex \arg\
-
+@code{\arg\}
 @end macro
 @c --------------------------------------------------------
 

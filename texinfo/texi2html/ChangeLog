@@ -1,5 +1,12 @@
 2003-10-14  Derek Price  <derek@ximbiot.com>
 
+	* doc/texi2html.texi: Use @code{} for Perl vars.  @var{} is for user
+	supplied data to commands and function calls and the like.  Fix EOL
+	indiscretion in the three index macros.
+	* doc/stamp-vti, doc/version.texi: Regenerated.
+
+2003-10-14  Derek Price  <derek@ximbiot.com>
+
 	* doc/custhtml.texi, doc/custpage.texi, doc/texi2html.texi: Misc
 	revisions to Pat's major revisions.  Some global changes and reviewed
 	through section 4.3.  Consolidate copyleft notice into a macro.
