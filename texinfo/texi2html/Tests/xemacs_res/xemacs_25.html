@@ -76,26 +76,26 @@ Fortran as inferior processes, feeding the error log into an Emacs buffer.
 It can also parse the error messages and visit the files in which errors
 are found, moving point to the line where the error occurred.
 </p><dl compact="compact">
- <dt> M-x compile
-</dt>
+ <dt><kbd> M-x compile
+</kbd></dt>
 <dd><p>Run a compiler asynchronously under Emacs, with error messages to
 `<samp>*compilation*</samp>' buffer.
  </p> </dd>
-<dt> M-x grep
-</dt>
+<dt><kbd> M-x grep
+</kbd></dt>
 <dd><p>Run <code>grep</code> asynchronously under Emacs, with matching lines
 listed in the buffer named `<samp>*compilation*</samp>'.
  </p> </dd>
-<dt> M-x kill-compilation
-</dt>
+<dt><kbd> M-x kill-compilation
+</kbd></dt>
 <dd><p>Kill the process made by the <code>M-x compile</code> command.
  </p> </dd>
-<dt> M-x kill-grep
-</dt>
+<dt><kbd> M-x kill-grep
+</kbd></dt>
 <dd><p>Kill the running compilation or <code>grep</code> subprocess.
  </p> </dd>
-<dt> C-x `
-</dt>
+<dt><kbd> C-x `
+</kbd></dt>
 <dd><p>Visit the next compiler error message or <code>grep</code> match.
 </p></dd>
 </dl>
@@ -115,7 +115,7 @@ again.  The first <kbd>M-x compile</kbd> provides <code>make -k</code> as the de
 The default is taken from the variable <code>compile-command</code>; if the
 appropriate compilation command for a file is something other than
 <code>make -k</code>, it can be useful to have the file specify a local value for
-<code>compile-command</code> (see section <a href="xemacs_30.html#NOD336">Local Variables in Files</a>).
+<code>compile-command</code> (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).
 </p><a name="IDX1021"></a>
 <p>  When you start a compilation, the buffer `<samp>*compilation*</samp>' is
 displayed in another window but not selected.  Its mode line displays
@@ -193,25 +193,25 @@ expressions.
 </dt>
 <dd><p>The mode for editing source files of programs to run in Emacs Lisp.
 This mode defines <kbd>C-M-x</kbd> to evaluate the current defun.
-See section <a href="#NOD239">Libraries of Lisp Code for Emacs</a>.
+See section <a href="#SEC254">Libraries of Lisp Code for Emacs</a>.
  </p> </dd>
 <dt> Lisp Interaction mode
 </dt>
 <dd><p>The mode for an interactive session with Emacs Lisp.  It defines
 <kbd>LFD</kbd> to evaluate the sexp before point and insert its value in the
-buffer.  See section <a href="#NOD245">Lisp Interaction Buffers</a>.
+buffer.  See section <a href="#SEC260">Lisp Interaction Buffers</a>.
  </p> </dd>
 <dt> Lisp mode
 </dt>
 <dd><p>The mode for editing source files of programs that run in other dialects
 of Lisp than Emacs Lisp.  This mode defines <kbd>C-M-x</kbd> to send the
-current defun to an inferior Lisp process.  See section <a href="#NOD246">Running an External Lisp</a>.
+current defun to an inferior Lisp process.  See section <a href="#SEC261">Running an External Lisp</a>.
  </p> </dd>
 <dt> Inferior Lisp mode
 </dt>
 <dd><p>The mode for an interactive session with an inferior Lisp process.
 This mode combines the special features of Lisp mode and Shell mode
-(see section <a href="xemacs_29.html#NOD314">Shell Mode</a>).
+(see section <a href="xemacs_29.html#SEC340">Shell Mode</a>).
  </p> </dd>
 <dt> Scheme mode
 </dt>
@@ -241,7 +241,7 @@ This mode combines the special features of Lisp mode and Shell mode
 
 <p>  Lisp code for Emacs editing commands is stored in files whose names
 conventionally end in `<tt>.el</tt>'.  This ending tells Emacs to edit them in
-Emacs-Lisp mode (see section <a href="#NOD238">Major Modes for Lisp</a>).
+Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 </p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC255">22.3.1 Loading Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Loading libraries of Lisp code into Emacs for use.</td></tr>
@@ -266,16 +266,16 @@ Emacs-Lisp mode (see section <a href="#NOD238">Major Modes for Lisp</a>).
 <h3> 22.3.1 Loading Libraries </h3>
 
 <dl compact="compact">
- <dt> M-x load-file <var>file</var>
-</dt>
+ <dt><kbd> M-x load-file <var>file</var>
+</kbd></dt>
 <dd><p>Load the file <var>file</var> of Lisp code.
  </p> </dd>
-<dt> M-x load-library <var>library</var>
-</dt>
+<dt><kbd> M-x load-library <var>library</var>
+</kbd></dt>
 <dd><p>Load the library named <var>library</var>.
  </p> </dd>
-<dt> M-x locate-library <var>library</var> &amp;optional <var>nosuffix</var>
-</dt>
+<dt><kbd> M-x locate-library <var>library</var> &amp;optional <var>nosuffix</var>
+</kbd></dt>
 <dd><p>Show the full path name of Emacs library <var>library</var>.
 </p></dd>
 </dl>
@@ -372,35 +372,35 @@ it does prevent execution of the rest of the <code>forms</code>.
 <p>  Emacs Lisp code can be compiled into byte-code which loads faster,
 takes up less space when loaded, and executes faster.
 </p><dl compact="compact">
- <dt> M-x batch-byte-compile
-</dt>
+ <dt><kbd> M-x batch-byte-compile
+</kbd></dt>
 <dd><p>Run byte-compile-file on the files remaining on the command line.
  </p> </dd>
-<dt> M-x byte-compile-buffer &amp;optional <var>buffer</var>
-</dt>
+<dt><kbd> M-x byte-compile-buffer &amp;optional <var>buffer</var>
+</kbd></dt>
 <dd><p>Byte-compile and evaluate contents of <var>buffer</var> (default is current 
 buffer).
  </p> </dd>
-<dt> M-x byte-compile-file
-</dt>
+<dt><kbd> M-x byte-compile-file
+</kbd></dt>
 <dd><p>Compile a file of Lisp code named <var>filename</var> into a file of byte code.
  </p> </dd>
-<dt> M-x byte-compile-and-load-file <var>filename</var>
-</dt>
+<dt><kbd> M-x byte-compile-and-load-file <var>filename</var>
+</kbd></dt>
 <dd><p>Compile a file of Lisp code named <var>filename</var> into a file of byte
 code and load it.
  </p> </dd>
-<dt> M-x byte-recompile-directory <var>directory</var>
-</dt>
+<dt><kbd> M-x byte-recompile-directory <var>directory</var>
+</kbd></dt>
 <dd><p>Recompile every `<tt>.el</tt>' file in <var>directory</var> that needs recompilation.
  </p> </dd>
-<dt> M-x disassemble
-</dt>
+<dt><kbd> M-x disassemble
+</kbd></dt>
 <dd><p>Print disassembled code for <var>object</var> on (optional) <var>stream</var>.
 <a name="IDX1033"></a>
  </p> </dd>
-<dt> M-x make-obsolete <var>function new</var> 
-</dt>
+<dt><kbd> M-x make-obsolete <var>function new</var> 
+</kbd></dt>
 <dd><p>Make the byte-compiler warn that <var>function</var> is obsolete and <var>new</var> 
 should be used instead.
 </p></dd>
@@ -496,27 +496,27 @@ function.  Evaluation of Lisp expressions is also useful in any kind of
 editing task for invoking non-interactive functions (functions that are
 not commands).
 </p><dl compact="compact">
- <dt> M-:
-</dt>
+ <dt><kbd> M-:
+</kbd></dt>
 <dd><p>Read a Lisp expression in the minibuffer, evaluate it, and print the
 value in the minibuffer (<code>eval-expression</code>).
  </p> </dd>
-<dt> C-x C-e
-</dt>
+<dt><kbd> C-x C-e
+</kbd></dt>
 <dd><p>Evaluate the Lisp expression before point, and print the value in the
 minibuffer (<code>eval-last-sexp</code>).
  </p> </dd>
-<dt> C-M-x
-</dt>
+<dt><kbd> C-M-x
+</kbd></dt>
 <dd><p>Evaluate the defun containing point or after point, and print the value in
 the minibuffer (<code>eval-defun</code>).
  </p> </dd>
-<dt> M-x eval-region
-</dt>
+<dt><kbd> M-x eval-region
+</kbd></dt>
 <dd><p>Evaluate all the Lisp expressions in the region.
  </p> </dd>
-<dt> M-x eval-current-buffer
-</dt>
+<dt><kbd> M-x eval-current-buffer
+</kbd></dt>
 <dd><p>Evaluate all the Lisp expressions in the buffer.
 </p></dd>
 </dl>
@@ -594,7 +594,7 @@ debugger as soon as <var>fun-name</var> is called. Use
 debugger when called.  (Redefining the function also does this.)  To enter
 the debugger from some other place in Lisp code, you must insert the
 expression <code>(debug)</code> there and install the changed code with
-<kbd>C-M-x</kbd>.  See section <a href="#NOD243">Evaluating Emacs-Lisp Expressions</a>.</p><p>  When the debugger is entered, it displays the previously selected buffer
+<kbd>C-M-x</kbd>.  See section <a href="#SEC258">Evaluating Emacs-Lisp Expressions</a>.</p><p>  When the debugger is entered, it displays the previously selected buffer
 in one window and a buffer named `<samp>*Backtrace*</samp>' in another window.  The
 backtrace buffer contains one line for each level of Lisp function
 execution currently going on.  At the beginning of the buffer is a message
@@ -606,7 +606,7 @@ usual Emacs editing commands are available; you can switch windows to
 examine the buffer that was being edited at the time of the error, and
 you can switch buffers, visit files, and perform any other editing
 operations.  However, the debugger is a recursive editing level
-(see section <a href="xemacs_29.html#NOD320">Recursive Editing Levels</a>); it is a good idea to return to the backtrace
+(see section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</a>); it is a good idea to return to the backtrace
 buffer and explicitly exit the debugger when you don't want to use it any
 more.  Exiting the debugger kills the backtrace buffer.
 </p><a name="IDX1051"></a>
@@ -618,8 +618,8 @@ frame</em>.  Some of the debugger commands operate on the current frame.
 Debugger commands are mainly used for stepping through code one
 expression at a time.  Here is a list of them:
 </p><dl compact="compact">
- <dt> c
-</dt>
+ <dt><kbd> c
+</kbd></dt>
 <dd><p>Exit the debugger and continue execution.  In most cases, execution of
 the program continues as if the debugger had never been entered (aside
 from the effect of any variables or data structures you may have changed
@@ -628,8 +628,8 @@ function entry or exit, explicit invocation, and quitting or certain
 errors.  Most errors cannot be continued; trying to continue an error usually
 causes the same error to occur again.
  </p> </dd>
-<dt> d
-</dt>
+<dt><kbd> d
+</kbd></dt>
 <dd><p>Continue execution, but enter the debugger the next time a Lisp
 function is called.  This allows you to step through the
 subexpressions of an expression, and see what the subexpressions do and
@@ -638,30 +638,30 @@ what values they compute.
 function call from which you entered.  The same function is then called
 when you exit the frame.  To cancel this flag, use <kbd>u</kbd>.
  </p> </dd>
-<dt> b
-</dt>
+<dt><kbd> b
+</kbd></dt>
 <dd><p>Set up to enter the debugger when the current frame is exited.  Frames
 that invoke the debugger on exit are flagged with stars.
  </p> </dd>
-<dt> u
-</dt>
+<dt><kbd> u
+</kbd></dt>
 <dd><p>Don't enter the debugger when the current frame is exited.  This
 cancels a <kbd>b</kbd> command on a frame.
  </p> </dd>
-<dt> e
-</dt>
+<dt><kbd> e
+</kbd></dt>
 <dd><p>Read a Lisp expression in the minibuffer, evaluate it, and print the
 value in the echo area.  This is equivalent to the command <kbd>M-:</kbd>.
  </p> </dd>
-<dt> q
-</dt>
+<dt><kbd> q
+</kbd></dt>
 <dd><p>Terminate the program being debugged; return to top-level Emacs
 command execution.
 </p><p>If the debugger was entered due to a <kbd>C-g</kbd> but you really want
 to quit, not to debug, use the <kbd>q</kbd> command.
  </p> </dd>
-<dt> r
-</dt>
+<dt><kbd> r
+</kbd></dt>
 <dd><p>Return a value from the debugger.  The value is computed by reading an
 expression with the minibuffer and evaluating it.
 </p><p>The value returned by the debugger makes a difference when the debugger
@@ -743,7 +743,7 @@ from Lisp will go into the buffer, advancing point, and any &quot;terminal
 input&quot; for Lisp comes from text in the buffer.  To give input to Lisp, go
 to the end of the buffer and type the input, terminated by <kbd>RET</kbd>.  The
 `<samp>*lisp*</samp>' buffer is in Inferior Lisp mode, which has all the
-special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#NOD314">Shell Mode</a>).
+special characteristics of Lisp mode and Shell mode (see section <a href="xemacs_29.html#SEC340">Shell Mode</a>).
 </p><a name="IDX1054"></a>
 <p>  Use Lisp mode to run the source files of programs in external Lisps.
 You can select this mode with <kbd>M-x lisp-mode</kbd>.  It is used automatically
@@ -775,7 +775,7 @@ to be run in another Lisp system) and Emacs-Lisp mode (for editing Lisp
 programs to be run in Emacs): in both modes it has the effect of installing
 the function definition that point is in, but the way of doing so is
 different according to where the relevant Lisp environment is found.
-See section <a href="#NOD238">Major Modes for Lisp</a>.
+See section <a href="#SEC253">Major Modes for Lisp</a>.
  </p> 
 <a name="SEC262"></a>
 <h2> 22.8 Packages </h2>
@@ -817,7 +817,7 @@ local needs with safe removal of unnecessary code.
 
 <p>There are two main flavors of packages.
 </p><ul>
- <li><p>
+<li><p>
 Regular Packages
 <a name="IDX1057"></a>
 A regular package is one in which multiple files are involved and one
@@ -929,15 +929,15 @@ non-essential packages were made optional.
 </tr></table>
 <a name="SEC270"></a>
 <h3> 22.8.6 Choosing the Packages You Need </h3>
-<p>The <a href="#NOD258">Normal Packages</a> can currently be found in the same ftp directory
+<p>The <a href="#SEC283">Normal Packages</a> can currently be found in the same ftp directory
 where you grabbed the core distribution from, and are located in the
 subdirectory `<tt>packages</tt>'.  Package file names follow
 the naming convention `<tt>&lt;package-name&gt;-&lt;version&gt;-pkg.tar.gz</tt>'.
-</p><p>If you have EFS, packages can be installed over the network.
+</p><p>If you have `EFS', packages can be installed over the network.
 Alternatively, if you have copies of the packages locally, you can
 install packages from a local disk or CDROM.
 </p><p>The file `<tt>etc/PACKAGES</tt>' in the core distribution contains a list of
-the <a href="#NOD258">Normal Packages</a> at the time of the XEmacs release.
+the <a href="#SEC283">Normal Packages</a> at the time of the XEmacs release.
 </p><p>You can also get a list of available packages, and whether or not they
 are installed, using the visual package browser and installer.  You can
 access it via the menus:
@@ -1010,7 +1010,7 @@ have the form `<tt>name-&lt;version&gt;-pkg.tar.gz</tt>' and are gzipped tar fil
 a fresh install it is sufficient to untar the file at the top of the
 package hierarchy. 
 </p><p>Note: If you are upgrading packages already installed, it's best to
-remove the old package first <a href="#NOD254">XEmacs and Installing Packages</a>.
+remove the old package first <a href="#NOD254">Removing Packages</a>.
 </p><p>For example if we are installing the `<tt>xemacs-base</tt>'
 package (version 1.48):
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
@@ -1054,8 +1054,8 @@ and optionally:
 <p>After installing these by hand, fire up XEmacs and follow these
 steps.
 </p><ol>
-<p> 1
- </p> <li><p>
+<li><p> 1
+ </p> </li><li><p>
 Choose a download site.
 via menu: Tools -&gt; Packages -&gt; Add Download Site 
 via keyb: <code>M-x customize-variable RET package-get-remote RET</code>
@@ -1078,17 +1078,17 @@ may have to scroll down to see it.  You can also press <kbd>?</kbd> to get
 the same help.  From this buffer, you can tell the package status by the
 character in the first column:
 </p><dl compact="compact">
- <dt> -
-</dt>
+ <dt><kbd> -
+</kbd></dt>
 <dd><p>The package has not been installed.
  </p> </dd>
-<dt> *
-</dt>
+<dt><kbd> *
+</kbd></dt>
 <dd><p>The package has been installed, but a newer version is available.  The
 current version is out-of-date.
  </p> </dd>
-<dt> +
-</dt>
+<dt><kbd> +
+</kbd></dt>
 <dd><p>The package has been marked for installation/update.
 </p></dd>
 </dl>
@@ -1104,36 +1104,36 @@ packages. Note that you will have to restart XEmacs for XEmacs to
 recognize any new packages.
 </p><p>Key summary:
 </p><dl compact="compact">
- <dt> ?
-</dt>
+ <dt><kbd> ?
+</kbd></dt>
 <dd><p>Display simple help.
  </p> </dd>
-<dt> <kbd>RET</kbd>
-</dt>
-<dt> <kbd>Mouse-2</kbd>
-</dt>
+<dt><kbd> <kbd>RET</kbd>
+</kbd></dt>
+<dt><kbd> <kbd>Mouse-2</kbd>
+</kbd></dt>
 <dd><p>Toggle between selecting and unselecting a package for installation.
  </p> </dd>
-<dt> x
-</dt>
+<dt><kbd> x
+</kbd></dt>
 <dd><p>Install selected packages.
  </p> </dd>
-<dt> <kbd>SPC</kbd>
-</dt>
+<dt><kbd> <kbd>SPC</kbd>
+</kbd></dt>
 <dd><p>View, in the minibuffer, additional information about the package, such
 as the package date (not the build date) and the package author.  Moving 
 the mouse over a package name will also do the same thing.
  </p> </dd>
-<dt> v
-</dt>
+<dt><kbd> v
+</kbd></dt>
 <dd><p>Toggle between verbose and non-verbose package display.
  </p> </dd>
-<dt> g
-</dt>
+<dt><kbd> g
+</kbd></dt>
 <dd><p>Refresh the package display.
  </p> </dd>
-<dt> q
-</dt>
+<dt><kbd> q
+</kbd></dt>
 <dd><p>Kill the package buffer.
 </p></dd>
 </dl>
@@ -1179,7 +1179,7 @@ text-modes, time
 </p><p>	Packages -&gt; Add Required
 </p><p>To make sure you have everything that the packages you have chosen to
 install need.
-</p><p>See also <a href="#NOD258">Normal Packages</a> for further descriptions of the individual
+</p><p>See also <a href="#SEC283">Normal Packages</a> for further descriptions of the individual
 packages.
 </p><a name="NOD254"></a>
 <a name="SEC276"></a>
@@ -1216,31 +1216,31 @@ this for you.
 <h3> 22.8.8 Prerequisites for Building Source Packages </h3>
 
 <dl compact="compact">
- <dt> GNU cp
-</dt>
-<dt> GNU install 
-</dt>
+ <dt><code> GNU cp
+</code></dt>
+<dt><code> GNU install 
+</code></dt>
 <dd><p>(or a BSD compatible install program).
  </p> </dd>
-<dt> GNU make 
-</dt>
+<dt><code> GNU make 
+</code></dt>
 <dd><p>(3.75 or later preferred).
  </p> </dd>
-<dt> makeinfo 
-</dt>
+<dt><code> makeinfo 
+</code></dt>
 <dd><p>(1.68 from texinfo-3.11 or later required).
  </p> </dd>
-<dt> GNU tar
-</dt>
+<dt><code> GNU tar
+</code></dt>
 <dd><p>(or equivalent).
  </p> </dd>
-<dt> GNU gzip
-</dt>
+<dt><code> GNU gzip
+</code></dt>
 <dd><p>(or equivalent).
  </p> </dd>
-<dt> A properly configured `<tt>Local.rules</tt>' file.
-</dt>
-<dd><p><a href="#NOD256">What You Can Do With Source Packages</a>.
+<dt><code> A properly configured `<tt>Local.rules</tt>' file.
+</code></dt>
+<dd><p><a href="#NOD256">Local.rules File</a>.
 </p></dd>
 </dl>
 <p>And of course, XEmacs 21.0 or higher.
@@ -1264,32 +1264,32 @@ tarballs for installation into your own XEmacs installations or for
 distributing to others.
 </p><p>Supported operations from `<tt>make</tt>' are:
 </p><dl compact="compact">
- <dt> all
-</dt>
+ <dt><code> all
+</code></dt>
 <dd><p>Bytecompile all files, build and bytecompile byproduct files like
 `<tt>auto-autoloads.el</tt>' and `<tt>custom-load.el</tt>'.  Create info version
 of TeXinfo documentation if present.
 </p></dd>
-<dt> bindist
-</dt>
+<dt><code> bindist
+</code></dt>
 <dd><p>Does a <code>make all</code> as well as create a binary package tarball in the
 staging directory.
 </p></dd>
-<dt> install
-</dt>
+<dt><code> install
+</code></dt>
 <dd><p>Bytecompile all files, build and bytecompile byproduct files like
 `<tt>auto-autoloads.el</tt>' and `<tt>custom-load.el</tt>'.  Create info version
 of TeXinfo documentation if present.  And install everything into the
 staging directory.
 </p></dd>
-<dt> srckit
-</dt>
+<dt><code> srckit
+</code></dt>
 <dd><p>Usually aliased to <code>srckit-std</code>.  This does a <code>make
 distclean</code> and creates a package source tarball in the staging
 directory.  This is generally only of use for package maintainers.
 </p></dd>
-<dt> binkit
-</dt>
+<dt><code> binkit
+</code></dt>
 <dd><p>May be aliased to <code>binkit-sourceonly</code>, <code>binkit-sourceinfo</code>,
 <code>binkit-sourcedata</code>, or
 <code>binkit-sourcedatainfo</code>. <code>sourceonly</code> indicates there is
@@ -1300,17 +1300,17 @@ are to be installed.  <code>sourcedatainfo</code> indicates source, etc
 (data), and info files are to be installed.  A few packages have needs
 beyond the basic templates so this is not yet complete.
 </p></dd>
-<dt> dist
-</dt>
+<dt><code> dist
+</code></dt>
 <dd><p>Runs the rules <code>srckit</code> followed by <code>binkit</code>.  This is
 primarily of use by XEmacs maintainers producing files for distribution.
 </p></dd>
-<dt> clean
-</dt>
+<dt><code> clean
+</code></dt>
 <dd><p>Remove all built files except `<tt>auto-autoloads.el</tt>' and `<tt>custom-load.el</tt>'.
 </p></dd>
-<dt> distclean
-</dt>
+<dt><code> distclean
+</code></dt>
 <dd><p>Remove all created files.
 </p></dd>
 </dl>
@@ -1325,69 +1325,69 @@ file, `<tt>Local.rules.template</tt>'.  Simply copy that to
 </p><p>These are the variables in 'Local.rules' that you will need to
 address. 
 </p><dl compact="compact">
- <dt> symlink = 
-</dt>
+ <dt><var> symlink = 
+</var></dt>
 <dd><p>Set this to 't' if you want to do a &quot;run in place&quot;.
 Setting this doesn't work well with 'make bindist'
 </p></dd>
-<dt> XEMACS_PACKAGES =
-</dt>
+<dt><var> XEMACS_PACKAGES =
+</var></dt>
 <dd><p>This is where you set the normal packages that you
 want to install. eg:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
       XEMACS_PACKAGES = xemacs-packages/xemacs-base xemacs-packages/bbdb
 </pre></td></tr></table>
 </dd>
-<dt> XEMACS_STAGING = ${XEMACS_PACKAGES_BASE}/../Packages
-</dt>
+<dt><var> XEMACS_STAGING = ${XEMACS_PACKAGES_BASE}/../Packages
+</var></dt>
 <dd><p>Set this to where you want normal packages to be
 installed to.
 </p></dd>
-<dt> PACKAGE_INDEX = package-index
-</dt>
+<dt><var> PACKAGE_INDEX = package-index
+</var></dt>
 <dd><p>If you want the package-index file to have a different
 name, change this.
 </p></dd>
-<dt> BUILD_WITHOUT_MULE =
-</dt>
+<dt><var> BUILD_WITHOUT_MULE =
+</var></dt>
 <dd><p>Building from CVS defaults to building the Mule
 packages.  Set this to 't' if you don't want/have Mule
 </p></dd>
-<dt> MULE_PACKAGES =
-</dt>
+<dt><var> MULE_PACKAGES =
+</var></dt>
 <dd><p>Same as for 'XEMACS_PACKAGES' except you list the Mule
 packages you want to install here. eg:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre> 
       MULE_PACKAGES = mule-packages/mule-base mule-packages/skk
 </pre></td></tr></table>
 </dd>
-<dt> MULE_STAGING = ${XEMACS_PACKAGES_BASE}/../Mule-Packages
-</dt>
+<dt><var> MULE_STAGING = ${XEMACS_PACKAGES_BASE}/../Mule-Packages
+</var></dt>
 <dd><p>Set this to where you want Mule packages installed
 to.  Note:  'make bindist' does not use this variable.
 </p></dd>
-<dt> XEMACS = xemacs
-</dt>
+<dt><var> XEMACS = xemacs
+</var></dt>
 <dd><p>If your XEmacs isn't in your path, change this.
 </p></dd>
-<dt> XEMACS_NATIVE_NT =
-</dt>
+<dt><var> XEMACS_NATIVE_NT =
+</var></dt>
 <dd><p>Set this to 't' if you are building on WinNT.
 </p></dd>
-<dt> INSTALL = install -c
-</dt>
+<dt><var> INSTALL = install -c
+</var></dt>
 <dd><p>The path to your BSD compatible install program.
 </p></dd>
-<dt> TAR = tar
-</dt>
+<dt><var> TAR = tar
+</var></dt>
 <dd><p>The path to your tar program
 </p></dd>
-<dt> BZIP2 =
-</dt>
+<dt><var> BZIP2 =
+</var></dt>
 <dd><p>If you want bzip2 tarballs, set this.
 </p></dd>
-<dt> MAKEINFO = makeinfo
-</dt>
+<dt><var> MAKEINFO = makeinfo
+</var></dt>
 <dd><p>The path to your makeinfo program
 </p></dd>
 </dl>
@@ -1482,12 +1482,12 @@ and <code>binkit</code> (that is, values for <var>srckit-alias</var> and
 <var>binkit-alias</var>) are defined in `<tt>XEmacs.rules</tt>'.  The most useful
 of these values are given in the following table.
 </p><dl compact="compact">
- <dt> srckit-alias
-</dt>
+ <dt><var> srckit-alias
+</var></dt>
 <dd><p>Usually set to <code>srckit-std</code>.
 </p></dd>
-<dt> binkit-alias
-</dt>
+<dt><var> binkit-alias
+</var></dt>
 <dd><p>May be set to <code>binkit-sourceonly</code>, <code>binkit-sourceinfo</code>,
 <code>binkit-sourcedata</code>, or
 <code>binkit-sourcedatainfo</code>.  <code>sourceonly</code> indicates there is
@@ -1527,425 +1527,425 @@ looking for isn't here, please send a message to the
 <h3> 22.8.10 Normal Packages </h3>
 <p>A very broad selection of elisp packages.
 </p><dl compact="compact">
- <dt> Sun
-</dt>
+ <dt>`<tt> Sun
+</tt>'</dt>
 <dd><p>Support for Sparcworks.
 </p></dd>
-<dt> ada
-</dt>
+<dt>`<tt> ada
+</tt>'</dt>
 <dd><p>Ada language support.
 </p></dd>
-<dt> apel
-</dt>
+<dt>`<tt> apel
+</tt>'</dt>
 <dd><p>A Portable Emacs Library.  Used by XEmacs MIME support.
 </p></dd>
-<dt> auctex
-</dt>
+<dt>`<tt> auctex
+</tt>'</dt>
 <dd><p>Basic TeX/LaTeX support.
 </p></dd>
-<dt> bbdb
-</dt>
+<dt>`<tt> bbdb
+</tt>'</dt>
 <dd><p>The Big Brother Data Base: a rolodex-like database program.
 </p></dd>
-<dt> build
-</dt>
+<dt>`<tt> build
+</tt>'</dt>
 <dd><p>Build XEmacs using custom widgets.
 </p></dd>
-<dt> c-support
-</dt>
+<dt>`<tt> c-support
+</tt>'</dt>
 <dd><p>Basic single-file add-ons for editing C code.
 </p></dd>
-<dt> calc
-</dt>
+<dt>`<tt> calc
+</tt>'</dt>
 <dd><p>Emacs calculator.
 </p></dd>
-<dt> calendar
-</dt>
+<dt>`<tt> calendar
+</tt>'</dt>
 <dd><p>Calendar and diary support.
 </p></dd>
-<dt> cc-mode
-</dt>
+<dt>`<tt> cc-mode
+</tt>'</dt>
 <dd><p>C, C++ and Java language support.
 </p></dd>
-<dt> clearcase
-</dt>
+<dt>`<tt> clearcase
+</tt>'</dt>
 <dd><p>Support for the Clearcase version control system.
 </p></dd>
-<dt> cookie
-</dt>
+<dt>`<tt> cookie
+</tt>'</dt>
 <dd><p>&quot;Fortune cookie&quot;-style messages. Includes Spook (suspicious phrases) 
 and Yow (Zippy quotes).
 </p></dd>
-<dt> crisp
-</dt>
+<dt>`<tt> crisp
+</tt>'</dt>
 <dd><p>Crisp/Brief emulation.
 </p></dd>
-<dt> debug
-</dt>
+<dt>`<tt> debug
+</tt>'</dt>
 <dd><p>GUD, gdb, dbx debugging support.
 </p></dd>
-<dt> dictionary
-</dt>
+<dt>`<tt> dictionary
+</tt>'</dt>
 <dd><p>Interface to RFC2229 dictionary servers.
 </p></dd>
-<dt> dired
-</dt>
+<dt>`<tt> dired
+</tt>'</dt>
 <dd><p>The DIRectory EDitor is for manipulating, and running commands on
 files in a directory.
 </p></dd>
-<dt> docbookide
-</dt>
+<dt>`<tt> docbookide
+</tt>'</dt>
 <dd><p>DocBook editing support.
 </p></dd>
-<dt> ecrypto
-</dt>
+<dt>`<tt> ecrypto
+</tt>'</dt>
 <dd><p>Crypto functionality in Emacs Lisp.
 </p></dd>
-<dt> edebug
-</dt>
+<dt>`<tt> edebug
+</tt>'</dt>
 <dd><p>A Lisp debugger.
 </p></dd>
-<dt> ediff
-</dt>
+<dt>`<tt> ediff
+</tt>'</dt>
 <dd><p>Interface over patch.
 </p></dd>
-<dt> edit-utils
-</dt>
+<dt>`<tt> edit-utils
+</tt>'</dt>
 <dd><p>Single file lisp packages for various XEmacs goodies.  Load this and
 weed out the junk you don't want.
 </p></dd>
-<dt> edt
-</dt>
+<dt>`<tt> edt
+</tt>'</dt>
 <dd><p>DEC EDIT/EDT emulation.
 </p></dd>
-<dt> efs
-</dt>
+<dt>`<tt> efs
+</tt>'</dt>
 <dd><p>Treat files on remote systems the same as local files.
 </p></dd>
-<dt> eieio
-</dt>
+<dt>`<tt> eieio
+</tt>'</dt>
 <dd><p>Enhanced Implementation of Emacs Interpreted Objects.
 </p></dd>
-<dt> elib
-</dt>
+<dt>`<tt> elib
+</tt>'</dt>
 <dd><p>Portable Emacs Lisp utilities library.
 </p></dd>
-<dt> emerge
-</dt>
+<dt>`<tt> emerge
+</tt>'</dt>
 <dd><p>Another interface over patch.
 </p></dd>
-<dt> eshell
-</dt>
+<dt>`<tt> eshell
+</tt>'</dt>
 <dd><p>Command shell implemented entirely in Emacs Lisp.
 </p></dd>
-<dt> ess
-</dt>
+<dt>`<tt> ess
+</tt>'</dt>
 <dd><p>ESS: Emacs Speaks Statistics.
 </p></dd>
-<dt> eterm
-</dt>
+<dt>`<tt> eterm
+</tt>'</dt>
 <dd><p>Terminal emulator.
 </p></dd>
-<dt> eudc
-</dt>
+<dt>`<tt> eudc
+</tt>'</dt>
 <dd><p>Emacs Unified Directory Client (LDAP, PH).
 </p></dd>
-<dt> footnote
-</dt>
+<dt>`<tt> footnote
+</tt>'</dt>
 <dd><p>Footnoting in mail message editing modes.
 </p></dd>
-<dt> forms
-</dt>
+<dt>`<tt> forms
+</tt>'</dt>
 <dd><p>Forms editing support (obsolete, use the built-in Widget instead).
 </p></dd>
-<dt> fortran-modes
-</dt>
+<dt>`<tt> fortran-modes
+</tt>'</dt>
 <dd><p>Fortran language support.
 </p></dd>
-<dt> frame-icon
-</dt>
+<dt>`<tt> frame-icon
+</tt>'</dt>
 <dd><p>Provide a WM icon based on major mode.
 </p></dd>
-<dt> fsf-compat
-</dt>
+<dt>`<tt> fsf-compat
+</tt>'</dt>
 <dd><p>GNU Emacs compatibility files.
 </p></dd>
-<dt> games
-</dt>
+<dt>`<tt> games
+</tt>'</dt>
 <dd><p>Tetris, Sokoban, and Snake.
 </p></dd>
-<dt> gnats
-</dt>
+<dt>`<tt> gnats
+</tt>'</dt>
 <dd><p>XEmacs bug reports.
 </p></dd>
-<dt> gnus
-</dt>
+<dt>`<tt> gnus
+</tt>'</dt>
 <dd><p>The Gnus Newsreader and Mailreader.
 </p></dd>
-<dt> haskell-mode
-</dt>
+<dt>`<tt> haskell-mode
+</tt>'</dt>
 <dd><p>Haskell language support.
 </p></dd>
-<dt> hm--html-menus
-</dt>
+<dt>`<tt> hm--html-menus
+</tt>'</dt>
 <dd><p>HTML editing.
 </p></dd>
-<dt> ibuffer
-</dt>
+<dt>`<tt> ibuffer
+</tt>'</dt>
 <dd><p>Advanced replacement for buffer-menu.
 </p></dd>
-<dt> idlwave
-</dt>
+<dt>`<tt> idlwave
+</tt>'</dt>
 <dd><p>Editing and Shell mode for the Interactive Data Language.
 </p></dd>
-<dt> igrep
-</dt>
+<dt>`<tt> igrep
+</tt>'</dt>
 <dd><p>Enhanced front-end for Grep.
 </p></dd>
-<dt> ilisp
-</dt>
+<dt>`<tt> ilisp
+</tt>'</dt>
 <dd><p>Front-end for interacting with Inferior Lisp (external lisps).
 </p></dd>
-<dt> ispell
-</dt>
+<dt>`<tt> ispell
+</tt>'</dt>
 <dd><p>Spell-checking with ispell.
 </p></dd>
-<dt> jde
-</dt>
+<dt>`<tt> jde
+</tt>'</dt>
 <dd><p>Java language and development support.
 </p></dd>
-<dt> liece
-</dt>
+<dt>`<tt> liece
+</tt>'</dt>
 <dd><p>IRC (Internet Relay Chat) client for Emacs.
 </p></dd>
-<dt> mail-lib
-</dt>
+<dt>`<tt> mail-lib
+</tt>'</dt>
 <dd><p>Fundamental lisp files for providing email support.
 </p></dd>
-<dt> mailcrypt
-</dt>
+<dt>`<tt> mailcrypt
+</tt>'</dt>
 <dd><p>Support for messaging encryption with PGP.
 </p></dd>
-<dt> mew
-</dt>
+<dt>`<tt> mew
+</tt>'</dt>
 <dd><p>Messaging in an Emacs World; a MIME-based email program.
 </p></dd>
-<dt> mh-e
-</dt>
+<dt>`<tt> mh-e
+</tt>'</dt>
 <dd><p>Front end support for MH.
 </p></dd>
-<dt> mine
-</dt>
+<dt>`<tt> mine
+</tt>'</dt>
 <dd><p>Elisp implementation of the game 'Minehunt'.
 </p></dd>
-<dt> misc-games
-</dt>
+<dt>`<tt> misc-games
+</tt>'</dt>
 <dd><p>Other amusements and diversions.
 </p></dd>
-<dt> mmm-mode
-</dt>
+<dt>`<tt> mmm-mode
+</tt>'</dt>
 <dd><p>Support for Multiple Major Modes within a single buffer.
 </p></dd>
-<dt> net-utils
-</dt>
+<dt>`<tt> net-utils
+</tt>'</dt>
 <dd><p>Miscellaneous Networking Utilities.  This is a single-file package and 
 files may be deleted at will.
 </p></dd>
-<dt> os-utils
-</dt>
+<dt>`<tt> os-utils
+</tt>'</dt>
 <dd><p>Miscellaneous single-file O/S utilities, for printing, archiving,
 compression, remote shells, etc.
 </p></dd>
-<dt> ocaml
-</dt>
+<dt>`<tt> ocaml
+</tt>'</dt>
 <dd><p>Objective Caml language support.
 </p></dd>
-<dt> pc
-</dt>
+<dt>`<tt> pc
+</tt>'</dt>
 <dd><p>PC style interface emulation.
 </p></dd>
-<dt> pcl-cvs
-</dt>
+<dt>`<tt> pcl-cvs
+</tt>'</dt>
 <dd><p>CVS frontend.
 </p></dd>
-<dt> pcomplete
-</dt>
+<dt>`<tt> pcomplete
+</tt>'</dt>
 <dd><p>Provides programmatic completion.
 </p></dd>
-<dt> perl-modes
-</dt>
+<dt>`<tt> perl-modes
+</tt>'</dt>
 <dd><p>Perl language support.
 </p></dd>
-<dt> prog-modes
-</dt>
+<dt>`<tt> prog-modes
+</tt>'</dt>
 <dd><p>Miscellaneous single-file lisp files for various programming languages.
 </p></dd>
-<dt> ps-print
-</dt>
+<dt>`<tt> ps-print
+</tt>'</dt>
 <dd><p>Print buffers to PostScript printers.
 </p></dd>
-<dt> psgml
-</dt>
+<dt>`<tt> psgml
+</tt>'</dt>
 <dd><p>Validated HTML/SGML editing.
 </p></dd>
-<dt> psgml-dtds
-</dt>
+<dt>`<tt> psgml-dtds
+</tt>'</dt>
 <dd><p>A collection of DTDs for psgml.  Note that this package is deprecated
 and will be removed in the future, most likely Q2/2003.  Instead of using
 this, you should install needed DTDs yourself.
 </p></dd>
-<dt> python-modes
-</dt>
+<dt>`<tt> python-modes
+</tt>'</dt>
 <dd><p>Python language support.
 </p></dd>
-<dt> reftex
-</dt>
+<dt>`<tt> reftex
+</tt>'</dt>
 <dd><p>Emacs support for LaTeX cross-references, citations.
 </p></dd>
-<dt> rmail
-</dt>
+<dt>`<tt> rmail
+</tt>'</dt>
 <dd><p>An obsolete Emacs mailer.  If you do not already use it don't start.
 </p></dd>
-<dt> ruby-modes
-</dt>
+<dt>`<tt> ruby-modes
+</tt>'</dt>
 <dd><p>Ruby language support.
 </p></dd>
-<dt> sasl
-</dt>
+<dt>`<tt> sasl
+</tt>'</dt>
 <dd><p>Simple Authentication and Security Layer (SASL) library.
 </p></dd>
-<dt> scheme
-</dt>
+<dt>`<tt> scheme
+</tt>'</dt>
 <dd><p>Front-end support for Inferior Scheme.
 </p></dd>
-<dt> semantic
-</dt>
+<dt>`<tt> semantic
+</tt>'</dt>
 <dd><p>Semantic bovinator.
 </p></dd>
-<dt> sgml
-</dt>
+<dt>`<tt> sgml
+</tt>'</dt>
 <dd><p>SGML/Linuxdoc-SGML editing.
 </p></dd>
-<dt> sh-script
-</dt>
+<dt>`<tt> sh-script
+</tt>'</dt>
 <dd><p>Support for editing shell scripts.
 </p></dd>
-<dt> sieve
-</dt>
+<dt>`<tt> sieve
+</tt>'</dt>
 <dd><p>Manage Sieve email filtering scripts.
 </p></dd>
-<dt> slider
-</dt>
+<dt>`<tt> slider
+</tt>'</dt>
 <dd><p>User interface tool.
 </p></dd>
-<dt> sml-mode
-</dt>
+<dt>`<tt> sml-mode
+</tt>'</dt>
 <dd><p>Standard ML editing support.
 </p></dd>
-<dt> sounds-au
-</dt>
+<dt>`<tt> sounds-au
+</tt>'</dt>
 <dd><p>XEmacs Sun sound files.
 </p></dd>
-<dt> sounds-wav
-</dt>
+<dt>`<tt> sounds-wav
+</tt>'</dt>
 <dd><p>XEmacs Microsoft sound files.
 </p></dd>
-<dt> speedbar
-</dt>
+<dt>`<tt> speedbar
+</tt>'</dt>
 <dd><p>Provides a separate frame with convenient references.
 </p></dd>
-<dt> strokes
-</dt>
+<dt>`<tt> strokes
+</tt>'</dt>
 <dd><p>Mouse enhancement utility.
 </p></dd>
-<dt> supercite
-</dt>
+<dt>`<tt> supercite
+</tt>'</dt>
 <dd><p>An Emacs citation tool.  Useful with all Emacs Mailers and Newsreaders.
 </p></dd>
-<dt> texinfo
-</dt>
+<dt>`<tt> texinfo
+</tt>'</dt>
 <dd><p>XEmacs TeXinfo support.
 </p></dd>
-<dt> text-modes
-</dt>
+<dt>`<tt> text-modes
+</tt>'</dt>
 <dd><p>Various single file lisp packages for editing text files.
 </p></dd>
-<dt> textools
-</dt>
+<dt>`<tt> textools
+</tt>'</dt>
 <dd><p>Single-file TeX support.
 </p></dd>
-<dt> time
-</dt>
+<dt>`<tt> time
+</tt>'</dt>
 <dd><p>Display time &amp; date on the modeline.
 </p></dd>
-<dt> tm
-</dt>
+<dt>`<tt> tm
+</tt>'</dt>
 <dd><p>Emacs MIME support. Not needed for Gnus &gt;= 5.8.0
 </p></dd>
-<dt> tooltalk
-</dt>
+<dt>`<tt> tooltalk
+</tt>'</dt>
 <dd><p>Support for building with Tooltalk.
 </p></dd>
-<dt> tpu
-</dt>
+<dt>`<tt> tpu
+</tt>'</dt>
 <dd><p>DEC EDIT/TPU support.
 </p></dd>
-<dt> tramp
-</dt>
+<dt>`<tt> tramp
+</tt>'</dt>
 <dd><p>Remote shell-based file editing.  This is similar to EFS or Ange-FTP,
 but works with rsh/ssh and rcp/scp.
 </p></dd>
-<dt> vc
-</dt>
+<dt>`<tt> vc
+</tt>'</dt>
 <dd><p>Version Control for Free systems.
 </p></dd>
-<dt> vc-cc
-</dt>
+<dt>`<tt> vc-cc
+</tt>'</dt>
 <dd><p>Version Control for ClearCase.  This package will shortly be
 replaced with clearcase.el
 </p></dd>
-<dt> vhdl
-</dt>
+<dt>`<tt> vhdl
+</tt>'</dt>
 <dd><p>Support for VHDL.
 </p></dd>
-<dt> view-process
-</dt>
+<dt>`<tt> view-process
+</tt>'</dt>
 <dd><p>A Unix process browsing tool.
 </p></dd>
-<dt> viper
-</dt>
+<dt>`<tt> viper
+</tt>'</dt>
 <dd><p>VI emulation support.
 </p></dd>
-<dt> vm
-</dt>
+<dt>`<tt> vm
+</tt>'</dt>
 <dd><p>An Emacs mailer.
 </p></dd>
-<dt> w3
-</dt>
+<dt>`<tt> w3
+</tt>'</dt>
 <dd><p>A Web browser.
 </p></dd>
-<dt> xemacs-base
-</dt>
+<dt>`<tt> xemacs-base
+</tt>'</dt>
 <dd><p>Fundamental XEmacs support.  Install this unless you wish a totally
 naked XEmacs.
 </p></dd>
-<dt> xemacs-devel
-</dt>
+<dt>`<tt> xemacs-devel
+</tt>'</dt>
 <dd><p>XEmacs Lisp developer support.  This package contains utilities for
 supporting Lisp development.  It is a single-file package so it may be 
 tailored.
 </p></dd>
-<dt> xslide
-</dt>
+<dt>`<tt> xslide
+</tt>'</dt>
 <dd><p>XSL editing support.
 </p></dd>
-<dt> xslt-process
-</dt>
+<dt>`<tt> xslt-process
+</tt>'</dt>
 <dd><p>A minor mode for (X)Emacs which allows running an XSLT processor on a
 buffer.
 </p></dd>
-<dt> zenirc
-</dt>
+<dt>`<tt> zenirc
+</tt>'</dt>
 <dd><p>ZENIRC IRC Client.
 </p></dd>
 </dl>
@@ -1970,45 +1970,45 @@ Latin, Arabic, Cyrillic, Chinese, Japanese, Greek, Hebrew etc.
 To use these packages your XEmacs must be compiled with Mule
 support.
 </p><dl compact="compact">
- <dt> edict
-</dt>
+ <dt>`<tt> edict
+</tt>'</dt>
 <dd><p>Lisp Interface to EDICT, Kanji Dictionary.
 </p></dd>
-<dt> egg-its
-</dt>
+<dt>`<tt> egg-its
+</tt>'</dt>
 <dd><p>Wnn (4.2 and 6) support.  SJ3 support.  Must be installed prior to
 XEmacs build.
 </p></dd>
-<dt> latin-unity
-</dt>
+<dt>`<tt> latin-unity
+</tt>'</dt>
 <dd><p>Unify character sets in a buffer. When characters belong to disjoint
 character sets, this attempts to translate the characters so
 that they belong to one character set. If the buffer coding system is
 not sufficient, this suggests different coding systems.
 </p></dd>
-<dt> leim
-</dt>
+<dt>`<tt> leim
+</tt>'</dt>
 <dd><p>Quail.  Used for everything other than English and Japanese.
 </p></dd>
-<dt> locale
-</dt>
+<dt>`<tt> locale
+</tt>'</dt>
 <dd><p>Used for localized menubars (French and Japanese) and localized splash
 screens (Japanese).
 </p></dd>
-<dt> lookup
-</dt>
+<dt>`<tt> lookup
+</tt>'</dt>
 <dd><p>Dictionary support. (This isn't an English dictionary program)
 </p></dd>
-<dt> mule-base
-</dt>
+<dt>`<tt> mule-base
+</tt>'</dt>
 <dd><p>Basic Mule support.  Must be installed prior to building with Mule.
 </p></dd>
-<dt> mule-ucs
-</dt>
+<dt>`<tt> mule-ucs
+</tt>'</dt>
 <dd><p>Extended coding systems (including Unicode) for XEmacs.
 </p></dd>
-<dt> skk
-</dt>
+<dt>`<tt> skk
+</tt>'</dt>
 <dd><p>Another Japanese Language Input Method.  Can be used without a
 separate process running as a dictionary server.
 </p></dd>

@@ -45,7 +45,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <dd><p>In many environments, such as a tty terminal, an XEmacs frame
 literally takes up the whole screen.  If you are
 running XEmacs in a multi-window system like the X Window System, the
-XEmacs frame takes up one X window.  See section <a href="#NOD17">Using XEmacs Under the X Window System</a>, for more
+XEmacs frame takes up one X window.  See section <a href="#SEC19">Using XEmacs Under the X Window System</a>, for more
 information.</p></dd>
 <dt> Window
 </dt>
@@ -62,22 +62,22 @@ their own set of subwindows.
 
 <p>Each XEmacs frame displays a variety of information:
 </p><ul>
- <li><p>
+<li><p>
 The biggest area usually displays the text you are editing.  It may
 consist of one window or of two or more windows if you need to look at two
 buffers a the same time.
  </p> </li><li><p>
-Below each text window's last line is a <em>mode line</em> (see section <a href="#NOD8">The Mode Line</a>), which describes what is going on in that window.  The mode line
+Below each text window's last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
 is in inverse video if the terminal supports that.  If there are several
 XEmacs windows in one frame, each window has its own mode line.
  </p> </li><li><p>
 At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
-window</em>(see section <a href="#NOD7">The Echo Area</a>).  It is used by XEmacs to exchange information
+window</em>(see section <a href="#SEC9">The Echo Area</a>).  It is used by XEmacs to exchange information
 with the user.  There is only one echo area per XEmacs frame.
  </p> </li><li><p>
 If you are running XEmacs under a graphical windowing system, a
 menu bar at the top of the frame makes shortcuts to several of the
-commands available (see section <a href="xemacs_5.html#NOD28">XEmacs Pull-down Menus</a>).
+commands available (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
  </p> </li><li><p>
 Under a graphical windowing system, a
 toolbar at the top of the frame, just under the menu bar if it exists,
@@ -93,7 +93,7 @@ introduced in XEmacs version 21.2.  (Not yet documented.)
 </p></li></ul>
 
 <p>  You can subdivide the XEmacs frame into multiple text windows, and use
-each window for a different file (see section <a href="xemacs_19.html#NOD162">Multiple Windows</a>).  Multiple XEmacs
+each window for a different file (see section <a href="xemacs_19.html#SEC175">Multiple Windows</a>).  Multiple XEmacs
 windows are tiled vertically on the XEmacs frame.  The upper XEmacs window
 is separated from the lower window by its mode line.
 </p><p>  When there are multiple, tiled XEmacs windows on a single XEmacs frame,
@@ -183,7 +183,7 @@ for accessing the value now called `point'.
 <p>  The line at the bottom of the frame (below the mode line) is the
 <em>echo area</em>.  XEmacs uses this area to communicate with the user:
 </p><ul>
- <li><p>
+<li><p>
   <em>Echoing</em> means printing out the characters that the user types.  XEmacs
 never echoes single-character commands.  Multi-character commands are
 echoed only if you pause while typing them: As soon as you pause for more
@@ -192,7 +192,7 @@ so far are echoed.  This is intended to <em>prompt</em> you for the rest of
 the command.  Once echoing has started, the rest of the command is echoed
 immediately as you type it.  This behavior is designed to give confident
 users fast response, while giving hesitant users maximum feedback.  You
-can change this behavior by setting a variable (see section <a href="xemacs_14.html#NOD102">Variables Controlling Display</a>).
+can change this behavior by setting a variable (see section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>).
  </p> </li><li><p>
   If you issue a command that cannot be executed, XEmacs may print an
 <em>error message</em> in the echo area.  Error messages are accompanied by
@@ -215,7 +215,7 @@ that is used for reading arguments to commands, such as the name of a
 file to be edited.  When the minibuffer is in use, the echo area displays
 with a prompt string that usually ends with a colon.  The cursor
 appears after the prompt.  You can always get out of the minibuffer by
-typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#NOD52">The Minibuffer</a>.
+typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer</a>.
 </p></li></ul>
 
 <hr size="6">
@@ -259,7 +259,7 @@ buffer has not been edited.  Exception: for a read-only buffer, it is
 buffer in the selected window (the window that the cursor is in) is also
 XEmacs's selected buffer, the buffer in which editing takes place.  When
 we speak of what some command does to &quot;the buffer&quot;, we mean the
-currently selected buffer.  See section <a href="xemacs_18.html#NOD156">Using Multiple Buffers</a>.
+currently selected buffer.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>.
 </p><p>  <var>pos</var> tells you whether there is additional text above the top of
 the screen or below the bottom.  If your file is small and it is
 completely visible on the screen, <var>pos</var> is `<samp>All</samp>'.  Otherwise,
@@ -269,15 +269,15 @@ completely visible on the screen, <var>pos</var> is `<samp>All</samp>'.  Otherwi
 top of the screen.</p><p>  <var>major</var> is the name of the <em>major mode</em> in effect in the buffer.  At
 any time, each buffer is in one and only one major mode.
 The available major modes include Fundamental mode (the least specialized),
-Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#NOD177">Major Modes</a>, for details
+Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#SEC190">Major Modes</a>, for details
 on how the modes differ and how you select one.</p><p>  <var>minor</var> is a list of some of the <em>minor modes</em> that are turned on
 in the window's chosen buffer.  For example, `<samp>Fill</samp>' means that Auto
 Fill mode is on.  <code>Abbrev</code> means that Word Abbrev mode is on.
-<code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#NOD326">Minor Modes</a>, for more
+<code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#SEC352">Minor Modes</a>, for more
 information.  `<samp>Narrow</samp>' means that the buffer being displayed has
 editing restricted to only a portion of its text.  This is not really a
-minor mode, but is like one.  See section <a href="xemacs_29.html#NOD318">Narrowing</a>.  <code>Def</code> means that a
-keyboard macro is being defined.  See section <a href="xemacs_30.html#NOD337">Keyboard Macros</a>.
+minor mode, but is like one.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>.  <code>Def</code> means that a
+keyboard macro is being defined.  See section <a href="xemacs_30.html#SEC363">Keyboard Macros</a>.
 </p><p>  Some buffers display additional information after the minor modes.  For
 example, Rmail buffers display the current message number and the total
 number of messages.  Compilation buffers and Shell mode display the status
@@ -288,7 +288,7 @@ the modes.  If XEmacs is in one recursive editing level within another,
 double square brackets appear, and so on.  Since information on
 recursive editing applies to XEmacs in general and not to any one buffer,
 the square brackets appear in every mode line on the screen or not in
-any of them.  See section <a href="xemacs_29.html#NOD320">Recursive Editing Levels</a>.</p><a name="IDX4"></a>
+any of them.  See section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</a>.</p><a name="IDX4"></a>
 <p>  XEmacs can optionally display the time and system load in all mode lines.
 To enable this feature, type <kbd>M-x display-time</kbd>.  The information added
 to the mode line usually appears after the file name, before the mode names
@@ -377,7 +377,7 @@ cutting and pasting, searching, and keyboard macro definition and
 execution.
 </p><p>XEmacs provides a very dynamic environment, and the Lisp language makes
 for highly flexible applications.  The menubar reflects this: many menus
-(eg, the `<samp>Buffers</samp>' menu, see section <a href="xemacs_5.html#NOD33">The Buffers Menu</a>) contain items
+(eg, the `<samp>Buffers</samp>' menu, see section <a href="xemacs_5.html#SEC35">The Buffers Menu</a>) contain items
 determined by the current state of XEmacs, and most major modes and many
 minor modes add items to menus and even whole menus to the menubar.  In
 fact, some applications like w3.el and VM provide so many menus that
@@ -389,7 +389,7 @@ application is active (ie, the current window of the frame is displaying
 a buffer in the appropriate major mode).
 </p><p>Other menus which are typically available are the `<samp>Options</samp>',
 `<samp>Tools</samp>', `<samp>Buffers</samp>', `<samp>Apps</samp>', and `<samp>Mule</samp>' menus.  For
-detailed descriptions of these menus, <a href="xemacs_5.html#NOD28">XEmacs Pull-down Menus</a>.  (In 21.2
+detailed descriptions of these menus, <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>.  (In 21.2
 XEmacsen, the `<samp>Mule</samp>' menu will be moved under `<samp>Options</samp>'.)
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
@@ -605,7 +605,7 @@ resizes XEmacs frames.  You use the window manager's mouse gestures to
 perform the operations.  Consult your window manager guide or reference
 manual for information on manipulating X windows.
 </p><p>When you are working under X, each X window (that is, each XEmacs frame)
-has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#NOD28">XEmacs Pull-down Menus</a>).
+has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
 </p><a name="IDX6"></a>
 <a name="IDX7"></a>
 <p>XEmacs under X is also a multi-frame XEmacs.  You can use the <b>New
@@ -649,7 +649,7 @@ is called with one argument, the frame just created.
 <p>If you are working with multiple frames, some special information
 applies:
 </p><ul>
- <li><p>
+<li><p>
 Two variables, <code>frame-title-format</code> and
 <code>frame-icon-title-format</code> determine the title of the frame and
 the title of the icon that results if you shrink the frame.

@@ -50,9 +50,9 @@ that is how you ask for help about using <kbd>C-h</kbd>.  To cancel, type
 <p>  <kbd>C-h C-h</kbd> (<code>help-for-help</code>) displays a list of the possible
 help options, and then asks you to type the desired option.  It prompts
 with the string:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>You should type one of those characters.
 </p><p>  Typing a third <kbd>C-h</kbd> displays a description of what the options mean;
 Emacs still waits for you to type an option.  To cancel, type <kbd>C-g</kbd>.
@@ -87,114 +87,114 @@ scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
 
 <p>  Here is a summary of the defined help commands.
 </p><dl compact="compact">
- <dt> C-h a <var>regexp</var> <kbd>RET</kbd>
-</dt>
+ <dt><kbd> C-h a <var>regexp</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Display a list of functions and variables whose names match <var>regexp</var>
 (<code>hyper-apropos</code>).
  </p> </dd>
-<dt> C-h A <var>regexp</var>
-</dt>
+<dt><kbd> C-h A <var>regexp</var>
+</kbd></dt>
 <dd><p>Show all commands whose names contain matches for <var>regexp</var>
 (<code>command-apropos</code>).
  </p> </dd>
-<dt> C-h b
-</dt>
+<dt><kbd> C-h b
+</kbd></dt>
 <dd><p>Display a table of all key bindings currently in effect, with local
 bindings of the current major mode first, followed by all global
 bindings (<code>describe-bindings</code>).
  </p> </dd>
-<dt> C-h c <var>key</var>
-</dt>
+<dt><kbd> C-h c <var>key</var>
+</kbd></dt>
 <dd><p>Print the name of the command that <var>key</var> runs
 (<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for `character'.  For more
 extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
  </p> </dd>
-<dt> C-h d <var>function</var> <kbd>RET</kbd>
-</dt>
-<dt> C-h f <var>function</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h d <var>function</var> <kbd>RET</kbd>
+</kbd></dt>
+<dt><kbd> C-h f <var>function</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Display documentation on the Lisp function named <var>function</var>
 (<code>describe-function</code>).  Since commands are Lisp functions,
 a command name may be used.
  </p> </dd>
-<dt> C-h i
-</dt>
+<dt><kbd> C-h i
+</kbd></dt>
 <dd><p>Run Info, the program for browsing documentation files (<code>info</code>).
 The complete XEmacs manual is available online in Info.
  </p> </dd>
-<dt> C-h k <var>key</var>
-</dt>
+<dt><kbd> C-h k <var>key</var>
+</kbd></dt>
 <dd><p>Display the name and documentation of the command that <var>key</var> runs
 (<code>describe-key</code>).
  </p> </dd>
-<dt> C-h l
-</dt>
+<dt><kbd> C-h l
+</kbd></dt>
 <dd><p>Display a description of the last 100 characters you typed
 (<code>view-lossage</code>).
  </p> </dd>
-<dt> C-h m
-</dt>
+<dt><kbd> C-h m
+</kbd></dt>
 <dd><p>Display documentation of the current major mode (<code>describe-mode</code>).
  </p> </dd>
-<dt> C-h n
-</dt>
-<dt> C-h C-n
-</dt>
+<dt><kbd> C-h n
+</kbd></dt>
+<dt><kbd> C-h C-n
+</kbd></dt>
 <dd><p>Display documentation of XEmacs changes, most recent first
 (<code>view-emacs-news</code>).
  </p> </dd>
-<dt> C-h p
-</dt>
+<dt><kbd> C-h p
+</kbd></dt>
 <dd><p>Find packages by topic keyword (<code>finder-by-keyword</code>).
  </p> </dd>
-<dt> C-h C-p
-</dt>
+<dt><kbd> C-h C-p
+</kbd></dt>
 <dd><p>Display a table of all mouse bindings currently in effect now, with
 local bindings of the current major mode first, followed by all global
 bindings (<code>describe-pointer</code>).
  </p> </dd>
-<dt> C-h s
-</dt>
+<dt><kbd> C-h s
+</kbd></dt>
 <dd><p>Display current contents of the syntax table, plus an explanation of
-what they mean (<code>describe-syntax</code>).  See section <a href="xemacs_30.html#NOD348">The Syntax Table</a>.
+what they mean (<code>describe-syntax</code>).  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
  </p> </dd>
-<dt> C-h t
-</dt>
+<dt><kbd> C-h t
+</kbd></dt>
 <dd><p>Enter the XEmacs interactive tutorial (<code>help-with-tutorial</code>).
  </p> </dd>
-<dt> C-h v <var>var</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h v <var>var</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Display the documentation of the Lisp variable <var>var</var>
 (<code>describe-variable</code>).
  </p> </dd>
-<dt> C-h w <var>command</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h w <var>command</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Print which keys run the command named <var>command</var> (<code>where-is</code>).
  </p> </dd>
-<dt> C-h B <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h B <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Display info on how to deal with Beta versions of XEmacs
 (<code>describe-beta</code>).
  </p> </dd>
-<dt> C-h C <var>group</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h C <var>group</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Select customization buffer for <var>group</var> (<code>customize</code>).
  </p> </dd>
-<dt> C-h F <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h F <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>View the local copy of the XEmacs FAQ (<code>xemacs-local-faq</code>).
  </p> </dd>
-<dt> C-h C-i <var>file</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h C-i <var>file</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Read Info file <var>file</var> with Info browser (<code>Info-query</code>).
  </p> </dd>
-<dt> C-h C-c <var>command</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h C-c <var>command</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Look up an Emacs command <var>command</var> in the Emacs manual in the Info
 system (<code>Info-goto-emacs-command-node</code>).
  </p> </dd>
-<dt> C-h C-f <var>function</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h C-f <var>function</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Look up an Emacs Lisp function <var>function</var> in the Elisp manual in the
 Info system (<code>Info-elisp-ref</code>).
 </p></dd>
@@ -297,7 +297,7 @@ command.
 <p>  <kbd>C-h v</kbd> (<code>describe-variable</code>) is like <kbd>C-h f</kbd> but
 describes Lisp variables instead of Lisp functions.  Its default is the
 Lisp symbol around or before point, if that is the name of a known Lisp
-variable.  See section <a href="xemacs_30.html#NOD327">Variables</a>.
+variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC74" title="Previous section in reading order"> &lt; </a>]</td>
@@ -316,13 +316,13 @@ variable.  See section <a href="xemacs_30.html#NOD327">Variables</a>.
 
 
 <dl compact="compact">
- <dt> C-h A
-</dt>
+ <dt><kbd> C-h A
+</kbd></dt>
 <dd><p>Show only symbols that are names of commands
 (<code>command-apropos</code>).
 </p></dd>
-<dt> M-x apropos <var>regexp</var>
-</dt>
+<dt><kbd> M-x apropos <var>regexp</var>
+</kbd></dt>
 <dd><p>Show all symbols whose names contain matches for <var>regexp</var>.
 </p></dd>
 </dl>
@@ -344,7 +344,7 @@ you are looking for commands for killing backwards and <kbd>C-h a
 kill-backwards <kbd>RET</kbd></kbd> doesn't reveal any, don't give up.  Try just
 <kbd>kill</kbd>, or just <kbd>backwards</kbd>, or just <kbd>back</kbd>.  Be persistent.
 Pretend you are playing Adventure.  Also note that you can use a regular
-expression as the argument, for more flexibility (see section <a href="xemacs_15.html#NOD108">Syntax of Regular Expressions</a>).
+expression as the argument, for more flexibility (see section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>).
 </p><p>  Here is a set of arguments to give to <kbd>C-h a</kbd> that covers many
 classes of XEmacs commands, since there are strong conventions for
 naming the standard XEmacs commands.  By giving you a feel for the
@@ -453,22 +453,22 @@ wp            word processing
 <a name="SEC77"></a>
 <h2> 8.6 Help Mode Commands </h2>
 
-<p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#NOD155">Miscellaneous File Operations</a>), plus a few special commands of their own.
+<p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>), plus a few special commands of their own.
 </p><dl compact="compact">
- <dt> <kbd>SPC</kbd>
-</dt>
+ <dt><kbd> <kbd>SPC</kbd>
+</kbd></dt>
 <dd><p>Scroll forward.
  </p> </dd>
-<dt> <kbd>DEL</kbd>
-</dt>
-<dt> <kbd>BS</kbd>
-</dt>
+<dt><kbd> <kbd>DEL</kbd>
+</kbd></dt>
+<dt><kbd> <kbd>BS</kbd>
+</kbd></dt>
 <dd><p>Scroll backward.
 </p></dd>
 </dl>
 
-<p>  When a command name (see section <a href="xemacs_10.html#NOD62">Running Commands by Name</a>) or
-variable name (see section <a href="xemacs_30.html#NOD327">Variables</a>) appears in the documentation, it
+<p>  When a command name (see section <a href="xemacs_10.html#SEC70">Running Commands by Name</a>) or
+variable name (see section <a href="xemacs_30.html#SEC353">Variables</a>) appears in the documentation, it
 normally appears inside paired single-quotes.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
@@ -525,8 +525,8 @@ which normally describes all the commands that are changed in this mode.
 (<code>describe-syntax</code>) present information about the current XEmacs
 mode that is not covered by <kbd>C-h m</kbd>.  <kbd>C-h b</kbd> displays a list of
 all the key bindings currently in effect, with the local bindings of the
-current major mode first, followed by the global bindings (see section <a href="xemacs_30.html#NOD341">Customizing Key Bindings</a>).  <kbd>C-h s</kbd> displays the contents of the syntax table with
-explanations of each character's syntax (see section <a href="xemacs_30.html#NOD348">The Syntax Table</a>).
+current major mode first, followed by the global bindings (see section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>).  <kbd>C-h s</kbd> displays the contents of the syntax table with
+explanations of each character's syntax (see section <a href="xemacs_30.html#SEC374">The Syntax Table</a>).
 </p><p>  You can get a similar list for a particular prefix key by typing
 <kbd>C-h</kbd> after the prefix key.  (There are a few prefix keys for which
 this does not work--those that provide their own bindings for

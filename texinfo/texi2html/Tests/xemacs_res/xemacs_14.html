@@ -43,53 +43,53 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 the part that is likely to be interesting.  The display control commands
 allow you to specify which part of the text you want to see.
 </p><dl compact="compact">
- <dt> C-l
-</dt>
+ <dt><kbd> C-l
+</kbd></dt>
 <dd><p>Clear frame and redisplay, scrolling the selected window to center
 point vertically within it (<code>recenter</code>).
  </p> </dd>
-<dt> C-v
-</dt>
-<dt> pgdn
-</dt>
-<dt> next
-</dt>
+<dt><kbd> C-v
+</kbd></dt>
+<dt><kbd> pgdn
+</kbd></dt>
+<dt><kbd> next
+</kbd></dt>
 <dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
 On most X keyboards, you can get this functionality using the key
 labelled `<samp>Page Down</samp>', which generates either <kbd>next</kbd> or <kbd>pgdn</kbd>.
  </p> </dd>
-<dt> M-v
-</dt>
-<dt> pgup
-</dt>
-<dt> prior
-</dt>
+<dt><kbd> M-v
+</kbd></dt>
+<dt><kbd> pgup
+</kbd></dt>
+<dt><kbd> prior
+</kbd></dt>
 <dd><p>Scroll backward (<code>scroll-down</code>).  On most X keyboards, you can get
 this functionality using the key labelled `<samp>Page Up</samp>', which
 generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
  </p> </dd>
-<dt> <var>arg</var> C-l
-</dt>
+<dt><kbd> <var>arg</var> C-l
+</kbd></dt>
 <dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
  </p> </dd>
-<dt> C-x &lt;
-</dt>
-<dt> C-pgdn
-</dt>
-<dt> C-next
-</dt>
+<dt><kbd> C-x &lt;
+</kbd></dt>
+<dt><kbd> C-pgdn
+</kbd></dt>
+<dt><kbd> C-next
+</kbd></dt>
 <dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
  </p> </dd>
-<dt> C-x &gt;
-</dt>
-<dt> C-pgup
-</dt>
-<dt> C-prior
-</dt>
+<dt><kbd> C-x &gt;
+</kbd></dt>
+<dt><kbd> C-pgup
+</kbd></dt>
+<dt><kbd> C-prior
+</kbd></dt>
 <dd><p>Scroll to the right (<code>scroll-right</code>).
  </p> </dd>
-<dt> C-x $
-</dt>
+<dt><kbd> C-x $
+</kbd></dt>
 <dd><p>Make deeply indented lines invisible (<code>set-selective-display</code>).
 </p></dd>
 </dl>
@@ -130,29 +130,29 @@ text down and new text appears at the top.
 of the window.  You can also explicitly request scrolling with the commands
 in this section.
 </p><dl compact="compact">
- <dt> C-l
-</dt>
+ <dt><kbd> C-l
+</kbd></dt>
 <dd><p>Clear frame and redisplay, scrolling the selected window to center
 point vertically within it (<code>recenter</code>).
  </p> </dd>
-<dt> C-v
-</dt>
-<dt> pgdn
-</dt>
-<dt> next
-</dt>
+<dt><kbd> C-v
+</kbd></dt>
+<dt><kbd> pgdn
+</kbd></dt>
+<dt><kbd> next
+</kbd></dt>
 <dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
  </p> </dd>
-<dt> M-v
-</dt>
-<dt> pgup
-</dt>
-<dt> prior
-</dt>
+<dt><kbd> M-v
+</kbd></dt>
+<dt><kbd> pgup
+</kbd></dt>
+<dt><kbd> prior
+</kbd></dt>
 <dd><p>Scroll backward (<code>scroll-down</code>).
  </p> </dd>
-<dt> <var>arg</var> C-l
-</dt>
+<dt><kbd> <var>arg</var> C-l
+</kbd></dt>
 <dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
 </p></dd>
 </dl>
@@ -234,12 +234,12 @@ result of overriding the redisplay preemption.
 <h2> 11.2 Horizontal Scrolling </h2>
 
 <dl compact="compact">
- <dt> C-x &lt;
-</dt>
+ <dt><kbd> C-x &lt;
+</kbd></dt>
 <dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
  </p> </dd>
-<dt> C-x &gt;
-</dt>
+<dt><kbd> C-x &gt;
+</kbd></dt>
 <dd><p>Scroll to the right (<code>scroll-right</code>).
 </p></dd>
 </dl>
@@ -253,7 +253,7 @@ result of overriding the redisplay preemption.
 each line of text is shifted sideways in the window, and one or more
 characters at the beginning of each line are not displayed at all.  When a
 window has been scrolled horizontally in this way, text lines are truncated
-rather than continued (see section <a href="xemacs_7.html#NOD48">Continuation Lines</a>), with a `<samp>$</samp>' appearing
+rather than continued (see section <a href="xemacs_7.html#SEC56">Continuation Lines</a>), with a `<samp>$</samp>' appearing
 in the first column when there is text truncated to the left, and in the
 last column when there is text truncated to the right.
 </p><p>  The command <kbd>C-x &lt;</kbd> (<code>scroll-left</code>) scrolls the selected
@@ -283,7 +283,7 @@ window's left margin); attempting to do so has no effect.
 of columns (you specify how many columns).  This allows you  to get an
 overview of a part of a program.
 </p><p>  To hide lines, type <kbd>C-x $</kbd> (<code>set-selective-display</code>) with a
-numeric argument <var>n</var>.  (See section <a href="xemacs_7.html#NOD50">Numeric Arguments</a>, for information on giving
+numeric argument <var>n</var>.  (See section <a href="xemacs_7.html#SEC58">Numeric Arguments</a>, for information on giving
 the argument.)  Lines with at least <var>n</var> columns of indentation
 disappear from the screen.  The only indication of their presence are
 three dots (`<samp><small>...</small></samp>'), which appear at the end of each visible
@@ -327,7 +327,7 @@ page it is using still contains what XEmacs last wrote there.
 </p><a name="IDX403"></a>
 <p>  The variable <code>echo-keystrokes</code> controls the echoing of multi-character
 keys; its value is the number of seconds of pause required to cause echoing
-to start, or zero, meaning don't echo at all.  See section <a href="xemacs_4.html#NOD7">The Echo Area</a>.
+to start, or zero, meaning don't echo at all.  See section <a href="xemacs_4.html#SEC9">The Echo Area</a>.
 </p><a name="IDX404"></a>
 <p>  If the variable <code>ctl-arrow</code> is <code>nil</code>, control characters in the
 buffer are displayed with octal escape sequences, all except newline and
@@ -342,7 +342,7 @@ since XEmacs assumes an ISO/8859-1 character set (also known as
 integer, in which case all characters whose codes are greater than or
 equal to that value will be assumed to be printable.
 </p><p>Altering the value of <code>ctl-arrow</code> makes it local to the current
-buffer; until that time, the default value is in effect.  See section <a href="xemacs_30.html#NOD335">Local Variables</a>.
+buffer; until that time, the default value is in effect.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p><a name="IDX405"></a>
 <p>  Normally, a tab character in the buffer is displayed as whitespace which
 extends to the next display tab stop position, and display tab stops come

@@ -1,3 +1,16 @@
+2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: macros splitted by 3 paragraphs are better handled.
+	more isolation of formatting.
+	better generation of index keys from commands, with more macros
+	replaced by the right letter or symbol.
+	better handling of @things{} in preformatted sections.
+	preformatted sections handled with a new format, preformatted (similar
+	with what is done for paragraphs). Some validation errors avoided.
+	commands for tables are handled.
+	index entries have the right file/id from their place.
+	The files are omitted from hrefs when the href points to the same file.
+	* Tests/*: formatting/imbrications.texi added. Sync with code.
+
 2003-03-27  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: rewrite of the parsing of texi
 	and of the handling of sectionning.

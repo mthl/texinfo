@@ -132,6 +132,7 @@ test_texi macros
 test_texi macros simple_macro.texi
 test_texi macros pass0_macros.texi
 test_texi sectionning
+test_texi formatting imbrications.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html
 test_texi viper_monolithic viper.texi

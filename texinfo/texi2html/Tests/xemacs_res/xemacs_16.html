@@ -67,16 +67,16 @@ change your mind while composing text on line.
 <h2> 13.1 Killing Your Mistakes </h2>
 
 <dl compact="compact">
- <dt> <kbd>DEL</kbd>
-</dt>
+ <dt><kbd> <kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Delete last character (<code>delete-backward-char</code>).
  </p> </dd>
-<dt> M-<kbd>DEL</kbd>
-</dt>
+<dt><kbd> M-<kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Kill last word (<code>backward-kill-word</code>).
  </p> </dd>
-<dt> C-x <kbd>DEL</kbd>
-</dt>
+<dt><kbd> C-x <kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Kill to beginning of sentence (<code>backward-kill-sentence</code>).
 </p></dd>
 </dl>
@@ -97,7 +97,7 @@ convenient to use <kbd>M-<kbd>DEL</kbd></kbd> or <kbd>C-x <kbd>DEL</kbd></kbd>.
 <kbd>DEL</kbd></kbd> is particularly useful when you are thinking of what to write as
 you type it, in case you change your mind about phrasing.
 <kbd>M-<kbd>DEL</kbd></kbd> and <kbd>C-x <kbd>DEL</kbd></kbd> save the killed text for
-<kbd>C-y</kbd> and <kbd>M-y</kbd> to retrieve.  See section <a href="xemacs_12.html#NOD79">Yanking</a>.</p><p>  <kbd>M-<kbd>DEL</kbd></kbd> is often useful even when you have typed only a few
+<kbd>C-y</kbd> and <kbd>M-y</kbd> to retrieve.  See section <a href="xemacs_12.html#SEC91">Yanking</a>.</p><p>  <kbd>M-<kbd>DEL</kbd></kbd> is often useful even when you have typed only a few
 characters wrong, if you know you are confused in your typing and aren't
 sure exactly what you typed.  At such a time, you cannot correct with
 <kbd>DEL</kbd> except by looking at the screen to see what you did.  It requires
@@ -119,20 +119,20 @@ less thought to kill the whole word and start over.
 <h2> 13.2 Transposing Text </h2>
 
 <dl compact="compact">
- <dt> C-t
-</dt>
+ <dt><kbd> C-t
+</kbd></dt>
 <dd><p>Transpose two characters (<code>transpose-chars</code>).
  </p> </dd>
-<dt> M-t
-</dt>
+<dt><kbd> M-t
+</kbd></dt>
 <dd><p>Transpose two words (<code>transpose-words</code>).
  </p> </dd>
-<dt> C-M-t
-</dt>
+<dt><kbd> C-M-t
+</kbd></dt>
 <dd><p>Transpose two balanced expressions (<code>transpose-sexps</code>).
  </p> </dd>
-<dt> C-x C-t
-</dt>
+<dt><kbd> C-x C-t
+</kbd></dt>
 <dd><p>Transpose two lines (<code>transpose-lines</code>).
 </p></dd>
 </dl>
@@ -151,7 +151,7 @@ If you catch the error later,  move the cursor back to between
 the two transposed characters.  If you transposed a space with the last
 character of the word before it, the word motion commands are a good way
 of getting there.  Otherwise, a reverse search (<kbd>C-r</kbd>) is often the
-best way.  See section <a href="xemacs_15.html#NOD103">Searching and Replacement</a>.
+best way.  See section <a href="xemacs_15.html#SEC115">Searching and Replacement</a>.
 </p><a name="IDX508"></a>
 <a name="IDX509"></a>
 <a name="IDX510"></a>
@@ -164,7 +164,7 @@ the word preceding or containing point forward as well.  The punctuation
 characters between the words do not move.  For example, `<samp>FOO, BAR</samp>'
 transposes into `<samp>BAR, FOO</samp>' rather than `<samp>BAR FOO,</samp>'.
 </p><p>  <kbd>C-M-t</kbd> (<code>transpose-sexps</code>) is a similar command for transposing
-two expressions (see section <a href="xemacs_24.html#NOD204">Lists and Sexps</a>), and <kbd>C-x C-t</kbd> (<code>transpose-lines</code>)
+two expressions (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>), and <kbd>C-x C-t</kbd> (<code>transpose-lines</code>)
 exchanges lines.  It works like <kbd>M-t</kbd> but in determines the
 division of the text into syntactic units differently.
 </p><p>  A numeric argument to a transpose command serves as a repeat count: it
@@ -194,16 +194,16 @@ command with a repeat count of zero would do nothing).
 <h2> 13.3 Case Conversion </h2>
 
 <dl compact="compact">
- <dt> M-- M-l
-</dt>
+ <dt><kbd> M-- M-l
+</kbd></dt>
 <dd><p>Convert last word to lower case.  Note that <kbd>Meta--</kbd> is &quot;Meta-minus.&quot;
  </p> </dd>
-<dt> M-- M-u
-</dt>
+<dt><kbd> M-- M-u
+</kbd></dt>
 <dd><p>Convert last word to all upper case.
  </p> </dd>
-<dt> M-- M-c
-</dt>
+<dt><kbd> M-- M-c
+</kbd></dt>
 <dd><p>Convert last word to lower case with capital initial.
 </p></dd>
 </dl>
@@ -220,7 +220,7 @@ command with a repeat count of zero would do nothing).
 the word case-conversion commands <kbd>M-l</kbd>, <kbd>M-u</kbd>, and <kbd>M-c</kbd> do
 not move the cursor when used with a negative argument.
 As soon as you see you have mistyped the last word, you can simply
-case-convert it and continue typing.  See section <a href="xemacs_23.html#NOD201">Case Conversion Commands</a>.</p><hr size="6">
+case-convert it and continue typing.  See section <a href="xemacs_23.html#SEC214">Case Conversion Commands</a>.</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC132" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_17.html#SEC134" title="Next section in reading order"> &gt; </a>]</td>
@@ -237,20 +237,20 @@ case-convert it and continue typing.  See section <a href="xemacs_23.html#NOD201
 <h2> 13.4 Checking and Correcting Spelling </h2>
 
 <dl compact="compact">
- <dt> M-$
-</dt>
+ <dt><kbd> M-$
+</kbd></dt>
 <dd><p>Check and correct spelling of word (<code>spell-word</code>).
  </p> </dd>
-<dt> M-x spell-buffer
-</dt>
+<dt><kbd> M-x spell-buffer
+</kbd></dt>
 <dd><p>Check and correct spelling of each word in the buffer.
  </p> </dd>
-<dt> M-x spell-region
-</dt>
+<dt><kbd> M-x spell-region
+</kbd></dt>
 <dd><p>Check and correct spelling of each word in the region.
  </p> </dd>
-<dt> M-x spell-string
-</dt>
+<dt><kbd> M-x spell-string
+</kbd></dt>
 <dd><p>Check spelling of specified word.
 </p></dd>
 </dl>

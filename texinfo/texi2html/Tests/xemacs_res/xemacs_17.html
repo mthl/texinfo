@@ -93,8 +93,8 @@ and append to files, and operate on file directories.
 <p>  Most Emacs commands that operate on a file require you to specify the
 file name.  (Saving and reverting are exceptions; the buffer knows which
 file name to use for them.)  File names are specified in the minibuffer
-(see section <a href="xemacs_9.html#NOD52">The Minibuffer</a>).  <em>Completion</em> is available, to make it easier to
-specify long file names.  See section <a href="xemacs_9.html#NOD55">Completion</a>.
+(see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>).  <em>Completion</em> is available, to make it easier to
+specify long file names.  See section <a href="xemacs_9.html#SEC63">Completion</a>.
 </p><p>  There is always a <em>default file name</em> which is used if you
 enter an empty argument by typing just <kbd>RET</kbd>.  Normally the default
 file name is the name of the file visited in the current buffer; this
@@ -124,7 +124,7 @@ which does not specify a directory, it is short for `<tt>/u/rms/gnu/foo</tt>'.
 `<samp>../.login</samp>' would stand for `<tt>/u/rms/.login</tt>'.  `<samp>new/foo</samp>'
 would stand for the filename `<tt>/u/rms/gnu/new/foo</tt>'.
 </p><p>  When visiting a remote file via EFS or TRAMP, the remote directory
-becomes the default directory (see section <a href="#NOD123">Visiting Files</a>) for that buffer, just
+becomes the default directory (see section <a href="#SEC136">Visiting Files</a>) for that buffer, just
 as a local directory would.
 </p><a name="IDX530"></a>
 <p>The variable <code>default-directory-alist</code> takes an alist of major
@@ -161,7 +161,7 @@ inhibit the insertion of the default directory, set the variable
 </p><p>  Note that it is legitimate to type an absolute file name after you
 enter the minibuffer, ignoring the presence of the default directory
 name.  The final minibuffer contents may look invalid, but that is not
-so.  See section <a href="xemacs_9.html#NOD53">Minibuffers for File Names</a>.
+so.  See section <a href="xemacs_9.html#SEC61">Minibuffers for File Names</a>.
 </p><p>  `<samp>$</samp>' in a file name is used to substitute environment variables.  For
 example, if you have used the shell command `<samp>setenv FOO rms/hacks</samp>' to
 set up an environment variable named `<samp>FOO</samp>', then you can use
@@ -192,22 +192,22 @@ is performed only on filenames read as such using the minibuffer.
 <h2> 14.2 Visiting Files </h2>
 
 <dl compact="compact">
- <dt> C-x C-f
-</dt>
+ <dt><kbd> C-x C-f
+</kbd></dt>
 <dd><p>Visit a file (<code>find-file</code>).
  </p> </dd>
-<dt> C-x C-v
-</dt>
+<dt><kbd> C-x C-v
+</kbd></dt>
 <dd><p>Visit a different file instead of the one visited last
 (<code>find-alternate-file</code>).
  </p> </dd>
-<dt> C-x 4 C-f
-</dt>
+<dt><kbd> C-x 4 C-f
+</kbd></dt>
 <dd><p>Visit a file, in another window (<code>find-file-other-window</code>).  Don't
 change this window.
  </p> </dd>
-<dt> C-x 5 C-f
-</dt>
+<dt><kbd> C-x 5 C-f
+</kbd></dt>
 <dd><p>Visit a file, in another frame (<code>find-file-other-frame</code>).  Don't
 change this window or frame.
 </p></dd>
@@ -231,7 +231,7 @@ in that window, so you can always tell what buffer you are editing.
 not take effect in the file that you visit, or any other permanent
 place, until you <em>save</em> the buffer.  Saving the buffer means that
 Emacs writes the current contents of the buffer into its visited file.
-See section <a href="#NOD124">Saving Files</a>.
+See section <a href="#SEC137">Saving Files</a>.
 </p><a name="IDX539"></a>
 <p>  If a buffer contains changes that have not been saved, the buffer is said
 to be <em>modified</em>.  This is important because it implies that some
@@ -244,8 +244,8 @@ two stars near the left margin if the buffer is modified.
 the command with the name of the file you wish to visit, terminated by a
 <kbd>RET</kbd>.  If you are using XEmacs under X, you can also use the
 <b>Open...</b> command from the <b>File</b> menu bar item. 
-</p><p>  The file name is read using the minibuffer (see section <a href="xemacs_9.html#NOD52">The Minibuffer</a>), with
-defaulting and completion in the standard manner (see section <a href="#NOD122">File Names</a>).
+</p><p>  The file name is read using the minibuffer (see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>), with
+defaulting and completion in the standard manner (see section <a href="#SEC135">File Names</a>).
 While in the minibuffer, you can abort <kbd>C-x C-f</kbd> by typing <kbd>C-g</kbd>.
 </p><p>  <kbd>C-x C-f</kbd> has completed successfully when text appears on the
 screen and a new buffer name appears in the mode line.  If the specified
@@ -256,7 +256,7 @@ the name of the file that Emacs was trying to visit.
 another copy.  It selects the existing buffer containing that file.
 However, before doing so, it checks that the file itself has not changed
 since you visited or saved it last.  If the file has changed, Emacs
-prints a warning message.  See section <a href="#NOD129">Simultaneous Editing</a>.
+prints a warning message.  See section <a href="#SEC142">Simultaneous Editing</a>.
 </p><a name="IDX543"></a>
 <p>You can switch to a specific file called out in the current buffer by
 calling the function <code>find-this-file</code>. By providing a prefix
@@ -300,7 +300,7 @@ it is modified).  <kbd>C-x C-v</kbd> is allowed even if the current buffer
 is not visiting a file.
 </p><a name="IDX551"></a>
 <p>  If the file you specify is actually a directory, Dired is called on
-that directory (see section <a href="#NOD150">Dired, the Directory Editor</a>).  To inhibit this, set the variable
+that directory (see section <a href="#SEC163">Dired, the Directory Editor</a>).  To inhibit this, set the variable
 <code>find-file-run-dired</code> to <code>nil</code>; then it is an error to try to
 visit a directory.
 </p><a name="IDX552"></a>
@@ -311,7 +311,7 @@ window.  The window that was selected before <kbd>C-x 4 f</kbd> continues to
 show the same buffer it was already showing.  If you use this command when
 only one window is being displayed, that window is split in two, with one
 window showing the same buffer as before, and the other one showing the
-newly requested file.  See section <a href="xemacs_19.html#NOD162">Multiple Windows</a>.
+newly requested file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
 </p><a name="IDX554"></a>
 <a name="IDX555"></a>
 <p><kbd>C-x 5 C-f</kbd> (<code>find-file-other-frame</code>) is like <kbd>C-x C-f</kbd>
@@ -354,25 +354,25 @@ runs the <code>find-file-not-found-hooks</code> first.
 <p>  <em>Saving</em> a buffer in Emacs means writing its contents back into the file
 that was visited in the buffer.
 </p><dl compact="compact">
- <dt> C-x C-s
-</dt>
+ <dt><kbd> C-x C-s
+</kbd></dt>
 <dd><p>Save the current buffer in its visited file (<code>save-buffer</code>).
  </p> </dd>
-<dt> C-x s
-</dt>
+<dt><kbd> C-x s
+</kbd></dt>
 <dd><p>Save any or all buffers in their visited files (<code>save-some-buffers</code>).
  </p> </dd>
-<dt> M-~
-</dt>
+<dt><kbd> M-~
+</kbd></dt>
 <dd><p>Forget that the current buffer has been changed (<code>not-modified</code>).
  </p> </dd>
-<dt> C-x C-w
-</dt>
+<dt><kbd> C-x C-w
+</kbd></dt>
 <dd><p>Save the current buffer in a specified file, and record that file as
 the one visited in the buffer (<code>write-file</code>).
  </p> </dd>
-<dt> M-x set-visited-file-name
-</dt>
+<dt><kbd> M-x set-visited-file-name
+</kbd></dt>
 <dd><p>Change file the name under which the current buffer will be saved.
 </p></dd>
 </dl>
@@ -414,7 +414,7 @@ buffer as visiting a different file name, not in use for
 anything important. 
 </p><p>You can also undo all the changes made since the file was visited or
 saved, by reading the text from the file again.  This is called
-<em>reverting</em>.  See section <a href="#NOD130">Reverting a Buffer</a>.  Alternatively, you can undo all the
+<em>reverting</em>.  See section <a href="#SEC143">Reverting a Buffer</a>.  Alternatively, you can undo all the
 changes by repeating the undo command <kbd>C-x u</kbd>; but this only works
 if you have not made more changes than the undo mechanism can remember.
 </p><a name="IDX565"></a>
@@ -442,7 +442,7 @@ with the buffer's default directory.
 version on disk does not match what Emacs last read or wrote, Emacs
 notifies you of this fact, because it probably indicates a problem caused
 by simultaneous editing and requires your immediate attention.
-See section <a href="#NOD129">Simultaneous Editing</a>.
+See section <a href="#SEC142">Simultaneous Editing</a>.
 </p><a name="IDX568"></a>
 <p>  If the variable <code>require-final-newline</code> is non-<code>nil</code>, Emacs
 puts a newline at the end of any file that doesn't already end in one,
@@ -537,17 +537,17 @@ available.
 <p>  The choice of single backup or numbered backups is controlled by the
 variable <code>version-control</code>.  Its possible values are:
 </p><dl compact="compact">
- <dt> t
-</dt>
+ <dt><code> t
+</code></dt>
 <dd><p>Make numbered backups.
  </p> </dd>
-<dt> nil
-</dt>
+<dt><code> nil
+</code></dt>
 <dd><p>Make numbered backups for files that have numbered backups already.
 Otherwise, make single backups.
  </p> </dd>
-<dt> never
-</dt>
+<dt><code> never
+</code></dt>
 <dd><p>Never make numbered backups; always make single backups.
 </p></dd>
 </dl>
@@ -555,7 +555,7 @@ Otherwise, make single backups.
 <p><code>version-control</code> may be set locally in an individual buffer to
 control the making of backups for that buffer's file.  For example,
 Rmail mode locally sets <code>version-control</code> to <code>never</code> to make sure
-that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#NOD335">Local Variables</a>.
+that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
@@ -588,7 +588,7 @@ middle versions are deleted without notification.  If it is <code>nil</code>, th
 default, you are asked whether the excess middle versions should
 really be deleted.
 </p><p>  You can also use Dired's <kbd>.</kbd> (Period) command to delete old versions.
-See section <a href="#NOD150">Dired, the Directory Editor</a>.
+See section <a href="#SEC163">Dired, the Directory Editor</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
@@ -620,7 +620,7 @@ is always the person who last edited the file.  Occasionally there is a
 file whose owner should not change.  Since most files should change
 owners, it is a good idea to use local variable lists to set 
 <code>backup-by-copying-when-mismatch</code> for the special cases where the 
-owner should not change (see section <a href="xemacs_30.html#NOD336">Local Variables in Files</a>).
+owner should not change (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).
 </p><a name="IDX573"></a>
 <a name="IDX574"></a>
 <a name="IDX575"></a>
@@ -670,17 +670,17 @@ and Emacs asks you what to do.  It does this by calling the Lisp function
 does.  The standard definition of this function asks you a
 question and accepts three possible answers:
 </p><dl compact="compact">
- <dt> s
-</dt>
+ <dt><kbd> s
+</kbd></dt>
 <dd><p>Steal the lock.  Whoever was already changing the file loses the lock,
 and you get the lock.
  </p> </dd>
-<dt> p
-</dt>
+<dt><kbd> p
+</kbd></dt>
 <dd><p>Proceed.  Go ahead and edit the file despite its being locked by someone else.
  </p> </dd>
-<dt> q
-</dt>
+<dt><kbd> q
+</kbd></dt>
 <dd><p>Quit.  This causes an error (<code>file-locked</code>) and the modification you
 were trying to make in the buffer does not actually take place.
 </p></dd>
@@ -705,7 +705,7 @@ not matter; then you can answer <kbd>yes</kbd> and proceed.  Otherwise, you shou
 cancel the save with <kbd>C-g</kbd> and investigate the situation.
 </p><p>  The first thing you should do when notified that simultaneous editing
 has already taken place is to list the directory with <kbd>C-u C-x C-d</kbd>
-(see section <a href="#NOD148">Directory Listing</a>).  This will show the file's current
+(see section <a href="#SEC161">Directory Listing</a>).  This will show the file's current
 author.  You should attempt to contact that person and ask him not to
 continue editing.  Often the next step is to save the contents of your
 Emacs buffer under a different name, and use <code>diff</code> to compare the
@@ -746,7 +746,7 @@ very extensive changes, you must confirm it with <kbd>yes</kbd>.
 that is more recent than the visited file by providing a prefix
 argument.  If a recent auto-save file exists, <code>revert-buffer</code>
 offers to read the auto-save file instead of the visited file
-(see section <a href="#NOD131">Auto-Saving: Protection Against Disasters</a>).  Emacs asks you about the auto-save file before the
+(see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).  Emacs asks you about the auto-save file before the
 request for confirmation of the <kbd>revert-buffer</kbd> operation, and
 demands <kbd>y</kbd> or <kbd>n</kbd> as an answer.  If you have started to type
 <kbd>yes</kbd> to confirm the revert operation, the <kbd>y</kbd> will answer the
@@ -865,7 +865,7 @@ auto-save file to correspond to the new visited name.
 
 <p>  Each time you visit a file, auto-saving is turned on for that file's
 buffer if the variable <code>auto-save-default</code> is non-<code>nil</code> (but
-not in batch mode; see section <a href="xemacs_6.html#NOD37">Entering and Exiting Emacs</a>).  The default for this
+not in batch mode; see section <a href="xemacs_6.html#SEC39">Entering and Exiting Emacs</a>).  The default for this
 variable is <code>t</code>, so Emacs auto-saves buffers that visit files by
 default.  You can use the command <kbd>M-x auto-save-mode</kbd> to turn
 auto-saving for a buffer on or off.  Like other minor mode commands,
@@ -1018,7 +1018,7 @@ the source file so that other people can lock it and thus modify it.
 can do both of them with a single Emacs command: <kbd>C-x C-q</kbd>
 (<code>vc-toggle-read-only</code>).
 </p><p>  A <em>snapshot</em> is a coherent collection of versions of the various
-files that make up a program.  See section <a href="#NOD144">Snapshots</a>.
+files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1045,21 +1045,21 @@ normally also the version you are looking at.
 </p><p>  These are the commands for editing a file maintained with
 version control:
 </p><dl compact="compact">
- <dt> C-x C-q
-</dt>
+ <dt><kbd> C-x C-q
+</kbd></dt>
 <dd><p>Check the visited file in or out.
 </p></dd>
-<dt> C-x v u
-</dt>
+<dt><kbd> C-x v u
+</kbd></dt>
 <dd><p>Revert the buffer and the file to the last checked in version.
 </p></dd>
-<dt> C-x v c
-</dt>
+<dt><kbd> C-x v c
+</kbd></dt>
 <dd><p>Remove the last-entered change from the master for the visited file.
 This undoes your last check-in.
 </p></dd>
-<dt> C-x v i
-</dt>
+<dt><kbd> C-x v i
+</kbd></dt>
 <dd><p>Register the visited file in version control.
 </p></dd>
 </dl>
@@ -1213,8 +1213,8 @@ happens automatically.
 <p>  When you're editing an initial comment or log entry for inclusion in a
 master file, finish your entry by typing <kbd>C-c C-c</kbd>.
 </p><dl compact="compact">
- <dt> C-c C-c
-</dt>
+ <dt><kbd> C-c C-c
+</kbd></dt>
 <dd><p>Finish the comment edit normally (<code>vc-finish-logentry</code>).
 This finishes check-in.
 </p></dd>
@@ -1252,11 +1252,11 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 <h3> 14.6.5 Change Logs and VC </h3>
 
 <p>  If you use RCS for a program and also maintain a change log file for
-it (see section <a href="xemacs_24.html#NOD216">Change Logs</a>), you can generate change log entries
+it (see section <a href="xemacs_24.html#SEC231">Change Logs</a>), you can generate change log entries
 automatically from the version control log entries:
 </p><dl compact="compact">
- <dt> C-x v a
-</dt>
+ <dt><kbd> C-x v a
+</kbd></dt>
 <dd><p><a name="IDX605"></a>
 <a name="IDX606"></a>
 Visit the current directory's change log file and create new entries for
@@ -1271,11 +1271,11 @@ April 1992, and that the only check-in since then was by Nathaniel
 Bowditch to `<tt>rcs2log</tt>' on 8 May 1992 with log text `<samp>Ignore log
 messages that start with `#'.</samp>'.  Then <kbd>C-x v a</kbd> visits
 `<tt>ChangeLog</tt>' and inserts text like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * rcs2log: Ignore log messages that start with `#'.
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>You can then edit the new change log entry further as you wish.
 </p><p>  Normally, the log entry for file `<tt>foo</tt>' is displayed as `<samp>*
 foo: <var>text of log entry</var></samp>'.  The `<samp>:</samp>' after `<tt>foo</tt>' is omitted
@@ -1283,11 +1283,11 @@ if the text of the log entry starts with `<samp>(<var>functionname</var>):
 </samp>'.  For example, if the log entry for `<tt>vc.el</tt>' is
 `<samp>(vc-do-command): Check call-process status.</samp>', then the text in
 `<tt>ChangeLog</tt>' looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.el (vc-do-command): Check call-process status.
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>  When <kbd>C-x v a</kbd> adds several change log entries at once, it groups
 related log entries together if they all are checked in by the same
 author at nearly the same time.  If the log entries for several such
@@ -1303,13 +1303,13 @@ For `<tt>vc-hooks.el</tt>':
 Don't call expand-file-name.
 </pre></td></tr></table>
 <p>  They appear like this in `<tt>ChangeLog</tt>':
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
 
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>  Normally, <kbd>C-x v a</kbd> separates log entries by a blank line, but you
 can mark several related log entries to be clumped together (without an
 intervening blank line) by starting the text of each related log entry
@@ -1325,12 +1325,12 @@ For `<tt>vc-hooks.el</tt>':
 {expand} Don't call expand-file-name.
 </pre></td></tr></table>
 <p>Then the text in `<tt>ChangeLog</tt>' looks like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>  A log entry whose text begins with `<samp>#</samp>' is not copied to
 `<tt>ChangeLog</tt>'.  For example, if you merely fix some misspellings in
 comments, you can log the change with an entry beginning with `<samp>#</samp>'
@@ -1352,18 +1352,18 @@ to avoid putting such trivia into `<tt>ChangeLog</tt>'.
 <h3> 14.6.6 Examining And Comparing Old Versions </h3>
 
 <dl compact="compact">
- <dt> C-x v ~ <var>version</var> <kbd>RET</kbd>
-</dt>
+ <dt><kbd> C-x v ~ <var>version</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Examine version <var>version</var> of the visited file, in a buffer of its
 own (<code>vc-version-other-window</code>).
 </p></dd>
-<dt> C-x v =
-</dt>
+<dt><kbd> C-x v =
+</kbd></dt>
 <dd><p>Compare the current buffer contents with the latest checked-in version
 of the file.
 </p></dd>
-<dt> C-u C-x v = <var>file</var> <kbd>RET</kbd> <var>oldvers</var> <kbd>RET</kbd> <var>newvers</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-u C-x v = <var>file</var> <kbd>RET</kbd> <var>oldvers</var> <kbd>RET</kbd> <var>newvers</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Compare the specified two versions of <var>file</var>.
 </p></dd>
 </dl>
@@ -1386,7 +1386,7 @@ numbers, then compares those versions of the specified file.
 </p><p>  If you supply a directory name instead of the name of a work file,
 this command compares the two specified versions of all registered files
 in that directory and its subdirectories.  You can also specify a
-snapshot name (see section <a href="#NOD144">Snapshots</a>) instead of one or both version
+snapshot name (see section <a href="#SEC157">Snapshots</a>) instead of one or both version
 numbers.
 </p><p>  You can specify a checked-in version by its number; you can specify
 the most recent checked-in version with an empty version number.
@@ -1396,7 +1396,7 @@ in a special buffer in another window.  Unlike the <kbd>M-x diff</kbd>
 command, <kbd>C-x v =</kbd> does not try to find the changes in the old and
 new versions.  This is because one or both versions normally do not
 exist as files.  They exist only in the records of the master file.
-See section <a href="#NOD149">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
+See section <a href="#SEC162">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC154" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1459,9 +1459,9 @@ change.
 <p>  When you rename a registered file, you must also rename its master
 file correspondingly to get proper results.  Use <code>vc-rename-file</code>
 to rename the source file as you specify, and rename its master file
-accordingly.  It also updates any snapshots (see section <a href="#NOD144">Snapshots</a>) that
+accordingly.  It also updates any snapshots (see section <a href="#SEC157">Snapshots</a>) that
 mention the file, so that they use the new name; despite this, the
-snapshot thus modified may not completely work (see section <a href="#NOD146">Snapshot Caveats</a>).
+snapshot thus modified may not completely work (see section <a href="#SEC159">Snapshot Caveats</a>).
 </p><p>  You cannot use <code>vc-rename-file</code> on a file that is locked by
 someone else.
 </p><hr size="6">
@@ -1512,16 +1512,16 @@ snapshot with a given name, the other retrieves a named snapshot.
 <p>
 <a name="IDX613"></a>
 <a name="IDX614"></a>
- </p> <dt> C-x v s <var>name</var> <kbd>RET</kbd>
-</dt>
+ </p> <dt><code> C-x v s <var>name</var> <kbd>RET</kbd>
+</code></dt>
 <dd><p>Define the last saved versions of every registered file in or under the
 current directory as a snapshot named <var>name</var>
 (<code>vc-create-snapshot</code>).
 </p><a name="IDX615"></a>
 <a name="IDX616"></a>
 </dd>
-<dt> C-x v r <var>name</var> <kbd>RET</kbd>
-</dt>
+<dt><code> C-x v r <var>name</var> <kbd>RET</kbd>
+</code></dt>
 <dd><p>Check out all registered files at or below the current directory level
 using whatever versions correspond to the snapshot <var>name</var>
 (<code>vc-retrieve-snapshot</code>).
@@ -1535,7 +1535,7 @@ overwriting work in progress.
 the list of file names and which version belongs to the snapshot.  Thus,
 you need not hesitate to create snapshots whenever they are useful.
 </p><p>  You can give a snapshot name as an argument to <kbd>C-x v =</kbd> or
-<kbd>C-x v ~</kbd> (see section <a href="#NOD141">Examining And Comparing Old Versions</a>).  Thus, you can use it to compare a
+<kbd>C-x v ~</kbd> (see section <a href="#SEC154">Examining And Comparing Old Versions</a>).  Thus, you can use it to compare a
 snapshot against the current files, or two snapshots against each other,
 or a snapshot against a named version.
 </p><hr size="6">
@@ -1605,8 +1605,8 @@ number of that version.
 <p>  You can use the <kbd>C-x v h</kbd> command (<code>vc-insert-headers</code>) to
 insert a suitable header string.
 </p><dl compact="compact">
- <dt> C-x v h
-</dt>
+ <dt><kbd> C-x v h
+</kbd></dt>
 <dd><p>Insert headers in a file for use with your version-control system.
 </p></dd>
 </dl>
@@ -1678,12 +1678,12 @@ listing</em> is a list of all the files in a directory.  Emacs provides
 directory listings in brief format (file names only) and verbose format
 (sizes, dates, and authors included).
 </p><dl compact="compact">
- <dt> C-x C-d <var>dir-or-pattern</var>
-</dt>
+ <dt><kbd> C-x C-d <var>dir-or-pattern</var>
+</kbd></dt>
 <dd><p>Print a brief directory listing (<code>list-directory</code>).
  </p> </dd>
-<dt> C-u C-x C-d <var>dir-or-pattern</var>
-</dt>
+<dt><kbd> C-u C-x C-d <var>dir-or-pattern</var>
+</kbd></dt>
 <dd><p>Print a verbose directory listing.
 </p></dd>
 </dl>
@@ -1748,7 +1748,7 @@ source files.  You can also move to a particular hunk of changes and
 type <kbd>C-c C-c</kbd> to find the corresponding source location.  You can
 also use the other special commands of Compilation mode: <kbd>SPC</kbd> and
 <kbd>DEL</kbd> for scrolling, and <kbd>M-p</kbd> and <kbd>M-n</kbd> for cursor motion.
-See section <a href="xemacs_25.html#NOD237">Running &quot;make&quot;, or Compilers Generally</a>.
+See section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>.
 </p><a name="IDX626"></a>
 <p>  The command <kbd>M-x diff-backup</kbd> compares a specified file with its most
 recent backup.  If you specify the name of a backup file,
@@ -1761,7 +1761,7 @@ window with that in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time in each
 window, until the next characters in the two windows are different.  Then
 the command is finished.  For more information about windows in Emacs,
-<a href="xemacs_19.html#NOD162">Multiple Windows</a>.
+<a href="xemacs_19.html#SEC175">Multiple Windows</a>.
 </p><a name="IDX629"></a>
 <p>  With a numeric argument, <code>compare-windows</code> ignores changes in
 whitespace.  If the variable <code>compare-ignore-case</code> is
@@ -1882,34 +1882,34 @@ buffer are lost when this is done.
 <p>  The primary use of Dired is to flag files for deletion and then delete
 them.
 </p><dl compact="compact">
- <dt> d
-</dt>
+ <dt><kbd> d
+</kbd></dt>
 <dd><p>Flag this file for deletion.
  </p> </dd>
-<dt> u
-</dt>
+<dt><kbd> u
+</kbd></dt>
 <dd><p>Remove deletion-flag on this line.
  </p> </dd>
-<dt> <kbd>DEL</kbd>
-</dt>
+<dt><kbd> <kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Remove deletion-flag on previous line, moving point to that line.
  </p> </dd>
-<dt> x
-</dt>
+<dt><kbd> x
+</kbd></dt>
 <dd><p>Delete the files that are flagged for deletion.
  </p> </dd>
-<dt> #
-</dt>
+<dt><kbd> #
+</kbd></dt>
 <dd><p>Flag all auto-save files (files whose names start and end with `<samp>#</samp>')
-for deletion (see section <a href="#NOD131">Auto-Saving: Protection Against Disasters</a>).
+for deletion (see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).
  </p> </dd>
-<dt> ~
-</dt>
+<dt><kbd> ~
+</kbd></dt>
 <dd><p>Flag all backup files (files whose names end with `<samp>~</samp>') for deletion
-(see section <a href="#NOD125">Backup Files</a>).
+(see section <a href="#SEC138">Backup Files</a>).
  </p> </dd>
-<dt> . (Period)
-</dt>
+<dt><kbd> . (Period)
+</kbd></dt>
 <dd><p>Flag excess numeric backup files for deletion.  The oldest and newest
 few backup files of any one file are exempt; the middle ones are flagged.
 </p></dd>
@@ -1970,34 +1970,34 @@ file to keep.</p><hr size="6">
 <p>  Some file operations in Dired take place immediately when they are
 requested.
 </p><dl compact="compact">
- <dt> C
-</dt>
+ <dt><kbd> C
+</kbd></dt>
 <dd><p>Copies the file described on the current line.  You must supply a file name
 to copy to, using the minibuffer.
  </p> </dd>
-<dt> f
-</dt>
+<dt><kbd> f
+</kbd></dt>
 <dd><p>Visits the file described on the current line.  It is just like typing
 <kbd>C-x C-f</kbd> and supplying that file name.  If the file on this line is a
 subdirectory, <kbd>f</kbd> actually causes Dired to be invoked on that
-subdirectory.  See section <a href="#NOD123">Visiting Files</a>.
+subdirectory.  See section <a href="#SEC136">Visiting Files</a>.
  </p> </dd>
-<dt> o
-</dt>
+<dt><kbd> o
+</kbd></dt>
 <dd><p>Like <kbd>f</kbd>, but uses another window to display the file's buffer.  The
 Dired buffer remains visible in the first window.  This is like using
-<kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#NOD162">Multiple Windows</a>.
+<kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
  </p> </dd>
-<dt> R
-</dt>
+<dt><kbd> R
+</kbd></dt>
 <dd><p>Renames the file described on the current line.  You must supply a file
 name to rename to, using the minibuffer.
  </p> </dd>
-<dt> v
-</dt>
+<dt><kbd> v
+</kbd></dt>
 <dd><p>Views the file described on this line using <kbd>M-x view-file</kbd>.  Viewing a
 file is like visiting it, but is slanted toward moving around in the file
-conveniently and does not allow changing the file.  See section <a href="#NOD155">View File</a>.  Viewing a file that is a directory runs Dired on that
+conveniently and does not allow changing the file.  See section <a href="#SEC168">View File</a>.  Viewing a file that is a directory runs Dired on that
 directory.</p></dd>
 </dl>
 
@@ -2036,11 +2036,11 @@ contents of the file <var>new</var>.
 <a name="IDX638"></a>
 <p>  <kbd>M-x delete-file</kbd> deletes a specified file, like the <code>rm</code>
 command in the shell.  If you are deleting many files in one directory, it
-may be more convenient to use Dired (see section <a href="#NOD150">Dired, the Directory Editor</a>).
+may be more convenient to use Dired (see section <a href="#SEC163">Dired, the Directory Editor</a>).
 </p><a name="IDX639"></a>
 <p>  <kbd>M-x insert-file</kbd> inserts a copy of the contents of a specified
 file into the current buffer at point, leaving point unchanged before the
-contents and the mark after them.  See section <a href="xemacs_12.html#NOD71">Selecting Text</a>.
+contents and the mark after them.  See section <a href="xemacs_12.html#SEC79">Selecting Text</a>.
 </p><a name="IDX640"></a>
 <p>  <kbd>M-x make-symbolic-link</kbd> reads two file names <var>old</var> and
 <var>linkname</var>, and then creates a symbolic link named <var>linkname</var>

@@ -1,23 +1,40 @@
 \input texinfo @c -*-texinfo-*-
 
+@setfilename imbrications.info
+
+@syncodeindex pg cp
+
 @node Top,First node,(dir)
 @top
 @menu
 * First node::    node 1
 * Second node::    node 2
-* node in table::
-* node in example::
-* node in flushright::
 @end menu
+@c * node in table::
+@c * node in example::
+@c * node in flushright::
 @c *node in defun -> bug
 @node First node
 @chapter first node chapter
+
 @cindex elem
+
+@tex
+
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+
+@end tex
 
 @node Second node
 @chapter second
 
-@defun buffer-end flag
+Some text
+
+@deffn Function buffer-end flag
 A nice function
 
 makeinfo accepts a menu within defun but it isn't possible
@@ -26,27 +43,26 @@ to follow it
 @menu
 * node within defun menu::
 @end menu
-
 @c makeinfo accepts the following but cannot properly close defun
 @c @node node within defun menu
 @c @section within menu
 
 end of the function
-@end defun
+@end deffn
 
 @node node within defun menu
-@section within menu
+@section the node is within menu
 
 
 @table @bullet
 @item item
-@node node in table
-@chapter in table
+@c @node node in table
+@c @chapter in table
 @end table
 
 @example
-@node node in example
-@chapter example
+@c @node node in example
+@c @chapter example
 
 an example
 @end example
@@ -61,18 +77,27 @@ after html in example
 
 
 two line breaks
+Tex doesn't like math in @@example
+@ifnottex
 @tex
-$$ \chi^2 = \sum_{i=1}^N
-   \left(y_i - (a + b x_i)
-   \over \sigma_i\right)^2 $$
+
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
 
 @end tex
-
+@end ifnottex
 @cindex index in example
 
+Now a content within example
+
 @contents
+
 @printindex cp
-printindex  works but cannot be followed
+printindex  works but cannot be followed in info, in TeX
+the result is quite strange.
 
 and now yes---now and ``so''.
 
@@ -82,16 +107,41 @@ after example and now yes---now and ``so''.
 
 is the text
 flushed right ?
-@node node in flushright
-@chapter flushright
+@c @node node in flushright
+@c @chapter flushright
 
 
 @end flushright
 
 @flushright
+@example
+example text flushed  right
 
-text
+it is
+@end example
 @end flushright
+
+@display
+simple displayed text
+@end display
+
+a display within example
+@example
+example
+@display
+display
+@end display
+@end example
+
+a table within example
+@example
+@table @bullet
+@item item
+text
+@end table
+@end example
+
+
 
 
 @contents

@@ -110,7 +110,7 @@ that point stays in exactly the same column.  <kbd>C-e</kbd> runs
 character on the line.  There was no need to change <kbd>C-a</kbd>, as the choice
 of screen model does not affect beginnings of lines.</p><a name="IDX1091"></a>
 <p>  Insertion of text is adapted to the quarter-plane screen model through
-the use of Overwrite mode (see section <a href="xemacs_30.html#NOD326">Minor Modes</a>).  Self-inserting characters
+the use of Overwrite mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  Self-inserting characters
 replace existing text, column by column, rather than pushing existing text
 to the right.  <kbd>RET</kbd> runs <code>picture-newline</code>, which just moves to
 the beginning of the following line so that new text will replace that
@@ -135,7 +135,7 @@ with the same contents below the current line.</p><a name="IDX1096"></a>
 <p>  To actually delete parts of the picture, use <kbd>C-w</kbd>, or with
 <kbd>C-c C-d</kbd> (which is defined as <code>delete-char</code>, as <kbd>C-d</kbd> is
 in other modes), or with one of the picture rectangle commands
-(see section <a href="#NOD269">Picture Mode Rectangle Commands</a>).
+(see section <a href="#SEC295">Picture Mode Rectangle Commands</a>).
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC292" title="Previous section in reading order"> &lt; </a>]</td>
@@ -158,38 +158,38 @@ moved.  Normally point moves right, but you can specify any of the eight
 orthogonal or diagonal directions for motion after a &quot;self-inserting&quot;
 character.  This is useful for drawing lines in the buffer.
 </p><dl compact="compact">
- <dt> C-c &lt;
-</dt>
+ <dt><kbd> C-c &lt;
+</kbd></dt>
 <dd><p>Move left after insertion (<code>picture-movement-left</code>).
  </p> </dd>
-<dt> C-c &gt;
-</dt>
+<dt><kbd> C-c &gt;
+</kbd></dt>
 <dd><p>Move right after insertion (<code>picture-movement-right</code>).
  </p> </dd>
-<dt> C-c ^
-</dt>
+<dt><kbd> C-c ^
+</kbd></dt>
 <dd><p>Move up after insertion (<code>picture-movement-up</code>).
  </p> </dd>
-<dt> C-c .
-</dt>
+<dt><kbd> C-c .
+</kbd></dt>
 <dd><p>Move down after insertion (<code>picture-movement-down</code>).
  </p> </dd>
-<dt> C-c `
-</dt>
+<dt><kbd> C-c `
+</kbd></dt>
 <dd><p>Move up and left (&quot;northwest&quot;) after insertion <br>(<code>picture-movement-nw</code>).
  </p> </dd>
-<dt> C-c '
-</dt>
+<dt><kbd> C-c '
+</kbd></dt>
 <dd><p>Move up and right (&quot;northeast&quot;) after insertion <br>
 (<code>picture-movement-ne</code>).
  </p> </dd>
-<dt> C-c /
-</dt>
+<dt><kbd> C-c /
+</kbd></dt>
 <dd><p>Move down and left (&quot;southwest&quot;) after insertion
 <br>(<code>picture-movement-sw</code>).
  </p> </dd>
-<dt> C-c \
-</dt>
+<dt><kbd> C-c \
+</kbd></dt>
 <dd><p>Move down and right (&quot;southeast&quot;) after insertion
 <br>(<code>picture-movement-se</code>).
 </p></dd>
@@ -261,26 +261,26 @@ with <kbd>TAB</kbd>, you can get the effect of context-based tabbing.  But
 
 <p>  Picture mode defines commands for working on rectangular pieces of the
 text in ways that fit with the quarter-plane model.  The standard rectangle
-commands may also be useful (see section <a href="xemacs_12.html#NOD89">Rectangles</a>).
+commands may also be useful (see section <a href="xemacs_12.html#SEC101">Rectangles</a>).
 </p><dl compact="compact">
- <dt> C-c C-k
-</dt>
+ <dt><kbd> C-c C-k
+</kbd></dt>
 <dd><p>Clear out the region-rectangle (<code>picture-clear-rectangle</code>).  With
 argument, kill it.
  </p> </dd>
-<dt> C-c C-w <var>r</var>
-</dt>
+<dt><kbd> C-c C-w <var>r</var>
+</kbd></dt>
 <dd><p>Similar but save rectangle contents in register <var>r</var> first
 (<code>picture-clear-rectangle-to-register</code>).
  </p> </dd>
-<dt> C-c C-y
-</dt>
+<dt><kbd> C-c C-y
+</kbd></dt>
 <dd><p>Copy last killed rectangle into the buffer by overwriting, with upper
 left corner at point (<code>picture-yank-rectangle</code>).  With argument,
 insert instead.
  </p> </dd>
-<dt> C-c C-x <var>r</var>
-</dt>
+<dt><kbd> C-c C-x <var>r</var>
+</kbd></dt>
 <dd><p>Similar, but use the rectangle in register <var>r</var><br>
 (<code>picture-yank-rectangle-from-register</code>).
 </p></dd>

@@ -159,7 +159,7 @@ important to select a <em>language environment</em> in order to set various
 defaults.  The language environment really represents a choice of
 preferred script (more or less) rather that a choice of language.
 </p><p>  The language environment controls which coding systems to recognize
-when reading text (see section <a href="#NOD175">Recognizing Coding Systems</a>).  This applies to files,
+when reading text (see section <a href="#SEC188">Recognizing Coding Systems</a>).  This applies to files,
 incoming mail, netnews, and any other text you read into XEmacs.  It may
 also specify the default coding system to use when you create a file.
 Each language environment also specifies a default input method.
@@ -254,7 +254,7 @@ immediately delete it.  For example, you could type <kbd>e e <kbd>DEL</kbd>
 </p><p>  Another method, more general but not quite as easy to type, is to use
 <kbd>C-\ C-\</kbd> between two characters to stop them from combining.  This
 is the command <kbd>C-\</kbd> (<code>toggle-input-method</code>) used twice.
-See section <a href="#NOD172">Selecting an Input Method</a>.
+See section <a href="#SEC185">Selecting an Input Method</a>.
 </p><p>  <kbd>C-\ C-\</kbd> is especially useful inside an incremental search,
 because stops waiting for more characters to combine, and starts
 searching for what you have already entered.
@@ -284,26 +284,26 @@ are in the minibuffer).
 <h2> 17.4 Selecting an Input Method </h2>
 
 <dl compact="compact">
- <dt> C-\
-</dt>
+ <dt><kbd> C-\
+</kbd></dt>
 <dd><p>Enable or disable use of the selected input method.
 </p></dd>
-<dt> C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-x <kbd>RET</kbd> C-\ <var>method</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Select a new input method for the current buffer.
 </p></dd>
-<dt> C-h I <var>method</var> <kbd>RET</kbd>
-</dt>
-<dt> C-h C-\ <var>method</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h I <var>method</var> <kbd>RET</kbd>
+</kbd></dt>
+<dt><kbd> C-h C-\ <var>method</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p><a name="IDX706"></a>
 <a name="IDX707"></a>
 <a name="IDX708"></a>
 Describe the input method <var>method</var> (<code>describe-input-method</code>).
 By default, it describes the current input method (if any).
 </p></dd>
-<dt> M-x list-input-methods
-</dt>
+<dt><kbd> M-x list-input-methods
+</kbd></dt>
 <dd><p>Display a list of all the supported input methods.
 </p></dd>
 </dl>
@@ -435,20 +435,20 @@ characters, a coding system can perform end-of-line conversion.  XEmacs
 handles three different conventions for how to separate lines in a file:
 newline, carriage-return linefeed, and just carriage-return.
 </p><dl compact="compact">
- <dt> C-h C <var>coding</var> <kbd>RET</kbd>
-</dt>
+ <dt><kbd> C-h C <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Describe coding system <var>coding</var>.
 </p></dd>
-<dt> C-h C <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-h C <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Describe the coding systems currently in use.
 </p></dd>
-<dt> M-x list-coding-systems
-</dt>
+<dt><kbd> M-x list-coding-systems
+</kbd></dt>
 <dd><p>Display a list of all the supported coding systems.
 </p></dd>
-<dt> C-u M-x list-coding-systems
-</dt>
+<dt><kbd> C-u M-x list-coding-systems
+</kbd></dt>
 <dd><p>Display comprehensive list of specific details of all supported coding
 systems.
 </p></dd>
@@ -461,12 +461,12 @@ information about particular coding systems.  You can specify a coding
 system name as argument; alternatively, with an empty argument, it
 describes the coding systems currently selected for various purposes,
 both in the current buffer and as the defaults, and the priority list
-for recognizing coding systems (see section <a href="#NOD175">Recognizing Coding Systems</a>).
+for recognizing coding systems (see section <a href="#SEC188">Recognizing Coding Systems</a>).
 </p><a name="IDX719"></a>
 <p>  To display a list of all the supported coding systems, type <kbd>M-x
 list-coding-systems</kbd>.  The list gives information about each coding
 system, including the letter that stands for it in the mode line
-(see section <a href="xemacs_4.html#NOD8">The Mode Line</a>).
+(see section <a href="xemacs_4.html#SEC10">The Mode Line</a>).
 </p><p>  Each of the coding systems that appear in this list--except for
 <code>binary</code>, which means no conversion of any kind--specifies how and
 whether to convert printing characters, but leaves the choice of
@@ -476,20 +476,20 @@ lines, that end-of-line conversion will be used.
 </p><p>  Each of the listed coding systems has three variants which specify
 exactly what to do for end-of-line conversion:
 </p><dl compact="compact">
- <dt> <small>...</small>-unix
-</dt>
+ <dt><code> <small>...</small>-unix
+</code></dt>
 <dd><p>Don't do any end-of-line conversion; assume the file uses
 newline to separate lines.  (This is the convention normally used
 on Unix and GNU systems.)
 </p></dd>
-<dt> <small>...</small>-dos
-</dt>
+<dt><code> <small>...</small>-dos
+</code></dt>
 <dd><p>Assume the file uses carriage-return linefeed to separate lines,
 and do the appropriate conversion.  (This is the convention normally used
 on Microsoft systems.)
 </p></dd>
-<dt> <small>...</small>-mac
-</dt>
+<dt><code> <small>...</small>-mac
+</code></dt>
 <dd><p>Assume the file uses carriage-return to separate lines, and do the
 appropriate conversion.  (This is the convention normally used on the
 Macintosh system.)
@@ -508,7 +508,7 @@ files, and other files that must be examined verbatim.
 </p><p>  The easiest way to edit a file with no conversion of any kind is with
 the <kbd>M-x find-file-literally</kbd> command.  This uses <code>binary</code>, and
 also suppresses other XEmacs features that might convert the file
-contents before you see them.  See section <a href="xemacs_17.html#NOD123">Visiting Files</a>.
+contents before you see them.  See section <a href="xemacs_17.html#SEC136">Visiting Files</a>.
 </p><p>  The coding system <code>no-conversion</code> means that the file contains
 non-Latin-1 characters stored with the internal XEmacs encoding.  It
 handles end-of-line conversion based on the data encountered, and has
@@ -543,7 +543,7 @@ starting with the first in priority and working down the list, until it
 finds a coding system that fits the data.  Then it converts the file
 contents assuming that they are represented in this coding system.
 </p><p>  The priority list of coding systems depends on the selected language
-environment (see section <a href="#NOD170">Language Environments</a>).  For example, if you use
+environment (see section <a href="#SEC183">Language Environments</a>).  For example, if you use
 French, you probably want XEmacs to prefer Latin-1 to Latin-2; if you
 use Czech, you probably want Latin-2 to be preferred.  This is one of
 the reasons to specify a language environment.
@@ -561,16 +561,16 @@ correspondence.  There is a special function
 <code>modify-coding-system-alist</code> for adding elements to this list.  For
 example, to read and write all `<samp>.txt</samp>' using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 (modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>The first argument should be <code>file</code>, the second argument should be
 a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.
 </p><a name="IDX722"></a>
 <p>  You can specify the coding system for a particular file using the
 `<samp>-*-<small>...</small>-*-</samp>' construct at the beginning of a file, or a local
-variables list at the end (see section <a href="xemacs_30.html#NOD336">Local Variables in Files</a>).  You do this by
+variables list at the end (see section <a href="xemacs_30.html#SEC362">Local Variables in Files</a>).  You do this by
 defining a value for the &quot;variable&quot; named <code>coding</code>.  XEmacs does
 not really have a variable <code>coding</code>; instead of setting a variable,
 it uses the specified coding system for the file.  For example,
@@ -583,7 +583,7 @@ system, by default, for operations that write from this buffer into a
 file.  This includes the commands <code>save-buffer</code> and
 <code>write-region</code>.  If you want to write files from this buffer using
 a different coding system, you can specify a different coding system for
-the buffer using <code>set-buffer-file-coding-system</code> (see section <a href="#NOD176">Specifying a Coding System</a>).
+the buffer using <code>set-buffer-file-coding-system</code> (see section <a href="#SEC189">Specifying a Coding System</a>).
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC188" title="Previous section in reading order"> &lt; </a>]</td>
@@ -603,27 +603,27 @@ the buffer using <code>set-buffer-file-coding-system</code> (see section <a href
 <p>  In cases where XEmacs does not automatically choose the right coding
 system, you can use these commands to specify one:
 </p><dl compact="compact">
- <dt> C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd>
-</dt>
+ <dt><kbd> C-x <kbd>RET</kbd> f <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for the visited file
 in the current buffer.
 </p></dd>
-<dt> C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-x <kbd>RET</kbd> c <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Specify coding system <var>coding</var> for the immediately following
 command.
 </p></dd>
-<dt> C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-x <kbd>RET</kbd> k <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for keyboard input.  (This feature is
 non-functional and is temporarily disabled.)
 </p></dd>
-<dt> C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-x <kbd>RET</kbd> t <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for terminal output.
 </p></dd>
-<dt> C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> C-x <kbd>RET</kbd> p <var>coding</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Use coding system <var>coding</var> for subprocess input and output
 in the current buffer.
 </p></dd>

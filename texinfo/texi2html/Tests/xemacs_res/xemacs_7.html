@@ -47,7 +47,7 @@ use the tutorial, run Emacs and type <kbd>Control-h t</kbd>
 the <b>Help</b> menu.
 </p><p>XEmacs comes with many translations of tutorial.  If your XEmacs is with
 MULE and you set up language environment correctly, XEmacs chooses right
-tutorial when available (see section <a href="xemacs_20.html#NOD170">Language Environments</a>).  If you want
+tutorial when available (see section <a href="xemacs_20.html#SEC183">Language Environments</a>).  If you want
 specific translation, give <kbd>C-h t</kbd> a prefix argument, like <kbd>C-u
 C-h t</kbd>.
 </p><p>  To clear the screen and redisplay, type <kbd>C-l</kbd> (<code>recenter</code>).
@@ -84,7 +84,7 @@ C-h t</kbd>.
 
 <p>  To insert printing characters into the text you are editing, just type
 them.  This inserts the characters you type into the buffer at the
-cursor (that is, at <em>point</em>; see section <a href="xemacs_4.html#NOD6">Point</a>).  The cursor moves
+cursor (that is, at <em>point</em>; see section <a href="xemacs_4.html#SEC8">Point</a>).  The cursor moves
 forward, and any text after the cursor moves forward too.  If the text
 in the buffer is `<samp>FOOBAR</samp>', with the cursor before the `<samp>B</samp>',
 then if you type <kbd>XX</kbd>, you get `<samp>FOOXXBAR</samp>', with the cursor
@@ -106,10 +106,10 @@ at the beginning of a line deletes the preceding newline, thus joining
 the line with the preceding line.
 </p><p>  Emacs can split lines automatically when they become too long, if you
 turn on a special minor mode called <em>Auto Fill</em> mode.
-See section <a href="xemacs_23.html#NOD197">Filling Text</a>, for how to use Auto Fill mode.
+See section <a href="xemacs_23.html#SEC210">Filling Text</a>, for how to use Auto Fill mode.
 </p><p>  If you prefer to have text characters replace (overwrite) existing
 text rather than shove it to the right, you can enable Overwrite mode,
-a minor mode.  See section <a href="xemacs_30.html#NOD326">Minor Modes</a>.
+a minor mode.  See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.
 </p><a name="IDX136"></a>
 <a name="IDX137"></a>
 <a name="IDX138"></a>
@@ -120,7 +120,7 @@ octal, you must <em>quote</em> it by typing the character <kbd>Control-q</kbd>
 (<code>quoted-insert</code>) first.  (This character's name is normally written
 <kbd>C-q</kbd> for short.)  There are two ways to use <kbd>C-q</kbd>:
 </p><ul>
- <li><p>
+<li><p>
 <kbd>C-q</kbd> followed by any non-graphic character (even <kbd>C-g</kbd>)
 inserts that character.
 </p></li><li><p>
@@ -135,7 +135,7 @@ overwriting with it.)
 </p></li></ul>
 
 <p>A numeric argument to <kbd>C-q</kbd> specifies how many copies of the quoted
-character should be inserted (see section <a href="#NOD50">Numeric Arguments</a>).
+character should be inserted (see section <a href="#SEC58">Numeric Arguments</a>).
 </p><a name="IDX139"></a>
 <a name="IDX140"></a>
 <a name="IDX141"></a>
@@ -161,7 +161,7 @@ it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
 <h2> 4.2 Changing the Location of Point </h2>
 
 <p>  To do more than insert characters, you have to know how to move point
-(see section <a href="xemacs_4.html#NOD6">Point</a>).  The simplest way to do this is with arrow keys, or by
+(see section <a href="xemacs_4.html#SEC8">Point</a>).  The simplest way to do this is with arrow keys, or by
 clicking the left mouse button where you want to move to.
 </p><p>  NOTE: Many of the following commands have two versions, one that uses
 the function keys (e.g. <kbd>LEFT</kbd> or <kbd>END</kbd>) and one that doesn't.
@@ -206,76 +206,76 @@ TTY's), but the latter are available on all terminals.
 <a name="IDX178"></a>
 <a name="IDX179"></a>
 <dl compact="compact">
- <dt> C-a
-</dt>
-<dt> HOME
-</dt>
+ <dt><kbd> C-a
+</kbd></dt>
+<dt><kbd> HOME
+</kbd></dt>
 <dd><p>Move to the beginning of the line (<code>beginning-of-line</code>).
  </p> </dd>
-<dt> C-e
-</dt>
-<dt> END
-</dt>
+<dt><kbd> C-e
+</kbd></dt>
+<dt><kbd> END
+</kbd></dt>
 <dd><p>Move to the end of the line (<code>end-of-line</code>).
  </p> </dd>
-<dt> C-f
-</dt>
-<dt> RIGHT
-</dt>
+<dt><kbd> C-f
+</kbd></dt>
+<dt><kbd> RIGHT
+</kbd></dt>
 <dd><p>Move forward one character (<code>forward-char</code>).
  </p> </dd>
-<dt> C-b
-</dt>
-<dt> LEFT
-</dt>
+<dt><kbd> C-b
+</kbd></dt>
+<dt><kbd> LEFT
+</kbd></dt>
 <dd><p>Move backward one character (<code>backward-char</code>).
  </p> </dd>
-<dt> M-f
-</dt>
-<dt> C-RIGHT
-</dt>
+<dt><kbd> M-f
+</kbd></dt>
+<dt><kbd> C-RIGHT
+</kbd></dt>
 <dd><p>Move forward one word (<code>forward-word</code>).
  </p> </dd>
-<dt> M-b
-</dt>
-<dt> C-LEFT
-</dt>
+<dt><kbd> M-b
+</kbd></dt>
+<dt><kbd> C-LEFT
+</kbd></dt>
 <dd><p>Move backward one word (<code>backward-word</code>).
  </p> </dd>
-<dt> C-n
-</dt>
-<dt> DOWN
-</dt>
+<dt><kbd> C-n
+</kbd></dt>
+<dt><kbd> DOWN
+</kbd></dt>
 <dd><p>Move down one line, vertically (<code>next-line</code>).  This command
 attempts to keep the horizontal position unchanged, so if you start in
 the middle of one line, you end in the middle of the next.  When on the
 last line of text, <kbd>C-n</kbd> creates a new line and moves onto it.
  </p> </dd>
-<dt> C-p
-</dt>
-<dt> UP
-</dt>
+<dt><kbd> C-p
+</kbd></dt>
+<dt><kbd> UP
+</kbd></dt>
 <dd><p>Move up one line, vertically (<code>previous-line</code>).
  </p> </dd>
-<dt> C-v
-</dt>
-<dt> PGDN
-</dt>
+<dt><kbd> C-v
+</kbd></dt>
+<dt><kbd> PGDN
+</kbd></dt>
 <dd><p>Move down one page, vertically (<code>scroll-up</code>).
  </p> </dd>
-<dt> M-v
-</dt>
-<dt> PGUP
-</dt>
+<dt><kbd> M-v
+</kbd></dt>
+<dt><kbd> PGUP
+</kbd></dt>
 <dd><p>Move up one page, vertically (<code>scroll-down</code>).
  </p> </dd>
-<dt> C-l
-</dt>
+<dt><kbd> C-l
+</kbd></dt>
 <dd><p>Clear the frame and reprint everything (<code>recenter</code>).  Text moves
 on the frame to bring point to the center of the window.
  </p> </dd>
-<dt> M-r
-</dt>
+<dt><kbd> M-r
+</kbd></dt>
 <dd><p>Move point to left margin, vertically centered in the window
 (<code>move-to-window-line</code>).  Text does not move on the screen.
 </p><p>A numeric argument says which screen line to place point on.  It counts
@@ -283,36 +283,36 @@ screen lines down from the top of the window (zero for the top line).  A
 negative argument counts lines from the bottom (-1 for the bottom
 line).
  </p> </dd>
-<dt> C-t
-</dt>
+<dt><kbd> C-t
+</kbd></dt>
 <dd><p>Transpose two characters, the ones before and after the cursor
 (<code>transpose-chars</code>).
  </p> </dd>
-<dt> M-&lt;
-</dt>
-<dt> C-HOME
-</dt>
+<dt><kbd> M-&lt;
+</kbd></dt>
+<dt><kbd> C-HOME
+</kbd></dt>
 <dd><p>Move to the top of the buffer (<code>beginning-of-buffer</code>).  With
 numeric argument <var>n</var>, move to <var>n</var>/10 of the way from the top.
-See section <a href="#NOD50">Numeric Arguments</a>, for more information on numeric arguments. </p> </dd>
-<dt> M-&gt;
-</dt>
-<dt> C-END
-</dt>
+See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments. </p> </dd>
+<dt><kbd> M-&gt;
+</kbd></dt>
+<dt><kbd> C-END
+</kbd></dt>
 <dd><p>Move to the end of the buffer (<code>end-of-buffer</code>).
  </p> </dd>
-<dt> M-x goto-char
-</dt>
+<dt><kbd> M-x goto-char
+</kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to buffer position <var>n</var>.
 Position 1 is the beginning of the buffer.
  </p> </dd>
-<dt> M-g
-</dt>
+<dt><kbd> M-g
+</kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to line number <var>n</var>
 (<code>goto-line</code>).  Line 1 is the beginning of the buffer.
  </p> </dd>
-<dt> M-x set-goal-column
-</dt>
+<dt><kbd> M-x set-goal-column
+</kbd></dt>
 <dd><p><a name="IDX180"></a>
 Use the current column of point as the <em>semi-permanent goal column</em> for
 <kbd>C-n</kbd> and <kbd>C-p</kbd> (<code>set-goal-column</code>).  Henceforth, those
@@ -320,8 +320,8 @@ commands always move to this column in each line moved into, or as
 close as possible given the contents of the line.  This goal column remains
 in effect until canceled.
  </p> </dd>
-<dt> C-u M-x set-goal-column
-</dt>
+<dt><kbd> C-u M-x set-goal-column
+</kbd></dt>
 <dd><p>Cancel the goal column.  Henceforth, <kbd>C-n</kbd> and <kbd>C-p</kbd> once
 again try to avoid changing the horizontal position, as usual.
 </p></dd>
@@ -331,7 +331,7 @@ again try to avoid changing the horizontal position, as usual.
 <p>  If you set the variable <code>track-eol</code> to a non-<code>nil</code> value,
 then <kbd>C-n</kbd> and <kbd>C-p</kbd> when at the end of the starting line move
 to the end of another line.  Normally, <code>track-eol</code> is <code>nil</code>.
-See section <a href="xemacs_30.html#NOD327">Variables</a>, for how to set variables such as <code>track-eol</code>.
+See section <a href="xemacs_30.html#SEC353">Variables</a>, for how to set variables such as <code>track-eol</code>.
 </p><a name="IDX182"></a>
 <p>  Normally, <kbd>C-n</kbd> on the last line of a buffer appends a newline to
 it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, then
@@ -353,26 +353,26 @@ it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, th
 <h2> 4.3 Erasing Text </h2>
 
 <dl compact="compact">
- <dt> <kbd>DEL</kbd>
-</dt>
+ <dt><kbd> <kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Delete the character before or after point
 (<code>backward-or-forward-delete-char</code>).  You can customize
 this behavior by setting the variable <code>delete-key-deletes-forward</code>.
  </p> </dd>
-<dt> C-d
-</dt>
+<dt><kbd> C-d
+</kbd></dt>
 <dd><p>Delete the character after point (<code>delete-char</code>).
  </p> </dd>
-<dt> C-k
-</dt>
+<dt><kbd> C-k
+</kbd></dt>
 <dd><p>Kill to the end of the line (<code>kill-line</code>).
  </p> </dd>
-<dt> M-d
-</dt>
+<dt><kbd> M-d
+</kbd></dt>
 <dd><p>Kill forward to the end of the next word (<code>kill-word</code>).
  </p> </dd>
-<dt> M-<kbd>DEL</kbd>
-</dt>
+<dt><kbd> M-<kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Kill back to the beginning of the previous word
 (<code>backward-kill-word</code>).
 </p></dd>
@@ -391,7 +391,7 @@ joins together that line and the next line.
 line at a time.  If you type <kbd>C-k</kbd> at the beginning or middle of a
 line, it kills all the text up to the end of the line.  If you type
 <kbd>C-k</kbd> at the end of a line, it joins that line and the next line.
-</p><p>  See section <a href="xemacs_12.html#NOD78">Deletion and Killing</a>, for more flexible ways of killing text.
+</p><p>  See section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, for more flexible ways of killing text.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC52" title="Previous section in reading order"> &lt; </a>]</td>
@@ -423,7 +423,7 @@ C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
 <p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
 C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
 read the argument, and you type <kbd>RET</kbd> to terminate the argument
-(see section <a href="xemacs_9.html#NOD52">The Minibuffer</a>).
+(see section <a href="xemacs_9.html#SEC60">The Minibuffer</a>).
 </p><p>  You can also use the <b>Open...</b> menu item from the <b>File</b> menu, then
 type the name of the file to the prompt.
 </p><p>  Emacs obeys the command by <em>visiting</em> the file: creating a buffer,
@@ -440,7 +440,7 @@ name for the new file.  Emacs will create an empty buffer in which you
 can insert the text you want to put in the file.  When you save the
 buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 <b>File</b> menu, the file is created.
-</p><p>  To learn more about using files, See section <a href="xemacs_17.html#NOD121">File Handling</a>.
+</p><p>  To learn more about using files, See section <a href="xemacs_17.html#SEC134">File Handling</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC53" title="Previous section in reading order"> &lt; </a>]</td>
@@ -464,7 +464,7 @@ about; for example, <kbd>C-h k C-n</kbd> tells you all about what <kbd>C-n</kbd>
 does.  <kbd>C-h</kbd> is a prefix key; <kbd>C-h k</kbd> is just one of its
 subcommands (the command <code>describe-key</code>).  The other subcommands of
 <kbd>C-h</kbd> provide different kinds of help.  Type <kbd>C-h</kbd> twice to get
-a description of all the help facilities.  See section <a href="xemacs_11.html#NOD63">Help</a>.
+a description of all the help facilities.  See section <a href="xemacs_11.html#SEC71">Help</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC54" title="Previous section in reading order"> &lt; </a>]</td>
@@ -484,12 +484,12 @@ a description of all the help facilities.  See section <a href="xemacs_11.html#N
 <p>  Here are special commands and techniques for putting in and taking out
 blank lines.
 </p><dl compact="compact">
- <dt> C-o
-</dt>
+ <dt><kbd> C-o
+</kbd></dt>
 <dd><p>Insert one or more blank lines after the cursor (<code>open-line</code>).
  </p> </dd>
-<dt> C-x C-o
-</dt>
+<dt><kbd> C-x C-o
+</kbd></dt>
 <dd><p>Delete all but one of many consecutive blank lines
 (<code>delete-blank-lines</code>).
 </p></dd>
@@ -510,9 +510,9 @@ type the text for the new line.  <kbd>C-o F O O</kbd> has the same effect as
 <kbd>F O O <kbd>RET</kbd></kbd>, except for the final location of point.
 </p><p>  You can make several blank lines by typing <kbd>C-o</kbd> several times, or
 by giving it a numeric argument to tell it how many blank lines to make.
-See section <a href="#NOD50">Numeric Arguments</a>, for how.  If you have a fill prefix, then <kbd>C-o</kbd>
+See section <a href="#SEC58">Numeric Arguments</a>, for how.  If you have a fill prefix, then <kbd>C-o</kbd>
 command inserts the fill prefix on the new line, when you use it at the
-beginning of a line.  See section <a href="xemacs_23.html#NOD200">The Fill Prefix</a>.
+beginning of a line.  See section <a href="xemacs_23.html#SEC213">The Fill Prefix</a>.
 </p><p>  The easy way to get rid of extra blank lines is with the command
 <kbd>C-x C-o</kbd> (<code>delete-blank-lines</code>).  <kbd>C-x C-o</kbd> in a run of
 several blank lines deletes all but one of them.  <kbd>C-x C-o</kbd> on a
@@ -544,7 +544,7 @@ of a line too long to fit the screen.  Continuation is also called
 <em>line wrapping</em>.
 </p><p>  Sometimes it is nice to have Emacs insert newlines automatically when
 a line gets too long.  Continuation on the screen does not do that.  Use
-Auto Fill mode (see section <a href="xemacs_23.html#NOD197">Filling Text</a>) if that's what you want.
+Auto Fill mode (see section <a href="xemacs_23.html#SEC210">Filling Text</a>) if that's what you want.
 </p><a name="IDX191"></a>
 <a name="IDX192"></a>
 <p>  Instead of continuation, long lines can be displayed by <em>truncation</em>.
@@ -554,13 +554,13 @@ temporarily invisible.  Right arrow in the last column (instead of the
 curved arrow) inform you that truncation is in effect.
 </p><p>  Truncation instead of continuation happens whenever horizontal
 scrolling is in use, and optionally in all side-by-side windows
-(see section <a href="xemacs_19.html#NOD162">Multiple Windows</a>).  You can enable truncation for a particular buffer by
+(see section <a href="xemacs_19.html#SEC175">Multiple Windows</a>).  You can enable truncation for a particular buffer by
 setting the variable <code>truncate-lines</code> to non-<code>nil</code> in that
-buffer.  (See section <a href="xemacs_30.html#NOD327">Variables</a>.)  Altering the value of
+buffer.  (See section <a href="xemacs_30.html#SEC353">Variables</a>.)  Altering the value of
 <code>truncate-lines</code> makes it local to the current buffer; until that
 time, the default value is in effect.  The default is initially
-<code>nil</code>.  See section <a href="xemacs_30.html#NOD335">Local Variables</a>.
-</p><p>  See section <a href="xemacs_14.html#NOD102">Variables Controlling Display</a>, for additional variables that affect how text is
+<code>nil</code>.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
+</p><p>  See section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>, for additional variables that affect how text is
 displayed.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
@@ -585,26 +585,26 @@ needed, and a number of commands are available to compute and print it.
 Since text is stored in a way that makes it difficult to compute the
 information, it is not displayed all the time.
 </p><dl compact="compact">
- <dt> M-x what-page
-</dt>
+ <dt><kbd> M-x what-page
+</kbd></dt>
 <dd><p>Print page number of point, and line number within page.
  </p> </dd>
-<dt> M-x what-line
-</dt>
+<dt><kbd> M-x what-line
+</kbd></dt>
 <dd><p>Print line number of point in the buffer.
  </p> </dd>
-<dt> M-x line-number-mode
-</dt>
+<dt><kbd> M-x line-number-mode
+</kbd></dt>
 <dd><p>Toggle automatic display of current line number.
  </p> </dd>
-<dt> M-=
-</dt>
+<dt><kbd> M-=
+</kbd></dt>
 <dd><p>Print number of lines and characters in the current region
-(<code>count-lines-region</code>).  See section <a href="xemacs_12.html#NOD71">Selecting Text</a>, for information about the
+(<code>count-lines-region</code>).  See section <a href="xemacs_12.html#SEC79">Selecting Text</a>, for information about the
 region.
  </p> </dd>
-<dt> C-x =
-</dt>
+<dt><kbd> C-x =
+</kbd></dt>
 <dd><p>Print character code of character after point, character position of
 point, and column of point (<code>what-cursor-position</code>).
 </p></dd>
@@ -619,18 +619,18 @@ point, and column of point (<code>what-cursor-position</code>).
 
 <p>  There are several commands for printing line numbers:
 </p><ul>
- <li><p>
+<li><p>
 <kbd>M-x what-line</kbd> counts lines from the beginning of the file and
 prints the line number point is on.  The first line of the file is line
 number 1.  You can use these numbers as arguments to <kbd>M-x
 goto-line</kbd>.
  </p> </li><li><p>
 <kbd>M-x what-page</kbd> counts pages from the beginning of the file, and
-counts lines within the page, printing both of them.  See section <a href="xemacs_23.html#NOD196">Pages</a>, for
+counts lines within the page, printing both of them.  See section <a href="xemacs_23.html#SEC209">Pages</a>, for
 the command <kbd>C-x l</kbd>, which counts the lines in the current page.
  </p> </li><li><p>
 <kbd>M-=</kbd> (<code>count-lines-region</code>) prints the number of lines in the
-region (see section <a href="xemacs_12.html#NOD71">Selecting Text</a>).  See section <a href="xemacs_23.html#NOD196">Pages</a>, for the command <kbd>C-x l</kbd> which
+region (see section <a href="xemacs_12.html#SEC79">Selecting Text</a>).  See section <a href="xemacs_23.html#SEC209">Pages</a>, for the command <kbd>C-x l</kbd> which
 counts the lines in the
 </p></li></ul>
 
@@ -658,18 +658,18 @@ columns from the left edge of the window.
 beginning and the end temporarily invisible, <kbd>C-x =</kbd> prints
 additional text describing the current visible range.  For example, it
 might say:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>where the two extra numbers give the smallest and largest character position
 that point is allowed to assume.  The characters between those two positions
-are the visible ones.  See section <a href="xemacs_29.html#NOD318">Narrowing</a>.
+are the visible ones.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>.
 </p><p>  If point is at the end of the buffer (or the end of the visible part),
 <kbd>C-x =</kbd> omits any description of the character after point.
 The output looks like
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 point=563026 of 563025(100%)  column 0
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC57" title="Previous section in reading order"> &lt; </a>]</td>
@@ -731,7 +731,7 @@ lines).
 </p><p>  Some commands care only about whether there is an argument and not about
 its value.  For example, the command <kbd>M-q</kbd> (<code>fill-paragraph</code>) with
 no argument fills text; with an argument, it justifies the text as well.
-(See section <a href="xemacs_23.html#NOD197">Filling Text</a>, for more information on <kbd>M-q</kbd>.)  Just <kbd>C-u</kbd> is a
+(See section <a href="xemacs_23.html#SEC210">Filling Text</a>, for more information on <kbd>M-q</kbd>.)  Just <kbd>C-u</kbd> is a
 handy way of providing an argument for such commands.
 </p><p>  Some commands use the value of the argument as a repeat count, but do
 something peculiar when there is no argument.  For example, the command
@@ -740,7 +740,7 @@ including their terminating newlines.  But <kbd>C-k</kbd> with no argument is
 special: it kills the text up to the next newline, or, if point is right at
 the end of the line, it kills the newline itself.  Thus, two <kbd>C-k</kbd>
 commands with no arguments can kill a non-blank line, just like <kbd>C-k</kbd>
-with an argument of one.  (See section <a href="xemacs_12.html#NOD78">Deletion and Killing</a>, for more information on
+with an argument of one.  (See section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, for more information on
 <kbd>C-k</kbd>.)
 </p><p>  A few commands treat a plain <kbd>C-u</kbd> differently from an ordinary
 argument.  A few others may treat an argument of just a minus sign

@@ -42,31 +42,31 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <p>  Emacs has many commands designed to understand the syntax of programming
 languages such as Lisp and C.  These commands can:
 </p><ul>
- <li><p>
-Move over or kill balanced expressions or <em>sexps</em> (see section <a href="#NOD204">Lists and Sexps</a>).
+<li><p>
+Move over or kill balanced expressions or <em>sexps</em> (see section <a href="#SEC217">Lists and Sexps</a>).
  </p> </li><li><p>
 Move over or mark top-level balanced expressions (<em>defuns</em>, in Lisp;
 functions, in C).
  </p> </li><li><p>
-Show how parentheses balance (see section <a href="#NOD211">Automatic Display of Matching Parentheses</a>).
+Show how parentheses balance (see section <a href="#SEC224">Automatic Display of Matching Parentheses</a>).
  </p> </li><li><p>
-Insert, kill, or align comments (see section <a href="#NOD212">Manipulating Comments</a>).
+Insert, kill, or align comments (see section <a href="#SEC225">Manipulating Comments</a>).
  </p> </li><li><p>
 Follow the usual indentation conventions of the language
-(see section <a href="#NOD206">Indentation for Programs</a>).
+(see section <a href="#SEC219">Indentation for Programs</a>).
 </p></li></ul>
 
 <p>  The commands available for words, sentences, and paragraphs are useful in
 editing code even though their canonical application is for editing human
-language text.  Most symbols contain words (see section <a href="xemacs_23.html#NOD193">Words</a>); sentences can
-be found in strings and comments (see section <a href="xemacs_23.html#NOD194">Sentences</a>).  Paragraphs per se
+language text.  Most symbols contain words (see section <a href="xemacs_23.html#SEC206">Words</a>); sentences can
+be found in strings and comments (see section <a href="xemacs_23.html#SEC207">Sentences</a>).  Paragraphs per se
 are not present in code, but the paragraph commands are useful anyway,
 because Lisp mode and C mode define paragraphs to begin and end at blank
-lines (see section <a href="xemacs_23.html#NOD195">Paragraphs</a>).  Judicious use of blank lines to make the
+lines (see section <a href="xemacs_23.html#SEC208">Paragraphs</a>).  Judicious use of blank lines to make the
 program clearer also provides interesting chunks of text for the
 paragraph commands to work on.
 </p><p>  The selective display feature is useful for looking at the overall
-structure of a function (see section <a href="xemacs_14.html#NOD101">Selective Display</a>).  This feature causes
+structure of a function (see section <a href="xemacs_14.html#SEC113">Selective Display</a>).  This feature causes
 only the lines that are indented less than a specified amount to appear
 on the screen.
 </p><table border="0" cellspacing="0">
@@ -112,7 +112,7 @@ Emacs; but often the mode for one language can serve for other
 syntactically similar languages.  The language modes that exist are those
 that someone decided to take the trouble to write.
 </p><p>  There are several variants of Lisp mode, which differ in the way they
-interface to Lisp execution.  See section <a href="xemacs_25.html#NOD238">Major Modes for Lisp</a>.
+interface to Lisp execution.  See section <a href="xemacs_25.html#SEC253">Major Modes for Lisp</a>.
 </p><p>  Each of the programming language modes defines the <kbd>TAB</kbd> key to run
 an indentation function that knows the indentation conventions of that
 language and updates the current line's indentation accordingly.  For
@@ -195,40 +195,40 @@ sexp in C mode.
 </p><p>  Some languages have obscure forms of syntax for expressions that nobody
 has bothered to make Emacs understand properly.
 </p><dl compact="compact">
- <dt> C-M-f
-</dt>
+ <dt><kbd> C-M-f
+</kbd></dt>
 <dd><p>Move forward over an sexp (<code>forward-sexp</code>).
  </p> </dd>
-<dt> C-M-b
-</dt>
+<dt><kbd> C-M-b
+</kbd></dt>
 <dd><p>Move backward over an sexp (<code>backward-sexp</code>).
  </p> </dd>
-<dt> C-M-k
-</dt>
+<dt><kbd> C-M-k
+</kbd></dt>
 <dd><p>Kill sexp forward (<code>kill-sexp</code>).
  </p> </dd>
-<dt> C-M-u
-</dt>
+<dt><kbd> C-M-u
+</kbd></dt>
 <dd><p>Move up and backward in list structure (<code>backward-up-list</code>).
  </p> </dd>
-<dt> C-M-d
-</dt>
+<dt><kbd> C-M-d
+</kbd></dt>
 <dd><p>Move down and forward in list structure (<code>down-list</code>).
  </p> </dd>
-<dt> C-M-n
-</dt>
+<dt><kbd> C-M-n
+</kbd></dt>
 <dd><p>Move forward over a list (<code>forward-list</code>).
  </p> </dd>
-<dt> C-M-p
-</dt>
+<dt><kbd> C-M-p
+</kbd></dt>
 <dd><p>Move backward over a list (<code>backward-list</code>).
  </p> </dd>
-<dt> C-M-t
-</dt>
+<dt><kbd> C-M-t
+</kbd></dt>
 <dd><p>Transpose expressions (<code>transpose-sexps</code>).
  </p> </dd>
-<dt> C-M-@
-</dt>
+<dt><kbd> C-M-@
+</kbd></dt>
 <dd><p>Put mark after following expression (<code>mark-sexp</code>).
 </p></dd>
 </dl>
@@ -304,7 +304,7 @@ the mark at the beginning of the previous sexp.
 </p><p>  The list and sexp commands' understanding of syntax is completely
 controlled by the syntax table.  Any character can, for example, be
 declared to be an opening delimiter and act like an open parenthesis.
-See section <a href="xemacs_30.html#NOD348">The Syntax Table</a>.
+See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC217" title="Previous section in reading order"> &lt; </a>]</td>
@@ -329,17 +329,17 @@ grouping counts a defun regardless of its contents or
 the programming language.  For example, in C, the body of a
 function definition is a defun.
 </p><dl compact="compact">
- <dt> C-M-a
-</dt>
+ <dt><kbd> C-M-a
+</kbd></dt>
 <dd><p>Move to beginning of current or preceding defun
 (<code>beginning-of-defun</code>).
  </p> </dd>
-<dt> C-M-e
-</dt>
+<dt><kbd> C-M-e
+</kbd></dt>
 <dd><p>Move to end of current or following defun (<code>end-of-defun</code>).
  </p> </dd>
-<dt> C-M-h
-</dt>
+<dt><kbd> C-M-h
+</kbd></dt>
 <dd><p>Put region around whole current or following defun (<code>mark-defun</code>).
 </p></dd>
 </dl>
@@ -425,12 +425,12 @@ all of the lines inside a single parenthetical grouping.
 <h3> 21.4.1 Basic Program Indentation Commands </h3>
 
 <dl compact="compact">
- <dt> <kbd>TAB</kbd>
-</dt>
+ <dt><kbd> <kbd>TAB</kbd>
+</kbd></dt>
 <dd><p>Adjust indentation of current line.
  </p> </dd>
-<dt> <kbd>LFD</kbd>
-</dt>
+<dt><kbd> <kbd>LFD</kbd>
+</kbd></dt>
 <dd><p>Equivalent to <kbd>RET</kbd> followed by <kbd>TAB</kbd> (<code>newline-and-indent</code>).
 </p></dd>
 </dl>
@@ -466,7 +466,7 @@ other opening delimiter at the left margin (including the indentation
 routines) is the start of a function.  You should therefore never have
 an opening delimiter in column zero that is not the beginning of a
 function, not even inside a string.  This restriction is vital for
-making the indentation commands fast. See section <a href="#NOD205">Defuns</a>, for more
+making the indentation commands fast. See section <a href="#SEC218">Defuns</a>, for more
 information on this behavior.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
@@ -488,17 +488,17 @@ information on this behavior.
 which have been altered or moved to a different level in a list
 structure.
 </p><dl compact="compact">
- <dt> C-M-q
-</dt>
+ <dt><kbd> C-M-q
+</kbd></dt>
 <dd><p>Re-indent all the lines within one list (<code>indent-sexp</code>).
  </p> </dd>
-<dt> C-u <kbd>TAB</kbd>
-</dt>
+<dt><kbd> C-u <kbd>TAB</kbd>
+</kbd></dt>
 <dd><p>Shift an entire list rigidly sideways so that its first line
 is properly indented.
  </p> </dd>
-<dt> C-M-\
-</dt>
+<dt><kbd> C-M-\
+</kbd></dt>
 <dd><p>Re-indent all lines in the region (<code>indent-region</code>).
 </p></dd>
 </dl>
@@ -652,32 +652,32 @@ are in common use.
 </p><p>  There are six variables you can set to control the style that Emacs C
 mode will use.
 </p><dl compact="compact">
- <dt> c-indent-level
-</dt>
+ <dt><code> c-indent-level
+</code></dt>
 <dd><p>Indentation of C statements within surrounding block.  The surrounding
 block's indentation is the indentation of the line on which the
 open-brace appears.
  </p> </dd>
-<dt> c-continued-statement-offset
-</dt>
+<dt><code> c-continued-statement-offset
+</code></dt>
 <dd><p>Extra indentation given to a substatement, such as the then-clause of
 an <code>if</code> or body of a <code>while</code>.
  </p> </dd>
-<dt> c-brace-offset
-</dt>
+<dt><code> c-brace-offset
+</code></dt>
 <dd><p>Extra indentation for lines that start with an open brace.
  </p> </dd>
-<dt> c-brace-imaginary-offset
-</dt>
+<dt><code> c-brace-imaginary-offset
+</code></dt>
 <dd><p>An open brace following other text is treated as if it were this far
 to the right of the start of its line.
  </p> </dd>
-<dt> c-argdecl-indent
-</dt>
+<dt><code> c-argdecl-indent
+</code></dt>
 <dd><p>Indentation level of declarations of C function arguments.
  </p> </dd>
-<dt> c-label-offset
-</dt>
+<dt><code> c-label-offset
+</code></dt>
 <dd><p>Extra indentation for a line that is a label, case, or default.
 </p></dd>
 </dl>
@@ -810,7 +810,7 @@ the grouping you are closing off.
 </p><p>  In Lisp, automatic matching applies only to parentheses.  In C, it
 also applies to braces and brackets.  Emacs knows which characters to regard
 as matching delimiters based on the syntax table set by the major
-mode.  See section <a href="xemacs_30.html#NOD348">The Syntax Table</a>.
+mode.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p><p>  If the opening delimiter and closing delimiter are mismatched--as
 in `<samp>[x)</samp>'--the echo area displays a warning message.  The
 correct matches are specified in the syntax table.
@@ -842,20 +842,20 @@ match.  The default is 4000.
 
 <p>  The comment commands insert, kill and align comments.
 </p><dl compact="compact">
- <dt> M-;
-</dt>
+ <dt><kbd> M-;
+</kbd></dt>
 <dd><p>Insert or align comment (<code>indent-for-comment</code>).
  </p> </dd>
-<dt> C-x ;
-</dt>
+<dt><kbd> C-x ;
+</kbd></dt>
 <dd><p>Set comment column (<code>set-comment-column</code>).
  </p> </dd>
-<dt> C-u - C-x ;
-</dt>
+<dt><kbd> C-u - C-x ;
+</kbd></dt>
 <dd><p>Kill comment on current line (<code>kill-comment</code>).
  </p> </dd>
-<dt> M-<kbd>LFD</kbd>
-</dt>
+<dt><kbd> M-<kbd>LFD</kbd>
+</kbd></dt>
 <dd><p>Like <kbd>RET</kbd> followed by inserting and aligning a comment
 (<code>indent-new-comment-line</code>).
 </p></dd>
@@ -953,7 +953,7 @@ current line's comment under the previous one.  Note that <kbd>C-u - C-x ;</kbd>
 runs the function <code>kill-comment</code> as described above.
 </p><p>  <code>comment-column</code> is a per-buffer variable; altering the variable
 affects only the current buffer.  You can also change the default value.
-See section <a href="xemacs_30.html#NOD335">Local Variables</a>.  Many major modes initialize this variable
+See section <a href="xemacs_30.html#SEC361">Local Variables</a>.  Many major modes initialize this variable
 for the current buffer.
 </p><a name="IDX952"></a>
 <p>  The comment commands recognize comments based on the regular expression
@@ -963,7 +963,7 @@ starting delimiter in the strictest sense of the word; for example, in C
 mode the value of the variable is <code><tt>&quot;/\\*+ *&quot;</tt></code>, which matches extra
 stars and spaces after the `<samp>/*</samp>' itself.  (Note that `<samp>\\</samp>' is
 needed in Lisp syntax to include a `<samp>\</samp>' in the string, which is needed
-to deny the first star its special meaning in regexp syntax.  See section <a href="xemacs_15.html#NOD108">Syntax of Regular Expressions</a>.)
+to deny the first star its special meaning in regexp syntax.  See section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>.)
 </p><a name="IDX953"></a>
 <a name="IDX954"></a>
 <p>  When a comment command makes a new comment, it inserts the value of
@@ -1009,12 +1009,12 @@ comment and on the code in the preceding lines.
 <h2> 21.7 Editing Without Unbalanced Parentheses </h2>
 
 <dl compact="compact">
- <dt> M-(
-</dt>
+ <dt><kbd> M-(
+</kbd></dt>
 <dd><p>Put parentheses around next sexp(s) (<code>insert-parentheses</code>).
  </p> </dd>
-<dt> M-)
-</dt>
+<dt><kbd> M-)
+</kbd></dt>
 <dd><p>Move past next close parenthesis and re-indent
 (<code>move-over-close-and-reindent</code>).
 </p></dd>
@@ -1138,10 +1138,10 @@ change log file yourself.
 </p><p>  The change log file is always visited in Indented Text mode, which means
 that <kbd>LFD</kbd> and auto-filling indent each new line like the previous
 line.  This is convenient for entering the contents of an entry, which must
-be indented.  See section <a href="xemacs_23.html#NOD184">Text Mode</a>.
+be indented.  See section <a href="xemacs_23.html#SEC197">Text Mode</a>.
 </p><p>  Here is an example of the formatting conventions used in the change log
 for Emacs:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
 
         * xdisp.c (try_window_id):
@@ -1162,7 +1162,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
         permanently.  If display_text_line sets point position wrong
         (case where line is killed, point is at eob and that line is
         not displayed), set it again in final compute_motion.
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC231" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1231,7 +1231,7 @@ class browser.  See section `Top' in <cite>Ebrowse User's Manual</cite>.
 
 <p>  Here is how tag syntax is defined for the most popular languages:
 </p><ul>
- <li><p>
+<li><p>
 In C code, any C function or typedef is a tag, and so are definitions of
 <code>struct</code>, <code>union</code> and <code>enum</code>.  You can tag function
 declarations and external variables in addition to function definitions
@@ -1357,7 +1357,7 @@ In Python code, <code>def</code> or <code>class</code> at the beginning of a lin
 generate a tag.
 </p></li></ul>
 
-<p>  You can also generate tags based on regexp matching (see section <a href="#NOD220">Etags Regexps</a>) to handle other formats and languages.
+<p>  You can also generate tags based on regexp matching (see section <a href="#SEC235">Etags Regexps</a>) to handle other formats and languages.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC233" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1376,10 +1376,10 @@ generate a tag.
 
 <p>  The <code>etags</code> program is used to create a tags table file.  It knows
 the syntax of several languages, as described in
-<a href="#NOD218">Source File Tag Syntax</a>.
+<a href="#SEC233">Source File Tag Syntax</a>.
 Here is how to run <code>etags</code>:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
-etags <var>inputfiles</var><small>...</small>
+etags <var>inputfiles</var>...
 </pre></td></tr></table>
 <p>The <code>etags</code> program reads the specified files, and writes a tags
 table named `<tt>TAGS</tt>' in the current working directory.  You can
@@ -1428,9 +1428,9 @@ may have problems listing them on the command line, because some systems
 have a limit on its length.  The simplest way to circumvent this limit
 is to tell <code>etags</code> to read the file names from its standard input,
 by typing a dash in place of the file names, like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 find . -name &quot;*.[chCH]&quot; -print | etags -
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>  Use the option `<samp>--language=<var>name</var></samp>' to specify the language
 explicitly.  You can intermix these options with file names; each one
 applies to the file names that follow it.  Specify
@@ -1438,7 +1438,7 @@ applies to the file names that follow it.  Specify
 language from the file names and file contents.  Specify
 `<samp>--language=none</samp>' to turn off language-specific processing
 entirely; then <code>etags</code> recognizes tags by regexp matching alone
-(see section <a href="#NOD220">Etags Regexps</a>).
+(see section <a href="#SEC235">Etags Regexps</a>).
 </p><p>  `<samp>etags --help</samp>' prints the list of the languages <code>etags</code>
 knows, and the file name rules for guessing the language. It also prints
 a list of all the available <code>etags</code> options, together with a short
@@ -1463,9 +1463,9 @@ explanation.
 based on regexp matching.  You can freely intermix it with file names.
 Each `<samp>--regex</samp>' option adds to the preceding ones, and applies only
 to the following files.  The syntax is:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 --regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>where <var>tagregexp</var> is used to match the lines to tag.  It is always
 anchored, that is, it behaves as if preceded by `<samp>^</samp>'.  If you want
 to account for indentation, just match any initial number of blanks by
@@ -1493,10 +1493,10 @@ programming languages.
 </p><p>  The `<samp>-R</samp>' option deletes all the regexps defined with
 `<samp>--regex</samp>' options.  It applies to the file names following it, as
 you can see from the following example:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>Here <code>etags</code> chooses the parsing language for `<tt>voo.doo</tt>' and
 `<tt>bar.ber</tt>' according to their contents.  <code>etags</code> also uses
 <var>reg1</var> to recognize additional tags in `<tt>voo.doo</tt>', and both
@@ -1509,17 +1509,17 @@ regular expression only for files of that language.  `<samp>etags --help</samp>'
 prints the list of languages recognised by <code>etags</code>.  The following
 example tags the <code>DEFVAR</code> macros in the Emacs source files.
 <code>etags</code> applies this regular expression to C files only:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 --regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>This feature is particularly useful when storing a list of regular
 expressions in a file.  The following option syntax instructs
 <code>etags</code> to read two files of regular expressions.  The regular
 expressions contained in the second file are matched without regard to
 case.
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 --regex=@first-file --ignore-case-regex=@second-file
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>A regex file contains one regular expressions per line.  Empty lines,
 and lines beginning with space or tab are ignored.  When the first
 character in a line is `<samp>@</samp>', <code>etags</code> assumes that the rest of
@@ -1528,42 +1528,42 @@ such files can be nested.  All the other lines are taken to be regular
 expressions.  For example, one can create a file called
 `<samp>emacs.tags</samp>' with the following contents (the first line in the
 file is a comment):
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
         -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>and then use it like this:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 etags --regex=@emacs.tags *.[ch] */*.[ch]
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>  Here are some more examples.  The regexps are quoted to protect them
 from shell interpretation.
 </p><ul>
 <li><p>
 Tag Octave files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
       --regex='/###key \(.*\)/\1/' \
       --regex='/[ \t]*global[ \t].*/' \
       *.m
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 <p>Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
 to it.
 </p></li><li><p>
 Tag Tcl files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
-</font></pre></td></tr></table>
+</pre></font></td></tr></table>
 </li><li><p>
 Tag VHDL files:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
 --language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
 \( BODY\)?\|PROCEDURE\|PROCESS\|TYPE\)[ \t]+\([^ \t(]+\)/\3/'
-</font></pre></td></tr></table></li></ul>
+</pre></font></td></tr></table></li></ul>
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1612,7 +1612,7 @@ strings, they are evaluated and must return an appropriate string.
 </pre></td></tr></table>
 <p>The example defines the tags table alist in the following way:
 </p><ul>
- <li><p>
+<li><p>
 Anything in the directory `<tt>/usr/src/public/perl/</tt>' 
 should use the `<tt>TAGS</tt>' file `<tt>/usr/src/public/perl/perl-3.0/TAGS</tt>'. 
  </p> </li><li><p>
@@ -1673,16 +1673,16 @@ variable <code>tag-table-alist</code>.
 <p>  The most important thing that a tags table enables you to do is to find
 the definition of a specific tag.
 </p><dl compact="compact">
- <dt> M-. <var>tag &amp;optional other-window</var>
-</dt>
+ <dt><kbd> M-. <var>tag &amp;optional other-window</var>
+</kbd></dt>
 <dd><p>Find first definition of <var>tag</var> (<code>find-tag</code>).
  </p> </dd>
-<dt> C-u M-.
-</dt>
+<dt><kbd> C-u M-.
+</kbd></dt>
 <dd><p>Find next alternate definition of last tag specified.
  </p> </dd>
-<dt> C-x 4 . <var>tag</var>
-</dt>
+<dt><kbd> C-x 4 . <var>tag</var>
+</kbd></dt>
 <dd><p>Find first definition of <var>tag</var>, but display it in another window
 (<code>find-tag-other-window</code>).
 </p></dd>
@@ -1700,7 +1700,7 @@ ever-increasing distances away for the text that should appear at
 the beginning of the definition.
 </p><p>  If an empty argument is given (by typing <kbd>RET</kbd>), the sexp in the
 buffer before or around point is used as the name of the tag to find.
-See section <a href="#NOD204">Lists and Sexps</a>, for information on sexps.
+See section <a href="#SEC217">Lists and Sexps</a>, for information on sexps.
 </p><p>  The argument to <code>find-tag</code> need not be the whole tag name; it can
 be a substring of a tag name.  However, there can be many tag names
 containing the substring you specify.  Since <code>find-tag</code> works by
@@ -1723,28 +1723,28 @@ Multiple active tags tables and completion are supported.
 <a name="IDX979"></a>
 
 <dl compact="compact">
- <dt> tag-table-alist
-</dt>
+ <dt><kbd> tag-table-alist
+</kbd></dt>
 <dd><p>Controls which tables apply to which buffers.
  </p> </dd>
-<dt> tags-file-name
-</dt>
+<dt><kbd> tags-file-name
+</kbd></dt>
 <dd><p>Stores a default tags table.
  </p> </dd>
-<dt> tags-build-completion-table
-</dt>
+<dt><kbd> tags-build-completion-table
+</kbd></dt>
 <dd><p>Controls completion behavior.
  </p> </dd>
-<dt> buffer-tag-table
-</dt>
+<dt><kbd> buffer-tag-table
+</kbd></dt>
 <dd><p>Specifies a buffer-local table.
  </p> </dd>
-<dt> make-tags-files-invisible
-</dt>
+<dt><kbd> make-tags-files-invisible
+</kbd></dt>
 <dd><p>Sets whether tags tables should be very hidden.
  </p> </dd>
-<dt> tag-mark-stack-max
-</dt>
+<dt><kbd> tag-mark-stack-max
+</kbd></dt>
 <dd><p>Specifies how many tags-based hops to remember.
 </p></dd>
 </dl>
@@ -1779,19 +1779,19 @@ function.
 <p>  The commands in this section visit and search all the files listed in the
 selected tags table, one by one.  For these commands, the tags table serves
 only to specify a sequence of files to search.  A related command is
-<kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#NOD237">Running &quot;make&quot;, or Compilers Generally</a>).
+<kbd>M-x grep</kbd> (see section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>).
 </p><dl compact="compact">
- <dt> M-x tags-search <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd>
-</dt>
+ <dt><kbd> M-x tags-search <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Search for <var>regexp</var> through the files in the selected tags
 table.
  </p> </dd>
-<dt> M-x tags-query-replace <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>replacement</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> M-x tags-query-replace <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>replacement</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Perform a <code>query-replace-regexp</code> on each file in the selected tags table.
  </p> </dd>
-<dt> M-,
-</dt>
+<dt><kbd> M-,
+</kbd></dt>
 <dd><p>Restart one of the commands above, from the current location of point
 (<code>tags-loop-continue</code>).
 </p></dd>
@@ -1814,7 +1814,7 @@ by the remaining files of the tags table.</p><a name="IDX985"></a>
 reads a regexp to search for and a string to replace with, just like
 ordinary <kbd>M-x query-replace-regexp</kbd>.  It searches much like <kbd>M-x
 tags-search</kbd>, but repeatedly, processing matches according to your
-input.  See section <a href="xemacs_15.html#NOD110">Replacement Commands</a>, for more information on query replace.
+input.  See section <a href="xemacs_15.html#SEC123">Replacement Commands</a>, for more information on query replace.
 </p><p>  It is possible to get through all the files in the tags table with a
 single invocation of <kbd>M-x tags-query-replace</kbd>.  But often it is
 useful to exit temporarily, which you can do with any input event that
@@ -1836,18 +1836,18 @@ continue to exist.
 Emacs and have Emacs show you the matching lines one by one.  This works
 much like running a compilation; finding the source locations of the
 <code>grep</code> matches works like finding the compilation errors.
-See section <a href="xemacs_25.html#NOD237">Running &quot;make&quot;, or Compilers Generally</a>.
+See section <a href="xemacs_25.html#SEC252">Running &quot;make&quot;, or Compilers Generally</a>.
 </p><p>  If you wish to process all the files in a selected tags table, but
 <kbd>M-x tags-search</kbd> and <kbd>M-x tags-query-replace</kbd> are not giving
 you the desired result, you can use <kbd>M-x next-file</kbd>.
 </p><dl compact="compact">
- <dt> C-u M-x next-file
-</dt>
+ <dt><kbd> C-u M-x next-file
+</kbd></dt>
 <dd><p>With a numeric argument, regardless of its value, visit the first
 file in the tags table and prepare to advance sequentially by files.
  </p> </dd>
-<dt> M-x next-file
-</dt>
+<dt><kbd> M-x next-file
+</kbd></dt>
 <dd><p>Visit the next file in the selected tags table.
 </p></dd>
 </dl>
@@ -1869,12 +1869,12 @@ file in the tags table and prepare to advance sequentially by files.
 <h3> 21.11.7 Tags Table Inquiries </h3>
 
 <dl compact="compact">
- <dt> M-x list-tags
-</dt>
+ <dt><kbd> M-x list-tags
+</kbd></dt>
 <dd><p>Display a list of the tags defined in a specific program file.
  </p> </dd>
-<dt> M-x tags-apropos
-</dt>
+<dt><kbd> M-x tags-apropos
+</kbd></dt>
 <dd><p>Display a list of all tags matching a specified regexp.
 </p></dd>
 </dl>
@@ -1959,27 +1959,27 @@ region around one subprogram, which is convenient for killing it or moving it.
 <a name="IDX998"></a>
 
 <dl compact="compact">
- <dt> C-M-a
-</dt>
+ <dt><kbd> C-M-a
+</kbd></dt>
 <dd><p>Move to beginning of subprogram<br>
 (<code>beginning-of-fortran-subprogram</code>).
  </p> </dd>
-<dt> C-M-e
-</dt>
+<dt><kbd> C-M-e
+</kbd></dt>
 <dd><p>Move to end of subprogram (<code>end-of-fortran-subprogram</code>).
  </p> </dd>
-<dt> C-M-h
-</dt>
+<dt><kbd> C-M-h
+</kbd></dt>
 <dd><p>Put point at beginning of subprogram and mark at end
 (<code>mark-fortran-subprogram</code>).
  </p> </dd>
-<dt> C-c C-n
-</dt>
+<dt><kbd> C-c C-n
+</kbd></dt>
 <dd><p>Move to beginning of current or next statement
 (<code>fortran-next-<br>statement</code>).
  </p> </dd>
-<dt> C-c C-p
-</dt>
+<dt><kbd> C-c C-p
+</kbd></dt>
 <dd><p>Move to beginning of current or previous statement
 (<code>fortran-<br>previous-statement</code>).
 </p></dd>
@@ -2030,16 +2030,16 @@ required for standard Fortran.
 <h4> 21.12.2.1 Fortran Indentation Commands </h4>
 
 <dl compact="compact">
- <dt> <kbd>TAB</kbd>
-</dt>
+ <dt><kbd> <kbd>TAB</kbd>
+</kbd></dt>
 <dd><p>Indent the current line (<code>fortran-indent-line</code>).
  </p> </dd>
-<dt> M-<kbd>LFD</kbd>
-</dt>
+<dt><kbd> M-<kbd>LFD</kbd>
+</kbd></dt>
 <dd><p>Break the current line and set up a continuation line.
  </p> </dd>
-<dt> C-M-q
-</dt>
+<dt><kbd> C-M-q
+</kbd></dt>
 <dd><p>Indent all the lines of the subprogram point is in
 (<code>fortran-indent-subprogram</code>).
 </p></dd>
@@ -2118,7 +2118,7 @@ the task of understanding a Fortran program well enough to indent it
 properly:
 </p><a name="IDX1006"></a>
 <ul>
- <li><p>
+<li><p>
 Two nested `<samp>do</samp>' loops never share a `<samp>continue</samp>' statement.
 </p></li><li><p>
 The same character appears in column 5 of all continuation lines.  It
@@ -2148,20 +2148,20 @@ followed.
 
 <p>  Several additional variables control how Fortran indentation works.
 </p><dl compact="compact">
- <dt> fortran-do-indent
-</dt>
+ <dt><code> fortran-do-indent
+</code></dt>
 <dd><p>Extra indentation within each level of `<samp>do</samp>' statement (the default is 3).
 </p></dd>
-<dt> fortran-if-indent
-</dt>
+<dt><code> fortran-if-indent
+</code></dt>
 <dd><p>Extra indentation within each level of `<samp>if</samp>' statement (the default is 3).
 </p></dd>
-<dt> fortran-continuation-indent
-</dt>
+<dt><code> fortran-continuation-indent
+</code></dt>
 <dd><p>Extra indentation for bodies of continuation lines (the default is 5).
 </p></dd>
-<dt> fortran-check-all-num-for-matching-do
-</dt>
+<dt><code> fortran-check-all-num-for-matching-do
+</code></dt>
 <dd><p>If this is <code>nil</code>, indentation assumes that each `<samp>do</samp>'
 statement ends on a `<samp>continue</samp>' statement.  Therefore, when
 computing indentation for a statement other than `<samp>continue</samp>', it
@@ -2169,8 +2169,8 @@ can save time by not checking for a `<samp>do</samp>' statement ending there.
 If this is non-<code>nil</code>, indenting any numbered statement must check
 for a `<samp>do</samp>' that ends there.  The default is <code>nil</code>.
 </p></dd>
-<dt> fortran-minimum-statement-indent
-</dt>
+<dt><code> fortran-minimum-statement-indent
+</code></dt>
 <dd><p>Minimum indentation for Fortran statements.  For standard Fortran,
 this is 6.  Statement bodies are always indented at least this much.
 </p></dd>
@@ -2200,18 +2200,18 @@ comment commands and defines some new variables.
 start with `<samp>!</samp>' and can follow other text.  Because only some Fortran
 compilers accept this syntax, Fortran mode will not insert such comments
 unless you have specified to do so in advance by setting the variable
-<code>comment-start</code> to `<samp>&quot;!&quot;</samp>' (see section <a href="xemacs_30.html#NOD327">Variables</a>).
+<code>comment-start</code> to `<samp>&quot;!&quot;</samp>' (see section <a href="xemacs_30.html#SEC353">Variables</a>).
 </p><dl compact="compact">
- <dt> M-;
-</dt>
+ <dt><kbd> M-;
+</kbd></dt>
 <dd><p>Align comment or insert new comment (<code>fortran-comment-indent</code>).
 </p></dd>
-<dt> C-x ;
-</dt>
+<dt><kbd> C-x ;
+</kbd></dt>
 <dd><p>Applies to nonstandard `<samp>!</samp>' comments only.
 </p></dd>
-<dt> C-c ;
-</dt>
+<dt><kbd> C-c ;
+</kbd></dt>
 <dd><p>Turn all lines of the region into comments, or (with arg)
 turn them back into real code (<code>fortran-comment-region</code>).
 </p></dd>
@@ -2236,18 +2236,18 @@ variable <code>fortran-comment-indent-style</code> to one of these values:
 </p><a name="IDX1007"></a>
 <a name="IDX1008"></a>
 <dl compact="compact">
- <dt> fixed
-</dt>
+ <dt><code> fixed
+</code></dt>
 <dd><p>The text is aligned at a fixed column, which is the value of
 <code>fortran-comment-line-column</code>.  This is the default.
  </p> </dd>
-<dt> relative
-</dt>
+<dt><code> relative
+</code></dt>
 <dd><p>The text is aligned as if it were a line of code, but with an
 additional <code>fortran-comment-line-column</code> columns of indentation.
  </p> </dd>
-<dt> nil
-</dt>
+<dt><code> nil
+</code></dt>
 <dd><p>Text in full-line columns is not moved automatically.
 </p></dd>
 </dl>
@@ -2295,13 +2295,13 @@ which one is referred to.
 <h3> 21.12.4 Columns </h3>
 
 <dl compact="compact">
- <dt> C-c C-r
-</dt>
+ <dt><kbd> C-c C-r
+</kbd></dt>
 <dd><p>Displays a &quot;column ruler&quot; momentarily above the current line
 (<code>fortran-column-ruler</code>).
  </p> </dd>
-<dt> C-c C-w
-</dt>
+<dt><kbd> C-c C-w
+</kbd></dt>
 <dd><p>Splits the current window horizontally so that it is 72 columns wide.
 This may help you avoid going over that limit (<code>fortran-window-create</code>).
 </p></dd>
@@ -2345,7 +2345,7 @@ when a line gets too wide to be correct Fortran.
 
 <p>  Fortran mode provides many built-in abbrevs for common keywords and
 declarations.  These are the same sort of abbrevs that you can define
-yourself.  To use them, you must turn on Abbrev mode.  see section <a href="xemacs_26.html#NOD259">Abbrevs</a>.
+yourself.  To use them, you must turn on Abbrev mode.  see section <a href="xemacs_26.html#SEC285">Abbrevs</a>.
 </p><p>  The built-in abbrevs are unusual in one way: they all start with a
 semicolon.  You cannot normally use semicolon in an abbrev, but Fortran
 mode makes this possible by changing the syntax of semicolon to &quot;word
@@ -2374,21 +2374,21 @@ Fortran abbrevs and what they stand for.
 <p>Asm mode is a major mode for editing files of assembler code.  It
 defines these commands:
 </p><dl compact="compact">
- <dt> <kbd>TAB</kbd>
-</dt>
+ <dt><kbd> <kbd>TAB</kbd>
+</kbd></dt>
 <dd><p><code>tab-to-tab-stop</code>.
  </p> </dd>
-<dt> <kbd>LFD</kbd>
-</dt>
+<dt><kbd> <kbd>LFD</kbd>
+</kbd></dt>
 <dd><p>Insert a newline and then indent using <code>tab-to-tab-stop</code>.
  </p> </dd>
-<dt> :
-</dt>
+<dt><kbd> :
+</kbd></dt>
 <dd><p>Insert a colon and then remove the indentation from before the label
 preceding colon.  Then do <code>tab-to-tab-stop</code>.
  </p> </dd>
-<dt> ;
-</dt>
+<dt><kbd> ;
+</kbd></dt>
 <dd><p>Insert or align a comment.
 </p></dd>
 </dl>

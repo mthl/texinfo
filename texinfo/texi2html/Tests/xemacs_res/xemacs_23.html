@@ -93,14 +93,14 @@ use TeX mode; for input to nroff, Nroff mode.
 edit files of text in a human language.  Invoke <kbd>M-x text-mode</kbd> to
 enter Text mode.  In Text mode, <kbd>TAB</kbd> runs the function
 <code>tab-to-tab-stop</code>, which allows you to use arbitrary tab stops set
-with <kbd>M-x edit-tab-stops</kbd> (see section <a href="xemacs_22.html#NOD181">Tab Stops</a>).  Features concerned
+with <kbd>M-x edit-tab-stops</kbd> (see section <a href="xemacs_22.html#SEC194">Tab Stops</a>).  Features concerned
 with comments in programs are turned off unless they are explicitly invoked.
 The syntax table is changed so that periods are not considered part of a
 word, while apostrophes, backspaces and underlines are.
 </p><a name="IDX760"></a>
 <p>  A similar variant mode is Indented Text mode, intended for editing
 text in which most lines are indented.  This mode defines <kbd>TAB</kbd> to
-run <code>indent-relative</code> (see section <a href="xemacs_22.html#NOD179">Indentation</a>), and makes Auto Fill
+run <code>indent-relative</code> (see section <a href="xemacs_22.html#SEC192">Indentation</a>), and makes Auto Fill
 indent the lines it creates.  As a result, a line made by Auto Filling,
 or by <kbd>LFD</kbd>, is normally indented just like the previous line.  Use
 <kbd>M-x indented-text-mode</kbd> to select this mode.
@@ -156,17 +156,17 @@ commands that are not available in Text mode:
 <a name="IDX766"></a>
 <a name="IDX767"></a>
 <dl compact="compact">
- <dt> M-n
-</dt>
+ <dt><kbd> M-n
+</kbd></dt>
 <dd><p>Move to the beginning of the next line that isn't an nroff command
 (<code>forward-text-line</code>).  An argument is a repeat count.
  </p> </dd>
-<dt> M-p
-</dt>
+<dt><kbd> M-p
+</kbd></dt>
 <dd><p>Like <kbd>M-n</kbd> but move up (<code>backward-text-line</code>).
  </p> </dd>
-<dt> M-?
-</dt>
+<dt><kbd> M-?
+</kbd></dt>
 <dd><p>Prints in the echo area the number of text lines (lines that are not
 nroff commands) in the region (<code>count-text-lines</code>).
 </p></dd>
@@ -175,7 +175,7 @@ nroff commands) in the region (<code>count-text-lines</code>).
 <a name="IDX768"></a>
 <p>  The other feature of Nroff mode is Electric Nroff newline mode.  
 This is a minor mode that you can turn on or off with
-<kbd>M-x electric-nroff-mode</kbd> (see section <a href="xemacs_30.html#NOD326">Minor Modes</a>).  When the mode is
+<kbd>M-x electric-nroff-mode</kbd> (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  When the mode is
 on and you use <kbd>RET</kbd> to end a line containing an nroff command
 that opens a kind of grouping, Emacs automatically inserts the matching
 nroff command to close that grouping on the following line.  For
@@ -263,31 +263,31 @@ in cpio format, blocked 5120 bytes, ASCII headers.
 <p>  Here are the special commands provided in TeX mode for editing the
 text of the file.
 </p><dl compact="compact">
- <dt> &quot;
-</dt>
+ <dt><kbd> &quot;
+</kbd></dt>
 <dd><p>Insert, according to context, either `<samp>&quot;</samp>' or `<samp>&quot;</samp>' or
 `<samp>&quot;</samp>' (<code>TeX-insert-quote</code>).
  </p> </dd>
-<dt> <kbd>LFD</kbd>
-</dt>
+<dt><kbd> <kbd>LFD</kbd>
+</kbd></dt>
 <dd><p>Insert a paragraph break (two newlines) and check the previous
 paragraph for unbalanced braces or dollar signs
 (<code>tex-terminate-<br>paragraph</code>).
  </p> </dd>
-<dt> M-x validate-tex-buffer
-</dt>
+<dt><kbd> M-x validate-tex-buffer
+</kbd></dt>
 <dd><p>Check each paragraph in the buffer for unbalanced braces or dollar signs.
  </p> </dd>
-<dt> C-c {
-</dt>
+<dt><kbd> C-c {
+</kbd></dt>
 <dd><p>Insert `<samp>{}</samp>' and position point between them (<code>tex-insert-braces</code>).
  </p> </dd>
-<dt> C-c }
-</dt>
+<dt><kbd> C-c }
+</kbd></dt>
 <dd><p>Move forward past the next unmatched close brace (<code>up-list</code>).
  </p> </dd>
-<dt> C-c C-e
-</dt>
+<dt><kbd> C-c C-e
+</kbd></dt>
 <dd><p>Close a block for LaTeX (<code>tex-close-latex-block</code>).
 </p></dd>
 </dl>
@@ -331,7 +331,7 @@ contains a mismatch, it displays point at the beginning of the paragraph
 for a few seconds and pushes a mark at that spot.  Scanning continues
 until the whole buffer has been checked or until you type another key.
 The positions of the last several paragraphs with mismatches can be
-found in the mark ring (see section <a href="xemacs_12.html#NOD75">The Mark Ring</a>).
+found in the mark ring (see section <a href="xemacs_12.html#SEC84">The Mark Ring</a>).
 </p><p>  Note that square brackets and parentheses, not just braces, are
 matched in TeX mode.  This is wrong if you want to  check TeX syntax.
 However, parentheses and square brackets are likely to be used in text as
@@ -364,31 +364,31 @@ contents of the buffer or just a region at a time.  Running TeX in
 this way on just one chapter is a good way to see what your changes
 look like without taking the time to format the entire file.
 </p><dl compact="compact">
- <dt> C-c C-r
-</dt>
+ <dt><kbd> C-c C-r
+</kbd></dt>
 <dd><p>Invoke TeX on the current region, plus the buffer's header
 (<code>tex-region</code>).
  </p> </dd>
-<dt> C-c C-b
-</dt>
+<dt><kbd> C-c C-b
+</kbd></dt>
 <dd><p>Invoke TeX on the entire current buffer (<code>tex-buffer</code>).
  </p> </dd>
-<dt> C-c C-l
-</dt>
+<dt><kbd> C-c C-l
+</kbd></dt>
 <dd><p>Recenter the window showing output from the inferior TeX so that
 the last line can be seen (<code>tex-recenter-output-buffer</code>).
  </p> </dd>
-<dt> C-c C-k
-</dt>
+<dt><kbd> C-c C-k
+</kbd></dt>
 <dd><p>Kill the inferior TeX (<code>tex-kill-job</code>).
  </p> </dd>
-<dt> C-c C-p
-</dt>
+<dt><kbd> C-c C-p
+</kbd></dt>
 <dd><p>Print the output from the last <kbd>C-c C-r</kbd> or <kbd>C-c C-b</kbd> command
 (<code>tex-print</code>).
  </p> </dd>
-<dt> C-c C-q
-</dt>
+<dt><kbd> C-c C-q
+</kbd></dt>
 <dd><p>Show the printer queue (<code>tex-show-print-queue</code>).
 </p></dd>
 </dl>
@@ -411,7 +411,7 @@ progress of your output towards being printed.
 <p>  The console output from TeX, including any error messages, appears in a
 buffer called `<samp>*TeX-shell*</samp>'.  If TeX gets an error, you can switch
 to this buffer and feed it input (this works as in Shell mode;
-see section <a href="xemacs_29.html#NOD313">Interactive Inferior Shell</a>).  Without switching to this buffer, you can scroll
+see section <a href="xemacs_29.html#SEC339">Interactive Inferior Shell</a>).  Without switching to this buffer, you can scroll
 it so that its last line is visible by typing <kbd>C-c C-l</kbd>.
 </p><p>  Type <kbd>C-c C-k</kbd> (<code>tex-kill-job</code>) to kill the TeX process if
 you see that its output is no longer useful.  Using <kbd>C-c C-b</kbd> or
@@ -580,28 +580,28 @@ line inside Emacs.
 <p>   Some special commands in Outline mode move backward and forward to
 heading lines.
 </p><dl compact="compact">
- <dt> C-c C-n
-</dt>
+ <dt><kbd> C-c C-n
+</kbd></dt>
 <dd><p>Move point to the next visible heading line
 (<code>outline-next-visible-heading</code>).
  </p> </dd>
-<dt> C-c C-p
-</dt>
+<dt><kbd> C-c C-p
+</kbd></dt>
 <dd><p>Move point to the previous visible heading line <br>
 (<code>outline-previous-visible-heading</code>).
  </p> </dd>
-<dt> C-c C-f
-</dt>
+<dt><kbd> C-c C-f
+</kbd></dt>
 <dd><p>Move point to the next visible heading line at the same level
 as the one point is on (<code>outline-forward-same-level</code>).
  </p> </dd>
-<dt> C-c C-b
-</dt>
+<dt><kbd> C-c C-b
+</kbd></dt>
 <dd><p>Move point to the previous visible heading line at the same level
 (<code>outline-backward-same-level</code>).
  </p> </dd>
-<dt> C-c C-u
-</dt>
+<dt><kbd> C-c C-u
+</kbd></dt>
 <dd><p>Move point up to a lower-level (more inclusive) visible heading line
 (<code>outline-up-heading</code>).
 </p></dd>
@@ -650,44 +650,44 @@ Most of them exist as pairs of opposites.  They are not undoable; instead,
 you can undo right past them.  Making lines visible or invisible is simply
 not recorded by the undo mechanism.
 </p><dl compact="compact">
- <dt> M-x hide-body
-</dt>
+ <dt><kbd> M-x hide-body
+</kbd></dt>
 <dd><p>Make all body lines in the buffer invisible.
  </p> </dd>
-<dt> M-x show-all
-</dt>
+<dt><kbd> M-x show-all
+</kbd></dt>
 <dd><p>Make all lines in the buffer visible.
  </p> </dd>
-<dt> C-c C-d
-</dt>
+<dt><kbd> C-c C-d
+</kbd></dt>
 <dd><p>Make everything under this heading invisible, not including this
 heading itself (<code>hide-subtree</code>).
  </p> </dd>
-<dt> C-c C-s
-</dt>
+<dt><kbd> C-c C-s
+</kbd></dt>
 <dd><p>Make everything under this heading visible, including body,
 subheadings, and their bodies (<code>show-subtree</code>).
  </p> </dd>
-<dt> M-x hide-leaves
-</dt>
+<dt><kbd> M-x hide-leaves
+</kbd></dt>
 <dd><p>Make the body of this heading line, and of all its subheadings,
 invisible.
  </p> </dd>
-<dt> M-x show-branches
-</dt>
+<dt><kbd> M-x show-branches
+</kbd></dt>
 <dd><p>Make all subheadings of this heading line, at all levels, visible.
  </p> </dd>
-<dt> C-c C-i
-</dt>
+<dt><kbd> C-c C-i
+</kbd></dt>
 <dd><p>Make immediate subheadings (one level down) of this heading line
 visible (<code>show-children</code>).
  </p> </dd>
-<dt> M-x hide-entry
-</dt>
+<dt><kbd> M-x hide-entry
+</kbd></dt>
 <dd><p>Make this heading line's body invisible.
  </p> </dd>
-<dt> M-x show-entry
-</dt>
+<dt><kbd> M-x show-entry
+</kbd></dt>
 <dd><p>Make this heading line's body visible.
 </p></dd>
 </dl>
@@ -751,28 +751,28 @@ no visible indication of the presence of invisible lines.
 <p>  Emacs has commands for moving over or operating on words.  By convention,
 the keys for them are all <kbd>Meta-</kbd> characters.
 </p><dl compact="compact">
- <dt> M-f
-</dt>
+ <dt><kbd> M-f
+</kbd></dt>
 <dd><p>Move forward over a word (<code>forward-word</code>).
  </p> </dd>
-<dt> M-b
-</dt>
+<dt><kbd> M-b
+</kbd></dt>
 <dd><p>Move backward over a word (<code>backward-word</code>).
  </p> </dd>
-<dt> M-d
-</dt>
+<dt><kbd> M-d
+</kbd></dt>
 <dd><p>Kill up to the end of a word (<code>kill-word</code>).
  </p> </dd>
-<dt> M-<kbd>DEL</kbd>
-</dt>
+<dt><kbd> M-<kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Kill back to the beginning of a word (<code>backward-kill-word</code>).
  </p> </dd>
-<dt> M-@
-</dt>
+<dt><kbd> M-@
+</kbd></dt>
 <dd><p>Mark the end of the next word (<code>mark-word</code>).
  </p> </dd>
-<dt> M-t
-</dt>
+<dt><kbd> M-t
+</kbd></dt>
 <dd><p>Transpose two words;  drag a word forward
 or backward across other words (<code>transpose-words</code>).
 </p></dd>
@@ -816,7 +816,7 @@ move to.  If point is after the space in `<samp>FOO, BAR</samp>', then
 containing point with the following word.  The delimiter characters
 between the words do not move.  For example, transposing `<samp>FOO,
 BAR</samp>' results in `<samp>BAR, FOO</samp>' rather than `<samp>BAR FOO,</samp>'.
-See section <a href="xemacs_16.html#NOD118">Transposing Text</a>, for more on transposition and on arguments to
+See section <a href="xemacs_16.html#SEC131">Transposing Text</a>, for more on transposition and on arguments to
 transposition commands.
 </p><a name="IDX834"></a>
 <a name="IDX835"></a>
@@ -828,7 +828,7 @@ to.  It can be given arguments just like <kbd>Meta-f</kbd>.
 </p><a name="IDX836"></a>
 <p>  The word commands' understanding of syntax is completely controlled by
 the syntax table.  For example, any character can be declared to be a word
-delimiter.  See section <a href="xemacs_30.html#NOD348">The Syntax Table</a>.
+delimiter.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC206" title="Previous section in reading order"> &lt; </a>]</td>
@@ -848,20 +848,20 @@ delimiter.  See section <a href="xemacs_30.html#NOD348">The Syntax Table</a>.
 <p>  The Emacs commands for manipulating sentences and paragraphs are mostly
 on <kbd>Meta-</kbd> keys, and therefore are like the word-handling commands.
 </p><dl compact="compact">
- <dt> M-a
-</dt>
+ <dt><kbd> M-a
+</kbd></dt>
 <dd><p>Move back to the beginning of the sentence (<code>backward-sentence</code>).
  </p> </dd>
-<dt> M-e
-</dt>
+<dt><kbd> M-e
+</kbd></dt>
 <dd><p>Move forward to the end of the sentence (<code>forward-sentence</code>).
  </p> </dd>
-<dt> M-k
-</dt>
+<dt><kbd> M-k
+</kbd></dt>
 <dd><p>Kill forward to the end of the sentence (<code>kill-sentence</code>).
  </p> </dd>
-<dt> C-x <kbd>DEL</kbd>
-</dt>
+<dt><kbd> C-x <kbd>DEL</kbd>
+</kbd></dt>
 <dd><p>Kill back to the beginning of the sentence <br>(<code>backward-kill-sentence</code>).
 </p></dd>
 </dl>
@@ -901,7 +901,7 @@ normal value is:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 &quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
 </pre></td></tr></table>
-<p>This example is explained in the section on regexps.  See section <a href="xemacs_15.html#NOD108">Syntax of Regular Expressions</a>.
+<p>This example is explained in the section on regexps.  See section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC207" title="Previous section in reading order"> &lt; </a>]</td>
@@ -921,16 +921,16 @@ normal value is:
 <p>  The Emacs commands for manipulating paragraphs are also <kbd>Meta-</kbd>
 keys.
 </p><dl compact="compact">
- <dt> M-{
-</dt>
+ <dt><kbd> M-{
+</kbd></dt>
 <dd><p>Move back to previous paragraph beginning <br>(<code>backward-paragraph</code>).
  </p> </dd>
-<dt> M-}
-</dt>
+<dt><kbd> M-}
+</kbd></dt>
 <dd><p>Move forward to next paragraph end (<code>forward-paragraph</code>).
  </p> </dd>
-<dt> M-h
-</dt>
+<dt><kbd> M-h
+</kbd></dt>
 <dd><p>Put point and mark around this or next paragraph (<code>mark-paragraph</code>).
 </p></dd>
 </dl>
@@ -943,7 +943,7 @@ not part of any paragraph.  An indented line starts a new paragraph.
 and end only at blank lines.  As a result, the paragraph commands continue to
 be useful even though there are no paragraphs per se.
 </p><p>  When there is a fill prefix, paragraphs are delimited by all lines
-which don't start with the fill prefix.  See section <a href="#NOD197">Filling Text</a>.
+which don't start with the fill prefix.  See section <a href="#SEC210">Filling Text</a>.
 </p><a name="IDX846"></a>
 <a name="IDX847"></a>
 <p>   To operate on a paragraph, you can use the command
@@ -993,20 +993,20 @@ paginate your file or not.  However, since pages are often meaningful
 divisions of the file, commands are provided to move over them and
 operate on them.
 </p><dl compact="compact">
- <dt> C-x [
-</dt>
+ <dt><kbd> C-x [
+</kbd></dt>
 <dd><p>Move point to previous page boundary (<code>backward-page</code>).
  </p> </dd>
-<dt> C-x ]
-</dt>
+<dt><kbd> C-x ]
+</kbd></dt>
 <dd><p>Move point to next page boundary (<code>forward-page</code>).
  </p> </dd>
-<dt> C-x C-p
-</dt>
+<dt><kbd> C-x C-p
+</kbd></dt>
 <dd><p>Put point and mark around this page (or another page) (<code>mark-page</code>).
  </p> </dd>
-<dt> C-x l
-</dt>
+<dt><kbd> C-x l
+</kbd></dt>
 <dd><p>Count the lines in this page (<code>count-lines-page</code>).
 </p></dd>
 </dl>
@@ -1097,14 +1097,14 @@ you can use explicit commands for filling.
 automatically when they become too wide.  Breaking happens only when
 you type a <kbd>SPC</kbd> or <kbd>RET</kbd>.
 </p><dl compact="compact">
- <dt> M-x auto-fill-mode
-</dt>
+ <dt><kbd> M-x auto-fill-mode
+</kbd></dt>
 <dd><p>Enable or disable Auto Fill mode.
  </p> </dd>
-<dt> <kbd>SPC</kbd>
-</dt>
-<dt> <kbd>RET</kbd>
-</dt>
+<dt><kbd> <kbd>SPC</kbd>
+</kbd></dt>
+<dt><kbd> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>In Auto Fill mode, break lines when appropriate.
 </p></dd>
 </dl>
@@ -1116,7 +1116,7 @@ Auto Fill mode on, and with a negative argument it always turns it off.
 The presence of the word `<samp>Fill</samp>' in the mode line, inside the
 parentheses, indicates that Auto Fill mode is in effect.  Auto Fill mode
 is a minor mode; you can turn it on or off for each buffer individually.
-See section <a href="xemacs_30.html#NOD326">Minor Modes</a>.
+See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.
 </p><p>  In Auto Fill mode, lines are broken automatically at spaces when they get
 longer than desired.  Line breaking and rearrangement takes place
 only when you type <kbd>SPC</kbd> or <kbd>RET</kbd>.  To insert a space
@@ -1129,14 +1129,14 @@ Lisp comment gets too long, the text of the comment is split into two
 comment lines.  Optionally, new comment delimiters are inserted at the
 end of the first line and the beginning of the second, so that each line
 is a separate comment.  The variable <code>comment-multi-line</code> controls
-the choice (see section <a href="xemacs_24.html#NOD212">Manipulating Comments</a>).
+the choice (see section <a href="xemacs_24.html#SEC225">Manipulating Comments</a>).
 </p><p>  Auto Fill mode does not refill entire paragraphs.  It can break lines but
 cannot merge lines.  Editing in the middle of a paragraph can result in
 a paragraph that is not correctly filled.  The easiest way to make the
 paragraph properly filled again is using an explicit fill commands.
 </p><p>  Many users like Auto Fill mode and want to use it in all text files.
 The section on init files explains how you can arrange this
-permanently for yourself.  See section <a href="xemacs_30.html#NOD351">The Init File</a>.
+permanently for yourself.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC211" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1154,24 +1154,24 @@ permanently for yourself.  See section <a href="xemacs_30.html#NOD351">The Init 
 <h3> 20.6.2 Explicit Fill Commands </h3>
 
 <dl compact="compact">
- <dt> M-q
-</dt>
+ <dt><kbd> M-q
+</kbd></dt>
 <dd><p>Fill current paragraph (<code>fill-paragraph</code>).
  </p> </dd>
-<dt> M-g
-</dt>
+<dt><kbd> M-g
+</kbd></dt>
 <dd><p>Fill each paragraph in the region (<code>fill-region</code>).
  </p> </dd>
-<dt> C-x f
-</dt>
+<dt><kbd> C-x f
+</kbd></dt>
 <dd><p>Set the fill column (<code>set-fill-column</code>).
  </p> </dd>
-<dt> M-x fill-region-as-paragraph
-</dt>
+<dt><kbd> M-x fill-region-as-paragraph
+</kbd></dt>
 <dd><p>Fill the region, considering it as one paragraph.
  </p> </dd>
-<dt> M-s
-</dt>
+<dt><kbd> M-s
+</kbd></dt>
 <dd><p>Center a line.
 </p></dd>
 </dl>
@@ -1182,13 +1182,13 @@ permanently for yourself.  See section <a href="xemacs_30.html#NOD351">The Init 
 (<code>fill-paragraph</code>).  It causes the paragraph containing point, or
 the one after point if point is between paragraphs, to be refilled.  All
 line breaks are removed, and new ones are inserted where necessary.
-<kbd>M-q</kbd> can be undone with <kbd>C-_</kbd>.  See section <a href="xemacs_8.html#NOD51">Undoing Changes</a>.</p><a name="IDX862"></a>
+<kbd>M-q</kbd> can be undone with <kbd>C-_</kbd>.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.</p><a name="IDX862"></a>
 <a name="IDX863"></a>
 <p>  To refill many paragraphs, use <kbd>M-g</kbd> (<code>fill-region</code>), which
 divides the region into paragraphs and fills each of them.
 </p><a name="IDX864"></a>
 <p>  <kbd>Meta-q</kbd> and <kbd>Meta-g</kbd> use the same criteria as <kbd>Meta-h</kbd> for
-finding paragraph boundaries (see section <a href="#NOD195">Paragraphs</a>).  For more control, you
+finding paragraph boundaries (see section <a href="#SEC208">Paragraphs</a>).  For more control, you
 can use <kbd>M-x fill-region-as-paragraph</kbd>, which refills everything
 between point and mark.  This command recognizes only blank lines as
 paragraph separators.</p><a name="IDX865"></a>
@@ -1208,7 +1208,7 @@ individually and moves past them.
 <p>  The maximum line width for filling is in the variable
 <code>fill-column</code>.  Altering the value of <code>fill-column</code> makes it
 local to the current buffer; until then, the default value--initially
-70--is in effect. See section <a href="xemacs_30.html#NOD335">Local Variables</a>.
+70--is in effect. See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p><a name="IDX871"></a>
 <a name="IDX872"></a>
 <p>  The easiest way to set <code>fill-column</code> is to use the command <kbd>C-x
@@ -1237,16 +1237,16 @@ uses that number as the new fill column.
 included in filling.  Emacs expects every line to start with a fill
 prefix.
 </p><dl compact="compact">
- <dt> C-x .
-</dt>
+ <dt><kbd> C-x .
+</kbd></dt>
 <dd><p>Set the fill prefix (<code>set-fill-prefix</code>).
  </p> </dd>
-<dt> M-q
-</dt>
+<dt><kbd> M-q
+</kbd></dt>
 <dd><p>Fill a paragraph using current fill prefix (<code>fill-paragraph</code>).
  </p> </dd>
-<dt> M-x fill-individual-paragraphs
-</dt>
+<dt><kbd> M-x fill-individual-paragraphs
+</kbd></dt>
 <dd><p>Fill the region, considering each change of indentation as starting a
 new paragraph.
 </p></dd>
@@ -1272,7 +1272,7 @@ comments with a comment delimiter on each line.
 <p>  The fill prefix is stored in the variable <code>fill-prefix</code>.  Its value
 is a string, or <code>nil</code> when there is no fill prefix.  This is a
 per-buffer variable; altering the variable affects only the current buffer,
-but there is a default value which you can change as well.  See section <a href="xemacs_30.html#NOD335">Local Variables</a>.
+but there is a default value which you can change as well.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p><a name="IDX876"></a>
 <p>  Another way to use fill prefixes is through <kbd>M-x
 fill-individual-paragraphs</kbd>.  This function divides the region into groups
@@ -1297,24 +1297,24 @@ each group as a paragraph, using its indentation as a fill prefix.
 <p>  Emacs has commands for converting either a single word or any arbitrary
 range of text to upper case or to lower case.
 </p><dl compact="compact">
- <dt> M-l
-</dt>
+ <dt><kbd> M-l
+</kbd></dt>
 <dd><p>Convert following word to lower case (<code>downcase-word</code>).
  </p> </dd>
-<dt> M-u
-</dt>
+<dt><kbd> M-u
+</kbd></dt>
 <dd><p>Convert following word to upper case (<code>upcase-word</code>).
  </p> </dd>
-<dt> M-c
-</dt>
+<dt><kbd> M-c
+</kbd></dt>
 <dd><p>Capitalize the following word (<code>capitalize-word</code>).
  </p> </dd>
-<dt> C-x C-l
-</dt>
+<dt><kbd> C-x C-l
+</kbd></dt>
 <dd><p>Convert region to lower case (<code>downcase-region</code>).
  </p> </dd>
-<dt> C-x C-u
-</dt>
+<dt><kbd> C-x C-u
+</kbd></dt>
 <dd><p>Convert region to upper case (<code>upcase-region</code>).
 </p></dd>
 </dl>

@@ -66,7 +66,7 @@ minibuffer, by typing <kbd>C-g</kbd>.
 conflict with other ways XEmacs customarily uses the echo area.  Here is
 how XEmacs handles such conflicts:
 </p><ul>
- <li><p>
+<li><p>
 If a command gets an error while you are in the minibuffer, this does
 not cancel the minibuffer.  However, the echo area is needed for the
 error message and therefore the minibuffer itself is hidden for a
@@ -121,7 +121,7 @@ specifies the file `<tt>/u2/emacs/src/buffer.c</tt>'.  To find files in
 nearby directories, use <kbd>..</kbd>; thus, if you type
 <kbd>../lisp/simple.el</kbd>, you will get the file named
 `<tt>/u2/emacs/lisp/simple.el</tt>'.  Alternatively, you can kill with
-<kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#NOD193">Words</a>).
+<kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
 </p><p>  If you don't want any of the default, you can kill it with <kbd>C-a
 C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
 Insert an absolute file name, one starting with a slash or a tilde,
@@ -173,7 +173,7 @@ can switch to another window with <kbd>C-x o</kbd>, edit text in other
 windows and perhaps even visit more files, before returning to the
 minibuffer to submit the argument.  You can kill text in another window,
 return to the minibuffer window, and then yank the text to use it in the
-argument.  See section <a href="xemacs_19.html#NOD162">Multiple Windows</a>.
+argument.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
 </p><p>  There are some restrictions on the use of the minibuffer window,
 however.  You cannot switch buffers in it--the minibuffer and its
 window are permanently attached.  Also, you cannot split or kill the
@@ -181,13 +181,13 @@ minibuffer window. But you can make it taller in the normal fashion with
 <kbd>C-x ^</kbd>.  If you enable Resize-Minibuffer mode, then the
 minibuffer window expands vertically as necessary to hold the text that
 you put in the minibuffer.  Use <kbd>M-x resize-minibuffer-mode</kbd> to
-enable or disable this minor mode (see section <a href="xemacs_30.html#NOD326">Minor Modes</a>).
+enable or disable this minor mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).
 </p><a name="IDX217"></a>
 <p>  If while in the minibuffer you issue a command that displays help text
 of any sort in another window, you can use the <kbd>C-M-v</kbd> command while
 in the minibuffer to scroll the help text.  This lasts until you exit
 the minibuffer.  This feature is especially useful if a completing
-minibuffer gives you a list of possible completions.  See section <a href="xemacs_19.html#NOD165">Using Other Windows</a>.
+minibuffer gives you a list of possible completions.  See section <a href="xemacs_19.html#SEC178">Using Other Windows</a>.
 </p><a name="IDX218"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is <code>t</code>, you
 are asked for confirmation if there is no known completion for the text
@@ -310,28 +310,28 @@ when completion is available.
 <p>  Here is a list of the completion commands defined in the minibuffer
 when completion is available.
 </p><dl compact="compact">
- <dt> <kbd>TAB</kbd>
-</dt>
+ <dt><kbd> <kbd>TAB</kbd>
+</kbd></dt>
 <dd><p>Complete the text in the minibuffer as much as possible
 (<code>minibuffer-complete</code>).
  </p> </dd>
-<dt> <kbd>SPC</kbd>
-</dt>
+<dt><kbd> <kbd>SPC</kbd>
+</kbd></dt>
 <dd><p>Complete the minibuffer text, but don't go beyond one word
 (<code>minibuffer-complete-word</code>).
  </p> </dd>
-<dt> <kbd>RET</kbd>
-</dt>
+<dt><kbd> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Submit the text in the minibuffer as the argument, possibly completing
 first as described below (<code>minibuffer-complete-and-exit</code>).
  </p> </dd>
-<dt> ?
-</dt>
+<dt><kbd> ?
+</kbd></dt>
 <dd><p>Print a list of all possible completions of the text in the minibuffer
 (<code>minibuffer-list-completions</code>).
  </p> </dd>
-<dt> <kbd>button2</kbd>
-</dt>
+<dt><kbd> <kbd>button2</kbd>
+</kbd></dt>
 <dd><p>Select the highlighted text under the mouse as a minibuffer response.
 When the minibuffer is being used to prompt the user for a completion,
 any valid completions which are visible on the screen will be highlighted
@@ -356,18 +356,18 @@ window that displays a list of completions:
 </p><dl compact="compact">
 <p>
 <a name="IDX222"></a>
- </p> <dt> button2up
-</dt>
+ </p> <dt><kbd> button2up
+</kbd></dt>
 <dd><p>Clicking mouse button 2 on a completion in the list of possible
 completions chooses that completion (<code>mouse-choose-completion</code>).
 You normally use this command while point is in the minibuffer; but you
 must click in the list of completions, not in the minibuffer itself.
 </p><a name="IDX223"></a>
 </dd>
-<dt> <kbd>PRIOR</kbd>
-</dt>
-<dt> M-v
-</dt>
+<dt><kbd> <kbd>PRIOR</kbd>
+</kbd></dt>
+<dt><kbd> M-v
+</kbd></dt>
 <dd><p>Typing <kbd>PRIOR</kbd> or <kbd>M-v</kbd>, while in the minibuffer, selects the
 window showing the completion list buffer
 (<code>switch-to-completions</code>).  This paves the way for using the
@@ -375,29 +375,29 @@ commands below.  (Selecting that window in the usual ways has the same
 effect, but this way is more convenient.)
 </p><a name="IDX224"></a>
 </dd>
-<dt> <kbd>RET</kbd>
-</dt>
+<dt><kbd> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Typing <kbd>RET</kbd> <em>in the completion list buffer</em> chooses the
 completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
 the list of completions.
 </p><a name="IDX225"></a>
 </dd>
-<dt> <kbd>RIGHT</kbd>
-</dt>
-<dt> <kbd>TAB</kbd>
-</dt>
-<dt> C-f
-</dt>
+<dt><kbd> <kbd>RIGHT</kbd>
+</kbd></dt>
+<dt><kbd> <kbd>TAB</kbd>
+</kbd></dt>
+<dt><kbd> C-f
+</kbd></dt>
 <dd><p>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
 </p><a name="IDX226"></a>
 </dd>
-<dt> <kbd>LEFT</kbd>
-</dt>
-<dt> C-b
-</dt>
+<dt><kbd> <kbd>LEFT</kbd>
+</kbd></dt>
+<dt><kbd> C-b
+</kbd></dt>
 <dd><p>Typing the left-arrow key <kbd>LEFT</kbd> or <kbd>C-b</kbd> <em>in the
 completion list buffer</em> moves point toward the beginning of the buffer,
 to the previous completion (<code>previous-list-mode-item</code>).
@@ -423,7 +423,7 @@ to the previous completion (<code>previous-list-mode-item</code>).
 <p>  There are three different ways that <kbd>RET</kbd> can work in completing
 minibuffers, depending on how the argument will be used.
 </p><ul>
- <li><p>
+<li><p>
 <em>Strict</em> completion is used when it is meaningless to give any
 argument except one of the known alternatives.  For example, when
 <kbd>C-x k</kbd> reads the name of a buffer to kill, it is meaningless to
@@ -451,7 +451,7 @@ exactly as given, without completing it.
 a window whenever there is more than one possibility for the very next
 character.  Also, typing <kbd>?</kbd> explicitly requests such a list.  If
 the list of completions is long, you can scroll it with <kbd>C-M-v</kbd>
-(see section <a href="xemacs_19.html#NOD165">Using Other Windows</a>).
+(see section <a href="xemacs_19.html#SEC178">Using Other Windows</a>).
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC66" title="Previous section in reading order"> &lt; </a>]</td>
@@ -515,27 +515,27 @@ another argument.  Special commands load the text of an earlier argument
 in the minibuffer.  They discard the old minibuffer contents, so you can
 think of them as moving through the history of previous arguments.
 </p><dl compact="compact">
- <dt> <kbd>UP</kbd>
-</dt>
-<dt> M-p
-</dt>
+ <dt><kbd> <kbd>UP</kbd>
+</kbd></dt>
+<dt><kbd> M-p
+</kbd></dt>
 <dd><p>Move to the next earlier argument string saved in the minibuffer history
 (<code>previous-history-element</code>).
  </p> </dd>
-<dt> <kbd>DOWN</kbd>
-</dt>
-<dt> M-n
-</dt>
+<dt><kbd> <kbd>DOWN</kbd>
+</kbd></dt>
+<dt><kbd> M-n
+</kbd></dt>
 <dd><p>Move to the next later argument string saved in the minibuffer history
 (<code>next-history-element</code>).
  </p> </dd>
-<dt> M-r <var>regexp</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> M-r <var>regexp</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Move to an earlier saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>previous-matching-history-element</code>).
  </p> </dd>
-<dt> M-s <var>regexp</var> <kbd>RET</kbd>
-</dt>
+<dt><kbd> M-s <var>regexp</var> <kbd>RET</kbd>
+</kbd></dt>
 <dd><p>Move to a later saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>next-matching-history-element</code>).
 </p></dd>
@@ -574,7 +574,7 @@ searches newer elements.  By special dispensation, these commands can
 use the minibuffer to read their arguments even though you are already
 in the minibuffer when you issue them.  As with incremental searching,
 an uppercase letter in the regular expression makes the search
-case-sensitive (see section <a href="xemacs_15.html#NOD109">Searching and Case</a>).
+case-sensitive (see section <a href="xemacs_15.html#SEC122">Searching and Case</a>).
 </p><p>  All uses of the minibuffer record your input on a history list, but
 there are separate history lists for different kinds of arguments.  For
 example, there is a list for file names, used by all the commands that
@@ -607,22 +607,22 @@ you can repeat the entire command.  In particular, every use of
 the command name.
 </p><a name="IDX238"></a>
 <dl compact="compact">
- <dt> C-x <kbd>ESC</kbd> <kbd>ESC</kbd>
-</dt>
+ <dt><kbd> C-x <kbd>ESC</kbd> <kbd>ESC</kbd>
+</kbd></dt>
 <dd><p>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
  </p> </dd>
-<dt> M-p
-</dt>
+<dt><kbd> M-p
+</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to previous recorded command
 (<code>previous-history-element</code>).
  </p> </dd>
-<dt> M-n
-</dt>
+<dt><kbd> M-n
+</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to the next (more recent)
 recorded command (<code>next-history-element</code>).
  </p> </dd>
-<dt> M-x list-command-history
-</dt>
+<dt><kbd> M-x list-command-history
+</kbd></dt>
 <dd><p>Display the entire command history, showing all the commands
 <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> can repeat, most recent first.
 </p></dd>

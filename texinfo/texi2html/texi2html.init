@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.18 2003-03-27 18:37:10 pertusus Exp $
+# $Id: texi2html.init,v 1.19 2003-04-02 13:02:27 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -373,14 +373,15 @@ $T2H_BODYTEXT = undef;
 
 # As a general interface, the hashes T2H_HREF, T2H_NAME, T2H_NODE hold
 # href, html-name, node-name of
-# This     -- current section (resp. html page)
-# Top      -- top page ($T2H_TOP_FILE)
-# Contents -- Table of contents
-# Overview -- Short table of contents
-# Index    -- Index page
-# About    -- page which explain "navigation buttons"
-# First    -- first node
-# Last     -- last node
+# This      -- current section (resp. html page)
+# Top       -- top page ($T2H_TOP_FILE)
+# Contents  -- Table of contents
+# Overview  -- Short table of contents
+# Index     -- Index page
+# About     -- page which explain "navigation buttons"
+# First     -- first node
+# Last      -- last node
+# Footnotes -- footnotes
 #
 # Whether or not the following hash values are set, depends on the context
 # (all values are w.r.t. 'This' section)
