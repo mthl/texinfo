@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
+@c $Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -39,7 +39,7 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997, 1998,
-1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -8373,7 +8373,7 @@ a letter, beginning with that lower case letter.@refill
 
 You can also nest enumerated lists, as in an outline.@refill
 
-@node Two-column Tables, Multi-column Tables, enumerate, Lists and Tables
+@node Two-column Tables
 @section Making a Two-column Table
 @cindex Tables, making two-column
 @findex table
@@ -8390,35 +8390,35 @@ exhibits, and command-line option summaries.
 * itemx::                       How to put more entries in the first column.
 @end menu
 
-@node table, ftable vtable, Two-column Tables, Two-column Tables
-@ifinfo
-@subheading Using the @code{@@table} Command
+@node table
+@subsection Using the @code{@@table} Command
 
-Use the @code{@@table} command to produce two-column tables.@refill
-@end ifinfo
+@cindex Definition lists, typesetting
+Use the @code{@@table} command to produce two-column tables.  It is
+usually listed for ``definition lists'' of various sorts, where you
+have a list of terms and a brief text with each one.
 
-Write the @code{@@table} command at the beginning of a line and follow
-it on the same line with an argument that is a Texinfo ``indicating''
-command such as @code{@@code}, @code{@@samp}, @code{@@var}, or
-@code{@@kbd} (@pxref{Indicating}).  Although these commands are usually
-followed by arguments in braces, in this case you use the command name
-without an argument because @code{@@item} will supply the argument.
-This command will be applied to the text that goes into the first column
-of each item and determines how it will be highlighted.  For example,
-@code{@@code} will cause the text in the first column to be highlighted
-with an @code{@@code} command.  (We recommend @code{@@code} for
-@code{@@table}'s of command-line options.)
+Write the @code{@@table} command at the beginning of a line, after a
+blank line, and follow it on the same line with an argument that is a
+Texinfo ``indicating'' command such as @code{@@code}, @code{@@samp},
+@code{@@var}, @code{@@option}, or @code{@@kbd} (@pxref{Indicating}).
+
+This command will be applied to the text that goes into the first
+column of each item and thus determines how it will be highlighted.
+For example, @code{@@table @@code} will cause the text in the first
+column to be output as if it @code{@@code} command.
 
 @findex asis
-You may also choose to use the @code{@@asis} command as an argument to
+You may also use the @code{@@asis} command as an argument to
 @code{@@table}.  @code{@@asis} is a command that does nothing; if you
-use this command after @code{@@table}, @TeX{} and the Info formatting
-commands output the first column entries without added highlighting
-(``as is'').@refill
+use this command after @code{@@table}, the first column entries are
+output without added highlighting (``as is'').
 
-(The @code{@@table} command may work with other commands besides those
-listed here.  However, you can only use commands that normally take
-arguments in braces.)@refill
+The @code{@@table} command works with other commands besides those
+explicitly mentioned here.  However, you can only use commands that
+normally take arguments in braces.  (In this case, however, you use
+the command name without an argument, because the subsequent
+@code{@@item}'s will supply the argument.)
 
 @findex item
 Begin each table entry with an @code{@@item} command at the beginning
@@ -8427,16 +8427,20 @@ of a line.  Write the first column text on the same line as the
 following the @code{@@item} line and on subsequent lines.  (You do not
 need to type anything for an empty second column entry.)  You may
 write as many lines of supporting text as you wish, even several
-paragraphs.  But only text on the same line as the @code{@@item} will
-be placed in the first column, including any footnote.
+paragraphs.  But only the text on the same line as the @code{@@item}
+will be placed in the first column (including any footnotes).
 
 Normally, you should put a blank line before an @code{@@item} line.
-This puts a blank like in the Info file.  Except when the entries are
-very brief, a blank line looks better.@refill
+This puts a blank line in the Info file.  Except when the entries are
+very brief, a blank line looks better.
+
+End the table with a line consisting of @code{@@end table}, followed
+by a blank line.  @TeX{} will always start a new paragraph after the
+table, so the blank line is needed for the Info output to be analogous.
 
 @need 1500
 The following table, for example, highlights the text in the first
-column with an @code{@@samp} command:@refill
+column with an @code{@@samp} command:
 
 @example
 @group
@@ -8463,8 +8467,7 @@ Text for @samp{bar}.
 @end table
 
 If you want to list two or more named items with a single block of
-text, use the @code{@@itemx} command.  (@xref{itemx, ,
-@code{@@itemx}}.)@refill
+text, use the @code{@@itemx} command.  (@xref{itemx,,@code{@@itemx}}.)
 
 
 @node ftable vtable
@@ -16777,7 +16780,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
+$Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16842,7 +16845,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.22 2002-12-23 22:16:34 karl Exp $
+@comment $Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
