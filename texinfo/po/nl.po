@@ -1,3 +1,4 @@
+# translation of texinfo-4.7.94.po to Dutch
 # translation of texinfo-4.7.91.po to
 # translation of texinfo-4.7.91.po to Dutch
 # Dutch messages for GNU texinfo
@@ -7,16 +8,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-4.7.91\n"
+"Project-Id-Version: texinfo-4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-08 09:57-0800\n"
-"PO-Revision-Date: 2005-01-29 14:30+0100\n"
+"POT-Creation-Date: 2004-12-21 16:20-0800\n"
+"PO-Revision-Date: 2005-03-09 10:50+0100\n"
 "Last-Translator: Freek de Kruijf <f.de.kruijf@hetnet.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9\n"
+"X-Generator: KBabel 1.9.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: info/echo-area.c:284 info/session.c:689
@@ -135,15 +136,15 @@ msgstr "Een voltooiing:\n"
 msgid "%d completions:\n"
 msgstr "%d voltooiingen:\n"
 
-#: info/echo-area.c:1084
+#: info/echo-area.c:1085
 msgid "Insert completion"
 msgstr "Voeg voltooiing in"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1220
 msgid "Building completions..."
 msgstr "Voltooiingen aan het bouwen..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1340
 msgid "Scroll the completions window"
 msgstr "Scroll het voltooiingsvenster"
 
@@ -1082,7 +1083,7 @@ msgstr "Ga naar het einde van de regel"
 msgid "Move to the start of the line"
 msgstr "Ga naar het begin van de regel"
 
-#: info/session.c:860 makeinfo/node.c:1425
+#: info/session.c:860 makeinfo/node.c:1424
 msgid "Next"
 msgstr "Volgende"
 
@@ -1653,7 +1654,7 @@ msgstr " Sub-bestand: %s"
 #: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: optie `%s' is dubbelzinnig\n"
+msgstr "%s: optie `%s' is niet eenduidig\n"
 
 #: lib/getopt.c:603 lib/getopt.c:607
 #, c-format
@@ -1700,7 +1701,7 @@ msgstr "%s: optie vereist een argument -- %c\n"
 #: lib/getopt.c:935 lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: optie `-W %s' is dubbelzinnig\n"
+msgstr "%s: optie `-W %s' is niet eenduidig\n"
 
 #: lib/getopt.c:978 lib/getopt.c:999
 #, c-format
@@ -1802,11 +1803,11 @@ msgstr "@sp vereist een postief numeriek argument, niet `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Fout argument voor %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
 msgid "none"
 msgstr "geen"
 
@@ -1852,12 +1853,12 @@ msgid "Method"
 msgstr "Methode"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2195
+#: makeinfo/defun.c:644 makeinfo/xml.c:2229
 msgid "of"
 msgstr "van"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2200
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
 msgid "on"
 msgstr "aan"
 
@@ -2424,7 +2425,7 @@ msgstr "%s: argument voor --footnote-style moet `separate' of `end' zijn, niet `
 msgid "%s: missing file argument.\n"
 msgstr "%s: ontbrekend bestandsargument.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3989
+#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr "Multi-regel commando %c%s onjuist gebruikt"
@@ -2499,46 +2500,46 @@ msgstr "GEEN_NAAM!"
 msgid "%c%s missing close brace"
 msgstr "%c%s ontbrekende afsluitende accolade"
 
-#: makeinfo/makeinfo.c:3307
+#: makeinfo/makeinfo.c:3309
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image bestand `%s' (voor HTML) is niet leesbaar: %s"
 
-#: makeinfo/makeinfo.c:3313
+#: makeinfo/makeinfo.c:3315
 #, c-format
 msgid "No such file `%s'"
 msgstr "Geen bestand `%s' gevonden"
 
-#: makeinfo/makeinfo.c:3445
+#: makeinfo/makeinfo.c:3447
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image bestand `%s' (voor tekst) is niet leesbaar: %s"
 
-#: makeinfo/makeinfo.c:3454
+#: makeinfo/makeinfo.c:3456
 msgid "@image missing filename argument"
 msgstr "ontbrekend bestandsnaam argument voor @image"
 
-#: makeinfo/makeinfo.c:3673
+#: makeinfo/makeinfo.c:3675
 #, c-format
 msgid "undefined flag: %s"
 msgstr "ongedefinieerde vlag: %s"
 
-#: makeinfo/makeinfo.c:3674
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Geen waarde voor `%s'}"
 
-#: makeinfo/makeinfo.c:3726
+#: makeinfo/makeinfo.c:3728
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s vereist een naam"
 
-#: makeinfo/makeinfo.c:3832
+#: makeinfo/makeinfo.c:3834
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Bereikte bestandseinde vòòr een bijbehorend @end %s"
 
-#: makeinfo/makeinfo.c:4080
+#: makeinfo/makeinfo.c:4082
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' is te lang voor expansie; niet geëxpandeerd"
@@ -2581,132 +2582,132 @@ msgstr "* kolom #%d: uitvoer = %s\n"
 msgid "Node `%s' previously defined at line %d"
 msgstr "macro `%s' al eerder gedefinieerd bij regel %d"
 
-#: makeinfo/node.c:647
+#: makeinfo/node.c:648
 #, c-format
 msgid "Formatting node %s...\n"
 msgstr "Pagina %s wordt geformatteerd...\n"
 
-#: makeinfo/node.c:715
+#: makeinfo/node.c:716
 #, c-format
 msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
 msgstr "Pagina `%s' vereist een sectiemakend commando (bijv., %c%s)"
 
-#: makeinfo/node.c:878
+#: makeinfo/node.c:879
 #, c-format
 msgid "No node name specified for `%c%s' command"
 msgstr "Geen paginanaam gespecificeerd voor `%c%s' commando"
 
-#: makeinfo/node.c:919 makeinfo/node.c:1152
+#: makeinfo/node.c:920 makeinfo/node.c:1151
 #, c-format
 msgid "Anchor `%s' and node `%s' map to the same file name"
 msgstr "Het anker `%s' en pagina `%s' verwijzen naar dezelfde bestandsnaam"
 
-#: makeinfo/node.c:922
+#: makeinfo/node.c:923
 msgid "This @anchor command ignored; references to it will not work"
 msgstr "Dit @anchor commando is genegeerd; verwijzing ernaar werkt niet"
 
-#: makeinfo/node.c:924 makeinfo/node.c:1155
+#: makeinfo/node.c:925 makeinfo/node.c:1154
 msgid "Rename this anchor or use the `--no-split' option"
 msgstr "Geef dit anker een andere naam of gebruik de `--no-split' optie"
 
-#: makeinfo/node.c:954
+#: makeinfo/node.c:955
 #, c-format
 msgid "Unexpected string at end of split-HTML file `%s'"
 msgstr "Onverwachte tekenreeks aan het eind van een `split-HTML'-bestand `%s'"
 
-#: makeinfo/node.c:992
+#: makeinfo/node.c:991
 msgid "Next:"
 msgstr "Volgende:"
 
-#: makeinfo/node.c:1008
+#: makeinfo/node.c:1007
 msgid "Previous:"
 msgstr "Vorige:"
 
-#: makeinfo/node.c:1022
+#: makeinfo/node.c:1021
 msgid "Up:"
 msgstr "Omhoog:"
 
-#: makeinfo/node.c:1149
+#: makeinfo/node.c:1148
 #, c-format
 msgid "Anchors `%s' and `%s' map to the same file name"
 msgstr "Ankers `%s' en `%s' verwijzen naar dezelfde bestandsnaam"
 
-#: makeinfo/node.c:1154
+#: makeinfo/node.c:1153
 msgid "@anchor command ignored; references to it will not work"
 msgstr "@anchor commando is genegeerd; verwijzing ernaar werkt niet"
 
-#: makeinfo/node.c:1348
+#: makeinfo/node.c:1347
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
 msgstr "%s verwijst naar niet-bestaande pagina `%s' (misschien een onjuiste sectieindeling?)"
 
-#: makeinfo/node.c:1364
+#: makeinfo/node.c:1363
 msgid "Menu"
 msgstr "Menu"
 
-#: makeinfo/node.c:1366
+#: makeinfo/node.c:1365
 msgid "Cross"
 msgstr "Kruis"
 
 # Deze zes meldingen:
 # next, prev en up niet vertalen, dit is wat er in de broncode staat.
 # Het is duidelijker indien onvertaald.
-#: makeinfo/node.c:1448
+#: makeinfo/node.c:1447
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr "Het `next'-veld van pagina `%s' wijst nergens naar (misschien een onjuiste sectieindeling?)"
 
-#: makeinfo/node.c:1451
+#: makeinfo/node.c:1450
 #, c-format
 msgid "This node (%s) has the bad Prev"
 msgstr "Deze pagina (%s) is degene met het foute `vorige'-veld"
 
-#: makeinfo/node.c:1463
+#: makeinfo/node.c:1462
 msgid "Prev"
 msgstr "Vorige"
 
-#: makeinfo/node.c:1506
+#: makeinfo/node.c:1505
 #, c-format
 msgid "Prev field of node `%s' not pointed to"
 msgstr "Het `vorige'-veld van pagina `%s' wijst nergens naar"
 
-#: makeinfo/node.c:1510
+#: makeinfo/node.c:1509
 #, c-format
 msgid "This node (%s) has the bad Next"
 msgstr "Deze pagina (%s) is degene met het foute `volgende'-veld"
 
-#: makeinfo/node.c:1522
+#: makeinfo/node.c:1521
 #, c-format
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "`%s' heeft geen `omhoog'-veld (misschien foute sectie indeling?)"
 
-#: makeinfo/node.c:1525
+#: makeinfo/node.c:1524
 msgid "Up"
 msgstr "Omhoog"
 
-#: makeinfo/node.c:1591
+#: makeinfo/node.c:1590
 #, c-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Pagina `%s' heeft geen menukeuze voor `%s' ondanks dat het het `omhoog'-doel is"
 
 # Eigenlijk zouden hier de %s en de %d omgedraaid moeten worden:
 # `Er wordt %d keer naar %s verwezen'
-#: makeinfo/node.c:1620
+#: makeinfo/node.c:1619
 #, c-format
 msgid "node `%s' has been referenced %d times"
 msgstr "er wordt naar pagina `%s' %d keer verwezen"
 
-#: makeinfo/node.c:1634
+#: makeinfo/node.c:1633
 #, c-format
 msgid "unreferenced node `%s'"
 msgstr "naar pagina `%s' wordt niet verwezen"
 
-#: makeinfo/node.c:1724
+#: makeinfo/node.c:1723
 #, c-format
 msgid "Removing %s\n"
 msgstr "%s verwijderd\n"
 
-#: makeinfo/node.c:1728
+#: makeinfo/node.c:1727
 #, c-format
 msgid "Can't remove file `%s': %s"
 msgstr "Kan bestand `%s': %s niet verwijderen"
@@ -2759,7 +2760,7 @@ msgstr "Korte inhoud"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image bestand `%s' onleesbaar: %s"
 
-#: makeinfo/xml.c:2063
+#: makeinfo/xml.c:2097
 msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr "@headitem als laatste item in @multitable produceert foutieve Docbook documenten"
 
