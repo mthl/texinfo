@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.7 2002-12-05 21:34:02 karl Exp $
+$Id: dir-example,v 1.8 2002-12-05 21:42:24 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -165,7 +165,6 @@ GNU programming documentation
 
 GNU organization
 * Maintain: (maintain).		GNU maintainer guidelines.
-* Standards: (standards).       GNU coding standards.
 * Tasks: (tasks).               GNU task list.
 
 GNU music project
@@ -219,7 +218,7 @@ Individual utilities
                                 How to create configuration scripts
 * autoheader: (autoconf)autoheader Invocation.
                                 How to create configuration templates
-* autom4te: (autoconf)Invoking autom4te.
+* autom4te: (autoconf)autom4te Invocation.
                                 The Autoconf executables backbone
 * autoreconf: (autoconf)autoreconf Invocation.
                                 Remaking multiple `configure' scripts
@@ -402,3 +401,6 @@ Individual utilities
 * yes: (sh-utils)yes invocation.                Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
 * zsh: (zsh).                                   An enhanced Bourne shell.
+
+Miscellaneous
+* Standards: (standards).        GNU coding standards.

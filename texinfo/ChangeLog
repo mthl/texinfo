@@ -1,5 +1,7 @@
 2002-12-05    <karl@gnu.org>
 
+	* util/dir-example: alphabetize make.
+
 	* NEWS: change texinfo.tex url.
 
 	* doc/texinfo.tex (\obstexwarn): fix url's to TeX.README and

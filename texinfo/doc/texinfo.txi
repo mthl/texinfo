@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
+@c $Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -980,7 +980,7 @@ file @file{texinfo.tex} that contains information (definitions or
 to @TeX{} commands, which @TeX{} can then process to create the typeset
 document.)  @file{texinfo.tex} contains the specifications for printing
 a document.  You can get the latest version of @file{texinfo.tex} from
-@uref{ftp://ftp.gnu.org/gnu/texinfo.tex}.
+@uref{ftp://ftp.gnu.org/gnu/texinfo/texinfo.tex}.
 
 In the United States, documents are most often printed on 8.5 inch by 11
 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.  But
@@ -16786,7 +16786,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
+$Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16851,7 +16851,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.17 2002-12-02 19:04:56 karl Exp $
+@@comment $Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
