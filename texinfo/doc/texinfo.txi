@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
+@c $Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1257,9 +1257,6 @@ hyphens in the source remain as they are in literal contexts, such as
 @code{@@code} and @code{@@example}.
 
 @item
-@iftex
-@vskip -@baselineskip
-@end iftex
 @cindex Tabs; don't use!
 @strong{Caution:} Last and most important, do not use tab characters
 in a Texinfo file (except in verbatim modes)!  @TeX{} uses
@@ -17290,7 +17287,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
+$Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17353,7 +17350,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.93 2003-11-23 00:49:45 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
