@@ -3,6 +3,7 @@
 	* makeinfo/html.c (add_escaped_anchor_name): prefix g_t if the
 	nodename begins with a nonletter.  Ugh.
 	* doc/texinfo.txi (HTML Xref Node Name Expansion): document this.
+	http://ff0.org/pipermail/texinfo-pretest/2004-December/000210.html
 	
 	* doc/texinfo.txi (HTML Xref 8-bit Character Expansion): define
 	behavior for Unicode code points above 0xfff.

@@ -1,5 +1,6 @@
-$Id: NEWS,v 1.99 2004-12-01 18:35:35 karl Exp $
-This file records noteworthy changes.
+$Id: NEWS,v 1.100 2004-12-06 01:25:51 karl Exp $
+This file records noteworthy changes, very tersely.
+See the manual for detailed information.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
   2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -28,9 +29,12 @@ convenience, here's a url to one of the relevant sections:
   . new command @slanted to typeset text in a slanted font,
     and @sansserif to typeset in a sans serif font.
 * makeinfo:
-  . HTML output: <a name="..."> constructs are added for the old-style
-    conversion of node names to HTML names, so that external references
-    to them can continue to work.
+  . HTML output:
+    - <a name="..."> constructs are added for the old-style
+      conversion of node names to HTML names, so that external references
+      to them can continue to work.
+    - "g_t" prefixed to targets for node names beginning with a
+      nonletter, for XHTML compatibility.
 * texi2dvi:
   . new option --recode, to call recode for input character translation.
 * Distribution:
