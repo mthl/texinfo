@@ -1,5 +1,10 @@
 2004-02-06  Derek Price  <derek@ximbiot.com>
 
+	* T2h_unicode.pm, T2h_nounicode.pm: Declare some otherwise undeclared
+	variables as global variables.
+
+2004-02-06  Derek Price  <derek@ximbiot.com>
+
 	* doc/Makefile.am (txt): New targets to convert .texinfo files into
 	text.
 	* doc/.cvsignore: Ignore texi2html.txt.

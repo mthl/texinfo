@@ -72,6 +72,9 @@ sub t2h_utf8_normal_text($)
     return $text;
 }
 
+use vars qw(%cross_ref_texi_map %cross_ref_simple_map_texi
+            %cross_ref_style_map_texi);
+
 %cross_ref_texi_map = %texi_map;
 %cross_ref_simple_map_texi = %simple_map_texi;
 %cross_ref_style_map_texi = ();
