@@ -1,3 +1,16 @@
+2003-09-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dosubind): remove my misbegotten idea of
+	propagating the penalty; all that did was increase the chance of a
+	valid breakpoint.  Bug report from: Werner LEMBERG <wl@gnu.org>,
+	23 Sep 2003 15:47:31 +0200.
+	(\numhead,\apphead,\unnmhead): avoid spurious
+	blank spaces, for cleanliness.
+
+	* CVSROOT/loginfo: syncmail instead of external log_accum.
+	* doc/texinfo.tex (\sectionheading): remove extraneous \nobreak,
+	found by Stepan (of course).
+
 2003-09-22  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\sectionheading): the space below a section
