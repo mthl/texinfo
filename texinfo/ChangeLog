@@ -1,5 +1,15 @@
 2003-11-08  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_i, cm_b, cm_r): for Docbook, use <lineannotation>
+	in @example-like environments.
+	(cm_r): For HTML use <span> to make sure we always get roman text.
+
+	* makeinfo/xml.c:
+	* makeinfo/xml.h: new docbook element <lineannotation>.  Added also to
+	replace_elements to avoid nesting.
+
+2003-11-08  Alper Ersoy  <dirt@gtk.org>
+
 	* doc/texinfo.txi (Custom Headings): removed a newline that broke
 	Docbook output.
 

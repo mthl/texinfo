@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.25 2003-11-08 01:00:42 dirt Exp $
+   $Id: cmds.c,v 1.26 2003-11-08 04:01:51 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -928,7 +928,11 @@ void
 cm_i (arg)
      int arg;
 {
-  if (xml)
+  /* Make use of <lineannotation> of Docbook, if we are
+     inside an @example or similar.  */
+  if (docbook && !filling_enabled)
+    xml_insert_element (LINEANNOTATION, arg);
+  else if (xml)
     xml_insert_element (I, arg);
   else if (html)
     insert_html_tag (arg, "i");
@@ -940,7 +944,10 @@ void
 cm_b (arg)
      int arg;
 {
-  if (xml)
+  /* See cm_i comments.  */
+  if (docbook && !filling_enabled)
+    xml_insert_element (LINEANNOTATION, arg);
+  else if (xml)
     xml_insert_element (B, arg);
   else if (html)
     insert_html_tag (arg, "b");
@@ -952,15 +959,20 @@ void
 cm_r (arg)
      int arg;
 {
-  if (xml)
+  /* See cm_i comments.  */
+  if (docbook && !filling_enabled)
+    xml_insert_element (LINEANNOTATION, arg);
+  else if (xml)
     xml_insert_element (R, arg);
-  else
+  else if (html)
     {
-      if (html)
-	insert_html_tag (arg, "");
-
-      not_fixed_width (arg);
+      if (arg == START)
+        add_word ("<span style=\"font-family: serif;\">");
+      else
+        add_word ("</span>");
     }
+  else
+    not_fixed_width (arg);
 }
 
 void
