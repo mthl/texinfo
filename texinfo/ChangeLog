@@ -1,3 +1,10 @@
+2002-12-05    <karl@gnu.org>
+
+	* NEWS: change texinfo.tex url.
+
+	* doc/texinfo.tex (\obstexwarn): fix url's to TeX.README and
+	texinfo.tex.
+
 2002-12-02    <karl@gnu.org>
 
 	* doc/texinfo.txi (Line Breaks): fixes.
