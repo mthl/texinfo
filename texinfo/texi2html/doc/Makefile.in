@@ -1,6 +1,7 @@
-# Makefile.in generated automatically by automake 1.4a from Makefile.am
+# Makefile.in generated automatically by automake 1.4h from Makefile.am.
 
-# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -10,8 +11,9 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
-#
+@SET_MAKE@
 
+#
 
 SHELL = @SHELL@
 
@@ -33,13 +35,9 @@ infodir = @infodir@
 mandir = @mandir@
 includedir = @includedir@
 oldincludedir = /usr/include
-
-DESTDIR =
-
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
-
 top_builddir = ..
 
 ACLOCAL = @ACLOCAL@
@@ -51,17 +49,20 @@ INSTALL = @INSTALL@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
-INSTALL_STRIP_FLAG =
+INSTALL_HEADER = $(INSTALL_DATA)
 transform = @program_transform_name@
-
 NORMAL_INSTALL = :
 PRE_INSTALL = :
 POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+AMTAR = @AMTAR@
+AWK = @AWK@
+DEPDIR = @DEPDIR@
 DVIPS = @DVIPS@
 INSTALL_INFO = @INSTALL_INFO@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PERL = @PERL@
@@ -70,12 +71,21 @@ T2H_DATE = @T2H_DATE@
 T2H_VERSION = @T2H_VERSION@
 TEXI2DVI = @TEXI2DVI@
 VERSION = @VERSION@
+_am_include = @_am_include@
+_am_quote = @_am_quote@
+install_sh = @install_sh@
 
 info_TEXINFOS = texi2html.texi
-texi2html_TEXINFOS = custhtml.texi custpage.texi                      extfile.texi ifo.texi                      initfile.texi options.texi                      custhtml-header.htmltexi                      reference.texi                      version.texi
+texi2html_TEXINFOS = custhtml.texi custpage.texi \
+                     extfile.texi ifo.texi \
+                     initfile.texi options.texi \
+                     custhtml-header.htmltexi \
+                     reference.texi \
+                     version.texi
 
 #
-CLEANFILES = texi2html.info* texi2html.dvi              texi2html.ps texi2html.pdf texi2html.html              texi2html.ascii              texi2html.cp texi2html.cps              texi2html.fn texi2html.fns              texi2html.ky texi2html.kys              texi2html.op texi2html.ops              texi2html.pg texi2html.pgs
+CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
+             texi2html.ascii
 
 #
 htmldir = $(prefix)/html
@@ -83,43 +93,45 @@ html_DATA = texi2html.html
 
 # use the script out of the distribution NOT
 # an old one which is installed on the client.
-TEXI2HTML = ../texi2html
+TEXI2HTML = $(top_builddir)/texi2html
 
-MAINTAINERCLEANFILES =  	Makefile.in 	texi2thml.html
+MAINTAINERCLEANFILES = \
+	Makefile.in \
+	texi2thml.html
 
+EXEEXT =
+OBJEXT = o
+subdir = doc
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
-CONFIG_CLEAN_FILES = 
+CONFIG_CLEAN_FILES =
+DIST_SOURCES =
 INFO_DEPS = texi2html.info
 DVIS = texi2html.dvi
 TEXINFOS = texi2html.texi
-DATA =  $(html_DATA)
+DATA = $(html_DATA)
 
-DIST_COMMON =  $(texi2html_TEXINFOS) Makefile.am Makefile.in TODO \
-mdate-sh stamp-vti version.texi
+DIST_COMMON = $(texi2html_TEXINFOS) Makefile.am Makefile.in TODO \
+	mdate-sh stamp-vti texinfo.tex version.texi
+all: all-am
 
-
-DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
-
-TAR = gtar
-GZIP_ENV = --best
-all: all-redirect
 .SUFFIXES:
-.SUFFIXES: .dvi .info .ps .texi .texinfo .txi
-$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu doc/Makefile
+.SUFFIXES: .dvi .info .ps .texi
+$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+	cd $(top_srcdir) && \
+	  $(AUTOMAKE) --gnits  doc/Makefile
+Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	  CONFIG_HEADERS= CONFIG_LINKS= \
+	  CONFIG_FILES=$(subdir)/$@ $(SHELL) ./config.status
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
-	cd $(top_builddir) \
-	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
-
-
-$(srcdir)/version.texi: stamp-vti
+$(srcdir)/version.texi:  $(srcdir)/stamp-vti
 	@:
-
 $(srcdir)/stamp-vti: texi2html.texi $(top_srcdir)/configure.in
-	@echo "@set UPDATED `$(SHELL) $(srcdir)/mdate-sh $(srcdir)/texi2html.texi`" > vti.tmp
-	@echo "@set EDITION $(VERSION)" >> vti.tmp
-	@echo "@set VERSION $(VERSION)" >> vti.tmp
+	@(set `$(SHELL) $(srcdir)/mdate-sh $(srcdir)/texi2html.texi`; \
+	echo "@set UPDATED $$1 $$2 $$3"; \
+	echo "@set UPDATED-MONTH $$2 $$3"; \
+	echo "@set EDITION $(VERSION)"; \
+	echo "@set VERSION $(VERSION)") > vti.tmp
 	@cmp -s vti.tmp $(srcdir)/version.texi \
 	  || (echo "Updating $(srcdir)/version.texi"; \
 	      cp vti.tmp $(srcdir)/version.texi)
@@ -129,60 +141,165 @@ $(srcdir)/stamp-vti: texi2html.texi $(top_srcdir)/configure.in
 mostlyclean-vti:
 	-rm -f vti.tmp
 
-clean-vti:
-
-distclean-vti:
-
 maintainer-clean-vti:
 	-rm -f $(srcdir)/stamp-vti $(srcdir)/version.texi
 
-texi2html.info: texi2html.texi version.texi $(texi2html_TEXINFOS)
-texi2html.dvi: texi2html.texi version.texi $(texi2html_TEXINFOS)
-
+texi2html.info: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
+texi2html.dvi: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
 
 .texi.info:
 	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
 	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
+	  && $(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) \
+	       `echo $< | sed 's,.*/,,'`
 
 .texi.dvi:
-	TEXINPUTS=.:$$TEXINPUTS \
-	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) $<
+	TEXINPUTS=$(srcdir):$$TEXINPUTS \
+	MAKEINFO='$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir)' \
+	$(TEXI2DVI) $<
 
 .texi:
 	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
 	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
+	  && $(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) \
+	       `echo $< | sed 's,.*/,,'`
 
-.texinfo.info:
-	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
-	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
-
-.texinfo:
-	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
-	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
-
-.texinfo.dvi:
-	TEXINPUTS=.:$$TEXINPUTS \
-	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) $<
-
-.txi.info:
-	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
-	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
-
-.txi.dvi:
-	TEXINPUTS=.:$$TEXINPUTS \
-	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) $<
-
-.txi:
-	@cd $(srcdir) && rm -f $@ $@-[0-9] $@-[0-9][0-9]
-	cd $(srcdir) \
-	  && $(MAKEINFO) `echo $< | sed 's,.*/,,'`
+MAKEINFO = @MAKEINFO@
+TEXI2DVI = texi2dvi
+DVIPS = dvips
 .dvi.ps:
 	$(DVIPS) $< -o $@
+
+uninstall-info-am:
+	$(PRE_UNINSTALL)
+	@if (install-info --version && \
+	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
+	  list='$(INFO_DEPS)'; \
+	  for file in $$list; do \
+	    echo " install-info --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$file"; \
+	    install-info --info-dir=$(DESTDIR)$(infodir) --remove $(DESTDIR)$(infodir)/$$file; \
+	  done; \
+	else :; fi
+	@$(NORMAL_UNINSTALL)
+	@list='$(INFO_DEPS)'; \
+	for file in $$list; do \
+	  (if cd $(DESTDIR)$(infodir); then \
+	     echo " rm -f $$file $$file-[0-9] $$file-[0-9][0-9])"; \
+	     rm -f $$file $$file-[0-9] $$file-[0-9][0-9]; \
+	   else :; fi); \
+	done
+
+mostlyclean-aminfo:
+	-rm -f texi2html.aux texi2html.cp texi2html.cps texi2html.dvi texi2html.fn \
+	  texi2html.ky texi2html.log texi2html.op texi2html.pg \
+	  texi2html.ps texi2html.toc texi2html.tp texi2html.vr
+
+maintainer-clean-aminfo:
+	cd $(srcdir) && \
+	for i in $(INFO_DEPS); do \
+	  rm -f $$i; \
+	  if test "`echo $$i-[0-9]*`" != "$$i-[0-9]*"; then \
+	    rm -f $$i-[0-9]*; \
+	  fi; \
+	done
+install-htmlDATA: $(html_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(htmldir)
+	@list='$(html_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(htmldir)/$$f"; \
+	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(htmldir)/$$f; \
+	done
+
+uninstall-htmlDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(html_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(htmldir)/$$f"; \
+	  rm -f $(DESTDIR)$(htmldir)/$$f; \
+	done
+tags: TAGS
+TAGS:
+
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+top_distdir = ..
+distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+	$(MAKE) $(AM_MAKEFLAGS) \
+	  top_distdir="${top_distdir}" distdir="$(distdir)" \
+	  dist-info
+check-am: all-am
+check: check-am
+all-am: Makefile $(INFO_DEPS) $(DATA)
+
+installdirs:
+	$(mkinstalldirs) $(DESTDIR)$(infodir) $(DESTDIR)$(htmldir)
+
+install: install-am
+install-exec: install-exec-am
+install-data: install-data-am
+uninstall: uninstall-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+installcheck: installcheck-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
+mostlyclean-generic:
+
+clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
+clean: clean-am
+
+clean-am: clean-generic mostlyclean-am
+
+distclean: distclean-am
+
+distclean-am: clean-am distclean-generic
+
+dvi: dvi-am
+
+dvi-am: $(DVIS)
+
+info: info-am
+
+info-am: $(INFO_DEPS)
+
+install-data-am: install-htmlDATA install-info-am
+
+install-exec-am:
+
+install-info: install-info-am
 
 install-info-am: $(INFO_DEPS)
 	@$(NORMAL_INSTALL)
@@ -190,7 +307,7 @@ install-info-am: $(INFO_DEPS)
 	@list='$(INFO_DEPS)'; \
 	for file in $$list; do \
 	  d=$(srcdir); \
-	  for ifile in `cd $$d && echo $$file $$file-[0-9] $$file-[0-9][0-9]`; do \
+	  for ifile in `CDPATH=: && cd $$d && echo $$file $$file-[0-9] $$file-[0-9][0-9]`; do \
 	    if test -f $$d/$$ifile; then \
 	      echo " $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$ifile"; \
 	      $(INSTALL_DATA) $$d/$$ifile $(DESTDIR)$(infodir)/$$ifile; \
@@ -198,176 +315,48 @@ install-info-am: $(INFO_DEPS)
 	  done; \
 	done
 	@$(POST_INSTALL)
-	@if $(SHELL) -c 'install-info --version | sed 1q | fgrep -s -v -i debian' >/dev/null 2>&1; then \
+	@if (install-info --version && \
+	     install-info --version | fgrep -i -v debian) >/dev/null 2>&1; then \
 	  list='$(INFO_DEPS)'; \
 	  for file in $$list; do \
 	    echo " install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$file";\
 	    install-info --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/$$file || :;\
 	  done; \
 	else : ; fi
+install-man:
 
-uninstall-info:
-	$(PRE_UNINSTALL)
-	@if $(SHELL) -c 'install-info --version | sed 1q | fgrep -s -v -i debian' >/dev/null 2>&1; then \
-	  ii=yes; \
-	else ii=; fi; \
-	list='$(INFO_DEPS)'; \
-	for file in $$list; do \
-	  test -z "$ii" \
-	    || install-info --info-dir=$(DESTDIR)$(infodir) --remove $$file; \
-	done
-	@$(NORMAL_UNINSTALL)
-	list='$(INFO_DEPS)'; \
-	for file in $$list; do \
-	  (cd $(DESTDIR)$(infodir) && rm -f $$file $$file-[0-9] $$file-[0-9][0-9]); \
-	done
-
-mostlyclean-aminfo:
-	-rm -f texi2html.aux texi2html.cp texi2html.cps texi2html.dvi \
-	  texi2html.fn texi2html.fns texi2html.ky texi2html.kys \
-	  texi2html.ps texi2html.log texi2html.pg texi2html.toc \
-	  texi2html.tp texi2html.tps texi2html.vr texi2html.vrs \
-	  texi2html.op texi2html.tr texi2html.cv texi2html.cn
-
-clean-aminfo:
-
-distclean-aminfo:
-
-maintainer-clean-aminfo:
-	cd $(srcdir) && for i in $(INFO_DEPS); do \
-	  rm -f $$i; \
-	  if test "`echo $$i-[0-9]*`" != "$$i-[0-9]*"; then \
-	    rm -f $$i-[0-9]*; \
-	  fi; \
-	done
-
-install-htmlDATA: $(html_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(htmldir)
-	@list='$(html_DATA)'; for p in $$list; do \
-	  if test -f $(srcdir)/$$p; then \
-	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(htmldir)/$$p"; \
-	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(htmldir)/$$p; \
-	  else if test -f $$p; then \
-	    echo " $(INSTALL_DATA) $$p $(DESTDIR)$(htmldir)/$$p"; \
-	    $(INSTALL_DATA) $$p $(DESTDIR)$(htmldir)/$$p; \
-	  fi; fi; \
-	done
-
-uninstall-htmlDATA:
-	@$(NORMAL_UNINSTALL)
-	list='$(html_DATA)'; for p in $$list; do \
-	  rm -f $(DESTDIR)$(htmldir)/$$p; \
-	done
-tags: TAGS
-TAGS:
-
-
-distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
-
-subdir = doc
-
-distdir: $(DISTFILES)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(top_distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu doc/Makefile
-	@for file in $(DISTFILES); do \
-	  d=$(srcdir); \
-	  if test -d $$d/$$file; then \
-	    cp -pr $$d/$$file $(distdir)/$$file; \
-	  else \
-	    test -f $(distdir)/$$file \
-	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
-	    || cp -p $$d/$$file $(distdir)/$$file || :; \
-	  fi; \
-	done
-	$(MAKE) $(AM_MAKEFLAGS) top_distdir="$(top_distdir)" distdir="$(distdir)" dist-info
-info-am: $(INFO_DEPS)
-info: info-am
-dvi-am: $(DVIS)
-dvi: dvi-am
-check-am: all-am
-check: check-am
 installcheck-am:
-installcheck: installcheck-am
-install-exec-am:
-install-exec: install-exec-am
-
-install-data-am: install-info-am install-htmlDATA
-install-data: install-data-am
-
-install-am: all-am
-	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
-install: install-am
-uninstall-am: uninstall-info uninstall-htmlDATA
-uninstall: uninstall-am
-all-am: Makefile $(INFO_DEPS) $(DATA)
-all-redirect: all-am
-install-strip:
-	$(MAKE) $(AM_MAKEFLAGS) INSTALL_STRIP_FLAG=-s install
-installdirs:
-	$(mkinstalldirs)  $(DESTDIR)$(infodir) $(DESTDIR)$(htmldir)
-
-
-mostlyclean-generic:
-
-clean-generic:
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
-
-distclean-generic:
-	-rm -f Makefile $(CONFIG_CLEAN_FILES)
-	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
-
-maintainer-clean-generic:
-	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
-mostlyclean-am:  mostlyclean-vti mostlyclean-aminfo mostlyclean-generic
-
-mostlyclean: mostlyclean-am
-
-clean-am:  clean-vti clean-aminfo clean-generic mostlyclean-am
-
-clean: clean-am
-
-distclean-am:  distclean-vti distclean-aminfo distclean-generic clean-am
-
-distclean: distclean-am
-
-maintainer-clean-am:  maintainer-clean-vti maintainer-clean-aminfo \
-		maintainer-clean-generic distclean-am
-	@echo "This command is intended for maintainers to use;"
-	@echo "it deletes files that may require special tools to rebuild."
 
 maintainer-clean: maintainer-clean-am
 
-.PHONY: mostlyclean-vti distclean-vti clean-vti maintainer-clean-vti \
-install-info-am uninstall-info mostlyclean-aminfo distclean-aminfo \
-clean-aminfo maintainer-clean-aminfo uninstall-htmlDATA \
-install-htmlDATA tags distdir info-am info dvi-am dvi check check-am \
-installcheck-am installcheck install-exec-am install-exec \
-install-data-am install-data install-am install uninstall-am uninstall \
-all-redirect all-am all installdirs mostlyclean-generic \
-distclean-generic clean-generic maintainer-clean-generic clean \
-mostlyclean distclean maintainer-clean
+maintainer-clean-am: distclean-am maintainer-clean-aminfo \
+	maintainer-clean-generic maintainer-clean-vti
+
+mostlyclean: mostlyclean-am
+
+mostlyclean-am: mostlyclean-aminfo mostlyclean-generic mostlyclean-vti
+
+uninstall-am: uninstall-htmlDATA uninstall-info-am
+
+.PHONY: all all-am check check-am clean clean-generic dist-info \
+	distclean distclean-generic distdir dvi dvi-am info info-am \
+	install install-am install-data install-data-am install-exec \
+	install-exec-am install-htmlDATA install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-aminfo \
+	maintainer-clean-generic maintainer-clean-vti mostlyclean \
+	mostlyclean-aminfo mostlyclean-generic mostlyclean-vti \
+	uninstall uninstall-am uninstall-htmlDATA uninstall-info-am
 
 
-all: texi2html.info
+all: info texi2html.html
 
 texi2html.html: texi2html.texi $(texi2html_TEXINFOS) $(TEXI2HTML) Makefile
-	$(PERL) $(TEXI2HTML) -V texi2html.texi
-texi2html.info: texi2html.texi $(texi2html_TEXINFOS)
-	$(MAKEINFO) texi2html.texi
-texi2html.dvi: texi2html.texi $(texi2html_TEXINFOS)
-	texi2dvi texi2html.texi
-texi2html.ps: texi2html.dvi texi2html.texi $(texi2html_TEXINFOS)
-	$(DVIPS) -o texi2html.ps texi2html.dvi
-texi2html.pdf: texi2html.ps texi2html.texi $(texi2html_TEXINFOS)
+	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
+	  $(PERL) $(TEXI2HTML) -V $<
+# Should be using pdftex - it preserves links in PDF
+texi2html.pdf: texi2html.ps
 	$(PS2PDF) texi2html.ps texi2html.pdf
-
-# Remove info and html files at make clean
-clean-aminfo:
-	rm -f texi2html.info* texi2html.html
 
 # Do not create info files for distribution
 dist-info:
@@ -380,7 +369,6 @@ ps: texi2html.ps
 pdf: texi2html.pdf
 
 html: texi2html.html
-
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

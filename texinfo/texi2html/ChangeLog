@@ -1,3 +1,18 @@
+2001-08-10  Derek Price  <dprice@collab.net>
+
+	* doc/Makefile.am: Made a few changes so we can build in a dir other
+	than $(srcdir).
+	(Bug report from Richard Pixley <rpixley@zhone.com>.)
+
+	* Makefile.am: Remove some useless comments.
+	* doc/Makefile.am: Simplify some targets which Automake already knew
+	how to handle.
+
+	* aclocal.m4: Regenerated.
+	* configure: Regenerated.
+	* Makefile.in: Regenerated.
+	* doc/Makefile.in: Ditto.
+
 2001-01-20  Adrian Aichner  <adrian@xemacs.org>
 
 	* INTRODUCTION (http): Typo fixes.

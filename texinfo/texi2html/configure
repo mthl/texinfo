@@ -623,6 +623,7 @@ if (
       # -L didn't work.
       set X `ls -t $srcdir/configure conftest.file`
    fi
+   rm -f conftest.file
    if test "$*" != "X $srcdir/configure conftest.file" \
       && test "$*" != "X conftest.file $srcdir/configure"; then
 
@@ -643,7 +644,6 @@ else
    { echo "configure: error: newly created file is older than distributed files!
 Check your system clock" 1>&2; exit 1; }
 fi
-rm -f conftest*
 echo "$ac_t""yes" 1>&6
 if test "$program_transform_name" = s,x,x,; then
   program_transform_name=
@@ -736,120 +736,6 @@ else
   SET_MAKE="MAKE=${MAKE-make}"
 fi
 
-# Extract the first word of "etags", so it can be a program name with args.
-set dummy etags; ac_word=$2
-echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:743: checking for $ac_word" >&5
-if eval "test \"`echo '$''{'ac_cv_prog_ETAGS'+set}'`\" = set"; then
-  echo $ac_n "(cached) $ac_c" 1>&6
-else
-  if test -n "$ETAGS"; then
-  ac_cv_prog_ETAGS="$ETAGS" # Let the user override the test.
-else
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
-  ac_dummy="$PATH"
-  for ac_dir in $ac_dummy; do
-    test -z "$ac_dir" && ac_dir=.
-    if test -f $ac_dir/$ac_word; then
-      ac_cv_prog_ETAGS="etags"
-      break
-    fi
-  done
-  IFS="$ac_save_ifs"
-fi
-fi
-ETAGS="$ac_cv_prog_ETAGS"
-if test -n "$ETAGS"; then
-  echo "$ac_t""$ETAGS" 1>&6
-else
-  echo "$ac_t""no" 1>&6
-fi
-
-if test -z "$ETAGS"; then
-  # Extract the first word of "ctags", so it can be a program name with args.
-set dummy ctags; ac_word=$2
-echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:773: checking for $ac_word" >&5
-if eval "test \"`echo '$''{'ac_cv_prog_ETAGS'+set}'`\" = set"; then
-  echo $ac_n "(cached) $ac_c" 1>&6
-else
-  if test -n "$ETAGS"; then
-  ac_cv_prog_ETAGS="$ETAGS" # Let the user override the test.
-else
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
-  ac_dummy="$PATH"
-  for ac_dir in $ac_dummy; do
-    test -z "$ac_dir" && ac_dir=.
-    if test -f $ac_dir/$ac_word; then
-      ac_cv_prog_ETAGS="ctags -e"
-      break
-    fi
-  done
-  IFS="$ac_save_ifs"
-fi
-fi
-ETAGS="$ac_cv_prog_ETAGS"
-if test -n "$ETAGS"; then
-  echo "$ac_t""$ETAGS" 1>&6
-else
-  echo "$ac_t""no" 1>&6
-fi
-
-fi
-if test -n "$ETAGS"; then
-	echo $ac_n "checking whether ${ETAGS-etags} works""... $ac_c" 1>&6
-echo "configure:802: checking whether ${ETAGS-etags} works" >&5
-if eval "test \"`echo '$''{'am_cv_prog_etags_works'+set}'`\" = set"; then
-  echo $ac_n "(cached) $ac_c" 1>&6
-else
-  cat >conftest.c <<EOF
-int globalvar;
-EOF
-if { ac_try='${ETAGS-etags} -f - conftest.c |egrep ^int\ globalvar\; >&2'; { (eval echo configure:809: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; }; then
-	am_cv_prog_etags_works=yes
-else
-	am_cv_prog_etags_works=no
-fi
-rm -f conftest.c
-fi
-
-echo "$ac_t""$am_cv_prog_etags_works" 1>&6
-	if test "$am_cv_prog_etags_works" = yes ; then
-		if test "$am_cv_prog_etags_works" = yes ; then
-	echo $ac_n "checking for etags include option""... $ac_c" 1>&6
-echo "configure:821: checking for etags include option" >&5
-if eval "test \"`echo '$''{'am_cv_prog_etags_include_option'+set}'`\" = set"; then
-  echo $ac_n "(cached) $ac_c" 1>&6
-else
-  cat >conftest.c <<EOF
-int globalvar;
-EOF
-	if { ac_try='${ETAGS-etags} --etags-include=TAGS.inc -f - conftest.c |egrep ^TAGS.inc,include\$ >&2'; { (eval echo configure:828: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; }; then
-		am_cv_prog_etags_include_option=--etags-include=
-	elif { ac_try='${ETAGS-etags} -i TAGS.inc -f - conftest.c |egrep ^TAGS.inc,include\$ >&2'; { (eval echo configure:830: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; }; then
-		am_cv_prog_etags_include_option='"-i "'
-	else :
-		# AC_MSG_ERROR(unfamiliar etags implementation)
-	fi
-	rm -f conftest.c
-fi
-
-echo "$ac_t""$am_cv_prog_etags_include_option" 1>&6
-else
-	:
-fi
-ETAGS_INCLUDE_OPTION="$am_cv_prog_etags_include_option"
-
-	else
-		
-ETAGS=${ETAGS-"${am_missing_run}etags"}
-
-	fi
-else
-	
-ETAGS=${ETAGS-"${am_missing_run}etags"}
-
-fi
 # Check whether --enable-dependency-tracking or --disable-dependency-tracking was given.
 if test "${enable_dependency_tracking+set}" = set; then
   enableval="$enable_dependency_tracking"
@@ -936,38 +822,8 @@ if test -z "$install_sh"; then
    install_sh=`echo $install_sh | sed -e 's/\${SHELL}//'`
 fi
 
-
-# We'd like to do this but we can't because it will unconditionally
-# require config.guess.  One way would be if autoconf had the capability
-# to let us compile in this code only when config.guess was already
-# a possibility.
-#if test "$cross_compiling" != no; then
-#  # since we are cross-compiling, we need to check for a suitable `strip'
-#  AM_PROG_STRIP
-#  if test -z "$STRIP"; then
-#    AC_MSG_WARN([strip missing, install-strip will not strip binaries])
-#  fi
-#fi
-
-# If $STRIP is defined (either by the user, or by AM_PROG_STRIP),
-# instruct install-strip to use install-sh and the given $STRIP program.
-# Otherwise, just use ${INSTALL}: the idea is to use the vendor install
-# as much as possible, because it's faster.
-if test -z "$STRIP"; then
-  # The top level make will set INSTALL_PROGRAM=$(INSTALL_STRIP_PROGRAM)
-  # and the double dolard below is there to make sure that ${INSTALL}
-  # is substitued in the sub-makes, not at the top-level; this is
-  # needed if ${INSTALL} is a relative path (ajusted in each subdirectory
-  # by config.status).
-  INSTALL_STRIP_PROGRAM='$${INSTALL} -s'
-  INSTALL_STRIP_PROGRAM_ENV=''
-else
-  _am_dirpart="`echo $install_sh | sed -e 's,//*[^/]*$,,'`"
-  INSTALL_STRIP_PROGRAM="\${SHELL} \`CDPATH=: && cd $_am_dirpart && pwd\`/install-sh -c -s"
-  INSTALL_STRIP_PROGRAM_ENV="STRIPPROG='\$(STRIP)'"
-fi
-
-
+_am_dirpart="`echo $install_sh | sed -e 's,//*[^/]*$,,'`"
+INSTALL_STRIP_PROGRAM="\${SHELL} \`CDPATH=: && cd $_am_dirpart && pwd\`/install-sh -c -s"
 
 # We need awk for the "check" target.  The system "awk" is bad on
 # some platforms.
@@ -985,7 +841,7 @@ MYSIMPLE="$srcdir"/MySimple.pm
 # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:989: checking for $ac_word" >&5
+echo "configure:845: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PERL'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1022,7 +878,7 @@ fi
 # Extract the first word of "makeinfo", so it can be a program name with args.
 set dummy makeinfo; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1026: checking for $ac_word" >&5
+echo "configure:882: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_MAKEINFO'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1057,7 +913,7 @@ fi
 # Extract the first word of "install-info", so it can be a program name with args.
 set dummy install-info; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1061: checking for $ac_word" >&5
+echo "configure:917: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_INSTALL_INFO'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1092,7 +948,7 @@ fi
 # Extract the first word of "texi2dvi", so it can be a program name with args.
 set dummy texi2dvi; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1096: checking for $ac_word" >&5
+echo "configure:952: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_TEXI2DVI'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1127,7 +983,7 @@ fi
 # Extract the first word of "dvips", so it can be a program name with args.
 set dummy dvips; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1131: checking for $ac_word" >&5
+echo "configure:987: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_DVIPS'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1162,7 +1018,7 @@ fi
 # Extract the first word of "ps2pdf", so it can be a program name with args.
 set dummy ps2pdf; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1166: checking for $ac_word" >&5
+echo "configure:1022: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PS2PDF'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1207,7 +1063,7 @@ fi
 # SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
 # ./install, which can be erroneously created by make from ./install.sh.
 echo $ac_n "checking for a BSD compatible install""... $ac_c" 1>&6
-echo "configure:1211: checking for a BSD compatible install" >&5
+echo "configure:1067: checking for a BSD compatible install" >&5
 if test -z "$INSTALL"; then
 if eval "test \"`echo '$''{'ac_cv_path_install'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1451,13 +1307,9 @@ s%@AUTOHEADER@%$AUTOHEADER%g
 s%@MAKEINFO@%$MAKEINFO%g
 s%@AMTAR@%$AMTAR%g
 s%@install_sh@%$install_sh%g
-s%@STRIP@%$STRIP%g
 s%@INSTALL_STRIP_PROGRAM@%$INSTALL_STRIP_PROGRAM%g
-s%@INSTALL_STRIP_PROGRAM_ENV@%$INSTALL_STRIP_PROGRAM_ENV%g
 s%@AWK@%$AWK%g
 s%@SET_MAKE@%$SET_MAKE%g
-s%@ETAGS@%$ETAGS%g
-s%@ETAGS_INCLUDE_OPTION@%$ETAGS_INCLUDE_OPTION%g
 s%@AMDEP_TRUE@%$AMDEP_TRUE%g
 s%@AMDEP_FALSE@%$AMDEP_FALSE%g
 s%@AMDEPBACKSLASH@%$AMDEPBACKSLASH%g

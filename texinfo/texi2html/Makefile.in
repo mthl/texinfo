@@ -1,4 +1,4 @@
-# Makefile.in generated automatically by automake 1.4e from Makefile.am.
+# Makefile.in generated automatically by automake 1.4h from Makefile.am.
 
 # Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
 # Free Software Foundation, Inc.
@@ -14,7 +14,6 @@
 @SET_MAKE@
 
 # breaks with automake version < 1.4
-
 
 SHELL = @SHELL@
 
@@ -36,11 +35,9 @@ infodir = @infodir@
 mandir = @mandir@
 includedir = @includedir@
 oldincludedir = /usr/include
-
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
-
 top_builddir = .
 
 ACLOCAL = @ACLOCAL@
@@ -54,7 +51,6 @@ INSTALL_DATA = @INSTALL_DATA@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_HEADER = $(INSTALL_DATA)
 transform = @program_transform_name@
-
 NORMAL_INSTALL = :
 PRE_INSTALL = :
 POST_INSTALL = :
@@ -65,16 +61,12 @@ AMTAR = @AMTAR@
 AWK = @AWK@
 DEPDIR = @DEPDIR@
 DVIPS = @DVIPS@
-ETAGS = @ETAGS@
-ETAGS_INCLUDE_OPTION = @ETAGS_INCLUDE_OPTION@
 INSTALL_INFO = @INSTALL_INFO@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
-INSTALL_STRIP_PROGRAM_ENV = @INSTALL_STRIP_PROGRAM_ENV@
 MAKEINFO = @MAKEINFO@
 PACKAGE = @PACKAGE@
 PERL = @PERL@
 PS2PDF = @PS2PDF@
-STRIP = @STRIP@
 T2H_DATE = @T2H_DATE@
 T2H_VERSION = @T2H_VERSION@
 TEXI2DVI = @TEXI2DVI@
@@ -93,15 +85,10 @@ TEXINFO_TEX = doc/texinfo.tex
 
 bin_SCRIPTS = texi2html
 man_MANS = texi2html.1
-#EXTRA_DIST =  INTRODUCTION autogen.sh texi2html.init
-#              MySimple.pm MySimple.pod version.texi
 EXTRA_DIST = INTRODUCTION autogen.sh texi2html.init \
               MySimple.pm MySimple.pod
 
 
-#info_TEXINFOS = texi2html.texi
-#htmldir = $(prefix)/html
-#html_DATA    = texi2html.html
 TEXI2HTML = texi2html
 
 #MAINTAINERCLEANFILES =
@@ -135,7 +122,8 @@ DIST_SOURCES =
 NROFF = nroff
 MANS = $(man_MANS)
 
-RECURSIVE_TARGETS = all-recursive install-data-recursive \
+RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
+	uninstall-info-recursive all-recursive install-data-recursive \
 	install-exec-recursive installdirs-recursive install-recursive \
 	uninstall-recursive check-recursive installcheck-recursive
 DIST_COMMON = README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
@@ -146,19 +134,16 @@ DIST_SUBDIRS = $(SUBDIRS)
 all: all-recursive
 
 .SUFFIXES:
-
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --gnu  Makefile
-
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && \
 	  CONFIG_HEADERS= CONFIG_LINKS= \
 	  CONFIG_FILES=$@ $(SHELL) ./config.status
 
-config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
+$(top_builddir)/config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
-
 $(srcdir)/configure:  $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
 	cd $(srcdir) && $(AUTOCONF)
 
@@ -189,13 +174,15 @@ uninstall-binSCRIPTS:
 	  echo " rm -f $(DESTDIR)$(bindir)/$$f"; \
 	  rm -f $(DESTDIR)$(bindir)/$$f; \
 	done
+uninstall-info-am:
 
 man1dir = $(mandir)/man1
 install-man1: $(man1_MANS) $(man_MANS)
 	@$(NORMAL_INSTALL)
 	$(mkinstalldirs) $(DESTDIR)$(man1dir)
-	@list='$(man1_MANS)'; \
-	l2='$(man_MANS)'; for i in $$l2; do \
+	@list='$(man1_MANS) $(dist_man1_MANS) $(nodist_man1_MANS)'; \
+	l2='$(man_MANS) $(dist_man_MANS) $(nodist_man_MANS)'; \
+	for i in $$l2; do \
 	  case "$$i" in \
 	    *.1*) list="$$list $$i" ;; \
 	  esac; \
@@ -210,11 +197,11 @@ install-man1: $(man1_MANS) $(man_MANS)
 	  echo " $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst"; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst; \
 	done
-
 uninstall-man1:
 	@$(NORMAL_UNINSTALL)
-	@list='$(man1_MANS)'; \
-	l2='$(man_MANS)'; for i in $$l2; do \
+	@list='$(man1_MANS) $(dist_man1_MANS) $(nodist_man1_MANS)'; \
+	l2='$(man_MANS) $(dist_man_MANS) $(nodist_man_MANS)'; \
+	for i in $$l2; do \
 	  case "$$i" in \
 	    *.1*) list="$$list $$i" ;; \
 	  esac; \
@@ -300,17 +287,17 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 	here=`pwd`; \
 	list='$(SUBDIRS)'; for subdir in $$list; do \
 	  if test "$$subdir" = .; then :; else \
-	    test -f $$subdir/TAGS && tags="$$tags $(ETAGS_INCLUDE_OPTION)$$here/$$subdir/TAGS"; \
+	    test -f $$subdir/TAGS && tags="$$tags -i $$here/$$subdir/TAGS"; \
 	  fi; \
 	done; \
 	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
-	unique=`for i in $$list @CONFIG@; do \
+	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
 	  $(AWK) '    { files[$$0] = 1; } \
 	       END { for (i in files) print i; }'`; \
 	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
-	  || $(ETAGS) $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+	  || etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
 
 GTAGS:
 	here=`CDPATH=: && cd $(top_builddir) && pwd` \
@@ -323,7 +310,8 @@ distclean-tags:
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 
 top_distdir = .
-distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+# Avoid unsightly `./'.
+distdir = $(PACKAGE)-$(VERSION)
 
 GZIP_ENV = --best
 
@@ -332,7 +320,11 @@ distdir: $(DISTFILES)
 	mkdir $(distdir)
 	$(mkinstalldirs) $(distdir)/.
 	@for file in $(DISTFILES); do \
-	  d=$(srcdir); \
+	  if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	  if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	    $(mkinstalldirs) "$(distdir)/$$dir"; \
+	  fi; \
 	  if test -d $$d/$$file; then \
 	    cp -pR $$d/$$file $(distdir) \
 	    || exit 1; \
@@ -396,7 +388,6 @@ distcheck: dist
 check-am: all-am
 check: check-recursive
 all-am: Makefile $(SCRIPTS) $(MANS)
-
 installdirs: installdirs-recursive
 installdirs-am:
 	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir)
@@ -410,39 +401,37 @@ install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 
 installcheck: installcheck-recursive
-
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
-	  INSTALL_PROGRAM_ENV='$(INSTALL_STRIP_PROGRAM_ENV)' install
-
+	  `test -z '$(STRIP)' || \
+	    echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
 mostlyclean-generic:
 
 clean-generic:
 
 distclean-generic:
-	-rm -f Makefile $(CONFIG_CLEAN_FILES)
-	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-rm -f Makefile.in
 	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-recursive
 
 clean-am: clean-generic mostlyclean-am
 
-dist-all: dist
-
+dist-all: distdir
+	$(AMTAR) chof - $(distdir) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz
+	-chmod -R a+w $(distdir) >/dev/null 2>&1; rm -rf $(distdir)
 distclean: distclean-recursive
-	-rm -f config.status
+	-rm -f config.status config.cache config.log
 distclean-am: clean-am distclean-generic distclean-tags
 
-dvi:
+dvi: dvi-recursive
 
 dvi-am:
 
-info:
+info: info-recursive
 
 info-am:
 
@@ -450,53 +439,50 @@ install-data-am: install-man
 
 install-exec-am: install-binSCRIPTS
 
-install-info:
+install-info: install-info-recursive
 
 install-man: install-man1
 
 installcheck-am:
 
 maintainer-clean: maintainer-clean-recursive
-	-rm -f config.status
+
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-recursive
 
 mostlyclean-am: mostlyclean-generic
 
-uninstall-am: uninstall-binSCRIPTS uninstall-man
+uninstall-am: uninstall-binSCRIPTS uninstall-info-am uninstall-man
+
+uninstall-info: uninstall-info-recursive
 
 uninstall-man: uninstall-man1
 
 .PHONY: $(RECURSIVE_TARGETS) all all-am check check-am clean \
 	clean-generic clean-recursive dist dist-all distcheck distclean \
 	distclean-generic distclean-recursive distclean-tags distdir \
-	dvi dvi-am info info-am install install-am install-binSCRIPTS \
-	install-data install-data-am install-data-recursive \
-	install-exec install-exec-am install-exec-recursive \
-	install-info install-man install-man1 install-recursive \
-	install-strip installcheck installcheck-am installdirs \
-	installdirs-am installdirs-recursive maintainer-clean \
-	maintainer-clean-generic maintainer-clean-recursive mostlyclean \
-	mostlyclean-generic mostlyclean-recursive tags tags-recursive \
-	uninstall uninstall-am uninstall-binSCRIPTS uninstall-man \
-	uninstall-man1 uninstall-recursive
+	dvi dvi-am dvi-recursive info info-am info-recursive install \
+	install-am install-binSCRIPTS install-data install-data-am \
+	install-data-recursive install-exec install-exec-am \
+	install-exec-recursive install-info install-info-am \
+	install-info-recursive install-man install-man1 \
+	install-recursive install-strip installcheck installcheck-am \
+	installdirs installdirs-am installdirs-recursive \
+	maintainer-clean maintainer-clean-generic \
+	maintainer-clean-recursive mostlyclean mostlyclean-generic \
+	mostlyclean-recursive tags tags-recursive uninstall \
+	uninstall-am uninstall-binSCRIPTS uninstall-info-am \
+	uninstall-info-recursive uninstall-man uninstall-man1 \
+	uninstall-recursive
 
 
 all: texi2html
 
 texi2html: $(srcdir)/texi2html.pl $(srcdir)/texi2html.init $(srcdir)/MySimple.pm
 
-#texi2html.html: texi2html.texi $(TEXI2HTML) Makefile
-#	$(PERL) $(TEXI2HTML) -V texi2html.texi
-
-# Remove info and html files at make clean
-#clean-aminfo:
-#	rm -f texi2html.info* texi2html.html
-
 # Do not create info files for distribution
 dist-info:
-
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
