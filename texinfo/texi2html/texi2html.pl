@@ -266,7 +266,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.39 2003-04-10 14:00:43 pertusus Exp $
+# $Id: texi2html.pl,v 1.40 2003-04-22 17:05:23 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -289,6 +289,31 @@ my $T2H_TODAY; # date set by pretty_date
 
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
+
+#+++############################################################################
+#                                                                              #
+# Constants                                                                    #
+#                                                                              #
+#---############################################################################
+
+my $DEBUG_TOC   =  1;
+my $DEBUG_INDEX =  2;
+my $DEBUG_TEXI  =  4;
+my $DEBUG_MACROS =  8;
+# $DEBUG_   = 16;
+my $DEBUG_ELEMENTS  = 32;
+my $DEBUG_USER  = 64;
+my $DEBUG_L2H   = 128;
+
+my $ERROR = "***";                 # prefix for errors
+my $WARN  = "**";                  # prefix for warnings
+
+my $FILERE = '[\/\w.+-]+';         # RE for a file name
+my $VARRE = '[^\s\{\}]+';          # RE for a variable name
+my $NODERE = '[^:]+';             # RE for node names
+
+my $MAX_LEVEL = 4;
+my $MIN_LEVEL = 1;
 
 #+++############################################################################
 #                                                                              #
@@ -340,32 +365,6 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
 package main;
-
-#+++############################################################################
-#                                                                              #
-# Constants                                                                    #
-#                                                                              #
-#---############################################################################
-
-my $DEBUG_TOC   =  1;
-my $DEBUG_INDEX =  2;
-my $DEBUG_TEXI  =  4;
-my $DEBUG_MACROS =  8;
-# $DEBUG_   = 16;
-my $DEBUG_ELEMENTS  = 32;
-my $DEBUG_USER  = 64;
-my $DEBUG_L2H   = 128;
-
-
-my $FILERE = '[\/\w.+-]+';         # RE for a file name
-my $VARRE = '[^\s\{\}]+';          # RE for a variable name
-my $NODERE = '[^:]+';             # RE for node names
-
-my $ERROR = "***";                 # prefix for errors
-my $WARN  = "**";                  # prefix for warnings
-
-my $MAX_LEVEL = 4;
-my $MIN_LEVEL = 1;
 
 #
 # pre-defined indices

@@ -1,3 +1,9 @@
+2003-04-22  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: constants declared early as they are used in 
+	texi2html.init (at least $WARN is used)
+	* Makefile.in, Tests/Makefile.in, Tests/Makefile.am: add .passfirst  
+	and .2 files in regenerate and clean
+
 2003-04-10  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: labels were put 2 times in special
 	sections (Top, about, toc...).

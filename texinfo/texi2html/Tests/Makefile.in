@@ -207,16 +207,15 @@ test:
 
 regenerate:
 	for dir in ${SUBDIR_TESTS}; do \
-	[ -d $${dir}_res ] && cp $$dir/*.html $$dir/res.2 $${dir}_res;\
+	[ -d $${dir}_res ] && cp $$dir/*.html $$dir/*.2 $$dir/*.passfirst $${dir}_res;\
 	done
 
 clean:
 	for dir in ${SUBDIR_TESTS}; do \
 	(cd $$dir && $(RM) $$dir $$dir-* *.toc *.aux *.log *.op *.cp *.cps \
 	*.fn *.fns *.ky *.kys *.pg *.pgs *.tp *.tps *.vr *.vrs \
-	*.dvi *.html *.info *.html_tempnotag res.2 ) ; \
+	*.dvi *.html *.info *.html_tempnotag *.2 *.passfirst ) ; \
 	done
-	${RM} res.2
 
 .PHONY: test clean
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
