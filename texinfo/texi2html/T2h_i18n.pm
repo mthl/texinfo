@@ -249,16 +249,21 @@ my $T2H_WORDS_FR =
  'T2H_today' => 'le %2$d %1$s %3$d'
 };
 
-$T2H_LANGUAGES =
-{
- 'en' => $T2H_WORDS_EN,
- 'de' => $T2H_WORDS_DE,
- 'nl' => $T2H_WORDS_NL,
- 'es' => $T2H_WORDS_ES,
- 'no' => $T2H_WORDS_NO,
- 'pt' => $T2H_WORDS_PT,
- 'fr' => $T2H_WORDS_FR,
-};
+#$T2H_LANGUAGES =
+#{
+# 'en' => $T2H_WORDS_EN,
+# 'de' => $T2H_WORDS_DE,
+# 'nl' => $T2H_WORDS_NL,
+# 'es' => $T2H_WORDS_ES,
+# 'no' => $T2H_WORDS_NO,
+# 'pt' => $T2H_WORDS_PT,
+# 'fr' => $T2H_WORDS_FR,
+#};
+
+
+require "$ENV{T2H_HOME}/$translation_file"
+    if ($0 =~ /\.pl$/ &&
+        -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
 
 sub set_language($)
 {
@@ -282,6 +287,8 @@ my @MONTH_NAMES =
      'November', 'December'
     );
 
+my $I = \&get_string;
+
 sub pretty_date($) 
 {
     my $lang = shift;
@@ -291,173 +298,68 @@ sub pretty_date($)
     $year += ($year < 70) ? 2000 : 1900;
     # obachman: Let's do it as the Americans do
     #return($MONTH_NAMES->{$lang}[$mon] . ", " . $mday . " " . $year);
-    return(sprintf(get_string('T2H_today'), (get_string($MONTH_NAMES[$mon]), $mday, $year)));
+	#return(sprintf(&$I('T2H_today'), (get_string($MONTH_NAMES[$mon]), $mday, $year)));
+	# s, d d
+	return &$I('%{month}, %{day} %{year}', { 'month' => get_string($MONTH_NAMES[$mon]),
+          'day' => $mday, 'year' => $year });
 }
 
-sub get_string($)
+my $error_no_en = 0;
+sub get_string($;$)
 {
     my $string = shift;
-    print STDERR "i18n: missing string $string\n" unless (exists ($T2H_LANGUAGES->{'en'}->{$string}));
-    return $T2H_LANGUAGES->{$language}->{$string} if (defined ($T2H_LANGUAGES->{$language}->{$string}) and ($T2H_LANGUAGES->{$language}->{$string} ne ''));
-    return $T2H_LANGUAGES->{'en'}->{$string} if (defined ($T2H_LANGUAGES->{'en'}->{$string}) and ($T2H_LANGUAGES->{'en'}->{$string} ne ''));
-    return $string;
-}
-
-# Handle per language files
-my $T2H_OBSOLETE_STRINGS = {};
-$Data::Dumper::Purity = 1;
-
-sub update_language_file($);
-
-sub manage_i18n_files($)
-{
-    my $command = shift;
-    if ($command eq 'update')
-    {
-        update_i18n_files();
-    }
-    elsif ($command eq 'merge')
-    {
-        merge_i18n_files();
-    }
-    else
-    {
-        warn "Unknown i18n command: $command\n";
-    }
-    exit 0;
-}
-
-sub merge_i18n_files
-{
-    die "No suitable $i18n_dir directory\n" unless (-d $i18n_dir and -r $i18n_dir);
-    if (-f $translation_file)
-    {
-        unless (File::Copy::copy ($translation_file, "$translation_file.old"))
+	my $arguments = shift;
+	if (! exists($T2H_LANGUAGES->{'en'}))
+	{
+        unless($error_no_en)
         {
-            die "Error copying $translation_file to $translation_file.old\n";
+	        print STDERR "i18n: no T2H_LANGUAGES->{'en'} hash\n";
+            $error_no_en = 1;
         }
     }
-    die "open $translation_file failed" unless (open (TRANSLATIONS, ">$translation_file"));
-    foreach my $lang (@known_languages)
-    {
-         my $file = "$i18n_dir/$lang";
-         next unless (-r $file);
-         unless (open (FILE, $file))
-         {
-              warn "open $file failed: $!\n";
-              return;
-         }
-         while (<FILE>)
-         {
-              print TRANSLATIONS;
-         }
-         close FILE;
-    }
-}
-        
-
-sub update_i18n_files
-{
-    die "No suitable $i18n_dir directory\n" unless (-d $i18n_dir and -w $i18n_dir);
-    my @languages = @known_languages;
-    if (@ARGV)
-    {
-        @languages = ();
-        foreach my $lang (@ARGV)
+	else
+	{
+        print STDERR "i18n: missing string $string\n" unless (exists ($T2H_LANGUAGES->{'en'}->{$string}));
+        if (defined ($T2H_LANGUAGES->{$language}->{$string}) and
+           ($T2H_LANGUAGES->{$language}->{$string} ne ''))
         {
-            unless (grep {$lang eq $_} @known_languages)
+            $string = $T2H_LANGUAGES->{$language}->{$string};
+        }
+        elsif (defined ($T2H_LANGUAGES->{'en'}->{$string}) and
+            ($T2H_LANGUAGES->{'en'}->{$string} ne ''))
+        {
+            $string = $T2H_LANGUAGES->{'en'}->{$string};
+        }
+    }
+    return $string unless (defined($arguments));
+	my $result = '';
+	while ($string)
+	{
+        if ($string =~ s/^([^%]*)%//)
+        {
+            $result .= $1 if (defined($1));
+            if ($string =~ s/^%//)
             {
-                print STDERR "Unsupported language `$lang'\n";
-                next;
+                 $result .= '%';
             }
-            push (@languages, $lang) unless (grep {$lang eq $_} @languages);
+            elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
+			{
+                 $string =~ s/^\{(\w+)\}//;
+                 $result .= $arguments->{$1};
+            }
+            else
+            {
+                 $result .= '%';
+            }
+            next;
+        }
+        else 
+        {   
+            $result .= $string;
+            last;
         }
     }
-    unless (@languages)
-    {
-        warn "No languages to update\n" ;
-        return;
-    }
-    foreach my $lang (@languages)
-    {
-        update_language_file($lang);
-    }
-    return 1;
-}
-
-sub update_language_file($)
-{
-    my $lang = shift;
-    unless (grep {$lang eq $_} @known_languages)
-    {
-        print STDERR "Unsupported language `$lang'\n";
-        return;
-    }
-    my $file = "$i18n_dir/$lang";
-    if (-f $file)
-    {
-        eval { require($file) ;};
-        if ($@)
-        {
-            warn "require $file failed: $@\n";
-            return;
-        }
-        unless (File::Copy::copy ($file, "$file.old"))
-        {
-            warn "Error copying $file to $file.old\n";
-            return;
-        }
-        if (!defined($T2H_LANGUAGES->{$lang}))
-        {
-            warn "T2H_LANGUAGES->{$lang} not defined in $file\n";
-            return;
-        }
-    }
-    unless (open (FILE, ">$file"))
-    {
-         warn "open $file failed: $!\n";
-         return;
-    }
-
-    if (!defined($T2H_OBSOLETE_STRINGS->{$lang}))
-    {
-        $T2H_OBSOLETE_STRINGS->{$lang} = {};
-    }
-    foreach my $string (keys %{$T2H_OBSOLETE_STRINGS->{$lang}})
-    {
-        unless (exists($T2H_LANGUAGES->{$lang}->{$string}) and ($T2H_LANGUAGES->{$lang}->{$string} ne ''))
-        {
-             $T2H_LANGUAGES->{$lang}->{$string} = $T2H_OBSOLETE_STRINGS->{$lang}->{$string};
-        }
-    }
-    
-    my $words;
-    foreach my $string (keys %{$T2H_LANGUAGES->{$lang}})
-    {
-        $words->{$string} = $T2H_LANGUAGES->{$lang}->{$string};
-    }
-    $T2H_LANGUAGES->{$lang} = {};
-    $T2H_OBSOLETE_STRINGS->{$lang} = {};
-    
-    foreach my $string (keys %{$T2H_LANGUAGES->{'en'}})
-    {
-        if (exists($words->{$string}))
-        {
-             $T2H_LANGUAGES->{$lang}->{$string} = $words->{$string};
-             delete $words->{$string};
-        }
-        else
-        {
-             $T2H_LANGUAGES->{$lang}->{$string} = '';
-        }
-    }
-    $T2H_OBSOLETE_STRINGS->{$lang} = $words;
-    print FILE "" . Data::Dumper->Dump([$T2H_LANGUAGES->{$lang}], [ "T2H_LANGUAGES->{'$lang'}" ]);
-    print FILE "\n";
-    print FILE Data::Dumper->Dump([$T2H_OBSOLETE_STRINGS->{$lang}], [ "T2H_OBSOLETE_STRINGS->{'$lang'}"]);
-    print FILE "\n";
-    print FILE "\n";
-    close FILE;
+	return $result;
 }
 
 1;

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.64 2003-09-05 23:35:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.65 2003-09-11 13:25:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -184,7 +184,6 @@ our @INCLUDE_DIRS ;
 our @PREPEND_DIRS ;
 our $IGNORE_PREAMBLE_TEXT;
 our @CSS_FILES;
-our $I18N_COMMAND;
 
 # customization variables
 our $ENCODING;
@@ -434,7 +433,7 @@ sub t2h_gpl_info_ref($$$)
 }
 
 # ref to a book
-sub t2h_gpl_book_ref($$$)
+sub t2h_gpl_book_ref($$)
 {
     my $section = shift;
     my $book = shift;
@@ -535,7 +534,8 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
-# @TRANSLATIONS@
+my $T2H_OBSOLETE_STRINGS;
+# @T2H_TRANSLATIONS_FILE@
 
 {
 package Texi2HTML::LaTeX2HTML::Config;
@@ -903,6 +903,9 @@ $| = 1;
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
 
+my $I = \&Texi2HTML::I18n::get_string;
+
+#print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
 sub locate_init_file($)
 {
@@ -949,8 +952,6 @@ sub load_init_file
 }
 
 my $lang_set = 0; # set to 1 if lang was succesfully set by the command line
-
-my $I = \&Texi2HTML::I18n::get_string;
 
 #
 # called on -lang
@@ -1365,14 +1366,6 @@ $T2H_OPTIONS -> {'css-include'} =
  verbose => 'use css file $s'
 };
 
-$T2H_OPTIONS -> {'i18n'} = 
-{
- type => '=s',
- linkage => \$Texi2HTML::Config::I18N_COMMAND,
- verbose => 'manage i18n, do $s',
- noHelp => 1
-};
-
 ##
 ## obsolete cmd line options
 ##
@@ -1664,10 +1657,6 @@ if (@ARGV > 1)
 my $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
-if ($Texi2HTML::Config::I18N_COMMAND ne '')
-{
-    Texi2HTML::I18n::manage_i18n_files($Texi2HTML::Config::I18N_COMMAND);
-}
 
 #+++############################################################################
 #                                                                              #
@@ -4753,7 +4742,7 @@ sub pass_text()
     my $top_name = $Texi2HTML::Config::TOP_HEADING || $element_top_text || $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'shorttitle'} || &$I('Top');
 
     # I18n Untitled Document
-    $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || &$I("Untitled Document") ;
+    $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || &$I('Untitled Document') ;
     $Texi2HTML::THISDOC{'title'} = $Texi2HTML::THISDOC{'settitle'} || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
     $Texi2HTML::THISDOC{'titlefont'} = substitute_line($value{'_titlefont'});
@@ -4771,7 +4760,7 @@ sub pass_text()
     # I18n for 'Top'
     $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top');
     # I18n Untitled Document
-    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I("Untitled Document");
+    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I('Untitled Document');
 
     for my $key (keys %Texi2HTML::THISDOC)
     {
@@ -6266,7 +6255,7 @@ sub do_xref($$$$)
     }
     
     my $i;
-    for ($i = 0; $i < @args; $i++)
+    for ($i = 0; $i < 5; $i++)
     {
         $args[$i] = substitute_text({ 'element' => $state->{'element'}, 
            'preformatted' => $state->{'preformatted'},  'no_paragraph' => 1,
@@ -6275,7 +6264,7 @@ sub do_xref($$$$)
     }
     #print STDERR "(@args)\n";
     
-    if (($macro eq 'inforef') or ($args[3]) or $args[4])
+    if (($macro eq 'inforef') or ($args[3] ne '') or ($args[4] ne ''))
     {# inforef
         if ($macro eq 'inforef')
         {
@@ -6285,7 +6274,7 @@ sub do_xref($$$$)
         my $info_ref;
         $info_ref = &$Texi2HTML::Config::info_ref("($args[3])$args[0]", do_external_ref($node_texi), $args[1]) if ($args[3]);
         my $book_ref;
-        $book_ref = &$Texi2HTML::Config::book_ref($args[2] || $args[0], $args[4]) if ($args[4]);
+        $book_ref = &$Texi2HTML::Config::book_ref($args[2] || $args[0], $args[4]) if ($args[4] ne '');
         $result = &$Texi2HTML::Config::external_ref($macro, $info_ref, $book_ref);
     }
     #elsif (@args == 5)

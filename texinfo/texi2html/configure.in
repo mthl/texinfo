@@ -18,6 +18,8 @@ T2H_I18N=$srcdir/T2h_i18n.pm
 AC_SUBST_FILE([T2H_I18N])
 T2H_L2H_FILE=$srcdir/l2h.init
 AC_SUBST_FILE([T2H_L2H_FILE])
+T2H_TRANSLATIONS_FILE=$srcdir/translations.pl
+AC_SUBST_FILE([T2H_TRANSLATIONS_FILE])
 
 dnl Checks for programs.
 AC_PATH_PROG(PERL, perl, /usr/bin/env perl, /opt/perl5/bin:"$PATH")

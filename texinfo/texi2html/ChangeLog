@@ -1,3 +1,22 @@
+2003-09-11  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, T2h_i18n.pm, manage_i18n.pl,
+	configure.in:
+	The ideas come from Derek.
+	new script manage_i18n.pl used to manage translation files.
+	remove -i18n switch. 
+	parse source files to extract strings to be translated.
+	complete these strings with the element of %$template_strings
+	in manage_i18n.pl and fill the i18n/template file with 
+	these strings in the 'en' language hash.
+	With the 'all' arg given to manage_i18n.pl the template is 
+	regenerated the language files are updated and merged in 
+	translations.pl. translations.pl is pasted in texi2html.pl.
+	give arguments to the string to be translated: when something
+	like %{arg} appears in the string and { 'arg' => 'some string'}
+	is given as second argument, %{arg} is replaced by 'some string'
+	after retrieval of the translated string.
+
 2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
 
 	* images, AUTHORS: add images from the Singular project.

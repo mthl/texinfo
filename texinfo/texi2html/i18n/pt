@@ -1,0 +1,32 @@
+$T2H_LANGUAGES->{'pt'} = {
+                           '%{month}, %{day} %{year}' => '',
+                           'About This Document' => 'No translation available!',
+                           'April' => 'Abril',
+                           'August' => 'Agosto',
+                           'December' => 'Dezembro',
+                           'February' => 'Fevereiro',
+                           'Footnotes' => 'No translation available!',
+                           'January' => 'Janeiro',
+                           'July' => 'Julho',
+                           'June' => 'Junho',
+                           'March' => 'Mar&ccedil;o',
+                           'May' => 'Maio',
+                           'November' => 'Novembro',
+                           'October' => 'Outubro',
+                           'See' => 'Veja',
+                           'September' => 'Setembro',
+                           'Short Table of Contents' => 'Breve Sum&aacute;rio',
+                           'T2H_today' => '',
+                           'Table of Contents' => 'Sum&aacute;rio',
+                           'Top' => '',
+                           'Untitled Document' => '',
+                           'section' => 'Se&ccedil;&atilde;o',
+                           'see' => 'veja',
+                           'see %s <cite>%s</cite> section %s' => ''
+                         };
+
+$T2H_OBSOLETE_STRINGS->{'pt'} = {
+                                  'Index' => '&Iacute;ndice'
+                                };
+
+

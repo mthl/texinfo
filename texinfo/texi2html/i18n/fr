@@ -1,0 +1,32 @@
+$T2H_LANGUAGES->{'fr'} = {
+                           '%{month}, %{day} %{year}' => 'le %{day} %{month} %{year}',
+                           'About This Document' => 'A propos de ce document',
+                           'April' => 'Avril',
+                           'August' => 'Ao&ucirc;t',
+                           'December' => 'D&eacute;cembre',
+                           'February' => 'F&eacute;vrier',
+                           'Footnotes' => 'Notes de bas de page',
+                           'January' => 'Janvier',
+                           'July' => 'Juillet',
+                           'June' => 'Juin',
+                           'March' => 'Mars',
+                           'May' => 'Mai',
+                           'November' => 'Novembre',
+                           'October' => 'Octobre',
+                           'See' => 'Voir',
+                           'September' => 'Septembre',
+                           'Short Table of Contents' => 'R&eacute;sum&eacute;e du contenu',
+                           'T2H_today' => 'le %2$d %1$s %3$d',
+                           'Table of Contents' => 'Table des mati&egrave;res',
+                           'Top' => '',
+                           'Untitled Document' => '',
+                           'section' => 'section',
+                           'see' => 'voir',
+                           'see %s <cite>%s</cite> section %s' => ''
+                         };
+
+$T2H_OBSOLETE_STRINGS->{'fr'} = {
+                                  'Index' => 'Index'
+                                };
+
+
