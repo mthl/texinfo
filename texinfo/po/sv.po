@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3c\n"
-"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"POT-Creation-Date: 2003-05-18 08:36-0700\n"
 "PO-Revision-Date: 2003-01-25 02:15+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -1890,11 +1890,11 @@ msgstr "@sp kräver ett positivt numeriskt argument, inte \"%s\""
 msgid "Bad argument to %c%s"
 msgstr "Felaktigt argument till %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
 msgid "asis"
 msgstr "oförändrad"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
 msgid "none"
 msgstr "ingen"
 
@@ -1980,22 +1980,22 @@ msgstr "Fotnoter"
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: makeinfo/html.c:190
+#: makeinfo/html.c:188
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:265
+#: makeinfo/html.c:263
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
 # to pop?
-#: makeinfo/html.c:360
+#: makeinfo/html.c:358
 msgid "[unexpected] no html tag to pop"
 msgstr "[oväntat] ingen html-tagg att poppa"
 
-#: makeinfo/html.c:568
+#: makeinfo/html.c:566
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[oväntat] ogiltigt nodnamn: \"%s\""
@@ -2533,67 +2533,67 @@ msgstr "INGET_NAMN!"
 msgid "%c%s missing close brace"
 msgstr "%c%s saknar avslutande klammer"
 
-#: makeinfo/makeinfo.c:3034
+#: makeinfo/makeinfo.c:3055
 msgid "First argument to cross-reference may not be empty"
 msgstr "Första argumentet till korsreferens kan inte vara tomt"
 
-#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
 msgid "see "
 msgstr "se "
 
-#: makeinfo/makeinfo.c:3094
+#: makeinfo/makeinfo.c:3115
 msgid "See "
 msgstr "Se "
 
-#: makeinfo/makeinfo.c:3240
+#: makeinfo/makeinfo.c:3261
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "\".\" eller \",\" måste följa på korsreferens, inte %c"
 
-#: makeinfo/makeinfo.c:3288
+#: makeinfo/makeinfo.c:3309
 msgid "First argument to @inforef may not be empty"
 msgstr "Första argumentet till @inforef kan inte vara tomt"
 
-#: makeinfo/makeinfo.c:3520
+#: makeinfo/makeinfo.c:3541
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-filen \"%s\" (för HTML) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3526
+#: makeinfo/makeinfo.c:3547
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Inget \"%s\" hittades i \"%s\""
 
-#: makeinfo/makeinfo.c:3612
+#: makeinfo/makeinfo.c:3633
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-filen \"%s\" (för text) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3621
+#: makeinfo/makeinfo.c:3642
 msgid "@image missing filename argument"
 msgstr "@image saknar filnamnsargument"
 
-#: makeinfo/makeinfo.c:3819
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Inget värde för \"%s\"}"
 
-#: makeinfo/makeinfo.c:3875
+#: makeinfo/makeinfo.c:3896
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kräver ett namn"
 
-#: makeinfo/makeinfo.c:3981
+#: makeinfo/makeinfo.c:4002
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nådde filslut innan matchande @end %s"
 
-#: makeinfo/makeinfo.c:4212
+#: makeinfo/makeinfo.c:4233
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" är för lång för expansion; inte expanderad"

@@ -190,4 +190,5 @@ set args -o /dev/null $ttests/lilypond-internals.nexi
 # no <html>
 set args -o $ttests/tbook.html --html --no-split $ttests/tbook.tex
 
-set args -o /tmp/x.html -I$tdoc --html --no-split $tdoc/texinfo.txi
+# long css seg fault
+set args -o - --html --no-split --css-include=$ttests/test.css $ttests/tbook.tex

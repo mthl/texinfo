@@ -1,9 +1,19 @@
+2003-05-18    <karl@gnu.org>
+
+	* pretest version 4.5.92.
+
+	* update to automake 1.7.5.
+
+	* makeinfo/html.c (append_char): forgot to increment length, duh.
+	Report from: "Torsten Bronger" <bronger@physik.rwth-aachen.de>,
+	18 May 2003 14:36:23 +0200.
+
 2003-05-17    <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (defining_copying): new fn.
 	(add_char): call it, when testing if we should
 	call html_output_head.
-	Report from Torsten Bronger <bronger@physik.rwth-aachen.de>,
+	Report from: Torsten Bronger <bronger@physik.rwth-aachen.de>,
 	17 May 2003 22:10:42 +0200.
 
 	* configure.ac: pretest version 4.5.91.

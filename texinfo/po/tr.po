@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.5\n"
-"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"POT-Creation-Date: 2003-05-18 08:36-0700\n"
 "PO-Revision-Date: 2003-02-06 16:03GMT\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -1822,11 +1822,11 @@ msgstr "@sp pozitif bir sayýsal argüman gerektirir, `%s' deðil"
 msgid "Bad argument to %c%s"
 msgstr "%c%s'ye hatalý argüman"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
 msgid "none"
 msgstr "yok"
 
@@ -1912,21 +1912,21 @@ msgstr "Dipnotlar"
 msgid "Untitled"
 msgstr "Adsýz"
 
-#: makeinfo/html.c:190
+#: makeinfo/html.c:188
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:265
+#: makeinfo/html.c:263
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:360
+#: makeinfo/html.c:358
 msgid "[unexpected] no html tag to pop"
 msgstr "hayýr :"
 
-#: makeinfo/html.c:568
+#: makeinfo/html.c:566
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[beklenmeyen] geçersiz düðüm ismi: `%s'"
@@ -2462,67 +2462,67 @@ msgstr "ÝSÝMSÝZ!"
 msgid "%c%s missing close brace"
 msgstr "%c%s eksik kapama }"
 
-#: makeinfo/makeinfo.c:3034
+#: makeinfo/makeinfo.c:3055
 msgid "First argument to cross-reference may not be empty"
 msgstr "Çapraz baþvuru kurulacak ilk argüman boþ olmayabilir"
 
-#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
 msgid "see "
 msgstr "bkz "
 
-#: makeinfo/makeinfo.c:3094
+#: makeinfo/makeinfo.c:3115
 msgid "See "
 msgstr "Bkz "
 
-#: makeinfo/makeinfo.c:3240
+#: makeinfo/makeinfo.c:3261
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "`.' ya da `,' çapraz baþvuruyu izlemelidir, %c'yi deðil"
 
-#: makeinfo/makeinfo.c:3288
+#: makeinfo/makeinfo.c:3309
 msgid "First argument to @inforef may not be empty"
 msgstr "@inforef'e ilk argüman boþ olmayabilir"
 
-#: makeinfo/makeinfo.c:3520
+#: makeinfo/makeinfo.c:3541
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image dosyasý `%1$s' (HTML için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3526
+#: makeinfo/makeinfo.c:3547
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "`%2$s' içinde `%1$s' yok"
 
-#: makeinfo/makeinfo.c:3612
+#: makeinfo/makeinfo.c:3633
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image dosyasý `%1$s' (metin için) okunamýyor: %2$s"
 
-#: makeinfo/makeinfo.c:3621
+#: makeinfo/makeinfo.c:3642
 msgid "@image missing filename argument"
 msgstr "@image eksik dosyaadý argümaný"
 
-#: makeinfo/makeinfo.c:3819
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "(`%s' için deðer yok)"
 
-#: makeinfo/makeinfo.c:3875
+#: makeinfo/makeinfo.c:3896
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bir isim gerektirir"
 
-#: makeinfo/makeinfo.c:3981
+#: makeinfo/makeinfo.c:4002
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Eþleþen @end %s'den önce dosya sonuna ulaþýldý"
 
-#: makeinfo/makeinfo.c:4212
+#: makeinfo/makeinfo.c:4233
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' geniþleme için çok uzun; geniþletilmedi"

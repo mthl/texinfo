@@ -4,8 +4,8 @@
 
 $EMACSSRC/man/info.texi			doc
 $GNUBIN/help2man			doc
-$TEXMF/tex/generic/dvips/epsf.tex	doc
-$TEXMF/pdftex/plain/misc/pdfcolor.tex	doc
+$TEXMFROOT/tex/generic/dvips/epsf.tex		doc
+$TEXMFROOT/pdftex/plain/misc/pdfcolor.tex	doc
 
 
 $GETTEXT/ABOUT-NLS		.

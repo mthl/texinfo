@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.29 2003-05-17 16:40:26 karl Exp $
+$Id: dir-example,v 1.30 2003-05-18 15:51:15 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -87,7 +87,6 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
-* automake: (automake).		Making Makefile.in's.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * bison: (bison).               GNU parser generator (Yacc replacement).
 * CVS: (cvs).                   Concurrent versions system for source control.
@@ -436,3 +435,6 @@ Programming
 * Cpplib: (cppinternals).      Cpplib internals.
 * gcc: (gcc).                  The GNU Compiler Collection.
 * gccint: (gccint).            Internals of the GNU Compiler Collection.
+
+GNU programming tools
+* automake: (automake).		Making Makefile.in's

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3c\n"
-"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"POT-Creation-Date: 2003-05-18 08:36-0700\n"
 "PO-Revision-Date: 2003-01-25 11:47+06:00\n"
 "Last-Translator: Sergio Pokrovskij <pok@iis.nsk.su>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -1814,11 +1814,11 @@ msgstr "@sp bezonas ne \"%s\" sed pozitivan argumenton nombran"
 msgid "Bad argument to %c%s"
 msgstr "Misa argumento por %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
 msgid "none"
 msgstr "none"
 
@@ -1904,21 +1904,21 @@ msgstr "Piednotoj"
 msgid "Untitled"
 msgstr "Sen titolo"
 
-#: makeinfo/html.c:190
+#: makeinfo/html.c:188
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:265
+#: makeinfo/html.c:263
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:360
+#: makeinfo/html.c:358
 msgid "[unexpected] no html tag to pop"
 msgstr "[neatendite] mankas HTML-etikedo por elstakigo"
 
-#: makeinfo/html.c:568
+#: makeinfo/html.c:566
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[neatendite] misa nodnomo: \"%s\""
@@ -2463,67 +2463,67 @@ msgstr "SEN_NOMO!"
 msgid "%c%s missing close brace"
 msgstr "%c%s sen \"}\""
 
-#: makeinfo/makeinfo.c:3034
+#: makeinfo/makeinfo.c:3055
 msgid "First argument to cross-reference may not be empty"
 msgstr "La unua argumento de internoda referenco ne vaku"
 
-#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
 msgid "see "
 msgstr "vidu "
 
-#: makeinfo/makeinfo.c:3094
+#: makeinfo/makeinfo.c:3115
 msgid "See "
 msgstr "Vidu "
 
-#: makeinfo/makeinfo.c:3240
+#: makeinfo/makeinfo.c:3261
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "Referencon devas sekvi punkto aux komo, ne %c"
 
-#: makeinfo/makeinfo.c:3288
+#: makeinfo/makeinfo.c:3309
 msgid "First argument to @inforef may not be empty"
 msgstr "La unua argumento de @inforef ne vaku"
 
-#: makeinfo/makeinfo.c:3520
+#: makeinfo/makeinfo.c:3541
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "por HTML, la dosiero \"%s\" en la komando @image estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3526
+#: makeinfo/makeinfo.c:3547
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Neniu \"%s\" trovita en \"%s\""
 
-#: makeinfo/makeinfo.c:3612
+#: makeinfo/makeinfo.c:3633
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "bilddosiero \"%s\" (por teksto) estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3621
+#: makeinfo/makeinfo.c:3642
 msgid "@image missing filename argument"
 msgstr "mankas dosiera argumento en la komando @image"
 
-#: makeinfo/makeinfo.c:3819
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Mankas Valoro Por \"%s\"}"
 
-#: makeinfo/makeinfo.c:3875
+#: makeinfo/makeinfo.c:3896
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bezonas nomon"
 
-#: makeinfo/makeinfo.c:3981
+#: makeinfo/makeinfo.c:4002
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Pli frue ol la para @end %s renkontigxis dosierfino"
 
-#: makeinfo/makeinfo.c:4212
+#: makeinfo/makeinfo.c:4233
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" tro longas por malvolvo; malvolvo ne okazos"

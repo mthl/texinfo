@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3c\n"
-"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"POT-Creation-Date: 2003-05-18 08:36-0700\n"
 "PO-Revision-Date: 2003-01-27 08:00-05:00\n"
 "Last-Translator: Laurent Bourbeau <bourbeau@progiciels-bpi.ca>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -1873,11 +1873,11 @@ msgstr "La macro @sp exige un argument numérique positif, pas « %s »"
 msgid "Bad argument to %c%s"
 msgstr "Mauvais argument à %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
 msgid "asis"
 msgstr "« asis »"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
 msgid "none"
 msgstr "« none »"
 
@@ -1964,21 +1964,21 @@ msgstr "Notes de bas de page"
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: makeinfo/html.c:190
+#: makeinfo/html.c:188
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:265
+#: makeinfo/html.c:263
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:360
+#: makeinfo/html.c:358
 msgid "[unexpected] no html tag to pop"
 msgstr "[inattendu] pas d'étiquette html à dépiler"
 
-#: makeinfo/html.c:568
+#: makeinfo/html.c:566
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[inattendu] nom de noeud invalide: « %s »"
@@ -2532,67 +2532,67 @@ msgstr "NOM_INCONNU!"
 msgid "%c%s missing close brace"
 msgstr "%c%s accolade fermante manquante"
 
-#: makeinfo/makeinfo.c:3034
+#: makeinfo/makeinfo.c:3055
 msgid "First argument to cross-reference may not be empty"
 msgstr "Premier argument de références croisée peut ne pas être vide"
 
-#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
 msgid "see "
 msgstr "voir "
 
-#: makeinfo/makeinfo.c:3094
+#: makeinfo/makeinfo.c:3115
 msgid "See "
 msgstr "Voir "
 
-#: makeinfo/makeinfo.c:3240
+#: makeinfo/makeinfo.c:3261
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "« . » ou « , » doit suivre une référence croisée, non pas %c"
 
-#: makeinfo/makeinfo.c:3288
+#: makeinfo/makeinfo.c:3309
 msgid "First argument to @inforef may not be empty"
 msgstr "Premier argument de @inforef peut ne pas être vide"
 
-#: makeinfo/makeinfo.c:3520
+#: makeinfo/makeinfo.c:3541
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "commande @image dans un fichier (pour HTML) « %s » illisible: %s"
 
-#: makeinfo/makeinfo.c:3526
+#: makeinfo/makeinfo.c:3547
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Aucun « %s » trouvé dans « %s »"
 
-#: makeinfo/makeinfo.c:3612
+#: makeinfo/makeinfo.c:3633
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "commande @image avec un fichier (texte) « %s » illisible: %s"
 
-#: makeinfo/makeinfo.c:3621
+#: makeinfo/makeinfo.c:3642
 msgid "@image missing filename argument"
 msgstr "commande @image ayant un argument fichier absent"
 
-#: makeinfo/makeinfo.c:3819
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Aucune valeur pour « %s »}"
 
-#: makeinfo/makeinfo.c:3875
+#: makeinfo/makeinfo.c:3896
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s exige un nom"
 
-#: makeinfo/makeinfo.c:3981
+#: makeinfo/makeinfo.c:4002
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Fin de fichier rencontré avant l'appariement de @end %s"
 
-#: makeinfo/makeinfo.c:4212
+#: makeinfo/makeinfo.c:4233
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""

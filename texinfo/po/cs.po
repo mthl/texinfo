@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
-"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"POT-Creation-Date: 2003-05-18 08:36-0700\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1815,11 +1815,11 @@ msgstr "@sp vy¾aduje kladný èíselný argument a ne `%s'"
 msgid "Bad argument to %c%s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
 msgid "none"
 msgstr "none"
 
@@ -1906,21 +1906,21 @@ msgstr "Poznámky pod èarou"
 msgid "Untitled"
 msgstr "Neoznaèeno"
 
-#: makeinfo/html.c:190
+#: makeinfo/html.c:188
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:265
+#: makeinfo/html.c:263
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:360
+#: makeinfo/html.c:358
 msgid "[unexpected] no html tag to pop"
 msgstr ""
 
-#: makeinfo/html.c:568
+#: makeinfo/html.c:566
 #, fuzzy, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "%s: neznámý pøepínaè `--%s'\n"
@@ -2393,67 +2393,67 @@ msgstr "Funkce neexistuje!"
 msgid "%c%s missing close brace"
 msgstr "%c%s chybìjící uzavírací závorka"
 
-#: makeinfo/makeinfo.c:3034
+#: makeinfo/makeinfo.c:3055
 msgid "First argument to cross-reference may not be empty"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
 msgid "see "
 msgstr "viz"
 
-#: makeinfo/makeinfo.c:3094
+#: makeinfo/makeinfo.c:3115
 msgid "See "
 msgstr "Viz"
 
-#: makeinfo/makeinfo.c:3240
+#: makeinfo/makeinfo.c:3261
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
 
-#: makeinfo/makeinfo.c:3288
+#: makeinfo/makeinfo.c:3309
 msgid "First argument to @inforef may not be empty"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3520
+#: makeinfo/makeinfo.c:3541
 #, fuzzy, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: makeinfo/makeinfo.c:3526
+#: makeinfo/makeinfo.c:3547
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Soubor `%s' nenalezen v `%s'"
 
-#: makeinfo/makeinfo.c:3612
+#: makeinfo/makeinfo.c:3633
 #, fuzzy, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: makeinfo/makeinfo.c:3621
+#: makeinfo/makeinfo.c:3642
 msgid "@image missing filename argument"
 msgstr "pøíkaz @image postrádá jméno souboru"
 
-#: makeinfo/makeinfo.c:3819
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3820
+#: makeinfo/makeinfo.c:3841
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Pro `%s' není hodnota}"
 
-#: makeinfo/makeinfo.c:3875
+#: makeinfo/makeinfo.c:3896
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s po¾aduje jméno"
 
-#: makeinfo/makeinfo.c:3981
+#: makeinfo/makeinfo.c:4002
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Vstupní soubor skonèil a pøíkaz `@end %s' nebyl nalezen"
 
-#: makeinfo/makeinfo.c:4212
+#: makeinfo/makeinfo.c:4233
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
