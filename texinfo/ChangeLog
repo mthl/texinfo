@@ -1,3 +1,15 @@
+2003-04-01    <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (main): correct wording of html/no-headers/split
+	error message, and don't complain if output is to stdout.
+
+	* makeinfo/insertion.c (end_insertion): for @end menu html output,
+	don't output </ul> if no_headers.  Report from: Jesper
+	Harder <harder@ifa.au.dk>, 01 Apr 2003 00:00:37 +0200.
+
+	* info/infomap.c (fetch_user_maps): don't complain if .info
+		doesn't exist.
+
 2003-03-31    <karl@gnu.org>
 
 	* makeinfo/lang.c (iso8859_2_map): new encoding map.
