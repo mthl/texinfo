@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.5 2002-10-27 23:52:54 wl Exp $
+   $Id: html.c,v 1.6 2002-10-31 22:09:59 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -28,12 +28,12 @@ HSTACK *htmlstack = NULL;
 
 /* See html.h.  */
 int html_output_head_p = 0;
+int html_title_written = 0;
 
 void
 html_output_head ()
 {
   static char *html_title = NULL;
-  static int html_title_written = 0;
 
   if (html_output_head_p)
     return;
