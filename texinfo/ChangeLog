@@ -1,3 +1,11 @@
+2003-02-07    <karl@gnu.org>
+
+	* makeinfo/insertion.c (begin_insertion): output a table with a border
+	for @cartouche.
+	(end_insertion): end the table.
+	From: Joshua N Pritikin <vishnu@pobox.com>,
+	7 Feb 2003 21:59:49 +0530.
+
 2003-02-05    <karl@gnu.org>
 
 	* info/info.c (short_options): add h.

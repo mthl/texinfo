@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.14 2003-02-05 00:54:07 karl Exp $
+$Id: dir-example,v 1.15 2003-02-08 14:06:44 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -21,11 +21,16 @@ A few useful Info commands:
 Not all of the topics shown below may be available on this system.
 
 * Menu:
+Basics
+* Bash: (bash).                 Bourne-Again SHell.
+* Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
+* Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
+
+* Common options: (coreutils)Common options.      Common options.
+* File permissions: (coreutils)File permissions.  Access modes.
+* Date input formats: (coreutils)Date input formats.
 
 GNU Packages
-* Bash: (bash).                 Bourne-Again SHell.
-* Coreutils: (coreutils).	Core (file, text, shell) utilities.
-* Cpio: (cpio).                 Copy-in-copy-out archiver.
 * DC: (dc).                     Postfix desk calculator.
 * Diff: (diff).                 Comparing and merging programs.
 * Ed: (ed).                     Line editor.
@@ -33,8 +38,6 @@ GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Font utilities: (fontu).      Programs for font manipulation.
-* Gawk: (gawk).                 A text scanning and processing language.
-* Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * Gcal: (gcal).                 GNU calendar program.
 * Groff: (groff).               The GNU troff document formatting system.
 * Gzip: (gzip).                 General (de)compression.
@@ -53,6 +56,8 @@ GNU Packages
 * Wget: (wget).                 URL download.
 
 Text creation and manipulation
+* Gawk: (gawk).                 A text scanning and processing language.
+* Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * grep: (grep).                 Print lines matching a pattern.
 * sed: (sed).                   Stream EDitor.
 
@@ -79,12 +84,12 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts
-* automake: (automake).		Making Makefile.in's
+* automake: (automake).         Making Makefile.in's
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * bison: (bison).               GNU parser generator (Yacc replacement).
 * CVS: (cvs).                   Concurrent versions system for source control.
 * Configure: (configure).       Cygnus configure.
-* Cpp: (cpp).		        The GNU C preprocessor.
+* Cpp: (cpp).                   The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
 * Gdb: (gdb).                   The GNU debugger.
@@ -117,26 +122,26 @@ Emacs
                           in Emacs.
 * CC Mode: (ccmode).   Emacs mode for editing C, C++, Objective-C,
                           Java, Pike, and IDL code.
-* CL: (cl).		Partial Common Lisp support for Emacs Lisp.
+* CL: (cl).             Partial Common Lisp support for Emacs Lisp.
 * Dired-X: (dired-x).   Dired Extra Features.
 * Ebrowse: (ebrowse).   A C++ class browser for Emacs.
 * Ediff: (ediff).       A visual interface for comparing and merging programs.
-* Emacs FAQ: (efaq).	Frequently Asked Questions about Emacs.
+* Emacs FAQ: (efaq).    Frequently Asked Questions about Emacs.
 * Emacs MIME: (emacs-mime).   The MIME de/composition library.
 * Eshell: (eshell).     A command shell implemented in Emacs Lisp.
 * EUDC: (eudc).   A client for directory servers (LDAP, PH)
-* Forms: (forms).	Emacs package for editing data bases
-			  by filling in forms.
+* Forms: (forms).       Emacs package for editing data bases
+                          by filling in forms.
 * Gnus: (gnus).         The newsreader Gnus.
-* IDLWAVE: (idlwave).	Major mode and shell for IDL and WAVE/CL files.
+* IDLWAVE: (idlwave).   Major mode and shell for IDL and WAVE/CL files.
 * Message: (message).   Mail and news composition mode that goes with Gnus.
-* MH-E: (mh-e).		Emacs interface to the MH mail system.
-* PCL-CVS: (pcl-cvs).	Emacs front-end to CVS.
-* RefTeX: (reftex).	Emacs support for LaTeX cross-references and citations.
-* SC: (sc).		Supercite lets you cite parts of messages you're
-			  replying to, in flexible ways.
+* MH-E: (mh-e).         Emacs interface to the MH mail system.
+* PCL-CVS: (pcl-cvs).   Emacs front-end to CVS.
+* RefTeX: (reftex).     Emacs support for LaTeX cross-references and citations.
+* SC: (sc).             Supercite lets you cite parts of messages you're
+                          replying to, in flexible ways.
 * Speedbar: (speedbar).        File/Tag summarizing utility.
-* VIP: (vip).		An older VI-emulation for Emacs.
+* VIP: (vip).           An older VI-emulation for Emacs.
 * VIPER: (viper).       The newest Emacs VI-emulation mode.
                           (also, A VI Plan for Emacs Rescue
                            or the VI PERil.)
@@ -155,7 +160,7 @@ Software libraries
 * Annotate: (annotate).         High-level GDB to GUI's.
 * Bfd: (bfd).                   The Binary File Descriptor library.
 * CVS protocol: (cvsclient).    CVS client/server protocol specification.
-* Gdb-Internals: (gdbint).	The GNU debugger's internals.
+* Gdb-Internals: (gdbint).      The GNU debugger's internals.
 * GDB library: (libgdb).        Application programming interface to GDB.
 * GDBM: (gdbm).                 Hashed databases.
 * GDK: (gdk).                   General drawing kit.
@@ -165,14 +170,14 @@ Software libraries
 * Ld internals: (ldint).        GNU linker internals.
 * Libc: (libc).                 C library.
 * Libg++: (libg++).             C++ classes.
-* Mmalloc: (mmalloc).		The GNU mapped-malloc package.
+* Mmalloc: (mmalloc).           The GNU mapped-malloc package.
 * Stabs: (stabs).               The "stabs" debugging information format.
 * Readline: (readline).         General command-line interface.
 * Regex: (regex).               Regular expressions.
 * Termcap: (termcap).           All about /etc/termcap.
 
 GNU organization
-* Maintain: (maintain).		GNU maintainer guidelines.
+* Maintain: (maintain).         GNU maintainer guidelines.
 * Tasks: (tasks).               GNU task list.
 
 GNU music project
@@ -240,7 +245,7 @@ Individual utilities
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
 * basename: (sh-utils)basename invocation.      Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
-* bzip2: (bzip2).               		(de)compression.
+* bzip2: (bzip2).                               (de)compression.
 * c++filt: (binutils)c++filt.                   Demangle C++ symbols.
 * cat: (textutils)cat invocation.               Concatenate and write files.
 * chgrp: (fileutils)chgrp invocation.           Change file groups.
