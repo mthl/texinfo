@@ -338,20 +338,9 @@
   \def\next{#2}%
   \begingroup
     \obeylines
+    \catcode`\ =10
     #1%
-    \parseargx
-}
-
-% If the next token is an obeyed space (from an @example environment or
-% the like), remove it and recurse.  Otherwise, we're done.
-\def\parseargx{\futurelet\temp\parseargy}
-\def\parseargy{%
-  \expandafter\ifx\obeyedspace\temp
-    \def\temp{\expandafter\parseargx\gobble}
-  \else
-    \def\temp{\parseargline\empty}% Insert the \empty token, see below.
-  \fi
-  \temp
+    \parseargline\empty% Insert the \empty token, see \finishparsearg below.
 }
 
 {\obeylines %
@@ -363,29 +352,20 @@
 
 % First remove any @comment, then any @c comment.
 \def\argremovecomment#1\comment#2\ArgTerm{\argremovec #1\c\ArgTerm}
-\def\argremovec#1\c#2\ArgTerm{\removeactivespaces#1\ArgTerm}
-% \argremovec might leave us with trailing spaces, though; e.g.,
+\def\argremovec#1\c#2\ArgTerm{\argremovespace#1$ $\ArgTerm}
+% \argremovec might leave us with trailing space, though; e.g.,
 %    @end itemize  @c foo
-{\obeyspaces
-  \gdef\removeactivespaces#1\ArgTerm{\removeactivespacesX#1\RemSpac \RemSpac\ArgTerm}
-  \gdef\removeactivespacesX#1 \RemSpac{\removeactivespacesY{#1}}
-}
-\def\removeactivespacesY#1#2\ArgTerm{%
-  \def\temp{#2}%
-  \ifx\temp\empty
-    \let\temp\finishparsearg
-  \else
-    \let\temp\removeactivespaces
-  \fi
-  \temp #1\ArgTerm
-}
+% Note that the argument cannot contain the TeX $, as its catcode is
+% changed to \other when Texinfo source is read.
+\def\argremovespace#1 $#2\ArgTerm{\finishparsearg#1$\ArgTerm}
 
 % If a _delimited_ argument is enclosed in braces, they get stripped; so
 % to get _exactly_ the rest of the line, we had to prevent such situation.
 % We prepended an \empty token at the very beginning and we expand it
 % just before passing the control to \next.
-% (But first, we have to remove the remaining \RemSpac token.)
-\def\finishparsearg#1\RemSpac\ArgTerm{\expandafter\next\expandafter{#1}}
+% (But first, we have to spend the remaining $ or two.)
+\def\finishparsearg#1$#2\ArgTerm{\expandafter\next\expandafter{#1}}
+
 
 % Several utility definitions with active space:
 {
