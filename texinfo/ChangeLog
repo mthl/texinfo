@@ -1,3 +1,12 @@
+2003-11-17  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/xml.c (xml_begin_document): upgraded docbook DTD to Docbook
+	XML 4.2.
+
+	* makeinfo/makeinfo.c (cm_xref):
+	* makeinfo/xml.c (xml_insert_docbook_image, xml_insert_indexentry)
+	(xml_begin_multitable): close previously open-tag-only elements.
+
 2003-11-17  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: honor environment variables.

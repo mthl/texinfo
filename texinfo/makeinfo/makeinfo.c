@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.44 2003-11-17 11:41:12 dirt Exp $
+   $Id: makeinfo.c,v 1.45 2003-11-17 21:27:29 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3129,8 +3129,8 @@ cm_xref (arg)
                 {
                   xml_insert_element_with_attribute (XREF, START,
                                                      "linkend=\"%s\"", arg1_id);
+                  xml_insert_element (XREF, END);
                   free (arg1_id);
-                  xml_pop_current_element ();
                 }
             }
           else if (*arg5)
