@@ -1,4 +1,4 @@
-$Id: README,v 1.6 2002-09-27 20:32:42 karl Exp $
+$Id: README,v 1.7 2002-09-29 15:47:43 karl Exp $
 This is the README file for the GNU Texinfo distribution.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -126,6 +126,8 @@ Installation files:
 
 
 
+Developer information:
+
 This distribution uses automake 1.7 and autoconf 2.54.  If you are
 getting the Texinfo sources from cvs, or change the Texinfo
 configure.ac, you'll need to have these tools installed to (re)build.
@@ -143,4 +145,4 @@ Here's the order in which to run the tools for a fresh build:
 (with arguments to taste, of course.)
 
 If you want to rebuild the man pages and other generated files, set
-the environment variable TEXINFO_MAINT.
+the environment variable TEXINFO_MAINT.  You'll need help2man installed.
