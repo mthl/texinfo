@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
+@c $Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -27,7 +27,6 @@
 @syncodeindex vr cp
 @syncodeindex pg cp
 
-@footnotestyle separate
 @paragraphindent 2
 @c finalout
 
@@ -961,9 +960,7 @@ which are identified by their names.  The Info program displays one node
 at a time, and provides commands with which the user can move to other
 related nodes.
 
-@ifinfo
-@inforef{Top, info, info}, for more information about using Info.
-@end ifinfo
+@xref{Top,,, info, GNU Info}, for more information about using Info.
 
 Each node of an Info file may have any number of child nodes that
 describe subtopics of the node's topic.  The names of child
@@ -2321,13 +2318,7 @@ update all the menus and all the `Next', `Previous', and `Up' pointers
 of all the included files before creating and inserting a master menu in
 the outer file.  The @code{texinfo-multiple-files-update} command is
 described in the appendix on @code{@@include} files.
-@ifinfo
-@xref{texinfo-multiple-files-update}.@refill
-@end ifinfo
-@iftex
-@xref{texinfo-multiple-files-update, ,
-@code{texinfo-multiple-files-update}}.@refill
-@end iftex
+@xref{texinfo-multiple-files-update}.
 
 @item M-x texinfo-indent-menu-description
 @findex texinfo-indent-menu-description
@@ -2414,7 +2405,7 @@ include a line that has @code{@@setfilename} in its header.
 
 @node Printing, Texinfo Mode Summary, Info Formatting, Texinfo Mode
 @comment node-name,  next,  previous,  up
-@section Formatting and Printing
+@section Printing
 @cindex Formatting for printing
 @cindex Printing a region or buffer
 @cindex Region formatting and printing
@@ -7436,9 +7427,9 @@ files in the directory.
 @end group
 @end example
 
-@iftex
+@ifnotinfo
 @noindent
-produces the following in printed output:
+produces the following in printed output and HTML:
 
 @quotation
 @strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
@@ -7447,15 +7438,15 @@ files in the directory.
 
 @noindent
 and the following in Info:
-@end iftex
+@end ifnotinfo
 @ifinfo
 @noindent
-produces:
+produces (in Info output):
 @end ifinfo
 
 @example
-    *Caution:* `rm * .[^.]*' removes _all_
-    files in the directory.
+*Caution:* `rm * .[^.]*' removes _all_
+files in the directory.
 @end example
 
 The @code{@@strong} command is seldom used except to mark what is, in
@@ -7466,9 +7457,10 @@ In the Info output, @code{@@emph} surrounds the text with underscores
 (@samp{_}), and @code{@@strong} puts asterisks around the text.
 
 @quotation
-@strong{Caution:} Do not use @code{@@strong} with the word @samp{Note};
-Info will mistake the combination for a cross reference.  Use a phrase
-such as @strong{Please note} or @strong{Caution} instead.
+@strong{Caution:} Do not use @code{@@strong} with the word
+@samp{Note}; Info will mistake the combination for a cross reference.
+(It's usually redundant, anyway.)  Use a phrase such as @strong{Please
+notice} or @strong{Caution} instead.
 @end quotation
 
 
@@ -9346,13 +9338,13 @@ The s.o.p. has three parts @dots{}
 @end example
 
 @noindent
-@ifinfo
+@ifnottex
 produces
-@end ifinfo
+@end ifnottex
 @iftex
 produces the following.  If you look carefully at this printed output,
-you will see a little more whitespace after @samp{s.o.p.} in the second
-line.@refill
+you will see a little extraneous space after @samp{s.o.p.} in the second
+line.
 @end iftex
 
 @quotation
@@ -9389,9 +9381,9 @@ Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 @end example
 
 @noindent
-@ifinfo
+@ifnottex
 produces
-@end ifinfo
+@end ifnottex
 @iftex
 produces the following.  If you look carefully at this printed output,
 you will see a little more whitespace after the @samp{W} in the first
@@ -9777,19 +9769,19 @@ command.  Write the mathematical expression between braces, like this:
 @math{(a + b)(a + b) = a^2 + 2ab + b^2}
 @end display
 
-@noindent and the following in Info:
+@noindent and the following in other formats:
 @end iftex
-@ifinfo
-@noindent This produces the following in Info:
-@end ifinfo
+@ifnottex
+@noindent This produces the following in Info and HTML:
+@end ifnottex
 
 @example
 (a + b)(a + b) = a^2 + 2ab + b^2
 @end example
 
-Thus, the @code{@@math} command has no effect on the Info output;
-@command{makeinfo} just reproduces the input, it does not try to
-interpret the mathematics in any way.
+Thus, the @code{@@math} command has no effect on the Info and HTML
+output; @command{makeinfo} just reproduces the input, it does not try
+to interpret the mathematics in any way.
 
 @code{@@math} implies @code{@@tex}.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
@@ -9904,13 +9896,13 @@ Use the @code{@@result@{@}} command to indicate the result of
 evaluating an expression.@refill
 
 @iftex
-The @code{@@result@{@}} command is displayed as @samp{=>} in Info and
-as @samp{@result{}} in the printed output.
+The @code{@@result@{@}} command is displayed as @samp{@result{}} in
+the printed output and as @samp{=>} in other formats.
 @end iftex
-@ifinfo
-The @code{@@result@{@}} command is displayed as @samp{@result{}} in Info
-and as a double stemmed arrow in the printed output.@refill
-@end ifinfo
+@ifnottex
+The @code{@@result@{@}} command is displayed as @samp{@result{}} in
+Info and HTML and as a true double stemmed arrow in the printed output.
+@end ifnottex
 
 Thus, the following,
 
@@ -9923,9 +9915,10 @@ Thus, the following,
 may be read as ``@code{(cdr '(1 2 3))} evaluates to @code{(2 3)}''.
 
 
-@node expansion, Print Glyph, result, Glyphs
+@node expansion
 @subsection @code{@@expansion@{@}} (@expansion{}): Indicating an Expansion
-@cindex Expansion, indicating it
+@cindex Expansion, indicating
+@cindex Macro expansion, indicating
 @findex expansion
 
 When an expression is a macro call, it expands into a new expression.
@@ -9933,13 +9926,14 @@ You can indicate the result of the expansion with the
 @code{@@expansion@{@}} command.@refill
 
 @iftex
-The @code{@@expansion@{@}} command is displayed as @samp{==>} in Info and
-as @samp{@expansion{}} in the printed output.
-@end iftex
-@ifinfo
 The @code{@@expansion@{@}} command is displayed as @samp{@expansion{}}
-in Info and as a long arrow with a flat base in the printed output.@refill
-@end ifinfo
+in the printed output.  and as @samp{==>} in other formats.
+@end iftex
+@ifnottex
+The @code{@@expansion@{@}} command is displayed as @samp{@expansion{}}
+in Info and HTML, and as a long arrow with a flat base in the printed
+output.
+@end ifnottex
 
 @need 700
 For example, the following
@@ -9975,13 +9969,12 @@ the result of evaluating the expression is @code{c}.
 
 @noindent
 Often, as in this case, an example looks better if the
-@code{@@expansion@{@}} and @code{@@result@{@}} commands are indented
-five spaces.@refill
+@code{@@expansion@{@}} and @code{@@result@{@}} commands are indented.
 
 
-@node Print Glyph, Error Glyph, expansion, Glyphs
+@node Print Glyph
 @subsection @code{@@print@{@}} (@print{}): Indicating Printed Output
-@cindex Printed output, indicating it
+@cindex Printed output, indicating
 @findex print
 
 Sometimes an expression will print output during its execution.  You
@@ -9989,17 +9982,17 @@ can indicate the printed output with the @code{@@print@{@}} command.@refill
 
 @iftex
 The @code{@@print@{@}} command is displayed as @samp{-|} in Info and
-as @samp{@print{}} in the printed output.
+HTML and as @samp{@print{}} in the printed output.
 @end iftex
-@ifinfo
+@ifnottex
 The @code{@@print@{@}} command is displayed as @samp{@print{}} in Info
-and similarly, as a horizontal dash butting against a vertical bar, in
-the printed output.@refill
-@end ifinfo
+and HTML and (similarly) as a horizontal dash butting against a
+vertical bar in the printed output.
+@end ifnottex
 
 In the following example, the printed text is indicated with
 @samp{@print{}}, and the value of the expression follows on the
-last line.@refill
+last line.
 
 @lisp
 @group
@@ -10027,7 +10020,7 @@ In a Texinfo source file, this example is written as follows:
 
 @node Error Glyph, Equivalence, Print Glyph, Glyphs
 @subsection @code{@@error@{@}} (@error{}): Indicating an Error Message
-@cindex Error message, indicating it
+@cindex Error message, indicating
 @findex error
 
 A piece of code may cause an error when you evaluate it.  You can
@@ -10035,12 +10028,12 @@ designate the error message with the @code{@@error@{@}} command.@refill
 
 @iftex
 The @code{@@error@{@}} command is displayed as @samp{error-->} in Info
-and as @samp{@error{}} in the printed output.
+and HTML and as @samp{@error{}} in the printed output.
 @end iftex
-@ifinfo
+@ifnottex
 The @code{@@error@{@}} command is displayed as @samp{@error{}} in Info
-and as the word `error' in a box in the printed output.@refill
-@end ifinfo
+and HTML and as the word `error' in a box in the printed output.
+@end ifnottex
 
 @need 700
 Thus,
@@ -10073,7 +10066,7 @@ Wrong type argument: integer-or-marker-p, x
 
 @node Equivalence, Point Glyph, Error Glyph, Glyphs
 @subsection @code{@@equiv@{@}} (@equiv{}): Indicating Equivalence
-@cindex Equivalence, indicating it
+@cindex Equivalence, indicating
 @findex equiv
 
 Sometimes two expressions produce identical results.  You can indicate the
@@ -10081,12 +10074,13 @@ exact equivalence of two forms with the @code{@@equiv@{@}} command.@refill
 
 @iftex
 The @code{@@equiv@{@}} command is displayed as @samp{==} in Info and
-as @samp{@equiv{}} in the printed output.
+HTML and as @samp{@equiv{}} in the printed output.
 @end iftex
-@ifinfo
+@ifnottex
 The @code{@@equiv@{@}} command is displayed as @samp{@equiv{}} in Info
-and as a three parallel horizontal lines in the printed output.@refill
-@end ifinfo
+and HTML and as a standard mathematical equivalence sign (three
+parallel horizontal lines) in the printed output.
+@end ifnottex
 
 Thus,
 
@@ -10125,12 +10119,13 @@ two characters where point is located.)@refill
 
 @iftex
 The @code{@@point@{@}} command is displayed as @samp{-!-} in Info and
-as @samp{@point{}} in the printed output.
+HTML and as @samp{@point{}} in the printed output.
 @end iftex
-@ifinfo
+@ifnottex
 The @code{@@point@{@}} command is displayed as @samp{@point{}} in Info
-and as a small five pointed star in the printed output.@refill
-@end ifinfo
+and HTML and as a small five pointed star in the printed
+output.
+@end ifnottex
 
 The following example shows the contents of buffer @file{foo} before
 and after evaluating a Lisp command to insert the word @code{changed}.@refill
@@ -10182,7 +10177,10 @@ primary text.@footnote{A footnote should complement or expand upon
 the primary text, but a reader should not need to read a footnote to
 understand the primary text.  For a thorough discussion of footnotes,
 see @cite{The Chicago Manual of Style}, which is published by the
-University of Chicago Press.}
+University of Chicago Press.}  Footnotes are distracting; use them
+sparingly, if at all.  Standard bibliographical references are better
+placed in a bibliography at the end of a document than in footnotes
+throughout.
 
 @menu
 * Footnote Commands::           How to write a footnote in Texinfo.
@@ -10243,7 +10241,7 @@ By the way, footnotes in the argument of an @code{@@item} command for a
 @subsection Footnote Styles
 
 Info has two footnote styles, which determine where the text of the
-footnote is located:@refill
+footnote is located:
 
 @itemize @bullet
 @cindex @samp{@r{End}} node footnote style
@@ -10252,7 +10250,7 @@ In the `End' node style, all the footnotes for a single node
 are placed at the end of that node.  The footnotes are separated from
 the rest of the node by a line of dashes with the word
 @samp{Footnotes} within it.  Each footnote begins with an
-@samp{(@var{n})} reference mark.@refill
+@samp{(@var{n})} reference mark.
 
 @need 700
 @noindent
@@ -10273,18 +10271,18 @@ node are placed in an automatically constructed node of
 their own.  In this style, a ``footnote reference'' follows
 each @samp{(@var{n})} reference mark in the body of the
 node.  The footnote reference is actually a cross reference
-which you use to reach the footnote node.@refill
+which you use to reach the footnote node.
 
 The name of the node with the footnotes is constructed
 by appending @w{@samp{-Footnotes}} to the name of the node
 that contains the footnotes. (Consequently, the footnotes'
 node for the @file{Footnotes} node is
 @w{@file{Footnotes-Footnotes}}!)  The footnotes' node has an
-`Up' node pointer that leads back to its parent node.@refill
+`Up' node pointer that leads back to its parent node.
 
 @noindent
 Here is how the first footnote in this manual looks after being
-formatted for Info in the separate node style:@refill
+formatted for Info in the separate node style:
 
 @smallexample
 @group
@@ -10296,8 +10294,9 @@ File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 @end smallexample
 @end itemize
 
-A Texinfo file may be formatted into an Info file with either footnote
-style.@refill
+Unless your document has long and important footnotes (as in, say,
+Gibbon's @cite{Decline and Fall @dots{}}), we recommend the @samp{end}
+style, as it is simpler for readers to follow.
 
 @findex footnotestyle
 Use the @code{@@footnotestyle} command to specify an Info file's
@@ -10326,7 +10325,7 @@ footnotes as specified.)@refill
 If you do not specify a footnote style, the formatting commands use
 their default style.  Currently, @code{texinfo-format-buffer} and
 @code{texinfo-format-region} use the `separate' style and
-@code{makeinfo} uses the `end' style.@refill
+@code{makeinfo} uses the `end' style.
 
 @c !!! note: makeinfo's --footnote-style option overrides footnotestyle
 @ignore
@@ -10334,18 +10333,17 @@ If you use @code{makeinfo} to create the Info file, the
 @samp{--footnote-style} option determines which style is used,
 @samp{end} for the end of node style or @samp{separate} for the
 separate node style.  Thus, to format the Texinfo manual in the
-separate node style, you would use the following shell command:@refill
+separate node style, you would use the following shell command:
 
 @example
-makeinfo --footnote-style=separate texinfo.texi
+makeinfo --footnote-style=separate texinfo.txi
 @end example
 
 @noindent
-To format the Texinfo manual in the end of node style, you would
-type:@refill
+To format the Texinfo manual in the end of node style, you would run:
 
 @example
-makeinfo --footnote-style=end texinfo.texi
+makeinfo --footnote-style=end texinfo.txi
 @end example
 @end ignore
 @ignore
@@ -10357,15 +10355,12 @@ It can be either @samp{"separate"} for the separate node style or
 this variable with the @kbd{M-x edit-options} command (@pxref{Edit
 Options, , Editing Variable Values, emacs, The GNU Emacs Manual}), or
 with the @kbd{M-x set-variable} command (@pxref{Examining, , Examining
-and Setting Variables, emacs, The GNU Emacs Manual}).@refill
+and Setting Variables, emacs, The GNU Emacs Manual}).
 
 The @code{texinfo-footnote-style} variable also controls the style if
 you use the @kbd{M-x makeinfo-region} or @kbd{M-x makeinfo-buffer}
-command in Emacs.@refill
+command in Emacs.
 @end ignore
-@ifinfo
-This chapter contains two footnotes.@refill
-@end ifinfo
 
 
 @c This should be described along with figures when we have them;
@@ -11111,34 +11106,20 @@ Some entities take optional or repeated arguments, which may be
 specified by a distinctive glyph that uses square brackets and
 ellipses.  For @w{example}, a special form often breaks its argument list
 into separate arguments in more complicated ways than a
-straightforward function.@refill
+straightforward function.
 
-@iftex
-An argument enclosed within square brackets is optional.
-Thus, the phrase
-@samp{@code{@r{[}@var{optional-arg}@r{]}}} means that
-@var{optional-arg} is optional.
-An argument followed by an ellipsis is optional
-and may be repeated more than once.
 @c This is consistent with Emacs Lisp Reference manual
-Thus, @samp{@var{repeated-args}@dots{}} stands for zero or more arguments.
-Parentheses are used when several arguments are grouped
-into additional levels of list structure in Lisp.
-@end iftex
-@c The following looks better in Info (no `r', `samp' and `code'):
-@ifinfo
 An argument enclosed within square brackets is optional.
 Thus, [@var{optional-arg}] means that @var{optional-arg} is optional.
 An argument followed by an ellipsis is optional
 and may be repeated more than once.
 @c This is consistent with Emacs Lisp Reference manual
-Thus, @var{repeated-args}@dots{} stands for zero or more arguments.
-Parentheses are used when several arguments are grouped
+Thus, @var{repeated-args}@samp{@dots{}} stands for zero or more
+arguments.  Parentheses are used when several arguments are grouped
 into additional levels of list structure in Lisp.
-@end ifinfo
 
 Here is the @code{@@defspec} line of an example of an imaginary
-special form:@refill
+special form:
 
 @quotation
 @defspec foobar (@var{var} [@var{from} @var{to} [@var{inc}]]) @var{body}@dots{}
@@ -12150,7 +12131,7 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @@end ifplaintext
 @@ifxml
-Notwithstanding that this will only appear in XML output.
+Notwithstanding that this will only appear in XML.
 @@end ifxml
 @end example
 
@@ -12170,7 +12151,7 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @end ifplaintext
 @ifxml
-Notwithstanding that this will only appear in XML output.
+Notwithstanding that this will only appear in XML.
 @end ifxml
 
 @noindent
@@ -13649,14 +13630,12 @@ texi2dvi gcc.texinfo
 lpr -d gcc.dvi
 @end group
 @end example
-@ifinfo
 
-@xref{Texinfo Mode Printing}, for more information about formatting
-and printing in Texinfo mode.@refill
-@end ifinfo
+See the next section for more information about formatting
+and printing in Texinfo mode.
 
 
-@node Texinfo Mode Printing, Compile-Command, Within Emacs, Hardcopy
+@node Texinfo Mode Printing
 @section Formatting and Printing in Texinfo Mode
 @cindex Region printing in Texinfo mode
 @cindex Format and print in Texinfo mode
@@ -14299,10 +14278,11 @@ commands are useful if you cannot run @code{makeinfo}.  Also, in some
 circumstances, they format short regions or buffers more quickly than
 @code{makeinfo}.@refill
 
+
 @node Invoking makeinfo
 @subsection Running @code{makeinfo} from a Shell
 
-To create an Info file from a Texinfo file, type @code{makeinfo}
+To create an Info file from a Texinfo file, invoke @command{makeinfo}
 followed by the name of the Texinfo file.  Thus, to create the Info
 file for Bison, type the following to the shell:
 
@@ -14310,19 +14290,10 @@ file for Bison, type the following to the shell:
 makeinfo bison.texinfo
 @end example
 
-(You can run a shell inside Emacs by typing @kbd{M-x shell}.)@refill
+(You can run a shell inside Emacs by typing @kbd{M-x shell}.)
 
-@ifinfo
-Sometimes you will want to specify options.  For example, if you wish
-to discover which version of @code{makeinfo} you are using,
-type:@refill
-
-@example
-makeinfo --version
-@end example
-
-@xref{makeinfo options}, for more information.
-@end ifinfo
+@command{makeinfo} has many options to control its actions and output;
+see the next section.
 
 
 @node makeinfo options
@@ -14793,6 +14764,7 @@ For example, you could write the following in your @file{.emacs} file:@refill
 @end group
 @end example
 
+@noindent
 @c If you write these three cross references using xref, you see
 @c three references to the same named manual, which looks strange.
 @iftex
@@ -14801,17 +14773,15 @@ For more information, see @ref{makeinfo options, , Options for
 and Setting Variables,'' and ``Init File'' in @cite{The GNU Emacs
 Manual}.
 @end iftex
-@noindent
-@ifinfo
+@ifnottex
 For more information, see@*
 @ref{Edit Options, , Editing Variable Values, emacs, The GNU Emacs Manual},@*
 @ref{Examining, , Examining and Setting Variables, emacs, The GNU Emacs Manual},@*
 @ref{Init File, , , emacs, The GNU Emacs Manual}, and@*
 @ref{makeinfo options, , Options for @code{makeinfo}}.
-@end ifinfo
+@end ifnottex
 
 @node texinfo-format commands
-@comment  node-name,  next,  previous,  up
 @subsection The @code{texinfo-format@dots{}} Commands
 @findex texinfo-format-region
 @findex texinfo-format-buffer
@@ -16917,7 +16887,8 @@ typeset the name according to the wishes of Donald Knuth, who wrote
 @subsubheading Spaces
 
 Do not use spaces to format a Texinfo file, except inside of
-@code{@@example} @dots{} @code{@@end example} and similar commands.
+@code{@@example} @dots{} @code{@@end example} and other literal
+environments and commands.
 
 @need 700
 For example, @TeX{} fills the following:
@@ -16944,16 +16915,17 @@ so it looks like this:
       corresponding to the current buffer.
 @end quotation
 @end iftex
-@ifinfo
+@ifnottex
 @quotation
 `C-x v' `M-x vc-next-action' Perform the next logical operation on the
 version-controlled file corresponding to the current buffer.
 @end quotation
-@end ifinfo
+@end ifnottex
 
 @noindent
 In this case, the text should be formatted with
 @code{@@table}, @code{@@item}, and @code{@@itemx}, to create a table.
+
 
 @subsubheading @@code, @@samp, @@var, and @samp{---}
 
@@ -17256,7 +17228,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
+$Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17319,7 +17291,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.61 2003-08-05 18:14:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -19047,16 +19019,10 @@ Kill the @code{makeinfo} formatting job.
 @c subheading Typeset and Print
 
 @noindent
-Typeset and print Texinfo documents from within Emacs.@refill
+Typeset and print Texinfo documents from within Emacs.
 
-@ifinfo
 @noindent
 @xref{Printing}.
-@end ifinfo
-@iftex
-@noindent
-@xref{Printing, , Formatting and Printing}.
-@end iftex
 
 @table @kbd
 @item C-c C-t C-b
