@@ -90,11 +90,9 @@ $GNULIBSRC/lib/getopt.c		lib
 $GNULIBSRC/lib/getopt.h		lib
 $GNULIBSRC/lib/getopt1.c	lib
 $GNULIBSRC/lib/gettext.h	lib
-$GNULIBSRC/lib/malloc.c		lib
 $GNULIBSRC/lib/memcpy.c		lib
 $GNULIBSRC/lib/memmove.c	lib
 $GNULIBSRC/lib/mkstemp.c	lib
-$GNULIBSRC/lib/realloc.c	lib
 $GNULIBSRC/lib/strcasecmp.c	lib
 $GNULIBSRC/lib/strdup.c		lib
 $GNULIBSRC/lib/strerror.c	lib
@@ -108,6 +106,8 @@ $GNULIBSRC/m4/mkstemp.m4	m4
 $GNULIBSRC/m4/prereq.m4		m4
 
 #$GNULIBSRC/lib/closeout.c	lib
+#$GNULIBSRC/lib/malloc.c		lib
+#$GNULIBSRC/lib/realloc.c	lib
 #$GNULIBSRC/lib/quotearg.c	lib
 #$GNULIBSRC/lib/quotearg.h	lib
 #$GNULIBSRC/lib/unlocked-io.h	lib

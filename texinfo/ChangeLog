@@ -1,3 +1,24 @@
+2002-10-26    <karl@gnu.org>
+
+	* 2002-10-24  Werner Lemberg  <wl@gnu.org>
+	Fix html font tags, i.e., make the output similar to
+	texinfo.tex.  The main idea is to avoid nested font tags.
+
+	* makeinfo/html.c (push_tag, pop_tag): New functions.
+	(insert_html_tag): Use them.
+	Don't emit more than a single font attribute.
+
+	* makeinfo/html.h (HSTACK): New structure.
+
+	* makeinfo/defun.c: Include cmds.h and html.h.
+	(process_defun_args): Don't apply <i>...</i> to parentheses
+	and brackets.
+	(defun_internal): Use insert_html_tag for emitting font tags.
+
+	* makeinfo/cmds.c (cm_url): Use insert_html_tag for emitting
+	font tag.
+	(cm_r): Simplify.
+
 2002-10-25  Alexandre Duret-Lutz  <adl@gnu.org>
 
 	* util/texi2dvi: Preserve empty components when expansing

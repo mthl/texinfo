@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.8 2002-10-13 21:52:28 karl Exp $
+$Id: NEWS,v 1.9 2002-10-26 23:11:35 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -25,8 +25,8 @@ convenience, here's a url to one of the relevant sections:
 * Language:
   . new command @tie{} to do a real tie (unbreakable interword space).
 * makeinfo:
-  . html output uses <br />, <hr />, and <meta />, for the sake of XHTML
-    compatibility.  (We're still not completely XHTML compatible, though.)
+  . html output uses <br /> and <hr />, for the sake of HTML 4.01
+    compatibility.  (We're still not completely compatible, though.)
 * texinfo.tex:
   . new Italian translations, txi-it.tex.
   . pdf bookmarks for unnumbered sections work.
