@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.4 2002-11-07 22:14:56 karl Exp $
+   $Id: xml.c,v 1.5 2002-11-08 00:11:04 karl Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -821,7 +821,8 @@ xml_add_char (character)
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
 
-  if (!first_section_opened && !in_abstract && xml_current_element () == TEXINFO
+  if (!executing_string && !first_section_opened && !in_abstract
+      && xml_current_element () == TEXINFO
       && !xml_no_para && character != '\r' && character != '\n' && character != ' ')
     {
       xml_insert_element (BOOKINFO, START);
