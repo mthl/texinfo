@@ -1,3 +1,14 @@
+2002-10-13    <karl@gnu.org>
+
+	* util/install-info.c (longopts): make --infodir a synonym for
+	--info-dir, for some compatibility with the Debian install-info.
+	Reported by Bob Chassell, Yves Codet <ycodet@club-internet.fr>,
+	and many others.
+
+	* doc/texinfo.txi (makeinfo advantages): document various options
+	that have crept in to the source.  (Werner Lemberg noted that
+	--iftex and companions were missing.)
+
 2002-10-10    <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_tie): new fn for new cmd @tie{}.
