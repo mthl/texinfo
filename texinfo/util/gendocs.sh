@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.4 2003-10-28 22:37:46 karl Exp $
+# $Id: gendocs.sh,v 1.5 2003-11-02 19:14:41 karl Exp $
 # 
 # Copyright (C) 2003 Free Software Foundation, Inc.
 #
@@ -29,7 +29,7 @@ srcdir=`pwd`
 scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs.sh"
 templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs_template"
 
-rcs_revision='$Revision: 1.4 $'
+rcs_revision='$Revision: 1.5 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version
@@ -44,7 +44,7 @@ usage="Usage: $prog [OPTION]... PACKAGE MANUAL-TITLE
 Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
 
 Options:
-  -o OUTDIR   write to OUTDIR, instead of manual/.
+  -o OUTDIR   write files into OUTDIR, instead of manual/.
   --help      display this help and exit successfully.
   --version   display version information and exit successfully.
 
