@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
+@c $Id: texinfo.txi,v 1.72 2003-10-07 22:50:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1253,10 +1253,11 @@ hope to eventually support the various quotation characters in
 Unicode.
 
 @item
-@cindex Dashes, in source
-@cindex Em dash
-@cindex En dash
-@cindex Hyphen, in source
+@cindex Multiple dashes in source
+@cindex Dashes in source
+@cindex Hyphens in source, two or three in a row
+@cindex Em dash, producing
+@cindex En dash, producing
 Use three hyphens in a row, @samp{---}, to produce a long dash---like
 this (called an @dfn{em dash}), used for punctuation in sentences.
 Use two hyphens, @samp{--}, to produce a medium dash--like this
@@ -6805,8 +6806,8 @@ and to refer to the characters @kbd{M-x shell}, write:
 @@kbd@{M-x shell@}
 @end example
 
-@cindex user input
-@cindex slanted typewriter font, for @code{@@kbd}
+@cindex User input
+@cindex Slanted typewriter font, for @code{@@kbd}
 By default, the @code{@@kbd} command produces a different font
 (slanted typewriter instead of normal typewriter) in the printed
 manual, so users can distinguish the characters that they are supposed
@@ -7351,7 +7352,7 @@ Use the @code{@@email} command to indicate an electronic mail address.
 It takes one mandatory argument, the address, and one optional argument, the
 text to display (the default is the address itself).
 
-@cindex mailto link
+@cindex Mailto link
 In Info and @TeX{}, the address is shown in angle brackets, preceded by
 the text to display if any.  In HTML output, @code{@@email} produces a
 @samp{mailto} link that usually brings up a mail composition window.
@@ -8005,8 +8006,8 @@ returning the page to its normal width.@refill
 @section @code{@@flushleft} and @code{@@flushright}
 @findex flushleft
 @findex flushright
-@cindex ragged right
-@cindex ragged left
+@cindex Ragged right
+@cindex Ragged left
 
 The @code{@@flushleft} and @code{@@flushright} commands line up the
 ends of lines on the left and right margins of a page,
@@ -9702,8 +9703,8 @@ available.
 @section @code{@@minus}@{@} (@minus{}): Inserting a Minus Sign
 @findex minus
 
-@cindex em-dash
-@cindex hyphen
+@cindex Em dash, compared to minus sign
+@cindex Hyphen, compared to minus
 Use the @code{@@minus@{@}} command to generate a minus sign.  In a
 fixed-width font, this is a single hyphen, but in a proportional font,
 the symbol is the customary length for a minus sign---a little longer
@@ -10403,8 +10404,8 @@ will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
 The @var{width} and @var{height} arguments are described in the next
 section.
 
-@cindex alt attribute for images
-@cindex alternate text for images
+@cindex Alt attribute for images
+@cindex Images, alternate text for
 When producing html, @code{makeinfo} sets the @dfn{alt attribute} for
 inline images to the optional fourth argument to @code{@@image}, if
 supplied.  If not supplied, @code{makeinfo} uses the full file name of
@@ -12192,7 +12193,7 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 @cindex Commands using raw @TeX{}
 @cindex HTML, including raw
 @cindex XML, including raw
-@cindex plain @TeX{}
+@cindex Plain @TeX{}
 
 Inside a region delineated by @code{@@iftex} and @code{@@end iftex},
 you can embed some raw @TeX{} commands.  The Texinfo processors will
@@ -12411,7 +12412,7 @@ and @code{@@end ifset} commands, like this:
 For example, you can create one document that has two variants, such as
 a manual for a `large' and `small' model:
 
-@cindex shrubbery
+@cindex Shrubbery
 @example
 You can use this machine to dig up shrubs
 without hurting them.
@@ -12878,8 +12879,8 @@ End:
 @end example
 
 @cindex HTML output, and encodings
-@cindex http-equiv, and charset specification
-@cindex meta HTML tag, and charset specification
+@cindex @code{http-equiv}, and charset specification
+@cindex @code{<meta>} HTML tag, and charset specification
 In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
 section of the HTML, that specifies @var{enc}.  Web servers and
 browsers cooperate to use this information so the correct encoding is
@@ -15347,7 +15348,7 @@ merges any files named @file{dir} in any directory listed in the
 @env{INFOPATH} variable into a single menu presented to you in the node
 called @samp{(dir)Top}.
 
-@cindex colon, last in @env{INFOPATH}
+@cindex Colon, last in @env{INFOPATH}
 However you set @env{INFOPATH}, if its last character is a
 colon@footnote{On MS-DOS/MS-Windows systems, use semi-colon instead.}, this
 is replaced by the default (compiled-in) path.  This gives you a way to
@@ -15558,7 +15559,7 @@ information in the Info file itself.
 @itemx -V
 @opindex --version
 @opindex -V
-@cindex version number, for install-info
+@cindex Version number, for install-info
 Display version information and exit successfully.
 
 @end table
@@ -17250,7 +17251,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
+$Id: texinfo.txi,v 1.72 2003-10-07 22:50:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17313,7 +17314,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.72 2003-10-07 22:50:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
