@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-31.11}
+\def\texinfoversion{2003-01-31.13}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -4089,7 +4089,7 @@ width0pt\relax} \fi
   }%
   % Add extra space after the heading -- either a line space or a
   % paragraph space, whichever is more.  (Some people like to set
-  % \parskip to large values for some reason.)
+  % \parskip to large values for some reason.)  Don't allow stretch, though.
   \nobreak
   \ifdim\parskip>\normalbaselineskip
     \kern\parskip
@@ -4998,8 +4998,11 @@ width0pt\relax} \fi
   % If there are two @def commands in a row, we'll have a \nobreak,
   % which is there to keep the function description together with its
   % header.  But if there's nothing but headers, we want to allow a
-  % break after all.
-  \ifnum\lastpenalty=10000 \penalty0 \fi
+  % break after all.  Check for penalty 10002 (inserted by
+  % \defargscommonending) instead of 10000, since the sectioning
+  % commands insert a \penalty10000, and we don't want to allow a break
+  % between a section heading and a defun.
+  \ifnum\lastpenalty=10002 \penalty0 \fi
   \medbreak
   %
   % Define the \E... end token that this defining construct specifies
@@ -5164,7 +5167,7 @@ width0pt\relax} \fi
   \advance\rightskip by 0pt plus 1fil
   \endgraf
   \nobreak\vskip -\parskip
-  \nobreak
+  \penalty 10002  % signal to \parsebodycommon.
 }
 
 % This expands the args and terminates the paragraph they comprise.
