@@ -1,3 +1,17 @@
+2004-01-11  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: parse arguments separated with , in
+	main program. 
+	Use a new interface for style commands with a hash instead of a string.
+	The old interface is still available.
+	Give a type to the style_map commands (accent, style, simple or
+	special).
+	Normalise spaces for @url, @uref and @email.
+	Handle better ignored regions end (at end of file or before @).
+	Don't reinject @-commands after closing paragraphs.
+	Add a hash for commands if paragraphs should not be done in these
+	commands.
+
 2004-01-04  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle @flushleft and @flushright

@@ -10,1261 +10,1264 @@ formatting.texi(,10)
 formatting.texi(,11) * chapter2:description.   Chapter 2
 formatting.texi(,12) @end menu
 formatting.texi(,13) 
-formatting.texi(,408) 
-formatting.texi(,409) @copying
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) <
-formatting.texi(mymacro,410) >
-formatting.texi(mymacro,410) "
-formatting.texi(mymacro,410) &
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) ``simple-double--three---four----''@*
-formatting.texi(mymacro,410) code: @code{``simple-double--three---four----''} @*
-formatting.texi(mymacro,410) asis: @asis{``simple-double--three---four----''} @*
-formatting.texi(mymacro,410) strong: @strong{``simple-double--three---four----''} @*
-formatting.texi(mymacro,410) kbd: @kbd{``simple-double--three---four----''} @*
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @cindex --option
-formatting.texi(mymacro,410) @cindex ``
-formatting.texi(mymacro,410) @findex ``
-formatting.texi(mymacro,410) @findex --foption
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @@"u @"u 
-formatting.texi(mymacro,410) @@"@{U@} @"{U} 
-formatting.texi(mymacro,410) @@~n @~n
-formatting.texi(mymacro,410) @@^a @^a
-formatting.texi(mymacro,410) @@'e @'e
-formatting.texi(mymacro,410) @@=o @=o
-formatting.texi(mymacro,410) @@`i @`i
-formatting.texi(mymacro,410) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-formatting.texi(mymacro,410) @@dotless@{i@} @dotless{i}
-formatting.texi(mymacro,410) @@dotless@{ij@} @dotless{ij}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @@dotless@{truc@} @dotless{truc}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @@* @*
-formatting.texi(mymacro,410) @@ followed by a space
-formatting.texi(mymacro,410) @ 
-formatting.texi(mymacro,410) @@ followed by a tab
-formatting.texi(mymacro,410) @	
-formatting.texi(mymacro,410) @@ followed by a new line
-formatting.texi(mymacro,410) @
-formatting.texi(mymacro,410) @code{@@-} @-
-formatting.texi(mymacro,410) @code{@@|} @|
-formatting.texi(mymacro,410) @code{@@:} @:
-formatting.texi(mymacro,410) @code{@@!} @!
-formatting.texi(mymacro,410) @code{@@?} @?
-formatting.texi(mymacro,410) @code{@@.} @.
-formatting.texi(mymacro,410) @code{@@@@} @@
-formatting.texi(mymacro,410) @code{@@@}} @}
-formatting.texi(mymacro,410) @code{@@@{} @{
-formatting.texi(mymacro,410) @code{@@/} @/
-formatting.texi(mymacro,410) @code{@@#} @#
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @@TeX @TeX{}
-formatting.texi(mymacro,410) @c @br{}
-formatting.texi(mymacro,410) @@bullet @bullet{}
-formatting.texi(mymacro,410) @@copyright @copyright{}
-formatting.texi(mymacro,410) @@dots @dots{}
-formatting.texi(mymacro,410) @@enddots @enddots{}
-formatting.texi(mymacro,410) @@equiv @equiv{}
-formatting.texi(mymacro,410) @@error @error{}
-formatting.texi(mymacro,410) @@expansion @expansion{}
-formatting.texi(mymacro,410) @@minus @minus{}
-formatting.texi(mymacro,410) @@point @point{}
-formatting.texi(mymacro,410) @@print @print{}
-formatting.texi(mymacro,410) @@result @result{}
-formatting.texi(mymacro,410) @@today @today{}
-formatting.texi(mymacro,410) @@aa @aa{}
-formatting.texi(mymacro,410) @@AA @AA{}
-formatting.texi(mymacro,410) @@ae @ae{}
-formatting.texi(mymacro,410) @@oe @oe{}
-formatting.texi(mymacro,410) @@AE @AE{}
-formatting.texi(mymacro,410) @@OE @OE{}
-formatting.texi(mymacro,410) @@o @o{}
-formatting.texi(mymacro,410) @@O @O{}
-formatting.texi(mymacro,410) @@ss @ss{}
-formatting.texi(mymacro,410) @@l @l{}
-formatting.texi(mymacro,410) @@L @L{}
-formatting.texi(mymacro,410) @@exclamdown @exclamdown{}
-formatting.texi(mymacro,410) @@questiondown @questiondown{}
-formatting.texi(mymacro,410) @@pounds @pounds{}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @code{@@acronym@{--a@}} @acronym{--a}
-formatting.texi(mymacro,410) @code{@@asis@{--a@}} @asis{--a}
-formatting.texi(mymacro,410) @code{@@b@{--a@}} @b{--a}
-formatting.texi(mymacro,410) @code{@@cite@{--a@}} @cite{--a}
-formatting.texi(mymacro,410) @code{@@code@{--a@}} @code{--a}
-formatting.texi(mymacro,410) @code{@@command@{--a@}} @command{--a}
-formatting.texi(mymacro,410) @code{@@ctrl@{--a@}} @ctrl{--a}
-formatting.texi(mymacro,410) @code{@@dfn@{--a@}} @dfn{--a}
-formatting.texi(mymacro,410) @code{@@dmn@{--a@}} @dmn{--a}
-formatting.texi(mymacro,410) @code{@@email@{--a,--b@}} @email{--a,--b}
-formatting.texi(mymacro,410) @code{@@email@{,--b@}} @email{,--b}
-formatting.texi(mymacro,410) @code{@@email@{--a@}} @email{--a}
-formatting.texi(mymacro,410) @code{@@emph@{--a@}} @emph{--a}
-formatting.texi(mymacro,410) @code{@@env@{--a@}} @env{--a}
-formatting.texi(mymacro,410) @code{@@file@{--a@}} @file{--a}
-formatting.texi(mymacro,410) @code{@@i@{--a@}} @i{--a}
-formatting.texi(mymacro,410) @code{@@kbd@{--a@}} @kbd{--a}
-formatting.texi(mymacro,410) @code{@@key@{--a@}} @key{--a}
-formatting.texi(mymacro,410) @code{@@math@{--a@}} @math{--a}
-formatting.texi(mymacro,410) @code{@@option@{--a@}} @option{--a}
-formatting.texi(mymacro,410) @code{@@r@{--a@}} @r{--a}
-formatting.texi(mymacro,410) @code{@@samp@{--a@}} @samp{--a}
-formatting.texi(mymacro,410) @code{@@sc@{--a@}} @sc{--a}
-formatting.texi(mymacro,410) @code{@@strong@{--a@}} @strong{--a}
-formatting.texi(mymacro,410) @code{@@t@{--a@}} @t{--a}
-formatting.texi(mymacro,410) @code{@@titlefont@{--a@}} @titlefont{--a}
-formatting.texi(mymacro,410) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-formatting.texi(mymacro,410) @code{@@uref@{--a@}} @uref{--a}
-formatting.texi(mymacro,410) @code{@@uref@{,--b@}} @uref{,--b}
-formatting.texi(mymacro,410) @code{@@url@{--a,--b@}} @url{--a,--b}
-formatting.texi(mymacro,410) @code{@@url@{--a,@}} @url{--a,}
-formatting.texi(mymacro,410) @code{@@url@{,--b@}} @url{,--b}
-formatting.texi(mymacro,410) @code{@@var@{--a@}} @var{--a}
-formatting.texi(mymacro,410) @code{@@verb@{:--a:@}} @verb{:--a:}
-formatting.texi(mymacro,410) @code{@@w@{--a@}} @w{--a}
-formatting.texi(mymacro,410) @code{@@H@{a@}} @H{a}
-formatting.texi(mymacro,410) @code{@@H@{--a@}} @H{--a}
-formatting.texi(mymacro,410) @code{@@dotaccent@{a@}} @dotaccent{a}
-formatting.texi(mymacro,410) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-formatting.texi(mymacro,410) @code{@@ringaccent@{a@}} @ringaccent{a}
-formatting.texi(mymacro,410) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-formatting.texi(mymacro,410) @code{@@tieaccent@{a@}} @tieaccent{a}
-formatting.texi(mymacro,410) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-formatting.texi(mymacro,410) @code{@@u@{a@}} @u{a}
-formatting.texi(mymacro,410) @code{@@u@{--a@}} @u{--a}
-formatting.texi(mymacro,410) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-formatting.texi(mymacro,410) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-formatting.texi(mymacro,410) @code{@@udotaccent@{a@}} @udotaccent{a}
-formatting.texi(mymacro,410) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-formatting.texi(mymacro,410) @code{@@v@{a@}} @v{a}
-formatting.texi(mymacro,410) @code{@@v@{--a@}} @v{--a}
-formatting.texi(mymacro,410) @code{@@,@{c@}} @m_cedilla{c}
-formatting.texi(mymacro,410) @code{@@,@{--c@}} @m_cedilla{--c}
-formatting.texi(mymacro,410) @code{@@dotless@{--a@}} @dotless{--a}
-formatting.texi(mymacro,410) @code{@@dotless@{a@}} @dotless{a}
-formatting.texi(mymacro,410) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-formatting.texi(mymacro,410) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
-formatting.texi(mymacro,410) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-formatting.texi(mymacro,410) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
-formatting.texi(mymacro,410) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
-formatting.texi(mymacro,410) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-formatting.texi(mymacro,410) @code{@@image@{f--ile@}} @image{f--ile}
-formatting.texi(mymacro,410) @code{@@image@{,,e--xt@}} @image{,,e--xt}
-formatting.texi(mymacro,410) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
-formatting.texi(mymacro,410) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @sp
-formatting.texi(mymacro,410) @sp 2
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @quotation
-formatting.texi(mymacro,410) a q--uotation
-formatting.texi(mymacro,410) @end quotation
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize
-formatting.texi(mymacro,410) @item i--temize
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize +
-formatting.texi(mymacro,410) @item i--tem +
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize @bullet
-formatting.texi(mymacro,410) @item b--ullet
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize @minus
-formatting.texi(mymacro,410) @item minu--s
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize @emph
-formatting.texi(mymacro,410) @item e--mph item
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize @emph after emph
-formatting.texi(mymacro,410) @item e--mph item
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @itemize @bullet a--n itemize line
-formatting.texi(mymacro,410) @item i--tem 1
-formatting.texi(mymacro,410) @item i--tem 2
-formatting.texi(mymacro,410) @end itemize
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @enumerate
-formatting.texi(mymacro,410) @item e--numerate
-formatting.texi(mymacro,410) @end enumerate
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @multitable @columnfractions 6 7
-formatting.texi(mymacro,410) @item mu--ltitable item @tab multitable tab
-formatting.texi(mymacro,410) @end multitable
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @example
-formatting.texi(mymacro,410) e--xample  some
-formatting.texi(mymacro,410)    text
-formatting.texi(mymacro,410) @end example
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @smallexample
-formatting.texi(mymacro,410) s--mallexample
-formatting.texi(mymacro,410) @end smallexample
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @display 
-formatting.texi(mymacro,410) d--isplay
-formatting.texi(mymacro,410) @end display
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @smalldisplay
-formatting.texi(mymacro,410) s--malldisplay
-formatting.texi(mymacro,410) @end smalldisplay
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @lisp
-formatting.texi(mymacro,410) l--isp
-formatting.texi(mymacro,410) @end lisp
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @smalllisp
-formatting.texi(mymacro,410) s--malllisp
-formatting.texi(mymacro,410) @end smalllisp
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @format
-formatting.texi(mymacro,410) f--ormat
-formatting.texi(mymacro,410) @end format
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @smallformat
-formatting.texi(mymacro,410) s--mallformat
-formatting.texi(mymacro,410) @end smallformat
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deffn c--ategory d--effn_name a--rguments...
-formatting.texi(mymacro,410) d--effn
-formatting.texi(mymacro,410) @end deffn
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deffn cate--gory de--ffn_name ar--guments...
-formatting.texi(mymacro,410) def--fn
-formatting.texi(mymacro,410) @end deffn
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defvr c--ategory d--efvr_name
-formatting.texi(mymacro,410) d--efvr
-formatting.texi(mymacro,410) @end defvr
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-formatting.texi(mymacro,410) d--eftypefn
-formatting.texi(mymacro,410) @end deftypefn
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-formatting.texi(mymacro,410) d--eftypeop
-formatting.texi(mymacro,410) @end deftypeop
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypevr c--ategory t--ype d--eftypevr_name
-formatting.texi(mymacro,410) d--eftypevr
-formatting.texi(mymacro,410) @end deftypevr
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defcv c--ategory c--lass d--efcv_name
-formatting.texi(mymacro,410) d--efcv
-formatting.texi(mymacro,410) @end defcv
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defop c--ategory c--lass d--efop_name a--rguments...
-formatting.texi(mymacro,410) d--efop
-formatting.texi(mymacro,410) @end defop
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftp c--ategory d--eftp_name a--ttributes...
-formatting.texi(mymacro,410) d--eftp
-formatting.texi(mymacro,410) @end deftp
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defun d--efun_name a--rguments...
-formatting.texi(mymacro,410) d--efun
-formatting.texi(mymacro,410) @end defun
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defmac d--efmac_name a--rguments...
-formatting.texi(mymacro,410) d--efmac
-formatting.texi(mymacro,410) @end defmac
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defspec d--efspec_name a--rguments...
-formatting.texi(mymacro,410) d--efspec
-formatting.texi(mymacro,410) @end defspec
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defvar d--efvar_name
-formatting.texi(mymacro,410) d--efvar
-formatting.texi(mymacro,410) @end defvar
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defopt d--efopt_name
-formatting.texi(mymacro,410) d--efopt
-formatting.texi(mymacro,410) @end defopt
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypefun t--ype d--eftypefun_name a--rguments...
-formatting.texi(mymacro,410) d--eftypefun
-formatting.texi(mymacro,410) @end deftypefun
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypevar t--ype d--eftypevar_name
-formatting.texi(mymacro,410) d--eftypevar
-formatting.texi(mymacro,410) @end deftypevar
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defivar c--lass d--efivar_name
-formatting.texi(mymacro,410) d--efivar
-formatting.texi(mymacro,410) @end defivar
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypeivar c--lass t--ype d--eftypeivar_name
-formatting.texi(mymacro,410) d--eftypeivar
-formatting.texi(mymacro,410) @end deftypeivar
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @defmethod c--lass d--efmethod_name a--rguments...
-formatting.texi(mymacro,410) d--efmethod
-formatting.texi(mymacro,410) @end defmethod
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-formatting.texi(mymacro,410) d--eftypemethod
-formatting.texi(mymacro,410) @end deftypemethod
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,410) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,410) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @code{@@ref@{chapter@}} @ref{chapter}
-formatting.texi(mymacro,410) @code{@@ref@{node@}} @ref{node}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
-formatting.texi(mymacro,410) @code{@@ref@{,,title@}} @ref{,,title}
-formatting.texi(mymacro,410) @code{@@ref@{,,,file name@}} @ref{,,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-formatting.texi(mymacro,410) @code{@@ref@{node,,title@}} @ref{node,,title}
-formatting.texi(mymacro,410) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-formatting.texi(mymacro,410) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
-formatting.texi(mymacro,410) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
-formatting.texi(mymacro,410) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
-formatting.texi(mymacro,410) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,410) @code{@@inforef@{chapter@}} @inforef{chapter}
-formatting.texi(mymacro,410) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-formatting.texi(mymacro,410) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-formatting.texi(mymacro,410) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-formatting.texi(mymacro,410) @code{@@inforef@{node@}} @inforef{node}
-formatting.texi(mymacro,410) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-formatting.texi(mymacro,410) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-formatting.texi(mymacro,410) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
-formatting.texi(mymacro,410) @code{@@inforef@{,,file name@}} @inforef{,,file name}
-formatting.texi(mymacro,410) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @table @bullet
-formatting.texi(mymacro,410) @item a
-formatting.texi(mymacro,410) l--ine
-formatting.texi(mymacro,410) @end table
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @vtable @asis
-formatting.texi(mymacro,410) @item a
-formatting.texi(mymacro,410) l--ine
-formatting.texi(mymacro,410) @end vtable
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @ftable @minus
-formatting.texi(mymacro,410) @item a
-formatting.texi(mymacro,410) l--ine
-formatting.texi(mymacro,410) @end ftable
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @flushleft
-formatting.texi(mymacro,410) flushleft
-formatting.texi(mymacro,410) @end flushleft
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @flushright
-formatting.texi(mymacro,410) flushright
-formatting.texi(mymacro,410) @end flushright
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @center centered line
-formatting.texi(mymacro,410) 
-formatting.texi(mymacro,410) @verbatiminclude simplest.texi
-formatting.texi(mymacro,410) 
-formatting.texi(,411) @end copying
-formatting.texi(,412) 
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) <
-formatting.texi(mymacro,413) >
-formatting.texi(mymacro,413) "
-formatting.texi(mymacro,413) &
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) ``simple-double--three---four----''@*
-formatting.texi(mymacro,413) code: @code{``simple-double--three---four----''} @*
-formatting.texi(mymacro,413) asis: @asis{``simple-double--three---four----''} @*
-formatting.texi(mymacro,413) strong: @strong{``simple-double--three---four----''} @*
-formatting.texi(mymacro,413) kbd: @kbd{``simple-double--three---four----''} @*
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @cindex --option
-formatting.texi(mymacro,413) @cindex ``
-formatting.texi(mymacro,413) @findex ``
-formatting.texi(mymacro,413) @findex --foption
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @@"u @"u 
-formatting.texi(mymacro,413) @@"@{U@} @"{U} 
-formatting.texi(mymacro,413) @@~n @~n
-formatting.texi(mymacro,413) @@^a @^a
-formatting.texi(mymacro,413) @@'e @'e
-formatting.texi(mymacro,413) @@=o @=o
-formatting.texi(mymacro,413) @@`i @`i
-formatting.texi(mymacro,413) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-formatting.texi(mymacro,413) @@dotless@{i@} @dotless{i}
-formatting.texi(mymacro,413) @@dotless@{ij@} @dotless{ij}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @@dotless@{truc@} @dotless{truc}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @@* @*
-formatting.texi(mymacro,413) @@ followed by a space
-formatting.texi(mymacro,413) @ 
-formatting.texi(mymacro,413) @@ followed by a tab
-formatting.texi(mymacro,413) @	
-formatting.texi(mymacro,413) @@ followed by a new line
-formatting.texi(mymacro,413) @
-formatting.texi(mymacro,413) @code{@@-} @-
-formatting.texi(mymacro,413) @code{@@|} @|
-formatting.texi(mymacro,413) @code{@@:} @:
-formatting.texi(mymacro,413) @code{@@!} @!
-formatting.texi(mymacro,413) @code{@@?} @?
-formatting.texi(mymacro,413) @code{@@.} @.
-formatting.texi(mymacro,413) @code{@@@@} @@
-formatting.texi(mymacro,413) @code{@@@}} @}
-formatting.texi(mymacro,413) @code{@@@{} @{
-formatting.texi(mymacro,413) @code{@@/} @/
-formatting.texi(mymacro,413) @code{@@#} @#
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @@TeX @TeX{}
-formatting.texi(mymacro,413) @c @br{}
-formatting.texi(mymacro,413) @@bullet @bullet{}
-formatting.texi(mymacro,413) @@copyright @copyright{}
-formatting.texi(mymacro,413) @@dots @dots{}
-formatting.texi(mymacro,413) @@enddots @enddots{}
-formatting.texi(mymacro,413) @@equiv @equiv{}
-formatting.texi(mymacro,413) @@error @error{}
-formatting.texi(mymacro,413) @@expansion @expansion{}
-formatting.texi(mymacro,413) @@minus @minus{}
-formatting.texi(mymacro,413) @@point @point{}
-formatting.texi(mymacro,413) @@print @print{}
-formatting.texi(mymacro,413) @@result @result{}
-formatting.texi(mymacro,413) @@today @today{}
-formatting.texi(mymacro,413) @@aa @aa{}
-formatting.texi(mymacro,413) @@AA @AA{}
-formatting.texi(mymacro,413) @@ae @ae{}
-formatting.texi(mymacro,413) @@oe @oe{}
-formatting.texi(mymacro,413) @@AE @AE{}
-formatting.texi(mymacro,413) @@OE @OE{}
-formatting.texi(mymacro,413) @@o @o{}
-formatting.texi(mymacro,413) @@O @O{}
-formatting.texi(mymacro,413) @@ss @ss{}
-formatting.texi(mymacro,413) @@l @l{}
-formatting.texi(mymacro,413) @@L @L{}
-formatting.texi(mymacro,413) @@exclamdown @exclamdown{}
-formatting.texi(mymacro,413) @@questiondown @questiondown{}
-formatting.texi(mymacro,413) @@pounds @pounds{}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @code{@@acronym@{--a@}} @acronym{--a}
-formatting.texi(mymacro,413) @code{@@asis@{--a@}} @asis{--a}
-formatting.texi(mymacro,413) @code{@@b@{--a@}} @b{--a}
-formatting.texi(mymacro,413) @code{@@cite@{--a@}} @cite{--a}
-formatting.texi(mymacro,413) @code{@@code@{--a@}} @code{--a}
-formatting.texi(mymacro,413) @code{@@command@{--a@}} @command{--a}
-formatting.texi(mymacro,413) @code{@@ctrl@{--a@}} @ctrl{--a}
-formatting.texi(mymacro,413) @code{@@dfn@{--a@}} @dfn{--a}
-formatting.texi(mymacro,413) @code{@@dmn@{--a@}} @dmn{--a}
-formatting.texi(mymacro,413) @code{@@email@{--a,--b@}} @email{--a,--b}
-formatting.texi(mymacro,413) @code{@@email@{,--b@}} @email{,--b}
-formatting.texi(mymacro,413) @code{@@email@{--a@}} @email{--a}
-formatting.texi(mymacro,413) @code{@@emph@{--a@}} @emph{--a}
-formatting.texi(mymacro,413) @code{@@env@{--a@}} @env{--a}
-formatting.texi(mymacro,413) @code{@@file@{--a@}} @file{--a}
-formatting.texi(mymacro,413) @code{@@i@{--a@}} @i{--a}
-formatting.texi(mymacro,413) @code{@@kbd@{--a@}} @kbd{--a}
-formatting.texi(mymacro,413) @code{@@key@{--a@}} @key{--a}
-formatting.texi(mymacro,413) @code{@@math@{--a@}} @math{--a}
-formatting.texi(mymacro,413) @code{@@option@{--a@}} @option{--a}
-formatting.texi(mymacro,413) @code{@@r@{--a@}} @r{--a}
-formatting.texi(mymacro,413) @code{@@samp@{--a@}} @samp{--a}
-formatting.texi(mymacro,413) @code{@@sc@{--a@}} @sc{--a}
-formatting.texi(mymacro,413) @code{@@strong@{--a@}} @strong{--a}
-formatting.texi(mymacro,413) @code{@@t@{--a@}} @t{--a}
-formatting.texi(mymacro,413) @code{@@titlefont@{--a@}} @titlefont{--a}
-formatting.texi(mymacro,413) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-formatting.texi(mymacro,413) @code{@@uref@{--a@}} @uref{--a}
-formatting.texi(mymacro,413) @code{@@uref@{,--b@}} @uref{,--b}
-formatting.texi(mymacro,413) @code{@@url@{--a,--b@}} @url{--a,--b}
-formatting.texi(mymacro,413) @code{@@url@{--a,@}} @url{--a,}
-formatting.texi(mymacro,413) @code{@@url@{,--b@}} @url{,--b}
-formatting.texi(mymacro,413) @code{@@var@{--a@}} @var{--a}
-formatting.texi(mymacro,413) @code{@@verb@{:--a:@}} @verb{:--a:}
-formatting.texi(mymacro,413) @code{@@w@{--a@}} @w{--a}
-formatting.texi(mymacro,413) @code{@@H@{a@}} @H{a}
-formatting.texi(mymacro,413) @code{@@H@{--a@}} @H{--a}
-formatting.texi(mymacro,413) @code{@@dotaccent@{a@}} @dotaccent{a}
-formatting.texi(mymacro,413) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-formatting.texi(mymacro,413) @code{@@ringaccent@{a@}} @ringaccent{a}
-formatting.texi(mymacro,413) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-formatting.texi(mymacro,413) @code{@@tieaccent@{a@}} @tieaccent{a}
-formatting.texi(mymacro,413) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-formatting.texi(mymacro,413) @code{@@u@{a@}} @u{a}
-formatting.texi(mymacro,413) @code{@@u@{--a@}} @u{--a}
-formatting.texi(mymacro,413) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-formatting.texi(mymacro,413) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-formatting.texi(mymacro,413) @code{@@udotaccent@{a@}} @udotaccent{a}
-formatting.texi(mymacro,413) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-formatting.texi(mymacro,413) @code{@@v@{a@}} @v{a}
-formatting.texi(mymacro,413) @code{@@v@{--a@}} @v{--a}
-formatting.texi(mymacro,413) @code{@@,@{c@}} @m_cedilla{c}
-formatting.texi(mymacro,413) @code{@@,@{--c@}} @m_cedilla{--c}
-formatting.texi(mymacro,413) @code{@@dotless@{--a@}} @dotless{--a}
-formatting.texi(mymacro,413) @code{@@dotless@{a@}} @dotless{a}
-formatting.texi(mymacro,413) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-formatting.texi(mymacro,413) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
-formatting.texi(mymacro,413) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-formatting.texi(mymacro,413) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
-formatting.texi(mymacro,413) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
-formatting.texi(mymacro,413) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-formatting.texi(mymacro,413) @code{@@image@{f--ile@}} @image{f--ile}
-formatting.texi(mymacro,413) @code{@@image@{,,e--xt@}} @image{,,e--xt}
-formatting.texi(mymacro,413) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
-formatting.texi(mymacro,413) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @sp
-formatting.texi(mymacro,413) @sp 2
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @quotation
-formatting.texi(mymacro,413) a q--uotation
-formatting.texi(mymacro,413) @end quotation
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize
-formatting.texi(mymacro,413) @item i--temize
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize +
-formatting.texi(mymacro,413) @item i--tem +
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize @bullet
-formatting.texi(mymacro,413) @item b--ullet
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize @minus
-formatting.texi(mymacro,413) @item minu--s
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize @emph
-formatting.texi(mymacro,413) @item e--mph item
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize @emph after emph
-formatting.texi(mymacro,413) @item e--mph item
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @itemize @bullet a--n itemize line
-formatting.texi(mymacro,413) @item i--tem 1
-formatting.texi(mymacro,413) @item i--tem 2
-formatting.texi(mymacro,413) @end itemize
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @enumerate
-formatting.texi(mymacro,413) @item e--numerate
-formatting.texi(mymacro,413) @end enumerate
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @multitable @columnfractions 6 7
-formatting.texi(mymacro,413) @item mu--ltitable item @tab multitable tab
-formatting.texi(mymacro,413) @end multitable
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @example
-formatting.texi(mymacro,413) e--xample  some
-formatting.texi(mymacro,413)    text
-formatting.texi(mymacro,413) @end example
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @smallexample
-formatting.texi(mymacro,413) s--mallexample
-formatting.texi(mymacro,413) @end smallexample
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @display 
-formatting.texi(mymacro,413) d--isplay
-formatting.texi(mymacro,413) @end display
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @smalldisplay
-formatting.texi(mymacro,413) s--malldisplay
-formatting.texi(mymacro,413) @end smalldisplay
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @lisp
-formatting.texi(mymacro,413) l--isp
-formatting.texi(mymacro,413) @end lisp
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @smalllisp
-formatting.texi(mymacro,413) s--malllisp
-formatting.texi(mymacro,413) @end smalllisp
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @format
-formatting.texi(mymacro,413) f--ormat
-formatting.texi(mymacro,413) @end format
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @smallformat
-formatting.texi(mymacro,413) s--mallformat
-formatting.texi(mymacro,413) @end smallformat
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deffn c--ategory d--effn_name a--rguments...
-formatting.texi(mymacro,413) d--effn
-formatting.texi(mymacro,413) @end deffn
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deffn cate--gory de--ffn_name ar--guments...
-formatting.texi(mymacro,413) def--fn
-formatting.texi(mymacro,413) @end deffn
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defvr c--ategory d--efvr_name
-formatting.texi(mymacro,413) d--efvr
-formatting.texi(mymacro,413) @end defvr
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-formatting.texi(mymacro,413) d--eftypefn
-formatting.texi(mymacro,413) @end deftypefn
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-formatting.texi(mymacro,413) d--eftypeop
-formatting.texi(mymacro,413) @end deftypeop
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypevr c--ategory t--ype d--eftypevr_name
-formatting.texi(mymacro,413) d--eftypevr
-formatting.texi(mymacro,413) @end deftypevr
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defcv c--ategory c--lass d--efcv_name
-formatting.texi(mymacro,413) d--efcv
-formatting.texi(mymacro,413) @end defcv
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defop c--ategory c--lass d--efop_name a--rguments...
-formatting.texi(mymacro,413) d--efop
-formatting.texi(mymacro,413) @end defop
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftp c--ategory d--eftp_name a--ttributes...
-formatting.texi(mymacro,413) d--eftp
-formatting.texi(mymacro,413) @end deftp
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defun d--efun_name a--rguments...
-formatting.texi(mymacro,413) d--efun
-formatting.texi(mymacro,413) @end defun
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defmac d--efmac_name a--rguments...
-formatting.texi(mymacro,413) d--efmac
-formatting.texi(mymacro,413) @end defmac
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defspec d--efspec_name a--rguments...
-formatting.texi(mymacro,413) d--efspec
-formatting.texi(mymacro,413) @end defspec
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defvar d--efvar_name
-formatting.texi(mymacro,413) d--efvar
-formatting.texi(mymacro,413) @end defvar
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defopt d--efopt_name
-formatting.texi(mymacro,413) d--efopt
-formatting.texi(mymacro,413) @end defopt
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypefun t--ype d--eftypefun_name a--rguments...
-formatting.texi(mymacro,413) d--eftypefun
-formatting.texi(mymacro,413) @end deftypefun
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypevar t--ype d--eftypevar_name
-formatting.texi(mymacro,413) d--eftypevar
-formatting.texi(mymacro,413) @end deftypevar
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defivar c--lass d--efivar_name
-formatting.texi(mymacro,413) d--efivar
-formatting.texi(mymacro,413) @end defivar
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypeivar c--lass t--ype d--eftypeivar_name
-formatting.texi(mymacro,413) d--eftypeivar
-formatting.texi(mymacro,413) @end deftypeivar
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @defmethod c--lass d--efmethod_name a--rguments...
-formatting.texi(mymacro,413) d--efmethod
-formatting.texi(mymacro,413) @end defmethod
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-formatting.texi(mymacro,413) d--eftypemethod
-formatting.texi(mymacro,413) @end deftypemethod
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,413) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,413) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @code{@@ref@{chapter@}} @ref{chapter}
-formatting.texi(mymacro,413) @code{@@ref@{node@}} @ref{node}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
-formatting.texi(mymacro,413) @code{@@ref@{,,title@}} @ref{,,title}
-formatting.texi(mymacro,413) @code{@@ref@{,,,file name@}} @ref{,,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-formatting.texi(mymacro,413) @code{@@ref@{node,,title@}} @ref{node,,title}
-formatting.texi(mymacro,413) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-formatting.texi(mymacro,413) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
-formatting.texi(mymacro,413) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
-formatting.texi(mymacro,413) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
-formatting.texi(mymacro,413) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,413) @code{@@inforef@{chapter@}} @inforef{chapter}
-formatting.texi(mymacro,413) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-formatting.texi(mymacro,413) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-formatting.texi(mymacro,413) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-formatting.texi(mymacro,413) @code{@@inforef@{node@}} @inforef{node}
-formatting.texi(mymacro,413) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-formatting.texi(mymacro,413) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-formatting.texi(mymacro,413) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
-formatting.texi(mymacro,413) @code{@@inforef@{,,file name@}} @inforef{,,file name}
-formatting.texi(mymacro,413) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @table @bullet
-formatting.texi(mymacro,413) @item a
-formatting.texi(mymacro,413) l--ine
-formatting.texi(mymacro,413) @end table
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @vtable @asis
-formatting.texi(mymacro,413) @item a
-formatting.texi(mymacro,413) l--ine
-formatting.texi(mymacro,413) @end vtable
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @ftable @minus
-formatting.texi(mymacro,413) @item a
-formatting.texi(mymacro,413) l--ine
-formatting.texi(mymacro,413) @end ftable
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @flushleft
-formatting.texi(mymacro,413) flushleft
-formatting.texi(mymacro,413) @end flushleft
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @flushright
-formatting.texi(mymacro,413) flushright
-formatting.texi(mymacro,413) @end flushright
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @center centered line
-formatting.texi(mymacro,413) 
-formatting.texi(mymacro,413) @verbatiminclude simplest.texi
-formatting.texi(mymacro,413) 
-formatting.texi(,414) 
-formatting.texi(,415) @example
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) <
-formatting.texi(mymacro,416) >
-formatting.texi(mymacro,416) "
-formatting.texi(mymacro,416) &
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) ``simple-double--three---four----''@*
-formatting.texi(mymacro,416) code: @code{``simple-double--three---four----''} @*
-formatting.texi(mymacro,416) asis: @asis{``simple-double--three---four----''} @*
-formatting.texi(mymacro,416) strong: @strong{``simple-double--three---four----''} @*
-formatting.texi(mymacro,416) kbd: @kbd{``simple-double--three---four----''} @*
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @cindex --option
-formatting.texi(mymacro,416) @cindex ``
-formatting.texi(mymacro,416) @findex ``
-formatting.texi(mymacro,416) @findex --foption
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @@"u @"u 
-formatting.texi(mymacro,416) @@"@{U@} @"{U} 
-formatting.texi(mymacro,416) @@~n @~n
-formatting.texi(mymacro,416) @@^a @^a
-formatting.texi(mymacro,416) @@'e @'e
-formatting.texi(mymacro,416) @@=o @=o
-formatting.texi(mymacro,416) @@`i @`i
-formatting.texi(mymacro,416) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-formatting.texi(mymacro,416) @@dotless@{i@} @dotless{i}
-formatting.texi(mymacro,416) @@dotless@{ij@} @dotless{ij}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @@dotless@{truc@} @dotless{truc}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @@* @*
-formatting.texi(mymacro,416) @@ followed by a space
-formatting.texi(mymacro,416) @ 
-formatting.texi(mymacro,416) @@ followed by a tab
-formatting.texi(mymacro,416) @	
-formatting.texi(mymacro,416) @@ followed by a new line
-formatting.texi(mymacro,416) @
-formatting.texi(mymacro,416) @code{@@-} @-
-formatting.texi(mymacro,416) @code{@@|} @|
-formatting.texi(mymacro,416) @code{@@:} @:
-formatting.texi(mymacro,416) @code{@@!} @!
-formatting.texi(mymacro,416) @code{@@?} @?
-formatting.texi(mymacro,416) @code{@@.} @.
-formatting.texi(mymacro,416) @code{@@@@} @@
-formatting.texi(mymacro,416) @code{@@@}} @}
-formatting.texi(mymacro,416) @code{@@@{} @{
-formatting.texi(mymacro,416) @code{@@/} @/
-formatting.texi(mymacro,416) @code{@@#} @#
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @@TeX @TeX{}
-formatting.texi(mymacro,416) @c @br{}
-formatting.texi(mymacro,416) @@bullet @bullet{}
-formatting.texi(mymacro,416) @@copyright @copyright{}
-formatting.texi(mymacro,416) @@dots @dots{}
-formatting.texi(mymacro,416) @@enddots @enddots{}
-formatting.texi(mymacro,416) @@equiv @equiv{}
-formatting.texi(mymacro,416) @@error @error{}
-formatting.texi(mymacro,416) @@expansion @expansion{}
-formatting.texi(mymacro,416) @@minus @minus{}
-formatting.texi(mymacro,416) @@point @point{}
-formatting.texi(mymacro,416) @@print @print{}
-formatting.texi(mymacro,416) @@result @result{}
-formatting.texi(mymacro,416) @@today @today{}
-formatting.texi(mymacro,416) @@aa @aa{}
-formatting.texi(mymacro,416) @@AA @AA{}
-formatting.texi(mymacro,416) @@ae @ae{}
-formatting.texi(mymacro,416) @@oe @oe{}
-formatting.texi(mymacro,416) @@AE @AE{}
-formatting.texi(mymacro,416) @@OE @OE{}
-formatting.texi(mymacro,416) @@o @o{}
-formatting.texi(mymacro,416) @@O @O{}
-formatting.texi(mymacro,416) @@ss @ss{}
-formatting.texi(mymacro,416) @@l @l{}
-formatting.texi(mymacro,416) @@L @L{}
-formatting.texi(mymacro,416) @@exclamdown @exclamdown{}
-formatting.texi(mymacro,416) @@questiondown @questiondown{}
-formatting.texi(mymacro,416) @@pounds @pounds{}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @code{@@acronym@{--a@}} @acronym{--a}
-formatting.texi(mymacro,416) @code{@@asis@{--a@}} @asis{--a}
-formatting.texi(mymacro,416) @code{@@b@{--a@}} @b{--a}
-formatting.texi(mymacro,416) @code{@@cite@{--a@}} @cite{--a}
-formatting.texi(mymacro,416) @code{@@code@{--a@}} @code{--a}
-formatting.texi(mymacro,416) @code{@@command@{--a@}} @command{--a}
-formatting.texi(mymacro,416) @code{@@ctrl@{--a@}} @ctrl{--a}
-formatting.texi(mymacro,416) @code{@@dfn@{--a@}} @dfn{--a}
-formatting.texi(mymacro,416) @code{@@dmn@{--a@}} @dmn{--a}
-formatting.texi(mymacro,416) @code{@@email@{--a,--b@}} @email{--a,--b}
-formatting.texi(mymacro,416) @code{@@email@{,--b@}} @email{,--b}
-formatting.texi(mymacro,416) @code{@@email@{--a@}} @email{--a}
-formatting.texi(mymacro,416) @code{@@emph@{--a@}} @emph{--a}
-formatting.texi(mymacro,416) @code{@@env@{--a@}} @env{--a}
-formatting.texi(mymacro,416) @code{@@file@{--a@}} @file{--a}
-formatting.texi(mymacro,416) @code{@@i@{--a@}} @i{--a}
-formatting.texi(mymacro,416) @code{@@kbd@{--a@}} @kbd{--a}
-formatting.texi(mymacro,416) @code{@@key@{--a@}} @key{--a}
-formatting.texi(mymacro,416) @code{@@math@{--a@}} @math{--a}
-formatting.texi(mymacro,416) @code{@@option@{--a@}} @option{--a}
-formatting.texi(mymacro,416) @code{@@r@{--a@}} @r{--a}
-formatting.texi(mymacro,416) @code{@@samp@{--a@}} @samp{--a}
-formatting.texi(mymacro,416) @code{@@sc@{--a@}} @sc{--a}
-formatting.texi(mymacro,416) @code{@@strong@{--a@}} @strong{--a}
-formatting.texi(mymacro,416) @code{@@t@{--a@}} @t{--a}
-formatting.texi(mymacro,416) @code{@@titlefont@{--a@}} @titlefont{--a}
-formatting.texi(mymacro,416) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-formatting.texi(mymacro,416) @code{@@uref@{--a@}} @uref{--a}
-formatting.texi(mymacro,416) @code{@@uref@{,--b@}} @uref{,--b}
-formatting.texi(mymacro,416) @code{@@url@{--a,--b@}} @url{--a,--b}
-formatting.texi(mymacro,416) @code{@@url@{--a,@}} @url{--a,}
-formatting.texi(mymacro,416) @code{@@url@{,--b@}} @url{,--b}
-formatting.texi(mymacro,416) @code{@@var@{--a@}} @var{--a}
-formatting.texi(mymacro,416) @code{@@verb@{:--a:@}} @verb{:--a:}
-formatting.texi(mymacro,416) @code{@@w@{--a@}} @w{--a}
-formatting.texi(mymacro,416) @code{@@H@{a@}} @H{a}
-formatting.texi(mymacro,416) @code{@@H@{--a@}} @H{--a}
-formatting.texi(mymacro,416) @code{@@dotaccent@{a@}} @dotaccent{a}
-formatting.texi(mymacro,416) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-formatting.texi(mymacro,416) @code{@@ringaccent@{a@}} @ringaccent{a}
-formatting.texi(mymacro,416) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-formatting.texi(mymacro,416) @code{@@tieaccent@{a@}} @tieaccent{a}
-formatting.texi(mymacro,416) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-formatting.texi(mymacro,416) @code{@@u@{a@}} @u{a}
-formatting.texi(mymacro,416) @code{@@u@{--a@}} @u{--a}
-formatting.texi(mymacro,416) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-formatting.texi(mymacro,416) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-formatting.texi(mymacro,416) @code{@@udotaccent@{a@}} @udotaccent{a}
-formatting.texi(mymacro,416) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-formatting.texi(mymacro,416) @code{@@v@{a@}} @v{a}
-formatting.texi(mymacro,416) @code{@@v@{--a@}} @v{--a}
-formatting.texi(mymacro,416) @code{@@,@{c@}} @m_cedilla{c}
-formatting.texi(mymacro,416) @code{@@,@{--c@}} @m_cedilla{--c}
-formatting.texi(mymacro,416) @code{@@dotless@{--a@}} @dotless{--a}
-formatting.texi(mymacro,416) @code{@@dotless@{a@}} @dotless{a}
-formatting.texi(mymacro,416) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-formatting.texi(mymacro,416) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
-formatting.texi(mymacro,416) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-formatting.texi(mymacro,416) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
-formatting.texi(mymacro,416) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
-formatting.texi(mymacro,416) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
-formatting.texi(mymacro,416) @code{@@image@{f--ile@}} @image{f--ile}
-formatting.texi(mymacro,416) @code{@@image@{,,e--xt@}} @image{,,e--xt}
-formatting.texi(mymacro,416) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
-formatting.texi(mymacro,416) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @sp
-formatting.texi(mymacro,416) @sp 2
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @quotation
-formatting.texi(mymacro,416) a q--uotation
-formatting.texi(mymacro,416) @end quotation
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize
-formatting.texi(mymacro,416) @item i--temize
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize +
-formatting.texi(mymacro,416) @item i--tem +
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize @bullet
-formatting.texi(mymacro,416) @item b--ullet
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize @minus
-formatting.texi(mymacro,416) @item minu--s
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize @emph
-formatting.texi(mymacro,416) @item e--mph item
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize @emph after emph
-formatting.texi(mymacro,416) @item e--mph item
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @itemize @bullet a--n itemize line
-formatting.texi(mymacro,416) @item i--tem 1
-formatting.texi(mymacro,416) @item i--tem 2
-formatting.texi(mymacro,416) @end itemize
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @enumerate
-formatting.texi(mymacro,416) @item e--numerate
-formatting.texi(mymacro,416) @end enumerate
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @multitable @columnfractions 6 7
-formatting.texi(mymacro,416) @item mu--ltitable item @tab multitable tab
-formatting.texi(mymacro,416) @end multitable
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @example
-formatting.texi(mymacro,416) e--xample  some
-formatting.texi(mymacro,416)    text
-formatting.texi(mymacro,416) @end example
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @smallexample
-formatting.texi(mymacro,416) s--mallexample
-formatting.texi(mymacro,416) @end smallexample
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @display 
-formatting.texi(mymacro,416) d--isplay
-formatting.texi(mymacro,416) @end display
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @smalldisplay
-formatting.texi(mymacro,416) s--malldisplay
-formatting.texi(mymacro,416) @end smalldisplay
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @lisp
-formatting.texi(mymacro,416) l--isp
-formatting.texi(mymacro,416) @end lisp
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @smalllisp
-formatting.texi(mymacro,416) s--malllisp
-formatting.texi(mymacro,416) @end smalllisp
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @format
-formatting.texi(mymacro,416) f--ormat
-formatting.texi(mymacro,416) @end format
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @smallformat
-formatting.texi(mymacro,416) s--mallformat
-formatting.texi(mymacro,416) @end smallformat
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deffn c--ategory d--effn_name a--rguments...
-formatting.texi(mymacro,416) d--effn
-formatting.texi(mymacro,416) @end deffn
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deffn cate--gory de--ffn_name ar--guments...
-formatting.texi(mymacro,416) def--fn
-formatting.texi(mymacro,416) @end deffn
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defvr c--ategory d--efvr_name
-formatting.texi(mymacro,416) d--efvr
-formatting.texi(mymacro,416) @end defvr
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-formatting.texi(mymacro,416) d--eftypefn
-formatting.texi(mymacro,416) @end deftypefn
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-formatting.texi(mymacro,416) d--eftypeop
-formatting.texi(mymacro,416) @end deftypeop
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypevr c--ategory t--ype d--eftypevr_name
-formatting.texi(mymacro,416) d--eftypevr
-formatting.texi(mymacro,416) @end deftypevr
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defcv c--ategory c--lass d--efcv_name
-formatting.texi(mymacro,416) d--efcv
-formatting.texi(mymacro,416) @end defcv
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defop c--ategory c--lass d--efop_name a--rguments...
-formatting.texi(mymacro,416) d--efop
-formatting.texi(mymacro,416) @end defop
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftp c--ategory d--eftp_name a--ttributes...
-formatting.texi(mymacro,416) d--eftp
-formatting.texi(mymacro,416) @end deftp
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defun d--efun_name a--rguments...
-formatting.texi(mymacro,416) d--efun
-formatting.texi(mymacro,416) @end defun
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defmac d--efmac_name a--rguments...
-formatting.texi(mymacro,416) d--efmac
-formatting.texi(mymacro,416) @end defmac
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defspec d--efspec_name a--rguments...
-formatting.texi(mymacro,416) d--efspec
-formatting.texi(mymacro,416) @end defspec
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defvar d--efvar_name
-formatting.texi(mymacro,416) d--efvar
-formatting.texi(mymacro,416) @end defvar
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defopt d--efopt_name
-formatting.texi(mymacro,416) d--efopt
-formatting.texi(mymacro,416) @end defopt
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypefun t--ype d--eftypefun_name a--rguments...
-formatting.texi(mymacro,416) d--eftypefun
-formatting.texi(mymacro,416) @end deftypefun
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypevar t--ype d--eftypevar_name
-formatting.texi(mymacro,416) d--eftypevar
-formatting.texi(mymacro,416) @end deftypevar
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defivar c--lass d--efivar_name
-formatting.texi(mymacro,416) d--efivar
-formatting.texi(mymacro,416) @end defivar
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypeivar c--lass t--ype d--eftypeivar_name
-formatting.texi(mymacro,416) d--eftypeivar
-formatting.texi(mymacro,416) @end deftypeivar
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @defmethod c--lass d--efmethod_name a--rguments...
-formatting.texi(mymacro,416) d--efmethod
-formatting.texi(mymacro,416) @end defmethod
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-formatting.texi(mymacro,416) d--eftypemethod
-formatting.texi(mymacro,416) @end deftypemethod
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,416) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-formatting.texi(mymacro,416) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @code{@@ref@{chapter@}} @ref{chapter}
-formatting.texi(mymacro,416) @code{@@ref@{node@}} @ref{node}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
-formatting.texi(mymacro,416) @code{@@ref@{,,title@}} @ref{,,title}
-formatting.texi(mymacro,416) @code{@@ref@{,,,file name@}} @ref{,,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-formatting.texi(mymacro,416) @code{@@ref@{node,,title@}} @ref{node,,title}
-formatting.texi(mymacro,416) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-formatting.texi(mymacro,416) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
-formatting.texi(mymacro,416) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
-formatting.texi(mymacro,416) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
-formatting.texi(mymacro,416) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-formatting.texi(mymacro,416) @code{@@inforef@{chapter@}} @inforef{chapter}
-formatting.texi(mymacro,416) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-formatting.texi(mymacro,416) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-formatting.texi(mymacro,416) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-formatting.texi(mymacro,416) @code{@@inforef@{node@}} @inforef{node}
-formatting.texi(mymacro,416) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-formatting.texi(mymacro,416) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-formatting.texi(mymacro,416) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
-formatting.texi(mymacro,416) @code{@@inforef@{,,file name@}} @inforef{,,file name}
-formatting.texi(mymacro,416) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @table @bullet
-formatting.texi(mymacro,416) @item a
-formatting.texi(mymacro,416) l--ine
-formatting.texi(mymacro,416) @end table
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @vtable @asis
-formatting.texi(mymacro,416) @item a
-formatting.texi(mymacro,416) l--ine
-formatting.texi(mymacro,416) @end vtable
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @ftable @minus
-formatting.texi(mymacro,416) @item a
-formatting.texi(mymacro,416) l--ine
-formatting.texi(mymacro,416) @end ftable
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @flushleft
-formatting.texi(mymacro,416) flushleft
-formatting.texi(mymacro,416) @end flushleft
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @flushright
-formatting.texi(mymacro,416) flushright
-formatting.texi(mymacro,416) @end flushright
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @center centered line
-formatting.texi(mymacro,416) 
-formatting.texi(mymacro,416) @verbatiminclude simplest.texi
-formatting.texi(mymacro,416) 
-formatting.texi(,417) @end example
-formatting.texi(,418) 
-formatting.texi(,419) @cindex t--ruc
-formatting.texi(,420) @cindex T--ruc
-formatting.texi(,421) @cindex .
-formatting.texi(,422) @cindex ?
-formatting.texi(,423) @cindex a
-formatting.texi(,424) @findex t--ruc
-formatting.texi(,425) @findex T--ruc
-formatting.texi(,426) @findex .
-formatting.texi(,427) @findex ?
-formatting.texi(,428) @findex a
-formatting.texi(,429) 
+formatting.texi(,409) 
+formatting.texi(,410) @copying
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) <
+formatting.texi(mymacro,411) >
+formatting.texi(mymacro,411) "
+formatting.texi(mymacro,411) &
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) ``simple-double--three---four----''@*
+formatting.texi(mymacro,411) code: @code{``simple-double--three---four----''} @*
+formatting.texi(mymacro,411) asis: @asis{``simple-double--three---four----''} @*
+formatting.texi(mymacro,411) strong: @strong{``simple-double--three---four----''} @*
+formatting.texi(mymacro,411) kbd: @kbd{``simple-double--three---four----''} @*
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @cindex --option
+formatting.texi(mymacro,411) @cindex ``
+formatting.texi(mymacro,411) @findex ``
+formatting.texi(mymacro,411) @findex --foption
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @@"u @"u 
+formatting.texi(mymacro,411) @@"@{U@} @"{U} 
+formatting.texi(mymacro,411) @@~n @~n
+formatting.texi(mymacro,411) @@^a @^a
+formatting.texi(mymacro,411) @@'e @'e
+formatting.texi(mymacro,411) @@=o @=o
+formatting.texi(mymacro,411) @@`i @`i
+formatting.texi(mymacro,411) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+formatting.texi(mymacro,411) @@dotless@{i@} @dotless{i}
+formatting.texi(mymacro,411) @@dotless@{ij@} @dotless{ij}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @@dotless@{truc@} @dotless{truc}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @@* @*
+formatting.texi(mymacro,411) @@ followed by a space
+formatting.texi(mymacro,411) @ 
+formatting.texi(mymacro,411) @@ followed by a tab
+formatting.texi(mymacro,411) @	
+formatting.texi(mymacro,411) @@ followed by a new line
+formatting.texi(mymacro,411) @
+formatting.texi(mymacro,411) @code{@@-} @-
+formatting.texi(mymacro,411) @code{@@|} @|
+formatting.texi(mymacro,411) @code{@@:} @:
+formatting.texi(mymacro,411) @code{@@!} @!
+formatting.texi(mymacro,411) @code{@@?} @?
+formatting.texi(mymacro,411) @code{@@.} @.
+formatting.texi(mymacro,411) @code{@@@@} @@
+formatting.texi(mymacro,411) @code{@@@}} @}
+formatting.texi(mymacro,411) @code{@@@{} @{
+formatting.texi(mymacro,411) @code{@@/} @/
+formatting.texi(mymacro,411) @code{@@#} @#
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @@TeX @TeX{}
+formatting.texi(mymacro,411) @c @br{}
+formatting.texi(mymacro,411) @@bullet @bullet{}
+formatting.texi(mymacro,411) @@copyright @copyright{}
+formatting.texi(mymacro,411) @@dots @dots{}
+formatting.texi(mymacro,411) @@enddots @enddots{}
+formatting.texi(mymacro,411) @@equiv @equiv{}
+formatting.texi(mymacro,411) @@error @error{}
+formatting.texi(mymacro,411) @@expansion @expansion{}
+formatting.texi(mymacro,411) @@minus @minus{}
+formatting.texi(mymacro,411) @@point @point{}
+formatting.texi(mymacro,411) @@print @print{}
+formatting.texi(mymacro,411) @@result @result{}
+formatting.texi(mymacro,411) @@today @today{}
+formatting.texi(mymacro,411) @@aa @aa{}
+formatting.texi(mymacro,411) @@AA @AA{}
+formatting.texi(mymacro,411) @@ae @ae{}
+formatting.texi(mymacro,411) @@oe @oe{}
+formatting.texi(mymacro,411) @@AE @AE{}
+formatting.texi(mymacro,411) @@OE @OE{}
+formatting.texi(mymacro,411) @@o @o{}
+formatting.texi(mymacro,411) @@O @O{}
+formatting.texi(mymacro,411) @@ss @ss{}
+formatting.texi(mymacro,411) @@l @l{}
+formatting.texi(mymacro,411) @@L @L{}
+formatting.texi(mymacro,411) @@exclamdown @exclamdown{}
+formatting.texi(mymacro,411) @@questiondown @questiondown{}
+formatting.texi(mymacro,411) @@pounds @pounds{}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @code{@@acronym@{--a@}} @acronym{--a}
+formatting.texi(mymacro,411) @code{@@asis@{--a@}} @asis{--a}
+formatting.texi(mymacro,411) @code{@@b@{--a@}} @b{--a}
+formatting.texi(mymacro,411) @code{@@cite@{--a@}} @cite{--a}
+formatting.texi(mymacro,411) @code{@@code@{--a@}} @code{--a}
+formatting.texi(mymacro,411) @code{@@command@{--a@}} @command{--a}
+formatting.texi(mymacro,411) @code{@@ctrl@{--a@}} @ctrl{--a}
+formatting.texi(mymacro,411) @code{@@dfn@{--a@}} @dfn{--a}
+formatting.texi(mymacro,411) @code{@@dmn@{--a@}} @dmn{--a}
+formatting.texi(mymacro,411) @code{@@email@{--a,--b@}} @email{--a,--b}
+formatting.texi(mymacro,411) @code{@@email@{,--b@}} @email{,--b}
+formatting.texi(mymacro,411) @code{@@email@{--a@}} @email{--a}
+formatting.texi(mymacro,411) @code{@@emph@{--a@}} @emph{--a}
+formatting.texi(mymacro,411) @code{@@env@{--a@}} @env{--a}
+formatting.texi(mymacro,411) @code{@@file@{--a@}} @file{--a}
+formatting.texi(mymacro,411) @code{@@i@{--a@}} @i{--a}
+formatting.texi(mymacro,411) @code{@@kbd@{--a@}} @kbd{--a}
+formatting.texi(mymacro,411) @code{@@key@{--a@}} @key{--a}
+formatting.texi(mymacro,411) @code{@@math@{--a@}} @math{--a}
+formatting.texi(mymacro,411) @code{@@option@{--a@}} @option{--a}
+formatting.texi(mymacro,411) @code{@@r@{--a@}} @r{--a}
+formatting.texi(mymacro,411) @code{@@samp@{--a@}} @samp{--a}
+formatting.texi(mymacro,411) @code{@@sc@{--a@}} @sc{--a}
+formatting.texi(mymacro,411) @code{@@strong@{--a@}} @strong{--a}
+formatting.texi(mymacro,411) @code{@@t@{--a@}} @t{--a}
+formatting.texi(mymacro,411) @code{@@titlefont@{--a@}} @titlefont{--a}
+formatting.texi(mymacro,411) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+formatting.texi(mymacro,411) @code{@@uref@{--a@}} @uref{--a}
+formatting.texi(mymacro,411) @code{@@uref@{,--b@}} @uref{,--b}
+formatting.texi(mymacro,411) @code{@@url@{--a,--b@}} @url{--a,--b}
+formatting.texi(mymacro,411) @code{@@url@{--a,@}} @url{--a,}
+formatting.texi(mymacro,411) @code{@@url@{,--b@}} @url{,--b}
+formatting.texi(mymacro,411) @code{@@var@{--a@}} @var{--a}
+formatting.texi(mymacro,411) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,411) @code{@@w@{--a@}} @w{--a}
+formatting.texi(mymacro,411) @code{@@H@{a@}} @H{a}
+formatting.texi(mymacro,411) @code{@@H@{--a@}} @H{--a}
+formatting.texi(mymacro,411) @code{@@dotaccent@{a@}} @dotaccent{a}
+formatting.texi(mymacro,411) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+formatting.texi(mymacro,411) @code{@@ringaccent@{a@}} @ringaccent{a}
+formatting.texi(mymacro,411) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+formatting.texi(mymacro,411) @code{@@tieaccent@{a@}} @tieaccent{a}
+formatting.texi(mymacro,411) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+formatting.texi(mymacro,411) @code{@@u@{a@}} @u{a}
+formatting.texi(mymacro,411) @code{@@u@{--a@}} @u{--a}
+formatting.texi(mymacro,411) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+formatting.texi(mymacro,411) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+formatting.texi(mymacro,411) @code{@@udotaccent@{a@}} @udotaccent{a}
+formatting.texi(mymacro,411) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+formatting.texi(mymacro,411) @code{@@v@{a@}} @v{a}
+formatting.texi(mymacro,411) @code{@@v@{--a@}} @v{--a}
+formatting.texi(mymacro,411) @code{@@,@{c@}} @m_cedilla{c}
+formatting.texi(mymacro,411) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting.texi(mymacro,411) @code{@@dotless@{--a@}} @dotless{--a}
+formatting.texi(mymacro,411) @code{@@dotless@{a@}} @dotless{a}
+formatting.texi(mymacro,411) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+formatting.texi(mymacro,411) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
+formatting.texi(mymacro,411) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+formatting.texi(mymacro,411) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+formatting.texi(mymacro,411) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+formatting.texi(mymacro,411) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+formatting.texi(mymacro,411) @code{@@image@{f--ile@}} @image{f--ile}
+formatting.texi(mymacro,411) @code{@@image@{,,e--xt@}} @image{,,e--xt}
+formatting.texi(mymacro,411) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+formatting.texi(mymacro,411) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+formatting.texi(mymacro,411) @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @sp
+formatting.texi(mymacro,411) @sp 2
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @quotation
+formatting.texi(mymacro,411) a q--uotation
+formatting.texi(mymacro,411) @end quotation
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize
+formatting.texi(mymacro,411) @item i--temize
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize +
+formatting.texi(mymacro,411) @item i--tem +
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize @bullet
+formatting.texi(mymacro,411) @item b--ullet
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize @minus
+formatting.texi(mymacro,411) @item minu--s
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize @emph
+formatting.texi(mymacro,411) @item e--mph item
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize @emph after emph
+formatting.texi(mymacro,411) @item e--mph item
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @itemize @bullet a--n itemize line
+formatting.texi(mymacro,411) @item i--tem 1
+formatting.texi(mymacro,411) @item i--tem 2
+formatting.texi(mymacro,411) @end itemize
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @enumerate
+formatting.texi(mymacro,411) @item e--numerate
+formatting.texi(mymacro,411) @end enumerate
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @multitable @columnfractions 6 7
+formatting.texi(mymacro,411) @item mu--ltitable item @tab multitable tab
+formatting.texi(mymacro,411) @end multitable
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @example
+formatting.texi(mymacro,411) e--xample  some
+formatting.texi(mymacro,411)    text
+formatting.texi(mymacro,411) @end example
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @smallexample
+formatting.texi(mymacro,411) s--mallexample
+formatting.texi(mymacro,411) @end smallexample
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @display 
+formatting.texi(mymacro,411) d--isplay
+formatting.texi(mymacro,411) @end display
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @smalldisplay
+formatting.texi(mymacro,411) s--malldisplay
+formatting.texi(mymacro,411) @end smalldisplay
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @lisp
+formatting.texi(mymacro,411) l--isp
+formatting.texi(mymacro,411) @end lisp
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @smalllisp
+formatting.texi(mymacro,411) s--malllisp
+formatting.texi(mymacro,411) @end smalllisp
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @format
+formatting.texi(mymacro,411) f--ormat
+formatting.texi(mymacro,411) @end format
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @smallformat
+formatting.texi(mymacro,411) s--mallformat
+formatting.texi(mymacro,411) @end smallformat
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deffn c--ategory d--effn_name a--rguments...
+formatting.texi(mymacro,411) d--effn
+formatting.texi(mymacro,411) @end deffn
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deffn cate--gory de--ffn_name ar--guments...
+formatting.texi(mymacro,411) def--fn
+formatting.texi(mymacro,411) @end deffn
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defvr c--ategory d--efvr_name
+formatting.texi(mymacro,411) d--efvr
+formatting.texi(mymacro,411) @end defvr
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+formatting.texi(mymacro,411) d--eftypefn
+formatting.texi(mymacro,411) @end deftypefn
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+formatting.texi(mymacro,411) d--eftypeop
+formatting.texi(mymacro,411) @end deftypeop
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypevr c--ategory t--ype d--eftypevr_name
+formatting.texi(mymacro,411) d--eftypevr
+formatting.texi(mymacro,411) @end deftypevr
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defcv c--ategory c--lass d--efcv_name
+formatting.texi(mymacro,411) d--efcv
+formatting.texi(mymacro,411) @end defcv
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defop c--ategory c--lass d--efop_name a--rguments...
+formatting.texi(mymacro,411) d--efop
+formatting.texi(mymacro,411) @end defop
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftp c--ategory d--eftp_name a--ttributes...
+formatting.texi(mymacro,411) d--eftp
+formatting.texi(mymacro,411) @end deftp
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defun d--efun_name a--rguments...
+formatting.texi(mymacro,411) d--efun
+formatting.texi(mymacro,411) @end defun
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defmac d--efmac_name a--rguments...
+formatting.texi(mymacro,411) d--efmac
+formatting.texi(mymacro,411) @end defmac
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defspec d--efspec_name a--rguments...
+formatting.texi(mymacro,411) d--efspec
+formatting.texi(mymacro,411) @end defspec
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defvar d--efvar_name
+formatting.texi(mymacro,411) d--efvar
+formatting.texi(mymacro,411) @end defvar
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defopt d--efopt_name
+formatting.texi(mymacro,411) d--efopt
+formatting.texi(mymacro,411) @end defopt
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypefun t--ype d--eftypefun_name a--rguments...
+formatting.texi(mymacro,411) d--eftypefun
+formatting.texi(mymacro,411) @end deftypefun
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypevar t--ype d--eftypevar_name
+formatting.texi(mymacro,411) d--eftypevar
+formatting.texi(mymacro,411) @end deftypevar
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defivar c--lass d--efivar_name
+formatting.texi(mymacro,411) d--efivar
+formatting.texi(mymacro,411) @end defivar
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypeivar c--lass t--ype d--eftypeivar_name
+formatting.texi(mymacro,411) d--eftypeivar
+formatting.texi(mymacro,411) @end deftypeivar
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @defmethod c--lass d--efmethod_name a--rguments...
+formatting.texi(mymacro,411) d--efmethod
+formatting.texi(mymacro,411) @end defmethod
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+formatting.texi(mymacro,411) d--eftypemethod
+formatting.texi(mymacro,411) @end deftypemethod
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,411) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,411) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @code{@@ref@{chapter@}} @ref{chapter}
+formatting.texi(mymacro,411) @code{@@ref@{node@}} @ref{node}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+formatting.texi(mymacro,411) @code{@@ref@{,,title@}} @ref{,,title}
+formatting.texi(mymacro,411) @code{@@ref@{,,,file name@}} @ref{,,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+formatting.texi(mymacro,411) @code{@@ref@{node,,title@}} @ref{node,,title}
+formatting.texi(mymacro,411) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+formatting.texi(mymacro,411) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+formatting.texi(mymacro,411) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+formatting.texi(mymacro,411) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+formatting.texi(mymacro,411) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,411) @code{@@inforef@{chapter@}} @inforef{chapter}
+formatting.texi(mymacro,411) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+formatting.texi(mymacro,411) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+formatting.texi(mymacro,411) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+formatting.texi(mymacro,411) @code{@@inforef@{node@}} @inforef{node}
+formatting.texi(mymacro,411) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+formatting.texi(mymacro,411) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+formatting.texi(mymacro,411) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+formatting.texi(mymacro,411) @code{@@inforef@{,,file name@}} @inforef{,,file name}
+formatting.texi(mymacro,411) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @table @bullet
+formatting.texi(mymacro,411) @item a
+formatting.texi(mymacro,411) l--ine
+formatting.texi(mymacro,411) @end table
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @vtable @asis
+formatting.texi(mymacro,411) @item a
+formatting.texi(mymacro,411) l--ine
+formatting.texi(mymacro,411) @end vtable
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @ftable @minus
+formatting.texi(mymacro,411) @item a
+formatting.texi(mymacro,411) l--ine
+formatting.texi(mymacro,411) @end ftable
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @flushleft
+formatting.texi(mymacro,411) flushleft
+formatting.texi(mymacro,411) @end flushleft
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @flushright
+formatting.texi(mymacro,411) flushright
+formatting.texi(mymacro,411) @end flushright
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @center centered line
+formatting.texi(mymacro,411) 
+formatting.texi(mymacro,411) @verbatiminclude simplest.texi
+formatting.texi(mymacro,411) 
+formatting.texi(,412) @end copying
+formatting.texi(,413) 
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) <
+formatting.texi(mymacro,414) >
+formatting.texi(mymacro,414) "
+formatting.texi(mymacro,414) &
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) ``simple-double--three---four----''@*
+formatting.texi(mymacro,414) code: @code{``simple-double--three---four----''} @*
+formatting.texi(mymacro,414) asis: @asis{``simple-double--three---four----''} @*
+formatting.texi(mymacro,414) strong: @strong{``simple-double--three---four----''} @*
+formatting.texi(mymacro,414) kbd: @kbd{``simple-double--three---four----''} @*
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @cindex --option
+formatting.texi(mymacro,414) @cindex ``
+formatting.texi(mymacro,414) @findex ``
+formatting.texi(mymacro,414) @findex --foption
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @@"u @"u 
+formatting.texi(mymacro,414) @@"@{U@} @"{U} 
+formatting.texi(mymacro,414) @@~n @~n
+formatting.texi(mymacro,414) @@^a @^a
+formatting.texi(mymacro,414) @@'e @'e
+formatting.texi(mymacro,414) @@=o @=o
+formatting.texi(mymacro,414) @@`i @`i
+formatting.texi(mymacro,414) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+formatting.texi(mymacro,414) @@dotless@{i@} @dotless{i}
+formatting.texi(mymacro,414) @@dotless@{ij@} @dotless{ij}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @@dotless@{truc@} @dotless{truc}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @@* @*
+formatting.texi(mymacro,414) @@ followed by a space
+formatting.texi(mymacro,414) @ 
+formatting.texi(mymacro,414) @@ followed by a tab
+formatting.texi(mymacro,414) @	
+formatting.texi(mymacro,414) @@ followed by a new line
+formatting.texi(mymacro,414) @
+formatting.texi(mymacro,414) @code{@@-} @-
+formatting.texi(mymacro,414) @code{@@|} @|
+formatting.texi(mymacro,414) @code{@@:} @:
+formatting.texi(mymacro,414) @code{@@!} @!
+formatting.texi(mymacro,414) @code{@@?} @?
+formatting.texi(mymacro,414) @code{@@.} @.
+formatting.texi(mymacro,414) @code{@@@@} @@
+formatting.texi(mymacro,414) @code{@@@}} @}
+formatting.texi(mymacro,414) @code{@@@{} @{
+formatting.texi(mymacro,414) @code{@@/} @/
+formatting.texi(mymacro,414) @code{@@#} @#
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @@TeX @TeX{}
+formatting.texi(mymacro,414) @c @br{}
+formatting.texi(mymacro,414) @@bullet @bullet{}
+formatting.texi(mymacro,414) @@copyright @copyright{}
+formatting.texi(mymacro,414) @@dots @dots{}
+formatting.texi(mymacro,414) @@enddots @enddots{}
+formatting.texi(mymacro,414) @@equiv @equiv{}
+formatting.texi(mymacro,414) @@error @error{}
+formatting.texi(mymacro,414) @@expansion @expansion{}
+formatting.texi(mymacro,414) @@minus @minus{}
+formatting.texi(mymacro,414) @@point @point{}
+formatting.texi(mymacro,414) @@print @print{}
+formatting.texi(mymacro,414) @@result @result{}
+formatting.texi(mymacro,414) @@today @today{}
+formatting.texi(mymacro,414) @@aa @aa{}
+formatting.texi(mymacro,414) @@AA @AA{}
+formatting.texi(mymacro,414) @@ae @ae{}
+formatting.texi(mymacro,414) @@oe @oe{}
+formatting.texi(mymacro,414) @@AE @AE{}
+formatting.texi(mymacro,414) @@OE @OE{}
+formatting.texi(mymacro,414) @@o @o{}
+formatting.texi(mymacro,414) @@O @O{}
+formatting.texi(mymacro,414) @@ss @ss{}
+formatting.texi(mymacro,414) @@l @l{}
+formatting.texi(mymacro,414) @@L @L{}
+formatting.texi(mymacro,414) @@exclamdown @exclamdown{}
+formatting.texi(mymacro,414) @@questiondown @questiondown{}
+formatting.texi(mymacro,414) @@pounds @pounds{}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @code{@@acronym@{--a@}} @acronym{--a}
+formatting.texi(mymacro,414) @code{@@asis@{--a@}} @asis{--a}
+formatting.texi(mymacro,414) @code{@@b@{--a@}} @b{--a}
+formatting.texi(mymacro,414) @code{@@cite@{--a@}} @cite{--a}
+formatting.texi(mymacro,414) @code{@@code@{--a@}} @code{--a}
+formatting.texi(mymacro,414) @code{@@command@{--a@}} @command{--a}
+formatting.texi(mymacro,414) @code{@@ctrl@{--a@}} @ctrl{--a}
+formatting.texi(mymacro,414) @code{@@dfn@{--a@}} @dfn{--a}
+formatting.texi(mymacro,414) @code{@@dmn@{--a@}} @dmn{--a}
+formatting.texi(mymacro,414) @code{@@email@{--a,--b@}} @email{--a,--b}
+formatting.texi(mymacro,414) @code{@@email@{,--b@}} @email{,--b}
+formatting.texi(mymacro,414) @code{@@email@{--a@}} @email{--a}
+formatting.texi(mymacro,414) @code{@@emph@{--a@}} @emph{--a}
+formatting.texi(mymacro,414) @code{@@env@{--a@}} @env{--a}
+formatting.texi(mymacro,414) @code{@@file@{--a@}} @file{--a}
+formatting.texi(mymacro,414) @code{@@i@{--a@}} @i{--a}
+formatting.texi(mymacro,414) @code{@@kbd@{--a@}} @kbd{--a}
+formatting.texi(mymacro,414) @code{@@key@{--a@}} @key{--a}
+formatting.texi(mymacro,414) @code{@@math@{--a@}} @math{--a}
+formatting.texi(mymacro,414) @code{@@option@{--a@}} @option{--a}
+formatting.texi(mymacro,414) @code{@@r@{--a@}} @r{--a}
+formatting.texi(mymacro,414) @code{@@samp@{--a@}} @samp{--a}
+formatting.texi(mymacro,414) @code{@@sc@{--a@}} @sc{--a}
+formatting.texi(mymacro,414) @code{@@strong@{--a@}} @strong{--a}
+formatting.texi(mymacro,414) @code{@@t@{--a@}} @t{--a}
+formatting.texi(mymacro,414) @code{@@titlefont@{--a@}} @titlefont{--a}
+formatting.texi(mymacro,414) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+formatting.texi(mymacro,414) @code{@@uref@{--a@}} @uref{--a}
+formatting.texi(mymacro,414) @code{@@uref@{,--b@}} @uref{,--b}
+formatting.texi(mymacro,414) @code{@@url@{--a,--b@}} @url{--a,--b}
+formatting.texi(mymacro,414) @code{@@url@{--a,@}} @url{--a,}
+formatting.texi(mymacro,414) @code{@@url@{,--b@}} @url{,--b}
+formatting.texi(mymacro,414) @code{@@var@{--a@}} @var{--a}
+formatting.texi(mymacro,414) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,414) @code{@@w@{--a@}} @w{--a}
+formatting.texi(mymacro,414) @code{@@H@{a@}} @H{a}
+formatting.texi(mymacro,414) @code{@@H@{--a@}} @H{--a}
+formatting.texi(mymacro,414) @code{@@dotaccent@{a@}} @dotaccent{a}
+formatting.texi(mymacro,414) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+formatting.texi(mymacro,414) @code{@@ringaccent@{a@}} @ringaccent{a}
+formatting.texi(mymacro,414) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+formatting.texi(mymacro,414) @code{@@tieaccent@{a@}} @tieaccent{a}
+formatting.texi(mymacro,414) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+formatting.texi(mymacro,414) @code{@@u@{a@}} @u{a}
+formatting.texi(mymacro,414) @code{@@u@{--a@}} @u{--a}
+formatting.texi(mymacro,414) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+formatting.texi(mymacro,414) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+formatting.texi(mymacro,414) @code{@@udotaccent@{a@}} @udotaccent{a}
+formatting.texi(mymacro,414) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+formatting.texi(mymacro,414) @code{@@v@{a@}} @v{a}
+formatting.texi(mymacro,414) @code{@@v@{--a@}} @v{--a}
+formatting.texi(mymacro,414) @code{@@,@{c@}} @m_cedilla{c}
+formatting.texi(mymacro,414) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting.texi(mymacro,414) @code{@@dotless@{--a@}} @dotless{--a}
+formatting.texi(mymacro,414) @code{@@dotless@{a@}} @dotless{a}
+formatting.texi(mymacro,414) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+formatting.texi(mymacro,414) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
+formatting.texi(mymacro,414) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+formatting.texi(mymacro,414) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+formatting.texi(mymacro,414) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+formatting.texi(mymacro,414) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+formatting.texi(mymacro,414) @code{@@image@{f--ile@}} @image{f--ile}
+formatting.texi(mymacro,414) @code{@@image@{,,e--xt@}} @image{,,e--xt}
+formatting.texi(mymacro,414) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+formatting.texi(mymacro,414) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+formatting.texi(mymacro,414) @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @sp
+formatting.texi(mymacro,414) @sp 2
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @quotation
+formatting.texi(mymacro,414) a q--uotation
+formatting.texi(mymacro,414) @end quotation
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize
+formatting.texi(mymacro,414) @item i--temize
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize +
+formatting.texi(mymacro,414) @item i--tem +
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize @bullet
+formatting.texi(mymacro,414) @item b--ullet
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize @minus
+formatting.texi(mymacro,414) @item minu--s
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize @emph
+formatting.texi(mymacro,414) @item e--mph item
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize @emph after emph
+formatting.texi(mymacro,414) @item e--mph item
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @itemize @bullet a--n itemize line
+formatting.texi(mymacro,414) @item i--tem 1
+formatting.texi(mymacro,414) @item i--tem 2
+formatting.texi(mymacro,414) @end itemize
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @enumerate
+formatting.texi(mymacro,414) @item e--numerate
+formatting.texi(mymacro,414) @end enumerate
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @multitable @columnfractions 6 7
+formatting.texi(mymacro,414) @item mu--ltitable item @tab multitable tab
+formatting.texi(mymacro,414) @end multitable
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @example
+formatting.texi(mymacro,414) e--xample  some
+formatting.texi(mymacro,414)    text
+formatting.texi(mymacro,414) @end example
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @smallexample
+formatting.texi(mymacro,414) s--mallexample
+formatting.texi(mymacro,414) @end smallexample
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @display 
+formatting.texi(mymacro,414) d--isplay
+formatting.texi(mymacro,414) @end display
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @smalldisplay
+formatting.texi(mymacro,414) s--malldisplay
+formatting.texi(mymacro,414) @end smalldisplay
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @lisp
+formatting.texi(mymacro,414) l--isp
+formatting.texi(mymacro,414) @end lisp
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @smalllisp
+formatting.texi(mymacro,414) s--malllisp
+formatting.texi(mymacro,414) @end smalllisp
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @format
+formatting.texi(mymacro,414) f--ormat
+formatting.texi(mymacro,414) @end format
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @smallformat
+formatting.texi(mymacro,414) s--mallformat
+formatting.texi(mymacro,414) @end smallformat
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deffn c--ategory d--effn_name a--rguments...
+formatting.texi(mymacro,414) d--effn
+formatting.texi(mymacro,414) @end deffn
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deffn cate--gory de--ffn_name ar--guments...
+formatting.texi(mymacro,414) def--fn
+formatting.texi(mymacro,414) @end deffn
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defvr c--ategory d--efvr_name
+formatting.texi(mymacro,414) d--efvr
+formatting.texi(mymacro,414) @end defvr
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+formatting.texi(mymacro,414) d--eftypefn
+formatting.texi(mymacro,414) @end deftypefn
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+formatting.texi(mymacro,414) d--eftypeop
+formatting.texi(mymacro,414) @end deftypeop
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypevr c--ategory t--ype d--eftypevr_name
+formatting.texi(mymacro,414) d--eftypevr
+formatting.texi(mymacro,414) @end deftypevr
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defcv c--ategory c--lass d--efcv_name
+formatting.texi(mymacro,414) d--efcv
+formatting.texi(mymacro,414) @end defcv
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defop c--ategory c--lass d--efop_name a--rguments...
+formatting.texi(mymacro,414) d--efop
+formatting.texi(mymacro,414) @end defop
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftp c--ategory d--eftp_name a--ttributes...
+formatting.texi(mymacro,414) d--eftp
+formatting.texi(mymacro,414) @end deftp
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defun d--efun_name a--rguments...
+formatting.texi(mymacro,414) d--efun
+formatting.texi(mymacro,414) @end defun
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defmac d--efmac_name a--rguments...
+formatting.texi(mymacro,414) d--efmac
+formatting.texi(mymacro,414) @end defmac
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defspec d--efspec_name a--rguments...
+formatting.texi(mymacro,414) d--efspec
+formatting.texi(mymacro,414) @end defspec
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defvar d--efvar_name
+formatting.texi(mymacro,414) d--efvar
+formatting.texi(mymacro,414) @end defvar
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defopt d--efopt_name
+formatting.texi(mymacro,414) d--efopt
+formatting.texi(mymacro,414) @end defopt
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypefun t--ype d--eftypefun_name a--rguments...
+formatting.texi(mymacro,414) d--eftypefun
+formatting.texi(mymacro,414) @end deftypefun
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypevar t--ype d--eftypevar_name
+formatting.texi(mymacro,414) d--eftypevar
+formatting.texi(mymacro,414) @end deftypevar
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defivar c--lass d--efivar_name
+formatting.texi(mymacro,414) d--efivar
+formatting.texi(mymacro,414) @end defivar
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypeivar c--lass t--ype d--eftypeivar_name
+formatting.texi(mymacro,414) d--eftypeivar
+formatting.texi(mymacro,414) @end deftypeivar
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @defmethod c--lass d--efmethod_name a--rguments...
+formatting.texi(mymacro,414) d--efmethod
+formatting.texi(mymacro,414) @end defmethod
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+formatting.texi(mymacro,414) d--eftypemethod
+formatting.texi(mymacro,414) @end deftypemethod
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,414) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,414) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @code{@@ref@{chapter@}} @ref{chapter}
+formatting.texi(mymacro,414) @code{@@ref@{node@}} @ref{node}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+formatting.texi(mymacro,414) @code{@@ref@{,,title@}} @ref{,,title}
+formatting.texi(mymacro,414) @code{@@ref@{,,,file name@}} @ref{,,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+formatting.texi(mymacro,414) @code{@@ref@{node,,title@}} @ref{node,,title}
+formatting.texi(mymacro,414) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+formatting.texi(mymacro,414) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+formatting.texi(mymacro,414) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+formatting.texi(mymacro,414) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+formatting.texi(mymacro,414) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,414) @code{@@inforef@{chapter@}} @inforef{chapter}
+formatting.texi(mymacro,414) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+formatting.texi(mymacro,414) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+formatting.texi(mymacro,414) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+formatting.texi(mymacro,414) @code{@@inforef@{node@}} @inforef{node}
+formatting.texi(mymacro,414) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+formatting.texi(mymacro,414) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+formatting.texi(mymacro,414) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+formatting.texi(mymacro,414) @code{@@inforef@{,,file name@}} @inforef{,,file name}
+formatting.texi(mymacro,414) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @table @bullet
+formatting.texi(mymacro,414) @item a
+formatting.texi(mymacro,414) l--ine
+formatting.texi(mymacro,414) @end table
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @vtable @asis
+formatting.texi(mymacro,414) @item a
+formatting.texi(mymacro,414) l--ine
+formatting.texi(mymacro,414) @end vtable
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @ftable @minus
+formatting.texi(mymacro,414) @item a
+formatting.texi(mymacro,414) l--ine
+formatting.texi(mymacro,414) @end ftable
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @flushleft
+formatting.texi(mymacro,414) flushleft
+formatting.texi(mymacro,414) @end flushleft
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @flushright
+formatting.texi(mymacro,414) flushright
+formatting.texi(mymacro,414) @end flushright
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @center centered line
+formatting.texi(mymacro,414) 
+formatting.texi(mymacro,414) @verbatiminclude simplest.texi
+formatting.texi(mymacro,414) 
+formatting.texi(,415) 
+formatting.texi(,416) @example
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) <
+formatting.texi(mymacro,417) >
+formatting.texi(mymacro,417) "
+formatting.texi(mymacro,417) &
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) ``simple-double--three---four----''@*
+formatting.texi(mymacro,417) code: @code{``simple-double--three---four----''} @*
+formatting.texi(mymacro,417) asis: @asis{``simple-double--three---four----''} @*
+formatting.texi(mymacro,417) strong: @strong{``simple-double--three---four----''} @*
+formatting.texi(mymacro,417) kbd: @kbd{``simple-double--three---four----''} @*
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @cindex --option
+formatting.texi(mymacro,417) @cindex ``
+formatting.texi(mymacro,417) @findex ``
+formatting.texi(mymacro,417) @findex --foption
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @@"u @"u 
+formatting.texi(mymacro,417) @@"@{U@} @"{U} 
+formatting.texi(mymacro,417) @@~n @~n
+formatting.texi(mymacro,417) @@^a @^a
+formatting.texi(mymacro,417) @@'e @'e
+formatting.texi(mymacro,417) @@=o @=o
+formatting.texi(mymacro,417) @@`i @`i
+formatting.texi(mymacro,417) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+formatting.texi(mymacro,417) @@dotless@{i@} @dotless{i}
+formatting.texi(mymacro,417) @@dotless@{ij@} @dotless{ij}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @@dotless@{truc@} @dotless{truc}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @@* @*
+formatting.texi(mymacro,417) @@ followed by a space
+formatting.texi(mymacro,417) @ 
+formatting.texi(mymacro,417) @@ followed by a tab
+formatting.texi(mymacro,417) @	
+formatting.texi(mymacro,417) @@ followed by a new line
+formatting.texi(mymacro,417) @
+formatting.texi(mymacro,417) @code{@@-} @-
+formatting.texi(mymacro,417) @code{@@|} @|
+formatting.texi(mymacro,417) @code{@@:} @:
+formatting.texi(mymacro,417) @code{@@!} @!
+formatting.texi(mymacro,417) @code{@@?} @?
+formatting.texi(mymacro,417) @code{@@.} @.
+formatting.texi(mymacro,417) @code{@@@@} @@
+formatting.texi(mymacro,417) @code{@@@}} @}
+formatting.texi(mymacro,417) @code{@@@{} @{
+formatting.texi(mymacro,417) @code{@@/} @/
+formatting.texi(mymacro,417) @code{@@#} @#
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @@TeX @TeX{}
+formatting.texi(mymacro,417) @c @br{}
+formatting.texi(mymacro,417) @@bullet @bullet{}
+formatting.texi(mymacro,417) @@copyright @copyright{}
+formatting.texi(mymacro,417) @@dots @dots{}
+formatting.texi(mymacro,417) @@enddots @enddots{}
+formatting.texi(mymacro,417) @@equiv @equiv{}
+formatting.texi(mymacro,417) @@error @error{}
+formatting.texi(mymacro,417) @@expansion @expansion{}
+formatting.texi(mymacro,417) @@minus @minus{}
+formatting.texi(mymacro,417) @@point @point{}
+formatting.texi(mymacro,417) @@print @print{}
+formatting.texi(mymacro,417) @@result @result{}
+formatting.texi(mymacro,417) @@today @today{}
+formatting.texi(mymacro,417) @@aa @aa{}
+formatting.texi(mymacro,417) @@AA @AA{}
+formatting.texi(mymacro,417) @@ae @ae{}
+formatting.texi(mymacro,417) @@oe @oe{}
+formatting.texi(mymacro,417) @@AE @AE{}
+formatting.texi(mymacro,417) @@OE @OE{}
+formatting.texi(mymacro,417) @@o @o{}
+formatting.texi(mymacro,417) @@O @O{}
+formatting.texi(mymacro,417) @@ss @ss{}
+formatting.texi(mymacro,417) @@l @l{}
+formatting.texi(mymacro,417) @@L @L{}
+formatting.texi(mymacro,417) @@exclamdown @exclamdown{}
+formatting.texi(mymacro,417) @@questiondown @questiondown{}
+formatting.texi(mymacro,417) @@pounds @pounds{}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @code{@@acronym@{--a@}} @acronym{--a}
+formatting.texi(mymacro,417) @code{@@asis@{--a@}} @asis{--a}
+formatting.texi(mymacro,417) @code{@@b@{--a@}} @b{--a}
+formatting.texi(mymacro,417) @code{@@cite@{--a@}} @cite{--a}
+formatting.texi(mymacro,417) @code{@@code@{--a@}} @code{--a}
+formatting.texi(mymacro,417) @code{@@command@{--a@}} @command{--a}
+formatting.texi(mymacro,417) @code{@@ctrl@{--a@}} @ctrl{--a}
+formatting.texi(mymacro,417) @code{@@dfn@{--a@}} @dfn{--a}
+formatting.texi(mymacro,417) @code{@@dmn@{--a@}} @dmn{--a}
+formatting.texi(mymacro,417) @code{@@email@{--a,--b@}} @email{--a,--b}
+formatting.texi(mymacro,417) @code{@@email@{,--b@}} @email{,--b}
+formatting.texi(mymacro,417) @code{@@email@{--a@}} @email{--a}
+formatting.texi(mymacro,417) @code{@@emph@{--a@}} @emph{--a}
+formatting.texi(mymacro,417) @code{@@env@{--a@}} @env{--a}
+formatting.texi(mymacro,417) @code{@@file@{--a@}} @file{--a}
+formatting.texi(mymacro,417) @code{@@i@{--a@}} @i{--a}
+formatting.texi(mymacro,417) @code{@@kbd@{--a@}} @kbd{--a}
+formatting.texi(mymacro,417) @code{@@key@{--a@}} @key{--a}
+formatting.texi(mymacro,417) @code{@@math@{--a@}} @math{--a}
+formatting.texi(mymacro,417) @code{@@option@{--a@}} @option{--a}
+formatting.texi(mymacro,417) @code{@@r@{--a@}} @r{--a}
+formatting.texi(mymacro,417) @code{@@samp@{--a@}} @samp{--a}
+formatting.texi(mymacro,417) @code{@@sc@{--a@}} @sc{--a}
+formatting.texi(mymacro,417) @code{@@strong@{--a@}} @strong{--a}
+formatting.texi(mymacro,417) @code{@@t@{--a@}} @t{--a}
+formatting.texi(mymacro,417) @code{@@titlefont@{--a@}} @titlefont{--a}
+formatting.texi(mymacro,417) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+formatting.texi(mymacro,417) @code{@@uref@{--a@}} @uref{--a}
+formatting.texi(mymacro,417) @code{@@uref@{,--b@}} @uref{,--b}
+formatting.texi(mymacro,417) @code{@@url@{--a,--b@}} @url{--a,--b}
+formatting.texi(mymacro,417) @code{@@url@{--a,@}} @url{--a,}
+formatting.texi(mymacro,417) @code{@@url@{,--b@}} @url{,--b}
+formatting.texi(mymacro,417) @code{@@var@{--a@}} @var{--a}
+formatting.texi(mymacro,417) @code{@@verb@{:--a:@}} @verb{:--a:}
+formatting.texi(mymacro,417) @code{@@w@{--a@}} @w{--a}
+formatting.texi(mymacro,417) @code{@@H@{a@}} @H{a}
+formatting.texi(mymacro,417) @code{@@H@{--a@}} @H{--a}
+formatting.texi(mymacro,417) @code{@@dotaccent@{a@}} @dotaccent{a}
+formatting.texi(mymacro,417) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+formatting.texi(mymacro,417) @code{@@ringaccent@{a@}} @ringaccent{a}
+formatting.texi(mymacro,417) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+formatting.texi(mymacro,417) @code{@@tieaccent@{a@}} @tieaccent{a}
+formatting.texi(mymacro,417) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+formatting.texi(mymacro,417) @code{@@u@{a@}} @u{a}
+formatting.texi(mymacro,417) @code{@@u@{--a@}} @u{--a}
+formatting.texi(mymacro,417) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+formatting.texi(mymacro,417) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+formatting.texi(mymacro,417) @code{@@udotaccent@{a@}} @udotaccent{a}
+formatting.texi(mymacro,417) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+formatting.texi(mymacro,417) @code{@@v@{a@}} @v{a}
+formatting.texi(mymacro,417) @code{@@v@{--a@}} @v{--a}
+formatting.texi(mymacro,417) @code{@@,@{c@}} @m_cedilla{c}
+formatting.texi(mymacro,417) @code{@@,@{--c@}} @m_cedilla{--c}
+formatting.texi(mymacro,417) @code{@@dotless@{--a@}} @dotless{--a}
+formatting.texi(mymacro,417) @code{@@dotless@{a@}} @dotless{a}
+formatting.texi(mymacro,417) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+formatting.texi(mymacro,417) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
+formatting.texi(mymacro,417) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+formatting.texi(mymacro,417) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+formatting.texi(mymacro,417) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+formatting.texi(mymacro,417) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+formatting.texi(mymacro,417) @code{@@image@{f--ile@}} @image{f--ile}
+formatting.texi(mymacro,417) @code{@@image@{,,e--xt@}} @image{,,e--xt}
+formatting.texi(mymacro,417) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+formatting.texi(mymacro,417) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+formatting.texi(mymacro,417) @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @sp
+formatting.texi(mymacro,417) @sp 2
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @quotation
+formatting.texi(mymacro,417) a q--uotation
+formatting.texi(mymacro,417) @end quotation
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize
+formatting.texi(mymacro,417) @item i--temize
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize +
+formatting.texi(mymacro,417) @item i--tem +
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize @bullet
+formatting.texi(mymacro,417) @item b--ullet
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize @minus
+formatting.texi(mymacro,417) @item minu--s
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize @emph
+formatting.texi(mymacro,417) @item e--mph item
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize @emph after emph
+formatting.texi(mymacro,417) @item e--mph item
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @itemize @bullet a--n itemize line
+formatting.texi(mymacro,417) @item i--tem 1
+formatting.texi(mymacro,417) @item i--tem 2
+formatting.texi(mymacro,417) @end itemize
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @enumerate
+formatting.texi(mymacro,417) @item e--numerate
+formatting.texi(mymacro,417) @end enumerate
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @multitable @columnfractions 6 7
+formatting.texi(mymacro,417) @item mu--ltitable item @tab multitable tab
+formatting.texi(mymacro,417) @end multitable
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @example
+formatting.texi(mymacro,417) e--xample  some
+formatting.texi(mymacro,417)    text
+formatting.texi(mymacro,417) @end example
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @smallexample
+formatting.texi(mymacro,417) s--mallexample
+formatting.texi(mymacro,417) @end smallexample
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @display 
+formatting.texi(mymacro,417) d--isplay
+formatting.texi(mymacro,417) @end display
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @smalldisplay
+formatting.texi(mymacro,417) s--malldisplay
+formatting.texi(mymacro,417) @end smalldisplay
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @lisp
+formatting.texi(mymacro,417) l--isp
+formatting.texi(mymacro,417) @end lisp
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @smalllisp
+formatting.texi(mymacro,417) s--malllisp
+formatting.texi(mymacro,417) @end smalllisp
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @format
+formatting.texi(mymacro,417) f--ormat
+formatting.texi(mymacro,417) @end format
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @smallformat
+formatting.texi(mymacro,417) s--mallformat
+formatting.texi(mymacro,417) @end smallformat
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deffn c--ategory d--effn_name a--rguments...
+formatting.texi(mymacro,417) d--effn
+formatting.texi(mymacro,417) @end deffn
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deffn cate--gory de--ffn_name ar--guments...
+formatting.texi(mymacro,417) def--fn
+formatting.texi(mymacro,417) @end deffn
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defvr c--ategory d--efvr_name
+formatting.texi(mymacro,417) d--efvr
+formatting.texi(mymacro,417) @end defvr
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+formatting.texi(mymacro,417) d--eftypefn
+formatting.texi(mymacro,417) @end deftypefn
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+formatting.texi(mymacro,417) d--eftypeop
+formatting.texi(mymacro,417) @end deftypeop
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypevr c--ategory t--ype d--eftypevr_name
+formatting.texi(mymacro,417) d--eftypevr
+formatting.texi(mymacro,417) @end deftypevr
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defcv c--ategory c--lass d--efcv_name
+formatting.texi(mymacro,417) d--efcv
+formatting.texi(mymacro,417) @end defcv
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defop c--ategory c--lass d--efop_name a--rguments...
+formatting.texi(mymacro,417) d--efop
+formatting.texi(mymacro,417) @end defop
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftp c--ategory d--eftp_name a--ttributes...
+formatting.texi(mymacro,417) d--eftp
+formatting.texi(mymacro,417) @end deftp
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defun d--efun_name a--rguments...
+formatting.texi(mymacro,417) d--efun
+formatting.texi(mymacro,417) @end defun
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defmac d--efmac_name a--rguments...
+formatting.texi(mymacro,417) d--efmac
+formatting.texi(mymacro,417) @end defmac
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defspec d--efspec_name a--rguments...
+formatting.texi(mymacro,417) d--efspec
+formatting.texi(mymacro,417) @end defspec
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defvar d--efvar_name
+formatting.texi(mymacro,417) d--efvar
+formatting.texi(mymacro,417) @end defvar
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defopt d--efopt_name
+formatting.texi(mymacro,417) d--efopt
+formatting.texi(mymacro,417) @end defopt
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypefun t--ype d--eftypefun_name a--rguments...
+formatting.texi(mymacro,417) d--eftypefun
+formatting.texi(mymacro,417) @end deftypefun
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypevar t--ype d--eftypevar_name
+formatting.texi(mymacro,417) d--eftypevar
+formatting.texi(mymacro,417) @end deftypevar
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defivar c--lass d--efivar_name
+formatting.texi(mymacro,417) d--efivar
+formatting.texi(mymacro,417) @end defivar
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypeivar c--lass t--ype d--eftypeivar_name
+formatting.texi(mymacro,417) d--eftypeivar
+formatting.texi(mymacro,417) @end deftypeivar
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @defmethod c--lass d--efmethod_name a--rguments...
+formatting.texi(mymacro,417) d--efmethod
+formatting.texi(mymacro,417) @end defmethod
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+formatting.texi(mymacro,417) d--eftypemethod
+formatting.texi(mymacro,417) @end deftypemethod
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,417) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+formatting.texi(mymacro,417) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @code{@@ref@{chapter@}} @ref{chapter}
+formatting.texi(mymacro,417) @code{@@ref@{node@}} @ref{node}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+formatting.texi(mymacro,417) @code{@@ref@{,,title@}} @ref{,,title}
+formatting.texi(mymacro,417) @code{@@ref@{,,,file name@}} @ref{,,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+formatting.texi(mymacro,417) @code{@@ref@{node,,title@}} @ref{node,,title}
+formatting.texi(mymacro,417) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+formatting.texi(mymacro,417) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+formatting.texi(mymacro,417) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+formatting.texi(mymacro,417) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+formatting.texi(mymacro,417) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+formatting.texi(mymacro,417) @code{@@inforef@{chapter@}} @inforef{chapter}
+formatting.texi(mymacro,417) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+formatting.texi(mymacro,417) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+formatting.texi(mymacro,417) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+formatting.texi(mymacro,417) @code{@@inforef@{node@}} @inforef{node}
+formatting.texi(mymacro,417) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+formatting.texi(mymacro,417) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+formatting.texi(mymacro,417) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+formatting.texi(mymacro,417) @code{@@inforef@{,,file name@}} @inforef{,,file name}
+formatting.texi(mymacro,417) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @table @bullet
+formatting.texi(mymacro,417) @item a
+formatting.texi(mymacro,417) l--ine
+formatting.texi(mymacro,417) @end table
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @vtable @asis
+formatting.texi(mymacro,417) @item a
+formatting.texi(mymacro,417) l--ine
+formatting.texi(mymacro,417) @end vtable
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @ftable @minus
+formatting.texi(mymacro,417) @item a
+formatting.texi(mymacro,417) l--ine
+formatting.texi(mymacro,417) @end ftable
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @flushleft
+formatting.texi(mymacro,417) flushleft
+formatting.texi(mymacro,417) @end flushleft
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @flushright
+formatting.texi(mymacro,417) flushright
+formatting.texi(mymacro,417) @end flushright
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @center centered line
+formatting.texi(mymacro,417) 
+formatting.texi(mymacro,417) @verbatiminclude simplest.texi
+formatting.texi(mymacro,417) 
+formatting.texi(,418) @end example
+formatting.texi(,419) 
+formatting.texi(,420) @cindex t--ruc
+formatting.texi(,421) @cindex T--ruc
+formatting.texi(,422) @cindex .
+formatting.texi(,423) @cindex ?
+formatting.texi(,424) @cindex a
+formatting.texi(,425) @findex t--ruc
+formatting.texi(,426) @findex T--ruc
+formatting.texi(,427) @findex .
+formatting.texi(,428) @findex ?
+formatting.texi(,429) @findex a
 formatting.texi(,430) 
-formatting.texi(,431) cp
-formatting.texi(,432) @printindex cp
-formatting.texi(,433) 
-formatting.texi(,434) fn
-formatting.texi(,435) @printindex fn
-formatting.texi(,436) 
-formatting.texi(,437) vr
-formatting.texi(,438) @printindex vr
-formatting.texi(,439) 
-formatting.texi(,440) ky
-formatting.texi(,441) @printindex ky
-formatting.texi(,442) 
-formatting.texi(,443) pg
-formatting.texi(,444) @printindex pg
-formatting.texi(,445) 
-formatting.texi(,446) tp
-formatting.texi(,447) @printindex tp
-formatting.texi(,448) 
+formatting.texi(,431) 
+formatting.texi(,432) cp
+formatting.texi(,433) @printindex cp
+formatting.texi(,434) 
+formatting.texi(,435) fn
+formatting.texi(,436) @printindex fn
+formatting.texi(,437) 
+formatting.texi(,438) vr
+formatting.texi(,439) @printindex vr
+formatting.texi(,440) 
+formatting.texi(,441) ky
+formatting.texi(,442) @printindex ky
+formatting.texi(,443) 
+formatting.texi(,444) pg
+formatting.texi(,445) @printindex pg
+formatting.texi(,446) 
+formatting.texi(,447) tp
+formatting.texi(,448) @printindex tp
 formatting.texi(,449) 
 formatting.texi(,450) 
-formatting.texi(,451) @node chapter
-formatting.texi(,452) @chapter chapter
-formatting.texi(,453) 
-formatting.texi(,454) @footnote{in footnote}
-formatting.texi(,455) 
-formatting.texi(,456) @format
-formatting.texi(,457) @menu 
-formatting.texi(,458) * s--ection:: s--ection
-formatting.texi(,459) 
-formatting.texi(,460) Menu comment
-formatting.texi(,461) ``simple-double--three---four----''@*
-formatting.texi(,462) 
-formatting.texi(,463) @end menu
-formatting.texi(,464) @end format
-formatting.texi(,465) 
-formatting.texi(,466) @node s--ection
-formatting.texi(,467) @section A section
-formatting.texi(,468) 
-formatting.texi(,469) @menu
-formatting.texi(,470) * subsection:: 
-formatting.texi(,471) @end menu
-formatting.texi(,472) 
-formatting.texi(,473) @node subsection
-formatting.texi(,474) @subsection subsection
-formatting.texi(,475) 
-formatting.texi(,476) @menu
-formatting.texi(,477) * subsubsection::
-formatting.texi(,478) @end menu
-formatting.texi(,479) 
-formatting.texi(,480) @anchor{anchor}
-formatting.texi(,481) 
-formatting.texi(,482) @node subsubsection
-formatting.texi(,483) @subsubsection subsubsection
-formatting.texi(,484) 
-formatting.texi(,485) @node chapter2
-formatting.texi(,486) @chapter chapter 2
-formatting.texi(,487) 
-formatting.texi(,488) @printindex cp
-formatting.texi(,489) @printindex fn
-formatting.texi(,490) 
-formatting.texi(,491) @contents
-formatting.texi(,492) @shortcontents
+formatting.texi(,451) 
+formatting.texi(,452) @node chapter
+formatting.texi(,453) @chapter chapter
+formatting.texi(,454) 
+formatting.texi(,455) @footnote{in footnote}
+formatting.texi(,456) 
+formatting.texi(,457) @format
+formatting.texi(,458) @menu 
+formatting.texi(,459) * s--ection:: s--ection
+formatting.texi(,460) 
+formatting.texi(,461) Menu comment
+formatting.texi(,462) ``simple-double--three---four----''@*
+formatting.texi(,463) 
+formatting.texi(,464) @end menu
+formatting.texi(,465) @end format
+formatting.texi(,466) 
+formatting.texi(,467) @node s--ection
+formatting.texi(,468) @section A section
+formatting.texi(,469) 
+formatting.texi(,470) @menu
+formatting.texi(,471) * subsection:: 
+formatting.texi(,472) @end menu
+formatting.texi(,473) 
+formatting.texi(,474) @node subsection
+formatting.texi(,475) @subsection subsection
+formatting.texi(,476) 
+formatting.texi(,477) @menu
+formatting.texi(,478) * subsubsection::
+formatting.texi(,479) @end menu
+formatting.texi(,480) 
+formatting.texi(,481) @anchor{anchor}
+formatting.texi(,482) 
+formatting.texi(,483) @node subsubsection
+formatting.texi(,484) @subsubsection subsubsection
+formatting.texi(,485) 
+formatting.texi(,486) @node chapter2
+formatting.texi(,487) @chapter chapter 2
+formatting.texi(,488) 
+formatting.texi(,489) @printindex cp
+formatting.texi(,490) @printindex fn
+formatting.texi(,491) 
+formatting.texi(,492) @contents
+formatting.texi(,493) @shortcontents

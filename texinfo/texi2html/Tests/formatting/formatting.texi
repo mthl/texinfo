@@ -157,6 +157,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{,,e--xt@}} @image{,,e--xt}
 @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
 @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
 
 @sp
 @sp 2

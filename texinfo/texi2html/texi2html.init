@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.60 2004-01-04 20:52:31 pertusus Exp $
+# $Id: texi2html.init,v 1.61 2004-01-11 14:43:33 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1585,7 +1585,7 @@ $pre_map{'enddots'} = '....';
 #
 # Otherwithe the value is the html element used to enclose the text, and if
 # there is a " the resulting text is also enclosed within `'
-%style_map = (
+our %old_style_map = (
       'acronym',    '',
       'asis',       '',
       'b',          'b',
@@ -1615,16 +1615,45 @@ $pre_map{'enddots'} = '....';
       'verb',       'tt',
       'titlefont',  '&default_titlefont',
       'w',          '',
-      'H',          '&default_accent',
-      'dotaccent',  '&default_accent',
-      'ringaccent', '&default_accent',
-      'tieaccent',  '&default_accent',
-      'u',          '&default_accent',
-      'ubaraccent', '&default_accent',
-      'udotaccent', '&default_accent',
-      'v',          '&default_accent',
-      ',',          '&default_accent',
-      'dotless',    '&default_accent'
+     );
+
+# default is {'args' => ['normal'], 'attribute' => ''},   
+%style_map = (
+      'acronym',    {},
+      'asis',       {},
+      'b',          {'attribute' => 'b'},
+      'cite',       {'attribute' => 'cite'},
+      'code',       {'args' => ['code'], 'attribute' => 'code'},
+      'command',    {'args' => ['code'], 'attribute' => 'code'},
+      'ctrl',       {'function' => \&t2h_default_ctrl}, 
+      'dfn',        {'attribute' => 'em'}, 
+      'dmn',        {},   
+      #'email',      {'args' => ['code', 'normal'], 
+      #                 'function' => \&t2h_default_email}, 
+      'email',      {'args' => ['normal', 'normal'], 
+                       'function' => \&t2h_default_email}, 
+      'emph',       {'attribute' => 'em'}, 
+      'env',        {'args' => ['code'], 'attribute' => 'code'},
+      'file',       {'args' => ['code'], 'attribute' => 'tt', 'quote' => '"'},
+      'i',          {'attribute' => 'i'},
+      'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
+      'key',        {'attribute' => 'kbd'},
+      'math',       {'attribute' => 'em'},
+      'option',     {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
+      'r',          {},
+      'samp',       {'args' => ['code'], 'attribute' => 'samp', 'quote' => '"'},
+      'sc',         {'function' => \&t2h_default_sc},
+      'strong',     {'attribute' => 'strong'},
+      't',          {'attribute' => 'tt'},
+      #'uref',       {'function' => \&t2h_default_uref, 
+      #                'args' => ['code', 'normal', 'normal']},
+      'uref',       {'function' => \&t2h_default_uref, 
+                      'args' => ['normal', 'normal', 'normal']},
+      'url',        {'function' => \&t2h_default_url},
+      'var',        {'attribute' => 'var'},
+      'verb',       {'args' => ['code'], 'attribute' => 'tt'},
+      'titlefont',  {'function' => \&t2h_default_titlefont},
+      'w',          {},
      );
 
 #remark: texinfo uses ringaccent, with 'o'
@@ -1973,8 +2002,6 @@ $pre_map{'enddots'} = '....';
         'U' => '0170',
         'u' => '0171',
     },
-    'tieaccent' => {
-    },
 );
 
 %special_accents = (
@@ -1987,9 +2014,10 @@ $pre_map{'enddots'} = '....';
       '"'          => 'aeiouyAEIOU',
 );
 
-foreach my $accent (keys(%accent_map))
+foreach my $accent_command ('tieaccent', 'dotless', keys(%utf8_accents), keys(%accent_map))
 {
-    $style_map{$accent} = '&default_accent';
+     $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
+     $old_style_map{$accent_command} = '&default_accent';
 }
 
 sub default_accent($$)
@@ -2001,10 +2029,29 @@ sub default_accent($$)
          if ($text !~ /^[$accent_letters{$accent}]$/)
          {
               main::echo_warn ("\@$accent only valid with `$accent_letters{$accent}', not `$text'");
-              #return $text;
          }
     }
-    #return $text . '=' if ($accent eq '=');
+    return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
+    return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return $text . '&lt;' if ($accent eq 'v');
+    return "&${text}cedil;" if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return ascii_accents($text, $accent);
+}
+
+sub t2h_default_accent($$)
+{
+    my $accent = shift;
+    my $args = shift;
+
+    my $text = $args->[0];
+
+    if (defined($accent_letters{$accent}))
+    {
+         if ($text !~ /^[$accent_letters{$accent}]$/)
+         {
+              main::echo_warn ("\@$accent only valid with `$accent_letters{$accent}', not `$text'");
+         }
+    }
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
@@ -2034,9 +2081,23 @@ sub default_sc($$)
     return '<small>' . uc($_[0]) . '</small>';
 }
 
+sub t2h_default_sc($$$)
+{
+    shift;
+    my $args = shift;
+    return '<small>' . uc($args->[0]) . '</small>';
+}
+
 sub default_ctrl($$)
 {
    return "^$_[0]";
+}
+
+sub t2h_default_ctrl($$$)
+{
+    shift;
+    my $args = shift;
+   return "^$args->[0]";
 }
 
 sub default_sc_pre($$)
@@ -2044,9 +2105,24 @@ sub default_sc_pre($$)
     return uc($_[0]);
 }
 
+sub t2h_default_sc_pre($$$)
+{
+    shift;
+    my $args = shift;
+    return uc($args->[0]);
+}
+
 sub default_titlefont($$)
 {
     return "<h1 class=\"titlefont\">$_[0]</h1>" if ($_[0] =~ /\S/);
+    return '';
+}
+
+sub t2h_default_titlefont($$$)
+{
+    shift;
+    my $args = shift;
+    return "<h1 class=\"titlefont\">$args->[0]</h1>" if ($args->[0] =~ /\S/);
     return '';
 }
 
@@ -2057,6 +2133,18 @@ sub default_titlefont($$)
 #{
 #    return '&lt;<code>' . $_[0] . '</code>&gt;';
 #}
+sub t2h_default_url ($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    #$url =~ s/\s*$//;
+    #$url =~ s/^\s*//;
+    $url = main::normalise_space($url);
+    return '' unless ($url =~ /\S/);
+    return &$anchor('', $url, $url);
+}
+
 sub default_url ($$)
 {
     my $url = shift;
@@ -2081,6 +2169,26 @@ sub default_uref($$)
     return &$anchor('', $url, $text);
 }
 
+sub t2h_default_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    #$url =~ s/\s*$//;
+    #$url =~ s/^\s*//;
+    $url = main::normalise_space($url);
+    $replacement = '' if (!defined($replacement));
+    $replacement = main::normalise_space($replacement);
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    $text = $replacement if ($replacement ne '');
+    $text = $url unless ($text ne '');
+    return $text if ($url eq '');
+    return &$anchor('', $url, $text);
+}
+
 sub default_email($$)
 {
     my $arg = shift;
@@ -2094,10 +2202,42 @@ sub default_email($$)
     return &$anchor('', "mailto:$mail", $text);
 }
 
+sub t2h_default_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    #$mail =~ s/\s*$//;
+    #$mail =~ s/^\s*//;
+    $text = $mail unless (defined($text) and ($text ne ''));
+    $text = main::normalise_space($text);
+    return $text if ($mail eq '');
+    return &$anchor('', "mailto:$mail", $text);
+}
+
+
 # This is used for style in preformatted sections
-%style_map_pre = %style_map;
-$style_map_pre{'sc'} = '&default_sc_pre';
-$style_map_pre{'titlefont'} = '';
+our %old_style_map_pre = %old_style_map;
+$old_style_map_pre{'sc'} = '&default_sc_pre';
+$old_style_map_pre{'titlefont'} = '';
+
+foreach my $command (keys(%style_map))
+{
+    $style_map_pre{$command} = {};
+    foreach my $key (keys(%{$style_map{$command}}))
+    {
+        $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
+    }
+}
+
+$style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
+$style_map_pre{'titlefont'} = {};
+
+# uncomment to use the old interface
+#%style_map = %old_style_map;
+#%style_map_pre = %old_style_map_pre;
 
 %format_map = (
        'quotation'   =>  'blockquote',

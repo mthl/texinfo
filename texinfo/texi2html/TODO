@@ -39,3 +39,34 @@ h1 titlefont (@titlefont),
 http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * implement the cross references stuff discussed on the texinfo list.
+
+* handle right things like
+@code{
+@table @emph
+@item line
+text
+@end table
+}
+
+@xref{node,
+@table @emph
+@item line
+text
+@end table
+}
+
+@ref{node, @uref{a,b}}
+
+@footnote{ @code{par1
+
+par2}}
+
+@code{
+@table @emph
+@item line
+@example
+  example
+@end example
+@end table
+}
+
