@@ -1,7 +1,10 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.4 2003-11-07 01:05:57 karl Exp $
+# $Id: bootstrap,v 1.5 2003-11-08 00:35:55 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 # (Thanks to Akim Demaille.)
+
+echo "Nothing to do to bootstrap CVS Texinfo (I think)."
+exit 0
 
 echo "Bootstrapping CVS Texinfo with:"
 
