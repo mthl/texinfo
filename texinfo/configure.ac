@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.29 2003-05-29 22:54:17 karl Exp $
+dnl $Id: configure.ac,v 1.30 2003-06-10 20:50:03 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -11,7 +11,7 @@ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 dnl
 AC_PREREQ(2.57)dnl Minimum Autoconf version required.
 dnl
-AC_INIT([GNU Texinfo], [4.5.93])
+AC_INIT([GNU Texinfo], [4.6])
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_CONFIG_HEADER(config.h:config.in)dnl Keep filename to 8.3 for MS-DOS.
 AM_INIT_AUTOMAKE([dist-bzip2])
