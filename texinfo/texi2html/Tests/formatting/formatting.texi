@@ -89,208 +89,217 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @questiondown{}
 @pounds{}
 
-@acronym{a}
-@asis{a}
-@b{a}
-@cite{a}
-@code{a}
-@command{a}
-@ctrl{a}
-@dfn{a}
-@dmn{a}
-@email{a,b}
-@email{,b}
-@email{a}
-@emph{a}
-@env{a}
-@file{a}
-@i{a}
-@kbd{a}
-@key{a}
-@math{a}
-@option{a}
-@r{a}
-@samp{a}
-@sc{a}
-@strong{a}
-@t{a}
-@titlefont{a}
-@uref{a,b}
-@uref{a}
-@uref{,b}
-@url{a,b}
-@url{a,}
-@url{,b}
-@var{a}
-@verb{:a:}
-@w{a}
+@acronym{--a}
+@asis{--a}
+@b{--a}
+@cite{--a}
+@code{--a}
+@command{--a}
+@ctrl{--a}
+@dfn{--a}
+@dmn{--a}
+@email{--a,--b}
+@email{,--b}
+@email{--a}
+@emph{--a}
+@env{--a}
+@file{--a}
+@i{--a}
+@kbd{--a}
+@key{--a}
+@math{--a}
+@option{--a}
+@r{--a}
+@samp{--a}
+@sc{--a}
+@strong{--a}
+@t{--a}
+@titlefont{--a}
+@uref{--a,--b}
+@uref{--a}
+@uref{,--b}
+@url{--a,--b}
+@url{--a,}
+@url{,--b}
+@var{--a}
+@verb{:--a:}
+@w{--a}
 @H{a}
+@H{--a}
 @dotaccent{a}
+@dotaccent{--a}
 @ringaccent{a}
+@ringaccent{--a}
 @tieaccent{a}
+@tieaccent{--a}
 @u{a}
+@u{--a}
 @ubaraccent{a}
+@ubaraccent{--a}
 @udotaccent{a}
+@udotaccent{--a}
 @v{a}
-@,{a}
-@c @m_cedilla{a}
+@v{--a}
+@,{c}
+@,{--c}
+@dotless{--a}
 @dotless{a}
 @footnote{in footnote}
 @footnote{in footnote2}
 
-@image{file,,ext}
-@image{file}
-@image{,,ext}
-@image{,,,ext}
+@image{f--ile,,e--xt}
+@image{f--ile}
+@image{,,e--xt}
+@image{,,,e--xt}
 
 
 @quotation
-a quotation
+a q--uotation
 @end quotation
 
 @itemize
-@item itemize
+@item i--temize
 @end itemize
 
 @itemize +
-@item item +
+@item i--tem +
 @end itemize
 
 @itemize @bullet
-@item bullet
+@item b--ullet
 @end itemize
 
 @itemize @emph
-@item emph item
+@item e--mph item
 @end itemize
 
 @itemize @emph after emph
-@item emph item
+@item e--mph item
 @end itemize
 
-@itemize @bullet an itemize line
-@item item 1
-@item item 2
+@itemize @bullet a--n itemize line
+@item i--tem 1
+@item i--tem 2
 @end itemize
 
 @enumerate
-@item enumerate
+@item e--numerate
 @end enumerate
 
 @multitable @columnfractions 6 7
-@item multitable item @tab multitable tab
+@item mu--ltitable item @tab multitable tab
 @end multitable
 
 @example
-example
+e--xample
 @end example
 
 @smallexample
-smallexample
+s--mallexample
 @end smallexample
 
 @display 
-display
+d--isplay
 @end display
 
 @smalldisplay
-smalldisplay
+s--malldisplay
 @end smalldisplay
 
 @lisp
-lisp
+l--isp
 @end lisp
 
 @smalllisp
-smalllisp
+s--malllisp
 @end smalllisp
 
 @format
-format
+f--ormat
 @end format
 
 @smallformat
-smallformat
+s--mallformat
 @end smallformat
 
-@deffn category deffn_name arguments...
-deffn
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
 @end deffn
 
 @deffn cate--gory de--ffn_name ar--guments...
 def--fn
 @end deffn
 
-@defvr category defvr_name
-defvr
+@defvr c--ategory d--efvr_name
+d--efvr
 @end defvr
 
-@deftypefn category type deftypefn_name arguments...
-deftypefn
+@deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
 @end deftypefn
 
-@deftypeop category class type deftypeop_name arguments...
-deftypeop
+@deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
 @end deftypeop
 
-@deftypevr category type deftypevr_name
-deftypevr
+@deftypevr c--ategory t--ype d--eftypevr_name
+d--eftypevr
 @end deftypevr
 
-@defcv category class defcv_name
-defcv
+@defcv c--ategory c--lass d--efcv_name
+d--efcv
 @end defcv
 
-@defop category class defop_name arguments...
-defop
+@defop c--ategory c--lass d--efop_name a--rguments...
+d--efop
 @end defop
 
-@deftp category deftp_name attributes...
-deftp
+@deftp c--ategory d--eftp_name a--ttributes...
+d--eftp
 @end deftp
 
-@defun defun_name arguments...
-defun
+@defun d--efun_name a--rguments...
+d--efun
 @end defun
 
-@defmac defmac_name arguments...
-defmac
+@defmac d--efmac_name a--rguments...
+d--efmac
 @end defmac
 
-@defspec defspec_name arguments...
-defspec
+@defspec d--efspec_name a--rguments...
+d--efspec
 @end defspec
 
-@defvar defvar_name
-defvar
+@defvar d--efvar_name
+d--efvar
 @end defvar
 
-@defopt defopt_name
-defopt
+@defopt d--efopt_name
+d--efopt
 @end defopt
 
-@deftypefun type deftypefun_name arguments...
-deftypefun
+@deftypefun t--ype d--eftypefun_name a--rguments...
+d--eftypefun
 @end deftypefun
 
-@deftypevar type deftypevar_name
-deftypevar
+@deftypevar t--ype d--eftypevar_name
+d--eftypevar
 @end deftypevar
 
-@defivar class defivar_name
-defivar
+@defivar c--lass d--efivar_name
+d--efivar
 @end defivar
 
-@deftypeivar class type deftypeivar_name
-deftypeivar
+@deftypeivar c--lass t--ype d--eftypeivar_name
+d--eftypeivar
 @end deftypeivar
 
-@defmethod class defmethod_name arguments...
-defmethod
+@defmethod c--lass d--efmethod_name a--rguments...
+d--efmethod
 @end defmethod
 
-@deftypemethod class type deftypemethod_name arguments...
-deftypemethod
+@deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
 @end deftypemethod
 
 @xref{chapter, cross ref name, title, file name, manual}
@@ -357,17 +366,17 @@ deftypemethod
 
 @table @bullet
 @item a
-line
+l--ine
 @end table
 
 @vtable @asis
 @item a
-line
+l--ine
 @end vtable
 
 @ftable @minus
 @item a
-line
+l--ine
 @end ftable
 
 
@@ -379,13 +388,13 @@ line
 @mymacro{}
 @end example
 
-@cindex truc
-@cindex Truc
+@cindex t--ruc
+@cindex T--ruc
 @cindex .
 @cindex ?
 @cindex a
-@findex truc
-@findex Truc
+@findex t--ruc
+@findex T--ruc
 @findex .
 @findex ?
 @findex a
@@ -418,7 +427,7 @@ tp
 
 @format
 @menu 
-* section:: section
+* s--ection:: s--ection
 
 Menu comment
 ``simple-double--three---four----''@*
@@ -426,7 +435,7 @@ Menu comment
 @end menu
 @end format
 
-@node section
+@node s--ection
 @section A section
 
 @menu

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.70 2003-09-21 18:59:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.71 2003-10-15 10:07:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -430,6 +430,7 @@ our $index_properties;
 our %predefined_index;
 our %valid_index;
 our %sec2level;
+our %code_style_map;
 
 # Some global variables are set in the script, and used in the subroutines
 # they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
@@ -562,6 +563,22 @@ $index_properties =
                 'p', 1,
                 't', 1,
                );
+
+#
+# commands with ---, -- '' and `` preserved
+# #FIXME in first arg of email uref this should be preserved too
+
+%code_style_map = (
+           'code'    => 1,
+           'command' => 1,
+           'env'     => 1,
+           'file'    => 1,
+           'kbd'     => 1,
+           'option'  => 1,
+           'samp'    => 1,
+           'verb'    => 1,
+);
+            
 
 #
 # texinfo section names to level
@@ -4501,6 +4518,8 @@ sub enter_index_entry($$$$$$)
     #my $entry = substitute_line($key);
     my $entry = $key;
     # The $key is only usefull for alphabetical sorting
+    # FIXME if the index is a code index we should have $state->{'code_style'}=1
+    # or add @code{} to the $key.
     $key = remove_texi($key);
     return if ($key =~ /^\s*$/);
     while (exists $index->{$prefix}->{$key})
@@ -4560,8 +4579,8 @@ sub get_index_entries($$)
                 foreach my $key (keys %{$index->{$prefix}})
                 {
                     $entries->{$key} = $index->{$prefix}->{$key};
-		    # use @code for code style index entry
-                    $entries->{$key}->{entry} = "\@code{$entries->{$key}->{entry}}";
+                    # use @code for code style index entry
+                    $entries->{$key}->{'entry'} = "\@code{$entries->{$key}->{entry}}";
                 }
             }
         }
@@ -4694,6 +4713,7 @@ sub initialise_state($)
 {
     my $state = shift;
     $state->{'preformatted'} = 0 unless exists($state->{'preformatted'}); 
+    $state->{'code_style'} = 0 unless exists($state->{'code_style'}); 
     $state->{'keep_texi'} = 0 unless exists($state->{'keep_texi'});
     $state->{'format_stack'} = [ {'format' => "noformat"} ] unless exists($state->{'format_stack'});
     $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'}); 
@@ -5751,7 +5771,8 @@ sub do_insertcopying($)
     return '' unless @copying_lines;
     return substitute_text({ 'element' => $state->{'element'}, 
            'preformatted' => $state->{'preformatted'},
-           'keep_texi' => $state->{'keep_texi'} },
+           'keep_texi' => $state->{'keep_texi'},
+           'code_style' => $state->{'code_style'} },
            @copying_lines);
 }
 
@@ -5763,6 +5784,7 @@ sub get_deff_index($$)
     $tag =~ s/x$// if $tag =~ /x$/;
     my ($style, $category, $name, $type, $class, $arguments);
     ($style, $category, $name, $type, $class, $arguments) = parse_def($tag, $line); 
+    # FIXME -- --- ''... should be protected for name and maybe class
     $name = &$Texi2HTML::Config::definition_category($name, $class, $style);
     return undef if (!$name or ($name =~ /^\s*$/));
     return ($style, $name);
@@ -6062,13 +6084,15 @@ sub do_text($;$)
 {
     my $text = shift;
     my $state = shift;
-    return $text if (defined($state) and ($state->{'keep_texi'} or $state->{'remove_texi'}));
-    if (defined($state) and !$state->{'preformatted'})
+    return $text if ($state->{'keep_texi'});
+    if (defined($state) and !$state->{'preformatted'} and !$state->{'code_style'})
     {
         $text =~ s/``/"/go;
         $text =~ s/''/"/go;
-        $text =~ s/---/--/go;
+        $text =~ s/-(--?)/$1/g;
+        #$text =~ s/---/--/go;
     }
+    return $text if ($state->{'remove_texi'});
     return &$Texi2HTML::Config::protect_html($text);
 }
 
@@ -6137,6 +6161,7 @@ sub menu_link($$;$)
     
     my $substitution_state = { 'no_paragraph' => 1, 'element' => $state->{'element'}, 
        'preformatted' => $state->{'preformatted'}, 
+       'code_style' => $state->{'code_style'},
        'preformatted_stack' => $state->{'preformatted_stack'} };
          
     my $name = substitute_text($substitution_state, $menu_entry->{'name'});
@@ -6280,7 +6305,8 @@ sub do_xref($$$$)
     for ($i = 0; $i < 5; $i++)
     {
         $args[$i] = substitute_text({ 'element' => $state->{'element'}, 
-           'preformatted' => $state->{'preformatted'},  'no_paragraph' => 1,
+           'preformatted' => $state->{'preformatted'}, 
+           'code_style' => $state->{'code_style'}, 'no_paragraph' => 1,
            'keep_texi' => $state->{'keep_texi'}, 'preformatted_stack' => $state->{'preformatted_stack'} }, 
            $args[$i]);
     }
@@ -8143,7 +8169,8 @@ sub scan_line($$$$;$)
                  }
                  else
                  {
-                    add_prev($text, $stack, do_text($1));
+                    add_prev($text, $stack, do_text($1, $state));
+                    #$state->{'code_style'}--; # no need, verb is closed too
                  }
                  delete $state->{'verb'};
                  next;
@@ -8157,13 +8184,13 @@ sub scan_line($$$$;$)
 
         # We handle now the end tags 
         if ($state->{'keep_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)//)
-	{
+        {
             my $end_tag = $2;
             add_prev($text, $stack, $1 . "\@end $end_tag");
             next;
         }
         elsif ($state->{'remove_texi'} and s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)//)
-	{
+        {
             add_prev($text, $stack, $1);
             next;
         }
@@ -8400,6 +8427,10 @@ sub scan_line($$$$;$)
                     $macro = ',';
                 }
                 $state->{'keep_texi'}++ if ($macro eq 'anchor' or ($macro =~ /^(x|px|info|)ref$/o) or $macro eq 'footnote');
+                if (!$state->{'keep_texi'} and $code_style_map{$macro})
+                {
+                      $state->{'code_style'}++;
+                }
                 push (@$stack, { 'style' => $macro, 'text' => '' });
                 next;
             }
@@ -8492,7 +8523,7 @@ sub scan_line($$$$;$)
                 {
                     $_ = "\@$macro " . $_;
                 }
-		else
+                else
                 {
                     add_prev ($text, $stack, do_insertcopying($state));
                     # reopen a preformatted format if it was interrupted by the macro
@@ -8526,9 +8557,13 @@ sub scan_line($$$$;$)
                     { 
                         $_ = $format->{'appended'} . ' ' . $_ if ($format->{'appended'} ne '');
                     }
+                    if (defined($format->{'command'}) and $code_style_map{$format->{'command'}} and !$state->{'keep_texi'} and  !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
+                    {
+                         $state->{'code_style'}++;
+                    }
                     next;
                 }
-	        $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
+                $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
                 unless ($format)
                 {
                     echo_warn ("\@item outside of table or list", $line_nr);
@@ -8540,7 +8575,7 @@ sub scan_line($$$$;$)
                 {
                     push @$stack, {'format' => 'cell', 'text' => ''};
                     $format->{'cell'} = 1;
-		    begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));			
+                    begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));			
                 }
                 else
                 {
@@ -8551,7 +8586,7 @@ sub scan_line($$$$;$)
             }
             if ($macro eq 'tab')
             {
-	        my $format = add_cell ($text, $stack, $state);
+                my $format = add_cell ($text, $stack, $state);
                 #print STDERR "tab, $format->{'cell'}, max $format->{'max_columns'}\n";
                 if (!$format)
                 {
@@ -8577,7 +8612,7 @@ sub scan_line($$$$;$)
                     push @$stack, {'format' => 'cell', 'text' => ''};
 		    #begin_paragraph($stack, $state);
                 }
-		begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));			
+                begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));			
                 next;
             }
             # Macro opening a format (table, list, deff, example...)
@@ -8613,9 +8648,13 @@ sub scan_line($$$$;$)
                     my ($style, $category, $name, $type, $class, $arguments);
                     ($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_); 
                     $category = substitute_line($category) if (defined($category));
+                    # FIXME -- --- ''... should be protected (not by makeinfo)
                     $name = substitute_line($name) if (defined($name));
+                    # FIXME -- --- ''... should be protected (not by makeinfo)
                     $type = substitute_line($type) if (defined($type));
+                    # FIXME -- --- ''... should be protected (not by makeinfo)
                     $class = substitute_line($class) if (defined($class));
+                    # FIXME -- --- ''... should be protected 
                     $arguments = substitute_line($arguments) if (defined($arguments));
                     $category = &$Texi2HTML::Config::definition_category($category, $class, $style);
                     if (! $category) # category cannot be 0
@@ -8648,7 +8687,7 @@ sub scan_line($$$$;$)
                     my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'} };
                     push @{$state->{'preformatted_stack'}}, {'pre_style' =>$Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'}, 'class' => $macro };
                     push @$stack, $format;
-		    push @$stack, { 'format' => 'preformatted', 'text' => '' };
+                    push @$stack, { 'format' => 'preformatted', 'text' => '' };
                 }
                 elsif ($Texi2HTML::Config::paragraph_style{$macro})
                 {
@@ -8706,7 +8745,7 @@ sub scan_line($$$$;$)
                             push @$stack, { 'format' => 'row', 'text' => ''};
                             push @$stack, { 'format' => 'cell', 'text' => ''};
                         }
-			else 
+                        else 
                         {
                             # multitable without row... We use the special null
                             # format which content is ignored
@@ -8719,10 +8758,10 @@ sub scan_line($$$$;$)
                         push @$stack, { 'format' => 'item', 'text' => ''};
                     }
 		    #if (($macro ne 'multitable') or ($format->{'max_columns'}))
-		    if ($macro ne 'multitable')
+                    if ($macro ne 'multitable')
                     {
 			    #begin_paragraph($stack, $state);
-		        begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));	
+                    begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));	
                         #print STDERR "OPEN $macro $_";
                         #dump_stack ($text, $stack, $state);
                     }
@@ -8759,7 +8798,7 @@ sub scan_line($$$$;$)
                 {
                     add_prev($text, $stack, '{' );
                 }
-		else
+                else
                 {
                     add_prev($text, $stack, '{<!-- brace without macro -->');
                     #warn "$ERROR '{' without macro line: $line";
@@ -8776,6 +8815,10 @@ sub scan_line($$$$;$)
                     {
                         add_prev ($text, $stack, $texi_map{$style->{'style'}}) if (defined($texi_map{$style->{'style'}}));
                         add_prev ($text, $stack, $style->{'text'});
+                        if ($code_style_map{$style->{'style'}})
+                        {
+                             $state->{'code_style'}--;
+                        }
                         next;
                     }
 
@@ -8814,6 +8857,10 @@ sub scan_line($$$$;$)
                         {
 				#print STDERR "DO_SIMPLE $style->{'style'}\n";
                              $result = do_simple($style->{'style'}, $style->{'text'}, $state, $line_nr, $style->{'no_open'}, $style->{'no_close'});
+                             if ($state->{'code_style'} < 0)
+                             {
+                                  echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_.", $line_nr);
+                             }
                         }
                     }
                     else
@@ -8888,7 +8935,10 @@ sub add_term($$$$;$)
     #dump_stack($text, $stack, $state);
     close_stack($text, $stack, $state, $line_nr, undef, 'term');
     my $term = pop @$stack;
-    $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state) unless (exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}));
+    unless (exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
+    {
+         $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state); 
+    }
     my $index_label;
     if ($format->{'format'} =~ /^(f|v)/)
     {
@@ -9026,7 +9076,10 @@ sub add_item($$$$;$)
     if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
     {
         # apply the command to the item if it is not in special_list_commands
-        $item->{'text'} = do_simple($format->{'command'}, $item->{'text'}, $state) unless (!defined($format->{'command'}) or exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}));
+        unless (!defined($format->{'command'}) or exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
+        {
+            $item->{'text'} = do_simple($format->{'command'}, $item->{'text'}, $state);
+        }
         # now handle the item
         add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}));
     } 
@@ -9101,10 +9154,18 @@ sub do_simple($$$;$$$)
         elsif ($state->{'remove_texi'})
         {
              $result = $text;
+             if ($code_style_map{$macro})
+             {
+                  $state->{'code_style'}--;
+             }
         }
         else 
         {
              $result = apply_style($macro, $text, $state->{'preformatted'}, $no_open, $no_close);
+             if (!$no_close and $code_style_map{$macro})
+             {
+                  $state->{'code_style'}--;
+             }
         }
         return $result;
     }

@@ -1,3 +1,10 @@
+2003-10-15  Patrice Dumas  <derek@ximbiot.com>
+
+	* doc/custhtml.texi, doc/custpage.texi: sync with current code
+	(no more $ADDRESS but $end_page, only 2 functions for references).
+	* texi2html.pl: -- in normal text is changed in -
+	---, -- '' and `` are kept as is in @code, @kbd and so on.
+
 2003-10-14  Derek Price  <derek@ximbiot.com>
 
 	* doc/texi2html.texi: Use @code{} for Perl vars.  @var{} is for user
