@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.17 2003-01-24 17:33:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.18 2003-01-28 13:59:45 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2670,7 +2670,7 @@ sub pass1
                 if (/^\@$tag\s+(.+)$/)
                 {
                     $name = $1;
-                    $name = &normalise_node($name);
+                    $name = &normalise_space_style($name);
                     $level = $sec2level{$tag};
                     # check for index
                     $first_index_chapter = $name
@@ -3454,7 +3454,7 @@ sub pass2
             $nodes =~ s/\s+/ /go; # remove useless spaces
             @args = split(/\s*,\s*/, $nodes);
             $node = $args[0];   # the node is always the first arg
-            $node = &normalise_node($node);
+            $node = &normalise_space_style($node);
             if ($node =~ s/^\(([^\s\(\)]+)\)\s*//)
             {
                 $args[3] = $1 unless ($args[3]);
@@ -4477,9 +4477,10 @@ sub debug
 
 sub SimpleTexi2Html
 {
+    return undef unless (defined ($_[0]));
     local $_ = $_[0];
     &protect_texi;
-    &protect_html;
+    $_ = &protect_html($_);
     $_ = substitute_style($_);
     $_[0]  = $_;
 }
@@ -4488,11 +4489,26 @@ sub normalise_node
 {
     return undef unless (defined ($_[0]));
     local $_ = $_[0];
+    &normalise_space ($_);
+    &SimpleTexi2Html ($_);
+    $_[0]  = $_;
+}
+
+sub normalise_space
+{
+    return undef unless (defined ($_[0]));
+    local $_ = $_[0];
     s/\s+/ /go;
     s/ $//;
     s/^ //;
-    &protect_texi;
-    &protect_html;
+    $_[0]  = $_;
+}
+
+sub normalise_space_style
+{
+    return undef unless (defined ($_[0]));
+    local $_ = $_[0];
+    &normalise_space ($_);
     $_ = substitute_style($_);
     $_[0]  = $_;
 }
@@ -4502,13 +4518,13 @@ sub menu_entry
     my ($node, $name, $descr) = @_;
     my ($href, $entry);
 
-    &normalise_node($node);
+    &normalise_space_style($node);
     $href = $node2href{$node};
     if ($href)
     {
         $descr =~ s/^\s+//;
         $descr =~ s/\s*$//;
-        $descr = SimpleTexi2Html($descr);
+        $descr = &substitute_style($descr);
         if ($T2H_NUMBER_SECTIONS && !$T2H_NODE_NAME_IN_MENU && $node2sec{$node})
         {
             $entry = $node2sec{$node};
@@ -4516,7 +4532,7 @@ sub menu_entry
         }
         else
         {
-            &normalise_node($name);
+            $name = &normalise_space_style($name);
             $entry = ($name && ($name ne $node || ! $T2H_AVOID_MENU_REDUNDANCY)
                       ? "$name : $node" : $node);
         }
