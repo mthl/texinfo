@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.63 2003-09-04 14:43:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.64 2003-09-05 23:35:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -128,6 +128,8 @@ my $MIN_LEVEL = 1;
 {
 package Texi2HTML::Config;
 
+our $I = \&Texi2HTML::I18n::get_string;
+
 sub load($) 
 {
     my $file = shift;
@@ -182,6 +184,7 @@ our @INCLUDE_DIRS ;
 our @PREPEND_DIRS ;
 our $IGNORE_PREAMBLE_TEXT;
 our @CSS_FILES;
+our $I18N_COMMAND;
 
 # customization variables
 our $ENCODING;
@@ -392,444 +395,14 @@ sub T2H_GPL_toc_body($$$)
     }
 }
 
-#
-# accent map, TeX command to ISO name
-#
-%accent_map = (
-          '"',  'uml',
-          '~',  'tilde',
-          '^',  'circ',
-          '`',  'grave',
-          '\'', 'acute',
-          '=', '',
-         );
-
-#
-# texinfo "simple things" (@foo) to HTML ones
-#
-%simple_map = (
-           # cf. makeinfo.c
-           "*", "<br>",     # HTML+
-           " ", "&nbsp;",
-           "\t", "&nbsp;",
-           "\n", "&nbsp;",
-     # "&#173;" or "&shy;" could also be possible for @-, but it seems
-     # that some browser will consider this as an always visible hyphen mark
-     # which is not what we want (see http://www.cs.tut.fi/~jkorpela/shy.html)
-           "-", "",  # hyphenation hint
-           "|", "",  # used in formatting commands @evenfooting and friends
-	   '/', '',
-       # spacing commands
-           ":", "",
-           "!", "!",
-           "?", "?",
-           ".", ".",
-           '@', '@',
-           '}', '}',
-           '{', '{',
-          );
-
-#
-# texinfo "things" (@foo{}) to HTML ones
-#
-%things_map = (
-               'TeX', 'TeX',
-# pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
-#               'br', '<br>',     # paragraph break
-               'bullet', '*',
-               #'copyright', '(C)',
-               'copyright', '&copy;',
-               'dots', '<small class="dots">...</small>',
-               'enddots', '<small class="enddots">....</small>',
-               'equiv', '==',
-               'error', 'error--&gt;',
-               'expansion', '==&gt;',
-               'minus', '-',
-               'point', '-!-',
-               'print', '-|',
-               'result', '=&gt;',
-               # APA: &pretty_date requires $MONTH_NAMES and $LANG
-               # to be initialized.  The latter gets initialized by
-               # &SetDocumentLanguage in &main.
-               # We set following hash entry in &main afterwards.
-               # 'today', &pretty_date,
-               'aa', '&aring;',
-               'AA', '&Aring;',
-               'ae', '&aelig;',
-               'oe', '&oelig;', #pertusus: also &#156;. &oelig; not in html 3.2
-               'AE', '&AElig;',
-               'OE', '&OElig;', #pertusus: also &#140;. &OElig; not in html 3.2
-               'o',  '&oslash;',
-               'O',  '&Oslash;',
-               'ss', '&szlig;',
-               'l', '/l',
-               'L', '/L',
-               'exclamdown', '&iexcl;',
-               'questiondown', '&iquest;',
-               'pounds', '&pound;'
-             );
-
-#$pre_map{'br'} = "\n";
-
-#
-# texinfo styles (@foo{bar}) to HTML ones
-#
-# When the value begins with & the function with that name is used to do the
-# html. The first argument is the text enclosed within {}, the second is the
-# style name (which is also the key of the hash)
-#
-# Otherwithe the value is the html element used to enclose the text, and if
-# there is a " the resulting text is also enclosed within `'
-%style_map = (
-      'acronym',    '',
-      'asis',       '',
-      'b',          'b',
-      'cite',       'cite',
-      'code',       'code',
-      'command',    'code',
-      'ctrl',       '&do_ctrl',   # special case
-      'dfn',        'em',         # DFN tag is illegal in the standard
-      'dmn',        '',           # useless
-      'email',      '&do_email',  # insert a clickable email address
-      'emph',       'em',
-      'env',        'code',
-      'file',       '"tt',        # will put quotes, cf. &apply_style
-      'i',          'i',
-      'kbd',        'kbd',
-      'key',        'kbd',
-      'math',       '&t2h_math',
-      'option',     '"samp',      # will put quotes, cf. &apply_style
-      'r',          '',           # unsupported
-      'samp',       '"samp',      # will put quotes, cf. &apply_style
-      'sc',         '&do_sc',     # special case
-      'strong',     'strong',
-      't',          'tt',
-      'uref',       '&do_uref',   # insert a clickable URL
-      'url',        '&do_url',    # insert a clickable URL
-      'var',        'var',
-      'verb',       'tt',
-      'titlefont',  '&do_titlefont',
-      'w',          '',           # unsupported
-      'H',          '&do_accent',
-      'dotaccent',  '&do_accent',
-      'ringaccent', '&do_accent',
-      'tieaccent',  '&do_accent',
-      'u',          '&do_accent',
-      'ubaraccent', '&do_accent',
-      'udotaccent', '&do_accent',
-      'v',          '&do_accent',
-      ',',          '&do_accent',
-#      'm_cedilla',  '&do_accent',
-      'dotless',    '&do_accent'
-     );
-
-
-#
-# texinfo format (@foo/@end foo) to HTML ones
-#
-%format_map = (
-       'quotation',  'blockquote',
-       # lists
-       'itemize',    'ul',
-       'enumerate',  'ol',
-       'multitable',  'table',
-       );
-
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-$complex_format_map =
-{
- 'example' =>
- {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => ''
- },
- 'smallexample' =>
- {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => 'font-size: smaller'
- },
- 'display' =>
- {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => 'font-family: serif'
- },
- 'smalldisplay' =>
- {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => 'font-family: serif; font-size: smaller'
- }
-};
-
-$complex_format_map->{'lisp'} = $complex_format_map->{'example'};
-$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
-$complex_format_map->{'format'} = $complex_format_map->{'display'};
-$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
-
-#
-# texinfo definition shortcuts to real ones
-#
-%def_map = (
-    # basic commands
-    'deffn', 0,
-    'defvr', 0,
-    'deftypefn', 0,
-    'deftypeop', 0,
-    'deftypevr', 0,
-    'defcv', 0,
-    'defop', 0,
-    'deftp', 0,
-    # basic x commands
-    'deffnx', 0,
-    'defvrx', 0,
-    'deftypefnx', 0,
-    'deftypeopx', 0,
-    'deftypevrx', 0,
-    'defcvx', 0,
-    'defopx', 0,
-    'deftpx', 0,
-    # shortcuts
-    'defun', 'deffn Function',
-    'defmac', 'deffn Macro',
-    'defspec', 'deffn {Special Form}',
-    'defvar', 'defvr Variable',
-    'defopt', 'defvr {User Option}',
-    'deftypefun', 'deftypefn Function',
-    'deftypevar', 'deftypevr Variable',
-    'defivar', 'defcv {Instance Variable}',
-    'deftypeivar', 'defcv {Instance Variable}', # NEW: FIXME
-    'defmethod', 'defop Method',
-    'deftypemethod', 'defop Method', # NEW:FIXME
-    # x shortcuts
-    'defunx', 'deffnx Function',
-    'defmacx', 'deffnx Macro',
-    'defspecx', 'deffnx {Special Form}',
-    'defvarx', 'defvrx Variable',
-    'defoptx', 'defvrx {User Option}',
-    'deftypefunx', 'deftypefnx Function',
-    'deftypevarx', 'deftypevrx Variable',
-    'defivarx', 'defcvx {Instance Variable}',
-    'defmethodx', 'defopx Method',
-          );
-
-# functions used for styles
-sub do_ctrl($;$) { return "^$_[0]" }
-
-sub do_email($;$)
-{
-    my($addr, $text) = split(/,\s*/, $_[0]);
-
-    $text = $addr unless $text;
-    &$anchor('', "mailto:$addr", $text);
-}
-
-sub do_sc($;$)
-{
-    # pertusus: l2h just do the same...
-    # return l2h_ToLatex("{\\sc ".$_[0]."}") if ($L2H);
-    return "<small>\U$_[0]\E</small>";
-}
-
-sub do_sc_pre($;$)
-{ # no small allowed in pre
-    return "\U$_[0]\E";
-}
-
-sub t2h_math($;$)
-{
-    return '<em>' . $_[0] . '</em>';
-}
-
-sub do_uref($;$)
-{
-    my($url, $text, $only_text) = split(/,\s*/, $_[0]);
-    $text = $only_text if $only_text;
-    $text = $url unless $text;
-    return &$anchor('', $url, $text);
-}
-
-sub do_url($;$) { return &$anchor('', $_[0], $_[0]); }
-
-sub do_accent($$)
-{
-    return "$_[0]''" if $_[1] eq 'H';
-    return "$_[0]." if $_[1] eq 'dotaccent';
-    return "$_[0]*" if $_[1] eq 'ringaccent';
-    return "$_[0]".'[' if $_[1] eq 'tieaccent';
-    return "$_[0]".'(' if $_[1] eq 'u';
-    return "$_[0]".'=' if $_[1] eq '=';
-    return "$_[0]_" if $_[1] eq 'ubaraccent';
-    return ".$_[0]" if $_[1] eq 'udotaccent';
-    return "$_[0]&lt;" if $_[1] eq 'v';
-    return "&$_[0]cedil;" if ($_[1] eq ',' or $_[1] eq 'm_cedilla');
-    return "$_[0]" if $_[1] eq 'dotless';
-    return "&$_[0]$accent_map{$_[1]};" if $accent_map{$_[1]};
-    return undef;
-}
-
 # formatting functions
 
-$anchor            = \&t2h_gpl_anchor;
-$def_item          = \&t2h_gpl_def_item;
-$def               = \&t2h_gpl_def;
-$menu              = \&t2h_gpl_menu;
-$menu_link        = \&t2h_gpl_menu_entry;
-$menu_comment      = \&t2h_gpl_menu_comment;
-$menu_description  = \&t2h_gpl_menu_description;
 $ref_beginning     = \&t2h_gpl_ref_beginning;
 $info_ref          = \&t2h_gpl_info_ref;
 $book_ref          = \&t2h_gpl_book_ref;
 $external_ref      = \&t2h_gpl_external_ref;
 $internal_ref      = \&t2h_gpl_internal_ref;
-$list_item         = \&t2h_gpl_list_item;
-$def_line	       = \&t2h_gpl_def_line;
-$heading           = \&t2h_gpl_heading;
-$foot_line_and_ref = \&t2h_gpl_foot_line_and_ref;
-$foot_section      = \&t2h_gpl_foot_section;
-$image             = \&t2h_gpl_image;
-$index_entry_label = \&t2h_gpl_index_entry_label;
-$index_summary     = \&t2h_gpl_index_summary;
-$summary_letter    = \&t2h_gpl_summary_letter;
-$index_entry       = \&t2h_gpl_index_entry;
-$index_letter      = \&t2h_gpl_index_letter;
-$print_index       = \&t2h_gpl_index;
-$protect_html      = \&t2h_gpl_protect_html;
-$complex_format = \&t2h_gpl_end_complex_format;
 
-
-sub t2h_gpl_end_complex_format($$)
-{
-    my $tag = shift;
-    my $text = shift;
-    return '' unless ($text);
-    my $start = eval $complex_format_map->{$tag}->{'begin'} ;
-    if ($@)
-    {
-        warn "$ERROR: eval of complex_format_map->{$tag}->{'begin'} $complex_format_map->{$tag}->{'begin'}: $@";
-        $start = '';
-    }
-    my $end = eval $complex_format_map->{$tag}->{'end'}; 
-    if ($@)
-    {
-        warn "$ERROR: eval of complex_format_map->{$tag}->{'end'} $complex_format_map->{$tag}->{'end'}: $@";
-        $end = '';
-    }
-    return $start . $text . $end;
-}
-
-sub t2h_gpl_protect_html($)
-{
-    my $what = shift;
-    # protect &, ", <, and >.
-    # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
-    # We may consider using that instead.
-    # If raw HTML is used outside @ifhtml or @html it's an error
-    # anyway.
-    $what =~ s/\&/\&amp;/go;
-    $what =~ s/\"/\&quot;/go;
-    $what =~ s/\</\&lt;/go;
-    $what =~ s/\>/\&gt;/go;
-    return($what);
-}
-
-# $name           :   anchor name
-# $href           :   anchor href
-# text            :   text displayed
-# extra_attribs   :   added to anchor attributes list
-sub t2h_gpl_anchor($;$$$)
-{
-    my($name, $href, $text, $extra_attribs) = @_;
-    my @result = ();
-
-    push(@result, '<a');
-    push(@result, ' name="', $name, '"') if $name;
-    if ($href)
-    {
-        $href =~ s|^$HREF_DIR_INSTEAD_FILE|./|
-            if ($HREF_DIR_INSTEAD_FILE);
-        push(@result, ' href="', $href, '"');
-    }
-    push(@result, ' ', $extra_attribs) if $extra_attribs;
-    push(@result, '>');
-    push(@result, $text) if $text;
-    push(@result, '</a>');
-    return join('', @result);
-}
-
-# format the text of a @deffn/@end deffn
-sub t2h_gpl_def_item($)
-{
-    my $text = shift;
-
-    if ($text =~ /\S/)
-    {
-        $text = $DEF_TABLE ? ('<tr><td colspan="2">'. $text .'</td></tr>')
-            : ('<dd>' . $text . '</dd>');
-    }
-    return $text;
-}
-
-# format the container for the @deffn line and text
-sub t2h_gpl_def($)
-{
-    my $text = shift;
-
-    return  $DEF_TABLE ?
-         ("<table width=\"100%\">\n" . $text . "</table>\n") : 
-         ("<dl>\n" . $text . "</dl>\n");
-}
-
-# a whole menu
-sub t2h_gpl_menu($)
-{
-    my $text = shift;
-
-    if ($text =~ /\S/)
-    {
-        return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
-    }
-    return '';
-}
-
-# a menu entry ref
-sub t2h_gpl_menu_entry($$;$)
-{
-    my $entry = shift;
-    my $state = shift;
-    my $href = shift;
-    $entry = &$anchor('', $href, $entry) if ($href);
-    return '<tr><td>' . main::do_preformatted($entry, $state) if ($state->{'preformatted'});
-    return '<tr><td align="left" valign="top">' .
-              $entry .
-          '</td><td>&nbsp;&nbsp;</td>';
-}
-
-# a menu description
-sub t2h_gpl_menu_description($$)
-{
-    my $descr = shift;
-    my $state = shift;
-    return main::do_preformatted($descr, $state) . '</tr>' if ($state->{'preformatted'});
-    return '<td align="left" valign="top">' . $descr .
-          "</td></tr>\n";
-}
-
-# a menu comment (between menu lines)
-sub t2h_gpl_menu_comment($)
-{
-    my $text = shift;
-    my $state = shift;
-
-    if ($text =~ /\S/)
-    {
-         return '<tr><th colspan="3" align="left" valign="top">' . $text . '</th></tr>';
-    }
-    return '';
-}
 
 # beginning of a ref
 sub t2h_gpl_ref_beginning($)
@@ -837,11 +410,11 @@ sub t2h_gpl_ref_beginning($)
     my $type = shift;
     if ($type eq 'xref')
     {
-        return "$Texi2HTML::I18n::WORDS->{'See'} ";
+        return &$I('See') . " ";
     }
     elsif ($type eq 'pxref')
     {
-        return  "$Texi2HTML::I18n::WORDS->{'see'} ";
+        return  &$I('see') . " ";
     }
     else
     {
@@ -867,7 +440,7 @@ sub t2h_gpl_book_ref($$$)
     my $book = shift;
     $book = main::apply_style ('cite', $book);
     return $book unless ($section);
-    return "$Texi2HTML::I18n::WORDS->{'section'} `$section' in " . $book;
+    return &$I('section'). " `$section' in " . $book;
 }
 
 sub t2h_gpl_external_ref($$$)
@@ -895,7 +468,7 @@ sub t2h_gpl_internal_ref($$$$$)
     my $begin = &$ref_beginning($type); 
     if (! $SHORT_REF)
     {
-        $begin .= "$Texi2HTML::I18n::WORDS->{'section'} " if ($begin and $is_section);
+        $begin .= &$I('section'). " " if ($begin and $is_section);
         return $begin . &$anchor('', $href, $name);
     }
     else
@@ -904,249 +477,6 @@ sub t2h_gpl_internal_ref($$$$$)
     }
 }
 
-# item in list
-sub t2h_gpl_list_item($$)
-{
-   my $text = shift;
-# FIXME add . "\n" ?
-   return '<li>' . $text . '</li>';
-}
-
-# format the whole table ftable or vtable
-sub t2h_gpl_table($)
-{
-    my $text = shift;
-
-    if ($text =~ /\S/)
-    {
-        return "<dl compact=\"compact\">\n" . $text. "</dl>\n";
-    }
-    return '';
-}
-
-# a heading for an element
-sub t2h_gpl_heading($)
-{
-    my $element = shift;
-    return '' if ($element->{'text'} =~ /^\s*$/);
-    my $level = 3;
-    if (!$element->{'node'})
-    {
-	$level = $element->{'level'};
-        print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
-        $level = 1 if ($level == 0);
-    }
-    my $class = $element->{'tag_level'};
-    print STDERR "Bug: $element->{'texi'} class undef\n" if (!defined($class));
-    # do like makeinfo
-    $class = 'unnumbered' if ($class eq 'top');
-    my $text = $element->{'text'};
-    $text = $element->{'name'} if (!$NUMBER_SECTIONS);
-    return "<h$level class=\"$class\"> $text </h$level>\n";
-}
-
-# do header for the footnotes text, and ref to the footnote file
-# for the text where the footnote is
-sub t2h_gpl_foot_line_and_ref($$$$$$$)
-{
-    my $foot_num = shift;
-    my $relative_num = shift;
-    my $footid = shift;
-    my $docid = shift;
-    my $from_file = shift;
-    my $footnote_file = shift;
-    my $lines = shift;
-    my $state = shift;
-    
-    my $foot = "($foot_num)";
-    unshift @$lines, "<h3>" . &$anchor($footid, "$from_file#$docid", $foot) . "</h3>\n";
-    return ($lines, &$anchor($docid, "$footnote_file#$footid", $foot));
-}
-
-sub t2h_gpl_foot_section($)
-{
-    my $lines = shift;
-    unshift @$lines, "$DEFAULT_RULE\n<h3>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h3>\n";
-    unshift @$lines, '<div class="footnote">' . "\n";
-    push @$lines, "</div>\n";
-    return $lines;
-}
-
-sub t2h_gpl_image($$$)
-{
-    my $image = shift;
-    my $base = shift;
-    my $preformatted = shift;
-    if ($preformatted)
-    {
-        return "[ $base ]";
-    }
-    else
-    {
-        return ($CENTER_IMAGE ?
-          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"></div>" :
-          "<img src=\"$image\" alt=\"$base\">");
-    }
-}
-
-# label for an index entry, target of the link from the index page
-sub t2h_gpl_index_entry_label($$)
-{
-    my $label = shift;
-    my $preformatted = shift;
-    $label = &$anchor($label) if ($label);
-    $label .= "\n" if ($label and !$preformatted);
-    return $label;
-}
-
-# process definition commands line @deffn for example
-sub t2h_gpl_def_line($$$)
-{
-    my $tag = shift;
-    my $line = shift;
-    my $state = shift;
-    
-    $state->{'deff'} = $tag;
-    
-    if (defined($def_map{$tag}) and $def_map{$tag})
-    {
-        # substitute shortcuts for definition commands
-        my $substituted = $def_map{$tag};
-        $substituted =~ s/(\w+)//;
-        $tag = $1;
-        $line = $substituted . $line;
-    }
-    
-    my ($type, $name, $ftype);
-    ($line, $type, $name, $ftype) = main::parse_def($tag, $line);
-    #print STDERR "Def $tag $name, $type\n";
-    my $result = '';
-    unless ($type)
-    {
-        warn "$ERROR bad $state->{'deff'}, no type\n";
-        return '';
-    }
-    $type = main::substitute_line($type);
-    $type .= ':' if (!$DEF_TABLE); # it's nicer like this
-    unless ($name)
-    {
-        warn "$ERROR bad $state->{'deff'} nothing after the type\n";
-        return '';
-    }
-    $name = main::substitute_line($name);
-    $line = '' if (!$line);
-    $result = $DEF_TABLE ? '' : '<dt>';
-    if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
-    {
-        if ($DEF_TABLE)
-        {
-            $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
-            $result .= main::substitute_line($line);
-            $result .= "</td>\n";
-            $result .= "<td align=\"right\">";
-            $result .= "$type</td>\n</tr>\n";
-        }
-        else
-        {
-            #FIXME <u> is deprecated in xhtml 1.1
-            #use <span style="text-description: underline"> ?
-            $result .= "<u>$type</u> <b>$name</b>";
-            $result .= main::substitute_line($line);
-        }
-    }
-    elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
-        || $tag eq 'deftypeop' || $tag eq 'defcv'
-        || $tag eq 'defop')
-    {
-        $ftype = main::substitute_line($ftype);
-        if ($DEF_TABLE)
-        {
-            $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
-            $result .= main::substitute_line($line);
-            $result .= "</td>\n";
-            $result .= "<td align=\"right\">";
-            $result .= "$type of $ftype</td>\n</tr>\n";
-        }
-        else
-        {
-            $result .= "<u>$type</u> $ftype <b>$name</b>";
-            $result .= main::substitute_line($line);
-        }
-    }
-    else
-    {
-        warn "$ERROR Unknown definition type: $tag\n";
-        $result .= "<u>$type</u> <b>$name</b>";
-        $result .= main::substitute_line($line);
-    }
-    $result .= main::do_index_entry_label($state);
-    $result .= "</dt>\n" if (!$DEF_TABLE);
-    return $result;
-}
-
-# a whole index
-sub t2h_gpl_index($$)
-{
-    my $text = shift;
-    my $name = shift;
-    #FIXME i18n
-    return "<table border=\"0\" class=\"index-$name\">" . "\n" .
-"<tr><td></td><th align=\"left\">Index Entry</th><th align=\"left\"> Section</th></tr>\n" .
-"<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text . "</table>";
-}
-
-# format an letter entry in index
-sub t2h_gpl_index_letter($$$)
-{
-    my $letter = shift;
-    my $id = shift;
-    my $entries = shift;
-    
-    return '<tr><th>' .
-      &$anchor($id, '', &$protect_html($letter)) .
-       "</th><td></td><td></td></tr>\n" . $entries .
-    "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n";
-}
-
-# format an index entry (in a letter entry)
-sub t2h_gpl_index_entry($$$$)
-{
-    my $origin_href = shift;
-    my $entry = shift;
-    my $element_href= shift;
-    my $element_text = shift;
-    return "<tr><td></td><td valign=\"top\">" .
-      &$anchor('', $origin_href, $entry) .
-      "</td><td valign=\"top\">" .
-      &$anchor('', $element_href, $element_text) . "</td></tr>\n";
-}
-
-sub t2h_gpl_summary_letter($$$)
-{
-    my $letter = shift;
-    my $file = shift;
-    my $id = shift;
-
-    return &$anchor('', "$file#" . $id,
-         "<b>" . &$protect_html($letter) . "</b>",
-         'class="summary-letter"');
-}
-
-sub t2h_gpl_index_summary($$)
-{
-    my $alphabetical_letters = shift;
-    my $non_alphabeticals = shift;
-
-    my $alphabetical_line = '';
-    $alphabetical_line = join ("\n &nbsp; \n", @$alphabetical_letters) . "\n &nbsp; \n" if (@$alphabetical_letters);
-    my $non_alphabetical_line = '';
-    $non_alphabetical_line = join ("\n &nbsp; \n", @$non_alphabeticals) . "\n &nbsp; \n" if (@$non_alphabeticals);
-
-    $non_alphabetical_line .= "<br>\n" if ($non_alphabetical_line);
-    #FIXME i18n
-    return '<table><tr><th valign="top">Jump to: &nbsp; </th><td>' .
-       $non_alphabetical_line . $alphabetical_line . '</td></tr></table>';
-}
 
 # @INIT@
 
@@ -1204,6 +534,8 @@ require "$ENV{T2H_HOME}/MySimple.pm"
 require "$ENV{T2H_HOME}/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
+
+# @TRANSLATIONS@
 
 {
 package Texi2HTML::LaTeX2HTML::Config;
@@ -1618,6 +950,8 @@ sub load_init_file
 
 my $lang_set = 0; # set to 1 if lang was succesfully set by the command line
 
+my $I = \&Texi2HTML::I18n::get_string;
+
 #
 # called on -lang
 sub set_document_language ($;$)
@@ -2031,6 +1365,14 @@ $T2H_OPTIONS -> {'css-include'} =
  verbose => 'use css file $s'
 };
 
+$T2H_OPTIONS -> {'i18n'} = 
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::I18N_COMMAND,
+ verbose => 'manage i18n, do $s',
+ noHelp => 1
+};
+
 ##
 ## obsolete cmd line options
 ##
@@ -2322,6 +1664,10 @@ if (@ARGV > 1)
 my $T2H_DEBUG = $Texi2HTML::Config::DEBUG;
 $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 
+if ($Texi2HTML::Config::I18N_COMMAND ne '')
+{
+    Texi2HTML::I18n::manage_i18n_files($Texi2HTML::Config::I18N_COMMAND);
+}
 
 #+++############################################################################
 #                                                                              #
@@ -5404,10 +4750,10 @@ sub pass_text()
         $element_top_text = $element_top->{'text'};
     }
     # I18n for 'Top'
-    my $top_name = $Texi2HTML::Config::TOP_HEADING || $element_top_text || $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'shorttitle'} || 'Top';
+    my $top_name = $Texi2HTML::Config::TOP_HEADING || $element_top_text || $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'shorttitle'} || &$I('Top');
 
     # I18n Untitled Document
-    $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || "Untitled Document" ;
+    $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || &$I("Untitled Document") ;
     $Texi2HTML::THISDOC{'title'} = $Texi2HTML::THISDOC{'settitle'} || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
     $Texi2HTML::THISDOC{'titlefont'} = substitute_line($value{'_titlefont'});
@@ -5423,9 +4769,9 @@ sub pass_text()
     }
 
     # I18n for 'Top'
-    $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || 'Top';
+    $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top');
     # I18n Untitled Document
-    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || "Untitled Document";
+    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I("Untitled Document");
 
     for my $key (keys %Texi2HTML::THISDOC)
     {
@@ -5458,11 +4804,11 @@ sub pass_text()
         (
          'First',   $element_first->{'text'},
          'Last',    $element_last->{'text'},
-         'About',    $Texi2HTML::I18n::WORDS->{'About_Title'},
-         'Contents', $Texi2HTML::I18n::WORDS->{'ToC_Title'},
-         'Overview', $Texi2HTML::I18n::WORDS->{'Overview_Title'},
+         'About',    &$I('About This Document'),
+         'Contents', &$I('Table of Contents'),
+         'Overview', &$I('Short Table of Contents'),
          'Top',      $top_name,
-         'Footnotes', $Texi2HTML::I18n::WORDS->{'Footnotes_Title'},
+         'Footnotes', &$I('Footnotes'),
         );
     $Texi2HTML::NAME{'Index'} = $element_chapter_index->{'text'} if (defined($element_chapter_index));
     $Texi2HTML::NAME{'Index'} = $Texi2HTML::Config::INDEX_CHAPTER if ($Texi2HTML::Config::INDEX_CHAPTER ne '');
@@ -5471,11 +4817,11 @@ sub pass_text()
         (
          'First',   $element_first->{'no_texi'},
          'Last',    $element_last->{'no_texi'},
-         'About',    $Texi2HTML::I18n::WORDS->{'About_Title'},
-         'Contents', $Texi2HTML::I18n::WORDS->{'ToC_Title'},
-         'Overview', $Texi2HTML::I18n::WORDS->{'Overview_Title'},
+         'About',    &$I('About This Document'),
+         'Contents', &$I('Table of Contents'),
+         'Overview', &$I('Short Table of Contents'),
          'Top',      $top_no_texi,
-         'Footnotes', $Texi2HTML::I18n::WORDS->{'Footnotes_Title'},
+         'Footnotes', &$I('Footnotes'),
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
 
@@ -6503,9 +5849,9 @@ sub parse_format_command($$)
         $line =~ s/^\s*\@([A-Za-z]\w*)(\{\})?\s*//;
         $command = $1;
     }
-    my $appended = '';
-    return ($appended, $command) if ($line =~ /^\s*$/);
+    return ('', $command) if ($line =~ /^\s*$/);
     chomp $line;
+    $line = substitute_text ({'keep_texi' => 1, 'check_item' => $tag}, $line);
     return ($line, $command);
 }
 
@@ -7209,7 +6555,6 @@ sub expand_macro($$$$$)
     #return $first_line;
 }
 
-# FIXME not used and buggy (Entries->{$key}->{href} not defined)
 sub do_index_summary_file($)
 {
     my $name = shift;
@@ -7449,7 +6794,7 @@ sub scan_texi($$$$;$)
         if (defined($state->{'macro'}))
         {
             if (s/^([^\\\@]*\\)//)
-            {#FIXME is it correct ?
+            {# I believe it is correct, although makeinfo don't do that.
                  $state->{'macro'}->{'Body'} .= $1;
                  if (s/^\\//)
                  {
@@ -7730,7 +7075,8 @@ sub scan_texi($$$$;$)
             }
 	    
             if ($macro =~ /^r?macro$/)
-            { # FIXME with 'arg_expansion'
+            { #FIXME what to do if 'arg_expansion' is true (ie within another
+              # macro call arguments
                 if (/^\s+(\w+)\s*(.*)/)
                 {
                     my $name = $1;
@@ -7846,7 +7192,7 @@ sub scan_texi($$$$;$)
 		#return if (/^\s*$/);
             }
             elsif ($macro eq 'unmacro')
-            { #FIXME with 'arg_expansion'
+            { #FIXME with 'arg_expansion' should it be passed unmodified ?
                 delete $macros->{$1} if (s/^\s+(\w+)//);
                 return if (/^\s*$/);
                 s/^\s*//;
@@ -8980,6 +8326,15 @@ sub scan_line($$$$;$)
                 next;
             }
 
+            # special case if we are checking items
+
+            if ($state->{'check_item'} and $macro =~ /^itemx?$/)
+            {
+                echo_error("\@$macro on \@$state->{'check_item'} line", $line_nr);
+                next;
+            }
+
+
             # if we're keeping texi unmodified we can do it now
             if ($state->{'keep_texi'})
             {
@@ -9090,9 +8445,7 @@ sub scan_line($$$$;$)
                 if ($format)
                 {
                     if (defined($format->{'appended'}))
-                    { # FIXME if we have @itemize thing @item 
-   # there is an endless loop because thing @item keeps being added.
-                        #die "Endlessly appending $format->{'appended'}\n" if ($state->{'in_append'});
+                    { 
                         $_ = $format->{'appended'} . ' ' . $_ if ($format->{'appended'} ne '');
                     }
                     next;

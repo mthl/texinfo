@@ -73,7 +73,6 @@ Unknown thing @thing{}
 
 A list with bullet
 Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @c segfault <- @item on the same line that itemize
-
 @item on the same line than item
 some text
 @item

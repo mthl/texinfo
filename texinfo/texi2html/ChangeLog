@@ -1,3 +1,29 @@
+2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, T2h_i18n.pm, texi2html.init: new handling of 
+	languages in documents.
+	instead of using the hash reference $Texi2HTML::I18n::WORDS for
+	translation of words, call &Texi2HTML::I18n::get_string (more
+	precisely use &$I, a reference on the function). The strings
+	are the real english strings and not identifiers.
+	The date formatting depends on the language.
+	Use translations for months and not a months array.
+	Put translations in one file per language and not in T2h_i18n.pm.
+	Those files are in the i18n directory. They are to be concatenated
+	in the file translated.pl which is required or pasted in texi2html.
+	Add a switch -i18n for the specification of a management command
+	related with internationalization: if the command is merge, 
+	the files in the i18n directory are concatenated into translated.pl;
+	if the command is update the files are updated with their own 
+	informations and the list of valid strings appearing in T2h_i18n.pm,
+	invalid strings are obsoleted but kept.
+	* test.sh: add a test for internationalization.
+
+2003-09-05  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl: detect @item on @itemize and table line to avoid
+	infinite recursion.
+
 2003-09-04  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: handle better @itemize and @table,

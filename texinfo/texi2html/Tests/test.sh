@@ -195,6 +195,7 @@ test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting" 0 texi exotic_formatting
+test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting testkb.texi

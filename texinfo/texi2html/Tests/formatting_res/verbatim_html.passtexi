@@ -71,225 +71,224 @@ verbatim_html.texi(,71)
 verbatim_html.texi(,72) 
 verbatim_html.texi(,73) 
 verbatim_html.texi(,74) A list with bullet
-verbatim_html.texi(,76) Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} verbatim_html.texi(,76) 
-verbatim_html.texi(,77) @item on the same line than item
-verbatim_html.texi(,78) some text
-verbatim_html.texi(,79) @item
-verbatim_html.texi(,80) more text @end  itemize
-verbatim_html.texi(,81) 
-verbatim_html.texi(,82) A list with text before first @@item:
-verbatim_html.texi(,83) 
-verbatim_html.texi(,84) @itemize @bullet
-verbatim_html.texi(,85) text @item more
-verbatim_html.texi(,86) text
-verbatim_html.texi(,87) @end itemize
-verbatim_html.texi(,88) 
-verbatim_html.texi(,90) a verbatim, not first on the line @verbatim text following @verbatim
-verbatim_html.texi(,91) 
-verbatim_html.texi(,92) text
+verbatim_html.texi(,76) Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} verbatim_html.texi(,76) @item on the same line than item
+verbatim_html.texi(,77) some text
+verbatim_html.texi(,78) @item
+verbatim_html.texi(,79) more text @end  itemize
+verbatim_html.texi(,80) 
+verbatim_html.texi(,81) A list with text before first @@item:
+verbatim_html.texi(,82) 
+verbatim_html.texi(,83) @itemize @bullet
+verbatim_html.texi(,84) text @item more
+verbatim_html.texi(,85) text
+verbatim_html.texi(,86) @end itemize
+verbatim_html.texi(,87) 
+verbatim_html.texi(,89) a verbatim, not first on the line @verbatim text following @verbatim
+verbatim_html.texi(,90) 
+verbatim_html.texi(,91) text
+verbatim_html.texi(,92) 
 verbatim_html.texi(,93) 
-verbatim_html.texi(,94) 
-verbatim_html.texi(,95) @@@@ @ text before @end  verbatim @end verbatim  Text following end verbatim, must be exactly one space 
-verbatim_html.texi(,96) between end and verbatim. @@end verbatim doesn't need to begin at beginning 
-verbatim_html.texi(,97) of line.
-verbatim_html.texi(,99) 
-verbatim_html.texi(,100) In tex, @@end verbatim must be on its own on a line.
-verbatim_html.texi(,101) 
-verbatim_html.texi(,102) A verbatim with begin and end on its own line
-verbatim_html.texi(,103) @verbatim
-verbatim_html.texi(,104) verbatim @samp{item}
-verbatim_html.texi(,105) 
-verbatim_html.texi(,106) @end verbatim
+verbatim_html.texi(,94) @@@@ @ text before @end  verbatim @end verbatim  Text following end verbatim, must be exactly one space 
+verbatim_html.texi(,95) between end and verbatim. @@end verbatim doesn't need to begin at beginning 
+verbatim_html.texi(,96) of line.
+verbatim_html.texi(,98) 
+verbatim_html.texi(,99) In tex, @@end verbatim must be on its own on a line.
+verbatim_html.texi(,100) 
+verbatim_html.texi(,101) A verbatim with begin and end on its own line
+verbatim_html.texi(,102) @verbatim
+verbatim_html.texi(,103) verbatim @samp{item}
+verbatim_html.texi(,104) 
+verbatim_html.texi(,105) @end verbatim
+verbatim_html.texi(,106) 
 verbatim_html.texi(,107) 
-verbatim_html.texi(,108) 
-verbatim_html.texi(,110) Now html  @html 
-verbatim_html.texi(,111) <b>
-verbatim_html.texi(,112) some html </b> 
-verbatim_html.texi(,113) @end html  bidule ignored
-verbatim_html.texi(,114) 
-verbatim_html.texi(,115) @@end html begins the line, and there must be exactly one space between @@end
-verbatim_html.texi(,116) and html and thing following @@end html are ignored in info. Strangely
-verbatim_html.texi(,117) the empty line following @@end html is ignored but spaces are inserted.
-verbatim_html.texi(,119) 
-verbatim_html.texi(,120) Now html valid for @TeX{}  @html 
-verbatim_html.texi(,121) <b>
-verbatim_html.texi(,122) some html </b> 
-verbatim_html.texi(,123) @end html 
-verbatim_html.texi(,124) Some text one the line following @@end html
-verbatim_html.texi(,125) 
-verbatim_html.texi(,126) And html on it's own line
-verbatim_html.texi(,127) 
-verbatim_html.texi(,128) @html
-verbatim_html.texi(,129) <tt> an html tt</tt>
-verbatim_html.texi(,130) @end html
+verbatim_html.texi(,109) Now html  @html 
+verbatim_html.texi(,110) <b>
+verbatim_html.texi(,111) some html </b> 
+verbatim_html.texi(,112) @end html  bidule ignored
+verbatim_html.texi(,113) 
+verbatim_html.texi(,114) @@end html begins the line, and there must be exactly one space between @@end
+verbatim_html.texi(,115) and html and thing following @@end html are ignored in info. Strangely
+verbatim_html.texi(,116) the empty line following @@end html is ignored but spaces are inserted.
+verbatim_html.texi(,118) 
+verbatim_html.texi(,119) Now html valid for @TeX{}  @html 
+verbatim_html.texi(,120) <b>
+verbatim_html.texi(,121) some html </b> 
+verbatim_html.texi(,122) @end html 
+verbatim_html.texi(,123) Some text one the line following @@end html
+verbatim_html.texi(,124) 
+verbatim_html.texi(,125) And html on it's own line
+verbatim_html.texi(,126) 
+verbatim_html.texi(,127) @html
+verbatim_html.texi(,128) <tt> an html tt</tt>
+verbatim_html.texi(,129) @end html
+verbatim_html.texi(,130) 
 verbatim_html.texi(,131) 
-verbatim_html.texi(,132) 
-verbatim_html.texi(,133) A sc: @sc{ieee}, and another one in example:
-verbatim_html.texi(,134) @example
-verbatim_html.texi(,135) @sc{aeei}
-verbatim_html.texi(,136) @end example
-verbatim_html.texi(,137) 
-verbatim_html.texi(,141) ignore verbatim_html.texi(,141) bidule ignore
-verbatim_html.texi(,143) 
-verbatim_html.texi(,144) Ignore is the same than @@html.
-verbatim_html.texi(,145) 
-verbatim_html.texi(,150) Now ifnothtml on same line verbatim_html.texi(,150) 
-verbatim_html.texi(,151) @@end ifnothtml doesn't need to begin the line, and there can be more
-verbatim_html.texi(,152) than one space between @@end and ifnothtml, but nothing more
-verbatim_html.texi(,153) on the line.
-verbatim_html.texi(,154) 
-verbatim_html.texi(,155) Text on the line before ifnothtml with text following,
-verbatim_html.texi(,158) Text on the line following ifnothtml.
-verbatim_html.texi(,159) 
-verbatim_html.texi(,160) Text on the line before ifnothtml without text following,
-verbatim_html.texi(,164) Text on the line following ifnothtml.
-verbatim_html.texi(,165) 
-verbatim_html.texi(,166) Text on the line before ifnothtml,
-verbatim_html.texi(,169) Text on the line following empty ifnothtml
+verbatim_html.texi(,132) A sc: @sc{ieee}, and another one in example:
+verbatim_html.texi(,133) @example
+verbatim_html.texi(,134) @sc{aeei}
+verbatim_html.texi(,135) @end example
+verbatim_html.texi(,136) 
+verbatim_html.texi(,140) ignore verbatim_html.texi(,140) bidule ignore
+verbatim_html.texi(,142) 
+verbatim_html.texi(,143) Ignore is the same than @@html.
+verbatim_html.texi(,144) 
+verbatim_html.texi(,149) Now ifnothtml on same line verbatim_html.texi(,149) 
+verbatim_html.texi(,150) @@end ifnothtml doesn't need to begin the line, and there can be more
+verbatim_html.texi(,151) than one space between @@end and ifnothtml, but nothing more
+verbatim_html.texi(,152) on the line.
+verbatim_html.texi(,153) 
+verbatim_html.texi(,154) Text on the line before ifnothtml with text following,
+verbatim_html.texi(,157) Text on the line following ifnothtml.
+verbatim_html.texi(,158) 
+verbatim_html.texi(,159) Text on the line before ifnothtml without text following,
+verbatim_html.texi(,163) Text on the line following ifnothtml.
+verbatim_html.texi(,164) 
+verbatim_html.texi(,165) Text on the line before ifnothtml,
+verbatim_html.texi(,168) Text on the line following empty ifnothtml
+verbatim_html.texi(,169) 
 verbatim_html.texi(,170) 
-verbatim_html.texi(,171) 
-verbatim_html.texi(,172) @TeX{} has problems with the ftable.
-verbatim_html.texi(,173) 
-verbatim_html.texi(,175) an ftable on same line @ftable @bullet
-verbatim_html.texi(,176) @item fun1
-verbatim_html.texi(,177) @itemx fun2
-verbatim_html.texi(,178) fun1 et fun2 @item more fun
-verbatim_html.texi(,179) text on the same line than end   @end  ftable
-verbatim_html.texi(,180) works like @@ifnothtml
-verbatim_html.texi(,182) 
-verbatim_html.texi(,183) @item outside format.
-verbatim_html.texi(,184) 
-verbatim_html.texi(,185) @tab outside format.
-verbatim_html.texi(,186) 
-verbatim_html.texi(,187) @multitable {@samp{bidule}}
-verbatim_html.texi(,188) truc before table beginning @item first cell @tab ignored cell
-verbatim_html.texi(,189) @itemx second row
-verbatim_html.texi(,190) @end multitable
-verbatim_html.texi(,191) 
-verbatim_html.texi(,192) before bad  multitable @multitable 6 7
-verbatim_html.texi(,193) @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
-verbatim_html.texi(,194) 
-verbatim_html.texi(,195) right multitable
-verbatim_html.texi(,196) @multitable @columnfractions 6 7
-verbatim_html.texi(,197) @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
-verbatim_html.texi(,198) 
-verbatim_html.texi(,199) multitable beginning with @@tab
-verbatim_html.texi(,200) @multitable {@samp{@verb{.something.}}} {sec}
-verbatim_html.texi(,201) @tab after first tab 
-verbatim_html.texi(,202) @item new line
-verbatim_html.texi(,203) @end multitable
-verbatim_html.texi(,204) 
-verbatim_html.texi(,205) A flushright
-verbatim_html.texi(,206) @flushright some text flushed right
-verbatim_html.texi(,207) @end flushright
-verbatim_html.texi(,208) 
-verbatim_html.texi(,209) A center @center Centered line
-verbatim_html.texi(,210) And a center after empty line
-verbatim_html.texi(,211) 
-verbatim_html.texi(,212) @center centered line after empty line
-verbatim_html.texi(,213) 
-verbatim_html.texi(,214) And a center at end of line @center
-verbatim_html.texi(,215) And an empty center @center   
-verbatim_html.texi(,216) 
-verbatim_html.texi(,217) An empty flushright @flushright
-verbatim_html.texi(,218) 
-verbatim_html.texi(,219) @end flushright
-verbatim_html.texi(,220) 
-verbatim_html.texi(,221) A verb follows:
-verbatim_html.texi(,222) 
-verbatim_html.texi(,223) @verb{' a little
-verbatim_html.texi(,224) 
-verbatim_html.texi(,225) very little
-verbatim_html.texi(,226) verb '}
-verbatim_html.texi(,227) 
-verbatim_html.texi(,228) another with space as delimiter
-verbatim_html.texi(,229) 
-verbatim_html.texi(,230) @verb{ what@@ }
-verbatim_html.texi(,231) 
-verbatim_html.texi(,232) @@verb followed by end of line seems incorrect.
-verbatim_html.texi(,233) Now verb delimited with *, with an empty line, a comment and @@samp:
-verbatim_html.texi(,234) 
-verbatim_html.texi(,235) @verb{*with
-verbatim_html.texi(,236) verb @c comment
-verbatim_html.texi(,237) 
-verbatim_html.texi(,238) and samp @samp{text }
-verbatim_html.texi(,239) *}
+verbatim_html.texi(,171) @TeX{} has problems with the ftable.
+verbatim_html.texi(,172) 
+verbatim_html.texi(,174) an ftable on same line @ftable @bullet
+verbatim_html.texi(,175) @item fun1
+verbatim_html.texi(,176) @itemx fun2
+verbatim_html.texi(,177) fun1 et fun2 @item more fun
+verbatim_html.texi(,178) text on the same line than end   @end  ftable
+verbatim_html.texi(,179) works like @@ifnothtml
+verbatim_html.texi(,181) 
+verbatim_html.texi(,182) @item outside format.
+verbatim_html.texi(,183) 
+verbatim_html.texi(,184) @tab outside format.
+verbatim_html.texi(,185) 
+verbatim_html.texi(,186) @multitable {@samp{bidule}}
+verbatim_html.texi(,187) truc before table beginning @item first cell @tab ignored cell
+verbatim_html.texi(,188) @itemx second row
+verbatim_html.texi(,189) @end multitable
+verbatim_html.texi(,190) 
+verbatim_html.texi(,191) before bad  multitable @multitable 6 7
+verbatim_html.texi(,192) @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+verbatim_html.texi(,193) 
+verbatim_html.texi(,194) right multitable
+verbatim_html.texi(,195) @multitable @columnfractions 6 7
+verbatim_html.texi(,196) @item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2 @end multitable
+verbatim_html.texi(,197) 
+verbatim_html.texi(,198) multitable beginning with @@tab
+verbatim_html.texi(,199) @multitable {@samp{@verb{.something.}}} {sec}
+verbatim_html.texi(,200) @tab after first tab 
+verbatim_html.texi(,201) @item new line
+verbatim_html.texi(,202) @end multitable
+verbatim_html.texi(,203) 
+verbatim_html.texi(,204) A flushright
+verbatim_html.texi(,205) @flushright some text flushed right
+verbatim_html.texi(,206) @end flushright
+verbatim_html.texi(,207) 
+verbatim_html.texi(,208) A center @center Centered line
+verbatim_html.texi(,209) And a center after empty line
+verbatim_html.texi(,210) 
+verbatim_html.texi(,211) @center centered line after empty line
+verbatim_html.texi(,212) 
+verbatim_html.texi(,213) And a center at end of line @center
+verbatim_html.texi(,214) And an empty center @center   
+verbatim_html.texi(,215) 
+verbatim_html.texi(,216) An empty flushright @flushright
+verbatim_html.texi(,217) 
+verbatim_html.texi(,218) @end flushright
+verbatim_html.texi(,219) 
+verbatim_html.texi(,220) A verb follows:
+verbatim_html.texi(,221) 
+verbatim_html.texi(,222) @verb{' a little
+verbatim_html.texi(,223) 
+verbatim_html.texi(,224) very little
+verbatim_html.texi(,225) verb '}
+verbatim_html.texi(,226) 
+verbatim_html.texi(,227) another with space as delimiter
+verbatim_html.texi(,228) 
+verbatim_html.texi(,229) @verb{ what@@ }
+verbatim_html.texi(,230) 
+verbatim_html.texi(,231) @@verb followed by end of line seems incorrect.
+verbatim_html.texi(,232) Now verb delimited with *, with an empty line, a comment and @@samp:
+verbatim_html.texi(,233) 
+verbatim_html.texi(,234) @verb{*with
+verbatim_html.texi(,235) verb @c comment
+verbatim_html.texi(,236) 
+verbatim_html.texi(,237) and samp @samp{text }
+verbatim_html.texi(,238) *}
+verbatim_html.texi(,239) 
 verbatim_html.texi(,240) 
 verbatim_html.texi(,241) 
-verbatim_html.texi(,242) 
-verbatim_html.texi(,243) @node node @'{a}, node d@'a, First node, Top
-verbatim_html.texi(,244) @chapter node 'a with braces
-verbatim_html.texi(,245) In the node with braces
-verbatim_html.texi(,246) 
-verbatim_html.texi(,247) A footnote with an empty line within.
-verbatim_html.texi(,248) @footnote{with empty line
-verbatim_html.texi(,249) 
-verbatim_html.texi(,250) before before} 
-verbatim_html.texi(,251) 
-verbatim_html.texi(,252) Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
-verbatim_html.texi(,253) in that case in info. tex doesn't like the paragraph break in the ref
-verbatim_html.texi(,255) @ref{First 
-verbatim_html.texi(,256) node, within ref a footnote @footnote{with empty line
-verbatim_html.texi(,257) 
-verbatim_html.texi(,258) before before}}.
-verbatim_html.texi(,259) 
-verbatim_html.texi(,260) Conversely, a ref in a footnote
-verbatim_html.texi(,261) @footnote{ This is a ref @ref{First node} }
-verbatim_html.texi(,262) 
-verbatim_html.texi(,263) A footnote with an example
-verbatim_html.texi(,264) @footnote{
-verbatim_html.texi(,265) @example
+verbatim_html.texi(,242) @node node @'{a}, node d@'a, First node, Top
+verbatim_html.texi(,243) @chapter node 'a with braces
+verbatim_html.texi(,244) In the node with braces
+verbatim_html.texi(,245) 
+verbatim_html.texi(,246) A footnote with an empty line within.
+verbatim_html.texi(,247) @footnote{with empty line
+verbatim_html.texi(,248) 
+verbatim_html.texi(,249) before before} 
+verbatim_html.texi(,250) 
+verbatim_html.texi(,251) Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
+verbatim_html.texi(,252) in that case in info. tex doesn't like the paragraph break in the ref
+verbatim_html.texi(,254) @ref{First 
+verbatim_html.texi(,255) node, within ref a footnote @footnote{with empty line
+verbatim_html.texi(,256) 
+verbatim_html.texi(,257) before before}}.
+verbatim_html.texi(,258) 
+verbatim_html.texi(,259) Conversely, a ref in a footnote
+verbatim_html.texi(,260) @footnote{ This is a ref @ref{First node} }
+verbatim_html.texi(,261) 
+verbatim_html.texi(,262) A footnote with an example
+verbatim_html.texi(,263) @footnote{
+verbatim_html.texi(,264) @example
+verbatim_html.texi(,265) 
 verbatim_html.texi(,266) 
-verbatim_html.texi(,267) 
-verbatim_html.texi(,268) An example
-verbatim_html.texi(,269) 
-verbatim_html.texi(,270) @end example
-verbatim_html.texi(,271) }
-verbatim_html.texi(,272) 
-verbatim_html.texi(,274) 
-verbatim_html.texi(,275) Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
-verbatim_html.texi(,277) @xref{First node, 
-verbatim_html.texi(,278) @verbatim
-verbatim_html.texi(,279) 
-verbatim_html.texi(,280) some
-verbatim_html.texi(,281) verbatim   @@
-verbatim_html.texi(,282) text
-verbatim_html.texi(,283) within an xref
-verbatim_html.texi(,284) 
-verbatim_html.texi(,285) @end verbatim
+verbatim_html.texi(,267) An example
+verbatim_html.texi(,268) 
+verbatim_html.texi(,269) @end example
+verbatim_html.texi(,270) }
+verbatim_html.texi(,271) 
+verbatim_html.texi(,273) 
+verbatim_html.texi(,274) Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
+verbatim_html.texi(,276) @xref{First node, 
+verbatim_html.texi(,277) @verbatim
+verbatim_html.texi(,278) 
+verbatim_html.texi(,279) some
+verbatim_html.texi(,280) verbatim   @@
+verbatim_html.texi(,281) text
+verbatim_html.texi(,282) within an xref
+verbatim_html.texi(,283) 
+verbatim_html.texi(,284) @end verbatim
+verbatim_html.texi(,285) 
 verbatim_html.texi(,286) 
-verbatim_html.texi(,287) 
-verbatim_html.texi(,288) and now verb delimited with * with an empty line a comment and @@samp
-verbatim_html.texi(,289) @verb{*with
-verbatim_html.texi(,290) verb @c comment
-verbatim_html.texi(,291) 
-verbatim_html.texi(,292) and samp @samp{text }
-verbatim_html.texi(,293) next line
-verbatim_html.texi(,294) *}
-verbatim_html.texi(,295) 
-verbatim_html.texi(,296) last ignored sentence
-verbatim_html.texi(,300) 
-verbatim_html.texi(,301) }.
-verbatim_html.texi(,303) 
-verbatim_html.texi(,304) @xref{First node,
-verbatim_html.texi(,305) no verb}.
-verbatim_html.texi(,306) 
-verbatim_html.texi(,307) @node node d@'a,, node @'{a}, Top
-verbatim_html.texi(,308) @chapter node 'a without braces
-verbatim_html.texi(,309) @menu
-verbatim_html.texi(,310) * node::       node 
-verbatim_html.texi(,311) @end menu
-verbatim_html.texi(,312) 
-verbatim_html.texi(,313) @node node,,,
-verbatim_html.texi(,314) @section node
-verbatim_html.texi(,315) 
-verbatim_html.texi(,316) A node with gggggggg
-verbatim_html.texi(,317) before example @example after example
-verbatim_html.texi(,318) 
-verbatim_html.texi(,319) the example
-verbatim_html.texi(,320) before end example  @end  example 
-verbatim_html.texi(,321) after end example
+verbatim_html.texi(,287) and now verb delimited with * with an empty line a comment and @@samp
+verbatim_html.texi(,288) @verb{*with
+verbatim_html.texi(,289) verb @c comment
+verbatim_html.texi(,290) 
+verbatim_html.texi(,291) and samp @samp{text }
+verbatim_html.texi(,292) next line
+verbatim_html.texi(,293) *}
+verbatim_html.texi(,294) 
+verbatim_html.texi(,295) last ignored sentence
+verbatim_html.texi(,299) 
+verbatim_html.texi(,300) }.
+verbatim_html.texi(,302) 
+verbatim_html.texi(,303) @xref{First node,
+verbatim_html.texi(,304) no verb}.
+verbatim_html.texi(,305) 
+verbatim_html.texi(,306) @node node d@'a,, node @'{a}, Top
+verbatim_html.texi(,307) @chapter node 'a without braces
+verbatim_html.texi(,308) @menu
+verbatim_html.texi(,309) * node::       node 
+verbatim_html.texi(,310) @end menu
+verbatim_html.texi(,311) 
+verbatim_html.texi(,312) @node node,,,
+verbatim_html.texi(,313) @section node
+verbatim_html.texi(,314) 
+verbatim_html.texi(,315) A node with gggggggg
+verbatim_html.texi(,316) before example @example after example
+verbatim_html.texi(,317) 
+verbatim_html.texi(,318) the example
+verbatim_html.texi(,319) before end example  @end  example 
+verbatim_html.texi(,320) after end example
+verbatim_html.texi(,321) 
 verbatim_html.texi(,322) 
-verbatim_html.texi(,323) 
-verbatim_html.texi(,324) @contents
-verbatim_html.texi(,325) 
+verbatim_html.texi(,323) @contents
+verbatim_html.texi(,324) 
