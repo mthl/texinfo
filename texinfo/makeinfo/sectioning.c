@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.16 2003-11-19 01:19:12 dirt Exp $
+   $Id: sectioning.c,v 1.17 2003-11-21 05:39:03 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -279,8 +279,8 @@ sectioning_underscore (cmd)
 	  flush_output ();
 	  xml_last_section_output_position = output_paragraph_offset;
 
-          if (STREQ (cmd, "unnumbered") || STREQ (cmd, "chapter")
-              || enum_marker == UNNUMBERED_MAGIC)
+          if (docbook && (STREQ (cmd, "unnumbered") || STREQ (cmd, "chapter")
+              || enum_marker == UNNUMBERED_MAGIC))
             {
               xml_insert_element_with_attribute (xml_element (secname), START, "label=\"%s\"",
                   handle_enum_increment (level, search_sectioning (cmd)));
