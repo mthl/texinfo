@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
+@c $Id: texinfo.txi,v 1.103 2004-07-16 19:14:43 wl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7594,6 +7594,10 @@ follows, surrounded by braces.
 @item @@i
 @cindex Italic font
 selects an @i{italic} font;
+
+@item @@s
+@cindex Slanted font
+selects a @s{slanted} font;
 
 @item @@b
 @cindex Bold font
@@ -17280,6 +17284,9 @@ glyph: @samp{@result{}}.  @xref{result, , @code{@@result}}.@refill
 Generate a ring accent over the next character, as in @ringaccent{o}.
 @xref{Inserting Accents}.
 
+@item @@s@{@var{text}@}
+Print @var{text} in @s{slanted} font.  No effect in Info.  @xref{Fonts}.
+
 @item @@samp@{@var{text}@}
 Highlight @var{text} that is a literal example of a sequence of
 characters.  Used for single characters, for statements, and often for
@@ -18205,7 +18212,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
+$Id: texinfo.txi,v 1.103 2004-07-16 19:14:43 wl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18271,7 +18278,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
+@comment $Id: texinfo.txi,v 1.103 2004-07-16 19:14:43 wl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
