@@ -1,3 +1,10 @@
+2004-06-06  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (add_char): don't call html_output_head if
+	only_macro_expansion (e.g., a macro call in the
+	Top menu).  From: Yuri D'Elia <wavexx@yuv.info>,
+	05 Jun 2004 21:11:00 +0200.
+
 2004-06-03  Karl Berry  <karl@gnu.org>
 
 	* info/session.c (info_menu_digit): use menu, rather than entry, to
