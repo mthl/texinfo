@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.6 2002-11-07 22:04:20 karl Exp $
+$Id: dir-example,v 1.7 2002-12-05 21:34:02 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -23,7 +23,6 @@ Not all of the topics shown below may be available on this system.
 * Menu:
 
 GNU Packages
-* Make: (make).            Remake files automatically.
 * accounting: (psacct).         GNU process accounting suite.
 * Bash: (bash).                 Bourne-Again SHell.
 * Coreutils: (coreutils).	Core (file, text, shell) utilities.
@@ -42,6 +41,7 @@ GNU Packages
 * Gzip: (gzip).                 General (de)compression.
 * Identifier DB: (id-utils).    Identifier database utilities.
 * Ispell: (ispell).             Interactive spelling corrector.
+* Make: (make).                 Remake files automatically.
 * M4: (m4).                     Macro processor.
 * Ptx: (ptx).                   Permuted index generator.
 * Shar utilities: (sharutils).  Shell archiver, uudecode/uuencode.
