@@ -226,3 +226,9 @@ set args  --commands-in-node-names $ttests/assignments.texi
 
 # no error with --html
 set args -o /dev/null $ttests/htmlsec.tex
+
+# no info trailer on main file
+set args -I /u/karl/gnu/src/groff/doc --enable-encoding groff.texinfo
+
+# stray null bytes
+set args -I /u/karl/gnu/src/groff/doc -o /dev/null -E groff.out groff.texinfo
