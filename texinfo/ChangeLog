@@ -1,3 +1,18 @@
+2004-08-26  Stepan Kasal  <kasal@ucw.cz>
+
+	* util/texi2dvi: fix the sed script searching for @documentencoding;
+	  Double-quote some instances of "$filename_???"
+
+2004-08-26  Akim Demaille  <akim@epita.fr>
+
+	Let DVI and PDF files honor the document encoding in TeX.
+
+	* util/texi2dvi ($language): Be sure to set its value.
+	(get_xref_files): Turn this external shell script into a function.
+	(filename_rcd, $tmpdir_rcd): New.
+	If the file is in Texinfo, and has @documentencoding, and recode
+	is available, then run it.
+
 2004-08-25   Akim Demaille  <akim@epita.fr>
 
 	* util/Makefile.am (texinfo.cat): Fix for srcdir != builddir.

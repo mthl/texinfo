@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.88 2004-07-31 18:49:51 karl Exp $
+$Id: NEWS,v 1.89 2004-08-26 12:49:46 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -24,6 +24,8 @@ convenience, here's a url to one of the relevant sections:
 * Language:
   . new command @abbr for general abbreviations.
   . new command @slanted to typeset text with a slanted font.
+* texi2dvi:
+  . calls recode if installed and @documentencoding is specified.
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
   . automake 1.8.5.
