@@ -1,5 +1,5 @@
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.7 2003-03-26 16:02:03 karl Exp $
+# $Id: Makefile.am,v 1.8 2003-06-10 13:42:12 karl Exp $
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # This file is free software; as a special exception the author gives
@@ -11,7 +11,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # Be sure we're using the right version of Automake.
-AUTOMAKE_OPTIONS = 1.4 readme-alpha
+AUTOMAKE_OPTIONS = 1.7.5 readme-alpha
 
 # Additional files to distribute.
 EXTRA_DIST = INSTALL.generic INTRODUCTION config.rpath djgpp 
