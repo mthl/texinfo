@@ -1,3 +1,11 @@
+2003-06-17  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl: error messages go to STDERR instead of STDIN
+	* Tests/test.sh: add -x to perl invocation to avoid perl trying
+	to execute @PERL@. Small fixes.
+	* Tests/README: added README file in Tests to explain how to make
+	tests.
+
 2003-06-16  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Add some of Patrice's features, note new AC/AM versions, note
@@ -41,6 +49,7 @@
 	* doc/Makefile.in: Ditto.
 
 2003-06-16  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: @include replaced by an empty line
 	no end of line after last line when expanding macros
 	include of files within lines expanded from macros happen
@@ -50,6 +59,7 @@
 	* Tests/*: sync with code
 	
 2003-05-20  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: split pass_texi in 2 pass. pass_texi
 	rearranges texi expanding macros and values, removing comments.
 	pass_structure remove unneeded empty lines and find out the structure
@@ -68,6 +78,7 @@
 	* Tests/*: add tests for environments not closed. Sync with code.
 
 2003-05-09  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: refs to other manuals conforms to 
 	makeinfo with separated files for nodes.
 	If  $T2H_NODE_FILES (-node-files) is true one file per node is created
@@ -87,6 +98,7 @@
 	* Tests/*: tests for files with node names generation
 
 2003-05-07  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: put a label in splitted index.
 	splitted indices which are not at the level of splitting are kept
 	in the same file but in different sections.
@@ -111,6 +123,7 @@
 	tests for documents with only one section or node or no node.
 
 2003-05-02  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: 3 split commands: split at
 	chapter, section or for every node (previously node and section 
 	where the same than node now).
@@ -134,12 +147,14 @@
 	--html output (makeinfo.init).
 
 2003-04-30  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: add the node as element when there 
 	is a @printindex split accross pages between node and section.
 	* Tests/*: tests for documents with indices in top and between node
 	and section.
 
 2003-04-29  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: add $T2H_MENU_SYMBOL before nodes in 
 	menu and optionnaly before unnumbered section names in menu entry.
 	next are not menu childs but next node in menu.
@@ -154,6 +169,7 @@
 	* Tests/*: tests for documents without sections and double top
 
 2003-04-28  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: No heading for top, as print_Top 
 	allready does it.
 	if $T2H_USE_NODES (command line -use-nodes) is set, the nodes are
@@ -164,12 +180,14 @@
 	* Tests/*: tests for document structure. Sync with code.
 
 2003-04-23  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: when there is no section nodes are used instead
 	* .cvsignore: add autom4te-2.53.cache and check_texinfo.pl
 	* Tests/.cvsignore: create .cvsignore for Tests
 	* Tests/ccvs: update to latest cvs manual
 
 2003-04-22  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: constants declared early as they are used in 
 	texi2html.init (at least $WARN is used)
 	* Makefile.in, Tests/Makefile.in, Tests/Makefile.am: add .passfirst  
@@ -177,6 +195,7 @@
 	* Tests/*: results of tests added
 
 2003-04-10  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: labels were put 2 times in special
 	sections (Top, about, toc...).
 	in vtable, ftable and table, even with an empty first item we
@@ -187,6 +206,7 @@
 	* Tests/*/nodetest.texi: test for more simple special commands
 
 2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: formatting put in texi2html.init
 	hrefs to anchors and index entries which are in footnotes are right
 	scan_texi changed to have a stack
@@ -199,6 +219,7 @@
 	* Tests/*: a little more things tested.
 
 2003-04-04  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: deffn and the like better handled
 	preformatted sections are closed when there is a new format
 	and reopened right after the format such that there is no
@@ -215,6 +236,7 @@
 	* Tests/*: more tests for imbrications.
 	
 2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: footnotes better handled, they have a separated
 	stack, state and text.
 	footnotes, anchors and refs can be mixed with better results.
@@ -224,6 +246,7 @@
 	* Tests/*: minor changes, more tests.
 
 2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: macros splitted by 3 paragraphs are better handled.
 	more isolation of formatting.
 	better generation of index keys from commands, with more macros
@@ -237,6 +260,7 @@
 	* Tests/*: formatting/imbrications.texi added. Sync with code.
 
 2003-03-27  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: rewrite of the parsing of texi
 	and of the handling of sectionning.
 	pass0 is now pass_texi. It still only generates texinfo.
@@ -257,7 +281,9 @@
 	structure anymore.
 	* Tests/*: more tests for the @macros. Other minor modifications.
 	sync with new code.
+
 2003-03-06  Patrice Dumas <dumas@centre-cired.fr>
+
 	* T2h_i18n.pm: added  the licence
 	* texi2html.pl, texi2html.init, check_texinfo.pl.in: check function
 	put in check_texinfo.pl.in. T2H_EXPAND is now an array such that
@@ -283,6 +309,7 @@
 	* configure, configure.in: added check_texinfo.pl.in.
 
 2003-02-28  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init, T2h_i18n.pm: options specifications
 	moved from texi2html.init to texi2html.pl, such that texi2html.init
 	resembles a regular user init file. internationalization move
@@ -293,6 +320,7 @@
 	Tests/Makefile.in: regenerated with automake-1.6.3, autoconf-2.53
 
 2003-02-24  Patrice Dumas <dumas@centre-cired.fr>
+
 	* Tests: small fixes, more tests showing brokeness of texi2html
 	for some features and info and tex differences. 
 	A change in texinfo.txi to permit handling of verb despite some 
@@ -314,6 +342,7 @@
         in pass3 only very little cleaning is done, pass4 is removed.
         
 2003-02-21  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: added handling of overbar accent @= is transformed
 	in =
 	the handling of multi lines macro is done in a function, scan_line
@@ -324,6 +353,7 @@
 	result easily)
 
 2003-02-19  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: T2H_DEFAULT_button_icon_img behaves
 	better when it has some undef arguments
 	the variables which may be redefined by the user are now global. 
@@ -336,6 +366,7 @@
 	other minor fixes
 
 2003-02-18  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: handle @verbatim, and @html differently. Added 
 	push_until function which shift from a lines array and push to another 
 	array until @end tag. Remove PROTECTTAG

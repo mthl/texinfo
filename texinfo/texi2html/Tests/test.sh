@@ -2,7 +2,7 @@
 
 #set -x
 do_tidy='no'
-do_validate='yes'
+do_validate='no'
 which tidy 2>&1 > /dev/null && do_tidy='yes'
 which validate 2>&1 > /dev/null && do_validate='yes'
 
@@ -47,7 +47,7 @@ fi
 export T2H_HOME=../..
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
-(cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
+(cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -56,7 +56,7 @@ else echo "    passed"
 fi
 
 # generate a dump of the first pass
-(cd $dir && perl -w ../../texi2html.pl -test $options -dump_texi $texi_file) > /dev/null 2>&1
+(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump_texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
 	echo "  stderr line count:"
@@ -207,9 +207,3 @@ test_texi texinfo info-stnd.texi "-split chapter -node-files"
 test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
 test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
-
-exit
-#examples of syntax
-#test_texi bad bad_transfo_name_no_file.texi "" fail 7
-#test_texi reserved_words reserved_transformation_name_in_transfo.texi "" fail no
-#test_texi scanner test.texi "-d" success 36
