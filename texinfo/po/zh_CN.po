@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2002-10-23 15:59-0700\n"
+"POT-Creation-Date: 2002-10-28 05:14-0800\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -1738,95 +1738,95 @@ msgstr "十一月"
 msgid "December"
 msgstr "十二月"
 
-#: makeinfo/cmds.c:664
+#: makeinfo/cmds.c:665
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "@var 中不可靠的字符 %c"
 
-#: makeinfo/cmds.c:707
+#: makeinfo/cmds.c:708
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc 的参数全部为大写，因此无效"
 
-#: makeinfo/cmds.c:765
+#: makeinfo/cmds.c:766
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "应为“{”，但看到了“%c”"
 
-#: makeinfo/cmds.c:795
+#: makeinfo/cmds.c:796
 msgid "end of file inside verb block"
 msgstr "文件在原文块中结束"
 
-#: makeinfo/cmds.c:803
+#: makeinfo/cmds.c:804
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "应为“}”，但看到了“%c”"
 
-#: makeinfo/cmds.c:964
+#: makeinfo/cmds.c:949
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s 已过时"
 
-#: makeinfo/cmds.c:1036
+#: makeinfo/cmds.c:1021
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp 需要正数参数，而不是“%s”"
 
-#: makeinfo/cmds.c:1371 makeinfo/cmds.c:1397 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1356 makeinfo/cmds.c:1382 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1381 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1366 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1383 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1368 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr "none"
 
-#: makeinfo/defun.c:85
+#: makeinfo/defun.c:87
 msgid "Missing `}' in @def arg"
 msgstr "@def 的参数遗漏了“}”"
 
-#: makeinfo/defun.c:363
+#: makeinfo/defun.c:371
 msgid "Function"
 msgstr "函数"
 
-#: makeinfo/defun.c:366
+#: makeinfo/defun.c:374
 msgid "Macro"
 msgstr "宏"
 
-#: makeinfo/defun.c:369
+#: makeinfo/defun.c:377
 msgid "Special Form"
 msgstr "特殊形式"
 
-#: makeinfo/defun.c:373
+#: makeinfo/defun.c:381
 msgid "Variable"
 msgstr "变量"
 
-#: makeinfo/defun.c:376
+#: makeinfo/defun.c:384
 msgid "User Option"
 msgstr "用户选项"
 
-#: makeinfo/defun.c:380
+#: makeinfo/defun.c:388
 msgid "Instance Variable"
 msgstr "实例变量"
 
-#: makeinfo/defun.c:384
+#: makeinfo/defun.c:392
 msgid "Method"
 msgstr "方法"
 
-#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615
-#: makeinfo/defun.c:631 makeinfo/defun.c:671
+#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:627
+#: makeinfo/defun.c:643 makeinfo/defun.c:683
 msgid "of"
 msgstr ""
 
-#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482
-#: makeinfo/defun.c:624 makeinfo/defun.c:676
+#: makeinfo/defun.c:482 makeinfo/defun.c:486 makeinfo/defun.c:490
+#: makeinfo/defun.c:636 makeinfo/defun.c:688
 msgid "on"
 msgstr ""
 
-#: makeinfo/defun.c:717
+#: makeinfo/defun.c:729
 #, c-format
 msgid "Must be in `%s' insertion to use `%sx'"
 msgstr ""
@@ -1858,13 +1858,17 @@ msgstr "脚注内的脚注是不允许的"
 msgid "Footnotes"
 msgstr "脚注"
 
-#: makeinfo/html.c:42
+#: makeinfo/html.c:44
 msgid "Untitled"
 msgstr "无标题"
 
-#: makeinfo/html.c:300
-#, c-format
-msgid "Invalid node name: `%s'"
+#: makeinfo/html.c:163
+msgid "[unexpected] no html tag to pop"
+msgstr ""
+
+#: makeinfo/html.c:369
+#, fuzzy, c-format
+msgid "[unexpected] invalid node name: `%s'"
 msgstr "无效的脚注名：“%s”"
 
 #: makeinfo/index.c:213
@@ -2435,19 +2439,19 @@ msgid "Too many columns in multitable item (max %d)"
 msgstr "在多列表格项目中含有太多的列 (最大为 %d)"
 
 #: makeinfo/multi.c:427
-#, c-format
-msgid "Cannot select column #%d in multitable"
+#, fuzzy, c-format
+msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "无法在多列表格中选择第 %d 列"
 
-#: makeinfo/multi.c:530
+#: makeinfo/multi.c:531
 msgid "ignoring @tab outside of multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: makeinfo/multi.c:566
+#: makeinfo/multi.c:567
 msgid "** Multicolumn output from last row:\n"
 msgstr "** 最后一行的多列输出：\n"
 
-#: makeinfo/multi.c:569
+#: makeinfo/multi.c:570
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* 列 #%d：输出 = %s\n"

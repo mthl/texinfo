@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
-"POT-Creation-Date: 2002-10-23 15:59-0700\n"
+"POT-Creation-Date: 2002-10-28 05:14-0800\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -1746,95 +1746,95 @@ msgstr "十一月"
 msgid "December"
 msgstr "十二月"
 
-#: makeinfo/cmds.c:664
+#: makeinfo/cmds.c:665
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr ""
 
-#: makeinfo/cmds.c:707
+#: makeinfo/cmds.c:708
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc 的引數全是大寫, 所以沒有作用"
 
-#: makeinfo/cmds.c:765
+#: makeinfo/cmds.c:766
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr ""
 
-#: makeinfo/cmds.c:795
+#: makeinfo/cmds.c:796
 msgid "end of file inside verb block"
 msgstr ""
 
-#: makeinfo/cmds.c:803
+#: makeinfo/cmds.c:804
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr ""
 
-#: makeinfo/cmds.c:964
+#: makeinfo/cmds.c:949
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s 已廢止不用"
 
-#: makeinfo/cmds.c:1036
+#: makeinfo/cmds.c:1021
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp 必須有一個正整數的引數, 而不是 `%s'"
 
-#: makeinfo/cmds.c:1371 makeinfo/cmds.c:1397 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1356 makeinfo/cmds.c:1382 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "對 %c%s 無用的引數"
 
-#: makeinfo/cmds.c:1381 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1366 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr ""
 
-#: makeinfo/cmds.c:1383 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1368 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr ""
 
-#: makeinfo/defun.c:85
+#: makeinfo/defun.c:87
 msgid "Missing `}' in @def arg"
 msgstr "@def 參數中遺漏 `}'"
 
-#: makeinfo/defun.c:363
+#: makeinfo/defun.c:371
 msgid "Function"
 msgstr ""
 
-#: makeinfo/defun.c:366
+#: makeinfo/defun.c:374
 msgid "Macro"
 msgstr ""
 
-#: makeinfo/defun.c:369
+#: makeinfo/defun.c:377
 msgid "Special Form"
 msgstr ""
 
-#: makeinfo/defun.c:373
+#: makeinfo/defun.c:381
 msgid "Variable"
 msgstr ""
 
-#: makeinfo/defun.c:376
+#: makeinfo/defun.c:384
 msgid "User Option"
 msgstr ""
 
-#: makeinfo/defun.c:380
+#: makeinfo/defun.c:388
 msgid "Instance Variable"
 msgstr ""
 
-#: makeinfo/defun.c:384
+#: makeinfo/defun.c:392
 msgid "Method"
 msgstr ""
 
-#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615
-#: makeinfo/defun.c:631 makeinfo/defun.c:671
+#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:627
+#: makeinfo/defun.c:643 makeinfo/defun.c:683
 msgid "of"
 msgstr ""
 
-#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482
-#: makeinfo/defun.c:624 makeinfo/defun.c:676
+#: makeinfo/defun.c:482 makeinfo/defun.c:486 makeinfo/defun.c:490
+#: makeinfo/defun.c:636 makeinfo/defun.c:688
 msgid "on"
 msgstr ""
 
-#: makeinfo/defun.c:717
+#: makeinfo/defun.c:729
 #, c-format
 msgid "Must be in `%s' insertion to use `%sx'"
 msgstr ""
@@ -1867,14 +1867,18 @@ msgstr "定義註腳, 但是沒有父節點"
 msgid "Footnotes"
 msgstr "註腳"
 
-#: makeinfo/html.c:42
+#: makeinfo/html.c:44
 msgid "Untitled"
 msgstr ""
 
-#: makeinfo/html.c:300
-#, c-format
-msgid "Invalid node name: `%s'"
+#: makeinfo/html.c:163
+msgid "[unexpected] no html tag to pop"
 msgstr ""
+
+#: makeinfo/html.c:369
+#, fuzzy, c-format
+msgid "[unexpected] invalid node name: `%s'"
+msgstr "%s: 未知的選項 `%c%s'\n"
 
 #: makeinfo/index.c:213
 #, c-format
@@ -2389,19 +2393,19 @@ msgid "Too many columns in multitable item (max %d)"
 msgstr "multitable 項目中有太多的欄位 (最大值為 %d)"
 
 #: makeinfo/multi.c:427
-#, c-format
-msgid "Cannot select column #%d in multitable"
+#, fuzzy, c-format
+msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "無法選取 multitable 中的欄位 #%d"
 
-#: makeinfo/multi.c:530
+#: makeinfo/multi.c:531
 msgid "ignoring @tab outside of multitable"
 msgstr "忽略 multitable 外的 @tab"
 
-#: makeinfo/multi.c:566
+#: makeinfo/multi.c:567
 msgid "** Multicolumn output from last row:\n"
 msgstr ""
 
-#: makeinfo/multi.c:569
+#: makeinfo/multi.c:570
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* 欄位 #%d: 輸出 = %s\n"

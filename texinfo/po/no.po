@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Texinfo 4.0i\n"
-"POT-Creation-Date: 2002-10-23 15:59-0700\n"
+"POT-Creation-Date: 2002-10-28 05:14-0800\n"
 "PO-Revision-Date: 2002-02-25 23:06+01:00\n"
 "Last-Translator: Trond Endrestøl <trond@ramstind.gtf.ol.no>\n"
 "Language-Team: Norwegian-bokmål <no@li.org>\n"
@@ -1793,95 +1793,95 @@ msgstr "november"
 msgid "December"
 msgstr "desember"
 
-#: makeinfo/cmds.c:664
+#: makeinfo/cmds.c:665
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "usannsynlig tegn %c i @var"
 
-#: makeinfo/cmds.c:707
+#: makeinfo/cmds.c:708
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc-argument med store bokstaver, dermed ingen effekt"
 
-#: makeinfo/cmds.c:765
+#: makeinfo/cmds.c:766
 #, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "«{» forventet, men så «%c»"
 
-#: makeinfo/cmds.c:795
+#: makeinfo/cmds.c:796
 msgid "end of file inside verb block"
 msgstr "slutt-på-fila inne i verb-blokk"
 
-#: makeinfo/cmds.c:803
+#: makeinfo/cmds.c:804
 #, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "«{» forventet, men så «%c»"
 
-#: makeinfo/cmds.c:964
+#: makeinfo/cmds.c:949
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "%c%s er utgått"
 
-#: makeinfo/cmds.c:1036
+#: makeinfo/cmds.c:1021
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
 
-#: makeinfo/cmds.c:1371 makeinfo/cmds.c:1397 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1356 makeinfo/cmds.c:1382 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "Ugyldig argument til %c%s"
 
-#: makeinfo/cmds.c:1381 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1366 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1383 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1368 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr "none"
 
-#: makeinfo/defun.c:85
+#: makeinfo/defun.c:87
 msgid "Missing `}' in @def arg"
 msgstr "Manglende «}» i @def-arg"
 
-#: makeinfo/defun.c:363
+#: makeinfo/defun.c:371
 msgid "Function"
 msgstr "Funksjon"
 
-#: makeinfo/defun.c:366
+#: makeinfo/defun.c:374
 msgid "Macro"
 msgstr "Makro"
 
-#: makeinfo/defun.c:369
+#: makeinfo/defun.c:377
 msgid "Special Form"
 msgstr "Spesiell form"
 
-#: makeinfo/defun.c:373
+#: makeinfo/defun.c:381
 msgid "Variable"
 msgstr "Variabel"
 
-#: makeinfo/defun.c:376
+#: makeinfo/defun.c:384
 msgid "User Option"
 msgstr "Brukervalg"
 
-#: makeinfo/defun.c:380
+#: makeinfo/defun.c:388
 msgid "Instance Variable"
 msgstr "Forekomst"
 
-#: makeinfo/defun.c:384
+#: makeinfo/defun.c:392
 msgid "Method"
 msgstr "Metode"
 
-#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615
-#: makeinfo/defun.c:631 makeinfo/defun.c:671
+#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:627
+#: makeinfo/defun.c:643 makeinfo/defun.c:683
 msgid "of"
 msgstr "av"
 
-#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482
-#: makeinfo/defun.c:624 makeinfo/defun.c:676
+#: makeinfo/defun.c:482 makeinfo/defun.c:486 makeinfo/defun.c:490
+#: makeinfo/defun.c:636 makeinfo/defun.c:688
 msgid "on"
 msgstr "på"
 
-#: makeinfo/defun.c:717
+#: makeinfo/defun.c:729
 #, c-format
 msgid "Must be in `%s' insertion to use `%sx'"
 msgstr "Må være i en «%s»-innsetting for å bruke «%sx»"
@@ -1914,13 +1914,17 @@ msgstr "Fotnote definert uten foreldrenode"
 msgid "Footnotes"
 msgstr "Fotnoter"
 
-#: makeinfo/html.c:42
+#: makeinfo/html.c:44
 msgid "Untitled"
 msgstr "Uten navn"
 
-#: makeinfo/html.c:300
-#, c-format
-msgid "Invalid node name: `%s'"
+#: makeinfo/html.c:163
+msgid "[unexpected] no html tag to pop"
+msgstr ""
+
+#: makeinfo/html.c:369
+#, fuzzy, c-format
+msgid "[unexpected] invalid node name: `%s'"
 msgstr "Ugyldig nodenavn: «%s»"
 
 #: makeinfo/index.c:213
@@ -2508,19 +2512,19 @@ msgid "Too many columns in multitable item (max %d)"
 msgstr "For mange kolonner i multitabellrad (maks %d)"
 
 #: makeinfo/multi.c:427
-#, c-format
-msgid "Cannot select column #%d in multitable"
+#, fuzzy, c-format
+msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "Kan ikke velge kolonne #%d i multitabell"
 
-#: makeinfo/multi.c:530
+#: makeinfo/multi.c:531
 msgid "ignoring @tab outside of multitable"
 msgstr "ignorerer @tab utenfor multitabell"
 
-#: makeinfo/multi.c:566
+#: makeinfo/multi.c:567
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Multikolonne-output fra siste rad:\n"
 
-#: makeinfo/multi.c:569
+#: makeinfo/multi.c:570
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* kolonne #%d output = %s\n"

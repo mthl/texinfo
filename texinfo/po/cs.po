@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
-"POT-Creation-Date: 2002-10-23 15:59-0700\n"
+"POT-Creation-Date: 2002-10-28 05:14-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1776,95 +1776,95 @@ msgstr "Listopad"
 msgid "December"
 msgstr "Prosinec"
 
-#: makeinfo/cmds.c:664
+#: makeinfo/cmds.c:665
 #, c-format
 msgid "unlikely character %c in @var"
 msgstr "nepravdìpodobný znak %c ve @var"
 
-#: makeinfo/cmds.c:707
+#: makeinfo/cmds.c:708
 msgid "@sc argument all uppercase, thus no effect"
 msgstr "@sc argument je celý velkými písmeny, zbyteènì"
 
-#: makeinfo/cmds.c:765
+#: makeinfo/cmds.c:766
 #, fuzzy, c-format
 msgid "`{' expected, but saw `%c'"
 msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
 
-#: makeinfo/cmds.c:795
+#: makeinfo/cmds.c:796
 msgid "end of file inside verb block"
 msgstr ""
 
-#: makeinfo/cmds.c:803
+#: makeinfo/cmds.c:804
 #, fuzzy, c-format
 msgid "`}' expected, but saw `%c'"
 msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
 
-#: makeinfo/cmds.c:964
+#: makeinfo/cmds.c:949
 #, c-format
 msgid "%c%s is obsolete"
 msgstr "Pøíkaz %c%s je zastaralý"
 
-#: makeinfo/cmds.c:1036
+#: makeinfo/cmds.c:1021
 #, c-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp vy¾aduje kladný èíselný argument a ne `%s'"
 
-#: makeinfo/cmds.c:1371 makeinfo/cmds.c:1397 makeinfo/footnote.c:81
+#: makeinfo/cmds.c:1356 makeinfo/cmds.c:1382 makeinfo/footnote.c:81
 #, c-format
 msgid "Bad argument to %c%s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:1381 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1366 makeinfo/makeinfo.c:4140
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1383 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1368 makeinfo/makeinfo.c:4142
 msgid "none"
 msgstr "none"
 
-#: makeinfo/defun.c:85
+#: makeinfo/defun.c:87
 msgid "Missing `}' in @def arg"
 msgstr "Chybìjící `}' v argumentu @def"
 
-#: makeinfo/defun.c:363
+#: makeinfo/defun.c:371
 msgid "Function"
 msgstr "Funkce"
 
-#: makeinfo/defun.c:366
+#: makeinfo/defun.c:374
 msgid "Macro"
 msgstr "Makro"
 
-#: makeinfo/defun.c:369
+#: makeinfo/defun.c:377
 msgid "Special Form"
 msgstr "Speciální forma"
 
-#: makeinfo/defun.c:373
+#: makeinfo/defun.c:381
 msgid "Variable"
 msgstr "Promìnná"
 
-#: makeinfo/defun.c:376
+#: makeinfo/defun.c:384
 msgid "User Option"
 msgstr "U¾ivatelská volba"
 
-#: makeinfo/defun.c:380
+#: makeinfo/defun.c:388
 msgid "Instance Variable"
 msgstr "Instance promìnné"
 
-#: makeinfo/defun.c:384
+#: makeinfo/defun.c:392
 msgid "Method"
 msgstr "Metoda"
 
-#: makeinfo/defun.c:466 makeinfo/defun.c:470 makeinfo/defun.c:615
-#: makeinfo/defun.c:631 makeinfo/defun.c:671
+#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:627
+#: makeinfo/defun.c:643 makeinfo/defun.c:683
 msgid "of"
 msgstr "z"
 
-#: makeinfo/defun.c:474 makeinfo/defun.c:478 makeinfo/defun.c:482
-#: makeinfo/defun.c:624 makeinfo/defun.c:676
+#: makeinfo/defun.c:482 makeinfo/defun.c:486 makeinfo/defun.c:490
+#: makeinfo/defun.c:636 makeinfo/defun.c:688
 msgid "on"
 msgstr ""
 
-#: makeinfo/defun.c:717
+#: makeinfo/defun.c:729
 #, c-format
 msgid "Must be in `%s' insertion to use `%sx'"
 msgstr ""
@@ -1897,14 +1897,18 @@ msgstr "Poznámka pod èarou definována bez rodièovského uzlu"
 msgid "Footnotes"
 msgstr "Poznámky pod èarou"
 
-#: makeinfo/html.c:42
+#: makeinfo/html.c:44
 msgid "Untitled"
 msgstr "Neoznaèeno"
 
-#: makeinfo/html.c:300
-#, c-format
-msgid "Invalid node name: `%s'"
+#: makeinfo/html.c:163
+msgid "[unexpected] no html tag to pop"
 msgstr ""
+
+#: makeinfo/html.c:369
+#, fuzzy, c-format
+msgid "[unexpected] invalid node name: `%s'"
+msgstr "%s: neznámý pøepínaè `--%s'\n"
 
 #: makeinfo/index.c:213
 #, c-format
@@ -2437,19 +2441,19 @@ msgid "Too many columns in multitable item (max %d)"
 msgstr "Pøíli¹ mnoho sloupcù v multitabulkové polo¾ce (max %d)"
 
 #: makeinfo/multi.c:427
-#, c-format
-msgid "Cannot select column #%d in multitable"
+#, fuzzy, c-format
+msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "sloupec #%d v multitabulce nelze vybrat"
 
-#: makeinfo/multi.c:530
+#: makeinfo/multi.c:531
 msgid "ignoring @tab outside of multitable"
 msgstr "pøíkaz `@tab' ignorován, je mimo multitabulku"
 
-#: makeinfo/multi.c:566
+#: makeinfo/multi.c:567
 msgid "** Multicolumn output from last row:\n"
 msgstr "** Vícesloupcový výstup z posledního øádku:\n"
 
-#: makeinfo/multi.c:569
+#: makeinfo/multi.c:570
 #, c-format
 msgid "* column #%d: output = %s\n"
 msgstr "* sloupec #%d: výstup = %s\n"
