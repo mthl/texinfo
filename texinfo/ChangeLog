@@ -1,3 +1,17 @@
+2003-09-28  Karl Berry  <karl@gnu.org>
+
+	* TODO: add item for conversion of non-texinfo manuals.
+
+2003-09-26  Karl Berry  <karl@gnu.org>
+
+	* CVSROOT/loginfo: back to log_accum.
+
+	* doc/texinfo.tex (\parsebodycommon): increase \penalty between
+        headers to 2000 from 0.
+        (\defxbodycommon): check for 10002, not 1000.  We don't want to
+	allow a page break after a section heading.  Hmm, but it seems
+	this should never be called next after a section heading?
+
 2003-09-25  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_strong): warn if argument is exactly
