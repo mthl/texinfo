@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.15 2002-11-13 12:35:35 karl Exp $
+   $Id: xml.c,v 1.16 2002-11-29 18:19:00 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -706,7 +706,8 @@ xml_insert_entity (char *entity_name)
     return;
 
   if (!xml_in_para && !xml_no_para && !only_macro_expansion
-      && xml_element_list[xml_current_element ()].contains_para)
+      && xml_element_list[xml_current_element ()].contains_para
+      && !in_fixed_width_font)
     {
       insert_string ("<para>");
       xml_in_para = 1;
