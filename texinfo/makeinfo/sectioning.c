@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.15 2003-11-19 00:27:34 dirt Exp $
+   $Id: sectioning.c,v 1.16 2003-11-19 01:19:12 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -291,6 +291,9 @@ sectioning_underscore (cmd)
 	  xml_insert_element (TITLE, START);
 	  xml_open_section (level, secname);
 	  get_rest_of_line (0, &temp);
+          /* Use @settitle value if @top parameter is empty.  */
+          if (STREQ (command, "top") && strlen(temp) == 0)
+            temp = xstrdup (title);
 	  execute_string ("%s\n", temp);
 	  free (temp);
 	  xml_insert_element (TITLE, END);
