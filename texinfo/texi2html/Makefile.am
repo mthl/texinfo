@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = doc Tests
+SUBDIRS = . doc Tests
 imagesdir = $(pkgdatadir)/images
 i18ndir = $(pkgdatadir)/i18n
 

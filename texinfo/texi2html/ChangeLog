@@ -2,6 +2,8 @@
 
 	* INTRODUCTION, README: update with dev mailing list. Advertise the
 	manual as being rather complete.
+	* Makefile.am,Makefile.in: build in . before doc, as texi2html is 
+	needed to rebuild the doc.
 
 2004-12-11  Patrice Dumas  <dumas@centre-cired.fr>
 

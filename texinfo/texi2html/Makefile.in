@@ -166,7 +166,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = doc Tests
+SUBDIRS = . doc Tests
 imagesdir = $(pkgdatadir)/images
 i18ndir = $(pkgdatadir)/i18n
 
