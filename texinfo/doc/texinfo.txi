@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
+@c $Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5148,8 +5148,8 @@ Thus, in practice, a Top node starts like this:
 @cindex Pointer creation with @code{makeinfo}
 @cindex Automatic pointer creation with @code{makeinfo}
 
-The @code{makeinfo} program has a feature for automatically defining
-node pointers for a hierarchically organized file.
+The @code{makeinfo} program has a feature for automatically determining
+node pointers for a hierarchically organized document.
 
 When you take advantage of this feature, you do not need to write the
 `Next', `Previous', and `Up' pointers after the name of a node.
@@ -5171,10 +5171,12 @@ commands.  (@xref{Updating Nodes and Menus}.)
 
 In most cases, you will want to take advantage of this feature and not
 redundantly specify node pointers.  However, Texinfo documents are not
-required to be organized hierarchically or in fact contain sectioning
-commands at all.  For example, if you never intend the document to be
-printed.  In those cases, you will need to explicitly specify the pointers.
-
+required to be organized hierarchically or in fact to contain
+sectioning commands at all (for example, if you never intend the
+document to be printed).  The special procedure for handling the short
+text before a menu described in @ref{Menu Location} also disables this
+feature, for that group of nodes.  In those cases, you will need to
+explicitly specify the pointers.
 
 @node anchor
 @section @code{@@anchor}: Defining Arbitrary Cross-reference Targets
@@ -5231,17 +5233,22 @@ carry you to any node, regardless of the hierarchical structure; even to
 nodes in a different Info file.  However, the GNU Emacs Texinfo mode
 updating commands work only to create menus of subordinate nodes.
 Conventionally, cross references are used to refer to other nodes.} In
-Info, you use menus to go to such nodes.  Menus have no effect in
+online output, you use menus to go to such nodes.  Menus have no effect in
 printed manuals and do not appear in them.
 
-By convention, a menu is put at the end of a node since a reader who
-uses the menu may not see text that follows it.  Furthermore, a node
-that has a menu should not contain much text. If you have a lot of text
-and a menu, move most of the text into a new subnode---all but a few
-lines.  Otherwise, a reader with a terminal that displays only a few
-lines may miss the menu and its associated text.  As a practical matter,
-you should locate a menu within 20 lines of the beginning of the
-node.
+A menu must be located at the end of a node, without any text
+following it (and there may be at most one menu in a node).  This is a
+useful restriction, since a reader who uses the menu could easily miss
+any such text.  (Technically, it is necessary because in Info format,
+there is no marker for the end of a menu, so Info readers would have
+no way to know when the menu ends and normal text resumes.)
+
+Furthermore, a node that has a menu should not contain much text. If
+you have a lot of text and a menu, move most of the text into a new
+subnode---all but a few lines.  Otherwise, a reader with a terminal
+that displays only a few lines may miss the menu and its associated
+text.  As a practical matter, you should locate a menu within 20 lines
+of the beginning of the node.
 
 @menu
 * Menu Location::               Put a menu in a short node.
@@ -5268,6 +5275,9 @@ follow the menu by an @code{@@node} line, and then an @code{@@heading}
 line located within @code{@@ifinfo} and @code{@@end ifinfo}.  This way,
 the menu, @code{@@node} line, and title appear only in the Info file,
 not the printed document.
+
+This has the disadvantage that @command{makeinfo} cannot determine the
+node 
 
 For example, the preceding two paragraphs follow an Info-only menu,
 @code{@@node} line, and heading, and look like this:
@@ -6842,6 +6852,7 @@ control the font switching with the @code{@@kbdinputstyle} command.
 This command has no effect on Info output.  Write this command at the
 beginning of a line with a single word as an argument, one of the
 following:
+
 @vindex distinct@r{, arg to @@kbdinputstyle}
 @vindex example@r{, arg to @@kbdinputstyle}
 @vindex code@r{, arg to @@kbdinputstyle}
@@ -6857,18 +6868,19 @@ and similar environments.
 
 You can embed another @@-command inside the braces of an @code{@@kbd}
 command.  Here, for example, is the way to describe a command that
-would be described more verbosely as ``press an @samp{r} and then
-press the @key{RET} key'':@refill
+would be described more verbosely as ``press the @samp{r} key and then
+press the @key{RETURN} key'':
 
 @example
 @@kbd@{r @@key@{RET@}@}
 @end example
 
 @noindent
-This produces: @kbd{r @key{RET}}
+This produces: @kbd{r @key{RET}}.  (The present manual accepts the
+default for @code{@@kbdinputstyle}.)
 
 You also use the @code{@@kbd} command if you are spelling out the letters
-you type; for example:@refill
+you type; for example:
 
 @example
 To give the @@code@{logout@} command,
@@ -6884,7 +6896,7 @@ type the characters @kbd{l o g o u t @key{RET}}.
 @end quotation
 
 (Also, this example shows that you can add spaces for clarity.  If you
-really want to mention a space character as one of the characters of
+explicitly want to mention a space character as one of the characters of
 input, write @kbd{@@key@{SPC@}} for it.)@refill
 
 
@@ -17178,7 +17190,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
+$Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17241,7 +17253,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
+@comment $Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
