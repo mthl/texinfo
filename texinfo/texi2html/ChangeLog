@@ -1,5 +1,16 @@
 2004-02-11  Derek Price  <derek@ximbiot.com>
 
+	* Tests/GermanNodeTest/.cvsignore, Tests/index_table/.cvsignore,
+	Tests/macros/.cvsignore, Tests/sectionning/.cvsignore,
+	Tests/ccvs/.cvsignore, Tests/nodes_texinfo/.cvsignore,
+	Tests/texi2html/.cvsignore, Tests/texinfo/.cvsignore,
+	Tests/viper/.cvsignore, Tests/viper_monolithic/.cvsignore,
+	Tests/xemacs/.cvsignore, Tests/xemacs_frame/.cvsignore,
+	Tests/formatting/.cvsignore: New files to suppress warnings about files
+	created by the test scripts.
+
+2004-02-11  Derek Price  <derek@ximbiot.com>
+
 	* Makefile.am (bin_PROGRAMS): Move...
 	(bin_SCRIPTS): ...here.
 	(texi2html_SOURCES): Remove unused variable.
