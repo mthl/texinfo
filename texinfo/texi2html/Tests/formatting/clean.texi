@@ -91,6 +91,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@ordm @ordm{}
 @@comma @comma{}
 @@euro @euro{}
+@c @@le @le{}
+@c @@ge @ge{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}

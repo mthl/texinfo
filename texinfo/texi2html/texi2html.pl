@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.130 2005-02-13 00:59:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.131 2005-02-27 20:35:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -4063,12 +4063,12 @@ sub misc_command_structure($$$$)
             {
                 $style_map_ref->{'kbd'} = $style_map_ref->{'code'};
                 $style_map_pre_ref->{'kbd'} = $style_map_pre_ref->{'code'};
-                $Texi2HTML::THISDOC{'kbdinputstyle'} = $1;
+                $Texi2HTML::THISDOC{$macro} = $1;
             }
             elsif ($1 eq 'example')
             {
                 $style_map_pre_ref->{'kbd'} = $style_map_pre_ref->{'code'};
-                $Texi2HTML::THISDOC{'kbdinputstyle'} = $1;
+                $Texi2HTML::THISDOC{$macro} = $1;
             }
             elsif ($1 ne 'distinct')
             {
@@ -4084,11 +4084,11 @@ sub misc_command_structure($$$$)
     {
         if ($line =~ /\s+([0-9]+)/)
         {
-            $Texi2HTML::THISDOC{'paragraphindent'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         elsif (($line =~ /\s+(none)[^\w\-]/) or ($line =~ /\s+(asis)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{'paragraphindent'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {
@@ -4099,7 +4099,7 @@ sub misc_command_structure($$$$)
     {
         if (($line =~ /\s+(none)[^\w\-]/) or ($line =~ /\s+(insert)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{'firstparagraphindent'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {
@@ -4110,11 +4110,22 @@ sub misc_command_structure($$$$)
     {
         if ($line =~ /^\s+([0-9]+)/)
         {
-            $Texi2HTML::THISDOC{'exampleindent'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         elsif ($line =~ /^\s+(asis)[^\w\-]/)
         {
-            $Texi2HTML::THISDOC{'exampleindent'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
+        }
+        else
+        {
+            echo_error ("Bad \@$macro", $line_nr);
+        }
+    }
+    elsif ($macro eq 'frenchspacing')
+    {
+        if (($line =~ /^\s+(on)[^\w\-]/) or ($line =~ /^\s+(off)[^\w\-]/))
+        {
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {
@@ -4125,7 +4136,7 @@ sub misc_command_structure($$$$)
     {
         if (($line =~ /^\s+(end)[^\w\-]/) or ($line =~ /^\s+(separate)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{'footnotestyle'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {
@@ -4141,7 +4152,7 @@ sub misc_command_structure($$$$)
             if ($line =~ /^\s+($possible_arg)[^\w\-]/)
             {   
                 $valid_arg = 1;
-                $Texi2HTML::THISDOC{'headings'} = $possible_arg;
+                $Texi2HTML::THISDOC{$macro} = $possible_arg;
                 last;
             }
         }
@@ -4155,7 +4166,7 @@ sub misc_command_structure($$$$)
         if (($line =~ /^\s+(on)[^\w\-]/) or ($line =~ /^\s+(off)[^\w\-]/)
                 or ($line =~ /^\s+(odd)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{'setchapternewpage'} = $1;
+            $Texi2HTML::THISDOC{$macro} = $1;
         }
         else
         {

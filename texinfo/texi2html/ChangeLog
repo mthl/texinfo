@@ -1,3 +1,8 @@
+2005-02-27  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init,texi2html.pl: handle @frenchspacing.
+	* Tests/formatting/comments.texi: test for @frenchspacing.
+
 2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* README,doc/texi2html.texi: update.

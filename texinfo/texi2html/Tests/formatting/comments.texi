@@ -82,6 +82,10 @@ and ignore things after a numerical arg
 @@footnotestyle @footnotestyle end 
 @@footnotestyle @footnotestyle separate 
 
+@c accepts on or off
+@@frenchspacing @frenchspacing on
+@@frenchspacing @frenchspacing off
+
 @ignore
 @@ @ on line following 
 @@ @ on line following 
