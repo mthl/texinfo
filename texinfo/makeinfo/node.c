@@ -1,7 +1,8 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.5 2002-11-05 03:04:26 karl Exp $
+   $Id: node.c,v 1.6 2003-01-18 17:16:17 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -483,7 +484,7 @@ set_current_output_filename (fname)
 /* The order is: nodename, nextnode, prevnode, upnode.
    If all of the NEXT, PREV, and UP fields are empty, they are defaulted.
    You must follow a node command which has those fields defaulted
-   with a sectioning command (e.g. @chapter) giving the "level" of that node.
+   with a sectioning command (e.g., @chapter) giving the "level" of that node.
    It is an error not to do so.
    The defaults come from the menu in this node's parent. */
 void
@@ -657,7 +658,7 @@ cm_node ()
               }
 
           line_error
-            (_("Node `%s' requires a sectioning command (e.g. %c%s)"),
+            (_("Node `%s' requires a sectioning command (e.g., %c%s)"),
              node, COMMAND_PREFIX, polite_section_name);
         }
       else
@@ -1281,7 +1282,7 @@ validate (tag, line, label)
   if (!result)
     {
       line_number = line;
-      line_error (_("%s reference to nonexistent node `%s'"), label, tag);
+      line_error (_("%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"), label, tag);
       return 0;
     }
   result->touched++;
@@ -1384,7 +1385,7 @@ validate_file (tag_table)
                 }
               if (you_lose)
                 {
-                  line_error (_("Next field of node `%s' not pointed to"),
+                  line_error (_("Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"),
                               tags->node);
                   file_line_error (temp_tag->filename, temp_tag->line_no,
 				   _("This node (%s) has the bad Prev"),
@@ -1458,7 +1459,7 @@ validate_file (tag_table)
       if (!tags->up
           && !(tags->flags & TAG_FLAG_ANCHOR)
           && strcasecmp (tags->node, "Top") != 0)
-        line_error (_("`%s' has no Up field"), tags->node);
+        line_error (_("`%s' has no Up field (perhaps incorrect sectioning?)"), tags->node);
       else if (tags->up)
         {
           int valid_p = validate (tags->up, tags->line_no, _("Up"));
