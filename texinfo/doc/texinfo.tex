@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2002-10-24.15}
+\def\texinfoversion{2002-10-28.09}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
@@ -159,24 +159,30 @@
 
 % Sometimes it is convenient to have everything in the transcript file
 % and nothing on the terminal.  We don't just call \tracingall here,
-% since that produces some useless output on the terminal.
+% since that produces some useless output on the terminal.  We also make
+% some effort to order the tracing commands to reduce output in the log
+% file; cf. trace.sty in LaTeX.
 %
 \def\gloggingall{\begingroup \globaldefs = 1 \loggingall \endgroup}%
-\ifx\eTeXversion\undefined
-\def\loggingall{\tracingcommands2 \tracingstats2
-   \tracingpages1 \tracingoutput1 \tracinglostchars1
-   \tracingmacros2 \tracingparagraphs1 \tracingrestores1
-   \showboxbreadth\maxdimen\showboxdepth\maxdimen
+\def\loggingall{%
+  \tracingstats2
+  \tracingpages1
+  \tracinglostchars2  % 2 gives us more in etex
+  \tracingparagraphs1
+  \tracingoutput1
+  \tracingmacros2
+  \tracingrestores1
+  \showboxbreadth\maxdimen \showboxdepth\maxdimen
+  \ifx\eTeXversion\undefined\else % etex gives us more logging
+    \tracingscantokens1
+    \tracingifs1
+    \tracinggroups1
+    \tracingnesting2
+    \tracingassigns1
+  \fi
+  \tracingcommands3  % 3 gives us more in etex
+  \errorcontextlines\maxdimen
 }%
-\else
-\def\loggingall{\tracingcommands3 \tracingstats2
-   \tracingpages1 \tracingoutput1 \tracinglostchars1
-   \tracingmacros2 \tracingparagraphs1 \tracingrestores1
-   \tracingscantokens1 \tracingassigns1 \tracingifs1
-   \tracinggroups1 \tracingnesting2
-   \showboxbreadth\maxdimen\showboxdepth\maxdimen
-}%
-\fi
 
 % add check for \lastpenalty to plain's definitions.  If the last thing
 % we did was a \nobreak, we don't want to insert more space.
