@@ -15071,14 +15071,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $ comment
-@cindex CVS $Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $, in Texinfo
-@cindex RCS $Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $, in Texinfo
-The @samp{$Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $ comment
+@cindex CVS $Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $, in Texinfo
+@cindex RCS $Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $, in Texinfo
+The @samp{$Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $
+$Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -15125,7 +15125,7 @@ Here is the sample document:
 
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.passfirst,v 1.3 2003-05-21 11:17:25 pertusus Exp $
+@@comment $Id: texinfo.passfirst,v 1.4 2003-06-16 14:41:25 pertusus Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi

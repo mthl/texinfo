@@ -293,7 +293,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.47 2003-05-20 16:39:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.48 2003-06-16 14:41:23 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -335,7 +335,6 @@ my $DEBUG_L2H   = 128;
 my $ERROR = "***";                 # prefix for errors
 my $WARN  = "**";                  # prefix for warnings
 
-my $FILERE = '[\/\w.+-]+';         # RE for a file name
 my $VARRE = '[^\s\{\}]+';          # RE for a variable name
 my $NODERE = '[^:]+';             # RE for node names
 
@@ -1803,7 +1802,7 @@ sub l2h_ToCache($$)
 #---###########################################################################
 
 my @fhs = ();			# hold the file handles to read
-my @input_spool = ();		# spooled lines to read
+my $input_spool;		# spooled lines to read
 my $fh_name = 'FH000';
 my @lines = ();             # whole document
 my @copying_lines = ();     # lines between @copying and @end copying
@@ -4251,8 +4250,10 @@ sub open_file($)
     ++$fh_name;
     no strict "refs";
     if (open($fh_name, $name))
-    {
-        unshift(@fhs, $fh_name);
+    { 
+        my $file = { 'fh' => $fh_name, 'input_spool' => [] };
+        unshift(@fhs, $file);
+        $input_spool = $file->{'input_spool'};
     }
     else
     {
@@ -4261,21 +4262,21 @@ sub open_file($)
     use strict "refs";
 }
 
-sub next_line
+sub next_line()
 {
-    my($fh, $line);
-
-    if (@input_spool)
-    {
-        $line = shift(@input_spool);
-        print STDERR "# unspooling $line" if ($T2H_DEBUG & $DEBUG_MACROS);
-        return($line);
-    }
     while (@fhs)
     {
-        $fh = $fhs[0];
+        my $file = $fhs[0];
+        $input_spool = $file->{'input_spool'};
+        if (@$input_spool)
+        {
+             my $line = shift(@$input_spool);
+             print STDERR "# unspooling $line" if ($T2H_DEBUG & $DEBUG_MACROS);
+             return($line);
+        }
+        my $fh = $file->{'fh'};
         no strict "refs";
-        $line = <$fh>;
+        my $line = <$fh>;
         use strict "refs";
         return($line) if $line;
         no strict "refs";
@@ -5060,8 +5061,11 @@ sub menu_description($$)
     my $menu_entry = $state->{'menu_entry'};
     my $node_texi = $menu_entry->{'node'};
 
-    #my $descr = substitute_text($substitution_state, $menu_entry->{'descr'});
-    # AAAA
+    unless ($state->{'preformatted'})
+    { 
+        $descr =~ s/^\s+//;
+        $descr =~ s/\s*$//;
+    }
     my $element = $nodes{$node_texi};
     if ($element->{'seen'})
     {
@@ -5069,12 +5073,6 @@ sub menu_description($$)
         {
             $element = $element->{'with_section'};
         }
-	# FXME put at AAAA
-    unless ($state->{'preformatted'})
-    { 
-        $descr =~ s/^\s+//;
-        $descr =~ s/\s*$//;
-    }
         if ($T2H_AVOID_MENU_REDUNDANCY && $descr && !$state->{'preformatted'})
         {
             my $clean_entry = $element->{'name'};
@@ -5315,7 +5313,7 @@ sub expand_macro($$;$)
     my $name = shift;
     my $args = shift;
     my $end_line = shift;
-    my $macrobody = $macros->{$name}->{Body};
+    my $macrobody = $macros->{$name}->{'Body'};
     my $formal_args = $macros->{$name}->{'Args'};
     my $args_index =  $macros->{$name}->{'Args_index'};
     my $i;
@@ -5353,31 +5351,26 @@ sub expand_macro($$;$)
         }
         $result .= $macrobody;
         last;
-    } 
-    my $end_of_line = chomp($result);
-    my @result = split(/\n/, $result);
+    }
+    my @result = split(/^/m, $result);
     my $last_line = pop @result;
-    if ($end_of_line)
+    if (defined($end_line))
     {
-        $last_line .= "\n";
+        $last_line .= $end_line;
     }
     else
     {
-        $last_line .= $end_line if (defined($end_line));
+        $last_line .= "\n";
     }
     unless (@result)
     {
-       if (defined($end_line) and $end_of_line)
-       {
-           unshift @input_spool, $end_line;
-       }
-       return $last_line;
+        print STDERR "# macro expansion result (one line):\n$last_line" 
+           if ($T2H_DEBUG & $DEBUG_MACROS);
+        return $last_line;
     }
-    @result = map {$_ = $_."\n"} @result;
     my $first_line = shift (@result);
     push @result, $last_line;
-    push @result, $end_line if (defined($end_line) and $end_of_line);
-    unshift @input_spool, @result;
+    unshift @$input_spool, @result;
     if ($T2H_DEBUG & $DEBUG_MACROS)
     {
         print STDERR "# macro expansion result:\n";
@@ -5583,6 +5576,7 @@ sub scan_texi($$$$)
             if (s/^(.*?)\@end\smacro$//o or s/^(.*?)\@end\smacro\s+//o)
             {
                  $state->{'macro'}->{'Body'} .= $1 if defined($1) ;
+                 chomp $state->{'macro'}->{'Body'};
                  print STDERR "# end macro def. Body:\n$state->{'macro'}->{'Body'}"
                      if ($T2H_DEBUG & $DEBUG_MACROS);
                  delete $state->{'macro'};
@@ -5856,7 +5850,8 @@ sub scan_texi($$$$)
             }
             elsif ($macro eq 'include')
             {
-                if (s/^\s+($FILERE)//o)
+		    #if (s/^\s+([\/\w.+-]+)//o)
+                if (s/^\s+(.*)//o)
                 {
                     my $file = LocateIncludeFile($1);
                     if ($file && -e $file)
@@ -5873,8 +5868,9 @@ sub scan_texi($$$$)
                 {
                     warn "$ERROR Bad include line: $_";
                     return;
-                }
-                return if (/^\s*$/);
+                } # makeinfo remove the @include but not the end of line
+                # FIXME verify if it is right
+		#return if (/^\s*$/);
             }
             elsif ($macro eq 'unmacro')
             {
@@ -5892,11 +5888,11 @@ sub scan_texi($$$$)
                     $state->{'macro_depth'} = 1;
                 }
                 elsif ($#$ref >= 1)
-                {
+                { # no arg
                     $_ = expand_macro ($macro, [], $_);
                 }
                 else
-                {
+                { # macro with one arg on the line
                     chomp $_;
                     $_ = expand_macro ($macro, [$_]);
                 }
@@ -6074,6 +6070,7 @@ sub scan_structure($$$$)
         # there should be nothing else than a command following @itemize...
         #
         # see more examples in formatting directory
+
         if ($state->{'raw'} or $state->{'special'}) 
         {
             my $tag = $state->{'raw'};
@@ -6089,20 +6086,21 @@ sub scan_structure($$$$)
             {
                 add_prev ($text, $stack, $1);
                 my $style = pop @$stack;
-                if ($style->{'text'} !~ /^\s*$/)
+                if ($state->{'special'})
                 {
-                    if ($state->{'special'})
+                    delete $state->{'special'};
+                    if ($style->{'text'} !~ /^\s*$/)
                     {
-                        delete $state->{'special'};
                         add_prev ($text, $stack, do_special($style->{'style'}, $style->{'text'}));
                     }
-                    else
-                    {
-                        my $after_macro = '';
-                        $after_macro = ' ' unless (/^\s*$/);
-                        add_prev ($text, $stack, $style->{'text'} . "\@end $state->{'raw'}" . $after_macro);
-                        delete $state->{'raw'};
-                    }
+                    
+                }
+                else
+                {
+                    my $after_macro = '';
+                    $after_macro = ' ' unless (/^\s*$/);
+                    add_prev ($text, $stack, $style->{'text'} . "\@end $state->{'raw'}" . $after_macro);
+                    delete $state->{'raw'};
                 }
                 unless (no_line($_))
                 {
@@ -6172,7 +6170,7 @@ sub scan_structure($$$$)
             elsif ($text_macros{$end_tag})
             {
                 warn "$ERROR \@end $end_tag without corresponding element\n";
-                dump_stack($text, $stack, $state);
+                #dump_stack($text, $stack, $state);
             }
             else
             {
@@ -7967,16 +7965,22 @@ sub substitute_text($@)
 
 sub substitute_texi_line($)
 {
-    my $text = shift;
-    my @result = substitute_text({'structure' => 1}, $text);
+    my $text = shift;  
+    my @text = substitute_text({'structure' => 1}, $text);
+    my @result = ();
+    while (@text)
+    {
+        push @result,  split (/\n/, shift (@text));
+    }
     return '' unless (@result);
     my $result = shift @result;
+    return $result . "\n" unless (@result);
     foreach my $line (@result)
     {
         chomp $line;
         $result .= ' ' . $line;
     }
-    return $result;
+    return $result . "\n";
 }
 
 sub t2h_print_lines($;$)

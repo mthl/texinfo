@@ -1,3 +1,4 @@
+
 @dircategory Texinfo documentation system
 * Texi2html: (texi2html).  Texinfo to HTML Converter.
 This file documents the texi2html script which converts
@@ -218,6 +219,7 @@ Test starting.
 Take a look at optionexpand.
 
 @node CustomizingPage, CustHTML, CustomizingExpand, Top
+
 @chapter Customizing page layout
 This chapter is designed to help you to change the
 complete layout of the @acronym{HTML} output if you like to
@@ -334,6 +336,7 @@ EOT
 
 Page Foot @code{T2H_DEFAULT_print_page_foot}
 @node CustHTML, InitFile, CustomizingPage, Top
+
 @chapter Customizing HTML
 If you like to read the following section, it is assumed
 you are famillar with @acronym{HTML}. If not, you shouldn't
@@ -412,6 +415,7 @@ Detailed information can be found at
 @ref{CustPagePageHead}.
 
 @example
+
 <HTML>
 $T2H_DOCTYPE
 <!-- Created on $T2H_TODAY by $THISPROG -->
@@ -436,6 +440,7 @@ $T2H_AFTER_BODY_OPEN
 @node CustHTMLHead,,CustHTMLAfterBody,CustHTML
 @section Head
 @node InitFile, IFOs, CustHTML, Top
+
 @chapter Initialization file
 @cindex configure
 @cindex texi2html.init
@@ -490,6 +495,7 @@ For an example on what you can produces with
 @option{-init_file}
 
 @node IFOs, Options, InitFile, Top
+
 @section Initialization file options
 This section describes in detail all options that can be used
 only in the initialization file (@file{texi2html.init}),
@@ -597,6 +603,7 @@ to this file  (i.e., to @file{index.html}) by @file{./}
 
 $T2H_HREF_DIR_INSTEAD_FILE = "";
 @node Options, Reference, IFOs, Top
+
 @chapter Command Line Options
 
 @menu
@@ -977,6 +984,7 @@ If set, l2h uses this directory for temporary files.  The
 path leading to this directory may not contain a dot (i.e.,
 a @samp{.}); otherwise, l2h will fail.
 @node Reference, Indexop, Options, Top
+
 @appendix Function Reference
 
 @menu

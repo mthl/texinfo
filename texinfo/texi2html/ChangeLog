@@ -1,3 +1,12 @@
+2003-06-16  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: @include replaced by an empty line
+	no end of line after last line when expanding macros
+	include of files within lines expanded from macros happen
+	at the right place
+	better handling of format command in section names and of empty 
+	raw formats (like @html@end html)
+	* Tests/*: sync with code
+	
 2003-05-20  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: split pass_texi in 2 pass. pass_texi
 	rearranges texi expanding macros and values, removing comments.

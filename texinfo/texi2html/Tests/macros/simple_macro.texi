@@ -30,8 +30,7 @@ the @macro1 { @samp{f\irst arg}, second arg } after macro
 
 -----------------------------------
 
-the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg }
-after macro
+the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg } after macro
 
 ====================================
 
@@ -59,8 +58,7 @@ Calling (no args)
 
 -----------------------------------
 
-result: @emph{} protected \ -> \arg1\ @emph{} 
-@samp{f\irst arg}, second arg
+result: @emph{} protected \ -> \arg1\ @emph{} @samp{f\irst arg}, second arg
 
 ====================================
 

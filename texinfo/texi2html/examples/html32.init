@@ -18,27 +18,29 @@ $things_map{'OE'} = '&#140;';
 
 # an eval of these $complex_format_map->{what}->{'begin'} yields beginning
 # an eval of these $complex_format_map->{what}->{'end'} yields end
+
+# no style in html 3.2
 $complex_format_map =
 {
- example =>
+ 'example' =>
  {
   'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
   'pre_style' => ''
  },
- smallexample =>
+ 'smallexample' =>
  {
   'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2H_SMALL_FONT_SIZE\">"},
   'end' => q{'</font></td></tr></table>'},
   'pre_style' => ''
  },
- display =>
+ 'display' =>
  {
   'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
   'pre_style' => ''
  },
- smalldisplay =>
+ 'smalldisplay' =>
  {
   'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2h_SMALL_FONT_SIZE\">"},
   'end' => q{'</font></td></tr></table>'},
@@ -46,16 +48,17 @@ $complex_format_map =
  }
 };
 
-$complex_format_map->{lisp} = $complex_format_map->{example};
-$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
-$complex_format_map->{format} = $complex_format_map->{display};
-$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
+$complex_format_map->{'lisp'} = $complex_format_map->{'example'};
+$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
+$complex_format_map->{'format'} = $complex_format_map->{'display'};
+$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
 
 # formatting functions
 
 $t2h_summary_letter    = \&t2h_html32_summary_letter;
 $t2h_protect_html      = \&t2h_html32_protect_html;
 
+# &quot; is not in html 3.2
 sub t2h_html32_protect_html($)
 {
     my $what = shift;
@@ -71,6 +74,7 @@ sub t2h_html32_protect_html($)
     return($what);
 }
 
+# no style
 sub t2h_html32_summary_letter($$$)
 {
     my $letter = shift;

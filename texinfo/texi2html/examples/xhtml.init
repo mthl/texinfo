@@ -114,31 +114,13 @@ $simple_map{'*'} = '<br/>';
 
 $things_map{'br'} = '<br/>';
 
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-$complex_format_map->{'smallexample'} = 
- {
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\">"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => 'style="font-size: smaller"'
- };
-$complex_format_map->{'smalldisplay'} =
- {
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\">"},
-  'end' => q{'</td></tr></table>'},
-  'pre_style' => 'style="font-family: serif ; font-size: smaller"'
- };
-
-$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
-$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
-
 # formatting functions
 
 $t2h_def_line	       = \&t2h_xhtml_def_line;
 $t2h_index_summary     = \&t2h_xhtml_index_summary;
 $t2h_image             = \&t2h_xhtml_image;
 
-# / in <img>
+# need / in <img>
 sub t2h_xhtml_image($$$)
 {
     my $image = shift;
@@ -206,8 +188,6 @@ sub t2h_xhtml_def_line($$$)
         }
         else
         {
-            #FIXME <u> is deprecated in xhtml 1.1
-            #use <span style="text-description: underline"> ?
             $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
             $result .= substitute_line($line);
         }
@@ -242,7 +222,7 @@ sub t2h_xhtml_def_line($$$)
     return $result;
 }
 
-# There is a br 
+# There is a br which needs / 
 sub t2h_xhtml_index_summary($$)
 {
     my $alphabetical_letters = shift;

@@ -2489,6 +2489,7 @@ To change the string of the specified menu item, use
 @code{relabel-menu-item}. This function also takes the argument @var{path}.
 
 @var{new-name} is the string to which the menu item will be changed.
+
 @node Entering Emacs, Exiting, Pull-down Menus, Top
 @chapter Entering and Exiting Emacs
 @cindex entering XEmacs
@@ -2953,6 +2954,7 @@ the resource manager name.
 Read something into the resource database for this invocation of Emacs only.
 
 @end table
+
 @node Startup Paths, Packages, Command Switches, Top
 @section How XEmacs finds Directories and Files
 
@@ -10187,6 +10189,7 @@ will be two windows side-by-side.
 Readjust the sizes of all windows on the frame until all windows have
 roughly the same number of lines.
 @end table
+
 @node Mule, Major Modes, Windows, Top
 @chapter World Scripts Support
 @cindex MULE
@@ -14887,6 +14890,7 @@ programs to be run in Emacs): in both modes it has the effect of installing
 the function definition that point is in, but the way of doing so is
 different according to where the relevant Lisp environment is found.
 @xref{Lisp Modes}.
+
 @node Packages, Basic, Startup Paths, Top
 
 @section Packages
@@ -16835,6 +16839,7 @@ converting Babyl folders to standard Unix-mail format; however, unless
 you already have mail in Babyl-format folders, you should consider
 using VM or mh-e instead. (If at times you have to use FSF Emacs, it
 is not hard to obtain and install VM for that editor.)
+
 @node Calendar/Diary, Sorting, Reading Mail, Top
 @section Calendar Mode and the Diary
 @cindex calendar
