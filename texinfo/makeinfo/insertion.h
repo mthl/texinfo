@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.7 2003-11-18 22:20:58 karl Exp $
+   $Id: insertion.h,v 1.8 2003-11-21 07:30:52 dirt Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -30,9 +30,9 @@ enum insertion_type
   example, flushleft, flushright, format, ftable, group, ifclear,
   ifdocbook, ifhtml, ifinfo, ifnotdocbook, ifnothtml, ifnotinfo,
   ifnotplaintext, ifnottex, ifnotxml, ifplaintext, ifset, iftex, ifxml,
-  itemize, lisp, menu, multitable, quotation, rawhtml, rawtex,
-  smalldisplay, smallexample, smallformat, smalllisp, verbatim, table,
-  tex, vtable, titlepage, bad_type
+  itemize, lisp, menu, multitable, quotation, rawdocbook, rawhtml, rawtex,
+  rawxml, smalldisplay, smallexample, smallformat, smalllisp, verbatim,
+  table, tex, vtable, titlepage, bad_type
 };
 
 typedef struct istack_elt

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.41 2003-11-21 05:37:45 dirt Exp $
+   $Id: insertion.c,v 1.42 2003-11-21 07:30:52 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -38,9 +38,9 @@ static char *insertion_type_names[] =
   "group", "ifclear", "ifdocbook", "ifhtml", "ifinfo", "ifnotdocbook",
   "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex", "ifnotxml",
   "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp", "menu",
-  "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
-  "smallexample", "smallformat", "smalllisp", "verbatim", "table",
-  "tex", "vtable", "titlepage", "bad_type"
+  "multitable", "quotation", "rawdocbook", "rawhtml", "rawtex","rawxml", 
+  "smalldisplay", "smallexample", "smallformat", "smalllisp", "verbatim",
+  "table", "tex", "vtable", "titlepage", "bad_type"
 };
 
 /* All nested environments.  */
@@ -107,7 +107,9 @@ current_item_function ()
         case ifset:
         case iftex:
 	case ifxml:
+        case rawdocbook:
         case rawhtml:
+        case rawxml:
         case rawtex:
         case tex:
         case cartouche:
@@ -210,7 +212,18 @@ insertion_type_pname (type)
      enum insertion_type type;
 {
   if ((int) type < (int) bad_type)
-    return insertion_type_names[(int) type];
+  {
+    if (type == rawdocbook)
+      return "docbook";
+    else if (type == rawhtml)
+      return "html";
+    else if (type == rawxml)
+      return "xml";
+    else if (type == rawtex)
+      return "tex";
+    else
+      return insertion_type_names[(int) type];
+  }
   else
     return _("Broken-Type in insertion_type_pname");
 }
@@ -226,12 +239,12 @@ find_type_from_name (name)
     {
       if (STREQ (name, insertion_type_names[index]))
         return (enum insertion_type) index;
+      if (index == rawdocbook && STREQ (name, "docbook"))
+        return rawdocbook;
       if (index == rawhtml && STREQ (name, "html"))
         return rawhtml;
-      if (index == rawhtml && STREQ (name, "xml"))
-        return rawhtml;
-      if (index == rawhtml && STREQ (name, "docbook"))
-        return rawhtml;
+      if (index == rawxml && STREQ (name, "xml"))
+        return rawxml;
       if (index == rawtex && STREQ (name, "tex"))
         return rawtex;
       index++;
@@ -690,7 +703,9 @@ begin_insertion (type)
         no_discard++;
       break;
 
+    case rawdocbook:
     case rawhtml:
+    case rawxml:
       escape_html = 0;
       break;
 
@@ -866,7 +881,9 @@ end_insertion (type)
       inside_titlepage_cmd = 0;
       break;
 
+    case rawdocbook:
     case rawhtml:
+    case rawxml:
       escape_html = 1;
       break;
 
@@ -1032,7 +1049,9 @@ discard_insertions (specials_ok)
       if (specials_ok
           && ((ifclear <= insertion_stack->insertion
                && insertion_stack->insertion <= iftex)
+              || insertion_stack->insertion == rawdocbook
               || insertion_stack->insertion == rawhtml
+              || insertion_stack->insertion == rawxml
               || insertion_stack->insertion == rawtex))
         break;
       else
@@ -1402,7 +1421,7 @@ void
 cm_xml (arg)
 {
   if (process_xml)
-    begin_insertion (rawhtml);
+    begin_insertion (rawxml);
   else
     command_name_condition ();
 }
@@ -1411,7 +1430,7 @@ void
 cm_docbook (arg)
 {
   if (process_docbook)
-    begin_insertion (rawhtml);
+    begin_insertion (rawdocbook);
   else
     command_name_condition ();
 }
@@ -1672,7 +1691,9 @@ cm_item ()
         case ifset:
         case iftex:
 	case ifxml:
+        case rawdocbook:
         case rawhtml:
+        case rawxml:
         case rawtex:
         case tex:
         case cartouche:

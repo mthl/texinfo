@@ -1,5 +1,15 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.h:
+	* makeinfo/insertion.c: new rawdocbook and rawxml insertion types to
+	provide better block names in error messages (instead of "rawhtml" for
+	everything.)
+	(current_item_function, insertion_type_pname, find_type_from_name)
+	(begin_insertion, end_insertion, discard_insertions, cm_docbook)
+	(cm_xml, cm_item): honor new types.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_image): issue only a warning instead of an
 	error when .txt file is unreadable, to better comply with the manual.
 
