@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.35 2003-11-10 17:04:09 dirt Exp $
+   $Id: insertion.c,v 1.36 2003-11-11 04:12:17 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1118,9 +1118,7 @@ cm_insert_copying (docbook_dont_fix_tags)
          full expansion on copying_text when we saved it.  */
       insert_string (copying_text);
       if (docbook && !docbook_dont_fix_tags)
-	insert_string ("</para></abstract>");
-      else if (xml && !docbook_dont_fix_tags)
-	insert_string ("</para>");
+        insert_string ("</para></abstract>");
       insert ('\n');
       
       /* Update output_position so that the node positions in the tag

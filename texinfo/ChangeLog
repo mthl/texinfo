@@ -1,5 +1,15 @@
 2003-11-11  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_i, cm_b, cm_r): do not use lineannotation if we
+	are printing indices.
+
+	* makeinfo/insertion.c (cm_insert_copying): removed unnecessary xml
+	fix.
+
+	* makeinfo/texinfo.dtd: added OElig and oelig entities.
+
+2003-11-11  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c (cm_sp): disabled parameter expansion.
 
 2003-11-10  Alper Ersoy  <dirt@gtk.org>

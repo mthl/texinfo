@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.29 2003-11-11 02:08:48 dirt Exp $
+   $Id: cmds.c,v 1.30 2003-11-11 04:12:17 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -930,7 +930,8 @@ cm_i (arg)
 {
   /* Make use of <lineannotation> of Docbook, if we are
      inside an @example or similar.  */
-  if (docbook && !filling_enabled)
+  extern int printing_index;
+  if (docbook && !filling_enabled && !printing_index)
     xml_insert_element (LINEANNOTATION, arg);
   else if (xml)
     xml_insert_element (I, arg);
@@ -945,7 +946,8 @@ cm_b (arg)
      int arg;
 {
   /* See cm_i comments.  */
-  if (docbook && !filling_enabled)
+  extern int printing_index;
+  if (docbook && !filling_enabled && !printing_index)
     xml_insert_element (LINEANNOTATION, arg);
   else if (docbook && arg == START)
     xml_insert_element_with_attribute (B, arg, "role=\"bold\"");
@@ -962,7 +964,8 @@ cm_r (arg)
      int arg;
 {
   /* See cm_i comments.  */
-  if (docbook && !filling_enabled)
+  extern int printing_index;
+  if (docbook && !filling_enabled && !printing_index)
     xml_insert_element (LINEANNOTATION, arg);
   else if (xml)
     xml_insert_element (R, arg);
