@@ -1,3 +1,36 @@
+2003-10-08  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\onepageout): At the beginning of \shipout, call
+	    \pdfdest directly, not via \pdfmkdest.
+	  (\pdfmkdest): Call also \atdummies before \pdfdest.
+	  (\donoderef): Remove the unsuccessful attempt to expand \lastnode
+	    before passing it to \setref (it only expanded `{' twice);
+	    things would screw up if \lastnode was expanded too much.
+	  (\setref): Rewritten, don't call \atdummies, don't expand
+	    \thissection.
+	  (\dosetq, \internalsetq, \Ypagenumber, \Ytitle): Nuked.
+	  (\chfplain): Remove referrence to \Ytitle from a comment.
+
+2003-10-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: spurious space and comment (from Stepan).
+
+	* NEWS: automake 1.7.8.
+	* util/dir-example: include netpbm.
+
+2003-10-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\defbf, shortcontbf): use \bfshape instead of
+	\bxshape, so we use cmb consistently instead of cmbx.
+
+	* doc/texinfo.txi: more index entries for em/en dashes, fix
+		capitalizations of cindex entries.
+
+2003-10-07  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\defname): Don't use \ifempty.
+	  (\ifempty): Nuke.
+
 2003-10-06  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\dosubind, \doind): Cleanup, move code ...
