@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
+@c $Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1051,10 +1051,9 @@ sentences:
 
 @itemize @bullet
 @item
-Write a command such as @code{@@noindent} at the beginning of a line as
-the only text on the line.  (@code{@@noindent} prevents the beginning of
-the next line from being indented as the beginning of a
-paragraph.)@refill
+Write a command such as @code{@@quotation} at the beginning of a line as
+the only text on the line.  (@code{@@quotation} begins an indented
+environment.)
 
 @item
 Write a command such as @code{@@chapter} at the beginning of a line
@@ -1134,9 +1133,8 @@ shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
 
 @item
-To prevent a paragraph from being indented in the printed manual, put
-the command @code{@@noindent} on a line by itself before the
-paragraph.
+To prevent a paragraph from being indented in the printed manual, precede
+the paragraph with the command @code{@@noindent}
 
 @item
 If you mark off a region of the Texinfo file with the @code{@@iftex}
@@ -2987,7 +2985,7 @@ It inserts the text previously defined by @code{@@copying}.  Legally, it
 must be used on the copyright page in the printed manual
 (@pxref{Copyright}).
 
-Although it's not a legal requirement, we also strongly recommend using
+Although it is not a legal requirement, we also strongly recommend using
 @code{@@insertcopying} in the Top node of your manual (@pxref{The Top
 Node}).  Here's why:
 
@@ -7949,9 +7947,15 @@ left end ragged.
 
 An example or other inclusion can break a paragraph into segments.
 Ordinarily, the formatters indent text that follows an example as a new
-paragraph.  However, you can prevent this by writing @code{@@noindent}
-at the beginning of a line by itself preceding the continuation
-text.@refill
+paragraph.  You can prevent this on a case-by-case basis by writing
+@code{@@noindent} at the beginning of a line, preceding the continuation
+text.  You can also disable indentation for all paragraphs globally with
+@code{@@paragraphindent} (@pxref{paragraphindent, Paragraph Indenting}).
+
+It is best to write @code{@@noindent} on a line by itself, since in most
+environments, spaces following the command will not be ignored.  It's ok
+to use it at the beginning of a line, with text following, outside of
+any environment.
 
 @need 1500
 For example:
@@ -7970,35 +7974,32 @@ that follows after it.  (This whole example is between
 @end group
 @end example
 
-@noindent
-produces
+@noindent produces:
 
 @display
+
 @example
 This is an example
 @end example
-@tex
-% Remove extra vskip; this is a kludge to counter the effect of display
-\vskip-3.5\baselineskip
-@end tex
 
 @noindent
 This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
 @code{@@display} and @code{@@end display}.)
+
 @end display
 
 To adjust the number of blank lines properly in the Info file output,
 remember that the line containing @code{@@noindent} does not generate a
-blank line, and neither does the @code{@@end example} line.@refill
+blank line, and neither does the @code{@@end example} line.
 
 In the Texinfo source file for this manual, each line that says
-`produces' is preceded by a line containing @code{@@noindent}.@refill
+`produces' is preceded by @code{@@noindent}.
 
 Do not put braces after an @code{@@noindent} command; they are not
 necessary, since @code{@@noindent} is a command used outside of
-paragraphs (@pxref{Command Syntax}).@refill
+paragraphs (@pxref{Command Syntax}).
 
 
 @node cartouche
@@ -14870,21 +14871,28 @@ If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
 @code{@@direntry} commands will add to that category.  
 
-Here are some recommended @code{@@dircategory} categories:
+@cindex Free Software Directory
+@cindex Dir categories, choosing
+@cindex Categories, choosing
+When choosing the @code{@@dircategory} categories, please consult
+the @uref{Free Sofware Directory, http://www.gnu.org/directory}.  If
+your program is not listed there, or listed incorrectly, please report
+that to the directory maintainers (@email{bug-directory@@gnu.org}) so
+that things can be kept in sync.
 
+Here are a few examples:
 @display
-GNU packages
-GNU programming tools
-GNU programming documentation
-GNU Emacs Lisp
-GNU libraries
-TeX
-Individual utilities
+Emacs
+Localization
+Printing
+Software Libraries
 @end display
 
-The idea is to include the `Invoking' node for every program installed
-by a package under `Individual utilities', and an entry for the manual
-as a whole in the appropriate other category.
+@cindex Invoking nodes, including in dir file
+Each `Invoking' node for every program installed should have a
+corresponding @code{@@direntry}.  This lets users easily find the
+documentation for the different programs they can run, as with the
+traditional @command{man} system.
 
 
 @node Invoking install-info
@@ -16604,6 +16612,7 @@ Copyright (C) 2002 Free Software Foundation, Inc.
 
 @@ifnottex
 @@node Top
+@@top GNU Sample
 
 @@insertcopying
 @@end ifnottex
@@ -16650,8 +16659,8 @@ This is the second item.
 @cindex Sample texts, GNU
 @cindex Full texts, GNU
 
-Here is a sample Texinfo document with the full texts that should be
-used in GNU manuals.
+Following is a sample Texinfo document with the full texts that should
+be used in GNU manuals.
 
 As well as the legal texts, it also serves as a practical example of how
 many elements in a GNU system can affect the manual.  If you're not
@@ -16668,14 +16677,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id:
+@cindex CVS $Id:
+@cindex RCS $Id: 
+The @samp{$Id:} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
+$Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16733,7 +16742,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.5 2002-10-04 15:36:13 karl Exp $
+@@comment $Id: texinfo.txi,v 1.6 2002-10-09 21:53:09 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
