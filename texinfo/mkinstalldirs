@@ -26,7 +26,9 @@ while test $# -gt 0 ; do
   esac
 done
 
-for file in "$@"; do
+# no `for var; do', it breaks on Solaris 2.7 (at least).
+for file
+do
   if test -d "$file"; then
     shift
   else
@@ -51,12 +53,14 @@ case $dirmode in
     fi ;;
 esac
 
-for file in "$@"; do
+for file
+do
   set fnord `echo ":$file" | sed -ne 's/^:\//#/;s/^://;s/\// /g;s/^#/\//;p'`
   shift
 
   pathcomp=
-  for d in "$@"; do
+  for d
+  do
     pathcomp="$pathcomp$d"
     case "$pathcomp" in
       -*) pathcomp=./$pathcomp ;;
