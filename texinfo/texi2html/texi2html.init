@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.69 2004-02-07 00:49:28 pertusus Exp $
+# $Id: texi2html.init,v 1.70 2004-02-11 09:13:34 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -537,7 +537,7 @@ sub t2h_default_init_out()
     my $to_encoding;
     if (defined($ENCODING))
     {
-        $to_encoding = set_encoding ($ENCODING);
+        $to_encoding = main::set_encoding ($ENCODING);
         
         if (defined($to_encoding) and defined($perl_charset_to_html{$to_encoding}))
         {# FIXME is this really right ?

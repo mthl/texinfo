@@ -13,7 +13,7 @@ TEXINFO_TEX = doc/texinfo.tex
 bin_PROGRAMS = texi2html
 
 texi2html_SOURCES = texi2html.pl MySimple.pm translations.pl texi2html.init \
-    T2h_i18n.pm T2h_unicode.pm T2h_nounicode.pm
+    T2h_i18n.pm 
 noinst_SCRIPTS = manage_i18n.pl
 
 man_MANS = texi2html.1
@@ -116,9 +116,7 @@ texi2html: \
 	$(srcdir)/MySimple.pm \
 	$(srcdir)/T2h_i18n.pm \
 	$(srcdir)/texi2html.init \
-	$(srcdir)/texi2html.pl \
-    $(srcdir)/T2h_nounicode.pm \
-    $(srcdir)/T2h_unicode.pm
+	$(srcdir)/texi2html.pl 
 
 
 

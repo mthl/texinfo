@@ -1,5 +1,11 @@
 2004-02-10  Patrice Dumas  <dumas@centre-cired.fr> 
 
+	* texi2html.pl: put the code related with cross references in the 
+	main namespace.
+	* Makefile.am: remove T2h_unicode.pm, T2h_nounicode.pm.
+
+2004-02-10  Patrice Dumas  <dumas@centre-cired.fr> 
+
 	* texi2html.pl: put cross manual reference and unicode related
 	functions in the main program (instead of T2h_unicode.pm,
 	T2h_nounicode.pm).

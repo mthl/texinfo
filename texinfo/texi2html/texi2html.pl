@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.105 2004-02-10 00:12:42 pertusus Exp $
+# $Id: texi2html.pl,v 1.106 2004-02-11 09:13:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -725,76 +725,6 @@ sub t2h_nounicode_cross_manual_accent($$)
     return ascii_accents($text, $accent);
 }
 
-sub t2h_unicode_to_protected($)
-{
-   my $text = shift;
-   my $result = '';
-   while ($text ne '')
-   {
-        if ($text =~ s/^([A-Za-z0-9_\-]+)//o)
-        {
-             $result .= $1;
-        }
-        elsif ($text =~ s/^(.)//o)
-        {
-             $result .= '_' . lc(sprintf("%04x",ord($1)));
-        }
-        else
-        {
-             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
-             sleep 1;
-        }    
-   }
-   
-   return $result;
-}
-
-sub t2h_cross_manual_line($)
-{
-    my $text = shift;
-    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
-    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
-    $main::texi_map_ref = \%cross_ref_texi_map;
-    my $normal_text_kept = $normal_text;
-    $normal_text = \&t2h_cross_manual_normal_text;
-    
-    my $cross_ref;
-    if ($USE_UNICODE)
-    {
-         $cross_ref = t2h_unicode_to_protected(Unicode::Normalize::NFC(main::remove_texi($text)));
-    }
-    else
-    {
-         $cross_ref = main::remove_texi($text);
-    }
-
-    $normal_text = $normal_text_kept;
-    $main::simple_map_texi_ref = \%simple_map_texi;
-    $main::style_map_texi_ref = \%style_map_texi;
-    $main::texi_map_ref = \%texi_map;
-    return $cross_ref;
-}
-
-sub set_encoding($)
-{
-    my $encoding = shift;
-    if ($USE_UNICODE)
-    {
-         if (! Encode::resolve_alias($encoding))
-         {
-              main::echo_warn("Encoding $DOCUMENT_ENCODING unknown");
-              return undef;
-         }
-         print STDERR "# Using encoding " . Encode::resolve_alias($encoding) . "\n"
-             if ($VERBOSE);
-         return Encode::resolve_alias($encoding); 
-    }
-    else
-    {
-         main::echo_warn("Nothing specific done for encodings (due to the perl version)");
-         return undef;
-    }
-}
 
 foreach my $key (keys(%unicode_map))
 {
@@ -825,72 +755,6 @@ foreach my $key (keys(%cross_ref_style_map_texi))
              $cross_ref_style_map_texi{$key}->{'function'} = \&t2h_nounicode_cross_manual_accent;
         }
     }
-}
-
-# This function is used to construct a link name from a node name as 
-# described in the proposal I posted on texinfo-pretest.
-sub t2h_cross_manual_links($$)
-{
-    my $nodes_hash = shift;
-    my $cross_reference_hash = shift;
-
-    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
-    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
-    $main::texi_map_ref = \%cross_ref_texi_map;
-    my $normal_text_kept = $normal_text;
-    $normal_text = \&t2h_cross_manual_normal_text;
-
-    foreach my $key (keys(%$nodes_hash))
-    {
-        my $node = $nodes_hash->{$key};
-        next if ($node->{'index_page'});
-        if (!defined($node->{'texi'}))
-        {
-            # begin debug section 
-            foreach my $key (keys(%$node))
-            {
-                #print STDERR "$key:$node->{$key}!!!\n";
-            }
-            # end debug section 
-        }
-        else 
-        {
-            if ($USE_UNICODE)
-            {
-                 my $text = $node->{'texi'};
-#print STDERR "CROSS_MANUAL $node->{'texi'}\n";
-                 if (defined($DOCUMENT_ENCODING) and 
-                      Encode::resolve_alias($DOCUMENT_ENCODING) and
-                      (Encode::resolve_alias($DOCUMENT_ENCODING) ne 'utf8'))
-                 {
-                      $text = Encode::decode($DOCUMENT_ENCODING, $text);
-                 }
-                 $node->{'cross_manual_target'} = t2h_unicode_to_protected(Unicode::Normalize::NFC(main::remove_texi($text)));
-            }
-            else
-            {
-                 $node->{'cross_manual_target'} = main::remove_texi($node->{'texi'});
-            }
-#print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
-            unless ($node->{'external_node'})
-            {
-                if (defined($cross_reference_hash->{$node->{'cross_manual_target'}}))
-                {
-                    main::echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_hash->{$node->{'cross_manual_target'}}'");
-                }
-                else 
-                {
-                    $cross_reference_hash->{$node->{'cross_manual_target'}} = $node->{'texi'};
-                }
-            }
-            #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
-        }
-    }
-
-    $normal_text = $normal_text_kept;
-    $main::simple_map_texi_ref = \%simple_map_texi;
-    $main::style_map_texi_ref = \%style_map_texi;
-    $main::texi_map_ref = \%texi_map;
 }
 
 $USE_UNICODE = '@USE_UNICODE@';
@@ -1462,6 +1326,143 @@ sub set_expansion($$)
     }
 }
 	 
+sub set_encoding($)
+{
+    my $encoding = shift;
+    if ($Texi2HTML::Config::USE_UNICODE)
+    {
+         if (! Encode::resolve_alias($encoding))
+         {
+              echo_warn("Encoding $Texi2HTML::Config::DOCUMENT_ENCODING unknown");
+              return undef;
+         }
+         print STDERR "# Using encoding " . Encode::resolve_alias($encoding) . "\n"
+             if ($T2H_VERBOSE);
+         return Encode::resolve_alias($encoding); 
+    }
+    else
+    {
+         echo_warn("Nothing specific done for encodings (due to the perl version)");
+         return undef;
+    }
+}
+
+# This function is used to construct a link name from a node name as 
+# described in the proposal I posted on texinfo-pretest.
+sub cross_manual_links($$)
+{
+    my $nodes_hash = shift;
+    my $cross_reference_hash = shift;
+
+    $simple_map_texi_ref = \%Texi2HTML::Config::cross_ref_simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::cross_ref_style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::cross_ref_texi_map;
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
+    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+
+    foreach my $key (keys(%$nodes_hash))
+    {
+        my $node = $nodes_hash->{$key};
+        next if ($node->{'index_page'});
+        if (!defined($node->{'texi'}))
+        {
+            # begin debug section 
+            foreach my $key (keys(%$node))
+            {
+                #print STDERR "$key:$node->{$key}!!!\n";
+            }
+            # end debug section 
+        }
+        else 
+        {
+            if ($Texi2HTML::Config::USE_UNICODE)
+            {
+                 my $text = $node->{'texi'};
+#print STDERR "CROSS_MANUAL $node->{'texi'}\n";
+                 if (defined($Texi2HTML::Config::DOCUMENT_ENCODING) and 
+                      Encode::resolve_alias($Texi2HTML::Config::DOCUMENT_ENCODING) and
+                      (Encode::resolve_alias($Texi2HTML::Config::DOCUMENT_ENCODING) ne 'utf8'))
+                 {
+                      $text = Encode::decode($Texi2HTML::Config::DOCUMENT_ENCODING, $text);
+                 }
+                 $node->{'cross_manual_target'} = unicode_to_protected(Unicode::Normalize::NFC(remove_texi($text)));
+            }
+            else
+            {
+                 $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
+            }
+#print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
+            unless ($node->{'external_node'})
+            {
+                if (defined($cross_reference_hash->{$node->{'cross_manual_target'}}))
+                {
+                    echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_hash->{$node->{'cross_manual_target'}}'");
+                }
+                else 
+                {
+                    $cross_reference_hash->{$node->{'cross_manual_target'}} = $node->{'texi'};
+                }
+            }
+            #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
+        }
+    }
+
+    $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::texi_map;
+}
+
+sub unicode_to_protected($)
+{
+   my $text = shift;
+   my $result = '';
+   while ($text ne '')
+   {
+        if ($text =~ s/^([A-Za-z0-9_\-]+)//o)
+        {
+             $result .= $1;
+        }
+        elsif ($text =~ s/^(.)//o)
+        {
+             $result .= '_' . lc(sprintf("%04x",ord($1)));
+        }
+        else
+        {
+             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
+             sleep 1;
+        }    
+   }
+   
+   return $result;
+}
+
+sub cross_manual_line($)
+{
+    my $text = shift;
+    $simple_map_texi_ref = \%Texi2HTML::Config::cross_ref_simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::cross_ref_style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::cross_ref_texi_map;
+    my $normal_text_kept = $Texi2HTML::Config::normal_text;
+    $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
+    
+    my $cross_ref;
+    if ($Texi2HTML::Config::USE_UNICODE)
+    {
+         $cross_ref = unicode_to_protected(Unicode::Normalize::NFC(remove_texi($text)));
+    }
+    else
+    {
+         $cross_ref = remove_texi($text);
+    }
+
+    $Texi2HTML::Config::normal_text = $normal_text_kept;
+    $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
+    $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
+    $texi_map_ref = \%Texi2HTML::Config::texi_map;
+    return $cross_ref;
+}
+
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
 # command-line options and whose values are a hash with the following keys:
 # type    ==> one of !|=i|:i|=s|:s (see GetOpt::Long for more info)
@@ -4752,7 +4753,7 @@ sub rearrange_elements()
     }
 
     # Find cross manual links as explained on the texinfo mailing list
-    Texi2HTML::Config::t2h_cross_manual_links(\%nodes, \%cross_reference_nodes);
+    cross_manual_links(\%nodes, \%cross_reference_nodes);
 
     # Find node file names
     if ($Texi2HTML::Config::NODE_FILES)
@@ -6452,7 +6453,7 @@ sub do_external_ref($)
          }
          else 
          {
-              $node = Texi2HTML::Config::t2h_cross_manual_line($node);
+              $node = cross_manual_line($node);
          }
     }
     else
@@ -8013,7 +8014,7 @@ sub scan_texi($$$$;$)
                 {
                     my $encoding = $2;
                     $Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
-                    $from_encoding = Texi2HTML::Config::set_encoding($encoding);
+                    $from_encoding = set_encoding($encoding);
                     if (defined($from_encoding))
                     {
                         foreach my $file (@fhs)
