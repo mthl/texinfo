@@ -86,6 +86,7 @@ ul.toc {list-style: none}
 <tr><td align="left" valign="top"><a href="#SEC271">20.2 Installing an Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD247"></a>
 <a name="SEC261"></a>
@@ -129,6 +130,7 @@ see section <a href="#SEC271">Installing an Info File</a>.
 <tr><td align="left" valign="top"><a href="#SEC270">20.1.9 Generating HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Generating HTML output.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD248"></a>
 <a name="SEC262"></a>
@@ -159,7 +161,8 @@ that are too small to run Emacs.  You can run <code>makeinfo</code> in any one
 of three ways: from an operating system shell, from a shell inside
 Emacs, or by typing the <kbd>C-c C-m C-r</kbd> or the <kbd>C-c C-m C-b</kbd>
 command in Texinfo mode in Emacs.
-</p><p>The <code>texinfo-format-region</code> and the <code>texinfo-format-buffer</code>
+</p>
+<p>The <code>texinfo-format-region</code> and the <code>texinfo-format-buffer</code>
 commands are useful if you cannot run <code>makeinfo</code>.  Also, in some
 circumstances, they format short regions or buffers more quickly than
 <code>makeinfo</code>.
@@ -198,7 +201,8 @@ type:
 makeinfo --version
 </pre></td></tr></table>
 <p>See section <a href="#SEC264">Options for <code>makeinfo</code></a>, for more information.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD250"></a>
 <a name="SEC264"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -234,6 +238,7 @@ makeinfo --fill-column=68 bison.texinfo
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 makeinfo --no-split --fill-column=70 ...
 </pre></td></tr></table>
+
 <p>This would keep the Info file together as one possibly very long
 file and would also set the fill column to 70.
 </p><p>The options are:
@@ -489,6 +494,7 @@ Generate XML output rather than Info.
 </p></dd>
 </dl>
 
+
 <hr size="6">
 <a name="NOD251"></a>
 <a name="SEC265"></a>
@@ -557,6 +563,7 @@ This is node 1.
 
 This is node 2.
 </pre></td></tr></table>
+
 <p>Here, the node &quot;Node 1&quot; was referenced both verbatim and through
 <code>@value</code>.
 </p><p>By default, <code>makeinfo</code> fails such cases, because node names are not
@@ -578,7 +585,8 @@ will fail to convert it, even if invoked with the
 `<samp>--commands-in-node-names</samp>' option.
 </p><p>`<samp>--commands-in-node-names</samp>' has no effect if the `<samp>--no-validate</samp>'
 option is given.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD252"></a>
 <a name="SEC266"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -659,6 +667,7 @@ output.
 </p></dd>
 </dl>
 
+
 <p>(Note that the parallel commands for killing and recentering a TeX
 job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href="texinfo_20.html#SEC250">Formatting and Printing in Texinfo Mode</a>.)
 </p><p>You can specify options for <code>makeinfo</code> by setting the
@@ -671,6 +680,7 @@ variable in your `<tt>.emacs</tt>' initialization file.
       &quot;--paragraph-indent=0 --no-split
        --fill-column=70 --verbose&quot;)
 </pre></td></tr></table>
+
 <p>For more information, see<br>
 <a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
 <a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
@@ -759,6 +769,7 @@ including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 emacs -batch -funcall batch-texinfo-format *.texinfo
 </pre></td></tr></table>
+
 <p>Emacs processes all the files listed on the command line, even if an
 error occurs while attempting to format some of them.
 </p><p>Run <code>batch-texinfo-format</code> only with Emacs in Batch mode as shown;
@@ -838,6 +849,7 @@ Node: printed manual^?4853
 Node: conventions^?6855
 ...
 </pre></td></tr></table>
+
 <p>(But `<tt>test-texinfo</tt>' had far more nodes than are shown here.)  Each of
 the split-off, indirect files, `<tt>test-texinfo-1</tt>',
 `<tt>test-texinfo-2</tt>', and `<tt>test-texinfo-3</tt>', is listed in this file
@@ -856,7 +868,8 @@ need <code>Info-validate</code>.)  However, you cannot run the <kbd>M-x
 Info-validate</kbd> node-checking command on indirect files.  For
 information on how to prevent files from being split and how to
 validate the structure of the nodes, see <a href="texinfo_27.html#SEC315">Running <code>Info-validate</code></a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD256"></a>
 <a name="SEC270"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -917,7 +930,8 @@ which implement this HTML 1.0 feature.  `<samp>@xref</samp>' commands to
 other documents are generated assuming the other document is available
 in split HTML form, and installed in the same HTML documentation tree,
 at `<tt>../&lt;info-document&gt;/</tt>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD257"></a>
 <a name="SEC271"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -951,6 +965,7 @@ into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an intro
                                   to the Info directory.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC276">20.2.5 Invoking install-info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>install-info</code> options.</td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD258"></a>
@@ -1004,10 +1019,12 @@ node of the Emacs manual looks like this in Info:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
+
 <p>In this case, the `<tt>dir</tt>' file name is written in upper case
 letters--it can be written in either upper or lower case.  This is not
 true in general, it is a special case for `<tt>dir</tt>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD259"></a>
 <a name="SEC273"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1035,6 +1052,7 @@ the following new entry:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 * GDB: (gdb).           The source-level C debugger.
 </pre></td></tr></table>
+
 <p>The first part of the menu entry is the menu entry name, followed by a
 colon.  The second part is the name of the Info file, in parentheses,
 followed by a period.  The third part is the description.
@@ -1045,7 +1063,8 @@ without `<tt>.info</tt>'<a name="DOCF11" href="texinfo_fot.html#FOOT11">(11)</a>
 clutter and not to write `<samp>.info</samp>' explicitly in the menu entry.  For
 example, the GDB menu entry should use just `<samp>gdb</samp>' for the file
 name, not `<samp>gdb.info</samp>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD260"></a>
 <a name="SEC274"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1094,6 +1113,7 @@ standard `<tt>dir</tt>' file:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
+
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
 written as the second part of the menu entry.
 </p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
@@ -1144,6 +1164,7 @@ In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
+
 <p>The `<samp>.</samp>' indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's
 own <code>Info-directory-list</code> variable.  The stand-alone Info reader
@@ -1160,6 +1181,7 @@ the standard places.  For example (using <code>sh</code> syntax):
 INFOPATH=/local/info:
 export INFOPATH
 </pre></td></tr></table>
+
 <p>will search `<tt>/local/info</tt>' first, then the standard directories.
 Leading or doubled colons are not treated specially.
 </p><a name="IDX417"></a>
@@ -1168,7 +1190,8 @@ Leading or doubled colons are not treated specially.
 copying an existing `<tt>dir</tt>' file and replace all the text after the
 `<samp>* Menu:</samp>' with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD261"></a>
 <a name="SEC275"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1219,6 +1242,7 @@ START-INFO-DIR-ENTRY
 ...
 END-INFO-DIR-ENTRY
 </pre></td></tr></table>
+
 <p>The <code>install-info</code> program sees these lines in the Info file, and
 that is how it knows what to do.
 </p><p>Always use the <code>@direntry</code> and <code>@dircategory</code> commands near
@@ -1241,7 +1265,8 @@ Individual utilities
 <p>The idea is to include the `Invoking' node for every program installed
 by a package under `Individual utilities', and an entry for the manual
 as a whole in the appropriate other category.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD262"></a>
 <a name="SEC276"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1261,6 +1286,7 @@ as a whole in the appropriate other category.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 20.2.5 Invoking install-info </h3>
+
 
 <p><code>install-info</code> inserts menu entries from an Info file into the
 top-level `<tt>dir</tt>' file in the Info system (see the previous sections
@@ -1381,6 +1407,7 @@ information in the Info file itself.
 Display version information and exit successfully.
 </p></dd>
 </dl>
+
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

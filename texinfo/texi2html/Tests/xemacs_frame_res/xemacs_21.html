@@ -132,6 +132,7 @@ is a list in which each element has the form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (<var>regexp</var> . <var>mode-function</var>)
 </pre></td></tr></table>
+
 <p>For example, one element normally found in the list has the form
 <code>(<tt>&quot;\\.c$&quot;</tt> . c-mode)</code>. It is responsible for selecting C mode
 for files whose names end in `<tt>.c</tt>'.  (Note that `<samp>\\</samp>' is needed in
@@ -145,6 +146,7 @@ The mode name should appear in this line both preceded and followed by
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ;-*-Lisp-*-
 </pre></td></tr></table>
+
 <p>tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
 treat this line as a comment.  Such an explicit specification overrides any
 default mode based on the file name.
@@ -152,6 +154,7 @@ default mode based on the file name.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 -*-Mode: <var>modename</var>;-*-
 </pre></td></tr></table>
+
 <p>which allows other things besides the major mode name to be specified.
 However, Emacs does not look for anything except the mode name.
 </p><p>The major mode can also be specified in a local variables list.
@@ -163,7 +166,8 @@ specified by the variable <code>default-major-mode</code>.  Normally this
 value is the symbol <code>fundamental-mode</code>, which specifies Fundamental
 mode.  If <code>default-major-mode</code> is <code>nil</code>, the major mode is
 taken from the previously selected buffer.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC190" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_22.html#SEC192" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -1,5 +1,10 @@
 
+
+
+
+
 @unnumbered Distribution
+
 
 Copyright @copyright{} 1995, 1996, 1997, 2001, 2002 Free Software Foundation, Inc.
 
@@ -65,6 +70,7 @@ Comments and bug reports are welcome.
 @code{kifer@@cs.stonybrook.edu} is the current address for Viper bug reports.
 Please use the Ex command @kbd{:submitReport} for this purpose.
 
+
 @menu
 * Overview::                    Read for a smoother start
 * Improvements over Vi::        New features, Improvements
@@ -121,6 +127,7 @@ included in your @file{~/.viper} file and are found at the following URL:
 @cindex end (of buffer)
 @cindex end (of line)
 @cindex region
+
 Emacs can edit several files at once.  A file in Emacs is placed in a
 @dfn{buffer} that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
@@ -168,6 +175,7 @@ automatically in front of the Ex command.
 @cindex Minibuffer
 @cindex command line
 @cindex buffer (modified)
+
 Emacs divides the screen into tiled @dfn{windows}.  You can see the
 contents of a buffer through the window associated with the buffer.  The
 cursor of the screen is positioned on the character after @dfn{point}.
@@ -190,6 +198,7 @@ commands.
 @cindex global keymap
 @cindex major mode
 @cindex minor mode
+
 An Emacs buffer can have a @dfn{major mode} that customizes Emacs for
 editing text of a particular sort by changing the functionality of the keys.
 Keys are defined using a @dfn{keymap} that records the bindings between
@@ -214,6 +223,7 @@ GNU Emacs Manual}
 @cindex Viper as minor mode
 @cindex Control keys
 @cindex Meta key
+
 Viper is implemented as a collection of minor modes.  Different minor modes
 are involved when Viper emulates Vi command mode, Vi insert mode, etc.
 You can also turn Viper on and off at any time while in Vi command mode.
@@ -244,6 +254,7 @@ lines (in the given order!):
 (setq viper-mode t)
 (require 'viper)
 @end lisp
+
 
 in your @file{~/.emacs} file.  The @file{.emacs} file is placed in your
 home directory and it is be executed every time you invoke Emacs.  This is
@@ -301,6 +312,7 @@ toggles Viperization of Emacs on and off.
 @cindex Ex commands
 @findex @code{viper-go-away}
 @findex @code{toggle-viper-mode}
+
 Viper has four states, Emacs, Vi, Insert, and Replace.
 
 @table @samp
@@ -310,6 +322,7 @@ Viper, @kbd{C-z} will normally take you to Vi command state.  Another
 @kbd{C-z} will take you back to Emacs state.  This toggle key can be
 changed, @pxref{Customization} You can also type @kbd{M-x viper-mode} to
 change to Vi state.
+
 
 For users who chose to set their user level to 1 at Viper setup time,
 switching to Emacs state is deliberately made harder in order to not
@@ -350,6 +363,7 @@ replacement state.
 @end table
 
 @cindex mode line
+
 The modes are indicated on the @dfn{mode line} as <E>, <I>, <V>, and <R>,
 so that the multiple modes do not confuse you.  Most of your editing can be
 done in Vi and Insert states.  Viper will try to make all new buffers be in Vi
@@ -396,6 +410,8 @@ to allow Emacs keys in Insert state.
 
 @kindex @kbd{C-z}
 @cindex Emacs state
+
+
 You will be in this mode only by accident (hopefully).  This is the state
 Emacs is normally in (imagine!!).  Now leave it as soon as possible by
 typing @kbd{C-z}.  Then you will be in Vi state (sigh of relief) :-).
@@ -421,10 +437,12 @@ from Emacs or Insert states: typing @kbd{C-c \} will let you execute a
 single Vi command while staying in Viper's Emacs or Insert state.
 In Insert state, the same can also be achieved by typing @kbd{C-z}.
 
+
 @node Vi State, Insert State, Emacs State, States in Viper
 @subsection Vi State
 
 @cindex Vi state
+
 This is the Vi command mode.  When Viper is in Vi state, you will see the sign
 <V> in the mode line.  Most keys will work as in Vi.  The notable
 exceptions are:
@@ -494,6 +512,7 @@ of repeatable undo means that @kbd{U}, undoing lines, is not very
 important.  Therefore, @kbd{U} also calls @code{viper-undo}.
 @cindex multiple undo
 @cindex undo
+
 
 @item Counts
 Most commands, @kbd{~}, @kbd{[[}, @kbd{p}, @kbd{/}, @dots{}, etc., take counts.
@@ -582,6 +601,7 @@ Having found the appropriate command, it can be then executed by typing
 @subsection Insert State
 
 @cindex Insert state
+
 To avoid confusing the beginner (at Viper level 1 and 2), Viper makes only the
 standard Vi keys available in Insert state.  The implication is that
 Emacs major modes cannot be used in Insert state.
@@ -614,7 +634,9 @@ strings of text can be recovered by repeatedly typing @kbd{C-c M-p} or
 in the minibuffer: the above keys are usually bound to other histories,
 which are more appropriate in the minibuffer.)
 
+
 @cindex Meta key
+
 You can call Meta functions from Insert state.  As in Vi state, the Meta key
 is @kbd{C-\}.  Thus @kbd{M-x} is typed as @kbd{C-\ x}.
 
@@ -639,6 +661,7 @@ When Viper is in Insert state, you will see <I> in the mode line.
 @subsection Replace State
 
 @cindex Replace state
+
 This state is entered through Vi replacement commands, such as @kbd{C},
 @kbd{cw}, etc., or by typing @kbd{R}.  In Replace state, Viper puts <R> in
 the mode line to let you know which state is in effect.  If Replace state is
@@ -670,6 +693,7 @@ region.
 @section The Minibuffer
 
 @cindex Minibuffer
+
 The Minibuffer is where commands are entered in.  Editing can be done
 by commands from Insert state, namely:
 
@@ -715,6 +739,7 @@ The appearance of the text in the Minibuffer can be changed.
 
 @cindex multiple files
 @cindex managing multiple files
+
 Viper can edit multiple files.  This means, for example that you never need
 to suffer through @code{No write since last change} errors.
 Some Viper elements are common over all the files.
@@ -779,6 +804,7 @@ filename argument in @samp{csh}, by default.  @xref{Customization}, if you
 want to change this.
 @end table
 
+
 Currently undisplayed files can be listed using the @kbd{:ar} command.  The
 command @kbd{:n} can be given counts from the @kbd{:ar} list to switch to
 other files. For example, use `:n3' to move to the third file in that list.
@@ -835,6 +861,7 @@ We classify motion commands into @dfn{point commands} and
 @dfn{line commands}.
 
 @cindex point commands
+
 The point commands are:
 
 @quotation
@@ -844,6 +871,7 @@ The point commands are:
 @end quotation
 
 @cindex line commands
+
 The line commands are:
 
 @quotation
@@ -856,6 +884,8 @@ The line commands are:
 @cindex expanding (region)
 @cindex describing regions
 @cindex movement commands
+
+
 If a point command is given as an argument to a modifying command, the
 region determined by the point command will be affected by the modifying
 command.  On the other hand, if a line command is given as an argument to a
@@ -872,6 +902,7 @@ Thus, type @kbd{dw} to delete a word, @kbd{>@}} to shift a paragraph, or
 @samp{a}.
 
 @cindex r and R region specifiers
+
 Viper adds the region specifiers @samp{r} and @samp{R}.  Emacs has a
 special marker called @dfn{mark}.  The text-area between the current cursor
 position @dfn{point} and the @dfn{mark} is called the @dfn{region}.
@@ -895,6 +926,7 @@ file.  @xref{Customization}, for details.
 @section Undo and Backups
 
 @cindex undo
+
 Viper provides multiple undo.  The number of undo's and the size is limited
 by the machine.  The Viper command @kbd{u} does an undo.  Undo can be
 repeated by typing @kbd{.} (a period).  Another @kbd{u} will undo the undo,
@@ -904,6 +936,7 @@ direction.
 
 @cindex backup files
 @cindex auto save
+
 Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
 to have numbered backups, etc.  For details, @pxref{Backup,,Backup and
@@ -913,6 +946,7 @@ Auto-Save,emacs,The GNU Emacs Manual}
 @cindex registers
 @cindex markers
 @cindex textmarkers
+
 The results of the 9 previous changes are available in the 9 numeric
 registers, as in Vi.  The extra goody is the ability to @emph{view} these
 registers, in addition to being able to access them through @kbd{p} and
@@ -927,6 +961,7 @@ can be any letters from a through z.
 
 @cindex history
 @cindex Minibuffer
+
 History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
 destructive commands in Vi state.  These are
@@ -967,6 +1002,7 @@ expressions keep a history on those items.
 @cindex macros
 @cindex registers
 @cindex register execution
+
 Viper facilitates the use of Emacs-style keyboard macros.  @kbd{@@#} will
 start a macro definition.  As you type, the commands will be executed, and
 remembered (This is called ``learn mode'' in some editors.)
@@ -984,10 +1020,12 @@ Viper will automatically lowercase the register, so that pressing the
 is an error to use a Uppercase register name.
 
 @cindex viewing registers and markers
+
 The contents of a register can be seen by @kbd{]register}.  (@kbd{[textmarker}
 will show the contents of a textmarker).
 
 @cindex last keyboard macro
+
 The last keyboard macro can also be executed using
 @kbd{*}, and it can be yanked into a register using @kbd{@@!register}.
 This is useful for Emacs style keyboard macros defined using @kbd{C-x(}
@@ -1001,10 +1039,12 @@ Keyboard Macro execution @kbd{@@@@} (the replace).
 
 Viper also provides Vi-style macros.  @xref{Vi Macros}, for details.
 
+
 @node Completion, Improved Search, Macros and Registers, Improvements over Vi
 @section Completion
 
 @cindex completion
+
 Completion is done when you type @key{TAB}.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
 no longer work for that file name.  Remember that Emacs interprets a file name
@@ -1016,6 +1056,7 @@ of the form @kbd{/foo//bar} as @kbd{/bar} and @kbd{/foo/~/bar} as
 
 @cindex buffer search
 @cindex word search
+
 Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in @file{.viper} either by calling
 
@@ -1023,10 +1064,12 @@ under the cursor.  You have to turn this on in @file{.viper} either by calling
 (viper-buffer-search-enable)
 @end example
 
+
 or by setting @code{viper-buffer-search-char} to, say, @kbd{f3}:
 @example
 (setq viper-buffer-search-char ?g)
 @end example
+
 
 If the user calls @code{viper-buffer-search-enable} explicitly (the first
 method), then @code{viper-buffer-search-char} will be set to @kbd{g}.
@@ -1037,6 +1080,7 @@ region.  This command is very useful for searching for variable names, etc.,
 in a program.  The search can be repeated by @kbd{n} or reversed by @kbd{N}.
 
 @cindex incremental search
+
 Emacs provides incremental search.  As you type the string in, the
 cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to @kbd{C-s} and
@@ -1046,10 +1090,12 @@ For details, @pxref{Incremental Search,,Incremental
 Search,emacs,The GNU Emacs Manual} 
 
 @cindex query replace
+
 Viper also provides a query replace function that prompts through the
 Minibuffer.  It is invoked by the @kbd{Q} key in Vi state.
 
 @cindex mouse search
+
 On a window display, Viper supports mouse search, i.e., you can search for a
 word by clicking on it.  @xref{Viper Specials}, for details.
 
@@ -1077,6 +1123,7 @@ Try it: it is really simple!
 @section Abbreviation Facilities
 
 @cindex abbrevs
+
 It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
 Sophisticated templates can be defined using the Emacs abbreviation
@@ -1084,6 +1131,7 @@ facilities.  @xref{Abbrevs,,Abbreviations,emacs,The GNU Emacs Manual}, for
 details.
 
 @cindex dynamic abbrevs
+
 Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
 will search the buffer to find an extension for this word.  For instance,
 one can type @samp{Abbreviations} by typing @samp{A}, followed by a keystroke
@@ -1100,6 +1148,7 @@ Facilities like this make Vi's @kbd{:ab} command obsolete.
 
 @cindex Ex style motion
 @cindex line editor motion
+
 Viper can be set free from the line--limited movements in Vi, such as @kbd{l}
 refusing to move beyond the line, @key{ESC} moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your @file{.viper}
@@ -1109,6 +1158,7 @@ contains
 @code{(setq viper-ex-style-motion nil)}
 @end example
 
+
 the motion will be a true screen editor motion.  One thing you must then
 watch out for is that it is possible to be on the end-of-line character.
 The keys @kbd{x} and @kbd{%} will still work correctly, i.e., as if they
@@ -1116,6 +1166,7 @@ were on the last character.
 
 @vindex @code{viper-syntax-preference}
 @cindex syntax table
+
 The word-movement commands @kbd{w}, @kbd{e}, etc., and the associated
 deletion/yanking commands, @kbd{dw}, @kbd{yw}, etc., can be made to
 understand Emacs syntax tables.  If the variable
@@ -1152,6 +1203,7 @@ the following example:
 @end example
 
 @findex @code{viper-set-syntax-preference}
+
 The above discussion of the meaning of Viper's words concerns only Viper's
 movement commands.  In regular expressions, words remain the same as in
 Emacs.  That is, the expressions @code{\w}, @code{\>}, @code{\<}, etc., use
@@ -1161,6 +1213,7 @@ syntax tables in fear of upsetting the various major modes that set these
 tables.
 
 @cindex textmarkers
+
 Textmarkers in Viper remember the file and the position, so that you can
 switch files by simply doing @kbd{'a}.  If you set up a regimen for using
 Textmarkers, this is very useful.  Contents of textmarkers can be viewed
@@ -1423,14 +1476,17 @@ using different fonts and colors.
 patches.
 @end table
 
+
 Emacs Lisp archives exist on
 @samp{archive.cis.ohio-state.edu}
 and @samp{wuarchive.wustl.edu}
+
 
 @node Customization,Commands,Improvements over Vi,Top
 @chapter Customization
 
 @cindex customization
+
 Customization can be done in 2 ways.
 
 @itemize @bullet
@@ -1463,6 +1519,7 @@ has to be done in Emacs Lisp in the @file{.viper} file.  For the common
 cases, examples are provided that you can use directly.
 @end itemize
 
+
 @menu
 * Rudimentary Changes::          Simple constant definitions.
 * Key Bindings::                 Enabling Emacs Keys, Rebinding keys, etc.
@@ -1477,6 +1534,7 @@ cases, examples are provided that you can use directly.
 @cindex setting variables
 @cindex variables for customization
 @findex @kbd{:set}
+
 An easy way to customize Viper is to change the values of constants used in
 Viper.  Here is the list of the constants used in Viper and their default
 values.  The corresponding :se command is also indicated.  (The symbols
@@ -1840,6 +1898,7 @@ can include a line like this in your @file{.viper} file:
 
 @cindex key bindings
 @cindex keymaps
+
 Viper lets you define hot keys, i.e., you can associate keyboard keys
 such as F1, Help, PgDn, etc., with Emacs Lisp functions (that may already
 exist or that you will write).  Each key has a "preferred form" in
@@ -1855,6 +1914,7 @@ so you can just type
 (global-set-key [f11] 'calendar)                        ; L1, Stop
 (global-set-key [f14] 'undo)                            ; L4, Undo
 @end lisp
+
 
 to bind L1 (a key that exists on some SUN workstations) so it will invoke
 the Emacs Calendar and to bind L4 so it will undo changes.
@@ -1897,6 +1957,7 @@ explained below.  Each of these key maps affects the corresponding Viper state.
 The keymap @code{viper-insert-global-user-map} also affects Viper's Replace
 state. 
 
+
 If you want to
 bind a key, say @kbd{C-v}, to the function that scrolls
 page down and to make @kbd{0} display information on the current buffer,
@@ -1924,6 +1985,7 @@ To customize the binding for @kbd{C-h} in Insert state:
 (define-key viper-insert-global-user-map "\C-h" 'my-del-backwards-function)
 @end example
 
+
 Each Emacs command key calls some lisp function.  If you have enabled the
 Help, (@pxref{Rudimentary Changes}) @kbd{C-h k} will show you the function
 for each specific key; @kbd{C-h b} will show all bindings, and @kbd{C-h m}
@@ -1945,6 +2007,7 @@ keys necessary in that keymap, and put
 @example
 (viper-modify-major-mode 'dired-mode 'emacs-state my-fancy-map)
 @end example
+
 
 in @file{~/.viper}.  To do the same in Vi and Insert states, you should use
 @code{vi-state} and @code{insert-state}.  Changes in Insert state are also
@@ -1998,6 +2061,7 @@ appropriate hook of that major mode.  (Check the function
 did not set @code{viper-always} to @code{nil}, chances are that you won't
 need to perform the above procedure, because Viper will take care of most
 useful defaults.
+
 
 Finally, Viper has a facility that lets the user define per-buffer
 bindings, i.e., bindings that are in effect in some specific buffers
@@ -2063,6 +2127,7 @@ bindings in Emacs.
 @vindex @code{viper-emacs-global-user-map}
 @findex @code{viper-add-local-keys}
 @findex @code{viper-zap-local-keys}
+
 @node Packages that Change Keymaps,Viper Specials,Key Bindings,Customization
 @subsection Packages that Change Keymaps
 @cindex C-c and Viper
@@ -2179,6 +2244,7 @@ doesn't need to be harnessed.
 @findex @code{viper-harness-minor-mode}
 @findex @code{remove-hook}
 @findex @code{add-hook}
+
 @node Viper Specials,Vi Macros,Packages that Change Keymaps,Customization
 @section Viper Specials
 
@@ -2384,6 +2450,7 @@ Toggle Viperization of Emacs on and off.
 @end table
 
 @cindex Multifile documents and programs
+
 Viper provides some support for multi-file documents and programs.
 If a document consists of several files we can designate one of them as a
 master and put the following at the end of that file:
@@ -2559,6 +2626,7 @@ used as a guiding example.
 @section Vi Macros
 
 @cindex Vi macros
+
 Viper supports much enhanced Vi-style macros and also facilitates the use
 of Emacs-style macros.  To define a temporary macro, it is generally more
 convenient to use Emacs keyboard macro facility.  Emacs keyboard macros are
@@ -2650,6 +2718,7 @@ only:
        "my-buf")
 @end example
 
+
 To do the same for Vi state and all buffers with the major mode
 @code{cc-mode}, use:
 
@@ -2658,6 +2727,7 @@ To do the same for Vi state and all buffers with the major mode
        [l up (meta x) n e x t - l i n e return]
        'cc-mode)
 @end example
+
 
 Both macro names and macro definitions are vectors of symbols that denote
 keys on the keyboard.  Some keys, like @kbd{\}, @kbd{ }, or digit-keys must
@@ -2671,6 +2741,7 @@ strings:
 @example
 (viper-record-kbd-macro "aa" 'vi-state  "aaa\e"  "my-buffer")
 @end example
+
 
 Thus, typing @kbd{aa} fast in Vi state will switch Viper to Insert state
 (due to the first @kbd{a}), insert @kbd{aa}, and then it will switch back to Vi
@@ -2734,6 +2805,7 @@ For instance,
 (global-set-key [f13] 'repeat-complex-command)
 @end example
 
+
 binds the key f13 to the Emacs function that repeats the last minibuffer
 command.  Under Viper, however, you may still use this key for additional
 purposes, if you bind, say, a double-hitting action for that key to some
@@ -2773,9 +2845,11 @@ say, @kbd{f12 \3} like this:
                       t)
 @end example
 
+
 Note that even though the macro uses the function key @kbd{f12}, the key is
 actually free and can still be bound to some Emacs function via
 @code{define-key} or @code{global-set-key}.
+
 
 Viper allows the user to define macro names that are prefixes of other macros.
 For instance, one can define @kbd{[[} and @kbd{[[[[} to be macros.
@@ -2867,6 +2941,7 @@ We classify motion commands into @dfn{point commands} and
 @dfn{line commands}.
 
 @cindex point commands
+
 The point commands are:
 
 @quotation
@@ -2876,6 +2951,7 @@ The point commands are:
 @end quotation
 
 @cindex line commands
+
 The line commands are:
 
 @quotation
@@ -2883,11 +2959,13 @@ The line commands are:
 @kbd{@}}, @kbd{G}, @kbd{'},  @kbd{[[}, @kbd{]]}, @kbd{[]}
 @end quotation
 
+
 Text Deletion Commands (@pxref{Deleting Text}), Change commands
 (@pxref{Changing Text}), even Shell Commands (@pxref{Shell Commands})
 use these commands to describe a region of text to operate on.
 
 @cindex r and R region specifiers
+
 Viper adds two region descriptors, @kbd{r} and @kbd{R}.  These describe
 the Emacs regions (@pxref{Basics}), but they are not movement commands.
 
@@ -2904,6 +2982,7 @@ mentioned together!!!
 @cindex <a-z>
 @cindex <address>
 @cindex movements
+
 @samp{<move>} refers to the above movement commands, and @samp{<a-z>}
 refers to registers or textmarkers from @samp{a} to @samp{z}.  Note
 that the @samp{<move>}  is described by full move commands, that is to
@@ -2951,8 +3030,10 @@ in the VI sense if you have one window only.
 @kindex <cmd>
 @cindex <args>
 @cindex <cmd>
+
 Others like @samp{<args> -- arguments}, @samp{<cmd> -- command} etc.
 should be fairly obvious.
+
 
 Common characters referred to include:
 
@@ -2978,6 +3059,7 @@ Return, Enter
 @cindex WORDS
 @cindex char
 @cindex CHAR
+
 We also use @samp{word} for alphanumeric/non-alphanumeric words, and
 @samp{WORD} for whitespace delimited words.  @samp{char} refers to any
 ASCII character, @samp{CHAR} to non-whitespace character.
@@ -3034,6 +3116,9 @@ in the appropriate major mode hooks.
 @vindex @code{viper-syntax-preference}
 @findex @code{viper-set-syntax-preference}
 @cindex syntax table
+
+
+
 The above discussion concerns only the movement commands.  In regular
 expressions, words remain the same as in Emacs.  That is, the expressions
 @code{\w}, @code{\>}, @code{\<}, etc., use Emacs' idea of what is a word,
@@ -3085,6 +3170,7 @@ inserts them automatically in front of the Ex command.
 @cindex sentences
 @cindex matching parens
 @cindex paren matching
+
 @table @kbd
 @item <count>  h  C-h
 <count> chars to the left.
@@ -3275,6 +3361,7 @@ see @ref{Mark,,Mark,emacs,The GNU Emacs manual}, for an explanation of
 the Emacs mark ring.
 
 @cindex marking
+
 @table @kbd
 @item m<a-z>
 Mark the current file and position with the specified letter.
@@ -3329,6 +3416,7 @@ Also see options for word-wrap.
 @cindex appending
 @cindex paste
 @cindex put
+
 @table @kbd
 @item <count>  a
 <count> times after the cursor.
@@ -3407,6 +3495,7 @@ Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 @var{viper-vi-style-in-minibuffer} to @code{nil}.
 
 @cindex Insert state
+
 @table @kbd
 @item C-v
 Deprive the next char of its special meaning (quoting).
@@ -3426,6 +3515,7 @@ current line.
 @node Deleting Text, Changing Text, Editing in Insert State, Text Handling
 @subsection Deleting Text
 
+
 There is one difference in text deletion that you should be
 aware of.  This difference comes from Emacs and was adopted in Viper
 because we find it very useful.  In Vi, if you delete a line, say, and then
@@ -3439,6 +3529,7 @@ text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
 
 @cindex shifting text
+
 @table @kbd
 @item <count>  x
 Delete <count> chars under and after the cursor.
@@ -3471,6 +3562,7 @@ Shift <count> lines one shiftwidth to the left.
 @cindex changing case
 @cindex quoting regions
 @cindex substitution
+
 @table @kbd
 @item <count>  r<char>
 Replace <count> chars by <char> - no <esc>.
@@ -3654,6 +3746,7 @@ Execute <ex-command> on all lines that do not match <pattern>.
 
 @cindex cut and paste
 @cindex paste
+
 @table @kbd
 @item <count>  y<move>
 Yank from begin to endpoint of <count><move>.
@@ -3700,6 +3793,7 @@ Put the contents of the (default undo) buffer
 
 @cindex undo
 @cindex backup files
+
 @table @kbd
 @item  u U
 Undo the latest change.
@@ -3724,6 +3818,7 @@ that have a @samp{~} appended to them.
 @section Display
 
 @cindex scrolling
+
 @table @kbd
 @item C-g
 At user level 1,
@@ -3777,10 +3872,12 @@ Put line <count> in the center of the window
 @kindex @kbd{C-l}
 @kindex @kbd{C-g}
 
+
 @node File and Buffer Handling, Mapping, Display,Commands
 @section File and Buffer Handling
 
 @cindex multiple files
+
 In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as @kbd{>>} or @kbd{!}, don't
 put any space between the command and the modifier.
@@ -3933,6 +4030,7 @@ is typed in Minibuffer.  File completion and history are supported.
 
 @cindex key bindings
 @cindex key mapping
+
 @table @kbd
 @item :map <string>
 Start defining a Vi-style keyboard macro.
@@ -3998,6 +4096,7 @@ Show contents of register.
 @section Shell Commands
 
 @cindex % (Current file)
+
 The symbol @samp{%} is used in Ex shell commands to mean current file.  If
 you want a @samp{%} in your command, it must be escaped as @samp{\%}.
 @cindex @samp{%} (Ex address)
@@ -4014,6 +4113,7 @@ Symbols @samp{%} and @samp{#} are also used in the Ex commands @kbd{:e} and
 better mechanism.
 
 @cindex shell commands
+
 @table @kbd
 @item :sh
 Execute a subshell in another window
@@ -4062,6 +4162,7 @@ Run the make command in the current directory.
 @section Options
 
 @cindex Vi options
+
 @table @kbd
 @item autoindent
 @itemx ai
@@ -4328,6 +4429,7 @@ vrenjak@@sun1.racal.com (Milan Vrenjak),
 whicken@@dragon.parasoft.com (Wendell Hicken),
 zapman@@cc.gatech.edu (Jason Zapman II),
 @end example
+
 
 @node Key Index,Function Index,,Top
 @unnumbered Key Index

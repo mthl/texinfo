@@ -161,7 +161,8 @@ language, to make it convenient to type them.
 </p><a name="IDX700"></a>
 <p>  The prefix key <kbd>C-x <kbd>RET</kbd></kbd> is used for commands that pertain
 to world scripts, coding systems, and input methods.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD170"></a>
 <a name="SEC183"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -446,7 +447,8 @@ that is used exactly for needed purpose: to convert characters between
 </pre></td></tr></table>
 <p>There are several more uses for CCL programs, not related to fonts, but
 those uses are not described here.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD174"></a>
 <a name="SEC187"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -563,7 +565,8 @@ contents before you see them.  See section <a href="xemacs_17.html#SEC136">Visit
 non-Latin-1 characters stored with the internal XEmacs encoding.  It
 handles end-of-line conversion based on the data encountered, and has
 the usual three variants to specify the kind of end-of-line conversion.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD175"></a>
 <a name="SEC188"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -583,6 +586,13 @@ the usual three variants to specify the kind of end-of-line conversion.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 17.7 Recognizing Coding Systems </h2>
+
+
+
+
+
+
+
 
 <p>  Most of the time, XEmacs can recognize which coding system to use for
 any given file--once you have specified your preferences.
@@ -619,6 +629,7 @@ example, to read and write all `<samp>.txt</samp>' using the coding system
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
 </pre></td></tr></table>
+
 <p>The first argument should be <code>file</code>, the second argument should be
 a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.
@@ -639,7 +650,8 @@ file.  This includes the commands <code>save-buffer</code> and
 <code>write-region</code>.  If you want to write files from this buffer using
 a different coding system, you can specify a different coding system for
 the buffer using <code>set-buffer-file-coding-system</code> (see section <a href="#SEC189">Specifying a Coding System</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD176"></a>
 <a name="SEC189"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -770,7 +782,8 @@ possible to use non-Latin-1 characters in file names--or, at least,
 those non-Latin-1 characters which the specified coding system can
 encode.  By default, this variable is <code>nil</code>, which implies that you
 cannot use non-Latin-1 characters in file names.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC181" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_21.html#SEC190" title="Next chapter"> &gt;&gt; </a>]</td>

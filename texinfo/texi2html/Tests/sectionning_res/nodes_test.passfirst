@@ -1,4 +1,5 @@
 
+
 Garbage
 
 @titlefont{A title font in the text before a node}
@@ -21,6 +22,7 @@ This is the top node...
 
 @node node1
 
+
 @unnumbered
 node1 text
 
@@ -28,4 +30,5 @@ node1 text
 
 Should be a warning for not being in menus and not having a menu entry in
 node1
+
 

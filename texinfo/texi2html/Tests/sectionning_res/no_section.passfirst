@@ -1,4 +1,5 @@
 
+
 Garbage
 
 @titlefont{Titlefont before top node}
@@ -20,4 +21,5 @@ second node (@@node second node,,top,TOP).
 
 @node other node,,,second node
 ref to TOP @ref{TOP}.
+
 

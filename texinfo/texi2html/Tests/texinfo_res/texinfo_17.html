@@ -102,6 +102,7 @@ Substituting text for all formats, and testing if a flag is set or clear.
                                   flag to a string that you can insert.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD214"></a>
 <a name="SEC228"></a>
@@ -157,12 +158,15 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @end ifplaintext
 </pre></td></tr></table>
+
 <p>The preceding example produces the following line:
 However, this text will appear only in Info (or plain text).
 And this text will only appear in HTML.
-</p><p>Notice that you only see one of the input lines, depending on which
+</p>
+<p>Notice that you only see one of the input lines, depending on which
 version of the manual you are reading.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD215"></a>
 <a name="SEC229"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -205,7 +209,8 @@ This will be in Info, but not plain text.
 <p>The regions delimited by these commands are ordinary Texinfo source as
 with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>
 (see section <a href="#SEC230">Raw Formatter Commands</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD216"></a>
 <a name="SEC230"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -255,17 +260,20 @@ $$ \chi^2 = \sum_{i=1}^N
           \over \sigma_i\right)^2 $$
 @end tex
 </pre></td></tr></table>
+
 <p>The output of this example will appear only in a printed manual.  If
 you are reading this in Info, you will not see the equation that appears
 in the printed manual.
-</p><a name="IDX293"></a>
+</p>
+<a name="IDX293"></a>
 <a name="IDX294"></a>
 <p>Analogously, you can use <code>@ifhtml <small class="dots">...</small> @end ifhtml</code> to delimit
 a region to be included in HTML output only, and <code>@html <small class="dots">...</small>
 @end html</code> for a region of raw HTML (again, except that <code>@</code> is
 still the escape character, so the <code>@end</code> command can be
 recognized.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD217"></a>
 <a name="SEC231"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -320,6 +328,7 @@ is ignored.  If <var>flag</var> is clear, text through the following
 <tr><td align="left" valign="top"><a href="#SEC234">16.4.3 <code>@value</code> Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An easy way to update edition information.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD218"></a>
 <a name="SEC232"></a>
@@ -351,6 +360,7 @@ will work in some contexts, but not all, due to limitations in TeX.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo This is a string.
 </pre></td></tr></table>
+
 <p>This sets the value of the flag <code>foo</code> to &quot;This is a string.&quot;.
 </p><p>The Texinfo formatters then replace an <code>@value{<var>flag</var>}</code>
 command with the string to which <var>flag</var> is set.  Thus, when
@@ -366,6 +376,7 @@ must write an <code>@set</code> command on a line of its own.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo
 </pre></td></tr></table>
+
 <p>without specifying a string, the value of <code>foo</code> is the empty string.
 </p><p>If you clear a previously set flag with <code>@clear <var>flag</var></code>, a
 subsequent <code>@value{flag}</code> command will report an error.
@@ -373,6 +384,7 @@ subsequent <code>@value{flag}</code> command will report an error.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set how-much very, very, very
 </pre></td></tr></table>
+
 <p>then the formatters transform
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
@@ -383,12 +395,14 @@ It is a very, very, very wet day.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @clear how-much
 </pre></td></tr></table>
+
 <p>then the formatters transform
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
 into
 It is a {No value for &quot;how-much&quot;} wet day.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD219"></a>
 <a name="SEC233"></a>
@@ -437,6 +451,7 @@ It can also dig up fully grown trees.
 
 Remember to replant promptly ...
 </pre></td></tr></table>
+
 <p>In the example, the formatting commands will format the text between
 <code>@ifset large</code> and <code>@end ifset</code> because the <code>large</code>
 flag is set.
@@ -463,6 +478,7 @@ command looks like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifclear <var>flag</var>
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD220"></a>
 <a name="SEC234"></a>
@@ -524,6 +540,7 @@ Write text for the title page, for people reading the printed manual:
 ...
 @end titlepage
 </pre></td></tr></table>
+
 <p>(On a printed cover, a date listing the month and the year looks less
 fussy than a date listing the day as well as the month and year.)
 </p></li><li><p>
@@ -546,7 +563,8 @@ of `The GNU Make Manual', for `make', Version 3.63 Beta.
 
 <p>When you update the manual, you change only the values of the flags; you
 do not need to edit the three sections.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC227" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_18.html#SEC235" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -159,6 +159,7 @@ mode, to give you a convenient way to insert a digit instead of
 overwriting with it.)
 </p></li></ul>
 
+
 <p>A numeric argument to <kbd>C-q</kbd> specifies how many copies of the quoted
 character should be inserted (see section <a href="#SEC58">Numeric Arguments</a>).
 </p><a name="IDX139"></a>
@@ -461,6 +462,7 @@ this file from Emacs, type:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x C-f /usr/rms/foo.c <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
 C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
 read the argument, and you type <kbd>RET</kbd> to terminate the argument
@@ -677,6 +679,7 @@ point, and column of point (<code>what-cursor-position</code>).
 <a name="IDX196"></a>
 <a name="IDX197"></a>
 <a name="IDX198"></a>
+
 <p>  There are several commands for printing line numbers:
 </p><ul>
 <li><p>
@@ -702,6 +705,7 @@ point.  It prints a line in the echo area that looks like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
 </pre></td></tr></table>
+
 <p>(In fact, this is the output produced when point is before `<samp>column
 53</samp>' in the example.)
 </p><p>  The four values after `<samp>Char:</samp>' describe the character that follows
@@ -721,6 +725,7 @@ might say:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
 </pre></td></tr></table>
+
 <p>where the two extra numbers give the smallest and largest character position
 that point is allowed to assume.  The characters between those two positions
 are the visible ones.  See section <a href="xemacs_29.html#SEC344">Narrowing</a>.
@@ -824,7 +829,9 @@ digit to insert from the argument, type another <kbd>C-u</kbd>; for example,
 emphasize that you type the argument before the command, and to
 distinguish these arguments from minibuffer arguments that come after
 the command.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC49" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next chapter"> &gt;&gt; </a>]</td>

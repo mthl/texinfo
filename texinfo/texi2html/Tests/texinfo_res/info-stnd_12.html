@@ -80,6 +80,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 12. Customizing Key Bindings and Variables </h1>
 
+
 <p>For those whose editor/pager of choice is not Emacs and who are not
 entirely satisfied with the --vi-keys option (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>), GNU
 Info provides a way to define different key-to-command bindings and
@@ -98,6 +99,7 @@ textual source file using the <code>infokey</code> command.
 <tr><td align="left" valign="top"><a href="#SEC18">12.1 Invoking <code>infokey</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC19">12.2 <code>infokey</code> source format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD19"></a>
@@ -120,6 +122,7 @@ textual source file using the <code>infokey</code> command.
 </tr></table>
 <h2 class="section"> 12.1 Invoking <code>infokey</code> </h2>
 
+
 <p><code>infokey</code> compiles a source file
 (`<tt>$HOME/.infokey</tt>'<a name="DOCF8" href="info-stnd_fot.html#FOOT8">(8)</a> by default) containing Info customizations
 into a binary format (`<tt>$HOME/.info</tt>' by default).  GNU Info reads
@@ -131,7 +134,8 @@ infokey [<var>option</var>...] [<var>input-file</var>]
 <p>Besides the standard `<samp>--help</samp>' and `<samp>--version</samp>', the only
 option is `<samp>--output <var>file</var></samp>'.  This tells <code>infokey</code> to
 write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD20"></a>
 <a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -151,6 +155,7 @@ write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
 <td valign="middle" align="left">[<a href="info-stnd_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.2 <code>infokey</code> source format </h2>
+
 
 <p>The format of the source file read by <code>infokey</code> is most easily
 illustrated by example.  For instance, here is a sample `<tt>.infokey</tt>'
@@ -313,7 +318,10 @@ for example, can lead to frustration.
 not important, except that the command summary produced by the
 <code>get-help-window</code> command only displays the <em>first</em> key that
 is bound to each command.
-</p><hr size="6">
+</p>
+
+
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC17" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_13.html#SEC20" title="Next chapter"> &gt;&gt; </a>]</td>

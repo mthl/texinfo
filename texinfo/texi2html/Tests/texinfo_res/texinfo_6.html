@@ -110,6 +110,7 @@ heading at the top of each node--but you don't need to.
 <tr><td align="left" valign="top"><a href="#SEC84">5.12 <code>@raisesections</code> and <code>@lowersections</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to change commands' hierarchical level.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD59"></a>
 <a name="SEC73"></a>
@@ -160,7 +161,8 @@ looks like this:
 <p>The chapter structuring commands are described in the sections that
 follow; the <code>@node</code> and <code>@menu</code> commands are described in
 following chapters. (See section <a href="texinfo_7.html#SEC85">Nodes</a>, and see <a href="texinfo_8.html#SEC97">Menus</a>.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD60"></a>
 <a name="SEC74"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -218,7 +220,8 @@ do not.
 </p></li></ul>
 
 <p>Here are the four groups of chapter structuring commands:
-</p><table>
+</p>
+<table>
 <tr><td></td><td></td><td></td><td><p> No new page
 </p></td></tr>
 <tr><td><p> <i>Numbered</i>           </p></td><td><p> <i>Unnumbered</i>               </p></td><td><p> <i>Lettered/numbered</i> </p></td><td><p> <i>Unnumbered</i>
@@ -236,6 +239,7 @@ do not.
 <tr><td><p> <code>@subsubsection</code> </p></td><td><p> <code>@unnumberedsubsubsec</code> </p></td><td><p> <code>@appendixsubsubsec</code> </p></td><td><p> <code>@subsubheading</code>
 </p></td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD61"></a>
@@ -267,7 +271,8 @@ manual uses implicit pointers.  It has the same typesetting effect as
 </p><p>The <code>@top</code> node and its menu (if any) is conventionally wrapped in
 an <code>@ifnottex</code> conditional so that it will appear only in Info and
 HTML output, not TeX.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD62"></a>
 <a name="SEC76"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -310,7 +315,8 @@ Chapter Structuring
 <p>Texinfo also provides a command <code>@centerchap</code>, which is analogous
 to <code>@unnumbered</code>, but centers its argument in the printed output.
 This kind of stylistic choice is not usually offered by Texinfo.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD63"></a>
 <a name="SEC77"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -342,7 +348,8 @@ line by itself with a line of asterisks underneath.  (See section <a href="#SEC7
 <code>@appendix</code> or <code>@unnumbered</code> command at the beginning of a
 line and follow it on the same line by the title, as you would if you
 were creating a chapter.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD64"></a>
 <a name="SEC78"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -413,11 +420,13 @@ title.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @section This is a section
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a section
 =================
 </pre></td></tr></table>
+
 <p>in Info.
 </p><hr size="6">
 <a name="NOD66"></a>
@@ -495,6 +504,7 @@ underlined with `<samp>-</samp>'.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @subsection This is a subsection
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a subsection
@@ -595,6 +605,7 @@ For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @subsubsection This is a subsubsection
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This is a subsubsection

@@ -1,4 +1,5 @@
 
+
 Garbage
 
 @subsection The subsection
@@ -9,7 +10,9 @@ anchor ref @anchor{ref}.
 * (gcc):: ref to gcc
 @end menu
 
+
 ref to ref @ref{ref}.
 
 Some text.
+
 

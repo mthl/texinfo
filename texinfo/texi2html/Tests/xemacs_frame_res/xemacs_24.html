@@ -541,7 +541,8 @@ information on this behavior.
 <p>  Several commands are available to re-indent several lines of code
 which have been altered or moved to a different level in a list
 structure.
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-M-q
 </kbd></dt>
 <dd><p>Re-indent all the lines within one list (<code>indent-sexp</code>).
@@ -754,6 +755,7 @@ statements with respect to the surrounding block.  In the example:
     {
       foo ();
 </pre></td></tr></table>
+
 <p>the difference in indentation between the lines is <code>c-indent-level</code>.
 Its standard value is 2.
 </p><p>If the open-brace beginning the compound statement is not at the beginning
@@ -763,6 +765,7 @@ line, not the column of the open-brace.  For example,
 if (losing) {
   do_this ();
 </pre></td></tr></table>
+
 <p>One popular indentation style is that which results from setting
 <code>c-indent-level</code> to 8 and putting open-braces at the end of a line
 in this way.  Another popular style prefers to put the open-brace on a
@@ -796,6 +799,7 @@ parameter determines the difference in indentation between the two lines in:
 if (x == y)
   do_it ();
 </pre></td></tr></table>
+
 <p>The default value for <code>c-continued-statement-offset</code> is 2.  Some
 popular indentation styles correspond to a value of zero for
 <code>c-continued-statement-offset</code>.
@@ -807,11 +811,13 @@ compare:
 if (x == y)
   {
 </pre></td></tr></table>
+
 <p>with:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
   do_it ();
 </pre></td></tr></table>
+
 <p>If you set <code>c-brace-offset</code> to 4, the first example becomes:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 if (x == y)
@@ -837,12 +843,14 @@ switch (c)
   {
   case 'x':
 </pre></td></tr></table>
+
 <p>If <code>c-label-offset</code> were zero, the same code would be indented as:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 switch (c)
   {
     case 'x':
 </pre></td></tr></table>
+
 <p>This example assumes that the other variables above also have their
 default values. 
 </p><p>Using the indentation style produced by the default settings of the
@@ -1382,6 +1390,7 @@ command names.  For example,
 TEXTAGS=&quot;def:newcommand:newenvironment&quot;
 export TEXTAGS
 </pre></td></tr></table>
+
 <p>specifies (using Bourne shell syntax) that the commands `<samp>\def</samp>',
 `<samp>\newcommand</samp>' and `<samp>\newenvironment</samp>' also define tags.
 </p></li><li><p>
@@ -1502,6 +1511,7 @@ Here is how to run <code>etags</code>:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 etags <var>inputfiles</var>...
 </pre></td></tr></table>
+
 <p>The <code>etags</code> program reads the specified files, and writes a tags
 table named `<tt>TAGS</tt>' in the current working directory.  You can
 intermix compressed and plain text source file names.  <code>etags</code>
@@ -1592,6 +1602,7 @@ to the following files.  The syntax is:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
 </pre></td></tr></table>
+
 <p>where <var>tagregexp</var> is used to match the lines to tag.  It is always
 anchored, that is, it behaves as if preceded by `<samp>^</samp>'.  If you want
 to account for indentation, just match any initial number of blanks by
@@ -1623,6 +1634,7 @@ you can see from the following example:
 etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
 </pre></td></tr></table>
+
 <p>Here <code>etags</code> chooses the parsing language for `<tt>voo.doo</tt>' and
 `<tt>bar.ber</tt>' according to their contents.  <code>etags</code> also uses
 <var>reg1</var> to recognize additional tags in `<tt>voo.doo</tt>', and both
@@ -1638,6 +1650,7 @@ example tags the <code>DEFVAR</code> macros in the Emacs source files.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
 </pre></td></tr></table>
+
 <p>This feature is particularly useful when storing a list of regular
 expressions in a file.  The following option syntax instructs
 <code>etags</code> to read two files of regular expressions.  The regular
@@ -1646,6 +1659,7 @@ case.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 --regex=@first-file --ignore-case-regex=@second-file
 </pre></td></tr></table>
+
 <p>A regex file contains one regular expressions per line.  Empty lines,
 and lines beginning with space or tab are ignored.  When the first
 character in a line is `<samp>@</samp>', <code>etags</code> assumes that the rest of
@@ -1658,6 +1672,7 @@ file is a comment):
         -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
 </pre></td></tr></table>
+
 <p>and then use it like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 etags --regex=@emacs.tags *.[ch] */*.[ch]
@@ -1674,6 +1689,7 @@ etags --language=none \
       --regex='/[ \t]*global[ \t].*/' \
       *.m
 </pre></td></tr></table>
+
 <p>Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form `###key &lt;script-name&gt;' if you want to jump
 to it.
@@ -1857,6 +1873,7 @@ Multiple active tags tables and completion are supported.
 <a name="IDX977"></a>
 <a name="IDX978"></a>
 <a name="IDX979"></a>
+
 <dl compact="compact">
 <dt><kbd> tag-table-alist
 </kbd></dt>
@@ -2113,6 +2130,7 @@ region around one subprogram, which is convenient for killing it or moving it.
 <a name="IDX996"></a>
 <a name="IDX997"></a>
 <a name="IDX998"></a>
+
 <dl compact="compact">
 <dt><kbd> C-M-a
 </kbd></dt>
@@ -2300,6 +2318,7 @@ The same character appears in column 5 of all continuation lines.  It
 is the value of the variable <code>fortran-continuation-char</code>.
 By default, this character is `<samp>$</samp>'.
 </p></li></ul>
+
 
 <p>If you fail to follow these conventions, the indentation commands may
 indent some lines unaesthetically.  However, a correct Fortran program will
@@ -2596,7 +2615,8 @@ preceding colon.  Then do <code>tab-to-tab-stop</code>.
 
 <p>  The variable <code>asm-comment-char</code> specifies which character
 starts comments in assembler syntax.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC215" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_25.html#SEC251" title="Next chapter"> &gt;&gt; </a>]</td>

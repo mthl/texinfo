@@ -106,6 +106,7 @@ customized output in the Info file.
 <tr><td align="left" valign="top"><a href="#SEC243">18.5 `<samp>definfoenclose</samp>': Customized Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customized highlighting.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD225"></a>
 <a name="SEC239"></a>
@@ -185,6 +186,7 @@ For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @unmacro foo
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD226"></a>
 <a name="SEC240"></a>
@@ -246,6 +248,7 @@ backslash, as in
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @<var>macname</var> {\\\{\}\,}
 </pre></td></tr></table>
+
 <p>which will pass the (almost certainly error-producing) argument
 `<samp>\{},</samp>' to <var>macname</var>.  However, commas in parameters, even
 if escaped by a backslash, might cause trouble in TeX.
@@ -275,6 +278,7 @@ Twice: \p\ &amp; \p\.
 </p><table><tr><td>&nbsp;</td><td><pre class="display">
 Twice: a,b &amp; a,b.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD227"></a>
 <a name="SEC241"></a>
@@ -427,6 +431,7 @@ is intended for new markup commands (see section <a href="texinfo_10.html#SEC119
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose phoo,//,\\
 </pre></td></tr></table>
+
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
 formatting command that inserts `//' before and `\\' after the argument
 to <code>@phoo</code>.  You can then write <code>@phoo{bar}</code> wherever you
@@ -437,6 +442,7 @@ want `//bar\\' highlighted in Info.
 @global@let@phoo=@i
 @end iftex
 </pre></td></tr></table>
+
 <p>to define <code>@phoo</code> as a command that causes TeX to typeset the
 argument to <code>@phoo</code> in italics.
 </p><p>Each definition applies to its own formatter: one for TeX, the other
@@ -448,12 +454,14 @@ the raw TeX commands do need to be in `<samp>@iftex</samp>'.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose headword, , :
 </pre></td></tr></table>
+
 <p>near the beginning of the file, to define <code>@headword</code> as an Info
 formatting command that inserts nothing before and a colon after the
 argument to <code>@headword</code>.
 </p><p>`<samp>@definfoenclose</samp>' definitions must not be recursive, directly or
 indirectly.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC238" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_20.html#SEC244" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -104,6 +104,7 @@ specifier for other commands.
 We classify motion commands into <em>point commands</em> and
 <em>line commands</em>.
 </p><a name="IDX37"></a>
+
 <p>The point commands are:
 </p><blockquote>
 
@@ -113,6 +114,7 @@ We classify motion commands into <em>point commands</em> and
 </p></blockquote>
 
 <a name="IDX38"></a>
+
 <p>The line commands are:
 </p><blockquote>
 
@@ -125,6 +127,8 @@ We classify motion commands into <em>point commands</em> and
 <a name="IDX41"></a>
 <a name="IDX42"></a>
 <a name="IDX43"></a>
+
+
 <p>If a point command is given as an argument to a modifying command, the
 region determined by the point command will be affected by the modifying
 command.  On the other hand, if a line command is given as an argument to a
@@ -140,6 +144,7 @@ Thus, type <kbd>dw</kbd> to delete a word, <kbd>&gt;}</kbd> to shift a paragraph
 <kbd>!'afmt</kbd> to format a region from `<samp>point</samp>' to textmarker
 `<samp>a</samp>'.
 </p><a name="IDX44"></a>
+
 <p>Viper adds the region specifiers `<samp>r</samp>' and `<samp>R</samp>'.  Emacs has a
 special marker called <em>mark</em>.  The text-area between the current cursor
 position <em>point</em> and the <em>mark</em> is called the <em>region</em>.
@@ -177,6 +182,7 @@ file.  See section <a href="viper_4.html#SEC25">Customization</a>, for details.
 </tr></table>
 <h2 class="section"> 2.2 Undo and Backups </h2>
 
+
 <p>Viper provides multiple undo.  The number of undo's and the size is limited
 by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
 repeated by typing <kbd>.</kbd> (a period).  Another <kbd>u</kbd> will undo the undo,
@@ -185,6 +191,7 @@ and further
 direction.
 </p><a name="IDX45"></a>
 <a name="IDX46"></a>
+
 <p>Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
 to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> 
@@ -192,6 +199,7 @@ to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">
 <a name="IDX48"></a>
 <a name="IDX49"></a>
 <a name="IDX50"></a>
+
 <p>The results of the 9 previous changes are available in the 9 numeric
 registers, as in Vi.  The extra goody is the ability to <em>view</em> these
 registers, in addition to being able to access them through <kbd>p</kbd> and
@@ -220,6 +228,7 @@ can be any letters from a through z.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.3 History </h2>
+
 
 <p>History is provided for Ex commands, Vi searches, file names, pieces of
 text inserted in earlier commands that use Insert or Replace state, and for
@@ -277,6 +286,7 @@ expressions keep a history on those items.
 </tr></table>
 <h2 class="section"> 2.4 Macros and Registers </h2>
 
+
 <p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
 start a macro definition.  As you type, the commands will be executed, and
 remembered (This is called &quot;learn mode&quot; in some editors.)
@@ -292,9 +302,11 @@ execute the last macro that was executed using <kbd>@register</kbd>.
 <kbd>&quot;Ayy</kbd> will append to <em>register a</em>.  For <kbd>[,],',`</kbd>, it
 is an error to use a Uppercase register name.
 </p><a name="IDX51"></a>
+
 <p>The contents of a register can be seen by <kbd>]register</kbd>.  (<kbd>[textmarker</kbd>
 will show the contents of a textmarker).
 </p><a name="IDX52"></a>
+
 <p>The last keyboard macro can also be executed using
 <kbd>*</kbd>, and it can be yanked into a register using <kbd>@!register</kbd>.
 This is useful for Emacs style keyboard macros defined using <kbd>C-x(</kbd>
@@ -305,7 +317,8 @@ details.
 <kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
 Keyboard Macro execution <kbd>@@</kbd> (the replace).
 </p><p>Viper also provides Vi-style macros.  See section <a href="viper_4.html#SEC30">Vi Macros</a>, for details.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD18"></a>
 <a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -325,6 +338,7 @@ Keyboard Macro execution <kbd>@@</kbd> (the replace).
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.5 Completion </h2>
+
 
 <p>Completion is done when you type <kbd>TAB</kbd>.  The Emacs completer does not
 grok wildcards in file names.  Once you type a wildcard, the completer will
@@ -352,15 +366,18 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 </tr></table>
 <h2 class="section"> 2.6 Improved Search </h2>
 
+
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in `<tt>.viper</tt>' either by calling
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-buffer-search-enable)
 </pre></td></tr></table>
+
 <p>or by setting <code>viper-buffer-search-char</code> to, say, <kbd>f3</kbd>:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (setq viper-buffer-search-char ?g)
 </pre></td></tr></table>
+
 <p>If the user calls <code>viper-buffer-search-enable</code> explicitly (the first
 method), then <code>viper-buffer-search-char</code> will be set to <kbd>g</kbd>.
 Regardless of how this feature is enabled, the key
@@ -369,6 +386,7 @@ Regardless of how this feature is enabled, the key
 region.  This command is very useful for searching for variable names, etc.,
 in a program.  The search can be repeated by <kbd>n</kbd> or reversed by <kbd>N</kbd>.
 </p><a name="IDX53"></a>
+
 <p>Emacs provides incremental search.  As you type the string in, the
 cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
@@ -376,9 +394,11 @@ as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
 of <kbd>C-r or C-s</kbd>.
 For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> 
 </p><a name="IDX54"></a>
+
 <p>Viper also provides a query replace function that prompts through the
 Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
 </p><a name="IDX55"></a>
+
 <p>On a window display, Viper supports mouse search, i.e., you can search for a
 word by clicking on it.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 </p><p>Finally, on a window display, Viper highlights search patterns as it finds
@@ -419,12 +439,14 @@ faces are grouped together under Viper's
 </tr></table>
 <h2 class="section"> 2.7 Abbreviation Facilities </h2>
 
+
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
 Sophisticated templates can be defined using the Emacs abbreviation
 facilities.  See <a href="../emacs/Abbrevs.html">(emacs)Abbrevs</a> section `Abbreviations' in <cite>The GNU Emacs Manual</cite>, for
 details.
 </p><a name="IDX57"></a>
+
 <p>Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
 will search the buffer to find an extension for this word.  For instance,
 one can type `<samp>Abbreviations</samp>' by typing `<samp>A</samp>', followed by a keystroke
@@ -456,6 +478,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 </tr></table>
 <h2 class="section"> 2.8 Movement and Markers </h2>
 
+
 <p>Viper can be set free from the line--limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your `<tt>.viper</tt>'
@@ -463,12 +486,14 @@ contains
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 <code>(setq viper-ex-style-motion nil)</code>
 </pre></td></tr></table>
+
 <p>the motion will be a true screen editor motion.  One thing you must then
 watch out for is that it is possible to be on the end-of-line character.
 The keys <kbd>x</kbd> and <kbd>%</kbd> will still work correctly, i.e., as if they
 were on the last character.
 </p><a name="IDX58"></a>
 <a name="IDX59"></a>
+
 <p>The word-movement commands <kbd>w</kbd>, <kbd>e</kbd>, etc., and the associated
 deletion/yanking commands, <kbd>dw</kbd>, <kbd>yw</kbd>, etc., can be made to
 understand Emacs syntax tables.  If the variable
@@ -500,6 +525,7 @@ the following example:
 (viper-set-syntax-preference nil &quot;emacs&quot;)
 </pre></td></tr></table>
 <a name="IDX60"></a>
+
 <p>The above discussion of the meaning of Viper's words concerns only Viper's
 movement commands.  In regular expressions, words remain the same as in
 Emacs.  That is, the expressions <code>\w</code>, <code>\&gt;</code>, <code>\&lt;</code>, etc., use
@@ -508,6 +534,7 @@ variable <code>viper-syntax-preference</code>.  This is because Viper doesn't ch
 syntax tables in fear of upsetting the various major modes that set these
 tables.
 </p><a name="IDX61"></a>
+
 <p>Textmarkers in Viper remember the file and the position, so that you can
 switch files by simply doing <kbd>'a</kbd>.  If you set up a regimen for using
 Textmarkers, this is very useful.  Contents of textmarkers can be viewed
@@ -865,10 +892,12 @@ patches.
 </p></dd>
 </dl>
 
+
 <p>Emacs Lisp archives exist on
 `<samp>archive.cis.ohio-state.edu</samp>'
 and `<samp>wuarchive.wustl.edu</samp>'
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC14" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="viper_4.html#SEC25" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -100,6 +100,7 @@ that one document.
 <tr><td align="left" valign="top"><a href="#SEC20">1.11 History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Acknowledgements, contributors and genesis.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD4"></a>
 <a name="SEC3"></a>
@@ -146,7 +147,8 @@ better to include too much than to leave out something important.
 any way; it's much easier to deal with one plain text message, however
 large, than many small ones.  <a href="ftp://ftp.gnu.org/gnu/sharutils/">GNU shar</a> is a convenient way of packaging multiple and/or binary files
 for email.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD5"></a>
 <a name="SEC4"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -166,6 +168,7 @@ for email.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.2 Using Texinfo </h2>
+
 
 <p>Using Texinfo, you can create a printed document with the normal
 features of a book, including chapters, sections, cross references, and
@@ -238,7 +241,8 @@ page from the `<samp>--help</samp>' output of a program.  In fact, this is
 currently used to generate man pages for the Texinfo programs
 themselves.  It is GNU software written by Brendan O'Dea, available from
 <a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD6"></a>
 <a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -330,7 +334,8 @@ info:emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
 </pre></td></tr></table>
 <p>The <code>info</code> program itself does not follow URI's of any kind.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD7"></a>
 <a name="SEC6"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -394,7 +399,8 @@ character-only terminal in Info form and in a typeset book, the
 formatting commands that Texinfo supports are necessarily limited.
 </p><p>To get a copy of TeX, see
 <a href="texinfo_30.html#SEC321">How to Obtain TeX</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD8"></a>
 <a name="SEC7"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -465,6 +471,7 @@ hard-to-define circumstances the extra spaces cause extra space to
 appear in the output, so beware.
 </p></li></ul>
 
+
 <a name="IDX14"></a>
 <p>As a general rule, a command requires braces if it mingles among other
 text; but it does not need braces if it starts a line of its own.  The
@@ -475,7 +482,8 @@ write the different commands: the different ways to write commands
 make it easier to write and read Texinfo files than if all commands
 followed exactly the same syntax.  (For details about @-command
 syntax, see <a href="texinfo_29.html#SEC320">@-Command Syntax</a>.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD9"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -544,11 +552,14 @@ Consequently, TeX treats tabs like single spaces, and that is not
 what they look like.  Furthermore, <code>makeinfo</code> does nothing special
 with tabs, and thus a tab character in your input file may appear
 differently in the output, for example, in indented text.
-</p><p>To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
+</p>
+<p>To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
 spaces when you press the <kbd>TAB</kbd> key.
-</p><p>Also, you can run <code>untabify</code> in Emacs to convert tabs in a region
+</p>
+<p>Also, you can run <code>untabify</code> in Emacs to convert tabs in a region
 to multiple spaces.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD10"></a>
@@ -570,6 +581,7 @@ to multiple spaces.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.7 Comments </h2>
+
 
 <p>You can write comments in a Texinfo file that will not appear in
 either the Info file or the printed manual by using the
@@ -600,7 +612,8 @@ contribute to the formatted output.  However, TeX and makeinfo must
 still parse the ignored text, in order to understand when to <em>stop</em>
 ignoring text from the source file; that means that you may still get
 error messages if you have invalid Texinfo commands within ignored text.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD11"></a>
 <a name="SEC10"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -634,12 +647,14 @@ file <strong>must</strong> begin with lines like this:
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
+
 <p>The contents of the file follow this beginning, and then you
 <strong>must</strong> end a Texinfo file with a line like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @bye
 </pre></td></tr></table>
 <a name="IDX19"></a>
+
 <p>Here's an explanation:
 </p><ul>
 <li><p>
@@ -671,6 +686,7 @@ beginning of a Texinfo file, like this:
 @settitle <var>name-of-manual</var>
 @c %**end of header
 </pre></td></tr></table>
+
 <p>In the first line, `<samp>-*-texinfo-*-</samp>' causes Emacs to switch into
 Texinfo mode when you edit the file.
 </p><p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
@@ -680,7 +696,8 @@ run TeX or Info on just part of the file.  (See section <a href="texinfo_4.html#
 indices, and the like, all of which are explained in this manual.  But
 the minimum, which can be useful for short documents, is just the three
 lines at the beginning and the one line at the end.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD12"></a>
 <a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -744,6 +761,7 @@ of its own.
 </p></dd>
 </dl>
 
+
 <hr size="6">
 <a name="NOD13"></a>
 <a name="SEC12"></a>
@@ -780,6 +798,7 @@ not.  The complete file, without interspersed comments, is shown in
 </p><a name="SEC13"></a>
 <h3 class="subheading"> Part 1: Header </h3>
 
+
 <p>The header does not appear in either the Info file or the
 printed output.  It sets various parameters, including the
 name of the Info file and the title used in the header.
@@ -793,6 +812,7 @@ name of the Info file and the title used in the header.
 <a name="SEC14"></a>
 <h3 class="subheading"> Part 2: Summary Description and Copyright </h3>
 
+
 <p>A real manual includes more text here, according to the license under
 which it is distributed.  See section <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -804,6 +824,7 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 </pre></td></tr></table>
 <a name="SEC15"></a>
 <h3 class="subheading"> Part 3: Titlepage, Contents, Copyright </h3>
+
 
 <p>The titlepage segment does not appear in the online output, only in the
 printed manual.  We use the <code>@insertcopying</code> command to
@@ -826,6 +847,7 @@ writing it out again; it is output on the back of the title page.  The
 <a name="SEC16"></a>
 <h3 class="subheading"> Part 4: `Top' Node and Master Menu </h3>
 
+
 <p>The `Top' node contains the master menu for the Info file.  Since a
 printed manual uses a table of contents rather than a menu, the master
 menu appears only in online output.  We also include the copying text
@@ -845,8 +867,10 @@ begins with a brief description of the manual, no other text is needed.
 * Index::            Complete index.
 @end menu
 </pre></td></tr></table>
+
 <a name="SEC17"></a>
 <h3 class="subheading"> Part 5: The Body of the Document </h3>
+
 
 <p>The body segment contains all the text of the document, but not the
 indices or table of contents.  This example illustrates a node and a
@@ -870,8 +894,10 @@ This is the first item.
 This is the second item.
 @end enumerate
 </pre></td></tr></table>
+
 <a name="SEC18"></a>
 <h3 class="subheading"> Part 6: The End of the Document </h3>
+
 
 <p>The end segment contains commands for generating an index in a node and
 unnumbered chapter of its own, and the <code>@bye</code> command that marks
@@ -884,11 +910,13 @@ the end of the document.
 
 @bye
 </pre></td></tr></table>
+
 <a name="SEC19"></a>
 <h3 class="subheading"> Some Results </h3>
 
 <p>Here is what the contents of the first chapter of the sample look like:
-</p><blockquote>
+</p>
+<blockquote>
 
 <p>This is the first chapter.
 </p><p>Here is a numbered list.
@@ -899,6 +927,7 @@ This is the first item.
 This is the second item.
 </p></li></ol>
 </blockquote>
+
 
 <hr size="6">
 <a name="NOD14"></a>
@@ -964,7 +993,8 @@ both Bolio and BoTeX.  He also developed a nifty on-line help format
 called Info, and then combined BoTeX and Info to create Texinfo, a
 mark up language for text that is intended to be read both online and
 as printed hard copy.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_3.html#SEC21" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -80,6 +80,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 2. Invoking Info </h1>
 
+
 <p>GNU Info accepts several options to control the initial node being
 viewed, and to specify which directories to search for Info files.  Here
 is a template showing an invocation of GNU Info from the shell:
@@ -297,6 +298,7 @@ the menu names which describe the path to that node.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 info emacs buffers
 </pre></td></tr></table>
+
 <p>first selects the menu item `<samp>Emacs</samp>' in the node `<samp>(dir)Top</samp>',
 and then selects the menu item `<samp>Buffers</samp>' in the node
 `<samp>(emacs)Top</samp>'.
@@ -311,7 +313,9 @@ the command-line menu items.  Therefore, the Info file searched for the
 index or the invocation node is the file where Info finds itself after
 following all the menu items given on the command line.  This is so
 `<samp>info emacs --show-options</samp>' does what you'd expect.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="info-stnd_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="info-stnd_3.html#SEC3" title="Next chapter"> &gt;&gt; </a>]</td>

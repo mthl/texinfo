@@ -33,6 +33,7 @@ script which converters
 @uref{http://www.texinfo.org,Texinfo}
 into @acronym{HTML}.
 
+
 Please send bug reports about this manual to Karl Heinz
 Marbaise @email{khmarbaise@@gmx.de}. Please state exact
 version/edition of the manual (can be found at start of
@@ -57,6 +58,7 @@ construction and of course incomplete ;-)
 
 * Reference::                 Reference Manual of functions.
 
+
 /// The Detailed Node Listing ///
 
 --- Overview ---
@@ -64,9 +66,11 @@ construction and of course incomplete ;-)
 * whytexi2html::              Why @file{texi2html} and
                                 not @file{makeinfo}?.
 
+
 --- Installation process ---
 
 * Installation::             Installation process.
+
 
 --- Initialization file options ---
 
@@ -80,6 +84,7 @@ construction and of course incomplete ;-)
 * IFOIndexChapter::           Index Chapter.
 * IFOSplitIndex::             Split Index.
 * IFOhrefDirInsteadFile::     HREF Dir Instead file.
+
 
 --- Command Line Options ---
 
@@ -108,11 +113,13 @@ construction and of course incomplete ;-)
 * OptionLanguage::            Language.
 * OptionL2H::                 La@TeX{}2HTML.
 
+
 --- La@TeX{}2HTML for @code{@@math} and @code{@@tex} ---
 
 * OptionL2HL2H::              Where to find La@TeX{}2HTML.
 * OptionL2HSkip::             Skip calling La@TeX{}2HTML.
 * OptionL2Htmp::              Temporary files for La@TeX{}2HTML.
+
 
 --- Indices ---
 
@@ -139,6 +146,7 @@ A few time ago @command{makeinfo} wasn't able to produce
 @acronym{HTML}. This was the borning hour for
 @command{texi2html}. The basic purpose of @file{texi2html}
 is to convert Texinfo documents into HTML.
+
 
 @menu
 * HowToGetHTML::       Ways to get HTML files.
@@ -208,6 +216,7 @@ texi2html -V -frames texi2html.texi
 Explanation of the output differences against default,
 whatever this is ;-)
 
+
 @node CustomizingExpand, CustomizingPage, Customizing, Top
 @chapter Customizing what gets expanded
 Test starting.
@@ -223,10 +232,14 @@ This chapter is designed to help you to change the
 complete layout of the @acronym{HTML} output if you like to
 do so.
 
+
 a) General: Philosophy, and how it works@*
 aa) Navigation panels@*
 b) Top page@*
 c) Section pages@*
+
+
+
 
 @menu
 * TipsNewDesign::           .
@@ -241,6 +254,7 @@ c) Section pages@*
 
 Here you can find information how you should work to pick
 up a new design with @command{texi2html}.
+
 
 @node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
 @section Page Layout and the philosophy
@@ -296,6 +310,7 @@ As you can see it is very simple Perl Code, which can
 be changed more or less simple to fit you requirements
 (@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
 
+
 @node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
 @subsection Page header
 Page Head @code{T2H_DEFAULT_print_page_head}
@@ -347,6 +362,7 @@ header, body etc.
 These are the defaults which are
 part of the distribution as @file{texi2html.init}.
 
+
 How to do changes of the customization...
 needed steps.
 
@@ -368,7 +384,9 @@ needed steps.
 @node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
 @subsection Body Text
 
+
 @vindex T2H_BODYTEXT
+
 @example
 $T2H_BODYTEXT =
     . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
@@ -386,7 +404,9 @@ change the entry @var{T2H_BODYTEXT}.
 
 @vindex T2H_AFTER_BODY_OPEN
 @vindex T2H_PRE_BODY_CLOSE
+
 @vindex T2H_EXTRA_HEAD
+
 @example
 # text inserted after <BODY ...>
 $T2H_AFTER_BODY_OPEN = '';
@@ -405,6 +425,7 @@ $T2H_EXTRA_HEAD = '';
 
 The default output into the @acronym{HTML} file.
 @xref{OptionDocType}.
+
 
 The following code is produced by
 @code{T2H_DEFAULT_print_page_head}.
@@ -448,6 +469,7 @@ $T2H_AFTER_BODY_OPEN
 @opindex init_file
 @file{texi2html.init}
 
+
 @menu
 * InitFileBasics::     The basics about
                          initialization files.
@@ -483,6 +505,7 @@ For an example on what you can produces with
 @command{texi2html} have a look at the following sites:
 @uref{http://www.singular.uni-kl.de/Manual/html/}
 
+
 @node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
 @section Global initialization file
 @node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
@@ -491,6 +514,7 @@ For an example on what you can produces with
 @section Loadable initialization file
 @opindex init_file
 @option{-init_file}
+
 
 @node IFOs, Options, InitFile, Top
 
@@ -631,6 +655,7 @@ $T2H_HREF_DIR_INSTEAD_FILE = "";
 * OptionL2H::                 La@TeX{}2HTML.
 @end menu
 
+
 @node OptionDebug, OptionDocType, Options, Options
 @section Debugging
 @cindex Debugging
@@ -687,6 +712,7 @@ if set to @strong{tex} (or, @strong{info}) expand
 @code{@@iftex} and @code{@@tex} (or, @code{@@ifinfo})
 sections else, neither expand @code{@@iftex}, @code{@@tex},
 nor @code{@@ifinfo} sections
+
 
 @node OptionGlossary, OptionInvisible, OptionExpand, Options
 @section Glossary
@@ -804,6 +830,7 @@ $T2H_SHOW_MENU = 1;
 if set, number sections and show section names and numbers
 in references and menus
 
+
 @node OptionSplit, OptionSectionNavigation, OptionNumber, Options
 @section Split
 @cindex HTML, split
@@ -835,6 +862,7 @@ whether or not there were more than
 @var{$T2H_WORDS_IN_PAGE} words on page). This is most useful
 if you do not want to have section navigation on
 @option{-split chapter}
+
 
 @node OptionSubDir, OptionShortExt, OptionSectionNavigation, Options
 @section Subdirectory
@@ -993,11 +1021,13 @@ a @samp{.}); otherwise, l2h will fail.
 @node Refptocframe,Refpphead,,Reference
 @appendixsec Print ToC Frame
 
+
 @defun T2H_DEFAULT_print_toc_frame (FileName)
 
 Description of the subroutine.
 What does it do? Which parameters it needs etc.
 @end defun
+
 
 @node Refpphead,,Refptocframe,Reference
 @appendixsec Print Page Head

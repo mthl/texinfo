@@ -13,7 +13,11 @@
 * Chapter in included file::
 @end menu
 
+
+
+
 \input texinfo 
+
 @node Chapter in included file
 @chapter Chapter in included file
 
@@ -30,6 +34,9 @@
 
 @node Subsection
 @subsection Subsection
+
+
+
 
 @node Second chapter
 @chapter Second chapter

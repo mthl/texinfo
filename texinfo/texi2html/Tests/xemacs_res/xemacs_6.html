@@ -207,7 +207,8 @@ inspired by the use of <kbd>C-z</kbd> and <kbd>C-c</kbd> on several operating
 systems as the characters for stopping or killing a program, but that is
 their only relationship with the operating system.  You can customize
 these keys to run any commands of your choice (see section <a href="xemacs_30.html#SEC368">Keymaps</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD39"></a>
 <a name="SEC41"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -487,6 +488,7 @@ this variable.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 xemacs *.c
 </pre></td></tr></table>
+
 <p>passes each <code>.c</code> file as a separate argument to Emacs, so that
 Emacs visits each file (see section <a href="xemacs_17.html#SEC136">Visiting Files</a>).
 </p><p>  Here is an advanced example that assumes you have a Lisp program file
@@ -495,6 +497,7 @@ operation on the current buffer, expected to be a C program.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 xemacs -batch foo.c -l hack-c-program -f save-buffer -kill &gt; log
 </pre></td></tr></table>
+
 <p>Here Emacs is told to visit `<tt>foo.c</tt>', load `<tt>hack-c-program.el</tt>'
 (which makes changes in the visited file), save `<tt>foo.c</tt>' (note that
 <code>save-buffer</code> is the function that <kbd>C-x C-s</kbd> is bound to), and
@@ -645,6 +648,7 @@ the resource manager name.
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.3 How XEmacs finds Directories and Files </h2>
+
 
 <p>XEmacs deals with a multitude of files during operation.  These files
 are spread over many directories, and XEmacs determines the location of
@@ -880,6 +884,8 @@ Is the path where XEmacs looks for data files.  It contains package data
 directories as well as <code>data-directory</code>.
 </p></dd>
 </dl>
+
+
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -188,6 +188,7 @@ is blank, and the right part contains the page number.
   |                       |   |                       |
 
 </pre></td></tr></table>
+
 <p>The chapter name is preceded by the word &quot;Chapter&quot;, the chapter number
 and a colon.  This makes it easier to keep track of where you are in the
 manual.
@@ -244,6 +245,7 @@ the headers format with the <code>@headings double</code> command; see
 </p></dd>
 </dl>
 
+
 <p>Texinfo lacks an <code>@setchapternewpage even</code> command.
 </p><hr size="6">
 <a name="NOD278"></a>
@@ -295,6 +297,7 @@ for both even- and odd-numbered pages:
 @headings off
 @everyheading @thischapter @| @thispage @| @today{}
 </pre></td></tr></table>
+
 <p>You need to divide the left part from the central part and the central
 part from the right part by inserting `<samp>@|</samp>' between parts.
 Otherwise, the specification command will not be able to tell where
@@ -379,6 +382,7 @@ information about <code>@include</code> files.)
 </p></dd>
 </dl>
 
+
 <p>You can also use the <code>@today{}</code> command, which expands to the
 current date, in `1 Jan 1900' format.
 <a name="IDX461"></a>
@@ -392,7 +396,8 @@ particularly when you are writing drafts:
 </pre></td></tr></table>
 <p>Beware of overlong titles: they may overlap another part of the
 header or footer and blot it out.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC303" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_27.html#SEC308" title="Next chapter"> &gt;&gt; </a>]</td>

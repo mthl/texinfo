@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 3. Customization </h1>
 
+
 <p>Customization can be done in 2 ways.
 </p><ul>
 <li><p>
@@ -89,6 +90,7 @@ has to be done in Emacs Lisp in the `<tt>.viper</tt>' file.  For the common
 cases, examples are provided that you can use directly.
 </p></li></ul>
 
+
 <table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC26">3.1 Rudimentary Changes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Simple constant definitions.</td></tr>
@@ -118,6 +120,7 @@ cases, examples are provided that you can use directly.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.1 Rudimentary Changes </h2>
+
 
 <p>An easy way to customize Viper is to change the values of constants used in
 Viper.  Here is the list of the constants used in Viper and their default
@@ -588,6 +591,7 @@ can include a line like this in your `<tt>.viper</tt>' file:
 </tr></table>
 <h2 class="section"> 3.2 Key Bindings </h2>
 
+
 <p>Viper lets you define hot keys, i.e., you can associate keyboard keys
 such as F1, Help, PgDn, etc., with Emacs Lisp functions (that may already
 exist or that you will write).  Each key has a &quot;preferred form&quot; in
@@ -601,6 +605,7 @@ so you can just type
 (global-set-key [f11] 'calendar)                        ; L1, Stop
 (global-set-key [f14] 'undo)                            ; L4, Undo
 </pre></td></tr></table>
+
 <p>to bind L1 (a key that exists on some SUN workstations) so it will invoke
 the Emacs Calendar and to bind L4 so it will undo changes.
 However, on a dumb terminal or in an Xterm window, even the standard arrow
@@ -636,7 +641,8 @@ If you wish to change a Viper binding, you can use the
 explained below.  Each of these key maps affects the corresponding Viper state.
 The keymap <code>viper-insert-global-user-map</code> also affects Viper's Replace
 state. 
-</p><p>If you want to
+</p>
+<p>If you want to
 bind a key, say <kbd>C-v</kbd>, to the function that scrolls
 page down and to make <kbd>0</kbd> display information on the current buffer,
 putting this in `<tt>.viper</tt>' will do the trick in Vi state:
@@ -659,6 +665,7 @@ can write this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (define-key viper-insert-global-user-map &quot;\C-h&quot; 'my-del-backwards-function)
 </pre></td></tr></table>
+
 <p>Each Emacs command key calls some lisp function.  If you have enabled the
 Help, (see section <a href="#SEC26">Rudimentary Changes</a>) <kbd>C-h k</kbd> will show you the function
 for each specific key; <kbd>C-h b</kbd> will show all bindings, and <kbd>C-h m</kbd>
@@ -677,6 +684,7 @@ keys necessary in that keymap, and put
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-modify-major-mode 'dired-mode 'emacs-state my-fancy-map)
 </pre></td></tr></table>
+
 <p>in `<tt>~/.viper</tt>'.  To do the same in Vi and Insert states, you should use
 <code>vi-state</code> and <code>insert-state</code>.  Changes in Insert state are also
 in effect in Replace state.  For instance, suppose that the user wants to
@@ -723,7 +731,8 @@ appropriate hook of that major mode.  (Check the function
 did not set <code>viper-always</code> to <code>nil</code>, chances are that you won't
 need to perform the above procedure, because Viper will take care of most
 useful defaults.
-</p><p>Finally, Viper has a facility that lets the user define per-buffer
+</p>
+<p>Finally, Viper has a facility that lets the user define per-buffer
 bindings, i.e., bindings that are in effect in some specific buffers
 only.  Unlike per-mode bindings described above, per-buffer bindings can be
 defined based on considerations other than the major mode.  This is done
@@ -779,6 +788,7 @@ bindings in Emacs.
 <a name="IDX183"></a>
 <a name="IDX184"></a>
 <a name="IDX185"></a>
+
 <hr size="6">
 <a name="NOD27"></a>
 <a name="SEC28"></a>
@@ -899,6 +909,7 @@ doesn't need to be harnessed.
 <a name="IDX194"></a>
 <a name="IDX195"></a>
 <a name="IDX196"></a>
+
 <hr size="6">
 <a name="NOD28"></a>
 <a name="SEC29"></a>
@@ -1126,6 +1137,7 @@ Toggle Viperization of Emacs on and off.
 </dl>
 
 <a name="IDX216"></a>
+
 <p>Viper provides some support for multi-file documents and programs.
 If a document consists of several files we can designate one of them as a
 master and put the following at the end of that file:
@@ -1304,6 +1316,7 @@ used as a guiding example.
 </tr></table>
 <h2 class="section"> 3.4 Vi Macros </h2>
 
+
 <p>Viper supports much enhanced Vi-style macros and also facilitates the use
 of Emacs-style macros.  To define a temporary macro, it is generally more
 convenient to use Emacs keyboard macro facility.  Emacs keyboard macros are
@@ -1382,6 +1395,7 @@ only:
        [l up (meta x) n e x t - l i n e return]
        &quot;my-buf&quot;)
 </pre></td></tr></table>
+
 <p>To do the same for Vi state and all buffers with the major mode
 <code>cc-mode</code>, use:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -1389,6 +1403,7 @@ only:
        [l up (meta x) n e x t - l i n e return]
        'cc-mode)
 </pre></td></tr></table>
+
 <p>Both macro names and macro definitions are vectors of symbols that denote
 keys on the keyboard.  Some keys, like <kbd>\</kbd>, <kbd> </kbd>, or digit-keys must
 be escaped with a backslash.  Modified keys are represented as lists.  For
@@ -1400,6 +1415,7 @@ strings:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (viper-record-kbd-macro &quot;aa&quot; 'vi-state  &quot;aaa\e&quot;  &quot;my-buffer&quot;)
 </pre></td></tr></table>
+
 <p>Thus, typing <kbd>aa</kbd> fast in Vi state will switch Viper to Insert state
 (due to the first <kbd>a</kbd>), insert <kbd>aa</kbd>, and then it will switch back to Vi
 state.  All this will take effect only in the buffer named <code>my-buffer</code>.
@@ -1452,6 +1468,7 @@ For instance,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (global-set-key [f13] 'repeat-complex-command)
 </pre></td></tr></table>
+
 <p>binds the key f13 to the Emacs function that repeats the last minibuffer
 command.  Under Viper, however, you may still use this key for additional
 purposes, if you bind, say, a double-hitting action for that key to some
@@ -1485,10 +1502,12 @@ say, <kbd>f12 \3</kbd> like this:
                       [(meta x) r e p e a t - f r o m - h i s t o r y]
                       t)
 </pre></td></tr></table>
+
 <p>Note that even though the macro uses the function key <kbd>f12</kbd>, the key is
 actually free and can still be bound to some Emacs function via
 <code>define-key</code> or <code>global-set-key</code>.
-</p><p>Viper allows the user to define macro names that are prefixes of other macros.
+</p>
+<p>Viper allows the user to define macro names that are prefixes of other macros.
 For instance, one can define <kbd>[[</kbd> and <kbd>[[[[</kbd> to be macros.
 If you type the exact sequence of such keys and then pause, Viper will
 execute the right macro.  However, if you don't pause and, say, type

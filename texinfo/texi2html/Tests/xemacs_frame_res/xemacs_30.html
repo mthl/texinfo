@@ -238,6 +238,7 @@ documentation of the variable.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-h v fill-column <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>prints something like:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 fill-column's value is 75
@@ -247,6 +248,7 @@ Documentation:
 Automatically becomes local when set in any fashion.
 </pre></td></tr></table>
 <a name="IDX1475"></a>
+
 <p>The star at the beginning of the documentation indicates that this variable
 is an option.  <kbd>C-h v</kbd> is not restricted to options; it allows any
 variable name.
@@ -258,6 +260,7 @@ new value using the minibuffer a second time.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x set-variable <kbd>RET</kbd> fill-column <kbd>RET</kbd> 75 <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>sets <code>fill-column</code> to 75, as if you had executed the Lisp expression
 <code>(setq fill-column 75)</code>.
 </p><p>  Setting variables in this way, like all means of customizing Emacs
@@ -344,6 +347,7 @@ Interfacing to external utilities.
 \- Emacs group end ------------------------------------------------/
 
 </pre></td></tr></table>
+
 <p>This says that the buffer displays the contents of the <code>Emacs</code>
 group.  The other groups are listed because they are its contents.  But
 they are listed differently, without indentation and dashes, because
@@ -467,6 +471,7 @@ Load Path:
    [State]: this item has been changed outside the customization buffer.
 List of directories to search for files to load....
 </pre></td></tr></table>
+
 <p>Each directory in the list appears on a separate line, and each line has
 several editable or active fields.
 </p><p>  You can edit any of the directory names.  To delete a directory from
@@ -530,6 +535,7 @@ containing several active fields:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
  [Set] [Save] [Reset]  [Done]
 </pre></td></tr></table>
+
 <p>Invoking `<samp>[Done]</samp>' buries this customization buffer.  Each of the
 other fields performs an operation--set, save or reset--on each of the
 items in the buffer that could meaningfully be set, saved or reset.
@@ -588,7 +594,8 @@ display.  For example, a face can make text red on a color display, but
 use a bold font on a monochrome display.  To specify multiple
 appearances for a face, select `<samp>Show Display Types</samp>' in the menu you
 get from invoking `<samp>[State]</samp>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD333"></a>
 <a name="SEC359"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -840,6 +847,7 @@ not be visible until you switch to another buffer, as in the case of:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (setq-default fill-column 75)
 </pre></td></tr></table>
+
 <p><code>setq-default</code> is the only way to set the global value of a variable
 that has been marked with <code>make-variable-buffer-local</code>.
 </p><a name="IDX1502"></a>
@@ -1060,6 +1068,7 @@ definition, without becoming part of it.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x ( M-f foo C-x )
 </pre></td></tr></table>
+
 <p>defines a macro to move forward a word and then insert `<samp>foo</samp>'.
 </p><p>You can give <kbd>C-x )</kbd> a repeat count as an argument, in which case it
 repeats the macro that many times right after defining it, but defining
@@ -1117,6 +1126,7 @@ you want to save the definition in.  Then use the command:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x insert-kbd-macro <kbd>RET</kbd> <var>macroname</var> <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>This inserts some Lisp code that, when executed later, will define the same
 macro with the same definition it has now.  You need not understand Lisp
 code to do this, because <code>insert-kbd-macro</code> writes the Lisp code for you.
@@ -1410,6 +1420,7 @@ the same major mode.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x global-set-key <kbd>RET</kbd> C-f next-line <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>redefines <kbd>C-f</kbd> to move down a line.  The fact that <var>cmd</var> is
 read second makes it serve as a kind of confirmation for <var>key</var>.
 </p><p>  These functions offer no way to specify a particular prefix keymap as
@@ -1423,6 +1434,7 @@ another character is read, and so on.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x global-set-key <kbd>RET</kbd> C-x 4 $ spell-other-window <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>redefines <kbd>C-x 4 $</kbd> to run the (fictitious) command
 <code>spell-other-window</code>.
 </p><a name="IDX1521"></a>
@@ -1460,6 +1472,7 @@ old definition to have the new definition instead.
 to rebind keys under program control.
 </p><a name="IDX1523"></a>
 <a name="IDX1524"></a>
+
 <dl compact="compact">
 <dt><kbd>  <code>(global-set-key <var>keys</var> <var>cmd</var>)</code>
 </kbd></dt>
@@ -1536,6 +1549,7 @@ abbreviation as an alternate representation.)
 (define-key dired-mode-map '(meta control button3) 'my-command)
 
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD346"></a>
 <a name="SEC372"></a>
@@ -2448,6 +2462,7 @@ When called from a program, returns <code>nil</code> if not possible.
 
 <a name="IDX1537"></a>
 <a name="IDX1538"></a>
+
 <a name="IDX1539"></a>
 <p>You can exchange the foreground and background color of the selected
 <var>face</var> with the function <code>invert-face</code>. If the face does not
@@ -2586,14 +2601,17 @@ its own name or the same name as another, depending on the name passed to the
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*parameter: value
 </pre></td></tr></table>
+
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*EmacsFrame.parameter:value
 </pre></td></tr></table>
+
 <p>You can specify resources for a particular frame with the syntax:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*FRAME-NAME.parameter: value
 </pre></td></tr></table>
+
 <table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC386">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling the size and position of frames.</td></tr>
@@ -2630,14 +2648,17 @@ do this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*EmacsFrame.geometry: 80x55
 </pre></td></tr></table>
+
 <p>To set the geometry of a particular frame named `<samp>fred</samp>', do this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*fred.geometry: 80x55
 </pre></td></tr></table>
+
 <p>Important! Do not use the following syntax:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*geometry: 80x55
 </pre></td></tr></table>
+
 <p>You should never use <code>*geometry</code> with any X application. It does
 not say &quot;make the geometry of Emacs be 80 columns by 55 lines.&quot;  It
 really says, &quot;make Emacs and all subwindows thereof be 80x55 in whatever
@@ -2649,6 +2670,7 @@ default size of all Emacs frames to 80 columns by 55 lines):
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs.geometry: 80x55
 </pre></td></tr></table>
+
 <p>since that is the syntax used with most other applications (since most
 other applications have only one top-level window, unlike Emacs).  In
 general, however, the top-level shell (the unmapped ApplicationShell
@@ -2918,10 +2940,12 @@ resources are used to initialize the variables
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs.FACE_NAME.parameter: value
 </pre></td></tr></table>
+
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Emacs*FRAME_NAME.FACE_NAME.parameter: value
 </pre></td></tr></table>
+
 <p>Faces accept the following resources:
 </p><dl compact="compact">
 <dt> <code>attributeFont</code> (class <code>AttributeFont</code>): font-name
@@ -3024,6 +3048,7 @@ Description) format, which looks like
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 </pre></td></tr></table>
+
 <p>If you use any of the other, less strict font name formats, some of which
 look like
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -3120,7 +3145,9 @@ Emacs*menubar*fontList: *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 of <code>font</code>, which has subtly different semantics.
 </p><p>The same is true of the scrollbars: They accept whichever resources are 
 appropriate for the toolkit in use.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <a name="NOD365"></a>
 <a name="SEC392"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -3400,6 +3427,7 @@ asks two questions before going back to what it had been doing:
 Auto-save? (y or n)
 Abort (and dump core)? (y or n)
 </pre></td></tr></table>
+
 <p>Answer each one with <kbd>y</kbd> or <kbd>n</kbd> followed by <kbd>RET</kbd>.
 </p><p>  Saying <kbd>y</kbd> to `<samp>Auto-save?</samp>' causes immediate auto-saving of all
 modified buffers in which auto-saving is enabled.
@@ -3626,6 +3654,7 @@ dribble file; execute the Lisp expression:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (open-dribble-file &quot;~/dribble&quot;)
 </pre></td></tr></table>
+
 <p>using <kbd>Meta-<kbd>ESC</kbd></kbd> or from the `<samp>*scratch*</samp>' buffer just after starting
 Emacs.  From then on, all Emacs input will be written in the specified
 dribble file until the Emacs process is killed.
@@ -3661,7 +3690,11 @@ to the mailing list itself.
 should also check the `<samp>FAQ</samp>' in `<samp>/pub/xemacs</samp>' on our anonymous 
 FTP server. It provides some introductory information and help for initial 
 configuration problems.
-</p><hr size="6">
+</p>
+
+
+
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC351" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_31.html#SEC403" title="Next chapter"> &gt;&gt; </a>]</td>

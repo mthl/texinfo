@@ -106,6 +106,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 </tr></table>
 <h2 class="section"> 1.1 Emacs Preliminaries </h2>
 
+
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
@@ -145,6 +146,7 @@ automatically in front of the Ex command.
 <a name="IDX4"></a>
 <a name="IDX5"></a>
 <a name="IDX6"></a>
+
 <p>Emacs divides the screen into tiled <em>windows</em>.  You can see the
 contents of a buffer through the window associated with the buffer.  The
 cursor of the screen is positioned on the character after <em>point</em>.
@@ -166,6 +168,7 @@ commands.
 <a name="IDX10"></a>
 <a name="IDX11"></a>
 <a name="IDX12"></a>
+
 <p>An Emacs buffer can have a <em>major mode</em> that customizes Emacs for
 editing text of a particular sort by changing the functionality of the keys.
 Keys are defined using a <em>keymap</em> that records the bindings between
@@ -186,6 +189,7 @@ more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Mi
 </p><a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
+
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
 are involved when Viper emulates Vi command mode, Vi insert mode, etc.
 You can also turn Viper on and off at any time while in Vi command mode.
@@ -230,6 +234,7 @@ lines (in the given order!):
 (setq viper-mode t)
 (require 'viper)
 </pre></td></tr></table>
+
 <p>in your `<tt>~/.emacs</tt>' file.  The `<tt>.emacs</tt>' file is placed in your
 home directory and it is be executed every time you invoke Emacs.  This is
 the place where all general Emacs customization takes place.  Beginning with
@@ -286,6 +291,7 @@ toggles Viperization of Emacs on and off.
 </tr></table>
 <h2 class="section"> 1.3 States in Viper </h2>
 
+
 <p>Viper has four states, Emacs, Vi, Insert, and Replace.
 </p><dl compact="compact">
 <dt>`<samp> Emacs state
@@ -295,7 +301,8 @@ Viper, <kbd>C-z</kbd> will normally take you to Vi command state.  Another
 <kbd>C-z</kbd> will take you back to Emacs state.  This toggle key can be
 changed, see section <a href="viper_4.html#SEC25">Customization</a> You can also type <kbd>M-x viper-mode</kbd> to
 change to Vi state.
-</p><p>For users who chose to set their user level to 1 at Viper setup time,
+</p>
+<p>For users who chose to set their user level to 1 at Viper setup time,
 switching to Emacs state is deliberately made harder in order to not
 confuse the novice user.  In this case, <kbd>C-z</kbd> will either iconify Emacs
 (if Emacs runs as an application under X) or it will stop Emacs (if
@@ -337,6 +344,7 @@ replacement state.
 </dl>
 
 <a name="IDX16"></a>
+
 <p>The modes are indicated on the <em>mode line</em> as &lt;E&gt;, &lt;I&gt;, &lt;V&gt;, and &lt;R&gt;,
 so that the multiple modes do not confuse you.  Most of your editing can be
 done in Vi and Insert states.  Viper will try to make all new buffers be in Vi
@@ -397,6 +405,8 @@ to allow Emacs keys in Insert state.
 </tr></table>
 <h3 class="subsection"> 1.3.1 Emacs State </h3>
 
+
+
 <p>You will be in this mode only by accident (hopefully).  This is the state
 Emacs is normally in (imagine!!).  Now leave it as soon as possible by
 typing <kbd>C-z</kbd>.  Then you will be in Vi state (sigh of relief) :-).
@@ -417,7 +427,8 @@ sequences that begin with <kbd>C-x</kbd> and <kbd>C-c</kbd>.
 from Emacs or Insert states: typing <kbd>C-c \</kbd> will let you execute a
 single Vi command while staying in Viper's Emacs or Insert state.
 In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD7"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -437,6 +448,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 1.3.2 Vi State </h3>
+
 
 <p>This is the Vi command mode.  When Viper is in Vi state, you will see the sign
 &lt;V&gt; in the mode line.  Most keys will work as in Vi.  The notable
@@ -507,7 +519,8 @@ of repeatable undo means that <kbd>U</kbd>, undoing lines, is not very
 important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 <a name="IDX24"></a>
 <a name="IDX25"></a>
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> Counts
 </samp>'</dt>
 <dd><p>Most commands, <kbd>~</kbd>, <kbd>[[</kbd>, <kbd>p</kbd>, <kbd>/</kbd>, <small class="dots">...</small>, etc., take counts.
@@ -609,6 +622,7 @@ See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more info
 </tr></table>
 <h3 class="subsection"> 1.3.3 Insert State </h3>
 
+
 <p>To avoid confusing the beginner (at Viper level 1 and 2), Viper makes only the
 standard Vi keys available in Insert state.  The implication is that
 Emacs major modes cannot be used in Insert state.
@@ -637,7 +651,9 @@ strings of text can be recovered by repeatedly typing <kbd>C-c M-p</kbd> or
 <kbd>C-c M-n</kbd> while in Insert or Replace state.  (This feature is disabled
 in the minibuffer: the above keys are usually bound to other histories,
 which are more appropriate in the minibuffer.)
-</p><a name="IDX32"></a>
+</p>
+<a name="IDX32"></a>
+
 <p>You can call Meta functions from Insert state.  As in Vi state, the Meta key
 is <kbd>C-\</kbd>.  Thus <kbd>M-x</kbd> is typed as <kbd>C-\ x</kbd>.
 </p><p>Other Emacs commands that are useful in Insert state are <kbd>C-e</kbd>
@@ -674,6 +690,7 @@ the Insert state.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 1.3.4 Replace State </h3>
+
 
 <p>This state is entered through Vi replacement commands, such as <kbd>C</kbd>,
 <kbd>cw</kbd>, etc., or by typing <kbd>R</kbd>.  In Replace state, Viper puts &lt;R&gt; in
@@ -718,6 +735,7 @@ region.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.4 The Minibuffer </h2>
+
 
 <p>The Minibuffer is where commands are entered in.  Editing can be done
 by commands from Insert state, namely:
@@ -790,6 +808,7 @@ See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more details.
 </tr></table>
 <h2 class="section"> 1.5 Multiple Files in Viper </h2>
 
+
 <p>Viper can edit multiple files.  This means, for example that you never need
 to suffer through <code>No write since last change</code> errors.
 Some Viper elements are common over all the files.
@@ -857,6 +876,7 @@ filename argument in `<samp>csh</samp>', by default.  See section <a href="viper
 want to change this.
 </p></dd>
 </dl>
+
 
 <p>Currently undisplayed files can be listed using the <kbd>:ar</kbd> command.  The
 command <kbd>:n</kbd> can be given counts from the <kbd>:ar</kbd> list to switch to

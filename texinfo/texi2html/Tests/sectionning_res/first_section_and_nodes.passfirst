@@ -1,4 +1,5 @@
 
+
 Garbage
 
 @titlefont{Example with a section before the top node and another node}
@@ -18,4 +19,5 @@ Top node
 
 @titlefont{This is the second node}
 second node
+
 

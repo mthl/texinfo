@@ -107,6 +107,7 @@ line.
 <tr><td align="left" valign="top"><a href="#SEC154">10.13 <code>@cartouche</code>: Rounded Rectangles Around Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Drawing rounded rectangles around examples.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD128"></a>
 <a name="SEC142"></a>
@@ -193,7 +194,8 @@ paragraph.
 </p><p>You can use the <code>@cartouche</code> command within one of the above
 constructs to highlight the example or quotation by drawing a box with
 rounded corners around it.  See section <a href="#SEC154">Drawing Cartouches Around Examples</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD129"></a>
 <a name="SEC143"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -245,11 +247,13 @@ This is
 a foo.
 @end quotation
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
 <p>This is a foo.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD130"></a>
@@ -295,6 +299,7 @@ line by itself.
 mv foo bar
 @end example
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 mv foo bar
@@ -324,7 +329,8 @@ being indented as if it were a new paragraph.
 </p><p>(The <code>@code</code> command is used for examples of code that are
 embedded within sentences, not set off from preceding and following
 text.  See section <a href="texinfo_10.html#SEC122"><code>@code</code></a>.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD131"></a>
 <a name="SEC145"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -374,6 +380,7 @@ expand&lt;tab&gt;me
 }
 @end verbatim
 </pre></td></tr></table>
+
 <p>produces
 </p><pre class="verbatim">{
 	@command with strange characters: @'e 
@@ -385,7 +392,8 @@ produce no output, tyically you should put a blank line before the
 <code>@verbatim</code> and another blank line after the <code>@end
 verbatim</code>.  Blank lines between the beginning <code>@verbatim</code> and the
 ending <code>@end verbatim</code> will appear in the output.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD132"></a>
 <a name="SEC146"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -414,7 +422,8 @@ ending <code>@end verbatim</code> will appear in the output.
 <p>The contents of <var>filename</var> is printed in a verbatim environment
 (see section <a href="#SEC145"><code>@verbatim</code></a>).  Generally, the file is printed
 exactly as it is, with all special characters and white space retained.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD133"></a>
 <a name="SEC147"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -448,7 +457,8 @@ Texinfo file.  Then you can use the Texinfo file as a Lisp
 library.<a name="DOCF7" href="texinfo_fot.html#FOOT7">(7)</a>
 </p><p>Mark the end of <code>@lisp</code> with <code>@end lisp</code> on a line by
 itself.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD134"></a>
 <a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -495,7 +505,8 @@ consistently within a chapter.  Only occasionally should you mix the two
 formats.
 </p><p>See section <a href="texinfo_20.html#SEC255">Printing &quot;Small&quot; Books</a>, for more information
 about the <code>@smallbook</code> command.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD135"></a>
 <a name="SEC149"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -532,7 +543,8 @@ indents the text, but does not fill it.
 <p>Texinfo also provides a command <code>@smalldisplay</code>, which is like
 <code>@display</code> but uses a smaller font in <code>@smallbook</code> format.
 See section <a href="#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD136"></a>
 <a name="SEC150"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -566,7 +578,9 @@ the <code>@format</code> command does not fill the text.
 <p>Texinfo also provides a command <code>@smallformat</code>, which is like
 <code>@format</code> but uses a smaller font in <code>@smallbook</code> format.
 See section <a href="#SEC148"><code>@small<small class="dots">...</small></code> Block Commands</a>.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <a name="NOD137"></a>
 <a name="SEC151"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -601,6 +615,7 @@ This line follows the exdented line.
 The @@end example comes on the next line.
 @end group
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line follows an @example command.
@@ -611,7 +626,8 @@ The @end example comes on the next line.
 <p>In practice, the <code>@exdent</code> command is rarely used.
 Usually, you un-indent text by ending the example and
 returning the page to its normal width.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD138"></a>
 <a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -645,6 +661,7 @@ This text is
 written flushleft.
 @end flushleft
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
@@ -652,6 +669,7 @@ written flushleft.
 <p align="left">This text is
 written flushleft.
 </p></blockquote>
+
 
 <p><code>@flushright</code> produces the type of indentation often used in the
 return address of letters.  For example,
@@ -663,6 +681,7 @@ right justifies every line but leaves the
 left end ragged.
 @end flushright
 </pre></td></tr></table>
+
 <p>produces
 </p>
 <p align="right">Here is an example of text written
@@ -670,6 +689,7 @@ flushright.  The <code>@flushright</code> command
 right justifies every line but leaves the
 left end ragged.
 </p>
+
 <hr size="6">
 <a name="NOD139"></a>
 <a name="SEC153"></a>
@@ -708,6 +728,7 @@ beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
 @code{@@display} and @code{@@end display}.)
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="display">
 </pre><table><tr><td>&nbsp;</td><td><pre class="example"> 
@@ -727,7 +748,8 @@ blank line, and neither does the <code>@end example</code> line.
 </p><p>Do not put braces after an <code>@noindent</code> command; they are not
 necessary, since <code>@noindent</code> is a command used outside of
 paragraphs (see section <a href="texinfo_29.html#SEC320">@-Command Syntax</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD140"></a>
 <a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -764,9 +786,12 @@ other output files.
 @end cartouche
 @end example
 </pre></td></tr></table>
+
 <p>surrounds the two-line example with a box with rounded corners, in the
 printed manual.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC141" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_12.html#SEC155" title="Next chapter"> &gt;&gt; </a>]</td>

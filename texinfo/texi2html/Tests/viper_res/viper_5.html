@@ -102,6 +102,7 @@ specifier for other commands.
 We classify motion commands into <em>point commands</em> and
 <em>line commands</em>.
 </p><a name="IDX233"></a>
+
 <p>The point commands are:
 </p><blockquote>
 
@@ -111,6 +112,7 @@ We classify motion commands into <em>point commands</em> and
 </p></blockquote>
 
 <a name="IDX234"></a>
+
 <p>The line commands are:
 </p><blockquote>
 
@@ -118,10 +120,12 @@ We classify motion commands into <em>point commands</em> and
 <kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
 </p></blockquote>
 
+
 <p>Text Deletion Commands (see section <a href="#SEC38">Deleting Text</a>), Change commands
 (see section <a href="#SEC39">Changing Text</a>), even Shell Commands (see section <a href="#SEC46">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
 </p><a name="IDX235"></a>
+
 <p>Viper adds two region descriptors, <kbd>r</kbd> and <kbd>R</kbd>.  These describe
 the Emacs regions (see section <a href="viper_3.html#SEC15">Basics</a>), but they are not movement commands.
 </p><p>The command description uses angle brackets `<samp>&lt;&gt;</samp>' to indicate
@@ -136,6 +140,7 @@ mentioned together!!!
 <a name="IDX240"></a>
 <a name="IDX241"></a>
 <a name="IDX242"></a>
+
 <p>`<samp>&lt;move&gt;</samp>' refers to the above movement commands, and `<samp>&lt;a-z&gt;</samp>'
 refers to registers or textmarkers from `<samp>a</samp>' to `<samp>z</samp>'.  Note
 that the `<samp>&lt;move&gt;</samp>'  is described by full move commands, that is to
@@ -197,9 +202,11 @@ in the VI sense if you have one window only.
 <a name="IDX248"></a>
 <a name="IDX249"></a>
 <a name="IDX250"></a>
+
 <p>Others like `<samp>&lt;args&gt; -- arguments</samp>', `<samp>&lt;cmd&gt; -- command</samp>' etc.
 should be fairly obvious.
-</p><p>Common characters referred to include:
+</p>
+<p>Common characters referred to include:
 </p><dl compact="compact">
 <dt><kbd> &lt;sp&gt;
 </kbd></dt>
@@ -232,6 +239,7 @@ should be fairly obvious.
 <a name="IDX257"></a>
 <a name="IDX258"></a>
 <a name="IDX259"></a>
+
 <p>We also use `<samp>word</samp>' for alphanumeric/non-alphanumeric words, and
 `<samp>WORD</samp>' for whitespace delimited words.  `<samp>char</samp>' refers to any
 ASCII character, `<samp>CHAR</samp>' to non-whitespace character.
@@ -278,6 +286,9 @@ modes, you should execute, for example,
 </p><a name="IDX260"></a>
 <a name="IDX261"></a>
 <a name="IDX262"></a>
+
+
+
 <p>The above discussion concerns only the movement commands.  In regular
 expressions, words remain the same as in Emacs.  That is, the expressions
 <code>\w</code>, <code>\&gt;</code>, <code>\&lt;</code>, etc., use Emacs' idea of what is a word,
@@ -351,6 +362,7 @@ inserts them automatically in front of the Ex command.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 4.2.1 Move Commands </h3>
+
 
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  h  C-h
@@ -651,6 +663,7 @@ See section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>, and See section
 see <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for an explanation of
 the Emacs mark ring.
 </p><a name="IDX323"></a>
+
 <dl compact="compact">
 <dt><kbd> m&lt;a-z&gt;
 </kbd></dt>
@@ -746,6 +759,7 @@ Also see options for word-wrap.
 <a name="IDX337"></a>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
+
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  a
 </kbd></dt>
@@ -870,6 +884,7 @@ between Insert/Replace/Vi states at will.
 Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <var>viper-vi-style-in-minibuffer</var> to <code>nil</code>.
 </p><a name="IDX356"></a>
+
 <dl compact="compact">
 <dt><kbd> C-v
 </kbd></dt>
@@ -914,6 +929,7 @@ current line.
 </tr></table>
 <h3 class="subsection"> 4.2.5 Deleting Text </h3>
 
+
 <p>There is one difference in text deletion that you should be
 aware of.  This difference comes from Emacs and was adopted in Viper
 because we find it very useful.  In Vi, if you delete a line, say, and then
@@ -926,6 +942,7 @@ newly deleted text could be put back separately from the previously deleted
 text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
 </p><a name="IDX360"></a>
+
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  x
 </kbd></dt>
@@ -985,6 +1002,7 @@ shiftwidth to the left (layout!).
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h3 class="subsection"> 4.2.6 Changing Text </h3>
+
 
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  r&lt;char&gt;
@@ -1271,6 +1289,7 @@ can be used in &lt;repl&gt;</em>.
 </tr></table>
 <h3 class="subsection"> 4.2.8 Yanking </h3>
 
+
 <dl compact="compact">
 <dt><kbd> &lt;count&gt;  y&lt;move&gt;
 </kbd></dt>
@@ -1353,6 +1372,7 @@ be automatically down-cased.
 </tr></table>
 <h3 class="subsection"> 4.2.9 Undoing </h3>
 
+
 <dl compact="compact">
 <dt><kbd>  u U
 </kbd></dt>
@@ -1403,6 +1423,7 @@ that have a `<samp>~</samp>' appended to them.
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.3 Display </h2>
+
 
 <dl compact="compact">
 <dt><kbd> C-g
@@ -1484,6 +1505,7 @@ initialization: half a page).
 <a name="IDX439"></a>
 <a name="IDX440"></a>
 
+
 <hr size="6">
 <a name="NOD43"></a>
 <a name="SEC44"></a>
@@ -1504,6 +1526,7 @@ initialization: half a page).
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.4 File and Buffer Handling </h2>
+
 
 <p>In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don't
@@ -1740,6 +1763,7 @@ is typed in Minibuffer.  File completion and history are supported.
 </tr></table>
 <h2 class="section"> 4.5 Mapping </h2>
 
+
 <dl compact="compact">
 <dt><kbd> :map &lt;string&gt;
 </kbd></dt>
@@ -1850,6 +1874,7 @@ See section <a href="viper_3.html#SEC18">Macros and Registers</a>, for more info
 </tr></table>
 <h2 class="section"> 4.6 Shell Commands </h2>
 
+
 <p>The symbol `<samp>%</samp>' is used in Ex shell commands to mean current file.  If
 you want a `<samp>%</samp>' in your command, it must be escaped as `<samp>\%</samp>'.
 <a name="IDX492"></a>
@@ -1864,6 +1889,7 @@ the VI sense if you have one window.
 &lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
 better mechanism.
 </p><a name="IDX494"></a>
+
 <dl compact="compact">
 <dt><kbd> :sh
 </kbd></dt>
@@ -1950,6 +1976,7 @@ current).
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.7 Options </h2>
+
 
 <dl compact="compact">
 <dt><kbd> autoindent

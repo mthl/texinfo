@@ -68,6 +68,7 @@ first node chapter text
 @node numbered sub3
 @subsection numbered subsection3
 
+
 @node numbered
 @section  numbered section
 
@@ -87,6 +88,7 @@ second node chapter text.
 @unnumbered unnumbered chapter
 
 unnumbered chapter text.
+
 
 @node Last node no description,,Third node unnumbered,Top
 

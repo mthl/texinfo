@@ -138,6 +138,7 @@ insert or edit any header fields using ordinary editing commands.
 --text follows this line--
 </pre></td></tr></table>
 <a name="IDX1117"></a>
+
 <p>is a special delimiter that separates the headers you have specified from
 the text.  Whatever follows this line is the text of the message; the
 headers precede it.  The delimiter line itself does not appear in the
@@ -232,9 +233,11 @@ to think about it.
 </p></dd>
 </dl>
 
+
 <p>The `<samp>To</samp>', `<samp>CC</samp>', `<samp>BCC</samp>' and `<samp>FCC</samp>' fields can appear
 any number of times, to specify many places to send the message.
-</p><p>The `<samp>To</samp>', `<samp>CC</samp>', and `<samp>BCC</samp>', fields can have continuation
+</p>
+<p>The `<samp>To</samp>', `<samp>CC</samp>', and `<samp>BCC</samp>', fields can have continuation
 lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
 example,
@@ -242,6 +245,7 @@ example,
 To: foo@here, this@there,
   me@gnu.cambridge.mass.usa.earth.spiral3281
 </pre></td></tr></table>
+
 <a name="IDX1118"></a>
 <p>If you have a `<tt>~/.mailrc</tt>' file, Emacs scans it for mail aliases the
 first time you try to send mail in an Emacs session.  Emacs expands
@@ -415,7 +419,8 @@ on the prefix <kbd>C-c C-f</kbd> (`<samp>C-f</samp>' is for &quot;field&quot;). 
 C-f C-s</kbd> (<code>mail-subject</code>) for the `<samp>Subject</samp>' field, and <kbd>C-c
 C-f C-c</kbd> (<code>mail-cc</code>) for the `<samp>CC</samp>' field.  These fields have
 special motion commands because they are edited most frequently. 
-</p><a name="IDX1134"></a>
+</p>
+<a name="IDX1134"></a>
 <a name="IDX1135"></a>
 <p>  <kbd>C-c C-w</kbd> (<code>mail-signature</code>) adds a standard piece of text at
 the end of the message to say more about who you are.  The text comes
@@ -446,7 +451,8 @@ the above commands, for easy access.
 value of <code>text-mode-hook</code>, if it is not void or <code>nil</code>, and
 then calls the value of <code>mail-mode-hook</code> if that is not void or
 <code>nil</code>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC296" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_29.html#SEC300" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 2. Keystrokes, Key Sequences, and Key Bindings </h1>
 
+
 <table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC22">2.1 Keystrokes as Building Blocks of Key Sequences</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keystrokes as building blocks of key sequences.</td></tr>
@@ -117,6 +118,7 @@ and <kbd>Backspace</kbd>.
 <a name="IDX28"></a>
 <a name="IDX29"></a>
 <a name="IDX30"></a>
+
 <p>  A keystroke is like a piano chord: you get it by simultaneously
 striking several keys.  To be more precise, a keystroke consists
 of a possibly empty set of modifiers followed by a single
@@ -174,7 +176,8 @@ string and the contents used instead.  If the string is of length
 <code>n</code>, character codes <code>N</code> and up are untranslated.  If you are
 running Emacs under X, you should do the translations with the
 <code>xmodmap</code> program instead.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD21"></a>
 <a name="SEC23"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -286,6 +289,7 @@ for the character `a')
 <a name="IDX35"></a>
 <a name="IDX36"></a>
 <a name="IDX37"></a>
+
 <p>  A <em>prefix key sequence</em> is the beginning of a series of longer
 sequences that are valid key sequences; adding any single keystroke to
 the end of a prefix results in a valid key sequence.  For example,
@@ -364,6 +368,7 @@ strings.  For example, we have the following equivalent representations:
 
 <a name="IDX38"></a>
 <a name="IDX39"></a>
+
 <hr size="6">
 <a name="NOD24"></a>
 <a name="SEC26"></a>
@@ -457,6 +462,7 @@ it is beyond the scope of this manual.  However, we reprint the
 following description from the X Protocol document for your convenience:
 </p><a name="IDX41"></a>
 <a name="IDX42"></a>
+
 <p> A list of keysyms is associated with each keycode. If that list
 (ignoring trailing <code>NoSymbol</code> entries) is a single keysym `<samp>K</samp>',
 then the list is treated as if it were the list 
@@ -498,6 +504,7 @@ upper-case keysym is used instead.
 following description of modifier mapping from the InterClient 
 Communications Conventions Manual:
 </p><a name="IDX43"></a>
+
 <p> X11 supports 8 modifier bits, of which 3 are pre-assigned to 
 <code>Shift</code>, <code>Lock</code>, and <code>Control</code>. Each modifier bit is 
 controlled by the state of a set of keys, and these sets are specified 
@@ -536,6 +543,7 @@ add that keycode to the set for the chosen modifier, and then:
 If the controlling set is still empty, interact with the user to 
 select one or more keys to be <code>Meta</code>.
 </p></li></ol>
+
 
 </li><li><p>
 If there are no unused modifier bits, ask the user to take corrective action.
@@ -650,7 +658,8 @@ customizing, you can ignore the information about variables.  When you
 are ready to be interested, read the basic information on variables, and 
 then the information on individual variables will make sense.
 See section <a href="xemacs_30.html#SEC353">Variables</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD28"></a>
 <a name="SEC30"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -689,7 +698,8 @@ files, saving and printing buffers, as well as exiting Emacs.
 <dd><p>Perform standard editing operations, such as 
 cutting, copying, pasting, and killing selected text.
 <a name="IDX46"></a>
-</p></dd>
+</p>
+</dd>
 <dt><b> Apps
 </b></dt>
 <dd><p>Access to sub-applications implemented within XEmacs, such as the mail
@@ -790,6 +800,7 @@ window, usually together with some documentation.
 </tr></table>
 <h3 class="subsection"> 2.4.1 The File Menu </h3>
 
+
 <p>The <b>File</b> menu bar item contains the items <b>New Frame</b>, <b>Open
 File...</b>, <b>Save Buffer</b>, <b>Save Buffer As...</b>, <b>Revert Buffer</b>,
 <b>Print Buffer</b>, <b>Delete Frame</b>, <b>Kill Buffer</b> and <b>Exit Emacs</b>
@@ -809,6 +820,7 @@ equivalent command.
 <a name="IDX65"></a>
 <a name="IDX66"></a>
 <a name="IDX67"></a>
+
 <dl compact="compact">
 <dt><b> Open File, New Frame...
 </b></dt>
@@ -933,7 +945,8 @@ executes the equivalent command.  Most commands on the <b>Edit</b> menu
 work on a block of text, the X selection.  They appear faded until you
 select a block of text (activate a region) with the mouse.  See section <a href="xemacs_12.html#SEC95">Using X Selections</a>, see section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, and see section <a href="xemacs_12.html#SEC91">Yanking</a> for more
 information.
-</p><a name="IDX68"></a>
+</p>
+<a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
 <a name="IDX71"></a>
@@ -1354,6 +1367,7 @@ of <b>Menu</b>.
 <a name="IDX96"></a>
 <a name="IDX97"></a>
 <a name="IDX98"></a>
+
 <p>To disable a menu item, use <code>disable-menu-item</code>.  The disabled
 menu item is grayed and can no longer be selected.  To make the
 item selectable again, use <code>enable-menu-item</code>.

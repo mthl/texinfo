@@ -420,6 +420,7 @@ prints a message such as:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Wrote /u/rms/gnu/gnu.tasks
 </pre></td></tr></table>
+
 <p>If the selected buffer is not modified (no changes have been made in it
 since the buffer was created or last saved), Emacs does not save it
 because it would have no effect.  Instead, <kbd>C-x C-s</kbd> prints a message
@@ -596,6 +597,7 @@ Otherwise, make single backups.
 <dd><p>Never make numbered backups; always make single backups.
 </p></dd>
 </dl>
+
 
 <p><code>version-control</code> may be set locally in an individual buffer to
 control the making of backups for that buffer's file.  For example,
@@ -1167,6 +1169,7 @@ This undoes your last check-in.
 </p></dd>
 </dl>
 
+
 <p>(<kbd>C-x v</kbd> is the prefix key for version control commands; all of these
 commands except for <kbd>C-x C-q</kbd> start with <kbd>C-x v</kbd>.)
 </p><a name="IDX587"></a>
@@ -1394,6 +1397,7 @@ Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * rcs2log: Ignore log messages that start with `#'.
 </pre></td></tr></table>
+
 <p>You can then edit the new change log entry further as you wish.
 </p><p>  Normally, the log entry for file `<tt>foo</tt>' is displayed as `<samp>*
 foo: <var>text of log entry</var></samp>'.  The `<samp>:</samp>' after `<tt>foo</tt>' is omitted
@@ -1442,6 +1446,7 @@ For `<tt>vc.el</tt>':
 For `<tt>vc-hooks.el</tt>':
 {expand} Don't call expand-file-name.
 </pre></td></tr></table>
+
 <p>Then the text in `<tt>ChangeLog</tt>' looks like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
@@ -1804,6 +1809,7 @@ element.  The default value for <code>vc-static-header-alist</code> is:
   &quot;\n#ifndef lint\nstatic char vcid[] = \&quot;\%s\&quot;;\n\
 #endif /* lint */\n&quot;))
 </pre></td></tr></table>
+
 <p>which specifies insertion of a string of this form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 
@@ -1856,6 +1862,7 @@ containing wildcards for the files to be listed.  For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-x C-d /u2/emacs/etc <kbd>RET</kbd>
 </pre></td></tr></table>
+
 <p>lists all the files in directory `<tt>/u2/emacs/etc</tt>'.  An example of
 specifying a file name pattern is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -2265,7 +2272,8 @@ or <kbd>DEL</kbd> to scroll backward.  Various other commands are provided for
 moving around in the file, but none for changing it; type <kbd>C-h</kbd> while
 viewing a file for a list of them.  Most commands are the default Emacs
 cursor motion commands.  To exit from viewing, type <kbd>C-c</kbd>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC134" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -1,4 +1,6 @@
 
+
+
 This file documents the XEmacs editor.
 
 Copyright (C) 1985, 1986, 1988 Richard M. Stallman.
@@ -25,6 +27,7 @@ translation approved by the author instead of in the original English.
 
 @node Top, License,, (dir)
 @top The XEmacs Editor
+
 
 XEmacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs
@@ -538,6 +541,7 @@ Dealing with XEmacs Trouble
 
 @end menu
 
+
 @node License, Distrib, Top, Top
 @unnumbered GNU GENERAL PUBLIC LICENSE
 @center Version 1, February 1989
@@ -709,6 +713,7 @@ licensor to copy, distribute or modify the Program subject to these
 terms and conditions.  You may not impose any further restrictions on the
 recipients' exercise of the rights granted herein.
 
+
 @item
 The Free Software Foundation may publish revised and/or new versions
 of the General Public License from time to time.  Such new versions will
@@ -759,6 +764,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
 @center END OF TERMS AND CONDITIONS
 
+
 @unnumberedsec Appendix: How to Apply These Terms to Your New Programs
 
   If you develop a new program, and you want it to be of the greatest
@@ -808,6 +814,7 @@ commands you use may be called something other than `show w' and `show
 c'; they could even be mouse-clicks or menu items---whatever suits your
 program.
 
+
 You should also get your employer (if you work as a programmer) or your
 school, if any, to sign a ``copyright disclaimer'' for the program, if
 necessary.  Here a sample; alter the names:
@@ -845,6 +852,7 @@ XEmacs from the anonymous FTP server @file{ftp.xemacs.org} in the directory
 @file{/pub/xemacs}.  It can also be found at numerous other archive
 sites around the world; check the file @file{etc/DISTRIB} in an XEmacs
 distribution for the latest known list.
+
 
 @unnumberedsec Getting Other Versions of Emacs
 
@@ -909,6 +917,7 @@ of the editing commands of XEmacs are written in Lisp; the few
 exceptions could have been written in Lisp but are written in C for
 efficiency.  Only a programmer can write an extension to XEmacs, but anybody
 can use it afterward.
+
 
 @node Frame, Keystrokes, Concept Index, Top
 @chapter The XEmacs Frame
@@ -986,6 +995,7 @@ selected window is the one that was last selected in that frame.
 windows, which can be in different XEmacs frames.  If you alter the text
 in an XEmacs buffer by editing it in one XEmacs window, the changes are
 visible in all XEmacs windows containing that buffer.
+
 
 @menu
 * Point::	        The place in the text where editing commands operate.
@@ -1103,6 +1113,7 @@ subsystem.
 --@var{ch}-XEmacs: @var{buf}      (@var{major} @var{minor})----@var{pos}------
 @end example
 
+
 This gives information about the buffer being displayed in the window: the
 buffer's name, what major and minor modes are in use, whether the buffer's
 text has been changed, and how far down the buffer you are currently
@@ -1164,6 +1175,7 @@ and their parentheses.  It looks like this:
 @example
 @var{hh}:@var{mm}pm @var{l.ll} [@var{d}]
 @end example
+
 
 (Some fields may be missing if your operating system cannot support them.)
 @var{hh} and @var{mm} are the hour and minute, followed always by @samp{am}
@@ -1468,8 +1480,10 @@ with MS Windows.
 Where possible, native MS Windows GUI components and capabilities are
 used in XEmacs.
 
+
 @node Keystrokes, Pull-down Menus, Frame, Top
 @chapter Keystrokes, Key Sequences, and Key Bindings
+
 
 @menu
 * Intro to Keystrokes::      Keystrokes as building blocks of key sequences.
@@ -1515,6 +1529,7 @@ and @kbd{Backspace}.
 @kindex button1up
 @kindex button2up
 @kindex button3up
+
   A keystroke is like a piano chord: you get it by simultaneously
 striking several keys.  To be more precise, a keystroke consists
 of a possibly empty set of modifiers followed by a single
@@ -1555,6 +1570,7 @@ string and the contents used instead.  If the string is of length
 @code{n}, character codes @code{N} and up are untranslated.  If you are
 running Emacs under X, you should do the translations with the
 @code{xmodmap} program instead.
+
 
 @node Representing Keystrokes, Key Sequences, Intro to Keystrokes, Keystrokes
 @subsection Representing Keystrokes
@@ -1626,6 +1642,7 @@ Typing @kbd{C-c} followed by the @kbd{break} character.
 @kindex C-h
 @kindex ESC
 @cindex prefix key sequence
+
   A @dfn{prefix key sequence} is the beginning of a series of longer
 sequences that are valid key sequences; adding any single keystroke to
 the end of a prefix results in a valid key sequence.  For example,
@@ -1688,6 +1705,7 @@ strings.  For example, we have the following equivalent representations:
 
 @kindex LFD
 @kindex TAB
+
 @node Meta Key, Super and Hyper Keys, String Key Sequences, Keystrokes
 @subsection Assignment of the @key{META} Key
  
@@ -1762,6 +1780,7 @@ following description from the X Protocol document for your convenience:
 
 @cindex keysyms
 @cindex keycode
+
  A list of keysyms is associated with each keycode. If that list
 (ignoring trailing @code{NoSymbol} entries) is a single keysym @samp{K},
 then the list is treated as if it were the list 
@@ -1809,6 +1828,7 @@ following description of modifier mapping from the InterClient
 Communications Conventions Manual:
 
 @cindex modifier mapping
+
  X11 supports 8 modifier bits, of which 3 are pre-assigned to 
 @code{Shift}, @code{Lock}, and @code{Control}. Each modifier bit is 
 controlled by the state of a set of keys, and these sets are specified 
@@ -1855,6 +1875,7 @@ add that keycode to the set for the chosen modifier, and then:
 If the controlling set is still empty, interact with the user to 
 select one or more keys to be @code{Meta}.
 @end enumerate
+
 
 @item
 If there are no unused modifier bits, ask the user to take corrective action.
@@ -1949,6 +1970,7 @@ are ready to be interested, read the basic information on variables, and
 then the information on individual variables will make sense.
 @xref{Variables}.
 
+
 @node Pull-down Menus, Entering Emacs, Keystrokes, Top
 @section XEmacs Pull-down Menus 
 
@@ -1969,6 +1991,7 @@ files, saving and printing buffers, as well as exiting Emacs.
 Perform standard editing operations, such as 
 cutting, copying, pasting, and killing selected text.
 @cindex Edit menu
+
 
 @item Apps
 Access to sub-applications implemented within XEmacs, such as the mail
@@ -2050,6 +2073,7 @@ window, usually together with some documentation.
 @subsection The File Menu
 
 @cindex File menu
+
 The @b{File} menu bar item contains the items @b{New Frame}, @b{Open
 File...}, @b{Save Buffer}, @b{Save Buffer As...}, @b{Revert Buffer},
 @b{Print Buffer}, @b{Delete Frame}, @b{Kill Buffer} and @b{Exit Emacs}
@@ -2070,6 +2094,7 @@ equivalent command.
 @cindex Un-split (Keep This)
 @cindex Un-split (Keep Others)
 @cindex Exit Emacs menu item
+
 @table @b
 @item Open File, New Frame...
 Prompts you for a filename and loads that file into a new buffer in a
@@ -2163,6 +2188,7 @@ work on a block of text, the X selection.  They appear faded until you
 select a block of text (activate a region) with the mouse.  @xref{Using
 X Selections}, @pxref{Killing}, and @pxref{Yanking} for more
 information.
+
 
 @cindex Undo menu item
 @cindex Cut menu item
@@ -2474,6 +2500,7 @@ of @b{Menu}.
 @findex enable-menu-item
 @cindex enabling menu items
 @cindex disabling menu items
+
 To disable a menu item, use @code{disable-menu-item}.  The disabled
 menu item is grayed and can no longer be selected.  To make the
 item selectable again, use @code{enable-menu-item}.
@@ -2644,6 +2671,7 @@ inspired by the use of @kbd{C-z} and @kbd{C-c} on several operating
 systems as the characters for stopping or killing a program, but that is
 their only relationship with the operating system.  You can customize
 these keys to run any commands of your choice (@pxref{Keymaps}).
+
 
 @node Command Switches, Startup Paths, Exiting, Top
 @section Command Line Switches and Arguments
@@ -2851,6 +2879,7 @@ this variable.
 xemacs *.c
 @end example
 
+
 passes each @code{.c} file as a separate argument to Emacs, so that
 Emacs visits each file (@pxref{Visiting}).
 
@@ -2861,6 +2890,7 @@ operation on the current buffer, expected to be a C program.
 @example
 xemacs -batch foo.c -l hack-c-program -f save-buffer -kill > log
 @end example
+
 
 Here Emacs is told to visit @file{foo.c}, load @file{hack-c-program.el}
 (which makes changes in the visited file), save @file{foo.c} (note that
@@ -2957,6 +2987,7 @@ Read something into the resource database for this invocation of Emacs only.
 
 @cindex startup paths
 @cindex directories
+
 XEmacs deals with a multitude of files during operation.  These files
 are spread over many directories, and XEmacs determines the location of
 most of these directories at startup and organizes them into various
@@ -3144,6 +3175,8 @@ directories as well as @code{data-directory}.
 
 @end table
 
+
+
 @node Basic, Undo, Packages, Top
 @chapter Basic Editing Commands
 
@@ -3243,6 +3276,7 @@ other non-digit is itself used as input after terminating the sequence.
 mode, to give you a convenient way to insert a digit instead of
 overwriting with it.)
 @end itemize
+
 
 A numeric argument to @kbd{C-q} specifies how many copies of the quoted
 character should be inserted (@pxref{Arguments}).
@@ -3455,6 +3489,7 @@ this file from Emacs, type:
 C-x C-f /usr/rms/foo.c @key{RET}
 @end example
 
+
 Here the file name is given as an @dfn{argument} to the command @kbd{C-x
 C-f} (@code{find-file}).  That command uses the @dfn{minibuffer} to
 read the argument, and you type @key{RET} to terminate the argument
@@ -3607,6 +3642,7 @@ point, and column of point (@code{what-cursor-position}).
 @cindex page number
 @kindex M-=
 @findex count-lines-region
+
   There are several commands for printing line numbers:
 
 @itemize @bullet
@@ -3635,6 +3671,7 @@ point.  It prints a line in the echo area that looks like this:
 Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
 @end example
 
+
 (In fact, this is the output produced when point is before @samp{column
 53} in the example.)
 
@@ -3659,6 +3696,7 @@ might say:
 @smallexample
 Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) <19591 - 19703>  column 69 
 @end smallexample
+
 
 where the two extra numbers give the smallest and largest character position
 that point is allowed to assume.  The characters between those two positions
@@ -3759,6 +3797,8 @@ emphasize that you type the argument before the command, and to
 distinguish these arguments from minibuffer arguments that come after
 the command.
 
+
+
 @node Undo, Minibuffer, Basic, Top
 @chapter Undoing Changes
 @cindex undo
@@ -3824,6 +3864,7 @@ change actions that Emacs can remember.
 @kbd{C-_}, because on some keyboards, it is not obvious how to type
 @kbd{C-_}. @kbd{C-x u} is an alternative you can type in the same
 fashion on any terminal.
+
 
 @node Minibuffer, M-x, Undo, Top
 @chapter The Minibuffer
@@ -3902,6 +3943,7 @@ directory.
 Find File: /u2/emacs/src/
 @end example
 
+
 where @samp{Find File:@: } is the prompt.  Typing @kbd{buffer.c}
 specifies the file @file{/u2/emacs/src/buffer.c}.  To find files in
 nearby directories, use @kbd{..}; thus, if you type
@@ -3919,6 +3961,7 @@ contents:
 @example
 Find File: /u2/emacs/src//etc/termcap
 @end example
+
 
 @cindex // in file name
 @cindex double slash in file name
@@ -4294,6 +4337,7 @@ of commands like @code{query-replace}, and one for compilation commands
 read by @code{compile}.  Finally, there is one ``miscellaneous'' history
 list that most minibuffer arguments use.
 
+
 @node Repetition,  , Minibuffer History, Minibuffer
 @section Repeating Minibuffer Commands
 @cindex command history
@@ -4364,6 +4408,7 @@ is a Lisp expression which describes one command and its arguments.
 Lisp programs can reexecute a command by feeding the corresponding
 @code{command-history} element to @code{eval}.
 
+
 @node M-x, Help, Minibuffer, Top
 @chapter Running Commands by Name
 
@@ -4402,6 +4447,7 @@ or
 @example
 M-x fo @key{TAB} c @key{RET}
 @end example
+
 
 After you type in @code{M-x fo TAB} emacs will give you a possible list of 
 completions from which you can choose. Note that @code{forward-char} is the 
@@ -4508,6 +4554,7 @@ a command name and arguments that follow it.
 which is responsible for reading the name of another command and invoking
 it.
 
+
 @node Help, Mark, M-x, Top
 @chapter Help
 @kindex Help
@@ -4533,6 +4580,7 @@ with the string:
 @smallexample
 A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
 @end smallexample
+
 
 You should type one of those characters.
 
@@ -4666,6 +4714,7 @@ command that you know by name.  For example,
 C-h f auto-fill-mode @key{RET}
 @end example
 
+
 displays the documentation for @code{auto-fill-mode}. Using @kbd{C-h f}
 is the only way to see the documentation of a command that is not bound
 to any key, that is, a command you would normally call using @kbd{M-x}.
@@ -4719,6 +4768,7 @@ variable.  @xref{Variables}.
 @kindex C-h A
 @findex command-apropos
 @cindex apropos
+
 @table @kbd
 @item C-h A
 Show only symbols that are names of commands
@@ -4942,6 +4992,7 @@ in distributing copies of XEmacs.  @kbd{C-h C-d}
 (@code{describe-distribution}) displays another file named
 @file{xemacs/etc/DISTRIB}, which tells you how you can order a copy of
 the latest version of XEmacs.
+
 
 @node Mark, Mouse Selection, Help, Top
 @chapter Selecting Text
@@ -5182,6 +5233,7 @@ ring.
 marker objects in the order most recent first.  This variable is local
 in every buffer.
 
+
 @node Mouse Selection, Additional Mouse Operations, Mark, Top
 @section Selecting Text with the Mouse
 @cindex mouse selection
@@ -5266,6 +5318,7 @@ could do this:
 @findex mouse-track-adjust
 @findex mouse-track-and-copy-to-cutbuffer
 @findex mouse-track-delete-and-insert
+
 @table @kbd
 @item mouse-del-char
 Delete the character pointed to by the mouse.
@@ -5345,6 +5398,8 @@ The @kbd{M-x mouse-track-insert} command is exactly the same as the
 @code{mouse-track} command on @key{button1}, except that point is not moved;
 the selected text is immediately inserted after being selected; and the
 selection is immediately disowned afterwards.
+
+
 
 @node Killing, Yanking, Additional Mouse Operations, Top
 @section Deletion and Killing
@@ -5603,6 +5658,7 @@ line of sample text
 and here is the third.
 @end example
 
+
 with point at the beginning of the second line.  If you type @kbd{C-k C-u 2
 M-@key{DEL} C-k}, the first @kbd{C-k} kills the text @samp{line of sample
 text}, @kbd{C-u 2 M-@key{DEL}} kills @samp{the first} with the newline that
@@ -5756,6 +5812,7 @@ key on your keyboard.
 Paste the text in the other application by selecting @b{Paste} from its
 menu, or by hitting the @b{Paste} key on your keyboard.
 @end itemize
+
 
 @node X Selection Commands, X Cut Buffers, X Clipboard Selection, Using X Selections
 @subsection Miscellaneous X Selection Commands
@@ -6069,6 +6126,7 @@ deleting it and then inserting a blank rectangle of the same size.
   Rectangles can also be copied into and out of registers.
 @xref{RegRect,,Rectangle Registers}.
 
+
 @node Registers, Display, Rectangles, Top
 @chapter Registers
 @cindex registers
@@ -6261,11 +6319,13 @@ used to put a file name in a register:
 (set-register ?@var{r} '(file . @var{name}))
 @end smallexample
 
+
 For example,
 
 @smallexample
 (set-register ?z '(file . "/usr/src/xemacs/src/ChangeLog"))
 @end smallexample
+
 
 puts the file name shown in register @samp{z}.
 
@@ -6374,6 +6434,7 @@ points to.
 Insert in the buffer the @emph{contents} of the file that bookmark
 @var{bookmark} points to.
 @end table
+
 
 @node Display, Search, Registers, Top
 @chapter Controlling the Display
@@ -6634,6 +6695,7 @@ the three dots at the end of a line that precedes invisible
 lines do not appear.  There is no visible indication of the invisible lines.
 This variable becomes local automatically when set.
 
+
 @node Search, Fixit, Display, Top
 @chapter Searching and Replacement
 @cindex searching
@@ -6809,6 +6871,7 @@ These are the default bindings of isearch-mode:
 @findex isearch-ring-retreat
 @findex isearch-ring-advance
 @findex isearch-complete
+
 @kindex DEL (isearch-mode)
 @kindex RET (isearch-mode)
 @kindex C-q (isearch-mode)
@@ -6820,6 +6883,7 @@ These are the default bindings of isearch-mode:
 @kindex M-p (isearch-mode)
 @kindex M-n (isearch-mode)
 @kindex M-TAB (isearch-mode)
+
 @table @kbd
 @item DEL
 Delete a character from the incremental search string (@code{isearch-delete-char}).
@@ -7199,6 +7263,7 @@ Because @samp{\} quotes special characters, @samp{\$} is a regular
 expression that matches only @samp{$}, and @samp{\[} is a regular
 expression that matches only @samp{[}, and so on.
 
+
 @end table
 
 @strong{Please note:} For historical compatibility, special characters
@@ -7376,6 +7441,7 @@ newline.
 "[.?!][]\"')]*\\($\\|\t\\|  \\)[ \t\n]*"
 @end example
 
+
 This regexp contains four parts: a character set matching
 period, @samp{?} or @samp{!}; a character set matching close-brackets,
 quotes or parentheses, repeated any number of times; an alternative in
@@ -7471,12 +7537,14 @@ For example,
 M-x replace-regexp @key{RET} c[ad]+r @key{RET} \&-safe @key{RET}
 @end example
 
+
 would replace (for example) @samp{cadr} with @samp{cadr-safe} and @samp{cddr}
 with @samp{cddr-safe}.
 
 @example
 M-x replace-regexp @key{RET} \(c[ad]+r\)-safe @key{RET} \1 @key{RET}
 @end example
+
 
 would perform exactly the opposite replacements.  To include a @samp{\}
 in the text to replace with, you must give @samp{\\}.
@@ -7492,6 +7560,7 @@ preserves case when it makes a replacement.  Thus, the following command:
 @example
 M-x replace-string @key{RET} foo @key{RET} bar @key{RET}
 @end example
+
 
 replaces a lower-case @samp{foo} with a lower case @samp{bar}, @samp{FOO}
 with @samp{BAR}, and @samp{Foo} with @samp{Bar}.  If upper-case letters are
@@ -7543,6 +7612,7 @@ or a match for @var{regexp} are:
 @kindex C-r (query-replace)
 @kindex C-w (query-replace)
 @kindex C-l (query-replace)
+
 @table @kbd
 @item @key{SPC}
 to replace the occurrence with @var{newstring}.  This preserves case, just
@@ -7641,6 +7711,7 @@ the specified regexp.
 Delete each line that follows point and contains a match for the
 specified regexp.
 @end table
+
 
 @node Fixit, Files, Search, Top
 @chapter Commands for Fixing Typos
@@ -7823,6 +7894,7 @@ only on the region, not the entire buffer.
   @kbd{M-x spell-string} reads a string as an argument and checks
 whether that is a correctly spelled English word.  It prints a message
 giving the answer in the echo area.
+
 
 @node Files, Buffers, Fixit, Top
 @chapter File Handling
@@ -8156,6 +8228,7 @@ prints a message such as:
 Wrote /u/rms/gnu/gnu.tasks
 @end example
 
+
 If the selected buffer is not modified (no changes have been made in it
 since the buffer was created or last saved), Emacs does not save it
 because it would have no effect.  Instead, @kbd{C-x C-s} prints a message
@@ -8307,6 +8380,7 @@ Otherwise, make single backups.
 @item never
 Never make numbered backups; always make single backups.
 @end table
+
 
 @code{version-control} may be set locally in an individual buffer to
 control the making of backups for that buffer's file.  For example,
@@ -8731,6 +8805,7 @@ This undoes your last check-in.
 Register the visited file in version control.
 @end table
 
+
 (@kbd{C-x v} is the prefix key for version control commands; all of these
 commands except for @kbd{C-x C-q} start with @kbd{C-x v}.)
 
@@ -8931,6 +9006,7 @@ Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@@apn.org)
         * rcs2log: Ignore log messages that start with `#'.
 @end smallexample
 
+
 You can then edit the new change log entry further as you wish.
 
   Normally, the log entry for file @file{foo} is displayed as @samp{*
@@ -8987,6 +9063,7 @@ For @file{vc.el}:
 For @file{vc-hooks.el}:
 @{expand@} Don't call expand-file-name.
 @end example
+
 
 Then the text in @file{ChangeLog} looks like this:
 
@@ -9252,6 +9329,7 @@ element.  The default value for @code{vc-static-header-alist} is:
 #endif /* lint */\n"))
 @end example
 
+
 which specifies insertion of a string of this form:
 
 @example
@@ -9288,6 +9366,7 @@ containing wildcards for the files to be listed.  For example,
 @example
 C-x C-d /u2/emacs/etc @key{RET}
 @end example
+
 
 lists all the files in directory @file{/u2/emacs/etc}.  An example of
 specifying a file name pattern is:
@@ -9592,6 +9671,7 @@ moving around in the file, but none for changing it; type @kbd{C-h} while
 viewing a file for a list of them.  Most commands are the default Emacs
 cursor motion commands.  To exit from viewing, type @kbd{C-c}.
 
+
 @node Buffers, Windows, Files, Top
 @chapter Using Multiple Buffers
 
@@ -9720,6 +9800,7 @@ buffer list:
     *scratch*      0     Lisp Interaction
 @end smallexample
 
+
 Note that the buffer @samp{*Help*} was made by a help request; it is not
 visiting any file.  The buffer @code{man} was made by Dired on the
 directory @file{/u2/emacs/man/}.
@@ -9791,6 +9872,7 @@ Offer to kill each buffer, one by one.
 @findex kill-buffer
 @findex kill-some-buffers
 @kindex C-x k
+ 
   @kbd{C-x k} (@code{kill-buffer}) kills one buffer, whose name you
 specify in the minibuffer.  If you type just @key{RET} in the
 minibuffer, the default, killing the current buffer, is used.  If the
@@ -9899,6 +9981,7 @@ that @code{buffer-menu} selects the @samp{*Buffer List*} buffer and
 @code{list-buffers} does not.  If you run @code{list-buffers} (that is,
 type @kbd{C-x C-b}) and select the buffer list manually, you can use all
 the commands described here.
+
 
 @node Windows, Mule, Buffers, Top
 @chapter Multiple Windows
@@ -10294,6 +10377,7 @@ language, to make it convenient to type them.
   The prefix key @kbd{C-x @key{RET}} is used for commands that pertain
 to world scripts, coding systems, and input methods.
 
+
 @node Language Environments, Input Methods, Mule Intro, Mule
 @section Language Environments
 @cindex language environments
@@ -10540,6 +10624,7 @@ that is used exactly for needed purpose: to convert characters between
 There are several more uses for CCL programs, not related to fonts, but
 those uses are not described here.
 
+
 @node Coding Systems, Recognize Coding, Mule and Fonts, Mule
 @section Coding Systems
 @cindex coding systems
@@ -10642,8 +10727,16 @@ non-Latin-1 characters stored with the internal XEmacs encoding.  It
 handles end-of-line conversion based on the data encountered, and has
 the usual three variants to specify the kind of end-of-line conversion.
 
+
 @node Recognize Coding, Specify Coding, Coding Systems, Mule
 @section Recognizing Coding Systems
+
+
+
+
+
+
+
 
   Most of the time, XEmacs can recognize which coding system to use for
 any given file--once you have specified your preferences.
@@ -10687,6 +10780,7 @@ example, to read and write all @samp{.txt} using the coding system
 (modify-coding-system-alist 'file "\\.txt\\'" 'china-iso-8bit)
 @end smallexample
 
+
 The first argument should be @code{file}, the second argument should be
 a regular expression that determines which files this applies to, and
 the third argument says which coding system to use for these files.
@@ -10710,6 +10804,7 @@ file.  This includes the commands @code{save-buffer} and
 a different coding system, you can specify a different coding system for
 the buffer using @code{set-buffer-file-coding-system} (@pxref{Specify
 Coding}).
+
 
 @node Specify Coding,  , Recognize Coding, Mule
 @section Specifying a Coding System
@@ -10834,6 +10929,7 @@ those non-Latin-1 characters which the specified coding system can
 encode.  By default, this variable is @code{nil}, which implies that you
 cannot use non-Latin-1 characters in file names.
 
+
 @node Major Modes, Indentation, Mule, Top
 @chapter Major Modes
 @cindex major modes
@@ -10904,6 +11000,7 @@ is a list in which each element has the form:
 (@var{regexp} . @var{mode-function})
 @end example
 
+
 For example, one element normally found in the list has the form
 @code{(@t{"\\.c$"} . c-mode)}. It is responsible for selecting C mode
 for files whose names end in @file{.c}.  (Note that @samp{\\} is needed in
@@ -10920,6 +11017,7 @@ The mode name should appear in this line both preceded and followed by
 ;-*-Lisp-*-
 @end example
 
+
 tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
 treat this line as a comment.  Such an explicit specification overrides any
 default mode based on the file name.
@@ -10929,6 +11027,7 @@ default mode based on the file name.
 @example
 -*-Mode: @var{modename};-*-
 @end example
+
 
 which allows other things besides the major mode name to be specified.
 However, Emacs does not look for anything except the mode name.
@@ -10943,6 +11042,7 @@ specified by the variable @code{default-major-mode}.  Normally this
 value is the symbol @code{fundamental-mode}, which specifies Fundamental
 mode.  If @code{default-major-mode} is @code{nil}, the major mode is
 taken from the previously selected buffer.
+
 
 @node Indentation, Text, Major Modes, Top
 @chapter Indentation
@@ -11129,6 +11229,7 @@ region for sequences of spaces, and converts sequences of at least three
 spaces to tabs if that is possible without changing indentation.  @kbd{M-x
 untabify} changes all tabs in the region to corresponding numbers of spaces.
 
+
 @node Text, Programs, Indentation, Top
 @chapter Commands for Human Languages
 @cindex text
@@ -11209,11 +11310,13 @@ be passed through a text formatter before achieving its final readable form.
 * Nroff Mode::  The major mode for editing input to the formatter nroff.
 * TeX Mode::    The major modes for editing input to the formatter TeX.
 
+
   Another similar mode is used for editing outlines.  It allows you
 to view the text at various levels of detail.  You can view either
 the outline headings alone or both headings and text; you can also
 hide some of the headings at lower levels from view to make the high
 level structure more visible.
+
 
 * Outline Mode:: The major mode for editing outlines.
 @end menu
@@ -11316,6 +11419,7 @@ Northwest Computer Support Group,  DW-10
 University of Washington
 Seattle, Washington 98195
 @end display
+
 
 Purchase orders are acceptable, but there is an extra charge of
 $10.00 to pay for processing charges. (The total cost comes to $150 
@@ -11874,6 +11978,7 @@ normal value is:
 "[.?!][]\"')]*\\($\\|\t\\|  \\)[ \t\n]*"
 @end example
 
+
 This example is explained in the section on regexps.  @xref{Regexps}.
 
 @node Paragraphs, Pages, Sentences, Text
@@ -11997,6 +12102,7 @@ preceding the current line and those following it, for example
 Page has 96 (72+25) lines
 @end example
 
+
   Notice that the sum is off by one; this is correct if point is not at the
 beginning of a line.
 
@@ -12025,6 +12131,7 @@ you can use explicit commands for filling.
 @subsection Auto Fill Mode
 
 @cindex Auto Fill mode
+
   @dfn{Auto Fill} mode is a minor mode in which lines are broken
 automatically when they become too wide.  Breaking happens only when
 you type a @key{SPC} or @key{RET}.
@@ -12245,6 +12352,7 @@ case conversion applies only to the part of the word before point.
 (@code{upcase-region}) and @kbd{C-x C-l} (@code{downcase-region}), which
 convert everything between point and mark to the specified case.  Point and
 mark do not move.
+
 
 @node Programs, Running, Text, Top
 @chapter Editing Programs
@@ -12641,6 +12749,7 @@ information on this behavior.
 which have been altered or moved to a different level in a list
 structure.
 
+
 @table @kbd
 @item C-M-q
 Re-indent all the lines within one list (@code{indent-sexp}).
@@ -12804,6 +12913,7 @@ statements with respect to the surrounding block.  In the example:
       foo ();
 @end example
 
+
 the difference in indentation between the lines is @code{c-indent-level}.
 Its standard value is 2.
 
@@ -12815,6 +12925,7 @@ line, not the column of the open-brace.  For example,
 if (losing) @{
   do_this ();
 @end example
+
 
 One popular indentation style is that which results from setting
 @code{c-indent-level} to 8 and putting open-braces at the end of a line
@@ -12855,6 +12966,7 @@ if (x == y)
   do_it ();
 @end example
 
+
 The default value for @code{c-continued-statement-offset} is 2.  Some
 popular indentation styles correspond to a value of zero for
 @code{c-continued-statement-offset}.
@@ -12869,12 +12981,14 @@ if (x == y)
   @{
 @end example
 
+
 with:
 
 @example
 if (x == y)
   do_it ();
 @end example
+
 
 If you set @code{c-brace-offset} to 4, the first example becomes:
 
@@ -12907,6 +13021,7 @@ switch (c)
   case 'x':
 @end example
 
+
 If @code{c-label-offset} were zero, the same code would be indented as:
 
 @example
@@ -12914,6 +13029,7 @@ switch (c)
   @{
     case 'x':
 @end example
+
 
 This example assumes that the other variables above also have their
 default values. 
@@ -13328,6 +13444,7 @@ TEXTAGS="def:newcommand:newenvironment"
 export TEXTAGS
 @end example
 
+
 specifies (using Bourne shell syntax) that the commands @samp{\def},
 @samp{\newcommand} and @samp{\newenvironment} also define tags.
 
@@ -13441,6 +13558,7 @@ Here is how to run @code{etags}:
 etags @var{inputfiles}@dots{}
 @end example
 
+
 The @code{etags} program reads the specified files, and writes a tags
 table named @file{TAGS} in the current working directory.  You can
 intermix compressed and plain text source file names.  @code{etags}
@@ -13527,6 +13645,7 @@ to the following files.  The syntax is:
 --regex=/@var{tagregexp}[/@var{nameregexp}]/
 @end smallexample
 
+
 where @var{tagregexp} is used to match the lines to tag.  It is always
 anchored, that is, it behaves as if preceded by @samp{^}.  If you want
 to account for indentation, just match any initial number of blanks by
@@ -13564,6 +13683,7 @@ etags --regex=/@var{reg1}/ voo.doo --regex=/@var{reg2}/ \
     bar.ber -R --lang=lisp los.er
 @end smallexample
 
+
 Here @code{etags} chooses the parsing language for @file{voo.doo} and
 @file{bar.ber} according to their contents.  @code{etags} also uses
 @var{reg1} to recognize additional tags in @file{voo.doo}, and both
@@ -13582,6 +13702,7 @@ example tags the @code{DEFVAR} macros in the Emacs source files.
 --regex='@{c@}/[ \t]*DEFVAR_[A-Z_ \t(]+"\([^"]+\)"/'
 @end smallexample
 
+
 This feature is particularly useful when storing a list of regular
 expressions in a file.  The following option syntax instructs
 @code{etags} to read two files of regular expressions.  The regular
@@ -13591,6 +13712,7 @@ case.
 @smallexample
 --regex=@@first-file --ignore-case-regex=@@second-file
 @end smallexample
+
 
 A regex file contains one regular expressions per line.  Empty lines,
 and lines beginning with space or tab are ignored.  When the first
@@ -13605,6 +13727,7 @@ file is a comment):
         -- This is for GNU Emacs source files
 @{c@}/[ \t]*DEFVAR_[A-Z_ \t(]+"\([^"]+\)"/\1/
 @end smallexample
+
 
 and then use it like this:
 
@@ -13627,6 +13750,7 @@ etags --language=none \
       --regex='/[ \t]*global[ \t].*/' \
       *.m
 @end smallexample
+
 
 Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form `###key <script-name>' if you want to jump
@@ -13794,6 +13918,7 @@ Variables of note include the following:
 @vindex buffer-tag-table
 @vindex make-tags-files-invisible
 @vindex tag-mark-stack-max
+
 @table @kbd
 @item tag-table-alist
 Controls which tables apply to which buffers.
@@ -13971,6 +14096,7 @@ region around one subprogram, which is convenient for killing it or moving it.
 @findex mark-fortran-subprogram
 @findex fortran-previous-statement
 @findex fortran-next-statement
+
 @table @kbd
 @item C-M-a
 Move to beginning of subprogram@*
@@ -14078,6 +14204,7 @@ The same character appears in column 5 of all continuation lines.  It
 is the value of the variable @code{fortran-continuation-char}.
 By default, this character is @samp{$}.
 @end itemize
+
 
 If you fail to follow these conventions, the indentation commands may
 indent some lines unaesthetically.  However, a correct Fortran program will
@@ -14282,6 +14409,7 @@ Insert or align a comment.
 
   The variable @code{asm-comment-char} specifies which character
 starts comments in assembler syntax.
+
 
 @node Running, Abbrevs, Programs, Top
 @chapter Compiling and Testing Programs
@@ -15190,6 +15318,7 @@ Kill the package buffer.
 Moving the mouse over a package will also cause additional information
 about the package to be displayed in the minibuffer.
 
+
 @item
 Choose the packages you wish to install.
 mouse: Click button 2 on the package name.
@@ -15404,6 +15533,7 @@ If you want bzip2 tarballs, set this.
 @item MAKEINFO = makeinfo
 The path to your makeinfo program
 @end table
+
 
 @node Creating Packages, Available Packages, Local.rules File, Packages
 @cindex creating packages
@@ -15905,6 +16035,8 @@ Another Japanese Language Input Method.  Can be used without a
 separate process running as a dictionary server.
 @end table
 
+
+
 @node Abbrevs, Picture, Running, Top
 @chapter Abbrevs
 @cindex abbrevs
@@ -16097,6 +16229,7 @@ Edit a list of abbrevs; you can add, alter, or remove definitions.
 "dfn"          0    "definition"
 @end example
 
+
 (Some blank lines of no semantic significance, and some other abbrev
 tables, have been omitted.)
 
@@ -16154,6 +16287,7 @@ writes a description of all current abbrev definitions into the
 specified file.  The text stored in the file looks like the output of
 @kbd{M-x list-abbrevs}.
 
+
 @findex read-abbrev-file
 @findex quietly-read-abbrev-file
 @vindex abbrev-file-name
@@ -16209,6 +16343,7 @@ before point has been considered, the buffer after point is searched.
   Dynamic abbrev expansion is completely independent of Abbrev mode; the
 expansion of a word with @kbd{M-/} is completely independent of whether it
 has a definition as an ordinary abbrev.
+
 
 @node Picture, Sending Mail, Abbrevs, Top
 @chapter Editing Pictures
@@ -16311,6 +16446,7 @@ with the same contents below the current line.
 
 @kindex C-c C-d (Picture mode)
 @findex delete-char
+ 
   To actually delete parts of the picture, use @kbd{C-w}, or with
 @kbd{C-c C-d} (which is defined as @code{delete-char}, as @kbd{C-d} is
 in other modes), or with one of the picture rectangle commands
@@ -16460,6 +16596,7 @@ Since most region commands in Picture mode operate on rectangles, when you
 select a region of text with the mouse in Picture mode, it is highlighted
 as a rectangle.
 
+
 @node Sending Mail, Reading Mail, Picture, Top
 @chapter Sending Mail
 @cindex mail
@@ -16527,6 +16664,7 @@ insert or edit any header fields using ordinary editing commands.
 @end example
 
 @vindex mail-header-separator
+
 is a special delimiter that separates the headers you have specified from
 the text.  Whatever follows this line is the text of the message; the
 headers precede it.  The delimiter line itself does not appear in the
@@ -16599,8 +16737,10 @@ handling package when you are replying to a message and you never need
 to think about it.
 @end table
 
+
 The @samp{To}, @samp{CC}, @samp{BCC} and @samp{FCC} fields can appear
 any number of times, to specify many places to send the message.
+
 
 The @samp{To}, @samp{CC}, and @samp{BCC}, fields can have continuation
 lines.  All the lines starting with whitespace, following the line on
@@ -16611,6 +16751,7 @@ example,
 To: foo@@here, this@@there,
   me@@gnu.cambridge.mass.usa.earth.spiral3281
 @end example
+
 
 @vindex mail-abbrev-mailrc-file
 If you have a @file{~/.mailrc} file, Emacs scans it for mail aliases the
@@ -16769,6 +16910,7 @@ C-f C-s} (@code{mail-subject}) for the @samp{Subject} field, and @kbd{C-c
 C-f C-c} (@code{mail-cc}) for the @samp{CC} field.  These fields have
 special motion commands because they are edited most frequently. 
 
+
 @kindex C-c C-w (Mail mode)
 @findex mail-signature
   @kbd{C-c C-w} (@code{mail-signature}) adds a standard piece of text at
@@ -16804,6 +16946,7 @@ the above commands, for easy access.
 value of @code{text-mode-hook}, if it is not void or @code{nil}, and
 then calls the value of @code{mail-mode-hook} if that is not void or
 @code{nil}.
+
 
 @node Reading Mail, Calendar/Diary, Sending Mail, Top
 @chapter Reading Mail
@@ -17086,6 +17229,7 @@ typing @kbd{C-u M-v} scrolls the calendar backward by a year.
 
   The function keys @key{NEXT} and @key{PRIOR} are equivalent to
 @kbd{C-v} and @kbd{M-v}, just as they are in other modes.
+
 
 @node Mark and Region, General Calendar, Scroll Calendar, Calendar/Diary
 @subsection The Mark and the Region
@@ -17380,6 +17524,7 @@ name before using these commands.  Here is an example of what to set:
 (setq calendar-location-name "Urbana, IL")
 @end example
 
+
 Use one decimal place in the values of @code{calendar-latitude} and
 @code{calendar-longitude}.
 
@@ -17396,6 +17541,7 @@ not supply them), you must set them yourself.  Here is an example:
 (setq calendar-standard-time-zone-name "CST")
 (setq calendar-daylight-time-zone-name "CDT")
 @end example
+
 
 The value of @code{calendar-time-zone} is the number of minutes
 difference between your local standard time and Coordinated Universal
@@ -17719,6 +17865,7 @@ The @dfn{long count} is a counting of days with these units:
 
 @kindex g m l @r{(Calendar mode)}
 @findex calendar-goto-mayan-long-count-date
+
 Thus, the long count date 12.16.11.16.6 means 12 baktun, 16 katun, 11
 tun, 16 uinal, and 6 kin.  The Emacs calendar can handle Mayan long
 count dates as early as 7.17.18.13.1, but no earlier.  When you use the
@@ -17790,6 +17937,7 @@ mar 16 Dad's birthday
 April 15, 1989 Income tax due.
 &* 15 time cards due.
 @end example
+
 
 This example uses extra spaces to align the event descriptions of most
 of the entries.  Such formatting is purely a matter of taste.
@@ -17938,6 +18086,7 @@ For example, this entry:
       7:30pm Dinner at George's
       8:00-10:00pm concert
 @end example
+
 
 appears in the diary window without the date line at the beginning.
 This style of entry looks neater when you display just a single day's
@@ -18103,6 +18252,7 @@ diary file.  You can also add one manually, for instance:
 %%(diary-anniversary 10 31 1948) Arthur's birthday
 @end example
 
+
 This entry applies to October 31 in any year after 1948; @samp{10 31
 1948} specifies the date.  (If you are using the European calendar
 style, the month and day are interchanged.)  The reason this expression
@@ -18117,6 +18267,7 @@ dates.  Here is a block diary entry that applies to all dates from June
 @example
 %%(diary-block 6 24 1990 7 10 1990) Vacation
 @end example
+
 
 The @samp{6 24 1990} indicates the starting date and the @samp{7 10 1990}
 indicates the stopping date.  (Again, if you are using the European calendar
@@ -18141,6 +18292,7 @@ which looks like this:
 %%(diary-cyclic 50 3 1 1990) Renew medication
 @end example
 
+
 This entry applies to March 1, 1990 and every 50th day following;
 @samp{3 1 1990} specifies the starting date.  (If you are using the
 European calendar style, the month and day are interchanged.)
@@ -18164,6 +18316,7 @@ that applies to the last Thursday in November:
 @example
 &%%(diary-float 11 4 -1) American Thanksgiving
 @end example
+
 
 The 11 specifies November (the eleventh month), the 4 specifies Thursday
 (the fourth day of the week, where Sunday is numbered zero), and the
@@ -18193,12 +18346,14 @@ weekend.  The diary entry
          ) Pay check deposited
 @end example
 
+
 to just those dates.  This example illustrates how the sexp can depend
 on the variable @code{date}; this variable is a list (@var{month}
 @var{day} @var{year}) that gives the Gregorian date for which the diary
 entries are being found.  If the value of the sexp is @code{t}, the
 entry applies to that date.  If the sexp evaluates to @code{nil}, the
 entry does @emph{not} apply to that date.
+
 
 @node Calendar Customization,,Diary, Calendar/Diary
 @subsection Customizing the Calendar and Diary
@@ -18234,6 +18389,7 @@ your init file:
 (setq view-diary-entries-initially t)
 (calendar)
 @end example
+
 
 this displays both the calendar and diary windows whenever you start
 Emacs.  @xref{Init File}.
@@ -18292,6 +18448,7 @@ replace today's date with asterisks; to do that, use the hook function
 (add-hook 'today-visible-calendar-hook 'calendar-star-date)
 @end example
 
+
 Another standard hook function marks the current date, either by
 changing its face or by adding an asterisk.  Here's how to use it:
 
@@ -18299,6 +18456,7 @@ changing its face or by adding an asterisk.  Here's how to use it:
 @example
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 @end example
+
 
 @vindex calendar-today-marker
 The variable @code{calendar-today-marker} specifies how to mark today's
@@ -18309,6 +18467,7 @@ the default for this variable when Emacs supports multiple faces on your
 terminal.
 
 @vindex today-invisible-calendar-hook
+
   A similar normal hook, @code{today-invisible-calendar-hook} is run if
 the current date is @emph{not} visible in the window.
 
@@ -18415,6 +18574,7 @@ to your init file:
 
 @xref{Init File}.
 
+
 The holiday form @code{(holiday-fixed 7 14 "Bastille Day")} specifies the
 fourteenth day of the seventh month (July).
 
@@ -18425,6 +18585,7 @@ celebrated in the Virgin Islands on the fourth Monday in August:
 @smallexample
 (holiday-float 8 1 4 "Hurricane Supplication Day")
 @end smallexample
+
 
 Here the 8 specifies August, the 1 specifies Monday (Sunday is 0,
 Tuesday is 2, and so on), and the 4 specifies the fourth occurrence in
@@ -18441,6 +18602,7 @@ Islamic, and Julian calendars too.  For example,
         (holiday-islamic 3 12 "Mohammed's Birthday")
         (holiday-julian 4 2 "Jefferson's Birthday")))
 @end smallexample
+
 
 adds the last day of Hanukkah (since the Hebrew months are numbered with
 1 starting from Nisan), the Islamic feast celebrating Mohammed's
@@ -18461,6 +18623,7 @@ divisible by 4:
                                 (list 11 1 year))))))
               "US Presidential Election"))
 @end smallexample
+
 
 or
 
@@ -18503,6 +18666,7 @@ list is as follows:
 ((if dayname (concat dayname ", ")) monthname " " day ", " year)
 @end smallexample
 
+
 while in the European style this value is the default:
 
 @smallexample
@@ -18515,6 +18679,7 @@ The ISO standard date representation is this:
 @smallexample
 (year "-" month "-" day)
 @end smallexample
+
 
 This specifies a typical American format:
 
@@ -18542,12 +18707,14 @@ both alphabetic strings.  The default value of
           (if time-zone " (") time-zone (if time-zone ")"))
 @end smallexample
 
+
 Here is a value that provides European style times:
 
 @smallexample
 (24-hours ":" minutes
           (if time-zone " (") time-zone (if time-zone ")"))
 @end smallexample
+
 
 gives military-style times like @samp{21:07 (UT)} if time zone names are
 defined, and times like @samp{21:07} if they are not.
@@ -18593,6 +18760,7 @@ day in the solar and lunar calculations.
 (calendar-nth-named-day -1 0 10 year)
 @end example
 
+
 That is, the first 0th day (Sunday) of the fourth month (April) in
 the year specified by @code{year}, and the last Sunday of the tenth month
 (October) of that year.  If daylight savings time were
@@ -18612,6 +18780,7 @@ the first of Nisan on the Hebrew calendar.  You should set
   (calendar-absolute-from-hebrew
     (list 1 1 (+ year 3760))))
 @end example
+
 
 because Nisan is the first month in the Hebrew calendar and the Hebrew
 year differs from the Gregorian year by 3760 at Nisan.
@@ -18704,6 +18873,7 @@ this:
  (dayname "\\W"))
 @end example
 
+
 Emacs matches of the diary entries with the date forms is done with the
 standard syntax table from Fundamental mode
 (@pxref{Syntax Tables,,,lispref,XEmacs Lisp Reference Manual}),
@@ -18729,6 +18899,7 @@ European style is this list:
  (dayname "\\W"))
 @end example
 
+
 Notice the use of @code{backup} in the third pattern, because it needs
 to match part of a word beyond the date itself to distinguish it from
 the fourth pattern.
@@ -18752,6 +18923,7 @@ you must do this:
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 @end smallexample
 
+
 If you want Islamic-date entries, do this:
 
 @findex list-islamic-diary-entries
@@ -18772,6 +18944,7 @@ for the Hebrew date Heshvan 25 could look like this:
 HHeshvan 25 Happy Hebrew birthday!
 @end smallexample
 
+
 and would appear in the diary for any date that corresponds to Heshvan 25
 on the Hebrew calendar.  And here is  Islamic-date diary entry  that matches
 Dhu al-Qada 25:
@@ -18779,6 +18952,7 @@ Dhu al-Qada 25:
 @smallexample
 IDhu al-Qada 25 Happy Islamic birthday!
 @end smallexample
+
 
 and would appear in the diary for any date that corresponds to Dhu al-Qada 25
 on the Islamic calendar.
@@ -18843,6 +19017,7 @@ then displays the buffer.  However, if you specify the hook as follows,
 (add-hook 'diary-display-hook 'fancy-diary-display)
 @end example
 
+
 this enables fancy diary display.  It displays diary entries and
 holidays by copying them into a special buffer that exists only for the
 sake of display.  Copying to a separate buffer provides an opportunity
@@ -18875,6 +19050,7 @@ time of day.  Add this line to your init file:
 
 @xref{Init File}.
 
+
 For each day, this sorts diary entries that begin with a recognizable
 time of day according to their times.  Diary entries without times come
 first within each day.
@@ -18889,6 +19065,7 @@ that apply to all of them.  Lines in the diary file of this form:
 @smallexample
 #include "@var{filename}"
 @end smallexample
+
 
 includes the diary entries from the file @var{filename} in the fancy
 diary buffer.  The include mechanism is recursive, so that included files
@@ -18924,6 +19101,7 @@ diary entry.  Thus the @samp{%d} in this dairy entry:
 %%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 @end smallexample
 
+
 gets replaced by the age, so on October 31, 1990 the entry appears in
 the fancy diary buffer like this:
 
@@ -18931,11 +19109,13 @@ the fancy diary buffer like this:
 Arthur's birthday (42 years old)
 @end smallexample
 
+
 If the diary file instead contains this entry:
 
 @smallexample
 %%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
 @end smallexample
+
 
 the entry in the fancy diary buffer for October 31, 1990 appears like this:
 
@@ -18951,11 +19131,13 @@ that have occurred:
 %%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 @end smallexample
 
+
 looks like this:
 
 @smallexample
 Renew medication (5th time)
 @end smallexample
+
 
 in the fancy diary display on September 8, 1990.
 
@@ -18978,6 +19160,7 @@ a sexp diary entry that matches those dates:
           (and (memq day '(19 20)) (= dayname 5)))
          ) Pay check deposited
 @end smallexample
+
 
 applies to just those dates.  This example illustrates how the sexp can
 depend on the variable @code{date}; this variable is a list (@var{month}
@@ -19024,11 +19207,13 @@ calendar.
 Make a diary entry with today's equivalent date on the Mayan calendar.
 @end table
 
+
 Thus including the diary entry
 
 @smallexample
 &%%(diary-hebrew-date)
 @end smallexample
+
 
 causes every day's diary display to contain the equivalent date on the
 Hebrew calendar, if you are using the fancy diary display.  (With simple
@@ -19099,6 +19284,8 @@ message in another window.
 The number of seconds an appointment message is displayed.  The default
 is 5 seconds.
 @end table
+
+
 
 @node Sorting, Shell, Calendar/Diary, Top
 @section Sorting Text
@@ -19175,6 +19362,7 @@ saved.  If it has, you are asked to confirm that you want to change
 the buffer.
 @end smallexample
 
+
 then if you apply @kbd{M-x sort-lines} to the entire buffer you get:
 
 @smallexample
@@ -19184,6 +19372,7 @@ saved.  If it has, you are asked to confirm that you want to change
 the buffer.
 whether the file has changed on disk since it was last visited or
 @end smallexample
+
 
 where the upper case `O' comes before all lower case letters.  If you apply
 instead @kbd{C-u 2 M-x sort-fields} you get:
@@ -19195,6 +19384,7 @@ the buffer.
 On systems where clash detection (locking of files being edited) is
 whether the file has changed on disk since it was last visited or
 @end smallexample
+
 
 where the sort keys were @samp{If}, @samp{XEmacs}, @samp{buffer},
 @samp{systems}, and @samp{the}.
@@ -19361,6 +19551,7 @@ type the first few characters of a previous command and then type
 inserted.  This can be very convenient when you are repeating a sequence
 of shell commands.  The variable @code{input-ring-size} controls how
 many commands are saved in your input history.  The default is 30.
+
 
 @node Shell Mode, Terminal emulator, Interactive Shell, Shell
 @subsection Shell Mode
@@ -19779,6 +19970,7 @@ Save the current @code{conx} database to a file for future retrieval.
 @findex conx-region
 @findex conx-init
 @findex conx-save
+
 Copy text from a buffer using @kbd{M-x conx-buffer} or @kbd{M-x conx-region}
 and then type @kbd{M-x conx}.  Output is continuously generated until you
 type @key{^G}. You can save the @code{conx} database to a file with
@@ -19832,6 +20024,7 @@ in your init file.  @xref{Init File}.
 Viper comes with a separate manual that is provided standard
 with the XEmacs distribution.
 
+
 @item EDT (DEC VMS editor)
 @findex edt-emulation-on
 @findex edt-emulation-off
@@ -19856,6 +20049,7 @@ set-gosmacs-bindings} was done.
 It is also possible to run Mocklisp code written for Gosling Emacs.
 @xref{Mocklisp}.
 @end table
+
 
 @node Customization, Quitting, Emulation, Top
 @chapter Customization
@@ -19997,6 +20191,7 @@ documentation of the variable.
 C-h v fill-column @key{RET}
 @end example
 
+
 prints something like:
 
 @smallexample
@@ -20008,6 +20203,7 @@ Automatically becomes local when set in any fashion.
 @end smallexample
 
 @cindex option
+
 The star at the beginning of the documentation indicates that this variable
 is an option.  @kbd{C-h v} is not restricted to options; it allows any
 variable name.
@@ -20021,6 +20217,7 @@ new value using the minibuffer a second time.  For example,
 @example
 M-x set-variable @key{RET} fill-column @key{RET} 75 @key{RET}
 @end example
+
 
 sets @code{fill-column} to 75, as if you had executed the Lisp expression
 @code{(setq fill-column 75)}.
@@ -20080,6 +20277,7 @@ Interfacing to external utilities.
 \- Emacs group end ------------------------------------------------/
 
 @end smallexample
+
 
 This says that the buffer displays the contents of the @code{Emacs}
 group.  The other groups are listed because they are its contents.  But
@@ -20209,6 +20407,7 @@ Load Path:
 List of directories to search for files to load....
 @end smallexample
 
+
 Each directory in the list appears on a separate line, and each line has
 several editable or active fields.
 
@@ -20278,6 +20477,7 @@ containing several active fields:
  [Set] [Save] [Reset]  [Done]
 @end smallexample
 
+
 Invoking @samp{[Done]} buries this customization buffer.  Each of the
 other fields performs an operation---set, save or reset---on each of the
 items in the buffer that could meaningfully be set, saved or reset.
@@ -20328,6 +20528,7 @@ display.  For example, a face can make text red on a color display, but
 use a bold font on a monochrome display.  To specify multiple
 appearances for a face, select @samp{Show Display Types} in the menu you
 get from invoking @samp{[State]}.
+
 
 @node Specific Customization
 @subsubsection Customizing Specific Items
@@ -20512,6 +20713,7 @@ not be visible until you switch to another buffer, as in the case of:
 (setq-default fill-column 75)
 @end example
 
+
 @code{setq-default} is the only way to set the global value of a variable
 that has been marked with @code{make-variable-buffer-local}.
 
@@ -20695,6 +20897,7 @@ definition, without becoming part of it.
 C-x ( M-f foo C-x )
 @end example
 
+
 defines a macro to move forward a word and then insert @samp{foo}.
 
 You can give @kbd{C-x )} a repeat count as an argument, in which case it
@@ -20742,6 +20945,7 @@ you want to save the definition in.  Then use the command:
 @example
 M-x insert-kbd-macro @key{RET} @var{macroname} @key{RET}
 @end example
+
 
 This inserts some Lisp code that, when executed later, will define the same
 macro with the same definition it has now.  You need not understand Lisp
@@ -20967,6 +21171,7 @@ The following example:
 M-x global-set-key @key{RET} C-f next-line @key{RET}
 @end example
 
+
 redefines @kbd{C-f} to move down a line.  The fact that @var{cmd} is
 read second makes it serve as a kind of confirmation for @var{key}.
 
@@ -20982,6 +21187,7 @@ another character is read, and so on.  For example,
 @example
 M-x global-set-key @key{RET} C-x 4 $ spell-other-window @key{RET}
 @end example
+
 
 redefines @kbd{C-x 4 $} to run the (fictitious) command
 @code{spell-other-window}.
@@ -21005,6 +21211,7 @@ to rebind keys under program control.
 
 @findex define-key
 @findex global-set-key
+
 @table @kbd
 @item  @code{(global-set-key @var{keys} @var{cmd})}
 Defines @var{keys} globally to run @var{cmd}.
@@ -21083,6 +21290,7 @@ Here are some examples of programmatically binding keys:
 (define-key dired-mode-map '(meta control button3) 'my-command)
 
 @end example
+
 
 @node Key Bindings Using Strings
 @subsubsection Using Strings for Changing Key Bindings 
@@ -21815,6 +22023,7 @@ Change whether the given @var{face} is underlined.
 
 @findex make-face-larger
 @findex make-face-smaller
+
 @findex invert-face
 You can exchange the foreground and background color of the selected
 @var{face} with the function @code{invert-face}. If the face does not
@@ -21938,17 +22147,20 @@ You can specify resources for all frames with the syntax:
 Emacs*parameter: value
 @end example
 
+
 or
 
 @example
 Emacs*EmacsFrame.parameter:value
 @end example
 
+
 You can specify resources for a particular frame with the syntax:
 
 @example
 Emacs*FRAME-NAME.parameter: value
 @end example
+
 
 @menu
 * Geometry Resources::     Controlling the size and position of frames.
@@ -21969,17 +22181,20 @@ do this:
 Emacs*EmacsFrame.geometry: 80x55
 @end example
 
+
 To set the geometry of a particular frame named @samp{fred}, do this:
 
 @example
 Emacs*fred.geometry: 80x55
 @end example
 
+
 Important! Do not use the following syntax:
 
 @example
 Emacs*geometry: 80x55
 @end example
+
 
 You should never use @code{*geometry} with any X application. It does
 not say "make the geometry of Emacs be 80 columns by 55 lines."  It
@@ -21994,6 +22209,7 @@ default size of all Emacs frames to 80 columns by 55 lines):
 @example
 Emacs.geometry: 80x55
 @end example
+
 
 since that is the syntax used with most other applications (since most
 other applications have only one top-level window, unlike Emacs).  In
@@ -22190,11 +22406,13 @@ The attributes of faces are also per-frame. They can be specified as:
 Emacs.FACE_NAME.parameter: value
 @end example
 
+
 or
 
 @example
 Emacs*FRAME_NAME.FACE_NAME.parameter: value
 @end example
+
 
 Faces accept the following resources:
 
@@ -22285,6 +22503,7 @@ Description) format, which looks like
 *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 @end example
 
+
 If you use any of the other, less strict font name formats, some of which
 look like
 
@@ -22360,6 +22579,8 @@ of @code{font}, which has subtly different semantics.
 
 The same is true of the scrollbars: They accept whichever resources are 
 appropriate for the toolkit in use.
+
+
 
 @node Quitting, Lossage, Customization, Top
 @section Quitting and Aborting
@@ -22524,6 +22745,7 @@ asks two questions before going back to what it had been doing:
 Auto-save? (y or n)
 Abort (and dump core)? (y or n)
 @end example
+
 
 Answer each one with @kbd{y} or @kbd{n} followed by @key{RET}.
 
@@ -22714,6 +22936,7 @@ dribble file; execute the Lisp expression:
 (open-dribble-file "~/dribble")
 @end example
 
+
 using @kbd{Meta-@key{ESC}} or from the @samp{*scratch*} buffer just after starting
 Emacs.  From then on, all Emacs input will be written in the specified
 dribble file until the Emacs process is killed.
@@ -22756,6 +22979,10 @@ The mailing lists and newsgroups are archived on our anonymous FTP server,
 should also check the @samp{FAQ} in @samp{/pub/xemacs} on our anonymous 
 FTP server. It provides some introductory information and help for initial 
 configuration problems.
+
+
+
+
 
 @node Glossary, Manifesto, Intro, Top
 @unnumbered Glossary
@@ -23522,6 +23749,7 @@ undo a mistaken kill, or for copying or moving text.  Some other
 systems call this ``pasting''.  @xref{Yanking}.
 @end table
 
+
 @node Manifesto, Key Index, Glossary, Top
 @unnumbered The GNU Manifesto
 
@@ -23563,6 +23791,7 @@ to use it on them.
 
 To avoid horrible confusion, please pronounce the `G' in the word `GNU'
 when it is the name of this project.
+
 
 @unnumberedsec Why I Must Write GNU
 

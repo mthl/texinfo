@@ -361,10 +361,12 @@ used to put a file name in a register:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (set-register ?<var>r</var> '(file . <var>name</var>))
 </pre></td></tr></table>
+
 <p>For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 (set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
 </pre></td></tr></table>
+
 <p>puts the file name shown in register `<samp>z</samp>'.
 </p><p>  To visit the file whose name is in register <var>r</var>, type <kbd>C-x r j
 <var>r</var></kbd>.  (This is the same command used to jump to a position or
@@ -491,6 +493,7 @@ Insert in the buffer the <em>contents</em> of the file that bookmark
 <var>bookmark</var> points to.
 </p></dd>
 </dl>
+
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

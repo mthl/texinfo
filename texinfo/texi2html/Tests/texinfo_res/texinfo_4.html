@@ -96,6 +96,7 @@ previously given (see section <a href="texinfo_2.html#SEC11">Six Parts of a Texi
                                     have the right to use and share software.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD28"></a>
 <a name="SEC42"></a>
@@ -116,6 +117,7 @@ previously given (see section <a href="texinfo_2.html#SEC11">Six Parts of a Texi
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 3.1 Sample Texinfo File Beginning </h2>
+
 
 <p>The following sample shows what is needed.  The elements given here are
 explained in more detail in the following sections.  Other commands are
@@ -178,6 +180,7 @@ Published by ...
 @cindex chapter, first
 ...
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD29"></a>
 <a name="SEC43"></a>
@@ -227,6 +230,7 @@ instance, is another command often included in the header.  See section <a href=
 <tr><td align="left" valign="top"><a href="#SEC48">3.2.5 End of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Formatting a region requires this.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD30"></a>
 <a name="SEC44"></a>
@@ -253,6 +257,7 @@ with a line that looks like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo   @c -*-texinfo-*-
 </pre></td></tr></table>
+
 <p>This line serves two functions:
 </p><ol>
 <li><p>
@@ -269,6 +274,7 @@ beginning of the file.
 When the file is edited in GNU Emacs, the `<samp>-*-texinfo-*-</samp>' mode
 specification tells Emacs to use Texinfo mode.
 </p></li></ol>
+
 
 <hr size="6">
 <a name="NOD31"></a>
@@ -306,7 +312,8 @@ Texinfo file for Info or printing.  See section <a href="texinfo_21.html#SEC267"
 comment is accidentally taken for a start-of-header line.  You can
 change it if you wish by setting the <code>tex-start-of-header</code> and/or
 <code>tex-end-of-header</code> Emacs variables.  See section <a href="texinfo_20.html#SEC250">Formatting and Printing in Texinfo Mode</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD32"></a>
 <a name="SEC46"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -373,7 +380,8 @@ manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
 also reads `<tt>texinfo.cnf</tt>' if that file is present on your system
 (see section <a href="texinfo_20.html#SEC253">Preparing for TeX</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD33"></a>
 <a name="SEC47"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -433,7 +441,8 @@ after an <code>@headings</code> command that turns on headings.
 information.)
 </p><p>You may, if you wish, create your own, customized headings and footings.
 See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for a detailed discussion of this.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD34"></a>
 <a name="SEC48"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -460,7 +469,8 @@ Texinfo comment that looks like this:
 @c %**end of header
 </pre></td></tr></table>
 <p>See section <a href="#SEC45">Start of Header</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD35"></a>
 <a name="SEC49"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -491,6 +501,7 @@ insert the text at appropriate points.
 <tr><td align="left" valign="top"><a href="#SEC50">3.3.1 <code>@copying</code>: Declare copying permissions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Declare the document's copying permissions.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC51">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to insert the permissions.</td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD36"></a>
@@ -562,7 +573,8 @@ work.  In the case of works assigned to the FSF, the owner is `Free
 Software Foundation, Inc.'.
 </p><p>See <a href="../maintain/Copyright-Notices.html">(maintain)Copyright Notices</a> section `Copyright Notices' in <cite>GNU Maintenance Instructions</cite>, for
 additional information.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD37"></a>
 <a name="SEC51"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -608,7 +620,8 @@ because it makes the copying permissions visible and thus promotes
 freedom.
 </p><p>The permissions text defined by <code>@copying</code> also appears
 automatically at the beginning of the XML output file.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD38"></a>
 <a name="SEC52"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -658,6 +671,7 @@ an <code>@insertcopying</code>.
 <tr><td align="left" valign="top"><a href="#SEC58">3.4.6 The <code>@headings</code> Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An option for turning headings on and off
                                   and double or single sided printing.</td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD39"></a>
@@ -724,7 +738,8 @@ traditional book front matter, Texinfo also provides a command
 <code>@shorttitlepage</code> which takes the rest of the line as the title.
 The argument is typeset on a page by itself and followed by a blank
 page.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD40"></a>
 <a name="SEC54"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -760,12 +775,14 @@ the remaining text on that line.  Thus,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @center @titlefont{Texinfo}
 </pre></td></tr></table>
+
 <p>centers the title, which in this example is &quot;Texinfo&quot; printed
 in the title font.
 </p><p>Use the <code>@sp</code> command to insert vertical space.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @sp 2
 </pre></td></tr></table>
+
 <p>This inserts two blank lines on the printed page.  (See section <a href="texinfo_15.html#SEC210"><code>@sp</code></a>, for more information about the <code>@sp</code>
 command.)
 </p><p>A template for this method looks like this:
@@ -781,7 +798,8 @@ command.)
 @end titlepage
 </pre></td></tr></table>
 <p>The spacing of the example fits an 8.5 by 11 inch manual.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD41"></a>
 <a name="SEC55"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -831,12 +849,14 @@ an <code>@author</code> command:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @author by Jane Smith and John Doe
 </pre></td></tr></table>
+
 <p>or you can write the names one above each other by using two (or more)
 <code>@author</code> commands:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @author Jane Smith
 @author John Doe
 </pre></td></tr></table>
+
 <p>(Only the bottom name is underlined with a black rule.)
 </p><p>A template for this method looks like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -861,8 +881,10 @@ may be useful if you have a very long title.  Here is a real-life example:
 @author by Daniel Hagerty, Melissa Weisshaus
 @author and Eli Zaretskii
 </pre></td></tr></table>
+
 <p>(The use of <code>@value</code> here is explained in <a href="texinfo_17.html#SEC234"><code>@value</code> Example</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD42"></a>
 <a name="SEC56"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -897,6 +919,7 @@ bottom of the page, use the following incantantion after <code>@page</code>:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @vskip 0pt plus 1filll
 </pre></td></tr></table>
+
 <p>This is a TeX command that is not supported by the Info formatting
 commands.  The <code>@vskip</code> command inserts whitespace.  The `<samp>0pt
 plus 1filll</samp>' means to put in zero points of mandatory whitespace, and as
@@ -923,6 +946,7 @@ Published by ...
 Cover art by ...
 @end titlepage
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD43"></a>
 <a name="SEC57"></a>
@@ -973,7 +997,8 @@ information about page headings and footings.
 double-sided format, using <code>@setchapternewpage odd</code> for
 double-sided printing and no <code>@setchapternewpage</code> command for
 single-sided printing.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD44"></a>
 <a name="SEC58"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1010,7 +1035,8 @@ immediately after the <code>@end titlepage</code> command.
 <dt><code> @headings single
 </code></dt>
 <dd><p>Turn on page headings appropriate for single-sided printing.
-</p></dd>
+</p>
+</dd>
 <dt><code> @headings double
 </code></dt>
 <dt><code> @headings on
@@ -1046,12 +1072,14 @@ line containing the <code>@end titlepage</code> command, like this:
 @end titlepage
 @headings off
 </pre></td></tr></table>
+
 <p>The <code>@headings off</code> command overrides the <code>@end titlepage</code>
 command, which would otherwise cause TeX to print page
 headings.
 </p><p>You can also specify your own style of page heading and footing.
 See section <a href="texinfo_26.html#SEC303">Page Headings</a>, for more information.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD45"></a>
 <a name="SEC59"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1095,6 +1123,7 @@ so.  See section <a href="texinfo_17.html#SEC227">Conditionally Visible Text</a>
 <tr><td align="left" valign="top"><a href="#SEC61">3.5.2 Parts of a Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD46"></a>
 <a name="SEC60"></a>
@@ -1116,6 +1145,7 @@ so.  See section <a href="texinfo_17.html#SEC227">Conditionally Visible Text</a>
 </tr></table>
 <h3 class="subsection"> 3.5.1 Top Node Example </h3>
 
+
 <p>Here is an example of a Top node.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @ifnottex
@@ -1133,6 +1163,7 @@ Additional general information.
 * Index::
 @end menu
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD47"></a>
 <a name="SEC61"></a>
@@ -1205,6 +1236,7 @@ Beginning a Texinfo File
 @end detailmenu
 @end menu
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD48"></a>
 <a name="SEC62"></a>
@@ -1236,6 +1268,7 @@ generally all given before the Top node, if they are given at all.
 <tr><td align="left" valign="top"><a href="#SEC65">3.6.3 Paragraph Indenting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify paragraph indentation.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC66">3.6.4 <code>@exampleindent</code>: Environment Indenting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify environment indentation.</td></tr>
 </table>
+
 
 <hr size="6">
 <a name="NOD49"></a>
@@ -1269,13 +1302,15 @@ environment, as in:
 descriptive text.
 @end documentdescription
 </pre></td></tr></table>
+
 <p>This will produce the following output in the `<samp>&lt;head&gt;</samp>' of the HTML:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 &lt;meta name=description content=&quot;descriptive text.&quot;&gt;
 </pre></td></tr></table>
 <p><code>@documentdescription</code> must be specified before the first node of
 the document.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD50"></a>
 <a name="SEC64"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1354,7 +1389,8 @@ the document.  For a particular hard copy run, if you don't want the
 default option (no blank pages, same headers on all pages) use the
 `<samp>--texinfo</samp>' option to <code>texi2dvi</code> to specify the output
 you want.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD51"></a>
 <a name="SEC65"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1411,7 +1447,8 @@ formatting commands indent paragraphs as specified.  See section <a href="#SEC45
 <code>texinfo-format-region</code> commands is that they do not indent (nor
 fill) paragraphs that contain <code>@w</code> or <code>@*</code> commands.
 See section <a href="texinfo_28.html#SEC319">Refilling Paragraphs</a>, for further information.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD52"></a>
 <a name="SEC66"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1461,7 +1498,8 @@ ignored for HTML output.
 </p><p>It is best to write the <code>@exampleindent</code> command before the
 end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  See section <a href="#SEC45">Start of Header</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD53"></a>
 <a name="SEC67"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1496,7 +1534,8 @@ is very helpful.  Ideally, it should state clearly and concisely what
 the file is about and who would be interested in reading it.  In
 general, an introduction would follow the licensing and distribution
 information, although sometimes people put it earlier in the document.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC41" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_5.html#SEC68" title="Next chapter"> &gt;&gt; </a>]</td>

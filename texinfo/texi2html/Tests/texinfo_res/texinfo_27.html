@@ -158,6 +158,7 @@ will see an error message that says:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @end menus is not handled by texinfo
 </pre></td></tr></table>
+
 <p>The cursor will stop at the point in the buffer where the error
 occurs, or not long after it.  The buffer will look like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -178,6 +179,7 @@ odd error messages.  For example, the following cross reference fails to format:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@xref{Catching Mistakes, for more info.)
 </pre></td></tr></table>
+
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
 brace but displays a message that says `<samp>Unbalanced parentheses</samp>'
 rather than `<samp>Unbalanced braces</samp>'.  This is because the formatting
@@ -189,6 +191,7 @@ closing parenthesis:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@xref{Catching Mistakes), for more info.}
 </pre></td></tr></table>
+
 <p>Formatting produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (*Note for more info.: Catching Mistakes)
@@ -204,6 +207,7 @@ message that says:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 No such node: &quot;Catching Mistakes) The only way ...
 </pre></td></tr></table>
+
 <p>This is because Info perceives the example of the error as the first
 cross reference in this node and if you type a <kbd>RET</kbd> immediately
 after typing the Info <kbd>f</kbd> command, Info will attempt to go to the
@@ -212,7 +216,8 @@ will complete the node name of the correctly written example and take
 you to the `Catching Mistakes' node.  (If you try this, you can return
 from the `Catching Mistakes' node by typing <kbd>l</kbd>
 (<code>Info-last</code>).)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD282"></a>
 <a name="SEC311"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -249,6 +254,7 @@ indices, for more information about sorting
 indices.)@refill
 ---------- Buffer: texinfo.texi ----------
 </pre></td></tr></table>
+
 <p>(The cross reference lacks a closing brace.)
 TeX produced the following output, after which it stopped:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -269,6 +275,7 @@ understandable error message:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Paragraph ended before @xref was complete.
 </pre></td></tr></table>
+
 <p>`<samp>@par</samp>' is an internal TeX command of no relevance to Texinfo.
 `<samp>l.27</samp>' means that TeX detected the problem on line 27 of the
 Texinfo file.  The `<samp>?</samp>' is the prompt TeX uses in this
@@ -305,6 +312,7 @@ TeX will give you is the somewhat mysterious comment that
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@end occurred inside a group at level 1)
 </pre></td></tr></table>
+
 <p>However, if you print the DVI file, you will find that the text
 of the file that follows the itemized list is entirely indented as if
 it were part of the last item in the itemized list.  The error message
@@ -324,6 +332,7 @@ This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
 *
 </pre></td></tr></table>
+
 <p>In this case, simply type <kbd>\end <kbd>RET</kbd></kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command
 again. (Note the use of the backslash, `<samp>\</samp>'.  TeX uses `<samp>\</samp>'
@@ -433,6 +442,7 @@ command directly.  To do this, type
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 <kbd>M-x occur</kbd>
 </pre></td></tr></table>
+
 <p>and then, when prompted, type a <em>regexp</em>, a regular expression for
 the pattern you want to match.  (See <a href="../emacs/Regexps.html">(emacs)Regexps</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
 the current location of the cursor in the buffer to the end of the
@@ -517,6 +527,7 @@ type:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-validate
 </pre></td></tr></table>
+
 <p>Note that the <code>Info-validate</code> command requires an upper case
 `I'.  You may also need to create a tag table before running
 <code>Info-validate</code>.  See section <a href="#SEC317">Tagifying a File</a>.
@@ -529,6 +540,7 @@ only the first node of this manual.  One of the messages said:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
+
 <p>This meant that the node called `<samp>Overview</samp>' had a `Next' pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
@@ -538,6 +550,7 @@ the following error message:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Texinfo Mode&quot;, should have Previous: Overview
 </pre></td></tr></table>
+
 <p>This is because every `Next' pointer should be matched by a
 `Previous' (in the node where the `Next' points) which points back.
 </p><p><code>Info-validate</code> also checks that all menu entries and cross references
@@ -585,10 +598,12 @@ texinfo-format-buffer</kbd> command:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u M-x texinfo-format-buffer
 </pre></td></tr></table>
+
 <p>or else
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 C-u C-c C-e C-b
 </pre></td></tr></table>
+
 <p>When you do this, Texinfo will not split the file and will not create
 a tag table for it. 
 <a name="IDX462"></a>
@@ -619,12 +634,14 @@ it.  Visit the Info file you wish to tagify and type:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-tagify
 </pre></td></tr></table>
+
 <p>(Note the upper case `<samp>I</samp>' in <code>Info-tagify</code>.)  This creates an
 Info file with a tag table that you can validate.
 </p><p>The third step is to validate the Info file:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-validate
 </pre></td></tr></table>
+
 <p>(Note the upper case `<samp>I</samp>' in <code>Info-validate</code>.)
 In brief, the steps are:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -671,12 +688,14 @@ automatically by the formatting command; you only need to create a tag
 table yourself if you are doing the job manually.  Most likely, you
 will do this for a large, unsplit file on which you have run
 <code>Info-validate</code>.)
-</p><p>Visit the Info file you wish to tagify and split and type the two
+</p>
+<p>Visit the Info file you wish to tagify and split and type the two
 commands:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-tagify
 M-x Info-split
 </pre></td></tr></table>
+
 <p>(Note that the `<samp>I</samp>' in `<samp>Info</samp>' is upper case.)
 </p><p>When you use the <code>Info-split</code> command, the buffer is modified into a
 (small) Info file which lists the indirect subfiles.  This file should be
@@ -685,7 +704,8 @@ written in the same directory the original file is in, with names generated
 by appending `<samp>-</samp>' and a number to the original file name.
 </p><p>The primary file still functions as an Info file, but it contains just
 the tag table and a directory of subfiles.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC308" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_28.html#SEC319" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -97,6 +97,7 @@ books.
 <tr><td align="left" valign="top"><a href="#SEC96">6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining arbitrary cross-reference targets.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD72"></a>
 <a name="SEC86"></a>
@@ -142,7 +143,8 @@ convenient nor understandable to the reader to do otherwise.
 which the chapters are the major limbs from which the sections branch
 out.  Similarly, node pointers and menus are organized to create a
 matching structure in the Info output.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD73"></a>
 <a name="SEC87"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -187,6 +189,7 @@ root.
 @node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
 </pre></td></tr></table>
+
 <p>This <code>@node</code> line says that the name of this node is &quot;Chapter
 2&quot;, the name of the `Next' node is &quot;Chapter 3&quot;, the name of the
 `Previous' node is &quot;Chapter 1&quot;, and the name of the `Up' node is
@@ -242,6 +245,7 @@ line, an <code>@chapter</code> line, and then by indexing lines.
 @cindex Texinfo file ending
 @cindex File ending
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD74"></a>
 <a name="SEC88"></a>
@@ -262,6 +266,7 @@ line, an <code>@chapter</code> line, and then by indexing lines.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.3 The <code>@node</code> Command </h2>
+
 
 <p>A <em>node</em> is a segment of text that begins at an <code>@node</code>
 command and continues until the next <code>@node</code> command.  The
@@ -312,6 +317,7 @@ see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 <tr><td align="left" valign="top"><a href="#SEC94">6.3.6 The <code>@top</code> Sectioning Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to use the <code>@top</code> command.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD75"></a>
 <a name="SEC89"></a>
@@ -353,7 +359,8 @@ can write the nodes in the Texinfo source file in an arbitrary order!
 Because TeX processes the file sequentially, irrespective of node
 pointers, you must write the nodes in the order you wish them to appear
 in the printed output.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD76"></a>
 <a name="SEC90"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -409,7 +416,8 @@ Next (and this is important!), put in several index entries.  Usually,
 you will find at least two and often as many as four or five ways of
 referring to the node in the index.  Use them all.  This will make it
 much easier for people to find the node.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD77"></a>
 <a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -446,6 +454,7 @@ By convention, node names are capitalized just as they would be for
 section or chapter titles--initial and significant words are
 capitalized; others are not.
 </p></li></ul>
+
 
 <hr size="6">
 <a name="NOD78"></a>
@@ -520,6 +529,7 @@ within a node name; these confuse TeX or the Info formatters.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
+
 <p>The corresponding node name is:
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 unnumberedsec appendixsec heading
@@ -528,6 +538,7 @@ unnumberedsec appendixsec heading
 </li><li><p>
 Case is significant.
 </p></li></ul>
+
 
 <hr size="6">
 <a name="NOD79"></a>
@@ -587,6 +598,7 @@ define them.  This is recommended.  Thus:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @node Top
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD80"></a>
 <a name="SEC94"></a>
@@ -631,6 +643,7 @@ create or update pointers and menus.
 @node Top
 @top Your Manual Title
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD81"></a>
 <a name="SEC95"></a>
@@ -673,7 +686,8 @@ redundantly specify node pointers.  However, Texinfo documents are not
 required to be organized hierarchically or in fact contain sectioning
 commands at all.  For example, if you never intend the document to be
 printed.  In those cases, you will need to explicitly specify the pointers.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD82"></a>
 <a name="SEC96"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -693,6 +707,7 @@ printed.  In those cases, you will need to explicitly specify the pointers.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets </h2>
+
 
 <p>An <em>anchor</em> is a position in your document, labeled so that
 cross-references can refer to it, just as they can to nodes.  You create
@@ -723,7 +738,8 @@ Spaces are always ignored after <code>@anchor</code>.
 given similar treatment in some ways; for example, the <code>goto-node</code>
 command in standalone Info takes either an anchor name or a node name as
 an argument.  (See <a href="../info-stnd/goto-node.html">(info-stnd)goto-node</a> section `goto-node' in <cite>GNU Info</cite>.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC85" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_8.html#SEC97" title="Next chapter"> &gt;&gt; </a>]</td>

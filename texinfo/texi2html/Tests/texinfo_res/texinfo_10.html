@@ -91,6 +91,7 @@ program.  Also, you can emphasize text, in several different ways.
 <tr><td align="left" valign="top"><a href="#SEC137">9.2 Emphasizing Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to emphasize text.</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD106"></a>
 <a name="SEC120"></a>
@@ -147,6 +148,7 @@ not something else that should not be changed.
 <tr><td align="left" valign="top"><a href="#SEC135">9.1.14 <code>@url</code>{<var>uniform-resource-locator</var>}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating a World Wide Web reference.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC136">9.1.15 <code>@email</code>{<var>email-address</var>[, <var>displayed-text</var>]}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating an electronic mail address.</td></tr>
 </table>
+
 
 <a name="NOD107"></a>
 <a name="SEC121"></a>
@@ -219,6 +221,7 @@ entries.
 </p></dd>
 </dl>
 
+
 <hr size="6">
 <a name="NOD108"></a>
 <a name="SEC122"></a>
@@ -270,11 +273,13 @@ formatting commands to use single quotation marks around the text.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 The function returns @code{nil}.
 </pre></td></tr></table>
+
 <p>produces this in the printed manual:
 </p><blockquote>
 
 <p>The function returns <code>nil</code>.
 </p></blockquote>
+
 
 <p>Here are some cases for which it is preferable not to use <code>@code</code>:
 </p><ul>
@@ -312,7 +317,8 @@ introduced relatively recently, it is acceptable to use <code>@code</code> or
 The new commands allow you to express the markup more precisely, but
 there is no real harm in using the older commands, and of course the
 long-standing manuals do so.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD109"></a>
 <a name="SEC123"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -339,6 +345,7 @@ write
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @kbd{M-a}
 </pre></td></tr></table>
+
 <p>and to refer to the characters <kbd>M-x shell</kbd>, write
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @kbd{M-x shell}
@@ -381,6 +388,7 @@ press the <kbd>RET</kbd> key&quot;:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @kbd{r @key{RET}}
 </pre></td></tr></table>
+
 <p>This produces: <kbd>r <kbd>RET</kbd></kbd>
 </p><p>You also use the <code>@kbd</code> command if you are spelling out the letters
 you type; for example:
@@ -388,6 +396,7 @@ you type; for example:
 To give the @code{logout} command,
 type the characters @kbd{l o g o u t @key{RET}}.
 </pre></td></tr></table>
+
 <p>This produces:
 </p><blockquote>
 
@@ -398,7 +407,8 @@ type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
 <p>(Also, this example shows that you can add spaces for clarity.  If you
 really want to mention a space character as one of the characters of
 input, write <kbd>@key{SPC}</kbd> for it.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD110"></a>
 <a name="SEC124"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -491,7 +501,8 @@ alone; do not use the <code>@key</code> command; but when you are referring
 to the modifier key in isolation, use the <code>@key</code> command.  For
 example, write `<samp>@kbd{Meta-a}</samp>' to produce <kbd>Meta-a</kbd> and
 `<samp>@key{META}</samp>' to produce <kbd>META</kbd>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD111"></a>
 <a name="SEC125"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -521,6 +532,7 @@ addition, it is printed in a fixed-width font.
 To match @samp{foo} at the end of the line,
 use the regexp @samp{foo$}.
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
@@ -544,6 +556,7 @@ In English, the vowels are @samp{a}, @samp{e},
 @samp{i}, @samp{o}, @samp{u}, and sometimes
 @samp{y}.
 </pre></td></tr></table>
+
 <p>This produces:
 </p><blockquote>
 
@@ -551,6 +564,7 @@ In English, the vowels are @samp{a}, @samp{e},
 `<samp>i</samp>', `<samp>o</samp>', `<samp>u</samp>',  and sometimes
 `<samp>y</samp>'.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD112"></a>
@@ -582,6 +596,7 @@ delimiters, in braces.  Text is printed in a fixed-width font:
 How many @verb{|@|}-escapes does one need to print this
 @verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 How many <tt>@ </tt>-escapes does one need to print this
@@ -591,7 +606,8 @@ How many <tt>@ </tt>-escapes does one need to print this
 section), whose argument is normal Texinfo text, where the characters
 <code>@{}</code> are special; with <code>@verb</code>, nothing is special except
 the delimiter character you choose.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD113"></a>
 <a name="SEC127"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -632,11 +648,13 @@ argument is printed in slanted type.
 To delete file @var{filename},
 type @samp{rm @var{filename}}.
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
 <p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
 </p></blockquote>
+
 
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
 <code>@samp</code>, <code>@file</code>, etc.)
@@ -649,6 +667,7 @@ this:
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
 </pre></td></tr></table>
+
 <p>This produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 \input texinfo
@@ -660,10 +679,12 @@ angle brackets, for example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ..., type rm &lt;filename&gt;
 </pre></td></tr></table>
+
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
 to output the <code>&lt;<small class="dots">...</small>&gt;</code> format if you wish.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD114"></a>
 <a name="SEC128"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -698,6 +719,7 @@ The @env{PATH} environment variable ...
 <p>The <code>PATH</code> environment variable <small class="dots">...</small>
 </p></blockquote>
 
+
 <hr size="6">
 <a name="NOD115"></a>
 <a name="SEC129"></a>
@@ -729,12 +751,14 @@ For example,
 The @file{.el} files are in
 the @file{/usr/local/emacs/lisp} directory.
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
 <p>The `<tt>.el</tt>' files are in
 the `<tt>/usr/local/emacs/lisp</tt>' directory.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD116"></a>
@@ -774,7 +798,8 @@ than using <code>@command</code>, if you regard it as a new English word,
 such as `Emacs' or `Bison'.
 </p><p>When writing an entire shell command invocation, as in `<samp>ls -l</samp>',
 you should use either <code>@samp</code> or <code>@code</code> at your discretion.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD117"></a>
 <a name="SEC131"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -841,6 +866,7 @@ example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Getting rid of a file is called @dfn{deleting} it.
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
@@ -878,7 +904,10 @@ manual, and quotation marks in the Info file.
 </p><p>If a book is written in Texinfo, it is better to use a cross reference
 command since a reader can easily follow such a reference in Info.
 See section <a href="texinfo_9.html#SEC108"><code>@xref</code></a>.
-</p><hr size="6">
+</p>
+
+
+<hr size="6">
 <a name="NOD120"></a>
 <a name="SEC134"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -906,7 +935,8 @@ a matter of style, or for particular abbreviations, you may prefer to
 use periods, as in `<samp>@acronym{F.B.I.}</samp>'.
 </p><p>In TeX and HTML, the argument is printed in a slightly smaller font
 size.  In Info or plain text output, this command changes nothing.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD121"></a>
 <a name="SEC135"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -940,6 +970,7 @@ For example, the url might be @url{http://example.org/path}.
 </p><table><tr><td>&nbsp;</td><td><pre class="display">
 For example, the url might be <a href="http://example.org/path">http://example.org/path</a>.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD122"></a>
 <a name="SEC136"></a>
@@ -977,6 +1008,7 @@ suggestions to the @email{bug-texinfo@@gnu.org, same place}.
 Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
 suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD123"></a>
 <a name="SEC137"></a>
@@ -1044,6 +1076,7 @@ the <code>@r</code> command, has any regular use.
 files in the directory.
 @end quotation
 </pre></td></tr></table>
+
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
      *Caution*: `rm * .[^.]*' removes _all_
@@ -1060,6 +1093,7 @@ preceding example.
 Info will mistake the combination for a cross reference.  Use a phrase
 such as <strong>Please note</strong> or <strong>Caution</strong> instead.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD125"></a>
@@ -1089,6 +1123,7 @@ possible) between braces in lower case, like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 The @sc{acm} and @sc{ieee} are technical societies.
 </pre></td></tr></table>
+
 <p>This produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">
 The ACM and IEEE are technical societies.
@@ -1111,7 +1146,8 @@ should use the small caps font when the word refers to the second and
 subsequent elements of a list (the <small>CDR</small> of the list), but you
 should use `<samp>@code</samp>' when the word refers to the Lisp function of
 the same spelling.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD126"></a>
 <a name="SEC140"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1150,6 +1186,7 @@ output.
 (+ 2 2)    ; @r{Add two plus two.}
 @end lisp
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="lisp">
 (+ 2 2)    ; Add two plus two.
@@ -1157,7 +1194,8 @@ output.
 <p>If possible, you should avoid using the other three font commands.  If
 you need to use one, it probably indicates a gap in the Texinfo
 language.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_11.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>

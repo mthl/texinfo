@@ -105,6 +105,7 @@ commands.
 <tr><td align="left" valign="top"><a href="#SEC213">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Another way to prevent unwanted page breaks.</td></tr>
 </table>
 
+
 <a name="NOD192"></a>
 <a name="SEC206"></a>
 <h2 class="heading"> Break Commands </h2>
@@ -182,12 +183,14 @@ in Info.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line @* is broken @*in two places.
 </pre></td></tr></table>
+
 <p>produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 This line
  is broken
 in two places.
 </pre></td></tr></table>
+
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
 </p><p>The <code>@*</code> command is often used in a file's copyright page:
@@ -195,6 +198,7 @@ carried down to the next line.)
 This is edition 2.0 of the Texinfo documentation,@*
 and is for ...
 </pre></td></tr></table>
+
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.
 </p><blockquote>
@@ -206,6 +210,7 @@ containing an <code>@*</code> command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
 break.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="NOD194"></a>
@@ -227,6 +232,7 @@ break.
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 14.2 <code>@-</code> and <code>@hyphenation</code>: Helping TeX hyphenate </h2>
+
 
 <p>Although TeX's hyphenation algorithm is generally pretty good, it
 does miss useful hyphenation points from time to time.  (Or, far more
@@ -282,6 +288,7 @@ line.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 </pre></td></tr></table>
+
 <p>produces
 </p><blockquote>
 
@@ -295,6 +302,7 @@ You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 None of the formatters will break at this@w{ }space.
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD196"></a>
 <a name="SEC210"></a>
@@ -323,9 +331,12 @@ example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @sp 2
 </pre></td></tr></table>
+
 <p>generates two blank lines.
 </p><p>The <code>@sp</code> command is most often used in the title page.
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <a name="NOD197"></a>
 <a name="SEC211"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -350,7 +361,8 @@ example,
 manual.  The command has no effect on Info files since they are not
 paginated.  An <code>@page</code> command is often used in the <code>@titlepage</code>
 section of a Texinfo file to start the copyright page.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD198"></a>
 <a name="SEC212"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -393,6 +405,7 @@ spacing.
 @end group
 @end example
 </pre></td></tr></table>
+
 <p>with the <code>@group</code> and <code>@end group</code> commands inside the
 <code>@example</code> and <code>@end example</code> commands.
 </p><p>The <code>@group</code> command is most often used to hold an example
@@ -441,7 +454,8 @@ This paragraph is preceded by ...
 </pre></td></tr></table>
 <p>The <code>@need</code> command is useful for preventing orphans (single
 lines at the bottoms of printed pages).
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC205" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_16.html#SEC214" title="Next chapter"> &gt;&gt; </a>]</td>

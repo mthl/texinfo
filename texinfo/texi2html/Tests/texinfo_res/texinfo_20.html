@@ -138,7 +138,8 @@ does an exceptionally good job.  (See section <a href="texinfo_30.html#SEC321">H
 <code>texinfo-format-region</code> and <code>texinfo-format-buffer</code> commands
 read the very same @-commands in the Texinfo file as does TeX, but
 process them differently to make an Info file (see section <a href="texinfo_21.html#SEC261">Creating an Info File</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD232"></a>
 <a name="SEC246"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -193,6 +194,7 @@ form:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 texindex foo.??
 </pre></td></tr></table>
+
 <p>This command will run <code>texindex</code> on all the unsorted index files,
 including any that you have defined yourself using <code>@defindex</code>
 or <code>@defcodeindex</code>.  (You may execute `<samp>texindex foo.??</samp>'
@@ -257,7 +259,8 @@ your file would look approximately like this:
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option
 (see section <a href="texinfo_21.html#SEC265">Pointer Validation</a>).
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD233"></a>
 <a name="SEC247"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -303,7 +306,8 @@ formats, such as <code>@smallbook</code> (see section <a href="#SEC255">Printing
 (You can also do this on a site-wide basis with `<tt>texinfo.cnf</tt>';
 see section <a href="#SEC253">Preparing for TeX</a>).
 </p><p>For a list of other options, run `<samp>texi2dvi --help</samp>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD234"></a>
 <a name="SEC248"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -335,6 +339,7 @@ texindex bison.??
 tex bison.texinfo
 lpr -d bison.dvi
 </pre></td></tr></table>
+
 <p>(Remember that the shell commands may be different at your site; but
 these are commonly used versions.)
 </p><p>Using the <code>texi2dvi</code> shell script (see the previous section):
@@ -372,6 +377,7 @@ the DVI file is converted to the format your local printer understands
 directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
 </p></li></ul>
 
+
 <hr size="6">
 <a name="NOD235"></a>
 <a name="SEC249"></a>
@@ -408,7 +414,8 @@ lpr -d gcc.dvi
 </pre></td></tr></table>
 <p>See section <a href="#SEC250">Formatting and Printing in Texinfo Mode</a>, for more information about formatting
 and printing in Texinfo mode.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD236"></a>
 <a name="SEC250"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -539,7 +546,8 @@ called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
 be found in the `<samp>Development/Docs/Texinfo</samp>' group, once you invoke
 the <kbd>M-x customize</kbd> command.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD237"></a>
 <a name="SEC251"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -573,9 +581,11 @@ Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
 </pre></td></tr></table>
+
 <p>This technique is most often used by programmers who also compile programs
 this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD238"></a>
 <a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -602,6 +612,7 @@ this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section
 \input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
 </pre></td></tr></table>
+
 <p>The first command instructs TeX to load the macros it needs to
 process a Texinfo file and the second command opens auxiliary files.
 </p><p>Every Texinfo file must end with a line that terminates TeX's
@@ -625,6 +636,7 @@ contents.  (And of course most manuals contain a body of text as well.)
 </p></li><li><p> <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>
 </p></li><li><p> <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>
 </p></li></ul>
+
 
 <hr size="6">
 <a name="NOD239"></a>
@@ -652,6 +664,7 @@ contents.  (And of course most manuals contain a body of text as well.)
 `<tt>texinfo.tex</tt>' file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
 </p><a name="IDX334"></a>
+
 <p>Usually, the installer has put the `<tt>texinfo.tex</tt>' file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
 other GNU software is installed.  In this case, TeX will find the
@@ -705,9 +718,11 @@ export TEXINPUTS
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
+
 <p>It is customary for DOS/Windows users to put such commands in the
 `<tt>autoexec.bat</tt>' file, or in the Windows Registry.
-</p><p>These settings would cause TeX to look for `<tt>\input</tt>' file first
+</p>
+<p>These settings would cause TeX to look for `<tt>\input</tt>' file first
 in the current directory, indicated by the `<samp>.</samp>', then in a
 hypothetical user's `<tt>me/mylib</tt>' directory, and finally in a system
 directory `<tt>/usr/lib/tex/macros</tt>'.
@@ -723,7 +738,8 @@ initex texinfo @dump
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to
 wherever your <code>.fmt</code> files are found; typically, this will be in the
 subdirectory `<tt>web2c</tt>' of your TeX installation.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD240"></a>
 <a name="SEC254"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -753,6 +769,7 @@ happens, TeX prints an error message like this:
 Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 <a name="IDX343"></a>
+
 <p>(In TeX, lines are in &quot;horizontal boxes&quot;, hence the term, &quot;hbox&quot;.
 `<samp>@hbox</samp>' is a TeX primitive not needed in the Texinfo language.)
 </p><p>TeX also provides the line number in the Texinfo source file and
@@ -774,6 +791,7 @@ like this:
 \global\emergencystretch = .9\hsize
 @end tex
 </pre></td></tr></table>
+
 <p>(You should adjust the fraction as needed.)  This huge value for
 <code>\emergencystretch</code> cannot be the default, since then the typeset
 output would generally be of noticeably lower quality; the default
@@ -794,6 +812,7 @@ before the <code>@titlepage</code> command:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @finalout
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD241"></a>
 <a name="SEC255"></a>
@@ -823,6 +842,7 @@ file, before the title page:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @smallbook
 </pre></td></tr></table>
+
 <p>(Since many books are about 7 by 9.25 inches, this command might better
 have been called the <code>@regularbooksize</code> command, but it came to be
 called the <code>@smallbook</code> command by comparison to the 8.5 by 11 inch format.)
@@ -834,7 +854,8 @@ region in &quot;small&quot; book size (see section <a href="texinfo_4.html#SEC45
 commands that make it easier to produce examples for a smaller manual.
 </p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format with <code>@smallbook</code> that do not
 require changing the source file.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD242"></a>
 <a name="SEC256"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -918,7 +939,8 @@ margins, you must define a new command in `<tt>texinfo.tex</tt>' (or
 </p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to specify <code>@pagesizes</code> that do not
 require changing the source file.
 </p><p><code>@pagesizes</code> is ignored by <code>makeinfo</code>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD244"></a>
 <a name="SEC258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -982,7 +1004,8 @@ resolution.
 </p><p>Depending on your system, DVI files prepared with a
 nonstandard-<code>\mag</code> may not print or may print only with certain
 magnifications.  Be prepared to experiment.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD245"></a>
 <a name="SEC259"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1022,7 +1045,8 @@ much larger and do not support the bitmap fonts used by TeX (by
 default) very well.  Nevertheless, a PDF file does preserve an actual
 printed document on a screen as faithfully as possible, so it has its place.
 </p><p>PDF support in Texinfo is fairly rudimentary.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_21.html#SEC260" title="Next chapter"> &gt;&gt; </a>]</td>

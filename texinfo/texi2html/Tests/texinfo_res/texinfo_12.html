@@ -111,7 +111,9 @@ the list with an <code>@end itemize</code> command.
 <a name="IDX135"></a>
 </p><p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
 command.
-</p><p>Here is an itemized list of the different kinds of table and lists:
+</p>
+
+<p>Here is an itemized list of the different kinds of table and lists:
 </p><ul>
 <li><p>
 Itemized lists with and without bullets.
@@ -120,6 +122,8 @@ Enumerated lists, using numbers or letters.
 </p></li><li><p>
 Two-column tables with highlighting.
 </p></li></ul>
+
+
 
 <p>Here is an enumerated list with the same items:
 </p><ol>
@@ -130,6 +134,8 @@ Enumerated lists, using numbers or letters.
 </p></li><li><p>
 Two-column tables with highlighting.
 </p></li></ol>
+
+
 
 <p>And here is a two-column table with the same items and their
 @-commands:
@@ -151,6 +157,7 @@ Two-column tables with highlighting.
 <dd><p>Two-column tables, optionally with indexing.
 </p></dd>
 </dl>
+
 
 <hr size="6">
 <a name="NOD143"></a>
@@ -211,6 +218,7 @@ Some text
 for bar.
 @end itemize
 </pre></td></tr></table>
+
 <p>This produces:
 </p><blockquote>
 
@@ -242,6 +250,7 @@ Second inner item.
 Second outer item.
 @end itemize
 </pre></td></tr></table>
+
 <p>This produces:
 </p><blockquote>
 
@@ -259,6 +268,7 @@ Second inner item.
 Second outer item.
 </p></li></ul>
 </blockquote>
+
 
 <hr size="6">
 <a name="NOD144"></a>
@@ -306,6 +316,7 @@ Underlying causes.
 Proximate causes.
 @end enumerate
 </pre></td></tr></table>
+
 <p>This produces:
 </p><ol>
 <li><p>
@@ -327,6 +338,7 @@ Precipitating causes.
 Perpetuating causes.
 @end enumerate
 </pre></td></tr></table>
+
 <p>This produces:
 </p><ol>
 <li><p> 3
@@ -445,6 +457,7 @@ This is the text for
 Text for @samp{bar}.
 @end table
 </pre></td></tr></table>
+
 <p>This produces:
 </p><dl compact="compact">
 <dt>`<samp> foo
@@ -460,7 +473,8 @@ Text for @samp{bar}.
 
 <p>If you want to list two or more named items with a single block of
 text, use the <code>@itemx</code> command.  (See section <a href="#SEC162"><code>@itemx</code></a>.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD147"></a>
 <a name="SEC161"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -534,6 +548,7 @@ argument, and return the corresponding upper case (lower
 case) character or string.
 @end table
 </pre></td></tr></table>
+
 <p>This produces:
 </p><dl compact="compact">
 <dt><code> upcase
@@ -546,9 +561,11 @@ case) character or string.
 </p></dd>
 </dl>
 
+
 <p>(Note also that this example illustrates multi-line supporting text in
 a two-column table.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD149"></a>
 <a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -626,6 +643,7 @@ enclosed in braces after the <code>@multitable</code> command.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @multitable {some text for column one} {for column two}
 </pre></td></tr></table>
+
 <p>The first column will then have the width of the typeset `some text for
 column one', and the second column the width of `for column two'.
 </p><p>The prototype entries need not appear in the table itself.
@@ -633,6 +651,7 @@ column one', and the second column the width of `for column two'.
 contain Texinfo commands; markup commands such as <code>@code</code> are
 particularly likely to be useful.
 </p></li></ol>
+
 
 <hr size="6">
 <a name="NOD151"></a>
@@ -698,6 +717,7 @@ positioned side by side.
 split that window.
 </p></td></tr>
 </table>
+
 
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -1,6 +1,10 @@
 
 
 
+
+
+
+
 @node Top
 @top GNU Info
 
@@ -31,6 +35,7 @@ first, as it includes more background information and a thorough tutorial.
                                   and general concepts.
 @end menu
 
+
 @node What is Info
 @chapter What is Info?
 
@@ -42,6 +47,7 @@ system that uses a single source file to produce both on-line
 information and printed output.  You can typeset and print the files
 that you read in Info.
 
+
 @node Invoking Info
 @chapter Invoking Info
 
@@ -50,6 +56,7 @@ that you read in Info.
 @cindex command line options
 @cindex options, command line
 @cindex arguments, command line
+
 GNU Info accepts several options to control the initial node being
 viewed, and to specify which directories to search for Info files.  Here
 is a template showing an invocation of GNU Info from the shell:
@@ -260,6 +267,7 @@ the menu names which describe the path to that node.  For example,
 info emacs buffers
 @end example
 
+
 first selects the menu item @samp{Emacs} in the node @samp{(dir)Top},
 and then selects the menu item @samp{Buffers} in the node
 @samp{(emacs)Top}.
@@ -274,6 +282,8 @@ the command-line menu items.  Therefore, the Info file searched for the
 index or the invocation node is the file where Info finds itself after
 following all the menu items given on the command line.  This is so
 @samp{info emacs --show-options} does what you'd expect.
+
+
 
 @node Cursor Commands
 @chapter Moving the Cursor
@@ -396,6 +406,7 @@ argument, @code{M-r} moves the cursor to the start of the line in the
 center of the window.  With a numeric argument of @var{n}, @code{M-r}
 moves the cursor to the start of the @var{n}th line in the window.
 @end table
+
 
 @node Scrolling Commands
 @chapter Moving Text Within a Window
@@ -587,6 +598,7 @@ in the rightmost column of the screen, and the remainder of the line is
 invisible.  When long lines are truncated, the modeline displays the
 @samp{$} character near its left edge.
 @end table
+
 
 @node Node Commands
 @chapter Selecting a Node
@@ -794,6 +806,7 @@ Info command-line arguments processing}.  For example,
  @kbd{G Texinfo,Overview,Reporting Bugs @key{RET}}
 @end example
 
+
 displays the node @samp{Reporting Bugs} in the Texinfo manual.  (You
 don't actually need to type the menu items in their full length, or in
 their exact letter-case.  However, if you do type the menu items
@@ -837,6 +850,7 @@ Select a node which has been previously visited in a visible window.
 This is similar to @samp{C-x C-b} followed by @samp{m}, but no window is
 created.
 @end table
+
 
 @node Searching Commands
 @chapter Searching an Info File
@@ -971,6 +985,7 @@ If you don't know what manual documents something, try the @kbd{M-x
 index-apropos}.  It prompts for a string and then looks up that string
 in all the indices of all the Info documents installed on your system.
 It can also be invoked from the command line; see @ref{--apropos}.
+
 
 @node Xref Commands
 @chapter Selecting Cross References
@@ -1122,6 +1137,7 @@ On DOS/Windows only, the @kbd{Shift-@key{TAB}} key is an alias for
 @findex select-reference-this-line
 Select the menu item or note reference appearing on this line.
 @end table
+
 
 @node Window Commands
 @chapter Manipulating Multiple Windows
@@ -1477,6 +1493,7 @@ food
 forget
 @end example
 
+
 and you have typed an @samp{f}, followed by @samp{?}, Info will pop up a
 window showing a node called @samp{*Completions*} which lists the
 possible completions like this:
@@ -1486,6 +1503,7 @@ possible completions like this:
 foliate         food
 forget
 @end example
+
 
 i.e., all of the choices which begin with @samp{f}.  Pressing @key{SPC}
 or @key{TAB} would result in @samp{fo} appearing in the echo area, since
@@ -1500,6 +1518,7 @@ with @samp{fol}.
 Scroll the completions window, if that is visible, or the "other"
 window if not.
 @end table
+
 
 @node Printing Nodes
 @chapter Printing Nodes
@@ -1529,6 +1548,7 @@ Info opens the file, writes the node contents, and closes the file,
 under the assumption that text written to that file will be printed by
 the underlying OS.
 @end table
+
 
 @node Miscellaneous Commands
 @chapter Miscellaneous Commands
@@ -1614,6 +1634,7 @@ might give @samp{C-l} a numeric argument of 32 by typing:
 @kbd{C-u 3 2 C-l}
 @end example
 
+
 or
 
 @example
@@ -1698,6 +1719,7 @@ window.  You can have Info automatically display the footnotes
 associated with a node when the node is selected by setting the variable
 @code{automatic-footnotes}.  @xref{Variables, , @code{automatic-footnotes}}.
 @end table
+
 
 @node Variables
 @chapter Manipulating Variables
@@ -1843,6 +1865,7 @@ effect.  However, you can make Info perform quietly by setting the
 
 @end table
 
+
 @node Custom Key Bindings
 @chapter Customizing Key Bindings and Variables
 
@@ -1854,6 +1877,7 @@ effect.  However, you can make Info perform quietly by setting the
 @cindex .info
 @cindex .infokey
 @cindex _info file (MS-DOS)
+
 For those whose editor/pager of choice is not Emacs and who are not
 entirely satisfied with the --vi-keys option (@pxref{--vi-keys}), GNU
 Info provides a way to define different key-to-command bindings and
@@ -1878,12 +1902,14 @@ textual source file using the @code{infokey} command.
 * infokey source format::
 @end menu
 
+
 @node Invoking infokey
 @section Invoking @command{infokey}
 
 @cindex invoking infokey
 @cindex infokey, invoking
 @cindex _infokey file (MS-DOS)
+
 @command{infokey} compiles a source file
 (@file{$HOME/.infokey}@footnote{This file is named @file{_infokey} in
 the MS-DOS version, and is looked for in the current directory if
@@ -1900,12 +1926,14 @@ Besides the standard @option{--help} and @option{--version}, the only
 option is @option{--output @var{file}}.  This tells @command{infokey} to
 write the binary data to @var{file} instead of @file{$HOME/.info}.
 
+
 @node infokey source format
 @section @command{infokey} source format
 
 @cindex infokey source format
 @cindex .infokey source format
 @cindex format of .infokey source
+
 The format of the source file read by @command{infokey} is most easily
 illustrated by example.  For instance, here is a sample @file{.infokey}
 source file suitable for aficionados of @command{vi} or @command{less}:
@@ -2045,12 +2073,17 @@ not important, except that the command summary produced by the
 @code{get-help-window} command only displays the @emph{first} key that
 is bound to each command.
 
+
+
+
 @node Copying This Manual
 @appendix Copying This Manual
 
 @menu
 * GNU Free Documentation License::  License for copying this manual.
 @end menu
+
+
 
 @node GNU Free Documentation License
 @appendixsec GNU Free Documentation License
@@ -2420,6 +2453,7 @@ number of this License, you may choose any version ever published (not
 as a draft) by the Free Software Foundation.
 @end enumerate
 
+
 @appendixsubsec ADDENDUM: How to use this License for your documents
 
 To use this License in a document you have written, include a copy of
@@ -2447,8 +2481,12 @@ recommend releasing these examples in parallel under your choice of
 free software license, such as the GNU General Public License,
 to permit their use in free software.
 
+
+
+
 @node Index
 @appendix Index
 
 @printindex cp
+
 
