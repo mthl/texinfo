@@ -1,3 +1,8 @@
+2004-11-22  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: handle right deff arguments with braces appearing
+	within the argument (and not at the beginning).
+
 2004-10-08  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: add a mail address to the --help screen (idea from 

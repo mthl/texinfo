@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.118 2004-10-08 11:41:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.119 2004-11-22 13:53:00 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6549,6 +6549,7 @@ sub next_bracketed ($$)
     my $result = '';
     while ($line !~ /^\s*$/)
     {
+#print STDERR "next_bracketed($opened_braces): $result !!! $line";
         if (!$opened_braces)
         {
             $line =~ s/^\s*//;
@@ -6558,6 +6559,10 @@ sub next_bracketed ($$)
                 my $text = $1;
                 $text =~ s/\s*$//;
                 return ($text, $line);
+            }
+            elsif ($line =~ s/^([^\{\}]+?)([\{\}])/$2/)
+            {
+                $result = $1;
             }
         }
         elsif($line =~ s/^([^\{\}]+)//)
