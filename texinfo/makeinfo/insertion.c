@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.25 2003-08-20 18:58:15 karl Exp $
+   $Id: insertion.c,v 1.26 2003-09-13 21:07:24 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -639,7 +639,7 @@ begin_insertion (type)
         start_enumerating (*enumeration_arg, ENUM_ALPHA);
       break;
 
-      /* @group does nothing special in makeinfo. */
+      /* @group produces no output in info. */
     case group:
       /* Only close the paragraph if we are not inside of an
          @example-like environment. */
@@ -661,7 +661,7 @@ begin_insertion (type)
 
     case cartouche:
       if (html)
-	add_word ("<table class=\"cartouche\" border=1><tr><td>\n");
+	add_word ("<p><table class=\"cartouche\" border=1><tr><td>\n");
       if (in_menu)
         no_discard++;
       break;
