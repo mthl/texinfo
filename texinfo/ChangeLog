@@ -1,3 +1,7 @@
+2003-11-17  Karl Berry  <karl@gnu.org>
+
+	* bootstrap: honor environment variables.
+
 2003-11-17  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/makeinfo.c (execute_string): end paragraphs if

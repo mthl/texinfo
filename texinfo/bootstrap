@@ -1,7 +1,6 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.8 2003-11-11 13:21:35 karl Exp $
+# $Id: bootstrap,v 1.9 2003-11-17 13:29:29 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
-# (Thanks to Akim Demaille.)
 
 echo "Bootstrapping CVS Texinfo with:"
 
@@ -11,10 +10,15 @@ echo "Bootstrapping CVS Texinfo with:"
 # developer to do this.
 #cmd="autoreconf --verbose --force --install --include=m4"
 
+: ${AUTOHEADER=autoheader}
+: ${AUTOMAKE=automake}
+: ${AUTOCONF=autoconf}
+: ${ACLOCAL=aclocal}
+
 # So instead:
-cmd="autoheader && aclocal -I m4 && automake && autoconf"
+cmd="$AUTOHEADER && $ACLOCAL -I m4 && $AUTOMAKE && $AUTOCONF"
 echo "  $cmd"
 eval $cmd || exit 1
 
 echo "Now run configure with your desired options, for instance:"
-echo "  configure CFLAGS=-g --enable-maintainer-mode"
+echo "  ./configure CFLAGS=-g --enable-maintainer-mode"
