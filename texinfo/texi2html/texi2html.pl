@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.107 2004-02-11 21:38:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.108 2004-02-11 21:42:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2353,7 +2353,7 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq ''))
     $Texi2HTML::Config::OUT = $docu_name;
 }
 
-if ($Texi2HTML::Config::SPLIT $and ($Texi2HTML::Config::OUT eq '.'))
+if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
 {# This is to avoid trouble with latex2html
     $Texi2HTML::Config::OUT = '';
 }
