@@ -8,12 +8,14 @@ Garbage
 @c @subsection s1
 node in first but not the first...
 
-@node lop, first, ,(gcc) 
+@node lop, first,nonexistant node in prev for @@top,(texinfo) Copying 
 @top
 
 @menu
 * first::
 * node1::
+* node inexistant in menu:: non existing
+* (info)::
 @end menu
 
 @node Top

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.25 2003-04-29 15:24:30 pertusus Exp $
+# $Id: texi2html.init,v 1.26 2003-04-29 18:55:17 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -227,9 +227,12 @@ $T2H_INDEX_CHAPTER = '';
 # after they have more than that many entries
 $T2H_SPLIT_INDEX = 100;
 
-# if set warning is emitted when the next of the previous node isn't the node
-# or the previous of the next node isn't the node
-$T2H_WARN_PREV_NEXT = 0;
+# symbol put at the beginning of nodes entry in menu (and optionnaly of 
+# unnumbered in menus, see next variable)
+$T2H_MENU_SYMBOL = '*';
+
+# if true put a $T2H_MENU_SYMBOL before unnumbered in menus
+$T2H_UNNUMBERED_SYMBOL_IN_MENU = 0;
 
 # this controls the pre style for menus
 $T2H_MENU_PRE_STYLE = 'style="font-family: serif"';

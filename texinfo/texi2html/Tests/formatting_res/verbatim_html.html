@@ -33,12 +33,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Tests</h1>
-<h1> Tests </h1>
 <table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC2">2. node 'a with braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node with braces</td></tr>
-<tr><td align="left" valign="top">node : (manual)A node</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> node in another manual
+<tr><td align="left" valign="top">* node: (manual)A node</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> node in another manual
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
 a verbatim in menu comment </pre><pre>  verbatim on same line than @verbatim
@@ -46,7 +45,6 @@ a verbatim in menu comment </pre><pre>  verbatim on same line than @verbatim
 bidule
 
 </pre><pre style="font-family: serif">
-
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">3. node 'a without braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node without braces</td></tr>
 </table>
 
@@ -102,28 +100,20 @@ text
 of line.
 </p><p>In tex, @end verbatim must be on its own on a line.
 </p><p>A verbatim with begin and end on its own line
-</p><pre> 
-verbatim @samp{item}
+</p><pre>verbatim @samp{item}
 
 </pre>
-
-<p>Now html  </p>  
-<p>
+<p>Now html  <p>
 some html </p> 
 bidule ignored
-
-<p>@end html begins the line, and there must be exactly one space between @end
+</p><p>@end html begins the line, and there must be exactly one space between @end
 and html and thing following @end html are ignored in info. Strangely
 the empty line following @end html is ignored but spaces are inserted.
-</p><p>Now html valid for TeX  </p>  
-<p>
+</p><p>Now html valid for TeX  <p>
 some html </p> 
-
-<p>Some text one the line following @end html
+Some text one the line following @end html
 </p><p>And html on it's own line
-</p>
-<p> an htmp paragraph</p>
-
+</p><p> an htmp paragraph</p>
 
 <p>Now tex on the same line </p> some
 

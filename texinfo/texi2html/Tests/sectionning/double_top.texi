@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename double_top
+
+@node ToP, top
+Top node
+
+@menu
+* top::
+* TOP:: myself
+@end menu
+
+@node top,,ToP,Top
+second node (@@node top,,ToP,Top).
+ref to TOP: @ref{TOP}.
+
+@bye

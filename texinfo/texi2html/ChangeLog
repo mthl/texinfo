@@ -1,3 +1,17 @@
+2003-04-29  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: add $T2H_MENU_SYMBOL before nodes in 
+	menu and optionnaly before unnumbered section names in menu entry.
+	next are not menu childs but next node in menu.
+	it is possible not to have next or prev for node.
+	any case combination of top is accepted in nodes, menus and 
+	nodes directions. Not changed in anchors and refs (makeinfo shows
+	that kind of inconsistencies too).
+	the top_element it the @top section, then the Top node 
+	and last the first element.
+	'(file) node' and '(file)' accepted in menus and nodes references.
+	better looking verbose output.
+	* Tests/*: tests for documents without sections and double top
+
 2003-04-28  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: No heading for top, as print_Top 
 	allready does it.

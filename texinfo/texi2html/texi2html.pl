@@ -141,7 +141,6 @@ use vars qw(
             $T2H_MENU_PRE_STYLE
             @T2H_INCLUDE_DIRS 
 
-            $T2H_WARN_PREV_NEXT
             $T2H_CENTER_IMAGE
             $T2H_EXAMPLE_INDENT_CELL
             $T2H_SMALL_EXAMPLE_INDENT_CELL
@@ -156,6 +155,8 @@ use vars qw(
             $T2H_VERTICAL_HEAD_NAVIGATION
             $T2H_WORDS_IN_PAGE
             $T2H_ICONS
+            $T2H_UNNUMBERED_SYMBOL_IN_MENU
+            $T2H_MENU_SYMBOL
             %T2H_ACTIVE_ICONS
             %T2H_NAVIGATION_TEXT
             %T2H_PASSIVE_ICONS
@@ -266,7 +267,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.42 2003-04-29 15:24:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.43 2003-04-29 18:55:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1743,6 +1744,7 @@ my @lines = ();             # whole document
 my @copying_lines = ();     # lines between @copying and @end copying
 my $macros;                 # macros. reference on a hash
 my $element_top;            # Top element
+my $node_top;               # Top node
 my $element_index;          # element with first index
 my $element_chapter_index;  # chapter with first index
 my $element_first;          # first element
@@ -1848,7 +1850,7 @@ sub pass_texi()
                              $nodes{$node} = $node_ref;
                         }     
                         $node_ref->{'node'} = 1;
-                        $node_ref->{'texi'} = $node; 
+                        $node_ref->{'texi'} = $node;
                         $node_ref->{'seen'} = 1;
                         $node_ref->{'level_modifier'} = $state->{'level'};
                         $node_ref->{'place'} = [];
@@ -1858,6 +1860,23 @@ sub pass_texi()
                         $state->{'element'} = $node_ref;
                         $state->{'after_element'} = 1;
                         $state->{'node_ref'} = $node_ref;
+                        # FIXME makeinfo treats differently case variants of
+                        # top in nodes and anchors and in refs commands and 
+                        # refs from nodes. Things are inconsistent here too
+                        # and the order of references is important.
+                        # (xrefs and anchors haven't been changed but here and
+                        # menus and nodes directions are changed)
+                        if ($node =~ /^top$/i)
+                        {
+                            if (!defined($node_top))
+                            {
+                                $node_top = $node_ref;
+                            }
+                            else
+                            { # All the refs are going to point to the first Top
+                                warn "$WARN Top node allready exists `$node_ref->{'texi'}'\n";
+                            }
+                        }
                         unless (@nodes_list)
                         {
                             $node_ref->{'first'} = 1;
@@ -2288,14 +2307,40 @@ sub rearrange_elements()
                 {
                      $node->{$direction} = $nodes{$node->{$direction}};
                 }
-                else 
+                elsif ($node->{$direction} =~ /^top$/i and defined($node_top))
                 {
-                # FIXME ignoring the first node up and prev because there is 
-                # (dir) for the prev node. Maybe it would be better to ignore 
-                # nodes with () which aren't found in the document
-                     warn "$WARN $direction $node->{$direction} for $node->{'texi'} not found\n" if (!$node->{'first'} or ($direction eq 'node_next'));
+                    $nodes{$node->{$direction}} = $node_top;
+                    $node->{$direction} = $node_top;
+                }
+                elsif ($node->{$direction} =~ /^\(.*\)/)
+                { # ref to an external node
+                    if (exists($nodes{$node->{$direction}}))
+                    {
+                        $node->{$direction} = $nodes{$node->{$direction}};
+                    }
+                    else
+                    {
+                        my $node_ref = { 'texi' => $node->{$direction},
+                            'external_node' => 1 };
+                        $nodes{$node->{$direction}} = $node_ref;
+                        $node->{$direction} = $node_ref;
+                    }
+                }
+                else
+                {
+                     warn "$WARN $direction `$node->{$direction}' for `$node->{'texi'}' not found\n";
                      delete $node->{$direction};
                 }
+            }
+        }
+        # top node might be referenced with different case
+        foreach my $menu_direction (('menu_next', 'menu_up', 'menu_prev'))
+        {
+            last unless ($node_top);
+            if (exists ($node->{$menu_direction}) and $node->{$menu_direction}->{'texi'} =~ /^top$/i)
+            {
+                $nodes{$node->{$menu_direction}} = $node_top;
+                $node->{$menu_direction} = $node_top;
             }
         }
     }
@@ -2313,15 +2358,19 @@ sub rearrange_elements()
                 $element->{'section_ref'} = $element->{'with_section'};
                 push @{$element->{'section_ref'}->{'nodes'}}, $element;
             }
-            else
+            elsif (defined($current_section))
             {
                 $element->{'in_top'} = 1 if ($current_section->{'top'});
                 $element->{'section_ref'} = $current_section;
                 $element->{'element_up'} = $current_section;
-                $element->{'level'} = $current_section->{'level'};
+                $element->{'toc_level'} = $current_section->{'toc_level'};
                 $current->{'element_next'} = $element if (defined($current));
                 $current = $element;
                 push @{$element->{'section_ref'}->{'nodes'}}, $element;
+            }
+            else
+            {
+                $element->{'toc_level'} = $MIN_LEVEL;
             }
         }
         else
@@ -2333,12 +2382,11 @@ sub rearrange_elements()
     foreach my $node (@nodes_list)
     {
         # complete only if there is a @top command
-        last unless ($has_top);
+        # last unless ($has_top);
         # use values deduced from menus to complete missing up, next, prev
-        # FIXME we should better begin with up, next, prev given by sectionning
+        # FIXME we should better begin with next, prev given by sectionning
         # commands
-	# FIXME and ($node->{'texi'} ne 'Top')
-        if (!$node->{'first'} and !$node->{'top'} and !$node->{'menu_up'} and $T2H_SHOW_MENU)
+        if (!$node->{'first'} and !$node->{'top'} and !$node->{'menu_up'} and ($node->{'texi'} !~ /^top$/i) and $T2H_SHOW_MENU)
         {
             warn "$WARN `$node->{'texi'}' doesn't appear in menus\n";
         }
@@ -2347,8 +2395,8 @@ sub rearrange_elements()
         {
             $node->{'up'} = $node->{'node_up'};
         }
-        elsif ($node->{'section_ref'} and $node->{'section_ref'}->{'up'})
-        {
+        elsif ($node->{'section_ref'} and $node->{'section_ref'}->{'up'} and $has_top)
+        { # complete up using sections if there is a @top
             $node->{'up'} = $node->{'section_ref'}->{'up'};
         }
         elsif ($node->{'menu_up'})
@@ -2359,79 +2407,46 @@ sub rearrange_elements()
         if (!$node->{'node_next'})
         {
             my $next;
-            # if the node has a child the child is the next
-            if ($node->{'menu_child'})
+            # the next is the following node in the menu 
+            if ($node->{'menu_next'}) 
             {
-                 if ($node->{'menu_child'}->{'seen'})
-                 {
-                      $next = $node->{'menu_child'};
-                 }
-                 else
-                 {
-                      warn "$WARN menu element $node->{'menu_child'}->{'texi'} not found\n";
-                 }
-            }
-            # otherwise if there is no child, the next is the following node
-            # in the menu 
-            elsif ($node->{'menu_next'})
-            {
-                 if ($node->{'menu_next'}->{'seen'})
-                 {
-                      $next = $node->{'menu_next'};
-                 }
-                 else
-                 {
-                      warn "$WARN menu element $node->{'menu_next'}->{'texi'} not found\n";
-                 }
+                $next = $node->{'menu_next'};
             }
             # the next node is the node following the parent node in menu
-            else
+            elsif ($node->{'menu_up'})
             {
-                 my $current_node = $node->{'menu_up'};
-                 while (!defined($current_node->{'menu_next'}) and defined($current_node->{'menu_up'}))
-                 {
-                      $current_node = $current_node->{'menu_up'};
-                 }
-                 if (defined($current_node->{'menu_next'}))
-                 {
-                      $next = $current_node->{'menu_next'};
-                 }
-                 else
-                 {
-                      warn "$WARN menu tree isn't rooted at the first node\n" if (!$current_node->{'first'});
-                      $next = $current_node;
-                 }
-             }
-             if (!$next or !$next->{'seen'})
-             {
-                 $next = undef;
-             }
-             else
-             {
-                 $node->{'node_next'} = $next;
-             }
-        }
-        # optionally warn if the next for the previous isn't the node 
-        if ($T2H_WARN_PREV_NEXT)
-	{
-            if ($node->{'node_next'})
-            {
-                if ($node->{'node_next'}->{'node_prev'} and $node->{'node_next'}->{'node_prev'} ne $node)
+                my $current_node = $node->{'menu_up'};
+                while (!defined($current_node->{'menu_next'}) and defined($current_node->{'menu_up'}))
                 {
-                    warn "$WARN next for `$node->{'texi'}' is `$node->{'node_next'}->{'texi'}' but prev for `$node->{'node_next'}->{'texi'}' is `$node->{'node_next'}->{'node_prev'}->{'texi'}'\n";
+                    $current_node = $current_node->{'menu_up'};
+                }
+                if (defined($current_node->{'menu_next'}))
+                {
+                    $next = $current_node->{'menu_next'};
                 }
             }
-            if ($node->{'node_prev'})
+            if ($next)# and $next->{'seen'})
             {
-                if ($node->{'node_prev'}->{'node_next'} and $node->{'node_prev'}->{'node_next'} ne $node)
-                {
-                    warn "$WARN prev for `$node->{'texi'}' is `$node->{'node_prev'}->{'texi'}' but next for `$node->{'node_prev'}->{'texi'}' is `$node->{'node_prev'}->{'node_next'}->{'texi'}'\n";
-                }
+                $node->{'next'} = $next;
             }
         }
-        if (!$node->{'seen'})
+        if (!$node->{'node_prev'})
         {
-            warn "$WARN (bug?) $node->{'texi'} not seen";
+            my $prev;
+            # the prev is the previous node in the menu 
+            if ($node->{'menu_prev'}) 
+            {
+                $prev = $node->{'menu_prev'};
+            }
+            # the prev node is the parent node
+            elsif ($node->{'menu_up'})
+            {
+                $prev = $node->{'menu_up'};
+            }
+            if ($prev)# or !$prev->{'seen'})
+            {
+                $node->{'prev'} = $prev;
+            }
         }
     }
     # build the elements list 
@@ -2463,9 +2478,7 @@ sub rearrange_elements()
             {
                 if (!defined($element->{'with_section'}))
                 {
-                    $element->{'level'} = $MIN_LEVEL if (!defined($element->{'level'}));
-                    $element->{'toc_level'} = $element->{'level'};
-                    $element->{'toc_level'} = $MIN_LEVEL if ($element->{'level'} < $MIN_LEVEL);
+                    $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
                     print STDERR "# new node element ($element) $element->{'texi'}\n"
                         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     push @elements, $element;
@@ -2488,8 +2501,9 @@ sub rearrange_elements()
     # FIXME Is it right for the last element ? Or should it be the last
     # with indices taken into account ?
     $element_first = $elements_list[0];
+    # If there is no @top section not top node the first node is the top element
+    $element_top = $node_top if (!defined($element_top) and defined($node_top));
     $element_top = $element_first unless (defined($element_top));
-    # If there is no @top section the first node is the top element
     $element_top->{'top'} = 1 if ($element_top->{'node'});
     $element_last = $elements_list[-1];
     print STDERR "# find forward and back\n"
@@ -2502,7 +2516,7 @@ sub rearrange_elements()
         {
             $element->{'up'} = $element_top;
         }
-        # FIXME up or element_up ?
+        # FIXME up or element_up ? It is only used for reparenting with indices
         push @{$element->{'up'}->{'childs'}}, $element if (defined($element->{'up'}));
         if ($prev)
         {
@@ -2645,40 +2659,24 @@ sub rearrange_elements()
         }
     }
     @elements_list = @new_elements;
-    print STDERR "# complete prev and next, find fastback and fastforward\n" 
+    print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
     {
-        next if ($element->{'top'});
-        if ($element->{'node_prev'})
-        {
-             $element->{'prev'} = $element->{'node_prev'};
-        }
-        else
-        {
-             $element->{'prev'} = $element->{'back'};
-        }
-        if ($element->{'node_next'})
-        {
-             $element->{'next'} = $element->{'node_next'};
-        }
-        else
-        {
-             $element->{'next'} = $element->{'forward'};
-        }
         my $up = get_top($element);
+        next unless (defined($up));
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
-	#print STDERR "$element->{'texi'} (top: $element->{'top'}, toplevel: $element->{'toplevel'}, $element->{'element_up'}, $element->{'element_up'}->{'texi'}): $up, $up->{'texi'}\n";
+	#print STDERR "$element->{'texi'} (top: $element->{'top'}, toplevel: $element->{'toplevel'}, $element->{'element_up'}, $element->{'element_up'}->{'texi'}): up: $up, $up->{'texi'}\n";
         # fastforward is the next element on same level than the upper parent
         # element
-        $element->{'fastforward'} = $up->{'element_next'};
+        $element->{'fastforward'} = $up->{'element_next'} if (exists ($up->{'element_next'}));
         # if the element isn't at the highest level, fastback is the 
         # highest parent element
-        if ($up ne $element)
+        if ($up and ($up ne $element))
         {
             $element->{'fastback'} = $up;
         }
-        else
+        elsif ($element->{'toplevel'})
         {
             # the element is a top level element, we adjust the next
             # toplevel element fastback
@@ -2728,7 +2726,7 @@ sub rearrange_elements()
         }
         foreach my $element (@elements_list)
         {
-            $doc_nr++ if (($element->{'level'} <= $cut_section and !$element->{'node'})
+            $doc_nr++ if ((!$element->{'node'} and ($element->{'level'} <= $cut_section))
                or $element->{'index_page'});
             $element->{'doc_nr'} = $doc_nr;
             $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
@@ -2792,7 +2790,7 @@ sub rearrange_elements()
         print STDERR "$element ";
         if ($element->{'node'})
         {
-             print STDERR "node($element->{'id'}, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+             print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
         }
         elsif ($element->{'index_page'})
         {
@@ -2818,6 +2816,16 @@ sub rearrange_elements()
 	print STDERR "  u_e: $element->{'element_up'}->{'texi'}\n" if (defined($element->{'element_up'}));
 	print STDERR "  n_e: $element->{'element_next'}->{'texi'}\n" if (defined($element->{'element_next'}));
         print STDERR "  ff: $element->{'fastforward'}->{'texi'}\n" if (defined($element->{'fastforward'}));
+        if (defined($element->{'nodes'}))
+        {
+             print STDERR "  nodes: $element->{'nodes'} (@{$element->{'nodes'}})\n";
+             foreach my $node (@{$element->{'nodes'}})
+             {
+                  my $beginning = "   ";
+                  $beginning = "  *" if ($node->{'with_section'});
+                  print STDERR "${beginning}$node->{'texi'}\n";
+             }
+        }
         print STDERR "  places: $element->{'place'}\n";
         foreach my $place(@{$element->{'place'}})
         {
@@ -2837,23 +2845,6 @@ sub rearrange_elements()
     }
 }
 
-sub get_node($)
-{
-    my $element = shift;
-    return $element if ($element->{'node'});
-    return $element->{'node_ref'} if ($element->{'node_ref'});
-    return undef;
-}
-
-sub get_element($)
-{
-    my $node = shift;
-    return $node if ($node->{'element'});
-    return $node->{'section_ref'} if ($node->{'section_ref'});
-    print STDERR "Bug: cannot get element for a node ?\n";
-    return undef;
-}
-
 # find parent element which is a top element, or a node within the top section
 sub get_top($)
 {
@@ -2864,7 +2855,7 @@ sub get_top($)
        $up = $up->{'element_up'};
        if (!defined($up))
        {
-           print STDERR "$WARN no toplevel for $element->{'texi'}\n";
+           print STDERR "$WARN no toplevel for $element->{'texi'}\n" if (@sections_list);
            return undef;
        }
    }
@@ -3330,7 +3321,7 @@ sub pass_text()
                             $FH = \*FILE;
                         }
                         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
-                        print STDERR "# Creating Top in $docu_top_file ...\n" if ($T2H_VERBOSE);
+                        print STDERR "[Top]" if ($T2H_VERBOSE);
                         $T2H_HREF{'Top'} = href($element_top, $element->{'file'});
                         &$T2H_print_Top($FH, $element->{'has_heading'});
 
@@ -3355,6 +3346,7 @@ sub pass_text()
                         }
                     }
                     # begin new element
+                    print STDERR "# Writing elements:" if (! defined($element) and $T2H_VERBOSE);
                     $element = $new_element;
                     $state{'element'} = $element;
 		    #print STDERR "Doing hrefs for $element->{'texi'}\n";
@@ -3367,7 +3359,7 @@ sub pass_text()
                     {
                         my $elem = $element->{$direction};
                         next unless (defined($elem));
-                        if ($elem->{'node'})
+                        if ($elem->{'node'} or $elem->{'external_node'})
                         {
                             $T2H_NODE{$direction} = $elem->{'text'};
                         }
@@ -3375,7 +3367,14 @@ sub pass_text()
                         {
                             $T2H_NODE{$direction} = $elem->{'node_ref'}->{'text'};
                         }
-                        $T2H_HREF{$direction} = href($elem, $element->{'file'});
+                        if ($elem->{'external_node'})
+                        {
+                            $T2H_HREF{$direction} = '';
+                        }
+                        else
+                        {
+                            $T2H_HREF{$direction} = href($elem, $element->{'file'});
+                        }
                         $T2H_NAME{$direction} = $elem->{'text'};
                     }   
 		    #print STDERR "Done hrefs for $element->{'texi'}\n";
@@ -3385,11 +3384,12 @@ sub pass_text()
 			#print STDERR "Open file for $element->{'texi'}\n";
                         open(FILE, "> $docu_rdir$file") ||
                         die "$ERROR: Can't open $docu_rdir$file for writing: $!\n";
-                        print STDERR "# Writing to $docu_rdir$file\n" if $T2H_VERBOSE;
+                        print STDERR "\n# Writing to $docu_rdir$file " if $T2H_VERBOSE;
                         $FH = \*FILE;
                         &$T2H_print_page_head($FH);
                         &$T2H_print_chapter_header($FH) if $T2H_SPLIT eq 'chapter';
                     }
+                    print STDERR "." if ($T2H_VERBOSE);
                     @section_lines = ();
                     @head_lines = ();
                 }
@@ -3452,11 +3452,12 @@ sub pass_text()
         push @section_lines, $text;
         $text = '';
     }
-
+    print STDERR "\n" if ($T2H_VERBOSE);
     $T2H_THIS_SECTION = \@section_lines;
     # if no sections, then simply print document as is
     if ($one_section)
     {
+        print STDERR "# Write the section\n" if ($T2H_VERBOSE);
         t2h_print_lines($FH);
         &$T2H_print_foot_navigation($FH);
         &$T2H_print_page_foot($FH);
@@ -3483,7 +3484,7 @@ sub pass_text()
 
     if (@foot_lines)
     {
-        print STDERR "# writing Footnotes in $docu_foot_file...\n" if $T2H_VERBOSE;
+        print STDERR "# writing Footnotes in $docu_foot_file\n" if $T2H_VERBOSE;
         open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Footnotes};
@@ -3498,7 +3499,7 @@ sub pass_text()
 
     if (@T2H_TOC_LINES)
     {
-        print STDERR "# writing Toc in $docu_toc_file...\n" if $T2H_VERBOSE;
+        print STDERR "# writing Toc in $docu_toc_file\n" if $T2H_VERBOSE;
         open (FILE, "> $docu_toc_file") || die "$ERROR: Can't open $docu_toc_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Contents};
@@ -3513,7 +3514,7 @@ sub pass_text()
 
     if (@T2H_STOC_LINES)
     {
-        print STDERR "# writing Overview in $docu_stoc_file...\n" if $T2H_VERBOSE;
+        print STDERR "# writing Overview in $docu_stoc_file\n" if $T2H_VERBOSE;
         open (FILE, "> $docu_stoc_file") || die "$ERROR: Can't open $docu_stoc_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Overview};
@@ -3528,7 +3529,7 @@ sub pass_text()
     my $about_body;
     if ($about_body = &$T2H_about_body())
     {
-        print STDERR "# writing About in $docu_about_file...\n" if $T2H_VERBOSE;
+        print STDERR "# writing About in $docu_about_file\n" if $T2H_VERBOSE;
         open (FILE, "> $docu_about_file") || die "$ERROR: Can't open $docu_about_file for writing: $!\n"
             if $T2H_SPLIT;
 
@@ -4218,14 +4219,19 @@ sub menu_entry($)
 
     my $entry;
     my $element = $nodes{$node_texi};
+    if (($node_texi =~ /^top$/i) and defined($node_top))
+    {
+        $nodes{$node_texi} = $node_top;
+        $element = $node_top;
+    }
     if ($element->{'seen'})
     {
-        #print STDERR "href in menu for $element->{'texi'}\n";
         if ($element->{'with_section'})
         {
             $element = $element->{'with_section'};
         }
     
+	#print STDERR "href in menu for $element->{'texi'}\n";
         my $href = href($element, $file);
         unless ($state->{'preformatted'})
         { 
@@ -4235,8 +4241,9 @@ sub menu_entry($)
         if ($T2H_NUMBER_SECTIONS && !$T2H_NODE_NAME_IN_MENU)
         {
             $entry = $element->{'text'};
+            $entry = "$T2H_MENU_SYMBOL $entry" if ($entry and ($element->{'node'}) or   ((!defined($element->{'number'}) or ($element->{'number'} =~ /^\s*$/)) and $T2H_UNNUMBERED_SYMBOL_IN_MENU));
             # If there is no section name
-            $entry = $node unless ($entry);
+            $entry = "$T2H_MENU_SYMBOL $node" unless ($entry);
             $name = '';
             if ($T2H_AVOID_MENU_REDUNDANCY && $descr && !$state->{'preformatted'})
             {
@@ -4249,33 +4256,33 @@ sub menu_entry($)
         }
 	elsif ($state->{'preformatted'})
         {
-            $entry = "${name}: $node";
+            $entry = ($name ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node" );
         }
-	else
+        else
         {
             $entry = ($name && ($name ne $node || ! $T2H_AVOID_MENU_REDUNDANCY)
-                      ? "$name : $node" : $node);
+                      ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node");
         }
         return &$t2h_menu_entry($entry, $descr, $state, $href);
     }
-    elsif ($node =~ /^\(.*\)\w+/)
+    elsif ($node =~ /^\(.*\)/)
     {
         # menu entry points to another info manual
 	if ($state->{'preformatted'})
         {
-            $entry = "${name}: $node";
+            $entry = ( $name ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node" );
         }
 	else
         {
             $entry = ($name && ($name ne $node || ! $T2H_AVOID_MENU_REDUNDANCY)
-                      ? "$name : $node" : $node);
+                      ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node");
         }
         return &$t2h_menu_entry($entry, $descr, $state);
     }
     else
     {
-        warn "$ERROR Undefined node of menu_entry ($node_texi): $_";
-        return '';
+        warn "$ERROR Unknown node in menu entry `$node_texi'\n";
+        return &$t2h_menu_entry($name ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node", $descr, $state);
     }
 }
 
@@ -4336,7 +4343,7 @@ sub do_xref($$$)
         }
         else
         {
-           warn "$ERROR Undefined node ($node_texi) in $macro: $text\n";
+           warn "$ERROR Undefined node `$node_texi' in \@$macro: $text\n";
            $result = "\@$macro"."{${text}}";
         }
     }

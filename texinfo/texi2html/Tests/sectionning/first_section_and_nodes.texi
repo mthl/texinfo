@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename first_section_no_node
+@setfilename first_section_and_nodes
 
 Garbage
 
@@ -9,12 +9,10 @@ Garbage
 in unnumbered
 
 @node Top
-@top top section
 Top node
 
 
 @node second node,,,(dir)
-@section second
 
 second node
 

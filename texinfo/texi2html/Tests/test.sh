@@ -101,6 +101,7 @@ for file in `ls $dir_res` ; do
 		fi
 		if [ $found = 'no' ]; then
 			echo "    !!! $file_or_dir not found: $file";
+			previous_good=no
 		else
 			echo "    !!! $file_or_dir differ: $file";
 			previous_good=no
@@ -139,6 +140,10 @@ test_texi sectionning
 test_texi sectionning first_section_no_node.texi
 test_texi sectionning nodes_before_top.texi
 test_texi sectionning nodes_test.texi
+test_texi sectionning no_section.texi
+test_texi sectionning no_section_no_top.texi
+test_texi sectionning first_section_and_nodes.texi
+test_texi sectionning double_top.texi
 test_texi formatting imbrications.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html

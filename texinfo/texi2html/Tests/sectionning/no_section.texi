@@ -1,0 +1,27 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename no_section
+
+Garbage
+
+@node ToP
+Top node
+
+@menu
+* second node::
+* TOP:: myself
+@end menu
+
+@node second node,,top,TOP
+second node (@@node second node,,top,TOP).
+anchor TOP: @anchor{TOP}.
+
+@menu
+* other node::
+@end menu
+
+@node other node,,,second node
+anchor top @anchor{top}.
+ref to TOP @ref{TOP}.
+
+@bye

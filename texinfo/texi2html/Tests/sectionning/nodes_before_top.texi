@@ -1,14 +1,30 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename first_section_no_node
+@setfilename nodes_before_top
 
-@node Top
+@node first, Top, ,(dir)
+
+in first node
+@menu
+* node in menu before top::
+@end menu
+
+@node node in menu before top,,,first
+
+node in menu before top text
+
+@node Top,,first
 @top top section 
 Top node
+@menu
+* second node::
+@end menu
 
 @node second node
-@subsection a subsection
+@chapter a chapter
 
 second node
+
+
 
 @bye
