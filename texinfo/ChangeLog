@@ -1,3 +1,45 @@
+2003-10-27  Karl Berry  <karl@gnu.org>
+
+	* lib/system.h (LC_MESSAGES): no longer needed according to
+	Bruno, libintl.h defines it.
+	Message of 16 Jul 2003 18:17:23 +0200.
+
+2003-10-27  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\defname): be sure to declare the space
+	  we get from \rightskip in the first line.
+	  (\parsebodycommon): Be careful not to issue \medbreak after
+	  \penalty 2000.
+	  (\defxbodycommon): The penalty changed from 2000 to 3000;
+	  it should be higher that the one in \parsebodycommon.
+	  -- added "@c vim:sw=2:" near the end, for my comfort.
+
+2003-10-27  Stepan Kasal  <kasal@ucw.cz>
+
+	More cleanup of active chars in @defxx arguments:
+
+	* doc/texinfo.tex (\opnr, \clnr): Reimplemented, ...
+	  (\oprm, \clrm, \opnested, \ampnr): ... nuking these, and using ...
+	  (\parenfont, \infirstlevel, \bfafterword): ... 3 new macros, ...
+	  (\ifampseen): ... and a new \if.
+	  (\brackcount): New count, to count also square braces, ...
+	  (\lbrb, \rbrb): ... here.
+	  (\checkparencounts): Macros to check whether both counts get back
+          to 0; ...
+	  (\badparencount, \badbrackcount): ... if not, issue an error
+	  message and reset the respective count.
+	  (\deftypefnheaderx): Don't call \normalparens, it has no effect.
+	  (\defvarargs): Call \boldbrax instead of \normalparens.
+	  (\normalparens): Nuked.
+
+2003-10-26  Eli Zaretskii  <eliz@is.elta.co.il>
+
+	* info/session.c (info_menu_or_ref_item): If point is before all
+	the cross-references, use the first one as the default, instead of
+	setting which to -1 and crashing.  (Patch originally sent 2000-10-09.)
+	Debian bug 74278, reported from: Josip Rodin <joy@cibalia.gkvk.hr>,
+	7 Oct 2000 19:44:24 +0200.
+
 2003-10-26  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AM_MAINTAINER_MODE): enable, to avoid lossage
