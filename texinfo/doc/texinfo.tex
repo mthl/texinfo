@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-09-21.11}
+\def\texinfoversion{2003-09-21.13}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -4074,14 +4074,13 @@ width0pt\relax} \fi
 % 
 \def\sectionheading#1#2#3#4{%
   {%
-    \expandafter\advance\csname #2headingskip\endcsname by \parskip
-    \csname #2headingbreak\endcsname
-  }%
-  {%
     % Switch to the right set of fonts.
     \csname #2fonts\endcsname \rm
     %
-    % Only insert the separating space if we have a section number.
+    % Insert space above the heading.
+    \csname #2headingbreak\endcsname
+    %
+    % Only insert the space after the number if we have a section number.
     \def\sectionlevel{#2}%
     \def\temptype{#3}%
     %
@@ -4117,14 +4116,16 @@ width0pt\relax} \fi
           \hangindent=\wd0  % zero if no section number
           \unhbox0 #1}%
   }%
-  % Add extra space after the heading -- either a line space or a
-  % paragraph space, whichever is more.  (Some people like to set
-  % \parskip to large values for some reason.)  Don't allow stretch, though.
-  \ifdim\parskip>\normalbaselineskip
-    \kern\parskip
-  \else
-    \kern\normalbaselineskip
-  \fi
+  % Add extra space after the heading -- half of whatever came above it.
+  \skip0 = \csname #2headingskip\endcsname
+  \divide\skip0 by 2  % .5<glue> eliminates stretch and shrink
+  \vskip\skip0
+  %
+  % We'll almost certainly start a paragraph next, so don't let that
+  % glue accumulate.
+  \nobreak\vskip-\parskip
+  %
+  % Attempt to avoid a break at whatever comes next.
   \nobreak
 }
 
