@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.46 2005-02-25 08:55:03 kasal Exp $
+# $Id: texi2dvi,v 1.47 2005-02-28 13:41:03 kasal Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.46 $'
+rcs_revision='$Revision: 1.47 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -730,11 +730,12 @@ $textra" "$filename_input" >"$filename_xtr"
     then
       # If using the bibunits package, we might have to run bibtex
       # on subfiles.
-      for f in `(ls "$filename_noext".aux bu[0-9]*.aux) 2>&6`
+      for f in "$filename_noext".aux bu[0-9]*.aux
       do
-	if (grep '^\\bibstyle[{]' $f   \
-	    && grep '^\\bibdata[{]' $f \
-	    && grep '^\\citation[{]' $f) >&6 2>&1; then
+	if test -s "$f" && \
+	   (grep '^\\bibstyle[{]' "$f"   \
+	    && grep '^\\bibdata[{]' "$f" \
+	    && grep '^\\citation[{]' "$f") >&6 2>&1; then
           verbose "Running $bibtex $f ..."
           $bibtex "$f" >&5 ||
             fatal 1 "$bibtex exited with bad status, quitting."

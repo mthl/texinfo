@@ -1,3 +1,8 @@
+2005-02-28  Stepan Kasal  <kasal@ucw.cz>
+
+	* util/texi2dvi: When running bibtex, improve quoting and again,
+	  we can save a process by not running ls.  (Thanks, Akim.)
+
 2005-02-24  Stepan Kasal  <kasal@ucw.cz>
 
 	* util/texi2dvi (get_xref_files): No need to use ls, save a process.
