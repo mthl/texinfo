@@ -1,3 +1,7 @@
+2005-03-07  Derek Price  <derek@ximbiot.com>
+
+	* texi2html.pl:  Comment end of Texi2HTML::Config package.
+
 2005-02-27  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init,texi2html.pl: handle @frenchspacing.

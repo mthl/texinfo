@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.131 2005-02-27 20:35:07 pertusus Exp $
+# $Id: texi2html.pl,v 1.132 2005-03-07 17:28:23 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -736,7 +736,7 @@ sub t2h_nounicode_cross_manual_accent($$)
 }
 
 
-}
+} # end package Texi2HTML::Config
 
 use vars qw(
 %value
