@@ -1,3 +1,7 @@
+2003-08-29  Derek Price  <derek@ximbiot.com>
+
+	* doc/stamp-vti, doc/version.texi: Regenerated.
+
 2003-08-11  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: don't always open paragraphs 
