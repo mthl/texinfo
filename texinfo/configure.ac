@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.23 2003-02-16 17:12:17 karl Exp $
+dnl $Id: configure.ac,v 1.24 2003-04-18 17:12:57 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -119,7 +119,7 @@ short ospeed;
 #endif
 #endif
 /* Make sure all variables actually exist.  AIX 4.3 has ospeed but no BC.
-   --Andreas Ley <andy@rz.uni-karlsruhe.de>, 24 Aug 2000.  */
+   --Andreas Ley <andy@rz.uni-karlsruhe.de> 24 Aug 2000.  */
 BC++;
 UP++;
 PC++;
