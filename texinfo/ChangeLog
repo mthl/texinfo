@@ -1,3 +1,9 @@
+2004-10-01  Karl Berry  <karl@gnu.org>
+
+	* configure.ac: bump version to 4.7.90, although we're not really
+		pretesting yet.  (I need a distribution to check an
+		automake issue.)
+
 2004-09-14  Karl Berry  <karl@gnu.org>
 
 	* util/srclist.txt (getopt.h): renamed to getopt_.h.
