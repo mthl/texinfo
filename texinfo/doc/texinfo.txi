@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
+@c $Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -107,7 +107,7 @@ USA @*
 ISBN 1-882114-67-1 @c for version 4.0, September 1999.
 @c ISBN 1-882114-65-5 is for version 3.12, March 1998.
 @c ISBN 1-882114-64-7 is for edition 2.24 of November 1996.
-@c ISBN 1-882114-63-9 is for edition 2.20 of 28 February 1995
+@c ISBN 1-882114-63-9 is for edition 2.20 of 28 February 1995.
 
 @sp 1
 Cover art by Etienne Suvasa.
@@ -2391,8 +2391,8 @@ C-c C-c @}       @r{Move out of enclosing braces.}
 
 @group
 C-c C-c C-d     @r{Insert a node's section title}
-                @r{in the space for the description}
-                @r{in a menu entry line.}
+               @r{in the space for the description}
+               @r{in a menu entry line.}
 @end group
 @end example
 
@@ -2415,13 +2415,13 @@ be used to update every node and menu in a file as well.@refill
 @group
 C-c C-u m
 M-x texinfo-master-menu
-                @r{Create or update a master menu.}
+               @r{Create or update a master menu.}
 @end group
 
 @group
 C-u C-c C-u m   @r{With @kbd{C-u} as a prefix argument, first}
-                @r{create or update all nodes and regular}
-                @r{menus, and then create a master menu.}
+               @r{create or update all nodes and regular}
+               @r{menus, and then create a master menu.}
 @end group
 @end example
 
@@ -2449,13 +2449,13 @@ C-c C-u C-m     @r{Make or update a menu.}
 
 @group
 C-c C-u C-a     @r{Make or update all}
-                @r{menus in a buffer.}
+               @r{menus in a buffer.}
 @end group
 
 @group
 C-u C-c C-u C-a @r{With @kbd{C-u} as a prefix argument,}
-                @r{first create or update all nodes and}
-                @r{then create or update all menus.}
+               @r{first create or update all nodes and}
+               @r{then create or update all menus.}
 @end group
 @end example
 
@@ -2518,27 +2518,27 @@ they are rarely used.
 @example
 @group
 M-x texinfo-insert-node-lines
-                @r{Insert missing @code{@@node} lines in region.}
-                @r{With @kbd{C-u} as a prefix argument,}
-                @r{use section titles as node names.}
+               @r{Insert missing @code{@@node} lines in region.}
+               @r{With @kbd{C-u} as a prefix argument,}
+               @r{use section titles as node names.}
 @end group
 
 @group
 M-x texinfo-multiple-files-update
-                @r{Update a multi-file document.}
-                @r{With @kbd{C-u 2} as a prefix argument,}
-                @r{create or update all nodes and menus}
-                @r{in all included files first.}
+               @r{Update a multi-file document.}
+               @r{With @kbd{C-u 2} as a prefix argument,}
+               @r{create or update all nodes and menus}
+               @r{in all included files first.}
 @end group
 
 @group
 M-x texinfo-indent-menu-description
-                @r{Indent descriptions.}
+               @r{Indent descriptions.}
 @end group
 
 @group
 M-x texinfo-sequential-node-update
-                @r{Insert node pointers in strict sequence.}
+               @r{Insert node pointers in strict sequence.}
 @end group
 @end example
 
@@ -2564,7 +2564,7 @@ previously given (@pxref{Six Parts}).
 * The Top Node::                Creating the `Top' node and master menu.
 * Global Document Commands::    Affecting formatting throughout.
 * Software Copying Permissions::  Ensure that you and others continue to
-                                    have the right to use and share software.
+                                   have the right to use and share software.
 @end menu
 
 
@@ -2632,7 +2632,7 @@ Published by @dots{}
 @@menu
 * First Chapter::    Getting started @dots{}
 * Second Chapter::          @dots{}
-  @dots{}
+ @dots{}
 * Copying::          Your rights and freedoms.
 @@end menu
 @end group
@@ -2901,13 +2901,14 @@ insert the text at appropriate points.
 The @code{@@copying} command should be given very early in the document;
 the recommended location is right after the header material
 (@pxref{Texinfo File Header}).  It conventionally consists of a sentence
-or two about what the program is, the legal copyright line, and the
-copying permissions.  Here is a skeletal example:
+or two about what the program is, identification of the documentation
+itself, the legal copyright line, and the copying permissions.  Here is
+a skeletal example:
 
 @example
 @@copying
-This manual is for @var{program} (version @var{version}),
-which @dots{}
+This manual is for @var{program} (version @var{version}, updated
+@var{date}), which @dots{}
 
 Copyright @@copyright@{@} @var{years} @var{copyright-owner}.
 
@@ -2952,8 +2953,8 @@ not allowed; each year must be written out individually and in full,
 separated by commas.
 
 @cindex Copyright holder for FSF works
-@cindex Owner of copyright for FSF works
 @cindex Holder of copyright for FSF works
+@cindex Owner of copyright for FSF works
 The copyright owner (or owners) is whoever holds legal copyright on the
 work.  In the case of works assigned to the FSF, the owner is `Free
 Software Foundation, Inc.'.
@@ -3032,15 +3033,15 @@ an @code{@@insertcopying}.
 @menu
 * titlepage::                   Create a title for the printed document.
 * titlefont center sp::         The @code{@@titlefont}, @code{@@center},
-                                  and @code{@@sp} commands.
+                                 and @code{@@sp} commands.
 * title subtitle author::       The @code{@@title}, @code{@@subtitle},
-                                  and @code{@@author} commands.
+                                 and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
-                                  include copying permissions.
+                                 include copying permissions.
 * end titlepage::               Turn on page headings after the title and
-                                  copyright pages.
+                                 copyright pages.
 * headings on off::             An option for turning headings on and off
-                                  and double or single sided printing.
+                                 and double or single sided printing.
 @end menu
 
 
@@ -3539,7 +3540,7 @@ For example, the master menu for this manual looks like the following
 
 @group
 @@detailmenu
- --- The Detailed Node Listing ---
+--- The Detailed Node Listing ---
 
 Overview of Texinfo
 
@@ -3820,7 +3821,7 @@ For example:
 
 @menu
 * Printing Indices & Menus::    How to print an index in hardcopy and
-                                  generate index menus in Info.
+                                 generate index menus in Info.
 * Contents::                    How to create a table of contents.
 * File End::                    How to mark the end of a file.
 @end menu
@@ -4061,16 +4062,16 @@ each of which has two sections.@refill
 
 @example
 @group
-                          Top
-                           |
-         -------------------------------------
-        |                  |                  |
-     Chapter 1          Chapter 2          Chapter 3
-        |                  |                  |
-     --------           --------           --------
-    |        |         |        |         |        |
- Section  Section   Section  Section   Section  Section
-   1.1      1.2       2.1      2.2       3.1      3.2
+                         Top
+                          |
+        -------------------------------------
+       |                  |                  |
+    Chapter 1          Chapter 2          Chapter 3
+       |                  |                  |
+    --------           --------           --------
+   |        |         |        |         |        |
+Section  Section   Section  Section   Section  Section
+  1.1      1.2       2.1      2.2       3.1      3.2
 
 @end group
 @end example
@@ -4458,12 +4459,12 @@ structuring hierarchy:@refill
 
 @example
 @group
-  @r{Change}           @r{To}
+ @r{Change}           @r{To}
 
 @@subsection     @@section,
 @@section        @@chapter,
 @@heading        @@chapheading,
-          @r{etc.}
+         @r{etc.}
 @end group
 @end example
 
@@ -4473,12 +4474,12 @@ structuring hierarchy:@refill
 
 @example
 @group
-  @r{Change}           @r{To}
+ @r{Change}           @r{To}
 
 @@chapter        @@section,
 @@subsection     @@subsubsection,
 @@heading        @@subheading,
-          @r{etc.}
+         @r{etc.}
 @end group
 @end example
 
@@ -4520,7 +4521,7 @@ books.@refill
 
 @menu
 * Two Paths::                   Different commands to structure
-                                  Info output and printed output.
+                                 Info output and printed output.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 * node::                        Creating nodes, in detail.
 * makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
@@ -4574,16 +4575,16 @@ root.@refill
 
 @example
 @group
-                          Top
-                           |
-         -------------------------------------
-        |                  |                  |
-     Chapter 1          Chapter 2          Chapter 3
-        |                  |                  |
-     --------           --------           --------
-    |        |         |        |         |        |
- Section  Section   Section  Section   Section  Section
-   1.1      1.2       2.1      2.2       3.1      3.2
+                         Top
+                          |
+        -------------------------------------
+       |                  |                  |
+    Chapter 1          Chapter 2          Chapter 3
+       |                  |                  |
+    --------           --------           --------
+   |        |         |        |         |        |
+Section  Section   Section  Section   Section  Section
+  1.1      1.2       2.1      2.2       3.1      3.2
 @end group
 @end example
 
@@ -4622,10 +4623,10 @@ before the beginning of Section 2.1, like this:@refill
 
 @example
 @group
-    @@menu
-    * Sect. 2.1::    Description of this section.
-    * Sect. 2.2::
-    @@end menu
+   @@menu
+   * Sect. 2.1::    Description of this section.
+   * Sect. 2.2::
+   @@end menu
 @end group
 @end example
 
@@ -4633,8 +4634,8 @@ Write the node for Sect. 2.1 like this:@refill
 
 @example
 @group
-    @@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
-    @@comment  node-name, next,      previous,  up
+   @@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+   @@comment  node-name, next,      previous,  up
 @end group
 @end example
 
@@ -5133,7 +5134,7 @@ For example, the preceding two paragraphs follow an Info-only menu,
 * Less Cluttered Menu Entry:: Two part menu entry.
 * Menu Example::              Two and three part entries.
 * Other Info Files::          How to refer to a different
-                                Info file.
+                               Info file.
 @@end menu
 
 @@node Menu Location, Writing a Menu, , Menus
@@ -5166,7 +5167,7 @@ Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
-                                  several files at once.
+                                 several files at once.
 @@end menu
 @end group
 @end example
@@ -5294,7 +5295,7 @@ Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
-                                  several files at once.
+                                 several files at once.
 @@end menu
 @end group
 @end example
@@ -5310,7 +5311,7 @@ Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
-                                  several files at once.
+                                 several files at once.
 @end group
 @end example
 
@@ -5359,9 +5360,9 @@ menu like this:@refill
 @group
 @@menu
 * Outlining: (emacs)Outline Mode. The major mode for
-                                  editing outlines.
+                                 editing outlines.
 * Rebinding: (emacs)Rebinding.    How to redefine the
-                                  meaning of a key.
+                                 meaning of a key.
 @@end menu
 @end group
 @end example
@@ -5380,7 +5381,7 @@ For example:
 @group
 * Info: (info).         Documentation browsing system.
 * Emacs: (emacs).       The extensible, self-documenting
-                        text editor.
+                       text editor.
 @end group
 @end example
 
@@ -5899,7 +5900,7 @@ Here are several examples from @cite{The GNU Awk User's Guide}:@refill
 @@xref@{Glossary@}.
 @@xref@{Case-sensitivity, ,Case-sensitivity in Matching@}.
 @@xref@{Close Output, , Closing Output Files and Pipes@},
-   for more information.
+  for more information.
 @@xref@{Regexp, , Regular Expressions as Patterns@}.
 @end smallexample
 
@@ -7287,8 +7288,8 @@ produces:
 @end ifinfo
 
 @example
-     *Caution*: `rm * .[^.]*' removes _all_
-     files in the directory.
+    *Caution*: `rm * .[^.]*' removes _all_
+    files in the directory.
 @end example
 
 The @code{@@strong} command is seldom used except to mark what is, in
@@ -7661,7 +7662,7 @@ produces
 
 @verbatim
 {
-	@command with strange characters: @'e 
+       @command with strange characters: @'e 
 expand	me
 }
 @end verbatim
@@ -8671,7 +8672,7 @@ canonical purpose.  If you wish, you can define your own indices.@refill
 @menu
 * Index Entries::               Choose different words for index entries.
 * Predefined Indices::          Use different indices for different kinds
-                                  of entry.
+                                 of entry.
 * Indexing Commands::           How to make an index entry.
 * Combining Indices::           How to combine indices.
 * New Indices::                 How to define your own indices.
@@ -8875,9 +8876,9 @@ the braces of @code{@@code}.@refill
 
 @menu
 * syncodeindex::                How to merge two indices, using @code{@@code}
-                                  font for the merged-from index.
+                                 font for the merged-from index.
 * synindex::                    How to merge two indices, using the
-                                  default font of the merged-to index.
+                                 default font of the merged-to index.
 @end menu
 
 @node syncodeindex
@@ -9061,16 +9062,16 @@ These are:
 @menu
 * Braces Atsigns::              How to insert braces, @samp{@@}.
 * Inserting Space::             How to insert the right amount of space
-                                  within a sentence.
+                                 within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
-                                  and the copyright symbol.
+                                 and the copyright symbol.
 * pounds::                      How to insert the pounds currency symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
 * Glyphs::                      How to indicate results of evaluation,
-                                  expansion of macros, errors, etc.
+                                 expansion of macros, errors, etc.
 * Footnotes::                   How to include footnotes.
 * Images::                      How to include graphics.
 @end menu
@@ -9731,7 +9732,7 @@ Thus, the following,
 
 @lisp
 (cdr '(1 2 3))
-     @result{} (2 3)
+    @result{} (2 3)
 @end lisp
 
 @noindent
@@ -9763,8 +9764,8 @@ For example, the following
 @group
 @@lisp
 (third '(a b c))
-     @@expansion@{@} (car (cdr (cdr '(a b c))))
-     @@result@{@} c
+    @@expansion@{@} (car (cdr (cdr '(a b c))))
+    @@result@{@} c
 @@end lisp
 @end group
 @end example
@@ -9775,8 +9776,8 @@ produces
 @lisp
 @group
 (third '(a b c))
-     @expansion{} (car (cdr (cdr '(a b c))))
-     @result{} c
+    @expansion{} (car (cdr (cdr '(a b c))))
+    @result{} c
 @end group
 @end lisp
 
@@ -9819,9 +9820,9 @@ last line.@refill
 @lisp
 @group
 (progn (print 'foo) (print 'bar))
-     @print{} foo
-     @print{} bar
-     @result{} bar
+    @print{} foo
+    @print{} bar
+    @result{} bar
 @end group
 @end lisp
 
@@ -9832,9 +9833,9 @@ In a Texinfo source file, this example is written as follows:
 @group
 @@lisp
 (progn (print 'foo) (print 'bar))
-     @@print@{@} foo
-     @@print@{@} bar
-     @@result@{@} bar
+    @@print@{@} foo
+    @@print@{@} bar
+    @@result@{@} bar
 @@end lisp
 @end group
 @end lisp
@@ -9962,7 +9963,7 @@ This is the @point{}contents of foo.
 @example
 @group
 (insert "changed ")
-     @result{} nil
+    @result{} nil
 ---------- Buffer: foo ----------
 This is the changed @point{}contents of foo.
 ---------- Buffer: foo ----------
@@ -9979,7 +9980,7 @@ This is the @@point@{@}contents of foo.
 ---------- Buffer: foo ----------
 
 (insert "changed ")
-     @@result@{@} nil
+    @@result@{@} nil
 ---------- Buffer: foo ----------
 This is the changed @@point@{@}contents of foo.
 ---------- Buffer: foo ----------
@@ -10075,7 +10076,7 @@ Here is an example of a single footnote in the end of node style:@refill
 
 @example
 @group
- --------- Footnotes ---------
+--------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 @end group
@@ -10412,7 +10413,7 @@ produces
 @example
 @group
 This line
- is broken
+is broken
 in two places.
 @end group
 @end example
@@ -10699,7 +10700,7 @@ a given name.  An appendix containing a summary should use
 
 @menu
 * Def Cmd Template::            How to structure a description using a
-                                  definition command.
+                                 definition command.
 * Optional Arguments::          How to handle optional and repeated arguments.
 * deffnx::                      How to group two or more `first' lines.
 * Def Cmds in Detail::          All the definition commands.
@@ -10894,7 +10895,7 @@ example).@refill
 @example
 @group
 @@defspec foobar (@@var@{var@} [@@var@{from@} @@var@{to@}
-     [@@var@{inc@}]]) @@var@{body@}@@dots@{@}
+    [@@var@{inc@}]]) @@var@{body@}@@dots@{@}
 @end group
 @end example
 
@@ -11180,7 +11181,7 @@ For example,
 @example
 @group
 @@deftypefn @{Library Function@} int foobar
-   (int @@var@{foo@}, float @@var@{bar@})
+  (int @@var@{foo@}, float @@var@{bar@})
 @dots{}
 @@end deftypefn
 @end group
@@ -11246,8 +11247,8 @@ For example:
 @example
 @group
 @@deftypefn stacks private push
-        (@@var@{s@}:in out stack;
-        @@var@{n@}:in integer)
+       (@@var@{s@}:in out stack;
+       @@var@{n@}:in integer)
 @dots{}
 @@end deftypefn
 @end group
@@ -11717,16 +11718,16 @@ do not make sense in @code{apply}.
 
 @example
 (setq f 'list)
-     @result{} list
+    @result{} list
 (apply f 'x 'y 'z)
 @error{} Wrong type argument: listp, z
 (apply '+ 1 2 '(3 4))
-     @result{} 10
+    @result{} 10
 (apply '+ '(1 2 3 4))
-     @result{} 10
+    @result{} 10
 
 (apply 'append '((a b c) nil (x y z) nil))
-     @result{} (a b c x y z)
+    @result{} (a b c x y z)
 @end example
 
 An interesting example of using @code{apply} is found in the description
@@ -11759,16 +11760,16 @@ sense in @@code@{apply@}.
 @group
 @@example
 (setq f 'list)
-     @@result@{@} list
+    @@result@{@} list
 (apply f 'x 'y 'z)
 @@error@{@} Wrong type argument: listp, z
 (apply '+ 1 2 '(3 4))
-     @@result@{@} 10
+    @@result@{@} 10
 (apply '+ '(1 2 3 4))
-     @@result@{@} 10
+    @@result@{@} 10
 
 (apply 'append '((a b c) nil (x y z) nil))
-     @@result@{@} (a b c x y z)
+    @@result@{@} (a b c x y z)
 @@end example
 @end group
 
@@ -11815,8 +11816,8 @@ Substituting text for all formats, and testing if a flag is set or clear.
 * Conditional Not Commands::    Specifying text for not HTML, Info, or @TeX{}.
 * Raw Formatter Commands::      Using raw @TeX{} or HTML commands.
 * set clear value::             Designating which text to format (for
-                                  all output formats); and how to set a
-                                  flag to a string that you can insert.
+                                 all output formats); and how to set a
+                                 flag to a string that you can insert.
 @end menu
 
 
@@ -11970,8 +11971,8 @@ plain @TeX{}:
 @example
 @@tex
 $$ \chi^2 = \sum_@{i=1@}^N
-          \left (y_i - (a + b x_i)
-          \over \sigma_i\right)^2 $$
+         \left (y_i - (a + b x_i)
+         \over \sigma_i\right)^2 $$
 @@end tex
 @end example
 
@@ -11986,8 +11987,8 @@ this:
 
 @tex
 $$ \chi^2 = \sum_{i=1}^N
-          \left(y_i - (a + b x_i)
-          \over \sigma_i\right)^2 $$
+         \left(y_i - (a + b x_i)
+         \over \sigma_i\right)^2 $$
 @end tex
 
 @findex ifhtml
@@ -12544,7 +12545,7 @@ document encoding @var{enc} is specified, it is used in a
 
 @example
 <meta http-equiv="Content-Type" content="text/html;
-      charset=@var{enc}">
+     charset=@var{enc}">
 @end example
 
 
@@ -12863,7 +12864,7 @@ command for Info, but not for @TeX{}.  A command defined using
 @code{@@definfoenclose} marks text by enclosing it in strings that
 precede and follow the text.  You can use this to get closer control of
 your Info output.
- 
+
 Presumably, if you define a command with @code{@@definfoenclose} for Info,
 you will create a corresponding command for @TeX{}, either in
 @file{texinfo.tex}, @file{texinfo.cnf}, or within an @samp{@@iftex} in
@@ -12884,7 +12885,7 @@ you intended as the start delimiter string.
 If you do a @code{@@definfoenclose} on the name of a pre-defined macro
 (such as @code{@@emph}, @code{@@strong}, @code{@@t}, or @code{@@i}), the
 enclosure definition will override the built-in definition.
- 
+
 An enclosure command defined this way takes one argument in braces; this
 is intended for new markup commands (@pxref{Marking Text}).
 
@@ -12973,7 +12974,7 @@ print queue, and delete a job from the print queue.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * pagesizes::                   How to print with customized page sizes.
 * Cropmarks and Magnification::  How to print marks to indicate the size
-                                of pages and how to print scaled up output.
+                               of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 @end menu
 
@@ -13346,7 +13347,7 @@ The default values are:@refill
 
 @example
 @group
-     @r{Variable}                              @r{Default value}
+    @r{Variable}                              @r{Default value}
 
 texinfo-texi2dvi-command                  "texi2dvi"
 texinfo-tex-command                       "tex"
@@ -13873,11 +13874,11 @@ For information on installing the Info file in the Info system,
 * Pointer Validation::          How to check that pointers point somewhere.
 * makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
 * texinfo-format commands::     Two Info formatting commands written
-                                  in Emacs Lisp are an alternative
-                                  to @code{makeinfo}.
+                                 in Emacs Lisp are an alternative
+                                 to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
 * Tag and Split Files::         How tagged and split files help Info
-                                  to run better.
+                                 to run better.
 * makeinfo html::               Generating HTML output.
 @end menu
 
@@ -14344,8 +14345,8 @@ For example, you could write the following in your @file{.emacs} file:@refill
 @example
 @group
 (setq makeinfo-options
-      "--paragraph-indent=0 --no-split
-       --fill-column=70 --verbose")
+     "--paragraph-indent=0 --no-split
+      --fill-column=70 --verbose")
 @end group
 @end example
 
@@ -14592,9 +14593,9 @@ into Emacs.  (@inforef{Top, info, info}, for an introduction to Info.)
 * Directory File::              The top level menu for all Info files.
 * New Info File::               Listing a new Info file.
 * Other Info Directories::      How to specify Info files that are
-                                  located in other directories.
+                                 located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
-                                  to the Info directory.
+                                 to the Info directory.
 * Invoking install-info::       @code{install-info} options.
 @end menu
 
@@ -14617,10 +14618,10 @@ this:@refill
 * Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
-                       text editor.
+                      text editor.
 * Texinfo: (texinfo).  With one source file, make
-                       either a printed manual using
-                       @@TeX@{@} or an Info file.
+                      either a printed manual using
+                      @@TeX@{@} or an Info file.
 @dots{}
 @end group
 @end example
@@ -14733,8 +14734,8 @@ Alternatively, you could write the following in your @file{.emacs} file:
 @group
 (require 'info)
 (setq Info-directory-list
-  (cons (expand-file-name "/home/bob/info")
-        Info-directory-list))
+ (cons (expand-file-name "/home/bob/info")
+       Info-directory-list))
 @end group
 @end example
 
@@ -15004,7 +15005,7 @@ information in the Info file itself.
 @itemx -V
 @opindex --version
 @opindex -V
-@cindex version number, finding
+@cindex version number, for install-info
 Display version information and exit successfully.
 
 @end table
@@ -16355,11 +16356,11 @@ For example, @TeX{} fills the following:
 
 @example
 @group
-    @@kbd@{C-x v@}
-    @@kbd@{M-x vc-next-action@}
-       Perform the next logical operation
-       on the version-controlled file
-       corresponding to the current buffer.
+   @@kbd@{C-x v@}
+   @@kbd@{M-x vc-next-action@}
+      Perform the next logical operation
+      on the version-controlled file
+      corresponding to the current buffer.
 @end group
 @end example
 
@@ -16369,10 +16370,10 @@ so it looks like this:
 
 @iftex
 @quotation
-    @kbd{C-x v}
-    @kbd{M-x vc-next-action}
-       Perform the next logical operation on the version-controlled file
-       corresponding to the current buffer.
+   @kbd{C-x v}
+   @kbd{M-x vc-next-action}
+      Perform the next logical operation on the version-controlled file
+      corresponding to the current buffer.
 @end quotation
 @end iftex
 @ifinfo
@@ -16620,7 +16621,7 @@ Copyright (C) 2002 Free Software Foundation, Inc.
 
 @@menu
 * First Chapter::    The first chapter is the
-                       only chapter in this sample.
+                      only chapter in this sample.
 * Index::            Complete index.
 @@end menu
 
@@ -16680,22 +16681,31 @@ Here are some notes on the example:
 @item
 @cindex $Id:
 @cindex CVS $Id:
-@cindex RCS $Id: 
-The @samp{$Id:} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex RCS $Id:
+@cindex Documentation identification
+@cindex Identification of documentation
+The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
+$Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
+You may wish to include the @samp{$Id:} comment in the @code{@@copying}
+text, if you want a completely unambiguous reference to the
+documentation version.
 
 @item
 @pindex automake@r{, and version info}
+@vindex UPDATED @r{Automake variable}
+@vindex VERSION @r{Automake variable}
+@pindex time-stamp.el
 The @file{version.texi} in the @code{@@include} command is maintained
 automatically by Automake (@pxref{Top,, Introduction, automake, GNU
 Automake}).  It sets the @samp{VERSION} and @samp{UPDATED} values used
-elsewhere.  If your distribution doesn't use Automake, you can mimic
-these or equivalent settings.
+elsewhere.  If your distribution doesn't use Automake, but you do use
+Emacs, you may find the time-stamp.el package helpful (@pxref{Time
+Stamps,,,emacs,The GNU Emacs Manual}).
 
 @item
 The @code{@@syncodeindex} command reflects the recommendation to use
@@ -16743,7 +16753,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.7 2002-10-09 21:57:42 karl Exp $
+@@comment $Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
@@ -16909,12 +16919,12 @@ conveniently small parts.
 @menu
 * Using Include Files::         How to use the @code{@@include} command.
 * texinfo-multiple-files-update::  How to create and update nodes and
-                                  menus when using included files.
+                                 menus when using included files.
 * Include File Requirements::   What @code{texinfo-multiple-files-update} expects.
 * Sample Include File::         A sample outer file with included files
-                                  within it; and a sample included file.
+                                 within it; and a sample included file.
 * Include Files Evolution::     How use of the @code{@@include} command
-                                  has changed over time.
+                                 has changed over time.
 @end menu
 
 @node Using Include Files, texinfo-multiple-files-update, Include Files, Include Files
@@ -17263,13 +17273,13 @@ A single-sided page looks like this:
 
 @example
 @group
-   _______________________
-  |                       |
-  | chapter   page number |
-  |                       |
-  | Start of text ...     |
-  | ...                   |
-  |                       |
+  _______________________
+ |                       |
+ | chapter   page number |
+ |                       |
+ | Start of text ...     |
+ | ...                   |
+ |                       |
 
 @end group
 @end example
@@ -17295,13 +17305,13 @@ Two pages, side by side as in an open book, look like this:@refill
 
 @example
 @group
-   _______________________     _______________________
-  |                       |   |                       |
-  | page number     title |   | chapter   page number |
-  |                       |   |                       |
-  | Start of text ...     |   | More  text ...        |
-  | ...                   |   | ...                   |
-  |                       |   |                       |
+  _______________________     _______________________
+ |                       |   |                       |
+ | page number     title |   | chapter   page number |
+ |                       |   |                       |
+ | Start of text ...     |   | More  text ...        |
+ | ...                   |   | ...                   |
+ |                       |   |                       |
 
 @end group
 @end example
@@ -17589,10 +17599,10 @@ occurs, or not long after it.  The buffer will look like this:@refill
 * Menu:
 
 * Using texinfo-show-structure::  How to use
-                                  `texinfo-show-structure'
-                                  to catch mistakes.
+                                 `texinfo-show-structure'
+                                 to catch mistakes.
 * Running Info-Validate::         How to check for
-                                  unreferenced nodes.
+                                 unreferenced nodes.
 @@end menus
 @point{}
 ---------- Buffer: *Info Region* ----------
@@ -17704,21 +17714,21 @@ invoked the debugger.  This is the backtrace it produced:@refill
 @example
 ---------- Buffer: *Backtrace* ----------
 Signalling: (search-failed "[@},]")
-  re-search-forward("[@},]")
-  (while ...)
-  (let ...)
-  texinfo-format-parse-args()
-  (let ...)
-  texinfo-format-xref()
-  funcall(texinfo-format-xref)
-  (if ...)
-  (let ...)
-  (if ...)
-  (while ...)
-  texinfo-format-scan()
-  (save-excursion ...)
-  (let ...)
-  texinfo-format-region(103370 103631)
+ re-search-forward("[@},]")
+ (while ...)
+ (let ...)
+ texinfo-format-parse-args()
+ (let ...)
+ texinfo-format-xref()
+ funcall(texinfo-format-xref)
+ (if ...)
+ (let ...)
+ (if ...)
+ (while ...)
+ texinfo-format-scan()
+ (save-excursion ...)
+ (let ...)
+ texinfo-format-region(103370 103631)
 * call-interactively(texinfo-format-region)
 ---------- Buffer: *Backtrace* ----------
 @end example
@@ -17773,7 +17783,7 @@ Runaway argument?
 indices.) @@refill @@ETC.
 ! Paragraph ended before @@xref was complete.
 <to be read again>
-                   @@par
+                  @@par
 l.27
 
 ?
@@ -17889,18 +17899,18 @@ produced by running @code{texinfo-show-structure} on this manual:@refill
 
 @example
 @group
- Lines matching "^@@\\(chapter \\|sect\\|subs\\|subh\\|
- unnum\\|major\\|chapheading \\|heading \\|appendix\\)"
- in buffer texinfo.texi.
- @dots{}
- 4177:@@chapter Nodes
- 4198:    @@heading Two Paths
- 4231:    @@section Node and Menu Illustration
- 4337:    @@section The @@code@{@@@@node@} Command
- 4393:        @@subheading Choosing Node and Pointer Names
- 4417:        @@subsection How to Write an @@code@{@@@@node@} Line
- 4469:        @@subsection @@code@{@@@@node@} Line Tips
- @dots{}
+Lines matching "^@@\\(chapter \\|sect\\|subs\\|subh\\|
+unnum\\|major\\|chapheading \\|heading \\|appendix\\)"
+in buffer texinfo.texi.
+@dots{}
+4177:@@chapter Nodes
+4198:    @@heading Two Paths
+4231:    @@section Node and Menu Illustration
+4337:    @@section The @@code@{@@@@node@} Command
+4393:        @@subheading Choosing Node and Pointer Names
+4417:        @@subsection How to Write an @@code@{@@@@node@} Line
+4469:        @@subsection @@code@{@@@@node@} Line Tips
+@dots{}
 @end group
 @end example
 
