@@ -1,3 +1,16 @@
+2004-12-13  Andreas Schwab  <schwab@suse.de>
+
+	* info/echo-area.c (DECLARE_INFO_COMMAND): Add intermediate cast
+	to avoid warning.
+	* info/infokey.c (compile): Likewise.
+	* info/session.c (forward_move_node_structure): Likewise.
+	(DECLARE_INFO_COMMAND): Likewise.
+
+	* makeinfo/makeinfo.c (init_paragraph): Don't use free_and_clear
+	to avoid strict aliasing issue.
+
+	* makeinfo/cmds.c (cm_center): Avoid strict aliasing issue.
+
 2004-12-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Cross-reference Command Expansion): add

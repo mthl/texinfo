@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.15 2004-12-08 16:49:48 karl Exp $
+   $Id: session.c,v 1.16 2004-12-14 00:15:36 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004
    Free Software Foundation, Inc.
@@ -962,7 +962,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                      same as the first menu item found in this node. */
                   window_message_in_echo_area
                     ((char *) _("Moving Up %d time(s), then Next."),
-                     (void *) (up_counter), NULL);
+                     (void *) (long) up_counter, NULL);
 
                   info_handle_pointer ("Next", window);
                   return;
@@ -1975,7 +1975,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
     }
   else
     info_error ((char *) _("There aren't %d items in this menu."),
-                (void *) (item), NULL);
+                (void *) (long) item, NULL);
 
   info_free_references (menu);
   return;

@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.54 2004-11-26 00:48:35 karl Exp $
+   $Id: cmds.c,v 1.55 2004-12-14 00:15:36 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1492,17 +1492,17 @@ cm_center (void)
 {
   if (xml)
     {
-      unsigned char *line;
+      char *line;
       xml_insert_element (CENTER, START);
-      get_rest_of_line (0, (char **)&line);
-      execute_string ("%s", (char *)line);
+      get_rest_of_line (0, &line);
+      execute_string ("%s", line);
       free (line);
       xml_insert_element (CENTER, END);
     }
   else
     {
       int i, start, length;
-      unsigned char *line;
+      char *line;
       int save_indented_fill = indented_fill;
       int save_filling_enabled = filling_enabled;
       int fudge_factor = 1;
@@ -1515,8 +1515,8 @@ cm_center (void)
         add_html_block_elt ("<div align=\"center\">");
 
       inhibit_output_flushing ();
-      get_rest_of_line (0, (char **)&line);
-      execute_string ("%s", (char *)line);
+      get_rest_of_line (0, &line);
+      execute_string ("%s", line);
       free (line);
       uninhibit_output_flushing ();
       if (html)
