@@ -1,3 +1,10 @@
+2004-12-19  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xml.c (try_docbook_image): new fn.
+	(xml_insert_docbook_image): call it, trying additional formats
+	pdf, svg, etc.
+	Based on patch from Jens Elkner, 18 Dec 2004 01:56:28 +0100.
+
 2004-12-19  Torsten Bronger  <bronger@physik.rwth-aachen.de>
 
 	* util/texinfo.dtd: define most entities, add <neos>.

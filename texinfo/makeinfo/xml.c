@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.51 2004-11-26 00:48:35 karl Exp $
+   $Id: xml.c,v 1.52 2004-12-19 17:02:23 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -619,7 +619,7 @@ xml_begin_document (char *output_filename)
     print_warnings = save_print_warnings;
   }
 
-  insert_string ("?>");
+  insert_string ("?>\n");
 
   if (docbook)
     {
@@ -1608,9 +1608,36 @@ xml_insert_text_file (char *name_arg)
   free (fullname);
 }
 
+/* If NAME.EXT is accessible or FORCE is nonzero, insert a docbook
+   imagedata element for FMT.  Return 1 if inserted something, 0 else.  */
+
+static int
+try_docbook_image (const char *name, const char *ext, const char *fmt,
+                   int force)
+{
+  int used = 0;
+  char *fullname = xmalloc (strlen (name) + 1 + strlen (ext) + 1);
+  sprintf (fullname, "%s.%s", name, ext);
+
+  if (force || access (fullname, R_OK) == 0)
+   {
+     xml_insert_element (IMAGEOBJECT, START);
+     xml_insert_element_with_attribute (IMAGEDATA, START,
+       "fileref=\"%s\" format=\"%s\"", fullname, fmt);
+     xml_insert_element (IMAGEDATA, END);
+     xml_insert_element (IMAGEOBJECT, END);
+     used = 1;
+   }
+ 
+ free (fullname);
+ return used;
+}
+
+
 void
 xml_insert_docbook_image (char *name_arg)
 {
+  int found = 0;
   int elt = xml_in_para ? INLINEIMAGE : MEDIAOBJECT;
 
   if (is_in_insertion_of_type (floatenv))
@@ -1622,20 +1649,27 @@ xml_insert_docbook_image (char *name_arg)
 
   xml_insert_element (elt, START);
 
-  xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA,
-      START, "fileref=\"%s.eps\" format=\"EPS\"", name_arg);
-  xml_insert_element (IMAGEDATA, END);
-  xml_insert_element (IMAGEOBJECT, END);
+  /* A selected few from http://docbook.org/tdg/en/html/imagedata.html.  */
+  if (try_docbook_image (name_arg, "eps", "EPS", 0))
+    found++;
+  if (try_docbook_image (name_arg, "gif", "GIF", 0))
+    found++;
+  if (try_docbook_image (name_arg, "jpg", "JPG", 0))
+    found++;
+  if (try_docbook_image (name_arg, "jpeg", "JPEG", 0))
+    found++;
+  if (try_docbook_image (name_arg, "pdf", "PDF", 0))
+    found++;
+  if (try_docbook_image (name_arg, "png", "PNG", 0))
+    found++;
+  if (try_docbook_image (name_arg, "svg", "SVG", 0))
+    found++;
 
-  xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA,
-      START, "fileref=\"%s.jpg\" format=\"JPG\"", name_arg);
-  xml_insert_element (IMAGEDATA, END);
-  xml_insert_element (IMAGEOBJECT, END);
-
+  /* If no luck so far, just assume we'll eventually have a jpg.  */
+  if (!found)
+    try_docbook_image (name_arg, "jpg", "JPG", 1);
+ 
   xml_insert_text_file (name_arg);
-
   xml_insert_element (elt, END);
 
   xml_no_para--;

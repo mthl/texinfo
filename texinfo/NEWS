@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.101 2004-12-13 13:36:32 karl Exp $
+$Id: NEWS,v 1.102 2004-12-19 17:02:22 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -35,6 +35,7 @@ convenience, here's a url to one of the relevant sections:
       to them can continue to work.
     - "g_t" prefixed to targets for node names beginning with a
       nonletter, for XHTML compatibility.
+  . Docbook output: recognize more image formats.
 * texi2dvi:
   . new option --recode, to call recode for input character translation.
 * Distribution:
@@ -42,7 +43,7 @@ convenience, here's a url to one of the relevant sections:
   . some cross-compiling support in configure && make.
   . new configure option --disable-install-warnings, for TeX.
     distributions which do have the files installed.
-  . automake 1.9.3.
+  . automake 1.9.4.
 
 4.7 (9 April 2004)
 * Language:
