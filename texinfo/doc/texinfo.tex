@@ -2245,8 +2245,8 @@ where each line of input produces a line of output.}
          \let\go\pickupwholefraction
       \else
          \global\advance\colcount by 1
-         \setbox0=\hbox{#1\unskip }% Add a normal word space as a separator;
-                            % typically that is always in the input, anyway.
+         \setbox0=\hbox{#1\unskip\space}% Add a normal word space as a
+                   % separator; typically that is always in the input, anyway.
          \expandafter\xdef\csname col\the\colcount\endcsname{\the\wd0}%
       \fi
     \fi
