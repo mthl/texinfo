@@ -83,24 +83,25 @@ ul.toc {list-style: none}
 
 </p><ul>
 <li>
-<p>A Texinfo <em>macro</em> allows you to define a new Texinfo command as any
+A Texinfo <em>macro</em> allows you to define a new Texinfo command as any
 sequence of text and/or existing commands (including other macros).  The
 macro can have any number of <em>parameters</em>--text you supply each
 time you use the macro.
 
-</p><p>Incidentally, these macros have nothing to do with the <code>@defmac</code>
+
+<p>Incidentally, these macros have nothing to do with the <code>@defmac</code>
 command, which is for documenting macros in the subject of the manual
 (see section <a href="texinfo_16.html#SEC215">The Template for a Definition</a>).
 
 </p></li><li>
-<p>`<samp>@alias</samp>' is a convenient way to define a new name for an existing
+`<samp>@alias</samp>' is a convenient way to define a new name for an existing
 command.
 
-</p></li><li>
-<p>`<samp>@definfoenclose</samp>' allows you to define new commands with
+</li><li>
+`<samp>@definfoenclose</samp>' allows you to define new commands with
 customized output in the Info file.
 
-</p></li></ul>
+</li></ul>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC239">18.1 Defining Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Defining and undefining new commands.
@@ -323,24 +324,25 @@ implementations, Texinfo macros have the following limitations.
 
 </p><ul>
 <li>
-<p>All macros are expanded inside at least one TeX group.  This means
+All macros are expanded inside at least one TeX group.  This means
 that <code>@set</code> and other such commands will have no effect inside a
 macro.
 
-</p></li><li>
-<p>Macros containing a command which must be on a line by itself, such as a
+</li><li>
+Macros containing a command which must be on a line by itself, such as a
 conditional, cannot be invoked in the middle of a line.
 
-</p></li><li>
-<p>Commas in macro arguments, even if escaped by a backslash, don't
+</li><li>
+Commas in macro arguments, even if escaped by a backslash, don't
 always work.
 
-</p></li><li>
-<p>The TeX implementation cannot construct macros that define macros in
+</li><li>
+The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
 @macro ctor {name, arg}
 @macro \name\
 something involving \arg\ somehow
@@ -352,9 +354,9 @@ something involving \arg\ somehow
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
 </pre></td></tr></table></li><li>
-<p>It is best to avoid comments inside macro definitions.
+It is best to avoid comments inside macro definitions.
 
-</p></li></ul>
+</li></ul>
 
 <p>If some macro feature causes errors when producing the printed version
 of a manual, try expanding the macros with <code>makeinfo</code> by

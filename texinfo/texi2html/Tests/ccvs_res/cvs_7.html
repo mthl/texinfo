@@ -102,22 +102,22 @@ this in <small>CVS</small> vary depending on the situation.
 
 </p><ul>
 <li>
-<p>You must have a working copy of the directory.
+You must have a working copy of the directory.
 See section <a href="cvs_1.html#SEC5">Getting the source</a>.
 
-</p></li><li>
-<p>Create the new file inside your working copy of the directory.
+</li><li>
+Create the new file inside your working copy of the directory.
 
-</p></li><li>
-<p>Use `<samp>cvs add <var>filename</var></samp>' to tell <small>CVS</small> that you
+</li><li>
+Use `<samp>cvs add <var>filename</var></samp>' to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
 binary data, specify `<samp>-kb</samp>' (see section <a href="cvs_9.html#SEC80">Handling binary files</a>).
 
-</p></li><li>
-<p>Use `<samp>cvs commit <var>filename</var></samp>' to actually check
+</li><li>
+Use `<samp>cvs commit <var>filename</var></samp>' to actually check
 in the file into the repository.  Other developers
 cannot see the file until you perform this step.
-</p></li></ul>
+</li></ul>
 
 <p>You can also use the <code>add</code> command to add a new
 directory.
@@ -205,7 +205,7 @@ but remain able to retrieve old revisions:
 
 </p><ul>
 <li>
-<p>Make sure that you have not made any uncommitted
+Make sure that you have not made any uncommitted
 modifications to the file.  See section <a href="cvs_1.html#SEC8">Viewing differences</a>,
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
@@ -213,18 +213,18 @@ the file without committing your changes, you will of
 course not be able to retrieve the file as it was
 immediately before you deleted it.
 
-</p></li><li>
-<p>Remove the file from your working copy of the directory.
+</li><li>
+Remove the file from your working copy of the directory.
 You can for instance use <code>rm</code>.
 
-</p></li><li>
-<p>Use `<samp>cvs remove <var>filename</var></samp>' to tell <small>CVS</small> that
+</li><li>
+Use `<samp>cvs remove <var>filename</var></samp>' to tell <small>CVS</small> that
 you really want to delete the file.
 
-</p></li><li>
-<p>Use `<samp>cvs commit <var>filename</var></samp>' to actually
+</li><li>
+Use `<samp>cvs commit <var>filename</var></samp>' to actually
 perform the removal of the file from the repository.
-</p></li></ul>
+</li></ul>
 
 <p>When you commit the removal of the file, <small>CVS</small>
 records the fact that the file no longer exists.  It is
@@ -466,29 +466,29 @@ $ mv <var>old</var>,v <var>new</var>,v
 
 </p><ul>
 <li>
-<p>The log of changes is maintained intact.
+The log of changes is maintained intact.
 
-</p></li><li>
-<p>The revision numbers are not affected.
-</p></li></ul>
+</li><li>
+The revision numbers are not affected.
+</li></ul>
 
 
 <p>Disadvantages:
 
 </p><ul>
 <li>
-<p>Old releases cannot easily be fetched from the
+Old releases cannot easily be fetched from the
 repository.  (The file will show up as <var>new</var> even
 in revisions from the time before it was renamed).
 
-</p></li><li>
-<p>There is no log information of when the file was renamed.
+</li><li>
+There is no log information of when the file was renamed.
 
-</p></li><li>
-<p>Nasty things might happen if someone accesses the history file
+</li><li>
+Nasty things might happen if someone accesses the history file
 while you are moving it.  Make sure no one else runs any of the <small>CVS</small>
 commands while you move it.
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
 <a name="NOD73"></a>
@@ -537,25 +537,25 @@ revisions.
 
 </p><ul>
 <li>
-<p>Checking out old revisions works correctly, as long as
+Checking out old revisions works correctly, as long as
 you use `<samp>-r<var>tag</var></samp>' and not `<samp>-D<var>date</var></samp>'
 to retrieve the revisions.
 
-</p></li><li>
-<p>The log of changes is maintained intact.
+</li><li>
+The log of changes is maintained intact.
 
-</p></li><li>
-<p>The revision numbers are not affected.
-</p></li></ul>
+</li><li>
+The revision numbers are not affected.
+</li></ul>
 
 
 <p>Disadvantages:
 
 </p><ul>
 <li>
-<p>You cannot easily see the history of the file across the rename.
+You cannot easily see the history of the file across the rename.
 
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
 <a name="NOD74"></a>
@@ -589,25 +589,26 @@ like this:
 
 </p><ol>
 <li>
-<p>Inform everyone who has a checked out copy of the directory that the
+Inform everyone who has a checked out copy of the directory that the
 directory will be renamed.  They should commit all
 their changes, and remove their working copies,
 before you take the steps below.
 
-</p></li><li>
-<p>Rename the directory inside the repository.
+</li><li>
+Rename the directory inside the repository.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>parent-dir</var>
+
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>parent-dir</var>
 $ mv <var>old-dir</var> <var>new-dir</var>
 </pre></td></tr></table></li><li>
-<p>Fix the <small>CVS</small> administrative files, if necessary (for
+Fix the <small>CVS</small> administrative files, if necessary (for
 instance if you renamed an entire module).
 
-</p></li><li>
-<p>Tell everyone that they can check out again and continue
+</li><li>
+Tell everyone that they can check out again and continue
 working.
 
-</p></li></ol>
+</li></ol>
 
 <p>If someone had a working copy the <small>CVS</small> commands will
 cease to work for him, until he removes the directory

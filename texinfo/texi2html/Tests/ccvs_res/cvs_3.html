@@ -339,24 +339,28 @@ related files and directories.
 
 </p><ol>
 <li>
-<p>Get a working copy of the modules file.
+Get a working copy of the modules file.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout CVSROOT/modules
+
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout CVSROOT/modules
 $ cd CVSROOT
 </pre></td></tr></table></li><li>
-<p>Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
+Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
 following line to define the module `<samp>tc</samp>':
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">tc   yoyodyne/tc
-</pre></td></tr></table></li><li>
-<p>Commit your changes to the modules file.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added the tc module.&quot; modules
+<table><tr><td>&nbsp;</td><td><pre class="example">tc   yoyodyne/tc
 </pre></td></tr></table></li><li>
-<p>Release the modules module.
+Commit your changes to the modules file.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
+
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added the tc module.&quot; modules
+</pre></td></tr></table></li><li>
+Release the modules module.
+
+
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
 $ cvs release -d CVSROOT
 </pre></td></tr></table></li></ol>
 

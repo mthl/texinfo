@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.72 2004-02-26 23:52:46 pertusus Exp $
+# $Id: texi2html.init,v 1.73 2004-04-26 00:21:01 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2598,7 +2598,7 @@ $menu              = \&t2h_default_menu;
 $menu_link         = \&t2h_default_menu_link;
 $menu_comment      = \&t2h_default_menu_comment;
 $menu_description  = \&t2h_default_menu_description;
-$simple_menu_link = \&t2h_default_simple_menu_link;
+$simple_menu_link  = \&t2h_default_simple_menu_link;
 $external_ref      = \&t2h_default_external_ref;
 $internal_ref      = \&t2h_default_internal_ref;
 $table_item        = \&t2h_default_table_item;
@@ -3176,6 +3176,7 @@ sub t2h_default_paragraph($$$$$$$$$)
     my $item_nr = shift;
     my $enumerate_style = shift;
     my $number = shift;
+#print STDERR "format: $format\n" if (defined($format));
     $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
           exists($special_list_commands{$format}->{$paragraph_command}));
     #my $in_term = shift;
@@ -3183,6 +3184,8 @@ sub t2h_default_paragraph($$$$$$$$$)
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;
+         return $text . "\n" if (($format eq 'itemize' or $format eq 'enumerate') and
+            ($$paragraph_number == 1));
     }
     my $open = '<p>';
     if ($align)

@@ -753,12 +753,12 @@ and <code>update</code>.
 
 <ul>
 <li>
-<p>Requires: repository, working directory.
-</p></li><li>
-<p>Changes: repository.
-</p></li><li>
-<p>Synonym: rcs
-</p></li></ul>
+Requires: repository, working directory.
+</li><li>
+Changes: repository.
+</li><li>
+Synonym: rcs
+</li></ul>
 
 <p>This is the <small>CVS</small> interface to assorted
 administrative facilities.  Some of them have
@@ -1163,14 +1163,14 @@ this option has never done anything useful.
 
 <ul>
 <li>
-<p>Synopsis: checkout [options] modules&hellip;
-</p></li><li>
-<p>Requires: repository.
-</p></li><li>
-<p>Changes: working directory.
-</p></li><li>
-<p>Synonyms: co, get
-</p></li></ul>
+Synopsis: checkout [options] modules&hellip;
+</li><li>
+Requires: repository.
+</li><li>
+Changes: working directory.
+</li><li>
+Synonyms: co, get
+</li></ul>
 
 <p>Create or update a working directory containing copies of the
 source files specified by <var>modules</var>.  You must execute
@@ -1450,15 +1450,15 @@ ago:
 
 <ul>
 <li>
-<p>Synopsis: commit [-lnRf] [-m 'log_message' |
+Synopsis: commit [-lnRf] [-m 'log_message' |
 -F file] [-r revision] [files&hellip;]
-</p></li><li>
-<p>Requires: working directory, repository.
-</p></li><li>
-<p>Changes: repository.
-</p></li><li>
-<p>Synonym: ci
-</p></li></ul>
+</li><li>
+Requires: working directory, repository.
+</li><li>
+Changes: repository.
+</li><li>
+Synonym: ci
+</li></ul>
 
 <p>Use <code>commit</code> when you want to incorporate changes
 from your working source files into the source
@@ -1721,12 +1721,12 @@ would simply do
 
 <ul>
 <li>
-<p>Synopsis: diff [-lR] [-k kflag] [format_options] [[-r rev1 | -D date1] [-r rev2 |  -D date2]] [files&hellip;]
-</p></li><li>
-<p>Requires: working directory, repository.
-</p></li><li>
-<p>Changes: nothing.
-</p></li></ul>
+Synopsis: diff [-lR] [-k kflag] [format_options] [[-r rev1 | -D date1] [-r rev2 |  -D date2]] [files&hellip;]
+</li><li>
+Requires: working directory, repository.
+</li><li>
+Changes: nothing.
+</li></ul>
 
 <p>The <code>diff</code> command is used to compare different
 revisions of files.  The default action is to compare
@@ -2487,12 +2487,12 @@ not yet been committed will be printed.
 
 <ul>
 <li>
-<p>Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module&hellip;
-</p></li><li>
-<p>Requires: repository.
-</p></li><li>
-<p>Changes: current directory.
-</p></li></ul>
+Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module&hellip;
+</li><li>
+Requires: repository.
+</li><li>
+Changes: current directory.
+</li></ul>
 
 <p>This command is a variant of <code>checkout</code>; use it
 when you want a copy of the source for module without
@@ -2617,12 +2617,12 @@ See section <a href="#SEC123">checkout options</a>, for complete details on how
 
 <ul>
 <li>
-<p>Synopsis:     history [-report] [-flags] [-options args] [files&hellip;]
-</p></li><li>
-<p>Requires: the file `<tt>$CVSROOT/CVSROOT/history</tt>'
-</p></li><li>
-<p>Changes: nothing.
-</p></li></ul>
+Synopsis:     history [-report] [-flags] [-options args] [files&hellip;]
+</li><li>
+Requires: the file `<tt>$CVSROOT/CVSROOT/history</tt>'
+</li><li>
+Changes: nothing.
+</li></ul>
 
 <p><small>CVS</small> can keep a history file that tracks each use of the
 <code>checkout</code>, <code>commit</code>, <code>rtag</code>,
@@ -2854,12 +2854,12 @@ time zone instead of UTC.
 
 <ul>
 <li>
-<p>Synopsis: import [-options] repository vendortag releasetag&hellip;
-</p></li><li>
-<p>Requires: Repository, source distribution directory.
-</p></li><li>
-<p>Changes: repository.
-</p></li></ul>
+Synopsis: import [-options] repository vendortag releasetag&hellip;
+</li><li>
+Requires: Repository, source distribution directory.
+</li><li>
+Changes: repository.
+</li></ul>
 
 <p>Use <code>import</code> to incorporate an entire source
 distribution from an outside source (e.g., a source
@@ -3088,12 +3088,12 @@ see section <a href="cvs_18.html#SEC158">The modules file</a>.)
 
 <ul>
 <li>
-<p>Synopsis: log [options] [files&hellip;]
-</p></li><li>
-<p>Requires: repository, working directory.
-</p></li><li>
-<p>Changes: nothing.
-</p></li></ul>
+Synopsis: log [options] [files&hellip;]
+</li><li>
+Requires: repository, working directory.
+</li><li>
+Changes: nothing.
+</li></ul>
 
 <p>Display log information for files.  <code>log</code> used to
 call the <small>RCS</small> utility <code>rlog</code>.  Although this
@@ -3341,14 +3341,14 @@ selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
 
 <ul>
 <li>
-<p>rdiff [-flags] [-V vn] [-r t|-D d [-r t2|-D d2]] modules&hellip;
-</p></li><li>
-<p>Requires: repository.
-</p></li><li>
-<p>Changes: nothing.
-</p></li><li>
-<p>Synonym: patch
-</p></li></ul>
+rdiff [-flags] [-V vn] [-r t|-D d [-r t2|-D d2]] modules&hellip;
+</li><li>
+Requires: repository.
+</li><li>
+Changes: nothing.
+</li><li>
+Synonym: patch
+</li></ul>
 
 <p>Builds a Larry Wall format patch(1) file between two
 releases, that can be fed directly into the <code>patch</code>
@@ -3527,12 +3527,12 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <ul>
 <li>
-<p>release [-d] directories&hellip;
-</p></li><li>
-<p>Requires: Working directory.
-</p></li><li>
-<p>Changes: Working directory, history log.
-</p></li></ul>
+release [-d] directories&hellip;
+</li><li>
+Requires: Working directory.
+</li><li>
+Changes: Working directory, history log.
+</li></ul>
 
 <p>This command is meant to safely cancel the effect of
 `<samp>cvs checkout</samp>'.  Since <small>CVS</small> doesn't lock files, it
@@ -3716,12 +3716,12 @@ $
 
 <ul>
 <li>
-<p>update [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D date] [-W spec] files&hellip;
-</p></li><li>
-<p>Requires: repository, working directory.
-</p></li><li>
-<p>Changes: working directory.
-</p></li></ul>
+update [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D date] [-W spec] files&hellip;
+</li><li>
+Requires: repository, working directory.
+</li><li>
+Changes: working directory.
+</li></ul>
 
 <p>After you've run checkout to create your private copy
 of source from the common repository, other developers

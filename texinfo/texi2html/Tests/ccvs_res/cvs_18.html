@@ -669,15 +669,15 @@ here.
 <p>Each line contains the following:
 </p><ul>
 <li>
-<p>A regular expression.  This is a basic regular
+A regular expression.  This is a basic regular
 expression in the syntax used by GNU emacs.
 
-</p></li><li>
-<p>A whitespace separator--one or more spaces and/or tabs.
+</li><li>
+A whitespace separator--one or more spaces and/or tabs.
 
-</p></li><li>
-<p>A file name or command-line template.
-</p></li></ul>
+</li><li>
+A file name or command-line template.
+</li></ul>
 
 
 <p>Blank lines are ignored.  Lines that start with the
@@ -1331,7 +1331,7 @@ This list is constructed in the following way.
 
 </p><ul>
 <li>
-<p>The list is initialized to include certain file name
+The list is initialized to include certain file name
 patterns: names associated with <small>CVS</small>
 administration, or with other common source control
 systems; common names for patch files, object files,
@@ -1340,7 +1340,8 @@ that are usually artifacts of assorted utilities.
 Currently, the default list of ignored file name
 patterns is:
 
-</p><a name="IDX271"></a>
+
+<a name="IDX271"></a>
 <a name="IDX272"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">    RCS     SCCS    CVS     CVS.adm
     RCSLOG  cvslog.*
@@ -1352,28 +1353,28 @@ patterns is:
     *.Z     *.elc   *.ln
     core
 </pre></td></tr></table></li><li>
-<p>The per-repository list in
+The per-repository list in
 `<tt>$CVSROOT/CVSROOT/cvsignore</tt>' is appended to
 the list, if that file exists.
 
-</p></li><li>
-<p>The per-user list in `<tt>.cvsignore</tt>' in your home
+</li><li>
+The per-user list in `<tt>.cvsignore</tt>' in your home
 directory is appended to the list, if it exists.
 
-</p></li><li>
-<p>Any entries in the environment variable
+</li><li>
+Any entries in the environment variable
 <code>$CVSIGNORE</code> is appended to the list.
 
-</p></li><li>
-<p>Any `<samp>-I</samp>' options given to <small>CVS</small> is appended.
+</li><li>
+Any `<samp>-I</samp>' options given to <small>CVS</small> is appended.
 
-</p></li><li>
-<p>As <small>CVS</small> traverses through your directories, the contents
+</li><li>
+As <small>CVS</small> traverses through your directories, the contents
 of any `<tt>.cvsignore</tt>' will be appended to the list.
 The patterns found in `<tt>.cvsignore</tt>' are only valid
 for the directory that contains them, not for
 any sub-directories.
-</p></li></ul>
+</li></ul>
 
 <p>In any of the 5 places listed above, a single
 exclamation mark (`<samp>!</samp>') clears the ignore list.

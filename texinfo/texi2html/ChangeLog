@@ -1,3 +1,14 @@
+2004-04-26  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* example/book.init: stick to the same style for manual not split at
+	node.
+	* texi2html.pl: handle better @today even in non english cases.
+	don't use (encoding) in open, but set it in binmode (perl seems
+	unhappy otherwise ?).
+	* texi2html.init: don't enclose paragraph in <p> when it is the first
+	paragraph of enumerate or itemize, as the <li> is allready something
+	like a begining of paragraph.
+
 2004-03-25  Derek Price  <derek@ximbiot.com>
 
 	* .cvsignore: Ignore texi2html.spec.

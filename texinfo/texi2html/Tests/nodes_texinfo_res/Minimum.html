@@ -106,27 +106,27 @@ file <strong>must</strong> begin with lines like this:
 
 </p><ul>
 <li>
-<p>The `<samp>\input texinfo</samp>' line tells TeX to use the
+The `<samp>\input texinfo</samp>' line tells TeX to use the
 `<tt>texinfo.tex</tt>' file, which tells TeX how to translate the Texinfo
 @-commands into TeX typesetting commands.  (Note the use of the
 backslash, `<samp>\</samp>'; this is correct for TeX.)
 
-</p></li><li>
-<p>The <code>@setfilename</code> line provides a name for the Info file and
+</li><li>
+The <code>@setfilename</code> line provides a name for the Info file and
 tells TeX to open auxiliary files.  <strong>All text before
 <code>@setfilename</code> is ignored!</strong>
 
-</p></li><li>
-<p>The <code>@settitle</code> line specifies a title for the page headers (or
+</li><li>
+The <code>@settitle</code> line specifies a title for the page headers (or
 footers) of the printed manual, and the default document description for
 the `<samp>&lt;head&gt;</samp>' in HTML format.  Strictly speaking, <code>@settitle</code>
 is optional--if you don't mind your document being titled `Untitled'.
 
-</p></li><li>
-<p>The <code>@bye</code> line at the end of the file on a line of its own tells
+</li><li>
+The <code>@bye</code> line at the end of the file on a line of its own tells
 the formatters that the file is ended and to stop formatting.
 
-</p></li></ul>
+</li></ul>
 
 <p>Typically, you will not use quite such a spare format, but will include
 mode setting and start-of-header and end-of-header lines at the

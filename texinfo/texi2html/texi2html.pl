@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.111 2004-03-22 23:22:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.112 2004-04-26 00:21:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1172,7 +1172,6 @@ $| = 1;
 #FIXME my or our ?
 my $I = \&Texi2HTML::I18n::get_string;
 
-my $T2H_TODAY; # date set by pretty_date
 my $T2H_USER; # user running the script
 my $documentdescription; # text in @documentdescription 
 
@@ -1239,6 +1238,7 @@ sub load_init_file
 }
 
 my $cmd_line_lang = 0; # 1 if lang was succesfully set by the command line 
+                       # in that case @documentlanguage is ignored.
 my $lang_set = 0; # 1 if lang was set
 
 #
@@ -1259,6 +1259,17 @@ sub set_document_language ($;$$)
         $Texi2HTML::Config::LANG = $lang;
         $lang_set = 1;
         $cmd_line_lang = 1 if ($from_command_line);
+        if (!$Texi2HTML::Config::TEST)
+        {
+            $Texi2HTML::THISDOC{'today'} = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20 September 1993";
+        }
+        else
+        {
+            $Texi2HTML::THISDOC{'today'} = 'a sunny day';
+        }
+        $things_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
+        $pre_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
+        $texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
     }
     else
     {
@@ -5452,7 +5463,6 @@ sub pass_text()
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     $Texi2HTML::THISDOC{'user'} = $T2H_USER;
-    $Texi2HTML::THISDOC{'today'} = $T2H_TODAY;
 #    $Texi2HTML::THISDOC{'documentdescription'} = $documentdescription;
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 
@@ -6091,9 +6101,10 @@ sub open_file($$)
     my $name = shift;
     my $line_number = shift;
     local *FH;
-    if ((defined($from_encoding) and open(*FH, ":encoding($from_encoding)", $name)) or  open(*FH, $name))
+    #if ((defined($from_encoding) and open(*FH, ":encoding($from_encoding)", $name)) or  open(*FH, $name))
+    if ((defined($from_encoding) and open(*FH, "<:$from_encoding", $name)) or  open(*FH, $name))
     { 
-        
+        binmode (*FH, ":encoding($from_encoding)") if (defined($from_encoding));
         my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 
                               'macro' => '' },
@@ -6118,10 +6129,14 @@ sub open_out($)
         binmode(STDOUT, ":encoding($to_encoding)") if (defined($to_encoding));
         return \*STDOUT;
     }
-    unless ((defined($to_encoding) and open(FILE, ">:encoding($to_encoding)", $file)) or open(FILE, "> $file"))
+    #unless ((defined($to_encoding) and open(FILE, ">:encoding($to_encoding)", $file)) or open(FILE, "> $file"))
+    my $open_style = 'bytes';
+    $open_style = 'utf8' if (defined($to_encoding) and $to_encoding eq 'utf8');
+    unless ((defined($to_encoding) and open(FILE, ">:$open_style", $file)) or open(FILE, "> $file"))
     {
         die "$ERROR Can't open $file for writing: $!\n";
     }
+    binmode(FILE, ":encoding($to_encoding)") if (defined($to_encoding));
     return \*FILE;
 }
 
@@ -10786,14 +10801,12 @@ sub decompose($$)
 # main processing is called here
 set_document_language('en') unless ($lang_set);
 # APA: There's got to be a better way:
-$T2H_TODAY = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20 September 1993";
 $T2H_USER = &$I('unknown');
 
 if ($Texi2HTML::Config::TEST)
 {
     # to generate files similar to reference ones to be able to check for
     # real changes we use these dummy values if -test is given
-    $T2H_TODAY = 'a sunny day';
     $T2H_USER = 'a tester';
     $THISPROG = 'texi2html';
     setlocale( LC_ALL, "C" );
@@ -10807,10 +10820,7 @@ else
     # implemented there.
     $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
-$things_map_ref->{'today'} = $T2H_TODAY;
-$pre_map_ref->{'today'} = $T2H_TODAY;
-$texi_map_ref->{'today'} = $T2H_TODAY;
-
+    
 open_file($docu, $texi_line_number);
 Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
  if ($Texi2HTML::Config::L2H);

@@ -1089,19 +1089,19 @@ other files. For example, use `:n3' to move to the third file in that list.
 
 </p><ul>
 <li>
-<p><kbd>:ab</kbd> and <kbd>:una</kbd> are not implemented, since
+<kbd>:ab</kbd> and <kbd>:una</kbd> are not implemented, since
 <kbd>:ab</kbd> is considered obsolete, since Emacs has much
 more powerful facilities for defining abbreviations.
-</p></li><li>
-<p><kbd>:set option?</kbd> is not implemented.  The current
+</li><li>
+<kbd>:set option?</kbd> is not implemented.  The current
 <kbd>:set</kbd> can also be used to set Emacs variables.
-</p></li><li>
-<p><kbd>:se list</kbd> requires modification of the display code for Emacs, so
+</li><li>
+<kbd>:se list</kbd> requires modification of the display code for Emacs, so
 it is not implemented.
 A useful alternative is <code>cat -t -e file</code>.  Unfortunately, it cannot
 be used directly inside Emacs, since Emacs will obdurately change `<samp>^I</samp>'
 back to normal tabs.
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
 <a name="NOD13"></a>
@@ -2002,19 +2002,19 @@ and `<samp>wuarchive.wustl.edu</samp>'
 <li>
 <a name="IDX129"></a>
 <a name="IDX130"></a>
-<p>Elisp code in a `<tt>.viper</tt>' file in your home directory.  Viper
+Elisp code in a `<tt>.viper</tt>' file in your home directory.  Viper
 loads `<tt>.viper</tt>' just before it does the binding for mode
 hooks.  This is recommended for experts only.
-</p></li><li>
+</li><li>
 <a name="IDX131"></a>
-<p>Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
+Elisp code in your `<tt>.emacs</tt>' file before and after the <code>(require
 'viper)</code> line.  This method is <em>not</em> recommended, unless you know what
 you are doing.  Only two variables, <code>viper-mode</code> and
 <code>viper-custom-file-name</code>, are supposed to be customized in `<tt>.emacs</tt>',
 prior to loading Viper (i.e., prior to <code>(require 'viper)</code> command.
-</p></li><li>
+</li><li>
 <a name="IDX132"></a>
-<p>By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
+By executing the <kbd>:customize</kbd> Ex command. This takes you to the Emacs
 customization widget, which lets you change the values of Viper
 customizable variables easily. This method is good for novice and
 experts alike. The customization code in the form of Lisp commands will be
@@ -2023,7 +2023,8 @@ version of Emacs that you use. Still, it is recommended to separate
 Viper-related customization produced by the Emacs customization widget
 and keep it in the `<tt>.viper</tt>' file.
 
-</p><p>Some advanced customization cannot be accomplished this way, however, and
+
+<p>Some advanced customization cannot be accomplished this way, however, and
 has to be done in Emacs Lisp in the `<tt>.viper</tt>' file.  For the common
 cases, examples are provided that you can use directly.
 </p></li></ul>

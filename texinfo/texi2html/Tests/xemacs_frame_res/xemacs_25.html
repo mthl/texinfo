@@ -938,20 +938,20 @@ local needs with safe removal of unnecessary code.
 
 </p><ul>
 <li>
-<p>Regular Packages
+Regular Packages
 <a name="IDX1057"></a>
 A regular package is one in which multiple files are involved and one
 may not in general safely remove any of them.
 
-</p></li><li>
-<p>Single-File Packages
+</li><li>
+Single-File Packages
 <a name="IDX1058"></a>
 A single-file package is an aggregate collection of thematically
 related but otherwise independent lisp files.  These files are bundled 
 together for download convenience and individual files may be deleted at
 will without any loss of functionality.  However, we would recommend
 that you follow this rule of thumb: &quot;When in doubt, don't delete&quot;.
-</p></li></ul>
+</li></ul>
 
 <hr size="6">
 <a name="SEC265"></a>
@@ -1233,21 +1233,23 @@ steps.
 
 </p><ol>
 <li>
-<p>Choose a download site.
+Choose a download site.
 via menu: Tools -&gt; Packages -&gt; Add Download Site 
 via keyb: <code>M-x customize-variable RET package-get-remote RET</code>
 (put in the details of remote host and directory)
 
-</p><p>If the package tarballs _AND_ the package-index file are in a
+
+<p>If the package tarballs _AND_ the package-index file are in a
 local directory, you can: <code>M-x pui-add-install-directory RET</code>
 
 </p></li><li>
-<p>Obtain a list of packages and display the list in a buffer named
+Obtain a list of packages and display the list in a buffer named
 `<tt>*Packages*</tt>'.
 menu: Tools -&gt; Packages -&gt; List &amp; Install
 keyb: <code>M-x pui-list-packages RET</code>
 
-</p><p>XEmacs will now connect to the remote site and download the
+
+<p>XEmacs will now connect to the remote site and download the
 latest package-index file.  If you see an error about the
 package-index entries not being PGP signed, you can safely
 ignore this because PGP has not been integrated into the XEmacs
@@ -1316,16 +1318,17 @@ the mouse over a package name will also do the same thing.
 about the package to be displayed in the minibuffer.
 
 </p></li><li>
-<p>Choose the packages you wish to install.
+Choose the packages you wish to install.
 mouse: Click button 2 on the package name.
  keyb: <kbd>RET</kbd> on the package name
 
-</p></li><li>
-<p>Make sure you have everything you need.
+</li><li>
+Make sure you have everything you need.
 menu: Packages -&gt; Add Required
 keyb: <kbd>r</kbd>
 
-</p><p>XEmacs will now search for packages that are required by the
+
+<p>XEmacs will now search for packages that are required by the
 ones that you have chosen to install and offer to select
 those packages also.
 
@@ -1333,10 +1336,10 @@ those packages also.
 It's easy to forget to install a critical package.
 
 </p></li><li>
-<p>Download and install the packages.
+Download and install the packages.
 menu: Packages -&gt; Install/Remove Selected
 keyb: <kbd>x</kbd>
-</p></li></ol>
+</li></ol>
 
 <p>You can also install packages using a semi-manual interface:
 

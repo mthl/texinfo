@@ -21,6 +21,8 @@ $DO_CONTENTS = 1;
 $WORDS_IN_PAGE = undef;
 $SHOW_MENU = 0;
 
+$BIG_RULE = '<hr size="2">';
+
 sub print_sub_toc($$);
 
 sub print_sub_toc($$)
@@ -53,7 +55,7 @@ sub print_up_toc($$)
         unshift (@elements, $current_element->{'up'});
         $current_element = $current_element->{'up'};
     }
-    print $fh "<ul>" . &$anchor('', $Texi2HTML::HREF{Contents}, '[' . $Texi2HTML::NAME{Contents} . ']') . " <br>\n";
+    #print $fh "<ul>" . &$anchor('', $Texi2HTML::HREF{Contents}, '[' . $Texi2HTML::NAME{Contents} . ']') . " <br>\n";
     foreach my $elem (@elements)
     {
         print $fh "<ul>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " <br>\n";
@@ -79,7 +81,8 @@ sub book_print_section($$$)
 
     if ($first_in_page and $SECTION_NAVIGATION)
     {
-        print_up_toc($fh, $Texi2HTML::THIS_ELEMENT) if ($SPLIT eq 'node');
+        #print_up_toc($fh, $Texi2HTML::THIS_ELEMENT) if ($SPLIT eq 'node');
+        print_up_toc($fh, $Texi2HTML::THIS_ELEMENT);
         &$print_head_navigation($fh, $buttons);
     }
     else
@@ -117,7 +120,7 @@ sub book_print_Toc
 {
     my $fh = shift;
     &$print_page_head($fh) if $SPLIT;
-    print $fh $Texi2HTML::TITLEPAGE;
+    #print $fh $Texi2HTML::TITLEPAGE;
     print $fh '<h2> ' . $Texi2HTML::NAME{'Contents'} . "</h2>\n" ;
     main::print_lines($fh);
     &$print_misc_footer($fh, \@MISC_BUTTONS);
@@ -180,8 +183,8 @@ sub book_heading($)
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
     $text = "<h$level class=\"$class\"> $text </h$level>\n";
-    if (defined($SPLIT)  and ($SPLIT eq 'node') 
-        and exists($element->{'child'}) 
+    #if (defined($SPLIT)  and ($SPLIT eq 'node') 
+    if (exists($element->{'child'}) 
         and ($element->{'tag_level'} !~ /heading/))
     {
         $text .= "<ul>\n";

@@ -92,20 +92,21 @@ ul.toc {list-style: none}
 extension, because the different processors support different formats:
 </p><ul>
 <li>
-<p>TeX reads the file `<tt><var>filename</var>.eps</tt>' (Encapsulated PostScript
+TeX reads the file `<tt><var>filename</var>.eps</tt>' (Encapsulated PostScript
 format).
-</p></li><li>
+</li><li>
 <a name="IDX232"></a>
-<p>PDFTeX reads `<tt><var>filename</var>.pdf</tt>' (Adobe's Portable Document Format).
-</p></li><li>
-<p><code>makeinfo</code> uses `<tt><var>filename</var>.txt</tt>' verbatim for
+PDFTeX reads `<tt><var>filename</var>.pdf</tt>' (Adobe's Portable Document Format).
+</li><li>
+<code>makeinfo</code> uses `<tt><var>filename</var>.txt</tt>' verbatim for
 Info output (more or less as if it was an <code>@example</code>).
-</p></li><li>
-<p><code>makeinfo</code>
+</li><li>
+<code>makeinfo</code>
 uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
 
-</p><a name="IDX233"></a>
+
+<a name="IDX233"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
 </pre></td></tr></table>
 

@@ -298,10 +298,10 @@ keystroke, giving numerous possibilities.  Here are some samples:
 
 </p><ul>
 <li>
-<p><kbd>[(control x) (c)]</kbd>
-</p></li><li>
-<p><kbd>[(control x) (control c)]</kbd>
-</p></li></ul>
+<kbd>[(control x) (c)]</kbd>
+</li><li>
+<kbd>[(control x) (control c)]</kbd>
+</li></ul>
 
 <p>  Adding one character to a prefix key does not have to form a complete
 key.  It could make another, longer prefix.  For example, <kbd>[(control
@@ -544,36 +544,38 @@ being used to control it.
 
 </p><ol>
 <li>
-<p>Scan the existing modifier mappings.
+Scan the existing modifier mappings.
 
-</p><ol>
+
+<ol>
 <li>
-<p>If it finds a modifier that contains a keycode whose set of keysyms 
+If it finds a modifier that contains a keycode whose set of keysyms 
 includes <code>XK_Meta_L</code> or <code>XK_Meta_R</code>, it should use that 
 modifier bit.
 
-</p></li><li>
-<p>If there is no existing modifier controlled by <code>XK_Meta_L</code> or 
+</li><li>
+If there is no existing modifier controlled by <code>XK_Meta_L</code> or 
 <code>XK_Meta_R</code>, it should select an unused modifier bit (one with 
 an empty controlling set) and:
-</p></li></ol>
+</li></ol>
 </li><li>
-<p>If there is a keycode with <code>XL_Meta_L</code> in its set of keysyms, 
+If there is a keycode with <code>XL_Meta_L</code> in its set of keysyms, 
 add that keycode to the set for the chosen modifier, and then:
 
-</p><ol>
+
+<ol>
 <li>
-<p>If there is a keycode with <code>XL_Meta_R</code> in its set of keysyms, 
+If there is a keycode with <code>XL_Meta_R</code> in its set of keysyms, 
 add that keycode to the set for the chosen modifier, and then:
 
-</p></li><li>
-<p>If the controlling set is still empty, interact with the user to 
+</li><li>
+If the controlling set is still empty, interact with the user to 
 select one or more keys to be <code>Meta</code>.
-</p></li></ol>
+</li></ol>
 
 </li><li>
-<p>If there are no unused modifier bits, ask the user to take corrective action.
-</p></li></ol>
+If there are no unused modifier bits, ask the user to take corrective action.
+</li></ol>
 
 <p> This means that the <code>Mod1</code> modifier does not necessarily mean 
 <code>Meta</code>, although some applications (such as twm and emacs 18) 
@@ -777,14 +779,14 @@ a program, and comparing or merging two or three files.
 
 </p><ul>
 <li>
-<p>Select an item in the menu bar by moving the cursor over it and click the
+Select an item in the menu bar by moving the cursor over it and click the
 left mouse-button.  Then move the cursor over the menu item you want to choose
 and click left again.
-</p></li><li>
-<p>Select an item in the menu bar by moving the cursor over it and click and
+</li><li>
+Select an item in the menu bar by moving the cursor over it and click and
 hold the left mouse-button.  With the mouse-button depressed, move the
 cursor over the menu item you want, then release it to make your selection. 
-</p></li></ul>
+</li></ul>
 
 <p>If a command in the pull-down menu is not applicable in a given
 situation, the command is disabled and its name appears faded.  You
@@ -799,10 +801,10 @@ equivalent for any left-button menu item, do the following:
 
 </p><ol>
 <li>
-<p>Type <kbd>C-h k</kbd> to get the <code>Describe Key</code> prompt. 
-</p></li><li>
-<p>Select the menu item and click. 
-</p></li></ol>
+Type <kbd>C-h k</kbd> to get the <code>Describe Key</code> prompt. 
+</li><li>
+Select the menu item and click. 
+</li></ol>
 
 <p>Emacs displays the function associated with the menu item in a separate
 window, usually together with some documentation. 
@@ -1364,12 +1366,12 @@ should be a vector of three elements:
 
 </p><ul>
 <li> 
-<p>A string, which is the name of the menu item
-</p></li><li> 
-<p>A symbol naming a command, or a form to evaluate
-</p></li><li> 
-<p><code>t</code> or <code>nil</code> to indicate whether the item is selectable
-</p></li></ul>
+A string, which is the name of the menu item
+</li><li> 
+A symbol naming a command, or a form to evaluate
+</li><li> 
+<code>t</code> or <code>nil</code> to indicate whether the item is selectable
+</li></ul>
 
 <p>The optional argument <var>before</var> is the name of the menu before which
 the new menu or submenu should be added.  If the menu is already

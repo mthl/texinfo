@@ -87,18 +87,18 @@ ul.toc {list-style: none}
 <a name="IDX445"></a>
 <ul>
 <li>
-<p>Write in the present tense, not in the past or the future.
+Write in the present tense, not in the past or the future.
 
-</p></li><li>
-<p>Write actively!  For example, write &quot;We recommend that &hellip;&quot; rather
+</li><li>
+Write actively!  For example, write &quot;We recommend that &hellip;&quot; rather
 than &quot;It is recommended that &hellip;&quot;.
 
-</p></li><li>
-<p>Use 70 or 72 as your fill column.  Longer lines are hard to read.
+</li><li>
+Use 70 or 72 as your fill column.  Longer lines are hard to read.
 
-</p></li><li>
-<p>Include a copyright notice and copying permissions.
-</p></li></ul>
+</li><li>
+Include a copyright notice and copying permissions.
+</li></ul>
 
 <a name="SEC279"></a>
 <h4 class="subsubheading"> Index, Index, Index! </h4>
@@ -116,34 +116,35 @@ split across pages.
 
 </p><ul>
 <li>
-<p>Write each index entry differently, so each entry refers to a different
+Write each index entry differently, so each entry refers to a different
 place in the document.
 
-</p></li><li>
-<p>Write index entries only where a topic is discussed significantly.  For
+</li><li>
+Write index entries only where a topic is discussed significantly.  For
 example, it is not useful to index &quot;debugging information&quot; in a
 chapter on reporting bugs.  Someone who wants to know about debugging
 information will certainly not find it in that chapter.
 
-</p></li><li>
-<p>Consistently capitalize the first word of every concept index entry,
+</li><li>
+Consistently capitalize the first word of every concept index entry,
 or else consistently use lower case.  Terse entries often call for
 lower case; longer entries for capitalization.  Whichever case
 convention you use, please use one or the other consistently!  Mixing
 the two styles looks bad.
 
-</p></li><li>
-<p>Always capitalize or use upper case for those words in an index for
+</li><li>
+Always capitalize or use upper case for those words in an index for
 which this is proper, such as names of countries or acronyms.  Always
 use the appropriate case for case-sensitive names, such as those in C or
 Lisp.
 
-</p></li><li>
-<p>Write the indexing commands that refer to a whole section immediately
+</li><li>
+Write the indexing commands that refer to a whole section immediately
 after the section command, and write the indexing commands that refer to
 a paragraph before that paragraph.
 
-</p><p>In the example that follows, a blank line comes after the index
+
+<p>In the example that follows, a blank line comes after the index
 entry for &quot;Leaping&quot;:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@section The Dog and the Fox
@@ -167,18 +168,19 @@ readers can look up the concept in different ways.)
 
 <ul>
 <li>
-<p>Insert a blank line between a sectioning command and the first following
+Insert a blank line between a sectioning command and the first following
 sentence or paragraph, or between the indexing commands associated with
 the sectioning command and the first following sentence or paragraph, as
 shown in the tip on indexing.  Otherwise, a formatter may fold title and
 paragraph together.
 
-</p></li><li>
-<p>Always insert a blank line before an <code>@table</code> command and after an
+</li><li>
+Always insert a blank line before an <code>@table</code> command and after an
 <code>@end table</code> command; but never insert a blank line after an
 <code>@table</code> command or before an <code>@end table</code> command.
 
-</p><p>For example,
+
+<p>For example,
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">Types of fox:
 
@@ -205,15 +207,15 @@ same way.
 
 </p><ul>
 <li>
-<p>Write entries in an itemized list as complete sentences; or at least, as
+Write entries in an itemized list as complete sentences; or at least, as
 complete phrases.  Incomplete expressions &hellip; awkward &hellip; like
 this.
 
-</p></li><li>
-<p>Write the prefatory sentence or phrase for a multi-item list or table as
+</li><li>
+Write the prefatory sentence or phrase for a multi-item list or table as
 a complete expression.  Do not write &quot;You can set:&quot;; instead, write
 &quot;You can set these variables:&quot;.  The former expression sounds cut off.
-</p></li></ul>
+</li></ul>
 
 <a name="SEC282"></a>
 <h4 class="subsubheading"> Editions, Dates and Versions </h4>
@@ -237,33 +239,33 @@ a uniform format.
 
 </p><ul>
 <li>
-<p>Write just one definition command for each entity you define with a
+Write just one definition command for each entity you define with a
 definition command.  The automatic indexing feature creates an index
 entry that leads the reader to the definition.
 
-</p></li><li>
-<p>Use <code>@table</code> &hellip; <code>@end table</code> in an appendix that
+</li><li>
+Use <code>@table</code> &hellip; <code>@end table</code> in an appendix that
 contains a summary of functions, not <code>@deffn</code> or other definition
 commands.
-</p></li></ul>
+</li></ul>
 
 <a name="SEC284"></a>
 <h4 class="subsubheading"> Capitalization </h4>
 
 <ul>
 <li>
-<p>Capitalize &quot;Texinfo&quot;; it is a name.  Do not write the `<samp>x</samp>' or
+Capitalize &quot;Texinfo&quot;; it is a name.  Do not write the `<samp>x</samp>' or
 `<samp>i</samp>' in upper case.
 
-</p></li><li>
-<p>Capitalize &quot;Info&quot;; it is a name.
+</li><li>
+Capitalize &quot;Info&quot;; it is a name.
 
-</p></li><li>
-<p>Write TeX using the <code>@TeX{}</code> command.  Note the uppercase
+</li><li>
+Write TeX using the <code>@TeX{}</code> command.  Note the uppercase
 `<samp>T</samp>' and `<samp>X</samp>'.  This command causes the formatters to
 typeset the name according to the wishes of Donald Knuth, who wrote
 TeX.
-</p></li></ul>
+</li></ul>
 
 <a name="SEC285"></a>
 <h4 class="subsubheading"> Spaces </h4>
@@ -296,23 +298,24 @@ version-controlled file corresponding to the current buffer.
 
 <ul>
 <li>
-<p>Use <code>@code</code> around Lisp symbols, including command names.
+Use <code>@code</code> around Lisp symbols, including command names.
 For example,
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">The main function is @code{vc-next-action}, &hellip;
+
+<table><tr><td>&nbsp;</td><td><pre class="example">The main function is @code{vc-next-action}, &hellip;
 </pre></td></tr></table></li><li>
-<p>Avoid putting letters such as `<samp>s</samp>' immediately after an
+Avoid putting letters such as `<samp>s</samp>' immediately after an
 `<samp>@code</samp>'.  Such letters look bad.
 
-</p></li><li>
-<p>Use <code>@var</code> around meta-variables.  Do not write angle brackets
+</li><li>
+Use <code>@var</code> around meta-variables.  Do not write angle brackets
 around them.
 
-</p></li><li>
-<p>Use three hyphens in a row, `<samp>---</samp>', to indicate a long dash.  TeX
+</li><li>
+Use three hyphens in a row, `<samp>---</samp>', to indicate a long dash.  TeX
 typesets these as a long dash and the Info formatters reduce three
 hyphens to two.
-</p></li></ul>
+</li></ul>
 
 <a name="SEC287"></a>
 <h4 class="subsubheading"> Periods Outside of Quotes </h4>
@@ -337,10 +340,11 @@ outside the end quotation marks:
 
 <ul>
 <li>
-<p>Introduce new terms so that a reader who does not know them can
+Introduce new terms so that a reader who does not know them can
 understand them from context; or write a definition for the term.
 
-</p><p>For example, in the following, the terms &quot;check in&quot;, &quot;register&quot; and
+
+<p>For example, in the following, the terms &quot;check in&quot;, &quot;register&quot; and
 &quot;delta&quot; are all appearing for the first time; the example sentence should be
 rewritten so they are understandable.
 
@@ -350,10 +354,10 @@ version control system and registering successive sets of changes to
 it as deltas.
 </p></blockquote>
 </li><li>
-<p>Use the <code>@dfn</code> command around a word being introduced, to indicate
+Use the <code>@dfn</code> command around a word being introduced, to indicate
 that the reader should not expect to know the meaning already, and
 should expect to learn the meaning from this passage.
-</p></li></ul>
+</li></ul>
 
 <a name="SEC289"></a>
 <h4 class="subsubheading"> @pxref </h4>
@@ -440,16 +444,16 @@ everyone's changes so they do not step on each other.
 
 <ul>
 <li>
-<p>Pronounce TeX as if the `<samp>X</samp>' were a Greek `chi', as the last
+Pronounce TeX as if the `<samp>X</samp>' were a Greek `chi', as the last
 sound in the name `Bach'.  But pronounce Texinfo as in `speck':
 &quot;teckinfo&quot;.
 
-</p></li><li>
-<p>Write notes for yourself at the very end of a Texinfo file after the
+</li><li>
+Write notes for yourself at the very end of a Texinfo file after the
 <code>@bye</code>.  None of the formatters process text after the
 <code>@bye</code>; it is as if the text were within <code>@ignore</code> &hellip;
 <code>@end ignore</code>.
-</p></li></ul>
+</li></ul>
 
 
 <hr size="1">

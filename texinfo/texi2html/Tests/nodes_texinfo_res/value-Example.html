@@ -88,16 +88,18 @@ Automake distributions, and full texts.
 
 </p><ol>
 <li>
-<p>Set the flags:
+Set the flags:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@set EDITION 0.35 Beta
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
 </pre></td></tr></table></li><li>
-<p>Write text for the <code>@copying</code> section (see section <a href="copying.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
+Write text for the <code>@copying</code> section (see section <a href="copying.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@copying
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@copying
 This is Edition @value{EDITION},
 last updated @value{UPDATED},
 of @cite{The GNU Make Manual},
@@ -108,9 +110,10 @@ Copyright &hellip;
 Permission is granted &hellip;
 @end copying
 </pre></td></tr></table></li><li>
-<p>Write text for the title page, for people reading the printed manual:
+Write text for the title page, for people reading the printed manual:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 @title GNU Make
 @subtitle A Program for Directing Recompilation
 @subtitle Edition @value{EDITION}, &hellip;
@@ -125,9 +128,10 @@ Permission is granted &hellip;
 fussy than a date listing the day as well as the month and year.)
 
 </p></li><li>
-<p>Write text for the Top node, for people reading the Info file:
+Write text for the Top node, for people reading the Info file:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
 @node Top
 @top Make
 

@@ -92,22 +92,22 @@ how XEmacs handles such conflicts:
 
 </p><ul>
 <li>
-<p>If a command gets an error while you are in the minibuffer, this does
+If a command gets an error while you are in the minibuffer, this does
 not cancel the minibuffer.  However, the echo area is needed for the
 error message and therefore the minibuffer itself is hidden for a
 while.  It comes back after a few seconds, or as soon as you type
 anything.
 
-</p></li><li>
-<p>If in the minibuffer you use a command whose purpose is to print a
+</li><li>
+If in the minibuffer you use a command whose purpose is to print a
 message in the echo area, such as <kbd>C-x =</kbd>, the message is printed
 normally, and the minibuffer is hidden for a while.  It comes back
 after a few seconds, or as soon as you type anything.
 
-</p></li><li>
-<p>Echoing of keystrokes does not take place while the minibuffer is in
+</li><li>
+Echoing of keystrokes does not take place while the minibuffer is in
 use.
-</p></li></ul>
+</li></ul>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC61">6.1 Minibuffers for File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Entering file names with the minibuffer.
@@ -503,31 +503,32 @@ minibuffers, depending on how the argument will be used.
 
 </p><ul>
 <li>
-<p><em>Strict</em> completion is used when it is meaningless to give any
+<em>Strict</em> completion is used when it is meaningless to give any
 argument except one of the known alternatives.  For example, when
 <kbd>C-x k</kbd> reads the name of a buffer to kill, it is meaningless to
 give anything but the name of an existing buffer.  In strict
 completion, <kbd>RET</kbd> refuses to exit if the text in the minibuffer
 does not complete to an exact match.
 
-</p></li><li>
-<p><em>Cautious</em> completion is similar to strict completion, except that
+</li><li>
+<em>Cautious</em> completion is similar to strict completion, except that
 <kbd>RET</kbd> exits only if the text was an exact match already, not
 needing completion.  If the text is not an exact match, <kbd>RET</kbd> does
 not exit, but it does complete the text.  If it completes to an exact
 match, a second <kbd>RET</kbd> will exit.
 
-</p><p>Cautious completion is used for reading file names for files that must
+
+<p>Cautious completion is used for reading file names for files that must
 already exist.
 
 </p></li><li>
-<p><em>Permissive</em> completion is used when any string whatever is
+<em>Permissive</em> completion is used when any string whatever is
 meaningful, and the list of completion alternatives is just a guide.
 For example, when <kbd>C-x C-f</kbd> reads the name of a file to visit, any
 file name is allowed, in case you want to create a file.  In
 permissive completion, <kbd>RET</kbd> takes the text in the minibuffer
 exactly as given, without completing it.
-</p></li></ul>
+</li></ul>
 
 <p>  The completion commands display a list of all possible completions in
 a window whenever there is more than one possibility for the very next

@@ -129,16 +129,16 @@ technically independent of each other:
 
 </p><ul>
 <li>
-<p>In Info, node and menu commands provide structure.  The chapter
+In Info, node and menu commands provide structure.  The chapter
 structuring commands generate headings with different kinds of
 underlining--asterisks for chapters, hyphens for sections, and so on;
 they do nothing else.
 
-</p></li><li>
-<p>In TeX, the chapter structuring commands generate chapter and section
+</li><li>
+In TeX, the chapter structuring commands generate chapter and section
 numbers and tables of contents.  The node and menu commands provide
 information for cross references; they do nothing else.
-</p></li></ul>
+</li></ul>
 
 <p>You can use node pointers and menus to structure an Info file any way
 you want; and you can write a Texinfo file so that its Info output has a
@@ -472,22 +472,23 @@ much easier for people to find the node.
 
 </p><ul>
 <li>
-<p>Try to pick node names that are informative but short.
+Try to pick node names that are informative but short.
 
-</p><p>In the Info file, the file name, node name, and pointer names are all
+
+<p>In the Info file, the file name, node name, and pointer names are all
 inserted on one line, which may run into the right edge of the window.
 (This does not cause a problem with Info, but is ugly.)
 
 </p></li><li>
-<p>Try to pick node names that differ from each other near the beginnings
+Try to pick node names that differ from each other near the beginnings
 of their names.  This way, it is easy to use automatic name completion in
 Info.
 
-</p></li><li>
-<p>By convention, node names are capitalized just as they would be for
+</li><li>
+By convention, node names are capitalized just as they would be for
 section or chapter titles--initial and significant words are
 capitalized; others are not.
-</p></li></ul>
+</li></ul>
 
 
 <hr size="6">
@@ -516,9 +517,10 @@ capitalized; others are not.
 </p><ul>
 <li><a name="IDX94"></a>
 <a name="IDX95"></a></li><li>
-<p>All the node names for a single Info file must be unique.
+All the node names for a single Info file must be unique.
 
-</p><p>Duplicates confuse the Info movement commands.  This means, for
+
+<p>Duplicates confuse the Info movement commands.  This means, for
 example, that if you end every chapter with a summary, you must name
 each summary node differently.  You cannot just call each one
 &quot;Summary&quot;.  You may, however, duplicate the titles of chapters, sections,
@@ -527,20 +529,22 @@ called &quot;Summary&quot;, so long as the node names for those sections are all
 different.
 
 </p></li><li>
-<p>A pointer name must be the name of a node.
+A pointer name must be the name of a node.
 
-</p><p>The node to which a pointer points may come before or after the
+
+<p>The node to which a pointer points may come before or after the
 node containing the pointer.
 
 </p><a name="IDX96"></a>
 <a name="IDX97"></a></li><li>
-<p>@-commands used in node names generally confuse Info, so you
+@-commands used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
 escaped with a `<samp>@</samp>', such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="texinfo_21.html#SEC265">Pointer Validation</a>.
 
-</p><p>Thus, the beginning of the section called <code>@chapter</code> looks like
+
+<p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
@@ -549,21 +553,22 @@ this:
 @findex chapter
 </pre></td></tr></table></li><li>
 <a name="IDX98"></a>
-<p>You cannot use parentheses in node names, because a node name such as
+You cannot use parentheses in node names, because a node name such as
 `<samp>(foo)bar</samp>' is interpreted by the Info readers as a node
 `<samp>bar</samp>' in an Info file `<tt>foo</tt>'.
 
-</p></li><li>
+</li><li>
 <a name="IDX99"></a>
 <a name="IDX100"></a>
 <a name="IDX101"></a>
 <a name="IDX102"></a>
 <a name="IDX103"></a>
 <a name="IDX104"></a>
-<p>Unfortunately, you cannot use periods, commas, colons or apostrophes
+Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 
-</p><p>For example, the following is a section title:
+
+<p>For example, the following is a section title:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
@@ -573,8 +578,8 @@ within a node name; these confuse TeX or the Info formatters.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
 <a name="IDX105"></a></li><li>
-<p>Case is significant.
-</p></li></ul>
+Case is significant.
+</li></ul>
 
 
 <hr size="6">
@@ -608,29 +613,30 @@ short summary, copying permissions, and a master menu.  See section <a href="tex
 <li>
 <a name="IDX106"></a>
 <a name="IDX107"></a>
-<p>The Top node (which must be named `<samp>top</samp>' or `<samp>Top</samp>') should have
+The Top node (which must be named `<samp>top</samp>' or `<samp>Top</samp>') should have
 as its `Up' node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
-</p><p>Usually, all Info files are installed in the same Info directory tree;
+
+<p>Usually, all Info files are installed in the same Info directory tree;
 in this case, use `<samp>(dir)</samp>' as the parent of the Top node; this is
 short for `<samp>(dir)top</samp>', and specifies the Top node in the `<tt>dir</tt>'
 file, which contains the main menu for the Info system as a whole. 
 
 </p></li><li>
 <a name="IDX108"></a>
-<p>On the other hand, do not define the `Previous' node of the Top node to
+On the other hand, do not define the `Previous' node of the Top node to
 be `<samp>(dir)</samp>', as it causes confusing behavior for users: if you are
 in the Top node and hits <kbd>DEL</kbd> to go backwards, you wind up in the
 middle of the some other entry in the `<tt>dir</tt>' file, which has nothing
 to do with what you were reading.
 
-</p></li><li>
+</li><li>
 <a name="IDX109"></a>
-<p>The `Next' node of the Top node should be the first chapter in your
+The `Next' node of the Top node should be the first chapter in your
 document.
 
-</p></li></ul>
+</li></ul>
 
 <p>See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>, for more information about installing
 an Info file in the `<tt>info</tt>' directory.

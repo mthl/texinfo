@@ -15565,14 +15565,14 @@ texinfo.txi(,16642) Here are some notes on the example:
 texinfo.txi(,16643) 
 texinfo.txi(,16644) @itemize @bullet
 texinfo.txi(,16645) @item
-texinfo.txi(,16646) @cindex $Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $ comment
-texinfo.txi(,16647) @cindex CVS $Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $, in Texinfo
-texinfo.txi(,16648) @cindex RCS $Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $, in Texinfo
-texinfo.txi(,16649) The @samp{$Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+texinfo.txi(,16646) @cindex $Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $ comment
+texinfo.txi(,16647) @cindex CVS $Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $, in Texinfo
+texinfo.txi(,16648) @cindex RCS $Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $, in Texinfo
+texinfo.txi(,16649) The @samp{$Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 texinfo.txi(,16650) Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 texinfo.txi(,16651) systems, which expand it into a string such as:
 texinfo.txi(,16652) @example
-texinfo.txi(,16653) $Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $
+texinfo.txi(,16653) $Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $
 texinfo.txi(,16654) @end example
 texinfo.txi(,16655) (This is useful in all sources that use version control, not just manuals.)
 texinfo.txi(,16656) 
@@ -15619,7 +15619,7 @@ texinfo.txi(,16696) Here is the sample document:
 texinfo.txi(,16697) 
 texinfo.txi(,16700) @example
 texinfo.txi(,16701) \input texinfo    @@c -*-texinfo-*-
-texinfo.txi(,16702) @@comment $Id: texinfo.passfirst,v 1.56 2004-02-26 23:52:52 pertusus Exp $
+texinfo.txi(,16702) @@comment $Id: texinfo.passfirst,v 1.57 2004-04-26 00:21:09 pertusus Exp $
 texinfo.txi(,16703) @@comment %**start of header
 texinfo.txi(,16704) @@setfilename sample.info
 texinfo.txi(,16705) @@include version.texi

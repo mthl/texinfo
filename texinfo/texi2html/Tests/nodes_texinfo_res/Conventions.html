@@ -84,7 +84,7 @@ ul.toc {list-style: none}
 
 </p><ul>
 <li>
-<p>All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
+All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
 `<samp>}</samp>' can appear in a Texinfo file and stand for themselves.
 `<samp>@</samp>' is the escape character which introduces commands, while
 `<samp>{</samp>' and `<samp>}</samp>' are used to surround arguments to certain
@@ -92,8 +92,8 @@ commands.  To put one of these special characters into the document, put
 an `<samp>@</samp>' character in front of it, like this: `<samp>@@</samp>',
 `<samp>@{</samp>', and `<samp>@}</samp>'.
 
-</p></li><li>
-<p>It is customary in TeX to use doubled single-quote characters to
+</li><li>
+It is customary in TeX to use doubled single-quote characters to
 begin and end quotations: <tt>``&hellip;''</tt>.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled
@@ -101,26 +101,27 @@ quotation marks,
 and Info converts doubled single-quote characters to <small>ASCII</small>
 double-quotes: <tt>``&hellip;''</tt> becomes <tt>&quot;&hellip;&quot;</tt>.
 
-</p></li><li>
-<p>Use three hyphens in a row, `<samp>---</samp>', for a dash--like this.  In
+</li><li>
+Use three hyphens in a row, `<samp>---</samp>', for a dash--like this.  In
 TeX, a single or double hyphen produces a printed dash that is
 shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
 
-</p></li><li>
-<p>To prevent a paragraph from being indented in the printed manual, put
+</li><li>
+To prevent a paragraph from being indented in the printed manual, put
 the command <code>@noindent</code> on a line by itself before the
 paragraph.
 
-</p></li><li>
-<p>If you mark off a region of the Texinfo file with the <code>@iftex</code>
+</li><li>
+If you mark off a region of the Texinfo file with the <code>@iftex</code>
 and <code>@end iftex</code> commands, that region will appear only in
 the printed copy; in that region, you can use certain commands
 borrowed from plain TeX that you cannot use in Info.  Conversely,
 text surrounded by <code>@ifnottex</code> and <code>@end ifnottex</code> will
 appear in all output formats <em>except</em> TeX.
 
-</p><p>Each of the other output formats (<code>html</code>, <code>info</code>,
+
+<p>Each of the other output formats (<code>html</code>, <code>info</code>,
 <code>plaintext</code>) have an analogous pair of commands.  See section <a href="Conditionals.html#SEC227">Conditionally Visible Text</a>.
 </p></li></ul>
 

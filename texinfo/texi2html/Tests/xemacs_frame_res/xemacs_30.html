@@ -1358,21 +1358,21 @@ completion and exit commands.
 
 </p><ul>
 <li>
-<p><code>minibuffer-local-map</code> is used for ordinary input (no completion).
-</p></li><li>
-<p><code>minibuffer-local-ns-map</code> is similar, except that <kbd>SPC</kbd> exits
+<code>minibuffer-local-map</code> is used for ordinary input (no completion).
+</li><li>
+<code>minibuffer-local-ns-map</code> is similar, except that <kbd>SPC</kbd> exits
 just like <kbd>RET</kbd>.  This is used mainly for Mocklisp compatibility.
-</p></li><li>
-<p><code>minibuffer-local-completion-map</code> is for permissive completion.
-</p></li><li>
-<p><code>minibuffer-local-must-match-map</code> is for strict completion and
+</li><li>
+<code>minibuffer-local-completion-map</code> is for permissive completion.
+</li><li>
+<code>minibuffer-local-must-match-map</code> is for strict completion and
 for cautious completion.
-</p></li><li>
-<p><code>repeat-complex-command-map</code> is for use in <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>.
-</p></li><li>
-<p><code>isearch-mode-map</code> contains the bindings of the special keys which
+</li><li>
+<code>repeat-complex-command-map</code> is for use in <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>.
+</li><li>
+<code>isearch-mode-map</code> contains the bindings of the special keys which
 are bound in the pseudo-mode entered with <kbd>C-s</kbd> and <kbd>C-r</kbd>.
-</p></li></ul>
+</li></ul>
 
 <a name="IDX1518"></a>
 <a name="IDX1519"></a>
@@ -1383,18 +1383,18 @@ characters following a <kbd>C-x</kbd>.
 
 </p><ul>
 <li>
-<p><code>ctl-x-map</code> is the variable name for the map used for characters that
+<code>ctl-x-map</code> is the variable name for the map used for characters that
 follow <kbd>C-x</kbd>.
-</p></li><li>
-<p><code>help-map</code> is used for characters that follow <kbd>C-h</kbd>.
-</p></li><li>
-<p><code>esc-map</code> is for characters that follow <kbd>ESC</kbd>. All Meta
+</li><li>
+<code>help-map</code> is used for characters that follow <kbd>C-h</kbd>.
+</li><li>
+<code>esc-map</code> is for characters that follow <kbd>ESC</kbd>. All Meta
 characters are actually defined by this map.
-</p></li><li>
-<p><code>ctl-x-4-map</code> is for characters that follow <kbd>C-x 4</kbd>.
-</p></li><li>
-<p><code>mode-specific-map</code> is for characters that follow <kbd>C-c</kbd>.
-</p></li></ul>
+</li><li>
+<code>ctl-x-4-map</code> is for characters that follow <kbd>C-x 4</kbd>.
+</li><li>
+<code>mode-specific-map</code> is for characters that follow <kbd>C-c</kbd>.
+</li></ul>
 
 <p>  The definition of a prefix key is the keymap to use for looking up
 the following character.  Sometimes the definition is actually a Lisp
@@ -1578,24 +1578,24 @@ to rebind keys under program control.
 
 </p><ul>
 <li>
-<p><code>nil</code>, meaning key is undefined in this keymap
-</p></li><li>
-<p>A command, that is, a Lisp function suitable for interactive calling
-</p></li><li>
-<p>A string or key sequence vector, which is treated as a keyboard macro
-</p></li><li>
-<p>A keymap to define a prefix key
-</p></li><li>
-<p>A symbol so that when the key is looked up, the symbol stands for its
+<code>nil</code>, meaning key is undefined in this keymap
+</li><li>
+A command, that is, a Lisp function suitable for interactive calling
+</li><li>
+A string or key sequence vector, which is treated as a keyboard macro
+</li><li>
+A keymap to define a prefix key
+</li><li>
+A symbol so that when the key is looked up, the symbol stands for its
 function definition, which should at that time be one of the above,
 or another symbol whose function definition is used, and so on
-</p></li><li>
-<p>A cons, <code>(string . defn)</code>, meaning that <var>defn</var> is the definition
+</li><li>
+A cons, <code>(string . defn)</code>, meaning that <var>defn</var> is the definition
 (<var>defn</var> should be a valid definition in its own right)
-</p></li><li>
-<p>A cons, <code>(keymap . char)</code>, meaning use the definition of
+</li><li>
+A cons, <code>(keymap . char)</code>, meaning use the definition of
 <var>char</var> in map <var>keymap</var>
-</p></li></ul>
+</li></ul>
 
 <p>For backward compatibility, XEmacs allows you to specify key
 sequences as strings.  However, the preferred method is to use the
@@ -1609,16 +1609,16 @@ Here are some rules for abbreviation:
 
 </p><ul>
 <li>
-<p>The keysym by itself is equivalent to a list of just that keysym, i.e.,
+The keysym by itself is equivalent to a list of just that keysym, i.e.,
 <code>f1</code> is equivalent to <code>(f1)</code>.
-</p></li><li>
-<p>A keystroke by itself is equivalent to a vector containing just that
+</li><li>
+A keystroke by itself is equivalent to a vector containing just that
 keystroke, i.e.,  <code>(control a)</code> is equivalent to <code>[(control a)]</code>.
-</p></li><li>
-<p>You can use ASCII codes for keysyms that have them. i.e.,
+</li><li>
+You can use ASCII codes for keysyms that have them. i.e.,
 <code>65</code> is equivalent to <code>A</code>. (This is not so much an
 abbreviation as an alternate representation.)
-</p></li></ul>
+</li></ul>
 
 <p>Here are some examples of programmatically binding keys:
 
@@ -1829,23 +1829,23 @@ pieces of information:
 
 </p><ul>
 <li>
-<p>The syntactic class of the character, represented as a small integer
-</p></li><li>
-<p>The matching delimiter, for delimiter characters only
+The syntactic class of the character, represented as a small integer
+</li><li>
+The matching delimiter, for delimiter characters only
 (the matching delimiter of `<samp>(</samp>' is `<samp>)</samp>', and vice versa)
-</p></li><li>
-<p>A flag saying whether the character is the first character of a
+</li><li>
+A flag saying whether the character is the first character of a
 two-character comment starting sequence
-</p></li><li>
-<p>A flag saying whether the character is the second character of a
+</li><li>
+A flag saying whether the character is the second character of a
 two-character comment starting sequence
-</p></li><li>
-<p>A flag saying whether the character is the first character of a
+</li><li>
+A flag saying whether the character is the first character of a
 two-character comment ending sequence
-</p></li><li>
-<p>A flag saying whether the character is the second character of a
+</li><li>
+A flag saying whether the character is the second character of a
 two-character comment ending sequence
-</p></li></ul>
+</li></ul>
 
 <p>  The syntactic classes are stored internally as small integers, but are
 usually described to or by the user with characters.  For example, `<samp>(</samp>'
@@ -1971,18 +1971,19 @@ argument defaults to the current buffer's syntax table.
 
 </p><ol>
 <li>
-<p>The first character in the string specifies the syntactic class.  It
+The first character in the string specifies the syntactic class.  It
 is one of the characters in the previous table (see section <a href="#SEC375">Information About Each Character</a>).
 
-</p></li><li>
-<p>The second character is the matching delimiter.  For a character that
+</li><li>
+The second character is the matching delimiter.  For a character that
 is not an opening or closing delimiter, this should be a space, and may
 be omitted if no following characters are needed.
 
-</p></li><li>
-<p>The remaining characters are flags.  The flag characters allowed are:
+</li><li>
+The remaining characters are flags.  The flag characters allowed are:
 
-</p><dl compact="compact">
+
+<dl compact="compact">
 <dt>`<samp> 1</samp>'</dt>
 <dd><p>Flag this character as the first of a two-character comment starting sequence.
 </p></dd>
@@ -2165,19 +2166,21 @@ Lisp expressions:
 
 </p><ul>
 <li>
-<p>Make <kbd>TAB</kbd> in C mode just insert a tab if point is in the middle of a
+Make <kbd>TAB</kbd> in C mode just insert a tab if point is in the middle of a
 line.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq c-tab-always-indent nil)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq c-tab-always-indent nil)
 </pre></td></tr></table>
 <p>Here we have a variable whose value is normally <code>t</code> for `true'
 and the alternative is <code>nil</code> for `false'.
 
 </p></li><li>
-<p>Make searches case sensitive by default (in all buffers that do not
+Make searches case sensitive by default (in all buffers that do not
 override this).
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq-default case-fold-search nil)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq-default case-fold-search nil)
 </pre></td></tr></table>
 <p>This sets the default value, which is effective in all buffers that do
 not have local values for the variable.  Setting <code>case-fold-search</code>
@@ -2185,18 +2188,20 @@ with <code>setq</code> affects only the current buffer's local value, which
 is probably not what you want to do in an init file.
 
 </p></li><li>
-<p>Make Text mode the default mode for new buffers.
+Make Text mode the default mode for new buffers.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq default-major-mode 'text-mode)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq default-major-mode 'text-mode)
 </pre></td></tr></table>
 <p>Note that <code>text-mode</code> is used because it is the command for entering
 the mode we want.  A single-quote is written before it to make a symbol
 constant; otherwise, <code>text-mode</code> would be treated as a variable name.
 
 </p></li><li>
-<p>Turn on Auto Fill mode automatically in Text mode and related modes.
+Turn on Auto Fill mode automatically in Text mode and related modes.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq text-mode-hook
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq text-mode-hook
   '(lambda () (auto-fill-mode 1)))
 </pre></td></tr></table>
 <p>Here we have a variable whose value should be a Lisp function.  The
@@ -2215,26 +2220,29 @@ that you like, or with several expressions in a row.
 <code>(lambda () (auto-fill-mode 1))</code>.
 
 </p></li><li>
-<p>Load the installed Lisp library named `<tt>foo</tt>' (actually a file
+Load the installed Lisp library named `<tt>foo</tt>' (actually a file
 `<tt>foo.elc</tt>' or `<tt>foo.el</tt>' in a standard Emacs directory).
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;foo&quot;)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;foo&quot;)
 </pre></td></tr></table>
 <p>When the argument to <code>load</code> is a relative pathname, not starting
 with `<samp>/</samp>' or `<samp>~</samp>', <code>load</code> searches the directories in
 <code>load-path</code> (see section <a href="xemacs_25.html#SEC255">Loading Libraries</a>).
 
 </p></li><li>
-<p>Load the compiled Lisp file `<tt>foo.elc</tt>' from your home directory.
+Load the compiled Lisp file `<tt>foo.elc</tt>' from your home directory.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;~/foo.elc&quot;)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(load &quot;~/foo.elc&quot;)
 </pre></td></tr></table>
 <p>Here an absolute file name is used, so no searching is done.
 
 </p></li><li>
-<p>Rebind the key <kbd>C-x l</kbd> to run the function <code>make-symbolic-link</code>.
+Rebind the key <kbd>C-x l</kbd> to run the function <code>make-symbolic-link</code>.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key &quot;\C-xl&quot; 'make-symbolic-link)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table>
 <p>or
 
@@ -2244,28 +2252,33 @@ with `<samp>/</samp>' or `<samp>~</samp>', <code>load</code> searches the direct
 <code>make-symbolic-link</code> instead of its value as a variable.
 
 </p></li><li>
-<p>Do the same thing for C mode only.
+Do the same thing for C mode only.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map &quot;\C-xl&quot; 'make-symbolic-link)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map &quot;\C-xl&quot; 'make-symbolic-link)
 </pre></td></tr></table></li><li>
-<p>Bind the function key <kbd>F1</kbd> to a command in C mode.
+Bind the function key <kbd>F1</kbd> to a command in C mode.
 Note that the names of function keys must be lower case.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map 'f1 'make-symbolic-link)
-</pre></td></tr></table></li><li>
-<p>Bind the shifted version of <kbd>F1</kbd> to a command.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map '(shift f1) 'make-symbolic-link)
+<table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map 'f1 'make-symbolic-link)
 </pre></td></tr></table></li><li>
-<p>Redefine all keys which now run <code>next-line</code> in Fundamental mode
+Bind the shifted version of <kbd>F1</kbd> to a command.
+
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map '(shift f1) 'make-symbolic-link)
+</pre></td></tr></table></li><li>
+Redefine all keys which now run <code>next-line</code> in Fundamental mode
 to run <code>forward-line</code> instead.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(substitute-key-definition 'next-line 'forward-line
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(substitute-key-definition 'next-line 'forward-line
                            global-map)
 </pre></td></tr></table></li><li>
-<p>Make <kbd>C-x C-v</kbd> undefined.
+Make <kbd>C-x C-v</kbd> undefined.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(global-unset-key &quot;\C-x\C-v&quot;)
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(global-unset-key &quot;\C-x\C-v&quot;)
 </pre></td></tr></table>
 <p>One reason to undefine a key is so that you can make it a prefix.
 Simply defining <kbd>C-x C-v <var>anything</var></kbd> would make <kbd>C-x C-v</kbd>
@@ -2273,14 +2286,16 @@ a prefix, but <kbd>C-x C-v</kbd> must be freed of any non-prefix definition
 first.
 
 </p></li><li>
-<p>Make `<samp>$</samp>' have the syntax of punctuation in Text mode.
+Make `<samp>$</samp>' have the syntax of punctuation in Text mode.
 Note the use of a character constant for `<samp>$</samp>'.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
-</pre></td></tr></table></li><li>
-<p>Enable the use of the command <code>eval-expression</code> without confirmation.
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(put 'eval-expression 'disabled nil)
+<table><tr><td>&nbsp;</td><td><pre class="example">(modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
+</pre></td></tr></table></li><li>
+Enable the use of the command <code>eval-expression</code> without confirmation.
+
+
+<table><tr><td>&nbsp;</td><td><pre class="example">(put 'eval-expression 'disabled nil)
 </pre></td></tr></table></li></ul>
 
 <hr size="6">
@@ -2820,27 +2835,27 @@ initial frame created by Emacs.
 
 </p><ul>
 <li>
-<p>The <code>-geometry</code> command-line option sets the <code>Emacs.geometry</code>
+The <code>-geometry</code> command-line option sets the <code>Emacs.geometry</code>
 resource, that is, the geometry of the ApplicationShell.
 
-</p></li><li>
-<p>For the first frame created, the size of the frame is taken from the
+</li><li>
+For the first frame created, the size of the frame is taken from the
 ApplicationShell if it is specified, otherwise from the geometry of the
 frame.
 
-</p></li><li>
-<p>For subsequent frames, the order is reversed: First the frame, and then
+</li><li>
+For subsequent frames, the order is reversed: First the frame, and then
 the ApplicationShell.
 
-</p></li><li>
-<p>For the first frame created, the position of the frame is taken from the
+</li><li>
+For the first frame created, the position of the frame is taken from the
 ApplicationShell (<code>Emacs.geometry</code>) if it is specified, otherwise
 from the geometry of the frame.
 
-</p></li><li>
-<p>For subsequent frames, the position is taken only from the frame, and 
+</li><li>
+For subsequent frames, the position is taken only from the frame, and 
 never from the ApplicationShell.
-</p></li></ul>
+</li></ul>
 
 <p>This is rather complicated, but it does seem to provide the most
 intuitive behavior with respect to the default sizes and positions of

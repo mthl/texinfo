@@ -142,26 +142,26 @@ numbers in the cross-references correct.
 
 </p><ol>
 <li>
-<p>Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
+Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
 undefined cross-references and no indices), and the raw index files
 (with two letter extensions).
 
-</p></li><li>
-<p>Run <code>texindex</code> on the raw index files.  This creates the
+</li><li>
+Run <code>texindex</code> on the raw index files.  This creates the
 corresponding sorted index files (with three letter extensions).
 
-</p></li><li>
-<p>Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
+</li><li>
+Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
 file, this time with indices and defined cross-references, but with page
 numbers for the cross-references from last time, generally incorrect.
 
-</p></li><li>
-<p>Sort the indices again, with <code>texindex</code>.
+</li><li>
+Sort the indices again, with <code>texindex</code>.
 
-</p></li><li>
-<p>Run <code>tex</code> one last time.  This time the correct page numbers are
+</li><li>
+Run <code>tex</code> one last time.  This time the correct page numbers are
 written for the cross-references.
-</p></li></ol>
+</li></ol>
 
 <a name="IDX325"></a>
 <p>Alternatively, it's a one-step process: run <code>texi2dvi</code>

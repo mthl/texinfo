@@ -85,9 +85,10 @@ ul.toc {list-style: none}
 </p><ul>
 <li><a name="IDX94"></a>
 <a name="IDX95"></a></li><li>
-<p>All the node names for a single Info file must be unique.
+All the node names for a single Info file must be unique.
 
-</p><p>Duplicates confuse the Info movement commands.  This means, for
+
+<p>Duplicates confuse the Info movement commands.  This means, for
 example, that if you end every chapter with a summary, you must name
 each summary node differently.  You cannot just call each one
 &quot;Summary&quot;.  You may, however, duplicate the titles of chapters, sections,
@@ -96,20 +97,22 @@ called &quot;Summary&quot;, so long as the node names for those sections are all
 different.
 
 </p></li><li>
-<p>A pointer name must be the name of a node.
+A pointer name must be the name of a node.
 
-</p><p>The node to which a pointer points may come before or after the
+
+<p>The node to which a pointer points may come before or after the
 node containing the pointer.
 
 </p><a name="IDX96"></a>
 <a name="IDX97"></a></li><li>
-<p>@-commands used in node names generally confuse Info, so you
+@-commands used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
 escaped with a `<samp>@</samp>', such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
 
-</p><p>Thus, the beginning of the section called <code>@chapter</code> looks like
+
+<p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
@@ -118,21 +121,22 @@ this:
 @findex chapter
 </pre></td></tr></table></li><li>
 <a name="IDX98"></a>
-<p>You cannot use parentheses in node names, because a node name such as
+You cannot use parentheses in node names, because a node name such as
 `<samp>(foo)bar</samp>' is interpreted by the Info readers as a node
 `<samp>bar</samp>' in an Info file `<tt>foo</tt>'.
 
-</p></li><li>
+</li><li>
 <a name="IDX99"></a>
 <a name="IDX100"></a>
 <a name="IDX101"></a>
 <a name="IDX102"></a>
 <a name="IDX103"></a>
 <a name="IDX104"></a>
-<p>Unfortunately, you cannot use periods, commas, colons or apostrophes
+Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 
-</p><p>For example, the following is a section title:
+
+<p>For example, the following is a section title:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
@@ -142,8 +146,8 @@ within a node name; these confuse TeX or the Info formatters.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
 <a name="IDX105"></a></li><li>
-<p>Case is significant.
-</p></li></ul>
+Case is significant.
+</li></ul>
 
 
 <hr size="1">

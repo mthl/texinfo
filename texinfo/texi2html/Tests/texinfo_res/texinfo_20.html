@@ -240,26 +240,26 @@ numbers in the cross-references correct.
 
 </p><ol>
 <li>
-<p>Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
+Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
 undefined cross-references and no indices), and the raw index files
 (with two letter extensions).
 
-</p></li><li>
-<p>Run <code>texindex</code> on the raw index files.  This creates the
+</li><li>
+Run <code>texindex</code> on the raw index files.  This creates the
 corresponding sorted index files (with three letter extensions).
 
-</p></li><li>
-<p>Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
+</li><li>
+Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
 file, this time with indices and defined cross-references, but with page
 numbers for the cross-references from last time, generally incorrect.
 
-</p></li><li>
-<p>Sort the indices again, with <code>texindex</code>.
+</li><li>
+Sort the indices again, with <code>texindex</code>.
 
-</p></li><li>
-<p>Run <code>tex</code> one last time.  This time the correct page numbers are
+</li><li>
+Run <code>tex</code> one last time.  This time the correct page numbers are
 written for the cross-references.
-</p></li></ol>
+</li></ol>
 
 <a name="IDX325"></a>
 <p>Alternatively, it's a one-step process: run <code>texi2dvi</code>
@@ -398,24 +398,25 @@ to a print server over the network, and generally don't support the
 systems, you have several alternative ways of printing DVI files:
 
 </p><ul>
-<li><p> Find and install a Unix-like <code>lpr</code> program, or its clone.
+<li> Find and install a Unix-like <code>lpr</code> program, or its clone.
 If you can do that, you will be able to print DVI files just like
 described above.
 
-</p></li><li><p> Send the DVI files to a network printer queue for DVI files.
+</li><li> Send the DVI files to a network printer queue for DVI files.
 Some network printers have special queues for printing DVI files.  You
 should be able to set up your network software to send files to that
 queue.  In some cases, the version of <code>lpr</code> which comes with your
 network software will have a special option to send a file to specific
 queues, like this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
-</pre></td></tr></table></li><li><p> Convert the DVI file to a Postscript or PCL file and send it to your
+
+<table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
+</pre></td></tr></table></li><li> Convert the DVI file to a Postscript or PCL file and send it to your
 local printer.  See <a href="../dvips/dvips-invocation.html">(dvips)dvips invocation</a> section `dvips invocation' in <cite>Dvips</cite>, and the man
 pages for <code>dvilj</code>, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
 directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
-</p></li></ul>
+</li></ul>
 
 
 <hr size="6">
@@ -671,13 +672,13 @@ contents.  (And of course most manuals contain a body of text as well.)
 
 </p><p>For more information, see:
 </p><ul>
-<li><p> <a href="texinfo_4.html#SEC47"><code>@settitle</code></a>
-</p></li><li><p> <a href="texinfo_4.html#SEC64"><code>@setchapternewpage</code></a>
-</p></li><li><p> <a href="texinfo_26.html#SEC303">Page Headings</a>
-</p></li><li><p> <a href="texinfo_4.html#SEC52">Title and Copyright Pages</a>
-</p></li><li><p> <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>
-</p></li><li><p> <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>
-</p></li></ul>
+<li> <a href="texinfo_4.html#SEC47"><code>@settitle</code></a>
+</li><li> <a href="texinfo_4.html#SEC64"><code>@setchapternewpage</code></a>
+</li><li> <a href="texinfo_26.html#SEC303">Page Headings</a>
+</li><li> <a href="texinfo_4.html#SEC52">Title and Copyright Pages</a>
+</li><li> <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>
+</li><li> <a href="texinfo_5.html#SEC70">Generating a Table of Contents</a>
+</li></ul>
 
 
 <hr size="6">

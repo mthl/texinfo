@@ -89,11 +89,12 @@ entirely on the same line as the <code>@multitable</code> command.
 <li>
 <a name="IDX140"></a>
 <a name="IDX141"></a>
-<p>To specify column widths as fractions of the line length, write
+To specify column widths as fractions of the line length, write
 <code>@columnfractions</code> and the decimal numbers (presumably less than
 1) after the <code>@multitable</code> command, as in:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .33 .33 .33
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .33 .33 .33
 </pre></td></tr></table>
 <p>The fractions need not add up exactly to 1.0, as these do
 not.  This allows you to produce tables that do not need the full line
@@ -101,10 +102,11 @@ length.  You can use a leading zero if you wish.
 
 </p></li><li>
 <a name="IDX142"></a>
-<p>To specify a prototype row, write the longest entry for each column
+To specify a prototype row, write the longest entry for each column
 enclosed in braces after the <code>@multitable</code> command.  For example:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable {some text for column one} {for column two}
+
+<table><tr><td>&nbsp;</td><td><pre class="example">@multitable {some text for column one} {for column two}
 </pre></td></tr></table>
 
 <p>The first column will then have the width of the typeset `some text for
