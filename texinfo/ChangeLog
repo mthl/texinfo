@@ -1,3 +1,13 @@
+2004-07-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/files.c (find_and_load): introduce second parameter
+		use_path, set to 0 from the call in handle_delayed_writes,
+		1 in all cases.
+        * makeinfo/files.h: change decl.
+        * makeinfo/cmds.c, makeinfo.c, node.c: change calls.
+	From: Thomas Klausner <wiz@danbala.ifoer.tuwien.ac.at>,
+	14 Jul 2004 00:31:54 +0200.
+
 2004-07-25  Werner Lemberg  <wl@gnu.org>
 
 	Rename @s to @slanted.

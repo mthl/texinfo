@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.20 2004-07-11 13:24:59 karl Exp $
+   $Id: node.c,v 1.21 2004-07-27 00:06:31 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1715,7 +1715,7 @@ split_file (char *filename, int size)
     return;
   file_size = (long) fileinfo.st_size;
 
-  the_file = find_and_load (filename);
+  the_file = find_and_load (filename, 1);
   if (!the_file)
     return;
 

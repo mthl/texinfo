@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.49 2004-07-25 00:16:18 wl Exp $
+   $Id: cmds.c,v 1.50 2004-07-27 00:06:31 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1665,7 +1665,7 @@ handle_include (int verbatim_include)
       fflush (stdout);
     }
 
-  if (!find_and_load (filename))
+  if (!find_and_load (filename, 1))
     {
       popfile ();
       line_number--;

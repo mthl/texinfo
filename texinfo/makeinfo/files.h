@@ -1,7 +1,7 @@
 /* files.h -- declarations for files.c.
-   $Id: files.h,v 1.3 2004-04-11 17:56:47 karl Exp $
+   $Id: files.h,v 1.4 2004-07-27 00:06:31 karl Exp $
 
-   Copyright (C) 1998, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1998, 2002, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ extern void popfile (void);
 extern void flush_file_stack (void);
 extern char *get_file_info_in_path (char *filename, char *path,
     struct stat *finfo);
-extern char *find_and_load (char *filename);
+extern char *find_and_load (char *filename, int use_path);
 extern char *output_name_from_input_name (char *name);
 extern char *expand_filename (char *filename, char *input_name);
 extern char *filename_part (char *filename);
