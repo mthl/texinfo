@@ -1,3 +1,7 @@
+2003-09-09  Karl Berry  <karl@gnu.org>
+
+	* bootstrap: --include=m4.  From Werner.
+
 2003-09-08  Karl Berry  <karl@gnu.org>
 
 	* lib/system.h: make that __CYGWIN__, not __unix__.  From Eli.

@@ -4,7 +4,7 @@
 
 echo "Bootstrapping CVS Texinfo with:"
 
-cmd="autoreconf --verbose --install --force"
+cmd="autoreconf --verbose --install --force --include=m4"
 echo $cmd
 $cmd
 
