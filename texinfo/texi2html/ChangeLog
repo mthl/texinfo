@@ -1,5 +1,9 @@
 2005-02-01  Derek Price  <derek@ximbiot.com>
 
+	* Makefile.am (EXTRA_DIST): Include missing-texi2html.
+
+2005-02-01  Derek Price  <derek@ximbiot.com>
+
 	* NEWS: Note that Perl is no longer required to build.
 	* configure.ac: Don't search for texinfo programs handled by Automake.
 	Declare PERL a precious var.  Exit when not found and not set.  Warn

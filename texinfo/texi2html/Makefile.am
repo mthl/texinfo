@@ -25,6 +25,7 @@ EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
 	manage_i18n.pl \
+	missing-texi2html \
 	l2h.init \
 	texi2html.spec \
 	$(texi2html_SOURCES)
