@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.8 2002-11-08 19:52:03 feloy Exp $
+   $Id: xml.c,v 1.9 2002-11-08 20:01:37 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -364,6 +364,10 @@ static int in_abstract = 0;
 
 static int xml_in_item[256];
 static int xml_table_level = 0;
+
+static int in_indexentry = 0;
+static int in_secondary = 0;
+static int in_indexterm = 0;
 
 static int xml_current_element ();
 
@@ -829,7 +833,8 @@ xml_add_char (character)
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
 
-  if (xml_table_level && !xml_in_item[xml_table_level] && !in_table_title && !cr_or_whitespace (character))
+  if (xml_table_level && !xml_in_item[xml_table_level] && !in_table_title 
+      && !cr_or_whitespace (character) && !in_indexterm)
     {
       in_table_title = 1;
       xml_insert_element (TITLE, START);
@@ -1173,8 +1178,10 @@ xml_insert_indexterm (indexterm, index)
   if (!docbook)
     {
       xml_insert_element_with_attribute (INDEXTERM, START, "index=\"%s\"", index);
+      in_indexterm = 1;
       execute_string ("%s", indexterm);
       xml_insert_element (INDEXTERM, END);
+      in_indexterm = 0;
     }
   else
     {
@@ -1188,6 +1195,7 @@ xml_insert_indexterm (indexterm, index)
           secondary += strlen (INDEX_SEP);
         }
       xml_insert_element_with_attribute (INDEXTERM, START, "role=\"%s\"", index);
+      in_indexterm = 1;
       xml_insert_element (PRIMARY, START);
       if (primary)
         execute_string (primary);
@@ -1201,6 +1209,7 @@ xml_insert_indexterm (indexterm, index)
           xml_insert_element (SECONDARY, END);
         }
       xml_insert_element (INDEXTERM, END);
+      in_indexterm = 0;
     }
 }
 
@@ -1210,8 +1219,6 @@ static char last_division_letter = ' ';
 static char index_primary[2000]; /** xx no fixed limit */
 static int indexdivempty = 0;
 
-static int in_indexentry = 0;
-static int in_secondary = 0;
 static void
 xml_close_indexentry ()
 {
