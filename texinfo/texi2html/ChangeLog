@@ -4,6 +4,12 @@
 
 2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
 
+	* Makefile.am: package i18n/en
+	* doc/testkb.texi doc/umalaut.texi: remove these test files, they are 
+	now in Tests/formatting
+
+2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl: source 'Config' file in the configuration directories 
 	instead of texi2htmlrc and ~/.texi2htmlrc for the system wide and
 	user configuration.

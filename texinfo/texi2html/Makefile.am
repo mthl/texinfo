@@ -25,14 +25,13 @@ dist_pkgdata_DATA = l2h.init \
 	examples/xhtml.init \
 	examples/html32.init
 
-dist_i18n_DATA = i18n/template \
+dist_i18n_DATA = i18n/en \
     i18n/de \
     i18n/es \
     i18n/fr \
     i18n/nl \
     i18n/no \
-    i18n/pt \
-
+    i18n/pt 
 
 dist_images_DATA = images/a_begin.gif \
 	images/a_begin_na.gif \
