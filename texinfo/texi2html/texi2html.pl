@@ -32,8 +32,11 @@ require 5.00405;
 use strict;
 # used in case of tests, to revert to "C" locale.
 use POSIX qw(setlocale LC_ALL LC_CTYPE);
+# used to obtain the name of the current working directory
+use Cwd;
 # used to find a relative path back to the current working directory
 use File::Spec;
+
 #
 # According to
 # larry.jones@sdrc.com (Larry Jones)
@@ -55,7 +58,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.132 2005-03-07 17:28:23 dprice Exp $
+# $Id: texi2html.pl,v 1.133 2005-03-09 14:14:21 dprice Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2373,17 +2376,6 @@ foreach my $key (keys(%cross_ref_style_map_texi))
 # file name buisness
 #
 
-# this is directly pasted over from latex2html
-sub getcwd
-{
-    local($_) = `pwd`;
-
-    die "'pwd' failed (out of memory?)\n"
-        unless length;
-    chop;
-    $_;
-}
-
 
 my $docu_dir;            # directory of the document
 my $docu_name;           # basename of the document
@@ -2513,7 +2505,7 @@ unless (-w $result_rdir)
 my $path_to_working_dir = $docu_rdir;
 if ($docu_rdir ne '')
 {
-    my $cwd = getcwd;
+    my $cwd = cwd;
     my $docu_path = $docu_rdir;
     $docu_path = $cwd . '/' . $docu_path unless ($docu_path =~ /^\//);
     my @result = ();
@@ -3050,7 +3042,7 @@ sub to_html()
     }
     else
     {
-        if (main::getcwd() =~ /\./)
+        if (cwd() =~ /\./)
         {
             warn "$ERROR Warning l2h: current dir contains a dot. Use /tmp as l2h_tmp dir \n";
             $dotbug = 1;
