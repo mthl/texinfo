@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-16.09}
+\def\texinfoversion{2003-11-22.16}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3203,7 +3203,7 @@ width0pt\relax} \fi
 %
 % But wait, there is a catch there:
 % We'll have to check whether \lastskip is zero skip.  \ifdim is not
-% sufficient for this purpose, as it ignores stretch and shring parts
+% sufficient for this purpose, as it ignores stretch and string parts
 % of the skip.  The only way seems to be to check the textual
 % representation of the skip.
 %
@@ -4378,13 +4378,7 @@ width0pt\relax} \fi
 \endgroup}
 
 % We use the same \entry macro as for the index entries.
-\def\tocentry{%
-  % The following vskip is not necessary, as \entry contains another one.
-  % But it doesn't hurt, so why should we alter the appearance of all the
-  % manuals?
-  \vskip 0pt plus1pt
-  \entry
-}
+\let\tocentry = \entry
 
 % Space between chapter (or whatever) number and the title.
 \def\labelspace{\hskip1em \relax}
@@ -5052,7 +5046,7 @@ width0pt\relax} \fi
     \nobreak\vskip -\parskip
     \penalty 10002  % signal to \startdefun and \dodefunx
     % Some of the @defun-type tags do not enable magic parentheses,
-    % rendering the following check redundat.  But we don't optimize.
+    % rendering the following check redundant.  But we don't optimize.
     \checkparencounts
   \endgroup
 }
@@ -5970,8 +5964,8 @@ width0pt\relax} \fi
 % Don't bother with the trickery in plain.tex to not require the
 % footnote text as a parameter.  Our footnotes don't need to be so general.
 %
-% Oh yes, they do; otherwise, @ifset and anything else that uses
-% \parseargline fail inside footnotes because the tokens are fixed when
+% Oh yes, they do; otherwise, @ifset (and anything else that uses
+% \parseargline) fails inside footnotes because the tokens are fixed when
 % the footnote is read.  --karl, 16nov96.
 %
 \gdef\dofootnote{%
