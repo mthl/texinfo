@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.36 2003-02-11 16:39:06 karl Exp $
+$Id: NEWS,v 1.37 2003-02-22 02:08:34 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -24,6 +24,8 @@ convenience, here's a url to one of the relevant sections:
 
 * makeinfo:
   . under --html, @cartouche outputs a <table> with a border.
+* Distribution:
+  . automake 1.7.3.
 
 
 4.5 (4 February 2003)

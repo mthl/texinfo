@@ -1,7 +1,7 @@
-$Id: README.dev,v 1.4 2003-01-29 07:38:22 wl Exp $
+$Id: README.dev,v 1.5 2003-02-22 02:08:34 karl Exp $
 README.dev - Texinfo developer information.
 
-  Copyright (C) 2002 Free Software Foundation, Inc.
+  Copyright (C) 2002, 2003 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -11,7 +11,7 @@ The development sources for Texinfo is available through anonymous cvs
 at Savannah, see
   http://savannah.gnu.org/cvs/?group=texinfo
 
-This distribution uses automake 1.7.2 and autoconf 2.57.  If you are
+This distribution uses automake 1.7.3 and autoconf 2.57.  If you are
 getting the Texinfo sources from cvs, or change the Texinfo
 configure.ac, you'll need to have these tools installed to (re)build.
 Sometimes patches to them are necessary for Texinfo; such patches will

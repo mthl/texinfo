@@ -1,3 +1,24 @@
+2003-02-21    <karl@gnu.org>
+
+	* aclocal.m4: automake 1.7.3.
+
+2003-02-19    <karl@gnu.org>
+
+	* doc/info-stnd.texi: omit all node pointers.
+	
+2003-02-18    <karl@gnu.org>
+
+	* util/texindex.c (maketempname): use already-set `tempdir' instead
+	of half-redoing the logic.
+	(concat): only need two args, not three; change callers.
+	(perror_with_name): really call perror, putting
+	the name first a la gcc.
+	(pfatal_with_name): call perror_with_name.
+
+	* util/texi2dvi (get_xref_files): a file whose first line is
+	\input texinfo is not an index file.  Report from: Anton Ertl
+	<anton@a0.complang.tuwien.ac.at>, 18 Feb 2003 14:41:47 +0100.
+
 2003-02-16    <karl@gnu.org>
 
 	* makeinfo/index.c (init_indices): don't try to free indexes that
