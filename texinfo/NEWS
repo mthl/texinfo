@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.98 2004-11-30 02:03:23 karl Exp $
+$Id: NEWS,v 1.99 2004-12-01 18:35:35 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -32,7 +32,7 @@ convenience, here's a url to one of the relevant sections:
     conversion of node names to HTML names, so that external references
     to them can continue to work.
 * texi2dvi:
-  . calls recode if installed and @documentencoding is specified.
+  . new option --recode, to call recode for input character translation.
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
   . some cross-compiling support in configure && make.

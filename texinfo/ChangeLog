@@ -1,3 +1,12 @@
+2004-12-01  Karl Berry  <karl@gnu.org>
+
+	* pretest version 4.7.90.
+
+	* util/texi2dvi (recode): new option, off by default.
+	Unconditionally calling recode seems problematic, when there
+	hasn't been a release for years and its Texinfo support is less than
+	perfect.
+
 2004-11-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Quotations and Examples): @quotation does not
