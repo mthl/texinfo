@@ -1,3 +1,121 @@
+2003-11-22  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.txi: use new @quotation feature.
+
+	* texinfo.tex (\putwordDeftypevar, \putwordDeftypefun): Remove.
+	* txi-cs.tex, txi-de.tex, txi-en.tex, txi-es.tex, txi-fr.tex,
+	  txi-it.tex. txi-nl.tex, txi-no.tex, txi-pl.tex, txi-pt.tex,
+	  txi-tr.tex: The same. 
+	[texinfo-20031120-deftype-del.patch]
+
+	* doc/texinfo.tex (\doverbatiminclude): just call \setupverbatim.
+	(\setupverbatiminclude): remove.
+	[texinfo-20031121-verbatim2.patch]
+	
+	* doc/texinfo.tex (\math): no need for \mathcode, and we actually
+		can use $ not \implicitmath.
+	[texinfo-20031121-math.patch]
+
+	* doc/texinfo.tex (\zeroskipmacro): new macro, so we can
+	check for true zero skip.
+	(\dosubindsanitize): use it.
+	[texinfo-20031120-zeroskip.patch]
+	
+	* doc/texinfo.tex (\doignore): scan in verbatim mode, so that
+	@ can be ignored in @ignore text (as $@ occurs in make.texi).
+	(\dodoignore): use \_STOP_ instead of \ST@P.
+	[texinfo-20031120-zeroskip.patch]
+	
+	* doc/texinfo.tex (\defparsearg): new macro, to simplify places
+	where the user macro just calls \parsearg.  Use it in many places.
+	[texinfo-20031121-defparsearg.patch]
+	
+	* doc/texinfo.tex (\begin): remove, this is undocumented
+	and unused.
+	[texinfo-20031121-begin.patch]
+	
+	* doc/texinfo.tex (\author,\subtitle,\author): move to outer
+	level (was inside \titlepage), for new \parsearg's sake.
+	[texinfo-20031116-titlepage1.patch]
+	
+	* doc/texinfo.tex (\evenheadingxxx,\oddfootingyyy): might as well
+		use \ and avoid changing catcode of @.
+	[texinfo-20031116-catofat.patch]
+	
+	* doc/texinfo.tex (\set): use new \parseargusing macro.
+	[texinfo-20031116-set.patch]
+	
+	* doc/texinfo.tex (\cartouche): force vertical mode, and avoid
+	extra space from the @cartouche line itself.
+	[texinfo-20031120-cart.patch]
+	
+	* doc/texinfo.tex (\ptexfootnote,\ptexinsert): save orig definitions.
+	(\startsavinginserts): new macro (with relatives), call from
+		\cartouche, \group, \table.
+	[texinfo-20031118-saveins.patch]
+	
+	* doc/texinfo.tex (\table, \ftable, \vtable, \tablex, \tabley,
+	\tablez): Cleaned up indentation, etc.
+	(\kitem, \kitemx, \xitem, \xtemx, \description): Removed; they
+	  didn't look as if they would work in their present state, anyway.
+        [texinfo-20031114-table.patch]
+
+	* doc/texinfo.tex (\filenamecatcodes): new macro.
+	(\include,\verbatiminclude): use it, with new \parseargusing.
+	(\pushthisfilestack,etc.): implement our own stack of filenames
+	instead of reading the @include argument in a group.
+	[texinfo-20031109-include.patch]
+	
+	* doc/texinfo.tex (\indexbreaks): remove, and remove call.
+	(\entry): read arguments on the fly, to avoid fixing catcodes.
+	[texinfo-20031121-indexbreaks.patch]
+	
+	* doc/texinfo.tex (\makevalueexpandable): new macro.
+	Change occurrences of \let\value=\expandandable to use it,
+	to reduce code duplication.
+	[texinfo-20031121-value.patch]
+
+	* doc/texinfo.tex (\parsedefunlineX,\defunchkspace,defunchktab,
+	\defunloop,\defunchkfinish,\replaceeols): New macros.
+	(\parsedefunline): start them off.  This is to support continuations
+	lines for @defun headers.
+	[texinfo-20031108-defun-cont.patch]
+	
+	* doc/texinfo.tex (\defun and all related commands):
+	rewrite to use \parsearg and uniform command generation.
+	[texinfo-20031120-defun.patch]
+	
+	* doc/texinfo.tex (=, \equalChar): remove active definition of =
+	and hacks that printed = in \tt sometimes.  We want to print
+	everything in \tt anyway, ultimately.
+	[texinfo-20031120-defun-pres3.patch]
+	
+	* doc/texinfo.tex (\defopheader,\defcvarheader,defivarheader):
+	use \code for the class name.
+	[texinfo-defun-pres2.patch]
+	
+	* doc/texinfo.tex (\parsearg): Reset the catcode of space before
+		we scan the argument; so we don't have to worry about
+		obeyed spaces before and after the argument.
+	(\parseargx, \parseargy): Nuke, it was wrong anyway--\obeyedspace,
+	which is a macro, was compared with \temp which could have been let
+	to an obeyed space, but it couldn't be a macro.
+	(\removeactivespaces,\removeactivespacesX,\removeactivespacesY): Nuke.
+	(\argremovespace): If the argument scanned by \parsearg end with
+	a space, remove it.
+	[texinfo-20031108-parsearg-space.patch]
+
+	* doc/texinfo.tex: use \other and other symbolic names where possible,
+	for clarity and efficiency. [texinfo-20031108-other.patch]
+
+	* doc/texinfo.tex (\doverbatim): \xdef and \gobble, to avoid
+		problems with active spaces. [texinfo-20031120-verbatim.patch]
+
+	* doc/texinfo.tex (\quotationlabel): new macro to print label,
+		with a \bf space.
+	(\quotation): change call so \parsearg is at the end.
+	[texinfo-20031118-quot.patch]
+
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/makeinfo.c (cm_xref): removed the warning about
