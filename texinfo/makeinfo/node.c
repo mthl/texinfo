@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.3 2002-10-09 16:32:40 karl Exp $
+   $Id: node.c,v 1.4 2002-11-04 21:28:10 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -921,7 +921,7 @@ cm_node ()
       if (splitting || !no_headers)
         { /* Navigation bar.   The <p> avoids the links area running
              on with old Lynxen.  */
-          add_word_args ("<p>%s\n", splitting ? "" : "<hr />");
+          add_word_args ("<p>%s\n", splitting ? "" : "<hr>");
           add_word_args ("%s<a name=\"", _("Node:"));
           tem = expand_node_name (node);
           add_anchor_name (tem, 0);
@@ -960,7 +960,7 @@ cm_node ()
             }
           /* html fixxme: we want a `top' or `contents' link here.  */
 
-          add_word_args ("\n%s<br />\n", splitting ? "<hr />" : "");
+          add_word_args ("\n%s<br>\n", splitting ? "<hr>" : "");
         }
     }
   else if (docbook)
@@ -1143,7 +1143,7 @@ cm_anchor (arg)
 		  else
 		    fputc (*p, anchor_stream);
 		}
-	      fputs ("\" />\n", anchor_stream);
+	      fputs ("\">\n", anchor_stream);
 	      fclose (anchor_stream);
 	    }
 	}

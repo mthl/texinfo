@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.8 2002-10-31 22:07:42 karl Exp $
+   $Id: makeinfo.c,v 1.9 2002-11-04 21:28:10 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -134,7 +134,7 @@ int do_justification = 0;
 /* Nonzero means don't replace whitespace with &nbsp; in HTML mode.  */
 int in_html_elt = 0;
 
-/* True when expanding an macro definition.  */
+/* True when expanding a macro definition.  */
 static int executing_macro = 0;
 
 typedef struct brace_element
@@ -2757,7 +2757,7 @@ close_paragraph ()
               /* Don't need anything extra for HTML in usual case of no
                  extra paragraph spacing.  */
               if (html && i > 0)
-                insert_string ("<br />");
+                insert_string ("<br>");
             }
         }
 

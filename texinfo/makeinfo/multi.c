@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.3 2002-10-26 23:12:28 karl Exp $
+   $Id: multi.c,v 1.4 2002-11-04 21:28:10 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -109,7 +109,7 @@ draw_horizontal_separator ()
 
   if (html)
     {
-      add_word ("<hr />");
+      add_word ("<hr>");
       return;
     }
   if (xml)
@@ -404,7 +404,7 @@ multitable_item ()
   if (html)
     {
       if (!first_row)
-	add_word ("<br /></td></tr>");	/* <br> for non-tables browsers. */
+	add_word ("<br></td></tr>");	/* <br> for non-tables browsers. */
       add_word ("<tr align=\"left\"><td valign=\"top\">");
       first_row = 0;
       return 0;
@@ -558,7 +558,7 @@ end_multitable ()
   close_insertion_paragraph ();
 
   if (html)
-    add_word ("<br /></td></tr></table>\n");
+    add_word ("<br></td></tr></table>\n");
   /*  else if (docbook)*/ /* 05-08 */
   else if (xml)
     xml_end_multitable ();
