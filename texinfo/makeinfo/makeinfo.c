@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.71 2004-11-26 18:17:37 karl Exp $
+   $Id: makeinfo.c,v 1.72 2004-12-05 23:33:08 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -2148,7 +2148,7 @@ reader_loop (void)
                     if (dash_count >= 2)
                       {
                         if (html)
-                          add_word ("&mdash;<wbr>");
+                          add_word ("&mdash;");
                         else
                           xml_insert_entity ("mdash");
                         dash_count -= 2;
