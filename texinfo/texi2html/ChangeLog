@@ -1,3 +1,20 @@
+2003-07-22  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/*: add support for @cartouche
+	and @titlefont.
+	preliminary support for css. All the element needing style have a 
+	class attribute. The commands which are associated with a class by
+	makeinfo have that class too. The styles are in the <head> in <style>.
+	A new init file, inlinestyle.init, should be used when style 
+	attributes within html elements are wanted.
+	A new option, "-U value" does the same than "@clear value" (makeinfo
+	has that option, too).
+	A new configuration variable L2H_HTML_VERSION for the html version 
+	passed to latex2html.
+	@tex or @math don't start a new paragraph.
+	* Tests/*: test for @raisesections and @lowersections, and for 
+	@cartouche.
+
 2003-07-11  Patrice Dumas <dumas@centre-cired.fr>
 
 	* Tests/ccvs: update cvs manual. This should fixe the issue of rcs 

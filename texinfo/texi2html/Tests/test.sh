@@ -43,10 +43,11 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html $basename*.htm $basename*.png $basename.passfirst  $basename.passtexi $basename.2) > /dev/null 2>&1
+(cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html ${basename}_???.htm ${basename}_??.htm ${basename}_?.htm ${basename}_????.png ${basename}_???.png ${basename}_??.png ${basename}_?.png ${basename}_l2h.css ${basename}_l2h.html ${basename}_l2h_images.* ${basename}_l2h_labels.pl ${basename}_l2h.tex $basename.passfirst $basename.passtexi $basename.2 l2h_cache.pm) > /dev/null 2>&1
 export T2H_HOME=../..
-#(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
-#(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/inlinestyle.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 (cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
@@ -184,6 +185,8 @@ test_texi sectionning rec_nodes.texi
 test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html" 0 texi makeinfo_rec_nodes
 test_texi sectionning ref_in_anchor.texi "" 1
 test_texi sectionning brace_not_closed.texi "" 1
+test_texi sectionning lower_subsub.texi
+test_texi sectionning raiselowersections.texi
 test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting imbrications.texi "" 2
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
@@ -210,3 +213,4 @@ test_texi texinfo info-stnd.texi "-split chapter -node-files"
 test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
 test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

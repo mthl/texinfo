@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -33,7 +48,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Untitled Document</h1>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC2">2. second</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 2</td></tr>
@@ -57,7 +72,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC2" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. first node chapter </h1>
+<h1 class="chapter"> 1. first node chapter </h1>
 
 <hr size="6">
 <a name="NOD3"></a>
@@ -78,7 +93,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC2" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. second </h1>
+<h1 class="chapter"> 2. second </h1>
 
 <p>Some text
 </p><dl>
@@ -88,7 +103,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <dd><p>A nice function
 </p><p>makeinfo accepts a menu within defun but it isn't possible
 to follow it
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC3">2.1 the node is within menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -115,19 +130,19 @@ to follow it
 <td valign="middle" align="left">[<a href="#SEC2" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 2.1 the node is within menu </h2>
+<h2 class="section"> 2.1 the node is within menu </h2>
 
 <dl compact="compact">
 <dt>* item
 </dt>
 </dl>
 
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 
 an example
 </pre></td></tr></table>
 <a name="IDX2"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 
 Some html <code>some code</code>.
 
@@ -141,13 +156,13 @@ Now a content within example
 
 
 
-</pre><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC3_0" style="text-decoration: none"><b>E</b></a>
+</pre><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC3_0" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC3_1" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC3_1" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC3_2" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC3_2" class="summary-letter"><b>O</b></a>
  &nbsp; 
-</td></tr></table><table border="0">
+</td></tr></table><table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC3_0">E</a></th><td></td><td></td></tr>
@@ -159,13 +174,13 @@ Now a content within example
 <tr><th><a name="SEC3_2">O</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX2">other entry</a></td><td valign="top"><a href="#SEC3">2.1 the node is within menu</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC3_0" style="text-decoration: none"><b>E</b></a>
+</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC3_0" class="summary-letter"><b>E</b></a>
  &nbsp; 
-<a href="#SEC3_1" style="text-decoration: none"><b>I</b></a>
+<a href="#SEC3_1" class="summary-letter"><b>I</b></a>
  &nbsp; 
-<a href="#SEC3_2" style="text-decoration: none"><b>O</b></a>
+<a href="#SEC3_2" class="summary-letter"><b>O</b></a>
  &nbsp; 
-</td></tr></table><pre>printindex  works but cannot be followed in info, in TeX
+</td></tr></table><pre class="example">printindex  works but cannot be followed in info, in TeX
 the result is quite strange.
 
 and now yes---now and ``so''.
@@ -177,78 +192,95 @@ and now yes---now and ``so''.
 flushed right ?
 </p>
 
-<table><tr><td>&nbsp;</td><td class="example"><pre>
-example text flushed  right
+<table><tr><td>&nbsp;</td><td><pre class="example">
+text flushed  right and then example
 
-it is
+it should be flushed
 </pre></td></tr></table>
-<table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">
+<table><tr><td>&nbsp;</td><td><pre class="example">
+
+example and then text flushed  right
+</pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><pre class="display">
 simple displayed text
 </pre></td></tr></table>
 <p>a display within example
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 example
-</pre><table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif"> 
+</pre><table><tr><td>&nbsp;</td><td><pre class="display"> 
 display
 </pre></td></tr></table></td></tr></table>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table class="cartouche" border="1"><tr><td>
+
+<p>A cartouched text
+</p></td></tr></table>
+
+<p>A cartouche within example
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
+example
+</pre><table class="cartouche" border="1"><tr><td>
+<pre class="example"> 
+A cartouched text
+</pre></td></tr></table>
+</td></tr></table>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 a table within example
 </pre><dl compact="compact">
 <dt><tt>* item
 </tt></dt>
-<dd><pre>text
+<dd><pre class="example">text
 </pre></dd>
 </dl>
-<pre>a multitable
+<pre class="example">a multitable
 </pre><table>
 <tr><td></td></tr>
-<tr><td><pre> beginnin
+<tr><td><pre class="example"> beginnin
 
 </pre></td></tr>
-<tr><td><pre> ...
-</pre></td><td><pre> 
+<tr><td><pre class="example"> ...
+</pre></td><td><pre class="example"> 
 
 a new column                          no splitting ???????????????????                             
 </pre></td></tr>
 </table>
-<pre>
+<pre class="example">
 a menu
-</pre><table border="0" cellspacing="0">
+</pre><table class="menu" border="0" cellspacing="0">
  
-<tr><td><pre style="font-family: serif"><a href="#SEC4">* node menu</a></pre><pre style="font-family: serif">      a node in menu
-</pre></tr><tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+<tr><td><pre class="menu-preformatted"><a href="#SEC4">* node menu</a></pre><pre class="menu-preformatted">      a node in menu
+</pre></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 in menu comment
 html
 <cite>cite me</cite> a cite in html
 
-</pre></th></tr><tr><td><pre style="font-family: serif"><a href="#SEC5">* other node</a></pre><pre style="font-family: serif"> 
+</pre></th></tr><tr><td><pre class="menu-preformatted"><a href="#SEC5">* other node</a></pre><pre class="menu-preformatted"> 
       description of other
       node
-</pre></tr><tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
+</pre></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
-<pre>
+<pre class="example">
 A quotation
 </pre><blockquote>
-<pre> 
+<pre class="example"> 
 This is a pre
 quotation
 
 </pre></blockquote>
-<pre>
+<pre class="example">
 Enumerate
 
 </pre><ol>
-<li><pre> first item
-</pre></li><li><pre> second  item
+<li><pre class="example"> first item
+</pre></li><li><pre class="example"> second  item
 
 still second
 </pre></li></ol>
-<pre>
+<pre class="example">
 </pre></td></tr></table>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 deffs
 </pre><dl>
-<dt><u>Function:</u> <b>my def</b> args <var>arg</var> <small>...</small>
+<dt><u>Function:</u> <b>my def</b> args <var>arg</var> <small class="dots">...</small>
 <a name="IDX4"></a></dt>
 <dt><u>Function:</u> <b>other def</b> no args
 <a name="IDX5"></a></dt>
@@ -261,25 +293,25 @@ deffs
 
 <dt><u>Variable:</u> <b>variables too</b> other-variable
 <a name="IDX8"></a></dt>
-<dd><pre>THis is the defvar
+<dd><pre class="example">THis is the defvar
 
 A table within the def
 </pre><dl compact="compact">
 <dt><tt> item
 </tt></dt>
-<dd><pre>text
+<dd><pre class="example">text
 
 more text
 </pre></dd>
 <dt><tt> second item
 </tt></dt>
 </dl>
-<pre>
+<pre class="example">
 explanation
 </pre></dd></dl>
 </dd></dl>
 </dd></dl>
-<pre>
+<pre class="example">
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD5"></a>
@@ -331,13 +363,14 @@ explanation
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
   <li><a name="TOC2" href="#SEC2">2. second</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC3" href="#SEC3">2.1 the node is within menu</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC4" href="#SEC4"></a></li>
       <li><a name="TOC5" href="#SEC5"></a></li>
     </ul>
@@ -345,6 +378,7 @@ explanation
   </ul>
 </li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -33,7 +48,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Untitled Document</h1>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
 </table>
@@ -57,17 +72,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. first node chapter </h1>
+<h1 class="chapter"> 1. first node chapter </h1>
 
 <p>Define a  simple macro
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro macro1 {arg1, arg2 }
 result: @emph{\arg1\} protected \\ -&gt; \\arg1\\  @emp{\arg2\}
 @end macro
 </pre></td></tr></table>
 <p>before macro after end macro
 </p><p>Calling (normal)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 the @macro1 { @samp{f\irst arg}, second arg } after macro
 </pre></td></tr></table><p>==================================
 </p><p>the result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg </em> after macro
@@ -75,7 +90,7 @@ the @macro1 { @samp{f\irst arg}, second arg } after macro
 </p><p>the result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg </em> after macro
 </p><p>====================================
 </p><p>Calling (one arg)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro1 { @samp{f\irst arg}}
 </pre></td></tr></table><p>==================================
 </p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em></em>
@@ -83,7 +98,7 @@ the @macro1 { @samp{f\irst arg}, second arg } after macro
 </p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em></em>
 </p><p>====================================
 </p><p>Calling (no args)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro1 @samp{f\irst arg}, second arg
 </pre></td></tr></table><p>==================================
 </p><p>result: <em></em> protected \ -&gt; \arg1\ <em></em> `<samp>f\irst arg</samp>', second arg
@@ -91,7 +106,7 @@ the @macro1 { @samp{f\irst arg}, second arg } after macro
 </p><p>result: <em></em> protected \ -&gt; \arg1\ <em></em> `<samp>f\irst arg</samp>', second arg
 </p><p>====================================
 </p><p>Calling (three args)
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro1 { @samp{f\irst arg}, second arg, third arg}
 </pre></td></tr></table><p>==================================
 </p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg</em>
@@ -99,7 +114,7 @@ the @macro1 { @samp{f\irst arg}, second arg } after macro
 </p><p>result: <em>`<samp>first arg</samp>'</em> protected \ -&gt; \arg1\ <em>second arg</em>
 </p><p>====================================
 </p><p>define a macro with one arg
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro macro2 { arg }
 we get \arg\ and another \arg\
 and a last one on another line \arg\
@@ -108,7 +123,7 @@ and a last in another paragraph
 @end macro
 </pre></td></tr></table>
 <p>Calling
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro2 { arg, comma \, }
 </pre></td></tr></table><p>==================================
 </p><p>we get arg, comma ,  and another arg, comma , 
@@ -120,7 +135,7 @@ and another one another line arg, comma ,
 </p><p>and a last in another paragraph
 </p><p>==================================
 </p><p>Calling
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro2  arg,  comma \, 
 </pre></td></tr></table><p>==================================
 </p><p>we get   arg,  comma \, and another   arg,  comma \,
@@ -145,7 +160,7 @@ are replaced):
 </p><p>======================================
 </p><p>comma: ,
 </p><p>Calling macro1 with value
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro1 { arg1 @value{comma} arg2 }
 </pre></td></tr></table><p>=======================================
 </p><p>result: <em>arg1 , arg2 </em> protected \ -&gt; \arg1\ <em></em>
@@ -155,11 +170,11 @@ arguments parsing):
 </p><p>result: <em>arg1 , arg2 </em> protected \ -&gt; \arg1\ <em></em>
 </p><p>=======================================
 </p><p>In verbatim
-</p><pre>comma: @value{comma}
+</p><pre class="verbatim">comma: @value{comma}
 @macro1{ bidule, truc}
 </pre>
 <p>Define macro
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro testvaluebody { arg }
 result: @emph{\@value{bodyarg}\  } 
 @end macro
@@ -172,7 +187,7 @@ when the body is expanded; it is kept, but the second \ isn't):
 </p><p>result: <em>\\arg\  </em>
 </p><p>==================================
 </p><p>Define macro
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro testvalue { arg , the@value{argument} }
 result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
 @end macro
@@ -194,10 +209,12 @@ result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 13. Tracking third-party sources </h1>
+<h1 class="chapter"> 13. Tracking third-party sources </h1>
 
 <p>If you modify a program to better fit your site, you
 probably want to include your modifications when the next
@@ -67,7 +82,7 @@ anyone that checks out a copy of the file gets that
 revision.  When a local modification is committed it is
 placed on the main trunk, and made the `head'
 revision.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC106">13.1 Importing for the first time</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC107">13.2 Updating with the import command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -96,7 +111,7 @@ revision.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.1 Importing for the first time </h2>
+<h2 class="section"> 13.1 Importing for the first time </h2>
 
 <p>Use the <code>import</code> command to check in the sources
 for the first time.  When you use the <code>import</code>
@@ -120,7 +135,7 @@ and are going to make private modifications that you
 want to be able to use even when new releases are made
 in the future.  You start by importing the source to
 your repository:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd wdiff-0.04
 $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 </pre></td></tr></table>
@@ -146,13 +161,13 @@ example, and the only release tag assigned is
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.2 Updating with the import command </h2>
+<h2 class="section"> 13.2 Updating with the import command </h2>
 
 <p>When a new release of the source arrives, you import it into the
 repository with the same <code>import</code> command that you used to set up
 the repository in the first place.  The only difference is that you
 specify a different release tag this time:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ tar xfz wdiff-0.05.tar.gz
 $ cd wdiff-0.05
 $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
@@ -161,7 +176,7 @@ $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
 into the main trunk, and tell you to use `<samp>checkout -j</samp>' to do so:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
 </pre></td></tr></table>
 <p>The above command will check out the latest revision of
@@ -170,7 +185,7 @@ since yesterday into the working copy.  If any conflicts arise during
 the merge they should be resolved in the normal way (see section <a href="cvs_10.html#SEC86">Conflicts example</a>).  Then, the modified files may be committed.
 </p><p>However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
 </pre></td></tr></table>
 <p>The reason this is better is that
@@ -199,7 +214,7 @@ should do a merge like this even if <code>import</code> doesn't tell you to.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.3 Reverting to the latest vendor release </h2>
+<h2 class="section"> 13.3 Reverting to the latest vendor release </h2>
 
 <p>You can also revert local changes completely and return
 to the latest vendor release by changing the `head'
@@ -208,7 +223,7 @@ example, if you have a checked-out copy of the sources
 in `<tt>~/work.d/wdiff</tt>', and you want to revert to the
 vendor's version for all the files in that directory,
 you would type:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ~/work.d/wdiff
 $ cvs admin -bWDIFF .
 </pre></td></tr></table>
@@ -233,7 +248,7 @@ after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC121">admin opt
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.4 How to handle binary files with cvs import </h2>
+<h2 class="section"> 13.4 How to handle binary files with cvs import </h2>
 
 <p>Use the `<samp>-k</samp>' wrapper option to tell import which
 files are binary.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
@@ -256,7 +271,7 @@ files are binary.  See section <a href="cvs_18.html#SEC165">The cvswrappers file
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.5 How to handle keyword substitution with cvs import </h2>
+<h2 class="section"> 13.5 How to handle keyword substitution with cvs import </h2>
 
 <p>The sources which you are importing may contain
 keywords (see section <a href="cvs_12.html#SEC98">Keyword substitution</a>).  For example,
@@ -296,7 +311,7 @@ and use the `<samp>-k</samp>' option to <code>cvs update</code> or
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 13.6 Multiple vendor branches </h2>
+<h2 class="section"> 13.6 Multiple vendor branches </h2>
 
 <p>All the examples so far assume that there is only one
 vendor from which you are getting sources.  In some
@@ -318,14 +333,14 @@ You want to import the red team's efforts to branch
 1.1.1 and use the vendor tag RED.  You want to import
 the blue team's efforts to branch 1.1.3 and use the
 vendor tag BLUE.  So the commands you might use are:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs import dir RED RED_1-0
 $ cvs import -b 1.1.3 dir BLUE BLUE_1-5
 </pre></td></tr></table>
 <p>Note that if your vendor tag does not match your
 `<samp>-b</samp>' option, <small>CVS</small> will not detect this case!  For
 example,
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs import -b 1.1.3 dir RED RED_1-0
 </pre></td></tr></table>
 <p>Be careful; this kind of mismatch is sure to sow

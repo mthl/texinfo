@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> F. Troubleshooting </h1>
+<h1 class="appendix"> F. Troubleshooting </h1>
 
 <p>If you are having trouble with <small>CVS</small>, this appendix
 may help.  If there is a particular error message which
@@ -50,7 +65,7 @@ you are seeing, then you can look up the message
 alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC184">F.1 Partial list of error messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Partial list of CVS errors</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC185">F.2 Trouble making a connection to a CVS server</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -76,7 +91,7 @@ mentioned there.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> F.1 Partial list of error messages </h2>
+<h2 class="appendixsec"> F.1 Partial list of error messages </h2>
 
 <p>Here is a partial list of error messages that you may
 see from <small>CVS</small>.  It is not a complete list--<small>CVS</small>
@@ -120,7 +135,7 @@ removal.
 </p></dd>
 <dt><code> cannot change permissions on temporary directory
 </code></dt>
-<dd><table><tr><td>&nbsp;</td><td class="example"><pre>
+<dd><table><tr><td>&nbsp;</td><td><pre class="example">
 Operation not permitted
 </pre></td></tr></table><p>This message has been happening in a non-reproducible,
 occasional way when we run the client/server testsuite,
@@ -297,7 +312,7 @@ finds the syntax error.
 <dd><p>This means that your repository is set up for a version
 of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small>
 1.8 or later, the above message will be preceded by
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
 <p>If you see both messages, the database is being rebuilt
@@ -420,7 +435,7 @@ conflict.  For more details on this process see
 </p></dd>
 <dt><code> Usage:	diff3 [-exEX3 [-i | -m] [-L label1 -L label3]] file1 file2 file3
 </code></dt>
-<dd><table><tr><td>&nbsp;</td><td class="example"><pre>
+<dd><table><tr><td>&nbsp;</td><td><pre class="example">
 Only one of [exEX3] allowed
 </pre></td></tr></table><p>This indicates a problem with the installation of
 <code>diff3</code> and <code>rcsmerge</code>.  Specifically
@@ -460,7 +475,7 @@ exit status.  Some versions of vi will do this even when there was not
 a problem editing the file.  If so, point the
 <code>CVSEDITOR</code> environment variable to a small script
 such as:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 #!/bin/sh
 vi $*
 exit 0
@@ -487,7 +502,7 @@ exit 0
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> F.2 Trouble making a connection to a CVS server </h2>
+<h2 class="appendixsec"> F.2 Trouble making a connection to a CVS server </h2>
 
 <p>This section concerns what to do if you are having
 trouble making a connection to a <small>CVS</small> server.  If
@@ -540,11 +555,11 @@ your editor &quot;helpfully&quot; added without you noticing.
 2401&quot;.  After connecting, send any text (for example
 &quot;foo&quot; followed by return).  If <small>CVS</small> is working
 correctly, it will respond with
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs [pserver aborted]: bad auth protocol start: foo
 </pre></td></tr></table>
 <p>If instead you get:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Usage: cvs [cvs-options] command [command-options-and-arguments]
 ...
 </pre></td></tr></table>
@@ -552,7 +567,7 @@ Usage: cvs [cvs-options] command [command-options-and-arguments]
 line in `<tt>inetd.conf</tt>'; check to make sure that the entire command
 is on one line and that it's complete.
 </p><p>Likewise, if you get something like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 Unknown command: `pserved'
 
 CVS commands are:
@@ -565,7 +580,7 @@ carriage returns) in `<tt>inetd.conf</tt>'.
 </p><p>If it fails to work at all, then make sure inetd is working
 right.  Change the invocation in `<tt>inetd.conf</tt>' to run the
 echo program instead of cvs.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 2401  stream  tcp  nowait  root /bin/echo echo hello
 </pre></td></tr></table>
 <p>After making that change and instructing inetd to
@@ -583,7 +598,7 @@ to address this problem.
 (debugging) option to inetd.  Consult your system
 documentation for more information.
 </p><p>If you seem to be connecting but get errors like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs server: cannot open /root/.cvsignore: Permission denied
 cvs [server aborted]: can't chdir(/root): Permission denied
 </pre></td></tr></table>
@@ -624,7 +639,7 @@ others allow you to set the limit for each service separately.)
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> F.3 Other common problems </h2>
+<h2 class="appendixsec"> F.3 Other common problems </h2>
 
 <p>Here is a list of problems which do not fit into the
 above categories.  They are in no particular order.

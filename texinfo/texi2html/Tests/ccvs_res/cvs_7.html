@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 7. Adding, removing, and renaming files and directories </h1>
+<h1 class="chapter"> 7. Adding, removing, and renaming files and directories </h1>
 
 <p>In the course of a project, one will often add new
 files.  Likewise with removing or renaming, or with
@@ -52,7 +67,7 @@ irreversible change you want <small>CVS</small> to record the
 fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC67">7.1 Adding files to a directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adding files</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC68">7.2 Removing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -80,7 +95,7 @@ this in <small>CVS</small> vary depending on the situation.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.1 Adding files to a directory </h2>
+<h2 class="section"> 7.1 Adding files to a directory </h2>
 
 <p>To add a new file to a directory, follow these steps.
 </p><ul>
@@ -104,13 +119,13 @@ directory.
 </p><p>Unlike most other commands, the <code>add</code> command is
 not recursive.  You cannot even type `<samp>cvs add
 foo/bar</samp>'!  Instead, you have to
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd foo
 $ cvs add bar
 </pre></td></tr></table>
 <a name="IDX129"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs add</b> [<code>-k</code> kflag] [<code>-m</code> message] files <small>...</small>
+<dt><u>Command:</u> <b>cvs add</b> [<code>-k</code> kflag] [<code>-m</code> message] files <small class="dots">...</small>
 <a name="IDX130"></a>
 </dt>
 <dd><p>Schedule <var>files</var> to be added to the repository.
@@ -142,7 +157,7 @@ be used.  You will not be prompted for a description.
 
 <p>For example, the following commands add the file
 `<tt>backend.c</tt>' to the repository:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs add backend.c
 $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </pre></td></tr></table>
@@ -169,7 +184,7 @@ later merge the additions to another branch if you want
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.2 Removing files </h2>
+<h2 class="section"> 7.2 Removing files </h2>
 
 <p>Directories change.  New files are added, and old files
 disappear.  Still, you want to be able to retrieve an
@@ -205,7 +220,7 @@ the file, based on the `<samp>-r</samp>' and `<samp>-D</samp>' options
 specified to <code>checkout</code> or <code>update</code>.
 </p><a name="IDX131"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs remove</b> [options] files <small>...</small>
+<dt><u>Command:</u> <b>cvs remove</b> [options] files <small class="dots">...</small>
 <a name="IDX132"></a>
 </dt>
 <dd><p>Schedule file(s) to be removed from the repository
@@ -217,7 +232,7 @@ options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd test
 $ rm *.c
 $ cvs remove
@@ -233,7 +248,7 @@ cvs commit: Committing .
 remove</code> it in one step, by specifying the `<samp>-f</samp>'
 option.  For example, the above example could also be
 done like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd test
 $ cvs remove -f *.c
 cvs remove: scheduling a.c for removal
@@ -246,7 +261,7 @@ cvs commit: Committing .
 <p>If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ ls
 CVS   ja.h  oj.c
 $ rm oj.c
@@ -260,7 +275,7 @@ cvs add: oj.c, version 1.1.1.1, resurrected
 <p>If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ rm oj.c
 $ cvs update oj.c
 cvs update: warning: oj.c was lost
@@ -289,7 +304,7 @@ later merge the removals to another branch if you want
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.3 Removing directories </h2>
+<h2 class="section"> 7.3 Removing directories </h2>
 
 <p>In concept removing directories is somewhat similar to
 removing files--you want the directory to not exist in
@@ -333,7 +348,7 @@ are checking out contains any files in that directory.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.4 Moving and renaming files </h2>
+<h2 class="section"> 7.4 Moving and renaming files </h2>
 
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
@@ -341,7 +356,7 @@ works may be non-obvious.  (Moving or renaming a
 directory is even harder.  See section <a href="#SEC74">Moving and renaming directories</a>.).
 </p><p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC71">7.4.1 The Normal way to Rename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The normal way to Rename</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC72">7.4.2 Moving the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A tricky, alternative way</td></tr>
@@ -367,13 +382,13 @@ directory is even harder.  See section <a href="#SEC74">Moving and renaming dire
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.4.1 The Normal way to Rename </h3>
+<h3 class="subsection"> 7.4.1 The Normal way to Rename </h3>
 
 <p>The normal way to move a file is to copy <var>old</var> to
 <var>new</var>, and then issue the normal <small>CVS</small> commands
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ mv <var>old</var> <var>new</var>
 $ cvs remove <var>old</var>
 $ cvs add <var>new</var>
@@ -409,12 +424,12 @@ information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.4.2 Moving the history file </h3>
+<h3 class="subsection"> 7.4.2 Moving the history file </h3>
 
 <p>This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd $CVSROOT/<var>dir</var>
 $ mv <var>old</var>,v <var>new</var>,v
 </pre></td></tr></table>
@@ -459,11 +474,11 @@ commands while you move it.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 7.4.3 Copying the history file </h3>
+<h3 class="subsection"> 7.4.3 Copying the history file </h3>
 
 <p>This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 # Copy the RCS file inside the repository
 $ cd $CVSROOT/<var>dir</var>
 $ cp <var>old</var>,v <var>new</var>,v
@@ -518,7 +533,7 @@ You cannot easily see the history of the file across the rename.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 7.5 Moving and renaming directories </h2>
+<h2 class="section"> 7.5 Moving and renaming directories </h2>
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
@@ -535,7 +550,7 @@ their changes, and remove their working copies,
 before you take the steps below.
 </p></li><li><p>
 Rename the directory inside the repository.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd $CVSROOT/<var>parent-dir</var>
 $ mv <var>old-dir</var> <var>new-dir</var>
 </pre></td></tr></table>

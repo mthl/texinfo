@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.52 2003-07-10 15:22:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.53 2003-07-23 12:04:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -175,6 +175,7 @@ our $L2H_SKIP ;
 our $L2H_TMP ;
 our $L2H_CLEAN ;
 our $L2H_FILE;
+our $L2H_HTML_VERSION;
 our $EXTERNAL_DIR;
 our @INCLUDE_DIRS ;
 
@@ -201,8 +202,13 @@ our $ICONS;
 our $UNNUMBERED_SYMBOL_IN_MENU;
 our $MENU_SYMBOL;
 our $TOC_LIST_STYLE;
+our $TOC_LIST_ATTRIBUTE;
 our $TOP_NODE_FILE;
 our $NODE_FILE_EXTENSION;
+our $BEFORE_STOC_LINES;
+our $AFTER_STOC_LINES;
+our $BEFORE_TOC_LINES;
+our $AFTER_TOC_LINES;
 our %ACTIVE_ICONS;
 our %NAVIGATION_TEXT;
 our %PASSIVE_ICONS;
@@ -242,6 +248,7 @@ our $about_body;
 our $print_frame;
 our $print_toc_frame;
 our $toc_body;
+our $css_lines;
 our $print_redirection_page;
 
 our $set_body_text;
@@ -282,6 +289,7 @@ our $print_index;
 our $index_summary;
 our $summary_letter;
 our $end_complex_format;
+our $cartouche;
 
 our $PRE_ABOUT;
 our $AFTER_ABOUT;
@@ -300,6 +308,7 @@ our %things_map;
 our %pre_map;
 our %to_skip;
 our %to_skip_texi;
+our %css_map;
 
 # @INIT@
 
@@ -321,8 +330,9 @@ our %predefined_index;
 our %valid_index;
 our %sec2level;
 
-# global variables set in the script, and used in the subroutines
-# see texi2html.init
+# Some global variables are set in the script, and used in the subroutines
+# they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
+# see texi2html.init for details.
 
 #+++############################################################################
 #                                                                              #
@@ -349,7 +359,7 @@ require "$ENV{T2H_HOME}/MySimple.pm"
 #---############################################################################
 
 # leave this within comments, and keep the require statement
-# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/texi2html.init
+# This way, you can directly run texi2html.pl, if $ENV{T2H_HOME}/T2h_i18n.pm
 # exists.
 
 # @T2H_I18N@
@@ -562,6 +572,9 @@ $format_type{'enumerate'} = 'list';
 
 $format_type{'menu'} = 'menu';
 
+$format_type{'cartouche'} = 'cartouche';
+
+# fake format at the bottom of the stack
 $format_type{'noformat'} = '';
 
 # fake formats are formats used internally within other formats
@@ -595,7 +608,7 @@ my %text_macros = (
      'ignore' => 0, 
      'menu' => 0, 
      'ifplaintext' => 0, 
-     'ifinfo' => 1,
+     'ifinfo' => 0,
      'ifhtml' => 1, 
      'html' => 'raw', 
      'tex' => 0, 
@@ -644,6 +657,11 @@ foreach my $key (keys(%text_macros))
         $no_line_macros{$key} = 1;
         $no_line_macros{"end $key"} = 1;
     }
+}
+
+foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
+{
+    $Texi2HTML::Config::css_map{"pre.$complex_format"} = "$Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'}";
 }
 
 #+++############################################################################
@@ -989,6 +1007,14 @@ $T2H_OPTIONS -> {'D'} =
  noHelp => 1,
 };
 
+$T2H_OPTIONS -> {'U'} =
+{
+ type => '=s',
+ linkage => sub {delete $value{$_[1]};},
+ verbose => 'equivalent to Texinfo "@clear $s"',
+ noHelp => 1,
+};
+
 $T2H_OPTIONS -> {'init-file'} =
 {
  type => '=s',
@@ -1004,7 +1030,7 @@ my $T2H_OBSOLETE_OPTIONS;
 $T2H_OBSOLETE_OPTIONS -> {init_file} =
 {
  type => '=s',
- linkage => \&LoadInitFile,
+ linkage => \&load_init_file,
  verbose => 'obsolete, use "-init-file" instead',
  noHelp => 2
 };
@@ -1224,7 +1250,14 @@ foreach my $i (@rc_files)
     }
 }
 
-%value = ();                       # hold texinfo variables, see also -D
+#
+# %value hold texinfo variables, see also -D, -U
+# we predefine html (the output format) and texi2html (the translator)
+%value = 
+      ( 
+          'html' => 1,
+          'texi2html' => $THISVERSION,
+      );                       
 
 #+++############################################################################
 #                                                                              #
@@ -1300,6 +1333,16 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     {
          $text_macros{$expanded} = 1; 
     }
+}
+
+if ($T2H_VERBOSE)
+{
+    print STDERR "# Expanded: ";
+    foreach my $text_macro (keys(%text_macros))
+    {
+        print STDERR "$text_macro " if ($text_macros{$text_macro});
+    }
+    print STDERR "\n";
 }
 
 # This is kept in that file although it is html formatting as it seems to 
@@ -1438,13 +1481,10 @@ my $docu_frame_file =     "$docu_rdir${docu_name}_frame.$docu_ext";
 my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame.$docu_ext";
 
 #
-# variables
+# _foo: internal variables to track @foo
 #
-$value{'html'} = 1;             # predefine html (the output format)
-$value{'texi2html'} = $THISVERSION; # predefine texi2html (the translator)
-# _foo: internal to track @foo
 foreach my $key ('_author', '_title', '_subtitle',
-	 '_settitle', '_setfilename', '_shorttitle')
+	 '_settitle', '_setfilename', '_shorttitle', '_titlefont')
 {
     $value{$key} = '';            # prevent -w warnings
 }
@@ -1480,7 +1520,7 @@ if ($Texi2HTML::Config::USE_ISO)
 
 #
 # read texi2html extensions (if any)
-#
+# FIXME isn't that obsolete ? (obsoleted by -init-file)
 my $extensions = 'texi2html.ext';  # extensions in working directory
 if (-f $extensions)
 {
@@ -1567,10 +1607,10 @@ EOT
 
 my %l2h_to_latex = ();
 my @l2h_to_latex = ();
-my $l2h_latex_count = 0;
-my $l2h_to_latex_count = 0;
-my $l2h_cached_count = 0;
-my %l2h_cache = ();
+my $l2h_latex_count = 0;     # number of latex texts really stored
+my $l2h_to_latex_count = 0;  # total number of latex texts processed
+my $l2h_cached_count = 0;    # number of cached latex text
+my %l2h_cache = ();          
 #$Texi2HTML::Config::L2H = l2h_InitToLatex() if ($Texi2HTML::Config::L2H);
 
 # return used latex 1, if l2h could be initalized properly, 0 otherwise
@@ -1702,6 +1742,8 @@ sub to_html()
     $call .=  ($docu_rdir ? " -dir $docu_rdir" : " -no_subdir");
     # use l2h_tmp, if specified
     $call = $call . " -tmp $Texi2HTML::Config::L2H_TMP" if ($Texi2HTML::Config::L2H_TMP);
+    # use a given html version if specified
+    $call = $call . " -html_version $Texi2HTML::Config::L2H_HTML_VERSION" if ($Texi2HTML::Config::L2H_HTML_VERSION);
     # options we want to be sure of
     $call = $call ." -address 0 -info 0 -split 0 -no_navigation -no_auto_link";
     $call = $call ." -prefix ${l2h_prefix} $l2h_latex_file";
@@ -1837,11 +1879,11 @@ sub do_tex($)
 {
     my $count = shift;
     my $result = '';
-    $result = "<!-- l2h_end $l2h_name $count -->"
+    $result = "<!-- l2h_begin $l2h_name $count -->"
             #if ($T2H_DEBUG & $DEBUG_L2H);
             if ($debug);
     $result .= extract_from_html($count);
-    $result .= "<!-- l2h_begin $l2h_name $count -->"
+    $result .= "<!-- l2h_end $l2h_name $count -->"
             #if ($T2H_DEBUG & $DEBUG_L2H);
             if ($debug);
     return $result;
@@ -2030,7 +2072,7 @@ sub to_cache($$)
 
 #+++###########################################################################
 #                                                                             #
-# Pass texi: read source, handle variable, ignored text, document structure   #
+# Pass texi: read source, handle variable, ignored text,                      #
 #                                                                             #
 #---###########################################################################
 
@@ -2255,6 +2297,7 @@ sub pass_structure()
                              $nodes{$node} = $node_ref;
                         }     
                         $node_ref->{'node'} = 1;
+                        $node_ref->{'tag'} = 'node';
                         $node_ref->{'texi'} = $node;
                         $node_ref->{'seen'} = 1;
                         $node_ref->{'automatic_directions'} = $auto_directions;
@@ -3130,7 +3173,7 @@ sub rearrange_elements()
                     push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                     foreach my $index(@{$current_element->{'indices'}})
                     {
-                        push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
+                        push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'}, 'name' => $index->[0]->{'name'} } ] ;
                     }
                 }
                 else
@@ -3181,7 +3224,7 @@ sub rearrange_elements()
                     my $back_texi = 'NO_BACK';
                     $back_texi = $back->{'texi'} if (defined($back));
 		    print STDERR "# New index first page (back `$back_texi', current `$current_element->{'texi'}')\n" if ($T2H_DEBUG & $DEBUG_INDEX);
-                    push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page} ];
+                    push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page, 'name' => $index->{'name'} } ];
                     if (@pages)
                     {
                         if ($current_element->{'holder'})
@@ -3208,7 +3251,7 @@ sub rearrange_elements()
                             push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                             foreach my $index(@{$current_element->{'indices'}})
                             {
-                                push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
+                                push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'}, 'name' => $index->[0]->{'name'} } ] ;
                             }
                             push @{$checked_element->{'nodes'}}, @waiting_elements;
                             my $waiting_element;
@@ -3232,6 +3275,7 @@ sub rearrange_elements()
                             $index_page = { 'index_page' => 1,
                              'texi' => "$element->{'texi'} index $index->{'name'} page $index_num",
                              'level' => $element->{'level'},
+                             'tag' => $element->{'tag'},
                              'toplevel' => $element->{'toplevel'},
                              'up' => $element->{'up'},
                              'element_up' => $element->{'element_up'},
@@ -3253,7 +3297,7 @@ sub rearrange_elements()
                                 $nodes{$index_page->{'texi'}} .= ' ';
                             }
                             $nodes{$index_page->{'texi'}} = $index_page;
-                            push @{$current_element->{'indices'}->[-1]}, {'element' => $index_page, 'page' => $page };
+                            push @{$current_element->{'indices'}->[-1]}, {'element' => $index_page, 'page' => $page, 'name' => $index->{'name'} };
                             push @new_elements, $index_page;
                             $back->{'forward'} = $index_page;
                             $back->{'next'} = $index_page;
@@ -3612,7 +3656,7 @@ sub rearrange_elements()
                 print STDERR "    $index: ";
                 foreach my $page (@$index)
                 {
-                    print STDERR "'$page->{'element'}->{'texi'}': $page->{'page'} ";
+                    print STDERR "'$page->{'element'}->{'texi'}'($page->{'name'}): $page->{'page'} ";
                 }
                 print STDERR "\n";
             }
@@ -3948,12 +3992,13 @@ sub pass_text()
     }
 
     # prepare %Texi2HTML::THISDOC
-    $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || "Untitled Document";
+    $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_titlefont'}) || "Untitled Document";
     $Texi2HTML::THISDOC{'title'} = substitute_line($value{'_settitle'}) || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
+    $Texi2HTML::THISDOC{'titlefont'} =  substitute_line($value{'_titlefont'});
     $Texi2HTML::THISDOC{'subtitle'} =  substitute_line($value{'_subtitle'});
     $Texi2HTML::THISDOC{'shorttitle'} =  substitute_line($value{'_shorttitle'});
-    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_title'})) || "Untitled Document";
+    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_titlefont'})) || "Untitled Document";
     $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_html(remove_texi($value{'_shorttitle'}));
     for my $key (keys %Texi2HTML::THISDOC)
     {
@@ -3992,6 +4037,10 @@ sub pass_text()
     {
         $top_text = $element_top->{'text'};
     }
+    # FIXME in makeinfo, in case the top heading is set by settitle or
+    # titlefont the class "settitle" or "titlefont" is associated with
+    # the Top name. Maybe it would be  simpler to have a title class instead
+    # valid for all titles ?
     %Texi2HTML::NAME =
         (
          'First',   $element_first->{'text'},
@@ -4040,7 +4089,7 @@ sub pass_text()
     }
 
     ############################################################################
-    # Monolithic beginning.
+    #
     #
 
     my $index_pages;
@@ -4692,8 +4741,11 @@ sub do_preformatted($$)
     my $state = shift;
 
     my $pre_style = '';
-    $pre_style = $state->{'preformatted_stack'}->[-1] if ($state->{'preformatted_stack'}->[-1]);
-    return &$Texi2HTML::Config::preformatted($text, $pre_style);
+    my $class = '';
+    $pre_style = $state->{'preformatted_stack'}->[-1]->{'pre_style'} if ($state->{'preformatted_stack'}->[-1]->{'pre_style'});
+    $class = $state->{'preformatted_stack'}->[-1]->{'class'};
+    print STDERR "BUG: !state->{'preformatted_stack'}->[-1]->{'class'}\n" unless ($class);
+    return &$Texi2HTML::Config::preformatted($text, $pre_style, $class);
 }
 
 sub do_external_ref($)
@@ -4987,6 +5039,7 @@ sub end_paragraph_style($$$$)
     my $stack = shift;
     my $state = shift;
     my $end_tag = shift;
+    #print STDERR "PARAGRAPH_STYLE $end_tag\n";
     return 0 if ($format_type{$end_tag} ne 'paragraph_style');
     if ($state->{'paragraph_style'}->[-1] ne $Texi2HTML::Config::paragraph_style{$end_tag})
     {
@@ -5024,6 +5077,7 @@ sub end_format($$$$)
 
     my $format_ref = pop @$stack;
     
+    # debug
     if (!defined($format_ref->{'text'}))
     {
         push @$stack, $format_ref;
@@ -5038,6 +5092,10 @@ sub end_format($$$$)
         add_prev($text, $stack, &$Texi2HTML::Config::def_item($format_ref->{'text'}));
         $format_ref = pop @$stack;
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}));
+    }
+    elsif ($format_type{$format} eq 'cartouche')
+    {
+        add_prev($text, $stack, &$Texi2HTML::Config::cartouche($format_ref->{'text'}));
     }
     elsif ($format_type{$format} eq 'menu')
     {
@@ -5145,85 +5203,6 @@ sub close_menu($$$)
         print STDERR "# close_menu: close description\n" if ($T2H_DEBUG & $DEBUG_MENU);
         add_prev ($text, $stack, menu_description($descr->{'text'}, $state));
         delete $state->{'menu_entry'};
-    }
-}
-
-sub menu_entry1($)
-{
-    my $state = shift;
-    my $menu_entry = $state->{'menu_entry'};
-    my $file = $state->{'element'}->{'file'};
-    my $node_texi = normalise_node($menu_entry->{'node'});
-
-    my $substitution_state = { 'no_paragraph' => 1, 'element' => $state->{'element'}, 
-       'preformatted' => $state->{'preformatted'}, 
-       'preformatted_stack' => $state->{'preformatted_stack'} };
-         
-    my $name = substitute_text($substitution_state, $menu_entry->{'name'});
-    my $node = substitute_text($substitution_state, $node_texi);
-    my $descr = substitute_text($substitution_state, $menu_entry->{'descr'});
-
-    my $entry;
-    my $element = $nodes{$node_texi};
-    if ($element->{'seen'})
-    {
-        if ($element->{'with_section'})
-        {
-            $element = $element->{'with_section'};
-        }
-    
-	#print STDERR "href in menu for $element->{'texi'}\n";
-        my $href = href($element, $file);
-        unless ($state->{'preformatted'})
-        { 
-            $descr =~ s/^\s+//;
-            $descr =~ s/\s*$//;
-        }
-        if ($Texi2HTML::Config::NUMBER_SECTIONS && !$Texi2HTML::Config::NODE_NAME_IN_MENU)
-        {
-            $entry = $element->{'text'};
-            $entry = "$Texi2HTML::Config::MENU_SYMBOL $entry" if ($entry and ($element->{'node'}) or   ((!defined($element->{'number'}) or ($element->{'number'} =~ /^\s*$/)) and $Texi2HTML::Config::UNNUMBERED_SYMBOL_IN_MENU));
-            # If there is no section name
-            $entry = "$Texi2HTML::Config::MENU_SYMBOL $node" unless ($entry);
-            $name = '';
-            if ($Texi2HTML::Config::AVOID_MENU_REDUNDANCY && $descr && !$state->{'preformatted'})
-            {
-                my $clean_entry = $element->{'name'};
-                $clean_entry =~ s/[^\w]//g;
-                my $clean_descr = $descr;
-                $clean_descr =~ s/[^\w]//g;
-                $descr = '' if ($clean_entry eq $clean_descr)
-            }
-        }
-	elsif ($state->{'preformatted'})
-        {
-            $entry = ($name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node" );
-        }
-        else
-        {
-            $entry = ($name && ($name ne $node || ! $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
-                      ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node");
-        }
-        return &$Texi2HTML::Config::menu_entry($entry, $descr, $state, $href);
-    }
-    elsif ($node_texi =~ /^\(.*\)/)
-    {
-        # menu entry points to another info manual
-	if ($state->{'preformatted'})
-        {
-            $entry = ( $name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node" );
-        }
-	else
-        {
-            $entry = ($name && ($name ne $node || ! $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
-                      ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node");
-        }
-        return &$Texi2HTML::Config::menu_entry($entry, $descr, $state, $nodes{$node_texi}->{'file'});
-    }
-    else
-    {
-        warn "$ERROR Unknown node in menu entry `$node_texi'\n";
-        return &$Texi2HTML::Config::menu_entry($name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node", $descr, $state);
     }
 }
 
@@ -5651,7 +5630,7 @@ sub do_index_page($$;$)
     my $page = shift;
     my $index_element = $index_elements->[$nr];
     my $summary = do_index_summary($index_element->{'element'}, $index_elements);
-    my $entries = do_index_entries($index_element->{'element'}, $index_element->{'page'});
+    my $entries = do_index_entries($index_element->{'element'}, $index_element->{'page'}, $index_element->{'name'});
     return $summary . $entries . $summary;
 }
 
@@ -5685,10 +5664,11 @@ sub do_index_summary($$)
     return &$Texi2HTML::Config::index_summary(\@letters, \@symbols);
 }
 
-sub do_index_entries($$)
+sub do_index_entries($$$)
 {
     my $element = shift;
     my $page = shift;
+    my $name = shift;
  
     my $letters = '';
     my $index = 0;
@@ -5734,7 +5714,7 @@ sub do_index_entries($$)
         $letters .= &$Texi2HTML::Config::index_letter ($letter, $index, $element->{'id'}, $entries);
         $index++;
     }
-    return &$Texi2HTML::Config::print_index($letters);
+    return &$Texi2HTML::Config::print_index($letters, $name);
 }
 
 # remove texi commands, replacing with what seems adequate. see simple_map_texi
@@ -6697,8 +6677,12 @@ sub scan_structure($$$$)
                     }
                     elsif ($style->{'style'} eq 'math' and $Texi2HTML::Config::L2H)
                     {
-                         add_prev ($text, $stack, do_math($style->{'text'}));
-                         next;
+                        add_prev ($text, $stack, do_math($style->{'text'}));
+                        next;
+                    }
+                    elsif ($style->{'style'} eq 'titlefont')
+                    {
+                        $value{'_titlefont'} = $style->{'text'};
                     }
                     if ($style->{'style'})
                     {
@@ -6814,7 +6798,7 @@ sub scan_line($$$$)
                 push @$stack, {'format' => 'menu_comment', 'text' => ''};
                 push @$stack, {'format' => 'preformatted', 'text' => ''};# if ($state->{'preformatted'});
                 $state->{'preformatted'}++;
-                push @{$state->{'preformatted_stack'}}, $Texi2HTML::Config::MENU_PRE_STYLE;
+                push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-comment' };
             }
 	    #dump_stack ($text, $stack, $state);
         }
@@ -6991,6 +6975,8 @@ sub scan_line($$$$)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $end_tag = $2;
+	    #print STDERR "END_MACRO $end_tag\n";
+	    #dump_stack ($text, $stack, $state);
             
             # First we test if the stack is not empty.
             # Then we test if the end tag is a format tag.
@@ -7051,7 +7037,13 @@ sub scan_line($$$$)
                 $_ = "\@end $end_tag " . $_;
                 next;
             }
-            my $top_not_end_tag;
+            
+            # a paragraph style is possibly closed here
+            next if end_paragraph_style($text, $stack, $state, $end_tag);
+	    
+            my $top_not_end_tag; # set to 1 if the format 
+                    #on the stack isn't the closed format
+
             # Warn if the format on top of stack is not compatible with the 
             # end tag, and find the end tag.
             if (
@@ -7114,7 +7106,7 @@ sub scan_line($$$$)
             }
             else 
             { # this is a fake format, ie a format used internally, inside
-              # a real format. We do nothing, hoping the real format will get
+              # a real format. We do nothing, hoping the real format will
               # get closed, closing the fake internal formats
 		    #warn "$WARN Unknown \@end $end_tag\n";
 		    #add_prev($text, $stack, "\@end $end_tag");
@@ -7127,6 +7119,7 @@ sub scan_line($$$$)
             add_prev($text, $stack, do_text($1, $state));
             my $macro = $2;
 	    #print STDERR "MACRO $macro\n";
+	    #dump_stack ($text, $stack, $state);
             # This is a macro added by close_stack to mark paragraph end
             if ($macro eq 'end_paragraph')
             {
@@ -7248,7 +7241,7 @@ sub scan_line($$$$)
                 return;
             }
             # a macro which triggers paragraph closing
-            if ($macro =~ /^tex_(\d+)$/o or $macro eq 'insertcopying')
+            if ($macro eq 'insertcopying')
             {
                 if (close_paragraph($text, $stack, $state))
                 {
@@ -7257,17 +7250,15 @@ sub scan_line($$$$)
                 }
 		else
                 {
-                    if ($macro =~ /^tex_(\d+)$/o)
-                    {
-                        add_prev ($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
-                    }
-                    else
-                    {
-                        add_prev ($text, $stack, do_insertcopying($state));
-                    }
-                    # reopen a preformatted format if it was interrupted by the tex
+                    add_prev ($text, $stack, do_insertcopying($state));
+                    # reopen a preformatted format if it was interrupted by the macro
                     begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 }
+                next;
+            }
+            if ($macro =~ /^tex_(\d+)$/o)
+            {
+                add_prev ($text, $stack, Texi2HTML::LaTeX2HTML::do_tex($1));
                 next;
             }
             if ($macro =~ /^itemx?$/)
@@ -7321,7 +7312,9 @@ sub scan_line($$$$)
             # Macro opening a format (table, list, deff, example...)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
-                if (close_paragraph($text, $stack, $state))
+                # if this is a paragraph style, we don't close allready opened 
+                # paragraph and start a new paragraph in preformatted environment 
+                if (! ($state->{'preformatted'} and ($format_type{$macro} eq 'paragraph_style')) and close_paragraph($text, $stack, $state))
                 {
                     $_ = "\@$macro " . $_;
                     next;
@@ -7356,7 +7349,7 @@ sub scan_line($$$$)
                     # Start a fake complex format in order to have a given pre style
                         $state->{'preformatted'}++;
                         push @$stack, { 'format' => 'menu_preformatted', 'text' => '', 'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE };
-                        push @{$state->{'preformatted_stack'}}, $Texi2HTML::Config::MENU_PRE_STYLE;
+                        push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-preformatted' };
                     }
                     next;
                 }
@@ -7364,7 +7357,7 @@ sub scan_line($$$$)
                 {
                     $state->{'preformatted'}++;
                     my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'} };
-                    push @{$state->{'preformatted_stack'}}, $Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'};
+                    push @{$state->{'preformatted_stack'}}, {'pre_style' =>$Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'}, 'class' => $macro };
                     push @$stack, $format;
 		    push @$stack, { 'format' => 'preformatted', 'text' => '' };
                     next;
@@ -7445,7 +7438,7 @@ sub scan_line($$$$)
                 }
                 # keep this one at the end as there are some other formats
                 # which are also in format_map
-                elsif (defined($Texi2HTML::Config::format_map{$macro}))
+                elsif (defined($Texi2HTML::Config::format_map{$macro}) or ($format_type{$macro} eq 'cartouche'))
                 {
                     push @$stack, { 'format' => $macro, 'text' => '' };
                     push @$stack, { 'format' => 'preformatted', 'text' => ''} if ($state->{'preformatted'});
@@ -7693,7 +7686,7 @@ sub add_line($$$;$)
         push (@$stack, { 'format' => 'term', 'text' => '' });
         # we cannot have a preformatted in table term (no <pre> in <dt>)
         # thus we set teletyped style @t if there is no pre_style
-        push (@$stack, { 'style' => 't', 'text' => '' }) if ($state->{'preformatted'} and (!$state->{'preformatted_stack'}->[-1]));
+        push (@$stack, { 'style' => 't', 'text' => '' }) if ($state->{'preformatted'} and (!$state->{'preformatted_stack'}->[-1]->{'pre_style'}));
         push (@$stack, { 'style' => $format->{'command'}, 'text' => '' }) if ($format->{'command'});
     }
     $format->{'term'} = 1;
@@ -8305,6 +8298,7 @@ exit(0) if $Texi2HTML::Config::DUMP_TEXI;
 rearrange_elements();
 do_names();
 &$Texi2HTML::Config::toc_body(\@elements_list, $do_contents, $do_scontents);
+&$Texi2HTML::Config::css_lines();
 $sec_num = 0;
 #$Texi2HTML::Config::L2H = l2h_FinishToLatex() if ($Texi2HTML::Config::L2H);
 #$Texi2HTML::Config::L2H = l2h_ToHtml()        if ($Texi2HTML::Config::L2H);

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. Starting a project with CVS </h1>
+<h1 class="chapter"> 3. Starting a project with CVS </h1>
 
 <p>Because renaming files and moving them between
 directories is somewhat inconvenient, the first thing
@@ -53,7 +68,7 @@ potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
 directories.  See section <a href="cvs_7.html#SEC70">Moving and renaming files</a>.
 </p><p>What to do next depends on the situation at hand.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC39">3.1 Setting up the files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Getting the files into the repository</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC43">3.2 Defining the module</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to make a module of the files</td></tr>
@@ -78,11 +93,11 @@ directories.  See section <a href="cvs_7.html#SEC70">Moving and renaming files</
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.1 Setting up the files </h2>
+<h2 class="section"> 3.1 Setting up the files </h2>
 
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC40">3.1.1 Creating a directory tree from a number of files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">This method is useful with old projects
                                 where files already exists.</td></tr>
@@ -110,7 +125,7 @@ be done in a couple of different ways.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.1.1 Creating a directory tree from a number of files </h3>
+<h3 class="subsection"> 3.1.1 Creating a directory tree from a number of files </h3>
 
 <p>When you begin using <small>CVS</small>, you will probably already have several
 projects that can be
@@ -119,7 +134,7 @@ put under <small>CVS</small> control.  In these cases the easiest way is to use 
 explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in `<tt><var>wdir</var></tt>', and you want them to appear in the
 repository as `<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>', you can do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd <var>wdir</var>
 $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </pre></td></tr></table>
@@ -132,7 +147,7 @@ them they must be present.  See section <a href="cvs_13.html#SEC105">Tracking th
 more information about them.
 </p><p>You can now verify that it worked, and remove your
 original source directory.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ..
 $ cvs checkout yoyodyne/<var>rdir</var>       # Explanation below
 $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
@@ -172,7 +187,7 @@ files are binary and which are not.  See section <a href="cvs_18.html#SEC165">Th
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.1.2 Creating Files From Other Version Control Systems </h3>
+<h3 class="subsection"> 3.1.2 Creating Files From Other Version Control Systems </h3>
 
 <p>If you have a project which you are maintaining with
 another version control system, such as <small>RCS</small>, you
@@ -260,11 +275,11 @@ vary).  See the comments in the script for details.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> 3.1.3 Creating a directory tree from scratch </h3>
+<h3 class="subsection"> 3.1.3 Creating a directory tree from scratch </h3>
 
 <p>For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ mkdir tc
 $ mkdir tc/man
 $ mkdir tc/testing
@@ -272,7 +287,7 @@ $ mkdir tc/testing
 <p>After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd tc
 $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
 </pre></td></tr></table>
@@ -299,7 +314,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.2 Defining the module </h2>
+<h2 class="section"> 3.2 Defining the module </h2>
 
 <p>The next step is to define the module in the
 `<tt>modules</tt>' file.  This is not strictly necessary,
@@ -309,7 +324,7 @@ related files and directories.
 </p><ol>
 <li><p>
 Get a working copy of the modules file.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout CVSROOT/modules
 $ cd CVSROOT
 </pre></td></tr></table>
@@ -317,17 +332,17 @@ $ cd CVSROOT
 Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
 following line to define the module `<samp>tc</samp>':
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 tc   yoyodyne/tc
 </pre></td></tr></table>
 </li><li><p>
 Commit your changes to the modules file.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs commit -m &quot;Added the tc module.&quot; modules
 </pre></td></tr></table>
 </li><li><p>
 Release the modules module.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ..
 $ cvs release -d CVSROOT
 </pre></td></tr></table></li></ol>

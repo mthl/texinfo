@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.32 2003-07-03 15:36:30 pertusus Exp $
+# $Id: texi2html.init,v 1.33 2003-07-23 12:04:44 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -204,6 +204,8 @@ $L2H_FILE = 'l2h.init';
 # of l2h
 $L2H_CLEAN = 1;
 
+# html version for latex2html
+$L2H_HTML_VERSION = "4.0";
 
 ##############################################################################
 #
@@ -266,10 +268,19 @@ $TOP_NODE_FILE = "index";
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
 
 # this controls the pre style for menus
-$MENU_PRE_STYLE = 'style="font-family: serif"';
+$MENU_PRE_STYLE = 'font-family: serif';
 
 # This controls the ul style for toc
-$TOC_LIST_STYLE =' style="list-style: none"';
+$TOC_LIST_STYLE = 'list-style: none';
+$TOC_LIST_ATTRIBUTE = ' class="toc"';
+
+# This lines are inserted before and after the shortcontents 
+$BEFORE_STOC_LINES = "<div class=\"shortcontents\">\n";
+$AFTER_STOC_LINES = "</div>\n";
+
+# This lines are inserted before and after the contents 
+$BEFORE_TOC_LINES = "<div class=\"contents\">\n";
+$AFTER_TOC_LINES = "</div>\n";
 
 # if set (e.g., to index.html) replace hrefs to this file
 # (i.e., to index.html) by ./
@@ -487,6 +498,8 @@ sub t2h_default_set_body_text()
 # $T2H_TOP           -- lines of Top texinfo node
 # $Texi2HTML::THIS_SECTION  -- lines of 'This' section
 # $Texi2HTML::THIS_HEADER   -- lines preceding navigation panel of 'This' section
+# $Texi2HTML::STOC_LINES    -- lines of short table of contents
+# $Texi2HTML::TOC_LINES     -- lines of table of contents
 
 #
 # There are the following subs which control the layout:
@@ -515,6 +528,7 @@ $about_body		      = \&T2H_DEFAULT_about_body;
 $print_frame              = \&T2H_DEFAULT_print_frame;
 $print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
 $toc_body                 = \&T2H_DEFAULT_toc_body;
+$css_lines                 = \&T2H_DEFAULT_css_lines;
 $print_redirection_page   = \&T2H_DEFAULT_print_redirection_page;
 
 ########################################################################
@@ -717,6 +731,7 @@ $Texi2HTML::THISDOC{program_authors}
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+$CSS_LINES
 $EXTRA_HEAD
 </head>
 
@@ -952,7 +967,7 @@ sub T2H_DEFAULT_toc_body($$$)
     return unless ($do_contents or $do_scontents or $FRAMES);
     my $current_level = 0;
     my $toc_nr = 0;
-    my $ul_style = $NUMBER_SECTIONS ? $TOC_LIST_STYLE : ''; 
+    my $ul_style = $NUMBER_SECTIONS ? $TOC_LIST_ATTRIBUTE : ''; 
     foreach my $element (@$elements_list)
     {
         next if ($element->{'top'} or $element->{'index_page'});
@@ -999,13 +1014,33 @@ sub T2H_DEFAULT_toc_body($$$)
         push(@Texi2HTML::TOC_LINES, "</li>\n$ind</ul>\n");
     }
     @Texi2HTML::TOC_LINES = () unless ($do_contents);
+    if (@Texi2HTML::TOC_LINES)
+    {
+        unshift @Texi2HTML::TOC_LINES, $BEFORE_TOC_LINES;
+        push @Texi2HTML::TOC_LINES, $AFTER_TOC_LINES;
+    }
     @Texi2HTML::STOC_LINES = () unless ($do_scontents or $FRAMES);
     if (@Texi2HTML::STOC_LINES)
     {
         unshift @Texi2HTML::STOC_LINES, "<ul${ul_style}>\n";
         push @Texi2HTML::STOC_LINES, "</ul>\n";
+        unshift @Texi2HTML::STOC_LINES, $BEFORE_STOC_LINES;
+        push @Texi2HTML::STOC_LINES, $AFTER_STOC_LINES;
     }
 }
+
+sub T2H_DEFAULT_css_lines ()
+{
+    return if (defined($CSS_LINES) or (! keys(%css_map)));
+    $CSS_LINES = "<style type=\"text/css\">\n<!--\n";
+    foreach my $css_rule (sort(keys(%css_map)))
+    {
+        next unless ($css_map{$css_rule});
+        $CSS_LINES .= "$css_rule {$css_map{$css_rule}}\n";
+    }
+    $CSS_LINES .= "-->\n</style>\n";
+}
+
 ######################################################################
 # About page
 #
@@ -1220,8 +1255,8 @@ $simple_map_pre{'*'} = "\n";
                'bullet', '*',
                #'copyright', '(C)',
                'copyright', '&copy;',
-               'dots', '<small>...</small>',
-               'enddots', '<small>....</small>',
+               'dots', '<small class="dots">...</small>',
+               'enddots', '<small class="enddots">....</small>',
                'equiv', '==',
                'error', 'error--&gt;',
                'expansion', '==&gt;',
@@ -1345,27 +1380,27 @@ $complex_format_map =
 {
  'example' =>
  {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td class=\"example\">"},
+  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
   'pre_style' => ''
  },
  'smallexample' =>
  {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\">"},
+  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
-  'pre_style' => 'style="font-size: smaller"'
+  'pre_style' => 'font-size: smaller'
  },
  'display' =>
  {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td class=\"display\">"},
+  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
-  'pre_style' => 'style="font-family: serif"'
+  'pre_style' => 'font-family: serif'
  },
  'smalldisplay' =>
  {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\">"},
+  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
   'end' => q{'</td></tr></table>'},
-  'pre_style' => 'style="font-family: serif; font-size: smaller"'
+  'pre_style' => 'font-family: serif; font-size: smaller'
  }
 };
 
@@ -1478,13 +1513,22 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
         # unsupported formats/features
         'direntry', 'space',
         'end direntry', 1,
-        'cartouche', 'space',
-        'end cartouche', 1,
         'group', 'space',
         'end group', 1,
         'exdent', 1,  
      );
 
+# map mapping css specification to style
+# css styles corresponding with complex formats should be changed in 
+# $complex_format_map->{format}->{'pre_style'}
+
+%css_map = 
+     (
+         'ul.toc'                 => "$TOC_LIST_STYLE",
+         'pre.menu-comment'       => "$MENU_PRE_STYLE",
+         'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
+         'a.summary-letter'       => 'text-decoration: none',
+     );
 
 # functions used for styles
 sub do_ctrl($;$) { return "^$_[0]" }
@@ -1580,6 +1624,7 @@ $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_index;
 $protect_html      = \&t2h_default_protect_html;
 $end_complex_format = \&t2h_default_end_complex_format;
+$cartouche         = \&t2h_default_cartouche;
 
 
 sub t2h_default_end_complex_format($$)
@@ -1671,7 +1716,7 @@ sub t2h_default_menu($)
 
     if ($text =~ /\S/)
     {
-        return "<table border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
+        return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
     }
     return '';
 }
@@ -1698,7 +1743,8 @@ sub t2h_default_menu_entry($$;$)
               $entry .
           '</td><td>&nbsp;&nbsp;</td>';
 }
-# a menu entry (ref + description)
+
+# a menu description
 sub t2h_default_menu_description($$)
 {
     my $descr = shift;
@@ -1707,6 +1753,7 @@ sub t2h_default_menu_description($$)
     return '<td align="left" valign="top">' . $descr .
           "</td></tr>\n";
 }
+
 # a menu comment (between menu lines)
 sub t2h_default_menu_comment($)
 {
@@ -1882,18 +1929,14 @@ sub t2h_default_paragraph($$)
 }
 
 # a preformatted section
-sub t2h_default_preformatted($$)
+sub t2h_default_preformatted($$$)
 {
     my $text = shift;
     my $pre_style = shift;
+    my $class = shift;
 
     return '' if ($text eq '');
-    my $open = '<pre>';
-    if ($pre_style)
-    {
-        $open = "<pre $pre_style>";
-    }
-    return $open . "$text</pre>";
+    return "<pre class=\"$class\">$text</pre>";
 }
 
 # a heading for an element
@@ -1908,7 +1951,11 @@ sub t2h_default_heading($)
         print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
         $level = 1 if ($level == 0);
     }
-    return "<h$level> $element->{'text'} </h$level>\n";
+    my $class = $element->{'tag'};
+    print STDERR "Bug: $element->{'texi'} class undef\n" if (!defined($class));
+    # do like makeinfo
+    $class = 'unnumbered' if ($class eq 'top');
+    return "<h$level class=\"$class\"> $element->{'text'} </h$level>\n";
 }
 
 # formatting of raw regions
@@ -1919,7 +1966,7 @@ sub t2h_default_raw($$)
     my $text = shift;
     if ($style eq 'verbatim' or $style eq 'tex')
     {
-        return '<pre>' . &$protect_html($text) . '</pre>';
+        return "<pre class=\"$style\">" . &$protect_html($text) . '</pre>';
     }
     elsif ($style eq 'html')
     {
@@ -1954,6 +2001,8 @@ sub t2h_default_foot_section($)
 {
     my $lines = shift;
     unshift @$lines, "$DEFAULT_RULE\n<h3>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h3>\n";
+    unshift @$lines, '<div class="footnote">' . "\n";
+    push @$lines, "</div>\n";
     return $lines;
 }
 
@@ -1977,12 +2026,12 @@ sub t2h_default_image($$$)
 # address put in footer describing when was generated and who did the manual
 sub t2h_default_address($$)
 {
-   my $user = shift;
-   my $date = shift;
-   my $text = '';
-   $text .= "by <i>$user</i> " if $user;
-   $text .= "on <i>$date</i>" if $date;
-   return $text;
+    my $user = shift;
+    my $date = shift;
+    my $text = '';
+    $text .= "by <i>$user</i> " if $user;
+    $text .= "on <i>$date</i>" if $date;
+    return $text;
 }
 
 # label for an index entry, target of the link from the index page
@@ -2080,12 +2129,25 @@ sub t2h_default_def_line($$$)
     return $result;
 }
 
-# a whole index
-sub t2h_default_index($)
+# a cartouche
+sub t2h_default_cartouche($)
 {
     my $text = shift;
+
+    if ($text =~ /\S/)
+    {
+        return "<table class=\"cartouche\" border=\"1\"><tr><td>\n" . $text . "</td></tr></table>\n";
+    }
+    return '';
+}
+
+# a whole index
+sub t2h_default_index($$)
+{
+    my $text = shift;
+    my $name = shift;
     #FIXME i18n
-    return '<table border="0">' . "\n" .
+    return "<table border=\"0\" class=\"index-$name\">" . "\n" .
 "<tr><td></td><th align=\"left\">Index Entry</th><th align=\"left\"> Section</th></tr>\n" .
 "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text . "</table>";
 }
@@ -2126,7 +2188,7 @@ sub t2h_default_summary_letter($$$)
 
     return &$anchor('', "$file#${id}_" . $index,
          "<b>" . &$protect_html($letter) . "</b>",
-         'style="text-decoration: none"');
+         'class="summary-letter"');
 }
 
 sub t2h_default_index_summary($$)

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 9. Handling binary files </h1>
+<h1 class="chapter"> 9. Handling binary files </h1>
 
 <p>The most common use for <small>CVS</small> is to store text
 files.  With text files, <small>CVS</small> can merge revisions,
@@ -52,7 +67,7 @@ However, if you are willing to give up a few of these
 abilities, <small>CVS</small> can store binary files.  For
 example, one might store a web site in <small>CVS</small>
 including both text files and binary images.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC81">9.1 The issues with binary files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">More details on issues with binary files</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC82">9.2 How to store binary files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to store them</td></tr>
@@ -77,7 +92,7 @@ including both text files and binary images.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.1 The issues with binary files </h2>
+<h2 class="section"> 9.1 The issues with binary files </h2>
 
 <p>While the need to manage binary files may seem obvious
 if the files that you customarily work with are binary,
@@ -141,7 +156,7 @@ resulting from branches, restrict use of branches.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 9.2 How to store binary files </h2>
+<h2 class="section"> 9.2 How to store binary files </h2>
 
 <p>There are two issues with using <small>CVS</small> to store
 binary files.  The first is that <small>CVS</small> by default
@@ -158,7 +173,7 @@ commands insures that neither line ending conversion
 nor keyword expansion will be done.
 </p><p>Here is an example of how you can create a new file
 using the `<samp>-kb</samp>' flag:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ echo '$<i></i>Id$' &gt; kotest
 $ cvs add -kb -m&quot;A test file&quot; kotest
 $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
@@ -166,7 +181,7 @@ $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 <p>If a file accidentally gets added without `<samp>-kb</samp>',
 one can use the <code>cvs admin</code> command to recover.
 For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ echo '$<i></i>Id$' &gt; kotest
 $ cvs add -m&quot;A test file&quot; kotest
 $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest

@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,13 +57,13 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> A. Guide to CVS commands </h1>
+<h1 class="appendix"> A. Guide to CVS commands </h1>
 
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC115">A.1 Overall structure of CVS commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC116">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS's success or failure</td></tr>
@@ -87,10 +102,10 @@ reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC15
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.1 Overall structure of CVS commands </h2>
+<h2 class="appendixsec"> A.1 Overall structure of CVS commands </h2>
 
 <p>The overall format of all <small>CVS</small> commands is:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
 </pre></td></tr></table>
 <dl compact="compact">
@@ -149,7 +164,7 @@ the documentation instead.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.2 CVS's exit status </h2>
+<h2 class="appendixsec"> A.2 CVS's exit status </h2>
 
 <p><small>CVS</small> can indicate to the calling environment whether it
 succeeded or failed by setting its <em>exit status</em>.
@@ -187,7 +202,7 @@ other <small>CVS</small> commands.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.3 Default options and the ~/.cvsrc file </h2>
+<h2 class="appendixsec"> A.3 Default options and the ~/.cvsrc file </h2>
 
 <p>There are some <code>command_options</code> that are used so
 often that you might have set up an alias or some other
@@ -212,7 +227,7 @@ options from the command line.
 used on the command line, will be used to match against
 the file.  So if this is the contents of the user's
 `<tt>~/.cvsrc</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 log -N
 diff -uN
 rdiff -u
@@ -233,7 +248,7 @@ to specify use of the &quot;old&quot; format, so you would need
 </p><p>In place of the command name you can use <code>cvs</code> to
 specify global options (see section <a href="#SEC118">Global options</a>).  For
 example the following line in `<tt>.cvsrc</tt>'
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -z6
 </pre></td></tr></table>
 <p>causes <small>CVS</small> to use compression level 6.
@@ -256,7 +271,7 @@ cvs -z6
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.4 Global options </h2>
+<h2 class="appendixsec"> A.4 Global options </h2>
 
 <p>The available `<samp>cvs_options</samp>' (that are given to the
 left of `<samp>cvs_command</samp>') are:
@@ -455,7 +470,7 @@ Only has an effect on the <small>CVS</small> client.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.5 Common command options </h2>
+<h2 class="appendixsec"> A.5 Common command options </h2>
 
 <p>This section describes the `<samp>command_options</samp>' that
 are available across several <small>CVS</small> commands.  These
@@ -500,7 +515,7 @@ e-mail standard (specified in RFC822 as amended by
 RFC1123).
 </p><p>ISO8601 dates have many variants but a few examples
 are:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 1972-09-24
 1972-09-24 20:05
 </pre></td></tr></table>
@@ -510,7 +525,7 @@ hear the <em>whole</em> long story :-).
 </p><p>In addition to the dates allowed in Internet e-mail
 itself, <small>CVS</small> also allows some of the fields to be
 omitted.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 24 Sep 1972 20:05
 24 Sep
 </pre></td></tr></table>
@@ -531,7 +546,7 @@ not April 1.
 flag so that your shell doesn't interpret spaces as
 argument separators.  A command using the `<samp>-D</samp>'
 flag can look like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </pre></td></tr></table>
 <a name="IDX226"></a>
@@ -681,7 +696,7 @@ and <code>update</code>.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.6 admin--Administration </h2>
+<h2 class="appendixsec"> A.6 admin--Administration </h2>
 
 <ul>
 <li><p>
@@ -714,7 +729,7 @@ To disallow <code>cvs admin</code> for all users, create a
 group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC121">A.6.1 admin options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -738,7 +753,7 @@ can run <code>cvs admin</code>.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.6.1 admin options </h3>
+<h3 class="appendixsubsec"> A.6.1 admin options </h3>
 
 <p>Some of these options have questionable usefulness for
 <small>CVS</small> but exist for historical purposes.  Some even
@@ -1077,11 +1092,11 @@ this option has never done anything useful.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.7 checkout--Check out sources for editing </h2>
+<h2 class="appendixsec"> A.7 checkout--Check out sources for editing </h2>
 
 <ul>
 <li><p>
-Synopsis: checkout [options] modules<small>...</small>
+Synopsis: checkout [options] modules<small class="dots">...</small>
 </p></li><li><p>
 Requires: repository.
 </p></li><li><p>
@@ -1141,7 +1156,7 @@ forget to change your directory to the top level
 directory.
 </p><p>For the output produced by the <code>checkout</code> command
 see <a href="#SEC155">update output</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC123">A.7.1 checkout options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC124">A.7.2 checkout examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1166,7 +1181,7 @@ see <a href="#SEC155">update output</a>.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.7.1 checkout options </h3>
+<h3 class="appendixsubsec"> A.7.1 checkout options </h3>
 
 <p>These standard options are supported by <code>checkout</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -1322,15 +1337,15 @@ modules file to set the module status.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.7.2 checkout examples </h3>
+<h3 class="appendixsubsec"> A.7.2 checkout examples </h3>
 
 <p>Get a copy of the module `<samp>tc</samp>':
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout tc
 </pre></td></tr></table>
 <p>Get a copy of the module `<samp>tc</samp>' as it looked one day
 ago:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -D yesterday tc
 </pre></td></tr></table>
 <hr size="6">
@@ -1352,12 +1367,12 @@ $ cvs checkout -D yesterday tc
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.8 commit--Check files into the repository </h2>
+<h2 class="appendixsec"> A.8 commit--Check files into the repository </h2>
 
 <ul>
 <li><p>
 Synopsis: commit [-lnRf] [-m 'log_message' |
--F file] [-r revision] [files<small>...</small>]
+-F file] [-r revision] [files<small class="dots">...</small>]
 </p></li><li><p>
 Requires: working directory, repository.
 </p></li><li><p>
@@ -1396,7 +1411,7 @@ log message on the command line with the `<samp>-m
 <var>message</var></samp>' option, and thus avoid the editor invocation,
 or use the `<samp>-F <var>file</var></samp>' option to specify
 that the argument file contains the log message.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC126">A.8.1 commit options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC127">A.8.2 commit examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1421,7 +1436,7 @@ that the argument file contains the log message.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.8.1 commit options </h3>
+<h3 class="appendixsubsec"> A.8.1 commit options </h3>
 
 <p>These standard options are supported by <code>commit</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -1460,7 +1475,7 @@ the `<samp>-f</samp>' option as defined in <a href="#SEC119">Common command opti
 made any changes to the file.  If the current revision
 of <var>file</var> is 1.7, then the following two commands
 are equivalent:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs commit -f <var>file</var>
 $ cvs commit -r 1.8 <var>file</var>
 </pre></td></tr></table>
@@ -1495,7 +1510,7 @@ invoking an editor.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.8.2 commit examples </h3>
+<h3 class="appendixsubsec"> A.8.2 commit examples </h3>
 
 <hr size="6">
 <a name="SEC128"></a>
@@ -1515,7 +1530,7 @@ invoking an editor.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> A.8.2.1 Committing to a branch </h4>
+<h4 class="appendixsubsubsec"> A.8.2.1 Committing to a branch </h4>
 
 <p>You can commit to a branch revision (one that has an
 even number of dots) with the `<samp>-r</samp>' option.  To
@@ -1530,7 +1545,7 @@ thereby not disturbing main-line development in any
 way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
 $ cvs checkout -r FCS1_2_Patch product_module
 $ cd product_module
@@ -1557,7 +1572,7 @@ sticky.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> A.8.2.2 Creating the branch after editing </h4>
+<h4 class="appendixsubsubsec"> A.8.2.2 Creating the branch after editing </h4>
 
 <p>Say you have been working on some extremely
 experimental software, based on whatever revision you
@@ -1568,7 +1583,7 @@ commit your change to a new branch.  Others can then
 checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 [[ hacked sources are present ]]
 $ cvs tag -b EXPR1
 $ cvs update -r EXPR1
@@ -1580,7 +1595,7 @@ changes to the files will never be removed by the
 <code>update</code> command.  The <code>commit</code> will
 automatically commit to the correct branch, because the
 `<samp>-r</samp>' is sticky.  You could also do like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 [[ hacked sources are present ]]
 $ cvs tag -b EXPR1
 $ cvs commit -r EXPR1
@@ -1592,7 +1607,7 @@ flag, some files may accidentally end up on the main
 trunk.
 </p><p>To work with you on the experimental change, others
 would simply do
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -r EXPR1 whatever_module
 </pre></td></tr></table>
 <hr size="6">
@@ -1614,11 +1629,11 @@ $ cvs checkout -r EXPR1 whatever_module
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.9 diff--Show differences between revisions </h2>
+<h2 class="appendixsec"> A.9 diff--Show differences between revisions </h2>
 
 <ul>
 <li><p>
-Synopsis: diff [-lR] [-k kflag] [format_options] [[-r rev1 | -D date1] [-r rev2 |  -D date2]] [files<small>...</small>]
+Synopsis: diff [-lR] [-k kflag] [format_options] [[-r rev1 | -D date1] [-r rev2 |  -D date2]] [files<small class="dots">...</small>]
 </p></li><li><p>
 Requires: working directory, repository.
 </p></li><li><p>
@@ -1634,7 +1649,7 @@ compared.  If any directories are given, all files
 under them will be compared.
 </p><p>The exit status for diff is different than for other
 <small>CVS</small> commands; for details <a href="#SEC116">CVS's exit status</a>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC131">A.9.1 diff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC134">A.9.2 diff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1659,7 +1674,7 @@ under them will be compared.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.9.1 diff options </h3>
+<h3 class="appendixsubsec"> A.9.1 diff options </h3>
 
 <p>These standard options are supported by <code>diff</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -1982,7 +1997,7 @@ context.
 </p></dd>
 </dl>
 
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC132">A.9.1.1 Line group formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC133">A.9.1.2 Line formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -2007,7 +2022,7 @@ context.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> A.9.1.1 Line group formats </h4>
+<h4 class="appendixsubsubsec"> A.9.1.1 Line group formats </h4>
 
 <p>Line group formats let you specify formats suitable for many
 applications that allow if-then-else input, including programming
@@ -2018,7 +2033,7 @@ with the original version from the repository,
 and outputs a merged file in which old regions are
 surrounded by `<samp>\begin{em}</samp>'-`<samp>\end{em}</samp>' lines, and new
 regions are surrounded by `<samp>\begin{bf}</samp>'-`<samp>\end{bf}</samp>' lines.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs diff \
    --old-group-format='\begin{em}
 %&lt;\end{em}
@@ -2030,7 +2045,7 @@ cvs diff \
 </pre></td></tr></table>
 <p>The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs diff \
    --old-group-format='\begin{em}
 %&lt;\end{em}
@@ -2048,7 +2063,7 @@ cvs diff \
 </pre></td></tr></table>
 <p>Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &quot;plain English&quot; style.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs diff \
    --unchanged-group-format='' \
    --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
@@ -2204,7 +2219,7 @@ otherwise.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h4> A.9.1.2 Line formats </h4>
+<h4 class="appendixsubsubsec"> A.9.1.2 Line formats </h4>
 
 <p>Line formats control how each line taken from an input file is
 output as part of a line group in if-then-else format.
@@ -2213,7 +2228,7 @@ change indicator to the left of the text.  The first column of output
 is `<samp>-</samp>' for deleted lines, `<samp>|</samp>' for added lines, and a space
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs diff \
    --old-line-format='-%l
 ' \
@@ -2295,7 +2310,7 @@ format is just after a tab stop (e.g. by preceding `<samp>%l</samp>' or
 different formats.  For example, the following command uses a format
 similar to <code>diff</code>'s normal format.  You can tailor this command
 to get fine control over <code>diff</code>'s output.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs diff \
    --old-line-format='&lt; %l
 ' \
@@ -2330,32 +2345,32 @@ cvs diff \
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.9.2 diff examples </h3>
+<h3 class="appendixsubsec"> A.9.2 diff examples </h3>
 
 <p>The following line produces a Unidiff (`<samp>-u</samp>' flag)
 between revision 1.14 and 1.19 of
 `<tt>backend.c</tt>'.  Due to the `<samp>-kk</samp>' flag no
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
 </pre></td></tr></table>
 <p>Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs diff -r RELEASE_1_0 -r EXPR1
 </pre></td></tr></table>
 <p>A command like this can be used to produce a context
 diff between two releases:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
 </pre></td></tr></table>
 <p>If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs diff -u | less
 </pre></td></tr></table>
 <hr size="6">
@@ -2377,11 +2392,11 @@ $ cvs diff -u | less
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.10 export--Export sources from CVS, similar to checkout </h2>
+<h2 class="appendixsec"> A.10 export--Export sources from CVS, similar to checkout </h2>
 
 <ul>
 <li><p>
-Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module<small>...</small>
+Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module<small class="dots">...</small>
 </p></li><li><p>
 Requires: repository.
 </p></li><li><p>
@@ -2407,7 +2422,7 @@ command (which is part of the <small>RCS</small> suite--see
 ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use `<samp>-kv</samp>'.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC136">A.10.1 export options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -2431,7 +2446,7 @@ use `<samp>-kv</samp>'.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.10.1 export options </h3>
+<h3 class="appendixsubsec"> A.10.1 export options </h3>
 
 <p>These standard options are supported by <code>export</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -2505,11 +2520,11 @@ See section <a href="#SEC123">checkout options</a>, for complete details on how
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.11 history--Show status of files and users </h2>
+<h2 class="appendixsec"> A.11 history--Show status of files and users </h2>
 
 <ul>
 <li><p>
-Synopsis:     history [-report] [-flags] [-options args] [files<small>...</small>]
+Synopsis:     history [-report] [-flags] [-options args] [files<small class="dots">...</small>]
 </p></li><li><p>
 Requires: the file `<tt>$CVSROOT/CVSROOT/history</tt>'
 </p></li><li><p>
@@ -2526,7 +2541,7 @@ various formats.
 </p><p><strong>Warning:</strong> <code>history</code> uses `<samp>-f</samp>', `<samp>-l</samp>',
 `<samp>-n</samp>', and `<samp>-p</samp>' in ways that conflict with the
 normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC138">A.11.1 history options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -2550,7 +2565,7 @@ normal use inside <small>CVS</small> (see section <a href="#SEC119">Common comma
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.11.1 history options </h3>
+<h3 class="appendixsubsec"> A.11.1 history options </h3>
 
 <p>Several options (shown above as `<samp>-report</samp>')  control  what
 kind of report is generated:
@@ -2743,11 +2758,11 @@ time zone instead of UTC.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.12 import--Import sources into CVS, using vendor branches </h2>
+<h2 class="appendixsec"> A.12 import--Import sources into CVS, using vendor branches </h2>
 
 <ul>
 <li><p>
-Synopsis: import [-options] repository vendortag releasetag<small>...</small>
+Synopsis: import [-options] repository vendortag releasetag<small class="dots">...</small>
 </p></li><li><p>
 Requires: Repository, source distribution directory.
 </p></li><li><p>
@@ -2798,7 +2813,7 @@ does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC140">A.12.1 import options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC141">A.12.2 import output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -2824,7 +2839,7 @@ directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.12.1 import options </h3>
+<h3 class="appendixsubsec"> A.12.1 import options </h3>
 
 <p>This standard option is supported by <code>import</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description):
@@ -2889,7 +2904,7 @@ file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.12.2 import output </h3>
+<h3 class="appendixsubsec"> A.12.2 import output </h3>
 
 <p><code>import</code> keeps you informed of its progress by printing a line
 for each file, preceded by one character indicating the status of the file:
@@ -2945,7 +2960,7 @@ see section <a href="cvs_18.html#SEC158">The modules file</a>.)
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.12.3 import examples </h3>
+<h3 class="appendixsubsec"> A.12.3 import examples </h3>
 
 <p>See <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, and <a href="cvs_3.html#SEC40">Creating a directory tree from a number of files</a>.
 </p><hr size="6">
@@ -2967,11 +2982,11 @@ see section <a href="cvs_18.html#SEC158">The modules file</a>.)
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.13 log--Print out log information for files </h2>
+<h2 class="appendixsec"> A.13 log--Print out log information for files </h2>
 
 <ul>
 <li><p>
-Synopsis: log [options] [files<small>...</small>]
+Synopsis: log [options] [files<small class="dots">...</small>]
 </p></li><li><p>
 Requires: repository, working directory.
 </p></li><li><p>
@@ -2996,7 +3011,7 @@ Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p><p><strong>Warning:</strong> <code>log</code> uses `<samp>-R</samp>' in a way that conflicts
 with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC144">A.13.1 log options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC145">A.13.2 log examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3021,7 +3036,7 @@ with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Com
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.13.1 log options </h3>
+<h3 class="appendixsubsec"> A.13.1 log options </h3>
 
 <p>By default, <code>log</code> prints all information that is
 available.  All other options restrict the output.
@@ -3198,7 +3213,7 @@ selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.13.2 log examples </h3>
+<h3 class="appendixsubsec"> A.13.2 log examples </h3>
 
 <p>Contributed examples are gratefully accepted.
 </p><hr size="6">
@@ -3220,11 +3235,11 @@ selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.14 rdiff--'patch' format diffs between releases </h2>
+<h2 class="appendixsec"> A.14 rdiff--'patch' format diffs between releases </h2>
 
 <ul>
 <li><p>
-rdiff [-flags] [-V vn] [-r t|-D d [-r t2|-D d2]] modules<small>...</small>
+rdiff [-flags] [-V vn] [-r t|-D d [-r t2|-D d2]] modules<small class="dots">...</small>
 </p></li><li><p>
 Requires: repository.
 </p></li><li><p>
@@ -3251,7 +3266,7 @@ in more than one directory, then it may be necessary to
 specify the `<samp>-p</samp>' option to the <code>patch</code> command when
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC147">A.14.1 rdiff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC148">A.14.2 rdiff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3276,7 +3291,7 @@ the files that are located in other directories.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.14.1 rdiff options </h3>
+<h3 class="appendixsubsec"> A.14.1 rdiff options </h3>
 
 <p>These standard options are supported by <code>rdiff</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -3363,13 +3378,13 @@ way that <small>RCS</small> version 5 does.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.14.2 rdiff examples </h3>
+<h3 class="appendixsubsec"> A.14.2 rdiff examples </h3>
 
 <p>Suppose you receive mail from <tt>foo@example.net</tt> asking for an
 update from release 1.2 to 1.4 of the tc compiler.  You
 have no such patches on hand, but with <small>CVS</small> that can
 easily be fixed with a command such as this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
 $$ Mail -s 'The patches you asked for' foo@example.net
 </pre></td></tr></table>
@@ -3378,7 +3393,7 @@ called `<samp>R_1_3fix</samp>' for bugfixes.  `<samp>R_1_3_1</samp>'
 corresponds to release 1.3.1, which was made some time
 ago.  Now, you want to see how much development has been
 done on the branch.  This command can be used:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
 cvs rdiff: Diffing module-name
 File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
@@ -3404,11 +3419,11 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.15 release--Indicate that a Module is no longer in use </h2>
+<h2 class="appendixsec"> A.15 release--Indicate that a Module is no longer in use </h2>
 
 <ul>
 <li><p>
-release [-d] directories<small>...</small>
+release [-d] directories<small class="dots">...</small>
 </p></li><li><p>
 Requires: Working directory.
 </p></li><li><p>
@@ -3433,7 +3448,7 @@ defined in the module database.
 leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC150">A.15.1 release options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC151">A.15.2 release output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3459,7 +3474,7 @@ history log.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.15.1 release options </h3>
+<h3 class="appendixsubsec"> A.15.1 release options </h3>
 
 <p>The <code>release</code> command supports one command option:
 </p><dl compact="compact">
@@ -3497,7 +3512,7 @@ if it is non-empty!
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.15.2 release output </h3>
+<h3 class="appendixsubsec"> A.15.2 release output </h3>
 
 <p>Before <code>release</code> releases your sources it will
 print a one-line message for any file that is not
@@ -3565,11 +3580,11 @@ sources, this file will be lost.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.15.3 release examples </h3>
+<h3 class="appendixsubsec"> A.15.3 release examples </h3>
 
 <p>Release the `<tt>tc</tt>' directory, and delete your local working copy
 of the files.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ..         # You must stand immediately above the
                 # sources when you issue `<samp>cvs release</samp>'.
 $ cvs release -d tc
@@ -3596,11 +3611,11 @@ $
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> A.16 update--Bring work tree in sync with repository </h2>
+<h2 class="appendixsec"> A.16 update--Bring work tree in sync with repository </h2>
 
 <ul>
 <li><p>
-update [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D date] [-W spec] files<small>...</small>
+update [-ACdflPpR] [-I name] [-j rev [-j rev]] [-k kflag] [-r tag|-D date] [-W spec] files<small class="dots">...</small>
 </p></li><li><p>
 Requires: repository, working directory.
 </p></li><li><p>
@@ -3619,7 +3634,7 @@ option, <code>update</code> will also merge any differences
 between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC154">A.16.1 update options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC155">A.16.2 update output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3644,7 +3659,7 @@ into any destination revisions specified with <code>-r</code>,
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.16.1 update options </h3>
+<h3 class="appendixsubsec"> A.16.1 update options </h3>
 
 <p>These standard options are available with <code>update</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
@@ -3789,7 +3804,7 @@ date.  An optional date is specified by adding a colon
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h3> A.16.2 update output </h3>
+<h3 class="appendixsubsec"> A.16.2 update output </h3>
 
 <p><code>update</code> and <code>checkout</code> keep you informed of
 their progress by printing a line for each file, preceded

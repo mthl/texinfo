@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,14 +57,14 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> B. Quick reference to CVS commands </h1>
+<h1 class="appendix"> B. Quick reference to CVS commands </h1>
 
 <p>This appendix describes how to invoke <small>CVS</small>, with
 references to where each command or feature is
 described in detail.  For other references run the
 <code>cvs --help</code> command, or see <a href="cvs_24.html#SEC189">Index</a>.
 </p><p>A <small>CVS</small> command looks like:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs [ <var>global_options</var> ] <var>command</var> [ <var>command_options</var> ] [ <var>command_args</var> ]
 </pre></td></tr></table>
 <p>Global options:
@@ -144,7 +159,7 @@ See <a href="cvs_16.html#SEC118">Global options</a>.
 </dl>
 
 <p>Keyword expansion modes (see section <a href="cvs_12.html#SEC102">Substitution modes</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 -kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
 -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
 -kk   $<i></i>Id$
@@ -153,7 +168,7 @@ See <a href="cvs_16.html#SEC118">Global options</a>.
 -kb   <i>no expansion, file is binary</i>
 </pre></td></tr></table>
 <p>Keywords (see section <a href="cvs_12.html#SEC99">Keyword List</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $<i></i>Author: joe $
 $<i></i>Date: 1993/12/09 03:21:13 $
 $<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
@@ -172,7 +187,7 @@ Initial revision
 </pre></td></tr></table>
 <p>Commands, command options, and command arguments:
 </p><dl compact="compact">
-<dt><code> add [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> add [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Add a new file/directory.  See <a href="cvs_7.html#SEC67">Adding files to a directory</a>.
 </p><dl compact="compact">
@@ -187,7 +202,7 @@ Initial revision
 </dl>
 
 </dd>
-<dt><code> admin [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> admin [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Administration of history files in the repository.  See
 <a href="cvs_16.html#SEC120">admin--Administration</a>.
@@ -245,7 +260,7 @@ Initial revision
 </dl>
 
 </dd>
-<dt><code> annotate [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> annotate [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Show last revision where each line was modified.  See
 <a href="cvs_8.html#SEC79">Annotate command</a>.
@@ -280,7 +295,7 @@ binary files are skipped with a message.)
 </dl>
 
 </dd>
-<dt><code> checkout [<var>options</var>] <var>modules</var><small>...</small>
+<dt><code> checkout [<var>options</var>] <var>modules</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Get a copy of the sources.  See <a href="cvs_16.html#SEC122">checkout--Check out sources for editing</a>.
 </p><dl compact="compact">
@@ -352,7 +367,7 @@ stickiness).  See <a href="cvs_16.html#SEC123">checkout options</a>.
 </dl>
 
 </dd>
-<dt><code> commit [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> commit [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Check changes into the repository.  See <a href="cvs_16.html#SEC125">commit--Check files into the repository</a>.
 </p><dl compact="compact">
@@ -388,7 +403,7 @@ See <a href="cvs_16.html#SEC126">commit options</a>.
 </dl>
 
 </dd>
-<dt><code> diff [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> diff [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Show differences between revisions.  See <a href="cvs_16.html#SEC130">diff--Show differences between revisions</a>.
 In addition to the options shown below, accepts a wide
@@ -430,7 +445,7 @@ variety of options to control output style, for example
 </dl>
 
 </dd>
-<dt><code> edit [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> edit [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Get ready to edit a watched file.  See <a href="cvs_10.html#SEC92">How to edit a file which is being watched</a>.
 </p><dl compact="compact">
@@ -452,7 +467,7 @@ variety of options to control output style, for example
 </dl>
 
 </dd>
-<dt><code> editors [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> editors [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>See who is editing a watched file.  See <a href="cvs_10.html#SEC93">Information about who is watching and editing</a>.
 </p><dl compact="compact">
@@ -467,7 +482,7 @@ variety of options to control output style, for example
 </dl>
 
 </dd>
-<dt><code> export [<var>options</var>] <var>modules</var><small>...</small>
+<dt><code> export [<var>options</var>] <var>modules</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Export files from <small>CVS</small>.  See <a href="cvs_16.html#SEC135">export--Export sources from CVS, similar to checkout</a>.
 </p><dl compact="compact">
@@ -514,7 +529,7 @@ variety of options to control output style, for example
 </dl>
 
 </dd>
-<dt><code> history [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> history [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Show repository access history.  See <a href="cvs_16.html#SEC137">history--Show status of files and users</a>.
 </p><dl compact="compact">
@@ -592,7 +607,7 @@ See <a href="cvs_16.html#SEC138">history options</a>.
 </dl>
 
 </dd>
-<dt><code> import [<var>options</var>] <var>repository</var> <var>vendor-tag</var> <var>release-tags</var><small>...</small>
+<dt><code> import [<var>options</var>] <var>repository</var> <var>vendor-tag</var> <var>release-tags</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Import files into <small>CVS</small>, using vendor branches.  See
 <a href="cvs_16.html#SEC139">import--Import sources into CVS, using vendor branches</a>.
@@ -639,7 +654,7 @@ import.  See <a href="cvs_16.html#SEC140">import options</a>.
 <dd><p>Kerberos authenticated server.
 See <a href="cvs_2.html#SEC34">Direct connection with kerberos</a>.
 </p></dd>
-<dt><code> log [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> log [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Print out history information for files.  See <a href="cvs_16.html#SEC143">log--Print out log information for files</a>.
 </p><dl compact="compact">
@@ -702,7 +717,7 @@ latest before).  See <a href="cvs_16.html#SEC144">log options</a>.
 <dd><p>Password authenticated server.
 See <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>.
 </p></dd>
-<dt><code> rannotate [<var>options</var>] [<var>modules</var><small>...</small>]
+<dt><code> rannotate [<var>options</var>] [<var>modules</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Show last revision where each line was modified.  See
 <a href="cvs_8.html#SEC79">Annotate command</a>.
@@ -737,7 +752,7 @@ binary files are skipped with a message.)
 </dl>
 
 </dd>
-<dt><code> rdiff [<var>options</var>] <var>modules</var><small>...</small>
+<dt><code> rdiff [<var>options</var>] <var>modules</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Show differences between releases.  See <a href="cvs_16.html#SEC146">rdiff--'patch' format diffs between releases</a>.
 </p><dl compact="compact">
@@ -799,7 +814,7 @@ binary files are skipped with a message.)
 </dl>
 
 </dd>
-<dt><code> remove [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> remove [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Remove an entry from the repository.  See <a href="cvs_7.html#SEC68">Removing files</a>.
 </p><dl compact="compact">
@@ -818,7 +833,7 @@ binary files are skipped with a message.)
 </dl>
 
 </dd>
-<dt><code> rlog [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> rlog [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Print out history information for modules.  See <a href="cvs_16.html#SEC143">log--Print out log information for files</a>.
 </p><dl compact="compact">
@@ -866,7 +881,7 @@ latest before).  See <a href="cvs_16.html#SEC144">log options</a>.
 </dl>
 
 </dd>
-<dt><code> rtag [<var>options</var>] <var>tag</var> <var>modules</var><small>...</small>
+<dt><code> rtag [<var>options</var>] <var>tag</var> <var>modules</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Add a symbolic tag to a module.
 See <a href="cvs_4.html#SEC44">Revisions</a> and <a href="cvs_5.html#SEC54">Branching and merging</a>.
@@ -925,7 +940,7 @@ See <a href="cvs_4.html#SEC50">Specifying what to tag by date or revision</a>.
 </code></dt>
 <dd><p>Rsh server.  See <a href="cvs_2.html#SEC28">Connecting with rsh</a>.
 </p></dd>
-<dt><code> status [<var>options</var>] <var>files</var><small>...</small>
+<dt><code> status [<var>options</var>] <var>files</var><small class="dots">...</small>
 </code></dt>
 <dd><p>Display status information in a working directory.  See
 <a href="cvs_10.html#SEC84">File status</a>.
@@ -945,7 +960,7 @@ See <a href="cvs_4.html#SEC50">Specifying what to tag by date or revision</a>.
 </dl>
 
 </dd>
-<dt><code> tag [<var>options</var>] <var>tag</var> [<var>files</var><small>...</small>]
+<dt><code> tag [<var>options</var>] <var>tag</var> [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Add a symbolic tag to checked out version of files.
 See <a href="cvs_4.html#SEC44">Revisions</a> and <a href="cvs_5.html#SEC54">Branching and merging</a>.
@@ -991,7 +1006,7 @@ See <a href="cvs_4.html#SEC50">Specifying what to tag by date or revision</a>.
 </dl>
 
 </dd>
-<dt><code> unedit [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> unedit [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Undo an edit command.  See <a href="cvs_10.html#SEC92">How to edit a file which is being watched</a>.
 </p><dl compact="compact">
@@ -1006,7 +1021,7 @@ See <a href="cvs_4.html#SEC50">Specifying what to tag by date or revision</a>.
 </dl>
 
 </dd>
-<dt><code> update [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> update [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>Bring work tree in sync with repository.  See
 <a href="cvs_16.html#SEC153">update--Bring work tree in sync with repository</a>.
@@ -1083,7 +1098,7 @@ stickiness).  See <a href="cvs_16.html#SEC154">update options</a>.
 </p><p>Display the version of <small>CVS</small> being used.  If the repository
 is remote, display both the client and server versions.
 </p></dd>
-<dt><code> watch [on|off|add|remove] [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> watch [on|off|add|remove] [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>on/off: turn on/off read-only checkouts of files.  See
 <a href="cvs_10.html#SEC90">Telling CVS to watch certain files</a>.
@@ -1108,7 +1123,7 @@ is remote, display both the client and server versions.
 </dl>
 
 </dd>
-<dt><code> watchers [<var>options</var>] [<var>files</var><small>...</small>]
+<dt><code> watchers [<var>options</var>] [<var>files</var><small class="dots">...</small>]
 </code></dt>
 <dd><p>See who is watching a file.  See <a href="cvs_10.html#SEC93">Information about who is watching and editing</a>.
 </p><dl compact="compact">

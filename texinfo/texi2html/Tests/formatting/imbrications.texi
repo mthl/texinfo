@@ -117,11 +117,17 @@ flushed right ?
 
 @flushright
 @example
-example text flushed  right
+text flushed  right and then example
 
-it is
+it should be flushed
 @end example
 @end flushright
+
+@example
+@flushright
+example and then text flushed  right
+@end flushright
+@end example
 
 @display
 simple displayed text
@@ -133,6 +139,18 @@ example
 @display
 display
 @end display
+@end example
+
+@cartouche
+A cartouched text
+@end cartouche
+
+A cartouche within example
+@example
+example
+@cartouche
+A cartouched text
+@end cartouche
 @end example
 
 @example

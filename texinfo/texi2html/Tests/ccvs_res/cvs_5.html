@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 5. Branching and merging </h1>
+<h1 class="chapter"> 5. Branching and merging </h1>
 
 <p><small>CVS</small> allows you to isolate changes onto a separate
 line of development, known as a <em>branch</em>.  When you
@@ -54,7 +69,7 @@ involves first running <code>cvs update -j</code>, to merge
 the changes into the working directory.
 You can then commit that revision, and thus effectively
 copy the changes onto another branch.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC55">5.1 What branches are good for</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC56">5.2 Creating a branch</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -87,7 +102,7 @@ copy the changes onto another branch.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.1 What branches are good for </h2>
+<h2 class="section"> 5.1 What branches are good for </h2>
 
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
@@ -122,11 +137,11 @@ the main trunk, or leave them on the branch.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.2 Creating a branch </h2>
+<h2 class="section"> 5.2 Creating a branch </h2>
 
 <p>You can create a branch with <code>tag -b</code>; for
 example, assuming you're in a working copy:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs tag -b rel-1-0-patches
 </pre></td></tr></table>
 <p>This splits off a branch based on the current revisions
@@ -140,7 +155,7 @@ copy to be on the new branch.  For information on how
 to do that, see <a href="#SEC57">Accessing branches</a>.
 </p><p>You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </pre></td></tr></table>
 <p>`<samp>-r rel-1-0</samp>' says that this branch should be
@@ -178,7 +193,7 @@ by `<samp>rel-1-0</samp>'.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.3 Accessing branches </h2>
+<h2 class="section"> 5.3 Accessing branches </h2>
 
 <p>You can retrieve a branch in one of two ways: by
 checking it out fresh from the repository, or by
@@ -186,16 +201,16 @@ switching an existing working copy over to the branch.
 </p><p>To check out a branch from the repository, invoke
 `<samp>checkout</samp>' with the `<samp>-r</samp>' flag, followed by
 the tag name of the branch (see section <a href="#SEC56">Creating a branch</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -r rel-1-0-patches tc
 </pre></td></tr></table>
 <p>Or, if you already have a working copy, you can switch
 it to a given branch with `<samp>update -r</samp>':
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update -r rel-1-0-patches tc
 </pre></td></tr></table>
 <p>or equivalently:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd tc
 $ cvs update -r rel-1-0-patches
 </pre></td></tr></table>
@@ -216,7 +231,7 @@ use the `<samp>status</samp>' command.  In its output, look for
 the field named `<samp>Sticky tag</samp>' (see section <a href="cvs_4.html#SEC53">Sticky tags</a>)
 -- that's <small>CVS</small>'s way of telling you the branch, if
 any, of the current working files:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs status -v driver.c backend.c
 ===================================================================
 File: driver.c          Status: Up-to-date
@@ -276,11 +291,11 @@ branch numbers are constructed.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.4 Branches and revisions </h2>
+<h2 class="section"> 5.4 Branches and revisions </h2>
 
 <p>Ordinarily, a file's revision history is a linear
 series of increments (see section <a href="cvs_4.html#SEC45">Revision numbers</a>):
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
        +-----+    +-----+    +-----+    +-----+    +-----+
        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
        +-----+    +-----+    +-----+    +-----+    +-----+
@@ -300,7 +315,7 @@ to be forked off from a certain revision.
 by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
                                                       +-------------+
                            Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
                                                     / +-------------+
@@ -350,7 +365,7 @@ special meaning.  See section <a href="cvs_13.html#SEC105">Tracking third-party 
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.5 Magic branch numbers </h2>
+<h2 class="section"> 5.5 Magic branch numbers </h2>
 
 <p>This section describes a <small>CVS</small> feature called
 <em>magic branches</em>.  For most purposes, you need not
@@ -381,7 +396,7 @@ symbolic name to a branch the way <small>RCS</small> expects it
 to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
 `<tt>numbers.c</tt>' you can do this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs admin -NR4patches:1.4.2 numbers.c
 </pre></td></tr></table>
 <p>It only works if at least one revision is already
@@ -407,7 +422,7 @@ no way to see how the tag was assigned yesterday).
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.6 Merging an entire branch </h2>
+<h2 class="section"> 5.6 Merging an entire branch </h2>
 
 <p>You can merge changes made on a branch into your working copy by giving
 the `<samp>-j <var>branchname</var></samp>' flag to the <code>update</code> subcommand.  With one
@@ -421,7 +436,7 @@ newest revision on that branch into your working copy.
 <a name="IDX123"></a>
 <a name="IDX124"></a>
 <p>Consider this revision tree:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 +-----+    +-----+    +-----+    +-----+
 ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
 +-----+    +-----+    +-----+    +-----+
@@ -434,7 +449,7 @@ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
 <p>The branch 1.2.2 has been given the tag (symbolic name) `<samp>R1fix</samp>'.  The
 following example assumes that the module `<samp>mod</samp>' contains only one
 file, `<tt>m.c</tt>'.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout mod               # Retrieve the latest revision, 1.4
 
 $ cvs update -j R1fix m.c        # Merge all changes made on the branch,
@@ -452,7 +467,7 @@ you might be getting more conflicts than strictly necessary.  See
 <a href="#SEC64">Merging and keywords</a>, for information on how to avoid this.
 </p><p>The <code>checkout</code> command also supports the `<samp>-j <var>branchname</var></samp>' flag.  The
 same effect as above could be achieved with this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -j R1fix mod
 $ cvs commit -m &quot;Included R1fix&quot;
 </pre></td></tr></table>
@@ -477,11 +492,11 @@ not produce the desired result.  See section <a href="#SEC63">Merging can add or
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.7 Merging from a branch several times </h2>
+<h2 class="section"> 5.7 Merging from a branch several times </h2>
 
 <p>Continuing our example, the revision tree now looks
 like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 +-----+    +-----+    +-----+    +-----+    +-----+
 ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
 +-----+    +-----+    +-----+    +-----+    +-----+
@@ -496,7 +511,7 @@ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
 discussed.
 </p><p>Now suppose that development continues on the
 `<samp>R1fix</samp>' branch:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 +-----+    +-----+    +-----+    +-----+    +-----+
 ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
 +-----+    +-----+    +-----+    +-----+    +-----+
@@ -517,19 +532,19 @@ merged into the trunk.  To do that you specify two
 `<samp>-j</samp>' options, and <small>CVS</small> merges the changes from
 the first revision to the second revision.  For
 example, in this case the simplest way would be
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs update -j 1.2.2.2 -j R1fix m.c    # Merge changes from 1.2.2.2 to the
                                       # head of the R1fix branch
 </pre></td></tr></table>
 <p>The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs update -j R1fix:yesterday -j R1fix m.c
 </pre></td></tr></table>
 <p>Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </pre></td></tr></table>
 <hr size="6">
@@ -551,14 +566,14 @@ cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.8 Merging differences between any two revisions </h2>
+<h2 class="section"> 5.8 Merging differences between any two revisions </h2>
 
 <p>With two `<samp>-j <var>revision</var></samp>' flags, the <code>update</code>
 (and <code>checkout</code>) command can merge the differences
 between any two revisions into your working file.
 </p><a name="IDX125"></a>
 <a name="IDX126"></a>
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update -j 1.5 -j 1.3 backend.c
 </pre></td></tr></table>
 <p>will undo all changes made between revision
@@ -578,7 +593,7 @@ named `<tt>file1</tt>' which existed as revision 1.1, and
 you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update -j 1.2 -j 1.1 file1
 U file1
 $ cvs commit -m test
@@ -607,13 +622,13 @@ $
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.9 Merging can add or remove files </h2>
+<h2 class="section"> 5.9 Merging can add or remove files </h2>
 
 <p>If the changes which you are merging involve removing
 or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 cvs update -A
 touch a b c
 cvs add a b c ; cvs ci -m &quot;added&quot; a b c
@@ -654,7 +669,7 @@ to be sure that all intended changes are propagated in the merge.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 5.10 Merging and keywords </h2>
+<h2 class="section"> 5.10 Merging and keywords </h2>
 
 <p>If you merge files containing keywords (see section <a href="cvs_12.html#SEC98">Keyword substitution</a>), you will normally get numerous
 conflicts during the merge, because the keywords are
@@ -668,7 +683,7 @@ this option ensures that the revisions which you are
 merging will be the same as each other, and avoid
 spurious conflicts.
 </p><p>For example, suppose you have a file like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
        +---------+
       _! 1.1.2.1 !   &lt;-  br1
      / +---------+
@@ -681,7 +696,7 @@ spurious conflicts.
 <p>and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cat file1
 key $<i></i>Revision: 1.2 $
 . . .
@@ -708,7 +723,7 @@ directory.  So, since the keyword changed from
 directory, which conflicted with the fact that your
 working directory had contained <code>Revision: 1.2</code>.
 </p><p>Here is what happens if you had used `<samp>-kk</samp>':
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cat file1
 key $<i></i>Revision: 1.2 $
 . . .

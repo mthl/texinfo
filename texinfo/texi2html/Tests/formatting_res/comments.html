@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -33,27 +48,27 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <a name="SEC1"></a>
-<h3> Comment like: </h3>
+<h3 class="subheading"> Comment like: </h3>
 
 <p>Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
 </p><p>Example with comments 2 lines
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>  
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  
 line second line </pre></td></tr></table>
 <p>Example with comments 1 line
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 line </pre></td></tr></table>
 <p>No comments
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 line 
 </pre></td></tr></table>
 <p>The same but with oddfooting instead of comment:
 Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
 </p><p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections </p><a name="SEC2"></a>
-<h3> ignore arg </h3>
+<h3 class="subheading"> ignore arg </h3>
 
 <p>Commands doesn't accept anything after the arg on the line
 </p><p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @footnotestyle @footnotestyle </p><a name="SEC3"></a>
-<h3> command removed </h3>
+<h3 class="subheading"> command removed </h3>
 
 <p>And now finalout:
 Text line followed by finalout on the same line and another below 
@@ -71,7 +86,7 @@ Line after finalout
 </p><p>@page    @noindent     @refill    something 
 </p><p>@contents  something
 </p><a name="SEC4"></a>
-<h3> special </h3>
+<h3 class="subheading"> special </h3>
 
 <p>Only valid between iftex:
 Unknown ???
@@ -82,7 +97,7 @@ Text line followed by a comment on the same line and another below
 Text line after the text line followed by the comment.
  a number after sp
 </p><p>Menu:
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
  
 <tr><td align="left" valign="top"><a href="#SEC5">1. chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC7">2. bidule</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -108,8 +123,8 @@ Text line after the text line followed by the comment.
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. chapter </h1>
-<table border="0" cellspacing="0">
+<h1 class="chapter"> 1. chapter </h1>
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC6">1.1 section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -133,7 +148,7 @@ Text line after the text line followed by the comment.
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 1.1 section </h2>
+<h2 class="section"> 1.1 section </h2>
 
 <p>first @contents  line following first content
 second @contents  line following second content
@@ -158,7 +173,7 @@ Third content on the following line on his own
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. bidule </h1>
+<h1 class="chapter"> 2. bidule </h1>
 
 <p>@shortcontents  eol
 @shortcontents  eol
@@ -182,7 +197,7 @@ Third content on the following line on his own
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. last </h1>
+<h1 class="chapter"> 3. last </h1>
 
 <hr size="6">
 <a name="SEC_Contents"></a>
@@ -193,15 +208,17 @@ Third content on the following line on his own
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC5">1. chapter</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC2" href="#SEC6">1.1 section</a></li>
   </ul></li>
   <li><a name="TOC3" href="#SEC7">2. bidule</a></li>
   <li><a name="TOC4" href="#SEC8">3. last</a></li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_Overview"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -211,11 +228,13 @@ Third content on the following line on his own
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Short Table of Contents</h1>
-<ul style="list-style: none">
+<div class="shortcontents">
+<ul class="toc">
 <li><a name="TOC1" href="#SEC5">1. chapter</a></li>
 <li><a name="TOC3" href="#SEC7">2. bidule</a></li>
 <li><a name="TOC4" href="#SEC8">3. last</a></li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">

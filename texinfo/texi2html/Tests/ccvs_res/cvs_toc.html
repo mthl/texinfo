@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -32,14 +47,15 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="cvs_1.html#SEC1">1. Overview</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC2" href="cvs_1.html#SEC2">1.1 What is CVS?</a></li>
     <li><a name="TOC3" href="cvs_1.html#SEC3">1.2 What is CVS not?</a></li>
     <li><a name="TOC4" href="cvs_1.html#SEC4">1.3 A sample session</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC5" href="cvs_1.html#SEC5">1.3.1 Getting the source</a></li>
       <li><a name="TOC6" href="cvs_1.html#SEC6">1.3.2 Committing your changes</a></li>
       <li><a name="TOC7" href="cvs_1.html#SEC7">1.3.3 Cleaning up</a></li>
@@ -48,10 +64,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 </li>
   </ul></li>
   <li><a name="TOC9" href="cvs_2.html#SEC9">2. The Repository</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC10" href="cvs_2.html#SEC10">2.1 Telling CVS where your repository is</a></li>
     <li><a name="TOC11" href="cvs_2.html#SEC11">2.2 How data is stored in the repository</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC12" href="cvs_2.html#SEC12">2.2.1 Where files are stored within the repository</a></li>
       <li><a name="TOC13" href="cvs_2.html#SEC13">2.2.2 File permissions</a></li>
       <li><a name="TOC14" href="cvs_2.html#SEC14">2.2.3 File Permission issues specific to Windows</a></li>
@@ -62,7 +78,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     </ul></li>
     <li><a name="TOC19" href="cvs_2.html#SEC19">2.3 How data is stored in the working directory</a></li>
     <li><a name="TOC20" href="cvs_2.html#SEC20">2.4 The administrative files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC21" href="cvs_2.html#SEC21">2.4.1 Editing administrative files</a></li>
     </ul></li>
     <li><a name="TOC22" href="cvs_2.html#SEC22">2.5 Multiple repositories</a></li>
@@ -70,11 +86,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC24" href="cvs_2.html#SEC24">2.7 Backing up a repository</a></li>
     <li><a name="TOC25" href="cvs_2.html#SEC25">2.8 Moving a repository</a></li>
     <li><a name="TOC26" href="cvs_2.html#SEC26">2.9 Remote repositories</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC27" href="cvs_2.html#SEC27">2.9.1 Server requirements</a></li>
       <li><a name="TOC28" href="cvs_2.html#SEC28">2.9.2 Connecting with rsh</a></li>
       <li><a name="TOC29" href="cvs_2.html#SEC29">2.9.3 Direct connection with password authentication</a>
-      <ul style="list-style: none">
+      <ul class="toc">
         <li><a name="TOC30" href="cvs_2.html#SEC30">2.9.3.1 Setting up the server for password authentication</a></li>
         <li><a name="TOC31" href="cvs_2.html#SEC31">2.9.3.2 Using the client with password authentication</a></li>
         <li><a name="TOC32" href="cvs_2.html#SEC32">2.9.3.3 Security considerations with password authentication</a></li>
@@ -87,9 +103,9 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC37" href="cvs_2.html#SEC37">2.11 Temporary directories for the server</a></li>
   </ul></li>
   <li><a name="TOC38" href="cvs_3.html#SEC38">3. Starting a project with CVS</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC39" href="cvs_3.html#SEC39">3.1 Setting up the files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC40" href="cvs_3.html#SEC40">3.1.1 Creating a directory tree from a number of files</a></li>
       <li><a name="TOC41" href="cvs_3.html#SEC41">3.1.2 Creating Files From Other Version Control Systems</a></li>
       <li><a name="TOC42" href="cvs_3.html#SEC42">3.1.3 Creating a directory tree from scratch</a></li>
@@ -97,7 +113,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC43" href="cvs_3.html#SEC43">3.2 Defining the module</a></li>
   </ul></li>
   <li><a name="TOC44" href="cvs_4.html#SEC44">4. Revisions</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC45" href="cvs_4.html#SEC45">4.1 Revision numbers</a></li>
     <li><a name="TOC46" href="cvs_4.html#SEC46">4.2 Versions, revisions and releases</a></li>
     <li><a name="TOC47" href="cvs_4.html#SEC47">4.3 Assigning revisions</a></li>
@@ -109,7 +125,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC53" href="cvs_4.html#SEC53">4.9 Sticky tags</a></li>
   </ul></li>
   <li><a name="TOC54" href="cvs_5.html#SEC54">5. Branching and merging</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC55" href="cvs_5.html#SEC55">5.1 What branches are good for</a></li>
     <li><a name="TOC56" href="cvs_5.html#SEC56">5.2 Creating a branch</a></li>
     <li><a name="TOC57" href="cvs_5.html#SEC57">5.3 Accessing branches</a></li>
@@ -123,12 +139,12 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
   </ul></li>
   <li><a name="TOC65" href="cvs_6.html#SEC65">6. Recursive behavior</a></li>
   <li><a name="TOC66" href="cvs_7.html#SEC66">7. Adding, removing, and renaming files and directories</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC67" href="cvs_7.html#SEC67">7.1 Adding files to a directory</a></li>
     <li><a name="TOC68" href="cvs_7.html#SEC68">7.2 Removing files</a></li>
     <li><a name="TOC69" href="cvs_7.html#SEC69">7.3 Removing directories</a></li>
     <li><a name="TOC70" href="cvs_7.html#SEC70">7.4 Moving and renaming files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC71" href="cvs_7.html#SEC71">7.4.1 The Normal way to Rename</a></li>
       <li><a name="TOC72" href="cvs_7.html#SEC72">7.4.2 Moving the history file</a></li>
       <li><a name="TOC73" href="cvs_7.html#SEC73">7.4.3 Copying the history file</a></li>
@@ -136,26 +152,26 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC74" href="cvs_7.html#SEC74">7.5 Moving and renaming directories</a></li>
   </ul></li>
   <li><a name="TOC75" href="cvs_8.html#SEC75">8. History browsing</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC76" href="cvs_8.html#SEC76">8.1 Log messages</a></li>
     <li><a name="TOC77" href="cvs_8.html#SEC77">8.2 The history database</a></li>
     <li><a name="TOC78" href="cvs_8.html#SEC78">8.3 User-defined logging</a></li>
     <li><a name="TOC79" href="cvs_8.html#SEC79">8.4 Annotate command</a></li>
   </ul></li>
   <li><a name="TOC80" href="cvs_9.html#SEC80">9. Handling binary files</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC81" href="cvs_9.html#SEC81">9.1 The issues with binary files</a></li>
     <li><a name="TOC82" href="cvs_9.html#SEC82">9.2 How to store binary files</a></li>
   </ul></li>
   <li><a name="TOC83" href="cvs_10.html#SEC83">10. Multiple developers</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC84" href="cvs_10.html#SEC84">10.1 File status</a></li>
     <li><a name="TOC85" href="cvs_10.html#SEC85">10.2 Bringing a file up to date</a></li>
     <li><a name="TOC86" href="cvs_10.html#SEC86">10.3 Conflicts example</a></li>
     <li><a name="TOC87" href="cvs_10.html#SEC87">10.4 Informing others about commits</a></li>
     <li><a name="TOC88" href="cvs_10.html#SEC88">10.5 Several developers simultaneously attempting to run CVS</a></li>
     <li><a name="TOC89" href="cvs_10.html#SEC89">10.6 Mechanisms to track who is editing files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC90" href="cvs_10.html#SEC90">10.6.1 Telling CVS to watch certain files</a></li>
       <li><a name="TOC91" href="cvs_10.html#SEC91">10.6.2 Telling CVS to notify you</a></li>
       <li><a name="TOC92" href="cvs_10.html#SEC92">10.6.3 How to edit a file which is being watched</a></li>
@@ -165,11 +181,11 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC95" href="cvs_10.html#SEC95">10.7 Choosing between reserved or unreserved checkouts</a></li>
   </ul></li>
   <li><a name="TOC96" href="cvs_11.html#SEC96">11. Revision management</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC97" href="cvs_11.html#SEC97">11.1 When to commit?</a></li>
   </ul></li>
   <li><a name="TOC98" href="cvs_12.html#SEC98">12. Keyword substitution</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC99" href="cvs_12.html#SEC99">12.1 Keyword List</a></li>
     <li><a name="TOC100" href="cvs_12.html#SEC100">12.2 Using keywords</a></li>
     <li><a name="TOC101" href="cvs_12.html#SEC101">12.3 Avoiding substitution</a></li>
@@ -178,7 +194,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     <li><a name="TOC104" href="cvs_12.html#SEC104">12.6 Problems with the $<i></i>Log$ keyword.</a></li>
   </ul></li>
   <li><a name="TOC105" href="cvs_13.html#SEC105">13. Tracking third-party sources</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC106" href="cvs_13.html#SEC106">13.1 Importing for the first time</a></li>
     <li><a name="TOC107" href="cvs_13.html#SEC107">13.2 Updating with the import command</a></li>
     <li><a name="TOC108" href="cvs_13.html#SEC108">13.3 Reverting to the latest vendor release</a></li>
@@ -189,72 +205,72 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
   <li><a name="TOC112" href="cvs_14.html#SEC112">14. How your build system interacts with CVS</a></li>
   <li><a name="TOC113" href="cvs_15.html#SEC113">15. Special Files</a></li>
   <li><a name="TOC114" href="cvs_16.html#SEC114">A. Guide to CVS commands</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC115" href="cvs_16.html#SEC115">A.1 Overall structure of CVS commands</a></li>
     <li><a name="TOC116" href="cvs_16.html#SEC116">A.2 CVS's exit status</a></li>
     <li><a name="TOC117" href="cvs_16.html#SEC117">A.3 Default options and the ~/.cvsrc file</a></li>
     <li><a name="TOC118" href="cvs_16.html#SEC118">A.4 Global options</a></li>
     <li><a name="TOC119" href="cvs_16.html#SEC119">A.5 Common command options</a></li>
     <li><a name="TOC120" href="cvs_16.html#SEC120">A.6 admin--Administration</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC121" href="cvs_16.html#SEC121">A.6.1 admin options</a></li>
     </ul></li>
     <li><a name="TOC122" href="cvs_16.html#SEC122">A.7 checkout--Check out sources for editing</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC123" href="cvs_16.html#SEC123">A.7.1 checkout options</a></li>
       <li><a name="TOC124" href="cvs_16.html#SEC124">A.7.2 checkout examples</a></li>
     </ul></li>
     <li><a name="TOC125" href="cvs_16.html#SEC125">A.8 commit--Check files into the repository</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC126" href="cvs_16.html#SEC126">A.8.1 commit options</a></li>
       <li><a name="TOC127" href="cvs_16.html#SEC127">A.8.2 commit examples</a>
-      <ul style="list-style: none">
+      <ul class="toc">
         <li><a name="TOC128" href="cvs_16.html#SEC128">A.8.2.1 Committing to a branch</a></li>
         <li><a name="TOC129" href="cvs_16.html#SEC129">A.8.2.2 Creating the branch after editing</a></li>
       </ul>
 </li>
     </ul></li>
     <li><a name="TOC130" href="cvs_16.html#SEC130">A.9 diff--Show differences between revisions</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC131" href="cvs_16.html#SEC131">A.9.1 diff options</a>
-      <ul style="list-style: none">
+      <ul class="toc">
         <li><a name="TOC132" href="cvs_16.html#SEC132">A.9.1.1 Line group formats</a></li>
         <li><a name="TOC133" href="cvs_16.html#SEC133">A.9.1.2 Line formats</a></li>
       </ul></li>
       <li><a name="TOC134" href="cvs_16.html#SEC134">A.9.2 diff examples</a></li>
     </ul></li>
     <li><a name="TOC135" href="cvs_16.html#SEC135">A.10 export--Export sources from CVS, similar to checkout</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC136" href="cvs_16.html#SEC136">A.10.1 export options</a></li>
     </ul></li>
     <li><a name="TOC137" href="cvs_16.html#SEC137">A.11 history--Show status of files and users</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC138" href="cvs_16.html#SEC138">A.11.1 history options</a></li>
     </ul></li>
     <li><a name="TOC139" href="cvs_16.html#SEC139">A.12 import--Import sources into CVS, using vendor branches</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC140" href="cvs_16.html#SEC140">A.12.1 import options</a></li>
       <li><a name="TOC141" href="cvs_16.html#SEC141">A.12.2 import output</a></li>
       <li><a name="TOC142" href="cvs_16.html#SEC142">A.12.3 import examples</a></li>
     </ul></li>
     <li><a name="TOC143" href="cvs_16.html#SEC143">A.13 log--Print out log information for files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC144" href="cvs_16.html#SEC144">A.13.1 log options</a></li>
       <li><a name="TOC145" href="cvs_16.html#SEC145">A.13.2 log examples</a></li>
     </ul></li>
     <li><a name="TOC146" href="cvs_16.html#SEC146">A.14 rdiff--'patch' format diffs between releases</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC147" href="cvs_16.html#SEC147">A.14.1 rdiff options</a></li>
       <li><a name="TOC148" href="cvs_16.html#SEC148">A.14.2 rdiff examples</a></li>
     </ul></li>
     <li><a name="TOC149" href="cvs_16.html#SEC149">A.15 release--Indicate that a Module is no longer in use</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC150" href="cvs_16.html#SEC150">A.15.1 release options</a></li>
       <li><a name="TOC151" href="cvs_16.html#SEC151">A.15.2 release output</a></li>
       <li><a name="TOC152" href="cvs_16.html#SEC152">A.15.3 release examples</a></li>
     </ul></li>
     <li><a name="TOC153" href="cvs_16.html#SEC153">A.16 update--Bring work tree in sync with repository</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC154" href="cvs_16.html#SEC154">A.16.1 update options</a></li>
       <li><a name="TOC155" href="cvs_16.html#SEC155">A.16.2 update output</a></li>
     </ul>
@@ -262,9 +278,9 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
   </ul></li>
   <li><a name="TOC156" href="cvs_17.html#SEC156">B. Quick reference to CVS commands</a></li>
   <li><a name="TOC157" href="cvs_18.html#SEC157">C. Reference manual for Administrative files</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC158" href="cvs_18.html#SEC158">C.1 The modules file</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC159" href="cvs_18.html#SEC159">C.1.1 Alias modules</a></li>
       <li><a name="TOC160" href="cvs_18.html#SEC160">C.1.2 Regular modules</a></li>
       <li><a name="TOC161" href="cvs_18.html#SEC161">C.1.3 Ampersand modules</a></li>
@@ -274,16 +290,16 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
     </ul></li>
     <li><a name="TOC165" href="cvs_18.html#SEC165">C.2 The cvswrappers file</a></li>
     <li><a name="TOC166" href="cvs_18.html#SEC166">C.3 The commit support files</a>
-    <ul style="list-style: none">
+    <ul class="toc">
       <li><a name="TOC167" href="cvs_18.html#SEC167">C.3.1 The common syntax</a></li>
       <li><a name="TOC168" href="cvs_18.html#SEC168">C.3.2 Commitinfo</a></li>
       <li><a name="TOC169" href="cvs_18.html#SEC169">C.3.3 Verifying log messages</a></li>
       <li><a name="TOC170" href="cvs_18.html#SEC170">C.3.4 Editinfo</a>
-      <ul style="list-style: none">
+      <ul class="toc">
         <li><a name="TOC171" href="cvs_18.html#SEC171">C.3.4.1 Editinfo example</a></li>
       </ul></li>
       <li><a name="TOC172" href="cvs_18.html#SEC172">C.3.5 Loginfo</a>
-      <ul style="list-style: none">
+      <ul class="toc">
         <li><a name="TOC173" href="cvs_18.html#SEC173">C.3.5.1 Loginfo example</a></li>
         <li><a name="TOC174" href="cvs_18.html#SEC174">C.3.5.2 Keeping a checked out copy</a></li>
       </ul>
@@ -299,7 +315,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
   <li><a name="TOC181" href="cvs_19.html#SEC181">D. All environment variables which affect CVS</a></li>
   <li><a name="TOC182" href="cvs_20.html#SEC182">E. Compatibility between CVS Versions</a></li>
   <li><a name="TOC183" href="cvs_21.html#SEC183">F. Troubleshooting</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC184" href="cvs_21.html#SEC184">F.1 Partial list of error messages</a></li>
     <li><a name="TOC185" href="cvs_21.html#SEC185">F.2 Trouble making a connection to a CVS server</a></li>
     <li><a name="TOC186" href="cvs_21.html#SEC186">F.3 Other common problems</a></li>
@@ -308,6 +324,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
   <li><a name="TOC188" href="cvs_23.html#SEC188">H. Dealing with bugs in CVS or this manual</a></li>
   <li><a name="TOC189" href="cvs_24.html#SEC189">Index</a></li>
 </ul>
+</div>
 <hr size="1">
 <p>
  <font size="-1">

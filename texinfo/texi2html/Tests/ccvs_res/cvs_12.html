@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,7 +57,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 12. Keyword substitution </h1>
+<h1 class="chapter"> 12. Keyword substitution </h1>
 
 <p>As long as you edit source files inside a working
 directory you can always find out the state of
@@ -54,11 +69,11 @@ which revisions they are.
 substitution</em> (or <em>keyword expansion</em>) to help
 identifying the files.  Embedded strings of the form
 <code>$<var>keyword</var>$</code> and
-<code>$<var>keyword</var>:<small>...</small>$</code> in a file are replaced
+<code>$<var>keyword</var>:<small class="dots">...</small>$</code> in a file are replaced
 with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC99">12.1 Keyword List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keywords</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC100">12.2 Using keywords</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -87,7 +102,7 @@ a new revision of the file.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.1 Keyword List </h2>
+<h2 class="section"> 12.1 Keyword List </h2>
 
 <p>This is a list of the keywords:
 </p><dl compact="compact">
@@ -156,11 +171,11 @@ co -r first</code>, the keyword expands to `<samp>Name: first</samp>'.
 header containing the <small>RCS</small> filename, the revision
 number, the author, and the date (UTC).  Existing log
 messages are <em>not</em> replaced.  Instead, the new log
-message is inserted after <code>$<i></i>Log:<small>...</small>$</code>.
+message is inserted after <code>$<i></i>Log:<small class="dots">...</small>$</code>.
 Each new line is prefixed with the same string which
 precedes the <code>$Log</code> keyword.  For example, if the
 file contains:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   /* Here is what people have been up to:
    *
    * $<i></i>Log: frob.c,v $
@@ -211,7 +226,7 @@ file with the local keyword $<i></i>MYBSD$ will be
 expanded as if it were a $<i></i>CVSHeader$ keyword. If
 the src/frob.c file contained this keyword, it might
 look something like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
   /*
    * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
    */
@@ -264,7 +279,7 @@ the `<tt>CVSROOT/config</tt>' file--see
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.2 Using keywords </h2>
+<h2 class="section"> 12.2 Using keywords </h2>
 
 <p>To include a keyword string you simply include the
 relevant text string, such as <code>$<i></i>Id$</code>, inside the
@@ -285,7 +300,7 @@ package) can be used to extract keywords and their
 values from a file.  This can be handy for text files,
 but it is even more useful for extracting keywords from
 binary files.
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ ident samp.c
 samp.c:
      $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
@@ -303,7 +318,7 @@ looks for the character sequence <code>@(#)</code> it is
 easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </pre></td></tr></table>
 <hr size="6">
@@ -325,7 +340,7 @@ static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp 
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.3 Avoiding substitution </h2>
+<h2 class="section"> 12.3 Avoiding substitution </h2>
 
 <p>Keyword substitution has its disadvantages.  Sometimes
 you might want the literal text string
@@ -369,7 +384,7 @@ for use with the <code>LocalKeyword</code> option--see
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.4 Substitution modes </h2>
+<h2 class="section"> 12.4 Substitution modes </h2>
 
 <p>Each file has a stored default substitution mode, and
 each working directory copy of a file also has a
@@ -460,7 +475,7 @@ handle an export containing binary files correctly.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.5 Configuring Keyord Expansion </h2>
+<h2 class="section"> 12.5 Configuring Keyord Expansion </h2>
 
 <p>In a repository that includes third-party software on
 vendor branches, it is sometimes helpful to configure
@@ -489,7 +504,7 @@ a list of keywords. This list may include the
 to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the `<tt>CVSROOT/config</tt>' file:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         # Add a &quot;MyBSD&quot; keyword and restrict keyword
         # expansion
         LocalKeyword=MyBSD=CVSHeader
@@ -497,7 +512,7 @@ the `<tt>CVSROOT/config</tt>' file:
 </pre></td></tr></table>
 <p>then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         # Add a &quot;MyBSD&quot; keyword and restrict keyword
         # expansion to the MyBSD, Name and Date keywords.
         LocalKeyword=MyBSD=CVSHeader
@@ -507,7 +522,7 @@ A list may be used. The this example:
 $<i></i>Date$ to be expanded.
 </p><p>It is also possible to configure an exclusion list
 using the following:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
         # Do not expand the non-RCS keyword CVSHeader
         KeywordExpand=eCVSHeader
 </pre></td></tr></table>
@@ -522,7 +537,7 @@ for a repository that is configured in that manner.
 expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the `<tt>CVSROOT/config</tt>' line:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 	# Do not expand any RCS keywords
 	KeywordExpand=i
 </pre></td></tr></table>
@@ -555,7 +570,7 @@ recognized.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 12.6 Problems with the $<i></i>Log$ keyword. </h2>
+<h2 class="section"> 12.6 Problems with the $<i></i>Log$ keyword. </h2>
 
 <p>The <code>$<i></i>Log$</code> keyword is somewhat
 controversial.  As long as you are working on your

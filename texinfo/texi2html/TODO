@@ -12,3 +12,28 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
 * bring deftypemethod, etc up-to-date
 
 * Fix `make distcheck'
+
+* document css classes, and have similar classes with makeinfo
+-  makeinfo classes:
+pre verbatim, 
+pre example display...,
+ul menu, 
+ul index-cp index-*, 
+small dots, small enddots, 
+div contents shortcontents, div footnote, 
+div node (navigation bar), 
+h? unnumbered chapter appendix...,
+h1 settitle (title before contents, if not set by titlefont),
+h1 titlefont (@titlefont),
+table cartouche, 
+
+- texi2html classes:
+pre verbatim,
+table index-cp index-*, 
+table menu, 
+pre example display...,
+small dots, small enddots, 
+div contents shortcontents, div footnote, 
+h? unnumbered chapter appendix...,
+h3 node
+ul toc,

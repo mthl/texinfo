@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -42,13 +57,13 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 8. History browsing </h1>
+<h1 class="chapter"> 8. History browsing </h1>
 
 <p>Once you have used <small>CVS</small> to store a version control
 history--what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
-</p><table border="0" cellspacing="0">
+</p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC76">8.1 Log messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC77">8.2 The history database</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -75,7 +90,7 @@ through the history.
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.1 Log messages </h2>
+<h2 class="section"> 8.1 Log messages </h2>
 
 <p>Whenever you commit a file you specify a log message.
 </p><p>To look through the log messages which have been
@@ -100,7 +115,7 @@ use the <code>cvs log</code> command (see section <a href="cvs_16.html#SEC143">l
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.2 The history database </h2>
+<h2 class="section"> 8.2 The history database </h2>
 
 <p>You can use the history file (see section <a href="cvs_18.html#SEC178">The history file</a>) to
 log various <small>CVS</small> actions.  To retrieve the
@@ -128,7 +143,7 @@ history</code> command (see section <a href="cvs_16.html#SEC137">history--Show s
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.3 User-defined logging </h2>
+<h2 class="section"> 8.3 User-defined logging </h2>
 
 <p>You can customize <small>CVS</small> to log various kinds of
 actions, in whatever manner you choose.  These
@@ -162,12 +177,12 @@ exit of the filter program will cause the tag to be
 aborted.
 </p><p>Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 ALL /usr/local/cvsroot/CVSROOT/loggit
 </pre></td></tr></table>
 <p>Where `<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>' contains the
 following script:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 #!/bin/sh
 echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </pre></td></tr></table>
@@ -190,16 +205,16 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <td valign="middle" align="left">[<a href="cvs_24.html#SEC189" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 8.4 Annotate command </h2>
+<h2 class="section"> 8.4 Annotate command </h2>
 
 <dl>
-<dt><u>Command:</u> <b>cvs annotate</b> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files <small>...</small>
+<dt><u>Command:</u> <b>cvs annotate</b> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files <small class="dots">...</small>
 <a name="IDX135"></a>
 </dt>
 <dd><p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last
 modification for each line.  For example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs annotate ssfile
 Annotations for ssfile
 ***************

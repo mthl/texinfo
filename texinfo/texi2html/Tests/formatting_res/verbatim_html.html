@@ -19,6 +19,21 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+ul.toc {list-style: none}
+-->
+</style>
+
 
 </head>
 
@@ -33,17 +48,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Tests</h1>
-<table border="0" cellspacing="0">
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC2">2. node 'a with braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node with braces</td></tr>
 <tr><td align="left" valign="top"><a href="../manual/A-node.html">* node: (manual)A node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node in another manual</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre style="font-family: serif">
-a verbatim in menu comment </pre><pre>  verbatim on same line than @verbatim
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+a verbatim in menu comment </pre><pre class="verbatim">  verbatim on same line than @verbatim
 
 bidule
 
-</pre><pre style="font-family: serif">
+</pre><pre class="menu-comment">
 </pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">3. node 'a without braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node without braces</td></tr>
 </table>
 
@@ -66,7 +81,7 @@ bidule
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 1. first node chapter </h1>
+<h1 class="chapter"> 1. first node chapter </h1>
 
 <p>ref to a non existing node@ref{bidule}.
 </p><p>a 2 paragraphs sample `<samp>in first paragraph
@@ -94,7 +109,7 @@ text </p></li><li><p> more
 text
 </p></li></ul>
 
-<p>a verbatim, not first on the line </p><pre>  text following @verbatim
+<p>a verbatim, not first on the line </p><pre class="verbatim">  text following @verbatim
 
 text
 
@@ -104,7 +119,7 @@ text
 of line.
 </p><p>In tex, @end verbatim must be on its own on a line.
 </p><p>A verbatim with begin and end on its own line
-</p><pre>verbatim @samp{item}
+</p><pre class="verbatim">verbatim @samp{item}
 
 </pre>
 <p>Now html  <b>
@@ -120,7 +135,7 @@ Some text one the line following @end html
 </p><tt> an html tt</tt>
 
 <p>A sc: <small>IEEE</small>, and another one in example:
-</p><table><tr><td>&nbsp;</td><td class="example"><pre> 
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 AEEI
 </pre></td></tr></table>
 <p>ignore bidule ignore
@@ -219,7 +234,7 @@ verb @c comment
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 2. node 'a with braces </h1>
+<h1 class="chapter"> 2. node 'a with braces </h1>
 <p>In the node with braces
 </p><p>A footnote with an empty line within.
 <a name="DOCF1" href="#FOOT1">(1)</a> 
@@ -231,7 +246,7 @@ in that case in info. tex doesn't like the paragraph break in the ref
 </p><p>A footnote with an example
 <a name="DOCF4" href="#FOOT4">(4)</a>
 </p><p>Some @verbatim, @verb and @ignore within an xref, very hard for TeX:
-See section <a href="#SEC1"><pre> some verbatim @@ text within an xref </pre>and now verb delimited with * with an empty line a comment and @samp <tt>with verb @c comment and samp @samp{text } next line </tt> last ignored sentence </a>.
+See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within an xref </pre>and now verb delimited with * with an empty line a comment and @samp <tt>with verb @c comment and samp @samp{text } next line </tt> last ignored sentence </a>.
 </p><p>See section <a href="#SEC1">no verb</a>.
 </p><hr size="6">
 <a name="NOD4"></a>
@@ -252,8 +267,8 @@ See section <a href="#SEC1"><pre> some verbatim @@ text within an xref </pre>and
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1> 3. node 'a without braces </h1>
-<table border="0" cellspacing="0">
+<h1 class="chapter"> 3. node 'a without braces </h1>
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC4">3.1 node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -277,10 +292,10 @@ See section <a href="#SEC1"><pre> some verbatim @@ text within an xref </pre>and
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2> 3.1 node </h2>
+<h2 class="section"> 3.1 node </h2>
 
 <p>A node with gggggggg
-before example </p><table><tr><td>&nbsp;</td><td class="example"><pre>  after example
+before example </p><table><tr><td>&nbsp;</td><td><pre class="example">  after example
 
 the example
 before end example  </pre></td></tr></table>
@@ -305,7 +320,7 @@ before end example  </pre></td></tr></table>
 <p> This is a ref <a href="#SEC1">first node chapter</a> 
 </p><h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
 
-<table><tr><td>&nbsp;</td><td class="example"><pre>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 
 
 An example
@@ -319,16 +334,18 @@ An example
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
+<div class="contents">
 
-<ul style="list-style: none">
+<ul class="toc">
   <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
   <li><a name="TOC2" href="#SEC2">2. node 'a with braces</a></li>
   <li><a name="TOC3" href="#SEC3">3. node 'a without braces</a>
-  <ul style="list-style: none">
+  <ul class="toc">
     <li><a name="TOC4" href="#SEC4">3.1 node</a></li>
   </ul>
 </li>
 </ul>
+</div>
 <hr size="1">
 <a name="SEC_About"></a>
 <table cellpadding="1" cellspacing="1" border="0">
