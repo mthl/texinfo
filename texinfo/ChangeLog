@@ -1,3 +1,8 @@
+2004-12-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Macro Details): document @c kludge in macro
+	definitions to work around some newline problems.  (From Werner.)
+
 2004-12-05  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/html.c (add_escaped_anchor_name): prefix g_t if the

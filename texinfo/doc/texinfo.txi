@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
+@c $Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13668,7 +13668,7 @@ As mentioned earlier, macro names must consist entirely of letters.
 @item
 It is not advisable to redefine any @TeX{} primitive, plain, or
 Texinfo command name as a macro. Unfortunately this is a very large
-set of names, and the possible resulting errors are completely random.
+set of names, and the possible resulting errors are unpredictable.
 
 @item
 All macros are expanded inside at least one @TeX{} group.  This means
@@ -13676,18 +13676,43 @@ that @code{@@set} and other such commands have no effect inside a
 macro.
 
 @item
-Macros containing a command which must be on a line by itself, such as a
-conditional, cannot be invoked in the middle of a line.
-
-@item
 Commas in macro arguments, even if escaped by a backslash, don't
 always work.
 
 @item
-It is best to avoid comments inside macro definitions.
+Macro arguments cannot cross lines.
 
 @item
-Macro arguments cannot cross lines.
+It is (usually) best to avoid comments inside macro definitions, but
+see the next item.
+
+@item
+Macros containing a command which must be on a line by itself, such as
+a conditional, cannot be invoked in the middle of a line.  In general,
+the interaction of newlines in the macro definitions and invocations
+depends on the precise commands and context.  You may be able to work
+around some problems with judicious use of @code{@@c}.  Suppose you
+define a macro that is always intended to be used on a line by itself:
+
+@example
+@@macro linemac
+@@cindex whatever
+@@c
+@@end macro
+...
+foo
+@@linemac
+bar
+@end example
+
+Without the @code{@@c}, there will be an unwanted blank line between
+the @samp{@@cindex whatever} and the @samp{bar} (one newline comes
+from the macro definition, one from after the invocation), causing a
+paragraph break.
+
+On the other hand, you wouldn't want the @code{@@c} if the macro was
+sometimes invoked in the middle of a line (the text after the
+invocation would be treated as a comment).
 
 @item
 In general, you can't arbitrarily substitute a macro call for Texinfo
@@ -18434,7 +18459,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
+$Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18500,7 +18525,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
