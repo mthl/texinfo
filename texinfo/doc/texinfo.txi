@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
+@c $Id: texinfo.txi,v 1.90 2003-11-16 00:49:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7585,8 +7585,8 @@ following sections:
 
 @table @code
 @item @@quotation
-Indicate text that is quoted. The text is filled, indented, and
-printed in a roman font by default.
+Indicate text that is quoted. The text is filled, indented (from both
+margins), and printed in a roman font by default.
 
 @item @@example
 Illustrate code, commands, and the like. The text is printed
@@ -7642,40 +7642,45 @@ Examples}.
 
 
 @node quotation
-@section @code{@@quotation}
+@section @code{@@quotation}: Block quotations
 @cindex Quotations
 @findex quotation
 
-The text of a quotation is processed normally except that:
+The text of a quotation is processed normally (regular font, text is
+filled) except that:
 
 @itemize @bullet
 @item
 the margins are closer to the center of the page, so the whole of the
-quotation is indented;@refill
+quotation is indented;
 
 @item
-the first lines of paragraphs are indented no more than other
-lines;@refill
+the first lines of paragraphs are indented no more than other lines;
 
 @item
-in the printed output, interparagraph spacing is reduced.@refill
+in the printed output, interparagraph spacing is reduced.
 @end itemize
 
 @quotation
 This is an example of text written between an @code{@@quotation}
 command and an @code{@@end quotation} command.  An @code{@@quotation}
 command is most often used to indicate text that is excerpted from
-another (real or hypothetical) printed work.@refill
+another (real or hypothetical) printed work.
 @end quotation
 
 Write an @code{@@quotation} command as text on a line by itself.  This
 line will disappear from the output.  Mark the end of the quotation
 with a line beginning with and containing only @code{@@end quotation}.
 The @code{@@end quotation} line will likewise disappear from the
-output.  Thus, the following,@refill
+output.
+
+@code{@@quotation} takes one optional argument, given on the remainder
+of the line.  This text, if present, is included at the beginning of
+the quotation in bold or otherwise emphasized, and followed with a
+@samp{:}.  For example:
 
 @example
-@@quotation
+@@quotation Note
 This is
 a foo.
 @@end quotation
@@ -7684,9 +7689,21 @@ a foo.
 @noindent
 produces
 
-@quotation
+@quotation Note
 This is a foo.
 @end quotation
+
+If the @code{@@quotation} argument is exactly one of these words:
+
+@example
+Caution  Important  Note  Tip  Warning
+@end example
+
+@cindex <note> Docbook tag
+@cindex <blockquote> HTML tag
+@noindent the Docbook output uses corresponding special tags (@code{<note>},
+etc.) instead of the default @code{<blockquote>}.  The HTML output
+always uses @code{<blockquote>}.
 
 
 @node example
@@ -17295,7 +17312,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
+$Id: texinfo.txi,v 1.90 2003-11-16 00:49:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17358,7 +17375,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.89 2003-11-15 16:50:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.90 2003-11-16 00:49:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
