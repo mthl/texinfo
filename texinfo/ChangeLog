@@ -1,3 +1,11 @@
+2003-04-26    <karl@gnu.org>
+
+	* doc/texinfo.txi (Image Syntax): second and following @image args
+	 optional. Report from: Max Techter <mtechter@gmx.de>, 26 Apr 2003
+	15:50:02 +0200.
+
+	* util/dir-example (anubis): add for polak.
+
 2003-04-25    <karl@gnu.org>
 
 	* makeinfo/defun.c (defun_internal): whitespace needed in docbook
