@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.9 2003-11-05 14:32:29 dirt Exp $
+   $Id: index.c,v 1.10 2003-11-17 05:29:10 dirt Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -446,8 +446,11 @@ cm_synindex ()
     }
   else
     {
-      name_index_alist[target]->write_index
-        = name_index_alist[source]->write_index;
+      if (xml && !docbook)
+        xml_synindex (abbrev1, abbrev2);
+      else
+        name_index_alist[target]->write_index
+          = name_index_alist[source]->write_index;
     }
 
   free (abbrev1);

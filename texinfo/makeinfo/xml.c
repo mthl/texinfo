@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.29 2003-11-17 03:00:14 dirt Exp $
+   $Id: xml.c,v 1.30 2003-11-17 05:29:11 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1427,6 +1427,15 @@ xml_asterisk ()
    to have real multilivel indexing support, not just string analysis.  */
 #define INDEX_SEP "@this string will never appear@" /* was , */
 
+typedef struct
+{
+  char *from;
+  char *to;
+} XML_SYNONYM;
+
+static XML_SYNONYM **xml_synonyms = NULL;
+static int xml_synonyms_count = 0;
+
 void
 xml_insert_indexterm (indexterm, index)
     char *indexterm;
@@ -1434,6 +1443,14 @@ xml_insert_indexterm (indexterm, index)
 {
   if (!docbook)
     {
+      /* Check to see if we need to do index redirection per @synindex.  */
+      int i;
+      for (i = 0; i < xml_synonyms_count; i++)
+        {
+          if (STREQ (xml_synonyms[i]->from, index))
+            index = xstrdup (xml_synonyms[i]->to);
+        }
+
       xml_insert_element_with_attribute (INDEXTERM, START, "index=\"%s\"", index);
       in_indexterm = 1;
       execute_string ("%s", indexterm);
@@ -1633,6 +1650,35 @@ xml_insert_indexentry (entry, node)
     xml_insert_element (PRIMARYIE, END);
 
   /*  xml_insert_element (INDEXENTRY, END); */
+}
+
+void
+xml_synindex (from, to)
+  char *from;
+  char *to;
+{
+  int i, slot;
+
+  slot = -1;
+  for (i = 0; i < xml_synonyms_count; i++)
+    if (!xml_synonyms[i])
+      {
+        slot = i;
+        break;
+      }
+
+  if (slot < 0)
+    {
+      slot = xml_synonyms_count;
+      xml_synonyms_count++;
+
+      xml_synonyms = (XML_SYNONYM **) xrealloc (xml_synonyms,
+          (xml_synonyms_count + 1) * sizeof (XML_SYNONYM *));
+    }
+
+  xml_synonyms[slot] = xmalloc (sizeof (XML_SYNONYM));
+  xml_synonyms[slot]->from = xstrdup (from);
+  xml_synonyms[slot]->to = xstrdup (to);
 }
 
 /*

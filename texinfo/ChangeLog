@@ -1,5 +1,14 @@
 2003-11-17  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/xml.c (xml_synindex): new function to keep track of index
+	redirections.
+	(xml_insert_indexterm): added a check to see if any index
+	redirections are made.
+
+	* makeinfo/index.c (cm_synindex): let xml_synindex() handle xml part.
+
+2003-11-17  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_uref):
 	* makeinfo/xml.c: use ulink for @uref with Docbook.
 
