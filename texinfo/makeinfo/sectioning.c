@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.18 2003-11-21 11:02:33 dirt Exp $
+   $Id: sectioning.c,v 1.19 2003-11-21 11:39:27 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -250,10 +250,10 @@ handle_enum_increment (level, index)
      int level;
      int index;
 {
-  /* Here's is how TeX handles enumeration:
+  /* Here is how TeX handles enumeration:
      - Anything below @unnumbered is not enumerated.
      - Counters are incremented below @chapter and @appendix, but not
-       printed with their @unnumbered* children.  */
+       printed for their @unnumbered* children.  */
   int i;
 
   if (!number_sections && !docbook)
