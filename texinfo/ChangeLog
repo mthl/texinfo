@@ -1,5 +1,6 @@
 2003-11-06  Karl Berry  <karl@gnu.org>
 
+	* AUTHORS: Silly syntax.
 	* bootstrap: no --force, everything is considered obsolete then
 	(thanks Alper).
 
