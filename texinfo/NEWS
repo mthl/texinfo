@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.31 2003-01-27 13:05:44 karl Exp $
+$Id: NEWS,v 1.32 2003-01-27 16:59:59 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -24,7 +24,9 @@ convenience, here's a url to one of the relevant sections:
 
 * Language:
   . The ' (ASCII apostrophe/right quote) character is finally allowed in
-    node and anchor names.
+    node and anchor names.  Thus, after installing this texinfo.tex,
+    existing .aux files will cause errors!  Remove them and rerun TeX to
+    generate good ones.
   . @value constructs are now expanded in the filename arguments to
     @include and @verbatiminclude.
   . @smallexample and the like now output in a smaller font (9pt) in all

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
+@c $Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -366,7 +366,7 @@ Quotations and Examples
 * verbatim::                    Writing a verbatim example.
 * verbatiminclude::             Including a file verbatim.
 * lisp::                        Illustrating Lisp code.
-* small::                       Forms for @code{@@smallbook}.
+* small::                       Examples in a smaller font.
 * display::                     Writing an example in the current font.
 * format::                      Writing an example without narrowed margins.
 * exdent::                      Undo indentation on a line.
@@ -546,8 +546,8 @@ Formatting and Printing Hardcopy
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * pagesizes::                   How to print with customized page sizes.
-* Cropmarks and Magnification::  How to print marks to indicate the size
-                               of pages and how to print scaled up output.
+* Cropmarks and Magnification:: How to print marks to indicate the size
+                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 
 Creating and Installing Info Files
@@ -568,7 +568,7 @@ Creating an Info File
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
 * Tag and Split Files::         How tagged and split files help Info
                                  to run better.
-* makeinfo html::               Generating HTML output.
+* Generating HTML::             Generating HTML output with makeinfo.
 
 Installing an Info File
 
@@ -821,7 +821,7 @@ documentation web page}.
 Here is a brief overview of the output formats currently supported by
 Texinfo.
 
-@table @strong
+@table @asis
 @item Info
 @cindex Info output
 (Generated via @command{makeinfo}.)  This format is a plain text
@@ -831,7 +831,7 @@ next section (@pxref{Info Files}) for more details on this format.
 The Emacs Info subsystem (@pxref{Top,,Getting Started,info, Info}),
 and the standalone @command{info} program (@pxref{info
 standalone,,,info-stnd, GNU Info}), among others, can read these
-files.
+files.  @xref{Creating and Installing Info Files}.
 
 @item Plain text
 @cindex Plain text output
@@ -852,28 +852,31 @@ Mozilla, Lynx, and Emacs-W3, can render this language online.  There
 are many versions of HTML; @command{makeinfo} tries to use a subset
 of the language that can be interpreted by any common browser.  For
 details of the HTML language and much related information, see
-@uref{http://www.w3.org/MarkUp/}.
+@uref{http://www.w3.org/MarkUp/}.  @xref{Generating HTML}.
 
 @item DVI
 @cindex DVI output
-@cindex Dvips
-@cindex Xdvi
+@pindex Dvips
+@pindex Xdvi
 (Generated via @command{texi2dvi}.)  This DeVice Independent binary
 format is output by the @TeX{} typesetting program
 (@uref{http://tug.org}).  It is then read by a DVI `driver', which
 writes the actual device-specific commands that can be viewed or
 printed, notably Dvips for translation to PostScript (@pxref{dvips
 invocation,,, dvips, Dvips}) and Xdvi for viewing on an X display
-(http://sourceforge.net/projects/xdvi/).
+(@uref{http://sourceforge.net/projects/xdvi/}).  @xref{Hardcopy}.
 
 @item PDF
 @cindex PDF output
-(Generated via @command{texi2dvi --pdf}.)  This is a format developed
-by Adobe which is intended to be platform-independent and easily
-viewable, among other design goals; for a discussion, see
+@cindex Beebe, Nelson
+@pindex pdftex
+(Generated via @command{texi2dvi --pdf}.)  This format, based on
+PostScript, was developed by Adobe Systems for document interchange.
+It is intended to be platform-independent and easily viewable, among
+other design goals; for a discussion, see
 @uref{http://tug.org/tugboat/Articles/tb22-3/tb72beebeI.pdf}.  Texinfo
-uses the @command{pdftex} program to output pdf; see
-@uref{http://tug.org/applications/pdftex}.
+uses the @command{pdftex} program, a variant of @TeX{}, to output pdf;
+see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
 @item XML
 @cindex XML output
@@ -4966,20 +4969,15 @@ limited support for using @w{@@-commands} in node names; see
 @ref{Pointer Validation}.)
 
 @item
-@cindex Parentheses in nodename
-You cannot use parentheses in node names, because a node name such as
-@samp{(foo)bar} is interpreted by the Info readers as a node
-@samp{bar} in an Info file @file{foo}.
-
-@item
-@cindex Apostrophe in nodename
 @cindex Colon in nodename
 @cindex Comma in nodename
+@cindex Parentheses in nodename
 @cindex Period in nodename
 @cindex Characters, invalid in node name
 @cindex Invalid characters in node names
-Unfortunately, you cannot use periods, commas, colons or apostrophes
-within a node name; these confuse @TeX{} or the Info formatters.
+@cindex Node names, invalid characters in
+Unfortunately, you cannot use periods, commas, colons or parentheses
+within a node name; these confuse the Texinfo processors.
 
 @need 700
 For example, the following is a section title in this manual:
@@ -7512,7 +7510,7 @@ line.
 * verbatim::                    Writing a verbatim example.
 * verbatiminclude::             Including a file verbatim.
 * lisp::                        Illustrating Lisp code.
-* small::                       Forms for @code{@@smallbook}.
+* small::                       Examples in a smaller font.
 * display::                     Writing an example in the current font.
 * format::                      Writing an example without narrowed margins.
 * exdent::                      Undo indentation on a line.
@@ -7830,65 +7828,37 @@ Texinfo has ``small'' example-style commands.  These are
 @code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat}, and
 @code{@@smalllisp}.
 
-In @TeX{}, the @code{@@small@dots{}} commands typeset text in a smaller
-font than the non-small example commands.  Consequently, many examples
-containing long lines fit on a page without needing to be shortened.
-
 In Info, the @code{@@small@dots{}} commands are equivalent to their
 non-small companion commands.
+
+In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
+a smaller font than the non-small example commands.  Consequently,
+many examples containing long lines fit on a page without needing to
+be shortened.
 
 Mark the end of an @code{@@small@dots{}} block with a corresponding
 @code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with
 @code{@@end smallexample}.
 
-@iftex
-Here is an example written in the small font used by the
-@code{@@smallexample} and @code{@@smalllisp} commands:
+Here is an example of the font used by the @code{@@small@dots{}}
+commands (in Info, the output will be the same as usual):
 
-@ifclear smallbook
-@display
-@tex
-% Remove extra vskip; this is a kludge to counter the effect of display
-\vskip-3\baselineskip
-{\smalltt
-\dots{} to make sure that you have the freedom to
+@smallexample
+@dots{} to make sure that you have the freedom to
 distribute copies of free software (and charge for
 this service if you wish), that you receive source
 code or can get it if you want it, that you can
 change the software or use pieces of it in new free
-programs; and that you know you can do these things.}
-@end tex
-@end display
-@end ifclear
-@end iftex
-@ifset smallbook
-@iftex
-@smallexample
-This is an example of text written between @code{@@smallexample} and
-@code{@@end smallexample}.  In Info this text appears in its normal size;
-but in printed manuals, this text appears in a smaller font.
+programs; and that you know you can do these things.
 @end smallexample
-@end iftex
-@end ifset
-@ifinfo
-@smallexample
-This is an example of text written between @code{@@smallexample} and
-@code{@@end smallexample}.  In Info this text appears in its normal size;
-but in a 7 by 9.25 inch manual, this text appears in a smaller font.
-@end smallexample
-@end ifinfo
 
 The @code{@@small@dots{}} commands make it easier to prepare manuals
 without forcing you to edit examples by hand to fit them onto narrower
 pages.
 
-As a general rule, a printed document looks better if you use only one
-of (for example) @code{@@example} or in @code{@@smallexample}
-consistently within a chapter.  Only occasionally should you mix the two
-formats.
-
-@xref{smallbook, , Printing ``Small'' Books}, for more information
-about the @code{@@smallbook} command.
+As a general rule, a printed document looks much better if you use
+only one of (for instance) @code{@@example} or @code{@@smallexample}
+consistently within a chapter.  
 
 
 @node display
@@ -13120,8 +13090,8 @@ print queue, and delete a job from the print queue.
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * pagesizes::                   How to print with customized page sizes.
-* Cropmarks and Magnification::  How to print marks to indicate the size
-                               of pages and how to print scaled up output.
+* Cropmarks and Magnification:: How to print marks to indicate the size
+                                 of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 @end menu
 
@@ -13804,7 +13774,8 @@ file, before the title page:@refill
 @noindent
 (Since many books are about 7 by 9.25 inches, this command might better
 have been called the @code{@@regularbooksize} command, but it came to be
-called the @code{@@smallbook} command by comparison to the 8.5 by 11 inch format.)
+called the @code{@@smallbook} command by comparison to the 8.5 by 11
+inch format.)
 
 If you write the @code{@@smallbook} command between the
 start-of-header and end-of-header lines, the Texinfo mode @TeX{}
@@ -13966,17 +13937,16 @@ magnifications.  Be prepared to experiment.
 @pindex pdftex
 You can generate a PDF output file from Texinfo source by using the
 @command{pdftex} program to process your file instead of plain
-@command{tex}.  Just run @samp{pdftex foo.texi} instead of @samp{tex
+@command{tex}.  That is, run @samp{pdftex foo.texi} instead of @samp{tex
 foo.texi}, or give the @samp{--pdf} option to @command{texi2dvi}.
 
 @dfn{PDF} stands for `Portable Document Format'. It was invented by
 Adobe Systems some years ago for document interchange, based on their
-PostScript language.  A @uref{http://www.foolabs.com/xpdf/, PDF reader}
-for the X window system is freely available, as is the
-@uref{http://partners.adobe.com/asn/developer/technotes/, definition of
-the file format}.  Since PDF is a binary format, there are no
-@samp{@@ifpdf} or @samp{@@pdf} commands as with the other output
-formats.
+PostScript language.  A @uref{http://www.foolabs.com/xpdf/, PDF
+reader} for the X window system is freely available, as is the
+@uref{http://partners.adobe.com/asn/developer/technotes/, definition
+of the file format}.  At present, there are no @samp{@@ifpdf} or
+@samp{@@pdf} commands as with the other output formats.
 
 Despite the `portable' in the name, PDF files are nowhere near as
 portable in practice as the plain ASCII formats (Info, HTML) that
@@ -14026,7 +13996,7 @@ For information on installing the Info file in the Info system,
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
 * Tag and Split Files::         How tagged and split files help Info
                                  to run better.
-* makeinfo html::               Generating HTML output.
+* Generating HTML::             Generating HTML output with makeinfo.
 @end menu
 
 
@@ -14177,7 +14147,7 @@ Print a usage message listing all available options, then exit successfully.
 
 @item --html
 @opindex --html
-Generate HTML output rather than Info.  @xref{makeinfo html}.  By
+Generate HTML output rather than Info.  @xref{Generating HTML}.  By
 default, the HTML output is split into one output file per source node,
 and the split output is written into a subdirectory with the name of the
 top-level info file.
@@ -14235,7 +14205,7 @@ distribution (as in an @file{INSTALL} file).
 For HTML output, likewise omit menus.  And if @samp{--no-split} is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
-@xref{makeinfo html}.
+@xref{Generating HTML}.
 
 In both cases, write to standard output by default (can still be
 overridden by @option{-o}).
@@ -14262,7 +14232,7 @@ commands even if generating the given format.  For instance, if
 Suppress the splitting stage of @code{makeinfo}.  By default, large
 output files (where the size is greater than 70k bytes) are split into
 smaller subfiles.  For Info output, each one is approximately 50k bytes.
-For HTML output, each file contains one node (@pxref{makeinfo html}).
+For HTML output, each file contains one node (@pxref{Generating HTML}).
 
 @item --no-pointer-validate
 @itemx --no-validate
@@ -14301,7 +14271,7 @@ file name specified in the @code{@@setfilename} command found in the
 Texinfo source (@pxref{setfilename}).  If @var{file} is @samp{-}, output
 goes to standard output and @samp{--no-split} is implied.  For split
 HTML output, @var{file} is the name for the directory into which all
-HTML nodes are written (@pxref{makeinfo html}).
+HTML nodes are written (@pxref{Generating HTML}).
 
 @item -P @var{dir}
 @opindex -P @var{dir}
@@ -14711,7 +14681,7 @@ validate the structure of the nodes, see @ref{Using
 Info-validate}.@refill
 
 
-@node makeinfo html
+@node Generating HTML
 @subsection Generating HTML
 @cindex HTML
 
@@ -16876,7 +16846,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
+$Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16941,7 +16911,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.27 2003-01-22 13:39:55 karl Exp $
+@comment $Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -18882,7 +18852,7 @@ For an example of Lisp code.
 
 @item @@smallexample
 @itemx @@smalllisp
-Like @@table and @@lisp @r{but for} @@smallbook.
+Like @@table and @@lisp, but for (originally) @@smallbook.
 @end table
 
 @c subheading Conditionals

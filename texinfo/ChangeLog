@@ -1,5 +1,27 @@
 2003-01-27    <karl@gnu.org>
 
+	* configure.ac: pretest version 4.3d.
+
+        More changes to use @ fully in the .aux file, otherwise something
+	as simple as:
+          @node foo
+          @section @code{foo}
+        was broken.
+	* doc/texinfo.tex (\setref): call \atdummies.
+	(\atdummies): new macro, based on \indexdummies.
+	(\commondummies): separate out common redefinitions.
+	(\lbraceatcmd,\rbraceatcmd): @{ and @}, as strings.
+
+	* configure.ac (AC_CHECK_FUNCS): add sigaction.
+	* info/signals.c (set_termsig) [HAVE_SIGACTION]: second arg to
+	sigaction is a pointer, not a struct.
+
+	From: AIDA Shinra <aida-s@jcom.home.ne.jp>, 25 Jan 2003 18:53:19 +0900:
+	* info/signals.c (mask_termsig,set_termsig,restore_termsig): new fns.
+	(initialize_info_signal_handler): use sigaction if we have it.
+	(info_signal_proc): reread window size in case it has changed
+	while we were suspended.
+
 	Mon Jan 27 08:09:07 CET 2003 Stepan Kasal <kasal@math.cas.cz> 
 	* doc/texinfo.tex (\acuteaccent): the workaround is no longer needed.
 	(\xrefX): \normalturnoffactive changed to \turnoffactive, since
