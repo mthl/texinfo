@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.4 2002-11-26 22:01:35 karl Exp $
+# $Id: Makefile.am,v 1.5 2002-11-26 22:49:59 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -80,4 +80,3 @@ dist-info:
 	$(MAKEINFO) -I$(srcdir) `echo $< | sed 's,.*/,,'`
 texinfo: $(srcdir)/texinfo.txi version.texi
 	$(MAKEINFO) -I$(srcdir) texinfo.txi
-info-stnd.info: version-stnd.texi
