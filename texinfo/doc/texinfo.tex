@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2002-10-31.16}
+\def\texinfoversion{2002-10-31.17}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
@@ -68,6 +68,13 @@
 \everyjob{\message{[Texinfo version \texinfoversion]}%
   \catcode`+=\active \catcode`\_=\active}
 
+\message{Basics,}
+\chardef\other=12
+
+% We never want plain's outer \+ definition in Texinfo.
+% For @tex, we can use \tabalign.
+\let\+ = \relax
+
 % Save some parts of plain tex whose names we will redefine.
 \let\ptexb=\b
 \let\ptexbullet=\bullet
@@ -78,18 +85,15 @@
 \let\ptexend=\end
 \let\ptexequiv=\equiv
 \let\ptexexclam=\!
+\let\ptexgtr=>
+\let\ptexhat=^
 \let\ptexi=\i
 \let\ptexlbrace=\{
+\let\ptexless=<
+\let\ptexplus=+
 \let\ptexrbrace=\}
 \let\ptexstar=\*
 \let\ptext=\t
-
-% We never want plain's outer \+ definition in Texinfo.
-% For @tex, we can use \tabalign.
-\let\+ = \relax
-
-\message{Basics,}
-\chardef\other=12
 
 % If this character appears in an error message or help string, it
 % starts a new line in the output.
@@ -841,11 +845,6 @@ where each line of input produces a line of output.}
 % to set catcodes according to plain TeX first, to allow for subscripts,
 % superscripts, special math chars, etc.
 % 
-% @math does not do math typesetting in section titles, index
-% entries, and other such contexts where the catcodes are set before
-% @math gets a chance to work.  This could perhaps be fixed, but for now
-% at least we can have real math in the main text, where it's needed most.
-%
 \let\implicitmath = $%$ font-lock fix
 %
 % One complication: _ usually means subscripts, but it could also mean
@@ -871,8 +870,26 @@ where each line of input produces a line of output.}
   \tex
   \mathcode`\_="8000 \mathunderscore
   \let\\ = \mathbackslash
+  \mathactive
   \implicitmath\finishmath}
 \def\finishmath#1{#1\implicitmath\Etex}
+
+% Some active characters (such as <) are spaced differently in math.
+% We have to reset their definitions in case the @math was an
+% argument to a command which set the catcodes (such as @item or @section).
+% 
+{
+  \catcode`^ = \active
+  \catcode`< = \active
+  \catcode`> = \active
+  \catcode`+ = \active
+  \gdef\mathactive{%
+    \let^ = \ptexhat
+    \let< = \ptexless
+    \let> = \ptexgtr
+    \let+ = \ptexplus
+  }
+}
 
 % @bullet and @minus need the same treatment as @math, just above.
 \def\bullet{\implicitmath\ptexbullet\implicitmath}
