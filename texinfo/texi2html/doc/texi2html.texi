@@ -1253,6 +1253,10 @@ title set by @code{@@title}. If there is no @code{@@title} other
 possibilities are tried (@code{@@settitle}, @code{@@shorttitlepage}@dots{}).
 @item title
 title set by @code{@@settitle}, or @code{fulltitle}.
+@item title_no_texi
+title without texi formatting
+@item title_texi
+title with texi commands
 @item author
 Authors list set by @code{@@author}.
 @item authors
@@ -1409,11 +1413,18 @@ It is possible to add lines to the text within the @code{<head>}
 Similarly it is possible to add text just after the @code{<body>} 
 element with the variable @variable{$AFTER_BODY_OPEN}.
 These variables are empty by default.
+
 The encoding of the texinfo file is defined by @variable{$DOCUMENT_ENCODING} 
 if no @code{@@documentencoding} appears in the document. 
 The default is a @samp{en-ascii} encoding.
 The encoding of the resulting document is defined by
 @variable{$ENCODING}. The default is the @code{$DOCUMENT_ENCODING}.
+
+The description of the document may be specified in 
+@variable{$DOCUMENT_DESCRIPTION}. If this variable is undef, the text 
+associated with @code{@@documentdescription} is used, and if there isn't 
+such test a default description is constructed using the document title and 
+the name of the first section of the file. 
 
 The @code{<body>} element attributes may be set by defining the
 variable @variable{$BODYTEXT}. If you want to define that variable

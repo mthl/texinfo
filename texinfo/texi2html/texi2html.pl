@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.109 2004-02-24 01:55:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.110 2004-02-26 23:52:46 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -263,7 +263,7 @@ our @NODE_FOOTER_BUTTONS;
 #our $ADDRESS;
 our $BODYTEXT;
 our $CSS_LINES;
-our $DOCUMENTDESCRIPTION;
+our $DOCUMENT_DESCRIPTION;
 
 # I18n
 our $LANGUAGES;
@@ -5429,7 +5429,8 @@ sub pass_text()
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
     $Texi2HTML::THISDOC{'titlefont'} = substitute_line($value{'_titlefont'});
     $Texi2HTML::THISDOC{'subtitle'} = substitute_line($value{'_subtitle'});
-    
+
+    $Texi2HTML::THISDOC{'title_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
     $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_titlefont'}));
     $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitle'}));
 
@@ -10834,16 +10835,16 @@ if ($T2H_DEBUG & $DEBUG_TEXI)
 exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
 rearrange_elements();
 do_names();
-if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENTDESCRIPTION)))
+if (@{$region_lines{'documentdescription'}} and (!defined($Texi2HTML::Config::DOCUMENT_DESCRIPTION)))
 {
     my $documentdescription = remove_texi(@{$region_lines{'documentdescription'}}); 
     my @documentdescription = split (/\n/, $documentdescription);
-    $Texi2HTML::Config::DOCUMENTDESCRIPTION = shift @documentdescription;
-    chomp $Texi2HTML::Config::DOCUMENTDESCRIPTION;
+    $Texi2HTML::Config::DOCUMENT_DESCRIPTION = shift @documentdescription;
+    chomp $Texi2HTML::Config::DOCUMENT_DESCRIPTION;
     foreach my $line (@documentdescription)
     {
         chomp $line;
-        $Texi2HTML::Config::DOCUMENTDESCRIPTION .= ' ' . $line;
+        $Texi2HTML::Config::DOCUMENT_DESCRIPTION .= ' ' . $line;
     }
 }
 # do copyright notice inserted in comment at the begining of the files

@@ -1,3 +1,15 @@
+2004-02-26  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl, texi2html.init: change $DOCUMENTDESCRIPTION to
+	$DOCUMENT_DESCRIPTION for consistency.
+	if $ENCODING is '' don't put it in the headers.
+	add a new entry to $Texi2HTML::THISDOC: 'title_texi', the title
+	with texinfo @-commands.
+	* examples/chm.init: don't convert to utf8 in the html files 
+	generated (unless the encoding is really utf8), but produce 
+	utf8 in hhc, hhk and hhp files whatever the encoding is.
+	* doc/texi2html.texi: update.
+
 2004-02-23  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* Makefile.am: ask for a version above 1.7 for automake.

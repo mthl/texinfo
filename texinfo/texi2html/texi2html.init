@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.71 2004-02-24 01:55:14 pertusus Exp $
+# $Id: texi2html.init,v 1.72 2004-02-26 23:52:46 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -577,7 +577,7 @@ $ENCODING = undef;
 
 # if undef set to @documentdescription. If there is no @documentdescription,
 # set in page_head
-$DOCUMENTDESCRIPTION = undef;
+$DOCUMENT_DESCRIPTION = undef;
 
 ########################################################################
 # Control of Page layout:
@@ -614,6 +614,7 @@ $DOCUMENTDESCRIPTION = undef;
 # Furthermore, the following global variabels are set:
 # $Texi2HTML::THISDOC{title}          -- title as set by @setttile
 # $Texi2HTML::THISDOC{title_no_texi}  -- title without texi (without html elements)
+# $Texi2HTML::THISDOC{title_texi}     -- title with texinfo @-commands
 # $Texi2HTML::THISDOC{fulltitle}      -- full title as set by @title...
 # $Texi2HTML::THISDOC{subtitle}       -- subtitle as set by @subtitle
 # $Texi2HTML::THISDOC{author}         -- author as set by @author
@@ -892,11 +893,13 @@ sub T2H_DEFAULT_print_page_head($)
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
     $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
-    my $description = $DOCUMENTDESCRIPTION;
+    my $description = $DOCUMENT_DESCRIPTION;
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
          ($description ne '');
     $description = $Texi2HTML::THISDOC{'documentdescription'} if (defined($Texi2HTML::THISDOC{'documentdescription'}));
+    my $encoding = '';
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
     print $fh <<EOT;
 $DOCTYPE
 <html>
@@ -912,7 +915,7 @@ $description
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
-<meta http-equiv="Content-Type" content="text/html; charset=$ENCODING">
+$encoding
 $CSS_LINES
 $EXTRA_HEAD
 </head>
