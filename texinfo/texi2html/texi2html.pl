@@ -145,7 +145,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.23 2003-02-11 17:46:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.24 2003-02-12 17:41:46 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1141,7 +1141,7 @@ sub l2h_ToHtml
     }
     else
     {
-        if (&getcwd =~ /\./)
+        if (getcwd() =~ /\./)
         {
             warn "$ERROR Warning l2h: current dir contains a dot. Use /tmp as l2h_tmp dir \n";
             $dotbug = 1;
@@ -1202,7 +1202,7 @@ my $l2h_extract_error = 0;
 my $l2h_range_error = 0;
 my @l2h_from_html;
 
-sub l2h_InitFromHtml
+sub l2h_InitFromHtml()
 {
     local(%l2h_img);
     my ($count, $h_line);
@@ -1251,7 +1251,7 @@ sub l2h_InitFromHtml
     return 1;
 }
 
-sub l2h_FromHtml
+sub l2h_FromHtml($)
 {
     my($text) = @_;
     my($done, $to_do, $count);
@@ -1264,7 +1264,7 @@ sub l2h_FromHtml
         $done = "<!-- l2h_end $l2h_name $count -->".$done
             if ($T2H_DEBUG & $DEBUG_L2H);
 
-        $done = &l2h_ExtractFromHtml($count) . $done;
+        $done = l2h_ExtractFromHtml($count) . $done;
 
         $done = "<!-- l2h_begin $l2h_name $count -->".$done
             if ($T2H_DEBUG & $DEBUG_L2H);
@@ -1288,8 +1288,8 @@ sub l2h_ExtractFromHtml($)
         my $l_l2h = $T2H_L2H;
         $T2H_L2H = 0;
         $_ = $l2h_to_latex{$count};
-        $_ = &substitute_style($_);
-        $_ = &unprotect_texi($_);
+        $_ = substitute_style($_);
+        $_ = unprotect_texi($_);
         $_ = "<!-- l2h: ". __LINE__ . " use texi2html -->" . $_
             if ($T2H_DEBUG & $DEBUG_L2H);
         $T2H_L2H = $l_l2h;
@@ -1306,7 +1306,7 @@ sub l2h_ExtractFromHtml($)
     }
 }
 
-sub l2h_FinishFromHtml
+sub l2h_FinishFromHtml()
 {
     if ($T2H_VERBOSE)
     {
@@ -1321,7 +1321,7 @@ sub l2h_FinishFromHtml
     }
 }
 
-sub l2h_Finish
+sub l2h_Finish()
 {
     l2h_StoreCache();
     if ($T2H_L2H_CLEAN)
@@ -1399,7 +1399,7 @@ sub l2h_FromCache
 # insert generated html into cache, move away images,
 # return transformed html
 my $maximage = 1;
-sub l2h_ToCache
+sub l2h_ToCache($$)
 {
     my $count = shift;
     my $content = shift;
@@ -1532,10 +1532,10 @@ sub pass1
     #my %macros = ();           # macros #FIXME: really unused ?
     my $macros;                 # macros. reference on a hash
 
-    &html_reset;
+    html_reset();
     build_simple_substitutions();
 
- INPUT_LINE: while ($_ = &next_line)
+ INPUT_LINE: while ($_ = next_line())
     {
         #
         # remove \input on the first lines only
@@ -1645,7 +1645,7 @@ sub pass1
                     # '{' & '}' did not completely unnest; append next line; try again.
                     if ($depth > 0)
                     {
-                        my $paste = &next_line;
+                        my $paste = next_line();
                         die "$ERROR Missing closing brace '}' for invocation of macro " .
                             "\"\@$name\" on line:\n", substr($_,0,70), "...\n" unless $paste;
                         s/\n$/ /;
@@ -1728,15 +1728,15 @@ sub pass1
         if ($tag)
         {
             # skip lines
-            (&skip_until($tag), next) if $tag eq 'ignore';
-            (&skip_until($tag), next) if $tag eq 'ifnothtml';
+            (skip_until($tag), next) if $tag eq 'ignore';
+            (skip_until($tag), next) if $tag eq 'ifnothtml';
             if ($tag eq 'ifinfo')
             {
-                (&skip_until($tag), next) unless $T2H_EXPAND eq 'info';
+                (skip_until($tag), next) unless $T2H_EXPAND eq 'info';
             }
             if ($tag eq 'iftex')
             {
-                (&skip_until($tag), next) unless $T2H_EXPAND eq 'tex';
+                (skip_until($tag), next) unless $T2H_EXPAND eq 'tex';
             }
             if ($tag eq 'tex')
             {
@@ -1744,11 +1744,11 @@ sub pass1
                 if ($T2H_EXPAND eq 'tex' && $T2H_L2H && ! $in_pre)
                 {
                     # add space to the end -- tex(i2dvi) does this, as well
-                    push(@lines, &l2h_ToLatex(&string_until($tag) . " "));
+                    push(@lines, l2h_ToLatex(string_until($tag) . " "));
                 }
                 else
                 {
-                    &skip_until($tag);
+                    skip_until($tag);
                 }
                 next;
             }
@@ -1785,11 +1785,11 @@ sub pass1
                 s/^\@node\s+//;
                 # cedilla @,{c} has a , which could be confused with a , between
                 # nodes. We protect it before splitting.
-                my @nodes = split(/,/, &protect_cedilla($_));
-                ($node, $node_next, $node_prev, $node_up) = &unprotect_cedilla (@nodes);
+                my @nodes = split(/,/, protect_cedilla($_));
+                ($node, $node_next, $node_prev, $node_up) = unprotect_cedilla (@nodes);
                 if ($node)
                 {
-                    $node = &normalise_node($node);
+                    $node = normalise_node($node);
                     if (grep {$node eq $_} @nodes_and_anchors)
                     {
                         warn "$ERROR Duplicate node found: $node\n"
@@ -1806,17 +1806,17 @@ sub pass1
                 }
                 if ($node_next)
                 {
-                    $node_next = &normalise_node($node_next);
+                    $node_next = normalise_node($node_next);
                 }
                 if ($node_prev)
                 {
-                    $node_prev = &normalise_node($node_prev);
+                    $node_prev = normalise_node($node_prev);
                 }
                 if ($node_up)
                 {
-                    $node_up = &normalise_node($node_up);
+                    $node_up = normalise_node($node_up);
                 }
-                push @lines, &html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
+                push @lines, html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
                 next;
             }
             elsif ($tag eq 'include')
@@ -1845,7 +1845,7 @@ sub pass1
                 if (/^\@ifclear\s+($VARRE)\s*$/o)
                 {
                     next unless defined($value{$1});
-                    &skip_until($tag);
+                    skip_until($tag);
                 }
                 else
                 {
@@ -1858,7 +1858,7 @@ sub pass1
                 if (/^\@ifset\s+($VARRE)\s*$/o)
                 {
                     next if defined($value{$1});
-                    &skip_until($tag);
+                    skip_until($tag);
                 }
                 else
                 {
@@ -1870,24 +1870,24 @@ sub pass1
             {
                 unless ($T2H_SHOW_MENU)
                 {
-                    &skip_until($tag);
+                    skip_until($tag);
                     next;
                 }
-                &html_push_if($tag);
-                push(@lines, &html_debug('', __LINE__));
+                html_push_if($tag);
+                push(@lines, html_debug('', __LINE__));
             }
             elsif ($format_map{$tag})
             {
                 $in_pre = 1 if $format_map{$tag} eq 'pre';
-                &html_push_if($format_map{$tag});
-                push(@lines, &html_debug('', __LINE__));
+                html_push_if($format_map{$tag});
+                push(@lines, html_debug('', __LINE__));
                 $in_list++ if $format_map{$tag} eq 'ul' || $format_map{$tag} eq 'ol' ;
                 #	    push(@lines, &debug("<blockquote>\n", __LINE__))
                 #	      if $tag =~ /example/i;
                 # Eric Sunshine <sunshine@sunshineco.com>: <pre>blah</pre>
                 # looks better than <pre>\nblah</pre> on OmniWeb2 NextStep
                 # browser.
-                push(@lines, &debug("<$format_map{$tag}>" .
+                push(@lines, debug("<$format_map{$tag}>" .
                                     ($in_pre ? '' : "\n"), __LINE__));
                 next;
             }
@@ -1900,8 +1900,8 @@ sub pass1
                 {
                     if ($html_element eq 'p')
                     {
-                        push (@lines, &debug("</p>\n", __LINE__));
-                        &html_pop();
+                        push (@lines, debug("</p>\n", __LINE__));
+                        html_pop();
                     }
                 }
                 if ($@)
@@ -1968,13 +1968,13 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push (@lines, &debug("</p>\n", __LINE__));
-                        &html_pop();
+                        push (@lines, debug("</p>\n", __LINE__));
+                        html_pop();
                     }
                     # don't use borders -- gets confused by empty cells
-                    push(@lines, &debug("<table>\n", __LINE__));
-                    &html_push_if('table');
-                    push(@lines, &html_debug('', __LINE__));
+                    push(@lines, debug("<table>\n", __LINE__));
+                    html_push_if('table');
+                    push(@lines, html_debug('', __LINE__));
                 }
                 # anorland@hem2.passagen.se
                 # if (/^\s*\@(|f|v|multi)table\s+\@(\w+)|(\{[^\}]*\})/)
@@ -1986,13 +1986,13 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push (@lines, &debug("</p>\n", __LINE__));
-                        &html_pop();
+                        push (@lines, debug("</p>\n", __LINE__));
+                        html_pop();
                     }
-                    push(@lines, &debug("<dl compact=\"compact\">\n", __LINE__));
-                    &html_push_if('dl');
+                    push(@lines, debug("<dl compact=\"compact\">\n", __LINE__));
+                    html_push_if('dl');
                     
-                    push(@lines, &html_debug('', __LINE__));
+                    push(@lines, html_debug('', __LINE__));
                 }
                 else
                 {
@@ -2050,20 +2050,20 @@ sub pass1
                 # explicitly to keep our HTML stack in sync.
                 if ($html_element eq 'p')
                 {
-                    push(@lines, &debug("</p>\n", __LINE__));
-                    &html_pop();
+                    push(@lines, debug("</p>\n", __LINE__));
+                    html_pop();
                 }
                 push (@lines, "<!--::${section}::-->$_");
                 next;
             }
             elsif ($tag eq 'sp')
             {
-                push(@lines, &debug("<p></p>\n", __LINE__));
+                push(@lines, debug("<p></p>\n", __LINE__));
                 next;
             }
             elsif ($tag eq 'center')
             {
-                push(@lines, &debug("<div align=\"center\">\n", __LINE__));
+                push(@lines, debug("<div align=\"center\">\n", __LINE__));
                 s/\@center//;
             }
             elsif ($tag eq 'lowersections')
@@ -2095,7 +2095,7 @@ sub pass1
 
                     $macros->{$name}->{Args} = \@args;
                     $macros->{$name}->{Body} = '';
-                    while (($_ = &next_line) && $_ !~ /\@end $tag/)
+                    while (($_ = next_line()) && $_ !~ /\@end $tag/)
                     {
                         $macros->{$name}->{Body} .= $_;
                     }
@@ -2182,7 +2182,7 @@ sub pass1
                 my $ftype;
                 if ($is_extra)
                 {
-                    $_ = &debug($T2H_DEF_TABLE ? '' : '<dt>', __LINE__);
+                    $_ = debug($T2H_DEF_TABLE ? '' : '<dt>', __LINE__);
                     #$_ = &debug("<tr TEST1>\n", __LINE__) if ($T2H_DEF_TABLE);
                 }
                 else
@@ -2191,14 +2191,14 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        $_ = &debug("</p>\n", __LINE__);
-                        &html_pop();
+                        $_ = debug("</p>\n", __LINE__);
+                        html_pop();
                     }
                     else
                     {
                         $_ = '';
                     }
-                    $_ .= &debug($T2H_DEF_TABLE ?
+                    $_ .= debug($T2H_DEF_TABLE ?
                                  "<table width=\"100%\">\n" : "<dl>\n<dt>",
                                  __LINE__);
                 }
@@ -2245,9 +2245,9 @@ sub pass1
                     $_ .= "<u>$type</u> <b>$name</b>";
                     $_ .= " <i>@args</i>" if @args;
                 }
-                $_ .= &debug("\n<dd>", __LINE__) if (!$T2H_DEF_TABLE);
+                $_ .= debug("\n<dd>", __LINE__) if (!$T2H_DEF_TABLE);
                 ########$_ .= &debug("\n</table TEST3>\n<table width=\"95%\">\n", __LINE__) if ($T2H_DEF_TABLE);
-                $name = &unprotect_html($name);
+                $name = unprotect_html($name);
                 if ($tag eq 'deffn' || $tag eq 'deftypefn')
                 {
                     EnterIndexEntry('f', $name, $docu_doc, $section, \@lines, $in_pre);
@@ -2277,11 +2277,11 @@ sub pass1
             {
                 $in_pre = 0 if $format_map{$end_tag} eq 'pre';
                 $in_list-- if $format_map{$end_tag} eq 'ul' || $format_map{$end_tag} eq 'ol' ;
-                &html_pop_if('p');
-                &html_pop_if('li');
-                &html_pop_if();
-                push(@lines, &debug("</$format_map{$end_tag}>\n", __LINE__));
-                push(@lines, &html_debug('', __LINE__));
+                html_pop_if('p');
+                html_pop_if('li');
+                html_pop_if();
+                push(@lines, debug("</$format_map{$end_tag}>\n", __LINE__));
+                push(@lines, html_debug('', __LINE__));
             }
             elsif (exists $complex_format_map->{$end_tag})
             {
@@ -2301,7 +2301,7 @@ sub pass1
                     warn "$ERROR \@end $end_tag without \@*table\n";
                     next;
                 }
-                &html_pop_if('p');
+                html_pop_if('p');
                 ($table_type, $in_table) = split($;, shift(@tables));
                 unless ($1 eq $table_type)
                 {
@@ -2321,7 +2321,7 @@ sub pass1
                         push(@lines, "</td></tr></table>\n");
                     }
                     
-#                    &html_pop_if('tr');
+#                    html_pop_if('tr');
                 }
                 else
                 {
@@ -2329,13 +2329,13 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push(@lines, &debug("</p>\n", __LINE__));
-                        &html_pop();
+                        push(@lines, debug("</p>\n", __LINE__));
+                        html_pop();
                     }
                     push(@lines, "</dl>\n");
-                    &html_pop_if('dd');
+                    html_pop_if('dd');
                 }
-                &html_pop_if();
+                html_pop_if();
                 if (@tables)
                 {
                     ($table_type, $in_table) = split($;, $tables[0]);
@@ -2352,15 +2352,15 @@ sub pass1
                 # sync.
                 if ($html_element eq 'p')
                 {
-                    push(@lines, &debug("</p>\n", __LINE__));
-                    &html_pop();
+                    push(@lines, debug("</p>\n", __LINE__));
+                    html_pop();
                 }
-                push(@lines, &debug($T2H_DEF_TABLE ?
+                push(@lines, debug($T2H_DEF_TABLE ?
                                     "</table>\n" : "</dl>\n", __LINE__));
             }
             elsif ($end_tag eq 'menu')
             {
-                &html_pop_if();
+                html_pop_if();
                 push(@lines, $_); # must keep it for pass 2
             }
             next;
@@ -2371,7 +2371,7 @@ sub pass1
         {
             $_ = $`.$';
             my $anchor = $1;
-            $anchor = &normalise_node($anchor);
+            $anchor = normalise_node($anchor);
             if (grep {$anchor eq $_} @nodes_and_anchors)
             {
                 warn "$ERROR Duplicate node found: $anchor\n"
@@ -2380,7 +2380,7 @@ sub pass1
             {
                 push @nodes_and_anchors, $anchor;
             }
-            push @lines, &html_debug("<a name=\""."ANC_".$anchor."\"></a>\n", __LINE__);
+            push @lines, html_debug("<a name=\""."ANC_".$anchor."\"></a>\n", __LINE__);
             $node2href{$anchor} = "$docu_doc#ANC_$anchor";
             next INPUT_LINE if $_ =~ /^\s*$/;
         }
@@ -2393,8 +2393,8 @@ sub pass1
         }
         #
         # protect texi and HTML things
-        $_ = &protect_texi($_);
-        $_ = &protect_html($_) unless $dont_html;
+        $_ = protect_texi($_);
+        $_ = protect_html($_) unless $dont_html;
         $dont_html = 0;
         # substitution (unsupported things)
         s/^\@exdent\s+//go;
@@ -2483,7 +2483,7 @@ sub pass1
                 if (/^\@$tag\s+(.+)$/)
                 {
                     $name = $1;
-                    $name = &normalise_space_style($name);
+                    $name = normalise_space_style($name);
                     my $level = $sec2level{$tag};
                     # check for index
                     $first_index_chapter = $name
@@ -2492,8 +2492,8 @@ sub pass1
                     if ($in_top && /heading/)
                     {
                         $T2H_HAS_TOP_HEADING = 1;
-                        $_ = &debug("<h$level>$name</h$level>\n", __LINE__);
-                        &html_push_if('body');
+                        $_ = debug("<h$level>$name</h$level>\n", __LINE__);
+                        html_push_if('body');
                         print "# top heading, section $name, level $level\n"
                             if $T2H_DEBUG & $DEBUG_TOC;
                     }
@@ -2586,23 +2586,23 @@ sub pass1
                             {
                                 push(@toc_lines, "</li>\n");
                             }
-                            $_ = &t2h_anchor($tocid, "$docu_doc#$docid",$name);
-                            $_ = &substitute_style($_);
+                            $_ = t2h_anchor($tocid, "$docu_doc#$docid",$name);
+                            $_ = substitute_style($_);
                             push(@stoc_lines,
                                  "  <li>$_</li>\n") if ($level == 1);
                             push(@toc_lines, "$ind<li>$_");
                         }
                         else
                         {
-                            push(@lines, &html_debug("<a name=\"".protect_html($docid)."\"></a>\n",
+                            push(@lines, html_debug("<a name=\"".protect_html($docid)."\"></a>\n",
                                                      __LINE__));
                         }
                         # update DOC
-                        push(@lines, &html_debug('', __LINE__));
-                        &html_reset;
+                        push(@lines, html_debug('', __LINE__));
+                        html_reset();
                         $_ =  "<h$level> $name </h$level>\n<!--docid::${docid}::-->\n";
-                        $_ = &debug($_, __LINE__);
-                        push(@lines, &html_debug('', __LINE__));
+                        $_ = debug($_, __LINE__);
+                        push(@lines, html_debug('', __LINE__));
                     }
                     # update DOC
                     foreach my $line (split(/\n+/, $_))
@@ -2619,15 +2619,15 @@ sub pass1
             else
             {
                 # track variables
-                ($value{$1} = Unprotect_texi($2), next) if /^\@set\s+($VARRE)\s+(.*)$/o;
+                ($value{$1} = unprotect_texi($2), next) if /^\@set\s+($VARRE)\s+(.*)$/o;
                 (delete $value{$1}, next) if /^\@clear\s+($VARRE)\s*$/o;
                 # store things
-                ($value{'_shorttitle'} = Unprotect_texi($1), next) if /^\@shorttitle\s+(.*)$/;
-                ($value{'_setfilename'}   = Unprotect_texi($1), next) if /^\@setfilename\s+(.*)$/;
-                ($value{'_settitle'}      = Unprotect_texi($1), next) if /^\@settitle\s+(.*)$/;
-                ($value{'_author'}   .= Unprotect_texi($1)."\n", next) if /^\@author\s+(.*)$/;
-                ($value{'_subtitle'} .= Unprotect_texi($1)."\n", next) if /^\@subtitle\s+(.*)$/;
-                ($value{'_title'}    .= Unprotect_texi($1)."\n", next) if /^\@title\s+(.*)$/;
+                ($value{'_shorttitle'} = unprotect_texi($1), next) if /^\@shorttitle\s+(.*)$/;
+                ($value{'_setfilename'}   = unprotect_texi($1), next) if /^\@setfilename\s+(.*)$/;
+                ($value{'_settitle'}      = unprotect_texi($1), next) if /^\@settitle\s+(.*)$/;
+                ($value{'_author'}   .= unprotect_texi($1)."\n", next) if /^\@author\s+(.*)$/;
+                ($value{'_subtitle'} .= unprotect_texi($1)."\n", next) if /^\@subtitle\s+(.*)$/;
+                ($value{'_title'}    .= unprotect_texi($1)."\n", next) if /^\@title\s+(.*)$/;
 
                 # list item
                 if (/^\s*\@itemx?\s+/)
@@ -2642,7 +2642,7 @@ sub pass1
                             $bib2href{$what} = "$docu_doc#$id";
                             print "# found bibliography for '$what' id $id\n"
                                 if $T2H_DEBUG & $DEBUG_BIB;
-                            $what = &t2h_anchor($id, '', $what);
+                            $what = t2h_anchor($id, '', $what);
                         }
                     }
                     elsif ($in_glossary && $T2H_USE_GLOSSARY)
@@ -2653,7 +2653,7 @@ sub pass1
                         $gloss2href{$entry} = "$docu_doc#$id";
                         print "# found glossary for '$entry' id $id\n"
                             if $T2H_DEBUG & $DEBUG_GLOSS;
-                        $what = &t2h_anchor($id, '', $what);
+                        $what = t2h_anchor($id, '', $what);
                     }
                     elsif ($in_table && ($table_type eq 'f' || $table_type eq 'v'))
                     {
@@ -2665,37 +2665,37 @@ sub pass1
                             # APA: End paragraph, if any.
                             if ($html_element eq 'p')
                             {
-                                push(@lines, &debug("</p>\n", __LINE__));
-                                &html_pop();
+                                push(@lines, debug("</p>\n", __LINE__));
+                                html_pop();
                             }
-                            push(@lines, &debug("<dt>", __LINE__));
-                            &html_push('dt');
+                            push(@lines, debug("<dt>", __LINE__));
+                            html_push('dt');
                         }
                         EnterIndexEntry($table_type, $what, $docu_doc, $section, \@lines, $in_pre);
                     }
                     # APA: End paragraph, if any.
                     if ($html_element eq 'p')
                     {
-                        push(@lines, &debug("</p>\n", __LINE__));
-                        &html_pop();
+                        push(@lines, debug("</p>\n", __LINE__));
+                        html_pop();
                     }
                     if ($html_element =~ m|^d[dlt]$|)
                     {
                         unless ($html_element eq 'dt')
                         {
-                            push(@lines, &debug("<dt>", __LINE__));
+                            push(@lines, debug("<dt>", __LINE__));
                         }
                         if ($things_map{$in_table} && !$what)
                         {
                             # special case to allow @table @bullet for instance
-                            push(@lines, &debug("$things_map{$in_table}\n", __LINE__));
+                            push(@lines, debug("$things_map{$in_table}\n", __LINE__));
                         }
                         else
                         {
-                            push(@lines, &debug("\@$in_table\{$what\}\n", __LINE__));
+                            push(@lines, debug("\@$in_table\{$what\}\n", __LINE__));
                         }
                         push(@lines, "<dd>");
-                        &html_push('dd') unless $html_element eq 'dd';
+                        html_push('dd') unless $html_element eq 'dd';
                         if ($table_type)
                         {       # add also an index
                             unshift(@input_spool, "\@${table_type}index $what\n");
@@ -2703,20 +2703,20 @@ sub pass1
                     }
                     elsif ($html_element eq 'table')
                     {
-                        push(@lines, &debug("<tr><td>$what</td>\n", __LINE__));
-                        &html_push('tr');
+                        push(@lines, debug("<tr><td>$what</td>\n", __LINE__));
+                        html_push('tr');
                     }
                     elsif ($html_element eq 'tr')
                     {
-                        push(@lines, &debug("</tr>\n", __LINE__));
-                        push(@lines, &debug("<tr><td>$what</td>\n", __LINE__));
+                        push(@lines, debug("</tr>\n", __LINE__));
+                        push(@lines, debug("<tr><td>$what</td>\n", __LINE__));
                     }
                     else
                     {
-                        push(@lines, &debug("<li>$what\n", __LINE__));
-                        &html_push('li') unless $html_element eq 'li';
+                        push(@lines, debug("<li>$what\n", __LINE__));
+                        html_push('li') unless $html_element eq 'li';
                     }
-                    push(@lines, &html_debug('', __LINE__));
+                    push(@lines, html_debug('', __LINE__));
                     next;
                 }
             }
@@ -2727,22 +2727,22 @@ sub pass1
             next if $#lines >= 0 && $lines[$#lines] eq "\n";
             if ($html_element eq 'p')
             {
-                push (@lines, &debug("</p>\n<p>\n", __LINE__));
+                push (@lines, debug("</p>\n<p>\n", __LINE__));
             }
             # 	else
             # 	{
             # 	  push(@lines, "<p></p>\n");
-            # 	  $_ = &debug("<p></p>\n", __LINE__);
+            # 	  $_ = debug("<p></p>\n", __LINE__);
             # 	}
             elsif ($html_element eq 'body' || $html_element eq 'blockquote' || $html_element eq 'dd' || $html_element eq 'li')
             {
-                &html_push('p');
-                push(@lines, &debug("<p>\n", __LINE__));
+                html_push('p');
+                push(@lines, debug("<p>\n", __LINE__));
             }
         }
         # otherwise
         push(@lines, $_) unless $in_titlepage;
-        push(@lines, &debug("</div>\n", __LINE__))  if ($tag eq 'center');
+        push(@lines, debug("</div>\n", __LINE__))  if ($tag eq 'center');
     }
     # finish TOC
     my $level = 0;
@@ -2774,14 +2774,14 @@ sub EnterIndexEntry
         unless (exists ($index_properties->{$prefix}));
     $key =~ s/\s+$//;
     $_ = $key;
-    $_ = &protect_texi($_);
+    $_ = protect_texi($_);
     $key = $_;
-    $_ = &protect_html($_);
+    $_ = protect_html($_);
     my $html_key = substitute_style($_);
     $key = remove_style($key);
     $key = remove_things($key);
     $_ = $key;
-    $_ = &unprotect_texi($_);
+    $_ = unprotect_texi($_);
     $key = $_;
     while (exists $index->{$prefix}->{$key})
     {
@@ -2796,7 +2796,7 @@ sub EnterIndexEntry
     else
     {
         $id = 'IDX' . ++$idx_num;
-        push(@$lines, &t2h_anchor($id, '', $T2H_INVISIBLE_MARK, !$in_pre));
+        push(@$lines, t2h_anchor($id, '', $T2H_INVISIBLE_MARK, !$in_pre));
     }
     $index->{$prefix}->{$key}->{html_key} = $html_key;
     $index->{$prefix}->{$key}->{section} = $section;
@@ -2974,7 +2974,7 @@ EOT
     for my $letter (@{$page->{Letters}})
     {
         push @$lines, '<tr><th>' .
-            &t2h_anchor("${name}_$letter", '', protect_html($letter)) .
+            t2h_anchor("${name}_$letter", '', protect_html($letter)) .
                 "</th><td></td><td></td></tr>\n";
         for my $entry (@{$page->{EntriesByLetter}->{$letter}})
         {
@@ -3127,17 +3127,17 @@ sub pass2
             # explicitly to keep our HTML stack in sync.
             if ($html_element eq 'p')
             {
-                push (@lines2, &debug("</p>\n", __LINE__));
-                &html_pop();
+                push (@lines2, debug("</p>\n", __LINE__));
+                html_pop();
             }
-            push(@lines2, &debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
+            push(@lines2, debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
             next;
         }
         if (/^\@end\s+menu\b/)
         {
             if ($in_menu_listing)
             {
-                push(@lines2, &debug("</table>\n", __LINE__));
+                push(@lines2, debug("</table>\n", __LINE__));
             }
             $in_menu = 0;
             $in_menu_listing = 0;
@@ -3168,7 +3168,7 @@ sub pass2
                 {
                     # APA: Handle menu comment lines. These don't end the menu!
                     # $in_menu_listing = 0;
-                    push(@lines2,&debug('<tr><th colspan="3" align="left" valign="top">' . $_ . '</th></tr>
+                    push(@lines2, debug('<tr><th colspan="3" align="left" valign="top">' . $_ . '</th></tr>
 ', __LINE__));
                 }
             }
@@ -3177,14 +3177,14 @@ sub pass2
                 if (! $in_menu_listing)
                 {
                     $in_menu_listing = 1;
-                    push(@lines2, &debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
+                    push(@lines2, debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
                 }
                 # look for continuation
                 while ($lines[0] =~ /^\s+.*$/)
                 {
                     $descr .= shift(@lines);
                 }
-                &menu_entry($node, $name, $descr);
+                menu_entry($node, $name, $descr);
             }
             next;
         }
@@ -3196,7 +3196,7 @@ sub pass2
         #
         # simple style substitutions
         #
-        $_ = &substitute_style($_);
+        $_ = substitute_style($_);
         #
         # xref
         #
@@ -3230,7 +3230,7 @@ sub pass2
             unless ($full)
             {
                 my $next = shift(@lines);
-                $next = &substitute_style($next);
+                $next = substitute_style($next);
                 chop($nodes);   # remove final newline
                 if ($next =~ /\}/)
                 {               # split on 2 lines
@@ -3241,7 +3241,7 @@ sub pass2
                 {
                     $nodes .= " $next";
                     $next = shift(@lines);
-                    $next = &substitute_style($next);
+                    $next = substitute_style($next);
                     chop($nodes);
                     if ($next =~ /\}/)
                     {           # split on 3 lines
@@ -3299,12 +3299,12 @@ sub pass2
             {
                 $_  = "${before}${type}";
                 $_ .= "$T2H_WORDS->{$T2H_LANG}->{'section'} " if $type;
-                $_ .= &t2h_anchor('', $href, $sec, 0, '', 1) . $after;
+                $_ .= t2h_anchor('', $href, $sec, 0, '', 1) . $after;
             }
             elsif ($href)
             {
                 $_ = "${before}${type} " .
-                    &t2h_anchor('', $href, $args[2] || $args[1] || $node, 0, '', 1) .
+                    t2h_anchor('', $href, $args[2] || $args[1] || $node, 0, '', 1) .
                         $after;
             }
             else
@@ -3341,7 +3341,7 @@ sub pass2
                 my $href = $bib2href{$what};
                 if (defined($href) && $post !~ /^[^<]*<\/a>/)
                 {
-                    $done .= $pre . &t2h_anchor('', $href, $what);
+                    $done .= $pre . t2h_anchor('', $href, $what);
                 }
                 else
                 {
@@ -3362,7 +3362,7 @@ sub pass2
                     my $href = $gloss2href{$entry};
                     if (defined($href) && $post !~ /^[^<]*<\/a>/)
                     {
-                        $done .= $pre . &t2h_anchor('', $href, $what);
+                        $done .= $pre . t2h_anchor('', $href, $what);
                     }
                     else
                     {
@@ -3456,7 +3456,7 @@ sub pass3
                     my $result;
                     if ($style->{'style'})
                     {
-                        $result = &apply_style($style->{'style'}, $style->{'text'} . $before);
+                        $result = apply_style($style->{'style'}, $style->{'text'} . $before);
                         if (!defined($result))
                         {
                             $result = '@' . $style->{'style'} . '{' . $style->{'text'} . $before . '}';
@@ -3564,10 +3564,10 @@ sub pass4
                 my $docid  = "DOCF$foot_num";
                 my $footid = "FOOT$foot_num";
                 my $foot = "($foot_num)";
-                push(@foot_lines, "<h3>" . &t2h_anchor($footid, "$d#$docid", $foot) . "</h3>\n");
+                push(@foot_lines, "<h3>" . t2h_anchor($footid, "$d#$docid", $foot) . "</h3>\n");
                 $text = "<p>$text" unless $text =~ /^\s*<p>/;
                 push(@foot_lines, "$text\n");
-                $_ = $before . &t2h_anchor($docid, "$docu_foot#$footid", $foot) . $after;
+                $_ = $before . t2h_anchor($docid, "$docu_foot#$footid", $foot) . $after;
             }
         }
         #
@@ -3596,9 +3596,9 @@ sub pass4
 #---############################################################################
 sub pass5
 {
-    $T2H_L2H = &l2h_FinishToLatex if ($T2H_L2H);
-    $T2H_L2H = &l2h_ToHtml        if ($T2H_L2H);
-    $T2H_L2H = &l2h_InitFromHtml  if ($T2H_L2H);
+    $T2H_L2H = l2h_FinishToLatex() if ($T2H_L2H);
+    $T2H_L2H = l2h_ToHtml()        if ($T2H_L2H);
+    $T2H_L2H = l2h_InitFromHtml()  if ($T2H_L2H);
 
     T2H_InitGlobals();
 
@@ -3622,8 +3622,8 @@ sub pass5
     $T2H_THISDOC{shorttitle} = $value{'_shorttitle'};
     for my $key (keys %T2H_THISDOC)
     {
-        $_ = &substitute_style($T2H_THISDOC{$key});
-        $_ = &unprotect_texi ($_);
+        $_ = substitute_style($T2H_THISDOC{$key});
+        $_ = unprotect_texi ($_);
         s/\s*$//;
         $T2H_THISDOC{$key} = $_;
     }
@@ -3765,7 +3765,7 @@ sub pass5
     # Print sections
     #
     $T2H_NODE{Forward} = $sec2node{$sections[0]};
-    $T2H_NAME{Forward} = &clean_name($sec2node{$sections[0]});
+    $T2H_NAME{Forward} = clean_name($sec2node{$sections[0]});
     $T2H_HREF{Forward} = sec_href($sections[0]);
     $T2H_NODE{This} = 'Top';
     $T2H_NAME{This} = $T2H_NAME{Top};
@@ -3834,27 +3834,27 @@ sub pass5
         }
         else
         {
-            $T2H_NAME{Up} = &clean_name($up_node);
+            $T2H_NAME{Up} = clean_name($up_node);
             $T2H_NODE{Up} = $up_node;
         }
 
         my $prev_node = $node2prev{$T2H_NODE{This}};
-        $T2H_NAME{Prev} = &clean_name($prev_node);
+        $T2H_NAME{Prev} = clean_name($prev_node);
         $T2H_HREF{Prev} = $node2href{$prev_node};
         $T2H_NODE{Prev} = $prev_node;
 
 	my $fastback_node = Node2FastBack($T2H_NODE{This});
-        $T2H_NAME{FastBack} = &clean_name($fastback_node);
+        $T2H_NAME{FastBack} = clean_name($fastback_node);
         $T2H_HREF{FastBack} = $node2href{$fastback_node};
         $T2H_NODE{FastBack} = $fastback_node;
 
         my $next_node = $node2next{$T2H_NODE{This}};
-        $T2H_NAME{Next} = &clean_name($next_node);
+        $T2H_NAME{Next} = clean_name($next_node);
         $T2H_HREF{Next} = $node2href{$next_node};
         $T2H_NODE{Next} = $next_node;
 
 	my $fastforward_node = Node2FastForward($T2H_NODE{This});
-        $T2H_NAME{FastForward} = &clean_name($fastforward_node);
+        $T2H_NAME{FastForward} = clean_name($fastforward_node);
         $T2H_HREF{FastForward} = $node2href{$fastforward_node};
         $T2H_NODE{FastForward} = $fastforward_node;
 
@@ -3967,8 +3967,8 @@ sub pass5
     }
 
  Finish:
-    &l2h_FinishFromHtml if ($T2H_L2H);
-    &l2h_Finish if($T2H_L2H);
+    l2h_FinishFromHtml() if ($T2H_L2H);
+    l2h_Finish() if($T2H_L2H);
     print "# that's all folks\n" if $T2H_VERBOSE;
 
     exit(0);
@@ -3980,26 +3980,25 @@ sub pass5
 #                                                                              #
 #---############################################################################
 
-sub LocateIncludeFile
+sub LocateIncludeFile($)
 {
     my $file = shift;
-    my $dir;
 
     # APA: Don't implicitely search ., to conform with the docs!
     # return $file if (-e $file && -r $file);
-    foreach $dir (@T2H_INCLUDE_DIRS)
+    foreach my $dir (@T2H_INCLUDE_DIRS)
     {
         return "$dir/$file" if (-e "$dir/$file" && -r "$dir/$file");
     }
     return undef;
 }
 
-sub clean_name
+sub clean_name($)
 {
-    local ($_);
-    $_ = &remove_style($_[0]);
-    $_ = &unprotect_texi($_);
-    return $_;
+    my $name = shift;
+    $name = remove_style($name);
+    $name = unprotect_texi($name);
+    return $name;
 }
 
 # initialize or increments @appendix_sec_num for the appendix sectionning,
@@ -4016,7 +4015,7 @@ sub update_sec_num($$)
         # appendix style
         if (@appendix_sec_num)
         {
-            &incr_sec_num($level, @appendix_sec_num);
+            incr_sec_num($level, @appendix_sec_num);
         }
         else
         {
@@ -4029,7 +4028,7 @@ sub update_sec_num($$)
         # normal style
         if (@normal_sec_num)
         {
-            &incr_sec_num($level, @normal_sec_num);
+            incr_sec_num($level, @normal_sec_num);
         }
         else
         {
@@ -4064,7 +4063,7 @@ sub Sec2UpNode($)
 }
 
 # Return previous node or "Top"
-sub Sec2PrevNode
+sub Sec2PrevNode($)
 {
     my $sec = shift;
     my $sec_num = 0;
@@ -4077,7 +4076,7 @@ sub Sec2PrevNode
 }
 
 # Return next node or "Top"
-sub Sec2NextNode
+sub Sec2NextNode($)
 {
     my $sec = shift;
     my $sec_num = $sec2seccount{$sec} + 1;
@@ -4095,7 +4094,7 @@ sub Sec2NextNode
 #    The beginning of this chapter, or if already there, the beginning of the
 #    previous chapter.
 #
-sub Node2FastBack
+sub Node2FastBack($)
 {
     my $node = shift;
     my $num = $sec2number{$node2sec{$node}};
@@ -4125,7 +4124,7 @@ sub Node2FastBack
 # RETURNS
 #    The beginning of the next chapter.
 #
-sub Node2FastForward
+sub Node2FastForward($)
 {
     my $node = shift;
     my $num = $sec2number{$node2sec{$node}};
@@ -4243,7 +4242,7 @@ sub skip_until($)
     my $tag = shift;
     local($_);
 
-    while ($_ = &next_line)
+    while ($_ = next_line())
     {
         return if /^\@end\s+$tag\s*$/;
     }
@@ -4257,7 +4256,7 @@ sub string_until
     my $string = '';
     local($_);
 
-    while ($_ = &next_line)
+    while ($_ = next_line())
     {
         return $string if /^\@end\s+$tag\s*$/;
         #	$_ =~ s/hbox/mbox/g;
@@ -4316,7 +4315,7 @@ sub html_pop_if(;@)
     }
 }
 
-sub html_debug
+sub html_debug($$)
 {
     my($what, $line) = @_;
     if ($T2H_DEBUG & $DEBUG_HTML)
@@ -4328,7 +4327,7 @@ sub html_debug
 }
 
 # to debug the output...
-sub debug
+sub debug($$)
 {
     my($what, $line) = @_;
     return("<!-- $line -->$what")
@@ -4336,56 +4335,56 @@ sub debug
     return($what);
 }
 
-sub SimpleTexi2Html
+sub SimpleTexi2Html($)
 {
     return undef unless (defined ($_[0]));
     local $_ = shift;
-    $_ = &protect_texi($_);
-    $_ = &protect_html($_);
+    $_ = protect_texi($_);
+    $_ = protect_html($_);
     $_ = substitute_style($_);
     return $_;
 }
 
-sub normalise_node
+sub normalise_node($)
 {
     return undef unless (defined ($_[0]));
     local $_ = shift;
-    $_ = &normalise_space ($_);
-    $_ = &SimpleTexi2Html ($_);
+    $_ = normalise_space ($_);
+    $_ = SimpleTexi2Html ($_);
     return $_;
 }
  
-sub normalise_space
+sub normalise_space($)
 {
     return undef unless (defined ($_[0]));
-    local $_ = shift;
-    s/\s+/ /go;
-    s/ $//;
-    s/^ //;
-    return $_;
+    my $text = shift;
+    $text =~ s/\s+/ /go;
+    $text =~ s/ $//;
+    $text =~ s/^ //;
+    return $text;
 }
 
-sub normalise_space_style
+sub normalise_space_style($)
 {
     return undef unless (defined ($_[0]));
-    local $_ = shift;
-    $_ = &normalise_space ($_);
-    $_ = substitute_style($_);
-    return $_;
+    my $text = shift;
+    $text = normalise_space ($text);
+    $text = substitute_style($text);
+    return $text;
 }
 
-sub menu_entry
+sub menu_entry ($$$)
 {
     my ($node, $name, $descr) = @_;
     my ($href, $entry);
 
-    $node = &normalise_space_style($node);
+    $node = normalise_space_style($node);
     $href = $node2href{$node};
     if ($href)
     {
         $descr =~ s/^\s+//;
         $descr =~ s/\s*$//;
-        $descr = &substitute_style($descr);
+        $descr = substitute_style($descr);
         if ($T2H_NUMBER_SECTIONS && !$T2H_NODE_NAME_IN_MENU && $node2sec{$node})
         {
             $entry = $node2sec{$node};
@@ -4393,7 +4392,7 @@ sub menu_entry
         }
         else
         {
-            $name = &normalise_space_style($name);
+            $name = normalise_space_style($name);
             $entry = ($name && ($name ne $node || ! $T2H_AVOID_MENU_REDUNDANCY)
                       ? "$name : $node" : $node);
         }
@@ -4407,15 +4406,15 @@ sub menu_entry
             $clean_descr =~ s/[^\w]//g;
             $descr = '' if ($clean_entry eq $clean_descr)
         }
-        push(@lines2,&debug('<tr><td align="left" valign="top">' .
-                            &t2h_anchor('', $href, $entry, 0, '', 1) .
+        push(@lines2,debug('<tr><td align="left" valign="top">' .
+                            t2h_anchor('', $href, $entry, 0, '', 1) .
                             '</td><td>&nbsp;&nbsp;</td>' .
                             '<td align="left" valign="top">' . $descr .
                             "</td></tr>\n", __LINE__));
     }
     elsif ($node =~ /^\(.*\)\w+/)
     {
-        push(@lines2,&debug('<tr><td align="left" valign="top">' .
+        push(@lines2,debug('<tr><td align="left" valign="top">' .
                             $entry .
                             '</td><td align="left" valign="top">' . $descr .
                             "</td></tr>\n", __LINE__))
@@ -4426,41 +4425,39 @@ sub menu_entry
     }
 }
 
-sub do_ctrl { "^$_[0]" }
+sub do_ctrl($;$) { return "^$_[0]" }
 
-sub do_bullet 
+sub do_bullet ($;$)
 { 
     my $text = shift;
     $text = "" unless (defined($text));
     return "$things_map{bullet} $text";
 }
 
-sub do_email
+sub do_email($;$)
 {
     my($addr, $text) = split(/,\s*/, $_[0]);
 
     $text = $addr unless $text;
-    &t2h_anchor('', "mailto:$addr", $text);
+    t2h_anchor('', "mailto:$addr", $text);
 }
 
-sub do_sc
+sub do_sc($;$)
 {
     # l2h does this much better
-    return &l2h_ToLatex("{\\sc ".&unprotect_html($_[0])."}") if ($T2H_L2H);
+    return l2h_ToLatex("{\\sc ".unprotect_html($_[0])."}") if ($T2H_L2H);
     return "\U$_[0]\E";
 }
 
-sub do_math
+sub do_math($;$)
 {
     # APA: FIXME
     # This sub doesn't seem to be used.
-    # What are $_[0] and $text?
-    my $text;
-    return &l2h_ToLatex("\$".&unprotect_html($_[0])."\$") if ($T2H_L2H);
-    return '<em>' . $text . '</em>';
+    return l2h_ToLatex("\$".unprotect_html($_[0])."\$") if ($T2H_L2H);
+    return '<em>' . $_[0] . '</em>';
 }
 
-sub do_uref
+sub do_uref($;$)
 {
     my($url, $text, $only_text) = split(/,\s*/, $_[0]);
     # APA: Don't markup obviously bad links.
@@ -4470,17 +4467,17 @@ sub do_uref
     #return if $url =~ /[<>]/;
     $text = $only_text if $only_text;
     $text = $url unless $text;
-    &t2h_anchor('', $url, $text);
+    t2h_anchor('', $url, $text);
 }
 
-sub do_url { &t2h_anchor('', $_[0], $_[0]) }
+sub do_url($;$) { return t2h_anchor('', $_[0], $_[0]); }
 
-sub do_acronym
+sub do_acronym($;$)
 {
     return '<font size="-1">' . $_[0] . '</font>';
 }
 
-sub do_accent
+sub do_accent($$)
 {
     return "$_[0]''" if $_[1] eq 'H';
     return "$_[0]." if $_[1] eq 'dotaccent';
@@ -4495,7 +4492,7 @@ sub do_accent
     return undef;
 }
 
-sub apply_style
+sub apply_style($$)
 {
     my($texi_style, $text) = @_;
     my($style);
@@ -4533,21 +4530,21 @@ sub apply_style
 }
 
 # remove Texinfo styles
-sub remove_style
+sub remove_style($)
 {
-    local($_) = @_;
-    1 while(s/\@\w+{([^\{\}]+)}/$1/g);
-    return($_);
+    my $text = shift;
+    1 while($text =~ s/\@\w+{([^\{\}]+)}/$1/g);
+    return $text;
 }
 
-sub remove_things
+sub remove_things($)
 {
-    local ($_) = @_;
-    s|\@(\w+)\{\}|$1|g;
-    return $_;
+    my $text = shift;
+    $text =~ s|\@(\w+)\{\}|$1|g;
+    return $text;
 }
 
-sub substitute_style
+sub substitute_style($)
 {
     local($_) = @_;
     my($changed, $done, $style, $text);
@@ -4560,7 +4557,7 @@ sub substitute_style
         $done = '';
         while (/\@(\w+){([^\{\}]+)}/ || /\@(,){([^\{\}]+)}/)
         {
-            $text = &apply_style($1, $2);
+            $text = apply_style($1, $2);
             if ($text)
             {
                 $_ = "$`$text$'";
@@ -4577,7 +4574,7 @@ sub substitute_style
     return($_);
 }
 
-sub t2h_anchor
+sub t2h_anchor($$$;$$$)
 {
     my($name, $href, $text, $newline, $extra_attribs, $dont_html) = @_;
     my @result = ();
@@ -4638,7 +4635,7 @@ sub next_doc()
     $docu_doc = doc_href($doc_num);
 }
 
-sub t2h_print_lines
+sub t2h_print_lines($$)
 {
     my ($fh, $lines) = @_;
     local($_);
@@ -4654,7 +4651,7 @@ sub t2h_print_lines
         }
         else
         {
-            $_ =  &unprotect_texi ($_);
+            $_ =  unprotect_texi ($_);
         }
         print $fh $_;
         @cnt = split(/\W*\s+\W*/);
@@ -4723,13 +4720,6 @@ sub unprotect_texi($)
     return $text;
 }
 
-sub Unprotect_texi($)
-{
-    my $text = shift;
-    $text = &unprotect_texi($text);
-    return ($text);
-}
-
 sub unprotect_html($)
 {
     my $what = shift;
@@ -4744,7 +4734,7 @@ sub unprotect_html($)
     return($what);
 }
 
-sub t2h_print_label
+sub t2h_print_label($$)
 {
     my $fh = shift;
     my $href = shift || $T2H_HREF{This};
@@ -4752,37 +4742,34 @@ sub t2h_print_label
     print $fh qq{<a name="$href"></a>\n};
 }
 
-sub main()
+# main processing is called here
+SetDocumentLanguage('en') unless ($T2H_LANG);
+# APA: There's got to be a better way:
+$things_map{'today'} = pretty_date();
+if ($T2H_TEST)
 {
-    SetDocumentLanguage('en') unless ($T2H_LANG);
-    # APA: There's got to be a better way:
-    $things_map{'today'} = &pretty_date;
-    if ($T2H_TEST)
-    {
-        $T2H_TODAY = 'a sunny day';
-        $T2H_USER = 'a tester';
-        $THISPROG = 'texi2html';
-    } 
-    else
-    { 
-        # Identity:
-        $T2H_TODAY = &pretty_date;  # like "20 September 1993"
-        # the eval prevents this from breaking on system which do not have
-        # a proper getpwuid implemented
-        eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
-        # APA: Provide Windows NT workaround until getpwuid gets
-        # implemented there.
-        $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
-    }
-    open_file($docu);
-    &pass1();
-    &pass2();
-    &pass3();
-    &pass4();
-    &pass5();
+    $T2H_TODAY = 'a sunny day';
+    $T2H_USER = 'a tester';
+    $THISPROG = 'texi2html';
+} 
+else
+{ 
+    # Identity:
+    $T2H_TODAY = pretty_date();  # like "20 September 1993"
+    # the eval prevents this from breaking on system which do not have
+    # a proper getpwuid implemented
+    eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
+    # APA: Provide Windows NT workaround until getpwuid gets
+    # implemented there.
+    $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
+open_file($docu);
+pass1();
+pass2();
+pass3();
+pass4();
+pass5();
 
-&main();
 
 ##############################################################################
 

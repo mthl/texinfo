@@ -1,5 +1,8 @@
 2003-02-12  Patrice Dumas <dumas@centre-cired.fr>
 
+	* texi2html.pl: add prototype for the functions ; remove
+	& in front of functions ; remove the unusefull main()
+	and Unprotect_texi functions
 	* Tests/Makefile.am, Tests/test.sh: add regenerate target to 
 	redo the reference files
 	add test with tidy, remove cvs/rcs tags when doing diffs
