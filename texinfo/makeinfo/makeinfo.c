@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.35 2003-10-20 22:28:55 karl Exp $
+   $Id: makeinfo.c,v 1.36 2003-10-26 15:12:06 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -728,6 +728,9 @@ For more information about these matters, see the files named COPYING.\n"),
           break;
         }
     }
+
+  if (macro_expansion_output_stream)
+    validating = 0;
 
   if (!validating)
     expensive_validation = 0;
