@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.17 2002-12-07 14:06:14 karl Exp $
+   $Id: xml.c,v 1.18 2002-12-17 16:34:22 karl Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -103,17 +103,17 @@ element texinfoml_element_list [] = {
   { "sp",                  0, 0 },
   { "center",              1, 0 },
   { "dircategory",         0, 0 },
-  { "quotation",           1, 0 },
-  { "example",             1, 0 },
-  { "smallexample",        1, 0 },
-  { "lisp",                1, 0 },
-  { "smalllisp",           1, 0 },
+  { "quotation",           0, 0 },
+  { "example",             0, 0 },
+  { "smallexample",        0, 0 },
+  { "lisp",                0, 0 },
+  { "smalllisp",           0, 0 },
   { "cartouche",           1, 0 },
   { "copying",             1, 0 },
-  { "format",              1, 0 },
-  { "smallformat",         1, 0 },
-  { "display",             1, 0 },
-  { "smalldisplay",        1, 0 },
+  { "format",              0, 0 },
+  { "smallformat",         0, 0 },
+  { "display",             0, 0 },
+  { "smalldisplay",        0, 0 },
   { "footnote",            0, 1 },
 
   { "itemize",             0, 0 },
