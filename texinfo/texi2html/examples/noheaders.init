@@ -7,6 +7,7 @@ $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 $print_Top_header         = \&T2H_NOHEAD_print_Top_header;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
+$print_Top                = \&T2H_NOHEAD_print_Top;
 $print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
 $print_misc_footer	      = \&T2H_NOHEAD_print_misc_footer;
 $print_misc		      = \&T2H_NOHEAD_print_misc;

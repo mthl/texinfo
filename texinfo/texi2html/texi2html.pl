@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.82 2003-11-07 16:40:03 pertusus Exp $
+# $Id: texi2html.pl,v 1.83 2003-11-11 22:13:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -312,6 +312,7 @@ our $definition_category;
 our $table_list;
 our $index_summary_file_entry;
 our $style;
+our $format;
 
 our $PRE_ABOUT;
 our $AFTER_ABOUT;
@@ -333,9 +334,12 @@ our %to_skip;
 our %to_skip_texi;
 our %css_map;
 our %special_list_commands;
+our %accent_letters;
+our %special_accents;
 
 $toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
+$format                   = \&T2H_GPL_format;
 
 sub T2H_GPL_toc_body($$$)
 {
@@ -461,6 +465,22 @@ sub T2H_GPL_style($$$$$)
     }
     return $text;
 }
+
+sub T2H_GPL_format($$$)
+{
+    my $tag = shift;
+    my $element = shift;
+    my $text = shift;
+    return '' if (!defined($element) or ($text !~ /\S/));
+    my $attribute_text = '';
+    if ($element =~ /^(\w+)(\s+.*)/)
+    {
+        $element = $1;
+        $attribute_text = $2;
+    }
+    return "<${element}$attribute_text>\n" . $text. "</$element>\n";
+}
+
 
 # @INIT@
 
@@ -4618,6 +4638,7 @@ sub enter_index_entry($$$$$$)
     $index->{$prefix}->{$key}->{'entry'} = $entry;
     $index->{$prefix}->{$key}->{'element'} = $element;
     $index->{$prefix}->{$key}->{'label'} = $id;
+    $index->{$prefix}->{$key}->{'prefix'} = $prefix;
     push @$place, $index->{$prefix}->{$key};
     print STDERR "# enter ${prefix}index '$key' with id $id ($index->{$prefix}->{$key})\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
@@ -6213,14 +6234,7 @@ sub end_simple_format($$)
     my $text = shift;
 
     my $element = $Texi2HTML::Config::format_map{$tag};
-    return '' if (!defined($element) or ($text !~ /\S/));
-    my $attribute_text = '';
-    if ($element =~ /^(\w+)(\s+.*)/)
-    {
-        $element = $1;
-        $attribute_text = $2;
-    }
-    return "<${element}$attribute_text>\n" . $text. "</$element>\n";
+    return &$Texi2HTML::Config::format($tag, $element, $text);
 }
 
 sub close_menu($$$$)
@@ -7133,7 +7147,7 @@ sub scan_texi($$$$;$)
             {
                 pop @{$state->{'text_macro_stack'}};
                 # we keep menu and titlepage for the following pass
-                if (($end_tag eq 'menu') or ($end_tag eq 'titlepage') or ($end_tag eq 'documentdescription') or $state->{'arg_expansion'})
+                if ((($end_tag eq 'menu') and $text_macros{'menu'}) or ($end_tag eq 'titlepage') or ($end_tag eq 'documentdescription') or $state->{'arg_expansion'})
                 {
                      add_prev($text, $stack, "\@end${space}$end_tag");
                 }
@@ -7267,7 +7281,7 @@ sub scan_texi($$$$;$)
                 # if it is a raw formatting command or a menu command
                 # we must keep it for later
                 my $macro_kept;
-                if ($state->{'raw'} or ($macro eq 'menu') or ($macro eq 'titlepage') or ($macro eq 'documentdescription') or $state->{'arg_expansion'})
+                if ($state->{'raw'} or (($macro eq 'menu') and $text_macros{'menu'}) or ($macro eq 'titlepage') or ($macro eq 'documentdescription') or $state->{'arg_expansion'})
                 {
                     add_prev($text, $stack, $tag);
                     $macro_kept = 1;
@@ -9847,7 +9861,7 @@ sub do_index_entry_label($)
     
     print STDERR "[(index) $entry->{'entry'} $entry->{'label'}]\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}) if ($entry->{'label'} =~ /\S/);
+    return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), $index_properties->{$entry->{'prefix'}}->{'name'}); 
     return '';
 }
 

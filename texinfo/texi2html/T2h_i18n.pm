@@ -325,8 +325,37 @@ sub get_string($;$)
             $string = $T2H_LANGUAGES->{'en'}->{$string};
         }
     }
-    return $string unless (defined($arguments));
+    return main::substitute_line($string) unless (defined($arguments));
     my $result = '';
+    while ($string)
+    {
+        if ($string =~ s/^([^%]*)%//)
+        {
+            $result .= $1 if (defined($1));
+            $result .= '%';
+            if ($string =~ s/^%//)
+            {
+                 $result .= '%';
+            }
+            elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
+            {
+                 $string =~ s/^\{(\w+)\}//;
+                 $result .= "\@\{$1\@\}";
+            }
+            else
+            {
+                 $result .= '%';
+            }
+            next;
+        }
+        else 
+        {   
+            $result .= $string;
+            last;
+        }
+    }
+    $string = main::substitute_line($result);
+    $result = '';
     while ($string)
     {
         if ($string =~ s/^([^%]*)%//)

@@ -201,7 +201,8 @@ a q--uotation
 @end multitable
 
 @example
-e--xample
+e--xample  some
+   text
 @end example
 
 @smallexample

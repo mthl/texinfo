@@ -186,7 +186,8 @@ a q--uotation
 @end multitable
 
 @example
-e--xample
+e--xample  some
+   text
 @end example
 
 @smallexample
@@ -525,7 +526,7 @@ a q--uotation
 @end itemize
 
 @itemize @emph
-@item e--mph item
+@item e--mph  item
 @end itemize
 
 @itemize @emph{} after emph
@@ -546,7 +547,8 @@ a q--uotation
 @end multitable
 
 @example
-e--xample
+e--xample  some
+   text
 @end example
 
 @smallexample

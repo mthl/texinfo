@@ -1,3 +1,15 @@
+2003-11-11  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: the format is applied by a customizable function.
+	More arguments (index name, entry) given to the index label 
+	formatting function.
+	When menus are not expanded, don't keep @menu or @end menu.
+	* texi2html.init: warn when an accent is associated with a
+	wrong argument. Produce valid html entities only.
+	* texi2html.init, T2h_i18n.pm: Use @-commands in internationalized
+	strings, not html.
+	* i18n/fr, i18n/es, i18n/pt: use @-commands instead of html.
+
 2003-11-07  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: remove unusefull arguments to
