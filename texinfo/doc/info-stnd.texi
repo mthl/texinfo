@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.8 2004-10-06 21:29:48 karl Exp $
+@comment $Id: info-stnd.texi,v 1.9 2004-12-14 16:58:15 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -1302,8 +1302,7 @@ Split the current window into two windows, both showing the same node.
 Each window is one half the size of the original window, and the cursor
 remains in the original window.  The variable @code{automatic-tiling}
 can cause all of the windows on the screen to be resized for you
-automatically, please @pxref{Variables, , automatic-tiling} for more
-information.
+automatically (@pxref{Variables, , automatic-tiling}).
 
 @item @kbd{C-x @key{0}} (@code{delete-window})
 @cindex windows, deleting

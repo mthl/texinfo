@@ -1,3 +1,9 @@
+2004-12-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (pxref): more explanation.
+	* doc/info-stnd.texi (Basic Windows): put pxref in parens.
+	help-texinfo mail from adl, 13 Dec 2004 17:07:50 +0100.
+
 2004-12-13  Andreas Schwab  <schwab@suse.de>
 
 	* info/echo-area.c (DECLARE_INFO_COMMAND): Add intermediate cast

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.124 2004-12-13 14:15:14 karl Exp $
+@c $Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6317,9 +6317,9 @@ current syntax of Info format.
 
 The parenthetical reference command, @code{@@pxref}, is nearly the
 same as @code{@@xref}, but you use it @emph{only} inside parentheses
-and you do @emph{not} type a comma or period after the command's
-closing brace.  The command differs from @code{@@xref} in two
-ways:@refill
+and you do @emph{not} type a comma or period (or anything else) after
+the command's closing brace.  The command differs from @code{@@xref}
+in two ways:
 
 @enumerate
 @item
@@ -6334,8 +6334,9 @@ closing colon or period.@refill
 Because one type of formatting automatically inserts closing
 punctuation and the other does not, you should use @code{@@pxref}
 @emph{only} inside parentheses as part of another sentence.  Also, you
-yourself should not insert punctuation after the reference, as you do
-with @code{@@xref}.@refill
+yourself should not insert punctuation after the reference (or any
+other text), as you do with @code{@@xref}.  In the Info
+output, such text would follow a period, which is grammatically wrong.
 
 @code{@@pxref} is designed so that the output looks right and works
 right between parentheses both in printed output and in an Info file.
@@ -18455,7 +18456,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.124 2004-12-13 14:15:14 karl Exp $
+$Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18521,7 +18522,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.124 2004-12-13 14:15:14 karl Exp $
+@comment $Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
