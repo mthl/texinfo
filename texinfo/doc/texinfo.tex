@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-27.17}
+\def\texinfoversion{2003-11-28.16}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -5221,12 +5221,20 @@ width0pt\relax} \fi
 % Print arguments in slanted typewriter, prevent hyphenation at `-' chars.
 % 
 \def\normaldefunargs#1{%
-  % use tt here (used to be sl) for the same reasons as we are now using
+  % use sl by default (not ttsl), inconsistently with using tt for the
+  % name.  This is because literal text is sometimes needed in the
+  % argument list (groff manual), and ttsl and tt are not very
+  % distinguishable.
   % tt for the names.
-  \df \ttsl \hyphenchar\font=0
+  \df \sl \hyphenchar\font=0
+  % On the other hand, if an argument has two dashes (for instance), we
+  % want a way to get ttsl.  Let's try @var for that.
+  \let\var=\ttslanted
   #1%
-  \ttsl\hyphenchar\font=45
+  \sl\hyphenchar\font=45
 }
+% like \smartslanted except unconditionally uses \ttsl.
+\def\ttslanted#1{{\ttsl #1}\futurelet\next\smartitalicx}
 
 % We want ()&[] to print specially on the defun line.
 %
