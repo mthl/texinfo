@@ -83,8 +83,8 @@ This file records noteworthy changes.
   want to reuse the values of the default values set by init_out,
   you could do something like:
 
-  my $default_init_out = $set_init_out;
-  $set_init_out = \&makeinfo_like_init_out;
+  my $default_init_out = $init_out;
+  $init_out = \&makeinfo_like_init_out;
   sub makeinfo_like_init_out() 
   {
      &$default_init_out();

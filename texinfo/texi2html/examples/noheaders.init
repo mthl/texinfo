@@ -5,7 +5,7 @@ $SPLIT = 'none';
 $print_section            = \&T2H_NOHEAD_print_section;
 $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
-$print_Top_header         = \&T2H_NOHEAD_print_Top_header;
+#$print_Top_header         = \&T2H_NOHEAD_print_Top_header;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
 $print_Top                = \&T2H_NOHEAD_print_Top;
 $print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
@@ -52,22 +52,17 @@ sub T2H_NOHEAD_one_section($)
 # author and overview is printed
 # Texi2HTML::HREF of Next, Prev, Up, Forward, Back are not defined
 # if $T2H_SPLIT then Top page is in its own html file
-sub T2H_NOHEAD_print_Top_header
+sub T2H_NOHEAD_print_Top_footer($$)
 {
     my $fh = shift;
-    &$print_head_navigation($fh);
-}
-sub T2H_NOHEAD_print_Top_footer
-{
-    my $fh = shift;
-    print $fh "$BIG_RULE\n";
+    print $fh "$SMALL_RULE\n";
 }
 sub T2H_NOHEAD_print_Top
 {
     my $fh = shift;
     my $has_top_heading = shift;
 
-    &$print_Top_header($fh);
+    &$print_head_navigation($fh,[]);
     if ($Texi2HTML::THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
@@ -88,7 +83,6 @@ sub T2H_NOHEAD_print_Top
              print $fh "</blockquote>\n";
         }
     }
-    &$print_Top_footer($fh, $buttons);
 }
 
 ###################################################################

@@ -51,17 +51,15 @@ $program_string
 EOT
 }
 
-sub T2H_ROFF_print_Top
+sub T2H_ROFF_print_Top($$)
 {
     my $fh = shift;
     my $has_top_heading = shift;
 
-    &$print_Top_header($fh);
-#        print $fh ".sp 2\n.sz +10\n.ce\n" . protect_spaces($Texi2HTML::NAME{Top}) .
-#            "\n.sz -10\n.sp 4\n" unless ($has_top_heading);
+    my $buttons = \@MISC_BUTTONS;
+    &$print_head_navigation($fh, $buttons);
     print $fh $Texi2HTML::TITLEPAGE;
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
-    &$print_Top_footer($fh);
 }
 
 sub T2H_ROFF_print_misc

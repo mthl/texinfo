@@ -1,3 +1,16 @@
+2004-01-19  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, examples/*: New variables $DO_CONTENTS 
+	and $DO_SCONTENTS, $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
+	Use a hash for the files such that each element may be associated with
+	any file name and written down to that file. This should enable
+	customization of the file names.
+	print_Top_header and print_Top_footer are called from the main program. 
+	Add Texi2HTML::THIS_ELEMENT holding the current element structure.
+
+	* doc/texi2html.texi: document the new variables and the new interface
+	with a hash reference for style @-commands.
+
 2004-01-12  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: --- and `` are kept in first arg of 

@@ -353,7 +353,7 @@ configuration files, and other details.  Run @command{./configure --help} for
 more information.
 
 Running @command{./configure} combines four files into the final
-@file{texi2htmnl} program file:
+@file{texi2html} program file:
 @itemize
 @item @file{texi2html.pl} contains the base program,
 @item @file{MySimple.pm} handles the command line options, 
@@ -1178,7 +1178,7 @@ element label in the @variable{%NAVIGATION_TEXT} hash, surrounded
 by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
 no @samp{[} and @samp{]}. 
 The element of the @code{%NAVIGATION_TEXT} hash are defined 
-dynamically, you should in the @code{init_out} function reference
+dynamically, in the @code{init_out} function reference
 (@pxref{Output initialization}).
 
 If icons are used, the button is an image with file determined by
@@ -1258,6 +1258,8 @@ possibilities are tried (@code{@@settitle}, @code{@@shorttitlepage}@dots{}).
 title set by @code{@@settitle}, or @code{fulltitle}.
 @item author
 Authors list set by @code{@@author}.
+@item authors
+A reference on an array containing each author set by @code{@@author}.
 @item copying
 Text appearing in @code{@@copying} with all the texinfo commands removed,
 put in comments.
@@ -1343,8 +1345,8 @@ do as in the following example (save the default function reference and call
 it in your own function) :
 
 @example
-my $default_init_out = $set_init_out;
-$set_init_out = \&makeinfo_like_init_out;
+my $default_init_out = $init_out;
+$init_out = \&makeinfo_like_init_out;
 sub makeinfo_like_init_out() 
 @{
    &$default_init_out();
@@ -1540,14 +1542,29 @@ and the page layout
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Top element text
 @subsubsection Top element text formatting
-The top element formatting is controlled by a function which also
+The top element formatting is controlled by three function which also
 controls the layout of the top element page or section. The associated
-function reference is:
+function references are:
+
+@deffn {Function Reference} print_Top_header $filehandle $begin_page
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$begin_page} is true if the element is the first in a page.
+This function should begin the Top element. At the time this function is called
+the top element text hasn't been parsed.
+@end deffn
 
 @deffn {Function Reference} print_Top $filehandle $has_top_heading
 @var{$filehandle} is the opened filehandle the function should write to.
 @var{$has_top_heading} is true if there is a @code{@@heading} command or
 @code{@@titlefont} command appearing in the Top element text.
+This function should be used to format the Top element text and navigation
+panel.
+@end deffn
+
+@deffn {Function Reference} print_Top_footer $filehandle $end_page
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$end_page} is true if the element is the last in a page.
+This function should end the Top element. 
 @end deffn
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -1556,7 +1573,13 @@ function reference is:
 Several variables may be used to control the formatting of table of contents 
 and short table of contents:
 
-@table @code
+@vtable @code
+@item $DO_CONTENTS
+If the variable is true a table of contents is done even if there is no
+@code{@@contents} command.
+@item $DO_SCONTENTS
+If the variable is true a short table of contents is done even if there is no
+@code{@@summarycontents} command.
 @item $BEFORE_OVERVIEW
 The variable value is inserted before the short table of contents text.
 @item $AFTER_OVERVIEW
@@ -1571,13 +1594,13 @@ content are formatted with a list.
 @item $TOC_LIST_ATTRIBUTE
 This should contain an attribute text used for the list element if the tables of
 content are formatted with a list.
-@end table
+@end vtable
 
 More control on the table of contents and short table of contents formatting
 may be achieved by redefining a function with the following associated 
 function reference:
 
-@deffn {Function Reference} toc_body \@@elements $has_content $has_scontent
+@deffn {Function Reference} toc_body \@@elements 
 @var{\@@elements} is an array reference contining informations about
 all the elements of the document. Each of the entry of this array is an hash
 reference which entries correspond with different informations
@@ -1604,15 +1627,13 @@ text of the element, with section number,
 text of the element, without section number.
 @end table
 
-@var{$has_content} is true if @code{@@contents} appears in the document.
-@var{$has_scontent} is true if @code{@@shortcontents} appears in the document.
-@end deffn
-
 This function doesn't return anything but should fill the array corresponding
 with the 
 @variable{$Texi2HTML::TOC_LINES} and
 @variable{$Texi2HTML::OVERVIEW} references with the table of contents and short 
 table of contents.
+
+@end deffn
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @node Footnotes text
@@ -1673,6 +1694,8 @@ The associated function reference is called accordingly:
 
 @ftable @code
 @item print_Top
+@item print_Top_header
+@item print_Top_footer
 Formatting of top element page or section. It is also used for the formatting
 of the top element text (@pxref{Top element text}).
 @item print_Toc
@@ -1880,9 +1903,141 @@ default case,
 @variable{%style_map} for normal context and @variable{%style_map_pre} for
 preformatted context. 
 
-The keys are the command names. The value determine how the command argument
+The key of the hashes are the command names. There are two possibilities for
+the values corresponding with two interfaces. The values may be strings or 
+hash references, and you can chose the interface depending on the one you 
+prefer. The interface with hash reference is a bit more flexible but might also
+be regarded as more complex. If you don't like either of these interfaces you
+can define your own.
+
+Some remarks are in order:
+
+@itemize
+@item 
+The nonlettered accent commands which following character is considered
+to be the argument (like in @code{@@`a}) should be keys of the
+hash @variable{%accent_map} hash, even if no value is associated.
+@item
+@code{@@math} is handled differently if La@TeX{}2HTML is used.
+@end itemize
+
+@menu
+* Hash reference interface::
+* String interface::
+* Define your own interface::
+@end menu
+
+@node Hash reference interface
+@subsection An interface for commands formatting with a hash reference
+
+The key of the hashes are the command names. The value determine how the command argument
+is formatted. This value is a reference on a hash. In this hash each key 
+corresponds with a type of information for the formatting, and the value is 
+the corresponding information. For example, in 
+
+@example
+$style_map@{'command'@} = @{ 'args' => ['code'], 'attribute' => 'code'@};
+@end example
+
+the arguments for @code{@@command} are interpreted as specified by 
+the values associated with the @samp{args} key while the attribute associated 
+with that command is @samp{code}.
+
+The following keys in the hashes associated with each command have the
+following meaning:
+
+@table @samp
+@item args
+@anchor{Reference hash args}
+The value associated is a reference on an array. Each element of the array
+defines how the arguments (separated by @samp{,} in the texinfo code) for 
+the @@-command should be 
+formatted. The possibilities are 
+@table @code
+@item normal
+for normal text,
+@item code
+for text with @samp{---}, @samp{--}, @samp{''} and  @samp{``} kept as is,
+@item keep
+if the texinfo should be kept as is, without interpretation of the @@-commands.
+@end table
+
+For example, we have
+@example 
+$style_map@{'email'@}->@{'args'@} = ['code', 'normal'];
+@end example
+
+because @samp{---}, @samp{--}, @samp{''} and  @samp{``} should be kept as is in
+the first argument of @code{@@email}.
+
+The default is @samp{['normal']}.
+
+@item attribute
+
+If the associated value is a word, it is considered to be an @acronym{HTML} 
+element name, and the argument is enclosed between the element opening
+and the element closing. For example, if the value is @code{elem}, the
+resulting @acronym{HTML} is @code{<elem>@var{arg}</elem>}.
+
+If the text is a word followed by some text,
+the word and is interpreted as above, and the
+text is considered to be the attributes text of the element. 
+Thus @code{elem class="elem"} leads to 
+@code{<elem class="elem">@var{arg}</elem>}.
+
+This works only if there is only one argument.
+
+@item begin
+
+The associated value is added in front of the text.
+
+@item begin
+
+The associated value is added after the text. 
+
+@item quotes
+
+If the corresponding value is true, the result is 
+enclosed in quotes @variable{$OPEN_QUOTE_SYMBOL} and 
+@variable{$CLOSE_QUOTE_SYMBOL}, with defaults 
+@samp{`} and @samp{'}. 
+
+@item function 
+
+The corresponding value should be a function reference. The corresponding
+function is called with the following arguments:
+
+@table @code
+@item $command
+The @@-command name
+@item $args
+A reference on an array containing the arguments of the @@-command.
+@item $style_stack
+A reference on an array containing the name of the @@-commands containing 
+the @@-command being formatted.
+@item $state
+A reference on a hash containing a lot of informations about the context
+of the @@-command.
+@item $line_nr
+An opaque structure containing the information about the line number of the 
+@@-command. It can be used to call @code{main::echo_error} or
+@code{main::echo_warning} with first argument a message, and second argument 
+@code{$line_nr}. 
+@end table
+@end table
+
+@node String interface
+@subsection An interface for commands formatting with a string
+
+The keys of the hashes are the command names. The value determine 
+how the command argument
 is formatted. If the value begins with @samp{"}, the result is 
-enclosed in quotes @samp{`} and @samp{'}. The remaining of the value text
+enclosed in quotes @variable{$OPEN_QUOTE_SYMBOL} and 
+@variable{$CLOSE_QUOTE_SYMBOL}, with defaults 
+@samp{`} and @samp{'}. 
+
+The command argument is allready formatted as @acronym{HTML}.
+The remaining of the value text
 (or the value text if there were no @samp{"}) is interpreted as follow:
 
 @itemize @bullet
@@ -1931,29 +2086,35 @@ Thus @code{elem class="elem"} leads to
 @code{<elem class="elem">@var{arg}</elem>}.
 @end itemize
 
-Some remarks are in order:
-
-@itemize
-@item 
-The command argument is allready formatted as @acronym{HTML}.
-@item
-The nonlettered accent commands which following character is considered
-to be the argument (like in @code{@@`a}) should be keys of the
-hash @variable{%accent_map} hash, even if no value is associated.
-@item
-@code{@@math} is handled differently if La@TeX{}2HTML is used.
-@end itemize
+@node Define your own interface
+@subsection Defining the style and indicatric commands interface
 
 If you don't like this scheme, it is possible to change how those commands
 are processed by redefining the following function reference:
 
-@deftypefn {Function Reference} $resulting_text style $style $command $text $no_close $no_open
-@var{command} is the @@-command, @var{$style} is the value associated with 
+@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $style_stack
+@var{$command} is the @@-command, @var{$style} is the value associated with 
 the @var{$command} in the @code{%style_map} or @code{%style_map_pre} hashes.
 The @var{$text} is the text appearing within the @@-command braces.
+@var{args} is a reference on an array contening the command arguments 
+formatted according to the same conventions than with the reference hash style
+(provided the value associated with the @@-command is a hash reference with a
+@var{$arg} key as described in @ref{Reference hash args}).
 If @var{$text} is split in paragraphs each paragraph is passed through
 the function, and @var{$no_close} is true if it is not the last paragraph,
 while @var{$no_open} is true if it is not the first paragraph.
+@var{$line_nr}
+is an opaque structure containing the information about the line number of the 
+@@-command. It can be used to call @code{main::echo_error} or
+@code{main::echo_warning} with first argument a message, and second argument 
+@code{$line_nr}.
+@var{$state}
+is a reference on a hash containing a lot of informations about the context
+of the @@-command.
+@var{$style_stack}
+is a reference on an array containing the name of the @@-commands containing 
+the @@-command being formatted.
+
 @end deftypefn
 
 @c --------------------------------------------------------

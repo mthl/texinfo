@@ -40,6 +40,8 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * implement the cross references stuff discussed on the texinfo list.
 
+* Document Texi2HTML::THIS_ELEMENT
+
 * handle right things like
 @code{
 @table @emph

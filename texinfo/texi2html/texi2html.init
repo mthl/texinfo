@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.62 2004-01-11 23:38:48 pertusus Exp $
+# $Id: texi2html.init,v 1.63 2004-01-19 15:22:02 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -268,6 +268,11 @@ $L2H_CLEAN = 1;
 # Document encoding assumed if no @documentencoding is specified.
 $ENCODING = 'iso-8859-1';
 
+# If true do table of contents even if there is no @content
+$DO_CONTENTS = 0;
+# If true do short table of contents even if there is no @shortcontent
+$DO_SCONTENTS = 0;
+
 # if set, then use node names in menu entries, instead of section names
 $NODE_NAME_IN_MENU = 0;
 
@@ -313,6 +318,9 @@ $SPLIT_INDEX = 100;
 # unnumbered in menus, see next variable)
 $MENU_SYMBOL = '&bull;';
 #$MENU_SYMBOL = '*';
+
+$OPEN_QUOTE_SYMBOL = "\`";
+$CLOSE_QUOTE_SYMBOL = "'";
 
 # if true put a $MENU_SYMBOL before unnumbered in menus
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
@@ -517,7 +525,7 @@ $BODYTEXT = undef;
 #     give them another name, and assign them to the respective
 #     $<fnc> variable.
 
-# As a general interface, the hashes Texi2HTML::HREF, Texi2HTML::NAME, Texi2HTML::NODE, Texi2HTML::NO_TEXI hold
+# As a general interface, the hashes Texi2HTML::HREF, Texi2HTML::NAME, Texi2HTML::NODE, Texi2HTML::NO_TEXI, hold
 # href, html-name, node-name, name after removal of texi commands of
 # This     -- current section (resp. html page)
 # Top      -- top page FIXME: ($T2H_TOP_FILE)
@@ -560,6 +568,8 @@ $BODYTEXT = undef;
 # $Texi2HTML::OVERVIEW      -- lines of short table of contents
 # $Texi2HTML::TOC_LINES     -- lines of table of contents
 # $Texi2HTML::TITLEPAGE     -- lines of title page
+#
+# $Texi2HTML::THIS_ELEMENT  holds the element reference.  
 ## FIXME: $T2H_TOP           -- lines of Top texinfo node
 
 #
@@ -644,21 +654,20 @@ sub T2H_DEFAULT_one_section($)
 # author and overview is printed
 # Texi2HTML::HREF of Next, Prev, Up, Forward, Back are not defined
 # if $T2H_SPLIT then Top page is in its own html file
-sub T2H_DEFAULT_print_Top_header
+sub T2H_DEFAULT_print_Top_header($$)
 {
     my $fh = shift;
-    my $buttons = shift;
-    &$print_page_head($fh, $buttons) if $SPLIT;
-    &$print_head_navigation($fh, $buttons);
+    my $do_page_head = shift;
+    &$print_page_head($fh) if ($do_page_head);
 }
-sub T2H_DEFAULT_print_Top_footer
+sub T2H_DEFAULT_print_Top_footer($$)
 {
     my $fh = shift;
-    my $buttons = shift;
-    my $nwords = shift;
+    my $end_page = shift;
+    my $buttons = \@MISC_BUTTONS;
     &$print_foot_navigation($fh);
     print $fh "$SMALL_RULE\n";
-    if ($SPLIT)
+    if ($end_page)
     {
         &$print_navigation($fh, $buttons);
         &$print_page_foot($fh);
@@ -673,7 +682,7 @@ sub T2H_DEFAULT_print_Top
     # my $buttons = [...];
     # as it is, 'Top', 'Contents', 'Index', 'About' are printed
     my $buttons = \@MISC_BUTTONS;
-    &$print_Top_header($fh, $buttons);
+    &$print_head_navigation($fh, $buttons);
     my $nw;
     if ($Texi2HTML::THIS_SECTION)
     {
@@ -695,7 +704,6 @@ sub T2H_DEFAULT_print_Top
              print $fh "</blockquote>\n";
         }
     }
-    &$print_Top_footer($fh, $buttons);
 }
 
 ###################################################################
@@ -724,9 +732,10 @@ sub T2H_DEFAULT_print_misc_header
 {
     my $fh = shift;
     my $buttons = shift;
-    &$print_page_head($fh, $buttons) if $SPLIT;
+    &$print_page_head($fh) if $SPLIT;
     &$print_head_navigation($fh, $buttons);
 }
+
 sub T2H_DEFAULT_print_misc_footer
 {
     my $fh = shift;
@@ -740,6 +749,7 @@ sub T2H_DEFAULT_print_misc_footer
         &$print_page_foot($fh);
     }
 }
+
 sub T2H_DEFAULT_print_misc
 {
     my $fh = shift;
@@ -809,7 +819,7 @@ sub T2H_DEFAULT_print_section_header
 # Layout of standard header and footer
 #
 
-sub T2H_DEFAULT_print_page_head
+sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
@@ -870,7 +880,7 @@ sub program_string()
 sub T2H_DEFAULT_end_section($$)
 {
     my $fh = shift;
-    my $end_foot_navigation;
+    my $end_foot_navigation = shift;
     &$print_foot_navigation($fh) if ($end_foot_navigation);
     print $fh "$BIG_RULE\n";
 }
@@ -895,7 +905,7 @@ EOT
 ###################################################################
 # Layout of navigation panel
 
-sub T2H_DEFAULT_print_head_navigation
+sub T2H_DEFAULT_print_head_navigation($$)
 {
     my $fh = shift;
     my $buttons = shift;
@@ -1294,7 +1304,7 @@ sub T2H_DEFAULT_titlepage()
         }
         foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
         {
-            $result .= $author . "<br>\n";
+            $result .= '<strong> ' . $author . " </strong><br>\n";
         }
         $result .= "</div>\n$DEFAULT_RULE\n";
     }

@@ -46,22 +46,41 @@ $print_page_foot = \&T2H_SING_print_page_foot;
 
 sub T2H_SING_print_Top_footer
 {
-  my $fh = shift;
-  my $buttons = shift;
-  my $nwords = shift;
-  print  $fh "<blockquote>\n" .
-    &$anchor('', $Texi2HTML::HREF{Contents}, "Table of Contents") .
-      "\n<br>\n" .
-	&$anchor('', $Texi2HTML::HREF{About}, "About this document") .
-	  "</blockquote>";
+#  my $fh = shift;
+#  my $buttons = shift;
+#  my $nwords = shift;
+#  print  $fh "<blockquote>\n" .
+#    &$anchor('', $Texi2HTML::HREF{Contents}, "Table of Contents") .
+#      "\n<br>\n" .
+#	&$anchor('', $Texi2HTML::HREF{About}, "About this document") .
+#	  "</blockquote>";
+#  
+#  &$print_foot_navigation($fh);
+#  print $fh "$SMALL_RULE\n";
+#  if ($SPLIT)
+#  {
+#     &$print_navigation($fh, $buttons);
+#     &$print_page_foot($fh);
+#  }
+    my $fh = shift;
+    #my $buttons = shift;
+    #my $nwords = shift;
+    my $end_page = shift;
+    my $buttons = \@MISC_BUTTONS;
+    print  $fh "<blockquote>\n" .
+      &$anchor('', $Texi2HTML::HREF{Contents}, "Table of Contents") .
+        "\n<br>\n" .
+	  &$anchor('', $Texi2HTML::HREF{About}, "About this document") .
+	    "</blockquote>";
   
-  &$print_foot_navigation($fh);
-  print $fh "$SMALL_RULE\n";
-  if ($SPLIT)
-  {
-     &$print_navigation($fh, $buttons);
-     &$print_page_foot($fh);
-  }
+    &$print_foot_navigation($fh);
+    print $fh "$SMALL_RULE\n";
+    #if ($SPLIT)
+    if ($end_page)
+    {
+        &$print_navigation($fh, $buttons);
+        &$print_page_foot($fh);
+    }
 }
 
 # footer of page
