@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.21 2003-04-01 14:34:18 karl Exp $
+   $Id: insertion.c,v 1.22 2003-07-01 23:36:09 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -526,18 +526,20 @@ begin_insertion (type)
       current_indent += default_indentation_increment;
       break;
 
-    case display:
-    case smalldisplay:
     case example:
     case smallexample:
     case lisp:
     case smalllisp:
+      in_fixed_width_font++;
+
+      /* Like @example but no fixed width font.
+    case display:
+    case smalldisplay:
       /* Like @display but without indentation. */
     case smallformat:
     case format:
       close_single_paragraph ();
       inhibit_paragraph_indentation = 1;
-      in_fixed_width_font++;
       filling_enabled = 0;
       last_char_was_newline = 0;
 
