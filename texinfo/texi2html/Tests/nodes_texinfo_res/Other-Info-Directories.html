@@ -108,6 +108,7 @@ standard `<tt>dir</tt>' file:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 * Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
+
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
 written as the second part of the menu entry.
 </p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
@@ -158,6 +159,7 @@ In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
+
 <p>The `<samp>.</samp>' indicates the current directory as usual.  Emacs uses the
 <code>INFOPATH</code> environment variable to initialize the value of Emacs's
 own <code>Info-directory-list</code> variable.  The stand-alone Info reader
@@ -174,6 +176,7 @@ the standard places.  For example (using <code>sh</code> syntax):
 INFOPATH=/local/info:
 export INFOPATH
 </pre></td></tr></table>
+
 <p>will search `<tt>/local/info</tt>' first, then the standard directories.
 Leading or doubled colons are not treated specially.
 </p><a name="IDX417"></a>
@@ -182,7 +185,8 @@ Leading or doubled colons are not treated specially.
 copying an existing `<tt>dir</tt>' file and replace all the text after the
 `<samp>* Menu:</samp>' with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="New-Info-File.html#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Installing-Dir-Entries.html#SEC275" title="Next section in reading order"> &gt; </a>]</td>

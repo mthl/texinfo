@@ -100,6 +100,7 @@ will see an error message that says:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @end menus is not handled by texinfo
 </pre></td></tr></table>
+
 <p>The cursor will stop at the point in the buffer where the error
 occurs, or not long after it.  The buffer will look like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -120,6 +121,7 @@ odd error messages.  For example, the following cross reference fails to format:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@xref{Catching Mistakes, for more info.)
 </pre></td></tr></table>
+
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
 brace but displays a message that says `<samp>Unbalanced parentheses</samp>'
 rather than `<samp>Unbalanced braces</samp>'.  This is because the formatting
@@ -131,6 +133,7 @@ closing parenthesis:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 (@xref{Catching Mistakes), for more info.}
 </pre></td></tr></table>
+
 <p>Formatting produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 (*Note for more info.: Catching Mistakes)
@@ -146,6 +149,7 @@ message that says:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 No such node: &quot;Catching Mistakes) The only way ...
 </pre></td></tr></table>
+
 <p>This is because Info perceives the example of the error as the first
 cross reference in this node and if you type a <kbd>RET</kbd> immediately
 after typing the Info <kbd>f</kbd> command, Info will attempt to go to the
@@ -154,7 +158,8 @@ will complete the node name of the correctly written example and take
 you to the `Catching Mistakes' node.  (If you try this, you can return
 from the `Catching Mistakes' node by typing <kbd>l</kbd>
 (<code>Info-last</code>).)
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Catching-Mistakes.html#SEC308" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Debugging-with-TeX.html#SEC311" title="Next section in reading order"> &gt; </a>]</td>

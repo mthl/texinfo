@@ -1,4 +1,5 @@
 
+
 @node Top
 @top split indices
 @cindex entry a
@@ -30,6 +31,7 @@ Text and then index entries
 @printindex fn
 
 @cindex entry after printindex
+
 @chapter First chapter
 @findex a function
 @cindex a concept in first
@@ -48,6 +50,7 @@ Text and then index entries
 @section Section 1
 
 @cindex something
+
 @menu 
 * subsection 1::
 * subsection 2::
@@ -57,6 +60,7 @@ The index once more
 @printindex cp
 
 @cindex another
+
 @node subsection 1
 @subsection Subsection 1
 
@@ -68,9 +72,11 @@ In subsection 1
 index in subsction 2
 
 @cindex subsection 2
+
 @printindex cp
 
 @cindex printindex subsection 2
+
 @node section 2
 @section Section 2
 
@@ -80,6 +86,7 @@ Section 2
 @section Section 3
 
 @cindex section 3
+
 @printindex cp
 
 @node node in section 3,,section 3,first
@@ -95,14 +102,18 @@ Text for the node 2 in section 3
 @printindex cp
 
 @cindex between printindex node in section 3
+
 @printindex cp
 
 @cindex after second printindex node in section 3
+
 @node node 3 in section 3,,,first
 
 @cindex node 3 in section 3
+
 @node second chapter
 @chapter Second chapter
 
 Second chapter
+
 

@@ -157,6 +157,7 @@ users should have this line in their `<tt>.cshrc</tt>' or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 setenv CVSROOT /usr/local/cvsroot
 </pre></td></tr></table>
+
 <p><code>sh</code> and <code>bash</code> users should instead have these lines in their
 `<tt>.profile</tt>' or `<tt>.bashrc</tt>':
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -240,12 +241,14 @@ the file permissions appropriate for the repository.
 </tr></table>
 <h3 class="subsection"> 2.2.1 Where files are stored within the repository </h3>
 
+
 <p>The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 /usr/local/cvsroot
 </pre></td></tr></table>
+
 <p>here is a possible directory tree (showing only the
 directories):
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -359,7 +362,8 @@ owns the directory.
 on the repository directories (see chmod(1)) so that newly-created files
 and directories get the group-ID of the parent directory rather than
 that of the current process.)
-</p><p>This means that you can only control access to files on
+</p>
+<p>This means that you can only control access to files on
 a per-directory basis.
 </p><p>Note that users must also have write access to check
 out files, because <small>CVS</small> needs to create lock files
@@ -491,10 +495,12 @@ would be in
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 /usr/local/cvsroot/yoyodyne/tc/backend.c,v
 </pre></td></tr></table>
+
 <p>but if it goes in the attic, it would be in
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 </pre></td></tr></table>
+
 <a name="IDX28"></a>
 <p>instead.  It should not matter from a user point of
 view whether a file is in the attic; <small>CVS</small> keeps
@@ -594,6 +600,7 @@ Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
 Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
 D _watched=
 </pre></td></tr></table>
+
 <p>means that the file `<tt>file1</tt>' should be checked out
 read-only.  Furthermore, joe is watching for edits and
 mary is watching for commits.  The file `<tt>file2</tt>'
@@ -726,6 +733,7 @@ file, <small>CVS</small> should print
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
+
 <p>and update the checked out copy in
 `<tt>$CVSROOT/CVSROOT</tt>'.  If it does not, there is
 something wrong (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).  To add your own files
@@ -769,6 +777,7 @@ administrative files, see <a href="cvs_18.html#SEC157">Reference manual for Admi
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.3 How data is stored in the working directory </h2>
+
 
 <p>While we are discussing <small>CVS</small> internals which may
 become visible from time to time, we might as well talk
@@ -818,14 +827,17 @@ example, after the command
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
 </pre></td></tr></table>
+
 <p>`<tt>Root</tt>' will contain
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 :local:/usr/local/cvsroot
 </pre></td></tr></table>
+
 <p>and `<tt>Repository</tt>' will contain either
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 /usr/local/cvsroot/yoyodyne/tc
 </pre></td></tr></table>
+
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 yoyodyne/tc
@@ -850,6 +862,7 @@ allow for future expansion.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 /<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
 </pre></td></tr></table>
+
 <p>where `<samp>[</samp>' and `<samp>]</samp>' are not part of the entry,
 but instead indicate that the `<samp>+</samp>' and conflict
 marker are optional.  <var>name</var> is the name of the
@@ -904,6 +917,7 @@ like:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
 </pre></td></tr></table>
+
 <p>where <var>name</var> is the name of the subdirectory, and
 all the <var>filler</var> fields should be silently ignored,
 for future expansion.  Programs which modify
@@ -1017,6 +1031,7 @@ the `<tt>Base</tt>' directory.  The format is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </pre></td></tr></table>
+
 <p>where <var>expansion</var> should be ignored, to allow for
 future expansion.
 </p><a name="IDX57"></a>
@@ -1062,6 +1077,7 @@ by the client; the non-client/server <small>CVS</small> consults
 </tr></table>
 <h2 class="section"> 2.4 The administrative files </h2>
 
+
 <p>The directory `<tt>$CVSROOT/CVSROOT</tt>' contains some <em>administrative
 files</em>.  See section <a href="cvs_18.html#SEC157">Reference manual for Administrative files</a>, for a complete description.
 You can use <small>CVS</small> without any of these files, but
@@ -1084,7 +1100,8 @@ module, whitespace, and the directory where the module
 resides.  The directory is a path relative to
 <code>$CVSROOT</code>.  The last four lines in the example
 above are examples of such lines.
-</p><p>The line that defines the module called `<samp>modules</samp>'
+</p>
+<p>The line that defines the module called `<samp>modules</samp>'
 uses features that are not explained here.
 See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full explanation of all the
 available features.
@@ -1168,7 +1185,8 @@ cvs update
 directory, and then the <code>cvs update</code> command will
 contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD23"></a>
 <a name="SEC23"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1188,6 +1206,7 @@ and server1, to update everything else.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 2.6 Creating a repository </h2>
+
 
 <p>To set up a <small>CVS</small> repository, first choose the
 machine and disk on which you want to store the
@@ -1436,7 +1455,8 @@ one time should give an idea of memory requirements for
 the server.  For the most part, the memory consumed by
 the parent process probably can be swap space rather
 than physical memory.
-</p><p>The second area of large memory consumption is
+</p>
+<p>The second area of large memory consumption is
 <code>diff</code>, when checking in large files.  This is
 required even for binary files.  The rule of thumb is
 to allow about ten times the size of the largest file
@@ -1491,6 +1511,7 @@ faun, put the following line into the file
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 toe.example.com  mozart
 </pre></td></tr></table>
+
 <p>Then test that `<samp>rsh</samp>' is working with
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 rsh -l bach faun.example.org 'echo $PATH'
@@ -1542,9 +1563,11 @@ the module `<tt>foo</tt>' in the repository
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
+
 <p>(The `<tt>bach@</tt>' can be omitted if the username is
 the same on both the local and remote hosts.)
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD29"></a>
 <a name="SEC29"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1631,6 +1654,7 @@ single line in `<tt>inetd.conf</tt>') should be sufficient:
 2401  stream  tcp  nowait  root  /usr/local/bin/cvs
 cvs -f --allow-root=/usr/cvsroot pserver
 </pre></td></tr></table>
+
 <p>(You could also use the
 `<samp>-T</samp>' option to specify a temporary directory.)
 </p><p>The `<samp>--allow-root</samp>' option specifies the allowable
@@ -1649,6 +1673,7 @@ name instead of a raw port number, then put this in
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvspserver      2401/tcp
 </pre></td></tr></table>
+
 <p>and put <code>cvspserver</code> instead of <code>2401</code> in `<tt>inetd.conf</tt>'.
 </p><p>If your system uses <code>xinetd</code> instead of <code>inetd</code>,
 the procedure is slightly different.
@@ -1666,6 +1691,7 @@ service cvspserver
    server_args = -f --allow-root=/usr/cvsroot pserver
 }
 </pre></td></tr></table>
+
 <p>(If <code>cvspserver</code> is defined in `<tt>/etc/services</tt>', you can omit
 the <code>port</code> line.)
 </p><p>        Once the above is taken care of, restart your
@@ -1693,6 +1719,7 @@ spwang:1sOp854gDF3DY
 melissa:tGX1fS8sun6rY:pubcvs
 qproj:XR4EZcEs0szik:pubcvs
 </pre></td></tr></table>
+
 <p>(The passwords are encrypted according to the standard
 Unix <code>crypt()</code> function, so it is possible to
 paste in passwords directly from regular Unix
@@ -1749,6 +1776,7 @@ anonymous::pubcvs
 fish:rKa5jzULzmhOo:kfogel
 sussman:1sOp854gDF3DY
 </pre></td></tr></table>
+
 <p>When the password field is omitted or empty, then the
 client's authentication attempt will succeed with any
 password, including the empty string.  However, the
@@ -1781,7 +1809,8 @@ possible security risks of having the `<tt>passwd</tt>'
 file checked out to people's working copies.  If you do
 want to include the `<tt>passwd</tt>' file in checkouts of
 `<tt>$CVSROOT/CVSROOT</tt>', see <a href="cvs_18.html#SEC177">The checkoutlist file</a>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD31"></a>
 <a name="SEC31"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1808,6 +1837,7 @@ optional port number, and path to the repository.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -d :pserver:faun.example.org:/usr/local/cvsroot checkout someproj
 </pre></td></tr></table>
+
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 CVSROOT=:pserver:bach@faun.example.org:2401/usr/local/cvsroot
@@ -1824,6 +1854,7 @@ prompt you interactively for the password if you didn't supply one as part of
 cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot login
 CVS password:
 </pre></td></tr></table>
+
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -d :pserver:bach:p4ss30rd@faun.example.org:/usr/local/cvsroot login
@@ -1858,6 +1889,7 @@ with the stored password.  So, for example
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </pre></td></tr></table>
+
 <p>should just work (unless the password changes on the
 server side, in which case you'll have to re-run
 <code>cvs login</code>).
@@ -2147,12 +2179,14 @@ melissa
 splotnik
 jrandom
 </pre></td></tr></table>
+
 <p>        (Don't forget the newline after the last user.)
 </p><p>        &quot;Exclusion&quot; means explicitly listing everyone
 who has <em>write</em> access--if the file
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $CVSROOT/CVSROOT/writers
 </pre></td></tr></table>
+
 <p>exists, then only
 those users listed in it have write access, and
 everyone else has read-only access (of course, even the
@@ -2206,6 +2240,7 @@ directories.  They are named
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs-serv<var>pid</var>
 </pre></td></tr></table>
+
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 

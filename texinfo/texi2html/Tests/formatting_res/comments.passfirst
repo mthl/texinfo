@@ -22,11 +22,13 @@ The same but with oddfooting instead of comment:
 Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
 
 @@afourpaper @@smallbook @@headings @@oddfooting @@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading @@need @@setchapternewpage @@raisesections @@lowersections 
+
 @subheading ignore arg
 
 Commands doesn't accept anything after the arg on the line
 
 @@paragraphindent asis @@paragraphindent 0 @@paragraphindent none @@paragraphindent 4 @@footnotestyle @@footnotestyle 
+
 @subheading command removed
 
 And now finalout:
@@ -52,6 +54,7 @@ After page on it's own line.
 @@page    @@noindent     @@refill    something 
 
 @@contents  something
+
 
 @subheading special
 
@@ -98,4 +101,5 @@ Line following contents
 
 @node bidule2
 @chapter last
+
 

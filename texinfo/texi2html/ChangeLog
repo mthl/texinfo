@@ -1,3 +1,21 @@
+2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: don't remove empty line in the 
+	second pass, pass_structure.
+	collect line numbers/file name/macro expanding text in pass_texi.
+	pass these informations down to pass_structure.
+	take care of arguments not provided in some @-commands (no file
+	in @image, no node in @inforef and so on).
+	remove unneeded code in macro text expansion.
+	remove leading spaces and newlines in macros arguments.
+	add support for @\ (ignore).
+	put code extracted from texi2html.pl and placed in texi2html.init,
+	covered by the GPL back to texi2html.pl.
+	Document the API between texi2html.pl and texi2html.init, i.e.
+	document how the formatting functions called by texi2html.pl
+	should behave.
+	add print_section_header to format section headers.
+
 2003-08-01  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl: add option '-noexpand' as a synonym for '-no-expand'

@@ -1,15 +1,29 @@
 
+
+
+
+
+
+
+
+
+
+
+
 @format
 START-INFO-DIR-ENTRY
 * CVS: (cvs).                   Concurrent Versions System
 END-INFO-DIR-ENTRY
 @end format
 
+
+
 @node    Top
 @top
 
 This info manual describes how to use and administer
 @sc{cvs} version 1.12.1.1.
+
 
 Copyright @copyright{} 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
                        2001, 2002, 2003 Free Software Foundation, Inc.
@@ -95,6 +109,7 @@ certain command, you can probably skip everything here.
 
 @sc{cvs} is a version control system.  Using it, you can
 record the history of your source files.
+
 
 For example, bugs sometimes creep in when
 software is modified, and you might not detect the bug
@@ -255,6 +270,7 @@ outside the realm of @sc{cvs}'s competence.
 Acquire the habit of reading specs and talking to your
 peers.
 
+
 @item @sc{cvs} does not have change control
 
 Change control refers to a number of things.  First of
@@ -318,6 +334,7 @@ only once they have been proven.
 @cindex tc, Trivial Compiler (example)
 @cindex Trivial Compiler (example)
 
+
 As a way of introducing @sc{cvs}, we'll go through a
 typical work-session using @sc{cvs}.  The first thing
 to understand is that @sc{cvs} stores all files in a
@@ -352,6 +369,7 @@ source for @samp{tc}.  For this, you use the @code{checkout} command:
 $ cvs checkout tc
 @end example
 
+
 This will create a new directory called @file{tc} and populate it with
 the source files.
 
@@ -384,6 +402,7 @@ repository.
 @example
 $ cvs commit backend.c
 @end example
+
 
 @sc{cvs} starts an editor, to allow you to enter a log
 message.  You type in ``Added an optimization pass.'',
@@ -446,6 +465,7 @@ tc.  One acceptable way to do that is of course
 $ cd ..
 $ rm -r tc
 @end example
+
 
 but a better way is to use the @code{release} command (@pxref{release}):
 
@@ -615,6 +635,7 @@ users should have this line in their @file{.cshrc} or
 setenv CVSROOT /usr/local/cvsroot
 @end example
 
+
 @code{sh} and @code{bash} users should instead have these lines in their
 @file{.profile} or @file{.bashrc}:
 
@@ -668,6 +689,7 @@ the file permissions appropriate for the repository.
 @node Repository files
 @subsection Where files are stored within the repository
 
+
 The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
@@ -675,6 +697,7 @@ directory.  For example, supposing the repository is in
 @example
 /usr/local/cvsroot
 @end example
+
 
 here is a possible directory tree (showing only the
 directories):
@@ -782,6 +805,7 @@ owns the directory.
 on the repository directories (see chmod(1)) so that newly-created files
 and directories get the group-ID of the parent directory rather than
 that of the current process.)
+
 
 This means that you can only control access to files on
 a per-directory basis.
@@ -897,11 +921,13 @@ would be in
 /usr/local/cvsroot/yoyodyne/tc/backend.c,v
 @end example
 
+
 but if it goes in the attic, it would be in
 
 @example
 /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 @end example
+
 
 @cindex Dead state
 instead.  It should not matter from a user point of
@@ -994,6 +1020,7 @@ Ffile1 _watched=;_watchers=joe>edit,mary>commit
 Ffile2 _watched=;_editors=sue>8 Jan 1975+workstn1+/home/sue/cvs
 D _watched=
 @end example
+
 
 means that the file @file{file1} should be checked out
 read-only.  Furthermore, joe is watching for edits and
@@ -1106,6 +1133,7 @@ file, @sc{cvs} should print
 cvs commit: Rebuilding administrative file database
 @end example
 
+
 and update the checked out copy in
 @file{$CVSROOT/CVSROOT}.  If it does not, there is
 something wrong (@pxref{BUGS}).  To add your own files
@@ -1134,6 +1162,7 @@ administrative files, see @ref{Administrative files}.
 
 @node Working directory storage
 @section How data is stored in the working directory
+
 
 @cindex CVS directory, in working directory
 While we are discussing @sc{cvs} internals which may
@@ -1187,17 +1216,20 @@ example, after the command
 cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
 @end example
 
+
 @file{Root} will contain
 
 @example
 :local:/usr/local/cvsroot
 @end example
 
+
 and @file{Repository} will contain either
 
 @example
 /usr/local/cvsroot/yoyodyne/tc
 @end example
+
 
 or
 
@@ -1226,6 +1258,7 @@ If the first character is @samp{/}, then the format is:
 @example
 /@var{name}/@var{revision}/@var{timestamp}[+@var{conflict}]/@var{options}/@var{tagdate}
 @end example
+
 
 where @samp{[} and @samp{]} are not part of the entry,
 but instead indicate that the @samp{+} and conflict
@@ -1284,6 +1317,7 @@ like:
 @example
 D/@var{name}/@var{filler1}/@var{filler2}/@var{filler3}/@var{filler4}
 @end example
+
 
 where @var{name} is the name of the subdirectory, and
 all the @var{filler} fields should be silently ignored,
@@ -1394,6 +1428,7 @@ the @file{Base} directory.  The format is:
 B@var{name}/@var{rev}/@var{expansion}
 @end example
 
+
 where @var{expansion} should be ignored, to allow for
 future expansion.
 
@@ -1422,6 +1457,7 @@ by the client; the non-client/server @sc{cvs} consults
 @cindex CVSROOT, module name
 @cindex Defining modules (intro)
 
+
 The directory @file{$CVSROOT/CVSROOT} contains some @dfn{administrative
 files}.  @xref{Administrative files}, for a complete description.
 You can use @sc{cvs} without any of these files, but
@@ -1447,6 +1483,7 @@ module, whitespace, and the directory where the module
 resides.  The directory is a path relative to
 @code{$CVSROOT}.  The last four lines in the example
 above are examples of such lines.
+
 
 The line that defines the module called @samp{modules}
 uses features that are not explained here.
@@ -1511,12 +1548,14 @@ directory, and then the @code{cvs update} command will
 contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
 
+
 @node Creating a repository
 @section Creating a repository
 
 @cindex Repository, setting up
 @cindex Creating a repository
 @cindex Setting up a repository
+
 To set up a @sc{cvs} repository, first choose the
 machine and disk on which you want to store the
 revision history of the source files.  CPU and memory
@@ -1730,6 +1769,7 @@ the server.  For the most part, the memory consumed by
 the parent process probably can be swap space rather
 than physical memory.
 
+
 The second area of large memory consumption is
 @code{diff}, when checking in large files.  This is
 required even for binary files.  The rule of thumb is
@@ -1773,6 +1813,7 @@ faun, put the following line into the file
 @example
 toe.example.com  mozart
 @end example
+
 
 Then test that @samp{rsh} is working with
 
@@ -1832,8 +1873,10 @@ the module @file{foo} in the repository
 cvs -d :ext:bach@@faun.example.org:/usr/local/cvsroot checkout foo
 @end example
 
+
 (The @file{bach@@} can be omitted if the username is
 the same on both the local and remote hosts.)
+
 
 @node Password authenticated
 @subsection Direct connection with password authentication
@@ -1892,6 +1935,7 @@ single line in @file{inetd.conf}) should be sufficient:
 cvs -f --allow-root=/usr/cvsroot pserver
 @end example
 
+
 (You could also use the
 @samp{-T} option to specify a temporary directory.)
 
@@ -1914,6 +1958,7 @@ name instead of a raw port number, then put this in
 cvspserver      2401/tcp
 @end example
 
+
 and put @code{cvspserver} instead of @code{2401} in @file{inetd.conf}.
 
 If your system uses @code{xinetd} instead of @code{inetd},
@@ -1933,6 +1978,7 @@ service cvspserver
    server_args = -f --allow-root=/usr/cvsroot pserver
 @}
 @end example
+
 
 (If @code{cvspserver} is defined in @file{/etc/services}, you can omit
 the @code{port} line.)
@@ -1967,6 +2013,7 @@ spwang:1sOp854gDF3DY
 melissa:tGX1fS8sun6rY:pubcvs
 qproj:XR4EZcEs0szik:pubcvs
 @end example
+
 
 (The passwords are encrypted according to the standard
 Unix @code{crypt()} function, so it is possible to
@@ -2032,6 +2079,7 @@ fish:rKa5jzULzmhOo:kfogel
 sussman:1sOp854gDF3DY
 @end example
 
+
 When the password field is omitted or empty, then the
 client's authentication attempt will succeed with any
 password, including the empty string.  However, the
@@ -2069,6 +2117,7 @@ file checked out to people's working copies.  If you do
 want to include the @file{passwd} file in checkouts of
 @file{$CVSROOT/CVSROOT}, see @ref{checkoutlist}.
 
+
 @node Password authentication client
 @subsubsection Using the client with password authentication
 @cindex Login (subcommand)
@@ -2083,6 +2132,7 @@ optional port number, and path to the repository.  For example:
 @example
 cvs -d :pserver:faun.example.org:/usr/local/cvsroot checkout someproj
 @end example
+
 
 or
 
@@ -2103,6 +2153,7 @@ prompt you interactively for the password if you didn't supply one as part of
 cvs -d :pserver:bach@@faun.example.org:/usr/local/cvsroot login
 CVS password:
 @end example
+
 
 or
 
@@ -2144,6 +2195,7 @@ with the stored password.  So, for example
 @example
 cvs -d :pserver:bach@@faun.example.org:/usr/local/cvsroot checkout foo
 @end example
+
 
 should just work (unless the password changes on the
 server side, in which case you'll have to re-run
@@ -2394,6 +2446,7 @@ splotnik
 jrandom
 @end example
 
+
         (Don't forget the newline after the last user.)
 
         "Exclusion" means explicitly listing everyone
@@ -2402,6 +2455,7 @@ who has @emph{write} access---if the file
 @example
 $CVSROOT/CVSROOT/writers
 @end example
+
 
 exists, then only
 those users listed in it have write access, and
@@ -2447,6 +2501,7 @@ directories.  They are named
 @example
 cvs-serv@var{pid}
 @end example
+
 
 where @var{pid} is the process identification number of
 the server.
@@ -2549,6 +2604,7 @@ $ cvs checkout yoyodyne/@var{rdir}       # @r{Explanation below}
 $ diff -r @var{wdir} yoyodyne/@var{rdir}
 $ rm -r @var{wdir}
 @end example
+
 
 Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in @var{wdir}, bypassing @sc{cvs}.
@@ -2934,6 +2990,7 @@ T frontend.c
 T parser.c
 @end example
 
+
 (When you give @sc{cvs} a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  @xref{Recursive behavior}.)
@@ -2948,6 +3005,7 @@ any time in the future:
 @example
 $ cvs checkout -r rel-1-0 tc
 @end example
+
 
 This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
@@ -3071,6 +3129,7 @@ cvs tag -r 1.4 stable backend.c
 @node Modifying tags
 @section Deleting, moving, and renaming tags
 
+
 Normally one does not modify tags.  They exist in order
 to record the history of the repository and so deleting
 them or changing their meaning would, generally, not be
@@ -3080,6 +3139,7 @@ However, there might be cases in which one uses a tag
 temporarily or accidentally puts one in the wrong
 place.  Therefore, one might delete, move, or rename a
 tag.
+
 
 @emph{Warning: the commands in this section are
 dangerous; they permanently discard historical
@@ -3101,6 +3161,7 @@ To delete a tag, specify the @samp{-d} option to either
 cvs rtag -d rel-0-4 tc
 @end example
 
+
 deletes the non-branch tag @code{rel-0-4} from the module @code{tc}.
 In the event that branch tags are encountered within the repository
 with the given name, a warning message will be issued and the branch 
@@ -3108,6 +3169,7 @@ tag will not be deleted.  If you are absolutely certain you know what
 you are doing, the @code{-B} option may be specified to allow deletion
 of branch tags.  In that case, any non-branch tags encountered will
 trigger warnings and will not be deleted.
+
 
 @emph{Warning: Moving branch tags is very dangerous!  If you think you need the
 @code{-B} option, think again and ask your @sc{cvs} administrator about it (if
@@ -3131,12 +3193,14 @@ accomplished as:
 cvs tag -r 1.6 -F stable backend.c
 @end example
 
+
 If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
 tag is not disturbed.  If you are absolutely certain you
 wish to move the branch tag, the @code{-B} option may be specified.
 In that case, non-branch tags encountered with the given
 name are ignored with a warning message.
+
 
 @emph{Warning: Moving branch tags is very dangerous!  If you think you need the
 @code{-B} option, think again and ask your @sc{cvs} administrator about it (if
@@ -3200,6 +3264,7 @@ necessary if @samp{-r} is specified, as noted above.
 @section Sticky tags
 @cindex Sticky tags
 @cindex Tags, sticky
+
 
 Sometimes a working copy's revision has extra data
 associated with it, for example it might be on a branch
@@ -3355,6 +3420,7 @@ example, assuming you're in a working copy:
 $ cvs tag -b rel-1-0-patches
 @end example
 
+
 This splits off a branch based on the current revisions
 in the working copy, assigning that branch the name
 @samp{rel-1-0-patches}.
@@ -3421,6 +3487,7 @@ it to a given branch with @samp{update -r}:
 @example
 $ cvs update -r rel-1-0-patches tc
 @end example
+
 
 or equivalently:
 
@@ -3548,6 +3615,8 @@ Branch 1.2.4 -> +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
 
 @end example
 
+
+
 The exact details of how the branch number is
 constructed is not something you normally need to be
 concerned about, but here is how it works: When
@@ -3561,6 +3630,7 @@ special meaning.  @xref{Tracking sources}.
 
 @node Magic branch numbers
 @section Magic branch numbers
+
 
 This section describes a @sc{cvs} feature called
 @dfn{magic branches}.  For most purposes, you need not
@@ -3638,6 +3708,7 @@ Branch R1fix -> +---! 1.2.2.1 !----! 1.2.2.2 !
                     +---------+    +---------+
 @end example
 
+
 The branch 1.2.2 has been given the tag (symbolic name) @samp{R1fix}.  The
 following example assumes that the module @samp{mod} contains only one
 file, @file{m.c}.
@@ -3689,6 +3760,7 @@ Branch R1fix -> +---! 1.2.2.1 !----! 1.2.2.2 !
                     +---------+    +---------+
 @end example
 
+
 where the starred line represents the merge from the
 @samp{R1fix} branch to the main trunk, as just
 discussed.
@@ -3706,6 +3778,7 @@ Now suppose that development continues on the
 Branch R1fix -> +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
                     +---------+    +---------+    +---------+
 @end example
+
 
 and then you want to merge those new changes onto the
 main trunk.  If you just use the @code{cvs update -j
@@ -3755,6 +3828,7 @@ between any two revisions into your working file.
 @example
 $ cvs update -j 1.5 -j 1.3 backend.c
 @end example
+
 
 will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
@@ -3854,6 +3928,7 @@ For example, suppose you have a file like this:
 +-----+    +-----+
 @end example
 
+
 and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
@@ -3917,6 +3992,7 @@ been @samp{-kb} for a binary file.  Therefore, if your
 repository contains binary files, you will need to deal
 with the conflicts rather than using @samp{-kk}.
 
+
 @node Recursive behavior
 @chapter Recursive behavior
 @cindex Recursive (directory descending)
@@ -3954,6 +4030,7 @@ structure:
                  +--@t{testpgm.t}
                  +--@t{test2.t}
 @end example
+
 
 If @file{tc} is the current working directory, the
 following is true:
@@ -4183,6 +4260,7 @@ If you execute @code{remove} for a file, and then
 change your mind before you commit, you can undo the
 @code{remove} with an @code{add} command.
 
+
 @example
 $ ls
 CVS   ja.h  oj.c
@@ -4265,6 +4343,7 @@ The examples below assume that the file @var{old} is renamed to
 @node Outside
 @subsection The Normal way to Rename
 
+
 The normal way to move a file is to copy @var{old} to
 @var{new}, and then issue the normal @sc{cvs} commands
 to remove @var{old} from the repository, and add
@@ -4302,6 +4381,7 @@ $ cd $CVSROOT/@var{dir}
 $ mv @var{old},v @var{new},v
 @end example
 
+
 Advantages:
 
 @itemize @bullet
@@ -4311,6 +4391,7 @@ The log of changes is maintained intact.
 @item
 The revision numbers are not affected.
 @end itemize
+
 
 Disadvantages:
 
@@ -4355,6 +4436,7 @@ $ cvs tag -d @var{tag2} @var{new}
 By removing the tags you will be able to check out old
 revisions.
 
+
 Advantages:
 
 @itemize @bullet
@@ -4369,6 +4451,7 @@ The log of changes is maintained intact.
 @item
 The revision numbers are not affected.
 @end itemize
+
 
 Disadvantages:
 
@@ -4434,6 +4517,7 @@ name of the directories.
 @cindex Traceability
 @cindex Isolation
 
+
 Once you have used @sc{cvs} to store a version control
 history---what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
@@ -4466,6 +4550,7 @@ history} command (@pxref{history}).
 Note: you can control what is logged to this file by using the
 @samp{LogHistory} keyword in the @file{CVSROOT/config} file
 (@pxref{config}).
+
 
 @node user-defined logging
 @section User-defined logging
@@ -4511,6 +4596,7 @@ commands.  In the taginfo file put:
 ALL /usr/local/cvsroot/CVSROOT/loggit
 @end example
 
+
 Where @file{/usr/local/cvsroot/CVSROOT/loggit} contains the
 following script:
 
@@ -4552,6 +4638,7 @@ The options to @code{cvs annotate} are listed in
 @ref{Invoking CVS}, and can be used to select the files
 and revisions to annotate.  The options are described
 in more detail there and in @ref{Common options}.
+
 
 @node Binary files
 @chapter Handling binary files
@@ -4637,6 +4724,7 @@ The second is that a binary file might happen to
 contain data which looks like a keyword (@pxref{Keyword
 substitution}), so keyword expansion must be turned
 off.
+
 
 The @samp{-kb} option available with some @sc{cvs}
 commands insures that neither line ending conversion
@@ -4746,6 +4834,7 @@ enforcing rules like reserved checkouts do.
 The rest of this chapter describes how these various
 models work, and some of the issues involved in
 choosing between them.
+
 
 @menu
 * File status::                 A file can be in several states
@@ -4917,6 +5006,7 @@ void main()
 @}
 @end example
 
+
 Revision 1.6 of @file{driver.c} contains this:
 
 @example
@@ -4939,6 +5029,7 @@ int main(int argc,
 @}
 @end example
 
+
 Your working copy of @file{driver.c}, based on revision
 1.4, contains this before you run @samp{cvs update}:
 
@@ -4958,6 +5049,7 @@ void main()
 @}
 @end example
 
+
 You run @samp{cvs update}:
 
 @example
@@ -4970,6 +5062,7 @@ rcsmerge warning: overlaps during merge
 cvs update: conflicts found in driver.c
 C driver.c
 @end example
+
 
 @cindex Conflicts (merge example)
 @sc{cvs} tells you that there were some conflicts.
@@ -5003,11 +5096,13 @@ int main(int argc,
 @}
 @end example
 
+
 @cindex Markers, conflict
 @cindex Conflict markers
 @cindex <<<<<<<
 @cindex >>>>>>>
 @cindex =======
+
 Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
 @samp{<<<<<<<}, @samp{=======} and @samp{>>>>>>>}.
@@ -5037,6 +5132,7 @@ int main(int argc,
     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
 @}
 @end example
+
 
 You can now go ahead and commit this as revision 1.7.
 
@@ -5127,6 +5223,7 @@ then an update by someone else will either get all the
 changes, or none of them.
 @end quotation
 
+
 but @sc{cvs} does @emph{not} have this property.  For
 example, given the files
 
@@ -5137,11 +5234,13 @@ b/three.c
 b/four.c
 @end example
 
+
 if someone runs
 
 @example
 cvs ci a/two.c b/three.c
 @end example
+
 
 and someone else runs @code{cvs update} at the same
 time, the person running @code{update} might get only
@@ -5170,6 +5269,7 @@ edit} (not @code{chmod}) to make files read-write to
 edit them, and @code{cvs release} (not @code{rm}) to
 discard a working directory which is no longer in use,
 but @sc{cvs} is not able to enforce this behavior.
+
 
 @menu
 * Setting a watch::             Telling CVS to watch certain files
@@ -5284,6 +5384,7 @@ The @var{files} and options are processed as for
 
 @end deffn
 
+
 @cindex watch remove (subcommand)
 @deffn Command {cvs watch remove} [@code{-lR}] [@code{-a} @var{action}]@dots{} [@var{files}]@dots{}
 
@@ -5311,6 +5412,7 @@ single line:
 @example
 ALL mail %s -s "CVS notification"
 @end example
+
 
 This causes users to be notified by electronic mail.
 
@@ -5366,6 +5468,7 @@ receive notifications, she should specify @code{-a none}.
 The @var{files} and the options are processed as for the @code{cvs
 watch} commands.
 
+
 @end deffn
 
 Normally when you are done with a set of changes, you
@@ -5419,6 +5522,7 @@ The @var{files} and options are processed as for the
 
 @end deffn
 
+
 @cindex editors (subcommand)
 @deffn Command {cvs editors} [@code{-lR}] [@var{files}]@dots{}
 
@@ -5447,6 +5551,7 @@ following (all on one line):
 cvs update: cannot open CVS/Entries for reading:
 No such file or directory
 @end example
+
 
 and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of @sc{cvs}
@@ -5517,6 +5622,7 @@ checkout worlds.
 @chapter Revision management
 @cindex Revision management
 
+
 If you have read this far, you probably have a pretty
 good grasp on what @sc{cvs} can do for you.  This
 chapter talks a little about things that you still have
@@ -5566,6 +5672,7 @@ goal, which is to get software written.
 @cindex Keyword expansion
 @cindex Identifying files
 
+
 As long as you edit source files inside a working
 directory you can always find out the state of
 your files via @samp{cvs status} and @samp{cvs log}.
@@ -5594,6 +5701,7 @@ a new revision of the file.
 @node Keyword list
 @section Keyword List
 @cindex Keyword List
+
 
 This is a list of the keywords:
 
@@ -5668,6 +5776,7 @@ file contains:
    *
    */
 @end example
+
 
 then additional lines which are added when expanding
 the @code{$Log} keyword will be preceded by @samp{   * }.
@@ -5762,6 +5871,7 @@ Or some C compilers may provide a @code{#pragma ident}
 directive.  Or a document management system might
 provide a way to pass a string through to generated
 files.
+
 
 @cindex Ident (shell command)
 The @code{ident} command (which is part of the @sc{rcs}
@@ -6120,6 +6230,7 @@ into the main trunk, and tell you to use @samp{checkout -j} to do so:
 $ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
 @end example
 
+
 The above command will check out the latest revision of
 @samp{wdiff}, merging the changes made on the vendor branch @samp{FSF_DIST}
 since yesterday into the working copy.  If any conflicts arise during
@@ -6132,6 +6243,7 @@ a date on the branch as suggested above:
 @example
 $ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
 @end example
+
 
 The reason this is better is that
 using a date, as suggested above, assumes that you do
@@ -6156,6 +6268,7 @@ you would type:
 $ cd ~/work.d/wdiff
 $ cvs admin -bWDIFF .
 @end example
+
 
 You must specify the @samp{-bWDIFF} without any space
 after the @samp{-b}.  @xref{admin options}.
@@ -6229,11 +6342,13 @@ example,
 $ cvs import -b 1.1.3 dir RED RED_1-0
 @end example
 
+
 Be careful; this kind of mismatch is sure to sow
 confusion or worse.  I can't think of a useful purpose
 for the ability to specify a mismatch here, but if you
 discover such a use, don't.  @sc{cvs} is likely to make this
 an error in some future release.
+
 
 @node Builds
 @chapter How your build system interacts with CVS
@@ -6307,6 +6422,7 @@ is Odin (see
 @cindex Permissions, saving in CVS
 @cindex Hard links
 @cindex Symbolic links
+
 In normal circumstances, @sc{cvs} works only with regular
 files.  Every file in a project is assumed to be
 persistent; it must be possible to open, read and close
@@ -6317,6 +6433,7 @@ not possible to "check in" a device into a repository;
 if the device file cannot be opened, @sc{cvs} will refuse to
 handle it.  Files also lose their ownerships and
 permissions during repository transactions.
+
 
 @node CVS commands
 @appendix Guide to CVS commands
@@ -6454,6 +6571,7 @@ checkout -P
 release -d
 @end example
 
+
 the command @samp{cvs checkout foo} would have the
 @samp{-P} option added to the arguments, as well as
 @samp{cvs co foo}.
@@ -6473,6 +6591,7 @@ example the following line in @file{.cvsrc}
 @example
 cvs -z6
 @end example
+
 
 causes @sc{cvs} to use compression level 6.
 
@@ -6682,6 +6801,7 @@ further updates in the same directory will use the same date
 (The @code{history} command uses this option in a
 slightly different way; @pxref{history options}).
 
+
 @cindex Timezone, in input
 @cindex Zone, time, in input
 A wide variety of date formats are supported by
@@ -6701,6 +6821,7 @@ are:
 There are a lot more ISO8601 date formats, and @sc{cvs}
 accepts many of them, but you probably don't want to
 hear the @emph{whole} long story :-).
+
 
 In addition to the dates allowed in Internet e-mail
 itself, @sc{cvs} also allows some of the fields to be
@@ -6835,6 +6956,7 @@ with the @code{tag} or @code{rtag} command, two special tags are
 always available: @samp{HEAD} refers to the most recent version
 available in the repository, and @samp{BASE} refers to the
 revision you last checked out into the current working directory.
+
 
 The tag specification is sticky when you use this
 with @code{checkout} or @code{update} to make your own
@@ -7003,6 +7125,7 @@ set; see the discussion under the @samp{-l} option above.
 @item -m@var{rev}:@var{msg}
 Replace the log message of revision @var{rev} with
 @var{msg}.
+
 
 @item -N@var{name}[:[@var{rev}]]
 Act like @samp{-n}, except override any previous
@@ -7179,6 +7302,7 @@ from the @var{string} into the @sc{rcs} file, deleting
 the existing text.
 There can be no space between @samp{-t} and its argument.
 
+
 @item -U
 Set locking to non-strict.  Non-strict locking means
 that the owner of a file need not lock a revision for
@@ -7212,6 +7336,7 @@ files.  However, @sc{cvs} has always required that the
 this option has never done anything useful.
 
 @end table
+
 
 @node checkout
 @appendixsec checkout---Check out sources for editing
@@ -7548,6 +7673,7 @@ invoking an editor.
 @node commit examples
 @appendixsubsec commit examples
 
+
 @appendixsubsubsec Committing to a branch
 
 You can commit to a branch revision (one that has an
@@ -7571,6 +7697,7 @@ $ cd product_module
 [[ hack away ]]
 $ cvs commit
 @end example
+
 
 This works automatically since the @samp{-r} option is
 sticky.
@@ -7606,6 +7733,7 @@ automatically commit to the correct branch, because the
 $ cvs tag -b EXPR1
 $ cvs commit -r EXPR1
 @end example
+
 
 but then, only those files that were changed by you
 will have the @samp{-r EXPR1} sticky flag.  If you hack
@@ -8312,6 +8440,7 @@ Only useful together with @samp{-d @var{dir}}.
 @sc{cvs} handles this flag.
 @end table
 
+
 @node history
 @appendixsec history---Show status of files and users
 @cindex history (subcommand)
@@ -8389,6 +8518,7 @@ export
 rtag
 @end table
 
+
 One of four record types may result from an update:
 
 @table @code
@@ -8403,6 +8533,7 @@ A working file was copied from the repository.
 The working copy of a file was deleted during
 update (because it was gone from the repository).
 @end table
+
 
 One of three record types results from commit:
 
@@ -8481,9 +8612,11 @@ Show times in the selected records using the specified
 time zone instead of UTC.
 @end table
 
+
 @node import
 @appendixsec import---Import sources into CVS, using vendor branches
 @cindex import (subcommand)
+
 
 @itemize @bullet
 @item
@@ -10220,6 +10353,7 @@ contains two files, @file{file1} and @file{file2}, and a
 directory @file{sdir}.  @file{first-dir/sdir} contains
 a file @file{sfile}.
 
+
 @menu
 * Alias modules::             The simplest kind of module
 * Regular modules::
@@ -10257,12 +10391,14 @@ For example, if the modules file contains:
 amodule -a first-dir
 @end example
 
+
 then the following two commands are equivalent:
 
 @example
 $ cvs co amodule
 $ cvs co first-dir
 @end example
+
 
 and they each would provide output such as:
 
@@ -10298,6 +10434,7 @@ For example, if a module is defined by:
 regmodule first-dir
 @end example
 
+
 then regmodule will contain the files from first-dir:
 
 @example
@@ -10318,6 +10455,7 @@ an example:
 @example
 regfiles first-dir/sdir sfile
 @end example
+
 
 With this definition, getting the regfiles module
 will create a single working directory
@@ -10350,6 +10488,7 @@ example, if modules contains
 ampermod &first-dir
 @end example
 
+
 then a checkout will create an @code{ampermod} directory
 which contains a directory called @code{first-dir},
 which in turns contains all the directories and files
@@ -10358,6 +10497,7 @@ which live there.  For example, the command
 @example
 $ cvs co ampermod
 @end example
+
 
 will create the following files:
 
@@ -10385,6 +10525,7 @@ $
 Do not rely on this buggy behavior; it may get fixed in
 a future release of @sc{cvs}.
 
+
 @node Excluding directories
 @appendixsubsec Excluding directories
 @cindex Excluding directories, in modules file
@@ -10399,6 +10540,7 @@ For example, if the modules file contains:
 @example
 exmodule -a !first-dir/sdir first-dir
 @end example
+
 
 then checking out the module @samp{exmodule} will check
 out everything in @samp{first-dir} except any files in
@@ -10459,12 +10601,14 @@ that taginfo is a better solution (@pxref{user-defined logging}).
 You should also see @pxref{Module program options} about how the
 ``program options'' programs are run.
 
+
 @node Module program options
 @appendixsubsec How the modules file ``program options'' programs are run
 @cindex Modules file program options
 @cindex -t, in modules file
 @cindex -o, in modules file
 @cindex -e, in modules file
+
 
 For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
@@ -10481,17 +10625,20 @@ found there, or alternatively searched for in the path if not.
 The programs are all run after the operation has effectively
 completed.
 
+
 @node Wrappers
 @appendixsec The cvswrappers file
 @cindex cvswrappers (admin file)
 @cindex CVSWRAPPERS, environment variable
 @cindex Wrappers
 
+
 Wrappers refers to a @sc{cvs} feature which lets you
 control certain settings based on the name of the file
 which is being operated on.  The settings are @samp{-k}
 for binary files, and @samp{-m} for nonmergeable text
 files.
+
 
 The @samp{-m} option
 specifies the merge methodology that should be used when
@@ -10525,6 +10672,7 @@ where option is one of
 and value is a single-quote delimited value.
 @end example
 
+
 For example, the following command imports a
 directory, treating files whose name ends in
 @samp{.exe} as binary:
@@ -10532,6 +10680,7 @@ directory, treating files whose name ends in
 @example
 cvs import -I ! -W "*.exe -k 'b'" first-dir vendortag reltag
 @end example
+
 
 @node commit files
 @appendixsec The commit support files
@@ -10593,6 +10742,7 @@ imagination is the limit!
 @cindex Syntax of info files
 @cindex Common syntax of info files
 
+
 The administrative files such as @file{commitinfo},
 @file{loginfo}, @file{rcsinfo}, @file{verifymsg}, etc.,
 all have a common format.  The purpose of the files are
@@ -10613,6 +10763,7 @@ A whitespace separator---one or more spaces and/or tabs.
 A file name or command-line template.
 @end itemize
 
+
 Blank lines are ignored.  Lines that start with the
 character @samp{#} are treated as comments.  Long lines
 unfortunately can @emph{not} be broken in two parts in
@@ -10621,6 +10772,7 @@ any way.
 The first regular expression that matches the current
 directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
+
 
 @node commitinfo
 @appendixsubsec Commitinfo
@@ -10679,6 +10831,7 @@ committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
 message, and command line options specified, is not available
 to the command.
+
 
 @node verifymsg
 @appendixsubsec Verifying log messages
@@ -10819,6 +10972,8 @@ The @file{config} file contains this line:
 @example
 RereadLogAfterVerify=always
 @end example
+
+
 
 @node editinfo
 @appendixsubsec Editinfo
@@ -11055,6 +11210,7 @@ like this:
 @cindex Keeping a checked out copy
 @cindex Checked out copy, keeping
 @cindex Web pages, maintaining with CVS
+
 It is often useful to maintain a directory tree which
 contains files which correspond to the latest version
 in the repository.  For example, other developers might
@@ -11255,6 +11411,7 @@ message such as:
 cvs commit: Rebuilding administrative file database
 @end example
 
+
 and the checked out copy in the @file{CVSROOT}
 directory should be updated.
 
@@ -11374,6 +11531,7 @@ as
 cvs -s TESTDIR=/work/local/tests
 @end example
 
+
 and the
 administrative file contains @code{sh
 $@{=TESTDIR@}/runtests}, then that string is expanded
@@ -11411,6 +11569,7 @@ Do not confuse this with the internal variable of the same name.
 
 @cindex config, in CVSROOT
 @cindex CVSROOT/config
+
 The administrative file @file{config} contains various
 miscellaneous settings which affect the behavior of
 @sc{cvs}.  The syntax is slightly different from the
@@ -11440,6 +11599,7 @@ for users in the system's user database if not found in
 pserver users must exist in @file{CVSROOT/passwd}.
 The default is @samp{yes}.  For more on pserver, see
 @ref{Password authenticated}.
+
 
 @cindex TopLevelAdmin, in CVSROOT/config
 @item TopLevelAdmin=@var{value}
@@ -11753,6 +11913,7 @@ but some older versions might still be floating around).  In many
 cases you need to upgrade both the client and the server to take
 advantage of new features and bugfixes, however.
 
+
 @node Troubleshooting
 @appendix Troubleshooting
 
@@ -11768,6 +11929,7 @@ mentioned there.
 * Connection::                  Trouble making a connection to a CVS server
 * Other problems::              Problems not readily listed by error message
 @end menu
+
 
 @node Error messages
 @appendixsec Partial list of error messages
@@ -12197,6 +12359,7 @@ Usage: cvs [cvs-options] command [command-options-and-arguments]
 ...
 @end example
 
+
 then you're missing the @samp{pserver} command at the end of the
 line in @file{inetd.conf}; check to make sure that the entire command
 is on one line and that it's complete.
@@ -12210,6 +12373,7 @@ CVS commands are:
         add          Add a new file/directory to the repository
 ...
 @end example
+
 
 then you've misspelled @samp{pserver} in some way.  If it isn't
 obvious, check for invisible control characters (particularly
@@ -12246,6 +12410,7 @@ If you seem to be connecting but get errors like:
 cvs server: cannot open /root/.cvsignore: Permission denied
 cvs [server aborted]: can't chdir(/root): Permission denied
 @end example
+
 
 then you probably haven't specified @samp{-f} in @file{inetd.conf}.
 (In releases prior to @sc{cvs} 1.11.1, this problem can be caused by
@@ -12444,6 +12609,7 @@ comprehensive, detailed list of known bugs.
 @cindex Index
 
 @printindex cp
+
 
 
 

@@ -90,6 +90,7 @@ will work in some contexts, but not all, due to limitations in TeX.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo This is a string.
 </pre></td></tr></table>
+
 <p>This sets the value of the flag <code>foo</code> to &quot;This is a string.&quot;.
 </p><p>The Texinfo formatters then replace an <code>@value{<var>flag</var>}</code>
 command with the string to which <var>flag</var> is set.  Thus, when
@@ -105,6 +106,7 @@ must write an <code>@set</code> command on a line of its own.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set foo
 </pre></td></tr></table>
+
 <p>without specifying a string, the value of <code>foo</code> is the empty string.
 </p><p>If you clear a previously set flag with <code>@clear <var>flag</var></code>, a
 subsequent <code>@value{flag}</code> command will report an error.
@@ -112,6 +114,7 @@ subsequent <code>@value{flag}</code> command will report an error.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @set how-much very, very, very
 </pre></td></tr></table>
+
 <p>then the formatters transform
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
@@ -122,12 +125,14 @@ It is a very, very, very wet day.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @clear how-much
 </pre></td></tr></table>
+
 <p>then the formatters transform
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 It is a @value{how-much} wet day.
 into
 It is a {No value for &quot;how-much&quot;} wet day.
 </pre></td></tr></table>
+
 <hr size="1">
 <p>
  <font size="-1">

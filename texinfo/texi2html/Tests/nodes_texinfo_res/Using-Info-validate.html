@@ -85,6 +85,7 @@ type:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 M-x Info-validate
 </pre></td></tr></table>
+
 <p>Note that the <code>Info-validate</code> command requires an upper case
 `I'.  You may also need to create a tag table before running
 <code>Info-validate</code>.  See section <a href="Tagifying.html#SEC317">Tagifying a File</a>.
@@ -97,6 +98,7 @@ only the first node of this manual.  One of the messages said:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
+
 <p>This meant that the node called `<samp>Overview</samp>' had a `Next' pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
@@ -106,6 +108,7 @@ the following error message:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 In node &quot;Texinfo Mode&quot;, should have Previous: Overview
 </pre></td></tr></table>
+
 <p>This is because every `Next' pointer should be matched by a
 `Previous' (in the node where the `Next' points) which points back.
 </p><p><code>Info-validate</code> also checks that all menu entries and cross references

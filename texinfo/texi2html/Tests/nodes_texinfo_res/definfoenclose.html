@@ -110,6 +110,7 @@ is intended for new markup commands (see section <a href="Marking-Text.html#SEC1
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose phoo,//,\\
 </pre></td></tr></table>
+
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
 formatting command that inserts `//' before and `\\' after the argument
 to <code>@phoo</code>.  You can then write <code>@phoo{bar}</code> wherever you
@@ -120,6 +121,7 @@ want `//bar\\' highlighted in Info.
 @global@let@phoo=@i
 @end iftex
 </pre></td></tr></table>
+
 <p>to define <code>@phoo</code> as a command that causes TeX to typeset the
 argument to <code>@phoo</code> in italics.
 </p><p>Each definition applies to its own formatter: one for TeX, the other
@@ -131,12 +133,14 @@ the raw TeX commands do need to be in `<samp>@iftex</samp>'.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @definfoenclose headword, , :
 </pre></td></tr></table>
+
 <p>near the beginning of the file, to define <code>@headword</code> as an Info
 formatting command that inserts nothing before and a colon after the
 argument to <code>@headword</code>.
 </p><p>`<samp>@definfoenclose</samp>' definitions must not be recursive, directly or
 indirectly.
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="alias.html#SEC242" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Next section in reading order"> &gt; </a>]</td>

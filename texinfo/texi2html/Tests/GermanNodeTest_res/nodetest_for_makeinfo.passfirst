@@ -3,7 +3,9 @@
 @menu
 * Umlaut::               Umlaut.
 
+
 Another Heading
+
 
 * acute accent::         acute accent.
 * grave accent::         grave accent.
@@ -122,6 +124,7 @@ With brace @'{a}. Testing ' " ` ^.
 @section @'Y
 This is a ref to @"u (@pxref{@"u, ,@"u}).
 Another one, with node only (@pxref{@"a, ,}).
+
 
 @node grave accent,,Top,Top
 @chapter grave accent

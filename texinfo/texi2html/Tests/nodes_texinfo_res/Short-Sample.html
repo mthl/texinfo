@@ -95,6 +95,7 @@ not.  The complete file, without interspersed comments, is shown in
 </p><a name="SEC13"></a>
 <h3 class="subheading"> Part 1: Header </h3>
 
+
 <p>The header does not appear in either the Info file or the
 printed output.  It sets various parameters, including the
 name of the Info file and the title used in the header.
@@ -108,6 +109,7 @@ name of the Info file and the title used in the header.
 <a name="SEC14"></a>
 <h3 class="subheading"> Part 2: Summary Description and Copyright </h3>
 
+
 <p>A real manual includes more text here, according to the license under
 which it is distributed.  See section <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -119,6 +121,7 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 </pre></td></tr></table>
 <a name="SEC15"></a>
 <h3 class="subheading"> Part 3: Titlepage, Contents, Copyright </h3>
+
 
 <p>The titlepage segment does not appear in the online output, only in the
 printed manual.  We use the <code>@insertcopying</code> command to
@@ -141,6 +144,7 @@ writing it out again; it is output on the back of the title page.  The
 <a name="SEC16"></a>
 <h3 class="subheading"> Part 4: `Top' Node and Master Menu </h3>
 
+
 <p>The `Top' node contains the master menu for the Info file.  Since a
 printed manual uses a table of contents rather than a menu, the master
 menu appears only in online output.  We also include the copying text
@@ -160,8 +164,10 @@ begins with a brief description of the manual, no other text is needed.
 * Index::            Complete index.
 @end menu
 </pre></td></tr></table>
+
 <a name="SEC17"></a>
 <h3 class="subheading"> Part 5: The Body of the Document </h3>
+
 
 <p>The body segment contains all the text of the document, but not the
 indices or table of contents.  This example illustrates a node and a
@@ -185,8 +191,10 @@ This is the first item.
 This is the second item.
 @end enumerate
 </pre></td></tr></table>
+
 <a name="SEC18"></a>
 <h3 class="subheading"> Part 6: The End of the Document </h3>
+
 
 <p>The end segment contains commands for generating an index in a node and
 unnumbered chapter of its own, and the <code>@bye</code> command that marks
@@ -199,11 +207,13 @@ the end of the document.
 
 @bye
 </pre></td></tr></table>
+
 <a name="SEC19"></a>
 <h3 class="subheading"> Some Results </h3>
 
 <p>Here is what the contents of the first chapter of the sample look like:
-</p><blockquote>
+</p>
+<blockquote>
 
 <p>This is the first chapter.
 </p><p>Here is a numbered list.
@@ -214,6 +224,7 @@ This is the first item.
 This is the second item.
 </p></li></ol>
 </blockquote>
+
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -1,9 +1,11 @@
 
+
 @node Top
 @top split indices
 @cindex entry a
 
 And one one more index
+
 
 @menu
 * first::
@@ -21,9 +23,11 @@ Text and then index entries
 @printindex cp
 
 @cindex entry after printindex
+
 @findex a function
 @cindex a concept in first
 @findex somewhere
+
 @menu
 * section 1::
 @end menu
@@ -36,10 +40,14 @@ Text and then index entries
 @end menu
 
 @cindex something
+
 @cindex another
+
 @node subsection 1
 @subsection Subsection 1
 
 In subsection 1
 
 @cindex printindex subsection 2
+
+

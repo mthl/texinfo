@@ -83,6 +83,7 @@ and a last in another paragraph
 @@end macro
 @end example
 
+
 Calling
 @example
 @@macro2 @{ arg, comma \, @}
@@ -122,6 +123,8 @@ and another one on another line arg, comma \,
 and a last in another paragraph
 
 ==================================
+
+
 
 now @@set comma ,  
 
@@ -171,12 +174,14 @@ comma: @value{comma}
 @macro1{ bidule, truc}
 @end verbatim
 
+
 Define macro
 @example
 @@macro testvaluebody @{ arg @}
 result: @@emph@{\@@value@{bodyarg@}\  @} 
 @@end macro
 @end example
+
 
 ==================================
 
@@ -197,6 +202,7 @@ Define macro
 result: @@emph@{\arg\@} the \the\ thearg \thearg\ with value \the@@value@{argument@}\
 @@end macro
 @end example
+
 
 ==================================
 

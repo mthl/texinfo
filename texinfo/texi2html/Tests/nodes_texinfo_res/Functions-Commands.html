@@ -103,6 +103,7 @@ own.
 Move point forward @var{nchars} characters.
 @end deffn
 </pre></td></tr></table>
+
 <p>This shows a rather terse definition for a &quot;command&quot; named
 <code>forward-char</code> with one argument, <var>nchars</var>.
 </p><p><code>@deffn</code> prints argument names such as <var>nchars</var> in italics or
@@ -124,13 +125,15 @@ the example above, we used `<samp>@var{nchars}</samp>' in this way.
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
 <small class="dots">...</small></samp>'.
-</p><p>For example,
+</p>
+<p>For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @defun set symbol new-value
 Change the value of the symbol @var{symbol}
 to @var{new-value}.
 @end defun
 </pre></td></tr></table>
+
 <p>shows a rather terse definition for a function <code>set</code> whose
 arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
 the <code>@defun</code> line automatically appear in italics or upper case as

@@ -144,6 +144,7 @@ entry for &quot;Leaping&quot;:
 @cindex Quick fox jumps over dog
 The quick brown fox jumps over the lazy dog.
 </pre></td></tr></table>
+
 <p>(Note that the example shows entries for the same concept that are
 written in different ways--`<samp>Lazy dog</samp>', and `<samp>Dog, lazy</samp>'--so
 readers can look up the concept in different ways.)
@@ -208,7 +209,8 @@ in the <code>@titlepage</code> section (for people reading the printed
 output) and the Top node (for people reading the online output).
 </p><p>It is easiest to do this using <code>@set</code> and <code>@value</code>.
 See section <a href="value-Example.html#SEC234"><code>@value</code> Example</a>, and <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>.
-</p><a name="SEC283"></a>
+</p>
+<a name="SEC283"></a>
 <h4 class="subsubheading"> Definition Commands </h4>
 
 <p>Definition commands are <code>@deffn</code>, <code>@defun</code>,
@@ -254,12 +256,14 @@ TeX.
        on the version-controlled file
        corresponding to the current buffer.
 </pre></td></tr></table>
+
 <p>so it looks like this:
 </p><blockquote>
 
 <p>`C-x v' `M-x vc-next-action' Perform the next logical operation on the
 version-controlled file corresponding to the current buffer.
 </p></blockquote>
+
 
 <p>In this case, the text should be formatted with
 <code>@table</code>, <code>@item</code>, and <code>@itemx</code>, to create a table.
@@ -298,6 +302,7 @@ outside the end quotation marks:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 Evidently, `<samp>au</samp>' is an abbreviation for ``author''.
 </pre></td></tr></table>
+
 <p>since `<samp>au</samp>' does <em>not</em> serve as an  abbreviation for
 `<samp>author.</samp>' (with a period following the word).
 </p><a name="SEC288"></a>
@@ -342,7 +347,8 @@ sections are all different, they are difficult for users to find.
 </p><p>So, there is a convention to name such sections with a phrase beginning
 with the word `Invoking', as in `Invoking Emacs'; this way, users can
 find the section easily.
-</p><a name="SEC291"></a>
+</p>
+<a name="SEC291"></a>
 <h4 class="subsubheading"> ANSI C Syntax </h4>
 
 <p>When you use <code>@example</code> to describe a C function's calling
@@ -350,6 +356,7 @@ conventions, use the ANSI C syntax, like this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 void dld_init (char *@var{path});
 </pre></td></tr></table>
+
 <p>And in the subsequent discussion, refer to the argument values by
 writing the same argument names, again highlighted with
 <code>@var</code>.
@@ -409,6 +416,7 @@ Write notes for yourself at the very end of a Texinfo file after the
 <code>@bye</code>; it is as if the text were within <code>@ignore</code> <small class="dots">...</small>
 <code>@end ignore</code>.
 </p></li></ul>
+
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -107,16 +107,19 @@ an Info file, suitable closing punctuation must follow the cross
 reference so Info can recognize its end.  <code>@pxref</code> spares you
 the need to use complicated methods to put a terminator into one form
 of the output and not the other.
-</p><p>With one argument, a parenthetical cross reference looks like
+</p>
+<p>With one argument, a parenthetical cross reference looks like
 this:
 </p><a name="IDX113"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">
 ... storms cause flooding (@pxref{Hurricanes}) ...
 </pre></td></tr></table>
+
 <p>which produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... storms cause flooding (*Note Hurricanes::) ...
 </pre></td></tr></table>
+
 <p>and
 </p><blockquote>
 
@@ -128,10 +131,12 @@ template:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... (@pxref{<var>node-name</var>, <var>cross-reference-name</var>}) ...
 </pre></td></tr></table>
+
 <p>which produces
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ... (*Note <var>cross-reference-name</var>: <var>node-name</var>.) ...
 </pre></td></tr></table>
+
 <p>and
 </p><blockquote>
 

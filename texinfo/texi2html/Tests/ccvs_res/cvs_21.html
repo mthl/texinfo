@@ -72,6 +72,7 @@ mentioned there.
 <tr><td align="left" valign="top"><a href="#SEC186">F.3 Other common problems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Problems not readily listed by error message</td></tr>
 </table>
 
+
 <hr size="6">
 <a name="NOD182"></a>
 <a name="SEC184"></a>
@@ -563,6 +564,7 @@ cvs [pserver aborted]: bad auth protocol start: foo
 Usage: cvs [cvs-options] command [command-options-and-arguments]
 ...
 </pre></td></tr></table>
+
 <p>then you're missing the `<samp>pserver</samp>' command at the end of the
 line in `<tt>inetd.conf</tt>'; check to make sure that the entire command
 is on one line and that it's complete.
@@ -574,6 +576,7 @@ CVS commands are:
         add          Add a new file/directory to the repository
 ...
 </pre></td></tr></table>
+
 <p>then you've misspelled `<samp>pserver</samp>' in some way.  If it isn't
 obvious, check for invisible control characters (particularly
 carriage returns) in `<tt>inetd.conf</tt>'.
@@ -602,6 +605,7 @@ documentation for more information.
 cvs server: cannot open /root/.cvsignore: Permission denied
 cvs [server aborted]: can't chdir(/root): Permission denied
 </pre></td></tr></table>
+
 <p>then you probably haven't specified `<samp>-f</samp>' in `<tt>inetd.conf</tt>'.
 (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by
 your system setting the <code>$HOME</code> environment variable

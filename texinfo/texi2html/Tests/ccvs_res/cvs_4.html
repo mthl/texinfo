@@ -317,6 +317,7 @@ T driver.c
 T frontend.c
 T parser.c
 </pre></td></tr></table>
+
 <p>(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See section <a href="cvs_6.html#SEC65">Recursive behavior</a>.)
@@ -329,6 +330,7 @@ any time in the future:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -r rel-1-0 tc
 </pre></td></tr></table>
+
 <p>This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
 </p><p>You can also check out a module as it was at any given date.
@@ -494,6 +496,7 @@ cvs tag -r 1.4 stable backend.c
 </tr></table>
 <h2 class="section"> 4.7 Deleting, moving, and renaming tags </h2>
 
+
 <p>Normally one does not modify tags.  They exist in order
 to record the history of the repository and so deleting
 them or changing their meaning would, generally, not be
@@ -502,7 +505,8 @@ what you want.
 temporarily or accidentally puts one in the wrong
 place.  Therefore, one might delete, move, or rename a
 tag.
-</p><p><em>Warning: the commands in this section are
+</p>
+<p><em>Warning: the commands in this section are
 dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
@@ -519,6 +523,7 @@ commands with taginfo (see section <a href="cvs_8.html#SEC78">User-defined loggi
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs rtag -d rel-0-4 tc
 </pre></td></tr></table>
+
 <p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
 In the event that branch tags are encountered within the repository
 with the given name, a warning message will be issued and the branch 
@@ -526,7 +531,8 @@ tag will not be deleted.  If you are absolutely certain you know what
 you are doing, the <code>-B</code> option may be specified to allow deletion
 of branch tags.  In that case, any non-branch tags encountered will
 trigger warnings and will not be deleted.
-</p><p><em>Warning: Moving branch tags is very dangerous!  If you think you need the
+</p>
+<p><em>Warning: Moving branch tags is very dangerous!  If you think you need the
 <code>-B</code> option, think again and ask your <small>CVS</small> administrator about it (if
 that isn't you).  There is almost certainly another way to accomplish what you
 want to accomplish.</em>
@@ -545,13 +551,15 @@ accomplished as:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs tag -r 1.6 -F stable backend.c
 </pre></td></tr></table>
+
 <p>If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
 tag is not disturbed.  If you are absolutely certain you
 wish to move the branch tag, the <code>-B</code> option may be specified.
 In that case, non-branch tags encountered with the given
 name are ignored with a warning message.
-</p><p><em>Warning: Moving branch tags is very dangerous!  If you think you need the
+</p>
+<p><em>Warning: Moving branch tags is very dangerous!  If you think you need the
 <code>-B</code> option, think again and ask your <small>CVS</small> administrator about it (if
 that isn't you).  There is almost certainly another way to accomplish what you
 want to accomplish.</em>
@@ -641,6 +649,7 @@ necessary if `<samp>-r</samp>' is specified, as noted above.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 4.9 Sticky tags </h2>
+
 
 <p>Sometimes a working copy's revision has extra data
 associated with it, for example it might be on a branch

@@ -1,6 +1,8 @@
 
+
 @cindex truc
 Garbage
+
 
 @unnumbered unnumbered
 @printindex bidule
@@ -24,6 +26,8 @@ Top node
 @printindex cp
 
 @cindex top section1
+
+
 @section second
 
 @printindex cp
@@ -38,4 +42,5 @@ second node
 @printindex cp
 Text of chapter
 @cindex Chapter2
+
 

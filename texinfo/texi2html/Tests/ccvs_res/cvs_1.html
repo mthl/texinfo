@@ -95,7 +95,8 @@ certain command, you can probably skip everything here.
 
 <p><small>CVS</small> is a version control system.  Using it, you can
 record the history of your source files.
-</p><p>For example, bugs sometimes creep in when
+</p>
+<p>For example, bugs sometimes creep in when
 software is modified, and you might not detect the bug
 until a long time after you make the modification.
 With <small>CVS</small>, you can easily retrieve old versions to see
@@ -248,7 +249,8 @@ function <code>X</code> using the old arguments.  You are
 outside the realm of <small>CVS</small>'s competence.
 </p><p>Acquire the habit of reading specs and talking to your
 peers.
-</p></dd>
+</p>
+</dd>
 <dt> <small>CVS</small> does not have change control
 </dt>
 <dd><p>Change control refers to a number of things.  First of
@@ -324,6 +326,7 @@ only once they have been proven.
 </tr></table>
 <h2 class="section"> 1.3 A sample session </h2>
 
+
 <p>As a way of introducing <small>CVS</small>, we'll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
@@ -368,6 +371,7 @@ source for `<samp>tc</samp>'.  For this, you use the <code>checkout</code> comma
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout tc
 </pre></td></tr></table>
+
 <p>This will create a new directory called `<tt>tc</tt>' and populate it with
 the source files.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -411,6 +415,7 @@ repository.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs commit backend.c
 </pre></td></tr></table>
+
 <p><small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &quot;Added an optimization pass.&quot;,
 save the temporary file, and exit the editor.
@@ -479,6 +484,7 @@ tc.  One acceptable way to do that is of course
 $ cd ..
 $ rm -r tc
 </pre></td></tr></table>
+
 <p>but a better way is to use the <code>release</code> command (see section <a href="cvs_16.html#SEC149">release--Indicate that a Module is no longer in use</a>):
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd ..

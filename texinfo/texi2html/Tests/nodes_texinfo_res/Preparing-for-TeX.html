@@ -85,6 +85,7 @@ ul.toc {list-style: none}
 `<tt>texinfo.tex</tt>' file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
 </p><a name="IDX334"></a>
+
 <p>Usually, the installer has put the `<tt>texinfo.tex</tt>' file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
 other GNU software is installed.  In this case, TeX will find the
@@ -138,9 +139,11 @@ export TEXINPUTS
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
+
 <p>It is customary for DOS/Windows users to put such commands in the
 `<tt>autoexec.bat</tt>' file, or in the Windows Registry.
-</p><p>These settings would cause TeX to look for `<tt>\input</tt>' file first
+</p>
+<p>These settings would cause TeX to look for `<tt>\input</tt>' file first
 in the current directory, indicated by the `<samp>.</samp>', then in a
 hypothetical user's `<tt>me/mylib</tt>' directory, and finally in a system
 directory `<tt>/usr/lib/tex/macros</tt>'.
@@ -156,7 +159,8 @@ initex texinfo @dump
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to
 wherever your <code>.fmt</code> files are found; typically, this will be in the
 subdirectory `<tt>web2c</tt>' of your TeX installation.
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Requirements-Summary.html#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Overfull-hboxes.html#SEC254" title="Next section in reading order"> &gt; </a>]</td>

@@ -40,7 +40,11 @@ second paragraph
 
 third}
 
+
+
 Unknown thing @thing{}
+
+
 
 A list with bullet
 Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @item on the same line than item
@@ -72,6 +76,7 @@ verbatim @samp{item}
 
 @end verbatim
 
+
 Now html  @html 
 <b>
 some html </b> 
@@ -92,6 +97,7 @@ And html on it's own line
 @html
 <tt> an html tt</tt>
 @end html
+
 
 A sc: @sc{ieee}, and another one in example:
 @example
@@ -115,6 +121,7 @@ Text on the line following ifnothtml.
 
 Text on the line before ifnothtml,
 Text on the line following empty ifnothtml
+
 
 @TeX{} has problems with the ftable.
 
@@ -183,6 +190,8 @@ verb @c comment
 and samp @samp{text }
 *}
 
+
+
 @node node @'{a}, node d@'a, First node, Top
 @chapter node 'a with braces
 In the node with braces
@@ -212,6 +221,7 @@ An example
 @end example
 }
 
+
 Some @@verbatim, @@verb and @@ignore within an xref, very hard for @TeX{}:
 @xref{First node, 
 @verbatim
@@ -222,6 +232,7 @@ text
 within an xref
 
 @end verbatim
+
 
 and now verb delimited with * with an empty line a comment and @@samp
 @verb{*with
@@ -253,6 +264,7 @@ before example @example after example
 the example
 before end example  @end example 
 after end example
+
 
 
 

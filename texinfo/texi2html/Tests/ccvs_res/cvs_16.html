@@ -235,6 +235,7 @@ update -Pd
 checkout -P
 release -d
 </pre></td></tr></table>
+
 <p>the command `<samp>cvs checkout foo</samp>' would have the
 `<samp>-P</samp>' option added to the arguments, as well as
 `<samp>cvs co foo</samp>'.
@@ -251,6 +252,7 @@ example the following line in `<tt>.cvsrc</tt>'
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -z6
 </pre></td></tr></table>
+
 <p>causes <small>CVS</small> to use compression level 6.
 </p><hr size="6">
 <a name="NOD118"></a>
@@ -506,7 +508,8 @@ further updates in the same directory will use the same date
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
 slightly different way; see section <a href="#SEC138">history options</a>).
-</p><a name="IDX224"></a>
+</p>
+<a name="IDX224"></a>
 <a name="IDX225"></a>
 <p>A wide variety of date formats are supported by
 <small>CVS</small>.  The most standard ones are ISO8601 (from the
@@ -522,7 +525,8 @@ are:
 <p>There are a lot more ISO8601 date formats, and <small>CVS</small>
 accepts many of them, but you probably don't want to
 hear the <em>whole</em> long story :-).
-</p><p>In addition to the dates allowed in Internet e-mail
+</p>
+<p>In addition to the dates allowed in Internet e-mail
 itself, <small>CVS</small> also allows some of the fields to be
 omitted.  For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -648,7 +652,8 @@ with the <code>tag</code> or <code>rtag</code> command, two special tags are
 always available: `<samp>HEAD</samp>' refers to the most recent version
 available in the repository, and `<samp>BASE</samp>' refers to the
 revision you last checked out into the current working directory.
-</p><p>The tag specification is sticky when you use this
+</p>
+<p>The tag specification is sticky when you use this
 with <code>checkout</code> or <code>update</code> to make your own
 copy of a file: <small>CVS</small> remembers the tag and continues to use it on
 future update commands, until you specify otherwise (for more information
@@ -852,7 +857,8 @@ set; see the discussion under the `<samp>-l</samp>' option above.
 </code></dt>
 <dd><p>Replace the log message of revision <var>rev</var> with
 <var>msg</var>.
-</p></dd>
+</p>
+</dd>
 <dt><code> -N<var>name</var>[:[<var>rev</var>]]
 </code></dt>
 <dd><p>Act like `<samp>-n</samp>', except override any previous
@@ -1034,7 +1040,8 @@ Prompt for the text if interaction is possible; see
 from the <var>string</var> into the <small>RCS</small> file, deleting
 the existing text.
 There can be no space between `<samp>-t</samp>' and its argument.
-</p></dd>
+</p>
+</dd>
 <dt><code> -U
 </code></dt>
 <dd><p>Set locking to non-strict.  Non-strict locking means
@@ -1072,6 +1079,7 @@ files.  However, <small>CVS</small> has always required that the
 this option has never done anything useful.
 </p></dd>
 </dl>
+
 
 <hr size="6">
 <a name="NOD122"></a>
@@ -1512,6 +1520,7 @@ invoking an editor.
 </tr></table>
 <h3 class="appendixsubsec"> A.8.2 commit examples </h3>
 
+
 <hr size="6">
 <a name="SEC128"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1552,6 +1561,7 @@ $ cd product_module
 [[ hack away ]]
 $ cvs commit
 </pre></td></tr></table>
+
 <p>This works automatically since the `<samp>-r</samp>' option is
 sticky.
 </p><hr size="6">
@@ -1600,6 +1610,7 @@ automatically commit to the correct branch, because the
 $ cvs tag -b EXPR1
 $ cvs commit -r EXPR1
 </pre></td></tr></table>
+
 <p>but then, only those files that were changed by you
 will have the `<samp>-r EXPR1</samp>' sticky flag.  If you hack
 away, and commit without specifying the `<samp>-r EXPR1</samp>'
@@ -2501,6 +2512,7 @@ See section <a href="#SEC123">checkout options</a>, for complete details on how
 </p></dd>
 </dl>
 
+
 <hr size="6">
 <a name="NOD135"></a>
 <a name="SEC137"></a>
@@ -2622,6 +2634,7 @@ which you may specify in combination.
 </p></dd>
 </dl>
 
+
 <p>One of four record types may result from an update:
 </p><dl compact="compact">
 <dt><code> C
@@ -2643,6 +2656,7 @@ detected (requiring manual merging).
 update (because it was gone from the repository).
 </p></dd>
 </dl>
+
 
 <p>One of three record types results from commit:
 </p><dl compact="compact">
@@ -2739,6 +2753,7 @@ time zone instead of UTC.
 </p></dd>
 </dl>
 
+
 <hr size="6">
 <a name="NOD137"></a>
 <a name="SEC139"></a>
@@ -2759,6 +2774,7 @@ time zone instead of UTC.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="appendixsec"> A.12 import--Import sources into CVS, using vendor branches </h2>
+
 
 <ul>
 <li><p>

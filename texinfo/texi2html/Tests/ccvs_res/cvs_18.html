@@ -121,7 +121,8 @@ contains a directory called `<tt>first-dir</tt>', which
 contains two files, `<tt>file1</tt>' and `<tt>file2</tt>', and a
 directory `<tt>sdir</tt>'.  `<tt>first-dir/sdir</tt>' contains
 a file `<tt>sfile</tt>'.
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC159">C.1.1 Alias modules</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The simplest kind of module</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC160">C.1.2 Regular modules</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -174,11 +175,13 @@ explicitly in the <small>CVS</small> arguments.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 amodule -a first-dir
 </pre></td></tr></table>
+
 <p>then the following two commands are equivalent:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs co amodule
 $ cvs co first-dir
 </pre></td></tr></table>
+
 <p>and they each would provide output such as:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs checkout: Updating first-dir
@@ -228,6 +231,7 @@ levels.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 regmodule first-dir
 </pre></td></tr></table>
+
 <p>then regmodule will contain the files from first-dir:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs co regmodule
@@ -245,6 +249,7 @@ an example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 regfiles first-dir/sdir sfile
 </pre></td></tr></table>
+
 <p>With this definition, getting the regfiles module
 will create a single working directory
 `<tt>regfiles</tt>' containing the file listed, which
@@ -287,6 +292,7 @@ example, if modules contains
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ampermod &amp;first-dir
 </pre></td></tr></table>
+
 <p>then a checkout will create an <code>ampermod</code> directory
 which contains a directory called <code>first-dir</code>,
 which in turns contains all the directories and files
@@ -294,6 +300,7 @@ which live there.  For example, the command
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs co ampermod
 </pre></td></tr></table>
+
 <p>will create the following files:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ampermod/first-dir/file1
@@ -315,7 +322,8 @@ $
 </pre></td></tr></table>
 <p>Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD160"></a>
 <a name="SEC162"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -343,6 +351,7 @@ before the name of each directory to be excluded.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 exmodule -a !first-dir/sdir first-dir
 </pre></td></tr></table>
+
 <p>then checking out the module `<samp>exmodule</samp>' will check
 out everything in `<samp>first-dir</samp>' except any files in
 the subdirectory `<samp>first-dir/sdir</samp>'.
@@ -424,7 +433,8 @@ that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-d
 
 <p>You should also see see section <a href="#SEC164">How the modules file &quot;program options&quot; programs are run</a> about how the
 &quot;program options&quot; programs are run.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD162"></a>
 <a name="SEC164"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -445,6 +455,7 @@ that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-d
 </tr></table>
 <h3 class="appendixsubsec"> C.1.6 How the modules file &quot;program options&quot; programs are run </h3>
 
+
 <p>For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
 </p><p>If using remote access methods (pserver, ext, etc.),
@@ -456,7 +467,8 @@ the program will be executed from the newly checked-out tree, if
 found there, or alternatively searched for in the path if not.
 </p><p>The programs are all run after the operation has effectively
 completed.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD163"></a>
 <a name="SEC165"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -477,12 +489,14 @@ completed.
 </tr></table>
 <h2 class="appendixsec"> C.2 The cvswrappers file </h2>
 
+
 <p>Wrappers refers to a <small>CVS</small> feature which lets you
 control certain settings based on the name of the file
 which is being operated on.  The settings are `<samp>-k</samp>'
 for binary files, and `<samp>-m</samp>' for nonmergeable text
 files.
-</p><p>The `<samp>-m</samp>' option
+</p>
+<p>The `<samp>-m</samp>' option
 specifies the merge methodology that should be used when
 a non-binary file is updated.  <code>MERGE</code> means the usual
 <small>CVS</small> behavior: try to merge the files.  <code>COPY</code>
@@ -511,12 +525,14 @@ where option is one of
 
 and value is a single-quote delimited value.
 </pre></td></tr></table>
+
 <p>For example, the following command imports a
 directory, treating files whose name ends in
 `<samp>.exe</samp>' as binary:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
 </pre></td></tr></table>
+
 <hr size="6">
 <a name="NOD164"></a>
 <a name="SEC166"></a>
@@ -613,6 +629,7 @@ imagination is the limit!
 </tr></table>
 <h3 class="appendixsubsec"> C.3.1 The common syntax </h3>
 
+
 <p>The administrative files such as `<tt>commitinfo</tt>',
 `<tt>loginfo</tt>', `<tt>rcsinfo</tt>', `<tt>verifymsg</tt>', etc.,
 all have a common format.  The purpose of the files are
@@ -630,6 +647,7 @@ A whitespace separator--one or more spaces and/or tabs.
 A file name or command-line template.
 </p></li></ul>
 
+
 <p>Blank lines are ignored.  Lines that start with the
 character `<samp>#</samp>' are treated as comments.  Long lines
 unfortunately can <em>not</em> be broken in two parts in
@@ -637,7 +655,8 @@ any way.
 </p><p>The first regular expression that matches the current
 directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD166"></a>
 <a name="SEC168"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -703,7 +722,8 @@ committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
 message, and command line options specified, is not available
 to the command.
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="NOD167"></a>
 <a name="SEC169"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -836,6 +856,8 @@ fi
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 RereadLogAfterVerify=always
 </pre></td></tr></table>
+
+
 <hr size="6">
 <a name="NOD168"></a>
 <a name="SEC170"></a>
@@ -1123,6 +1145,7 @@ like this:
 </tr></table>
 <h4 class="appendixsubsubsec"> C.3.5.2 Keeping a checked out copy </h4>
 
+
 <p>It is often useful to maintain a directory tree which
 contains files which correspond to the latest version
 in the repository.  For example, other developers might
@@ -1341,6 +1364,7 @@ message such as:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
+
 <p>and the checked out copy in the `<tt>CVSROOT</tt>'
 directory should be updated.
 </p><p>Note that listing `<tt>passwd</tt>' (see section <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>) in `<tt>checkoutlist</tt>' is not
@@ -1488,6 +1512,7 @@ as
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs -s TESTDIR=/work/local/tests
 </pre></td></tr></table>
+
 <p>and the
 administrative file contains <code>sh
 ${=TESTDIR}/runtests</code>, then that string is expanded
@@ -1543,6 +1568,7 @@ Do not confuse this with the internal variable of the same name.
 </tr></table>
 <h2 class="appendixsec"> C.9 The CVSROOT/config configuration file </h2>
 
+
 <p>The administrative file `<tt>config</tt>' contains various
 miscellaneous settings which affect the behavior of
 <small>CVS</small>.  The syntax is slightly different from the
@@ -1574,7 +1600,8 @@ for users in the system's user database if not found in
 pserver users must exist in `<tt>CVSROOT/passwd</tt>'.
 The default is `<samp>yes</samp>'.  For more on pserver, see
 <a href="cvs_2.html#SEC29">Direct connection with password authentication</a>.
-</p><a name="IDX286"></a>
+</p>
+<a name="IDX286"></a>
 </dd>
 <dt><code> TopLevelAdmin=<var>value</var>
 </code></dt>

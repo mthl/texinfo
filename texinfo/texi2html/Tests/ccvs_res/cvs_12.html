@@ -59,6 +59,7 @@ ul.toc {list-style: none}
 </tr></table>
 <h1 class="chapter"> 12. Keyword substitution </h1>
 
+
 <p>As long as you edit source files inside a working
 directory you can always find out the state of
 your files via `<samp>cvs status</samp>' and `<samp>cvs log</samp>'.
@@ -103,6 +104,7 @@ a new revision of the file.
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 12.1 Keyword List </h2>
+
 
 <p>This is a list of the keywords:
 </p><dl compact="compact">
@@ -184,6 +186,7 @@ file contains:
    *
    */
 </pre></td></tr></table>
+
 <p>then additional lines which are added when expanding
 the <code>$Log</code> keyword will be preceded by `<samp>   * </samp>'.
 Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
@@ -294,7 +297,8 @@ Or some C compilers may provide a <code>#pragma ident</code>
 directive.  Or a document management system might
 provide a way to pass a string through to generated
 files.
-</p><a name="IDX195"></a>
+</p>
+<a name="IDX195"></a>
 <p>The <code>ident</code> command (which is part of the <small>RCS</small>
 package) can be used to extract keywords and their
 values from a file.  This can be handy for text files,

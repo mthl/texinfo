@@ -1,4 +1,6 @@
 
+
+
 @node first before top, Top, ,(dir)
 @cindex first before top
 @printindex cp
@@ -14,6 +16,8 @@ in first node
 node in menu before top text
 
 @cindex printindex node in menu before top
+
+
 @node Top, ,first before top
 @cindex entry a
 
@@ -54,6 +58,7 @@ Text and then index entries
 @cindex something
 @findex somewhere
 @cindex another
+
 @node a node, another, ,second
 @cindex entry after printindex
 
@@ -61,5 +66,7 @@ Text and then index entries
 
 @findex a function
 @cindex a concept a node
+
 @printindex cp
+
 

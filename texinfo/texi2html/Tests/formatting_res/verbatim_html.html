@@ -94,8 +94,12 @@ bidule
 </p><p>@unknown2{ first paragraph
  </p><p>second paragraph
  </p><p>third}
-</p><p>Unknown thing @thing{}
-</p><p>A list with bullet
+</p>
+
+<p>Unknown thing @thing{}
+</p>
+
+<p>A list with bullet
 Before itemize, in that case @bullet isn'right, one needs @bullet{} (in info) </p><ul>
 <li><p> on the same line than item
 some text
@@ -122,6 +126,7 @@ of line.
 </p><pre class="verbatim">verbatim @samp{item}
 
 </pre>
+
 <p>Now html  <b>
 some html </b> 
 bidule ignored
@@ -133,6 +138,7 @@ some html </b>
 Some text one the line following @end html
 </p><p>And html on it's own line
 </p><tt> an html tt</tt>
+
 
 <p>A sc: <small>IEEE</small>, and another one in example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
@@ -149,7 +155,8 @@ Text on the line following ifnothtml.
 Text on the line following ifnothtml.
 </p><p>Text on the line before ifnothtml,
 Text on the line following empty ifnothtml
-</p><p>TeX has problems with the ftable.
+</p>
+<p>TeX has problems with the ftable.
 </p><p>an ftable on same line </p><dl compact="compact">
 <dt>* fun1
 <a name="IDX1"></a>
@@ -215,7 +222,9 @@ Now verb delimited with *, with an empty line, a comment and @samp:
 verb @c comment
 </tt> </p><p><tt>and samp @samp{text }
 </tt>
-</p><hr size="6">
+</p>
+
+<hr size="6">
 <a name="NOD3"></a>
 <a name="SEC2"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -245,7 +254,8 @@ in that case in info. tex doesn't like the paragraph break in the ref
 <a name="DOCF3" href="#FOOT3">(3)</a>
 </p><p>A footnote with an example
 <a name="DOCF4" href="#FOOT4">(4)</a>
-</p><p>Some @verbatim, @verb and @ignore within an xref, very hard for TeX:
+</p>
+<p>Some @verbatim, @verb and @ignore within an xref, very hard for TeX:
 See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within an xref </pre>and now verb delimited with * with an empty line a comment and @samp <tt>with verb @c comment and samp @samp{text } next line </tt> last ignored sentence </a>.
 </p><p>See section <a href="#SEC1">no verb</a>.
 </p><hr size="6">
@@ -301,6 +311,7 @@ the example
 before end example  </pre></td></tr></table>
 <p>after end example
 </p>
+
 
 <hr size="6">
 <a name="SEC_Foot"></a>

@@ -15,6 +15,7 @@ Some text.
 
 @end example
 
+
 @section a section
 
 Node text
@@ -37,8 +38,10 @@ Multitable not closed with item
 Multitable not closed
 @multitable {r} {t}
 
+
 @section a section
 @deffn truc bidule machin
 @deffnx truc chose args
 @defvar type1 var bidule
+
 

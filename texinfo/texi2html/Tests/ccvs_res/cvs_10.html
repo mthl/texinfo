@@ -91,7 +91,8 @@ enforcing rules like reserved checkouts do.
 </p><p>The rest of this chapter describes how these various
 models work, and some of the issues involved in
 choosing between them.
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC84">10.1 File status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A file can be in several states</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC85">10.2 Bringing a file up to date</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -307,6 +308,7 @@ void main()
     exit(nerr == 0 ? 0 : 1);
 }
 </pre></td></tr></table>
+
 <p>Revision 1.6 of `<tt>driver.c</tt>' contains this:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 #include &lt;stdio.h&gt;
@@ -327,6 +329,7 @@ int main(int argc,
     exit(!!nerr);
 }
 </pre></td></tr></table>
+
 <p>Your working copy of `<tt>driver.c</tt>', based on revision
 1.4, contains this before you run `<samp>cvs update</samp>':
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -344,6 +347,7 @@ void main()
     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 </pre></td></tr></table>
+
 <p>You run `<samp>cvs update</samp>':
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update driver.c
@@ -355,6 +359,7 @@ rcsmerge warning: overlaps during merge
 cvs update: conflicts found in driver.c
 C driver.c
 </pre></td></tr></table>
+
 <a name="IDX148"></a>
 <p><small>CVS</small> tells you that there were some conflicts.
 Your original working file is saved unmodified in
@@ -385,11 +390,13 @@ int main(int argc,
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
 }
 </pre></td></tr></table>
+
 <a name="IDX149"></a>
 <a name="IDX150"></a>
 <a name="IDX151"></a>
 <a name="IDX152"></a>
 <a name="IDX153"></a>
+
 <p>Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
 `<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>', `<samp>=======</samp>' and `<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>'.
@@ -418,6 +425,7 @@ int main(int argc,
     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 </pre></td></tr></table>
+
 <p>You can now go ahead and commit this as revision 1.7.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
@@ -529,6 +537,7 @@ then an update by someone else will either get all the
 changes, or none of them.
 </p></blockquote>
 
+
 <p>but <small>CVS</small> does <em>not</em> have this property.  For
 example, given the files
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
@@ -537,10 +546,12 @@ a/two.c
 b/three.c
 b/four.c
 </pre></td></tr></table>
+
 <p>if someone runs
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 cvs ci a/two.c b/three.c
 </pre></td></tr></table>
+
 <p>and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
 the change to `<tt>b/three.c</tt>' and not the change to
@@ -583,7 +594,8 @@ edit</code> (not <code>chmod</code>) to make files read-write to
 edit them, and <code>cvs release</code> (not <code>rm</code>) to
 discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC90">10.6.1 Telling CVS to watch certain files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC91">10.6.2 Telling CVS to notify you</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -728,6 +740,7 @@ omitted, the action defaults to <code>all</code>.
 <code>cvs watch on</code>.
 </p></dd></dl>
 
+
 <a name="IDX169"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs watch remove</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small>
@@ -755,6 +768,7 @@ single line:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 ALL mail %s -s &quot;CVS notification&quot;
 </pre></td></tr></table>
+
 <p>This causes users to be notified by electronic mail.
 </p><a name="IDX172"></a>
 <p>Note that if you set this up in the straightforward
@@ -820,7 +834,8 @@ user on <var>files</var>; <small>CVS</small> will remove the watch when <var>fil
 receive notifications, she should specify <code>-a none</code>.
 </p><p>The <var>files</var> and the options are processed as for the <code>cvs
 watch</code> commands.
-</p></dd></dl>
+</p>
+</dd></dl>
 
 <p>Normally when you are done with a set of changes, you
 use the <code>cvs commit</code> command, which checks in your
@@ -888,6 +903,7 @@ includes the files being watched, and the mail address of each watcher.
 <code>cvs watch</code> commands.
 </p></dd></dl>
 
+
 <a name="IDX180"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs editors</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
@@ -932,6 +948,7 @@ following (all on one line):
 cvs update: cannot open CVS/Entries for reading:
 No such file or directory
 </pre></td></tr></table>
+
 <p>and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of <small>CVS</small>
 which use that repository in local or server mode.  If

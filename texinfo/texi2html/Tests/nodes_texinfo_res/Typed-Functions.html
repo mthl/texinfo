@@ -95,13 +95,15 @@ typed.  The <code>@deftypefn</code> command is written at the beginning of
 a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
 particular entity, and its arguments, if any.
-</p><p>For example,
+</p>
+<p>For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
 ...
 @end deftypefn
 </pre></td></tr></table>
+
 <p>(where the text before the &quot;<small class="dots">...</small>&quot;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
@@ -124,13 +126,15 @@ above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.
 <var>body-of-description</var>
 @end deftypefn
 </pre></td></tr></table>
+
 <p>Note that if the <var>category</var> or <var>data type</var> is more than one
 word then it must be enclosed in braces to make it a single argument.
 </p><p>If you are describing a procedure in a language that has packages,
 such as Ada, you might consider using <code>@deftypefn</code> in a manner
 somewhat contrary to the convention described in the preceding
 paragraphs.
-</p><p>For example:
+</p>
+<p>For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypefn stacks private push
         (@var{s}:in out stack;
@@ -138,6 +142,7 @@ paragraphs.
 ...
 @end deftypefn
 </pre></td></tr></table>
+
 <p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
 would be a single line in a real Texinfo file.)
 </p><p>In this instance, the procedure is classified as belonging to the
@@ -153,12 +158,14 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
 `<samp>@deftypefn Function <small class="dots">...</small></samp>'.
-</p><p>Thus,
+</p>
+<p>Thus,
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
 @deftypefun int foobar (int @var{foo}, float @var{bar})
 ...
 @end deftypefun
 </pre></td></tr></table>
+
 <p>produces the following in Info:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Function: int foobar (int FOO, float BAR)
@@ -174,6 +181,7 @@ for functions in typed languages.  The command is equivalent to
 <var>name</var>.
 </p></dd>
 </dl>
+
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

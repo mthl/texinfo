@@ -179,6 +179,7 @@ into the main trunk, and tell you to use `<samp>checkout -j</samp>' to do so:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
 </pre></td></tr></table>
+
 <p>The above command will check out the latest revision of
 `<samp>wdiff</samp>', merging the changes made on the vendor branch `<samp>FSF_DIST</samp>'
 since yesterday into the working copy.  If any conflicts arise during
@@ -188,6 +189,7 @@ a date on the branch as suggested above:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
 </pre></td></tr></table>
+
 <p>The reason this is better is that
 using a date, as suggested above, assumes that you do
 not import more than one release of a product per day.
@@ -227,6 +229,7 @@ you would type:
 $ cd ~/work.d/wdiff
 $ cvs admin -bWDIFF .
 </pre></td></tr></table>
+
 <p>You must specify the `<samp>-bWDIFF</samp>' without any space
 after the `<samp>-b</samp>'.  See section <a href="cvs_16.html#SEC121">admin options</a>.
 </p><hr size="6">
@@ -343,12 +346,14 @@ example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs import -b 1.1.3 dir RED RED_1-0
 </pre></td></tr></table>
+
 <p>Be careful; this kind of mismatch is sure to sow
 confusion or worse.  I can't think of a useful purpose
 for the ability to specify a mismatch here, but if you
 discover such a use, don't.  <small>CVS</small> is likely to make this
 an error in some future release.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC105" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs_14.html#SEC112" title="Next chapter"> &gt;&gt; </a>]</td>

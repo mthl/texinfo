@@ -144,6 +144,7 @@ example, assuming you're in a working copy:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs tag -b rel-1-0-patches
 </pre></td></tr></table>
+
 <p>This splits off a branch based on the current revisions
 in the working copy, assigning that branch the name
 `<samp>rel-1-0-patches</samp>'.
@@ -209,6 +210,7 @@ it to a given branch with `<samp>update -r</samp>':
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update -r rel-1-0-patches tc
 </pre></td></tr></table>
+
 <p>or equivalently:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 $ cd tc
@@ -336,6 +338,8 @@ Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
                     +---------+    +---------+    +---------+
 
 </pre></td></tr></table>
+
+
 <p>The exact details of how the branch number is
 constructed is not something you normally need to be
 concerned about, but here is how it works: When
@@ -366,6 +370,7 @@ special meaning.  See section <a href="cvs_13.html#SEC105">Tracking third-party 
 <td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 5.5 Magic branch numbers </h2>
+
 
 <p>This section describes a <small>CVS</small> feature called
 <em>magic branches</em>.  For most purposes, you need not
@@ -446,6 +451,7 @@ newest revision on that branch into your working copy.
 Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                     +---------+    +---------+
 </pre></td></tr></table>
+
 <p>The branch 1.2.2 has been given the tag (symbolic name) `<samp>R1fix</samp>'.  The
 following example assumes that the module `<samp>mod</samp>' contains only one
 file, `<tt>m.c</tt>'.
@@ -506,6 +512,7 @@ like this:
 Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                     +---------+    +---------+
 </pre></td></tr></table>
+
 <p>where the starred line represents the merge from the
 `<samp>R1fix</samp>' branch to the main trunk, as just
 discussed.
@@ -521,6 +528,7 @@ discussed.
 Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
                     +---------+    +---------+    +---------+
 </pre></td></tr></table>
+
 <p>and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
 R1fix m.c</code> command again, <small>CVS</small> will attempt to
@@ -576,6 +584,7 @@ between any two revisions into your working file.
 <table><tr><td>&nbsp;</td><td><pre class="example">
 $ cvs update -j 1.5 -j 1.3 backend.c
 </pre></td></tr></table>
+
 <p>will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
 </p><p>If you try to use this option when operating on
@@ -693,6 +702,7 @@ spurious conflicts.
 ! 1.1 !----! 1.2 !
 +-----+    +-----+
 </pre></td></tr></table>
+
 <p>and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
@@ -749,7 +759,8 @@ used.  In particular, this is a problem if the mode had
 been `<samp>-kb</samp>' for a binary file.  Therefore, if your
 repository contains binary files, you will need to deal
 with the conflicts rather than using `<samp>-kk</samp>'.
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC54" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs_6.html#SEC65" title="Next chapter"> &gt;&gt; </a>]</td>

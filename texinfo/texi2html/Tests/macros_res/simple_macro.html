@@ -122,6 +122,7 @@ and a last one on another line \arg\
 and a last in another paragraph
 @end macro
 </pre></td></tr></table>
+
 <p>Calling
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro2 { arg, comma \, }
@@ -146,7 +147,9 @@ and another one on another line   arg,  comma \,
 and another one on another line arg, comma \,
 </p><p>and a last in another paragraph
 </p><p>==================================
-</p><p>now @set comma ,  
+</p>
+
+<p>now @set comma ,  
 </p><p>@set flagab @ab 
 </p><p>the values:
 </p><p>======================================
@@ -173,12 +176,14 @@ arguments parsing):
 </p><pre class="verbatim">comma: @value{comma}
 @macro1{ bidule, truc}
 </pre>
+
 <p>Define macro
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @macro testvaluebody { arg }
 result: @emph{\@value{bodyarg}\  } 
 @end macro
 </pre></td></tr></table>
+
 <p>==================================
 </p><p>result: <em>\\arg\   </em>
 </p><p>-----------------------
@@ -192,6 +197,7 @@ when the body is expanded; it is kept, but the second \ isn't):
 result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
 @end macro
 </pre></td></tr></table>
+
 <p>==================================
 </p><p>result: <em>macro_arg1</em> the \the thearg \thearg with value \thearg 
 </p><p>-----------------------

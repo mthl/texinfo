@@ -1,4 +1,6 @@
 
+
+
 @node Top,First node,(dir)
 @top
 @menu
@@ -9,6 +11,8 @@
 @chapter first node chapter
 
 @cindex elem
+
+
 @node Second node
 @chapter second
 
@@ -30,6 +34,7 @@ end of the function
 @node node within defun menu
 @section the node is within menu
 
+
 @table @bullet
 @item item
 @end table
@@ -40,6 +45,7 @@ an example
 @end example
 
 @cindex other entry
+
 @example
 @html
 
@@ -69,6 +75,7 @@ after example and now yes---now and ``so''.
 
 is the text
 flushed right ?
+
 
 @end flushright
 
@@ -190,6 +197,7 @@ explanation
 @unnumberedsubsec
 @node other node
 @unnumberedsubsec
+
 
 
 

@@ -100,12 +100,14 @@ entity is a variable.
 and is followed on the same line by the category of the entity
 being described, the data type, and the name of this particular
 entity.
-</p><p>For example:
+</p>
+<p>For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevr {Global Flag} int enable
 ...
 @end deftypevr
 </pre></td></tr></table>
+
 <p>produces the following in Info:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Global Flag: int enable
@@ -126,17 +128,20 @@ entity.
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
 to `<samp>@deftypevr Variable <small class="dots">...</small></samp>'.
-</p><p>For example:
+</p>
+<p>For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevar int fubar
 ...
 @end deftypevar
 </pre></td></tr></table>
+
 <p>produces the following in Info:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 -- Variable: int fubar
 ...
 </pre></td></tr></table>
+
 <p>The template is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">
 @deftypevar <var>data-type</var> <var>name</var>

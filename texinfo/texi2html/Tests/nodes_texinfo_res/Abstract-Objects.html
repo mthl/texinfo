@@ -105,6 +105,7 @@ name.  Thus,
 ...
 @end defcv
 </pre></td></tr></table>
+
 <p>illustrates how you would write the first line of a definition of the
 <code>border-pattern</code> class option of the class <code>Window</code>.
 </p><p>The template is:
@@ -199,12 +200,14 @@ subclasses.
 The command is written at the beginning of a line and is followed by
 the name of the class of the method, the name of the method, and its
 arguments, if any.
-</p><p>For example:
+</p>
+<p>For example:
 </p><table><tr><td>&nbsp;</td><td><pre class="example"> 
 @defmethod <code>bar-class</code> bar-method argument
 ...
 @end defmethod
 </pre></td></tr></table>
+
 <p>illustrates the definition for a method called <code>bar-method</code> of
 the class <code>bar-class</code>.  The method takes an argument.
 </p><p>The template is:
@@ -215,7 +218,8 @@ the class <code>bar-class</code>.  The method takes an argument.
 </pre></td></tr></table>
 <p><code>@defmethod</code> creates an entry, such as `<code>bar-method</code> on
 <code>bar-class</code>', in the index of functions.
-</p></dd>
+</p>
+</dd>
 <dt><code> @deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
 <dd><p><a name="IDX284"></a>
@@ -225,6 +229,7 @@ to the <code>@defmethod</code> command with the addition of the
 <var>data-type</var> parameter to specify the return type of the method.
 </p></dd>
 </dl>
+
 
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

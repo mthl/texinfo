@@ -261,7 +261,8 @@ cvs commit: Committing .
 <p>If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 $ ls
 CVS   ja.h  oj.c
 $ rm oj.c
@@ -384,6 +385,7 @@ directory is even harder.  See section <a href="#SEC74">Moving and renaming dire
 </tr></table>
 <h3 class="subsection"> 7.4.1 The Normal way to Rename </h3>
 
+
 <p>The normal way to move a file is to copy <var>old</var> to
 <var>new</var>, and then issue the normal <small>CVS</small> commands
 to remove <var>old</var> from the repository, and add
@@ -433,6 +435,7 @@ before trying it out!
 $ cd $CVSROOT/<var>dir</var>
 $ mv <var>old</var>,v <var>new</var>,v
 </pre></td></tr></table>
+
 <p>Advantages:
 </p><ul>
 <li><p>
@@ -440,6 +443,7 @@ The log of changes is maintained intact.
 </p></li><li><p>
 The revision numbers are not affected.
 </p></li></ul>
+
 
 <p>Disadvantages:
 </p><ul>
@@ -496,7 +500,8 @@ $ cvs tag -d <var>tag2</var> <var>new</var>
 </pre></td></tr></table>
 <p>By removing the tags you will be able to check out old
 revisions.
-</p><p>Advantages:
+</p>
+<p>Advantages:
 </p><ul>
 <li><p>
 Checking out old revisions works correctly, as long as
@@ -507,6 +512,7 @@ The log of changes is maintained intact.
 </p></li><li><p>
 The revision numbers are not affected.
 </p></li></ul>
+
 
 <p>Disadvantages:
 </p><ul>
