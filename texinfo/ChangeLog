@@ -1,5 +1,8 @@
 2004-10-17  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/node.c (cm_node): don't output <br> after the
+		navigation line, it's apparently just extra space.
+
 	* configure.ac: Clean environment for native configure.
 	From: Mark Fortescue <mark@mtfhpc.demon.co.uk>,
 	17 Oct 2004 19:09:53 +0100.

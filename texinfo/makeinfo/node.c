@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.22 2004-08-31 12:37:54 karl Exp $
+   $Id: node.c,v 1.23 2004-10-18 01:04:27 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -984,7 +984,7 @@ cm_node (void)
             }
           /* html fixxme: we want a `top' or `contents' link here.  */
 
-          add_word_args ("\n%s<br>\n", splitting ? "<hr>" : "");
+          add_word_args ("\n%s\n", splitting ? "<hr>" : "");
       	  add_word ("</div>\n");
         }
     }
