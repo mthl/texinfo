@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.40 2005-01-28 14:41:58 karl Exp $
+# $Id: texi2dvi,v 1.41 2005-02-09 19:14:52 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.40 $'
+rcs_revision='$Revision: 1.41 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -141,6 +141,15 @@ findprog ()
   $foundprog
 }
 
+# Report some information.
+report ()
+{
+  for i in "$@"
+  do
+    echo >&2 "$0: $i"
+  done
+}
+
 # Report some verbose information.
 verbose ()
 {
@@ -150,8 +159,10 @@ verbose ()
 # Report an error and exit with failure.
 fatal ()
 {
-  echo >&2 "$0: $*"
-  exit 1
+  s=$1
+  shift
+  report "$@"
+  exit $s
 }
 
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
@@ -224,9 +235,9 @@ while test x"$1" != x"$arg_sep"; do
       done
       break;;
     -*)
-      echo "$0: Unknown or ambiguous option \`$1'." >&2
-      echo "$0: Try \`--help' for more information." >&2
-      exit 1;;
+      fatal 1 "Unknown or ambiguous option \`$1'." \
+              "Try \`--help' for more information."
+      ;;
     *) set dummy ${1+"$@"} "$1"; shift;;
    esac
    shift
@@ -237,15 +248,12 @@ shift
 # Interpret remaining command line args as filenames.
 case $# in
  0)
-  echo "$0: Missing file arguments." >&2
-  echo "$0: Try \`--help' for more information." >&2
-  exit 2
+  fatal 2 "Missing file arguments." "Try \`--help' for more information."
   ;;
  1) ;;
  *)
   if test -n "$oname"; then
-    echo "$0: Can't use option \`--output' with more than one argument." >&2
-    exit 2
+    fatal 2 "Can't use option \`--output' with more than one argument."
   fi
   ;;
 esac
@@ -393,6 +401,41 @@ absolute_filenames ()
   echo "$_res"
 }
 
+
+# run_tex ()
+# ----------
+# Run TeX as "$tex $tex_args $filename_input", taking care of errors
+# and logs.
+run_tex ()
+{
+  # Note that this will be used via an eval: quote properly.
+  cmd=$tex
+
+  # If possible, make TeX report error locations in GNU format.
+  tex_args=
+  case $tex_help in
+    *file-line-error*) cmd="$cmd --file-line-error";;
+  esac
+
+  # Tell TeX to be batch if requested.
+  if $batch; then
+    # \batchmode does not show terminal output at all, so we don't
+    # want that.  And even in batch mode, TeX insists on having input
+    # from the user.  Close its stdin to make it impossible.
+    cmd="$cmd </dev/null '${escape}nonstopmode' '${escape}input'"
+  fi
+
+  cmd="$cmd '$filename_input'"
+
+  verbose "Running $cmd ..."
+  if eval "$cmd" >&5; then :; else
+    test "$clean" = t \
+        && cp "$filename_noext.log" "$orig_pwd"
+    fatal 1 "$tex exited with bad status, quitting." \
+            "see $filename_noext.log for errors."
+  fi
+}
+
 # File descriptor usage:
 # 0 standard input
 # 1 standard output (--verbose messages)
@@ -400,6 +443,7 @@ absolute_filenames ()
 # 3 some systems may open it to /dev/tty
 # 4 used on the Kubota Titan
 # 5 tools output (turned off by --quiet)
+# 6 tracing/debugging (set -x output, etc.)
 
 # Tools' output.  If quiet, discard, else redirect to the message flow.
 if test "$quiet" = t; then
@@ -432,7 +476,7 @@ for command_line_filename in ${1+"$@"}; do
   # prompt (assuming they're attending the terminal), this script won't
   # be able to find the right xref files and so forth.
   if test ! -r "$command_line_filename"; then
-    echo "$0: Could not read $command_line_filename, skipping." >&2
+    report "Could not read $command_line_filename, skipping."
     continue
   fi
 
@@ -557,7 +601,7 @@ for command_line_filename in ${1+"$@"}; do
 	if test $? != 0; then
 	  cat $tmpdir/txiversion.out
 	  cat $tmpdir/txiversion.err >&2
-	  fatal "texinfo.tex appears to be broken, quitting."
+	  fatal 1 "texinfo.tex appears to be broken, quitting."
         fi
 	eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' $tmpdir/txiversion.out`
         verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
@@ -576,16 +620,6 @@ for command_line_filename in ${1+"$@"}; do
   # Go to $tmpdir to try --help, since old versions that don't accept
   # --help will generate a texput.log.
   tex_help=`cd $tmpdir >/dev/null && $tex --help </dev/null 2>&1`
-
-  # If possible, make TeX report error locations in GNU format.
-  tex_args=
-  case $tex_help in
-    *file-line-error*) tex_args="$tex_args --file-line-error";;
-  esac
-
-  # Tell TeX to be batch if requested.  (\batchmode does not show
-  # terminal output at all, so we don't want that.)
-  $batch && tex_args="$tex_args ${escape}nonstopmode ${escape}input"
 
   # Expand macro commands in the original source file using Makeinfo.
   # Always use `end' footnote style, since the `separate' style
@@ -677,7 +711,7 @@ $textra" "$filename_input" >"$filename_xtr"
     then
       verbose "Running $bibtex $filename_noext ..."
       $bibtex "$filename_noext" >&5 ||
-        fatal "$bibtex exited with bad status, quitting."
+        fatal 1 "$bibtex exited with bad status, quitting."
     fi
 
     # What we'll run texindex on -- exclude non-index files.
@@ -699,20 +733,11 @@ $textra" "$filename_input" >"$filename_xtr"
     if test -n "$texindex" && test -n "$index_files"; then
       verbose "Running $texindex $index_files ..."
       $texindex $index_files 2>&5 1>&2 ||
-         fatal "$texindex exited with bad status, quitting."
+         fatal 1 "$texindex exited with bad status, quitting."
     fi
 
     # Finally, run TeX.
-    cmd="$tex $tex_args"
-    verbose "Running $cmd $filename_input ..."
-    if $cmd "$filename_input" >&5; then :; else
-      echo "$0: $tex exited with bad status, quitting." >&2
-      echo "$0: see $filename_noext.log for errors." >&2
-      test "$clean" = t \
-        && cp "$filename_noext.log" "$orig_pwd"
-      exit 1
-    fi
-
+    run_tex
 
     # Decide if looping again is needed.
     finished=t
@@ -765,16 +790,8 @@ $textra" "$filename_input" >"$filename_xtr"
   then
     verbose "Running $thumbpdf $filename_noext ..."
     $thumbpdf "$filename_noext" >&5 ||
-      fatal "$thumbpdf exited with bad status, quitting."
-
-    verbose "Running $cmd $filename_input..."
-    if $cmd "$filename_input" >&5; then :; else
-      echo "$0: $tex exited with bad status, quitting." >&2
-      echo "$0: see $filename_noext.log for errors." >&2
-      test "$clean" = t \
-	&& cp "$filename_noext.log" "$orig_pwd"
-      exit 1
-    fi
+      fatal 1 "$thumbpdf exited with bad status, quitting."
+    run_tex
   fi
 
 

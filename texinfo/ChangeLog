@@ -1,3 +1,12 @@
+2005-02-09  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (report): New.  Use it.
+	(fatal): Take the exit status as argument.
+	Use report.
+	(run_tex): New function to factor the two tex invocations.
+	Move the handling of tex arguments in here to improve locallity.
+	Enforce the batch mode by branching /dev/null to its stdin.
+
 2005-02-05  Per Bothner  <per@bothner.com>
 
 	* makeinfo/xml.c (docbook_element_list): Add two missing entries.
