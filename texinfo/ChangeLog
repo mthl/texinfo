@@ -1,5 +1,8 @@
 2005-01-20  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.5, doc/info.5: define and use .EX/.EE instead of
+		.RS/RE, to placate esr.
+
 	* util/texi2dvi (findprog): make sure test -x isn't returning true
 	for a directory.  From Stepan and others, 20 Jan 2005 12:35:08 +0100.
 
