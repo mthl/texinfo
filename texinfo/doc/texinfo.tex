@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-23.07}
+\def\texinfoversion{2003-11-23.13}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -2316,24 +2316,14 @@ where each line of input produces a line of output.}
 %   @multitable {Column 1 template} {Column 2 template} {Column 3 template}
 %   @item ...
 %   using the widest term desired in each column.
-%
-% For those who want to use more than one line's worth of words in
-% the preamble, break the line within one argument and it
-% will parse correctly, i.e.,
-%
-%     @multitable {Column 1 template} {Column 2 template} {Column 3
-%      template}
-% Not:
-%     @multitable {Column 1 template} {Column 2 template}
-%      {Column 3 template}
 
 % Each new table line starts with @item, each subsequent new column
 % starts with @tab. Empty columns may be produced by supplying @tab's
 % with nothing between them for as many times as empty columns are needed,
 % ie, @tab@tab@tab will produce two empty columns.
 
-% @item, @tab, @multitable or @end multitable do not need to be on their
-% own lines, but it will not hurt if they are.
+% @item, @tab do not need to be on their own lines, but it will not hurt
+% if they are.
 
 % Sample multitable:
 
