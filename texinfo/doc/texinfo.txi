@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
+@c $Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12723,8 +12723,15 @@ The @dfn{parameters} @var{param1}, @var{param2}, @dots{} correspond to
 arguments supplied when the macro is subsequently used in the document
 (described in the next section).
 
-For a macro to work with @TeX{}, @var{macroname} must consist entirely
-of letters: no digits, hyphens, underscores, or other special characters.
+@cindex Macro names, valid characters in
+@cindex Names of macros, valid characters of
+For a macro to work consistently with @TeX{}, @var{macroname} must
+consist entirely of letters: no digits, hyphens, underscores, or other
+special characters.  So, we recommend using only letters.  However,
+@command{makeinfo} will accept anything except @samp{@{@}_^=};
+@samp{_} and @samp{^} are excluded so that macros can be called in
+@code{@@math} mode without a following space
+(@pxref{math,,@code{@@math}}).
 
 If a macro needs no parameters, you can define it either with an empty
 list (@samp{@@macro foo @{@}}) or with no braces at all (@samp{@@macro
@@ -16846,7 +16853,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
+$Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16909,7 +16916,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
+@comment $Id: texinfo.txi,v 1.30 2003-02-11 13:27:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
