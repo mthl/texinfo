@@ -3926,7 +3926,16 @@ width0pt\relax} \fi
           \hangindent = \wd0 % zero if no section number
           \unhbox0 #3}%
   }%
-  \ifdim\parskip<10pt \nobreak\kern10pt\nobreak\kern-\parskip\fi \nobreak
+  % Add extra space after the heading -- either a line space or a
+  % paragraph space, whichever is more.  (Some people like to set
+  % \parskip to large values for some reason.)
+  \nobreak
+  \ifdim\parskip>\normalbaselineskip
+    \kern\parskip
+  \else
+    \kern\normalbaselineskip
+  \fi
+  \nobreak
 }
 
 
@@ -4260,7 +4269,7 @@ width0pt\relax} \fi
 % Make spacing and below environment symmetrical.  We use \parskip here
 % to help in doing that, since in @example-like environments \parskip
 % is reset to zero; thus the \afterenvbreak inserts no space -- but the
-% start of the next paragraph will insert \parskip
+% start of the next paragraph will insert \parskip.
 %
 \def\aboveenvbreak{{%
   \ifnum\lastpenalty < 10000
