@@ -1,3 +1,9 @@
+2004-11-06  Karl Berry  <karl@gnu.org>
+
+	* lib/Makefile.am (libtxi_a_SOURCES): add strdup.h.
+	Report from: Thomas Esser <te@dbs.uni-hannover.de>,
+	6 Nov 2004 18:11:51 +0100.
+
 2004-11-01  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/xref.c (cm_xref): don't include the external file name
