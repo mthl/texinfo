@@ -1,3 +1,8 @@
+2002-12-07    <karl@gnu.org>
+
+	* makeinfo/xml.c: use lowercase, allow more chars in id's.  From:
+	Jaime Davila <jdavila@engr.uconn.edu>, 6 Dec 2002 11:00:25 -0500.
+
 2002-12-05    <karl@gnu.org>
 
 	* util/dir-example: alphabetize make.
