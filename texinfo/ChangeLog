@@ -1,5 +1,7 @@
 2002-10-28    <karl@gnu.org>
 
+	* configure.ac: pretest version 4.2b.
+
 	* NEWS: mention Werner's fixes.
 
 2002-10-27  Werner Lemberg  <wl@gnu.org>
