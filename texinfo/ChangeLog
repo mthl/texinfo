@@ -1,3 +1,19 @@
+2002-09-27    <karl@gnu.org>
+
+	* install-sh: update from gnulib.
+
+	* makeinfo/insertion.c (handle_verbatim_environment): need to
+	quote & and <.
+	From: Philippe Martin <feloy@free.fr>, 18 Aug 2002 15:39:10 +0200.
+
+        2002-06-04  Eli Zaretskii  <eliz@is.elta.co.il>
+	* makeinfo/cmds.c (cm_exdent): Call start_paragraph to restore
+	previous indentation of text.  (exponent.tex test.)
+
+        2002-05-11  Eli Zaretskii  <eliz@is.elta.co.il>
+	* makeinfo/node.c (remember_node): If the argument FNAME is NULL,
+	as it happens for "Top", use the basename of current_output_filename.
+
 2002-09-26    <karl@gnu.org>
 
 	* lib/system.h [MIKTEX]: include gnu-miktex.h, define S_ISDIR.
@@ -17,7 +33,7 @@
 	least one byte for replen, otherwise things crash when MALLOC_CHECK_=2.
 	From: "Andreas Herrmann" <AHERRMAN@de.ibm.com>.
 
-	* lib/Makefile.am (lintxi_a_SOURCES): include xalloc.h.
+	* lib/Makefile.am (libtxi_a_SOURCES): include xalloc.h.
 
 	* doc/Makefile.am (EXTRA_DIST): skip macro.texi and userdoc.texi now.
 	(common_mandeps): new var.
