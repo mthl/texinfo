@@ -1,5 +1,5 @@
 \input texinfo    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.5 2003-02-19 13:32:54 karl Exp $
+@comment $Id: info-stnd.texi,v 1.6 2003-11-01 15:37:13 karl Exp $
 @comment %**start of header
 @setfilename info-stnd.info
 @include version-stnd.texi
@@ -235,17 +235,17 @@ Each node that Info visits will be output to @var{filename} instead of
 interactively viewed.  A value of @code{-} for @var{filename} specifies
 the standard output.
 
-@cindex colors in man pages
-@cindex ANSI escape sequences in man pages
+@cindex colors in documents
+@cindex ANSI escape sequences in documents
 @item --raw-escapes
+@itemx --no-raw-escapes
 @itemx -R
-Do not remove ANSI escape sequences from man pages.  Some versions of
+Do not remove ANSI escape sequences from documents.  Some versions of
 Groff, the GNU document formatter, produce man pages with ANSI escape
 sequences for bold, italics, and underlined characters, and for
-colorized text.  By default, Info removes those escape sequences
-before it displays the man page.  If your terminal supports these
-escapes, use @code{--raw-escapes} to let the terminal handle them and
-display the man pages with those attributes.
+colorized text.  By default, Info lets those escape sequences pass
+through directly to the terminal.  If your terminal does not support
+these escapes, use @code{--no-raw-escapes} to make Info remove them.
 
 @cindex replaying recorded keystrokes
 @item --restore=@var{dribble-file}

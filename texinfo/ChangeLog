@@ -1,3 +1,12 @@
+Sat Nov  1 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
+
+	* doc/texinfo.txi (Conditional Commands): Docbook text should
+		really use @ifdocbook.
+
+	* info/info.c (raw_escapes_p): 1 by default.
+	(long_options): new option no-raw-escapes.
+	* doc/info-stnd.texi (Invoking Info): document it.
+
 Fri Oct 31 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/xml.[ch]:

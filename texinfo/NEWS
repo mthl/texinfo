@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.65 2003-10-29 19:11:27 karl Exp $
+$Id: NEWS,v 1.66 2003-11-01 15:37:11 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -33,6 +33,9 @@ convenience, here's a url to one of the relevant sections:
   . @tex and @iftex code is executed inside a TeX group, so that any
     changes must be prefixed with \global resp. @global to be effective.
     (This change was actually made years ago, but never made it into the NEWS.)
+* info:
+  . by default, output ANSI terminal escape sequences as-is; new option
+    --no-raw-escapes overrides.
 * Distribution:
   . New translation: nb.
   . automake 1.7.8.
