@@ -110,5 +110,5 @@ texi2html: \
 	$(srcdir)/texi2html.init \
 	$(srcdir)/texi2html.pl
 
-# Do not create info files for distribution
-dist-info:
+
+

@@ -1959,7 +1959,7 @@ the resulting protected text @var{$protected_text}.
 various places, at the page footers, on the help page, for special 
 section headings, buttons alt text and so on. These strings are
 customizable. The string chosen depends on the language of the
-document (set by @longoption{lang}, @variable{$LANG} or 
+document (set by @longopt{lang}, @variable{$LANG} or 
 @code{@@documentlanguage}). This is the basis for internationalization
 as it allows for strings translations.
 
@@ -1984,7 +1984,7 @@ it means that the string will be expanded by @command{texi2html}. For
 example, if we have
 
 @example
-$LANGUAGES->@{'fr'} = @{
+$LANGUAGES->@{'fr'@} = @{
               'See %@{node_file_href@}' => 'Voir %@{node_file_href@}',
 @};
 @end example

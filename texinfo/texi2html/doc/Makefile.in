@@ -98,12 +98,6 @@ target_alias = @target_alias@
 
 #
 info_TEXINFOS = texi2html.texi
-texi2html_TEXINFOS = custhtml.texi custpage.texi \
-                     extfile.texi ifo.texi \
-                     initfile.texi options.texi \
-                     custhtml-header.htmltexi \
-                     reference.texi
-
 
 CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
              texi2html.ascii
@@ -133,8 +127,8 @@ PSS = texi2html.ps
 TEXINFOS = texi2html.texi
 DATA = $(html_DATA)
 
-DIST_COMMON = $(srcdir)/Makefile.in $(texi2html_TEXINFOS) Makefile.am \
-	TODO mdate-sh stamp-vti texinfo.tex version.texi
+DIST_COMMON = $(srcdir)/Makefile.in Makefile.am TODO mdate-sh stamp-vti \
+	texinfo.tex version.texi
 all: all-am
 
 .SUFFIXES:
@@ -159,8 +153,8 @@ Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.s
 	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
 	MAKEINFO='$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir)' \
 	$(TEXI2PDF) `test -f '$<' || echo '$(srcdir)/'`$<
-texi2html.info: texi2html.texi version.texi $(texi2html_TEXINFOS)
-texi2html.dvi: texi2html.texi version.texi $(texi2html_TEXINFOS)
+texi2html.info: texi2html.texi version.texi
+texi2html.dvi: texi2html.texi version.texi
 version.texi: @MAINTAINER_MODE_TRUE@ stamp-vti
 stamp-vti: texi2html.texi $(top_srcdir)/configure
 	@(dir=.; test -f ./texi2html.texi || dir=$(srcdir); \
@@ -205,6 +199,17 @@ uninstall-info-am:
 	     echo " rm -f $$relfile $$relfile-[0-9] $$relfile-[0-9][0-9] $$relfile_i[0-9] $$relfile_i[0-9][0-9])"; \
 	     rm -f $$relfile $$relfile-[0-9] $$relfile-[0-9][0-9] $$relfile_i[0-9] $$relfile_i[0-9][0-9]; \
 	   else :; fi); \
+	done
+
+dist-info: $(INFO_DEPS)
+	list='$(INFO_DEPS)'; \
+	for base in $$list; do \
+	  if test -f $$base; then d=.; else d=$(srcdir); fi; \
+	  for file in $$d/$$base*; do \
+	    relfile=`expr "$$file" : "$$d/\(.*\)"`; \
+	    test -f $(distdir)/$$relfile || \
+	      cp -p $$file $(distdir)/$$relfile; \
+	  done; \
 	done
 
 mostlyclean-aminfo:
@@ -396,8 +401,7 @@ uninstall-am: uninstall-htmlDATA uninstall-info-am
 
 all: info texi2html.html
 
-texi2html.html: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS) \
-		$(TEXI2HTML) Makefile
+texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML) Makefile
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(PERL) $(TEXI2HTML) -V $<
 
@@ -405,10 +409,6 @@ texi2html.pdf: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
 	TEXINPUTS=$(srcdir):$$TEXINPUTS \
 	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) --pdf $<
 
-# Do not create info files for distribution
-dist-info:
-
-#
 dvi: texi2html.dvi
 
 ps: texi2html.ps

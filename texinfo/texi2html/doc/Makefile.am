@@ -1,10 +1,5 @@
 #
 info_TEXINFOS = texi2html.texi
-texi2html_TEXINFOS = custhtml.texi custpage.texi \
-                     extfile.texi ifo.texi \
-                     initfile.texi options.texi \
-                     custhtml-header.htmltexi \
-                     reference.texi
 
 CLEANFILES = texi2html.ps texi2html.pdf texi2html.html \
              texi2html.ascii
@@ -22,8 +17,7 @@ MAINTAINERCLEANFILES = \
 
 all: info texi2html.html
 
-texi2html.html: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS) \
-		$(TEXI2HTML) Makefile
+texi2html.html: texi2html.texi $(srcdir)/version.texi $(TEXI2HTML) Makefile
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(PERL) $(TEXI2HTML) -V $<
 
@@ -31,10 +25,6 @@ texi2html.pdf: texi2html.texi $(srcdir)/version.texi $(texi2html_TEXINFOS)
 	TEXINPUTS=$(srcdir):$$TEXINPUTS \
 	  MAKEINFO='$(MAKEINFO) -I $(srcdir)' $(TEXI2DVI) --pdf $<
 
-# Do not create info files for distribution
-dist-info:
-
-#
 dvi: texi2html.dvi
 
 ps: texi2html.ps

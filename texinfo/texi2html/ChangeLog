@@ -1,3 +1,8 @@
+2003-10-28  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* doc/: remove unneeded .texi files, now included in texi2html.texi.
+	* Makefile.am, doc/Makefile.am: include info file in distribution.
+
 2003-10-26  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: support for @verbatiminclude. When split use the
