@@ -1,3 +1,9 @@
+2003-09-22  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\sectionheading): the space below a section
+	  heading should have fixed size; \nobreak after a \vskip is
+	  redundant.
+
 2003-09-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sectionheading): make space below be half of
