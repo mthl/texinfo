@@ -4,7 +4,8 @@ This file records noteworthy changes.
 * Many bug fixes.
 * The operation of the previously broken << (FastBack) and >> (FastForward)
   buttons has changed slightly.  FastBack now returns to the beginning of the
-  current chapter and FastBack now jumps to the beginning of the next chapter.
+  current chapter and FastForward now jumps to the beginning of the next
+  chapter.
 
 1.64 (July 3 2000)
 * Incorporated first  version of Texi2html Texinfo manual, authored by
