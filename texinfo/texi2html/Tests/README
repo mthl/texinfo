@@ -95,15 +95,16 @@ passed to test_texi. For example
 
 $./test.sh viper viper.texi "-split chapter"
 
-will run a test for viper.texin in the viper directory with option 
+will run a test for viper.texi in the viper directory with option 
 -split chapter
 
 
 Regenerating tests
 ------------------
 
-make regenerate copy all the *.html, *.2 and *.passfirst from the test 
-directories to the result directories (test directory with _res appended). 
+make regenerate copy all the *.html, *.2, *.passtexi and *.passfirst from 
+the test directories to the result directories (test directory with _res 
+appended). 
 This is usefull when the new result is the good result and you want to 
 avoid manually copying the good files to the result directory.
 

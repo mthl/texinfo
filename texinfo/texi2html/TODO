@@ -9,8 +9,6 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
   - xhtml with in line style
   - Singular manual style
 
-* bring deftypemethod, etc up-to-date
-
 * Fix `make distcheck'
 
 * document css classes, and have similar classes with makeinfo
