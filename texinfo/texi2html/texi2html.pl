@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.98 2004-01-19 15:22:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.99 2004-01-25 23:00:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -198,6 +198,7 @@ our @CSS_FILES;
 
 # customization variables
 our $ENCODING;
+our $DOCUMENT_ENCODING;
 our $MENU_PRE_STYLE;
 our $CENTER_IMAGE;
 our $EXAMPLE_INDENT_CELL;
@@ -238,6 +239,7 @@ our @CHAPTER_BUTTONS;
 our @MISC_BUTTONS;
 our @SECTION_BUTTONS;
 our @SECTION_FOOTER_BUTTONS;
+our @NODE_FOOTER_BUTTONS;
 
 # customization variables which may be guessed in the script
 #our $ADDRESS;
@@ -279,6 +281,8 @@ our $titlepage;
 our $css_lines;
 our $print_redirection_page;
 our $init_out;
+our $node_file_name;
+our $element_file_name;
 
 our $protect_text;
 our $anchor;
@@ -339,21 +343,26 @@ our %def_map;
 our %format_map;
 our %simple_map;
 our %simple_map_pre;
+our %simple_map_texi;
 our %style_map;
 our %style_map_pre;
+our %style_map_texi;
 our %paragraph_style;
 our %things_map;
 our %pre_map;
-our %utf8_map;
+our %texi_map;
+our %unicode_map;
+our %unicode_diacritical;
 our %ascii_character_map;
 our %ascii_simple_map;
 our %ascii_things_map;
+our %perl_charset_to_html;
 our %iso_symbols;
 our %to_skip;
 our %css_map;
 our %special_list_commands;
 our %accent_letters;
-our %utf8_accents;
+our %unicode_accents;
 our %special_accents;
 
 $toc_body                 = \&T2H_GPL_toc_body;
@@ -549,29 +558,42 @@ require "$ENV{T2H_HOME}/$translation_file"
         -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
 
 # @T2H_TRANSLATIONS_FILE@
-
-foreach my $hash (\%style_map, \%style_map_pre)
+my $index_name = -1;
+my @index_to_hash = ('style_map', 'style_map_pre', 'style_map_texi');
+foreach my $hash (\%style_map, \%style_map_pre, \%style_map_texi)
 {
+    $index_name++;
+    my $name = $index_to_hash[$index_name];
     foreach my $style (keys(%{$hash}))
     {
          next unless (ref($hash->{$style}) eq 'HASH');
          $hash->{$style}->{'args'} = ['normal'] if (!exists($hash->{$style}->{'args'}));
-         #$hash->{$style}->{'attribute'} = '' 
-         #   if (!exists($hash->{$style}->{'attribute'}) and
-         #       !exists($hash->{$style}->{'function'}) and
-         #       !exists($hash->{$style}->{'begin'}) and
-         #       !exists($hash->{$style}->{'end'}));
+         die "Bug: args not defined for $style in $name" if (!defined($hash->{$style}->{'args'}));
+#print STDERR "DEFAULT($name, $hash) add normal as arg for $style ($hash->{$style}), $hash->{$style}->{'args'}\n";
+    }
+}
+
+# @T2H_UNICODE_FILE@
+
+if ($0 =~ /\.pl$/)
+{
+    if ($] >= 5.008)
+    {
+        require "$ENV{T2H_HOME}/T2h_unicode.pm" 
+           if (-e "$ENV{T2H_HOME}/T2h_unicode.pm" && -r "$ENV{T2H_HOME}/T2h_unicode.pm");
+    }
+    else
+    {
+        require "$ENV{T2H_HOME}/T2h_nounicode.pm" 
+           if (-e "$ENV{T2H_HOME}/T2h_nounicode.pm" && -r "$ENV{T2H_HOME}/T2h_nounicode.pm");
     }
 }
 }
-
 our %value;
 our %user_sub;
 
 # variables which might be redefined by the user but aren't likely to be  
 # they seem to be in the main namespace
-our %simple_map_texi;
-our %texi_map;
 our $index_properties;
 our %predefined_index;
 our %valid_index;
@@ -755,11 +777,30 @@ our %special_style = (
            'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
 );
 
+$Texi2HTML::Config::style_map_texi{'image'} = { 'args' => ['keep'],
+       'function' => \&Texi2HTML::Config::t2h_default_no_texi_image }
+    unless (defined($Texi2HTML::Config::style_map_texi{'image'}));
+
 foreach my $special (keys(%special_style))
 {
-     $Texi2HTML::Config::style_map{$special} = $special_style{$special};
-     $Texi2HTML::Config::style_map_pre{$special} = $special_style{$special};
+    $Texi2HTML::Config::style_map{$special} = $special_style{$special}
+          unless (defined($Texi2HTML::Config::style_map{$special}));
+    $Texi2HTML::Config::style_map_pre{$special} = $special_style{$special}
+          unless (defined($Texi2HTML::Config::style_map_pre{$special}));
+    $Texi2HTML::Config::style_map_texi{$special} = { 'args' => ['keep'],
+        'function' => \&Texi2HTML::Config::t2h_remove_command }
+          unless (defined($Texi2HTML::Config::style_map_texi{$special}));
 }
+
+#foreach my $command (keys(%Texi2HTML::Config::style_map))
+#{
+#    next unless (ref($Texi2HTML::Config::style_map{$command}) eq 'HASH');
+#    print STDERR "CMD: $command\n";
+#    die "Bug: no args for $command in style_map\n" unless defined($Texi2HTML::Config::style_map{$command}->{'args'});
+#    die "Bug: no args for $command in style_map_pre\n" unless defined($Texi2HTML::Config::style_map_pre{$command}->{'args'});
+#    die "Bug: non existence of args for $command in style_map_texi\n" unless (exists($Texi2HTML::Config::style_map_texi{$command}->{'args'}));
+#    die "Bug: no args for $command in style_map_texi\n" unless defined($Texi2HTML::Config::style_map_texi{$command}->{'args'});
+#}
 
 #
 # texinfo section names to level
@@ -823,62 +864,6 @@ $sec2level{'chapheading'} = 1;
 # this one could be centered...
 $sec2level{'centerchap'} = 1;
 
-#
-# This map is used when texi elements are removed and replaced 
-# by simple text
-#
-%simple_map_texi = (
-           "*", "",  
-           " ", " ",
-           "\t", " ",
-           "-", "-",  # soft hyphen
-           "\n", "\n",
-           "|", "",
-        # spacing commands
-           ":", "",
-           "!", "!",
-           "?", "?",
-           ".", ".",
-           "-", "",
-           '@', '@',
-           '}', '}',
-           '{', '{',
-          );
-
-# text replacing macros when texi commands are removed and plain text is 
-# produced 
-%texi_map = (
-               'TeX', 'TeX',
-               'bullet', '*',
-               'copyright', 'C',
-               'dots', '...',
-               'enddots', '....',
-               'equiv', '==',
-               'error', 'error-->',
-               'expansion', '==>',
-               'minus', '-',
-               'point', '-!-',
-               'print', '-|',
-               'result', '=>',
-               'aa', 'aa',
-               'AA', 'AA',
-               'ae', 'ae',
-               'oe', 'oe',
-               'AE', 'AE',
-               'OE', 'OE',
-               'o',  'o',
-               'O',  'O',
-               'ss', 'ss',
-               'l', 'l',
-               'L', 'L',
-               'exclamdown', '! upside-down',
-               #'exclamdown', '&iexcl;',
-               'questiondown', '? upside-down',
-               #'questiondown', '&iquest;',
-               'pounds', 'pound sterling'
-               #'pounds', '&pound;'
-            );
-
 %region_lines = (
           'titlepage'            => [ ],
           'documentdescription'  => [ ],
@@ -937,12 +922,12 @@ foreach my $key (keys(%fake_format))
     $format_type{$key} = 'fake';
 }
 
-my %style_type = (); 
+our %style_type = (); 
 foreach my $style (keys(%Texi2HTML::Config::style_map))
 {
     $style_type{$style} = 'style';
 }
-foreach my $accent (keys(%Texi2HTML::Config::utf8_accents))
+foreach my $accent (keys(%Texi2HTML::Config::unicode_accents))
 {
     $style_type{$accent} = 'accent';
 }
@@ -4416,7 +4401,7 @@ sub rearrange_elements()
     }
 
     # Find cross manual links as explained on the texinfo mailing list
-    cross_manual_links();
+    Texi2HTML::Config::cross_manual_links(\%nodes, \%cross_reference_nodes);
 
     # Find node file names
     if ($Texi2HTML::Config::NODE_FILES)
@@ -4443,13 +4428,21 @@ sub rearrange_elements()
         foreach my $key (keys(%nodes))
         {
             my $node = $nodes{$key};
-            next if ($node->{'external_node'} or $node->{'index_page'} or defined($node->{'file'}));
-            my $name = remove_texi($node->{'texi'});
-            $name =~ s/[^\w\.\-]/-/g;
-            my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
-            my $index = 0;
-            $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
-            $node->{'node_file'} = $file;
+            next if ($node->{'external_node'} or $node->{'index_page'};
+            if (defined($Texi2HTML::Config::node_file_name))
+            {
+                 ($node->{'file'}, $node->{'node_file'}) =
+                      &$Texi2HTML::Config::node_file_name ($node);
+            }
+            else
+            {
+                 next if (defined($node->{'file'}));
+                 my $name = remove_texi($node->{'texi'});
+                 $name =~ s/[^\w\.\-]/-/g;
+                 my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
+                 $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
+                 $node->{'node_file'} = $file;
+            }
         }
     }
     # find document nr and document file for sections and nodes. 
@@ -4492,6 +4485,7 @@ sub rearrange_elements()
             else
             {
                 $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                my $is_top = 0;
                 if (defined($top_doc_nr))
                 {
                     if ($doc_nr eq $top_doc_nr)
@@ -4510,12 +4504,18 @@ sub rearrange_elements()
                 }
                 elsif ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and !$element->{'node_ref'}->{'element_added'} and $element->{'node_ref'} eq $element_top))
                 { # the top element
+                    $is_top = 1;
                     $element->{'file'} = "$docu_top";
                     # if there is a previous element, we force it to be in 
                     # another file than top
                     $doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
                     $top_doc_nr = $doc_nr;
                     $element->{'doc_nr'} = $doc_nr;
+                }
+                if (defined($Texi2HTML::Config::element_file_name))
+                {
+                     $element->{'file'} = 
+                         &$Texi2HTML::Config::element_file_name ($element, $is_top, $docu_name);
                 }
             }
             add_file($element->{'file'});
@@ -4672,164 +4672,6 @@ if (!$element->{'footnote'})
         }
     }
 }
-
-# This function is used to construct a link name from a node name as 
-# described in the proposal I posted on texinfo-pretest.
-sub cross_manual_links()
-{
-    my %things_map_kept = %Texi2HTML::Config::things_map;
-    foreach my $key (keys(%Texi2HTML::Config::utf8_map))
-    {
-        if ($Texi2HTML::Config::utf8_map{$key} ne '')
-        {
-            $Texi2HTML::Config::things_map{$key} = '_' . lc($Texi2HTML::Config::utf8_map{$key});
-        }
-        $Texi2HTML::Config::things_map{'error'} = 'error-->';
-        $Texi2HTML::Config::things_map{'print'} = '-|';
-        $Texi2HTML::Config::things_map{'enddots'} = '....';
-        $Texi2HTML::Config::things_map{'TeX'} = 'TeX';
-    }
-    my %style_map_kept = %Texi2HTML::Config::style_map;
-    foreach my $key (keys(%Texi2HTML::Config::style_map))
-    {
-        if ($style_type{$key} ne 'accent')
-        {
-            $Texi2HTML::Config::style_map{$key} = '';
-        }
-        else
-        {
-            $Texi2HTML::Config::style_map{$key} = '&cross_manual_accent';
-        }
-         $Texi2HTML::Config::style_map{'sc'} = '&cross_manual_sc';
-         $Texi2HTML::Config::style_map{'email'} = '&cross_manual_email';
-    }
-    my %simple_map_kept = %Texi2HTML::Config::simple_map;
-    foreach my $key (keys(%Texi2HTML::Config::simple_map))
-    {
-        if ($key eq "*" or $key eq " " or $key eq "\t" or $key eq "\n")
-        {
-            $Texi2HTML::Config::simple_map{$key} = ' ';
-        }
-        elsif ($key eq '!' or $key eq '?' or $key eq '.' or $key eq '@' or $key eq '{' or $key eq '}')
-        {
-            $Texi2HTML::Config::simple_map{$key} = $key;
-        }
-    }
-    my $image_kept = $Texi2HTML::Config::image;
-    my $normal_text_kept = $Texi2HTML::Config::normal_text;
-    my $protect_text_kept = $Texi2HTML::Config::protect_text;
-    $Texi2HTML::Config::normal_text = \&cross_manual_normal_text;
-    $Texi2HTML::Config::protect_text = \&cross_manual_protect_text;
-    $Texi2HTML::Config::image = \&cross_manual_image;
-    foreach my $key (keys(%nodes))
-    {
-        my $node = $nodes{$key};
-        next if ($node->{'external_node'} or $node->{'index_page'});
-        if (!defined($node->{'texi'}))
-        {
-            # begin debug section 
-            foreach my $key (keys(%$node))
-            {
-                #print STDERR "$key:$node->{$key}!!!\n";
-            }
-            # end debug section 
-        }
-        else 
-        {
-            $node->{'cross_manual_target'} = substitute_line($node->{'texi'});
-            if (defined($cross_reference_nodes{$node->{'cross_manual_target'}}))
-            {
-                echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_nodes{$node->{'cross_manual_target'}}'");# $node->{'cross_manual_target'}");
-            }
-            else 
-            {
-                $cross_reference_nodes{$node->{'cross_manual_target'}} = $node->{'texi'};
-            }
-            #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
-        }
-    }
-    %Texi2HTML::Config::things_map = %things_map_kept;
-    %Texi2HTML::Config::style_map = %style_map_kept;
-    %Texi2HTML::Config::simple_map = %simple_map_kept;
-    $Texi2HTML::Config::normal_text = $normal_text_kept;
-    $Texi2HTML::Config::protect_text = $protect_text_kept;
-    $Texi2HTML::Config::image = $image_kept;
-}
-
-sub Texi2HTML::Config::cross_manual_accent($$)
-{
-    my $text = shift;
-    my $accent = shift;
-    return '_' . lc($Texi2HTML::Config::utf8_accents{$accent}->{$text})
-        if (defined($Texi2HTML::Config::utf8_accents{$accent}->{$text}));
-    return Texi2HTML::Config::ascii_accents($text, $accent);
-}
-
-sub Texi2HTML::Config::cross_manual_sc
-{
-    return uc($_[0]);
-}
-
-
-sub Texi2HTML::Config::cross_manual_email($$)
-{
-    my $arg = shift;
-    my $command = shift;
-    my ($mail, $text);
-    ($mail, $text) = split /,\s*/, $arg;
-    $mail =~ s/\s*$//;
-    $mail =~ s/^\s*//;
-    return $text if ($text ne '');
-    return $mail;
-}
-
-sub cross_manual_image($$$$)
-{
-   my $file = shift;
-   my $base = shift;
-   my $preformatted = shift;
-   my $file_name = shift;
-   return $base;
-}
-
-sub cross_manual_protect_text($)
-{
-   my $text = shift;
-   $text = normalise_space($text);
-   my $result = '';
-   while ($text ne '')
-   {
-        if ($text =~ s/^([A-Za-z0-9]+)//o)
-        {
-             $result .= $1;
-        }
-        elsif ($text =~ s/^ //o)
-        {
-             $result .= '-';
-        }
-        elsif ($text =~ s/^(.)//o)
-        {
-             if (exists($Texi2HTML::Config::ascii_character_map{$1}))
-             {
-                  $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$1});
-             }# else if the encoding is not utf8 convert to utf8
-             #else
-        }
-        else
-        {
-             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
-             sleep 1;
-        }    
-   }
-   
-   return $result;
-}
-
-sub cross_manual_normal_text($)
-{
-    my $text = shift;
-    return $text;
-}        
 
 sub add_file($)
 {
@@ -5158,6 +5000,8 @@ sub get_index($;$)
 my @foot_lines = ();           # footnotes
 my $copying_comment = '';      # comment constructed from text between
                                # @copying and @end copying with licence
+my $from_encoding;             # texinfo file encoding
+my $to_encoding;               # out file encoding
 
 sub initialise_state($)
 {
@@ -5306,7 +5150,7 @@ sub pass_text()
         if (@{$region_lines{'titlepage'}});
     &$Texi2HTML::Config::titlepage();
 
-    &$Texi2HTML::Config::init_out();
+    $to_encoding = &$Texi2HTML::Config::init_out();
 
     ############################################################################
     # print frame and frame toc file
@@ -5880,9 +5724,7 @@ sub open_file($$)
     my $name = shift;
     my $line_number = shift;
     local *FH;
-# we should use a discipline based on the @documentencoding with
-# default utf8 (?)
-    if (open(*FH, $name))
+    if ((defined($from_encoding) and open(*FH, ":encoding($from_encoding)", $name)) or  open(*FH, $name))
     { 
         
         my $file = { 'fh' => *FH, 
@@ -5906,10 +5748,13 @@ sub open_out($)
     my $file = shift;
     if ($file eq '-')
     {
+        binmode(STDOUT, ":encoding($to_encoding)") if (defined($to_encoding));
         return \*STDOUT;
     }
-    open(FILE, "> $file")
-            || die "$ERROR Can't open $file for writing: $!\n";
+    unless ((defined($to_encoding) and open(FILE, ">:encoding($to_encoding)", $file)) or open(FILE, "> $file"))
+    {
+        die "$ERROR Can't open $file for writing: $!\n";
+    }
     return \*FILE;
 }
 
@@ -7747,6 +7592,25 @@ sub scan_texi($$$$;$)
                 add_prev($text, $stack, "\@$macro" . $1);
                 next;
             }
+            elsif ($macro eq 'documentencoding')
+            {
+                if (s/(\s+)([0-9\w\-]+)//)
+                {
+                    my $encoding = $2;
+                    $Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
+                    $from_encoding = Texi2HTML::Config::set_encoding($encoding);
+                    if (defined($from_encoding))
+                    {
+                        foreach my $file (@fhs)
+                        {
+                            binmode($file->{'fh'}, ":encoding($from_encoding)");
+                        }
+                    }
+                }
+                add_prev($text, $stack, "\@$macro" . $1 . $2);
+                #return if (/^\s*$/);
+                #s/^\s*//;
+            }
             elsif ($macro eq 'unmacro')
             { #FIXME with 'arg_expansion' should it be passed unmodified ?
                 delete $macros->{$1} if (s/^\s+(\w+)//);
@@ -8254,12 +8118,7 @@ sub scan_structure($$$$;$)
             }
             elsif ($macro eq 'documentencoding')
             {
-                if (s/\s+([0-9\w\-]+)//)
-                {
-                    $Texi2HTML::Config::ENCODING = $1;
-                    # we should set the encoding such that opened handles
-                    # are set to the right encoding with binmode
-                }
+                s/\s+([0-9\w\-]+)//;
                 return if (/^\s*$/);
                 s/^\s*//;
             }
@@ -9369,7 +9228,7 @@ sub scan_line($$$$;$)
             {
                 if ($state->{'keep_texi'} or $state->{'remove_texi'})
                 {
-                    add_prev($text, $stack, '{' );
+                    add_prev($text, $stack, '{');
                 }
                 else
                 {
@@ -9401,18 +9260,6 @@ sub scan_line($$$$;$)
                              and ($state->{'keep_nr'} == 1));
                     }
                     $state->{'no_paragraph'}-- if ($no_paragraph_macro{$macro});
-                    if ($state->{'remove_texi'})
-                    {
-                        add_prev ($text, $stack, $texi_map{$macro}) if (defined($texi_map{$macro}));
-                        close_arg ($macro, $style->{'arg_nr'}, $state);
-                        if (!exists($special_style{$macro}))
-                        {
-                             # FIXME do something for @ref, @image ?
-                             add_prev ($text, $stack, $style->{'text'});
-                        }
-                        next;
-                    }
-
                     if ($macro)
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
@@ -9423,16 +9270,16 @@ sub scan_line($$$$;$)
                         }
                         else
                         {
-                             if ($Texi2HTML::Config::style_map{$macro} and !$style->{'no_close'} and (defined($style_type{'$macro'})) and (($style_type{'$macro'} eq 'style') or ($style_type{'$macro'} eq 'accent')))
-                             {
-                                 my $style = pop @{$state->{'style_stack'}};
-                                 print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
-                             }
-                             $result = do_simple($macro, $style->{'text'}, $state, $style->{'args'}, $line_nr, $style->{'no_open'}, $style->{'no_close'});
-                             if ($state->{'code_style'} < 0)
-                             {
-                                 echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_", $line_nr);
-                             }
+                            if ($Texi2HTML::Config::style_map{$macro} and !$style->{'no_close'} and (defined($style_type{'$macro'})) and (($style_type{'$macro'} eq 'style') or ($style_type{'$macro'} eq 'accent')))
+                            {
+                                my $style = pop @{$state->{'style_stack'}};
+                                print STDERR "Bug: $style on 'style_stack', not $macro\n" if ($style ne $macro);
+                            }
+                            $result = do_simple($macro, $style->{'text'}, $state, $style->{'args'}, $line_nr, $style->{'no_open'}, $style->{'no_close'});
+                            if ($state->{'code_style'} < 0)
+                            {
+                                echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_", $line_nr);
+                            }
                         }
                     }
                     else
@@ -9808,7 +9655,8 @@ sub do_simple($$$;$$$$)
         }
         elsif ($state->{'remove_texi'})
         {
-             return  $simple_map_texi{$macro};
+#print STDERR "DO_SIMPLE remove_texi $macro\n";
+             return  $Texi2HTML::Config::simple_map_texi{$macro};
         }
         elsif ($state->{'preformatted'})
         {
@@ -9827,7 +9675,8 @@ sub do_simple($$$;$$$$)
         }
         elsif ($state->{'remove_texi'})
         {
-             $result =  $texi_map{$macro};
+             $result =  $Texi2HTML::Config::texi_map{$macro};
+#print STDERR "DO_SIMPLE remove_texi texi_map $macro\n";
         }
         elsif ($state->{'preformatted'})
         {
@@ -9845,15 +9694,15 @@ sub do_simple($$$;$$$$)
         {
              $result = "\@$macro" . '{' . $text . '}';
         }
-        elsif ($state->{'remove_texi'})
-        {
-             $result = $text;
-             close_arg($macro,$arg_nr, $state);
-        }
         else 
         {
              my $style;
-             if ($state->{'preformatted'})
+             if ($state->{'remove_texi'})
+             {
+#print STDERR "REMOVE $macro, $Texi2HTML::Config::style_map_texi{$macro}, fun $Texi2HTML::Config::style_map_texi{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_ascii_accent;
+                  $style = $Texi2HTML::Config::style_map_texi{$macro};
+             }
+             elsif ($state->{'preformatted'})
              {
                   $style = $Texi2HTML::Config::style_map_pre{$macro};
              }
@@ -10496,6 +10345,7 @@ $T2H_TODAY = Texi2HTML::I18n::pretty_date($Texi2HTML::Config::LANG);  # like "20
 $T2H_USER = &$I('unknown');
 $Texi2HTML::Config::things_map{'today'} = $T2H_TODAY;
 $Texi2HTML::Config::pre_map{'today'} = $T2H_TODAY;
+$Texi2HTML::Config::texi_map{'today'} = $T2H_TODAY;
 
 if ($Texi2HTML::Config::TEST)
 {

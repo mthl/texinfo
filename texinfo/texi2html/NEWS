@@ -87,8 +87,9 @@ This file records noteworthy changes.
   $init_out = \&makeinfo_like_init_out;
   sub makeinfo_like_init_out() 
   {
-     &$default_init_out();
+     my $encoding = &$default_init_out();
      $NAVIGATION_TEXT{'Following'} = ' &gt; ';
+     return $encoding;
   }
 
 * NEW FEATURES
@@ -97,11 +98,11 @@ This file records noteworthy changes.
 * Many changes towards output of stricter HTML.
 
 * initialization files for html 3.2, xhtml, html 4.0 with inline style,
-  no header, utf8 characters outputted, makeinfo style and conversion 
-  to roff. Initialization files are searched in ./, ~/.texi2html, 
+  no header, utf8 characters outputted, makeinfo style, book style and 
+  conversion to roff. Initialization files are searched in ./, ~/.texi2html, 
   $sysconfdir/texi2html and last $datadir/texi2html. The file names are
   html32.init, xhtml.init, inlinestyle.init, noheaders.init, utf8.init, 
-  makeinfo.init, and roff.init.
+  makeinfo.init, book.init and roff.init.
 
 * The test suite is much more comprehensive and uses validate and tidy to
   assess the correctness of the HTML.
@@ -182,6 +183,8 @@ This file records noteworthy changes.
 * centering and flushing is really handled.
 
 * Format titlepage (even though the formatted text isn't used by default).
+
+* Handle all the encodings perl knows about.
 
 * BUG FIXES
   ---------

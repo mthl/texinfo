@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.63 2004-01-19 15:22:02 pertusus Exp $
+# $Id: texi2html.init,v 1.64 2004-01-25 23:00:48 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -265,9 +265,6 @@ $L2H_CLEAN = 1;
 #
 ##############################################################################
 
-# Document encoding assumed if no @documentencoding is specified.
-$ENCODING = 'iso-8859-1';
-
 # If true do table of contents even if there is no @content
 $DO_CONTENTS = 0;
 # If true do short table of contents even if there is no @shortcontent
@@ -399,6 +396,14 @@ $L2H_HTML_VERSION = "4.0";
      'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
     );
 
+@NODE_FOOTER_BUTTONS =
+    (
+     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward',
+     ' ', ' ', ' ', ' ',
+     'Top', 'Contents', 'Index', 'About',
+#     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
+    );
+
 $ICONS = 0;
 
 # insert here name of icon images for buttons
@@ -507,14 +512,42 @@ sub t2h_default_init_out()
     );
     # Set the default body text, inserted between <body ... >
     $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
+    $ENCODING = $DOCUMENT_ENCODING if (!defined($ENCODING));
+    my $to_encoding;
+    if (defined($ENCODING))
+    {
+        $to_encoding = set_encoding ($ENCODING);
+        
+        if (defined($to_encoding) and defined($perl_charset_to_html{$to_encoding}))
+        {# FIXME is this really right ?
+             $ENCODING = $perl_charset_to_html{$to_encoding};
+        }
+        elsif (defined($to_encoding))
+        {# FIXME is this really right ?
+             $ENCODING = $to_encoding;
+        }
+    }
+    else
+    {
+        #$ENCODING = 'iso-8859-1';
+        $ENCODING = 'us-ascii';
+    }
+    # FIXME default might be utf8 ?
+    $DOCUMENT_ENCODING = 'us-ascii' if (!defined($DOCUMENT_ENCODING));
+    return $to_encoding;
 };
+
 #######################################################################
 #
-# Values guessed if not set here
+# Values guessed if not set here, set in init_out
 #
 #######################################################################
 
 $BODYTEXT = undef;
+
+# Formatted document encoding. If undef set to @documentencoding. If undef and
+# there is no @documentencoding, set in init_out 
+$ENCODING = undef;
 
 ########################################################################
 # Control of Page layout:
@@ -631,7 +664,7 @@ sub T2H_DEFAULT_print_section
     {
         &$print_foot_navigation($fh);
         print $fh "$SMALL_RULE\n";
-        &$print_navigation($fh, $buttons) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
+        &$print_navigation($fh, \@NODE_FOOTER_BUTTONS) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
                                     and $nw >= $WORDS_IN_PAGE));
     }
 }
@@ -1432,6 +1465,7 @@ $simple_map_pre{'*'} = "\n";
                'result'       => '=&gt;',
                # set in code using the language
                # 'today', &pretty_date,
+               'today'        => '',
                'aa'           => '&aring;',
                'AA'           => '&Aring;',
                'ae'           => '&aelig;',
@@ -1486,6 +1520,7 @@ $pre_map{'enddots'} = '....';
                'point'        => '-!-',
                'print'        => '-|',
                'result'       => '=>',
+               'today'        => '',
                'aa'           => 'aa',
                'AA'           => 'AA',
                'ae'           => 'ae',
@@ -1502,6 +1537,63 @@ $pre_map{'enddots'} = '....';
                'pounds'       => '#'
 );
 
+#
+# This map is used when texi elements are removed and replaced 
+# by simple text
+#
+%simple_map_texi = (
+           "*", "",  
+           " ", " ",
+           "\t", " ",
+           "-", "-",  # soft hyphen
+           "\n", "\n",
+           "|", "",
+        # spacing commands
+           ":", "",
+           "!", "!",
+           "?", "?",
+           ".", ".",
+           "-", "",
+           '@', '@',
+           '}', '}',
+           '{', '{',
+          );
+
+# text replacing macros when texi commands are removed and plain text is 
+# produced 
+%texi_map = (
+               'TeX', 'TeX',
+               'bullet', '*',
+               'copyright', 'C',
+               'dots', '...',
+               'enddots', '....',
+               'equiv', '==',
+               'error', 'error-->',
+               'expansion', '==>',
+               'minus', '-',
+               'point', '-!-',
+               'print', '-|',
+               'result', '=>',
+               'today'        => '',
+               'aa', 'aa',
+               'AA', 'AA',
+               'ae', 'ae',
+               'oe', 'oe',
+               'AE', 'AE',
+               'OE', 'OE',
+               'o',  'o',
+               'O',  'O',
+               'ss', 'ss',
+               'l', 'l',
+               'L', 'L',
+               'exclamdown', '! upside-down',
+               #'exclamdown', '&iexcl;',
+               'questiondown', '? upside-down',
+               #'questiondown', '&iquest;',
+               'pounds', 'pound sterling'
+               #'pounds', '&pound;'
+            );
+
 # taken from
 #Latin extended additionnal
 #http://www.alanwood.net/unicode/latin_extended_additional.html
@@ -1512,7 +1604,7 @@ $pre_map{'enddots'} = '....';
 #Latin Extended-B
 #http://www.alanwood.net/unicode/latin_extended_b.html
 #dotless i: 0131
-%utf8_map = (
+%unicode_map = (
                'bullet'       => '2022',
                'copyright'    => '00A9',
                'dots'         => '2026',
@@ -1525,6 +1617,7 @@ $pre_map{'enddots'} = '....';
                'point'        => '2217',
                'print'        => '',
                'result'       => '21D2',
+               'today'        => '',
                'aa'           => '00E5',
                'AA'           => '00C5',
                'ae'           => '00E6',
@@ -1577,6 +1670,11 @@ $pre_map{'enddots'} = '....';
             '|' => '007C',
             '}' => '007D',
             '~' => '007E',
+);
+
+%perl_charset_to_html = (
+              'utf8'       => 'utf-8',
+              'ascii'      => 'us-ascii',
 );
 
 # symbols used for the commands if $USE-ISO is true.
@@ -1666,27 +1764,24 @@ our %old_style_map = (
       'w',          {},
      );
 
-#remark: texinfo uses ringaccent, with 'o'
-#based on unicode
-%accent_letters = (
-       'dotless'    => 'ij', 
-       'H'          => 'uUoO', 
-       'ringaccent' => 'auAUwy', 
-       "'"          => 'acegiklmnoprsuwyzACEGIKLMNOPRSUWYZ',
-       'v'          => 'acdeghiklnorstuzACDEGHIKLNORSTUZ', 
-       ','          => 'cdeghklnrstCDEGHKLNRST', 
-       '^'          => 'aceghijosuwyzACEGHIJOSUWYZ', 
-       'dotaccent'  => 'abcdefghinoprstwxyzABCDEFGHINOPRSTWXYZ',
-       '`'          => 'aeinouwyAEINOUWY',
-       '='          => 'aegiouyAEGIOUY', 
-       '~'          => 'aeinouvyAEINOUVY',
-       '"'          => 'aehiotuwxyAEIOTUWXY', #no upper h
-       'udotaccent' => 'bdehiklmnorstuvwyzBDEHIKLMNORSTUVWYZ', 
-       'ubaraccent' => 'bdhklnrtzBHKLNRTZ', #no upper d
-       'u'          => 'aegiouAEGIOU',
+%unicode_diacritical = (
+       'H'          => '030B', 
+       'ringaccent' => '030A', 
+       "'"          => '0301',
+       'v'          => '030C', 
+       ','          => '0327', 
+       '^'          => '0302', 
+       'dotaccent'  => '0307',
+       '`'          => '0300',
+       '='          => '0304', 
+       '~'          => '0303',
+       '"'          => '0308', 
+       'udotaccent' => '0323', 
+       'ubaraccent' => '0332', 
+       'u'          => '0306'
 );
 
-%utf8_accents = (
+%unicode_accents = (
     'dotaccent' => { # dot above
         'A' => '0226', #C moz-1.2 
         'a' => '0227', #c moz-1.2
@@ -2024,23 +2119,17 @@ our %old_style_map = (
       '"'          => 'aeiouyAEIOU',
 );
 
-foreach my $accent_command ('tieaccent', 'dotless', keys(%utf8_accents), keys(%accent_map))
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents), keys(%accent_map))
 {
      $style_map{$accent_command} = { 'function' => \&t2h_default_accent };
      $old_style_map{$accent_command} = '&default_accent';
+     $style_map_texi{$accent_command} = { 'function' => \&t2h_default_ascii_accent };
 }
 
 sub default_accent($$)
 {
     my $text = shift;
     my $accent = shift;
-    if (defined($accent_letters{$accent}))
-    {
-         if ($text !~ /^[$accent_letters{$accent}]$/)
-         {
-              main::echo_warn ("\@$accent only valid with `$accent_letters{$accent}', not `$text'");
-         }
-    }
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
@@ -2055,13 +2144,6 @@ sub t2h_default_accent($$)
 
     my $text = $args->[0];
 
-    if (defined($accent_letters{$accent}))
-    {
-         if ($text !~ /^[$accent_letters{$accent}]$/)
-         {
-              main::echo_warn ("\@$accent only valid with `$accent_letters{$accent}', not `$text'");
-         }
-    }
     return "&${text}$accent_map{$accent};" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
     return '&' . $text . 'ring;' if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '&lt;' if ($accent eq 'v');
@@ -2227,6 +2309,42 @@ sub t2h_default_email($$)
     return &$anchor('', "mailto:$mail", $text);
 }
 
+sub t2h_default_ascii_accent($$$$)
+{
+    my $accent = shift;
+    my $args = shift;
+
+    my $text = $args->[0];
+    return ascii_accents($text, $accent);
+}
+
+sub t2h_default_no_texi_email
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $mail = main::normalise_space($mail);
+    #$mail =~ s/\s*$//;
+    #$mail =~ s/^\s*//;
+    return $text if (defined($text) and ($text ne ''));
+    return $mail;
+}
+
+sub t2h_default_no_texi_image($$$$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $text = $args->[0];
+    $text = main::normalise_space($text); 
+    my @args = split (/\s*,\s*/, $text);
+    return $args[0];
+}
+
+sub t2h_remove_command($$$$)
+{
+    return '';
+}
 
 # This is used for style in preformatted sections
 our %old_style_map_pre = %old_style_map;
@@ -2236,6 +2354,11 @@ $old_style_map_pre{'titlefont'} = '';
 foreach my $command (keys(%style_map))
 {
     $style_map_pre{$command} = {};
+    $style_map_texi{$command} = {} if (!exists($style_map_texi{$command}));
+    $style_map_texi{$command}->{'args'} = $style_map{$command}->{'args'}
+        if (exists($style_map{$command}->{'args'}));
+ #print STDERR "COMMAND $command";
+    
     foreach my $key (keys(%{$style_map{$command}}))
     {
         $style_map_pre{$command}->{$key} = $style_map{$command}->{$key};
@@ -2244,6 +2367,16 @@ foreach my $command (keys(%style_map))
 
 $style_map_pre{'sc'}->{'function'} = \&t2h_default_sc_pre;
 $style_map_pre{'titlefont'} = {};
+
+$style_map_texi{'sc'}->{'function'} = \&t2h_default_sc_pre;
+$style_map_texi{'email'}->{'function'} = \&t2h_default_no_texi_email;
+#foreach my $command (keys(%style_map))
+#{
+#    print STDERR "STYLE_MAP_TEXI $command($style_map_texi{$command}) ";
+#    print STDERR "ARGS $style_map_texi{$command}->{'args'} " if (defined($style_map_texi{$command}->{'args'}));
+#    print STDERR "FUN $style_map_texi{$command}->{'function'} " if (defined($style_map_texi{$command}->{'function'}));
+#    print STDERR "\n";
+#}
 
 # uncomment to use the old interface
 #%style_map = %old_style_map;

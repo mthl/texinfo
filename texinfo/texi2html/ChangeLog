@@ -1,3 +1,27 @@
+2004-01-25  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 
+	Handle encodings.
+	It is possible to customize what is outputted in string context, when 
+	removing texinfo commands.
+	Handle @email and @image better in string context.
+	Use unicode instead of utf8 in variable names when it is really
+	unicode.
+	cross_manual_links is done in Texi2HTML::Config in T2h_unicode.pm
+	in case the perl version is above 5.8, in T2h_nounicode.pm otherwise.
+	add @NODE_FOOTER_BUTTONS for buttons at the footer of nodes. 
+	Add two more function references, element_file_name and node_file_name 
+	used to customize the file names.
+	Don't warn when the character is not a precomposed unicode character,
+	as it is possible to have totally valid character, not precomposed.
+	Use us-ascii as default charset encoding.
+	* examples/book.init: an init file based on the scriptbasic manuals
+	file which formats manuals like books (no menu but tables of
+	contents for the element under each element).
+	* examples/utf8.init: use utf8 in strings.
+	* doc/texi2html.texi: document the new elements of the interface.
+
+
 2004-01-19  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, examples/*: New variables $DO_CONTENTS 

@@ -20,6 +20,12 @@ T2H_L2H_FILE=$srcdir/l2h.init
 AC_SUBST_FILE([T2H_L2H_FILE])
 T2H_TRANSLATIONS_FILE=$srcdir/translations.pl
 AC_SUBST_FILE([T2H_TRANSLATIONS_FILE])
+if perl -e "use Encode" > /dev/null 2>&1; then
+T2H_UNICODE_FILE=$srcdir/T2h_unicode.pm
+else
+T2H_UNICODE_FILE=$srcdir/T2h_nounicode.pm
+fi
+AC_SUBST_FILE([T2H_UNICODE_FILE])
 
 dnl Checks for programs.
 AC_PATH_PROG(PERL, perl, /usr/bin/env perl, /opt/perl5/bin:"$PATH")
