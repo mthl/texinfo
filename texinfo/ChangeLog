@@ -1,3 +1,15 @@
+2005-01-28  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi <verbose>: rename variable to verb, since
+		functions and variables apparently cannot have the same
+		name on Digital UNIX 4.0E, AIX 3.2.5 (325102), ULTRIX V4.5.
+		(and related releases, presumably).
+        <pgm>: simplify sed expression to avoid \| operator, which does
+	        not work on above platforms (and also be more correct).
+	<RUNNING_KSH>: switch to ksh under Ultrix.
+	All of this stuff reported by Bernhard Simon <simon@zid.tuwien.ac.at>
+	and te.
+
 2005-01-25  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile (texmf_dvips, texmf_pdftex_misc): new paths to
