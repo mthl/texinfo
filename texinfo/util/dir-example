@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.21 2003-02-27 13:43:48 karl Exp $
+$Id: dir-example,v 1.22 2003-03-11 13:39:37 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -37,10 +37,6 @@ Basics
 
 GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
-* Identifier DB: (id-utils).    Identifier database utilities.
-* Ispell: (ispell).             Interactive spelling corrector.
-* Make: (make).                 Remake files automatically.
-* M4: (m4).                     Macro processor.
 * Ptx: (ptx).                   Permuted index generator.
 * Shar utilities: (sharutils).  Shell archiver, uudecode/uuencode.
 * Shell utilities: (sh-utils).  GNU shell utilities.
@@ -57,6 +53,7 @@ Text creation and manipulation
 * Gawk: (gawk).                 A text scanning and processing language.
 * Gawkinet: (gawkinet).         TCP/IP Internetworking With `gawk'.
 * grep: (grep).                 Print lines matching a pattern.
+* m4: (m4).			General-purpose text macro processor.
 * sed: (sed).                   Stream EDitor.
 
 Texinfo documentation system
@@ -109,9 +106,11 @@ Software development
 * Gprof: (gprof).               Profiler.
 * Guile Reference: (guile).     The Guile reference manual.
 * help2man: (help2man).         Automatic manual page generation from --help.
+* Identifier DB: (id-utils).    Identifier database utilities.
 * Indent: (indent).             Prettyprinter for programs.
 * Ld: (ld).                     Linker.
 * Libtool: (libtool).           Generic library support script.
+* Make: (make).                 Remake files automatically.
 * Remsync: (remsync).           Remote synchronization of directory trees.
 * Send PR: (send-pr).           Cygnus bug reporting for Gnats.
 * Source config: (cfg-paper).   Some theory on configuring source packages.
@@ -205,7 +204,7 @@ TeX
 * Kpathsearch: (kpathsea).      File lookup along search paths.
 * LaTeX: (latex).               LaTeX.
 * MakeIndex: (makeindex).       Index creation for TeX.
-* Naming fonts: (fontname).     Filenames for TeX fonts.
+* Naming TeX fonts: (fontname). Filenames for TeX fonts.
 * TDS: (tds).                   Standard TeX directory structure.
 * TeXDraw: (texdraw).           Drawing PostScript diagrams within TeX.
 * Web2c: (web2c).               TeX, Metafont, and their companion programs.

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.39 2003-03-07 19:22:07 karl Exp $
+$Id: NEWS,v 1.40 2003-03-11 13:39:37 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -140,6 +140,7 @@ convenience, here's a url to one of the relevant sections:
   . ANSI escape sequences (as produced by groff) removed from man output
     by default; use --raw-escapes to let them through if your terminal
     supports them.
+  . RET terminates incremental search normally.
 * texinfo.tex:
   . @math implies @tex, so all the usual plain TeX math is supported.
   . smaller fonts for @smallexample, in all page sizes.
