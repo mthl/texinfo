@@ -1,3 +1,18 @@
+2003-09-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dosubind): must propagate penalty after all,
+	because we insert a non-discardable item (the whatsit), which
+	makes following glue a breakpoint.  Now I understand (maybe).
+	(\sectionheading): must end with \nobreak after
+	all, purely to make \lastpenalty 10000 so future code can check
+	that and avoid breaks.
+	(\parsebodycommon): such as this code; don't do a
+	\medbreak if lastpenalty >=10000.
+
+	* doc/texinfo.tex (\tocindent): decrease to 2pc.
+	(\{app,unn}sub{sub,}secentry): redefine so that they
+	indent properly.
+
 2003-09-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\dosubind): remove my misbegotten idea of
