@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.6 2002-10-31 22:09:59 karl Exp $
+   $Id: html.c,v 1.7 2002-11-04 21:36:56 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -77,7 +77,7 @@ rel=\"generator-home\">\n");
 
   if (title && !html_title_written)
     {
-      add_word_args ("<h1>%s</h1>\n", html_title);
+      add_word_args ("<h1 class=\"settitle\">%s</h1>\n", html_title);
       html_title_written = 1;
     }
 }
