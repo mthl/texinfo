@@ -1,5 +1,7 @@
 2004-12-08  Karl Berry  <karl@gnu.org>
 
+	* pretest version 4.7.91.
+
 	* info/echo-area.c, info/infokey.c, info/session.c: omit useless
 	casts to intptr_t, since we're just casting to (void *) next.
 	intptr_t is not defined with gcc 3.04 on Tru64 Unix V5.1
