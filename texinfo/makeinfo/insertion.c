@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.49 2003-11-24 14:40:12 dirt Exp $
+   $Id: insertion.c,v 1.50 2003-11-24 16:40:03 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -63,6 +63,12 @@ int in_menu = 0;
 /* Set to 1 if <p> is written in normal context. 
    Used for menu and itemize. */
 int in_paragraph = 0;
+
+/* Since an insertion is already in the stack before we reach the switch
+   statement, we cannot use is_in_insertion_of_type (always returns true.) Also
+   making it return the level found, and comparing it with the current level is
+   no use, due to the order of stack.  */
+static int float_active = 0;
 
 static const char dl_tag[] = "<dl>\n";
 extern void cm_insert_copying ();
@@ -260,7 +266,6 @@ is_in_insertion_of_type (type)
     int type;
 {
   INSERTION_ELT *temp = insertion_stack;
-  int i = 1;
 
   if (!insertion_level)
     return 0;
@@ -268,9 +273,8 @@ is_in_insertion_of_type (type)
   while (temp)
     {
       if (temp->insertion == type)
-        return i;
+        return 1;
       temp = temp->next;
-      i++;
     }
 
   return 0;
@@ -706,11 +710,14 @@ begin_insertion (type)
 
     case floatenv:
       /* Cannot nest floats, so complain.  */
-      if (is_in_insertion_of_type(floatenv) < insertion_level)
+      if (float_active)
         {
           line_error (_("%cfloat environments cannot be nested"), COMMAND_PREFIX);
+          pop_insertion ();
           break;
         }
+
+      float_active++;
 
       { /* Collect data about this float.  */
         char *text;
@@ -1058,6 +1065,7 @@ end_insertion (type)
           else
             close_paragraph ();
         }
+      float_active--;
       break;
 
     case format:
@@ -1206,8 +1214,7 @@ cm_example ()
   if (docbook && is_in_insertion_of_type (floatenv))
     {
       if (strlen (current_float_id ()) == 0)
-        xml_insert_element_with_attribute (FLOATEXAMPLE, START,
-            "label=\"%s\"", current_float_number ());
+        xml_insert_element_with_attribute (FLOATEXAMPLE, START, "label=\"\"");
       else
         xml_insert_element_with_attribute (FLOATEXAMPLE, START,
             "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),

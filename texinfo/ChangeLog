@@ -1,3 +1,14 @@
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/insertion.c (is_in_insertion_of_type): don't return the
+	level, as it is not useful.
+	(begin_insertion): instead of is_in_insertion_of_type, use
+	float_active.
+
+	* makeinfo/insertion.c (cm_example):
+	* makeinfo/xml.c (xml_insert_docbook_image, xml_begin_multitable):
+	insert empty label for @floats with no @anchor.
+
 2003-11-24  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (EXTRA_DIST): remove no-longer-defined

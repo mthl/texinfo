@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.42 2003-11-24 14:34:45 dirt Exp $
+   $Id: xml.c,v 1.43 2003-11-24 16:40:03 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1514,8 +1514,7 @@ xml_insert_docbook_image (name_arg)
   if (is_in_insertion_of_type (floatenv))
     {
       if (strlen (current_float_id ()) == 0)
-        xml_insert_element_with_attribute (INFORMALFIGURE, START,
-            "label=\"%s\"", current_float_number ());
+        xml_insert_element_with_attribute (INFORMALFIGURE, START, "label=\"\"");
       else
         xml_insert_element_with_attribute (INFORMALFIGURE, START,
             "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
@@ -1835,8 +1834,7 @@ xml_begin_multitable (ncolumns, column_widths)
       if (is_in_insertion_of_type (floatenv))
         {
           if (strlen (current_float_id ()) == 0)
-            xml_insert_element_with_attribute (MULTITABLE, START,
-                "label=\"%s\"", current_float_number ());
+            xml_insert_element_with_attribute (MULTITABLE, START, "label=\"\"");
           else
             xml_insert_element_with_attribute (MULTITABLE, START,
                 "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
@@ -1847,7 +1845,7 @@ xml_begin_multitable (ncolumns, column_widths)
           xml_insert_element (TITLE, END);
         }
       else
-      xml_insert_element (MULTITABLE, START);
+        xml_insert_element (MULTITABLE, START);
 
       xml_insert_element_with_attribute (TGROUP, START, "cols=\"%d\"", ncolumns);
       for (i=0; i<ncolumns; i++)
