@@ -1,3 +1,7 @@
+2002-12-11    <karl@gnu.org>
+
+	* doc/texinfo.txi: typos.
+
 2002-12-07    <karl@gnu.org>
 
 	* makeinfo/xml.c: use lowercase, allow more chars in id's.  From:
