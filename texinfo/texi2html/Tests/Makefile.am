@@ -1,4 +1,4 @@
-SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning cvs viper \
+SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      viper_monolithic texi2html
 
 

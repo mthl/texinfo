@@ -73,7 +73,7 @@ test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
 test_texi texinfo texinfo.txi "-split chapter"
-test_texi cvs cvs.texinfo "-split chapter"
+test_texi ccvs ccvs.texinfo "-split chapter"
 
 exit
 #examples of syntax

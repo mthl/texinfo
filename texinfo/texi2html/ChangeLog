@@ -1,4 +1,8 @@
 2003-02-11  Patrice Dumas <dumas@centre-cired.fr>
+	* Tests/Makefile.am, Tests/test.sh: changes to reflect change
+	in directory name for the cvs manual from cvs to ccvs
+
+2003-02-11  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: unused variables removed
 	use_bibliography removed, lots of global variables made lexical.
 	open renamed open_file to avoid clashing with perl builtin.
