@@ -5042,10 +5042,12 @@ width0pt\relax} \fi
   \def\temp{#2}%
   \setbox0=\hbox{\kern\deflastargmargin \ifx\temp\empty\else [\rm\temp]\fi}
   %
-  % Figure out line sizes for the paragraph shape: the first line, ...
-  \dimen0=\hsize \advance \dimen0 by -\wd0
-  % ... and the continuations:
-  \dimen2=\hsize \advance \dimen2 by -\defargsindent
+  % Figure out line sizes for the paragraph shape.
+  % The first line needs space for \box0; but if \rightskip is nonzero,
+  % we need only space for the part of \box0 which exceeds it:
+  \dimen0=\hsize  \advance\dimen0 by -\wd0  \advance\dimen0 by \rightskip
+  % The continuations:
+  \dimen2=\hsize  \advance\dimen2 by -\defargsindent
   % (plain.tex says that \dimen1 should be used only as global.)
   \parshape 2 0in \dimen0 \defargsindent \dimen2
   %
@@ -5055,7 +5057,7 @@ width0pt\relax} \fi
     \hfil\box0 \kern-\hsize
     % \hsize has to be shortened this way:
     \kern\leftskip
-    % Intentionally do not respect \righskip, since we need the space.
+    % Intentionally do not respect \rightskip, since we need the space.
   }%
   %
   % Allow all lines to be underfull without complaint:
@@ -5072,19 +5074,21 @@ width0pt\relax} \fi
 %
 \def\parsebodycommon#1#2#3{%
   \begingroup\inENV
-  % If there are two @def commands in a row, we'll have a \nobreak,
-  % which is there to keep the function description together with its
-  % header.  But if there's nothing but headers, we need to allow a
-  % break somewhere.  Check for penalty 10002 (inserted by
-  % \defargscommonending) instead of 10000, since the sectioning
-  % commands insert a \penalty10000, and we don't want to allow a break
-  % between a section heading and a defun.
-  \ifnum\lastpenalty=10002 \penalty2000 \fi
-  %
-  % Similarly, after a section heading, do not allow a break.
-  % But do insert the glue.
-  \ifnum\lastpenalty<10000 \medbreak
-  \else \medskip  % preceded by discardable penalty, so not a breakpoint
+  \ifnum\lastpenalty<10000
+    \medbreak
+  \else
+    % If there are two @def commands in a row, we'll have a \nobreak,
+    % which is there to keep the function description together with its
+    % header.  But if there's nothing but headers, we need to allow a
+    % break somewhere.  Check for penalty 10002 (inserted by
+    % \defargscommonending) instead of 10000, since the sectioning
+    % commands insert a \penalty10000, and we don't want to allow a break
+    % between a section heading and a defun.
+    \ifnum\lastpenalty=10002 \penalty2000 \fi
+    %
+    % Similarly, after a section heading, do not allow a break.
+    % But do insert the glue.
+    \medskip  % preceded by discardable penalty, so not a breakpoint
   \fi
   %
   % Define the \E... end token that this defining construct specifies
@@ -5101,7 +5105,7 @@ width0pt\relax} \fi
 \def\defxbodycommon{%
   % As with \parsebodycommon above, allow line break if we have multiple
   % x headers in a row.  It's not a great place, though.
-  \ifnum\lastpenalty=10002 \penalty2000 \fi
+  \ifnum\lastpenalty=10002 \penalty3000 \fi
   %
   \begingroup\obeylines
 }
@@ -6744,6 +6748,8 @@ should work if nowhere else does.}
 @c time-stamp-format: "%:y-%02m-%02d.%02H"
 @c time-stamp-end: "}"
 @c End:
+
+@c vim:sw=2:
 
 @ignore
    arch-tag: e1b36e32-c96e-4135-a41a-0b2efa2ea115
