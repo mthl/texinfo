@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.11 2002-11-14 18:46:08 karl Exp $
+dnl $Id: configure.ac,v 1.12 2002-11-18 18:16:16 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -132,6 +132,14 @@ AC_DEFUN([texinfo_gnulib_macros],
   AC_REQUIRE([UTILS_FUNC_MKSTEMP])
 ])dnl
 texinfo_gnulib_macros
+
+# For teTeX and TeX Live.
+AC_CANONICAL_HOST
+AC_ARG_ENABLE(multiplatform,
+  [  --enable-multiplatform  put executables in bin/PLATFORM])
+test "x$enable_multiplatform" = xyes \
+&& test "x$bindir" = 'x${exec_prefix}/bin' \
+&& bindir="$bindir/$host"
 
 dnl i18n support.  To update to a new version of gettext, run:
 dnl  gettextize -f -c --intl
