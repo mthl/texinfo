@@ -1,5 +1,10 @@
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_comment): new function to output comments in
+	HTML, XML and Docbook outputs.
+
+2003-11-28  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/index.c: new section and section_name properties in
 	index_elt struct.
 

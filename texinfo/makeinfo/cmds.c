@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.39 2003-11-27 11:48:08 dirt Exp $
+   $Id: cmds.c,v 1.40 2003-11-28 04:53:35 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -40,7 +40,8 @@
 #endif
 
 
-void insert_self (), insert_space (), cm_ignore_line (), cm_ignore_arg ();
+void insert_self (), insert_space (), cm_ignore_line (), cm_ignore_arg (),
+  cm_comment ();
 
 void
   cm_TeX (), cm_acronym (), cm_asterisk (), cm_b (), cm_bullet (), cm_cite (),
@@ -139,7 +140,7 @@ COMMAND command_table[] = {
   { "b", cm_b, BRACE_ARGS },
   { "bullet", cm_bullet, BRACE_ARGS },
   { "bye", cm_bye, NO_BRACE_ARGS },
-  { "c", cm_ignore_line, NO_BRACE_ARGS },
+  { "c", cm_comment, NO_BRACE_ARGS },
   { "caption", cm_caption, BRACE_ARGS },
   { "cartouche", cm_cartouche, NO_BRACE_ARGS },
   { "center", cm_center, NO_BRACE_ARGS },
@@ -151,7 +152,7 @@ COMMAND command_table[] = {
   { "clear", cm_clear, NO_BRACE_ARGS },
   { "code", cm_code, BRACE_ARGS },
   { "command", cm_code, BRACE_ARGS },
-  { "comment", cm_ignore_line, NO_BRACE_ARGS },
+  { "comment", cm_comment, NO_BRACE_ARGS },
   { "contents", cm_contents, NO_BRACE_ARGS },
   { "copying", cm_copying, NO_BRACE_ARGS },
   { "copyright", cm_copyright, BRACE_ARGS },
@@ -576,6 +577,39 @@ cm_today (arg)
       add_word_args ("%d %s %d", ts->tm_mday, _(months[ts->tm_mon]),
                      ts->tm_year + 1900);
     }
+}
+
+void
+cm_comment ()
+{
+  if (html || xml)
+    {
+      char *line;
+      get_rest_of_line (1, &line);
+
+      if (strlen (line) > 0)
+        {
+          int save_inhibit_indentation = inhibit_paragraph_indentation;
+          int save_escape_html = escape_html;
+          int save_xml_no_para = xml_no_para;
+
+          inhibit_paragraph_indentation = 1;
+          escape_html = 0;
+          xml_no_para = 1;
+
+          add_word_args ("<!-- %s -->", line);
+          if (html || docbook)
+            add_char ('\n');
+
+          inhibit_paragraph_indentation = save_inhibit_indentation;
+          escape_html = save_escape_html;
+          xml_no_para = save_xml_no_para;
+        }
+
+      free (line);
+    }
+  else
+    cm_ignore_line ();
 }
 
 void
