@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: infodoc.c,v 1.2 2002-09-26 23:26:03 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
    Foundation, Inc.
@@ -1007,7 +1007,7 @@ replace_in_documentation (string, help_is_only_window_p)
 	      rep = command ? where_is (info_keymap, command) : NULL;
 	      if (!rep)
 	        rep = "N/A";
-	      replen = (argstr ? strlen (argstr) + 1 : 0) + strlen (rep);
+	      replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
 	      repstr = (char *)xmalloc (replen);
 	      repstr[0] = '\0';
 	      if (argstr)
