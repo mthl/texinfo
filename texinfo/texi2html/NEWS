@@ -6,8 +6,8 @@ This file records noteworthy changes.
   -------------
 
 *  The main configuration files are now ./Config, ~/.texi2html/Config, 
-  $sysconfdir/texi2html and last $datadir/texi2html. They are sourced in that
-  order.
+  $sysconfdir/texi2html/Config and last $datadir/texi2html/Config. They are 
+  sourced in that order.
   In the future `/etc/texi2htmlrc' and `~/.texi2htmlrc' will no longer be 
   sourced and any existing site or user configuration should be moved to the 
   new locations if you wish it to be used by newer versions of Texi2HTML.
@@ -34,8 +34,8 @@ This file records noteworthy changes.
   Global variables are now in the Texi2HTML namespace.
   leading T2H_ is stripped from variable, hashes and array names. You should 
   change your variable names for the new release. As the global variables 
-  (%THISDOC, $THIS_SECTION...) are in the Texi2HTML namespace you should use
-  $Texi2HTML::THISDOC{'fulltitle'} now.
+  (%THISDOC, $THIS_SECTION...) are in the Texi2HTML namespace you should use,
+  for example $Texi2HTML::THISDOC{'fulltitle'} now.
   functions from the main program should now be qualified in the main
   namespace. t2h_ is stripped from the function names too.
   t2h_anchor is now a function reference in init file, and thus should 
@@ -71,7 +71,7 @@ This file records noteworthy changes.
   split.
 
 * If not split, the resulting file has a leading directory, and the directory 
-  doesn't exist it is created.
+  doesn't exist, it is created.
 
 * If a directory creation fails the program aborts.
 
@@ -96,9 +96,11 @@ This file records noteworthy changes.
 * Many changes towards output of stricter HTML.
 
 * initialization files for html 3.2, xhtml, html 4.0 with inline style,
-  makeinfo style. Initialization files are searched in ./, ~/.texi2html, 
+  no header, utf8 characters outputted, makeinfo style and conversion 
+  to roff. Initialization files are searched in ./, ~/.texi2html, 
   $sysconfdir/texi2html and last $datadir/texi2html. The file names are
-  html32.init, xhtml.init, inlinestyle.init and makeinfo.init.
+  html32.init, xhtml.init, inlinestyle.init, noheaders.init, utf8.init, 
+  makeinfo.init, and roff.init.
 
 * The test suite is much more comprehensive and uses validate and tidy to
   assess the correctness of the HTML.
@@ -107,7 +109,7 @@ This file records noteworthy changes.
   @cartouche, @titlefont, @dircategory, @direntry, @shorttitlepage, @\,
   @afourlatex, @afourwide, @firstparagraphindent, @exampleindent, @novalidate,
   @definfoenclose, @kbdinputstyle, @centerchap, @documentdescription,
-  @documentencoding, @contents, @shortcontents.
+  @documentencoding, @contents, @shortcontents, @verbatiminclude.
 
 * With --no-validate node cross-reference validation is suppressed (like
   @novalidate).
@@ -158,6 +160,8 @@ This file records noteworthy changes.
 
 * -P option prepends directory for include files before the document directory.
 
+* -macro-expand generates a file with expanded macros and @include.
+
 * pass $L2H_HTML_VERSION for the html version to latex2html.
 
 * support for css. The --css-include option does the same than in makeinfo 
@@ -166,7 +170,7 @@ This file records noteworthy changes.
   The texi2html css commands may be customized too.
 
 * Text before the first @node or sectionning command is part of the first
-  section unless -noignore-preamble-text is set.
+  section unless -ignore-preamble-text is set.
 
 * if `-' is given to the -output option, output on STDOUT.
 
@@ -175,6 +179,8 @@ This file records noteworthy changes.
 * All the strings appearing in the HTML are internationalized.
 
 * centering and flushing is really handled.
+
+* Format titlepage (even though the formatted text isn't used by default).
 
 * BUG FIXES
   ---------

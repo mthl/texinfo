@@ -1,5 +1,13 @@
 2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* INTRODUCTION, NEWS, README, TODO, texi2html.1.in, doc/TODO: bring
+	those files a bit more up-to-date and correct typos.
+	* doc/IDEA: removed, the content was obsolete or in TODO.
+	* texi2html.pl: add no-... options for the options needing it.
+	echo less options with --help.
+
+2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init, TODO: add hashes for unicode encodings
 	of accented letter and characters.
 	A function cross_manual_links can expand node name according to the 

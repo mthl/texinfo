@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.91 2003-12-10 10:44:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.92 2003-12-10 12:30:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1125,6 +1125,7 @@ $T2H_OPTIONS -> {'expand'} =
  type => '=s',
  linkage => sub {set_expansion($_[1], 1);},
  verbose => 'Expand info|tex|none section of texinfo source',
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'no-expand'} =
@@ -1175,6 +1176,46 @@ $T2H_OPTIONS -> {'ifplaintext'} =
  type => '!',
  linkage => sub { set_expansion('plaintext', $_[1]); },
  verbose => "expand ifplaintext sections",
+};
+
+$T2H_OPTIONS -> {'no-ifhtml'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('html', (! $_[1])); },
+ verbose => "don't expand ifhtml and html sections",
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {'no-ifinfo'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('info', (! $_[1])); },
+ verbose => "don't expand ifinfo",
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {'no-ifxml'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('xml', (! $_[1])); },
+ verbose => "don't expand ifxml and xml sections",
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {'no-iftex'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('tex', (! $_[1])); },
+ verbose => "don't expand iftex and tex sections",
+ noHelp => 1,
+};
+
+$T2H_OPTIONS -> {'no-ifplaintext'} =
+{
+ type => '!',
+ linkage => sub { set_expansion('plaintext', (! $_[1])); },
+ verbose => "don't expand ifplaintext sections",
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'invisible'} =
@@ -1234,21 +1275,37 @@ $T2H_OPTIONS -> {'menu'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SHOW_MENU,
- verbose => 'ouput Texinfo menus',
+ verbose => 'output Texinfo menus',
+};
+
+$T2H_OPTIONS -> {'no-menu'} =
+{
+ type => '!',
+ linkage => sub { $Texi2HTML::Config::SHOW_MENU = (! $_[1]);},
+ verbose => "don't output Texinfo menus",
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'number'} =
 {
  type => '!',
- linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
- verbose => 'use numbered sections'
+ linkage => $Texi2HTML::Config::NUMBER_SECTIONS,
+ verbose => 'use numbered sections',
+};
+
+$T2H_OPTIONS -> {'no-number'} =
+{
+ type => '!',
+ linkage => sub { $Texi2HTML::Config::NUMBER_SECTIONS = (! $_[1]);}, 
+ verbose => 'sections not numbered',
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'use-nodes'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::USE_NODES,
- verbose => 'use nodes for sectionning'
+ verbose => 'use nodes for sectionning',
 };
 
 $T2H_OPTIONS -> {'node-files'} =
@@ -1262,7 +1319,8 @@ $T2H_OPTIONS -> {'separated-footnotes'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SEPARATED_FOOTNOTES,
- verbose => 'footnotes on a separated page'
+ verbose => 'footnotes on a separated page',
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'toc-links'} =
@@ -1276,7 +1334,7 @@ $T2H_OPTIONS -> {'split'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::SPLIT,
- verbose => 'split document on section|chapter else no splitting',
+ verbose => 'split document on section|chapter|node else no splitting',
 };
 
 $T2H_OPTIONS -> {'sec-nav'} =
@@ -1291,6 +1349,7 @@ $T2H_OPTIONS -> {'subdir'} =
  type => '=s',
  linkage => \$Texi2HTML::Config::SUBDIR,
  verbose => 'put files in directory $s, not $cwd',
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'short-ext'} =
@@ -1371,6 +1430,7 @@ $T2H_OPTIONS -> {'html-xref-prefix'} =
  type => '=s',
  linkage => \$Texi2HTML::Config::EXTERNAL_DIR,
  verbose => '$s is the base dir for external manual references',
+ noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'l2h'} =

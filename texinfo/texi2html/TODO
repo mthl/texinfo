@@ -8,6 +8,7 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
   etc).
   - xhtml with in line style
   - Singular manual style
+  - How complicated could it be to get a creation of XML, what about SGML ?
 
 * Fix `make distcheck'
 
