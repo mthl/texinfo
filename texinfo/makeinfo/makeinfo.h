@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.12 2003-11-21 17:10:17 dirt Exp $
+   $Id: makeinfo.h,v 1.13 2003-11-24 12:09:05 dirt Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -224,7 +224,7 @@ DECLARE (int, verbose_mode, 0);
 
 /* Nonzero means prefix each @chapter, ... with a number like
    1, 1.1, etc.  (--number-sections) */
-DECLARE (int, number_sections, 0);
+DECLARE (int, number_sections, 1);
 
 /* Nonzero means split size.  When zero, DEFAULT_SPLIT_SIZE is used. */
 DECLARE (int, split_size, 0);

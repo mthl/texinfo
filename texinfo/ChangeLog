@@ -1,5 +1,9 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.h: number sections by default.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_xref): if a reference is being made to a
 	float with only one parameter, use the float number in HTML, and
 	prepend it to the link in Info outputs.
