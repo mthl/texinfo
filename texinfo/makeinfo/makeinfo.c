@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.56 2003-11-23 22:58:26 dirt Exp $
+   $Id: makeinfo.c,v 1.57 2003-11-24 03:22:20 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -27,6 +27,7 @@
 #include "makeinfo.h"
 #include "cmds.h"
 #include "files.h"
+#include "float.h"
 #include "footnote.h"
 #include "html.h"
 #include "index.h"
@@ -3315,7 +3316,14 @@ cm_xref (arg)
                   add_anchor_name (tem, 1);
                   free (tem);
                   add_word ("\">");
-                  execute_string ("%s", *arg2 ? arg2 : arg1);
+                  if (*arg2)
+                    execute_string ("%s", arg2);
+                  else
+                    {
+                      char *fref = get_float_ref (arg1);
+                      execute_string ("%s", fref ? fref : arg1);
+                      free (fref);
+                    }
                   add_word ("</a>");
                 }
               else
@@ -3329,9 +3337,20 @@ cm_xref (arg)
                     }
                   else
                     {
-                      in_fixed_width_font++;
-                      execute_string ("%s::", arg1);
-                      in_fixed_width_font--;
+                      char *fref = get_float_ref (arg1);
+                      if (fref)
+                        { /* Reference is being made to a float.  */
+                          execute_string ("%s:", fref);
+                          in_fixed_width_font++;
+                          execute_string (" %s%s", arg1, px_ref_flag ? "." : "");
+                          in_fixed_width_font--;
+                        }
+                      else
+                        {
+                          in_fixed_width_font++;
+                          execute_string ("%s::", arg1);
+                          in_fixed_width_font--;
+                        }
                     }
                 }
             }

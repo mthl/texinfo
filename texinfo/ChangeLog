@@ -1,5 +1,11 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.c (cm_xref): if a reference is being made to a
+	float with only one parameter, use the float number in HTML, and
+	prepend it to the link in Info outputs.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/float.h:
 	* makeinfo/float.c (get_float_ref): new function to retrieve a float's
 	number by its id.
