@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.14 2002-12-06 14:28:55 karl Exp $
+dnl $Id: configure.ac,v 1.15 2003-01-01 18:28:11 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -22,6 +22,7 @@ dnl Checks for programs.
 AC_PROG_CC
 AC_PROG_GCC_TRADITIONAL
 AC_PROG_INSTALL
+AC_PROG_MAKE_SET
 AC_PROG_RANLIB
 
 AC_ISC_POSIX
@@ -126,12 +127,7 @@ fi
 AC_SUBST(TERMLIBS)dnl
 
 dnl gnulib.
-AC_DEFUN([texinfo_gnulib_macros],
-[
-  AC_REQUIRE([jm_PREREQ_TEMPNAME])dnl for mkstemp
-  AC_REQUIRE([UTILS_FUNC_MKSTEMP])
-])dnl
-texinfo_gnulib_macros
+UTILS_FUNC_MKSTEMP
 
 # For teTeX and TeX Live.
 AC_CANONICAL_HOST

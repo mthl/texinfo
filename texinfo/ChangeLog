@@ -1,3 +1,13 @@
+2003-01-01    <karl@gnu.org>
+
+	* doc/texinfo.tex (\_): more space afterwards, so __ comes out
+	better.  Noticed in the gcc manual.
+
+2002-12-31    <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (usage): omit all the help message when something
+	goes wrong in argument parsing, as intended.
+
 2002-12-26    <karl@gnu.org>
 
 	* doc/texinfo.tex (\insertcopying): ignore @c, @comment, and
