@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.10 2003-01-09 18:02:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.11 2003-01-14 14:27:14 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1889,15 +1889,15 @@ sub pass1
         if ($tag)
         {
             # skip lines
-            &skip_until($tag), next if $tag eq 'ignore';
-            &skip_until($tag), next if $tag eq 'ifnothtml';
+            (&skip_until($tag), next) if $tag eq 'ignore';
+            (&skip_until($tag), next) if $tag eq 'ifnothtml';
             if ($tag eq 'ifinfo')
             {
-                &skip_until($tag), next unless $T2H_EXPAND eq 'info';
+                (&skip_until($tag), next) unless $T2H_EXPAND eq 'info';
             }
             if ($tag eq 'iftex')
             {
-                &skip_until($tag), next unless $T2H_EXPAND eq 'tex';
+                (&skip_until($tag), next) unless $T2H_EXPAND eq 'tex';
             }
             if ($tag eq 'tex')
             {
@@ -2253,6 +2253,7 @@ sub pass1
             {
                 if ($def_map{$tag})
                 {
+                    # substitute shortcuts for definition commands
                     s/^\@$tag\s+//;
                     $tag = $def_map{$tag};
                     $_ = "\@$tag $_";
@@ -2277,6 +2278,7 @@ sub pass1
             }
             if (defined($def_map{$tag}))
             {
+                # process definition commands
                 s/^\@$tag\s+//;
                 if ($tag =~ /x$/)
                 {
@@ -2501,7 +2503,7 @@ sub pass1
             {
                 push @nodes_and_anchors, $anchor;
             }
-            push @lines, &html_debug("<a name=\""."ANC_".$anchor."\"></a>\n");
+            push @lines, &html_debug("<a name=\""."ANC_".$anchor."\"></a>\n", __LINE__);
             $node2href{$anchor} = "$docu_doc#ANC_$anchor";
             next INPUT_LINE if $_ =~ /^\s*$/;
         }
@@ -3797,7 +3799,7 @@ sub pass5
 
         $node = $node2up{$T2H_NODE{This}};
         $T2H_HREF{Up} = $node2href{$node};
-        if ($T2H_HREF{Up} eq $T2H_HREF{This} || ! $T2H_HREF{Up})
+        if (! $T2H_HREF{Up} || $T2H_HREF{Up} eq $T2H_HREF{This})
         {
             $T2H_NAME{Up} = $T2H_NAME{Top};
             $T2H_HREF{Up} = $T2H_HREF{Top};
@@ -3973,6 +3975,9 @@ sub clean_name
     return $_;
 }
 
+# initialize or increments @appendix_sec_num for the appendix sectionning,
+# initialize or increments @normal_sec_num for the normal sections, 
+# return the sectionning number.
 sub update_sec_num
 {
     my($name, $level) = @_;
@@ -4094,7 +4099,9 @@ sub Node2FastForward
 {
     my $node = shift;
     my $num = $sec2number{$node2sec{$node}};
+
     my $n;
+    my $returned_node;
 
     # Index pages
     return $node2next{$node} if !$num;
@@ -4107,7 +4114,12 @@ sub Node2FastForward
     $n = $n eq $normal_sec_num[0] ? 'A' : ++$n;
 
     # Return node name
-    return $sec2node{$number2sec{$n . '.'}} || $node2next{$node};
+
+    if (defined($number2sec{$n . '.'}) and ($returned_node = $sec2node{$number2sec{$n . '.'}}))
+    {
+        return $returned_node;
+    }
+    return $node2next{$node};
 }
 
 sub check
@@ -4311,6 +4323,7 @@ sub SimpleTexi2Html
 
 sub normalise_node
 {
+    return undef unless (defined ($_[0]));
     local $_ = $_[0];
     s/\s+/ /go;
     s/ $//;
