@@ -1,3 +1,10 @@
+2003-01-27    <karl@gnu.org>
+
+	Mon Jan 27 08:09:07 CET 2003 Stepan Kasal <kasal@math.cas.cz> 
+	* doc/texinfo.tex (\acuteaccent): the workaround is no longer needed.
+	(\xrefX): \normalturnoffactive changed to \turnoffactive, since
+	we \otherbackslash right afterwards anyway.
+
 2003-01-24    <karl@gnu.org>
 
 	* doc/texinfo.tex: These changes allow ' in node and anchor names:
