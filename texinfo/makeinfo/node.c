@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.15 2003-09-16 17:25:22 karl Exp $
+   $Id: node.c,v 1.16 2003-10-27 01:27:32 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1397,7 +1397,7 @@ validate_file (tag_table)
                   tem1 = expand_node_name (prev);
                   tem2 = expand_node_name (tags->node);
 
-                  if (STREQ (tem1, tem2))
+                  if (tem1 && tem2 && STREQ (tem1, tem2))
                     you_lose = 0;
                   free (tem1);
                   free (tem2);
