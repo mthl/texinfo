@@ -1,3 +1,11 @@
+2003-09-08  Karl Berry  <karl@gnu.org>
+
+	* lib/system.h: make that __CYGWIN__, not __unix__.  From Eli.
+	* lib/system.h (DEFAULT_TMPDIR,PATH_SEP) [O_BINARY && !__unix__]:
+	new case for cygwin, from: Thomas Klausner
+	<wiz@danbala.ifoer.tuwien.ac.at>, 8 Sep 2003 13:43:29 +0200
+	(for cross-building netbsd).
+
 2003-09-04  Karl Berry  <karl@gnu.org>
 
 	* texinfo.txi (Conventions): say more about quotations and dashes,
