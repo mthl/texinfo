@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.4 2002-10-04 15:36:13 karl Exp $
+$Id: dir-example,v 1.5 2002-10-09 16:19:41 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -77,12 +77,12 @@ GNU programming tools
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
-* Bison: (bison).               LALR(1) parser generator.
 * CVS: (cvs).                   Concurrent versions system for source control.
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
 * automake: (automake).		Making Makefile.in's
+* bison: (bison).	GNU parser generator (yacc replacement).
 * egcs: (egcs).                 Experimental GNU C compiler.
 * Flex: (flex).                 A fast scanner generator.
 * g77: (g77).                   GNU Fortran 77 compiler.
