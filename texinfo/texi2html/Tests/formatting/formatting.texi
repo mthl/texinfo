@@ -18,6 +18,17 @@ Menu comment
 "
 &
 
+``simple-double--three---four----''@*
+code: @code{``simple-double--three---four----''} @*
+asis: @asis{``simple-double--three---four----''} @*
+strong: @strong{``simple-double--three---four----''} @*
+kbd: @kbd{``simple-double--three---four----''} @*
+
+@cindex --option
+@cindex ``
+@findex ``
+@findex --foption
+
 @"u 
 @"{U} 
 @~n
@@ -204,6 +215,10 @@ smallformat
 
 @deffn category deffn_name arguments...
 deffn
+@end deffn
+
+@deffn cate--gory de--ffn_name ar--guments...
+def--fn
 @end deffn
 
 @defvr category defvr_name
@@ -406,6 +421,7 @@ tp
 * section:: section
 
 Menu comment
+``simple-double--three---four----''@*
 
 @end menu
 @end format

@@ -1,3 +1,8 @@
+2003-10-33  Patrice Dumas <dumas@centre-cired.fr>
+
+	* Tests/formatting/formatting.texi: test for --- and `` in various
+	constructs.
+
 2003-09-23  Patrice Dumas <dumas@centre-cired.fr>
 
 	* NEWS: More changes taken from the conversion of the singular 
