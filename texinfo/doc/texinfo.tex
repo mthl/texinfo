@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-02-03.16}
+\def\texinfoversion{2003-02-11.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -721,8 +721,7 @@ where each line of input produces a line of output.}
   \spacefactor=3000
 }
 
-
-% @page    forces the start of a new page
+% @page forces the start of a new page.
 %
 \def\page{\par\vfill\supereject}
 
@@ -1658,6 +1657,16 @@ where each line of input produces a line of output.}
 
 % @pounds{} is a sterling sign.
 \def\pounds{{\it\$}}
+
+% @registeredsymbol - R in a circle.  For now, only works in text size;
+% we'd have to redo the font mechanism to change the \scriptstyle and
+% \scriptscriptstyle font sizes to make it look right in headings.
+% Adapted from the plain.tex definition of \copyright.
+% 
+\def\registeredsymbol{%
+  $^{{\ooalign{\hfil\raise.07ex\hbox{$\scriptstyle\rm R$}\hfil\crcr\Orb}}%
+    }$%
+}
 
 
 \message{page headings,}
