@@ -1,5 +1,9 @@
 2005-01-23  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (euro): mention the font we use for the Euro
+	symbol and where to get it.  help-texinfo report from:
+	christoph.sobotka@utanet.at, 19 Jan 2005 21:29:20 +0100.
+
 	* doc/info-stnd.texi (Top): per rms, don't use @insertcopying here.
 	* doc/texinfo.txi (Top): Likewise.  Also, remove recommendations
 		to use it.	   

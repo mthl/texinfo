@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.132 2005-01-24 00:04:00 karl Exp $
+@c $Id: texinfo.txi,v 1.133 2005-01-24 00:21:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10546,6 +10546,15 @@ it is necessary to specify @code{@@documentencoding ISO-8859-15}.
 is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
 widely-used and supported ISO 8859-1 (Latin@tie{}1).
 
+@pindex feymr10
+The Euro symbol does not exist in the standard @TeX{} fonts (which
+were designed before the Euro was legislated into existence).
+Therefore, @TeX{} uses an additional font, named @code{feymr10} (along
+with other variables).  It is freely available, of course; you can
+download it from @url{http://www.ctan.org/tex-archive/fonts/eurosym},
+among other places.  The distribution includes installation
+instructions.
+
 
 @node pounds
 @section @code{@@pounds}@{@} (@pounds{}): Pounds Sterling
@@ -18455,7 +18464,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.132 2005-01-24 00:04:00 karl Exp $
+$Id: texinfo.txi,v 1.133 2005-01-24 00:21:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18521,7 +18530,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.132 2005-01-24 00:04:00 karl Exp $
+@comment $Id: texinfo.txi,v 1.133 2005-01-24 00:21:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
