@@ -1,3 +1,13 @@
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/makeinfo.c (cm_xref): xstrdup the result from
+	xml_get_assoc_for_id, as it gets freed later.
+
+	* makeinfo/xml.c (xml_get_assoc_for_id, xml_associate_title_with_id):
+	reimplemented unnumbered_labels handling.
+	(xml_insert_docbook_image): Docbook expects format attribute values to
+	be uppercase.
+
 2003-11-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\defttsl): new font.

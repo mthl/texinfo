@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.39 2003-11-23 10:53:34 dirt Exp $
+   $Id: xml.c,v 1.40 2003-11-23 22:58:26 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -947,23 +947,28 @@ xml_open_section (level, name)
 
 /* To be able to properly xref unnumbered sections with only one parameter,
    we have to keep track of their titles and use as the missing parameters.  */
-typedef struct
+typedef struct unnumbered_label
 {
+  struct unnumbered_label *next;
   char *id;
   char *title;
 } UNNUMBERED_LABEL;
 
-static UNNUMBERED_LABEL **unnumbered_labels = NULL;
-static int unnumbered_assoc_count = 0;
+static UNNUMBERED_LABEL *unnumbered_labels = NULL;
 
 char *
 xml_get_assoc_for_id (id)
   char *id;
 { /* Return the title, if its id matches the parameter.  */
-  int i;
-  for (i = 0; i < unnumbered_assoc_count; i++)
-    if (unnumbered_labels[i] && STREQ (id, unnumbered_labels[i]->id))
-      return unnumbered_labels[i]->title;
+  UNNUMBERED_LABEL *temp = unnumbered_labels;
+
+  while (temp)
+    {
+      if (STREQ (id, temp->id))
+        return temp->title;
+      temp = temp->next;
+    }
+
   /* Tough luck.  */
   return "";
 }
@@ -972,19 +977,18 @@ void
 xml_associate_title_with_id (nodename, title)
   char *nodename;
   char *title;
-{
-  /* Check to see if this node already has an associated title with it.  */
-  if (unnumbered_assoc_count && strlen (xml_get_assoc_for_id (xml_id (nodename))))
+{ /* Check to see if this node already has an associated title with it.  */
+  UNNUMBERED_LABEL *temp;
+
+  if (strlen (xml_get_assoc_for_id (xml_id (nodename))) > 0)
     return;
 
-  unnumbered_labels = (UNNUMBERED_LABEL **) xrealloc (unnumbered_labels,
-      (unnumbered_assoc_count + 1) * sizeof (UNNUMBERED_LABEL *));
-
   /* Associated Titles.  */
-  unnumbered_labels[unnumbered_assoc_count] = xmalloc (sizeof (UNNUMBERED_LABEL));
-  unnumbered_labels[unnumbered_assoc_count]->id = xml_id (nodename);
-  unnumbered_labels[unnumbered_assoc_count]->title = xstrdup (title);
-  unnumbered_assoc_count++;
+  temp = xmalloc (sizeof (UNNUMBERED_LABEL));
+  temp->id = xml_id (nodename);
+  temp->title = xstrdup (title);
+  temp->next = unnumbered_labels;
+  unnumbered_labels = temp;
 }
 
 void
@@ -1479,12 +1483,12 @@ xml_insert_docbook_image (name_arg)
   xml_insert_element (MEDIAOBJECT, START);
 
   xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.eps\" format=\"eps\"", name_arg);
+  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.eps\" format=\"EPS\"", name_arg);
   xml_insert_element (IMAGEDATA, END);
   xml_insert_element (IMAGEOBJECT, END);
 
   xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.jpg\" format=\"jpg\"", name_arg);
+  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.jpg\" format=\"JPG\"", name_arg);
   xml_insert_element (IMAGEDATA, END);
   xml_insert_element (IMAGEOBJECT, END);
 

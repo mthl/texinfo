@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.55 2003-11-23 10:53:34 dirt Exp $
+   $Id: makeinfo.c,v 1.56 2003-11-23 22:58:26 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3146,7 +3146,7 @@ cm_xref (arg)
               char *arg1_id = xml_id (arg1);
 
               if (!*arg2 && !*arg3)
-                arg3 = xml_get_assoc_for_id (arg1_id);
+                arg3 = xstrdup (xml_get_assoc_for_id (arg1_id));
 
               if (*arg2 || *arg3)
                 {
