@@ -1,3 +1,8 @@
+2004-11-07  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (main) [LC_MESSAGES]: #ifdef the setlocale
+	using LC_MESSAGES.  From te, 6 Nov 2004 23:36:10 +0100.
+
 2004-11-06  Karl Berry  <karl@gnu.org>
 
 	* lib/Makefile.am (libtxi_a_SOURCES): add strdup.h.
