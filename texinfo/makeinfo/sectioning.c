@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.17 2003-11-21 05:39:03 dirt Exp $
+   $Id: sectioning.c,v 1.18 2003-11-21 11:02:33 dirt Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -81,8 +81,6 @@ static char *scoring_characters = "*=-.";
 
 /* Amount to offset the name of sectioning commands to levels by. */
 static int section_alist_offset = 0;
-
-static char * handle_enum_increment ();
 
 
 /* num == ENUM_SECT_NO  means unnumbered (should never call this)
@@ -245,6 +243,39 @@ what_section (text, secname)
   return -1;
 }
 
+/* insert_and_underscore, sectioning_underscore and sectioning_html call this.  */
+
+static char *
+handle_enum_increment (level, index)
+     int level;
+     int index;
+{
+  /* Here's is how TeX handles enumeration:
+     - Anything below @unnumbered is not enumerated.
+     - Counters are incremented below @chapter and @appendix, but not
+       printed with their @unnumbered* children.  */
+  int i;
+
+  if (!number_sections && !docbook)
+    return xstrdup ("");
+
+  /* First constraint above.  */
+  if (enum_marker == UNNUMBERED_MAGIC && level == 0)
+    return xstrdup ("");
+
+  /* reset all counters which are one level deeper */
+  for (i = level; i < 3; i++)
+    numbers [i + 1] = 0;
+
+  /* Second constraint.  */
+  numbers[level]++;
+  if (section_alist[index].num == ENUM_SECT_NO || enum_marker == UNNUMBERED_MAGIC)
+    return xstrdup ("");
+  else
+    return xstrdup (get_sectioning_number (level, section_alist[index].num));
+}
+
+
 void
 sectioning_underscore (cmd)
      char *cmd;
@@ -279,12 +310,12 @@ sectioning_underscore (cmd)
 	  flush_output ();
 	  xml_last_section_output_position = output_paragraph_offset;
 
-          if (docbook && (STREQ (cmd, "unnumbered") || STREQ (cmd, "chapter")
-              || enum_marker == UNNUMBERED_MAGIC))
-            {
+          /* Docbook does not support @unnumbered at all.  So we provide numbers
+             that other formats use.  @appendix seems to be fine though, so we let
+             Docbook handle that as usual.  */
+          if (docbook && enum_marker != APPENDIX_MAGIC)
               xml_insert_element_with_attribute (xml_element (secname), START, "label=\"%s\"",
                   handle_enum_increment (level, search_sectioning (cmd)));
-            }
           else
             xml_insert_element (xml_element (secname), START);
 
@@ -314,61 +345,6 @@ sectioning_underscore (cmd)
       char character = scoring_characters[level];
       insert_and_underscore (level, character, secname);
     }
-}
-
-
-/* insert_and_underscore and sectioning_html call this.  */
-
-static char *
-handle_enum_increment (level, index)
-     int level;
-     int index;
-{
-  /* special for unnumbered */
-  if ((number_sections || docbook) && section_alist[index].num == ENUM_SECT_NO)
-    {
-      if (level == 0
-          && enum_marker != UNNUMBERED_MAGIC)
-        enum_marker = UNNUMBERED_MAGIC;
-    }
-  /* enumerate only things which are allowed */
-  if ((number_sections || docbook) && section_alist[index].num)
-    {
-      /* reset the marker if we get into enumerated areas */
-      if (section_alist[index].num == ENUM_SECT_YES
-          && level == 0
-          && enum_marker == UNNUMBERED_MAGIC)
-        enum_marker = 0;
-      /* This is special for appendix; if we got the first
-         time an appendix command then we are entering appendix.
-         Thats the point we have to start countint with A, B and so on. */
-      if (section_alist[index].num == ENUM_SECT_APP
-          && level == 0
-          && enum_marker != APPENDIX_MAGIC)
-        {
-          enum_marker = APPENDIX_MAGIC;
-          numbers [0] = 0; /* this means we start with Appendix A */
-        }
-
-      /* only increment counters if we are not in unnumbered
-         area. This handles situations like this:
-         @unnumbered ....   This sets enum_marker to UNNUMBERED_MAGIC
-         @section ....   */
-      if (enum_marker != UNNUMBERED_MAGIC)
-        {
-          int i;
-
-          /* reset all counters which are one level deeper */
-          for (i = level; i < 3; i++)
-            numbers [i + 1] = 0;
-
-          numbers[level]++;
-          return xstrdup
-            (get_sectioning_number (level, section_alist[index].num));
-        }
-    } /* if (number_sections || docbook)... */
-
-  return xstrdup ("");
 }
 
 
@@ -643,6 +619,7 @@ cm_top ()
 void
 cm_chapter ()
 {
+  enum_marker = 0;
   sectioning_underscore ("chapter");
 }
 
@@ -671,6 +648,7 @@ cm_subsubsection ()
 void
 cm_unnumbered ()
 {
+  enum_marker = UNNUMBERED_MAGIC;
   sectioning_underscore ("unnumbered");
 }
 
@@ -701,6 +679,9 @@ cm_unnumberedsubsubsec ()
 void
 cm_appendix ()
 {
+  enum_marker = APPENDIX_MAGIC;
+  /* Reset top level number so we start from Appendix A */
+  numbers [0] = 0;
   sectioning_underscore ("appendix");
 }
 

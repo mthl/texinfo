@@ -1,5 +1,14 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/sectioning.c (sectioning_underscore): for Docbook, always
+	provide label attribute for chapter and unnumbered.
+	(handle_enum_increment): simplified enumeration constraints, and
+	changed to follow TeX way.  Moved marker handling to ...
+	(cm_chapter, cm_unnumbered, cm_appendix): here.
+	(cm_appendix): restart numbering.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.h:
 	* makeinfo/insertion.c: new rawdocbook and rawxml insertion types to
 	provide better block names in error messages (instead of "rawhtml" for
