@@ -1,3 +1,9 @@
+2004-02-11  Derek Price  <derek@ximbiot.com>
+
+	* Makefile.am (bin_PROGRAMS): Move...
+	(bin_SCRIPTS): ...here.
+	(texi2html_SOURCES): Remove unused variable.
+
 2004-02-10  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* texi2html.pl: put the code related with cross references in the 

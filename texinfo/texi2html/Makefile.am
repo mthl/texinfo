@@ -9,13 +9,8 @@ i18ndir = $(pkgdatadir)/i18n
 # in the top-level distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
-#bin_SCRIPTS = texi2html
-bin_PROGRAMS = texi2html
-
-texi2html_SOURCES = texi2html.pl MySimple.pm translations.pl texi2html.init \
-    T2h_i18n.pm 
+bin_SCRIPTS = texi2html
 noinst_SCRIPTS = manage_i18n.pl
-
 man_MANS = texi2html.1
 
 EXTRA_DIST = \
@@ -23,26 +18,26 @@ EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
 	manage_i18n.pl \
-    translations.pl
+	translations.pl
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
 	examples/xhtml.init \
 	examples/html32.init \
-    examples/book.init \
-    examples/noheaders.init \
-    examples/inlinestyle.init \
-    examples/utf8.init \
-    examples/chm.init \
-    examples/roff.init	
+	examples/book.init \
+	examples/noheaders.init \
+	examples/inlinestyle.init \
+	examples/utf8.init \
+	examples/chm.init \
+	examples/roff.init	
 
 dist_i18n_DATA = i18n/en \
-    i18n/de \
-    i18n/es \
-    i18n/fr \
-    i18n/nl \
-    i18n/no \
-    i18n/pt 
+	i18n/de \
+	i18n/es \
+	i18n/fr \
+	i18n/nl \
+	i18n/no \
+	i18n/pt 
 
 dist_images_DATA = images/a_begin.gif \
 	images/a_begin_na.gif \
@@ -116,7 +111,5 @@ texi2html: \
 	$(srcdir)/MySimple.pm \
 	$(srcdir)/T2h_i18n.pm \
 	$(srcdir)/texi2html.init \
+	$(srcdir)/texi2html.pl \
 	$(srcdir)/texi2html.pl 
-
-
-
