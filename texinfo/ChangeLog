@@ -1,3 +1,12 @@
+2003-04-18    <karl@gnu.org>
+
+	* configure.ac (ncurses/termcap.h): move test to after termlib's
+	definition, of course.  Reported by Norton Allen
+	<allen@huarp.harvard.edu>, 18 Apr 2003 13:31:35 -0400.
+
+	* configure.ac: remove comma from comment in AC_TRY_LINK program,
+	to avoid spurious misinterpretation as an argument delimiter.
+
 2003-04-08    <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (usage): avoid double blank line.
