@@ -1365,7 +1365,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=texi2html
- VERSION=1.66
+ VERSION=1.67
 
 
 cat >>confdefs.h <<_ACEOF

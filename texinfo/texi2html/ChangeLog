@@ -1,5 +1,14 @@
 2002-06-08  Derek Price  <oberon@umich.edu>
 
+	* configure: Update to a new development release number.
+	* NEWS: Add news template for next release.
+
+	* configure.in: Regenerated.
+	* doc/stamp-vti: Ditto.
+	* doc/version.texi: Ditto.
+
+2002-06-08  Derek Price  <oberon@umich.edu>
+
 	* configure.in: Update Texi2HTML date.
 	* NEWS: Update for new release.
 	* .cvsignore: Add autom4te.cache for new version of Autoconf.
