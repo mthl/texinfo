@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.16 2003-02-28 13:54:11 pertusus Exp $
+# $Id: texi2html.init,v 1.17 2003-03-06 18:54:37 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -38,7 +38,7 @@ $T2H_TEST = 0;
 # -expand
 # if set to "tex" (or, "info") expand @iftex and @tex (or, @ifinfo) sections
 # else, neither expand @iftex, @tex, nor @ifinfo sections
-$T2H_EXPAND = "info";
+@T2H_EXPAND = ("info");
 
 # - glossary
 # If set, uses section named `Footnotes' for glossary.

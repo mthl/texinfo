@@ -28,8 +28,9 @@ if [ ! -f $dir/$texi_file ]; then
 	echo "  !!! no file $dir/$texi_file"
 	return
 fi
-(cd $dir && rm *.html *.htm) > /dev/null 2>&1
-(cd $dir && perl -w ../../texi2html -test $options $texi_file) 2>$dir/res.2 > /dev/null
+(cd $dir && rm *.html *.htm *.png) > /dev/null 2>&1
+export T2H_HOME=../..
+(cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/res.2 > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -118,7 +119,7 @@ fi
 
 test_texi GermanNodeTest nodetest.texi
 test_texi sectionning
-test_texi formatting verbatim_html.texi
+test_texi formatting verbatim_html.texi "-l2h -expand tex"
 test_texi texi2html
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"

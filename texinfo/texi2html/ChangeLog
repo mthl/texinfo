@@ -1,3 +1,28 @@
+2003-03-06  Patrice Dumas <dumas@centre-cired.fr>
+	* T2h_i18n.pm: added  the licence
+	* texi2html.pl, texi2html.init, check_texinfo.pl.in: check function
+	put in check_texinfo.pl.in. T2H_EXPAND is now an array such that
+	more than one type may be expanded
+	* texi2html.pl: added a new pass before the other ones, pass0 and
+	a function scan_line0 used in that pass. During that pass the
+	ifhtml, ifnot*, the comments and multiple empty lines, the macros, 
+	values and includes are handled. No html is generated. the
+	different things that are expanded can now be within a line and 
+	not necessarily at the begining of the line.
+	The handling of values and macros is not changed.
+	scan_line handles more constructs (newlines (still bugged), 
+	verbatim, html and tex, deffn (incomplete)).
+	new function close_stack which might be used to close the things 
+	forgotten by users or between paragraphs.
+	new function substitute_text which uses scan_line to render
+	arbitrary text.
+	little improvements in menu comments handling.
+	accent_map/do_accent should handle all the accents.
+	* Tests/test.sh: minor changes.
+	* Tests/*: regenerated tests to keep in sync.
+	added formatting/imbrications.texi to test for imbricated things.
+	* configure, configure.in: added check_texinfo.pl.in.
+
 2003-02-28  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init, T2h_i18n.pm: options specifications
 	moved from texi2html.init to texi2html.pl, such that texi2html.init

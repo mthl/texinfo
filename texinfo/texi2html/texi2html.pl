@@ -108,7 +108,7 @@ use vars qw(
             $T2H_IDX_SUMMARY
             $T2H_SPLIT
             $T2H_SHORT_REF
-            $T2H_EXPAND
+            @T2H_EXPAND
             $T2H_TOC
             $T2H_TOP
             $T2H_DOCTYPE 
@@ -223,7 +223,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.31 2003-02-28 13:54:11 pertusus Exp $
+# $Id: texi2html.pl,v 1.32 2003-03-06 18:54:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -298,15 +298,6 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
 package main;
-
-#+++############################################################################
-#                                                                              #
-# Prototypes                                                                   #
-#                                                                              #
-#---############################################################################
-
-sub check();
-sub open_file($);
 
 #+++############################################################################
 #                                                                              #
@@ -517,6 +508,11 @@ $index_properties =
 	      'dotless',    '&do_accent'
              );
 
+foreach my $accent (keys(%accent_map))
+{
+    $style_map{$accent} = '&do_accent';
+}
+
 #
 # texinfo format (@foo/@end foo) to HTML ones
 #
@@ -614,25 +610,27 @@ $complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
 #
 %to_skip = (
 	    # comments
-	    'c', 1,
-	    'comment', 1,
-            'ifnotinfo', 1,
-            'ifnottex', 1,
-	    'ifhtml', 1,
-	    'end ifhtml', 1,
-            'end ifnotinfo', 1,
-            'end ifnottex', 1,
+#	    'c', 1,
+#	    'comment', 1,
+#            'ifnotinfo', 1,
+#            'ifnottex', 1,
+#	    'ifhtml', 1,
+#	    'end ifhtml', 1,
+#            'end ifnotinfo', 1,
+	    #           'end ifnottex', 1,
 	    # useless
 	    'detailmenu', 1,
+            'end detailmenu', 1,
             'direntry', 1,
+            'end direntry', 1,
 	    'contents', 1,
 	    'shortcontents', 1,
 	    'summarycontents', 1,
 	    'footnotestyle', 1,
-	    'end ifclear', 1,
-	    'end ifset', 1,
-	    'titlepage', 1,
-	    'end titlepage', 1,
+#	    'end ifclear', 1,
+#	    'end ifset', 1,
+#	    'titlepage', 1,
+#	    'end titlepage', 1,
 	    # unsupported commands (formatting)
 	    'afourpaper', 1,
 	    'cropmarks', 1,
@@ -658,6 +656,21 @@ $complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
 	    'group', 1,
 	    'end group', 1,
            );
+
+# raw formats which are not be expanded
+my @raw_text = ('tex', 'html', 'verbatim');
+
+# text macros ignored based on a value
+my @value_text = ('ifclear', 'ifset' );
+
+# all the potentially ignorable text macros
+my @text_macros = ('iftex', 'ignore', 'ifplaintext', 'ifinfo', 'ifhtml', 
+'html', 'tex', 'titlepage', 'ifnothtml', 'ifnottex', 'ifnotplaintext', 
+'ifnotinfo', 'verbatim', 'ifclear', 'ifset' );
+
+# text not ignored (titlepage is treated especially)
+my @kept_text = ('ifinfo', 'ifhtml', 'html', 'ifnottex', 'ifnotplaintext', 
+'ifnotinfo', 'verbatim', 'titlepage');
 
 #+++############################################################################
 #                                                                              #
@@ -755,7 +768,7 @@ $T2H_OPTIONS -> {test} =
 $T2H_OPTIONS -> {expand} =
 {
  type => '=s',
- linkage => \$T2H_EXPAND,
+ linkage => \@T2H_EXPAND,
  verbose => 'Expand info|tex|none section of texinfo source',
 };
 
@@ -983,14 +996,14 @@ $T2H_OBSOLETE_OPTIONS -> {use_acc} =
 $T2H_OBSOLETE_OPTIONS -> {expandinfo} =
 {
  type => '!',
- linkage => sub {$T2H_EXPAND = 'info';},
+ linkage => sub {push @T2H_EXPAND, 'info';},
  verbose => 'obsolete, use "-expand info" instead',
  noHelp => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {expandtex} =
 {
  type => '!',
- linkage => sub {$T2H_EXPAND = 'tex';},
+ linkage => sub {push @T2H_EXPAND, 'tex';},
  verbose => 'obsolete, use "-expand tex" instead',
  noHelp => 2,
 };
@@ -1101,12 +1114,6 @@ if (@ARGV > 1)
     }
 }
 
-if ($T2H_CHECK)
-{
-    die "Need file to check\n$T2H_FAILURE_TEXT" unless @ARGV > 0;
-    check();
-    exit;
-}
 
 #+++############################################################################
 #                                                                              #
@@ -1114,16 +1121,10 @@ if ($T2H_CHECK)
 #                                                                              #
 #---############################################################################
 
-if ($T2H_EXPAND eq 'info')
+foreach my $expanded (@T2H_EXPAND)
 {
-    $to_skip{'ifinfo'} = 1;
-    $to_skip{'end ifinfo'} = 1;
-}
-elsif ($T2H_EXPAND eq 'tex')
-{
-    $to_skip{'iftex'} = 1;
-    $to_skip{'end iftex'} = 1;
-
+    push (@kept_text, "if$expanded") unless grep {"if$expanded" eq $_} @kept_text;
+    push (@kept_text, "$expanded") unless grep {"$expanded" eq $_} @kept_text;
 }
 
 $T2H_INVISIBLE_MARK = '<img src="invisible.xbm" alt="">' if $T2H_INVISIBLE_MARK eq 'xbm';
@@ -1783,104 +1784,29 @@ sub l2h_ToCache($$)
     return $content;
 }
 
-
 #+++############################################################################
 #                                                                              #
-# Pass 1: read source, handle command, variable, simple substitution           #
+# Pass 0: read source, handle variable, ignored text                           #
 #                                                                              #
 #---############################################################################
 
-# build code for simple substitutions
-# the maps used (%simple_map and %things_map) MUST be aware of this
-# watch out for regexps, / and escaped characters!
-sub build_simple_substitutions ()
-{    
-    my $subst_code = "my \$text = shift;\n";
-    foreach my $simple_macro (keys(%simple_map))
-    {
-	my $re = $simple_macro;
-        $re =~ s/(\W)/\\$1/g; # protect regexp chars
-        $subst_code .= "\$text =~  s/\\\@$re/$simple_map{$simple_macro}/g;\n";
-    }
-    foreach my $thing_macro (keys(%things_map))
-    {
-        $subst_code .= "\$text =~ s/\\\@$thing_macro\\{\\}/$things_map{$thing_macro}/g;\n";
-    }
-    # first remove dotless command
-    $subst_code .= "\$text =~ s/\\\@dotless\\{([a-z])\\}/\${1}/gi;\n";
-    # then substitute accentuated characters
-    foreach my $accent_macro (keys(%accent_map))
-    {
-        my $subst_command;
-        if ($accent_macro eq "`")
-        {
-            $subst_command .= "s/$;3";
-        }
-        elsif ($accent_macro eq "'")
-        {
-            $subst_command .= "s/$;4";
-        }
-        elsif ($accent_macro eq '"')
-        {
-            $subst_command .= "s/$;5";
-        }
-        else
-        {
-            $subst_command .= "s/\\\@\\$accent_macro";
-        }
-        $subst_code .= "\$text =~ " . $subst_command ."([a-z])/&\${1}$accent_map{$accent_macro};/gi;\n";
-        $subst_code .= "\$text =~ " . $subst_command ."{([a-z])}/&\${1}$accent_map{$accent_macro};/gi;\n";
-    }
-    $subst_code .= "return \$text;\n";
-    eval("sub simple_substitutions(\$) { $subst_code }");
-}
-
 my $has_top = 0;            # did I see a top node?
 my $has_top_command = 0;    # did I see @top for automatic pointers?
-my $has_top_heading = 0;    # did I see content in top ?
-my @html_stack = ();        # HTML elements stack
-my $html_element = '';      # current HTML element
-
-my @lines = ();             # whole document
-my @toc_lines = ();            # table of contents
-my @stoc_lines = ();           # table of contents
 
 my @fhs = ();			# hold the file handles to read
 my @input_spool = ();		# spooled lines to read
 my $fh_name = 'FH000';
-my @appendix_sec_num; 
-my @normal_sec_num;
+
+my @lines = ();             # whole document
 
 
-sub pass1
+sub pass0
 {
-    my $name;
-    my @nodes_and_anchors = (); # all nodes and anchors
-    my $curlevel = 0;           # current level in TOC
-    my $node = '';              # current node name
-    my $node_next = '';         # current node next name
-    my $node_prev = '';         # current node prev name
-    my $node_up = '';           # current node up name
-    my $section;                # current section
-    my $in_table = 0;           # am I inside a table 
-              # holds the command used to format entries for tables ;
-              # for multitable, in_table is like: $table_width:$current_column
-              # $current_column == 0 if there was no line
-    my $table_type = '';        # type of table ('', 'f', 'v', 'multi')
-    my @tables = ();            # nested table support
-    my $in_bibliography = 0;    # am I inside a bibliography
-    my $in_glossary = 0;        # am I inside a glossary
-    my $in_top = 0;             # am I inside the top node
-    my $in_pre = 0;             # am I inside a preformatted section
-    my $in_list = 0;            # am I inside a list
     my $first_line = 1;         # is it the first line
-    my $toplevel;
-    my $dont_html = 0;          # don't protect HTML on this line
-    my $in_titlepage;           # am I inside the title page
+    my $in_top = 0;             # am I inside the top node
     my $macros;                 # macros. reference on a hash
-
-    html_reset();
-    build_simple_substitutions();
+    my $state;
+    $state->{'complex_format'} = 0; 
 
  INPUT_LINE: while ($_ = next_line())
     {
@@ -1892,10 +1818,7 @@ sub pass1
             next if /^\\input/;
             $first_line = 0;
         }
-        # non-@ substitutions cf. texinfmt.el
-        #
-        # parse texinfo tags
-        #
+	
         my $tag = '';
         my $end_tag = '';
         if (/^\s*\@end\s+(\w+)\b/)
@@ -1906,57 +1829,11 @@ sub pass1
         {
             $tag = $1;
         }
-        #
-        # handle @html / @end html and @verbatim / @end verbatim
-        # 
-        # as texinfo 4.5
-        # verbatim might begin at another position than beginning
-        # of line, and end verbatim might too. To end a verbatim section
-        # @end verbatim must have exactly one space between end and verbatim
-        # things following end verbatim are not ignored.
-        #
-        # html might begin at another position than beginning
-        # of line, but @end html must begin the line, and have
-        # exactly one space. Things following end html are ignored.
-        # tex and ignore works like html
-        #
-        # ifnothtml might begin at another position than beginning
-        # of line, and @end  ifnothtml might too, there might be more
-        # than one space between @end and ifnothtml but nothing more on 
-        # the line. 
-        # itemize, ftable works like ifnothtml.
-        # text right after the itemize before an item is displayed.
-        # @item might be somewhere in a line. 
-        # strangely @item on the same line than @end vtable doesn't work
-        # and makeinfo segfaults with 
-        # @itemize @w @item on
-        #
-        # see more examples in formatting directory
-
-        if ($tag eq 'html' or $tag eq 'verbatim')
-        {
-            push @lines, $_;
-            push @lines, push_until ($tag, undef, \@lines);
-            next;
-        }
-
-        #
-        # try to remove inlined comments
-        # syntax from tex-mode.el comment-start-skip
-        #
-        s/((^|[^\@])(\@\@)*)\@(c( |\{)|comment ).*$/$1/;
-
-        # Sometimes I use @c right at the end of  a line ( to suppress the line feed )
-        #    s/((^|[^\@])(\@\@)*)\@c(omment)?$/$1/;
-        #     s/((^|[^\@])(\@\@)*)\@c(omment)? .*/$1/;
-        #     s/(.*)\@c{.*?}(.*)/$1$2/;
-        #     s/(.*)\@comment{.*?}(.*)/$1$2/;
-        #     s/^(.*)\@c /$1/;
-        #     s/^(.*)\@comment /$1/;
-
+	
         #############################################################
         # value substitution before macro expansion, so that
         # it works in macro arguments
+	# FIXME pertusus: is it really that way and not the other way round ?
         s/\@value{($VARRE)}/$value{$1}/eg;
 
         #############################################################
@@ -1966,7 +1843,7 @@ sub pass1
             if (exists($macros->{$1}))
             {
                 my $before = $`;
-                $name = $1;
+                my $name = $1;
                 my $after = $';
                 my @args;
                 my $args;
@@ -2050,17 +1927,350 @@ sub pass1
                 next INPUT_LINE;
             }
         }
+        if ($tag eq 'macro' || $tag eq 'rmacro')
+        {
+            if (/^\@$tag\s*(\w+)\s*(.*)/)
+            {
+                my $name = $1;
+                my @args;
+                @args = split(/\s*,\s*/ , $1)
+                    if ($2 =~ /^\s*{(.*)}\s*/);
+                $macros->{$name}->{Args} = \@args;
+                $macros->{$name}->{Body} = '';
+                while (($_ = next_line()) && $_ !~ /\@end $tag/)
+                {
+                    $macros->{$name}->{Body} .= $_;
+                }
+                die "ERROR: No closing '\@end $tag' found for macro definition of '$name'\n"
+                    unless (/\@end $tag/);
+                chomp $macros->{$name}->{Body};
+            }
+            else
+            {
+                warn "$ERROR: Bad macro defintion $_"
+            }
+            next;
+        }
+	unless ($state->{'verb'} or $state->{'raw'} or $state->{'ignored'})
+        {
+        # track variables
+            ($value{$1} = $2, next) if /^\@set\s+($VARRE)\s+(.*)$/o;
+            (delete $value{$1}, next) if /^\@clear\s+($VARRE)\s*$/o;
+            # store things
+            ($value{'_shorttitle'} = substitute_text(1, $1), next) if /^\@shorttitle\s+(.*)$/;
+            ($value{'_setfilename'} = substitute_text(1, $1), next) if /^\@setfilename\s+(.*)$/;
+            ($value{'_settitle'}  = substitute_text(1, $1), next) if /^\@settitle\s+(.*)$/;
+            #FIXME pertusus: there might be more than one value for the 
+            #author macro
+            ($value{'_author'}   .= substitute_text(1, $1)."\n", next) if /^\@author\s+(.*)$/;
+            ($value{'_subtitle'} .= substitute_text(1, $1)."\n", next) if /^\@subtitle\s+(.*)$/;
+            ($value{'_title'}    .= substitute_text(1, $1)."\n", next) if /^\@title\s+(.*)$/;
+        }	
+        $_ = scan_line0 ($_, $state);
+        unless (defined($_))
+        {
+            next;
+        }
+        if ($state->{'raw'})
+        {
+            push @lines, $_;
+            next;
+        }
+        #remove empty lines
+        if ($state->{'verb'})
+        {
+            if (/^\s*$/ and !$state->{'complex_format'})
+            {
+                 next if ($state->{'empty_line'});
+                 $state->{'empty_line'} = 1;
+            }
+            else
+            {
+                 $state->{'empty_line'} = 0;
+            }
+            push @lines, $_;
+            next;
+        }
+        
+        #
+        # analyze the tag
+        #
+        if ($tag)
+        {
+            last if $tag eq 'bye';
+            # special cases
+            # APA: Fixed regexp to ONLY match the top node, not any
+            # node starting with the word top.
+            if ($tag eq 'top' || ($tag eq 'node' && /^\@node\s+top\s*(,.*)?$/i))
+            {
+                $has_top = 1;
+                $has_top_command = 1 if $tag eq 'top';
+            }
+            elsif ($tag eq 'include')
+            {
+                if (/^\@include\s+($FILERE)\s*$/o)
+                {
+                    my $file = LocateIncludeFile($1);
+                    if ($file && -e $file)
+                    {
+                        open_file($file);
+                        print "# including $file\n" if $T2H_VERBOSE;
+                    }
+                    else
+                    {
+                        warn "$ERROR Can't find $1, skipping";
+                    }
+                }
+                else
+                {
+                    warn "$ERROR Bad include line: $_";
+                }
+                next;
+            }
+            elsif ($tag eq 'synindex' || $tag eq 'syncodeindex')
+            {
+                if (/^\@$tag\s+(\w+)\s+(\w+)\s*$/)
+                {
+                    my $from = $1;
+                    my $to = $2;
+                    my $prefix_from = IndexName2Prefix($from);
+                    my $prefix_to = IndexName2Prefix($to);
+
+                    warn("$ERROR unknown from index name $from ind syn*index line: $_"), next
+                        unless $prefix_from;
+                    warn("$ERROR unknown to index name $to ind syn*index line: $_"), next
+                        unless $prefix_to;
+
+                    if ($tag eq 'syncodeindex')
+                    {
+                        $index_properties->{$prefix_to}->{'from_code'}->{$prefix_from} = 1;
+                    }
+                    else
+                    {
+                        $index_properties->{$prefix_to}->{'from'}->{$prefix_from} = 1;
+                    }
+                }
+                else
+                {
+                    warn "$ERROR Bad syn*index line: $_";
+                }
+                next;
+            }
+            elsif ($tag eq 'defindex' || $tag eq 'defcodeindex')
+            {
+                if (/^\@$tag\s+(\w+)\s*$/)
+                {
+                    my $name = $1;
+                    $index_properties->{$name}->{name} = $name;
+                    $index_properties->{$name}->{code} = 1 if $tag eq 'defcodeindex';
+                }
+                else
+                {
+                    warn "$ERROR Bad defindex line: $_";
+                }
+                next;
+            }
+            elsif ($tag eq 'unmacro')
+            {
+                delete $macros->{$1} if (/^\@unmacro\s*(\w+)/);
+                next;
+            }
+            elsif ($tag eq 'documentlanguage')
+            {
+                SetDocumentLanguage($1) if (!$T2H_WORDS && /documentlanguage\s*(\w+)/);
+                next;
+            }
+        }
+        next if ($state->{'titlepage'});
+        if (/^\s*$/ and !$state->{'complex_format'})
+        {
+             next if ($state->{'empty_line'});
+             $state->{'empty_line'} = 1;
+        }
+        else
+        {
+             $state->{'empty_line'} = 0;
+        }
+        push (@lines, $_);
+    }
+    my $not_closed = '';
+    if ($state->{'verb'})
+    {
+        $not_closed .= " verb";
+        $lines[$#lines] .= "$state->{'verb'}" . '}';
+    }
+    if ($state->{'raw'})
+    {
+        $not_closed = " $state->{'raw'}";
+        $lines[$#lines] .= " end $state->{'raw'}";
+    }
+    $not_closed = " @{$state->{'text_macro_stack'}}" 
+        if (defined($state->{'text_macro_stack'}) and @{$state->{'text_macro_stack'}});
+    $not_closed .= " $state->{'complex_format'} complex formats" if $state->{'complex_format'}; 
+    warn "$ERROR $not_closed macros not properly closed\n" if ($not_closed);
+    print "# end of pass 0\n" if $T2H_VERBOSE;
+}
+
+#+++############################################################################
+#                                                                              #
+# Pass 1: read source, handle command, variable, simple substitution           #
+#                                                                              #
+#---############################################################################
+
+# build code for simple substitutions
+# the maps used (%simple_map and %things_map) MUST be aware of this
+# watch out for regexps, / and escaped characters!
+sub build_simple_substitutions ()
+{    
+    my $subst_code = "my \$text = shift;\n";
+    foreach my $simple_macro (keys(%simple_map))
+    {
+	my $re = $simple_macro;
+        $re =~ s/(\W)/\\$1/g; # protect regexp chars
+        $subst_code .= "\$text =~  s/\\\@$re/$simple_map{$simple_macro}/g;\n";
+    }
+    foreach my $thing_macro (keys(%things_map))
+    {
+        $subst_code .= "\$text =~ s/\\\@$thing_macro\\{\\}/$things_map{$thing_macro}/g;\n";
+    }
+    # first remove dotless command
+    $subst_code .= "\$text =~ s/\\\@dotless\\{([a-z])\\}/\${1}/gi;\n";
+    # then substitute accentuated characters
+    foreach my $accent_macro (keys(%accent_map))
+    {
+        my $subst_command;
+        if ($accent_macro eq "`")
+        {
+            $subst_command .= "s/$;3";
+        }
+        elsif ($accent_macro eq "'")
+        {
+            $subst_command .= "s/$;4";
+        }
+        elsif ($accent_macro eq '"')
+        {
+            $subst_command .= "s/$;5";
+        }
+        else
+        {
+            $subst_command .= "s/\\\@\\$accent_macro";
+        }
+        $subst_code .= "\$text =~ " . $subst_command ."([a-z])/&\${1}$accent_map{$accent_macro};/gi;\n";
+        $subst_code .= "\$text =~ " . $subst_command ."{([a-z])}/&\${1}$accent_map{$accent_macro};/gi;\n";
+    }
+    $subst_code .= "return \$text;\n";
+    eval("sub simple_substitutions(\$) { $subst_code }");
+}
+
+my $has_top_heading = 0;    # did I see content in top ?
+my @html_stack = ();        # HTML elements stack
+my $html_element = '';      # current HTML element
+
+my @toc_lines = ();            # table of contents
+my @stoc_lines = ();           # table of contents
+
+my @lines1 = ();               #whole document after pass1
+
+my @appendix_sec_num; 
+my @normal_sec_num;
+
+
+sub pass1
+{
+    my @nodes_and_anchors = (); # all nodes and anchors
+    my $curlevel = 0;           # current level in TOC
+    my $node = '';              # current node name
+    my $node_next = '';         # current node next name
+    my $node_prev = '';         # current node prev name
+    my $node_up = '';           # current node up name
+    my $section;                # current section
+    my $in_table = 0;           # am I inside a table 
+              # holds the command used to format entries for tables ;
+              # for multitable, in_table is like: $table_width:$current_column
+              # $current_column == 0 if there was no line
+    my $table_type = '';        # type of table ('', 'f', 'v', 'multi')
+    my @tables = ();            # nested table support
+    my $in_bibliography = 0;    # am I inside a bibliography
+    my $in_glossary = 0;        # am I inside a glossary
+    my $in_top = 0;             # am I inside the top node
+    my $in_pre = 0;             # am I inside a preformatted section
+    my $in_list = 0;            # am I inside a list
+    my $toplevel;
+    my $dont_html = 0;          # don't protect HTML on this line
+
+    html_reset();
+    build_simple_substitutions();
+
+    while (@lines)
+    {
+        $_ = shift(@lines);
+        if (!defined($_)) {push @lines1, '<!--undefined line in lines-->';}
+        # non-@ substitutions cf. texinfmt.el
+        #
+        # parse texinfo tags
+        #
+        my $tag = '';
+        my $end_tag = '';
+        if (/^\s*\@end\s+(\w+)\b/)
+        {
+            $end_tag = $1;
+        }
+        elsif (/^\s*\@(\w+)\b/)
+        {
+            $tag = $1;
+        }
+        #
+        # handle @html / @end html and @verbatim / @end verbatim
+        # 
+        # as texinfo 4.5
+        # verbatim might begin at another position than beginning
+        # of line, and end verbatim might too. To end a verbatim section
+        # @end verbatim must have exactly one space between end and verbatim
+        # things following end verbatim are not ignored.
+        #
+        # html might begin at another position than beginning
+        # of line, but @end html must begin the line, and have
+        # exactly one space. Things following end html are ignored.
+        # tex and ignore works like html
+        #
+        # ifnothtml might begin at another position than beginning
+        # of line, and @end  ifnothtml might too, there might be more
+        # than one space between @end and ifnothtml but nothing more on 
+        # the line.
+        # @end itemize, @end ftable works like @end ifnothtml.
+        # except that @item on the same line than @end vtable doesn't work
+        # 
+        # text right after the itemize before an item is displayed.
+        # @item might be somewhere in a line. 
+        # strangely @item on the same line than @end vtable doesn't work
+        # there should be nothing else than a command following @itemize...
+        #
+        # see more examples in formatting directory
+
+
+        #
+        # try to remove inlined comments
+        # syntax from tex-mode.el comment-start-skip
+        #
+	#s/((^|[^\@])(\@\@)*)\@(c( |\{)|comment ).*$/$1/;
+
+        # Sometimes I use @c right at the end of  a line ( to suppress the line feed )
+        #    s/((^|[^\@])(\@\@)*)\@c(omment)?$/$1/;
+        #     s/((^|[^\@])(\@\@)*)\@c(omment)? .*/$1/;
+        #     s/(.*)\@c{.*?}(.*)/$1$2/;
+        #     s/(.*)\@comment{.*?}(.*)/$1$2/;
+        #     s/^(.*)\@c /$1/;
+        #     s/^(.*)\@comment /$1/;
+
         #
         # try to skip the line
         #
         if ($end_tag)
         {
-            $in_titlepage = 0 if $end_tag eq 'titlepage';
             next if $to_skip{"end $end_tag"};
         }
         elsif ($tag)
         {
-            $in_titlepage = 1 if $tag eq 'titlepage';
             next if $to_skip{$tag};
             last if $tag eq 'bye';
         }
@@ -2072,7 +2282,7 @@ sub pass1
             {
                 # no more in top
                 $in_top = 0;
-                push(@lines, $TOPEND);
+                push(@lines1, $TOPEND);
             }
         }
         unless ($in_pre)
@@ -2087,35 +2297,30 @@ sub pass1
         if ($tag)
         {
             # skip lines
-            # FIXME add ifplaintext
-            (skip_until($tag), next) if $tag eq 'ignore';
-            (skip_until($tag), next) if $tag eq 'ifnothtml';
-            if ($tag eq 'ifinfo')
-            {
-                (skip_until($tag), next) unless $T2H_EXPAND eq 'info';
-            }
-            if ($tag eq 'iftex')
-            {
-                (skip_until($tag), next) unless $T2H_EXPAND eq 'tex';
-            }
-            if ($tag eq 'tex')
-            {
+	    #(skip_until($tag), next) if $tag eq 'ignore';
+	    #(skip_until($tag), next) if $tag eq 'ifnothtml';
+	    #if ($tag eq 'ifinfo')
+	    #{
+	    #    (skip_until($tag), next) unless grep {$_ eq 'info'} @T2H_EXPAND;
+	    #}
+	    #if ($tag eq 'iftex')
+	    #{
+	    #    (skip_until($tag), next) unless grep {$_ eq 'tex'} @T2H_EXPAND;
+	    #}
+	    #if ($tag eq 'tex')
+	    #{
                 # add to latex2html file
-                if ($T2H_EXPAND eq 'tex' && $T2H_L2H && ! $in_pre)
-                {
+                #if (grep {$_ eq 'tex'} @T2H_EXPAND && $T2H_L2H && ! $in_pre)
+		#{
                     # add space to the end -- tex(i2dvi) does this, as well
-                    push(@lines, l2h_ToLatex(string_until($tag) . " "));
-                }
-                else
-                {
-                    skip_until($tag);
-                }
-                next;
-            }
-            if ($tag eq 'titlepage')
-            {
-                next;
-            }
+		    #push(@lines1, l2h_ToLatex(string_until($tag) . " "));
+                #}
+		#else
+		#{
+                    #skip_until($tag);
+		#}
+		#next;
+            #}
             # handle special tables
             if ($tag =~ /^(|f|v|multi)table$/)
             {
@@ -2128,9 +2333,7 @@ sub pass1
             if ($tag eq 'top' || ($tag eq 'node' && /^\@node\s+top\s*(,.*)?$/i))
             {
                 $in_top = 1;
-                $has_top = 1;
-                $has_top_command = 1 if $tag eq 'top';
-                @lines = ();    # ignore all lines before top (title page garbage)
+                @lines1 = ();    # ignore all lines before top (title page garbage)
                 next;
             }
             elsif ($tag eq 'node')
@@ -2138,7 +2341,7 @@ sub pass1
                 if ($in_top)
                 {
                     $in_top = 0;
-                    push(@lines, $TOPEND);
+                    push(@lines1, $TOPEND);
                 }
                 warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODESRE$/o;
                 # request of "Richard Y. Kim" <ryk@ap.com>
@@ -2176,54 +2379,7 @@ sub pass1
                 {
                     $node_up = normalise_node($node_up);
                 }
-                push @lines, html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
-                next;
-            }
-            elsif ($tag eq 'include')
-            {
-                if (/^\@include\s+($FILERE)\s*$/o)
-                {
-                    my $file = LocateIncludeFile($1);
-                    if ($file && -e $file)
-                    {
-                        open_file($file);
-                        print "# including $file\n" if $T2H_VERBOSE;
-                    }
-                    else
-                    {
-                        warn "$ERROR Can't find $1, skipping";
-                    }
-                }
-                else
-                {
-                    warn "$ERROR Bad include line: $_";
-                }
-                next;
-            }
-            elsif ($tag eq 'ifclear')
-            {
-                if (/^\@ifclear\s+($VARRE)\s*$/o)
-                {
-                    next unless defined($value{$1});
-                    skip_until($tag);
-                }
-                else
-                {
-                    warn "$ERROR Bad ifclear line: $_";
-                }
-                next;
-            }
-            elsif ($tag eq 'ifset')
-            {
-                if (/^\@ifset\s+($VARRE)\s*$/o)
-                {
-                    next if defined($value{$1});
-                    skip_until($tag);
-                }
-                else
-                {
-                    warn "$ERROR Bad ifset line: $_";
-                }
+                push @lines1, html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
                 next;
             }
             elsif ($tag eq 'menu')
@@ -2234,20 +2390,20 @@ sub pass1
                     next;
                 }
                 html_push_if($tag);
-                push(@lines, html_debug('', __LINE__));
+                push(@lines1, html_debug('', __LINE__));
             }
             elsif ($format_map{$tag})
             {
                 $in_pre = 1 if $format_map{$tag} eq 'pre';
                 html_push_if($format_map{$tag});
-                push(@lines, html_debug('', __LINE__));
+                push(@lines1, html_debug('', __LINE__));
                 $in_list++ if $format_map{$tag} eq 'ul' || $format_map{$tag} eq 'ol' ;
                 #	    push(@lines, &debug("<blockquote>\n", __LINE__))
                 #	      if $tag =~ /example/i;
                 # Eric Sunshine <sunshine@sunshineco.com>: <pre>blah</pre>
                 # looks better than <pre>\nblah</pre> on OmniWeb2 NextStep
                 # browser.
-                push(@lines, debug("<$format_map{$tag}>" .
+                push(@lines1, debug("<$format_map{$tag}>" .
                                     ($in_pre ? '' : "\n"), __LINE__));
                 next;
             }
@@ -2260,7 +2416,7 @@ sub pass1
                 {
                     if ($html_element eq 'p')
                     {
-                        push (@lines, debug("</p>\n", __LINE__));
+                        push (@lines1, debug("</p>\n", __LINE__));
                         html_pop();
                     }
                 }
@@ -2270,7 +2426,7 @@ sub pass1
                     $start = '<pre>'
                 }
                 $in_pre = 1 if $start =~ /<pre/;
-                push(@lines, html_debug($start. ($in_pre ? '' : "\n"), __LINE__));
+                push(@lines1, html_debug($start. ($in_pre ? '' : "\n"), __LINE__));
                 next;
             }
             elsif ($tag eq 'table')
@@ -2328,13 +2484,13 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push (@lines, debug("</p>\n", __LINE__));
+                        push (@lines1, debug("</p>\n", __LINE__));
                         html_pop();
                     }
                     # don't use borders -- gets confused by empty cells
-                    push(@lines, debug("<table>\n", __LINE__));
+                    push(@lines1, debug("<table>\n", __LINE__));
                     html_push_if('table');
-                    push(@lines, html_debug('', __LINE__));
+                    push(@lines1, html_debug('', __LINE__));
                 }
                 # anorland@hem2.passagen.se
                 # if (/^\s*\@(|f|v|multi)table\s+\@(\w+)|(\{[^\}]*\})/)
@@ -2346,60 +2502,17 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push (@lines, debug("</p>\n", __LINE__));
+                        push (@lines1, debug("</p>\n", __LINE__));
                         html_pop();
                     }
-                    push(@lines, debug("<dl compact=\"compact\">\n", __LINE__));
+                    push(@lines1, debug("<dl compact=\"compact\">\n", __LINE__));
                     html_push_if('dl');
                     
-                    push(@lines, html_debug('', __LINE__));
+                    push(@lines1, html_debug('', __LINE__));
                 }
                 else
                 {
                     warn "$ERROR Bad table line: $_";
-                }
-                next;
-            }
-            elsif ($tag eq 'synindex' || $tag eq 'syncodeindex')
-            {
-                if (/^\@$tag\s+(\w+)\s+(\w+)\s*$/)
-                {
-                    my $from = $1;
-                    my $to = $2;
-                    my $prefix_from = IndexName2Prefix($from);
-                    my $prefix_to = IndexName2Prefix($to);
-
-                    warn("$ERROR unknown from index name $from ind syn*index line: $_"), next
-                        unless $prefix_from;
-                    warn("$ERROR unknown to index name $to ind syn*index line: $_"), next
-                        unless $prefix_to;
-
-                    if ($tag eq 'syncodeindex')
-                    {
-                        $index_properties->{$prefix_to}->{'from_code'}->{$prefix_from} = 1;
-                    }
-                    else
-                    {
-                        $index_properties->{$prefix_to}->{'from'}->{$prefix_from} = 1;
-                    }
-                }
-                else
-                {
-                    warn "$ERROR Bad syn*index line: $_";
-                }
-                next;
-            }
-            elsif ($tag eq 'defindex' || $tag eq 'defcodeindex')
-            {
-                if (/^\@$tag\s+(\w+)\s*$/)
-                {
-                    $name = $1;
-                    $index_properties->{$name}->{name} = $name;
-                    $index_properties->{$name}->{code} = 1 if $tag eq 'defcodeindex';
-                }
-                else
-                {
-                    warn "$ERROR Bad defindex line: $_";
                 }
                 next;
             }
@@ -2410,22 +2523,23 @@ sub pass1
                 # explicitly to keep our HTML stack in sync.
                 if ($html_element eq 'p')
                 {
-                    push(@lines, debug("</p>\n", __LINE__));
+                    push(@lines1, debug("</p>\n", __LINE__));
                     html_pop();
                 }
                 my $append = '_ ';
                 $append = "_$sec_num " if defined($sec_num);
-                push (@lines, "\@printindex" . $append . $_);
+                push (@lines1, "\@printindex" . $append . $_);
                 next;
             }
-            elsif ($tag eq 'sp')
-            {
-                push(@lines, debug("<p></p>\n", __LINE__));
-                next;
-            }
+	    #pertusus: also in to_skip, useless and disliked by tidy anyway
+	    #elsif ($tag eq 'sp')
+	    #{
+	    #    push(@lines1, debug("<p></p>\n", __LINE__));
+	    #    next;
+	    #}
             elsif ($tag eq 'center')
             {
-                push(@lines, debug("<div align=\"center\">\n", __LINE__));
+                push(@lines1, debug("<div align=\"center\">\n", __LINE__));
                 s/\@center//;
             }
             elsif ($tag eq 'lowersections')
@@ -2445,40 +2559,6 @@ sub pass1
                     $sec2level{$sec} = $level - 1;
                 }
                 next;
-            }
-            elsif ($tag eq 'macro' || $tag eq 'rmacro')
-            {
-                if (/^\@$tag\s*(\w+)\s*(.*)/)
-                {
-                    $name = $1;
-                    my @args;
-                    @args = split(/\s*,\s*/ , $1)
-                        if ($2 =~ /^\s*{(.*)}\s*/);
-
-                    $macros->{$name}->{Args} = \@args;
-                    $macros->{$name}->{Body} = '';
-                    while (($_ = next_line()) && $_ !~ /\@end $tag/)
-                    {
-                        $macros->{$name}->{Body} .= $_;
-                    }
-                    die "ERROR: No closing '\@end $tag' found for macro definition of '$name'\n"
-                        unless (/\@end $tag/);
-                    chomp $macros->{$name}->{Body};
-                }
-                else
-                {
-                    warn "$ERROR: Bad macro defintion $_"
-                }
-                next;
-            }
-            elsif ($tag eq 'unmacro')
-            {
-                delete $macros->{$1} if (/^\@unmacro\s*(\w+)/);
-                next;
-            }
-            elsif ($tag eq 'documentlanguage')
-            {
-                SetDocumentLanguage($1) if (!$T2H_WORDS && /documentlanguage\s*(\w+)/);
             }
             elsif (defined($def_map{$tag}))
             {
@@ -2611,22 +2691,22 @@ sub pass1
                 $name = unprotect_html($name);
                 if ($tag eq 'deffn' || $tag eq 'deftypefn')
                 {
-                    EnterIndexEntry('f', $name, $docu_doc, $section, \@lines, $in_pre);
+                    EnterIndexEntry('f', $name, $docu_doc, $section, \@lines1, $in_pre);
                     #		unshift(@input_spool, "\@findex $name\n");
                 }
                 elsif ($tag eq 'defop')
                 {
-                    EnterIndexEntry('f', "$name on $ftype", $docu_doc, $section, \@lines, $in_pre);
+                    EnterIndexEntry('f', "$name on $ftype", $docu_doc, $section, \@lines1, $in_pre);
                     #		unshift(@input_spool, "\@findex $name on $ftype\n");
                 }
                 elsif ($tag eq 'defvr' || $tag eq 'deftypevr' || $tag eq 'defcv')
                 {
-                    EnterIndexEntry('v', $name, $docu_doc, $section, \@lines, $in_pre);
+                    EnterIndexEntry('v', $name, $docu_doc, $section, \@lines1, $in_pre);
                     #		unshift(@input_spool, "\@vindex $name\n");
                 }
                 else
                 {
-                    EnterIndexEntry('t', $name, $docu_doc, $section, \@lines, $in_pre);
+                    EnterIndexEntry('t', $name, $docu_doc, $section, \@lines1, $in_pre);
                     #		unshift(@input_spool, "\@tindex $name\n");
                 }
                 $dont_html = 1;
@@ -2641,8 +2721,8 @@ sub pass1
                 html_pop_if('p');
                 html_pop_if('li');
                 html_pop_if();
-                push(@lines, debug("</$format_map{$end_tag}>\n", __LINE__));
-                push(@lines, html_debug('', __LINE__));
+                push(@lines1, debug("</$format_map{$end_tag}>\n", __LINE__));
+                push(@lines1, html_debug('', __LINE__));
             }
             elsif (exists $complex_format_map->{$end_tag})
             {
@@ -2653,7 +2733,7 @@ sub pass1
                     $end = '</pre>'
                 }
                 $in_pre = 0 if $end =~ m|</pre>|;
-                push(@lines, html_debug($end, __LINE__));
+                push(@lines1, html_debug($end, __LINE__));
             }
             elsif ($end_tag =~ /^(|f|v|multi)table$/)
             {
@@ -2675,11 +2755,11 @@ sub pass1
                     ($max_column, $current_column) = split /:/, $in_table;
                     if (!$max_column || !$current_column)
                     { # empty table
-                        push(@lines, "</table>\n");
+                        push(@lines1, "</table>\n");
                     }
                     else
                     { 
-                        push(@lines, "</td></tr></table>\n");
+                        push(@lines1, "</td></tr></table>\n");
                     }
                     
 #                    html_pop_if('tr');
@@ -2690,10 +2770,10 @@ sub pass1
                     # do it explicitly to keep our HTML stack in sync.
                     if ($html_element eq 'p')
                     {
-                        push(@lines, debug("</p>\n", __LINE__));
+                        push(@lines1, debug("</p>\n", __LINE__));
                         html_pop();
                     }
-                    push(@lines, "</dl>\n");
+                    push(@lines1, "</dl>\n");
                     html_pop_if('dd');
                 }
                 html_pop_if();
@@ -2713,16 +2793,21 @@ sub pass1
                 # sync.
                 if ($html_element eq 'p')
                 {
-                    push(@lines, debug("</p>\n", __LINE__));
+                    push(@lines1, debug("</p>\n", __LINE__));
                     html_pop();
                 }
-                push(@lines, debug($T2H_DEF_TABLE ?
+                push(@lines1, debug($T2H_DEF_TABLE ?
                                     "</table>\n" : "</dl>\n", __LINE__));
             }
             elsif ($end_tag eq 'menu')
             {
                 html_pop_if();
-                push(@lines, $_); # must keep it for pass 2
+                push(@lines1, $_); # must keep it for pass 2
+            }
+            else
+            {
+                warn "$WARN Unknown \@end $end_tag\n";
+                push @lines1, "\@end $end_tag\n";
             }
             next;
         }
@@ -2741,15 +2826,15 @@ sub pass1
             {
                 push @nodes_and_anchors, $anchor;
             }
-            push @lines, html_debug("<a name=\""."ANC_".$anchor."\"></a>\n", __LINE__);
+            push @lines1, html_debug("<a name=\""."ANC_".$anchor."\"></a>\n", __LINE__);
             $node2href{$anchor} = "$docu_doc#ANC_$anchor";
-            next INPUT_LINE if $_ =~ /^\s*$/;
+            next if $_ =~ /^\s*$/;
         }
         #############################################################
         # index entry generation, after value substitutions
         if (/^\@(\w+?)index\s+/)
         {
-            EnterIndexEntry($1, $', $docu_doc, $section, \@lines, $in_pre);
+            EnterIndexEntry($1, $', $docu_doc, $section, \@lines1, $in_pre);
             next;
         }
         #
@@ -2772,7 +2857,7 @@ sub pass1
             my ($max_column, $current_column);
             ($max_column, $current_column) = split /:/, $in_table;
 
-            next INPUT_LINE if (!$max_column); # table with 0 columns
+            next if (!$max_column); # table with 0 columns
             my $stored_text = "";
 
             while (! /^$/)
@@ -2843,7 +2928,7 @@ sub pass1
             {
                 if (/^\@$tag\s+(.+)$/)
                 {
-                    $name = $1;
+                    my $name = $1;
                     $name = normalise_space_style($name);
                     my $level = $sec2level{$tag};
                     # check for index
@@ -2871,7 +2956,7 @@ sub pass1
                             }
                             if (defined($toplevel))
                             {
-                                push @lines, ($level==$toplevel ? $CHAPTEREND : $SECTIONEND);
+                                push @lines1, ($level==$toplevel ? $CHAPTEREND : $SECTIONEND);
                             }
                             else
                             {
@@ -2955,20 +3040,20 @@ sub pass1
                         }
                         else
                         {
-                            push(@lines, html_debug("<a name=\"".protect_html($docid)."\"></a>\n",
+                            push(@lines1, html_debug("<a name=\"".protect_html($docid)."\"></a>\n",
                                                      __LINE__));
                         }
                         # update DOC
-                        push(@lines, html_debug('', __LINE__));
+                        push(@lines1, html_debug('', __LINE__));
                         html_reset();
                         $_ =  "<h$level> $name </h$level>\n<!--docid::${docid}::-->\n";
                         $_ = debug($_, __LINE__);
-                        push(@lines, html_debug('', __LINE__));
+                        push(@lines1, html_debug('', __LINE__));
                     }
                     # update DOC
                     foreach my $line (split(/\n+/, $_))
                     {
-                        push(@lines, "$line\n");
+                        push(@lines1, "$line\n");
                     }
                     next;
                 }
@@ -2979,17 +3064,6 @@ sub pass1
             }
             else
             {
-                # track variables
-                ($value{$1} = unprotect_texi($2), next) if /^\@set\s+($VARRE)\s+(.*)$/o;
-                (delete $value{$1}, next) if /^\@clear\s+($VARRE)\s*$/o;
-                # store things
-                ($value{'_shorttitle'} = unprotect_texi($1), next) if /^\@shorttitle\s+(.*)$/;
-                ($value{'_setfilename'}   = unprotect_texi($1), next) if /^\@setfilename\s+(.*)$/;
-                ($value{'_settitle'}      = unprotect_texi($1), next) if /^\@settitle\s+(.*)$/;
-                ($value{'_author'}   .= unprotect_texi($1)."\n", next) if /^\@author\s+(.*)$/;
-                ($value{'_subtitle'} .= unprotect_texi($1)."\n", next) if /^\@subtitle\s+(.*)$/;
-                ($value{'_title'}    .= unprotect_texi($1)."\n", next) if /^\@title\s+(.*)$/;
-
                 # list item
                 if (/^\s*\@itemx?\s+/)
                 {
@@ -3026,56 +3100,56 @@ sub pass1
                             # APA: End paragraph, if any.
                             if ($html_element eq 'p')
                             {
-                                push(@lines, debug("</p>\n", __LINE__));
+                                push(@lines1, debug("</p>\n", __LINE__));
                                 html_pop();
                             }
-                            push(@lines, debug("<dt>", __LINE__));
+                            push(@lines1, debug("<dt>", __LINE__));
                             html_push('dt');
                         }
-                        EnterIndexEntry($table_type, $what, $docu_doc, $section, \@lines, $in_pre);
+                        EnterIndexEntry($table_type, $what, $docu_doc, $section, \@lines1, $in_pre);
                     }
                     # APA: End paragraph, if any.
                     if ($html_element eq 'p')
                     {
-                        push(@lines, debug("</p>\n", __LINE__));
+                        push(@lines1, debug("</p>\n", __LINE__));
                         html_pop();
                     }
                     if ($html_element =~ m|^d[dlt]$|)
                     {
                         unless ($html_element eq 'dt')
                         {
-                            push(@lines, debug("<dt>", __LINE__));
+                            push(@lines1, debug("<dt>", __LINE__));
                         }
                         if ($things_map{$in_table} && !$what)
                         {
                             # special case to allow @table @bullet for instance
-                            push(@lines, debug("$things_map{$in_table}\n", __LINE__));
+                            push(@lines1, debug("$things_map{$in_table}\n", __LINE__));
                         }
                         else
                         {
-                            push(@lines, debug("\@$in_table\{$what\}\n", __LINE__));
+                            push(@lines1, debug("\@$in_table\{$what\}\n", __LINE__));
                         }
-                        push(@lines, "<dd>");
+                        push(@lines1, "<dd>");
                         html_push('dd') unless $html_element eq 'dd';
                         #pertusus: FIXME if there is an @itemx there is also 
                         # an empty <dd>
                     }
                     elsif ($html_element eq 'table')
                     {
-                        push(@lines, debug("<tr><td>$what</td>\n", __LINE__));
+                        push(@lines1, debug("<tr><td>$what</td>\n", __LINE__));
                         html_push('tr');
                     }
                     elsif ($html_element eq 'tr')
                     {
-                        push(@lines, debug("</tr>\n", __LINE__));
-                        push(@lines, debug("<tr><td>$what</td>\n", __LINE__));
+                        push(@lines1, debug("</tr>\n", __LINE__));
+                        push(@lines1, debug("<tr><td>$what</td>\n", __LINE__));
                     }
                     else
                     {
-                        push(@lines, debug("<li>$what\n", __LINE__));
+                        push(@lines1, debug("<li>$what\n", __LINE__));
                         html_push('li') unless $html_element eq 'li';
                     }
-                    push(@lines, html_debug('', __LINE__));
+                    push(@lines1, html_debug('', __LINE__));
                     next;
                 }
             }
@@ -3083,10 +3157,10 @@ sub pass1
         # paragraph separator
         if ($_ eq "\n" && ! $in_pre)
         {
-            next if $#lines >= 0 && $lines[$#lines] eq "\n";
+            next if $#lines1 >= 0 && $lines1[$#lines1] eq "\n";
             if ($html_element eq 'p')
             {
-                push (@lines, debug("</p>\n<p>\n", __LINE__));
+                push (@lines1, debug("</p>\n<p>\n", __LINE__));
             }
             # 	else
             # 	{
@@ -3096,12 +3170,12 @@ sub pass1
             elsif ($html_element eq 'body' || $html_element eq 'blockquote' || $html_element eq 'dd' || $html_element eq 'li')
             {
                 html_push('p');
-                push(@lines, debug("<p>\n", __LINE__));
+                push(@lines1, debug("<p>\n", __LINE__));
             }
         }
         # otherwise
-        push(@lines, $_) unless $in_titlepage;
-        push(@lines, debug("</div>\n", __LINE__))  if ($tag eq 'center');
+        push(@lines1, $_);
+        push(@lines1, debug("</div>\n", __LINE__))  if ($tag eq 'center');
     }
     # finish TOC
     my $level = 0;
@@ -3141,7 +3215,7 @@ sub EnterIndexEntry($$$$$$)
     }
 
     my $id;
-    if ($lines->[$#lines] =~ /^<!--docid::(.+)::-->$/)
+    if ($lines->[$#$lines] =~ /^<!--docid::(.+)::-->$/)
     {
         $id = $1;
     }
@@ -3464,52 +3538,53 @@ sub PrintIndex
 #---############################################################################
 my @lines2 = ();               # whole document (2nd pass)
 my @foot_lines = ();           # footnotes
-
 sub pass2
 {
     my $sec;
     my $href;
     my @style_stack=();
     my %state = ();
-    my $in_verbatim = 0;        # am I inside a verbatim section
+    $state{'alwayspre'}= 1;
+    #my $in_verbatim = 0;        # am I inside a verbatim section
     my $text = '';
     my $in_menu = 0;            # am I inside a menu
     my $in_menu_listing;
 
-    while (@lines)
+    while (@lines1)
     {
-        $_ = shift(@lines);
+        $_ = shift(@lines1);
         #
         # handle @html / @end html and @verbatim / @end verbatim
         #
-        if (/^\@html\s*/)
-        {
-            push_until ('html', \@lines, \@lines2);
-            next;
-        }
+	#if (/^\@html\s*/)
+	#{
+	#    push_until ('html', \@lines1, \@lines2);
+	#    next;
+	#}
 
-        if ($in_verbatim)
-        {
-            if(/^\@end verbatim\s*$/)
-	    {
-	        push(@lines2, "</pre>\n");
-                $in_verbatim = 0;
-            }
-            else
-            {
-                push(@lines2, protect_html($_));
-            }
-            next;
-        }
-        if (/^\@verbatim\s*/)
-        {
-            $in_verbatim = 1;
-	    push(@lines2, "<pre>\n");
-            next;
-        }
+	#if ($in_verbatim)
+	#{
+	#    if(/^\@end verbatim\s*$/)
+	#    {
+	#        push(@lines2, "</pre>\n");
+	#        $in_verbatim = 0;
+	#    }
+	#    else
+	#    {
+	#        push(@lines2, protect_html($_));
+	#    }
+	#    next;
+	#}
+	#if (/^\@verbatim\s*/)
+	#{
+	#    $in_verbatim = 1;
+	#    push(@lines2, "<pre>\n");
+	#    next;
+	#}
         #
         # menu
         #
+
         if (/^\@menu\b/)
         {
             $in_menu = 1;
@@ -3558,7 +3633,9 @@ sub pass2
                     # APA: Handle menu comment lines. These don't end the menu!
                     # $in_menu_listing = 0;
                     # pertusus FIXME for styles split accross lines
-                    push(@lines2, debug('<tr><th colspan="3" align="left" valign="top">' . substitute_style($_) . '</th></tr>
+                    # pertusus FIXME is the menu considered preformated ?
+		    # for spaces ? for'' `` and --- ?
+                    push(@lines2, debug('<tr><th colspan="3" align="left" valign="top">' . substitute_text(1, $_) . '</th></tr>
 ', __LINE__));
                 }
             }
@@ -3571,11 +3648,11 @@ sub pass2
                     push(@lines2, debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
                 }
                 # look for continuation
-                while ($lines[0] =~ /^\s+.*$/)
+                while ($lines1[0] =~ /^\s+[^\s].*$/)
                 {
-                    $descr .= shift(@lines);
+                    $descr .= shift(@lines1);
                 }
-                menu_entry($node, $name, substitute_style($descr));
+                menu_entry($node, $name, substitute_text(1,$descr));
             }
             next;
         }
@@ -3712,10 +3789,11 @@ sub pass4
     $T2H_THISDOC{shorttitle} = $value{'_shorttitle'};
     for my $key (keys %T2H_THISDOC)
     {
-        $_ = substitute_style($T2H_THISDOC{$key});
-        $_ = unprotect_texi ($_);
-        s/\s*$//;
-        $T2H_THISDOC{$key} = $_;
+        #$_ = substitute_style($T2H_THISDOC{$key});
+	#$_ = unprotect_texi ($_);
+	#s/\s*$//;
+	#$T2H_THISDOC{$key} = $_;
+	$T2H_THISDOC{$key} =~ s/\s*$//;
     }
     $T2H_THISDOC{program} = $THISPROG;
     $T2H_THISDOC{program_homepage} = $T2H_HOMEPAGE;
@@ -3751,6 +3829,8 @@ sub pass4
     $T2H_OVERVIEW = \@stoc_lines;
     if ($has_top)
     {
+        my $line_undef = 0;
+        my $max_undef = 200;
         while (1)
         {
             $_ = shift @doc_lines;
@@ -3758,6 +3838,13 @@ sub pass4
             {
                 print STDERR "Bug, line undef\n";
                 $_ = "<!-- line of doc_lines undef --!>\n";
+                $line_undef++;
+                if ($line_undef > $max_undef)
+                {
+                    print STDERR "\n@doc_lines";
+                    print STDERR "\n@lines2";
+                    die "$max_undef lines undef, infinite recursion ? doc_lines dumped";
+                }
             }
             last if /$TOPEND/;
             push @$T2H_TOP, $_;
@@ -3774,6 +3861,7 @@ sub pass4
     $T2H_HREF{Overview} = $docu_stoc.'#SEC_OVERVIEW' if @stoc_lines;
 
     # settle on index
+    # FIXME pertusus: use first chapter with printindex
     if ($T2H_INDEX_CHAPTER)
     {
         $T2H_HREF{Index} = $node2href{normalise_node($T2H_INDEX_CHAPTER)};
@@ -4245,54 +4333,6 @@ sub Node2FastForward($)
     return $node2next{$node};
 }
 
-sub check()
-{
-    local($_);
-    my (%seen, %context);
-
-    while (<>)
-    {
-        if (/\@(\*|\.|\:|\@|\{|\})/)
-        {
-            $seen{$&}++;
-            $context{$&} .= "> $_" if $T2H_VERBOSE;
-            $_ = "$`XX$'";
-            redo;
-        }
-        if (/\@(\w+)/)
-        {
-            my ($before, $match, $after);
-            ($before, $match, $after) = ($`, $&, $');
-            if ($before =~ /\b[-\w]+$/ && $after =~ /^[-\w.]*\b/)
-            {                   # e-mail address
-                $seen{'e-mail address'}++;
-                $context{'e-mail address'} .= "> $_" if $T2H_VERBOSE;
-            }
-            else
-            {
-                $seen{$match}++;
-                $context{$match} .= "> $_" if $T2H_VERBOSE;
-            }
-            $match =~ s/^\@/X/;
-            $_ = "$before$match$after";
-            redo;
-        }
-    }
-
-    foreach (sort(keys(%seen)))
-    {
-        if ($T2H_VERBOSE)
-        {
-            print "$_\n";
-            print $context{$_};
-        }
-        else
-        {
-            print "$_ ($seen{$_})\n";
-        }
-    }
-}
-
 sub open_file($)
 {
     my $name = shift;
@@ -4385,6 +4425,51 @@ sub string_until
         $string = $string.$line;
     }
     die "* Failed to find '$tag' after: " . $lines[$#lines];
+}
+
+sub next_bracketed ($)
+{
+    my $line = shift;
+    my $opened_braces = 0;
+    my $result = '';
+    while ($line !~ /^\s*$/)
+    {
+        if ($line =~ s/^([^\{\}]+)//)
+        {
+            my $text = $1;
+            if (!$opened_braces)
+            {
+                $text =~ s/^\s*//;
+                if ($text)
+                {
+                    $text =~ s/\s*$//;
+                    return ($text, $line);
+                }
+                next;
+            }
+            $result .= $text;
+        }
+        if ($line =~ s/^(\{|\})//)
+        {
+            my $brace = $1;
+            $opened_braces++ if ($brace eq '{');
+            $opened_braces-- if ($brace eq '}');
+	    
+            if ($opened_braces < 0)
+            {
+                warn "$ERROR too much '}' in specification";
+                $opened_braces = 0;
+                next;
+            }
+            $result .= $brace;
+            return ($result, $line) if ($opened_braces == 0);
+        }
+    }
+    if ($opened_braces)
+    {
+        warn "$ERROR '{' not closed in specification";
+        return ($result . ( '}' x $opened_braces));
+    }
 }
 
 #
@@ -4610,7 +4695,233 @@ sub do_accent($$)
     return "$_[0]&lt;" if $_[1] eq 'v';
     return "&$_[0]cedil;" if $_[1] eq ',';
     return "$_[0]" if $_[1] eq 'dotless';
+    return "&$_[0]$accent_map{$_[1]};" if $accent_map{$_[1]};
     return undef;
+}
+
+sub end_paragraph($)
+{
+   my $text = shift;
+   print STDERR "Empty paragraph\n" if ($text =~ /^\s*$/);
+   return '' if ($text =~ /^\s*$/);
+   return "<p>$text\n</p>";
+}
+
+sub do_text_macro($$$)
+{
+    my $type = shift;
+    my $line = shift;
+    my $state = shift;
+
+    if (!grep {$type eq $_} @kept_text)
+    { # ignored text
+        $state->{'ignored'} = $type;
+    }
+    elsif (grep {$type eq $_} @raw_text)
+    {
+        $state->{'raw'} = $type;
+    }
+    elsif (grep {$type eq $_} @value_text)
+    {
+        if ($line =~ s/\s+($VARRE)$//o or $line =~ s/\s+($VARRE)\s//o)
+        {
+            if ($type eq 'ifclear')
+            {
+                if (defined($value{$1}))
+                {
+                    $state->{'ignored'} = $type;
+                }
+                else
+                {
+                    push @{$state->{'text_macro_stack'}}, $type;
+                }
+            }
+            elsif ($type eq 'ifset')
+            {
+                unless (defined($value{$1}))
+                {
+                    $state->{'ignored'} = $type;
+                }
+                else
+                {
+                    push @{$state->{'text_macro_stack'}}, $type;
+                }
+            }
+        }
+        else
+        {
+            warn "$ERROR Bad $type line: $line";
+        }
+    }
+    else
+    {
+        $state->{'titlepage'} = 1 if ($type eq 'titlepage');
+        push @{$state->{'text_macro_stack'}}, $type;
+    }
+    return $line;
+}
+
+sub do_raw
+{
+    my $style = shift;
+    my $text = shift;
+    if ($style eq 'verbatim')
+    {
+        return '<pre>' . protect_htm($text) . '</pre>';
+    }
+    elsif ($style eq 'html')
+    {
+        return $text;
+    }
+    elsif ($style eq 'tex')
+    {
+        # add to latex2html file
+        if ($T2H_L2H)
+        {
+            # add space to the end -- tex(i2dvi) does this, as well
+            return (l2h_ToLatex($text . " "));
+        }
+        else
+        {
+            return '';
+        }
+    }
+    else
+    {
+        warn "$WARN (bug) unknown style $style\n";
+        return protect_htm($text);
+    }
+}
+
+# process definition commands
+sub begin_deff
+{
+    my $tag = shift;
+    my $line = shift;
+    my $state = shift;
+    
+    if (defined($def_map{$tag}) and $def_map{$tag})
+    {
+        # substitute shortcuts for definition commands
+        my $substituted = $def_map{$tag};
+        $substituted =~ s/(\w+)//;
+        $tag = $1;
+        $line = $substituted . $line;
+    }
+    
+    my $result = '';
+    my $is_extra = 0;
+    if ($tag =~ s/x$//)
+    {
+      # extra definition line
+        $is_extra = 1;
+    }
+    my $type;
+    ($type, $line) = next_bracketed($line);
+    $type =~ s/^\{(.*)\}$/$1/;
+    $type = substitute_text(1, $type);
+    $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
+    my $name;
+    ($name, $line) = next_bracketed($line);
+    $name =~ s/^\{(.*)\}$/$1/;
+    $name = substitute_text(1, $name);
+    print "# def ($tag): {$type} {$name}" . "$line"
+        if $T2H_DEBUG & $DEBUG_DEF;
+    my $ftype;
+    if ($is_extra)
+    {
+        $result = debug($T2H_DEF_TABLE ? '' : '<dt>', __LINE__);
+        #$_ = &debug("<tr TEST1>\n", __LINE__) if ($T2H_DEF_TABLE);
+    }
+    else
+    {
+         # APA: <dl> implicitly ends paragraph, so let's
+         # do it explicitly to keep our HTML stack in sync.
+         if ($html_element eq 'p')
+         {
+             $result = debug("</p>\n", __LINE__);
+             html_pop();
+         }
+         else
+         {
+             $result = '';
+         }
+         $result .= debug($T2H_DEF_TABLE ?
+         "<table width=\"100%\">\n" : "<dl>\n<dt>", __LINE__);
+    }
+    if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
+    {
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
+            $result .= substitute_text(1, $line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type</td>\n</tr>\n";
+        }
+        else
+        {
+            $result .= "<u>$type</u> <b>$name</b>";
+            $result .= substitute_text(1, $line);
+        }
+    }
+    elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
+        || $tag eq 'deftypeop' || $tag eq 'defcv'
+        || $tag eq 'defop')
+    {
+        $ftype = $name;
+        ($name, $line) = next_bracketed($line);
+        $name =~ s/^\{(.*)\}$/$1/;
+        $name = substitute_text(1, $name);
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
+            $result .= substitute_text(1, $line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type of $ftype</td>\n</tr>\n";
+        }
+        else
+        {
+            $result .= "<u>$type</u> $ftype <b>$name</b>";
+            $result .= substitute_text(1, $line);
+        }
+    }
+    else
+    {
+        warn "$ERROR Unknown definition type: $tag\n";
+        $result .= "<u>$type</u> <b>$name</b>";
+        $result .= substitute_text(1, $line);
+    }
+    $result .= debug("\n<dd>", __LINE__) if (!$T2H_DEF_TABLE);
+                ########$_ .= &debug("\n</table TEST3>\n<table width=\"95%\">\n", __LINE__) if ($T2H_DEF_TABLE);
+    $name = unprotect_html($name);
+    if ($tag eq 'deffn' || $tag eq 'deftypefn')
+    {
+        #EnterIndexEntry('f', $name, $docu_doc, $section, \@lines1, $in_pre);
+    }
+    elsif ($tag eq 'defop')
+    {
+    #    EnterIndexEntry('f', "$name on $ftype", $docu_doc, $section, \@lines1, $in_pre);
+    }
+    elsif ($tag eq 'defvr' || $tag eq 'deftypevr' || $tag eq 'defcv')
+    {
+         #EnterIndexEntry('v', $name, $docu_doc, $section, \@lines1, $in_pre);
+                   #		unshift(@input_spool, "\@vindex $name\n");
+    }
+    else
+    {
+         #EnterIndexEntry('t', $name, $docu_doc, $section, \@lines1, $in_pre);
+                    #		unshift(@input_spool, "\@tindex $name\n");
+    }
+    return $result;
+}
+
+sub begin_table
+{
+    my $type = shift;
+    my $line = shift;
+    my $state = shift;
 }
 
 #
@@ -4737,23 +5048,30 @@ sub do_image
           "<img src=\"$image\" alt=\"$base\">");
 }
 
-sub apply_style($$)
+sub apply_style($$;$)
 {
-    my($texi_style, $text) = @_;
+    my($texi_style, $text, $close_or_no_close) = @_;
     my($style);
-
+    
+    my $no_close;
+    my $no_open;
+    
+    if (defined($close_or_no_close))
+    {
+        $no_close = 1 if (($close_or_no_close) eq 'no_close');
+        $no_open = 1 if (($close_or_no_close) eq 'no_open');
+    }
+    
     $style = $style_map{$texi_style};
     if (defined($style))
     {                           # known style
         my $do_quotes = 0;
-        if ($style =~ /^\"/)
+        if ($style =~ s/^\"//)
         {                       # add quotes
-            $style = $';
             $do_quotes = 1;
         }
-        if ($style =~ /^\&/)
+        if ($style =~ s/^\&//)
         {                       # custom
-            $style = $';
             no strict "refs";
             $text = &$style($text, $texi_style);
             use strict "refs";
@@ -4765,7 +5083,21 @@ sub apply_style($$)
         else
         {                       # no style
         }
-        $text = "\`$text\'" if $do_quotes;
+        if ($do_quotes)
+        {
+            if (!$no_close and !$no_open)
+            {
+                $text = "\`$text\'";
+            }
+            elsif ($no_close)
+            {
+                $text = "\`$text";
+            }
+            elsif ($no_open)
+            {
+                $text = "$text\'";
+            }
+        }
     }
     else
     {                           # unknown style
@@ -4820,6 +5152,129 @@ sub substitute_style($)
     return $line;
 }
 
+sub scan_line0($$)
+{
+    my $line = shift;
+    my $state = shift;
+    my $result = undef;
+
+    local $_ = $line;
+    
+    while(1)
+    {
+        if (defined($state->{'ignored'}))
+        {
+            if (s/^.*?\@end\s+$state->{'ignored'}\s+// or s/^.*?\@end\s+$state->{'ignored'}$//)
+            {
+                 $state->{'ignored'} = undef;
+                 next if (defined($result) or $_);
+            }
+            return $result;
+        }
+
+        if (defined($state->{'raw'}))
+        {
+            if (s/^(.*?\@end\s$state->{'raw'}\s)\s*// or s/^(.*?\@end\s$state->{'raw'})$//)
+            {
+                 add_prev(\$result, $1);
+                 $state->{'raw'} = undef;
+                 next;
+            }
+	    else
+            {
+                 add_prev(\$result, $_);
+                 return $result;
+            }
+        }
+       
+        if (defined($state->{'verb'}))
+        {
+            my $char = quotemeta($state->{'verb'});
+            if (s/^(.*?)$char\}//)
+            {
+                 add_prev(\$result, $1 . $state->{'verb'} . '}');
+                 $state->{'verb'} = undef;
+                 next;
+            }
+            else
+            {
+                 add_prev(\$result, $_);
+                 return $result;
+            }
+        }
+	if (s/^([^@]*)\@end\s+([a-zA-Z]\w*)\s*$// or s/^([^@]*)\@end\s+([a-zA-Z]\w*)(\s)//)
+        {
+            add_prev(\$result, $1) if ($1);
+            my $end_tag = $2;
+            my $spaces = $3;
+            if (defined($state->{'text_macro_stack'}) 
+               and @{$state->{'text_macro_stack'}} 
+               and ($end_tag eq $state->{'text_macro_stack'}->[-1]))
+            {
+                 pop @{$state->{'text_macro_stack'}};
+            }
+            elsif (grep {$_ eq $end_tag} @kept_text)
+            {
+                 warn "$ERROR \@end $end_tag without corresponding element\n";
+            }
+	    else
+            {
+                $state->{'complex_format'}-- if ($state->{'complex_format'} and $complex_format_map->{$end_tag});
+                #another end tag
+                add_prev(\$result, "\@end $end_tag" . (defined($spaces) ? $spaces : ''));
+                next;
+            }
+
+            $state->{'titlepage'} = 0 if ($end_tag eq 'titlepage');
+            next if (defined($result) or $_);
+            return $result;            
+        }
+	elsif (s/^([^@]*)\@([a-zA-Z]\w*|["'@}{,.!?\s*-^`=])//o)
+        {
+            add_prev(\$result, $1) if ($1);
+            my $macro = $2;
+            if ($macro =~ /^(c|comment)$/)
+            {
+                return $result unless (defined($result));
+                s/.*//;
+                next;
+            }
+            if (grep {$macro eq $_} @text_macros)
+            {
+                $_ = do_text_macro ($macro, $_, $state);
+                #if it is a raw formatting command we must keep it for later
+                if (defined($state->{'raw'}))
+		{
+                    add_prev(\$result, "\@$macro") ;
+                    next;
+		}
+                return $result if (!defined($result) and /^\s*$/);
+                next;
+            }
+            if ($macro eq 'verb' and s/^{//)
+            {
+                if (/^$/)
+                {
+                    warn "$ERROR verb at end of line";
+                    add_prev(\$result, '@verb{');
+                }
+                else
+                {
+                    s/^(.)//;
+                    $state->{'verb'} = $1;
+                    add_prev(\$result, '@verb{' . $1);
+                }
+                next;
+            }
+            $state->{'complex_format'}++ if ($complex_format_map->{$macro});
+            add_prev(\$result, "\@$macro");
+            next;
+        }
+        add_prev(\$result, $_);
+        return $result;
+    }
+}
+
 sub scan_line($$$$)
 {
     my $line = shift;
@@ -4827,39 +5282,140 @@ sub scan_line($$$$)
     my $stack = shift;
     my $state = shift;
 
+    die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     local $_ = $line;
+    
+    unless ($state->{'raw'} or $state->{'complex_format'}  or $state->{'alwayspre'} or $state->{'no_paragraph'})
+    {
+        if (/^$/)
+        {
+            print STDERR "Empty line\n";
+            if ($state->{'paragraph'})
+            {
+                my $new_stack = [];
+                print STDERR "Close paragraph\n";
+                ($text, $stack, $state, $new_stack) = close_stack($text, $stack, $state, 1);
+                my $paragraph = pop @$stack;
+                if (!$paragraph->{'format'} or 
+                    (!($paragraph->{'format'} eq 'paragraph')))
+                {
+                    print STDERR "Bug: paragraph closed but no paragraph\n";
+                }
+                add_prev ($text, $stack, end_paragraph($paragraph->{'text'}));
+                $state->{'paragraph_nr'}--;
+                $state->{'paragraph'} = 0;
+                $state->{'paragraph_macros'} = $new_stack;
+                return;
+            }
+        }
+	elsif (!$state->{'paragraph'})
+        {
+            print STDERR "New paragraph. Line $_";
+            $state->{'paragraph'} = 1;
+            $state->{'paragraph_nr'}++;
+            push @$stack, {'format' => 'paragraph', 'text' => '' };
+            push @$stack, @{$state->{'paragraph_macros'}} if $state->{'paragraph_macros'};
+            $state->{'paragraph_macros'} = undef;
+        }
+    }
     
     while(1)
     {
-        my $prev = $text;
-        if (@$stack)
+        if (defined($state->{'raw'})) 
         {
-	     $prev = $stack->[-1];
+            die "Bug" if (! @$stack or ! ($stack->[-1]->{'style'} eq $state->{'raw'}));
+            if (s/^(.*?)\@end\s$state->{'raw'}\s// or s/^(.*?)\@end\s$state->{'raw'}$//)
+            {
+                add_prev ($text, $stack, $1);
+                my $style = pop @$stack;
+                if ($style->{'text'} !~ /^\s*$/) 
+                {
+                   add_prev($text, $stack, do_raw($style->{'style'}, $style->{'text'}));
+                }
+                $state->{'raw'} = undef;
+                next;
+            }
+	    else
+            {
+                 add_prev ($text, $stack, $_);
+                 last;
+            }
         }
+	
         if (defined($state->{'verb'}))
         {
             my $char = quotemeta($state->{'verb'});
             if (s/^(.*?)$char\}/\}/)
             {
-                 add_prev($prev, $1);
+                 add_prev($text, $stack, protect_htm($1));
                  $state->{'verb'} = undef;
                  next;
             }
             else
             {
-                 add_prev($prev, $_);
+                 add_prev($text, $stack, protect_htm($_));
                  last;
             }
         }
-	if (s/^([^{}@]*)\@([a-zA-Z]\w*|["'@}{,.!?\s*-^`=])//)
+	
+	if (s/^([^{}@]*)\@end\s+([a-zA-Z]\w*)\s// or s/([^{}@]*)^\@end\s+([a-zA-Z]\w*)$//)
         {
-            add_prev($prev, protect_htm($1));
-            if ($simple_map{$2})
+            add_prev($text, $stack, protect_htm($1, $state));
+            my $end_tag = $2;
+                 
+            if (!@$stack)
             {
-                add_prev($prev, $simple_map{$2});
+                warn "$ERROR \@end $end_tag without corresponding opening element\n";
+                add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
+            my $format = pop @$stack;
+	    {
+                #FIXME what to do if $style->{'style'} != $end_tag; do_table, format....
+                if (!$format->{'format'})
+                {
+                    warn "$ERROR waiting for end of $format->{'style'}, found $end_tag";
+                    push @$stack, $format;
+                    add_prev($text, $stack, "\@end $end_tag");
+                }
+		else
+                {
+                    if (!($format->{'format'} eq $end_tag))
+                    {
+                        warn "$ERROR waiting for end of $format->{'format'}, found $end_tag";
+                    }
+                    if ($format->{'format'} eq 'paragraph')
+                    {
+                        add_prev($text, $stack, end_paragraph($format->{'text'}));
+                    }
+                    if (defined($def_map{$end_tag}))
+                    {
+                        add_prev($text, $stack, $format->{'text'});
+                    }
+                    else 
+                    {
+                        warn "$WARN Unknown \@end $end_tag\n";
+                        add_prev($text, $stack, "\@end $end_tag");
+                    }
+                }
+                next;
+            }
+        }
+	elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'@}{,.!?\s*-^`=])//)
+        {
+            add_prev($text, $stack, protect_htm($1, $state));
             my $macro = $2;
+            if ($simple_map{$macro})
+            {
+                add_prev($text, $stack, $simple_map{$macro});
+                next;
+            }
+            if (grep {$macro eq $_} @raw_text)
+            {
+                $state->{'raw'} = $macro;
+                push (@$stack, {'style' => $macro, 'text' => ''});
+                next;
+            }
             if (s/^{//)
             {
                 if ($macro eq 'verb')
@@ -4881,36 +5437,43 @@ sub scan_line($$$$)
             {
                 if (s/^([^\s])//)
                 {
-                    add_prev ($prev, do_accent ($macro, $1));
+                    add_prev ($text, $stack, do_accent ($macro, $1));
                 }
                 else
                 {
-                    add_prev ($prev, do_accent ($macro, ''));
+                    add_prev ($text, $stack, do_accent ($macro, ''));
                 }
                 next;
             }
             if ($things_map{$macro})
             {
-                warn "$ERROR $macro requires {}";
-                add_prev ($prev, $things_map{$macro});
+                warn "$ERROR $macro requires {}\n";
+                add_prev ($text, $stack, $things_map{$macro});
                 next;
             }
-            warn "$WARN Unknown macro $macro";
-            add_prev ($prev, protect_htm("\@$macro"));
+            # FIXME begin table, def
+            if (defined($def_map{$macro}))
+            {
+                push @$stack, { 'format' => $macro, 'text' => begin_deff($macro, $_, $state) };
+                $_ = "";
+                next;
+            }
+            warn "$WARN Unknown macro $macro (left as is)\n";
+            add_prev ($text, $stack, protect_htm("\@$macro"));
             next;
         }
 	elsif(s/^([^{}@]*)\@(.)//)
 	{
             warn "$ERROR Unkown command: `$2', line: $line";
-            add_prev($prev, protect_htm("\@$2"));
+            add_prev($text, $stack, protect_htm("\@$2"));
             next;
         }
         elsif (s/^([^{}]*)([{}])//)
         {
-            add_prev($prev, protect_htm($1));
+            add_prev($text, $stack, protect_htm($1, $state));
             if ($2 eq '{')
             {
-                add_prev($prev, '{<!-- brace without macro -->');
+                add_prev($text, $stack, '{<!-- brace without macro -->');
                 warn "$ERROR '{' without macro line: $line";
             }
             else
@@ -4921,6 +5484,7 @@ sub scan_line($$$$)
                     my $result;
                     if ($style->{'style'})
                     {
+                        $style->{'no_close_open'} = 'no_close' if ($state->{'no_close'});
                         if ($style->{'style'} =~ /^footnote_\d+$/)
                         {
                             $result = do_footnote($style->{'style'}, $style->{'text'});
@@ -4933,11 +5497,14 @@ sub scan_line($$$$)
                         {
                             $result = do_image($style->{'style'}, $style->{'text'});
                         }
+                        elsif ($things_map{$style->{'style'}})
+                        {
+                            $result = $things_map{$style->{'style'}} . $style->{'text'};
+                        }
                         else
                         {
-                             $result = apply_style($style->{'style'}, $style->{'text'});
+                             $result = apply_style($style->{'style'}, $style->{'text'}, $style->{'no_close_open'});
                         }
-
                         if (!defined($result))
                         {
                             $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
@@ -4947,12 +5514,7 @@ sub scan_line($$$$)
                     {
                         $result = $style->{'text'} . '}';
                     }
-                    $prev = $text;
-                    if (@$stack)
-                    {
-	                $prev = $stack->[-1];
-                    }
-                    add_prev ($prev, $result);
+                    add_prev ($text, $stack, $result);
                     next;
                 }
                 else
@@ -4963,38 +5525,134 @@ sub scan_line($$$$)
 	}
 	else
         {
-            add_prev($prev, $_);
+            add_prev($text, $stack, protect_htm($_, $state));
             last;
         }
     }
+    return undef;
 }
 
-sub protect_htm($)
+sub protect_htm($;$)
 {
     my $text = shift;
+    my $state = shift;
+    if (defined($state) and !$state->{'complex_format'} and !$state->{'alwayspre'})
+    {
+        $text =~ s/``/"/go;
+        $text =~ s/''/"/go;
+        $text =~ s/---/--/go;
+    }
     return $text;
 }
 
-sub add_prev ($$)
+sub add_prev ($$;$)
 {
-    my $prev = shift;
     my $text = shift;
-    return if (!defined($text));
-    if (ref($prev) eq "SCALAR")
+    my $stack = shift;
+    my $string = shift;
+
+    if (!defined($stack) or (!(ref($stack) eq "ARRAY")))
     {
-         if (!defined($prev))
-         {
-              $$prev = $text;
-         }
-         else
-         {
-             $$prev .= $text;
-         }
+        $string = $stack;
+        $stack = [];
+    }
+    return if (!defined($string));
+    if (@$stack)
+    {
+        $stack->[-1]->{'text'} .= $string;
+        return;
+    }
+
+    if (!defined($$text))
+    {
+         $$text = $string;
     }
     else
     {
-         $prev->{'text'} .= $text;
+         $$text .= $string;
     }
+}
+
+# We don't close external formats or footnotes if close_paragraph is true
+# 
+sub close_stack($$$;$)
+{
+    my $text = shift;
+    my $stack = shift;
+    my $state = shift;
+    my $close_paragraph = shift;
+    my $new_stack = [];
+    
+    return ($text, $state, $stack, $new_stack) unless @$stack;
+    
+    my $stack_level = $#$stack + 1;
+    my $string = '';
+    my $verb = '';
+    
+    if ($state->{'verb'})
+    {
+        $string .= $state->{'verb'};
+        $verb = $state->{'verb'};
+    }
+    if ($state->{'raw'})
+    {
+        if ($close_paragraph)
+        {
+            print STDERR "Bug: close_paragraph is true and we're in raw";
+        }
+        $string .= " \@end $state->{'raw'} ";
+        $stack_level--;
+    }
+    
+    while ($stack_level--)
+    {
+        last if ($close_paragraph and $stack->[$stack_level]->{'format'} 
+             and ($stack->[$stack_level]->{'format'} eq 'paragraph'));
+        if ($stack->[$stack_level]->{'format'})
+        {
+            $string .= " \@end $stack->[$stack_level]->{'format'} ";
+        }
+        else
+        {
+            if ($close_paragraph)
+            { #duplicate the stack
+                push @$new_stack, { 'style' => $stack->[$stack_level]->{'style'},
+                    'text' => '', 'no_close_open' => 'no_open' };
+            }
+            $string .= '} ';
+        }
+    }
+    $state->{'no_close'} = $close_paragraph;
+    scan_line ($string, $text, $stack, $state);
+    $state->{'no_close'} = 0;
+    $state->{'verb'} = $verb if ($verb);
+    return ($text, $stack, $state, $new_stack);
+}
+
+sub substitute_text ($@)
+{
+    my $no_paragraph = shift;
+    my @stack = ();
+    my %state = ();
+    my $text = '';
+    my $result = '';
+    if ($no_paragraph)
+    {
+        $state{'no_paragraph'} = 1;
+    }
+    $state{'paragraph'} = 0;
+    
+    while (@_)
+    {
+        my $line = shift @_;
+	next unless (defined($line));
+	scan_line ($line, \$text, \@stack, \%state);
+        next if (@stack);
+        $result .= $text;
+        $text = '';
+    }
+    close_stack (\$text, \@stack, \%state);
+    return $result . $text;
 }
 
 sub t2h_anchor($$$;$$$)
@@ -5159,6 +5817,12 @@ sub t2h_print_label($;$)
     print $fh qq{<a name="$href"></a>\n};
 }
 
+#print "" .substitute_text(0, "text \@samp{some\n", "\n", "samp with newline\n");
+
+#print "" .substitute_text(0, "\@defun {@`i Interactive @^{\@dotless{i} Command} isearch-forward\n");
+
+#exit;
+
 # main processing is called here
 SetDocumentLanguage('en') unless ($T2H_WORDS);
 # APA: There's got to be a better way:
@@ -5195,6 +5859,7 @@ unless (defined($T2H_ADDRESS))
 }
 
 open_file($docu);
+pass0();
 pass1();
 pass2();
 pass3();

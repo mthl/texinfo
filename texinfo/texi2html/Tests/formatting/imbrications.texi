@@ -1,0 +1,98 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top
+@menu
+* First node::    node 1
+* Second node::    node 2
+* node in table::
+* node in example::
+* node in flushright::
+@end menu
+@c *node in defun -> bug
+@node First node
+@chapter first node chapter
+@cindex elem
+
+@node Second node
+@chapter second
+
+@defun buffer-end flag
+A nice function
+
+makeinfo accepts a menu within defun but it isn't possible
+to follow it
+
+@menu
+* node within defun menu::
+@end menu
+
+@c makeinfo accepts the following but cannot properly close defun
+@c @node node within defun menu
+@c @section within menu
+
+end of the function
+@end defun
+
+@node node within defun menu
+@section within menu
+
+
+@table @bullet
+@item item
+@node node in table
+@chapter in table
+@end table
+
+@example
+@node node in example
+@chapter example
+
+an example
+@end example
+
+@cindex other entry
+
+@example
+@html
+<hr/>
+@end html
+after html in example
+
+
+two line breaks
+@tex
+$$ \chi^2 = \sum_{i=1}^N
+   \left(y_i - (a + b x_i)
+   \over \sigma_i\right)^2 $$
+
+@end tex
+
+@cindex index in example
+
+@contents
+@printindex cp
+printindex  works but cannot be followed
+
+and now yes---now and ``so''.
+
+@end example
+after example and now yes---now and ``so''.
+@flushright
+
+is the text
+flushed right ?
+@node node in flushright
+@chapter flushright
+
+
+@end flushright
+
+@flushright
+
+text
+@end flushright
+
+
+@contents
+@bye
