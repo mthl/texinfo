@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.5 2002-09-28 21:11:40 karl Exp $
+$Id: NEWS,v 1.6 2002-10-09 16:36:39 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -20,7 +20,11 @@ formats.  The manual has detailed explanations and examples.  For
 convenience, here's a url to one of the relevant sections:
   http://texinfo.org/manual/Document-Permissions.html
 
+-------------------------------------------------------------------------------
 
+* makeinfo:
+  . html output uses <br />, <hr />, and <meta />, for the sake of XHTML
+    compatibility.  (We're still not completely XHTML compatible, though.)
 * texinfo.tex:
   . new Italian translations, txi-it.tex.
   . pdf bookmarks for unnumbered sections work.
@@ -29,7 +33,7 @@ convenience, here's a url to one of the relevant sections:
 * install-info:
   . support for bzip2-compressed files.
 * Distribution:
- . sources now available under CVS, see
+ . development sources now available under CVS, see
    http://savannah.gnu.org/projects/texinfo/
  . gettext 0.11.5, autoconf 2.54, automake 1.7.
 
