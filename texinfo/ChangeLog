@@ -1,3 +1,11 @@
+2002-12-17    <karl@gnu.org>
+
+	* makeinfo/texinfo.dtd (indexterm): index not INDEX.
+	(node): only any block, not just para|menu.
+	* makeinfo/xml.c (texinfoml_element_list): format and like can
+		contain para.
+	From: Alper Ersoy <aersoy@tfz.net>.
+
 2002-12-14    <karl@gnu.org>
 
 	* doc/texinfo.txi (makeinfo in Emacs): does not prompt for
