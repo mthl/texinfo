@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.5 2003-02-11 16:39:06 karl Exp $
+   $Id: index.c,v 1.6 2003-02-16 17:30:39 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -342,9 +342,14 @@ init_indices ()
              here; otherwise, when we try to define the pg index again
              just below, it will still point to cp.  */
           undefindex (name_index_alist[i]->name);
-          free (name_index_alist[i]->name);
-          free (name_index_alist[i]);
-          name_index_alist[i] = NULL;
+          
+          /* undefindex sets all this to null in some cases.  */
+          if (name_index_alist[i])
+            {
+              free (name_index_alist[i]->name);
+              free (name_index_alist[i]);
+              name_index_alist[i] = NULL;
+            }
         }
     }
 
