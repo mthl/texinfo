@@ -1,3 +1,15 @@
+2003-08-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: don't use @ifinfo/@heading construct to replace
+	@section any more, the XML output is wrong.
+
+	* doc/texinfo.tex (\pdfmakeoutlines): doc fixes, and use \def once
+	instead of \let twice.
+
+	* doc/texinfo.txi: rewrite @ifinfo text sections to take better
+	 account of HTML.  Suggestion from: Dumas Patrice
+	<dumas@centre-cired.fr>, 8 Aug 2003 17:19:22 +0200.
+
 2003-08-07  Derek Price  <derek@ximbiot.com>
 
 	* makeinfo/insertion.c (cm_direntry): Skip @direntry in --no-headers
