@@ -1,3 +1,8 @@
+2003-11-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Formats): rewrite to fix underfull
+	boxes.
+
 2003-11-10  Alper Ersoy  <dirt@gtk.org>
 
 	* doc/texinfo.tex (\commondummies): added registeredsymbol.
