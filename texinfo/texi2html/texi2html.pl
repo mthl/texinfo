@@ -343,14 +343,12 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.6 2001-11-21 09:42:33 adrian Exp $
+# $Id: texi2html.pl,v 1.7 2001-11-27 11:24:47 adrian Exp $
 
 # Homepage:
-$T2H_HOMEPAGE = <<EOT;
-http://texi2html.cvshome.org
-EOT
+$T2H_HOMEPAGE = "http://texi2html.cvshome.org";
 
-# Authors:  
+# Authors:
 $T2H_AUTHORS = <<EOT;
 Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
@@ -358,11 +356,6 @@ Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             and many others.
 Maintained by: Many creative people <dev\@texi2html.cvshome.org>
 Send bugs and suggestions to <users\@texi2html.cvshome.org>
-EOT
-
-# Address:
-$T2H_ADDRESS = <<EOT;
-by an unknown user
 EOT
 
 # Version: set in configure.in
@@ -1547,8 +1540,8 @@ sub l2h_StoreCache
         # weird, a \ at the end of the key results in an error
         # maybe this also broke the dbm database stuff
         $key =~ s|\\$|\\\\|;
-        $value =~ s/\|/\\\|/g;
-        $value =~ s/\\\\\|/\\\|/g;
+        $value =~ s/\|/\\\|/go;
+        $value =~ s/\\\\\|/\\\|/go;
         $value =~ s|\\\\|\\\\\\\\|g;
         print FH "\n\$l2h_cache_key = q/$key/;\n";
         print FH "\$l2h_cache{\$l2h_cache_key} = q|$value|;\n";
@@ -1879,8 +1872,8 @@ sub pass1
         }
         unless ($in_pre)
         {
-            s/``/\"/g;
-            s/''/\"/g;
+            s/``/\"/go;
+            s/''/\"/go;
             s/([\w ])---([\w ])/$1--$2/g;
         }
         #
@@ -1924,7 +1917,9 @@ sub pass1
                 $tag = 'table';
             }
             # special cases
-            if ($tag eq 'top' || ($tag eq 'node' && /^\@node\s+top\b/i))
+            # APA: Fixed regexp to ONLY match the top node, not any
+            # node starting with the word top.
+            if ($tag eq 'top' || ($tag eq 'node' && /^\@node\s+top\s*(,.*)?$/i))
             {
                 $in_top = 1;
                 $has_top = 1;
@@ -1965,8 +1960,8 @@ sub pass1
                     &normalise_node($node_up);
                 }
                 $node =~ /\"/ ?
-                    push @lines, &html_debug("<A NAME='$node'></A>\n", __LINE__) :
-                        push @lines, &html_debug("<A NAME=\"$node\"></A>\n", __LINE__);
+                    push @lines, &html_debug("<A NAME='".protect_html($node)."'></A>\n", __LINE__) :
+                        push @lines, &html_debug("<A NAME=\"".protect_html($node)."\"></A>\n", __LINE__);
                 next;
             }
             elsif ($tag eq 'include')
@@ -2176,7 +2171,7 @@ sub pass1
                 if (/^\@$tag\s*{($NODERE)}\s*$/)
                 {
                     $setref = $1;
-                    $setref =~ s/\s+/ /g; # normalize
+                    $setref =~ s/\s+/ /go; # normalize
                     $setref =~ s/ $//;
                     $node2sec{$setref} = $name;
                     $sec2node{$name} = $setref;
@@ -2484,7 +2479,7 @@ sub pass1
             $_ = $`.$';
             my $anchor = $1;
             $anchor = &normalise_node($anchor);
-            push @lines, &html_debug("<A NAME=\"$anchor\"></A>\n");
+            push @lines, &html_debug("<A NAME=\"".protect_html($anchor)."\"></A>\n");
             $node2href{$anchor} = "$docu_doc#$anchor";
             next INPUT_LINE if $_ =~ /^\s*$/;
         }
@@ -2501,9 +2496,9 @@ sub pass1
         $_ = &protect_html($_) unless $dont_html;
         $dont_html = 0;
         # substitution (unsupported things)
-        s/^\@exdent\s+//g;
-        s/\@noindent\s+//g;
-        s/\@refill\s+//g;
+        s/^\@exdent\s+//go;
+        s/\@noindent\s+//go;
+        s/\@refill\s+//go;
         # other substitutions
         &simple_substitutions;
         s/\@footnote\{/\@footnote$docu_doc\{/g; # mark footnotes, cf. pass 4
@@ -2623,7 +2618,7 @@ sub pass1
                         }
                         else
                         {
-                            push(@lines, &html_debug("<A NAME=\"$docid\"></A>\n",
+                            push(@lines, &html_debug("<A NAME=\"".protect_html($docid)."\"></A>\n",
                                                      __LINE__));
                         }
                         # update DOC
@@ -3010,7 +3005,7 @@ EOT
 
     for $letter (@{$page->{Letters}})
     {
-        push @$lines, "<TR><TH><A NAME=\"${name}_$letter\"></A>$letter</TH><TD></TD><TD></TD></TR>\n";
+        push @$lines, "<TR><TH><A NAME=\"".protect_html("${name}_$letter")."\"></A>".protect_html($letter)."</TH><TD></TD><TD></TD></TR>\n";
         for $entry (@{$page->{EntriesByLetter}->{$letter}})
         {
             push @$lines,
@@ -3285,7 +3280,7 @@ sub pass2
                     }
                 }
             }
-            $nodes =~ s/\s+/ /g; # remove useless spaces
+            $nodes =~ s/\s+/ /go; # remove useless spaces
             @args = split(/\s*,\s*/, $nodes);
             $node = $args[0];   # the node is always the first arg
             $node = &normalise_node($node);
@@ -3722,7 +3717,7 @@ sub pass5
     if ($T2H_SPLIT)
     {
         print "# writing " . scalar(@sections) .
-            " sections in $docu_rdir$docu_name"."_[1..$doc_num]"
+            " sections into $docu_rdir$docu_name"."_[1..$doc_num].$docu_ext"
                 if $T2H_VERBOSE;
         $previous = ($T2H_SPLIT eq 'chapter' ? $CHAPTEREND : $SECTIONEND);
         undef $FH;
@@ -4285,7 +4280,7 @@ sub SimpleTexi2Html
 sub normalise_node
 {
     local $_ = $_[0];
-    s/\s+/ /g;
+    s/\s+/ /go;
     s/ $//;
     s/^ //;
     &protect_texi;
@@ -4376,7 +4371,11 @@ sub do_math
 sub do_uref
 {
     my($url, $text, $only_text) = split(/,\s*/, $_[0]);
-
+    # APA: Don't markup obviously bad links.
+    # e.g. texinfo.texi 4.0 has this, which would lead to a broken
+    # link:
+    # @section @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
+    return if $url =~ /[<>]/;
     $text = $only_text if $only_text;
     $text = $url unless $text;
     &t2h_anchor('', $url, $text);
@@ -4492,12 +4491,12 @@ sub t2h_anchor
     my($result);
 
     $result = "<A";
-    $result .= " NAME=\"$name\"" if $name;
+    $result .= " NAME=\"".protect_html($name)."\"" if $name;
     if ($href)
     {
         $href =~ s|^$T2H_HREF_DIR_INSTEAD_FILE|./|
             if ($T2H_HREF_DIR_INSTEAD_FILE);
-        $result .= ($href =~ /\"/ ? " HREF='$href'"  : " HREF=\"$href\"");
+        $result .= " HREF=\"".protect_html($href)."\"";
     }
     $result .= " $extra_attribs" if $extra_attribs;
     $result .= ">$text</A>";
@@ -4519,7 +4518,12 @@ sub sec_href
 
 sub next_doc
 {
-    $docu_doc = &doc_href(++$doc_num);
+    ++$doc_num;
+    if ("$docu_rdir${docu_name}_$doc_num.$docu_ext" eq "$docu_top_file") {
+        warn "$WARN Section $docu_rdir${docu_name}_$doc_num.$docu_ext would overwrite Top, continuing at $docu_rdir${docu_name}_".($doc_num+1).".$docu_ext";
+        $doc_num++;
+    }
+    $docu_doc = &doc_href($doc_num);
 }
 
 sub t2h_print_lines
@@ -4560,15 +4564,15 @@ sub protect_texi
 sub protect_html
 {
     local($what) = @_;
-    # protect & < >
+    # protect &, ", <, and >.
     # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
     # We may consider using that instead.
     # If raw HTML is used outside @ifhtml or @html it's an error
     # anyway.
-    $what =~ s/\&/\&amp;/g;
-    $what =~ s/\"/\&quot;/g;
-    $what =~ s/\</\&lt;/g;
-    $what =~ s/\>/\&gt;/g;
+    $what =~ s/\&/\&amp;/go;
+    $what =~ s/\"/\&quot;/go;
+    $what =~ s/\</\&lt;/go;
+    $what =~ s/\>/\&gt;/go;
     return($what);
 }
 
@@ -4595,10 +4599,10 @@ sub unprotect_html
     # Character entity references (eg. &lt;)
     # instead of
     # Numeric character references (eg. &#60)
-    $what =~ s/\&amp;/\&/g;
-    $what =~ s/\&quot;/\"/g;
-    $what =~ s/\&lt;/\</g;
-    $what =~ s/\&gt;/\>/g;
+    $what =~ s/\&amp;/\&/go;
+    $what =~ s/\&quot;/\"/go;
+    $what =~ s/\&lt;/\</go;
+    $what =~ s/\&gt;/\>/go;
     return($what);
 }
 
@@ -4606,7 +4610,7 @@ sub t2h_print_label
 {
     my $fh = shift;
     my $href = shift || $T2H_HREF{This};
-    $href =~ s/.*#(.*)$/$1/;     
+    $href =~ s/.*#(.*)$/$1/;
     print $fh qq{<A NAME="$href"></A>\n};
 }
 

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.7 2001-11-21 09:42:33 adrian Exp $
+# $Id: texi2html.init,v 1.8 2001-11-27 11:24:47 adrian Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -857,7 +857,8 @@ sub pretty_date {
 # Layout of standard header and footer
 #
 
-# init routines is before first output is generated
+# This init routine is called at the beginning of pass5 before first
+# output is generated.
 sub T2H_InitGlobals
 {
     # Set the default body text, inserted between <BODY ... >
@@ -867,7 +868,7 @@ sub T2H_InitGlobals
     #text inserted before </BODY>
     $T2H_PRE_BODY_CLOSE = '';
     # this is used in footer
-    $T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
+    $T2H_ADDRESS = "<I>$T2H_USER</I> " if $T2H_USER;
     $T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
     # this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
     # can be used for <style> <script>, <meta> tags
@@ -909,7 +910,7 @@ sub T2H_DEFAULT_print_page_foot
 <BR>
 <FONT SIZE="-1">
 This document was generated
-$T2H_ADDRESS
+by $T2H_ADDRESS
 using <A HREF="$T2H_HOMEPAGE"><I>texi2html</I></A>
 </FONT>
 $T2H_PRE_BODY_CLOSE
@@ -1145,11 +1146,11 @@ EOT
 # T2H_PRE_ABOUT might be a function
 my $T2H_PRE_ABOUT = <<EOT;
 This document was generated
-$T2H_ADDRESS
+by $T2H_ADDRESS
 using <A HREF=\"$T2H_HOMEPAGE\"><I>texi2html</I></A>
 <P></P>
 EOT
-$T2H_AFTER_ABOUT = '';
+my $T2H_AFTER_ABOUT = '';
 
 sub T2H_DEFAULT_about_body
 {

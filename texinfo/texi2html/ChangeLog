@@ -1,3 +1,30 @@
+2001-11-27  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.pl (pass5): Improve wording to say "# writing X
+	sections ...".
+	* texi2html.pl (next_doc): Skip over $docu_top_file and issue
+	warning.
+
+2001-11-25  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.init (T2H_InitGlobals): Improve documentation.
+	Prepend $T2H_ADDRESS, which contains nothing but the address now,
+	with "by".
+	* texi2html.init (T2H_DEFAULT_print_page_foot): Prepend
+	$T2H_ADDRESS, which contains nothing but the address now, with
+	"by".
+	* texi2html.init (T2H_PRE_ABOUT): Ditto.
+	* texi2html.init (T2H_AFTER_ABOUT): Make it a lexical.
+	* texi2html.pl: Remove trailing whitespace from lines.  Use
+	protect_html of HREF and NAME.  Use /o where possible in
+	substitutions.
+	* texi2html.pl (T2H_HOMEPAGE): Get rid of newlines.
+	* texi2html.pl (T2H_ADDRESS): Move to texi2html.init.
+	* texi2html.pl (pass1): Fix severe top node matching bug.  
+	* texi2html.pl (do_uref): Don't markup obviously bad uref.
+	* texi2html.pl (t2h_anchor): Use protect_html to allow
+	double-quoting of all html attributes.
+
 2001-11-19  Adrian Aichner  <adrian@xemacs.org>
 
 	* texi2html.init: Initialize T2H_INCLUDE_DIRS to the empty list.
