@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
+@c $Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6825,15 +6825,14 @@ long-standing manuals do so.
 @cindex Keyboard input
 
 Use the @code{@@kbd} command for characters of input to be typed by
-users.  For example, to refer to the characters @kbd{M-a},
-write@refill
+users.  For example, to refer to the characters @kbd{M-a}, write:
 
 @example
 @@kbd@{M-a@}
 @end example
 
 @noindent
-and to refer to the characters @kbd{M-x shell}, write@refill
+and to refer to the characters @kbd{M-x shell}, write:
 
 @example
 @@kbd@{M-x shell@}
@@ -6841,10 +6840,16 @@ and to refer to the characters @kbd{M-x shell}, write@refill
 
 @cindex user input
 @cindex slanted typewriter font, for @code{@@kbd}
-The @code{@@kbd} command has the same effect as @code{@@code} in Info,
-but by default produces a different font (slanted typewriter instead of
-normal typewriter) in the printed manual, so users can distinguish the
-characters they are supposed to type from those the computer outputs.
+By default, the @code{@@kbd} command produces a different font
+(slanted typewriter instead of normal typewriter) in the printed
+manual, so users can distinguish the characters that they are supposed
+to type from those that the computer outputs.
+
+In Info output, @code{@@kbd} is usually the same as @code{@@code},
+producing `quotes' around its argument.  However, in typewriter-like
+contexts such as the @code{@@example} environment (@pxref{example})
+and @code{@@code} command itself, the quotes are omitted, since Info
+format cannot use distinguishing fonts.
 
 @findex kbdinputstyle
 Since the usage of @code{@@kbd} varies from manual to manual, you can
@@ -6900,7 +6905,7 @@ explicitly want to mention a space character as one of the characters of
 input, write @kbd{@@key@{SPC@}} for it.)@refill
 
 
-@node key, samp, kbd, Indicating
+@node key
 @comment  node-name,  next,  previous,  up
 @subsection @code{@@key}@{@var{key-name}@}
 @findex key
@@ -17190,7 +17195,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
+$Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17253,7 +17258,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.51 2003-07-01 23:39:49 karl Exp $
+@comment $Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

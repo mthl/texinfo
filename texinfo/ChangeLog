@@ -1,3 +1,22 @@
+2003-07-02    <karl@gnu.org>
+
+	* doc/texinfo.txi (kbd): document actual makeinfo behavior.
+
+2003-07-01    <karl@gnu.org>
+
+	* doc/texinfo.txi (Menus): require that menus come at the end of the
+	node, since Info readers can't determine the end
+	of a menu.
+	Report from: Luc Teirlinck <teirllm@dms.auburn.edu>,
+	29 Jun 2003 21:33:19 -0500.
+
+	* makeinfo/insertion.c (begin_insertion): do not increment
+	in_fixed_width_font for @display or @format; this
+	incorrectly caused quotes to be omitted in @kbd
+	output in those environments.
+	Report from: Luc Teirlinck <teirllm@dms.auburn.edu>,
+	26 Jun 2003 21:59:48 -0500.
+
 2003-06-24    <karl@gnu.org>
 
 	* doc/texinfo.txi (tex): misplaced period.
