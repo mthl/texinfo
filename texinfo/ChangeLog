@@ -1,5 +1,15 @@
 2003-11-07  Karl Berry  <karl@gnu.org>
 
+	* doc/Makefile.am (texinfo): remove the special rule, it seems to
+		be fixed.
+
+	* doc/Makefile.am: try commenting out special case for texinfo.
+
+	* Makefile.am (AUTOMAKE_OPTIONS): bump to 1.7.8.
+	* doc/version.texi, doc/version-stnd.texi: cvs add these again,
+	because with AM_MAINTAINER_MODE they are not created
+	(unless --enable-maintainer-mode is given).
+
 	* doc/Makefile.am (*.1) [MAINTAINER_MODE]: use this conditional
 	instead of TEXINFO_MAINT, now that we have it.
 	* configure.ac (TEXINFO_MAINT): no longer needed, since we call
