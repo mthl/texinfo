@@ -1,6 +1,10 @@
 2002-10-28    <karl@gnu.org>
 
-	* configure.ac: pretest version 4.2b.
+	* doc/texinfo.tex (\loggingall): rewrite to minimize log file
+	output (ideas from Frank Mittelbach's trace.sty) and explicitly
+	show the etex changes.
+
+	* configure.ac: pretest version 4.2c.
 
 	* NEWS: mention Werner's fixes.
 
