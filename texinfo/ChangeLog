@@ -1,3 +1,8 @@
+2004-06-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\commondummies, \indexnofonts): dummy-up @comma.
+	Report from Arnold.
+
 2004-06-06  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/index.c (index_add_arg): ensure all elements are always
