@@ -1,3 +1,10 @@
+
+2003-04-30  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: add the node as element when there 
+	is a @printindex split accross pages between node and section.
+	* Tests/*: tests for documents with indices in top and between node
+	and section.
+
 2003-04-29  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: add $T2H_MENU_SYMBOL before nodes in 
 	menu and optionnaly before unnumbered section names in menu entry.

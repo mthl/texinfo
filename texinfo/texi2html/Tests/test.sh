@@ -133,6 +133,7 @@ fi
 test_texi GermanNodeTest nodetest.texi
 test_texi formatting nodetest.texi "-split chapter"
 test_texi index_table
+test_texi index_table index_split.texi "-split chapter -init index_test.init"
 test_texi macros
 test_texi macros simple_macro.texi
 test_texi macros pass0_macros.texi

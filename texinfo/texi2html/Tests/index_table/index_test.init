@@ -1,0 +1,6 @@
+
+$T2H_SPLIT = 'chapter';
+
+# if set and $T2H_SPLIT is set, then split index pages at the next letter
+# after they have more than that many entries
+$T2H_SPLIT_INDEX = 6;

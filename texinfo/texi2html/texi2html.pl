@@ -267,7 +267,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.43 2003-04-29 18:55:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.44 2003-04-30 18:32:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2364,7 +2364,11 @@ sub rearrange_elements()
                 $element->{'section_ref'} = $current_section;
                 $element->{'element_up'} = $current_section;
                 $element->{'toc_level'} = $current_section->{'toc_level'};
-                $current->{'element_next'} = $element if (defined($current));
+                if (defined($current))
+                {
+                   $current->{'element_next'} = $element;
+                   $element->{'element_prev'} = $current;
+                }
                 $current = $element;
                 push @{$element->{'section_ref'}->{'nodes'}}, $element;
             }
@@ -2454,17 +2458,18 @@ sub rearrange_elements()
     {
         #the only sectionning elements are sections
         @elements_list = @sections_list;
-        foreach my $element (@elements_list)
-        {
-            print STDERR "# new section element $element->{'texi'}\n"
-                if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-            $element->{'element'} = 1;
-        }
         # if there is no section we use nodes...
         if (!@elements_list)
         {
             print STDERR "# no section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             @elements_list = @all_elements;
+        }
+        
+        foreach my $element (@elements_list)
+        {
+            print STDERR "# new section element $element->{'texi'}\n"
+                if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            $element->{'element'} = 1;
         }
     }
     else
@@ -2533,6 +2538,7 @@ sub rearrange_elements()
         if (defined($element->{'section_next'}))
         {
             $element->{'element_next'} = $element->{'section_next'};
+            $element->{'section_next'}->{'element_prev'} = $element;
         }
     }
 
@@ -2544,7 +2550,6 @@ sub rearrange_elements()
     {
         my $element = shift @elements_list;
         my @checked_elements = ();
-        push @new_elements, $element;
         if (!$element->{'node'})
         {
             if (!$T2H_USE_NODES)
@@ -2572,39 +2577,98 @@ sub rearrange_elements()
         {
             push @checked_elements, $element;
         }
+	#push @new_elements, $element;
 	#print STDERR "Add index pages for ($element) $element->{'texi'} (@checked_elements)\n";
         my $element_at_top = get_top($element);
         my $forward = $element->{'forward'};
         # count the additionnal pages and put the elements needing file name
 	# at the right places 
-        my $current_element = $element; # current_element is the last element
-                                        # holding text
-        my $previous_element = $element; # used to compute back and forward
+        my $current_element = { 'holder' => 1, 'texi' => 'HOLDER', 
+            'place' => [], 'indices' => [] }; # current_element is the 
+                                        # last element holding text
+        my $back = $element->{'back'} if defined($element->{'back'}); # used to find back and forward
         my $index_num = 0;
         foreach my $checked_element(@checked_elements)
         {
-            #print STDERR "Check index pages in $checked_element->{'texi'}\n";
+	    if ($checked_element->{'element'})
+            { # this is the element, we must add it
+                push @new_elements, $checked_element;
+                if ($current_element->{'holder'})
+                { # no previous element added
+                    push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
+                    foreach my $index(@{$current_element->{'indices'}})
+                    {
+                        push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
+                    }
+                }
+                elsif ($checked_element->{'toplevel'})
+                { # there was an index_page added, this index_page is toplevel.
+                  # if the element is toplevel too then it begins a new 
+                  # chapter and it is the element_next for the last inserted 
+                  # toplevel index_page
+                    $current_element->{'element_next'} = $checked_element;
+                }
+                $current_element = $checked_element;
+                $checked_element->{'back'} = $back;
+                $back->{'forward'} = $checked_element if (defined($back));
+                $back = $checked_element;
+            }
             push @{$current_element->{'place'}}, @{$checked_element->{'current_place'}};
             foreach my $index (@{$checked_element->{'index_names'}})
             {
-		    #print STDERR "index $index->{'name'}\n";
+                print STDERR "# Index in `$checked_element->{'texi'}': $index->{'name'}\n"
+                    if ($T2H_DEBUG & $DEBUG_INDEX);
                 my ($Pages, $Entries) = GetIndex($index->{'name'});
                 if (defined($Pages))
                 {
                     my @pages = @$Pages;
                     my $first_page = shift @pages;
-		    #my $next_texi = 'NO_NEXT';
-		    #$next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
-		    #print STDERR "New first_page (top $element_at_top->{'texi'}, previous $previous_element->{'texi'}, current $current_element->{'texi'}, next $next_texi)\n";
+                    # debug
+		    my $next_texi = 'NO_NEXT';
+		    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
+                    my $back_texi = 'NO_BACK';
+                    $back_texi = $back->{'texi'} if (defined($back));
+		    print STDERR "# New index first page (top $element_at_top->{'texi'}, back $back_texi, current $current_element->{'texi'}, next $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                     push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page} ];
                     if (@pages)
                     {
+                        if ($current_element->{'holder'})
+                        { # the current element isn't a real element. 
+                          # We add the real element 
+                            push @new_elements, $checked_element;
+                          # we are in a node of a section but the element
+                          # is splitted by the index, thus we must add 
+                          # a new element which will contain the text 
+                          # between the beginning of the element and the index
+                            $checked_element->{'element'} = 1;
+                            $checked_element->{'level'} = $element->{'level'};
+                            $checked_element->{'toc_level'} = $element->{'toc_level'};
+                            $checked_element->{'toplevel'} = $element->{'toplevel'};
+                            $checked_element->{'up'} = $element->{'up'};
+                            $checked_element->{'element_added'} = 1;
+                            if ($checked_element->{'toplevel'})
+                            {
+                                $element->{'element_prev'}->{'element_next'} = $checked_element if (exists($element->{'element_prev'}));
+                                $element_at_top = $checked_element;
+                            }
+                            $checked_element->{'element_next'} = $element_at_top->{'element_next'};
+                            push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
+                            foreach my $index(@{$current_element->{'indices'}})
+                            {
+                                push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
+                            }
+                            $checked_element->{'back'} = $back;
+                            $back->{'forward'} = $checked_element if (defined($back));
+                            $current_element = $checked_element;
+                            $back = $checked_element;
+                        }
                         my $index_page;
                         while(@pages)
                         {
-                            #my $next_texi = 'NO_NEXT';
-			    #$next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
-			    #print STDERR "New page (top $element_at_top->{'texi'}, previous $previous_element->{'texi'}, current $current_element->{'texi'}, next  $next_texi)\n";
+                            # debug
+                            my $next_texi = 'NO_NEXT';
+			    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top->{'element_next'}));
+			    print STDERR "# New page (top $element_at_top->{'texi'}, back $back->{'texi'}, current $current_element->{'texi'}, next  $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                             $index_num++;
                             my $page = shift @pages;
                             $index_page = { 'index_page' => 1,
@@ -2614,15 +2678,16 @@ sub rearrange_elements()
                              'up' => $element_top,
                              'element_ref' => $element,
                              'element_next' => $element_at_top->{'element_next'},
-                             'back' => $previous_element,
+                             'back' => $back,
                              'place' => [],
-                             'page' => $page };
-                             push @{$current_element->{'indices'}->[-1]}, {'element' => $index_page, 'page' => $page };
-                             push @new_elements, $index_page;
-                             $previous_element->{'forward'} = $index_page;
-                             $previous_element = $index_page;
-                             $element_at_top->{'element_next'} = $index_page;
-                             $element_at_top = $index_page;
+                             'page' => $page 
+                            };
+                            push @{$current_element->{'indices'}->[-1]}, {'element' => $index_page, 'page' => $page };
+                            push @new_elements, $index_page;
+                            $back->{'forward'} = $index_page;
+                            $back = $index_page;
+                            $element_at_top->{'element_next'} = $index_page unless ($element_at_top->{'top'});
+                            $element_at_top = $index_page;
                         }
                         $current_element = $index_page;
                     }
@@ -2630,15 +2695,16 @@ sub rearrange_elements()
                 push @{$current_element->{'place'}}, @{$index->{'place'}};
             }
         }
-        if ($forward and ($previous_element ne $element))
+        if ($forward and ($current_element ne $element))
         {
-            $previous_element->{'forward'} = $forward;
-            $forward->{'back'} = $previous_element;
+            $current_element->{'forward'} = $forward;
+            $forward->{'back'} = $current_element;
         }
         next unless ($current_element ne $element);
         # reparent the elements below $element, following element
         # and following parent of element to the last index page
-	#print STDERR "Reparent `$element->{'texi'}'\n";
+	print STDERR "# Reparent `$element->{'texi'}':\n"
+                    if ($T2H_DEBUG & $DEBUG_INDEX);
         my @reparented_elements = ();
         @reparented_elements = (@{$element->{'childs'}}) if (defined($element->{'childs'}));
         my $up = $element;
@@ -2654,8 +2720,10 @@ sub rearrange_elements()
         }
         foreach my $reparented(@reparented_elements)
         {
+            next if ($reparented->{'toplevel'}); # happens for an index in @top
             $reparented->{'element_up'} = $current_element;
-	    #print STDERR "reparented: $reparented->{'texi'}\n";
+	    print STDERR "   reparented: $reparented->{'texi'}\n"
+                    if ($T2H_DEBUG & $DEBUG_INDEX);
         }
     }
     @elements_list = @new_elements;
@@ -2726,7 +2794,7 @@ sub rearrange_elements()
         }
         foreach my $element (@elements_list)
         {
-            $doc_nr++ if ((!$element->{'node'} and ($element->{'level'} <= $cut_section))
+            $doc_nr++ if (((!$element->{'node'} or $element->{'element_added'}) and ($element->{'level'} <= $cut_section))
                or $element->{'index_page'});
             $element->{'doc_nr'} = $doc_nr;
             $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
@@ -2738,7 +2806,7 @@ sub rearrange_elements()
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
             #FIXME this may be wrong, and we should care as for hrefs the
-            # file might be wrong.
+            # file might be wrong. FIXED by element_added ?
             #(it is wrong when the nodes follow the section and there 
             #is an index inbetween)
             unless ($element->{'node'})
@@ -2747,11 +2815,12 @@ sub rearrange_elements()
                 {
                     foreach my $node (@{$element->{'nodes'}})
                     {
+                        next if ($node->{'element_added'});
                         $node->{'doc_nr'} = $doc_nr;
                         $node->{'file'} = $element->{'file'};
                     }
                 }
-                elsif ($element->{'node_ref'})
+                elsif ($element->{'node_ref'} and !$element->{'element_added'})
                 {
                     $element->{'node_ref'}->{'doc_nr'} = $doc_nr ;
                     $element->{'node_ref'}->{'file'} = $element->{'file'};
@@ -2767,7 +2836,7 @@ sub rearrange_elements()
             $element->{'doc_nr'} = 0;
             foreach my $place(@{$element->{'place'}})
             {
-                $place->{'file'} = $element->{'file'};
+                $place->{'file'} = "$element->{'file'}";
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
  
@@ -2787,10 +2856,12 @@ sub rearrange_elements()
     foreach my $element ((@elements_list, $footnote_element))
     {
         last unless ($T2H_DEBUG & $DEBUG_ELEMENTS);
+        my $is_toplevel = 'not top';
+        $is_toplevel = 'top' if ($element->{'toplevel'});
         print STDERR "$element ";
         if ($element->{'node'})
         {
-             print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+             print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
         }
         elsif ($element->{'index_page'})
         {
@@ -2804,7 +2875,7 @@ sub rearrange_elements()
         {
              my $number = "UNNUMBERED";
              $number = $element->{'number'} if ($element->{'number'});
-             print STDERR "$number ($element->{'id'}, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+             print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
         }
         print STDERR "  TOP($toplevel) " if ($element->{'top'});
         print STDERR "  u: $element->{'up'}->{'texi'}\n" if (defined($element->{'up'}));
@@ -2831,7 +2902,7 @@ sub rearrange_elements()
         {
             if ($place->{'entry'})
             {
-                print STDERR "    index: $place->{'entry'}\n";
+                print STDERR "    index($place): $place->{'entry'}\n";
             }
             elsif ($place->{'anchor'})
             {
@@ -2938,7 +3009,7 @@ sub enter_index_entry($$$$$$)
     $index->{$prefix}->{$key}->{'label'} = $id;
     #print STDERR "Enter $index->{$prefix}->{$key} $key\n"; 
     push @$place, $index->{$prefix}->{$key};
-    print STDERR "# enter_index_entry: found ${prefix}index  for '$key' with id $id\n"
+    print STDERR "# enter ${prefix}index '$key' with id $id ($index->{$prefix}->{$key})\n"
         if $T2H_DEBUG & $DEBUG_INDEX;
     push @index_labels, $index->{$prefix}->{$key};
     return $index->{$prefix}->{$key};
@@ -3293,7 +3364,7 @@ sub pass_text()
                     if (!$current_element->{'node'} and !$current_element->{'index_page'} and ($section_element ne $current_element))
                     {
                          print STDERR "NODE: $element->{'texi'}\n" if ($element->{'node'});
-                         warn "elements_list and all_elements not in sync (elements $section_element->{'texi'}, all $current_element->{'texi'})\n";
+                         warn "elements_list and all_elements not in sync (elements $section_element->{'texi'}, all $current_element->{'texi'}): $_";
                     }
                 }
                 else
@@ -3358,6 +3429,8 @@ sub pass_text()
                        'Prev', 'FastForward', 'FastBack', 'This'))
                     {
                         my $elem = $element->{$direction};
+                        $T2H_NODE{$direction} = undef;
+                        $T2H_HREF{$direction} = undef;
                         next unless (defined($elem));
                         if ($elem->{'node'} or $elem->{'external_node'})
                         {
@@ -6674,7 +6747,8 @@ sub do_index_entry_label($)
         return '';
     }
     
-    #print STDERR "adding $entry->{'entry'} $entry->{'label'}\n";
+    print STDERR "[(index) $entry->{'entry'} $entry->{'label'}]"
+        if ($T2H_DEBUG & $DEBUG_INDEX);
     return &$t2h_index_entry_label ($entry->{'label'}, $state->{'preformatted'});
 }
 

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.26 2003-04-29 18:55:17 pertusus Exp $
+# $Id: texi2html.init,v 1.27 2003-04-30 18:32:34 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -1847,7 +1847,8 @@ sub t2h_default_index_entries($$)
            # the sectionning command
            $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'node'} and $entry_element->{'section_ref'});
            my $origin_href = '';
-           $origin_href = $label->{'file'} if ($label->{'file'} ne $element->{'file'});
+           $origin_href = $entry->{'file'} if ($T2H_SPLIT and $entry->{'file'} ne $element->{'file'});
+	   #print STDERR "$entry $entry->{'entry'}, real elem $label->{'texi'}, section $entry_element->{'texi'}, real $label->{'file'}, entry file $entry->{'file'}\n";
            if ($entry->{'label'})
            { 
                $origin_href .= '#' . $entry->{'label'};
