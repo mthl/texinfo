@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.37 2003-09-15 15:50:24 karl Exp $
+$Id: dir-example,v 1.38 2003-10-08 13:06:58 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -250,6 +250,7 @@ Other things
 * GIMP: (pdb).                  The GIMP procedural database.
 * HTML: (snafu).                Hypertext Markup Language 2.0 specification.
 * Jargon: (jargon).             The jargon file.
+* Netpbm: (netpbm).             Images/graphics manipulation programs.
 * JED: (jed).                   JED editor documentation.
 * octave: (octave).             Octave - A language for numerical computation.
 * Perl: (perl).                 Practical extraction and report language.
