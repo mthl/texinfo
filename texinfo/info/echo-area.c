@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.4 2004-07-24 18:12:38 karl Exp $
+   $Id: echo-area.c,v 1.5 2004-08-07 22:03:08 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004 Free Software
    Foundation, Inc.
@@ -1499,13 +1499,14 @@ pause_or_input (void)
    for input or a couple of seconds, whichever comes first.  Then flush the
    informational message that was printed. */
 void
-inform_in_echo_area (char *message)
+inform_in_echo_area (const char *message)
 {
-  register int i;
+  int i;
   char *text;
+  int avail = EA_MAX_INPUT + 1 - input_line_end;
 
   text = xstrdup (message);
-  for (i = 0; text[i] && text[i] != '\n'; i++)
+  for (i = 0; text[i] && text[i] != '\n' && i < avail; i++)
     ;
   text[i] = 0;
 

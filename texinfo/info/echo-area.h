@@ -1,5 +1,5 @@
 /* echo-area.h -- Functions used in reading information from the echo area.
-   $Id: echo-area.h,v 1.3 2004-04-11 17:56:45 karl Exp $
+   $Id: echo-area.h,v 1.4 2004-08-07 22:03:08 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -33,7 +33,7 @@ extern int echo_area_is_active, info_aborted_echo_area;
    killed some text. */
 extern int echo_area_last_command_was_kill;
 
-extern void inform_in_echo_area (char *message);
+extern void inform_in_echo_area (const char *message);
 extern void echo_area_inform_of_deleted_window (WINDOW *window);
 extern void echo_area_prep_read (void);
 extern VFunction *ea_last_executed_command;

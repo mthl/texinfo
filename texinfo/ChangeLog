@@ -1,3 +1,12 @@
+2004-08-07  Karl Berry  <karl@gnu.org>
+
+	* info/echo-area.c (inform_in_echo_area): avoid buffer overrun.
+	Report from: Roman Werpachowski <rwerp@gazeta.pl>,
+	7 Aug 2004 01:18:32 +0200.
+	
+	* info/echo-area.h (inform_in_echo_area): declare arg as const,
+	while we're at it.
+
 2004-08-02  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/cmds.c (cm_acronym_or_abbr): use strchr, not index.
