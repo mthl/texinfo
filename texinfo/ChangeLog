@@ -1,5 +1,10 @@
 2003-05-18    <karl@gnu.org>
 
+	* lib/xexit.c (xexit): fputs not fprintf, so we get newline;
+	translate the messages, too.  Report from Jim Meyering.
+
+	* util/dir-example: move gcc/automake entries.
+
 	* pretest version 4.5.92.
 
 	* update to automake 1.7.5.

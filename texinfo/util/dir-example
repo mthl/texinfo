@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.31 2003-05-18 15:54:46 karl Exp $
+$Id: dir-example,v 1.32 2003-05-19 12:16:59 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -234,7 +234,7 @@ Other things
 * Screen: (screen).             Terminal multiplexer.
 
 Individual utilities
-* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4
+* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
 * aid: (id-utils)aid invocation.                Matching strings.
 * ar: (binutils)ar.                             Create/modify/extract archives.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
