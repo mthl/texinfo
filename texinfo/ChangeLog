@@ -1,3 +1,7 @@
+2004-12-15  Stepan Kasal  <kasal@ucw.cz>
+
+	* Makefile.am (EXTRA_DIST): Removed po/Makevars.template, sorry.
+
 2004-12-15  Juan M. Guerrero  <st001906@hrz1.hrz.tu-darmstadt.de>
 
 	* djgpp/config.sed: adjust for new autoconf.
