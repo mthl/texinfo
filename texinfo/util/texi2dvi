@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.18 2003-05-13 13:23:13 karl Exp $
+# $Id: texi2dvi,v 1.19 2003-05-25 20:20:23 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.18 $'
+rcs_revision='$Revision: 1.19 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.5) $rcs_version
@@ -587,10 +587,9 @@ $textra" "$filename_input" >$filename_xtr
       fi
     fi
 
-    # Finally, run TeX.
-    # Prevent $ESCAPE from being interpreted by the shell if it happens
-    # to be `/'.
-    $batch tex_args="$tex_args \\${escape}nonstopmode\ \\${escape}input"
+    # Finally, run TeX.  Prevent $escape from being interpreted by the
+    # shell, and need an extra set of quotes for the eval, if --batch.
+    $batch tex_args="\"$tex_args \\${escape}nonstopmode\ \\${escape}input\""
     cmd="$tex $tex_args $filename_input"
     $verbose "Running $cmd ..."
     if $cmd >&5; then :; else
