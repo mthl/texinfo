@@ -1,3 +1,20 @@
+2002-11-05    <karl@gnu.org>
+
+	* doc/info-stnd.texi: untabify.
+	* doc/info-stnd.texi: document that.
+	* info/footnotes.c (auto_footnotes_p): turn off by default.
+
+	* info/infodoc.c (info_internal_help_text): had
+	scroll-{forward,backward} twice instead of {next,prev}-line.
+	* info/infodoc.c: untabify.
+
+	* util/texi2dvi: untabify.
+	* doc/texinfo.tex: untabify.
+	* util/texindex.c: untabify.
+	* util/install-info.c: untabify.
+	* makeinfo/makeinfo.c: indentation fix.
+	* makeinfo/cmds.c: doc fix.
+
 2002-11-04    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.2d.
