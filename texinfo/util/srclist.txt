@@ -1,5 +1,6 @@
 # $Id$
 # Files for which we are not the source.
+# This is meant for the script gnulib/config/srclist-update.
 
 $EMACSSRC/man/info.texi			doc
 $GNUBIN/help2man			doc
@@ -68,7 +69,7 @@ $GNULIBSRC/config/missing	.
 $GNULIBSRC/config/mkinstalldirs	.
 #
 $GNULIBSRC/doc/COPYING.DOC	.
-$GNULIBSRC/doc/INSTALL		.
+$GNULIBSRC/doc/INSTALL		./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi		doc
 #
 $GNULIBSRC/lib/alloca.c		lib
