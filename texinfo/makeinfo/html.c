@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.13 2003-05-12 13:12:32 karl Exp $
+   $Id: html.c,v 1.14 2003-05-13 16:25:14 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -143,6 +143,8 @@ init_buffer ()
   buf->length = 0;
   buf->size = 0;
   buf->buffer = NULL;
+
+  return buf;
 }
 
 
