@@ -1,7 +1,7 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.26 2003-04-28 14:03:20 karl Exp $
+   $Id: makeinfo.c,v 1.27 2003-04-28 23:26:44 karl Exp $
 
-   Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
+   Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -713,7 +713,7 @@ For more information about these matters, see the files named COPYING.\n"),
           xml = 1;
           process_xml = 1;
           break;
- 
+
         case '?':
           usage (1);
           break;
@@ -752,7 +752,7 @@ For more information about these matters, see the files named COPYING.\n"),
       if (!command_output_filename)
         command_output_filename = xstrdup ("-");
     }
-    
+
   if (process_info == -1)
     { /* no explicit --[no-]ifinfo option, so we'll do @ifinfo
          if we're generating info or (for compatibility) plain text.  */
@@ -764,7 +764,7 @@ For more information about these matters, see the files named COPYING.\n"),
          if we're generating plain text.  */
       process_plaintext = no_headers && !html && !xml;
     }
-    
+
   if (verbose_mode)
     print_version_info ();
 
@@ -1317,12 +1317,12 @@ convert_from_file (name)
 
 /* Given OUTPUT_FILENAME == ``/foo/bar/baz.html'', return
    "/foo/bar/baz/baz.html".  This routine is called only if html && splitting.
-   
+
   Split html output goes into the subdirectory of the toplevel
   filename, without extension.  For example:
       @setfilename foo.info
   produces output in files foo/index.html, foo/second-node.html, ...
-  
+
   But if the user said -o foo.whatever on the cmd line, then use
   foo.whatever unchanged.  */
 
@@ -1436,7 +1436,7 @@ convert_from_loaded_file (name)
           command_output_filename = output_name_from_input_name (name);
 #endif /* !REQUIRE_SETFILENAME */
         }
- 
+
       {
         int i, end_of_first_line;
 
@@ -1584,7 +1584,7 @@ convert_from_loaded_file (name)
   reader_loop ();
   if (xml)
     xml_end_document ();
-      
+
 
 finished:
   discard_insertions (0);
@@ -1704,10 +1704,10 @@ static void
 handle_menu_entry ()
 {
   char *tem;
-  
+
   /* Ugh, glean_node_from_menu wants to read the * itself.  */
   input_text_offset--;
-  
+
   /* Find node name in menu entry and save it in references list for
      later validation.  Use followed_reference type for detailmenu
      references since we don't want to use them for default node pointers.  */
@@ -1736,7 +1736,7 @@ handle_menu_entry ()
           add_word ("<p>\n");
           in_paragraph = 1;
         }
-      
+
       if (in_paragraph)
         {
           add_word ("</p>");
@@ -1776,7 +1776,7 @@ handle_menu_entry ()
       add_word (": ");
     }
   else if (xml && tem)
-    { 
+    {
       xml_start_menu_entry (tem);
     }
   else if (tem)
@@ -1998,7 +1998,7 @@ reader_loop ()
               input_text_offset++;
             }
           break;
-        
+
         /* Escapes for HTML unless we're outputting raw HTML.  Do
            this always, even if SGML rules don't require it since
            that's easier and safer for non-conforming browsers. */
@@ -2993,16 +2993,16 @@ cm_xref (arg)
               char *arg1_id = xml_id (arg1);
               if (*arg2)
                 {
-                  xml_insert_element_with_attribute (XREFNODENAME, START, 
+                  xml_insert_element_with_attribute (XREFNODENAME, START,
                                                      "linkend=\"%s\"", arg1_id);
                   free (arg1_id);
                   if (*arg2)
                     execute_string (arg2);
                   xml_insert_element (XREFNODENAME, END);
-                } 
+                }
               else
                 {
-                  xml_insert_element_with_attribute (XREF, START, 
+                  xml_insert_element_with_attribute (XREF, START,
                                                      "linkend=\"%s\"", arg1_id);
                   free (arg1_id);
                   xml_pop_current_element ();
@@ -3320,7 +3320,7 @@ cm_uref (arg)
               execute_string (replacement);
               xml_insert_element (UREFREPLACEMENT, END);
             }
-          xml_insert_element (UREF, END);         
+          xml_insert_element (UREF, END);
         }
       else if (html)
         { /* never need to show the url */
@@ -3376,7 +3376,7 @@ cm_email (arg)
           xml_insert_element_with_attribute (EMAIL, START, "url=\"mailto:%s\"", addr);
           if (*name)
               execute_string (name);
-          xml_insert_element (EMAIL, END);                
+          xml_insert_element (EMAIL, END);
         }
       else if (xml)
         {
@@ -3390,7 +3390,7 @@ cm_email (arg)
               execute_string (name);
               xml_insert_element (EMAILNAME, END);
             }
-          xml_insert_element (EMAIL, END);                
+          xml_insert_element (EMAIL, END);
         }
       else if (html)
         {
@@ -3441,7 +3441,7 @@ cm_image (arg)
       char *pathname = NULL;
       char *fullname = xmalloc (strlen (name_arg)
                        + (ext_arg && *ext_arg ? strlen (ext_arg) + 1 : 4) + 1);
-      
+
       if (ext_arg && *ext_arg)
         {
           sprintf (fullname, "%s.%s", name_arg, ext_arg);
@@ -3465,7 +3465,7 @@ cm_image (arg)
                 }
             }
         }
-      
+
       if (html)
         {
           if (pathname == NULL && access (fullname, R_OK) != 0)
@@ -3480,7 +3480,7 @@ cm_image (arg)
                           fullname);
               return;
             }
-          
+
           add_html_elt ("<img src=");
           add_word_args ("\"%s\"", fullname);
           add_html_elt (" alt=");
@@ -3512,7 +3512,7 @@ cm_image (arg)
               if (txtpath != NULL)
                 image_file = fopen (txtpath, "r");
             }
-          
+
           if (image_file != NULL
               || access (fullname, R_OK) == 0
               || (pathname != NULL && access (pathname, R_OK) == 0))
@@ -3535,7 +3535,7 @@ cm_image (arg)
 
               if (*alt_arg)
                 add_word_args (" alt=\"%s\"", alt_arg);
-              
+
               if (image_file != NULL)
                 {
                   add_word (" text=\"");
@@ -3550,7 +3550,7 @@ cm_image (arg)
                       add_char (ch);
                     }
                   add_char ('"');
-                  
+
                   if (fclose (image_file) != 0)
                     perror (txtname);
                 }
@@ -3559,7 +3559,7 @@ cm_image (arg)
               filling_enabled = save_filling_enabled;
 
               add_char ('\0');
-              add_word ("\010]"); 
+              add_word ("\010]");
             }
           else
             line_error (_("@image file `%s' (for text) unreadable: %s"),
@@ -4104,7 +4104,7 @@ expansion (str, implicit_code)
     int implicit_code;
 {
   char *result;
-  
+
   /* Inhibit indentation and filling, so that extra newlines
      are not added to the expansion.  (This is undesirable if
      we write the expanded text to macro_expansion_output_stream.)  */
@@ -4117,14 +4117,14 @@ expansion (str, implicit_code)
   indented_fill = 0;
   no_indent = 1;
   escape_html = 0;
-  
+
   result = full_expansion (str, implicit_code);
 
   filling_enabled = saved_filling_enabled;
   indented_fill = saved_indented_fill;
   no_indent = saved_no_indent;
-  escape_html = saved_escape_html;  
-  
+  escape_html = saved_escape_html;
+
   return result;
 }
 
@@ -4199,13 +4199,13 @@ text_expansion (str)
   char *ret;
   int save_html = html;
   int save_xml = xml;
-  
+
   html = 0;
   xml = 0;
   ret = expansion (str, 0);
   html = save_html;
   xml = save_xml;
-  
+
   return ret;
 }
 
