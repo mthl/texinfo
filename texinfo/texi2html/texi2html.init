@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.5 2001-09-17 17:27:42 dprice Exp $
+# $Id: texi2html.init,v 1.6 2001-09-18 22:15:21 reiter Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -809,8 +809,8 @@ sub T2H_DEFAULT_print_misc
 ###################################################################
 # chapter_header and chapter_footer are only called if
 # T2H_SPLIT eq 'chapter'
-# chapter_header: after print_page_header, before print_section
-# chapter_footer: after print_section of last section, before print_page_footer
+# chapter_header: after print_page_head, before print_section
+# chapter_footer: after print_section of last section, before print_page_foot
 #
 # If you want to get rid of navigation stuff after each section,
 # redefine print_section such that it does not call print_navigation,
