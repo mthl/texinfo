@@ -1,3 +1,9 @@
+2004-12-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Cross-reference Command Expansion): add
+	@euro{} -> U+20AC.  texinfo-pretest mail from Patrice,
+	12 Dec 2004 23:49:50 +0100.
+
 2004-12-12  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (makeinfo options): don't be so suggestive about
