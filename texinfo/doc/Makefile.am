@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.10 2003-10-27 00:16:11 karl Exp $
+# $Id: Makefile.am,v 1.11 2003-11-07 19:32:26 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -57,7 +57,7 @@ install-tex:
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
 
 # The man pages depend on the --help strings and the version number.
-if TEXINFO_MAINT
+if MAINTAINER_MODE
 common_mandeps = $(top_srcdir)/configure.ac $(HELP2MAN)
 info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	$(HELP2MAN) --name="read Info documents" `basename $< .c` >$@
