@@ -180,3 +180,6 @@ set args -o - --enable-encoding $ttests/doclatin1.tex
 
 # --xml?
 set args -o /dev/null --xml $ttests/doclatin1.tex
+
+# seg fault printindex twice
+set args -o - $ttests/index22.tex

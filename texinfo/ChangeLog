@@ -1,3 +1,18 @@
+2003-05-10    <karl@gnu.org>
+
+	* makeinfo/index.c (sort_index): allocate the sorted index in new
+	memory, and set the original index to that, to avoid problems with
+	@printindex being called twice on the same index.
+	(cm_printindex): do not free the returned index.
+	Report from: Dumas Patrice <dumas@centre-cired.fr>, 9 May 2003
+	15:12:21 +0200.
+
+2003-05-09    <karl@gnu.org>
+
+	* makeinfo/defun.c (cm_defun): issue error message without extra
+	x's.  Report from: Dumas Patrice <dumas@centre-cired.fr>, 9 May
+	2003 17:24:25 +0200.
+
 2003-05-07  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (textra_cmd): New.
