@@ -1,3 +1,13 @@
+2003-09-04  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle better @itemize and @table,
+	by appending the text appearing on the format command line.
+	Use %special_list_commands to inhibit calling the formatting command
+	on an item in a given format command.
+	if '-' is given to the -output option, output on STDOUT.
+	Find more format command mismatches, and handle better formats not
+	closed.
+
 2003-09-02  Patrice Dumas <dumas@centre-cired.fr>
 
 	* Tests/macros/glossary.texi: test for nested macros definitions

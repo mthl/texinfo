@@ -16,6 +16,30 @@ bidule
 * node d@'a::       node without braces
 @end menu
 
+Tests for environments not matching
+
+@quotation
+A quotation
+@end cartouche
+
+@deffn {Function Reference} print_navigation $filehandle
+Text
+@end deftypefun
+
+@table
+@item item
+line
+@end vtable
+
+@table @emph
+@item ref
+@example
+example
+@end display
+@end table
+
+
+
 @node First node
 @chapter first node chapter
 
@@ -49,6 +73,7 @@ Unknown thing @thing{}
 
 A list with bullet
 Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @c segfault <- @item on the same line that itemize
+
 @item on the same line than item
 some text
 @item

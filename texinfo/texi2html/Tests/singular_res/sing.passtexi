@@ -5318,7 +5318,7 @@
 ../singular_texi/general.tex(,4409) ////////////////////////////////////////////////////////////////////
 ../singular_texi/general.tex(,4410) // version string automatically expanded by CVS
 ../singular_texi/general.tex(,4411) 
-../singular_texi/general.tex(,4412) version="$Id: sing.passtexi,v 1.4 2003-09-01 15:43:40 pertusus Exp $";
+../singular_texi/general.tex(,4412) version="$Id: sing.passtexi,v 1.5 2003-09-04 14:44:02 pertusus Exp $";
 ../singular_texi/general.tex(,4413) category="Miscellaneous";
 ../singular_texi/general.tex(,4414) // summary description of the library
 ../singular_texi/general.tex(,4415) info="

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.62 2003-09-01 17:48:05 pertusus Exp $
+# $Id: texi2html.pl,v 1.63 2003-09-04 14:43:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -319,6 +319,7 @@ our %pre_map;
 our %to_skip;
 our %to_skip_texi;
 our %css_map;
+our %special_list_commands;
 
 $toc_body                 = \&T2H_GPL_toc_body;
 sub T2H_GPL_toc_body($$$)
@@ -2445,6 +2446,10 @@ if ($Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SUBDIR)
 }
 
 # subdir
+
+die "output to STDOUT and split or frames incompatible\n" 
+    if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and ($Texi2HTML::Config::OUT eq '-'));
+
 $docu_rdir = '';
 if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
@@ -2508,7 +2513,7 @@ else
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
 
-my $docu_doc_file = "$docu_rdir$docu_doc"; # unused
+my $docu_doc_file = "$docu_rdir$docu_doc"; 
 my $docu_toc_file  = "$docu_rdir$docu_toc";
 my $docu_stoc_file = "$docu_rdir$docu_stoc";
 my $docu_foot_file = "$docu_rdir$docu_foot";
@@ -5372,7 +5377,6 @@ sub pass_text()
     my @section_lines = ();
     my @head_lines = ();
     my $one_section = 1 if (@elements_list == 1);
-    my $FH;
 
     if (@elements_list == 0)
     {
@@ -5480,23 +5484,28 @@ sub pass_text()
     #
     if ( $Texi2HTML::Config::FRAMES )
     {
-        open(FILE, "> $docu_frame_file")
-            || die "$ERROR: Can't open $docu_frame_file for writing: $!\n";
+        #open(FILE, "> $docu_frame_file")
+        #    || die "$ERROR: Can't open $docu_frame_file for writing: $!\n";
+        my $FH = open_out($docu_frame_file);
         print STDERR "# Creating frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
-        &$Texi2HTML::Config::print_frame(\*FILE, $docu_toc_frame_file, $docu_top_file);
-        close(FILE);
+        &$Texi2HTML::Config::print_frame($FH, $docu_toc_frame_file, $docu_top_file);
+        close_out($FH, $docu_frame_file);
 
-        open(FILE, "> $docu_toc_frame_file")
-            || die "$ERROR: Can't open $docu_toc_frame_file for writing: $!\n";
+        #open(FILE, "> $docu_toc_frame_file")
+        #    || die "$ERROR: Can't open $docu_toc_frame_file for writing: $!\n";
+        $FH = open_out($docu_toc_frame_file);
         print STDERR "# Creating toc frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
-        &$Texi2HTML::Config::print_toc_frame(\*FILE, $Texi2HTML::OVERVIEW);
-        close(FILE);
+        #&$Texi2HTML::Config::print_toc_frame(\*FILE, $Texi2HTML::OVERVIEW);
+        &$Texi2HTML::Config::print_toc_frame($FH, $Texi2HTML::OVERVIEW);
+        #close(FILE);
+        close_out($FH, $docu_toc_frame_file);
     }
 
     ############################################################################
     #
     #
 
+    my $FH;
     my $index_pages;
     my $index_pages_nr;
     my $index_nr = 0;
@@ -5675,11 +5684,12 @@ sub pass_text()
                     {
                         my $file = $element->{'file'};
 			#print STDERR "Open file for $element->{'texi'}\n";
-                        open(FILE, "> $docu_rdir$file") ||
-                        die "$ERROR: Can't open $docu_rdir$file for writing: $!\n";
+                        #open(FILE, "> $docu_rdir$file") ||
+                        #die "$ERROR: Can't open $docu_rdir$file for writing: $!\n";
                         print STDERR "\n" if ($T2H_VERBOSE and !$T2H_DEBUG);
                         print STDERR "# Writing to $docu_rdir$file " if $T2H_VERBOSE;
-                        $FH = \*FILE;
+                        #$FH = \*FILE;
+                        $FH = open_out("$docu_rdir$file");
                         &$Texi2HTML::Config::print_page_head($FH);
                         &$Texi2HTML::Config::print_chapter_header($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
                         &$Texi2HTML::Config::print_section_header($FH) if $Texi2HTML::Config::SPLIT eq 'section';
@@ -5779,7 +5789,8 @@ sub pass_text()
         print_lines($FH);
         &$Texi2HTML::Config::print_foot_navigation($FH);
         &$Texi2HTML::Config::print_page_foot($FH);
-        close($FH);
+        close_out($FH);
+               #|| die "$ERROR: Error occurred when closing: $!\n";
         return;
     }
     finish_element ($FH, $element, undef);
@@ -5802,7 +5813,8 @@ sub pass_text()
     if (@foot_lines)
     {
         print STDERR "# writing Footnotes in $docu_foot_file\n" if $T2H_VERBOSE;
-        open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
+        #open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
+        $FH = open_out ($docu_foot_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{This} = $Texi2HTML::HREF{Footnotes};
         $Texi2HTML::HREF{Footnotes} = '#' . $footnote_element->{'id'};
@@ -5810,15 +5822,20 @@ sub pass_text()
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{Footnotes};
         $Texi2HTML::THIS_SECTION = \@foot_lines;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor($footnote_element->{'id'}) . "\n" ];
-        &$Texi2HTML::Config::print_Footnotes(\*FILE);
-        close(FILE) if $Texi2HTML::Config::SPLIT;
+        #&$Texi2HTML::Config::print_Footnotes(\*FILE);
+        &$Texi2HTML::Config::print_Footnotes($FH);
+        #close(FILE) if $Texi2HTML::Config::SPLIT;
+        close_out($FH, $docu_foot_file) 
+            #|| die "$ERROR: Error occurred when closing $docu_foot_file: $!\n"
+               if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{Footnotes} = $Texi2HTML::HREF{This};
     }
 
     if (@{$Texi2HTML::TOC_LINES})
     {
         print STDERR "# writing Toc in $docu_toc_file\n" if $T2H_VERBOSE;
-        open (FILE, "> $docu_toc_file") || die "$ERROR: Can't open $docu_toc_file for writing: $!\n"
+        #open (FILE, "> $docu_toc_file") || die "$ERROR: Can't open $docu_toc_file for writing: $!\n"
+        $FH = open_out ($docu_toc_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{This} = $Texi2HTML::HREF{Contents};
         $Texi2HTML::HREF{Contents} = "#SEC_Contents";
@@ -5826,15 +5843,20 @@ sub pass_text()
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{Contents};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::TOC_LINES;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Contents") . "\n" ];
-        &$Texi2HTML::Config::print_Toc(\*FILE);
-        close(FILE) if $Texi2HTML::Config::SPLIT;
+        #&$Texi2HTML::Config::print_Toc(\*FILE);
+        #close(FILE) if $Texi2HTML::Config::SPLIT;
+        &$Texi2HTML::Config::print_Toc($FH);
+        close_out($FH, $docu_toc_file) 
+        #|| die "$ERROR: Error occurred when closing $docu_toc_file: $!\n"
+               if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{Contents} = $Texi2HTML::HREF{This};
     }
 
     if (@{$Texi2HTML::OVERVIEW})
     {
         print STDERR "# writing Overview in $docu_stoc_file\n" if $T2H_VERBOSE;
-        open (FILE, "> $docu_stoc_file") || die "$ERROR: Can't open $docu_stoc_file for writing: $!\n"
+        #open (FILE, "> $docu_stoc_file") || die "$ERROR: Can't open $docu_stoc_file for writing: $!\n"
+        $FH = open_out ($docu_stoc_file)
             if $Texi2HTML::Config::SPLIT;
         $Texi2HTML::HREF{This} = $Texi2HTML::HREF{Overview};
         $Texi2HTML::HREF{Overview} = "#SEC_Overview";
@@ -5842,15 +5864,20 @@ sub pass_text()
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{Overview};
         $Texi2HTML::THIS_SECTION = $Texi2HTML::OVERVIEW;
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_Overview") . "\n" ];
-        &$Texi2HTML::Config::print_Overview(\*FILE);
-        close(FILE) if $Texi2HTML::Config::SPLIT;
+        #&$Texi2HTML::Config::print_Overview(\*FILE);
+        #close(FILE) if $Texi2HTML::Config::SPLIT;
+        &$Texi2HTML::Config::print_Overview($FH);
+        close_out($FH,$docu_stoc_file) 
+         #|| die "$ERROR: Error occurred when closing $docu_stoc_file: $!\n"
+               if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{Overview} = $Texi2HTML::HREF{This};
     }
     my $about_body;
     if ($about_body = &$Texi2HTML::Config::about_body())
     {
         print STDERR "# writing About in $docu_about_file\n" if $T2H_VERBOSE;
-        open (FILE, "> $docu_about_file") || die "$ERROR: Can't open $docu_about_file for writing: $!\n"
+        #open (FILE, "> $docu_about_file") || die "$ERROR: Can't open $docu_about_file for writing: $!\n"
+        $FH = open_out ($docu_about_file)
             if $Texi2HTML::Config::SPLIT;
 
         $Texi2HTML::HREF{This} = $Texi2HTML::HREF{About};
@@ -5859,15 +5886,20 @@ sub pass_text()
         $Texi2HTML::NO_TEXI{This} = $Texi2HTML::NO_TEXI{About};
         $Texi2HTML::THIS_SECTION = [$about_body];
         $Texi2HTML::THIS_HEADER = [ &$Texi2HTML::Config::anchor("SEC_About") . "\n" ];
-        &$Texi2HTML::Config::print_About(\*FILE);
+        #&$Texi2HTML::Config::print_About(\*FILE);
+        #close(FILE) if $Texi2HTML::Config::SPLIT;
+        &$Texi2HTML::Config::print_About($FH);
+        close_out($FH, $docu_stoc_file) 
+           #|| die "$ERROR: Error occurred when closing $docu_stoc_file: $!\n"
+               if ($Texi2HTML::Config::SPLIT);
         $Texi2HTML::HREF{About} = $Texi2HTML::HREF{This};
-        close(FILE) if $Texi2HTML::Config::SPLIT;
     }
 
     unless ($Texi2HTML::Config::SPLIT)
     {
-        &$Texi2HTML::Config::print_page_foot(\*FILE);
-        close (FILE);
+        &$Texi2HTML::Config::print_page_foot($FH);
+        close_out ($FH);
+          # || die "$ERROR: Error occurred when closing: $!\n";
     }
 }
 
@@ -5892,8 +5924,8 @@ sub finish_element($$$)
         &$Texi2HTML::Config::print_Top($FH, $element->{'has_heading'});
         if ($Texi2HTML::Config::SPLIT)
         {
-            close($FH)
-               || die "$ERROR: Error occurred when closing $top_file: $!\n";
+            close_out($FH, $top_file);
+               #|| die "$ERROR: Error occurred when closing $top_file: $!\n";
             undef $FH;
         }
     }
@@ -5904,18 +5936,19 @@ sub finish_element($$$)
         &$Texi2HTML::Config::print_section($FH);
         if (defined($new_element) and ($new_element->{'doc_nr'} != $element->{'doc_nr'}))
         {
-             &$Texi2HTML::Config::print_chapter_footer($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
-             &$Texi2HTML::Config::print_section_footer($FH) if $Texi2HTML::Config::SPLIT eq 'section';
+             &$Texi2HTML::Config::print_chapter_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'chapter');
+             &$Texi2HTML::Config::print_section_footer($FH) if ($Texi2HTML::Config::SPLIT eq 'section');
              #print STDERR "Close file after $element->{'texi'}\n";
              &$Texi2HTML::Config::print_page_foot($FH);
-             close($FH);
+             close_out($FH);
              undef $FH;
         }
         elsif (!defined($new_element) and $Texi2HTML::Config::SPLIT)
         { # end of last splitted section 
             &$Texi2HTML::Config::print_chapter_footer($FH) if $Texi2HTML::Config::SPLIT eq 'chapter';
             &$Texi2HTML::Config::print_page_foot($FH);
-            close($FH);
+            close_out($FH);
+               #|| die "$ERROR: Error occurred when closing: $!\n";
         }
     }
     return $FH;
@@ -5985,6 +6018,27 @@ sub open_file($$)
         warn "$ERROR Can't read file $name: $!\n";
     }
     use strict "refs";
+}
+
+sub open_out($)
+{
+    my $file = shift;
+    if ($file eq '-')
+    {
+        return \*STDOUT;
+    }
+    open(FILE, "> $file")
+            || die "$ERROR: Can't open $file for writing: $!\n";
+    return \*FILE;
+}
+
+sub close_out($;$)
+{
+    my $FH = shift;
+    my $file = shift;
+    $file = '' if (!defined($file));
+    return if ($Texi2HTML::Config::OUT eq '');
+    close ($FH) || die "$ERROR: Error occurred when closing $file: $!\n";
 }
 
 sub next_line($)
@@ -6439,16 +6493,19 @@ sub begin_paragraph($$)
     push @$stack, {'format' => 'paragraph', 'text' => '' };
 }
 
-sub parse_format_command($)
+sub parse_format_command($$)
 {
     my $line = shift;
-    my $command;
-    if ($line =~ /^\s*\@(\w+)/ and ($Texi2HTML::Config::things_map{$1} or defined($Texi2HTML::Config::style_map{$1})))
+    my $tag = shift;
+    my $command = 'asis';
+    if (($line =~ /^\s*\@([A-Za-z]\w*)(\{\})?$/ or $line =~ /^\s*\@([A-Za-z]\w*)(\{\})?\s/) and ($Texi2HTML::Config::things_map{$1} or defined($Texi2HTML::Config::style_map{$1})))
     {
-        $line =~ s/^\s*\@(\w+)(\{\})?//;
+        $line =~ s/^\s*\@([A-Za-z]\w*)(\{\})?\s*//;
         $command = $1;
-        $line =~ s/^\s*// unless ($line =~ /^\s*$/) ;
     }
+    my $appended = '';
+    return ($appended, $command) if ($line =~ /^\s*$/);
+    chomp $line;
     return ($line, $command);
 }
 
@@ -6541,6 +6598,7 @@ sub end_format($$$$$)
     my $line_nr = shift;
     #print STDERR "END FORMAT $format\n";
     #dump_stack($text, $stack, $state);
+    #sleep 1;
     close_menu($text, $stack, $state, $line_nr) if ($format_type{$format} eq 'menu');
     if (($format_type{$format} eq 'list') or ($format_type{$format} eq 'table'))
     { # those functions return if they detect an inapropriate context
@@ -6573,6 +6631,10 @@ sub end_format($$$$$)
              push (@$stack, $format_ref);
              dump_stack($text, $stack, $state);
              pop @$stack;  
+        }
+        elsif ($format_ref->{'format'} ne $format)
+        {
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
         }
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}));
     }
@@ -6609,18 +6671,30 @@ sub end_format($$$$$)
 	    #print STDERR "CLOSE $format ($format_ref->{'format'})\n$format_ref->{'text'}\n";
         pop @{$state->{'format_stack'}};
 	#dump_stack($text, $stack, $state); 
+        if ($format_ref->{'format'} ne $format)
+        {
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+        }
         if ($Texi2HTML::Config::format_map{$format})
         { # table or list has a simple format
             add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}));
         }
         else
         { # table or list handler defined by the user
-            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}));
+            add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}));
         }
     } 
     elsif (exists($Texi2HTML::Config::format_map{$format}))
     {
+        if ($format_ref->{'format'} ne $format)
+        { # FIXME hasn't that case been handled before ?
+             echo_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+        }
         add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}));
+    }
+    else
+    {
+        echo_warn("Unknown format $format", $line_nr);
     }
     # We restart the preformatted format which was stopped by the format
     # if in preformatted
@@ -6666,7 +6740,7 @@ sub close_menu($$$$)
     close_stack($text, $stack, $state, $line_nr, '');
     if ($state->{'menu_comment'})
     {
-	    #print STDERR "Before close_stack\n";
+	    #print STDERR "close MENU_COMMENT Before close_stack\n";
 	    #dump_stack($text, $stack, $state);
         close_stack($text, $stack, $state, $line_nr, undef, 'menu_comment');
         # close_paragraph isn't needed in most cases, but A preformatted may 
@@ -8582,7 +8656,7 @@ sub scan_line($$$$;$)
 
     while(1)
     {
-    #print STDERR "WHILE\n";
+    #print STDERR "WHILE: $_";
     #dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
@@ -8793,21 +8867,23 @@ sub scan_line($$$$;$)
                 close_stack($text, $stack, $state, $line_nr, undef, $end_tag);
                 # an empty preformatted may appear when closing things as
                 # when closed, formats reopen the preformatted environment
-                # in case there is some text following, which isn't the case 
-                # here.
+                # in case there is some text following, but we know it isn't 
+                # the case here, thus we can close paragraphs.
                 close_paragraph($text, $stack, $state);
+                my $new_top_stack = top_stack($stack);
+                next unless ($new_top_stack and defined($new_top_stack->{'format'}) and (($new_top_stack->{'format'} eq $end_tag) 
+                   or (($format_type{$new_top_stack->{'format'}} eq 'fake') and ($fake_format{$new_top_stack->{'format'}} eq $format_type{$end_tag}))));
             }
             # We should now be able to handle the format
             if (defined($format_type{$end_tag}) and $format_type{$end_tag} ne 'fake')
             {
                 end_format($text, $stack, $state, $end_tag, $line_nr);
-                next;
             }
             else 
             { # this is a fake format, ie a format used internally, inside
               # a real format. We do nothing, hoping the real format will
               # get closed, closing the fake internal formats
-		    #warn "$WARN Unknown \@end $end_tag\n";
+		    #print STDERR "FAKE \@end $end_tag\n";
 		    #add_prev($text, $stack, "\@end $end_tag");
             }
             next;
@@ -8998,13 +9074,30 @@ sub scan_line($$$$;$)
             }
             if ($macro =~ /^itemx?$/)
             {
-		    #print STDERR "ITEM\n";
+		    #print STDERR "ITEM: $_";
 		    #dump_stack($text, $stack, $state);
-                # these functions return trus if the context was their own
-                next if (add_item($text, $stack, $state, $line_nr, $_)); # handle lists
-                next if (add_term($text, $stack, $state, $line_nr)); # handle table
-                next if (add_line($text, $stack, $state, $line_nr)); # handle table
-	        my $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
+                # these functions return true if the context was their own
+                my $format;
+                if ($format = add_item($text, $stack, $state, $line_nr, $_))
+                { # handle lists
+                }
+                elsif ($format = add_term($text, $stack, $state, $line_nr))
+                {# handle table
+                }
+                elsif ($format = add_line($text, $stack, $state, $line_nr)) 
+                {# handle table
+                }
+                if ($format)
+                {
+                    if (defined($format->{'appended'}))
+                    { # FIXME if we have @itemize thing @item 
+   # there is an endless loop because thing @item keeps being added.
+                        #die "Endlessly appending $format->{'appended'}\n" if ($state->{'in_append'});
+                        $_ = $format->{'appended'} . ' ' . $_ if ($format->{'appended'} ne '');
+                    }
+                    next;
+                }
+	        $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
                 unless ($format)
                 {
                     echo_warn ("\@item outside of table or list", $line_nr);
@@ -9105,6 +9198,9 @@ sub scan_line($$$$;$)
                 }
                 elsif ($format_type{$macro} eq 'menu')
                 {
+                    # if we are allready in a menu we must close it first
+                    # in order to close the menu comments and entries
+                    close_menu($text, $stack, $state, $line_nr);
                     $state->{'menu'}++;
                     push @$stack, { 'format' => $macro, 'text' => '' };
                     if ($state->{'preformatted'})
@@ -9143,8 +9239,10 @@ sub scan_line($$$$;$)
                     if (($macro eq 'itemize') or ($macro =~ /^(|v|f)table$/))
                     {
                         my $command;
-                        ($_, $command) = parse_format_command ($_);
-                        $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'term' => 0 };
+                        my $appended;
+                        ($appended, $command) = parse_format_command ($_,$macro);
+                        $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'appended' => $appended, 'term' => 0 };
+                        $_ = '';
                     }
                     elsif ($macro eq 'enumerate')
                     {
@@ -9198,7 +9296,7 @@ sub scan_line($$$$;$)
                         #dump_stack ($text, $stack, $state);
                     }
 		    #dump_stack ($text, $stack, $state);
-                    return if ($macro eq 'multitable');
+                    return if ($format_type{$macro} eq 'table' or $macro eq 'itemize');
                 }
                 # keep this one at the end as there are some other formats
                 # which are also in format_map
@@ -9343,11 +9441,11 @@ sub add_term($$$$;$)
     # we set 'term' = 0 early such that if we encounter an end of line
     # during close_stack we don't try to do the term once more
     $state->{'format_stack'}->[-1]->{'term'} = 0;
-    if ($format->{'command'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq $format->{'command'}))
-    {
-        my $style = pop @$stack;
-        add_prev($text, $stack, do_simple($style->{'style'}, $style->{'text'}, $state));
-    }
+    #if ($format->{'command'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq $format->{'command'}))
+    #{
+    #    my $style = pop @$stack;
+    #    add_prev($text, $stack, do_simple($style->{'style'}, $style->{'text'}, $state));
+    #}
     # no <pre> allowed in <dt>, thus it is possible there is a @t added
     # to have teletype in preformatted.
     if ($state->{'preformatted'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq 't'))
@@ -9359,20 +9457,21 @@ sub add_term($$$$;$)
     #dump_stack($text, $stack, $state);
     close_stack($text, $stack, $state, $line_nr, undef, 'term');
     my $term = pop @$stack;
+    $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state) unless (exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}));
     my $index_label;
     if ($format->{'format'} =~ /^(f|v)/)
     {
         $index_label = do_index_entry_label($state);
         print STDERR "Bug: no index entry for $text" unless defined($index_label);
     }
-    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label));
+    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}));
     #add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_entry, $state));
     unless ($end)
     {
         push (@$stack, { 'format' => 'line', 'text' => '' });
-        begin_paragraph($stack, $state) if ($state->{'preformatted'});			
+        begin_paragraph($stack, $state) if ($state->{'preformatted'});
     }
-    return 1;
+    return $format;
 }
 
 sub add_row($$$$)
@@ -9466,10 +9565,10 @@ sub add_line($$$$;$)
         # we cannot have a preformatted in table term (no <pre> in <dt>)
         # thus we set teletyped style @t if there is no pre_style
         push (@$stack, { 'style' => 't', 'text' => '' }) if ($state->{'preformatted'} and (!$state->{'preformatted_stack'}->[-1]->{'pre_style'}));
-        push (@$stack, { 'style' => $format->{'command'}, 'text' => '' }) if ($format->{'command'});
+        #push (@$stack, { 'style' => $format->{'command'}, 'text' => $format->{'appended'} });
     }
     $format->{'term'} = 1;
-    return 1;
+    return $format;
 }
 
 sub add_item($$$$;$)
@@ -9491,21 +9590,27 @@ sub add_item($$$$;$)
     my $item = pop @$stack;
     # the element following ol or ul must be li. Thus even though there
     # is no @item we put a normal item.
+
+    # don't do an item if it is the first and it is empty
+    if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
+    {
+        # apply the command to the item if it is not in special_list_commands
+        $item->{'text'} = do_simple($format->{'command'}, $item->{'text'}, $state) unless (!defined($format->{'command'}) or exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}));
+        # now handle the item
+        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}));
+    } 
     if ($format->{'first'})
     {
         $format->{'first'} = 0;
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'})) if ($item->{'text'} =~ /\S/o);
     }
-    else
-    {
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'}));
-    }
+
+    # Now prepare the new item
     unless($end)
     {
         push (@$stack, { 'format' => 'item', 'text' => '' });
         begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($line));
     }
-    return 1;
+    return $format;
 }
 
 sub do_simple($$$;$$$)
@@ -9741,6 +9846,7 @@ sub close_stack($$$$;$$)
                 else
                 {
                     echo_warn ("closing `$stack_format'", $line_nr); 
+                    #dump_stack ($text, $stack, $state);
                     #warn "$WARN closing `$stack_format'\n"; 
                 }
                 $string .= "\@end $stack_format ";

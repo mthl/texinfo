@@ -141,6 +141,27 @@ a quotation
 @item itemize
 @end itemize
 
+@itemize +
+@item item +
+@end itemize
+
+@itemize @bullet
+@item bullet
+@end itemize
+
+@itemize @emph
+@item emph item
+@end itemize
+
+@itemize @emph after emph
+@item emph item
+@end itemize
+
+@itemize @bullet an itemize line
+@item item 1
+@item item 2
+@end itemize
+
 @enumerate
 @item enumerate
 @end enumerate
