@@ -64,14 +64,14 @@ $GETTEXT/gettext-tools/po/remove-potcdate.sin	po
 
 
 
-$GNULIBSRC/config/config.guess	.
-$GNULIBSRC/config/config.rpath	.
-$GNULIBSRC/config/config.sub	.
-$GNULIBSRC/config/depcomp	.
-$GNULIBSRC/config/install-sh	.
-$GNULIBSRC/config/mdate-sh	doc
-$GNULIBSRC/config/missing	.
-$GNULIBSRC/config/mkinstalldirs	.
+$GNULIBSRC/build-aux/config.guess	.
+$GNULIBSRC/build-aux/config.rpath	.
+$GNULIBSRC/build-aux/config.sub		.
+$GNULIBSRC/build-aux/depcomp		.
+$GNULIBSRC/build-aux/install-sh		.
+$GNULIBSRC/build-aux/mdate-sh		doc
+$GNULIBSRC/build-aux/missing		.
+$GNULIBSRC/build-aux/mkinstalldirs	.
 #
 $GNULIBSRC/doc/COPYING		.
 $GNULIBSRC/doc/INSTALL		./INSTALL.generic
