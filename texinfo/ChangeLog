@@ -1,3 +1,8 @@
+2003-04-02    <karl@gnu.org>
+
+	* doc/txi-pl.tex: new file, from polak@gnu.org.
+	* doc/Makefile.am (TXI_XLATE): add it.
+
 2003-04-01    <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (main): correct wording of html/no-headers/split
