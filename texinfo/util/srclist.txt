@@ -70,8 +70,6 @@ $ACLOCAL/lib-prefix.m4		m4
 $ACLOCAL/progtest.m4		m4
 
 
-$GNULIBSRC/COPYING		.
-#
 $GNULIBSRC/config/config.guess	.
 $GNULIBSRC/config/config.rpath	.
 $GNULIBSRC/config/config.sub	.
@@ -81,6 +79,7 @@ $GNULIBSRC/config/mdate-sh	doc
 $GNULIBSRC/config/missing	.
 $GNULIBSRC/config/mkinstalldirs	.
 #
+$GNULIBSRC/doc/COPYING		.
 $GNULIBSRC/doc/COPYING.DOC	.
 $GNULIBSRC/doc/INSTALL		./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi		doc
