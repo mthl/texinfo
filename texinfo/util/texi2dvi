@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.38 2005-01-24 00:33:06 karl Exp $
+# $Id: texi2dvi,v 1.39 2005-01-28 01:52:04 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -26,13 +26,18 @@
 # If possible, please send a copy of the output of the script called with
 # the `--debug' option when making a bug report.
 
+test -f /bin/ksh && test -z "$RUNNING_KSH" \
+  && { UNAMES=`uname -s`; test "x$UNAMES" = xULTRIX; } 2>/dev/null \
+  && { RUNNING_KSH=true; export RUNNING_KSH; exec /bin/ksh $0 ${1+"$@"}; }
+unset RUNNING_KSH
+
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.38 $'
+rcs_revision='$Revision: 1.39 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
 
-Copyright (C) 2004 Free Software Foundation, Inc.
+Copyright (C) 2005 Free Software Foundation, Inc.
 There is NO warranty.  You may redistribute this software
 under the terms of the GNU General Public License.
 For more information about these matters, see the files named COPYING."
@@ -613,7 +618,7 @@ $textra" "$filename_input" >"$filename_xtr"
   # If this is a Texinfo file with a specified input encoding, and
   # recode is available, then recode to plain 7 bit Texinfo.
   if test $language = texinfo; then
-    pgm='s/\(^\|.* \)@documentencoding  *\([^ ][^ ]*\)\( .*\|$\)/\2/
+    pgm='s/^ *@documentencoding  *\([^ ][^ ]*\) *$/\1/
 	t found
 	d
 	:found
