@@ -1,3 +1,8 @@
+2004-03-22  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl: get language files before testing for language hash.
+	* Makefile.am: add a rule for translations.pl.
+
 2004-03-20  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Add section for 1.70 release.

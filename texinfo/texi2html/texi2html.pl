@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.110 2004-02-26 23:52:46 pertusus Exp $
+# $Id: texi2html.pl,v 1.111 2004-03-22 23:22:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1248,17 +1248,17 @@ sub set_document_language ($;$$)
     my $lang = shift;
     my $from_command_line = shift;
     my $line_nr = shift;
+    my @files = locate_init_file("$i18n_dir/$lang", 1);
+    foreach  my $file (@files)
+    {
+        Texi2HTML::Config::load($file);
+    }
     if (Texi2HTML::I18n::set_language($lang))
     {
         print STDERR "# using '$lang' as document language\n" if ($T2H_VERBOSE);
         $Texi2HTML::Config::LANG = $lang;
         $lang_set = 1;
         $cmd_line_lang = 1 if ($from_command_line);
-        my @files = locate_init_file("$i18n_dir/$lang", 1);
-        foreach  my $file (@files)
-        {
-            Texi2HTML::Config::load($file);
-        }
     }
     else
     {

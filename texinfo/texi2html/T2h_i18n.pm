@@ -35,9 +35,6 @@ our (@ISA, @EXPORT);
 use Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(pretty_date);
-#use vars qw(
-#           $T2H_LANGUAGES
-#);
 
 my $language;
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files

@@ -14,7 +14,8 @@ texi2html_SOURCES = \
 	MySimple.pm \
 	T2h_i18n.pm \
 	texi2html.init \
-	texi2html.pl 
+	texi2html.pl \
+	translations.pl
 
 noinst_SCRIPTS = manage_i18n.pl
 man_MANS = texi2html.1
@@ -115,3 +116,8 @@ dist_images_DATA = images/a_begin.gif \
 	images/xy_up_gr.gif
 
 texi2html: $(texi2html_SOURCES)
+
+
+translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
+ examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr
+	./manage_i18n.pl all
