@@ -1,3 +1,13 @@
+2003-04-28  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: No heading for top, as print_Top 
+	allready does it.
+	if $T2H_USE_NODES (command line -use-nodes) is set, the nodes are
+	used as sections when they are not associated with a section.
+	find sections structure before handling nodes.
+	no more use of menu level for structuring.
+	@html sections don't close paragraphs.
+	* Tests/*: tests for document structure. Sync with code.
+
 2003-04-23  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: when there is no section nodes are used instead
 	* .cvsignore: add autom4te-2.53.cache and check_texinfo.pl

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.24 2003-04-10 15:41:17 pertusus Exp $
+# $Id: texi2html.init,v 1.25 2003-04-29 15:24:30 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -92,6 +92,10 @@ $T2H_SHOW_MENU = 1;
 # if set, number sections and show section names and numbers in references
 # and menus
 $T2H_NUMBER_SECTIONS = 1;
+
+# -use-nodes
+# if set the nodes are used as sectionning elements
+$T2H_USE_NODES = 0;
 
 # -split section|chapter|none
 # if set to 'section' (resp. 'chapter') create one html file per (sub)section
@@ -222,9 +226,6 @@ $T2H_INDEX_CHAPTER = '';
 # if set and $T2H_SPLIT is set, then split index pages at the next letter
 # after they have more than that many entries
 $T2H_SPLIT_INDEX = 100;
-
-# if set the nodes are not used as sectionning elements
-$T2H_NO_NODE = 1;
 
 # if set warning is emitted when the next of the previous node isn't the node
 # or the previous of the next node isn't the node
@@ -837,6 +838,7 @@ sub T2H_DEFAULT_toc_body($$$)
         next if ($element->{'top'} or $element->{'index_page'});
         my $ind = '  ' x $current_level;
         my $level = $element->{'toc_level'};
+        print STDERR "Bug no toc_level for ($element) $element->{'texi'}\n" if (!defined ($level));
         if ($level > $current_level)
         {
             while ($level > $current_level)
@@ -1853,7 +1855,7 @@ sub t2h_default_index_entries($$)
                # file the label is prefered. If they aren't on the same file
                # the entry id is choosed as it means that the label element
                # and the index entry are separated by a printindex.
-		 print STDERR "id undef $entry $entry->{'entry'}, $label->{'text'}\n"  if (!defined($entry->{'id'}));
+               print STDERR "id undef ($entry) entry: $entry->{'entry'}, label: $label->{'text'}\n"  if (!defined($entry->{'id'}));
                if ($entry->{'file'} eq $label->{'file'})
                {
                    $origin_href .= '#' . $label->{'id'};
