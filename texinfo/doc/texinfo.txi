@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
+@c $Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -211,13 +211,13 @@ Updating Nodes and Menus
 Beginning a Texinfo File
 
 * Sample Beginning::            A sample beginning for a Texinfo file.
-* Texinfo File Header::         
-* Document Permissions::        
+* Texinfo File Header::         The first lines.
+* Document Permissions::        Ensuring your manual is free.
 * Titlepage & Copyright Page::  Creating the title and copyright pages.
 * The Top Node::                Creating the `Top' node and master menu.
-* Global Document Commands::    
+* Global Document Commands::    Affecting formatting throughout.
 * Software Copying Permissions::  Ensure that you and others continue to
-                                    have the right to use and share software.
+                                   have the right to use and share software.
 
 Texinfo File Header
 
@@ -229,22 +229,22 @@ Texinfo File Header
 
 Document Permissions
 
-* copying::                     Declare the document's copying permissions.
-* insertcopying::               Where to insert the permissions.
+* copying::                 Declare the document's copying permissions.
+* insertcopying::           Where to insert the permissions.
 
 Title and Copyright Pages
 
 * titlepage::                   Create a title for the printed document.
 * titlefont center sp::         The @code{@@titlefont}, @code{@@center},
-                                  and @code{@@sp} commands.
+                                 and @code{@@sp} commands.
 * title subtitle author::       The @code{@@title}, @code{@@subtitle},
-                                  and @code{@@author} commands.
+                                 and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
-                                  include copying permissions.
+                                 include copying permissions.
 * end titlepage::               Turn on page headings after the title and
-                                  copyright pages.
+                                 copyright pages.
 * headings on off::             An option for turning headings on and off
-                                  and double or single sided printing.
+                                 and double or single sided printing.
 
 The `Top' Node and Master Menu
 
@@ -261,7 +261,7 @@ Global Document Commands
 Ending a Texinfo File
 
 * Printing Indices & Menus::    How to print an index in hardcopy and
-                                  generate index menus in Info.
+                                 generate index menus in Info.
 * Contents::                    How to create a table of contents.
 * File End::                    How to mark the end of a file.
 
@@ -283,7 +283,7 @@ Chapter Structuring
 Nodes
 
 * Two Paths::                   Different commands to structure
-                                  Info output and printed output.
+                                 Info output and printed output.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 * node::                        Creating nodes, in detail.
 * makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
@@ -396,7 +396,7 @@ Indices
 
 * Index Entries::               Choose different words for index entries.
 * Predefined Indices::          Use different indices for different kinds
-                                  of entry.
+                                 of entry.
 * Indexing Commands::           How to make an index entry.
 * Combining Indices::           How to combine indices.
 * New Indices::                 How to define your own indices.
@@ -404,24 +404,24 @@ Indices
 Combining Indices
 
 * syncodeindex::                How to merge two indices, using @code{@@code}
-                                  font for the merged-from index.
+                                 font for the merged-from index.
 * synindex::                    How to merge two indices, using the
-                                  default font of the merged-to index.
+                                 default font of the merged-to index.
 
 Special Insertions
 
 * Braces Atsigns::              How to insert braces, @samp{@@}.
 * Inserting Space::             How to insert the right amount of space
-                                  within a sentence.
+                                 within a sentence.
 * Inserting Accents::           How to insert accents and special characters.
 * Dots Bullets::                How to insert dots and bullets.
 * TeX and copyright::           How to insert the @TeX{} logo
-                                  and the copyright symbol.
+                                 and the copyright symbol.
 * pounds::                      How to insert the pounds currency symbol.
 * minus::                       How to insert a minus sign.
 * math::                        How to format a mathematical expression.
 * Glyphs::                      How to indicate results of evaluation,
-                                  expansion of macros, errors, etc.
+                                 expansion of macros, errors, etc.
 * Footnotes::                   How to include footnotes.
 * Images::                      How to include graphics.
 
@@ -473,19 +473,20 @@ Footnotes
 
 Making and Preventing Breaks
 
-* Break Commands::              Cause and prevent splits.
-* Line Breaks::                 How to force a single line to use two lines.
-* - and hyphenation::           How to tell @TeX{} about hyphenation points.
-* w::                           How to prevent unwanted line breaks.
-* sp::                          How to insert blank lines.
-* page::                        How to force the start of a new page.
-* group::                       How to prevent unwanted page breaks.
+* Break Commands::              Summary of break-related commands.
+* Line Breaks::                 Forcing line breaks.
+* - and hyphenation::           Helping @TeX{} with hyphenation points.
+* w::                           Preventing unwanted line breaks in text.
+* tie::                         Inserting an unbreakable but varying space.
+* sp::                          Inserting blank lines.
+* page::                        Forcing the start of a new page.
+* group::                       Preventing unwanted page breaks.
 * need::                        Another way to prevent unwanted page breaks.
 
 Definition Commands
 
 * Def Cmd Template::            How to structure a description using a
-                                  definition command.
+                                 definition command.
 * Optional Arguments::          How to handle optional and repeated arguments.
 * deffnx::                      How to group two or more `first' lines.
 * Def Cmds in Detail::          All the definition commands.
@@ -507,8 +508,8 @@ Conditionally Visible Text
 * Conditional Not Commands::    Specifying text for not HTML, Info, or @TeX{}.
 * Raw Formatter Commands::      Using raw @TeX{} or HTML commands.
 * set clear value::             Designating which text to format (for
-                                  all output formats); and how to set a
-                                  flag to a string that you can insert.
+                                 all output formats); and how to set a
+                                 flag to a string that you can insert.
 
 @code{@@set}, @code{@@clear}, and @code{@@value}
 
@@ -545,7 +546,7 @@ Formatting and Printing Hardcopy
 * A4 Paper::                    How to print on A4 or A5 paper.
 * pagesizes::                   How to print with customized page sizes.
 * Cropmarks and Magnification::  How to print marks to indicate the size
-                                of pages and how to print scaled up output.
+                               of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 
 Creating and Installing Info Files
@@ -561,11 +562,11 @@ Creating an Info File
 * Pointer Validation::          How to check that pointers point somewhere.
 * makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
 * texinfo-format commands::     Two Info formatting commands written
-                                  in Emacs Lisp are an alternative
-                                  to @code{makeinfo}.
+                                 in Emacs Lisp are an alternative
+                                 to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
 * Tag and Split Files::         How tagged and split files help Info
-                                  to run better.
+                                 to run better.
 * makeinfo html::               Generating HTML output.
 
 Installing an Info File
@@ -573,9 +574,9 @@ Installing an Info File
 * Directory File::              The top level menu for all Info files.
 * New Info File::               Listing a new Info file.
 * Other Info Directories::      How to specify Info files that are
-                                  located in other directories.
+                                 located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
-                                  to the Info directory.
+                                 to the Info directory.
 * Invoking install-info::       @code{install-info} options.
 
 Sample Texinfo Files
@@ -589,12 +590,12 @@ Include Files
 
 * Using Include Files::         How to use the @code{@@include} command.
 * texinfo-multiple-files-update::  How to create and update nodes and
-                                  menus when using included files.
+                                 menus when using included files.
 * Include File Requirements::   What @code{texinfo-multiple-files-update} expects.
 * Sample Include File::         A sample outer file with included files
-                                  within it; and a sample included file.
+                                 within it; and a sample included file.
 * Include Files Evolution::     How use of the @code{@@include} command
-                                  has changed over time.
+                                 has changed over time.
 
 Page Headings
 
@@ -843,7 +844,7 @@ themselves.  It is GNU software written by Brendan O'Dea, available from
 
 
 @node Info Files
-@section Info files
+@section Info Files
 @cindex Info files
 
 An Info file is a Texinfo file formatted so that the Info documentation
@@ -2895,7 +2896,7 @@ insert the text at appropriate points.
 
 
 @node copying
-@subsection @code{@@copying}: Declare copying permissions
+@subsection @code{@@copying}: Declare Copying Permissions
 @findex copying
 
 The @code{@@copying} command should be given very early in the document;
@@ -2969,7 +2970,7 @@ additional information.
 
 
 @node insertcopying
-@subsection @code{@@insertcopying}: Include permissions text
+@subsection @code{@@insertcopying}: Include Permissions Text
 @findex insertcopying
 @cindex Copying text, including
 @cindex Permissions text, including
@@ -3576,7 +3577,7 @@ generally all given before the Top node, if they are given at all.
 
 
 @node documentdescription
-@subsection @code{@@documentdescription}: Summary text
+@subsection @code{@@documentdescription}: Summary Text
 @cindex Document description
 @cindex Description of document
 @cindex Summary of document
@@ -10334,30 +10335,29 @@ arise.  When they do, use the break, break prevention, or pagination
 commands.
 
 @menu
-* Break Commands::              Cause and prevent splits.
-* Line Breaks::                 How to force a single line to use two lines.
-* - and hyphenation::           How to tell @TeX{} about hyphenation points.
-* w::                           How to prevent unwanted line breaks.
-* sp::                          How to insert blank lines.
-* page::                        How to force the start of a new page.
-* group::                       How to prevent unwanted page breaks.
+* Break Commands::              Summary of break-related commands.
+* Line Breaks::                 Forcing line breaks.
+* - and hyphenation::           Helping @TeX{} with hyphenation points.
+* w::                           Preventing unwanted line breaks in text.
+* tie::                         Inserting an unbreakable but varying space.
+* sp::                          Inserting blank lines.
+* page::                        Forcing the start of a new page.
+* group::                       Preventing unwanted page breaks.
 * need::                        Another way to prevent unwanted page breaks.
 @end menu
 
 
-@node Break Commands, Line Breaks, Breaks, Breaks
-@ifinfo
-@heading Break Commands
-@end ifinfo
+@node Break Commands
+@section Break Commands
 
-The break commands create or allow line and paragraph breaks:@refill
+The break commands create or allow line and paragraph breaks:
 
 @table @code
 @item @@*
 Force a line break.
 
 @item @@sp @var{n}
-Skip @var{n} blank lines.@refill
+Skip @var{n} blank lines.
 
 @item @@-
 Insert a discretionary hyphen.
@@ -10366,30 +10366,32 @@ Insert a discretionary hyphen.
 Define hyphen points in @var{hy-phen-a-ted words}.
 @end table
 
-The line-break-prevention command holds text together all on one
-line:@refill
+These commands hold text together on a single line:
 
 @table @code
 @item @@w@{@var{text}@}
-Prevent @var{text} from being split and hyphenated across two lines.@refill
+Prevent @var{text} from being split and hyphenated across two lines.
+@item @@tie@{@}
+Insert a normal interword space at which a line break may not occur.
 @end table
 @iftex
 @sp 1
 @end iftex
 
 The pagination commands apply only to printed output, since Info
-files do not have pages.@refill
+files do not have pages.
 
 @table @code
 @item @@page
-Start a new page in the printed manual.@refill
+Start a new page in the printed manual.
 
 @item @@group
-Hold text together that must appear on one printed page.@refill
+Hold text together that must appear on one printed page.
 
 @item @@need @var{mils}
-Start a new printed page if not enough space on this one.@refill
+Start a new printed page if not enough space on this one.
 @end table
+
 
 @node Line Breaks
 @section @code{@@*}: Generate Line Breaks
@@ -10448,7 +10450,7 @@ break.@refill
 
 
 @node - and hyphenation
-@section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} hyphenate
+@section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} Hyphenate
 
 @findex - @r{(discretionary hyphen)}
 @findex hyphenation
@@ -10488,7 +10490,7 @@ Info output is not hyphenated, so these commands have no effect there.
 @cindex Hyphenation, preventing
 
 @code{@@w@{@var{text}@}} outputs @var{text} and prohibits line breaks
-within @var{text}.@refill
+within @var{text}.
 
 You can use the @code{@@w} command to prevent @TeX{} from automatically
 hyphenating a long name or phrase that happens to fall near the end of a
@@ -10505,14 +10507,65 @@ produces
 You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 @end quotation
 
-@cindex Non-breakable space
-@cindex Unbreakable space
-@cindex Tied space
-You can also use @code{@@w} to produce a non-breakable space:
+@cindex Non-breakable space, fixed
+@cindex Unbreakable space, fixed
+You can also use @code{@@w} to produce a non-breakable space, fixed at
+the width of a normal interword space:
 
 @example
-None of the formatters will break at this@@w@{ @}space.
+@@w@{ @} @@w@{ @} @@w@{ @} indentation.
 @end example
+
+@noindent produces:
+
+@display
+@w{ } @w{ } @w{ } indentation.
+@end display
+
+The space from @code{@@w@{@w{ }@}}, as well as being non-breakable, also
+will not stretch or shrink.  Sometimes that is what you want, for
+instance if you're doing some manual indenting.  However, usually you
+want a normal interword space that does stretch and shrink (in the
+printed output); see the @code{@@tie} command in the next section.
+
+
+@node tie
+@section @code{@@tie@{@}}: Inserting an Unbreakable Space
+@findex tie @r{(unbreakable interword space)}
+@cindex Tied space
+@cindex Non-breakable space, variable
+@cindex Unbreakable space, variable
+
+The @code{@@tie@{@}} command produces a normal interword space at which
+a line break may not occur.  Always write it with following (empty)
+braces, as usual for commands used within a paragraph.  Here's an
+example:
+
+@example
+@@TeX@{@} was written by Donald E.@@tie@{@}Knuth.
+@end example
+
+@noindent produces:
+
+@display
+@TeX{} was written by Donald E.@tie{}Knuth.
+@end display
+
+There are two important differences between @code{@@tie@{@}} and
+@code{@@w@{@w{ }@}}:
+
+@itemize
+@item
+The space produced by @code{@@tie@{@}} will stretch and shrink slightly
+along with the normal interword spaces in the paragraph; the space
+produced by @code{@@w@{@w{ }@}} will not vary.
+
+@item
+@code{@@tie@{@}} allows hyphenation of the surrounding words, while
+@code{@@w@{@w{ }@}} inhibits hyphenation of those words (for @TeX{}nical
+reasons, namely that it produces an @samp{\hbox}).
+
+@end itemize
 
 
 @node sp
@@ -13708,7 +13761,7 @@ You may or may not prefer the formatting that results from the command
 wide format.
 
 @node pagesizes
-@section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom page sizes
+@section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
 @findex pagesizes
 @cindex Custom page sizes
 @cindex Page sizes, customized
@@ -14269,7 +14322,7 @@ option is given.
 
 
 @node makeinfo in Emacs
-@subsection Running @code{makeinfo} inside Emacs
+@subsection Running @code{makeinfo} Within Emacs
 @cindex Running @code{makeinfo} in Emacs
 @cindex @code{makeinfo} inside Emacs
 @cindex Shell, running @code{makeinfo} in
@@ -14898,8 +14951,7 @@ traditional @command{man} system.
 
 
 @node Invoking install-info
-@subsection Invoking install-info
-
+@subsection Invoking @command{install-info}
 @pindex install-info
 
 @code{install-info} inserts menu entries from an Info file into the
@@ -16010,6 +16062,10 @@ only, the filename, the current page number, and the title of the
 document, respectively.  @xref{Custom Headings, , How to Make Your Own
 Headings}.@refill
 
+@item @@tie@{@}
+Generate a normal interword space at which a line break is not allowed.
+@xref{tie,, @code{@@tie@{@}}}.
+
 @item @@tieaccent@{@var{cc}@}
 Generate a tie-after accent over the next two characters @var{cc}, as in
 `@tieaccent{oo}'.  @xref{Inserting Accents}.
@@ -16688,7 +16744,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
+$Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16753,7 +16809,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.8 2002-10-09 22:16:20 karl Exp $
+@@comment $Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi

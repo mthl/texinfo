@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.4 2002-10-09 16:32:40 karl Exp $
+   $Id: cmds.c,v 1.5 2002-10-10 21:47:20 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -64,7 +64,7 @@ void
   cm_defcodeindex (), cm_result (), cm_expansion (), cm_equiv (),
   cm_print (), cm_error (), cm_point (), cm_today (), cm_flushleft (),
   cm_flushright (), cm_finalout (), cm_cartouche (), cm_detailmenu (),
-  cm_multitable (), cm_settitle (), cm_titlefont (), cm_tt (),
+  cm_multitable (), cm_settitle (), cm_titlefont (), cm_tie (), cm_tt (),
   cm_verbatim (), cm_verbatiminclude ();
 
 /* Conditionals. */
@@ -322,6 +322,7 @@ COMMAND command_table[] = {
   { "tab", cm_tab, NO_BRACE_ARGS },
   { "table", cm_table, NO_BRACE_ARGS },
   { "tex", cm_tex, NO_BRACE_ARGS },
+  { "tie", cm_tie, BRACE_ARGS },
   { "tieaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "tindex", cm_tindex, NO_BRACE_ARGS },
   { "titlefont", cm_titlefont, BRACE_ARGS },
@@ -934,6 +935,22 @@ cm_w (arg, start, end)
     non_splitting_words--;
 }
 
+
+/* An unbreakable word space.  Same as @w{ } for makeinfo, but different
+   for TeX (the space stretches and stretches, and does not inhibit
+   hyphenation).  */
+void
+cm_tie (arg)
+    int arg;
+{
+  if (arg == START)
+    {
+      cm_w (START);
+      add_char (' ');
+    }
+  else
+    cm_w (END);
+}
 
 /* Explain that this command is obsolete, thus the user shouldn't
    do anything with it. */

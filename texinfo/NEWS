@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.6 2002-10-09 16:36:39 karl Exp $
+$Id: NEWS,v 1.7 2002-10-10 21:47:20 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -22,6 +22,8 @@ convenience, here's a url to one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* Language:
+  . new command @tie{} to do a real tie (unbreakable interword space).
 * makeinfo:
   . html output uses <br />, <hr />, and <meta />, for the sake of XHTML
     compatibility.  (We're still not completely XHTML compatible, though.)
