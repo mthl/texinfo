@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.6 2002-09-20 01:05:52 karl Exp $
+$Id: dir-example,v 1.7 2002-09-21 00:41:15 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -69,7 +69,6 @@ GNU programming tools
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
 * GDB: (gdb).                   Source-level debugger for C and C++.
 * Gasp: (gasp).                 GNU Assembler preprocessor.
-* Gettext Utilities: (gettext). GNU gettext utilities.
 * Gperf: (gperf).               Perfect hash function generator.
 * Gprof: (gprof).               Profiler.
 * Guile Reference: (guile).     The Guile reference manual.
@@ -273,7 +272,6 @@ Individual utilities
 * fmt: (textutils)fmt invocation.               Reformat paragraph text.
 * fold: (textutils)fold invocation.             Wrap long input lines.
 * gcal2txt: (gcal)Invoking gcal2txt.            Calendar resource to text file.
-* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
 * gftopk: (web2c)GFtoPK invocation.             Generic to packed fonts.
 * gftype: (web2c)GFtype invocation.             GF to human-readable text.
@@ -317,8 +315,6 @@ Individual utilities
 * mknod: (fileutils)mknod invocation.           Create special files.
 * mp: (web2c)mp invocation.                     Creating technical diagrams.
 * mpto: (web2c)MPto invocation.                 MetaPost label extraction.
-* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
-* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
 * mv: (fileutils)mv invocation.                 Rename files.
 * newer: (web2c)Newer invocation.               Compare modification times.
 * nice: (sh-utils)nice invocation.              Modify scheduling priority.
@@ -399,7 +395,13 @@ Individual utilities
 * who: (sh-utils)who invocation.                Print who is logged in.
 * whoami: (sh-utils)whoami invocation.          Print effective user id.
 * xargs: (find)Invoking xargs.                  Operating on many files.
-* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
 * yes: (sh-utils)yes invocation.                Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
 * zsh: (zsh).                                   An enhanced Bourne shell.
+
+GNU Gettext Utilities
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.

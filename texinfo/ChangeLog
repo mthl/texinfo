@@ -1,3 +1,7 @@
+2002-09-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.11.5.
+
 2002-09-12    <karl@gnu.org>
 
 	* util/srclist.txt: INSTALL to INSTALL.generic.

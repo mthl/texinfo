@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl $Id: configure.ac,v 1.1 2002-08-25 23:38:38 karl Exp $
+dnl $Id: configure.ac,v 1.2 2002-09-21 00:41:15 karl Exp $
 dnl
 dnl This file is free software; as a special exception the author gives
 dnl unlimited permission to copy and/or distribute it, with or without
@@ -125,13 +125,15 @@ if test -n "$ac_cv_var_ospeed" \
 fi
 AC_SUBST(TERMLIBS)dnl
 
-dnl i18n support.
+dnl i18n support.  To update to a new version of gettext, run:
+dnl  gettextize -f -c --intl
+AM_GNU_GETTEXT_VERSION(0.11.5)
 AM_GNU_GETTEXT()
 
 AC_CONFIG_FILES([Makefile          \
            doc/Makefile            \
            info/Makefile           \
-           intl/Makefile	   \
+           intl/Makefile           \
            lib/Makefile            \
            m4/Makefile		   \
            makeinfo/Makefile       \
