@@ -10,7 +10,7 @@ houtput=`basename $0`.html
 hexit_status=$?
 if test $hexit_status = 0; then
   grep '&igrave;' $houtput >/dev/null \
-  && grep '&acute;i' $houtput >/dev/null \
+  && grep '&acute;j' $houtput >/dev/null \
   && grep '&Oslash;' $houtput >/dev/null \
   && grep '/L' $houtput >/dev/null
   hexit_status=$?

@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.21 2003-10-31 18:03:19 karl Exp $
+   $Id: xml.c,v 1.22 2003-11-05 14:32:31 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -476,13 +476,16 @@ xml_id (id)
   char *p = tem;
   strcpy (tem, id);
   while (*p)
-    {
-      if (strchr ("~ &/+^;?()%<>\"'$¿", *p))
+    { /* Check if a character is allowed in ID attributes.  This list differs
+         slightly from XML specs that it doesn't contain underscores.
+         See http://xml.coverpages.org/sgmlsyn/sgmlsyn.htm, ``9.3 Name''  */
+      if (!strchr ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.", *p))
         *p = '-';
       p++;
     }
   p = tem;
-  if (*p == '-')
+  /* First character can only be a letter.  */
+  if (!strchr ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", *p))
     *p = 'i';
   return tem;
 }

@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.4 2003-05-13 16:20:44 karl Exp $
+   $Id: display.c,v 1.5 2003-11-05 14:32:28 dirt Exp $
 
    Copyright (C) 1993, 1997, 2003 Free Software Foundation, Inc.
 
@@ -91,6 +91,35 @@ display_update_display (window)
   display_update_one_window (the_echo_area);
 }
 
+void
+handle_tag_start (tag)
+  char *tag;
+{
+  /* TODO really handle this tag.  */
+  return;
+}
+
+void
+handle_tag_end (tag)
+  char *tag;
+{
+  /* TODO really handle this tag.  */
+  return;
+}
+
+void
+handle_tag (tag)
+  char *tag;
+{
+    if (tag[0] == '/')
+      {
+	tag++;
+	handle_tag_end (tag);
+      }
+    else
+      handle_tag_start (tag);
+}
+
 /* Display WIN on the_display.  Unlike display_update_display (), this
    function only does one window. */
 void
@@ -153,12 +182,40 @@ display_update_one_window (win)
               replen = win->width - pl_index + pl_ignore;
             }
 	  else if (*nodetext == '\0'
-		   && (nodetext + 1) < last_node_char
-		   && *(nodetext + 1) == '\b')
+		   && (nodetext + 2) < last_node_char
+		   && *(nodetext + 1) == '\b'
+		   && *(nodetext + 2) == '[')
 	    {
-	      /* Found new style image tag/cookie \0\b[ or \0\b]
-		 Just skip for now.  */
-	      nodetext++;
+	      /* Found new style tag/cookie \0\b[
+		 Read until the closing tag \0\b] */
+	      int element_len = 0;
+	      char *element;
+
+	      /* Skip the escapes.  */
+	      nodetext += 3;
+
+	      while (!(*nodetext == '\0'
+		    && *(nodetext + 1) == '\b'
+		    && *(nodetext + 2) == ']'))
+		{
+		  nodetext++;
+		  element_len++;
+		}
+
+	      element = (char *) malloc (element_len + 1);
+	      strncpy (element, nodetext - element_len, element_len);
+
+	      /* Skip the escapes.  */
+	      nodetext += 2;
+	      pl_ignore += element_len + 5;
+	      /* Append string terminator.  */
+	      element[element_len] = '\0';
+
+	      handle_tag (element);
+
+	      /* Over and out */
+	      free (element);
+
 	      continue;
 	    }
           else

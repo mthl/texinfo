@@ -1,3 +1,35 @@
+2003-11-05  Alper Ersoy  <dirt@gtk.org>
+
+	* doc/texinfo.txi (Installing Dir Entries): fixed @uref for Free
+	Software Directory.
+	(Command List): Escaped @/.
+
+	* info/display.c (handle_tag, handle_tag_start, handle_tag_end): new
+	functions.
+	(display_update_one_window): ignore the text between magic
+	tags/cookies.
+
+	* makeinfo/cmds.c (cm_dots, cm_enddots): use insert_string() for HTML
+	to avoid escaping.
+	(cm_bullet): use entity name (bull) instead of number (149).
+
+	* makeinfo/index.c (cm_printindex): escape expanded_index.
+
+	* makeinfo/lang.c (cm_accent_generic_html): handle @dotless{i}
+	correctly.
+	(cm_special_char): use entity names for @OE (OElig) and @oe (oelig)
+	instead of numbers.
+
+	* makeinfo/node.c (cm_node): escape node names in HTML output.
+
+	* makeinfo/xml.c (xml_id): check to see if the character is allowed.
+	
+	* makeinfo/tests/accent-text.txi: new @dotless{j} lines.
+
+	* makeinfo/tests/accent: look for &acute;j instead of &acute;i.
+
+	* TODO: removed item about @dotless in HTML output.
+
 2003-11-04  Karl Berry  <karl@gnu.org>
 
 	* util/Makefile.am (EXTRA_DIST): spurious space after trailing

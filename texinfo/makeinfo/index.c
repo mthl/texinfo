@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.8 2003-05-16 23:52:40 karl Exp $
+   $Id: index.c,v 1.9 2003-11-05 14:32:29 dirt Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -761,6 +761,7 @@ cm_printindex ()
                   expanded_index = expansion (index_node, 0);
                   in_fixed_width_font--;
                   add_anchor_name (expanded_index, 1);
+		  expanded_index = escape_string (expanded_index);
                   add_word_args ("\">%s</a>", expanded_index);
                   free (expanded_index);
                 }

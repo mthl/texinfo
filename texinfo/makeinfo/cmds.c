@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.23 2003-10-31 16:47:02 karl Exp $
+   $Id: cmds.c,v 1.24 2003-11-05 14:32:28 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -444,8 +444,10 @@ cm_dots (arg)
       else if (docbook)
         xml_insert_entity ("hellip");
       else
-        add_word (html && !in_fixed_width_font
-                  ? "<small class=\"dots\">...</small>" : "...");
+	if (html && !in_fixed_width_font)
+	  insert_string ("<small class=\"dots\">...</small>");
+	else
+	  add_word ("...");
     }
 }
 
@@ -464,8 +466,10 @@ cm_enddots (arg)
 	  add_char ('.');
 	}
       else
-	add_word (html && !in_fixed_width_font 
-                  ? "<small class=\"enddots\">....</small>" : "....");
+	if (html && !in_fixed_width_font)
+	  insert_string ("<small class=\"enddots\">....</small>");
+	else
+	  add_word ("....");
     }
 }
 
@@ -476,7 +480,7 @@ cm_bullet (arg)
   if (arg == START)
     {
       if (html)
-        add_word ("&#149;");
+        add_word ("&bull;");
       else if (xml && !docbook)
 	xml_insert_entity ("bullet");
       else if (docbook)

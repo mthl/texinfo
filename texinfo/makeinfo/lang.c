@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.11 2003-10-29 18:32:16 karl Exp $
+   $Id: lang.c,v 1.12 2003-11-05 14:32:29 dirt Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -594,20 +594,39 @@ cm_accent_generic_html (arg, start, end, html_supported, single,
 	  escape_html = saved_escape_html;
         }
       else
-        {
-          valid_html_accent = 0;
-          if (html_solo_standalone)
-            { /* No special HTML support, so produce standalone char.  */
-	      if (xml)
-		xml_insert_entity (html_solo);
+        { /* @dotless{i} is not listed in html_supported but HTML entities
+	     starting with `i' can be used, such as &icirc;.  */
+	  int save_input_text_offset = input_text_offset;
+	  char *accent_contents;
+
+	  get_until_in_braces ("\n", &accent_contents);
+	  canon_white (accent_contents);
+
+	  if (strstr (accent_contents, "@dotless{i"))
+	    {
+	      add_word_args ("&%c", accent_contents[9]);
+	      valid_html_accent = 1;
+	    }
+	  else
+	    {
+	      /* Search for @dotless{} wasn't successful, so rewind.  */
+	      input_text_offset = save_input_text_offset;
+	      valid_html_accent = 0;
+	      if (html_solo_standalone)
+		{ /* No special HTML support, so produce standalone char.  */
+		  if (xml)
+		    xml_insert_entity (html_solo);
+		  else
+		    add_word_args ("&%s;", html_solo);
+		}
 	      else
-		add_word_args ("&%s;", html_solo);
-            }
-          else
-            /* If the html_solo does not exist as standalone character
-               (namely &circ; &grave; &tilde;), then we use
-               the single character version instead.  */
-            add_char (single);
+		/* If the html_solo does not exist as standalone character
+		   (namely &circ; &grave; &tilde;), then we use
+		   the single character version instead.  */
+		add_char (single);
+	    }
+
+	  free (accent_contents);
         }
     }
   else if (arg == END)
@@ -812,9 +831,9 @@ cm_special_char (arg)
       else if (strcmp (command, "ae") == 0)
         add_encoded_char ("aelig",  command);
       else if (strcmp (command, "OE") == 0)
-        add_encoded_char ("#140", command);
+        add_encoded_char ("OElig", command);
       else if (strcmp (command, "oe") == 0)
-        add_encoded_char ("#156", command);
+        add_encoded_char ("oelig", command);
       else if (strcmp (command, "AA") == 0)
         add_encoded_char ("Aring", command);
       else if (strcmp (command, "aa") == 0)

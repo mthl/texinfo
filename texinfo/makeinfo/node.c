@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.16 2003-10-27 01:27:32 karl Exp $
+   $Id: node.c,v 1.17 2003-11-05 14:32:30 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -927,6 +927,7 @@ cm_node ()
           add_word_args ("%s%s<a name=\"", _("Node:"), "&nbsp;");
           tem = expand_node_name (node);
           add_anchor_name (tem, 0);
+	  tem = escape_string (tem);
           add_word_args ("\">%s</a>", tem);
           free (tem);
 
@@ -939,6 +940,7 @@ cm_node ()
               
 	      add_word ("<a rel=\"next\" accesskey=\"n\" href=\"");
 	      add_anchor_name (tem, 1);
+              tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
 	      
 	      /* <link> produces a navigation bar in mozilla.  */
@@ -956,6 +958,7 @@ cm_node ()
               add_word ("&nbsp;");
 	      add_word ("<a rel=\"previous\" accesskey=\"p\" href=\"");
 	      add_anchor_name (tem, 1);
+              tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
 	      add_word ("<link rel=\"prev\" accesskey=\"p\" href=\"");
 	      add_anchor_name (tem, 1);
@@ -970,6 +973,7 @@ cm_node ()
               add_word ("&nbsp;");
 	      add_word ("<a rel=\"up\" accesskey=\"u\" href=\"");
 	      add_anchor_name (tem, 1);
+              tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
 	      add_word ("<link rel=\"up\" accesskey=\"u\" href=\"");
 	      add_anchor_name (tem, 1);
