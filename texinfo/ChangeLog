@@ -1,3 +1,11 @@
+2004-07-19  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/makeinfo.c (main): with XML, instead of directly calling
+	handle_variable_internal for -D and -U command line flags, hold the
+	variable declarations until output document is started.
+	(convert_from_loaded_file): handle variables provided with -D and -U
+	flags here, just before entering the reader_loop.
+
 2004-07-15  Werner Lemberg  <wl@gnu.org>
 
 	* doc/texinfo.tex (\s): New command to typeset text with a slanted
