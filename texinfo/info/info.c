@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.5 2003-05-13 16:21:30 karl Exp $
+   $Id: info.c,v 1.6 2003-05-13 16:22:52 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -129,7 +129,7 @@ static char *short_options = "d:n:f:ho:ORs";
 int info_windows_initialized_p = 0;
 
 /* Some "forward" declarations. */
-static void info_short_help (), remember_info_program_name ();
+static void info_short_help ();
 static void init_messages ();
 extern void add_file_directory_to_path ();
 
