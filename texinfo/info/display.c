@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: display.c,v 1.2 2003-02-05 17:53:31 karl Exp $
 
-   Copyright (C) 1993, 97 Free Software Foundation, Inc.
+   Copyright (C) 1993, 97, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -233,8 +233,10 @@ display_update_one_window (win)
           entry = display[line_index + win->first_row];
 
           /* If the screen line is inversed, then we have to clear
-             the line from the screen first.  Why, I don't know. */
-          if (entry->inverse
+             the line from the screen first.  Why, I don't know.
+             (But don't do this if we have no visible entries, as can
+             happen if the window is shrunk very small.)  */
+          if (entry && entry->inverse
 	      /* Need to erase the line if it has escape sequences.  */
 	      || (raw_escapes_p && strchr (entry->text, '\033') != 0))
             {
