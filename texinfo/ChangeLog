@@ -1,3 +1,11 @@
+2004-09-06  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\Efloat): Take care to run \scantokens on
+	  \thisshortcaption before writing the lof line to auxfile.
+	  Otherwise, when a newline appears in the argument to
+	  @shortcaption, a literal ^^M is written to the aux file.
+	  Report from Patrice, 1 Aug 2004 15:54:44 +0200.
+
 2004-09-01  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: show commands, allow / in description.
