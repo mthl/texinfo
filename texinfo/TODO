@@ -1,9 +1,9 @@
-$Id: TODO,v 1.4 2002-11-26 00:40:45 karl Exp $
+$Id: TODO,v 1.5 2003-01-16 21:27:54 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002 Free Software Foundation.
+  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 
+  2001, 2002, 2003 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -29,6 +29,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 @caption ... @end caption
 <arbitrary Texinfo commands>
 @end figure
+  - @else for the @if... conditionals.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
   - multicolumn * width to take up `the rest'.
   - another table command to take N succeeding items and split them
