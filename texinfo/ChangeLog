@@ -1,3 +1,8 @@
+2003-11-24  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (EXTRA_DIST): remove no-longer-defined
+	noinst_SCRIPTS.
+
 2003-11-24  Akim Demaille  <akim@epita.fr>
 
 	* configure.ac (HELP2MAN): Look for it.
