@@ -2,6 +2,11 @@ This file records noteworthy changes.
 
 1.78 ()
 
+* FOR DEVELOPERS
+  --------------
+
+* Standardized on Automake 1.9.3
+
 1.76 (February  3 2005)
 
 * BUG FIXES
