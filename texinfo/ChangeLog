@@ -1,3 +1,9 @@
+2002-09-24    <karl@gnu.org>
+
+	* util/srclist.txt: m4 files from aclocal rather than gnulib.
+
+        * Makefile.am, util/Makefile.am, dir-example: move dir-example to util.
+
 2002-09-23    <karl@gnu.org>
 
 	* INSTALL.generic: update from autoconf 2.54.
