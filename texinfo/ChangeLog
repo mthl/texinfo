@@ -1,5 +1,13 @@
 2003-11-27  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_math): new function that encloses @math
+	statements in a math element in XML.
+
+	* makeinfo/xml.c:
+	* makeinfo/xml.h: new element math.
+
+2003-11-27  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/float.c (cm_listoffloats): made the layout in Info output
 	the same with indices.
 

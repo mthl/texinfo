@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.38 2003-11-25 10:33:31 dirt Exp $
+   $Id: cmds.c,v 1.39 2003-11-27 11:48:08 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -46,7 +46,7 @@ void
   cm_TeX (), cm_acronym (), cm_asterisk (), cm_b (), cm_bullet (), cm_cite (),
   cm_code (), cm_copyright (), cm_ctrl (), cm_dfn (), cm_dircategory (),
   cm_direntry (), cm_dmn (), cm_dots (), cm_emph (), cm_enddots (), cm_i (),
-  cm_image (), cm_kbd (), cm_key (), cm_no_op (), 
+  cm_image (), cm_kbd (), cm_key (), cm_math (), cm_no_op (), 
   cm_novalidate (), cm_not_fixed_width (), cm_r (), cm_registeredsymbol (),
   cm_strong (), cm_var (), cm_sc (), cm_w (), cm_email (), cm_url (),
   cm_verb (), cm_copying (), cm_insert_copying (),
@@ -281,7 +281,7 @@ COMMAND command_table[] = {
   { "lowersections", cm_lowersections, NO_BRACE_ARGS },
   { "macro", cm_macro, NO_BRACE_ARGS },
   { "majorheading", cm_majorheading, NO_BRACE_ARGS },
-  { "math", cm_no_op, BRACE_ARGS },
+  { "math", cm_math, BRACE_ARGS },
   { "menu", cm_menu, NO_BRACE_ARGS },
   { "minus", cm_minus, BRACE_ARGS },
   { "multitable", cm_multitable, NO_BRACE_ARGS },
@@ -1005,6 +1005,17 @@ cm_titlefont (arg)
 	    add_word ("</h1>\n");
 	}
    }
+}
+
+
+/* Unfortunately, we cannot interpret @math{} contents like TeX does.  We just
+   pass them through.  */
+void
+cm_math (arg)
+    int arg;
+{
+  if (xml && !docbook)
+    xml_insert_element (MATH, arg);
 }
 
 /* Various commands are no-op's. */
