@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.3 2003-01-24 19:05:53 karl Exp $
+   $Id: session.c,v 1.4 2003-02-05 17:59:50 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -3877,8 +3877,10 @@ show_isearch_prompt (dir, string, failing_p)
       p_rep_index += strlen (rep);
     }
 
-  prompt_len = strlen (prefix) + p_rep_index + 20;
-  prompt = (char *)xmalloc (prompt_len);
+  prompt_len = strlen (prefix) + p_rep_index + 1;
+  if (failing_p)
+    prompt_len += strlen (_("Failing "));
+  prompt = xmalloc (prompt_len);
   sprintf (prompt, "%s%s%s", failing_p ? _("Failing ") : "", prefix,
            p_rep ? p_rep : "");
 
