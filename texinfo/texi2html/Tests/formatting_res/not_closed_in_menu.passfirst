@@ -1,0 +1,28 @@
+
+@node Top
+
+@menu
+* (gcc):: text @table @minus
+@item item
+table line
+@end menu
+
+Some text.
+
+@menu
+* (manual):: desc
+@table @bullet
+@item item
+comment
+* (manual2)::
+@end menu
+
+@menu
+* (info):: before deff @deffn bidule truc chose
+deffn text
+@end menu
+After menu
+
+@menu
+* (manual_in_menu):: desc2
+

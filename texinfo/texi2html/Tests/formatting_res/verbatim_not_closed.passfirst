@@ -1,0 +1,13 @@
+
+@node Top
+
+texte
+
+@verbatim
+
+some verbatim @
+
+@macro
+
+
+@end verbatim

@@ -1,0 +1,26 @@
+
+@node Top
+
+@menu
+* (gcc):: text @table @minus
+@item item
+table line
+@end table
+@end menu
+
+Some text.
+
+@menu
+* (manual):: desc
+comment
+* (info):: before verbatim @verbatim
+some @ verb{' atim
+* (texinfo):: in @ verbatim
+@end verbatim
+* (manual2):: $@html
+<i></i>
+@end html
+Log$
+@end menu
+After menu
+

@@ -71,14 +71,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <a name="IDX94"></a>
 <a name="IDX95"></a>
 </p></li><li><p>
-All the node names for a single Info file must be unique.</p><p>Duplicates confuse the Info movement commands.  This means, for
+All the node names for a single Info file must be unique.
+</p><p>Duplicates confuse the Info movement commands.  This means, for
 example, that if you end every chapter with a summary, you must name
 each summary node differently.  You cannot just call each one
 &quot;Summary&quot;.  You may, however, duplicate the titles of chapters, sections,
 and the like.  Thus you can end each chapter in a book with a section
 called &quot;Summary&quot;, so long as the node names for those sections are all
-different.</p></li><li><p>
-A pointer name must be the name of a node.</p><p>The node to which a pointer points may come before or after the
+different.
+</p></li><li><p>
+A pointer name must be the name of a node.
+</p><p>The node to which a pointer points may come before or after the
 node containing the pointer.
 </p><a name="IDX96"></a>
 <a name="IDX97"></a>
@@ -89,12 +92,13 @@ escaped with a `<samp>@</samp>', such as <code>@</code> and <code>{</code>.  For
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
 </p><p>Thus, the beginning of the section called <code>@chapter</code> looks like
-this:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 @node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 </li><li><p>
 <a name="IDX98"></a>
 You cannot use parentheses in node names, because a node name such as
@@ -110,13 +114,13 @@ You cannot use parentheses in node names, because a node name such as
 Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 </p><p>For example, the following is a section title:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <p>The corresponding node name is:
-</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><pre style="font-size: smaller">
 unnumberedsec appendixsec heading
-</pre></font></td></tr></table>
+</pre></td></tr></table>
 <a name="IDX105"></a>
 </li><li><p>
 Case is significant.

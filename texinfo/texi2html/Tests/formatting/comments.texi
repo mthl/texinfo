@@ -1,0 +1,149 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top
+@subheading Comment like:
+
+Text line followed by a comment on the same line and another below @c comment
+@c comment
+Text line after the comment followed by a comment @comment c
+Text line after the text line followed by the comment.
+
+Example with comments 2 lines
+@example 
+line @c comment
+second line @c comment
+@end example
+
+Example with comments 1 line
+@example
+line @c comment
+@end example
+
+No comments
+@example
+line 
+@end example
+
+The same but with oddfooting instead of comment:
+Text line followed by a comment on the same line and another below @oddfooting comment
+@oddfooting some text ignored
+Text line after the comment followed by a comment @oddfooting c
+Text line after the text line followed by the comment.
+
+@@afourpaper @afourpaper on line following afourpaper
+@@smallbook @smallbook on line following smallbook
+@@headings @headings on line following headings
+@@oddfooting @oddfooting on line following oddfooting
+@@everyheading @everyheading on line following everyheading
+@@everyfooting @everyfooting on line following everyfooting
+@@evenheading @evenheading on line following evenheading
+@@evenfooting @evenfooting on line following evenfooting
+@@oddheading @oddheading on line following 
+@@need @need on line following
+@@setchapternewpage @setchapternewpage on line following setchapternewpage
+@@raisesections @raisesections on line following raisesections
+@@lowersections @lowersections on line following lowersections
+
+
+@subheading ignore arg
+
+@c @@pagesizes @pagesizes arg following @@pagesizes arg
+Commands doesn't accept anything after the arg on the line
+
+@@paragraphindent asis @paragraphindent asis
+@@paragraphindent 0 @paragraphindent 0
+@@paragraphindent none @paragraphindent none
+@@paragraphindent 4 @paragraphindent 4
+@@footnotestyle @footnotestyle end 
+@@footnotestyle @footnotestyle separate 
+
+@ignore
+@@ @ on line following 
+@@ @ on line following 
+@@ @ on line following 
+@@ @ on line following 
+@end ignore
+
+@subheading command removed
+
+And now finalout:
+Text line followed by finalout on the same line and another below @finalout
+@finalout
+Text line after the finalout followed by a fianlout @finalout
+Text line after the text line followed by the finalout.
+
+Test text after finalout
+@finalout a word after finalout
+Line after finalout
+
+@@page @page @@noindent @noindent @@refill @refill something
+
+@noindent     noindent at beginning of line
+@noindent  
+noindent on the preceding line
+  @noindent    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it's own line.
+
+@@page @page   @@noindent @noindent    @@refill @refill   something 
+
+@@contents @contents something
+
+@ignore
+@@ @ arg
+@@ @ arg
+@@ @ arg
+@@ @ arg
+@end ignore
+
+@subheading special
+
+Only valid between iftex:
+@c @@vskip @vskip @@cropmarks @cropmarks
+Unknown ???
+@c @@fillbreak  @fillbreak eol
+
+@@exdent @exdent line after exdent
+
+And now sp:
+Text line followed by a comment on the same line and another below @sp 1
+@sp 2
+Text line after the comment followed by a comment @sp 1
+Text line after the text line followed by the comment.
+@sp 2 a number after sp
+
+Menu:
+@menu
+* node::
+* bidule::
+* bidule2::
+@end menu
+
+@node node
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+first @@contents @contents line following first content
+second @@contents @contents line following second content
+Third content on the following line on his own
+@contents
+Line following contents
+
+@node bidule
+@chapter bidule
+
+@@shortcontents @shortcontents eol
+@@shortcontents @shortcontents eol
+@@summarycontents @summarycontents line following summarycontents
+
+@node bidule2
+@chapter last
+
+@bye

@@ -67,22 +67,27 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <p>After you have written part of a Texinfo file, you can use the
 <code>texinfo-format-region</code> or the <code>makeinfo-region</code> command to
-see whether the region formats properly.</p><p>Most likely, however, you are reading this section because for some
+see whether the region formats properly.
+</p><p>Most likely, however, you are reading this section because for some
 reason you cannot use the <code>makeinfo-region</code> command; therefore, the
 rest of this section presumes that you are using
-<code>texinfo-format-region</code>.</p><p>If you have made a mistake with an @-command,
+<code>texinfo-format-region</code>.
+</p><p>If you have made a mistake with an @-command,
 <code>texinfo-format-region</code> will stop processing at or after the
 error and display an error message.  To see where in the buffer the
 error occurred, switch to the `<samp>*Info Region*</samp>' buffer; the cursor
 will be in a position that is after the location of the error.  Also,
 the text will not be formatted after the place where the error
-occurred (or more precisely, where it was detected).</p><p>For example, if you accidentally end a menu with the command <code>@end
+occurred (or more precisely, where it was detected).
+</p><p>For example, if you accidentally end a menu with the command <code>@end
 menus</code> with an `s' on the end, instead of with <code>@end menu</code>, you
-will see an error message that says:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+will see an error message that says:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @end menus is not handled by texinfo
 </pre></td></tr></table>
 <p>The cursor will stop at the point in the buffer where the error
-occurs, or not long after it.  The buffer will look like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+occurs, or not long after it.  The buffer will look like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 ---------- Buffer: *Info Region* ----------
 * Menu:
 
@@ -96,16 +101,19 @@ occurs, or not long after it.  The buffer will look like this:</p><table><tr><td
 ---------- Buffer: *Info Region* ----------
 </pre></td></tr></table>
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
-odd error messages.  For example, the following cross reference fails to format:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+odd error messages.  For example, the following cross reference fails to format:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 (@xref{Catching Mistakes, for more info.)
 </pre></td></tr></table>
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
 brace but displays a message that says `<samp>Unbalanced parentheses</samp>'
 rather than `<samp>Unbalanced braces</samp>'.  This is because the formatting
 command looks for mismatches between braces as if they were
-parentheses.</p><p>Sometimes <code>texinfo-format-region</code> fails to detect mistakes.  For
+parentheses.
+</p><p>Sometimes <code>texinfo-format-region</code> fails to detect mistakes.  For
 example, in the following, the closing brace is swapped with the
-closing parenthesis:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+closing parenthesis:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 (@xref{Catching Mistakes), for more info.}
 </pre></td></tr></table>
 <p>Formatting produces:
@@ -113,7 +121,8 @@ closing parenthesis:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 (*Note for more info.: Catching Mistakes)
 </pre></td></tr></table>
 <p>The only way for you to detect this error is to realize that the
-reference should have looked like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+reference should have looked like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 (*Note Catching Mistakes::, for more info.)
 </pre></td></tr></table>
 <p>Incidentally, if you are reading this node in Info and type <kbd>f

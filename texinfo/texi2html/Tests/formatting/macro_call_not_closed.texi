@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@macro macro1 { arg1 , arg2 }
+result: @emph{\arg1\} protected \\ -> \\arg1\\ @emph{\arg2\}
+@end macro 
+
+@node Top
+
+after end macro
+
+
+
+@macro1 { bidule {truc{machin
+
+

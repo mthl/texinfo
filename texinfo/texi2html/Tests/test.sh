@@ -152,6 +152,7 @@ fi
 test_texi GermanNodeTest nodetest.texi
 test_texi GermanNodeTest nodetest_for_makeinfo.texi
 test_texi index_table
+test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init"
 test_texi index_table index_split.texi "-split chapter -init index_test.init"
 test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top_file index_nodes.html"
 test_texi index_table no_node.texi "-init index_test.init -split chapter" 3
@@ -172,6 +173,7 @@ test_texi sectionning no_node.texi "-prefix chapter_split_no_node -split chapter
 test_texi sectionning no_section_no_top.texi
 test_texi sectionning one_section.texi
 test_texi sectionning one_node.texi
+test_texi sectionning macro_in_menu.texi
 test_texi sectionning one_node_and_section.texi
 test_texi sectionning first_section_and_nodes.texi "" 1
 test_texi sectionning double_top.texi "" 3
@@ -183,6 +185,19 @@ test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting imbrications.texi "" 2
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting tex.texi "-l2h -expand tex" "no"
+test_texi formatting formats_in_menu.texi
+test_texi formatting comments.texi
+test_texi formatting formats_not_closed.texi ""
+test_texi formatting not_closed_in_menu.texi "" 
+test_texi formatting macro_call_not_closed.texi "" 
+test_texi formatting macro_def_not_closed.texi "" 
+test_texi formatting ignored_not_closed.texi "" 
+test_texi formatting verb_not_closed.texi "" 
+test_texi formatting tex_not_closed.texi "-l2h -expand tex " 
+test_texi formatting html_not_closed.texi "" 
+test_texi formatting verbatim_not_closed.texi "" 
+test_texi formatting copying_not_closed.texi "" 
+test_texi formatting titlepage_not_closed.texi "" 
 test_texi texi2html 
 test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"

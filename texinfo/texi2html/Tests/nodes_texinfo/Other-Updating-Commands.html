@@ -66,20 +66,24 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <h3> 2.4.2 Other Updating Commands </h3>
 
 <p>In addition to the five major updating commands, Texinfo mode
-possesses several less frequently used updating commands:</p><dl compact="compact">
+possesses several less frequently used updating commands:
+</p><dl compact="compact">
 <dt><kbd> M-x texinfo-insert-node-lines
 </kbd></dt>
 <dd><p><a name="IDX57"></a>
 Insert <code>@node</code> lines before the <code>@chapter</code>,
 <code>@section</code>, and other sectioning commands wherever they are
-missing throughout a region in a Texinfo file.</p><p>With an argument (<kbd>C-u</kbd> as prefix argument, if interactive), the
+missing throughout a region in a Texinfo file.
+</p><p>With an argument (<kbd>C-u</kbd> as prefix argument, if interactive), the
 <code>texinfo-insert-node-lines</code> command not only inserts
 <code>@node</code> lines but also inserts the chapter or section titles as
 the names of the corresponding nodes.  In addition, it inserts the
 titles as node names in pre-existing <code>@node</code> lines that lack
 names.  Since node names should be more concise than section or
-chapter titles, you must manually edit node names so inserted.</p><p>For example, the following marks a whole buffer as a region and inserts
-<code>@node</code> lines and titles throughout:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+chapter titles, you must manually edit node names so inserted.
+</p><p>For example, the following marks a whole buffer as a region and inserts
+<code>@node</code> lines and titles throughout:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 C-x h C-u M-x texinfo-insert-node-lines
 </pre></td></tr></table>
 <p>This command inserts titles as node names in <code>@node</code> lines; the
@@ -97,7 +101,8 @@ update all the menus and all the `Next', `Previous', and `Up' pointers
 of all the included files before creating and inserting a master menu in
 the outer file.  The <code>texinfo-multiple-files-update</code> command is
 described in the appendix on <code>@include</code> files.
-See section <a href="texinfo-multiple-files-update.html#SEC299"><code>texinfo-multiple-files-update</code></a>.</p></dd>
+See section <a href="texinfo-multiple-files-update.html#SEC299"><code>texinfo-multiple-files-update</code></a>.
+</p></dd>
 <dt><kbd> M-x texinfo-indent-menu-description
 </kbd></dt>
 <dd><p><a name="IDX59"></a>
@@ -107,7 +112,8 @@ descriptions.  With an argument (<kbd>C-u</kbd> as prefix argument, if
 interactive), the <code>texinfo-indent-menu-description</code> command indents
 every description in every menu in the region.  However, this command
 does not indent the second and subsequent lines of a multi-line
-description.</p></dd>
+description.
+</p></dd>
 <dt><kbd> M-x texinfo-sequential-node-update
 </kbd></dt>
 <dd><p><a name="IDX60"></a>
@@ -120,7 +126,8 @@ sequentially.  (However, in Info, the <kbd>g *</kbd> command lets
 you look through the file sequentially, so sequentially ordered nodes
 are not strictly necessary.)  With an argument (prefix argument, if
 interactive), the <code>texinfo-sequential-node-update</code> command
-sequentially updates all the nodes in the region.</p></dd>
+sequentially updates all the nodes in the region.
+</p></dd>
 </dl>
 
 <hr size="1">

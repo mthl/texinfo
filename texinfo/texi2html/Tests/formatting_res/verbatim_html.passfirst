@@ -43,8 +43,7 @@ third}
 Unknown thing @thing{}
 
 A list with bullet
-Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} 
-@item on the same line than item
+Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} @item on the same line than item
 some text
 @item
 more text @end itemize
@@ -254,4 +253,6 @@ before example @example after example
 the example
 before end example  @end example 
 after end example
+
+
 

@@ -1,0 +1,44 @@
+
+@node Top
+
+@example
+
+@table @minus
+@item item
+table line
+
+Some text.
+@enumerate
+
+@item first item
+@item an item
+
+@end example
+
+@section a section
+
+Node text
+
+an end table without correspondiing opening part
+@end table
+
+Multitable not closed with item and tab
+
+@multitable {r} {t}
+@item rt @tab ds
+
+@section a section
+Multitable not closed with item
+
+@multitable {r} {t}
+@item rt 
+
+@section a section
+Multitable not closed
+@multitable {r} {t}
+
+@section a section
+@deffn truc bidule machin
+@deffnx truc chose args
+@defvar type1 var bidule
+

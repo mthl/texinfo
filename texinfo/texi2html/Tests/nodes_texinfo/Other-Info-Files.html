@@ -69,7 +69,9 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 node in another Info file by writing the file name in parentheses just
 before the node name.  In this case, you should use the three-part menu
 entry format, which saves the reader from having to type the file
-name.</p><p>The format looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+name.
+</p><p>The format looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @menu
 * <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
@@ -77,7 +79,8 @@ name.</p><p>The format looks like this:</p><table><tr><td>&nbsp;</td><td class="
 </pre></td></tr></table>
 <p>For example, to refer directly to the `<samp>Outlining</samp>' and
 `<samp>Rebinding</samp>' nodes in the <cite>Emacs Manual</cite>, you would write a
-menu like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+menu like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                   editing outlines.
@@ -86,7 +89,8 @@ menu like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @end menu
 </pre></td></tr></table>
 <p>If you do not list the node name, but only name the file, then Info
-presumes that you are referring to the `Top' node.</p><p>The `<tt>dir</tt>' file that contains the main menu for Info has menu
+presumes that you are referring to the `Top' node.
+</p><p>The `<tt>dir</tt>' file that contains the main menu for Info has menu
 entries that list only file names.  These take you directly to the `Top'
 nodes of each Info document.  (See section <a href="Installing-an-Info-File.html#SEC271">Installing an Info File</a>.)
 </p><p>For example:
@@ -97,7 +101,8 @@ nodes of each Info document.  (See section <a href="Installing-an-Info-File.html
 </pre></td></tr></table>
 <p>(The `<tt>dir</tt>' top level directory for the Info system is an Info file,
 not a Texinfo file, but a menu entry looks the same in both types of
-file.)</p><p>The GNU Emacs Texinfo mode menu updating commands only work with nodes
+file.)
+</p><p>The GNU Emacs Texinfo mode menu updating commands only work with nodes
 within the current buffer, so you cannot use them to create menus that
 refer to other files.  You must write such menus by hand.
 </p><hr size="1">

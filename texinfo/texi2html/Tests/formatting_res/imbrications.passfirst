@@ -56,6 +56,7 @@ Tex doesn't like math in @@example
 Now a content within example
 
 
+
 @printindex cp
 printindex  works but cannot be followed in info, in TeX
 the result is quite strange.
@@ -171,4 +172,6 @@ explanation
 @unnumberedsubsec
 @node other node
 @unnumberedsubsec
+
+
 

@@ -1,0 +1,101 @@
+
+@node Top
+@top
+@subheading Comment like:
+
+Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+
+Example with comments 2 lines
+@example 
+line second line @end example
+
+Example with comments 1 line
+@example
+line @end example
+
+No comments
+@example
+line 
+@end example
+
+The same but with oddfooting instead of comment:
+Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
+
+@@afourpaper @@smallbook @@headings @@oddfooting @@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading @@need @@setchapternewpage @@raisesections @@lowersections 
+@subheading ignore arg
+
+Commands doesn't accept anything after the arg on the line
+
+@@paragraphindent asis @@paragraphindent 0 @@paragraphindent none @@paragraphindent 4 @@footnotestyle @@footnotestyle 
+@subheading command removed
+
+And now finalout:
+Text line followed by finalout on the same line and another below 
+
+Text line after the finalout followed by a fianlout 
+Text line after the text line followed by the finalout.
+
+Test text after finalout
+ a word after finalout
+Line after finalout
+
+@@page  @@noindent  @@refill  something
+
+noindent at beginning of line
+  
+noindent on the preceding line
+  noindent after space at beginning of line
+         page at beginning of line
+
+After page on it's own line.
+
+@@page    @@noindent     @@refill    something 
+
+@@contents  something
+
+@subheading special
+
+Only valid between iftex:
+Unknown ???
+
+@@exdent  line after exdent
+
+And now sp:
+Text line followed by a comment on the same line and another below 
+
+Text line after the comment followed by a comment 
+Text line after the text line followed by the comment.
+ a number after sp
+
+Menu:
+@menu
+* node::
+* bidule::
+* bidule2::
+@end menu
+
+@node node
+@chapter chapter
+@menu
+* truc::
+@end menu
+
+@node truc
+@section section
+
+first @@contents  line following first content
+second @@contents  line following second content
+Third content on the following line on his own
+
+Line following contents
+
+@node bidule
+@chapter bidule
+
+@@shortcontents  eol
+@@shortcontents  eol
+@@summarycontents  line following summarycontents
+
+@node bidule2
+@chapter last
+

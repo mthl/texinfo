@@ -66,7 +66,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <h2> 14.1 <code>@*</code>: Generate Line Breaks </h2>
 
 <p>The <code>@*</code> command forces a line break in both the printed manual and
-in Info.</p><p>For example,
+in Info.
+</p><p>For example,
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 This line @* is broken @*in two places.
 </pre></td></tr></table>
@@ -77,18 +78,23 @@ This line
 in two places.
 </pre></td></tr></table>
 <p>(Note that the space after the first <code>@*</code> command is faithfully
-carried down to the next line.)</p><p>The <code>@*</code> command is often used in a file's copyright page:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+carried down to the next line.)
+</p><p>The <code>@*</code> command is often used in a file's copyright page:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 This is edition 2.0 of the Texinfo documentation,@*
 and is for ...
 </pre></td></tr></table>
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
-line across the whole page in an ugly manner.</p><blockquote>
+line across the whole page in an ugly manner.
+</p><blockquote>
 
 <p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
-they are not needed.</p><p>Do not write an <code>@refill</code> command at the end of a paragraph
+they are not needed.
+</p><p>Do not write an <code>@refill</code> command at the end of a paragraph
 containing an <code>@*</code> command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
-break.</p></blockquote>
+break.
+</p></blockquote>
 
 <hr size="1">
 <p>

@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.29 2003-05-09 16:46:39 pertusus Exp $
+# $Id: texi2html.init,v 1.30 2003-05-20 16:39:58 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -332,6 +332,8 @@ $T2H_ICONS = 0;
      'Up',          '',
      'Next',        '',
      'NodeUp',      '',
+     'NodeNext',    '',
+     'NodePrev',    '',
      'Following',   '',
      'Forward',     '',
      'FastForward', '',
@@ -354,6 +356,8 @@ $T2H_ICONS = 0;
      'Up',          '',
      'Next',        '',
      'NodeUp',      '',
+     'NodeNext',    '',
+     'NodePrev',    '',
      'Following',   '',
      'Forward',     '',
      'FastForward', '',
@@ -376,6 +380,8 @@ $T2H_ICONS = 0;
      'Up',          ' Up ',
      'Next',        'Next',
      'NodeUp',      'node up',
+     'NodeNext',    'next node',
+     'NodePrev',    'previous node',
      'Following',   'following node',
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
@@ -396,6 +402,8 @@ $T2H_ICONS = 0;
      'Up',          'up section',
      'Next',        'next section on same level',
      'NodeUp',      'up node',
+     'NodeNext',    'next node',
+     'NodePrev',    'previous node',
      'Following',   'node following in node reading order',
      'Forward',     'next section in reading order',
      'FastForward', 'next chapter',
@@ -1024,6 +1032,8 @@ $T2H_AFTER_ABOUT = '';
      'Up',          '1.2',
      'Next',        '1.2.4',
      'NodeUp',      '1.2',
+     'NodeNext',    '1.2.4',
+     'NodePrev',    '1.2.2',
      'Following',   '1.2.4',
      'Forward',     '1.2.4',
      'FastForward', '2',
@@ -1329,37 +1339,36 @@ $style_map_pre{'sc'} = '&do_sc_pre';
 # an eval of these $complex_format_map->{what}->{'end'} yields end
 $complex_format_map =
 {
- example =>
+ 'example' =>
  {
   'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td class=\"example\">"},
   'end' => q{'</td></tr></table>'},
   'pre_style' => ''
  },
- smallexample =>
+ 'smallexample' =>
  {
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\"><font size=\"$T2H_SMALL_FONT_SIZE\">"},
-  'end' => q{'</font></td></tr></table>'},
-  'pre_style' => ''
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => 'style="font-size: smaller"'
  },
- display =>
+ 'display' =>
  {
   'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td class=\"display\">"},
   'end' => q{'</td></tr></table>'},
   'pre_style' => 'style="font-family: serif"'
  },
- smalldisplay =>
+ 'smalldisplay' =>
  {
- # FIXME font is deprecated and forbidden in pre, while pre is forbidden in font
-  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\"><font size=\"$T2h_SMALL_FONT_SIZE\">"},
-  'end' => q{'</font></td></tr></table>'},
-  'pre_style' => 'style="font-family: serif"'
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => 'style="font-family: serif; font-size: smaller"'
  }
 };
 
-$complex_format_map->{lisp} = $complex_format_map->{example};
-$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
-$complex_format_map->{format} = $complex_format_map->{display};
-$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
+$complex_format_map->{'lisp'} = $complex_format_map->{'example'};
+$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
+$complex_format_map->{'format'} = $complex_format_map->{'display'};
+$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
 
 #
 # texinfo definition shortcuts to real ones
@@ -1414,55 +1423,64 @@ $complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
 # 
 # if the value is 'line' then the remaining of the line is skipped
 # if the value is 'arg' then an argument is skipped
-# if the value is 'space' then any space (including new lines)
+# if the value is 'space' space following the macro is skipped
 # otherwise only the macro, or @end macro is skipped
 # 
 %to_skip = (
+        # not needed after pass_texi
+        'raisesections', 'line',
+        'lowersections', 'line',
+        'contents', 1,
+        'shortcontents', 1,
+        'summarycontents', 1,
+        'detailmenu', 'space',
+        'end detailmenu', 1,
+     );
+
+%to_skip_texi = (
         # comments
         'comment', 'line',
         'c', 'line',
         # not needed after pass_texi
-        'raisesections', 1,
-        'lowersections', 1,
         'bye', 'line',
-        'contents', 1,
-        'shortcontents', 1,
-        'summarycontents', 1,
-        # useless
-        'detailmenu', 1,
-        'end detailmenu', 1,
-        'direntry', 1,
-        'end direntry', 1,
-        'footnotestyle', 'arg',
         # unsupported commands (formatting)
-        'afourpaper', 1,
-        'pagesizes', 'arg',
-        'cropmarks', 1,
-        'finalout', 1,
-        'headings', 'arg',
         'sp', 'arg',
-        'need', 'arg',
+        # ???
+        'pagesizes', 'arg', 
+        'finalout', 1,
         'page', 1,
-        'setchapternewpage', 'arg',
+        'refill', 1,
+        'noindent', 1,
+        'need', 'line',
+        'paragraphindent', 'line', # in fact accepts only none asis 
+                             # or a number and forbids anything else on the line
+        'footnotestyle', 'line', # in fact accepts only end and separate
+                                 # and nothing else on the line
+        'afourpaper', 'line',
+        'headings', 'line',
+        'setchapternewpage', 'line',
         'everyheading', 'line',
         'everyfooting', 'line',
         'evenheading', 'line',
         'evenfooting', 'line',
         'oddheading', 'line',
         'oddfooting', 'line',
-        'smallbook', 1,
-        'vskip', 1,
+        'smallbook', 'line',
+        # not valid for info (should be in @iftex)
+        'vskip', 'line',
+        'cropmarks', 1,
+        # ???
         'filbreak', 1,
-        'paragraphindent', 1,
-        # unsupported formats
-        'cartouche', 1,
+        # unsupported formats/features
+        'direntry', 'space',
+        'end direntry', 1,
+        'cartouche', 'space',
         'end cartouche', 1,
-        'group', 1,
+        'group', 'space',
         'end group', 1,
-        'refill', 'space',  # FIXME pertusus: seems bad to me to remove 
-        'exdent', 'space',  # trailing spaces, but it was like that in the
-        'noindent', 'space' # original code
+        'exdent', 1,  
      );
+
 
 # functions used for styles
 sub do_ctrl($;$) { return "^$_[0]" }
@@ -1527,6 +1545,8 @@ $t2h_def               = \&t2h_default_def;
 $t2h_menu              = \&t2h_default_menu;
 $t2h_menu_entry        = \&t2h_default_menu_entry;
 $t2h_menu_comment      = \&t2h_default_menu_comment;
+$t2h_menu_description  = \&t2h_default_menu_description;
+$t2h_simple_menu_entry = \&t2h_default_simple_menu_entry;
 $t2h_ref_beginning     = \&t2h_default_ref_beginning;
 $t2h_info_ref          = \&t2h_default_info_ref;
 $t2h_book_ref          = \&t2h_default_book_ref;
@@ -1630,22 +1650,37 @@ sub t2h_default_menu($)
     return '';
 }
 
-# a menu entry (ref + description)
-sub t2h_default_menu_entry($$$;$)
+# a simple menu entry ref in case we aren't in a standard menu context
+sub t2h_default_simple_menu_entry($$$)
 {
     my $entry = shift;
-    my $descr = shift;
     my $state = shift;
     my $href = shift;
     $entry = &$t2h_anchor('', $href, $entry) if ($href);
-    return '<tr><td>' . do_preformatted($entry . $descr, $state) . '</td></tr>' if ($state->{'preformatted'});
-    return '<tr><td align="left" valign="top">' .
-              $entry .
-          '</td><td>&nbsp;&nbsp;</td>' .
-          '<td align="left" valign="top">' . $descr .
-          "</td></tr>\n";
+    return $entry . '&nbsp;';
 }
 
+# a menu entry ref
+sub t2h_default_menu_entry($$;$)
+{
+    my $entry = shift;
+    my $state = shift;
+    my $href = shift;
+    $entry = &$t2h_anchor('', $href, $entry) if ($href);
+    return '<tr><td>' . do_preformatted($entry, $state) if ($state->{'preformatted'});
+    return '<tr><td align="left" valign="top">' .
+              $entry .
+          '</td><td>&nbsp;&nbsp;</td>';
+}
+# a menu entry (ref + description)
+sub t2h_default_menu_description($$)
+{
+    my $descr = shift;
+    my $state = shift;
+    return do_preformatted($descr, $state) . '</tr>' if ($state->{'preformatted'});
+    return '<td align="left" valign="top">' . $descr .
+          "</td></tr>\n";
+}
 # a menu comment (between menu lines)
 sub t2h_default_menu_comment($)
 {

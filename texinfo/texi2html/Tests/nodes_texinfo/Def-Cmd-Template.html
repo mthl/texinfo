@@ -73,7 +73,8 @@ of the entity itself, and its arguments (if any).  Then write the body
 of the definition on succeeding lines.  (You may embed examples in the
 body.)  Finally, end the definition with an <code>@end deffn</code> command
 written on a line of its own.  (The other definition commands follow
-the same format.)</p><p>The template for a definition looks like this:
+the same format.)
+</p><p>The template for a definition looks like this:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn <var>category</var> <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
@@ -100,13 +101,15 @@ This command moves point forward @var{count} words
 
 <p>Capitalize the category name like a title.  If the name of the
 category contains spaces, as in the phrase `Interactive Command',
-write braces around it.  For example:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+write braces around it.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @deffn {Interactive Command} isearch-forward
 ...
 @end deffn
 </pre></td></tr></table>
 <p>Otherwise, the second word will be mistaken for the name of the
-entity.</p><p>Some of the definition commands are more general than others.  The
+entity.
+</p><p>Some of the definition commands are more general than others.  The
 <code>@deffn</code> command, for example, is the general definition command
 for functions and the like--for entities that may take arguments.  When
 you use this command, you specify the category to which the entity
@@ -116,9 +119,11 @@ specialized variations, <code>@defun</code>, <code>@defmac</code>, and
 &quot;Macro&quot;, and &quot;Special Form&quot; respectively.  (In Lisp, a special form
 is an entity much like a function.)  The <code>@defvr</code> command also is
 accompanied by several predefined, specialized variations for describing
-particular kinds of variables.</p><p>The template for a specialized definition, such as <code>@defun</code>, is
+particular kinds of variables.
+</p><p>The template for a specialized definition, such as <code>@defun</code>, is
 similar to the template for a generalized definition, except that you
-do not need to specify the category:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+do not need to specify the category:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @defun <var>name</var> <var>arguments</var>...
 <var>body-of-definition</var>
 @end defun
@@ -145,7 +150,9 @@ is less than 1, @code{(point-max)} otherwise.
 
 <p>See section <a href="Sample-Function-Definition.html#SEC226">A Sample Function Definition</a>, for a more detailed example of a function
 definition, including the use of <code>@example</code> inside the
-definition.</p><p>The other specialized commands work like <code>@defun</code>.</p><a name="IDX262"></a>
+definition.
+</p><p>The other specialized commands work like <code>@defun</code>.
+</p><a name="IDX262"></a>
 <p>Note that, due to implementation difficulties, macros are not expanded
 in <code>@deffn</code> and all the other definition commands.
 </p><hr size="1">

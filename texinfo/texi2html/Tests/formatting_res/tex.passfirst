@@ -1,0 +1,15 @@
+
+@node Top
+@top Tests
+
+Now tex on the same line @tex_0 bidule
+Some text one the line following @@end tex
+
+Now tex on the following line, valid fot tex (with @@end tex on a line).
+@tex_1 
+
+Same that @@html (but empty following line not ignored).
+
+Test of @@math
+Here some @tex_2 .
+

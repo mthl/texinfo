@@ -67,20 +67,24 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
 at the beginning of a line and then the name of the node, like
-this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @node <var>node-name</var>
 </pre></td></tr></table>
 <p>If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
-insert node pointers into the Info file it creates.  (See section <a href="Texinfo-Mode.html#SEC21">Using Texinfo Mode</a>, and <a href="makeinfo-Pointer-Creation.html#SEC95">Creating Pointers with <code>makeinfo</code></a>.)</p><p>Alternatively, you can insert the `Next', `Previous', and `Up'
+insert node pointers into the Info file it creates.  (See section <a href="Texinfo-Mode.html#SEC21">Using Texinfo Mode</a>, and <a href="makeinfo-Pointer-Creation.html#SEC95">Creating Pointers with <code>makeinfo</code></a>.)
+</p><p>Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
 Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
 `<samp>@node</samp>' and a comment line listing the names of the pointers in
 their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
-if you are not familiar with Texinfo.</p><p>The template for a fully-written-out node line with `Next', `Previous',
-and `Up' pointers looks like this:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+if you are not familiar with Texinfo.
+</p><p>The template for a fully-written-out node line with `Next', `Previous',
+and `Up' pointers looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
 @node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first

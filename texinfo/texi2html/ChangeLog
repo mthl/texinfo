@@ -1,3 +1,21 @@
+2003-05-20  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: split pass_texi in 2 pass. pass_texi
+	rearranges texi expanding macros and values, removing comments.
+	pass_structure remove unneeded empty lines and find out the structure
+	of the document.
+	use a different formatting for menu entries in other environments than 
+	menus.
+	cleaning of code.
+	use close_stack in all the passes to close environments not rightly
+	closed. Fix some places where stack wasn't closed rightly.
+	New direction, 'NodeNext' and 'NodePrev' which contains the prev node 
+	and next node which may be different from Next and Prev for sections.
+	use style font-size:smaller in pre instead of <font> for smallexample 
+	and friends to produce valid html.
+	spaces and arguments following commands are removed or kept in the 
+	same way than makeinfo does.
+	* Tests/*: add tests for environments not closed. Sync with code.
+
 2003-05-09  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: refs to other manuals conforms to 
 	makeinfo with separated files for nodes.
@@ -40,6 +58,7 @@
 	* Tests/*: all tex stuff taken from verbatim_html and put in tex.texi.
 	tests for index entries in top and before top.
 	tests for documents with only one section or node or no node.
+
 2003-05-02  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: 3 split commands: split at
 	chapter, section or for every node (previously node and section 
