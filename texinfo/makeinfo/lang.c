@@ -1,7 +1,7 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.3 2002-11-07 16:11:10 karl Exp $
+   $Id: lang.c,v 1.4 2002-11-07 16:11:33 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
