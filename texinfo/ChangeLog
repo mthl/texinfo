@@ -1,3 +1,12 @@
+2003-03-18    <karl@gnu.org>
+
+	* makeinfo/insertion.c (cm_item): ensure we don't go off the end
+	of the string when using strncmp.  From: Peter N Lewis
+	<peter@stairways.com.au>, 13 Mar 2003 16:08:27 +0800.
+
+	* doc/texinfo.txi (Raw Formatter Commands): mention using \gdef
+	within @tex, not \def.
+
 2003-03-12    <karl@gnu.org>
 
 	* doc/texinfo.txi (Preparing for TeX): mention extra colons.
