@@ -1,3 +1,22 @@
+2003-02-05    <karl@gnu.org>
+
+	* info/info.c (short_options): add h.
+	(main): treat -h same as --help.
+        From: rwhron@earthlink.net, 31 Aug 2002 19:56:57 -0400.
+
+	* info/session.c (show_isearch_prompt): compute length of
+	translated "Failing ", don't assume 20 is enough.
+	(It's 21 bytes in UTF-8 Russian.)
+	Report from: varg@thsun1.jinr.ru,
+	25 Jul 2002 15:26:42 +0400.
+
+	* info/display.c (display_update_one_window): don't derefence null
+	`entry' (if the screen is very small).
+	From: Danny Yoo <dyoo@hkn.eecs.berkeley.edu>,
+	8 Jul 2002 15:21:14 -0700.
+
+	* doc/.cvsignore: ignore *.info and texput.log.
+
 2003-02-04    <karl@gnu.org>
 
 	* Version 4.5 (that info bug was a killer).
