@@ -57,7 +57,8 @@ else echo "    passed"
 fi
 
 # generate a dump of the first pass
-(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump_texi $texi_file) > /dev/null 2>&1
+#(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file)
+(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
 #(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
@@ -156,9 +157,9 @@ test_texi GermanNodeTest nodetest_for_makeinfo.texi
 test_texi index_table
 test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init"
 test_texi index_table index_split.texi "-split chapter -init index_test.init"
-test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top_file index_nodes.html"
+test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html"
 test_texi index_table no_node.texi "-init index_test.init -split chapter" 3
-test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -prefix nodes_more_before_top -top_file nodes_more_before_top.html" 0 texi nodes_more_before_top
+test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -prefix nodes_more_before_top -top-file nodes_more_before_top.html" 0 texi nodes_more_before_top
 test_texi index_table more_before_top.texi "-init index_test.init -split chapter"
 test_texi index_table more_before_top_section.texi "-init index_test.init -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
@@ -180,7 +181,7 @@ test_texi sectionning one_node_and_section.texi
 test_texi sectionning first_section_and_nodes.texi "" 1
 test_texi sectionning double_top.texi "" 3
 test_texi sectionning rec_nodes.texi
-test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top_file makeinfo_rec_nodes.html" 0 texi makeinfo_rec_nodes
+test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html" 0 texi makeinfo_rec_nodes
 test_texi sectionning ref_in_anchor.texi "" 1
 test_texi sectionning brace_not_closed.texi "" 1
 test_texi formatting nodetest.texi "-split chapter"

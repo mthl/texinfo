@@ -1,8 +1,14 @@
 2003-07-03  Patrice Dumas <dumas@centre-cired.fr>
 
+	* texi2html.pl, Tests/test.sh: command line option names use '-' 
+	instead of '_' between words (for example dump_texi becomes dump-texi).
+	* Tests/*: remove unneeded html and passfirst files.
+
+2003-07-03  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, *.init: use a separate namespace for the config
 	variables: Texi2HTML::Config. Use the Texi2HTML:: namespace for
-	varibles set in texi2html and used in the init files subroutines.
+	variables set in texi2html and used in the init files subroutines.
 	Use Texi2HTML::LaTeX2HTML namespace for latex2html related code.
 	Use Texi2HTML::I18n namespace for internationalisation.
 	Variables related with latex2html are removed from texi2html.init

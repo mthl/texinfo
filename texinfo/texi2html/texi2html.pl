@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.51 2003-07-03 15:36:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.52 2003-07-10 15:22:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -726,7 +726,7 @@ $T2H_OPTIONS -> {'doctype'} =
  noHelp => 1
 };
 
-$T2H_OPTIONS -> {frameset_doctype} =
+$T2H_OPTIONS -> {'frameset-doctype'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::FRAMESET_DOCTYPE,
@@ -742,7 +742,7 @@ $T2H_OPTIONS -> {'test'} =
  noHelp => 1
 };
 
-$T2H_OPTIONS -> {dump_texi} =
+$T2H_OPTIONS -> {'dump-texi'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::DUMP_TEXI,
@@ -789,7 +789,7 @@ $T2H_OPTIONS -> {'I'} =
  verbose => 'append $s to the @include search path',
 };
 
-$T2H_OPTIONS -> {top_file} =
+$T2H_OPTIONS -> {'top-file'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::TOP_FILE,
@@ -797,7 +797,7 @@ $T2H_OPTIONS -> {top_file} =
 };
 
 
-$T2H_OPTIONS -> {toc_file} =
+$T2H_OPTIONS -> {'toc-file'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::TOC_FILE,
@@ -854,7 +854,7 @@ $T2H_OPTIONS -> {'split'} =
  verbose => 'split document on section|chapter else no splitting',
 };
 
-$T2H_OPTIONS -> {sec_nav} =
+$T2H_OPTIONS -> {'sec-nav'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
@@ -868,7 +868,7 @@ $T2H_OPTIONS -> {'subdir'} =
  verbose => 'put HTML files in directory $s, instead of $cwd',
 };
 
-$T2H_OPTIONS -> {short_ext} =
+$T2H_OPTIONS -> {'short-ext'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SHORTEXTN,
@@ -882,21 +882,21 @@ $T2H_OPTIONS -> {'prefix'} =
  verbose => 'use as prefix for output files, instead of <docname>',
 };
 
-$T2H_OPTIONS -> {out_file} =
+$T2H_OPTIONS -> {'out-file'} =
 {
  type => '=s',
  linkage => sub {$Texi2HTML::Config::OUT = $_[1]; $Texi2HTML::Config::SPLIT = '';},
  verbose => 'if set, all HTML output goes into file $s',
 };
 
-$T2H_OPTIONS -> {short_ref} =
+$T2H_OPTIONS -> {'short-ref'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::SHORT_REF,
  verbose => 'if set, references are without section numbers',
 };
 
-$T2H_OPTIONS -> {idx_sum} =
+$T2H_OPTIONS -> {'idx-sum'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::IDX_SUMMARY,
@@ -904,7 +904,7 @@ $T2H_OPTIONS -> {idx_sum} =
  noHelp  => 1,
 };
 
-$T2H_OPTIONS -> {def_table} =
+$T2H_OPTIONS -> {'def-table'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::DEF_TABLE,
@@ -940,7 +940,7 @@ $T2H_OPTIONS -> {'l2h'} =
  verbose => 'if set, uses latex2html for @math and @tex',
 };
 
-$T2H_OPTIONS -> {l2h_l2h} =
+$T2H_OPTIONS -> {'l2h-l2h'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::L2H_L2H,
@@ -948,7 +948,7 @@ $T2H_OPTIONS -> {l2h_l2h} =
  noHelp => 1,
 };
 
-$T2H_OPTIONS -> {l2h_skip} =
+$T2H_OPTIONS -> {'l2h-skip'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::L2H_SKIP,
@@ -956,7 +956,7 @@ $T2H_OPTIONS -> {l2h_skip} =
  noHelp => 1,
 };
 
-$T2H_OPTIONS -> {l2h_tmp} =
+$T2H_OPTIONS -> {'l2h-tmp'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::L2H_TMP,
@@ -973,7 +973,7 @@ $T2H_OPTIONS -> {'l2h-file'} =
 };
 
 
-$T2H_OPTIONS -> {l2h_clean} =
+$T2H_OPTIONS -> {'l2h-clean'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::L2H_CLEAN,
@@ -989,7 +989,7 @@ $T2H_OPTIONS -> {'D'} =
  noHelp => 1,
 };
 
-$T2H_OPTIONS -> {init_file} =
+$T2H_OPTIONS -> {'init-file'} =
 {
  type => '=s',
  linkage => \&load_init_file,
@@ -1000,6 +1000,135 @@ $T2H_OPTIONS -> {init_file} =
 ## obsolete cmd line options
 ##
 my $T2H_OBSOLETE_OPTIONS;
+
+$T2H_OBSOLETE_OPTIONS -> {init_file} =
+{
+ type => '=s',
+ linkage => \&LoadInitFile,
+ verbose => 'obsolete, use "-init-file" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {l2h_clean} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::L2H_CLEAN,
+ verbose => 'obsolete, use "-l2h-clean" instead',
+ noHelp => 2,
+};
+
+$T2H_OBSOLETE_OPTIONS -> {l2h_l2h} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::L2H_L2H,
+ verbose => 'obsolete, use "-l2h-l2h" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {l2h_skip} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::L2H_SKIP,
+ verbose => 'obsolete, use "-l2h-skip" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {l2h_tmp} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::L2H_TMP,
+ verbose => 'obsolete, use "-l2h-tmp" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {out_file} =
+{
+ type => '=s',
+ linkage => sub {$Texi2HTML::Config::OUT = $_[1]; $Texi2HTML::Config::SPLIT = '';},
+ verbose => 'obsolete, use "-out-file" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {short_ref} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::SHORT_REF,
+ verbose => 'obsolete, use "-short-ref" instead',
+ noHelp => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {idx_sum} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::IDX_SUMMARY,
+ verbose => 'obsolete, use "-idx-sum" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {def_table} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::DEF_TABLE,
+ verbose => 'obsolete, use "-def-table" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {short_ext} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::SHORTEXTN,
+ verbose => 'obsolete, use "-short-ext" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {sec_nav} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::SECTION_NAVIGATION,
+ verbose => 'obsolete, use "-sec-nav" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {top_file} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::TOP_FILE,
+ verbose => 'obsolete, use "-top-file" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {toc_file} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::TOC_FILE,
+ verbose => 'obsolete, use "-toc-file" instead',
+ noHelp  => 2
+};
+
+$T2H_OBSOLETE_OPTIONS -> {glossary} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::USE_GLOSSARY,
+ verbose => "if set, uses section named `Footnotes' for glossary",
+ noHelp  => 2,
+};
+
+$T2H_OBSOLETE_OPTIONS -> {dump_texi} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::DUMP_TEXI,
+ verbose => 'obsolete, use "-dump-texi" instead',
+ noHelp => 1
+};
+
+$T2H_OBSOLETE_OPTIONS -> {frameset_doctype} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::FRAMESET_DOCTYPE,
+ verbose => 'obsolete, use "-frameset-doctype" instead',
+ noHelp => 2
+};
+
 $T2H_OBSOLETE_OPTIONS -> {'no-section_navigation'} =
 {
  type => '!',
@@ -4426,7 +4555,7 @@ sub dump_texi($$)
     {
          warn "Can't open > $docu_rdir$docu_name" . ".pass$pass for writing: $!\n";
     }
-    print STDERR "# Dump texi\n";
+    print STDERR "# Dump texi\n" if ($T2H_VERBOSE);
     foreach my $line (@$lines)
     {
         print DMPTEXI $line;
