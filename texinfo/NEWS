@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.22 2002-12-05 20:39:54 karl Exp $
+$Id: NEWS,v 1.23 2002-12-07 13:11:07 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -35,7 +35,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . getopt and other common library files updated from gnulib
     (http://savannah.gnu.org/projects/gnulib/).
-  . autoconf 2.56.
+  . autoconf 2.57, automake 1.7.2.
   
 4.3 (14 November 2002)
 * Language:

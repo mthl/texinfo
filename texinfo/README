@@ -1,4 +1,4 @@
-$Id: README,v 1.11 2002-12-06 14:28:55 karl Exp $
+$Id: README,v 1.12 2002-12-07 13:11:07 karl Exp $
 This is the README file for the GNU Texinfo distribution.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -128,7 +128,7 @@ Installation files:
 
 Developer information:
 
-This distribution uses automake 1.7.1 and autoconf 2.57.  If you are
+This distribution uses automake 1.7.2 and autoconf 2.57.  If you are
 getting the Texinfo sources from cvs, or change the Texinfo
 configure.ac, you'll need to have these tools installed to (re)build.
 Sometimes patches to them are necessary for Texinfo; such patches will
