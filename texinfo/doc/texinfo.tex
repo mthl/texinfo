@@ -405,6 +405,21 @@
 % (But first, we have to spend the remaining $ or two.)
 \def\finishparsearg#1$#2\ArgTerm{\expandafter\next\expandafter{#1}}
 
+% \defparsearg\foo{...}
+%	is roughly equivalent to
+% \def\foo{\parsearg\Xfoo}
+% \def\Xfoo#1{...}
+%
+% Actually, I use \csname\string\foo\endcsname, ie. \\foo, as it is my
+% favourite TeX trick.  --kasal, 16nov03
+
+\def\defparsearg#1{%
+  \expandafter \dodefparsearg \csname\string#1\endcsname #1%
+}
+\def\dodefparsearg#1#2{%
+  \def#2{\parsearg#1}%
+  \def#1##1%
+}
 
 % Several utility definitions with active space:
 {
@@ -437,8 +452,7 @@
 
 % @end foo executes the definition of \Efoo.
 %
-\def\end{\parsearg\endxxx}
-\def\endxxx #1{%
+\defparsearg\end{%
   \expandafter\ifx\csname E#1\endcsname\relax
     \badenderror{#1}%
   \else
@@ -657,10 +671,8 @@ where each line of input produces a line of output.}
 
 \newdimen\mil  \mil=0.001in
 
-\def\need{\parsearg\needx}
-
 % Old definition--didn't work.
-%\def\needx #1{\par %
+%\defparsearg\need{\par %
 %% This method tries to make TeX break the page naturally
 %% if the depth of the box does not fit.
 %{\baselineskip=0pt%
@@ -668,7 +680,7 @@ where each line of input produces a line of output.}
 %\prevdepth=-1000pt
 %}}
 
-\def\needx#1{%
+\defparsearg\need{%
   % Ensure vertical mode, so we don't make a big box in the middle of a
   % paragraph.
   \par
@@ -748,13 +760,11 @@ where each line of input produces a line of output.}
 \newskip\exdentamount
 
 % This defn is used inside fill environments such as @defun.
-\def\exdent{\parsearg\exdentyyy}
-\def\exdentyyy #1{{\hfil\break\hbox{\kern -\exdentamount{\rm#1}}\hfil\break}}
+\defparsearg\exdent{\hfil\break\hbox{\kern -\exdentamount{\rm#1}}\hfil\break}
 
 % This defn is used inside nofill environments such as @example.
-\def\nofillexdent{\parsearg\nofillexdentyyy}
-\def\nofillexdentyyy #1{{\advance \leftskip by -\exdentamount
-\leftline{\hskip\leftskip{\rm#1}}}}
+\defparsearg\nofillexdent{{\advance \leftskip by -\exdentamount
+  \leftline{\hskip\leftskip{\rm#1}}}}
 
 % @inmargin{WHICH}{TEXT} puts TEXT in the WHICH margin next to the current
 % paragraph.  For more general purposes, use the \margin insertion
@@ -849,19 +859,19 @@ where each line of input produces a line of output.}
 % @center line
 % outputs that line, centered.
 %
-\def\center{\parsearg\docenter}
-\def\docenter#1{{%
+\defparsearg\center{%
   \ifhmode \hfil\break \fi
-  \advance\hsize by -\leftskip
-  \advance\hsize by -\rightskip
-  \line{\hfil \ignorespaces#1\unskip \hfil}%
+  {%
+    \advance\hsize by -\leftskip
+    \advance\hsize by -\rightskip
+    \line{\hfil \ignorespaces#1\unskip \hfil}%
+  }%
   \ifhmode \break \fi
-}}
+}
 
 % @sp n   outputs n lines of vertical space
 
-\def\sp{\parsearg\spxxx}
-\def\spxxx #1{\vskip #1\baselineskip}
+\defparsearg\sp{\vskip #1\baselineskip}
 
 % @comment ...line which is ignored...
 % @c is the same as @comment
@@ -882,8 +892,7 @@ where each line of input produces a line of output.}
 \def\asisword{asis} % no translation, these are keywords
 \def\noneword{none}
 %
-\def\paragraphindent{\parsearg\doparagraphindent}
-\def\doparagraphindent#1{%
+\defparsearg\paragraphindent{%
   \def\temp{#1}%
   \ifx\temp\asisword
   \else
@@ -900,8 +909,7 @@ where each line of input produces a line of output.}
 % We'll use ems for NCHARS like @paragraphindent.
 % It seems @exampleindent asis isn't necessary, but
 % I preserve it to make it similar to @paragraphindent.
-\def\exampleindent{\parsearg\doexampleindent}
-\def\doexampleindent#1{%
+\defparsearg\exampleindent{%
   \def\temp{#1}%
   \ifx\temp\asisword
   \else
@@ -928,8 +936,7 @@ where each line of input produces a line of output.}
 %
 \def\insertword{insert}
 %
-\def\firstparagraphindent{\parsearg\dofirstparagraphindent}
-\def\dofirstparagraphindent#1{%
+\defparsearg\firstparagraphindent{%
   \def\temp{#1}%
   \ifx\temp\noneword
     \let\suppressfirstparagraphindent = \dosuppressfirstparagraphindent
@@ -1670,8 +1677,7 @@ where each line of input produces a line of output.}
 % @kbdinputstyle -- arg is `distinct' (@kbd uses slanted tty font always),
 %   `example' (@kbd uses ttsl only inside of @example and friends),
 %   or `code' (@kbd uses normal tty font always).
-\def\kbdinputstyle{\parsearg\kbdinputstylexxx}
-\def\kbdinputstylexxx#1{%
+\defparsearg\kbdinputstyle{%
   \def\arg{#1}%
   \ifx\arg\worddistinct
     \gdef\kbdexamplefont{\ttsl}\gdef\kbdfont{\ttsl}%
@@ -1806,8 +1812,7 @@ where each line of input produces a line of output.}
 \newif\ifsetshortcontentsaftertitlepage
  \let\setshortcontentsaftertitlepage = \setshortcontentsaftertitlepagetrue
 
-\def\shorttitlepage{\parsearg\shorttitlepagezzz}
-\def\shorttitlepagezzz #1{\begingroup\hbox{}\vskip 1.5in \chaprm \centerline{#1}%
+\defparsearg\shorttitlepage{\begingroup\hbox{}\vskip 1.5in \chaprm \centerline{#1}%
         \endgroup\page\hbox{}\page}
 
 \def\titlepage{%
@@ -1874,18 +1879,15 @@ where each line of input produces a line of output.}
 \def\authorfont{\authorrm \normalbaselineskip = 16pt \normalbaselines
 		\let\tt=\authortt}
 
-\def\title{\parsearg\titlezzz}
-\def\titlezzz#1{\leftline{\titlefonts\rm #1}
+\defparsearg\title{\leftline{\titlefonts\rm #1}
 		% print a rule at the page bottom also.
 		\finishedtitlepagefalse
 		\vskip4pt \hrule height 4pt width \hsize \vskip4pt}
 
-\def\subtitle{\parsearg\subtitlezzz}
-\def\subtitlezzz#1{{\subtitlefont \rightline{#1}}}
+\defparsearg\subtitle{{\subtitlefont \rightline{#1}}}
 
 % @author should come last, but may come many times.
-\def\author{\parsearg\authorzzz}
-\def\authorzzz#1{\ifseenauthor\else\vskip 0pt plus 1filll\seenauthortrue\fi
+\defparsearg\author{\ifseenauthor\else\vskip 0pt plus 1filll\seenauthortrue\fi
   {\authorfont \leftline{#1}}}
 
 
@@ -1912,28 +1914,25 @@ where each line of input produces a line of output.}
 % @evenfooting @thisfile||
 % @oddfooting ||@thisfile
 
+
 \def\evenheading{\parsearg\evenheadingxxx}
-\def\oddheading{\parsearg\oddheadingxxx}
-\def\everyheading{\parsearg\everyheadingxxx}
-
-\def\evenfooting{\parsearg\evenfootingxxx}
-\def\oddfooting{\parsearg\oddfootingxxx}
-\def\everyfooting{\parsearg\everyfootingxxx}
-
 \def\evenheadingxxx #1{\evenheadingyyy #1\|\|\|\|\finish}
 \def\evenheadingyyy #1\|#2\|#3\|#4\finish{%
 \global\evenheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
+\def\oddheading{\parsearg\oddheadingxxx}
 \def\oddheadingxxx #1{\oddheadingyyy #1\|\|\|\|\finish}
 \def\oddheadingyyy #1\|#2\|#3\|#4\finish{%
 \global\oddheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
-\def\everyheadingxxx#1{\oddheadingxxx{#1}\evenheadingxxx{#1}}%
+\defparsearg\everyheading{\oddheadingxxx{#1}\evenheadingxxx{#1}}%
 
+\def\evenfooting{\parsearg\evenfootingxxx}
 \def\evenfootingxxx #1{\evenfootingyyy #1\|\|\|\|\finish}
 \def\evenfootingyyy #1\|#2\|#3\|#4\finish{%
 \global\evenfootline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
+\def\oddfooting{\parsearg\oddfootingxxx}
 \def\oddfootingxxx #1{\oddfootingyyy #1\|\|\|\|\finish}
 \def\oddfootingyyy #1\|#2\|#3\|#4\finish{%
   \global\oddfootline = {\rlap{\centerline{#2}}\line{#1\hfil#3}}%
@@ -1944,7 +1943,7 @@ where each line of input produces a line of output.}
   \global\advance\vsize by -\baselineskip
 }
 
-\def\everyfootingxxx#1{\oddfootingxxx{#1}\evenfootingxxx{#1}}
+\defparsearg\everyfooting{\oddfootingxxx{#1}\evenfootingxxx{#1}}
 
 
 % @headings double      turns headings on for double-sided printing.
@@ -2165,9 +2164,7 @@ where each line of input produces a line of output.}
 
 \newcount \itemno
 
-\def\itemize{\parsearg\itemizezzz}
-
-\def\itemizezzz #1{%
+\defparsearg\itemize{%
   \begingroup % ended by the @end itemize
   \itemizey {#1}{\Eitemize}
 }
@@ -2197,8 +2194,7 @@ where each line of input produces a line of output.}
 % or number, to specify the first label in the enumerated list.  No
 % argument is the same as `1'.
 %
-\def\enumerate{\parsearg\enumeratezzz}
-\def\enumeratezzz #1{\enumeratey #1  \endenumeratey}
+\defparsearg\enumerate{\enumeratey #1  \endenumeratey}
 \def\enumeratey #1 #2\endenumeratey{%
   \begingroup % ended by the @end enumerate
   %
@@ -2433,9 +2429,7 @@ where each line of input produces a line of output.}
 %
 \newtoks\everytab  % insert after every tab.
 %
-\def\multitable{\parsearg\dotable}
-%
-\def\dotable#1{\bgroup
+\defparsearg\multitable{\bgroup
   \vskip\parskip
   \startsavinginserts
   %
@@ -2707,8 +2701,7 @@ width0pt\relax} \fi
 
 % @clear VAR clears (i.e., unsets) the variable VAR.
 %
-\def\clear{\parsearg\clearxxx}
-\def\clearxxx#1{\global\expandafter\let\csname SET#1\endcsname=\relax}
+\defparsearg\clear{\global\expandafter\let\csname SET#1\endcsname=\relax}
 
 % @value{foo} gets the text saved in variable foo.
 \def\value{\begingroup\makevalueexpandable\valuexxx}
@@ -2747,8 +2740,7 @@ width0pt\relax} \fi
 % @ifset VAR ... @end ifset reads the `...' iff VAR has been defined
 % with @set.
 %
-\def\ifset{\parsearg\doifset}
-\def\doifset#1{%
+\defparsearg\ifset{%
   \expandafter\ifx\csname SET#1\endcsname\relax
     \let\next=\ifsetfail
   \else
@@ -2763,8 +2755,7 @@ width0pt\relax} \fi
 % @ifclear VAR ... @end ifclear reads the `...' iff VAR has never been
 % defined with @set, or has been undefined with @clear.
 %
-\def\ifclear{\parsearg\doifclear}
-\def\doifclear#1{%
+\defparsearg\ifclear{%
   \expandafter\ifx\csname SET#1\endcsname\relax
     \let\next=\ifclearsucceed
   \else
@@ -3288,8 +3279,7 @@ width0pt\relax} \fi
 % @printindex causes a particular index (the ??s file) to get printed.
 % It does not print any chapter heading (usually an @unnumbered).
 %
-\def\printindex{\parsearg\doprintindex}
-\def\doprintindex#1{\begingroup
+\defparsearg\printindex{\begingroup
   \dobreak \chapheadingskip{10000}%
   %
   \smallfonts \rm
@@ -3735,8 +3725,7 @@ width0pt\relax} \fi
 
 % @chapter, @appendix, @unnumbered.
 %
-\outer\def\chapter{\parsearg\chapteryyy}
-\def\chapteryyy#1{\numhead0{#1}} % normally numhead0 calls chapterzzz
+\outer\defparsearg\chapter{\numhead0{#1}} % normally numhead0 calls chapterzzz
 \def\chapterzzz#1{%
   % section resetting is \global in case the chapter is in a group, such
   % as an @include file.
@@ -3753,8 +3742,7 @@ width0pt\relax} \fi
   \global\let\subsubsection = \numberedsubsubsec
 }
 
-\outer\def\appendix{\parsearg\appendixyyy}
-\def\appendixyyy#1{\apphead0{#1}} % normally apphead0 calls appendixzzz
+\outer\defparsearg\appendix{\apphead0{#1}} % normally apphead0 calls appendixzzz
 \def\appendixzzz#1{%
   \global\secno=0 \global\subsecno=0 \global\subsubsecno=0
     \global\advance\appendixno by 1
@@ -3767,14 +3755,9 @@ width0pt\relax} \fi
 }
 
 % @centerchap is like @unnumbered, but the heading is centered.
-\outer\def\centerchap{\parsearg\centerchapyyy}
-\def\centerchapyyy#1{{\unnumberedyyy{#1}}}
+\outer\defparsearg\centerchap{{\unnumberedyyy{#1}}}
 
-% @top is like @unnumbered.
-\outer\def\top{\parsearg\unnumberedyyy}
-
-\outer\def\unnumbered{\parsearg\unnumberedyyy}
-\def\unnumberedyyy#1{\unnmhead0{#1}} % normally unnmhead0 calls unnumberedzzz
+\outer\defparsearg\unnumbered{\unnmhead0{#1}} % normally unnmhead0 calls unnumberedzzz
 \def\unnumberedzzz#1{%
   \global\secno=0 \global\subsecno=0 \global\subsubsecno=0
     \global\advance\unnumberedno by 1
@@ -3799,47 +3782,44 @@ width0pt\relax} \fi
   \global\let\subsubsection = \unnumberedsubsubsec
 }
 
+% @top is like @unnumbered.
+\let\top\unnumbered
+
 % Sections.
-\outer\def\numberedsec{\parsearg\secyyy}
-\def\secyyy#1{\numhead1{#1}} % normally calls seczzz
+\outer\defparsearg\numberedsec{\numhead1{#1}} % normally calls seczzz
 \def\seczzz#1{%
   \global\subsecno=0 \global\subsubsecno=0  \global\advance\secno by 1
   \sectionheading{#1}{sec}{Ynumbered}{\the\chapno.\the\secno}%
 }
 
-\outer\def\appendixsection{\parsearg\appendixsecyyy}
-\outer\def\appendixsec{\parsearg\appendixsecyyy}
-\def\appendixsecyyy#1{\apphead1{#1}} % normally calls appendixsectionzzz
+\outer\defparsearg\appendixsection{\apphead1{#1}} % normally calls appendixsectionzzz
 \def\appendixsectionzzz#1{%
   \global\subsecno=0 \global\subsubsecno=0  \global\advance\secno by 1
   \sectionheading{#1}{sec}{Yappendix}{\appendixletter.\the\secno}%
 }
+\let\appendixsec\appendixsection
 
-\outer\def\unnumberedsec{\parsearg\unnumberedsecyyy}
-\def\unnumberedsecyyy#1{\unnmhead1{#1}} % normally calls unnumberedseczzz
+\outer\defparsearg\unnumberedsec{\unnmhead1{#1}} % normally calls unnumberedseczzz
 \def\unnumberedseczzz#1{%
   \global\subsecno=0 \global\subsubsecno=0  \global\advance\secno by 1
   \sectionheading{#1}{sec}{Ynothing}{\the\unnumberedno.\the\secno}%
 }
 
 % Subsections.
-\outer\def\numberedsubsec{\parsearg\numberedsubsecyyy}
-\def\numberedsubsecyyy#1{\numhead2{#1}} % normally calls numberedsubseczzz
+\outer\defparsearg\numberedsubsec{\numhead2{#1}} % normally calls numberedsubseczzz
 \def\numberedsubseczzz#1{%
   \global\subsubsecno=0  \global\advance\subsecno by 1
   \sectionheading{#1}{subsec}{Ynumbered}{\the\chapno.\the\secno.\the\subsecno}%
 }
 
-\outer\def\appendixsubsec{\parsearg\appendixsubsecyyy}
-\def\appendixsubsecyyy#1{\apphead2{#1}} % normally calls appendixsubseczzz
+\outer\defparsearg\appendixsubsec{\apphead2{#1}} % normally calls appendixsubseczzz
 \def\appendixsubseczzz#1{%
   \global\subsubsecno=0  \global\advance\subsecno by 1
   \sectionheading{#1}{subsec}{Yappendix}%
                  {\appendixletter.\the\secno.\the\subsecno}%
 }
 
-\outer\def\unnumberedsubsec{\parsearg\unnumberedsubsecyyy}
-\def\unnumberedsubsecyyy#1{\unnmhead2{#1}} %normally calls unnumberedsubseczzz
+\outer\defparsearg\unnumberedsubsec{\unnmhead2{#1}} %normally calls unnumberedsubseczzz
 \def\unnumberedsubseczzz#1{%
   \global\subsubsecno=0  \global\advance\subsecno by 1
   \sectionheading{#1}{subsec}{Ynothing}%
@@ -3847,24 +3827,21 @@ width0pt\relax} \fi
 }
 
 % Subsubsections.
-\outer\def\numberedsubsubsec{\parsearg\numberedsubsubsecyyy}
-\def\numberedsubsubsecyyy#1{\numhead3{#1}} % normally numberedsubsubseczzz
+\outer\defparsearg\numberedsubsubsec{\numhead3{#1}} % normally numberedsubsubseczzz
 \def\numberedsubsubseczzz#1{%
   \global\advance\subsubsecno by 1
   \sectionheading{#1}{subsubsec}{Ynumbered}%
                  {\the\chapno.\the\secno.\the\subsecno.\the\subsubsecno}%
 }
 
-\outer\def\appendixsubsubsec{\parsearg\appendixsubsubsecyyy}
-\def\appendixsubsubsecyyy#1{\apphead3{#1}} % normally appendixsubsubseczzz
+\outer\defparsearg\appendixsubsubsec{\apphead3{#1}} % normally appendixsubsubseczzz
 \def\appendixsubsubseczzz#1{%
   \global\advance\subsubsecno by 1
   \sectionheading{#1}{subsubsec}{Yappendix}%
                  {\appendixletter.\the\secno.\the\subsecno.\the\subsubsecno}%
 }
 
-\outer\def\unnumberedsubsubsec{\parsearg\unnumberedsubsubsecyyy}
-\def\unnumberedsubsubsecyyy#1{\unnmhead3{#1}} %normally unnumberedsubsubseczzz
+\outer\defparsearg\unnumberedsubsubsec{\unnmhead3{#1}} %normally unnumberedsubsubseczzz
 \def\unnumberedsubsubseczzz#1{%
   \global\advance\subsubsecno by 1
   \sectionheading{#1}{subsubsec}{Ynothing}%
@@ -3922,14 +3899,11 @@ width0pt\relax} \fi
 }
 
 % @heading, @subheading, @subsubheading.
-\def\heading{\parsearg\doheading}
-\def\subheading{\parsearg\dosubheading}
-\def\subsubheading{\parsearg\dosubsubheading}
-\def\doheading#1{\sectionheading{#1}{sec}{Yomitfromtoc}{}
+\defparsearg\heading{\sectionheading{#1}{sec}{Yomitfromtoc}{}
   \suppressfirstparagraphindent}
-\def\dosubheading#1{\sectionheading{#1}{subsec}{Yomitfromtoc}{}
+\defparsearg\subheading{\sectionheading{#1}{subsec}{Yomitfromtoc}{}
   \suppressfirstparagraphindent}
-\def\dosubsubheading#1{\sectionheading{#1}{subsubsec}{Yomitfromtoc}{}
+\defparsearg\subsubheading{\sectionheading{#1}{subsubsec}{Yomitfromtoc}{}
   \suppressfirstparagraphindent}
 
 % These macros generate a chapter, section, etc. heading only
@@ -5471,8 +5445,7 @@ width0pt\relax} \fi
   \else \expandafter\parsemacbody
   \fi}
 
-\def\unmacro{\parsearg\dounmacro}
-\def\dounmacro#1{%
+\defparsearg\unmacro{%
   \if1\csname ismacro.#1\endcsname
     \global\cslet{#1}{macsave.#1}%
     \global\expandafter\let \csname ismacro.#1\endcsname=0%
@@ -5647,8 +5620,7 @@ width0pt\relax} \fi
 
 % @node's only job in TeX is to define \lastnode, which is used in
 % cross-references.
-\def\node{\ENVcheck\parsearg\nodezzz}
-\def\nodezzz#1{\nodexxx #1,\finishnodeparse}
+\defparsearg\node{\ENVcheck\nodexxx #1,\finishnodeparse}
 \def\nodexxx#1,#2\finishnodeparse{\gdef\lastnode{#1}}
 \let\nwnode=\node
 \let\lastnode=\empty
@@ -6176,8 +6148,7 @@ width0pt\relax} \fi
 % properly.  Single argument is the language abbreviation.
 % It would be nice if we could set up a hyphenation file here.
 %
-\def\documentlanguage{\parsearg\dodocumentlanguage}
-\def\dodocumentlanguage#1{%
+\defparsearg\documentlanguage{%
   \tex % read txi-??.tex file in plain TeX.
   % Read the file if it exists.
   \openin 1 txi-#1.tex
@@ -6371,8 +6342,7 @@ should work if nowhere else does.}
 % Perhaps we should allow setting the margins, \topskip, \parskip,
 % and/or leading, also. Or perhaps we should compute them somehow.
 %
-\def\pagesizes{\parsearg\pagesizesxxx}
-\def\pagesizesxxx#1{\pagesizesyyy #1,,\finish}
+\defparsearg\pagesizes{\pagesizesyyy #1,,\finish}
 \def\pagesizesyyy#1,#2,#3\finish{{%
   \setbox0 = \hbox{\ignorespaces #2}\ifdim\wd0 > 0pt \hsize=#2\relax \fi
   \globaldefs = 1
