@@ -1,3 +1,9 @@
+2003-04-25    <karl@gnu.org>
+
+	* makeinfo/defun.c (defun_internal): whitespace needed in docbook
+	output for deftype*.  From: José Fonseca
+	<j_r_fonseca@yahoo.co.uk>, 25 Apr 2003 13:07:13 +0100.
+
 2003-04-21    <karl@gnu.org>
 
 	* doc/texinfo.tex (\dofirstparagraphindent): forgot to rename the

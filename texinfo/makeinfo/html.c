@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.10 2003-04-20 21:55:50 karl Exp $
+   $Id: html.c,v 1.11 2003-04-26 12:38:12 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -80,15 +80,15 @@ rel=\"generator-home\">\n");
   /* This seems cleaner than adding <br>'s at the end of each line.
      It's not exactly the end of the world if the browser doesn't do
      <style>s, either; they'll just come out in typewriter.  */
-  add_word ("  pre.display { font-family: serif }\n");
-  add_word ("  pre.format  { font-family: serif }\n");
+  add_word ("  pre.display { font-family:inherit }\n");
+  add_word ("  pre.format  { font-family:inherit }\n");
 
   /* Alternatively, we could do <font size=-1> in insertion.c, but this
      way makes it easier to override.  */
-  add_word ("  pre.smalldisplay { font-size: smaller; font-family: serif }\n");
-  add_word ("  pre.smallformat  { font-size: smaller; font-family: serif }\n");
-  add_word ("  pre.smallexample { font-size: smaller }\n");
-  add_word ("  pre.smalllisp    { font-size: smaller }\n");
+  add_word ("  pre.smalldisplay { font-family:inherit; font-size:smaller }\n");
+  add_word ("  pre.smallformat  { font-family:inherit; font-size:smaller }\n");
+  add_word ("  pre.smallexample { font-size:smaller }\n");
+  add_word ("  pre.smalllisp    { font-size:smaller }\n");
   add_word ("--></style>\n");
 
   add_word ("</head>\n<body>\n");
