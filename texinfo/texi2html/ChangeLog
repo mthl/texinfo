@@ -1,3 +1,78 @@
+2003-02-06  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: some unused variables removed
+	use_acc not used anymore, accents are always handled
+	Remove a lot of global variables. Use global lexical or lexically
+	scoped variables (with my) when possible. Pass variables as arguments
+	when the function is in texi2html.init
+	bugfixes: frame target is the top file, and not the toc file
+	during pass1 some lines where pushed in @lines2 instead of @lines
+	* Tests/test.sh: ignore CVS directory when doing diffs
+	
+
+2003-02-03  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: Remove handling of setref which is a TeX macro. The 
+	corresponding texinfo macro is anchor.
+	Remove an unneeded protect_texi
+	* configure.in, Makefile.am, Tests/test.sh, Tests/Makefile.am Tests/*:
+	Files used for testing added, texinfo manuals and the html results for 
+	some of the texinfo manuals
+
+2003-01-30  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: fix nesting of multi line style macros (previously,
+	@kbd{@code{my
+	thing}}
+	became
+	<kbd>my thing<kbd><code></code> (or something approaching)
+	no style substitution is done in indexes (indexes are already good
+	html). Added %sec2index which is undef for a section name not in index,
+	1 if the section name is in index.
+	the value of $docu_doc set if $T2H_OUT was set (option -o) wasn't 
+	used to define docu_doc_file, thus the output file was the basename 
+	of the texinfo file with extension appended, and not $T2H_OUT.
+
+
+
+2003-01-28  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: fixes in the handling of characters which are 
+	special in html (&, "), involving some rewriting/replacements 
+	of other functions which were bugged
+	normalise_node now really uses protect_html
+	new function protect_space_style used to normalise nodes without
+	calling protect_html
+
+2003-01-24  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: fixes for @multitables:
+	size detection, elements out of bounds are ignored
+	@item and @tab may appear anywhere within table lines
+
+
+2003-01-22  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: Ref to info files are handled correctly
+	@ref{(perl)Top} is transformed into @ref{Top,,,perl}.
+	Any character is allowed in menu comments
+	In menu, lines begining with * which are not menu entries are allowed
+	and treated as comments
+	Added a style handle for @bullet (do_bullet) such that @bullet{text}
+	is handled
+	Cedilla are now accepted in node names. Added protect_cedilla and
+	unprotect_cedilla functions.
+	* texi2html.pl, texi2html.init: Add -test option which sets 
+	$T2H_TODAY $T2H_USER $THISPROG to given values. This is in order 
+	to be able to compare with reference files for testing purproses.
+
+2003-01-16  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: @H{a} is changed in a'' and not &aacute; which was 
+	wrong, as there are 2 acute accents on @H{a}.
+
+2003-01-09  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: Suppress warnings for undefined patterns or 
+	variables when running with -w
+
+2003-01-08  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.init: small typo in a french word corrected
+	* texi2html.pl: @dotless macros are processed before accents
+	constructs like @'{a} are handled, typo in variable names corrected
+
 2002-06-25  Derek Price  <oberon@umich.edu>
 
 	* texi2html.init, texi2html.pl:

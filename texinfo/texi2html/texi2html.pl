@@ -47,7 +47,6 @@ use vars qw(
             $BIBRE
             $CHAPTEREND
             $CHILDLINE
-            $Configure_failed
             $DEBUG
             $DEBUG_BIB
             $DEBUG_DEF
@@ -102,7 +101,6 @@ use vars qw(
             $T2H_BODYTEXT
             $T2H_BUTTONS
             $T2H_EXTRA_HEAD
-            $T2H_FAILURE_TEXT
             $T2H_HAS_TOP_HEADING
             $T2H_HOMEPAGE
             $T2H_ICONS
@@ -113,11 +111,9 @@ use vars qw(
             $T2H_TOC
             $T2H_TODAY
             $T2H_TOP
-            $T2H_USAGE_TEXT
             $T2H_USER
             $TEXDEFS
             $THISPROG
-            $THISVERSION
             $TITLE
             $TITLES_LANGUAGE
             $TMP
@@ -127,8 +123,6 @@ use vars qw(
             $WARN
             $WORDS_IN_NAVIGATION_PANEL_TITLES
             $WORDS_IN_PAGE
-            $about_body
-            $addr
             $after
             $before
             $bib_num
@@ -139,36 +133,12 @@ use vars qw(
             $contents
             $count
             $counter
-            $curlevel
             $d
-            $default_language
-            $deferred_ref
             $doc_num
             $docid
-            $docu
-            $docu_about
-            $docu_about_file
-            $docu_dir
-            $docu_doc
-            $docu_doc_file
-            $docu_ext
-            $docu_foot
-            $docu_foot_file
-            $docu_frame_file
-            $docu_name
-            $docu_rdir
-            $docu_stoc
-            $docu_stoc_file
-            $docu_toc
-            $docu_toc_file
-            $docu_toc_frame_file
-            $docu_top
-            $docu_top_file
             $done
-            $dont_html
             $dotbug
             $elt
-            $end_of_para
             $end_tag
             $entry
             $ext
@@ -177,7 +147,6 @@ use vars qw(
             $fh_name
             $file
             $first_index_chapter
-            $first_line
             $foot
             $foot_num
             $footid
@@ -186,23 +155,13 @@ use vars qw(
             $gloss_num
             $h_content
             $h_line
-            $has_top
-            $has_top_command
             $hcontent
-            $html_element
             $html_num
             $i
             $id
             $idx_num
             $in
-            $in_bibliography
-            $in_glossary
-            $in_html
-            $in_list
-            $in_pre
-            $in_table
             $in_titlepage
-            $in_top
             $index
             $index_properties
             $init_file
@@ -211,25 +170,11 @@ use vars qw(
             $key
             $keys
             $l
-            $l2h_cache_file
-            $l2h_cached_count
-            $l2h_extract_error
-            $l2h_html_count
-            $l2h_html_file
-            $l2h_latex_closing
-            $l2h_latex_count
-            $l2h_latex_file
-            $l2h_latex_preamble
-            $l2h_name
-            $l2h_prefix
-            $l2h_range_error
-            $l2h_to_latex_count
             $l_l2h
             $latex_file
             $len
             $letter
             $level
-            $macros
             $man
             $match
             $maximage
@@ -249,16 +194,12 @@ use vars qw(
             $prev_node
             $previous
             $progdir
-            $re
-            $reused
-            $root
             $sec_num
             $section
             $string
             $style
             $sub
             $subst_code
-            $table_type
             $tag
             $texi_style
             $to_do
@@ -266,7 +207,6 @@ use vars qw(
             $toplevel
             $type
             $url
-            $use_acc
             $use_bibliography
             $what
             %T2H_ACTIVE_ICONS
@@ -285,10 +225,7 @@ use vars qw(
             %format_map
             %gloss2href
             %idx2node
-            %l2h_cache
             %l2h_img
-            %l2h_to_latex
-            %macros
             %node2href
             %node2next
             %node2prev
@@ -319,19 +256,11 @@ use vars qw(
             @doc_lines
             @fhs
             @foot_lines
-            @html_stack
             @input_spool
-            @l2h_from_html
-            @l2h_to_latex
-            @lines
             @lines2
             @lines3
             @normal_sec_num
             @sections
-            @nodes_and_anchors
-            @stoc_lines
-            @tables
-            @toc_lines
            );
 
 #++##############################################################################
@@ -344,7 +273,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.21 2003-02-03 15:33:23 pertusus Exp $
+# $Id: texi2html.pl,v 1.22 2003-02-06 11:52:31 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -360,7 +289,7 @@ Send bugs and suggestions to <users\@texi2html.cvshome.org>
 EOT
 
 # Version: set in configure.in
-$THISVERSION = '@T2H_VERSION@';
+my $THISVERSION = '@T2H_VERSION@';
 $THISPROG = "texi2html $THISVERSION"; # program name and version
 
 # The man page for this program is included at the end of this file and can be
@@ -401,6 +330,14 @@ require "$ENV{T2H_HOME}/MySimple.pm"
         -e "$ENV{T2H_HOME}/MySimple.pm" && -r "$ENV{T2H_HOME}/MySimple.pm");
 
 package main;
+
+#+++############################################################################
+#                                                                              #
+# Prototypes                                                                   #
+#                                                                              #
+#---############################################################################
+
+sub check();
 
 #+++############################################################################
 #                                                                              #
@@ -769,15 +706,15 @@ $| = 1;
 
 %value = ();                    # hold texinfo variables, see also -D
 $use_bibliography = 1;
-$use_acc = 1;
 
 #
 # called on -init-file
 sub LoadInitFile
 {
-    my $init_file = shift;
+    # First argument is option
+    shift;
     # second argument is value of options
-    $init_file = shift;
+    my $init_file = shift;
     if (-f $init_file)
     {
         print "# reading initialization file from $init_file\n"
@@ -818,11 +755,12 @@ $T2H_OBSOLETE_OPTIONS -> {'no-section_navigation'} =
  verbose => 'obsolete, use -nosec_nav',
  noHelp => 2,
 };
+my $use_acc; # not used
 $T2H_OBSOLETE_OPTIONS -> {use_acc} =
 {
  type => '!',
  linkage => \$use_acc,
- verbose => 'obsolete',
+ verbose => 'obsolete, set to true unconditionnaly',
  noHelp => 2
 };
 $T2H_OBSOLETE_OPTIONS -> {expandinfo} =
@@ -894,7 +832,7 @@ $T2H_OBSOLETE_OPTIONS -> {verbose} =
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc
 my $home = $ENV{HOME};
 defined($home) or $home = '';
-foreach $i ('@sysconfdir@/texi2htmlrc', "$home/.texi2htmlrc")
+foreach my $i ('@sysconfdir@/texi2htmlrc', "$home/.texi2htmlrc")
 {
     if (-f $i)
     {
@@ -910,19 +848,19 @@ foreach $i ('@sysconfdir@/texi2htmlrc', "$home/.texi2htmlrc")
 # parse command-line options
 #                                                                              #
 #---############################################################################
-$T2H_USAGE_TEXT = <<EOT;
+my $T2H_USAGE_TEXT = <<EOT;
 Usage: texi2html  [OPTIONS] TEXINFO-FILE
 Translates Texinfo source documentation to HTML.
 EOT
-$T2H_FAILURE_TEXT = <<EOT;
+my $T2H_FAILURE_TEXT = <<EOT;
 Try 'texi2html -help' for usage instructions.
 EOT
-$options = new Getopt::MySimple;
+my $options = new Getopt::MySimple;
 
 # some older version of GetOpt::Long don't have
 # Getopt::Long::Configure("pass_through")
 eval {Getopt::Long::Configure("pass_through");};
-$Configure_failed = $@ && <<EOT;
+my $Configure_failed = $@ && <<EOT;
 **WARNING: Parsing of obsolete command-line options could have failed.
            Consider to use only documented command-line options (run
            'texi2html -help 2' for a complete list) or upgrade to perl
@@ -949,7 +887,7 @@ if (@ARGV > 1)
 if ($T2H_CHECK)
 {
     die "Need file to check\n$T2H_FAILURE_TEXT" unless @ARGV > 0;
-    &check;
+    check();
     exit;
 }
 
@@ -976,8 +914,20 @@ $T2H_INVISIBLE_MARK = '<img src="invisible.xbm" alt="">' if $T2H_INVISIBLE_MARK 
 #
 # file name buisness
 #
+
+my $docu_dir;            # directory of the document
+my $docu_name;           # basename of the document
+my $docu_rdir;           # directory for the output
+my $docu_ext = "html";   # extension
+my $docu_toc;            # document's table of contents
+my $docu_stoc;           # document's short toc
+my $docu_foot;           # document's footnotes
+my $docu_about;          # about this document
+my $docu_top;            # document top
+my $docu_doc;            # current document
+
 die "Need exactly one file to translate\n$T2H_FAILURE_TEXT" unless @ARGV == 1;
-$docu = shift(@ARGV);
+my $docu = shift(@ARGV);
 if ($docu =~ /.*\//)
 {
     chop($docu_dir = $&);
@@ -989,7 +939,7 @@ else
     $docu_name = $docu;
 }
 unshift(@T2H_INCLUDE_DIRS, $docu_dir);
-$docu_name =~ s/\.te?x(i|info)?$//; # basename of the document
+$docu_name =~ s/\.te?x(i|info)?$//;
 $docu_name = $T2H_PREFIX if ($T2H_PREFIX);
 
 # subdir
@@ -1034,10 +984,6 @@ if ($T2H_SHORTEXTN)
 {
     $docu_ext = "htm";
 }
-else
-{
-    $docu_ext = "html";
-}
 if ($T2H_TOP_FILE =~ /\..*$/)
 {
     $T2H_TOP_FILE = $`.".$docu_ext";
@@ -1060,10 +1006,10 @@ else
 $docu_doc = "$docu_name.$docu_ext"; # document's contents
 if ($T2H_SPLIT)
 {
-    $docu_toc   = $T2H_TOC_FILE || "${docu_name}_toc.$docu_ext"; # document's table of contents
-    $docu_stoc  = "${docu_name}_ovr.$docu_ext"; # document's short toc
-    $docu_foot  = "${docu_name}_fot.$docu_ext"; # document's footnotes
-    $docu_about = "${docu_name}_abt.$docu_ext"; # about this document
+    $docu_toc   = $T2H_TOC_FILE || "${docu_name}_toc.$docu_ext"; 
+    $docu_stoc  = "${docu_name}_ovr.$docu_ext"; 
+    $docu_foot  = "${docu_name}_fot.$docu_ext";
+    $docu_about = "${docu_name}_abt.$docu_ext";
     $docu_top   = $T2H_TOP_FILE || $docu_doc;
 }
 else
@@ -1075,16 +1021,16 @@ else
     }
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
-$docu_doc_file = "$docu_rdir$docu_doc";
 
-$docu_toc_file  = "$docu_rdir$docu_toc";
-$docu_stoc_file = "$docu_rdir$docu_stoc";
-$docu_foot_file = "$docu_rdir$docu_foot";
-$docu_about_file = "$docu_rdir$docu_about";
-$docu_top_file  = "$docu_rdir$docu_top";
+my $docu_doc_file = "$docu_rdir$docu_doc";
+my $docu_toc_file  = "$docu_rdir$docu_toc";
+my $docu_stoc_file = "$docu_rdir$docu_stoc";
+my $docu_foot_file = "$docu_rdir$docu_foot";
+my $docu_about_file = "$docu_rdir$docu_about";
+my $docu_top_file  = "$docu_rdir$docu_top";
 
-$docu_frame_file =     "$docu_rdir${docu_name}_frame.$docu_ext";
-$docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame.$docu_ext";
+my $docu_frame_file =     "$docu_rdir${docu_name}_frame.$docu_ext";
+my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame.$docu_ext";
 
 #
 # variables
@@ -1160,7 +1106,6 @@ if ($progdir && ($progdir ne './'))
     }
 }
 
-
 print "# reading from $docu\n" if $T2H_VERBOSE;
 
 #########################################################################
@@ -1173,17 +1118,13 @@ print "# reading from $docu\n" if $T2H_VERBOSE;
 # 3) FromHtml: Extract generated code and images from latex2html run
 #
 
-##########################
-# default settings
-#
+# init l2h defaults for files and names
 
-# defaults for files and names
+my ($l2h_name, $l2h_latex_file, $l2h_cache_file, $l2h_html_file, $l2h_prefix);
 
-sub l2h_Init
+if ($T2H_L2H)
 {
-    local($root) = @_;
-    return 0 unless ($root);
-    $l2h_name =  "${root}_l2h";
+    $l2h_name =  "${docu_name}_l2h";
     $l2h_latex_file = "$docu_rdir${l2h_name}.tex";
     $l2h_cache_file = "${docu_rdir}l2h_cache.pm";
     $T2H_L2H_L2H = "latex2html" unless ($T2H_L2H_L2H);
@@ -1191,9 +1132,7 @@ sub l2h_Init
     # as dir of enclosing html document --
     $l2h_html_file = "$docu_rdir${l2h_name}.html";
     $l2h_prefix = "${l2h_name}_";
-    return 1;
 }
-
 
 ##########################
 #
@@ -1203,7 +1142,7 @@ sub l2h_Init
 # Finish with: l2h_FinishToLatex
 #
 
-$l2h_latex_preamble = <<EOT;
+my $l2h_latex_preamble = <<EOT;
 % This document was automatically generated by the l2h extenstion of texi2html
 % DO NOT EDIT !!!
 \\documentclass{article}
@@ -1211,14 +1150,21 @@ $l2h_latex_preamble = <<EOT;
 \\begin{document}
 EOT
 
-$l2h_latex_closing = <<EOT;
+my $l2h_latex_closing = <<EOT;
 \\end{document}
 EOT
+
+my %l2h_to_latex = ();
+my @l2h_to_latex = ();
+my $l2h_latex_count = 0;
+my $l2h_to_latex_count = 0;
+my $l2h_cached_count = 0;
+my %l2h_cache = ();
+$T2H_L2H = l2h_InitToLatex() if ($T2H_L2H);
 
 # return used latex 1, if l2h could be initalized properly, 0 otherwise
 sub l2h_InitToLatex
 {
-    %l2h_to_latex = ();
     unless ($T2H_L2H_SKIP)
     {
         unless (open(L2H_LATEX, ">$l2h_latex_file"))
@@ -1231,11 +1177,9 @@ sub l2h_InitToLatex
     }
     # open database for caching
     l2h_InitCache();
-    $l2h_latex_count = 0;
-    $l2h_to_latex_count = 0;
-    $l2h_cached_count = 0;
     return  1;
 }
+
 
 # print text (1st arg) into latex file (if not already there), return
 # HTML commentary which can be later on replaced by the latex2html
@@ -1279,7 +1223,7 @@ sub l2h_ToLatex
 # print closing into latex file and close it
 sub l2h_FinishToLatex
 {
-    local ($reused);
+    my ($reused);
     $reused = $l2h_to_latex_count - $l2h_latex_count - $l2h_cached_count;
     unless ($T2H_L2H_SKIP)
     {
@@ -1306,7 +1250,7 @@ sub l2h_FinishToLatex
 #
 sub l2h_ToHtml
 {
-    local($call, $ext, $root, $dotbug);
+    local($call, $ext, $dotbug);
     if ($T2H_L2H_SKIP)
     {
         print "# l2h: skipping latex2html run\n" if ($T2H_VERBOSE);
@@ -1380,6 +1324,10 @@ sub getcwd
 # Finish with: l2h_FinishFromHtml
 #   closes $l2h_html_dir/$l2h_name.".$docu_ext"
 
+my $l2h_extract_error = 0;
+my $l2h_range_error = 0;
+my @l2h_from_html;
+
 sub l2h_InitFromHtml
 {
     local($h_line, $h_content, $count, %l2h_img);
@@ -1391,7 +1339,7 @@ sub l2h_InitFromHtml
     }
     print "# l2h: use ${l2h_html_file} as html file\n" if ($T2H_VERBOSE);
 
-    $l2h_html_count = 0;
+    my $l2h_html_count = 0;
     while ($h_line = <L2H_HTML>)
     {
         if ($h_line =~ /^<!-- l2h_begin $l2h_name ([0-9]+) -->/)
@@ -1467,7 +1415,7 @@ sub l2h_ExtractFromHtml
         $T2H_L2H = 0;
         $_ = $l2h_to_latex{$count};
         $_ = &substitute_style($_);
-        &unprotect_texi;
+        $_ = &unprotect_texi($_);
         $_ = "<!-- l2h: ". __LINE__ . " use texi2html -->" . $_
             if ($T2H_DEBUG & $DEBUG_L2H);
         $T2H_L2H = $l_l2h;
@@ -1620,51 +1568,16 @@ sub l2h_ToCache
 # Pass 1: read source, handle command, variable, simple substitution           #
 #                                                                              #
 #---############################################################################
-sub pass1
-{
-    my $name;
-    my $line;
-    @lines = ();                # whole document
-    @toc_lines = ();            # table of contents
-    @stoc_lines = ();           # table of contents
-    @nodes_and_anchors = ();    # all nodes and anchors
-    $curlevel = 0;              # current level in TOC
-    $node = '';                 # current node name
-    $node_next = '';            # current node next name
-    $node_prev = '';            # current node prev name
-    $node_up = '';              # current node up name
-    $in_table = 0;              # am I inside a table 
-              # holds the command used to format entries for tables
-              # for multitable, in_table is like: $table_width:$current_column
-              # $current_column == 0 if there was no line
-    $table_type = '';           # type of table ('', 'f', 'v', 'multi')
-    @tables = ();               # nested table support
-    $in_bibliography = 0;       # am I inside a bibliography
-    $in_glossary = 0;           # am I inside a glossary
-    $in_top = 0;                # am I inside the top node
-    $has_top = 0;               # did I see a top node?
-    $has_top_command = 0;       # did I see @top for automatic pointers?
-    $in_pre = 0;                # am I inside a preformatted section
-    $in_list = 0;               # am I inside a list
-    $in_html = 0;               # am I inside an HTML section
-    $first_line = 1;            # is it the first line
-    $dont_html = 0;             # don't protect HTML on this line
-    $deferred_ref = '';         # deferred reference for indexes
-    @html_stack = ();           # HTML elements stack
-    $html_element = '';         # current HTML element
-    &html_reset;
-    %macros = ();               # macros
 
-    # init l2h
-    $T2H_L2H = &l2h_Init($docu_name) if ($T2H_L2H);
-    $T2H_L2H = &l2h_InitToLatex      if ($T2H_L2H);
-
-    # build code for simple substitutions
-    # the maps used (%simple_map and %things_map) MUST be aware of this
-    # watch out for regexps, / and escaped characters!
-    $subst_code = '';
+# build code for simple substitutions
+# the maps used (%simple_map and %things_map) MUST be aware of this
+# watch out for regexps, / and escaped characters!
+sub build_simple_substitutions ()
+{    
+    my $subst_code = '';
     foreach (keys(%simple_map))
     {
+        my $re;
         ($re = $_) =~ s/(\W)/\\$1/g; # protect regexp chars
         $subst_code .= "s/\\\@$re/$simple_map{$_}/g;\n";
     }
@@ -1672,37 +1585,73 @@ sub pass1
     {
         $subst_code .= "s/\\\@$_\\{\\}/$things_map{$_}/g;\n";
     }
-    if ($use_acc)
+    # first remove dotless command
+    $subst_code .= "s/\\\@dotless\\{([a-z])\\}/\${1}/gi;\n";
+    # then substitute accentuated characters
+    foreach (keys(%accent_map))
     {
-        # first remove dotless command
-        $subst_code .= "s/\\\@dotless\\{([a-z])\\}/\${1}/gi;\n";
-        # accentuated characters
-        foreach (keys(%accent_map))
+        my $subst_command;
+        if ($_ eq "`")
         {
-            my $subst_command;
-            if ($_ eq "`")
-            {
-                $subst_command .= "s/$;3";
-            }
-            elsif ($_ eq "'")
-            {
-                $subst_command .= "s/$;4";
-            }
-            elsif ($_ eq '"')
-            {
-                $subst_command .= "s/$;5";
-            }
-            else
-            {
-                $subst_command .= "s/\\\@\\$_";
-            }
-            $subst_code .= $subst_command ."([a-z])/&\${1}$accent_map{$_};/gi;\n";
-            $subst_code .= $subst_command ."{([a-z])}/&\${1}$accent_map{$_};/gi;\n";
+            $subst_command .= "s/$;3";
         }
+        elsif ($_ eq "'")
+        {
+            $subst_command .= "s/$;4";
+        }
+        elsif ($_ eq '"')
+        {
+            $subst_command .= "s/$;5";
+        }
+        else
+        {
+            $subst_command .= "s/\\\@\\$_";
+        }
+        $subst_code .= $subst_command ."([a-z])/&\${1}$accent_map{$_};/gi;\n";
+        $subst_code .= $subst_command ."{([a-z])}/&\${1}$accent_map{$_};/gi;\n";
     }
     eval("sub simple_substitutions { $subst_code }");
+}
 
+my $has_top = 0;            # did I see a top node?
+my $has_top_command = 0;    # did I see @top for automatic pointers?
+my @html_stack = ();        # HTML elements stack
+my $html_element = '';      # current HTML element
+
+my @lines = ();             # whole document
+my @toc_lines = ();            # table of contents
+my @stoc_lines = ();           # table of contents
+
+sub pass1
+{
+    my $name;
+    my @nodes_and_anchors = (); # all nodes and anchors
+    my $curlevel = 0;           # current level in TOC
+    my $node = '';              # current node name
+    my $node_next = '';         # current node next name
+    my $node_prev = '';         # current node prev name
+    my $node_up = '';           # current node up name
+    my $in_table = 0;           # am I inside a table 
+              # holds the command used to format entries for tables ;
+              # for multitable, in_table is like: $table_width:$current_column
+              # $current_column == 0 if there was no line
+    my $table_type = '';        # type of table ('', 'f', 'v', 'multi')
+    my @tables = ();            # nested table support
+    my $in_bibliography = 0;    # am I inside a bibliography
+    my $in_glossary = 0;        # am I inside a glossary
+    my $in_top = 0;             # am I inside the top node
+    my $in_pre = 0;             # am I inside a preformatted section
+    my $in_list = 0;            # am I inside a list
+    my $in_html = 0;            # am I inside an HTML section
+    my $first_line = 1;         # is it the first line
+    my $dont_html = 0;          # don't protect HTML on this line
+    #my %macros = ();           # macros #FIXME: really unused ?
+    my $macros;                 # macros. reference on a hash
+
+    &html_reset;
+    build_simple_substitutions();
     &init_input;
+
  INPUT_LINE: while ($_ = &next_line)
     {
         #
@@ -1957,7 +1906,7 @@ sub pass1
                 ($node, $node_next, $node_prev, $node_up) = &unprotect_cedilla (@nodes);
                 if ($node)
                 {
-                    &normalise_node($node);
+                    $node = &normalise_node($node);
                     if (grep {$node eq $_} @nodes_and_anchors)
                     {
                         warn "$ERROR Duplicate node found: $node\n"
@@ -1974,15 +1923,15 @@ sub pass1
                 }
                 if ($node_next)
                 {
-                    &normalise_node($node_next);
+                    $node_next = &normalise_node($node_next);
                 }
                 if ($node_prev)
                 {
-                    &normalise_node($node_prev);
+                    $node_prev = &normalise_node($node_prev);
                 }
                 if ($node_up)
                 {
-                    &normalise_node($node_up);
+                    $node_up = &normalise_node($node_up);
                 }
                 push @lines, &html_debug("<a name=\"".'NODE_'.$node."\"></a>\n", __LINE__);
                 next;
@@ -2068,7 +2017,7 @@ sub pass1
                 {
                     if ($html_element eq 'p')
                     {
-                        push (@lines2, &debug("</p>\n", __LINE__));
+                        push (@lines, &debug("</p>\n", __LINE__));
                         &html_pop();
                     }
                 }
@@ -2330,7 +2279,7 @@ sub pass1
                 while (/\{([^\{\}]*)\}/)
                 {
                     # this is a {} construct
-                    ($before, $contents, $after) = ($`, $1, $');
+                    my ($before, $contents, $after) = ($`, $1, $');
                     # protect spaces
                     $contents =~ s/\s+/$;9/g;
                     # restore $_ protecting {}
@@ -2420,22 +2369,22 @@ sub pass1
                 $name = &unprotect_html($name);
                 if ($tag eq 'deffn' || $tag eq 'deftypefn')
                 {
-                    EnterIndexEntry('f', $name, $docu_doc, $section, \@lines);
+                    EnterIndexEntry('f', $name, $docu_doc, $section, \@lines, $in_pre);
                     #		unshift(@input_spool, "\@findex $name\n");
                 }
                 elsif ($tag eq 'defop')
                 {
-                    EnterIndexEntry('f', "$name on $ftype", $docu_doc, $section, \@lines);
+                    EnterIndexEntry('f', "$name on $ftype", $docu_doc, $section, \@lines, $in_pre);
                     #		unshift(@input_spool, "\@findex $name on $ftype\n");
                 }
                 elsif ($tag eq 'defvr' || $tag eq 'deftypevr' || $tag eq 'defcv')
                 {
-                    EnterIndexEntry('v', $name, $docu_doc, $section, \@lines);
+                    EnterIndexEntry('v', $name, $docu_doc, $section, \@lines, $in_pre);
                     #		unshift(@input_spool, "\@vindex $name\n");
                 }
                 else
                 {
-                    EnterIndexEntry('t', $name, $docu_doc, $section, \@lines);
+                    EnterIndexEntry('t', $name, $docu_doc, $section, \@lines, $in_pre);
                     #		unshift(@input_spool, "\@tindex $name\n");
                 }
                 $dont_html = 1;
@@ -2558,12 +2507,12 @@ sub pass1
         # index entry generation, after value substitutions
         if (/^\@(\w+?)index\s+/)
         {
-            EnterIndexEntry($1, $', $docu_doc, $section, \@lines);
+            EnterIndexEntry($1, $', $docu_doc, $section, \@lines, $in_pre);
             next;
         }
         #
         # protect texi and HTML things
-        &protect_texi;
+        $_ = &protect_texi($_);
         $_ = &protect_html($_) unless $dont_html;
         $dont_html = 0;
         # substitution (unsupported things)
@@ -2775,7 +2724,7 @@ sub pass1
                         push(@lines, &html_debug('', __LINE__));
                     }
                     # update DOC
-                    foreach $line (split(/\n+/, $_))
+                    foreach my $line (split(/\n+/, $_))
                     {
                         push(@lines, "$line\n");
                     }
@@ -2841,7 +2790,7 @@ sub pass1
                             push(@lines, &debug("<dt>", __LINE__));
                             &html_push('dt');
                         }
-                        EnterIndexEntry($table_type, $what, $docu_doc, $section, \@lines);
+                        EnterIndexEntry($table_type, $what, $docu_doc, $section, \@lines, $in_pre);
                     }
                     # APA: End paragraph, if any.
                     if ($html_element eq 'p')
@@ -2887,11 +2836,6 @@ sub pass1
                         &html_push('li') unless $html_element eq 'li';
                     }
                     push(@lines, &html_debug('', __LINE__));
-                    if ($deferred_ref)
-                    {
-                        push(@lines, &debug("$deferred_ref\n", __LINE__));
-                        $deferred_ref = '';
-                    }
                     next;
                 }
                 elsif (/^\@tab\s+(.*)$/)
@@ -2947,13 +2891,14 @@ sub EnterIndexEntry
     my $docu_doc = shift;
     my $section = shift;
     my $lines = shift;
+    my $in_pre = shift;
     local $_;
 
     warn "$ERROR Undefined index command: $_", next
         unless (exists ($index_properties->{$prefix}));
     $key =~ s/\s+$//;
     $_ = $key;
-    &protect_texi;
+    $_ = &protect_texi($_);
     $key = $_;
     $_ = &protect_html($_);
     my $html_key = substitute_style($_);
@@ -2961,7 +2906,7 @@ sub EnterIndexEntry
     $key = remove_style($key);
     $key = remove_things($key);
     $_ = $key;
-    &unprotect_texi;
+    $_ = &unprotect_texi($_);
     $key = $_;
     while (exists $index->{$prefix}->{$key})
     {
@@ -3275,12 +3220,13 @@ sub PrintIndex
 # Pass 2/3: handle style, menu, index, cross-reference                         #
 #                                                                              #
 #---############################################################################
+my @lines2 = ();               # whole document (2nd pass)
+my @lines3 = ();               # whole document (3rd pass)
+
 sub pass2
 {
     my $sec;
     my $href;
-    @lines2 = ();               # whole document (2nd pass)
-    @lines3 = ();               # whole document (3rd pass)
     my $in_menu = 0;            # am I inside a menu
     my $in_menu_listing;
 
@@ -3683,13 +3629,15 @@ sub pass3
 # Pass 4: foot notes, final cleanup                                            #
 #                                                                              #
 #---############################################################################
+
+my @foot_lines = ();           # footnotes
+my @doc_lines = ();            # final document
+
 sub pass4
 {
     my $text;
     my $name;
-    @foot_lines = ();           # footnotes
-    @doc_lines = ();            # final document
-    $end_of_para = 0;           # true if last line is <p>
+    my $end_of_para = 0;        # true if last line is <p>
 
     # APA: There aint no paragraph before the first one!
     # This fixes a HTML validation error.
@@ -3801,7 +3749,7 @@ sub pass5
     for $key (keys %T2H_THISDOC)
     {
         $_ = &substitute_style($T2H_THISDOC{$key});
-        &unprotect_texi;
+        $_ = &unprotect_texi ($_);
         s/\s*$//;
         $T2H_THISDOC{$key} = $_;
     }
@@ -3892,13 +3840,13 @@ sub pass5
         open(FILE, "> $docu_frame_file")
             || die "$ERROR: Can't open $docu_frame_file for writing: $!\n";
         print "# Creating frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
-        &$T2H_print_frame(\*FILE);
+        &$T2H_print_frame(\*FILE, $docu_toc_frame_file, $docu_top_file);
         close(FILE);
 
         open(FILE, "> $docu_toc_frame_file")
             || die "$ERROR: Can't open $docu_toc_frame_file for writing: $!\n";
         print "# Creating toc frame in $docu_frame_file ...\n" if $T2H_VERBOSE;
-        &$T2H_print_toc_frame(\*FILE);
+        &$T2H_print_toc_frame(\*FILE, \@stoc_lines);
         close(FILE);
     }
 
@@ -4121,7 +4069,7 @@ sub pass5
         &$T2H_print_Overview(\*FILE);
         close(FILE) if $T2H_SPLIT;
     }
-
+    my $about_body;
     if ($about_body = &$T2H_about_body())
     {
         print "# writing About in $docu_about_file...\n" if $T2H_VERBOSE;
@@ -4173,7 +4121,7 @@ sub clean_name
 {
     local ($_);
     $_ = &remove_style($_[0]);
-    &unprotect_texi;
+    $_ = &unprotect_texi($_);
     return $_;
 }
 
@@ -4328,9 +4276,10 @@ sub Node2FastForward
     return $node2next{$node};
 }
 
-sub check
+sub check()
 {
-    local($_, %seen, %context, $before, $match, $after);
+    local($_);
+    my (%seen, %context);
 
     while (<>)
     {
@@ -4343,6 +4292,7 @@ sub check
         }
         if (/\@(\w+)/)
         {
+            my ($before, $match, $after);
             ($before, $match, $after) = ($`, $&, $');
             if ($before =~ /\b[-\w]+$/ && $after =~ /^[-\w.]*\b/)
             {                   # e-mail address
@@ -4522,39 +4472,39 @@ sub debug
 sub SimpleTexi2Html
 {
     return undef unless (defined ($_[0]));
-    local $_ = $_[0];
-    &protect_texi;
+    local $_ = shift;
+    $_ = &protect_texi($_);
     $_ = &protect_html($_);
     $_ = substitute_style($_);
-    $_[0]  = $_;
+    return $_;
 }
 
 sub normalise_node
 {
     return undef unless (defined ($_[0]));
-    local $_ = $_[0];
-    &normalise_space ($_);
-    &SimpleTexi2Html ($_);
-    $_[0]  = $_;
+    local $_ = shift;
+    $_ = &normalise_space ($_);
+    $_ = &SimpleTexi2Html ($_);
+    return $_;
 }
-
+ 
 sub normalise_space
 {
     return undef unless (defined ($_[0]));
-    local $_ = $_[0];
+    local $_ = shift;
     s/\s+/ /go;
     s/ $//;
     s/^ //;
-    $_[0]  = $_;
+    return $_;
 }
 
 sub normalise_space_style
 {
     return undef unless (defined ($_[0]));
-    local $_ = $_[0];
-    &normalise_space ($_);
+    local $_ = shift;
+    $_ = &normalise_space ($_);
     $_ = substitute_style($_);
-    $_[0]  = $_;
+    return $_;
 }
 
 sub menu_entry
@@ -4562,7 +4512,7 @@ sub menu_entry
     my ($node, $name, $descr) = @_;
     my ($href, $entry);
 
-    &normalise_space_style($node);
+    $node = &normalise_space_style($node);
     $href = $node2href{$node};
     if ($href)
     {
@@ -4837,7 +4787,7 @@ sub t2h_print_lines
         }
         else
         {
-            &unprotect_texi;
+            $_ =  &unprotect_texi ($_);
         }
         print $fh $_;
         @cnt = split(/\W*\s+\W*/);
@@ -4857,12 +4807,14 @@ sub protect_cedilla
 sub protect_texi
 {
     # protect @ { } ` '
-    s/\@\@/$;0/go;
-    s/\@\{/$;1/go;
-    s/\@\}/$;2/go;
-    s/\@\`/$;3/go;
-    s/\@\'/$;4/go;
-    s/\@\"/$;5/go;
+    my $text = shift;
+    $text =~ s/\@\@/$;0/go;
+    $text =~ s/\@\{/$;1/go;
+    $text =~ s/\@\}/$;2/go;
+    $text =~ s/\@\`/$;3/go;
+    $text =~ s/\@\'/$;4/go;
+    $text =~ s/\@\"/$;5/go;
+    return $text;
 }
 
 sub protect_html
@@ -4894,18 +4846,20 @@ sub unprotect_cedilla
 
 sub unprotect_texi
 {
-    s/$;0/\@/go;
-    s/$;1/\{/go;
-    s/$;2/\}/go;
-    s/$;3/\`/go;
-    s/$;4/\'/go;
-    s/$;5/\"/go;
+    my $text = shift;
+    $text =~ s/$;0/\@/go;
+    $text =~ s/$;1/\{/go;
+    $text =~ s/$;2/\}/go;
+    $text =~ s/$;3/\`/go;
+    $text =~ s/$;4/\'/go;
+    $text =~ s/$;5/\"/go;
+    return $text;
 }
 
 sub Unprotect_texi
 {
     local $_ = shift;
-    &unprotect_texi;
+    $_ = &unprotect_texi($_);
     return($_);
 }
 

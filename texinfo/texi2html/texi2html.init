@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.11 2003-01-22 18:50:06 pertusus Exp $
+# $Id: texi2html.init,v 1.12 2003-02-06 11:52:31 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -1149,17 +1149,20 @@ sub T2H_DEFAULT_print_navigation
 ######################################################################
 # Frames: this is from "Richard Y. Kim" <ryk@coho.net>
 # Should be improved to be more conforming to other _print* functions
+# FIXME pass toc_file and main_file as args or in $T2H_THISDOC ?
 
 sub T2H_DEFAULT_print_frame
 {
     my $fh = shift;
+    my $toc_file = shift;
+    my $main_file = shift;
     print $fh <<EOT;
 $T2H_FRAMESET_DOCTYPE
 <html>
 <head><title>$T2H_THISDOC{title}</title></head>
 <frameset cols="140,*">
-  <frame name="toc" src="$docu_toc_frame_file">
-  <frame name="main" src="$docu_doc">
+  <frame name="toc" src="$toc_file">
+  <frame name="main" src="$main_file">
 </frameset>
 </html>
 EOT
@@ -1168,11 +1171,12 @@ EOT
 sub T2H_DEFAULT_print_toc_frame
 {
     my $fh = shift;
+    my $stoc_lines = shift;
     &$T2H_print_page_head($fh);
     print $fh <<EOT;
 <h2>Content</h2>
 EOT
-    print $fh map {s/\bhref=/target="main" href=/; $_;} @stoc_lines;
+    print $fh map {s/\bhref=/target="main" href=/; $_;} @$stoc_lines;
     print $fh "</body></html>\n";
 }
 
@@ -1428,9 +1432,6 @@ $LINE_WIDTH = 500;
 
 # Used in conjunction with AUTO_NAVIGATION
 $WORDS_IN_PAGE = 300;
-
-# Affects ONLY the way accents are processed
-$default_language = 'english';
 
 # The value of this variable determines how many words to use in each
 # title that is added to the navigation panel (see below)
