@@ -4,6 +4,9 @@
 
 	* Makefile.am (EXTRA_DIST): add onceonly.m4.
 
+	* makeinfo/tests/accentenc: must discard stderr since we expect
+	two errors in this case.
+
 	* makeinfo/makeinfo.c (main): new option --css-include.
 	(usage): add to --help message.
 	* makeinfo/makeinfo.h (css_include): new global.
