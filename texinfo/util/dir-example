@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.5 2002-10-09 16:19:41 karl Exp $
+$Id: dir-example,v 1.6 2002-11-07 22:04:20 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -52,6 +52,9 @@ GNU Packages
 * UUCP: (uucp).                 Copying between machines, offline.
 * Wdiff: (wdiff).               Word-by-word comparison.
 * Wget: (wget).                 URL download.
+
+Text creation and manipulation
+* sed: (sed).                   Stream EDitor.
 
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
