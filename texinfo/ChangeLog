@@ -1,5 +1,7 @@
 2003-11-08  Karl Berry  <karl@gnu.org>
 
+        * doc/texinfo.txi (registeredsymbol): new node.
+        
 	* doc/Makefile.am (HELP2MAN): invoke explicitly from $(srcdir), in
 	case . is not in PATH.
 
