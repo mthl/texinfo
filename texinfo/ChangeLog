@@ -1,3 +1,11 @@
+2004-11-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\pdfmakeoutlines): in the first run through the
+	toc, define \thischapnum...\thissubsecnum as 0, rather than \empty.
+	This is so \expnumber doesn't end up trying to expand
+	\csname sec\empty\endcsname, i.e., \sec, which is the secant function.
+	Report from: Oliver Beck, help-texinfo, 8 Nov 2004 08:05:55 +0100.
+
 2004-11-07  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (main) [LC_MESSAGES]: #ifdef the setlocale
