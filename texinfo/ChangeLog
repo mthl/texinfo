@@ -1,3 +1,18 @@
+2002-10-21    <karl@gnu.org>
+
+	* automake 1.7.1.
+
+2002-10-18    <karl@gnu.org>
+
+	* doc/texinfo.tex (\defname): get rid of the unused
+	 \deftypemargin; typeset the function type word flush right, in
+	 brackets.  Partially suggested by bob.
+
+2002-10-16    <karl@gnu.org>
+
+	* makeinfo/html.c: Just > after all on <meta> and <link> to
+	appease HTML 4.01 (and break XHTML).  From Janis.
+
 2002-10-15    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.2b.
