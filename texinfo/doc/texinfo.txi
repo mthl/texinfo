@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
+@c $Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -167,7 +167,7 @@ the menu lists all the lower level nodes in the document.
 * Catching Mistakes::             How to find formatting mistakes.
 * Copying This Manual::           The GNU Free Documentation License.
 * Command and Variable Index::    A menu containing commands and variables.
-* Concept Index::                 A menu covering many topics.
+* General Index::                 A menu covering many topics.
 
 @detailmenu
  --- The Detailed Node Listing ---
@@ -3760,7 +3760,7 @@ For example, the master menu for this manual looks like the following
 @end group
 @group
 * Command and Variable Index::
-* Concept Index::
+* General Index::
 @end group
 
 @group
@@ -18534,7 +18534,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
+$Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18600,7 +18600,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.136 2005-03-05 22:15:02 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -20586,8 +20586,8 @@ commands are listed without their preceding @samp{@@}.@refill
 @printindex fn
 
 
-@node Concept Index
-@unnumbered Concept Index
+@node General Index
+@unnumbered General Index
 
 @printindex cp
 
