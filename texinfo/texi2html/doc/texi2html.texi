@@ -25,7 +25,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: texi2html.texi,v 1.1.1.1 2001-04-29 07:23:19 dprice Exp $
+@c $Id: texi2html.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -158,13 +158,14 @@ Cover art by Etienne Suvasa.
 @contents
 @c
 @ifnottex
-@node Top
+@node Top, Overview, (dir), (dir)
 @top Texi2html
 @c @page
 @c ========================================================
 @c @node Top, Overview, (dir), (dir)
 @c @top
 @c @chapter About
+
 This Manual (Edition @value{MANUAL_ED}, last updated at
 @value{MANUAL_UPD}) describes the @command{texi2html} Perl
 script which converters
@@ -426,7 +427,7 @@ Take a look at optionexpand.
 @appendixsec Variable Index
 @printindex vr
 @c --------------------------------------------------------
-@node Indexcp,, Indexvr, Top
+@node Indexcp, , Indexvr, Top
 @appendixsec Concept Index
 @printindex cp
 @c printindex init file options dito.

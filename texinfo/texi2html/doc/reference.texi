@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: reference.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: reference.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -46,7 +46,7 @@
 @c (texi2html.pl)
 @c You can use it. (On Windows? On Unix ?)
 @c --------------------------------------------------------
-@node Refptocframe,,, Reference
+@node Refptocframe,Refpphead,,Reference
 @appendixsec Print ToC Frame
 
 
@@ -58,7 +58,7 @@ What does it do? Which parameters it needs etc.
 
 
 @c --------------------------------------------------------
-@node Refpphead,,, Reference
+@node Refpphead,,Refptocframe,Reference
 @appendixsec Print Page Head
 @defun T2H_DEFAULT_print_page_head (FileName)
 @sp 1

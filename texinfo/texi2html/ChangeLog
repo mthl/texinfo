@@ -1,3 +1,172 @@
+2001-01-20  Adrian Aichner  <adrian@xemacs.org>
+
+	* INTRODUCTION (http): Typo fixes.
+	* texi2html.init (T2H_DEFAULT_print_toc_frame): Improve wording.
+	* texi2html.pl: Avoid newlines around URL in $T2H_HOMEPAGE.
+	* texi2html.pl (pass1): Remove incorrect "node is undefined ..."
+	warnings (as pointed out by larry.jones@sdrc.com (Larry Jones) in
+	<200011152253.RAA16633@thor.sdrc.com>.
+	* texi2html.pl (Sec2PrevNode): Fix bug of calculating next node
+	instead of previous.
+	* texi2html.pl (main): Provide Windows NT workaround for $T2H_USER
+	until getpwuid gets implemented there.
+
+2000-11-15  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.pl: Comment out warnings pragma which, according to
+	larry.jones@sdrc.com (Larry Jones), is not available in
+	perl5.004_02.
+
+2000-11-12  Adrian Aichner  <adrian@xemacs.org>
+
+	* doc/custhtml.texi: Fix @node and @menu commands according to
+	feedback from makeinfo and texi2html, which reports undefined
+	nodes now.
+	* doc/custhtml.texi (CustHTMLBody): Ditto.
+	* doc/custhtml.texi (CustHTMLBodyText): Ditto.
+	* doc/custhtml.texi (CustHTMLAfterBody): Ditto.
+	* doc/custpage.texi: Ditto.
+	* doc/custpage.texi (TipsNewDesign): Ditto.
+	* doc/custpage.texi (CustPagePhil): Ditto.
+	* doc/custpage.texi (CustPagePhilNav): Ditto.
+	* doc/custpage.texi (CustPageMiscPage): Ditto.
+	* doc/custpage.texi (CustPagePageHeadToc): Ditto.
+	* doc/custpage.texi (CustPagePageHead): Ditto.
+	* doc/initfile.texi: Ditto.
+	* doc/initfile.texi (InitFileBasics): Ditto.
+	* doc/reference.texi: Ditto.
+	* doc/reference.texi (Refptocframe): Ditto.
+	* doc/stamp-vti: Updated.
+	* doc/texi2html.texi: Ditto.
+	* doc/texi2html.texi (Top): Ditto.
+	* doc/texi2html.texi (Indexvr): Ditto.
+	* doc/version.texi: Ditto.
+
+
+2000-11-12  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.init: Re-format file according to M-x cperl-set-style
+	RET C++ RET.  Following subs are affected by re-indentatition and
+	bug fixes due to use of warnings pragma.
+	* texi2html.init (T2H_DEFAULT_print_section):
+	* texi2html.init (T2H_DEFAULT_print_Top_header):
+	* texi2html.init (T2H_DEFAULT_print_Top):
+	* texi2html.init (T2H_DEFAULT_print_misc_header):
+	* texi2html.init (T2H_DEFAULT_print_misc):
+	* texi2html.init (T2H_DEFAULT_print_chapter_header):
+	* texi2html.init (T2H_DEFAULT_print_chapter_footer):
+	* texi2html.init (T2H_InitGlobals):
+	* texi2html.init (T2H_DEFAULT_print_page_head):
+	* texi2html.init (T2H_DEFAULT_print_page_foot):
+	* texi2html.init (T2H_DEFAULT_print_foot_navigation):
+	* texi2html.init (T2H_DEFAULT_button_icon_img):
+	* texi2html.init (T2H_DEFAULT_print_navigation):
+	* texi2html.init (T2H_DEFAULT_print_frame):
+	* texi2html.init (T2H_DEFAULT_print_toc_frame):
+	* texi2html.init (T2H_DEFAULT_about_body):
+	* texi2html.pl: Re-format file according to M-x cperl-set-style
+	RET C++ RET.  Add pragma:
+	use warnings;
+	Following subs are affected by re-indentatition and bug fixes due
+	to use of warnings pragma.
+	* texi2html.pl (LoadInitFile):
+	* texi2html.pl (SetDocumentLanguage):
+	* texi2html.pl (l2h_Init):
+	* texi2html.pl (l2h_InitToLatex):
+	* texi2html.pl (l2h_ToLatex):
+	* texi2html.pl (l2h_FinishToLatex):
+	* texi2html.pl (l2h_ToHtml):
+	* texi2html.pl (getcwd):
+	* texi2html.pl (l2h_InitFromHtml):
+	* texi2html.pl (l2h_FromHtml):
+	* texi2html.pl (l2h_ExtractFromHtml):
+	* texi2html.pl (l2h_Finish):
+	* texi2html.pl (l2h_InitCache):
+	* texi2html.pl (l2h_StoreCache):
+	* texi2html.pl (l2h_FromCache):
+	* texi2html.pl (l2h_ToCache):
+	* texi2html.pl (pass1):
+	* texi2html.pl (EnterIndexEntry):
+	* texi2html.pl (IndexName2Prefix):
+	* texi2html.pl (GetIndexEntries):
+	* texi2html.pl (byAlpha):
+	* texi2html.pl (GetIndexPages):
+	* texi2html.pl (GetIndexSummary):
+	* texi2html.pl (PrintIndexPage):
+	* texi2html.pl (PrintIndex):
+
+2000-11-05  Adrian Aichner  <adrian@xemacs.org>
+
+	* MySimple.pm (getOptions): Correct typo found with "use strict;".
+	* texi2html.init: Convert from dynamically to lexically scoped
+	variables.
+	* texi2html.init (pretty_date): Ditto.  This sub is defined in
+	texi2html.pl as well!
+	* texi2html.pl: Ditto.
+	* texi2html.pl (l2h_FromHtml): Ditto.
+	* texi2html.pl (pass1): Ditto.
+	* texi2html.pl (pass2): Ditto.
+	* texi2html.pl (pass3): Ditto.
+	* texi2html.pl (pass4): Ditto.
+	* texi2html.pl (update_sec_num): Ditto.
+	* texi2html.pl (open): Ditto.
+	* texi2html.pl (next_line): Ditto.
+	* texi2html.pl (html_debug): Ditto.
+	* texi2html.pl (debug): Ditto.
+	* texi2html.pl (do_email): Ditto.
+	* texi2html.pl (do_math): Ditto.
+	* texi2html.pl (do_uref): Ditto.
+	* texi2html.pl (apply_style): Ditto.
+	* texi2html.pl (substitute_style): Ditto, except $_.
+	* texi2html.pl (t2h_anchor): Ditto.
+	* texi2html.pl (pretty_date): Ditto.  This sub is defined in
+	texi2html.init as well!
+
+2000-11-05  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.pl (pass1): Generate valid HTML for <a name=...>
+	anchors produced for @itemx?.
+
+2000-11-05  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.init: Eliminate bare-word use of variable T2H_OPTIONS.
+
+2000-11-05  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.pl: Use strict pragma to detect potential bugs.
+	Declare local variables (currently 396!).  Fix HTML syntax in
+	$complex_format_map.  Eliminate bare-word use of variables
+	(eg. use $T2H_LANG instead of T2H_LANG).
+	* texi2html.pl (GetIndexSummary): Remove <br> after <table>.
+	* texi2html.pl (Sec2NextNode): Re-write section-number regexp for
+	readability and to make cperl-mode happy.
+	* texi2html.pl (Sec2PrevNode): Ditto.
+	* texi2html.pl (main): New sub encapsulating top-level code.
+	* texi2html.pl (pass1): Ditto.  Re-write texinfo comment regexp
+	for readability and to make cperl-mode happy.  End HTML <p> before
+	@printindex, <dl>, and </dl>.
+	* texi2html.pl (pass2): Ditto.  Quote <table> attributes.
+	* texi2html.pl (pass3): Ditto.
+	* texi2html.pl (pass4): Ditto.  Remove </p> before first paragraph!
+	* texi2html.pl (pass5): Ditto.
+	* texi2html.pl (open): Use no strict "refs" to allow symbolic
+	reference.
+	* texi2html.pl (apply_style): Ditto.
+
+2000-11-04  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.init ($T2H_DOCTYPE): Add SystemLiteral to identify the
+	canonical DTD.
+	* texi2html.init (T2H_DEFAULT_about_body): Fix HTML syntax of
+	Subsubsection One-Two-Three example.
+	* texi2html.pl: Close HTML <p> before HTML <table> and HTML
+	<dl>.  Correct handling of texinfo menu comment lines.
+	* texi2html.pl (protect_html): Simplify.  This subroutine was way
+	too smart!  Use Character entity references (eg &lt;) instead of
+	Numeric character references (eg. &#60).
+	* texi2html.pl (unprotect_html): Use Character entity references
+	(eg &lt;) instead of Numeric character references (eg. &#60).
+
 2000-09-14  Eric Sunshine  <sunshine@sunshineco.com>
 
 	* doc/Makefile.in: Added missing doc/Makefile.in since its absence

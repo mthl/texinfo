@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.1.1.1 2001-04-29 07:23:10 dprice Exp $
+# $Id: MySimple.pm,v 1.2 2001-05-01 14:43:48 dprice Exp $
 
 # use strict;
 # no strict 'refs';
@@ -105,7 +105,7 @@ sub getOptions
 	  { 
 	   type => '', 
 	   default => '',
-	   linkage => sub {print $self->{'versionText'};  exit (0) if versionTheExit;},
+	   linkage => sub {print $self->{'versionText'};  exit (0) if $versionThenExit;},
 	   verbose => "print version and exit"
 	  };
 	}

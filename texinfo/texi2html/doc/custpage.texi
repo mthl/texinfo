@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: custpage.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: custpage.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -51,12 +51,13 @@ c) Section pages@*
 @menu
 * TipsNewDesign::           .
 * CustPagePhil::            .
+* CustPagePhilNav::         .
 * CustPageTopPage::         .
 * CustPageSectionPages::    .
 * CustPageMiscPage::        .
 @end menu
 @c --------------------------------------------------------
-@node TipsNewDesign
+@node TipsNewDesign,CustPagePhil,CustomizingPage,CustomizingPage
 @section Tips how to create a new site design
 
 Here you can find information how you should work to pick
@@ -64,26 +65,26 @@ up a new design with @command{texi2html}.
 
 
 @c --------------------------------------------------------
-@node CustPagePhil
+@node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
 @section Page Layout and the philosophy
 
 @menu
 * CustPagePhilNav:: Navigation panels.
 @end menu
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePhilNav
+@node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
 @subsection Navigation panels
 
 Head and foot Navigation panels.
 
 @c --------------------------------------------------------
-@node CustPageTopPage
+@node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
 @section Top Page
 @c --------------------------------------------------------
-@node CustPageSectionPages
+@node CustPageSectionPages,CustPageMiscPage,CustPageTopPage,CustomizingPage
 @section Section Pages
 @c --------------------------------------------------------
-@node CustPageMiscPage
+@node CustPageMiscPage,CustPagePageHeadToc,CustPageSectionPages,CustomizingPage
 @section Misc pages
 Here you can find information about the creation of the
 @dfn{ToC} (@i{Table Of content}), About---Page
@@ -100,7 +101,7 @@ design.
 @end menu
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageHeadToc,,,CustPageMiscPage
+@node CustPagePageHeadToc,CustPagePageHead,CustPageMiscPage,CustPageMiscPage
 @subsection Table Of Contents
 
 The following code is the original code out of the
@@ -125,7 +126,7 @@ be changed more or less simple to fit you requirements
 
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageHead,,,CustPageMiscPage
+@node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
 @subsection Page header
 Page Head @code{T2H_DEFAULT_print_page_head}
 
@@ -161,7 +162,7 @@ EOT
 @end example
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageFoot,,,CustPageMiscPage
+@node CustPagePageFoot, ,CustPagePageHead,CustPageMiscPage
 @subsection Page footer
 
 Page Foot @code{T2H_DEFAULT_print_page_foot}

@@ -30,7 +30,7 @@ system. The general synopsis of 'texi2html' is
 Without any options, this will create the file <docname>.html where 
 <docname> is the basename of your texinfo files.
 
-See the beginning of the file 'texi2html.init' for explainations of
+See the beginning of the file 'texi2html.init' for explanations of
 command-line options and their default values, or run 'texi2html -h'
 for a short overview of the most important options.
 
@@ -47,15 +47,15 @@ options; with later settings overriding earlier ones.
 The default initialisation options are defined in the
 'texi2html.init' file contained in the Texi2html distribution (in
 fact, 'make' pastes this file into beginning of texi2html.pl and
-generates this way the  actual 'texi2html' script.).
+generates the actual 'texi2html' script this way.).
 
 To customize 'texi2html' it is best if you copy the appropriate
 sections from the 'texi2html.init' file into an appropriate local
 initialization file, make the necessary changes there, and then have
-'texi2html' read this inialization file by one of the means described
+'texi2html' read this initialisation file by one of the means described
 above.
 
-For an example on what you can produces with 'texi2html' have a look
+For an example on what you can produce with 'texi2html' have a look
 at the following sites:
 
 * http://www.singular.uni-kl.de/Manual/html/
@@ -67,7 +67,7 @@ Documentation of texi2html
 ==========================
 The texi2html Texinfo manual is not complete, yet (we are working on
 it). In any case, you might want to have a look at the comments in the
-'texi2html.init' file for explainations about customizable parameters
+'texi2html.init' file for explanations about customizable parameters
 and at the (not up-to-date) texi2html man page for an overview of
 texi2html's synopsis.
 

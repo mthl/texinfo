@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: custhtml.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: custhtml.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -52,11 +52,14 @@ needed steps.
 @c examples.
 
 @menu
-* CustHTMLBody::      Customizing BODY Text.
-* CustHTMLHead::      Customizing Head.
+* CustHTMLBody::        Customizing BODY Text.
+* CustHTMLHead::        Customizing Head.
+* CustHTMLBodyText::    Customizing Head.
+* CustHTMLPreBodyText:: Customizing Head.
+* CustHTMLAfterBody::   Customizing Head.
 @end menu
 @c --------------------------------------------------------
-@node CustHTMLBody,,,CustHTML
+@node CustHTMLBody,CustHTMLBodyText,,CustHTML
 @section Body
 
 @menu
@@ -65,7 +68,7 @@ needed steps.
 * CustHTMLAfterBody::   After Body Text.
 @end menu
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLBodyText
+@node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
 @subsection Body Text
 
 
@@ -82,10 +85,10 @@ If you like to change the basic color combination, you can
 change the entry @var{T2H_BODYTEXT}.
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLPreBodyText
+@node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
 @subsection Body Text
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLAfterBody
+@node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
 @subsection After Body Text
 
 @vindex T2H_AFTER_BODY_OPEN
@@ -124,5 +127,5 @@ Detailed information can be found at
 @end example
 
 @c --------------------------------------------------------
-@node CustHTMLHead,,,CustHTML
+@node CustHTMLHead,,CustHTMLAfterBody,CustHTML
 @section Head

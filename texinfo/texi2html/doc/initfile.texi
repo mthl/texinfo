@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: initfile.texi,v 1.1.1.1 2001-04-29 07:23:18 dprice Exp $
+@c $Id: initfile.texi,v 1.2 2001-05-01 14:43:48 dprice Exp $
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -55,7 +55,7 @@
 @end menu
 
 @c --------------------------------------------------------
-@node InitFileBasics,,InitFile,InitFile
+@node InitFileBasics,InitFileGlobal,InitFile,InitFile
 @section The basics about init files
 
 Initialization options are read first from
@@ -84,13 +84,13 @@ For an example on what you can produces with
 
 
 @c --------------------------------------------------------
-@node InitFileGlobal,,,InitFile
+@node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
 @section Global initialization file
 @c --------------------------------------------------------
-@node InitFileUser,,,InitFile
+@node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
 @section User initialization file
 @c --------------------------------------------------------
-@node InitFileLoad,,,InitFile
+@node InitFileLoad,,InitFileUser,InitFile
 @section Loadable initialization file
 @opindex init_file
 @option{-init_file}
