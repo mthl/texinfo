@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.5 2002-10-31 16:49:56 karl Exp $
+   $Id: texindex.c,v 1.6 2002-11-05 19:33:07 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002 Free Software Foundation, Inc.
@@ -1126,20 +1126,20 @@ parsefile (filename, nextline, data, size)
       *line = p;
 
       /* Find the first letter of the first field of this line.  If it
-	 is different from the first letter of the first field of the
-	 first line, we need initial headers in the output index.  */
+         is different from the first letter of the first field of the
+         first line, we need initial headers in the output index.  */
       while (*p && *p != '{')
-	p++;
+        p++;
       if (p == end)
-	return 0;
+        return 0;
       p++;
       if (first_initial)
-	{
-	  if (first_initial != toupper (*p))
-	    need_initials = 1;
-	}
+        {
+          if (first_initial != toupper (*p))
+            need_initials = 1;
+        }
       else
-	first_initial = toupper (*p);
+        first_initial = toupper (*p);
       
       while (*p && *p != '\n')
         p++;
@@ -1281,8 +1281,8 @@ indexify (line, ostream)
       /* If this primary has a different initial, include an entry for
          the initial. */
       if (need_initials &&
-	  (initiallength != lastinitiallength ||
-	   strncmp (initial, lastinitial, initiallength)))
+          (initiallength != lastinitiallength ||
+           strncmp (initial, lastinitial, initiallength)))
         {
           fprintf (ostream, "\\initial {");
           fwrite (initial, 1, initiallength, ostream);

@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.6 2002-10-25 22:51:47 adl Exp $
+# $Id: texi2dvi,v 1.7 2002-11-05 19:35:21 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.6 $'
+rcs_revision='$Revision: 1.7 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.2) $rcs_version
@@ -86,7 +86,7 @@ escape='\'
 expand=         # t for expansion via makeinfo
 miincludes=     # makeinfo include path
 oformat=dvi
-oname=		# --output
+oname=          # --output
 quiet=          # by default let the tools' message be displayed
 set_language=
 textra=
@@ -376,13 +376,13 @@ for command_line_filename in ${1+"$@"}; do
     case $dir in
       EMPTY)
         TEXINPUTS=$TEXINPUTS$path_sep
-	;;
-      [\\/]* | ?:[\\/]*)	# Absolute paths don't need to be expansed.
+        ;;
+      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expansed.
         TEXINPUTS=$TEXINPUTS$path_sep$dir
-	;;
+        ;;
       *)
         abs=`cd "$dir" && pwd` && TEXINPUTS=$TEXINPUTS$path_sep$abs
-	;;
+        ;;
     esac
   done
   set x $INDEXSTYLE; shift
@@ -391,13 +391,13 @@ for command_line_filename in ${1+"$@"}; do
     case $dir in
       EMPTY)
         INDEXSTYLE=$INDEXSTYLE$path_sep
-	;;
-      [\\/]* | ?:[\\/]*)	# Absolute paths don't need to be expansed.
+        ;;
+      [\\/]* | ?:[\\/]*)        # Absolute paths don't need to be expansed.
         INDEXSTYLE=$INDEXSTYLE$path_sep$dir
-	;;
+        ;;
       *)
         abs=`cd "$dir" && pwd` && INDEXSTYLE=$INDEXSTYLE$path_sep$abs
-	;;
+        ;;
     esac
   done
   IFS=$save_IFS
