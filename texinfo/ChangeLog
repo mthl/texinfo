@@ -1,5 +1,10 @@
 2003-11-25  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/float.c (cm_listoffloats): generate a menu for Info, with
+	automatically shortened captions.
+
+2003-11-25  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c (cm_acronym): use acronym element for HTML.
 	Report from: Torsten Bronger <bronger@physik.rwth-aachen.de>
 	Tue, 25 Nov 2003 10:30:52 +0100.

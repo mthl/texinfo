@@ -1,5 +1,5 @@
 /* float.c -- float environment functions.
-   $Id: float.c,v 1.3 2003-11-24 14:40:12 dirt Exp $
+   $Id: float.c,v 1.4 2003-11-25 12:05:49 dirt Exp $
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -142,7 +142,7 @@ cm_listoffloats ()
       if (html)
         add_word ("<div class=\"listoffloats\">\n");
       else if (!no_headers)
-        add_word ("* Menu:\n\n");
+        insert_string ("* Menu:\n\n");
 
       while (temp)
         {
@@ -155,6 +155,50 @@ cm_listoffloats ()
                   execute_string ("@ref{%s, %s %s}", temp->id, temp->number,
                       temp->title);
                   add_word ("<br>\n");
+                }
+              else if (!no_headers)
+                {
+                  char *entry;
+                  char *title = expansion (temp->title, 0);
+                  int len = 5 + strlen (temp->number) + strlen (title);
+                  int shortened = 0;
+                  int i = 0;
+
+                  /* Shorten long titles by looking for a space before the 45.
+                     char.  */
+                  if (len > 45)
+                    {
+                      len = 45 - strlen (temp->number) - 5;
+                      shortened = 1;
+                      while (title[len] != ' ')
+                        len--;
+                      len += strlen (temp->number) + 9;
+                    }
+
+                  entry = xmalloc (len);
+                  if (shortened)
+                    len -= 5;
+
+                  snprintf (entry, len, "* %s %s", temp->number, title);
+
+                  if (shortened)
+                    strcat (entry, " ...");
+                  strcat (entry, ":");
+
+                  insert_string (entry);
+
+                  i = strlen (entry);
+                  while (i < 60)
+                    {
+                      insert (' ');
+                      i++;
+                    }
+
+                  insert_string (temp->id);
+                  insert ('\n');
+
+                  free (entry);
+                  free (title);
                 }
               else
                 {
