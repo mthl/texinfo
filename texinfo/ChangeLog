@@ -1,5 +1,9 @@
 2004-12-14  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (inforef): try to explain possible uses more
+	thoroughly.
+	From: Luc Teirlinck, 13 Dec 2004 21:45:58 -0600.
+
 	* doc/texinfo.txi (pxref): more explanation.
 	* doc/info-stnd.texi (Basic Windows): put pxref in parens.
 	help-texinfo mail from adl, 13 Dec 2004 17:07:50 +0100.

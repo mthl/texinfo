@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
+@c $Id: texinfo.txi,v 1.126 2004-12-14 17:21:53 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6416,10 +6416,12 @@ location breaks up the flow of reading.
 @cindex References using @code{@@inforef}
 @findex inforef
 
-@code{@@inforef} is used for cross references to Info files for which
-there are no printed manuals.  Even in a printed manual,
-@code{@@inforef} generates a reference directing the user to look in
-an Info file.@refill
+@code{@@inforef} is used for making cross references to Info
+documents---even from a printed manual.  This might be because you
+want to refer to conditional @code{@@ifinfo} text
+(@pxref{Conditionals}), or because printed output is not available
+(perhaps because there is no Texinfo source), among other
+possibilities.
 
 The command takes either two or three arguments, in the following
 order:@refill
@@ -6449,7 +6451,7 @@ The template is:
 
 @need 800
 @noindent
-Thus,
+For example,
 
 @example
 @group
@@ -6460,7 +6462,7 @@ for more information.
 
 @need 800
 @noindent
-produces
+produces (in Info):
 
 @example
 @group
@@ -6471,41 +6473,18 @@ for more information.
 
 @need 800
 @noindent
-and
+and (in the printed output):
 
 @quotation
 See Info file @file{info}, node @samp{Advanced}, for more information.
 @end quotation
 
-@need 800
-@noindent
-Similarly,
-
-@example
-@group
-@@inforef@{Advanced, , info@}, for more information.
-@end group
-@end example
-
-@need 800
-@noindent
-produces
-
-@example
-*Note (info)Advanced::, for more information.
-@end example
-
-@need 800
-@noindent
-and
-
-@quotation
-See Info file @file{info}, node @samp{Advanced}, for more information.
-@end quotation
+(This particular example is not realistic, since the Info manual is
+written in Texinfo, so all formats are available.)
 
 The converse of @code{@@inforef} is @code{@@cite}, which is used to
 refer to printed works for which no Info form exists.  @xref{cite, ,
-@code{@@cite}}.@refill
+@code{@@cite}}.
 
 
 @node uref
@@ -18456,7 +18435,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
+$Id: texinfo.txi,v 1.126 2004-12-14 17:21:53 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18522,7 +18501,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.125 2004-12-14 16:58:15 karl Exp $
+@comment $Id: texinfo.txi,v 1.126 2004-12-14 17:21:53 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
