@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.4 2002-11-06 00:39:38 karl Exp $
+   $Id: infodoc.c,v 1.5 2002-11-06 00:40:08 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
    Foundation, Inc.
@@ -227,7 +227,7 @@ dump_map_to_message_buffer (prefix, map)
           if (last - 1 != i)
             {
               printf_to_message_buffer ("%s .. ", pretty_keyseq (new_prefix));
-	      new_prefix[prefix_len] = last - 1;
+              new_prefix[prefix_len] = last - 1;
               printf_to_message_buffer ("%s\t", pretty_keyseq (new_prefix));
               i = last - 1;
             }
@@ -330,29 +330,29 @@ create_internal_info_help_node (help_is_only_window_p)
           InfoCommand *cmd = DocInfoCmd(&function_doc_array[i]);
 
           if (InfoFunction(cmd) != info_do_lowercase_version
-	      && !where_is_internal (info_keymap, cmd)
+              && !where_is_internal (info_keymap, cmd)
               && !where_is_internal (echo_area_keymap, cmd))
             {
               if (!printed_one_mx)
                 {
                   printf_to_message_buffer ("---------------------\n\n");
-		  if (exec_keys && exec_keys[0])
-		      printf_to_message_buffer
-			(_("The following commands can only be invoked via %s:\n\n"), exec_keys);
-		  else
-		      printf_to_message_buffer
-			(_("The following commands cannot be invoked at all:\n\n"));
+                  if (exec_keys && exec_keys[0])
+                      printf_to_message_buffer
+                        (_("The following commands can only be invoked via %s:\n\n"), exec_keys);
+                  else
+                      printf_to_message_buffer
+                        (_("The following commands cannot be invoked at all:\n\n"));
                   printed_one_mx = 1;
                 }
 
               printf_to_message_buffer
                 ("%s %s\n     %s\n",
-		 exec_keys,
+                 exec_keys,
                  function_doc_array[i].func_name,
                  replace_in_documentation (strlen (function_doc_array[i].doc)
-					   ? _(function_doc_array[i].doc)
-					   : "")
-		);
+                                           ? _(function_doc_array[i].doc)
+                                           : "")
+                );
 
             }
         }
@@ -662,7 +662,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
               return;
             }
 
-	  *k++ = '\e';
+          *k++ = '\e';
           keystroke = UnMeta (keystroke);
           map = (Keymap)map[ESC].function;
         }
@@ -687,28 +687,28 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
           char *keyname, *message, *fundoc, *funname = "";
 
 #if defined (INFOKEY)
-	  /* If the key is bound to do-lowercase-version, but its
-	     lower-case variant is undefined, say that this key is
-	     also undefined.  This is especially important for unbound
-	     edit keys that emit an escape sequence: it's terribly
-	     confusing to see a message "Home (do-lowercase-version)"
-	     or some such when Home is unbound.  */
-	  if (InfoFunction(map[keystroke].function) == info_do_lowercase_version)
-	    {
-	      unsigned char lowerkey = Meta_p(keystroke)
-				       ? Meta (tolower (UnMeta (keystroke)))
-				       : tolower (keystroke);
+          /* If the key is bound to do-lowercase-version, but its
+             lower-case variant is undefined, say that this key is
+             also undefined.  This is especially important for unbound
+             edit keys that emit an escape sequence: it's terribly
+             confusing to see a message "Home (do-lowercase-version)"
+             or some such when Home is unbound.  */
+          if (InfoFunction(map[keystroke].function) == info_do_lowercase_version)
+            {
+              unsigned char lowerkey = Meta_p(keystroke)
+                                       ? Meta (tolower (UnMeta (keystroke)))
+                                       : tolower (keystroke);
 
-	      if (map[lowerkey].function == (InfoCommand *)NULL)
-		{
-		  message_in_echo_area (_("%s is undefined."),
-					pretty_keyseq (keys));
-		  return;
-		}
-	    }
+              if (map[lowerkey].function == (InfoCommand *)NULL)
+                {
+                  message_in_echo_area (_("%s is undefined."),
+                                        pretty_keyseq (keys));
+                  return;
+                }
+            }
 #endif
 
-	  keyname = pretty_keyseq (keys);
+          keyname = pretty_keyseq (keys);
 
 #if defined (NAMED_FUNCTIONS)
           funname = function_name (map[keystroke].function);
@@ -879,7 +879,7 @@ strrpbrk (s, f)
     {
       for (t = f; *t; t++)
         if (*e == *t)
-	  return (char *)e;
+          return (char *)e;
     }
   return NULL;
 }
@@ -906,146 +906,146 @@ replace_in_documentation (string, help_is_only_window_p)
 
       /* Is this the start of a replaceable function name? */
       if (string[i] == '\\')
-      	{
-	  char *fmt = NULL;
-	  unsigned min = 0;
-	  unsigned max = 0;
+        {
+          char *fmt = NULL;
+          unsigned min = 0;
+          unsigned max = 0;
 
-	  if(string[j] == '%')
-	    {
-	      if (string[++j] == '-')
-		j++;
-	      if (isdigit(string[j]))
-		{
-		  min = atoi(string + j);
-		  while (isdigit(string[j]))
-		    j++;
-		  if (string[j] == '.' && isdigit(string[j + 1]))
-		    {
-		      j += 1;
-		      max = atoi(string + j);
-		      while (isdigit(string[j]))
-			j++;
-		    }
-		  fmt = (char *)xmalloc (j - i + 2);
-		  strncpy (fmt, string + i + 1, j - i);
-		  fmt[j - i - 1] = 's';
-		  fmt[j - i] = '\0';
-		}
-	      else
-		j = i + 1;
-	    }
-	  if (string[j] == '[')
-	    {
-	      unsigned arg = 0;
-	      char *argstr = NULL;
-	      char *rep_name, *fun_name, *rep;
-	      InfoCommand *command;
-	      char *repstr = NULL;
-	      unsigned replen;
+          if(string[j] == '%')
+            {
+              if (string[++j] == '-')
+                j++;
+              if (isdigit(string[j]))
+                {
+                  min = atoi(string + j);
+                  while (isdigit(string[j]))
+                    j++;
+                  if (string[j] == '.' && isdigit(string[j + 1]))
+                    {
+                      j += 1;
+                      max = atoi(string + j);
+                      while (isdigit(string[j]))
+                        j++;
+                    }
+                  fmt = (char *)xmalloc (j - i + 2);
+                  strncpy (fmt, string + i + 1, j - i);
+                  fmt[j - i - 1] = 's';
+                  fmt[j - i] = '\0';
+                }
+              else
+                j = i + 1;
+            }
+          if (string[j] == '[')
+            {
+              unsigned arg = 0;
+              char *argstr = NULL;
+              char *rep_name, *fun_name, *rep;
+              InfoCommand *command;
+              char *repstr = NULL;
+              unsigned replen;
 
-	      /* Copy in the old text. */
-	      strncpy (result + next, string + start, i - start);
-	      next += (i - start);
-	      start = j + 1;
+              /* Copy in the old text. */
+              strncpy (result + next, string + start, i - start);
+              next += (i - start);
+              start = j + 1;
 
-	      /* Look for an optional numeric arg. */
-	      i = start;
-	      if (isdigit(string[i])
-		  || (string[i] == '-' && isdigit(string[i + 1])) )
-		{
-		  arg = atoi(string + i);
-		  if (string[i] == '-')
-		    i++;
-		  while (isdigit(string[i]))
-		    i++;
-		}
-	      start = i;
+              /* Look for an optional numeric arg. */
+              i = start;
+              if (isdigit(string[i])
+                  || (string[i] == '-' && isdigit(string[i + 1])) )
+                {
+                  arg = atoi(string + i);
+                  if (string[i] == '-')
+                    i++;
+                  while (isdigit(string[i]))
+                    i++;
+                }
+              start = i;
 
-	      /* Move to the end of the function name. */
-	      for (i = start; string[i] && (string[i] != ']'); i++);
+              /* Move to the end of the function name. */
+              for (i = start; string[i] && (string[i] != ']'); i++);
 
-	      rep_name = (char *)xmalloc (1 + i - start);
-	      strncpy (rep_name, string + start, i - start);
-	      rep_name[i - start] = '\0';
+              rep_name = (char *)xmalloc (1 + i - start);
+              strncpy (rep_name, string + start, i - start);
+              rep_name[i - start] = '\0';
 
-	    /* If we have only one window (because the window size was too
-	       small to split it), we have to quit help by going back one
-	       noew in the history list, not deleting the window.  */
-	      if (strcmp (rep_name, "quit-help") == 0)
-		fun_name = help_is_only_window_p ? "history-node"
-						 : "delete-window";
-	      else
-	        fun_name = rep_name;
+            /* If we have only one window (because the window size was too
+               small to split it), we have to quit help by going back one
+               noew in the history list, not deleting the window.  */
+              if (strcmp (rep_name, "quit-help") == 0)
+                fun_name = help_is_only_window_p ? "history-node"
+                                                 : "delete-window";
+              else
+                fun_name = rep_name;
 
-	      /* Find a key which invokes this function in the info_keymap. */
-	      command = named_function (fun_name);
+              /* Find a key which invokes this function in the info_keymap. */
+              command = named_function (fun_name);
 
-	      free (rep_name);
+              free (rep_name);
 
-	      /* If the internal documentation string fails, there is a
-		 serious problem with the associated command's documentation.
-		 We croak so that it can be fixed immediately. */
-	      if (!command)
-		abort ();
+              /* If the internal documentation string fails, there is a
+                 serious problem with the associated command's documentation.
+                 We croak so that it can be fixed immediately. */
+              if (!command)
+                abort ();
 
-	      if (arg)
-	      	{
-		  char *argrep, *p;
+              if (arg)
+                {
+                  char *argrep, *p;
 
-		  argrep = where_is (info_keymap, InfoCmd(info_add_digit_to_numeric_arg));
-		  p = argrep ? strrpbrk (argrep, "0123456789-") : NULL;
-		  if (p)
-		    {
-		      argstr = (char *)xmalloc (p - argrep + 21);
-		      strncpy (argstr, argrep, p - argrep);
-		      sprintf (argstr + (p - argrep), "%d", arg);
-		    }
-		  else
-		    command = NULL;
-		}
-	      rep = command ? where_is (info_keymap, command) : NULL;
-	      if (!rep)
-	        rep = "N/A";
-	      replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
-	      repstr = (char *)xmalloc (replen);
-	      repstr[0] = '\0';
-	      if (argstr)
-		{
-		  strcat(repstr, argstr);
-		  strcat(repstr, " ");
-		  free (argstr);
-		}
-	      strcat(repstr, rep);
+                  argrep = where_is (info_keymap, InfoCmd(info_add_digit_to_numeric_arg));
+                  p = argrep ? strrpbrk (argrep, "0123456789-") : NULL;
+                  if (p)
+                    {
+                      argstr = (char *)xmalloc (p - argrep + 21);
+                      strncpy (argstr, argrep, p - argrep);
+                      sprintf (argstr + (p - argrep), "%d", arg);
+                    }
+                  else
+                    command = NULL;
+                }
+              rep = command ? where_is (info_keymap, command) : NULL;
+              if (!rep)
+                rep = "N/A";
+              replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
+              repstr = (char *)xmalloc (replen);
+              repstr[0] = '\0';
+              if (argstr)
+                {
+                  strcat(repstr, argstr);
+                  strcat(repstr, " ");
+                  free (argstr);
+                }
+              strcat(repstr, rep);
 
-	      if (fmt)
-		{
-		  if (replen > max)
-		    replen = max;
-		  if (replen < min)
-		    replen = min;
-		}
-	      if (next + replen > reslen)
-		{
-		  reslen = next + replen + 1;
-		  result = (char *)xrealloc (result, reslen + 1);
-		}
+              if (fmt)
+                {
+                  if (replen > max)
+                    replen = max;
+                  if (replen < min)
+                    replen = min;
+                }
+              if (next + replen > reslen)
+                {
+                  reslen = next + replen + 1;
+                  result = (char *)xrealloc (result, reslen + 1);
+                }
 
-	      if (fmt)
-		  sprintf (result + next, fmt, repstr);
-	      else
-		  strcpy (result + next, repstr);
+              if (fmt)
+                  sprintf (result + next, fmt, repstr);
+              else
+                  strcpy (result + next, repstr);
 
-	      next = strlen (result);
-	      free (repstr);
+              next = strlen (result);
+              free (repstr);
 
-	      start = i;
-	      if (string[i])
-		start++;
-	    }
+              start = i;
+              if (string[i])
+                start++;
+            }
 
-	  maybe_free (fmt);
-	}
+          maybe_free (fmt);
+        }
     }
   strcpy (result + next, string + start);
   return (result);
@@ -1077,7 +1077,7 @@ where_is (map, cmd)
 
       name = function_name (cmd);
       if (!name)
-      	return NULL; /* no such function */
+        return NULL; /* no such function */
 
       rep = where_is_internal (map, InfoCmd(info_execute_command));
       if (!rep)

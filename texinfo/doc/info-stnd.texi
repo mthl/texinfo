@@ -1,5 +1,5 @@
 \input texinfo    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.3 2002-11-06 00:41:54 karl Exp $
+@comment $Id: info-stnd.texi,v 1.4 2002-11-06 00:42:29 karl Exp $
 @comment %**start of header
 @setfilename info-stnd.info
 @include version-stnd.texi
@@ -73,8 +73,7 @@ first, as it includes more background information and a thorough tutorial.
 * Printing Nodes::              How to print out the contents of a node.
 * Miscellaneous Commands::      A few commands that defy categories.
 * Variables::                   How to change the default behavior of Info.
-* Custom Key Bindings::         How to define your own key-to-command
-				  bindings.
+* Custom Key Bindings::         How to define your own key-to-command bindings.
 * Copying This Manual::         The GNU Free Documentation License.
 * Index::                       Global index containing keystrokes,
                                   command names, variable names,
