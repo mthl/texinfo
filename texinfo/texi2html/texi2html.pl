@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.16 2003-01-23 18:30:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.17 2003-01-24 17:33:09 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -517,7 +517,7 @@ $index_properties =
   	       "-", "&#173;",	 # soft hyphen
 	       "\n", "&nbsp;",
 	       "|", "",
-	       'tab', '<\/td><td>',
+#	       'tab', '<\/td><td>',
 	       # spacing commands
 	       ":", "",
 	       "!", "!",
@@ -1631,7 +1631,10 @@ sub pass1
     $node_next = '';            # current node next name
     $node_prev = '';            # current node prev name
     $node_up = '';              # current node up name
-    $in_table = 0;              # am I inside a table
+    $in_table = 0;              # am I inside a table 
+              # holds the command used to format entries for tables
+              # for multitable, in_table is like: $table_width:$current_column
+              # $current_column == 0 if there was no line
     $table_type = '';           # type of table ('', 'f', 'v', 'multi')
     @tables = ();               # nested table support
     $in_bibliography = 0;       # am I inside a bibliography
@@ -2078,37 +2081,83 @@ sub pass1
             }
             elsif ($tag eq 'table')
             {
+                if ($table_type eq 'multi')
+                { 
+                    # first find the table width
+                    my $table_width = 0;
+                    if (s/^\s*\@multitable\s+\@columnfractions\s+//)
+                    {
+                        my @fractions = split /\s+/;
+                        $table_width = $#fractions + 1;
+                        while (@fractions)
+                        {
+                            my $fraction = shift @fractions;
+                            unless ($fraction =~ /^(\d*\.\d+)|(\d+)$/)
+                            { 
+                                warn "$ERROR column fraction not a number: $fraction";
+                            }
+                        }
+                    }
+                    elsif (s/^\s*\@multitable\s+\{//)
+                    {
+                        my $opened_braces = 1;
+                        while ($_ !~ /^\s*$/)
+                        {
+                            if (s/^[^\{\}]*(\{|\})?//)
+                            {
+                                if (defined($1))
+                                {
+                                    $opened_braces++ if ($1 eq '{');
+                                    $opened_braces-- if ($1 eq '}');
+                                }
+                                else
+                                {
+                                    warn "$ERROR garbage in multitable specification";
+                                }
+                            }
+                            $table_width++ if ($opened_braces == 0);
+                            if ($opened_braces < 0)
+                            {
+                                 warn "$ERROR too much '}' in multitable specification";
+                                 $opened_braces = 0;
+                            }
+                        }
+                        if ($opened_braces)
+                        {
+                            warn "$ERROR '{' not closed in multitable specification";
+                            $table_width++;
+                        }
+                    }
+                    $in_table = "$table_width:0";
+                    unshift(@tables, join($;, $table_type, $in_table));
+                    # APA: <table> implicitly ends paragraph, so let's
+                    # do it explicitly to keep our HTML stack in sync.
+                    if ($html_element eq 'p')
+                    {
+                        push (@lines, &debug("</p>\n", __LINE__));
+                        &html_pop();
+                    }
+                    # don't use borders -- gets confused by empty cells
+                    push(@lines, &debug("<table>\n", __LINE__));
+                    &html_push_if('table');
+                    push(@lines, &html_debug('', __LINE__));
+                }
                 # anorland@hem2.passagen.se
-                # if (/^\s*\@(|f|v|multi)table\s+\@(\w+)/) {
-                if (/^\s*\@(|f|v|multi)table\s+\@(\w+)|(\{[^\}]*\})/)
+                # if (/^\s*\@(|f|v|multi)table\s+\@(\w+)|(\{[^\}]*\})/)
+                elsif (/^\s*\@(|f|v)table\s+\@(\w+)/)
                 {
                     $in_table = $2;
                     unshift(@tables, join($;, $table_type, $in_table));
-                    if ($table_type eq 'multi')
+                    # APA: <dl> implicitly ends paragraph, so let's
+                    # do it explicitly to keep our HTML stack in sync.
+                    if ($html_element eq 'p')
                     {
-                        # APA: <table> implicitly ends paragraph, so let's
-                        # do it explicitly to keep our HTML stack in sync.
-                        if ($html_element eq 'p')
-                        {
-                            push (@lines, &debug("</p>\n", __LINE__));
-                            &html_pop();
-                        }
-                        # don't use borders -- gets confused by empty cells
-                        push(@lines, &debug("<table>\n", __LINE__));
-                        &html_push_if('table');
+                        push (@lines, &debug("</p>\n", __LINE__));
+                        &html_pop();
                     }
-                    else
-                    {
-                        # APA: <dl> implicitly ends paragraph, so let's
-                        # do it explicitly to keep our HTML stack in sync.
-                        if ($html_element eq 'p')
-                        {
-                            push (@lines, &debug("</p>\n", __LINE__));
-                            &html_pop();
-                        }
-                        push(@lines, &debug("<dl compact=\"compact\">\n", __LINE__));
-                        &html_push_if('dl');
-                    }
+                    push(@lines, &debug("<dl compact=\"compact\">\n", __LINE__));
+                    &html_push_if('dl');
+                    
                     push(@lines, &html_debug('', __LINE__));
                 }
                 else
@@ -2448,8 +2497,18 @@ sub pass1
                 }
                 if ($table_type eq "multi")
                 {
-                    push(@lines, "</tr></table>\n");
-                    &html_pop_if('tr');
+                    my ($max_column, $current_column);
+                    ($max_column, $current_column) = split /:/, $in_table;
+                    if (!$max_column || !$current_column)
+                    { # empty table
+                        push(@lines, "</table>\n");
+                    }
+                    else
+                    { 
+                        push(@lines, "</td></tr></table>\n");
+                    }
+                    
+#                    &html_pop_if('tr');
                 }
                 else
                 {
@@ -2531,6 +2590,76 @@ sub pass1
         # other substitutions
         &simple_substitutions;
         s/\@footnote\{/\@footnote$docu_doc\{/g; # mark footnotes, cf. pass 4
+
+        # handle multitables. Transform @tab and @item into html, and
+        # ignore if out of bounds.
+        if ($in_table && $table_type eq 'multi' && !$end_tag)
+        {
+            my ($max_column, $current_column);
+            ($max_column, $current_column) = split /:/, $in_table;
+
+            next INPUT_LINE if (!$max_column);
+            my $stored_text = "";
+
+            while (! /^$/)
+            {
+                # discard until end of column if out of bounds 
+                if ($current_column > $max_column)
+                {
+                    last unless (s/.*?(\@itemx?\s+)/$1/ or s/.*?(\@itemx?)$/$1/);
+                    $current_column = $max_column;
+                    next;
+                }
+                if (/(\@tab\s+|\@itemx?\s+)/ or /(\@tab|\@itemx?)$/)
+                {
+                    $stored_text = $stored_text . $`;
+                    $_ = $';
+                    if ($1 =~ /^\@tab/)
+                    {
+                        $current_column++;
+                        if ($current_column == 1)
+                        { #first text on first line, first @item was omitted
+                             $stored_text = $stored_text . '<tr><td>';
+                             $current_column++;
+                        }
+                        $stored_text = $stored_text . '</td>';
+
+                        if ($current_column > $max_column)
+                        {
+                            warn "$ERROR too much \@tab";
+                        }
+                        else
+                        {
+                            $stored_text = $stored_text . '<td>';
+                        }
+                    }
+                    else # an @item(x) on the line
+                    {
+                        if ($current_column)
+                        {
+                             $stored_text = $stored_text . '</td></tr><tr><td>';
+                        }
+                        else
+                        { #first line
+                             $stored_text = $stored_text . '<tr><td>';
+                        }
+                        $current_column = 1;
+                    }
+                }
+                else # no @tab nor @itemx
+                {
+                    if (!$current_column)
+                    { #first line
+                        $stored_text = $stored_text . '<tr><td>';
+                        $current_column = 1;
+                    }
+                    $stored_text = $stored_text . $_;
+                    $_ = '';
+                }
+            }
+            $_ = $stored_text;
+            $in_table = "$max_column:$current_column";
+        }
         #
         # analyze the tag again
         #
