@@ -1,5 +1,9 @@
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_r): also set font-weight to normal in HTML.
+
+2003-11-28  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c (cm_comment): new function to output comments in
 	HTML, XML and Docbook outputs.
 
