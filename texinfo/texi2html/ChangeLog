@@ -1,5 +1,12 @@
 2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: keep texi as is in @image and protect html characters.
+	accept @| as macro, but remove it.
+	cleaning of code for commands with texi kept as is
+	* doc/formatting.texi: add test of flushleft, flushright and center
+
+2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: -- and so on are kept as is in @image except
 	for alt text. Use alt text. File for image is really used, too.
 	handle better @inforef.

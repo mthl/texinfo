@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.77 2003-11-02 22:18:52 pertusus Exp $
+# $Id: texi2html.pl,v 1.78 2003-11-03 23:14:23 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -433,6 +433,7 @@ our %predefined_index;
 our %valid_index;
 our %sec2level;
 our %code_style_map;
+our %keep_texi_map;
 
 # Some global variables are set in the script, and used in the subroutines
 # they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
@@ -579,9 +580,17 @@ $index_properties =
            'option'  => 1,
            'samp'    => 1,
            'verb'    => 1,
-           'image'   => 1,
 );
             
+%keep_texi_map = (
+            'footnote'   => 1,
+            'image'      => 1,
+            'anchor'     => 1,
+            'ref'        => 1,
+            'inforef'    => 1,
+            'xref'       => 1,
+            'pxref'      => 1,
+);
 
 #
 # texinfo section names to level
@@ -5522,7 +5531,7 @@ sub dump_texi($$;$)
 sub next_tag($)
 {
     my $line = shift;
-    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\/])/o or $line =~ /^\s*\@([a-zA-Z]\w*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z]\w*)$/)
+    if ($line =~ /^\s*\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])/o or $line =~ /^\s*\@([a-zA-Z]\w*)([\s\{\}\@])/ or $line =~ /^\s*\@([a-zA-Z]\w*)$/)
     {
         return ($1);
     }
@@ -6489,15 +6498,15 @@ sub do_image($$$$)
         $image = "$base.$args[4]" if (defined($args[4]) and ($args[4] ne ''));
         echo_error ("no image file for $base, (using $image)", $line_nr); 
         #warn "$ERROR no image file for $base, (using $image) : $text\n"; 
-    } # FIXME use full file name for alt instead of base ?
-    # FIXME the texinfo should be kept for @image.
+    } # FIXME use full file name for alt instead of base when there is no
+      # alttext ?
     if ($args[3] =~ /\S/)
     {
         # FIXME makeinfo don't do that.
-        $args[3] = substitute_line($args[3]);
+        $args[3] = do_text($args[3]);
         $base = $args[3] if ($args[3] =~ /\S/);
     }
-    return &$Texi2HTML::Config::image($image, $base, $state->{'preformatted'});
+    return &$Texi2HTML::Config::image(&$Texi2HTML::Config::protect_html($image), &$Texi2HTML::Config::protect_html($base), $state->{'preformatted'});
 }
 
 sub apply_style($$;$$$)
@@ -7119,8 +7128,7 @@ sub scan_texi($$$$;$)
             }
             next;
         }
-        # FIXME pertusus: what to do with '@|' ? Appears in @....headings
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -7619,7 +7627,7 @@ sub scan_structure($$$$;$)
             next;
         }
         #elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
@@ -8388,7 +8396,7 @@ sub scan_line($$$$;$)
         }
         # This is a macro
 	#elsif (s/^([^{}@]*)\@([a-zA-Z]\w*|["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o)
-        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
+        elsif (s/^([^{}@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/])//o or s/^([^{}@]*)\@([a-zA-Z]\w*)([\s\{\}\@])/$3/o or s/^([^{}@]*)\@([a-zA-Z]\w*)$//o)
         {
             add_prev($text, $stack, do_text($1, $state));
             my $macro = $2;
@@ -8517,7 +8525,7 @@ sub scan_line($$$$;$)
                 {
                     $macro = ',';
                 }
-                $state->{'keep_texi'}++ if ($macro eq 'anchor' or ($macro =~ /^(x|px|info|)ref$/o) or $macro eq 'footnote');
+                $state->{'keep_texi'}++ if ($keep_texi_map{$macro});
                 if (!$state->{'keep_texi'} and $code_style_map{$macro})
                 {
                       $state->{'code_style'}++;
@@ -8942,9 +8950,10 @@ sub scan_line($$$$;$)
                         {
                              $state->{'code_style'}--;
                         }
-                        if (($macro eq 'anchor') or ($macro =~ /^(x|px|info|)ref$/o) or ($macro eq 'footnote'))
+                        if ($keep_texi_map{$macro})
                         {
-                            $state->{'keep_texi'}--;
+                             $state->{'keep_texi'}--;
+                             # FIXME do something for @ref, @image ?
                         }
                         else
                         {
@@ -8956,34 +8965,34 @@ sub scan_line($$$$;$)
                     if ($macro)
                     {
                         $style->{'no_close'} = 1 if ($state->{'no_close'});
-                        if (($state->{'keep_texi'} > 1) and (($macro eq 'anchor') or ($macro =~ /^(x|px|info|)ref$/o) or ($macro eq 'footnote')))
+                        if (($state->{'keep_texi'} > 1) and ($keep_texi_map{$macro}))
                         { 
-                            $state->{'keep_texi'}--;
-                            $result = '@' . $macro . '{' . $style->{'text'} . '}';
+                             $state->{'keep_texi'}--;
+                             $result = '@' . $macro . '{' . $style->{'text'} . '}';
                         }
-                        elsif ($macro eq 'anchor')
-                        {
-                            $state->{'keep_texi'}--;
-                            $result = do_anchor_label($style->{'text'});
-                        }
-                        elsif ($macro =~ /^(x|px|info|)ref$/o)
-                        {
-                            $state->{'keep_texi'}--;
-                            $result = do_xref($macro, $style->{'text'}, $state, $line_nr);
-                        }
-                        elsif ($macro eq 'footnote')
+                        elsif ($keep_texi_map{$macro})
                         {
                              $state->{'keep_texi'}--;
-                             $result = do_footnote($macro, $style->{'text'}, $state);
+                             if ($macro eq 'anchor')
+                             {
+                                 $result = do_anchor_label($style->{'text'});
+                             }
+                             elsif ($macro =~ /^(x|px|info|)ref$/o)
+                             {
+                                 $result = do_xref($macro, $style->{'text'}, $state, $line_nr);
+                             }
+                             elsif ($macro eq 'footnote')
+                             {
+                                 $result = do_footnote($macro, $style->{'text'}, $state);
+                             }
+                             elsif ($macro eq 'image')
+                             {
+                                 $result = do_image($macro, $style->{'text'}, $state, $line_nr);
+                             }
                         }
                         elsif($state->{'keep_texi'})
                         { # don't expand macros in anchor and ref
                             $result = '@' . $macro . '{' . $style->{'text'} . '}';
-                        }
-                        elsif ($macro eq 'image')
-                        {
-                            $result = do_image($macro, $style->{'text'}, $state, $line_nr);
-                            $state->{'code_style'}--;
                         }
                         else
                         {

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.49 2003-10-27 21:04:29 pertusus Exp $
+# $Id: texi2html.init,v 1.50 2003-11-03 23:14:23 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1370,8 +1370,8 @@ EOT
      # that some browser will consider this as an always visible hyphen mark
      # which is not what we want (see http://www.cs.tut.fi/~jkorpela/shy.html)
            '-', '',  # hyphenation hint
-#           "|", "",  # used in formatting commands @evenfooting and friends
-	   '/', '',
+           '|', '',  # used in formatting commands @evenfooting and friends
+           '/', '',
        # spacing commands
            ':', '',
            '!', '!',
