@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.5 2002-09-29 19:15:20 karl Exp $
+   $Id: insertion.c,v 1.6 2002-10-09 16:32:40 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -1596,7 +1596,7 @@ cm_item ()
                   && strncmp ((char *) output_paragraph
                               + output_paragraph_offset - sizeof (dl_tag) + 1, 
                               dl_tag, sizeof (dl_tag) - 1) != 0)
-                add_word ("<br>");
+                add_word ("<br />");
    
               add_word ("<dt>");
               if (item_func && *item_func)

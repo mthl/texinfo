@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.4 2002-09-29 19:20:00 karl Exp $
+   $Id: makeinfo.c,v 1.5 2002-10-09 16:32:40 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -2751,7 +2751,7 @@ close_paragraph ()
               /* Don't need anything extra for HTML in usual case of no
                  extra paragraph spacing.  */
               if (html && i > 0)
-                insert_string ("<br>");
+                insert_string ("<br />");
             }
         }
 
