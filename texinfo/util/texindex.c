@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.4 2002-10-25 00:32:51 karl Exp $
+   $Id: texindex.c,v 1.5 2002-10-31 16:49:56 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002 Free Software Foundation, Inc.
@@ -108,6 +108,13 @@ int last_deleted_tempcount;
    which contains all the lines of data.  */
 char *text_base;
 
+/* Initially 0; changed to 1 if we want initials in this index.  */
+int need_initials;
+
+/* Remembers the first initial letter seen in this index, so we can
+   determine whether we need initials in the sorted form.  */
+char first_initial;
+
 /* Additional command switches .*/
 
 /* Nonzero means do not delete tempfiles -- for debugging. */
@@ -214,6 +221,9 @@ main (argc, argv)
         {
           outfile = concat (infiles[i], "s", "");
         }
+
+      need_initials = 0;
+      first_initial = '\0';
 
       if (ptr < MAX_IN_CORE_SORT)
         /* Sort a small amount of data. */
@@ -1114,6 +1124,23 @@ parsefile (filename, nextline, data, size)
         return 0;
 
       *line = p;
+
+      /* Find the first letter of the first field of this line.  If it
+	 is different from the first letter of the first field of the
+	 first line, we need initial headers in the output index.  */
+      while (*p && *p != '{')
+	p++;
+      if (p == end)
+	return 0;
+      p++;
+      if (first_initial)
+	{
+	  if (first_initial != toupper (*p))
+	    need_initials = 1;
+	}
+      else
+	first_initial = toupper (*p);
+      
       while (*p && *p != '\n')
         p++;
       if (p != end)
@@ -1223,12 +1250,9 @@ indexify (line, ostream)
   else
     {
       initial = initial1;
-      initial1[0] = *p;
+      initial1[0] = toupper (*p);
       initial1[1] = 0;
       initiallength = 1;
-
-      if (initial1[0] >= 'a' && initial1[0] <= 'z')
-        initial1[0] -= 040;
     }
 
   pagenumber = find_braced_pos (line, 1, 0, 0);
@@ -1256,8 +1280,9 @@ indexify (line, ostream)
 
       /* If this primary has a different initial, include an entry for
          the initial. */
-      if (initiallength != lastinitiallength ||
-          strncmp (initial, lastinitial, initiallength))
+      if (need_initials &&
+	  (initiallength != lastinitiallength ||
+	   strncmp (initial, lastinitial, initiallength)))
         {
           fprintf (ostream, "\\initial {");
           fwrite (initial, 1, initiallength, ostream);
