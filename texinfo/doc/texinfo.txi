@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
+@c $Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1112,7 +1112,7 @@ All printable @sc{ascii} characters except @samp{@@}, @samp{@{} and
 @samp{@@} is the escape character which introduces commands, while
 @samp{@{} and @samp{@}} are used to surround arguments to certain
 commands.  To put one of these special characters into the document, put
-an @samp{@@} character in front of it, like this: @samp{@@@@},
+xan @samp{@@} character in front of it, like this: @samp{@@@@},
 @samp{@@@{}, and @samp{@@@}}.
 
 @item
@@ -1155,7 +1155,8 @@ text surrounded by @code{@@ifnottex} and @code{@@end ifnottex} will
 appear in all output formats @emph{except} @TeX{}.
 
 Each of the other output formats (@code{html}, @code{info},
-@code{plaintext}) have an analogous pair of commands.  @xref{Conditionals}.
+@code{plaintext}, @code{xml}) have an analogous pair of commands.
+@xref{Conditionals}.
 
 @item
 @cindex Tabs; don't use!
@@ -1433,24 +1434,23 @@ writing it out again; it is output on the back of the title page.  The
 @subheading Part 4: `Top' Node and Master Menu
 
 @noindent
-The `Top' node contains the master menu for the Info file.  Since a
-printed manual uses a table of contents rather than a menu, the master
-menu appears only in online output.  We also include the copying text
-again for the benefit of online readers.  And since the copying text
-begins with a brief description of the manual, no other text is needed.
+The `Top' node contains the master menu for the Info file.  Since the
+printed manual uses a table of contents rather than a menu, it
+excludes the `Top' node.  We also include the copying text again for
+the benefit of online readers.  Since the copying text begins with
+a brief description of the manual, no other text is needed in this
+case.  The @samp{@@top} command itself helps @command{makeinfo}
+determine the relationships between nodes.
 
 @example
-@group
 @@ifnottex
 @@node Top
-@@end ifnottex
-@end group
-@end example
+@@top Short Sample
 
-@example
-@group
 @@insertcopying
+@@end ifnottex
 
+@group
 @@menu
 * First Chapter::    The first chapter is the
                        only chapter in this sample.
@@ -16786,7 +16786,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
+$Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16849,23 +16849,23 @@ Here is the sample document:
 
 @c We do the first part of this with @example instead of @verbatim
 @c because the literal @setfilename and @include confuse Automake.  Argh.
-@example
-\input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
-@@comment %**start of header
-@@setfilename sample.info
-@@include version.texi
-@@settitle GNU Sample @@value@{VERSION@}
-@@syncodeindex pg cp
-@@comment %**end of header
-@@copying
+@verbatim
+\input texinfo   @c -*-texinfo-*-
+@comment $Id: texinfo.txi,v 1.20 2002-12-13 17:33:21 karl Exp $
+@comment %**start of header
+@setfilename sample.info
+@include version.texi
+@settitle GNU Sample @value{VERSION}
+@syncodeindex pg cp
+@comment %**end of header
+@copying
 This manual is for GNU Sample
-(version @@value@{VERSION@}, @@value@{UPDATED@}),
+(version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @@copyright@{@} 2002 Free Software Foundation, Inc.
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
 
-@@quotation
+@quotation
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
@@ -16877,67 +16877,67 @@ License.''
 (a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
 this GNU Manual, like GNU software.  Copies published by the Free
 Software Foundation raise funds for GNU development.''
-@@end quotation
-@@end copying
+@end quotation
+@end copying
 
-@@dircategory Texinfo documentation system
-@@direntry
+@dircategory Texinfo documentation system
+@direntry
 * sample: (sample)Invoking sample.    
-@@end direntry
+@end direntry
 
-@@titlepage
-@@title GNU Sample
-@@subtitle for version @@value@{VERSION@}, @@value@{UPDATED@}
-@@author A.U. Thor (@@email@{bug-texinfo@@@@gnu.org@})
-@@page
-@@vskip 0pt plus 1filll
-@@insertcopying
-@@end titlepage
+@titlepage
+@title GNU Sample
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author A.U. Thor (@email{bug-texinfo@@gnu.org})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
 
-@@contents
+@contents
 
-@@ifnottex
-@@node Top
-@@top GNU Sample
+@ifnottex
+@node Top
+@top GNU Sample
 
-@@insertcopying
-@@end ifnottex
+@insertcopying
+@end ifnottex
 
-@@menu
+@menu
 * Invoking sample::
 * Copying This Manual::
 * Index::
-@@end menu
+@end menu
 
 
-@@node Invoking sample
-@@chapter Invoking sample
+@node Invoking sample
+@chapter Invoking sample
 
-@@pindex sample
-@@cindex invoking @@command@{sample@}
+@pindex sample
+@cindex invoking @command{sample}
 
 This is a sample manual.  There is no sample program to
 invoke, but if there was, you could see its basic usage
 and command line options here.
 
 
-@@node Copying This Manual
-@@appendix Copying This Manual
+@node Copying This Manual
+@appendix Copying This Manual
 
-@@menu
+@menu
 * GNU Free Documentation License::  License for copying this manual.
-@@end menu
+@end menu
 
-@@include fdl.texi
+@include fdl.texi
 
 
-@@node Index
-@@unnumbered Index
+@node Index
+@unnumbered Index
 
-@@printindex cp
+@printindex cp
 
-@@bye
-@end example
+@bye
+@end verbatim
 
 
 @node Verbatim Copying License
