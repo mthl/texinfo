@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.9 2003-08-30 18:23:26 karl Exp $
+   $Id: lang.c,v 1.10 2003-10-13 00:23:24 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -488,7 +488,21 @@ cm_documentencoding ()
   encoding_code_type enc;
   char *enc_arg;
 
+  /* This is ugly and probably needs to apply to other commands'
+     argument parsing as well.  When we're doing @documentencoding,
+     we're generally in the frontmatter of the document, and so the.
+     expansion in html/xml/docbook would generally be the empty string.
+     (Because those modes wait until the first normal text of the
+     document to start outputting.)  The result would thus be a warning
+     "unrecognized encoding name `'".  Sigh.  */
+  int save_html = html;
+  int save_xml = xml;
+
+  html = 0;
+  xml = 0;
   get_rest_of_line (1, &enc_arg);
+  html = save_html;
+  xml = save_xml;
 
   /* See if we have this encoding.  */
   for (enc = no_encoding+1; enc != last_encoding_code; enc++)
