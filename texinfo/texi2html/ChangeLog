@@ -1,3 +1,9 @@
+2004-02-06  Derek Price  <derek@ximbiot.com>
+
+	* doc/Makefile.am (txt): New targets to convert .texinfo files into
+	text.
+	* doc/.cvsignore: Ignore texi2html.txt.
+
 2004-02-06  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 
