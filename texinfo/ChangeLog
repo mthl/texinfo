@@ -1,5 +1,7 @@
 2003-11-13  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex: doc fixes.
+
 	* configure.ac, NEWS: autoconf 2.59.
 
 2003-11-13  Akim Demaille  <akim@epita.fr>
