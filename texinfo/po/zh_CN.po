@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-15 10:25-0800\n"
+"POT-Creation-Date: 2004-12-19 09:16-0800\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -1813,11 +1813,11 @@ msgstr "@sp 需要正数参数，而不是“%s”"
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
 msgid "none"
 msgstr "none"
 
@@ -1863,12 +1863,12 @@ msgid "Method"
 msgstr "方法"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2195
+#: makeinfo/defun.c:644 makeinfo/xml.c:2229
 msgid "of"
 msgstr ""
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2200
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
 msgid "on"
 msgstr ""
 
@@ -2426,7 +2426,7 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3989
+#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
@@ -2500,46 +2500,46 @@ msgstr "无名字！"
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: makeinfo/makeinfo.c:3307
+#: makeinfo/makeinfo.c:3309
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: makeinfo/makeinfo.c:3313
+#: makeinfo/makeinfo.c:3315
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:3445
+#: makeinfo/makeinfo.c:3447
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image 文件“%s”(对文本)不可读：%s"
 
-#: makeinfo/makeinfo.c:3454
+#: makeinfo/makeinfo.c:3456
 msgid "@image missing filename argument"
 msgstr "@image 遗漏文件名参数"
 
-#: makeinfo/makeinfo.c:3673
+#: makeinfo/makeinfo.c:3675
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3674
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{没有“%s”的值}"
 
-#: makeinfo/makeinfo.c:3726
+#: makeinfo/makeinfo.c:3728
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: makeinfo/makeinfo.c:3832
+#: makeinfo/makeinfo.c:3834
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: makeinfo/makeinfo.c:4080
+#: makeinfo/makeinfo.c:4082
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "“%.40s...”扩展起来太长；未扩展"
@@ -2755,7 +2755,7 @@ msgstr "简短目录"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
-#: makeinfo/xml.c:2063
+#: makeinfo/xml.c:2097
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""

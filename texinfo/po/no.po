@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Texinfo 4.6\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-15 10:25-0800\n"
+"POT-Creation-Date: 2004-12-19 09:16-0800\n"
 "PO-Revision-Date: 2003-07-14 13:13+02:00\n"
 "Last-Translator: Trond Endrestøl <trond@ramstind.gtf.ol.no>\n"
 "Language-Team: Norwegian-bokmål <no@li.org>\n"
@@ -1863,11 +1863,11 @@ msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
 msgid "Bad argument to %c%s"
 msgstr "Ugyldig argument til %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
 msgid "none"
 msgstr "none"
 
@@ -1913,12 +1913,12 @@ msgid "Method"
 msgstr "Metode"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2195
+#: makeinfo/defun.c:644 makeinfo/xml.c:2229
 msgid "of"
 msgstr "av"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2200
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
 msgid "on"
 msgstr "på"
 
@@ -2503,7 +2503,7 @@ msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
 msgid "%s: missing file argument.\n"
 msgstr "%s: mangler filargument.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3989
+#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
@@ -2583,46 +2583,46 @@ msgstr "INTET_NAVN!"
 msgid "%c%s missing close brace"
 msgstr "%c%s mangler avsluttende krøllparentes"
 
-#: makeinfo/makeinfo.c:3307
+#: makeinfo/makeinfo.c:3309
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3313
+#: makeinfo/makeinfo.c:3315
 #, c-format
 msgid "No such file `%s'"
 msgstr "«%s» er ingen fil"
 
-#: makeinfo/makeinfo.c:3445
+#: makeinfo/makeinfo.c:3447
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-fil «%s» (for tekstformat) er uleselig: %s"
 
-#: makeinfo/makeinfo.c:3454
+#: makeinfo/makeinfo.c:3456
 msgid "@image missing filename argument"
 msgstr "@image mangler filnavn"
 
-#: makeinfo/makeinfo.c:3673
+#: makeinfo/makeinfo.c:3675
 #, c-format
 msgid "undefined flag: %s"
 msgstr "udefinert flagg: %s"
 
-#: makeinfo/makeinfo.c:3674
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Ingen verdi for «%s»}"
 
-#: makeinfo/makeinfo.c:3726
+#: makeinfo/makeinfo.c:3728
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s krever et navn"
 
-#: makeinfo/makeinfo.c:3832
+#: makeinfo/makeinfo.c:3834
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Traff slutt-på-filen før matchende @end %s"
 
-#: makeinfo/makeinfo.c:4080
+#: makeinfo/makeinfo.c:4082
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "`%.40s...' er for lang for ekspansjon; ikke ekspandert"
@@ -2841,7 +2841,7 @@ msgstr "Kort innholdsfortegnelse"
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image-fil «%s» er uleselig: %s"
 
-#: makeinfo/xml.c:2063
+#: makeinfo/xml.c:2097
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2004-12-15 10:25-0800\n"
+"POT-Creation-Date: 2004-12-19 09:16-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1852,11 +1852,11 @@ msgstr "@sp vy¾aduje kladný èíselný argument a ne `%s'"
 msgid "Bad argument to %c%s"
 msgstr "©patný argument pro %c%s"
 
-#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4140
+#: makeinfo/cmds.c:1773 makeinfo/makeinfo.c:4142
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4142
+#: makeinfo/cmds.c:1775 makeinfo/cmds.c:1805 makeinfo/makeinfo.c:4144
 msgid "none"
 msgstr "none"
 
@@ -1902,12 +1902,12 @@ msgid "Method"
 msgstr "Metoda"
 
 #: makeinfo/defun.c:500 makeinfo/defun.c:505 makeinfo/defun.c:545
-#: makeinfo/defun.c:644 makeinfo/xml.c:2195
+#: makeinfo/defun.c:644 makeinfo/xml.c:2229
 msgid "of"
 msgstr "z"
 
 #: makeinfo/defun.c:509 makeinfo/defun.c:513 makeinfo/defun.c:517
-#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2200
+#: makeinfo/defun.c:551 makeinfo/defun.c:650 makeinfo/xml.c:2234
 msgid "on"
 msgstr ""
 
@@ -2420,7 +2420,7 @@ msgstr ""
 msgid "%s: missing file argument.\n"
 msgstr "%s: chybí argument jména souboru.\n"
 
-#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3989
+#: makeinfo/makeinfo.c:997 makeinfo/makeinfo.c:3991
 #, c-format
 msgid "Multiline command %c%s used improperly"
 msgstr ""
@@ -2501,46 +2501,46 @@ msgstr "Funkce neexistuje!"
 msgid "%c%s missing close brace"
 msgstr "%c%s chybìjící uzavírací závorka"
 
-#: makeinfo/makeinfo.c:3307
+#: makeinfo/makeinfo.c:3309
 #, fuzzy, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: makeinfo/makeinfo.c:3313
+#: makeinfo/makeinfo.c:3315
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Soubor `%s' nenalezen v `%s'"
 
-#: makeinfo/makeinfo.c:3445
+#: makeinfo/makeinfo.c:3447
 #, fuzzy, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: makeinfo/makeinfo.c:3454
+#: makeinfo/makeinfo.c:3456
 msgid "@image missing filename argument"
 msgstr "pøíkaz @image postrádá jméno souboru"
 
-#: makeinfo/makeinfo.c:3673
+#: makeinfo/makeinfo.c:3675
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3674
+#: makeinfo/makeinfo.c:3676
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Pro `%s' není hodnota}"
 
-#: makeinfo/makeinfo.c:3726
+#: makeinfo/makeinfo.c:3728
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s po¾aduje jméno"
 
-#: makeinfo/makeinfo.c:3832
+#: makeinfo/makeinfo.c:3834
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Vstupní soubor skonèil a pøíkaz `@end %s' nebyl nalezen"
 
-#: makeinfo/makeinfo.c:4080
+#: makeinfo/makeinfo.c:4082
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr ""
@@ -2758,7 +2758,7 @@ msgstr "Krátký obsah"
 msgid "@image file `%s' unreadable: %s"
 msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
 
-#: makeinfo/xml.c:2063
+#: makeinfo/xml.c:2097
 msgid ""
 "@headitem as the last item of @multitable produces invalid Docbook documents"
 msgstr ""
