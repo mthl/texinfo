@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.43 2004-10-19 11:55:57 karl Exp $
+# $Id: configure.ac,v 1.44 2004-11-18 15:00:52 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -185,10 +185,22 @@ gl_FUNC_MKSTEMP
 # For teTeX and TeX Live.
 AC_CANONICAL_HOST
 AC_ARG_ENABLE(multiplatform,
-  [  --enable-multiplatform  put executables in bin/PLATFORM])
+  [  --enable-multiplatform      put executables in bin/PLATFORM])
 test "x$enable_multiplatform" = xyes \
 && test "x$bindir" = 'x${exec_prefix}/bin' \
 && bindir="$bindir/$host"
+
+# Taken from the example in
+# http://www.gnu.org/software/automake/manual/html_node/Conditionals.html.
+AC_ARG_ENABLE(install-warnings,
+  [  --disable-install-warnings  omit make install warnings about TeX files],
+  [case "${enableval}" in
+     yes) install_warnings=true ;;
+      no) install_warnings=false ;;
+       *) AC_MSG_ERROR(bad value ${enableval} for --enable-install-warnings) ;;
+   esac],
+   [install_warnings=true])
+AM_CONDITIONAL(INSTALL_WARNINGS, $install_warnings)
 
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c --intl
