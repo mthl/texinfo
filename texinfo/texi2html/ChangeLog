@@ -3,8 +3,10 @@
 	moved from texi2html.init to texi2html.pl, such that texi2html.init
 	resembles a regular user init file. internationalization move
 	from texi2html.init to T2h_i18n.pm. 
-	* configure, doc/Makefile.in, Makefile.in, aclocal.m4: regenerated
-	with automake-1.6.3, autoconf-2.53
+	* configure.in: added substitution of T2h_i18n.pm within 
+	texi2html.pl
+	* configure, doc/Makefile.in, Makefile.in, aclocal.m4, 
+	Tests/Makefile.in: regenerated with automake-1.6.3, autoconf-2.53
 
 2003-02-24  Patrice Dumas <dumas@centre-cired.fr>
 	* Tests: small fixes, more tests showing brokeness of texi2html
