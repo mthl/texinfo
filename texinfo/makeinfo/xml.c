@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.33 2003-11-17 21:27:29 dirt Exp $
+   $Id: xml.c,v 1.34 2003-11-18 22:20:58 karl Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1918,12 +1918,13 @@ xml_begin_def_term (base_type, category, defined_name,
     case defcv:
       execute_string ("@vindex %s\n", defined_name);
       break;
+    case deftypecv:
     case deftypeivar:
       execute_string ("@vindex %s %s %s\n", defined_name, _("of"), type_name);
       break;
+    case deftypemethod:
     case defop:
     case deftypeop:
-    case deftypemethod:
       execute_string ("@findex %s %s %s\n", defined_name, _("on"), type_name);
       break;
     case deftp:
@@ -1953,9 +1954,10 @@ xml_begin_def_term (base_type, category, defined_name,
       add_char (' ');
       break;
 
+    case deftypecv:
+    case deftypeivar:
     case deftypemethod:
     case deftypeop:
-    case deftypeivar:
       xml_insert_element (DEFTYPE, START);
       execute_string ("%s", type_name2);
       xml_insert_element (DEFTYPE, END);
@@ -1994,6 +1996,7 @@ xml_begin_def_term (base_type, category, defined_name,
       break;
 
     case defcv:
+    case deftypecv:
     case deftypeivar:
       xml_insert_element (DEFCLASSVAR, START);
       execute_string ("%s", defined_name);

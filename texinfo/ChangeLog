@@ -1,3 +1,8 @@
+2003-11-18  Karl Berry  <karl@gnu.org>
+
+	* cmds.c (command_table): new commands @deftypecv, @deftypecvx.
+	* defun.c, insertion.[ch], xml.c: implement them.
+
 2003-11-18  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/makeinfo.c (execute_string): better para handling in case

@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.9 2003-10-29 18:32:15 karl Exp $
+   $Id: defun.c,v 1.10 2003-11-18 22:20:56 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -334,6 +334,7 @@ get_base_type (type)
     case defmethod:	base_type = defop; break;
     case defopt:	base_type = defvr; break;
     case defspec:	base_type = deffn; break;
+    case deftypecv:	base_type = deftypecv; break;
     case deftypefun:	base_type = deftypefn; break;
     case deftypeivar:	base_type = deftypeivar; break;
     case deftypemethod:	base_type = deftypemethod; break;
@@ -426,7 +427,8 @@ defun_internal (type, x_p)
     }
 
   /* The class name.  */
-  if ((base_type == deftypefn)
+  if ((base_type == deftypecv)
+      || (base_type == deftypefn)
       || (base_type == deftypevr)
       || (base_type == defcv)
       || (base_type == defop)
@@ -437,8 +439,9 @@ defun_internal (type, x_p)
     type_name = next_nonwhite_defun_arg (&scan_args);
 
   /* The type name for typed languages.  */
-  if ((base_type == deftypemethod)
+  if ((base_type == deftypecv)
       || (base_type == deftypeivar)
+      || (base_type == deftypemethod)
       || (base_type == deftypeop)
      )
     type_name2 = next_nonwhite_defun_arg (&scan_args);
@@ -501,6 +504,7 @@ defun_internal (type, x_p)
         execute_string (" -- %s %s %s: %s", category, _("of"), type_name,
                         defined_name);
         break;
+      case deftypecv:
       case deftypeivar:
         execute_string (" -- %s %s %s: %s %s", category, _("of"), type_name,
                         type_name2, defined_name);
@@ -561,9 +565,10 @@ defun_internal (type, x_p)
           insert_html_tag (END, "b");
           insert_html_tag (START, "i");
           break;
+        case deftypecv:
+        case deftypeivar:
         case deftypemethod:
         case deftypeop:
-        case deftypeivar:
           execute_string ("%s ", type_name2);
           insert_html_tag (START, "b");
           execute_string ("%s", defined_name);
@@ -593,8 +598,9 @@ defun_internal (type, x_p)
           execute_string ("%s", defined_name);
 	  xml_insert_element (FUNCTION, END);
           break;
-        case deftypemethod:
+        case deftypecv:
         case deftypeop:
+        case deftypemethod:
         case deftypeivar:
           execute_string ("%s ", type_name2);
 	  xml_insert_element (FUNCTION, START);
@@ -672,6 +678,7 @@ defun_internal (type, x_p)
 	  execute_string ("%s %s %s", category, _("on"), type_name);
 	  break;
 
+        case deftypecv:
         case deftypeivar:
           insert_html_tag (END, "i");
 	  add_word ("</td>\n");
@@ -712,18 +719,21 @@ defun_internal (type, x_p)
       case deftypefn:
 	execute_string ("@findex %s\n", defined_name);
 	break;
-      case defvr:
-      case deftypevr:
       case defcv:
+      case deftypecv:
+      case deftypevr:
+      case defvr:
 	execute_string ("@vindex %s\n", defined_name);
 	break;
       case deftypeivar:
-	execute_string ("@vindex %s %s %s\n", defined_name, _("of"), type_name);
+	execute_string ("@vindex %s %s %s\n", defined_name, _("of"),
+                        type_name);
 	break;
       case defop:
       case deftypeop:
       case deftypemethod:
-	execute_string ("@findex %s %s %s\n", defined_name, _("on"), type_name);
+	execute_string ("@findex %s %s %s\n", defined_name, _("on"),
+                        type_name);
 	break;
       case deftp:
 	execute_string ("@tindex %s\n", defined_name);

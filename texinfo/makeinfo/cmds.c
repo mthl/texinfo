@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.33 2003-11-17 07:32:26 dirt Exp $
+   $Id: cmds.c,v 1.34 2003-11-18 22:20:45 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -175,6 +175,8 @@ COMMAND command_table[] = {
   { "defspecx", cm_defun, NO_BRACE_ARGS },
   { "deftp", cm_defun, NO_BRACE_ARGS },
   { "deftpx", cm_defun, NO_BRACE_ARGS },
+  { "deftypecv", cm_defun, NO_BRACE_ARGS },
+  { "deftypecvx", cm_defun, NO_BRACE_ARGS },
   { "deftypefn", cm_defun, NO_BRACE_ARGS },
   { "deftypefnx", cm_defun, NO_BRACE_ARGS },
   { "deftypefun", cm_defun, NO_BRACE_ARGS },

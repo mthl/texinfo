@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.38 2003-11-17 10:09:59 dirt Exp $
+   $Id: insertion.c,v 1.39 2003-11-18 22:20:57 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -30,14 +30,15 @@
 static char *insertion_type_names[] =
 { 
   "cartouche", "copying", "defcv", "deffn", "defivar", "defmac",
-  "defmethod", "defop", "defopt", "defspec", "deftp", "deftypefn",
-  "deftypefun", "deftypeivar", "deftypemethod", "deftypeop",
-  "deftypevar", "deftypevr", "defun", "defvar", "defvr", "detailmenu",
-  "direntry", "display", "documentdescription", "enumerate", "example",
-  "flushleft", "flushright", "format", "ftable", "group", "ifclear", "ifdocbook",
-  "ifhtml", "ifinfo", "ifnotdocbook", "ifnothtml", "ifnotinfo", "ifnotplaintext",
-  "ifnottex", "ifnotxml", "ifplaintext", "ifset", "iftex", "ifxml", "itemize",
-  "lisp", "menu", "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
+  "defmethod", "defop", "defopt", "defspec", "deftp", "deftypecv",
+  "deftypefn", "deftypefun", "deftypeivar", "deftypemethod",
+  "deftypeop", "deftypevar", "deftypevr", "defun", "defvar", "defvr",
+  "detailmenu", "direntry", "display", "documentdescription",
+  "enumerate", "example", "flushleft", "flushright", "format", "ftable",
+  "group", "ifclear", "ifdocbook", "ifhtml", "ifinfo", "ifnotdocbook",
+  "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex", "ifnotxml",
+  "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp", "menu",
+  "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
   "smallexample", "smallformat", "smalllisp", "verbatim", "table",
   "tex", "vtable", "titlepage", "bad_type"
 };
@@ -252,6 +253,7 @@ defun_insertion (type)
      || (type == defopt)
      || (type == defspec)
      || (type == deftp)
+     || (type == deftypecv)
      || (type == deftypefn)
      || (type == deftypefun)
      || (type == deftypeivar)
@@ -701,6 +703,7 @@ begin_insertion (type)
     case defopt:
     case defspec:
     case deftp:
+    case deftypecv:
     case deftypefn:
     case deftypefun:
     case deftypeivar:
@@ -983,6 +986,7 @@ end_insertion (type)
           case deffn:
           case defvr:
           case deftp:
+          case deftypecv:
           case deftypefn:
           case deftypevr:
           case defcv:
