@@ -1,3 +1,14 @@
+2003-07-29  Patrice Dumas <dumas@centre-cired.fr>
+	
+	* texi2html.pl, texi2html.init: if split, top and misc elements (about,
+	toc, ...) always have a bottom navigation panel.
+	If there is no @top and the @node Top isn't associated with any section
+	it is considered to be the top element.
+	The top name is Top when there is no name nor title (previously was
+	"Untitled Document").
+	bugfix: top element handled as top even when it is the last element.
+	
+
 2003-07-22  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, examples/*: add support for @cartouche
