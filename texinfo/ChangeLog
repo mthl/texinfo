@@ -1,3 +1,10 @@
+2003-04-29    <karl@gnu.org>
+
+	* makeinfo/node.c (cm_anchor): normalize_node_name so that an
+	anchor named "TOP" or "top" or whatever is not allowed.  Report
+	from: Dumas Patrice <dumas@centre-cired.fr>, 29 Apr 2003 18:56:51
+	+0200.
+
 2003-04-28    <karl@gnu.org>
 
 	* makeinfo/makeinfo.c: whitespace cleanup.
