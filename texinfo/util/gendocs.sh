@@ -1,11 +1,38 @@
 #!/bin/sh
+# gendocs.sh -- generate a GNU manual in many formats.  This script is
+#   mentioned in maintain.texi.  See the help message below for usage details.
+# $Id: gendocs.sh,v 1.2 2003-10-21 23:35:44 karl Exp $
+# 
+# Copyright (C) 2003 Free Software Foundation, Inc.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, you can either send email to this
+# program's maintainer or write to: The Free Software Foundation,
+# Inc.; 59 Temple Place, Suite 330; Boston, MA 02111-1307, USA.
+#
+# Original author: Mohit Agarwal.
 
 prog="`basename \"$0\"`"
 srcdir=`pwd`
-: ${MAKEINFO="/home/fsf/mohit/bin/makeinfo"}
-: ${TEXI2DVI="/home/fsf/mohit/bin/texi2dvi"}
-DVIPS="/usr/bin/dvips"
-TEXI2HTML="/home/fsf/mohit/bin/texi2html"
+
+scripturl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs.sh"
+templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendocs_template"
+
+: ${MAKEINFO="makeinfo"}
+: ${TEXI2DVI="texi2dvi"}
+: ${DVIPS="dvips"}
+: ${GENDOCS_TEMPLATE_DIR="."}
+unset CDPATH
 
 calcsize()
 {
@@ -15,14 +42,43 @@ calcsize()
 
 curdate="`date '+%B %d, %Y'`"
 
-if test $# -eq 2 ;
-then
+if test $# -eq 2; then
   PACKAGE=$1
   MANUAL_TITLE=$2
-  echo Generating the manual for ${PACKAGE}
+  echo Generating the manual for $PACKAGE
 else
-  echo usage: $prog package_name manual_title
-  echo example: $prog emacs \"GNU Emacs Manual\"
+  cat <<END_HELP
+Usage: $prog PACKAGE MANUAL_TITLE
+
+Generate various output formats from PACKAGE.texinfo (or .texi or .txi) source.
+Example: $prog emacs \"GNU Emacs Manual\"
+
+Typical sequence:
+  cd YOURPACKAGESOURCE/doc
+  wget "$scripturl"
+  wget "$templateurl"
+  $prog YOURMANUAL "YOURMANUAL - One-line description"
+
+Output will be in a new subdirectory "manual".  Move all the new files
+into your web CVS tree, as explained in the Web Pages node of maintain.texi:
+http://www.gnu.org/prep/maintain_toc.html
+
+MANUAL_TITLE is included as part of the HTML <title> of the overall
+manual/index.html file.  It should include the name of the package being
+documented.  manual/index.html is created by substitution from the file
+$GENDOCS_TEMPLATE_DIR/gendocs_template; you can modify this generic
+version for your own purposes, if you like.
+
+If you have several manuals, you'll need to run this script several
+times with different YOURMANUAL values, and move the contents of the
+resulting manual/ directory after each run to a different subdirectory
+on your web pages.  Then make (by hand) an overall index.html with links
+to them all.
+
+You can set the environment variables MAKEINFO, TEXI2DVI, and DVIPS to
+control the programs that get executed, and GENDOCS_TEMPLATE_DIR to
+control where the gendocs_template file is looked for.
+END_HELP
   exit 1
 fi
 
@@ -37,55 +93,60 @@ else
   exit 1
 fi
 
+if test ! -r $GENDOCS_TEMPLATE_DIR/gendocs_template; then
+  echo "$0: cannot read $GENDOCS_TEMPLATE_DIR/gendocs_template." >&2
+  echo "$0: it is available from $templateurl." >&2
+  exit 1
+fi
+
 echo Creating manual for the package $PACKAGE
+# remove any old junk
+rm -rf manual
 
 echo Generating info files...
-${MAKEINFO} -o ${PACKAGE}.info $srcfile
-tar zcf ${PACKAGE}-info.tar.gz ${PACKAGE}.info*
-mkdir -p ${srcdir}/manual/info/
-info_tgz_size="`calcsize ${srcdir}/${PACKAGE}-info.tar.gz`"
-mv ${srcdir}/${PACKAGE}-info.tar.gz ${srcdir}/manual/info/
+${MAKEINFO} -o $PACKAGE.info $srcfile
+mkdir -p manual/
+tar czf manual/$PACKAGE-info.tar.gz $PACKAGE.info*
+info_tgz_size="`calcsize manual/$PACKAGE-info.tar.gz`"
+# do not mv the info files, there's no point in having them available
+# separately on the web.
 
-echo Generating dvi from texinfo sources...
+echo Generating dvi ...
 ${TEXI2DVI} $srcfile
+
+# now, before we compress dvi:
 echo Generating postscript...
-${DVIPS} ${srcdir}/${PACKAGE} -o
-gzip -f -9 ${srcdir}/${PACKAGE}.dvi
-dvi_gz_size="`calcsize ${srcdir}/${PACKAGE}.dvi.gz`"
-mkdir -p -p ${srcdir}/manual/dvi
-mv ${srcdir}/${PACKAGE}.dvi.gz ${srcdir}/manual/dvi/
-gzip -f -9 ${srcdir}/${PACKAGE}.ps
-ps_gz_size="`calcsize ${srcdir}/${PACKAGE}.ps.gz`"
-mkdir -p ${srcdir}/manual/ps/
-mv ${srcdir}/${PACKAGE}.ps.gz ${srcdir}/manual/ps/
+${DVIPS} $PACKAGE -o
+gzip -f -9 $PACKAGE.ps
+ps_gz_size="`calcsize $PACKAGE.ps.gz`"
+mv $PACKAGE.ps.gz manual/
+
+# compress/finish dvi:
+gzip -f -9 $PACKAGE.dvi
+dvi_gz_size="`calcsize $PACKAGE.dvi.gz`"
+mv $PACKAGE.dvi.gz manual/
+
+echo Generating pdf ...
+${TEXI2DVI} --pdf $srcfile
+pdf_size="`calcsize $PACKAGE.pdf`"
+mv $PACKAGE.pdf manual/
 
 echo Generating ASCII...
-${MAKEINFO} --no-split --no-headers $srcfile > ${srcdir}/${PACKAGE}.txt
-ascii_size="`calcsize ${srcdir}/${PACKAGE}.txt`"
-gzip -f -9 ${srcdir}/${PACKAGE}.txt
-gzip -dc ${srcdir}/${PACKAGE}.txt.gz > ${srcdir}/${PACKAGE}.txt
-ascii_gz_size="`calcsize ${srcdir}/${PACKAGE}.txt.gz`"
-mkdir -p ${srcdir}/manual/text
-mv ${srcdir}/${PACKAGE}.txt* ${srcdir}/manual/text/
+${MAKEINFO} -o - --no-split --no-headers $srcfile > ${srcdir}/$PACKAGE.txt
+ascii_size="`calcsize $PACKAGE.txt`"
+gzip -f -9 -c $PACKAGE.txt >manual/$PACKAGE.txt.gz
+ascii_gz_size="`calcsize manual/$PACKAGE.txt.gz`"
+mv $PACKAGE.txt manual/
 
-echo Generating monolithic HTML...
+echo Generating monolithic html...
 rm -rf $PACKAGE.html  # in case a directory is left over
 ${MAKEINFO} --no-split --html $srcfile
-html_mono_size="`calcsize ${srcdir}/${PACKAGE}.html`"
-gzip -f -9 ${srcdir}/${PACKAGE}.html
-gzip -dc ${srcdir}/${PACKAGE}.html.gz > ${srcdir}/${PACKAGE}.html
-html_mono_gz_size="`calcsize ${srcdir}/${PACKAGE}.html.gz`"
-mkdir -p ${srcdir}/manual/html_mono/
-mv ${PACKAGE}.html* ${srcdir}/manual/html_mono/
+html_mono_size="`calcsize $PACKAGE.html`"
+gzip -f -9 -c $PACKAGE.html >manual/$PACKAGE.html.gz
+html_mono_gz_size="`calcsize manual/$PACKAGE.html.gz`"
+mv $PACKAGE.html manual/
 
-# echo Generating HTML by chapter...
-# ${TEXI2HTML} -split_chapter $srcfile
-# cd ${srcdir}; tar zcf ${PACKAGE}_html_chapter.tar.gz *.html
-# html_chapter_tgz_size="`calcsize ${srcdir}/${PACKAGE}_html_chapter.tar.gz`"
-# mkdir -p manual/html_chapter/
-# mv *.html ${PACKAGE}_html_chapter.tar.gz manual/html_chapter/
-
-echo Generating HTML by node...
+echo Generating html by node...
 ${MAKEINFO} --html $srcfile
 if test -d $PACKAGE; then
   split_html_dir=$PACKAGE
@@ -94,23 +155,20 @@ elif test -d $PACKAGE.html; then
 else 
   echo "$0: can't find split html dir for $srcfile." >&2
 fi
-cd ${split_html_dir}
-tar -zcf ${PACKAGE}_html_node.tar.gz -- *.html
-mv ${PACKAGE}_html_node.tar.gz ${srcdir}/ ; cd ${srcdir}
-html_node_tgz_size="`calcsize ${srcdir}/${PACKAGE}_html_node.tar.gz`"
-mkdir -p manual/html_node/
-mv ${split_html_dir}/*.html ${PACKAGE}_html_node.tar.gz manual/html_node/
-rmdir ${split_html_dir}
+(
+  cd ${split_html_dir} || exit 1
+  tar -czf ../manual/$PACKAGE_html_node.tar.gz -- *.html
+)
+html_node_tgz_size="`calcsize manual/$PACKAGE_html_node.tar.gz`"
+mv ${split_html_dir} manual/html_node
 
 echo Making .tar.gz for sources...
 srcfiles=`ls *.texinfo *.texi *.txi 2>/dev/null`
-tar zcfh ${PACKAGE}.texi.tar.gz $srcfiles
-mkdir -p manual/texi/
-texi_tgz_size="`calcsize ${PACKAGE}.texi.tar.gz`"
-mv ${PACKAGE}.texi.tar.gz manual/texi/
+tar czfh manual/$PACKAGE.texi.tar.gz $srcfiles
+texi_tgz_size="`calcsize manual/$PACKAGE.texi.tar.gz`"
 
 echo Writing index file...
-cat /home/m/mohit/gnudoc/gnudoc_template | sed \
+sed \
    -e "s/%%TITLE%%/$MANUAL_TITLE/g" \
    -e "s/%%DATE%%/$curdate/g" \
    -e "s/%%PACKAGE%%/$PACKAGE/g" \
@@ -118,11 +176,14 @@ cat /home/m/mohit/gnudoc/gnudoc_template | sed \
    -e "s/%%HTML_MONO_GZ_SIZE%%/$html_mono_gz_size/g" \
    -e "s/%%HTML_NODE_TGZ_SIZE%%/$html_node_tgz_size/g" \
    -e "s/%%INFO_TGZ_SIZE%%/$info_tgz_size/g" \
+   -e "s/%%DVI_GZ_SIZE%%/$dvi_gz_size/g" \
+   -e "s/%%PDF_SIZE%%/$pdf_size/g" \
+   -e "s/%%PS_GZ_SIZE%%/$ps_gz_size/g" \
    -e "s/%%ASCII_SIZE%%/$ascii_size/g" \
    -e "s/%%ASCII_GZ_SIZE%%/$ascii_gz_size/g" \
-   -e "s/%%DVI_GZ_SIZE%%/$dvi_gz_size/g" \
-   -e "s/%%PS_GZ_SIZE%%/$ps_gz_size/g" \
    -e "s/%%TEXI_TGZ_SIZE%%/$texi_tgz_size/g" \
-  > ${srcdir}/manual/${PACKAGE}.html
+   -e "s,%%SCRIPTURL%%,$scripturl,g" \
+   -e "s/%%SCRIPTNAME%%/$prog/g" \
+$GENDOCS_TEMPLATE_DIR/gendocs_template >manual/index.html
 
-echo Done!
+echo "Done!  See manual/ subdirectory for new files."
