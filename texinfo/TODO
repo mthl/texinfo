@@ -1,4 +1,4 @@
-$Id: TODO,v 1.19 2003-11-28 16:23:54 karl Exp $
+$Id: TODO,v 1.20 2003-11-28 23:40:15 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -81,7 +81,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
 
 * Makeinfo:
-  - Support image scaling, at least in HTML.
   - Try directory of main source file.
   - Make makeinfo -E just do macro expansion, avoiding all error checks.
     That way, texi2dvi could run makeinfo --iftex -E.
@@ -90,8 +89,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     the way to a speller.  An option would be to NOT strip comments out.
     makeinfo --no-headers comes close.
   - If node name contains an @ command, complain explicitly.
-  - Better HTML output: allow settable background color, table colors
-    and spacing, <head> meta tags, etc.
+  - Use @documentlanguage instead of LANG.
+  - HTML: support thumbnails.
+  - HTML: allow settable background color, table colors and spacing,
+    <head> meta tags, etc.  A la http://texi2html.cvshome.org.
   - Rewrite completely to simplify generation of different formats.
 
 * TeX:
@@ -145,7 +146,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
 * texindex:
   - read source file (specified by new option) for @documentlanguage
-  and/or @documentencoding, and change the sorting appropriately.
+    and/or @documentencoding, and change the sorting appropriately.
   From: Wojciech Polak <polak@gnu.org>, 26 Apr 2003 11:30:59 +0200.
 
 
