@@ -1,3 +1,13 @@
+2003-01-02    <karl@gnu.org>
+
+	* makeinfo/insertion.c (end_insertion): in table case, call
+	close_insertion_paragraph.  Bug report from: Kevin
+	Ryde <user42@zip.com.au>, 03 Jan 2003 08:09:54 +1000.
+
+	* doc/texinfo.tex: remove spurious CTRL-G.
+
+	* util/srclist.txt: more m4 files from gnulib now.
+
 2003-01-01    <karl@gnu.org>
 
 	* doc/texinfo.tex (\_): more space afterwards, so __ comes out
