@@ -1,3 +1,19 @@
+2003-04-04  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: deffn and the like better handled
+	preformatted sections are closed when there is a new format
+	and reopened right after the format such that there is no
+	validation error. The preformatted state is kept within
+	menu, deff body, simple formats, tables, with tt instead of
+	pre for terms, as pre isn't allowed in dt, but not in 
+	indices.
+	simple macros are better handled when texi macros are removed
+	or in preformatted sections.
+	copying/end copying and insertcopying handled
+	@head_lines containing things which should be before the navigation
+	panel are used to get the labels for elements.
+	first page of index is handled like a normal format
+	* Tests/*: more tests for imbrications.
+	
 2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: footnotes better handled, they have a separated
 	stack, state and text.

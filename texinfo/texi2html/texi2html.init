@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.19 2003-04-02 13:02:27 pertusus Exp $
+# $Id: texi2html.init,v 1.20 2003-04-04 17:03:46 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -228,6 +228,9 @@ $T2H_NO_NODE = 1;
 # or the previous of the next node isn't the node
 $T2H_WARN_PREV_NEXT = 0;
 
+# this controls the pre style for menus
+$T2H_MENU_PRE_STYLE = 'style="font-family: serif"';
+
 # if set (e.g., to index.html) replace hrefs to this file
 # (i.e., to index.html) by ./
 $T2H_HREF_DIR_INSTEAD_FILE = '';
@@ -373,15 +376,14 @@ $T2H_BODYTEXT = undef;
 
 # As a general interface, the hashes T2H_HREF, T2H_NAME, T2H_NODE hold
 # href, html-name, node-name of
-# This      -- current section (resp. html page)
-# Top       -- top page ($T2H_TOP_FILE)
-# Contents  -- Table of contents
-# Overview  -- Short table of contents
-# Index     -- Index page
-# About     -- page which explain "navigation buttons"
-# First     -- first node
-# Last      -- last node
-# Footnotes -- footnotes
+# This     -- current section (resp. html page)
+# Top      -- top page ($T2H_TOP_FILE)
+# Contents -- Table of contents
+# Overview -- Short table of contents
+# Index    -- Index page
+# About    -- page which explain "navigation buttons"
+# First    -- first node
+# Last     -- last node
 #
 # Whether or not the following hash values are set, depends on the context
 # (all values are w.r.t. 'This' section)
@@ -398,6 +400,7 @@ $T2H_BODYTEXT = undef;
 # $T2H_THISDOC{fulltitle}      -- full title as set by @title...
 # $T2H_THISDOC{subtitle}       -- subtitle as set by @subtitle
 # $T2H_THISDOC{author}         -- author as set by @author
+# $T2H_THISDOC{copying}        -- text of @copying and @end copying in comment
 #
 # $T2H_THISDOC{program}          -- name and version of texi2html
 # $T2H_THISDOC{program_homepage} -- homepage for texi2html
@@ -409,6 +412,7 @@ $T2H_BODYTEXT = undef;
 # $T2H_TOC           -- lines of table of contents
 # $T2H_TOP           -- lines of Top texinfo node
 # $T2H_THIS_SECTION  -- lines of 'This' section
+# $T2H_THIS_HEADER   -- lines preceding navigation panel of 'This' section
 
 #
 # There are the following subs which control the layout:
@@ -470,7 +474,8 @@ sub T2H_DEFAULT_print_Top_header
     my $fh = shift;
     my $buttons = shift;
     &$T2H_print_page_head($fh, $buttons) if $T2H_SPLIT;
-    t2h_print_label($fh);        # this needs to be called, otherwise no label set
+    # this needs to be called, otherwise no label set
+    t2h_print_lines($fh, $T2H_THIS_HEADER);
     &$T2H_print_head_navigation($fh, $buttons);
 }
 sub T2H_DEFAULT_print_Top_footer
@@ -547,7 +552,7 @@ sub T2H_DEFAULT_print_misc_header
     my $buttons = shift;
     &$T2H_print_page_head($fh, $buttons) if $T2H_SPLIT;
     # this needs to be called, otherwise, no labels are set
-    t2h_print_label($fh);
+    t2h_print_lines($fh, $T2H_THIS_HEADER);
     &$T2H_print_head_navigation($fh, $buttons);
 }
 sub T2H_DEFAULT_print_misc_footer
@@ -605,7 +610,7 @@ sub T2H_DEFAULT_print_page_head
     print $fh <<EOT;
 $T2H_DOCTYPE
 <html>
-<!-- Created on $T2H_THISDOC{today} by $T2H_THISDOC{program} -->
+$T2H_THISDOC{'copying'}<!-- Created on $T2H_THISDOC{today} by $T2H_THISDOC{program} -->
 <!--
 $T2H_THISDOC{program_authors}
 -->
@@ -658,6 +663,7 @@ sub T2H_DEFAULT_print_head_navigation
 <td align="left">
 EOT
     }
+    t2h_print_lines($fh, $T2H_THIS_HEADER);
     &$T2H_print_navigation($fh, $buttons, $T2H_VERTICAL_HEAD_NAVIGATION);
     if ($T2H_VERTICAL_HEAD_NAVIGATION)
     {

@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD98"></a>
+<a name="SEC110"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_13.html#SEC109" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC111" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,19 +37,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD98"></a>
-<a name="SEC110"></a>
 <h1> 11. Controlling the Display </h1>
 
 <p>  Since only part of a large buffer fits in the window, XEmacs tries to show
 the part that is likely to be interesting.  The display control commands
 allow you to specify which part of the text you want to see.
 </p><dl compact="compact">
- <dt><kbd> C-l
+<dt><kbd> C-l
 </kbd></dt>
 <dd><p>Clear frame and redisplay, scrolling the selected window to center
 point vertically within it (<code>recenter</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-v
 </kbd></dt>
 <dt><kbd> pgdn
@@ -57,7 +57,7 @@ point vertically within it (<code>recenter</code>).
 <dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
 On most X keyboards, you can get this functionality using the key
 labelled `<samp>Page Down</samp>', which generates either <kbd>next</kbd> or <kbd>pgdn</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-v
 </kbd></dt>
 <dt><kbd> pgup
@@ -67,11 +67,11 @@ labelled `<samp>Page Down</samp>', which generates either <kbd>next</kbd> or <kb
 <dd><p>Scroll backward (<code>scroll-down</code>).  On most X keyboards, you can get
 this functionality using the key labelled `<samp>Page Up</samp>', which
 generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> <var>arg</var> C-l
 </kbd></dt>
 <dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x &lt;
 </kbd></dt>
 <dt><kbd> C-pgdn
@@ -79,7 +79,7 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 <dt><kbd> C-next
 </kbd></dt>
 <dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x &gt;
 </kbd></dt>
 <dt><kbd> C-pgup
@@ -87,7 +87,7 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 <dt><kbd> C-prior
 </kbd></dt>
 <dd><p>Scroll to the right (<code>scroll-right</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x $
 </kbd></dt>
 <dd><p>Make deeply indented lines invisible (<code>set-selective-display</code>).
@@ -103,6 +103,8 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 </table>
 
 <hr size="6">
+<a name="NOD99"></a>
+<a name="SEC111"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC110" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC112" title="Next section in reading order"> &gt; </a>]</td>
@@ -114,8 +116,6 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD99"></a>
-<a name="SEC111"></a>
 <h2> 11.1 Scrolling </h2>
 
 <p>  If a buffer contains text that is too large to fit entirely within the
@@ -130,11 +130,11 @@ text down and new text appears at the top.
 of the window.  You can also explicitly request scrolling with the commands
 in this section.
 </p><dl compact="compact">
- <dt><kbd> C-l
+<dt><kbd> C-l
 </kbd></dt>
 <dd><p>Clear frame and redisplay, scrolling the selected window to center
 point vertically within it (<code>recenter</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-v
 </kbd></dt>
 <dt><kbd> pgdn
@@ -142,7 +142,7 @@ point vertically within it (<code>recenter</code>).
 <dt><kbd> next
 </kbd></dt>
 <dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-v
 </kbd></dt>
 <dt><kbd> pgup
@@ -150,7 +150,7 @@ point vertically within it (<code>recenter</code>).
 <dt><kbd> prior
 </kbd></dt>
 <dd><p>Scroll backward (<code>scroll-down</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> <var>arg</var> C-l
 </kbd></dt>
 <dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
@@ -218,6 +218,8 @@ scrolling fast, regardless of <code>scroll-step</code>.  To prevent this, set
 <code>scroll-conservatively</code> to a small value, which will have the
 result of overriding the redisplay preemption.
 </p><hr size="6">
+<a name="NOD100"></a>
+<a name="SEC112"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC111" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC113" title="Next section in reading order"> &gt; </a>]</td>
@@ -229,15 +231,13 @@ result of overriding the redisplay preemption.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD100"></a>
-<a name="SEC112"></a>
 <h2> 11.2 Horizontal Scrolling </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x &lt;
+<dt><kbd> C-x &lt;
 </kbd></dt>
 <dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x &gt;
 </kbd></dt>
 <dd><p>Scroll to the right (<code>scroll-right</code>).
@@ -264,6 +264,8 @@ similarly to the right.  The window cannot be scrolled any farther to
 the right once it is displaying normally (with each line starting at the
 window's left margin); attempting to do so has no effect.
 </p><hr size="6">
+<a name="NOD101"></a>
+<a name="SEC113"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC112" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC114" title="Next section in reading order"> &gt; </a>]</td>
@@ -275,8 +277,6 @@ window's left margin); attempting to do so has no effect.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD101"></a>
-<a name="SEC113"></a>
 <h2> 11.3 Selective Display </h2>
 
 <p>  XEmacs can hide lines indented more than a certain number
@@ -297,6 +297,8 @@ dots.
 as if they were not there.
 </p><p>  To make everything visible again, type <kbd>C-x $</kbd> with no argument.
 </p><hr size="6">
+<a name="NOD102"></a>
+<a name="SEC114"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC113" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_15.html#SEC115" title="Next section in reading order"> &gt; </a>]</td>
@@ -308,8 +310,6 @@ as if they were not there.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD102"></a>
-<a name="SEC114"></a>
 <h2> 11.4 Variables Controlling Display </h2>
 
 <p>  This section contains information for customization only.  Beginning

@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD162"></a>
+<a name="SEC175"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_18.html#SEC174" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC176" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD162"></a>
-<a name="SEC175"></a>
 <h1> 16. Multiple Windows </h1>
 
 <p>  Emacs can split the frame into two or many windows, which can display
@@ -53,6 +53,8 @@ the Emacs frame have multiple subwindows.
 </table>
 
 <hr size="6">
+<a name="NOD163"></a>
+<a name="SEC176"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC175" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC177" title="Next section in reading order"> &gt; </a>]</td>
@@ -64,8 +66,6 @@ the Emacs frame have multiple subwindows.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD163"></a>
-<a name="SEC176"></a>
 <h2> 16.1 Concepts of Emacs Windows </h2>
 
 <p>  When Emacs displays multiple windows, each window has one Emacs
@@ -94,6 +94,8 @@ modification status, and major and minor modes of the buffer that is
 displayed in the window.  See section <a href="xemacs_4.html#SEC10">The Mode Line</a>, for details on the mode
 line.
 </p><hr size="6">
+<a name="NOD164"></a>
+<a name="SEC177"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC176" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC178" title="Next section in reading order"> &gt; </a>]</td>
@@ -105,25 +107,23 @@ line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD164"></a>
-<a name="SEC177"></a>
 <h2> 16.2 Splitting Windows </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x 2
+<dt><kbd> C-x 2
 </kbd></dt>
 <dd><p>Split the selected window into two windows, one above the other
 (<code>split-window-vertically</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 3
 </kbd></dt>
 <dd><p>Split the selected window into two windows positioned side by side
 (<code>split-window-horizontally</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 6
 </kbd></dt>
 <dd><p>Save the current window configuration in register <var>reg</var> (a letter).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 7
 </kbd></dt>
 <dd><p>Restore (make current) the window configuration in register
@@ -164,6 +164,8 @@ supplying a <var>register</var> argument to <code>window-configuration-to-regist
 <code>window-configuration-to-register</code>, use <code>jump-to-register</code>
 (<kbd>C-x j</kbd>).
 </p><hr size="6">
+<a name="NOD165"></a>
+<a name="SEC178"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC177" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC179" title="Next section in reading order"> &gt; </a>]</td>
@@ -175,24 +177,22 @@ supplying a <var>register</var> argument to <code>window-configuration-to-regist
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD165"></a>
-<a name="SEC178"></a>
 <h2> 16.3 Using Other Windows </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x o
+<dt><kbd> C-x o
 </kbd></dt>
 <dd><p>Select another window (<code>other-window</code>).  That is the letter `o', not zero.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-C-v
 </kbd></dt>
 <dd><p>Scroll the next window (<code>scroll-other-window</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x compare-windows
 </kbd></dt>
 <dd><p>Find the next place where the text in the selected window does not match
 the text in the next window.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x other-window-any-frame <var>n</var>
 </kbd></dt>
 <dd><p>Select the <var>n</var>th different window on any frame.
@@ -238,6 +238,8 @@ whitespace is skipped.
 </p><p>If <code>compare-ignore-case</code> is non-<code>nil</code>, changes in case are
 also ignored.
 </p><hr size="6">
+<a name="NOD166"></a>
+<a name="SEC179"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC178" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC180" title="Next section in reading order"> &gt; </a>]</td>
@@ -249,8 +251,6 @@ also ignored.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD166"></a>
-<a name="SEC179"></a>
 <h2> 16.4 Displaying in Another Window </h2>
 
 <p>  <kbd>C-x 4</kbd> is a prefix key for commands that select another window
@@ -263,27 +263,27 @@ buffer to select.
 <a name="IDX682"></a>
 <a name="IDX683"></a>
 <dl compact="compact">
- <dt><kbd> C-x 4 b <var>bufname</var> <kbd>RET</kbd>
+<dt><kbd> C-x 4 b <var>bufname</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Select buffer <var>bufname</var> in another window.  This runs
 <code>switch-to-buffer-other-window</code>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 f <var>filename</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Visit file <var>filename</var> and select its buffer in another window.  This
 runs <code>find-file-other-window</code>.  See section <a href="xemacs_17.html#SEC136">Visiting Files</a>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 d <var>directory</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Select a Dired buffer for directory <var>directory</var> in another window.
 This runs <code>dired-other-window</code>.  See section <a href="xemacs_17.html#SEC163">Dired, the Directory Editor</a>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 m
 </kbd></dt>
 <dd><p>Start composing a mail message in another window.  This runs
 <code>mail-other-window</code>, and its same-window version is <kbd>C-x m</kbd>
 (see section <a href="xemacs_28.html#SEC296">Sending Mail</a>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 .
 </kbd></dt>
 <dd><p>Find a tag in the current tag table in another window.  This runs
@@ -300,6 +300,8 @@ currently selected window is not acceptable. Commands such as
 <code>switch-to-buffer-other-window</code> and <code>find-file-other-window</code>
 work using this function.
 </p><hr size="6">
+<a name="NOD167"></a>
+<a name="SEC180"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC179" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_20.html#SEC181" title="Next section in reading order"> &gt; </a>]</td>
@@ -311,28 +313,26 @@ work using this function.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD167"></a>
-<a name="SEC180"></a>
 <h2> 16.5 Deleting and Rearranging Windows </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x 0
+<dt><kbd> C-x 0
 </kbd></dt>
 <dd><p>Get rid of the selected window (<code>delete-window</code>).  That is a zero.
 If there is more than one Emacs frame, deleting the sole remaining
 window on that frame deletes the frame as well. If the current frame
 is the only frame, it is not deleted.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 1
 </kbd></dt>
 <dd><p>Get rid of all windows except the selected one
 (<code>delete-other-windows</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x ^
 </kbd></dt>
 <dd><p>Make the selected window taller, at the expense of the other(s)
 <br>(<code>enlarge-window</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x }
 </kbd></dt>
 <dd><p>Make the selected window wider (<code>enlarge-window-horizontally</code>).
@@ -379,7 +379,7 @@ manager operations.  This menu contains the following options:
 <a name="IDX696"></a>
 <a name="IDX697"></a>
 <dl compact="compact">
- <dt><b> Delete Window
+<dt><b> Delete Window
 </b></dt>
 <dd><p>Remove the window above this modeline from the frame.
 </p></dd>

@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD259"></a>
+<a name="SEC285"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_25.html#SEC284" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC286" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD259"></a>
-<a name="SEC285"></a>
 <h1> 23. Abbrevs </h1>
 
 <p>  An <em>abbrev</em> is a word which <em>expands</em> into some
@@ -77,6 +77,8 @@ current contents of the buffer.  See section <a href="#SEC290">Dynamic Abbrev Ex
 </table>
 
 <hr size="6">
+<a name="NOD260"></a>
+<a name="SEC286"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC285" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC287" title="Next section in reading order"> &gt; </a>]</td>
@@ -88,30 +90,28 @@ current contents of the buffer.  See section <a href="#SEC290">Dynamic Abbrev Ex
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD260"></a>
-<a name="SEC286"></a>
 <h2> 23.1 Defining Abbrevs </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x a g
+<dt><kbd> C-x a g
 </kbd></dt>
 <dd><p>Define an abbrev to expand into some text before point
 (<code>add-global-abbrev</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x a l
 </kbd></dt>
 <dd><p>Similar, but define an abbrev available only in the current major mode
 (<code>add-mode-abbrev</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x a i g
 </kbd></dt>
 <dd><p>Define a word in the buffer as an abbrev (<code>inverse-add-global-abbrev</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x a i l
 </kbd></dt>
 <dd><p>Define a word in the buffer as a mode-specific abbrev
 (<code>inverse-add-mode-abbrev</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x kill-all-abbrevs
 </kbd></dt>
 <dd><p>After this command, no abbrev definitions remain in effect.
@@ -155,6 +155,8 @@ two definitions are independent for one abbrev.
 </p><a name="IDX1070"></a>
 <p>  <kbd>M-x kill-all-abbrevs</kbd> removes all existing abbrev definitions.
 </p><hr size="6">
+<a name="NOD261"></a>
+<a name="SEC287"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC286" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC288" title="Next section in reading order"> &gt; </a>]</td>
@@ -166,8 +168,6 @@ two definitions are independent for one abbrev.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD261"></a>
-<a name="SEC287"></a>
 <h2> 23.2 Controlling Abbrev Expansion </h2>
 
 <p>  An abbrev expands whenever it is in a buffer just before point and you
@@ -181,21 +181,21 @@ outer otter</samp>', `<samp>Foo</samp>' into `<samp>Find outer otter</samp>', an
 variable <code>abbrev-all-caps</code> (a non-<code>nil</code> value chooses the first
 of the two expansions).</p><p>   Two commands are available to control abbrev expansion:
 </p><dl compact="compact">
- <dt><kbd> M-'
+<dt><kbd> M-'
 </kbd></dt>
 <dd><p>Separate a prefix from a following abbrev to be expanded
 (<code>abbrev-prefix-mark</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x a e
 </kbd></dt>
 <dd><p><a name="IDX1072"></a>
 Expand the abbrev before point (<code>expand-abbrev</code>).
 This is effective even when Abbrev mode is not enabled.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x unexpand-abbrev
 </kbd></dt>
 <dd><p>Undo last abbrev expansion.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x expand-region-abbrevs
 </kbd></dt>
 <dd><p>Expand some or all abbrevs found in the region.
@@ -231,6 +231,8 @@ to turn on Abbrev mode first.  It may also be useful together with a
 special set of abbrev definitions for making several global replacements at
 once.  The command is effective even if Abbrev mode is not enabled.
 </p><hr size="6">
+<a name="NOD262"></a>
+<a name="SEC288"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC287" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC289" title="Next section in reading order"> &gt; </a>]</td>
@@ -242,15 +244,13 @@ once.  The command is effective even if Abbrev mode is not enabled.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD262"></a>
-<a name="SEC288"></a>
 <h2> 23.3 Examining and Editing Abbrevs </h2>
 
 <dl compact="compact">
- <dt><kbd> M-x list-abbrevs
+<dt><kbd> M-x list-abbrevs
 </kbd></dt>
 <dd><p>Print a list of all abbrev definitions.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x edit-abbrevs
 </kbd></dt>
 <dd><p>Edit a list of abbrevs; you can add, alter, or remove definitions.
@@ -292,6 +292,8 @@ done.
 that it selects the buffer `<samp>*Abbrevs*</samp>' whereas <code>list-abbrevs</code>
 merely displays it in another window.
 </p><hr size="6">
+<a name="NOD263"></a>
+<a name="SEC289"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC288" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC290" title="Next section in reading order"> &gt; </a>]</td>
@@ -303,29 +305,27 @@ merely displays it in another window.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD263"></a>
-<a name="SEC289"></a>
 <h2> 23.4 Saving Abbrevs </h2>
 
 <p>  These commands allow you to keep abbrev definitions between editing
 sessions.
 </p><dl compact="compact">
- <dt><kbd> M-x write-abbrev-file
+<dt><kbd> M-x write-abbrev-file
 </kbd></dt>
 <dd><p>Write a file describing all defined abbrevs.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x read-abbrev-file
 </kbd></dt>
 <dd><p>Read such an abbrev file and define abbrevs as specified there.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x quietly-read-abbrev-file
 </kbd></dt>
 <dd><p>Similar, but do not display a message about what is going on.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x define-abbrevs
 </kbd></dt>
 <dd><p>Define abbrevs from buffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x insert-abbrevs
 </kbd></dt>
 <dd><p>Insert all abbrevs and their expansions into the buffer.
@@ -361,6 +361,8 @@ similar to the previous commands but work on text in an Emacs buffer.
 <kbd>M-x insert-abbrevs</kbd> inserts text into the current buffer before point,
 describing all current abbrev definitions; <kbd>M-x define-abbrevs</kbd> parses
 the entire current buffer and defines abbrevs accordingly.</p><hr size="6">
+<a name="NOD264"></a>
+<a name="SEC290"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC289" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_27.html#SEC291" title="Next section in reading order"> &gt; </a>]</td>
@@ -372,8 +374,6 @@ the entire current buffer and defines abbrevs accordingly.</p><hr size="6">
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD264"></a>
-<a name="SEC290"></a>
 <h2> 23.5 Dynamic Abbrev Expansion </h2>
 
 <p>  The abbrev facility described above operates automatically as you insert
@@ -384,7 +384,7 @@ happens only when you request it explicitly.
 </p><a name="IDX1088"></a>
 <a name="IDX1089"></a>
 <dl compact="compact">
- <dt><kbd> M-/
+<dt><kbd> M-/
 </kbd></dt>
 <dd><p>Expand the word in the buffer before point as a <em>dynamic abbrev</em>,
 by searching in the buffer for words starting with that abbreviation

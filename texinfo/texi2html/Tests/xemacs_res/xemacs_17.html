@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD121"></a>
+<a name="SEC134"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_16.html#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD121"></a>
-<a name="SEC134"></a>
 <h1> 14. File Handling </h1>
 
 <p>  The basic unit of stored data in Unix is the <em>file</em>.  To edit a file,
@@ -75,6 +75,8 @@ and append to files, and operate on file directories.
 </table>
 
 <hr size="6">
+<a name="NOD122"></a>
+<a name="SEC135"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
@@ -86,8 +88,6 @@ and append to files, and operate on file directories.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD122"></a>
-<a name="SEC135"></a>
 <h2> 14.1 File Names </h2>
 
 <p>  Most Emacs commands that operate on a file require you to specify the
@@ -176,6 +176,8 @@ is performed for single `<samp>$</samp>'.  The Lisp function that performs the
 substitution is called <code>substitute-in-file-name</code>.  The substitution
 is performed only on filenames read as such using the minibuffer.
 </p><hr size="6">
+<a name="NOD123"></a>
+<a name="SEC136"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
@@ -187,25 +189,23 @@ is performed only on filenames read as such using the minibuffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD123"></a>
-<a name="SEC136"></a>
 <h2> 14.2 Visiting Files </h2>
 
 <dl compact="compact">
- <dt><kbd> C-x C-f
+<dt><kbd> C-x C-f
 </kbd></dt>
 <dd><p>Visit a file (<code>find-file</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x C-v
 </kbd></dt>
 <dd><p>Visit a different file instead of the one visited last
 (<code>find-alternate-file</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 C-f
 </kbd></dt>
 <dd><p>Visit a file, in another window (<code>find-file-other-window</code>).  Don't
 change this window.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 5 C-f
 </kbd></dt>
 <dd><p>Visit a file, in another frame (<code>find-file-other-frame</code>).  Don't
@@ -336,6 +336,8 @@ contain list of functions and calls them all, one by one.  In both cases
 the functions receive no arguments.  Visiting a nonexistent file
 runs the <code>find-file-not-found-hooks</code> first.
 </p><hr size="6">
+<a name="NOD124"></a>
+<a name="SEC137"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
@@ -347,30 +349,28 @@ runs the <code>find-file-not-found-hooks</code> first.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD124"></a>
-<a name="SEC137"></a>
 <h2> 14.3 Saving Files </h2>
 
 <p>  <em>Saving</em> a buffer in Emacs means writing its contents back into the file
 that was visited in the buffer.
 </p><dl compact="compact">
- <dt><kbd> C-x C-s
+<dt><kbd> C-x C-s
 </kbd></dt>
 <dd><p>Save the current buffer in its visited file (<code>save-buffer</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x s
 </kbd></dt>
 <dd><p>Save any or all buffers in their visited files (<code>save-some-buffers</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-~
 </kbd></dt>
 <dd><p>Forget that the current buffer has been changed (<code>not-modified</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x C-w
 </kbd></dt>
 <dd><p>Save the current buffer in a specified file, and record that file as
 the one visited in the buffer (<code>write-file</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x set-visited-file-name
 </kbd></dt>
 <dd><p>Change file the name under which the current buffer will be saved.
@@ -466,6 +466,8 @@ all the functions to be called after writing out a buffer to a file.
 </table>
 
 <hr size="6">
+<a name="NOD125"></a>
+<a name="SEC138"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
@@ -477,8 +479,6 @@ all the functions to be called after writing out a buffer to a file.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD125"></a>
-<a name="SEC138"></a>
 <h3> 14.3.1 Backup Files </h3>
 
 <p>  Because Unix does not provide version numbers in file names, rewriting a
@@ -505,6 +505,8 @@ the file again, a new backup file is made by the next save.
 </table>
 
 <hr size="6">
+<a name="NOD126"></a>
+<a name="SEC139"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
@@ -516,8 +518,6 @@ the file again, a new backup file is made by the next save.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD126"></a>
-<a name="SEC139"></a>
 <h4> 14.3.1.1 Single or Numbered Backups </h4>
 
 <p>  If you choose to have a single backup file (the default),
@@ -537,15 +537,15 @@ available.
 <p>  The choice of single backup or numbered backups is controlled by the
 variable <code>version-control</code>.  Its possible values are:
 </p><dl compact="compact">
- <dt><code> t
+<dt><code> t
 </code></dt>
 <dd><p>Make numbered backups.
- </p> </dd>
+</p></dd>
 <dt><code> nil
 </code></dt>
 <dd><p>Make numbered backups for files that have numbered backups already.
 Otherwise, make single backups.
- </p> </dd>
+</p></dd>
 <dt><code> never
 </code></dt>
 <dd><p>Never make numbered backups; always make single backups.
@@ -557,6 +557,8 @@ control the making of backups for that buffer's file.  For example,
 Rmail mode locally sets <code>version-control</code> to <code>never</code> to make sure
 that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 </p><hr size="6">
+<a name="NOD127"></a>
+<a name="SEC140"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC141" title="Next section in reading order"> &gt; </a>]</td>
@@ -568,8 +570,6 @@ that there is only one backup for an Rmail file.  See section <a href="xemacs_30
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD127"></a>
-<a name="SEC140"></a>
 <h4> 14.3.1.2 Automatic Deletion of Backups </h4>
 
 <p>  To prevent unlimited consumption of disk space, Emacs can delete numbered
@@ -590,6 +590,8 @@ really be deleted.
 </p><p>  You can also use Dired's <kbd>.</kbd> (Period) command to delete old versions.
 See section <a href="#SEC163">Dired, the Directory Editor</a>.
 </p><hr size="6">
+<a name="NOD128"></a>
+<a name="SEC141"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC142" title="Next section in reading order"> &gt; </a>]</td>
@@ -601,8 +603,6 @@ See section <a href="#SEC163">Dired, the Directory Editor</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD128"></a>
-<a name="SEC141"></a>
 <h4> 14.3.1.3 Copying vs. Renaming </h4>
 
 <p>  You can make backup files by copying the old file or by renaming it.
@@ -632,6 +632,8 @@ done for files that have multiple names, but renaming may still be done when
 the file being edited has only one name.  If the variable
 <code>backup-by-copying-when-mismatch</code> is non-<code>nil</code>, copying is
 done if renaming would cause the file's owner or group to change.  </p><hr size="6">
+<a name="NOD129"></a>
+<a name="SEC142"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC143" title="Next section in reading order"> &gt; </a>]</td>
@@ -643,8 +645,6 @@ done if renaming would cause the file's owner or group to change.  </p><hr size=
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD129"></a>
-<a name="SEC142"></a>
 <h3> 14.3.2 Protection Against Simultaneous Editing </h3>
 
 <p>  Simultaneous editing occurs when two users visit the same file, both
@@ -670,15 +670,15 @@ and Emacs asks you what to do.  It does this by calling the Lisp function
 does.  The standard definition of this function asks you a
 question and accepts three possible answers:
 </p><dl compact="compact">
- <dt><kbd> s
+<dt><kbd> s
 </kbd></dt>
 <dd><p>Steal the lock.  Whoever was already changing the file loses the lock,
 and you get the lock.
- </p> </dd>
+</p></dd>
 <dt><kbd> p
 </kbd></dt>
 <dd><p>Proceed.  Go ahead and edit the file despite its being locked by someone else.
- </p> </dd>
+</p></dd>
 <dt><kbd> q
 </kbd></dt>
 <dd><p>Quit.  This causes an error (<code>file-locked</code>) and the modification you
@@ -722,6 +722,8 @@ executable permissions for the file. Use the function
 <var>nmask</var> argument. The <code>umask</code> value is the default protection
 mode for new files.
 </p><hr size="6">
+<a name="NOD130"></a>
+<a name="SEC143"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC144" title="Next section in reading order"> &gt; </a>]</td>
@@ -733,8 +735,6 @@ mode for new files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD130"></a>
-<a name="SEC143"></a>
 <h2> 14.4 Reverting a Buffer </h2>
 
 <p>  If you have made extensive changes to a file and then change your mind
@@ -769,6 +769,8 @@ refreshing their contents from the appropriate data.  Buffers created
 randomly with <kbd>C-x b</kbd> cannot be reverted; <code>revert-buffer</code>
 reports an error when asked to do so.
 </p><hr size="6">
+<a name="NOD131"></a>
+<a name="SEC144"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC145" title="Next section in reading order"> &gt; </a>]</td>
@@ -780,8 +782,6 @@ reports an error when asked to do so.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD131"></a>
-<a name="SEC144"></a>
 <h2> 14.5 Auto-Saving: Protection Against Disasters </h2>
 
 <p>  Emacs saves all the visited files from time to time (based on counting
@@ -803,6 +803,8 @@ typing.
 </table>
 
 <hr size="6">
+<a name="NOD132"></a>
+<a name="SEC145"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC144" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC146" title="Next section in reading order"> &gt; </a>]</td>
@@ -814,8 +816,6 @@ typing.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD132"></a>
-<a name="SEC145"></a>
 <h3> 14.5.1 Auto-Save Files </h3>
 
 <p>  Auto-saving does not normally write to the files you visited, because
@@ -848,6 +848,8 @@ buffer.  To inhibit the deletion, set the variable
 name with <kbd>C-x C-w</kbd> or <code>set-visited-file-name</code> renames any
 auto-save file to correspond to the new visited name.
 </p><hr size="6">
+<a name="NOD133"></a>
+<a name="SEC146"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC145" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC147" title="Next section in reading order"> &gt; </a>]</td>
@@ -859,8 +861,6 @@ auto-save file to correspond to the new visited name.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD133"></a>
-<a name="SEC146"></a>
 <h3> 14.5.2 Controlling Auto-Saving </h3>
 
 <p>  Each time you visit a file, auto-saving is turned on for that file's
@@ -893,6 +893,8 @@ is 50k or less; the timeout will be 2 1/4 times this in a 200k buffer, 3
 buffer.
 </p><p>For this variable to have any effect, you must do <code>(require 'timer)</code>.
 </p><hr size="6">
+<a name="NOD134"></a>
+<a name="SEC147"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC146" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC148" title="Next section in reading order"> &gt; </a>]</td>
@@ -904,8 +906,6 @@ buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD134"></a>
-<a name="SEC147"></a>
 <h3> 14.5.3 Recovering Data from Auto-Saves </h3>
 
 <p>  If you want to use the contents of an auto-save file to recover from a
@@ -928,6 +928,8 @@ from a past session.  If you save the data in the visited file and
 then go on to make new changes, turn auto-saving back on
 with <kbd>M-x auto-save-mode</kbd>.
 </p><hr size="6">
+<a name="NOD135"></a>
+<a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC147" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC149" title="Next section in reading order"> &gt; </a>]</td>
@@ -939,8 +941,6 @@ with <kbd>M-x auto-save-mode</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD135"></a>
-<a name="SEC148"></a>
 <h2> 14.6 Version Control </h2>
 
 <p>  <em>Version control systems</em> are packages that can record multiple
@@ -978,6 +978,8 @@ using.
 </table>
 
 <hr size="6">
+<a name="NOD136"></a>
+<a name="SEC149"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC150" title="Next section in reading order"> &gt; </a>]</td>
@@ -989,8 +991,6 @@ using.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD136"></a>
-<a name="SEC149"></a>
 <h3> 14.6.1 Concepts of Version Control </h3>
 
 <p>   When a file is under version control, we also say that it is
@@ -1020,6 +1020,8 @@ can do both of them with a single Emacs command: <kbd>C-x C-q</kbd>
 </p><p>  A <em>snapshot</em> is a coherent collection of versions of the various
 files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
 </p><hr size="6">
+<a name="NOD137"></a>
+<a name="SEC150"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC151" title="Next section in reading order"> &gt; </a>]</td>
@@ -1031,8 +1033,6 @@ files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD137"></a>
-<a name="SEC150"></a>
 <h3> 14.6.2 Editing with Version Control </h3>
 
 <p>  When you visit a file that is maintained using version control, the
@@ -1045,7 +1045,7 @@ normally also the version you are looking at.
 </p><p>  These are the commands for editing a file maintained with
 version control:
 </p><dl compact="compact">
- <dt><kbd> C-x C-q
+<dt><kbd> C-x C-q
 </kbd></dt>
 <dd><p>Check the visited file in or out.
 </p></dd>
@@ -1148,6 +1148,8 @@ command that <kbd>C-x C-q</kbd> uses to do the &quot;real work&quot; when the vi
 file uses version control.  When used for checkin, and given a prefix
 argument, it reads the version number with the minibuffer.
 </p><hr size="6">
+<a name="NOD138"></a>
+<a name="SEC151"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC152" title="Next section in reading order"> &gt; </a>]</td>
@@ -1159,8 +1161,6 @@ argument, it reads the version number with the minibuffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD138"></a>
-<a name="SEC151"></a>
 <h3> 14.6.3 Variables Affecting Check-in and Check-out </h3>
 
 <p>  If <code>vc-suppress-confirm</code> is non-<code>nil</code>, then <kbd>C-x C-q</kbd>
@@ -1195,6 +1195,8 @@ programs by setting the variable <code>vc-path</code>.  These directories
 are searched before the usual search path.  The proper result usually
 happens automatically.
 </p><hr size="6">
+<a name="NOD139"></a>
+<a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC151" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC153" title="Next section in reading order"> &gt; </a>]</td>
@@ -1206,14 +1208,12 @@ happens automatically.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD139"></a>
-<a name="SEC152"></a>
 <h3> 14.6.4 Log Entries </h3>
 
 <p>  When you're editing an initial comment or log entry for inclusion in a
 master file, finish your entry by typing <kbd>C-c C-c</kbd>.
 </p><dl compact="compact">
- <dt><kbd> C-c C-c
+<dt><kbd> C-c C-c
 </kbd></dt>
 <dd><p>Finish the comment edit normally (<code>vc-finish-logentry</code>).
 This finishes check-in.
@@ -1236,6 +1236,8 @@ the minibuffer).
 mode, which involves running two hooks: <code>text-mode-hook</code> and
 <code>vc-log-mode-hook</code>.
 </p><hr size="6">
+<a name="NOD140"></a>
+<a name="SEC153"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC154" title="Next section in reading order"> &gt; </a>]</td>
@@ -1247,15 +1249,13 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD140"></a>
-<a name="SEC153"></a>
 <h3> 14.6.5 Change Logs and VC </h3>
 
 <p>  If you use RCS for a program and also maintain a change log file for
 it (see section <a href="xemacs_24.html#SEC231">Change Logs</a>), you can generate change log entries
 automatically from the version control log entries:
 </p><dl compact="compact">
- <dt><kbd> C-x v a
+<dt><kbd> C-x v a
 </kbd></dt>
 <dd><p><a name="IDX605"></a>
 <a name="IDX606"></a>
@@ -1336,6 +1336,8 @@ Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 comments, you can log the change with an entry beginning with `<samp>#</samp>'
 to avoid putting such trivia into `<tt>ChangeLog</tt>'.
 </p><hr size="6">
+<a name="NOD141"></a>
+<a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC153" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC155" title="Next section in reading order"> &gt; </a>]</td>
@@ -1347,12 +1349,10 @@ to avoid putting such trivia into `<tt>ChangeLog</tt>'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD141"></a>
-<a name="SEC154"></a>
 <h3> 14.6.6 Examining And Comparing Old Versions </h3>
 
 <dl compact="compact">
- <dt><kbd> C-x v ~ <var>version</var> <kbd>RET</kbd>
+<dt><kbd> C-x v ~ <var>version</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Examine version <var>version</var> of the visited file, in a buffer of its
 own (<code>vc-version-other-window</code>).
@@ -1398,6 +1398,8 @@ new versions.  This is because one or both versions normally do not
 exist as files.  They exist only in the records of the master file.
 See section <a href="#SEC162">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
 </p><hr size="6">
+<a name="NOD142"></a>
+<a name="SEC155"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC154" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC156" title="Next section in reading order"> &gt; </a>]</td>
@@ -1409,8 +1411,6 @@ See section <a href="#SEC162">Comparing Files</a>, for more information about <k
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD142"></a>
-<a name="SEC155"></a>
 <h3> 14.6.7 VC Status Commands </h3>
 
 <p>  To view the detailed version control status and history of a file,
@@ -1441,6 +1441,8 @@ text for all the files being checked in.  This can be convenient for
 registering or checking in several files at once, as part of the same
 change.
 </p><hr size="6">
+<a name="NOD143"></a>
+<a name="SEC156"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC155" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC157" title="Next section in reading order"> &gt; </a>]</td>
@@ -1452,8 +1454,6 @@ change.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD143"></a>
-<a name="SEC156"></a>
 <h3> 14.6.8 Renaming VC Work Files and Master Files </h3>
 
 <p>  When you rename a registered file, you must also rename its master
@@ -1465,6 +1465,8 @@ snapshot thus modified may not completely work (see section <a href="#SEC159">Sn
 </p><p>  You cannot use <code>vc-rename-file</code> on a file that is locked by
 someone else.
 </p><hr size="6">
+<a name="NOD144"></a>
+<a name="SEC157"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC156" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC158" title="Next section in reading order"> &gt; </a>]</td>
@@ -1476,8 +1478,6 @@ someone else.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD144"></a>
-<a name="SEC157"></a>
 <h3> 14.6.9 Snapshots </h3>
 
 <p>  A <em>snapshot</em> is a named set of file versions (one for each
@@ -1491,6 +1491,8 @@ system that is ready for distribution to users.
 </table>
 
 <hr size="6">
+<a name="NOD145"></a>
+<a name="SEC158"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC157" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC159" title="Next section in reading order"> &gt; </a>]</td>
@@ -1502,8 +1504,6 @@ system that is ready for distribution to users.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD145"></a>
-<a name="SEC158"></a>
 <h4> 14.6.9.1 Making and Using Snapshots </h4>
 
 <p>  There are two basic commands for snapshots; one makes a
@@ -1512,7 +1512,7 @@ snapshot with a given name, the other retrieves a named snapshot.
 <p>
 <a name="IDX613"></a>
 <a name="IDX614"></a>
- </p> <dt><code> C-x v s <var>name</var> <kbd>RET</kbd>
+</p><dt><code> C-x v s <var>name</var> <kbd>RET</kbd>
 </code></dt>
 <dd><p>Define the last saved versions of every registered file in or under the
 current directory as a snapshot named <var>name</var>
@@ -1539,6 +1539,8 @@ you need not hesitate to create snapshots whenever they are useful.
 snapshot against the current files, or two snapshots against each other,
 or a snapshot against a named version.
 </p><hr size="6">
+<a name="NOD146"></a>
+<a name="SEC159"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC158" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC160" title="Next section in reading order"> &gt; </a>]</td>
@@ -1550,8 +1552,6 @@ or a snapshot against a named version.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD146"></a>
-<a name="SEC159"></a>
 <h4> 14.6.9.2 Snapshot Caveats </h4>
 
 <p>  VC's snapshot facilities are modeled on RCS's named-configuration
@@ -1581,6 +1581,8 @@ retrieve an old snapshot, the renamed file is retrieved under its new
 name, which is not the name that the makefile expects.  So the program
 won't really work as retrieved.
 </p><hr size="6">
+<a name="NOD147"></a>
+<a name="SEC160"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC159" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC161" title="Next section in reading order"> &gt; </a>]</td>
@@ -1592,8 +1594,6 @@ won't really work as retrieved.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD147"></a>
-<a name="SEC160"></a>
 <h3> 14.6.10 Inserting Version Control Headers </h3>
 
 <p>   Sometimes it is convenient to put version identification strings
@@ -1605,7 +1605,7 @@ number of that version.
 <p>  You can use the <kbd>C-x v h</kbd> command (<code>vc-insert-headers</code>) to
 insert a suitable header string.
 </p><dl compact="compact">
- <dt><kbd> C-x v h
+<dt><kbd> C-x v h
 </kbd></dt>
 <dd><p>Insert headers in a file for use with your version-control system.
 </p></dd>
@@ -1658,6 +1658,8 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 #endif /* lint */
 </pre></td></tr></table>
 <hr size="6">
+<a name="NOD148"></a>
+<a name="SEC161"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC160" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC162" title="Next section in reading order"> &gt; </a>]</td>
@@ -1669,8 +1671,6 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD148"></a>
-<a name="SEC161"></a>
 <h2> 14.7 Listing a File Directory </h2>
 
 <p>  Files are organized by Unix into <em>directories</em>.  A <em>directory
@@ -1678,10 +1678,10 @@ listing</em> is a list of all the files in a directory.  Emacs provides
 directory listings in brief format (file names only) and verbose format
 (sizes, dates, and authors included).
 </p><dl compact="compact">
- <dt><kbd> C-x C-d <var>dir-or-pattern</var>
+<dt><kbd> C-x C-d <var>dir-or-pattern</var>
 </kbd></dt>
 <dd><p>Print a brief directory listing (<code>list-directory</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-u C-x C-d <var>dir-or-pattern</var>
 </kbd></dt>
 <dd><p>Print a verbose directory listing.
@@ -1723,6 +1723,8 @@ string should start with ``<samp>^</samp>''.
 via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <code>FROM</code> the name it is linked to.
 </p><hr size="6">
+<a name="NOD149"></a>
+<a name="SEC162"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC161" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC163" title="Next section in reading order"> &gt; </a>]</td>
@@ -1734,8 +1736,6 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD149"></a>
-<a name="SEC162"></a>
 <h2> 14.8 Comparing Files </h2>
 
 <p>  The command <kbd>M-x diff</kbd> compares two files, displaying the
@@ -1767,6 +1767,8 @@ the command is finished.  For more information about windows in Emacs,
 whitespace.  If the variable <code>compare-ignore-case</code> is
 non-<code>nil</code>, it ignores differences in case as well.
 </p><hr size="6">
+<a name="NOD150"></a>
+<a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC162" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC164" title="Next section in reading order"> &gt; </a>]</td>
@@ -1778,8 +1780,6 @@ non-<code>nil</code>, it ignores differences in case as well.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD150"></a>
-<a name="SEC163"></a>
 <h2> 14.9 Dired, the Directory Editor </h2>
 
 <p>  Dired makes it easy to delete or visit many of the files in a single
@@ -1795,6 +1795,8 @@ buffer and special Dired commands to operate on the files.
 </table>
 
 <hr size="6">
+<a name="NOD151"></a>
+<a name="SEC164"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC163" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC165" title="Next section in reading order"> &gt; </a>]</td>
@@ -1806,8 +1808,6 @@ buffer and special Dired commands to operate on the files.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD151"></a>
-<a name="SEC164"></a>
 <h3> 14.9.1 Entering Dired </h3>
 
 <p>  To invoke dired, type <kbd>C-x d</kbd> or <kbd>M-x dired</kbd>.  The command reads a
@@ -1824,6 +1824,8 @@ used as an argument to <code>ls</code> in making the directory; this string
 <p>  To display the Dired buffer in another window rather than in the selected
 window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd>C-x d</kbd>.
 </p><hr size="6">
+<a name="NOD152"></a>
+<a name="SEC165"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC164" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC166" title="Next section in reading order"> &gt; </a>]</td>
@@ -1835,8 +1837,6 @@ window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD152"></a>
-<a name="SEC165"></a>
 <h3> 14.9.2 Editing in Dired </h3>
 
 <p>  Once the Dired buffer exists, you can switch freely between it and other
@@ -1864,6 +1864,8 @@ the buffer from the actual disk directory and show any changes made in the
 directory by programs other than Dired.  All deletion flags in the Dired
 buffer are lost when this is done.
 </p><hr size="6">
+<a name="NOD153"></a>
+<a name="SEC166"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC165" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC167" title="Next section in reading order"> &gt; </a>]</td>
@@ -1875,39 +1877,37 @@ buffer are lost when this is done.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD153"></a>
-<a name="SEC166"></a>
 <h3> 14.9.3 Deleting Files With Dired </h3>
 
 <p>  The primary use of Dired is to flag files for deletion and then delete
 them.
 </p><dl compact="compact">
- <dt><kbd> d
+<dt><kbd> d
 </kbd></dt>
 <dd><p>Flag this file for deletion.
- </p> </dd>
+</p></dd>
 <dt><kbd> u
 </kbd></dt>
 <dd><p>Remove deletion-flag on this line.
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>DEL</kbd>
 </kbd></dt>
 <dd><p>Remove deletion-flag on previous line, moving point to that line.
- </p> </dd>
+</p></dd>
 <dt><kbd> x
 </kbd></dt>
 <dd><p>Delete the files that are flagged for deletion.
- </p> </dd>
+</p></dd>
 <dt><kbd> #
 </kbd></dt>
 <dd><p>Flag all auto-save files (files whose names start and end with `<samp>#</samp>')
 for deletion (see section <a href="#SEC144">Auto-Saving: Protection Against Disasters</a>).
- </p> </dd>
+</p></dd>
 <dt><kbd> ~
 </kbd></dt>
 <dd><p>Flag all backup files (files whose names end with `<samp>~</samp>') for deletion
 (see section <a href="#SEC138">Backup Files</a>).
- </p> </dd>
+</p></dd>
 <dt><kbd> . (Period)
 </kbd></dt>
 <dd><p>Flag excess numeric backup files for deletion.  The oldest and newest
@@ -1952,6 +1952,8 @@ number of newest versions to keep, overriding <code>dired-kept-versions</code>.
 A negative numeric argument overrides <code>kept-old-versions</code>, using minus
 the value of the argument to specify the number of oldest versions of each
 file to keep.</p><hr size="6">
+<a name="NOD154"></a>
+<a name="SEC167"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC166" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC168" title="Next section in reading order"> &gt; </a>]</td>
@@ -1963,36 +1965,34 @@ file to keep.</p><hr size="6">
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD154"></a>
-<a name="SEC167"></a>
 <h3> 14.9.4 Immediate File Operations in Dired </h3>
 
 <p>  Some file operations in Dired take place immediately when they are
 requested.
 </p><dl compact="compact">
- <dt><kbd> C
+<dt><kbd> C
 </kbd></dt>
 <dd><p>Copies the file described on the current line.  You must supply a file name
 to copy to, using the minibuffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> f
 </kbd></dt>
 <dd><p>Visits the file described on the current line.  It is just like typing
 <kbd>C-x C-f</kbd> and supplying that file name.  If the file on this line is a
 subdirectory, <kbd>f</kbd> actually causes Dired to be invoked on that
 subdirectory.  See section <a href="#SEC136">Visiting Files</a>.
- </p> </dd>
+</p></dd>
 <dt><kbd> o
 </kbd></dt>
 <dd><p>Like <kbd>f</kbd>, but uses another window to display the file's buffer.  The
 Dired buffer remains visible in the first window.  This is like using
 <kbd>C-x 4 C-f</kbd> to visit the file.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
- </p> </dd>
+</p></dd>
 <dt><kbd> R
 </kbd></dt>
 <dd><p>Renames the file described on the current line.  You must supply a file
 name to rename to, using the minibuffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> v
 </kbd></dt>
 <dd><p>Views the file described on this line using <kbd>M-x view-file</kbd>.  Viewing a
@@ -2002,6 +2002,8 @@ directory.</p></dd>
 </dl>
 
 <hr size="6">
+<a name="NOD155"></a>
+<a name="SEC168"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC167" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_18.html#SEC169" title="Next section in reading order"> &gt; </a>]</td>
@@ -2013,8 +2015,6 @@ directory.</p></dd>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD155"></a>
-<a name="SEC168"></a>
 <h2> 14.10 Miscellaneous File Operations </h2>
 
 <p>  Emacs has commands for performing many other operations on files.

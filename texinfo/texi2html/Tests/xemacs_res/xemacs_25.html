@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD236"></a>
+<a name="SEC251"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_24.html#SEC250" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC252" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD236"></a>
-<a name="SEC251"></a>
 <h1> 22. Compiling and Testing Programs </h1>
 
 <p>  The previous chapter discusses the Emacs commands that are useful for
@@ -56,6 +56,8 @@ in the larger process of developing and maintaining programs.
 </table>
 
 <hr size="6">
+<a name="NOD237"></a>
+<a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC253" title="Next section in reading order"> &gt; </a>]</td>
@@ -67,8 +69,6 @@ in the larger process of developing and maintaining programs.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD237"></a>
-<a name="SEC252"></a>
 <h2> 22.1 Running &quot;make&quot;, or Compilers Generally </h2>
 
 <p>  Emacs can run compilers for non-interactive languages like C and
@@ -76,24 +76,24 @@ Fortran as inferior processes, feeding the error log into an Emacs buffer.
 It can also parse the error messages and visit the files in which errors
 are found, moving point to the line where the error occurred.
 </p><dl compact="compact">
- <dt><kbd> M-x compile
+<dt><kbd> M-x compile
 </kbd></dt>
 <dd><p>Run a compiler asynchronously under Emacs, with error messages to
 `<samp>*compilation*</samp>' buffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x grep
 </kbd></dt>
 <dd><p>Run <code>grep</code> asynchronously under Emacs, with matching lines
 listed in the buffer named `<samp>*compilation*</samp>'.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x kill-compilation
 </kbd></dt>
 <dd><p>Kill the process made by the <code>M-x compile</code> command.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x kill-grep
 </kbd></dt>
 <dd><p>Kill the running compilation or <code>grep</code> subprocess.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x `
 </kbd></dt>
 <dd><p>Visit the next compiler error message or <code>grep</code> match.
@@ -170,6 +170,8 @@ a prompt.  Here's how to do it in <code>csh</code>:
 if ($?prompt) set prompt = ...
 </pre></td></tr></table>
 <hr size="6">
+<a name="NOD238"></a>
+<a name="SEC253"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC254" title="Next section in reading order"> &gt; </a>]</td>
@@ -181,42 +183,40 @@ if ($?prompt) set prompt = ...
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD238"></a>
-<a name="SEC253"></a>
 <h2> 22.2 Major Modes for Lisp </h2>
 
 <p>  Emacs has four different major modes for Lisp.  They are the same in
 terms of editing commands, but differ in the commands for executing Lisp
 expressions.
 </p><dl compact="compact">
- <dt> Emacs-Lisp mode
+<dt> Emacs-Lisp mode
 </dt>
 <dd><p>The mode for editing source files of programs to run in Emacs Lisp.
 This mode defines <kbd>C-M-x</kbd> to evaluate the current defun.
 See section <a href="#SEC254">Libraries of Lisp Code for Emacs</a>.
- </p> </dd>
+</p></dd>
 <dt> Lisp Interaction mode
 </dt>
 <dd><p>The mode for an interactive session with Emacs Lisp.  It defines
 <kbd>LFD</kbd> to evaluate the sexp before point and insert its value in the
 buffer.  See section <a href="#SEC260">Lisp Interaction Buffers</a>.
- </p> </dd>
+</p></dd>
 <dt> Lisp mode
 </dt>
 <dd><p>The mode for editing source files of programs that run in other dialects
 of Lisp than Emacs Lisp.  This mode defines <kbd>C-M-x</kbd> to send the
 current defun to an inferior Lisp process.  See section <a href="#SEC261">Running an External Lisp</a>.
- </p> </dd>
+</p></dd>
 <dt> Inferior Lisp mode
 </dt>
 <dd><p>The mode for an interactive session with an inferior Lisp process.
 This mode combines the special features of Lisp mode and Shell mode
 (see section <a href="xemacs_29.html#SEC340">Shell Mode</a>).
- </p> </dd>
+</p></dd>
 <dt> Scheme mode
 </dt>
 <dd><p>Like Lisp mode but for Scheme programs.
- </p> </dd>
+</p></dd>
 <dt> Inferior Scheme mode
 </dt>
 <dd><p>The mode for an interactive session with an inferior Scheme process.
@@ -224,6 +224,8 @@ This mode combines the special features of Lisp mode and Shell mode
 </dl>
 
 <hr size="6">
+<a name="NOD239"></a>
+<a name="SEC254"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC253" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC255" title="Next section in reading order"> &gt; </a>]</td>
@@ -235,8 +237,6 @@ This mode combines the special features of Lisp mode and Shell mode
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD239"></a>
-<a name="SEC254"></a>
 <h2> 22.3 Libraries of Lisp Code for Emacs </h2>
 
 <p>  Lisp code for Emacs editing commands is stored in files whose names
@@ -250,6 +250,8 @@ Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 </table>
 
 <hr size="6">
+<a name="NOD240"></a>
+<a name="SEC255"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC256" title="Next section in reading order"> &gt; </a>]</td>
@@ -261,19 +263,17 @@ Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD240"></a>
-<a name="SEC255"></a>
 <h3> 22.3.1 Loading Libraries </h3>
 
 <dl compact="compact">
- <dt><kbd> M-x load-file <var>file</var>
+<dt><kbd> M-x load-file <var>file</var>
 </kbd></dt>
 <dd><p>Load the file <var>file</var> of Lisp code.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x load-library <var>library</var>
 </kbd></dt>
 <dd><p>Load the library named <var>library</var>.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x locate-library <var>library</var> &amp;optional <var>nosuffix</var>
 </kbd></dt>
 <dd><p>Show the full path name of Emacs library <var>library</var>.
@@ -354,6 +354,8 @@ name of a library, with no directory specified, since that is how load
 is normally called.  An error in <code>forms</code> does not undo the load, but
 it does prevent execution of the rest of the <code>forms</code>.
 </p><hr size="6">
+<a name="NOD241"></a>
+<a name="SEC256"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC255" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC257" title="Next section in reading order"> &gt; </a>]</td>
@@ -365,40 +367,38 @@ it does prevent execution of the rest of the <code>forms</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD241"></a>
-<a name="SEC256"></a>
 <h3> 22.3.2 Compiling Libraries </h3>
 
 <p>  Emacs Lisp code can be compiled into byte-code which loads faster,
 takes up less space when loaded, and executes faster.
 </p><dl compact="compact">
- <dt><kbd> M-x batch-byte-compile
+<dt><kbd> M-x batch-byte-compile
 </kbd></dt>
 <dd><p>Run byte-compile-file on the files remaining on the command line.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x byte-compile-buffer &amp;optional <var>buffer</var>
 </kbd></dt>
 <dd><p>Byte-compile and evaluate contents of <var>buffer</var> (default is current 
 buffer).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x byte-compile-file
 </kbd></dt>
 <dd><p>Compile a file of Lisp code named <var>filename</var> into a file of byte code.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x byte-compile-and-load-file <var>filename</var>
 </kbd></dt>
 <dd><p>Compile a file of Lisp code named <var>filename</var> into a file of byte
 code and load it.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x byte-recompile-directory <var>directory</var>
 </kbd></dt>
 <dd><p>Recompile every `<tt>.el</tt>' file in <var>directory</var> that needs recompilation.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x disassemble
 </kbd></dt>
 <dd><p>Print disassembled code for <var>object</var> on (optional) <var>stream</var>.
 <a name="IDX1033"></a>
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x make-obsolete <var>function new</var> 
 </kbd></dt>
 <dd><p>Make the byte-compiler warn that <var>function</var> is obsolete and <var>new</var> 
@@ -444,6 +444,8 @@ argument is a function name.  It displays the byte-compiled code in a help
 window in symbolic form, one instruction per line.  If the instruction
 refers to a variable or constant, that is shown, too.
 </p><hr size="6">
+<a name="NOD242"></a>
+<a name="SEC257"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC256" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC258" title="Next section in reading order"> &gt; </a>]</td>
@@ -455,8 +457,6 @@ refers to a variable or constant, that is shown, too.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD242"></a>
-<a name="SEC257"></a>
 <h3> 22.3.3 Converting Mocklisp to Lisp </h3>
 
 <p>  XEmacs can run Mocklisp files by converting them to Emacs Lisp first.
@@ -468,6 +468,8 @@ The reason is that converted Mocklisp code uses some special Lisp features
 to deal with Mocklisp's incompatible ideas of how arguments are evaluated
 and which values signify &quot;true&quot; or &quot;false&quot;.
 </p><hr size="6">
+<a name="NOD243"></a>
+<a name="SEC258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC257" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC259" title="Next section in reading order"> &gt; </a>]</td>
@@ -479,8 +481,6 @@ and which values signify &quot;true&quot; or &quot;false&quot;.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD243"></a>
-<a name="SEC258"></a>
 <h2> 22.4 Evaluating Emacs-Lisp Expressions </h2>
 
 <p>  Lisp programs intended to be run in Emacs should be edited in
@@ -496,25 +496,25 @@ function.  Evaluation of Lisp expressions is also useful in any kind of
 editing task for invoking non-interactive functions (functions that are
 not commands).
 </p><dl compact="compact">
- <dt><kbd> M-:
+<dt><kbd> M-:
 </kbd></dt>
 <dd><p>Read a Lisp expression in the minibuffer, evaluate it, and print the
 value in the minibuffer (<code>eval-expression</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x C-e
 </kbd></dt>
 <dd><p>Evaluate the Lisp expression before point, and print the value in the
 minibuffer (<code>eval-last-sexp</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-M-x
 </kbd></dt>
 <dd><p>Evaluate the defun containing point or after point, and print the value in
 the minibuffer (<code>eval-defun</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x eval-region
 </kbd></dt>
 <dd><p>Evaluate all the Lisp expressions in the region.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x eval-current-buffer
 </kbd></dt>
 <dd><p>Evaluate all the Lisp expressions in the buffer.
@@ -557,6 +557,8 @@ Lisp code that you are just ready to test.  After finding and fixing a
 bug, use <kbd>C-M-x</kbd> on each function that you change, to keep the Lisp
 world in step with the source file.
 </p><hr size="6">
+<a name="NOD244"></a>
+<a name="SEC259"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC258" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC260" title="Next section in reading order"> &gt; </a>]</td>
@@ -568,8 +570,6 @@ world in step with the source file.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD244"></a>
-<a name="SEC259"></a>
 <h2> 22.5 The Emacs-Lisp Debugger </h2>
 
 <p>  XEmacs contains a debugger for Lisp programs executing inside it.
@@ -618,7 +618,7 @@ frame</em>.  Some of the debugger commands operate on the current frame.
 Debugger commands are mainly used for stepping through code one
 expression at a time.  Here is a list of them:
 </p><dl compact="compact">
- <dt><kbd> c
+<dt><kbd> c
 </kbd></dt>
 <dd><p>Exit the debugger and continue execution.  In most cases, execution of
 the program continues as if the debugger had never been entered (aside
@@ -627,7 +627,7 @@ while inside the debugger).  This includes entry to the debugger due to
 function entry or exit, explicit invocation, and quitting or certain
 errors.  Most errors cannot be continued; trying to continue an error usually
 causes the same error to occur again.
- </p> </dd>
+</p></dd>
 <dt><kbd> d
 </kbd></dt>
 <dd><p>Continue execution, but enter the debugger the next time a Lisp
@@ -637,29 +637,29 @@ what values they compute.
 </p><p>When you enter the debugger this way, Emacs flags the stack frame for the
 function call from which you entered.  The same function is then called
 when you exit the frame.  To cancel this flag, use <kbd>u</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> b
 </kbd></dt>
 <dd><p>Set up to enter the debugger when the current frame is exited.  Frames
 that invoke the debugger on exit are flagged with stars.
- </p> </dd>
+</p></dd>
 <dt><kbd> u
 </kbd></dt>
 <dd><p>Don't enter the debugger when the current frame is exited.  This
 cancels a <kbd>b</kbd> command on a frame.
- </p> </dd>
+</p></dd>
 <dt><kbd> e
 </kbd></dt>
 <dd><p>Read a Lisp expression in the minibuffer, evaluate it, and print the
 value in the echo area.  This is equivalent to the command <kbd>M-:</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> q
 </kbd></dt>
 <dd><p>Terminate the program being debugged; return to top-level Emacs
 command execution.
 </p><p>If the debugger was entered due to a <kbd>C-g</kbd> but you really want
 to quit, not to debug, use the <kbd>q</kbd> command.
- </p> </dd>
+</p></dd>
 <dt><kbd> r
 </kbd></dt>
 <dd><p>Return a value from the debugger.  The value is computed by reading an
@@ -678,6 +678,8 @@ the debugger's return value is returned as the value of <code>signal</code>.
 </dl>
 
 <hr size="6">
+<a name="NOD245"></a>
+<a name="SEC260"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC261" title="Next section in reading order"> &gt; </a>]</td>
@@ -689,8 +691,6 @@ the debugger's return value is returned as the value of <code>signal</code>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD245"></a>
-<a name="SEC260"></a>
 <h2> 22.6 Lisp Interaction Buffers </h2>
 
 <p>  The buffer `<samp>*scratch*</samp>', which is selected when Emacs starts up, is
@@ -714,6 +714,8 @@ typescript is the most useful thing I can think of for the initial buffer
 to do.  <kbd>M-x lisp-interaction-mode</kbd> will put any buffer in Lisp
 Interaction mode.
 </p><hr size="6">
+<a name="NOD246"></a>
+<a name="SEC261"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC260" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC262" title="Next section in reading order"> &gt; </a>]</td>
@@ -725,8 +727,6 @@ Interaction mode.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD246"></a>
-<a name="SEC261"></a>
 <h2> 22.7 Running an External Lisp </h2>
 
 <p>  Emacs has facilities for running programs in other Lisp systems.  You can
@@ -758,6 +758,7 @@ which finds the defun around or following point and sends it as input to
 the Lisp process.  (Emacs can send input to any inferior process regardless
 of what buffer is current.)
 </p><hr size="6">
+<a name="NOD247"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC261" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC264" title="Next section in reading order"> &gt; </a>]</td>
@@ -769,14 +770,13 @@ of what buffer is current.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD247"></a>
 <p>  Contrast the meanings of <kbd>C-M-x</kbd> in Lisp mode (for editing programs
 to be run in another Lisp system) and Emacs-Lisp mode (for editing Lisp
 programs to be run in Emacs): in both modes it has the effect of installing
 the function definition that point is in, but the way of doing so is
 different according to where the relevant Lisp environment is found.
 See section <a href="#SEC253">Major Modes for Lisp</a>.
- </p> 
+</p>
 <a name="SEC262"></a>
 <h2> 22.8 Packages </h2>
 
@@ -798,6 +798,7 @@ local needs with safe removal of unnecessary code.
 </table>
 
 <hr size="6">
+<a name="NOD248"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC262" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC265" title="Next section in reading order"> &gt; </a>]</td>
@@ -809,7 +810,6 @@ local needs with safe removal of unnecessary code.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD248"></a>
 <a name="SEC263"></a>
 <h2> Package Terminology: </h2>
 <a name="SEC264"></a>
@@ -833,6 +833,7 @@ that you follow this rule of thumb: &quot;When in doubt, don't delete&quot;.
 </p></li></ul>
 
 <hr size="6">
+<a name="SEC265"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC264" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC266" title="Next section in reading order"> &gt; </a>]</td>
@@ -844,7 +845,6 @@ that you follow this rule of thumb: &quot;When in doubt, don't delete&quot;.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC265"></a>
 <h3> 22.8.2 Package Distributions </h3>
 <p>XEmacs Lisp packages are distributed in two ways, depending on the
 intended use.  Binary Packages are for installers and end-users that can
@@ -852,6 +852,7 @@ be installed directly into an XEmacs package directory.  Source Packages
 are for developers and include all files necessary for rebuilding
 bytecompiled lisp and creating tarballs for distribution.
 </p><hr size="6">
+<a name="SEC266"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC265" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC267" title="Next section in reading order"> &gt; </a>]</td>
@@ -863,11 +864,11 @@ bytecompiled lisp and creating tarballs for distribution.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC266"></a>
 <h3> 22.8.3 Binary Packages </h3>
 <p>Binary packages may be installed directly into an XEmacs package
 hierarchy.
 </p><hr size="6">
+<a name="SEC267"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC266" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC269" title="Next section in reading order"> &gt; </a>]</td>
@@ -879,13 +880,13 @@ hierarchy.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC267"></a>
 <h3> 22.8.4 Source Packages </h3>
 <p>Source packages contain all of the Package author's (where appropriate
 in regular packages) source code plus all of the files necessary to
 build distribution tarballs (Unix Tar format files, gzipped for space
 savings).
 </p><hr size="6">
+<a name="NOD249"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC270" title="Next section in reading order"> &gt; </a>]</td>
@@ -897,10 +898,9 @@ savings).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD249"></a>
 <p>Currently, source packages are only available via CVS.  See
 <a href="http://cvs.xemacs.org/">http://cvs.xemacs.org/</a> for details.
- </p> <a name="SEC268"></a>
+</p><a name="SEC268"></a>
 <h2> Installing Packages: </h2>
 <a name="SEC269"></a>
 <h3> 22.8.5 Getting Started </h3>
@@ -916,6 +916,7 @@ minimal set of Emacs Lisp files, which are in the subdirectory named
 distributed with XEmacs.  Now, to conserve disk space, most
 non-essential packages were made optional.
 </p><hr size="6">
+<a name="SEC270"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC269" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC271" title="Next section in reading order"> &gt; </a>]</td>
@@ -927,7 +928,6 @@ non-essential packages were made optional.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC270"></a>
 <h3> 22.8.6 Choosing the Packages You Need </h3>
 <p>The <a href="#SEC283">Normal Packages</a> can currently be found in the same ftp directory
 where you grabbed the core distribution from, and are located in the
@@ -960,6 +960,7 @@ M-x package-get-package-provider RET thingatpt
 <p>which will return something like (fsf-compat &quot;1.08&quot;). You can the use
 one of the methods above for installing the package you want.
 </p><hr size="6">
+<a name="SEC271"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC270" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC278" title="Next section in reading order"> &gt; </a>]</td>
@@ -971,7 +972,6 @@ one of the methods above for installing the package you want.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC271"></a>
 <h3> 22.8.7 XEmacs and Installing Packages </h3>
 
 <p>There are three main ways to install packages:
@@ -1055,7 +1055,7 @@ and optionally:
 steps.
 </p><ol>
 <li><p> 1
- </p> </li><li><p>
+</p></li><li><p>
 Choose a download site.
 via menu: Tools -&gt; Packages -&gt; Add Download Site 
 via keyb: <code>M-x customize-variable RET package-get-remote RET</code>
@@ -1078,15 +1078,15 @@ may have to scroll down to see it.  You can also press <kbd>?</kbd> to get
 the same help.  From this buffer, you can tell the package status by the
 character in the first column:
 </p><dl compact="compact">
- <dt><kbd> -
+<dt><kbd> -
 </kbd></dt>
 <dd><p>The package has not been installed.
- </p> </dd>
+</p></dd>
 <dt><kbd> *
 </kbd></dt>
 <dd><p>The package has been installed, but a newer version is available.  The
 current version is out-of-date.
- </p> </dd>
+</p></dd>
 <dt><kbd> +
 </kbd></dt>
 <dd><p>The package has been marked for installation/update.
@@ -1104,34 +1104,34 @@ packages. Note that you will have to restart XEmacs for XEmacs to
 recognize any new packages.
 </p><p>Key summary:
 </p><dl compact="compact">
- <dt><kbd> ?
+<dt><kbd> ?
 </kbd></dt>
 <dd><p>Display simple help.
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>RET</kbd>
 </kbd></dt>
 <dt><kbd> <kbd>Mouse-2</kbd>
 </kbd></dt>
 <dd><p>Toggle between selecting and unselecting a package for installation.
- </p> </dd>
+</p></dd>
 <dt><kbd> x
 </kbd></dt>
 <dd><p>Install selected packages.
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>SPC</kbd>
 </kbd></dt>
 <dd><p>View, in the minibuffer, additional information about the package, such
 as the package date (not the build date) and the package author.  Moving 
 the mouse over a package name will also do the same thing.
- </p> </dd>
+</p></dd>
 <dt><kbd> v
 </kbd></dt>
 <dd><p>Toggle between verbose and non-verbose package display.
- </p> </dd>
+</p></dd>
 <dt><kbd> g
 </kbd></dt>
 <dd><p>Refresh the package display.
- </p> </dd>
+</p></dd>
 <dt><kbd> q
 </kbd></dt>
 <dd><p>Kill the package buffer.
@@ -1195,6 +1195,7 @@ to the package.
 </p><p>Note that the interactive package tools included with XEmacs already do
 this for you.
 </p><hr size="6">
+<a name="NOD255"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC271" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC279" title="Next section in reading order"> &gt; </a>]</td>
@@ -1206,7 +1207,6 @@ this for you.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD255"></a>
 <a name="SEC277"></a>
 <h2> Building Packages: </h2>
 <p>Currently, source packages are only available via anonymous CVS.  See
@@ -1216,28 +1216,28 @@ this for you.
 <h3> 22.8.8 Prerequisites for Building Source Packages </h3>
 
 <dl compact="compact">
- <dt><code> GNU cp
+<dt><code> GNU cp
 </code></dt>
 <dt><code> GNU install 
 </code></dt>
 <dd><p>(or a BSD compatible install program).
- </p> </dd>
+</p></dd>
 <dt><code> GNU make 
 </code></dt>
 <dd><p>(3.75 or later preferred).
- </p> </dd>
+</p></dd>
 <dt><code> makeinfo 
 </code></dt>
 <dd><p>(1.68 from texinfo-3.11 or later required).
- </p> </dd>
+</p></dd>
 <dt><code> GNU tar
 </code></dt>
 <dd><p>(or equivalent).
- </p> </dd>
+</p></dd>
 <dt><code> GNU gzip
 </code></dt>
 <dd><p>(or equivalent).
- </p> </dd>
+</p></dd>
 <dt><code> A properly configured `<tt>Local.rules</tt>' file.
 </code></dt>
 <dd><p><a href="#NOD256">Local.rules File</a>.
@@ -1245,6 +1245,7 @@ this for you.
 </dl>
 <p>And of course, XEmacs 21.0 or higher.
 </p><hr size="6">
+<a name="SEC279"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC278" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC283" title="Next section in reading order"> &gt; </a>]</td>
@@ -1256,7 +1257,6 @@ this for you.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC279"></a>
 <h3> 22.8.9 What You Can Do With Source Packages </h3>
 
 <p>The packages CVS sources are most useful for creating XEmacs package
@@ -1264,7 +1264,7 @@ tarballs for installation into your own XEmacs installations or for
 distributing to others.
 </p><p>Supported operations from `<tt>make</tt>' are:
 </p><dl compact="compact">
- <dt><code> all
+<dt><code> all
 </code></dt>
 <dd><p>Bytecompile all files, build and bytecompile byproduct files like
 `<tt>auto-autoloads.el</tt>' and `<tt>custom-load.el</tt>'.  Create info version
@@ -1325,7 +1325,7 @@ file, `<tt>Local.rules.template</tt>'.  Simply copy that to
 </p><p>These are the variables in 'Local.rules' that you will need to
 address. 
 </p><dl compact="compact">
- <dt><var> symlink = 
+<dt><var> symlink = 
 </var></dt>
 <dd><p>Set this to 't' if you want to do a &quot;run in place&quot;.
 Setting this doesn't work well with 'make bindist'
@@ -1482,7 +1482,7 @@ and <code>binkit</code> (that is, values for <var>srckit-alias</var> and
 <var>binkit-alias</var>) are defined in `<tt>XEmacs.rules</tt>'.  The most useful
 of these values are given in the following table.
 </p><dl compact="compact">
- <dt><var> srckit-alias
+<dt><var> srckit-alias
 </var></dt>
 <dd><p>Usually set to <code>srckit-std</code>.
 </p></dd>
@@ -1504,6 +1504,7 @@ and are normally installed in `<tt>etc/<var>PACKAGE_NAME</var></tt>'.  A few
 packages have needs beyond the basic templates.  See `<tt>XEmacs.rules</tt>'
 or a future revision of this manual for details.
 </p><hr size="6">
+<a name="NOD258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC279" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC284" title="Next section in reading order"> &gt; </a>]</td>
@@ -1515,7 +1516,6 @@ or a future revision of this manual for details.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD258"></a>
 <a name="SEC282"></a>
 <h2> Available Packages: </h2>
 <p>This section lists the Lisp packages that are currently available from
@@ -1527,7 +1527,7 @@ looking for isn't here, please send a message to the
 <h3> 22.8.10 Normal Packages </h3>
 <p>A very broad selection of elisp packages.
 </p><dl compact="compact">
- <dt>`<tt> Sun
+<dt>`<tt> Sun
 </tt>'</dt>
 <dd><p>Support for Sparcworks.
 </p></dd>
@@ -1951,6 +1951,7 @@ buffer.
 </dl>
 
 <hr size="6">
+<a name="SEC284"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC283" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_26.html#SEC285" title="Next section in reading order"> &gt; </a>]</td>
@@ -1962,7 +1963,6 @@ buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC284"></a>
 <h3> 22.8.11 Mule Support (mule) </h3>
 
 <p>MULti-lingual Enhancement.  Support for world scripts such as
@@ -1970,7 +1970,7 @@ Latin, Arabic, Cyrillic, Chinese, Japanese, Greek, Hebrew etc.
 To use these packages your XEmacs must be compiled with Mule
 support.
 </p><dl compact="compact">
- <dt>`<tt> edict
+<dt>`<tt> edict
 </tt>'</dt>
 <dd><p>Lisp Interface to EDICT, Kanji Dictionary.
 </p></dd>

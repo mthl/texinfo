@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD103"></a>
+<a name="SEC115"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_14.html#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC116" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD103"></a>
-<a name="SEC115"></a>
 <h1> 12. Searching and Replacement </h1>
 
 <p>  Like other editors, Emacs has commands for searching for occurrences of
@@ -61,6 +61,8 @@ which occurrences to replace.
 </table>
 
 <hr size="6">
+<a name="NOD104"></a>
+<a name="SEC116"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC115" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC117" title="Next section in reading order"> &gt; </a>]</td>
@@ -72,8 +74,6 @@ which occurrences to replace.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD104"></a>
-<a name="SEC116"></a>
 <h2> 12.1 Incremental Search </h2>
 
 <p>  An incremental search begins searching as soon as you type the first
@@ -83,10 +83,10 @@ When you have typed enough characters to identify the place you want, you
 can stop.  Depending on what you do next, you may or may not need to
 terminate the search explicitly with a <kbd>RET</kbd>.
 </p><dl compact="compact">
- <dt><kbd> C-s
+<dt><kbd> C-s
 </kbd></dt>
 <dd><p>Incremental search forward (<code>isearch-forward</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-r
 </kbd></dt>
 <dd><p>Incremental search backward (<code>isearch-backward</code>).
@@ -220,49 +220,49 @@ the normal keybinding mechanism: simply add a binding to the
 <a name="IDX433"></a>
 
 <dl compact="compact">
- <dt><kbd> DEL
+<dt><kbd> DEL
 </kbd></dt>
 <dd><p>Delete a character from the incremental search string (<code>isearch-delete-char</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> RET
 </kbd></dt>
 <dd><p>Exit incremental search (<code>isearch-exit</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-q
 </kbd></dt>
 <dd><p>Quote special characters for incremental search (<code>isearch-quote-char</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-s
 </kbd></dt>
 <dd><p>Repeat incremental search forward (<code>isearch-repeat-forward</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-r
 </kbd></dt>
 <dd><p>Repeat incremental search backward (<code>isearch-repeat-backward</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-y
 </kbd></dt>
 <dd><p>Pull rest of line from buffer into search string (<code>isearch-yank-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-w
 </kbd></dt>
 <dd><p>Pull next word from buffer into search string (<code>isearch-yank-word</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-g
 </kbd></dt>
 <dd><p>Cancels input back to what has been found successfully, or aborts the 
 isearch (<code>isearch-abort</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-p
 </kbd></dt>
 <dd><p>Recall the previous element in the isearch history ring 
 (<code>isearch-ring-retreat</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-n
 </kbd></dt>
 <dd><p>Recall the next element in the isearch history ring 
 (<code>isearch-ring-advance</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-<kbd>TAB</kbd>
 </kbd></dt>
 <dd><p>Do completion on the elements in the isearch history ring 
@@ -273,6 +273,7 @@ isearch (<code>isearch-abort</code>).
 <p>Any other character which is normally inserted into a buffer when typed
 is automatically added to the search string in isearch-mode.
 </p><hr size="6">
+<a name="SEC117"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC116" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC118" title="Next section in reading order"> &gt; </a>]</td>
@@ -284,7 +285,6 @@ is automatically added to the search string in isearch-mode.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="SEC117"></a>
 <h3> 12.1.1 Slow Terminal Incremental Search </h3>
 
 <p>  Incremental search on a slow terminal uses a modified style of display
@@ -306,6 +306,8 @@ initially 1200.
 <p>  The number of lines to use in slow terminal search display is controlled
 by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 </p><hr size="6">
+<a name="NOD105"></a>
+<a name="SEC118"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC119" title="Next section in reading order"> &gt; </a>]</td>
@@ -317,17 +319,15 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD105"></a>
-<a name="SEC118"></a>
 <h2> 12.2 Non-Incremental Search </h2>
 
 <p>  Emacs also has conventional non-incremental search commands, which require
 you type the entire search string before searching begins.
 </p><dl compact="compact">
- <dt><kbd> C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd>
+<dt><kbd> C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Search for <var>string</var>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-r <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Search backward for <var>string</var>.
@@ -355,6 +355,8 @@ not call <code>search-forward</code> right away.  They first check
 if the next character is <kbd>C-w</kbd>, which requests a word search.
 See section <a href="#SEC119">Word Search</a>.
 </p><hr size="6">
+<a name="NOD106"></a>
+<a name="SEC119"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
@@ -366,8 +368,6 @@ See section <a href="#SEC119">Word Search</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD106"></a>
-<a name="SEC119"></a>
 <h2> 12.3 Word Search </h2>
 
 <p>  Word search looks for a sequence of words without regard to how the
@@ -379,10 +379,10 @@ If you edit while looking at the printed, formatted version, you can't tell
 where the line breaks are in the source file.  Word search, allows you
 to search  without having to know the line breaks.
 </p><dl compact="compact">
- <dt><kbd> C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd>
+<dt><kbd> C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Search for <var>words</var>, ignoring differences in punctuation.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-r <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Search backward for <var>words</var>, ignoring differences in punctuation.
@@ -403,6 +403,8 @@ bind these commands to keys.  The reason that incremental
 search is programmed to invoke them as well is that <kbd>C-s <kbd>RET</kbd> C-w</kbd>
 is the traditional Emacs sequence of keys for word search.
 </p><hr size="6">
+<a name="NOD107"></a>
+<a name="SEC120"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC121" title="Next section in reading order"> &gt; </a>]</td>
@@ -414,8 +416,6 @@ is the traditional Emacs sequence of keys for word search.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD107"></a>
-<a name="SEC120"></a>
 <h2> 12.4 Regular Expression Search </h2>
 
 <p>  A <em>regular expression</em> (<em>regexp</em>, for short) is a pattern that
@@ -462,6 +462,8 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <kbd>M-C-s <kbd>RET</kbd></kbd>; similarly for <code>re-search-backward</code> with
 <kbd>M-C-r <kbd>RET</kbd></kbd>.
 </p><hr size="6">
+<a name="NOD108"></a>
+<a name="SEC121"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
@@ -473,8 +475,6 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD108"></a>
-<a name="SEC121"></a>
 <h2> 12.5 Syntax of Regular Expressions </h2>
 
 <p>  Regular expressions have a syntax in which a few characters are
@@ -497,7 +497,7 @@ and `<samp>o</samp>' to get the regular expression `<samp>fo</samp>', which matc
 the string `<samp>fo</samp>'.  Still trivial.  To do something more powerful, you
 need to use one of the special characters.  Here is a list of them:
 </p><dl compact="compact">
- <dt><kbd> . (Period)
+<dt><kbd> . (Period)
 </kbd></dt>
 <dd><p><a name="IDX446"></a>
 is a special character that matches any single character except a newline.
@@ -661,7 +661,7 @@ that, when preceded by `<samp>\</samp>', are special constructs.  Such
 characters are always ordinary when encountered on their own.  Here
 is a table of `<samp>\</samp>' constructs:
 </p><dl compact="compact">
- <dt><kbd> \|
+<dt><kbd> \|
 </kbd></dt>
 <dd><p><a name="IDX462"></a>
 <a name="IDX463"></a>
@@ -766,7 +766,7 @@ matches any character whose syntax is not <var>code</var>.
 they don't use up any characters--but whether they match depends on the
 context.
 </p><dl compact="compact">
- <dt><kbd> \`
+<dt><kbd> \`
 </kbd></dt>
 <dd><p><a name="IDX473"></a>
 matches the empty string, but only at the beginning
@@ -826,6 +826,8 @@ backslash-parentheses that matches end-of-line, a tab or two spaces; and
 a character set matching whitespace characters, repeated any number of
 times.
 </p><hr size="6">
+<a name="NOD109"></a>
+<a name="SEC122"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC121" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
@@ -837,8 +839,6 @@ times.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD109"></a>
-<a name="SEC122"></a>
 <h2> 12.6 Searching and Case </h2>
 
 <p>  All searches in Emacs normally ignore the case of the text they
@@ -853,6 +853,8 @@ there is a default value which you can change as well.  See section <a href="xem
 You can also use <b>Case Sensitive Search</b> from the <b>Options</b> menu 
 on your screen.
 </p><hr size="6">
+<a name="NOD110"></a>
+<a name="SEC123"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
@@ -864,8 +866,6 @@ on your screen.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD110"></a>
-<a name="SEC123"></a>
 <h2> 12.7 Replacement Commands </h2>
 
 <p>  Global search-and-replace operations are not needed as often in Emacs as
@@ -885,6 +885,8 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 </table>
 
 <hr size="6">
+<a name="NOD111"></a>
+<a name="SEC124"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
@@ -896,15 +898,13 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD111"></a>
-<a name="SEC124"></a>
 <h3> 12.7.1 Unconditional Replacement </h3>
 
 <dl compact="compact">
- <dt><kbd> M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
+<dt><kbd> M-x replace-string <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Replace every occurrence of <var>string</var> with <var>newstring</var>.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Replace every match for <var>regexp</var> with <var>newstring</var>.
@@ -925,6 +925,8 @@ there.
 </p><p>  A numeric argument restricts replacement to matches that are surrounded
 by word boundaries.
 </p><hr size="6">
+<a name="NOD112"></a>
+<a name="SEC125"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
@@ -936,8 +938,6 @@ by word boundaries.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD112"></a>
-<a name="SEC125"></a>
 <h3> 12.7.2 Regexp Replacement </h3>
 
 <p>  <code>replace-string</code> replaces exact matches for a single string.  The
@@ -959,6 +959,8 @@ M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</k
 <p>would perform exactly the opposite replacements.  To include a `<samp>\</samp>'
 in the text to replace with, you must give `<samp>\\</samp>'.
 </p><hr size="6">
+<a name="NOD113"></a>
+<a name="SEC126"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
@@ -970,8 +972,6 @@ in the text to replace with, you must give `<samp>\\</samp>'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD113"></a>
-<a name="SEC126"></a>
 <h3> 12.7.3 Replace Commands and Case </h3>
 
 <p>  If the arguments to a replace command are in lower case, the command
@@ -990,6 +990,8 @@ to <code>nil</code>, replacement is done without case conversion.  If
 matching occurrences of `<samp>foo</samp>' to replace; also, case conversion of the
 replacement string is not done.
 </p><hr size="6">
+<a name="NOD114"></a>
+<a name="SEC127"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC126" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC128" title="Next section in reading order"> &gt; </a>]</td>
@@ -1001,17 +1003,15 @@ replacement string is not done.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD114"></a>
-<a name="SEC127"></a>
 <h3> 12.7.4 Query Replace </h3>
 
 <dl compact="compact">
- <dt><kbd> M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
+<dt><kbd> M-% <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
 </kbd></dt>
 <dt><kbd> M-x query-replace <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Replace some occurrences of <var>string</var> with <var>newstring</var>.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x query-replace-regexp <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd> <var>newstring</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Replace some matches for <var>regexp</var> with <var>newstring</var>.
@@ -1042,7 +1042,7 @@ or a match for <var>regexp</var> are:
 <a name="IDX492"></a>
 
 <dl compact="compact">
- <dt><kbd> <kbd>SPC</kbd>
+<dt><kbd> <kbd>SPC</kbd>
 </kbd></dt>
 <dd><p>to replace the occurrence with <var>newstring</var>.  This preserves case, just
 like <code>replace-string</code>, provided <code>case-replace</code> is non-<code>nil</code>,
@@ -1111,6 +1111,8 @@ executes the character as a command.  To restart the <code>query-replace</code>,
 use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, which repeats the <code>query-replace</code> because it
 used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#SEC69">C-x ESC ESC</a>.
 </p><hr size="6">
+<a name="NOD115"></a>
+<a name="SEC128"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_16.html#SEC129" title="Next section in reading order"> &gt; </a>]</td>
@@ -1122,8 +1124,6 @@ used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#S
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD115"></a>
-<a name="SEC128"></a>
 <h2> 12.8 Other Search-and-Loop Commands </h2>
 
 <p>  Here are some other commands that find matches for a regular expression.
@@ -1134,7 +1134,7 @@ They all operate from point to the end of the buffer.
 <a name="IDX496"></a>
 <a name="IDX497"></a>
 <dl compact="compact">
- <dt><kbd> M-x occur
+<dt><kbd> M-x occur
 </kbd></dt>
 <dd><p>Print each line that follows point and contains a match for the
 specified regexp.  A numeric argument specifies the number of context

@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD63"></a>
+<a name="SEC71"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_10.html#SEC70" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC72" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD63"></a>
-<a name="SEC71"></a>
 <h1> 8. Help </h1>
 
 <p>  XEmacs provides extensive help features accessible through a single
@@ -70,6 +70,8 @@ scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
 </table>
 
 <hr size="6">
+<a name="NOD64"></a>
+<a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC71" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC73" title="Next section in reading order"> &gt; </a>]</td>
@@ -81,34 +83,32 @@ scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD64"></a>
-<a name="SEC72"></a>
 <h2> 8.1 Help Summary </h2>
 
 <p>  Here is a summary of the defined help commands.
 </p><dl compact="compact">
- <dt><kbd> C-h a <var>regexp</var> <kbd>RET</kbd>
+<dt><kbd> C-h a <var>regexp</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Display a list of functions and variables whose names match <var>regexp</var>
 (<code>hyper-apropos</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h A <var>regexp</var>
 </kbd></dt>
 <dd><p>Show all commands whose names contain matches for <var>regexp</var>
 (<code>command-apropos</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h b
 </kbd></dt>
 <dd><p>Display a table of all key bindings currently in effect, with local
 bindings of the current major mode first, followed by all global
 bindings (<code>describe-bindings</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h c <var>key</var>
 </kbd></dt>
 <dd><p>Print the name of the command that <var>key</var> runs
 (<code>describe-key-briefly</code>).  Here <kbd>c</kbd> stands for `character'.  For more
 extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h d <var>function</var> <kbd>RET</kbd>
 </kbd></dt>
 <dt><kbd> C-h f <var>function</var> <kbd>RET</kbd>
@@ -116,83 +116,83 @@ extensive information on <var>key</var>, use <kbd>C-h k</kbd>.
 <dd><p>Display documentation on the Lisp function named <var>function</var>
 (<code>describe-function</code>).  Since commands are Lisp functions,
 a command name may be used.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h i
 </kbd></dt>
 <dd><p>Run Info, the program for browsing documentation files (<code>info</code>).
 The complete XEmacs manual is available online in Info.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h k <var>key</var>
 </kbd></dt>
 <dd><p>Display the name and documentation of the command that <var>key</var> runs
 (<code>describe-key</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h l
 </kbd></dt>
 <dd><p>Display a description of the last 100 characters you typed
 (<code>view-lossage</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h m
 </kbd></dt>
 <dd><p>Display documentation of the current major mode (<code>describe-mode</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h n
 </kbd></dt>
 <dt><kbd> C-h C-n
 </kbd></dt>
 <dd><p>Display documentation of XEmacs changes, most recent first
 (<code>view-emacs-news</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h p
 </kbd></dt>
 <dd><p>Find packages by topic keyword (<code>finder-by-keyword</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h C-p
 </kbd></dt>
 <dd><p>Display a table of all mouse bindings currently in effect now, with
 local bindings of the current major mode first, followed by all global
 bindings (<code>describe-pointer</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h s
 </kbd></dt>
 <dd><p>Display current contents of the syntax table, plus an explanation of
 what they mean (<code>describe-syntax</code>).  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h t
 </kbd></dt>
 <dd><p>Enter the XEmacs interactive tutorial (<code>help-with-tutorial</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h v <var>var</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Display the documentation of the Lisp variable <var>var</var>
 (<code>describe-variable</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h w <var>command</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Print which keys run the command named <var>command</var> (<code>where-is</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h B <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Display info on how to deal with Beta versions of XEmacs
 (<code>describe-beta</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h C <var>group</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Select customization buffer for <var>group</var> (<code>customize</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h F <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>View the local copy of the XEmacs FAQ (<code>xemacs-local-faq</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h C-i <var>file</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Read Info file <var>file</var> with Info browser (<code>Info-query</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h C-c <var>command</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Look up an Emacs command <var>command</var> in the Emacs manual in the Info
 system (<code>Info-goto-emacs-command-node</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-h C-f <var>function</var> <kbd>RET</kbd>
 </kbd></dt>
 <dd><p>Look up an Emacs Lisp function <var>function</var> in the Elisp manual in the
@@ -201,6 +201,8 @@ Info system (<code>Info-elisp-ref</code>).
 </dl>
 
 <hr size="6">
+<a name="NOD65"></a>
+<a name="SEC73"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC72" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC74" title="Next section in reading order"> &gt; </a>]</td>
@@ -212,8 +214,6 @@ Info system (<code>Info-elisp-ref</code>).
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD65"></a>
-<a name="SEC73"></a>
 <h2> 8.2 Documentation for a Key </h2>
 
 <p>  The most basic <kbd>C-h</kbd> options are <kbd>C-h c</kbd>
@@ -234,6 +234,8 @@ window is used for the display.
 </p><p>  <kbd>C-h c</kbd> and <kbd>C-h k</kbd> work for any sort of key sequences,
 including function keys and mouse events.
 </p><hr size="6">
+<a name="NOD66"></a>
+<a name="SEC74"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC73" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC75" title="Next section in reading order"> &gt; </a>]</td>
@@ -245,8 +247,6 @@ including function keys and mouse events.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD66"></a>
-<a name="SEC74"></a>
 <h2> 8.3 Help by Command or Variable Name </h2>
 
 <p>  <kbd>C-h f</kbd> (<code>describe-function</code>) reads the name of a Lisp
@@ -299,6 +299,8 @@ describes Lisp variables instead of Lisp functions.  Its default is the
 Lisp symbol around or before point, if that is the name of a known Lisp
 variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 </p><hr size="6">
+<a name="NOD67"></a>
+<a name="SEC75"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC74" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC76" title="Next section in reading order"> &gt; </a>]</td>
@@ -310,13 +312,11 @@ variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD67"></a>
-<a name="SEC75"></a>
 <h2> 8.4 Apropos </h2>
 
 
 <dl compact="compact">
- <dt><kbd> C-h A
+<dt><kbd> C-h A
 </kbd></dt>
 <dd><p>Show only symbols that are names of commands
 (<code>command-apropos</code>).
@@ -381,6 +381,8 @@ above all behave as if they had been given a prefix argument.
 symbol property listed in the Apropos buffer, you can click on it with
 <kbd>Mouse-2</kbd> or move there and type <kbd>RET</kbd>.
 </p><hr size="6">
+<a name="NOD68"></a>
+<a name="SEC76"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC75" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC77" title="Next section in reading order"> &gt; </a>]</td>
@@ -392,8 +394,6 @@ symbol property listed in the Apropos buffer, you can click on it with
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD68"></a>
-<a name="SEC76"></a>
 <h2> 8.5 Keyword Search for Lisp Libraries </h2>
 
 <p>The <kbd>C-h p</kbd> command lets you search the standard Emacs Lisp
@@ -438,6 +438,8 @@ vms           support code for vms
 wp            word processing
 </pre></td></tr></table>
 <hr size="6">
+<a name="NOD69"></a>
+<a name="SEC77"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC76" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC78" title="Next section in reading order"> &gt; </a>]</td>
@@ -449,16 +451,14 @@ wp            word processing
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD69"></a>
-<a name="SEC77"></a>
 <h2> 8.6 Help Mode Commands </h2>
 
 <p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>), plus a few special commands of their own.
 </p><dl compact="compact">
- <dt><kbd> <kbd>SPC</kbd>
+<dt><kbd> <kbd>SPC</kbd>
 </kbd></dt>
 <dd><p>Scroll forward.
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>DEL</kbd>
 </kbd></dt>
 <dt><kbd> <kbd>BS</kbd>
@@ -471,6 +471,8 @@ wp            word processing
 variable name (see section <a href="xemacs_30.html#SEC353">Variables</a>) appears in the documentation, it
 normally appears inside paired single-quotes.
 </p><hr size="6">
+<a name="NOD70"></a>
+<a name="SEC78"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC77" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_12.html#SEC79" title="Next section in reading order"> &gt; </a>]</td>
@@ -482,8 +484,6 @@ normally appears inside paired single-quotes.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD70"></a>
-<a name="SEC78"></a>
 <h2> 8.7 Other Help Commands </h2>
 
 <p>  <kbd>C-h i</kbd> (<code>info</code>) runs the Info program, which is used for

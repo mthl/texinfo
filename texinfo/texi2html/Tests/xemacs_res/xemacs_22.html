@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD179"></a>
+<a name="SEC192"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_21.html#SEC191" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC193" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,47 +37,45 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD179"></a>
-<a name="SEC192"></a>
 <h1> 19. Indentation </h1>
 
 <dl compact="compact">
- <dt><kbd> <kbd>TAB</kbd>
+<dt><kbd> <kbd>TAB</kbd>
 </kbd></dt>
 <dd><p>Indent current line &quot;appropriately&quot; in a mode-dependent fashion.
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>LFD</kbd>
 </kbd></dt>
 <dd><p>Perform <kbd>RET</kbd> followed by <kbd>TAB</kbd> (<code>newline-and-indent</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-^
 </kbd></dt>
 <dd><p>Merge two lines (<code>delete-indentation</code>).  This would cancel out
 the effect of <kbd>LFD</kbd>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-M-o
 </kbd></dt>
 <dd><p>Split line at point; text on the line after point becomes a new line
 indented to the same column that it now starts in (<code>split-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-m
 </kbd></dt>
 <dd><p>Move (forward or back) to the first non-blank character on the current
 line (<code>back-to-indentation</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-M-\
 </kbd></dt>
 <dd><p>Indent several lines to same column (<code>indent-region</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x <kbd>TAB</kbd>
 </kbd></dt>
 <dd><p>Shift block of lines rigidly right or left (<code>indent-rigidly</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-i
 </kbd></dt>
 <dd><p>Indent from point to the next prespecified tab stop column
 (<code>tab-to-tab-stop</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x indent-relative
 </kbd></dt>
 <dd><p>Indent from point to under an indentation point in the previous line.
@@ -107,6 +107,8 @@ indents to the next tab stop column.  You can set the tab stops with
 </table>
 
 <hr size="6">
+<a name="NOD180"></a>
+<a name="SEC193"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC192" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC194" title="Next section in reading order"> &gt; </a>]</td>
@@ -118,8 +120,6 @@ indents to the next tab stop column.  You can set the tab stops with
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD180"></a>
-<a name="SEC193"></a>
 <h2> 19.1 Indentation Commands and Techniques </h2>
 
 <p>  If you just want to insert a tab character in the buffer, you can type
@@ -176,6 +176,8 @@ applicable even then, <code>tab-to-tab-stop</code> is run (see next section).
 </p><p>  <code>indent-relative</code> is the definition of <kbd>TAB</kbd> in Indented Text
 mode.  See section <a href="xemacs_23.html#SEC196">Commands for Human Languages</a>.
 </p><hr size="6">
+<a name="NOD181"></a>
+<a name="SEC194"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC193" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC195" title="Next section in reading order"> &gt; </a>]</td>
@@ -187,8 +189,6 @@ mode.  See section <a href="xemacs_23.html#SEC196">Commands for Human Languages<
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD181"></a>
-<a name="SEC194"></a>
 <h2> 19.2 Tab Stops </h2>
 
 <p>  For typing in tables, you can use Text mode's definition of <kbd>TAB</kbd>,
@@ -227,6 +227,8 @@ help you see where the colons are and tell you what to do.
 to do with displaying tab characters in the buffer.  See section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>,
 for more information on that.
 </p><hr size="6">
+<a name="NOD182"></a>
+<a name="SEC195"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC194" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_23.html#SEC196" title="Next section in reading order"> &gt; </a>]</td>
@@ -238,8 +240,6 @@ for more information on that.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD182"></a>
-<a name="SEC195"></a>
 <h2> 19.3 Tabs vs. Spaces </h2>
 
 <p>  Emacs normally uses both tabs and spaces to indent lines.  If you prefer,

@@ -8,7 +8,7 @@
 @top
 @menu
 * First node::    node 1
-* Second node::    node 2
+* name:Second node.    node 2
 @end menu
 @c * node in table::
 @c * node in example::
@@ -133,15 +133,86 @@ display
 @end display
 @end example
 
-a table within example
 @example
+a table within example
 @table @bullet
 @item item
 text
 @end table
+a multitable
+@multitable {a} {b}
+@item beginnin
+
+@item @dots{}
+@tab 
+
+a new column                          no splitting ???????????????????                             
+@end multitable
+
+a menu
+@menu
+* node menu::      a node in menu
+
+in menu comment
+html
+@html
+<cite>cite me</cite> a cite in html
+@end html
+
+* a menu name:other node. 
+      description of other
+      node
+
+@end menu
+
+A quotation
+@quotation
+This is a pre
+quotation
+
+@end quotation
+
+Enumerate
+
+@enumerate
+@item first item
+@item second  item
+
+still second
+@end enumerate
+
 @end example
 
+@example
+deffs
+@defun {my def} args @var{arg} @dots{}
+@defunx {other def} no args
+@deffnx {type} {name} and now the args
+@defvar {variables} variable-name
 
+@defvarx {variables too} other-variable
+THis is the defvar
+
+A table within the def
+@table @asis
+@item item
+text
+
+more text
+@item second item
+@end table
+
+explanation
+@end defvar
+@end deffn
+@end defun
+
+@end example
+
+@node  node menu
+@unnumberedsubsec
+@node other node
+@unnumberedsubsec
 
 
 @contents

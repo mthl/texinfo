@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD5"></a>
+<a name="SEC7"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_3.html#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC8" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,12 +37,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD5"></a>
-<a name="SEC7"></a>
 <h1> 1. The XEmacs Frame </h1>
 
 <dl compact="compact">
- <dt> Frame
+<dt> Frame
 </dt>
 <dd><p>In many environments, such as a tty terminal, an XEmacs frame
 literally takes up the whole screen.  If you are
@@ -66,24 +66,24 @@ their own set of subwindows.
 The biggest area usually displays the text you are editing.  It may
 consist of one window or of two or more windows if you need to look at two
 buffers a the same time.
- </p> </li><li><p>
+</p></li><li><p>
 Below each text window's last line is a <em>mode line</em> (see section <a href="#SEC10">The Mode Line</a>), which describes what is going on in that window.  The mode line
 is in inverse video if the terminal supports that.  If there are several
 XEmacs windows in one frame, each window has its own mode line.
- </p> </li><li><p>
+</p></li><li><p>
 At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
 window</em>(see section <a href="#SEC9">The Echo Area</a>).  It is used by XEmacs to exchange information
 with the user.  There is only one echo area per XEmacs frame.
- </p> </li><li><p>
+</p></li><li><p>
 If you are running XEmacs under a graphical windowing system, a
 menu bar at the top of the frame makes shortcuts to several of the
 commands available (see section <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>).
- </p> </li><li><p>
+</p></li><li><p>
 Under a graphical windowing system, a
 toolbar at the top of the frame, just under the menu bar if it exists,
 provides &quot;one-touch&quot; shortcuts to several commands.  (Not yet
 documented.)
- </p> </li><li><p>
+</p></li><li><p>
 Under a graphical windowing system, a
 gutter at the top (under the toolbar) and/or bottom of the frame
 provides advanced GUI facilities like tab controls for rapid switching
@@ -120,6 +120,8 @@ visible in all XEmacs windows containing that buffer.
 </table>
 
 <hr size="6">
+<a name="NOD6"></a>
+<a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC9" title="Next section in reading order"> &gt; </a>]</td>
@@ -131,8 +133,6 @@ visible in all XEmacs windows containing that buffer.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD6"></a>
-<a name="SEC8"></a>
 <h2> 1.1 Point </h2>
 
 <p>  When XEmacs is running, the cursor shows the location at which editing
@@ -165,6 +165,8 @@ each window independently.
 command in TECO (the language in which the original Emacs was written)
 for accessing the value now called `point'.
 </p><hr size="6">
+<a name="NOD7"></a>
+<a name="SEC9"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC10" title="Next section in reading order"> &gt; </a>]</td>
@@ -176,8 +178,6 @@ for accessing the value now called `point'.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD7"></a>
-<a name="SEC9"></a>
 <h2> 1.2 The Echo Area </h2>
 
 <p>  The line at the bottom of the frame (below the mode line) is the
@@ -193,12 +193,12 @@ the command.  Once echoing has started, the rest of the command is echoed
 immediately as you type it.  This behavior is designed to give confident
 users fast response, while giving hesitant users maximum feedback.  You
 can change this behavior by setting a variable (see section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>).
- </p> </li><li><p>
+</p></li><li><p>
   If you issue a command that cannot be executed, XEmacs may print an
 <em>error message</em> in the echo area.  Error messages are accompanied by
 a beep or by flashing the frame.  Any input you have typed ahead is
 thrown away when an error happens.
- </p> </li><li><p>
+</p></li><li><p>
   Some commands print informative messages in the echo area.  These
 messages look similar to error messages, but are not announced with a
 beep and do not throw away input.  Sometimes a message tells you what the
@@ -209,7 +209,7 @@ used to print a message describing the character position of point in the
 text and its current column in the window.  Commands that take a long time
 often display messages ending in `<samp>...</samp>' while they are working, and
 add `<samp>done</samp>' at the end when they are finished.
- </p> </li><li><p>
+</p></li><li><p>
   The echo area is also used to display the <em>minibuffer</em>, a window
 that is used for reading arguments to commands, such as the name of a
 file to be edited.  When the minibuffer is in use, the echo area displays
@@ -219,6 +219,8 @@ typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer
 </p></li></ul>
 
 <hr size="6">
+<a name="NOD8"></a>
+<a name="SEC10"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC11" title="Next section in reading order"> &gt; </a>]</td>
@@ -230,8 +232,6 @@ typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#SEC60">The Minibuffer
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD8"></a>
-<a name="SEC10"></a>
 <h2> 1.3 The Mode Line </h2>
 
 <p>  Each text window's last line is a <em>mode line</em> which describes what is
@@ -310,6 +310,8 @@ the terminal supports it); <code>nil</code> means no inverse video.  The
 default is <code>t</code>.  For X frames, simply set the foreground and
 background colors appropriately.
 </p><hr size="6">
+<a name="NOD9"></a>
+<a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC12" title="Next section in reading order"> &gt; </a>]</td>
@@ -321,8 +323,6 @@ background colors appropriately.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD9"></a>
-<a name="SEC11"></a>
 <h2> 1.4 GUI Components </h2>
 
 <p>When executed in a graphical windowing environment such as the X Window
@@ -348,6 +348,8 @@ function, and on a tab in the gutter to switch buffers.
 </table>
 
 <hr size="6">
+<a name="NOD10"></a>
+<a name="SEC12"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC13" title="Next section in reading order"> &gt; </a>]</td>
@@ -359,8 +361,6 @@ function, and on a tab in the gutter to switch buffers.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD10"></a>
-<a name="SEC12"></a>
 <h2> 1.5 The XEmacs Menubar </h2>
 
 <p>The XEmacs menubar is intended to be conformant to the usual conventions
@@ -392,6 +392,8 @@ a buffer in the appropriate major mode).
 detailed descriptions of these menus, <a href="xemacs_5.html#SEC30">XEmacs Pull-down Menus</a>.  (In 21.2
 XEmacsen, the `<samp>Mule</samp>' menu will be moved under `<samp>Options</samp>'.)
 </p><hr size="6">
+<a name="NOD11"></a>
+<a name="SEC13"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC14" title="Next section in reading order"> &gt; </a>]</td>
@@ -403,8 +405,6 @@ XEmacsen, the `<samp>Mule</samp>' menu will be moved under `<samp>Options</samp>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD11"></a>
-<a name="SEC13"></a>
 <h2> 1.6 XEmacs Scrollbars </h2>
 
 <p>XEmacs scrollbars provide the usual interface.  Arrow buttons at either
@@ -420,6 +420,8 @@ may be customized by the user.  By default a vertical scrollbar is
 present in all windows (except the minibuffer), and there is no
 horizontal scrollbar.
 </p><hr size="6">
+<a name="NOD12"></a>
+<a name="SEC14"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC13" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC15" title="Next section in reading order"> &gt; </a>]</td>
@@ -431,8 +433,6 @@ horizontal scrollbar.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD12"></a>
-<a name="SEC14"></a>
 <h2> 1.7 XEmacs Mode Lines </h2>
 
 <p>When used in a windowing system, the XEmacs modelines can be dragged
@@ -447,6 +447,8 @@ modeline act as a scrollbar for its own text.
 </p><p>You can select the behavior you want from the `<samp>Display</samp>' submenu of
 the `<samp>Options</samp>' menu.
 </p><hr size="6">
+<a name="NOD13"></a>
+<a name="SEC15"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC14" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC16" title="Next section in reading order"> &gt; </a>]</td>
@@ -458,8 +460,6 @@ the `<samp>Options</samp>' menu.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD13"></a>
-<a name="SEC15"></a>
 <h2> 1.8 XEmacs Toolbars </h2>
 
 <p>XEmacs has a default toolbar which provides shortcuts for some of the
@@ -471,6 +471,8 @@ toolbars may be present simultaneously (in different positions).  VM,
 for example, provides an application toolbar which shortcuts for
 mail-specific operations like sending, saving, and deleting messages.
 </p><hr size="6">
+<a name="NOD14"></a>
+<a name="SEC16"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC15" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC17" title="Next section in reading order"> &gt; </a>]</td>
@@ -482,8 +484,6 @@ mail-specific operations like sending, saving, and deleting messages.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD14"></a>
-<a name="SEC16"></a>
 <h2> 1.9 XEmacs Gutters </h2>
 
 <p>Gutters are the most flexible of the GUI components described in this
@@ -516,6 +516,8 @@ if the list is too long, the least recently used buffers are deleted
 from the list.  By default up to 6 most recently used buffers with the
 same mode are displayed on tabs in the gutter.
 </p><hr size="6">
+<a name="NOD15"></a>
+<a name="SEC17"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC16" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC18" title="Next section in reading order"> &gt; </a>]</td>
@@ -527,8 +529,6 @@ same mode are displayed on tabs in the gutter.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD15"></a>
-<a name="SEC17"></a>
 <h2> 1.10 Inhibiting Display of GUI Components </h2>
 
 <p>Use of GUI facilities is a personal thing.  Almost everyone agrees that
@@ -567,6 +567,8 @@ gives a list of variables which can be customized.  E.g., to control the
 visibility of specifically the left-side toolbar only, customize
 <code>left-toolbar-visible-p</code>.
 </p><hr size="6">
+<a name="NOD16"></a>
+<a name="SEC18"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC17" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC19" title="Next section in reading order"> &gt; </a>]</td>
@@ -578,12 +580,12 @@ visibility of specifically the left-side toolbar only, customize
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD16"></a>
-<a name="SEC18"></a>
 <h2> 1.11 Changing the Position, Orientation, and Appearance of GUI Components </h2>
 
 <p>  #### Not documented yet.
 </p><hr size="6">
+<a name="NOD17"></a>
+<a name="SEC19"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC20" title="Next section in reading order"> &gt; </a>]</td>
@@ -595,8 +597,6 @@ visibility of specifically the left-side toolbar only, customize
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD17"></a>
-<a name="SEC19"></a>
 <h2> 1.12 Using XEmacs Under the X Window System </h2>
 
 <p>XEmacs can be used with the X Window System and a window manager like
@@ -671,6 +671,8 @@ title is simply what appears above the window.)
 </p></li></ul>
 
 <hr size="6">
+<a name="NOD18"></a>
+<a name="SEC20"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC19" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_5.html#SEC21" title="Next section in reading order"> &gt; </a>]</td>
@@ -682,8 +684,6 @@ title is simply what appears above the window.)
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD18"></a>
-<a name="SEC20"></a>
 <h2> 1.13 Using XEmacs Under Microsoft Windows </h2>
 
 <p>Use of XEmacs under MS Windows is not separately documented here, but

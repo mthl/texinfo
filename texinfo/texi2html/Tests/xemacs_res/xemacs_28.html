@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD270"></a>
+<a name="SEC296"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_27.html#SEC295" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC297" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD270"></a>
-<a name="SEC296"></a>
 <h1> 25. Sending Mail </h1>
 
 <p>  To send a message in Emacs, start by typing the command (<kbd>C-x m</kbd>)
@@ -44,15 +44,15 @@ to select and initialize the `<samp>*mail*</samp>' buffer.  You can then edit th
 and headers of the message in the mail buffer, and type the command
 (<kbd>C-c C-c</kbd>) to send the message.
 </p><dl compact="compact">
- <dt><kbd> C-x m
+<dt><kbd> C-x m
 </kbd></dt>
 <dd><p>Begin composing a message to send (<code>mail</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x 4 m
 </kbd></dt>
 <dd><p>Likewise, but display the message in another window
 (<code>mail-other-window</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-c
 </kbd></dt>
 <dd><p>In Mail mode, send the message and switch to another buffer
@@ -84,6 +84,8 @@ it will search for an existing, unsent mail message buffer and select it.
 </table>
 
 <hr size="6">
+<a name="NOD271"></a>
+<a name="SEC297"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC296" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC298" title="Next section in reading order"> &gt; </a>]</td>
@@ -95,8 +97,6 @@ it will search for an existing, unsent mail message buffer and select it.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD271"></a>
-<a name="SEC297"></a>
 <h2> 25.1 The Format of the Mail Buffer </h2>
 
 <p>  In addition to the <em>text</em> or contents, a message has <em>header
@@ -127,6 +127,8 @@ Subject: The XEmacs User's Manual
 Please ignore this message.
 </pre></td></tr></table>
 <hr size="6">
+<a name="NOD272"></a>
+<a name="SEC298"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC297" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC299" title="Next section in reading order"> &gt; </a>]</td>
@@ -138,8 +140,6 @@ Please ignore this message.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD272"></a>
-<a name="SEC298"></a>
 <h2> 25.2 Mail Header Fields </h2>
 
 <p>  There are several header fields you can use in the `<samp>*mail*</samp>' buffer.
@@ -148,7 +148,7 @@ terminated by a colon.  It does not matter whether you use upper or lower
 case in the field name.  After the colon and optional whitespace comes the
 contents of the field.
 </p><dl compact="compact">
- <dt>`<samp> To
+<dt>`<samp> To
 </samp>'</dt>
 <dd><p>This field contains the mailing addresses of the message.
 </p></dd>
@@ -287,6 +287,8 @@ to send, an `<samp>FCC</samp>' field is entered for that file.  Unless you
 remove the `<samp>FCC</samp>' field, every message is written into that
 file when it is sent.
 </p><hr size="6">
+<a name="NOD273"></a>
+<a name="SEC299"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC298" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_29.html#SEC300" title="Next section in reading order"> &gt; </a>]</td>
@@ -298,8 +300,6 @@ file when it is sent.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD273"></a>
-<a name="SEC299"></a>
 <h2> 25.3 Mail Mode </h2>
 
 <p>  The major mode used in the `<samp>*mail*</samp>' buffer is Mail mode.  Mail
@@ -307,44 +307,44 @@ mode is similar to Text mode, but several commands are provided on
 the <kbd>C-c</kbd> prefix.  These commands all deal specifically with
 editing or sending the message.
 </p><dl compact="compact">
- <dt><kbd> C-c C-s
+<dt><kbd> C-c C-s
 </kbd></dt>
 <dd><p>Send the message, and leave the `<samp>*mail*</samp>' buffer selected
 (<code>mail-send</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-c
 </kbd></dt>
 <dd><p>Send the message, and select some other buffer (<code>mail-send-and-exit</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-f C-t
 </kbd></dt>
 <dd><p>Move to the `<samp>To</samp>' header field, creating one if there is none
 (<code>mail-to</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-f C-s
 </kbd></dt>
 <dd><p>Move to the `<samp>Subject</samp>' header field, creating one if there is
 none (<code>mail-subject</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-f C-c
 </kbd></dt>
 <dd><p>Move to the `<samp>CC</samp>' header field, creating one if there is none
 (<code>mail-cc</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-w
 </kbd></dt>
 <dd><p>Insert the file `<tt>~/.signature</tt>' at the end of the message text
 (<code>mail-signature</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-y
 </kbd></dt>
 <dd><p>Yank the selected message (<code>mail-yank-original</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-c C-q
 </kbd></dt>
 <dd><p>Fill all paragraphs of yanked old messages, each individually
 (<code>mail-fill-yanked-message</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> <kbd>button3</kbd>
 </kbd></dt>
 <dd><p>Pops up a menu of useful mail-mode commands.

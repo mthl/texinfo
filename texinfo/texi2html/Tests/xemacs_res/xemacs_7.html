@@ -24,6 +24,8 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD41"></a>
+<a name="SEC49"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_6.html#SEC48" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC50" title="Next section in reading order"> &gt; </a>]</td>
@@ -35,8 +37,6 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD41"></a>
-<a name="SEC49"></a>
 <h1> 4. Basic Editing Commands </h1>
 
 <p>  We now give the basics of how to enter text, make corrections, and
@@ -67,6 +67,8 @@ C-h t</kbd>.
 </table>
 
 <hr size="6">
+<a name="NOD42"></a>
+<a name="SEC50"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC49" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC51" title="Next section in reading order"> &gt; </a>]</td>
@@ -78,8 +80,6 @@ C-h t</kbd>.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD42"></a>
-<a name="SEC50"></a>
 <h2> 4.1 Inserting Text </h2>
 
 <p>  To insert printing characters into the text you are editing, just type
@@ -145,6 +145,8 @@ character should be inserted (see section <a href="#SEC58">Numeric Arguments</a>
 <code>self-insert</code>, which inserts whatever character was typed to invoke
 it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
 </p><hr size="6">
+<a name="NOD43"></a>
+<a name="SEC51"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC50" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC52" title="Next section in reading order"> &gt; </a>]</td>
@@ -156,8 +158,6 @@ it.  Some major modes rebind <kbd>DEL</kbd> to other commands.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD43"></a>
-<a name="SEC51"></a>
 <h2> 4.2 Changing the Location of Point </h2>
 
 <p>  To do more than insert characters, you have to know how to move point
@@ -206,42 +206,42 @@ TTY's), but the latter are available on all terminals.
 <a name="IDX178"></a>
 <a name="IDX179"></a>
 <dl compact="compact">
- <dt><kbd> C-a
+<dt><kbd> C-a
 </kbd></dt>
 <dt><kbd> HOME
 </kbd></dt>
 <dd><p>Move to the beginning of the line (<code>beginning-of-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-e
 </kbd></dt>
 <dt><kbd> END
 </kbd></dt>
 <dd><p>Move to the end of the line (<code>end-of-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-f
 </kbd></dt>
 <dt><kbd> RIGHT
 </kbd></dt>
 <dd><p>Move forward one character (<code>forward-char</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-b
 </kbd></dt>
 <dt><kbd> LEFT
 </kbd></dt>
 <dd><p>Move backward one character (<code>backward-char</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-f
 </kbd></dt>
 <dt><kbd> C-RIGHT
 </kbd></dt>
 <dd><p>Move forward one word (<code>forward-word</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-b
 </kbd></dt>
 <dt><kbd> C-LEFT
 </kbd></dt>
 <dd><p>Move backward one word (<code>backward-word</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-n
 </kbd></dt>
 <dt><kbd> DOWN
@@ -250,30 +250,30 @@ TTY's), but the latter are available on all terminals.
 attempts to keep the horizontal position unchanged, so if you start in
 the middle of one line, you end in the middle of the next.  When on the
 last line of text, <kbd>C-n</kbd> creates a new line and moves onto it.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-p
 </kbd></dt>
 <dt><kbd> UP
 </kbd></dt>
 <dd><p>Move up one line, vertically (<code>previous-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-v
 </kbd></dt>
 <dt><kbd> PGDN
 </kbd></dt>
 <dd><p>Move down one page, vertically (<code>scroll-up</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-v
 </kbd></dt>
 <dt><kbd> PGUP
 </kbd></dt>
 <dd><p>Move up one page, vertically (<code>scroll-down</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-l
 </kbd></dt>
 <dd><p>Clear the frame and reprint everything (<code>recenter</code>).  Text moves
 on the frame to bring point to the center of the window.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-r
 </kbd></dt>
 <dd><p>Move point to left margin, vertically centered in the window
@@ -282,35 +282,35 @@ on the frame to bring point to the center of the window.
 screen lines down from the top of the window (zero for the top line).  A
 negative argument counts lines from the bottom (-1 for the bottom
 line).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-t
 </kbd></dt>
 <dd><p>Transpose two characters, the ones before and after the cursor
 (<code>transpose-chars</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-&lt;
 </kbd></dt>
 <dt><kbd> C-HOME
 </kbd></dt>
 <dd><p>Move to the top of the buffer (<code>beginning-of-buffer</code>).  With
 numeric argument <var>n</var>, move to <var>n</var>/10 of the way from the top.
-See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments. </p> </dd>
+See section <a href="#SEC58">Numeric Arguments</a>, for more information on numeric arguments.</p></dd>
 <dt><kbd> M-&gt;
 </kbd></dt>
 <dt><kbd> C-END
 </kbd></dt>
 <dd><p>Move to the end of the buffer (<code>end-of-buffer</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x goto-char
 </kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to buffer position <var>n</var>.
 Position 1 is the beginning of the buffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-g
 </kbd></dt>
 <dd><p>Read a number <var>n</var> and move point to line number <var>n</var>
 (<code>goto-line</code>).  Line 1 is the beginning of the buffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x set-goal-column
 </kbd></dt>
 <dd><p><a name="IDX180"></a>
@@ -319,7 +319,7 @@ Use the current column of point as the <em>semi-permanent goal column</em> for
 commands always move to this column in each line moved into, or as
 close as possible given the contents of the line.  This goal column remains
 in effect until canceled.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-u M-x set-goal-column
 </kbd></dt>
 <dd><p>Cancel the goal column.  Henceforth, <kbd>C-n</kbd> and <kbd>C-p</kbd> once
@@ -337,6 +337,8 @@ See section <a href="xemacs_30.html#SEC353">Variables</a>, for how to set variab
 it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, then
 <kbd>C-n</kbd> gets an error instead (like <kbd>C-p</kbd> on the first line).
 </p><hr size="6">
+<a name="NOD44"></a>
+<a name="SEC52"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC51" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC53" title="Next section in reading order"> &gt; </a>]</td>
@@ -348,29 +350,27 @@ it.  If the variable <code>next-line-add-newlines</code> is <code>nil</code>, th
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD44"></a>
-<a name="SEC52"></a>
 <h2> 4.3 Erasing Text </h2>
 
 <dl compact="compact">
- <dt><kbd> <kbd>DEL</kbd>
+<dt><kbd> <kbd>DEL</kbd>
 </kbd></dt>
 <dd><p>Delete the character before or after point
 (<code>backward-or-forward-delete-char</code>).  You can customize
 this behavior by setting the variable <code>delete-key-deletes-forward</code>.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-d
 </kbd></dt>
 <dd><p>Delete the character after point (<code>delete-char</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-k
 </kbd></dt>
 <dd><p>Kill to the end of the line (<code>kill-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-d
 </kbd></dt>
 <dd><p>Kill forward to the end of the next word (<code>kill-word</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> M-<kbd>DEL</kbd>
 </kbd></dt>
 <dd><p>Kill back to the beginning of the previous word
@@ -393,6 +393,8 @@ line, it kills all the text up to the end of the line.  If you type
 <kbd>C-k</kbd> at the end of a line, it joins that line and the next line.
 </p><p>  See section <a href="xemacs_12.html#SEC87">Deletion and Killing</a>, for more flexible ways of killing text.
 </p><hr size="6">
+<a name="NOD45"></a>
+<a name="SEC53"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC52" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC54" title="Next section in reading order"> &gt; </a>]</td>
@@ -404,8 +406,6 @@ line, it kills all the text up to the end of the line.  If you type
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD45"></a>
-<a name="SEC53"></a>
 <h2> 4.4 Files </h2>
 
 <p>  The commands described above are sufficient for creating and altering
@@ -442,6 +442,8 @@ buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 <b>File</b> menu, the file is created.
 </p><p>  To learn more about using files, See section <a href="xemacs_17.html#SEC134">File Handling</a>.
 </p><hr size="6">
+<a name="NOD46"></a>
+<a name="SEC54"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC53" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC55" title="Next section in reading order"> &gt; </a>]</td>
@@ -453,8 +455,6 @@ buffer with <kbd>C-x C-s</kbd>, or by choosing <b>Save Buffer</b> from the
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD46"></a>
-<a name="SEC54"></a>
 <h2> 4.5 Help </h2>
 
 <p>  If you forget what a key does, you can find out with the Help
@@ -466,6 +466,8 @@ subcommands (the command <code>describe-key</code>).  The other subcommands of
 <kbd>C-h</kbd> provide different kinds of help.  Type <kbd>C-h</kbd> twice to get
 a description of all the help facilities.  See section <a href="xemacs_11.html#SEC71">Help</a>.
 </p><hr size="6">
+<a name="NOD47"></a>
+<a name="SEC55"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC54" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC56" title="Next section in reading order"> &gt; </a>]</td>
@@ -477,17 +479,15 @@ a description of all the help facilities.  See section <a href="xemacs_11.html#S
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD47"></a>
-<a name="SEC55"></a>
 <h2> 4.6 Blank Lines </h2>
 
 <p>  Here are special commands and techniques for putting in and taking out
 blank lines.
 </p><dl compact="compact">
- <dt><kbd> C-o
+<dt><kbd> C-o
 </kbd></dt>
 <dd><p>Insert one or more blank lines after the cursor (<code>open-line</code>).
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x C-o
 </kbd></dt>
 <dd><p>Delete all but one of many consecutive blank lines
@@ -520,6 +520,8 @@ solitary blank line deletes that blank line.  When point is on a
 nonblank line, <kbd>C-x C-o</kbd> deletes any blank lines following that
 nonblank line.
 </p><hr size="6">
+<a name="NOD48"></a>
+<a name="SEC56"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC55" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC57" title="Next section in reading order"> &gt; </a>]</td>
@@ -531,8 +533,6 @@ nonblank line.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD48"></a>
-<a name="SEC56"></a>
 <h2> 4.7 Continuation Lines </h2>
 
 <p>  If you add too many characters to one line without breaking it with
@@ -563,6 +563,8 @@ time, the default value is in effect.  The default is initially
 </p><p>  See section <a href="xemacs_14.html#SEC114">Variables Controlling Display</a>, for additional variables that affect how text is
 displayed.
 </p><hr size="6">
+<a name="NOD49"></a>
+<a name="SEC57"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC56" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC58" title="Next section in reading order"> &gt; </a>]</td>
@@ -574,8 +576,6 @@ displayed.
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD49"></a>
-<a name="SEC57"></a>
 <h2> 4.8 Cursor Position Information </h2>
 
 <p>  If you are accustomed to other display editors, you may be surprised
@@ -585,24 +585,24 @@ needed, and a number of commands are available to compute and print it.
 Since text is stored in a way that makes it difficult to compute the
 information, it is not displayed all the time.
 </p><dl compact="compact">
- <dt><kbd> M-x what-page
+<dt><kbd> M-x what-page
 </kbd></dt>
 <dd><p>Print page number of point, and line number within page.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x what-line
 </kbd></dt>
 <dd><p>Print line number of point in the buffer.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-x line-number-mode
 </kbd></dt>
 <dd><p>Toggle automatic display of current line number.
- </p> </dd>
+</p></dd>
 <dt><kbd> M-=
 </kbd></dt>
 <dd><p>Print number of lines and characters in the current region
 (<code>count-lines-region</code>).  See section <a href="xemacs_12.html#SEC79">Selecting Text</a>, for information about the
 region.
- </p> </dd>
+</p></dd>
 <dt><kbd> C-x =
 </kbd></dt>
 <dd><p>Print character code of character after point, character position of
@@ -624,11 +624,11 @@ point, and column of point (<code>what-cursor-position</code>).
 prints the line number point is on.  The first line of the file is line
 number 1.  You can use these numbers as arguments to <kbd>M-x
 goto-line</kbd>.
- </p> </li><li><p>
+</p></li><li><p>
 <kbd>M-x what-page</kbd> counts pages from the beginning of the file, and
 counts lines within the page, printing both of them.  See section <a href="xemacs_23.html#SEC209">Pages</a>, for
 the command <kbd>C-x l</kbd>, which counts the lines in the current page.
- </p> </li><li><p>
+</p></li><li><p>
 <kbd>M-=</kbd> (<code>count-lines-region</code>) prints the number of lines in the
 region (see section <a href="xemacs_12.html#SEC79">Selecting Text</a>).  See section <a href="xemacs_23.html#SEC209">Pages</a>, for the command <kbd>C-x l</kbd> which
 counts the lines in the
@@ -671,6 +671,8 @@ The output looks like
 point=563026 of 563025(100%)  column 0
 </pre></font></td></tr></table>
 <hr size="6">
+<a name="NOD50"></a>
+<a name="SEC58"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC57" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_8.html#SEC59" title="Next section in reading order"> &gt; </a>]</td>
@@ -682,8 +684,6 @@ point=563026 of 563025(100%)  column 0
 <td valign="middle" align="left">[<a href="xemacs_33.html#SEC413" title="Concept index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<a name="NOD50"></a>
-<a name="SEC58"></a>
 <h2> 4.9 Numeric Arguments </h2>
 
 <p>  In mathematics and computer usage, the word <em>argument</em> means

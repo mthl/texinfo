@@ -169,6 +169,10 @@ text on the same line than end   @end  ftable
 works like @@ifnothtml
 @end ifnottex
 
+@item outside format.
+
+@tab outside format.
+
 @multitable {@samp{bidule}}
 truc before table beginning @item first cell @tab ignored cell
 @itemx second row
