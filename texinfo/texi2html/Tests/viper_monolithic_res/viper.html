@@ -198,7 +198,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
+See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
 A <em>point</em> is always between 2 characters, and is <em>looking at</em>
 the right hand character.  The cursor is positioned on the right hand
 character.  Thus, when the <em>point</em> is looking at the end-of-line,
@@ -209,7 +209,7 @@ Emacs commands directly (such as those bound to arrow keys), it is possible
 to get the cursor beyond the end-of-line.  However, this won't (or
 shouldn't) happen if you restrict yourself to standard Vi keys, unless you
 modify the default editing style.  See section <a href="#SEC25">Customization</a>.</p><p>In addition to the <em>point</em>, there is another distinguished buffer
-position called the <em>mark</em>.  See section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
+position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a--z, there
 is another marker called <em>mark</em>.  This is similar to the unnamed Vi
@@ -260,12 +260,12 @@ buffers.  Additionally, each buffer has its <em>local keymap</em> that determine
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
+will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
 you can use or not.  A buffer in <code>text-mode</code> can have
 <code>auto-fill-mode</code> as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
+more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
@@ -545,7 +545,7 @@ use <kbd>C-g</kbd> to quit.  Similarly, <kbd>C-]</kbd> is used to exit
 `<samp>Recursive Edits</samp>' in Emacs for which there is no comparable Vi
 functionality and no key-binding.  Recursive edits are indicated by
 `<samp>[]</samp>' brackets framing the modes on the mode line.
-See section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
+See <a href="../emacs/Recursive-Edit.html">Recursive Edit: (emacs)Recursive Edit</a> section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
 At user level 1, <kbd>C-g</kbd> is bound to <code>viper-info-on-file</code>
 function instead.
 </p></dd>
@@ -592,7 +592,7 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `<samp>\u</samp>', `<samp>\L</samp>',
-<small>...</small>, etc.  See section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
+<small>...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
 Files specified to <kbd>:e</kbd> use <code>csh</code> regular expressions
 (globbing, wildcards, what have you).
 However, the function <code>viper-toggle-search-style</code>, bound to <kbd>C-c /</kbd>,
@@ -1117,7 +1117,7 @@ direction.
 <a name="IDX46"></a>
 <p>Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
-to have numbered backups, etc.  For details, see section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX47"></a>
+to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html">(emacs)Backup</a> section `Backup and Auto-Save' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX47"></a>
 <a name="IDX48"></a>
 <a name="IDX49"></a>
 <a name="IDX50"></a>
@@ -1227,7 +1227,7 @@ will show the contents of a textmarker).
 <kbd>*</kbd>, and it can be yanked into a register using <kbd>@!register</kbd>.
 This is useful for Emacs style keyboard macros defined using <kbd>C-x(</kbd>
 and <kbd>C-x)</kbd>.  Emacs keyboard macros have more capabilities.
-See section `Keyboard Macros' in <cite>The GNU Emacs Manual</cite>, for
+See <a href="../emacs/Keyboard-Macros.html">(emacs)Keyboard Macros</a> section `Keyboard Macros' in <cite>The GNU Emacs Manual</cite>, for
 details.</p><p>Keyboard Macros allow an interesting form of Query-Replace:
 <kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
 Keyboard Macro execution <kbd>@@</kbd> (the replace).
@@ -1301,7 +1301,7 @@ cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
 <kbd>C-r</kbd>.  See section <a href="#SEC25">Customization</a>, to find out how to change the bindings
 of <kbd>C-r or C-s</kbd>.
-For details, see section `Incremental Search' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX54"></a>
+For details, see <a href="../emacs/Incremental-Search.html">(emacs)Incremental Search</a> section `Incremental Search' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX54"></a>
 <p>Viper also provides a query replace function that prompts through the
 Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
 </p><a name="IDX55"></a>
@@ -1347,7 +1347,7 @@ faces are grouped together under Viper's
 <p>It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
 Sophisticated templates can be defined using the Emacs abbreviation
-facilities.  See section `Abbreviations' in <cite>The GNU Emacs Manual</cite>, for
+facilities.  See <a href="../emacs/Abbrevs.html">(emacs)Abbrevs</a> section `Abbreviations' in <cite>The GNU Emacs Manual</cite>, for
 details.
 </p><a name="IDX57"></a>
 <p>Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
@@ -1564,7 +1564,7 @@ Call last keyboard macro.
 </p></dd>
 <dt><kbd> m,
 </kbd></dt>
-<dd><p>Jump to mark and pop mark off the ring.  See section `Mark' in <cite>The GNU Emacs Manual</cite>, for more info.
+<dd><p>Jump to mark and pop mark off the ring.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs Manual</cite>, for more info.
 </p></dd>
 <dt><kbd> ] register
 </kbd></dt>
@@ -2514,7 +2514,7 @@ major mode won't rid you from unwanted local keys, since these keys are
 local to Viper state and the current buffer, not to the major mode.
 In such situations, the remedy is to type <kbd>M-x viper-zap-local-keys</kbd>.
 </p><p>So much about Viper-specific bindings.
-See section `Customization' in <cite>The GNU Emacs Manual</cite>, and the Emacs quick reference card for the general info on key
+See <a href="../emacs/Customization.html">(emacs)Customization</a> section `Customization' in <cite>The GNU Emacs Manual</cite>, and the Emacs quick reference card for the general info on key
 bindings in Emacs.
 </p><a name="IDX180"></a>
 <a name="IDX181"></a>
@@ -2741,7 +2741,7 @@ See section <a href="#SEC30">Vi Macros</a>, for more information on Vi macros.
 <a name="IDX205"></a>
 <a name="IDX206"></a>
 Regular Expressions for <kbd>[[</kbd> and <kbd>]]</kbd>.  Note that Emacs defines
-Regexps for paragraphs and sentences.  See section `Paragraphs and Sentences' in <cite>The GNU Emacs Manual</cite>, for details.
+Regexps for paragraphs and sentences.  See <a href="../emacs/Paragraphs.html">(emacs)Paragraphs</a> section `Paragraphs and Sentences' in <cite>The GNU Emacs Manual</cite>, for details.
 </p></dd>
 <dt><code> M-x viper-set-expert-level
 </code></dt>
@@ -2893,7 +2893,7 @@ comment designator there.  For LaTeX, this could be &quot;%%%&quot;, and for C t
 above block should be commented out.
 </p><p>Even though these commands are sometimes useful, they are no substitute for
 the powerful <em>tag table</em> facility of Emacs.  Viper's <kbd>:tag</kbd> command
-in a primitive interface to Emacs tags.  See section `Tags' in <cite>The Gnu Emacs Manual</cite>, for more information on tags.
+in a primitive interface to Emacs tags.  See <a href="../emacs/Tags.html">Tags: (emacs)Tags</a> section `Tags' in <cite>The Gnu Emacs Manual</cite>, for more information on tags.
 </p><p>The following two commands are normally bound to a mouse click and are part
 of Viper.  They work only if Emacs runs as an application under X
 Windows (or under some other window system for which a port of GNU Emacs 20
@@ -3107,7 +3107,7 @@ definitions.
 macros) lets the user define keyboard macros that ask for confirmation or
 even prompt the user for input and then continue.  To do this, one should
 type <kbd>C-x q</kbd> (for confirmation) or <kbd>C-u C-x q</kbd> (for prompt).
-For details, see section `Customization' in <cite>The GNU Emacs Manual</cite> </p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
+For details, see <a href="../emacs/Kbd-Macro-Query.html">(emacs)Kbd Macro Query</a> section `Customization' in <cite>The GNU Emacs Manual</cite> </p><p>When the user finishes defining a macro (which is done by typing <kbd>C-x)</kbd> --
 a departure from Vi), you will be asked whether you want this
 macro to be global, mode-specific, or buffer-specific.  You will also be
 given a chance to save the macro in your `<tt>~/.viper</tt>' file.
@@ -3888,7 +3888,7 @@ don't want this macro, put
 
 <p>Emacs mark is referred to in the region specifiers <kbd>r</kbd> and <kbd>R</kbd>.
 See section <a href="#SEC4">Emacs Preliminaries</a>, and See section <a href="#SEC15">Basics</a>, for explanation.  Also
-see section `Mark' in <cite>The GNU Emacs manual</cite>, for an explanation of
+see <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for an explanation of
 the Emacs mark ring.
 </p><a name="IDX323"></a>
 <dl compact="compact">

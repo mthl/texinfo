@@ -94,7 +94,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
+See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.</p><p>A buffer has a distinguished position called the <em>point</em>.
 A <em>point</em> is always between 2 characters, and is <em>looking at</em>
 the right hand character.  The cursor is positioned on the right hand
 character.  Thus, when the <em>point</em> is looking at the end-of-line,
@@ -105,7 +105,7 @@ Emacs commands directly (such as those bound to arrow keys), it is possible
 to get the cursor beyond the end-of-line.  However, this won't (or
 shouldn't) happen if you restrict yourself to standard Vi keys, unless you
 modify the default editing style.  See section <a href="viper_4.html#SEC25">Customization</a>.</p><p>In addition to the <em>point</em>, there is another distinguished buffer
-position called the <em>mark</em>.  See section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
+position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a--z, there
 is another marker called <em>mark</em>.  This is similar to the unnamed Vi
@@ -156,12 +156,12 @@ buffers.  Additionally, each buffer has its <em>local keymap</em> that determine
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
+will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.</p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
 you can use or not.  A buffer in <code>text-mode</code> can have
 <code>auto-fill-mode</code> as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
+more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> </p><a name="IDX13"></a>
 <a name="IDX14"></a>
 <a name="IDX15"></a>
 <p>Viper is implemented as a collection of minor modes.  Different minor modes
@@ -441,7 +441,7 @@ use <kbd>C-g</kbd> to quit.  Similarly, <kbd>C-]</kbd> is used to exit
 `<samp>Recursive Edits</samp>' in Emacs for which there is no comparable Vi
 functionality and no key-binding.  Recursive edits are indicated by
 `<samp>[]</samp>' brackets framing the modes on the mode line.
-See section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
+See <a href="../emacs/Recursive-Edit.html">Recursive Edit: (emacs)Recursive Edit</a> section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
 At user level 1, <kbd>C-g</kbd> is bound to <code>viper-info-on-file</code>
 function instead.
 </p></dd>
@@ -488,7 +488,7 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `<samp>\u</samp>', `<samp>\L</samp>',
-<small>...</small>, etc.  See section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
+<small>...</small>, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
 Files specified to <kbd>:e</kbd> use <code>csh</code> regular expressions
 (globbing, wildcards, what have you).
 However, the function <code>viper-toggle-search-style</code>, bound to <kbd>C-c /</kbd>,

@@ -603,7 +603,7 @@ the temporary buffer.</p><a name="IDX405"></a>
 <p>You can parse the error messages by typing <kbd>C-x `</kbd>
 (<code>next-error</code>).  This causes Emacs to go to and position the
 cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
-caused the error.  See section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
+caused the error.  See <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
 information about using the <code>next-error</code> command.</p><p>In addition, you can kill the shell in which the <code>makeinfo</code>
 command is running or make the shell buffer display its most recent
 output.</p><dl compact="compact">
@@ -633,9 +633,9 @@ variable in your `<tt>.emacs</tt>' initialization file.</p><p>For example, you c
        --fill-column=70 --verbose&quot;)
 </pre></td></tr></table>
 <p>For more information, see<br>
-section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
-section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
-section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
+<a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
 <a href="#SEC264">Options for <code>makeinfo</code></a>.
 </p><hr size="6">
 <a name="NOD253"></a>
@@ -711,7 +711,7 @@ provides better error checking (see section <a href="#SEC266">Running <code>make
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (See section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)</p><p>Here is a shell command to format all the files that end in
+including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)</p><p>Here is a shell command to format all the files that end in
 `<tt>.texinfo</tt>' in the current directory:
 </p><table><tr><td>&nbsp;</td><td class="example"><pre>
 emacs -batch -funcall batch-texinfo-format *.texinfo
@@ -887,7 +887,7 @@ at `<tt>../&lt;info-document&gt;/</tt>'.
 
 <p>Info files are usually kept in the `<tt>info</tt>' directory.  You can read
 Info files using the standalone Info program or the Info reader built
-into Emacs.  (See Info `info', node `Top', for an introduction to Info.)
+into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an introduction to Info.)
 </p><table border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC272">20.2.1 The Directory File `<tt>dir</tt>'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The top level menu for all Info files.</td></tr>
@@ -1215,7 +1215,7 @@ read only one Info file and write only one `<tt>dir</tt>' file per invocation.
 <code>install-info</code> creates it if possible (with no entries).
 </p><a name="IDX421"></a>
 <a name="IDX422"></a>
-<p>If any input file is compressed with <code>gzip</code> (see section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
+<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html">(gzip)Invoking gzip</a> section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to

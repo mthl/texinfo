@@ -1,0 +1,84 @@
+# -*-perl-*-
+# APA: Add SystemLiteral to identify the canonical DTD.
+# [Definition:] The SystemLiteral is called the entity's system
+# identifier. It is a URI, which may be used to retrieve the entity.
+# See http://www.xml.com/axml/target.html#NT-ExternalID
+$T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
+
+$T2H_FRAMESET_DOCTYPE = $T2H_DOCTYPE;
+
+$T2H_BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+# this controls the pre style for menus
+$T2H_MENU_PRE_STYLE = '';
+
+$T2H_TOC_LIST_STYLE ='';
+
+$things_map{'oe'} = '&#156;';
+$things_map{'OE'} = '&#140;';
+
+# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
+# an eval of these $complex_format_map->{what}->{'end'} yields end
+$complex_format_map =
+{
+ example =>
+ {
+  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => ''
+ },
+ smallexample =>
+ {
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2H_SMALL_FONT_SIZE\">"},
+  'end' => q{'</font></td></tr></table>'},
+  'pre_style' => ''
+ },
+ display =>
+ {
+  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td>"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => ''
+ },
+ smalldisplay =>
+ {
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td><font size=\"$T2h_SMALL_FONT_SIZE\">"},
+  'end' => q{'</font></td></tr></table>'},
+  'pre_style' => ''
+ }
+};
+
+$complex_format_map->{lisp} = $complex_format_map->{example};
+$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
+$complex_format_map->{format} = $complex_format_map->{display};
+$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
+
+# formatting functions
+
+$t2h_summary_letter    = \&t2h_html32_summary_letter;
+$t2h_protect_html      = \&t2h_html32_protect_html;
+
+sub t2h_html32_protect_html($)
+{
+    my $what = shift;
+    # protect &, <, and >.
+    # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
+    # We may consider using that instead.
+    # If raw HTML is used outside @ifhtml or @html it's an error
+    # anyway.
+    $what =~ s/\&/\&amp;/go;
+    #$what =~ s/\"/\&quot;/go;
+    $what =~ s/\</\&lt;/go;
+    $what =~ s/\>/\&gt;/go;
+    return($what);
+}
+
+sub t2h_html32_summary_letter($$$)
+{
+    my $letter = shift;
+    my $file = shift;
+    my $index = shift;
+    my $id = shift;
+
+    return &$t2h_anchor('', "$file#${id}_" . $index,
+         "<b>" . &$t2h_protect_html($letter) . "</b>",
+         '');
+}

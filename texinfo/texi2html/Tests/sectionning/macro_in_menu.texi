@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@macro themacro
+@html
+bidule
+@end html
+@end macro
+
+@menu
+* (gcc):: @themacro{}
+@end menu
+
+Some text.
+
+@bye

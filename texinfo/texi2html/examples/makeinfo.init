@@ -21,6 +21,8 @@ $T2H_MENU_SYMBOL = '*';
 
 $T2H_WORDS_IN_PAGE = 200;
 
+$T2H_SEPARATED_FOOTNOTES = 0;
+
 @T2H_SECTION_BUTTONS =
     (
      \"node: ", \$T2H_NODE{This}, [ 'Next', \$T2H_NODE{Next} ] , \",", [ 'Prev', \$T2H_NODE{Prev} ], \",", [ 'NodeUp', \$T2H_NODE{NodeUp} ], 'Following'
@@ -29,4 +31,32 @@ $T2H_WORDS_IN_PAGE = 200;
 $T2H_NAVIGATION_TEXT{Following} = ' &gt; ';
 
 @T2H_MISC_BUTTONS = @T2H_SECTION_BUTTONS;
-1
+
+$t2h_foot_line_and_ref = \&makeinfo_like_foot_line_and_ref;
+$t2h_foot_lines        = \&makeinfo_like_foot_lines;
+
+sub makeinfo_like_foot_line_and_ref($$$$$$$$)
+{
+    my $foot_num = shift;
+    my $relative_num = shift;
+    my $footid = shift;
+    my $docid = shift;
+    my $from_file = shift;
+    my $footnote_file = shift;
+    my $lines = shift;
+    my $state = shift;
+    
+    my $foot_anchor = "<sup>" . &$t2h_anchor($docid, "$footnote_file#$footid", $relative_num) . "</sup>";
+    $foot_anchor = &$t2h_anchor($docid, "$footnote_file#$footid", "($relative_num)") if ($state->{'preformatted'});
+    unshift @$lines, "<li>";
+    push @$lines, "</li>\n";
+    return ($lines, $foot_anchor);
+}
+
+sub makeinfo_like_foot_lines($)
+{
+    my $lines = shift;
+    unshift @$lines, "<hr>\n<h4>$T2H_WORDS->{'Footnotes_Title'}</h4>\n<ol type=\"1\">\n";
+    push @$lines, "</ol>";
+    return $lines;
+}

@@ -1,0 +1,260 @@
+# -*-perl-*-
+
+# APA: Add SystemLiteral to identify the canonical DTD.
+# [Definition:] The SystemLiteral is called the entity's system
+# identifier. It is a URI, which may be used to retrieve the entity.
+# See http://www.xml.com/axml/target.html#NT-ExternalID
+$T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/xhtml1-transitional.dtd">';
+
+$T2H_FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/xhtml1-frameset.dtd">';
+
+# -iso
+# if set, ISO8859 characters are used for special symbols (like copyright, etc)
+$T2H_USE_ISO = 1;
+
+# horizontal rules
+$T2H_SMALL_RULE = '<hr size="1"/>';
+$T2H_DEFAULT_RULE = '<hr/>';
+$T2H_MIDDLE_RULE = '<hr size="2"/>';
+$T2H_BIG_RULE = '<hr size="6"/>';
+
+# this is added inside <head></head> after <title> and some <meta name>
+# stuff, it can be used for eg. <style>, <script>, <meta> etc. tags.
+$T2H_EXTRA_HEAD = '';
+
+$T2H_print_page_head	      = \&T2H_XHTML_print_page_head;
+$T2H_print_page_foot	      = \&T2H_XHTML_print_page_foot;
+$T2H_print_frame              = \&T2H_XHTML_print_frame;
+$T2H_button_icon_img	      = \&T2H_XHTML_button_icon_img;
+
+sub T2H_XHTML_print_page_head
+{
+    my $fh = shift;
+    my $longtitle = "$T2H_THISDOC{'title_no_texi'}";
+    $longtitle .= ": $T2H_NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
+    print $fh <<EOT;
+<?xml version="1.0" encoding="iso-8859-1"?>
+$T2H_DOCTYPE
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$T2H_LANG" lang="$T2H_LANG">
+$T2H_THISDOC{'copying'}<!-- Created on $T2H_THISDOC{today} by $T2H_THISDOC{program} -->
+<!--
+$T2H_THISDOC{program_authors}
+-->
+<head>
+<title>$longtitle</title>
+
+<meta name="description" content="$longtitle"/>
+<meta name="keywords" content="$longtitle"/>
+<meta name="resource-type" content="document"/>
+<meta name="distribution" content="global"/>
+<meta name="Generator" content="$T2H_THISDOC{program}"/>
+$T2H_EXTRA_HEAD
+</head>
+
+<body $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+EOT
+}
+
+# <span> instead of <font>
+sub T2H_XHTML_print_page_foot
+{
+    my $fh = shift;
+    print $fh <<EOT;
+<p>
+ <span style="font-size: smaller">
+  This document was generated $T2H_ADDRESS
+  using <a href="$T2H_THISDOC{program_homepage}"><i>$T2H_THISDOC{program}</i></a>.
+ </span>
+ <br/>
+$T2H_PRE_BODY_CLOSE
+</p>
+</body>
+</html>
+EOT
+}
+
+sub T2H_XHTML_print_frame
+{
+    my $fh = shift;
+    my $toc_file = shift;
+    my $main_file = shift;
+    print $fh <<EOT;
+$T2H_FRAMESET_DOCTYPE
+<html>
+<head><title>$T2H_THISDOC{title}</title></head>
+<frameset cols="140,*">
+  <frame name="toc" src="$toc_file"/>
+  <frame name="main" src="$main_file"/>
+</frameset>
+</html>
+EOT
+}
+
+# / in <img>
+sub T2H_XHTML_button_icon_img
+{
+    my $button = shift;
+    my $icon = shift;
+    my $name = shift;
+    return '' if (!defined($icon));
+    if (defined($name) && $name)
+    {
+        $name = ": $name";
+    }
+    else
+    {
+        $name = '';
+    }
+    $button = "" if (!defined ($button));
+    return qq{<img src="$icon" border="0" alt="$button$name" align="middle"/>};
+}
+
+$simple_map{'*'} = '<br/>';
+
+$things_map{'br'} = '<br/>';
+
+# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
+# an eval of these $complex_format_map->{what}->{'end'} yields end
+$complex_format_map->{'smallexample'} = 
+ {
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => 'style="font-size: smaller"'
+ };
+$complex_format_map->{'smalldisplay'} =
+ {
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => 'style="font-family: serif ; font-size: smaller"'
+ };
+
+$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
+$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
+
+# formatting functions
+
+$t2h_def_line	       = \&t2h_xhtml_def_line;
+$t2h_index_summary     = \&t2h_xhtml_index_summary;
+$t2h_image             = \&t2h_xhtml_image;
+
+# / in <img>
+sub t2h_xhtml_image($$$)
+{
+    my $image = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    if ($preformatted)
+    {
+        return "[ $base ]";
+    }
+    else
+    {
+        return ($T2H_CENTER_IMAGE ?
+          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"/></div>" :
+          "<img src=\"$image\" alt=\"$base\"/>");
+    }
+}
+
+# process definition commands line @deffn for example
+# <u> replaced by <span>
+sub t2h_xhtml_def_line($$$)
+{
+    my $tag = shift;
+    my $line = shift;
+    my $state = shift;
+    
+    $state->{'deff'} = $tag;
+    
+    if (defined($def_map{$tag}) and $def_map{$tag})
+    {
+        # substitute shortcuts for definition commands
+        my $substituted = $def_map{$tag};
+        $substituted =~ s/(\w+)//;
+        $tag = $1;
+        $line = $substituted . $line;
+    }
+    
+    my ($type, $name, $ftype);
+    ($line, $type, $name, $ftype) = parse_def($tag, $line);
+    #print STDERR "Def $tag $name, $type\n";
+    my $result = '';
+    unless ($type)
+    {
+        warn "$ERROR bad $state->{'deff'}, no type\n";
+        return '';
+    }
+    $type = substitute_line($type);
+    $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
+    unless ($name)
+    {
+        warn "$ERROR bad $state->{'deff'} nothing after the type\n";
+        return '';
+    }
+    $name = substitute_line($name);
+    $line = '' if (!$line);
+    $result = $T2H_DEF_TABLE ? '' : '<dt>';
+    if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
+    {
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
+            $result .= substitute_line($line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type</td>\n</tr>\n";
+        }
+        else
+        {
+            #FIXME <u> is deprecated in xhtml 1.1
+            #use <span style="text-description: underline"> ?
+            $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
+            $result .= substitute_line($line);
+        }
+    }
+    elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
+        || $tag eq 'deftypeop' || $tag eq 'defcv'
+        || $tag eq 'defop')
+    {
+        $ftype = substitute_line($ftype);
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
+            $result .= substitute_line($line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type of $ftype</td>\n</tr>\n";
+        }
+        else
+        {
+            $result .= "<span style=\"text-decoration: underline\">$type</span> $ftype <b>$name</b>";
+            $result .= substitute_line($line);
+        }
+    }
+    else
+    {
+        warn "$ERROR Unknown definition type: $tag\n";
+        $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
+        $result .= substitute_line($line);
+    }
+    $result .= do_index_entry_label($state);
+    $result .= "</dt>\n" if (!$T2H_DEF_TABLE);
+    return $result;
+}
+
+# There is a br 
+sub t2h_xhtml_index_summary($$)
+{
+    my $alphabetical_letters = shift;
+    my $non_alphabeticals = shift;
+
+    my $alphabetical_line = '';
+    $alphabetical_line = join ("\n &nbsp; \n", @$alphabetical_letters) . "\n &nbsp; \n" if (@$alphabetical_letters);
+    my $non_alphabetical_line = '';
+    $non_alphabetical_line = join ("\n &nbsp; \n", @$non_alphabeticals) . "\n &nbsp; \n" if (@$non_alphabeticals);
+
+    $non_alphabetical_line .= "<br/>\n" if ($non_alphabetical_line);
+    #FIXME i18n
+    return '<table><tr><th valign="top">Jump to: &nbsp; </th><td>' .
+       $non_alphabetical_line . $alphabetical_line . '</td></tr></table>';
+}
