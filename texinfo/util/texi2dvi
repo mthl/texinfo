@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.14 2003-02-05 00:42:33 karl Exp $
+# $Id: texi2dvi,v 1.15 2003-02-18 14:28:09 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.14 $'
+rcs_revision='$Revision: 1.15 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.5) $rcs_version
@@ -273,10 +273,12 @@ for this_file in "$1".?o? "$1".aux "$1".?? "$1".idx; do
   # If file is empty, skip it.
   test -s "$this_file" || continue
   # If the file is not suitable to be an index or xref file, don't
-  # process it.  The file can't be if its first character is not a
-  # backslash or single quote.
+  # process it.  It's suitable if the first character is a
+  # backslash or right quote, as long as the first line isn't
+  # \input texinfo.
   first_character=`sed -n '1s/^\(.\).*$/\1/p;q' $this_file`
-  if test "x$first_character" = "x\\" \
+  if (test "x$first_character" = "x\\" \
+      && sed 1q $this_file | grep -v '^\\input *texinfo' >/dev/null) \
      || test "x$first_character" = "x'"; then
     xref_files="$xref_files ./$this_file"
   fi
