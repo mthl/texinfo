@@ -160,11 +160,6 @@
 %
 \def\gobble#1{}
 
-% True if #1 is the empty string, i.e., called like `\ifempty{}'.
-%
-\def\ifempty#1{\ifemptyx #1\emptymarkA\emptymarkB}%
-\def\ifemptyx#1#2\emptymarkB{\ifx #1\emptymarkA}%
-
 % Hyphenation fixes.
 \hyphenation{ap-pen-dix}
 \hyphenation{eshell}
@@ -5027,7 +5022,8 @@ width0pt\relax} \fi
   % How we'll output the type name.  Putting it in brackets helps
   % distinguish it from the body text that may end up on the next line
   % just below it.
-  \ifempty{#2}%
+  \def\temp{#2}%
+  \ifx\temp\empty
     \def\defnametype{}%
   \else
     \def\defnametype{[\rm #2]}%
