@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
+@c $Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -59,6 +59,7 @@ Software Foundation raise funds for GNU development.''
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. Update info/dir entries.
 * texi2dvi: (texinfo)Format with texi2dvi.      Print Texinfo documents.
+* texi2pdf: (texinfo)PDF Output.                PDF output for Texinfo.
 * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
 * makeinfo: (texinfo)Invoking makeinfo.         Translate Texinfo source.
 @end direntry
@@ -895,10 +896,10 @@ For more information on @TeX{} in general, please see the book
 @cindex PDF output
 @cindex Beebe, Nelson
 @pindex pdftex
-(Generated via @command{texi2dvi --pdf}.)  This format, based on
-PostScript, was developed by Adobe Systems for document interchange.
-It is intended to be platform-independent and easily viewable, among
-other design goals; for a discussion, see
+(Generated via @command{texi2dvi --pdf} or @command{texi2pdf}.)  This
+format, based on PostScript, was developed by Adobe Systems for
+document interchange.  It is intended to be platform-independent and
+easily viewable, among other design goals; for a discussion, see
 @uref{http://tug.org/tugboat/Articles/tb22-3/tb72beebeI.pdf}.  Texinfo
 uses the @command{pdftex} program, a variant of @TeX{}, to output pdf;
 see @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
@@ -13757,13 +13758,12 @@ any device (see the following sections).
 
 @pindex texindex
 The @code{tex} formatting command itself does not sort the indices; it
-writes an output file of unsorted index data.  (The @code{texi2dvi}
-command automatically generates indices; @pxref{Format with texi2dvi,,
-Format with @code{texi2dvi}}.)  To generate a printed index after
-running the @code{tex} command, you first need a sorted index to work
-from.  The @code{texindex} command sorts indices.  (The source file
-@file{texindex.c} comes as part of the standard Texinfo distribution,
-among other places.)@refill
+writes an output file of unsorted index data.  To generate a printed
+index after running the @command{tex} command, you first need a sorted
+index to work from.  The @command{texindex} command sorts indices.
+(The source file @file{texindex.c} comes as part of the standard
+Texinfo distribution, among other places.)  (@command{texi2dvi} runs
+@command{tex} and @command{texindex} as necessary.)
 
 @cindex Names of index files
 @cindex Index file names
@@ -13901,9 +13901,20 @@ formats, such as @code{@@smallbook} (@pxref{smallbook}),
 (You can also do this on a site-wide basis with @file{texinfo.cnf};
 @pxref{Preparing for TeX,,Preparing for @TeX{}}).
 
+With the @option{--pdf} option, @command{texi2dvi} produces PDF output
+instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
+instead of @command{tex}.  Alternatively, the command
+@command{texi2pdf} is an abbreviation for running @samp{texi2dvi --pdf}.
+
 @cindex @LaTeX{}, processing with @command{texi2dvi}
 @command{texi2dvi} can also be used to process @LaTeX{} files; simply
 run @samp{texi2dvi filename.ext}.
+
+@command{texi2dvi} will use @command{etex} (or @command{pdfetex}) if
+they are available; these extended versions of @TeX{} are not
+required, and the DVI (or PDF) output is identical, but they simplify
+the @TeX{} programming in some cases, and provide additional tracing
+information when debugging @file{texinfo.tex}.
 
 For a list of other options, run @samp{texi2dvi --help}.
 
@@ -14569,10 +14580,13 @@ magnifications.  Be prepared to experiment.
 @cindex PDF output
 
 @pindex pdftex
-You can generate a PDF output file from Texinfo source by using the
-@command{pdftex} program to process your file instead of plain
-@command{tex}.  That is, run @samp{pdftex foo.texi} instead of @samp{tex
-foo.texi}, or give the @samp{--pdf} option to @command{texi2dvi}.
+The simplest way to generate PDF output from Texinfo source is to run
+the convenience script @command{texi2pdf}; this simply executes the
+@command{texi2dvi} script with the @option{--pdf} option
+(@pxref{Format with texi2dvi}).  If for some reason you want to
+process by hand, simply run the @command{pdftex} program instead of
+plain @command{tex}.  That is, run @samp{pdftex foo.texi} instead of
+@samp{tex foo.texi}.
 
 @dfn{PDF} stands for `Portable Document Format'. It was invented by
 Adobe Systems some years ago for document interchange, based on their
@@ -14585,9 +14599,8 @@ of the file format}.  At present, there are no @samp{@@ifpdf} or
 PDF files require special software to be displayed, unlike the plain
 ASCII formats (Info, HTML) that Texinfo supports.  They also tend to
 be much larger than the DVI files output by @TeX{} by default.
-Nevertheless, a PDF file does preserve, in a self-contained way, an
-actual printed document on a screen as faithfully as possible, so it
-has its place.
+Nevertheless, a PDF file does define an actual typeset document in a
+self-contained file, so it has its place.
 
 
 @node Obtaining TeX
@@ -18173,7 +18186,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
+$Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18239,7 +18252,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.99 2004-06-24 12:48:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.100 2004-07-11 01:02:34 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
