@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.61 2004-01-11 14:43:33 pertusus Exp $
+# $Id: texi2html.init,v 1.62 2004-01-11 23:38:48 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1628,10 +1628,10 @@ our %old_style_map = (
       'ctrl',       {'function' => \&t2h_default_ctrl}, 
       'dfn',        {'attribute' => 'em'}, 
       'dmn',        {},   
-      #'email',      {'args' => ['code', 'normal'], 
-      #                 'function' => \&t2h_default_email}, 
-      'email',      {'args' => ['normal', 'normal'], 
+      'email',      {'args' => ['code', 'normal'], 
                        'function' => \&t2h_default_email}, 
+      #'email',      {'args' => ['normal', 'normal'], 
+      #                 'function' => \&t2h_default_email}, 
       'emph',       {'attribute' => 'em'}, 
       'env',        {'args' => ['code'], 'attribute' => 'code'},
       'file',       {'args' => ['code'], 'attribute' => 'tt', 'quote' => '"'},
@@ -1645,10 +1645,10 @@ our %old_style_map = (
       'sc',         {'function' => \&t2h_default_sc},
       'strong',     {'attribute' => 'strong'},
       't',          {'attribute' => 'tt'},
-      #'uref',       {'function' => \&t2h_default_uref, 
-      #                'args' => ['code', 'normal', 'normal']},
       'uref',       {'function' => \&t2h_default_uref, 
-                      'args' => ['normal', 'normal', 'normal']},
+                      'args' => ['code', 'normal', 'normal']},
+      #'uref',       {'function' => \&t2h_default_uref, 
+      #                'args' => ['normal', 'normal', 'normal']},
       'url',        {'function' => \&t2h_default_url},
       'var',        {'attribute' => 'var'},
       'verb',       {'args' => ['code'], 'attribute' => 'tt'},

@@ -1,3 +1,8 @@
+2004-01-12  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: --- and `` are kept in first arg of 
+	uref and email 
+
 2004-01-11  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: parse arguments separated with , in

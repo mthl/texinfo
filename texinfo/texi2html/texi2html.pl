@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.96 2004-01-11 14:43:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.97 2004-01-11 23:38:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -9376,7 +9376,7 @@ sub scan_line($$$$;$)
                              $result = do_simple($macro, $style->{'text'}, $state, $style->{'args'}, $line_nr, $style->{'no_open'}, $style->{'no_close'});
                              if ($state->{'code_style'} < 0)
                              {
-                                  echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_.", $line_nr);
+                                 echo_error ("Bug: negative code_style: $state->{'code_style'}, line:$_", $line_nr);
                              }
                         }
                     }
@@ -9495,6 +9495,7 @@ sub close_arg($$$)
              $state->{'keep_nr'}--;
              $state->{'keep_texi'} = 0 if ($state->{'keep_nr'} == 0);
          }
+#print STDERR "c $arg_nr $macro $arg $state->{'code_style'}\n";
     }
     elsif ($code_style_map{$macro} and !$state->{'keep_texi'})
     {
@@ -9739,6 +9740,11 @@ sub do_simple($$$;$$$$)
     my $no_open = shift;
     my $no_close = shift;
     my $result;
+    
+    my $arg_nr = 0;
+    $arg_nr = @$args - 1 if (defined($args));
+    
+#print STDERR "!!!!!!$macro $arg_nr $args @$args\n" if (defined($args));
     if (defined($Texi2HTML::Config::simple_map{$macro}))
     {
         if ($state->{'keep_texi'})
@@ -9787,7 +9793,7 @@ sub do_simple($$$;$$$$)
         elsif ($state->{'remove_texi'})
         {
              $result = $text;
-             close_arg($macro,0, $state);
+             close_arg($macro,$arg_nr, $state);
         }
         else 
         {
@@ -9806,7 +9812,7 @@ sub do_simple($$$;$$$$)
              }
              if (!$no_close)
              { 
-                  close_arg($macro,0, $state);
+                  close_arg($macro,$arg_nr, $state);
              }
         }
         return $result;
