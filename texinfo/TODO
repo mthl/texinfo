@@ -1,4 +1,4 @@
-$Id: TODO,v 1.24 2004-04-26 13:09:03 karl Exp $
+$Id: TODO,v 1.25 2004-11-02 17:45:37 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -110,6 +110,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - How about using latex2html to produce HTML?
   - Table of contents gets misaligned if there are 10 or more [sub]sections.
   - Use url.sty (or something) to allow linebreak of url's.
+  - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
     From Carsten Dominik <dominik@astro.uva.nl>.
 
