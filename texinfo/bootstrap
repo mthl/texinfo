@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.3 2003-11-06 22:56:48 karl Exp $
+# $Id: bootstrap,v 1.4 2003-11-07 01:05:57 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 # (Thanks to Akim Demaille.)
 
 echo "Bootstrapping CVS Texinfo with:"
 
-cmd="autoreconf --verbose --install --include=m4"
+cmd="autoreconf --verbose --force --install --include=m4"
 echo $cmd
 $cmd
 
