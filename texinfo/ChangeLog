@@ -1,3 +1,9 @@
+2004-12-15  Juan M. Guerrero  <st001906@hrz1.hrz.tu-darmstadt.de>
+
+	* djgpp/config.sed: adjust for new autoconf.
+	* makeinfo/node.c (enumerate_filename): make dos_file_names const
+	instead of static, since it may involve a fn call to pathconf.
+
 2004-12-15  Karl Berry  <karl@gnu.org>
 
 	* Makefile.am (EXTRA_DIST): include ChangeLog.46, README.dev,

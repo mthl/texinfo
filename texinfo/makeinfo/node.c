@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.25 2004-11-30 13:26:50 karl Exp $
+   $Id: node.c,v 1.26 2004-12-15 15:12:58 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -1666,7 +1666,7 @@ static char *
 enumerate_filename (char *pathname, char *basename, int number)
 {
   /* Do we need to generate names of subfiles which don't exceed 8+3 limits? */
-  static const int dos_file_names = !HAVE_LONG_FILENAMES (pathname ? pathname : ".");
+  const int dos_file_names = !HAVE_LONG_FILENAMES (pathname ? pathname : ".");
   unsigned name_len = strlen (basename);
   char *filename = xmalloc (10 + strlen (pathname) + name_len);
   char *base_filename = xmalloc (10 + name_len);
