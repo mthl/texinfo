@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.47 2003-11-19 01:48:51 dirt Exp $
+   $Id: makeinfo.c,v 1.48 2003-11-19 03:05:37 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3882,6 +3882,12 @@ cm_value (arg, start_pos, end_pos)
 {
   static int value_level = 0, saved_meta_pos = -1;
 
+  /* xml_add_char() skips any content inside menus when output format is
+     Docbook, so @value{} is no use there.  Also start_pos and end_pos does not
+     get updated, causing name to be empty string.  So just return.  */
+   if (docbook && in_menu)
+     return;
+
   /* All the text after @value{ upto the matching } will eventually
      disappear from output_paragraph, when this function is called
      with ARG == END.  If the text produced until then sets
@@ -3926,13 +3932,9 @@ cm_value (arg, start_pos, end_pos)
          popped the brace stack, which restored in_fixed_width_font,
          among other things.  */
 
-      /* Docbook does not have menus, so the warnings about undefined flags
-         inside menus are bogus (makeinfo warns even if they are defined.)
-         So just skip them.  */
-
       if (value)
         execute_string ("%s", value);
-      else if (!(docbook && in_menu))
+      else
 	{
           warning (_("undefined flag: %s"), name);
           add_word_args (_("{No value for `%s'}"), name);

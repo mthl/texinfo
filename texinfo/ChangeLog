@@ -1,5 +1,10 @@
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.c (cm_value): return immediately instead of
+	just suppressing bogus warnings.
+
+2003-11-19  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_value): do not issue bogus warnings about
 	undefined values when @value is used inside a @menu environment, and
 	the output format is Docbook.
