@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.3 2003-01-09 18:03:14 karl Exp $
+   $Id: infomap.c,v 1.4 2003-01-09 18:04:15 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -133,7 +133,10 @@ keymap_bind_keyseq (map, keyseq, keyentry)
               m[c].type = ISKMAP;
               /* Here we are casting the Keymap pointer returned from
                  keymap_make_keymap to an InfoCommand pointer.  Ugh.
-                 Should really be using a union.  */
+                 This makes the `function' structure garbage
+                 if it's actually interpreted as an InfoCommand.
+                 Should really be using a union, and taking steps to
+                 avoid the possible error.  */
               m[c].function = (InfoCommand *)keymap_make_keymap ();
             }
           break;
