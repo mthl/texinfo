@@ -4,6 +4,7 @@
 	* README.dev: mention it.
 	Report from hanwen@cs.uu.nl, sample script from
 	Akim Demaille <akim@epita.fr>.
+	* aclocal.m4: remove from cvs repository.
 
 2003-08-26  Karl Berry  <karl@gnu.org>
 
