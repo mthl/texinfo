@@ -1,3 +1,18 @@
+2004-04-29  Karl Berry  <karl@gnu.org>
+
+	* doc.texinfo.txi (Invoking makeinfo): mention --plaintext.
+	From Akim.
+
+	* doc/texinfo.tex (\emptyusermacros): can use \asis.
+	(\identity): remove.
+
+2004-04-29  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\commondummiesnofonts, \indexnofonts):  In order
+	  to correctly transform words like `Dvo\v{r}\'{a}k' to `Dvorak'
+	  for index sorting, one has to define all accent control sequences
+	  as @asis.  (Current code would produce `Dvor{a}k'.)
+
 2004-04-29  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* makeinfo/makeinfo.c (remember_error): Try cm_bye not more than
