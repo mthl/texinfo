@@ -1496,15 +1496,17 @@ where each line of input produces a line of output.}
     \gdef\kbdexamplefont{\ttsl}\gdef\kbdfont{\tt}%
   \else\ifx\arg\wordcode
     \gdef\kbdexamplefont{\tt}\gdef\kbdfont{\tt}%
+  \else
+    \errhelp = \EMsimple
+    \errmessage{Unknown @kbdinputstyle `\arg'}%
   \fi\fi\fi
 }
 \def\worddistinct{distinct}
 \def\wordexample{example}
 \def\wordcode{code}
 
-% Default is kbdinputdistinct.  (Too much of a hassle to call the macro,
-% the catcodes are wrong for parsearg to work.)
-\gdef\kbdexamplefont{\ttsl}\gdef\kbdfont{\ttsl}
+% Default is `distinct.'
+\kbdinputstyle distinct
 
 \def\xkey{\key}
 \def\kbdfoo#1#2#3\par{\def\one{#1}\def\three{#3}\def\threex{??}%
