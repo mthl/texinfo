@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.2e\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-11-12 17:07GMT\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -949,22 +949,22 @@ msgstr ""
 "  --help                bu yardýmý gösterir ve çýkar\n"
 "  --version             sürüm bilgisini gösterir ve çýkar.\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Geçersiz infokey dosyasý `%s' yoksayýlýyor - çok küçük"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Geçersiz infokey dosyasý `%s' yoksayýlýyor - çok büyük"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "infokey dosyasý `%s' okumada hata - çok kýsa"
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -972,12 +972,12 @@ msgstr ""
 "Geçersiz infokey dosyasý `%s' (hatalý sihirli numaralar) -- güncellemek için "
 "infokey yürütün"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "infokey dosyanýz `%s' eskimiþ -- güncellemek için infokey yürütün"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -985,7 +985,7 @@ msgstr ""
 "Geçersiz infokey dosyasý `%s' (hatalý bölüm uzunluðu) -- güncellemek için "
 "infokey yürütün"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -993,11 +993,11 @@ msgstr ""
 "Geçersiz infokey dosyasý `%s' (hatalý bölüm kodu) -- güncellemek için "
 "infokey yürütün"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Infokey dosyasýnda hatalý veri -- bazý tuþ baðlantýlarý yoksayýldý"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "Infokey dosyasýnda hatalý veri -- bazý deðiþken ayarlarý yoksayýldý"
 

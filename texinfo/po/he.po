@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -931,51 +931,51 @@ msgstr ""
 "                  .אצו תינכתה תסריג לע עדימ גצה   --version\n"
 "\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "ןיקת infokey ץבוק תויהל ידכב ידמ ןטק -- `%s' ץבוקמ םלעתמ"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "ןיקת infokey ץבוק תויהל ידכב ידמ לודג -- `%s' ץבוקמ םלעתמ"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "ארקנ ץבוקה לכ אל - `%s' infokey ץבוק תאירקב הלקת"
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "ונוכדע ךרוצל infokey ץרה -- (יוגש םסק רפסמ) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "ונוכדע ךרוצל infokey ץרה -- ןכדועמ וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "ונוכדע ךרוצל infokey ץרה -- (יוגש קלח ךרוא) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr "ונוכדע ךרוצל infokey ץרה -- (יוגש קלח דוק) ןיקת וניא `%s' infokey ץבוק"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "הנלעפת אל תודחא םישקמ תורדגה -- infokey ץבוקב םייוגש םינותנ"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "ףקותב אל תודחא םינתשמ תורדגה -- infokey ץבוקב םייוגש םינותנ"
 

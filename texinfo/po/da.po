@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2e\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-11-08 09:13GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -944,22 +944,22 @@ msgstr ""
 "Oversæt infokey-kildefil til infokey-fil. Læser INDDATA-FIL (standard\n"
 "$HOME/.infokey) og skriver oversat key-fil til $HOME/.info.\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Ignorerer ugyldig infokey-fil '%s' - for lille"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Ignorerer ugyldig infokey-fil '%s' - for stor"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Fejl under læsning af infokey-fil '%s' - \"short read\""
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -967,12 +967,12 @@ msgstr ""
 "Ugyldig infokey-fil '%s' (ugyldige magiske tal) -- kør infokey for at "
 "opdatere den"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Din infokey-fil '%s' er for gammel -- kør infokey for at opdatere den"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -980,7 +980,7 @@ msgstr ""
 "Ugyldig infokey-fil '%s' (ugyldig afsnitslængde) -- kør infokey for at "
 "opdatere den"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -988,11 +988,11 @@ msgstr ""
 "Ugyldig infokey-fil '%s' (ugyldig afsnitskode) -- kør infokey for at "
 "opdatere den"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Ugyldige data i infokey-fil -- visse tastebindinger blev ignoreret"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "Ugyldige data i infokey-fil -- visse variabelindstillinger blev ignoreret"

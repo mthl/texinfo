@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3a\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-12-03 11:06+06:00\n"
 "Last-Translator: Sergio Pokrovskij <pok@iis.nsk.su>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -945,52 +945,52 @@ msgstr ""
 " --help                   Eligu cxi tiun helpeton kaj finu.\n"
 " --version                Eligu la version de la programo kaj finu.\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "La misa infoklava dosiero \"%s\" ignorita (tro mallonga)"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "La misa infoklava dosiero \"%s\" ignorita (tro longa)"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Eraro dum lego de infoklava dosiero \"%s\" (tro frue elcxerpita)"
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (magiaj nombroj); aktualigu gxin per infokey"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Via infoklava dosiero \"%s\" malaktualas; aktualigu gxin per infokey"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (misa sekcilongo) -- aktualigu gxin per infokey"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 "Misa infoklava dosiero \"%s\" (misa sekcikodo); aktualigu gxin per infokey"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "Misaj datumoj en infoklava dosiero -- iuj klavasociajxoj ne validos"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ne validos"

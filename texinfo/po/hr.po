@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-04-26 13:49-MET+DST (UTC+2)\n"
 "Last-Translator: Mirsad Todorovac <mtodorov_69@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -959,22 +959,22 @@ msgstr ""
 "  --help              ispi¹i ovu pomoæ i zavr¹i s radom.\n"
 "  --version           ispi¹i ovu informaciju o verziji i zavr¹i s radom.\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Ignoriram neispravnu infokey datoteku `%s' - premalena"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Ignoriram neispravnu infokey datoteku `%s' - prevelika"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Pogre¹ka pri èitanju infokey datoteke `%s' - prekratki read"
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -982,13 +982,13 @@ msgstr ""
 "Neispravna infokey datoteka `%s' (pogre¹ni magic number) -- pokreni infokey "
 "da se obnovi"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr ""
 "Va¹a infokey datoteka `%s' je istekla -- pokrenite infokey da se obnovi"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -996,7 +996,7 @@ msgstr ""
 "Neispravna infokey datoteka `%s' (bad section length) -- pokrenite infokey "
 "da se obnovi"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -1004,12 +1004,12 @@ msgstr ""
 "Neispravna infokey datoteka `%s' (bad section code) -- pokrenite infokey da "
 "se obnovi"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 "Pogre¹ni podaci u infokey datoteci -- neka povezivanja tipki zanemarena"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "Pogre¹ni podaci u infokey datoteci -- neke var postavke ignorirane"
 

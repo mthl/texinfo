@@ -1,3 +1,42 @@
+2003-01-24    <karl@gnu.org>
+
+	* configure.ac: pretest version 4.3c.
+
+	* doc/texinfo.tex (\smallenvironments): remove, and change callers.
+        (\small...x): rename to just \small...
+	(\smallexamplefonts): set to \smallfonts, not
+	\smallerfonts, at least until people complain again.
+
+	The effect of these changes is to make the
+	@small... commands print in a smaller font (9pt)
+	for all formats, not just @smallbook and @afivepaper.
+
+
+	* info/filesys.c (extract_colon_unit): rewrite so that an empty
+	unit does not stop us from processing the rest.  Report from:
+	Werner LEMBERG <wl@gnu.org>, 24 Jan 2003 07:01:09 +0100.
+
+
+	Date: Mon, 02 Dec 2002 01:06:37 +0900
+	From: AIDA Shinra <aida-s@jcom.home.ne.jp>
+
+	* "info infokey" says key bindings in .info take precedence over
+	the default mapping, but this is not true. Only bindings to
+	undefined keys take effects.
+	* Binding to "invalid" action results crash.
+	* No code to disable prefix keys. Some users might want to bind
+	escape or C-x to a non-prefix key, but this does not allowed.
+	... It always allows '^h' in incremental
+	search. Some terminals map 'backspace' to '^h' by default.
+
+        These are the changes:
+	* info/session.c (incremental_search): check for Control('h') as
+	well as DEL.
+	* info/infomap.c (find_function_keyseq, add_function_keyseq,
+	remove_function_keyseq): new fns.
+	(keymap_copy_keymap, keymap_discard_keymap): take
+	rootmap arg.
+
 Wed Jan 22 14:25:39 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
 
 	* doc/texinfo.tex (\footnotezzz): the very beginning was moved

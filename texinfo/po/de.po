@@ -51,7 +51,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3a\n"
-"POT-Creation-Date: 2003-01-19 10:50-0800\n"
+"POT-Creation-Date: 2003-01-24 13:32-0800\n"
 "PO-Revision-Date: 2002-12-03 09:30:58+0100\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1037,22 +1037,22 @@ msgstr ""
 "  --help                       diese Hilfe anzeigen und beenden\n"
 "  --version                    Versionsnummer anzeigen und beenden\n"
 
-#: info/infomap.c:1404
+#: info/infomap.c:1512
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
 msgstr "Ungültige Info-Schlüssel-Datei »%s« wird ignoriert - zu klein"
 
-#: info/infomap.c:1407
+#: info/infomap.c:1515
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
 msgstr "Ungültige Info-Schlüssel-Datei »%s« wird ignoriert - zu groß"
 
-#: info/infomap.c:1420
+#: info/infomap.c:1528
 #, c-format
 msgid "Error reading infokey file `%s' - short read"
 msgstr "Fehler beim Lesen der Infokey-Datei »%s« - zu kurzes Lesen"
 
-#: info/infomap.c:1438
+#: info/infomap.c:1546
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
@@ -1060,12 +1060,12 @@ msgstr ""
 "Ungültige Infokey-Datei »%s« (fehlerhafte Magie) -- bitte mittels infokey "
 "erneuern"
 
-#: info/infomap.c:1444
+#: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 msgstr "Ihre Infokey-Datei »%s« ist veraltet -- bitte mittels infokey erneuern"
 
-#: info/infomap.c:1457
+#: info/infomap.c:1565
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
@@ -1073,7 +1073,7 @@ msgstr ""
 "Ungültige Infokey-Datei »%s« (fehlerhafte Abschnittslänge) -- bitte mittels "
 "infokey erneuern"
 
-#: info/infomap.c:1477
+#: info/infomap.c:1585
 #, c-format
 msgid ""
 "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
@@ -1081,12 +1081,12 @@ msgstr ""
 "Ungültige Infokey-Datei »%s« (fehlerhafter Abschnittscode) -- bitte mittels "
 "infokey erneuern"
 
-#: info/infomap.c:1615
+#: info/infomap.c:1723
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr ""
 "Fehlerhafte Daten in Infokey-Datei -- einige Tastaturbindungen ignoriert"
 
-#: info/infomap.c:1666
+#: info/infomap.c:1774
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
 "Fehlerhafte Daten in Infokey-Datei -- einige Variableneinstellungen ignoriert"
