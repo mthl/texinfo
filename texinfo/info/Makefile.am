@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.5 2004-10-08 22:01:14 karl Exp $
+# $Id: Makefile.am,v 1.6 2004-10-08 22:05:51 karl Exp $
 # Makefile.am for texinfo/info.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -35,6 +35,9 @@ LDADD = ../lib/libtxi.a $(TERMLIBS) $(LIBINTL)
 # to those functions along with completable names and documentation strings.
 BUILT_SOURCES = doc.c funs.h key.c
 
+# We distribute the BUILT_SOURCES even though they get rebuilt by
+# installers, just in case something goes wrong.  Then installers have
+# the intended sources there to use or debug with.
 EXTRA_DIST = README pcterm.c $(BUILT_SOURCES)
 
 makedoc_SOURCES = makedoc.c
@@ -46,7 +49,7 @@ ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   search.c search.h session.c session.h signals.c signals.h \
   termdep.h terminal.c terminal.h tilde.c tilde.h \
   variables.c variables.h window.c window.h \
-  $(BUILT_SOURCES) $(generated_sources)
+  $(BUILT_SOURCES)
 infokey_SOURCES = infokey.c infokey.h key.c key.h
 
 # Files with Info commands defined that makedoc should read.
