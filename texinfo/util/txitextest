@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: txitextest,v 1.3 2003-02-01 14:18:59 karl Exp $
+# $Id: txitextest,v 1.4 2003-02-05 00:54:07 karl Exp $
 # Test texinfo.tex changes by running various manuals through with an
 # old version, saving the .ps result from dvips, doing the same with a
 # new version, and comparing.  Idea from Stepan Kasal.
@@ -53,18 +53,19 @@ for manual in $manuals; do
 
   if $full; then
     # instead of comparing, do full test of just the new texinfo.tex.
-    echo "$0: testing $manual_base... (tex)" | tee /dev/stderr
-    texi2dvi $manual
-    echo "$0: testing $manual_base... (pdf)" | tee /dev/stderr
-    texi2dvi --pdf $manual
+    echo "$0: testing $manual_base... (tex)"
+    texi2dvi $manual || { echo "texi2dvi $manual failed." >&2; exit 1; }
+    echo "$0: testing $manual_base... (pdf)"
+    texi2dvi --pdf $manual \
+    || { echo "texi2dvi --pdf $manual failed." >&2; exit 1; }
    
   else
-    echo "$0: testing $manual_base... (new)" | tee /dev/stderr
+    echo "$0: testing $manual_base... (new)"
     run_tex
     dvips $manual_base -o || exit 1
     mv $manual_base.ps new.$manual_base.ps
 
-    echo "$0: testing $manual_base... (old)" | tee /dev/stderr
+    echo "$0: testing $manual_base... (old)"
     rm -f $manual_base.* texinfo.tex
     ln -s $olddir/texinfo.tex texinfo.tex
     run_tex

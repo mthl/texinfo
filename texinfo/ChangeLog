@@ -1,3 +1,26 @@
+2003-02-04    <karl@gnu.org>
+
+	* Version 4.5 (that info bug was a killer).
+
+	* configure.ac (AC_CHECK_HEADERS): test for sys/stream.h.
+	(sys/ptem.h): write separate test since it needs
+	sys/stream.h on Solaris.  From: Lars Hecking
+	<lhecking@nmrc.ucc.ie>, 4 Feb 2003 19:47:54 +0000.
+
+	* doc/texinfo.txi: comment about using @example instead of
+	@verbatim due to automake doesn't apply any more.
+
+2003-02-03    <karl@gnu.org>
+
+	* doc/texinfo.tex (\verbatiminclude): use \other instead of 12.
+
+2003-02-02    <karl@gnu.org>
+
+	* doc/texinfo.tex (\cartouche): explicit \par, as @cartouche does
+	not work inside a paragraph.
+	Bug report from: Stephen Gildea <gildea@intouchsys.com>,
+	15 Oct 1999 09:25:31 EDT.
+
 2003-02-01    <karl@gnu.org>
 
 	* util/fix-info-dir, util/gen-dir-node, util/install-info-html,
@@ -7,7 +30,8 @@
 
 2003-01-31    <karl@gnu.org>
 
-	* doc/texinfo.tex (\groupbox): \newbox.(\vfilllimit): new \def.
+	* doc/texinfo.tex (\groupbox): \newbox.
+	(\vfilllimit): new \def.
 	(\group): insert an explicit \page if the group is
 	big, and doesn't fit on the current page.
 	Otherwise, the previous page gets stretched unreasonably.
@@ -26,7 +50,7 @@
 	before claiming we're done.  Report from: Alexandre Duret-Lutz
 	<duret_g@lrde.epita.fr>, 31 Jan 2003 18:18:22 +0100.
 
-	* configure.ac: version 4.4.
+	* Version 4.4.
 
 2003-01-30    <karl@gnu.org>
 

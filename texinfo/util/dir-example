@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.13 2003-01-31 16:26:23 karl Exp $
+$Id: dir-example,v 1.14 2003-02-05 00:54:07 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -53,12 +53,12 @@ GNU Packages
 * Wget: (wget).                 URL download.
 
 Text creation and manipulation
+* grep: (grep).                 Print lines matching a pattern.
 * sed: (sed).                   Stream EDitor.
 
-
 Texinfo documentation system
-* Info: (info).                 Documentation browsing system.
 * Texinfo: (texinfo).           The GNU documentation format.
+* Info: (info).                 Documentation browsing system.
 * info standalone: (info-stnd).                 Standalone Info reader.
 * infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
 * install-info: (texinfo)Invoking install-info. Updating info/dir entries.
@@ -76,29 +76,36 @@ Printing Tools
 * psmandup: (a2ps) psmandup.       Printing Duplex on Simplex Printers
 * psset: (a2ps) psset.             Inserting calls to setpagedevice
 
-GNU programming tools
+Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts
+* automake: (automake).		Making Makefile.in's
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
+* bison: (bison).               GNU parser generator (Yacc replacement).
 * CVS: (cvs).                   Concurrent versions system for source control.
+* Configure: (configure).       Cygnus configure.
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
-* automake: (automake).		Making Makefile.in's
-* bison: (bison).       GNU parser generator (Yacc replacement).
+* Gdb: (gdb).                   The GNU debugger.
 * egcs: (egcs).                 Experimental GNU C compiler.
 * Flex: (flex).                 A fast scanner generator.
 * g77: (g77).                   GNU Fortran 77 compiler.
+* Gasp: (gasp).                 GNU Assembler preprocessor.
 * gcc: (gcc).                   The GNU Compiler Collection.
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
-* Gasp: (gasp).                 GNU Assembler preprocessor.
+* Gnats: (gnats).               Cygnus bug tracking system.
 * Gperf: (gperf).               Perfect hash function generator.
 * Gprof: (gprof).               Profiler.
 * Guile Reference: (guile).     The Guile reference manual.
+* help2man: (help2man).         Automatic manual page generation from --help.
 * Indent: (indent).             Prettyprinter for programs.
 * Ld: (ld).                     Linker.
 * Libtool: (libtool).           Generic library support script.
-* R FAQ: (R-FAQ).               The R statistical language FAQ.
+* Remsync: (remsync).           Remote synchronization of directory trees.
+* Send PR: (send-pr).           Cygnus bug reporting for Gnats.
+* Source config: (cfg-paper).   Some theory on configuring source packages.
+* Standards: (standards).       GNU coding standards.
 
 Emacs
 * Elisp: (elisp).               GNU Emacs Lisp reference manual.
@@ -144,32 +151,25 @@ GNU Gettext Utilities
 * msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
 * xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
 
-GNU programming support
-* Configure: (configure).       Cygnus configure.
-* Gnats: (gnats).               Cygnus bug tracking system.
-* Remsync: (remsync).           Remote synchronization of directory trees.
-* Send PR: (send-pr).           Cygnus bug reporting for Gnats.
-* help2man: (help2man).      Automatic manual page generation.
-
-GNU libraries
+Software libraries
 * Annotate: (annotate).         High-level GDB to GUI's.
+* Bfd: (bfd).                   The Binary File Descriptor library.
 * CVS protocol: (cvsclient).    CVS client/server protocol specification.
+* Gdb-Internals: (gdbint).	The GNU debugger's internals.
 * GDB library: (libgdb).        Application programming interface to GDB.
 * GDBM: (gdbm).                 Hashed databases.
 * GDK: (gdk).                   General drawing kit.
 * GTK: (gtk).                   GIMP toolkit.
 * History: (history).           Recall previous lines of input.
 * Iostream: (iostream).         C++ input/output.
+* Ld internals: (ldint).        GNU linker internals.
 * Libc: (libc).                 C library.
 * Libg++: (libg++).             C++ classes.
+* Mmalloc: (mmalloc).		The GNU mapped-malloc package.
+* Stabs: (stabs).               The "stabs" debugging information format.
 * Readline: (readline).         General command-line interface.
 * Regex: (regex).               Regular expressions.
 * Termcap: (termcap).           All about /etc/termcap.
-
-GNU programming documentation
-* Ld internals: (ldint).        GNU linker internals.
-* Maintaining: (maintain).      Maintaining GNU software.
-* Source config: (cfg-paper).   Some theory on configuring source packages.
 
 GNU organization
 * Maintain: (maintain).		GNU maintainer guidelines.
@@ -202,6 +202,9 @@ TeX
 DOS 
 * GNUish: (gnuish).             GNU utilities for DOS.
 * Mtools: (mtools).             Access DOS disks from Unix.
+
+Science
+* R FAQ: (R-FAQ).               The R statistical language FAQ.
 
 Other things
 * Amd: (am-utils).              Filesystem automounter.
@@ -268,6 +271,7 @@ Individual utilities
 * dvitype: (web2c)DVItype invocation.           DVI to human-readable text.
 * echo: (sh-utils)echo invocation.              Print a line of text.
 * edit-pr: (gnats)Invoking edit-pr.             Changing bugs.
+* egrep: (grep)Invoking.                        grep -E.
 * eid: (id-utils)eid invocation.                Invoking an editor on matches.
 * emacsclient: (emacs)Emacs Server.             Connecting to a running Emacs.
 * emacsserver: (emacs)Emacs Server.             Connecting to a running Emacs.
@@ -277,6 +281,7 @@ Individual utilities
 * expr: (sh-utils)expr invocation.              Evaluate expressions.
 * factor: (sh-utils)factor invocation.          Print prime factors
 * false: (sh-utils)false invocation.            Do nothing, unsuccessfully.
+* fgrep: (fgrep)Invoking.                       grep -F.
 * fid: (id-utils)fid invocation.                Listing a file's identifiers.
 * file-pr: (gnats)file-pr.                      Processing incoming traffic.
 * find: (find)Invoking find.                    Finding and acting on files.
@@ -294,8 +299,7 @@ Individual utilities
 * hostname: (sh-utils)hostname invocation.      Print or set system name.
 * id: (sh-utils)id invocation.                  Print real/effective uid/gid.
 * idx: (id-utils)idx invocation.                Testing mkid scanners.
-* ifnames: (autoconf)ifnames Invocation.
-                                Listing the conditionals in source code
+* ifnames: (autoconf)ifnames Invocation.        Listing conditionals in source.
 * iid: (id-utils)iid invocation.                Interactive complex queries.
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
@@ -377,8 +381,7 @@ Individual utilities
 * tcal: (gcal)Invoking tcal.                    Run Gcal with tomorrow's date.
 * tee: (sh-utils)tee invocation.                Redirect to multiple files.
 * test: (sh-utils)test invocation.              File/string tests.
-* testsuite: (autoconf)testsuite Invocation.
-                                Running an Autotest test suite
+* testsuite: (autoconf)testsuite Invocation.    Running an Autotest test suite.
 * tex: (web2c)tex invocation.                   Typesetting.
 * tftopl: (web2c)TFtoPL invocation.             TFM -> property list.
 * touch: (fileutils)touch invocation.           Change file timestamps.
@@ -409,14 +412,3 @@ Individual utilities
 * yes: (sh-utils)yes invocation.                Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
 * zsh: (zsh).                                   An enhanced Bourne shell.
-
-Miscellaneous
-* Bfd: (bfd).                   The Binary File Descriptor library.
-* Mmalloc: (mmalloc).		The GNU mapped-malloc package.
-* Stabs: (stabs).                 The "stabs" debugging information format.
-* Standards: (standards).        GNU coding standards.
-* grep: (grep).                   print lines matching a pattern.
-
-Programming & development tools.
-* Gdb: (gdb).                     The GNU debugger.
-* Gdb-Internals: (gdbint).	The GNU debugger's internals.
