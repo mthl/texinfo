@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
+@c $Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1120,11 +1120,11 @@ an @samp{@@} character in front of it, like this: @samp{@@@@},
 @cindex Blank lines, as paragraph separator
 @cindex Newlines, as blank lines
 Separate paragraphs with one or more blank lines.  Currently Texinfo
-recognizes only newline characters as line endings, not the CRLF
+only recognizes newline characters as end of line, not the CRLF
 sequence used on some systems; so a @dfn{blank line} means exactly two
 consecutive newlines.  Sometimes blank lines are useful or convenient
 in other cases as well; you can use the @code{@@noindent} to inhibit
-paragraph indentation if necessary (@pxref{noindent,,@code{@@noindent}}).
+paragraph indentation if required (@pxref{noindent,,@code{@@noindent}}).
 
 @item
 @cindex Quotation characters (`'), in source
@@ -16796,7 +16796,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
+$Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16861,7 +16861,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
+@@comment $Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
