@@ -2,7 +2,9 @@
 
 	* configure.ac, util/texi2dvi, NEWS: version 4.3.
 
-	* doc/texinfo.txi: @command not @program.
+	* util/texi2dvi, mkinstalldirs: use `for var<newline>do"' instead
+	 of  `for var; do', for Solaris.
+
 	* doc/texinfo.txi (math): emphasize that makeinfo does not interpret
 	the arg.
 
