@@ -1,5 +1,5 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: cmds.h,v 1.2 2002-11-04 22:15:03 karl Exp $
 
    Copyright (C) 1998, 99 Free Software Foundation, Inc.
 
@@ -46,5 +46,8 @@ typedef struct
 } COMMAND;
 
 extern COMMAND command_table[];
+
+/* Nonzero if we have seen an @titlepage command.  */
+extern int titlepage_cmd_present;
 
 #endif /* !CMDS_H */
