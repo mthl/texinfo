@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.1 2002-08-25 23:38:38 karl Exp $
+# $Id: Makefile.am,v 1.2 2002-09-26 21:58:31 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -28,7 +28,7 @@ TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
 
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex pdfcolor.tex texinfo.tex \
-             fdl.texi macro.texi userdoc.texi \
+             fdl.texi \
 	     $(man_MANS) $(noinst_SCRIPTS) $(TXI_XLATE)
 
 install-data-local:
@@ -56,17 +56,18 @@ install-tex:
 	for f in $(TXI_XLATE); do \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
 
-# Don't want to run help2man at every installation.
+# The man pages depend on the --help strings and the version number.
 if TEXINFO_MAINT
-info.1: ../info/ginfo $(HELP2MAN)
+common_mandeps = $(top_srcdir)/configure.ac $(HELP2MAN)
+info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	$(HELP2MAN) --name="read Info documents" $< >$@
-install-info.1: $(INSTALL_INFO) $(HELP2MAN)
+install-info.1: $(top_srcdir)/util/install-info.c $(top_srcdir)/configure.ac $(HELP2MAN)
 	$(HELP2MAN) --name="update info/dir entries" $< >$@
-makeinfo.1: $(MAKEINFO) $(HELP2MAN)
+makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	$(HELP2MAN) --name="translate Texinfo documents" $< >$@
-texi2dvi.1: ../util/texi2dvi $(HELP2MAN)
+texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
 	$(HELP2MAN) --name="print Texinfo documents" $< >$@
-texindex.1: ../util/texindex $(HELP2MAN)
+texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
 	$(HELP2MAN) --name="sort Texinfo index files" $< >$@
 endif
 
