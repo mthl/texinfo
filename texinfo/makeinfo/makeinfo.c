@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.61 2004-07-03 12:48:22 karl Exp $
+   $Id: makeinfo.c,v 1.62 2004-07-11 21:51:18 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -959,6 +959,8 @@ discard_until (char *string)
 
   if (temp < 0)
     {
+      /* not found, move current position to end of string */
+      input_text_offset = input_text_length;
       if (strcmp (string, "\n") != 0)
         { /* Give a more descriptive feedback, if we are looking for ``@end ''
              during macro execution.  That means someone used a multiline
@@ -969,18 +971,14 @@ discard_until (char *string)
             line_error (_("Multiline command %c%s used improperly"), 
                 COMMAND_PREFIX, command);
           else
-            {
-              line_error (_("Expected `%s'"), string);
-              input_text_offset = input_text_length - strlen (string);
-            }
+            line_error (_("Expected `%s'"), string);
           free (end_block);
           return;
         }
     }
   else
-    input_text_offset = temp;
-
-  input_text_offset += strlen (string);
+    /* found, move current position to after the found string */
+    input_text_offset = temp + strlen (string);
 }
 
 /* Read characters from the file until we are at MATCH.

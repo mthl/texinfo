@@ -1,5 +1,12 @@
 2004-07-11  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/makeinfo.c (discard_until): leave input_text_offset at
+		the end of input_text if not found, not at one past the
+		end of input_text.  (Had erroneously put that in the block
+		only if an error was given.)  The result was a null byte
+		after macro expansions.  Report from Werner,
+		10 Jul 2004 15:36:40 +0200.		
+
 	* makeinfo/node.c (split_file): fwrite Local Variables trailer so
 		it actually gets into the output of the top-level info
 		file; don't just insert_string.  
