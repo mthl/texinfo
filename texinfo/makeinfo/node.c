@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.12 2003-05-01 00:30:07 karl Exp $
+   $Id: node.c,v 1.13 2003-07-25 00:03:02 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -633,7 +633,7 @@ cm_node ()
   /* Check for defaulting of this node's next, prev, and up fields. */
   defaulting = (*next == 0 && *prev == 0 && *up == 0);
 
-  this_section = what_section (input_text + input_text_offset);
+  this_section = what_section (input_text + input_text_offset, NULL);
 
   /* If we are defaulting, then look at the immediately following
      sectioning command (error if none) to determine the node's
