@@ -1,4 +1,4 @@
-$Id: AUTHORS,v 1.5 2003-05-08 00:51:55 karl Exp $
+$Id: AUTHORS,v 1.6 2003-10-24 12:06:10 karl Exp $
 Texinfo authors.
 
   Copying and distribution of this file, with or without modification,
@@ -12,6 +12,7 @@ Brian Fox		all makeinfo/* and info/* files, info-stnd.texi.
 Dave Love		original makeinfo/html.[ch].
 Eli Zaretskii		all files.
 Karl Berry		all files.
+Karl Heinz Marbaise	original makeinfo language support, most files.
 Noah Friedman		original texi2dvi.
 Paul Rubin		original makeinfo/multi.c.
 Philippe Martin		original makeinfo xml/docbook output.

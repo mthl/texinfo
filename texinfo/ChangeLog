@@ -1,3 +1,53 @@
+2003-10-23  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/macro.c (define_macro): write the macro definition
+	itself to the output stream, to give texinfo.tex a chance at it.
+	Report from: Akim Demaille <akim@epita.fr>, 22 Oct 2003 17:15:34
+	+0200.
+
+	* doc/texinfo.tex (\readauxfile): make the \openout\auxfile be
+	\immediate, to avoid spurious terminal output from the
+	\immediate's in \setref.
+
+2003-10-23  Stepan Kasal  <kasal@ucw.cz>
+
+	Rewrite \parsearg:
+	* doc/texinfo.tex (\parsearg, \parseargusing): \parseargusing is
+	  a new macro which works just like good old \parsearg but takes
+	  one more parameter which contains code to be performed within
+	  a group just before we slurp the rest of the line---typically,
+	  some catcode chages go here.
+	  (\parseargx): Insert an \empty token before the arg to be read,
+	  to prevent loosing of braces.  (Thus @end{foo} no longer works.)
+	  (\parseargline, \argremovecomment, \argremovec): Change the way
+	  comments are stripped; do not use \toks0.
+	  (\removeactivespaces): is now called directly from \parsearg (via
+	  \parseargusing and \argremovec), and stripps only the trainling
+	  active spaces, doesn't perform expansion.
+	  (\finishparsearg): New macro, finishes \parsearg by nuking the
+	  added \empty token.
+	  (\end, \endxxx): Don't call \removeactivespaces, don't use \toks0;
+	  because of efficiency, move the error handling to ...
+	  (\badenderror): ... a new macro.
+	  (\doverbatim): ``\end{verbatim}'' changed to ``\end verbatim.''
+
+	Cleanup of various details with active spaces.
+	  (\parseargx): Do the \futurelet and move the rest ...
+	  (\parseargy): ... to a new macro;
+	  (\parseargusing): caller changed;
+	  (\parseargdiscardspace): the other caller nuked.
+	  (\obeyedspace, \sepspaces, \unsepspaces): Move near to \parsearg.
+	  (\obeyedspace): Is now a macro containing the active space.
+	  (\unsepspaces): No longer makes spaces active.
+	  (\ignoreactivespaces): Nuked, it's only appearance in ...
+	  (\aliasxxx): ... replaced by direct code.
+
+2003-10-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: comments at top.
+
+	* AUTHORS: add kama.  (kama's address is now khmarbaise@gmx.de.)
+
 2003-10-21  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: revision of mohit's original.
