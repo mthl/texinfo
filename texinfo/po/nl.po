@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12\n"
-"POT-Creation-Date: 2002-11-04 19:16-0800\n"
+"POT-Creation-Date: 2002-11-07 14:21-0800\n"
 "PO-Revision-Date: 1998-04-16 22:35+02:00\n"
 "Last-Translator: Ivo Timmermans <zarq@iname.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -510,34 +510,34 @@ msgstr ""
 "---------- Voetnoten ----------\n"
 "\n"
 
-#: info/infodoc.c:70
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr ""
-
-#: info/infodoc.c:71
-#, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "Schuif terug in dit venster"
-
 # kill?
-#: info/infodoc.c:72
+#: info/infodoc.c:70
 #, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "Verwijder tot aan het begin van de regel"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "Ga naar het einde van deze pagina"
 
-#: info/infodoc.c:74
+#: info/infodoc.c:72
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
 msgstr "Schuif terug in dit venster"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgstr "Schuif terug in dit venster"
+
+#: info/infodoc.c:74
+msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+msgstr ""
 
 #: info/infodoc.c:75
 #, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "Schuif terug in dit venster"
 
 #: info/infodoc.c:77 info/infodoc.c:125
@@ -2044,37 +2044,37 @@ msgstr "%citemx is zinloos in een `%s' blok"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s buiten een invoeg-blok gevonden"
 
-#: makeinfo/lang.c:331
+#: makeinfo/lang.c:330
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr ""
 
-#: makeinfo/lang.c:384
+#: makeinfo/lang.c:383
 #, fuzzy, c-format
 msgid "unrecogized encoding name `%s'"
 msgstr "%s: onbekende optie `--%s'\n"
 
-#: makeinfo/lang.c:387
+#: makeinfo/lang.c:386
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr ""
 
-#: makeinfo/lang.c:414
+#: makeinfo/lang.c:413
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:502
+#: makeinfo/lang.c:501
 #, c-format
 msgid "%s is an invalid ISO code, using %c"
 msgstr ""
 
-#: makeinfo/lang.c:687
+#: makeinfo/lang.c:686
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s verwacht `i' of `j' als argument, niet `%c'"
 
-#: makeinfo/lang.c:691
+#: makeinfo/lang.c:690
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s verwacht één enkele `i' of `j' als argument"
@@ -2371,7 +2371,7 @@ msgstr "%c%s ontbrekende afsluitende accolade"
 msgid "First argument to cross-reference may not be empty"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1343
+#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1340
 msgid "see "
 msgstr ""
 
@@ -2601,27 +2601,27 @@ msgstr "naar pagina `%s' wordt niet verwezen"
 msgid "Appendix %c "
 msgstr ""
 
-#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:445
+#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:441
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr ""
 
-#: makeinfo/sectioning.c:503
+#: makeinfo/sectioning.c:501
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s is verouderd; gebruik in plaats daarvan %c%s"
 
-#: makeinfo/sectioning.c:519
+#: makeinfo/sectioning.c:517
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "Pagina met %ctop als sectie bestaat al"
 
-#: makeinfo/sectioning.c:527
+#: makeinfo/sectioning.c:525
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Hier is de %ctop pagina"
 
-#: makeinfo/sectioning.c:544
+#: makeinfo/sectioning.c:542
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop wordt voor %cnode gebruikt, neem standaard %s aan"
@@ -2894,6 +2894,10 @@ msgstr "ingang %s volgt op een ingang met een alternatieve naam"
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; voor bestand `%s'.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "Schuif terug in dit venster"
 
 #, fuzzy
 #~ msgid "----------------------\n"

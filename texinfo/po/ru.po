@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2d\n"
-"POT-Creation-Date: 2002-11-04 19:16-0800\n"
+"POT-Creation-Date: 2002-11-07 14:21-0800\n"
 "PO-Revision-Date: 2002-11-05 10:04+0300\n"
 "Last-Translator: Oleg S. Tihonov <tihonov@ffke-campus.mipt.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -163,7 +163,8 @@ msgid "Index entry: "
 msgstr "Пункт в алфавитном указателе: "
 
 #: info/indices.c:332
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
 msgstr ""
 "Перейти к следующему пункту алфавитного указателя, соответствующему\n"
 "последней команде `\\[index-search]'"
@@ -192,7 +193,8 @@ msgstr "Это невидимый текст!"
 #: info/indices.c:429
 #, c-format
 msgid "Found \"%s\" in %s. (`\\[next-index-match]' tries to find next.)"
-msgstr "Найдена \"%s\" в %s. (`\\[next-index-match]' запускает повторный поиск.)"
+msgstr ""
+"Найдена \"%s\" в %s. (`\\[next-index-match]' запускает повторный поиск.)"
 
 #: info/indices.c:549
 #, c-format
@@ -202,11 +204,14 @@ msgstr "Поиск в алфавитном указателе файла \"%s\"..."
 #: info/indices.c:603
 #, c-format
 msgid "No available info files have \"%s\" in their indices."
-msgstr "Ни один из info-файлов не содержит \"%s\" в своих алфавитных указателях."
+msgstr ""
+"Ни один из info-файлов не содержит \"%s\" в своих алфавитных указателях."
 
 #: info/indices.c:632
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr "Запускает поиск строки в алфавитных указателях всех Info-файлов и создает меню"
+msgstr ""
+"Запускает поиск строки в алфавитных указателях всех Info-файлов и создает "
+"меню"
 
 #: info/indices.c:636
 msgid "Index apropos: "
@@ -247,7 +252,9 @@ msgstr "для `%s' не найдено вхождений в именном указателе\n"
 
 #: info/info.c:555
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr "  -b, --speech-friendly       выводить в формате, удобном для синтезаторов речи.\n"
+msgstr ""
+"  -b, --speech-friendly       выводить в формате, удобном для синтезаторов "
+"речи.\n"
 
 #: info/info.c:562
 #, c-format
@@ -257,7 +264,8 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -296,13 +304,17 @@ msgstr ""
 "      --dribble=ФАЙЛ      записать вводимые пользователем знаки в ФАЙЛ.\n"
 "  -f, --file=ФАЙЛ         просмотреть заданный ФАЙЛ.\n"
 "  -h, --help              показать эту справку и выйти.\n"
-"      --index-search=СТРОКА    перейти к ноде, на которую ссылается заданное\n"
+"      --index-search=СТРОКА    перейти к ноде, на которую ссылается "
+"заданное\n"
 "                          СТРОКОЙ вхождение именного указателя.\n"
 "  -n, --node=НОДА         начать просмотр с заданной НОДЫ.\n"
 "  -o, --output=ФАЙЛ       записать выбранные ноды в ФАЙЛ.\n"
-"  -R, --raw-escapes       не удалять escape-последовательности из страниц man.\n"
-"      --restore=ФАЙЛ      прочитать последовательность нажатых клавиш из ФАЙЛА.\n"
-"  -O, --show-options, --usage перейти к ноде, описывающей ключи командной строки.\n"
+"  -R, --raw-escapes       не удалять escape-последовательности из страниц "
+"man.\n"
+"      --restore=ФАЙЛ      прочитать последовательность нажатых клавиш из "
+"ФАЙЛА.\n"
+"  -O, --show-options, --usage перейти к ноде, описывающей ключи командной "
+"строки.\n"
 "%s      --subnodes          рекурсивно выводить пункты меню.\n"
 "      --vi-keys           использовать привязки клавиш как в vi и less.\n"
 "      --version           показать информацию о версии и выйти.\n"
@@ -315,7 +327,8 @@ msgstr ""
 "\n"
 "Примеры:\n"
 "  info                       показать меню каталога верхнего уровня\n"
-"  info emacs                 начать с ноды emacs из каталога верхнего уровня\n"
+"  info emacs                 начать с ноды emacs из каталога верхнего "
+"уровня\n"
 "  info emacs buffers         начать с ноды buffers в руководстве emacs\n"
 "  info --show-options emacs  начать с ноды, описывающей ключи emacs\n"
 "  info -f ./foo.info         показать файл ./foo.info, не искать dir\n"
@@ -380,7 +393,8 @@ msgstr "Команда Info `%c' неизвестна; попробуйте `?' для получения справки."
 #: info/info.c:642
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
-msgstr "Терминал типа `%s' не обладает достаточными возможностями для запуска Info."
+msgstr ""
+"Терминал типа `%s' не обладает достаточными возможностями для запуска Info."
 
 #: info/info.c:643
 msgid "You are already at the last page of this node."
@@ -400,7 +414,8 @@ msgstr "Получившееся окно было бы слишком маленьким."
 
 #: info/info.c:647
 msgid "Not enough room for a help window, please delete a window."
-msgstr "Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
+msgstr ""
+"Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
 
 #: info/infodoc.c:46 info/infodoc.c:95
 msgid ""
@@ -451,7 +466,8 @@ msgstr ""
 "              При переходе к заданному пункту меню выбирается другая нода.\n"
 
 #: info/infodoc.c:60
-msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgid ""
+"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
 msgstr "  %-10[xref-item]  Перейти по ссылке.  Считывает имя ссылки.\n"
 
 #: info/infodoc.c:61
@@ -459,23 +475,35 @@ msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "  %-10[history-node]  Перейти на последнюю ноду в этом окне.\n"
 
 #: info/infodoc.c:62
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr "  %-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
+msgid ""
+"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr ""
+"  %-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой "
+"ноде.\n"
 
 #: info/infodoc.c:63
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
-msgstr "  %-10[move-to-prev-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
+msgid ""
+"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+"node.\n"
+msgstr ""
+"  %-10[move-to-prev-xref]  Переместиться к следующей гиперссылке в этой "
+"ноде.\n"
 
 #: info/infodoc.c:64
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "  %-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr ""
+"  %-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
 
 #: info/infodoc.c:65
-msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
+msgid ""
+"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+"node] (DIR)'.\n"
 msgstr "  %-10[dir-node]  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
 
 #: info/infodoc.c:66
-msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgid ""
+"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
 msgstr "  %-10[top-node]  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
 
 #: info/infodoc.c:68 info/infodoc.c:116
@@ -487,27 +515,29 @@ msgstr ""
 "------------------------\n"
 
 #: info/infodoc.c:70
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "  %-10[scroll-forward]  Прокрутить на страницу вперед.\n"
-
-#: info/infodoc.c:71
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "  %-10[scroll-backward]  Прокрутить на страницу назад.\n"
-
-#: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10[beginning-of-node]  Переместиться в начало этой ноды.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:71
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10[end-of-node]  Переместиться в конец этой ноды.\n"
 
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+msgstr "  %-10s  Прокрутить на страницу вперед.\n"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgstr "  %-10s  Прокрутить на страницу назад.\n"
+
 #: info/infodoc.c:74
-msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
 msgstr "  %-10[scroll-forward]  Прокрутить на страницу вперед.\n"
 
 #: info/infodoc.c:75
-msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
 msgstr "  %-10[scroll-backward]  Прокрутить на страницу назад.\n"
 
 #: info/infodoc.c:77 info/infodoc.c:125
@@ -520,7 +550,8 @@ msgstr ""
 
 #: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-msgstr "  %-10[menu-digit]  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
+msgstr ""
+"  %-10[menu-digit]  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
 
 #: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
@@ -528,8 +559,10 @@ msgstr "  %-10[last-menu-item]  Выбрать последний пункт меню в текущей ноде\n"
 
 #: info/infodoc.c:81
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of "
+"this Info\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
 "\\%-10[index-search]  Искать заданную строку в алфавитных указателях\n"
 "              Info-файла и выбрать ноду по первой найденной ссылке.\n"
@@ -547,13 +580,15 @@ msgid ""
 "\\%-10[search]  Search forward for a specified string\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
-"\\%-10[search]  Искать указанную строку в текущем Info-файле и остановиться в\n"
+"\\%-10[search]  Искать указанную строку в текущем Info-файле и остановиться "
+"в\n"
 "              ноде, в которой найдено следующее вхождение.\n"
 
 #: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is found.\n"
+"              and select the node in which the previous occurrence is "
+"found.\n"
 msgstr ""
 "\\%-10[search-backward]  Искать указанную строку в текущем Info-файле в\n"
 "              ноде, в которой найдено следующее вхождение.\n"
@@ -595,7 +630,8 @@ msgstr "  %-10s  Перейти к заданному пункту меню.\n"
 
 #: info/infodoc.c:108
 msgid "              Picking a menu item causes another node to be selected.\n"
-msgstr "              При переходе к заданному пункту меню выбирается другая нода.\n"
+msgstr ""
+"              При переходе к заданному пункту меню выбирается другая нода.\n"
 
 #: info/infodoc.c:109
 #, c-format
@@ -669,11 +705,16 @@ msgstr "  %-10s  Выбрать последний пункт меню в текущей ноде\n"
 
 #: info/infodoc.c:129
 #, c-format
-msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
-msgstr "  %-10s  Произвести поиск заданной строки среди вхождений именных указателей этого\n"
+msgid ""
+"  %-10s  Search for a specified string in the index entries of this Info\n"
+msgstr ""
+"  %-10s  Произвести поиск заданной строки среди вхождений именных указателей "
+"этого\n"
 
 #: info/infodoc.c:130
-msgid "              file, and select the node referenced by the first entry found.\n"
+msgid ""
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr "              Info-файла и выбрать ноду по первой найденной ссылке.\n"
 
 #: info/infodoc.c:131
@@ -682,7 +723,8 @@ msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Перейти к заданной ноде.\n"
 
 #: info/infodoc.c:132
-msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgid ""
+"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr "              Вы можете задать также имя файла, например (ФАЙЛ)НОДА.\n"
 
 #: info/infodoc.c:133
@@ -691,7 +733,8 @@ msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  Найти заданную строку, и перейти к\n"
 
 #: info/infodoc.c:134 info/infodoc.c:136
-msgid "              and select the node in which the next occurrence is found.\n"
+msgid ""
+"              and select the node in which the next occurrence is found.\n"
 msgstr "              ноде, в которой найдено следующее вхождение.\n"
 
 #: info/infodoc.c:135
@@ -738,7 +781,8 @@ msgstr ""
 
 #: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr "--- Используйте `\\[history-node]' или `\\[kill-node]' для выхода ---\n"
+msgstr ""
+"--- Используйте `\\[history-node]' или `\\[kill-node]' для выхода ---\n"
 
 #: info/infodoc.c:478
 msgid "Display help message"
@@ -904,7 +948,8 @@ msgstr ""
 "скомпилированный файл с привязками клавиш в $HOME/.info.\n"
 "\n"
 "Ключи:\n"
-"  --output ИМЯ-ФАЙЛА           выводить в указанный файл, а не в $HOME/.info\n"
+"  --output ИМЯ-ФАЙЛА           выводить в указанный файл, а не в $HOME/."
+"info\n"
 "  --help                       показать эту справку и выйти\n"
 "  --version                    показать информацию о версии и выйти\n"
 
@@ -925,8 +970,11 @@ msgstr "Ошибка чтения файла infokey `%s' - чтение прервано"
 
 #: info/infomap.c:1432
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "Файл infokey `%s' неприемлем (неверная сигнатура) -- запустите infokey, чтобы обновить его"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Файл infokey `%s' неприемлем (неверная сигнатура) -- запустите infokey, "
+"чтобы обновить его"
 
 #: info/infomap.c:1438
 #, c-format
@@ -935,21 +983,29 @@ msgstr "Файл infokey `%s' устарел -- запустите infokey, чтобы обновить его"
 
 #: info/infomap.c:1451
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 
 #: info/infomap.c:1471
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "Файл infokey `%s' неприемлем (неверный код раздела) -- запустите infokey, чтобы обновить его"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Файл infokey `%s' неприемлем (неверный код раздела) -- запустите infokey, "
+"чтобы обновить его"
 
 #: info/infomap.c:1609
 msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr "Поврежденные данные в файле infokey -- некоторые привязки проигнорированы"
+msgstr ""
+"Поврежденные данные в файле infokey -- некоторые привязки проигнорированы"
 
 #: info/infomap.c:1660
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "Поврежденные данные в файле infokey -- некоторые установки переменных проигнорированы"
+msgstr ""
+"Поврежденные данные в файле infokey -- некоторые установки переменных "
+"проигнорированы"
 
 #: info/m-x.c:70
 msgid "Read the name of an Info command and describe it"
@@ -1028,8 +1084,12 @@ msgstr "Ссылка исчезла! (%s)."
 
 #: info/session.c:170
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
-msgstr "Добро пожаловать в Info версии %s. \\[get-help-window] -- справка, \\[menu-item] выбирает пункт меню."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
+msgstr ""
+"Добро пожаловать в Info версии %s. \\[get-help-window] -- справка, \\[menu-"
+"item] выбирает пункт меню."
 
 #: info/session.c:643
 msgid "Move down to the next line"
@@ -1113,8 +1173,11 @@ msgid "Scroll forward in this window staying within node"
 msgstr "Прокрутить вперед текущее окно, оставаясь в текущей ноде"
 
 #: info/session.c:1253
-msgid "Scroll forward in this window staying within node and set default window size"
-msgstr "Прокрутить текущее окно вперед, оставаясь в текущей ноде, и установить размер окна по умолчанию"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Прокрутить текущее окно вперед, оставаясь в текущей ноде, и установить "
+"размер окна по умолчанию"
 
 #: info/session.c:1261
 msgid "Scroll backward in this window"
@@ -1129,8 +1192,12 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Прокрутить назад текущее окно, оставаясь в текущей ноде"
 
 #: info/session.c:1286
-msgid "Scroll backward in this window staying within node and set default window size"
-msgstr "Прокрутить текущее окно назад, оставаясь в текущей ноде, и установить размер окна по умолчанию"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Прокрутить текущее окно назад, оставаясь в текущей ноде, и установить размер "
+"окна по умолчанию"
 
 #: info/session.c:1294
 msgid "Move to the start of this node"
@@ -1532,7 +1599,9 @@ msgstr "Если установлено (\"On\"), сноски появляются и исчезают автоматически"
 
 #: info/variables.c:41
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr "Если установлено (\"On\"), создание или удаление окна изменяет размер других окон"
+msgstr ""
+"Если установлено (\"On\"), создание или удаление окна изменяет размер других "
+"окон"
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1840,7 +1909,8 @@ msgstr "Без заголовка"
 
 #: makeinfo/html.c:163
 msgid "[unexpected] no html tag to pop"
-msgstr "[непредвиденная ситуация] в стеке html-тегов нет элемента для выталкивания"
+msgstr ""
+"[непредвиденная ситуация] в стеке html-тегов нет элемента для выталкивания"
 
 #: makeinfo/html.c:369
 #, c-format
@@ -1855,7 +1925,8 @@ msgstr "Именной указатель `%s' неизвестен"
 #: makeinfo/index.c:238
 #, c-format
 msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Info не может обработать знак `:' во вхождении алфавитного указателя `%s'"
+msgstr ""
+"Info не может обработать знак `:' во вхождении алфавитного указателя `%s'"
 
 #: makeinfo/index.c:396
 #, c-format
@@ -1923,8 +1994,10 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu встречено перед первой @node, будет создана нода `Top'"
 
 #: makeinfo/insertion.c:1366
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "вероятно, ваша нода @top должна быть в блоке @ifnottex, а не в @ifinfo?"
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"вероятно, ваша нода @top должна быть в блоке @ifnottex, а не в @ifinfo?"
 
 #: makeinfo/insertion.c:1378
 msgid "@detailmenu seen before first node, creating `Top' node"
@@ -1960,37 +2033,37 @@ msgstr "@itemx не имеет смысла внутри блока `%s'"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s встречена вне блока вставки"
 
-#: makeinfo/lang.c:331
+#: makeinfo/lang.c:330
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s не является верным кодом языка из ISO 639"
 
-#: makeinfo/lang.c:384
+#: makeinfo/lang.c:383
 #, c-format
 msgid "unrecogized encoding name `%s'"
 msgstr "имя кодировки `%s' нераспознано"
 
-#: makeinfo/lang.c:387
+#: makeinfo/lang.c:386
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "извините, кодировка `%s' не поддерживается"
 
-#: makeinfo/lang.c:414
+#: makeinfo/lang.c:413
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "неправильно закодированный знак `%s'"
 
-#: makeinfo/lang.c:502
+#: makeinfo/lang.c:501
 #, c-format
 msgid "%s is an invalid ISO code, using %c"
 msgstr "%s не является верным кодом ISO, используется %c"
 
-#: makeinfo/lang.c:687
+#: makeinfo/lang.c:686
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s ожидает в качестве аргумента `i' или `j', а не `%c'"
 
-#: makeinfo/lang.c:691
+#: makeinfo/lang.c:690
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s ожидает в качестве аргумента один символ `i' или `j'"
@@ -2071,16 +2144,20 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
+"      --reference-limit=NUM   warn about at most NUM references (default %"
+"d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
 "Общие ключи:\n"
-"      --error-limit=ЧИСЛО       остановиться после ЧИСЛА ошибок (по умолчанию %d).\n"
+"      --error-limit=ЧИСЛО       остановиться после ЧИСЛА ошибок (по "
+"умолчанию %d).\n"
 "      --force                   сохранять вывод, даже если были ошибки.\n"
 "      --help                    показать эту справку и выйти.\n"
-"      --no-validate             не производить проверку перекрестных ссылок.\n"
-"      --no-warn                 не показывать предупреждения (но не ошибки).\n"
+"      --no-validate             не производить проверку перекрестных "
+"ссылок.\n"
+"      --no-warn                 не показывать предупреждения (но не "
+"ошибки).\n"
 "      --reference-limit=Н       максимальное число ссылок, не вызывающее\n"
 "                                  вывод предупреждения (по умолчанию %d).\n"
 "  -v, --verbose                 пояснять действия.\n"
@@ -2104,7 +2181,8 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
 "                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and menus\n"
+"      --no-headers          suppress node separators, Node: lines, and "
+"menus\n"
 "                              from Info output (thus producing plain text)\n"
 "                              or from HTML (thus producing shorter output);\n"
 "                              also, write to standard output by default.\n"
@@ -2116,12 +2194,16 @@ msgstr ""
 "Общие ключи, управляющие выводом:\n"
 " -E, --macro-expand ФАЙЛ   вывести в ФАЙЛ первоначальный Texinfo-файл с\n"
 "                           раскрытыми макросами.\n"
-"     --no-headers          выводить простой текст, пропуская разделители нод\n"
-"                           Info и строки Node:; писать на стандартный вывод,\n"
+"     --no-headers          выводить простой текст, пропуская разделители "
+"нод\n"
+"                           Info и строки Node:; писать на стандартный "
+"вывод,\n"
 "                           если не задан ключ --output.\n"
-"     --no-split            подавить разбиение больших Info- или HTML-файлов,\n"
+"     --no-split            подавить разбиение больших Info- или HTML-"
+"файлов,\n"
 "                           создавать только один выходной файл.\n"
-"     --number-sections     включать в вывод номера глав, разделов и приложений.\n"
+"     --number-sections     включать в вывод номера глав, разделов и "
+"приложений.\n"
 " -o, --output=ФАЙЛ         выводить в указанный ФАЙЛ (каталог для HTML с \n"
 "                           разбиением).\n"
 
@@ -2131,27 +2213,34 @@ msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
 "                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
 "                                `end' to put them at the end of the node\n"
 "                                  in which they are defined (default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Ключи для Info и простого текста:\n"
-"      --enable-encoding       выводить знаки с акцентами и специальные знаки,\n"
+"      --enable-encoding       выводить знаки с акцентами и специальные "
+"знаки,\n"
 "                                основываясь на @documentencoding.\n"
 "      --fill-column=ЧИСЛО     разбивать строки длиннее ЧИСЛА знаков (по\n"
 "                                умолчанию %d).\n"
 "      --footnote-style=СТИЛЬ  выводить сноски одним из СТИЛЕЙ:\n"
-"                                `separate' -- помещать сноски в отдельную ноду,\n"
-"                                `end' -- помещать сноски в конец ноды, где они были\n"
+"                                `separate' -- помещать сноски в отдельную "
+"ноду,\n"
+"                                `end' -- помещать сноски в конец ноды, где "
+"они были\n"
 "                                определены (по умолчанию)\n"
-"      --paragraph-indent=Н    делать отступы шириной Н пробелов (по умолчанию %d).\n"
-"                                Если Н равно `none', не делать отступы, если\n"
+"      --paragraph-indent=Н    делать отступы шириной Н пробелов (по "
+"умолчанию %d).\n"
+"                                Если Н равно `none', не делать отступы, "
+"если\n"
 "                                `asis', сохранять существующие отступы.\n"
 "      --split-size=РАЗМЕР     разбивать на файлы заданного РАЗМЕРА (по\n"
 "                                умолчанию %d).\n"
@@ -2166,8 +2255,10 @@ msgid ""
 "  -U VAR                         undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Ключи, управляющие входными файлами:\n"
-"      --commands-in-node-names   позволить использование @-команд в именах нод.\n"
-" -D ПЕРЕМЕННАЯ           определить переменную, аналогично использованию @set.\n"
+"      --commands-in-node-names   позволить использование @-команд в именах "
+"нод.\n"
+" -D ПЕРЕМЕННАЯ           определить переменную, аналогично использованию "
+"@set.\n"
 " -I КАТАЛОГ              добавить КАТАЛОГ в конец списка поиска включаемых\n"
 "                           файлов.\n"
 " -P КАТАЛОГ              добавить КАТАЛОГ в начало списка поиска включаемых\n"
@@ -2214,8 +2305,10 @@ msgid ""
 msgstr ""
 "По умолчанию обработка условных команд @if... зависит от выходного формата:\n"
 "  при выводе HTML включен --ifhtml, а остальные выключены;\n"
-"  при выводе Info или простого текста включен --ifinfo, а остальные выключены;\n"
-"  при выключены простого текста включен --ifplaintext, а остальные выключены;\n"
+"  при выводе Info или простого текста включен --ifinfo, а остальные "
+"выключены;\n"
+"  при выключены простого текста включен --ifplaintext, а остальные "
+"выключены;\n"
 
 #: makeinfo/makeinfo.c:466
 msgid ""
@@ -2226,7 +2319,8 @@ msgid ""
 "  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
 "  makeinfo --no-headers foo.texi        write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi          write one Info file however big\n"
 msgstr ""
@@ -2235,11 +2329,13 @@ msgstr ""
 "  makeinfo --html foo.texi             записать HTML в @setfilename\n"
 "  makeinfo --xml foo.texi              записать Texinfo XML в @setfilename\n"
 "  makeinfo --docbook foo.texi          записать DocBook XML в @setfilename\n"
-"  makeinfo --no-headers -o - foo.texi  записать простой текст на стандартный\n"
+"  makeinfo --no-headers -o - foo.texi  записать простой текст на "
+"стандартный\n"
 "                                         вывод\n"
 "\n"
 "  makeinfo --html --no-headers foo.texi записать HTML без меню и строк ноды\n"
-"  makeinfo --number-sections foo.texi  записать Info с нумерованными разделами\n"
+"  makeinfo --number-sections foo.texi  записать Info с нумерованными "
+"разделами\n"
 "  makeinfo --no-split foo.texi         записать один большой Info-файл\n"
 
 #: makeinfo/makeinfo.c:577 makeinfo/makeinfo.c:600 makeinfo/makeinfo.c:662
@@ -2267,7 +2363,8 @@ msgstr ""
 #: makeinfo/makeinfo.c:672
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%s: аргумент --footnote-style должен быть `separate' или `end'; а не `%s'.\n"
+msgstr ""
+"%s: аргумент --footnote-style должен быть `separate' или `end'; а не `%s'.\n"
 
 #: makeinfo/makeinfo.c:731
 #, c-format
@@ -2312,7 +2409,8 @@ msgstr "Это %s, созданный makeinfo версии %s из %s.\n"
 
 #: makeinfo/makeinfo.c:1591
 #, c-format
-msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgid ""
+"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Удаление выходного файла макрорасширений `%s' -- были ошибки;\n"
 "используйте --force, чтобы принудительно сохранить результаты.\n"
@@ -2332,7 +2430,8 @@ msgstr "Неизвестная команда `%s'"
 #: makeinfo/makeinfo.c:1885
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
-msgstr "Используйте фигурные скобки, чтобы передать @%s команду в качестве аргумента"
+msgstr ""
+"Используйте фигурные скобки, чтобы передать @%s команду в качестве аргумента"
 
 #: makeinfo/makeinfo.c:2078
 #, c-format
@@ -2356,7 +2455,7 @@ msgstr "%c%s пропущена закрывающая скобка"
 msgid "First argument to cross-reference may not be empty"
 msgstr "Первый аргумент перекрестной ссылки не может быть пустым"
 
-#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1343
+#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1340
 msgid "see "
 msgstr "смотрите "
 
@@ -2574,27 +2673,27 @@ msgstr "на ноду `%s' нет ссылок"
 msgid "Appendix %c "
 msgstr "Приложение %c "
 
-#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:445
+#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:441
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "Внутренняя ошибка (search_sectioning) \"%s\"!"
 
-#: makeinfo/sectioning.c:503
+#: makeinfo/sectioning.c:501
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "Команда %c%s устарела; используйте вместо нее %c%s"
 
-#: makeinfo/sectioning.c:519
+#: makeinfo/sectioning.c:517
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "Нода с %ctop в качестве раздела уже существует"
 
-#: makeinfo/sectioning.c:527
+#: makeinfo/sectioning.c:525
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Здесь находится нода %ctop"
 
-#: makeinfo/sectioning.c:544
+#: makeinfo/sectioning.c:542
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop встречена перед %cnode, по умолчанию используется %s"
@@ -2651,8 +2750,10 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with whitespace.\n"
-"                     If you specify more than one entry, they are all added.\n"
+"                     plus zero or more extra lines starting with "
+"whitespace.\n"
+"                     If you specify more than one entry, they are all "
+"added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -2676,26 +2777,33 @@ msgstr ""
 "файла-каталога Info DIR-ФАЙЛ.\n"
 "\n"
 "Ключи:\n"
-" --delete          удалить существующие вхождения для INFO-ФАЙЛА из DIR-ФАЙЛА;\n"
+" --delete          удалить существующие вхождения для INFO-ФАЙЛА из DIR-"
+"ФАЙЛА;\n"
 "                   не вставлять новые вхождения.\n"
 " --dir-file=ИМЯ    задает имя каталоге Info,\n"
 "                   эквивалентно использованию аргумента DIR-ФАЙЛ.\n"
 " --entry=ТЕКСТ     вставить ТЕКСТ в качестве вхождения каталога Info.\n"
 "                   Текст должен иметь форму пункта меню плюс (возможно)\n"
-"                   несколько строк, начинающихся пробельными символами.  Если вы\n"
-"                   зададите несколько вхождений, все они будут вставлены.  Если\n"
-"                   вы не зададите вхождений, будет вставлен текст из Info-файла.\n"
+"                   несколько строк, начинающихся пробельными символами.  "
+"Если вы\n"
+"                   зададите несколько вхождений, все они будут вставлены.  "
+"Если\n"
+"                   вы не зададите вхождений, будет вставлен текст из Info-"
+"файла.\n"
 " --help            показать эту справку и выйти.\n"
 " --info-file=ФАЙЛ  задает имя устанавливаемого Info-файла,\n"
 "                   эквивалентно использованию аргумента INFO-ФАЙЛ.\n"
 " --info-dir=ИМЯ    синоним --dir-file=ИМЯ/dir.\n"
 " --item=ТЕКСТ      синоним --entry ТЕКСТ.\n"
-"                   Вхождение каталога Info на самом деле является пунктом меню.\n"
+"                   Вхождение каталога Info на самом деле является пунктом "
+"меню.\n"
 " --quiet           не выводить предупреждения.\n"
 " --remove          синоним --delete.\n"
 " --section=СЕК     поместить вхождения в заданную секцию каталога.\n"
-"                   Если вы зададите несколько секций, вхождения будут вставлены в\n"
-"                   каждую. Если вы не зададите секций, вхождения будут вставлены\n"
+"                   Если вы зададите несколько секций, вхождения будут "
+"вставлены в\n"
+"                   каждую. Если вы не зададите секций, вхождения будут "
+"вставлены\n"
 "                   в секции, заданные в Info-файле.\n"
 " --version         показать информацию о версии и выйти.\n"
 
@@ -2725,7 +2833,8 @@ msgstr ""
 "\n"
 "  Здесь (в каталоге Info) представлено меню по основным темам.\n"
 "  Нажмите \"q\" чтобы выйти, \"?\" чтобы посмотреть все команды Info,\n"
-"  \"d\" чтобы вернуться сюда, \"h\" чтобы прочитать руководство для новичков,\n"
+"  \"d\" чтобы вернуться сюда, \"h\" чтобы прочитать руководство для "
+"новичков,\n"
 "  \"mEmacs<Return>\" чтобы прочитать руководство по Emacs.\n"
 "\n"
 "  В Emacs вы можете нажать вторую кнопку мыши на пункте меню или ссылке,\n"
@@ -2862,3 +2971,9 @@ msgstr "за вхождением %s следует вхождение с вторичным именем"
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; для файла `%s'.\n"
+
+#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+#~ msgstr "  %-10[scroll-forward]  Прокрутить на страницу вперед.\n"
+
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "  %-10[scroll-backward]  Прокрутить на страницу назад.\n"

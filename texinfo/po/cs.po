@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
-"POT-Creation-Date: 2002-11-04 19:16-0800\n"
+"POT-Creation-Date: 2002-11-07 14:21-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -525,33 +525,33 @@ msgstr "Pøesun uvnitø uzlu:\n"
 
 #: info/infodoc.c:70
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "  %-10s  Následující stránka.\n"
-
-#: info/infodoc.c:71
-#, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "  %-10s  Pøedchozí stránka.\n"
-
-#: info/infodoc.c:72
-#, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10s  Pøesun na zaèátek aktuálního uzlu.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
 
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
+
 #: info/infodoc.c:74
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
-msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+msgstr "  %-10s  Následující stránka.\n"
 
 #: info/infodoc.c:75
 #, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
-msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
+msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+msgstr "  %-10s  Pøedchozí stránka.\n"
 
 #: info/infodoc.c:77 info/infodoc.c:125
 #, fuzzy
@@ -2025,37 +2025,37 @@ msgstr "@itemx není myslitelný uvnitø `%s' bloku"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s nalezen mimo vkládaný blok"
 
-#: makeinfo/lang.c:331
+#: makeinfo/lang.c:330
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s není platný kód jazyka (podle ISO 639)"
 
-#: makeinfo/lang.c:384
+#: makeinfo/lang.c:383
 #, fuzzy, c-format
 msgid "unrecogized encoding name `%s'"
 msgstr "%s: neznámý pøepínaè `--%s'\n"
 
-#: makeinfo/lang.c:387
+#: makeinfo/lang.c:386
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr ""
 
-#: makeinfo/lang.c:414
+#: makeinfo/lang.c:413
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr ""
 
-#: makeinfo/lang.c:502
+#: makeinfo/lang.c:501
 #, fuzzy, c-format
 msgid "%s is an invalid ISO code, using %c"
 msgstr "%s není platný kód jazyka (podle ISO 639)"
 
-#: makeinfo/lang.c:687
+#: makeinfo/lang.c:686
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s vy¾aduje `i' nebo `j' jako argument, ne `%c'"
 
-#: makeinfo/lang.c:691
+#: makeinfo/lang.c:690
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s vy¾aduje jeden znak `i' nebo `j' jako argument"
@@ -2370,7 +2370,7 @@ msgstr "%c%s chybìjící uzavírací závorka"
 msgid "First argument to cross-reference may not be empty"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1343
+#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1340
 msgid "see "
 msgstr "viz"
 
@@ -2589,27 +2589,27 @@ msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
 msgid "Appendix %c "
 msgstr "Dodatek %c "
 
-#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:445
+#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:441
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "Interní chyba (hledání sekcí) \"%s\"!"
 
-#: makeinfo/sectioning.c:503
+#: makeinfo/sectioning.c:501
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s je zastaralý; pou¾ijte %c%s"
 
-#: makeinfo/sectioning.c:519
+#: makeinfo/sectioning.c:517
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "Uzel s %ctop jako sekcí ji¾ existuje"
 
-#: makeinfo/sectioning.c:527
+#: makeinfo/sectioning.c:525
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Ji¾ zde je nejvy¹¹í (%ctop) uzel"
 
-#: makeinfo/sectioning.c:544
+#: makeinfo/sectioning.c:542
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop je pou¾it pøed %cnode, pøesmìrováno na %s"
@@ -2886,6 +2886,14 @@ msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; pro soubor `%s'.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
 
 #, fuzzy
 #~ msgid ""

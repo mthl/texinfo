@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2c\n"
-"POT-Creation-Date: 2002-11-04 19:16-0800\n"
+"POT-Creation-Date: 2002-11-07 14:21-0800\n"
 "PO-Revision-Date: 2002-10-30 23:33+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -515,28 +515,30 @@ msgstr ""
 "-------------------------\n"
 
 #: info/infodoc.c:70
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "\\%-10[scroll-forward]  Rulla en sida framåt.\n"
-
-#: info/infodoc.c:71
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "\\%-10[scroll-backward]  Rulla en sida bakåt.\n"
-
-#: info/infodoc.c:72
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "\\%-10[beginning-of-node]  Gå till början på denna nod.\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:71
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "\\%-10[end-of-node]  Gå till slutet av denna nod.\n"
 
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+msgstr "  %-10s  Rulla en rad framåt.\n"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgstr "  %-10s  Rulla en rad bakåt.\n"
+
 #: info/infodoc.c:74
-msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
-msgstr "\\%-10[scroll-forward]  Rulla en rad framåt.\n"
+msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+msgstr "\\%-10[scroll-forward]  Rulla en sida framåt.\n"
 
 #: info/infodoc.c:75
-msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
-msgstr "\\%-10[scroll-backward]  Rulla en rad bakåt.\n"
+msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+msgstr "\\%-10[scroll-backward]  Rulla en sida bakåt.\n"
 
 #: info/infodoc.c:77 info/infodoc.c:125
 msgid ""
@@ -2099,37 +2101,37 @@ msgstr "@itemx är inte meningsfullt inuti \"%s\"-block"
 msgid "%c%s found outside of an insertion block"
 msgstr "%c%s hittades utanför ett insättningsblock"
 
-#: makeinfo/lang.c:331
+#: makeinfo/lang.c:330
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s är inte en giltig landskod enligt ISO 639"
 
-#: makeinfo/lang.c:384
+#: makeinfo/lang.c:383
 #, c-format
 msgid "unrecogized encoding name `%s'"
 msgstr "okänd kodningsnamn \"%s\""
 
-#: makeinfo/lang.c:387
+#: makeinfo/lang.c:386
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "tyvärr, kodningen \"%s\" stöds inte"
 
-#: makeinfo/lang.c:414
+#: makeinfo/lang.c:413
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "ogiltigt kodat tecken \"%s\""
 
-#: makeinfo/lang.c:502
+#: makeinfo/lang.c:501
 #, c-format
 msgid "%s is an invalid ISO code, using %c"
 msgstr "%s är en ogiltig ISO-kod, använder %c"
 
-#: makeinfo/lang.c:687
+#: makeinfo/lang.c:686
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s förväntar \"i\" eller \"j\" som argument, inte \"%c\""
 
-#: makeinfo/lang.c:691
+#: makeinfo/lang.c:690
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s förväntar ett ensamt tecken \"i\" eller \"j\" som argument"
@@ -2508,7 +2510,7 @@ msgstr "%c%s saknar avslutande klammer"
 msgid "First argument to cross-reference may not be empty"
 msgstr "Första argumentet till korsreferens kan inte vara tomt"
 
-#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1343
+#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1340
 msgid "see "
 msgstr "se "
 
@@ -2728,27 +2730,27 @@ msgstr "orefererad nod \"%s\""
 msgid "Appendix %c "
 msgstr "Appendix %c "
 
-#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:445
+#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:441
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "Internt fel (search_sectioning) \"%s\"!"
 
-#: makeinfo/sectioning.c:503
+#: makeinfo/sectioning.c:501
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s är föråldrat; använd %c%s istället"
 
-#: makeinfo/sectioning.c:519
+#: makeinfo/sectioning.c:517
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "En nod med %ctop som en sektion finns redan"
 
-#: makeinfo/sectioning.c:527
+#: makeinfo/sectioning.c:525
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "Här är %ctop-noden"
 
-#: makeinfo/sectioning.c:544
+#: makeinfo/sectioning.c:542
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop användes innan %cnode, använder %s som standard"
@@ -3018,6 +3020,12 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; för filen \"%s\".\n"
+
+#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+#~ msgstr "\\%-10[scroll-forward]  Rulla en rad framåt.\n"
+
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "\\%-10[scroll-backward]  Rulla en rad bakåt.\n"
 
 #~ msgid ""
 #~ "Email bug reports to bug-texinfo@gnu.org,\n"

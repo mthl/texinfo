@@ -155,3 +155,6 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 
 # macro expansion ouput first.
 set args -o - --html $ttests/macfirst.tex
+
+# crash
+set args -o - --docbook $ttests/idxangle.tex

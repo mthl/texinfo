@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
-"POT-Creation-Date: 2002-11-04 19:16-0800\n"
+"POT-Creation-Date: 2002-11-07 14:21-0800\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -516,33 +516,33 @@ msgstr "ノード内での移動:\n"
 
 #: info/infodoc.c:70
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "  %-10s  1 ページ分前方へ進める。\n"
-
-#: info/infodoc.c:71
-#, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "  %-10s  1 ページ分後方へ戻す。\n"
-
-#: info/infodoc.c:72
-#, fuzzy
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
-#: info/infodoc.c:73
+#: info/infodoc.c:71
 #, fuzzy
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
 msgstr "  %-10s  現在のノードの先頭へ移動する。\n"
 
+#: info/infodoc.c:72
+#, fuzzy
+msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
+msgstr "  %-10s  1 行分前方へすすめる。\n"
+
+#: info/infodoc.c:73
+#, fuzzy
+msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
+msgstr "  %-10s  1 行分後方へ戻す。\n"
+
 #: info/infodoc.c:74
 #, fuzzy
-msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
-msgstr "  %-10s  1 行分前方へすすめる。\n"
+msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
+msgstr "  %-10s  1 ページ分前方へ進める。\n"
 
 #: info/infodoc.c:75
 #, fuzzy
-msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
-msgstr "  %-10s  1 行分後方へ戻す。\n"
+msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
+msgstr "  %-10s  1 ページ分後方へ戻す。\n"
 
 #: info/infodoc.c:77 info/infodoc.c:125
 #, fuzzy
@@ -2034,37 +2034,37 @@ msgstr "`%s' ブロック内側での @itemx は、あまり意味がありません"
 msgid "%c%s found outside of an insertion block"
 msgstr "挿入ブロック外で、%c%s が見つかりました"
 
-#: makeinfo/lang.c:331
+#: makeinfo/lang.c:330
 #, c-format
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s は有効な ISO 639 言語コードではありません"
 
-#: makeinfo/lang.c:384
+#: makeinfo/lang.c:383
 #, c-format
 msgid "unrecogized encoding name `%s'"
 msgstr "エンコーディング名 `%s' を認識できません"
 
-#: makeinfo/lang.c:387
+#: makeinfo/lang.c:386
 #, c-format
 msgid "sorry, encoding `%s' not supported"
 msgstr "残念ながら、エンコード `%s' は受け付けられません"
 
-#: makeinfo/lang.c:414
+#: makeinfo/lang.c:413
 #, c-format
 msgid "invalid encoded character `%s'"
 msgstr "エンコード文字 `%s' が無効です"
 
-#: makeinfo/lang.c:502
+#: makeinfo/lang.c:501
 #, c-format
 msgid "%s is an invalid ISO code, using %c"
 msgstr "%s は不適切な ISO コードです。%c を使います"
 
-#: makeinfo/lang.c:687
+#: makeinfo/lang.c:686
 #, c-format
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
 
-#: makeinfo/lang.c:691
+#: makeinfo/lang.c:690
 #, c-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s は引数として `i' か `j' のいずれか一文字が必要です"
@@ -2423,7 +2423,7 @@ msgstr "閉じるブレースのない %c%s"
 msgid "First argument to cross-reference may not be empty"
 msgstr "相互参照への第一引数が空であってはなりません"
 
-#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1343
+#: makeinfo/makeinfo.c:3026 makeinfo/makeinfo.c:3244 makeinfo/xml.c:1340
 msgid "see "
 msgstr "see "
 
@@ -2641,27 +2641,27 @@ msgstr "参照されていないノード `%s'"
 msgid "Appendix %c "
 msgstr "付録 %c "
 
-#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:445
+#: makeinfo/sectioning.c:356 makeinfo/sectioning.c:441
 #, c-format
 msgid "Internal error (search_sectioning) \"%s\"!"
 msgstr "内部エラー (節探索中) \"%s\"!"
 
-#: makeinfo/sectioning.c:503
+#: makeinfo/sectioning.c:501
 #, c-format
 msgid "%c%s is obsolete; use %c%s instead"
 msgstr "%c%s は廃止しました。 -- 代わりに %c%s を使ってください"
 
-#: makeinfo/sectioning.c:519
+#: makeinfo/sectioning.c:517
 #, c-format
 msgid "Node with %ctop as a section already exists"
 msgstr "%ctop のノードは、セクションとして既に存在します"
 
-#: makeinfo/sectioning.c:527
+#: makeinfo/sectioning.c:525
 #, c-format
 msgid "Here is the %ctop node"
 msgstr "ここは %ctop ノードです"
 
-#: makeinfo/sectioning.c:544
+#: makeinfo/sectioning.c:542
 #, c-format
 msgid "%ctop used before %cnode, defaulting to %s"
 msgstr "%ctop が %cnode の前に使われました、%s に決めうちします"
@@ -2939,6 +2939,14 @@ msgstr "%s 項目に二つ目の項目名が続いています"
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s -- ファイル `%s'。\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  1 行分前方へすすめる。\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  1 行分後方へ戻す。\n"
 
 #~ msgid ""
 #~ "Email bug reports to bug-texinfo@gnu.org,\n"
