@@ -58,7 +58,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.134 2005-03-21 20:36:59 pertusus Exp $
+# $Id: texi2html.pl,v 1.135 2005-03-29 19:35:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -228,6 +228,7 @@ $L2H_HTML_VERSION
 $EXTERNAL_DIR
 @INCLUDE_DIRS 
 @PREPEND_DIRS 
+@CONF_DIRS 
 $IGNORE_PREAMBLE_TEXT
 @CSS_FILES
 );
