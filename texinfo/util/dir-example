@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.15 2003-02-08 14:06:44 karl Exp $
+$Id: dir-example,v 1.16 2003-02-11 14:02:33 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -25,13 +25,13 @@ Basics
 * Bash: (bash).                 Bourne-Again SHell.
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
+* DC: (dc).                     Postfix desk calculator.
 
 * Common options: (coreutils)Common options.      Common options.
 * File permissions: (coreutils)File permissions.  Access modes.
 * Date input formats: (coreutils)Date input formats.
 
 GNU Packages
-* DC: (dc).                     Postfix desk calculator.
 * Diff: (diff).                 Comparing and merging programs.
 * Ed: (ed).                     Line editor.
 * Emacs: (emacs).               Extensible self-documenting text editor.
