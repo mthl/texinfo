@@ -27,9 +27,6 @@ package Texi2HTML::I18n;
 
 use strict;
 
-use File::Copy;
-use Data::Dumper;
-
 use vars qw(
 @ISA
 @EXPORT

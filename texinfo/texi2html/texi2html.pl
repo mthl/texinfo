@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.125 2005-02-03 23:04:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.126 2005-02-04 00:14:39 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -10649,7 +10649,7 @@ sub scan_line($$$$;$)
              {
                   my $macro = $stack->[-1]->{'style'};
                   my $style_args = $style_map_ref->{$macro}->{'args'};
-                  if (exists($style_args->[$stack->[-1]->{'arg_nr'} + 1]))
+                  if (defined($style_args->[$stack->[-1]->{'arg_nr'} + 1]))
                   {
                        push (@{$stack->[-1]->{'args'}}, $stack->[-1]->{'text'});
                        $stack->[-1]->{'fulltext'} .= $stack->[-1]->{'text'} . do_text(',', $state);

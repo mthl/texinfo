@@ -1,33 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 @c
-@c Created:
-@c    Fri Jan 22 1999
-@c
-@c Revisions:
-@c $Log: not supported by cvs2svn $
-@c Revision 1.1.1.1  2001/04/29 07:23:19  dprice
-@c Initial import of texi2html
-@c
-@c Revision 1.1  2000/08/14 18:10:24  texi2htm
-@c - new command line switch (Testing purpose) -def_table
-@c   to show new layout for @def commands.
-@c - changes for new doc directory.
-@c - much changes in documentation.
-@c
-@c Revision 1.3  1999/02/23 15:07:27  khm
-@c - UPdated
-@c
-@c Revision 1.2  1999/02/10 21:54:51  khm
-@c - Neuen Patch
-@c
-@c Revision 1.1  1999/02/04 17:16:23  khm
-@c - txi-de.tex geaendert Of => of
-@c
-@c Revision 1.2  1999/02/03 13:47:54  khm
-@c - ChangeLog upgedated.
-@c
-@c Revision 1.1  1999/02/03 12:59:00  khm
-@c - Neue Version txi-de eingechecked wegen copyright usw.
 @c
 @c
 @setfilename umlaut.info

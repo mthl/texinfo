@@ -368,8 +368,8 @@ sub update_template (@)
         }
         close FILE;
     }
-	foreach my $string (keys (%$template_strings))
-	{
+    foreach my $string (keys (%$template_strings))
+    {
         $source_strings->{$string} = $template_strings->{$string};
     }
     die unless(update_language_hash($template_file, 'en', $source_strings));

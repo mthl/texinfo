@@ -1,12 +1,20 @@
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: don't use exists for reference in an array, for
+	old perl. Report from Sven de Vries.
+	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
+	Report from ezra peisach.
+	* Tests/*: remove some $Id: ChangeLog,v 1.179 2005-02-04 00:14:39 pertusus Exp $ rcs tags
+
+2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: require perl 5.00405 for File::Spec (report from
 	Ezra peisach).
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't use open with three args, use binmode (for
-	old perl).
+	old perl, reported by Sven de Vries).
 	* doc/Makefile.am: rebuild the manual based on the sources, not 
 	on the script, as it is remade by ./configure. Use the rebuild
 	of the manual as a check target (ideas from Derek).
@@ -19,7 +27,7 @@
 2005-02-01  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, examples/chm.init: remove our keywords for old
-	perl.
+	perl (reported by Sven de Vries).
 
 2005-02-01  Derek Price  <derek@ximbiot.com>
 

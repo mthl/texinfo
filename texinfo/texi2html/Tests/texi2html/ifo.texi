@@ -24,7 +24,7 @@
 @c
 @c
 @c Revisions:
-@c $Id: ifo.texi,v 1.1 2003-02-03 16:10:29 pertusus Exp $
+@c 
 @c
 @c Author:
 @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
