@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.7 2003-11-11 04:12:17 dirt Exp $
+<!-- $Id: texinfo.dtd,v 1.8 2003-11-15 02:13:59 dirt Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -239,8 +239,10 @@
 <!ELEMENT tableitem (tableterm+, item)>
 <!ELEMENT tableterm (#PCDATA | %Inline.phrase;)*>
 
-<!ELEMENT multitable (columnfraction*, row*)>
+<!ELEMENT multitable (columnfraction*, thead?, tbody)>
 <!ELEMENT columnfraction (#PCDATA)>
+<!ELEMENT thead (row+)>
+<!ELEMENT tbody (row+)>
 <!ELEMENT row (entry*)>
 <!ELEMENT entry (#PCDATA | %Inline.phrase;)*>
 

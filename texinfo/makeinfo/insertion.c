@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.36 2003-11-11 04:12:17 dirt Exp $
+   $Id: insertion.c,v 1.37 2003-11-15 02:13:59 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1879,4 +1879,13 @@ cm_itemx ()
   itemx_flag++;
   cm_item ();
   itemx_flag--;
+}
+
+int headitem_flag = 0;
+
+void
+cm_headitem ()
+{
+  headitem_flag = 1;
+  cm_item ();
 }

@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.27 2003-11-14 03:55:54 dirt Exp $
+   $Id: xml.c,v 1.28 2003-11-15 02:13:59 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -185,9 +185,10 @@ element texinfoml_element_list [] = {
   { "multitable",          0, 0, 0 },
   { "",                    0, 0, 0 }, /* TGROUP (docbook) */
   { "columnfraction",      0, 0, 0 },
-  { "",                    0, 0, 0 }, /* TBODY (docbook) */
-  { "entry",               0, 0, 0 }, /* ENTRY (docbook) */
-  { "row",                 0, 0, 0 }, /* ROW (docbook) */
+  { "thead",               0, 0, 0 },
+  { "tbody",               0, 0, 0 },
+  { "entry",               0, 0, 0 },
+  { "row",                 0, 0, 0 },
   { "",                    0, 0, 0 }, /* BOOKINFO (docbook) */
   { "",                    0, 0, 0 }, /* ABSTRACT (docbook) */
   { "",                    0, 0, 0 }, /* REPLACEABLE (docbook) */
@@ -365,6 +366,7 @@ element docbook_element_list [] = {
   { "informaltable",       0, 0, 0 },
   { "tgroup",              0, 0, 0 },
   { "colspec",             0, 0, 0 },
+  { "thead",               0, 0, 0 },
   { "tbody",               0, 0, 0 },
   { "entry",               0, 0, 0 },
   { "row",                 0, 0, 0 },
@@ -1651,7 +1653,6 @@ xml_begin_multitable (ncolumns, column_widths)
           xml_insert_element_with_attribute (COLSPEC, START, "colwidth=\"%d*\"", column_widths[i]);
           xml_pop_current_element ();
         }
-      xml_insert_element (TBODY, START);
       xml_no_para = 1;
     }
   else
@@ -1676,6 +1677,17 @@ xml_end_multitable_row (first_row)
       xml_insert_element (ENTRY, END);
       xml_insert_element (ROW, END);
     }
+
+  if (headitem_flag)
+    xml_insert_element (THEAD, START);
+  else if (after_headitem)
+    {
+      xml_insert_element (THEAD, END);
+      xml_insert_element (TBODY, START);
+    }
+  else if (first_row)
+    xml_insert_element (TBODY, START);
+
   xml_insert_element (ROW, START);
   xml_insert_element (ENTRY, START);
 }
@@ -1703,6 +1715,7 @@ xml_end_multitable ()
     {
       xml_insert_element (ENTRY, END);
       xml_insert_element (ROW, END);
+      xml_insert_element (TBODY, END);
       xml_insert_element (MULTITABLE, END);
       xml_no_para = 0;
     }

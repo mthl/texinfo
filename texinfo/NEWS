@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.72 2003-11-13 23:03:23 karl Exp $
+$Id: NEWS,v 1.73 2003-11-15 02:13:59 dirt Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -26,6 +26,7 @@ convenience, here's a url to one of the relevant sections:
   . new commands @docbook, @ifdocbook, @ifnotdocbook
       for conditional Docbook text.
   . new command @registeredsymbol for the r-in-a-circle symbol.
+  . new command @headitem to make column heads in multitable environments.
   . @quotation now accepts an optional parameter for labelling the text.
 * makeinfo:
   . HTML output: include node name in <title> with split output;

@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.5 2003-11-08 01:00:43 dirt Exp $
+   $Id: multi.c,v 1.6 2003-11-15 02:13:59 dirt Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -408,6 +408,8 @@ init_column ()
   skip_whitespace ();
 }
 
+int after_headitem = 0;
+
 /* start a new item (row) of a multitable */
 int
 multitable_item ()
@@ -417,25 +419,45 @@ multitable_item ()
     xexit (1);
   }
 
+  if (!first_row && headitem_flag)
+    line_error (_("%cheaditem can only be used as the first item"), COMMAND_PREFIX);
+
   current_column_no = 1;
 
   if (html)
     {
       if (!first_row)
 	add_word ("<br></td></tr>");	/* <br> for non-tables browsers. */
+
+      if (headitem_flag)
+        add_word ("<thead>\n");
+      else if (after_headitem)
+        add_word ("\n</thead><tbody>\n");
+
       if (seen_column_fractions)
         add_word_args ("<tr align=\"left\"><td valign=\"top\" width=\"%d%%\">",
             envs[current_column_no].fill_column);
       else
         add_word ("<tr align=\"left\"><td valign=\"top\">");
+
+      if (headitem_flag)
+        after_headitem = 1;
+      else
+        after_headitem = 0;
       first_row = 0;
+      headitem_flag = 0;
       return 0;
     }
   /*  else if (docbook)*/ /* 05-08 */
   else if (xml)
     {
       xml_end_multitable_row (first_row);
+      if (headitem_flag)
+        after_headitem = 1;
+      else
+        after_headitem = 0;
       first_row = 0;
+      headitem_flag = 0;
       return 0;
     }
   first_row = 0;
@@ -452,6 +474,12 @@ multitable_item ()
   }
 
   init_column ();
+
+  if (headitem_flag)
+    after_headitem = 1;
+  else
+    after_headitem = 0;
+  headitem_flag = 0;
 
   return 0;
 }
@@ -588,7 +616,7 @@ end_multitable ()
   close_insertion_paragraph ();
 
   if (html)
-    add_word ("<br></td></tr></table>\n");
+    add_word ("<br></td></tr></tbody></table>\n");
   /*  else if (docbook)*/ /* 05-08 */
   else if (xml)
     xml_end_multitable ();

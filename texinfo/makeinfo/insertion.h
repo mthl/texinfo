@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.5 2003-11-10 17:04:09 dirt Exp $
+   $Id: insertion.h,v 1.6 2003-11-15 02:13:59 dirt Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -54,6 +54,9 @@ extern int in_menu;
 extern int in_detailmenu;
 extern int had_menu_commentary;
 extern int in_paragraph;
+
+extern int headitem_flag;
+extern int after_headitem;
 
 extern void command_name_condition ();
 extern void cm_ifdocbook (), cm_ifnotdocbook(), cm_docbook ();

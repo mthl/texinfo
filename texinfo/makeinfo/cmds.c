@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.31 2003-11-13 22:44:11 dirt Exp $
+   $Id: cmds.c,v 1.32 2003-11-15 02:13:59 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -56,7 +56,7 @@ void
   cm_anchor (), cm_node (), cm_menu (), cm_xref (), cm_ftable (),
   cm_vtable (), cm_pxref (), cm_inforef (), cm_uref (), cm_email (),
   cm_quotation (), cm_display (), cm_smalldisplay (), cm_itemize (),
-  cm_enumerate (), cm_tab (), cm_table (), cm_itemx (), 
+  cm_enumerate (), cm_tab (), cm_table (), cm_itemx (), cm_headitem (),
   cm_noindent (), cm_noindent_cmd (), cm_indent (),
   cm_setfilename (), cm_br (), cm_sp (), cm_page (), cm_group (),
   cm_center (), cm_ref (), cm_include (), cm_bye (), cm_item (), cm_end (),
@@ -238,6 +238,7 @@ COMMAND command_table[] = {
   { "group", cm_group, NO_BRACE_ARGS },
   { "heading", cm_heading, NO_BRACE_ARGS },
   { "headings", cm_ignore_line, NO_BRACE_ARGS },
+  { "headitem", cm_headitem, NO_BRACE_ARGS },
   { "html", cm_html, NO_BRACE_ARGS },
   { "hyphenation", cm_ignore_arg, BRACE_ARGS },
   { "i", cm_i, BRACE_ARGS },

@@ -1,3 +1,21 @@
+2003-11-15  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/cmds.c: new command @headitem.
+
+	* makeinfo/insertion.c (cm_headitem): new function.
+
+	* makeinfo/insertion.h: new variables to keep head item state.
+
+	* makeinfo/multi.c (multitable_item, end_multitable):
+	* makeinfo/xml.c (xml_end_multitable_row, xml_end_multitable):
+	insert thead element if @headitem is used.
+	
+	* makeinfo/xml.h: new element THEAD.
+
+	* makeinfo/texinfo.dtd: updated multitable structure.
+
+	* NEWS: announced @headitem.
+
 2003-11-14  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/makeinfo.c (cm_xref): make use of third and fifth arguments
