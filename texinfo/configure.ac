@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.40 2004-10-08 22:01:14 karl Exp $
+# $Id: configure.ac,v 1.41 2004-10-11 18:16:46 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -79,10 +79,20 @@ gl_STRCASE
 # term library.
 AC_CANONICAL_BUILD
 
+# We need to run some of our own binaries, most notably makedoc, but as
+# long as we have this process, we also use our own makeinfo and
+# install-info.
+# 
+# This means that if we are cross compiling, we have to configure the
+# package twice: once with the native compiler (this is done in a
+# subdirectory $native_tools), and once with the cross compiler.
+# The former is invoked automatically here, with --host=$build.
+# $native_tools is also added to SUBDIRS in the main Makefile.am,
+# so that make compiles the native tools first.
+#
 if test "$cross_compiling" = no; then
     native_tools=
 else
-    # Make twice, once locally, then with host compiler.
     native_tools=tools
     test -d "$native_tools" || mkdir "$native_tools"
     confdir=`(cd "$srcdir";pwd)`

@@ -1,3 +1,7 @@
+2004-10-11  Stepan Kasal  <kasal@ucw.cz>
+
+	* configure.ac: Add a short explanation about cross compile.
+
 2004-10-08  Karl Berry  <karl@gnu.org>
 
 	* info/Makefile.am (generated_sources): remove.  Found by Stepan.
