@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.23 2003-04-01 14:35:05 karl Exp $
+   $Id: makeinfo.c,v 1.24 2003-04-08 14:13:54 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -374,7 +374,7 @@ usage (exit_value)
   else
   {
     printf (_("Usage: %s [OPTION]... TEXINFO-FILE...\n"), progname);
-    puts ("\n");
+    puts ("");
 
     puts (_("\
 Translate Texinfo source documentation to various other formats, by default\n\
