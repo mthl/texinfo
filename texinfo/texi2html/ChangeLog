@@ -4,6 +4,8 @@
 	variables.
 	* texi2html.init: output header if there is only one section.
 	* Tests/: more tests for the new cross references scheme.
+	* doc/: use a newer texinfo.tex. Be texi2dvi friendly.
+	* Tests/Makefile.am: comment out check-local, it isn't ready.
 
 2004-02-06  Derek Price  <derek@ximbiot.com>
 

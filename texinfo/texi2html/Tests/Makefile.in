@@ -177,7 +177,6 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
 all-am: Makefile
 installdirs:
@@ -251,18 +250,18 @@ ps-am:
 
 uninstall-am: uninstall-info-am
 
-.PHONY: all all-am check check-am check-local clean clean-generic \
-	clean-local distclean distclean-generic distdir dvi dvi-am \
-	html html-am info info-am install install-am install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
-	pdf-am ps ps-am uninstall uninstall-am uninstall-info-am
+.PHONY: all all-am check check-am clean clean-generic clean-local \
+	distclean distclean-generic distdir dvi dvi-am html html-am \
+	info info-am install install-am install-data install-data-am \
+	install-exec install-exec-am install-info install-info-am \
+	install-man install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am uninstall \
+	uninstall-am uninstall-info-am
 
 
-check-local:
-	$(srcdir)/test.sh
+#check-local:
+#	$(srcdir)/test.sh
 
 regenerate:
 	for dir in ${SUBDIR_TESTS}; do \
@@ -271,14 +270,14 @@ regenerate:
 
 clean-local:
 	for dir in ${SUBDIR_TESTS}; do \
-	(cd $$dir && $(RM) -- $$dir $$dir-* *.toc *.aux *.log *.op *.cp *.cps \
+	(if [ -d $$dir ]; then cd $$dir && $(RM) -- $$dir $$dir-* *.toc *.aux *.log *.op *.cp *.cps \
 	*.fn *.fns *.ky *.kys *.pg *.pgs *.tp *.tps *.vr *.vrs \
 	*.dvi *.html *.htm *.info *.info-? *.info-?? *.info-??? *.html_tempnotag \
 	*.2  *.passfirst *.passtexi \
 	*_?.png *_??.png *_???.png *_l2h_img?.old *_l2h_img??.old *_l2h_img???.old \
 	*_l2h_img?.png *_l2h_img??.png *_l2h_img???.png \
 	 *_l2h.tex *_l2h.css *_l2h_images.pl *_l2h_images.tex \
-	*_l2h_labels.pl l2h_cache.pm) ; \
+	*_l2h_labels.pl l2h_cache.pm; fi) ; \
 	done
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -138,10 +138,11 @@ MAINTAINERCLEANFILES = \
 	Makefile.in \
 	texi2thml.html
 
+SUFFIXES = .txt
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .dvi .html .info .pdf .ps .texi
+.SUFFIXES: .txt .dvi .html .info .pdf .ps .texi .texinfo .txi
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -472,6 +473,19 @@ ps: texi2html.ps
 pdf: texi2html.pdf
 
 html: texi2html.html
+
+txt: texi2html.txt
+
+# texinfo based targets automake neglects to include
+.texinfo.txt:
+	$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
+	 --no-headers -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
+.txi.txt:
+	$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
+	 --no-headers -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
+.texi.txt:
+	$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
+	 --no-headers -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
