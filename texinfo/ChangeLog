@@ -1,3 +1,10 @@
+2003-06-24    <karl@gnu.org>
+
+	* doc/texinfo.txi (tex): misplaced period.
+	From: Jesper Harder <harder@ifa.au.dk>.
+	(GNU Sample Texts): don't end the $Id index entries with a :.
+	Report from: Luc Teirlinck <teirllm@dms.auburn.edu>.
+	
 2003-06-20    <karl@gnu.org>
 
 	* makeinfo/defun.c (process_defun_args): only insert the HTML

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
+@c $Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9406,9 +9406,9 @@ Do not put braces after any of these commands.
 @cindex Multiple spaces
 @cindex Whitespace, inserting
 @cindex Space, inserting horizontal
-@findex (space)
-@findex (tab)
-@findex (newline)
+@findex <space>
+@findex <tab>
+@findex <newline>
 
 Ordinarily, @TeX{} collapses multiple whitespace characters (space, tab,
 and newline) into a single space.  Info output, on the other hand,
@@ -9741,7 +9741,7 @@ fixed-width font they use.
 
 When you use @code{@@minus} to specify the mark beginning each entry in
 an itemized list, you do not need to type the braces
-(@pxref{itemize, , @code{@@itemize}}.)
+(@pxref{itemize, , @code{@@itemize}}).
 
 
 @node math
@@ -17169,16 +17169,16 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id:
-@cindex CVS $Id:
-@cindex RCS $Id:
+@cindex $Id
+@cindex CVS $Id
+@cindex RCS $Id
 @cindex Documentation identification
 @cindex Identification of documentation
 The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
+$Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17241,7 +17241,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.50 2003-06-25 12:24:44 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
