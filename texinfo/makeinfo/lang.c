@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.12 2003-11-05 14:32:29 dirt Exp $
+   $Id: lang.c,v 1.13 2004-04-11 17:56:47 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -21,6 +21,7 @@
 
 #include "system.h"
 #include "cmds.h"
+#include "files.h"
 #include "lang.h"
 #include "makeinfo.h"
 #include "xml.h"
@@ -30,6 +31,9 @@ encoding_code_type document_encoding_code = no_encoding;
 
 /* Current language code; default is English.  */
 language_code_type language_code = en;
+
+/* By default, unsupported encoding is an empty string.  */
+char *unknown_encoding = NULL;
 
 static iso_map_type us_ascii_map [] = {{NULL, 0, 0}}; /* ASCII map is trivial */
 
@@ -423,8 +427,6 @@ language_type language_table[] = {
   { zu, "zu", "Zulu" },
   { last_language_code, NULL, NULL }
 };
-
-
 
 /* @documentlanguage.  Maybe we'll do something useful with this in the
    future.  For now, we just recognize it.  */
@@ -434,7 +436,7 @@ language_type language_table[] = {
    a language block, we just output an empty element.  Anyways, a stream based
    parser can make good use of it.  */
 void
-cm_documentlanguage ()
+cm_documentlanguage (void)
 {
   language_code_type c;
   char *lang_arg;
@@ -471,8 +473,7 @@ cm_documentlanguage ()
    its equivalent.  */
 
 static int
-cm_search_iso_map (html)
-      char *html;
+cm_search_iso_map (char *html)
 {
   int i;
   iso_map_type *iso = encoding_table[document_encoding_code].isotab;
@@ -494,45 +495,78 @@ cm_search_iso_map (html)
 /* @documentencoding.  Set the translation table.  */
 
 void
-cm_documentencoding ()
+cm_documentencoding (void)
 {
-  encoding_code_type enc;
-  char *enc_arg;
-
-  /* This is ugly and probably needs to apply to other commands'
-     argument parsing as well.  When we're doing @documentencoding,
-     we're generally in the frontmatter of the document, and so the.
-     expansion in html/xml/docbook would generally be the empty string.
-     (Because those modes wait until the first normal text of the
-     document to start outputting.)  The result would thus be a warning
-     "unrecognized encoding name `'".  Sigh.  */
-  int save_html = html;
-  int save_xml = xml;
-
-  html = 0;
-  xml = 0;
-  get_rest_of_line (1, &enc_arg);
-  html = save_html;
-  xml = save_xml;
-
-  /* See if we have this encoding.  */
-  for (enc = no_encoding+1; enc != last_encoding_code; enc++)
+  if (!handling_delayed_writes)
     {
-      if (strcasecmp (enc_arg, encoding_table[enc].encname) == 0)
+      encoding_code_type enc;
+      char *enc_arg;
+
+      /* This is ugly and probably needs to apply to other commands'
+         argument parsing as well.  When we're doing @documentencoding,
+         we're generally in the frontmatter of the document, and so the.
+         expansion in html/xml/docbook would generally be the empty string.
+         (Because those modes wait until the first normal text of the
+         document to start outputting.)  The result would thus be a warning
+         "unrecognized encoding name `'".  Sigh.  */
+      int save_html = html;
+      int save_xml = xml;
+
+      html = 0;
+      xml = 0;
+      get_rest_of_line (1, &enc_arg);
+      html = save_html;
+      xml = save_xml;
+
+      /* See if we have this encoding.  */
+      for (enc = no_encoding+1; enc != last_encoding_code; enc++)
         {
-          document_encoding_code = enc;
-          break;
+          if (strcasecmp (enc_arg, encoding_table[enc].encname) == 0)
+            {
+              document_encoding_code = enc;
+              break;
+            }
         }
+
+      /* If we didn't find this code, complain.  */
+      if (enc == last_encoding_code)
+        {
+          warning (_("unrecognized encoding name `%s'"), enc_arg);
+          /* Let the previous one go.  */
+          if (unknown_encoding && *unknown_encoding)
+            free (unknown_encoding);
+          unknown_encoding = xstrdup (enc_arg);
+        }
+
+      else if (encoding_table[document_encoding_code].isotab == NULL)
+        warning (_("sorry, encoding `%s' not supported"), enc_arg);
+
+      free (enc_arg);
     }
+  else if (xml)
+    {
+      char *encoding = current_document_encoding ();
 
-  /* If we didn't find this code, complain.  */
-  if (enc == last_encoding_code)
-    warning (_("unrecognized encoding name `%s'"), enc_arg);
+      if (encoding && *encoding)
+        {
+          insert_string (" encoding=\"");
+          insert_string (encoding);
+          insert_string ("\"");
+        }
 
-  else if (encoding_table[document_encoding_code].isotab == NULL)
-    warning (_("sorry, encoding `%s' not supported"), enc_arg);
+      free (encoding);
+    }
+}
 
-  free (enc_arg);
+char *
+current_document_encoding (void)
+{
+  if (document_encoding_code != no_encoding)
+    return xstrdup (encoding_table[document_encoding_code].encname);
+  else if (unknown_encoding && *unknown_encoding)
+    return xstrdup (unknown_encoding);
+  else
+    return xstrdup ("");
 }
 
 
@@ -541,10 +575,8 @@ cm_documentencoding ()
    corresponding to HTML_STR from the translation tables.  Otherwise,
    add INFO_STR.  */
 
-void
-add_encoded_char (html_str, info_str)
-      char *html_str;
-      char *info_str;
+static void
+add_encoded_char (char *html_str, char *info_str)
 {
   if (html)
     add_word_args ("&%s;", html_str);
@@ -572,13 +604,8 @@ add_encoded_char (html_str, info_str)
 /* Output an accent for HTML or XML. */
 
 static void
-cm_accent_generic_html (arg, start, end, html_supported, single,
-                        html_solo_standalone, html_solo)
-     int arg, start, end;
-     char *html_supported;
-     int single;
-     int html_solo_standalone;
-     char *html_solo;
+cm_accent_generic_html (int arg, int start, int end, char *html_supported,
+    int single, int html_solo_standalone, char *html_solo)
 {
   static int valid_html_accent; /* yikes */
 
@@ -642,10 +669,8 @@ cm_accent_generic_html (arg, start, end, html_supported, single,
 
 
 static void
-cm_accent_generic_no_headers (arg, start, end, single, html_solo)
-     int arg, start, end;
-     int single;
-     char *html_solo;
+cm_accent_generic_no_headers (int arg, int start, int end, int single,
+    char *html_solo)
 {
   if (arg == END)
     {
@@ -672,8 +697,11 @@ cm_accent_generic_no_headers (arg, start, end, single, html_solo)
             { /* If we didn't find a translation for this character,
                  put the single instead. E.g., &Xuml; does not exist so X&uml;
                  should be produced. */
-              warning (_("%s is an invalid ISO code, using %c"),
-                       buffer, single);
+              /* When the below warning is issued, an author has nothing
+                 wrong in their document, let alone anything ``fixable''
+                 on their side.  So it is commented out for now.  */
+              /* warning (_("%s is an invalid ISO code, using %c"),
+                       buffer, single); */
               add_char (single);
             }
 
@@ -688,8 +716,7 @@ cm_accent_generic_no_headers (arg, start, end, single, html_solo)
    special HTML support.  */
 
 void
-cm_accent (arg)
-    int arg;
+cm_accent (int arg)
 {
   int old_escape_html = escape_html;
   escape_html = 0;
@@ -731,14 +758,14 @@ cm_accent (arg)
    exists as valid standalone character in HTML, e.g., &uml;.  */
 
 static void
-cm_accent_generic (arg, start, end, html_supported, single,
-                   html_solo_standalone, html_solo)
-     int arg, start, end;
-     char *html_supported;
-     int single;
-     int html_solo_standalone;
-     char *html_solo;
+cm_accent_generic (int arg, int start, int end, char *html_supported,
+    int single, int html_solo_standalone, char *html_solo)
 {
+  /* Accentuating space characters makes no sense, so issue a warning.  */
+  if (arg == START && isspace (input_text[input_text_offset]))
+    warning ("Accent command `@%s' must not be followed by whitespace",
+        command);
+
   if (html || xml)
     cm_accent_generic_html (arg, start, end, html_supported,
                             single, html_solo_standalone, html_solo);
@@ -756,43 +783,37 @@ cm_accent_generic (arg, start, end, html_supported, single,
 }
 
 void
-cm_accent_umlaut (arg, start, end)
-     int arg, start, end;
+cm_accent_umlaut (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "aouAOUEeIiy", '"', 1, "uml");
 }
 
 void
-cm_accent_acute (arg, start, end)
-     int arg, start, end;
+cm_accent_acute (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "AEIOUYaeiouy", '\'', 1, "acute");
 }
 
 void
-cm_accent_cedilla (arg, start, end)
-     int arg, start, end;
+cm_accent_cedilla (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "Cc", ',', 1, "cedil");
 }
 
 void
-cm_accent_hat (arg, start, end)
-     int arg, start, end;
+cm_accent_hat (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "AEIOUaeiou", '^', 0, "circ");
 }
 
 void
-cm_accent_grave (arg, start, end)
-     int arg, start, end;
+cm_accent_grave (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "AEIOUaeiou", '`', 0, "grave");
 }
 
 void
-cm_accent_tilde (arg, start, end)
-     int arg, start, end;
+cm_accent_tilde (int arg, int start, int end)
 {
   cm_accent_generic (arg, start, end, "ANOano", '~', 0, "tilde");
 }
@@ -801,7 +822,7 @@ cm_accent_tilde (arg, start, end)
 
 /* Non-English letters/characters that don't insert themselves.  */
 void
-cm_special_char (arg)
+cm_special_char (int arg)
 {
   int old_escape_html = escape_html;
   escape_html = 0;
@@ -813,19 +834,23 @@ cm_special_char (arg)
           && command[1] == 0)
         { /* Lslash lslash Oslash oslash.
              Lslash and lslash aren't supported in HTML.  */
-          if ((html || xml) && command[0] == 'O')
+          if (command[0] == 'O')
             add_encoded_char ("Oslash", "/O");
-          else if ((html || xml) && command[0] == 'o')
+          else if (command[0] == 'o')
             add_encoded_char ("oslash", "/o");
           else
             add_word_args ("/%c", command[0]);
         }
       else if (strcmp (command, "exclamdown") == 0)
         add_encoded_char ("iexcl", "!");
-      else if (strcmp (command, "pounds") == 0)
-        add_encoded_char ("pound" , "#");
       else if (strcmp (command, "questiondown") == 0)
         add_encoded_char ("iquest", "?");
+      else if (strcmp (command, "pounds") == 0)
+        add_encoded_char ("pound" , "#");
+      else if (strcmp (command, "ordf") == 0)
+        add_encoded_char ("ordf" , "a");
+      else if (strcmp (command, "ordm") == 0)
+        add_encoded_char ("ordm" , "o");
       else if (strcmp (command, "AE") == 0)
         add_encoded_char ("AElig", command);
       else if (strcmp (command, "ae") == 0)
@@ -848,8 +873,7 @@ cm_special_char (arg)
 
 /* Dotless i or j.  */
 void
-cm_dotless (arg, start, end)
-    int arg, start, end;
+cm_dotless (int arg, int start, int end)
 {
   if (arg == END)
     {

@@ -1,7 +1,7 @@
 /* infomap.h -- description of a keymap in Info and related functions.
-   $Id: infomap.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: infomap.h,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -70,7 +70,8 @@ extern Keymap echo_area_keymap;
 extern Keymap keymap_make_keymap (void);
 
 /* Return a new keymap which is a copy of MAP. */
-extern Keymap keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot);
+extern Keymap keymap_copy_keymap (Keymap map, Keymap rootmap,
+    Keymap newroot);
 
 /* Free MAP and it's descendents. */
 extern void keymap_discard_keymap (Keymap map, Keymap rootmap);

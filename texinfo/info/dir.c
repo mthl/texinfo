@@ -1,7 +1,7 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: dir.c,v 1.3 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,11 @@
    with the addition of the menus of every file named in the array
    dirs_to_add which are found in INFOPATH. */
 
-static void add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb), insert_text_into_fb_at_binding (FILE_BUFFER *fb, SEARCH_BINDING *binding, char *text, int textlen);
+static void add_menu_to_file_buffer (char *contents, long int size,
+    FILE_BUFFER *fb);
+static void insert_text_into_fb_at_binding (FILE_BUFFER *fb,
+    SEARCH_BINDING *binding, char *text, int textlen);
+void maybe_build_dir_node (char *dirname);
 
 static char *dirs_to_add[] = {
   "dir", "localdir", (char *)NULL
@@ -266,7 +270,8 @@ add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
 }
 
 static void
-insert_text_into_fb_at_binding (FILE_BUFFER *fb, SEARCH_BINDING *binding, char *text, int textlen)
+insert_text_into_fb_at_binding (FILE_BUFFER *fb,
+    SEARCH_BINDING *binding, char *text, int textlen)
 {
   char *contents;
   long start, end;

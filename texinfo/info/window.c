@@ -1,7 +1,7 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: window.c,v 1.4 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003 Free Software
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -26,8 +26,6 @@
 #include "display.h"
 #include "info-utils.h"
 #include "infomap.h"
-
-#include <stdarg.h>
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -84,7 +82,7 @@ window_initialize_windows (int width, int height)
      area. */
   the_echo_area->height = ECHO_AREA_HEIGHT;
   active_window->height = the_screen->height - 1 - the_echo_area->height;
-  window_new_screen_size (width, height, NULL);
+  window_new_screen_size (width, height);
 
   /* The echo area uses a different keymap than normal info windows. */
   the_echo_area->keymap = echo_area_keymap;
@@ -232,7 +230,7 @@ window_new_screen_size (int width, int height)
           if ((win->height < WINDOW_MIN_HEIGHT) ||
               (win->height > avail))
             {
-              WINDOW *lastwin;
+              WINDOW *lastwin = NULL;
 
               /* Split the space among the available windows. */
               delta_each = avail / numwins;
@@ -852,7 +850,7 @@ calculate_line_starts (WINDOW *window)
 	    cwidth = character_width (c, hpos);
 
           /* If this character fits within this line, just do the next one. */
-          if ((hpos + cwidth) < window->width)
+          if ((hpos + cwidth) < (unsigned int) window->width)
             {
               i++;
               hpos += cwidth;
@@ -1049,7 +1047,7 @@ window_get_cursor_column (WINDOW *window)
 int
 window_chars_to_goal (char *line, int goal)
 {
-  register int i, check, hpos;
+  register int i, check = 0, hpos;
 
   for (hpos = 0, i = 0; line[i] != '\n'; i++)
     {
@@ -1208,7 +1206,7 @@ window_goto_percentage (WINDOW *window, int percent)
 
 /* Get the state of WINDOW, and save it in STATE. */
 void
-window_get_state (WINDOW *window, WINDOW_STATE *state)
+window_get_state (WINDOW *window, SEARCH_STATE *state)
 {
   state->node = window->node;
   state->pagetop = window->pagetop;
@@ -1217,7 +1215,7 @@ window_get_state (WINDOW *window, WINDOW_STATE *state)
 
 /* Set the node, pagetop, and point of WINDOW. */
 void
-window_set_state (WINDOW *window, WINDOW_STATE *state)
+window_set_state (WINDOW *window, SEARCH_STATE *state)
 {
   if (window->node != state->node)
     window_set_node_of_window (window, state->node);
@@ -1259,14 +1257,10 @@ window_clear_echo_area (void)
    printf () hair is present.  The message appears immediately.  If there was
    already a message appearing in the echo area, it is removed. */
 void
-window_message_in_echo_area (const char *format, ...)
+window_message_in_echo_area (char *format, void *arg1, void *arg2)
 {
-  va_list args;
-  
   free_echo_area ();
-  va_start (args, format);
-  echo_area_node = build_message_node (format, args);
-  va_end (args);
+  echo_area_node = build_message_node (format, arg1, arg2);
   window_set_node_of_window (the_echo_area, echo_area_node);
   display_update_one_window (the_echo_area);
 }
@@ -1477,15 +1471,12 @@ build_message_buffer (char *format, void *arg1, void *arg2, void *arg3)
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
    contents. */
 NODE *
-build_message_node (const char *format, ...)
+build_message_node (char *format, void *arg1, void *arg2)
 {
-  va_list args;
   NODE *node;
 
   message_buffer_index = 0;
-  va_start (args);
-  build_message_buffer (format, args);
-  va_end (args);
+  build_message_buffer (format, arg1, arg2, 0);
 
   node = message_buffer_to_node ();
   return (node);

@@ -1,7 +1,7 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.11 2003-11-16 21:18:31 karl Exp $
+   $Id: install-info.c,v 1.12 2004-04-11 17:56:47 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -140,7 +140,7 @@ struct option longopts[] =
 
 /* VARARGS1 */
 void
-error (char *s1, char *s2, char *s3)
+error (const char *s1, const char *s2, const char *s3)
 {
   fprintf (stderr, "%s: ", progname);
   fprintf (stderr, s1, s2, s3);
@@ -149,7 +149,7 @@ error (char *s1, char *s2, char *s3)
 
 /* VARARGS1 */
 void
-warning (char *s1, char *s2, char *s3)
+warning (const char *s1, const char *s2, const char *s3)
 {
   fprintf (stderr, _("%s: warning: "), progname);
   fprintf (stderr, s1, s2, s3);
@@ -159,7 +159,7 @@ warning (char *s1, char *s2, char *s3)
 /* Print error message and exit.  */
 
 void
-fatal (char *s1, char *s2, char *s3)
+fatal (const char *s1, const char *s2, const char *s3)
 {
   error (s1, s2, s3);
   xexit (1);
@@ -168,7 +168,7 @@ fatal (char *s1, char *s2, char *s3)
 /* Return a newly-allocated string
    whose contents concatenate those of S1, S2, S3.  */
 char *
-concat (char *s1, char *s2, char *s3)
+concat (const char *s1, const char *s2, const char *s3)
 {
   int len1 = strlen (s1), len2 = strlen (s2), len3 = strlen (s3);
   char *result = (char *) xmalloc (len1 + len2 + len3 + 1);
@@ -185,7 +185,7 @@ concat (char *s1, char *s2, char *s3)
    copied from starting at STRING.  */
 
 char *
-copy_string (char *string, int size)
+copy_string (const char *string, int size)
 {
   int i;
   char *copy = (char *) xmalloc (size + 1);
@@ -198,11 +198,65 @@ copy_string (char *string, int size)
 /* Print fatal error message based on errno, with file name NAME.  */
 
 void
-pfatal_with_name (char *name)
+pfatal_with_name (const char *name)
 {
   char *s = concat ("", strerror (errno), _(" for %s"));
   fatal (s, name, 0);
 }
+
+/* Compare the menu item names in LINE1 (line length LEN1)
+   and LINE2 (line length LEN2).  Return 1 if the item name
+   in LINE1 is less, 0 otherwise.  */
+
+static int
+menu_line_lessp (char *line1, int len1, char *line2, int len2)
+{
+  int minlen = (len1 < len2 ? len1 : len2);
+  int i;
+
+  for (i = 0; i < minlen; i++)
+    {
+      /* If one item name is a prefix of the other,
+         the former one is less.  */
+      if (line1[i] == ':' && line2[i] != ':')
+        return 1;
+      if (line2[i] == ':' && line1[i] != ':')
+        return 0;
+      /* If they both continue and differ, one is less.  */
+      if (line1[i] < line2[i])
+        return 1;
+      if (line1[i] > line2[i])
+        return 0;
+    }
+  /* With a properly formatted dir file,
+     we can only get here if the item names are equal.  */
+  return 0;
+}
+
+/* Compare the menu item names in LINE1 (line length LEN1)
+   and LINE2 (line length LEN2).  Return 1 if the item names are equal,
+   0 otherwise.  */
+
+static int
+menu_line_equal (char *line1, int len1, char *line2, int len2)
+{
+  int minlen = (len1 < len2 ? len1 : len2);
+  int i;
+
+  for (i = 0; i < minlen; i++)
+    {
+      /* If both item names end here, they are equal.  */
+      if (line1[i] == ':' && line2[i] == ':')
+        return 1;
+      /* If they both continue and differ, one is less.  */
+      if (line1[i] != line2[i])
+        return 0;
+    }
+  /* With a properly formatted dir file,
+     we can only get here if the item names are equal.  */
+  return 1;
+}
+
 
 /* Given the full text of a menu entry, null terminated,
    return just the menu item name (copied).  */
@@ -315,9 +369,30 @@ strip_info_suffix (char *fname)
 static int
 menu_item_equal (const char *item, char term_char, const char *name)
 {
+  int ret;
+  const char *item_basename = item;
   unsigned name_len = strlen (name);
+
+  /* We must compare the basename in ITEM, since we are passed the
+     basename of the original info file.  Otherwise, a new entry like
+     "lilypond/lilypond" won't match "lilypond".
+     
+     Actually, it seems to me that we should really compare the whole
+     name, and not just the basename.  Couldn't there be dir1/foo.info
+     and dir2/foo.info?  Also, it seems like we should be using the
+     filename from the new dir entries, not the filename on the command
+     line.  Not worrying about those things right now, though.  --karl,
+     26mar04.  */
+  while (*item_basename && !IS_SLASH (*item_basename)
+	 && *item_basename != term_char)
+    item_basename++;
+  if (! *item_basename || *item_basename == term_char)
+    item_basename = item;  /* no /, use original */
+  else
+    item_basename++;       /* have /, move past it */
+    
   /* First, ITEM must actually match NAME (usually it won't).  */
-  int ret = strncasecmp (item, name, name_len) == 0;
+  ret = strncasecmp (item_basename, name, name_len) == 0;
   if (ret)
     {
       /* Then, `foobar' doesn't match `foo', so be sure we've got all of
@@ -335,8 +410,8 @@ menu_item_equal (const char *item, char term_char, const char *name)
         {
           char *suffix = suffixes[i];
           unsigned suffix_len = strlen (suffix);
-          ret = strncasecmp (item + name_len, suffix, suffix_len) == 0
-                && item[name_len + suffix_len] == term_char;
+          ret = strncasecmp (item_basename + name_len, suffix, suffix_len) == 0
+                && item_basename[name_len + suffix_len] == term_char;
         }
     }
 
@@ -1055,7 +1130,6 @@ main (int argc, char **argv)
   char *compression_program;
   char *infile_sans_info;
   char *infile = 0, *dirfile = 0;
-  unsigned infilelen_sans_info;
 
   /* Record the text of the Info file, as a sequence of characters
      and as a sequence of lines.  */
@@ -1114,8 +1188,8 @@ main (int argc, char **argv)
         case 'd':
           if (dirfile)
             {
-              fprintf (stderr, _("%s: Specify the Info directory only once.\n"),
-                       progname);
+              fprintf (stderr, _("%s: already have dir file: %s\n"),
+                       progname, dirfile);
               suggest_asking_for_help ();
             }
           dirfile = optarg;
@@ -1124,8 +1198,8 @@ main (int argc, char **argv)
         case 'D':
           if (dirfile)
             {
-              fprintf (stderr, _("%s: Specify the Info directory only once.\n"),
-                       progname);
+              fprintf (stderr, _("%s: already have dir file: %s\n"),
+                       progname, dirfile);
               suggest_asking_for_help ();
             }
           dirfile = concat (optarg, "", "/dir");
@@ -1188,11 +1262,10 @@ main (int argc, char **argv)
         case 'V':
           printf ("install-info (GNU %s) %s\n", PACKAGE, VERSION);
           puts ("");
-          printf (_("Copyright (C) %s Free Software Foundation, Inc.\n\
-There is NO warranty.  You may redistribute this software\n\
+          puts ("Copyright (C) 2004 Free Software Foundation, Inc.");
+          printf (_("There is NO warranty.  You may redistribute this software\n\
 under the terms of the GNU General Public License.\n\
-For more information about these matters, see the files named COPYING.\n"),
-                  "2003");
+For more information about these matters, see the files named COPYING.\n"));
           xexit (0);
 
         default:
@@ -1286,7 +1359,6 @@ For more information about these matters, see the files named COPYING.\n"),
       infile_basename--;
 
     infile_sans_info = strip_info_suffix (infile_basename);
-    infilelen_sans_info = strlen (infile_sans_info);
   }
 
   something_deleted
@@ -1296,7 +1368,6 @@ For more information about these matters, see the files named COPYING.\n"),
      Find the menu sections to add them in.
      In each section, find the proper alphabetical place to add
      each of the entries.  */
-
   if (!delete_flag)
     {
       struct node *node;
@@ -1433,61 +1504,6 @@ findlines (char *data, int size, int *nlinesp)
   *nlinesp = filled;
   return lines;
 }
-
-/* Compare the menu item names in LINE1 (line length LEN1)
-   and LINE2 (line length LEN2).  Return 1 if the item name
-   in LINE1 is less, 0 otherwise.  */
-
-int
-menu_line_lessp (char *line1, int len1, char *line2, int len2)
-{
-  int minlen = (len1 < len2 ? len1 : len2);
-  int i;
-
-  for (i = 0; i < minlen; i++)
-    {
-      /* If one item name is a prefix of the other,
-         the former one is less.  */
-      if (line1[i] == ':' && line2[i] != ':')
-        return 1;
-      if (line2[i] == ':' && line1[i] != ':')
-        return 0;
-      /* If they both continue and differ, one is less.  */
-      if (line1[i] < line2[i])
-        return 1;
-      if (line1[i] > line2[i])
-        return 0;
-    }
-  /* With a properly formatted dir file,
-     we can only get here if the item names are equal.  */
-  return 0;
-}
-
-/* Compare the menu item names in LINE1 (line length LEN1)
-   and LINE2 (line length LEN2).  Return 1 if the item names are equal,
-   0 otherwise.  */
-
-int
-menu_line_equal (char *line1, int len1, char *line2, int len2)
-{
-  int minlen = (len1 < len2 ? len1 : len2);
-  int i;
-
-  for (i = 0; i < minlen; i++)
-    {
-      /* If both item names end here, they are equal.  */
-      if (line1[i] == ':' && line2[i] == ':')
-        return 1;
-      /* If they both continue and differ, one is less.  */
-      if (line1[i] != line2[i])
-        return 0;
-    }
-  /* With a properly formatted dir file,
-     we can only get here if the item names are equal.  */
-  return 1;
-}
-
-
 
 /* This is the comparison function for qsort for a vector of pointers to
    struct spec_section.  (Have to use const void * as the parameter type

@@ -1,7 +1,7 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.4 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: filesys.c,v 1.5 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003 Free Software
+   Copyright (C) 1993, 1997, 1998, 2000, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -26,9 +26,12 @@
 #include "filesys.h"
 
 /* Local to this file. */
-static char *info_file_in_path (char *filename, char *path), *lookup_info_filename (char *filename);
+static char *info_file_in_path (char *filename, char *path);
+static char *lookup_info_filename (char *filename);
 static char *info_absolute_file (char *fname);
-static void remember_info_filename (char *filename, char *expansion), maybe_initialize_infopath (void);
+
+static void remember_info_filename (char *filename, char *expansion);
+static void maybe_initialize_infopath (void);
 
 typedef struct
 {
@@ -140,7 +143,7 @@ info_find_fullpath (char *partial)
       if (temp)
         {
           remember_info_filename (partial, temp);
-          if (strlen (temp) > local_temp_filename_size)
+          if (strlen (temp) > (unsigned int) local_temp_filename_size)
             local_temp_filename = (char *) xrealloc
               (local_temp_filename,
                (local_temp_filename_size = (50 + strlen (temp))));
@@ -272,8 +275,8 @@ info_absolute_file (char *fname)
 char *
 extract_colon_unit (char *string, int *idx)
 {
-  int i = *idx;
-  int start = *idx;
+  unsigned int i = (unsigned int) *idx;
+  unsigned int start = i;
 
   if (!string || i >= strlen (string))
     return NULL;
@@ -448,7 +451,8 @@ convert_eols (char *text, long int textlen)
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
    If the file cannot be read, return a NULL pointer. */
 char *
-filesys_read_info_file (char *pathname, long int *filesize, struct stat *finfo, int *is_compressed)
+filesys_read_info_file (char *pathname, long int *filesize,
+    struct stat *finfo, int *is_compressed)
 {
   long st_size;
 
@@ -457,7 +461,7 @@ filesys_read_info_file (char *pathname, long int *filesize, struct stat *finfo, 
   if (compressed_filename_p (pathname))
     {
       *is_compressed = 1;
-      return (filesys_read_compressed (pathname, filesize, finfo));
+      return (filesys_read_compressed (pathname, filesize));
     }
   else
     {
@@ -509,7 +513,7 @@ filesys_read_info_file (char *pathname, long int *filesize, struct stat *finfo, 
 #define FILESYS_PIPE_BUFFER_SIZE (16 * BASIC_PIPE_BUFFER)
 
 char *
-filesys_read_compressed (char *pathname, long int *filesize, struct stat *finfo)
+filesys_read_compressed (char *pathname, long int *filesize)
 {
   FILE *stream;
   char *command, *decompressor;
@@ -528,15 +532,17 @@ filesys_read_compressed (char *pathname, long int *filesize, struct stat *finfo)
   sprintf (command, "%s%s < %s",
 	   decompressor, STRIP_DOT_EXE ? ".exe" : "", pathname);
 
+#if !defined (BUILDING_LIBRARY)
   if (info_windows_initialized_p)
     {
       char *temp;
 
       temp = (char *)xmalloc (5 + strlen (command));
       sprintf (temp, "%s...", command);
-      message_in_echo_area ("%s", temp);
+      message_in_echo_area ("%s", temp, NULL);
       free (temp);
     }
+#endif /* !BUILDING_LIBRARY */
 
   stream = popen (command, FOPEN_RBIN);
   free (command);
@@ -586,10 +592,11 @@ filesys_read_compressed (char *pathname, long int *filesize, struct stat *finfo)
       filesys_error_number = errno;
     }
 
+#if !defined (BUILDING_LIBARARY)
   if (info_windows_initialized_p)
     unmessage_in_echo_area ();
-
-  return contents;
+#endif /* !BUILDING_LIBRARY */
+  return (contents);
 }
 
 /* Return non-zero if FILENAME belongs to a compressed file. */

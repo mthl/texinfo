@@ -1,7 +1,7 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.10 2003-10-28 01:33:44 karl Exp $
+   $Id: system.h,v 1.11 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
+   Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -32,15 +32,11 @@
 /* MiKTeX defines substring() in a separate DLL, where it has its
    own __declspec declaration.  We don't want to try to duplicate 
    this Microsoft-ism here.  */
-extern char *substring ();
+extern char *substring (const char *, const char *);
 #endif
 
-/* <unistd.h> should be included before any preprocessor test
-   of _POSIX_VERSION.  */
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif /* HAVE_UNISTD_H */
-
+/* We follow the order of header inclusion from Autoconf's
+   ac_includes_default, more or less.  */
 #include <stdio.h>
 #include <sys/types.h>
 #include <ctype.h>
@@ -71,15 +67,33 @@ extern char *getenv ();
 
 /* Don't use bcopy!  Use memmove if source and destination may overlap,
    memcpy otherwise.  */
-#ifdef HAVE_STRING_H
+#if HAVE_STRING_H
 # if !STDC_HEADERS && HAVE_MEMORY_H
 #  include <memory.h>
 # endif
 # include <string.h>
-#else
+#endif
+
+#if HAVE_STRINGS_H
+/* Always include <strings.h> if we have it.  This is because that's
+   what Autoconf's AC_CHECK_DECL does.  On IBM AIX 4.2, strncasecmp is
+   only declared in strings.h.  */
 # include <strings.h>
+#endif
+
+#if !HAVE_STRNCASECMP || !HAVE_STRCASECMP
+# include "strcase.h"
+#endif
+
+#if !HAVE_DECL_MEMCHR
 char *memchr ();
 #endif
+
+/* <unistd.h> defines _POSIX_VERSION, but Paul Eggert points out that is
+   only supposed to be used in user code, not other system headers.  */
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif /* HAVE_UNISTD_H */
 
 #include <errno.h>
 #ifndef errno
@@ -251,12 +265,12 @@ extern int strcoll ();
 #include <pwd.h>
 #endif
 /* Some systems don't declare this function in pwd.h. */
-struct passwd *getpwnam ();
+struct passwd *getpwnam (const char *name);
 
 /* Our library routines not included in any system library.  */
-extern void *xmalloc (), *xrealloc ();
-extern char *xstrdup ();
-extern void xexit ();
+extern void *xmalloc (size_t), *xrealloc (void *, size_t);
+extern char *xstrdup (const char *);
+extern void xexit (int);
 
 /* For convenience.  */
 #define STREQ(s1,s2) (strcmp (s1, s2) == 0)

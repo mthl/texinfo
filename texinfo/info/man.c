@@ -1,7 +1,7 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
+    $Id: man.c,v 1.4 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003 Free Software
+   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -55,7 +55,8 @@ static char const * const exec_extensions[] = { "", NULL };
 
 static char *read_from_fd (int fd);
 static void clean_manpage (char *manpage);
-static NODE *manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename);
+static NODE *manpage_node_of_file_buffer (FILE_BUFFER *file_buffer,
+    char *pagename);
 static char *get_manpage_contents (char *pagename);
 
 NODE *
@@ -118,23 +119,25 @@ get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
 
 		  for (in = 0; in < info_win->nodes_index; in++)
 		    {
-		      NODE *node = info_win->nodes[in];
+		      NODE *tmp_node = info_win->nodes[in];
 
 		      /* It really only suffices to see that node->filename
 			 is "*manpages*".  But after several hours of
 			 debugging this, would you blame me for being a bit
 			 paranoid?  */
-		      if (node && node->filename && node->contents &&
-			  strcmp (node->filename,
-				  MANPAGE_FILE_BUFFER_NAME) == 0 &&
-			  node->contents >= old_contents &&
-			  node->contents + node->nodelen <= old_contents_end)
+		      if (tmp_node && tmp_node->filename
+                          && tmp_node->contents
+                          && strcmp (tmp_node->filename,
+				  MANPAGE_FILE_BUFFER_NAME) == 0
+                          && tmp_node->contents >= old_contents
+                          && tmp_node->contents + tmp_node->nodelen
+                                <= old_contents_end)
 			{
 			  info_win->nodes[in] =
 			    manpage_node_of_file_buffer (file_buffer,
-							 node->nodename);
-			  free (node->nodename);
-			  free (node);
+                                tmp_node->nodename);
+			  free (tmp_node->nodename);
+			  free (tmp_node);
 			}
 		    }
 		}
@@ -275,7 +278,7 @@ get_manpage_contents (char *pagename)
   static char *formatter_args[4] = { (char *)NULL };
   int pipes[2];
   pid_t child;
-  RETSIGTYPE (*sigsave) ();
+  RETSIGTYPE (*sigsave) (int signum);
   char *formatted_page = NULL;
   int arg_index = 1;
 

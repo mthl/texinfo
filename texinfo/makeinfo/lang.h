@@ -1,5 +1,5 @@
 /* lang.h -- declarations for language codes etc.
-   $Id: lang.h,v 1.5 2003-08-30 18:22:12 karl Exp $
+   $Id: lang.h,v 1.6 2004-04-11 17:56:47 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -100,6 +100,8 @@ typedef enum {
 /* The current document encoding, or null if not set.  */
 extern encoding_code_type document_encoding_code;
 
+/* If an encoding is not supported, just keep it as a string.  */
+extern char *unknown_encoding;
 
 /* Maps an HTML abbreviation to ISO and Unicode codes for a given code.  */
 
@@ -127,12 +129,20 @@ extern encoding_type encoding_table[];
 
 
 /* The commands.  */
-extern void cm_documentlanguage (), cm_documentencoding ();
+extern void cm_documentlanguage (void),
+     cm_documentencoding (void);
 
 /* Accents, other non-English characters.  */
-void cm_accent (), cm_special_char (), cm_dotless ();
+void cm_accent (int arg), cm_special_char (int arg),
+     cm_dotless (int arg, int start, int end);
 
-extern void cm_accent_umlaut (), cm_accent_acute (), cm_accent_cedilla (),
-  cm_accent_hat (), cm_accent_grave (), cm_accent_tilde ();
+extern void cm_accent_umlaut (int arg, int start, int end),
+     cm_accent_acute (int arg, int start, int end),
+     cm_accent_cedilla (int arg, int start, int end),
+     cm_accent_hat (int arg, int start, int end),
+     cm_accent_grave (int arg, int start, int end),
+     cm_accent_tilde (int arg, int start, int end);
+
+extern char *current_document_encoding (void);
 
 #endif /* not LANG_H */

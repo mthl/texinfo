@@ -1,7 +1,7 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.5 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: infokey.c,v 1.6 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -70,8 +70,15 @@ struct sect
 
 /* Some "forward" declarations. */
 static char *mkpath (const char *dir, const char *file);
-static int compile (FILE *fp, const char *filename, struct sect *sections), write_infokey_file (FILE *fp, struct sect *sections);
-static void syntax_error (const char *filename, unsigned int linenum, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4), error_message (int error_code, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4), suggest_help (void), short_help (void);
+static int compile (FILE *fp, const char *filename, struct sect *sections);
+static int write_infokey_file (FILE *fp, struct sect *sections);
+static void syntax_error (const char *filename,
+    unsigned int linenum, const char *fmt,
+    const void *a1, const void *a2, const void *a3, const void *a4);
+static void error_message (int error_code, const char *fmt,
+    const void *a1, const void *a2, const void *a3, const void *a4);
+static void suggest_help (void);
+static void short_help (void);
 
 
 /* **************************************************************** */
@@ -90,9 +97,11 @@ main (int argc, char **argv)
   setlocale (LC_ALL, "");
 #endif
 
+#ifdef ENABLE_NLS
   /* Set the text message domain.  */
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+#endif
 
   while (1)
     {
@@ -158,7 +167,8 @@ For more information about these matters, see the files named COPYING.\n"),
     }
   else if (optind != argc)
     {
-      error_message (0, _("incorrect number of arguments"));
+      error_message (0, _("incorrect number of arguments"),
+          NULL, NULL, NULL, NULL);
       suggest_help ();
       xexit (1);
     }
@@ -188,7 +198,8 @@ For more information about these matters, see the files named COPYING.\n"),
     inf = fopen (input_filename, "r");
     if (!inf)
       {
-	error_message (errno, _("cannot open input file `%s'"), input_filename);
+	error_message (errno, _("cannot open input file `%s'"),
+            input_filename, NULL, NULL, NULL);
 	xexit (1);
       }
 
@@ -201,7 +212,8 @@ For more information about these matters, see the files named COPYING.\n"),
 	outf = fopen (output_filename, FOPEN_WBIN);
 	if (!outf)
 	  {
-	    error_message (errno, _("cannot create output file `%s'"), output_filename);
+	    error_message (errno, _("cannot create output file `%s'"),
+                output_filename, NULL, NULL, NULL);
 	    xexit (1);
 	  }
 
@@ -211,12 +223,14 @@ For more information about these matters, see the files named COPYING.\n"),
 	write_error = 0;
 	if (!write_infokey_file (outf, sections))
 	  {
-	    error_message (errno, _("error writing to `%s'"), output_filename);
+	    error_message (errno, _("error writing to `%s'"),
+                output_filename, NULL, NULL, NULL);
 	    write_error = 1;
 	  }
 	if (fclose (outf) == EOF)
 	  {
-	    error_message (errno, _("error closing output file `%s'"), output_filename);
+	    error_message (errno, _("error closing output file `%s'"),
+                output_filename, NULL, NULL, NULL);
 	    write_error = 1;
 	  }
 	if (write_error)
@@ -361,7 +375,8 @@ mkpath (const char *dir, const char *file)
 	following the '=' is not ignored.
  */
 
-static int add_to_section (struct sect *s, const char *str, unsigned int len), lookup_action (const char *actname);
+static int add_to_section (struct sect *s, const char *str, unsigned int len);
+static int lookup_action (const char *actname);
 
 /* Compile the input file into its various sections.  Return true if no
    error was encountered.
@@ -372,7 +387,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
   int error = 0;
   char rescan = 0;
   unsigned int lnum = 0;
-  int c;
+  int c = 0;
 
   /* This parser is a true state machine, with no sneaky fetching
      of input characters inside the main loop.  In other words, all
@@ -404,9 +419,9 @@ compile (FILE *fp, const char *filename, struct sect *sections)
       octal,
       special_key
     }
-  seqstate;			/* used if state == get_keyseq */
+  seqstate;		/* used if state == get_keyseq */
   char meta = 0;
-  char ocnt;			/* used if state == get_keyseq && seqstate == octal */
+  char ocnt = 0;	/* used if state == get_keyseq && seqstate == octal */
 
   /* Data is accumulated in the following variables.  The code
      avoids overflowing these strings, and throws an error
@@ -414,17 +429,17 @@ compile (FILE *fp, const char *filename, struct sect *sections)
      lengths are arbitrary (and should be large enough) and their
      lengths are not hard-coded anywhere else, so increasing them
      here will not break anything.  */
-  char oval;
+  char oval = 0;
   char comment[10];
-  unsigned int clen;
+  unsigned int clen = 0;
   char seq[20];
-  unsigned int slen;
+  unsigned int slen = 0;
   char act[80];
-  unsigned int alen;
+  unsigned int alen = 0;
   char varn[80];
-  unsigned int varlen;
+  unsigned int varlen = 0;
   char val[80];
-  unsigned int vallen;
+  unsigned int vallen = 0;
 
 #define	To_seq(c) \
 		  do { \
@@ -432,7 +447,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		      seq[slen++] = meta ? Meta(c) : (c); \
 		    else \
 		      { \
-			syntax_error(filename, lnum, _("key sequence too long")); \
+			syntax_error(filename, lnum, _("key sequence too long"), \
+                            NULL, NULL, NULL, NULL); \
 			error = 1; \
 		      } \
 		    meta = 0; \
@@ -510,7 +526,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		  rescan = 1;
 		  if (slen == 0)
 		    {
-		      syntax_error (filename, lnum, _("missing key sequence"));
+		      syntax_error (filename, lnum, _("missing key sequence"),
+                          NULL, NULL, NULL, NULL);
 		      error = 1;
 		    }
 		}
@@ -589,7 +606,9 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		    To_seq (oval);
 		  else
 		    {
-		      syntax_error (filename, lnum, _("NUL character (\\000) not permitted"));
+		      syntax_error (filename, lnum,
+                          _("NUL character (\\000) not permitted"),
+                          NULL, NULL, NULL, NULL);
 		      error = 1;
 		    }
 		}
@@ -618,7 +637,9 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		To_seq (CONTROL (c));
 	      else
 		{
-		  syntax_error (filename, lnum, _("NUL character (^%c) not permitted"), c);
+		  syntax_error (filename, lnum,
+                      (char *) _("NUL character (^%c) not permitted"),
+                      (void *) c, NULL, NULL, NULL);
 		  error = 1;
 		}
 	      seqstate = normal;
@@ -641,7 +662,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      rescan = 1;
 	      if (alen == 0)
 		{
-		  syntax_error (filename, lnum, _("missing action name"), c);
+		  syntax_error (filename, lnum, (char *) _("missing action name"),
+                      (void *) c, NULL, NULL, NULL);
 		  error = 1;
 		}
 	      else
@@ -656,13 +678,15 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 			    && add_to_section (&sections[section], "", 1)
 			    && add_to_section (&sections[section], &av, 1)))
 			{
-			  syntax_error (filename, lnum, _("section too long"));
+			  syntax_error (filename, lnum, _("section too long"),
+                              NULL, NULL, NULL, NULL);
 			  error = 1;
 			}
 		    }
 		  else
 		    {
-		      syntax_error (filename, lnum, _("unknown action `%s'"), act);
+		      syntax_error (filename, lnum, _("unknown action `%s'"),
+                          act, NULL, NULL, NULL);
 		      error = 1;
 		    }
 		}
@@ -671,7 +695,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    act[alen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("action name too long"));
+	      syntax_error (filename, lnum, _("action name too long"),
+                  NULL, NULL, NULL, NULL);
 	      error = 1;
 	    }
 	  break;
@@ -683,7 +708,9 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    state = start_of_line;
 	  else if (!isspace (c))
 	    {
-	      syntax_error (filename, lnum, _("extra characters following action `%s'"), act);
+	      syntax_error (filename, lnum,
+                  _("extra characters following action `%s'"),
+                  act, NULL, NULL, NULL);
 	      error = 1;
 	    }
 	  break;
@@ -693,7 +720,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    {
 	      if (varlen == 0)
 		{
-		  syntax_error (filename, lnum, _("missing variable name"));
+		  syntax_error (filename, lnum, _("missing variable name"),
+                      NULL, NULL, NULL, NULL);
 		  error = 1;
 		}
 	      state = get_value;
@@ -701,14 +729,17 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    }
 	  else if (c == '\n' || isspace (c))
 	    {
-	      syntax_error (filename, lnum, _("missing `=' immediately after variable name"));
+	      syntax_error (filename, lnum,
+                  _("missing `=' immediately after variable name"),
+                  NULL, NULL, NULL, NULL);
 	      error = 1;
 	    }
 	  else if (varlen < sizeof varn)
 	    varn[varlen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("variable name too long"));
+	      syntax_error (filename, lnum, _("variable name too long"),
+                  NULL, NULL, NULL, NULL);
 	      error = 1;
 	    }
 	  break;
@@ -722,7 +753,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		    && add_to_section (&sections[section], val, vallen)
 		    && add_to_section (&sections[section], "", 1)))
 		{
-		  syntax_error (filename, lnum, _("section too long"));
+		  syntax_error (filename, lnum, _("section too long"),
+                      NULL, NULL, NULL, NULL);
 		  error = 1;
 		}
 	    }
@@ -730,10 +762,16 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    val[vallen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("value too long"));
+	      syntax_error (filename, lnum, _("value too long"),
+                  NULL, NULL, NULL, NULL);
 	      error = 1;
 	    }
 	  break;
+
+        case get_equals:
+        case got_equals:
+        case got_varname:
+          break;
 	}
     }
 
@@ -750,7 +788,7 @@ add_to_section (struct sect *s, const char *str, unsigned int len)
 {
   if (s->cur + len > sizeof s->data)
     return 0;
-  strncpy (s->data + s->cur, str, len);
+  strncpy ((char *) s->data + s->cur, str, len);
   s->cur += len;
   return 1;
 }
@@ -830,7 +868,8 @@ write_infokey_file (FILE *fp, struct sect *sections)
 	progname: "filename", line N: message
  */
 static void
-error_message (int error_code, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4)
+error_message (int error_code, const char *fmt,
+    const void *a1, const void *a2, const void *a3, const void *a4)
 {
   fprintf (stderr, "%s: ", program_name);
   fprintf (stderr, fmt, a1, a2, a3, a4);
@@ -843,7 +882,9 @@ error_message (int error_code, const char *fmt, const void *a1, const void *a2, 
 	progname: message
  */
 static void
-syntax_error (const char *filename, unsigned int linenum, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4)
+syntax_error (const char *filename,
+    unsigned int linenum, const char *fmt,
+    const void *a1, const void *a2, const void *a3, const void *a4)
 {
   fprintf (stderr, "%s: ", program_name);
   fprintf (stderr, _("\"%s\", line %u: "), filename, linenum);

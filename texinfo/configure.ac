@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.36 2003-11-24 23:17:58 karl Exp $
+# $Id: configure.ac,v 1.37 2004-04-11 17:56:45 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -11,7 +11,7 @@
 #
 AC_PREREQ(2.59)# Minimum Autoconf version required.
 #
-AC_INIT([GNU Texinfo], [4.6])
+AC_INIT([GNU Texinfo], [4.7])
 AC_CONFIG_HEADERS(config.h:config.in)# Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -59,7 +59,7 @@ AC_C_CONST
 AC_STRUCT_TM
 
 # Checks for function declarations.
-AC_CHECK_DECLS([strerror, strcasecmp, strncasecmp, strcoll])
+AC_CHECK_DECLS([memchr, strcoll, strerror])
 
 # Checks for library functions.
 AC_FUNC_ALLOCA
@@ -70,7 +70,10 @@ AC_FUNC_VPRINTF
 # AC_FUNC_SETVBUF_REVERSED
 AC_CHECK_FUNCS(bzero getcwd memset setvbuf sigaction sigprocmask \
                sigsetmask strchr)
-AC_REPLACE_FUNCS(memcpy memmove strdup strcasecmp strerror strncasecmp)
+AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
+
+# strcasecmp and strncasecmp, gnulib-style.
+gl_STRCASE
 
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.
@@ -153,7 +156,7 @@ test "x$enable_multiplatform" = xyes \
 
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c --intl
-AM_GNU_GETTEXT_VERSION(0.12.1)
+AM_GNU_GETTEXT_VERSION(0.14.1)
 AM_GNU_GETTEXT()
 
 AC_CONFIG_FILES([

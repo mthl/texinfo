@@ -1,7 +1,8 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: m-x.c,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +18,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 #include "funs.h"
@@ -69,7 +70,7 @@ DECLARE_INFO_COMMAND (describe_command,
 {
   char *line;
 
-  line = read_function_name (_("Describe command: "), window);
+  line = read_function_name ((char *) _("Describe command: "), window);
 
   if (!line)
     {
@@ -136,7 +137,8 @@ DECLARE_INFO_COMMAND (info_execute_command,
         (strncmp (line, "echo-area-", 10) == 0))
       {
         free (line);
-        info_error (_("Cannot execute an `echo-area' command here."));
+        info_error ((char *) _("Cannot execute an `echo-area' command here."),
+            NULL, NULL);
         return;
       }
 
@@ -146,7 +148,10 @@ DECLARE_INFO_COMMAND (info_execute_command,
     if (!command)
       return;
 
-    (*InfoFunction(command)) (active_window, count, 0);
+    if (InfoFunction(command))
+      (*InfoFunction(command)) (active_window, count, 0);
+    else
+      info_error ((char *) _("Undefined command: %s"), line, NULL);
   }
 }
 

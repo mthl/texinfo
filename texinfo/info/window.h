@@ -1,10 +1,10 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: window.h,v 1.3 2004-04-11 17:56:46 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 1997, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@
 #ifndef INFO_WINDOW_H
 #define INFO_WINDOW_H
 
-#include "nodes.h"
 #include "infomap.h"
+#include "nodes.h"
 
 /* Smallest number of visible lines in a window.  The actual height is
    always one more than this number because each window has a modeline. */
@@ -74,6 +74,14 @@ typedef struct window_struct
 typedef struct {
   WINDOW_STATE_DECL;            /* What gets saved. */
 } WINDOW_STATE;
+
+/* Structure defining the current state of an incremental search. */
+typedef struct {
+  WINDOW_STATE_DECL;    /* The node, pagetop and point. */
+  int search_index;     /* Offset of the last char in the search string. */
+  int direction;        /* The direction that this search is heading in. */
+  int failing;          /* Whether or not this search failed. */
+} SEARCH_STATE;
 
 #define W_UpdateWindow  0x01    /* WINDOW needs updating. */
 #define W_WindowIsPerm  0x02    /* This WINDOW is a permanent object. */
@@ -157,14 +165,16 @@ extern void window_unmark_chain (WINDOW *chain, int flag);
 /* Make WINDOW start displaying at PERCENT percentage of its node. */
 extern void window_goto_percentage (WINDOW *window, int percent);
 
-/* Build a new node which has FORMAT printed with args.  */
-extern NODE *build_message_node (const char *format, ...);
+/* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
+   contents. */
+extern NODE *build_message_node (char *format, void *arg1, void *arg2);
 
 /* Useful functions can be called from outside of window.c. */
 extern void initialize_message_buffer (void);
 
 /* Print FORMAT with ARG1,2 to the end of the current message buffer. */
-extern void printf_to_message_buffer (char *, ...);
+extern void printf_to_message_buffer (char *format, void *arg1, void *arg2,
+    void *arg3);
 
 /* Convert the contents of the message buffer to a node. */
 extern NODE *message_buffer_to_node (void);
@@ -175,17 +185,17 @@ extern int message_buffer_length_this_line (void);
 /* Pad STRING to COUNT characters by inserting blanks. */
 extern int pad_to (int count, char *string);
 
-/* Make a message appear in the echo area, built from FORMAT and args.
-   The arguments are parsed similarly to printf, but not all of printf
-   hair is present.  The message appears immediately.  If there was
+/* Make a message appear in the echo area, built from FORMAT, ARG1 and ARG2.
+   The arguments are treated similar to printf () arguments, but not all of
+   printf () hair is present.  The message appears immediately.  If there was
    already a message appearing in the echo area, it is removed. */
-extern void window_message_in_echo_area (const char *format, ...);
+extern void window_message_in_echo_area (char *format, void *arg1, void *arg2);
 
-/* Place a temporary message in the echo area built from FORMAT and
-   args.  The message appears immediately, but does not destroy any
-   existing message.  A future call to unmessage_in_echo_area
+/* Place a temporary message in the echo area built from FORMAT, ARG1
+   and ARG2.  The message appears immediately, but does not destroy
+   any existing message.  A future call to unmessage_in_echo_area ()
    restores the old contents. */
-extern void message_in_echo_area (const char *format, ...);
+extern void message_in_echo_area (char *format, void *arg1, void *arg2);
 extern void unmessage_in_echo_area (void);
 
 /* Clear the echo area, removing any message that is already present.
@@ -212,17 +222,17 @@ extern int character_width (int character, int hpos);
 extern int string_width (char *string, int hpos);
 
 /* Return the index of the line containing point. */
-extern int window_line_of_point (WINDOW *);
+extern int window_line_of_point (WINDOW *window);
 
 /* Get and return the goal column for this window. */
-extern int window_get_goal_column (WINDOW *);
+extern int window_get_goal_column (WINDOW *window);
 
 /* Get and return the printed column offset of the cursor in this window. */
-extern int window_get_cursor_column (WINDOW *);
+extern int window_get_cursor_column (WINDOW *window);
 
-/* Get/set the node, pagetop, and point of WINDOW. */
-extern void window_get_state (WINDOW *, WINDOW_STATE *);
-extern void window_set_state (WINDOW *, WINDOW_STATE *);
+/* Get and Set the node, pagetop, and point of WINDOW. */
+extern void window_get_state (WINDOW *window, SEARCH_STATE *state);
+extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
 
 /* Count the number of characters in LINE that precede the printed column
    offset of GOAL. */

@@ -1,7 +1,7 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: search.c,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2002, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -430,20 +430,21 @@ skip_line (char *string)
 long
 find_tags_table (SEARCH_BINDING *binding)
 {
-  SEARCH_BINDING search;
+  SEARCH_BINDING tmp_search;
   long position;
 
-  search.buffer = binding->buffer;
-  search.start = binding->start;
-  search.end = binding->end;
-  search.flags = S_FoldCase;
+  tmp_search.buffer = binding->buffer;
+  tmp_search.start = binding->start;
+  tmp_search.end = binding->end;
+  tmp_search.flags = S_FoldCase;
 
-  while ((position = find_node_separator (&search)) != -1 )
+  while ((position = find_node_separator (&tmp_search)) != -1 )
     {
-      search.start = position;
-      search.start += skip_node_separator (search.buffer + search.start);
+      tmp_search.start = position;
+      tmp_search.start += skip_node_separator (tmp_search.buffer
+          + tmp_search.start);
 
-      if (looking_at (TAGS_TABLE_BEG_LABEL, &search))
+      if (looking_at (TAGS_TABLE_BEG_LABEL, &tmp_search))
         return (position);
     }
   return (-1);
@@ -459,35 +460,37 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
 {
   long position;
   int offset, namelen;
-  SEARCH_BINDING search;
+  SEARCH_BINDING tmp_search;
 
   namelen = strlen (nodename);
 
-  search.buffer = binding->buffer;
-  search.start = binding->start;
-  search.end = binding->end;
-  search.flags = 0;
+  tmp_search.buffer = binding->buffer;
+  tmp_search.start = binding->start;
+  tmp_search.end = binding->end;
+  tmp_search.flags = 0;
 
-  while ((position = find_node_separator (&search)) != -1)
+  while ((position = find_node_separator (&tmp_search)) != -1)
     {
-      search.start = position;
-      search.start += skip_node_separator (search.buffer + search.start);
+      tmp_search.start = position;
+      tmp_search.start += skip_node_separator
+        (tmp_search.buffer + tmp_search.start);
 
-      offset = string_in_line (INFO_NODE_LABEL, search.buffer + search.start);
+      offset = string_in_line
+        (INFO_NODE_LABEL, tmp_search.buffer + tmp_search.start);
 
       if (offset == -1)
         continue;
 
-      search.start += offset;
-      search.start += skip_whitespace (search.buffer + search.start);
+      tmp_search.start += offset;
+      tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
       offset = skip_node_characters
-        (search.buffer + search.start, DONT_SKIP_NEWLINES);
+        (tmp_search.buffer + tmp_search.start, DONT_SKIP_NEWLINES);
 
       /* Notice that this is an exact match.  You cannot grovel through
          the buffer with this function looking for random nodes. */
        if ((offset == namelen) &&
-           (search.buffer[search.start] == nodename[0]) &&
-           (strncmp (search.buffer + search.start, nodename, offset) == 0))
+           (tmp_search.buffer[tmp_search.start] == nodename[0]) &&
+           (strncmp (tmp_search.buffer + tmp_search.start, nodename, offset) == 0))
          return (position);
     }
   return (-1);

@@ -1,10 +1,10 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: variables.h,v 1.3 2004-04-11 17:56:46 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 97 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -50,6 +50,7 @@ extern REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
 extern void set_variable (WINDOW *window, int count, unsigned char key);
+extern void describe_variable (WINDOW *window, int count, unsigned char key);
 
 /* The list of user-visible variables. */
 extern int auto_footnotes_p;

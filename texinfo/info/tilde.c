@@ -1,8 +1,8 @@
 /* tilde.c -- tilde expansion code (~/foo := $HOME/foo).
-   $Id: tilde.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: tilde.c,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999, 2002
-   Free Software Foundation, Inc.
+   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
+   2002, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 /* Include config.h before doing alloca.  */
 #include "info.h"
+#include "tilde.h"
 
 #if defined (TEST) || defined (STATIC_MALLOC)
 static void *xmalloc (), *xrealloc ();
@@ -115,7 +116,7 @@ tilde_find_suffix (char *string)
 char *
 tilde_expand (char *string)
 {
-  char *result, *tilde_expand_word (char *filename);
+  char *result;
   int result_size, result_index;
 
   result_size = result_index = 0;
@@ -231,9 +232,7 @@ tilde_expand_word (char *filename)
                  expansion, then let them try. */
               if (tilde_expansion_failure_hook)
                 {
-                  char *expansion;
-
-                  expansion = (*tilde_expansion_failure_hook) (username);
+                  char *expansion = (*tilde_expansion_failure_hook) (username);
 
                   if (expansion)
                     {

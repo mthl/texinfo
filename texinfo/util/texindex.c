@@ -1,8 +1,8 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.10 2003-11-17 01:34:16 karl Exp $
+   $Id: texindex.c,v 1.11 2004-04-11 17:56:47 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
-   2002, 2003 Free Software Foundation, Inc.
+   2002, 2003, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -140,9 +140,9 @@ int compare_full (const void *, const void *);
 long readline (struct linebuffer *linebuffer, FILE *stream);
 int merge_files (char **infiles, int nfiles, char *outfile);
 int merge_direct (char **infiles, int nfiles, char *outfile);
-void pfatal_with_name (char *name);
-void fatal (char *format, char *arg);
-void error (char *format, char *arg);
+void pfatal_with_name (const char *name);
+void fatal (const char *format, const char *arg);
+void error (const char *format, const char *arg);
 void *xmalloc (), *xrealloc ();
 char *concat (char *s1, char *s2);
 void flush_tempfiles (int to_count);
@@ -339,11 +339,10 @@ decode_command (int argc, char **argv)
             {
               printf ("texindex (GNU %s) %s\n", PACKAGE, VERSION);
               puts ("");
-              printf (_("Copyright (C) %s Free Software Foundation, Inc.\n\
-There is NO warranty.  You may redistribute this software\n\
+              puts ("Copyright (C) 2004 Free Software Foundation, Inc.");
+              printf (_("There is NO warranty.  You may redistribute this software\n\
 under the terms of the GNU General Public License.\n\
-For more information about these matters, see the files named COPYING.\n"),
-                  "2003");
+For more information about these matters, see the files named COPYING.\n"));
               xexit (0);
             }
           else if ((strcmp (arg, "--keep") == 0) ||
@@ -1582,7 +1581,7 @@ merge_direct (char **infiles, int nfiles, char *outfile)
 /* Print error message and exit.  */
 
 void
-fatal (char *format, char *arg)
+fatal (const char *format, const char *arg)
 {
   error (format, arg);
   xexit (1);
@@ -1590,7 +1589,7 @@ fatal (char *format, char *arg)
 
 /* Print error message.  FORMAT is printf control string, ARG is arg for it. */
 void
-error (char *format, char *arg)
+error (const char *format, const char *arg)
 {
   printf ("%s: ", program_name);
   printf (format, arg);
@@ -1599,14 +1598,14 @@ error (char *format, char *arg)
 }
 
 void
-perror_with_name (char *name)
+perror_with_name (const char *name)
 {
   fprintf (stderr, "%s: ", program_name);
   perror (name);
 }
 
 void
-pfatal_with_name (char *name)
+pfatal_with_name (const char *name)
 {
   perror_with_name (name);
   xexit (1);

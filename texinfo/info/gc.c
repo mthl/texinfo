@@ -1,9 +1,7 @@
-/* gc.c -- Functions to remember and garbage collect unused node contents. */
+/* gc.c -- Functions to remember and garbage collect unused node contents.
+   $Id: gc.c,v 1.3 2004-04-11 17:56:45 karl Exp $
 
-/* This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
-
-   Copyright (C) 1993 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

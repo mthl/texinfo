@@ -1,5 +1,5 @@
 /* footnote.c -- footnotes for Texinfo.
-   $Id: footnote.c,v 1.6 2003-11-19 07:52:54 dirt Exp $
+   $Id: footnote.c,v 1.7 2004-04-11 17:56:47 karl Exp $
 
    Copyright (C) 1998, 1999, 2002 Free Software Foundation, Inc.
 
@@ -21,7 +21,9 @@
 #include "footnote.h"
 #include "macro.h"
 #include "makeinfo.h"
+#include "node.h"
 #include "xml.h"
+#include "xref.h"
 
 /* Nonzero means that the footnote style for this document was set on
    the command line, which overrides any other settings. */
@@ -53,11 +55,10 @@ int already_outputting_pending_notes = 0;
 int footnote_style = end_node;
 int first_footnote_this_node = 1;
 int footnote_count = 0;
-
+
 /* Set the footnote style based on the style identifier in STRING. */
 int
-set_footnote_style (string)
-     char *string;
+set_footnote_style (char *string)
 {
   if (strcasecmp (string, "separate") == 0)
     footnote_style = separate_node;
@@ -70,7 +71,7 @@ set_footnote_style (string)
 }
 
 void
-cm_footnotestyle ()
+cm_footnotestyle (void)
 {
   char *arg;
 
@@ -95,9 +96,8 @@ FN *pending_notes = NULL;
 
 /* A method for remembering footnotes.  Note that this list gets output
    at the end of the current node. */
-void
-remember_note (marker, note)
-     char *marker, *note;
+static void
+remember_note (char *marker, char *note)
 {
   FN *temp = xmalloc (sizeof (FN));
 
@@ -111,7 +111,7 @@ remember_note (marker, note)
 
 /* How to get rid of existing footnotes. */
 static void
-free_pending_notes ()
+free_pending_notes (void)
 {
   FN *temp;
 
@@ -133,7 +133,7 @@ free_pending_notes ()
     footnote *{this is a footnote}
     where "*" is the (optional) marker character for this note. */
 void
-cm_footnote ()
+cm_footnote (void)
 {
   char *marker;
   char *note;
@@ -285,7 +285,7 @@ cm_footnote ()
 
 /* Output the footnotes.  We are at the end of the current node. */
 void
-output_pending_notes ()
+output_pending_notes (void)
 {
   FN *footnote = pending_notes;
 
@@ -294,9 +294,12 @@ output_pending_notes ()
 
   if (html)
     {
-      add_word ("<div class=\"footnote\">\n<hr>\n<h4>");
-      add_word (_("Footnotes"));
-      add_word ("</h4>\n");
+      add_html_block_elt ("<div class=\"footnote\">\n<hr>\n");
+      /* We add an anchor here so @printindex can refer to this point
+         (as the node name) for entries defined in footnotes.  */
+      if (!splitting)
+        add_word ("<a name=\"texinfo-footnotes-in-document\"></a>");
+      add_word_args ("<h4>%s</h4>", (char *) _("Footnotes"));
     }
   else
     switch (footnote_style)
@@ -348,7 +351,7 @@ output_pending_notes ()
         if (html)
           {
 	    /* Make the text of every footnote begin a separate paragraph.  */
-            add_word ("<p class=\"footnote\"><small>");
+            add_html_block_elt ("<p class=\"footnote\"><small>");
             /* Make footnote number a link to its definition.  */
             add_word_args ("[<a name=\"fn-%d\" href=\"#fnd-%d\">%d</a>]",
 			   footnote->number, footnote->number, footnote->number);

@@ -1,7 +1,8 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h,v 1.3 2003-12-24 15:12:48 uid65818 Exp $   
+   $Id: info-utils.h,v 1.4 2004-04-11 17:56:45 karl Exp $   
 
-   Copyright (C) 1993, 1996, 1998, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1996, 1998, 2002, 2003, 2004 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,6 +35,7 @@ typedef struct {
   char *filename;       /* File where this node can be found. */
   char *nodename;       /* Name of the node. */
   int start, end;       /* Offsets within the containing node of LABEL. */
+  int line_number;      /* Specific line number a menu item points to.  */
 } REFERENCE;
 
 /* When non-zero, various display and input functions handle ISO Latin
@@ -71,7 +73,8 @@ extern REFERENCE **info_xrefs (SEARCH_BINDING *binding);
 
 /* Get the entry associated with LABEL in REFERENCES.  Return a pointer to
    the reference if found, or NULL. */
-extern REFERENCE *info_get_labeled_reference (char *label, REFERENCE **references);
+extern REFERENCE *info_get_labeled_reference (char *label,
+    REFERENCE **references);
 
 /* Glean menu entries from BINDING->buffer + BINDING->start until we
    have looked at the entire contents of BINDING.  Return an array

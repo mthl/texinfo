@@ -1,7 +1,7 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: variables.c,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1997, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2001, 2002, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
   char *description;
 
   /* Get the variable's name. */
-  var = read_variable_name (_("Describe variable: "), window);
+  var = read_variable_name ((char *) _("Describe variable: "), window);
 
   if (!var)
     return;
@@ -92,7 +92,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
     sprintf (description, "%s (%d): %s.",
 	     var->name, *(var->value), _(var->doc));
 
-  window_message_in_echo_area ("%s", description);
+  window_message_in_echo_area ("%s", description, NULL);
   free (description);
 }
 
@@ -102,7 +102,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
   char *line;
 
   /* Get the variable's name and value. */
-  var = read_variable_name (_("Set variable: "), window);
+  var = read_variable_name ((char *) _("Set variable: "), window);
 
   if (!var)
     return;

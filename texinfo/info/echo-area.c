@@ -1,7 +1,7 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: echo-area.c,v 1.3 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2003 Free Software
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,6 @@
    Written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
-#include "window.h"
 
 #if defined (FD_SET)
 #  if defined (hpux)
@@ -38,7 +37,7 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-VFunction *ea_last_executed_command = NULL;
+VFunction *ea_last_executed_command = (VFunction *)NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
@@ -51,7 +50,8 @@ static int input_line_point;
 static int input_line_beg;
 static int input_line_end;
 static NODE input_line_node = {
-  (char *)NULL, (char *)NULL, (char *)NULL, input_line, EA_MAX_INPUT, 0
+  (char *)NULL, (char *)NULL, (char *)NULL, input_line,
+  EA_MAX_INPUT, 0, N_IsInternal
 };
 
 static void echo_area_initialize_node (void);
@@ -125,7 +125,10 @@ restore_calling_window (void)
           !echo_area_stack_contains_completions_p ())
         {
           WINDOW *next;
-          int pagetop, start, end, amount;
+          int pagetop = 0;
+          int start = 0;
+          int end = 0;
+          int amount = 0;
 
           next = compwin->next;
           if (next)
@@ -248,7 +251,7 @@ echo_area_initialize_node (void)
 {
   register int i;
 
-  for (i = input_line_end; i < sizeof (input_line); i++)
+  for (i = input_line_end; (unsigned int) i < sizeof (input_line); i++)
     input_line[i] = ' ';
 
   input_line[i - 1] = '\n';
@@ -557,7 +560,7 @@ DECLARE_INFO_COMMAND (ea_yank, _("Yank back the contents of the last kill"))
 
   if (!kill_ring_index)
     {
-      inform_in_echo_area (_("Kill ring is empty"));
+      inform_in_echo_area ((char *) _("Kill ring is empty"));
       return;
     }
 
@@ -574,9 +577,9 @@ DECLARE_INFO_COMMAND (ea_yank_pop, _("Yank back a previous kill"))
 {
   register int len;
 
-  if (((ea_last_executed_command != (VFunction *) ea_yank)
-       && (ea_last_executed_command != (VFunction *) ea_yank_pop))
-      || (kill_ring_index == 0))
+  if (((ea_last_executed_command != (VFunction *) ea_yank) &&
+       (ea_last_executed_command != (VFunction *) ea_yank_pop)) ||
+      (kill_ring_index == 0))
     return;
 
   len = strlen (kill_ring[kill_ring_loc]);
@@ -796,7 +799,8 @@ completions_window_p (WINDOW *window)
 /* Workhorse for completion readers.  If FORCE is non-zero, the user cannot
    exit unless the line read completes, or is empty. */
 char *
-info_read_completing_internal (WINDOW *window, char *prompt, REFERENCE **completions, int force)
+info_read_completing_internal (WINDOW *window, char *prompt,
+    REFERENCE **completions, int force)
 {
   char *line;
 
@@ -861,9 +865,9 @@ info_read_completing_internal (WINDOW *window, char *prompt, REFERENCE **complet
           if (i == completions_found_index)
             {
               if (!completions_found_index)
-                inform_in_echo_area (_("No completions"));
+                inform_in_echo_area ((char *) _("No completions"));
               else
-                inform_in_echo_area (_("Not complete"));
+                inform_in_echo_area ((char *) _("Not complete"));
               continue;
             }
         }
@@ -889,7 +893,8 @@ info_read_completing_internal (WINDOW *window, char *prompt, REFERENCE **complet
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *
-info_read_completing_in_echo_area (WINDOW *window, char *prompt, REFERENCE **completions)
+info_read_completing_in_echo_area (WINDOW *window,
+    char *prompt, REFERENCE **completions)
 {
   return (info_read_completing_internal (window, prompt, completions, 1));
 }
@@ -897,7 +902,8 @@ info_read_completing_in_echo_area (WINDOW *window, char *prompt, REFERENCE **com
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
 char *
-info_read_maybe_completing (WINDOW *window, char *prompt, REFERENCE **completions)
+info_read_maybe_completing (WINDOW *window,
+    char *prompt, REFERENCE **completions)
 {
   return (info_read_completing_internal (window, prompt, completions, 0));
 }
@@ -915,22 +921,22 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
   if (!completions_found_index)
     {
       terminal_ring_bell ();
-      inform_in_echo_area (_("No completions"));
+      inform_in_echo_area ((char *) _("No completions"));
     }
   else if ((completions_found_index == 1) && (key != '?'))
     {
-      inform_in_echo_area (_("Sole completion"));
+      inform_in_echo_area ((char *) _("Sole completion"));
     }
   else
     {
       register int i, l;
-      int limit, count, max_label = 0;
+      int limit, iterations, max_label = 0;
 
       initialize_message_buffer ();
       printf_to_message_buffer (completions_found_index == 1
-                                ? _("One completion:\n")
-                                : _("%d completions:\n"),
-				completions_found_index);
+                                ? (char *) _("One completion:\n")
+                                : (char *) _("%d completions:\n"),
+				(void *) completions_found_index, NULL, NULL);
 
       /* Find the maximum length of a label. */
       for (i = 0; i < completions_found_index; i++)
@@ -953,15 +959,15 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
         limit = 1;
 
       /* How many iterations of the printing loop? */
-      count = (completions_found_index + (limit - 1)) / limit;
+      iterations = (completions_found_index + (limit - 1)) / limit;
 
       /* Watch out for special case.  If the number of completions is less
          than LIMIT, then just do the inner printing loop. */
       if (completions_found_index < limit)
-        count = 1;
+        iterations = 1;
 
       /* Print the sorted items, up-and-down alphabetically. */
-      for (i = 0; i < count; i++)
+      for (i = 0; i < iterations; i++)
         {
           register int j;
 
@@ -976,17 +982,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
-                  printf_to_message_buffer ("%s", label);
+                  printf_to_message_buffer ("%s", label, NULL, NULL);
 
                   if (j + 1 < limit)
                     {
                       for (k = 0; k < max_label - printed_length; k++)
-                        printf_to_message_buffer (" ");
+                        printf_to_message_buffer (" ", NULL, NULL, NULL);
                     }
                 }
-              l += count;
+              l += iterations;
             }
-          printf_to_message_buffer ("\n");
+          printf_to_message_buffer ("\n", NULL, NULL, NULL);
         }
 
       /* Make a new node to hold onto possible completions.  Don't destroy
@@ -1014,7 +1020,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
           {
             /* If we can split the window to display most of the completion
                items, then do so. */
-            if (calling_window->height > (count * 2)
+            if (calling_window->height > (iterations * 2)
 		&& calling_window->height / 2 >= WINDOW_MIN_SIZE)
               {
                 int start, pagetop;
@@ -1032,7 +1038,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
                   window_make_window (possible_completions_output_node);
                 active_window = the_echo_area;
                 window_change_window_height
-                  (compwin, -(compwin->height - (count + 2)));
+                  (compwin, -(compwin->height - (iterations + 2)));
 
                 window_adjust_pagetop (calling_window);
                 remember_calling_window (calling_window);
@@ -1139,7 +1145,9 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 }
 
 /* Utility REFERENCE used to store possible LCD. */
-static REFERENCE LCD_reference = { (char *)NULL, (char *)NULL, (char *)NULL };
+static REFERENCE LCD_reference = {
+    (char *)NULL, (char *)NULL, (char *)NULL, 0, 0, 0
+};
 
 static void remove_completion_duplicates (void);
 
@@ -1208,7 +1216,8 @@ build_completions (void)
       if (!informed_of_lengthy_job && completions_found_index > 100)
         {
           informed_of_lengthy_job = 1;
-          window_message_in_echo_area (_("Building completions..."));
+          window_message_in_echo_area ((char *) _("Building completions..."),
+              NULL, NULL);
         }
     }
 
@@ -1277,11 +1286,12 @@ build_completions (void)
 
 /* Function called by qsort. */
 static int
-compare_references (const void *p1, const void *p2)
+compare_references (const void *entry1, const void *entry2)
 {
-  REFERENCE **entry1 = (REFERENCE **) p1;
-  REFERENCE **entry2 = (REFERENCE **) p2;
-  return strcasecmp ((*entry1)->label, (*entry2)->label);
+  REFERENCE **e1 = (REFERENCE **) entry1;
+  REFERENCE **e2 = (REFERENCE **) entry2;
+
+  return (strcasecmp ((*e1)->label, (*e2)->label));
 }
 
 /* Prune duplicate entries from COMPLETIONS_FOUND. */

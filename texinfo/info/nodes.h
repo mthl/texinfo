@@ -1,7 +1,7 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: nodes.h,v 1.3 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2002, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -140,7 +140,8 @@ extern NODE *info_get_node (char *filename, char *nodename);
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
    NULL pointer. */
-extern NODE *info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer);
+extern NODE *info_get_node_of_file_buffer (char *nodename,
+    FILE_BUFFER *file_buffer);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */

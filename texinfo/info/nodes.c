@@ -1,7 +1,7 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: nodes.c,v 1.4 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003 Free Software
+   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 
@@ -31,14 +31,21 @@
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
 
-static void forget_info_file (char *filename), remember_info_file (FILE_BUFFER *file_buffer);
-static void free_file_buffer_tags (FILE_BUFFER *file_buffer), free_info_tag (TAG *tag);
-static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *buffer_binding), get_nodes_of_info_file (FILE_BUFFER *file_buffer);
-static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
+static void forget_info_file (char *filename);
+static void remember_info_file (FILE_BUFFER *file_buffer);
+static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
+static void free_info_tag (TAG *tag);
+static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *buffer_binding);
+static void get_nodes_of_info_file (FILE_BUFFER *file_buffer);
+static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 static char *adjust_nodestart (NODE *node, int min, int max);
-static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags), *info_find_file_internal (char *filename, int get_tags);
-static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename);
+static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
+static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
+static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
+    char *nodename);
 
 static long get_node_length (SEARCH_BINDING *binding);
 
@@ -323,23 +330,23 @@ info_load_file_internal (char *filename, int get_tags)
   if (retcode < 0)
     {
       char *lowered_name;
-      char *basename;
+      char *tmp_basename;
 
       lowered_name = xstrdup (filename);
-      basename = filename_non_directory (lowered_name);
+      tmp_basename = filename_non_directory (lowered_name);
 
-      while (*basename)
+      while (*tmp_basename)
         {
-          if (isupper (*basename))
-            *basename = tolower (*basename);
+          if (isupper (*tmp_basename))
+            *tmp_basename = tolower (*tmp_basename);
 
-          basename++;
+          tmp_basename++;
         }
 
       fullpath = info_find_fullpath (lowered_name);
-      free (lowered_name);
 
       retcode = stat (fullpath, &finfo);
+      free (lowered_name);
     }
 
   /* If the file wasn't found, give up, returning a NULL pointer. */
@@ -579,31 +586,33 @@ get_node_length (SEARCH_BINDING *binding)
 /* Build and save the array of nodes in FILE_BUFFER by searching through the
    contents of BUFFER_BINDING for a tags table, and groveling the contents. */
 static void
-get_nodes_of_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *buffer_binding)
+get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *buffer_binding)
 {
   int name_offset;
-  SEARCH_BINDING *search;
+  SEARCH_BINDING *tmp_search;
   long position;
   int tags_index = 0;
 
-  search = copy_binding (buffer_binding);
+  tmp_search = copy_binding (buffer_binding);
 
   /* Find the start of the tags table. */
-  position = find_tags_table (search);
+  position = find_tags_table (tmp_search);
 
   /* If none, we're all done. */
   if (position == -1)
     return;
 
   /* Move to one character before the start of the actual table. */
-  search->start = position;
-  search->start += skip_node_separator (search->buffer + search->start);
-  search->start += strlen (TAGS_TABLE_BEG_LABEL);
-  search->start--;
+  tmp_search->start = position;
+  tmp_search->start += skip_node_separator
+    (tmp_search->buffer + tmp_search->start);
+  tmp_search->start += strlen (TAGS_TABLE_BEG_LABEL);
+  tmp_search->start--;
 
   /* The tag table consists of lines containing node names and positions.
      Do each line until we find one that doesn't contain a node name. */
-  while ((position = search_forward ("\n", search)) != -1)
+  while ((position = search_forward ("\n", tmp_search)) != -1)
     {
       TAG *entry;
       char *nodedef;
@@ -611,22 +620,22 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *buffer_bindin
       int anchor = 0;
 
       /* Prepare to skip this line. */
-      search->start = position;
-      search->start++;
+      tmp_search->start = position;
+      tmp_search->start++;
 
       /* Skip past informative "(Indirect)" tags table line. */
-      if (!tags_index && looking_at (TAGS_TABLE_IS_INDIRECT_LABEL, search))
+      if (!tags_index && looking_at (TAGS_TABLE_IS_INDIRECT_LABEL, tmp_search))
         continue;
 
       /* Find the label preceding the node name. */
       name_offset =
-        string_in_line (INFO_NODE_LABEL, search->buffer + search->start);
+        string_in_line (INFO_NODE_LABEL, tmp_search->buffer + tmp_search->start);
 
       /* If no node label, maybe it's an anchor.  */
       if (name_offset == -1)
         {
           name_offset = string_in_line (INFO_REF_LABEL,
-                                        search->buffer + search->start);
+              tmp_search->buffer + tmp_search->start);
           if (name_offset != -1)
             anchor = 1;
         }
@@ -639,8 +648,8 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *buffer_bindin
       entry = xmalloc (sizeof (TAG));
 
       /* Find the beginning of the node definition. */
-      search->start += name_offset;
-      nodedef = search->buffer + search->start;
+      tmp_search->start += name_offset;
+      nodedef = tmp_search->buffer + tmp_search->start;
       nodedef += skip_whitespace (nodedef);
 
       /* Move past the node's name in this tag to the TAGSEP character. */
@@ -668,7 +677,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *buffer_bindin
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
                             file_buffer->tags_slots, 100, TAG *);
     }
-  free (search);
+  free (tmp_search);
 }
 
 /* A structure used only in `get_tags_of_indirect_tags_table' to hold onto
@@ -682,7 +691,8 @@ typedef struct {
    subfiles of every node which appears in TAGS_BINDING.  The 2nd argument is
    a binding surrounding the indirect files list. */
 static void
-get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer, SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding)
+get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding)
 {
   int i;
   SUBFILE **subfiles = NULL;
@@ -902,7 +912,7 @@ find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag)
       /* Otherwise an anchor at the end of a node ends up displaying at
          the end of the last line of the node (way over on the right of
          the screen), which looks wrong.  */
-      if (node->display_pos >= node->nodelen)
+      if (node->display_pos >= (unsigned long) node->nodelen)
         node->display_pos = node->nodelen - 1;
 
       /* Don't search in the node for the xref text, it's not there.  */
@@ -1221,7 +1231,7 @@ adjust_nodestart (NODE *node, int min, int max)
               nodedef += offset;
               nodedef += skip_whitespace (nodedef);
               offset = skip_node_characters (nodedef, DONT_SKIP_NEWLINES);
-              if ((offset == strlen (node->nodename)) &&
+              if (((unsigned int) offset == strlen (node->nodename)) &&
                   (strncmp (node->nodename, nodedef, offset) == 0))
                 {
                   node->contents = nodestart;

@@ -1,10 +1,10 @@
 /* display.h -- How the display in Info is done.
-   $Id: display.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: display.h,v 1.3 2004-04-11 17:56:45 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 97 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -72,6 +72,7 @@ extern void display_scroll_display (int start, int end, int amount);
    having had its line starts recalculated.  OLD_STARTS is the list of line
    starts that used to appear in this window.  OLD_COUNT is the number of lines
    that appear in the OLD_STARTS array. */
-extern void display_scroll_line_starts (WINDOW *window, int old_pagetop, char **old_starts, int old_count);
+extern void display_scroll_line_starts (WINDOW *window, int old_pagetop,
+    char **old_starts, int old_count);
 
 #endif /* not INFO_DISPLAY_H */

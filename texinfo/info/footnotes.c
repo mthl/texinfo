@@ -1,7 +1,8 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: footnotes.c,v 1.4 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +18,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 
@@ -26,8 +27,10 @@ int auto_footnotes_p = 0;
 
 static char *footnote_nodename = "*Footnotes*";
 
+NODE * make_footnotes_node (NODE *node);
+
 #define FOOTNOTE_HEADER_FORMAT \
-   "*** Footnotes appearing in the node \"%s\" ***\n"
+   "*** Footnotes appearing in the node `%s' ***\n"
 
 /* Find the window currently showing footnotes. */
 static WINDOW *
@@ -207,7 +210,7 @@ info_get_or_remove_footnotes (WINDOW *window)
           /* If we are hacking automatic footnotes, and there are footnotes
              but we couldn't display them, print a message to that effect. */
           if (auto_footnotes_p)
-            inform_in_echo_area (_("Footnotes could not be displayed"));
+            inform_in_echo_area ((char *) _("Footnotes could not be displayed"));
           return (FN_UNABLE);
         }
     }
@@ -254,11 +257,11 @@ DECLARE_INFO_COMMAND (info_show_footnotes,
       switch (result)
         {
         case FN_UNFOUND:
-          info_error (msg_no_foot_node);
+          info_error ((char *) msg_no_foot_node, NULL, NULL);
           break;
 
         case FN_UNABLE:
-          info_error (msg_win_too_small);
+          info_error ((char *) msg_win_too_small, NULL, NULL);
           break;
         }
     }

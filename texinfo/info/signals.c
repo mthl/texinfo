@@ -1,7 +1,7 @@
-/* signals.c -- install and maintain Info signal handlers.
-   $Id: signals.c,v 1.6 2003-12-24 15:12:48 uid65818 Exp $
+/* signals.c -- install and maintain signal handlers.
+   $Id: signals.c,v 1.7 2004-04-11 17:56:46 karl Exp $
 
-   Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003 Free Software
+   Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -18,10 +18,12 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 #include "signals.h"
+
+void initialize_info_signal_handler (void);
 
 /* **************************************************************** */
 /*                                                                  */
@@ -32,8 +34,7 @@
 #if !defined (HAVE_SIGPROCMASK) && defined (HAVE_SIGSETMASK)
 /* Perform OPERATION on NEWSET, perhaps leaving information in OLDSET. */
 static void
-sigprocmask (operation, newset, oldset)
-     int operation, *newset, *oldset;
+sigprocmask (int operation, int *newset, int *oldset)
 {
   switch (operation)
     {
@@ -117,11 +118,15 @@ static signal_info old_QUIT;
 void
 initialize_info_signal_handler (void)
 {
-#if defined (HAVE_SIGACTION)
+#ifdef SA_NOCLDSTOP
+  /* (Based on info from Paul Eggert found in coreutils.)  Don't use
+     HAVE_SIGACTION to decide whether to use the sa_handler, sa_flags,
+     sa_mask members, as some systems (Solaris 7+) don't define them.  Use
+     SA_NOCLDSTOP instead; it's been part of POSIX.1 since day 1 (in 1988).  */
   info_signal_handler.sa_handler = info_signal_proc;
   info_signal_handler.sa_flags = 0;
   mask_termsig (&info_signal_handler.sa_mask);
-#endif /* HAVE_SIGACTION */
+#endif /* SA_NOCLDSTOP */
 
 #if defined (SIGTSTP)
   set_termsig (SIGTSTP, &old_TSTP);
@@ -167,14 +172,14 @@ reset_info_window_sizes (void)
   terminal_get_screen_size ();
   terminal_prep_terminal ();
   display_initialize_display (screenwidth, screenheight);
-  window_new_screen_size (screenwidth, screenheight, NULL);
+  window_new_screen_size (screenwidth, screenheight);
   redisplay_after_signal ();
 }
 
 static RETSIGTYPE
 info_signal_proc (int sig)
 {
-  signal_info *old_signal_handler;
+  signal_info *old_signal_handler = NULL;
 
 #if !defined (HAVE_SIGACTION)
   /* best effort: first increment this counter and later block signals */

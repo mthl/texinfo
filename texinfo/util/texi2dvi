@@ -1,9 +1,9 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.28 2003-11-15 14:43:21 karl Exp $
+# $Id: texi2dvi,v 1.29 2004-04-11 17:56:47 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
-# 2002, 2003 Free Software Foundation, Inc.
+# 2002, 2003, 2004 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,19 +20,19 @@
 # program's maintainer or write to: The Free Software Foundation,
 # Inc.; 59 Temple Place, Suite 330; Boston, MA 02111-1307, USA.
 #
-# Original author: Noah Friedman <friedman@gnu.org>.
+# Original author: Noah Friedman.
 #
 # Please send bug reports, etc. to bug-texinfo@gnu.org.
 # If possible, please send a copy of the output of the script called with
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.28 $'
+rcs_revision='$Revision: 1.29 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
-version="texi2dvi (GNU Texinfo 4.6) $rcs_version
+version="texi2dvi (GNU Texinfo 4.7) $rcs_version
 
-Copyright (C) 2003 Free Software Foundation, Inc.
+Copyright (C) 2004 Free Software Foundation, Inc.
 There is NO warranty.  You may redistribute this software
 under the terms of the GNU General Public License.
 For more information about these matters, see the files named COPYING."
@@ -113,6 +113,18 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 # In case someone crazy insists on using grep -E.
 : ${EGREP=egrep}
 
+# return true if program $1 is somewhere in PATH, else false.
+# 
+findprog () {
+  foundprog=false
+  for dir in `echo $PATH | tr "$path_sep" " "`; do
+    if test -x "$dir/$1"; then  # does anyone still need test -f?
+      foundprog=true
+      break
+    fi
+  done
+  $foundprog
+}
 
 # Report an error and exit with failure.
 fatal () {
@@ -121,35 +133,12 @@ fatal () {
 }
 
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
-# Unfortunately bibtex and makeindex do not read TEXINPUTS.
+# Likewise for bibtex and makeindex.
 tex_envvars="BIBINPUTS BSTINPUTS INDEXSTYLE TEXINPUTS"
 for var in $tex_envvars; do
   eval ${var}_orig=\$$var
   export $var
 done
-
-# we can't do much without tex.
-no_tex=true
-for dir in `echo $PATH | tr "$path_sep" " "`; do
-  if test -r $dir/${TEX:-tex}; then
-    no_tex=false
-    break
-  fi
-done
-#
-if $no_tex; then cat <<EOM
-You don't have a working TeX binary installed anywhere in your PATH, and
-texi2dvi cannot proceed without one.  If you want to use this script,
-you'll need to install TeX (if you don't have it) or change your PATH
-or TEX environment variable (if you do).  See the --help output for more
-details.
-
-For information about obtaining TeX, please see http://www.tug.org.  If
-you happen to be using Debian, you can get it with this command:
-  apt-get install tetex-bin
-EOM
-  exit 1
-fi
 
 
 # Push a token among the arguments that will be used to notice when we
@@ -238,6 +227,39 @@ case $# in
   ;;
 esac
 
+
+# We can't do much without tex.
+# 
+if findprog ${TEX:-tex}; then :; else cat <<EOM
+You don't have a working TeX binary (${TEX:-tex}) installed anywhere in
+your PATH, and texi2dvi cannot proceed without one.  If you want to use
+this script, you'll need to install TeX (if you don't have it) or change
+your PATH or TEX environment variable (if you do).  See the --help
+output for more details.
+
+For information about obtaining TeX, please see http://www.tug.org.  If
+you happen to be using Debian, you can get it with this command:
+  apt-get install tetex-bin
+EOM
+  exit 1
+fi
+
+
+# We want to use etex (or pdftex) if they are available, and the user
+# didn't explicitly specify.  We don't check for elatex and pdfelatex
+# because (as of 2003), the LaTeX team has asked that new distributions
+# use etex by default anyway.
+# 
+# End up with the TEX and PDFTEX variables set to what we are going to use.
+if test -z "$TEX"; then
+  if findprog etex; then TEX=etex; else TEX=tex; fi
+fi
+#
+if test -z "$PDFTEX"; then
+  if findprog pdfetex; then PDFTEX=pdfetex; else PDFTEX=pdftex; fi
+fi
+
+
 # Prepare the temporary directory.  Remove it at exit, unless debugging.
 if test -z "$debug"; then
   trap "cd / && rm -rf $tmpdir" 0 1 2 15
@@ -247,7 +269,7 @@ fi
 (umask 077 && mkdir $tmpdir) || exit 1
 
 # Prepare the tools we might need.  This may be extra work in some
-# cases, but improves the readibility of the script.
+# cases, but improves the readability of the script.
 utildir=$tmpdir/utils
 mkdir $utildir || exit 1
 
@@ -484,9 +506,9 @@ for command_line_filename in ${1+"$@"}; do
       texindex=${TEXINDEX:-texindex}
       textra_cmd='/^@setfilename/a'
       if test $oformat = dvi; then
-        tex=${TEX:-tex}
+        tex=$TEX
       else
-        tex=${PDFTEX:-pdftex}
+        tex=$PDFTEX
       fi
       # Unless required by the user, makeinfo expansion is wanted only
       # if texinfo.tex is too old.

@@ -124,8 +124,6 @@ use POSIX qw(strftime);
 # match expressions used to find embedded type information
 $type_constant = "\\\%(\\w+)";
 $type_func = "(\\w+\\(\\))";
-#$type_func = "((\\w|\\\\)+\\(\\))";
-#$type_func = "(\\(w||\\\\)+\\(\\))";
 $type_param = "\\\@(\\w+)";
 $type_struct = "\\\&(\\w+)";
 $type_env = "(\\\$\\w+)";
@@ -151,7 +149,7 @@ $blankline_texinfo = "";
                      $type_func, "{\\\\bf \$1}",
                      $type_struct, "{\\\\it \$1}",
                      $type_param, "{\\\\bf \$1}" );
-$blankline_tex = "\\";
+$blankline_tex = "\\\\";
 
 # sgml, docbook format
 %highlights_sgml = ( $type_constant, "<replaceable class=\"option\">\$1</repla
@@ -329,6 +327,28 @@ sub output_highlight {
     }
 }
 
+sub just_highlight {
+    my $contents = join "\n", @_;
+    my $line;
+    my $ret = "";
+
+    foreach $pattern (keys %highlights) {
+#       print "scanning pattern $pattern ($highlights{$pattern})\n";
+        $contents =~ s:$pattern:repstr($pattern, $highlights{$pattern}, $1, $2
+, $3, $4):gse;
+    }
+    foreach $line (split "\n", $contents) {
+        if ($line eq ""){
+            $ret = $ret . $lineprefix . $blankline;
+        } else {
+            $ret = $ret . $lineprefix . $line;
+        }
+        $ret = $ret . "\n";
+    }
+
+    return $ret;
+}
+
 # output in texinfo
 sub output_texinfo {
     my %args = %{$_[0]};
@@ -424,7 +444,7 @@ n";
 
     print "{\\it ".$type."}\n";
     print "{\\bf ".$func."}\n";
-    print "(\n";
+    print "(";
     $count = 0;
     foreach $parameter (@{$args{'parameterlist'}}) {
         $param = $args{'parametertypes'}{$parameter};
@@ -432,7 +452,7 @@ n";
         $param =~ s/_/\\_/g;
         $param2 =~ s/_/\\_/g;
 
-        print "{\\it ".$param."} {\\bf ".$param2."}\n";
+        print "{\\it ".$param."} {\\bf ".$param2."}";
         if ($count != $#{$args{'parameterlist'}}) {
             $count++;
             print ", ";
@@ -455,10 +475,11 @@ n";
 #       print "\n";
 
         $param3 = $args{'parameters'}{$parameter};
-        $param3 =~ s/_/\\_/g;
         $param3 =~ s/&([a-zA-Z\_]+)/{\\it \1}/g;
 
-        output_highlight($param3);
+        $out = just_highlight($param3);
+        $out =~ s/_/\\_/g;
+        print $out;
     }
     if ($check==0) {
         print "\\item void\n";
@@ -470,17 +491,19 @@ n";
         $sec =~ s/_/\\_/g;
         $sec =~ s/&([a-zA-Z\_]+)/{\\it \1}/g;
 
-        print "\n\\par{\\large{$sec}}\\par\n";
+        print "\n{\\large{$sec}}\\\\\n";
         print "\\begin{rmfamily}\n";
 
         $sec = $args{'sections'}{$section};
-        $sec =~ s/_/\\_/g;
         $sec =~ s/\\:/:/g;
         $sec =~ s/&([a-zA-Z\_]+)/{\\it \1}/g;
         $sec =~ s/->/\$\\rightarrow\$/g;
         $sec =~ s/([0-9]+)\^([0-9]+)/\$\{\1\}\^\{\2\}\$/g;
 
-        output_highlight($sec);
+        $out = just_highlight($sec);
+        $out =~ s/_/\\_/g;
+
+        print $out;
         print "\\end{rmfamily}\n";
     }
     print "\n";

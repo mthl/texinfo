@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.46 2003-12-02 11:04:00 dirt Exp $
+   $Id: xml.c,v 1.47 2004-04-11 17:56:47 karl Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -22,6 +22,7 @@
 #include "system.h"
 #include "makeinfo.h"
 #include "insertion.h"
+#include "files.h"
 #include "float.h"
 #include "macro.h"
 #include "cmds.h"
@@ -31,9 +32,6 @@
 
 /* Options */
 int xml_index_divisions = 1;
-
-
-void xml_close_sections (/* int level */);
 
 typedef struct _element
 {
@@ -82,13 +80,17 @@ element texinfoml_element_list [] = {
   { "booksubtitle",        0, 0, 0 },
 
   { "menu",                1, 0, 0 },
-  { "menuentry",           1, 0, 0 },
+  { "detailmenu",          1, 0, 0 },
+  { "menuentry",           0, 0, 0 },
   { "menutitle",           0, 0, 0 },
-  { "menucomment",         1, 0, 0 },
+  { "menucomment",         0, 0, 0 },
   { "menunode",            0, 0, 0 },
   { "nodename",            0, 0, 0 },
 
   { "acronym",             0, 1, 0 },
+  { "acronymword",         0, 1, 0 },
+  { "acronymdesc",         0, 1, 0 },
+
   { "tt",                  0, 1, 0 },
   { "code",                0, 1, 0 },
   { "command",             0, 1, 0 },
@@ -109,6 +111,8 @@ element texinfoml_element_list [] = {
   { "i",                   0, 1, 0 },
   { "b",                   0, 1, 0 },
   { "r",                   0, 1, 0 },
+
+  { "exdent",              0, 0, 0 },
 
   { "title",               0, 0, 0 },
   { "ifinfo",              1, 0, 0 },
@@ -141,12 +145,14 @@ element texinfoml_element_list [] = {
   { "item",                1, 0, 0 },
   { "enumerate",           0, 0, 0 },
   { "table",               0, 0, 0 },
-  { "tableitem",           0, 0, 0 }, /* not used */ /* TABLEITEM */
-  { "tableterm",           0, 0, 0 }, /* not used */ /* TABLETERM */
+  { "tableitem",           0, 0, 0 },
+  { "tableterm",           0, 0, 0 },
 
   { "indexterm",           0, 1, 0 },
 
   { "math",                0, 1, 0 },
+
+  { "dmn",                 0, 1, 0 },
 
   { "xref",                0, 1, 0 },
   { "xrefnodename",        0, 1, 0 },
@@ -170,9 +176,11 @@ element texinfoml_element_list [] = {
   { "emailname",           0, 1, 0 },
 
   { "group",               0, 0, 0 },
-  { "float",               0, 0, 0 },
+  { "float",               1, 0, 0 },
   { "floattype",           0, 0, 0 },
+  { "floatpos",            0, 0, 0 },
   { "caption",             0, 0, 0 },
+  { "shortcaption",        0, 0, 0 },
 
   { "",                    0, 0, 0 }, /* TABLE (docbook) */
   { "",                    0, 0, 0 }, /* FIGURE (docbook) */
@@ -182,7 +190,11 @@ element texinfoml_element_list [] = {
   { "printindex",          0, 0, 0 },
   { "listoffloats",        0, 0, 0 },
   { "anchor",              0, 1, 0 },
-  { "image",               0, 1, 0 },
+
+  { "image",               0, 0, 0 },
+  { "inlineimage",         0, 1, 0 },
+  { "alttext",             0, 1, 0 },
+
   { "",                    0, 1, 0 }, /* PRIMARY (docbook) */
   { "",                    0, 1, 0 }, /* SECONDARY (docbook) */
   { "",                    0, 0, 0 }, /* INFORMALFIGURE (docbook) */
@@ -211,7 +223,7 @@ element texinfoml_element_list [] = {
 
   { "contents",            0, 0, 0 },
   { "shortcontents",       0, 0, 0 },
-  { "documentlanguage",    0, 1, 0 },
+  { "documentlanguage",    0, 0, 0 },
 
   { "setvalue",            0, 0, 0 },
   { "clearvalue",          0, 0, 0 },
@@ -262,11 +274,11 @@ element docbook_element_list [] = {
   { "sect2",               1, 0, 0 }, /* APPENDIXSUBSEC */
   { "sect3",               1, 0, 0 }, /* APPENDIXSUBSUBSEC */
 
-  { "chapter",             1, 0, 0 }, /* MAJORHEADING */
-  { "chapter",             1, 0, 0 }, /* CHAPHEADING */
-  { "sect1",               1, 0, 0 }, /* HEADING */
-  { "sect2",               1, 0, 0 }, /* SUBHEADING */
-  { "simplesect",          1, 0, 0 }, /* SUBSUBHEADING */
+  { "bridgehead",          0, 0, 0 }, /* MAJORHEADING */
+  { "bridgehead",          0, 0, 0 }, /* CHAPHEADING */
+  { "bridgehead",          0, 0, 0 }, /* HEADING */
+  { "bridgehead",          0, 0, 0 }, /* SUBHEADING */
+  { "bridgehead",          0, 0, 0 }, /* SUBSUBHEADING */
 
   { "",                    0, 0, 0 }, /* TITLEPAGE */
   { "",                    0, 0, 0 }, /* AUTHOR */
@@ -274,6 +286,7 @@ element docbook_element_list [] = {
   { "",                    0, 0, 0 }, /* BOOKSUBTITLE */
 
   { "",                    1, 0, 0 }, /* MENU */
+  { "",                    1, 0, 0 }, /* DETAILMENU */
   { "",                    1, 0, 0 }, /* MENUENTRY */
   { "",                    0, 0, 0 }, /* MENUTITLE */
   { "",                    1, 0, 0 }, /* MENUCOMMENT */
@@ -281,6 +294,9 @@ element docbook_element_list [] = {
   { "anchor",              0, 0, 0 }, /* NODENAME */
 
   { "acronym",             0, 1, 0 },
+  { "",                    0, 1, 0 }, /* ACRONYMWORD */
+  { "",                    0, 1, 0 }, /* ACRONYMDESC */
+
   { "literal",             0, 1, 0 }, /* TT */
   { "literal",             0, 1, 0 }, /* CODE */
   { "command",             0, 1, 0 }, /* COMMAND */
@@ -302,23 +318,25 @@ element docbook_element_list [] = {
   { "emphasis",            0, 1, 0 }, /* B */
   { "",                    0, 1, 0 }, /* R */
 
+  { "",                    0, 0, 0 }, /* EXDENT */
+
   { "title",               0, 0, 0 },
   { "",                    1, 0, 0 }, /* IFINFO */
   { "",                    0, 0, 0 }, /* SP */
   { "",                    1, 0, 0 }, /* CENTER */
   { "",                    0, 0, 0 }, /* DIRCATEGORY */
   { "blockquote",          1, 0, 0 }, /* QUOTATION */
-  { "screen",              0, 0, 0 },
-  { "screen",              0, 0, 0 }, /* SMALLEXAMPLE */
-  { "programlisting",      0, 0, 0 }, /* LISP */
-  { "programlisting",      0, 0, 0 }, /* SMALLLISP */
+  { "screen",              0, 0, 1 }, /* EXAMPLE */
+  { "screen",              0, 0, 1 }, /* SMALLEXAMPLE */
+  { "programlisting",      0, 0, 1 }, /* LISP */
+  { "programlisting",      0, 0, 1 }, /* SMALLLISP */
   { "",                    1, 0, 0 }, /* CARTOUCHE */
   { "",                    1, 0, 0 }, /* COPYING */
-  { "screen",              0, 1, 0 }, /* FORMAT */
-  { "screen",              0, 1, 0 }, /* SMALLFORMAT */
-  { "literallayout",       0, 1, 0 }, /* DISPLAY */
-  { "literallayout",       0, 1, 0 }, /* SMALLDISPLAY */
-  { "screen",              0, 0, 0 }, /* VERBATIM */
+  { "screen",              0, 1, 1 }, /* FORMAT */
+  { "screen",              0, 1, 1 }, /* SMALLFORMAT */
+  { "literallayout",       0, 1, 1 }, /* DISPLAY */
+  { "literallayout",       0, 1, 1 }, /* SMALLDISPLAY */
+  { "screen",              0, 0, 1 }, /* VERBATIM */
   { "footnote",            0, 1, 0 },
   { "lineannotation",      0, 1, 0 },
 
@@ -339,6 +357,8 @@ element docbook_element_list [] = {
   { "indexterm",           0, 1, 0 }, /* INDEXTERM */
 
   { "",                    0, 1, 0 }, /* MATH */
+
+  { "",                    0, 1, 0 }, /* DIMENSION */
 
   { "xref",                0, 1, 0 }, /* XREF */
   { "link",                0, 1, 0 }, /* XREFNODENAME */
@@ -362,9 +382,11 @@ element docbook_element_list [] = {
   { "",                    0, 1, 0 }, /* EMAILNAME */
 
   { "",                    0, 0, 0 }, /* GROUP */
-  { "",                    0, 0, 0 }, /* FLOAT */
+  { "",                    1, 0, 0 }, /* FLOAT */
   { "",                    0, 0, 0 }, /* FLOATTYPE */
+  { "",                    0, 0, 0 }, /* FLOATPOS */
   { "",                    0, 0, 0 }, /* CAPTION */
+  { "",                    0, 0, 0 }, /* SHORTCAPTION */
 
   { "table",               0, 1, 0 },
   { "figure",              0, 1, 0 },
@@ -374,14 +396,18 @@ element docbook_element_list [] = {
   { "index",               0, 1, 0 }, /* PRINTINDEX */
   { "",                    0, 1, 0 }, /* LISTOFFLOATS */
   { "",                    0, 1, 0 }, /* ANCHOR */
-  { "",                    0, 1, 0 }, /* IMAGE */
+
+  { "",                    0, 0, 0 }, /* IMAGE */
+  { "inlinemediaobject",   0, 1, 0 }, /* INLINEIMAGE */
+  { "",                    0, 0, 0 }, /* IMAGEALTTEXT */
+
   { "primary",             0, 1, 0 }, /* PRIMARY */
   { "secondary",           0, 1, 0 },
   { "informalfigure",      0, 0, 0 },
   { "mediaobject",         0, 0, 0 },
-  { "imageobject",         0, 0, 0 },
-  { "imagedata",           0, 0, 0 },
-  { "textobject",          0, 0, 0 },
+  { "imageobject",         0, 1, 0 },
+  { "imagedata",           0, 1, 0 },
+  { "textobject",          0, 1, 0 },
   { "indexentry",          0, 0, 0 },
   { "primaryie",           0, 0, 0 },
   { "secondaryie",         0, 0, 0 },
@@ -408,20 +434,20 @@ element docbook_element_list [] = {
   { "",                    0, 0, 0 }, /* SETVALUE (xml) */
   { "",                    0, 0, 0 }, /* CLEARVALUE (xml) */
 
-  { "",                    0, 0, 0 }, /* DEFINITION (xml) */
-  { "",                    0, 0, 0 }, /* DEFINITIONTERM (xml) */
+  { "blockquote",          1, 0, 0 }, /* DEFINITION */
+  { "screen",              0, 0, 1 }, /* DEFINITIONTERM */
   { "",                    0, 0, 0 }, /* DEFINITIONITEM (xml) */
   { "",                    0, 0, 0 }, /* DEFCATEGORY (xml) */
-  { "",                    0, 0, 0 }, /* DEFFUNCTION (xml) */
-  { "",                    0, 0, 0 }, /* DEFVARIABLE (xml) */
-  { "",                    0, 0, 0 }, /* DEFPARAM (xml) */
+  { "function",            0, 0, 0 }, /* DEFFUNCTION */
+  { "varname",             0, 0, 0 }, /* DEFVARIABLE */
+  { "varname",             0, 0, 0 }, /* DEFPARAM */
   { "",                    0, 0, 0 }, /* DEFDELIMITER (xml) */
-  { "",                    0, 0, 0 }, /* DEFTYPE (xml) */
-  { "",                    0, 0, 0 }, /* DEFPARAMTYPE (xml) */
-  { "",                    0, 0, 0 }, /* DEFDATATYPE (xml) */
-  { "",                    0, 0, 0 }, /* DEFCLASS (xml) */
-  { "",                    0, 0, 0 }, /* DEFCLASSVAR (xml) */
-  { "",                    0, 0, 0 }, /* DEFOPERATION (xml) */
+  { "returnvalue",         0, 0, 0 }, /* DEFTYPE */
+  { "type",                0, 0, 0 }, /* DEFPARAMTYPE */
+  { "structname",          0, 0, 0 }, /* DEFDATATYPE */
+  { "classname",           0, 0, 0 }, /* DEFCLASS */
+  { "property",            0, 0, 0 }, /* DEFCLASSVAR */
+  { "methodname",          0, 0, 0 }, /* DEFOPERATION */
 
   { "para",                0, 0, 0 } /* Must be last */
   /* name / contains para / contained in para / preserve space */
@@ -468,6 +494,9 @@ replace_element replace_elements [] = {
   { MULTITABLE, FLOAT, FLOATTABLE },
   { INFORMALFIGURE, FLOAT, FLOATFIGURE },
   { CARTOUCHE, FLOAT, FLOATCARTOUCHE },
+  /* Unnecessary markup in @defun blocks.  */
+  { VAR, DEFPARAM, -1 },
+  { CODE, DEFTYPE, -1 },
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
@@ -491,6 +520,10 @@ int xml_in_bookinfo = 0;
 int xml_in_book_title = 0;
 int xml_in_abstract = 0;
 
+/* Non-zero if we are handling an element that can appear between
+   @item and @itemx, @deffn and @deffnx.  */
+int xml_dont_touch_items_defs = 0;
+
 /* We need to keep footnote state, because elements inside footnote may try
    to close the previous parent para.  */
 static int xml_in_footnote = 0;
@@ -499,6 +532,7 @@ static int xml_after_table_term = 0;
 static int book_started = 0;
 static int first_section_opened = 0;
 
+static int xml_in_tableitem[256];
 static int xml_in_item[256];
 static int xml_table_level = 0;
 
@@ -511,19 +545,9 @@ static int in_table_title = 0;
 static int in_indexentry = 0;
 static int in_secondary = 0;
 static int in_indexterm = 0;
-
-static int xml_current_element ();
-
-void
-#if defined (VA_FPRINTF) && __STDC__
-xml_insert_element_with_attribute (int elt, int arg, char *format, ...);
-#else
-xml_insert_element_with_attribute ();
-#endif
-
+
 char *
-xml_id (id)
-    char *id;
+xml_id (char *id)
 {
   char *tem = xmalloc (strlen (id) + 1);
   char *p = tem;
@@ -544,8 +568,7 @@ xml_id (id)
 }
 
 int
-xml_element (name)
-    char *name;
+xml_element (char *name)
 {
   int i;
   for (i=0; i<=PARA; i++)
@@ -558,21 +581,46 @@ xml_element (name)
 }
 
 void
-xml_begin_document (output_filename)
-    char *output_filename;
+xml_begin_document (char *output_filename)
 {
   if (book_started)
     return;
 
   book_started = 1;
+
+  /* Make sure this is the very first string of the output document.  */
+  output_paragraph_offset = 0;
+
+  insert_string ("<?xml version=\"1.0\"");
+
+  /* At this point, we register a delayed writing for document encoding,
+     so in the end, proper encoding attribute will be inserted here.
+     Since the user is unaware that we are implicitly executing this
+     command, we should disable warnings temporarily, in order to avoid
+     possible confusion.  (ie. if the output is not seekable,
+     register_delayed_write issues a warning.)  */
+  {
+    extern int print_warnings;
+    int save_print_warnings = print_warnings;
+    print_warnings = 0;
+    register_delayed_write ("@documentencoding");
+    print_warnings = save_print_warnings;
+  }
+
+  insert_string ("?>");
+
   if (docbook)
     {
-      insert_string ("<!DOCTYPE book PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\">");
+      insert_string ("<!DOCTYPE book PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\" [\n  <!ENTITY tex \"TeX\">\n  <!ENTITY latex \"LaTeX\">\n]>");
       xml_element_list = docbook_element_list;
     }
   else
     {
-      insert_string ("<?xml version=\"1.0\"?><!DOCTYPE texinfo SYSTEM \"texinfo.dtd\">");
+      insert_string ("<!DOCTYPE texinfo PUBLIC \"-//GNU//DTD TexinfoML V");
+      insert_string (VERSION);
+      insert_string ("//EN\" \"http://www.gnu.org/software/texinfo/dtd/");
+      insert_string (VERSION);
+      insert_string ("/texinfo.dtd\">");
       xml_element_list = texinfoml_element_list;
     }
   if (language_code != last_language_code)
@@ -594,9 +642,14 @@ xml_begin_document (output_filename)
 static int element_stack[256];
 static int element_stack_index = 0;
 
+static int
+xml_current_element (void)
+{
+  return element_stack[element_stack_index-1];
+}
+
 static void
-xml_push_current_element (elt)
-    int elt;
+xml_push_current_element (int elt)
 {
   element_stack[element_stack_index++] = elt;
   if (element_stack_index > 200)
@@ -605,8 +658,8 @@ xml_push_current_element (elt)
             xml_element_list[elt].name);
 }
 
-void
-xml_pop_current_element ()
+static void
+xml_pop_current_element (void)
 {
   element_stack_index--;
   if (element_stack_index < 0)
@@ -615,48 +668,42 @@ xml_pop_current_element ()
             xml_current_element());
 }
 
-static int
-xml_current_element ()
-{
-  return element_stack[element_stack_index-1];
-}
-
 int
-xml_current_stack_index ()
+xml_current_stack_index (void)
 {
   return element_stack_index;
 }
 
 void
-xml_end_current_element ()
+xml_end_current_element (void)
 {
   xml_insert_element (xml_current_element (), END);
 }
 
 static void
-xml_indent ()
+xml_indent (void)
 {
-  int i;
-  insert ('\n');
-  for (i = 0; i < element_stack_index; i++)
-    insert (' ');
-}
-
-static void
-xml_indent_end_para ()
-{
-  int i;
-  for (i = 0; i < element_stack_index; i++)
-    insert (' ');
+  if (xml_indentation_increment > 0)
+    {
+      int i;
+      if (output_paragraph[output_paragraph_offset-1] != '\n')
+        insert ('\n');
+      for (i = 0; i < element_stack_index * xml_indentation_increment; i++)
+        insert (' ');
+    }
 }
 
 void
-xml_start_para ()
+xml_start_para (void)
 {
-  if (xml_in_para || xml_in_footnote)
+  if (xml_in_para || xml_in_footnote
+      || !xml_element_list[xml_current_element()].contains_para)
     return;
-  if (docbook)
-    xml_indent ();
+
+  while (output_paragraph[output_paragraph_offset-1] == '\n')
+    output_paragraph_offset--;
+  xml_indent ();
+
   insert_string ("<para");
   if (xml_no_indent)
     insert_string (" role=\"continues\"");
@@ -666,18 +713,22 @@ xml_start_para ()
 }
 
 void
-xml_end_para ()
+xml_end_para (void)
 {
   if (!xml_in_para || xml_in_footnote)
     return;
-  if (docbook)
-    xml_indent_end_para ();
+
+  while (cr_or_whitespace(output_paragraph[output_paragraph_offset-1]))
+    output_paragraph_offset--;
+
   insert_string ("</para>");
+  if (xml_indentation_increment > 0)
+    insert ('\n');
   xml_in_para = 0;
 }
 
 void
-xml_end_document ()
+xml_end_document (void)
 {
   if (xml_node_open)
     {
@@ -692,7 +743,8 @@ xml_end_document ()
     xml_close_sections (xml_node_level);
 
   xml_insert_element (TEXINFO, END);
-  insert_string ("\n");
+  if (xml_indentation_increment == 0)
+    insert ('\n');
   insert_string ("<!-- Keep this comment at the end of the file\n\
 Local variables:\n\
 mode: sgml\n\
@@ -758,21 +810,39 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   if (!book_started)
     return;
 
-  if (xml_after_table_term && elt != TABLETERM)
+  if (!xml_dont_touch_items_defs && arg == START)
     {
-      xml_after_table_term = 0;
-      xml_insert_element (ITEM, START);
-    }
-
-  if (xml_after_def_term && elt != DEFINITIONTERM && arg == START)
-    {
-      xml_after_def_term = 0;
-      xml_insert_element (DEFINITIONITEM, START);
-      xml_in_def_item[xml_definition_level] = 1;
+      if (xml_after_table_term && elt != TABLETERM && xml_table_level
+          && !xml_in_item[xml_table_level])
+        {
+          xml_after_table_term = 0;
+          xml_insert_element (ITEM, START);
+          xml_in_item[xml_table_level] = 1;
+        }
+      else if (xml_after_def_term && elt != DEFINITIONTERM)
+        {
+          xml_after_def_term = 0;
+          xml_insert_element (DEFINITIONITEM, START);
+          xml_in_def_item[xml_definition_level] = 1;
+        }
     }
 
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
+
+  if (executing_string && arg == END)
+    switch (elt)
+      {
+      case TABLEITEM:
+        xml_in_tableitem[xml_table_level] = 0;
+        break;
+      case ITEM:
+        xml_in_item[xml_table_level] = 0;
+        break;
+      case DEFINITIONTERM:
+        xml_in_def_item[xml_definition_level] = 0;
+        break;
+      }
 
   /* We are special-casing FIGURE element for docbook.  It does appear in
      the tag stack, but not in the output.  This is to make element replacement
@@ -793,10 +863,8 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   if (arg == START && !xml_in_para && !xml_no_para
-      && xml_element_list[elt].contained_in_para
-      && xml_element_list[xml_current_element()].contains_para)
+      && xml_element_list[elt].contained_in_para)
     xml_start_para ();
-
 
   if (arg == START && xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_end_para ();
@@ -804,10 +872,8 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   if (arg == END && xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_end_para ();
 
-  if (arg == START && docbook && !xml_in_para && !xml_element_list[elt].contained_in_para)
-    xml_indent ();
-
-  if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title
+  if (docbook && xml_table_level && !in_table_title
+      && !xml_in_tableitem[xml_table_level] && !xml_in_item[xml_table_level]
       && arg == START && elt != TABLEITEM && elt != TABLETERM
       && !in_indexterm && xml_current_element() == TABLE)
     {
@@ -815,11 +881,39 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
       xml_insert_element (TITLE, START);
     }
 
+  if (arg == START && !xml_in_para && !xml_keep_space
+      && !xml_element_list[elt].contained_in_para)
+    xml_indent ();
 
   if (arg == START)
     xml_push_current_element (elt);
   else
     xml_pop_current_element ();
+
+  /* Eat one newline before </example> and the like.  */
+  if (!docbook && arg == END
+      && (xml_element_list[elt].keep_space || elt == GROUP)
+      && output_paragraph[output_paragraph_offset-1] == '\n')
+    output_paragraph_offset--;
+
+  /* And eat whitespace before </entry> in @multitables.  */
+  if (arg == END && elt == ENTRY)
+      while (cr_or_whitespace(output_paragraph[output_paragraph_offset-1]))
+    output_paragraph_offset--;
+
+  /* Indent elements that can contain <para>.  */
+  if (arg == END && !xml_in_para && !xml_keep_space
+      && xml_element_list[elt].contains_para)
+    xml_indent ();
+
+  /* Here are the elements we want indented.  These do not contain <para>
+     directly.  */
+  if (arg == END && (elt == MENUENTRY || elt == ITEMIZE || elt == ENUMERATE
+        || elt == TABLEITEM || elt == TABLE
+        || elt == MULTITABLE || elt == TGROUP || elt == THEAD || elt == TBODY
+        || elt == ROW || elt == INFORMALFIGURE
+        || (!docbook && (elt == DEFINITION || elt == DEFINITIONTERM))))
+    xml_indent ();
 
   insert ('<');
   if (arg == END)
@@ -850,7 +944,7 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     {
       insert_string (" id=\"");
       insert_string (xml_node_id);
-      insert_string ("\"");
+      insert ('"');
       free (xml_node_id);
       xml_node_id = NULL;
     }
@@ -859,7 +953,8 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     {
       if (arg == START)
 	{
-	  insert_string (" xml:space=\"preserve\"");
+          if (!docbook)
+            insert_string (" xml:space=\"preserve\"");
 	  xml_keep_space++;
 	}
       else
@@ -867,6 +962,10 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   insert ('>');
+
+  if (!xml_in_para && !xml_element_list[elt].contained_in_para
+      && xml_element_list[elt].contains_para && xml_indentation_increment > 0)
+    insert ('\n');
 
   xml_just_after_element = 1;
 }
@@ -911,7 +1010,7 @@ struct _xml_section {
 xml_section *last_section = NULL;
 
 void
-xml_begin_node ()
+xml_begin_node (void)
 {
   first_section_opened = 1;
   if (xml_in_abstract)
@@ -938,8 +1037,7 @@ xml_begin_node ()
 }
 
 void
-xml_close_sections (level)
-    int level;
+xml_close_sections (int level)
 {
   if (!first_section_opened)
     {
@@ -968,9 +1066,7 @@ xml_close_sections (level)
 }
 
 void
-xml_open_section (level, name)
-    int level;
-    char *name;
+xml_open_section (int level, char *name)
 {
   xml_section *sect = (xml_section *) xmalloc (sizeof (xml_section));
 
@@ -984,55 +1080,8 @@ xml_open_section (level, name)
     xml_node_level = level;
 }
 
-/* To be able to properly xref unnumbered sections with only one parameter,
-   we have to keep track of their titles and use as the missing parameters.  */
-typedef struct unnumbered_label
-{
-  struct unnumbered_label *next;
-  char *id;
-  char *title;
-} UNNUMBERED_LABEL;
-
-static UNNUMBERED_LABEL *unnumbered_labels = NULL;
-
-char *
-xml_get_assoc_for_id (id)
-  char *id;
-{ /* Return the title, if its id matches the parameter.  */
-  UNNUMBERED_LABEL *temp = unnumbered_labels;
-
-  while (temp)
-    {
-      if (STREQ (id, temp->id))
-        return temp->title;
-      temp = temp->next;
-    }
-
-  /* Tough luck.  */
-  return "";
-}
-
 void
-xml_associate_title_with_id (nodename, title)
-  char *nodename;
-  char *title;
-{ /* Check to see if this node already has an associated title with it.  */
-  UNNUMBERED_LABEL *temp;
-
-  if (strlen (xml_get_assoc_for_id (xml_id (nodename))) > 0)
-    return;
-
-  /* Associated Titles.  */
-  temp = xmalloc (sizeof (UNNUMBERED_LABEL));
-  temp->id = xml_id (nodename);
-  temp->title = xstrdup (title);
-  temp->next = unnumbered_labels;
-  unnumbered_labels = temp;
-}
-
-void
-xml_start_menu_entry (tem)
-    char *tem;
+xml_start_menu_entry (char *tem)
 {
   char *string;
   discard_until ("* ");
@@ -1077,12 +1126,13 @@ xml_start_menu_entry (tem)
       free (string);
     }
   input_text_offset++;  /* discard the second colon or the period */
+  skip_whitespace_and_newlines();
   xml_insert_element (MENUCOMMENT, START);
   xml_in_menu_entry_comment ++;
 }
 
 void
-xml_end_menu ()
+xml_end_menu (void)
 {
   if (xml_in_menu_entry)
     {
@@ -1098,27 +1148,24 @@ xml_end_menu ()
 }
 
 static int xml_last_character;
-static int xml_in_legalnotice = 0;
 
 void
-xml_add_char (character)
-    int character;
+xml_add_char (int character)
 {
-  int xml_skip_newline = 0;
-
   if (!book_started)
       return;
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
 
-  if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title
+  if (docbook && xml_table_level && !in_table_title
+      && !xml_in_item[xml_table_level] && !xml_in_tableitem[xml_table_level]
       && !cr_or_whitespace (character) && !in_indexterm)
     {
       in_table_title = 1;
       xml_insert_element (TITLE, START);
     }
 
-  if ( !first_section_opened && !xml_in_abstract && !xml_in_book_title
+  if (!first_section_opened && !xml_in_abstract && !xml_in_book_title
       && !xml_no_para && character != '\r' && character != '\n'
       && character != ' ' && !is_in_insertion_of_type (copying))
     {
@@ -1131,26 +1178,21 @@ xml_add_char (character)
       xml_in_abstract = 1;
     }
 
-  if (!xml_in_legalnotice && is_in_insertion_of_type (copying))
+  if (!xml_sort_index && !xml_in_xref_token && !xml_dont_touch_items_defs)
     {
-      xml_in_legalnotice = 1;
-      if (docbook)
-        xml_insert_element (QUOTATION, START);
-      else
-        xml_insert_element (COPYING, START);
-    }
-
-  if (xml_after_table_term && !xml_sort_index && !xml_in_xref_token)
-    {
-      xml_after_table_term = 0;
-      xml_insert_element (ITEM, START);
-    }
-
-  if (xml_after_def_term && !xml_sort_index && !xml_in_xref_token)
-    {
-      xml_after_def_term = 0;
-      xml_insert_element (DEFINITIONITEM, START);
-      xml_in_def_item[xml_definition_level] = 1;
+      if (xml_after_table_term && xml_table_level
+          && !xml_in_item[xml_table_level])
+        {
+          xml_after_table_term = 0;
+          xml_insert_element (ITEM, START);
+          xml_in_item[xml_table_level] = 1;
+        }
+      else if (xml_after_def_term)
+        {
+          xml_after_def_term = 0;
+          xml_insert_element (DEFINITIONITEM, START);
+          xml_in_def_item[xml_definition_level] = 1;
+        }
     }
 
   if (xml_just_after_element && !xml_in_para && !inhibit_paragraph_indentation)
@@ -1165,45 +1207,42 @@ xml_add_char (character)
       && !cr_or_whitespace (character) && !in_fixed_width_font)
     xml_start_para ();
 
-  if (xml_in_para)
+  if (xml_in_para && character == '\n' && xml_last_character == '\n'
+      && !only_macro_expansion && !xml_no_para
+      && xml_element_list[xml_current_element()].contains_para )
     {
-      if (character == '\n')
-        {
-          if (xml_last_character == '\n' && !only_macro_expansion && !xml_no_para
-              && xml_element_list[xml_current_element()].contains_para )
-            {
-              xml_end_para ();
-              xml_just_after_element = 1;
-	      xml_skip_newline = 1;
-              if (xml_in_menu_entry_comment)
-                {
-                  xml_insert_element (MENUCOMMENT, END);
-                  xml_in_menu_entry_comment = 0;
-                  xml_insert_element (MENUENTRY, END);
-                  xml_in_menu_entry = 0;
-                }
-            }
-        }
+      xml_end_para ();
+      xml_just_after_element = 1;
+      return;
     }
+
+  if (xml_in_menu_entry_comment && character == '\n' && xml_last_character == '\n')
+    {
+      xml_insert_element (MENUCOMMENT, END);
+      xml_in_menu_entry_comment = 0;
+      xml_insert_element (MENUENTRY, END);
+      xml_in_menu_entry = 0;
+    }
+
+  if (xml_in_menu_entry_comment && whitespace(character)
+      && cr_or_whitespace(xml_last_character))
+    return;
 
   if (character == '\n' && !xml_in_para && !inhibit_paragraph_indentation)
     return;
 
   xml_last_character = character;
 
-  if (xml_skip_newline && !docbook)
-    return;
-
   if (character == '&' && escape_html)
       insert_string ("&amp;");
   else if (character == '<' && escape_html)
       insert_string ("&lt;");
-  else if (character == '\n' && !xml_keep_space && !docbook)
+  else if (character == '\n' && !xml_keep_space)
     {
-      if (!xml_in_para && xml_just_after_element)
+      if (!xml_in_para && xml_just_after_element && !multitable_active)
 	return;
       else
-	insert_string (" ");
+	insert (docbook ? '\n' : ' ');
     }
   else
     insert (character);
@@ -1212,9 +1251,11 @@ xml_add_char (character)
 }
 
 void
-xml_insert_footnote (note)
-    char *note;
+xml_insert_footnote (char *note)
 {
+  if (!xml_in_para)
+    xml_start_para ();
+
   xml_in_footnote = 1;
   xml_insert_element (FOOTNOTE, START);
   insert_string ("<para>");
@@ -1236,9 +1277,7 @@ typedef struct quotation_elt
 static QUOTATION_ELT *quotation_stack = NULL;
 
 void
-xml_insert_quotation (type, arg)
-  char *type;
-  int arg;
+xml_insert_quotation (char *type, int arg)
 {
   int quotation_started = 0;
 
@@ -1294,9 +1333,16 @@ xml_insert_quotation (type, arg)
 /* Starting generic docbook floats.  Just starts elt with correct label
    and id attributes, and inserts title.  */
 void
-xml_begin_docbook_float (elt)
-    int elt;
+xml_begin_docbook_float (int elt)
 {
+  if (current_float_used_title ())	/* in a nested float */
+    {
+      xml_insert_element (elt, START);	/* just insert the tag */
+      return;
+    }
+
+
+  /* OK, need the title, tag, etc. */
   if (elt == CARTOUCHE)    /* no labels on <sidebar> */
     {
        if (strlen (current_float_id ()) == 0)
@@ -1315,15 +1361,15 @@ xml_begin_docbook_float (elt)
   xml_insert_element (TITLE, START);
   execute_string ("%s", current_float_title ());
   xml_insert_element (TITLE, END);
+
+  current_float_set_title_used ();	/* mark this title, tag, etc used */
 }
 
 /*
  * Lists and Tables
  */
 void
-xml_begin_table (type, item_function)
-    enum insertion_type type;
-    char *item_function;
+xml_begin_table (int type, char *item_function)
 {
   switch (type)
     {
@@ -1334,7 +1380,9 @@ xml_begin_table (type, item_function)
         {
           xml_insert_element (TABLE, START);
           xml_table_level ++;
+          xml_in_tableitem[xml_table_level] = 0;
           xml_in_item[xml_table_level] = 0;
+          xml_after_table_term = 0;
         }
       break;
     case itemize:
@@ -1366,25 +1414,27 @@ xml_begin_table (type, item_function)
 }
 
 void
-xml_end_table (type)
-    enum insertion_type type;
+xml_end_table (int type)
 {
   switch (type)
     {
     case ftable:
     case vtable:
     case table:
-      /*      if (docbook)*/ /* 05-08 */
+      if (xml_in_item[xml_table_level])
         {
-          if (xml_in_item[xml_table_level])
-            {
-              xml_insert_element (ITEM, END);
-              xml_insert_element (TABLEITEM, END);
-              xml_in_item[xml_table_level] = 0;
-            }
-          xml_insert_element (TABLE, END);
-          xml_table_level --;
+          xml_insert_element (ITEM, END);
+          xml_in_item[xml_table_level] = 0;
         }
+      if (xml_in_tableitem[xml_table_level])
+        {
+          xml_insert_element (TABLEITEM, END);
+          xml_in_tableitem[xml_table_level] = 0;
+        }
+      xml_insert_element (TABLE, END);
+      xml_after_table_term = 0;
+      xml_table_level --;
+
       break;
     case itemize:
       if (xml_in_item[xml_table_level])
@@ -1405,7 +1455,7 @@ xml_end_table (type)
 }
 
 void
-xml_begin_item ()
+xml_begin_item (void)
 {
   if (xml_in_item[xml_table_level])
     xml_insert_element (ITEM, END);
@@ -1415,15 +1465,15 @@ xml_begin_item ()
 }
 
 void
-xml_begin_table_item ()
+xml_begin_table_item (void)
 {
   if (!xml_after_table_term)
     {
       if (xml_in_item[xml_table_level])
-        {
-          xml_insert_element (ITEM, END);
-          xml_insert_element (TABLEITEM, END);
-        }
+        xml_insert_element (ITEM, END);
+      if (xml_in_tableitem[xml_table_level])
+        xml_insert_element (TABLEITEM, END);
+
       if (in_table_title)
 	{
 	  in_table_title = 0;
@@ -1432,51 +1482,58 @@ xml_begin_table_item ()
       xml_insert_element (TABLEITEM, START);
     }
   xml_insert_element (TABLETERM, START);
-  xml_in_item[xml_table_level] = 1;
+  xml_in_tableitem[xml_table_level] = 1;
+  xml_in_item[xml_table_level] = 0;
   xml_after_table_term = 0;
 }
 
 void
-xml_continue_table_item ()
+xml_continue_table_item (void)
 {
   xml_insert_element (TABLETERM, END);
   xml_after_table_term = 1;
+  xml_in_item[xml_table_level] = 0;
 }
 
 void
-xml_begin_enumerate (enum_arg)
-    char *enum_arg;
+xml_begin_enumerate (char *enum_arg)
 {
   if (!docbook)
     xml_insert_element_with_attribute (ENUMERATE, START, "first=\"%s\"", enum_arg);
   else
     {
       if (isdigit (*enum_arg))
-      {
-        if (enum_arg[0] == '1')
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"arabic\"", NULL);
-        else
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"continues\" numeration=\"arabic\"", NULL);
-      }
+        {
+          int enum_val = atoi (enum_arg);
+
+          /* Have to check the value, not just the first digit.  */
+          if (enum_val == 0)
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "numeration=\"arabic\" role=\"0\"", NULL);
+          else if (enum_val == 1)
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "numeration=\"arabic\"", NULL);
+          else
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "continuation=\"continues\" numeration=\"arabic\"", NULL);
+        }
       else if (isupper (*enum_arg))
         {
-        if (enum_arg[0] == 'A')
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"upperalpha\"", NULL);
-        else
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"continues\" numeration=\"upperalpha\"", NULL);
-      }
+          if (enum_arg[0] == 'A')
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "numeration=\"upperalpha\"", NULL);
+          else
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "continuation=\"continues\" numeration=\"upperalpha\"", NULL);
+        }
       else
         {
           if (enum_arg[0] == 'a')
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"loweralpha\"", NULL);
-        else
-          xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"continues\" numeration=\"loweralpha\"", NULL);
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "numeration=\"loweralpha\"", NULL);
+          else
+            xml_insert_element_with_attribute (ENUMERATE, START,
+                "continuation=\"continues\" numeration=\"loweralpha\"", NULL);
         }
     }
   xml_table_level ++;
@@ -1484,7 +1541,7 @@ xml_begin_enumerate (enum_arg)
 }
 
 void
-xml_end_enumerate ()
+xml_end_enumerate (void)
 {
   if (xml_in_item[xml_table_level])
     {
@@ -1496,8 +1553,7 @@ xml_end_enumerate ()
 }
 
 static void
-xml_insert_text_file (name_arg)
-    char *name_arg;
+xml_insert_text_file (char *name_arg)
 {
   char *fullname = xmalloc (strlen (name_arg) + 4 + 1);
   FILE *image_file;
@@ -1541,34 +1597,43 @@ xml_insert_text_file (name_arg)
 }
 
 void
-xml_insert_docbook_image (name_arg)
-    char *name_arg;
+xml_insert_docbook_image (char *name_arg)
 {
+  int elt = xml_in_para ? INLINEIMAGE : MEDIAOBJECT;
+
   if (is_in_insertion_of_type (floatenv))
     xml_begin_docbook_float (INFORMALFIGURE);
-  else
+  else if (!xml_in_para)
     xml_insert_element (INFORMALFIGURE, START);
 
-  xml_insert_element (MEDIAOBJECT, START);
+  xml_no_para++;
+
+  xml_insert_element (elt, START);
 
   xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.eps\" format=\"EPS\"", name_arg);
+  xml_insert_element_with_attribute (IMAGEDATA,
+      START, "fileref=\"%s.eps\" format=\"EPS\"", name_arg);
   xml_insert_element (IMAGEDATA, END);
   xml_insert_element (IMAGEOBJECT, END);
 
   xml_insert_element (IMAGEOBJECT, START);
-  xml_insert_element_with_attribute (IMAGEDATA, START, "fileref=\"%s.jpg\" format=\"JPG\"", name_arg);
+  xml_insert_element_with_attribute (IMAGEDATA,
+      START, "fileref=\"%s.jpg\" format=\"JPG\"", name_arg);
   xml_insert_element (IMAGEDATA, END);
   xml_insert_element (IMAGEOBJECT, END);
 
   xml_insert_text_file (name_arg);
 
-  xml_insert_element (MEDIAOBJECT, END);
-  xml_insert_element (INFORMALFIGURE, END);
+  xml_insert_element (elt, END);
+
+  xml_no_para--;
+
+  if (elt == MEDIAOBJECT)
+    xml_insert_element (INFORMALFIGURE, END);
 }
 
 void
-xml_asterisk ()
+xml_asterisk (void)
 {
 }
 
@@ -1590,10 +1655,9 @@ static XML_SYNONYM **xml_synonyms = NULL;
 static int xml_synonyms_count = 0;
 
 void
-xml_insert_indexterm (indexterm, index)
-    char *indexterm;
-    char *index;
+xml_insert_indexterm (char *indexterm, char *index)
 {
+  /* @index commands can appear between @item and @itemx, @deffn and @deffnx.  */
   if (!docbook)
     {
       /* Check to see if we need to do index redirection per @synindex.  */
@@ -1604,15 +1668,17 @@ xml_insert_indexterm (indexterm, index)
             index = xstrdup (xml_synonyms[i]->to);
         }
 
+      xml_dont_touch_items_defs++;
       xml_insert_element_with_attribute (INDEXTERM, START, "index=\"%s\"", index);
       in_indexterm = 1;
       execute_string ("%s", indexterm);
       xml_insert_element (INDEXTERM, END);
       in_indexterm = 0;
+      xml_dont_touch_items_defs--;
     }
   else
     {
-      char *primary = NULL, *secondary;
+      char *primary = NULL, *secondary = NULL;
       if (strstr (indexterm+1, INDEX_SEP))
         {
           primary = xmalloc (strlen (indexterm) + 1);
@@ -1647,7 +1713,7 @@ static char index_primary[2000]; /** xx no fixed limit */
 static int indexdivempty = 0;
 
 static void
-xml_close_indexentry ()
+xml_close_indexentry (void)
 {
   if (!in_indexentry)
     return;
@@ -1659,65 +1725,92 @@ xml_close_indexentry ()
 }
 
 void
-xml_begin_index ()
+xml_begin_index (void)
 {
-  /*
-     We assume that we just opened a section, and so that the last output is
-     <SECTION ID="node-name"><TITLE>Title</TITLE>
-     where SECTION can be CHAPTER, ...
-   */
+  typedef struct xml_index_title {
+      struct xml_index_title *next;
+      char *title;
+  } XML_INDEX_TITLE;
 
-  xml_section *temp = last_section;
+  static XML_INDEX_TITLE *xml_index_titles = NULL;
 
-  int l = output_paragraph_offset-xml_last_section_output_position;
-  char *tmp = xmalloc (l+1);
-  char *p = tmp;
-  strncpy (tmp, output_paragraph, l);
+  if (!handling_delayed_writes)
+    { /* We assume that we just opened a section, and so that the last output is
+         <SECTION ID="node-name"><TITLE>Title</TITLE>
+         where SECTION can be CHAPTER, ...  */
 
-  /* We remove <SECTION */
-  tmp[l] = '\0';
-  while (*p != '<')
-    p++;
-  while (*p != ' ')
-    p++;
-  /* ... and its label attribute.  */
-  if (strncmp (p, " label=", 7) == 0)
-    {
-      p++;
+      XML_INDEX_TITLE *new = xmalloc (sizeof (XML_INDEX_TITLE));
+      xml_section *temp = last_section;
+
+      int l = output_paragraph_offset-xml_last_section_output_position;
+      char *tmp = xmalloc (l+1);
+      char *p = tmp;
+      strncpy (tmp, (char *) output_paragraph, l);
+
+      /* We remove <SECTION */
+      tmp[l] = '\0';
+      while (*p != '<')
+        p++;
       while (*p != ' ')
         p++;
+      /* ... and its label attribute.  */
+      if (strncmp (p, " label=", 7) == 0)
+        {
+          p++;
+          while (*p != ' ')
+            p++;
+        }
+
+      output_paragraph_offset = xml_last_section_output_position;
+      xml_last_section_output_position = 0;
+
+      xml_pop_current_element (); /* remove section element from elements stack */
+
+      if (last_section)
+        last_section = last_section->prev; /* remove section from sections stack */
+      if (temp)
+        {
+          free (temp->name);
+          free (temp);
+        }
+
+      new->title = xstrdup (p);
+      new->next = xml_index_titles;
+      xml_index_titles = new;
     }
-
-  output_paragraph_offset = xml_last_section_output_position;
-  xml_last_section_output_position = 0;
-
-  xml_pop_current_element (); /* remove section element from elements stack */
-
-  if (last_section)
-    last_section = last_section->prev; /* remove section from sections stack */
-  if (temp)
+  else
     {
-      free (temp->name);
-      free (temp);
-    }
+      static int xml_index_titles_reversed = 0;
 
-  /* We put <INDEX> */
-  xml_insert_element (PRINTINDEX, START);
-  /* Remove the final > */
-  output_paragraph_offset--;
+      if (!xml_index_titles_reversed)
+        {
+          xml_index_titles = (XML_INDEX_TITLE *) reverse_list
+            ((GENERIC_LIST *) xml_index_titles);
+          xml_index_titles_reversed = 1;
+        }
 
-  /* and put  ID="node-name"><TITLE>Title</TITLE> */
-  insert_string (p);
+      /* We put <INDEX> */
+      xml_insert_element (PRINTINDEX, START);
+      if (xml_index_titles)
+        {
+          /* Remove the final > */
+          output_paragraph_offset--;
+          /* and put  ID="node-name"><TITLE>Title</TITLE> */
+          insert_string (xml_index_titles->title);
+          free (xml_index_titles->title);
+          xml_index_titles = xml_index_titles->next;
+        }
 
-  if (xml_index_divisions)
-    {
-      xml_insert_element (INDEXDIV, START);
-      indexdivempty = 1;
+      if (xml_index_divisions)
+        {
+          xml_insert_element (INDEXDIV, START);
+          indexdivempty = 1;
+        }
     }
 }
 
 void
-xml_end_index ()
+xml_end_index (void)
 {
   xml_close_indexentry ();
   if (xml_index_divisions)
@@ -1725,9 +1818,8 @@ xml_end_index ()
   xml_insert_element (PRINTINDEX, END);
 }
 
-void
-xml_index_divide (entry)
-    char *entry;
+static void
+xml_index_divide (char *entry)
 {
   char c;
   if (strlen (entry) > (strlen (xml_element_list[CODE].name) + 2) &&
@@ -1751,9 +1843,7 @@ xml_index_divide (entry)
 }
 
 void
-xml_insert_indexentry (entry, node)
-    char *entry;
-    char *node;
+xml_insert_indexentry (char *entry, char *node)
 {
   char *primary = NULL, *secondary;
   if (xml_index_divisions)
@@ -1795,10 +1885,18 @@ xml_insert_indexentry (entry, node)
       xml_insert_element (PRIMARYIE, START);
       execute_string (entry);
     }
-  add_word_args (", %s", _("see "));
+  add_word (", ");
 
-  /* Don't link to @unnumbered sections directly.  */
-  execute_string ("%cxref{%s}", COMMAND_PREFIX, xstrdup (node));
+  /* Don't link to @unnumbered sections directly.
+     We are disabling warnings temporarily, otherwise these xrefs
+     will cause bogus warnings about missing punctuation.  */
+  {
+    extern int print_warnings;
+    int save_print_warnings = print_warnings;
+    print_warnings = 0;
+    execute_string ("%cxref{%s}", COMMAND_PREFIX, xstrdup (node));
+    print_warnings = save_print_warnings;
+  }
 
   if (primary)
     {
@@ -1814,9 +1912,7 @@ xml_insert_indexentry (entry, node)
 }
 
 void
-xml_synindex (from, to)
-  char *from;
-  char *to;
+xml_synindex (char *from, char *to)
 {
   int i, slot;
 
@@ -1845,10 +1941,12 @@ xml_synindex (from, to)
 /*
  * MULTITABLE
  */
+
+static int multitable_columns_count;
+static int *multitable_column_widths;
+
 void
-xml_begin_multitable (ncolumns, column_widths)
-    int ncolumns;
-    int *column_widths;
+xml_begin_multitable (int ncolumns, int *column_widths)
 {
   int i;
   if (docbook)
@@ -1858,12 +1956,11 @@ xml_begin_multitable (ncolumns, column_widths)
       else
         xml_insert_element (MULTITABLE, START);
 
-      xml_insert_element_with_attribute (TGROUP, START, "cols=\"%d\"", ncolumns);
-      for (i=0; i<ncolumns; i++)
-        {
-          xml_insert_element_with_attribute (COLSPEC, START, "colwidth=\"%d*\"", column_widths[i]);
-          xml_insert_element (COLSPEC, END);
-        }
+      multitable_columns_count = ncolumns;
+      multitable_column_widths = xmalloc (sizeof (int) * ncolumns);
+      memcpy (multitable_column_widths, column_widths,
+          sizeof (int) * ncolumns);
+
       xml_no_para = 1;
     }
   else
@@ -1879,9 +1976,24 @@ xml_begin_multitable (ncolumns, column_widths)
     }
 }
 
+static void
+xml_begin_multitable_group (void)
+{
+  int i;
+
+  xml_insert_element_with_attribute (TGROUP, START, "cols=\"%d\"",
+      multitable_columns_count);
+
+  for (i=0; i < multitable_columns_count; i++)
+    {
+      xml_insert_element_with_attribute (COLSPEC, START,
+          "colwidth=\"%d*\"", multitable_column_widths[i]);
+      xml_insert_element (COLSPEC, END);
+    }
+}
+
 void
-xml_end_multitable_row (first_row)
-    int first_row;
+xml_end_multitable_row (int first_row)
 {
   if (!first_row)
     {
@@ -1890,7 +2002,24 @@ xml_end_multitable_row (first_row)
     }
 
   if (headitem_flag)
-    xml_insert_element (THEAD, START);
+    {
+      if (!first_row)
+        {
+          if (after_headitem)
+            xml_insert_element (THEAD, END);
+          else
+            xml_insert_element (TBODY, END);
+          xml_insert_element (TGROUP, END);
+        }
+
+      xml_begin_multitable_group ();
+      xml_insert_element (THEAD, START);
+    }
+  else if (first_row)
+    {
+      xml_begin_multitable_group ();
+      xml_insert_element (TBODY, START);
+    }
   else if (after_headitem)
     {
       xml_insert_element (THEAD, END);
@@ -1904,32 +2033,32 @@ xml_end_multitable_row (first_row)
 }
 
 void
-xml_end_multitable_column ()
+xml_end_multitable_column (void)
 {
   xml_insert_element (ENTRY, END);
   xml_insert_element (ENTRY, START);
 }
 
 void
-xml_end_multitable ()
+xml_end_multitable (void)
 {
-  if (docbook)
+  xml_insert_element (ENTRY, END);
+  xml_insert_element (ROW, END);
+
+  if (after_headitem)
     {
-      xml_insert_element (ENTRY, END);
-      xml_insert_element (ROW, END);
-      xml_insert_element (TBODY, END);
-      xml_insert_element (TGROUP, END);
-      xml_insert_element (MULTITABLE, END);
-      xml_no_para = 0;
+      if (docbook)
+        warning (_("@headitem as the last item of @multitable produces invalid Docbook documents"));
+      xml_insert_element (THEAD, END);
     }
   else
-    {
-      xml_insert_element (ENTRY, END);
-      xml_insert_element (ROW, END);
-      xml_insert_element (TBODY, END);
-      xml_insert_element (MULTITABLE, END);
-      xml_no_para = 0;
-    }
+    xml_insert_element (TBODY, END);
+
+  if (docbook)
+    xml_insert_element (TGROUP, END);
+
+  xml_insert_element (MULTITABLE, END);
+  xml_no_para = 0;
 }
 
 /*
@@ -1940,9 +2069,7 @@ xml_end_multitable ()
   ((c) == '(' || (c) == ')' || (c) == '[' || (c) == ']')
 
 void
-xml_process_defun_args (defun_args, auto_var_p)
-     char **defun_args;
-     int auto_var_p;
+xml_process_defun_args (char **defun_args, int auto_var_p)
 {
   int pending_space = 0;
   int just_after_paramtype = 0;
@@ -2012,7 +2139,7 @@ xml_process_defun_args (defun_args, auto_var_p)
 }
 
 void
-xml_begin_definition ()
+xml_begin_definition (void)
 {
   xml_insert_element (DEFINITION, START);
   xml_definition_level ++;
@@ -2020,7 +2147,7 @@ xml_begin_definition ()
 }
 
 void
-xml_end_definition ()
+xml_end_definition (void)
 {
   if (xml_in_def_item[xml_definition_level])
     {
@@ -2033,13 +2160,8 @@ xml_end_definition ()
 }
 
 void
-xml_begin_def_term (base_type, category, defined_name,
-    type_name, type_name2)
-  int base_type;
-  char *category;
-  char *defined_name;
-  char *type_name;
-  char *type_name2;
+xml_begin_def_term (int base_type, const char *category,
+    char *defined_name, char *type_name, char *type_name2)
 {
   xml_after_def_term = 0;
   xml_insert_element (DEFINITIONTERM, START);
@@ -2072,7 +2194,7 @@ xml_begin_def_term (base_type, category, defined_name,
 
   /* Start with category.  */
   xml_insert_element (DEFCATEGORY, START);
-  execute_string ("%s", category);
+  execute_string (docbook ? "--- %s:" : "%s", category);
   xml_insert_element (DEFCATEGORY, END);
   add_char(' ');
 
@@ -2153,7 +2275,7 @@ xml_begin_def_term (base_type, category, defined_name,
 }
 
 void
-xml_end_def_term ()
+xml_end_def_term (void)
 {
   xml_insert_element (DEFINITIONTERM, END);
   xml_after_def_term = 1;

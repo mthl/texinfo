@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.9 2004-02-28 00:11:56 karl Exp $
+# $Id: gendocs.sh,v 1.10 2004-04-11 17:56:47 karl Exp $
 # 
 # Copyright (C) 2003, 2004 Free Software Foundation, Inc.
 #
@@ -39,7 +39,7 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendoc
 : ${GENDOCS_TEMPLATE_DIR="."}
 unset CDPATH
 
-rcs_revision='$Revision: 1.9 $'
+rcs_revision='$Revision: 1.10 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version

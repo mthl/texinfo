@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.6 2003-12-24 15:12:48 uid65818 Exp $
+   $Id: display.c,v 1.7 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 1997, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2003, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
 #include "display.h"
@@ -26,6 +26,10 @@ extern int info_any_buffered_input_p (void); /* Found in session.c. */
 
 static void free_display (DISPLAY_LINE **display);
 static DISPLAY_LINE **make_display (int width, int height);
+
+void handle_tag (char *tag);
+void handle_tag_start (char *tag);
+void handle_tag_end (char *tag);
 
 /* An array of display lines which tell us what is currently visible on
    the display.  */
@@ -48,9 +52,8 @@ void
 display_clear_display (DISPLAY_LINE **display)
 {
   register int i;
-  register DISPLAY_LINE *display_line;
 
-  for (i = 0; (display_line = display[i]); i++)
+  for (i = 0; display[i]; i++)
     {
       display[i]->text[0] = '\0';
       display[i]->textlen = 0;
@@ -333,7 +336,7 @@ display_update_one_window (WINDOW *win)
               fflush (stdout);
 
               /* Update the display text buffer. */
-	      if (strlen (printed_line) > screenwidth)
+	      if (strlen (printed_line) > (unsigned int) screenwidth)
 		/* printed_line[] can include more than screenwidth
 		   characters if we are under -R and there are escape
 		   sequences in it.  However, entry->text was
@@ -515,7 +518,8 @@ display_scroll_display (int start, int end, int amount)
    starts that used to appear in this window.  OLD_COUNT is the number of lines
    that appear in the OLD_STARTS array. */
 void
-display_scroll_line_starts (WINDOW *window, int old_pagetop, char **old_starts, int old_count)
+display_scroll_line_starts (WINDOW *window, int old_pagetop,
+    char **old_starts, int old_count)
 {
   register int i, old, new;     /* Indices into the line starts arrays. */
   int last_new, last_old;       /* Index of the last visible line. */

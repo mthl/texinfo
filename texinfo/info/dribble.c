@@ -1,6 +1,7 @@
 /* dribble.c -- dribble files for Info.
+   $Id: dribble.c,v 1.3 2004-04-11 17:56:45 karl Exp $
 
-   Copyright (C) 1993, 98 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1998, 2004 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

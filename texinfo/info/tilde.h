@@ -1,12 +1,10 @@
-/* tilde.h: Externally available variables and function in libtilde.a. */
-
-/* This file is part of GNU Info, a program for reading online documentation
-   stored in Info format.
+/* tilde.h: Externally available variables and function in libtilde.a.
+   $Id: tilde.h,v 1.3 2004-04-11 17:56:46 karl Exp $
 
    This file has appeared in prior works by the Free Software Foundation;
    thus it carries copyright dates from 1988 through 1993.
 
-   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993 Free Software
+   Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 2004 Free Software
    Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
