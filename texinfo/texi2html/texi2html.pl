@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.113 2004-04-28 01:05:32 pertusus Exp $
+# $Id: texi2html.pl,v 1.114 2004-04-28 21:49:54 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -5082,7 +5082,7 @@ sub do_names()
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
         $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($nodes{$node}->{'texi'}));
-        $nodes{$node}->{'unformatted'} = unformatted_text ($nodes{$node}->{'texi'});
+        $nodes{$node}->{'unformatted'} = unformatted_text (undef, $nodes{$node}->{'texi'});
         if ($nodes{$node}->{'external_node'} and !$nodes{$node}->{'seen'})
         {
             $nodes{$node}->{'file'} = do_external_ref($node);
@@ -5096,7 +5096,7 @@ sub do_names()
         $section->{'text'} =~ s/^\s*//;
         $section->{'no_texi'} = &$Texi2HTML::Config::protect_text($section->{'number'} . " " .remove_texi($section->{'texi'}));
         $section->{'no_texi'} =~ s/^\s*//;
-        $section->{'unformatted'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .unformatted_text($section->{'texi'});
+        $section->{'unformatted'} = &$Texi2HTML::Config::protect_text($section->{'number'}) . " " .unformatted_text(undef,$section->{'texi'});
         $section->{'unformatted'} =~ s/^\s*//;
     }
     my $tocnr = 1;
@@ -5418,8 +5418,8 @@ sub pass_text()
     $Texi2HTML::THISDOC{'subtitle'} = substitute_line($value{'_subtitle'});
 
     $Texi2HTML::THISDOC{'title_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
-    $Texi2HTML::THISDOC{'unformatted_title'} = unformatted_text($Texi2HTML::THISDOC{'title_texi'});
-    $Texi2HTML::THISDOC{'shorttitle_unformatted'} =  unformatted_text($value{'_shorttitle'});
+    $Texi2HTML::THISDOC{'unformatted_title'} = unformatted_text(undef, $Texi2HTML::THISDOC{'title_texi'});
+    $Texi2HTML::THISDOC{'shorttitle_unformatted'} =  unformatted_text(undef, $value{'_shorttitle'});
     $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_titlefont'}));
     $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitle'}));
 
@@ -5431,10 +5431,10 @@ sub pass_text()
         $top_unformatted =  $element_top->{'unformatted'};
     }
 
-    $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top');
-    $top_unformatted = $top_unformatted || $Texi2HTML::THISDOC{'title_unformatted'} || $Texi2HTML::THISDOC{'shorttitle_unformatted'} || &$I('Top');
-    $Texi2HTML::THISDOC{'unformatted_title'} = $Texi2HTML::THISDOC{'unformatted_title'} || &$I('Untitled Document');
-    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I('Untitled Document');
+    $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top',{}, {'remove_texi' => 1, 'no_protection' => 1});
+    $top_unformatted = $top_unformatted || $Texi2HTML::THISDOC{'title_unformatted'} || $Texi2HTML::THISDOC{'shorttitle_unformatted'} || &$I('Top',{}, {'unformatted' => 1});
+    $Texi2HTML::THISDOC{'unformatted_title'} = $Texi2HTML::THISDOC{'unformatted_title'} || &$I('Untitled Document',{},  {'unformatted' => 1});
+    $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I('Untitled Document',{}, {'remove_texi' => 1, 'no_protection' => 1});
 
     for my $key (keys %Texi2HTML::THISDOC)
     {
@@ -5499,11 +5499,11 @@ sub pass_text()
          'Last',    $element_last->{'no_texi'},
 #FIXME this is not really NO_TEXI as there may be some formatting expanded
 # in &$I, using substitute_line
-         'About',    &$I('About This Document'),
-         'Contents', &$I('Table of Contents'),
-         'Overview', &$I('Short Table of Contents'),
+         'About',    &$I('About This Document', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
+         'Contents', &$I('Table of Contents', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
+         'Overview', &$I('Short Table of Contents', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
          'Top',      $top_no_texi,
-         'Footnotes', &$I('Footnotes'),
+         'Footnotes', &$I('Footnotes', {}, {'remove_texi' => 1, 'no_protection' => 1} ),
         );
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
     %Texi2HTML::UNFORMATTED =
@@ -5512,11 +5512,11 @@ sub pass_text()
          'Last',    $element_last->{'unformatted'},
 #FIXME this is not really UNFORMATTED as there may be some formatting expanded
 # in &$I, using substitute_line
-         'About',    &$I('About This Document'),
-         'Contents', &$I('Table of Contents'),
-         'Overview', &$I('Short Table of Contents'),
+         'About',    &$I('About This Document', {}, {'unformatted' => 1}),
+         'Contents', &$I('Table of Contents',{},  {'unformatted' => 1}),
+         'Overview', &$I('Short Table of Contents', {}, {'unformatted' => 1}),
          'Top',      $top_unformatted,
-         'Footnotes', &$I('Footnotes'),
+         'Footnotes', &$I('Footnotes', {},{'unformatted' => 1}),
         );
     $Texi2HTML::UNFORMATTED{'Index'} = $element_chapter_index->{'unformatted'} if (defined($element_chapter_index));
     $Texi2HTML::TITLEPAGE = '';
@@ -7572,12 +7572,15 @@ sub remove_texi(@)
 }
 
 # Same as remove texi but protect text and use special maps for @-commands
-sub unformatted_text(@)
+sub unformatted_text($@)
 {
+    my $state = shift;
+    $state = {} if (!defined($state));
+    $state->{'remove_texi'} = 1;
     $simple_map_texi_ref = \%Texi2HTML::Config::unformatted_text_simple_map_texi;
     $style_map_texi_ref = \%Texi2HTML::Config::unformatted_text_style_map_texi;
     $texi_map_ref = \%Texi2HTML::Config::unformatted_text_texi_map;
-    my $text = substitute_text ({ 'remove_texi' => 1 }, @_);
+    my $text = substitute_text ($state, @_);
     $simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
     $style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
     $texi_map_ref = \%Texi2HTML::Config::texi_map;
@@ -7592,16 +7595,16 @@ sub enter_table_index_entry($$$$)
     my $line_nr = shift;
     if ($state->{'item'} and ($state->{'table_stack'}->[-1] =~ /^(v|f)table$/))
     {
-        my $index = $1;
-        my $macro = $state->{'item'};
-        delete $state->{'item'};
-        close_stack($text, $stack, $state, $line_nr, undef, 'index_item');
-        my $item = pop @$stack;
-        my $element = $state->{'element'};
-        $element = $state->{'node_ref'} unless ($element);
-        #print STDERR "enter_table_index_entry $item->{'text'}";
-        enter_index_entry($index, $line_nr, $item->{'text'}, $state->{'place'}, $element, 0);
-        add_prev($text, $stack, "\@$macro" . $item->{'text'});
+         my $index = $1;
+         my $macro = $state->{'item'};
+         delete $state->{'item'};
+         close_stack($text, $stack, $state, $line_nr, undef, 'index_item');
+         my $item = pop @$stack;
+         my $element = $state->{'element'};
+         $element = $state->{'node_ref'} unless ($element);
+         #print STDERR "enter_table_index_entry $item->{'text'}";
+         enter_index_entry($index, $line_nr, $item->{'text'}, $state->{'place'}, $element, 0);
+         add_prev($text, $stack, "\@$macro" . $item->{'text'});
     }
 }
 
@@ -9411,6 +9414,8 @@ sub scan_line($$$$;$)
                  {
                      my ($style, $category, $name, $type, $class, $arguments);
                      ($style, $category, $name, $type, $class, $arguments) = parse_def($macro, $_); 
+                     # FIXME maybe a call to substitute_line with state would
+                     # be better ?
                      $category = remove_texi($category) if (defined($category));
                      # FIXME -- --- ''... should be protected (not by makeinfo)
                      $name = remove_texi($name) if (defined($name));
@@ -10680,6 +10685,7 @@ sub substitute_line($;$)
     my $state = shift;
     $state = {} if (!defined($state));
     $state->{'no_paragraph'} = 1;
+    return unformatted_text($state, $line) if ($state->{'unformatted'});
     return substitute_text($state, $line);
 }
 

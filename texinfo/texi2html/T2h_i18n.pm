@@ -295,10 +295,11 @@ sub pretty_date($)
 }
 
 my $error_no_en = 0;
-sub get_string($;$)
+sub get_string($;$$)
 {
     my $string = shift;
     my $arguments = shift;
+    my $state = shift;
     my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;
     if (! exists($T2H_LANGUAGES->{'en'}))
     {
@@ -322,7 +323,7 @@ sub get_string($;$)
             $string = $T2H_LANGUAGES->{'en'}->{$string};
         }
     }
-    return main::substitute_line($string) unless (defined($arguments));
+    return main::substitute_line($string, $state) unless (defined($arguments) or !keys(%$arguments));
     my $result = '';
     while ($string)
     {
@@ -351,7 +352,7 @@ sub get_string($;$)
             last;
         }
     }
-    $string = main::substitute_line($result);
+    $string = main::substitute_line($result, $state);
     $result = '';
     while ($string)
     {

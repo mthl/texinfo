@@ -1,4 +1,9 @@
 2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* T2h_i18n.pl, texi2html.pl: pass the state to the internationalized
+	strings if needed. 
+
+2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
 	
 	* texi2html.init, texi2html.pl: generate unformatted text with 
 	text protected and %unformatted_text_* hashs used.
