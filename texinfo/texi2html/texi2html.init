@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.6 2001-09-18 22:15:21 reiter Exp $
+# $Id: texi2html.init,v 1.7 2001-11-21 09:42:33 adrian Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -116,7 +116,9 @@ $T2H_OPTIONS -> {iso} =
 # -I
 # list directories where @include files are searched for (besides the
 # directory of the doc file) additional '-I' args add to this list
-my @T2H_INCLUDE_DIRS = (".");
+# APA: Don't implicitely search ., to conform with the docs!
+# my @T2H_INCLUDE_DIRS = (".");
+my @T2H_INCLUDE_DIRS = ();
 $T2H_OPTIONS -> {I} =
 {
  type => '=s',

@@ -1,3 +1,9 @@
+2001-11-19  Adrian Aichner  <adrian@xemacs.org>
+
+	* texi2html.init: Initialize T2H_INCLUDE_DIRS to the empty list.
+	* texi2html.pl (LocateIncludeFile): Don't look in ., unless it's
+	part of T2H_INCLUDE_DIRS.
+
 2001-09-18  Derek Price  <dprice@collab.net>
 
 	* texi2html.pl (T2H_HOMEPAGE): Use new link.

@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.5 2001-09-19 21:12:27 reiter Exp $
+# $Id: texi2html.pl,v 1.6 2001-11-21 09:42:33 adrian Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = <<EOT;
@@ -3929,7 +3929,8 @@ sub LocateIncludeFile
     my $file = shift;
     my $dir;
 
-    return $file if (-e $file && -r $file);
+    # APA: Don't implicitely search ., to conform with the docs!
+    # return $file if (-e $file && -r $file);
     foreach $dir (@T2H_INCLUDE_DIRS)
     {
         return "$dir/$file" if (-e "$dir/$file" && -r "$dir/$file");
