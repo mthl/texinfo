@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.7 2003-05-10 15:56:01 karl Exp $
+   $Id: index.c,v 1.8 2003-05-16 23:52:40 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -634,8 +634,9 @@ sort_index (index)
   make_index_entries_unique (array, count);
 
   /* Replace the original index with the sorted one, in case the
-     document wants to print it again.  */
-  *index = **array;
+     document wants to print it again.  If the index wasn't empty.  */
+  if (index)
+    *index = **array;
 
   return array;
 }
