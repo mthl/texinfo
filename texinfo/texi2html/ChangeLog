@@ -1,3 +1,7 @@
+2003-04-23  Patrice Dumas <dumas@centre-cired.fr>
+	* .cvsignore: add autom4te-2.53.cache and check_texinfo.pl
+	* Tests/.cvsignore: create .cvsignore for Tests
+
 2003-04-22  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: constants declared early as they are used in 
 	texi2html.init (at least $WARN is used)
