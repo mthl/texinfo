@@ -1,3 +1,8 @@
+2004-07-02  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makinfo.c (execute_string): don't worry about
+		mismatched multiline commands if executing_macro.
+
 2004-06-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex: Various doc fixes.
