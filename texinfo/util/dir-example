@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.44 2004-04-11 17:56:47 karl Exp $
+$Id: dir-example,v 1.45 2004-04-18 13:15:42 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -39,7 +39,7 @@ Basics
 * Time: (time).                 Measuring program resource usage.
 
 Text creation and manipulation
-* Diff: (diff).                 Comparing and merging programs.
+* Diff: (diff).                 Comparing and merging files.
 * Ed: (ed).                     Line editor.
 * Gawk: (gawk).                 A text scanning and processing language.
 * grep: (grep).                 Print lines matching a pattern.
@@ -285,7 +285,7 @@ Individual utilities
 * chown: (coreutils)chown invocation.           Change file owners/groups.
 * chroot: (coreutils)chroot invocation.         Specify the root directory.
 * cksum: (coreutils)cksum invocation.           Print POSIX CRC checksum.
-* cmp: (diff)Invoking cmp.                      Character-by-character diff.
+* cmp: (diff)Invoking cmp.                      Compare 2 files byte by byte.
 * comm: (coreutils)comm invocation.             Compare sorted files by line.
 * comsatd: (mailutils)comsatd.                  Comsat daemon.
 * config.status: (autoconf)config.status Invocation. Recreating configurations.
@@ -296,7 +296,8 @@ Individual utilities
 * date: (coreutils)date invocation.             Print/set system date and time.
 * dd: (coreutils)dd invocation.                 Copy and convert a file.
 * df: (coreutils)df invocation.                 Report filesystem disk usage.
-* diff3: (diff)Invoking diff3.                  Three-way diff.
+* diff: (diff)Invoking diff.                    Compare 2 files line by line.
+* diff3: (diff)Invoking diff3.                  Compare 3 files line by line.
 * dir: (coreutils)dir invocation.               List directories briefly.
 * dircolors: (coreutils)dircolors invocation.   Color setup for ls.
 * dirname: (coreutils)dirname invocation.       Strip non-directory suffix.
@@ -385,7 +386,7 @@ Individual utilities
 * objdump: (binutils)objdump.                   Display info from object files.
 * od: (coreutils)od invocation.                 Dump files in octal, etc.
 * paste: (coreutils)paste invocation.           Merge lines of files.
-* patch: (diff)Invoking patch.                  Automatically applying diffs.
+* patch: (diff)Invoking patch.                  Apply a patch to a file.
 * patgen: (web2c)Patgen invocation.             Creating hyphenation patterns.
 * pathchk: (coreutils)pathchk invocation.       Check file name portability.
 * pid: (id-utils)pid invocation.                Looking up filenames.
@@ -409,7 +410,7 @@ Individual utilities
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
 * rm: (coreutils)rm invocation.                 Remove files.
 * rmdir: (coreutils)rmdir invocation.           Remove empty directories.
-* sdiff: (diff)Invoking sdiff.                  Interactively merge files.
+* sdiff: (diff)Invoking sdiff.                  Merge 2 files side-by-side.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (coreutils)seq invocation.               Print numeric sequences
 * shar: (sharutils)shar invocation.             Create shell archive.
