@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.5\n"
 "POT-Creation-Date: 2003-01-24 13:32-0800\n"
-"PO-Revision-Date: 2003-02-18 15:16+0300\n"
-"Last-Translator: Oleg S. Tihonov <tihonov@ffke-campus.mipt.ru>\n"
+"PO-Revision-Date: 2003-05-05 09:47+0400\n"
+"Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=koi8-r\n"
@@ -412,15 +412,15 @@ msgstr ""
 
 #: info/infodoc.c:49
 msgid "\\%-10[quit-help]  Quit this help.\n"
-msgstr "  %-10[quit-help]  Покинуть эту справку.\n"
+msgstr "\\%-10[quit-help]  Покинуть эту справку.\n"
 
 #: info/infodoc.c:50
 msgid "\\%-10[quit]  Quit Info altogether.\n"
-msgstr "  %-10[quit]  Покинуть также Info.\n"
+msgstr "\\%-10[quit]  Покинуть также Info.\n"
 
 #: info/infodoc.c:51
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
-msgstr "  %-10[get-info-help-node]  Вызвать обучающее руководство.\n"
+msgstr "\\%-10[get-info-help-node]  Вызвать обучающее руководство.\n"
 
 #: info/infodoc.c:53 info/infodoc.c:102
 msgid ""
@@ -432,15 +432,15 @@ msgstr ""
 
 #: info/infodoc.c:55
 msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
-msgstr "  %-10[next-node]  Перейти к \"следующей\" ноде.\n"
+msgstr "\\%-10[next-node]  Перейти к \"следующей\" ноде.\n"
 
 #: info/infodoc.c:56
 msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
-msgstr "  %-10[prev-node]  Перейти к \"предыдущей\" ноде.\n"
+msgstr "\\%-10[prev-node]  Перейти к \"предыдущей\" ноде.\n"
 
 #: info/infodoc.c:57
 msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "  %-10[up-node]  Перейти к ноде \"вверх\".\n"
+msgstr "\\%-10[up-node]  Перейти к ноде \"вверх\".\n"
 
 #: info/infodoc.c:58
 msgid ""
@@ -452,31 +452,31 @@ msgstr ""
 
 #: info/infodoc.c:60
 msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr "  %-10[xref-item]  Перейти по ссылке.  Считывает имя ссылки.\n"
+msgstr "\\%-10[xref-item]  Перейти по ссылке.  Считывает имя ссылки.\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr "  %-10[history-node]  Перейти на последнюю ноду в этом окне.\n"
+msgstr "\\%-10[history-node]  Перейти на последнюю ноду в этом окне.\n"
 
 #: info/infodoc.c:62
 msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr "  %-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
+msgstr "\\%-10[move-to-next-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
 
 #: info/infodoc.c:63
 msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
-msgstr "  %-10[move-to-prev-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
+msgstr "\\%-10[move-to-prev-xref]  Переместиться к следующей гиперссылке в этой ноде.\n"
 
 #: info/infodoc.c:64
 msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr "  %-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
+msgstr "\\%-10[select-reference-this-line]  Перейти по гиперссылке под курсором.\n"
 
 #: info/infodoc.c:65
 msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
-msgstr "  %-10[dir-node]  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
+msgstr "\\%-10[dir-node]  Перейти к корневой ноде.  Эквивалентно `g (DIR)'.\n"
 
 #: info/infodoc.c:66
 msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr "  %-10[top-node]  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
+msgstr "\\%-10[top-node]  Перейти к ноде Top.  Эквивалентно `g Top'.\n"
 
 #: info/infodoc.c:68 info/infodoc.c:116
 msgid ""
@@ -488,11 +488,11 @@ msgstr ""
 
 #: info/infodoc.c:70
 msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
-msgstr "  %-10[beginning-of-node]  Переместиться в начало этой ноды.\n"
+msgstr "\\%-10[beginning-of-node]  Переместиться в начало этой ноды.\n"
 
 #: info/infodoc.c:71
 msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
-msgstr "  %-10[end-of-node]  Переместиться в конец этой ноды.\n"
+msgstr "\\%-10[end-of-node]  Переместиться в конец этой ноды.\n"
 
 #: info/infodoc.c:72
 msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
@@ -504,11 +504,11 @@ msgstr "\\%-10[prev-line]  Прокрутить на страницу назад.\n"
 
 #: info/infodoc.c:74
 msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "  %-10[scroll-forward]  Прокрутить на страницу вперед.\n"
+msgstr "\\%-10[scroll-forward]  Прокрутить на страницу вперед.\n"
 
 #: info/infodoc.c:75
 msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "  %-10[scroll-backward]  Прокрутить на страницу назад.\n"
+msgstr "\\%-10[scroll-backward]  Прокрутить на страницу назад.\n"
 
 #: info/infodoc.c:77 info/infodoc.c:125
 msgid ""
@@ -520,11 +520,11 @@ msgstr ""
 
 #: info/infodoc.c:79
 msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
-msgstr "  %-10[menu-digit]  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
+msgstr "\\%-10[menu-digit]  Выбрать первый ... девятый пункт меню в текущей ноде.\n"
 
 #: info/infodoc.c:80
 msgid "\\%-10[last-menu-item]  Pick last item in node's menu.\n"
-msgstr "  %-10[last-menu-item]  Выбрать последний пункт меню в текущей ноде\n"
+msgstr "\\%-10[last-menu-item]  Выбрать последний пункт меню в текущей ноде\n"
 
 #: info/infodoc.c:81
 msgid ""
