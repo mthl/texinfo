@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.74 2003-11-15 14:57:47 karl Exp $
+$Id: NEWS,v 1.75 2003-11-17 21:36:33 dirt Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -34,7 +34,8 @@ convenience, here's a url to one of the relevant sections:
       entities used for bullets, quotes, dashes, and others;
       accented dotless i supported.
   . XML output: new tags to preserve more source features.
-  . Docbook output: improved translation in general; for instance,
+  . Docbook output: upgraded DTD to Docbook XML 4.2.
+      improved translation in general; for instance,
       line annotations and marked quotations.
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
