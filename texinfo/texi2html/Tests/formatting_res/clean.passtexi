@@ -89,1497 +89,1499 @@ clean.texi(,89) @@registeredsymbol @registeredsymbol{}
 clean.texi(,90) @@ordf @ordf{}
 clean.texi(,91) @@ordm @ordm{}
 clean.texi(,92) @@comma @comma{}
-clean.texi(,93) 
-clean.texi(,94) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(,95) @code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}
-clean.texi(,96) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(,97) @code{@@acronym@{--a, another @@comma@{@} acronym@}} @acronym{--a,another @comma{} acronym}
-clean.texi(,98) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(,99) @code{@@acronym@{ATB, A @@TeX@{@} Bad@}} @acronym{ATB, A @TeX{} Bad}.
-clean.texi(,100) @code{@@acronym@{ACT, A @@strong@{Cold@} Thing@}} @acronym{ACT, A @strong{Cold} Thing}.
-clean.texi(,101) @code{@@acronym@{AC, A @@strong@{Cold@}@}} @acronym{AC, A @strong{Cold}}.
-clean.texi(,102) @code{@@acronym@{AT, A @@TeX@{@}@}} @acronym{AT, A @TeX{}}.
-clean.texi(,103) @code{@@acronym@{ATB@}} @acronym{ATB}.
-clean.texi(,104) @code{@@acronym@{ACT@}} @acronym{ACT}.
-clean.texi(,105) @code{@@acronym@{AC@}} @acronym{AC}.
-clean.texi(,106) @code{@@acronym@{AT@}} @acronym{AT}.
-clean.texi(,107) @code{@@acronym@{@@'E@@comma@{@}A, @@'Etude@@comma@{@} Autonome @}} @acronym{@'E@comma{}A, @'Etude@comma{} Autonome}
-clean.texi(,108) @code{@@acronym@{@@'E@@comma@{@}A@}} @acronym{@'E@comma{}A}
-clean.texi(,109) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
-clean.texi(,110) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
-clean.texi(,111) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
-clean.texi(,112) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
-clean.texi(,113) 
-clean.texi(,114) @code{@@asis@{--a@}} @asis{--a}
-clean.texi(,115) @code{@@b@{--a@}} @b{--a}
-clean.texi(,116) @code{@@cite@{--a@}} @cite{--a}
-clean.texi(,117) @code{@@code@{--a@}} @code{--a}
-clean.texi(,118) @code{@@command@{--a@}} @command{--a}
-clean.texi(,119) @code{@@ctrl@{--a@}} @ctrl{--a}
-clean.texi(,120) @code{@@dfn@{--a@}} @dfn{--a}
-clean.texi(,121) @code{@@dmn@{--a@}} @dmn{--a}
-clean.texi(,122) @code{@@email@{--a,--b@}} @email{--a,--b}
-clean.texi(,123) @code{@@email@{,--b@}} @email{,--b}
-clean.texi(,124) @code{@@email@{--a@}} @email{--a}
-clean.texi(,125) @code{@@emph@{--a@}} @emph{--a}
-clean.texi(,126) @code{@@env@{--a@}} @env{--a}
-clean.texi(,127) @code{@@file@{--a@}} @file{--a}
-clean.texi(,128) @code{@@i@{--a@}} @i{--a}
-clean.texi(,129) @code{@@kbd@{--a@}} @kbd{--a}
-clean.texi(,130) @code{@@key@{--a@}} @key{--a}
-clean.texi(,131) @code{@@math@{--a@}} @math{--a}
-clean.texi(,132) @code{@@option@{--a@}} @option{--a}
-clean.texi(,133) @code{@@r@{--a@}} @r{--a}
-clean.texi(,134) @code{@@samp@{--a@}} @samp{--a}
-clean.texi(,135) @code{@@sc@{--a@}} @sc{--a}
-clean.texi(,136) @code{@@strong@{--a@}} @strong{--a}
-clean.texi(,137) @code{@@t@{--a@}} @t{--a}
-clean.texi(,138) @code{@@slanted@{--a@}} @slanted{--a}
-clean.texi(,139) @code{@@titlefont@{--a@}} @titlefont{--a}
-clean.texi(,140) @code{@@indicateurl@{--a@}} @indicateurl{--a}
-clean.texi(,141) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-clean.texi(,142) @code{@@uref@{--a@}} @uref{--a}
-clean.texi(,143) @code{@@uref@{,--b@}} @uref{,--b}
-clean.texi(,144) @code{@@url@{--a,--b@}} @url{--a,--b}
-clean.texi(,145) @code{@@url@{--a,@}} @url{--a,}
-clean.texi(,146) @code{@@url@{,--b@}} @url{,--b}
-clean.texi(,147) @code{@@var@{--a@}} @var{--a}
-clean.texi(,148) @code{@@verb@{:--a:@}} @verb{:--a:}
-clean.texi(,149) @code{@@w@{--a@}} @w{--a}
-clean.texi(,150) @code{@@H@{a@}} @H{a}
-clean.texi(,151) @code{@@H@{--a@}} @H{--a}
-clean.texi(,152) @code{@@dotaccent@{a@}} @dotaccent{a}
-clean.texi(,153) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-clean.texi(,154) @code{@@ringaccent@{a@}} @ringaccent{a}
-clean.texi(,155) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-clean.texi(,156) @code{@@tieaccent@{a@}} @tieaccent{a}
-clean.texi(,157) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-clean.texi(,158) @code{@@u@{a@}} @u{a}
-clean.texi(,159) @code{@@u@{--a@}} @u{--a}
-clean.texi(,160) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-clean.texi(,161) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-clean.texi(,162) @code{@@udotaccent@{a@}} @udotaccent{a}
-clean.texi(,163) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-clean.texi(,164) @code{@@v@{a@}} @v{a}
-clean.texi(,165) @code{@@v@{--a@}} @v{--a}
-clean.texi(,166) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(,167) @code{@@,@{--c@}} @m_cedilla{--c}
-clean.texi(,168) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-clean.texi(,169) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-clean.texi(,170) 
-clean.texi(,171) @code{@@image@{f--ile,,@}} @image{f--ile,,}
-clean.texi(,172) @code{@@image@{f--ile@}} @image{f--ile}
-clean.texi(,173) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
-clean.texi(,174) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-clean.texi(,175) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
-clean.texi(,176) 
-clean.texi(,177) @quotation
-clean.texi(,178) a q--uotation
-clean.texi(,179) @end quotation
-clean.texi(,180) 
-clean.texi(,181) @itemize
-clean.texi(,182) @item i--temize
-clean.texi(,183) @end itemize
-clean.texi(,184) 
-clean.texi(,185) @itemize +
-clean.texi(,186) @item i--tem +
-clean.texi(,187) @end itemize
-clean.texi(,188) 
-clean.texi(,189) @itemize @bullet
-clean.texi(,190) @item b--ullet
-clean.texi(,191) @end itemize
-clean.texi(,192) 
-clean.texi(,193) @itemize @emph
-clean.texi(,194) @item e--mph item
-clean.texi(,195) @end itemize
-clean.texi(,196) 
-clean.texi(,197) @itemize @emph{} after emph
-clean.texi(,198) @item e--mph item
-clean.texi(,199) @end itemize
-clean.texi(,200) 
-clean.texi(,201) @itemize @bullet{a--n itemize line}
-clean.texi(,202) @item i--tem 1
-clean.texi(,203) @item i--tem 2
-clean.texi(,204) @end itemize
-clean.texi(,205) 
-clean.texi(,206) @enumerate
-clean.texi(,207) @item e--numerate
-clean.texi(,208) @end enumerate
-clean.texi(,209) 
-clean.texi(,210) @multitable @columnfractions 6 7
-clean.texi(,211) @item mu--ltitable item @tab multitable tab
-clean.texi(,212) @end multitable
-clean.texi(,213) 
-clean.texi(,214) @example
-clean.texi(,215) e--xample  some
-clean.texi(,216)    text
-clean.texi(,217) @end example
-clean.texi(,218) 
-clean.texi(,219) @smallexample
-clean.texi(,220) s--mallexample
-clean.texi(,221) @end smallexample
-clean.texi(,222) 
-clean.texi(,223) @display 
-clean.texi(,224) d--isplay
-clean.texi(,225) @end display
-clean.texi(,226) 
-clean.texi(,227) @smalldisplay
-clean.texi(,228) s--malldisplay
-clean.texi(,229) @end smalldisplay
-clean.texi(,230) 
-clean.texi(,231) @lisp
-clean.texi(,232) l--isp
-clean.texi(,233) @end lisp
-clean.texi(,234) 
-clean.texi(,235) @smalllisp
-clean.texi(,236) s--malllisp
-clean.texi(,237) @end smalllisp
-clean.texi(,238) 
-clean.texi(,239) @format
-clean.texi(,240) f--ormat
-clean.texi(,241) @end format
-clean.texi(,242) 
-clean.texi(,243) @smallformat
-clean.texi(,244) s--mallformat
-clean.texi(,245) @end smallformat
-clean.texi(,246) 
-clean.texi(,247) @deffn c--ategory d--effn_name a--rguments...
-clean.texi(,248) d--effn
-clean.texi(,249) @end deffn
-clean.texi(,250) 
-clean.texi(,251) @deffn cate--gory de--ffn_name ar--guments...
-clean.texi(,252) def--fn
-clean.texi(,253) @end deffn
-clean.texi(,254) 
-clean.texi(,255) @defvr c--ategory d--efvr_name
-clean.texi(,256) d--efvr
-clean.texi(,257) @end defvr
-clean.texi(,258) 
-clean.texi(,259) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-clean.texi(,260) d--eftypefn
-clean.texi(,261) @end deftypefn
-clean.texi(,262) 
-clean.texi(,263) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-clean.texi(,264) d--eftypeop
-clean.texi(,265) @end deftypeop
-clean.texi(,266) 
-clean.texi(,267) @deftypevr c--ategory t--ype d--eftypevr_name
-clean.texi(,268) d--eftypevr
-clean.texi(,269) @end deftypevr
-clean.texi(,270) 
-clean.texi(,271) @defcv c--ategory c--lass d--efcv_name
-clean.texi(,272) d--efcv
-clean.texi(,273) @end defcv
-clean.texi(,274) 
-clean.texi(,275) @defop c--ategory c--lass d--efop_name a--rguments...
-clean.texi(,276) d--efop
-clean.texi(,277) @end defop
-clean.texi(,278) 
-clean.texi(,279) @deftp c--ategory d--eftp_name a--ttributes...
-clean.texi(,280) d--eftp
-clean.texi(,281) @end deftp
-clean.texi(,282) 
-clean.texi(,283) @defun d--efun_name a--rguments...
-clean.texi(,284) d--efun
-clean.texi(,285) @end defun
-clean.texi(,286) 
-clean.texi(,287) @defmac d--efmac_name a--rguments...
-clean.texi(,288) d--efmac
-clean.texi(,289) @end defmac
-clean.texi(,290) 
-clean.texi(,291) @defspec d--efspec_name a--rguments...
-clean.texi(,292) d--efspec
-clean.texi(,293) @end defspec
-clean.texi(,294) 
-clean.texi(,295) @defvar d--efvar_name
-clean.texi(,296) d--efvar
-clean.texi(,297) @end defvar
-clean.texi(,298) 
-clean.texi(,299) @defopt d--efopt_name
-clean.texi(,300) d--efopt
-clean.texi(,301) @end defopt
-clean.texi(,302) 
-clean.texi(,303) @deftypefun t--ype d--eftypefun_name a--rguments...
-clean.texi(,304) d--eftypefun
-clean.texi(,305) @end deftypefun
-clean.texi(,306) 
-clean.texi(,307) @deftypevar t--ype d--eftypevar_name
-clean.texi(,308) d--eftypevar
-clean.texi(,309) @end deftypevar
-clean.texi(,310) 
-clean.texi(,311) @defivar c--lass d--efivar_name
-clean.texi(,312) d--efivar
-clean.texi(,313) @end defivar
-clean.texi(,314) 
-clean.texi(,315) @deftypeivar c--lass t--ype d--eftypeivar_name
-clean.texi(,316) d--eftypeivar
-clean.texi(,317) @end deftypeivar
-clean.texi(,318) 
-clean.texi(,319) @defmethod c--lass d--efmethod_name a--rguments...
-clean.texi(,320) d--efmethod
-clean.texi(,321) @end defmethod
-clean.texi(,322) 
-clean.texi(,323) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-clean.texi(,324) d--eftypemethod
-clean.texi(,325) @end deftypemethod
-clean.texi(,326) 
-clean.texi(,327) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
-clean.texi(,328) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-clean.texi(,329) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-clean.texi(,330) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(,331) 
-clean.texi(,332) @code{@@ref@{chapter@}} @ref{chapter}
-clean.texi(,333) @code{@@ref@{node@}} @ref{node}
-clean.texi(,334) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-clean.texi(,335) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-clean.texi(,336) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-clean.texi(,337) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-clean.texi(,338) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-clean.texi(,339) @code{@@ref@{node,,title@}} @ref{node,,title}
-clean.texi(,340) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-clean.texi(,341) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-clean.texi(,342) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-clean.texi(,343) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-clean.texi(,344) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-clean.texi(,345) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-clean.texi(,346) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-clean.texi(,347) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-clean.texi(,348) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-clean.texi(,349) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-clean.texi(,350) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-clean.texi(,351) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-clean.texi(,352) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-clean.texi(,353) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-clean.texi(,354) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-clean.texi(,355) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-clean.texi(,356) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-clean.texi(,357) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-clean.texi(,358) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-clean.texi(,359) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-clean.texi(,360) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-clean.texi(,361) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-clean.texi(,362) 
-clean.texi(,363) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(,364) @code{@@inforef@{chapter@}} @inforef{chapter}
-clean.texi(,365) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-clean.texi(,366) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-clean.texi(,367) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-clean.texi(,368) @code{@@inforef@{node@}} @inforef{node}
-clean.texi(,369) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-clean.texi(,370) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-clean.texi(,371) 
-clean.texi(,372) @table @bullet
-clean.texi(,373) @item a
-clean.texi(,374) l--ine
-clean.texi(,375) @end table
-clean.texi(,376) 
-clean.texi(,377) @vtable @asis
-clean.texi(,378) @item a
-clean.texi(,379) l--ine
-clean.texi(,380) @end vtable
-clean.texi(,381) 
-clean.texi(,382) @ftable @minus
-clean.texi(,383) @item a
-clean.texi(,384) l--ine
-clean.texi(,385) @end ftable
-clean.texi(,386) 
-clean.texi(,387) @flushleft
-clean.texi(,388) flushleft
-clean.texi(,389) @end flushleft
-clean.texi(,390) 
-clean.texi(,391) @flushright
-clean.texi(,392) flushright
-clean.texi(,393) @end flushright
-clean.texi(,394) 
-clean.texi(,395) @center centered line
+clean.texi(,93) @@euro @euro{}
+clean.texi(,94) 
+clean.texi(,95) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(,96) @code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}
+clean.texi(,97) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(,98) @code{@@acronym@{--a, another @@comma@{@} acronym@}} @acronym{--a,another @comma{} acronym}
+clean.texi(,99) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(,100) @code{@@acronym@{ATB, A @@TeX@{@} Bad@}} @acronym{ATB, A @TeX{} Bad}.
+clean.texi(,101) @code{@@acronym@{ACT, A @@strong@{Cold@} Thing@}} @acronym{ACT, A @strong{Cold} Thing}.
+clean.texi(,102) @code{@@acronym@{AC, A @@strong@{Cold@}@}} @acronym{AC, A @strong{Cold}}.
+clean.texi(,103) @code{@@acronym@{AT, A @@TeX@{@}@}} @acronym{AT, A @TeX{}}.
+clean.texi(,104) @code{@@acronym@{ATB@}} @acronym{ATB}.
+clean.texi(,105) @code{@@acronym@{ACT@}} @acronym{ACT}.
+clean.texi(,106) @code{@@acronym@{AC@}} @acronym{AC}.
+clean.texi(,107) @code{@@acronym@{AT@}} @acronym{AT}.
+clean.texi(,108) @code{@@acronym@{@@'E@@comma@{@}A, @@'Etude@@comma@{@} Autonome @}} @acronym{@'E@comma{}A, @'Etude@comma{} Autonome}
+clean.texi(,109) @code{@@acronym@{@@'E@@comma@{@}A@}} @acronym{@'E@comma{}A}
+clean.texi(,110) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
+clean.texi(,111) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+clean.texi(,112) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
+clean.texi(,113) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+clean.texi(,114) 
+clean.texi(,115) @code{@@asis@{--a@}} @asis{--a}
+clean.texi(,116) @code{@@b@{--a@}} @b{--a}
+clean.texi(,117) @code{@@cite@{--a@}} @cite{--a}
+clean.texi(,118) @code{@@code@{--a@}} @code{--a}
+clean.texi(,119) @code{@@command@{--a@}} @command{--a}
+clean.texi(,120) @code{@@ctrl@{--a@}} @ctrl{--a}
+clean.texi(,121) @code{@@dfn@{--a@}} @dfn{--a}
+clean.texi(,122) @code{@@dmn@{--a@}} @dmn{--a}
+clean.texi(,123) @code{@@email@{--a,--b@}} @email{--a,--b}
+clean.texi(,124) @code{@@email@{,--b@}} @email{,--b}
+clean.texi(,125) @code{@@email@{--a@}} @email{--a}
+clean.texi(,126) @code{@@emph@{--a@}} @emph{--a}
+clean.texi(,127) @code{@@env@{--a@}} @env{--a}
+clean.texi(,128) @code{@@file@{--a@}} @file{--a}
+clean.texi(,129) @code{@@i@{--a@}} @i{--a}
+clean.texi(,130) @code{@@kbd@{--a@}} @kbd{--a}
+clean.texi(,131) @code{@@key@{--a@}} @key{--a}
+clean.texi(,132) @code{@@math@{--a@}} @math{--a}
+clean.texi(,133) @code{@@option@{--a@}} @option{--a}
+clean.texi(,134) @code{@@r@{--a@}} @r{--a}
+clean.texi(,135) @code{@@samp@{--a@}} @samp{--a}
+clean.texi(,136) @code{@@sc@{--a@}} @sc{--a}
+clean.texi(,137) @code{@@strong@{--a@}} @strong{--a}
+clean.texi(,138) @code{@@t@{--a@}} @t{--a}
+clean.texi(,139) @code{@@slanted@{--a@}} @slanted{--a}
+clean.texi(,140) @code{@@sansserif@{--a@}} @sansserif{--a}
+clean.texi(,141) @code{@@titlefont@{--a@}} @titlefont{--a}
+clean.texi(,142) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+clean.texi(,143) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+clean.texi(,144) @code{@@uref@{--a@}} @uref{--a}
+clean.texi(,145) @code{@@uref@{,--b@}} @uref{,--b}
+clean.texi(,146) @code{@@url@{--a,--b@}} @url{--a,--b}
+clean.texi(,147) @code{@@url@{--a,@}} @url{--a,}
+clean.texi(,148) @code{@@url@{,--b@}} @url{,--b}
+clean.texi(,149) @code{@@var@{--a@}} @var{--a}
+clean.texi(,150) @code{@@verb@{:--a:@}} @verb{:--a:}
+clean.texi(,151) @code{@@w@{--a@}} @w{--a}
+clean.texi(,152) @code{@@H@{a@}} @H{a}
+clean.texi(,153) @code{@@H@{--a@}} @H{--a}
+clean.texi(,154) @code{@@dotaccent@{a@}} @dotaccent{a}
+clean.texi(,155) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+clean.texi(,156) @code{@@ringaccent@{a@}} @ringaccent{a}
+clean.texi(,157) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+clean.texi(,158) @code{@@tieaccent@{a@}} @tieaccent{a}
+clean.texi(,159) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+clean.texi(,160) @code{@@u@{a@}} @u{a}
+clean.texi(,161) @code{@@u@{--a@}} @u{--a}
+clean.texi(,162) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+clean.texi(,163) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+clean.texi(,164) @code{@@udotaccent@{a@}} @udotaccent{a}
+clean.texi(,165) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+clean.texi(,166) @code{@@v@{a@}} @v{a}
+clean.texi(,167) @code{@@v@{--a@}} @v{--a}
+clean.texi(,168) @code{@@,@{c@}} @m_cedilla{c}
+clean.texi(,169) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(,170) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+clean.texi(,171) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+clean.texi(,172) 
+clean.texi(,173) @code{@@image@{f--ile,,@}} @image{f--ile,,}
+clean.texi(,174) @code{@@image@{f--ile@}} @image{f--ile}
+clean.texi(,175) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
+clean.texi(,176) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+clean.texi(,177) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+clean.texi(,178) 
+clean.texi(,179) @quotation
+clean.texi(,180) a q--uotation
+clean.texi(,181) @end quotation
+clean.texi(,182) 
+clean.texi(,183) @itemize
+clean.texi(,184) @item i--temize
+clean.texi(,185) @end itemize
+clean.texi(,186) 
+clean.texi(,187) @itemize +
+clean.texi(,188) @item i--tem +
+clean.texi(,189) @end itemize
+clean.texi(,190) 
+clean.texi(,191) @itemize @bullet
+clean.texi(,192) @item b--ullet
+clean.texi(,193) @end itemize
+clean.texi(,194) 
+clean.texi(,195) @itemize @emph
+clean.texi(,196) @item e--mph item
+clean.texi(,197) @end itemize
+clean.texi(,198) 
+clean.texi(,199) @itemize @emph{} after emph
+clean.texi(,200) @item e--mph item
+clean.texi(,201) @end itemize
+clean.texi(,202) 
+clean.texi(,203) @itemize @bullet{a--n itemize line}
+clean.texi(,204) @item i--tem 1
+clean.texi(,205) @item i--tem 2
+clean.texi(,206) @end itemize
+clean.texi(,207) 
+clean.texi(,208) @enumerate
+clean.texi(,209) @item e--numerate
+clean.texi(,210) @end enumerate
+clean.texi(,211) 
+clean.texi(,212) @multitable @columnfractions 6 7
+clean.texi(,213) @item mu--ltitable item @tab multitable tab
+clean.texi(,214) @end multitable
+clean.texi(,215) 
+clean.texi(,216) @example
+clean.texi(,217) e--xample  some
+clean.texi(,218)    text
+clean.texi(,219) @end example
+clean.texi(,220) 
+clean.texi(,221) @smallexample
+clean.texi(,222) s--mallexample
+clean.texi(,223) @end smallexample
+clean.texi(,224) 
+clean.texi(,225) @display 
+clean.texi(,226) d--isplay
+clean.texi(,227) @end display
+clean.texi(,228) 
+clean.texi(,229) @smalldisplay
+clean.texi(,230) s--malldisplay
+clean.texi(,231) @end smalldisplay
+clean.texi(,232) 
+clean.texi(,233) @lisp
+clean.texi(,234) l--isp
+clean.texi(,235) @end lisp
+clean.texi(,236) 
+clean.texi(,237) @smalllisp
+clean.texi(,238) s--malllisp
+clean.texi(,239) @end smalllisp
+clean.texi(,240) 
+clean.texi(,241) @format
+clean.texi(,242) f--ormat
+clean.texi(,243) @end format
+clean.texi(,244) 
+clean.texi(,245) @smallformat
+clean.texi(,246) s--mallformat
+clean.texi(,247) @end smallformat
+clean.texi(,248) 
+clean.texi(,249) @deffn c--ategory d--effn_name a--rguments...
+clean.texi(,250) d--effn
+clean.texi(,251) @end deffn
+clean.texi(,252) 
+clean.texi(,253) @deffn cate--gory de--ffn_name ar--guments...
+clean.texi(,254) def--fn
+clean.texi(,255) @end deffn
+clean.texi(,256) 
+clean.texi(,257) @defvr c--ategory d--efvr_name
+clean.texi(,258) d--efvr
+clean.texi(,259) @end defvr
+clean.texi(,260) 
+clean.texi(,261) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+clean.texi(,262) d--eftypefn
+clean.texi(,263) @end deftypefn
+clean.texi(,264) 
+clean.texi(,265) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+clean.texi(,266) d--eftypeop
+clean.texi(,267) @end deftypeop
+clean.texi(,268) 
+clean.texi(,269) @deftypevr c--ategory t--ype d--eftypevr_name
+clean.texi(,270) d--eftypevr
+clean.texi(,271) @end deftypevr
+clean.texi(,272) 
+clean.texi(,273) @defcv c--ategory c--lass d--efcv_name
+clean.texi(,274) d--efcv
+clean.texi(,275) @end defcv
+clean.texi(,276) 
+clean.texi(,277) @defop c--ategory c--lass d--efop_name a--rguments...
+clean.texi(,278) d--efop
+clean.texi(,279) @end defop
+clean.texi(,280) 
+clean.texi(,281) @deftp c--ategory d--eftp_name a--ttributes...
+clean.texi(,282) d--eftp
+clean.texi(,283) @end deftp
+clean.texi(,284) 
+clean.texi(,285) @defun d--efun_name a--rguments...
+clean.texi(,286) d--efun
+clean.texi(,287) @end defun
+clean.texi(,288) 
+clean.texi(,289) @defmac d--efmac_name a--rguments...
+clean.texi(,290) d--efmac
+clean.texi(,291) @end defmac
+clean.texi(,292) 
+clean.texi(,293) @defspec d--efspec_name a--rguments...
+clean.texi(,294) d--efspec
+clean.texi(,295) @end defspec
+clean.texi(,296) 
+clean.texi(,297) @defvar d--efvar_name
+clean.texi(,298) d--efvar
+clean.texi(,299) @end defvar
+clean.texi(,300) 
+clean.texi(,301) @defopt d--efopt_name
+clean.texi(,302) d--efopt
+clean.texi(,303) @end defopt
+clean.texi(,304) 
+clean.texi(,305) @deftypefun t--ype d--eftypefun_name a--rguments...
+clean.texi(,306) d--eftypefun
+clean.texi(,307) @end deftypefun
+clean.texi(,308) 
+clean.texi(,309) @deftypevar t--ype d--eftypevar_name
+clean.texi(,310) d--eftypevar
+clean.texi(,311) @end deftypevar
+clean.texi(,312) 
+clean.texi(,313) @defivar c--lass d--efivar_name
+clean.texi(,314) d--efivar
+clean.texi(,315) @end defivar
+clean.texi(,316) 
+clean.texi(,317) @deftypeivar c--lass t--ype d--eftypeivar_name
+clean.texi(,318) d--eftypeivar
+clean.texi(,319) @end deftypeivar
+clean.texi(,320) 
+clean.texi(,321) @defmethod c--lass d--efmethod_name a--rguments...
+clean.texi(,322) d--efmethod
+clean.texi(,323) @end defmethod
+clean.texi(,324) 
+clean.texi(,325) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+clean.texi(,326) d--eftypemethod
+clean.texi(,327) @end deftypemethod
+clean.texi(,328) 
+clean.texi(,329) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
+clean.texi(,330) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+clean.texi(,331) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+clean.texi(,332) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(,333) 
+clean.texi(,334) @code{@@ref@{chapter@}} @ref{chapter}
+clean.texi(,335) @code{@@ref@{node@}} @ref{node}
+clean.texi(,336) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+clean.texi(,337) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+clean.texi(,338) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+clean.texi(,339) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+clean.texi(,340) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+clean.texi(,341) @code{@@ref@{node,,title@}} @ref{node,,title}
+clean.texi(,342) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+clean.texi(,343) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+clean.texi(,344) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+clean.texi(,345) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+clean.texi(,346) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+clean.texi(,347) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+clean.texi(,348) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+clean.texi(,349) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+clean.texi(,350) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+clean.texi(,351) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+clean.texi(,352) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+clean.texi(,353) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+clean.texi(,354) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+clean.texi(,355) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+clean.texi(,356) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+clean.texi(,357) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+clean.texi(,358) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+clean.texi(,359) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+clean.texi(,360) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+clean.texi(,361) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+clean.texi(,362) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+clean.texi(,363) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+clean.texi(,364) 
+clean.texi(,365) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(,366) @code{@@inforef@{chapter@}} @inforef{chapter}
+clean.texi(,367) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+clean.texi(,368) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+clean.texi(,369) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+clean.texi(,370) @code{@@inforef@{node@}} @inforef{node}
+clean.texi(,371) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+clean.texi(,372) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+clean.texi(,373) 
+clean.texi(,374) @table @bullet
+clean.texi(,375) @item a
+clean.texi(,376) l--ine
+clean.texi(,377) @end table
+clean.texi(,378) 
+clean.texi(,379) @vtable @asis
+clean.texi(,380) @item a
+clean.texi(,381) l--ine
+clean.texi(,382) @end vtable
+clean.texi(,383) 
+clean.texi(,384) @ftable @minus
+clean.texi(,385) @item a
+clean.texi(,386) l--ine
+clean.texi(,387) @end ftable
+clean.texi(,388) 
+clean.texi(,389) @flushleft
+clean.texi(,390) flushleft
+clean.texi(,391) @end flushleft
+clean.texi(,392) 
+clean.texi(,393) @flushright
+clean.texi(,394) flushright
+clean.texi(,395) @end flushright
 clean.texi(,396) 
-clean.texi(,397) @verbatiminclude simplest.texi
+clean.texi(,397) @center centered line
 clean.texi(,398) 
-clean.texi(,767) 
-clean.texi(,768) @copying
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) <
-clean.texi(mymacro,769) >
-clean.texi(mymacro,769) "
-clean.texi(mymacro,769) &
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) ``simple-double--three---four----''@*
-clean.texi(mymacro,769) code: @code{``simple-double--three---four----''} @*
-clean.texi(mymacro,769) asis: @asis{``simple-double--three---four----''} @*
-clean.texi(mymacro,769) strong: @strong{``simple-double--three---four----''} @*
-clean.texi(mymacro,769) kbd: @kbd{``simple-double--three---four----''} @*
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @cindex --option
-clean.texi(mymacro,769) @cindex ``
-clean.texi(mymacro,769) @findex ``
-clean.texi(mymacro,769) @findex --foption
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @@"u @"u 
-clean.texi(mymacro,769) @@"@{U@} @"{U} 
-clean.texi(mymacro,769) @@~n @~n
-clean.texi(mymacro,769) @@^a @^a
-clean.texi(mymacro,769) @@'e @'e
-clean.texi(mymacro,769) @@=o @=o
-clean.texi(mymacro,769) @@`i @`i
-clean.texi(mymacro,769) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-clean.texi(mymacro,769) @@dotless@{i@} @dotless{i}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @@* @*
-clean.texi(mymacro,769) @@ followed by a space
-clean.texi(mymacro,769) @ 
-clean.texi(mymacro,769) @@ followed by a tab
-clean.texi(mymacro,769) @	
-clean.texi(mymacro,769) @@ followed by a new line
-clean.texi(mymacro,769) @
-clean.texi(mymacro,769) @code{@@-} @-
-clean.texi(mymacro,769) @code{@@|} @|
-clean.texi(mymacro,769) @code{@@:} @:
-clean.texi(mymacro,769) @code{@@!} @!
-clean.texi(mymacro,769) @code{@@?} @?
-clean.texi(mymacro,769) @code{@@.} @.
-clean.texi(mymacro,769) @code{@@@@} @@
-clean.texi(mymacro,769) @code{@@@}} @}
-clean.texi(mymacro,769) @code{@@@{} @{
-clean.texi(mymacro,769) @code{@@/} @/
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @@TeX @TeX{}
-clean.texi(mymacro,769) @@LaTeX @LaTeX{}
-clean.texi(mymacro,769) @c @br{}
-clean.texi(mymacro,769) @@bullet @bullet{}
-clean.texi(mymacro,769) @@copyright @copyright{}
-clean.texi(mymacro,769) @@dots @dots{}
-clean.texi(mymacro,769) @@enddots @enddots{}
-clean.texi(mymacro,769) @@equiv @equiv{}
-clean.texi(mymacro,769) @@error @error{}
-clean.texi(mymacro,769) @@expansion @expansion{}
-clean.texi(mymacro,769) @@minus @minus{}
-clean.texi(mymacro,769) @@point @point{}
-clean.texi(mymacro,769) @@print @print{}
-clean.texi(mymacro,769) @@result @result{}
-clean.texi(mymacro,769) @@today @today{}
-clean.texi(mymacro,769) @@aa @aa{}
-clean.texi(mymacro,769) @@AA @AA{}
-clean.texi(mymacro,769) @@ae @ae{}
-clean.texi(mymacro,769) @@oe @oe{}
-clean.texi(mymacro,769) @@AE @AE{}
-clean.texi(mymacro,769) @@OE @OE{}
-clean.texi(mymacro,769) @@o @o{}
-clean.texi(mymacro,769) @@O @O{}
-clean.texi(mymacro,769) @@ss @ss{}
-clean.texi(mymacro,769) @@l @l{}
-clean.texi(mymacro,769) @@L @L{}
-clean.texi(mymacro,769) @@exclamdown @exclamdown{}
-clean.texi(mymacro,769) @@questiondown @questiondown{}
-clean.texi(mymacro,769) @@pounds @pounds{}
-clean.texi(mymacro,769) @@registeredsymbol @registeredsymbol{}
-clean.texi(mymacro,769) @@ordf @ordf{}
-clean.texi(mymacro,769) @@ordm @ordm{}
-clean.texi(mymacro,769) @@comma @comma{}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(mymacro,769) @code{@@asis@{--a@}} @asis{--a}
-clean.texi(mymacro,769) @code{@@b@{--a@}} @b{--a}
-clean.texi(mymacro,769) @code{@@cite@{--a@}} @cite{--a}
-clean.texi(mymacro,769) @code{@@code@{--a@}} @code{--a}
-clean.texi(mymacro,769) @code{@@command@{--a@}} @command{--a}
-clean.texi(mymacro,769) @code{@@ctrl@{--a@}} @ctrl{--a}
-clean.texi(mymacro,769) @code{@@dfn@{--a@}} @dfn{--a}
-clean.texi(mymacro,769) @code{@@dmn@{--a@}} @dmn{--a}
-clean.texi(mymacro,769) @code{@@email@{--a,--b@}} @email{--a,--b}
-clean.texi(mymacro,769) @code{@@email@{,--b@}} @email{,--b}
-clean.texi(mymacro,769) @code{@@email@{--a@}} @email{--a}
-clean.texi(mymacro,769) @code{@@emph@{--a@}} @emph{--a}
-clean.texi(mymacro,769) @code{@@env@{--a@}} @env{--a}
-clean.texi(mymacro,769) @code{@@file@{--a@}} @file{--a}
-clean.texi(mymacro,769) @code{@@i@{--a@}} @i{--a}
-clean.texi(mymacro,769) @code{@@kbd@{--a@}} @kbd{--a}
-clean.texi(mymacro,769) @code{@@key@{--a@}} @key{--a}
-clean.texi(mymacro,769) @code{@@math@{--a@}} @math{--a}
-clean.texi(mymacro,769) @code{@@option@{--a@}} @option{--a}
-clean.texi(mymacro,769) @code{@@r@{--a@}} @r{--a}
-clean.texi(mymacro,769) @code{@@samp@{--a@}} @samp{--a}
-clean.texi(mymacro,769) @code{@@sc@{--a@}} @sc{--a}
-clean.texi(mymacro,769) @code{@@strong@{--a@}} @strong{--a}
-clean.texi(mymacro,769) @code{@@t@{--a@}} @t{--a}
-clean.texi(mymacro,769) @code{@@titlefont@{--a@}} @titlefont{--a}
-clean.texi(mymacro,769) @code{@@indicateurl@{--a@}} @indicateurl{--a}
-clean.texi(mymacro,769) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-clean.texi(mymacro,769) @code{@@uref@{--a@}} @uref{--a}
-clean.texi(mymacro,769) @code{@@uref@{,--b@}} @uref{,--b}
-clean.texi(mymacro,769) @code{@@url@{--a,--b@}} @url{--a,--b}
-clean.texi(mymacro,769) @code{@@url@{--a,@}} @url{--a,}
-clean.texi(mymacro,769) @code{@@url@{,--b@}} @url{,--b}
-clean.texi(mymacro,769) @code{@@var@{--a@}} @var{--a}
-clean.texi(mymacro,769) @code{@@verb@{:--a:@}} @verb{:--a:}
-clean.texi(mymacro,769) @code{@@w@{--a@}} @w{--a}
-clean.texi(mymacro,769) @code{@@H@{a@}} @H{a}
-clean.texi(mymacro,769) @code{@@H@{--a@}} @H{--a}
-clean.texi(mymacro,769) @code{@@dotaccent@{a@}} @dotaccent{a}
-clean.texi(mymacro,769) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-clean.texi(mymacro,769) @code{@@ringaccent@{a@}} @ringaccent{a}
-clean.texi(mymacro,769) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-clean.texi(mymacro,769) @code{@@tieaccent@{a@}} @tieaccent{a}
-clean.texi(mymacro,769) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-clean.texi(mymacro,769) @code{@@u@{a@}} @u{a}
-clean.texi(mymacro,769) @code{@@u@{--a@}} @u{--a}
-clean.texi(mymacro,769) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-clean.texi(mymacro,769) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-clean.texi(mymacro,769) @code{@@udotaccent@{a@}} @udotaccent{a}
-clean.texi(mymacro,769) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-clean.texi(mymacro,769) @code{@@v@{a@}} @v{a}
-clean.texi(mymacro,769) @code{@@v@{--a@}} @v{--a}
-clean.texi(mymacro,769) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(mymacro,769) @code{@@,@{--c@}} @m_cedilla{--c}
-clean.texi(mymacro,769) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-clean.texi(mymacro,769) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @code{@@image@{f--ile,,@}} @image{f--ile,,}
-clean.texi(mymacro,769) @code{@@image@{f--ile@}} @image{f--ile}
-clean.texi(mymacro,769) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
-clean.texi(mymacro,769) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-clean.texi(mymacro,769) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @quotation
-clean.texi(mymacro,769) a q--uotation
-clean.texi(mymacro,769) @end quotation
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize
-clean.texi(mymacro,769) @item i--temize
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize +
-clean.texi(mymacro,769) @item i--tem +
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize @bullet
-clean.texi(mymacro,769) @item b--ullet
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize @emph
-clean.texi(mymacro,769) @item e--mph  item
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize @emph{} after emph
-clean.texi(mymacro,769) @item e--mph item
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @itemize @bullet{a--n itemize line}
-clean.texi(mymacro,769) @item i--tem 1
-clean.texi(mymacro,769) @item i--tem 2
-clean.texi(mymacro,769) @end itemize
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @enumerate
-clean.texi(mymacro,769) @item e--numerate
-clean.texi(mymacro,769) @end enumerate
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @multitable @columnfractions 6 7
-clean.texi(mymacro,769) @item mu--ltitable item @tab multitable tab
-clean.texi(mymacro,769) @end multitable
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @example
-clean.texi(mymacro,769) e--xample  some
-clean.texi(mymacro,769)    text
-clean.texi(mymacro,769) @end example
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @smallexample
-clean.texi(mymacro,769) s--mallexample
-clean.texi(mymacro,769) @end smallexample
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @display 
-clean.texi(mymacro,769) d--isplay
-clean.texi(mymacro,769) @end display
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @smalldisplay
-clean.texi(mymacro,769) s--malldisplay
-clean.texi(mymacro,769) @end smalldisplay
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @lisp
-clean.texi(mymacro,769) l--isp
-clean.texi(mymacro,769) @end lisp
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @smalllisp
-clean.texi(mymacro,769) s--malllisp
-clean.texi(mymacro,769) @end smalllisp
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @format
-clean.texi(mymacro,769) f--ormat
-clean.texi(mymacro,769) @end format
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @smallformat
-clean.texi(mymacro,769) s--mallformat
-clean.texi(mymacro,769) @end smallformat
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deffn c--ategory d--effn_name a--rguments...
-clean.texi(mymacro,769) d--effn
-clean.texi(mymacro,769) @end deffn
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deffn cate--gory de--ffn_name ar--guments...
-clean.texi(mymacro,769) def--fn
-clean.texi(mymacro,769) @end deffn
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defvr c--ategory d--efvr_name
-clean.texi(mymacro,769) d--efvr
-clean.texi(mymacro,769) @end defvr
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-clean.texi(mymacro,769) d--eftypefn
-clean.texi(mymacro,769) @end deftypefn
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-clean.texi(mymacro,769) d--eftypeop
-clean.texi(mymacro,769) @end deftypeop
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypevr c--ategory t--ype d--eftypevr_name
-clean.texi(mymacro,769) d--eftypevr
-clean.texi(mymacro,769) @end deftypevr
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defcv c--ategory c--lass d--efcv_name
-clean.texi(mymacro,769) d--efcv
-clean.texi(mymacro,769) @end defcv
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defop c--ategory c--lass d--efop_name a--rguments...
-clean.texi(mymacro,769) d--efop
-clean.texi(mymacro,769) @end defop
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftp c--ategory d--eftp_name a--ttributes...
-clean.texi(mymacro,769) d--eftp
-clean.texi(mymacro,769) @end deftp
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defun d--efun_name a--rguments...
-clean.texi(mymacro,769) d--efun
-clean.texi(mymacro,769) @end defun
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defmac d--efmac_name a--rguments...
-clean.texi(mymacro,769) d--efmac
-clean.texi(mymacro,769) @end defmac
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defspec d--efspec_name a--rguments...
-clean.texi(mymacro,769) d--efspec
-clean.texi(mymacro,769) @end defspec
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defvar d--efvar_name
-clean.texi(mymacro,769) d--efvar
-clean.texi(mymacro,769) @end defvar
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defopt d--efopt_name
-clean.texi(mymacro,769) d--efopt
-clean.texi(mymacro,769) @end defopt
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypefun t--ype d--eftypefun_name a--rguments...
-clean.texi(mymacro,769) d--eftypefun
-clean.texi(mymacro,769) @end deftypefun
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypevar t--ype d--eftypevar_name
-clean.texi(mymacro,769) d--eftypevar
-clean.texi(mymacro,769) @end deftypevar
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defivar c--lass d--efivar_name
-clean.texi(mymacro,769) d--efivar
-clean.texi(mymacro,769) @end defivar
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypeivar c--lass t--ype d--eftypeivar_name
-clean.texi(mymacro,769) d--eftypeivar
-clean.texi(mymacro,769) @end deftypeivar
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @defmethod c--lass d--efmethod_name a--rguments...
-clean.texi(mymacro,769) d--efmethod
-clean.texi(mymacro,769) @end defmethod
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-clean.texi(mymacro,769) d--eftypemethod
-clean.texi(mymacro,769) @end deftypemethod
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
-clean.texi(mymacro,769) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,769) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,769) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @code{@@ref@{chapter@}} @ref{chapter}
-clean.texi(mymacro,769) @code{@@ref@{node@}} @ref{node}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-clean.texi(mymacro,769) @code{@@ref@{node,,title@}} @ref{node,,title}
-clean.texi(mymacro,769) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-clean.texi(mymacro,769) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-clean.texi(mymacro,769) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-clean.texi(mymacro,769) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-clean.texi(mymacro,769) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-clean.texi(mymacro,769) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-clean.texi(mymacro,769) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-clean.texi(mymacro,769) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,769) @code{@@inforef@{chapter@}} @inforef{chapter}
-clean.texi(mymacro,769) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-clean.texi(mymacro,769) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-clean.texi(mymacro,769) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-clean.texi(mymacro,769) @code{@@inforef@{node@}} @inforef{node}
-clean.texi(mymacro,769) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-clean.texi(mymacro,769) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @table @bullet
-clean.texi(mymacro,769) @item a
-clean.texi(mymacro,769) l--ine
-clean.texi(mymacro,769) @end table
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @vtable @asis
-clean.texi(mymacro,769) @item a
-clean.texi(mymacro,769) l--ine
-clean.texi(mymacro,769) @end vtable
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @ftable @minus
-clean.texi(mymacro,769) @item a
-clean.texi(mymacro,769) l--ine
-clean.texi(mymacro,769) @end ftable
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @flushleft
-clean.texi(mymacro,769) flushleft
-clean.texi(mymacro,769) @end flushleft
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @flushright
-clean.texi(mymacro,769) flushright
-clean.texi(mymacro,769) @end flushright
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @center centered line
-clean.texi(mymacro,769) 
-clean.texi(mymacro,769) @verbatiminclude simplest.texi
-clean.texi(mymacro,769) 
-clean.texi(,770) @end copying
-clean.texi(,771) 
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) <
-clean.texi(mymacro,772) >
-clean.texi(mymacro,772) "
-clean.texi(mymacro,772) &
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) ``simple-double--three---four----''@*
-clean.texi(mymacro,772) code: @code{``simple-double--three---four----''} @*
-clean.texi(mymacro,772) asis: @asis{``simple-double--three---four----''} @*
-clean.texi(mymacro,772) strong: @strong{``simple-double--three---four----''} @*
-clean.texi(mymacro,772) kbd: @kbd{``simple-double--three---four----''} @*
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @cindex --option
-clean.texi(mymacro,772) @cindex ``
-clean.texi(mymacro,772) @findex ``
-clean.texi(mymacro,772) @findex --foption
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @@"u @"u 
-clean.texi(mymacro,772) @@"@{U@} @"{U} 
-clean.texi(mymacro,772) @@~n @~n
-clean.texi(mymacro,772) @@^a @^a
-clean.texi(mymacro,772) @@'e @'e
-clean.texi(mymacro,772) @@=o @=o
-clean.texi(mymacro,772) @@`i @`i
-clean.texi(mymacro,772) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-clean.texi(mymacro,772) @@dotless@{i@} @dotless{i}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @@* @*
-clean.texi(mymacro,772) @@ followed by a space
-clean.texi(mymacro,772) @ 
-clean.texi(mymacro,772) @@ followed by a tab
-clean.texi(mymacro,772) @	
-clean.texi(mymacro,772) @@ followed by a new line
-clean.texi(mymacro,772) @
-clean.texi(mymacro,772) @code{@@-} @-
-clean.texi(mymacro,772) @code{@@|} @|
-clean.texi(mymacro,772) @code{@@:} @:
-clean.texi(mymacro,772) @code{@@!} @!
-clean.texi(mymacro,772) @code{@@?} @?
-clean.texi(mymacro,772) @code{@@.} @.
-clean.texi(mymacro,772) @code{@@@@} @@
-clean.texi(mymacro,772) @code{@@@}} @}
-clean.texi(mymacro,772) @code{@@@{} @{
-clean.texi(mymacro,772) @code{@@/} @/
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @@TeX @TeX{}
-clean.texi(mymacro,772) @@LaTeX @LaTeX{}
-clean.texi(mymacro,772) @c @br{}
-clean.texi(mymacro,772) @@bullet @bullet{}
-clean.texi(mymacro,772) @@copyright @copyright{}
-clean.texi(mymacro,772) @@dots @dots{}
-clean.texi(mymacro,772) @@enddots @enddots{}
-clean.texi(mymacro,772) @@equiv @equiv{}
-clean.texi(mymacro,772) @@error @error{}
-clean.texi(mymacro,772) @@expansion @expansion{}
-clean.texi(mymacro,772) @@minus @minus{}
-clean.texi(mymacro,772) @@point @point{}
-clean.texi(mymacro,772) @@print @print{}
-clean.texi(mymacro,772) @@result @result{}
-clean.texi(mymacro,772) @@today @today{}
-clean.texi(mymacro,772) @@aa @aa{}
-clean.texi(mymacro,772) @@AA @AA{}
-clean.texi(mymacro,772) @@ae @ae{}
-clean.texi(mymacro,772) @@oe @oe{}
-clean.texi(mymacro,772) @@AE @AE{}
-clean.texi(mymacro,772) @@OE @OE{}
-clean.texi(mymacro,772) @@o @o{}
-clean.texi(mymacro,772) @@O @O{}
-clean.texi(mymacro,772) @@ss @ss{}
-clean.texi(mymacro,772) @@l @l{}
-clean.texi(mymacro,772) @@L @L{}
-clean.texi(mymacro,772) @@exclamdown @exclamdown{}
-clean.texi(mymacro,772) @@questiondown @questiondown{}
-clean.texi(mymacro,772) @@pounds @pounds{}
-clean.texi(mymacro,772) @@registeredsymbol @registeredsymbol{}
-clean.texi(mymacro,772) @@ordf @ordf{}
-clean.texi(mymacro,772) @@ordm @ordm{}
-clean.texi(mymacro,772) @@comma @comma{}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(mymacro,772) @code{@@asis@{--a@}} @asis{--a}
-clean.texi(mymacro,772) @code{@@b@{--a@}} @b{--a}
-clean.texi(mymacro,772) @code{@@cite@{--a@}} @cite{--a}
-clean.texi(mymacro,772) @code{@@code@{--a@}} @code{--a}
-clean.texi(mymacro,772) @code{@@command@{--a@}} @command{--a}
-clean.texi(mymacro,772) @code{@@ctrl@{--a@}} @ctrl{--a}
-clean.texi(mymacro,772) @code{@@dfn@{--a@}} @dfn{--a}
-clean.texi(mymacro,772) @code{@@dmn@{--a@}} @dmn{--a}
-clean.texi(mymacro,772) @code{@@email@{--a,--b@}} @email{--a,--b}
-clean.texi(mymacro,772) @code{@@email@{,--b@}} @email{,--b}
-clean.texi(mymacro,772) @code{@@email@{--a@}} @email{--a}
-clean.texi(mymacro,772) @code{@@emph@{--a@}} @emph{--a}
-clean.texi(mymacro,772) @code{@@env@{--a@}} @env{--a}
-clean.texi(mymacro,772) @code{@@file@{--a@}} @file{--a}
-clean.texi(mymacro,772) @code{@@i@{--a@}} @i{--a}
-clean.texi(mymacro,772) @code{@@kbd@{--a@}} @kbd{--a}
-clean.texi(mymacro,772) @code{@@key@{--a@}} @key{--a}
-clean.texi(mymacro,772) @code{@@math@{--a@}} @math{--a}
-clean.texi(mymacro,772) @code{@@option@{--a@}} @option{--a}
-clean.texi(mymacro,772) @code{@@r@{--a@}} @r{--a}
-clean.texi(mymacro,772) @code{@@samp@{--a@}} @samp{--a}
-clean.texi(mymacro,772) @code{@@sc@{--a@}} @sc{--a}
-clean.texi(mymacro,772) @code{@@strong@{--a@}} @strong{--a}
-clean.texi(mymacro,772) @code{@@t@{--a@}} @t{--a}
-clean.texi(mymacro,772) @code{@@titlefont@{--a@}} @titlefont{--a}
-clean.texi(mymacro,772) @code{@@indicateurl@{--a@}} @indicateurl{--a}
-clean.texi(mymacro,772) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-clean.texi(mymacro,772) @code{@@uref@{--a@}} @uref{--a}
-clean.texi(mymacro,772) @code{@@uref@{,--b@}} @uref{,--b}
-clean.texi(mymacro,772) @code{@@url@{--a,--b@}} @url{--a,--b}
-clean.texi(mymacro,772) @code{@@url@{--a,@}} @url{--a,}
-clean.texi(mymacro,772) @code{@@url@{,--b@}} @url{,--b}
-clean.texi(mymacro,772) @code{@@var@{--a@}} @var{--a}
-clean.texi(mymacro,772) @code{@@verb@{:--a:@}} @verb{:--a:}
-clean.texi(mymacro,772) @code{@@w@{--a@}} @w{--a}
-clean.texi(mymacro,772) @code{@@H@{a@}} @H{a}
-clean.texi(mymacro,772) @code{@@H@{--a@}} @H{--a}
-clean.texi(mymacro,772) @code{@@dotaccent@{a@}} @dotaccent{a}
-clean.texi(mymacro,772) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-clean.texi(mymacro,772) @code{@@ringaccent@{a@}} @ringaccent{a}
-clean.texi(mymacro,772) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-clean.texi(mymacro,772) @code{@@tieaccent@{a@}} @tieaccent{a}
-clean.texi(mymacro,772) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-clean.texi(mymacro,772) @code{@@u@{a@}} @u{a}
-clean.texi(mymacro,772) @code{@@u@{--a@}} @u{--a}
-clean.texi(mymacro,772) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-clean.texi(mymacro,772) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-clean.texi(mymacro,772) @code{@@udotaccent@{a@}} @udotaccent{a}
-clean.texi(mymacro,772) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-clean.texi(mymacro,772) @code{@@v@{a@}} @v{a}
-clean.texi(mymacro,772) @code{@@v@{--a@}} @v{--a}
-clean.texi(mymacro,772) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(mymacro,772) @code{@@,@{--c@}} @m_cedilla{--c}
-clean.texi(mymacro,772) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-clean.texi(mymacro,772) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @code{@@image@{f--ile,,@}} @image{f--ile,,}
-clean.texi(mymacro,772) @code{@@image@{f--ile@}} @image{f--ile}
-clean.texi(mymacro,772) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
-clean.texi(mymacro,772) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-clean.texi(mymacro,772) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @quotation
-clean.texi(mymacro,772) a q--uotation
-clean.texi(mymacro,772) @end quotation
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize
-clean.texi(mymacro,772) @item i--temize
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize +
-clean.texi(mymacro,772) @item i--tem +
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize @bullet
-clean.texi(mymacro,772) @item b--ullet
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize @emph
-clean.texi(mymacro,772) @item e--mph  item
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize @emph{} after emph
-clean.texi(mymacro,772) @item e--mph item
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @itemize @bullet{a--n itemize line}
-clean.texi(mymacro,772) @item i--tem 1
-clean.texi(mymacro,772) @item i--tem 2
-clean.texi(mymacro,772) @end itemize
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @enumerate
-clean.texi(mymacro,772) @item e--numerate
-clean.texi(mymacro,772) @end enumerate
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @multitable @columnfractions 6 7
-clean.texi(mymacro,772) @item mu--ltitable item @tab multitable tab
-clean.texi(mymacro,772) @end multitable
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @example
-clean.texi(mymacro,772) e--xample  some
-clean.texi(mymacro,772)    text
-clean.texi(mymacro,772) @end example
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @smallexample
-clean.texi(mymacro,772) s--mallexample
-clean.texi(mymacro,772) @end smallexample
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @display 
-clean.texi(mymacro,772) d--isplay
-clean.texi(mymacro,772) @end display
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @smalldisplay
-clean.texi(mymacro,772) s--malldisplay
-clean.texi(mymacro,772) @end smalldisplay
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @lisp
-clean.texi(mymacro,772) l--isp
-clean.texi(mymacro,772) @end lisp
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @smalllisp
-clean.texi(mymacro,772) s--malllisp
-clean.texi(mymacro,772) @end smalllisp
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @format
-clean.texi(mymacro,772) f--ormat
-clean.texi(mymacro,772) @end format
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @smallformat
-clean.texi(mymacro,772) s--mallformat
-clean.texi(mymacro,772) @end smallformat
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deffn c--ategory d--effn_name a--rguments...
-clean.texi(mymacro,772) d--effn
-clean.texi(mymacro,772) @end deffn
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deffn cate--gory de--ffn_name ar--guments...
-clean.texi(mymacro,772) def--fn
-clean.texi(mymacro,772) @end deffn
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defvr c--ategory d--efvr_name
-clean.texi(mymacro,772) d--efvr
-clean.texi(mymacro,772) @end defvr
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-clean.texi(mymacro,772) d--eftypefn
-clean.texi(mymacro,772) @end deftypefn
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-clean.texi(mymacro,772) d--eftypeop
-clean.texi(mymacro,772) @end deftypeop
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypevr c--ategory t--ype d--eftypevr_name
-clean.texi(mymacro,772) d--eftypevr
-clean.texi(mymacro,772) @end deftypevr
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defcv c--ategory c--lass d--efcv_name
-clean.texi(mymacro,772) d--efcv
-clean.texi(mymacro,772) @end defcv
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defop c--ategory c--lass d--efop_name a--rguments...
-clean.texi(mymacro,772) d--efop
-clean.texi(mymacro,772) @end defop
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftp c--ategory d--eftp_name a--ttributes...
-clean.texi(mymacro,772) d--eftp
-clean.texi(mymacro,772) @end deftp
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defun d--efun_name a--rguments...
-clean.texi(mymacro,772) d--efun
-clean.texi(mymacro,772) @end defun
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defmac d--efmac_name a--rguments...
-clean.texi(mymacro,772) d--efmac
-clean.texi(mymacro,772) @end defmac
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defspec d--efspec_name a--rguments...
-clean.texi(mymacro,772) d--efspec
-clean.texi(mymacro,772) @end defspec
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defvar d--efvar_name
-clean.texi(mymacro,772) d--efvar
-clean.texi(mymacro,772) @end defvar
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defopt d--efopt_name
-clean.texi(mymacro,772) d--efopt
-clean.texi(mymacro,772) @end defopt
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypefun t--ype d--eftypefun_name a--rguments...
-clean.texi(mymacro,772) d--eftypefun
-clean.texi(mymacro,772) @end deftypefun
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypevar t--ype d--eftypevar_name
-clean.texi(mymacro,772) d--eftypevar
-clean.texi(mymacro,772) @end deftypevar
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defivar c--lass d--efivar_name
-clean.texi(mymacro,772) d--efivar
-clean.texi(mymacro,772) @end defivar
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypeivar c--lass t--ype d--eftypeivar_name
-clean.texi(mymacro,772) d--eftypeivar
-clean.texi(mymacro,772) @end deftypeivar
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @defmethod c--lass d--efmethod_name a--rguments...
-clean.texi(mymacro,772) d--efmethod
-clean.texi(mymacro,772) @end defmethod
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-clean.texi(mymacro,772) d--eftypemethod
-clean.texi(mymacro,772) @end deftypemethod
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
-clean.texi(mymacro,772) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,772) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,772) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @code{@@ref@{chapter@}} @ref{chapter}
-clean.texi(mymacro,772) @code{@@ref@{node@}} @ref{node}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-clean.texi(mymacro,772) @code{@@ref@{node,,title@}} @ref{node,,title}
-clean.texi(mymacro,772) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-clean.texi(mymacro,772) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-clean.texi(mymacro,772) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-clean.texi(mymacro,772) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-clean.texi(mymacro,772) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-clean.texi(mymacro,772) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-clean.texi(mymacro,772) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-clean.texi(mymacro,772) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,772) @code{@@inforef@{chapter@}} @inforef{chapter}
-clean.texi(mymacro,772) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-clean.texi(mymacro,772) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-clean.texi(mymacro,772) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-clean.texi(mymacro,772) @code{@@inforef@{node@}} @inforef{node}
-clean.texi(mymacro,772) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-clean.texi(mymacro,772) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @table @bullet
-clean.texi(mymacro,772) @item a
-clean.texi(mymacro,772) l--ine
-clean.texi(mymacro,772) @end table
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @vtable @asis
-clean.texi(mymacro,772) @item a
-clean.texi(mymacro,772) l--ine
-clean.texi(mymacro,772) @end vtable
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @ftable @minus
-clean.texi(mymacro,772) @item a
-clean.texi(mymacro,772) l--ine
-clean.texi(mymacro,772) @end ftable
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @flushleft
-clean.texi(mymacro,772) flushleft
-clean.texi(mymacro,772) @end flushleft
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @flushright
-clean.texi(mymacro,772) flushright
-clean.texi(mymacro,772) @end flushright
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @center centered line
-clean.texi(mymacro,772) 
-clean.texi(mymacro,772) @verbatiminclude simplest.texi
-clean.texi(mymacro,772) 
+clean.texi(,399) @verbatiminclude simplest.texi
+clean.texi(,400) 
+clean.texi(,769) 
+clean.texi(,770) @copying
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) <
+clean.texi(mymacro,771) >
+clean.texi(mymacro,771) "
+clean.texi(mymacro,771) &
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) ``simple-double--three---four----''@*
+clean.texi(mymacro,771) code: @code{``simple-double--three---four----''} @*
+clean.texi(mymacro,771) asis: @asis{``simple-double--three---four----''} @*
+clean.texi(mymacro,771) strong: @strong{``simple-double--three---four----''} @*
+clean.texi(mymacro,771) kbd: @kbd{``simple-double--three---four----''} @*
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @cindex --option
+clean.texi(mymacro,771) @cindex ``
+clean.texi(mymacro,771) @findex ``
+clean.texi(mymacro,771) @findex --foption
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @@"u @"u 
+clean.texi(mymacro,771) @@"@{U@} @"{U} 
+clean.texi(mymacro,771) @@~n @~n
+clean.texi(mymacro,771) @@^a @^a
+clean.texi(mymacro,771) @@'e @'e
+clean.texi(mymacro,771) @@=o @=o
+clean.texi(mymacro,771) @@`i @`i
+clean.texi(mymacro,771) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+clean.texi(mymacro,771) @@dotless@{i@} @dotless{i}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @@* @*
+clean.texi(mymacro,771) @@ followed by a space
+clean.texi(mymacro,771) @ 
+clean.texi(mymacro,771) @@ followed by a tab
+clean.texi(mymacro,771) @	
+clean.texi(mymacro,771) @@ followed by a new line
+clean.texi(mymacro,771) @
+clean.texi(mymacro,771) @code{@@-} @-
+clean.texi(mymacro,771) @code{@@|} @|
+clean.texi(mymacro,771) @code{@@:} @:
+clean.texi(mymacro,771) @code{@@!} @!
+clean.texi(mymacro,771) @code{@@?} @?
+clean.texi(mymacro,771) @code{@@.} @.
+clean.texi(mymacro,771) @code{@@@@} @@
+clean.texi(mymacro,771) @code{@@@}} @}
+clean.texi(mymacro,771) @code{@@@{} @{
+clean.texi(mymacro,771) @code{@@/} @/
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @@TeX @TeX{}
+clean.texi(mymacro,771) @@LaTeX @LaTeX{}
+clean.texi(mymacro,771) @c @br{}
+clean.texi(mymacro,771) @@bullet @bullet{}
+clean.texi(mymacro,771) @@copyright @copyright{}
+clean.texi(mymacro,771) @@dots @dots{}
+clean.texi(mymacro,771) @@enddots @enddots{}
+clean.texi(mymacro,771) @@equiv @equiv{}
+clean.texi(mymacro,771) @@error @error{}
+clean.texi(mymacro,771) @@expansion @expansion{}
+clean.texi(mymacro,771) @@minus @minus{}
+clean.texi(mymacro,771) @@point @point{}
+clean.texi(mymacro,771) @@print @print{}
+clean.texi(mymacro,771) @@result @result{}
+clean.texi(mymacro,771) @@today @today{}
+clean.texi(mymacro,771) @@aa @aa{}
+clean.texi(mymacro,771) @@AA @AA{}
+clean.texi(mymacro,771) @@ae @ae{}
+clean.texi(mymacro,771) @@oe @oe{}
+clean.texi(mymacro,771) @@AE @AE{}
+clean.texi(mymacro,771) @@OE @OE{}
+clean.texi(mymacro,771) @@o @o{}
+clean.texi(mymacro,771) @@O @O{}
+clean.texi(mymacro,771) @@ss @ss{}
+clean.texi(mymacro,771) @@l @l{}
+clean.texi(mymacro,771) @@L @L{}
+clean.texi(mymacro,771) @@exclamdown @exclamdown{}
+clean.texi(mymacro,771) @@questiondown @questiondown{}
+clean.texi(mymacro,771) @@pounds @pounds{}
+clean.texi(mymacro,771) @@registeredsymbol @registeredsymbol{}
+clean.texi(mymacro,771) @@ordf @ordf{}
+clean.texi(mymacro,771) @@ordm @ordm{}
+clean.texi(mymacro,771) @@comma @comma{}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(mymacro,771) @code{@@asis@{--a@}} @asis{--a}
+clean.texi(mymacro,771) @code{@@b@{--a@}} @b{--a}
+clean.texi(mymacro,771) @code{@@cite@{--a@}} @cite{--a}
+clean.texi(mymacro,771) @code{@@code@{--a@}} @code{--a}
+clean.texi(mymacro,771) @code{@@command@{--a@}} @command{--a}
+clean.texi(mymacro,771) @code{@@ctrl@{--a@}} @ctrl{--a}
+clean.texi(mymacro,771) @code{@@dfn@{--a@}} @dfn{--a}
+clean.texi(mymacro,771) @code{@@dmn@{--a@}} @dmn{--a}
+clean.texi(mymacro,771) @code{@@email@{--a,--b@}} @email{--a,--b}
+clean.texi(mymacro,771) @code{@@email@{,--b@}} @email{,--b}
+clean.texi(mymacro,771) @code{@@email@{--a@}} @email{--a}
+clean.texi(mymacro,771) @code{@@emph@{--a@}} @emph{--a}
+clean.texi(mymacro,771) @code{@@env@{--a@}} @env{--a}
+clean.texi(mymacro,771) @code{@@file@{--a@}} @file{--a}
+clean.texi(mymacro,771) @code{@@i@{--a@}} @i{--a}
+clean.texi(mymacro,771) @code{@@kbd@{--a@}} @kbd{--a}
+clean.texi(mymacro,771) @code{@@key@{--a@}} @key{--a}
+clean.texi(mymacro,771) @code{@@math@{--a@}} @math{--a}
+clean.texi(mymacro,771) @code{@@option@{--a@}} @option{--a}
+clean.texi(mymacro,771) @code{@@r@{--a@}} @r{--a}
+clean.texi(mymacro,771) @code{@@samp@{--a@}} @samp{--a}
+clean.texi(mymacro,771) @code{@@sc@{--a@}} @sc{--a}
+clean.texi(mymacro,771) @code{@@strong@{--a@}} @strong{--a}
+clean.texi(mymacro,771) @code{@@t@{--a@}} @t{--a}
+clean.texi(mymacro,771) @code{@@titlefont@{--a@}} @titlefont{--a}
+clean.texi(mymacro,771) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+clean.texi(mymacro,771) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+clean.texi(mymacro,771) @code{@@uref@{--a@}} @uref{--a}
+clean.texi(mymacro,771) @code{@@uref@{,--b@}} @uref{,--b}
+clean.texi(mymacro,771) @code{@@url@{--a,--b@}} @url{--a,--b}
+clean.texi(mymacro,771) @code{@@url@{--a,@}} @url{--a,}
+clean.texi(mymacro,771) @code{@@url@{,--b@}} @url{,--b}
+clean.texi(mymacro,771) @code{@@var@{--a@}} @var{--a}
+clean.texi(mymacro,771) @code{@@verb@{:--a:@}} @verb{:--a:}
+clean.texi(mymacro,771) @code{@@w@{--a@}} @w{--a}
+clean.texi(mymacro,771) @code{@@H@{a@}} @H{a}
+clean.texi(mymacro,771) @code{@@H@{--a@}} @H{--a}
+clean.texi(mymacro,771) @code{@@dotaccent@{a@}} @dotaccent{a}
+clean.texi(mymacro,771) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+clean.texi(mymacro,771) @code{@@ringaccent@{a@}} @ringaccent{a}
+clean.texi(mymacro,771) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+clean.texi(mymacro,771) @code{@@tieaccent@{a@}} @tieaccent{a}
+clean.texi(mymacro,771) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+clean.texi(mymacro,771) @code{@@u@{a@}} @u{a}
+clean.texi(mymacro,771) @code{@@u@{--a@}} @u{--a}
+clean.texi(mymacro,771) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+clean.texi(mymacro,771) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+clean.texi(mymacro,771) @code{@@udotaccent@{a@}} @udotaccent{a}
+clean.texi(mymacro,771) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+clean.texi(mymacro,771) @code{@@v@{a@}} @v{a}
+clean.texi(mymacro,771) @code{@@v@{--a@}} @v{--a}
+clean.texi(mymacro,771) @code{@@,@{c@}} @m_cedilla{c}
+clean.texi(mymacro,771) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(mymacro,771) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+clean.texi(mymacro,771) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @code{@@image@{f--ile,,@}} @image{f--ile,,}
+clean.texi(mymacro,771) @code{@@image@{f--ile@}} @image{f--ile}
+clean.texi(mymacro,771) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
+clean.texi(mymacro,771) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+clean.texi(mymacro,771) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @quotation
+clean.texi(mymacro,771) a q--uotation
+clean.texi(mymacro,771) @end quotation
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize
+clean.texi(mymacro,771) @item i--temize
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize +
+clean.texi(mymacro,771) @item i--tem +
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize @bullet
+clean.texi(mymacro,771) @item b--ullet
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize @emph
+clean.texi(mymacro,771) @item e--mph  item
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize @emph{} after emph
+clean.texi(mymacro,771) @item e--mph item
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @itemize @bullet{a--n itemize line}
+clean.texi(mymacro,771) @item i--tem 1
+clean.texi(mymacro,771) @item i--tem 2
+clean.texi(mymacro,771) @end itemize
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @enumerate
+clean.texi(mymacro,771) @item e--numerate
+clean.texi(mymacro,771) @end enumerate
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @multitable @columnfractions 6 7
+clean.texi(mymacro,771) @item mu--ltitable item @tab multitable tab
+clean.texi(mymacro,771) @end multitable
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @example
+clean.texi(mymacro,771) e--xample  some
+clean.texi(mymacro,771)    text
+clean.texi(mymacro,771) @end example
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @smallexample
+clean.texi(mymacro,771) s--mallexample
+clean.texi(mymacro,771) @end smallexample
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @display 
+clean.texi(mymacro,771) d--isplay
+clean.texi(mymacro,771) @end display
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @smalldisplay
+clean.texi(mymacro,771) s--malldisplay
+clean.texi(mymacro,771) @end smalldisplay
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @lisp
+clean.texi(mymacro,771) l--isp
+clean.texi(mymacro,771) @end lisp
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @smalllisp
+clean.texi(mymacro,771) s--malllisp
+clean.texi(mymacro,771) @end smalllisp
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @format
+clean.texi(mymacro,771) f--ormat
+clean.texi(mymacro,771) @end format
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @smallformat
+clean.texi(mymacro,771) s--mallformat
+clean.texi(mymacro,771) @end smallformat
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deffn c--ategory d--effn_name a--rguments...
+clean.texi(mymacro,771) d--effn
+clean.texi(mymacro,771) @end deffn
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deffn cate--gory de--ffn_name ar--guments...
+clean.texi(mymacro,771) def--fn
+clean.texi(mymacro,771) @end deffn
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defvr c--ategory d--efvr_name
+clean.texi(mymacro,771) d--efvr
+clean.texi(mymacro,771) @end defvr
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+clean.texi(mymacro,771) d--eftypefn
+clean.texi(mymacro,771) @end deftypefn
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+clean.texi(mymacro,771) d--eftypeop
+clean.texi(mymacro,771) @end deftypeop
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypevr c--ategory t--ype d--eftypevr_name
+clean.texi(mymacro,771) d--eftypevr
+clean.texi(mymacro,771) @end deftypevr
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defcv c--ategory c--lass d--efcv_name
+clean.texi(mymacro,771) d--efcv
+clean.texi(mymacro,771) @end defcv
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defop c--ategory c--lass d--efop_name a--rguments...
+clean.texi(mymacro,771) d--efop
+clean.texi(mymacro,771) @end defop
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftp c--ategory d--eftp_name a--ttributes...
+clean.texi(mymacro,771) d--eftp
+clean.texi(mymacro,771) @end deftp
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defun d--efun_name a--rguments...
+clean.texi(mymacro,771) d--efun
+clean.texi(mymacro,771) @end defun
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defmac d--efmac_name a--rguments...
+clean.texi(mymacro,771) d--efmac
+clean.texi(mymacro,771) @end defmac
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defspec d--efspec_name a--rguments...
+clean.texi(mymacro,771) d--efspec
+clean.texi(mymacro,771) @end defspec
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defvar d--efvar_name
+clean.texi(mymacro,771) d--efvar
+clean.texi(mymacro,771) @end defvar
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defopt d--efopt_name
+clean.texi(mymacro,771) d--efopt
+clean.texi(mymacro,771) @end defopt
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypefun t--ype d--eftypefun_name a--rguments...
+clean.texi(mymacro,771) d--eftypefun
+clean.texi(mymacro,771) @end deftypefun
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypevar t--ype d--eftypevar_name
+clean.texi(mymacro,771) d--eftypevar
+clean.texi(mymacro,771) @end deftypevar
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defivar c--lass d--efivar_name
+clean.texi(mymacro,771) d--efivar
+clean.texi(mymacro,771) @end defivar
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypeivar c--lass t--ype d--eftypeivar_name
+clean.texi(mymacro,771) d--eftypeivar
+clean.texi(mymacro,771) @end deftypeivar
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @defmethod c--lass d--efmethod_name a--rguments...
+clean.texi(mymacro,771) d--efmethod
+clean.texi(mymacro,771) @end defmethod
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+clean.texi(mymacro,771) d--eftypemethod
+clean.texi(mymacro,771) @end deftypemethod
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
+clean.texi(mymacro,771) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,771) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,771) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @code{@@ref@{chapter@}} @ref{chapter}
+clean.texi(mymacro,771) @code{@@ref@{node@}} @ref{node}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+clean.texi(mymacro,771) @code{@@ref@{node,,title@}} @ref{node,,title}
+clean.texi(mymacro,771) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+clean.texi(mymacro,771) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+clean.texi(mymacro,771) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+clean.texi(mymacro,771) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+clean.texi(mymacro,771) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+clean.texi(mymacro,771) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+clean.texi(mymacro,771) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+clean.texi(mymacro,771) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,771) @code{@@inforef@{chapter@}} @inforef{chapter}
+clean.texi(mymacro,771) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+clean.texi(mymacro,771) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+clean.texi(mymacro,771) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+clean.texi(mymacro,771) @code{@@inforef@{node@}} @inforef{node}
+clean.texi(mymacro,771) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+clean.texi(mymacro,771) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @table @bullet
+clean.texi(mymacro,771) @item a
+clean.texi(mymacro,771) l--ine
+clean.texi(mymacro,771) @end table
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @vtable @asis
+clean.texi(mymacro,771) @item a
+clean.texi(mymacro,771) l--ine
+clean.texi(mymacro,771) @end vtable
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @ftable @minus
+clean.texi(mymacro,771) @item a
+clean.texi(mymacro,771) l--ine
+clean.texi(mymacro,771) @end ftable
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @flushleft
+clean.texi(mymacro,771) flushleft
+clean.texi(mymacro,771) @end flushleft
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @flushright
+clean.texi(mymacro,771) flushright
+clean.texi(mymacro,771) @end flushright
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @center centered line
+clean.texi(mymacro,771) 
+clean.texi(mymacro,771) @verbatiminclude simplest.texi
+clean.texi(mymacro,771) 
+clean.texi(,772) @end copying
 clean.texi(,773) 
-clean.texi(,774) @example
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) <
-clean.texi(mymacro,775) >
-clean.texi(mymacro,775) "
-clean.texi(mymacro,775) &
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) ``simple-double--three---four----''@*
-clean.texi(mymacro,775) code: @code{``simple-double--three---four----''} @*
-clean.texi(mymacro,775) asis: @asis{``simple-double--three---four----''} @*
-clean.texi(mymacro,775) strong: @strong{``simple-double--three---four----''} @*
-clean.texi(mymacro,775) kbd: @kbd{``simple-double--three---four----''} @*
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @cindex --option
-clean.texi(mymacro,775) @cindex ``
-clean.texi(mymacro,775) @findex ``
-clean.texi(mymacro,775) @findex --foption
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @@"u @"u 
-clean.texi(mymacro,775) @@"@{U@} @"{U} 
-clean.texi(mymacro,775) @@~n @~n
-clean.texi(mymacro,775) @@^a @^a
-clean.texi(mymacro,775) @@'e @'e
-clean.texi(mymacro,775) @@=o @=o
-clean.texi(mymacro,775) @@`i @`i
-clean.texi(mymacro,775) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-clean.texi(mymacro,775) @@dotless@{i@} @dotless{i}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @@* @*
-clean.texi(mymacro,775) @@ followed by a space
-clean.texi(mymacro,775) @ 
-clean.texi(mymacro,775) @@ followed by a tab
-clean.texi(mymacro,775) @	
-clean.texi(mymacro,775) @@ followed by a new line
-clean.texi(mymacro,775) @
-clean.texi(mymacro,775) @code{@@-} @-
-clean.texi(mymacro,775) @code{@@|} @|
-clean.texi(mymacro,775) @code{@@:} @:
-clean.texi(mymacro,775) @code{@@!} @!
-clean.texi(mymacro,775) @code{@@?} @?
-clean.texi(mymacro,775) @code{@@.} @.
-clean.texi(mymacro,775) @code{@@@@} @@
-clean.texi(mymacro,775) @code{@@@}} @}
-clean.texi(mymacro,775) @code{@@@{} @{
-clean.texi(mymacro,775) @code{@@/} @/
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @@TeX @TeX{}
-clean.texi(mymacro,775) @@LaTeX @LaTeX{}
-clean.texi(mymacro,775) @c @br{}
-clean.texi(mymacro,775) @@bullet @bullet{}
-clean.texi(mymacro,775) @@copyright @copyright{}
-clean.texi(mymacro,775) @@dots @dots{}
-clean.texi(mymacro,775) @@enddots @enddots{}
-clean.texi(mymacro,775) @@equiv @equiv{}
-clean.texi(mymacro,775) @@error @error{}
-clean.texi(mymacro,775) @@expansion @expansion{}
-clean.texi(mymacro,775) @@minus @minus{}
-clean.texi(mymacro,775) @@point @point{}
-clean.texi(mymacro,775) @@print @print{}
-clean.texi(mymacro,775) @@result @result{}
-clean.texi(mymacro,775) @@today @today{}
-clean.texi(mymacro,775) @@aa @aa{}
-clean.texi(mymacro,775) @@AA @AA{}
-clean.texi(mymacro,775) @@ae @ae{}
-clean.texi(mymacro,775) @@oe @oe{}
-clean.texi(mymacro,775) @@AE @AE{}
-clean.texi(mymacro,775) @@OE @OE{}
-clean.texi(mymacro,775) @@o @o{}
-clean.texi(mymacro,775) @@O @O{}
-clean.texi(mymacro,775) @@ss @ss{}
-clean.texi(mymacro,775) @@l @l{}
-clean.texi(mymacro,775) @@L @L{}
-clean.texi(mymacro,775) @@exclamdown @exclamdown{}
-clean.texi(mymacro,775) @@questiondown @questiondown{}
-clean.texi(mymacro,775) @@pounds @pounds{}
-clean.texi(mymacro,775) @@registeredsymbol @registeredsymbol{}
-clean.texi(mymacro,775) @@ordf @ordf{}
-clean.texi(mymacro,775) @@ordm @ordm{}
-clean.texi(mymacro,775) @@comma @comma{}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @code{@@acronym@{--a@}} @acronym{--a}
-clean.texi(mymacro,775) @code{@@asis@{--a@}} @asis{--a}
-clean.texi(mymacro,775) @code{@@b@{--a@}} @b{--a}
-clean.texi(mymacro,775) @code{@@cite@{--a@}} @cite{--a}
-clean.texi(mymacro,775) @code{@@code@{--a@}} @code{--a}
-clean.texi(mymacro,775) @code{@@command@{--a@}} @command{--a}
-clean.texi(mymacro,775) @code{@@ctrl@{--a@}} @ctrl{--a}
-clean.texi(mymacro,775) @code{@@dfn@{--a@}} @dfn{--a}
-clean.texi(mymacro,775) @code{@@dmn@{--a@}} @dmn{--a}
-clean.texi(mymacro,775) @code{@@email@{--a,--b@}} @email{--a,--b}
-clean.texi(mymacro,775) @code{@@email@{,--b@}} @email{,--b}
-clean.texi(mymacro,775) @code{@@email@{--a@}} @email{--a}
-clean.texi(mymacro,775) @code{@@emph@{--a@}} @emph{--a}
-clean.texi(mymacro,775) @code{@@env@{--a@}} @env{--a}
-clean.texi(mymacro,775) @code{@@file@{--a@}} @file{--a}
-clean.texi(mymacro,775) @code{@@i@{--a@}} @i{--a}
-clean.texi(mymacro,775) @code{@@kbd@{--a@}} @kbd{--a}
-clean.texi(mymacro,775) @code{@@key@{--a@}} @key{--a}
-clean.texi(mymacro,775) @code{@@math@{--a@}} @math{--a}
-clean.texi(mymacro,775) @code{@@option@{--a@}} @option{--a}
-clean.texi(mymacro,775) @code{@@r@{--a@}} @r{--a}
-clean.texi(mymacro,775) @code{@@samp@{--a@}} @samp{--a}
-clean.texi(mymacro,775) @code{@@sc@{--a@}} @sc{--a}
-clean.texi(mymacro,775) @code{@@strong@{--a@}} @strong{--a}
-clean.texi(mymacro,775) @code{@@t@{--a@}} @t{--a}
-clean.texi(mymacro,775) @code{@@titlefont@{--a@}} @titlefont{--a}
-clean.texi(mymacro,775) @code{@@indicateurl@{--a@}} @indicateurl{--a}
-clean.texi(mymacro,775) @code{@@uref@{--a,--b@}} @uref{--a,--b}
-clean.texi(mymacro,775) @code{@@uref@{--a@}} @uref{--a}
-clean.texi(mymacro,775) @code{@@uref@{,--b@}} @uref{,--b}
-clean.texi(mymacro,775) @code{@@url@{--a,--b@}} @url{--a,--b}
-clean.texi(mymacro,775) @code{@@url@{--a,@}} @url{--a,}
-clean.texi(mymacro,775) @code{@@url@{,--b@}} @url{,--b}
-clean.texi(mymacro,775) @code{@@var@{--a@}} @var{--a}
-clean.texi(mymacro,775) @code{@@verb@{:--a:@}} @verb{:--a:}
-clean.texi(mymacro,775) @code{@@w@{--a@}} @w{--a}
-clean.texi(mymacro,775) @code{@@H@{a@}} @H{a}
-clean.texi(mymacro,775) @code{@@H@{--a@}} @H{--a}
-clean.texi(mymacro,775) @code{@@dotaccent@{a@}} @dotaccent{a}
-clean.texi(mymacro,775) @code{@@dotaccent@{--a@}} @dotaccent{--a}
-clean.texi(mymacro,775) @code{@@ringaccent@{a@}} @ringaccent{a}
-clean.texi(mymacro,775) @code{@@ringaccent@{--a@}} @ringaccent{--a}
-clean.texi(mymacro,775) @code{@@tieaccent@{a@}} @tieaccent{a}
-clean.texi(mymacro,775) @code{@@tieaccent@{--a@}} @tieaccent{--a}
-clean.texi(mymacro,775) @code{@@u@{a@}} @u{a}
-clean.texi(mymacro,775) @code{@@u@{--a@}} @u{--a}
-clean.texi(mymacro,775) @code{@@ubaraccent@{a@}} @ubaraccent{a}
-clean.texi(mymacro,775) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-clean.texi(mymacro,775) @code{@@udotaccent@{a@}} @udotaccent{a}
-clean.texi(mymacro,775) @code{@@udotaccent@{--a@}} @udotaccent{--a}
-clean.texi(mymacro,775) @code{@@v@{a@}} @v{a}
-clean.texi(mymacro,775) @code{@@v@{--a@}} @v{--a}
-clean.texi(mymacro,775) @code{@@,@{c@}} @m_cedilla{c}
-clean.texi(mymacro,775) @code{@@,@{--c@}} @m_cedilla{--c}
-clean.texi(mymacro,775) @code{@@footnote@{in footnote@}} @footnote{in footnote}
-clean.texi(mymacro,775) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @code{@@image@{f--ile,,@}} @image{f--ile,,}
-clean.texi(mymacro,775) @code{@@image@{f--ile@}} @image{f--ile}
-clean.texi(mymacro,775) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
-clean.texi(mymacro,775) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-clean.texi(mymacro,775) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @quotation
-clean.texi(mymacro,775) a q--uotation
-clean.texi(mymacro,775) @end quotation
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize
-clean.texi(mymacro,775) @item i--temize
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize +
-clean.texi(mymacro,775) @item i--tem +
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize @bullet
-clean.texi(mymacro,775) @item b--ullet
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize @emph
-clean.texi(mymacro,775) @item e--mph  item
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize @emph{} after emph
-clean.texi(mymacro,775) @item e--mph item
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @itemize @bullet{a--n itemize line}
-clean.texi(mymacro,775) @item i--tem 1
-clean.texi(mymacro,775) @item i--tem 2
-clean.texi(mymacro,775) @end itemize
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @enumerate
-clean.texi(mymacro,775) @item e--numerate
-clean.texi(mymacro,775) @end enumerate
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @multitable @columnfractions 6 7
-clean.texi(mymacro,775) @item mu--ltitable item @tab multitable tab
-clean.texi(mymacro,775) @end multitable
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @example
-clean.texi(mymacro,775) e--xample  some
-clean.texi(mymacro,775)    text
-clean.texi(mymacro,775) @end example
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @smallexample
-clean.texi(mymacro,775) s--mallexample
-clean.texi(mymacro,775) @end smallexample
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @display 
-clean.texi(mymacro,775) d--isplay
-clean.texi(mymacro,775) @end display
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @smalldisplay
-clean.texi(mymacro,775) s--malldisplay
-clean.texi(mymacro,775) @end smalldisplay
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @lisp
-clean.texi(mymacro,775) l--isp
-clean.texi(mymacro,775) @end lisp
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @smalllisp
-clean.texi(mymacro,775) s--malllisp
-clean.texi(mymacro,775) @end smalllisp
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @format
-clean.texi(mymacro,775) f--ormat
-clean.texi(mymacro,775) @end format
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @smallformat
-clean.texi(mymacro,775) s--mallformat
-clean.texi(mymacro,775) @end smallformat
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deffn c--ategory d--effn_name a--rguments...
-clean.texi(mymacro,775) d--effn
-clean.texi(mymacro,775) @end deffn
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deffn cate--gory de--ffn_name ar--guments...
-clean.texi(mymacro,775) def--fn
-clean.texi(mymacro,775) @end deffn
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defvr c--ategory d--efvr_name
-clean.texi(mymacro,775) d--efvr
-clean.texi(mymacro,775) @end defvr
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-clean.texi(mymacro,775) d--eftypefn
-clean.texi(mymacro,775) @end deftypefn
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-clean.texi(mymacro,775) d--eftypeop
-clean.texi(mymacro,775) @end deftypeop
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypevr c--ategory t--ype d--eftypevr_name
-clean.texi(mymacro,775) d--eftypevr
-clean.texi(mymacro,775) @end deftypevr
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defcv c--ategory c--lass d--efcv_name
-clean.texi(mymacro,775) d--efcv
-clean.texi(mymacro,775) @end defcv
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defop c--ategory c--lass d--efop_name a--rguments...
-clean.texi(mymacro,775) d--efop
-clean.texi(mymacro,775) @end defop
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftp c--ategory d--eftp_name a--ttributes...
-clean.texi(mymacro,775) d--eftp
-clean.texi(mymacro,775) @end deftp
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defun d--efun_name a--rguments...
-clean.texi(mymacro,775) d--efun
-clean.texi(mymacro,775) @end defun
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defmac d--efmac_name a--rguments...
-clean.texi(mymacro,775) d--efmac
-clean.texi(mymacro,775) @end defmac
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defspec d--efspec_name a--rguments...
-clean.texi(mymacro,775) d--efspec
-clean.texi(mymacro,775) @end defspec
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defvar d--efvar_name
-clean.texi(mymacro,775) d--efvar
-clean.texi(mymacro,775) @end defvar
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defopt d--efopt_name
-clean.texi(mymacro,775) d--efopt
-clean.texi(mymacro,775) @end defopt
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypefun t--ype d--eftypefun_name a--rguments...
-clean.texi(mymacro,775) d--eftypefun
-clean.texi(mymacro,775) @end deftypefun
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypevar t--ype d--eftypevar_name
-clean.texi(mymacro,775) d--eftypevar
-clean.texi(mymacro,775) @end deftypevar
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defivar c--lass d--efivar_name
-clean.texi(mymacro,775) d--efivar
-clean.texi(mymacro,775) @end defivar
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypeivar c--lass t--ype d--eftypeivar_name
-clean.texi(mymacro,775) d--eftypeivar
-clean.texi(mymacro,775) @end deftypeivar
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @defmethod c--lass d--efmethod_name a--rguments...
-clean.texi(mymacro,775) d--efmethod
-clean.texi(mymacro,775) @end defmethod
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-clean.texi(mymacro,775) d--eftypemethod
-clean.texi(mymacro,775) @end deftypemethod
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
-clean.texi(mymacro,775) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,775) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
-clean.texi(mymacro,775) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @code{@@ref@{chapter@}} @ref{chapter}
-clean.texi(mymacro,775) @code{@@ref@{node@}} @ref{node}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
-clean.texi(mymacro,775) @code{@@ref@{node,,title@}} @ref{node,,title}
-clean.texi(mymacro,775) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
-clean.texi(mymacro,775) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
-clean.texi(mymacro,775) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
-clean.texi(mymacro,775) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
-clean.texi(mymacro,775) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
-clean.texi(mymacro,775) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
-clean.texi(mymacro,775) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
-clean.texi(mymacro,775) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
-clean.texi(mymacro,775) @code{@@inforef@{chapter@}} @inforef{chapter}
-clean.texi(mymacro,775) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
-clean.texi(mymacro,775) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
-clean.texi(mymacro,775) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
-clean.texi(mymacro,775) @code{@@inforef@{node@}} @inforef{node}
-clean.texi(mymacro,775) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
-clean.texi(mymacro,775) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @table @bullet
-clean.texi(mymacro,775) @item a
-clean.texi(mymacro,775) l--ine
-clean.texi(mymacro,775) @end table
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @vtable @asis
-clean.texi(mymacro,775) @item a
-clean.texi(mymacro,775) l--ine
-clean.texi(mymacro,775) @end vtable
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @ftable @minus
-clean.texi(mymacro,775) @item a
-clean.texi(mymacro,775) l--ine
-clean.texi(mymacro,775) @end ftable
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @flushleft
-clean.texi(mymacro,775) flushleft
-clean.texi(mymacro,775) @end flushleft
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @flushright
-clean.texi(mymacro,775) flushright
-clean.texi(mymacro,775) @end flushright
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @center centered line
-clean.texi(mymacro,775) 
-clean.texi(mymacro,775) @verbatiminclude simplest.texi
-clean.texi(mymacro,775) 
-clean.texi(,776) @end example
-clean.texi(,777) 
-clean.texi(,778) @cindex t--ruc
-clean.texi(,779) @cindex T--ruc
-clean.texi(,780) @cindex .
-clean.texi(,781) @cindex ?
-clean.texi(,782) @cindex a
-clean.texi(,783) @findex t--ruc
-clean.texi(,784) @findex T--ruc
-clean.texi(,785) @findex .
-clean.texi(,786) @findex ?
-clean.texi(,787) @findex a
-clean.texi(,788) 
-clean.texi(,789) 
-clean.texi(,790) cp
-clean.texi(,791) @printindex cp
-clean.texi(,792) 
-clean.texi(,793) fn
-clean.texi(,794) @printindex fn
-clean.texi(,795) 
-clean.texi(,796) vr
-clean.texi(,797) @printindex vr
-clean.texi(,798) 
-clean.texi(,799) ky
-clean.texi(,800) @printindex ky
-clean.texi(,801) 
-clean.texi(,802) pg
-clean.texi(,803) @printindex pg
-clean.texi(,804) 
-clean.texi(,805) tp
-clean.texi(,806) @printindex tp
-clean.texi(,807) 
-clean.texi(,808) 
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) <
+clean.texi(mymacro,774) >
+clean.texi(mymacro,774) "
+clean.texi(mymacro,774) &
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) ``simple-double--three---four----''@*
+clean.texi(mymacro,774) code: @code{``simple-double--three---four----''} @*
+clean.texi(mymacro,774) asis: @asis{``simple-double--three---four----''} @*
+clean.texi(mymacro,774) strong: @strong{``simple-double--three---four----''} @*
+clean.texi(mymacro,774) kbd: @kbd{``simple-double--three---four----''} @*
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @cindex --option
+clean.texi(mymacro,774) @cindex ``
+clean.texi(mymacro,774) @findex ``
+clean.texi(mymacro,774) @findex --foption
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @@"u @"u 
+clean.texi(mymacro,774) @@"@{U@} @"{U} 
+clean.texi(mymacro,774) @@~n @~n
+clean.texi(mymacro,774) @@^a @^a
+clean.texi(mymacro,774) @@'e @'e
+clean.texi(mymacro,774) @@=o @=o
+clean.texi(mymacro,774) @@`i @`i
+clean.texi(mymacro,774) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+clean.texi(mymacro,774) @@dotless@{i@} @dotless{i}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @@* @*
+clean.texi(mymacro,774) @@ followed by a space
+clean.texi(mymacro,774) @ 
+clean.texi(mymacro,774) @@ followed by a tab
+clean.texi(mymacro,774) @	
+clean.texi(mymacro,774) @@ followed by a new line
+clean.texi(mymacro,774) @
+clean.texi(mymacro,774) @code{@@-} @-
+clean.texi(mymacro,774) @code{@@|} @|
+clean.texi(mymacro,774) @code{@@:} @:
+clean.texi(mymacro,774) @code{@@!} @!
+clean.texi(mymacro,774) @code{@@?} @?
+clean.texi(mymacro,774) @code{@@.} @.
+clean.texi(mymacro,774) @code{@@@@} @@
+clean.texi(mymacro,774) @code{@@@}} @}
+clean.texi(mymacro,774) @code{@@@{} @{
+clean.texi(mymacro,774) @code{@@/} @/
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @@TeX @TeX{}
+clean.texi(mymacro,774) @@LaTeX @LaTeX{}
+clean.texi(mymacro,774) @c @br{}
+clean.texi(mymacro,774) @@bullet @bullet{}
+clean.texi(mymacro,774) @@copyright @copyright{}
+clean.texi(mymacro,774) @@dots @dots{}
+clean.texi(mymacro,774) @@enddots @enddots{}
+clean.texi(mymacro,774) @@equiv @equiv{}
+clean.texi(mymacro,774) @@error @error{}
+clean.texi(mymacro,774) @@expansion @expansion{}
+clean.texi(mymacro,774) @@minus @minus{}
+clean.texi(mymacro,774) @@point @point{}
+clean.texi(mymacro,774) @@print @print{}
+clean.texi(mymacro,774) @@result @result{}
+clean.texi(mymacro,774) @@today @today{}
+clean.texi(mymacro,774) @@aa @aa{}
+clean.texi(mymacro,774) @@AA @AA{}
+clean.texi(mymacro,774) @@ae @ae{}
+clean.texi(mymacro,774) @@oe @oe{}
+clean.texi(mymacro,774) @@AE @AE{}
+clean.texi(mymacro,774) @@OE @OE{}
+clean.texi(mymacro,774) @@o @o{}
+clean.texi(mymacro,774) @@O @O{}
+clean.texi(mymacro,774) @@ss @ss{}
+clean.texi(mymacro,774) @@l @l{}
+clean.texi(mymacro,774) @@L @L{}
+clean.texi(mymacro,774) @@exclamdown @exclamdown{}
+clean.texi(mymacro,774) @@questiondown @questiondown{}
+clean.texi(mymacro,774) @@pounds @pounds{}
+clean.texi(mymacro,774) @@registeredsymbol @registeredsymbol{}
+clean.texi(mymacro,774) @@ordf @ordf{}
+clean.texi(mymacro,774) @@ordm @ordm{}
+clean.texi(mymacro,774) @@comma @comma{}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(mymacro,774) @code{@@asis@{--a@}} @asis{--a}
+clean.texi(mymacro,774) @code{@@b@{--a@}} @b{--a}
+clean.texi(mymacro,774) @code{@@cite@{--a@}} @cite{--a}
+clean.texi(mymacro,774) @code{@@code@{--a@}} @code{--a}
+clean.texi(mymacro,774) @code{@@command@{--a@}} @command{--a}
+clean.texi(mymacro,774) @code{@@ctrl@{--a@}} @ctrl{--a}
+clean.texi(mymacro,774) @code{@@dfn@{--a@}} @dfn{--a}
+clean.texi(mymacro,774) @code{@@dmn@{--a@}} @dmn{--a}
+clean.texi(mymacro,774) @code{@@email@{--a,--b@}} @email{--a,--b}
+clean.texi(mymacro,774) @code{@@email@{,--b@}} @email{,--b}
+clean.texi(mymacro,774) @code{@@email@{--a@}} @email{--a}
+clean.texi(mymacro,774) @code{@@emph@{--a@}} @emph{--a}
+clean.texi(mymacro,774) @code{@@env@{--a@}} @env{--a}
+clean.texi(mymacro,774) @code{@@file@{--a@}} @file{--a}
+clean.texi(mymacro,774) @code{@@i@{--a@}} @i{--a}
+clean.texi(mymacro,774) @code{@@kbd@{--a@}} @kbd{--a}
+clean.texi(mymacro,774) @code{@@key@{--a@}} @key{--a}
+clean.texi(mymacro,774) @code{@@math@{--a@}} @math{--a}
+clean.texi(mymacro,774) @code{@@option@{--a@}} @option{--a}
+clean.texi(mymacro,774) @code{@@r@{--a@}} @r{--a}
+clean.texi(mymacro,774) @code{@@samp@{--a@}} @samp{--a}
+clean.texi(mymacro,774) @code{@@sc@{--a@}} @sc{--a}
+clean.texi(mymacro,774) @code{@@strong@{--a@}} @strong{--a}
+clean.texi(mymacro,774) @code{@@t@{--a@}} @t{--a}
+clean.texi(mymacro,774) @code{@@titlefont@{--a@}} @titlefont{--a}
+clean.texi(mymacro,774) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+clean.texi(mymacro,774) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+clean.texi(mymacro,774) @code{@@uref@{--a@}} @uref{--a}
+clean.texi(mymacro,774) @code{@@uref@{,--b@}} @uref{,--b}
+clean.texi(mymacro,774) @code{@@url@{--a,--b@}} @url{--a,--b}
+clean.texi(mymacro,774) @code{@@url@{--a,@}} @url{--a,}
+clean.texi(mymacro,774) @code{@@url@{,--b@}} @url{,--b}
+clean.texi(mymacro,774) @code{@@var@{--a@}} @var{--a}
+clean.texi(mymacro,774) @code{@@verb@{:--a:@}} @verb{:--a:}
+clean.texi(mymacro,774) @code{@@w@{--a@}} @w{--a}
+clean.texi(mymacro,774) @code{@@H@{a@}} @H{a}
+clean.texi(mymacro,774) @code{@@H@{--a@}} @H{--a}
+clean.texi(mymacro,774) @code{@@dotaccent@{a@}} @dotaccent{a}
+clean.texi(mymacro,774) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+clean.texi(mymacro,774) @code{@@ringaccent@{a@}} @ringaccent{a}
+clean.texi(mymacro,774) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+clean.texi(mymacro,774) @code{@@tieaccent@{a@}} @tieaccent{a}
+clean.texi(mymacro,774) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+clean.texi(mymacro,774) @code{@@u@{a@}} @u{a}
+clean.texi(mymacro,774) @code{@@u@{--a@}} @u{--a}
+clean.texi(mymacro,774) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+clean.texi(mymacro,774) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+clean.texi(mymacro,774) @code{@@udotaccent@{a@}} @udotaccent{a}
+clean.texi(mymacro,774) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+clean.texi(mymacro,774) @code{@@v@{a@}} @v{a}
+clean.texi(mymacro,774) @code{@@v@{--a@}} @v{--a}
+clean.texi(mymacro,774) @code{@@,@{c@}} @m_cedilla{c}
+clean.texi(mymacro,774) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(mymacro,774) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+clean.texi(mymacro,774) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @code{@@image@{f--ile,,@}} @image{f--ile,,}
+clean.texi(mymacro,774) @code{@@image@{f--ile@}} @image{f--ile}
+clean.texi(mymacro,774) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
+clean.texi(mymacro,774) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+clean.texi(mymacro,774) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @quotation
+clean.texi(mymacro,774) a q--uotation
+clean.texi(mymacro,774) @end quotation
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize
+clean.texi(mymacro,774) @item i--temize
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize +
+clean.texi(mymacro,774) @item i--tem +
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize @bullet
+clean.texi(mymacro,774) @item b--ullet
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize @emph
+clean.texi(mymacro,774) @item e--mph  item
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize @emph{} after emph
+clean.texi(mymacro,774) @item e--mph item
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @itemize @bullet{a--n itemize line}
+clean.texi(mymacro,774) @item i--tem 1
+clean.texi(mymacro,774) @item i--tem 2
+clean.texi(mymacro,774) @end itemize
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @enumerate
+clean.texi(mymacro,774) @item e--numerate
+clean.texi(mymacro,774) @end enumerate
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @multitable @columnfractions 6 7
+clean.texi(mymacro,774) @item mu--ltitable item @tab multitable tab
+clean.texi(mymacro,774) @end multitable
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @example
+clean.texi(mymacro,774) e--xample  some
+clean.texi(mymacro,774)    text
+clean.texi(mymacro,774) @end example
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @smallexample
+clean.texi(mymacro,774) s--mallexample
+clean.texi(mymacro,774) @end smallexample
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @display 
+clean.texi(mymacro,774) d--isplay
+clean.texi(mymacro,774) @end display
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @smalldisplay
+clean.texi(mymacro,774) s--malldisplay
+clean.texi(mymacro,774) @end smalldisplay
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @lisp
+clean.texi(mymacro,774) l--isp
+clean.texi(mymacro,774) @end lisp
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @smalllisp
+clean.texi(mymacro,774) s--malllisp
+clean.texi(mymacro,774) @end smalllisp
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @format
+clean.texi(mymacro,774) f--ormat
+clean.texi(mymacro,774) @end format
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @smallformat
+clean.texi(mymacro,774) s--mallformat
+clean.texi(mymacro,774) @end smallformat
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deffn c--ategory d--effn_name a--rguments...
+clean.texi(mymacro,774) d--effn
+clean.texi(mymacro,774) @end deffn
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deffn cate--gory de--ffn_name ar--guments...
+clean.texi(mymacro,774) def--fn
+clean.texi(mymacro,774) @end deffn
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defvr c--ategory d--efvr_name
+clean.texi(mymacro,774) d--efvr
+clean.texi(mymacro,774) @end defvr
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+clean.texi(mymacro,774) d--eftypefn
+clean.texi(mymacro,774) @end deftypefn
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+clean.texi(mymacro,774) d--eftypeop
+clean.texi(mymacro,774) @end deftypeop
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypevr c--ategory t--ype d--eftypevr_name
+clean.texi(mymacro,774) d--eftypevr
+clean.texi(mymacro,774) @end deftypevr
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defcv c--ategory c--lass d--efcv_name
+clean.texi(mymacro,774) d--efcv
+clean.texi(mymacro,774) @end defcv
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defop c--ategory c--lass d--efop_name a--rguments...
+clean.texi(mymacro,774) d--efop
+clean.texi(mymacro,774) @end defop
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftp c--ategory d--eftp_name a--ttributes...
+clean.texi(mymacro,774) d--eftp
+clean.texi(mymacro,774) @end deftp
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defun d--efun_name a--rguments...
+clean.texi(mymacro,774) d--efun
+clean.texi(mymacro,774) @end defun
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defmac d--efmac_name a--rguments...
+clean.texi(mymacro,774) d--efmac
+clean.texi(mymacro,774) @end defmac
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defspec d--efspec_name a--rguments...
+clean.texi(mymacro,774) d--efspec
+clean.texi(mymacro,774) @end defspec
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defvar d--efvar_name
+clean.texi(mymacro,774) d--efvar
+clean.texi(mymacro,774) @end defvar
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defopt d--efopt_name
+clean.texi(mymacro,774) d--efopt
+clean.texi(mymacro,774) @end defopt
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypefun t--ype d--eftypefun_name a--rguments...
+clean.texi(mymacro,774) d--eftypefun
+clean.texi(mymacro,774) @end deftypefun
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypevar t--ype d--eftypevar_name
+clean.texi(mymacro,774) d--eftypevar
+clean.texi(mymacro,774) @end deftypevar
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defivar c--lass d--efivar_name
+clean.texi(mymacro,774) d--efivar
+clean.texi(mymacro,774) @end defivar
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypeivar c--lass t--ype d--eftypeivar_name
+clean.texi(mymacro,774) d--eftypeivar
+clean.texi(mymacro,774) @end deftypeivar
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @defmethod c--lass d--efmethod_name a--rguments...
+clean.texi(mymacro,774) d--efmethod
+clean.texi(mymacro,774) @end defmethod
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+clean.texi(mymacro,774) d--eftypemethod
+clean.texi(mymacro,774) @end deftypemethod
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
+clean.texi(mymacro,774) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,774) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,774) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @code{@@ref@{chapter@}} @ref{chapter}
+clean.texi(mymacro,774) @code{@@ref@{node@}} @ref{node}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+clean.texi(mymacro,774) @code{@@ref@{node,,title@}} @ref{node,,title}
+clean.texi(mymacro,774) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+clean.texi(mymacro,774) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+clean.texi(mymacro,774) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+clean.texi(mymacro,774) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+clean.texi(mymacro,774) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+clean.texi(mymacro,774) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+clean.texi(mymacro,774) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+clean.texi(mymacro,774) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,774) @code{@@inforef@{chapter@}} @inforef{chapter}
+clean.texi(mymacro,774) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+clean.texi(mymacro,774) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+clean.texi(mymacro,774) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+clean.texi(mymacro,774) @code{@@inforef@{node@}} @inforef{node}
+clean.texi(mymacro,774) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+clean.texi(mymacro,774) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @table @bullet
+clean.texi(mymacro,774) @item a
+clean.texi(mymacro,774) l--ine
+clean.texi(mymacro,774) @end table
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @vtable @asis
+clean.texi(mymacro,774) @item a
+clean.texi(mymacro,774) l--ine
+clean.texi(mymacro,774) @end vtable
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @ftable @minus
+clean.texi(mymacro,774) @item a
+clean.texi(mymacro,774) l--ine
+clean.texi(mymacro,774) @end ftable
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @flushleft
+clean.texi(mymacro,774) flushleft
+clean.texi(mymacro,774) @end flushleft
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @flushright
+clean.texi(mymacro,774) flushright
+clean.texi(mymacro,774) @end flushright
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @center centered line
+clean.texi(mymacro,774) 
+clean.texi(mymacro,774) @verbatiminclude simplest.texi
+clean.texi(mymacro,774) 
+clean.texi(,775) 
+clean.texi(,776) @example
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) <
+clean.texi(mymacro,777) >
+clean.texi(mymacro,777) "
+clean.texi(mymacro,777) &
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) ``simple-double--three---four----''@*
+clean.texi(mymacro,777) code: @code{``simple-double--three---four----''} @*
+clean.texi(mymacro,777) asis: @asis{``simple-double--three---four----''} @*
+clean.texi(mymacro,777) strong: @strong{``simple-double--three---four----''} @*
+clean.texi(mymacro,777) kbd: @kbd{``simple-double--three---four----''} @*
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @cindex --option
+clean.texi(mymacro,777) @cindex ``
+clean.texi(mymacro,777) @findex ``
+clean.texi(mymacro,777) @findex --foption
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @@"u @"u 
+clean.texi(mymacro,777) @@"@{U@} @"{U} 
+clean.texi(mymacro,777) @@~n @~n
+clean.texi(mymacro,777) @@^a @^a
+clean.texi(mymacro,777) @@'e @'e
+clean.texi(mymacro,777) @@=o @=o
+clean.texi(mymacro,777) @@`i @`i
+clean.texi(mymacro,777) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+clean.texi(mymacro,777) @@dotless@{i@} @dotless{i}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @@* @*
+clean.texi(mymacro,777) @@ followed by a space
+clean.texi(mymacro,777) @ 
+clean.texi(mymacro,777) @@ followed by a tab
+clean.texi(mymacro,777) @	
+clean.texi(mymacro,777) @@ followed by a new line
+clean.texi(mymacro,777) @
+clean.texi(mymacro,777) @code{@@-} @-
+clean.texi(mymacro,777) @code{@@|} @|
+clean.texi(mymacro,777) @code{@@:} @:
+clean.texi(mymacro,777) @code{@@!} @!
+clean.texi(mymacro,777) @code{@@?} @?
+clean.texi(mymacro,777) @code{@@.} @.
+clean.texi(mymacro,777) @code{@@@@} @@
+clean.texi(mymacro,777) @code{@@@}} @}
+clean.texi(mymacro,777) @code{@@@{} @{
+clean.texi(mymacro,777) @code{@@/} @/
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @@TeX @TeX{}
+clean.texi(mymacro,777) @@LaTeX @LaTeX{}
+clean.texi(mymacro,777) @c @br{}
+clean.texi(mymacro,777) @@bullet @bullet{}
+clean.texi(mymacro,777) @@copyright @copyright{}
+clean.texi(mymacro,777) @@dots @dots{}
+clean.texi(mymacro,777) @@enddots @enddots{}
+clean.texi(mymacro,777) @@equiv @equiv{}
+clean.texi(mymacro,777) @@error @error{}
+clean.texi(mymacro,777) @@expansion @expansion{}
+clean.texi(mymacro,777) @@minus @minus{}
+clean.texi(mymacro,777) @@point @point{}
+clean.texi(mymacro,777) @@print @print{}
+clean.texi(mymacro,777) @@result @result{}
+clean.texi(mymacro,777) @@today @today{}
+clean.texi(mymacro,777) @@aa @aa{}
+clean.texi(mymacro,777) @@AA @AA{}
+clean.texi(mymacro,777) @@ae @ae{}
+clean.texi(mymacro,777) @@oe @oe{}
+clean.texi(mymacro,777) @@AE @AE{}
+clean.texi(mymacro,777) @@OE @OE{}
+clean.texi(mymacro,777) @@o @o{}
+clean.texi(mymacro,777) @@O @O{}
+clean.texi(mymacro,777) @@ss @ss{}
+clean.texi(mymacro,777) @@l @l{}
+clean.texi(mymacro,777) @@L @L{}
+clean.texi(mymacro,777) @@exclamdown @exclamdown{}
+clean.texi(mymacro,777) @@questiondown @questiondown{}
+clean.texi(mymacro,777) @@pounds @pounds{}
+clean.texi(mymacro,777) @@registeredsymbol @registeredsymbol{}
+clean.texi(mymacro,777) @@ordf @ordf{}
+clean.texi(mymacro,777) @@ordm @ordm{}
+clean.texi(mymacro,777) @@comma @comma{}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @code{@@acronym@{--a@}} @acronym{--a}
+clean.texi(mymacro,777) @code{@@asis@{--a@}} @asis{--a}
+clean.texi(mymacro,777) @code{@@b@{--a@}} @b{--a}
+clean.texi(mymacro,777) @code{@@cite@{--a@}} @cite{--a}
+clean.texi(mymacro,777) @code{@@code@{--a@}} @code{--a}
+clean.texi(mymacro,777) @code{@@command@{--a@}} @command{--a}
+clean.texi(mymacro,777) @code{@@ctrl@{--a@}} @ctrl{--a}
+clean.texi(mymacro,777) @code{@@dfn@{--a@}} @dfn{--a}
+clean.texi(mymacro,777) @code{@@dmn@{--a@}} @dmn{--a}
+clean.texi(mymacro,777) @code{@@email@{--a,--b@}} @email{--a,--b}
+clean.texi(mymacro,777) @code{@@email@{,--b@}} @email{,--b}
+clean.texi(mymacro,777) @code{@@email@{--a@}} @email{--a}
+clean.texi(mymacro,777) @code{@@emph@{--a@}} @emph{--a}
+clean.texi(mymacro,777) @code{@@env@{--a@}} @env{--a}
+clean.texi(mymacro,777) @code{@@file@{--a@}} @file{--a}
+clean.texi(mymacro,777) @code{@@i@{--a@}} @i{--a}
+clean.texi(mymacro,777) @code{@@kbd@{--a@}} @kbd{--a}
+clean.texi(mymacro,777) @code{@@key@{--a@}} @key{--a}
+clean.texi(mymacro,777) @code{@@math@{--a@}} @math{--a}
+clean.texi(mymacro,777) @code{@@option@{--a@}} @option{--a}
+clean.texi(mymacro,777) @code{@@r@{--a@}} @r{--a}
+clean.texi(mymacro,777) @code{@@samp@{--a@}} @samp{--a}
+clean.texi(mymacro,777) @code{@@sc@{--a@}} @sc{--a}
+clean.texi(mymacro,777) @code{@@strong@{--a@}} @strong{--a}
+clean.texi(mymacro,777) @code{@@t@{--a@}} @t{--a}
+clean.texi(mymacro,777) @code{@@titlefont@{--a@}} @titlefont{--a}
+clean.texi(mymacro,777) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+clean.texi(mymacro,777) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+clean.texi(mymacro,777) @code{@@uref@{--a@}} @uref{--a}
+clean.texi(mymacro,777) @code{@@uref@{,--b@}} @uref{,--b}
+clean.texi(mymacro,777) @code{@@url@{--a,--b@}} @url{--a,--b}
+clean.texi(mymacro,777) @code{@@url@{--a,@}} @url{--a,}
+clean.texi(mymacro,777) @code{@@url@{,--b@}} @url{,--b}
+clean.texi(mymacro,777) @code{@@var@{--a@}} @var{--a}
+clean.texi(mymacro,777) @code{@@verb@{:--a:@}} @verb{:--a:}
+clean.texi(mymacro,777) @code{@@w@{--a@}} @w{--a}
+clean.texi(mymacro,777) @code{@@H@{a@}} @H{a}
+clean.texi(mymacro,777) @code{@@H@{--a@}} @H{--a}
+clean.texi(mymacro,777) @code{@@dotaccent@{a@}} @dotaccent{a}
+clean.texi(mymacro,777) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+clean.texi(mymacro,777) @code{@@ringaccent@{a@}} @ringaccent{a}
+clean.texi(mymacro,777) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+clean.texi(mymacro,777) @code{@@tieaccent@{a@}} @tieaccent{a}
+clean.texi(mymacro,777) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+clean.texi(mymacro,777) @code{@@u@{a@}} @u{a}
+clean.texi(mymacro,777) @code{@@u@{--a@}} @u{--a}
+clean.texi(mymacro,777) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+clean.texi(mymacro,777) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+clean.texi(mymacro,777) @code{@@udotaccent@{a@}} @udotaccent{a}
+clean.texi(mymacro,777) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+clean.texi(mymacro,777) @code{@@v@{a@}} @v{a}
+clean.texi(mymacro,777) @code{@@v@{--a@}} @v{--a}
+clean.texi(mymacro,777) @code{@@,@{c@}} @m_cedilla{c}
+clean.texi(mymacro,777) @code{@@,@{--c@}} @m_cedilla{--c}
+clean.texi(mymacro,777) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+clean.texi(mymacro,777) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @code{@@image@{f--ile,,@}} @image{f--ile,,}
+clean.texi(mymacro,777) @code{@@image@{f--ile@}} @image{f--ile}
+clean.texi(mymacro,777) @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
+clean.texi(mymacro,777) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+clean.texi(mymacro,777) @code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @quotation
+clean.texi(mymacro,777) a q--uotation
+clean.texi(mymacro,777) @end quotation
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize
+clean.texi(mymacro,777) @item i--temize
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize +
+clean.texi(mymacro,777) @item i--tem +
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize @bullet
+clean.texi(mymacro,777) @item b--ullet
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize @emph
+clean.texi(mymacro,777) @item e--mph  item
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize @emph{} after emph
+clean.texi(mymacro,777) @item e--mph item
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @itemize @bullet{a--n itemize line}
+clean.texi(mymacro,777) @item i--tem 1
+clean.texi(mymacro,777) @item i--tem 2
+clean.texi(mymacro,777) @end itemize
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @enumerate
+clean.texi(mymacro,777) @item e--numerate
+clean.texi(mymacro,777) @end enumerate
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @multitable @columnfractions 6 7
+clean.texi(mymacro,777) @item mu--ltitable item @tab multitable tab
+clean.texi(mymacro,777) @end multitable
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @example
+clean.texi(mymacro,777) e--xample  some
+clean.texi(mymacro,777)    text
+clean.texi(mymacro,777) @end example
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @smallexample
+clean.texi(mymacro,777) s--mallexample
+clean.texi(mymacro,777) @end smallexample
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @display 
+clean.texi(mymacro,777) d--isplay
+clean.texi(mymacro,777) @end display
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @smalldisplay
+clean.texi(mymacro,777) s--malldisplay
+clean.texi(mymacro,777) @end smalldisplay
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @lisp
+clean.texi(mymacro,777) l--isp
+clean.texi(mymacro,777) @end lisp
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @smalllisp
+clean.texi(mymacro,777) s--malllisp
+clean.texi(mymacro,777) @end smalllisp
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @format
+clean.texi(mymacro,777) f--ormat
+clean.texi(mymacro,777) @end format
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @smallformat
+clean.texi(mymacro,777) s--mallformat
+clean.texi(mymacro,777) @end smallformat
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deffn c--ategory d--effn_name a--rguments...
+clean.texi(mymacro,777) d--effn
+clean.texi(mymacro,777) @end deffn
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deffn cate--gory de--ffn_name ar--guments...
+clean.texi(mymacro,777) def--fn
+clean.texi(mymacro,777) @end deffn
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defvr c--ategory d--efvr_name
+clean.texi(mymacro,777) d--efvr
+clean.texi(mymacro,777) @end defvr
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+clean.texi(mymacro,777) d--eftypefn
+clean.texi(mymacro,777) @end deftypefn
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+clean.texi(mymacro,777) d--eftypeop
+clean.texi(mymacro,777) @end deftypeop
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypevr c--ategory t--ype d--eftypevr_name
+clean.texi(mymacro,777) d--eftypevr
+clean.texi(mymacro,777) @end deftypevr
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defcv c--ategory c--lass d--efcv_name
+clean.texi(mymacro,777) d--efcv
+clean.texi(mymacro,777) @end defcv
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defop c--ategory c--lass d--efop_name a--rguments...
+clean.texi(mymacro,777) d--efop
+clean.texi(mymacro,777) @end defop
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftp c--ategory d--eftp_name a--ttributes...
+clean.texi(mymacro,777) d--eftp
+clean.texi(mymacro,777) @end deftp
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defun d--efun_name a--rguments...
+clean.texi(mymacro,777) d--efun
+clean.texi(mymacro,777) @end defun
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defmac d--efmac_name a--rguments...
+clean.texi(mymacro,777) d--efmac
+clean.texi(mymacro,777) @end defmac
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defspec d--efspec_name a--rguments...
+clean.texi(mymacro,777) d--efspec
+clean.texi(mymacro,777) @end defspec
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defvar d--efvar_name
+clean.texi(mymacro,777) d--efvar
+clean.texi(mymacro,777) @end defvar
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defopt d--efopt_name
+clean.texi(mymacro,777) d--efopt
+clean.texi(mymacro,777) @end defopt
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypefun t--ype d--eftypefun_name a--rguments...
+clean.texi(mymacro,777) d--eftypefun
+clean.texi(mymacro,777) @end deftypefun
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypevar t--ype d--eftypevar_name
+clean.texi(mymacro,777) d--eftypevar
+clean.texi(mymacro,777) @end deftypevar
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defivar c--lass d--efivar_name
+clean.texi(mymacro,777) d--efivar
+clean.texi(mymacro,777) @end defivar
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypeivar c--lass t--ype d--eftypeivar_name
+clean.texi(mymacro,777) d--eftypeivar
+clean.texi(mymacro,777) @end deftypeivar
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @defmethod c--lass d--efmethod_name a--rguments...
+clean.texi(mymacro,777) d--efmethod
+clean.texi(mymacro,777) @end defmethod
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+clean.texi(mymacro,777) d--eftypemethod
+clean.texi(mymacro,777) @end deftypemethod
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}.
+clean.texi(mymacro,777) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,777) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+clean.texi(mymacro,777) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @code{@@ref@{chapter@}} @ref{chapter}
+clean.texi(mymacro,777) @code{@@ref@{node@}} @ref{node}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+clean.texi(mymacro,777) @code{@@ref@{node,,title@}} @ref{node,,title}
+clean.texi(mymacro,777) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+clean.texi(mymacro,777) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+clean.texi(mymacro,777) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+clean.texi(mymacro,777) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+clean.texi(mymacro,777) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+clean.texi(mymacro,777) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+clean.texi(mymacro,777) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+clean.texi(mymacro,777) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+clean.texi(mymacro,777) @code{@@inforef@{chapter@}} @inforef{chapter}
+clean.texi(mymacro,777) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+clean.texi(mymacro,777) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+clean.texi(mymacro,777) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+clean.texi(mymacro,777) @code{@@inforef@{node@}} @inforef{node}
+clean.texi(mymacro,777) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+clean.texi(mymacro,777) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @table @bullet
+clean.texi(mymacro,777) @item a
+clean.texi(mymacro,777) l--ine
+clean.texi(mymacro,777) @end table
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @vtable @asis
+clean.texi(mymacro,777) @item a
+clean.texi(mymacro,777) l--ine
+clean.texi(mymacro,777) @end vtable
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @ftable @minus
+clean.texi(mymacro,777) @item a
+clean.texi(mymacro,777) l--ine
+clean.texi(mymacro,777) @end ftable
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @flushleft
+clean.texi(mymacro,777) flushleft
+clean.texi(mymacro,777) @end flushleft
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @flushright
+clean.texi(mymacro,777) flushright
+clean.texi(mymacro,777) @end flushright
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @center centered line
+clean.texi(mymacro,777) 
+clean.texi(mymacro,777) @verbatiminclude simplest.texi
+clean.texi(mymacro,777) 
+clean.texi(,778) @end example
+clean.texi(,779) 
+clean.texi(,780) @cindex t--ruc
+clean.texi(,781) @cindex T--ruc
+clean.texi(,782) @cindex .
+clean.texi(,783) @cindex ?
+clean.texi(,784) @cindex a
+clean.texi(,785) @findex t--ruc
+clean.texi(,786) @findex T--ruc
+clean.texi(,787) @findex .
+clean.texi(,788) @findex ?
+clean.texi(,789) @findex a
+clean.texi(,790) 
+clean.texi(,791) 
+clean.texi(,792) cp
+clean.texi(,793) @printindex cp
+clean.texi(,794) 
+clean.texi(,795) fn
+clean.texi(,796) @printindex fn
+clean.texi(,797) 
+clean.texi(,798) vr
+clean.texi(,799) @printindex vr
+clean.texi(,800) 
+clean.texi(,801) ky
+clean.texi(,802) @printindex ky
+clean.texi(,803) 
+clean.texi(,804) pg
+clean.texi(,805) @printindex pg
+clean.texi(,806) 
+clean.texi(,807) tp
+clean.texi(,808) @printindex tp
 clean.texi(,809) 
-clean.texi(,810) @node chapter
-clean.texi(,811) @chapter chapter
-clean.texi(,812) 
-clean.texi(,813) @footnote{in footnote}
+clean.texi(,810) 
+clean.texi(,811) 
+clean.texi(,812) @node chapter
+clean.texi(,813) @chapter chapter
 clean.texi(,814) 
-clean.texi(,815) @format
-clean.texi(,816) @menu 
-clean.texi(,817) * s--ection:: s--ection
-clean.texi(,818) 
-clean.texi(,819) Menu comment
-clean.texi(,820) ``simple-double--three---four----''@*
-clean.texi(,821) 
-clean.texi(,822) @end menu
-clean.texi(,823) @end format
-clean.texi(,824) 
-clean.texi(,825) @node s--ection
-clean.texi(,826) @section A section
-clean.texi(,827) 
-clean.texi(,828) @menu
-clean.texi(,829) * subsection:: 
-clean.texi(,830) @end menu
-clean.texi(,831) 
-clean.texi(,832) @node subsection
-clean.texi(,833) @subsection subsection
-clean.texi(,834) 
-clean.texi(,835) @menu
-clean.texi(,836) * subsubsection::
-clean.texi(,837) @end menu
-clean.texi(,838) 
-clean.texi(,839) @anchor{anchor}
+clean.texi(,815) @footnote{in footnote}
+clean.texi(,816) 
+clean.texi(,817) @format
+clean.texi(,818) @menu 
+clean.texi(,819) * s--ection:: s--ection
+clean.texi(,820) 
+clean.texi(,821) Menu comment
+clean.texi(,822) ``simple-double--three---four----''@*
+clean.texi(,823) 
+clean.texi(,824) @end menu
+clean.texi(,825) @end format
+clean.texi(,826) 
+clean.texi(,827) @node s--ection
+clean.texi(,828) @section A section
+clean.texi(,829) 
+clean.texi(,830) @menu
+clean.texi(,831) * subsection:: 
+clean.texi(,832) @end menu
+clean.texi(,833) 
+clean.texi(,834) @node subsection
+clean.texi(,835) @subsection subsection
+clean.texi(,836) 
+clean.texi(,837) @menu
+clean.texi(,838) * subsubsection::
+clean.texi(,839) @end menu
 clean.texi(,840) 
-clean.texi(,841) @node subsubsection
-clean.texi(,842) @subsubsection subsubsection
-clean.texi(,843) 
-clean.texi(,844) @node chapter2, node, chapter, Top
-clean.texi(,845) @chapter chapter 2
-clean.texi(,846) 
-clean.texi(,847) @menu
-clean.texi(,848) * node::
-clean.texi(,849) @end menu
-clean.texi(,850) 
-clean.texi(,851) @printindex cp
-clean.texi(,852) @printindex fn
-clean.texi(,853) 
-clean.texi(,854) @contents
-clean.texi(,855) @shortcontents
-clean.texi(,856) 
-clean.texi(,857) @node node, , chapter2, Top
+clean.texi(,841) @anchor{anchor}
+clean.texi(,842) 
+clean.texi(,843) @node subsubsection
+clean.texi(,844) @subsubsection subsubsection
+clean.texi(,845) 
+clean.texi(,846) @node chapter2, node, chapter, Top
+clean.texi(,847) @chapter chapter 2
+clean.texi(,848) 
+clean.texi(,849) @menu
+clean.texi(,850) * node::
+clean.texi(,851) @end menu
+clean.texi(,852) 
+clean.texi(,853) @printindex cp
+clean.texi(,854) @printindex fn
+clean.texi(,855) 
+clean.texi(,856) @contents
+clean.texi(,857) @shortcontents
 clean.texi(,858) 
-clean.texi(,859) @bye
+clean.texi(,859) @node node, , chapter2, Top
+clean.texi(,860) 
+clean.texi(,861) @bye

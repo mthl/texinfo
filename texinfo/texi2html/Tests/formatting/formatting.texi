@@ -252,6 +252,10 @@ d--effn
    more args @* even more so
 def--fn
 @end deffn
+ 
+@deffn fset @var{i} a g
+with @@var@{i@} on the line
+@end deffn
 
 @defvr c--ategory d--efvr_name
 d--efvr

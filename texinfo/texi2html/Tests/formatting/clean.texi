@@ -90,6 +90,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@ordf @ordf{}
 @@ordm @ordm{}
 @@comma @comma{}
+@@euro @euro{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}
@@ -136,6 +137,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
 @code{@@slanted@{--a@}} @slanted{--a}
+@code{@@sansserif@{--a@}} @sansserif{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
 @code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}

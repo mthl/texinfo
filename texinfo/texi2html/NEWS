@@ -11,7 +11,8 @@ This file records noteworthy changes.
   @headitem, @quotation second arg, @acronym second arg.
   @url is now a synonym for @uref. @ at the end of a @def* line continues the
   line.
-  Handle @abbr and @slanted.
+  Handle texinfo 4.8 constructs:
+  @abbr, @slanted, @euro and @sansserif.
 * Cross refs are done according to the specification presented in the texinfo
   manual in the node HTML Xref.
 

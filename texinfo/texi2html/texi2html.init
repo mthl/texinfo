@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.77 2004-12-12 19:10:13 pertusus Exp $
+# $Id: texi2html.init,v 1.78 2004-12-12 23:40:26 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1562,6 +1562,7 @@ $simple_map_pre{'*'} = "\n";
                'ordf'         => '&ordf;',
                'ordm'         => '&ordm;',
                'comma'        => ',',
+               'euro'         => '&euro;',
              );
 
 # This map is used in preformatted environments
@@ -1622,6 +1623,7 @@ $pre_map{'enddots'} = '....';
                'ordf'         => 'a',
                'ordm'         => 'o',
                'comma'        => ',',
+               'euro'         => 'Euro',
 );
 
 #
@@ -1684,6 +1686,7 @@ $pre_map{'enddots'} = '....';
                'ordf'         => 'a',
                'ordm'         => 'o',
                'comma'        => ',',
+               'euro'         => 'Euro',
             );
 
 # taken from
@@ -1728,6 +1731,7 @@ $pre_map{'enddots'} = '....';
                'ordf'         => '00AA',
                'ordm'         => '00BA',
                'comma'        => '002C',
+               'euro'         => '20AC',
              );
 
 %ascii_character_map = (
@@ -1838,6 +1842,7 @@ our %old_style_map = (
       'file',       {'args' => ['code'], 'attribute' => 'tt', 'quote' => '"'},
       'i',          {'attribute' => 'i'},
       'slanted',    {'attribute' => 'i'},
+      'sansserif',  {'attribute' => 'span class="sansserif"'},
       'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
       'key',        {'attribute' => 'kbd'},
       'math',       {'attribute' => 'em'},
@@ -2719,6 +2724,7 @@ foreach my $key (keys(%def_map))
          'pre.display'            => 'font-family: serif',
          'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
          'pre.smallexample'       => 'font-size: smaller',
+         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal;'
      );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};

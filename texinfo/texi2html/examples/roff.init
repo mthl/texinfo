@@ -197,6 +197,7 @@ sub T2H_ROFF_titlepage ()
                'pounds'       => '\(Po',
                'ordm'         => '\(Om',
                'ordf'         => '\(Of',
+               'euro'         => '\(eu',
              );
 
 # This map is used in preformatted environments
