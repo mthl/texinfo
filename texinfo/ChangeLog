@@ -1,3 +1,9 @@
+2004-08-02  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_acronym_or_abbr): use strchr, not index.
+	Report from: Prof Brian Ripley <ripley@stats.ox.ac.uk>, 
+	2 Aug 2004 12:47:36 +0100 (BST)
+
 2004-07-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi,

@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.51 2004-07-31 18:49:51 karl Exp $
+   $Id: cmds.c,v 1.52 2004-08-02 14:10:41 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -674,7 +674,7 @@ cm_acronym_or_abbr (int arg, int is_abbr)
 
   /* If not enclosed in braces, strip after comma to be compatible
      with texinfo.tex.  */
-  if (description[0] != '{' && index (description, ',') != NULL)
+  if (description[0] != '{' && strchr (description, ',') != NULL)
     {
       int i = 0;
       while (description[i] != ',')
