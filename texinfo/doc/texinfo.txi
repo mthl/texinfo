@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
+@c $Id: texinfo.txi,v 1.131 2005-01-23 23:54:00 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -122,7 +122,9 @@ Cover art by Etienne Suvasa.
 @node Top
 @top Texinfo
 
-@insertcopying
+This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
+a documentation system that can produce both online information and a
+printed manual from a single source.
 
 The first part of this master menu lists the major nodes in this Info
 document, including the @@-command and concept indices.  The rest of
@@ -1563,18 +1565,18 @@ writing it out again; it is output on the back of the title page.  The
 @noindent
 The `Top' node contains the master menu for the Info file.  Since the
 printed manual uses a table of contents rather than a menu, it
-excludes the `Top' node.  We also include the copying text again for
-the benefit of online readers.  Since the copying text begins with
-a brief description of the manual, no other text is needed in this
-case.  The @samp{@@top} command itself helps @command{makeinfo}
-determine the relationships between nodes.
+excludes the `Top' node.  We repeat the short description from the
+beginning of the @samp{@@copying} text, but there's no need to repeat
+the copyright information, so we don't use @samp{@@insertcopying} here.
+The @samp{@@top} command itself helps @command{makeinfo} determine the
+relationships between nodes.
 
 @example
 @@ifnottex
 @@node Top
 @@top Short Sample
 
-@@insertcopying
+This is a short sample.
 @@end ifnottex
 
 @group
@@ -2760,7 +2762,7 @@ Published by @dots{}
 @@node Top
 @@top @var{title}
 
-@@insertcopying
+This manual is for @var{program}, version @var{version}.
 @@end ifnottex
 
 @group
@@ -3121,24 +3123,17 @@ This inserts the text previously defined by @code{@@copying}.  To meet
 legal requirements, it must be used on the copyright page in the printed
 manual (@pxref{Copyright}).
 
-We also strongly recommend using @code{@@insertcopying} in the Top node
-of your manual (@pxref{The Top Node}), although it is not required
-legally.  Here's why:
-
 The @code{@@copying} command itself causes the permissions text to
 appear in an Info file @emph{before} the first node.  The text is also
 copied into the beginning of each split Info output file, as is legally
 necessary.  This location implies a human reading the manual using Info
 does @emph{not} see this text (except when using the advanced Info
-command @kbd{g *}).  Therefore, an explicit @code{@@insertcopying}
-in the Top node makes it apparent to readers that the manual is free.
+command @kbd{g *}), but this does not matter for legal purposes,
+because the text is present.
 
 Similarly, the @code{@@copying} text is automatically included at the
 beginning of each HTML output file, as an HTML comment.  Again, this
-text is not visible (unless the reader views the HTML source).  And
-therefore again, the @code{@@insertcopying} in the Top node is valuable
-because it makes the copying permissions visible and thus promotes
-freedom.
+text is not visible (unless the reader views the HTML source).
 
 The permissions text defined by @code{@@copying} also appears
 automatically at the beginning of the XML output file.
@@ -18460,7 +18455,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
+$Id: texinfo.txi,v 1.131 2005-01-23 23:54:00 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18526,7 +18521,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.130 2005-01-15 23:30:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.131 2005-01-23 23:54:00 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

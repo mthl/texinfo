@@ -1,3 +1,9 @@
+2005-01-23  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Top): per rms, don't use @insertcopying here.
+	* doc/texinfo.txi (Top): Likewise.  Also, remove recommendations
+		to use it.	   
+
 2005-01-20  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi: Have a consistent function declaration style.
