@@ -1,3 +1,27 @@
+2003-01-11    <karl@gnu.org>
+
+	* doc/texinfo.tex: doc fix.
+
+2003-01-10    <karl@gnu.org>
+
+	* doc/texinfo.tex (\indexnofonts, \indexdummies): handle more
+		accent commands.(\indexdummyfont): not needed, use \asis
+		instead.
+
+	* doc/texinfo.tex (\indexdummies,\indexnofonts): indent, no other
+		changes.
+
+	* doc/texinfo.tex (\chapter .. \subsubsection): indent the
+	definitions; no other change.
+
+	* doc/texinfo.txi (Macro details): no multiple-line args is
+		another limitation.
+
+	Fri Jan 10 07:12:23 CET 2003 Stepan Kasal <kasal@math.cas.cz>
+        * texinfo.tex (\writetocentry): The
+          common work on building the line for \write\tocfile was
+          moved into the macro itself and thus all callers has been changed. 
+
 2003-01-09    <karl@gnu.org>
 
 	* info/session.c (incremental_search): don't interpret the
