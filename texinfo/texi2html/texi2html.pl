@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.13 2003-01-22 16:53:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.14 2003-01-22 18:50:06 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -3099,8 +3099,10 @@ sub PrintIndex
     $sec_name =~ s/.*? // if $sec_name =~ /^([A-Z]|\d+)\./;
 
     ($first_page->{href} = sec_href($section)) =~ s/\#.*$//;
-    # FIXME $node2sec{$section} might be undef inwhich case Sec2PrevNode returns
-    # Top
+    # FIXME $node2sec{$section} might be undef, in that case Sec2PrevNode 
+    # returns Top. The resulting html is perfectly right nevertheless.
+    # Is it normal that it is undef ? Is Top the right thing ?
+    # Why does it work in that case and produce the right output ?
     $node2prev{$section} = Sec2PrevNode($node2sec{$section});
     $prev_node = $section;
     # Update tree structure of document
@@ -4712,14 +4714,23 @@ sub main
     SetDocumentLanguage('en') unless ($T2H_LANG);
     # APA: There's got to be a better way:
     $things_map{'today'} = &pretty_date;
-    # Identity:
-    $T2H_TODAY = &pretty_date;  # like "20 September 1993"
-    # the eval prevents this from breaking on system which do not have
-    # a proper getpwuid implemented
-    eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
-    # APA: Provide Windows NT workaround until getpwuid gets
-    # implemented there.
-    $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
+    if ($T2H_TEST)
+    {
+        $T2H_TODAY = 'a sunny day';
+        $T2H_USER = 'a tester';
+        $THISPROG = 'texi2html';
+    } 
+    else
+    { 
+        # Identity:
+        $T2H_TODAY = &pretty_date;  # like "20 September 1993"
+        # the eval prevents this from breaking on system which do not have
+        # a proper getpwuid implemented
+        eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
+        # APA: Provide Windows NT workaround until getpwuid gets
+        # implemented there.
+        $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
+    }
     &pass1();
     &pass2();
     &pass3();

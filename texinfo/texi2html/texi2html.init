@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.10 2003-01-08 18:25:14 pertusus Exp $
+# $Id: texi2html.init,v 1.11 2003-01-22 18:50:06 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -67,6 +67,15 @@ $T2H_OPTIONS -> {check} =
  type => '!',
  linkage => \$T2H_CHECK,
  verbose => 'if set, only check files and output all things that may be Texinfo commands',
+ noHelp => 1
+};
+
+my $T2H_TEST = 0;
+$T2H_OPTIONS -> {test} =
+{
+ type => '!',
+ linkage => \$T2H_TEST,
+ verbose => 'use predefined information to avoid differences with reference files',
  noHelp => 1
 };
 
