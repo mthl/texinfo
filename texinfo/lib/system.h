@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.7 2003-09-08 14:13:25 karl Exp $
+   $Id: system.h,v 1.8 2003-09-08 15:37:24 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -206,8 +206,7 @@ extern int strcoll ();
 #  define HAVE_LONG_FILENAMES(dir)   (1)
 #  define NULL_DEVICE	"NUL"
 # endif  /* O_BINARY && !__MSDOS__ */
-# ifdef __unix__
-#  /* i.e., cygwin */
+# ifdef __CYGWIN__
 #  define DEFAULT_TMPDIR	"/tmp/"
 #  define PATH_SEP	":"
 # else  /* O_BINARY && !__unix__ */
