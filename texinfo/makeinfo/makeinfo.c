@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.3 2002-09-29 19:15:20 karl Exp $
+   $Id: makeinfo.c,v 1.4 2002-09-29 19:20:00 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -393,9 +393,9 @@ General options:\n\
      /* xgettext: no-wrap */
      puts (_("\
 Output format selection (default is to produce Info):\n\
-      --docbook             output DocBook rather than Info.\n\
+      --docbook             output DocBook XML rather than Info.\n\
       --html                output HTML rather than Info.\n\
-      --xml                 output XML (TexinfoML) rather than Info.\n\
+      --xml                 output Texinfo XML rather than Info.\n\
 "));
 
      puts (_("\
@@ -445,10 +445,12 @@ Conditional processing in input:\n\
   --ifinfo          process @ifinfo even if not generating Info.\n\
   --ifplaintext     process @ifplaintext even if not generating plain text.\n\
   --iftex           process @iftex and @tex; implies --no-split.\n\
+  --ifxml           process @ifxml and @xml.\n\
   --no-ifhtml       do not process @ifhtml and @html text.\n\
   --no-ifinfo       do not process @ifinfo text.\n\
   --no-ifplaintext  do not process @ifplaintext text.\n\
   --no-iftex        do not process @iftex and @tex text.\n\
+  --no-ifxml        do not process @ifxml and @xml text.\n\
 "));
 
      puts (_("\
@@ -462,7 +464,7 @@ Conditional processing in input:\n\
 Examples:\n\
   makeinfo foo.texi                     write Info to foo's @setfilename\n\
   makeinfo --html foo.texi              write HTML to @setfilename\n\
-  makeinfo --xml foo.texi               write XML to @setfilename\n\
+  makeinfo --xml foo.texi               write Texinfo XML to @setfilename\n\
   makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n\
   makeinfo --no-headers foo.texi        write plain text to standard output\n\
 \n\
