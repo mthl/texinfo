@@ -4,13 +4,9 @@
 : ${srcdir=.}
 input=`basename $0`.txi
 
-# html.  we expect two invalid encoded characters:
-# accent-text.txi:45: warning: invalid encoded character `#156'.
-# accent-text.txi:45: warning: invalid encoded character `#140'.
-# These are oe and OE, and they are not officially supported in HTML.
+# html.
 houtput=`basename $0`.html
-../makeinfo --html --no-split -I$srcdir $srcdir/$input \
-2>&1 | grep -v 'invalid encoded character'
+../makeinfo --html --no-split -I$srcdir $srcdir/$input
 hexit_status=$?
 if test $hexit_status = 0; then
   grep '&igrave;' $houtput >/dev/null \
