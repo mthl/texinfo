@@ -2,6 +2,6 @@ define redo
 file ginfo
 end
 
-set env TERM xterm
-
+set env MALLOC_CHECK_ 2
 set env INFOPATH :/usr/local/info
+set env TERM xterm

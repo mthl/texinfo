@@ -2,6 +2,7 @@ define redo
 file makeinfo
 end
 
+set env MALLOC_CHECK_ 2
 set env ttests ../../@tests
 
 #set args -o /tmp/out --no-validate ../@ttests/outside.texi
