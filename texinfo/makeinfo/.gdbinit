@@ -153,6 +153,5 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 # --xml complains about @sp.
 #set args -o - --xml $ttests/sp.tex
 
-# crash on elisp manual.
-#set args --html --no-split -o /dev/shm/elisp.html -I $gnu/src/elisp* elisp.texi
-set args --html --no-split -o /dev/shm/elisp.html $ttests/variables.tex --force
+# macro expansion ouput first.
+set args -o - --html $ttests/macfirst.tex

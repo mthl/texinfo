@@ -1,10 +1,17 @@
 2002-10-31    <karl@gnu.org>
 
-	* makeinfo/makeinfo.c (read_command): call html_output_head if
-	we're going to expand a macro. Otherwise a macro expansion first
-	in the document body comes out before the <html>.
+	* makeinfo/makeinfo.c (executing_macro): new static.
+	(read_command): set it, if we execute a macro.
+	(add_char): if it is set, call html_output_head.
+	This is so if a macro expansion is first in the document body, the
+	html head gets written before the macro body.
 	Report from: Stephen Gildea <gildea@stop.mail-abuse.org>,
 	10 Jul 2002 13:35:13 -0400.
+
+	* makeinfo/html.c (html_title_written),
+	* makeinfo/html.h (html_title_written): make available.
+	* makeinfo/cmds.c (cm_titlefont): set html_title_written for html
+		output.
 
 	* util/texindex.c: texindex.c (need_initials, first_initial): New
 	globals.
