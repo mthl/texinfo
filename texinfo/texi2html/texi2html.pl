@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.14 2003-01-22 18:50:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.15 2003-01-23 16:38:20 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -571,6 +571,7 @@ $index_properties =
 %style_map = (
 	      'acronym',    '&do_acronym',
 	      'asis',       '',
+	      'bullet',      '&do_bullet',
 	      'b',          'b',
 	      'cite',       'cite',
 	      'code',       'code',
@@ -926,7 +927,8 @@ $Configure_failed = $@ && <<EOT;
            'texi2html -help 2' for a complete list) or upgrade to perl
            version 5.005 or higher.
 EOT
-
+# FIXME getOptions is called 2 times, and thus adds 2 times the default 
+# help and version 
 if (! $options->getOptions($T2H_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
 {
     print $Configure_failed if $Configure_failed;
@@ -4286,6 +4288,7 @@ sub html_push
     $html_element = $what;
 }
 
+# push the html element on the top the html stack if it is not a <p>
 sub html_push_if
 {
     local($what) = @_;
@@ -4415,6 +4418,13 @@ sub menu_entry
 }
 
 sub do_ctrl { "^$_[0]" }
+
+sub do_bullet 
+{ 
+    my $text = shift;
+    $text = "" unless (defined($text));
+    return "$things_map{bullet} $text";
+}
 
 sub do_email
 {
