@@ -3,6 +3,11 @@
 	* doc/texinfo.tex (\ptexnewwrite): Save \newwrite.
 	(\newwrite): Call it.
 
+2004-11-17  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (install-warnings): new --enable option, requested
+		by te.
+
 2004-11-11  Karl Berry  <karl@gnu.org>
 
 	* texinfo.dtd (metainformation): add documentdescription.
