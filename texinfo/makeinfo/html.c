@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.19 2003-07-27 00:02:52 karl Exp $
+   $Id: html.c,v 1.20 2003-07-28 23:00:18 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -204,12 +204,13 @@ process_css_file (filename)
         {
         case null_state: /* between things */
           if (c == '@')
-            { /* Only an @import should switch into import_state, other
-                 @-commands, such as @media, should put us into
-                 inline_state.  I don't think any other css @-commands
-                 start with `i'.  */
+            { /* Only @import and @charset should switch into
+                 import_state, other @-commands, such as @media, should
+                 put us into inline_state.  I don't think any other css
+                 @-commands start with `i' or `c', although of course
+                 this will break when such a command is defined.  */
               int nextchar = getc (f);
-              if (nextchar == 'i')
+              if (nextchar == 'i' || nextchar == 'c')
                 {
                   append_char (import_text, c);
                   state = import_state;
