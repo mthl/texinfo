@@ -1,5 +1,10 @@
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/footnote.c (output_pending_notes): always output footnotes
+	with in_fixed_width_font = 0, so entity substitutions can take place.
+
+2003-11-19  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/footnote.c (cm_footnote, output_pending_notes): provide
 	back link from footnote marker.
 
