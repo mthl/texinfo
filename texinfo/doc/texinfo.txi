@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.119 2004-11-30 13:29:20 karl Exp $
+@c $Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16300,6 +16300,11 @@ the directory is @file{./} (or just the empty string), and the file is
 
 @end itemize
 
+One exception: the algorithm for node name expansion prefixes the
+string @samp{g_t} when the node name begins with a non-letter.  This
+kludge (due to XHTML rules) is not necessary for filenames, and is
+therefore omitted.
+
 Any directory part in the filename argument of the source
 cross-reference command is ignored.  Thus, @code{@@xref@{,,,../foo@}}
 and @code{@@xref@{,,,foo@}} both use @samp{foo} as the manual name.
@@ -16346,6 +16351,7 @@ simplicity.
 A special exception: the Top node (@pxref{The Top Node}) is always
 mapped to the file @file{index.html}, to match web server software.
 However, the HTML @emph{target} is @samp{Top}.  Thus (in the split case):
+
 @example
 @@xref@{Top, Introduction,, emacs, The GNU Emacs Manual@}.
 @result{} <a href="emacs/index.html#Top">
@@ -16353,8 +16359,12 @@ However, the HTML @emph{target} is @samp{Top}.  Thus (in the split case):
 
 @enumerate
 @item
-The standard ASCII letters (a-z and A-z), and numbers (0-9) are not
-modified.  All other characters are changed as specified below.
+The standard ASCII letters (a-z and A-Z) are not modified.  All other
+characters are changed as specified below.
+
+@item
+The standard ASCII numbers (0-9) are not modified except when a number
+is the first character of the node name.  In that case, see below.
 
 @item
 Multiple consecutive space, tab and newline characters are transformed
@@ -16373,6 +16383,13 @@ converted into a @samp{-} character.
 Other ASCII 7-bit characters are transformed into @samp{_00@var{xx}},
 where @var{xx} is the ASCII character code in (lowercase) hexadecimal.
 This includes @samp{_}, which is mapped to @samp{_005f}.
+
+@item
+If the node name does not begin with a letter, the literal string
+@samp{g_t} is prefixed to the result.  (Due to the rules above, that
+string can never occur otherwise; it is an arbitrary choice, standing
+for ``GNU Texinfo''.)  This is necessary because XHTML requires that
+identifiers begin with a letter.
 
 @end enumerate
 
@@ -16498,10 +16515,11 @@ Any other command is an error, and the result is unspecified.
 @cindex 8-bit characters, in HTML cross-references
 @cindex Expansion of 8-bit characters in HTML cross-references
 
-Characters other than plain 7-bit ASCII are transformed into the
-corresponding Unicode code point(s), in Normalization Form C, which
+Usually, characters other than plain 7-bit ASCII are transformed into
+the corresponding Unicode code point(s) in Normalization Form C, which
 uses precomposed characters where available.  (This is the
-normalization form recommended by the W3C and other bodies.)
+normalization form recommended by the W3C and other bodies.)  This
+holds when that code point is 0xffff or less, as it almost always is.
 
 These will then be further transformed by the rules above into the
 string @samp{_@var{xxxx}}, where @var{xxxx} is the code point in hex.
@@ -16513,10 +16531,18 @@ For example, combining this rule and the previous section:
 @result{} A-TeX-B_0306-_2605_002e_002e_002e
 @end example
 
-Notice: 1)@tie{}@code{@@enddots} expands to three periods which in turn expands
-to three @samp{_002e}'s; 2)@tie{}@code{@@u@{B@}} is a `B' with a breve
-accent, which does not exist as a pre-accented Unicode character,
-therefore expands to @samp{B_0306} (B with combining breve).
+Notice: 1)@tie{}@code{@@enddots} expands to three periods which in
+turn expands to three @samp{_002e}'s; 2)@tie{}@code{@@u@{B@}} is a `B'
+with a breve accent, which does not exist as a pre-accented Unicode
+character, therefore expands to @samp{B_0306} (B with combining
+breve).
+
+When the Unicode code point is above 0xffff, the transformation is
+@samp{__@var{xxxxxx}}, that is, two leading underscores followed by
+six hex digits.  Since Unicode has declared that their highest code
+point is 0x10ffff, this is sufficient.  (We felt it was better to
+define this extra escape than to always use six hex digits, since the
+first two would nearly always be zeros.)
 
 For the definition of Unicode Normalization Form C, see Unicode report
 UAX#15, @uref{http://www.unicode.org/reports/tr15/}.  Many related
@@ -18408,7 +18434,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.119 2004-11-30 13:29:20 karl Exp $
+$Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18474,7 +18500,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.119 2004-11-30 13:29:20 karl Exp $
+@comment $Id: texinfo.txi,v 1.120 2004-12-06 01:13:06 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -18994,7 +19020,6 @@ A single-sided page looks like this:
  | Start of text ...     |
  | ...                   |
  |                       |
-
 @end group
 @end example
 
@@ -19026,7 +19051,6 @@ Two pages, side by side as in an open book, look like this:@refill
  | Start of text ...     |   | More  text ...        |
  | ...                   |   | ...                   |
  |                       |   |                       |
-
 @end group
 @end example
 

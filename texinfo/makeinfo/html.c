@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.27 2004-11-30 02:03:23 karl Exp $
+   $Id: html.c,v 1.28 2004-12-06 01:13:06 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -604,6 +604,14 @@ void
 add_escaped_anchor_name (char *name, int old)
 {
   canon_white (name);
+
+  if (!old && !strchr ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                       *name))
+    { /* XHTML does not allow anything but an ASCII letter to start an
+         identifier.  Therefore kludge in this constant string if we
+         have a nonletter.  */
+      add_word ("g_t");
+    }
 
   for (; *name; name++)
     {

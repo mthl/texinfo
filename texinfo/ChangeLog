@@ -1,5 +1,12 @@
 2004-12-05  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/html.c (add_escaped_anchor_name): prefix g_t if the
+	nodename begins with a nonletter.  Ugh.
+	* doc/texinfo.txi (HTML Xref Node Name Expansion): document this.
+	
+	* doc/texinfo.txi (HTML Xref 8-bit Character Expansion): define
+	behavior for Unicode code points above 0xfff.
+
 	* makeinfo/makeinfo.c (reader_loop): <wbr> didn't make it into
 	HTML 4, remove it.  Sigh.
 	texinfo-pretest mail from wl, 05 Dec 2004 23:39:05 +0100.
