@@ -1,3 +1,61 @@
+2003-09-16  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\sectionheading): there is no need to insert
+	  \nobreak before a kern which is not followed by
+	  a glue.  Such a kern is not a permissible breakpoint.
+
+2003-09-16  Simon Law <sfllaw@uwaterloo.ca>
+
+	* doc/texinfo.tex (\dosuppressfirstparagraph): Gobble \noindent
+	if it occurs in the first paragraph.
+	(\ptexnoindent): for saving/restoring \noindent in @tex.
+	(\footnote): Neutralise the effect of @noindent within a footnote.
+
+2003-09-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: Changes to make pdf references go to the correct
+	place on the page.  This is most easily testable
+	at high magnifications (I used 400% and 800%).
+	(\output): put \the\pageno pdfdest at very
+	beginning of \shipout.(\dopdfoutline): new macro.
+	(\pdfmakeoutlines): recompute all section numbers.
+	(\unnumberedno): \newcount.
+	(\chapterzzz,\appendixzzz,\unnumberedzzz,
+	 ..., \unnumberedsubsubseczzz): abstract common
+	elements, keep track of numbering for everything.
+	(\doheading,\dosubheading,\dosubsubheading): call
+	\sectionheading directly instead of \plain*secheading.
+	(\chfplain, \sectionheading): take additional section type
+	argument; call \writetocentry and \donoderef.  
+	(\unnchfopen): mention this is deprecated.
+	(\writetocentry): handle "omit" case, and
+	\global\pdfmakepagedesttrue.
+	(\startcontents, \summarycontents): sectioning
+	commands take an extra arg.
+	(\dosub*secentry): take extra arg with section
+	number; change callers.
+	(\pdfcatalog): move this call to the opening PDF
+	commands, for clarity.
+	(\unnumbnoderef): no longer needed, collapsed into
+	\donoderef.(\Yomitfromtoc): new xref constant.
+	(\Ynumbered,\Yappendix): renamed from
+	\Ysectionnumberedandtype and
+	\Yappendixletterandtype, for clarity.
+
+	* doc/texinfo.txi (cartouche): omit invalid @group.
+
+	* makeinfo/node.c (cm_node): restore accesskey= on the <link>s.
+	From hanwen.
+
+2003-09-15  Karl Berry  <karl@gnu.org>
+
+	* util/dir-example: add guile-tut.
+
+	* info/session.c (info_follow_menus): take the first best_guess
+	rather than the last.
+	From: Rob Browning <rlb@defaultvalue.org>,
+	15 Sep 2003 01:26:17 -0500.
+
 2003-09-13  Karl Berry  <karl@gnu.org>
 
 	* automake 1.7.7.
