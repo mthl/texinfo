@@ -1,3 +1,9 @@
+2004-10-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\setmultitablespacing): just let \multistrut be
+	the same as \strut.  Its previous computation was wrong.
+	See bug-texinfo report from Werner Lemberg, 31 Oct 2004 12:52:20 +0100.
+
 2004-10-22  Stepan Kasal  <kasal@ucw.cz>
 
 	* info/Makefile.am (generated_sources): Add dependencies defining
