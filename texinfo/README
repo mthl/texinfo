@@ -1,16 +1,20 @@
-Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002
-Free Software Foundation, Inc.
-
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.1 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.
-
-
+$Id: README,v 1.2 2002-09-11 16:32:09 karl Exp $
 This is the README file for the GNU Texinfo distribution.
-The primary distribution point is ftp://ftp.gnu.org/gnu/texinfo/
-and the primary home page is http://www.gnu.org/software/texinfo/,
-secondary home page at http://texinfo.org/.
+
+  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+  2001, 2002 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+See ./INSTALL* for installation instructions.
+
+Primary distribution point: ftp://ftp.gnu.org/gnu/texinfo/
+  (list of mirrors at: http://www.gnu.org/prep/ftp.html)
+
+Home page: http://www.gnu.org/software/texinfo/
+  (list of mirrors at: http://www.gnu.org/server/list-mirrors.html)
 
 Mailing lists:
 - bug-texinfo@gnu.org for bug reports or enhancement suggestions,
@@ -21,8 +25,9 @@ Mailing lists:
   archived at ftp://ftp.texinfo.org/texinfo/texinfo-pretest-archive/.
 There are as yet no corresponding newsgroups.
 
-For bug reports, please include enough information for the maintainers
-to reproduce the problem.  Generally speaking, that means:
+Bug reports:
+ please include enough information for the maintainers to reproduce the
+ problem.  Generally speaking, that means:
 - the contents of any input files necessary to reproduce the bug (crucial!).
 - a description of the problem and any samples of the erroneous output.
 - the version number of Texinfo and the program(s) involved (use --version).
@@ -38,29 +43,6 @@ way if at all possible; it's easier to deal with one large message than
 many small ones.  GNU shar is a convenient way of packaging multiple
 and/or binary files for email.
 
-
-For generic installation instructions on compiling and installing this
-Automake-based distribution, please read the file `INSTALL'.
-Installation notes specific to Texinfo:
-
-* The Info tree uses a file `dir' as its root node; the `dir-example'
-  file in this distribution is included as a possible starting point.
-  Use it, modify it, or ignore it just as you like.
-
-* You can create a file texinfo.cnf to be read by TeX when
-  processing Texinfo manuals.  For example, you might like to use
-  @afourpaper by default.  See the `Preparing for TeX' node in
-  texinfo.txi for more details.  You don't have to create the file if
-  you have nothing to put in it.
-
-* If your info files are not in $prefix/info, you may wish to add a line
-#define DEFAULT_INFOPATH "/mydir1:/mydir2:..."
-  to config.h after running configure.
-
-* For instructions on compiling this distribution with DJGPP tools
-  for MS-DOS and MS-Windows, see the file djgpp/README.
-
-
 If you would like to contribute to the GNU project by implementing
 additional documentation output formats for Texinfo, that would be
 great.  But please do not write a separate translator texi2foo for your
@@ -73,6 +55,10 @@ HTML, XML, and DocBook.
 If you want to convert from DocBook to Texinfo, please see 
 http://docbook2X.sourceforge.net/.
 
+
+The development sources for Texinfo is available through anonymous cvs
+at Savannah, see
+  http://savannah.gnu.org/cvs/?group=texinfo
 
 This distribution includes the following files, among others:
     README                      This file.
@@ -121,41 +107,36 @@ Printing related files:
                                 TeX and texindex. 
 
 
-Source files for standalone C programs (./lib, ./makeinfo, ./info):
+Source files for standalone C programs: 
+  ./lib
+  ./makeinfo
+  ./info
 
-    makeinfo/makeinfo.c         This file contains the source for
-                                the `makeinfo' program that you can
-                                use to create an Info file from a
-                                Texinfo file.
-
-    info/info.c                 This file contains the source for
-                                the `info' program that you can use to
-                                view Info files on an ASCII terminal.
 
 Installation files:
-    configure                   This file creates creates a Makefile 
-                                which in turn creates an `info' or
-                                `makeinfo' executable, or a C sources
-                                distribution.
+    Makefile.am                 What Automake uses to make a Makefile.in.
 
-    configure.in                This is a template for creating 
-                                `configure' using Autoconf.
+    configure.ac		What Autoconf uses to create `configure'.
 
-    Makefile.in                 This is a template for `configure' 
-                                to use to make a Makefile.  Created by
-                                Automake.
+    Makefile.in                 What `configure' uses to make a Makefile.
+                                Created by Automake.
                                
-    Makefile.am                 This is a template for Automake
-                                to use to make a Makefile.in.
-                               
+    configure                   Configuration script for local conditions.
+                                Created by Autoconf.
 
-Other files:
-    fixfonts                    This is a shell script to install the 
-                                `lcircle10' TeX fonts as an alias for
-                                the `circle10' fonts.  In some older
-                                TeX distributions the names are
-                                different.
 
-    tex3patch                   This handles a bug for version
-                                3.0 of TeX that does not occur in
-                                more recent versions.
+
+This distribution uses automake and autoconf.  If you are getting the
+sources from cvs, or need to change configure.ac, you'll need to have
+these tools installed to (re)build.  Sometimes patches to them are
+necessary for Texinfo; such patches will be in the ./util subdirectory
+if they exist.
+
+Here's the order in which to run the tools for a fresh build:
+  autoheader   # creates config.in, not necessarily needed every time
+  automake
+  autoconf
+  configure CFLAGS=-g
+  make
+
+(with arguments to taste, of course.)

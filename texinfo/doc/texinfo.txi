@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $
+@c $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -581,6 +581,7 @@ Sample Texinfo Files
 * Short Sample Texinfo File::   
 * GNU Sample Texts::            
 * Verbatim Copying License::            
+* All-permissive Copying License::            
 
 Include Files
 
@@ -16530,13 +16531,14 @@ Write notes for yourself at the very end of a Texinfo file after the
 @cindex Sample Texinfo files
 
 The first example is from the first chapter (@pxref{Short Sample}),
-given here in its entirety, without commentary.  The second sample
+given here in its entirety, without commentary.  The second
 includes the full texts to be used in GNU manuals.
 
 @menu
 * Short Sample Texinfo File::   
 * GNU Sample Texts::            
 * Verbatim Copying License::            
+* All-permissive Copying License::            
 @end menu
 
 
@@ -16643,14 +16645,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $ comment
+@cindex CVS $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $, in Texinfo
+@cindex RCS $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $, in Texinfo
+The @samp{$Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $
+$Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16708,7 +16710,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.1 2002-08-25 23:38:38 karl Exp $
+@@comment $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
@@ -16803,10 +16805,9 @@ and command line options here.
 @cindex Verbatim copying license
 @cindex License for verbatim copying
 
-For software manuals and other documentation, it is
-important to use a license permitting free redistribution and updating,
-so that when a free program is changed, the documentation can be updated
-as well.
+For software manuals and other documentation, it is important to use a
+license permitting free redistribution and updating, so that when a free
+program is changed, the documentation can be updated as well.
 
 On the other hand, for documents that express your personal views,
 feelings or experiences, it is more appropriate to use a license
@@ -16829,6 +16830,34 @@ copyright notice and this permission notice are preserved.
 @end quotation
 @end copying
 @end verbatim
+
+
+@node All-permissive Copying License
+@section All-permissive Copying License
+
+@cindex All-permissive copying license
+@cindex License for all-permissive copying
+
+For software manuals and other documentation, it is important to use a
+license permitting free redistribution and updating, so that when a free
+program is changed, the documentation can be updated as well.
+
+On the other hand, for small supporting files, short manuals (under 300
+lines long) and rough documentation (README files, INSTALL files, etc.),
+the full FDL would be overkill.  They can use a simple all-permissive
+license.
+
+Here is sample text for such an all-permissive license.  This is just
+the license text itself.  For a complete sample document, see the
+previous sections.
+
+@example
+Copyright @copyright{} 2002 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+@end example
 
 
 @node Include Files

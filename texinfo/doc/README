@@ -1,3 +1,12 @@
+$Id: README,v 1.2 2002-09-11 16:32:09 karl Exp $
+texinfo/doc/README
+
+  Copyright (C) 2002 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
 This directory contains documentation on the Texinfo system and the TeX
 sources needed to process Texinfo sources.  We recommend using the
 texi2dvi included in this distribution to run a Texinfo manual through
