@@ -1,96 +1,26 @@
 \input texinfo @c -*-texinfo-*-
-@c
 @c This is the ``Texinfo to HTML Converter'' manual which
 @c which is part of the ``texi2html'' distribution.
-@c
-@c License:
-@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-@c
-@c    This program is free software; you can redistribute it
-@c    and/or modify it under the terms of the GNU General Public
-@c    License as published by the Free Software Foundation;
-@c    either version 2 of the License, or (at your option) any
-@c    later version.
-@c
-@c    This program is distributed in the hope that it will be
-@c    useful, but WITHOUT ANY WARRANTY; without even the implied
-@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-@c    PURPOSE.  See the GNU General Public License for more
-@c    details.
-@c
-@c    You should have received a copy of the GNU General
-@c    Public License along with this program; if not, write to
-@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
-@c    330, Boston, MA  02111-1307  USA
-@c
-@c
-@c Revisions:
-@c $Id: texi2html.texi,v 1.4 2003-08-12 09:08:13 pertusus Exp $
-@c
-@c Author:
-@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
-@c
-@c --------------------------------------------------------
-@c
-@c Currently most of the material is copied out of
-@c texi2html.init file. It's just a start point.
-@c In other words this is a draft manual ;-)
-@c
 @setfilename texi2html.info
-@c --------------------------------------------------------
-@c Edition and last update date of the manual which might
-@c differ to the scripts last update date etc.
-@set MANUAL_UPD 14. August 2000
-@set MANUAL_ED 0.21
-@c
-@set MANUAL_AUTHOR Karl Heinz Marbaise
-@set MANUAL_AUTHOR_EMAIL khmarbaise@@gmx.de
-@c
-@c Get the version of the script itself through
-@c configure/autoconf etc.
-@c version.texi is automatically generated through
-@c configure/autoconf.
-@include version.texi
-@c --------------------------------------------------------
-@c Index for command line options
-@defcodeindex op
-@c --------------------------------------------------------
-@settitle Texinfo to HTML
-@c @setchapternewpage on
-@setchapternewpage odd
-@footnotestyle separate
-@ifset shorttitlepage-enabled
-@shorttitlepage Texinfo to HTML
-@end ifset
-@c --------------------------------------------------------
-@c support old style Info Dir entries.
-@ifset OLDSTYLE-INFO-DIR
-@ifinfo
-@format
-START-INFO-DIR-ENTRY
-* Texi2html: (texi2html).  Texinfo 2 HTML Converter (texi2html).
-END-INFO-DIR-ENTRY
-@end format
-@end ifinfo
-@end ifset
-@c --------------------------------------------------------
-@c Informations for install-info.
-@c I think the conversion script should be found
-@c where the documentation system lives.
-@c What do you think?
-@dircategory Texinfo documentation system
-@direntry
-* Texi2html: (texi2html).  Texinfo to HTML Converter.
-@end direntry
-@c --------------------------------------------------------
-@ifnottex
-This file documents the texi2html script which converts
-Texinfo into HTML.
+@macro copyleftnotice
+Copyright @copyright{} 1999, 2000, 2001, 2002, 2003
+                       Free Software Foundation, Inc.
 
-Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-
-This edition is for texi2html version @value{VERSION},
-@value{UPDATED}.
+@multitable @columnfractions .12 .88
+@item Portions of @command{texi2html}
+@item @tab Copyright @copyright{} 1999, 2000 Lionel Cons@*
+@item @tab Copyright @copyright{} 1999, 2000 Karl Berry@*
+@item @tab Copyright @copyright{} 1999, 2000 Olaf Bachmann@*
+@item @tab Copyright @copyright{} 2002, 2003 Patrice Dumas@*
+@item @tab Copyright @copyright{} 2001, 2002, 2003 Derek Price@*
+@item @tab Copyright @copyright{} many others.@*
+@item @tab
+@item @tab
+@item Portions of this manual
+@item @tab Copyright @copyright{} 1999, 2000 Karl Heinz Marbaise (manual)@*
+@item @tab Copyright @copyright{} 2003 Patrice Dumas (manual)@*
+@item @tab Copyright @copyright{} 2003 Derek Price (manual)@*
+@end multitable
 
 Permission is granted to make and distribute verbatim
 copies of this manual provided the copyright notice and
@@ -115,341 +45,848 @@ of this manual into another language, under the above
 conditions for modified versions, except that this
 permission notice may be stated in a translation approved
 by the Free Software Foundation.
+@end macro
+
+@c --------------------------------------------------------
+@c    This file is part of the Texi2HTML distribution.
+@c
+@c    Texi2HTML is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    Texi2HTML is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c   Patrice Dumas
+@c   Derek Price
+@c --------------------------------------------------------
+
+@c --------------------------------------------------------
+@c Get the version of the script and the last update time
+@c of this manual.
+@c
+@c version.texi is automatically generated through
+@c configure/autoconf.
+@include version.texi
+@c --------------------------------------------------------
+
+@c --------------------------------------------------------
+@c Define an index for command line options
+@defindex op
+
+@c  Define some macros which affect markup and add to the
+@c  index simultaneously.
+@macro longopt {arg}
+@option{--\arg\}
+@opindex \arg\
+
+@end macro
+
+@macro shortopt {arg}
+@option{-\arg\}
+@opindex \arg\
+
+@end macro
+
+@macro variable {arg}
+@var{\arg\}
+@vindex \arg\
+
+@end macro
+@c --------------------------------------------------------
+
+@settitle Texi2HTML -- Texinfo to HTML v@value{VERSION}
+@setchapternewpage odd
+@footnotestyle separate
+@ifset shorttitlepage-enabled
+@shorttitlepage Texi2HTML -- Texinfo to HTML v@value{VERSION}
+@end ifset
+
+@c --------------------------------------------------------
+@c support old style Info Dir entries.
+@ifset OLDSTYLE-INFO-DIR
+@ifinfo
+@format
+START-INFO-DIR-ENTRY
+* Texi2HTML: (texi2html).  Texinfo 2 HTML Converter (texi2html).
+END-INFO-DIR-ENTRY
+@end format
+@end ifinfo
+@end ifset
+@c --------------------------------------------------------
+@c Informations for install-info.
+@c I think the conversion script should be found
+@c where the documentation system lives.
+@c What do you think?
+@dircategory Texinfo documentation system
+@direntry
+* Texi2HTML: (texi2html).  Texinfo to HTML Converter.
+@end direntry
+@c --------------------------------------------------------
+
+@ifnottex
+@ifnothtml
+This file, last updated @value{UPDATED}, documents the @command{texi2html}
+script which converts @uref{http://www.texinfo.org,Texinfo} into
+@uref{http://w3c.org,HTML}.  This edition is for @command{texi2html} version
+@value{VERSION}.
+@end ifnothtml
+
+@copyleftnotice
 @end ifnottex
 @c --------------------------------------------------------
 @titlepage
-@title Texinfo to HTML Converter
-@subtitle Manual Edition @value{MANUAL_ED}
-@subtitle Last Update: @value{MANUAL_UPD}
-@subtitle for Version @value{VERSION} of @command{texi2html} script.
+@title Texi2HTML -- Texinfo to HTML v@value{VERSION}
+@subtitle Last Update: @value{UPDATED}
+@subtitle for Version @value{VERSION} of the @command{texi2html} script.
 @author Lionel Cons
 @author Karl Berry
 @author Olaf Bachmann
+@author Patrice Dumas
+@author Derek Price
 @author and many others.
 @author Karl Heinz Marbaise (manual)
+@author Patrice Dumas (manual)
+@author Derek Price (manual)
 @page
 @vskip 0pt plus 1filll
-Copyright @copyright{} Lionel Cons@*
-Copyright @copyright{} Karl Berry@*
-Copyright @copyright{} Olaf Bachmann@*
-Copyright @copyright{} and many others.@*
-Copyright @copyright{} Karl Heinz Marbaise (manual)@*
-
-Permission is granted to make and distribute verbatim
-copies of this manual provided the copyright notice and
-this permission notice are preserved on all copies.
-
-Permission is granted to copy and distribute modified
-versions of this manual under the conditions for verbatim
-copying, provided that the entire resulting derived work is
-distributed under the terms of a permission notice
-identical to this one.
-
-Permission is granted to copy and distribute translations
-of this manual into another language, under the above
-conditions for modified versions, except that this
-permission notice may be stated in a translation approved
-by the Free Software Foundation.
-@sp 2
-Cover art by Etienne Suvasa.
+@copyleftnotice
 @end titlepage
-@c ========================================================
+
+@comment ========================================================
+@comment             The real text starts here.
+@comment ========================================================
+
 @summarycontents
 @contents
-@c
-@ifnottex
-@node Top
-@top Texi2html
-@c @page
-@c ========================================================
-@c @node Top, Overview, (dir), (dir)
-@c @top
-@c @chapter About
 
-This Manual (Edition @value{MANUAL_ED}, last updated at
-@value{MANUAL_UPD}) describes the @command{texi2html} Perl
-script which converts
+@ifnottex
+@c ========================================================
+@node Top
+@top Texi2HTML
+
+This manual, last updated @value{UPDATED}, describes version @value{VERSION}
+of the @command{texi2html} Perl script which converts
 @c The following construct allows me to get
 @c real URL link in HTML and working refs in
 @c info.
-@c (pertusus: some support for html cross manual now
-@c exists in texi2html, but it implies having the texinfo
-@c html manual at the right place, which isn't the case
-@c in most cases). And also the resulting ref is less
-@c pretty in info.
-@ifhtml
-@uref{http://www.texinfo.org,Texinfo}
-@end ifhtml
-@ifnothtml
-Texinfo (@pxref{Top,,Texinfo,Texinfo})
-@end ifnothtml
-into @acronym{HTML}.
+@c
+@c pertusus: Some support for html cross manual now
+@c exists in texi2html, but it implies having Texinfo's
+@c HTML manual at the right place, which isn't usually the case.
+@c The resulting ref is also less pretty in info.
+@ifnotinfo
+@uref{http://www.texinfo.org,Texinfo} into @uref{http://w3c.org,HTML}.
+@end ifnotinfo
+@ifinfo
+Texinfo (@pxref{Top,,Texinfo,Texinfo}) into @acronym{HTML}.
+@end ifinfo
 
-Please send bug reports about this manual to Karl Heinz
-Marbaise @email{khmarbaise@@gmx.de}. Please state exact
-version/edition of the manual (can be found at start of
-Texinfo source file; use the entry Id under Revisions).
+Please send bug reports concerning this manual to the Texi2HTML user
+discussion list @email{user@@texi2html.cvshome.org}.  Please state the exact
+version of the manual which contains the bug, as given above.
 
-Please note:
+@ifinfo
+@copyleftnotice
+@end ifinfo
+
 @example
-This manual is currently under
-construction and of course incomplete ;-)
+@strong{This manual is currently under construction and of course incomplete.  ;-)}
 @end example
 
-@c The following line within a menu does not work!
-@c (pertusus: what doesn't work ?)
-@c * Why texi2html and not Makeinfo?:whytexi2html.      Why texi2html and not makeinfo?.
 @menu
-@c * MenuName:NodeName.       Description.
-* Overview::                  Overview about @command{texi2html}.
-* Installation::              Installation process.
-* Customizing files::               Customizing.
-* CustomizingExpand::         Customizing what gets expanded.
-* CustomizingPage::           Customizing page layout.
-* CustHTML::                  Customizing HTML.
-* InitFile::                  Initialization files.
-@c * ExtFile::                   Extension file.
-* IFOs::                      Initialization file options
-* Options::                   Command Line Options.
+@c * MenuName:NodeName.       Description
+* Overview::
+* Obtaining @command{texi2html}::
+                              Obtaining a copy of the @command{texi2html}
+			      source code distribution
+* Installation::              Installing @command{texi2html}
+* Invoking texi2html::        Description of the command line options
+* Initialization files::      What kind of variables and subroutines appear
+                              in init files and how they are called
+* Changing the page layout::  Fine tuning of the page layout
+* Customizing HTML::          Fine tuning of the @acronym{HTML} elements
+                              associated with the texinfo constructs
+* Indexop::                   Command Line Option Index
+* Indexvr::                   Variable Index
+* Indexcp::                   Concept Index
 
-* Reference::                 Reference Manual of functions.
-
-@detailmenu
-
-/// The Detailed Node Listing ///
-
---- Overview ---
-
-* Why texi2html and not Makeinfo?:whytexi2html.      Why 
-                  @file{texi2html} and not @file{makeinfo}?
-@c * whytexi2html::              Why @file{texi2html} and
-@c                               not @file{makeinfo}?.
-
-
---- Installation process ---
-
-* Installation::             Installation process.
-
-
---- Initialization file options ---
-
-* IFOnumber::                 Number sectioning.
-* IFOmenu::                   Avoid menu redundancy.
-* IFOCenterImage::            Center Image.
-* IFOExampleIndentCell::      Example Indent Cell.
-* IFOSampleIndentCell::       Sample Indent Cell.
-* IFOSmallFontSize::          Small Font Size.
-* IFOTopHeading::             Top Heading.
-* IFOIndexChapter::           Index Chapter.
-* IFOSplitIndex::             Split Index.
-* IFOhrefDirInsteadFile::     HREF Dir Instead file.
-
-
---- Command Line Options ---
-
-* OptionDebug::               Debugging.
-* OptionDocType::             DocType (HTML)
-* OptionCheck::               Checking files.
-* OptionExpand::              Expanding info, tex areas etc.
-* OptionGlossary::            Glossary.
-* OptionInvisible::           Invisible.
-* OptionIso::                 Iso.
-* OptionInclude::             Include directories.
-* OptionTopFile::             Top File.
-* OptionTocFile::             Table of content File.
-* OptionFrames::              Frames.
-* OptionMenu::                Menus.
-* OptionNumber::              Number sections.
-* OptionSplit::               Splitting.
-* OptionSectionNavigation::   Navigation.
-* OptionSubDir::              Subdirectory.
-* OptionShortExt::            Short extension.
-* OptionPrefix::              Prefix.
-* OptionOutput::              Output.
-* OptionShortRef::            Short Ref.
-* OptionIndexSummary::        Index Summary.
-* OptionVerbose::             Verbose.
-* OptionLanguage::            Language.
-* OptionL2H::                 La@TeX{}2HTML.
-
-
---- La@TeX{}2HTML for @code{@@math} and @code{@@tex} ---
-
-* OptionL2HL2H::              Where to find La@TeX{}2HTML.
-* OptionL2HSkip::             Skip calling La@TeX{}2HTML.
-* OptionL2Htmp::              Temporary files for La@TeX{}2HTML.
-
-
---- Indices ---
-
-* Indexop::                   Command Line Option Index.
-* Indexvr::                   Variable Index.
-* Indexcp::                   Concept Index.
-@end detailmenu
 @end menu
 @end ifnottex
 @c ========================================================
 @node Overview
-@chapter Overview about @command{texi2html}
+@chapter Overview
 @uref{http://www.texinfo.org,Texinfo} is the official
 documentation format of the @uref{http://www.gnu.org,GNU}
-project. It uses a single source file to produce both
+project.  It uses a single source file to produce both
 online information and printed output.
 
-@c much thinking about ...
-It is often proposed to have a way to produce
-@acronym{HTML} from Texinfo sources, like the GNU-Info
-format. It is much simpler to create one converter instead
-of writing all documentation new in @acronym{HTML}, cause
-there is so much documentation in Texinfo all over
+It is often desirable to have a way to produce
+@acronym{HTML} from Texinfo sources, as GNU-Info files are
+produced.  It is much simpler to run a converter than it is to
+rewrite all the documentation in @acronym{HTML}, especially
+considering that there is so much Texinfo documentation in
 the world.
 
 Some time ago @command{makeinfo} wasn't able to produce
-@acronym{HTML} output format, but there were needs to have
-@acronym{HTML}. This was the borning hour for
-@command{texi2html}. The basic purpose of @file{texi2html}
+@acronym{HTML} output format, but people still wanted documentation in
+@acronym{HTML}.  This was the birthing hour for
+@command{texi2html}.  The basic purpose of @command{texi2html}
 is to convert Texinfo documents into @acronym{HTML}.
 
+Since then, @acronym{HTML} support in @command{makeinfo} has improved, but
+@command{texi2html} is still stronger in many areas, including the degree to
+which it allows customization.  With @command{texi2html}, some important
+aspects of the resulting @acronym{HTML} files may be specified via command
+line options, and configuration files provide an even finer degree of control
+over the final output, allowing most every aspect of the final output not
+specified in the Texinfo input file to be specified.  Configuration files are
+written in @command{perl}, like the main program, and anything which may be
+specified on the command line may also be specified within a configuration
+file.
+
+For an example of the kind of pages @command{texi2html} is capable of
+producing, have a look at the following sites:
+@uref{http://www.singular.uni-kl.de/Manual/html/,the Singular Manual},
+@uref{http://ccvs.cvshome.org/docs/manual,the Cederqvist (CVS Manual)}.
 
 @menu
-* HowToGetHTML::       Ways to get HTML files.
-* whytexi2html::       Why texi2html and not makeinfo?.
+* whytexi2html::       Why @command{texi2html} and not @command{makeinfo}?.
 @end menu
 @c --------------------------------------------------------
-@node HowToGetHTML
-@section Ways to get HTML
-You would like to @acronym{HTML} files out of your Texinfo
-files? There exist two ways which you can go.
-This first is to use @command{makeinfo} itself to produce
-@acronym{HTML} output. The second is to use
-@command{texi2html}.
 
-@c --------------------------------------------------------
 @node whytexi2html
-@section Why @file{texi2html} and not @file{makeinfo}?
-The basic idea of @command{makeinfo}'s @acronym{HTML}
-output was to get a readable @acronym{HTML} output.
-Nothing sophisticated.
-@c nor good styling just readable.
+@section Why @command{texi2html} and not @command{makeinfo}?
 
-The current development of texi2html is going into
-different direction.
+You would like to produce @acronym{HTML} files from your existing Texinfo
+files?  There are two programs you can use to do this.  The first is
+@command{makeinfo} (@pxref{Generating HTML,,,texinfo}).
+The second is @command{texi2html}.
 
-The main purpose is to get better styling, better design
-etc. of the created @acronym{HTML} pages. This way is
-supported using differnt command line options and of course
-possible changings of the initialization file to fit your
-own needs.
+The design goal of @command{makeinfo}'s @acronym{HTML} output was to produce
+readable @acronym{HTML} output.  This is all it produces: basic, readable,
+@acronym{HTML} output, with little attention to attractive styling or
+configurability.
 
-@c The main disadvantage of @acronym{makeinfo}'s
-@c @acronym{HTML} output is your getting only one big file.
-@c This is of course readable but not very usable. The problem
-@c of this is, while you like to have splitted chapters or
-@c nodes the Texinfo source has to be read at minimum twice
-@c times. This makes it impossible to implement this in
-@c @command{makeinfo}. This would result in complete new
-@c implementation of @command{makeinfo}'s source.
+The current development of @command{texi2html} tries to
+provide for producing the more interesting and sophisticated @acronym{HTML}
+pages that today's Internet users have come to expect.
+The goal behind @command{texi2html} is to generate attractive @acronym{HTML} by
+default but also to allow users considerable freedom to affect the final
+style and design of the output @acronym{HTML} pages.  This is achieved via
+command line options and flexible configuration files. 
+
+@c The main disadvantage of @command{makeinfo}'s
+@c @acronym{HTML} output is that it is only available as one big file.
+@c This is of course readable but not very usable.  This would be hard to
+@c remedy in @command{makeinfo}, as the Texinfo source has to be read in at
+@c least twice to implement split nodes.  This would require a major
+@c rewrite of the @command{makeinfo} source.
 
 @c think more about this????
-In contrast to the @acronym{HTML} produced by @command{makeinfo
---html} (the @command{makeinfo} program is part of the
-Texinfo distribution), the @acronym{HTML} output of @file{texi2html}
-is highly configurable. Among other differences, 
-@command{texi2html} allows you to customize the entire
-page layout (like headers, footers, style sheets, etc)
-and the low level @acronym{HTML} formatting, to 
-split documents at various levels, and to use
-@command{latex2html} to convert @code{@@tex} sections.
+In contrast to the @acronym{HTML} produced by @command{makeinfo --html} (the
+@command{makeinfo} program is part of the Texinfo distribution), the
+@command{texi2html} program, among other differences, allows for the
+customization of the entire page layout, including headers, footers, style
+sheets, etc., allows for customization of the low level @acronym{HTML}
+formatting, provides for splitting documents at various levels, and provides
+for using the @command{latex2html} program to convert @code{@@tex} sections of
+the Texinfo source.
 
 @command{texi2html} should reasonably convert all Texinfo
-4.6 constructs. If not, please send a bug report to
-@c @email{texi2html@@mathematik.uni-kl.de}.
-@email{users@@texi2html.cvshome.org}.
+4.6 constructs.  If you find it does not, please send a bug report to the
+@email{users@@texi2html.cvshome.org} email list.
+
+@c ========================================================
+@node Obtaining @command{texi2html}
+@chapter Obtaining @command{texi2html}
+@cindex downloading @command{texi2html} source
+@cindex @command{texi2html} source, downloading
+@cindex source code for @command{texi2html}, downloading
+
+The latest version of the source code for @command{texi2html} should be
+available from @uref{http://texi2html.cvshome.org,texi2html.cvshome.org}.
 
 @c ========================================================
 @node Installation
 @chapter Installation of @command{texi2html}
 @cindex Installation
 
-To run @command{texi2html} you need @command{perl} version 
-5.004 or above. The current version has not been tested
-extensively on versions below 5.6, however.
+To install @command{texi2html}, you must first obtain a copy of the
+source distribution.  @xref{Obtaining @command{texi2html}}.
+
+@command{texi2html} also requires @command{perl} version 
+5.004 or above.  The current version has not been tested
+extensively on versions of @command{perl} below 5.6, however.
 
 @command{texi2html} is a standard Automake-based distribution.
 If you have a source version, you should run @command{./configure}
-to regenerate the script file @file{texi2html}. This leads to
-the inclusion in @file{texi2html.pl} of @file{MySimple.pm} which 
-handles the command line options, @file{texi2html.init} the 
-default configuration file and @file{T2h_i18n} used for 
-internationalisation.
+to regenerate the executable @file{texi2html} file.  @command{./configure}
+accepts options to select the installation directory for the @file{texi2html}
+file, the default directories @command{texi2html} will use to look for
+configuration files, and other details.  Run @command{./configure --help} for
+more information.
 
-To make the documentation run @command{make}.
+Running @command{./configure} combines four files into the final
+@file{texi2htmnl} program file:
+@itemize
+@item @file{texi2html.pl} contains the base program,
+@item @file{MySimple.pm} handles the command line options, 
+@item @file{texi2html.init} is the default configuration file, and 
+@item @file{T2h_i18n.pm} is used for internationalization.
+@end itemize
+
+Running @command{./configure} also builds the @command{make} configuration
+files (@file{Makefile}s).  To make the documentation run @command{make}.
  
-Installing @command{texi2html} in you path should be sufficient 
-to run it. In case you want to use a configuration file for
-@command{latex2html} when using @command{latex2html} to 
-convert @code{@@tex} sections, or you want to have some
-default configuration files you should install these files 
-in a suitable directory (usually @file{/usr/share/texi2html} or
-@file{/usr/local/share/texi2html}). @command{make install} will
-do that for you.
+@command{make install} performs the installation to the locations specified to
+the @command{./configure} script.  This usually involves placing the actual
+@file{texi2html} file someplace in your path, such as @file{/usr/local/bin} or
+@file{/usr/bin}.
+
+Installing @command{texi2html} in your path should be sufficient 
+to run it.  To use default initialization files, or a configuration file for
+La@TeX{}2HTML when using @command{latex2html} to convert @code{@@tex} sections
+(@pxref{Expanding TeX regions}), install them in the package data directory
+specified to configure.  This is @file{/usr/local/share/texi2html/} by default,
+but depends on the value of the @longopt{pkgdatadir=@var{dir}} option passed to
+the @command{./configure} script.  @xref{Using init files} for more. 
 
 @c ========================================================
-@node Customizing files
-@chapter Customizing files
-@cindex Installation
-@opindex frames
+@node Invoking texi2html
+@chapter Invoking @command{texi2html}
 
-@c 4.) Customizing files to output
-@c   ==> -out_file, -prefix, -subdir, -split, -frames etc
-Result based on using @option{-frames}
+To produce an @acronym{HTML} manual, run @command{texi2html} with a Texinfo
+file as an argument.  For example, this manual is created with:
 
 @example
-texi2html -V -frames texi2html.texi
+$ texi2html texi2html.texi
 @end example
-Explanation of the output differences against default,
-whatever this is ;-)
 
+The behaviour of @command{texi2html} may be changed with command line
+options.  These command line options are always associated with corresponding
+@command{perl} variables which may appear in init files, and these 
+variables are presented in this chapter each time a switch is described. 
+
+Boolean command line switches always have a corresponding negated switch,
+obtained by prepending @samp{no} or @samp{no-} to the switch name. For example
+@longopt{nomenu} does the reverse of @longopt{menu}.
+
+@menu
+* Splitting output::          The @acronym{HTML} output may be split at 
+                              different levels
+* Output files::
+* Expansion::
+* Texinfo related options::
+* Page layout options::       Customizing page layout
+* Style options::             Customizing the @acronym{HTML} and text style
+* Expanding TeX regions::
+* Using init files::          Specifying initialization files for fine tuning
+@end menu
+
+@c --------------------------------------------------------
+@node Splitting output
+@section Specifying where to split the generated document
+
+The @acronym{HTML} manual resulting from the processing of the Texinfo source
+may be split into files at different levels.  This is specified with the
+option @longopt{split} which takes an argument, namely the level of splitting
+(variable: @variable{$SPLIT}). This level may be: 
+
+@table @asis
+@item @samp{chapter}
+The document is split at @code{@@chapter}, @code{@@appendix}, or @code{@@unnumbered}.
+@item @samp{section}
+The document is split at the same places as it is using the @samp{chapter}
+argument, and also at @code{@@section}, @code{@@appendixsec} or
+@code{@@unnumberedsec}.
+@item @samp{node}
+The document is split at every sectioning command.  It is not necessarily 
+split at each node, if the @code{@@node} structure doesn't correspond with
+the sectioning command structure (see below).
+@item @samp{none}
+The document isn't split.  This is the default.
+@end table
+
+There are two kinds of commands which may be used to define sectioning
+elements in Texinfo: @code{@@node} and the structuring commands (@code{@@top},
+@code{@@section}, @code{@@appendixsubsec},  and so on).  A node just preceding
+a structuring command is considered to be part of the same sectioning element
+as that command.  If the @code{@@node Top} isn't associated with a structuring
+command it also defines a sectioning element.
+
+By default, nodes which aren't associated with a structuring command are not
+considered to be sectioning commands.  They are always considered to be part
+of a sectioning element defined by a structuring command.  It is possible to
+change this behaviour via the @longopt{use-nodes} option (variable
+@variable{$USE_NODES}).  In this case, nodes not associated with structuring
+commands are also considered to be sectioning commands defining a sectioning
+element.
+
+This default behaviour mimics @command{texi2dvi} behaviour, which ignores 
+@code{@@node} commands for the purprose of sectioning, while the second
+looks like @command{makeinfo} behaviour (@pxref{Two Paths,,, texinfo}). 
+
+As an illustration, the following table shows how a sample Texinfo document is
+divided into sectioning elements when @longopt{use-nodes} is used and not:
+
+@multitable @columnfractions 2 1 2 1 2
+@item
+Texinfo code
+
+@tab
+@tab
+default case
+
+@tab
+@tab
+with @longopt{use-nodes}
+
+@item
+@*
+@*
+@example
+@@node node1
+@@chapter node 1
+node1 text
+
+@@node node2
+node2 text
+
+@@node node3
+node3 text
+@@chapter node 3
+chapter text
+@end example
+
+@tab
+@tab
+
+first element:
+
+@example
+@@node node1
+@@chapter node 1
+node1 text
+
+@@node node2
+node2 text
+@end example
+
+second element:
+
+@example
+@@node node3
+node3 text
+@@chapter node 3
+chapter text
+@end example
+
+@tab
+@tab
+
+first element:
+
+@example
+@@node node1
+@@chapter node 1
+node1 text
+@end example
+
+second element:
+
+@example
+@@node node2
+node2 text
+@end example
+
+third element:
+
+@example
+@@node node3
+node3 text
+@@chapter node 3
+chapter text
+@end example
+
+@end multitable
+
+@c --------------------------------------------------------
+@node Output files
+@section Setting output file and directory names
+
+By default, @command{texi2html} generates files in the current directory.  The
+basename for the files is constructed by stripping the @samp{.texi},
+@samp{.txi}, @samp{.texinfo}, or @samp{.txinfo} extension from the Texinfo file
+name.  If the output is split, an underscore followed by a number is appended
+to that basename for the files corresponding with sectioning elements, with the
+exception of the top element.  The files containing special elements pages
+have an underscore and a 3 letter code corresponding to their content
+(@samp{toc} for table of contents, @samp{abt} for about, @samp{ovr} for
+overview) appended.  Lastly, an @samp{.html} file extension is appended.
+
+Thus, if the texinfo file @file{afile.texi} is processed and split at chapters
+into 3 files, the generated files will be:
+
+@example
+afile.html         --> @code{@@node Top} or @code{@@top} section
+afile_1.html       --> Chapter 1
+afile_2.html       --> Chapter 2
+afile_toc.html     --> Table of Contents
+afile_abt.html     --> About Page
+@end example
+
+This default behavior may be modified by several command line options.  If the
+output isn't split, the prefix file name may be overrided by the
+@longopt{output} command line option (variable @variable{$OUT}).  If the output
+is split, and @longopt{output} is set, the files are placed in the directory
+specified by the argument to the option.
+
+The basename may be overridden with @longopt{prefix} (variable
+@variable{$PREFIX}).  If @longopt{short-ext} is given, @samp{.htm} is appended
+instead of @samp{.html} in the final step.  The @longopt{top-file} option
+overrides the top element file name (variable @variable{$TOP_FILE}).  This can
+be used to name the top element file @samp{index.html}.  Similarly,
+@longopt{toc-file} changes the name of the table of contents file (variable
+@variable{$TOC_FILE}).
+
+Reusing the example above, but this time calling @command{texi2html} like so:
+
+@example
+$ texi2html -split chapter -prefix manual -short-ext -top-file index.htm -toc-file contents.htm
+@end example
+
+we get:
+
+@example
+index.htm          --> @code{@@node Top} or @code{@@top} section
+manual_1.htm       --> Chapter 1
+manual_2.htm       --> Chapter 2
+contents.htm       --> Table of Contents
+manual_abt.htm     --> About Page
+@end example
+
+The file names generated by @command{texi2html} differ from those generated
+by @command{makeinfo}.  @command{makeinfo} uses the node name to construct
+the file names while splitting at nodes.  It is possible to get the same
+behaviour out of @command{texi2html} by specifying the
+@longopt{node-files} option (variable @variable{$NODE_FILES}).  If the output
+isn't split at nodes, @command{texi2html} will still output files named after
+the nodes, without real content but redirecting to the right file.
+@c Is this true?  It wasn't in the last version.  -DRP
+This trick enables the generated @acronym{HTML} manual to be a
+target for the cross-references of other manuals generated by
+@command{makeinfo} or @command{texi2html}. 
+
+@strong{Warning}: the way @command{makeinfo} (and hopefully
+@command{texi2html}) handle @acronym{HTML} manual cross references should
+change in the future.
+
+@c --------------------------------------------------------
+@node Expansion
+@section Specifying which regions get expanded
+
+The default for @command{texi2html} is to expand the @code{@@ifhtml}, 
+@code{@@html}, and @code{@@menu} regions, all the @code{@@ifnot} regions 
+except @code{@@ifnothtml}, and no other @code{@@if} regions.
+
+It is possible to expand other regions by setting @longopt{if<region>},
+where @samp{<region>} is replaced by the literal name of the region (for
+example, @samp{--iftex}).  Symetrically, if @longopt{no-if<region>} is
+specified, the @samp{<region>} region is ignored.  The configuration file
+array, @variable{@@EXPAND}, holds the names of regions, other than
+@samp{html}, which should be expanded.
+
+If @longopt{nomenu} is set, the @code{@@menu} sections are not expanded
+(variable @variable{$SHOW_MENU}).
+@c How is --no-ifhtml specified?  -DRP
+
+@c --------------------------------------------------------
+@node Texinfo related options
+@section Command line options related to Texinfo language features
+  
+Miscalleneous Texinfo related things may be specified via command line options. 
+
+@table @asis
+@item @longopt{lang=@var{lang}}
+Sets the document language similar to the Texinfo directive,
+@code{@@documentlanguage @var{lang}} (variable @variable{$LANG}).
+@item @shortopt{D@var{var}}
+Sets @var{var}.  Equivalent to, @code{@@set @var{var} 1}, in Texinfo.
+@item @shortopt{U@var{var}}
+Clears @var{var}.  Equivalent to, @code{@@clear @var{var}}, in Texinfo.
+@item @shortopt{P@var{dir}}
+Prepend @var{dir} to the list of directories to search for
+@code{@@include} files (the associated array is @variable{@@PREPEND_DIRS}).
+@item @shortopt{I@var{dir}}
+Append @var{dir} to the list of directories to search for 
+@code{@@include} files (the associated array is @variable{@@INCLUDE_DIRS}).
+@end table
+
+@c --------------------------------------------------------
+@node Page layout options
+@section Page layout related command line options
+
+If the @longopt{frames} option is specified, @acronym{HTML} frames 
+are used.  A file describing the frame layout is generated, and the
+document page is associated with a frame where the short table of
+content appears (variable @variable{$FRAMES}).
+
+It is also possible to suppress the section navigation panel with
+@longopt{nosec-nav} (variable @variable{$SECTION_NAVIGATION}), and to specify
+whether footnotes should appear at the foot of the same page which contains
+the reference to the note or on a separate page with
+@longopt{separated-footnotes} (variable @variable{$SEPARATED_FOOTNOTES}).
+
+@c --------------------------------------------------------
+@node Style options
+@section Customizing the @acronym{HTML} and text style
+
+Miscalleneous style changes may be achieved with command line options. 
+
+@table @asis
+@item @longopt{doctype=@var{DTD}}
+@itemx @longopt{frameset-doctype=@var{DTD}}
+You can specify the document DTD by setting these options. 
+@longopt{frameset-doctype} applies to the file describing the frames when 
+frames are used (corresponding variables are @variable{$DOCTYPE} and 
+@variable{$FRAMESET_DOCTYPE}).
+
+For example, the default for the document doctype is:
+@example
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+@end example
+
+@item @longopt{iso}
+If this option is set, ISO8859 entities are used for some special symbols,
+like Copyright @copyright{} (variable @variable{$USE_ISO}).
+@c Is this the default?  -DRP
+
+@item @longopt{css-include=@var{file}}
+This command line switch provides for the inclusion of an external
+Cascading Style Sheet (@acronym{CSS}) file.  More than one file may be
+specified, and @samp{-} stands for the standard input (array
+@variable{@@CSS_FILES}). 
+
+The @code{@@import} lines from the Texinfo source file are pasted before the
+@c What does this mean?  I don't think I clarified this one much.  -DRP
+@command{texi2html} @acronym{CSS} rules, and the external file @acronym{CSS}
+rules are pasted after the @command{texi2html} @acronym{CSS} rules.  This is
+the same behaviour provided by the @command{makeinfo} switch of the same name
+(@pxref{HTML CSS,,,texinfo}).
+
+@item @longopt{html-xref-prefix=@var{path}}
+This option sets the base directory for external @acronym{HTML} texinfo manuals 
+(variable @variable{$EXTERNAL_DIR}).  Defaults to @samp{../}.
+
+@item @longopt{def-table}
+If this option is set, @acronym{HTML} tables are used to format definition 
+commands, rather than @acronym{HTML} definition tables (variable
+@variable{$DEF_TABLE}).
+
+@item @longopt{short-ref}
+If this option is set, cross-references are given without section numbers
+(variable @variable{$SHORT_REF}).
+
+@item @longopt{number}
+If this option is set, sections are numbered (variable
+@variable{$NUMBER_SECTIONS}).  This is the default.
+
+@item @longopt{toc-links}
+If this option is set, links from headings to @acronym{TOC} entries are
+created (variable @variable{$TOC_LINKS}).
+@end table
+
+@c --------------------------------------------------------
+@node Expanding TeX regions
+@section Expanding @code{@@tex} and @code{@@math} regions using La@TeX{}2HTML
+
+It is possible to use @uref{http://www.latex2html.org/,La@TeX{}2HTML}  
+to process @code{@@tex} regions and @code{@@math@{@}} commands.  This is an
+attractive way to display mathematical constructs in the @acronym{HTML}
+manual.  The @longopt{l2h} option activates this feature (variable
+@var{$L2H}).  It is usually desirable to expand @code{@@tex} sections when this
+option is specified (@pxref{Expansion}).
+
+The @longopt{l2h-l2h=@var{program}} option enables changing the name/location
+of the La@TeX{}2HTML program processing @TeX{} regions (variable
+@variable{$L2H_L2H}).
+
+@longopt{l2h-tmp} sets the directory used for temporary
+files, this name shouldn't contain a dot @samp{.}
+@c Why not?  -DRP
+(variable is @variable{$L2H_TMP}).
+
+The file specified by @longopt{l2h-file} is
+used as La@TeX{}2HTML init file. It is searched at the same places than
+init files (@pxref{Using init files}), and the default is @file{l2h.init}.
+
+@c --------------------------------------------------------
+@node Using init files
+@section Use initialization files for fine tuning
+
+Initialization variables are read first from
+@file{/usr/local/etc/texi2htmlrc} (the exact location being
+changeable with the @longopt{sysconfdir=dir} option of the
+@command{configure} script, see @ref{Installation}), then from
+@file{$HOME/.texi2htmlrc}. Any command-line option can override
+the corresponding option set in init file, and the option @longopt{init-file}
+specifies an init file to be loaded, with later settings
+overriding earlier ones.
+
+The init files specified with @longopt{init-file} are searched
+first in the current directory, then in the @file{$HOME/.texi2html/}
+directory, in the @file{/usr/local/etc/texi2html/} directory
+(the exact location being
+changeable with the @longopt{sysconfdir=dir} option of the
+@command{configure} script), and lastly in the 
+@file{/usr/local/share/texi2html/} directory
+(the exact location being
+changeable with the @longopt{pkgdatadir=dir} option of the
+@command{configure} script, see @ref{Installation}).
+
+The default initialization options are defined in the
+@file{texi2html.init} file contained in the @command{texi2html}
+distribution (which gets included near the beginning of the
+@command{texi2html} script that gets installed).
+
+To customize @command{texi2html} it is best if you copy the
+appropriate sections from the @file{texi2html.init}
+contents into an appropriate local initialization file,
+make the necessary changes there, and then have
+@command{texi2html} read this initialization file by one of
+the means described above.
 
 @c ========================================================
-@node CustomizingExpand
-@chapter Customizing what gets expanded
-@c 5.) Customizing what gets expanded
-@c   ==> -expand, and latex2html
-Test starting.
+@node Initialization files
+@chapter Overview of initialization files content and loading
 
-@option{-expand info}
-@option{-expand tex}
-Take a look at optionexpand.
+The initialization files are @command{perl} files, read as explained 
+in @ref{Using init files}. You don't need to know much of @command{perl}
+to do some simple changes in variable values, however, to be able to 
+really take advantage of all the features of the initialization file,
+a good knowledge of @command{perl} is required.
 
+In initialization file two kind of variables appear. These are normal
+variables (including arrays and hashes) and references on functions. 
+The later permits the dynamic redefinition of functions used to produce
+the @acronym{HTML} manual. You should be able to change the value of some  
+normal variables without a deep knowledge of @command{perl}, by looking
+at the existing examples. The possible mistakes in that case could be
+omitted @samp{;}, and bad quoting.
+
+Initialization file are loaded from the main program by
+the mean of a @code{require}, while in the @code{Texi2HTML::Config}
+namespace. This means that the namespace of the main program and
+the namespace of inititalization files are distinct, which ensures
+that no name clash should happen. The variables are declared with the
+@code{our} specifier, such that it should be possible to use the 
+@code{use strict} pragma in the initialization file code.
+
+To avoid messing with the variables in the @code{main} namespace
+all the global variables which could be of use in the init files 
+are in the @code{Texi2HTML} namespace. Notice that the functions 
+of the main program are still in the @code{main} namespace.
+
+@menu
+* Redefining functions::      Function redefinition is achieved with 
+                              redefinition of references on functions.
+* Function prototypes::       Conventions used in that manual for function 
+                              reference prototypes display.
+@end menu
+
+@c --------------------------------------------------------
+@node Redefining functions
+@section Redefining functions in initialization files
+
+To redefine a function you must replace the corresponding funtion
+reference with a reference on your function. 
+Thus you should write your function, give it a name you
+are certain it is unique in the @code{Texi2HTML::Config} namespace,
+and override the value of the function reference with your own 
+function reference. When another function from the main program
+(or from another functions of an initialization file) calls the reference,
+your function will be used. 
+
+For example the function
+reference corresponding with the function called when doing an
+anchor is called @variable{$anchor}. Thus if you want to override the
+corresponding function
+you could write:
+
+@example
+# override the function reference
+$anchor = \&my_own_function;
+
+# the function reference now refers to
+sub my_own_function @{
+# process arguments and return an html anchor
+@}
+@end example
+
+@c --------------------------------------------------------
+@node Function prototypes
+@section Conventions used for function prototypes
+
+As the functions are defined by a reference name, we will always
+use the reference name in function prototypes. For the function arguments
+we will use @code{\@@array} for a reference on an array and similarly 
+@code{\%hash} for a reference on a hash.
+
+Thus, the prototype for the function associated with the function
+reference @samp{$formatting_function} will be:
+
+@deftypefn {Function Reference} $text formatting_function $arg1 \@@arg2
+@code{formatting_function} takes as first argument @var{$arg2},
+as second argument a reference on an array @var{\@@arg2}
+and returns the formatted text @var{$text}.
+@end deftypefn
+
+To redefined the corresponding function, you should write:
+
+@example
+$formatting_function = \&my_formatting_function
+
+sub my_formatting_function($$)
+@{
+    my $arg1 = shift;
+    my $arg2 = shift;
+    # prepare $formatted_text
+    .....
+    return $formatted_text
+@}
+@end example
+
+@c --------------------------------------------------------
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @c ========================================================
 @include custpage.texi
 @c ========================================================
 @include custhtml.texi
 @c ========================================================
-@include initfile.texi
-@c --------------------------------------------------------
-@include ifo.texi
-@c ========================================================
-@c @include extfile.texi obsolete now, is not documented!
-@c ========================================================
-@include options.texi
-@c ========================================================
-@include reference.texi
-@c ========================================================
+
 @c commandline option index.
-@node Indexop, Indexvr, Reference, Top
-@appendix Indices
-@appendixsec Command Line Option Index
+@node Indexop
+@appendix Command Line Option Index
 @printindex op
 @c --------------------------------------------------------
-@node Indexvr, Indexcp, Indexop, Top
-@appendixsec Variable Index
+@node Indexvr
+@appendix Variable Index
 @printindex vr
 @c --------------------------------------------------------
-@node Indexcp, , Indexvr, Top
-@appendixsec Concept Index
+@node Indexcp
+@appendix Concept Index
 @printindex cp
-@c printindex init file options dito.
-@c concept index.
 @bye

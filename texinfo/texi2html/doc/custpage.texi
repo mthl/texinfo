@@ -3,167 +3,739 @@
 @c which is part of the ``texi2html'' distribution.
 @c
 @c License:
-@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-@c
-@c    This program is free software; you can redistribute it
-@c    and/or modify it under the terms of the GNU General Public
-@c    License as published by the Free Software Foundation;
-@c    either version 2 of the License, or (at your option) any
-@c    later version.
-@c
-@c    This program is distributed in the hope that it will be
-@c    useful, but WITHOUT ANY WARRANTY; without even the implied
-@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-@c    PURPOSE.  See the GNU General Public License for more
-@c    details.
-@c
-@c    You should have received a copy of the GNU General
-@c    Public License along with this program; if not, write to
-@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
-@c    330, Boston, MA  02111-1307  USA
-@c
+@c 
+@c    Copyright (C) 2003 Free Software Foundation, Inc.
+@c   
+@c    Permission is granted to make and distribute verbatim
+@c    copies of this manual provided the copyright notice and
+@c    this permission notice are preserved on all copies.
+@c    
+@c    Permission is granted to copy and distribute modified
+@c    versions of this manual under the conditions for verbatim
+@c    copying, provided that the entire resulting derived work is
+@c    distributed under the terms of a permission notice
+@c    identical to this one.
+@c    
+@c    Permission is granted to copy and distribute translations
+@c    of this manual into another language, under the above
+@c    conditions for modified versions, except that this
+@c    permission notice may be stated in a translation approved
+@c    by the Free Software Foundation.
 @c
 @c Revisions:
-@c $Id: custpage.texi,v 1.4 2003-08-12 09:08:13 pertusus Exp $
+@c $Id: custpage.texi,v 1.5 2003-10-14 13:05:38 dprice Exp $
 @c
 @c Author:
-@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c   Dumas Patrice <dumas@centre-cired.fr>
 @c
 @c Description:
-@c   Here are the informations about customizing page
-@c   layout.
+@c   Informations about customizing page layout in initialization files.
 @c
 @c ========================================================
-@node CustomizingPage
-@chapter Customizing page layout
-This chapter is designed to help you to change the
-complete layout of the @acronym{HTML} output if you like to
-do so.
 
+@node Changing the page layout
+@chapter Fine tuning of the page layout
 
-a) General: Philosophy, and how it works@*
-aa) Navigation panels@*
-b) Top page@*
-c) Section pages@*
-
-
-
+Some features of the page layout might be specified with command line
+options, the corresponding variables are described in 
+@ref{Page layout options}.
+Fine tuning of the page layout may be achieved
+with redefinition of other variables and function references in the 
+initialization files.
 
 @menu
-* TipsNewDesign::           .
-* CustPagePhil::            .
-* CustPagePhilNav::         .
-* CustPageTopPage::         .
-* CustPageSectionPages::    .
-* CustPageMiscPage::        .
+* The different pages::       The different categories of pages.
+* The page layout::           The elements of a page.
+* Navigation panel::          How to change the navigation panel.
+* Program variables::         The available main program variables and some 
+                              usefull functions from the main program.
+* css::                       Customizing css lines.
+* Customizing header::
+* Customizing section::
+* Customizing footer::
+* Special pages::             Customizing table of contents, top, about page.
 @end menu
-@c --------------------------------------------------------
-@node TipsNewDesign
-@section Tips how to create a new site design
-
-Here you can find information how you should work to pick
-up a new design with @command{texi2html}.
-
 
 @c --------------------------------------------------------
-@node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
-@section Page Layout and the philosophy
+@node The different pages
+@section The different categories of pages and sectioning elements
 
-@menu
-* CustPagePhilNav:: Navigation panels.
+The following sectioning elements can be associated with pages:
+
+@table @emph
+@item Normal elements
+These are normal sections or nodes. Their association with pages is
+determined by the splitting of the document. @xref{Splitting output}.
+@item Top element
+The top element is the higher element in the document structure.
+If there is a @code{@@top} section it is the element associated with
+that section. Otherwise it is the element associated with the 
+@code{@@node Top}. If there is no @code{@@node Top} the first element is the 
+top element.
+
+The top element is formatted differently than a normal element if there
+is a @code{@@top} section or the @code{@@node Top} isn't associated 
+with a sectioning command.
+@item Misc elements
+These elements are associated with pages if the document is split.
+There are four misc elements:
+@enumerate
+@item Table of contents
+@item Short table of contents, also called Overview
+@item Footnotes page
+@item About page
+@end enumerate
+
+The @emph{About page} shouldn't be present for documents consisting
+in only one sectioning element. The @emph{Footnote page} should only
+be present if the footnotes appear on a separated page 
+(@pxref{Page layout options}), however a footnote element is present if
+the document isn't split. The @emph{Table of contents} should only
+be formatted if @code{@@contents} is present in the document.
+Similarly the @emph{Overview} should only appear if @code{@@shortcontents}
+or @code{@@summarycontents} is present.
+@end table
+
+@c --------------------------------------------------------
+@node The page layout
+@section Page layout and navigation panel overview
+
+A page is broken up in three parts. A page header, the sections 
+and a page footer. A common element in the page layout is a navigation
+panel with icons or text linking to other sections or pages. Another
+common element is a rule, separating sections or footer. The navigation
+panel and the rules may be part of the sections or part of headers or
+footers. You may use the variables @variable{$SMALL_RULE}, @variable{$DEFAULT_RULE}, 
+@variable{$MIDDLE_RULE} and @variable{$BIG_RULE} for rules of different sizes.
+
+In the header some important meta data may be defined, like the
+title or style information, and textual informations may be present
+in comments. All this doesn't appear directly in the displayed 
+@acronym{HTML}, though.
+
+The page layout is mainly controlled by functions, the precise functions 
+called depending on the document splitting. The navigation panel, however,
+can be customized with variables.
+
+@subheading Element labels
+@anchor{Element labels}
+
+There are 19 items associated with elements. Each of these
+is associated with a name and a reference to the 
+element they represent, when such an element exists. 
+The element is either a global element or an element relative to the current
+element. The relative elements are found with respect with the document
+structure defined by the section structuring commands (@code{@@chapter}, 
+@code{@@unnumbered}@dots{}) or by the nodes (in that case the node 
+directions are specified on node line or in menu organization).
+These items are called @dfn{element labels}. They may be associated with 
+a button (@pxref{Button specifications}), and used in the formatting functions 
+(@pxref{Program variables}).
+
+Here is the list:
+
+@table @emph
+@item @samp{@ }
+An empty button
+@item Top
+Top element. The associated name is @variable{$TOP_HEADING} if that variable is 
+defined.
+@item Contents
+Table of contents
+@item About
+About (help) page
+@item Overview
+Overview, short table of contents
+@item First
+First element in reading order
+@item Last
+Last element in reading order
+@item Index
+The first chapter with @code{@@printindex}. The associated name 
+is  @variable{$INDEX_CHAPTER}, if the variable is set.
+@item This
+The current element
+@item Back
+Preceding element in reading order
+@item FastBack
+Beginning of this chapter or previous chapter if the element is a chapter
+@item Prev
+Previous section on the same level 
+@item NodePrev
+Previous node
+@item Forward 
+Next element in reading order
+@item FastForward
+Next chapter
+@item Next
+Next section on the same level
+@item NodeNext
+Next node
+@item Following
+Next node in node reading order
+@item Up
+Up section
+@item NodeUp
+Up node
+@end table
+
+@c --------------------------------------------------------
+@node Navigation panel
+@section Customization of the navigation panels buttons
+
+A lot of customization of the navigation panel may be achieved without
+redefining functions, with variables redefinition. 
+In case it isn't enough, it is also possible to redefine the function 
+doing the navigation panel formatting.
+
+@menu 
+* General purpose variables::      Variables controlling the navigation panel
+                                   at a global level
+* Button specifications::
+* Panel formatting function::
 @end menu
+
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
-@subsection Navigation panels
+@node General purpose variables
+@subsection Controlling the navigation panel panel at a high level
 
-Head and foot Navigation panels.
+The global formatting of the navigation panels may be
+changed with the following variables:
 
-@c --------------------------------------------------------
-@node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
-@section Top Page
-@c --------------------------------------------------------
-@node CustPageSectionPages
-@section Section Pages
-@c --------------------------------------------------------
-@node CustPageMiscPage
-@section Misc pages
-Here you can find information about the creation of the
-@dfn{ToC} (@i{Table Of content}), About---Page
-etc. and specialy how to change them to get your own
-design.
-
-@acronym{ToC} @code{T2H_DEFAULT_print_toc_frame} in
-@file{texi2html.init}
-
-@menu
-* CustPagePageHeadToc:: .
-* CustPagePageHead::    .
-* CustPagePageFoot::    .
-@end menu
+@vtable @code
+@item $VERTICAL_HEAD_NAVIGATION
+A vertical navigation panel will be used for the header navigation 
+panel if this variable is true.
+@item $ICONS
+Icons are used instead of
+textual buttons if this variable is true.
+@item $SECTION_NAVIGATION
+If this variable is false there is no section navigation, no navigation 
+panels for the elements within the pages, only at 
+the beginning and the end of the page (@pxref{Page layout options}).
+@end vtable
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageHeadToc
-@subsection Table Of Contents
+@node Button specifications
+@subsection Specifying the buttons formatting
 
-The following code is the original code out of the
-initialization file (@pxref{InitFile,Initialization file}).
+Several arrays and hashes enable a precise control on the buttons and 
+their display. 
+The following arrays determine the buttons present in navigation panels:
 
+@vtable @code
+@item @@SECTION_BUTTONS
+This array is used for the navigation panel buttons present at the begining
+of sectioning elements. If split at node or section they are also used 
+at the page footer, and in the case of section navigation at the page header.
+@item @@SECTION_FOOTER_BUTTONS
+This array is used for the navigation panel buttons present at the footer
+of pages when split at node or at section. 
+
+If @variable{$WORDS_IN_PAGE} is set and the output is split at nodes, these 
+buttons are only present if there are more than @variable{$WORDS_IN_PAGE}
+words in the sectioning element text.
+@item @@CHAPTER_BUTTONS
+This array is used for the buttons appearing at the page footer if split at 
+chapter, and at the page header if split at chapter and there is no section
+navigation.
+@item @@MISC_BUTTONS
+These buttons appear at the beginning of special and sections  
+and at the end of these section pages if the output is split.
+@end vtable
+
+The array specify the buttons displayed in navigation panels, 
+and how the button is displayed.
+Each element is associated with
+a button of the navigation panel from left to right.
+The signification of the array element value is the following:
+
+@table @emph
+@item reference on a function
+The function is called with first argument a filehandle reference on the
+current file and second argument a boolean true if the navigation 
+panel should be vertical.
+@item reference on a scalar
+The scalar value is printed. For some possibly
+usefull scalars, @ref{Elements hashes}.
+@item reference on an array
+In this case the first array element should be a reference on text and the 
+second element an element label. In that case a link to the 
+element associated with the element label with the scalar value
+text is generated.
+
+For example if the buttons array element is
 @example
-sub T2H_DEFAULT_print_toc_frame
-@{
-  my $fh = shift;
-  &$T2H_print_page_head($fh);
-  print $fh <<EOT;
-<H2>Content</H2>
-EOT
-  print $fh map @{s/HREF=/target=\"main\" HREF=/; $_;@} @@stoc_lines;
-  print $fh "</BODY></HTML>\n";
-@}
+[ 'Next', \$Texi2HTML::NODE@{Next@} ] 
 @end example
 
-As you can see it is very simple Perl Code, which can
-be changed more or less simple to fit you requirements
-(@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
+The button will be a link to the next section with text 
+@variable{$Texi2HTML::NODE@{Next@}}.
+@item element label
+If icons are not used, the button is a link to the corresponding
+element which text is defined by the value associated with the 
+element label in the @variable{%NAVIGATION_TEXT} hash, surrounded
+by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
+no @samp{[} and @samp{]}.
+
+If icons are used, the button is an image with file determined by
+the value associated with the element label in the @variable{%ACTIVE_ICONS}
+hash if the the link really leads to an element, or in the @variable{%PASSIVE_ICONS}
+hash if there is no element to link to. Of course if there is a link to the 
+element the icon links to that element.
+@end table
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Panel formatting function
+@subsection Changing the navigation panel formatting
+
+If you are not satisfied with this scheme, it is possible to
+control exactly the formatting of navigation panels by redefining a function 
+reference. The function controlling the display of navigation panel is 
+associated with the following function reference:
+
+@deffn {Function Reference} print_navigation $filehandle \@@buttons $vertical
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for that navigation panel. @var{$vertical} is true if the 
+navigation panel should be vertical.
+@end deffn
+
+@c --------------------------------------------------------
+@node Program variables
+@section Main program variables and usefull functions
+
+In the functions 
+controlling the page layout some global variables set by the main
+program are available, with value corresponding with the current
+layout element.
+
+@menu 
+* Elements hashes::             Accessing information related with the 
+                                different elements   
+* Global informations::         Accessing global informations, like date, 
+                                title@dots{}
+* Global functions::            main program usefull functions
+@end menu
 
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageHead
-@subsection Page header
-Page Head @code{T2H_DEFAULT_print_page_head}
+@node Elements hashes
+@subsection Accessing elements informations
 
-@c references on T2H_DOCTYPE
-@c               T2H_AUTHORS
+Four hashes are available, with key the elements labels (as described
+in @ref{Element labels}) and values:
+
+@vtable @code
+@item %Texi2HTML::NAME
+The formatted element name
+@item %Texi2HTML::HREF
+The element hypertext reference
+@item %Texi2HTML::NODE
+The element node name
+@item %Texi2HTML::NO_TEXI
+The element name after removal of texi commands
+@end vtable
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Global informations
+@subsection Accessing global informations
+
+Three kinds of global informations are available, miscalleneous global
+strings, flags set by @code{@@set} and special flags and section lines.
+
+@subsubheading Global strings
+The @variable{%Texi2HTML::THISDOC} hash holds some global informations:
+
+@table @code
+@item fulltitle
+title set by @code{@@title}. If there is no @code{@@title} other 
+possibilities are tried (@code{@@settitle}, @code{@@shorttitlepage}@dots{}).
+@item title
+title set by @code{@@settitle}, or @code{fulltitle}.
+@item author
+Authors list set by @code{@@author}.
+@item copying
+Text appearing in @code{@@copying} with all the texinfo commands removed,
+put in comments.
+@item program
+The name and version of @command{texi2html}.
+@item program_homepage
+Homepage for @command{texi2html}.
+@item program_authors
+Authors of @command{texi2html}.
+@item toc_file
+The file name of the table of contents.
+@item today
+The date.
+@end table
+
+@subsubheading Flags
+Flags defined by @code{@@set} may be accessed through the 
+@variable{%main::value} hash. The key is the flag name, the value is the
+flag value at the end of the document. 
+
+Special flags are set by the main program. They correspond with a texinfo
+command, like @code{@@setfilename}, or @code{@@settitle}, 
+@code{@@author}@dots{} The corresponding flag is the command name with 
+@samp{_} appended, for example, @code{_titlefont} corresponds with 
+@code{@@titlefont}. Like other flags they are available in 
+@variable{%main::value}.
+
+
+@subsubheading Section lines
+
+The following array references or arrays holds formatted lines:
+
+@vtable @code
+@item $Texi2HTML::THIS_SECTION
+Lines of the current element.
+@item $Texi2HTML::THIS_HEADER
+Lines of the current element appearing before the element label (anchors).
+@item $Texi2HTML::OVERVIEW
+Lines of short table of contents. @xref{Special pages}.
+@item $Texi2HTML::TOC_LINES
+Lines of table of contents. @xref{Special pages}.
+@end vtable
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Global functions
+@subsection Function usefull in page formatting
+
+The usefull function is a function used to print an array of lines, which 
+also counts the number of words in the array, if needed.
+
+@deftypefun $words_number  main::print_lines $filehandle \@@lines_array
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@lines_array} is the array line the function should write to the file.
+If this argument is omitted, the function uses @variable{$Texi2HTML::THIS_SECTION}.
+@var{$words_number} is the number of words in the array, only defined if
+split at nodes and @variable{$WORDS_IN_PAGE} is defined.
+@end deftypefun
+
+@c --------------------------------------------------------
+@node css
+@section Customizing the @command{texi2html} css lines
+
+It is possible to modify the @command{texi2html} css lines by modifying
+the entries or adding to the @variable{%css_map} hash. Each key is a css
+selector, the corresponding value is a style string.
+
+The whole css text is in the variable @variable{$CSS_LINES}. If this 
+variable is defined the variable value is used instead of being 
+constructed using the @variable{%css_map} entries. For example if you don't
+want any css entries, set
+
 @example
-sub T2H_DEFAULT_print_page_head
-@{
-  my $fh = shift; 
-  my $longtitle = "$T2H_THISDOC@{title@}: $T2H_NAME@{This@}";
-  print $fh <<EOT;
-<HTML>
-$T2H_DOCTYPE
-<!-- Created on $T2H_TODAY by $THISPROG -->
-<!-- 
-$T2H_AUTHORS 
--->
-<HEAD>
-<TITLE>$longtitle</TITLE>
-
-<META NAME="description" CONTENT="$longtitle">
-<META NAME="keywords" CONTENT="$longtitle">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="$THISPROG">
-$T2H_EXTRA_HEAD
-</HEAD>
-
-<BODY $T2H_BODYTEXT>
-$T2H_AFTER_BODY_OPEN
-EOT
-@}
+$CSS_LINES = '';
 @end example
 
-@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustPagePageFoot
-@subsection Page footer
+It is also possible to change completely the way @variable{$CSS_LINES} are
+generated by redefining the following function reference:
 
-Page Foot @code{T2H_DEFAULT_print_page_foot}
+
+@deffn {Function Reference} css_lines \@@import_lines \@@rule_lines
+This function should be used to construct the @variable{$CSS_LINES}.
+@var{\@@import_lines} are the @code{@@import} lines of the 
+files specified with @longopt{include-css}, 
+and @var{\@@rule_lines} are the css commands lines of these files.
+@xref{Style options}.
+@end deffn
+
+@c --------------------------------------------------------
+@node Customizing header
+@section Customizing the page header 
+
+It is possible to add lines to the text within the @code{<head>} 
+@acronym{HTML} elements, by defining the variable @variable{$EXTRA_HEAD}.
+Similarly it is possible to add text just after the @code{<body>} 
+element with the variable @variable{$AFTER_BODY_OPEN}.
+The encoding of the document is defined by @variable{$ENCODING} if
+no @code{@@documentencoding} appears in the document.
+
+The @code{<body>} element attributes may be set by defining the
+variable @variable{$BODYTEXT}. If you want to define that variable
+dynamically, you could redefine the following function reference:
+
+@deffn {Function Reference} set_body_text
+This function should set @variable{$BODYTEXT}.
+@end deffn
+
+The default functions call the function associated with 
+@variable{$print_head_navigation} to format the navigation panel for the 
+page header. Thus you can control parts of the formatting by
+redefining the function reference.
+
+@deffn {Function Reference} print_head_navigation $filehandle \@@buttons
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel. 
+@end deffn
+
+If you want even more control, you can have full control over the page header 
+formatting by redefining three function references. The function associated
+with @variable{$print_page_head} is called for all the pages, and after that,
+the function associated with @variable{$print_chapter_header} is called
+if the document is split at chapters, or the function associated with
+@variable{$print_section_header} is called if the document is split at sections.
+
+@deffn {Function Reference} print_page_head $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function should print the page head, including the @code{<body>}
+element.
+@end deffn
+
+@deffn {Function Reference} print_chapter_header $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at chapters, after 
+@code{print_page_head}.
+@end deffn
+
+@deffn {Function Reference} print_section_header $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at sections, after 
+@code{print_page_head}.
+@end deffn
+
+@c --------------------------------------------------------
+@node Customizing section
+@section Customizing the sections
+
+The function associated with the following function reference is used for the 
+formatting of sections:
+
+@deffn {Function Reference} print_section $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function should print the current section.
+@end deffn
+
+@c --------------------------------------------------------
+@node Customizing footer
+@section Customizing the page footer
+
+It is possible to add text just before the @code{</body>} 
+element with the variable @variable{$PRE_BODY_CLOSE}.
+
+The footer text may be influenced by @variable{$ADDRESS} which should hold
+information about who created the document and how.
+If you want to define that variable
+dynamically, you could redefine the following function reference:
+
+@deftypefn {Function Reference} $address_text address $user $date
+This function should return the address. @var{$user} is the user name
+of the user running @command{texi2html}, @var{$date} is the date of the day.
+@end deftypefn
+
+The default functions call the function associated with 
+@variable{$print_foot_navigation} to format the navigation panel for the 
+page footer. Thus you can control parts of the formatting by
+redefining the function reference.
+
+@deffn {Function Reference} print_foot_navigation $filehandle \@@buttons
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel. 
+@end deffn
+
+If you want even more control, you can have full control the page footer 
+formatting by redefining three function references.
+The function associated with @variable{$print_chapter_footer} is called
+if the document is split at chapters, or the function associated with
+@variable{$print_section_footer} is called if the document is split at sections.
+ After that the function associated
+with @variable{$print_page_foot} is called.
+
+@deffn {Function Reference} print_page_foot $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function should print the page foot, including the @code{</body>}
+element.
+@end deffn
+
+@deffn {Function Reference} print_chapter_footer $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at chapters, before 
+@code{print_page_foot}.
+@end deffn
+
+@deffn {Function Reference} print_section_footer $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at sections, before
+@code{print_page_foot}.
+@end deffn
+
+
+@c --------------------------------------------------------
+@node Special pages
+@section Special pages formatting
+
+For the special elements, two things must be formatted: the content
+and the page layout
+
+@menu
+* Special pages content::
+* Special pages layout::
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Special pages content
+@subsection Customizing the content of the special pages
+
+@menu
+* Top element text::
+* Contents and Overview text::
+* Footnotes text::
+* About text::
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Top element text
+@subsubsection Top element text formatting
+The top element formatting is controlled by a function which also
+controls the layout of the top element page or section. The associated
+function reference is:
+
+@deffn {Function Reference} print_Top $filehandle $has_top_heading
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$has_top_heading} is true if there is a @code{@@heading} command or
+@code{@@titlefont} command appearing in the Top element text.
+@end deffn
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Contents and Overview text
+@subsubsection Table of contents and Short table of contents
+Several variables may be used to control the formatting of table of contents 
+and short table of contents:
+
+@table @code
+@item $BEFORE_OVERVIEW
+The variable value is inserted before the short table of contents text.
+@item $AFTER_OVERVIEW
+The variable value is inserted after the short table of contents text.
+@item $BEFORE_TOC_LINES
+The variable value is inserted before the table of contents text.
+@item $AFTER_TOC_LINES
+The variable value is inserted after the table of contents text.
+@item $TOC_LIST_STYLE
+This should contain a css style used for the list style if the tables of
+content are formatted with a list.
+@item $TOC_LIST_ATTRIBUTE
+This should contain an attribute text used for the list element if the tables of
+content are formatted with a list.
+@end table
+
+More control on the table of contents and short table of contents formatting
+may be achieved by redefining a function with the following associated 
+function reference:
+
+@deffn {Function Reference} toc_body \@@elements $has_content $has_scontent
+@var{\@@elements} is an array reference contining informations about
+all the elements of the document. Each of the entry of this array is an hash
+reference which entries correspond with different informations
+about the element. Interesting keys have the following meaning:
+
+@table @code
+@item top
+true if the element is the top element,
+@item index_page
+true if the element is an index page added because of index splitting,
+@item toc_level
+level of the element in the table of content. Highest level
+is 1 for the top element and for chapters, appendix and so on,
+2 for section, unnumberedsec and so on...
+@item tocid
+label used for reference linking to the element in table of
+contents,
+@item file 
+the file containing the element, usefull to do href to that file
+in case the document is split,
+@item text
+text of the element, with section number,
+@item name
+text of the element, without section number.
+@end table
+
+@var{$has_content} is true if @code{@@contents} appears in the document.
+@var{$has_scontent} is true if @code{@@shortcontents} appears in the document.
+@end deffn
+
+This function doesn't return anything but should fill the array corresponding
+with the 
+@variable{$Texi2HTML::TOC_LINES} and
+@variable{$Texi2HTML::OVERVIEW} references with the table of contents and short 
+table of contents.
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Footnotes text
+@subsubsection Formatting of footnotes text
+
+The footnotes text is allready formatting when @code{@@footnote} commands
+are expanded. @xref{Footnotes}.
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node About text
+@subsubsection Formatting of about text
+
+The default about element contains an explaination of the buttons used
+in the document (@code{@@SECTION_BUTTONS}, @ref{Button specifications}) and 
+an example locating the buttons targets in an example.
+The formatting of this text may be influenced by the following 
+hashes and variables:
+
+@table @code
+@item $PRE_ABOUT 
+@itemx $AFTER_ABOUT
+This variable may be a scalar or a function reference. 
+If it is a scalar, the value is used.
+If this is a function reference it is expanded and the returned text is
+used. The text is added before or after the main about text.
+@item %BUTTONS_GOTO
+
+The keys of this hash are element labels (@pxref{Element labels}). The value
+is the text associated with the element label in the about text.
+
+@item %BUTTONS_EXAMPLE
+
+The keys of this hash are  element labels (@pxref{Element labels}). The value
+is the text associated with the element label in the about example, 
+typically a section number.
+
+@end table
+
+If this is not enough and you want to control exactly the formatting of
+the about text, you can redefine the function associated with the following 
+function reference:
+
+@deftypefn {Function Reference} $about_text print_about
+This function should return the about text.
+@end deftypefn
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Special pages layout
+@subsection Customizing the layout of the special pages
+
+The formatting of each of the special pages, or section in case 
+the document is not split, is controlled by a function.
+The associated function reference is called accordingly:
+
+@ftable @code
+@item print_Top
+Formatting of top element page or section. It is also used for the formatting
+of the top element text (@pxref{Top element text}).
+@item print_Toc
+Formatting of table of contents page or section
+@item print_Overview
+Formatting of short table of contents page or section
+@item print_About
+Formatting of about (help) page or section
+@item print_Footnotes
+Formatting of footnotes section or page in case footnotes are on a 
+separated page or the document isn't split.
+@end ftable
+
+In the default case, @variable{$print_Top} calls @variable{$print_Top_header} for
+the header and @variable{$print_Top_footer} for the footer of top element.
+All the other function call @variable{$print_misc} which in turn calls
+@variable{$print_misc_header} for the headers and  @variable{$print_misc_footer} 
+for the footers.
+
+

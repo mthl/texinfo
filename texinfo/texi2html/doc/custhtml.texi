@@ -3,130 +3,1010 @@
 @c which is part of the ``texi2html'' distribution.
 @c
 @c License:
-@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-@c
-@c    This program is free software; you can redistribute it
-@c    and/or modify it under the terms of the GNU General Public
-@c    License as published by the Free Software Foundation;
-@c    either version 2 of the License, or (at your option) any
-@c    later version.
-@c
-@c    This program is distributed in the hope that it will be
-@c    useful, but WITHOUT ANY WARRANTY; without even the implied
-@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-@c    PURPOSE.  See the GNU General Public License for more
-@c    details.
-@c
-@c    You should have received a copy of the GNU General
-@c    Public License along with this program; if not, write to
-@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
-@c    330, Boston, MA  02111-1307  USA
-@c
+@c 
+@c    Copyright (C) 2003 Free Software Foundation, Inc.
+@c   
+@c    Permission is granted to make and distribute verbatim
+@c    copies of this manual provided the copyright notice and
+@c    this permission notice are preserved on all copies.
+@c    
+@c    Permission is granted to copy and distribute modified
+@c    versions of this manual under the conditions for verbatim
+@c    copying, provided that the entire resulting derived work is
+@c    distributed under the terms of a permission notice
+@c    identical to this one.
+@c    
+@c    Permission is granted to copy and distribute translations
+@c    of this manual into another language, under the above
+@c    conditions for modified versions, except that this
+@c    permission notice may be stated in a translation approved
+@c    by the Free Software Foundation.
 @c
 @c Revisions:
-@c $Id: custhtml.texi,v 1.3 2003-08-12 09:08:13 pertusus Exp $
+@c $Id: custhtml.texi,v 1.4 2003-10-14 13:05:38 dprice Exp $
 @c
 @c Author:
-@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c   Dumas Patrice <dumas@centre-cired.fr>
 @c
 @c Description:
-@c   Here are the informations about customizing HTML
-@c   BODY, PRE- and AFTER Body.
+@c   Informations about customizing html and text style in 
+@c   initialization files.
 @c
 @c ========================================================
-@node CustHTML
-@chapter Customizing HTML
-If you like to read the following section, it is assumed
-you are famillar with @acronym{HTML}. If not, you shouldn't
-read this, cause you don't know what we are talking about.
 
-Here you can find information how to change the
-@acronym{HTML} parts of a document. These are the
-header, body etc.
+@node Customizing HTML
+@chapter Customizing @acronym{HTML} and text style in init files
 
-These are the defaults which are
-part of the distribution as @file{texi2html.init}.
+Some simple customization may be achieved with the redefinition of the 
+variables 
+associated with the command line options. For the description and an 
+explanation of the meaning of these variables, @ref{Style options}.
 
-
-How to do changes of the customization...
-needed steps.
-@c examples.
+Other variables and hash entries can be modified in initialization file
+to achieve more customization.
+Lastly, functions references corresponding with functions called from 
+the main program and initialization files may 
+be redefined.
 
 @menu
-* CustHTMLBody::        Customizing BODY Text.
-* CustHTMLHead::        Customizing Head.
-* CustHTMLBodyText::    Customizing Head.
-* CustHTMLPreBodyText:: Customizing Head.
-* CustHTMLAfterBody::   Customizing Head.
+* Two contexts::                 there are two different contexts for command
+                                 expansion: normal text and preformatted text.
+* Commands without argument:: 
+* Style and accent commands::    
+* Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image} and @code{@@sp}
+* Text::                         Some characters are special in @acronym{HTML} and
+                                 should be protected
+* Skipped commands::           
+* References::
+* Alignement commands::           @code{@@center}, @code{@@flushleft}@dots{}
+* Paragraph and preformatted region::
+* Complex formats::              @code{@@example}, @code{@@display}@dots{}
+* Lists tables and quotation::
+* Definitions::
+* Headings::
+* Special regions::              @code{@@verbatim}, @code{@@cartouche}
+* Menus::                    
+* Indices::
+* Footnotes::
+
 @end menu
+
 @c --------------------------------------------------------
-@node CustHTMLBody,CustHTMLBodyText,,CustHTML
-@section Body
+@node Two contexts
+@section Two contexts for command and test expansion: preformatted and normal
+
+There are two contexts of interest, one is the normal context, the other
+is a special context, called the @dfn{preformatted} context. The preformatted
+context occurs when the spacing between words is kept. This is the
+case, for example, in @code{@@display} or @code{@@example} regions, and in 
+menu comments (@pxref{Menus}). The preformatted regions are usually
+rendered in @code{<pre>} elements in @acronym{HTML}.
+
+Some @acronym{HTML} elements are not allowed in preformatted context.
+This is the case for @code{<table>}, for example.
+Thus, sometime, a function doing some formatting have to reopen and 
+reclose the preformatted context around the newly generated text.
+
+For example, we suppose we have @acronym{HTML} resulting from command 
+@example
+@@foo
+@@item an item
+@@end foo
+@end example
+looking like:
+@example
+<table><tr><td>an item</td></tr></table>
+@end example
+with @code{foo_item} the function formating the @code{@@foo} @code{@@item} 
+line.
+
+And the @acronym{HTML} resulting from:
+@example
+@@example
+some text
+@@end example
+@end example
+looks like 
+@example
+<pre>
+some text
+</pre>
+@end example
+
+Suppose that we want to handle the construct:
+@example
+@@example
+@@foo                                                                           
+@@item an item
+@@end foo
+@@end example
+@end example
+This could lead to the invalid @acronym{HTML}:
+@example
+<pre>
+<table><tr><td>an item</td></tr></table>
+</pre>
+@end example
+To avoid that, @code{@@foo} will close the preformatted context
+opened by @code{@@example}, and the function @code{foo_item} will have to
+reopen it, leading to
+@example
+<table><tr><td><pre>
+an item
+</pre></td></tr></table>
+@end example
+which is valid.
+
+All such function should allready have an hash reference passed as one of their
+arguments, the @dfn{state}. The only entry of interest in the corresponding
+hash is @code{'preformatted'} which is true if the function was called
+in a preformatted context.
+Opening and closing the preformatted context should then be done by calling 
+a function from the main program, @code{main::do_preformatted} with the 
+text and the state as arguments.
+
+Here is an example:
+
+@example
+sub foo_item
+@{
+my $arg1 = shift;
+my $arg2 = shift;
+my $state = shift;
+
+if ($state->@{'preformatted'@})
+@{
+    my $text;
+    # add some text to $text, 
+    # possibly using $arg1 and $arg2.
+    return '<td>' . main::do_preformatted($text, $state) . '</td>';
+@}
+else
+@{
+    .....
+@}
+@end example
+
+@c --------------------------------------------------------
+@node Commands without argument
+@section Customizing the formatting of commands without argument
+
+This includes the commands whose name is a nonletter character like @code{@@@@}, 
+the commands with lettered characters and braces
+but whose braces should be empty, like @code{@@TeX@{@}}, or some commands
+associated with accentted letters like @code{@@AA@{@}}. If there happens to
+be something within the braces, it is put after the command, thus
+@example
+@@TeX@{something@}
+@end example
+leads to the same than
+@example
+@@TeX@{@} something
+@end example
+
+Each of these categories of commands have two associated hashes, one for normal
+context, the other for preformatted context. The keys of the hashes are the 
+command names, the associated value is the text replacing the command.
+
+The hashes are:
+@multitable {one nonlettered character} {in normal text} {in preformatted text}
+@item command type @tab in normal text @tab in preformatted text
+@item one nonlettered character @tab @variable{%simple_map} @tab @variable{%simple_map_pre}
+@item nothing in braces @tab @variable{%things_map} @tab @variable{%pre_map}
+@end multitable
+
+To change the @acronym{HTML} resulting from these constructs, just change the
+value. For example, if you want @code{&shy;} to be outputted for @code{@@-}
+in normal and preformatted context, write in your init file:
+
+@example
+$simple_map@{'-'@} = '&shy;';
+$simple_map_pre@{'-'@} = '&shy;';
+@end example
+
+@c --------------------------------------------------------
+@node Style and accent commands
+@section Customizing accent, style and other simple commands
+
+The formatting of the @acronym{HTML} produced by style and indicatric 
+commands (@code{@@tt}, @code{@@code}, 
+@code{@@email}, @code{@@titlefont}), the accentuation related
+commands taking argument (@code{@@'}, @code{@@udotaccent}, @code{@@dotless})
+and miscalleneous commands (@code{@@email}, @code{@@verb}, @code{@@w}, 
+@code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by two hash, 
+@variable{%style_map} for normal context and @variable{%style_map_pre} for
+preformatted context. 
+
+The keys are the command names. The value determine how the command argument
+is formatted. If the value begins with @samp{"}, the result is 
+enclosed in quotes @samp{`} and @samp{'}. The remaining of the value text
+(or the value text if there were no @samp{"}) is interpreted as follow:
+
+@itemize
+@item
+If a text is empty the argument of the command is left as is. 
+@item
+If the text is a @samp{&} followed by a name,
+like @samp{&function}, the name is considered to be a function name, 
+and this function is called to format the argument of the command. The
+first argument of the function is the command name, the second is 
+the command argument. For example, if the value associated with the
+(fictituous) command @code{@@foo} is @code{&my_func}
+and we have:
+
+@example
+sub my_func
+@{
+    my @@args = split /,\s*/ $_[1];
+    return "$_[0]: $args[0]" if ($args[1] = 1);
+    return "$args[0]";
+@}
+@end example
+
+The result of 
+@example 
+@@foo@{truc, 1@}
+@@foo@{truc, bidule@}
+@end example 
+will be
+@example
+foo: truc
+truc
+@end example
+@item
+If the text is a word, it is considered to be an @acronym{HTML} element
+name, and the argument is enclosed between the element opening
+and the element closing. For example, if the value is @code{elem}, the
+resulting @acronym{HTML} is @code{<elem>@var{arg}</elem>}.
+Similarly @code{"quoted} leads to
+@code{`<quoted>@var{arg}</quoted>'}.
+@item
+If the text is a word followed by some text, 
+the word and is interpreted as above, and the
+text is considered to be the attributes text of the element. 
+Thus @code{elem class="elem"} leads to 
+@code{<elem class="elem">@var{arg}</elem>}.
+@end itemize
+
+Some remarks are in order:
+
+@itemize
+@item 
+The command argument is allready formatted as @acronym{HTML}.
+@item
+The nonlettered accent commands which following character is considered
+to be the argument (like in @code{@@`a}) should be keys of the
+hash @variable{%accent_map} hash, even if no value is associated.
+@item
+@code{@@math} is handled differently if La@TeX{}2HTML is used.
+@end itemize
+
+@c --------------------------------------------------------
+@node Anchors images and spaces
+@section Formatting of special simple commands
+
+The formatting of special simple commands is controlled by functions. To
+customize the output, the corresponding function references should be
+redefined.
+
+The formatting of anchors is controlled by @variable{$anchor}, but the function
+associated with the function reference does more, it is usefull
+to produce a reference target or link.
+@deftypefn {Function Reference} $anchor anchor $identifier $href $text $attributes
+If @var{$identifier} is not empty, this value should be used to create
+a target for links (typically associated with a name or id 
+attribute in @acronym{HTML}).
+The @var{$href} argument specifies a hpertextual reference which should be
+used to link to a target.
+In case both @var{$identifier} and  @var{$href} are given the text produced
+should be both a target for @var{$identifier} and a link to @var{$href}.
+@var{$text} is the text to be displayed. 
+@var{$attributes} are additional attributes.
+It should be reasonable to assume that the attributes are for a @code{<a>}
+@acronym{HTML} element. 
+@end deftypefn
+
+The formatting of @code{@@image} is controlled by:
+@deftypefn {Function Reference} $image image $file_name $basename $preformatted
+@var{$file_name} is the image file name, @var{$basename} is the file name
+without extension. @var{$preformatted} is true if the image appears in 
+preformatted text.
+@end deftypefn
+
+The formatting of @code{@@sp} is controlled by:
+@deftypefn {Function Reference} $sp sp $number $preformatted
+@var{$number} is the numeric argument of @code{@@sp}.
+@var{$preformatted} is true if the @code{@@sp} appears in preformatted text.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Text
+@section Protecting special @acronym{HTML} characters in text
+
+Some characters are special in @acronym{HTML} (@samp{&}, @samp{"}, @samp{<} and
+@samp{>}) and should be protected.
+This is done by the function associated with the function reference
+
+@deftypefn {Function Reference} $protected_text protect_html $text
+The function processes the unprotected text @var{$text} and returns
+the resulting protected text @var{$protected_text}.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Skipped commands
+@section Customizing ignored commands and text
+The ignored commands are the keys of two hashes: @variable{%to_skip_texi}
+for commands skipped during the first pass (expansion of macros and values)
+and @variable{%to_skip} for the commands skipped during the second pass
+(determination of the document structure).
+
+The associated value determines how things following the ignored
+command are handled. There are four possibilities:
+
+@table @asis
+@item @code{1}
+only the command is ignored,
+@item @code{space}
+spaces following the command are skipped,
+@item @code{arg}
+an argument following the command is skipped,
+@item @code{line}
+The line following the command is skipped.
+@end table
+
+@c --------------------------------------------------------
+@node References
+@section References
+
+The references are produced with five function references. 
+Three function references produce parts of the reference text, the other two
+format a whole reference.
+
+@deftypefn {Function Reference} $text ref_beginning $command
+This function formats the beginning of a reference.
+The argument is the command name (@code{ref}, @code{xref} or
+@code{pxref}). The function should return the text appearing at
+the beginning of a reference. As the different commands corresponds
+with different contexts (in text, at sentence beginning or in parenthesis).
+@end deftypefn
+
+@deftypefn {Function Reference} $text info_ref $node_and_file $href $cross_ref_name
+This function formats a reference to another texinfo html manual.
+@var{$node_and_file} is the node and file name formatted according to the 
+convention used in info: @samp{(file)node}. @var{$href} it an hypertextual
+reference to the distant manual constructed using the same conventions
+than @command{makeinfo}. @var{$cross_ref_name} is an optionnal cross
+reference name appearing in the reference command. This function returns
+the text corresponding with the external html manual reference.
+@end deftypefn
+
+@deftypefn {Function Reference} $text book_ref $section $book
+This function formats a reference to a printed texinfo manual. The 
+optionnal @var{$section} argument is the section in the book and 
+ @var{book} is the book title.
+@end deftypefn
+
+The following function references format whole references.
+
+@deftypefn {Function Reference} $text external_ref $command $info_ref $book_ref
+This function formats a whole reference to an external texinfo manual.
+The @var{$command} is the ref command. @var{info_ref} is optionnal, it
+is the text 
+of a reference to the html manual (produced with @variable{$info_ref}).
+@var{$book_ref} is optionnal, this is the text of a reference to the 
+printed manual (produced with @variable{$book_ref}). One of @var{info_ref} 
+and @var{$book_ref} should be present. This function returns the full 
+formatted text of the external reference.
+@end deftypefn
+
+@c FIXME utiliser sprintf + i18n thus change the API.
+
+@deftypefn {Function Reference} $text internal_ref $command $href $short_name $name $is_section
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Alignement commands
+@section Commands used for centering and flushing of text
+
+When a command controlling the alignement of text is used (@code{@@center},
+@code{@@flushleft} and @code{@@flushright}), the main program takes
+care of opening and closing paragraphs. The only thing which can be
+controlled is an argument given to the function doing the formatting of 
+paragraphs. This is achieved by the mean of a hash, @variable{%paragraph_style}.
+The keys are the names of the Texinfo commands, the value is the argument
+passed down to the function doing the formatting of the paragraphs. 
+@xref{Paragraph and preformatted region}.
+
+@c --------------------------------------------------------
+@node Paragraph and preformatted region
+@section Formatting a paragraph or a preformatted region
+
+The formatting of a paragraph region or a preformatted region, is controlled
+by function references:
+
+@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement
+This function formats a paragraph. @var{$text} is the text of the paragraph,
+@var{$alignement} is a specifier for the alignement of the paragraph.
+@xref{Alignement commands}.
+@end deftypefn
+
+@deftypefn {Function Reference} $preformatted_text preformatted $text $region_name
+This function formats a preformatted region. @var{$text} is the text of the
+preformatted region, @var{$region_name} is the name of the command opening
+the preformatted region (@code{example}@dots{}, see @ref{Complex formats}) 
+or a identifier for the preformatted context (for example 
+@code{menu-comment}, see @ref{Menus}).
+
+The alignment commands are not taken into account, as the spaces are
+preserved in preformatted regions, you should flush and center by hand.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Complex formats
+@section Formatting of complex formats (@code{@@example}, @code{@@display}@dots{})
+
+Here we see how a whole complex format is formatted. For the formatting
+of the text, see @ref{Paragraph and preformatted region}.
+
+The formatting of the complex formats is ultimately controlled by a
+function, however the default for this function uses a hash reference and 
+changing the hash reference values should be enough in most cases. This
+hash reference is called @variable{$complex_format_map}. It has a key for each
+of the complex format commands (@code{example}, @code{smallexample}, 
+@code{lisp}, @code{smalllisp}, @code{display}, @code{smalldisplay}, 
+@code{format}, @code{smallformat}).
+
+The associated value is also a reference on a hash. The keys are @code{begin}
+and @code{end}. An eval of @code{begin} should lead to the beginning of the
+formatted @acronym{HTML}, an eval of @code{end} should lead to the end of the 
+formatted @acronym{HTML}. The enclosed text will be formatted as described in
+@ref{Paragraph and preformatted region}, and the name of the complex
+format will be available to the function formatting the text.
+
+If you aren't satisfied with this scheme, you can redefine the following
+function reference for a better control over the complex format formatting:
+
+@deftypefn {Function Reference} $complex_format_text complex_format $format_name $preformatted_text
+
+@var{$format_name} is the complex format name, @var{$preformatted_text} is the 
+text allready formatted as described in @ref{Paragraph and preformatted region}.
+This function returns the whole complex format.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Lists tables and quotation
+@section Customizing the formatting of lists, tables and quotations
+
+The formatting of lists and tables is done at two levels:
+@itemize
+@item 
+At the level of the whole region (table, list or quotation),
+@item
+At the level of the individual items, rows or cells of the list or table.
+@end itemize
 
 @menu
-* CustHTMLBodyText::    Body Text.
-* CustHTMLPreBodyText:: PRE Body Text.
-* CustHTMLAfterBody::   After Body Text.
+* Table and list items::
+* Whole table list and quotation::
 @end menu
-@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
-@subsection Body Text
-
-
-@vindex T2H_BODYTEXT
-
-@example
-$T2H_BODYTEXT =
-    . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
-    . 'TEXT="#000000" LINK="#0000FF" '
-    . 'VLINK="#800080" ALINK="#FF0000"';
-@end example
-
-If you like to change the basic color combination, you can
-change the entry @var{T2H_BODYTEXT}.
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
-@subsection Body Text
+@node Table and list items
+@subsection Formatting individual table and list items
+
+In texinfo it is possible to give @code{@@itemize} or table command (hereafter
+called a @dfn{format command}) a @dfn{formatting command}. 
+For example @code{@@minus} is the formatting command here:
+@example
+@@table @@minus
+@end example
+
+The default is to apply the command to the text item, however it is possible
+to avoid it.
+The hash @variable{%special_list_commands} has an entry for each of the 
+format command. Each of these entries is a hash reference. If a formatting
+command is a key of the hash reference, then the formatting command is not
+applied to the text item for that format command. For example, if we have:
+
+@example
+$special_list_commands@{'itemize'@} = @{ 'bullet' => '' @};
+@end example
+
+and we have the following @code{@@itemize}:
+@example
+@@itemize @@bullet
+@@item an item
+@@end itemize
+@end example
+
+then @code{@@bullet} will not be applied to @code{an item}.
+
+@table @emph
+@item lists
+The items of lists are formatted using the following function reference:
+@deftypefn {Function Reference} $list_item list_item $text $format $command
+This function formats the text between @code{@@item} commands. @var{$text} 
+is the text corresponding with the item. @var{$format} is the type of format,
+@samp{itemize} or @samp{enumerate}. @var{$command} is the formatting command
+given in argument to @code{@@itemize}.
+@end deftypefn
+
+@item two column tables
+The two columns tables (@code{@@table}, @code{@@ftable} and @code{@@vtable}), 
+items are formatted using two function references,
+one for the first line located on the @code{@@item} line corresponding
+with the first column, the other for the text appearing on the
+following lines, corresponding with the second column text.
+
+@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command
+This function is used to format the text on the @code{@@item} line.
+@var{$text_item} is the text line. In case there is an index entry 
+associated with the @code{@@item} (as with @code{@@ftable} and 
+@code{@@vtable}), @var{$index_label_text} is the text inserted at 
+the place where an index entry appears. @xref{Index entry place}.
+@var{$format} is the type of format,
+@samp{table}, @samp{ftable} or @samp{vtable}. @var{$command} is the formatting command
+given in argument to the table format command.
+@end deftypefn
+
+@deftypefn {Function Reference} $table_line table_line $text
+This function is used to format the text on the lines following
+the @code{@@item} line. @var{$text} is the corresponding text. 
+@end deftypefn
+
+@item multitable
+The multitable elements formatting is controlled by the functions associated
+with two function references. One for a cell, and the other for a row.
+
+@deftypefn {Function Reference} $multitable_cell cell $text
+This function is used to format the text of a multitable cell, the text 
+following a @code{@@item} or a @code{@@tab}.
+@var{$text} is the corresponding text. 
+@end deftypefn
+
+@deftypefn {Function Reference} $multitable_row row $text
+This function is used to format a multitable row. @var{$text} is
+the row text, with cells allready formatted with the @variable{$cell}
+function reference.
+@end deftypefn
+@end table
+
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
-@subsection After Body Text
+@node Whole table list and quotation
+@subsection Formatting of a whole table, list or quotation
 
-@vindex T2H_AFTER_BODY_OPEN
-@vindex T2H_PRE_BODY_CLOSE
+If the Texinfo command is a key of the @variable{%format_map}, the associated
+value is used to specify the formatting of the construct, otherwise a function 
+is called. 
+The value in @variable{%format_map} associated with a command is interpreted 
+similarly with values associated with more simpler commands:
 
-@vindex T2H_EXTRA_HEAD
+@itemize
+@item
+If the text is a word, it is considered to be an @acronym{HTML} element
+name, and the whole table or list is enclosed between the element opening
+and the element closing.
+@item
+If the text is a word followed by some text, 
+the word and is interpreted as above, and the
+text is considered to be the attributes text of the element. 
+@end itemize
 
-@example
-# text inserted after <BODY ...>
-$T2H_AFTER_BODY_OPEN = '';
+In case the @variable{%format_map} isn't used, a function reference called
+@variable{$table_list}
+should be redefined, the associated function will be called each time
+a command isn't found in @variable{%format_map}.
 
-#text inserted before </BODY>
-$T2H_PRE_BODY_CLOSE = '';
-
-# this is used in footer
-$T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
-$T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
-
-# this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
-# can be used for <style> <script>, <meta> tags
-$T2H_EXTRA_HEAD = '';
-@end example
-
-The default output into the @acronym{HTML} file.
-@xref{OptionDocType}.
-
-
-The following code is produced by
-@code{T2H_DEFAULT_print_page_head}.
-
-Detailed information can be found at
-@ref{CustPagePageHead}.
-
-@example
-@include custhtml-header.htmltexi
-@end example
+@deftypefn {Function Reference} $whole_table_list table_list $command $text
+@var{$command} is the Texinfo command name, @var{$text} is the formatted
+items.
+@end deftypefn
 
 @c --------------------------------------------------------
-@node CustHTMLHead,,CustHTMLAfterBody,CustHTML
-@section Head
+@node Definitions
+@section Definition commands formatting
+
+The formatting of definition commands is controlled by a hash and four 
+functions. The hash describes how the text on the definition line is 
+interpreted, the functions control the formatting of the definition line
+and the definition function text.
+
+@menu
+* Definition line::
+* Definition formatting::
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Definition line 
+@subsection Customizing the interpretation of a definition line
+
+The keys of the hash @variable{%def_map} are definition command names.
+There are two types of entries:
+
+@itemize
+
+@item If the command is a shortcut for 
+another definition command the value is a text and the definition 
+command is replaced by the text.
+
+For example if we have:
+@example
+$def_map@{'deftruc'@} = '@@defvr @{A truc@}';
+@end example
+
+and a line like
+@example 
+@@deftruc var
+@end example
+
+the line will be transformed in
+@example
+@@defvr @{A truc@} var
+@end example
+
+@item
+If the command isn't a shortcut, it is associated with an array
+reference. The first element is @samp{f}, @samp{v} or @samp{t} corresponding
+with the index type (@samp{f} for function, @samp{v} for variable,
+@samp{t} for type).
+
+The remaining of the array describes how to interpret the text following
+the definition command on the definition command line. If the entry begins
+with @samp{@{}, then the corresponding item is the next bracketed item
+or the next word. The remaining of the entry word specify what corresponds
+with this item. Currently the word may be @samp{category}, @samp{name},
+@samp{type}, @samp{class} and @samp{arg}.
+
+For example if we have
+@example
+def_map@{'defvr'@} = [ 'v', '@{category', '@{name' ];
+@end example
+
+The first bracketed item following @code{@@defvr} is considered
+to be the category and the next one is the name. The index associated
+with the definition line is the variables index.
+@end itemize
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Definition formatting
+@subsection Customization of the definition formatting
+
+Four functions are used when formatting a definition command:
+
+@table @asis
+@item category name
+@deftypefn {Function Reference} $category definition_category $category_or_name $class $style
+This function precise a category or an index entry name associating a class 
+@var{$class} (if given) with @var{$category_or_name}. The @var{$style} of the
+definition may be @samp{f}, for function, @samp{v}, for variable or @samp{t}, 
+for type.
+@end deftypefn
+@item formatting of the definition line
+@deftypefn {Function Reference} $line def_line $category $name $type $arguments $index_label
+This function formats the definition line. @var{$category} is the category
+formatted with @variable{$definition_category}, @var{$name}, @var{$type} and 
+@var{arguments} are the element of the definition line. @var{$index_label} is
+the text inserted at the place where an index entry appears. 
+@xref{Index entry place}.
+@end deftypefn
+
+@item definition text
+@deftypefn {Function Reference} $definition_text def_item $text
+This function formats the definition text, @var{$text}.
+@end deftypefn
+
+@item the whole definition
+@deftypefn {Function Reference} $definition def $text
+This function formats the whole definition. The definition line and text 
+formatted by the above functions are in @var{$text}.
+@end deftypefn
+
+@end table
+
+@c --------------------------------------------------------
+@node Headings
+@section Customizing headings formatting
+
+A function controls the formatting of sectioning element headings, 
+with the corresponding function reference:
+@deftypefn {Function Reference} $heading_text heading \%element_reference
+The @var{\%element_reference} is a reference on a hash corresponding
+with the sectioning element. The following keys are of interest:
+@table @code
+@item text
+The heading text
+@item name
+The heading text without section number
+@item node
+true if the sectioning element is a node without associated structuring command
+@item level
+The level of the element in the document tree. @samp{0} is for @code{@@top},
+@samp{1} for @code{@@chapter} and so on
+@item tag_level
+the sectioning element name, with @code{@@raisesections} and 
+@code{@@lowersections} taken into account
+@end table
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Special regions
+@section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche})
+
+Regions corresponding with raw text, like @code{@@verbatim}, @code{@@html}
+or @code{@@tex} are formatted according to the following function reference:
+
+@deftypefn {Function Reference} $raw_region raw $command $text
+@var{$command} is the command name, @var{$text} is the raw text.
+@end deftypefn
+
+If La@TeX{}2HTML is used, @code{@@tex} regions are handled differently,
+from within the main program.
+
+The @code{@@cartouche} command formatting is controlled by the
+function reference:
+
+@deftypefn {Function Reference} $cartouche cartouche $text
+@var{$text} is the text appearing within the cartouche.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Menus
+@section Menu formatting
+
+To understand how the formatting of menus is controlled, the different
+parts of a menu are first described, then how to control the formatting
+of each of these parts.
+
+@menu
+* Menu parts::                 A menu consists in menu entry and menu 
+                               comments
+* Menu formatting::
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Menu parts
+@subsection The structure of a menu
+
+In @command{texi2html}, a menu is considered to be composed of 2 parts, the
+@dfn{menu entries} and the @dfn{menu comments}. Menu entries are further 
+divided in an @dfn{entry link} and optionnaly an @dfn{entry description}.
+The entry link consists in a node name and an optionnal  menu entry
+name.
+
+A menu entry begins with @samp{*} at the beginning of the line. It begins
+with the entry link, followed by the description. The description spans until
+the next menu entry, or some text begining at the first character of a line
+or an empty line, not contained within a command block which begun in the 
+description. An empty line or a line with text at the first character
+starts a menu comment, which spans until the next menu entry.
+
+Here is an illustration of these rules:
+
+@example
+@@menu
+* node name: entry name.        description begins
+   description continues
+* another menu entry::
+   description begins
+                    description continues
+
+   A menu comment, after an empty line
+
+* node::                        description begins
+A menu comment. The line starts at the first character
+
+* last entry::         description begins @emph{text
+of the description, even if the line begins at the first character,
+because we are in @@emph}.
+@@end menu
+@end example
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Menu formatting
+@subsection The formatting of the different menu components
+
+Some processing of the menu entry is done in the main program without
+a possibility of total control. 
+However this process may be influenced
+by some variable values. 
+
+In the default case, the name of the section corresponding with the 
+node is used instead of the node name. If @variable{$NODE_NAME_IN_MENU} is true,
+however, node names are used. If @variable{$AVOID_MENU_REDUNDANCY}
+is true and menu entry equal menu description the description isn't printed.
+Likewise, if node or section name equal entry name, do not print entry name.
+
+A symbol, @variable{$MENU_SYMBOL} is put at the beginning of menu entries
+when the node name is used. If @variable{$UNNUMBERED_SYMBOL_IN_MENU} it is also
+put at the beginning of unnumbered section names.
+
+The menu comments are considered to be preformatted text. The style 
+associated with this preformatted text is determined by 
+@variable{$MENU_PRE_STYLE}. The css class associated with menu comments is 
+@code{menu-comments}.
+
+Although the main program controls the text of the different components,
+control over the formatting of the components themselves is achieved
+through the call of 5 functions. The corresponding function references 
+should be redefined to change the default formatting.
+
+Three function references are associated with the formatting of the 
+different parts of a menu:
+@deftypefn {Function Reference} $link menu_link $link_text \%state $href
+@var{$link_text} is the text corresponding with the link name, @var{$href}
+is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
+holds informations about the current context. The only key which could be
+of interest is @code{preformatted}, true if the context is a preformatted
+context. @xref{Two contexts}.
+@end deftypefn
+
+@deftypefn {Function Reference} $description menu_description $description_text \%state
+@var{$description_text} is the text of the menu description. @var{\%state}
+should be used similarly than for the menu link.
+@end deftypefn
+
+@deftypefn {Function Reference} $menu_comment menu_comment $text
+@var{$text} is the text of the menu comment. It is in a preformatted 
+environment.
+@end deftypefn
+
+The following function reference controls the formatting of a wole menu:
+
+@deftypefn {Function Reference} $menu menu $menu_components_text
+@var{$menu_components_text} is the formatted menu components text, obtained
+as explained above.
+@end deftypefn
+
+The last function reference corresponds with a special case. It
+is used when a menu entry appears within another block command, to
+avoid the possibilities of invalid @acronym{HTML} production.
+In that case the menu description and menu comments are not formatted 
+specially, but treated like normal text.
+@deftypefn {Function Reference} $link simple_menu_link $link_text $href
+@var{$link_text} is the text corresponding with the link name, @var{$href}
+is the link hypertextual reference.
+@end deftypefn
+
+@c --------------------------------------------------------
+@node Indices
+@section Indices formatting
+
+Two different things needs to be handled for indices formatting, the place
+where the index term appears, the index entry, and the index list itself.
+The indexing commands like @code{@@cindex} determines where index entries
+appear, and the index list is printed with a @code{@@printindex} command. 
+
+@menu
+* Index entry place::             Index entries in the main document are 
+                                  targets for hypertext references
+* Index list::                    Customizing the formatting of the index list
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Index entry place
+@subsection Formatting of index entries
+
+Index entry places in the main text may be the target for hypertext 
+references. Their formatting
+is controlled by the function associated with the following function 
+reference:
+
+@deftypefn {Function Reference} $target index_entry_label $identifier $preformatted
+@var{$identifier} should be used to create
+a target for links (typically associated with a name or id 
+attribute in @acronym{HTML}).
+@var{$preformatted} is true if the index entry appeared in preformatted text.
+@end deftypefn
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Index list
+@subsection Customizing the formatting of index lists
+
+The index entries are sorted alphabetically. A whole index list is 
+considered to be composed of letter entries. A letter entry is composed
+by all the index entries beginning with that letter. A letter may
+be a non alphabetical character, but we call it letter here.
+
+An index summary appears at the beginning and at the end of an index list,
+and should be used to jump directly to a letter entry. Indices lists
+may be split across pages, thus the different letters may appear on different
+files. The number of index entries appearing on each page is determined
+by a variable @variable{$SPLIT_INDEX}.
+
+The formatting of all these elements is controlled by the following
+function references:
+
+@table @emph
+@item formatting of a letter in a summary
+@deftypefn {Function Reference} $letter summary_letter $letter $file $identifier
+This function is used to format a letter appearing in a summary, refering
+to a letter entry in the index list.
+@var{$letter} is the letter. @var{$file} is the file name where the letter
+entry appears. More precisely, it is empty when the letter entry is on the 
+same page than the summary, it contains the file name when the index page
+is split accross page. @var{$identifier} is an identifier for the target 
+letter entry. 
+@end deftypefn
+
+@item formatting of a summary
+@deftypefn {Function Reference} $summary index_summary \@@alphabetical_letters \@@nonalphabetical_letters
+@var{\@@alphabetical_letters} and @var{\@@nonalphabetical_letters} contain the
+formatted summary letters, formatted with the above function.
+@end deftypefn
+
+@item formatting of an index entry
+@deftypefn {Function Reference} $entry index_entry $entry_href $entry_text $section_href $section_heading
+@var{$entry_href} is a reference to the place where the index entry 
+appeared, @var{$entry_text} is the corresponding text. @var{$section_href}
+is a reference to the beginning of the sectioning element containing 
+the index entry, @var{$section_heading} is the heading of the element.
+@end deftypefn
+
+@item formatting of letter entry
+@deftypefn {Function Reference} $letter_entry index_letter $letter $identifier $index_entries_text
+This function formats a letter entry, consisting in all the index entries 
+beginning with this letter. @var{$letter} is the letter, @var{$identifier} 
+should be used to create a target for links (typically links from summaries),
+and @var{$index_entries_text} is the text of the index entries formatted as 
+described above.
+@end deftypefn
+
+@item formatting of whole index
+@deftypefn {Function Reference} $index print_index $index_text $index_name
+@var{$index_text} is the text of all the index entries grouped by letter
+appearing in that page formatted as above. @var{index_name} is the name of
+the index, the argument of @code{@@printindex}.
+@end deftypefn
+@end table
+
+@c --------------------------------------------------------
+@node Footnotes
+@section Customizing the footnotes formatting
+
+Each footnote is associated with a footnote entry. Several footnote entries
+are grouped in a footnote section. When a footnote appears, two things must
+be formatted: in the main text the place where the footnote appear
+and the footnote text. 
+
+Two functions, with corresponding function references control the formatting
+of the footnotes:
+
+@deftypefn {Function Reference} {(\@@lines $text_for_document)} foot_line_and_ref $number_in_doc $number_in_page $footnote_id $place_id $document_file $footnote_file \@@lines \%state
+@var{$number_in_doc} is the footnote number in the whole document, 
+@var{$number_in_page} is the footnote number in the current page.
+@var{$footnote_id} is an identifier for the footnote in the footnote text
+which should be used to make target for references to that footnote,
+while @var{$place_id} is an identifier for the location of the footnote
+in the main document. Similarly, @var{$document_file} is the file name
+of the file containing the text where the footnote appears in the main 
+document, while @var{$footnote_file} is the file name of the file where 
+the footnote text appears. 
+
+@var{\@@lines} is a reference on an array containing the footnote text
+lines, allready formatted.
+And @var{\%state} holds informations about the context at the footnote
+place in the main document. As usual the most usefull entry is 
+@code{preformatted} which is true if the footnote appears in a preformatted 
+context. 
+
+This function returns a reference on an array, @var{\@@lines} containing
+the updated footnote text for the footnote entry, and @var{$text_for_document},
+the text appearing at the footnote place in the main document, linking
+to the footnote entry.
+@end deftypefn
+
+The following function is only used when footnotes are at the bottom
+of a page and the document is split. 
+For customization of the footnotes page in case they are on a separated 
+page or section, @ref{Special pages layout}. For 
+the determination of the footnote locations, @ref{Page layout options}.
+
+@deffn {Function Reference} foot_section \@@footnotes_lines
+This function formats a group of footnotes. @var{\@@footnotes_lines} is a
+reference on an array holding the lines of all the footnote entries
+formatted as explained above. This function modifies the reference.
+@end deffn
+
+@c --------------------------------------------------------
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@c ========================================================
