@@ -1,12 +1,37 @@
+2003-01-12    <karl@gnu.org>
+
+	* makeinfo/cmds.c (handle_include): call text_expansion on the
+	filename, so @value constructs are expanded.
+
+	* doc/texinfo.txi (verbatiminclude, Using Include Files): mention
+	@value expansion.
+	Also, update samples to be copyright 2003.
+
+	* doc/texinfo.tex (\doverbatiminclude, \verbatimzzz): expand
+			@value(but nothing else).
+	Bug from: Alper Ersoy <aersoy@tfz.net>,
+	6 Jan 2003 13:14:28 +0200.
+
 2003-01-11    <karl@gnu.org>
+
+	* doc/texinfo.tex (\definedummyword): new macro.
+	(\indexdummies): call it, instead of defining each
+	command separately; many trailing spaces had been omitted.
+	Alternate implementation of a patch from: Stepan
+	Kasal <kasal@math.cas.cz>, 10 Jan 2003 22:42:05 +0100.
+
+	* doc/texinfo.tex (\acuteaccent): new defn.
+	(\indexdummies): use it instead of \' in the aux file.
+	Variation of a patch from: Stepan Kasal <kasal@math.cas.cz>,
+	10 Jan 2003 21:28:40 +0100.
 
 	* doc/texinfo.tex: doc fix.
 
 2003-01-10    <karl@gnu.org>
 
 	* doc/texinfo.tex (\indexnofonts, \indexdummies): handle more
-		accent commands.(\indexdummyfont): not needed, use \asis
-		instead.
+		accent commands.
+	(\indexdummyfont): not needed, use \asis instead.
 
 	* doc/texinfo.tex (\indexdummies,\indexnofonts): indent, no other
 		changes.
