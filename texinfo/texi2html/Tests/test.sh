@@ -37,7 +37,8 @@ dir_res=${dir}_res
 echo "diffs:"
 previous_good='no'
 for file in `ls $dir_res` ; do
-	if [ -d $dir_res/$file ]; then
+	if [ -d $dir_res/$file -a $dir_res/$file = $dir_res/'CVS' ]; then continue
+	elif [ -d $dir_res/$file ]; then
 		diff --recursive $dir_res/$file $dir/$file 2>&1 > /dev/null
 		result=$?
 		file_or_dir=dir
