@@ -1,0 +1,339 @@
+2000-09-14  Eric Sunshine  <sunshine@sunshineco.com>
+
+	* doc/Makefile.in: Added missing doc/Makefile.in since its absence
+	  caused 'configure' and make targets (such as 'distclean') to bomb.
+
+2000-09-14  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* applied patches/fixes from  Eric Marsden <emarsden@mail.dotcom.fr>.
+	  o DTD now at the beginning of the document
+	  o default language to 'en' wasn't working which led to empty LANG=""
+	    in <BODY>
+	  o missing </FONT> in footer blurb
+	  o when the ToC was generated in some cases, the code used
+	    <UL></UL> to indent, but didn't have any <LI> tags.  <blockquote>
+	    is now used in such cases, instead.
+
+2000-09-11  Eric Sunshine  <sunshine@sunshineco.com>
+
+	* texi2html.pl: Fixed severe macro expansion bug.  Macro argument
+	  parsing code did not handle nested braces ('{' and '}') at
+	  all, thus valid macro invocations such as
+	  "@mymacro{Hello @emph{there} @strong{world}.}" would fail.
+	  Prior to this fix, @mymacro would be handed the argument
+	  "Hello @emph{there", which is clearly incorrect.  Now @mymacro
+	  correctly receives "Hello @emph{there} @strong{world}." as its
+	  argument.  This fix also deals properly with the protected brace
+	  sequences \{, \}, @{, and @}.
+
+	* texi2html.pl: Fixed severe macro expansion bug.  Macro argument
+	  parsing code did not handle arguments split over multiple lines,
+	  such as "@mymacro{Hello \n world.}".  Now it correctly handles
+	  macro invocations split across any number of lines, and properly
+	  flags an error at the correct location if the user forgets the
+	  closing brace '}'.
+
+	* texi2html.pl: Fixed formatting errors in expansions of @SPACE,
+	  @TAB, and @NL (where SPACE, TAB, and NL represent the actual
+	  space, tab, and newline characters).  The Texinfo manual
+	  explicitly states that each of these sequences should expand to a
+	  "printable" space in the [rendered] output.  The example given in
+	  the manual shows that "Spacey@ @ @ @ example" should expand to
+	  "Spacey    example".  However, texi2html was only emitting the
+	  insignificant whitespace ' ' and '\n' into the HTML output which
+	  did not properly preserve the hard spaces in "Spacey    example".
+	  Now each of these directives expands to '&nbsp;' instead.
+
+	* texi2html.pl: Made aesthetic improvement to the output of @file{},
+	  @option{}, and @samp{}.  The argument string is now quoted with
+	  ` and ' _after_ the style has been applied.  For instance,
+	  @samp{perl} now expands to "`<samp>perl</samp>'", whereas it used
+	  to expand to "<samp>`perl'</samp>".  In my tests, this change
+	  results in more aesthetically pleasing rendered output on various
+	  browsers.
+
+2000-08-16  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: Bug fix from: "joseph" <joseph@freenet.de>
+	MySimple.pm should be 'require'd, but checked is still texi2html.init.
+
+2000-08-14  Karl Heinz Marbaise   <khmarbaise@gmx.de>
+        * new command line switch (Test purposes only!)
+          to show new layout in HTML for @def stuff.
+        * Texinfo-Documentation updated.
+          - New chapter about ``customizing HTML'' started.
+          - multiple files instead of one.
+          - subdirectory doc.
+
+2000-07-27  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: Fixed Getopt::Long::Configure("pass_through") for
+	older versions of Getopt::Long which do not support his function.
+
+2000-07-11  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* implemented @documentlanguage:
+	  - sets language of document, unless overwritten by -lang, or 
+	    explicitely set $T2H_LANG
+
+	* introduced T2H_OBSOLETE_OPTIONS to prevent obsolete options to 
+	  ambiguate current options
+	
+2000-07-09  Karl Heinz Marbaise   <khmarbaise@gmx.de>
+        * Texinfo-Documentation:
+          - fixes from Peter Moulder <pjm@bofh.asn.au> incorporated
+            into manual.
+          - Updated Manual
+            o improved
+            o indices for options, variables of script.
+            o much more.
+        * texi2html.init:
+          - improvements for different languages
+            (month names, words in different languages).
+
+2000-07-05  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* Provided CVS anonymous read-access to Texi2html:
+ cvs -d :pserver:t2h-anon@urmel.mathematik.uni-kl.de:/usr/local/Singular/cvsroot login
+ cvs -d :pserver:t2h-anon@urmel.mathematik.uni-kl.de:/usr/local/Singular/cvsroot co Texi2html
+ Passwd: texi2html
+	* Provided CVS write-access to Texi2html: contact me for
+	instructions 
+	
+2000-07-01  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* primitive support for some toher def stuff (needs to be fixed,
+	though) 
+	* Distribution: Incorporated texi2html.texi authored by Karl Heinz
+	Marbaise <khmarbaise@gmx.de> (THANKS!)
+	
+	* texi2html.1.in: Updates to reflect new cmd-line options
+
+	* Rewrote handling of command-line options:
+	- based on (My)Simple.pm, and Getopt::Long
+	-help now works and is up-to-date
+	-help 1 lists also "not-so-important" options
+	-help 2 lists also obsolete options
+	- the following options were renamed: (old options still work, but 
+	  are marked as obsolete)
+	    verbose            ==> Verbose
+	    section_navigation ==> sec_nav
+	    output_file        ==> out_file
+	- the following options are obsoleted (still work, though):
+ 	    no-section_navigation ==> -nosec_nav
+	    use_acc		  ==> ALWAYS use accents
+	    expandinfo		  ==> -expand info	
+	    expandtex		  ==> -expand tex
+	    no_verbose            ==> default case
+	    monolithic            ==> default case
+	    split_node            ==> -split section
+	    split_chapter         ==> -split chapter
+	
+2000-06-27  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* Fixed bug in anchor generation (reported by various people who
+	noticed that @anchor may not be on one line with @item)
+	* Fixed infinite loop on missing '@end macro'
+	* texi2html.pl: -expandinfo and -expandtex command-line options
+	for backward compatibility
+
+	* texi2html.init: Use ISO 639 language codes for keys in $T2H_LANG 
+	hash.
+
+2000-06-26  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: new command-line options:
+	 -nonumber, -nomenu to unset the default -number -menu
+
+	* texi2html.pl: As suggested by "Richard Y. Kim" <ryk@coho.net>:
+	insert <A NAME="#nodename"></A> for each
+	nodename in a document (nodename is exactly as in texinfo
+	source). 
+	
+	* From: "Richard Y. Kim" <ryk@coho.net>
+	  o $T2H_FRAMES internal boolean variable which defaults to 0
+	  o -frames command line option which changes $T2H_FRAMES to 1.
+	  o If $T2H_FRAMES is 1, then two additional files are output.
+	    If mydoc.html is output normally, then mydoc_frame.html
+	    and mydoc_frame_toc.html files are output.
+	  o The functions T2H_print_frame, and T2H_print_toc_frame are used to
+		generate contents of these files.
+	  o The T2H_DEFAULT_print_frame and T2H_DEFAULT_print_toc_frame
+	    (defined in texi2html.ini) do the following:
+       mydoc_frame.html is the short file with <FRAME> tags.
+       mydoc_frame_toc.html is basically the short table of contents
+       which goes on the narrow left frame.
+	
+	* texi2html.pl: @,{c} --> &ccedil;
+
+2000-06-23  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* released version 1.63
+	* texi2html.init (T2H_DEFAULT_print_page_head): 
+	  make <html> tag very first thing in every file
+	* fixed macro quoting and special cases of macro invocation
+	* from "Richard Y. Kim" <ryk@coho.net>:
+	    o handle \} in macro arguments
+	* from brlewis@alum.mit.edu:
+	    o Changes to facilitate CSS
+	    o -toc_file option for those who want the TOC to be index.html
+	    o Config variable $T2H_HREF_DIR_INSTEAD_FILE:
+	       if set (e.g., to index.html) replace hrefs to this file 
+               (i.e., to index.html) by ./
+	* texi2html.pl: index generation after value substitution
+
+2000-05-31  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: for def_map stuff <A NAME=..> before output
+	* texi2html.pl: applied patch from "Richard Y. Kim" <ryk@ap.com>
+	                for @refs with 2 or 3 args: use 3rd or 2nd argor
+			section (in that order) as text for reference.
+
+2000-04-18  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: Applied patches of <sunshine@sunshineco.com> to
+	make texi2html work with older versions of Perl
+
+2000-04-13  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: fixed unmacro
+	* distribution: applied patches from Peter Moulder and Teun
+	Burgers.
+	* fixed "Duplicate section found" -- section may now have
+	duplicate names
+	* fixed bug related to $T2H_AVOID_MENU_REDUNDANCY
+
+2000-04-12  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* release 1.62 
+	* added $T2H_NODE_NAME_IN_MENU for enforcing node
+	names in meny entries, and $T2H_AVOID_MENU_REDUNDANCY to
+	avoid display of duplicate meny entry information
+
+2000-04-11  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+	
+	* texi2html.pl: fixed two small bugs reported by
+	sunshine@sunshineco.com (</TR> in menu, <P> after itemize).
+	* implemented @ftable, @vtable
+	* index generation reimplemented: 
+	  - Can be split over several pages, depending on the value of
+	    $T2H_SPLIT_INDEX 
+	  - typesetting in fixed-width font is observed
+	* texi2html.init: T2H_IDX_SUMMARY either set or not set, takes no
+	argument.
+
+2000-04-08  Peter Moulder  <pjm@bofh.asn.au>
+
+	* Makefile.am, configure.in: Generate texi2html in
+	configure script instead of Makefile.  (Due mostly to
+	Teun Burgers.)
+
+	* README, TODO, texi2html.1.in, texi2html.init, texi2html.pl:
+	Misc. documentation changes.
+
+2000-04-07  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.init: $T2H_INDEX_CHAPTER introduced: 
+	  if set, use this chapter for Index button, else
+          use first chapter whose name matches 'index' (case insensitive)
+	* fixed atuomatic pointer creation for appendix chapters
+	* fixed handling of menu entries with description going into the
+	  next line, use numbered section names, if $T2H_NUMBER_SECTIONS
+	* texi2html.init: $T2H_TOP_HEADING for explicitely specifying
+	  heading of top node
+	* fixed handling of headings (no new page on -split section)
+	* fixed bug in index (generation of section names)
+	* stoc in _ovr.html within BLOCKQUOTES
+	* get rid of bulletts in ToC, if $T2H_NUMBER_SECTIONS
+
+2000-04-06  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* fixed bug in creation of index entries (eval of section names) 
+	* fixed table within itemize and parapgraphs
+	* surpress <P></P> when within <pre>
+	* allow @include within top node
+
+2000-04-03  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.init: By default, T2H_TOP_FILE is set to '' 
+	* texi2html.pl: $docu_top=$T2H_TOP_FILE || $docu_name. $docu_ext;
+
+2000-03-31  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: $complex_format_map for complex enclosing
+	constructs where which: 
+	* texi2html.init:$T2H_EXAMPLE_INDENT_CELL,
+	$T2H_SMALL_EXAMPLE_INDENT_CELL, $T2H_SMALL_FONT_SIZE for
+	customizing indent/font size of block-enclosing texinfo command
+	(@example, @format, @display, etc).
+	* Release version 1.61.
+
+2000-03-29  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* Cleaned up texi2html.pl and added loading of init file (when
+	texi2html.pl is run) such that it can directly be used as script
+	(otherwise, debugging is much harder).
+
+	* fixed getpwuid 
+
+	* Added T2H_print_chapter_header, T2H_print_chapter_footer for
+	more fine-grained control of T2H_SPLIT eq 'chapter', added option
+	-section_navigation, $T2H_SECTION_NAVIGATION to suppress output of
+	navigation panels per section
+
+	* Changed naming and and calling convention of customizable subs:
+	They all have prefix T2H_, are called with &$T2H_, are assigned by 
+	$T2H_<name> = \&T2H_DEFAULT_<name>.
+
+	* texi2html.init: Incorporated changed of Peter Moulder:
+	
+2000-03-27  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* debian/*: deleted
+	* texi2html.pl: Incorporated changes of Peter Moulder
+	* texi2html.pl: Automatic node pointer creation added
+	* texi2html.pl: @enddots, @exclamdown, etc added
+
+2000-03-26  Peter Moulder  <reiter@netspace.net.au>
+
+	* texi2html.init: Address a couple of weblint/tidy warnings.
+
+	* texi2html.init:
+	* texi2html.pl: The init file is inserted into the executable at
+	build time (see Makefile.am).
+
+	* texi2html.pl: Source each of @sysconfdir@/texi2htmlrc and
+	$HOME/.texi2htmlrc if it exists, after processing texi2html.init
+	but before anything on the command-line.
+	
+	Allow -split_chapter, -split_node, -monolithic options, which is
+	what previous versions of texi2html used.
+	
+	Support `@command{...}'.
+	
+	Add --help, --version options.
+	
+	-sidx isn't used, so comment out.
+
+	* configure.in:
+	* Makefile.am:
+	* autogen.sh: New files.
+
+	* configure.in: Change version number from 1.60Beta to 1.59.2.
+
+	* debian/*: New files.
+
+	* texi2html.1.in:
+	* texi2html.pl: Extract the man page into a separate file.  At the
+	moment, the man page is even installed separately (with
+	texi2html.pl having `.so @MANPAGE_PATH@' in place of the
+	manpage).  Conceivably we could add a configure option to
+	construct everything as one file like we used to; just replace
+	that text with `@EMBEDDED_MANPAGE@', which would be replaced with
+	either the existing `.so @MANPAGE_PATH@' or with texi2html.1
+	contents the way texi2html.init is done.
+	
+2000-03-14  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
+
+	* texi2html.pl: center @image by default, can be overwritten by
+	T2H_CENTER_IMAGE (sunshine@sunshineco.com)

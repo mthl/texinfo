@@ -1,0 +1,73 @@
+This file records noteworthy changes.
+
+1.64 (July 3 2000)
+* Incorporated first  version of Texi2html Texinfo manual, authored by
+  Karl Heinz Marbaise <khmarbaise@gmx.de>
+* New handling of command line options:
+  - can be abbreviated to shortest unique prefix
+  -help now works and is up-to-date
+
+1.63 (June 23 2000)
+* New customization variable: 
+   $T2H_HREF_DIR_INSTEAD_FILE: 
+       if set (e.g., to index.html) replace hrefs to this file 
+        (i.e., to index.html) by ./
+* New command-line option:
+  -toc_file FILE 
+       for those who want the TOC to be in FILE
+* bug fixes related to macro invocation 
+ 
+1.62 (12 April 2000)
+* New customization variables: 
+   $T2H_SPLIT_INDEX [default: = 100]
+     index pages are split at next letter, if more than that many entries
+   $T2H_NODE_NAME_IN_MENU [default = 0]
+      for enforcing node names in meny entries
+   $T2H_AVOID_MENU_REDUNDANCY [default = 1]
+      to avoid display of duplicate meny entry information
+   $T2H_INDEX_CHAPTER [default = '']
+      if set, use chapter of this name for 'Index' Button in
+      navigation bars, else use first chapter whose name matches
+      "index" (case insensitive).
+   $T2H_TOP_HEADING [ default = '']
+      if non-empty, and no heading is in Top node, then use this as heading
+      for top node/section; otherwise, use @settitle, @shorttitle.
+* index generation: observes typesetting in fixed-width font, @ftable, 
+  @vtable implemented
+* Peter Moulder & Teun Burgers: Misc documentation and distribution
+  changes
+* numerous small bugs fixed (handling of menu entries, paragraphs in
+  lists/tables, etc).
+
+
+1.61 (31 March 2000)
+* By default, $T2H_TOP_FILE is not set, and so $docu_name.html is used.
+* Added T2H_print_chapter_header, T2H_print_chapter_footer for more
+  fine-grained control of T2H_SPLIT eq 'chapter', added option
+  -section_navigation, $T2H_SECTION_NAVIGATION to supress output of
+  navigation panels per section
+* naming scheme and calling convention of customizable subs changed:
+  prefix T2H_, call &$T2H_, assignment $T2H_<name> = \&T2H_DEFAULT_<name>
+* mailinglist created: texi2html@mathematik.uni-kl.de
+* conversion to standard gnu package with Makefile.am, README,
+  AUTHORS, etc. (Peter Moulder  <reiter@netspace.net.au>) 
+* Initialization as suggested by Peter Moulder:
+   1. /usr/local/etc/texi2htmlrc (or whatever given by --sysconfdir to
+     configure)
+   2. $HOME/.texi2htmlrc
+   3. command-line options, including -init_file
+  where later options override previous ones.
+* incoporated patches from Peter Moulder (backward-compatible
+  command-line options, separate man-page, etc).
+* Automatic node pointer creation added
+* @enddots, @exclamdown, @pounds, and relatives added.
+
+Major Changes from 1.58 to 1.60 
+* primitve foreign language support
+* support of all "Umlaute"
+* anchors, macros
+* latex2html incooperation
+* customizable page layout (texi2html.init)
+* index as table with corresponding sections
+
+

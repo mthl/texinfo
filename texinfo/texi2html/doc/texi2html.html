@@ -1,0 +1,2796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<!-- Created on November, 10  2000 by texi2html 1.65 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Texinfo to HTML: </TITLE>
+
+<META NAME="description" CONTENT="Texinfo to HTML: ">
+<META NAME="keywords" CONTENT="Texinfo to HTML: ">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.65">
+
+</HEAD>
+
+<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC_Top"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1>Texinfo to HTML</H1>This Manual (Edition 0.21, last updated at
+14. August 2000) describes the <CODE>texi2html</CODE> Perl
+script which converters
+<A HREF="http://www.texinfo.org">Texinfo</A>
+into <FONT SIZE="-1">HTML</FONT>.
+</P><P>
+
+Please send bug reports about this manual to Karl Heinz
+Marbaise <A HREF="mailto:khmarbaise@gmx.de">khmarbaise@gmx.de</A>. Please state exact
+version/edition of the manual (can be found at start of
+Texinfo source file; use the entry Id under Revisions).
+</P><P>
+
+Please note:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>This manual is currently under
+construction and of course incomplete ;-)
+</pre></td></tr></table></P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC1">1. Overview about <CODE>texi2html</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC4">2. Installation of <CODE>texi2html</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Installation process.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC5">3. Customizing files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Customizing.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC6">4. Customizing what gets expanded</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC7">5. Customizing page layout</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC17">6. Customizing HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Initialization files.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC28">7.5 Initialization file options</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC39">8. Command Line Options</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC67">A. Function Reference</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Reference Manual of functions.</TD></TR>
+</TABLE>
+
+<br>
+///&nbsp;The&nbsp;Detailed&nbsp;Node&nbsp;Listing&nbsp;///
+<br>
+
+<br>
+---&nbsp;Overview&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC3">1.2 Why `<TT>texi2html</TT>' and not `<TT>makeinfo</TT>'?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE>
+
+<br>
+---&nbsp;Installation&nbsp;process&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC4">2. Installation of <CODE>texi2html</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Installation process.</TD></TR>
+</TABLE>
+
+<br>
+---&nbsp;Initialization&nbsp;file&nbsp;options&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC29">7.5.1 Number sections.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Number sectioning.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC30">7.5.2 Avoid menu redundancy</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC31">7.5.3 Center Image</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC32">7.5.4 Example Indent Cell</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC33">7.5.5 Small Example Indent</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Sample Indent Cell.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC34">7.5.6 Small Font Size</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC35">7.5.7 Top Heading</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC36">7.5.8 Index Chapter</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC37">7.5.9 Split Index</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC38">7.5.10 HREF Dir Instead File.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">HREF Dir Instead file.</TD></TR>
+</TABLE>
+
+<br>
+---&nbsp;Command&nbsp;Line&nbsp;Options&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC41">8.2 DocType</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">DocType (HTML)</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC42">8.3 Check</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Checking files.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC43">8.4 Expand</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Expanding info, tex areas etc.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC47">8.8 Include Direcotry</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Include directories.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC49">8.10 Table Of content File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Table of content File.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC53">8.14 Split</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Splitting.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Navigation.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC55">8.16 Subdirectory</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC57">8.18 Prefix</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Output.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Short Ref.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Verbose.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Language.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">LaTeX2HTML.</TD></TR>
+</TABLE>
+
+<br>
+---&nbsp;LaTeX2HTML&nbsp;for&nbsp;<CODE>@math</CODE>&nbsp;and&nbsp;<CODE>@tex</CODE>&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Where to find LaTeX2HTML.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE>
+
+<br>
+---&nbsp;Indices&nbsp;---
+<br>
+
+<br>
+<TABLE BORDER=0 CELLSPACING=0>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC70">B. Indices</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Command Line Option Index.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC72">B.2 Variable Index</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC73">B.3 Concept Index</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<HR SIZE=1>
+<A NAME="SEC1"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC2"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC2"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<A NAME="Overview"></A>
+<H1> 1. Overview about <CODE>texi2html</CODE> </H1>
+<!--docid::SEC1::-->
+<A HREF="http://www.texinfo.org">Texinfo</A> is the official
+documentation format of the <A HREF="http://www.gnu.org">GNU</A>
+project. It uses a single source file to produce both
+online information and printed output.
+<P>
+
+It is often proposed to have a way to produce
+<FONT SIZE="-1">HTML</FONT> from Texinfo sources, like the GNU-Info
+format. It is much simpler to create one converter instead
+of writing all documentation new in <FONT SIZE="-1">HTML</FONT>, cause
+there is so much documentation in Texinfo all over
+the world.
+</P><P>
+
+A few time ago <CODE>makeinfo</CODE> wasn't able to produce
+<FONT SIZE="-1">HTML</FONT> output format, but there are needth to have
+<FONT SIZE="-1">HTML</FONT>. This was the borning hour for
+<CODE>texi2html</CODE>. The basic purpose of `<TT>texi2html</TT>'
+is to convert Texinfo documents into HTML.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC2">1.1 Ways to get HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Ways to get HTML files.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC3">1.2 Why `<TT>texi2html</TT>' and not `<TT>makeinfo</TT>'?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Why texi2html and not makeinfo?.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<A NAME="HowToGetHTML"></A>
+<HR SIZE="6">
+<A NAME="SEC2"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC1"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC3"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC1"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC1"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC2"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 1.1 Ways to get HTML </H2>
+<!--docid::SEC2::-->
+You would like to <FONT SIZE="-1">HTML</FONT> files out of your Texinfo
+files? There exist two ways which you can go.
+This first is to use <CODE>makeinfo</CODE> itself to produce
+<FONT SIZE="-1">HTML</FONT> output. The second is to use
+<CODE>texi2html</CODE>.
+<P>
+
+<A NAME="whytexi2html"></A>
+<HR SIZE="6">
+<A NAME="SEC3"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC2"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC4"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC1"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC1"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC2"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 1.2 Why `<TT>texi2html</TT>' and not `<TT>makeinfo</TT>'? </H2>
+<!--docid::SEC3::-->
+The basic idea of <CODE>makeinfo</CODE>'s <FONT SIZE="-1">HTML</FONT>
+output was to get an readable <FONT SIZE="-1">HTML</FONT> output.
+Nothing sophisticated nor good styling just readable.
+<P>
+
+The current development of texi2html is going into
+different direction.
+</P><P>
+
+The main purpose is to get better styling, better design
+etc. of the created <FONT SIZE="-1">HTML</FONT> pages. This way is
+supported using differnt command line options and of course
+possible changings of the initialization file to fit your
+own needs.
+</P><P>
+
+The main disadvantage of <FONT SIZE="-1">makeinfo</FONT>'s
+<FONT SIZE="-1">HTML</FONT> output is your getting only one big file.
+This is of course readable but not very usable. The problem
+of this is, while you like to have splitted chapters or
+nodes the Texinfo source has to be read at minimum twice
+times. This makes it impossible to implement this in
+<CODE>makeinfo</CODE>. This would result in complete new
+implementation of <CODE>makeinfo</CODE>'s source.
+</P><P>
+
+In contrast to the HTML produced by <CODE>makeinfo
+--html</CODE> (the <CODE>makeinfo</CODE> program is part of the
+Texinfo distribution), the HTML output of `<TT>texi2html</TT>'
+is highly configurable. Among other differences, with
+<CODE>texi2html</CODE> allows you to customize your entire
+page layout (like headers, footers, style sheets, etc),
+split documents at various levels, and use
+<CODE>latex2html</CODE> to convert <CODE>@tex</CODE> sections.
+</P><P>
+
+<CODE>texi2html</CODE> should reasonably convert all Texinfo
+4.0 constructs. If not, please send a bug report to
+<A HREF="mailto:texi2html@mathematik.uni-kl.de">texi2html@mathematik.uni-kl.de</A>.
+</P><P>
+
+<A NAME="Installation"></A>
+<HR SIZE="6">
+<A NAME="SEC4"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC3"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC5"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC3"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC5"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 2. Installation of <CODE>texi2html</CODE> </H1>
+<!--docid::SEC4::-->
+description of the installation process.
+What do you need?
+How?
+<P>
+
+<A NAME="Customizing"></A>
+<HR SIZE="6">
+<A NAME="SEC5"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC4"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC6"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC4"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC6"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 3. Customizing files </H1>
+<!--docid::SEC5::-->
+Result based on using `<SAMP>-frames</SAMP>'
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>texi2html -V -frames texi2html.texi
+</pre></td></tr></table>Explanation of the output differences against default,
+whatever this is ;-)
+</P><P>
+
+<A NAME="CustomizingExpand"></A>
+<HR SIZE="6">
+<A NAME="SEC6"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC5"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC5"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 4. Customizing what gets expanded </H1>
+<!--docid::SEC6::-->
+Test starting.
+<P>
+
+`<SAMP>-expand info</SAMP>'
+`<SAMP>-expand tex</SAMP>'
+Take a look at optionexpand.
+</P><P>
+
+<A NAME="CustomizingPage"></A>
+<HR SIZE="6">
+<A NAME="SEC7"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC6"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC8"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC6"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 5. Customizing page layout </H1>
+<!--docid::SEC7::-->
+This chapter is designed to help you to change the
+complete layout of the <FONT SIZE="-1">HTML</FONT> output if you like to
+do so.
+<P>
+
+a) General: Philosphy, and how it works<BR>
+aa) Navigation panels<BR>
+b) Top page<BR>
+c) Section pages<BR>
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC8">5.1 Tips how to create a new site design</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC9">5.2 Page Layout and the philosophy</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC11">5.3 Top Page</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC12">5.4 Section Pages</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC13">5.5 Misc pages</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<A NAME="TipsNewDesign"></A>
+<HR SIZE="6">
+<A NAME="SEC8"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC9"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.1 Tips how to create a new site design </H2>
+<!--docid::SEC8::-->
+<P>
+
+Here you can find information how you should work to pick
+up a new design with <CODE>texi2html</CODE>.
+</P><P>
+
+<A NAME="CustPagePhil"></A>
+<HR SIZE="6">
+<A NAME="SEC9"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC8"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC10"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.2 Page Layout and the philosophy </H2>
+<!--docid::SEC9::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC10">5.2.1 Navigation panels</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<A NAME="CustPagePhilNav"></A>
+<HR SIZE="6">
+<A NAME="SEC10"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC9"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC9"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.2.1 Navigation panels </H3>
+<!--docid::SEC10::-->
+<P>
+
+Head and foot Navigation panels.
+</P><P>
+
+<A NAME="CustPageTopPage"></A>
+<HR SIZE="6">
+<A NAME="SEC11"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC10"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC12"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.3 Top Page </H2>
+<!--docid::SEC11::-->
+<A NAME="CustPageSectionPages"></A>
+<HR SIZE="6">
+<A NAME="SEC12"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC11"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.4 Section Pages </H2>
+<!--docid::SEC12::-->
+<A NAME="CustPageMiscPage"></A>
+<HR SIZE="6">
+<A NAME="SEC13"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC12"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC14"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.5 Misc pages </H2>
+<!--docid::SEC13::-->
+Here you can find information about the creation of the
+<EM>ToC</EM> (<I>Table Of content</I>), About--Page
+etc. and specialy how to change them to get your own
+design.
+<P>
+
+<FONT SIZE="-1">ToC</FONT> <CODE>T2H_DEFAULT_print_toc_frame</CODE> in
+`<TT>texi2html.init</TT>'
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC14">5.5.1 Table Of Contents</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC15">5.5.2 Page header</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC16">5.5.3 Page footer</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="CustPagePageHeadToc"></A>
+<HR SIZE="6">
+<A NAME="SEC14"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC15"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.5.1 Table Of Contents </H3>
+<!--docid::SEC14::-->
+<P>
+
+The following code is the original code out of the
+initialization file (see section <A HREF="texi2html.html#SEC23">Initialization file</A>).
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>sub T2H_DEFAULT_print_toc_frame
+{
+  my $fh = shift;
+  &#38;$T2H_print_page_head($fh);
+  print $fh &#60;&#60;EOT;
+&#60;H2&#62;Content&#60;/H2&#62;
+EOT
+  print $fh map {s/HREF=/target=\"main\" HREF=/; $_;} @stoc_lines;
+  print $fh "&#60;/BODY&#62;&#60;/HTML&#62;\n";
+}
+</pre></td></tr></table></P><P>
+
+As you can see it is very simple Perl Code, which can
+be changed more or less simple to fit you requirements
+(see section <A HREF="texi2html.html#SEC15">T2H_DEFAULT_print_page_head</A>).
+</P><P>
+
+<A NAME="CustPagePageHead"></A>
+<HR SIZE="6">
+<A NAME="SEC15"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC14"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC16"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC16"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.5.2 Page header </H3>
+<!--docid::SEC15::-->
+Page Head <CODE>T2H_DEFAULT_print_page_head</CODE>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>sub T2H_DEFAULT_print_page_head
+{
+  my $fh = shift; 
+  my $longtitle = "$T2H_THISDOC{title}: $T2H_NAME{This}";
+  print $fh &#60;&#60;EOT;
+&#60;HTML&#62;
+$T2H_DOCTYPE
+&#60;!-- Created on $T2H_TODAY by $THISPROG --&#62;
+&#60;!-- 
+$T2H_AUTHORS 
+--&#62;
+&#60;HEAD&#62;
+&#60;TITLE&#62;$longtitle&#60;/TITLE&#62;
+
+&#60;META NAME="description" CONTENT="$longtitle"&#62;
+&#60;META NAME="keywords" CONTENT="$longtitle"&#62;
+&#60;META NAME="resource-type" CONTENT="document"&#62;
+&#60;META NAME="distribution" CONTENT="global"&#62;
+&#60;META NAME="Generator" CONTENT="$THISPROG"&#62;
+$T2H_EXTRA_HEAD
+&#60;/HEAD&#62;
+
+&#60;BODY $T2H_BODYTEXT&#62;
+$T2H_AFTER_BODY_OPEN
+EOT
+}
+</pre></td></tr></table></P><P>
+
+<A NAME="CustPagePageFoot"></A>
+<HR SIZE="6">
+<A NAME="SEC16"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC15"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC13"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.5.3 Page footer </H3>
+<!--docid::SEC16::-->
+<P>
+
+Page Foot <CODE>T2H_DEFAULT_print_page_foot</CODE>
+<A NAME="CustHTML"></A>
+<HR SIZE="6">
+<A NAME="SEC17"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC16"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC18"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC7"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 6. Customizing HTML </H1>
+<!--docid::SEC17::-->
+If you like to read the following section, it is assumed
+you are famillar with <FONT SIZE="-1">HTML</FONT>. If not, you shouldn't
+read this, cause you don't know what we are talking about.
+<P>
+
+Here you can find information how to change the
+<FONT SIZE="-1">HTML</FONT> parts of a document. These are the
+header, body etc.
+</P><P>
+
+These are the defaults which are
+part of the distribution as `<TT>texi2html.init</TT>'.
+</P><P>
+
+How to do changes of the customization...
+needed steps.
+</P><P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC18">6.1 Body</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Customizing BODY Text.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC22">6.2 Head</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Customizing Head.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<A NAME="CustHTMLBody"></A>
+<HR SIZE="6">
+<A NAME="SEC18"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC19"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.1 Body </H2>
+<!--docid::SEC18::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC19">6.1.1 Body Text</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC20">6.1.2 Body Text</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">PRE Body Text.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC21">6.1.3 After Body Text</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<A NAME="CustHTMLBodyText"></A>
+<HR SIZE="6">
+<A NAME="SEC19"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC18"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC20"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.1 Body Text </H3>
+<!--docid::SEC19::-->
+<P>
+
+<A NAME="IDX1"></A>
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>$T2H_BODYTEXT =
+    . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
+    . 'TEXT="#000000" LINK="#0000FF" '
+    . 'VLINK="#800080" ALINK="#FF0000"';
+</pre></td></tr></table></P><P>
+
+If you like to change the basic color combination, you can
+change the entry <VAR>T2H_BODYTEXT</VAR>.
+</P><P>
+
+<A NAME="CustHTMLPreBodyText"></A>
+<HR SIZE="6">
+<A NAME="SEC20"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC19"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC21"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC21"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.2 Body Text </H3>
+<!--docid::SEC20::-->
+<A NAME="CustHTMLAfterBody"></A>
+<HR SIZE="6">
+<A NAME="SEC21"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC20"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.3 After Body Text </H3>
+<!--docid::SEC21::-->
+<P>
+
+<A NAME="IDX2"></A>
+<A NAME="IDX3"></A>
+</P><P>
+
+<A NAME="IDX4"></A>
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre># text inserted after &#60;BODY ...&#62;
+$T2H_AFTER_BODY_OPEN = '';
+
+#text inserted before &#60;/BODY&#62;
+$T2H_PRE_BODY_CLOSE = '';
+
+# this is used in footer
+$T2H_ADDRESS = "by <I>$T2H_USER&#60;/I&#62; " if $T2H_USER;
+$T2H_ADDRESS .= "on <I>$T2H_TODAY&#60;/I&#62;";
+
+# this is added inside &#60;HEAD&#62;&#60;/HEAD&#62; after &#60;TITLE&#62; and some META NAME stuff
+# can be used for &#60;style&#62; &#60;script&#62;, &#60;meta&#62; tags
+$T2H_EXTRA_HEAD = '';
+</pre></td></tr></table></P><P>
+
+The default output into the <FONT SIZE="-1">HTML</FONT> file.
+See section <A HREF="texi2html.html#SEC41">8.2 DocType</A>.
+</P><P>
+
+The following code is produced by
+<CODE>T2H_DEFAULT_print_page_head</CODE>.
+</P><P>
+
+Detailed information can be found at
+<A HREF="texi2html.html#SEC15">5.5.2 Page header</A>.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>&#60;HTML&#62;
+$T2H_DOCTYPE
+&#60;!-- Created on $T2H_TODAY by $THISPROG --&#62;
+&#60;!-- 
+$T2H_AUTHORS
+--&#62;
+&#60;HEAD&#62;
+&#60;TITLE&#62;$longtitle&#60;/TITLE&#62;
+
+&#60;META NAME="description" CONTENT="$longtitle"&#62;
+&#60;META NAME="keywords" CONTENT="$longtitle"&#62;
+&#60;META NAME="resource-type" CONTENT="document"&#62;
+&#60;META NAME="distribution" CONTENT="global"&#62;
+&#60;META NAME="Generator" CONTENT="$THISPROG"&#62;
+$T2H_EXTRA_HEAD
+&#60;/HEAD&#62;
+
+&#60;BODY $T2H_BODYTEXT&#62;
+$T2H_AFTER_BODY_OPEN
+</pre></td></tr></table></P><P>
+
+<A NAME="CustHTMLHead"></A>
+<HR SIZE="6">
+<A NAME="SEC22"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC21"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.2 Head </H2>
+<!--docid::SEC22::-->
+<A NAME="InitFile"></A>
+<HR SIZE="6">
+<A NAME="SEC23"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC22"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC24"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 7. Initialization file </H1>
+<!--docid::SEC23::-->
+`<TT>texi2html.init</TT>'
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC24">7.1 The basics about init files</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">The basics about
+                         initialization files.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC25">7.2 Global initialization file</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC26">7.3 User initialization file</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC27">7.4 Loadable initialization file</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="InitFileBasics"></A>
+<HR SIZE="6">
+<A NAME="SEC24"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC25"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.1 The basics about init files </H2>
+<!--docid::SEC24::-->
+<P>
+
+Initialization options are read first from
+`<TT>/usr/local/etc/texi2htmlrc</TT>' (the exact location being
+changeable with the `<SAMP>--sysconfdir=dir</SAMP>' option to the
+<CODE>configure</CODE> script), then from
+`<TT>$HOME/.texi2htmlrc</TT>', then any command-line options
+including `<SAMP>-init_file</SAMP>' option; with later settings
+overriding earlier ones.
+</P><P>
+
+The default initialization options are defined in the
+`<TT>texi2html.init</TT>' file contained in the <B>Texi2html</B>
+distribution (which gets includes near the biginning of the
+<CODE>texi2html</CODE> script that gets installed).
+</P><P>
+
+To customize `<TT>texi2html</TT>' it is best if you copy the
+appropriate sections from the `<TT>texi2html.init</TT>'
+contents into an appropriate local initialization file,
+make the necessary changes there, and then have
+<CODE>texi2html</CODE> read this inialization file by one of
+the means described above.
+</P><P>
+
+For an example on what you can produces with
+<CODE>texi2html</CODE> have a look at the following sites:
+<A HREF="http://www.singular.uni-kl.de/Manual/html/">http://www.singular.uni-kl.de/Manual/html/</A>
+</P><P>
+
+<A NAME="InitFileGlobal"></A>
+<HR SIZE="6">
+<A NAME="SEC25"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC24"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC26"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC26"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.2 Global initialization file </H2>
+<!--docid::SEC25::-->
+<A NAME="InitFileUser"></A>
+<HR SIZE="6">
+<A NAME="SEC26"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC25"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC27"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC27"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.3 User initialization file </H2>
+<!--docid::SEC26::-->
+<A NAME="InitFileLoad"></A>
+<HR SIZE="6">
+<A NAME="SEC27"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC26"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.4 Loadable initialization file </H2>
+<!--docid::SEC27::-->
+`<SAMP>-init_file</SAMP>'
+<P>
+
+<A NAME="IFOs"></A>
+<HR SIZE="6">
+<A NAME="SEC28"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC27"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC29"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC23"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 7.5 Initialization file options </H2>
+<!--docid::SEC28::-->
+This section describes in detail all option which can only
+be used in initialization file (`<TT>texi2html.init</TT>'), but
+not on command line.
+This mean the only way to change those
+options is first to copy the original `<TT>texi2html.init</TT>'
+to e.g. `<TT>texi2html.init.myown</TT>' and do changes to fit
+your needs.
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC29">7.5.1 Number sections.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Number sectioning.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC30">7.5.2 Avoid menu redundancy</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC31">7.5.3 Center Image</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC32">7.5.4 Example Indent Cell</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC33">7.5.5 Small Example Indent</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Sample Indent Cell.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC34">7.5.6 Small Font Size</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC35">7.5.7 Top Heading</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC36">7.5.8 Index Chapter</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC37">7.5.9 Split Index</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC38">7.5.10 HREF Dir Instead File.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">HREF Dir Instead file.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="IFOnumber"></A>
+<HR SIZE="6">
+<A NAME="SEC29"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC30"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.1 Number sections. </H3>
+<!--docid::SEC29::-->
+if set, and <VAR>$T2H_NUMBER_SECTIONS</VAR> is set, then use node
+names in menu entries, instead of section names
+<P>
+
+<VAR>$T2H_NODE_NAME_IN_MENU</VAR> = 0;
+</P><P>
+
+<A NAME="IFOmenu"></A>
+<HR SIZE="6">
+<A NAME="SEC30"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC29"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC31"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.2 Avoid menu redundancy </H3>
+<!--docid::SEC30::-->
+if set and menu entry equals menu descr, then do not print
+menu descr. Likewise, if node name equals entry name, do
+not print entry name.
+<VAR>$T2H_AVOID_MENU_REDUNDANCY</VAR> = 1;
+<P>
+
+<A NAME="IFOCenterImage"></A>
+<HR SIZE="6">
+<A NAME="SEC31"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC30"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC32"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.3 Center Image </H3>
+<!--docid::SEC31::-->
+if set, center @image by default
+otherwise, do not center by default
+<VAR>$T2H_CENTER_IMAGE</VAR> = 1;
+<P>
+
+<A NAME="IFOExampleIndentCell"></A>
+<HR SIZE="6">
+<A NAME="SEC32"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC31"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC33"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.4 Example Indent Cell </H3>
+<!--docid::SEC32::-->
+used as identation for block enclosing command
+<CODE>@example</CODE>, etc If not empty, must be enclosed in
+<CODE>&#60;td&#62;&#60;/td&#62;</CODE>
+<VAR>$T2H_EXAMPLE_INDENT_CELL</VAR> = '&#60;td&#62;&#38;nbsp;&#60;/td&#62;';
+<P>
+
+<A NAME="IFOSampleIndentCell"></A>
+<HR SIZE="6">
+<A NAME="SEC33"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC32"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC34"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.5 Small Example Indent </H3>
+<!--docid::SEC33::-->
+same as above, only for <CODE>@small</CODE>
+$T2H_SMALL_EXAMPLE_INDENT_CELL = "&#60;td&#62;&#38;nbsp;&#60;/td&#62;";
+<P>
+
+<A NAME="IFOSmallFontSize"></A>
+<HR SIZE="6">
+<A NAME="SEC34"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC33"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC35"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.6 Small Font Size </H3>
+<!--docid::SEC34::-->
+# font size for @small
+$T2H_SMALL_FONT_SIZE = "-1";
+<P>
+
+<A NAME="IFOTopHeading"></A>
+<HR SIZE="6">
+<A NAME="SEC35"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC34"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC36"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.7 Top Heading </H3>
+<!--docid::SEC35::-->
+if non-empty, and no <CODE>@..heading</CODE> appeared in Top
+node, then use this as header for top node/section,
+otherwise use value of  <CODE>@settitle</CODE> or
+<CODE>@shorttitle</CODE> (in that order)
+$T2H_TOP_HEADING = "";
+<P>
+
+<A NAME="IFOIndexChapter"></A>
+<HR SIZE="6">
+<A NAME="SEC36"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC35"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC37"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.8 Index Chapter </H3>
+<!--docid::SEC36::-->
+if set, use this chapter for <STRONG>Index</STRONG> button, else
+use first chapter whose name matches <STRONG>index</STRONG> (case insensitive)
+$T2H_INDEX_CHAPTER = "";
+<P>
+
+<A NAME="IFOSplitIndex"></A>
+<HR SIZE="6">
+<A NAME="SEC37"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC36"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC38"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.9 Split Index </H3>
+<!--docid::SEC37::-->
+if set and <VAR>$T2H_SPLIT</VAR> is set, then split index pages
+at the next letter after they have more than that many
+entries
+<P>
+
+$T2H_SPLIT_INDEX = 100;
+</P><P>
+
+<A NAME="IFOhrefDirInsteadFile"></A>
+<HR SIZE="6">
+<A NAME="SEC38"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC37"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 7.5.10 HREF Dir Instead File. </H3>
+<!--docid::SEC38::-->
+if set (e.g., to `<TT>index.html</TT>') replace <STRONG>HREF</STRONG>'s
+to this file  (i.e., to `<TT>index.html</TT>') by `<TT>./</TT>'
+<P>
+
+$T2H_HREF_DIR_INSTEAD_FILE = "";
+<A NAME="Options"></A>
+<HR SIZE="6">
+<A NAME="SEC39"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC38"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC40"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 8. Command Line Options </H1>
+<!--docid::SEC39::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC41">8.2 DocType</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">DocType (HTML)</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC42">8.3 Check</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Checking files.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC43">8.4 Expand</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Expanding info, tex areas etc.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC47">8.8 Include Direcotry</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Include directories.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC49">8.10 Table Of content File</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Table of content File.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC53">8.14 Split</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Splitting.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Navigation.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC55">8.16 Subdirectory</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC57">8.18 Prefix</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Output.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Short Ref.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Verbose.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Language.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">LaTeX2HTML.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="OptionDebug"></A>
+<HR SIZE="6">
+<A NAME="SEC40"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC41"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.1 Debugging </H2>
+<!--docid::SEC40::-->
+<P>
+
+`<SAMP>-debug</SAMP>'
+</P><P>
+
+debugging: 0 -- no debugging; other values; see beginning
+of texi2html
+</P><P>
+
+<VAR>$DEBUG_TOC</VAR>   =  1;
+<VAR>$DEBUG_INDEX</VAR> =  2;
+<VAR>$DEBUG_BIB</VAR>   =  4;
+<VAR>$DEBUG_GLOSS</VAR> =  8;
+<VAR>$DEBUG_DEF</VAR>   = 16;
+<VAR>$DEBUG_HTML</VAR>  = 32;
+<VAR>$DEBUG_USER</VAR>  = 64;
+<VAR>$DEBUG_L2H</VAR>   = 128;
+</P><P>
+
+<A NAME="OptionDocType"></A>
+<HR SIZE="6">
+<A NAME="SEC41"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC40"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC42"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.2 DocType </H2>
+<!--docid::SEC41::-->
+`<SAMP>-doctype</SAMP>'
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>&#60;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&#62;
+</pre></td></tr></table></P><P>
+
+<A NAME="OptionCheck"></A>
+<HR SIZE="6">
+<A NAME="SEC42"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC41"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC43"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.3 Check </H2>
+<!--docid::SEC42::-->
+`<SAMP>-check</SAMP>'
+if set, only check files and give the list of all things
+that look like untranslated Texinfo commands
+<P>
+
+<A NAME="OptionExpand"></A>
+<HR SIZE="6">
+<A NAME="SEC43"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC42"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC44"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.4 Expand </H2>
+<!--docid::SEC43::-->
+`<SAMP>-expand</SAMP>'
+if set to <STRONG>tex</STRONG> (or, <STRONG>info</STRONG>) expand
+<CODE>@iftex</CODE> and <CODE>@tex</CODE> (or, <CODE>@ifinfo</CODE>)
+sections else, neither expand <CODE>@iftex</CODE>, <CODE>@tex</CODE>,
+nor <CODE>@ifinfo</CODE> sections
+<P>
+
+<A NAME="OptionGlossary"></A>
+<HR SIZE="6">
+<A NAME="SEC44"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC43"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC45"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.5 Glossary </H2>
+<!--docid::SEC44::-->
+`<SAMP>-glossary</SAMP>'
+if set, uses section named <STRONG>Footnotes</STRONG> for glossary
+<P>
+
+<A NAME="OptionInvisible"></A>
+<HR SIZE="6">
+<A NAME="SEC45"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC44"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC46"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.6 Invisible </H2>
+<!--docid::SEC45::-->
+`<SAMP>-invisible</SAMP>'
+<VAR>$T2H_INVISIBLE_MARK</VAR> is the text used to create
+invisible destination anchors for index links (you can for
+instance use the `<TT>invisible.xbm</TT>' file shipped with
+this program). This is a workaround for a known bug of many
+<FONT SIZE="-1">WWW</FONT> browsers, including Netscape. For me, it
+works fine without it -- on the contrary: if there, it
+inserts space between headers and start of text (obachman
+3/99)
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>$T2H_INVISIBLE_MARK = "";
+# $T2H_INVISIBLE_MARK = '&#38;#160;';
+</pre></td></tr></table></P><P>
+
+<A NAME="OptionIso"></A>
+<HR SIZE="6">
+<A NAME="SEC46"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC45"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC47"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.7 Iso </H2>
+<!--docid::SEC46::-->
+`<SAMP>-iso</SAMP>'
+<P>
+
+if set, ISO8859 characters are used for special symbols
+(like Copyright <CODE>&copy;</CODE>, etc)
+</P><P>
+
+$T2H_USE_ISO = 0;
+</P><P>
+
+<A NAME="OptionInclude"></A>
+<HR SIZE="6">
+<A NAME="SEC47"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC46"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC48"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.8 Include Direcotry </H2>
+<!--docid::SEC47::-->
+`<SAMP>-I</SAMP>'
+<P>
+
+list directories where <CODE>@include</CODE> files are searched for
+(besides the directory of the doc file) additional
+`<SAMP>-I</SAMP>' args are add to this list.
+</P><P>
+
+@T2H_INCLUDE_DIRS = (".");
+</P><P>
+
+<A NAME="OptionTopFile"></A>
+<HR SIZE="6">
+<A NAME="SEC48"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC47"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC49"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.9 Top File </H2>
+<!--docid::SEC48::-->
+`<SAMP>-top_file</SAMP>'
+uses file of this name for top-level file
+extension is manipulated appropriately, if necessary.
+If empty, `<TT>&#60;basename of document&#62;.html</TT>' is used
+Typically, you would set this to `<TT>index.html</TT>'.
+<P>
+
+$T2H_TOP_FILE = "";
+</P><P>
+
+<A NAME="OptionTocFile"></A>
+<HR SIZE="6">
+<A NAME="SEC49"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC48"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC50"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.10 Table Of content File </H2>
+<!--docid::SEC49::-->
+`<SAMP>-toc_file</SAMP>'
+uses file of this name for table of contents file extension
+is manipulated appropriately, if necessary. If empty,
+`<TT>&#60;basename of document&#62;_toc.html</TT>' is used
+<P>
+
+$T2H_TOC_FILE = "";
+</P><P>
+
+<A NAME="OptionFrames"></A>
+<HR SIZE="6">
+<A NAME="SEC50"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC49"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC51"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.11 Frames </H2>
+<!--docid::SEC50::-->
+`<SAMP>-frames</SAMP>'
+if set, output two additional files which use HTML 4.0
+<B>frames</B>.
+<P>
+
+$T2H_FRAMES = 0;
+</P><P>
+
+<A NAME="OptionMenu"></A>
+<HR SIZE="6">
+<A NAME="SEC51"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC50"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC52"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.12 Menu's </H2>
+<!--docid::SEC51::-->
+`<SAMP>-menu</SAMP>' or `<SAMP>-nomenu</SAMP>' if set, show the Texinfo
+menus
+<P>
+
+$T2H_SHOW_MENU = 1;
+</P><P>
+
+<A NAME="OptionNumber"></A>
+<HR SIZE="6">
+<A NAME="SEC52"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC51"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC53"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.13 Number sections </H2>
+<!--docid::SEC52::-->
+`<SAMP>-number</SAMP>' `<SAMP>-nonumber</SAMP>'
+if set, number sections and show section names and numbers
+in references and menus
+<P>
+
+<A NAME="OptionSplit"></A>
+<HR SIZE="6">
+<A NAME="SEC53"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC52"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC54"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.14 Split </H2>
+<!--docid::SEC53::-->
+`<SAMP>-split section|chapter|none</SAMP>'
+if set to <STRONG>section</STRONG> (resp. <STRONG>chapter</STRONG>) create one
+<FONT SIZE="-1">HTML</FONT> file per (sub)section (resp. chapter) and
+separate pages for Top, ToC, Overview, Index, Glossary,
+About. otherwise, create monolithic <FONT SIZE="-1">HTML</FONT> file which
+contains whole document
+<P>
+
+#$T2H_SPLIT = 'section';
+$T2H_SPLIT = undef;
+</P><P>
+
+<A NAME="OptionSectionNavigation"></A>
+<HR SIZE="6">
+<A NAME="SEC54"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC53"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC55"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.15 Section navigation </H2>
+<!--docid::SEC54::-->
+`<SAMP>-section_navigation</SAMP>'|
+`<SAMP>-no-section_navigation</SAMP>'
+<P>
+
+if set, then navigation panels are printed at the beginning
+of each section and, possibly at the end (depending on
+whether or not there were more than 
+<VAR>$T2H_WORDS_IN_PAGE</VAR> words on page). This is most useful
+if you do not want to have section navigation on
+`<SAMP>-split chapter</SAMP>'
+</P><P>
+
+<A NAME="OptionSubDir"></A>
+<HR SIZE="6">
+<A NAME="SEC55"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC54"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC56"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.16 Subdirectory </H2>
+<!--docid::SEC55::-->
+`<SAMP>-subdir</SAMP>'
+if set put result files in this directory if not set result
+files are put into current directory
+<P>
+
+<VAR>$T2H_SUBDIR</VAR> = undef;
+</P><P>
+
+<A NAME="OptionShortExt"></A>
+<HR SIZE="6">
+<A NAME="SEC56"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC55"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC57"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.17 Short extension </H2>
+<!--docid::SEC56::-->
+`<SAMP>-short_extn</SAMP>'
+If this is set all <FONT SIZE="-1">HTML</FONT> file will have extension
+`<TT>.htm</TT>' instead of `<TT>.html</TT>'. This is helpful when
+shipping the document to PC systems.
+<VAR>$T2H_SHORTEXTN</VAR> = 0;
+<P>
+
+<A NAME="OptionPrefix"></A>
+<HR SIZE="6">
+<A NAME="SEC57"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC56"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC58"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.18 Prefix </H2>
+<!--docid::SEC57::-->
+`<SAMP>-prefix</SAMP>'
+Set the output file prefix, prepended to all `<TT>.html</TT>',
+`<TT>.gif</TT>' and `<TT>.pl</TT>' files.
+By default, this is the basename of the document
+<P>
+
+<VAR>$T2H_PREFIX</VAR> = "";
+</P><P>
+
+<A NAME="OptionOutput"></A>
+<HR SIZE="6">
+<A NAME="SEC58"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC57"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC59"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.19 Output filename </H2>
+<!--docid::SEC58::-->
+<P>
+
+`<SAMP>-o filename</SAMP>'|`<SAMP>-out_file</SAMP>'
+If set, generate monolithic document output <FONT SIZE="-1">HTML</FONT>
+into `<TT>filename</TT>'.
+</P><P>
+
+<A NAME="OptionShortRef"></A>
+<HR SIZE="6">
+<A NAME="SEC59"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC58"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC60"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.20 Short Cross References </H2>
+<!--docid::SEC59::-->
+`<SAMP>-short_ref</SAMP>'
+if set cross-references are given without section numbers
+<P>
+
+<A NAME="OptionIndexSummary"></A>
+<HR SIZE="6">
+<A NAME="SEC60"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC59"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC61"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.21 Index Summary </H2>
+<!--docid::SEC60::-->
+`<SAMP>-idx_sum</SAMP>'
+If value is set, then for each <CODE>@prinindex $what</CODE>
+`<TT>$docu_name_$what.idx</TT>' is created which contains lines of the
+form <STRONG>$key\t$ref</STRONG> sorted alphabetically (case
+matters).
+<P>
+
+<A NAME="OptionVerbose"></A>
+<HR SIZE="6">
+<A NAME="SEC61"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC60"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC62"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.22 Verbose output </H2>
+<!--docid::SEC61::-->
+`<SAMP>-verbose</SAMP>'
+if set, chatter about what we are doing.
+<P>
+
+<A NAME="OptionLanguage"></A>
+<HR SIZE="6">
+<A NAME="SEC62"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC61"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC63"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.23 Language Support </H2>
+<!--docid::SEC62::-->
+`<SAMP>-lang</SAMP>'
+For page titles use
+<CODE>$T2H_WORDS-&#62;{$T2H_LANG}-&#62;{...}</CODE> as title. To add
+a new languages, supply list of titles (see
+<VAR>$T2H_WORDS</VAR>). and use ISO 639 language codes (see e.g.
+perl module `<TT>Locale-Codes-1.02.tar.gz</TT>' for
+definitions)
+<P>
+
+If you don't give a `<SAMP>-lang</SAMP>' then we got it from the
+Texinfo source fille (@documentlanguage
+@xref{documentlanguage,,,Texinfo}). If there is no
+<CODE>@documentlanguage</CODE> we use the default <CODE>en</CODE> for
+the language.
+<A NAME="OptionL2H"></A>
+<HR SIZE="6">
+<A NAME="SEC63"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC62"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC64"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE> </H2>
+<!--docid::SEC63::-->
+`<SAMP>-l2h</SAMP>'
+if set, uses <CODE>latex2html</CODE> for generation of math
+content.
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Where to find LaTeX2HTML.</TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="OptionL2HL2H"></A>
+<HR SIZE="6">
+<A NAME="SEC64"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC63"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC65"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC63"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 8.24.1 Where to find <CODE>latex2html</CODE> </H3>
+<!--docid::SEC64::-->
+`<SAMP>-l2h_l2h</SAMP>'
+name/location of <CODE>latex2html</CODE> progam.
+<P>
+
+<A NAME="OptionL2HSkip"></A>
+<HR SIZE="6">
+<A NAME="SEC65"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC64"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC66"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC63"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 8.24.2 Skip calling LaTeX2HTML </H3>
+<!--docid::SEC65::-->
+`<SAMP>-l2h_skip</SAMP>'
+if set, skips actual call to <CODE>atex2html</CODE> tries to
+reuse previously generated content, instead.
+<P>
+
+<A NAME="OptionL2Htmp"></A>
+<HR SIZE="6">
+<A NAME="SEC66"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC65"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC63"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 8.24.3 Temporary files for LaTeX2HTML </H3>
+<!--docid::SEC66::-->
+`<SAMP>-l2h_tmp</SAMP>'
+if set, l2h uses this directory for temporarary files. The
+path leading to this directory may not contain a dot (i.e.,
+a "."), otherwise, l2h will fail
+<A NAME="Reference"></A>
+<HR SIZE="6">
+<A NAME="SEC67"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC66"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC68"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC39"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> A. Function Reference </H1>
+<!--docid::SEC67::-->
+<P>
+
+<BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC68">A.1 Print ToC Frame</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="texi2html.html#SEC69">A.2 Print Page Head</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP">Print page head.</TD></TR>
+</TABLE></BLOCKQUOTE>
+<P>
+
+<A NAME="Refptocframe"></A>
+<HR SIZE="6">
+<A NAME="SEC68"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC69"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> A.1 Print ToC Frame </H2>
+<!--docid::SEC68::-->
+<P>
+
+<A NAME="IDX5"></A>
+<DL>
+<DT><U>Function:</U> <B>T2H_DEFAULT_print_toc_frame</B> <I>(FileName)</I>
+<DD>Description of the subroutine.
+What does it do? Which parameters it needs etc.
+</DL>
+</P><P>
+
+<A NAME="Refpphead"></A>
+<HR SIZE="6">
+<A NAME="SEC69"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC68"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> A.2 Print Page Head </H2>
+<!--docid::SEC69::-->
+<DL>
+<DT><U>Function:</U> <B>T2H_DEFAULT_print_page_head</B> <I>(FileName)</I>
+<DD>Description of the subroutine.
+What does it do? Which parameters it needs etc.
+</DL>
+<A NAME="Indexop"></A>
+<HR SIZE="6">
+<A NAME="SEC70"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC69"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC71"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC67"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> B. Indices </H1>
+<!--docid::SEC70::-->
+<HR SIZE="6">
+<A NAME="SEC71"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC72"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.1 Command Line Option Index </H2>
+<!--docid::SEC71::-->
+<table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#op_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_G" style="text-decoration:none"><b>G</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_N" style="text-decoration:none"><b>N</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+</td></tr></table><br><P></P>
+<TABLE border=0>
+<TR><TD></TD><TH ALIGN=LEFT>Index Entry</TH><TH ALIGN=LEFT> Section</TH></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_C"></A>C</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC42"><CODE>check</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC42">8.3 Check</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_D"></A>D</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>debug</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC41"><CODE>doctype</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC41">8.2 DocType</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_E"></A>E</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC43"><CODE>expand</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC43">8.4 Expand</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_F"></A>F</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC5"><CODE>frames</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC5">3. Customizing files</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC50"><CODE>frames</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_G"></A>G</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC44"><CODE>glossary</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_I"></A>I</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC47"><CODE>I</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC47">8.8 Include Direcotry</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC60"><CODE>idx_sum</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23"><CODE>init_file</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC27"><CODE>init_file</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC27">7.4 Loadable initialization file</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC45"><CODE>invisible</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC46"><CODE>iso</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_L"></A>L</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63"><CODE>l2h</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC64"><CODE>l2h_l2h</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC65"><CODE>l2h_skip</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC66"><CODE>l2h_tmp</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC62"><CODE>lang</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_M"></A>M</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC51"><CODE>menu</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_N"></A>N</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC54"><CODE>no-section_navigation</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC51"><CODE>nomenu</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC52"><CODE>nonumber</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC52"><CODE>number</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_O"></A>O</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC58"><CODE>o</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC58"><CODE>out_file</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_P"></A>P</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC57"><CODE>prefix</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC57">8.18 Prefix</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_S"></A>S</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC54"><CODE>section_navigation</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56"><CODE>short_extn</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC59"><CODE>short_ref</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC53"><CODE>split</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC53">8.14 Split</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23"><CODE>sysconfdir</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_T"></A>T</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC49"><CODE>toc_file</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC49">8.10 Table Of content File</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC48"><CODE>top_file</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="op_V"></A>V</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC61"><CODE>verbose</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+</TABLE><P></P><table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#op_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_G" style="text-decoration:none"><b>G</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_N" style="text-decoration:none"><b>N</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#op_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+</td></tr></table><br><A NAME="Indexvr"></A>
+<HR SIZE="6">
+<A NAME="SEC72"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC71"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC73"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC70"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC73"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.2 Variable Index </H2>
+<!--docid::SEC72::-->
+<table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#vr_$" style="text-decoration:none"><b>$</b></A>
+ &nbsp; 
+<BR>
+<A HREF="texi2html.html#vr_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+</td></tr></table><br><P></P>
+<TABLE border=0>
+<TR><TD></TD><TH ALIGN=LEFT>Index Entry</TH><TH ALIGN=LEFT> Section</TH></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="vr_$"></A>$</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC62"><CODE>$T2H_LANG</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC62"><CODE>$T2H_WORDS</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="vr_D"></A>D</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_BIB</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_DEF</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_GLOSS</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_HTML</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_INDEX</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_L2H</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_TOC</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40"><CODE>DEBUG_USER</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="vr_H"></A>H</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC50"><CODE>HTML 4.0, frames</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC50"><CODE>HTML, frames</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="vr_I"></A>I</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC47"><CODE>Include directories</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC47">8.8 Include Direcotry</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="vr_T"></A>T</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#IDX2"><CODE>T2H_AFTER_BODY_OPEN</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC21">6.1.3 After Body Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC30"><CODE>T2H_AVOID_MENU_REDUNDANCY</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC30">7.5.2 Avoid menu redundancy</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#IDX1"><CODE>T2H_BODYTEXT</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC19">6.1.1 Body Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC31"><CODE>T2H_CENTER_IMAGE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC31">7.5.3 Center Image</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC42"><CODE>T2H_CHECK</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC42">8.3 Check</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC41"><CODE>T2H_DOCTYPE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC41">8.2 DocType</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC32"><CODE>T2H_EXAMPLE_INDENT_CELL</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC32">7.5.4 Example Indent Cell</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC43"><CODE>T2H_EXPAND</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC43">8.4 Expand</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#IDX4"><CODE>T2H_EXTRA_HEAD</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC21">6.1.3 After Body Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC50"><CODE>T2H_FRAMES</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC50">8.11 Frames</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC38"><CODE>T2H_HREF_DIR_INSTEAD_FILE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC38">7.5.10 HREF Dir Instead File.</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC60"><CODE>T2H_IDX_SUMMARY</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC47"><CODE>T2H_INCLUDE_DIRS</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC47">8.8 Include Direcotry</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC36"><CODE>T2H_INDEX_CHAPTER</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC36">7.5.8 Index Chapter</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC45"><CODE>T2H_INVISIBLE_MARK</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63"><CODE>T2H_L2H</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC64"><CODE>T2H_L2H_L2H</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC65"><CODE>T2H_L2H_SKIP</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC66"><CODE>T2H_L2H_TMP</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC29"><CODE>T2H_NODE_NAME_IN_MENU</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC29">7.5.1 Number sections.</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC29"><CODE>T2H_NUMBER_SECTIONS</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC29">7.5.1 Number sections.</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC52"><CODE>T2H_NUMBER_SECTIONS</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC58"><CODE>T2H_OUT</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#IDX3"><CODE>T2H_PRE_BODY_CLOSE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC21">6.1.3 After Body Text</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC57"><CODE>T2H_PREFIX</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC57">8.18 Prefix</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC54"><CODE>T2H_SECTION_NAVIGATION</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC59"><CODE>T2H_SHORT_REF</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56"><CODE>T2H_SHORTEXTN</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC51"><CODE>T2H_SHOW_MENU</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC33"><CODE>T2H_SMALL_EXAMPLE_INDENT_CELL</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC33">7.5.5 Small Example Indent</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC34"><CODE>T2H_SMALL_FONT_SIZE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC34">7.5.6 Small Font Size</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC53"><CODE>T2H_SPLIT</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC53">8.14 Split</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC37"><CODE>T2H_SPLIT_INDEX</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC37">7.5.9 Split Index</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC55"><CODE>T2H_SUBDIR</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC55">8.16 Subdirectory</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC49"><CODE>T2H_TOC_FILE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC49">8.10 Table Of content File</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC48"><CODE>T2H_TOP_FILE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC35"><CODE>T2H_TOP_HEADING</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC35">7.5.7 Top Heading</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC44"><CODE>T2H_USE_GLOSSARY</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC46"><CODE>T2H_USE_ISO</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC61"><CODE>T2H_VERBOSE</CODE></A></TD><TD valign=top><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+</TABLE><P></P><table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#vr_$" style="text-decoration:none"><b>$</b></A>
+ &nbsp; 
+<BR>
+<A HREF="texi2html.html#vr_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#vr_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+</td></tr></table><br><A NAME="Indexcp"></A>
+<HR SIZE="6">
+<A NAME="SEC73"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC72"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC72"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> B.3 Concept Index </H2>
+<!--docid::SEC73::-->
+<table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#cp_." style="text-decoration:none"><b>.</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_@" style="text-decoration:none"><b>@</b></A>
+ &nbsp; 
+<BR>
+<A HREF="texi2html.html#cp_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_R" style="text-decoration:none"><b>R</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+</td></tr></table><br><P></P>
+<TABLE border=0>
+<TR><TD></TD><TH ALIGN=LEFT>Index Entry</TH><TH ALIGN=LEFT> Section</TH></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_."></A>.</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23">.texi2htmlrc, user initialization</A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_@"></A>@</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63">@math</A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63">@tex</A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_C"></A>C</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC36">Chapter, Index</A></TD><TD valign=top><A HREF="texi2html.html#SEC36">7.5.8 Index Chapter</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23">configure</A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63">Conversion of @math and @tex</A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC46">Copyright</A></TD><TD valign=top><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_D"></A>D</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC40">Debugging</A></TD><TD valign=top><A HREF="texi2html.html#SEC40">8.1 Debugging</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC61">Debugging, verbose output</A></TD><TD valign=top><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_E"></A>E</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC32">example, indention</A></TD><TD valign=top><A HREF="texi2html.html#SEC32">7.5.4 Example Indent Cell</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC33">example, small indent</A></TD><TD valign=top><A HREF="texi2html.html#SEC33">7.5.5 Small Example Indent</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56">extension, .htm</A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56">extension, .html</A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_F"></A>F</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC53">File, split</A></TD><TD valign=top><A HREF="texi2html.html#SEC53">8.14 Split</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC58">Filename, output</A></TD><TD valign=top><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC34">Font Size, small</A></TD><TD valign=top><A HREF="texi2html.html#SEC34">7.5.6 Small Font Size</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_H"></A>H</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC38">HREF Dir instead file</A></TD><TD valign=top><A HREF="texi2html.html#SEC38">7.5.10 HREF Dir Instead File.</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56">HTML, .htm extension</A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC56">HTML, .html extension</A></TD><TD valign=top><A HREF="texi2html.html#SEC56">8.17 Short extension</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC41">HTML, Doc Type</A></TD><TD valign=top><A HREF="texi2html.html#SEC41">8.2 DocType</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC44">HTML, Glossary</A></TD><TD valign=top><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC60">HTML, Index</A></TD><TD valign=top><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC48">HTML, index.html</A></TD><TD valign=top><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC51">HTML, menu</A></TD><TD valign=top><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC54">HTML, Navigation</A></TD><TD valign=top><A HREF="texi2html.html#SEC54">8.15 Section navigation</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC53">HTML, split</A></TD><TD valign=top><A HREF="texi2html.html#SEC53">8.14 Split</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_I"></A>I</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC31">images, center</A></TD><TD valign=top><A HREF="texi2html.html#SEC31">7.5.3 Center Image</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC37">Index, split</A></TD><TD valign=top><A HREF="texi2html.html#SEC37">7.5.9 Split Index</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC60">Index, Summary</A></TD><TD valign=top><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC4">Installation</A></TD><TD valign=top><A HREF="texi2html.html#SEC4">2. Installation of <CODE>texi2html</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC5">Installation</A></TD><TD valign=top><A HREF="texi2html.html#SEC5">3. Customizing files</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC45">invisible, Mark</A></TD><TD valign=top><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC46">ISO8859</A></TD><TD valign=top><A HREF="texi2html.html#SEC46">8.7 Iso</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_L"></A>L</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC62">Language Support</A></TD><TD valign=top><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC63">LaTeX2HTML</A></TD><TD valign=top><A HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC64">LaTeX2HTML, location</A></TD><TD valign=top><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC65">LaTeX2HTML, skip calling</A></TD><TD valign=top><A HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC66">LaTeX2HTML, Temporary files</A></TD><TD valign=top><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC64">location, LaTeX2HTML</A></TD><TD valign=top><A HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_M"></A>M</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC45">Mark, invisible</A></TD><TD valign=top><A HREF="texi2html.html#SEC45">8.6 Invisible</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC30">menu, redundance</A></TD><TD valign=top><A HREF="texi2html.html#SEC30">7.5.2 Avoid menu redundancy</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_O"></A>O</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC58">Output filename</A></TD><TD valign=top><A HREF="texi2html.html#SEC58">8.19 Output filename</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC61">Output, verbose</A></TD><TD valign=top><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_P"></A>P</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC57">Prefix</A></TD><TD valign=top><A HREF="texi2html.html#SEC57">8.18 Prefix</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_R"></A>R</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC59">References, short</A></TD><TD valign=top><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_S"></A>S</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC52">Section numbering</A></TD><TD valign=top><A HREF="texi2html.html#SEC52">8.13 Number sections</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC59">sections without numbers</A></TD><TD valign=top><A HREF="texi2html.html#SEC59">8.20 Short Cross References</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC55">Subdirectory</A></TD><TD valign=top><A HREF="texi2html.html#SEC55">8.16 Subdirectory</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC60">Summary Index</A></TD><TD valign=top><A HREF="texi2html.html#SEC60">8.21 Index Summary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC62">Support different languages</A></TD><TD valign=top><A HREF="texi2html.html#SEC62">8.23 Language Support</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_T"></A>T</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC49">Table of content file</A></TD><TD valign=top><A HREF="texi2html.html#SEC49">8.10 Table Of content File</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC66">Temporary, LaTeX2HTML</A></TD><TD valign=top><A HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23">texi2html.init</A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC23">texi2htmlrc, global initialization</A></TD><TD valign=top><A HREF="texi2html.html#SEC23">7. Initialization file</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC42">Texinfo, checking</A></TD><TD valign=top><A HREF="texi2html.html#SEC42">8.3 Check</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC44">Texinfo, Glossary</A></TD><TD valign=top><A HREF="texi2html.html#SEC44">8.5 Glossary</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC51">Texinfo, menu</A></TD><TD valign=top><A HREF="texi2html.html#SEC51">8.12 Menu's</A></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC48">Top Level file</A></TD><TD valign=top><A HREF="texi2html.html#SEC48">8.9 Top File</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+<TR><TH><A NAME="cp_V"></A>V</TH><TD></TD><TD></TD></TR>
+<TR><TD></TD><TD valign=top><A HREF="texi2html.html#SEC61">Verbose output</A></TD><TD valign=top><A HREF="texi2html.html#SEC61">8.22 Verbose output</A></TD></TR>
+<TR><TD COLSPAN=3> <HR></TD></TR>
+</TABLE><P></P><table><tr><th valign=top>Jump to: &nbsp; </th><td><A HREF="texi2html.html#cp_." style="text-decoration:none"><b>.</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_@" style="text-decoration:none"><b>@</b></A>
+ &nbsp; 
+<BR>
+<A HREF="texi2html.html#cp_C" style="text-decoration:none"><b>C</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_D" style="text-decoration:none"><b>D</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_E" style="text-decoration:none"><b>E</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_F" style="text-decoration:none"><b>F</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_H" style="text-decoration:none"><b>H</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_I" style="text-decoration:none"><b>I</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_L" style="text-decoration:none"><b>L</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_M" style="text-decoration:none"><b>M</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_O" style="text-decoration:none"><b>O</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_P" style="text-decoration:none"><b>P</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_R" style="text-decoration:none"><b>R</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_S" style="text-decoration:none"><b>S</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_T" style="text-decoration:none"><b>T</b></A>
+ &nbsp; 
+<A HREF="texi2html.html#cp_V" style="text-decoration:none"><b>V</b></A>
+ &nbsp; 
+</td></tr></table><br><HR SIZE="6">
+<A NAME="SEC_Contents"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1>Table of Contents</H1>
+<BLOCKQUOTE>
+<A NAME="TOC1" HREF="texi2html.html#SEC1">1. Overview about <CODE>texi2html</CODE></A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC2" HREF="texi2html.html#SEC2">1.1 Ways to get HTML</A>
+<BR>
+<A NAME="TOC3" HREF="texi2html.html#SEC3">1.2 Why `<TT>texi2html</TT>' and not `<TT>makeinfo</TT>'?</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC4" HREF="texi2html.html#SEC4">2. Installation of <CODE>texi2html</CODE></A>
+<BR>
+<A NAME="TOC5" HREF="texi2html.html#SEC5">3. Customizing files</A>
+<BR>
+<A NAME="TOC6" HREF="texi2html.html#SEC6">4. Customizing what gets expanded</A>
+<BR>
+<A NAME="TOC7" HREF="texi2html.html#SEC7">5. Customizing page layout</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC8" HREF="texi2html.html#SEC8">5.1 Tips how to create a new site design</A>
+<BR>
+<A NAME="TOC9" HREF="texi2html.html#SEC9">5.2 Page Layout and the philosophy</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC10" HREF="texi2html.html#SEC10">5.2.1 Navigation panels</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC11" HREF="texi2html.html#SEC11">5.3 Top Page</A>
+<BR>
+<A NAME="TOC12" HREF="texi2html.html#SEC12">5.4 Section Pages</A>
+<BR>
+<A NAME="TOC13" HREF="texi2html.html#SEC13">5.5 Misc pages</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC14" HREF="texi2html.html#SEC14">5.5.1 Table Of Contents</A>
+<BR>
+<A NAME="TOC15" HREF="texi2html.html#SEC15">5.5.2 Page header</A>
+<BR>
+<A NAME="TOC16" HREF="texi2html.html#SEC16">5.5.3 Page footer</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<A NAME="TOC17" HREF="texi2html.html#SEC17">6. Customizing HTML</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC18" HREF="texi2html.html#SEC18">6.1 Body</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC19" HREF="texi2html.html#SEC19">6.1.1 Body Text</A>
+<BR>
+<A NAME="TOC20" HREF="texi2html.html#SEC20">6.1.2 Body Text</A>
+<BR>
+<A NAME="TOC21" HREF="texi2html.html#SEC21">6.1.3 After Body Text</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC22" HREF="texi2html.html#SEC22">6.2 Head</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC23" HREF="texi2html.html#SEC23">7. Initialization file</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC24" HREF="texi2html.html#SEC24">7.1 The basics about init files</A>
+<BR>
+<A NAME="TOC25" HREF="texi2html.html#SEC25">7.2 Global initialization file</A>
+<BR>
+<A NAME="TOC26" HREF="texi2html.html#SEC26">7.3 User initialization file</A>
+<BR>
+<A NAME="TOC27" HREF="texi2html.html#SEC27">7.4 Loadable initialization file</A>
+<BR>
+<A NAME="TOC28" HREF="texi2html.html#SEC28">7.5 Initialization file options</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC29" HREF="texi2html.html#SEC29">7.5.1 Number sections.</A>
+<BR>
+<A NAME="TOC30" HREF="texi2html.html#SEC30">7.5.2 Avoid menu redundancy</A>
+<BR>
+<A NAME="TOC31" HREF="texi2html.html#SEC31">7.5.3 Center Image</A>
+<BR>
+<A NAME="TOC32" HREF="texi2html.html#SEC32">7.5.4 Example Indent Cell</A>
+<BR>
+<A NAME="TOC33" HREF="texi2html.html#SEC33">7.5.5 Small Example Indent</A>
+<BR>
+<A NAME="TOC34" HREF="texi2html.html#SEC34">7.5.6 Small Font Size</A>
+<BR>
+<A NAME="TOC35" HREF="texi2html.html#SEC35">7.5.7 Top Heading</A>
+<BR>
+<A NAME="TOC36" HREF="texi2html.html#SEC36">7.5.8 Index Chapter</A>
+<BR>
+<A NAME="TOC37" HREF="texi2html.html#SEC37">7.5.9 Split Index</A>
+<BR>
+<A NAME="TOC38" HREF="texi2html.html#SEC38">7.5.10 HREF Dir Instead File.</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<A NAME="TOC39" HREF="texi2html.html#SEC39">8. Command Line Options</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC40" HREF="texi2html.html#SEC40">8.1 Debugging</A>
+<BR>
+<A NAME="TOC41" HREF="texi2html.html#SEC41">8.2 DocType</A>
+<BR>
+<A NAME="TOC42" HREF="texi2html.html#SEC42">8.3 Check</A>
+<BR>
+<A NAME="TOC43" HREF="texi2html.html#SEC43">8.4 Expand</A>
+<BR>
+<A NAME="TOC44" HREF="texi2html.html#SEC44">8.5 Glossary</A>
+<BR>
+<A NAME="TOC45" HREF="texi2html.html#SEC45">8.6 Invisible</A>
+<BR>
+<A NAME="TOC46" HREF="texi2html.html#SEC46">8.7 Iso</A>
+<BR>
+<A NAME="TOC47" HREF="texi2html.html#SEC47">8.8 Include Direcotry</A>
+<BR>
+<A NAME="TOC48" HREF="texi2html.html#SEC48">8.9 Top File</A>
+<BR>
+<A NAME="TOC49" HREF="texi2html.html#SEC49">8.10 Table Of content File</A>
+<BR>
+<A NAME="TOC50" HREF="texi2html.html#SEC50">8.11 Frames</A>
+<BR>
+<A NAME="TOC51" HREF="texi2html.html#SEC51">8.12 Menu's</A>
+<BR>
+<A NAME="TOC52" HREF="texi2html.html#SEC52">8.13 Number sections</A>
+<BR>
+<A NAME="TOC53" HREF="texi2html.html#SEC53">8.14 Split</A>
+<BR>
+<A NAME="TOC54" HREF="texi2html.html#SEC54">8.15 Section navigation</A>
+<BR>
+<A NAME="TOC55" HREF="texi2html.html#SEC55">8.16 Subdirectory</A>
+<BR>
+<A NAME="TOC56" HREF="texi2html.html#SEC56">8.17 Short extension</A>
+<BR>
+<A NAME="TOC57" HREF="texi2html.html#SEC57">8.18 Prefix</A>
+<BR>
+<A NAME="TOC58" HREF="texi2html.html#SEC58">8.19 Output filename</A>
+<BR>
+<A NAME="TOC59" HREF="texi2html.html#SEC59">8.20 Short Cross References</A>
+<BR>
+<A NAME="TOC60" HREF="texi2html.html#SEC60">8.21 Index Summary</A>
+<BR>
+<A NAME="TOC61" HREF="texi2html.html#SEC61">8.22 Verbose output</A>
+<BR>
+<A NAME="TOC62" HREF="texi2html.html#SEC62">8.23 Language Support</A>
+<BR>
+<A NAME="TOC63" HREF="texi2html.html#SEC63">8.24 LaTeX2HTML for <CODE>@math</CODE> and <CODE>@tex</CODE></A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC64" HREF="texi2html.html#SEC64">8.24.1 Where to find <CODE>latex2html</CODE></A>
+<BR>
+<A NAME="TOC65" HREF="texi2html.html#SEC65">8.24.2 Skip calling LaTeX2HTML</A>
+<BR>
+<A NAME="TOC66" HREF="texi2html.html#SEC66">8.24.3 Temporary files for LaTeX2HTML</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<A NAME="TOC67" HREF="texi2html.html#SEC67">A. Function Reference</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC68" HREF="texi2html.html#SEC68">A.1 Print ToC Frame</A>
+<BR>
+<A NAME="TOC69" HREF="texi2html.html#SEC69">A.2 Print Page Head</A>
+<BR>
+</BLOCKQUOTE>
+<A NAME="TOC70" HREF="texi2html.html#SEC70">B. Indices</A>
+<BR>
+<BLOCKQUOTE>
+<A NAME="TOC71" HREF="texi2html.html#SEC71">B.1 Command Line Option Index</A>
+<BR>
+<A NAME="TOC72" HREF="texi2html.html#SEC72">B.2 Variable Index</A>
+<BR>
+<A NAME="TOC73" HREF="texi2html.html#SEC73">B.3 Concept Index</A>
+<BR>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<HR SIZE=1>
+<A NAME="SEC_OVERVIEW"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1>Short Table of Contents</H1>
+<BLOCKQUOTE>
+<A NAME="TOC1" HREF="texi2html.html#SEC1">1. Overview about <CODE>texi2html</CODE></A>
+<BR>
+<A NAME="TOC4" HREF="texi2html.html#SEC4">2. Installation of <CODE>texi2html</CODE></A>
+<BR>
+<A NAME="TOC5" HREF="texi2html.html#SEC5">3. Customizing files</A>
+<BR>
+<A NAME="TOC6" HREF="texi2html.html#SEC6">4. Customizing what gets expanded</A>
+<BR>
+<A NAME="TOC7" HREF="texi2html.html#SEC7">5. Customizing page layout</A>
+<BR>
+<A NAME="TOC17" HREF="texi2html.html#SEC17">6. Customizing HTML</A>
+<BR>
+<A NAME="TOC23" HREF="texi2html.html#SEC23">7. Initialization file</A>
+<BR>
+<A NAME="TOC39" HREF="texi2html.html#SEC39">8. Command Line Options</A>
+<BR>
+<A NAME="TOC67" HREF="texi2html.html#SEC67">A. Function Reference</A>
+<BR>
+<A NAME="TOC70" HREF="texi2html.html#SEC70">B. Indices</A>
+<BR>
+
+</BLOCKQUOTE>
+<HR SIZE=1>
+<A NAME="SEC_About"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="texi2html.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1>About this document</H1>
+This document was generated 
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+<P></P>  
+The buttons in the navigation panels have the following meaning:
+<P></P>
+<table border = "1">
+<TR>
+<TH> Button </TH>
+<TH> Name </TH>
+<TH> Go to </TH>
+<TH> From 1.2.3 go to</TH>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ &lt; ] </TD>
+<TD ALIGN="CENTER">
+Back
+</TD>
+<TD>
+previous section in reading order
+</TD>
+<TD>
+1.2.2
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ &gt; ] </TD>
+<TD ALIGN="CENTER">
+Forward
+</TD>
+<TD>
+next section in reading order
+</TD>
+<TD>
+1.2.4
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ &lt;&lt; ] </TD>
+<TD ALIGN="CENTER">
+FastBack
+</TD>
+<TD>
+previous or up-and-previous section 
+</TD>
+<TD>
+1.1
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ Up ] </TD>
+<TD ALIGN="CENTER">
+Up
+</TD>
+<TD>
+up section
+</TD>
+<TD>
+1.2
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ &gt;&gt; ] </TD>
+<TD ALIGN="CENTER">
+FastForward
+</TD>
+<TD>
+next or up-and-next section
+</TD>
+<TD>
+1.3
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [Top] </TD>
+<TD ALIGN="CENTER">
+Top
+</TD>
+<TD>
+cover (top) of document
+</TD>
+<TD>
+ &nbsp; 
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [Contents] </TD>
+<TD ALIGN="CENTER">
+Contents
+</TD>
+<TD>
+table of contents
+</TD>
+<TD>
+ &nbsp; 
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [Index] </TD>
+<TD ALIGN="CENTER">
+Index
+</TD>
+<TD>
+concept index
+</TD>
+<TD>
+ &nbsp; 
+</TD>
+</TR>
+<TR>
+<TD ALIGN="CENTER">
+ [ ? ] </TD>
+<TD ALIGN="CENTER">
+About
+</TD>
+<TD>
+this page
+</TD>
+<TD>
+ &nbsp; 
+</TD>
+</TR>
+</TABLE>
+<P></P>
+where the <STRONG> Example </STRONG> assumes that the current position 
+is at <STRONG> Subsubsection One-Two-Three </STRONG> of a document of 
+the following structure:
+<UL>
+<LI> 1. Section One  </LI>
+<UL>
+<LI>1.1 Subsection One-One</LI>
+<UL>
+<LI> ... </LI>
+</UL>
+<LI>1.2 Subsection One-Two</LI>
+<UL>
+<LI>1.2.1 Subsubsection One-Two-One
+</LI><LI>1.2.2 Subsubsection One-Two-Two
+</LI><LI>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp; <STRONG>
+&lt;== Current Position </STRONG>
+</LI><LI>1.2.4 Subsubsection One-Two-Four
+</LI></UL>
+<LI>1.3 Subsection One-Three</LI>
+<UL>
+<LI> ... </LI>
+</UL>
+<LI>1.4 Subsection One-Four</LI>
+</UL>
+</UL>
+
+<HR SIZE=1>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Derek Robert Price</I> on <I>November, 10  2000</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+</FONT>
+
+</BODY>
+</HTML>

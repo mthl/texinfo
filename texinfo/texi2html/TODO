@@ -1,0 +1,21 @@
+This file conatins a list of things yet to be done (most
+important first):
+
+* Create detailed texinfo documentation
+
+* fix duplicate section entries when using unnumbered sections
+
+* use events (onmousover, etc) for anchors
+
+* use style-sheets for formatting of various elements (like @example,
+  etc).
+
+* add sample init files for different layouts
+
+* split on @section
+
+* bring deftypemethod, etc up-to-date
+
+* Change installation procedure so that init files of the distribution 
+  can be loaded in at run-time
+
