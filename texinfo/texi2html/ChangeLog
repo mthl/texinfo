@@ -1,3 +1,21 @@
+2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: add $EXTENSION variable, holding
+	the extension for files.
+	Add $Texi2HTML::THISDOC{'file_base_name'} and
+	$Texi2HTML::THISDOC{'destination_directory'} such that it is possible
+	to construct file and directory names in init files.
+	Add $finish_out function reference called at the end of document
+	outputting.
+	Add $index_summary_file_begin and $index_summary_file_end to ease
+	special index files generation.
+	* examples/noheaders.init: perform better when split.
+	* examples/chm.init: new init file to generate chm files (after 
+	compilation by a windows application, leads to windows help files).
+	After José Fonseca (jrfonseca at users dot berlios dot de) work on 
+	an older texi2html.
+	* l2h.init: Set NO_SUBDIRS to 1, don't set html version.
+
 2004-01-28  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: reopen styles in preformatted environments.

@@ -1,0 +1,175 @@
+# -*-perl-*-
+
+main::load_init_file('', 'noheaders.init');
+main::load_init_file('', 'utf8.init');
+
+$USE_ISO = 0;
+$ENCODING = 'utf-8';
+$SHOW_MENU = 0;
+$SPLIT = 'node';
+$DO_CONTENT = 1;
+$SPLIT_INDEX = undef;
+$IDX_SUMMARY = 1;
+
+$SMALL_RULE = '';
+$DEFAULT_RULE = '';
+$MIDDLE_RULE = '';
+$BIG_RULE = '';
+
+$SEPARATED_FOOTNOTES = 0;
+
+$index_summary_file_entry = \&chm_index_summary_file_entry;
+$index_summary_file_begin = \&chm_index_summary_file_begin;
+$index_summary_file_end = \&chm_index_summary_file_end;
+
+$print_page_foot = \&chm_print_page_foot;
+
+my $default_toc_body = $toc_body;
+$toc_body = \&chm_toc_body;
+
+$finish_out = \&chm_finish_out;
+my $default_init_out = $init_out;
+
+$init_out = \&chm_init_out;
+
+my %chm_languages = (
+    'en'         => '0x409 English (United States)',
+);
+
+my $hhp_lines = '';
+
+sub chm_init_out()
+{
+    my $encoding = &$default_init_out();
+    $TOC_FILE = $Texi2HTML::THISDOC{'file_base_name'}.'.hhc';
+    my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
+    open(IDXFILE, ">:encoding(utf8)", $hhk_file)
+        || die "Can't open $file_name for writing: $!\n";
+    print "# writing HTML Help index in $hhk_file...\n" if $VERBOSE;
+    print IDXFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n<BODY>\n";
+    my $hhp_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhp";
+    print "# writing HTML Help project in $hhp_file...\n" if $VERBOSE;
+    open (HHPFILE, ">:encoding($ENCODING)", $hhp_file) or 
+        die "Can't open $hhp_file for writing: $!\n";
+    my $language = $chm_languages{'en'};
+    if (exists ($chm_languages{$LANG}))
+    {
+        $language = $chm_languages{$LANG};
+    }
+    print HHPFILE <<EOT;
+[OPTIONS]
+Compiled file=$Texi2HTML::THISDOC{'file_base_name'}.chm
+Contents file=$Texi2HTML::THISDOC{'file_base_name'}.hhc
+Default Window=Default
+Default topic=$TOP_FILE
+Full-text search=Yes
+Index file=$Texi2HTML::THISDOC{'file_base_name'}.hhk
+Language=$language
+Title=$Texi2HTML::THISDOC{'title_no_texi'}
+
+[WINDOWS]
+Default=,"$Texi2HTML::THISDOC{'file_base_name'}.hhc","$Texi2HTML::THISDOC{'file_base_name'}.hhk","$TOP_FILE","$TOP_FILE",,,,,0x22520,,0x384e,,,,,,,,0
+
+[FILES]
+EOT
+    return $encoding;
+}
+sub chm_print_page_foot($)
+{
+    my $fh = shift;
+    print $fh <<EOT;
+<p>
+$PRE_BODY_CLOSE
+</p>
+</body>
+</html>
+EOT
+}
+
+my @hhc_lines;
+
+sub chm_toc_body($)
+{
+    my $elements_ref = shift;
+    &$default_toc_body($elements_ref);
+    my $level = 0;
+    foreach my $element (@$elements_ref)
+    {
+        while ($level != $element->{'toc_level'})
+        {
+            if ($level < $element->{'toc_level'})
+            {
+                 push (@hhc_lines, "<UL>\n");
+                 $level++;
+            }
+            elsif ($level > $element->{'toc_level'})
+            {
+                 push (@hhc_lines, "</UL>\n");
+                 $level--;
+            }
+        }
+        my $text;
+        if ($NUMBER_SECTIONS)
+        {
+             $text = $element->{'text'};
+        }
+        else
+        {
+             $text = $element->{'name'};
+        }
+        push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\"> <param name=\"Name\" value=\"$text\"> <param name=\"Local\" value=\"$element->{'file'}#$element->{'id'}\"> </OBJECT> </LI>\n");
+        $hhp_lines .= "$element->{'file'}\n";
+    }
+    while ($level > 0)
+    {
+         push (@hhc_lines, "</UL>\n");
+         $level--;
+    } 
+}
+
+# key:          
+# origin_href:  
+# entry:        
+# texi entry: 
+# element_href: 
+# element_text: 
+sub chm_index_summary_file_entry ($$$$$$$)
+{
+    my $name = shift;
+    my $key = shift;
+    my $origin_href = shift;
+    my $entry = shift;
+    $entry = &$protect_text($key);
+    my $texi_entry = shift;
+    my $element_href = shift;
+    my $element_text = shift;
+    print IDXFILE "<LI> <OBJECT type=\"text/sitemap\"> <param name=\"Name\" value=\"$entry\"> <param name=\"Local\" value=\"$origin_href\"></OBJECT> </LI>\n";
+}
+
+sub chm_index_summary_file_begin($)
+{
+    my $name = shift;
+}
+
+# file is not closed here but in finish_out.
+sub chm_index_summary_file_end($)
+{
+    my $name = shift;
+}
+
+sub chm_finish_out()
+{
+    print IDXFILE "</BODY>\n</HTML>\n";
+    close (IDXFILE);
+    my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
+    open (HHCFILE, ">:encoding($ENCODING)", $hhc_file) or 
+        die "Can't open $hhc_file for writing: $!\n";
+    
+    print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n<BODY>\n";
+    main::print_lines(\*HHCFILE, \@hhc_lines);
+    print HHCFILE "</HTML>\n</BODY>\n";
+    print HHPFILE $hhp_lines;
+    close (HHPFILE);
+}
+
+1;

@@ -33,6 +33,7 @@ dist_pkgdata_DATA = l2h.init \
     examples/noheaders.init \
     examples/inlinestyle.init \
     examples/utf8.init \
+    examples/chm.init \
     examples/roff.init	
 
 dist_i18n_DATA = i18n/en \

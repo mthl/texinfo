@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.100 2004-01-28 01:00:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.101 2004-02-03 01:32:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -79,9 +79,22 @@ my $pkgdatadir;
 # We need to eval as $prefix has to be expanded. However when we haven't
 # run configure @sysconfdir will be expanded as an array, thus we verify
 # whether configure was run or not
-$sysconfdir = eval '"@sysconfdir@"' if ('@sysconfdir@' ne '@' . 'sysconfdir@');
-$pkgdatadir = eval '"@datadir@/@PACKAGE@"' if ('@datadir@' ne '@' . 'datadir@');
-
+if ('@sysconfdir@' ne '@' . 'sysconfdir@')
+{
+    $sysconfdir = eval '"@sysconfdir@"';
+}
+else
+{
+    $sysconfdir = "/usr/local/etc";
+}
+if ('@datadir@' ne '@' . 'datadir@')
+{
+    $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+}
+else
+{
+    $pkgdatadir = "/usr/local/share/texi2html";
+}
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
 
@@ -175,6 +188,7 @@ our $NODE_NAME_IN_MENU;
 our $AVOID_MENU_REDUNDANCY;
 our $SECTION_NAVIGATION;
 our $SHORTEXTN ;
+our $EXTENSION;
 our $OUT ;
 our $NOVALIDATE;
 our $DEF_TABLE ;
@@ -281,6 +295,7 @@ our $titlepage;
 our $css_lines;
 our $print_redirection_page;
 our $init_out;
+our $finish_out;
 our $node_file_name;
 our $element_file_name;
 
@@ -326,6 +341,8 @@ our $sp;
 our $definition_category;
 our $table_list;
 our $index_summary_file_entry;
+our $index_summary_file_end;
+our $index_summary_file_begin;
 our $style;
 our $format;
 our $normal_text;
@@ -370,7 +387,7 @@ $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
 $normal_text              = \&t2h_gpl_normal_text;
 
-sub T2H_GPL_toc_body($$$)
+sub T2H_GPL_toc_body($)
 {
     my $elements_list = shift;
 #    my $do_contents = shift;
@@ -1961,7 +1978,8 @@ $T2H_DEBUG |= $DEBUG_TEXI if ($Texi2HTML::Config::DUMP_TEXI);
 my $docu_dir;            # directory of the document
 my $docu_name;           # basename of the document
 my $docu_rdir;           # directory for the output
-my $docu_ext = "html";   # extension
+#my $docu_ext = "html";   # extension
+my $docu_ext = $Texi2HTML::Config::EXTENSION;   # extension
 my $docu_toc;            # document's table of contents
 my $docu_stoc;           # document's short toc
 my $docu_foot;           # document's footnotes
@@ -2106,6 +2124,9 @@ else
     }
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
+
+$Texi2HTML::Config::TOP_FILE = $docu_top;
+$Texi2HTML::Config::TOC_FILE = $docu_toc;
 
 my $docu_doc_file = "$docu_rdir$docu_doc"; 
 my $docu_toc_file  = "$docu_rdir$docu_toc";
@@ -3883,7 +3904,7 @@ sub rearrange_elements()
             # there may be infinite loops when finding following node (see below)
             unless (defined($node->{'menu_up_hash'}) and ($node->{'menu_up_hash'}->{$node->{'up'}->{'texi'}}))
             {
-                print STDERR "$WARN `$node->{'up'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node\n";
+                print STDERR "$WARN `$node->{'up'}->{'texi'}' is up for `$node->{'texi'}', but has no menu entry for this node\n" if ($Texi2HTML::Config::SHOW_MENU);
                 push @{$node->{'up_not_in_menu'}}, $node->{'up'}->{'texi'};
             }
         }
@@ -5092,6 +5113,8 @@ sub pass_text()
     $Texi2HTML::THISDOC{'copying'} = $copying_comment;
     $Texi2HTML::THISDOC{'toc_file'} = ''; 
     $Texi2HTML::THISDOC{'toc_file'} = $docu_toc if ($Texi2HTML::Config::SPLIT); 
+    $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
+    $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
     $Texi2HTML::THISDOC{'titles'} = [] if (!defined($Texi2HTML::THISDOC{'titles'}));
@@ -6965,9 +6988,11 @@ sub do_index_summary_file($)
 {
     my $name = shift;
     my ($Pages, $Entries) = get_index($name);
-    open(FHIDX, ">$docu_rdir$docu_name" . "_$name.idx")
-       || die "Can't open > $docu_rdir$docu_name" . "_$name.idx for writing: $!\n";
-    print STDERR "# writing $name index summary in $docu_rdir$docu_name" . "_$name.idx...\n" if $T2H_VERBOSE;
+    &$Texi2HTML::Config::index_summary_file_begin ($name);
+    #open(FHIDX, ">$docu_rdir$docu_name" . "_$name.idx")
+    #   || die "Can't open > $docu_rdir$docu_name" . "_$name.idx for writing: $!\n";
+    #print STDERR "# writing $name index summary in $docu_rdir$docu_name" . "_$name.idx...\n" if $T2H_VERBOSE;
+    print STDERR "# writing $name index summary\n" if $T2H_VERBOSE;
 
     foreach my $key (sort keys %$Entries)
     {
@@ -7005,11 +7030,14 @@ sub do_index_summary_file($)
             }
         }
         #print STDERR "SUBHREF in index summary file for $entry_element->{'texi'}\n";
-        print FHIDX '' . &$Texi2HTML::Config::index_summary_file_entry (
-          $key, $origin_href,
-          substitute_line($entry->{'entry'}), href($entry_element, ''),
+        #print FHIDX '' . 
+        &$Texi2HTML::Config::index_summary_file_entry ($name,
+          $key, $origin_href, 
+          substitute_line($entry->{'entry'}), $entry->{'entry'},
+          href($entry_element, ''),
           $entry_element->{'text'});
     }
+    &$Texi2HTML::Config::index_summary_file_end ($name);
 }
 
 sub do_index_page($$;$)
@@ -10441,6 +10469,7 @@ do_node_files() if ($Texi2HTML::Config::NODE_FILES);
 #l2h_FinishFromHtml() if ($Texi2HTML::Config::L2H);
 #l2h_Finish() if($Texi2HTML::Config::L2H);
 Texi2HTML::LaTeX2HTML::finish();
+&$Texi2HTML::Config::finish_out();
 print STDERR "# that's all folks\n" if $T2H_VERBOSE;
 
 exit(0);

@@ -98,11 +98,11 @@ This file records noteworthy changes.
 * Many changes towards output of stricter HTML.
 
 * initialization files for html 3.2, xhtml, html 4.0 with inline style,
-  no header, utf8 characters outputted, makeinfo style, book style and 
-  conversion to roff. Initialization files are searched in ./, ~/.texi2html, 
-  $sysconfdir/texi2html and last $datadir/texi2html. The file names are
-  html32.init, xhtml.init, inlinestyle.init, noheaders.init, utf8.init, 
-  makeinfo.init, book.init and roff.init.
+  no header, utf8 characters outputted, makeinfo style, book style, conversion
+  to chm files and conversion to roff. Initialization files are searched 
+  in ./, ~/.texi2html, $sysconfdir/texi2html and last $datadir/texi2html. 
+  The file names are html32.init, xhtml.init, inlinestyle.init, 
+  noheaders.init, utf8.init, makeinfo.init, book.init, chm.init and roff.init.
 
 * The test suite is much more comprehensive and uses validate and tidy to
   assess the correctness of the HTML.
@@ -132,7 +132,7 @@ This file records noteworthy changes.
 * @ref{(perl)Top} leads to a ref to the info manual. 
 
 * References to external manual in @ref and menus are links to the html 
-  pages (with the same convention than makeinfo --html used).
+  pages (with the same convention than makeinfo --html use).
   --html-xref-prefix is the base dir for external manual references.
 
 * With --node-files do a file per node which can be used as a target for

@@ -15,13 +15,13 @@ $SHORTEXTN = 0;
 
 $LONG_TITLES = 0;
 
-$DESTDIR = '';                  # should be overwritten by cmd-line argument
+$DESTDIR = '';                  
 
-$NO_SUBDIR = 0;                 # should be overwritten by cmd-line argument
+$NO_SUBDIR = 1;                
 
-$PREFIX = '';                   # should be overwritten by cmd-line argument
+$PREFIX = '';                 
 
-$AUTO_PREFIX = 0;               # this is needed, so that prefix settings are used
+$AUTO_PREFIX = 0;            
 
 $AUTO_LINK = 0;
 
@@ -29,7 +29,7 @@ $SPLIT = 0;
 
 $MAX_LINK_DEPTH = 0;
 
-$TMP = '';                      # should be overwritten by cmd-line argument
+$TMP = '';                     
 
 $DEBUG = 0;
 
@@ -38,7 +38,7 @@ $VERBOSE = 1;
 #
 # Options controlling Extensions and Special Features
 #
-$HTML_VERSION = "3.2";
+#$HTML_VERSION = "3.2";         # set by command line
 
 $TEXDEFS = 1;                   # we absolutely need that
 

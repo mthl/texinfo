@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.64 2004-01-25 23:00:48 pertusus Exp $
+# $Id: texi2html.init,v 1.65 2004-02-03 01:32:36 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -325,6 +325,9 @@ $UNNUMBERED_SYMBOL_IN_MENU = 0;
 # extension for nodes files when NODE_FILES is true
 $NODE_FILE_EXTENSION = "html";	    
 
+# extension
+$EXTENSION = "html";
+
 # file name used for Top node when NODE_FILES is true
 $TOP_NODE_FILE = "index";
 
@@ -458,6 +461,7 @@ $ICONS = 0;
 
 
 $init_out    = \&t2h_default_init_out;
+$finish_out    = \&t2h_default_finish_out;
 
 # We have to do this dynamically because of internationalization and because
 # in body $LANG could be used.
@@ -534,8 +538,13 @@ sub t2h_default_init_out()
     }
     # FIXME default might be utf8 ?
     $DOCUMENT_ENCODING = 'us-ascii' if (!defined($DOCUMENT_ENCODING));
+    
     return $to_encoding;
 };
+
+sub t2h_default_finish_out()
+{
+}
 
 #######################################################################
 #
@@ -593,6 +602,10 @@ $ENCODING = undef;
 # $Texi2HTML::THISDOC{program_homepage} -- homepage for texi2html
 # $Texi2HTML::THISDOC{program_authors}  -- authors of texi2html
 # $Texi2HTML::THISDOC{today}            -- date formatted with pretty_date
+# $Texi2HTML::THISDOC{toc_file}         -- table of contents file
+# $Texi2HTML::THISDOC{file_base_name}   -- base name of the texinfo manual file
+# $Texi2HTML::THISDOC{destination_directory}
+                                 #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script
 #
 # and pointer to arrays of lines which need to be printed by main::print_lines
@@ -1140,8 +1153,6 @@ EOT
 #
 # arguments:
 # ref on an array containing all the elements
-# boolean true if @contents is present in the document
-# boolean true if @shortcontents is present in the document
 
 # each element is a reference on a hash. The following keys might be of
 # use:
@@ -1166,8 +1177,10 @@ EOT
 # $AFTER_OVERVIEW
 # $BEFORE_TOC_LINES
 # $AFTER_TOC_LINES
+# $DO_CONTENTS
+# $DO_SCONTENTS
 
-sub T2H_DEFAULT_toc_body($$$)
+sub T2H_DEFAULT_toc_body($)
 {
 }
 
@@ -1622,10 +1635,8 @@ $pre_map{'enddots'} = '....';
                'AA'           => '00C5',
                'ae'           => '00E6',
                'oe'           => '0153',
-#               'oe'           => '009C', in latin1
                'AE'           => '00C6',
                'OE'           => '0152',
-#               'OE'           => '008C', in latin1
                'o'            => '00F8',
                'O'            => '00D8',
                'ss'           => '00DF',
@@ -1937,9 +1948,8 @@ our %old_style_map = (
         'w' => '1E85',
         'X' => '1E8C',
         'x' => '1E8D',
-        'Y' => '009F',
         'y' => '00FF',
-#        'Y' => '0177',
+        'Y' => '0178',
     },
     'u' => { # breve
         'A' => '0101',
@@ -2088,16 +2098,12 @@ our %old_style_map = (
         'o' => '01D2',
         'R' => '0158',
         'r' => '0159',
-#        'S' => '008A', # in latin1
-#        's' => '009A', # in latin1
         'S' => '0160',
         's' => '0161',
         'T' => '0164',
         't' => '0165',
         'U' => '01D3',
         'u' => '01D4',
-#        'Z' => '008E', # in latin1
-#        'z' => '009E', # in latin1
         'Z' => '017D',
         'z' => '017E',
     },
@@ -2596,6 +2602,8 @@ $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
 $definition_category      = \&t2h_default_definition_category;
 $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
+$index_summary_file_end   = \&t2h_default_index_summary_file_end;
+$index_summary_file_begin = \&t2h_default_index_summary_file_begin;
 $empty_line               = \&t2h_default_empty_line;
 $unknown                  = \&t2h_default_unknown;
 $unknown_style            = \&t2h_default_unknown_style;
@@ -3433,14 +3441,37 @@ sub t2h_default_cartouche($$)
     return '';
 } 
 
-sub t2h_default_index_summary_file_entry ($$$$)
+# key:          
+# origin_href:  
+# entry:        
+# texi entry: 
+# element_href: 
+# element_text: 
+sub t2h_default_index_summary_file_entry ($$$$$$$)
 {
+    my $index_name = shift;
     my $key = shift;
     my $origin_href = shift;
     my $entry = shift;
+    my $texi_entry = shift;
     my $element_href = shift;
     my $element_text = shift;
-    return "$key\t$origin_href\n";
+    print IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
+      . "  texi_entry: $texi_entry\n"
+      . "  element_href: $element_href\n  element_text: $element_text\n";
+}
+
+sub t2h_default_index_summary_file_begin($)
+{
+    my $name = shift;
+    open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
+       || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
+}
+
+sub t2h_default_index_summary_file_end($)
+{
+    my $name = shift;
+    close (IDXFILE);
 }
 
 sub t2h_default_sp($$)

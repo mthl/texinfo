@@ -93,12 +93,19 @@ sub T2H_NOHEAD_print_Top
 sub T2H_NOHEAD_print_misc_header
 {
     my $fh = shift;
+    &$print_page_head($fh) if $SPLIT;
     &$print_head_navigation($fh);
 }
 sub T2H_NOHEAD_print_misc_footer
 {
     my $fh = shift;
     print $fh "$SMALL_RULE\n";
+    if ($SPLIT)
+    {
+        &$print_navigation($fh, $buttons);
+        &$print_page_foot($fh);
+    }
+
 }
 sub T2H_NOHEAD_print_misc
 {

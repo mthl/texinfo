@@ -937,13 +937,15 @@ initialization files.
 * Program variables::         The available main program variables and some 
                               usefull functions from the main program.
 * Output initialization::     Setting variables before the document
-                              production but after the texinfo parsing
+                              production but after the texinfo parsing.
+* Output finalization::       Cleaning after document generation.
 * css::                       Customizing css lines.
 * Customizing header::
 * Customizing section::
 * Customizing footer::
 * Special pages::             Customizing table of contents, top, about page.
 * File names::                Customizing the file names.
+* External index files::      Putting index entries in external files.
 @end menu
 
 @c --------------------------------------------------------
@@ -1271,6 +1273,10 @@ The name and version of @command{texi2html}.
 Homepage for @command{texi2html}.
 @item program_authors
 Authors of @command{texi2html}.
+@item file_base_name
+base name of the texinfo manual file.
+@item destination_directory
+Destination directory for the resulting files.
 @item toc_file
 The file name of the table of contents.
 @item today
@@ -1357,6 +1363,20 @@ sub makeinfo_like_init_out()
    return $encoding;
 @}
 @end example
+
+@c --------------------------------------------------------
+@node Output finalization
+@section Finalizing the output
+
+If you want to do some cleaning after the document was generated (close
+files, write at the end of files and so on), the following function 
+reference may be redefined:
+
+@deffn {Function Reference} finish_out
+This function is called after the document generation.
+@end deffn
+
+The default is to do nothing.
 
 @c --------------------------------------------------------
 @node css
@@ -1726,8 +1746,11 @@ for the footers.
 @section Customizing the file names
 
 It is possible to specify the file names with more control than with the
-command line options (@pxref{Output files}). Two function references enable 
-that customization. One is usefull in case @variable{$NODE_FILES} is true
+command line options (@pxref{Output files}). 
+First the extension may be overrided by the variable @variable{$EXTENSION}
+value.
+Two function references enable 
+further customization. One is usefull in case @variable{$NODE_FILES} is true
 and it is used to customize the node file name itself and is also used 
 to produce a file name with a redirection leading to the node file.
 
@@ -1766,6 +1789,42 @@ The element text without section number.
 @var{$docu_name} is the basename of the texinfo manual.
 The result is the element file name.
 @end deftypefn
+
+@c --------------------------------------------------------
+@node External index files
+@section Generation of external files for index entries
+
+Within the document, @code{@@printindex} commands are expanded as explained
+in @ref{Index list}. In case you want to do something special with index 
+entries, outside of the document, you should first set the variable
+@variable{$IDX_SUMMARY} true. After that some function reference will be called
+for each non empty @code{@@printindex}. For each index there are 3 function 
+references, one called for initialization, one called for each index entry
+and the last one called for finalazation.
+
+@deffn {Function Reference} index_summary_file_begin $index_name
+@var{$index_name} is the two letters name for the index. This function
+is called for each @code{@@printindex} appearing in the document, before 
+@code{index_summary_file_entry}.
+@end deffn
+
+@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header 
+This function is called for each entry of an index. @var{index_name} is the
+name of the index. @var{$entry_text} is the entry in plain text,
+@var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
+entry with texinfo commands. @var{$entry_reference} is the reference placed 
+at the index entry place, in the form @samp{file#id}.
+@var{$entry_element_header} is the formatted header of the element containing 
+the index entry. @var{entry_element_header} is the reference to the
+beginning of the element containing the index entry, in the form
+@samp{file#id}. 
+@end deffn
+
+@deffn {Function Reference} index_summary_file_end $index_name
+@var{$index_name} is the two letters name for the index. This function
+is called for each @code{@@printindex} appearing in the document, after
+@code{index_summary_file_entry}.
+@end deffn
 
 @c ========================================================
 @node Customizing HTML
