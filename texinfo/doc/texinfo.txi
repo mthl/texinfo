@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
+@c $Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15012,39 +15012,44 @@ includes the contents @var{file} in the HTML output, as you might
 expect.  However, the details are somewhat tricky, to provide maximum
 flexibility.
 
-@cindex Comments, in CSS files
-The CSS file may begin with so-called @samp{@@import} specifications,
+@cindex @@import specifications, in CSS files
+The CSS file may begin with so-called @samp{@@import} directives,
 which link to external CSS specifications for browsers to use when
 interpreting the document.  Again, a full description is beyond our
 scope here, but we'll describe how they work syntactically, so we can
 explain how @command{makeinfo} handles them.
 
-There can be more than one @samp{@@import}, but they have to come first
-in the file, with only whitespace and comments interspersed, no normal
-definitions.  (Comments in CSS files are delimited by @samp{/*
-... */}, as in C.)  An @samp{@@import} specification must be in one of
-these two forms:
+@cindex Comments, in CSS files
+There can be more than one @samp{@@import}, but they have to come
+first in the file, with only whitespace and comments interspersed, no
+normal definitions.  (Technical exception: an @samp{@@charset}
+directive may precede the @samp{@@import}'s.  This does not alter
+@command{makeinfo}'s behavior.)  Comments in CSS files are delimited
+by @samp{/* ... */}, as in C.  An @samp{@@import} directive must be in
+one of these two forms:
 
 @example
 @@import url(http://example.org/foo.css);
 @@import "http://example.net/bar.css";
 @end example
 
-As far as @command{makeinfo} is concerned, the crucial character is
-the semicolon terminating the declaration.  When reading the CSS file,
-it considers everything between an @samp{@@} and a @samp{;} to be an
-@samp{@@import}, and processes the file as follows:
+As far as @command{makeinfo} is concerned, the crucial characters are
+the @samp{@@} at the beginning and the semicolon terminating the
+directive.  CSS provides for a number of different
+@samp{@@}-directives, and @command{makeinfo} treats them all the same
+way.  When reading the CSS file, it simply copies any such
+@samp{@@}-directive into the output, as follows:
 
 @itemize
-@item If @var{file} contains only normal CSS specifications, it is
+@item If @var{file} contains only normal CSS declarations, it is
 included after @command{makeinfo}'s default CSS, thus overriding it.
 
 @item If @var{file} begins with @samp{@@import} specifications (see
 below), then the @samp{import}'s are included first (they have to come
 first, according to the standard), and then @command{makeinfo}'s
-default CSS is included.  If you really want to override
-@command{makeinfo}'s defaults from an @samp{@@import}, you can do so
-with the @samp{! important} CSS construct, as in:
+default CSS is included.  If you need to override @command{makeinfo}'s
+defaults from an @samp{@@import}, you can do so with the @samp{!
+important} CSS construct, as in:
 @example
 pre.smallexample @{ font-size: inherit ! important @}
 @end example
@@ -15056,10 +15061,11 @@ specifications, the @samp{@@import}'s are included first, then
 @end itemize
 
 If the CSS file is malformed or erroneous, @command{makeinfo}'s output
-is unspecified.  @command{makeinfo} does not try to interpret the CSS
-declarations in any way; it just looks for the special @samp{@@} and
-@samp{;} characters and blindly copies the text into the output.  CSS
-comments may or may not be included in the output.
+is unspecified.  @command{makeinfo} does not try to interpret the
+meaning of the CSS file in any way; it just looks for the special
+@samp{@@} and @samp{;} characters and blindly copies the text into the
+output.  Comments in the CSS file may or may not be included in the
+output.
 
 
 @node Installing an Info File
@@ -17181,7 +17187,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
+$Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17244,7 +17250,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
+@comment $Id: texinfo.txi,v 1.45 2003-05-12 20:37:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

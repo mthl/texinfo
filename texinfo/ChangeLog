@@ -1,5 +1,7 @@
 2003-05-12    <karl@gnu.org>
 
+	* configure.ac: pretest version 4.5.90.
+
 	* makeinfo/makeinfo.c (main): new option --css-include.
 	(usage): add to --help message.
 	* makeinfo/makeinfo.h (css_include): new global.
