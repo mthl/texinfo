@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.27 2003-11-09 15:03:03 dirt Exp $
+   $Id: cmds.c,v 1.28 2003-11-10 17:04:08 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -367,7 +367,7 @@ COMMAND command_table[] = {
   { "vtable", cm_vtable, NO_BRACE_ARGS },
   { "vskip", cm_ignore_line, NO_BRACE_ARGS },
   { "w", cm_w, BRACE_ARGS },
-  { "xml", cm_html, NO_BRACE_ARGS },
+  { "xml", cm_xml, NO_BRACE_ARGS },
   { "xref", cm_xref, BRACE_ARGS },
 
   /* Deprecated commands.  These used to be for italics.  */

@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.34 2003-11-09 15:03:03 dirt Exp $
+   $Id: insertion.c,v 1.35 2003-11-10 17:04:09 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1367,7 +1367,16 @@ cm_group ()
 void
 cm_html (arg)
 {
-  if (process_html || process_xml)
+  if (process_html)
+    begin_insertion (rawhtml);
+  else
+    command_name_condition ();
+}
+
+void
+cm_xml (arg)
+{
+  if (process_xml)
     begin_insertion (rawhtml);
   else
     command_name_condition ();

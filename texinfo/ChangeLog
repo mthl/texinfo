@@ -1,3 +1,15 @@
+2003-11-10  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/cmds.c:
+	* makeinfo/insertion.c (cm_html): do not process @xml blocks.
+	(cm_xml): new function to process @xml.
+
+	* makeinfo/xml.c (xml_start_para, xml_end_para): skip para handling in
+	footnote.
+	(xml_insert_footnote): keep state in xml_in_footnote variable.
+
+	* makeinfo/texinfo.dtd: updated settitle definition.
+
 2003-11-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Formats): rewrite to fix underfull

@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.4 2003-10-29 18:38:38 karl Exp $
+   $Id: insertion.h,v 1.5 2003-11-10 17:04:09 dirt Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -61,5 +61,5 @@ extern void cm_ifhtml (), cm_ifnothtml(), cm_html ();
 extern void cm_ifinfo (), cm_ifnotinfo ();
 extern void cm_ifplaintext (), cm_ifnotplaintext();
 extern void cm_iftex (), cm_ifnottex (), cm_tex ();
-extern void cm_ifxml (), cm_ifnotxml ();
+extern void cm_ifxml (), cm_ifnotxml (), cm_xml ();
 #endif /* !INSERTION_H */

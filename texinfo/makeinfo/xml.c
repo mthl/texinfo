@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.25 2003-11-09 15:03:03 dirt Exp $
+   $Id: xml.c,v 1.26 2003-11-10 17:04:10 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -459,6 +459,10 @@ int xml_in_bookinfo = 0;
 int xml_in_book_title = 0;
 int xml_in_abstract = 0;
 
+/* We need to keep footnote state, because elements inside footnote may try
+   to close the previous parent para.  */
+static int xml_in_footnote = 0;
+
 static int xml_after_table_term = 0;
 static int book_started = 0;
 static int first_section_opened = 0;
@@ -605,7 +609,7 @@ xml_indent_end_para ()
 void
 xml_start_para ()
 {
-  if (xml_in_para)
+  if (xml_in_para || xml_in_footnote)
     return;
   if (docbook)
     xml_indent ();
@@ -620,7 +624,7 @@ xml_start_para ()
 void
 xml_end_para ()
 {
-  if (!xml_in_para)
+  if (!xml_in_para || xml_in_footnote)
     return;
   if (docbook)
     xml_indent_end_para ();
@@ -1098,11 +1102,13 @@ void
 xml_insert_footnote (note)
     char *note;
 {
+  xml_in_footnote = 1;
   xml_insert_element (FOOTNOTE, START);
   insert_string ("<para>");
   execute_string ("%s", note);
   insert_string ("</para>");
   xml_insert_element (FOOTNOTE, END);
+  xml_in_footnote = 0;
 }
 
 /* We need to keep the quotation stack ourself, because insertion_stack

@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.5 2003-11-08 01:00:43 dirt Exp $
+<!-- $Id: texinfo.dtd,v 1.6 2003-11-10 17:04:09 dirt Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -120,7 +120,7 @@
 
 <!-- meta-information -->
 <!ELEMENT setfilename (#PCDATA)>
-<!ELEMENT settitle    (#PCDATA)>
+<!ELEMENT settitle    (#PCDATA | %Inline.phrase; | footnote)*>
 <!ELEMENT dircategory (#PCDATA)>
 
 <!ELEMENT setvalue    (#PCDATA | %Inline.phrase;)*>
