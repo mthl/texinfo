@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.7 2002-10-31 17:15:41 karl Exp $
+   $Id: makeinfo.c,v 1.8 2002-10-31 22:07:42 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -133,6 +133,9 @@ int do_justification = 0;
 
 /* Nonzero means don't replace whitespace with &nbsp; in HTML mode.  */
 int in_html_elt = 0;
+
+/* True when expanding an macro definition.  */
+static int executing_macro = 0;
 
 typedef struct brace_element
 {
@@ -1825,14 +1828,9 @@ read_command ()
         if (!(def->flags & ME_RECURSE))
           def->inhibited = 1;
 
-        /* If we're expanding a macro, we better get the HTML output
-           started, in case the macro produces something.  The normal
-           condition in add_char doesn't apply because macro expansion
-           sets executing_string.  */
-        if (html && !html_output_head_p)
-          html_output_head ();        
-
+        executing_macro++;
         execute_macro (def);
+        executing_macro--;
 
         if (!(def->flags & ME_RECURSE))
           def->inhibited = 0;
@@ -2383,7 +2381,8 @@ add_char (character)
 	   the document can do @settitle, @documentlanguage, etc, in
 	   any order and with any omissions, and we'll still output
 	   the html <head> `just in time'.  */
-	if (!executing_string && html && !html_output_head_p)
+	if ((executing_macro || !executing_string)
+            && html && !html_output_head_p)
 	  html_output_head ();
 
         if (!paragraph_is_open)
