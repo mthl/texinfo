@@ -1,5 +1,7 @@
 2003-04-30    <karl@gnu.org>
 
+	* makeinfo/.gdbinit: no colon on local variables.
+
 	* doc/texinfo.txi (documentencoding): Document new Info output feature.
 	makeinfo/lang.h (encoding_type): rename `ecname' member to `encname'.
 	makeinfo/html.c, lang.c: change usage.
