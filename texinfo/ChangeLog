@@ -1,9 +1,21 @@
 2002-09-28    <karl@gnu.org>
 
+	* makeinfo/insertion.c (begin_insertion): only do <pre>, not
+	<br><pre>; suggestion from Werner.
+
 	* info/infodoc.c: document the bug regarding where_is_rep_index,
 	but don't fix it since it's in the [!INFOKEY] code.
 
-	These patches from: Thierry Vignaud <tvignaud@mandrakesoft.com>,
+   2002-05-18  Eli Zaretskii  <eliz@is.elta.co.il>
+	These changes make @example be indented in HTML output, and make
+	@exdent work inside an @example in HTML.
+
+	* makeinfo/insertion.c (begin_insertion) <example>: Insert spaces
+	after <pre> to produce indentation of the first line in HTML mode.
+
+	* makeinfo/makeinfo.c (indent): Do indent even in HTML mode.
+
+    These patches from: Thierry Vignaud <tvignaud@mandrakesoft.com>,
 	24 Apr 2002 20:52:37 +0200.
 
 	* makeinfo/insertion.c: doc fix.
