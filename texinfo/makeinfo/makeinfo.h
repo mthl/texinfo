@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.1 2002-08-25 23:38:39 karl Exp $
+   $Id: makeinfo.h,v 1.2 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -194,6 +194,9 @@ DECLARE (int, process_plaintext, -1);
 
 /* Nonzero means that we process @tex and @iftex.  (--iftex) */
 DECLARE (int, process_tex, 0);
+
+/* Nonzero means that we process @xml and @ifxml.  (--ifxml) */
+DECLARE (int, process_xml, 0);
 
 /* Maximum number of references to a single node before complaining.
    (--reference-limit) */

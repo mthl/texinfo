@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.2 2002-09-29 00:09:25 karl Exp $
+   $Id: makeinfo.c,v 1.3 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -494,12 +494,14 @@ struct option long_options[] =
   { "ifinfo", 0, &process_info, 1 },
   { "ifplaintext", 0, &process_plaintext, 1 },
   { "iftex", 0, &process_tex, 1 },
+  { "ifxml", 0, &process_xml, 1 },
   { "macro-expand", 1, 0, 'E' },
   { "no-headers", 0, &no_headers, 1 },
   { "no-ifhtml", 0, &process_html, 0 },
   { "no-ifinfo", 0, &process_info, 0 },
   { "no-ifplaintext", 0, &process_plaintext, 0 },
   { "no-iftex", 0, &process_tex, 0 },
+  { "no-ifxml", 0, &process_xml, 0 },
   { "no-number-footnotes", 0, &number_footnotes, 0 },
   { "no-number-sections", 0, &number_sections, 0 },
   { "no-pointer-validate", 0, &validating, 0 },
@@ -702,6 +704,7 @@ For more information about these matters, see the files named COPYING.\n"),
         case 'x': /* --xml */
           splitting = 0;
  	  xml = 1;
+	  process_xml = 1;
           break;
  
         case '?':
@@ -1992,7 +1995,7 @@ reader_loop ()
         case '<':
           if (html && escape_html)
             add_word ("&lt;");
-	  else if (xml)
+	  else if (xml && escape_html)
 	    xml_insert_entity ("lt");
           else
             add_char (character);
@@ -2002,7 +2005,7 @@ reader_loop ()
         case '>':
           if (html && escape_html)
             add_word ("&gt;");
-	  else if (xml)
+	  else if (xml && escape_html)
 	    xml_insert_entity ("gt");
           else
             add_char (character);
@@ -2387,7 +2390,7 @@ add_char (character)
             /* This horrible kludge of checking for a < prevents <p>
                from being inserted when we already have html markup
                starting a paragraph, as with <ul> and <h1> and the like.  */
-            if (html && escape_html && character != '<'
+            if ((html || xml) && escape_html && character != '<'
                 && (!in_fixed_width_font || in_menu || in_detailmenu))
               {
                 insert_string ("<p>");
@@ -3392,20 +3395,14 @@ void
 cm_image (arg)
      int arg;
 {
-  char *name_arg, *rest, *alt_arg, *ext_arg;
+  char *name_arg, *w_arg, *h_arg, *alt_arg, *ext_arg;
 
   if (arg == END)
     return;
 
   name_arg = get_xref_token (1); /* expands all macros in image */
-  /* We don't (yet) care about the next two args, but read them so they
-     don't end up in the text.  */
-  rest = get_xref_token (0);
-  if (rest)
-    free (rest);
-  rest = get_xref_token (0);
-  if (rest)
-    free (rest);
+  w_arg = get_xref_token (0);
+  h_arg = get_xref_token (0);
   alt_arg = get_xref_token (1); /* expands all macros in alt text */
   ext_arg = get_xref_token (0);
 
@@ -3450,7 +3447,7 @@ cm_image (arg)
 	xml_insert_docbook_image (name_arg);
       else if (xml)
 	{
-	  xml_insert_element (IMAGE, START);
+	  xml_insert_element_with_attribute (IMAGE, START, "width=\"%s\" height=\"%s\" alttext=\"%s\" extension=\"%s\"", w_arg, h_arg, alt_arg, ext_arg);
 	  add_word (name_arg);
 	  xml_insert_element (IMAGE, END);
 	}
@@ -3495,6 +3492,10 @@ cm_image (arg)
 
   if (name_arg)
     free (name_arg);
+  if (w_arg)
+    free (w_arg);
+  if (h_arg)
+    free (h_arg);
   if (alt_arg)
     free (alt_arg);
   if (ext_arg)

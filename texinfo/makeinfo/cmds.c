@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.2 2002-09-27 18:16:42 karl Exp $
+   $Id: cmds.c,v 1.3 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -237,9 +237,11 @@ COMMAND command_table[] = {
   { "ifnotinfo", cm_ifnotinfo, NO_BRACE_ARGS },
   { "ifnotplaintext", cm_ifnotplaintext, NO_BRACE_ARGS },
   { "ifnottex", cm_ifnottex, NO_BRACE_ARGS },
+  { "ifnotxml", cm_ifnotxml, NO_BRACE_ARGS },
   { "ifplaintext", cm_ifplaintext, NO_BRACE_ARGS },
   { "ifset", cm_ifset, NO_BRACE_ARGS },
   { "iftex", cm_iftex, NO_BRACE_ARGS },
+  { "ifxml", cm_ifxml, NO_BRACE_ARGS },
   { "ignore", command_name_condition, NO_BRACE_ARGS },
   { "image", cm_image, BRACE_ARGS },
   { "include", cm_include, NO_BRACE_ARGS },
@@ -345,6 +347,7 @@ COMMAND command_table[] = {
   { "vindex", cm_vindex, NO_BRACE_ARGS },
   { "vtable", cm_vtable, NO_BRACE_ARGS },
   { "w", cm_w, BRACE_ARGS },
+  { "xml", cm_html, NO_BRACE_ARGS },
   { "xref", cm_xref, BRACE_ARGS },
 
   /* Deprecated commands.  These used to be for italics.  */

@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: insertion.h,v 1.2 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002 Free Software Foundation, Inc.
 
@@ -28,8 +28,8 @@ enum insertion_type
   deftypemethod, deftypeop, deftypevar, deftypevr, defun, defvar, defvr,
   detailmenu, direntry, display, documentdescription, enumerate,
   example, flushleft, flushright, format, ftable, group, ifclear,
-  ifhtml, ifinfo, ifnothtml, ifnotinfo, ifnotplaintext, ifnottex,
-  ifplaintext, ifset, iftex, itemize, lisp, menu, multitable, quotation,
+  ifhtml, ifinfo, ifnothtml, ifnotinfo, ifnotplaintext, ifnottex, ifnotxml, 
+  ifplaintext, ifset, iftex, ifxml, itemize, lisp, menu, multitable, quotation,
   rawhtml, rawtex, smalldisplay, smallexample, smallformat, smalllisp,
   verbatim, table, tex, vtable, bad_type
 };
@@ -60,4 +60,5 @@ extern void cm_ifhtml (), cm_ifnothtml(), cm_html ();
 extern void cm_ifinfo (), cm_ifnotinfo ();
 extern void cm_ifplaintext (), cm_ifnotplaintext();
 extern void cm_iftex (), cm_ifnottex (), cm_tex ();
+extern void cm_ifxml (), cm_ifnotxml ();
 #endif /* !INSERTION_H */

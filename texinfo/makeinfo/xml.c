@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.1 2002-08-25 23:38:39 karl Exp $
+   $Id: xml.c,v 1.2 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 2001, 02 Free Software Foundation, Inc.
 
@@ -493,6 +493,9 @@ xml_end_document ()
 	}
       xml_insert_element (NODE, END);
     }
+  else
+    xml_close_sections (xml_node_level);
+
   xml_insert_element (TEXINFO, END);
   insert_string ("\n");
   insert_string ("<!-- Keep this comment at the end of the file\n\

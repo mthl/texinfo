@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.4 2002-09-29 00:08:44 karl Exp $
+   $Id: insertion.c,v 1.5 2002-09-29 19:15:20 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -34,8 +34,8 @@ static char *insertion_type_names[] =
   "deftypevar", "deftypevr", "defun", "defvar", "defvr", "detailmenu",
   "direntry", "display", "documentdescription", "enumerate", "example",
   "flushleft", "flushright", "format", "ftable", "group", "ifclear",
-  "ifhtml", "ifinfo", "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex",
-  "ifplaintext", "ifset", "iftex", "itemize", "lisp", "menu",
+  "ifhtml", "ifinfo", "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex", "ifnotxml",
+  "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp", "menu",
   "multitable", "quotation", "rawhtml", "rawtex", "smalldisplay",
   "smallexample", "smallformat", "smalllisp", "verbatim", "table",
   "tex", "vtable", "bad_type"
@@ -100,9 +100,11 @@ current_item_function ()
         case ifnotinfo:
         case ifnotplaintext:
         case ifnottex:
+	case ifnotxml:
         case ifplaintext:
         case ifset:
         case iftex:
+	case ifxml:
         case rawhtml:
         case rawtex:
         case tex:
@@ -210,6 +212,8 @@ find_type_from_name (name)
       if (STREQ (name, insertion_type_names[index]))
         return (enum insertion_type) index;
       if (index == rawhtml && STREQ (name, "html"))
+        return rawhtml;
+      if (index == rawhtml && STREQ (name, "xml"))
         return rawhtml;
       if (index == rawtex && STREQ (name, "tex"))
         return rawtex;
@@ -617,9 +621,11 @@ begin_insertion (type)
     case ifnotinfo:
     case ifnotplaintext:
     case ifnottex:
+    case ifnotxml:
     case ifplaintext:
     case ifset:
     case iftex:
+    case ifxml:
     case rawtex:
       if (in_menu)
         no_discard++;
@@ -774,9 +780,11 @@ end_insertion (type)
     case ifnotinfo:
     case ifnotplaintext:
     case ifnottex:
+    case ifnotxml:
     case ifplaintext:
     case ifset:
     case iftex:
+    case ifxml:
     case rawtex:
       break;
 
@@ -1222,7 +1230,7 @@ cm_group ()
 void
 cm_html ()
 {
-  if (process_html)
+  if (process_html || process_xml)
     begin_insertion (rawhtml);
   else
     command_name_condition ();
@@ -1311,6 +1319,25 @@ cm_ifnottex ()
   else
     command_name_condition ();
 }
+
+void
+cm_ifxml ()
+{
+  if (process_xml)
+    begin_insertion (ifxml);
+  else
+    command_name_condition ();
+}
+
+void
+cm_ifnotxml ()
+{
+  if (!process_xml)
+    begin_insertion (ifnotxml);
+  else
+    command_name_condition ();
+}
+
 
 /* Begin an insertion where the lines are not filled or indented. */
 void
@@ -1442,9 +1469,11 @@ cm_item ()
         case ifnotinfo:
         case ifnotplaintext:
         case ifnottex:
+	case ifnotxml:
         case ifplaintext:
         case ifset:
         case iftex:
+	case ifxml:
         case rawhtml:
         case rawtex:
         case tex:
