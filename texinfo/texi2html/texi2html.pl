@@ -343,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.12 2003-01-16 16:25:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.13 2003-01-22 16:53:40 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -3099,6 +3099,8 @@ sub PrintIndex
     $sec_name =~ s/.*? // if $sec_name =~ /^([A-Z]|\d+)\./;
 
     ($first_page->{href} = sec_href($section)) =~ s/\#.*$//;
+    # FIXME $node2sec{$section} might be undef inwhich case Sec2PrevNode returns
+    # Top
     $node2prev{$section} = Sec2PrevNode($node2sec{$section});
     $prev_node = $section;
     # Update tree structure of document
@@ -3213,10 +3215,11 @@ sub pass2
                 $node = $2;
                 $descr = $';
             }
-            elsif (/^\*/)
-            {
-                warn "$ERROR Bad menu line: $_";
-            }
+                #pertusus: makeinfo doesn't complain here
+            #elsif (/^\*/)
+            #{
+                #warn "$ERROR Bad menu line: $_";
+            #}
             else
             {
                 if ($in_menu_listing)
@@ -3235,7 +3238,7 @@ sub pass2
                     push(@lines2, &debug("<table border=\"0\" cellspacing=\"0\">\n", __LINE__));
                 }
                 # look for continuation
-                while ($lines[0] =~ /^\s+\w+/)
+                while ($lines[0] =~ /^\s+.*$/)
                 {
                     $descr .= shift(@lines);
                 }
@@ -3316,6 +3319,11 @@ sub pass2
             @args = split(/\s*,\s*/, $nodes);
             $node = $args[0];   # the node is always the first arg
             $node = &normalise_node($node);
+            if ($node =~ s/^\(([^\s\(\)]+)\)\s*//)
+            {
+                $args[3] = $1 unless ($args[3]);
+                $args[0] = $node;
+            }
             $sec = $args[2] || $args[1] || $node2sec{$node};
             $href = $node2href{$node};
             if (@args == 5)
@@ -3325,11 +3333,25 @@ sub pass2
                 $_ = "${before}${type}$T2H_WORDS->{$T2H_LANG}->{'section'} `$sec' in \@cite{$man}$after";
             }
             elsif ($type =~ /Info/)
-            {                   # inforef
+            {                   # inforef 
                 warn "$ERROR Wrong number of arguments: $_" unless @args == 3;
                 ($nn, $_, $in) = @args;
                 $_ = "${before}${type} file `$in', node `$nn'$after";
             }
+            elsif (@args == 4)
+            {        # ref to info file        
+                my $dummy;
+                ($nn, $dummy, $dummy, $in) = @args;
+                if ($nn)
+                {
+                    $_ = "${before}${type}Info `$in', node `$nn'$after";
+                }
+                else 
+                {
+                    $_ = "${before}${type}${in}$after";
+                }
+            }
+            
             elsif ($sec && $href && ! $T2H_SHORT_REF)
             {
                 $_  = "${before}${type}";
@@ -4041,8 +4063,12 @@ sub Sec2UpNode
 sub Sec2PrevNode
 {
     my $sec = shift;
-    my $sec_num = $sec2seccount{$sec} - 1;
-    return "Top" if !$sec_num || $sec_num < 1;
+    my $sec_num = 0;
+    if (defined($sec) and defined($sec2seccount{$sec})) 
+    { 
+        $sec_num = $sec2seccount{$sec} - 1;
+    }
+    return "Top" if $sec_num < 1;
     return $sec2node{$seccount2sec{$sec_num}};
 }
 
