@@ -45,6 +45,12 @@ if [ ! -f $dir/$texi_file ]; then
 fi
 (cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html ${basename}_???.htm ${basename}_??.htm ${basename}_?.htm ${basename}_????.png ${basename}_???.png ${basename}_??.png ${basename}_?.png ${basename}_l2h.css ${basename}_l2h.html ${basename}_l2h_images.* ${basename}_l2h_labels.pl ${basename}_l2h.tex $basename.passfirst $basename.passtexi $basename.2 l2h_cache.pm) > /dev/null 2>&1
 export T2H_HOME=../..
+
+# generate a dump of the first pass
+#(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file)
+#(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
+(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
+
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/inlinestyle.init $texi_file) 2>$dir/$stderr_file > /dev/null
@@ -57,11 +63,6 @@ if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
 elif [ $ret != 0 -a $fail = 'success' ]; then echo "    !!! no success";
 else echo "    passed"
 fi
-
-# generate a dump of the first pass
-#(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file)
-#(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
-(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
 	echo "  stderr line count:"

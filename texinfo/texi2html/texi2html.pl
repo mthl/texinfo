@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.86 2003-11-25 10:35:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.87 2003-12-01 00:35:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -160,6 +160,7 @@ our $FRAMESET_DOCTYPE ;
 our $CHECK ;
 our $TEST ;
 our $DUMP_TEXI;
+our $MACRO_EXPAND;
 our $USE_GLOSSARY ;
 our $INVISIBLE_MARK ;
 our $USE_ISO ;
@@ -1100,6 +1101,13 @@ $T2H_OPTIONS -> {'dump-texi'} =
  linkage => \$Texi2HTML::Config::DUMP_TEXI,
  verbose => 'dump the output of first pass into a file with extension passfirst and exit',
  noHelp => 1
+};
+
+$T2H_OPTIONS -> {'macro-expand'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::MACRO_EXPAND,
+ verbose => 'output macro expanded source in <file>',
 };
 
 $T2H_OPTIONS -> {'expand'} =
@@ -2723,6 +2731,8 @@ sub initialise_state_texi($)
     $state->{'copying'} = 0;        # number of opened copying
 }
 
+my @first_lines = ();
+
 sub pass_texi()
 {
     my $first_lines = 1;        # is it the first lines
@@ -2741,6 +2751,7 @@ sub pass_texi()
         {
             if (/^\\input/)
             {
+                push @first_lines, $_;
                 $first_lines = 0;
                 next;
             }
@@ -2750,6 +2761,7 @@ sub pass_texi()
             }
             else
             {
+                push @first_lines, $_;
                 next;
             }
         }
@@ -5629,14 +5641,16 @@ sub format_line_number($)
 }
 
 # to debug, dump the result of pass_texi and pass_structure in a file
-sub dump_texi($$;$)
+sub dump_texi($$;$$)
 {
     my $lines = shift;
     my $pass = shift;
     my $numbers = shift;
-    unless (open(DMPTEXI, ">$docu_rdir$docu_name" . ".pass$pass"))
+    my $file = shift;
+    $file = "$docu_rdir$docu_name" . ".pass$pass" if (!defined($file));
+    unless (open(DMPTEXI, ">$file"))
     {
-         warn "Can't open > $docu_rdir$docu_name" . ".pass$pass for writing: $!\n";
+         warn "Can't open $file for writing: $!\n";
     }
     print STDERR "# Dump texi\n" if ($T2H_VERBOSE);
     my $index = 0;
@@ -5644,7 +5658,7 @@ sub dump_texi($$;$)
     {
         my $number_information = '';
         my $chomped_line = $line;
-        $number_information = "$numbers->[$index]->{'file_name'}($numbers->[$index]->{'macro'},$numbers->[$index]->{'line_nr'}) " if ($numbers);
+        $number_information = "$numbers->[$index]->{'file_name'}($numbers->[$index]->{'macro'},$numbers->[$index]->{'line_nr'}) " if (defined($numbers));
         print DMPTEXI "${number_information}$line";
         $index++ if (chomp($chomped_line));
     }
@@ -6979,7 +6993,7 @@ sub scan_texi($$$$;$)
     while(1)
     {
         #print STDERR "WHILE\n";
-	#dump_stack($text, $stack, $state);
+        #dump_stack($text, $stack, $state);
 
         # In ignored region
         if ($state->{'ignored'})
@@ -9030,7 +9044,6 @@ sub scan_line($$$$;$)
         { # A macro with a character which shouldn't appear in macro name
             add_prev($text, $stack, do_text($1, $state));
             $_ = do_unknown ($2, $_, $text, $stack, $state, $line_nr);
-            #echo_error ("Unknown command: `\@$2'", $line_nr);
             #add_prev($text, $stack, do_text($1 ."\@$2", $state));
             next;
         }
@@ -9343,7 +9356,7 @@ sub add_item($$$$;$)
 
               my @letter_ords = decompose(ord($spec) - $base_letter + $format->{'item_nr'} - 1, 26);
               foreach my $ord (@letter_ords)
-              {#FIXME we go directly to 'ba' after 'z', and not 'aa'
+              {#FIXME? we go directly to 'ba' after 'z', and not 'aa'
                #because 'ba' is 1,0 and 'aa' is 0,0.
                    $format->{'number'} = chr($base_letter + $ord) . $format->{'number'};
               }
@@ -9584,46 +9597,99 @@ sub close_stack($$$$;$$)
     my $string = '';
     my $verb = '';
     
-    if ($state->{'verb'})
-    {
-        $string .= $state->{'verb'};
-        $verb = $state->{'verb'};
-    }
-    if ($state->{'raw'})
-    {
-        if (defined($close_paragraph))
-        {
-            print STDERR "Bug: close_paragraph is true and we're in raw";
-        }
-        $string .= "\@end $state->{'raw'} ";
-        warn "$WARN closing $state->{'raw'}\n"; 
-        $stack_level--;
-    }
     if ($state->{'ignored'})
     {
         $string .= "\@end $state->{'ignored'} ";
         echo_warn ("closing $state->{'ignored'}", $line_nr); 
         #warn "$WARN closing $state->{'ignored'}\n"; 
     }
-    if ($state->{'macro'})
+    if ($state->{'texi'})
     {
-        $string .= "\@end macro ";
-        echo_warn ("closing macro", $line_nr); 
-        #warn "$WARN closing macro\n"; 
+        if ($state->{'macro'})
+        {
+            $string .= "\@end macro ";
+            echo_warn ("closing macro", $line_nr); 
+            #warn "$WARN closing macro\n"; 
+        }
+        elsif ($state->{'macro_name'})
+        {
+            $string .= ('}' x $state->{'macro_depth'}) . " ";
+            echo_warn ("closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)", $line_nr); 
+            #warn "$WARN closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)\n"; 
+        }
+        elsif ($state->{'verb'})
+        {
+            echo_warn ("closing \@verb", $line_nr); 
+            $string .= $state->{'verb'} . '}';
+            $verb = $state->{'verb'};
+        }
+        elsif ($state->{'raw'})
+        {
+            if (defined($close_paragraph))
+            {
+                print STDERR "Bug: close_paragraph is true and we're in raw";
+            }
+            echo_warn ("closing \@$state->{'raw'} raw format", $line_nr);
+            $string .= "\@end $state->{'raw'} ";
+        }
+        if ($string ne '')
+        {
+            #print STDERR "scan_texi ($string)\n";
+            scan_texi ($string, $text, $stack, $state, $line_nr);
+            $string = '';
+        }
+        if ($state->{'copying'})
+        {
+            $string .= '@end copying ' x $state->{'copying'};
+            echo_warn ("closing $state->{'copying'} copying", $line_nr); 
+            #warn "$WARN closing $state->{'copying'} copying\n"; 
+        }
     }
-    if ($state->{'macro_name'})
+    elsif ($state->{'verb'})
     {
-        $string .= ('}' x $state->{'macro_depth'}) . " ";
-        echo_warn ("closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)", $line_nr); 
-        #warn "$WARN closing $state->{'macro_name'} ($state->{'macro_depth'} braces missing)\n"; 
+        $string .= $state->{'verb'};
+        $verb = $state->{'verb'};
     }
-    if ($state->{'copying'})
+
+    if ($state->{'texi'} or $state->{'structure'})
     {
-        $string .= '@end copying ' x $state->{'copying'};
-        echo_warn ("closing $state->{'copying'} copying", $line_nr); 
-        #warn "$WARN closing $state->{'copying'} copying\n"; 
-    }
-    
+        while ($stack_level--)
+        {
+              my $stack_text = $stack->[$stack_level]->{'text'};
+              $stack_text = '' if (!defined($stack_text));
+              if ($stack->[$stack_level]->{'format'})
+              {
+                   my $format = $stack->[$stack_level]->{'format'};
+                   if ($format eq 'index_item')
+                   {
+                        enter_table_index_entry($text, $stack, $state, $line_nr);
+                        next;
+                   }
+                   elsif (!defined($format_type{$format}) or ($format_type{$format} ne 'fake'))
+                   {
+                        $stack_text = "\@$format\n" . $stack_text;
+                   }
+              }
+              elsif (defined($stack->[$stack_level]->{'style'}))
+              {
+                  my $style = $stack->[$stack_level]->{'style'};
+                  if ($style ne '')
+                  {
+                       $stack_text = "\@$style\{" . $stack_text;
+                  }
+                  else
+                  {
+                       $stack_text = "\{" . $stack_text;
+                  }
+             }
+             pop @$stack;
+             add_prev($text, $stack, $stack_text);
+        }
+        $stack = [ ];
+        $stack_level = 0;
+        #return ($text, [ ], $state);
+    } 
+
     #debugging
     #my $print_format = 'NO FORMAT';
     #$print_format = $format if ($format);
@@ -9682,7 +9748,7 @@ sub close_stack($$$$;$$)
     }
     $state->{'no_close'} = 1 if ($close_paragraph);
     $state->{'close_stack'} = 1;
-    if ($string)
+    if ($string ne '')
     {
         if ($state->{'texi'})
         {
@@ -9703,7 +9769,7 @@ sub close_stack($$$$;$$)
     }
     delete $state->{'no_close'};
     delete $state->{'close_stack'};
-    $state->{'verb'} = $verb if ($verb and $close_paragraph);
+    $state->{'verb'} = $verb if (($verb ne '') and $close_paragraph);
     return ($text, $stack, $state, $new_stack);
 }
 
@@ -10056,6 +10122,11 @@ Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
  if ($Texi2HTML::Config::L2H);
 pass_texi();
 dump_texi(\@lines, 'texi', \@lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
+if (defined($Texi2HTML::Config::MACRO_EXPAND))
+{
+    my @texi_lines = (@first_lines, @lines);
+    dump_texi(\@texi_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND);
+}
 # do copyright notice inserted in comment at the begining of the files
 if (@copying_lines)
 {
@@ -10067,9 +10138,17 @@ if (@copying_lines)
     $copying_comment = &$Texi2HTML::Config::comment($copying_comment) . "\n";
 }
 pass_structure();
-dump_texi(\@doc_lines, 'first', \@doc_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
-#dump_texi(\@doc_lines, 'first') if ($T2H_DEBUG & $DEBUG_TEXI);
-exit(0) if $Texi2HTML::Config::DUMP_TEXI;
+if ($T2H_DEBUG & $DEBUG_TEXI)
+{
+    dump_texi(\@doc_lines, 'first', \@doc_numbers);
+    if (defined($Texi2HTML::Config::MACRO_EXPAND and $Texi2HTML::Config::DUMP_TEXI))
+    {
+        unshift (@doc_lines, @first_lines);
+        push (@doc_lines, "\@bye\n");
+        dump_texi(\@doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
+    }
+}
+exit(0) if ($Texi2HTML::Config::DUMP_TEXI or defined($Texi2HTML::Config::MACRO_EXPAND));
 rearrange_elements();
 do_names();
 if (@documentdescription_lines)

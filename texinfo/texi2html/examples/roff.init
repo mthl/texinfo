@@ -90,7 +90,7 @@ sub T2H_ROFF_titlepage ()
         $result .= ".sp 4\n" if ($result ne '');
         foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
         {
-            $result .= $author . "\n.br\n";
+            $result .= protect_spaces($author) . "\n.br\n";
         }
         $result .= ".sp 2\n" if (@{$Texi2HTML::THISDOC{'authors'}});
     }
