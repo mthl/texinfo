@@ -1,3 +1,7 @@
+2002-09-23    <karl@gnu.org>
+
+	* INSTALL.generic: update from autoconf 2.54.
+
 2002-09-20  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.11.5.

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.2 2002-09-12 21:27:15 karl Exp $
+# $Id: Makefile.am,v 1.3 2002-09-24 15:33:52 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -24,6 +24,6 @@ LDADD = ../lib/libtxi.a @LIBINTL@
 # install-info will be built on every make, and make distcleancheck will
 # fail.  (These bugs have been reported [several times] to bug-automake.)
 # 
-EXTRA_DIST = README automake.diff deref.c fix-info-dir fixfonts \
+EXTRA_DIST = README automake.diff deref.c dir-example fix-info-dir fixfonts \
   fixref.gawk gen-dir-node install-info-html outline.gawk prepinfo.awk \
-  tex3patch texi-docstring-magic.el texi2dvi 
+  tex3patch texi-docstring-magic.el texi2dvi
