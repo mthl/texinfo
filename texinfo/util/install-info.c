@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.4 2002-11-05 19:32:33 karl Exp $
+   $Id: install-info.c,v 1.5 2002-11-19 13:55:52 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -462,8 +462,10 @@ The first time you invoke Info you start off looking at this node.\n\
   In Emacs, you can click mouse button 2 on a menu item or cross reference\n\
   to select it.\n\
 \n\
-* Menu:\n\
-"), "File: dir,\tNode: Top"); /* This part must not be translated.  */
+%s\n\
+"), "File: dir,\tNode: Top",  /* These keywords must not be translated.  */
+    "* Menu:"
+); /* This part must not be translated.  */
           if (fclose (f) < 0)
             pfatal_with_name (dirfile);
         }
