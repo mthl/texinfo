@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.20 2003-04-04 17:03:46 pertusus Exp $
+# $Id: texi2html.init,v 1.21 2003-04-10 12:08:20 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -34,6 +34,8 @@ $T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "
 $T2H_FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html401/frameset.dtd">';
 
 $T2H_TEST = 0;
+
+$T2H_DUMP_TEXI = 0;
 
 # -expand
 # if set to "tex" (or, "info") expand @iftex and @tex (or, @ifinfo) sections
@@ -439,6 +441,7 @@ $T2H_print_navigation	      = \&T2H_DEFAULT_print_navigation;
 $T2H_about_body		      = \&T2H_DEFAULT_about_body;
 $T2H_print_frame              = \&T2H_DEFAULT_print_frame;
 $T2H_print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
+$T2H_toc_body                 = \&T2H_DEFAULT_toc_body;
 
 ########################################################################
 # Layout for html for every sections
@@ -752,8 +755,8 @@ sub T2H_DEFAULT_print_navigation
                 'title="' . ucfirst($T2H_BUTTONS_GOTO{$button}) . '"' : '';
             if ($T2H_ICONS && $T2H_ACTIVE_ICONS{$button})
             {                   # use icon
-                print $fh
-                    &t2h_anchor('',
+                print $fh '' .
+                    &$t2h_anchor('',
                                 $T2H_HREF{$button},
                                 &$T2H_button_icon_img($button,
                                                     $T2H_ACTIVE_ICONS{$button},
@@ -764,12 +767,12 @@ sub T2H_DEFAULT_print_navigation
             else
             {                   # use text
                 print $fh
-                    '[',
-                        &t2h_anchor('',
+                    '[' .
+                        &$t2h_anchor('',
                                     $T2H_HREF{$button},
                                     $T2H_NAVIGATION_TEXT{$button},
                                     $btitle
-                                   ),
+                                   ) .
                                        ']';
             }
         }
@@ -824,6 +827,64 @@ EOT
     print $fh "</body></html>\n";
 }
 
+sub T2H_DEFAULT_toc_body($$$)
+{
+    my $elements_list = shift;
+    my $do_contents = shift;
+    my $do_scontents = shift;
+    return unless ($do_contents or $do_scontents or $T2H_FRAMES);
+    my $current_level = 0;
+    my $toc_nr = 0;
+    my $ul_style = $T2H_NUMBER_SECTIONS ? ' style="list-style: none"' : ''; 
+    foreach my $element (@$elements_list)
+    {
+        next if ($element->{'top'} or $element->{'index_page'});
+        my $ind = '  ' x $current_level;
+        my $level = $element->{'toc_level'};
+        if ($level > $current_level)
+        {
+            while ($level > $current_level)
+            {
+                $current_level++;
+                my $ln = "\n$ind<ul${ul_style}>\n";
+                $ind = '  ' x $current_level;
+                push(@T2H_TOC_LINES, $ln);
+            }
+        }
+        elsif ($level < $current_level)
+        {
+            while ($level < $current_level)
+            {
+                $current_level--;
+                $ind = '  ' x $current_level;
+                push(@T2H_TOC_LINES, "</li>\n$ind</ul></li>\n");
+            }
+        }
+        else
+        {
+            push(@T2H_TOC_LINES, "</li>\n");
+        }
+        $toc_nr++;
+        my $file = '';
+        $file = $element->{'file'} if ($T2H_SPLIT);
+        my $entry = "<li>" . &$t2h_anchor('TOC' . $toc_nr, "$file#$element->{'id'}",$element->{'text'});
+        push (@T2H_TOC_LINES, $ind . $entry);
+        push(@T2H_STOC_LINES, $entry. "</li>\n") if ($level == 1);
+    }
+    while (0 < $current_level)
+    {
+        $current_level--;
+        my $ind = '  ' x $current_level;
+        push(@T2H_TOC_LINES, "</li>\n$ind</ul>\n");
+    }
+    @T2H_TOC_LINES = () unless ($do_contents);
+    @T2H_STOC_LINES = () unless ($do_scontents or $T2H_FRAMES);
+    if (@T2H_STOC_LINES)
+    {
+        unshift @T2H_STOC_LINES, "<ul${ul_style}>\n";
+        push @T2H_STOC_LINES, "</ul>\n";
+    }
+}
 ######################################################################
 # About page
 #
@@ -941,6 +1002,916 @@ EOT
     return $about;
 }
 
+########################################################################
+# Control of formatting:
+# 1.) For some changes, it is often enough to change the value of
+#     some global map. It might necessitate building a little
+#     function along with the change in hash, if the change is the use
+#     of another function (in style_map).
+# 2.) For other changes, reimplement one of the t2h_default_<fnc>* routines,
+#     give them another name, and assign them to the respective
+#     $t2h_<fnc> variable (below).
+
+
+#
+# accent map, TeX command to ISO name
+#
+%accent_map = (
+          '"',  'uml',
+          '~',  'tilde',
+          '^',  'circ',
+          '`',  'grave',
+          '\'', 'acute',
+          '=', '',
+         );
+
+#
+# texinfo "simple things" (@foo) to HTML ones
+#
+%simple_map = (
+           # cf. makeinfo.c
+           "*", "<br>",     # HTML+
+           " ", "&nbsp;",
+           "\t", "&nbsp;",
+           "-", "&#173;",	 # soft hyphen
+           "\n", "&nbsp;",
+           "|", "",
+       # spacing commands
+           ":", "",
+           "!", "!",
+           "?", "?",
+           ".", ".",
+           "-", "",
+           '@', '@',
+           '}', '}',
+           '{', '{',
+          );
+# this map is used in preformatted text
+%simple_map_pre = %simple_map;
+$simple_map_pre{'*'} = "\n";
+
+#
+# texinfo "things" (@foo{}) to HTML ones
+#
+%things_map = (
+               'TeX', 'TeX',
+               'br', '<br>',     # paragraph break
+               'bullet', '*',
+               #'copyright', '(C)',
+               'copyright', '&copy;',
+               'dots', '<small>...</small>',
+               'enddots', '<small>....</small>',
+               'equiv', '==',
+               'error', 'error--&gt;',
+               'expansion', '==&gt;',
+               'minus', '-',
+               'point', '-!-',
+               'print', '-|',
+               'result', '=&gt;',
+               # APA: &pretty_date requires $MONTH_NAMES and $T2H_LANG
+               # to be initialized.  The latter gets initialized by
+               # &SetDocumentLanguage in &main.
+               # We set following hash entry in &main afterwards.
+               # 'today', &pretty_date,
+               'aa', '&aring;',
+               'AA', '&Aring;',
+               'ae', '&aelig;',
+               'oe', '&#156;',
+               'AE', '&AElig;',
+               'OE', '&#140;',
+               'o',  '&oslash;',
+               'O',  '&Oslash;',
+               'ss', '&szlig;',
+               'l', '/l',
+               'L', '/L',
+               'exclamdown', '&iexcl;',
+               'questiondown', '&iquest;',
+               'pounds', '&pound;'
+             );
+
+# This map is used in preformatted environments
+%pre_map = %things_map;
+$pre_map{'dots'} = '...';
+$pre_map{'enddots'} = '....';
+$pre_map{'br'} = "\n";
+
+#
+# texinfo styles (@foo{bar}) to HTML ones
+#
+# When the value begins with & the function with that name is used to do the
+# html. The first argument is the text enclosed within {}, the second is the
+# style name (which is also the key of the hash)
+#
+# Otherwithe the value is the html element used to enclose the text, and if
+# there is a " the resulting text is also enclosed within `'
+%style_map = (
+      'acronym',    '',
+      'asis',       '',
+      'b',          'b',
+      'cite',       'cite',
+      'code',       'code',
+      'command',    'code',
+      'ctrl',       '&do_ctrl',   # special case
+      'dfn',        'em',         # DFN tag is illegal in the standard
+      'dmn',        '',           # useless
+      'email',      '&do_email',  # insert a clickable email address
+      'emph',       'em',
+      'env',        'code',
+      'file',       '"tt',        # will put quotes, cf. &apply_style
+      'i',          'i',
+      'kbd',        'kbd',
+      'key',        'kbd',
+      'math',       '&t2h_math',
+      'option',     '"samp',      # will put quotes, cf. &apply_style
+      'r',          '',           # unsupported
+      'samp',       '"samp',      # will put quotes, cf. &apply_style
+      'sc',         '&do_sc',     # special case
+      'strong',     'strong',
+      't',          'tt',
+      'titlefont',  '',           # useless
+      'uref',       '&do_uref',   # insert a clickable URL
+      'url',        '&do_url',    # insert a clickable URL
+      'var',        'var',
+      'verb',       'tt',
+      'w',          '',           # unsupported
+      'H',          '&do_accent',
+      'dotaccent',  '&do_accent',
+      'ringaccent', '&do_accent',
+      'tieaccent',  '&do_accent',
+      'u',          '&do_accent',
+      'ubaraccent', '&do_accent',
+      'udotaccent', '&do_accent',
+      'v',          '&do_accent',
+      ',',          '&do_accent',
+      'm_cedilla',  '&do_accent',
+      'dotless',    '&do_accent'
+     );
+
+
+foreach my $accent (keys(%accent_map))
+{
+    $style_map{$accent} = '&do_accent';
+}
+
+# This is used for style in preformatted sections
+%style_map_pre = %style_map;
+$style_map_pre{'sc'} = '&do_sc_pre';
+
+#
+# texinfo format (@foo/@end foo) to HTML ones
+#
+%format_map = (
+       'quotation',  'blockquote',
+       # lists
+       'itemize',    'ul',
+       'enumerate',  'ol',
+       'multitable',  'table',
+       );
+
+#
+# texinfo format to align attribute of paragraphs
+#
+
+%paragraph_style = (
+      'center' => 'center',
+      'flushleft' => 'left',
+      'flushright' => 'right',
+      );
+      
+# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
+# an eval of these $complex_format_map->{what}->{'end'} yields end
+$complex_format_map =
+{
+ example =>
+ {
+  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td class=\"example\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => ''
+ },
+ smallexample =>
+ {
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smallexample\"><font size=\"$T2H_SMALL_FONT_SIZE\">"},
+  'end' => q{'</font></td></tr></table>'},
+  'pre_style' => ''
+ },
+ display =>
+ {
+  'begin' => q{"<table><tr>$T2H_EXAMPLE_INDENT_CELL<td class=\"display\">"},
+  'end' => q{'</td></tr></table>'},
+  'pre_style' => 'style="font-family: serif"'
+ },
+ smalldisplay =>
+ {
+ # FIXME font is deprecated and forbidden in pre, while pre is forbidden in font
+  'begin' => q{"<table><tr>$T2H_SMALL_EXAMPLE_INDENT_CELL<td class=\"smalldisplay\"><font size=\"$T2h_SMALL_FONT_SIZE\">"},
+  'end' => q{'</font></td></tr></table>'},
+  'pre_style' => 'style="font-family: serif"'
+ }
+};
+
+$complex_format_map->{lisp} = $complex_format_map->{example};
+$complex_format_map->{smalllisp} = $complex_format_map->{smallexample};
+$complex_format_map->{format} = $complex_format_map->{display};
+$complex_format_map->{smallformat} = $complex_format_map->{smalldisplay};
+
+#
+# texinfo definition shortcuts to real ones
+#
+%def_map = (
+    # basic commands
+    'deffn', 0,
+    'defvr', 0,
+    'deftypefn', 0,
+    'deftypeop', 0,
+    'deftypevr', 0,
+    'defcv', 0,
+    'defop', 0,
+    'deftp', 0,
+    # basic x commands
+    'deffnx', 0,
+    'defvrx', 0,
+    'deftypefnx', 0,
+    'deftypeopx', 0,
+    'deftypevrx', 0,
+    'defcvx', 0,
+    'defopx', 0,
+    'deftpx', 0,
+    # shortcuts
+    'defun', 'deffn Function',
+    'defmac', 'deffn Macro',
+    'defspec', 'deffn {Special Form}',
+    'defvar', 'defvr Variable',
+    'defopt', 'defvr {User Option}',
+    'deftypefun', 'deftypefn Function',
+    'deftypevar', 'deftypevr Variable',
+    'defivar', 'defcv {Instance Variable}',
+    'deftypeivar', 'defcv {Instance Variable}', # NEW: FIXME
+    'defmethod', 'defop Method',
+    'deftypemethod', 'defop Method', # NEW:FIXME
+    # x shortcuts
+    'defunx', 'deffnx Function',
+    'defmacx', 'deffnx Macro',
+    'defspecx', 'deffnx {Special Form}',
+    'defvarx', 'defvrx Variable',
+    'defoptx', 'defvrx {User Option}',
+    'deftypefunx', 'deftypefnx Function',
+    'deftypevarx', 'deftypevrx Variable',
+    'defivarx', 'defcvx {Instance Variable}',
+    'defmethodx', 'defopx Method',
+          );
+
+#
+# things to skip
+#
+# Depending on the value, things following the macro may be skipped:
+# 
+# if the value is 'line' then the remaining of the line is skipped
+# if the value is 'arg' then an argument is skipped
+# if the value is 'space' then any space (including new lines)
+# otherwise only the macro, or @end macro is skipped
+# 
+%to_skip = (
+        # comments
+        'comment', 'line',
+        'c', 'line',
+        # not needed after pass_texi
+        'raisesections', 1,
+        'lowersections', 1,
+        'bye', 'line',
+        'contents', 1,
+        'shortcontents', 1,
+        'summarycontents', 1,
+        # useless
+        'detailmenu', 1,
+        'end detailmenu', 1,
+        'direntry', 1,
+        'end direntry', 1,
+        'footnotestyle', 'arg',
+        # unsupported commands (formatting)
+        'afourpaper', 1,
+        'pagesizes', 'arg',
+        'cropmarks', 1,
+        'finalout', 1,
+        'headings', 'arg',
+        'sp', 'arg',
+        'need', 'arg',
+        'page', 1,
+        'setchapternewpage', 'arg',
+        'everyheading', 'line',
+        'everyfooting', 'line',
+        'evenheading', 'line',
+        'evenfooting', 'line',
+        'oddheading', 'line',
+        'oddfooting', 'line',
+        'smallbook', 1,
+        'vskip', 1,
+        'filbreak', 1,
+        'paragraphindent', 1,
+        # unsupported formats
+        'cartouche', 1,
+        'end cartouche', 1,
+        'group', 1,
+        'end group', 1,
+        'refill', 'space',  # FIXME pertusus: seems bad to me to remove 
+        'exdent', 'space',  # trailing spaces, but it was like that in the
+        'noindent', 'space' # original code
+     );
+
+# functions used for styles
+sub do_ctrl($;$) { return "^$_[0]" }
+
+sub do_email($;$)
+{
+    my($addr, $text) = split(/,\s*/, $_[0]);
+
+    $text = $addr unless $text;
+    &$t2h_anchor('', "mailto:$addr", $text);
+}
+
+sub do_sc($;$)
+{
+    # pertusus: l2h just do the same...
+    # return l2h_ToLatex("{\\sc ".$_[0]."}") if ($T2H_L2H);
+    return "<small>\U$_[0]\E</small>";
+}
+
+sub do_sc_pre($;$)
+{ # no small allowed in pre
+    return "\U$_[0]\E";
+}
+
+sub t2h_math($;$)
+{
+    return '<em>' . $_[0] . '</em>';
+}
+
+sub do_uref($;$)
+{
+    my($url, $text, $only_text) = split(/,\s*/, $_[0]);
+    $text = $only_text if $only_text;
+    $text = $url unless $text;
+    return &$t2h_anchor('', $url, $text);
+}
+
+sub do_url($;$) { return &$t2h_anchor('', $_[0], $_[0]); }
+
+sub do_accent($$)
+{
+    return "$_[0]''" if $_[1] eq 'H';
+    return "$_[0]." if $_[1] eq 'dotaccent';
+    return "$_[0]*" if $_[1] eq 'ringaccent';
+    return "$_[0]".'[' if $_[1] eq 'tieaccent';
+    return "$_[0]".'(' if $_[1] eq 'u';
+    return "$_[0]".'=' if $_[1] eq '=';
+    return "$_[0]_" if $_[1] eq 'ubaraccent';
+    return ".$_[0]" if $_[1] eq 'udotaccent';
+    return "$_[0]&lt;" if $_[1] eq 'v';
+    return "&$_[0]cedil;" if ($_[1] eq ',' or $_[1] eq 'm_cedilla');
+    return "$_[0]" if $_[1] eq 'dotless';
+    return "&$_[0]$accent_map{$_[1]};" if $accent_map{$_[1]};
+    return undef;
+}
+
+# formatting functions
+
+$t2h_anchor            = \&t2h_default_anchor;
+$t2h_def_item          = \&t2h_default_def_item;
+$t2h_def               = \&t2h_default_def;
+$t2h_menu              = \&t2h_default_menu;
+$t2h_menu_entry        = \&t2h_default_menu_entry;
+$t2h_menu_comment      = \&t2h_default_menu_comment;
+$t2h_ref_beginning     = \&t2h_default_ref_beginning;
+$t2h_info_ref          = \&t2h_default_info_ref;
+$t2h_book_ref          = \&t2h_default_book_ref;
+$t2h_internal_ref      = \&t2h_default_internal_ref;
+$t2h_table_item        = \&t2h_default_table_item;
+$t2h_table_line        = \&t2h_default_table_line;
+$t2h_row               = \&t2h_default_row;
+$t2h_cell              = \&t2h_default_cell;
+$t2h_list_item         = \&t2h_default_list_item;
+$t2h_comment           = \&t2h_default_comment;
+$t2h_def_line	       = \&t2h_default_def_line;
+$t2h_raw               = \&t2h_default_raw;
+$t2h_heading           = \&t2h_default_heading;
+$t2h_paragraph         = \&t2h_default_paragraph;
+$t2h_preformatted      = \&t2h_default_preformatted;
+$t2h_table             = \&t2h_default_table;
+$t2h_foot_line_and_ref = \&t2h_default_foot_line_and_ref;
+$t2h_image             = \&t2h_default_image;
+$t2h_index_entry_label = \&t2h_default_index_entry_label;
+$t2h_index_entries     = \&t2h_default_index_entries;
+$t2h_index_summary     = \&t2h_default_index_summary;
+
+# $name           :   anchor name
+# $href           :   anchor href
+# text            :   text displayed
+# extra_attribs   :   added to anchor attributes list
+sub t2h_default_anchor($;$$$)
+{
+    my($name, $href, $text, $extra_attribs) = @_;
+    my @result = ();
+
+    push(@result, '<a');
+    push(@result, ' name="', $name, '"') if $name;
+    if ($href)
+    {
+        $href =~ s|^$T2H_HREF_DIR_INSTEAD_FILE|./|
+            if ($T2H_HREF_DIR_INSTEAD_FILE);
+        push(@result, ' href="', $href, '"');
+    }
+    push(@result, ' ', $extra_attribs) if $extra_attribs;
+    push(@result, '>');
+    push(@result, $text) if $text;
+    push(@result, '</a>');
+    return join('', @result);
+}
+
+# format the text of a @deffn/@end deffn
+sub t2h_default_def_item($)
+{
+    my $text = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+        $text = $T2H_DEF_TABLE ? ('<tr><td colspan="2">'. $text .'</td></tr>')
+            : ('<dd>' . $text . '</dd>');
+    }
+    return $text;
+}
+
+# format the container for the @deffn line and text
+sub t2h_default_def($)
+{
+    my $text = shift;
+
+    return  $T2H_DEF_TABLE ?
+         ("<table width=\"100%\">\n" . $text . "</table>\n") : 
+         ("<dl>\n" . $text . "</dl>\n");
+}
+
+# a whole menu
+sub t2h_default_menu($)
+{
+    my $text = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+        return "<table border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
+    }
+    return '';
+}
+
+# a menu entry (ref + description)
+sub t2h_default_menu_entry($$$;$)
+{
+    my $entry = shift;
+    my $descr = shift;
+    my $state = shift;
+    my $href = shift;
+    $entry = &$t2h_anchor('', $href, $entry) if ($href);
+    return '<tr><td>' . do_preformatted($entry . $descr, $state) . '</td></tr>' if ($state->{'preformatted'});
+    return '<tr><td align="left" valign="top">' .
+              $entry .
+          '</td><td>&nbsp;&nbsp;</td>' .
+          '<td align="left" valign="top">' . $descr .
+          "</td></tr>\n";
+}
+
+# a menu comment (between menu lines)
+sub t2h_default_menu_comment($)
+{
+    my $text = shift;
+    my $state = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+         return '<tr><th colspan="3" align="left" valign="top">' . $text . '</th></tr>';
+    }
+    return '';
+}
+
+# beginning of a ref
+sub t2h_default_ref_beginning($)
+{
+    my $type = shift;
+    if ($type eq 'xref')
+    {
+        return "$T2H_WORDS->{'See'} ";
+    }
+    elsif ($type eq 'pxref')
+    {
+        return  "$T2H_WORDS->{'see'} ";
+    }
+    else
+    {
+         return '';
+    }
+}
+
+# ref to an info file
+sub t2h_default_info_ref($$$)
+{
+    my $type = shift;
+    my $node = shift;
+    my $file = shift;
+    if ($node)
+    { #i18n
+        return &$t2h_ref_beginning($type) .  "Info `$file', node `$node'";
+    }
+    else 
+    {
+        return  &$t2h_ref_beginning($type) . "`$file'";
+    }
+}
+
+# ref to a book
+sub t2h_default_book_ref($$$)
+{
+    my $type = shift;
+    my $section = shift;
+    my $book = shift;
+    return &$t2h_ref_beginning($type) . "$T2H_WORDS->{'section'} `$section' in " . apply_style ('cite', $book);
+}
+
+# ref to a node or section in the document
+sub t2h_default_internal_ref($$$$$)
+{
+    my $type = shift;
+    my $href = shift;
+    my $short_name = shift;
+    my $name = shift;
+    my $is_section = shift;
+
+    my $begin = &$t2h_ref_beginning($type); 
+    if (! $T2H_SHORT_REF)
+    {
+        $begin .= "$T2H_WORDS->{'section'} " if ($begin and $is_section);
+        return $begin . &$t2h_anchor('', $href, $name);
+    }
+    else
+    {
+        return $begin . &$t2h_anchor('', $href, $short_name);
+    }
+}
+
+# text after @item in table, vtable and ftable
+sub t2h_default_table_item($$$)
+{
+    my $text = shift;
+    my $do_index = shift;
+    my $state = shift;
+    my $index_label;
+    if ($do_index)
+    {
+        $index_label = do_index_entry_label($state);
+        print STDERR "Bug: no index entry for $text" unless defined($index_label);
+    }
+    $text .= $index_label if ($do_index and defined($index_label));
+    return '<dt>' . $text . '</dt>' . "\n";
+}
+
+# text on the lineq following @item in table, vtable and ftable
+sub t2h_default_table_line($)
+{
+    my $text = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+         return '<dd>' . $text . '</dd>' . "\n";
+    }
+    return '';
+}
+
+# row in multitable
+sub t2h_default_row($)
+{
+    my $text = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+         return '<tr>' . $text . '</tr>' . "\n";
+    }
+    return '';
+}
+
+# cell in multitable
+sub t2h_default_cell($)
+{
+    my $text = shift;
+    return '<td>' . $text . '</td>';
+}
+
+# item in list
+sub t2h_default_list_item($$)
+{
+   my $text = shift;
+# FIXME add . "\n" ?
+   return '<li>' . $text . '</li>';
+}
+
+# an html comment
+sub t2h_default_comment($)
+{
+    my $text = shift;
+    return '<!--' . $text . '-->';
+}
+
+# format the whole table ftable or vtable
+sub t2h_default_table($)
+{
+    my $text = shift;
+
+    if ($text =~ /[^\s]/)
+    {
+        return "<dl compact=\"compact\">\n" . $text. "</dl>\n";
+    }
+    return '';
+}
+
+# a paragraph
+sub t2h_default_paragraph($$)
+{
+    my $text = shift;
+    my $align = shift;
+    return '' if ($text =~ /^\s*$/);
+    my $open = '<p>';
+    if ($align)
+    {
+        $open = "<p align=\"$align\">";
+    }
+    return $open. "$text</p>";
+}
+
+# a preformatted section
+sub t2h_default_preformatted($$)
+{
+    my $text = shift;
+    my $pre_style = shift;
+
+    return '' if ($text eq '');
+    my $open = '<pre>';
+    if ($pre_style)
+    {
+        $open = "<pre $pre_style>";
+    }
+    return $open . "$text</pre>";
+}
+
+# a heading of an element
+sub t2h_default_heading($)
+{
+    my $element = shift;
+    return '' if ($element->{'text'} =~ /^\s*$/);
+    my $level = 3;
+    if (!$element->{'node'})
+    {
+	$level = $element->{'level'};
+        print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
+        $level = 1 if ($level == 0);
+    }
+    return "<h$level> $element->{'text'} </h$level>\n";
+}
+
+# formatting of raw regions
+# ih T2H_L2H is true another mechanism is used for tex
+sub t2h_default_raw($$)
+{
+    my $style = shift;
+    my $text = shift;
+    if ($style eq 'verbatim' or $style eq 'tex')
+    {
+        return '<pre>' . protect_html($text) . '</pre>';
+    }
+    elsif ($style eq 'html')
+    {
+        return $text;
+    }
+    else
+    {
+        warn "$WARN (bug) unknown style $style\n";
+        return protect_html($text);
+    }
+}
+
+# do footnote header for the footnotes file, and ref to the footnote file
+# for the text where the footnote is
+sub t2h_default_foot_line_and_ref($$$$$)
+{
+    my $foot_num = shift;
+    my $footid = shift;
+    my $docid = shift;
+    my $from_file = shift;
+    my $footnote_file = shift;
+    
+    my $foot = "($foot_num)";
+    return ("<h3>" . &$t2h_anchor($footid, "$from_file#$docid", $foot) . "</h3>\n", 
+         &$t2h_anchor($docid, "$footnote_file#$footid", $foot));
+}
+
+sub t2h_default_image($$$)
+{
+    my $image = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    if ($preformatted)
+    {
+        return "[ $base ]";
+    }
+    else
+    {
+        return ($T2H_CENTER_IMAGE ?
+          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"></div>" :
+          "<img src=\"$image\" alt=\"$base\">");
+    }
+}
+
+# label for an index entry, target of the link from the index page
+sub t2h_default_index_entry_label($$)
+{
+    my $label = shift;
+    my $preformatted = shift;
+    $label = &$t2h_anchor($label) if ($label);
+    $label .= "\n" if ($label and !$preformatted);
+    return $label;
+}
+
+# process definition commands line @deffn for example
+sub t2h_default_def_line($$$)
+{
+    my $tag = shift;
+    my $line = shift;
+    my $state = shift;
+    
+    $state->{'deff'} = $tag;
+    
+    if (defined($def_map{$tag}) and $def_map{$tag})
+    {
+        # substitute shortcuts for definition commands
+        my $substituted = $def_map{$tag};
+        $substituted =~ s/(\w+)//;
+        $tag = $1;
+        $line = $substituted . $line;
+    }
+    
+    my ($type, $name, $ftype);
+    ($line, $type, $name, $ftype) = parse_def($tag, $line);
+    #print STDERR "Def $tag $name, $type\n";
+    my $result = '';
+    unless ($type)
+    {
+        warn "$ERROR bad $state->{'deff'}, no type\n";
+        return '';
+    }
+    $type = substitute_line($type);
+    $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
+    unless ($name)
+    {
+        warn "$ERROR bad $state->{'deff'} nothing after the type\n";
+        return '';
+    }
+    $name = substitute_line($name);
+    $line = '' if (!$line);
+    $result = $T2H_DEF_TABLE ? '' : '<dt>';
+    if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
+    {
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
+            $result .= substitute_line($line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type</td>\n</tr>\n";
+        }
+        else
+        {
+            #FIXME <u> is deprecated in xhtml 1.1
+            #use <span style="text-description: underline"> ?
+            $result .= "<u>$type</u> <b>$name</b>";
+            $result .= substitute_line($line);
+        }
+    }
+    elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
+        || $tag eq 'deftypeop' || $tag eq 'defcv'
+        || $tag eq 'defop')
+    {
+        $ftype = substitute_line($ftype);
+        if ($T2H_DEF_TABLE)
+        {
+            $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
+            $result .= substitute_line($line);
+            $result .= "</td>\n";
+            $result .= "<td align=\"right\">";
+            $result .= "$type of $ftype</td>\n</tr>\n";
+        }
+        else
+        {
+            $result .= "<u>$type</u> $ftype <b>$name</b>";
+            $result .= substitute_line($line);
+        }
+    }
+    else
+    {
+        warn "$ERROR Unknown definition type: $tag\n";
+        $result .= "<u>$type</u> <b>$name</b>";
+        $result .= substitute_line($line);
+    }
+    $result .= do_index_entry_label($state);
+    $result .= "</dt>\n" if (!$T2H_DEF_TABLE);
+    return $result;
+}
+
+sub t2h_default_index_entries($$)
+{
+    my $element = shift;
+    my $page = shift;
+ 
+    #FIXME i18n
+    my $result = '<table border="0">' . "\n" .
+"<tr><td></td><th align=\"left\">Index Entry</th><th align=\"left\"> Section</th></tr>\n" .
+"<tr><td colspan=\"3\"> <hr></td></tr>\n";
+
+    for my $letter (@{$page->{Letters}})
+    {
+       $result .= '<tr><th>' .
+            &$t2h_anchor("$element->{'id'}_" . protect_html($letter), '', protect_html($letter)) .
+                "</th><td></td><td></td></tr>\n";
+       for my $entry (@{$page->{EntriesByLetter}->{$letter}})
+       {
+           my $label = $entry->{'element'};
+           my $entry_element = $label;
+           # notice that we use the section associated with a node even when 
+           # there is no with_section, i.e. when there is another node preceding
+           # the sectionning command
+           $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'node'} and $entry_element->{'section_ref'});
+           my $origin_href = '';
+           $origin_href = $label->{'file'} if ($label->{'file'} ne $element->{'file'});
+           if ($entry->{'label'})
+           { 
+               $origin_href .= '#' . $entry->{'label'};
+           }
+	   else
+           {
+               # If the $label element and the $index entry are on the same
+               # file the label is prefered. If they aren't on the same file
+               # the entry id is choosed as it means that the label element
+               # and the index entry are separated by a printindex.
+		 print STDERR "id undef $entry $entry->{'entry'}, $label->{'text'}\n"  if (!defined($entry->{'id'}));
+               if ($entry->{'file'} eq $label->{'file'})
+               {
+                   $origin_href .= '#' . $label->{'id'};
+               }
+               else
+               {
+                   $origin_href .= '#' . $entry->{'id'} ;
+               }
+           }
+           $result .=
+                "<tr><td></td><td valign=\"top\">" .
+                &$t2h_anchor('', $origin_href, $entry->{entry}) .
+                "</td><td valign=\"top\">" .
+                &$t2h_anchor('', href($entry_element, $element->{'file'}), $entry_element->{'text'}) .
+                "</td></tr>\n";
+        }
+        $result .= "<tr><td colspan=\"3\"> <hr></td></tr>\n";
+    }
+    $result .= "</table>";
+    return $result;
+}
+
+sub t2h_default_index_summary($$)
+{
+    my $element = shift;
+    my $index_elements = shift;
+    my ($summary, $l1, $l2);
+
+    #FIXME i18n
+    $summary = '<table><tr><th valign="top">Jump to: &nbsp; </th><td>';
+    for my $index_element_item (@$index_elements)
+    {
+        my $index_element = $index_element_item->{'element'};
+        my $file = '';
+        $file .= $index_element->{'file'} if ($index_element->{'file'} ne $element->{'file'});
+        for my $letter (@{$index_element_item->{'page'}->{Letters}})
+        {
+            my $l = &$t2h_anchor('', "$file#$index_element->{'id'}_" . protect_html($letter),
+                            "<b>" . protect_html($letter) . "</b>",
+                            'style="text-decoration: none"')
+                . "\n &nbsp; \n";
+            if ($letter =~ /^[A-Za-z]/)
+            {
+                $l2 .= $l;
+            }
+            else
+            {
+                $l1 .= $l;
+            }
+        }
+    }
+    $summary .= $l1 . "<br>\n" if ($l1);
+    $summary .= $l2 if ($l2);
+    $summary .= '</td></tr></table>';
+    return $summary;
+}
 
 
 ######################################################################

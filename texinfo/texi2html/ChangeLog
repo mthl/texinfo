@@ -1,3 +1,15 @@
+2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: formatting put in texi2html.init
+	hrefs to anchors and index entries which are in footnotes are right
+	scan_texi changed to have a stack
+	verbose and debug goes to STDERR
+	unusefull empty lines removed
+	new option -dump_texi used to debug, dumps the result of pass_texi
+	to a file
+	menu_comments are always preformatted
+	better handling of @math and @sc
+	* Tests/*: a little more things tested.
+
 2003-04-04  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: deffn and the like better handled
 	preformatted sections are closed when there is a new format
