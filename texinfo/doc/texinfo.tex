@@ -3533,7 +3533,10 @@ width0pt\relax} \fi
   \removelastskip
   %
   % We like breaks before the index initials, so insert a bonus.
-  \penalty -300
+  \nobreak
+  \vskip 0pt plus 3\baselineskip
+  \penalty 0
+  \vskip 0pt plus -3\baselineskip
   %
   % Typeset the initial.  Making this add up to a whole number of
   % baselineskips increases the chance of the dots lining up from column
@@ -3543,10 +3546,9 @@ width0pt\relax} \fi
   % No shrink because it confuses \balancecolumns.
   \vskip 1.67\baselineskip plus .5\baselineskip
   \leftline{\secbf #1}%
-  \vskip .33\baselineskip plus .1\baselineskip
-  %
   % Do our best not to break after the initial.
   \nobreak
+  \vskip .33\baselineskip plus .1\baselineskip
 }}
 
 % \entry typesets a paragraph consisting of the text (#1), dot leaders, and
