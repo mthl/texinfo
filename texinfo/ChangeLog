@@ -1,3 +1,7 @@
+2004-11-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (reader_loop): allow <wbr> after &mdash;
+
 2004-11-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Fonts): document new command @sansserif.
