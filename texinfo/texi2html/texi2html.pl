@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.73 2003-10-19 13:15:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.74 2003-10-27 21:04:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -812,6 +812,7 @@ my %no_line_macros = (
     'shorttitle' => 1,
     'shorttitlepage' => 1,
     'include' => 1,
+    'verbatiminclude' => 1,
     'copying' => 1,
     'end copying' => 1,
     'dircategory' => 1,
@@ -1771,7 +1772,6 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
         if ( mkdir($Texi2HTML::Config::OUT, oct(755)))
         {
             print STDERR "# created directory $Texi2HTML::Config::OUT\n" if ($T2H_VERBOSE);
-            $docu_rdir = "$Texi2HTML::Config::OUT/"; 
         }
         else
         {
@@ -1779,6 +1779,7 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
             $Texi2HTML::Config::OUT = '';
         }
     }
+    $docu_rdir = "$Texi2HTML::Config::OUT/"; 
 }
 elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
@@ -7077,7 +7078,7 @@ sub scan_texi($$$$;$)
         {
             add_prev($text, $stack, $1);
             my $macro = $2;
-	    #print STDERR "MACRO $macro\n";
+            #print STDERR "MACRO $macro\n";
             if ($Texi2HTML::Config::to_skip_texi{$macro})
             {
                  my $line;
@@ -7242,7 +7243,7 @@ sub scan_texi($$$$;$)
                 if (s/^(\s+)(.*)//o)
                 {
                     my $file = locate_include_file($2);
-                    if ($file && -e $file)
+                    if (defined($file))
                     {
                         open_file($file, $line_nr);
                         print STDERR "# including $file\n" if $T2H_VERBOSE;
@@ -7259,7 +7260,13 @@ sub scan_texi($$$$;$)
                     return;
                 } # makeinfo remove the @include but not the end of line
                 # FIXME verify if it is right
-		#return if (/^\s*$/);
+                #return if (/^\s*$/);
+            }
+            elsif ($macro eq 'verbatiminclude')
+            {
+                s/(.*)//;
+                add_prev($text, $stack, "\@$macro" . $1);
+                next;
             }
             elsif ($macro eq 'unmacro')
             { #FIXME with 'arg_expansion' should it be passed unmodified ?
@@ -7316,7 +7323,7 @@ sub scan_texi($$$$;$)
             }
             next;
         }
-	#elsif(s/^([^{}@]*)\@(.)//o)
+        #elsif(s/^([^{}@]*)\@(.)//o)
         elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
         {
             # No need to warn here it is done later
@@ -7775,6 +7782,12 @@ sub scan_structure($$$$;$)
                 }
                 return if (/^\s*$/);
                 s/^\s*//;
+            }
+            elsif ($macro eq 'verbatiminclude')
+            {
+                s/(.*)//;
+                add_prev($text, $stack, "\@$macro" . $1);
+                next;
             }
             elsif (defined($Texi2HTML::Config::def_map{$macro}))
             {
@@ -8391,6 +8404,50 @@ sub scan_line($$$$;$)
                     echo_error ("\@$macro needs a numeric arg", $line_nr);
                     next;
                 }
+            }
+            if ($macro eq 'verbatiminclude')
+            {
+                if ($state->{'keep_texi'})
+                {
+                    if (s/(.*)//o)
+                    {
+                        add_prev($text, $stack, "\@$macro" . $1);
+                    }
+                    next;
+                }
+                return undef if ($state->{'remove_texi'});
+                if (s/^(\s+)(.*)//o)
+                {
+                    my $file = locate_include_file($2);
+                    if (defined($file))
+                    {
+                        if (!open(VERBINCLUDE, $file))
+                        {
+                            warn "$ERROR Can't read file $file: $!\n";
+                        }
+                        else
+                        {
+                            my $verb_text = '';
+                            while (my $line = <VERBINCLUDE>)
+                            {
+                                $verb_text .= $line;
+                            }
+                            add_prev($text, $stack, &$Texi2HTML::Config::raw('verbatim',$verb_text));
+                            close VERBINCLUDE;
+                        }
+                    }
+                    else
+                    {
+                        echo_error ("Can't find $2, skipping", $line_nr);
+                        #warn "$ERROR Can't find $1, skipping\n";
+                    }
+                    return undef;
+                }
+                else
+                {
+                    echo_error ("Bad \@$macro line: $_", $line_nr);
+                    return;
+                } 
             }
                     
             # This is a @macroname{...} construct. We add it on top of stack

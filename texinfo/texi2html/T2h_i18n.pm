@@ -307,7 +307,7 @@ sub get_string($;$)
 	{
         unless($error_no_en)
         {
-	        print STDERR "i18n: no T2H_LANGUAGES->{'en'} hash\n";
+	        print STDERR "i18n: no LANGUAGES->{'en'} hash\n";
             $error_no_en = 1;
         }
     }

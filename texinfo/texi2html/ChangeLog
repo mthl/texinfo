@@ -1,5 +1,15 @@
+2003-10-26  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: support for @verbatiminclude. When split use the
+	-output specification in every cases.
+	* texi2html.init: use `&bull;' instead of `*' for node menu entries.
+	* Makefile.am: fixes for the inclusion of files in packages.
+	* doc/texi2html.texi: add the explanation of the default for all the
+	variables. Explain how the strings are customized and how 
+	internationalization works.
+
 2003-10-19  Patrice Dumas  <dumas@centre-cired.fr>
-	
+
 	* texi2html.pl, texi2html.init, examples/html32.init: don't expand
 	html automatically, only if it is in @EXPAND. Put html in @EXPAND.
 	USE_ISO is now in the default case, but false in html32.init.

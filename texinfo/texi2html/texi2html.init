@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.48 2003-10-19 13:15:36 pertusus Exp $
+# $Id: texi2html.init,v 1.49 2003-10-27 21:04:29 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -311,7 +311,8 @@ $SPLIT_INDEX = 100;
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
 # unnumbered in menus, see next variable)
-$MENU_SYMBOL = '*';
+$MENU_SYMBOL = '&bull;';
+#$MENU_SYMBOL = '*';
 
 # if true put a $MENU_SYMBOL before unnumbered in menus
 $UNNUMBERED_SYMBOL_IN_MENU = 0;
