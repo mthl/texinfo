@@ -1,5 +1,5 @@
 /* macro.c -- user-defined macros for Texinfo.
-   $Id: macro.c,v 1.4 2003-09-21 00:46:22 karl Exp $
+   $Id: macro.c,v 1.5 2003-10-24 02:02:00 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -444,7 +444,8 @@ execute_macro (def)
       end_line = line_number;
       line_number = start_line;
 
-      if (macro_expansion_output_stream && !executing_string && !me_inhibit_expansion)
+      if (macro_expansion_output_stream
+          && !executing_string && !me_inhibit_expansion)
         {
           remember_itext (input_text, input_text_offset);
           me_execute_string (execution_string);
@@ -466,17 +467,14 @@ define_macro (mactype, recursive)
      char *mactype;
      int recursive;
 {
-  int i;
-  char *name, **arglist, *body, *line, *last_end;
-  int body_size, body_index;
+  int i, start;
+  char *name, *line, *last_end;
+  char *body = NULL;
+  char **arglist = NULL;
+  int body_size = 0, body_index = 0;
   int depth = 1;
-  int defining_line = line_number;
   int flags = 0;
-
-  arglist = NULL;
-  body = NULL;
-  body_size = 0;
-  body_index = 0;
+  int defining_line = line_number;
 
   if (macro_expansion_output_stream && !executing_string)
     me_append_before_this_command ();
@@ -485,15 +483,13 @@ define_macro (mactype, recursive)
 
   /* Get the name of the macro.  This is the set of characters which are
      not whitespace and are not `{' immediately following the @macro. */
+  start = input_text_offset;
   {
-    int start = input_text_offset;
     int len;
 
-    for (i = start;
-         (i < input_text_length) &&
-         (input_text[i] != '{') &&
-         (!cr_or_whitespace (input_text[i]));
-         i++);
+    for (i = start; i < input_text_length && input_text[i] != '{'
+                    && !cr_or_whitespace (input_text[i]);
+         i++) ;
 
     len = i - start;
     name = xmalloc (1 + len);
@@ -697,7 +693,22 @@ define_macro (mactype, recursive)
   add_macro (name, arglist, body, input_filename, defining_line, flags);
 
   if (macro_expansion_output_stream && !executing_string)
-    remember_itext (input_text, input_text_offset);
+    {
+      /* Remember text for future expansions.  */
+      remember_itext (input_text, input_text_offset);
+
+      /* Bizarrely, output the @macro itself.  This is so texinfo.tex
+         will have a chance to read it when texi2dvi calls makeinfo -E.
+         The problem is that we don't really expand macros in all
+         contexts; a @table's @item is one.  And a fix is not obvious to
+         me, since it appears virtually identical to any other internal
+         expansion.  Just setting a variable in cm_item caused other
+         strange expansion problems.  */
+      write_region_to_macro_output ("@", 0, 1);
+      write_region_to_macro_output (mactype, 0, strlen (mactype));
+      write_region_to_macro_output (" ", 0, 1);
+      write_region_to_macro_output (input_text, start, input_text_offset);
+    }
 }
 
 void 
