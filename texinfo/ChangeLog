@@ -1,3 +1,13 @@
+2003-11-13  Karl Berry  <karl@gnu.org>
+
+	* configure.ac, NEWS: autoconf 2.59.
+
+2003-11-13  Akim Demaille  <akim@epita.fr>
+
+	* configure.ac: Use AC_CHECK_DECLS, not txi_CHECK_DECLS.
+	Also use # instead of dnl for comments.
+	* acinclude.m4: Remove.
+
 2003-11-14  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_noindent): output continued paragraphs with

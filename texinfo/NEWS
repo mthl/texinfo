@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.71 2003-11-10 16:45:36 karl Exp $
+$Id: NEWS,v 1.72 2003-11-13 23:03:23 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -47,7 +47,7 @@ convenience, here's a url to one of the relevant sections:
     --no-raw-escapes overrides this.
 * Distribution:
   . New translation: nb.
-  . automake 1.7.9, autoconf 2.58.
+  . automake 1.7.9, autoconf 2.59.
 
 
 4.6 (10 June 2003)
