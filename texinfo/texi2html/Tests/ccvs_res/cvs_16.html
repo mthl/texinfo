@@ -485,8 +485,8 @@ can almost always count on the same behavior of the
 option as in other commands.  (Other command options,
 which are listed with the individual commands, may have
 different behavior from one <small>CVS</small> command to the other).
-</p><p><strong>Warning:</strong> the `<samp>history</samp>' command is an exception; it supports
-many options that conflict even with these standard options.
+</p><p><strong>Note: the `<samp>history</samp>' command is an exception; it supports
+many options that conflict even with these standard options.</strong>
 </p><dl compact="compact">
 <dd><p>
 <a name="IDX221"></a>
@@ -570,34 +570,35 @@ give an error if you mistype a tag name.
 </p><p>`<samp>-f</samp>' is available with these commands:
 <code>annotate</code>, <code>checkout</code>, <code>export</code>,
 <code>rdiff</code>, <code>rtag</code>, and <code>update</code>.
-</p><p><strong>Warning:</strong>  The <code>commit</code> and <code>remove</code>
+</p><p><strong>WARNING:  The <code>commit</code> and <code>remove</code>
 commands also have a
 `<samp>-f</samp>' option, but it has a different behavior for
 those commands.  See <a href="#SEC126">commit options</a>, and
-<a href="cvs_7.html#SEC68">Removing files</a>.
+<a href="cvs_7.html#SEC68">Removing files</a>.</strong>
 </p></dd>
 <dt><code> -k <var>kflag</var>
 </code></dt>
-<dd><p>Alter the default processing of keywords.
-See section <a href="cvs_12.html#SEC98">Keyword substitution</a>, for the meaning of
-<var>kflag</var>.  Your <var>kflag</var> specification is
-<em>sticky</em> when you use it to create a private copy
-of a source file; that is, when you use this option
-with the <code>checkout</code> or <code>update</code> commands,
-<small>CVS</small> associates your selected <var>kflag</var> with the
-file, and continues to use it with future update
-commands on the same file until you specify otherwise.
+<dd><p>Override the default processing of RCS keywords other than
+`<samp>-kb</samp>'.  See section <a href="cvs_12.html#SEC98">Keyword substitution</a>, for the meaning of
+<var>kflag</var>.  Used with the <code>checkout</code> and <code>update</code>
+commands, your <var>kflag</var> specification is
+<em>sticky</em>; that is, when you use this option
+with a <code>checkout</code> or <code>update</code> command,
+<small>CVS</small> associates your selected <var>kflag</var> with any files
+it operates on, and continues to use that <var>kflag</var> with future
+commands on the same files until you specify otherwise.
 </p><p>The `<samp>-k</samp>' option is available with the <code>add</code>,
-<code>checkout</code>, <code>diff</code>, <code>import</code> and
+<code>checkout</code>, <code>diff</code>, <code>export</code>, <code>import</code> and
 <code>update</code> commands.
+</p><p><strong>WARNING: Prior to CVS version 1.12.2, the `<samp>-k</samp>' flag
+overrode the `<samp>-kb</samp>' indication for a binary file.  This could
+sometimes corrupt binary files.  See section <a href="cvs_5.html#SEC64">Merging and keywords</a>, for
+more.</strong>
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory, rather than
 recursing through subdirectories.
-</p><p><strong>Warning:</strong> this is not the same
-as the overall `<samp>cvs -l</samp>' option, which you can specify to the
-left of a cvs command!
 </p><p>Available with the following commands: <code>annotate</code>, <code>checkout</code>,
 <code>commit</code>, <code>diff</code>, <code>edit</code>, <code>editors</code>, <code>export</code>,
 <code>log</code>, <code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
@@ -615,11 +616,11 @@ invoking an editor.
 </p></dd>
 <dt><code> -n
 </code></dt>
-<dd><p>Do not run any checkout/commit/tag program.  (A program can be
-specified to run on each of these activities, in the modules
+<dd><p>Do not run any tag program.  (A program can be
+specified to run in the modules
 database (see section <a href="cvs_18.html#SEC158">The modules file</a>); this option bypasses it).
-</p><p><strong>Warning:</strong> this is not the same as the overall `<samp>cvs -n</samp>'
-option, which you can specify to the left of a cvs command!
+</p><p><strong>Note: this is not the same as the `<samp>cvs -n</samp>'
+program option, which you can specify to the left of a cvs command!</strong>
 </p><p>Available with the <code>checkout</code>, <code>commit</code>, <code>export</code>,
 and <code>rtag</code> commands.
 </p></dd>
@@ -665,8 +666,8 @@ described in <a href="cvs_5.html#SEC54">Branching and merging</a>.
 `<samp>-r</samp>' command option is often useful, to suppress
 the warning messages when the <small>RCS</small> file
 does not contain the specified tag.
-</p><p><strong>Warning:</strong> this is not the same as the overall `<samp>cvs -r</samp>' option,
-which you can specify to the left of a <small>CVS</small> command!
+</p><p><strong>Note: this is not the same as the overall `<samp>cvs -r</samp>' option,
+which you can specify to the left of a <small>CVS</small> command!</strong>
 </p><p>`<samp>-r</samp>' is available with the <code>checkout</code>, <code>commit</code>,
 <code>diff</code>, <code>history</code>, <code>export</code>, <code>rdiff</code>,
 <code>rtag</code>, and <code>update</code> commands.
@@ -2550,9 +2551,9 @@ use <code>history</code> to display this information in
 various formats.
 </p><p>Logging must be enabled by creating the file
 `<tt>$CVSROOT/CVSROOT/history</tt>'.
-</p><p><strong>Warning:</strong> <code>history</code> uses `<samp>-f</samp>', `<samp>-l</samp>',
+</p><p><strong>Note: <code>history</code> uses `<samp>-f</samp>', `<samp>-l</samp>',
 `<samp>-n</samp>', and `<samp>-p</samp>' in ways that conflict with the
-normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
+normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).</strong>
 </p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC138">A.11.1 history options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3025,8 +3026,8 @@ author, the number of lines added/deleted and the log
 message are printed.  All times are displayed in
 Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
-</p><p><strong>Warning:</strong> <code>log</code> uses `<samp>-R</samp>' in a way that conflicts
-with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).
+</p><p><strong>Note: <code>log</code> uses `<samp>-R</samp>' in a way that conflicts
+with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).</strong>
 </p><table class="menu" border="0" cellspacing="0">
 
 <tr><td align="left" valign="top"><a href="#SEC144">A.13.1 log options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3499,13 +3500,13 @@ history log.
 <dd><p>Delete your working copy of the file if the release
 succeeds.  If this flag is not given your files will
 remain in your working directory.
-</p><p><strong>Warning:</strong>  The <code>release</code> command deletes
+</p><p><strong>WARNING:  The <code>release</code> command deletes
 all directories and files recursively.  This
 has the very serious side-effect that any directory
 that you have created inside your checked-out sources,
 and not added to the repository (using the <code>add</code>
 command; see section <a href="cvs_7.html#SEC67">Adding files to a directory</a>) will be silently deleted--even
-if it is non-empty!
+if it is non-empty!</strong>
 </p></dd>
 </dl>
 
@@ -3533,11 +3534,6 @@ if it is non-empty!
 <p>Before <code>release</code> releases your sources it will
 print a one-line message for any file that is not
 up-to-date.
-</p><p><strong>Warning:</strong>  Any new directories that you have
-created, but not added to the <small>CVS</small> directory hierarchy
-with the <code>add</code> command (see section <a href="cvs_7.html#SEC67">Adding files to a directory</a>) will be
-silently ignored (and deleted, if `<samp>-d</samp>' is
-specified), even if they contain files.
 </p><dl compact="compact">
 <dt><code> U <var>file</var>
 </code></dt>

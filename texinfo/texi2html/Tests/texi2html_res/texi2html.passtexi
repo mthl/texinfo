@@ -2,29 +2,6 @@ texi2html.texi(,39) @setfilename texi2html.info
 ./version.texi(,1) 
 texi2html.texi(,56) @defcodeindex op
 texi2html.texi(,58) @settitle Texinfo to HTML
-texi2html.texi(,87) This file documents the texi2html script which converts
-texi2html.texi(,88) Texinfo into HTML.
-texi2html.texi(,89) 
-texi2html.texi(,90) Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-texi2html.texi(,91) 
-texi2html.texi(,92) This edition is for texi2html version 1.67,
-texi2html.texi(,93) 15 September 2001.
-texi2html.texi(,94) 
-texi2html.texi(,95) Permission is granted to make and distribute verbatim
-texi2html.texi(,96) copies of this manual provided the copyright notice and
-texi2html.texi(,97) this permission notice are preserved on all copies.
-texi2html.texi(,98) 
-texi2html.texi(,107) Permission is granted to copy and distribute modified
-texi2html.texi(,108) versions of this manual under the conditions for verbatim
-texi2html.texi(,109) copying, provided that the entire resulting derived work is
-texi2html.texi(,110) distributed under the terms of a permission notice
-texi2html.texi(,111) identical to this one.
-texi2html.texi(,112) 
-texi2html.texi(,113) Permission is granted to copy and distribute translations
-texi2html.texi(,114) of this manual into another language, under the above
-texi2html.texi(,115) conditions for modified versions, except that this
-texi2html.texi(,116) permission notice may be stated in a translation approved
-texi2html.texi(,117) by the Free Software Foundation.
 texi2html.texi(,120) @titlepage
 texi2html.texi(,121) @title Texinfo to HTML Converter
 texi2html.texi(,122) @subtitle Manual Edition 0.21
@@ -83,90 +60,6 @@ texi2html.texi(,194) This manual is currently under
 texi2html.texi(,195) construction and of course incomplete ;-)
 texi2html.texi(,196) @end example
 texi2html.texi(,197) 
-texi2html.texi(,201) @menu
-texi2html.texi(,203) * Overview::                  Overview about @command{texi2html}.
-texi2html.texi(,204) * Installation::              Installation process.
-texi2html.texi(,205) * Customizing::               Customizing.
-texi2html.texi(,206) * CustomizingExpand::         Customizing what gets expanded.
-texi2html.texi(,207) * CustomizingPage::           Customizing page layout.
-texi2html.texi(,208) * CustHTML::                  Customizing HTML.
-texi2html.texi(,209) * InitFile::                  Initialization files.
-texi2html.texi(,211) * IFOs::                      Initialization file options
-texi2html.texi(,212) * Options::                   Command Line Options.
-texi2html.texi(,213) 
-texi2html.texi(,214) * Reference::                 Reference Manual of functions.
-texi2html.texi(,215) 
-texi2html.texi(,216) @detailmenu
-texi2html.texi(,217) 
-texi2html.texi(,218) /// The Detailed Node Listing ///
-texi2html.texi(,219) 
-texi2html.texi(,220) --- Overview ---
-texi2html.texi(,221) 
-texi2html.texi(,222) * whytexi2html::              Why @file{texi2html} and
-texi2html.texi(,223)                                 not @file{makeinfo}?.
-texi2html.texi(,224) 
-texi2html.texi(,225) 
-texi2html.texi(,226) --- Installation process ---
-texi2html.texi(,227) 
-texi2html.texi(,228) * Installation::             Installation process.
-texi2html.texi(,229) 
-texi2html.texi(,230) 
-texi2html.texi(,231) --- Initialization file options ---
-texi2html.texi(,232) 
-texi2html.texi(,233) * IFOnumber::                 Number sectioning.
-texi2html.texi(,234) * IFOmenu::                   Avoid menu redundancy.
-texi2html.texi(,235) * IFOCenterImage::            Center Image.
-texi2html.texi(,236) * IFOExampleIndentCell::      Example Indent Cell.
-texi2html.texi(,237) * IFOSampleIndentCell::       Sample Indent Cell.
-texi2html.texi(,238) * IFOSmallFontSize::          Small Font Size.
-texi2html.texi(,239) * IFOTopHeading::             Top Heading.
-texi2html.texi(,240) * IFOIndexChapter::           Index Chapter.
-texi2html.texi(,241) * IFOSplitIndex::             Split Index.
-texi2html.texi(,242) * IFOhrefDirInsteadFile::     HREF Dir Instead file.
-texi2html.texi(,243) 
-texi2html.texi(,244) 
-texi2html.texi(,245) --- Command Line Options ---
-texi2html.texi(,246) 
-texi2html.texi(,247) * OptionDebug::               Debugging.
-texi2html.texi(,248) * OptionDocType::             DocType (HTML)
-texi2html.texi(,249) * OptionCheck::               Checking files.
-texi2html.texi(,250) * OptionExpand::              Expanding info, tex areas etc.
-texi2html.texi(,251) * OptionGlossary::            Glossary.
-texi2html.texi(,252) * OptionInvisible::           Invisible.
-texi2html.texi(,253) * OptionIso::                 Iso.
-texi2html.texi(,254) * OptionInclude::             Include directories.
-texi2html.texi(,255) * OptionTopFile::             Top File.
-texi2html.texi(,256) * OptionTocFile::             Table of content File.
-texi2html.texi(,257) * OptionFrames::              Frames.
-texi2html.texi(,258) * OptionMenu::                Menus.
-texi2html.texi(,259) * OptionNumber::              Number sections.
-texi2html.texi(,260) * OptionSplit::               Splitting.
-texi2html.texi(,261) * OptionSectionNavigation::   Navigation.
-texi2html.texi(,262) * OptionSubDir::              Subdirectory.
-texi2html.texi(,263) * OptionShortExt::            Short extension.
-texi2html.texi(,264) * OptionPrefix::              Prefix.
-texi2html.texi(,265) * OptionOutput::              Output.
-texi2html.texi(,266) * OptionShortRef::            Short Ref.
-texi2html.texi(,267) * OptionIndexSummary::        Index Summary.
-texi2html.texi(,268) * OptionVerbose::             Verbose.
-texi2html.texi(,269) * OptionLanguage::            Language.
-texi2html.texi(,270) * OptionL2H::                 La@TeX{}2HTML.
-texi2html.texi(,271) 
-texi2html.texi(,272) 
-texi2html.texi(,273) --- La@TeX{}2HTML for @code{@@math} and @code{@@tex} ---
-texi2html.texi(,274) 
-texi2html.texi(,275) * OptionL2HL2H::              Where to find La@TeX{}2HTML.
-texi2html.texi(,276) * OptionL2HSkip::             Skip calling La@TeX{}2HTML.
-texi2html.texi(,277) * OptionL2Htmp::              Temporary files for La@TeX{}2HTML.
-texi2html.texi(,278) 
-texi2html.texi(,279) 
-texi2html.texi(,280) --- Indices ---
-texi2html.texi(,281) 
-texi2html.texi(,282) * Indexop::                   Command Line Option Index.
-texi2html.texi(,283) * Indexvr::                   Variable Index.
-texi2html.texi(,284) * Indexcp::                   Concept Index.
-texi2html.texi(,285) @end detailmenu
-texi2html.texi(,286) @end menu
 texi2html.texi(,290) @node Overview, HowToGetHTML, Top, Top
 texi2html.texi(,291) @chapter Overview about @command{texi2html}
 texi2html.texi(,292) @uref{http://www.texinfo.org,Texinfo} is the official

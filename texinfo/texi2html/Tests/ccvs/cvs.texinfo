@@ -94,13 +94,14 @@ approved by the Free Software Foundation.
 @end macro
 @end ifhtml
 
-@ifinfo
-@format
-START-INFO-DIR-ENTRY
+@dircategory GNU Packages
+@direntry
 * CVS: (cvs).                   Concurrent Versions System
-END-INFO-DIR-ENTRY
-@end format
-@end ifinfo
+@end direntry
+@dircategory Individual utilities
+@direntry
+* cvs: (cvs)CVS commands.       Concurrent Versions System
+@end direntry
 
 @comment The titlepage section does not appear in the Info file.
 @titlepage
@@ -287,9 +288,9 @@ if there is sufficient @sc{cvs} traffic on
 @c would need to take a more comprehensive look at the
 @c whole comp.software.config-mgmt.* hierarchy).
 
-You can also subscribe to the bug-cvs mailing list,
+You can also subscribe to the @code{bug-cvs} mailing list,
 described in more detail in @ref{BUGS}.  To subscribe
-send mail to bug-cvs-request@@gnu.org.
+send mail to @code{bug-cvs-request@@gnu.org}.
 
 @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 @node What is CVS not?
@@ -2478,13 +2479,98 @@ does not exist, then the server can try to authenticate
 the username and password using the operating system's
 user-lookup routines (this "fallback" behavior can be
 disabled by setting @code{SystemAuth=no} in the
-@sc{cvs} @file{config} file, @pxref{config}).  Be
-aware, however, that falling back to system
+@sc{cvs} @file{config} file, @pxref{config}).
+
+The default fallback behaviour is to look in 
+@file{/etc/passwd} for this system password unless your
+system has PAM (Pluggable Authentication Modules)
+and your @sc{cvs} server executable was configured to
+use it at compile time (using @code{./configure --enable-pam} - see the
+INSTALL file for more).  In this case, PAM will be consulted instead.
+This means that @sc{cvs} can be configured to use any password
+authentication source PAM can be configured to use (possibilities
+include a simple UNIX password, NIS, LDAP, and others) in its
+global configuration file (usually @file{/etc/pam.conf}
+or possibly @file{/etc/pam.d/cvs}).  See your PAM documentation
+for more details on PAM configuration.
+
+Note that PAM is an experimental feature in @sc{cvs} and feedback is
+encouraged.  Please send a mail to one of the @sc{cvs} mailing lists
+(@code{info-cvs@@gnu.org} or @code{bug-cvs@@gnu.org}) if you use the 
+@sc{cvs} PAM support.
+
+@strong{WARNING: Using PAM gives the system administrator much more 
+flexibility about how @sc{cvs} users are authenticated but 
+no more security than other methods.  See below for more.} 
+
+CVS needs an "auth" and "account" module in the 
+PAM configuration file. A typical PAM configuration 
+would therefore have the following lines 
+in @file{/etc/pam.conf} to emulate the standard @sc{cvs} 
+system @file{/etc/passwd} authentication:
+
+@example
+cvs	auth	    required	pam_unix.so
+cvs	account	    required	pam_unix.so
+@end example
+
+The the equivalent @file{/etc/pam.d/cvs} would contain
+
+@example
+auth	    required	pam_unix.so
+account	    required	pam_unix.so
+@end example
+
+Some systems require a full path to the module so that
+@file{pam_unix.so} (Linux) would become something like 
+@file{/usr/lib/security/$ISA/pam_unix.so.1} (Sun Solaris).
+See the @file{contrib/pam} subdirectory of the @sc{cvs}
+source distribution for further example configurations.
+
+The PAM service name given above as "cvs" is just
+the service name in the default configuration amd can be
+set using
+@code{./configure --with-hardcoded-pam-service-name=<pam-service-name>}
+before compiling.  @sc{cvs} can also be configured to use whatever
+name it is invoked as as its PAM service name using
+@code{./configure --without-hardcoded-pam-service-name}, but this
+feature should not be used if you may not have control of the name
+@sc{cvs} will be invoked as.
+
+Be aware, also, that falling back to system
 authentication might be a security risk: @sc{cvs}
 operations would then be authenticated with that user's
 regular login password, and the password flies across
 the network in plaintext.  See @ref{Password
 authentication security} for more on this.
+This may be more of a problem with PAM authentication
+because it is likely that the source of the system 
+password is some central authentication service like
+LDAP which is also used to authenticate other services.
+
+On the other hand, PAM makes it very easy to change your password
+regularly.  If they are given the option of a one-password system for
+all of their activities, users are often more willing to change their
+password on a regular basis.
+
+In the non-PAM configuration where the password is stored in the
+@file{CVSROOT/passwd} file, it is difficult to change passwords on a
+regular basis since only administrative users (or in some cases
+processes that act as an administrative user) are typicaly given
+access to modify this file.  Either there needs to be some
+hand-crafted web page or set-uid program to update the file, or the
+update needs to be done by submitting a request to an administrator to
+perform the duty by hand.  In the first case, having to remember to
+update a separate password on a periodic basis can be difficult.  In
+the second case, the manual nature of the change will typically mean
+that the password will not be changed unless it is absolutely
+necessary.
+
+Note that PAM administrators should probably avoid configuring
+one-time-passwords (OTP) for @sc{cvs} authentication/authorization.  If
+OTPs are desired, the administrator may wish to encourage the use of
+one of the other Client/Server access methods.  See the section on
+@pxref{Remote repositories} for a list of other methods.
 
 Right now, the only way to put a password in the
 @sc{cvs} @file{passwd} file is to paste it there from
@@ -3312,6 +3398,14 @@ called @dfn{releases}.  To avoid confusion, the word
 
 @c We avoid the "major revision" terminology.  It seems
 @c like jargon.  Hopefully "first number" is clear enough.
+@c
+@c Well, in the context of software release numbers,
+@c "major" and "minor" release or version numbers are
+@c documented in at least the GNU Coding Standards, but I'm
+@c still not sure I find that a valid reason to apply the
+@c terminology to RCS revision numbers.  "First", "Second",
+@c "subsequent", and so on is almost surely clearer,
+@c especially to a novice reader. -DRP
 By default, @sc{cvs} will assign numeric revisions by
 leaving the first number the same and incrementing the
 second number.  For example, @code{1.1}, @code{1.2},
@@ -3640,7 +3734,7 @@ place.  Therefore, one might delete, move, or rename a
 tag.
 
 @noindent
-@emph{Warning: the commands in this section are
+@strong{WARNING: the commands in this section are
 dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a @sc{cvs}
@@ -3670,10 +3764,10 @@ of branch tags.  In that case, any non-branch tags encountered will
 trigger warnings and will not be deleted.
 
 @noindent
-@emph{Warning: Moving branch tags is very dangerous!  If you think you need the
-@code{-B} option, think again and ask your @sc{cvs} administrator about it (if
-that isn't you).  There is almost certainly another way to accomplish what you
-want to accomplish.}
+@strong{WARNING: Moving branch tags is very dangerous!  If you think
+you need the @code{-B} option, think again and ask your @sc{cvs}
+administrator about it (if that isn't you).  There is almost certainly
+another way to accomplish what you want to accomplish.}
 
 @cindex Moving tags
 @cindex Moving branch tags
@@ -3701,10 +3795,10 @@ In that case, non-branch tags encountered with the given
 name are ignored with a warning message.
 
 @noindent
-@emph{Warning: Moving branch tags is very dangerous!  If you think you need the
-@code{-B} option, think again and ask your @sc{cvs} administrator about it (if
-that isn't you).  There is almost certainly another way to accomplish what you
-want to accomplish.}
+@strong{WARNING: Moving branch tags is very dangerous!  If you think you
+need the @code{-B} option, think again and ask your @sc{cvs}
+administrator about it (if that isn't you).  There is almost certainly
+another way to accomplish what you want to accomplish.}
 
 @cindex Renaming tags
 @cindex Tags, renaming
@@ -4550,51 +4644,22 @@ merging the changes between them into the working
 directory need not change anything.  Therefore, there
 is no conflict.
 
-There is, however, one major caveat with using
-@samp{-kk} on merges.  Namely, it overrides whatever
-keyword expansion mode @sc{cvs} would normally have
-used.  In particular, this is a problem if the mode had
-been @samp{-kb} for a binary file.  Therefore, if your
-repository contains binary files, you will need to deal
-with the conflicts rather than using @samp{-kk}.
+@strong{WARNING: In versions of @sc{cvs} prior to 1.12.2, there was a
+major problem with using @samp{-kk} on merges.  Namely, @samp{-kk}
+overrode any default keyword expansion mode set in the archive file in
+the repository.  This could, unfortunately for some users, cause data
+corruption in binary files (with a default keyword expansion mode set
+to @samp{-kb}).  Therefore, when a repository contained binary files,
+conflicts had to be dealt with manually rather than using @samp{-kk} in
+a merge command.}
 
-@ignore
-The following seems rather confusing, possibly buggy,
-and in general, in need of much more thought before it
-is a recommended technique.  For one thing, does it
-apply on Windows as well as on Unix?
-
-Unchanged binary files will undergo the same keyword substitution
-but will not be checked in on a subsequent
-@code{cvs commit}.  Be aware that binary files containing keyword
-strings which are present in or below the working directory
-will most likely remain corrupt until repaired, however.  A simple 
-@code{cvs update -A} is sufficient to fix these otherwise unaltered binary files
-if the merge is being done to the main branch but
-this must be done after the merge has been committed or the merge itself
-will be lost.
-
-For Example:
-@example
-cvs update -Akk -jbranchtag
-cvs commit
-cvs update -A
-@end example
-
-@noindent
-will update the current directory from the main trunk of the
-repository, substituting the base keyword strings for keywords,
-and merge changes made on the branch @samp{branchtag} into the new
-work files, performing the same keyword substitution on that file set before
-comparing the two sets.  The final @code{cvs update -A} will restore any
-corrupted binary files as well as resetting the sticky @samp{-kk} tags which
-were present on the files in and below the working directory.
-Unfortunately, this doesn't work as well with an arbitrary branch tag, as the
-@samp{-r @var{branchtag}} switch does not reset the sticky @samp{-kk}
-switches attached to the working files as @samp{-A} does.  The workaround
-for this is to release the working directory after the merge has been
-committed and check it out again.
-@end ignore
+In @sc{cvs} version 1.12.2 and later, the keyword expansion mode
+provided on the command line to any @sc{cvs} command no longer
+overrides the @samp{-kb} keyword expansion mode setting for binary
+files, though it will still override other default keyword expansion
+modes.  You can now safely merge using @samp{-kk} to avoid spurious conflicts
+on lines containing RCS keywords, even when your repository contains
+binary files.
 
 @c ---------------------------------------------------------------------
 @node Recursive behavior
@@ -5630,6 +5695,9 @@ On unix, the @code{cvs update -A} command suffices.
 @c update -A" would suffice, although the user who
 @c reported this suggested removing the file, manually
 @c removing it from CVS/Entries, and then "cvs update"
+(Note that you can use @code{cvs log} to determine the default keyword
+substitution method for a file and @code{cvs status} to determine
+the keyword substitution method for a working copy.)
 
 However, in using @code{cvs admin -k} to change the
 keyword expansion, be aware that the keyword expansion
@@ -6596,13 +6664,13 @@ The @var{files} and the options are processed as for the @code{cvs
 watch} commands.
 
 @ignore
-@strong{Caution:} If the @code{PreservePermissions}
+@strong{Caution: If the @code{PreservePermissions}
 option is enabled in the repository (@pxref{config}),
 @sc{cvs} will not change the permissions on any of the
 @var{files}.  The reason for this change is to ensure
 that using @samp{cvs edit} does not interfere with the
 ability to store file permissions in the @sc{cvs}
-repository.
+repository.}
 @end ignore
 
 @end deffn
@@ -7165,9 +7233,12 @@ endings between the canonical form in which they are
 stored in the repository (linefeed only), and the form
 appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
-only to terminate lines, this is the same as
+only to terminate lines, this is very similar to
 @samp{-ko}.  For more information on binary files, see
-@ref{Binary files}.
+@ref{Binary files}.  In @sc{cvs} version 1.12.2 and later
+@samp{-kb}, as set by @code{cvs add}, @code{cvs admin}, or
+@code{cvs import} may not be overridden by a @samp{-k} option
+specified on the command line.
 
 @item -kv
 Generate only keyword values for keyword strings.  For
@@ -8147,8 +8218,8 @@ option as in other commands.  (Other command options,
 which are listed with the individual commands, may have
 different behavior from one @sc{cvs} command to the other).
 
-@strong{Warning:} the @samp{history} command is an exception; it supports
-many options that conflict even with these standard options.
+@strong{Note: the @samp{history} command is an exception; it supports
+many options that conflict even with these standard options.}
 
 @table @code
 @cindex Dates
@@ -8351,34 +8422,35 @@ give an error if you mistype a tag name.
 @code{annotate}, @code{checkout}, @code{export},
 @code{rdiff}, @code{rtag}, and @code{update}.
 
-@strong{Warning:}  The @code{commit} and @code{remove}
+@strong{WARNING:  The @code{commit} and @code{remove}
 commands also have a
 @samp{-f} option, but it has a different behavior for
 those commands.  See @ref{commit options}, and
-@ref{Removing files}.
+@ref{Removing files}.}
 
 @item -k @var{kflag}
-Alter the default processing of keywords.
-@xref{Keyword substitution}, for the meaning of
-@var{kflag}.  Your @var{kflag} specification is
-@dfn{sticky} when you use it to create a private copy
-of a source file; that is, when you use this option
-with the @code{checkout} or @code{update} commands,
-@sc{cvs} associates your selected @var{kflag} with the
-file, and continues to use it with future update
-commands on the same file until you specify otherwise.
+Override the default processing of RCS keywords other than
+@samp{-kb}.  @xref{Keyword substitution}, for the meaning of
+@var{kflag}.  Used with the @code{checkout} and @code{update}
+commands, your @var{kflag} specification is
+@dfn{sticky}; that is, when you use this option
+with a @code{checkout} or @code{update} command,
+@sc{cvs} associates your selected @var{kflag} with any files
+it operates on, and continues to use that @var{kflag} with future
+commands on the same files until you specify otherwise.
 
 The @samp{-k} option is available with the @code{add},
-@code{checkout}, @code{diff}, @code{import} and
+@code{checkout}, @code{diff}, @code{export}, @code{import} and
 @code{update} commands.
+
+@strong{WARNING: Prior to CVS version 1.12.2, the @samp{-k} flag
+overrode the @samp{-kb} indication for a binary file.  This could
+sometimes corrupt binary files.  @xref{Merging and keywords}, for
+more.}
 
 @item -l
 Local; run only in current working directory, rather than
 recursing through subdirectories.
-
-@strong{Warning:} this is not the same
-as the overall @samp{cvs -l} option, which you can specify to the
-left of a cvs command!
 
 Available with the following commands: @code{annotate}, @code{checkout},
 @code{commit}, @code{diff}, @code{edit}, @code{editors}, @code{export},
@@ -8396,12 +8468,12 @@ Available with the following commands: @code{add},
 @code{commit} and @code{import}.
 
 @item -n
-Do not run any checkout/commit/tag program.  (A program can be
-specified to run on each of these activities, in the modules
+Do not run any tag program.  (A program can be
+specified to run in the modules
 database (@pxref{modules}); this option bypasses it).
 
-@strong{Warning:} this is not the same as the overall @samp{cvs -n}
-option, which you can specify to the left of a cvs command!
+@strong{Note: this is not the same as the @samp{cvs -n}
+program option, which you can specify to the left of a cvs command!}
 
 Available with the @code{checkout}, @code{commit}, @code{export},
 and @code{rtag} commands.
@@ -8472,8 +8544,8 @@ Specifying the @samp{-q} global option along with the
 the warning messages when the @sc{rcs} file
 does not contain the specified tag.
 
-@strong{Warning:} this is not the same as the overall @samp{cvs -r} option,
-which you can specify to the left of a @sc{cvs} command!
+@strong{Note: this is not the same as the overall @samp{cvs -r} option,
+which you can specify to the left of a @sc{cvs} command!}
 
 @samp{-r} is available with the @code{checkout}, @code{commit},
 @code{diff}, @code{history}, @code{export}, @code{rdiff},
@@ -10035,9 +10107,9 @@ various formats.
 Logging must be enabled by creating the file
 @file{$CVSROOT/CVSROOT/history}.
 
-@strong{Warning:} @code{history} uses @samp{-f}, @samp{-l},
+@strong{Note: @code{history} uses @samp{-f}, @samp{-l},
 @samp{-n}, and @samp{-p} in ways that conflict with the
-normal use inside @sc{cvs} (@pxref{Common options}).
+normal use inside @sc{cvs} (@pxref{Common options}).}
 
 @menu
 * history options::             history options
@@ -10408,8 +10480,8 @@ Coordinated Universal Time (UTC).  (Other parts of
 @c client then communicates to the server, is the
 @c right solution.
 
-@strong{Warning:} @code{log} uses @samp{-R} in a way that conflicts
-with the normal use inside @sc{cvs} (@pxref{Common options}).
+@strong{Note: @code{log} uses @samp{-R} in a way that conflicts
+with the normal use inside @sc{cvs} (@pxref{Common options}).}
 
 @menu
 * log options::                 log options
@@ -10759,13 +10831,13 @@ Delete your working copy of the file if the release
 succeeds.  If this flag is not given your files will
 remain in your working directory.
 
-@strong{Warning:}  The @code{release} command deletes
+@strong{WARNING:  The @code{release} command deletes
 all directories and files recursively.  This
 has the very serious side-effect that any directory
 that you have created inside your checked-out sources,
 and not added to the repository (using the @code{add}
 command; @pxref{Adding files}) will be silently deleted---even
-if it is non-empty!
+if it is non-empty!}
 @end table
 
 @c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -10775,14 +10847,6 @@ if it is non-empty!
 Before @code{release} releases your sources it will
 print a one-line message for any file that is not
 up-to-date.
-
-@strong{Warning:}  Any new directories that you have
-created, but not added to the @sc{cvs} directory hierarchy
-with the @code{add} command (@pxref{Adding files}) will be
-silently ignored (and deleted, if @samp{-d} is
-specified), even if they contain files.
-@c FIXCVS: This is a bug.  But is it true?  I think
-@c maybe they print "? dir" now.
 
 @table @code
 @item U @var{file}
@@ -12373,8 +12437,8 @@ completed.
 @cindex Wrappers
 
 @c FIXME: need some better way of separating this out
-@c by functionality.  -t/-f is one feature, -m is
-@c another, and -k is a third.  And this discussion
+@c by functionality.  -m is
+@c one feature, and -k is a another.  And this discussion
 @c should be better motivated (e.g. start with the
 @c problems, then explain how the feature solves it).
 
@@ -12383,25 +12447,6 @@ control certain settings based on the name of the file
 which is being operated on.  The settings are @samp{-k}
 for binary files, and @samp{-m} for nonmergeable text
 files.
-
-@ignore
-Wrappers allow you to set a hook which transforms files on
-their way in and out of @sc{cvs}.
-
-The file @file{cvswrappers} defines the script that will be
-run on a file when its name matches a regular
-expression. There are two scripts that can be run on a
-file or directory. One script is executed on the file/directory
-before being checked into the repository (this is denoted
-with the @code{-t} flag) and the other when the file is
-checked out of the repository (this is denoted with the
-@code{-f} flag).  The @samp{-t}/@samp{-f} feature does
-not work with client/server @sc{cvs}.
-@c I think maybe -t/-f works client/server if a single
-@c file converts to/from a single file, as opposed to
-@c the file<->directory case.  Could use more
-@c investigation...
-@end ignore
 
 The @samp{-m} option
 specifies the merge methodology that should be used when
@@ -12414,10 +12459,12 @@ binary, there is no need to specify @samp{-m 'COPY'}).
 @sc{cvs} will provide the user with the
 two versions of the files, and require the user using
 mechanisms outside @sc{cvs}, to insert any necessary
-changes.  @strong{WARNING}: do not use @code{COPY} with
-@sc{cvs} 1.9 or earlier--such versions of @sc{cvs} will
+changes.
+
+@strong{WARNING: do not use @code{COPY} with
+@sc{cvs} 1.9 or earlier - such versions of @sc{cvs} will
 copy one version of your file over the other, wiping
-out the previous contents.
+out the previous contents.}
 @c Ordinarily we don't document the behavior of old
 @c versions.  But this one is so dangerous, I think we
 @c must.  I almost renamed it to -m 'NOMERGE' so we
@@ -12435,10 +12482,6 @@ The basic format of the file @file{cvswrappers} is:
 wildcard     [option value][option value]...
 
 where option is one of
-@ignore
--f           from cvs filter         value: path to filter
--t           to cvs filter           value: path to filter
-@end ignore
 -m           update methodology      value: MERGE or COPY
 -k           keyword expansion       value: expansion mode
 
@@ -12890,13 +12933,13 @@ RereadLogAfterVerify=always
 @cindex Per-module editor
 @cindex Log messages, editing
 
-@emph{NOTE:} The @file{editinfo} feature has been
+@strong{Note: The @file{editinfo} feature has been
 rendered obsolete.  To set a default editor for log
-messages use the @code{EDITOR} environment variable
+messages use the @code{CVSEDITOR}, @code{EDITOR} environment variables
 (@pxref{Environment variables}) or the @samp{-e} global
 option (@pxref{Global options}).  See @ref{verifymsg},
 for information on the use of the @file{verifymsg}
-feature for evaluating log messages.
+feature for evaluating log messages.}
 
 If you want to make sure that all log messages look the
 same way, you can use the @file{editinfo} file to
@@ -13642,7 +13685,7 @@ that the file should be checked with the filesystem
 @samp{stat()} function to see if it has changed (see warning below)
 before rereading.  The default value is @samp{always}.
 
-@emph{Note that `stat' mode can cause CVS to pause for up to
+@strong{Note: the `stat' mode can cause CVS to pause for up to
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories}
 

@@ -39,6 +39,8 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+<a name="NOD1"></a>
+<a name="SEC_Top"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
@@ -46,27 +48,6 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
 <h1 class="settitle">Texi2html</h1>
-<p>This file documents the texi2html script which converts
-Texinfo into HTML.
-</p><p>Copyright (C) 1999, 2000  Free Software Foundation, Inc.
-</p><p>This edition is for texi2html version 1.67,
-15 September 2001.
-</p><p>Permission is granted to make and distribute verbatim
-copies of this manual provided the copyright notice and
-this permission notice are preserved on all copies.
-</p><p>Permission is granted to copy and distribute modified
-versions of this manual under the conditions for verbatim
-copying, provided that the entire resulting derived work is
-distributed under the terms of a permission notice
-identical to this one.
-</p><p>Permission is granted to copy and distribute translations
-of this manual into another language, under the above
-conditions for modified versions, except that this
-permission notice may be stated in a translation approved
-by the Free Software Foundation.
-</p>
-<a name="NOD1"></a>
-<a name="SEC_Top"></a>
 
 <p>This Manual (Edition 0.21, last updated at
 14. August 2000) describes the <code>texi2html</code> Perl
@@ -83,88 +64,6 @@ Texinfo source file; use the entry Id under Revisions).
 This manual is currently under
 construction and of course incomplete ;-)
 </pre></td></tr></table>
-<table class="menu" border="0" cellspacing="0">
-
-<tr><td align="left" valign="top"><a href="#SEC1">1. Overview about <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC5">3. Customizing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customizing.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC6">4. Customizing what gets expanded</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC7">5. Customizing page layout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC17">6. Customizing HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC23">7. Initialization file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Initialization files.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC28">7.5 Initialization file options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC39">8. Command Line Options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC67">A. Function Reference</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reference Manual of functions.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
-/// The Detailed Node Listing ///
-
---- Overview ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
---- Installation process ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC4">2. Installation of <code>texi2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Installation process.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
---- Initialization file options ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Number sectioning.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC31">7.5.3 Center Image</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC32">7.5.4 Example Indent Cell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC33">7.5.5 Small Example Indent</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Sample Indent Cell.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC34">7.5.6 Small Font Size</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC35">7.5.7 Top Heading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC36">7.5.8 Index Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC37">7.5.9 Split Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC38">7.5.10 HREF Dir Instead File.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">HREF Dir Instead file.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
---- Command Line Options ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC40">8.1 Debugging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC41">8.2 DocType</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">DocType (HTML)</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC42">8.3 Check</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checking files.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC43">8.4 Expand</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expanding info, tex areas etc.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC44">8.5 Glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC45">8.6 Invisible</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC46">8.7 Iso</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC47">8.8 Include Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Include directories.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC48">8.9 Top File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC49">8.10 Table Of content File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Table of content File.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC50">8.11 Frames</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC51">8.12 Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC52">8.13 Number sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC53">8.14 Split</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Splitting.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC54">8.15 Section navigation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Navigation.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC55">8.16 Subdirectory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC56">8.17 Short extension</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC57">8.18 Prefix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC58">8.19 Output filename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Output.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC59">8.20 Short Cross References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Short Ref.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC60">8.21 Index Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC61">8.22 Verbose output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Verbose.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC62">8.23 Language Support</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Language.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC63">8.24 LaTeX2HTML for <code>@math</code> and <code>@tex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">LaTeX2HTML.</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
---- LaTeX2HTML for <code>@math</code> and <code>@tex</code> ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Where to find LaTeX2HTML.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC66">8.24.3 Temporary files for LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
---- Indices ---
-
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC70">B. Indices</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Command Line Option Index.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC72">B.2 Variable Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC73">B.3 Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-</table>
 <hr size="1">
 <a name="NOD2"></a>
 <a name="SEC1"></a>

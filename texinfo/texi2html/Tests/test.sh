@@ -210,14 +210,14 @@ test_texi formatting verbatim_not_closed.texi "" 1
 test_texi formatting copying_not_closed.texi "" 1
 test_texi formatting titlepage_not_closed.texi "" 1
 test_texi texi2html 
-test_texi viper_monolithic viper.texi
-test_texi viper viper.texi "-split chapter"
-test_texi xemacs xemacs.texi "-split chapter"
-test_texi xemacs_frame xemacs.texi "-split chapter -frames"
+test_texi viper_monolithic viper.texi "-ifinfo"
+test_texi viper viper.texi "-split chapter -ifinfo"
+test_texi xemacs xemacs.texi "-split chapter -ifinfo"
+test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo"
 test_texi texinfo info-stnd.texi "-split chapter -node-files"
-test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
-test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
+test_texi texinfo texinfo.txi "-split chapter -ifinfo" 0 txi texinfo ignore_tags
+test_texi nodes_texinfo texinfo.txi "-split node -node-files -ifinfo" 0 txi texinfo ignore_tags
 #test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
-test_texi ccvs cvs.texinfo "-split chapter -ignore-preamble-text" 0 texinfo
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm" 0 tex sing
+test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose" 0 tex sing ignore_tags
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.37 2003-08-08 14:26:51 pertusus Exp $
+# $Id: texi2html.init,v 1.38 2003-08-08 17:21:43 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -63,7 +63,8 @@ $DUMP_TEXI = 0;
 # if set to "tex" (or "info") @iftex and @tex (or @ifinfo) sections are 
 # expanded, else neither @iftex, @tex, nor @ifinfo sections are expanded.
 # the @EXPAND array contains the expanded section names.
-@EXPAND = ("info");
+#@EXPAND = ("info");
+@EXPAND = ();
 
 # -invisible
 # This seems obsolete and is not used anywhere.

@@ -1,5 +1,12 @@
 2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
 
+	* texi2html.init, Tests/test.sh, Tests/ccvs: don't expand info
+	section in default settings. Expand info sections for the xemacs
+	manual, the viper manual and the texinfo manual. 
+	The cvs manual is updated.
+
+2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: pass line numbers to all the 
 	functions echoing error messages and use these line numbers
 	in error messages. Some error messages rewrited.

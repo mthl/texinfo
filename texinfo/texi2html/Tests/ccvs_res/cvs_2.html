@@ -1792,12 +1792,84 @@ does not exist, then the server can try to authenticate
 the username and password using the operating system's
 user-lookup routines (this &quot;fallback&quot; behavior can be
 disabled by setting <code>SystemAuth=no</code> in the
-<small>CVS</small> `<tt>config</tt>' file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).  Be
-aware, however, that falling back to system
+<small>CVS</small> `<tt>config</tt>' file, see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+</p><p>The default fallback behaviour is to look in 
+`<tt>/etc/passwd</tt>' for this system password unless your
+system has PAM (Pluggable Authentication Modules)
+and your <small>CVS</small> server executable was configured to
+use it at compile time (using <code>./configure --enable-pam</code> - see the
+INSTALL file for more).  In this case, PAM will be consulted instead.
+This means that <small>CVS</small> can be configured to use any password
+authentication source PAM can be configured to use (possibilities
+include a simple UNIX password, NIS, LDAP, and others) in its
+global configuration file (usually `<tt>/etc/pam.conf</tt>'
+or possibly `<tt>/etc/pam.d/cvs</tt>').  See your PAM documentation
+for more details on PAM configuration.
+</p><p>Note that PAM is an experimental feature in <small>CVS</small> and feedback is
+encouraged.  Please send a mail to one of the <small>CVS</small> mailing lists
+(<code>info-cvs@gnu.org</code> or <code>bug-cvs@gnu.org</code>) if you use the 
+<small>CVS</small> PAM support.
+</p><p><strong>WARNING: Using PAM gives the system administrator much more 
+flexibility about how <small>CVS</small> users are authenticated but 
+no more security than other methods.  See below for more.</strong> 
+</p><p>CVS needs an &quot;auth&quot; and &quot;account&quot; module in the 
+PAM configuration file. A typical PAM configuration 
+would therefore have the following lines 
+in `<tt>/etc/pam.conf</tt>' to emulate the standard <small>CVS</small> 
+system `<tt>/etc/passwd</tt>' authentication:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
+cvs	auth	    required	pam_unix.so
+cvs	account	    required	pam_unix.so
+</pre></td></tr></table>
+<p>The the equivalent `<tt>/etc/pam.d/cvs</tt>' would contain
+</p><table><tr><td>&nbsp;</td><td><pre class="example">
+auth	    required	pam_unix.so
+account	    required	pam_unix.so
+</pre></td></tr></table>
+<p>Some systems require a full path to the module so that
+`<tt>pam_unix.so</tt>' (Linux) would become something like 
+`<tt>/usr/lib/security/$ISA/pam_unix.so.1</tt>' (Sun Solaris).
+See the `<tt>contrib/pam</tt>' subdirectory of the <small>CVS</small>
+source distribution for further example configurations.
+</p><p>The PAM service name given above as &quot;cvs&quot; is just
+the service name in the default configuration amd can be
+set using
+<code>./configure --with-hardcoded-pam-service-name=&lt;pam-service-name&gt;</code>
+before compiling.  <small>CVS</small> can also be configured to use whatever
+name it is invoked as as its PAM service name using
+<code>./configure --without-hardcoded-pam-service-name</code>, but this
+feature should not be used if you may not have control of the name
+<small>CVS</small> will be invoked as.
+</p><p>Be aware, also, that falling back to system
 authentication might be a security risk: <small>CVS</small>
 operations would then be authenticated with that user's
 regular login password, and the password flies across
 the network in plaintext.  See <a href="#SEC32">Security considerations with password authentication</a> for more on this.
+This may be more of a problem with PAM authentication
+because it is likely that the source of the system 
+password is some central authentication service like
+LDAP which is also used to authenticate other services.
+</p><p>On the other hand, PAM makes it very easy to change your password
+regularly.  If they are given the option of a one-password system for
+all of their activities, users are often more willing to change their
+password on a regular basis.
+</p><p>In the non-PAM configuration where the password is stored in the
+`<tt>CVSROOT/passwd</tt>' file, it is difficult to change passwords on a
+regular basis since only administrative users (or in some cases
+processes that act as an administrative user) are typicaly given
+access to modify this file.  Either there needs to be some
+hand-crafted web page or set-uid program to update the file, or the
+update needs to be done by submitting a request to an administrator to
+perform the duty by hand.  In the first case, having to remember to
+update a separate password on a periodic basis can be difficult.  In
+the second case, the manual nature of the change will typically mean
+that the password will not be changed unless it is absolutely
+necessary.
+</p><p>Note that PAM administrators should probably avoid configuring
+one-time-passwords (OTP) for <small>CVS</small> authentication/authorization.  If
+OTPs are desired, the administrator may wish to encourage the use of
+one of the other Client/Server access methods.  See the section on
+see section <a href="#SEC26">Remote repositories</a> for a list of other methods.
 </p><p>Right now, the only way to put a password in the
 <small>CVS</small> `<tt>passwd</tt>' file is to paste it there from
 somewhere else.  Someday, there may be a <code>cvs

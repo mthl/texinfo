@@ -752,15 +752,22 @@ both expand as plain <code>Revision</code>, and therefore
 merging the changes between them into the working
 directory need not change anything.  Therefore, there
 is no conflict.
-</p><p>There is, however, one major caveat with using
-`<samp>-kk</samp>' on merges.  Namely, it overrides whatever
-keyword expansion mode <small>CVS</small> would normally have
-used.  In particular, this is a problem if the mode had
-been `<samp>-kb</samp>' for a binary file.  Therefore, if your
-repository contains binary files, you will need to deal
-with the conflicts rather than using `<samp>-kk</samp>'.
-</p>
-<hr size="6">
+</p><p><strong>WARNING: In versions of <small>CVS</small> prior to 1.12.2, there was a
+major problem with using `<samp>-kk</samp>' on merges.  Namely, `<samp>-kk</samp>'
+overrode any default keyword expansion mode set in the archive file in
+the repository.  This could, unfortunately for some users, cause data
+corruption in binary files (with a default keyword expansion mode set
+to `<samp>-kb</samp>').  Therefore, when a repository contained binary files,
+conflicts had to be dealt with manually rather than using `<samp>-kk</samp>' in
+a merge command.</strong>
+</p><p>In <small>CVS</small> version 1.12.2 and later, the keyword expansion mode
+provided on the command line to any <small>CVS</small> command no longer
+overrides the `<samp>-kb</samp>' keyword expansion mode setting for binary
+files, though it will still override other default keyword expansion
+modes.  You can now safely merge using `<samp>-kk</samp>' to avoid spurious conflicts
+on lines containing RCS keywords, even when your repository contains
+binary files.
+</p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC54" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs_6.html#SEC65" title="Next chapter"> &gt;&gt; </a>]</td>

@@ -439,9 +439,12 @@ endings between the canonical form in which they are
 stored in the repository (linefeed only), and the form
 appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
-only to terminate lines, this is the same as
+only to terminate lines, this is very similar to
 `<samp>-ko</samp>'.  For more information on binary files, see
-<a href="cvs_9.html#SEC80">Handling binary files</a>.
+<a href="cvs_9.html#SEC80">Handling binary files</a>.  In <small>CVS</small> version 1.12.2 and later
+`<samp>-kb</samp>', as set by <code>cvs add</code>, <code>cvs admin</code>, or
+<code>cvs import</code> may not be overridden by a `<samp>-k</samp>' option
+specified on the command line.
 </p></dd>
 <dt>`<samp> -kv
 </samp>'</dt>

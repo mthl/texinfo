@@ -203,6 +203,9 @@ cope with line endings (that is, you are using
 check in a new copy of the file, as shown by the
 <code>cvs commit</code> command above.
 On unix, the <code>cvs update -A</code> command suffices.
+(Note that you can use <code>cvs log</code> to determine the default keyword
+substitution method for a file and <code>cvs status</code> to determine
+the keyword substitution method for a working copy.)
 </p><p>However, in using <code>cvs admin -k</code> to change the
 keyword expansion, be aware that the keyword expansion
 mode is not version controlled.  This means that, for

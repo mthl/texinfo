@@ -495,8 +495,7 @@ control certain settings based on the name of the file
 which is being operated on.  The settings are `<samp>-k</samp>'
 for binary files, and `<samp>-m</samp>' for nonmergeable text
 files.
-</p>
-<p>The `<samp>-m</samp>' option
+</p><p>The `<samp>-m</samp>' option
 specifies the merge methodology that should be used when
 a non-binary file is updated.  <code>MERGE</code> means the usual
 <small>CVS</small> behavior: try to merge the files.  <code>COPY</code>
@@ -507,10 +506,11 @@ binary, there is no need to specify `<samp>-m 'COPY'</samp>').
 <small>CVS</small> will provide the user with the
 two versions of the files, and require the user using
 mechanisms outside <small>CVS</small>, to insert any necessary
-changes.  <strong>WARNING</strong>: do not use <code>COPY</code> with
-<small>CVS</small> 1.9 or earlier--such versions of <small>CVS</small> will
+changes.
+</p><p><strong>WARNING: do not use <code>COPY</code> with
+<small>CVS</small> 1.9 or earlier - such versions of <small>CVS</small> will
 copy one version of your file over the other, wiping
-out the previous contents.
+out the previous contents.</strong>
 The `<samp>-m</samp>' wrapper option only affects behavior when
 merging is done on update; it does not affect how files
 are stored.  See <a href="cvs_9.html#SEC80">Handling binary files</a>, for more on
@@ -879,13 +879,13 @@ RereadLogAfterVerify=always
 </tr></table>
 <h3 class="appendixsubsec"> C.3.4 Editinfo </h3>
 
-<p><em>NOTE:</em> The `<tt>editinfo</tt>' feature has been
+<p><strong>Note: The `<tt>editinfo</tt>' feature has been
 rendered obsolete.  To set a default editor for log
-messages use the <code>EDITOR</code> environment variable
+messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
 (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>) or the `<samp>-e</samp>' global
 option (see section <a href="cvs_16.html#SEC118">Global options</a>).  See <a href="#SEC169">Verifying log messages</a>,
 for information on the use of the `<tt>verifymsg</tt>'
-feature for evaluating log messages.
+feature for evaluating log messages.</strong>
 </p><p>If you want to make sure that all log messages look the
 same way, you can use the `<tt>editinfo</tt>' file to
 specify a program that is used to edit the log message.
@@ -1666,9 +1666,9 @@ reread; or <var>value</var> may be `<samp>stat</samp>', indicating
 that the file should be checked with the filesystem
 `<samp>stat()</samp>' function to see if it has changed (see warning below)
 before rereading.  The default value is `<samp>always</samp>'.
-</p><p><em>Note that `stat' mode can cause CVS to pause for up to
+</p><p><strong>Note: the `stat' mode can cause CVS to pause for up to
 one extra second per directory committed.  This can be less IO and
-CPU intensive but is not recommended for use with large repositories</em>
+CPU intensive but is not recommended for use with large repositories</strong>
 </p><p>See section <a href="#SEC169">Verifying log messages</a>, for more information on how verifymsg
 may be used.
 </p><a name="IDX291"></a>

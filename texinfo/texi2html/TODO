@@ -15,25 +15,26 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
 
 * document css classes, and have similar classes with makeinfo
 -  makeinfo classes:
-pre verbatim, 
-pre example display...,
 ul menu, 
 ul index-cp index-*, 
+div node (navigation bar), 
+
+- texi2html classes:
+table index-cp index-*, 
+table menu, 
+h3 node
+ul toc,
+
+- same classes:
+pre verbatim, 
+pre example display...,
+table cartouche, 
 small dots, small enddots, 
 div contents shortcontents, div footnote, 
-div node (navigation bar), 
 h? unnumbered chapter appendix...,
 h1 settitle (title before contents, if not set by titlefont),
 h1 titlefont (@titlefont),
-table cartouche, 
 
-- texi2html classes:
-pre verbatim,
-table index-cp index-*, 
-table menu, 
-pre example display...,
-small dots, small enddots, 
-div contents shortcontents, div footnote, 
-h? unnumbered chapter appendix...,
-h3 node
-ul toc,
+* use <link> for navigation, maybe wait before this is done in makeinfo
+(see http://www.w3.org/TR/REC-html40/types.html#h-6.12 and
+http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
