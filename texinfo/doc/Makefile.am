@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.21 2005-01-25 16:45:43 karl Exp $
+# $Id: Makefile.am,v 1.22 2005-03-25 11:51:05 kasal Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -60,21 +60,42 @@ install-tex:
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
 
 # The man pages depend on the --help strings and the version number.
-if MAINTAINER_MODE
 common_mandeps = $(top_srcdir)/configure.ac
-info.1: $(top_srcdir)/info/info.c $(common_mandeps)
-	$(HELP2MAN) --name="read Info documents" `basename $@ .1` >$@
-infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	$(HELP2MAN) --name="compile customizations for Info" `basename $@ .1` >$@
-install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
-	$(HELP2MAN) --name="update info/dir entries" `basename $@ .1` >$@
-makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
-	$(HELP2MAN) --name="translate Texinfo documents" `basename $@ .1` >$@
-texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
-	$(HELP2MAN) --name="print Texinfo documents" `basename $@ .1` >$@
-texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
-	$(HELP2MAN) --name="sort Texinfo index files" `basename $@ .1` >$@
-endif
+
+# Rule to update the program:
+man_rule_1 = program=`expr '/$@' : '.*/\(.*\)\.1'` && \
+	case $$program in makeinfo) dir=makeinfo;; info*) dir=info;; \
+		*) dir=util;; esac && \
+	echo cd $(top_builddir)/$$dir '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
+	     cd $(top_builddir)/$$dir  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)
+
+# Rule to generate the page:
+# (We also add $(top_srcdir)/$$dir to the path, because texi2dvi is in source tree.)
+man_rule_2 = echo "Updating man page $@" && \
+	for dir in util info makeinfo; do \
+	PATH="$(top_builddir)/$$dir@PATH_SEPARATOR@$(top_srcdir)/$$dir@PATH_SEPARATOR@$$PATH"; \
+	done; \
+	$(HELP2MAN) --name="$$name" `expr '/$@' : '.*/\(.*\)\.1'` >$@
+
+$(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
+	@$(man_rule_1)
+	@name="read Info documents" && $(man_rule_2)
+$(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
+	@$(man_rule_1)
+	@name="compile customizations for Info" && $(man_rule_2)
+$(srcdir)/install-info.1: $(top_srcdir)/util/install-info.c $(common_mandeps)
+	@$(man_rule_1)
+	@name="update info/dir entries" && $(man_rule_2)
+$(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
+	@$(man_rule_1)
+	@name="translate Texinfo documents" && $(man_rule_2)
+$(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
+	@$(man_rule_1)
+	@name="sort Texinfo index files" && $(man_rule_2)
+
+# No need for man_rule_1, texi2dvi is in the source tree.
+$(srcdir)/texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
+	@name="print Texinfo documents" && $(man_rule_2)
 
 # Do not create info files for distribution.
 dist-info:
