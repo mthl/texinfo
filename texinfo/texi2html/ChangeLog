@@ -4,6 +4,8 @@
 	variable, use my variables instead
 	* Tests/test.sh: if called with arguments, the test specified by 
 	the arguments is the only one done
+	* Tests/*: add Makefile.in, more subdirectories, synchronise
+	reference files with changes in the code
 
 2003-02-12  Patrice Dumas <dumas@centre-cired.fr>
 

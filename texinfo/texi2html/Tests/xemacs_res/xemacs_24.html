@@ -18,6 +18,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 </head>
 
@@ -819,6 +820,7 @@ statements with respect to the surrounding block.  In the example:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>    {
       foo ();
 </pre></td></tr></table><p>
@@ -834,6 +836,7 @@ line, not the column of the open-brace.  For example,
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (losing) {
   do_this ();
 </pre></td></tr></table><p>
@@ -854,6 +857,7 @@ the variable to 4 and <code>c-indent-level</code> to 0, you can get this style:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (x == y) {
     do_it ();
     }
@@ -879,6 +883,7 @@ parameter determines the difference in indentation between the two lines in:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (x == y)
   do_it ();
 </pre></td></tr></table><p>
@@ -896,6 +901,7 @@ compare:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (x == y)
   {
 </pre></td></tr></table><p>
@@ -904,6 +910,7 @@ with:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (x == y)
   do_it ();
 </pre></td></tr></table><p>
@@ -912,6 +919,7 @@ If you set <code>c-brace-offset</code> to 4, the first example becomes:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if (x == y)
       {
 </pre></td></tr></table><p>
@@ -924,6 +932,7 @@ results in code like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>char *
 index (string, char)
      char *string;
@@ -937,6 +946,7 @@ standard value is -2 and results in code like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>switch (c)
   {
   case 'x':
@@ -946,6 +956,7 @@ If <code>c-label-offset</code> were zero, the same code would be indented as:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>switch (c)
   {
     case 'x':
@@ -1083,6 +1094,7 @@ and by not changing the indentation of a triple-semicolon comment at all.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>;; This function is just an example.
 ;;; Here either two or three semicolons are appropriate.
 (defun foo (x)
@@ -1431,6 +1443,7 @@ for Emacs:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
 
         * xdisp.c (try_window_id):
@@ -1588,6 +1601,7 @@ command names.  For example,
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>TEXTAGS=&quot;def:newcommand:newenvironment&quot;
 export TEXTAGS
 </pre></td></tr></table><p>
@@ -1757,6 +1771,7 @@ Here is how to run <code>etags</code>:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>etags <var>inputfiles</var><small>...</small>
 </pre></td></tr></table><p>
 
@@ -1834,6 +1849,7 @@ by typing a dash in place of the file names, like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">find . -name &quot;*.[chCH]&quot; -print | etags -
 </font></pre></td></tr></table><p>
 
@@ -1880,6 +1896,7 @@ to the following files.  The syntax is:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">--regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
 </font></pre></td></tr></table><p>
 
@@ -1925,6 +1942,7 @@ you can see from the following example:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
 </font></pre></td></tr></table><p>
@@ -1947,6 +1965,7 @@ example tags the <code>DEFVAR</code> macros in the Emacs source files.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">--regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
 </font></pre></td></tr></table><p>
 
@@ -1958,6 +1977,7 @@ case.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">--regex=@first-file --ignore-case-regex=@second-file
 </font></pre></td></tr></table><p>
 
@@ -1972,6 +1992,7 @@ file is a comment):
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">        -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
 </font></pre></td></tr></table><p>
@@ -1980,6 +2001,7 @@ and then use it like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">etags --regex=@emacs.tags *.[ch] */*.[ch]
 </font></pre></td></tr></table><p>
 
@@ -1994,6 +2016,7 @@ from shell interpretation.
 Tag Octave files:
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
       --regex='/###key \(.*\)/\1/' \
@@ -2012,6 +2035,7 @@ to it.
 Tag Tcl files:
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
 </font></pre></td></tr></table><p>
 
@@ -2020,6 +2044,7 @@ Tag Tcl files:
 Tag VHDL files:
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">--language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
@@ -2082,6 +2107,7 @@ For example:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>  (setq tag-table-alist
         '((&quot;/usr/src/public/perl/&quot; . &quot;/usr/src/public/perl/perl-3.0/&quot;)
           (&quot;\\.el$&quot; . &quot;/usr/local/emacs/src/&quot;)

@@ -18,6 +18,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 </head>
 
@@ -873,6 +874,7 @@ name before using these commands.  Here is an example of what to set:
 <a name="IDX1419"></a>
 <a name="IDX1420"></a>
 <a name="IDX1421"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(setq calendar-latitude 40.1)
 (setq calendar-longitude -88.2)
 (setq calendar-location-name &quot;Urbana, IL&quot;)
@@ -893,6 +895,7 @@ not supply them), you must set them yourself.  Here is an example:
 <a name="IDX1422"></a>
 <a name="IDX1423"></a>
 <a name="IDX1424"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(setq calendar-time-zone -360)
 (setq calendar-standard-time-zone-name &quot;CST&quot;)
 (setq calendar-daylight-time-zone-name &quot;CDT&quot;)
@@ -1358,6 +1361,7 @@ calendar round (<code>calendar-previous-calendar-round-date</code>).
   To understand these commands, you need to understand the Mayan calendars.
 The <em>long count</em> is a counting of days with these units:
  
+</p>
 <table><tr><td>&nbsp;</td><td class="display"><pre style="font-family: serif">1 kin = 1 day&nbsp;&nbsp;&nbsp;1 uinal = 20 kin&nbsp;&nbsp;&nbsp;1 tun = 18 uinal
 1 katun = 20 tun&nbsp;&nbsp;&nbsp;1 baktun = 20 katun
 </pre></td></tr></table><p>
@@ -1450,6 +1454,7 @@ same file that the <code>calendar</code> utility uses.  A sample
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>12/22/1988 Twentieth wedding anniversary!!
 &amp;1/1. Happy New Year!
 10/22 Ruth's birthday.
@@ -1665,6 +1670,7 @@ For example, this entry:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>02/11/1989
       Bill B. visits Princeton today
       2pm Cognitive Studies Committee meeting
@@ -1724,6 +1730,7 @@ month, year) as an option.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>4/20/93  Switch-over to new tabulation system
 apr. 25  Start tabulating annual results
 4/30  Results for April are due
@@ -1916,6 +1923,7 @@ diary file.  You can also add one manually, for instance:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>%%(diary-anniversary 10 31 1948) Arthur's birthday
 </pre></td></tr></table><p>
 
@@ -1934,6 +1942,7 @@ dates.  Here is a block diary entry that applies to all dates from June
 <p>
 
 <a name="IDX1504"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>%%(diary-block 6 24 1990 7 10 1990) Vacation
 </pre></td></tr></table><p>
 
@@ -1962,6 +1971,7 @@ which looks like this:
 <p>
 
 <a name="IDX1509"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>%%(diary-cyclic 50 3 1 1990) Renew medication
 </pre></td></tr></table><p>
 
@@ -1991,6 +2001,7 @@ the <code>cron</code> utility.  Here is a nonmarking, floating diary entry
 that applies to the last Thursday in November:
  
 <a name="IDX1510"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>&amp;%%(diary-float 11 4 -1) American Thanksgiving
 </pre></td></tr></table><p>
 
@@ -2018,6 +2029,7 @@ weekend.  The diary entry
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>&amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
@@ -2097,6 +2109,7 @@ the current date is visible.  If you add both of the following lines to
 your init file:</p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(setq view-diary-entries-initially t)
 (calendar)
 </pre></td></tr></table><p>
@@ -2167,6 +2180,7 @@ replace today's date with asterisks; to do that, use the hook function
 <p>
 
 <a name="IDX1519"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(add-hook 'today-visible-calendar-hook 'calendar-star-date)
 </pre></td></tr></table><p>
 
@@ -2176,6 +2190,7 @@ changing its face or by adding an asterisk.  Here's how to use it:
 <p>
 
 <a name="IDX1520"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 </pre></td></tr></table><p>
 
@@ -2338,6 +2353,7 @@ to your init file:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
 </font></pre></td></tr></table><p>
 
@@ -2356,6 +2372,7 @@ celebrated in the Virgin Islands on the fourth Monday in August:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(holiday-float 8 1 4 &quot;Hurricane Supplication Day&quot;)
 </font></pre></td></tr></table><p>
 
@@ -2372,6 +2389,7 @@ Islamic, and Julian calendars too.  For example,
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(setq other-holidays
       '((holiday-hebrew 10 2 &quot;Last day of Hanukkah&quot;)
         (holiday-islamic 3 12 &quot;Mohammed's Birthday&quot;)
@@ -2393,6 +2411,7 @@ divisible by 4:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(holiday-sexp (if (= 0 (% year 4))
                    (calendar-gregorian-from-absolute
                  (1+ (calendar-dayname-on-or-before
@@ -2405,6 +2424,7 @@ or
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(if (= 0 (% displayed-year 4))
     (fixed 11
            (extract-calendar-day
@@ -2425,6 +2445,7 @@ visible in the calendar window, with descriptive strings, like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
 </font></pre></td></tr></table><p>
 
@@ -2456,6 +2477,7 @@ list is as follows:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">((if dayname (concat dayname &quot;, &quot;)) monthname &quot; &quot; day &quot;, &quot; year)
 </font></pre></td></tr></table><p>
 
@@ -2463,6 +2485,7 @@ while in the European style this value is the default:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
 </font></pre></td></tr></table><p>
 
@@ -2470,6 +2493,7 @@ while in the European style this value is the default:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(year &quot;-&quot; month &quot;-&quot; day)
 </font></pre></td></tr></table><p>
 
@@ -2477,6 +2501,7 @@ This specifies a typical American format:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(month &quot;/&quot; day &quot;/&quot; (substring year -2))
 </font></pre></td></tr></table><p>
 
@@ -2511,6 +2536,7 @@ both alphabetic strings.  The default value of
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(12-hours &quot;:&quot; minutes am-pm
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </font></pre></td></tr></table><p>
@@ -2519,6 +2545,7 @@ Here is a value that provides European style times:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(24-hours &quot;:&quot; minutes
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </font></pre></td></tr></table><p>
@@ -2586,6 +2613,7 @@ day in the solar and lunar calculations.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(calendar-nth-named-day 1 0 4 year)
 (calendar-nth-named-day -1 0 10 year)
 </pre></td></tr></table><p>
@@ -2598,6 +2626,7 @@ changed to start on October 1, you would set
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(list 10 1 year)
 </pre></td></tr></table><p>
 
@@ -2607,6 +2636,7 @@ the first of Nisan on the Hebrew calendar.  You should set
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(calendar-gregorian-from-absolute
   (calendar-absolute-from-hebrew
     (list 1 1 (+ year 3760))))
@@ -2729,6 +2759,7 @@ this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>((month &quot;/&quot; day &quot;[^/0-9]&quot;)
  (month &quot;/&quot; day &quot;/&quot; year &quot;[^0-9]&quot;)
  (monthname &quot; *&quot; day &quot;[^,0-9]&quot;)
@@ -2756,6 +2787,7 @@ European style is this list:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>((day &quot;/&quot; month &quot;[^/0-9]&quot;)
  (day &quot;/&quot; month &quot;/&quot; year &quot;[^0-9]&quot;)
  (backup day &quot; *&quot; monthname &quot;\\W+\\&lt;[^*0-9]&quot;)
@@ -2796,6 +2828,7 @@ you must do this:
 <a name="IDX1544"></a>
 <a name="IDX1545"></a>
 <a name="IDX1546"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 </font></pre></td></tr></table><p>
@@ -2806,6 +2839,7 @@ If you want Islamic-date entries, do this:
 
 <a name="IDX1547"></a>
 <a name="IDX1548"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
 </font></pre></td></tr></table><p>
@@ -2819,6 +2853,7 @@ for the Hebrew date Heshvan 25 could look like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">HHeshvan 25 Happy Hebrew birthday!
 </font></pre></td></tr></table><p>
 
@@ -2828,6 +2863,7 @@ Dhu al-Qada 25:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">IDhu al-Qada 25 Happy Islamic birthday!
 </font></pre></td></tr></table><p>
 
@@ -2909,6 +2945,7 @@ then displays the buffer.  However, if you specify the hook as follows,
  
 <a name="IDX1555"></a>
 <a name="IDX1556"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(add-hook 'diary-display-hook 'fancy-diary-display)
 </pre></td></tr></table><p>
 
@@ -2945,6 +2982,7 @@ time of day.  Add this line to your init file:
 <p>
 
 <a name="IDX1559"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 </pre></td></tr></table><p>
 
@@ -2980,6 +3018,7 @@ first within each day.
 files.  This permits a group of people to share a diary file for events
 that apply to all of them.  Lines in the diary file of this form:
  
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">#include &quot;<var>filename</var>&quot;
 </font></pre></td></tr></table><p>
 
@@ -2995,6 +3034,7 @@ facility:
 <a name="IDX1561"></a>
 <a name="IDX1562"></a>
 <a name="IDX1563"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">(add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
 </font></pre></td></tr></table><p>
@@ -3032,6 +3072,7 @@ diary entry.  Thus the `<samp>%d</samp>' in this dairy entry:
 <p>
 
 <a name="IDX1564"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">%%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 </font></pre></td></tr></table><p>
 
@@ -3040,6 +3081,7 @@ the fancy diary buffer like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">Arthur's birthday (42 years old)
 </font></pre></td></tr></table><p>
 
@@ -3047,6 +3089,7 @@ If the diary file instead contains this entry:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">%%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
 </font></pre></td></tr></table><p>
 
@@ -3054,6 +3097,7 @@ the entry in the fancy diary buffer for October 31, 1990 appears like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">Arthur's 42nd birthday
 </font></pre></td></tr></table><p>
 
@@ -3063,6 +3107,7 @@ that have occurred:
 <p>
 
 <a name="IDX1565"></a>
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">%%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 </font></pre></td></tr></table><p>
 
@@ -3070,6 +3115,7 @@ looks like this:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">Renew medication (5th time)
 </font></pre></td></tr></table><p>
 
@@ -3093,6 +3139,7 @@ a sexp diary entry that matches those dates:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">&amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
@@ -3155,6 +3202,7 @@ Thus including the diary entry
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">&amp;%%(diary-hebrew-date)
 </font></pre></td></tr></table><p>
 
@@ -3352,6 +3400,7 @@ For example, if the buffer contains:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 whether the file has changed on disk since it was last visited or
@@ -3363,6 +3412,7 @@ then if you apply <kbd>M-x sort-lines</kbd> to the entire buffer you get:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 saved.  If it has, you are asked to confirm that you want to change
@@ -3375,6 +3425,7 @@ instead <kbd>C-u 2 M-x sort-fields</kbd> you get:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="smallexample"><pre><font size="-1">saved.  If it has, you are asked to confirm that you want to change
 implemented, XEmacs also checks the first time you modify a buffer
 the buffer.
@@ -4335,6 +4386,7 @@ To start Viper, put the command
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(viper-mode)
 </pre></td></tr></table><p>
 

@@ -18,6 +18,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 </head>
 
@@ -193,6 +194,7 @@ a prompt.  Here's how to do it in <code>csh</code>:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>if ($?prompt) set prompt = ...
 </pre></td></tr></table><p>
 
@@ -492,6 +494,7 @@ arguments.  Use a shell command of the form:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>emacs -batch -f batch-byte-compile <var>files</var>...
 </pre></td></tr></table><p>
 
@@ -1126,6 +1129,7 @@ access it via the menus:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>        Tools -&gt; Packages -&gt; List and Install
 </pre></td></tr></table><p>
 
@@ -1133,6 +1137,7 @@ Or, you can get to it via the keyboard:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>M-x pui-list-packages
 </pre></td></tr></table><p>
 
@@ -1148,6 +1153,7 @@ that you need <code>thingatpt</code>, type:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>M-x package-get-package-provider RET thingatpt
 </pre></td></tr></table><p>
 
@@ -1253,6 +1259,7 @@ package (version 1.48):
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>   mkdir $prefix/lib/xemacs/xemacs-packages RET # if it does not exist yet
    cd $prefix/lib/xemacs/xemacs-packages RET
    gunzip -c /path/to/xemacs-base-1.48-pkg.tar.gz | tar xvf - RET
@@ -1267,6 +1274,7 @@ hierarchy, i.e. for the `<tt>mule-base</tt>' package, version 1.37:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>   mkdir $prefix/lib/xemacs/mule-packages RET # if it does not exist yet
    cd $prefix/lib/xemacs/mule-packages RET
    gunzip -c /path/to/mule-base-1.37-pkg.tar.gz | tar xvf - RET
@@ -1294,6 +1302,7 @@ you need are:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>   efs          - To fetch the files from the FTP site or mirrors.
    xemacs-base  - Needed by efs.
 
@@ -1439,6 +1448,7 @@ You can also install packages using a semi-manual interface:
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>M-x package-get-all &lt;return&gt;
 </pre></td></tr></table><p>
 
@@ -1751,6 +1761,7 @@ infrastructure.
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>(name                               ; your package's name
   (standards-version 1.1
    version VERSION
@@ -1833,6 +1844,7 @@ directory, but not byte-compiled, they can be listed as the value of
 <p>
 
 The include is simply
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>include ../../XEmacs.rules
 </pre></td></tr></table><p>
 
@@ -1840,6 +1852,7 @@ The standard targets follow.  These are
 </p>
 <p>
 
+</p>
 <table><tr><td>&nbsp;</td><td class="example"><pre>all:: $(ELCS) auto-autoloads.elc
 
 srckit: srckit-alias

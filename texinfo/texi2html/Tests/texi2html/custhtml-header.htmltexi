@@ -1,0 +1,19 @@
+<HTML>
+$T2H_DOCTYPE
+<!-- Created on $T2H_TODAY by $THISPROG -->
+<!-- 
+$T2H_AUTHORS
+-->
+<HEAD>
+<TITLE>$longtitle</TITLE>
+
+<META NAME="description" CONTENT="$longtitle">
+<META NAME="keywords" CONTENT="$longtitle">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="$THISPROG">
+$T2H_EXTRA_HEAD
+</HEAD>
+
+<BODY $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
