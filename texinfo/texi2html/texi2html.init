@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.43 2003-09-11 13:25:29 pertusus Exp $
+# $Id: texi2html.init,v 1.44 2003-09-12 13:27:00 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1694,8 +1694,8 @@ $simple_menu_link = \&t2h_default_simple_menu_link;
 #$ref_beginning     = \&t2h_default_ref_beginning;
 #$info_ref          = \&t2h_default_info_ref;
 #$book_ref          = \&t2h_default_book_ref;
-#$external_ref      = \&t2h_default_external_ref;
-#$internal_ref      = \&t2h_default_internal_ref;
+$external_ref      = \&t2h_default_external_ref;
+$internal_ref      = \&t2h_default_internal_ref;
 $table_item        = \&t2h_default_table_item;
 $table_line        = \&t2h_default_table_line;
 $table_list        = \&t2h_default_table_list;
@@ -2018,15 +2018,62 @@ sub t2h_default_external_ref($$$$$$$$)
     my $href = shift;
     my $cross_ref = shift;
 
-    $file_node .= ": $cross_ref" if (($file_node ne '') and ($cross_ref ne ''));
+    $file_node = "$cross_ref: $file_node" if (($file_node ne '') and ($cross_ref ne ''));
+    $file_node = &$anchor('', $href, $file_node) if ($file_node ne '');
+
+    # Yes, this is ugly, but this helps internationalization
     if ($type eq 'pxref')
     {
          if (($book ne '') and ($file_node ne ''))
          {
-              return sprintf(&$I('see %s <cite>%s</cite> section %s'),
-                 &$anchor('', $file_node, $href), $book, $section) if ($section ne '');
+              return &$I('see %{node_file_href} section `%{section}\' in <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('see %{node_file_href} <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book });
+         }
+         elsif ($book ne '')
+         {
+              return &$I('see section `%{section}\' in <cite>%{book}</cite>', { 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('see <cite>%{book}</cite>', { 'book' => $book });
+         }
+         elsif ($file_node ne '')
+         {
+              return &$I('see %{node_file_href}', { 'node_file_href' => $file_node });
          }
     }
+    if ($type eq 'xref')
+    {
+         if (($book ne '') and ($file_node ne ''))
+         {
+              return &$I('See %{node_file_href} section `%{section}\' in <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('See %{node_file_href} <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book });
+         }
+         elsif ($book ne '')
+         {
+              return &$I('See section `%{section}\' in <cite>%{book}</cite>', { 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('See <cite>%{book}</cite>', { 'book' => $book });
+         }
+         elsif ($file_node ne '')
+         {
+              return &$I('See %{node_file_href}', { 'node_file_href' => $file_node });
+         }
+    }
+    if ($type eq 'ref')
+    {
+         if (($book ne '') and ($file_node ne ''))
+         {
+              return &$I('%{node_file_href} section `%{section}\' in <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('%{node_file_href} <cite>%{book}</cite>', { 'node_file_href' => $file_node, 'book' => $book });
+         }
+         elsif ($book ne '')
+         {
+              return &$I('section `%{section}\' in <cite>%{book}</cite>', { 'book' => $book, 'section' => $section }) if ($section ne '');
+              return &$I('<cite>%{book}</cite>', { 'book' => $book });
+         }
+         elsif ($file_node ne '')
+         {
+              return &$I('%{node_file_href}', { 'node_file_href' => $file_node });
+         }
+    }
+    return '';
 }
 
 # format a reference to a node or a section in the generated manual. This 
@@ -2043,6 +2090,47 @@ sub t2h_default_external_ref($$$$$$$$)
 # $SHORT_REF should be used.
 sub t2h_default_internal_ref($$$$$)
 {
+    my $type = shift;
+    my $href = shift;
+    my $short_name = shift;
+    my $name = shift;
+    my $is_section = shift;
+
+    if (! $SHORT_REF)
+    {
+        $name = &$anchor('', $href, $name);
+        if ($type eq 'pxref')
+        {
+            return &$I('see section %{reference_name}', { 'reference_name' => $name }) if ($is_section);
+            return &$I('see %{reference_name}', { 'reference_name' => $name });
+        }
+        elsif ($type eq 'xref')
+        {
+            return &$I('See section %{reference_name}', { 'reference_name' => $name }) if ($is_section);
+            return &$I('See %{reference_name}', { 'reference_name' => $name });
+        }
+        elsif ($type eq 'ref')
+        {
+            return &$I('%{reference_name}', { 'reference_name' => $name });
+        }
+    }
+    else
+    {
+        $name = &$anchor('', $href, $short_name);
+        if ($type eq 'pxref')
+        {
+            return &$I('see %{reference_name}', { 'reference_name' => $name });
+        }
+        elsif ($type eq 'xref')
+        {
+            return &$I('See %{reference_name}', { 'reference_name' => $name });
+        }
+        elsif ($type eq 'ref')
+        {
+            return &$I('%{reference_name}', { 'reference_name' => $name });
+        }
+    }
+    return '';
 }
 
 # text after @item in table, vtable and ftable

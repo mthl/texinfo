@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.65 2003-09-11 13:25:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.66 2003-09-12 13:27:00 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6265,7 +6265,7 @@ sub do_xref($$$$)
     #print STDERR "(@args)\n";
     
     if (($macro eq 'inforef') or ($args[3] ne '') or ($args[4] ne ''))
-    {# inforef
+    {# external ref
         if ($macro eq 'inforef')
         {
             $macro = 'xref';
@@ -6273,9 +6273,25 @@ sub do_xref($$$$)
         }
         my $info_ref;
         $info_ref = &$Texi2HTML::Config::info_ref("($args[3])$args[0]", do_external_ref($node_texi), $args[1]) if ($args[3]);
+        my $href = '';
+        my $node_file = '';
+        if ($args[3] ne '')
+        {
+            $href = do_external_ref($node_texi);
+            $node_file = "($args[3])$args[0]";
+        }
+        my $section = '';
+        if ($args[4] ne '')
+        {
+            $section = $args[0];
+            if ($args[2] ne '')
+            {
+                $section = $args[2];
+            }
+        } 
         my $book_ref;
         $book_ref = &$Texi2HTML::Config::book_ref($args[2] || $args[0], $args[4]) if ($args[4] ne '');
-        $result = &$Texi2HTML::Config::external_ref($macro, $info_ref, $book_ref);
+        $result = &$Texi2HTML::Config::external_ref($macro, $info_ref, $book_ref, $section, $args[4], $node_file, $href, $args[1]);
     }
     #elsif (@args == 5)
     #{                   # reference to another manual
@@ -6308,8 +6324,16 @@ sub do_xref($$$$)
             }
 	    #print STDERR "SUBHREF in ref `$node_texi': $_";
             my $href = href($element, $file);
-            my $section = $args[2] || $args[1];
-            $result = &$Texi2HTML::Config::internal_ref ($macro, $href, $section || $args[0], $section || $element->{'name'}, $element->{'section'});
+            my $section = $args[2];
+            $section = $args[1] if ($section eq '');
+            my $name = $section;
+            my $short_name = $section;
+            if ($section eq '')
+            {
+                $name = $element->{'name'};
+                $short_name = $args[0];
+            }
+            $result = &$Texi2HTML::Config::internal_ref ($macro, $href, $short_name, $name, $element->{'section'});
         }
         else
         {
