@@ -1,3 +1,8 @@
+2004-12-17  Juan M. Guerrero  <st001906@hrz1.hrz.tu-darmstadt.de>
+
+	* djgpp/config.bat: remove files like coXXXXXX.tmp created
+	in the top_srcdir by the gl_FUNC_MKSTEMP test.
+
 2004-12-15  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.7.92.
