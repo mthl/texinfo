@@ -1,3 +1,11 @@
+2005-02-10  Karl Berry  <karl@gnu.org>
+
+	* info/dir.c (dir_file_list_entry_type): use dev_t and ino_t
+	instead of unsigned long.  (Breaks on cygwin.)  David Hunter
+	bug-texinfo mail, 08 Feb 2005 23:05:37 -0500.  Paul Eggert says
+	these types should were present in 7th Edition and consequently
+	should be portable to any Unixish system.
+
 2005-02-09  Akim Demaille  <akim@epita.fr>
 
 	* util/texi2dvi (report): New.  Use it.

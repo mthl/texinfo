@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.3 2004-04-11 17:56:45 karl Exp $
+   $Id: dir.c,v 1.4 2005-02-11 01:31:03 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2004 Free Software Foundation, Inc.
 
@@ -44,8 +44,8 @@ static char *dirs_to_add[] = {
 
 typedef struct
 {
-  unsigned long device;
-  unsigned long inode;
+  dev_t device;
+  ino_t inode;
 } dir_file_list_entry_type;
 
 static int
