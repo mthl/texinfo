@@ -1,4 +1,4 @@
-$Id: README,v 1.7 2002-09-29 15:47:43 karl Exp $
+$Id: README,v 1.8 2002-09-30 13:42:07 karl Exp $
 This is the README file for the GNU Texinfo distribution.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -142,7 +142,8 @@ Here's the order in which to run the tools for a fresh build:
   configure CFLAGS=-g
   make
 
-(with arguments to taste, of course.)
+(with arguments to taste, of course.)  Or you can run autoreconf -fvi
+instead of the various auto* tools.
 
 If you want to rebuild the man pages and other generated files, set
 the environment variable TEXINFO_MAINT.  You'll need help2man installed.
