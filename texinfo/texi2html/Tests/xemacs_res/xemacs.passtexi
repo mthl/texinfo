@@ -27,20 +27,20 @@ xemacs.texi(,40) ``Distribution'' and ``GNU General Public License'' may be incl
 xemacs.texi(,41) translation approved by the author instead of in the original English.
 xemacs.texi(,45) @settitle XEmacs User's Manual
 xemacs.texi(,47) @titlepage
-xemacs.texi(,48) 
+xemacs.texi(,48) @sp 6
 xemacs.texi(,49) @center @titlefont{XEmacs User's Manual}
-xemacs.texi(,50) 
-xemacs.texi(,51) 
-xemacs.texi(,52) 
+xemacs.texi(,50) @sp 4
+xemacs.texi(,51) @sp 1
+xemacs.texi(,52) @sp 1
 xemacs.texi(,53) @center July 1994
 xemacs.texi(,54) @center (General Public License upgraded, January 1991)
-xemacs.texi(,55) 
+xemacs.texi(,55) @sp 5
 xemacs.texi(,56) @center Richard Stallman
-xemacs.texi(,57) 
+xemacs.texi(,57) @sp 1
 xemacs.texi(,58) @center Lucid, Inc.
-xemacs.texi(,59) 
+xemacs.texi(,59) @sp 1
 xemacs.texi(,60) @center and
-xemacs.texi(,61) 
+xemacs.texi(,61) @sp 1
 xemacs.texi(,62) @center Ben Wing
 xemacs.texi(,63) 
 xemacs.texi(,65) Copyright @copyright{} 1985, 1986, 1988 Richard M. Stallman.

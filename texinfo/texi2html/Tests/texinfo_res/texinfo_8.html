@@ -82,6 +82,7 @@ ul.toc {list-style: none}
 <p><em>Menus</em> contain pointers to subordinate nodes.<a name="DOCF6" href="texinfo_fot.html#FOOT6">(6)</a> In
 Info, you use menus to go to such nodes.  Menus have no effect in
 printed manuals and do not appear in them.
+
 </p><p>By convention, a menu is put at the end of a node since a reader who
 uses the menu may not see text that follows it.  Furthermore, a node
 that has a menu should not contain much text. If you have a lot of text
@@ -90,8 +91,8 @@ lines.  Otherwise, a reader with a terminal that displays only a few
 lines may miss the menu and its associated text.  As a practical matter,
 you should locate a menu within 20 lines of the beginning of the
 node.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD84">* Menu Location</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Put a menu in a short node.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC99">7.1 Writing a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What is a menu?</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC100">7.2 The Parts of a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A menu entry has three parts.</td></tr>
@@ -111,10 +112,11 @@ follow the menu by an <code>@node</code> line, and then an <code>@heading</code>
 line located within <code>@ifinfo</code> and <code>@end ifinfo</code>.  This way,
 the menu, <code>@node</code> line, and title appear only in the Info file,
 not the printed document.
+
 </p><p>For example, the preceding two paragraphs follow an Info-only menu,
 <code>@node</code> line, and heading, and look like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * Menu Location::             Put a menu in a short node.
 * Writing a Menu::            What is a menu?
 * Menu Parts::                A menu entry has three parts.
@@ -131,6 +133,7 @@ not the printed document.
 </pre></td></tr></table>
 <p>The Texinfo file for this document contains a number of
 examples of this procedure; one is at the beginning of this chapter.
+
 </p>
 <hr size="6">
 <a name="NOD85"></a>
@@ -157,9 +160,10 @@ examples of this procedure; one is at the beginning of this chapter.
 itself followed by menu entry lines or menu comment lines
 and then by an <code>@end menu</code> command on a line by
 itself.
+
 </p><p>A menu looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 Larger Units of Text
 
 * Files::                       All about handling files.
@@ -176,6 +180,7 @@ menu comment line; the two lines starting with `<samp>* </samp>' are menu
 <a name="IDX110"></a>
 entries.  Space characters in a menu are preserved as-is; this allows
 you to format the menu as you wish.
+
 </p>
 <hr size="6">
 <a name="NOD86"></a>
@@ -199,24 +204,29 @@ you to format the menu as you wish.
 <h2 class="section"> 7.2 The Parts of a Menu </h2>
 
 <p>A menu entry has three parts, only the second of which is required:
+
 </p><ol>
 <li>
 <p>The menu entry name (optional).
+
 </p></li><li>
 <p>The name of the node (required).
+
 </p></li><li>
 <p>A description of the item (optional).
 </p></li></ol>
 
 <p>The template for a menu entry looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* <var>menu-entry-name</var>: <var>node-name</var>.   <var>description</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* <var>menu-entry-name</var>: <var>node-name</var>.   <var>description</var>
 </pre></td></tr></table>
 <p>Follow the menu entry name with a single colon and follow the node name
 with tab, comma, period, or newline.
+
 </p><p>In Info, a user selects a node with the <kbd>m</kbd> (<code>Info-menu</code>)
 command.  The menu entry name is what the user types after the <kbd>m</kbd>
 command.
+
 </p><p>The third part of a menu entry is a descriptive phrase or sentence.
 Menu entry names and node names are often short; the description
 explains to the reader what the node is about.  A useful description
@@ -224,6 +234,7 @@ complements the node name rather than repeats it.  The description,
 which is optional, can spread over two or more lines; if it does, some
 authors prefer to indent the second line while others prefer to align it
 with the first (and all others).  It's up to you.
+
 </p>
 <hr size="6">
 <a name="NOD87"></a>
@@ -249,17 +260,19 @@ with the first (and all others).  It's up to you.
 <p>When the menu entry name and node name are the same, you can write
 the name immediately after the asterisk and space at the beginning of
 the line and follow the name with two colons.
+
 </p><p>For example, write
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* Name::                                    <var>description</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* Name::                                    <var>description</var>
 </pre></td></tr></table>
 
 <p>instead of
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* Name: Name.                               <var>description</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* Name: Name.                               <var>description</var>
 </pre></td></tr></table>
 <p>You should use the node name for the menu entry name whenever possible,
 since it reduces visual clutter in the menu.
+
 </p><hr size="6">
 <a name="NOD88"></a>
 <a name="SEC102"></a>
@@ -282,23 +295,23 @@ since it reduces visual clutter in the menu.
 <h2 class="section"> 7.4 A Menu Example </h2>
 
 <p>A menu looks like this in Texinfo:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
 @end menu
 </pre></td></tr></table>
 
 <p>This produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* menu:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* menu:
 
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
 </pre></td></tr></table>
 <p>Here is an example as you might see it in a Texinfo file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 Larger Units of Text
 
 * Files::                       All about handling files.
@@ -308,8 +321,8 @@ Larger Units of Text
 </pre></td></tr></table>
 
 <p>This produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* menu:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* menu:
 Larger Units of Text
 
 * Files::                       All about handling files.
@@ -321,9 +334,11 @@ entry name and the name of the node referred to by that name.
 `<samp>Multiples</samp>' is the menu entry name; it refers to the node named
 `<samp>Buffers</samp>'. The line `<samp>Larger Units of Text</samp>' is a comment; it
 appears in the menu, but is not an entry.
+
 </p><p>Since no file name is specified with either `<samp>Files</samp>' or
 `<samp>Buffers</samp>', they must be the names of nodes in the same Info file
 (see section <a href="#SEC103">Referring to Other Info Files</a>).
+
 </p><hr size="6">
 <a name="NOD89"></a>
 <a name="SEC103"></a>
@@ -350,9 +365,10 @@ node in another Info file by writing the file name in parentheses just
 before the node name.  In this case, you should use the three-part menu
 entry format, which saves the reader from having to type the file
 name.
+
 </p><p>The format looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
 @end menu
@@ -360,8 +376,8 @@ name.
 <p>For example, to refer directly to the `<samp>Outlining</samp>' and
 `<samp>Rebinding</samp>' nodes in the <cite>Emacs Manual</cite>, you would write a
 menu like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                   editing outlines.
 * Rebinding: (emacs)Rebinding.    How to redefine the
@@ -370,12 +386,14 @@ menu like this:
 </pre></td></tr></table>
 <p>If you do not list the node name, but only name the file, then Info
 presumes that you are referring to the `Top' node.
+
 </p><p>The `<tt>dir</tt>' file that contains the main menu for Info has menu
 entries that list only file names.  These take you directly to the `Top'
 nodes of each Info document.  (See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>.)
+
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* Info: (info).         Documentation browsing system.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* Info: (info).         Documentation browsing system.
 * Emacs: (emacs).       The extensible, self-documenting
                         text editor.
 </pre></td></tr></table>
@@ -383,9 +401,11 @@ nodes of each Info document.  (See section <a href="texinfo_21.html#SEC271">Inst
 <p>(The `<tt>dir</tt>' top level directory for the Info system is an Info file,
 not a Texinfo file, but a menu entry looks the same in both types of
 file.)
+
 </p><p>The GNU Emacs Texinfo mode menu updating commands only work with nodes
 within the current buffer, so you cannot use them to create menus that
 refer to other files.  You must write such menus by hand.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

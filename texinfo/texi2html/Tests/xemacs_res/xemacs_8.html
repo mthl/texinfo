@@ -66,6 +66,7 @@ current buffer.  Usually each editing command makes a separate entry
 in the undo records, but some commands such as <code>query-replace</code>
 make many entries, and very simple commands such as self-inserting
 characters are often grouped to make undoing less tedious.
+
 </p><dl compact="compact">
 <dt><kbd> C-x u
 </kbd></dt>
@@ -83,15 +84,18 @@ characters are often grouped to make undoing less tedious.
 <p>  The command <kbd>C-x u</kbd> or <kbd>C-_</kbd> allows you to undo changes.  The
 first time you give this command, it undoes the last change.  Point
 moves to the text affected by the undo, so you can see what was undone.
+
 </p><p>  Consecutive repetitions of the <kbd>C-_</kbd> or <kbd>C-x u</kbd> commands undo
 earlier and earlier changes, back to the limit of what has been
 recorded.  If all recorded changes have already been undone, the undo
 command prints an error message and does nothing.
+
 </p><p>  Any command other than an undo command breaks the sequence of undo
 commands.  Starting at this moment, the previous undo commands are
 considered ordinary changes that can themselves be undone.  Thus, you can
 redo changes you have undone by typing <kbd>C-f</kbd> or any other command
 that have no important effect, and then using more undo commands.
+
 </p><p>  If you notice that a buffer has been modified accidentally, the
 easiest way to recover is to type <kbd>C-_</kbd> repeatedly until the stars
 disappear from the front of the mode line.  When that happens, all the
@@ -100,21 +104,26 @@ whether you changed the buffer deliberately, type <kbd>C-_</kbd> once. When
 you see Emacs undo the last change you made, you probably remember why you
 made it.  If the change was an accident, leave it undone.  If it was
 deliberate, redo the change as described in the preceding paragraph.
+
 </p><p>  Whenever an undo command makes the stars disappear from the mode line,
 the buffer contents is the same as it was when the file was last read in
 or saved.
+
 </p><p>  Not all buffers record undo information.  Buffers whose names start with
 spaces don't; these buffers are used internally by Emacs and its extensions
 to hold text that users don't normally look at or edit.  Minibuffers,
 help buffers, and documentation buffers also don't record undo information.
+
 </p><p>  Emacs can remember at most 8000 or so characters of deleted or
 modified text in any one buffer for reinsertion by the undo command.
 There is also a limit on the number of individual insert, delete, or
 change actions that Emacs can remember.
+
 </p><p>  There are two keys to run the <code>undo</code> command, <kbd>C-x u</kbd> and
 <kbd>C-_</kbd>, because on some keyboards, it is not obvious how to type
 <kbd>C-_</kbd>. <kbd>C-x u</kbd> is an alternative you can type in the same
 fashion on any terminal.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -84,9 +84,11 @@ ul.toc {list-style: none}
 various Info commands.  You can change the values of these variables,
 and thus change the behavior of Info to more closely match your
 environment and Info file reading manner.
+
 </p><p>There are two ways to set the value of a variable: interactively, using
 the <code>set-variable</code> command described below, or in the <code>#var</code>
 section of the <code>.infokey</code> file.  See section <a href="info-stnd_12.html#SEC17">Customizing Key Bindings and Variables</a>.
+
 </p><dl compact="compact">
 <dt> <kbd>M-x set-variable</kbd>
 </dt>
@@ -98,6 +100,7 @@ reading the variable name (see section <a href="info-stnd_8.html#SEC13">completi
 completion is available when reading the value to give to the variable,
 but that depends on the variable itself.  If a variable does <em>not</em>
 supply multiple choices to complete over, it expects a numeric value.
+
 </p></dd>
 <dt> <kbd>M-x describe-variable</kbd>
 </dt>
@@ -109,6 +112,7 @@ description of what the variable affects.
 </dl>
 
 <p>Here is a list of the variables that you can set in Info.
+
 </p><dl compact="compact">
 <dt><code> automatic-footnotes
 </code></dt>
@@ -122,6 +126,7 @@ a node is selected which contains no footnotes, and a `<samp>*Footnotes*</samp>'
 window is on the screen, the `<samp>*Footnotes*</samp>' window is deleted.
 Footnote windows created in this fashion are not automatically tiled so
 that they can use as little of the display as is possible.
+
 </p></dd>
 <dt><code> automatic-tiling
 </code></dt>
@@ -134,12 +139,14 @@ resized automatically, keeping an equal number of lines visible in each
 window.  There are exceptions to the automatic tiling; specifically, the
 windows `<samp>*Completions*</samp>' and `<samp>*Footnotes*</samp>' are <em>not</em>
 resized through automatic tiling; they remain their original size.
+
 </p></dd>
 <dt><code> errors-ring-bell
 </code></dt>
 <dd><a name="IDX351"></a>
 <p>When set to <code>On</code>, errors cause the bell to ring.  The default
 setting of this variable is <code>On</code>.
+
 </p></dd>
 <dt><code> gc-compressed-files
 </code></dt>
@@ -156,6 +163,7 @@ it is no longer in use.  But de-compressing a file can be a time
 consuming operation, and so Info tries hard not to do it twice.
 <code>gc-compressed-files</code> tells Info it is okay to garbage collect the
 text of the nodes of a file which was compressed on disk.
+
 </p></dd>
 <dt><code> ISO-Latin
 </code></dt>
@@ -166,6 +174,7 @@ By default, Info assumes an ASCII character set.  <code>ISO-Latin</code> tells
 Info that it is running in an environment where the European standard
 character set is in use, and allows you to input such characters to
 Info, as well as display them.
+
 </p></dd>
 <dt><code> scroll-behavior
 </code></dt>
@@ -174,6 +183,7 @@ Info, as well as display them.
 a node, or when backward scrolling is requested at the beginning of a
 node.  The default value for this variable is <code>Continuous</code>.  There
 are three possible values for this variable:
+
 </p><dl compact="compact">
 <dt><code> Continuous
 </code></dt>
@@ -182,10 +192,12 @@ are three possible values for this variable:
 This behavior is identical to using the `<samp>]</samp>'
 (<code>global-next-node</code>) and `<samp>[</samp>' (<code>global-prev-node</code>)
 commands.
+
 </p></dd>
 <dt><code> Next Only
 </code></dt>
 <dd><p>Only try to get the `<samp>Next</samp>' node.
+
 </p></dd>
 <dt><code> Page Only
 </code></dt>
@@ -210,6 +222,7 @@ is done.  The default value of this variable is 0, thus placing the
 cursor (and the text it is attached to) in the center of the window.
 Setting this variable to 1 causes a kind of &quot;smooth scrolling&quot; which
 some people prefer.
+
 </p></dd>
 <dt><code> show-index-match
 </code></dt>
@@ -221,6 +234,7 @@ When Info displays the location where an index match was found,
 (see section <a href="info-stnd_6.html#SEC6"><code>next-index-match</code></a>), the portion of the
 string that you had typed is highlighted by displaying it in the inverse
 case from its surrounding characters.
+
 </p></dd>
 <dt><code> visible-bell
 </code></dt>
@@ -231,6 +245,7 @@ Info can only flash the screen if the terminal allows it; in the case
 that the terminal does not allow it, the setting of this variable has no
 effect.  However, you can make Info perform quietly by setting the
 <code>errors-ring-bell</code> variable to <code>Off</code>.
+
 </p></dd>
 </dl>
 

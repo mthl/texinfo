@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 <p>Texinfo has several ways of making lists and tables.  Lists can be
 bulleted or numbered; two-column tables can highlight the items in
 the first column; multi-column tables are also supported.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD142">* Introducing Lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Texinfo formats lists for you.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC157">11.1 <code>@itemize</code>: Making an Itemized List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a simple list.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC158">11.2 <code>@enumerate</code>: Making a Numbered or Lettered List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a numbered list.</td></tr>
@@ -98,55 +98,68 @@ the first column; multi-column tables are also supported.
 <p>Texinfo automatically indents the text in lists or tables, and numbers
 an enumerated list.  This last feature is useful if you modify the
 list, since you do not need to renumber it yourself.
+
 </p><p>Numbered lists and tables begin with the appropriate @-command at the
 beginning of a line, and end with the corresponding <code>@end</code>
 command on a line by itself.  The table and itemized-list commands
 also require that you write formatting information on the same line as
 the beginning @-command.
+
 </p><p>Begin an enumerated list, for example, with an <code>@enumerate</code>
 command and end the list with an <code>@end enumerate</code> command.
 Begin an itemized list with an <code>@itemize</code> command, followed on
 the same line by a formatting command such as <code>@bullet</code>, and end
 the list with an <code>@end itemize</code> command.
 <a name="IDX135"></a>
+
 </p><p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
 command.
-</p>
+
+</p><br>
 
 <p>Here is an itemized list of the different kinds of table and lists:
+
 </p><ul>
 <li>
 <p>Itemized lists with and without bullets.
+
 </p></li><li>
 <p>Enumerated lists, using numbers or letters.
+
 </p></li><li>
 <p>Two-column tables with highlighting.
 </p></li></ul>
 
-
+<br>
 
 <p>Here is an enumerated list with the same items:
+
 </p><ol>
 <li>
 <p>Itemized lists with and without bullets.
+
 </p></li><li>
 <p>Enumerated lists, using numbers or letters.
+
 </p></li><li>
 <p>Two-column tables with highlighting.
 </p></li></ol>
 
-
+<br>
 
 <p>And here is a two-column table with the same items and their
 @-commands:
+
 </p><dl compact="compact">
 <dt><code> @itemize
 </code></dt>
 <dd><p>Itemized lists with and without bullets.
+
 </p></dd>
 <dt><code> @enumerate
 </code></dt>
 <dd><p>Enumerated lists, using numbers or letters.
+
 </p></dd>
 <dt><code> @table
 </code></dt>
@@ -183,6 +196,7 @@ command.
 <p>The <code>@itemize</code> command produces sequences of indented
 paragraphs, with a bullet or other mark inside the left margin
 at the beginning of each paragraph for which such a mark is desired.
+
 </p><a name="IDX136"></a>
 <p>Begin an itemized list by writing <code>@itemize</code> at the beginning of
 a line.  Follow the command, on the same line, with a character or a
@@ -194,22 +208,26 @@ character in the Info file.  If you don't want any mark at all, use
 <code>@bullet</code> after an <code>@itemize</code> command, you may omit the
 `<samp>{}</samp>'.)  If you don't specify a mark command, the default is
 <code>@bullet</code>.
+
 </p><p>Write the text of the indented paragraphs themselves after the
 <code>@itemize</code>, up to another line that says <code>@end
 itemize</code>.
+
 </p><a name="IDX137"></a>
 <p>Before each paragraph for which a mark in the margin is desired, write a
 line that says just <code>@item</code>.  It is ok to have text following the
 <code>@item</code>.
+
 </p><p>Usually, you should put a blank line before an <code>@item</code>.  This
 puts a blank line in the Info file. (TeX inserts the proper
 interline whitespace in either case.)  Except when the entries are
 very brief, these blank lines make the list look better.
+
 </p><p>Here is an example of the use of <code>@itemize</code>, followed by the
 output it produces.  <code>@bullet</code> produces an `<samp>*</samp>' in Info and a
 round dot in TeX.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@itemize @bullet
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@itemize @bullet
 @item
 Some text for foo.
 
@@ -220,11 +238,12 @@ for bar.
 </pre></td></tr></table>
 
 <p>This produces:
-</p><blockquote>
 
+</p><blockquote>
 <ul>
 <li>
 <p>Some text for foo.
+
 </p></li><li>
 <p>Some text
 for bar.
@@ -233,8 +252,8 @@ for bar.
 
 <p>Itemized lists may be embedded within other itemized lists.  Here is a
 list marked with dashes embedded in a list marked with bullets:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@itemize @bullet
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@itemize @bullet
 @item
 First item.
 
@@ -252,14 +271,16 @@ Second outer item.
 </pre></td></tr></table>
 
 <p>This produces:
-</p><blockquote>
 
+</p><blockquote>
 <ul>
 <li>
 <p>First item.
+
 </p><ul>
 <li>
 <p>Inner item.
+
 </p></li><li>
 <p>Second inner item.
 </p></li></ul>
@@ -293,6 +314,7 @@ Second outer item.
 
 <p><code>@enumerate</code> is like <code>@itemize</code> (see section <a href="#SEC157"><code>@itemize</code></a>), except that the labels on the items are
 successive integers or letters instead of bullets.
+
 </p><p>Write the <code>@enumerate</code> command at the beginning of a line.  The
 command does not require an argument, but accepts either a number or a
 letter as an option.  Without an argument, <code>@enumerate</code> starts the
@@ -300,15 +322,18 @@ list with the number `<samp>1</samp>'.  With a numeric argument, such as
 `<samp>3</samp>', the command starts the list with that number.  With an upper
 or lower case letter, such as `<samp>a</samp>' or `<samp>A</samp>', the command starts
 the list with that letter.
+
 </p><p>Write the text of the enumerated list in the same way you write an
 itemized list: put <code>@item</code> on a line of its own before the start
 of each paragraph that you want enumerated.  Do not write any other text
 on the line beginning with <code>@item</code>.
+
 </p><p>You should put a blank line between entries in the list.
 This generally makes it easier to read the Info file.
+
 </p><p>Here is an example of <code>@enumerate</code> without an argument:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@enumerate
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@enumerate
 @item
 Underlying causes.
 
@@ -318,16 +343,18 @@ Proximate causes.
 </pre></td></tr></table>
 
 <p>This produces:
+
 </p><ol>
 <li>
 <p>Underlying causes.
+
 </p></li><li>
 <p>Proximate causes.
 </p></li></ol>
-
+<br>
 <p>Here is an example with an argument of <kbd>3</kbd>:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@enumerate 3
+<br>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@enumerate 3
 @item
 Predisposing causes.
 
@@ -340,42 +367,54 @@ Perpetuating causes.
 </pre></td></tr></table>
 
 <p>This produces:
+
 </p><ol>
 <li><p> 3
 </p></li><li>
 <p>Predisposing causes.
+
 </p></li><li>
 <p>Precipitating causes.
+
 </p></li><li>
 <p>Perpetuating causes.
 </p></li></ol>
-
+<br>
 <p>Here is a brief summary of the alternatives.  The summary is constructed
 using <code>@enumerate</code> with an argument of <kbd>a</kbd>.
+<br>
 </p><ol>
-<li><p> a
+<li><p>  a
 </p></li><li>
 <p><code>@enumerate</code>
+
 </p><p>Without an argument, produce a numbered list, starting with the number
 1.
+
 </p></li><li>
 <p><code>@enumerate <var>positive-integer</var></code>
+
 </p><p>With a (positive) numeric argument, start a numbered list with that
 number.  You can use this to continue a list that you interrupted with
 other text.
+
 </p></li><li>
 <p><code>@enumerate <var>upper-case-letter</var></code>
+
 </p><p>With an upper case letter as argument, start a list
 in which each item is marked
 by a letter, beginning with that upper case letter.
+
 </p></li><li>
 <p><code>@enumerate <var>lower-case-letter</var></code>
+
 </p><p>With a lower case letter as argument, start a list
 in which each item is marked by
 a letter, beginning with that lower case letter.
 </p></li></ol>
 
 <p>You can also nest enumerated lists, as in an outline.
+
 </p><hr size="6">
 <a name="NOD145"></a>
 <a name="SEC159"></a>
@@ -401,8 +440,8 @@ a letter, beginning with that lower case letter.
 each item.  The <code>@table</code> command is used to produce two-column
 tables, and is especially useful for glossaries, explanatory
 exhibits, and command-line option summaries.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD146">* table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a two-column table.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC161">11.3.1 <code>@ftable</code> and <code>@vtable</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Automatic indexing for two-column tables.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC162">11.3.2 <code>@itemx</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to put more entries in the first column.</td></tr>
@@ -413,6 +452,7 @@ exhibits, and command-line option summaries.
 <h3 class="subheading"> Using the <code>@table</code> Command </h3>
 
 <p>Use the <code>@table</code> command to produce two-column tables.
+
 </p><p>Write the <code>@table</code> command at the beginning of a line and follow
 it on the same line with an argument that is a Texinfo &quot;indicating&quot;
 command such as <code>@code</code>, <code>@samp</code>, <code>@var</code>, or
@@ -424,15 +464,18 @@ of each item and determines how it will be highlighted.  For example,
 <code>@code</code> will cause the text in the first column to be highlighted
 with an <code>@code</code> command.  (We recommend <code>@code</code> for
 <code>@table</code>'s of command-line options.)
+
 </p><a name="IDX138"></a>
 <p>You may also choose to use the <code>@asis</code> command as an argument to
 <code>@table</code>.  <code>@asis</code> is a command that does nothing; if you
 use this command after <code>@table</code>, TeX and the Info formatting
 commands output the first column entries without added highlighting
 (&quot;as is&quot;).
+
 </p><p>(The <code>@table</code> command may work with other commands besides those
 listed here.  However, you can only use commands that normally take
 arguments in braces.)
+
 </p><a name="IDX139"></a>
 <p>Begin each table entry with an <code>@item</code> command at the beginning
 of a line.  Write the first column text on the same line as the
@@ -442,13 +485,15 @@ need to type anything for an empty second column entry.)  You may
 write as many lines of supporting text as you wish, even several
 paragraphs.  But only text on the same line as the <code>@item</code> will
 be placed in the first column, including any footnote.
+
 </p><p>Normally, you should put a blank line before an <code>@item</code> line.
 This puts a blank like in the Info file.  Except when the entries are
 very brief, a blank line looks better.
+
 </p><p>The following table, for example, highlights the text in the first
 column with an <code>@samp</code> command:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@table @samp
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@table @samp
 @item foo
 This is the text for
 @samp{foo}.
@@ -459,6 +504,7 @@ Text for @samp{bar}.
 </pre></td></tr></table>
 
 <p>This produces:
+
 </p><dl compact="compact">
 <dt>`<samp> foo
 </samp>'</dt>
@@ -473,6 +519,7 @@ Text for @samp{bar}.
 
 <p>If you want to list two or more named items with a single block of
 text, use the <code>@itemx</code> command.  (See section <a href="#SEC162"><code>@itemx</code></a>.)
+
 </p>
 <hr size="6">
 <a name="NOD147"></a>
@@ -504,13 +551,16 @@ simplifies the task of creating indices.  Only the items on the same
 line as the <code>@item</code> commands are indexed, and they are indexed in
 exactly the form that they appear on that line.  See section <a href="texinfo_13.html#SEC166">Indices</a>,
 for more information about indices.
+
 </p><p>Begin a two-column table using <code>@ftable</code> or <code>@vtable</code> by
 writing the @-command at the beginning of a line, followed on the same
 line by an argument that is a Texinfo command such as <code>@code</code>,
 exactly as you would for an <code>@table</code> command; and end the table
 with an <code>@end ftable</code> or <code>@end vtable</code> command on a line by
 itself.
+
 </p><p>See the example for <code>@table</code> in the previous section.
+
 </p><hr size="6">
 <a name="NOD148"></a>
 <a name="SEC162"></a>
@@ -538,9 +588,10 @@ line of its own.  Use <code>@itemx</code> for all but the first entry;
 <code>@itemx</code> should always follow an <code>@item</code> command.  The
 <code>@itemx</code> command works exactly like <code>@item</code> except that it
 does not generate extra vertical space above the first column text.
+
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@table @code
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@table @code
 @item upcase
 @itemx downcase
 These two functions accept a character or a string as
@@ -550,6 +601,7 @@ case) character or string.
 </pre></td></tr></table>
 
 <p>This produces:
+
 </p><dl compact="compact">
 <dt><code> upcase
 </code></dt>
@@ -564,6 +616,7 @@ case) character or string.
 
 <p>(Note also that this example illustrates multi-line supporting text in
 a two-column table.)
+
 </p>
 <hr size="6">
 <a name="NOD149"></a>
@@ -588,12 +641,13 @@ a two-column table.)
 
 <p><code>@multitable</code> allows you to construct tables with any number of
 columns, with each column having any width you like.
+
 </p><p>You define the column widths on the <code>@multitable</code> line itself, and
 write each row of the actual table following an <code>@item</code> command,
 with columns separated by an <code>@tab</code> command.  Finally, <code>@end
 multitable</code> completes the table.  Details in the sections below.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC164">11.4.1 Multitable Column Widths</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining multitable column widths.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC165">11.4.2 Multitable Rows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining multitable rows, with examples.</td></tr>
 </table>
@@ -623,6 +677,7 @@ multitable</code> completes the table.  Details in the sections below.
 fractions of the line length; or with a prototype row.  Mixing the two
 methods is not supported.  In either case, the widths are defined
 entirely on the same line as the <code>@multitable</code> command.
+
 </p><ol>
 <li>
 <a name="IDX140"></a>
@@ -630,26 +685,30 @@ entirely on the same line as the <code>@multitable</code> command.
 <p>To specify column widths as fractions of the line length, write
 <code>@columnfractions</code> and the decimal numbers (presumably less than
 1) after the <code>@multitable</code> command, as in:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@multitable @columnfractions .33 .33 .33
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .33 .33 .33
 </pre></td></tr></table>
 <p>The fractions need not add up exactly to 1.0, as these do
 not.  This allows you to produce tables that do not need the full line
 length.  You can use a leading zero if you wish.
+
 </p></li><li>
 <a name="IDX142"></a>
 <p>To specify a prototype row, write the longest entry for each column
 enclosed in braces after the <code>@multitable</code> command.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@multitable {some text for column one} {for column two}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable {some text for column one} {for column two}
 </pre></td></tr></table>
 
 <p>The first column will then have the width of the typeset `some text for
 column one', and the second column the width of `for column two'.
+
 </p><p>The prototype entries need not appear in the table itself.
+
 </p><p>Although we used simple text in this example, the prototype entries can
 contain Texinfo commands; markup commands such as <code>@code</code> are
 particularly likely to be useful.
+
 </p></li></ol>
 
 
@@ -679,10 +738,11 @@ the previous section), you begin each row in the body of a multitable
 with <code>@item</code>, and separate the column entries with <code>@tab</code>.
 Line breaks are not special within the table body, and you may break
 input lines in your source file as necessary.
+
 </p><p>Here is a complete example of a multi-column table (the text is from
 <cite>The GNU Emacs Manual</cite>, see <a href="../emacs/Split-Window.html">(emacs)Split Window</a> section `Splitting Windows' in <cite>The GNU Emacs Manual</cite>):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@multitable @columnfractions .15 .45 .4
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .15 .45 .4
 @item Key @tab Command @tab Description
 @item C-x 2
 @tab @code{split-window-vertically}
@@ -699,6 +759,7 @@ split that window.
 @end multitable
 </pre></td></tr></table>
 <p>produces:
+
 </p><table>
 <tr><td><p> Key </p></td><td><p> Command </p></td><td><p> Description
 </p></td></tr>

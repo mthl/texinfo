@@ -84,9 +84,11 @@ ul.toc {list-style: none}
 current paragraph you are reading is visible on the screen.  The
 commands detailed in this section are used to shift which part of the
 current node is visible on the screen.
+
 </p><p>Scrolling commands are bound differently when `<samp>--vi-keys</samp>' operation
 (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>) is in effect.  These key bindings are designated
 with &quot;vi-like operation&quot;.
+
 </p><dl compact="compact">
 <dt> <kbd>SPC</kbd> (<code>scroll-forward</code>)
 </dt>
@@ -102,9 +104,11 @@ two lines of the window and places them at the top of the window,
 redisplaying almost a completely new screenful of lines.  If you are at
 the end of a node, <kbd>SPC</kbd> takes you to the &quot;next&quot; node, so that you can
 read an entire manual from start to finish by repeating <kbd>SPC</kbd>.
+
 </p><p>The default scroll size is one screen-full, but it can be changed by
 invoking the (<code>scroll-forward-page-only-set-window</code>) command,
 `<samp>z</samp>' under `<samp>--vi-keys</samp>', with a numeric argument.
+
 </p></dd>
 <dt> <kbd>NEXT</kbd> (an arrow key) (<code>scroll-forward-page-only</code>)
 </dt>
@@ -125,9 +129,11 @@ invoking the (<code>scroll-forward-page-only-set-window</code>) command,
 <p>Shift the text in this window up.  This is identical to the <kbd>SPC</kbd>
 operation above, except that it never scrolls beyond the end of the
 current node.
+
 </p><a name="IDX73"></a>
 <p>The <kbd>NEXT</kbd> key is known as the <kbd>PageDown</kbd> key on some
 keyboards.
+
 </p></dd>
 <dt> <kbd>z</kbd> (<code>scroll-forward-page-only-set-window</code>, vi-like operation)
 </dt>
@@ -137,6 +143,7 @@ keyboards.
 specified, it becomes the default scroll size for subsequent
 <code>scroll-forward</code> and <code>scroll-backward</code> commands and their
 ilk.
+
 </p></dd>
 <dt> <kbd>DEL</kbd> (<code>scroll-backward</code>)
 </dt>
@@ -149,6 +156,7 @@ If you are at the start of a node, <kbd>DEL</kbd> takes you to the
 start by repeating <kbd>DEL</kbd>.  The default scroll size can be changed by
 invoking the (<code>scroll-backward-page-only-set-window</code>) command,
 `<samp>w</samp>' under `<samp>--vi-keys</samp>', with a numeric argument.
+
 </p></dd>
 <dt> <kbd>PREVIOUS</kbd> (arrow key) (<code>scroll-backward-page-only</code>)
 </dt>
@@ -170,6 +178,7 @@ invoking the (<code>scroll-backward-page-only-set-window</code>) command,
 the current node.  The default scroll size can be changed by invoking
 the(<code>scroll-backward-page-only-set-window</code>) command, `<samp>w</samp>' under
 `<samp>--vi-keys</samp>', with a numeric argument.
+
 </p></dd>
 <dt> <kbd>w</kbd> (<code>scroll-backward-page-only-set-window</code>, vi-like operation)
 </dt>
@@ -178,6 +187,7 @@ the(<code>scroll-backward-page-only-set-window</code>) command, `<samp>w</samp>'
 <p>Scroll backward, like with <kbd>PREVIOUS</kbd>, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 <code>scroll-forward</code> and <code>scroll-backward</code> commands.
+
 </p></dd>
 <dt> <kbd>C-n</kbd> (<code>down-line</code>, vi-like operation)
 </dt>
@@ -197,6 +207,7 @@ specified, it becomes the default scroll size for subsequent
 <a name="IDX90"></a>
 <p>Scroll forward by one line.  With a numeric argument, scroll forward
 that many lines.
+
 </p></dd>
 <dt> <kbd>C-p</kbd> (<code>up-line</code>, vi-like operation)
 </dt>
@@ -219,6 +230,7 @@ that many lines.
 <a name="IDX97"></a>
 <p>Scroll backward one line.  With a numeric argument, scroll backward that
 many lines.
+
 </p></dd>
 <dt> <kbd>d</kbd> (<code>scroll-half-screen-down</code>, vi-like operation)
 </dt>
@@ -231,6 +243,7 @@ many lines.
 scroll that many lines.  If an argument is specified, it becomes the new
 default number of lines to scroll for subsequent `<samp>d</samp>' and `<samp>u</samp>'
 commands.
+
 </p></dd>
 <dt> <kbd>u</kbd> (<code>scroll-half-screen-up</code>, vi-like operation)
 </dt>
@@ -252,17 +265,21 @@ move forward and backward through the node structure of the file.  If
 you press <kbd>SPC</kbd> while viewing the end of a node, or <kbd>DEL</kbd> while
 viewing the beginning of a node, what happens is controlled by the
 variable <code>scroll-behavior</code>.  See section <a href="info-stnd_11.html#SEC16"><code>scroll-behavior</code></a>, for more information.
+
 </p><p>The <code>scroll-forward-page-only</code> and <code>scroll-backward-page-only</code>
 commands never scroll beyond the current node.
+
 </p><a name="IDX105"></a>
 <p>The <kbd>PREVIOUS</kbd> key is the <kbd>PageUp</kbd> key on many keyboards.  Emacs
 refers to it by the name <kbd>PRIOR</kbd>.  When you use <kbd>PRIOR</kbd> or
 <kbd>PageUp</kbd> to scroll, Info never scrolls beyond the beginning of the
 current node.
+
 </p><a name="IDX106"></a>
 <p>If your keyboard lacks the <kbd>DEL</kbd> key, look for a key called
 <kbd>BS</kbd>, or `<samp>BackSpace</samp>', sometimes designated with an arrow which
 points to the left, which should perform the same function.
+
 </p><dl compact="compact">
 <dt> <kbd>C-l</kbd> (<code>redraw-display</code>)
 </dt>
@@ -273,6 +290,7 @@ to a specified location.  With no numeric argument, `<samp>C-l</samp>' clears
 the screen, and then redraws its entire contents.  Given a numeric
 argument of <var>n</var>, the line containing the cursor is shifted so that
 it is on the <var>n</var>th line of the window.
+
 </p></dd>
 <dt> <kbd>C-x <kbd>w</kbd></kbd> (<code>toggle-wrap</code>)
 </dt>

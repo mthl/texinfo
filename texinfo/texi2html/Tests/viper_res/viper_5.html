@@ -62,8 +62,8 @@ ul.toc {list-style: none}
 <p>This section is a semi-automatically bowdlerized version of the Vi
 reference created by <br> `<samp>maart@cs.vu.nl</samp>' and others.  It can be
 found on the Vi archives.  This reference has been adapted for Viper.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC32">4.1 Groundwork</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Textual Conventions and Viper basics</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC33">4.2 Text Handling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving, Editing, Undoing.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC43">4.3 Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Scrolling.</td></tr>
@@ -101,11 +101,12 @@ with other commands.  The motion command is used as a text region
 specifier for other commands.
 We classify motion commands into <em>point commands</em> and
 <em>line commands</em>.
+
 </p><a name="IDX233"></a>
 
 <p>The point commands are:
-</p><blockquote>
 
+</p><blockquote>
 <p><kbd>h</kbd>, <kbd>l</kbd>, <kbd>0</kbd>,  <kbd>$</kbd>, <kbd>w</kbd>, <kbd>W</kbd>, <kbd>b</kbd>, <kbd>B</kbd>,
 <kbd>e</kbd>, <kbd>E</kbd>, <kbd>(</kbd>, <kbd>)</kbd>, <kbd>/</kbd>, <kbd>?</kbd>, <kbd>`</kbd>, <kbd>f</kbd>,
 <kbd>F</kbd>, <kbd>t</kbd>, <kbd>T</kbd>, <kbd>%</kbd>, <kbd>;</kbd>, <kbd>,</kbd>, <kbd>^</kbd>
@@ -114,8 +115,8 @@ We classify motion commands into <em>point commands</em> and
 <a name="IDX234"></a>
 
 <p>The line commands are:
-</p><blockquote>
 
+</p><blockquote>
 <p><kbd>j</kbd>, <kbd>k</kbd>, <kbd>+</kbd>, <kbd>-</kbd>, <kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd>, <kbd>{</kbd>,
 <kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
 </p></blockquote>
@@ -124,15 +125,18 @@ We classify motion commands into <em>point commands</em> and
 <p>Text Deletion Commands (see section <a href="#SEC38">Deleting Text</a>), Change commands
 (see section <a href="#SEC39">Changing Text</a>), even Shell Commands (see section <a href="#SEC46">Shell Commands</a>)
 use these commands to describe a region of text to operate on.
+
 </p><a name="IDX235"></a>
 
 <p>Viper adds two region descriptors, <kbd>r</kbd> and <kbd>R</kbd>.  These describe
 the Emacs regions (see section <a href="viper_3.html#SEC15">Basics</a>), but they are not movement commands.
+
 </p><p>The command description uses angle brackets `<samp>&lt;&gt;</samp>' to indicate
 metasyntactic variables, since the normal conventions of using simple
 text can be confusing with Viper where the commands themselves are
 characters.  Watch out where <kbd>&lt;</kbd> shift commands and <kbd>&lt;count&gt;</kbd> are
 mentioned together!!!
+
 </p><a name="IDX236"></a>
 <a name="IDX237"></a>
 <a name="IDX238"></a>
@@ -147,6 +151,7 @@ that the `<samp>&lt;move&gt;</samp>'  is described by full move commands, that i
 say they will take counts, and otherwise behave like normal move commands.
 <a name="IDX243"></a>
 `<samp>&lt;address&gt;</samp>' refers to Ex line addresses, which include
+
 </p><dl compact="compact">
 <dt><kbd> . &lt;No address&gt;
 </kbd></dt>
@@ -182,6 +187,7 @@ say they will take counts, and otherwise behave like normal move commands.
 <dt><kbd> ?&lt;pat&gt;?
 </kbd></dt>
 <dd><p>Next or previous line with pattern &lt;pat&gt;.
+
 </p><p>Note that the pattern is allowed to contain newline character (inserted as
 <kbd>C-qC-j</kbd>).  Therefore, one can search for patterns that span several
 lines.
@@ -198,6 +204,7 @@ file history is a better mechanism.
 Similarly, `<samp>#</samp>' expands to the previous file.  The previous file is
 the first file in <kbd>:args</kbd> listing.  This defaults to previous window
 in the VI sense if you have one window only.
+
 </p><a name="IDX247"></a>
 <a name="IDX248"></a>
 <a name="IDX249"></a>
@@ -205,8 +212,10 @@ in the VI sense if you have one window only.
 
 <p>Others like `<samp>&lt;args&gt; -- arguments</samp>', `<samp>&lt;cmd&gt; -- command</samp>' etc.
 should be fairly obvious.
+
 </p>
 <p>Common characters referred to include:
+
 </p><dl compact="compact">
 <dt><kbd> &lt;sp&gt;
 </kbd></dt>
@@ -246,15 +255,18 @@ ASCII character, `<samp>CHAR</samp>' to non-whitespace character.
 Brackets `<samp>[]</samp>' indicate optional parameters; `<samp>&lt;count&gt;</samp>' also
 optional, usually defaulting to 1.  Brackets are elided for
 `<samp>&lt;count&gt;</samp>' to eschew obfuscation.
+
 </p><p>Viper's idea of Vi's words is slightly different from Vi.  First, Viper
 words understand Emacs symbol tables.  Therefore, all symbols declared to be
 alphanumeric in a symbol table can automatically be made part of the Viper
 word.  This is useful when, for instance, editing text containing European,
 Cyrillic, Japanese, etc., texts.
+
 </p><p>Second, Viper lets you depart from Vi's idea of a word by changing the a
 syntax preference via the customization widget (the variable
 <code>viper-syntax-preference</code>) or by executing
 <code>viper-set-syntax-preference</code> interactively.
+
 </p><p>By default, Viper syntax preference is <code>reformed-vi</code>, which means that
 Viper considers only those symbols to be part of a word that are specified
 as word-symbols by the current Emacs syntax table (which may be different
@@ -264,14 +276,18 @@ considered as word-symbols by various Emacs major modes.  Reformed-Vi works
 very close to Vi, and it also recognizes words in other
 alphabets.  Therefore, this is the most appropriate mode for editing text
 and is likely to fit all your needs.
+
 </p><p>You can also set Viper syntax preference to <code>strict-vi</code>, which would
 cause Viper to view all non-English letters as non-word-symbols.
+
 </p><p>You can also specify <code>emacs</code> as your preference, which would
 make Viper use exactly the same notion of a word as Emacs does.  In
 particular, the underscore may not be part of a word in some major modes.
+
 </p><p>Finally, if <code>viper-syntax-preference</code> is set to <code>extended</code>, Viper
 words would consist of characters that are classified as alphanumeric
 <em>or</em> as parts of symbols.  This is convenient for editing programs.
+
 </p><p><code>viper-syntax-preference</code> is a local variable, so it can have different
 values for different major modes.  For instance, in programming modes it can
 have the value <code>extended</code>.  In text modes where words contain special
@@ -279,10 +295,11 @@ characters, such as European (non-English) letters, Cyrillic letters, etc.,
 the value can be <code>reformed-vi</code> or <code>emacs</code>.
 If you consider using different syntactic preferences for different major
 modes, you should execute, for example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(viper-set-syntax-preference nil &quot;extended&quot;)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-syntax-preference nil &quot;extended&quot;)
 </pre></td></tr></table>
 <p>in the appropriate major mode hooks.
+
 </p><a name="IDX260"></a>
 <a name="IDX261"></a>
 <a name="IDX262"></a>
@@ -296,11 +313,13 @@ and they don't look into the value of variable
 <code>viper-syntax-preference</code>.  This is because Viper avoids changing
 syntax tables in order to not thwart the various major modes that set these
 tables.
+
 </p><p>The usual Emacs convention is used to indicate Control Characters, i.e
 C-h for Control-h.  <em>Do not confuse this with a sequence of separate
 characters
 C, -, h!!!</em> The <kbd>^</kbd> is itself, never used to indicate a
 Control character.
+
 </p><p>Finally, we note that Viper's Ex-style commands can be made to work on the
 current Emacs region.  This is done by typing a digit argument before
 <kbd>:</kbd>.  For instance, typing <kbd>1:</kbd> will propmt you with something like
@@ -308,6 +327,7 @@ current Emacs region.  This is done by typing a digit argument before
 ends at line 135.  There is no need to type the line numbers, since Viper
 inserts them automatically in front of the Ex command.
 <a name="IDX263"></a>
+
 </p><hr size="6">
 <a name="NOD32"></a>
 <a name="SEC33"></a>
@@ -330,7 +350,6 @@ inserts them automatically in front of the Ex command.
 <h2 class="section"> 4.2 Text Handling </h2>
 
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving, Searching</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC35">4.2.2 Marking</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Textmarkers in Viper and the Emacs Mark.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC36">4.2.3 Appending Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Text insertion, Shifting, Putting</td></tr>
@@ -572,13 +591,15 @@ By default, Viper ignores brackets/parentheses/braces that occur inside
 parentheses.  You can change this by setting
 <code>viper-parse-sexp-ignore-comments</code> to nil in your `<tt>.viper</tt>' file.
 This option can also be toggled interactively if you quickly hit <kbd>%%%</kbd>.
+
 </p><p>This latter feature is implemented as a vi-style keyboard macro.  If you
 don't want this macro, put
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(viper-set-parsing-style-toggling-macro 'undefine)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-parsing-style-toggling-macro 'undefine)
 </pre></td></tr></table><a name="IDX267"></a>
 
 <p>in your `<tt>~/.viper</tt>' file.
+
 </p></dd>
 </dl>
 <a name="IDX268"></a>
@@ -662,6 +683,7 @@ don't want this macro, put
 See section <a href="viper_2.html#SEC4">Emacs Preliminaries</a>, and See section <a href="viper_3.html#SEC15">Basics</a>, for explanation.  Also
 see <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for an explanation of
 the Emacs mark ring.
+
 </p><a name="IDX323"></a>
 
 <dl compact="compact">
@@ -755,6 +777,7 @@ it in a way that you didn't like.
 Emacs manual, or try <kbd>C-ha tabs</kbd> (If you have turned Emacs help on).
 Check out the variable <code>indent-tabs-mode</code> to put in just spaces.
 Also see options for word-wrap.
+
 </p><a name="IDX336"></a>
 <a name="IDX337"></a>
 <a name="IDX338"></a>
@@ -836,6 +859,7 @@ of older commands, while hitting <kbd>C-c M-n</kbd> does so in reverse
 order.  Each command in the history is displayed in the Minibuffer.  The
 displayed command can
 then be executed by typing `<kbd>.</kbd>'.
+
 </p><p>Since typing the above sequences of keys may be tedious, the
 functions doing the perusing can be bound to unused keyboard keys in the
 `<tt>~/.viper</tt>' file.  See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
@@ -883,6 +907,7 @@ functions doing the perusing can be bound to unused keyboard keys in the
 between Insert/Replace/Vi states at will.
 Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 <var>viper-vi-style-in-minibuffer</var> to <code>nil</code>.
+
 </p><a name="IDX356"></a>
 
 <dl compact="compact">
@@ -902,6 +927,7 @@ Some users prefer plain Emacs feel in the Minibuffer.  To this end, set
 </kbd></dt>
 <dd><p>Back to the begin of the change on the
 current line.
+
 </p></dd>
 </dl>
 <a name="IDX357"></a>
@@ -941,6 +967,7 @@ as one chunk.  If you want to break a sequence of deletions so that the
 newly deleted text could be put back separately from the previously deleted
 text, you should perform a non-deleting action, e.g., move the cursor one
 character in any direction.
+
 </p><a name="IDX360"></a>
 
 <dl compact="compact">
@@ -1056,12 +1083,15 @@ non-overlapping occurrence of &lt;pat&gt;) and `<samp>c</samp>' for
 substitution, else `<samp>n</samp>' ).  Instead of <kbd>/</kbd> any
 punctuation CHAR unequal to &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
+
 </p><p>In Emacs, `<samp>\&amp;</samp>' stands for the last matched expression, so
 <kbd>s/[ab]+/\&amp;\&amp;/</kbd> will double the string matched by <kbd>[ab]</kbd>.
 Viper doesn't treat `<samp>&amp;</samp>' specially, unlike Vi: use `<samp>\&amp;</samp>' instead.
+
 </p><p>Viper does not parse search patterns and does not expand special symbols
 found there (e.g., `<samp>~</samp>' is not expanded to the result of the previous
 substitution).
+
 </p><p>Note: <em>The newline character (inserted as <kbd>C-qC-j</kbd>)
 can be used in &lt;repl&gt;</em>.
 </p></dd>
@@ -1114,6 +1144,7 @@ previously inserted in other insert or replace commands.  By repeatedly typing
 <kbd>C-c M-p</kbd> or <kbd>C-c M-n</kbd>, you will cause Viper to
 insert these previously used strings one by one.
 When a new string is inserted, the previous one is deleted.
+
 </p><p>In Vi state, these keys are bound to functions that peruse the history of
 destructive Vi commands.
 See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
@@ -1166,6 +1197,7 @@ See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 <p>See section <a href="#SEC32">Groundwork</a>, for Ex address syntax.  See section <a href="#SEC47">Options</a>, to see how to
 get literal (non-regular-expression) search and how to stop search from
 wrapping around.
+
 </p><dl compact="compact">
 <dt><kbd> C-c /
 </kbd></dt>
@@ -1175,9 +1207,11 @@ expression search.
 <dt><kbd> &lt;count&gt;  /&lt;string&gt;
 </kbd></dt>
 <dd><p>To the &lt;count&gt;th occurrence of &lt;string&gt;.
+
 </p><p>Viper does not parse search patterns and does not expand special symbols
 found there (e.g., `<samp>~</samp>' is not expanded to the result of the previous
 substitution).
+
 </p></dd>
 <dt><kbd> &lt;count&gt;  ?&lt;string&gt;
 </kbd></dt>
@@ -1232,6 +1266,7 @@ non-overlapping occurrence of &lt;pat&gt;) and `<samp>c</samp>' for
 substitution, else `<samp>n</samp>').  Instead of <kbd>/</kbd> any
 punctuation character other than &lt;space&gt; &lt;tab&gt; and &lt;lf&gt; can be used as
 delimiter.
+
 </p><p>Note: <em>The newline character (inserted as <kbd>C-qC-j</kbd>)
 can be used in &lt;repl&gt;</em>.
 </p></dd>
@@ -1531,10 +1566,12 @@ initialization: half a page).
 <p>In all file handling commands, space should be typed before entering the file
 name.  If you need to type a modifier, such as <kbd>&gt;&gt;</kbd> or <kbd>!</kbd>, don't
 put any space between the command and the modifier.
+
 </p><p>Note that many Ex commands, e.g., <kbd>:w</kbd>, accept command arguments. The
 effect is that the command would start acting on the current region. For
 instance, if the current region spans the lines 11 through 22, then if you
 type <kbd>1:w</kbd> you would see `<samp>:11,22w</samp>' in the minibuffer.
+
 </p><dl compact="compact">
 <dt><kbd> :q
 </kbd></dt>
@@ -1884,10 +1921,12 @@ the whole file.
 Similarly, `<samp>#</samp>' expands to the previous file.  The previous file is the
 first file in <kbd>:args</kbd> listing.  This defaults to the previous file in
 the VI sense if you have one window.
+
 </p><p>Symbols `<samp>%</samp>' and `<samp>#</samp>' are also used in the Ex commands <kbd>:e</kbd> and
 <kbd>:r &lt;shell-cmd&gt;</kbd>.  The commands <kbd>:w</kbd> and the regular <kbd>:r
 &lt;file&gt;</kbd> command don't support these meta symbols, because file history is a
 better mechanism.
+
 </p><a name="IDX494"></a>
 
 <dl compact="compact">
@@ -2182,6 +2221,7 @@ considered `<samp>stuck</samp>' to the begin of the file.
 <dt><kbd> C-\
 </kbd></dt>
 <dd><p>Begin Meta command in Vi or Insert states.  Most often used as C-\ x (M-x).
+
 </p><p>Note: Emacs binds <kbd>C-\</kbd> to a function that offers to change the
 keyboard input method in the multilingual environment.  Viper overrides this
 binding.  However, it is still possible to switch the input method by typing
@@ -2192,6 +2232,7 @@ Or you can use the MULE menu on the menubar.
 </kbd></dt>
 <dd><p>In Insert and Replace states, prepare Viper to accept the next command and
 execute it as if Viper was in Vi state.  Then return to Insert state.
+
 </p><p>In Vi state, switch to Emacs state; in Emacs state, switch to Vi state.
 </p></dd>
 <dt><kbd> C-c \
@@ -2266,6 +2307,7 @@ you need.
 
 <p>The following two mouse actions are normally bound to special search and
 insert commands in of Viper:
+
 </p><dl compact="compact">
 <dt><kbd> S-Mouse-1 (Emacs)
 </kbd></dt>
@@ -2278,6 +2320,7 @@ This command can take a prefix argument.  Note: Viper sets this
 binding only if this mouse action is not
 already bound to something else.
 See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more information.
+
 </p></dd>
 <dt><kbd> S-Mouse-2 (Emacs)
 </kbd></dt>

@@ -14,23 +14,23 @@
 ../singular_texi/singular.tex(,38) 
 ../singular_texi/singular.tex(,39) 
 ../singular_texi/singular.tex(,41) @titlepage
-../singular_texi/singular.tex(,42) 
+../singular_texi/singular.tex(,42) @sp 2
 ../singular_texi/singular.tex(,43) @center @titlefont{Singular}
-../singular_texi/singular.tex(,44) 
+../singular_texi/singular.tex(,44) @sp 2
 ../singular_texi/singular.tex(,45) @center A Computer Algebra System for Polynomial Computations
-../singular_texi/singular.tex(,46) 
+../singular_texi/singular.tex(,46) @sp 5
 ../singular_texi/singular.tex(,47) @center @titlefont{Manual}
 ../singular_texi/singular.tex(,48) @center Version 2-0-4
-../singular_texi/singular.tex(,49) 
+../singular_texi/singular.tex(,49) @sp 2
 ../singular_texi/singular.tex(,50) @center Singular is created and its development is directed and coordinated by
 ../singular_texi/singular.tex(,51) @center G.-M. Greuel, G. Pfister, and H. Sch@"onemann
-../singular_texi/singular.tex(,52) 
+../singular_texi/singular.tex(,52) @sp 2
 ../singular_texi/singular.tex(,53) @center with contributions by
 ../singular_texi/singular.tex(,54) @center O. Bachmann, W. Decker, S. Endra@ss{}, I. Farran, A. Fr@"uhbis-Kr@"uger, C. Gorzel,
 ../singular_texi/singular.tex(,55) @center H. Grassmann, A. Heydtmann, D. Hillebrand, T. Keilen, U. Klein, K. Kr@"uger, M. Lamm,
 ../singular_texi/singular.tex(,56) @center C. Lossen, B. Martin, M. Me@ss{}ollen, W. Neumann, T. N@"u@ss{}ler, W. Pohl, T. Siebert,
 ../singular_texi/singular.tex(,57) @center J. Schmidt, M. Schulze, R. Stobbe, M. Wenk, T. Wichmann
-../singular_texi/singular.tex(,58) 
+../singular_texi/singular.tex(,58) @sp 2
 ../singular_texi/singular.tex(,59) @author Fachbereich Mathematik
 ../singular_texi/singular.tex(,60) @author Zentrum f@"ur Computeralgebra
 ../singular_texi/singular.tex(,61) @author Universit@"at Kaiserslautern
@@ -93,7 +93,7 @@
 ../singular_texi/COPYING.texi(,18) @center Authors: @uref{http://www.mathematik.uni-kl.de/~greuel,,G.-M. Greuel}, @uref{http://www.mathematik.uni-kl.de/~pfister,,G. Pfister}, @uref{http://www.mathematik.uni-kl.de/~hannes,,H. Schoenemann}
 ../singular_texi/COPYING.texi(,19) 
 ../singular_texi/COPYING.texi(,20) @center Copyright @copyright{} 1986-2003
-../singular_texi/COPYING.texi(,21) 
+../singular_texi/COPYING.texi(,21) @sp 2
 ../singular_texi/COPYING.texi(,22) @center @strong{NOTICE}
 ../singular_texi/COPYING.texi(,23) 
 ../singular_texi/COPYING.texi(,24) This program is free software; you can redistribute it and/or modify
@@ -5318,7 +5318,7 @@
 ../singular_texi/general.tex(,4409) ////////////////////////////////////////////////////////////////////
 ../singular_texi/general.tex(,4410) // version string automatically expanded by CVS
 ../singular_texi/general.tex(,4411) 
-../singular_texi/general.tex(,4412) version="$Id: sing.passtexi,v 1.3 2003-08-12 09:08:04 pertusus Exp $";
+../singular_texi/general.tex(,4412) version="$Id: sing.passtexi,v 1.4 2003-09-01 15:43:40 pertusus Exp $";
 ../singular_texi/general.tex(,4413) category="Miscellaneous";
 ../singular_texi/general.tex(,4414) // summary description of the library
 ../singular_texi/general.tex(,4415) info="
@@ -5731,7 +5731,7 @@
 ../singular_texi/general.tex(,4671) 
 ../singular_texi/general.tex(,4672) @expansion{} 3
 ../singular_texi/general.tex(,4673) @end smallexample
-../singular_texi/general.tex(,4674) 
+../singular_texi/general.tex(,4674) @sp 2
 ../singular_texi/general.tex(,4675) 
 ../singular_texi/general.tex(,4677) @node Printing of data,libparse,Break points,Debugging tools
 ../singular_texi/general.tex(,4678) @subsection Printing of data
@@ -10197,7 +10197,7 @@
 ../singular_texi/reference.tex(,261) used by the kernel of @sc{Singular} and referred to as reserved attributes.
 ../singular_texi/reference.tex(,262) Non-reserved attributes may be used, however, in procedures and can
 ../singular_texi/reference.tex(,263) considerably speed up computations.
-../singular_texi/reference.tex(,264) 
+../singular_texi/reference.tex(,264) @sp 1
 ../singular_texi/reference.tex(,265) @item @strong{Reserved attributes:}
 ../singular_texi/reference.tex(,266) (not all are in use at the moment)
 ../singular_texi/reference.tex(,267) @table @code
@@ -14161,7 +14161,7 @@
 ../singular_texi/reference.tex(,6032) @item @strong{Purpose:}
 ../singular_texi/reference.tex(,6033) restores the state of all options from an intvec (produced by
 ../singular_texi/reference.tex(,6034) @code{option(get)}).
-../singular_texi/reference.tex(,6035) 
+../singular_texi/reference.tex(,6035) @sp 1
 ../singular_texi/reference.tex(,6036) @item @strong{Values:}
 ../singular_texi/reference.tex(,6037) The following options are used to manipulate the behavior of
 ../singular_texi/reference.tex(,6038) computations and act like boolean switches. Use the prefix @code{no} to
@@ -21291,7 +21291,7 @@
 ../singular_texi/pdata.tex(,194) can compute with any finitely generated module over the basering 
 ../singular_texi/pdata.tex(,195) @tex
 ../singular_texi/pdata.tex(,196) $R$.
-../singular_texi/pdata.tex(,197) @end tex
+../singular_texi/pdata.tex(,197) @end tex 
 ../singular_texi/pdata.tex(,201) Such a module, say 
 ../singular_texi/pdata.tex(,202) @tex
 ../singular_texi/pdata.tex(,203) $N$,
@@ -46740,30 +46740,30 @@
 ../singular_texi/NEWS.texi(,50) @heading Changes in @sc{Singular} libraries
 ../singular_texi/NEWS.texi(,51) The documentation of libraries was generally improved.
 ../singular_texi/NEWS.texi(,52) @table @asis
-../singular_texi/NEWS.texi(,53) @item @ref{equising_lib}
+../singular_texi/NEWS.texi(nref,53) @item ../singular_texi/NEWS.texi(nref,53) @ref{equising_lib}../singular_texi/NEWS.texi(nref,53) 
 ../singular_texi/NEWS.texi(,54) procedures esStratum, isEquising now also for reducible polynomials
 ../singular_texi/NEWS.texi(,55) @*new procedures: tau_es (codim of mu-const stratum in semi-universal def. base);
 ../singular_texi/NEWS.texi(,56) esIdeal ((Wahl's) equisingularity ideal)
-../singular_texi/NEWS.texi(,57) @item @ref{gaussman_lib}
+../singular_texi/NEWS.texi(nref,57) @item ../singular_texi/NEWS.texi(nref,57) @ref{gaussman_lib}../singular_texi/NEWS.texi(nref,57) 
 ../singular_texi/NEWS.texi(,58) added bernstein: roots of the Bernstein polynomial of t
-../singular_texi/NEWS.texi(,59) @item @ref{hnoether_lib}
+../singular_texi/NEWS.texi(nref,59) @item ../singular_texi/NEWS.texi(nref,59) @ref{hnoether_lib}../singular_texi/NEWS.texi(nref,59) 
 ../singular_texi/NEWS.texi(,60) HNdevelop, reddevelop, essdevelop are obsolete, replaced by hnexpansion
 ../singular_texi/NEWS.texi(,61) @*multsequence is "repaired" (since branches computed by hnexpansion
 ../singular_texi/NEWS.texi(,62) et al) are now ordered according to the needs of multsequence.
 ../singular_texi/NEWS.texi(,63) @*newtonpoly needs no longer that ordering of the basering is ls
 ../singular_texi/NEWS.texi(,64) @*new procedures: is_NND      test if f is Newton non-degenerate
-../singular_texi/NEWS.texi(,65) @item @ref{homolog_lib}
+../singular_texi/NEWS.texi(nref,65) @item ../singular_texi/NEWS.texi(nref,65) @ref{homolog_lib}../singular_texi/NEWS.texi(nref,65) 
 ../singular_texi/NEWS.texi(,66) new procedures: depth, fitting, flatteningStrat, isCM, isFlat, isLocallyFree,
 ../singular_texi/NEWS.texi(,67) isReg, KoszulHomology, tensorMod, Tor
-../singular_texi/NEWS.texi(,68) @item @ref{matrix_lib}
+../singular_texi/NEWS.texi(nref,68) @item ../singular_texi/NEWS.texi(nref,68) @ref{matrix_lib}../singular_texi/NEWS.texi(nref,68) 
 ../singular_texi/NEWS.texi(,69) in proc tensor(A,B):  check if ncols(A)==0
-../singular_texi/NEWS.texi(,70) @item @ref{normal_lib}
+../singular_texi/NEWS.texi(nref,70) @item ../singular_texi/NEWS.texi(nref,70) @ref{normal_lib}../singular_texi/NEWS.texi(nref,70) 
 ../singular_texi/NEWS.texi(,71) new procedure: deltaLoc(f,S);      (sum of) delta invariant(s) at conjugated
 ../singular_texi/NEWS.texi(,72) singular points
 ../singular_texi/NEWS.texi(,73) @*proc genus makes now use of is_NND of hnoether.lib
-../singular_texi/NEWS.texi(,74) @item @ref{primdec_lib}
+../singular_texi/NEWS.texi(nref,74) @item ../singular_texi/NEWS.texi(nref,74) @ref{primdec_lib}../singular_texi/NEWS.texi(nref,74) 
 ../singular_texi/NEWS.texi(,75) optimizations again
-../singular_texi/NEWS.texi(,76) @item @ref{solve_lib}
+../singular_texi/NEWS.texi(nref,76) @item ../singular_texi/NEWS.texi(nref,76) @ref{solve_lib}../singular_texi/NEWS.texi(nref,76) 
 ../singular_texi/NEWS.texi(,77) procedure laguerre_solve ignores no longer the 2nd parameter (precision of 
 ../singular_texi/NEWS.texi(,78) internal computation)
 ../singular_texi/NEWS.texi(,79) @* new procedure simplexOut:     prints solution of simplex in nice format

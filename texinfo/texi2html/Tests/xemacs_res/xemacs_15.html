@@ -64,12 +64,13 @@ a string.  The principal search command is unusual in that it is
 <em>incremental</em>: it begins to search before you have finished typing the
 search string.  There are also non-incremental search commands more like
 those of other editors.
+
 </p><p>  Besides the usual <code>replace-string</code> command that finds all
 occurrences of one string and replaces them with another, Emacs has a fancy
 replacement command called <code>query-replace</code> which asks interactively
 which occurrences to replace.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC116">12.1 Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Search happens as you type the string.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC118">12.2 Non-Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specify entire string and then search.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC119">12.3 Word Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Search for sequence of words.</td></tr>
@@ -107,6 +108,7 @@ shows you where the string (as you have typed it so far) is found.
 When you have typed enough characters to identify the place you want, you
 can stop.  Depending on what you do next, you may or may not need to
 terminate the search explicitly with a <kbd>RET</kbd>.
+
 </p><dl compact="compact">
 <dt><kbd> C-s
 </kbd></dt>
@@ -130,15 +132,18 @@ the cursor move to after the first `<samp>FO</samp>'.  After another <kbd>O</kbd
 cursor is after the first `<samp>FOO</samp>' after the place where you started the
 search.  Meanwhile, the search string `<samp>FOO</samp>' has been echoed in the
 echo area.
+
 </p><p>  The echo area display ends with three dots when actual searching is going
 on.  When search is waiting for more input, the three dots are removed.
 (On slow terminals, the three dots are not displayed.)
+
 </p><p>  If you make a mistake in typing the search string, you can erase
 characters with <kbd>DEL</kbd>.  Each <kbd>DEL</kbd> cancels the last character of the
 search string.  This does not happen until Emacs is ready to read another
 input character; first it must either find, or fail to find, the character
 you want to erase.  If you do not want to wait for this to happen, use
 <kbd>C-g</kbd> as described below.
+
 </p><p>  When you are satisfied with the place you have reached, you can type
 <kbd>RET</kbd> (or <kbd>C-m</kbd>), which stops searching, leaving the cursor where 
 the search brought it.  Any command not specially meaningful in searches also
@@ -147,14 +152,17 @@ search and then moves to the beginning of the line.  <kbd>RET</kbd> is necessary
 only if the next command you want to type is a printing character,
 <kbd>DEL</kbd>, <kbd>ESC</kbd>, or another control character that is special
 within searches (<kbd>C-q</kbd>, <kbd>C-w</kbd>, <kbd>C-r</kbd>, <kbd>C-s</kbd>, or <kbd>C-y</kbd>).
+
 </p><p>  Sometimes you search for `<samp>FOO</samp>' and find it, but were actually
 looking for a different occurrence of it.  To move to the next occurrence
 of the search string, type another <kbd>C-s</kbd>.  Do this as often as
 necessary.  If you overshoot, you can cancel some <kbd>C-s</kbd>
 characters with <kbd>DEL</kbd>.
+
 </p><p>  After you exit a search, you can search for the same string again by
 typing just <kbd>C-s C-s</kbd>: the first <kbd>C-s</kbd> is the key that invokes
 incremental search, and the second <kbd>C-s</kbd> means &quot;search again&quot;.
+
 </p><p>  If the specified string is not found at all, the echo area displays
 the text `<samp>Failing I-Search</samp>'.  The cursor is after the place where
 Emacs found as much of your string as it could.  Thus, if you search for
@@ -168,11 +176,13 @@ removes from the search string the characters that could not be found
 `<samp>FOO</samp>' in `<samp>FOOT</samp>').  A second <kbd>C-g</kbd> at that point cancels
 the search entirely, returning point to where it was when the search
 started.
+
 </p><p>  If a search is failing and you ask to repeat it by typing another
 <kbd>C-s</kbd>, it starts again from the beginning of the buffer.  Repeating
 a failing backward search with <kbd>C-r</kbd> starts again from the end.  This
 is called <em>wrapping around</em>.  `<samp>Wrapped</samp>' appears in the search
 prompt once this has happened.
+
 </p><a name="IDX411"></a>
 <p>  The <kbd>C-g</kbd> &quot;quit&quot; character does special things during searches;
 just what it does depends on the status of the search.  If the search has
@@ -184,11 +194,13 @@ has failed to find them--then the search string characters which have not
 been found are discarded from the search string.  The
 search is now successful and waiting for more input, so a second <kbd>C-g</kbd>
 cancels the entire search.
+
 </p><p>  To search for a control character such as <kbd>C-s</kbd> or <kbd>DEL</kbd> or
 <kbd>ESC</kbd>, you must quote it by typing <kbd>C-q</kbd> first.  This function
 of <kbd>C-q</kbd> is analogous to its meaning as an Emacs command: it causes
 the following character to be treated the way a graphic character would
 normally be treated in the same context.
+
 </p><p> To search backwards, you can use <kbd>C-r</kbd> instead of <kbd>C-s</kbd> to
 start the search; <kbd>C-r</kbd> is the key that runs the command
 (<code>isearch-backward</code>) to search backward.  You can also use
@@ -197,6 +209,7 @@ this if a search fails because the place you started was too far down in the
 file.  Repeated <kbd>C-r</kbd> keeps looking for more occurrences backwards.
 <kbd>C-s</kbd> starts going forward again.  You can cancel <kbd>C-r</kbd> in a
 search with <kbd>DEL</kbd>.
+
 </p><p>  The characters <kbd>C-y</kbd> and <kbd>C-w</kbd> can be used in incremental search
 to grab text from the buffer into the search string.  This makes it
 convenient to search for another occurrence of text at point.  <kbd>C-w</kbd>
@@ -204,24 +217,28 @@ copies the word after point as part of the search string, advancing
 point over that word.  Another <kbd>C-s</kbd> to repeat the search will then
 search for a string including that word.  <kbd>C-y</kbd> is similar to <kbd>C-w</kbd>
 but copies the rest of the current line into the search string.
+
 </p><p>  The characters <kbd>M-p</kbd> and <kbd>M-n</kbd> can be used in an incremental
 search to recall things which you have searched for in the past.  A
 list of the last 16 things you have searched for is retained, and 
 <kbd>M-p</kbd> and <kbd>M-n</kbd> let you cycle through that ring.
+
 </p><p>The character <kbd>M-<kbd>TAB</kbd></kbd> does completion on the elements in 
 the search history ring.  For example, if you know that you have
 recently searched for the string <code>POTATOE</code>, you could type
 <kbd>C-s P O M-<kbd>TAB</kbd></kbd>.  If you had searched for other strings
 beginning with <code>PO</code> then you would be shown a list of them, and
 would need to type more to select one. 
+
 </p><p>  You can change any of the special characters in incremental search via
 the normal keybinding mechanism: simply add a binding to the 
 <code>isearch-mode-map</code>.  For example, to make the character
 <kbd>C-b</kbd> mean &quot;search backwards&quot; while in isearch-mode, do this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
 </pre></td></tr></table>
 <p>These are the default bindings of isearch-mode:
+
 </p><a name="IDX412"></a>
 <a name="IDX413"></a>
 <a name="IDX414"></a>
@@ -294,11 +311,13 @@ isearch (<code>isearch-abort</code>).
 </kbd></dt>
 <dd><p>Do completion on the elements in the isearch history ring 
 (<code>isearch-complete</code>).
+
 </p></dd>
 </dl>
 
 <p>Any other character which is normally inserted into a buffer when typed
 is automatically added to the search string in isearch-mode.
+
 </p><hr size="6">
 <a name="SEC117"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -325,18 +344,23 @@ each place the search gets to, it creates a new single-line window and uses
 that to display the line the search has found.  The single-line window
 appears as soon as point gets outside of the text that is already
 on the screen.
+
 </p><p>  When the search is terminated, the single-line window is removed.  Only
 at this time the window in which the search was done is redisplayed to show
 its new value of point.
+
 </p><p>  The three dots at the end of the search string, normally used to indicate
 that searching is going on, are not displayed in slow style display.
+
 </p><a name="IDX434"></a>
 <p>  The slow terminal style of display is used when the terminal baud rate is
 less than or equal to the value of the variable <code>search-slow-speed</code>,
 initially 1200.
+
 </p><a name="IDX435"></a>
 <p>  The number of lines to use in slow terminal search display is controlled
 by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
+
 </p><hr size="6">
 <a name="NOD105"></a>
 <a name="SEC118"></a>
@@ -360,6 +384,7 @@ by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 
 <p>  Emacs also has conventional non-incremental search commands, which require
 you type the entire search string before searching begins.
+
 </p><dl compact="compact">
 <dt><kbd> C-s <kbd>RET</kbd> <var>string</var> <kbd>RET</kbd>
 </kbd></dt>
@@ -375,10 +400,12 @@ you type the entire search string before searching begins.
 (or <kbd>C-s C-m</kbd>).  This enters the minibuffer to read the search string.
 Terminate the string with <kbd>RET</kbd> to start the search.  If the string
 is not found, the search command gets an error.
+
 </p><p> By default, <kbd>C-s</kbd> invokes incremental search, but if you give it an
 empty argument, which would otherwise be useless, it invokes non-incremental
 search.  Therefore, <kbd>C-s <kbd>RET</kbd></kbd> invokes non-incremental search. 
 <kbd>C-r <kbd>RET</kbd></kbd> also works this way.
+
 </p><a name="IDX436"></a>
 <a name="IDX437"></a>
 <p>  Forward and backward non-incremental searches are implemented by the
@@ -387,10 +414,12 @@ these commands to keys.  The reason that incremental
 search is programmed to invoke them as well is that <kbd>C-s <kbd>RET</kbd></kbd>
 is the traditional sequence of characters used in Emacs to invoke
 non-incremental search.
+
 </p><p> Non-incremental searches performed using <kbd>C-s <kbd>RET</kbd></kbd> do
 not call <code>search-forward</code> right away.  They first check
 if the next character is <kbd>C-w</kbd>, which requests a word search.
 See section <a href="#SEC119">Word Search</a>.
+
 </p><hr size="6">
 <a name="NOD106"></a>
 <a name="SEC119"></a>
@@ -416,10 +445,12 @@ See section <a href="#SEC119">Word Search</a>.
 words are separated.  More precisely, you type a string of many words,
 using single spaces to separate them, and the string is found even if
 there are multiple spaces, newlines or other punctuation between the words.
+
 </p><p>  Word search is useful in editing documents formatted by text formatters.
 If you edit while looking at the printed, formatted version, you can't tell
 where the line breaks are in the source file.  Word search, allows you
 to search  without having to know the line breaks.
+
 </p><dl compact="compact">
 <dt><kbd> C-s <kbd>RET</kbd> C-w <var>words</var> <kbd>RET</kbd>
 </kbd></dt>
@@ -436,7 +467,9 @@ with <kbd>C-s <kbd>RET</kbd> C-w</kbd> followed by the search string, which
 must always be terminated with another <kbd>RET</kbd>.  Being non-incremental, this
 search does not start until the argument is terminated.  It works by
 constructing a regular expression and searching for that.  See section <a href="#SEC120">Regular Expression Search</a>.
+
 </p><p> You can do a backward word search with <kbd>C-r <kbd>RET</kbd> C-w</kbd>.
+
 </p><a name="IDX438"></a>
 <a name="IDX439"></a>
 <p>  Forward and backward word searches are implemented by the commands
@@ -444,6 +477,7 @@ constructing a regular expression and searching for that.  See section <a href="
 bind these commands to keys.  The reason that incremental
 search is programmed to invoke them as well is that <kbd>C-s <kbd>RET</kbd> C-w</kbd>
 is the traditional Emacs sequence of keys for word search.
+
 </p><hr size="6">
 <a name="NOD107"></a>
 <a name="SEC120"></a>
@@ -469,6 +503,7 @@ is the traditional Emacs sequence of keys for word search.
 denotes a (possibly infinite) set of strings.  Searching for matches
 for a regexp is a powerful operation that editors on Unix systems have
 traditionally offered.
+
 </p><p> To gain a thorough understanding of regular expressions and how to use
 them to best advantage, we recommend that you study <cite>Mastering
 Regular Expressions, by Jeffrey E.F. Friedl, O'Reilly and Associates,
@@ -477,13 +512,16 @@ cover.)  You might also read the manuals to <a href="../gawk/index.html">(gawk)T
 <a href="../ed/index.html">(ed)Top</a>, <cite>sed</cite>, <cite>grep</cite>, <a href="../perl/index.html">(perl)Top</a>,
 <a href="../regex/index.html">(regex)Top</a>, <a href="../rx/index.html">(rx)Top</a>, <cite>pcre</cite>, and <a href="../flex/index.html">(flex)Top</a>, which
 also make good use of regular expressions.
+
 </p><p> The XEmacs regular expression syntax most closely resembles that of
 <cite>ed</cite>, or <cite>grep</cite>, the GNU versions of which all utilize the GNU
 <cite>regex</cite> library.  XEmacs' version of <cite>regex</cite> has recently been
 extended with some Perl--like capabilities, described in the next
 section.
+
 </p><p> In XEmacs, you can search for the next match for a regexp either
 incrementally or not.
+
 </p><a name="IDX440"></a>
 <a name="IDX441"></a>
 <a name="IDX442"></a>
@@ -495,11 +533,13 @@ regexp rather than looking for an exact match against the text in the
 buffer.  Each time you add text to the search string, you make the regexp
 longer, and the new regexp is searched for.  A reverse regexp search command
 <code>isearch-backward-regexp</code> also exists, bound to <kbd>M-C-r</kbd>.
+
 </p><p>  All of the control characters that do special things within an ordinary
 incremental search have the same functionality in incremental regexp search.
 Typing <kbd>C-s</kbd> or <kbd>C-r</kbd> immediately after starting a search
 retrieves the last incremental search regexp used:
 incremental regexp and non-regexp searches have independent defaults.
+
 </p><a name="IDX444"></a>
 <a name="IDX445"></a>
 <p>  Non-incremental search for a regexp is done by the functions
@@ -508,6 +548,7 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <code>re-search-forward</code> by way of incremental regexp search with
 <kbd>M-C-s <kbd>RET</kbd></kbd>; similarly for <code>re-search-backward</code> with
 <kbd>M-C-r <kbd>RET</kbd></kbd>.
+
 </p><hr size="6">
 <a name="NOD108"></a>
 <a name="SEC121"></a>
@@ -537,19 +578,23 @@ nothing else.  The special characters are `<samp>.</samp>', `<samp>*</samp>', `<
 special characters will be defined in the future.  Any other character
 appearing in a regular expression is ordinary, unless a `<samp>\</samp>'
 precedes it.
+
 </p><p>For example, `<samp>f</samp>' is not a special character, so it is ordinary, and
 therefore `<samp>f</samp>' is a regular expression that matches the string
 `<samp>f</samp>' and no other string.  (It does <em>not</em> match the string
 `<samp>ff</samp>'.)  Likewise, `<samp>o</samp>' is a regular expression that matches
 only `<samp>o</samp>'.
+
 </p><p>Any two regular expressions <var>a</var> and <var>b</var> can be concatenated.  The
 result is a regular expression that matches a string if <var>a</var> matches
 some amount of the beginning of that string and <var>b</var> matches the rest of
 the string.
+
 </p><p>As a simple example, we can concatenate the regular expressions `<samp>f</samp>'
 and `<samp>o</samp>' to get the regular expression `<samp>fo</samp>', which matches only
 the string `<samp>fo</samp>'.  Still trivial.  To do something more powerful, you
 need to use one of the special characters.  Here is a list of them:
+
 </p><dl compact="compact">
 <dt><kbd> . (Period)
 </kbd></dt>
@@ -558,6 +603,7 @@ need to use one of the special characters.  Here is a list of them:
 Using concatenation, we can make regular expressions like `<samp>a.b</samp>', which
 matches any three-character string that begins with `<samp>a</samp>' and ends with
 `<samp>b</samp>'.
+
 </p></dd>
 <dt><kbd> *
 </kbd></dt>
@@ -568,9 +614,11 @@ possible.  In `<samp>fo*</samp>', the `<samp>*</samp>' applies to the `<samp>o</
 `<samp>fo*</samp>' matches one `<samp>f</samp>' followed by any number of `<samp>o</samp>'s.
 The case of zero `<samp>o</samp>'s is allowed: `<samp>fo*</samp>' does match
 `<samp>f</samp>'.
+
 </p><p>`<samp>*</samp>' always applies to the <em>smallest</em> possible preceding
 expression.  Thus, `<samp>fo*</samp>' has a repeating `<samp>o</samp>', not a
 repeating `<samp>fo</samp>'.
+
 </p><p>The matcher processes a `<samp>*</samp>' construct by matching, immediately, as
 many repetitions as can be found; it is &quot;greedy&quot;.  Then it continues
 with the rest of the pattern.  If that fails, backtracking occurs,
@@ -582,6 +630,7 @@ pattern is `<samp>ar</samp>' and there is only `<samp>r</samp>' left to match, s
 try fails.  The next alternative is for `<samp>a*</samp>' to match only two
 `<samp>a</samp>'s.  With this choice, the rest of the regexp matches
 successfully.
+
 </p><p>Nested repetition operators can be extremely slow if they specify
 backtracking loops.  For example, it could take hours for the regular
 expression `<samp>\(x+y*\)*a</samp>' to match the sequence
@@ -589,6 +638,7 @@ expression `<samp>\(x+y*\)*a</samp>' to match the sequence
 Emacs must try each imaginable way of grouping the 35 `<samp>x</samp>''s before
 concluding that none of them can work.  To make sure your regular
 expressions run fast, check nested repetitions carefully.
+
 </p></dd>
 <dt><kbd> +
 </kbd></dt>
@@ -598,6 +648,7 @@ preceding expression must match at least once.  It is also &quot;greedy&quot;.
 So, for example, `<samp>ca+r</samp>' matches the strings `<samp>car</samp>' and
 `<samp>caaaar</samp>' but not the string `<samp>cr</samp>', whereas `<samp>ca*r</samp>' matches
 all three strings.
+
 </p></dd>
 <dt><kbd> ?
 </kbd></dt>
@@ -606,6 +657,7 @@ all three strings.
 preceding expression can match either once or not at all.  For example,
 `<samp>ca?r</samp>' matches `<samp>car</samp>' or `<samp>cr</samp>', but does not match anything
 else.
+
 </p></dd>
 <dt><kbd> *?
 </kbd></dt>
@@ -613,22 +665,27 @@ else.
 <p>works just like `<samp>*</samp>', except that rather than matching the longest
 match, it matches the shortest match.  `<samp>*?</samp>' is known as a
 <em>non-greedy</em> quantifier, a regexp construct borrowed from Perl.
+
 </p><p>This construct is very useful for when you want to match the text inside
 a pair of delimiters.  For instance, `<samp>/\*.*?\*/</samp>' will match C
 comments in a string.  This could not easily be achieved without the use
 of a non-greedy quantifier.
+
 </p><p>This construct has not been available prior to XEmacs 20.4.  It is not
 available in FSF Emacs.
+
 </p></dd>
 <dt><kbd> +?
 </kbd></dt>
 <dd><a name="IDX451"></a>
 <p>is the non-greedy version of `<samp>+</samp>'.
+
 </p></dd>
 <dt><kbd> ??
 </kbd></dt>
 <dd><a name="IDX452"></a>
 <p>is the non-greedy version of `<samp>?</samp>'.
+
 </p></dd>
 <dt><kbd> \{n,m\}
 </kbd></dt>
@@ -637,8 +694,10 @@ available in FSF Emacs.
 specifies that the expression must match at least <var>n</var> times, but no
 more than <var>m</var> times.  This syntax is supported by most Unix regexp
 utilities, and has been introduced to XEmacs for the version 20.3.
+
 </p><p>Unfortunately, the non-greedy version of this quantifier does not exist
 currently, although it does in Perl.
+
 </p></dd>
 <dt><kbd> [ <small class="dots">...</small> ]
 </kbd></dt>
@@ -652,14 +711,17 @@ form the set.  Thus, `<samp>[ad]</samp>' matches either one `<samp>a</samp>' or 
 and `<samp>d</samp>'s (including the empty string), from which it follows that
 `<samp>c[ad]*r</samp>' matches `<samp>cr</samp>', `<samp>car</samp>', `<samp>cdr</samp>',
 `<samp>caddaar</samp>', etc.
+
 </p><p>The usual regular expression special characters are not special inside a
 character set.  A completely different set of special characters exists
 inside character sets: `<samp>]</samp>', `<samp>-</samp>' and `<samp>^</samp>'.
+
 </p><p>`<samp>-</samp>' is used for ranges of characters.  To write a range, write two
 characters with a `<samp>-</samp>' between them.  Thus, `<samp>[a-z]</samp>' matches any
 lower case letter.  Ranges may be intermixed freely with individual
 characters, as in `<samp>[a-z$%.]</samp>', which matches any lower case letter
 or `<samp>$</samp>', `<samp>%</samp>', or a period.
+
 </p><p>To include a `<samp>]</samp>' in a character set, make it the first character.
 For example, `<samp>[]a]</samp>' matches `<samp>]</samp>' or `<samp>a</samp>'.  To include a
 `<samp>-</samp>', write `<samp>-</samp>' as the first character in the set, or put it
@@ -667,8 +729,10 @@ immediately after a range.  (You can replace one individual character
 <var>c</var> with the range `<samp><var>c</var>-<var>c</var></samp>' to make a place to put the
 `<samp>-</samp>'.)  There is no way to write a set containing just `<samp>-</samp>' and
 `<samp>]</samp>'.
+
 </p><p>To include `<samp>^</samp>' in a set, put it anywhere but at the beginning of
 the set.
+
 </p></dd>
 <dt><kbd> [^ <small class="dots">...</small> ]
 </kbd></dt>
@@ -676,11 +740,14 @@ the set.
 <p>`<samp>[^</samp>' begins a <em>complement character set</em>, which matches any
 character except the ones specified.  Thus, `<samp>[^a-z0-9A-Z]</samp>'
 matches all characters <em>except</em> letters and digits.
+
 </p><p>`<samp>^</samp>' is not special in a character set unless it is the first
 character.  The character following the `<samp>^</samp>' is treated as if it
 were first (thus, `<samp>-</samp>' and `<samp>]</samp>' are not special there).
+
 </p><p>Note that a complement character set can match a newline, unless
 newline is mentioned as one of the characters not to match.
+
 </p></dd>
 <dt><kbd> ^
 </kbd></dt>
@@ -690,25 +757,31 @@ newline is mentioned as one of the characters not to match.
 beginning of a line in the text being matched.  Otherwise it fails to
 match anything.  Thus, `<samp>^foo</samp>' matches a `<samp>foo</samp>' that occurs at
 the beginning of a line.
+
 </p><p>When matching a string instead of a buffer, `<samp>^</samp>' matches at the
 beginning of the string or after a newline character `<samp>\n</samp>'.
+
 </p></dd>
 <dt><kbd> $
 </kbd></dt>
 <dd><a name="IDX460"></a>
 <p>is similar to `<samp>^</samp>' but matches only at the end of a line.  Thus,
 `<samp>x+$</samp>' matches a string of one `<samp>x</samp>' or more at the end of a line.
+
 </p><p>When matching a string instead of a buffer, `<samp>$</samp>' matches at the end
 of the string or before a newline character `<samp>\n</samp>'.
+
 </p></dd>
 <dt><kbd> \
 </kbd></dt>
 <dd><a name="IDX461"></a>
 <p>has two functions: it quotes the special characters (including
 `<samp>\</samp>'), and it introduces additional special constructs.
+
 </p><p>Because `<samp>\</samp>' quotes special characters, `<samp>\$</samp>' is a regular
 expression that matches only `<samp>$</samp>', and `<samp>\[</samp>' is a regular
 expression that matches only `<samp>[</samp>', and so on.
+
 </p>
 </dd>
 </dl>
@@ -719,11 +792,13 @@ meanings make no sense.  For example, `<samp>*foo</samp>' treats `<samp>*</samp>
 ordinary since there is no preceding expression on which the `<samp>*</samp>'
 can act.  It is poor practice to depend on this behavior; quote the
 special character anyway, regardless of where it appears.
+
 </p><p>For the most part, `<samp>\</samp>' followed by any character matches only
 that character.  However, there are several exceptions: characters
 that, when preceded by `<samp>\</samp>', are special constructs.  Such
 characters are always ordinary when encountered on their own.  Here
 is a table of `<samp>\</samp>' constructs:
+
 </p><dl compact="compact">
 <dt><kbd> \|
 </kbd></dt>
@@ -733,12 +808,16 @@ is a table of `<samp>\</samp>' constructs:
 Two regular expressions <var>a</var> and <var>b</var> with `<samp>\|</samp>' in
 between form an expression that matches anything that either <var>a</var> or
 <var>b</var> matches.
+
 </p><p>Thus, `<samp>foo\|bar</samp>' matches either `<samp>foo</samp>' or `<samp>bar</samp>'
 but no other string.
+
 </p><p>`<samp>\|</samp>' applies to the largest possible surrounding expressions.  Only a
 surrounding `<samp>\( <small class="dots">...</small> \)</samp>' grouping can limit the grouping power of
 `<samp>\|</samp>'.
+
 </p><p>Full backtracking capability exists to handle multiple uses of `<samp>\|</samp>'.
+
 </p></dd>
 <dt><kbd> \( <small class="dots">...</small> \)
 </kbd></dt>
@@ -746,14 +825,17 @@ surrounding `<samp>\( <small class="dots">...</small> \)</samp>' grouping can li
 <a name="IDX465"></a>
 <a name="IDX466"></a>
 <p>is a grouping construct that serves three purposes:
+
 </p><ol>
 <li>
 <p>To enclose a set of `<samp>\|</samp>' alternatives for other operations.
 Thus, `<samp>\(foo\|bar\)x</samp>' matches either `<samp>foox</samp>' or `<samp>barx</samp>'.
+
 </p></li><li>
 <p>To enclose an expression for a suffix operator such as `<samp>*</samp>' to act
 on.  Thus, `<samp>ba\(na\)*</samp>' matches `<samp>bananana</samp>', etc., with any
 (zero or more) number of `<samp>na</samp>' strings.
+
 </p></li><li>
 <p>To record a matched substring for future reference.
 </p></li></ol>
@@ -763,25 +845,30 @@ parenthetical grouping; it is a separate feature that happens to be
 assigned as a second meaning to the same `<samp>\( <small class="dots">...</small> \)</samp>' construct
 because there is no conflict in practice between the two meanings.
 Here is an explanation of this feature:
+
 </p></dd>
 <dt><kbd> \<var>digit</var>
 </kbd></dt>
 <dd><p>matches the same text that matched the <var>digit</var>th occurrence of a
 `<samp>\( <small class="dots">...</small> \)</samp>' construct.
+
 </p><p>In other words, after the end of a `<samp>\( <small class="dots">...</small> \)</samp>' construct.  the
 matcher remembers the beginning and end of the text matched by that
 construct.  Then, later on in the regular expression, you can use
 `<samp>\</samp>' followed by <var>digit</var> to match that same text, whatever it
 may have been.
+
 </p><p>The strings matching the first nine `<samp>\( <small class="dots">...</small> \)</samp>' constructs
 appearing in a regular expression are assigned numbers 1 through 9 in
 the order that the open parentheses appear in the regular expression.
 So you can use `<samp>\1</samp>' through `<samp>\9</samp>' to refer to the text matched
 by the corresponding `<samp>\( <small class="dots">...</small> \)</samp>' constructs.
+
 </p><p>For example, `<samp>\(.*\)\1</samp>' matches any newline-free string that is
 composed of two identical halves.  The `<samp>\(.*\)</samp>' matches the first
 half, which may be anything, but the `<samp>\1</samp>' that follows must match
 the same exact text.
+
 </p></dd>
 <dt><kbd> \(?: <small class="dots">...</small> \)
 </kbd></dt>
@@ -790,29 +877,35 @@ the same exact text.
 <p>is called a <em>shy</em> grouping operator, and it is used just like
 `<samp>\( <small class="dots">...</small> \)</samp>', except that it does not cause the matched
 substring to be recorded for future reference.
+
 </p><p>This is useful when you need a lot of grouping `<samp>\( <small class="dots">...</small> \)</samp>'
 constructs, but only want to remember one or two -- or if you have
 more than nine groupings and need to use backreferences to refer to
 the groupings at the end.
+
 </p><p>Using `<samp>\(?: <small class="dots">...</small> \)</samp>' rather than `<samp>\( <small class="dots">...</small> \)</samp>' when you
 don't need the captured substrings ought to speed up your programs some,
 since it shortens the code path followed by the regular expression
 engine, as well as the amount of memory allocation and string copying it
 must do.  The actual performance gain to be observed has not been
 measured or quantified as of this writing.
+
 </p><p>The shy grouping operator has been borrowed from Perl, and has not been
 available prior to XEmacs 20.3, nor is it available in FSF Emacs.
+
 </p></dd>
 <dt><kbd> \w
 </kbd></dt>
 <dd><a name="IDX469"></a>
 <p>matches any word-constituent character.  The editor syntax table
 determines which characters these are.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>.
+
 </p></dd>
 <dt><kbd> \W
 </kbd></dt>
 <dd><a name="IDX470"></a>
 <p>matches any character that is not a word constituent.
+
 </p></dd>
 <dt><kbd> \s<var>code</var>
 </kbd></dt>
@@ -822,6 +915,7 @@ character that represents a syntax code: thus, `<samp>w</samp>' for word
 constituent, `<samp>-</samp>' for whitespace, `<samp>(</samp>' for open parenthesis,
 etc.  See section <a href="xemacs_30.html#SEC374">The Syntax Table</a>, for a list of syntax codes and the characters that
 stand for them.
+
 </p></dd>
 <dt><kbd> \S<var>code</var>
 </kbd></dt>
@@ -833,24 +927,28 @@ stand for them.
 <p>  The following regular expression constructs match the empty string--that is,
 they don't use up any characters--but whether they match depends on the
 context.
+
 </p><dl compact="compact">
 <dt><kbd> \`
 </kbd></dt>
 <dd><a name="IDX473"></a>
 <p>matches the empty string, but only at the beginning
 of the buffer or string being matched against.
+
 </p></dd>
 <dt><kbd> \'
 </kbd></dt>
 <dd><a name="IDX474"></a>
 <p>matches the empty string, but only at the end of
 the buffer or string being matched against.
+
 </p></dd>
 <dt><kbd> \=
 </kbd></dt>
 <dd><a name="IDX475"></a>
 <p>matches the empty string, but only at point.
 (This construct is not defined when matching against a string.)
+
 </p></dd>
 <dt><kbd> \b
 </kbd></dt>
@@ -859,17 +957,20 @@ the buffer or string being matched against.
 end of a word.  Thus, `<samp>\bfoo\b</samp>' matches any occurrence of
 `<samp>foo</samp>' as a separate word.  `<samp>\bballs?\b</samp>' matches
 `<samp>ball</samp>' or `<samp>balls</samp>' as a separate word.
+
 </p></dd>
 <dt><kbd> \B
 </kbd></dt>
 <dd><a name="IDX477"></a>
 <p>matches the empty string, but <em>not</em> at the beginning or
 end of a word.
+
 </p></dd>
 <dt><kbd> \&lt;
 </kbd></dt>
 <dd><a name="IDX478"></a>
 <p>matches the empty string, but only at the beginning of a word.
+
 </p></dd>
 <dt><kbd> \&gt;
 </kbd></dt>
@@ -885,8 +986,8 @@ Lisp syntax, the string constant begins and ends with a double-quote.
 `<samp>\&quot;</samp>' stands for a double-quote as part of the regexp, `<samp>\\</samp>' for a
 backslash as part of the regexp, `<samp>\t</samp>' for a tab and `<samp>\n</samp>' for a
 newline.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
 </pre></td></tr></table>
 
 <p>This regexp contains four parts: a character set matching
@@ -895,6 +996,7 @@ quotes or parentheses, repeated any number of times; an alternative in
 backslash-parentheses that matches end-of-line, a tab or two spaces; and
 a character set matching whitespace characters, repeated any number of
 times.
+
 </p><hr size="6">
 <a name="NOD109"></a>
 <a name="SEC122"></a>
@@ -921,6 +1023,7 @@ are searching through; if you specify searching for `<samp>FOO</samp>',
 `<samp>Foo</samp>' and `<samp>foo</samp>' are also considered a match.  Regexps, and in
 particular character sets, are included: `<samp>[aB]</samp>' matches `<samp>a</samp>'
 or `<samp>A</samp>' or `<samp>b</samp>' or `<samp>B</samp>'.
+
 </p><p>  If you want a case-sensitive search, set the variable
 <code>case-fold-search</code> to <code>nil</code>.  Then all letters must match
 exactly, including case. <code>case-fold-search</code> is a per-buffer
@@ -928,6 +1031,7 @@ variable; altering it affects only the current buffer, but
 there is a default value which you can change as well.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>. 
 You can also use <b>Case Sensitive Search</b> from the <b>Options</b> menu 
 on your screen.
+
 </p><hr size="6">
 <a name="NOD110"></a>
 <a name="SEC123"></a>
@@ -954,11 +1058,12 @@ they are in other editors, but they are available.  In addition to the
 simple <code>replace-string</code> command which is like that found in most
 editors, there is a <code>query-replace</code> command which asks you, for each
 occurrence of a pattern, whether to replace it.
+
 </p><p>  The replace commands all replace one string (or regexp) with one
 replacement string.  It is possible to perform several replacements in
 parallel using the command <code>expand-region-abbrevs</code>.  See section <a href="xemacs_26.html#SEC287">Controlling Abbrev Expansion</a>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC124">12.7.1 Unconditional Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Replacing all matches for a string.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC125">12.7.2 Regexp Replacement</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Replacing all matches for a regexp.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC126">12.7.3 Replace Commands and Case</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How replacements preserve case of letters.</td></tr>
@@ -1004,12 +1109,15 @@ want to cover the whole buffer you must go to the beginning first.  By
 default, all occurrences up to the end of the buffer are replaced.  To
 limit replacement to part of the buffer, narrow to that part of the
 buffer before doing the replacement (see section <a href="xemacs_29.html#SEC344">Narrowing</a>).
+
 </p><p>  When <code>replace-string</code> exits, point is left at the last occurrence
 replaced.  The value of point when the <code>replace-string</code> command was
 issued is remembered on the mark ring; <kbd>C-u C-<kbd>SPC</kbd></kbd> moves back
 there.
+
 </p><p>  A numeric argument restricts replacement to matches that are surrounded
 by word boundaries.
+
 </p><hr size="6">
 <a name="NOD112"></a>
 <a name="SEC125"></a>
@@ -1034,24 +1142,26 @@ by word boundaries.
 <p>  <code>replace-string</code> replaces exact matches for a single string.  The
 similar command <code>replace-regexp</code> replaces any match for a specified
 pattern.
+
 </p><p>  In <code>replace-regexp</code>, the <var>newstring</var> need not be constant.  It
 can refer to all or part of what is matched by the <var>regexp</var>.  `<samp>\&amp;</samp>'
 in <var>newstring</var> stands for the entire text being replaced.
 `<samp>\<var>d</var></samp>' in <var>newstring</var>, where <var>d</var> is a digit, stands for
 whatever matched the <var>d</var>'th parenthesized grouping in <var>regexp</var>.
 For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-M-x replace-regexp <kbd>RET</kbd> c[ad]+r <kbd>RET</kbd> \&amp;-safe <kbd>RET</kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> c[ad]+r <kbd>RET</kbd> \&amp;-safe <kbd>RET</kbd>
 </pre></td></tr></table>
 
 <p>would replace (for example) `<samp>cadr</samp>' with `<samp>cadr-safe</samp>' and `<samp>cddr</samp>'
 with `<samp>cddr-safe</samp>'.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp <kbd>RET</kbd> \(c[ad]+r\)-safe <kbd>RET</kbd> \1 <kbd>RET</kbd>
 </pre></td></tr></table>
 
 <p>would perform exactly the opposite replacements.  To include a `<samp>\</samp>'
 in the text to replace with, you must give `<samp>\\</samp>'.
+
 </p><hr size="6">
 <a name="NOD113"></a>
 <a name="SEC126"></a>
@@ -1075,8 +1185,8 @@ in the text to replace with, you must give `<samp>\\</samp>'.
 
 <p>  If the arguments to a replace command are in lower case, the command
 preserves case when it makes a replacement.  Thus, the following command:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-M-x replace-string <kbd>RET</kbd> foo <kbd>RET</kbd> bar <kbd>RET</kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string <kbd>RET</kbd> foo <kbd>RET</kbd> bar <kbd>RET</kbd>
 </pre></td></tr></table>
 
 <p>replaces a lower-case `<samp>foo</samp>' with a lower case `<samp>bar</samp>', `<samp>FOO</samp>'
@@ -1089,6 +1199,7 @@ to <code>nil</code>, replacement is done without case conversion.  If
 <code>case-fold-search</code> is set to <code>nil</code>, case is significant in
 matching occurrences of `<samp>foo</samp>' to replace; also, case conversion of the
 replacement string is not done.
+
 </p><hr size="6">
 <a name="NOD114"></a>
 <a name="SEC127"></a>
@@ -1131,12 +1242,15 @@ replacement string is not done.
 displays each occurrence, and asks you whether to replace it.  A numeric
 argument to <code>query-replace</code> tells it to consider only occurrences
 that are bounded by word-delimiter characters.
+
 </p><a name="IDX482"></a>
 <p>  Aside from querying, <code>query-replace</code> works just like
 <code>replace-string</code>, and <code>query-replace-regexp</code> works
 just like <code>replace-regexp</code>.
+
 </p><p>  The things you can type when you are shown an occurrence of <var>string</var>
 or a match for <var>regexp</var> are:
+
 </p><a name="IDX483"></a>
 <a name="IDX484"></a>
 <a name="IDX485"></a>
@@ -1154,10 +1268,12 @@ or a match for <var>regexp</var> are:
 <dd><p>to replace the occurrence with <var>newstring</var>.  This preserves case, just
 like <code>replace-string</code>, provided <code>case-replace</code> is non-<code>nil</code>,
 as it normally is.
+
 </p></dd>
 <dt><kbd> <kbd>DEL</kbd>
 </kbd></dt>
 <dd><p>to skip to the next occurrence without replacing this one.
+
 </p></dd>
 <dt><kbd> , (Comma)
 </kbd></dt>
@@ -1168,18 +1284,22 @@ point, you can type <kbd>C-r</kbd> (see below) to alter the replaced text.  To
 undo the replacement, you can type <kbd>C-x u</kbd>. 
 This exits the <code>query-replace</code>.  If you want to do further
 replacement you must use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> to restart (see section <a href="xemacs_9.html#SEC69">Repeating Minibuffer Commands</a>).
+
 </p></dd>
 <dt><kbd> <kbd>ESC</kbd>
 </kbd></dt>
 <dd><p>to exit without doing any more replacements.
+
 </p></dd>
 <dt><kbd> . (Period)
 </kbd></dt>
 <dd><p>to replace this occurrence and then exit.
+
 </p></dd>
 <dt><kbd> !
 </kbd></dt>
 <dd><p>to replace all remaining occurrences without asking again.
+
 </p></dd>
 <dt><kbd> ^
 </kbd></dt>
@@ -1187,6 +1307,7 @@ replacement you must use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> to restart
 be an occurrence), in case you changed it by mistake.  This works by
 popping the mark ring.  Only one <kbd>^</kbd> in a row is allowed, because
 only one previous replacement location is kept during <code>query-replace</code>.
+
 </p></dd>
 <dt><kbd> C-r
 </kbd></dt>
@@ -1194,6 +1315,7 @@ only one previous replacement location is kept during <code>query-replace</code>
 edited rather than just replaced with <var>newstring</var>.  When you are
 done, exit the recursive editing level with <kbd>C-M-c</kbd> and the next
 occurrence will be displayed.  See section <a href="xemacs_29.html#SEC346">Recursive Editing Levels</a>.
+
 </p></dd>
 <dt><kbd> C-w
 </kbd></dt>
@@ -1202,10 +1324,12 @@ in <kbd>C-r</kbd>.  Use the recursive edit to insert text to replace the
 deleted occurrence of <var>string</var>.  When done, exit the recursive
 editing level with <kbd>C-M-c</kbd> and the next occurrence will be
 displayed.
+
 </p></dd>
 <dt><kbd> C-l
 </kbd></dt>
 <dd><p>to redisplay the screen and then give another answer.
+
 </p></dd>
 <dt><kbd> C-h
 </kbd></dt>
@@ -1218,6 +1342,7 @@ answer.
 executes the character as a command.  To restart the <code>query-replace</code>,
 use <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, which repeats the <code>query-replace</code> because it
 used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#SEC69">C-x ESC ESC</a>.
+
 </p><hr size="6">
 <a name="NOD115"></a>
 <a name="SEC128"></a>
@@ -1241,6 +1366,7 @@ used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#S
 
 <p>  Here are some other commands that find matches for a regular expression.
 They all operate from point to the end of the buffer.
+
 </p><a name="IDX493"></a>
 <a name="IDX494"></a>
 <a name="IDX495"></a>
@@ -1253,25 +1379,30 @@ They all operate from point to the end of the buffer.
 specified regexp.  A numeric argument specifies the number of context
 lines to print before and after each matching line; the default is
 none.
+
 </p><a name="IDX498"></a>
 <p>The buffer `<samp>*Occur*</samp>' containing the output serves as a menu for
 finding occurrences in their original context.  Find an occurrence
 as listed in `<samp>*Occur*</samp>', position point there, and type <kbd>C-c
 C-c</kbd>; this switches to the buffer that was searched and moves point to
 the original of the same occurrence.
+
 </p></dd>
 <dt><kbd> M-x list-matching-lines
 </kbd></dt>
 <dd><p>Synonym for <kbd>M-x occur</kbd>.
+
 </p></dd>
 <dt><kbd> M-x count-matches
 </kbd></dt>
 <dd><p>Print the number of matches following point for the specified regexp.
+
 </p></dd>
 <dt><kbd> M-x delete-non-matching-lines
 </kbd></dt>
 <dd><p>Delete each line that follows point and does not contain a match for
 the specified regexp.
+
 </p></dd>
 <dt><kbd> M-x delete-matching-lines
 </kbd></dt>

@@ -85,17 +85,19 @@ ul.toc {list-style: none}
 entirely satisfied with the --vi-keys option (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>), GNU
 Info provides a way to define different key-to-command bindings and
 variable settings from the defaults described in this document.
+
 </p><p>On startup, GNU Info looks for a configuration file in the invoker's
 HOME directory called `<tt>.info</tt>'<a name="DOCF7" href="info-stnd_fot.html#FOOT7">(7)</a>.  If it is present, and
 appears to contain Info configuration data, and was created with the
 current version of the <code>infokey</code> command, then Info adopts the
 key bindings and variable settings contained therein.
+
 </p><p>The `<tt>.info</tt>' file contains compact, non-textual data for reasons of
 efficiency and because its design was lifted wholesale from the GNU Less
 program, which also does it that way.  It must be created by compiling a
 textual source file using the <code>infokey</code> command.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC18">12.1 Invoking <code>infokey</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC19">12.2 <code>infokey</code> source format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -128,12 +130,13 @@ textual source file using the <code>infokey</code> command.
 into a binary format (`<tt>$HOME/.info</tt>' by default).  GNU Info reads
 the binary file at startup to override the default key bindings and
 variable definitions.  Synopsis:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-infokey [<var>option</var>...] [<var>input-file</var>]
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">infokey [<var>option</var>...] [<var>input-file</var>]
 </pre></td></tr></table>
 <p>Besides the standard `<samp>--help</samp>' and `<samp>--version</samp>', the only
 option is `<samp>--output <var>file</var></samp>'.  This tells <code>infokey</code> to
 write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
+
 </p>
 <hr size="6">
 <a name="NOD20"></a>
@@ -160,8 +163,8 @@ write the binary data to <var>file</var> instead of `<tt>$HOME/.info</tt>'.
 <p>The format of the source file read by <code>infokey</code> is most easily
 illustrated by example.  For instance, here is a sample `<tt>.infokey</tt>'
 source file suitable for aficionados of <code>vi</code> or <code>less</code>:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#info
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#info
 j       next-line
 k       prev-line
 l       forward-char
@@ -191,6 +194,7 @@ scroll-step=1
 <p>The source file consists of one or more <em>sections</em>.
 Each section starts with a line that identifies the type of section.
 Possible sections are:
+
 </p><dl compact="compact">
 <dt><code> #info
 </code></dt>
@@ -199,8 +203,8 @@ The start of this section is indicated by a line containing just
 <code>#info</code> by itself.  If this is the first section in the source
 file, the <code>#info</code> line can be omitted.  The rest of this section
 consists of lines of the form:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-<var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
 </pre></td></tr></table>
 <p>Whitespace is any sequence of one or more spaces and/or tabs.  Comment
 is any sequence of any characters, excluding newline.  <var>string</var> is
@@ -209,6 +213,7 @@ an Info command.  The characters in <var>string</var> are interpreted
 literally or prefixed by a caret (<code>^</code>) to indicate a control
 character.  A backslash followed by certain characters specifies input
 keystrokes as follows:
+
 </p><dl compact="compact">
 <dt><code> \b
 </code></dt>
@@ -275,6 +280,7 @@ keystrokes as follows:
 <p>Backslash followed by any other character indicates that character is to
 be taken literally.  Characters which must be preceded by a backslash
 include caret, space, tab, and backslash itself.
+
 </p></dd>
 <dt><code> #echo-area
 </code></dt>
@@ -283,6 +289,7 @@ The start of this section is indicated by a line containing just
 <code>#echo-area</code> by itself.  The rest of this section has a syntax
 identical to that for the key definitions for the Info area, described
 above.
+
 </p></dd>
 <dt><code> #var
 </code></dt>
@@ -299,25 +306,29 @@ are included in the value.
 
 <p>Blank lines and lines starting with <code>#</code> are ignored, except for
 the special section header lines.
+
 </p><p>Key bindings defined in the `<tt>.info</tt>' file take precedence over GNU
 Info's default key bindings, whether or not `<samp>--vi-keys</samp>' is used.  A
 default key binding may be disabled by overriding it in the `<tt>.info</tt>'
 file with the action <code>invalid</code>.  In addition, <em>all</em> default
 key bindings can be disabled by adding this line <em>anywhere</em> in the
 relevant section:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#stop
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#stop
 </pre></td></tr></table>
 <p>This will cause GNU Info to ignore all the default key commands for that
 section.
+
 </p><p>Beware: <code>#stop</code> can be dangerous.  Since it disables all default
 key bindings, you must supply enough new key bindings to enable all
 necessary actions.  Failure to bind any key to the <code>quit</code> command,
 for example, can lead to frustration.
+
 </p><p>The order in which key bindings are defined in the `<tt>.info</tt>' file is
 not important, except that the command summary produced by the
 <code>get-help-window</code> command only displays the <em>first</em> key that
 is bound to each command.
+
 </p>
 
 

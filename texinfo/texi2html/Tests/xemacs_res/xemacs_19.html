@@ -63,8 +63,8 @@ ul.toc {list-style: none}
 parts of different buffers or different parts of one buffer.  If you are
 running XEmacs under X, that means you can have the X window that contains
 the Emacs frame have multiple subwindows.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC176">16.1 Concepts of Emacs Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Introduction to Emacs windows.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC177">16.2 Splitting Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">New windows are made by splitting existing windows.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC178">16.3 Using Other Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving to another window or doing something to it.</td></tr>
@@ -98,12 +98,14 @@ buffer designated for display.  The same buffer may appear in more
 than one window; if it does, any changes in its text are displayed in all
 the windows that display it.  Windows showing the same buffer can
 show different parts of it, because each window has its own value of point.
+
 </p><a name="IDX665"></a>
 <p>  At any time, one  window is the <em>selected window</em>; the buffer
  displayed by that window is the current buffer.  The cursor
 shows the location of point in that window.  Each other window has a
 location of point as well, but since the terminal has only one cursor, it
 cannot show the location of point in the other windows.
+
 </p><p>  Commands to move point affect the value of point for the selected Emacs
 window only.  They do not change the value of point in any other Emacs
 window, including those showing the same buffer.  The same is true for commands
@@ -114,10 +116,12 @@ it.  Also, all commands that display information in a window, including
 (for example) <kbd>C-h f</kbd> (<code>describe-function</code>) and <kbd>C-x C-b</kbd>
 (<code>list-buffers</code>), work by switching buffers in a non-selected window
 without affecting the selected window.
+
 </p><p>  Each window has its own mode line, which displays the buffer name,
 modification status, and major and minor modes of the buffer that is
 displayed in the window.  See section <a href="xemacs_4.html#SEC10">The Mode Line</a>, for details on the mode
 line.
+
 </p><hr size="6">
 <a name="NOD164"></a>
 <a name="SEC177"></a>
@@ -169,6 +173,7 @@ start out displaying the same buffer, with the same value of point.  By
 default each of the two windows gets half the height of the window that
 was split.  A numeric argument specifies how many lines to give to the
 top window.
+
 </p><a name="IDX668"></a>
 <a name="IDX669"></a>
 <p>  <kbd>C-x 3</kbd> (<code>split-window-horizontally</code>) breaks the selected
@@ -178,6 +183,7 @@ separates the two windows.  Windows that are not the full width of the
 frame have truncated mode lines which do not always appear in inverse
 video, because Emacs display routines cannot display a region of inverse
 video that is only part of a line on the screen.
+
 </p><a name="IDX670"></a>
 <p>  When a window is less than the full width, many text lines are too
 long to fit.  Continuing all those lines might be confusing.  Set the
@@ -185,8 +191,10 @@ variable <code>truncate-partial-width-windows</code> to non-<code>nil</code> to
 force truncation in all windows less than the full width of the frame,
 independent of the buffer and its value for <code>truncate-lines</code>.
 See section <a href="xemacs_7.html#SEC56">Continuation Lines</a>.
+
 </p><p>  Horizontal scrolling is often used in side-by-side windows.
 See section <a href="xemacs_14.html#SEC110">Controlling the Display</a>.
+
 </p><a name="IDX671"></a>
 <a name="IDX672"></a>
 <p>You can resize a window and store that configuration in a register by
@@ -194,6 +202,7 @@ supplying a <var>register</var> argument to <code>window-configuration-to-regist
 (<kbd>C-x 6</kbd>). To return to the window configuration established with
 <code>window-configuration-to-register</code>, use <code>jump-to-register</code>
 (<kbd>C-x j</kbd>).
+
 </p><hr size="6">
 <a name="NOD165"></a>
 <a name="SEC178"></a>
@@ -250,29 +259,35 @@ minibuffer is active, the minibuffer is the last window in the cycle;
 you can switch from the minibuffer window to one of the other windows,
 and later switch back and finish supplying the minibuffer argument that
 is requested.  See section <a href="xemacs_9.html#SEC62">Editing in the Minibuffer</a>.
+
 </p><a name="IDX675"></a>
 <p> The command <kbd>M-x other-window-any-frame</kbd> also selects the window
 <var>n</var> steps away in the cyclic order.  However, unlike <code>other-window</code>,
 this command selects a window on the next or previous frame instead of
 wrapping around to the top or bottom of the current frame, when there
 are no more windows.
+
 </p><a name="IDX676"></a>
 <a name="IDX677"></a>
 <p>  The usual scrolling commands (see section <a href="xemacs_14.html#SEC110">Controlling the Display</a>) apply to the selected
 window only.  <kbd>M-C-v</kbd> (<code>scroll-other-window</code>) scrolls the
 window that <kbd>C-x o</kbd> would select.  Like <kbd>C-v</kbd>, it takes positive
 and negative arguments.
+
 </p><a name="IDX678"></a>
 <p>  The command <kbd>M-x compare-windows</kbd> compares the text in the current
 window with the text in the next window.  Comparison starts at point in each
 window.  Point moves forward in each window, a character at a time,
 until the next set of characters in the two windows are different.  Then the
 command is finished.
+
 </p><p>A prefix argument <var>ignore-whitespace</var> means ignore changes in
 whitespace.  The variable <code>compare-windows-whitespace</code> controls how
 whitespace is skipped.
+
 </p><p>If <code>compare-ignore-case</code> is non-<code>nil</code>, changes in case are
 also ignored.
+
 </p><hr size="6">
 <a name="NOD166"></a>
 <a name="SEC179"></a>
@@ -298,6 +313,7 @@ also ignored.
 (splitting the window if there is only one) and select a buffer in that
 window.  Different <kbd>C-x 4</kbd> commands have different ways of finding the
 buffer to select.
+
 </p><a name="IDX679"></a>
 <a name="IDX680"></a>
 <a name="IDX681"></a>
@@ -340,6 +356,7 @@ arguments, the buffer and a flag that if non-<code>nil</code> means that the
 currently selected window is not acceptable. Commands such as
 <code>switch-to-buffer-other-window</code> and <code>find-file-other-window</code>
 work using this function.
+
 </p><hr size="6">
 <a name="NOD167"></a>
 <a name="SEC180"></a>
@@ -394,12 +411,14 @@ at the time).  Once a window is deleted, its attributes are forgotten;
 there is no automatic way to make another window of the same shape or
 showing the same buffer.  The buffer continues to exist, and you can
 select it in any window with <kbd>C-x b</kbd>.
+
 </p><a name="IDX687"></a>
 <a name="IDX688"></a>
 <p>  <kbd>C-x 1</kbd> (<code>delete-other-windows</code>) is more powerful than <kbd>C-x 0</kbd>;
 it deletes all the windows except the selected one (and the minibuffer).
 The selected window expands to use the whole frame except for the echo
 area.
+
 </p><a name="IDX689"></a>
 <a name="IDX690"></a>
 <a name="IDX691"></a>
@@ -417,10 +436,13 @@ otherwise, all the competing windows are shrunk in the same proportion.
 If this makes some windows too small, those windows are deleted and their
 space is divided up.   Minimum window size is specified by the variables
 <code>window-min-height</code> and <code>window-min-width</code>.
+
 </p><p>You can also resize windows within a frame by clicking the left mouse
 button on a modeline, and dragging.
+
 </p><p>Clicking the right button on a mode line pops up a menu of common window
 manager operations.  This menu contains the following options:
+
 </p><a name="IDX695"></a>
 <a name="IDX696"></a>
 <a name="IDX697"></a>
@@ -428,19 +450,23 @@ manager operations.  This menu contains the following options:
 <dt><b> Delete Window
 </b></dt>
 <dd><p>Remove the window above this modeline from the frame.
+
 </p></dd>
 <dt><b> Delete Other Windows
 </b></dt>
 <dd><p>Delete all windows on the frame except for the one above this modeline.
+
 </p></dd>
 <dt><b> Split Window
 </b></dt>
 <dd><p>Split the window above the mode line in half, creating another window.
+
 </p></dd>
 <dt><b> Split Window Horizontally
 </b></dt>
 <dd><p>Split the window above the mode line in half horizontally, so that there
 will be two windows side-by-side.
+
 </p></dd>
 <dt><b> Balance Windows
 </b></dt>

@@ -34,6 +34,11 @@ $NAVIGATION_TEXT{Following} = ' &gt; ';
 
 $foot_line_and_ref = \&makeinfo_like_foot_line_and_ref;
 $foot_lines        = \&makeinfo_like_foot_lines;
+$index_summary     = \&makeinfo_like_index_summary;
+$summary_letter    = \&makeinfo_like_summary_letter;
+$index_entry       = \&makeinfo_like_index_entry;
+$index_letter      = \&makeinfo_like_index_letter;
+$print_index       = \&makeinfo_like_print_index;
 
 sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 {
@@ -60,3 +65,41 @@ sub makeinfo_like_foot_lines($)
     push @$lines, "</ol>";
     return $lines;
 }
+
+
+sub makeinfo_like_index_summary
+{
+    return '';
+}
+
+sub makeinfo_like_summary_letter
+{
+    return '';
+}
+
+sub makeinfo_like_index_entry($$$$)
+{
+    my $text_href = shift;
+    my $entry = shift;
+    my $element_href = shift;
+    my $element_text = shift;
+    
+    return '<li>' . $entry . ': ' .  &$anchor('', $element_href, $element_text)
+    . "</li>\n";
+}
+
+sub makeinfo_like_index_letter($$$)
+{
+     my $letter = shift;
+     my $id = shift;
+     my $text = shift;
+     return $text;
+}
+
+sub makeinfo_like_print_index($$)
+{
+    my $text = shift;
+    my $name = shift;
+    return "<ul class=\"index-$name\" compact>\n" . $text . "</ul>\n";
+}
+

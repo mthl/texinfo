@@ -3,7 +3,7 @@ macro_in_menu.texi(,8)
 macro_in_menu.texi(,9) @node Top
 macro_in_menu.texi(,10) 
 macro_in_menu.texi(,11) @menu
-macro_in_menu.texi(,12) * (gcc):: @html
+macro_in_menu.texi(themacro,12) * (gcc):: @html
 macro_in_menu.texi(themacro,12) bidule
 macro_in_menu.texi(themacro,12) @end html
 macro_in_menu.texi(,13) @end menu

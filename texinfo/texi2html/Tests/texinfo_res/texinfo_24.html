@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 <p>The first example is from the first chapter (see section <a href="texinfo_2.html#SEC12">A Short Sample Texinfo File</a>),
 given here in its entirety, without commentary.  The second sample
 includes the full texts to be used in GNU manuals.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC295">C.1 Short Sample</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC296">C.2 GNU Sample Texts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -112,13 +112,14 @@ includes the full texts to be used in GNU manuals.
 
 <p>Here is a complete, short sample Texinfo file, without any commentary.
 You can see this file, with comments, in the first chapter.  See section <a href="texinfo_2.html#SEC12">A Short Sample Texinfo File</a>.
+
 </p><p>In a nutshell: The <code>makeinfo</code> program transforms a Texinfo
 source file such as this into an Info file or HTML; and TeX typesets
 it for a printed manual.
-</p>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo   @c -*-texinfo-*-
+</p>
+<br>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename sample.info
 @settitle Sample Manual 1.0
@@ -204,16 +205,20 @@ This is the second item.
 
 <p>Here is a sample Texinfo document with the full texts that should be
 used in GNU manuals.
+
 </p><p>As well as the legal texts, it also serves as a practical example of how
 many elements in a GNU system can affect the manual.  If you're not
 familiar with all these different elements, don't worry.  They're not
 required and a perfectly good manual can be written without them.
 They're included here nonetheless because many manuals do (or could)
 benefit from them.
+
 </p><p>See section <a href="texinfo_2.html#SEC12">A Short Sample Texinfo File</a>, for a minimal example of a Texinfo file.
 See section <a href="texinfo_4.html#SEC41">Beginning a Texinfo File</a>, for a full explanation of that minimal
 example.
+
 </p><p>Here are some notes on the example:
+
 </p><ul>
 <li>
 <a name="IDX446"></a>
@@ -221,25 +226,29 @@ example.
 <a name="IDX448"></a>
 <p>The `<samp>$Id$</samp>' comment is for CVS (see <a href="../cvs/index.html">(cvs)Top</a> section `Overview' in <cite>Concurrent Versions System</cite>) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-$Id$
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$Id$
 </pre></td></tr></table><p>(This is useful in all sources that use version control, not just manuals.)
+
 </p></li><li>
 <a name="IDX449"></a>
 <p>The `<tt>version.texi</tt>' in the <code>@include</code> command is maintained
 automatically by Automake (see <a href="../automake/index.html">(automake)Top</a> section `Introduction' in <cite>GNU Automake</cite>).  It sets the `<samp>VERSION</samp>' and `<samp>UPDATED</samp>' values used
 elsewhere.  If your distribution doesn't use Automake, you can mimic
 these or equivalent settings.
+
 </p></li><li>
 <p>The <code>@syncodeindex</code> command reflects the recommendation to use only
 one index if at all possible, to make it easier for readers.
+
 </p></li><li>
 <p>The <code>@dircategory</code> is for constructing the Info directory.
 See section <a href="texinfo_21.html#SEC275">Installing Info Directory Files</a>, which includes a variety of recommended
 category names.
+
 </p></li><li>
 <p>The `Invoking' node is a GNU standard to help users find the basic
 information about command-line usage of a given program.  See <a href="../standards/Manual-Structure-Details.html">(standards)Manual Structure Details</a> section `Manual Structure Details' in <cite>GNU Coding Standards</cite>.
+
 </p></li><li>
 <p>It is best to include the entire GNU Free Documentation License in a GNU
 manual, unless the manual is only a few pages long.  Of course this
@@ -247,16 +256,18 @@ sample is even shorter than that, but it includes the FDL anyway in
 order to show one conventional way of doing so.  The `<tt>fdl.texi</tt>'
 file is available on the GNU machines (and in the Texinfo and other GNU
 distributions).
+
 </p><p>The FDL provides for omitting itself under certain conditions, but in
 that case the sample texts given here have to be modified.  See section <a href="texinfo_31.html#SEC323">GNU Free Documentation License</a>.
+
 </p></li><li>
 <p>If your manual has invariant sections (again, see the license itself for
 details), then don't forget to include them.
 </p></li></ul>
 
 <p>Here is the sample document:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo    @c -*-texinfo-*-
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
 @comment $Id$
 @comment %**start of header
 @setfilename sample.info

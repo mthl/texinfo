@@ -13,8 +13,8 @@ $MENU_PRE_STYLE = '';
 
 $TOC_LIST_STYLE ='';
 # This lines are inserted before and after the shortcontents 
-$BEFORE_STOC_LINES = "";
-$AFTER_STOC_LINES = '';
+$BEFORE_OVERVIEW = "";
+$AFTER_OVERVIEW = '';
 
 # This lines are inserted before and after the contents 
 $BEFORE_TOC_LINES = "";
@@ -25,20 +25,12 @@ $L2H_HTML_VERSION = "3.2";
 
 # no css
 $CSS_LINES = "";
+%css_map = ();
 
 $things_map{'oe'} = '&#156;';
 $things_map{'OE'} = '&#140;';
 $things_map{'dots'} = '<small>...</small>';
 $things_map{'enddots'} = '<small>....</small>';
-
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-
-# no style in html 3.2
-foreach my $complex_format (keys %$complex_format_map)
-{
-    $complex_format_map->{$complex_format}->{'pre_style'} = "";
-}
 
 # formatting functions
 
@@ -54,23 +46,21 @@ $cartouche         = \&t2h_html32_cartouche;
 # &quot; is not in html 3.2
 sub t2h_html32_protect_html($)
 {
-    my $what = shift;
-    # protect &, <, and >.
-    # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
-    # We may consider using that instead.
-    # If raw HTML is used outside @ifhtml or @html it's an error
-    # anyway.
-    $what =~ s/\&/\&amp;/go;
-    #$what =~ s/\"/\&quot;/go;
-    $what =~ s/\</\&lt;/go;
-    $what =~ s/\>/\&gt;/go;
-    return($what);
+   my $text = shift;
+   $text =~ s/&/&amp;/g;
+   $text =~ s/</&lt;/g;
+   $text =~ s/>/&gt;/g;
+   #$text =~ s/\"/&quot;/g;
+   return $text;
 }
 
 # a preformatted section
 sub t2h_html32_preformatted($$$)
 {
     my $text = shift;
+    my $pre_style = shift;
+    my $class = shift;
+
     return '' if ($text eq '');
     return "<pre>$text</pre>";
 }
@@ -79,15 +69,23 @@ sub t2h_html32_preformatted($$$)
 sub t2h_html32_heading($)
 {
     my $element = shift;
-    return '' if ($element->{'text'} =~ /^\s*$/);
     my $level = 3;
     if (!$element->{'node'})
     {
-	$level = $element->{'level'};
-        print STDERR "Bug: $element->{'texi'} level undef\n" if (!defined($level));
-        $level = 1 if ($level == 0);
+        $level = $element->{'level'};
     }
-    return "<h$level> $element->{'text'} </h$level>\n";
+    $level = 1 if ($level == 0);
+    my $text = $element->{'text'};
+    if (!$element->{'node'} and (!$NUMBER_SECTIONS))
+    {
+        $text = $element->{'name'};
+    }
+    return '' if ($text !~ /\S/);
+    if (defined($element->{'tocid'}) and $TOC_LINKS)
+    {
+         $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
+    }
+    return "<h$level> $text </h$level>\n";
 }
 
 # formatting of raw regions
@@ -115,20 +113,19 @@ sub t2h_html32_raw($$)
 sub t2h_html32_menu($)
 {
     my $text = shift;
-
     if ($text =~ /\S/)
     {
-        return "<table border=\"0\" cellspacing=\"0\">\n" . $text. "</table>\n";
+        return "<table border=\"0\" cellspacing=\"0\">\n" 
+        . $text . "</table>\n";
     }
-    return '';
 }
 
 # a simple menu entry ref in case we aren't in a standard menu context
 sub t2h_html32_foot_section($)
 {
     my $lines = shift;
-    unshift @$lines, "$DEFAULT_RULE\n<h3>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h3>\n";
-    return $lines;
+    unshift (@$lines, "<hr>\n", "<h3>Footnotes</h3>\n");
+    return $lines; 
 }
 
 # a cartouche
@@ -147,12 +144,8 @@ sub t2h_html32_cartouche($)
 # no style
 sub t2h_html32_summary_letter($$$)
 {
-    my $letter = shift;
-    my $file = shift;
-    my $index = shift;
-    my $id = shift;
-
-    return &$anchor('', "$file#${id}_" . $index,
-         "<b>" . &$protect_html($letter) . "</b>",
-         '');
+   my $letter = shift;
+   my $file = shift;
+   my $identifier = shift;
+   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_html($letter) . '</b>');
 }

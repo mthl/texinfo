@@ -65,22 +65,25 @@ documentation-printing commands.  The characters that you can type after
 <kbd>C-h</kbd> are called <em>help options</em>.  One help option is <kbd>C-h</kbd>;
 that is how you ask for help about using <kbd>C-h</kbd>.  To cancel, type
 <kbd>C-g</kbd>.  The function key <kbd>F1</kbd> is equivalent to <kbd>C-h</kbd>.
+
 </p><a name="IDX250"></a>
 <a name="IDX251"></a>
 <p>  <kbd>C-h C-h</kbd> (<code>help-for-help</code>) displays a list of the possible
 help options, and then asks you to type the desired option.  It prompts
 with the string:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
 </pre></td></tr></table>
 
 <p>You should type one of those characters.
+
 </p><p>  Typing a third <kbd>C-h</kbd> displays a description of what the options mean;
 Emacs still waits for you to type an option.  To cancel, type <kbd>C-g</kbd>.
+
 </p><p>  Most help buffers use a special major mode, Help mode, which lets you
 scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC72">8.1 Help Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Brief list of all Help commands.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC73">8.2 Documentation for a Key</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Asking what a key does in XEmacs.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC74">8.3 Help by Command or Variable Name</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Asking about a command, variable or function name.</td></tr>
@@ -112,6 +115,7 @@ scroll conveniently with <kbd>SPC</kbd> and <kbd>DEL</kbd> or <kbd>BS</kbd>.
 <h2 class="section"> 8.1 Help Summary </h2>
 
 <p>  Here is a summary of the defined help commands.
+
 </p><dl compact="compact">
 <dt><kbd> C-h a <var>regexp</var> <kbd>RET</kbd>
 </kbd></dt>
@@ -254,6 +258,7 @@ that <var>key</var> is bound to.  For example, <kbd>C-h c C-f</kbd> prints
 `<samp>forward-char</samp>'.  Since command names are chosen to describe what
 the commands do, this is a good way to get a very brief description of
 what <var>key</var> does.
+
 </p><a name="IDX252"></a>
 <a name="IDX253"></a>
 <p>  <kbd>C-h k <var>key</var></kbd> is similar to <kbd>C-h c</kbd> but gives more
@@ -262,8 +267,10 @@ information.  It displays the documentation string of the function
 vector of events.  When called interactively, <var>key</var> may also be a menu
 selection.  This information does not usually fit into the echo area, so a
 window is used for the display.
+
 </p><p>  <kbd>C-h c</kbd> and <kbd>C-h k</kbd> work for any sort of key sequences,
 including function keys and mouse events.
+
 </p><hr size="6">
 <a name="NOD66"></a>
 <a name="SEC74"></a>
@@ -290,8 +297,8 @@ function using the minibuffer, then displays that function's
 documentation string in a window.  Since commands are Lisp functions,
 you can use the argument <var>function</var> to get the documentation of a
 command that you know by name.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-C-h f auto-fill-mode <kbd>RET</kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">C-h f auto-fill-mode <kbd>RET</kbd>
 </pre></td></tr></table>
 
 <p>displays the documentation for <code>auto-fill-mode</code>. Using <kbd>C-h f</kbd>
@@ -300,6 +307,7 @@ to any key, that is, a command you would normally call using <kbd>M-x</kbd>.
 If the variable <code>describe-function-show-arglist</code> is <code>t</code>,
 <code>describe-function</code> shows its arglist if the <var>function</var> is not
 an autoload function.
+
 </p><p>  <kbd>C-h f</kbd> is also useful for Lisp functions that you are planning to
 use in a Lisp program.  For example, if you have just written the
 expression <code>(make-vector len)</code> and want to make sure you are using
@@ -309,6 +317,7 @@ you may find that some of your favorite abbreviations that work in
 <kbd>M-x</kbd> don't work in <kbd>C-h f</kbd>.  An abbreviation may be unique
 among command names, yet fail to be unique when other function names are
 allowed.
+
 </p><p>  The function name for <kbd>C-h f</kbd> to describe has a default which is
 used if you type <kbd>RET</kbd> leaving the minibuffer empty.  The default is
 the function called by the innermost Lisp expression in the buffer
@@ -317,11 +326,13 @@ name.  For example, if point is located following the text
 `<samp>(make-vector (car x)</samp>', the innermost list containing point is the
 one that starts with `<samp>(make-vector</samp>', so the default is to describe the
 function <code>make-vector</code>.
+
 </p><p>  <kbd>C-h f</kbd> is often useful just to verify that you have the right
 spelling for the function name.  If <kbd>C-h f</kbd> mentions a name from the
 buffer as the default, that name must be defined as a Lisp function.  If
 that is all you want to know, just type <kbd>C-g</kbd> to cancel the <kbd>C-h
 f</kbd> command, then go on editing.
+
 </p><a name="IDX254"></a>
 <a name="IDX255"></a>
 <p>  <kbd>C-h w <var>command</var> <kbd>RET</kbd></kbd> (<code>where-is</code>) tells you what
@@ -329,12 +340,14 @@ keys are bound to <var>command</var>.  It prints a list of the keys in the
 echo area. Alternatively, it informs you that a command is not bound to
 any keys, which implies that you must use <kbd>M-x</kbd> to call the
 command.
+
 </p><a name="IDX256"></a>
 <a name="IDX257"></a>
 <p>  <kbd>C-h v</kbd> (<code>describe-variable</code>) is like <kbd>C-h f</kbd> but
 describes Lisp variables instead of Lisp functions.  Its default is the
 Lisp symbol around or before point, if that is the name of a known Lisp
 variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
+
 </p><hr size="6">
 <a name="NOD67"></a>
 <a name="SEC75"></a>
@@ -362,6 +375,7 @@ variable.  See section <a href="xemacs_30.html#SEC353">Variables</a>.
 </kbd></dt>
 <dd><p>Show only symbols that are names of commands
 (<code>command-apropos</code>).
+
 </p></dd>
 <dt><kbd> M-x apropos <var>regexp</var>
 </kbd></dt>
@@ -380,6 +394,7 @@ example, it would say that you can invoke <code>find-file</code> by typing
 <kbd>C-h A</kbd> runs the command <code>command-apropos</code>.  This command
 normally checks only commands (interactive functions); if you specify a
 prefix argument, it checks noninteractive functions as well.
+
 </p><p>  Because <kbd>C-h A</kbd> looks only for functions whose names contain the
 string you specify, you must use ingenuity in choosing the string.  If
 you are looking for commands for killing backwards and <kbd>C-h a
@@ -387,13 +402,14 @@ kill-backwards <kbd>RET</kbd></kbd> doesn't reveal any, don't give up.  Try just
 <kbd>kill</kbd>, or just <kbd>backwards</kbd>, or just <kbd>back</kbd>.  Be persistent.
 Pretend you are playing Adventure.  Also note that you can use a regular
 expression as the argument, for more flexibility (see section <a href="xemacs_15.html#SEC121">Syntax of Regular Expressions</a>).
+
 </p><p>  Here is a set of arguments to give to <kbd>C-h a</kbd> that covers many
 classes of XEmacs commands, since there are strong conventions for
 naming the standard XEmacs commands.  By giving you a feel for the
 naming conventions, this set should also serve to aid you in developing
 a technique for picking <code>apropos</code> strings.
-</p><blockquote>
 
+</p><blockquote>
 <p>char, line, word, sentence, paragraph, region, page, sexp, list, defun,
 rect, buffer, frame, window, face, file, dir, register, mode, beginning,
 end, forward, backward, next, previous, up, down, search, goto, kill,
@@ -406,22 +422,27 @@ find, view, describe, default.
 the ones that are defined as commands, use the command <kbd>M-x apropos</kbd>
 instead of <kbd>C-h A</kbd>.  This command does not check key bindings by
 default; specify a numeric argument if you want it to check them.
+
 </p><a name="IDX259"></a>
 <p>  The <code>apropos-documentation</code> command is like <code>apropos</code> except
 that it searches documentation strings for matches for the specified
 regular expression.
+
 </p><a name="IDX260"></a>
 <p>  The <code>apropos-value</code> command is like <code>apropos</code> except that it
 searches symbols' values for matches for the specified regular
 expression.  This command does not check function definitions or
 property lists by default; specify a numeric argument if you want it to
 check them.
+
 </p><a name="IDX261"></a>
 <p>  If the variable <code>apropos-do-all</code> is non-<code>nil</code>, the commands
 above all behave as if they had been given a prefix argument.
+
 </p><p>  If you want more information about a function definition, variable or
 symbol property listed in the Apropos buffer, you can click on it with
 <kbd>Mouse-2</kbd> or move there and type <kbd>RET</kbd>.
+
 </p><hr size="6">
 <a name="NOD68"></a>
 <a name="SEC76"></a>
@@ -446,8 +467,8 @@ symbol property listed in the Apropos buffer, you can click on it with
 <p>The <kbd>C-h p</kbd> command lets you search the standard Emacs Lisp
 libraries by topic keywords.  Here is a partial list of keywords you can
 use:
-</p><table><tr><td>&nbsp;</td><td><pre class="display">
-abbrev        abbreviation handling, typing shortcuts, macros
+
+</p><table><tr><td>&nbsp;</td><td><pre class="display">abbrev        abbreviation handling, typing shortcuts, macros
 bib           code related to the `bib' bibliography processor
 c             C, C++, and Objective-C language support
 calendar      calendar and time management support
@@ -506,6 +527,7 @@ wp            word processing
 <h2 class="section"> 8.6 Help Mode Commands </h2>
 
 <p>  Help buffers provide the commands of View mode (see section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>), plus a few special commands of their own.
+
 </p><dl compact="compact">
 <dt><kbd> <kbd>SPC</kbd>
 </kbd></dt>
@@ -522,6 +544,7 @@ wp            word processing
 <p>  When a command name (see section <a href="xemacs_10.html#SEC70">Running Commands by Name</a>) or
 variable name (see section <a href="xemacs_30.html#SEC353">Variables</a>) appears in the documentation, it
 normally appears inside paired single-quotes.
+
 </p><hr size="6">
 <a name="NOD70"></a>
 <a name="SEC78"></a>
@@ -548,11 +571,13 @@ browsing through structured documentation files.  The entire XEmacs manual
 is available within Info.  Eventually all the documentation of the GNU
 system will be available.  Type <kbd>h</kbd> after entering Info to run
 a tutorial on using Info.
+
 </p><p>  If you specify a numeric argument, <kbd>C-h i</kbd> prompts for the name of
 a documentation file.  This way, you can browse a file which doesn't
 have an entry in the top-level Info menu.  It is also handy when you
 need to get to the documentation quickly, and you know the exact name of
 the file.
+
 </p><a name="IDX262"></a>
 <a name="IDX263"></a>
 <a name="IDX264"></a>
@@ -564,18 +589,21 @@ goes straight to the documentation of the XEmacs function
 to the documentation of the key <var>key</var>.  These two keys run the
 commands <code>Info-elisp-ref</code> and
 <code>Info-goto-emacs-key-command-node</code>.
+
 </p><a name="IDX266"></a>
 <a name="IDX267"></a>
 <p>  If something surprising happens, and you are not sure what commands you
 typed, use <kbd>C-h l</kbd> (<code>view-lossage</code>).  <kbd>C-h l</kbd> prints the last
 100 command characters you typed in.  If you see commands that you don't
 know, you can use <kbd>C-h c</kbd> to find out what they do.
+
 </p><a name="IDX268"></a>
 <a name="IDX269"></a>
 <p>  XEmacs has several major modes.  Each mode redefines a few keys and
 makes a few other changes in how editing works.  <kbd>C-h m</kbd>
 (<code>describe-mode</code>) prints documentation on the current major mode,
 which normally describes all the commands that are changed in this mode.
+
 </p><a name="IDX270"></a>
 <a name="IDX271"></a>
 <p>  <kbd>C-h b</kbd> (<code>describe-bindings</code>) and <kbd>C-h s</kbd>
@@ -584,11 +612,13 @@ mode that is not covered by <kbd>C-h m</kbd>.  <kbd>C-h b</kbd> displays a list 
 all the key bindings currently in effect, with the local bindings of the
 current major mode first, followed by the global bindings (see section <a href="xemacs_30.html#SEC367">Customizing Key Bindings</a>).  <kbd>C-h s</kbd> displays the contents of the syntax table with
 explanations of each character's syntax (see section <a href="xemacs_30.html#SEC374">The Syntax Table</a>).
+
 </p><p>  You can get a similar list for a particular prefix key by typing
 <kbd>C-h</kbd> after the prefix key.  (There are a few prefix keys for which
 this does not work--those that provide their own bindings for
 <kbd>C-h</kbd>.  One of these is <kbd>ESC</kbd>, because <kbd><kbd>ESC</kbd> C-h</kbd> is
 actually <kbd>C-M-h</kbd>, which marks a defun.)
+
 </p><a name="IDX272"></a>
 <a name="IDX273"></a>
 <a name="IDX274"></a>
@@ -615,6 +645,7 @@ in distributing copies of XEmacs.  <kbd>C-h C-d</kbd>
 (<code>describe-distribution</code>) displays another file named
 `<tt>xemacs/etc/DISTRIB</tt>', which tells you how you can order a copy of
 the latest version of XEmacs.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

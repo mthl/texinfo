@@ -63,30 +63,33 @@ ul.toc {list-style: none}
 bound to keys--short sequences of characters--for convenient use.  Other
 Emacs commands that are used more rarely are not bound to keys; to run
 them, you must refer to them by name.
+
 </p><p>  A command name consists, by convention, of one or more words,
 separated by hyphens: for example, <code>auto-fill-mode</code> or
 <code>manual-entry</code>.  The use of English words makes the command name
 easier to remember than a key made up of obscure characters, even though
 it results in more characters to type.  You can run any command by name,
 even if it can be run by keys as well. 
+
 </p><a name="IDX246"></a>
 <a name="IDX247"></a>
 <p> To run a command by name, start with <kbd>M-x</kbd>, then type the
 command name, and finish with <kbd>RET</kbd>.  <kbd>M-x</kbd> uses the minibuffer
 to read the command name.  <kbd>RET</kbd> exits the minibuffer and runs the
 command.
+
 </p><p>  Emacs uses the minibuffer for reading input for many different purposes;
 on this occasion, the string `<samp>M-x</samp>' is displayed at the beginning of
 the minibuffer as a <em>prompt</em> to remind you that your input should be
 the name of a command to be run.  See section <a href="xemacs_9.html#SEC60">The Minibuffer</a>, for full information
 on the features of the minibuffer.
+
 </p><p>  You can use completion to enter a command name.  For example, to
 invoke the command <code>forward-char</code>, type:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-M-x forward-char <kbd>RET</kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x forward-char <kbd>RET</kbd>
 </pre></td></tr></table><p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-M-x fo <kbd>TAB</kbd> c <kbd>RET</kbd>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x fo <kbd>TAB</kbd> c <kbd>RET</kbd>
 </pre></td></tr></table>
 
 <p>After you type in <code>M-x fo TAB</code> emacs will give you a possible list of 
@@ -94,23 +97,27 @@ completions from which you can choose. Note that <code>forward-char</code> is th
 same command that you invoke with the key <kbd>C-f</kbd>.  You can call any 
 command (interactively callable function) defined in Emacs by its name 
 using <kbd>M-x</kbd> regardless of whether or not any keys are bound to it.
+
 </p><p>  If you type <kbd>C-g</kbd> while Emacs reads the command name, you cancel
 the <kbd>M-x</kbd> command and get out of the minibuffer, ending up at top level.
+
 </p><p>  To pass a numeric argument to a command you are invoking with
 <kbd>M-x</kbd>, specify the numeric argument before the <kbd>M-x</kbd>.  <kbd>M-x</kbd>
 passes the argument along to the function that it calls.  The argument
 value appears in the prompt while the command name is being read.
+
 </p><a name="IDX248"></a>
 <p>You can use the command <code>M-x interactive</code> to specify a way of
 parsing arguments for interactive use of a function.  For example, write:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
 </pre></td></tr></table>
 <p>to make <code>arg</code> be the prefix argument when <code>foo</code> is called as a
 command.  The call to <code>interactive</code> is actually a declaration
 rather than a function; it tells <code>call-interactively</code> how to read
 arguments to pass to the function.  When actually called, <code>interactive</code>
 returns <code>nil</code>.
+
 </p><p>The argument of <var>interactive</var> is usually a string containing a code
 letter followed by a prompt.  Some code letters do not use I/O to get
 the argument and do not need prompts.  To prompt for multiple arguments,
@@ -119,7 +126,9 @@ letter, and so forth.  If the argument is not a string, it is evaluated
 to get a list of arguments to pass to the function.  If you do not provide an
 argument to <code>interactive</code>, no arguments are passed when calling
 interactively.
+
 </p><p>Available code letters are:
+
 </p><dl compact="compact">
 <dt><code> a
 </code></dt>
@@ -217,16 +226,19 @@ signaled if the buffer is read-only.  This happens before reading any
 arguments.  If the string begins with `<samp>@</samp>', the window the mouse is
 over is selected before anything else is done.  You may use both
 `<samp>@</samp>' and `<samp>*</samp>'; they are processed in the order that they appear.
+
 </p><p>Normally, when describing a command that is run by name, we omit the
 <kbd>RET</kbd> that is needed to terminate the name.  Thus we may refer to
 <kbd>M-x auto-fill-mode</kbd> rather than <kbd>M-x auto-fill-mode</kbd> <kbd>RET</kbd>.
 We mention the <kbd>RET</kbd> only when it is necessary to emphasize its
 presence, for example, when describing a sequence of input that contains
 a command name and arguments that follow it.
+
 </p><a name="IDX249"></a>
 <p>  <kbd>M-x</kbd> is defined to run the command <code>execute-extended-command</code>,
 which is responsible for reading the name of another command and invoking
 it.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

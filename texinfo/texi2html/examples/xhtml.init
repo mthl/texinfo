@@ -112,8 +112,6 @@ sub T2H_XHTML_button_icon_img
 
 $simple_map{'*'} = '<br/>';
 
-$things_map{'br'} = '<br/>';
-
 # formatting functions
 
 $def_line	       = \&t2h_xhtml_def_line;
@@ -123,118 +121,67 @@ $image             = \&t2h_xhtml_image;
 # need / in <img>
 sub t2h_xhtml_image($$$)
 {
-    my $image = shift;
-    my $base = shift;
-    my $preformatted = shift;
-    if ($preformatted)
-    {
-        return "[ $base ]";
-    }
-    else
-    {
-        return ($CENTER_IMAGE ?
-          "<div align=\"center\"><img src=\"$image\" alt=\"$base\"/></div>" :
-          "<img src=\"$image\" alt=\"$base\"/>");
-    }
+   my $file = shift;
+   my $base = shift;
+   my $preformatted = shift;
+   return "[ $base ]" if ($preformatted);
+   return "<img src=\"$file\" alt=\"$base\"/>";
 }
 
 # process definition commands line @deffn for example
 # <u> replaced by <span>
-sub t2h_xhtml_def_line($$$)
+sub t2h_xhtml_def_line($$$$$)
 {
-    my $tag = shift;
-    my $line = shift;
-    my $state = shift;
-    
-    $state->{'deff'} = $tag;
-    
-    if (defined($def_map{$tag}) and $def_map{$tag})
-    {
-        # substitute shortcuts for definition commands
-        my $substituted = $def_map{$tag};
-        $substituted =~ s/(\w+)//;
-        $tag = $1;
-        $line = $substituted . $line;
-    }
-    
-    my ($type, $name, $ftype);
-    ($line, $type, $name, $ftype) = main::parse_def($tag, $line);
-    #print STDERR "Def $tag $name, $type\n";
-    my $result = '';
-    unless ($type)
-    {
-        warn "$ERROR bad $state->{'deff'}, no type\n";
-        return '';
-    }
-    $type = main::substitute_line($type);
-    $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
-    unless ($name)
-    {
-        warn "$ERROR bad $state->{'deff'} nothing after the type\n";
-        return '';
-    }
-    $name = main::substitute_line($name);
-    $line = '' if (!$line);
-    $result = $DEF_TABLE ? '' : '<dt>';
-    if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
-    {
-        if ($DEF_TABLE)
-        {
-            $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
-            $result .= main::substitute_line($line);
-            $result .= "</td>\n";
-            $result .= "<td align=\"right\">";
-            $result .= "$type</td>\n</tr>\n";
-        }
-        else
-        {
-            $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
-            $result .= main::substitute_line($line);
-        }
-    }
-    elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
-        || $tag eq 'deftypeop' || $tag eq 'defcv'
-        || $tag eq 'defop')
-    {
-        $ftype = main::substitute_line($ftype);
-        if ($DEF_TABLE)
-        {
-            $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
-            $result .= main::substitute_line($line);
-            $result .= "</td>\n";
-            $result .= "<td align=\"right\">";
-            $result .= "$type of $ftype</td>\n</tr>\n";
-        }
-        else
-        {
-            $result .= "<span style=\"text-decoration: underline\">$type</span> $ftype <b>$name</b>";
-            $result .= main::substitute_line($line);
-        }
-    }
-    else
-    {
-        warn "$ERROR Unknown definition type: $tag\n";
-        $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
-        $result .= main::substitute_line($line);
-    }
-    $result .= main::do_index_entry_label($state);
-    $result .= "</dt>\n" if (!$DEF_TABLE);
-    return $result;
+   my $category = shift;
+   my $name = shift;
+   my $type = shift;
+   my $arguments = shift;
+   my $index_label = shift;
+   $index_label = '' if (!defined($index_label));
+   $name = '' if (!defined($name) or ($name =~ /^\s*$/));
+   $type = '' if (!defined($type) or $type =~ /^\s*$/);
+   if (!defined($arguments) or $arguments =~ /^\s*$/)
+   {
+       $arguments = '';
+   }
+   else
+   {
+       $arguments = '<i>' . $arguments . '</i>';
+   }
+   my $type_name = '';
+   $type_name = " $type" if ($type ne '');
+   $type_name .= ' <b>' . $name . '</b>' if ($name ne '');
+   $type_name .= $arguments . "\n";
+   if (! $DEF_TABLE)
+   {
+       return '<dt>'. '<span style="text-decoration: underline">' . $category . ':</span>' . $type_name . $index_label . "</dt>\n";
+   }
+   else
+   {
+       
+       return "<tr>\n<td align=\"left\">" . $type_name . 
+       "</td>\n<td align=\"right\">" . $category . $index_label . "</td>\n" . "</tr>\n";
+   }
 }
 
 # There is a br which needs / 
 sub t2h_xhtml_index_summary($$)
 {
-    my $alphabetical_letters = shift;
-    my $non_alphabeticals = shift;
-
-    my $alphabetical_line = '';
-    $alphabetical_line = join ("\n &nbsp; \n", @$alphabetical_letters) . "\n &nbsp; \n" if (@$alphabetical_letters);
-    my $non_alphabetical_line = '';
-    $non_alphabetical_line = join ("\n &nbsp; \n", @$non_alphabeticals) . "\n &nbsp; \n" if (@$non_alphabeticals);
-
-    $non_alphabetical_line .= "<br/>\n" if ($non_alphabetical_line);
-    #FIXME i18n
-    return '<table><tr><th valign="top">Jump to: &nbsp; </th><td>' .
-       $non_alphabetical_line . $alphabetical_line . '</td></tr></table>';
+    my $alpha = shift;
+    my $nonalpha = shift;
+    my $join = '';
+    my $nonalpha_text = '';
+    my $alpha_text = '';
+    $join = " &nbsp; \n<br/>\n" if (@$nonalpha and @$alpha);
+    if (@$nonalpha)
+    {
+       $nonalpha_text = join("\n &nbsp; \n", @$nonalpha) . "\n";
+    }
+    if (@$alpha)
+    {
+       $alpha_text = join("\n &nbsp; \n", @$alpha) . "\n &nbsp; \n";
+    }
+    #I18n
+    return "<table><tr><th valign=\"top\">Jump to: &nbsp; </th><td>" .
+    $nonalpha_text . $join . $alpha_text . '</td></tr></table>';
 }

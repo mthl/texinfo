@@ -34,7 +34,7 @@ texi2html.texi(,149) of this manual into another language, under the above
 texi2html.texi(,150) conditions for modified versions, except that this
 texi2html.texi(,151) permission notice may be stated in a translation approved
 texi2html.texi(,152) by the Free Software Foundation.
-texi2html.texi(,153) 
+texi2html.texi(,153) @sp 2
 texi2html.texi(,154) Cover art by Etienne Suvasa.
 texi2html.texi(,155) @end titlepage
 texi2html.texi(,157) @summarycontents
@@ -956,7 +956,7 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,51) 
 ./reference.texi(,52) 
 ./reference.texi(,53) @defun T2H_DEFAULT_print_toc_frame (FileName)
-./reference.texi(,54) 
+./reference.texi(,54) @sp 1
 ./reference.texi(,55) Description of the subroutine.
 ./reference.texi(,56) What does it do? Which parameters it needs etc.
 ./reference.texi(,57) @end defun
@@ -965,7 +965,7 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,61) @node Refpphead,,Refptocframe,Reference
 ./reference.texi(,62) @appendixsec Print Page Head
 ./reference.texi(,63) @defun T2H_DEFAULT_print_page_head (FileName)
-./reference.texi(,64) 
+./reference.texi(,64) @sp 1
 ./reference.texi(,65) Description of the subroutine.
 ./reference.texi(,66) What does it do? Which parameters it needs etc.
 ./reference.texi(,67) @end defun

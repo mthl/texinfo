@@ -26,14 +26,11 @@ sub t2h_inlinestyle_preformatted($$$)
 
 sub t2h_inline_summary_letter($$$)
 {
-    my $letter = shift;
-    my $file = shift;
-    my $index = shift;
-    my $id = shift;
+   my $letter = shift;
+   my $file = shift;
+   my $identifier = shift;
+   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_html($letter) . '</b>', 'class="summary-letter" style="text-decoration: none"');
 
-    return &$anchor('', "$file#${id}_" . $index,
-         "<b>" . &$protect_html($letter) . "</b>",
-         'class="summary-letter" style="text-decoration: none"');
 }
 
 1;

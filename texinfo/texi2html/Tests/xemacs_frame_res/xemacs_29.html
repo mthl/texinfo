@@ -61,9 +61,11 @@ ul.toc {list-style: none}
 
 <p>XEmacs provides three separate mail-reading packages.  Each one comes with
 its own manual, which is included standard with the XEmacs distribution.
+
 </p><p>The recommended mail-reading package for new users is VM.  VM works
 with standard Unix-mail-format folders and was designed as a replacement
 for the older Rmail.
+
 </p><p>XEmacs also provides a sophisticated and comfortable front-end to the
 MH mail-processing system, called `<samp>mh-e</samp>'.  Unlike in other
 mail programs, folders in MH are stored as file-system directories,
@@ -73,6 +75,7 @@ MH are also designed to integrate well with the shell and with
 shell scripts.  Keep in mind, however, that in order to use mh-e
 you must have the MH mail-processing system installed on your
 computer.
+
 </p><p>Finally, XEmacs provides the Rmail package.  Rmail is (currently) the
 only mail reading package distributed with FSF GNU Emacs, and is
 powerful in its own right.  However, it stores mail folders in a special
@@ -82,6 +85,7 @@ converting Babyl folders to standard Unix-mail format; however, unless
 you already have mail in Babyl-format folders, you should consider
 using VM or mh-e instead. (If at times you have to use FSF Emacs, it
 is not hard to obtain and install VM for that editor.)
+
 </p><hr size="6">
 <a name="NOD275"></a>
 <a name="SEC301"></a>
@@ -110,13 +114,14 @@ point on the current date.  With a numeric argument, as in <kbd>C-u M-x
 calendar</kbd>, it prompts you for the month and year to be the center of the
 three-month calendar.  The calendar uses its own buffer, whose major
 mode is Calendar mode.
+
 </p><p>  <kbd>Button2</kbd> in the calendar brings up a menu of operations on a
 particular date; <kbd>Buttons3</kbd> brings up a menu of commonly used
 calendar features that are independent of any particular date.  To exit
 the calendar, type <kbd>q</kbd>.  See <a href="../lispref/Calendar.html">Customizing the Calendar and Diary: (lispref)Calendar</a> section `Calendar' in <cite>The XEmacs Lisp Reference Manual</cite>, for customization
 information about the calendar and diary.
+ 
 </p><table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC302">26.1.1 Movement in the Calendar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving through the calendar; selecting a date.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC306">26.1.2 Scrolling the Calendar through Time</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bringing earlier or later months onto the screen.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC307">26.1.3 The Mark and the Region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Remembering dates, the mark ring.</td></tr>
@@ -158,8 +163,8 @@ automatically through time to make the selected date visible.  Moving to
 a date lets you view its holidays or diary entries, or convert it to other
 calendars; moving longer time periods is also useful simply to scroll the
 calendar.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC303">26.1.1.1 Motion by Integral Days, Weeks, Months, Years</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving by days, weeks, months, and years.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC304">26.1.1.2 Beginning or End of Week, Month or Year</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving to start/end of weeks, months, and years.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC305">26.1.1.3 Particular Dates</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving to the current date or another 
@@ -190,6 +195,7 @@ calendar.
 <p>  The commands for movement in the calendar buffer parallel the
 commands for movement in text.  You can move forward and backward by
 days, weeks, months, and years.
+
 </p><dl compact="compact">
 <dt><kbd> C-f
 </kbd></dt>
@@ -238,8 +244,10 @@ commands for moving by characters and by lines.  Just as <kbd>C-n</kbd>
 usually moves to the same column in the following line, in Calendar
 mode it moves to the same day in the following week.  And <kbd>C-p</kbd>
 moves to the same day in the previous week.
+
 </p><p>  The arrow keys are equivalent to <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-n</kbd> and
 <kbd>C-p</kbd>, just as they normally are in other modes.
+
 </p><a name="IDX1149"></a>
 <a name="IDX1150"></a>
 <a name="IDX1151"></a>
@@ -253,16 +261,19 @@ weeks, but move a larger distance.  The month commands <kbd>M-}</kbd> and
 <kbd>M-{</kbd> move forward or backward by an entire month's time.  The
 year commands <kbd>C-x ]</kbd> and <kbd>C-x [</kbd> move forward or backward a
 whole year.
+
 </p><p>  The easiest way to remember these commands is to consider months and
 years analogous to paragraphs and pages of text, respectively.  But the
 commands themselves are not quite analogous.  The ordinary Emacs paragraph
 commands move to the beginning or end of a paragraph, whereas these month
 and year commands move by an entire month or an entire year, which usually
 involves skipping across the end of a month or year.
+
 </p><p>  All these commands accept a numeric argument as a repeat count.
 For convenience, the digit keys and the minus sign specify numeric
 arguments in Calendar mode even without the Meta modifier.  For example,
 <kbd>100 C-f</kbd> moves point 100 days forward from its present location.
+
 </p><hr size="6">
 <a name="NOD278"></a>
 <a name="SEC304"></a>
@@ -288,9 +299,9 @@ arguments in Calendar mode even without the Meta modifier.  For example,
 weeks (months, years) as starting on particular dates.  So Calendar mode
 provides commands to move to the beginning or end of a week, month or
 year:
+ 
 </p><dl compact="compact">
-<dd>
-<a name="IDX1157"></a>
+<dd><a name="IDX1157"></a>
 <a name="IDX1158"></a>
 </dd>
 <dt><kbd> C-a
@@ -332,11 +343,13 @@ year:
 <p>  These commands also take numeric arguments as repeat counts, with the
 repeat count indicating how many weeks, months, or years to move
 backward or forward.
+
 </p><a name="IDX1169"></a>
 <a name="IDX1170"></a>
 <a name="IDX1171"></a>
 <p>  By default, weeks begin on Sunday.  To make them begin on Monday
 instead, set the variable <code>calendar-week-start-day</code> to 1.
+
 </p><hr size="6">
 <a name="NOD279"></a>
 <a name="SEC305"></a>
@@ -360,6 +373,7 @@ instead, set the variable <code>calendar-week-start-day</code> to 1.
 
 <p>  Calendar mode provides commands for moving to a particular date
 specified in various ways.
+
 </p><dl compact="compact">
 <dt><kbd> g d
 </kbd></dt>
@@ -381,14 +395,17 @@ specified in various ways.
 of the month, and then moves to that date.  Because the calendar includes all
 dates from the beginning of the current era, you must type the year in its
 entirety; that is, type `<samp>1990</samp>', not `<samp>90</samp>'.
+
 </p><a name="IDX1174"></a>
 <a name="IDX1175"></a>
 <p>  <kbd>o</kbd> (<code>calendar-other-month</code>) prompts for a month and year,
 then centers the three-month calendar around that month.
+
 </p><a name="IDX1176"></a>
 <a name="IDX1177"></a>
 <p>  You can return to today's date with <kbd>.</kbd>
 (<code>calendar-goto-today</code>).
+
 </p><hr size="6">
 <a name="NOD280"></a>
 <a name="SEC306"></a>
@@ -415,6 +432,7 @@ of the visible portion.  You can also scroll it manually.  Imagine that the
 calendar window contains a long strip of paper with the months on it.
 Scrolling it means moving the strip so that new months become visible in
 the window.
+
 </p><dl compact="compact">
 <dt><kbd> C-x &lt;
 </kbd></dt>
@@ -450,6 +468,7 @@ display before the command and the display after.  <kbd>C-x &lt;</kbd> scrolls
 the calendar contents one month to the left; that is, it moves the
 display forward in time.  <kbd>C-x &gt;</kbd> scrolls the contents to the
 right, which moves backwards in time.
+
 </p><a name="IDX1182"></a>
 <a name="IDX1183"></a>
 <a name="IDX1184"></a>
@@ -461,8 +480,10 @@ earlier dates visible.  These commands take a numeric argument as a
 repeat count; in particular, since <kbd>C-u</kbd> multiplies the next command
 by four, typing <kbd>C-u C-v</kbd> scrolls the calendar forward by a year and
 typing <kbd>C-u M-v</kbd> scrolls the calendar backward by a year.
+
 </p><p>  The function keys <kbd>NEXT</kbd> and <kbd>PRIOR</kbd> are equivalent to
 <kbd>C-v</kbd> and <kbd>M-v</kbd>, just as they are in other modes.
+
 </p>
 <hr size="6">
 <a name="NOD281"></a>
@@ -489,6 +510,7 @@ typing <kbd>C-u M-v</kbd> scrolls the calendar backward by a year.
 buffer, but it marks a <em>date</em>, not a <em>position</em> in the buffer.
 The region consists of the days between the mark and point (including
 the starting and stopping dates).
+
 </p><dl compact="compact">
 <dt><kbd> C-SPC
 </kbd></dt>
@@ -520,12 +542,14 @@ with the command <kbd>C-x C-x</kbd> (<code>calendar-exchange-point-and-mark</cod
 which puts the mark where point was and point where mark was.  The calendar
 is scrolled as necessary, if the marked date was not visible on the
 screen.  This does not change the extent of the region.
+
 </p><a name="IDX1191"></a>
 <a name="IDX1192"></a>
 <p>  To determine the number of days in the region, type <kbd>M-=</kbd>
 (<code>calendar-count-days-region</code>).  The numbers of days printed is
 <em>inclusive</em>; that is, it includes the days specified by mark and
 point.
+
 </p><a name="IDX1193"></a>
 <p>  The main use of the mark in the calendar is to remember dates that you may
 want to go back to.  To make this feature more useful, the mark ring
@@ -536,6 +560,7 @@ a numeric argument.  It moves point to where the mark was, restores the mark
 from the ring of former marks, and stores the previous point at the end of
 the mark ring.  So, repeated use of this command moves point through all
 the old marks on the ring, one by one.
+
 </p><hr size="6">
 <a name="NOD282"></a>
 <a name="SEC308"></a>
@@ -587,30 +612,36 @@ the old marks on the ring, one by one.
 the year, or the number of days remaining in the year, type the <kbd>p d</kbd>
 command (<code>calendar-print-day-of-year</code>).  This displays both
 of those numbers in the echo area.
+
 </p><a name="IDX1197"></a>
 <a name="IDX1198"></a>
 <p>  To display a brief description of the calendar commands, type <kbd>?</kbd>
 (<code>describe-calendar-mode</code>).  For a fuller description, type <kbd>C-h m</kbd>.
+
 </p><a name="IDX1199"></a>
 <a name="IDX1200"></a>
 <p>  You can use <kbd>SPC</kbd> (<code>scroll-other-window</code>) to scroll the other
 window.  This is handy when you display a list of holidays or diary entries
 in another window.
+
 </p><a name="IDX1201"></a>
 <a name="IDX1202"></a>
 <p>  If the calendar window text gets corrupted, type <kbd>C-c C-l</kbd>
 (<code>redraw-calendar</code>) to redraw it.  (This can only happen if you use
 non-Calendar-mode editing commands.)
+
 </p><a name="IDX1203"></a>
 <p>  In Calendar mode, you can use <kbd>SPC</kbd> (<code>scroll-other-window</code>)
 to scroll the other window.  This is handy when you display a list of
 holidays or diary entries in another window.
+
 </p><a name="IDX1204"></a>
 <a name="IDX1205"></a>
 <p>  To exit from the calendar, type <kbd>q</kbd> (<code>exit-calendar</code>).  This
 buries all buffers related to the calendar, selecting other buffers.
 (If a frame contains a dedicated calendar window, exiting from the
 calendar iconifies that frame.)
+
 </p><hr size="6">
 <a name="NOD283"></a>
 <a name="SEC309"></a>
@@ -635,6 +666,7 @@ calendar iconifies that frame.)
 <p>   The Calendar LaTeX commands produce a buffer of LaTeX code that
 prints as a calendar.  Depending on the command you use, the printed
 calendar covers the day, week, month or year that point is in.
+
 </p><a name="IDX1206"></a>
 <dl compact="compact">
 <dt><kbd> t m
@@ -703,11 +735,13 @@ mode&quot;), so it can be wider than it is long.  Some of them use Filofax
 paper size (3.75in x 6.75in).  All of these commands accept a prefix
 argument which specifies how many days, weeks, months or years to print
 (starting always with the selected one).
+
 </p><p>  If the variable <code>cal-tex-holidays</code> is non-<code>nil</code> (the
 default), then the printed calendars show the holidays in
 <code>calendar-holidays</code>.  If the variable <code>cal-tex-diary</code> is
 non-<code>nil</code> (the default is <code>nil</code>), diary entries are included
 also (in weekly and monthly calendars only).
+
 </p><hr size="6">
 <a name="NOD284"></a>
 <a name="SEC310"></a>
@@ -731,6 +765,7 @@ also (in weekly and monthly calendars only).
 
 <p>  The Emacs calendar knows about all major and many minor holidays,
 and can display them.
+
 </p><dl compact="compact">
 <dt><kbd> h
 </kbd></dt>
@@ -773,6 +808,7 @@ click on that date with <kbd>Button2</kbd> and then choose <kbd>Holidays</kbd>
 from the menu that appears.  Either way, this displays the holidays for
 that date, in the echo area if they fit there, otherwise in a separate
 window.
+
 </p><a name="IDX1209"></a>
 <a name="IDX1210"></a>
 <a name="IDX1211"></a>
@@ -784,27 +820,32 @@ display with multiple faces is not available). The command applies both
 to the currently visible months and to other months that subsequently
 become visible by scrolling.  To turn marking off and erase the current
 marks, type <kbd>u</kbd>, which also erases any diary marks (see section <a href="#SEC318">The Diary</a>).
+
 </p><a name="IDX1213"></a>
 <a name="IDX1214"></a>
 <p>  To get even more detailed information, use the <kbd>a</kbd> command, which
 displays a separate buffer containing a list of all holidays in the
 current three-month range.  You can use <kbd>SPC</kbd> in the calendar window
 to scroll that list.
+
 </p><a name="IDX1215"></a>
 <p>  The command <kbd>M-x holidays</kbd> displays the list of holidays for the
 current month and the preceding and succeeding months; this works even
 if you don't have a calendar window.  If you want the list of holidays
 centered around a different month, use <kbd>C-u M-x holidays</kbd>, which
 prompts for the month and year.
+
 </p><p>  The holidays known to Emacs include United States holidays and the
 major Christian, Jewish, and Islamic holidays; also the solstices and
 equinoxes.
+
 </p><a name="IDX1216"></a>
 <p>   The command <kbd>M-x list-holidays</kbd> displays the list of holidays for
 a range of years.  This function asks you for the starting and stopping
 years, and allows you to choose all the holidays or one of several
 categories of holidays.  You can use this command even if you don't have
 a calendar window.
+
 </p><p>  The dates used by Emacs for holidays are based on <em>current
 practice</em>, not historical fact.  Historically, for instance, the start
 of daylight savings time and even its existence have varied from year to
@@ -812,6 +853,7 @@ year, but present United States law mandates that daylight savings time
 begins on the first Sunday in April.  When the daylight savings rules
 are set up for the United States, Emacs always uses the present
 definition, even though it is wrong for some prior years.
+
 </p><hr size="6">
 <a name="NOD285"></a>
 <a name="SEC311"></a>
@@ -835,6 +877,7 @@ definition, even though it is wrong for some prior years.
 
 <p>  Special calendar commands can tell you, to within a minute or two, the
 times of sunrise and sunset for any date.
+
 </p><dl compact="compact">
 <dt><kbd> S
 </kbd></dt>
@@ -866,34 +909,37 @@ sunrise-sunset</kbd> is available outside the calendar to display this
 information for today's date or a specified date.  To specify a date
 other than today, use <kbd>C-u M-x sunrise-sunset</kbd>, which prompts for
 the year, month, and day.
+
 </p><p>  You can display the times of sunrise and sunset for any location and
 any date with <kbd>C-u C-u M-x sunrise-sunset</kbd>.  This asks you for a
 longitude, latitude, number of minutes difference from Coordinated
 Universal Time, and date, and then tells you the times of sunrise and
 sunset for that location on that date.
+
 </p><p>  Because the times of sunrise and sunset depend on the location on
 earth, you need to tell Emacs your latitude, longitude, and location
 name before using these commands.  Here is an example of what to set:
+
 </p><a name="IDX1220"></a>
 <a name="IDX1221"></a>
 <a name="IDX1222"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(setq calendar-latitude 40.1)
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq calendar-latitude 40.1)
 (setq calendar-longitude -88.2)
 (setq calendar-location-name &quot;Urbana, IL&quot;)
 </pre></td></tr></table>
 
 <p>Use one decimal place in the values of <code>calendar-latitude</code> and
 <code>calendar-longitude</code>.
+
 </p><p>  Your time zone also affects the local time of sunrise and sunset.
 Emacs usually gets time zone information from the operating system, but
 if these values are not what you want (or if the operating system does
 not supply them), you must set them yourself.  Here is an example:
+
 </p><a name="IDX1223"></a>
 <a name="IDX1224"></a>
 <a name="IDX1225"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(setq calendar-time-zone -360)
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq calendar-time-zone -360)
 (setq calendar-standard-time-zone-name &quot;CST&quot;)
 (setq calendar-daylight-time-zone-name &quot;CDT&quot;)
 </pre></td></tr></table>
@@ -906,11 +952,13 @@ Time (Greenwich time).  The values of
 your time zone.  Emacs displays the times of sunrise and sunset
 <em>corrected for daylight savings time</em>.  See section <a href="#SEC329">Daylight Savings Time</a>,
 for how daylight savings time is determined.
+
 </p><p>  As a user, you might find it convenient to set the calendar location
 variables for your usual physical location in your init file.  And when
 you install Emacs on a machine, you can create a `<tt>default.el</tt>' file
 which sets them properly for the typical location of most users of that
 machine.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p><hr size="6">
 <a name="NOD286"></a>
 <a name="SEC312"></a>
@@ -936,6 +984,7 @@ machine.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
 the moon (new moon, first quarter, full moon, last quarter).  This
 feature is useful for debugging problems that &quot;depend on the phase of
 the moon.&quot;
+
 </p><dl compact="compact">
 <dt><kbd> M
 </kbd></dt>
@@ -954,16 +1003,19 @@ today's date.
 <p>  Within the calendar, use the <kbd>M</kbd> command to display a separate
 buffer of the phases of the moon for the current three-month range.  The
 dates and times listed are accurate to within a few minutes.
+
 </p><a name="IDX1228"></a>
 <p>  Outside the calendar, use the command <kbd>M-x phases-of-moon</kbd> to
 display the list of the phases of the moon for the current month and the
 preceding and succeeding months.  For information about a different
 month, use <kbd>C-u M-x phases-of-moon</kbd>, which prompts for the month and
 year.
+ 
 </p><p>  The dates and times given for the phases of the moon are given in
 local time (corrected for daylight savings, when appropriate); but if
 the variable <code>calendar-time-zone</code> is void, Coordinated Universal
 Time (the Greenwich time zone) is used.  See section <a href="#SEC329">Daylight Savings Time</a>.
+
 </p><hr size="6">
 <a name="NOD287"></a>
 <a name="SEC313"></a>
@@ -994,10 +1046,11 @@ acceptance until the early twentieth century.  The Emacs calendar can
 display any month since January, year 1 of the current era, but the
 calendar displayed is the Gregorian, even for a date at which the
 Gregorian calendar did not exist.
+
 </p><p>  While Emacs cannot display other calendars, it can convert dates to
 and from several other calendars.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC314">26.3 Supported Calendar Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The calendars Emacs understands
                             (aside from Gregorian).</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC315">26.4 Converting To Other Calendars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Converting the selected date to various calendars.</td></tr>
@@ -1031,19 +1084,23 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Em
 <h2 class="section"> 26.3 Supported Calendar Systems </h2>
 
 <p>  The ISO commercial calendar is used largely in Europe.
+
 </p><a name="IDX1229"></a>
 <p>  The Julian calendar, named after Julius Caesar, was the one used in Europe
 throughout medieval times, and in many countries up until the nineteenth
 century.
+
 </p><a name="IDX1230"></a>
 <a name="IDX1231"></a>
 <p>  Astronomers use a simple counting of days elapsed since noon, Monday,
 January 1, 4713 B.C. on the Julian calendar.  The number of days elapsed
 is called the <em>Julian day number</em> or the <em>Astronomical day number</em>.
+
 </p><a name="IDX1232"></a>
 <p>  The Hebrew calendar is used by tradition in the Jewish religion.  The
 Emacs calendar program uses the Hebrew calendar to determine the dates
 of Jewish holidays.  Hebrew calendar dates begin and end at sunset.
+
 </p><a name="IDX1233"></a>
 <p>  The Islamic calendar is used in many predominantly Islamic countries.
 Emacs uses it to determine the dates of Islamic holidays.  There is no
@@ -1053,18 +1110,21 @@ often depend on proclamation by religious authorities, not on
 calculations.  As a consequence, the actual dates of observance can vary
 slightly from the dates computed by Emacs.  Islamic calendar dates begin
 and end at sunset.
+
 </p><a name="IDX1234"></a>
 <p>  The French Revolutionary calendar was created by the Jacobins after the 1789
 revolution, to represent a more secular and nature-based view of the annual
 cycle, and to install a 10-day week in a rationalization measure similar to
 the metric system.  The French government officially abandoned this
 calendar at the end of 1805.
+
 </p><a name="IDX1235"></a>
 <p>  The Maya of Central America used three separate, overlapping calendar
 systems, the <em>long count</em>, the <em>tzolkin</em>, and the <em>haab</em>.
 Emacs knows about all three of these calendars.  Experts dispute the
 exact correlation between the Mayan calendar and our calendar; Emacs uses the
 Goodman-Martinez-Thompson correlation in its calculations.
+
 </p><a name="IDX1236"></a>
 <a name="IDX1237"></a>
 <p>  The Copts use a calendar based on the ancient Egyptian solar calendar.
@@ -1072,12 +1132,14 @@ Their calendar consists of twelve 30-day months followed by an extra
 five-day period.  Once every fourth year they add a leap day to this
 extra period to make it six days.  The Ethiopic calendar is identical in
 structure, but has different year numbers and month names.
+
 </p><a name="IDX1238"></a>
 <p>  The Persians use a solar calendar based on a design of Omar Khayyam.
 Their calendar consists of twelve months of which the first six have 31
 days, the next five have 30 days, and the last has 29 in ordinary years
 and 30 in leap years.  Leap years occur in a complicated pattern every
 four or five years.
+
 </p><a name="IDX1239"></a>
 <p>  The Chinese calendar is a complicated system of lunar months arranged
 into solar years.  The years go in cycles of sixty, each year containing
@@ -1086,6 +1148,7 @@ year; each month has either 29 or 30 days.  Years, ordinary months, and
 days are named by combining one of ten &quot;celestial stems&quot; with one of
 twelve &quot;terrestrial branches&quot; for a total of sixty names that are
 repeated in a cycle of sixty.
+
 </p><hr size="6">
 <a name="NOD289"></a>
 <a name="SEC315"></a>
@@ -1109,6 +1172,7 @@ repeated in a cycle of sixty.
 
 <p>  The following commands describe the selected date (the date at point)
 in various other calendar systems:
+
 </p><dl compact="compact">
 <dt><kbd> Button2  Other Calendars
 </kbd></dt>
@@ -1185,9 +1249,11 @@ Calendars</kbd> from the menu that appears.  This displays the equivalent
 forms of the date in all the calendars Emacs understands, in the form of
 a menu.  (Choosing an alternative from this menu doesn't actually do
 anything--the menu is used only for display.)
+
 </p><p>  Put point on the desired date of the Gregorian calendar, then type the
 appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Emacs
 &quot;prints&quot; the equivalent date in the echo area.
+
 </p><hr size="6">
 <a name="NOD290"></a>
 <a name="SEC316"></a>
@@ -1212,6 +1278,7 @@ appropriate keys.  The <kbd>p</kbd> is a mnemonic for &quot;print&quot; since Em
 <p>  You can use the other supported calendars to specify a date to move
 to.  This section describes the commands for doing this using calendars
 other than Mayan; for the Mayan calendar, see the following section.
+
 </p><a name="IDX1252"></a>
 <a name="IDX1253"></a>
 <a name="IDX1254"></a>
@@ -1281,6 +1348,7 @@ the Gregorian calendar date equivalent to that date, and display the
 other calendar's date in the echo area.  Emacs uses strict completion
 (see section <a href="xemacs_9.html#SEC63">Completion</a>) whenever it asks you to type a month name, so you
 don't have to worry about the spelling of Hebrew, Islamic, or French names.
+
 </p><a name="IDX1263"></a>
 <a name="IDX1264"></a>
 <p>  One common question concerning the Hebrew calendar is the computation
@@ -1291,6 +1359,7 @@ range of years and then displays a list of the yahrzeit dates for those
 years for the date given by point.  If you are not in the calendar,
 this command first asks you for the date of death and the range of
 years, and then displays the list of yahrzeit dates.
+
 </p><hr size="6">
 <a name="NOD291"></a>
 <a name="SEC317"></a>
@@ -1313,6 +1382,7 @@ years, and then displays the list of yahrzeit dates.
 <h3 class="subsection"> 26.5.1 Converting from the Mayan Calendar </h3>
 
 <p>  Here are the commands to select dates based on the Mayan calendar:
+
 </p><dl compact="compact">
 <dt><kbd> g m l
 </kbd></dt>
@@ -1354,8 +1424,8 @@ calendar round (<code>calendar-previous-calendar-round-date</code>).
 <a name="IDX1265"></a>
 <p>  To understand these commands, you need to understand the Mayan calendars.
 The <em>long count</em> is a counting of days with these units:
-</p><table><tr><td>&nbsp;</td><td><pre class="display">
-1 kin = 1 day&nbsp;&nbsp;&nbsp;1 uinal = 20 kin&nbsp;&nbsp;&nbsp;1 tun = 18 uinal
+ 
+</p><table><tr><td>&nbsp;</td><td><pre class="display">1 kin = 1 day&nbsp;&nbsp;&nbsp;1 uinal = 20 kin&nbsp;&nbsp;&nbsp;1 tun = 18 uinal
 1 katun = 20 tun&nbsp;&nbsp;&nbsp;1 baktun = 20 katun
 </pre></td></tr></table>
 <a name="IDX1266"></a>
@@ -1366,6 +1436,7 @@ tun, 16 uinal, and 6 kin.  The Emacs calendar can handle Mayan long
 count dates as early as 7.17.18.13.1, but no earlier.  When you use the
 <kbd>g m l</kbd> command, type the Mayan long count date with the baktun,
 katun, tun, uinal, and kin separated by periods.
+
 </p><a name="IDX1268"></a>
 <a name="IDX1269"></a>
 <a name="IDX1270"></a>
@@ -1376,6 +1447,7 @@ previous or next point in the cycle.  Type <kbd>g m p t</kbd> to go to the
 previous tzolkin date; Emacs asks you for a tzolkin date and moves point
 to the previous occurrence of that date.  Similarly, type <kbd>g m n t</kbd>
 to go to the next occurrence of a tzolkin date.
+
 </p><a name="IDX1271"></a>
 <a name="IDX1272"></a>
 <a name="IDX1273"></a>
@@ -1387,6 +1459,7 @@ backward and forward to the previous or next point in the cycle.  Type
 date and moves point to the previous occurrence of that date.
 Similarly, type <kbd>g m n h</kbd> to go to the next occurrence of a haab
 date.
+
 </p><a name="IDX1274"></a>
 <a name="IDX1275"></a>
 <p>  The Maya also used the combination of the tzolkin date and the haab
@@ -1396,9 +1469,11 @@ both a haab and a tzolkin date and then moves point to the previous
 occurrence of that combination.  Use <kbd>g m n c</kbd> to move point to the
 next occurrence of a combination.  These commands signal an error if the
 haab/tzolkin date combination you have typed is impossible.
+
 </p><p>  Emacs uses strict completion (see section <a href="xemacs_9.html#SEC63">Completion</a>) whenever it
 asks you to type a Mayan name, so you don't have to worry about
 spelling.
+
 </p><hr size="6">
 <a name="NOD292"></a>
 <a name="SEC318"></a>
@@ -1426,11 +1501,12 @@ must first create a <em>diary file</em> containing a list of events and
 their dates.  Then Emacs can automatically pick out and display the
 events for today, for the immediate future, or for any specified
 date.
+
 </p><p>  By default, Emacs uses `<tt>~/diary</tt>' as the diary file.  This is the
 same file that the <code>calendar</code> utility uses.  A sample
 `<tt>~/diary</tt>' file is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-12/22/1988 Twentieth wedding anniversary!!
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">12/22/1988 Twentieth wedding anniversary!!
 &amp;1/1. Happy New Year!
 10/22 Ruth's birthday.
 * 21, *: Payday
@@ -1445,12 +1521,13 @@ April 15, 1989 Income tax due.
 
 <p>This example uses extra spaces to align the event descriptions of most
 of the entries.  Such formatting is purely a matter of taste.
+
 </p><p>  Although you probably will start by creating a diary manually, Emacs
 provides a number of commands to let you view, add, and change diary
 entries.  You can also share diary entries with other users
 (see section <a href="#SEC333">Included Diary Files</a>).
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC319">26.5.3 Commands Displaying Diary Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing diary entries and associated calendar dates.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC320">26.5.4 The Diary File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering events in your diary.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC321">26.5.5 Date Formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various ways you can specify dates.</td></tr>
@@ -1481,6 +1558,7 @@ entries.  You can also share diary entries with other users
 
 <p>  Once you have created a `<tt>~/diary</tt>' file, you can use the calendar
 to view it.  You can also view today's events outside of Calendar mode.
+
 </p><dl compact="compact">
 <dt><kbd> d
 </kbd></dt>
@@ -1527,9 +1605,11 @@ that fall on that date.  If you specify a numeric argument with <kbd>d</kbd>,
 it shows all the diary entries for that many successive days.  Thus,
 <kbd>2 d</kbd> displays all the entries for the selected date and for the
 following day.
+
 </p><p>  Another way to display the diary entries for a date is to click
 <kbd>Button2</kbd> on the date, and then choose <kbd>Diary</kbd> from the menu
 that appears.
+
 </p><a name="IDX1278"></a>
 <a name="IDX1279"></a>
 <a name="IDX1280"></a>
@@ -1542,12 +1622,15 @@ to the currently visible months and to other months that subsequently
 become visible by scrolling.  To turn marking off and erase the current
 marks, type <kbd>u</kbd>, which also turns off holiday marks
 (see section <a href="#SEC310">Holidays</a>).
+
 </p><a name="IDX1282"></a>
 <a name="IDX1283"></a>
 <p>  To see the full diary file, rather than just some of the entries, use
 the <kbd>s</kbd> command.
+
 </p><p>  Display of selected diary entries uses the selective display feature
 to hide entries that don't apply.
+
 </p><a name="IDX1284"></a>
 <p>  The diary buffer as you see it is an illusion, so simply printing the
 buffer does not print what you see on your screen.  There is a special
@@ -1555,15 +1638,18 @@ command to print hard copy of the diary buffer <em>as it appears</em>;
 this command is <kbd>M-x print-diary-entries</kbd>.  It sends the data
 directly to the printer.  You can customize it like <code>lpr-region</code>
 (see section <a href="#SEC345">Hardcopy Output</a>).
+
 </p><a name="IDX1285"></a>
 <p>  The command <kbd>M-x diary</kbd> displays the diary entries for the current
 date, independently of the calendar display, and optionally for the next
 few days as well; the variable <code>number-of-diary-entries</code> specifies
 how many days to include (see section <a href="xemacs_30.html#SEC351">Customization</a>).
+
 </p><p>  If you put <code>(diary)</code> in your init file, this
 automatically displays a window with the day's diary entries, when you
 enter Emacs.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.  The mode line of the displayed window
 shows the date and any holidays that fall on that date.
+
 </p><a name="IDX1286"></a>
 <a name="IDX1287"></a>
 <p>  Many users like to receive notice of events in their diary as email.
@@ -1571,6 +1657,7 @@ To send such mail to yourself, use the command <kbd>M-x
 diary-mail-entries</kbd>.  A prefix argument specifies how many days
 (starting with today) to check; otherwise, the variable
 <code>diary-mail-days</code> says how many days.
+
 </p><hr size="6">
 <a name="NOD294"></a>
 <a name="SEC320"></a>
@@ -1599,6 +1686,7 @@ variable <code>diary-file</code>; `<tt>~/diary</tt>' is the default.  The
 by the Emacs diary facilities, so you can use that utility to view the
 diary file, with reasonable results aside from the entries it cannot
 understand.
+
 </p><p>  Each entry in the diary file describes one event and consists of one
 or more lines.  An entry always begins with a date specification at the
 left margin.  The rest of the entry is simply text to describe the
@@ -1606,18 +1694,20 @@ event.  If the entry has more than one line, then the lines after the
 first must begin with whitespace to indicate they continue a previous
 entry.  Lines that do not begin with valid dates and do not continue a
 preceding entry are ignored.
+
 </p><p>  You can inhibit the marking of certain diary entries in the calendar
 window; to do this, insert an ampersand (`<samp>&amp;</samp>') at the beginning of
 the entry, before the date.  This has no effect on display of the entry
 in the diary window; it affects only marks on dates in the calendar
 window.  Nonmarking entries are especially useful for generic entries
 that would otherwise mark many different dates.
+
 </p><p>  If the first line of a diary entry consists only of the date or day
 name with no following blanks or punctuation, then the diary window
 display doesn't include that line; only the continuation lines appear.
 For example, this entry:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-02/11/1989
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">02/11/1989
       Bill B. visits Princeton today
       2pm Cognitive Studies Committee meeting
       2:30-5:30 Liz at Lawrenceville
@@ -1630,18 +1720,21 @@ For example, this entry:
 This style of entry looks neater when you display just a single day's
 entries, but can cause confusion if you ask for more than one day's
 entries.
+
 </p><p>  You can edit the diary entries as they appear in the window, but it is
 important to remember that the buffer displayed contains the <em>entire</em>
 diary file, with portions of it concealed from view.  This means, for
 instance, that the <kbd>C-f</kbd> (<code>forward-char</code>) command can put point
 at what appears to be the end of the line, but what is in reality the
 middle of some concealed line.  
+
 </p><p>  <em>Be careful when editing the diary entries!</em>  Inserting
 additional lines or adding/deleting characters in the middle of a
 visible line cannot cause problems, but editing at the end of a line may
 not do what you expect.  Deleting a line may delete other invisible
 entries that follow it.  Before editing the diary, it is best to display
 the entire file with <kbd>s</kbd> (<code>show-all-diary-entries</code>).
+
 </p><hr size="6">
 <a name="NOD295"></a>
 <a name="SEC321"></a>
@@ -1667,8 +1760,8 @@ the entire file with <kbd>s</kbd> (<code>show-all-diary-entries</code>).
 formatting a date.  The examples all show dates in American order
 (month, day, year), but Calendar mode supports European order (day,
 month, year) as an option.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-4/20/93  Switch-over to new tabulation system
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">4/20/93  Switch-over to new tabulation system
 apr. 25  Start tabulating annual results
 4/30  Results for April are due
 */25  Monthly cycle finishes
@@ -1678,16 +1771,19 @@ Friday  Don't leave without backing up files
 third appear every year on the specified dates, and the fourth uses a
 wildcard (asterisk) for the month, so it appears on the 25th of every
 month.  The final entry appears every week on Friday.
+
 </p><p>  You can use just numbers to express a date, as in
 `<samp><var>month</var>/<var>day</var></samp>' or `<samp><var>month</var>/<var>day</var>/<var>year</var></samp>'.
 This must be followed by a nondigit.  In the date itself, <var>month</var>
 and <var>day</var> are numbers of one or two digits.  The optional <var>year</var>
 is also a number, and may be abbreviated to the last two digits; that
 is, you can use `<samp>11/12/1989</samp>' or `<samp>11/12/89</samp>'.
+
 </p><p>  Dates can also have the form `<samp><var>monthname</var> <var>day</var></samp>' or
 `<samp><var>monthname</var> <var>day</var>, <var>year</var></samp>', where the month's name can
 be spelled in full or abbreviated to three characters (with or without a
 period).  Case is not significant.
+
 </p><p>  A date may be <em>generic</em>; that is, partially unspecified.  Then the
 entry applies to all dates that match the specification.  If the date
 does not contain a year, it is generic and applies to any year.
@@ -1695,6 +1791,7 @@ Alternatively, <var>month</var>, <var>day</var>, or <var>year</var> can be a `<s
 this matches any month, day, or year, respectively.  Thus, a diary entry
 `<samp>3/*/*</samp>' matches any day in March of any year; so does `<samp>march
 *</samp>'.
+
 </p><a name="IDX1288"></a>
 <a name="IDX1289"></a>
 <a name="IDX1290"></a>
@@ -1706,10 +1803,12 @@ all dates in the diary in the European manner, and also uses European
 style for displaying diary dates.  (Note that there is no comma after
 the <var>monthname</var> in the European style.)  To go back to the (default)
 American style of writing dates, type <kbd>M-x american-calendar</kbd>.
+ 
 </p><p>  You can use the name of a day of the week as a generic date which
 applies to any date falling on that day of the week.  You can abbreviate
 the day of the week to three letters (with or without a period) or spell
 it in full; case is not significant.
+
 </p><hr size="6">
 <a name="NOD296"></a>
 <a name="SEC322"></a>
@@ -1733,6 +1832,7 @@ it in full; case is not significant.
 
 <p>  While in the calendar, there are several commands to create diary
 entries:
+
 </p><dl compact="compact">
 <dt><kbd> i d
 </kbd></dt>
@@ -1758,6 +1858,7 @@ entries:
 in the calendar window and typing the <kbd>i d</kbd> command.  This command
 displays the end of your diary file in another window and inserts the
 date; you can then type the rest of the diary entry.
+
 </p><a name="IDX1293"></a>
 <a name="IDX1294"></a>
 <a name="IDX1295"></a>
@@ -1771,11 +1872,14 @@ type the rest of the diary entry.  You can make a monthly diary entry in
 the same fashion.  Select the day of the month, use the <kbd>i m</kbd>
 command, and type rest of the entry.  Similarly, you can insert a yearly
 diary entry with the <kbd>i y</kbd> command.
+
 </p><p>  All of the above commands make marking diary entries by default.  To
 make a nonmarking diary entry, give a numeric argument to the command.
 For example, <kbd>C-u i w</kbd> makes a nonmarking weekly diary entry.
+
 </p><p>  When you modify the diary file, be sure to save the file before
 exiting Emacs.
+ 
 </p><hr size="6">
 <a name="NOD297"></a>
 <a name="SEC323"></a>
@@ -1804,8 +1908,10 @@ as it scans the diary file.  Instead of a date, a sexp entry contains
 `<samp>%%</samp>' followed by a Lisp expression which must begin and end with
 parentheses.  The Lisp expression determines which dates the entry
 applies to.
+
 </p><p>  Calendar mode provides commands to insert certain commonly used
 sexp entries:
+
 </p><dl compact="compact">
 <dt><kbd> i a
 </kbd></dt>
@@ -1831,11 +1937,12 @@ specific date, move point to that date and use the <kbd>i a</kbd> command.
 This displays the end of your diary file in another window and inserts
 the anniversary description; you can then type the rest of the diary
 entry. The entry looks like this:
+
 </p><a name="IDX1301"></a>
 <p>  The effect of <kbd>i a</kbd> is to add a <code>diary-anniversary</code> sexp to your
 diary file.  You can also add one manually, for instance:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-%%(diary-anniversary 10 31 1948) Arthur's birthday
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-anniversary 10 31 1948) Arthur's birthday
 </pre></td></tr></table>
 
 <p>This entry applies to October 31 in any year after 1948; `<samp>10 31
@@ -1843,52 +1950,58 @@ diary file.  You can also add one manually, for instance:
 style, the month and day are interchanged.)  The reason this expression
 requires a beginning year is that advanced diary functions can use it to
 calculate the number of elapsed years.
+
 </p><p>  A <em>block</em> diary entry applies to a specified range of consecutive
 dates.  Here is a block diary entry that applies to all dates from June
 24, 1990 through July 10, 1990:
+
 </p><a name="IDX1302"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-%%(diary-block 6 24 1990 7 10 1990) Vacation
+<table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-block 6 24 1990 7 10 1990) Vacation
 </pre></td></tr></table>
 
 <p>The `<samp>6 24 1990</samp>' indicates the starting date and the `<samp>7 10 1990</samp>'
 indicates the stopping date.  (Again, if you are using the European calendar
 style, the month and day are interchanged.)
+
 </p><a name="IDX1303"></a>
 <a name="IDX1304"></a>
 <p>  To insert a block entry, place point and the mark on the two
 dates that begin and end the range, and type <kbd>i b</kbd>.  This command
 displays the end of your diary file in another window and inserts the
 block description; you can then type the diary entry.
+
 </p><a name="IDX1305"></a>
 <a name="IDX1306"></a>
 <p>   <em>Cyclic</em> diary entries repeat after a fixed interval of days.  To
 create one, select the starting date and use the <kbd>i c</kbd> command.  The
 command prompts for the length of interval, then inserts the entry,
 which looks like this:
+
 </p><a name="IDX1307"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-%%(diary-cyclic 50 3 1 1990) Renew medication
+<table><tr><td>&nbsp;</td><td><pre class="example">%%(diary-cyclic 50 3 1 1990) Renew medication
 </pre></td></tr></table>
 
 <p>This entry applies to March 1, 1990 and every 50th day following;
 `<samp>3 1 1990</samp>' specifies the starting date.  (If you are using the
 European calendar style, the month and day are interchanged.)
+
 </p><p>  All three of these commands make marking diary entries.  To insert a
 nonmarking entry, give a numeric argument to the command.  For example,
 <kbd>C-u i a</kbd> makes a nonmarking anniversary diary entry.
+
 </p><p>  Marking sexp diary entries in the calendar is <em>extremely</em>
 time-consuming, since every date visible in the calendar window must be
 individually checked.  So it's a good idea to make sexp diary entries
 nonmarking (with `<samp>&amp;</samp>') when possible.
+
 </p><p>  Another sophisticated kind of sexp entry, a <em>floating</em> diary entry,
 specifies a regularly occurring event by offsets specified in days,
 weeks, and months.  It is comparable to a crontab entry interpreted by
 the <code>cron</code> utility.  Here is a nonmarking, floating diary entry
 that applies to the last Thursday in November:
+ 
 </p><a name="IDX1308"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-&amp;%%(diary-float 11 4 -1) American Thanksgiving
+<table><tr><td>&nbsp;</td><td><pre class="example">&amp;%%(diary-float 11 4 -1) American Thanksgiving
 </pre></td></tr></table>
 
 <p>The 11 specifies November (the eleventh month), the 4 specifies Thursday
@@ -1899,16 +2012,18 @@ month can be a single month or a list of months.  Thus you could change
 the 11 above to `<samp>'(1 2 3)</samp>' and have the entry apply to the last
 Thursday of January, February, and March.  If the month is <code>t</code>, the
 entry applies to all months of the year.
+
 </p><p>  The sexp feature of the diary allows you to specify diary entries
 based on any Emacs Lisp expression.  You can use the library of built-in
 functions or you can write your own functions.  The built-in functions
 include the ones shown in this section, plus a few others (see section <a href="#SEC334">Sexp Entries and the Fancy Diary Display</a>).
+
 </p><p>  The generality of sexps lets you specify any diary entry that you can
 describe algorithmically.  Suppose you get paid on the 21st of the month
 if it is a weekday, and to the Friday before if the 21st is on a
 weekend.  The diary entry
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-&amp;%%(let ((dayname (calendar-day-of-week date))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">&amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
           (and (memq day '(19 20)) (= dayname 5)))
@@ -1921,6 +2036,7 @@ on the variable <code>date</code>; this variable is a list (<var>month</var>
 entries are being found.  If the value of the sexp is <code>t</code>, the
 entry applies to that date.  If the sexp evaluates to <code>nil</code>, the
 entry does <em>not</em> apply to that date.
+
 </p>
 <hr size="6">
 <a name="NOD298"></a>
@@ -1945,8 +2061,8 @@ entry does <em>not</em> apply to that date.
 
 <p>  There are many customizations that you can use to make the calendar and
 diary suit your personal tastes.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC325">26.5.8.1 Customizing the Calendar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defaults you can set.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC326">26.5.8.2 Customizing the Holidays</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining your own holidays.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC327">26.5.8.3 Date Display Format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Changing the format.</td></tr>
@@ -1986,19 +2102,21 @@ diary suit your personal tastes.
 entries for the current date as well.  The diary dates appear only if
 the current date is visible.  If you add both of the following lines to
 your init file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(setq view-diary-entries-initially t)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq view-diary-entries-initially t)
 (calendar)
 </pre></td></tr></table>
 
 <p>this displays both the calendar and diary windows whenever you start
 Emacs.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p><a name="IDX1309"></a>
 <p>  Similarly, if you set the variable
 <code>view-calendar-holidays-initially</code> to <code>t</code>, entering the
 calendar automatically displays a list of holidays for the current
 three-month period.  The holiday list appears in a separate
 window.
+ 
 </p><a name="IDX1310"></a>
 <p>  You can set the variable <code>mark-diary-entries-in-calendar</code> to
 <code>t</code> in order to mark any dates with diary entries.  This takes
@@ -2006,10 +2124,12 @@ effect whenever the calendar window contents are recomputed.  There are
 two ways of marking these dates: by changing the face (see section <a href="xemacs_30.html#SEC382">Faces</a>),
 if the display supports that, or by placing a plus sign (`<samp>+</samp>')
 beside the date otherwise.
+
 </p><a name="IDX1311"></a>
 <p>  Similarly, setting the variable <code>mark-holidays-in-calendar</code> to
 <code>t</code> marks holiday dates, either with a change of face or with an
 asterisk (`<samp>*</samp>').
+
 </p><a name="IDX1312"></a>
 <a name="IDX1313"></a>
 <p>  The variable <code>calendar-holiday-marker</code> specifies how to mark a
@@ -2020,31 +2140,34 @@ diary entries.  The calendar creates faces named <code>holiday-face</code> and
 <code>diary-face</code> for these purposes; those symbols are the default
 values of these variables, when Emacs supports multiple faces on your
 terminal.
+
 </p><a name="IDX1314"></a>
 <p>  The variable <code>calendar-load-hook</code> is a normal hook run when the
 calendar package is first loaded (before actually starting to display
 the calendar).
+
 </p><a name="IDX1315"></a>
 <p>  Starting the calendar runs the normal hook
 <code>initial-calendar-window-hook</code>.  Recomputation of the calendar
 display does not run this hook.  But if you leave the calendar with the
 <kbd>q</kbd> command and reenter it, the hook runs again.
+
 </p><a name="IDX1316"></a>
 <p>  The variable <code>today-visible-calendar-hook</code> is a normal hook run
 after the calendar buffer has been prepared with the calendar when the
 current date is visible in the window.  One use of this hook is to
 replace today's date with asterisks; to do that, use the hook function
 <code>calendar-star-date</code>.
+
 </p><a name="IDX1317"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(add-hook 'today-visible-calendar-hook 'calendar-star-date)
+<table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'today-visible-calendar-hook 'calendar-star-date)
 </pre></td></tr></table>
 
 <p>Another standard hook function marks the current date, either by
 changing its face or by adding an asterisk.  Here's how to use it:
+
 </p><a name="IDX1318"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
+<table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 </pre></td></tr></table>
 
 <a name="IDX1319"></a>
@@ -2054,10 +2177,12 @@ face name to use for displaying the date.  A face named
 <code>calendar-today-face</code> is provided for this purpose; that symbol is
 the default for this variable when Emacs supports multiple faces on your
 terminal.
+
 </p><a name="IDX1320"></a>
 
 <p>  A similar normal hook, <code>today-invisible-calendar-hook</code> is run if
 the current date is <em>not</em> visible in the window.
+
 </p><hr size="6">
 <a name="NOD300"></a>
 <a name="SEC326"></a>
@@ -2087,14 +2212,17 @@ general holidays (<code>general-holidays</code>), local holidays
 Hebrew (Jewish) holidays (<code>hebrew-holidays</code>), Islamic (Moslem)
 holidays (<code>islamic-holidays</code>), and other holidays
 (<code>other-holidays</code>).
+
 </p><a name="IDX1321"></a>
 <p>  The general holidays are, by default, holidays common throughout the
 United States.  To eliminate these holidays, set <code>general-holidays</code>
 to <code>nil</code>.
+
 </p><a name="IDX1322"></a>
 <p>  There are no default local holidays (but sites may supply some).  You
 can set the variable <code>local-holidays</code> to any list of holidays, as
 described below.
+
 </p><a name="IDX1323"></a>
 <a name="IDX1324"></a>
 <a name="IDX1325"></a>
@@ -2107,45 +2235,54 @@ all) of the variables <code>all-christian-calendar-holidays</code>,
 eliminate the religious holidays, set any or all of the corresponding
 variables <code>christian-holidays</code>, <code>hebrew-holidays</code>, and
 <code>islamic-holidays</code> to <code>nil</code>.
+
 </p><a name="IDX1326"></a>
 <p>  You can set the variable <code>other-holidays</code> to any list of
 holidays.  This list, normally empty, is intended for individual use.
+
 </p><a name="IDX1327"></a>
 <p>  Each of the lists (<code>general-holidays</code>, <code>local-holidays</code>,
 <code>christian-holidays</code>, <code>hebrew-holidays</code>,
 <code>islamic-holidays</code>, and <code>other-holidays</code>) is a list of
 <em>holiday forms</em>, each holiday form describing a holiday (or
 sometimes a list of holidays).
+
 </p><p>  Here is a table of the possible kinds of holiday form.  Day numbers
 and month numbers count starting from 1, but &quot;dayname&quot; numbers
 count Sunday as 0.  The element <var>string</var> is always the
 name of the holiday, as a string.
+
 </p><dl compact="compact">
 <dt><code> (holiday-fixed <var>month</var> <var>day</var> <var>string</var>)
 </code></dt>
 <dd><p>A fixed date on the Gregorian calendar.  <var>month</var> and <var>day</var> are
 numbers, <var>string</var> is the name of the holiday.
+
 </p></dd>
 <dt><code> (holiday-float <var>month</var> <var>dayname</var> <var>k</var> <var>string</var>)
 </code></dt>
 <dd><p>The <var>k</var>th <var>dayname</var> in <var>month</var> on the Gregorian calendar
 (<var>dayname</var>=0 for Sunday, and so on); negative <var>k</var> means count back
 from the end of the month.  <var>string</var> is the name of the holiday.
+
 </p></dd>
 <dt><code> (holiday-hebrew <var>month</var> <var>day</var> <var>string</var>)
 </code></dt>
 <dd><p>A fixed date on the Hebrew calendar.  <var>month</var> and <var>day</var> are
 numbers, <var>string</var> is the name of the holiday.
+
 </p></dd>
 <dt><code> (holiday-islamic <var>month</var> <var>day</var> <var>string</var>)
 </code></dt>
 <dd><p>A fixed date on the Islamic calendar.  <var>month</var> and <var>day</var> are
 numbers, <var>string</var> is the name of the holiday.
+
 </p></dd>
 <dt><code> (holiday-julian <var>month</var> <var>day</var> <var>string</var>)
 </code></dt>
 <dd><p>A fixed date on the Julian calendar.  <var>month</var> and <var>day</var> are
 numbers, <var>string</var> is the name of the holiday.
+
 </p></dd>
 <dt><code> (holiday-sexp <var>sexp</var> <var>string</var>)
 </code></dt>
@@ -2155,10 +2292,12 @@ holiday, or <code>nil</code> if the holiday doesn't happen this year.  The
 value of <var>sexp</var> must represent the date as a list of the form
 <code>(<var>month</var> <var>day</var> <var>year</var>)</code>.  <var>string</var> is the name of
 the holiday.
+
 </p></dd>
 <dt><code> (if <var>condition</var> <var>holiday-form</var> &amp;optional <var>holiday-form</var>)
 </code></dt>
 <dd><p>A holiday that happens only if <var>condition</var> is true.
+
 </p></dd>
 <dt><code> (<var>function</var> [<var>args</var>])
 </code></dt>
@@ -2170,18 +2309,20 @@ arguments <var>args</var>.
 <p>  For example, suppose you want to add Bastille Day, celebrated in
 France on July 14.  You can do this by adding the following line
 to your init file:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(setq other-holidays '((holiday-fixed 7 14 &quot;Bastille Day&quot;)))
 </pre></td></tr></table>
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p>
 <p>The holiday form <code>(holiday-fixed 7 14 &quot;Bastille Day&quot;)</code> specifies the
 fourteenth day of the seventh month (July).
+
 </p><p>  Many holidays occur on a specific day of the week, at a specific time
 of month.  Here is a holiday form describing Hurricane Supplication Day,
 celebrated in the Virgin Islands on the fourth Monday in August:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(holiday-float 8 1 4 &quot;Hurricane Supplication Day&quot;)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(holiday-float 8 1 4 &quot;Hurricane Supplication Day&quot;)
 </pre></td></tr></table>
 
 <p>Here the 8 specifies August, the 1 specifies Monday (Sunday is 0,
@@ -2189,10 +2330,11 @@ Tuesday is 2, and so on), and the 4 specifies the fourth occurrence in
 the month (1 specifies the first occurrence, 2 the second occurrence,
 -1 the last occurrence, -2 the second-to-last occurrence, and
 so on).
+
 </p><p>  You can specify holidays that occur on fixed days of the Hebrew,
 Islamic, and Julian calendars too.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(setq other-holidays
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(setq other-holidays
       '((holiday-hebrew 10 2 &quot;Last day of Hanukkah&quot;)
         (holiday-islamic 3 12 &quot;Mohammed's Birthday&quot;)
         (holiday-julian 4 2 &quot;Jefferson's Birthday&quot;)))
@@ -2203,12 +2345,13 @@ Islamic, and Julian calendars too.  For example,
 birthday (since the Islamic months are numbered from 1 starting with
 Muharram), and Thomas Jefferson's birthday, which is 2 April 1743 on the
 Julian calendar.
+
 </p><p>  To include a holiday conditionally, use either Emacs Lisp's <code>if</code> or the
 <code>holiday-sexp</code> form.  For example, American presidential elections
 occur on the first Tuesday after the first Monday in November of years
 divisible by 4:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(holiday-sexp (if (= 0 (% year 4))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(holiday-sexp (if (= 0 (% year 4))
                    (calendar-gregorian-from-absolute
                  (1+ (calendar-dayname-on-or-before
                        1 (+ 6 (calendar-absolute-from-gregorian
@@ -2217,8 +2360,8 @@ divisible by 4:
 </pre></td></tr></table>
 
 <p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(if (= 0 (% displayed-year 4))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(if (= 0 (% displayed-year 4))
     (fixed 11
            (extract-calendar-day
              (calendar-gregorian-from-absolute
@@ -2234,8 +2377,8 @@ for example, add <code>(eclipses)</code> to <code>other-holidays</code>
 and write an Emacs Lisp function <code>eclipses</code> that returns a
 (possibly empty) list of the relevant Gregorian dates among the range
 visible in the calendar window, with descriptive strings, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(((6 27 1991) &quot;Lunar Eclipse&quot;) ((7 11 1991) &quot;Solar Eclipse&quot;) ... )
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD301"></a>
@@ -2265,23 +2408,23 @@ This variable holds a list of expressions that can involve the variables
 string form, and <code>monthname</code> and <code>dayname</code>, which are both
 alphabetic strings.  In the American style, the default value of this
 list is as follows:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-((if dayname (concat dayname &quot;, &quot;)) monthname &quot; &quot; day &quot;, &quot; year)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">((if dayname (concat dayname &quot;, &quot;)) monthname &quot; &quot; day &quot;, &quot; year)
 </pre></td></tr></table>
 
 <p>while in the European style this value is the default:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">((if dayname (concat dayname &quot;, &quot;)) day &quot; &quot; monthname &quot; &quot; year)
 </pre></td></tr></table>
 <p>+
 The ISO standard date representation is this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(year &quot;-&quot; month &quot;-&quot; day)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(year &quot;-&quot; month &quot;-&quot; day)
 </pre></td></tr></table>
 
 <p>This specifies a typical American format:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(month &quot;/&quot; day &quot;/&quot; (substring year -2))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(month &quot;/&quot; day &quot;/&quot; (substring year -2))
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD302"></a>
@@ -2314,19 +2457,20 @@ variable is a list of expressions that can involve the variables
 numbers in string form, and <code>am-pm</code> and <code>time-zone</code>, which are
 both alphabetic strings.  The default value of
 <code>calendar-time-display-form</code> is as follows:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(12-hours &quot;:&quot; minutes am-pm
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(12-hours &quot;:&quot; minutes am-pm
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </pre></td></tr></table>
 
 <p>Here is a value that provides European style times:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(24-hours &quot;:&quot; minutes
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">(24-hours &quot;:&quot; minutes
           (if time-zone &quot; (&quot;) time-zone (if time-zone &quot;)&quot;))
 </pre></td></tr></table>
 
 <p>gives military-style times like `<samp>21:07 (UT)</samp>' if time zone names are
 defined, and times like `<samp>21:07</samp>' if they are not.
+
 </p><hr size="6">
 <a name="NOD303"></a>
 <a name="SEC329"></a>
@@ -2354,12 +2498,14 @@ equinoxes, and the phases of the moon take that into account.  The rules
 for daylight savings time vary from place to place and have also varied
 historically from year to year.  To do the job properly, Emacs needs to
 know which rules to use.
+
 </p><p>  Some operating systems keep track of the rules that apply to the place
 where you are; on these systems, Emacs gets the information it needs
 from the system automatically.  If some or all of this information is
 missing, Emacs fills in the gaps with the rules currently used in
 Cambridge, Massachusetts.  If the resulting rules are not what you want,
 you can tell Emacs the rules to use by setting certain variables.
+
 </p><a name="IDX1328"></a>
 <a name="IDX1329"></a>
 <p>  If the default choice of rules is not appropriate for your location,
@@ -2371,12 +2517,14 @@ Gregorian date on which daylight savings time starts or (respectively)
 ends, in the form of a list <code>(<var>month</var> <var>day</var> <var>year</var>)</code>.
 The values should be <code>nil</code> if your area does not use daylight
 savings time.
+
 </p><p>  Emacs uses these expressions to determine the starting date of
 daylight savings time for the holiday list  and for correcting times of
 day in the solar and lunar calculations.
+ 
 </p><p>  The values for Cambridge, Massachusetts are as follows:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(calendar-nth-named-day 1 0 4 year)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(calendar-nth-named-day 1 0 4 year)
 (calendar-nth-named-day -1 0 10 year)
 </pre></td></tr></table>
 
@@ -2385,33 +2533,37 @@ the year specified by <code>year</code>, and the last Sunday of the tenth month
 (October) of that year.  If daylight savings time were
 changed to start on October 1, you would set
 <code>calendar-daylight-savings-starts</code> to this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(list 10 1 year)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(list 10 1 year)
 </pre></td></tr></table>
 <p>  For a more complex example, suppose daylight savings time begins on
 the first of Nisan on the Hebrew calendar.  You should set
 <code>calendar-daylight-savings-starts</code> to this value:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(calendar-gregorian-from-absolute
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(calendar-gregorian-from-absolute
   (calendar-absolute-from-hebrew
     (list 1 1 (+ year 3760))))
 </pre></td></tr></table>
 
 <p>because Nisan is the first month in the Hebrew calendar and the Hebrew
 year differs from the Gregorian year by 3760 at Nisan.
+
 </p><p>  If there is no daylight savings time at your location, or if you want
 all times in standard time, set <code>calendar-daylight-savings-starts</code>
 and <code>calendar-daylight-savings-ends</code> to <code>nil</code>.
+
 </p><a name="IDX1330"></a>
 <p>  The variable <code>calendar-daylight-time-offset</code> specifies the
 difference between daylight savings time and standard time, measured in
 minutes.  The value for Cambridge, Massachusetts is 60.
+
 </p><a name="IDX1331"></a>
 <p>  The two variables <code>calendar-daylight-savings-starts-time</code> and
 <code>calendar-daylight-savings-ends-time</code> specify the number of minutes
 after midnight local time when the transition to and from daylight
 savings time should occur.  For Cambridge, Massachusetts both variables'
 values are 120.
+ 
 </p><hr size="6">
 <a name="NOD304"></a>
 <a name="SEC330"></a>
@@ -2440,6 +2592,7 @@ information delays the display of the diary buffer noticeably.  If you'd
 prefer to have a faster display of the diary buffer but without the
 holiday information, set the variable <code>holidays-in-diary-buffer</code> to
 <code>nil</code>.
+
 </p><a name="IDX1332"></a>
 <p>  The variable <code>number-of-diary-entries</code> controls the number of
 days of diary entries to be displayed at one time.  It affects the
@@ -2452,6 +2605,7 @@ example, if the value is <code>[0 2 2 2 2 4 1]</code> then no diary entries
 appear on Sunday, the current date's and the next day's diary entries
 appear Monday through Thursday, Friday through Monday's entries appear
 on Friday, while on Saturday only that day's entries appear.
+
 </p><a name="IDX1333"></a>
 <a name="IDX1334"></a>
 <p>  The variable <code>print-diary-entries-hook</code> is a normal hook run
@@ -2463,6 +2617,7 @@ the printing with the command <code>lpr-buffer</code>.  If you want to use a
 different command to do the printing, just change the value of this
 hook.  Other uses might include, for example, rearranging the lines into
 order by day and time.
+
 </p><a name="IDX1335"></a>
 <p>  You can customize the form of dates in your diary file, if neither the
 standard American nor European styles suits your needs, by setting the
@@ -2473,9 +2628,11 @@ be regular expressions (see section <a href="xemacs_15.html#SEC121">Syntax of Re
 <code>dayname</code>.  All these elements serve as patterns that match certain
 kinds of text in the diary file.  In order for the date pattern, as a
 whole, to match, all of its elements must match consecutively.
+
 </p><p>  A regular expression in a date pattern matches in its usual fashion,
 using the standard syntax table altered so that `<samp>*</samp>' is a word
 constituent.
+
 </p><p>  The symbols <code>month</code>, <code>day</code>, <code>year</code>, <code>monthname</code>,
 and <code>dayname</code> match the month number, day number, year number,
 month name, and day name of the date being considered.  The symbols that
@@ -2484,10 +2641,11 @@ three-letter abbreviations and capitalization.  All the symbols can
 match `<samp>*</samp>'; since `<samp>*</samp>' in a diary entry means &quot;any day&quot;, &quot;any
 month&quot;, and so on, it should match regardless of the date being
 considered.
+
 </p><p>  The default value of <code>diary-date-forms</code> in the American style is
 this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-((month &quot;/&quot; day &quot;[^/0-9]&quot;)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">((month &quot;/&quot; day &quot;[^/0-9]&quot;)
  (month &quot;/&quot; day &quot;/&quot; year &quot;[^0-9]&quot;)
  (monthname &quot; *&quot; day &quot;[^,0-9]&quot;)
  (monthname &quot; *&quot; day &quot;, *&quot; year &quot;[^0-9]&quot;)
@@ -2498,6 +2656,7 @@ this:
 standard syntax table from Fundamental mode
 (see <a href="../lispref/Syntax-Tables.html">(lispref)Syntax Tables</a> section `Syntax Tables' in <cite>XEmacs Lisp Reference Manual</cite>),
 but with the `<samp>*</samp>' changed so that it is a word constituent.
+
 </p><p>  The date patterns in the list must be <em>mutually exclusive</em> and
 must not match any portion of the diary entry itself, just the date and
 one character of whitespace.  If, to be mutually exclusive, the pattern
@@ -2509,8 +2668,8 @@ finishing the match.  Even if you use <code>backup</code>, the date pattern
 must absolutely not match more than a portion of the first word of the
 diary entry.  The default value of <code>diary-date-forms</code> in the
 European style is this list:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-((day &quot;/&quot; month &quot;[^/0-9]&quot;)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">((day &quot;/&quot; month &quot;[^/0-9]&quot;)
  (day &quot;/&quot; month &quot;/&quot; year &quot;[^0-9]&quot;)
  (backup day &quot; *&quot; monthname &quot;\\W+\\&lt;[^*0-9]&quot;)
  (day &quot; *&quot; monthname &quot; *&quot; year &quot;[^0-9]&quot;)
@@ -2520,6 +2679,7 @@ European style is this list:
 <p>Notice the use of <code>backup</code> in the third pattern, because it needs
 to match part of a word beyond the date itself to distinguish it from
 the fourth pattern.
+ 
 </p><hr size="6">
 <a name="NOD305"></a>
 <a name="SEC331"></a>
@@ -2547,20 +2707,20 @@ However, because recognition of such entries is time-consuming and most
 people don't use them, you must explicitly enable their use.  If you
 want the diary to recognize Hebrew-date diary entries, for example, 
 you must do this:
+ 
 </p><a name="IDX1336"></a>
 <a name="IDX1337"></a>
 <a name="IDX1338"></a>
 <a name="IDX1339"></a>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'nongregorian-diary-listing-hook 'list-hebrew-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 </pre></td></tr></table>
 
 <p>If you want Islamic-date entries, do this:
+
 </p><a name="IDX1340"></a>
 <a name="IDX1341"></a>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'nongregorian-diary-listing-hook 'list-islamic-diary-entries)
 (add-hook 'nongregorian-diary-marking-hook 'mark-islamic-diary-entries)
 </pre></td></tr></table>
 <p>  Hebrew- and Islamic-date diary entries have the same formats as
@@ -2569,24 +2729,27 @@ date and `<samp>I</samp>' precedes an Islamic date.  Moreover, because the
 Hebrew and Islamic month names are not uniquely specified by the first
 three letters, you may not abbreviate them.  For example, a diary entry
 for the Hebrew date Heshvan 25 could look like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-HHeshvan 25 Happy Hebrew birthday!
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">HHeshvan 25 Happy Hebrew birthday!
 </pre></td></tr></table>
 
 <p>and would appear in the diary for any date that corresponds to Heshvan 25
 on the Hebrew calendar.  And here is  Islamic-date diary entry  that matches
 Dhu al-Qada 25:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-IDhu al-Qada 25 Happy Islamic birthday!
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">IDhu al-Qada 25 Happy Islamic birthday!
 </pre></td></tr></table>
 
 <p>and would appear in the diary for any date that corresponds to Dhu al-Qada 25
 on the Islamic calendar.
+
 </p><p>  As with Gregorian-date diary entries, Hebrew- and Islamic-date entries
 are nonmarking if they are preceded with an ampersand (`<samp>&amp;</samp>').
+
 </p><p>  Here is a table of commands used in the calendar to create diary entries
 that match the selected date and other dates that are similar in the Hebrew
 or Islamic calendar:
+ 
 </p><dl compact="compact">
 <dt><kbd> i h d
 </kbd></dt>
@@ -2635,6 +2798,7 @@ diary entries: they apply to the date that point is on in the calendar
 window, and what they do is insert just the date portion of a diary entry
 at the end of your diary file.  You must then insert the rest of the 
 diary entry.
+ 
 </p><hr size="6">
 <a name="NOD306"></a>
 <a name="SEC332"></a>
@@ -2660,10 +2824,10 @@ diary entry.
 hook <code>diary-display-hook</code>.  The default value of this hook
 (<code>simple-diary-display</code>) hides the irrelevant diary entries and
 then displays the buffer.  However, if you specify the hook as follows,
+ 
 </p><a name="IDX1348"></a>
 <a name="IDX1349"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(add-hook 'diary-display-hook 'fancy-diary-display)
+<table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'diary-display-hook 'fancy-diary-display)
 </pre></td></tr></table>
 
 <p>this enables fancy diary display.  It displays diary entries and
@@ -2671,6 +2835,7 @@ holidays by copying them into a special buffer that exists only for the
 sake of display.  Copying to a separate buffer provides an opportunity
 to change the displayed text to make it prettier--for example, to sort
 the entries by the dates they apply to.
+
 </p><p>  As with simple diary display, you can print a hard copy of the buffer
 with <code>print-diary-entries</code>.  To print a hard copy of a day-by-day
 diary for a week by positioning point on Sunday of that week, type
@@ -2678,24 +2843,28 @@ diary for a week by positioning point on Sunday of that week, type
 inclusion of the holidays slows down the display slightly; you can speed
 things up by setting the variable <code>holidays-in-diary-buffer</code> to
 <code>nil</code>.
+
 </p><a name="IDX1350"></a>
 <p>  Ordinarily, the fancy diary buffer does not show days for which there are
 no diary entries, even if that day is a holiday.  If you want such days to be
 shown in the fancy diary buffer, set the variable
 <code>diary-list-include-blanks</code> to <code>t</code>.
+
 </p><a name="IDX1351"></a>
 <p>  If you use the fancy diary display, you can use the normal hook
 <code>list-diary-entries-hook</code> to sort each day's diary entries by their
 time of day.  Add this line to your init file:
+
 </p><a name="IDX1352"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
+<table><tr><td>&nbsp;</td><td><pre class="example">(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 </pre></td></tr></table>
 <p>See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p>
 <p>For each day, this sorts diary entries that begin with a recognizable
 time of day according to their times.  Diary entries without times come
 first within each day.
+
 </p><hr size="6">
 <a name="NOD307"></a>
 <a name="SEC333"></a>
@@ -2720,8 +2889,8 @@ first within each day.
 <p>  Fancy diary display also has the ability to process included diary
 files.  This permits a group of people to share a diary file for events
 that apply to all of them.  Lines in the diary file of this form:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-#include &quot;<var>filename</var>&quot;
+ 
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">#include &quot;<var>filename</var>&quot;
 </pre></td></tr></table>
 
 <p>includes the diary entries from the file <var>filename</var> in the fancy
@@ -2729,16 +2898,17 @@ diary buffer.  The include mechanism is recursive, so that included files
 can include other files, and so on; you must be careful not to have a
 cycle of inclusions, of course.  Here is how to enable the include
 facility:
+
 </p><a name="IDX1353"></a>
 <a name="IDX1354"></a>
 <a name="IDX1355"></a>
 <a name="IDX1356"></a>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
-(add-hook 'list-diary-entries-hook 'include-other-diary-files)
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">(add-hook 'list-diary-entries-hook 'include-other-diary-files)
 (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
 </pre></td></tr></table>
 <p>The include mechanism works only with the fancy diary display, because
 ordinary diary display shows the entries directly from your diary file.
+
 </p><hr size="6">
 <a name="NOD308"></a>
 <a name="SEC334"></a>
@@ -2766,39 +2936,40 @@ diary display, sexp entries can generate the text of the entry depending
 on the date itself.  For example, an anniversary diary entry can insert
 the number of years since the anniversary date into the text of the
 diary entry.  Thus the `<samp>%d</samp>' in this dairy entry:
+
 </p><a name="IDX1357"></a>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
-%%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 </pre></td></tr></table>
 
 <p>gets replaced by the age, so on October 31, 1990 the entry appears in
 the fancy diary buffer like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-Arthur's birthday (42 years old)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Arthur's birthday (42 years old)
 </pre></td></tr></table>
 
 <p>If the diary file instead contains this entry:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-%%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
 </pre></td></tr></table>
 
 <p>the entry in the fancy diary buffer for October 31, 1990 appears like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-Arthur's 42nd birthday
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Arthur's 42nd birthday
 </pre></td></tr></table>
 <p>  Similarly, cyclic diary entries can interpolate the number of repetitions
 that have occurred:
+
 </p><a name="IDX1358"></a>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
-%%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">%%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 </pre></td></tr></table>
 
 <p>looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-Renew medication (5th time)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Renew medication (5th time)
 </pre></td></tr></table>
 
 <p>in the fancy diary display on September 8, 1990.
+
 </p><p>  The generality of sexp diary entries lets you specify any diary entry
 that you can describe algorithmically.  A sexp diary entry contains an
 expression that computes whether the entry applies to any given date.
@@ -2806,11 +2977,12 @@ If its value is non-<code>nil</code>, the entry applies to that date;
 otherwise, it does not.  The expression can use the variable  <code>date</code>
 to find the date being considered; its value is a list (<var>month</var>
 <var>day</var> <var>year</var>) that refers to the Gregorian calendar.
+
 </p><p>  Suppose you get paid on the 21st of the month if it is a weekday, and
 on the Friday before if the 21st is on a weekend.  Here is how to write
 a sexp diary entry that matches those dates:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-&amp;%%(let ((dayname (calendar-day-of-week date))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">&amp;%%(let ((dayname (calendar-day-of-week date))
          (day (car (cdr date))))
       (or (and (= day 21) (memq dayname '(1 2 3 4 5)))
           (and (memq day '(19 20)) (= dayname 5)))
@@ -2823,8 +2995,10 @@ depend on the variable <code>date</code>; this variable is a list (<var>month</v
 entries are being found.  If the value of the expression is <code>t</code>,
 the entry applies to that date.  If the expression evaluates to
 <code>nil</code>, the entry does <em>not</em> apply to that date.
+
 </p><p>  The following sexp diary entries take advantage of the ability (in the fancy
 diary display) to concoct diary entries whose text varies based on the date:
+
 </p><a name="IDX1359"></a>
 <a name="IDX1360"></a>
 <a name="IDX1361"></a>
@@ -2882,16 +3056,18 @@ calendar.
 
 
 <p>Thus including the diary entry
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-&amp;%%(diary-hebrew-date)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">&amp;%%(diary-hebrew-date)
 </pre></td></tr></table>
 
 <p>causes every day's diary display to contain the equivalent date on the
 Hebrew calendar, if you are using the fancy diary display.  (With simple
 diary display, the line `<samp>&amp;%%(diary-hebrew-date)</samp>' appears in the
 diary for any date, but does nothing particularly useful.)
+
 </p><p>  These functions can be used to construct sexp diary entries based on
 the Hebrew calendar in certain standard ways:
+ 
 </p><a name="IDX1369"></a>
 <a name="IDX1370"></a>
 <a name="IDX1371"></a>
@@ -2954,6 +3130,7 @@ the European style, the order of the parameters is changed to <var>day</var>,
 
 <p>  You can specify exactly how Emacs reminds you of an appointment, and
 how far in advance it begins doing so, by setting these variables:
+
 </p><a name="IDX1379"></a>
 <a name="IDX1380"></a>
 <a name="IDX1381"></a>
@@ -3025,12 +3202,14 @@ that their keys are in alphabetical order, or, for numerical sorting, in
 numerical order.  In alphabetical sorting, all upper-case letters `A'
 through `Z' come before lower-case `a', in accordance with the ASCII
 character sequence.
+
 </p><p>  The sort commands differ in how they divide the text into sort
 records and in which part of each record they use as the sort key.  Most of
 the commands make each line a separate sort record, but some commands use
 paragraphs or pages as sort records.  Most of the sort commands use each
 entire sort record as its own sort key, but some use only a portion of the
 record as the sort key.
+
 </p><a name="IDX1385"></a>
 <a name="IDX1386"></a>
 <a name="IDX1387"></a>
@@ -3041,18 +3220,21 @@ record as the sort key.
 </kbd></dt>
 <dd><p>Divide the region into lines and sort by comparing the entire
 text of a line.  A prefix argument means sort in descending order.
+
 </p></dd>
 <dt><kbd> M-x sort-paragraphs
 </kbd></dt>
 <dd><p>Divide the region into paragraphs and sort by comparing the entire
 text of a paragraph (except for leading blank lines).  A prefix
 argument means sort in descending order.
+
 </p></dd>
 <dt><kbd> M-x sort-pages
 </kbd></dt>
 <dd><p>Divide the region into pages and sort by comparing the entire
 text of a page (except for leading blank lines).  A prefix
 argument means sort in descending order.
+
 </p></dd>
 <dt><kbd> M-x sort-fields
 </kbd></dt>
@@ -3061,10 +3243,12 @@ one field in each line.  Fields are defined as separated by
 whitespace, so the first run of consecutive non-whitespace characters
 in a line constitutes field 1, the second such run constitutes field
 2, etc.
+
 </p><p>You specify which field to sort by with a numeric argument: 1 to sort
 by field 1, etc.  A negative argument means sort in descending
 order.  Thus, minus 2 means sort by field 2 in reverse-alphabetical
 order.
+
 </p></dd>
 <dt><kbd> M-x sort-numeric-fields
 </kbd></dt>
@@ -3072,6 +3256,7 @@ order.
 to a number for each line and the numbers are compared.  `<samp>10</samp>'
 comes before `<samp>2</samp>' when considered as text, but after it when
 considered as a number.
+
 </p></dd>
 <dt><kbd> M-x sort-columns
 </kbd></dt>
@@ -3082,8 +3267,8 @@ is given below.
 </dl>
 
 <p>For example, if the buffer contains:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-On systems where clash detection (locking of files being edited) is
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 whether the file has changed on disk since it was last visited or
 saved.  If it has, you are asked to confirm that you want to change
@@ -3091,8 +3276,8 @@ the buffer.
 </pre></td></tr></table>
 
 <p>then if you apply <kbd>M-x sort-lines</kbd> to the entire buffer you get:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-On systems where clash detection (locking of files being edited) is
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">On systems where clash detection (locking of files being edited) is
 implemented, XEmacs also checks the first time you modify a buffer
 saved.  If it has, you are asked to confirm that you want to change
 the buffer.
@@ -3101,8 +3286,8 @@ whether the file has changed on disk since it was last visited or
 
 <p>where the upper case `O' comes before all lower case letters.  If you apply
 instead <kbd>C-u 2 M-x sort-fields</kbd> you get:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-saved.  If it has, you are asked to confirm that you want to change
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">saved.  If it has, you are asked to confirm that you want to change
 implemented, XEmacs also checks the first time you modify a buffer
 the buffer.
 On systems where clash detection (locking of files being edited) is
@@ -3111,6 +3296,7 @@ whether the file has changed on disk since it was last visited or
 
 <p>where the sort keys were `<samp>If</samp>', `<samp>XEmacs</samp>', `<samp>buffer</samp>',
 `<samp>systems</samp>', and `<samp>the</samp>'.
+
 </p><a name="IDX1390"></a>
 <p>  <kbd>M-x sort-columns</kbd> requires more explanation.  You specify the
 columns by putting point at one of the columns and the mark at the other
@@ -3118,15 +3304,18 @@ column.  Because this means you cannot put point or the mark at the
 beginning of the first line to sort, this command uses an unusual
 definition of `region': all of the line point is in is considered part of
 the region, and so is all of the line the mark is in.
+
 </p><p>  For example, to sort a table by information found in columns 10 to 15,
 you could put the mark on column 10 in the first line of the table, and
 point on column 15 in the last line of the table, and then use this command.
 Or you could put the mark on column 15 in the first line and point on
 column 10 in the last line.
+
 </p><p>  This can be thought of as sorting the rectangle specified by point and
 the mark, except that the text on each line to the left or right of the
 rectangle moves along with the text inside the rectangle.
 See section <a href="xemacs_12.html#SEC101">Rectangles</a>.
+
 </p><hr size="6">
 <a name="NOD311"></a>
 <a name="SEC337"></a>
@@ -3151,6 +3340,7 @@ See section <a href="xemacs_12.html#SEC101">Rectangles</a>.
 <p>  XEmacs has commands for passing single command lines to inferior shell
 processes; it can also run a shell interactively with input and output to
 an XEmacs buffer `<samp>*shell*</samp>'.
+
 </p><dl compact="compact">
 <dt><kbd> M-!
 </kbd></dt>
@@ -3177,7 +3367,6 @@ Full terminal emulation is available.
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC338">26.7.1 Single Shell Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to run one shell command and return.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC339">26.7.2 Interactive Inferior Shell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Permanent shell taking input via XEmacs.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC340">26.7.3 Shell Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special XEmacs commands used with permanent shell.</td></tr>
@@ -3215,6 +3404,7 @@ command produces any output, the output goes to an XEmacs buffer named
 selected.  A numeric argument, as in <kbd>M-1 M-!</kbd>, directs this command to
 insert any output into the current buffer.  In that case, point is left
 before the output and the mark is set after the output.
+
 </p><a name="IDX1391"></a>
 <a name="IDX1392"></a>
 <p>  <kbd>M-|</kbd> (<code>shell-command-on-region</code>) is like <kbd>M-!</kbd> but passes
@@ -3222,6 +3412,7 @@ the contents of the region as input to the shell command, instead of no
 input.  If a numeric argument is used to direct  output to the current
 buffer, then the old region is deleted first and the output replaces it as
 the contents of the region.
+
 </p><a name="IDX1393"></a>
 <a name="IDX1394"></a>
 <p>  Both <kbd>M-!</kbd> and <kbd>M-|</kbd> use <code>shell-file-name</code> to specify the
@@ -3231,9 +3422,11 @@ specify a directory, the directories in the list <code>exec-path</code> are
 searched; this list is initialized based on the <code>PATH</code> environment
 variable when you start XEmacs.  You can override either or both of these
 default initializations in your init file. See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p><p>  When you use <kbd>M-!</kbd> and <kbd>M-|</kbd>, XEmacs has to wait until the
 shell command completes.  You can quit with <kbd>C-g</kbd>; that terminates
 the shell command.
+
 </p><hr size="6">
 <a name="NOD313"></a>
 <a name="SEC339"></a>
@@ -3262,16 +3455,19 @@ to that buffer.  That is to say, any &quot;terminal output&quot; from the subshe
 will go into the buffer, advancing point, and any &quot;terminal input&quot; for
 the subshell comes from text in the buffer.  To give input to the subshell,
 go to the end of the buffer and type the input, terminated by <kbd>RET</kbd>.
+
 </p><p>  XEmacs does not wait for the subshell to do anything.  You can switch
 windows or buffers and edit them while the shell is waiting, or while it is
 running a command.  Output from the subshell waits until XEmacs has time to
 process it; this happens whenever XEmacs is waiting for keyboard input or
 for time to elapse.
+
 </p><p> To get multiple subshells, change the name of buffer
 `<samp>*shell*</samp>' to something different by using <kbd>M-x rename-buffer</kbd>.  The
 next use of <kbd>M-x shell</kbd> creates a new buffer `<samp>*shell*</samp>' with
 its own subshell.  By renaming this buffer as well you can create a third
 one, and so on.  All the subshells run independently and in parallel.
+
 </p><a name="IDX1395"></a>
 <p>  The file name used to load the subshell is the value of the variable
 <code>explicit-shell-file-name</code>, if that is non-<code>nil</code>.  Otherwise, the
@@ -3279,11 +3475,13 @@ environment variable <code>ESHELL</code> is used, or the environment variable
 <code>SHELL</code> if there is no <code>ESHELL</code>.  If the file name specified
 is relative, the directories in the list <code>exec-path</code> are searched
 (see section <a href="#SEC338">Single Shell Commands</a>).
+
 </p><p>  As soon as the subshell is started, it is sent as input the contents of
 the file `<tt>~/.emacs_<var>shellname</var></tt>', if that file exists, where
 <var>shellname</var> is the name of the file that the shell was loaded from.
 For example, if you use <code>csh</code>, the file sent to it is
 `<tt>~/.emacs_csh</tt>'.
+
 </p><a name="IDX1396"></a>
 <a name="IDX1397"></a>
 <a name="IDX1398"></a>
@@ -3298,9 +3496,11 @@ that line is regarded as a <code>pushd</code> command.  Change this variable whe
 you add aliases for `<samp>pushd</samp>'.  Likewise, <code>shell-popd-regexp</code> and
 <code>shell-cd-regexp</code> are used to recognize commands with the meaning of
 `<samp>popd</samp>' and `<samp>cd</samp>'.
+
 </p><p><kbd>M-x shell-resync-dirs</kbd> queries the shell and resynchronizes XEmacs'
 idea of what the current directory stack is.  <kbd>M-x
 shell-dirtrack-toggle</kbd> turns directory tracking on and off.
+
 </p><a name="IDX1399"></a>
 <p>XEmacs keeps a history of the most recent commands you have typed in the
 `<samp>*shell*</samp>' buffer.  If you are at the beginning of a shell command
@@ -3316,6 +3516,7 @@ type the first few characters of a previous command and then type
 inserted.  This can be very convenient when you are repeating a sequence
 of shell commands.  The variable <code>input-ring-size</code> controls how
 many commands are saved in your input history.  The default is 30.
+
 </p>
 <hr size="6">
 <a name="NOD314"></a>
@@ -3343,6 +3544,7 @@ attached to the <kbd>C-c</kbd> prefix.  They are chosen to resemble the usual
 editing and job control characters present in shells that are not under
 XEmacs, except that you must type <kbd>C-c</kbd> first.  Here is a list
 of the special key bindings of Shell mode:
+
 </p><a name="IDX1400"></a>
 <a name="IDX1401"></a>
 <a name="IDX1402"></a>
@@ -3471,6 +3673,7 @@ using <kbd>M-p</kbd> quickly and go past the desired command
 buffer, use <kbd>M-x term</kbd>.  This creates (or reuses) a buffer named
 `<samp>*term*</samp>' and runs a subshell with input coming from your keyboard and
 output going to that buffer.
+
 </p><p>All the normal keys that you type are sent without any interpretation
 by XEmacs directly to the subshell, as &quot;terminal input.&quot;
 Any &quot;echo&quot; of your input is the responsibility of the subshell.
@@ -3478,6 +3681,7 @@ Any &quot;echo&quot; of your input is the responsibility of the subshell.
 which by default is <kbd>C-c</kbd>. see section <a href="#SEC342">Term Mode</a>.)
 Any &quot;terminal output&quot; from the subshell goes into the buffer,
 advancing point.
+
 </p><p>  Some programs (such as XEmacs itself) need to control the
 appearance on the terminal screen in detail.  They do this by
 sending special control codes.  The exact control
@@ -3490,20 +3694,25 @@ and for each control code does the appropriate thing
 to change the buffer so that the appearance of the window
 will match what it would be on a real terminal.
 Thus you can actually run XEmacs inside an XEmacs Term window!
+
 </p><p>   XEmacs does not wait for the subshell to do anything.  You can switch
 windows or buffers and edit them while the shell is waiting, or while
 it is running a command.  Output from the subshell waits until XEmacs
 has time to process it; this happens whenever XEmacs is waiting for
 keyboard input or for time to elapse.
+
 </p><p>   To make multiple terminal emulators, rename the buffer `<samp>*term*</samp>'
 to something different using <kbd>M-x rename-uniquely</kbd>,
 just as with Shell mode.
+
 </p><p>   The file name used to load the subshell is determined
 the same way as for Shell mode.
+
 </p><p>Unlike Shell mode, Term mode does not track the current directory
 by examining your input.  Instead, if you use a programmable
 shell, you can have it tell Term what the current directory is.
 This is done automatically by bash for version 1.15 and later.
+
 </p><hr size="6">
 <a name="NOD316"></a>
 <a name="SEC342"></a>
@@ -3529,15 +3738,16 @@ This is done automatically by bash for version 1.15 and later.
 In line mode, Term basically acts like Shell mode.  See section <a href="#SEC340">Shell Mode</a>.
 In Char mode, each character is sent directly to the inferior subshell,
 except for the Term escape character, normally <kbd>C-c</kbd>.
+
 </p><p>To switch between line and char mode, use these commands:
 </p><dl compact="compact">
-<dd>
-<a name="IDX1427"></a>
+<dd><a name="IDX1427"></a>
 <p>findex term-char-mode
 </p></dd>
 <dt><kbd> C-c C-j
 </kbd></dt>
 <dd><p>Switch to line mode.  Do nothing if already in line mode.
+
 </p><a name="IDX1428"></a>
 <a name="IDX1429"></a>
 </dd>
@@ -3552,6 +3762,7 @@ except for the Term escape character, normally <kbd>C-c</kbd>.
 <dt><kbd> C-c C-c
 </kbd></dt>
 <dd><p>Send a literal <kbd>C-c</kbd> to the sub-shell.
+
 </p></dd>
 <dt><kbd> C-c C-x
 </kbd></dt>
@@ -3584,9 +3795,9 @@ For example, <kbd>C-c C-x o</kbd> invokes the global binding of
 
 <p>Term mode has a pager feature.  When the pager is enabled,
 term mode will pause at the end of each screenful.
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX1430"></a>
+<dd><a name="IDX1430"></a>
 <a name="IDX1431"></a>
 </dd>
 <dt><kbd> C-c C-q
@@ -3603,6 +3814,7 @@ This is indicated by `<samp>**MORE**</samp>' in the mode-line.
 Type a <kbd>Space</kbd> to display the next screenful of output.
 Type <kbd>?</kbd> to see your other options.  The interface is similar
 to the Unix `<samp>more</samp>' program.
+
 </p><hr size="6">
 <a name="NOD318"></a>
 <a name="SEC344"></a>
@@ -3629,6 +3841,7 @@ the rest temporarily invisible and inaccessible.  Cancelling the narrowing
 and making the entire buffer once again visible is called <em>widening</em>.
 The amount of narrowing in effect in a buffer at any time is called the
 buffer's <em>restriction</em>.
+
 </p><dl compact="compact">
 <dt><kbd> C-x n n
 </kbd></dt>
@@ -3649,22 +3862,27 @@ buffer, that part appears to be all there is.  You can't see the rest,
 can't move into it (motion commands won't go outside the visible part),
 and can't change it in any way.  However, the invisible text is not
 gone; if you save the file, it will be saved.
+
 </p><a name="IDX1432"></a>
 <a name="IDX1433"></a>
 <p>  The primary narrowing command is <kbd>C-x n n</kbd> (<code>narrow-to-region</code>).
 It sets the current buffer's restrictions so that the text in the current
 region remains visible but all text before the region or after the region
 is invisible.  Point and mark do not change.
+
 </p><p>  Because narrowing can easily confuse users who do not understand it,
 <code>narrow-to-region</code> is normally a disabled command.  Attempting to use
 this command asks for confirmation and gives you the option of enabling it;
 once you enable the command, confirmation will no longer be required.  See section <a href="xemacs_30.html#SEC373">Disabling Commands</a>.
+
 </p><a name="IDX1434"></a>
 <a name="IDX1435"></a>
 <p>   To undo narrowing, use <kbd>C-x n w</kbd> (<code>widen</code>).  This makes all
 text in the buffer accessible again.
+
 </p><p>   Use the <kbd>C-x =</kbd> command to get information on what part of the
 buffer you narrowed down.  See section <a href="xemacs_7.html#SEC57">Cursor Position Information</a>.
+
 </p><hr size="6">
 <a name="NOD319"></a>
 <a name="SEC345"></a>
@@ -3688,6 +3906,7 @@ buffer you narrowed down.  See section <a href="xemacs_7.html#SEC57">Cursor Posi
 
 <p>  The XEmacs commands for making hardcopy derive their names from the
 Unix commands `<samp>print</samp>' and `<samp>lpr</samp>'.
+
 </p><dl compact="compact">
 <dt><kbd> M-x print-buffer
 </kbd></dt>
@@ -3720,6 +3939,7 @@ based on the value of the variable <code>lpr-switches</code>.  Its value should
 be a list of strings, each string a switch starting with `<samp>-</samp>'.  For
 example, the value could be <code>(&quot;-Pfoo&quot;)</code> to print on printer
 `<samp>foo</samp>'.
+
 </p><hr size="6">
 <a name="NOD320"></a>
 <a name="SEC346"></a>
@@ -3747,6 +3967,7 @@ XEmacs command.  For example, when you type <kbd>C-r</kbd> inside a
 <code>query-replace</code>, you enter a recursive edit in which you can change
 the current buffer.  When you exit from the recursive edit, you go back to
 the <code>query-replace</code>.
+
 </p><a name="IDX1441"></a>
 <a name="IDX1442"></a>
 <a name="IDX1443"></a>
@@ -3754,16 +3975,19 @@ the <code>query-replace</code>.
 command, which continues execution.  For example, exiting the recursive
 edit requested by <kbd>C-r</kbd> in <code>query-replace</code> causes query replacing
 to resume.  Exiting is done with <kbd>C-M-c</kbd> (<code>exit-recursive-edit</code>).
+
 </p><a name="IDX1444"></a>
 <a name="IDX1445"></a>
 <p>  You can also <em>abort</em> a recursive edit.  This is like exiting, but
 also quits the unfinished command immediately.  Use the command <kbd>C-]</kbd>
 (<code>abort-recursive-edit</code>) for this.  See section <a href="xemacs_30.html#SEC392">Quitting and Aborting</a>.
+
 </p><p>  The mode line shows you when you are in a recursive edit by displaying
 square brackets around the parentheses that always surround the major
 and minor mode names.  Every window's mode line shows the square
 brackets, since XEmacs as a whole, rather than any particular buffer, is
 in a recursive edit.
+
 </p><a name="IDX1446"></a>
 <p>  It is possible to be in recursive edits within recursive edits.  For
 example, after typing <kbd>C-r</kbd> in a <code>query-replace</code>, you might
@@ -3775,8 +3999,10 @@ the end of the query-replace command, you would be able to exit the
 first recursive edit.  Aborting exits only one level of recursive edit;
 it returns to the command level of the previous recursive edit.  You can
 then abort that one as well.
+
 </p><p>  The command <kbd>M-x top-level</kbd> aborts all levels of
 recursive edits, returning immediately to the top level command reader.
+
 </p><p>  The text you edit inside the recursive edit need not be the same text
 that you were editing at top level.  If the command that invokes the
 recursive edit selects a different buffer first, that is the buffer you
@@ -3787,11 +4013,13 @@ inside the recursive edit, including visiting files, this could have
 surprising effects (such as stack overflow) from time to time.  It is
 best if you always exit or abort a recursive edit when you no longer
 need it.
+
 </p><p>  In general, XEmacs tries to avoid using recursive edits.  It is
 usually preferable to allow users to switch among the possible editing
 modes in any order they like.  With recursive edits, the only way to get
 to another state is to go &quot;back&quot; to the state that the recursive edit
 was invoked from.
+
 </p><hr size="6">
 <a name="NOD321"></a>
 <a name="SEC347"></a>
@@ -3819,10 +4047,12 @@ straight English, it produces extremely amusing output.  The input comes
 from the current XEmacs buffer.  Dissociated Press writes its output in a
 buffer named `<samp>*Dissociation*</samp>', and redisplays that buffer after every
 couple of lines (approximately) to facilitate reading it.
+
 </p><p>  <code>dissociated-press</code> asks every so often whether to continue
 operating.  Answer <kbd>n</kbd> to stop it.  You can also stop at any time by
 typing <kbd>C-g</kbd>.  The dissociation output remains in the `<samp>*Dissociation*</samp>'
 buffer for you to copy elsewhere if you wish.
+
 </p><a name="IDX1447"></a>
 <p>  Dissociated Press operates by jumping at random from one point in the
 buffer to another.  In order to produce plausible output rather than
@@ -3832,6 +4062,7 @@ if it has just printed out `president' and then decides to jump to a
 different point in the file, it might spot the `ent' in `pentagon' and
 continue from there, producing `presidentagon'.  Long sample texts produce
 the best results.
+
 </p><a name="IDX1448"></a>
 <p>  A positive argument to <kbd>M-x dissociated-press</kbd> tells it to operate
 character by character, and specifies the number of overlap characters.  A
@@ -3840,6 +4071,7 @@ of overlap words.  In this mode, whole words are treated as the elements to
 be permuted, rather than characters.  No argument is equivalent to an
 argument of two.  For your againformation, the output goes only into the
 buffer `<samp>*Dissociation*</samp>'.  The buffer you start with is not changed.
+
 </p><a name="IDX1449"></a>
 <a name="IDX1450"></a>
 <a name="IDX1451"></a>
@@ -3850,6 +4082,7 @@ techniquitously copies several consecutive characters from the sample
 between random choices, whereas a Markov chain would choose randomly for
 each word or character.  This makes for more plausible sounding results
 and runs faster.
+
 </p><a name="IDX1452"></a>
 <a name="IDX1453"></a>
 <a name="IDX1454"></a>
@@ -3857,6 +4090,7 @@ and runs faster.
 developediment to your real work.  Sometimes to the point of outragedy.
 And keep dissociwords out of your documentation, if you want it to be well
 userenced and properbose.  Have fun.  Your buggestions are welcome.
+
 </p><hr size="6">
 <a name="NOD322"></a>
 <a name="SEC348"></a>
@@ -3880,6 +4114,7 @@ userenced and properbose.  Have fun.  Your buggestions are welcome.
 
 <p>Besides producing a file of scrambled text with Dissociated Press, you 
 can generate random sentences by using CONX.
+
 </p><dl compact="compact">
 <dt><kbd> M-x conx
 </kbd></dt>
@@ -3920,6 +4155,7 @@ and then type <kbd>M-x conx</kbd>.  Output is continuously generated until you
 type <kbd>^G</kbd>. You can save the <code>conx</code> database to a file with
 <kbd>M-x conx-save</kbd>, which you can retrieve with <code>M-x conx-load</code>. 
 To clear the database, use <code>M-x conx-init</code>.
+
 </p><hr size="6">
 <a name="NOD323"></a>
 <a name="SEC349"></a>
@@ -3944,9 +4180,12 @@ To clear the database, use <code>M-x conx-init</code>.
 <p>  If you are a little bit bored, you can try <kbd>M-x hanoi</kbd>.  If you are
 considerably bored, give it a numeric argument.  If you are very, very
 bored, try an argument of 9.  Sit back and watch.
+
 </p><p>  When you are frustrated, try the famous Eliza program.  Just do
 <kbd>M-x doctor</kbd>.  End each input by typing <kbd>RET</kbd> twice.
+
 </p><p>  When you are feeling strange, type <kbd>M-x yow</kbd>.
+
 </p><hr size="6">
 <a name="NOD324"></a>
 <a name="SEC350"></a>
@@ -3970,6 +4209,7 @@ bored, try an argument of 9.  Sit back and watch.
 
 <p>  XEmacs can be programmed to emulate (more or less) most other
 editors.  Standard facilities can emulate these:
+
 </p><dl compact="compact">
 <dt> Viper (a vi emulator)
 </dt>
@@ -3982,13 +4222,16 @@ levels of vi emulation, from a quite complete emulation that
 allows almost no access to native XEmacs commands, to an
 &quot;expert&quot; mode that combines the most useful vi commands with
 the most useful XEmacs commands.
+
 </p><p>To start Viper, put the command
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(viper-mode)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(viper-mode)
 </pre></td></tr></table>
 <p>in your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
+
 </p><p>Viper comes with a separate manual that is provided standard
 with the XEmacs distribution.
+
 </p>
 </dd>
 <dt> EDT (DEC VMS editor)
@@ -3997,10 +4240,12 @@ with the XEmacs distribution.
 <a name="IDX1463"></a>
 <p>Turn on EDT emulation with <kbd>M-x edt-emulation-on</kbd>.  <kbd>M-x
 <br>edt-emulation-off</kbd> restores normal Emacs command bindings.
+
 </p><p>Most of the EDT emulation commands are keypad keys, and most standard
 Emacs key bindings are still available.  The EDT emulation rebindings
 are done in the global keymap, so there is no problem switching
 buffers or major modes while in EDT emulation.
+
 </p></dd>
 <dt> Gosling Emacs
 </dt>
@@ -4012,6 +4257,7 @@ set-gosmacs-bindings</kbd>.  This redefines many keys, mostly on the
 <kbd>M-x set-gnu-bindings</kbd> returns to normal XEmacs by rebinding
 the same keys to the definitions they had at the time <kbd>M-x
 set-gosmacs-bindings</kbd> was done.
+
 </p><p>It is also possible to run Mocklisp code written for Gosling Emacs.
 See section <a href="xemacs_25.html#SEC257">Converting Mocklisp to Lisp</a>.
 </p></dd>

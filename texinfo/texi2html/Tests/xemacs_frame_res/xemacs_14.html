@@ -62,6 +62,7 @@ ul.toc {list-style: none}
 <p>  Since only part of a large buffer fits in the window, XEmacs tries to show
 the part that is likely to be interesting.  The display control commands
 allow you to specify which part of the text you want to see.
+
 </p><dl compact="compact">
 <dt><kbd> C-l
 </kbd></dt>
@@ -115,7 +116,6 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC111">11.1 Scrolling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving text up and down in a window.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC112">11.2 Horizontal Scrolling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving text left and right in a window.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC113">11.3 Selective Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Hiding lines with lots of indentation.</td></tr>
@@ -146,14 +146,17 @@ generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
 <p>  If a buffer contains text that is too large to fit entirely within the
 window that is displaying the buffer, XEmacs shows a contiguous section of
 the text.  The section shown always contains point.
+
 </p><a name="IDX383"></a>
 <p>  <em>Scrolling</em> means moving text up or down in the window so that
 different parts of the text are visible.  Scrolling forward means that text
 moves up, and new text appears at the bottom.  Scrolling backward moves
 text down and new text appears at the top.
+
 </p><p>  Scrolling happens automatically if you move point past the bottom or top
 of the window.  You can also explicitly request scrolling with the commands
 in this section.
+
 </p><dl compact="compact">
 <dt><kbd> C-l
 </kbd></dt>
@@ -188,6 +191,7 @@ point vertically within it (<code>recenter</code>).
 argument.  It clears the entire frame and redisplays all windows.  In
 addition, it scrolls the selected window so that point is halfway down
 from the top of the window.
+
 </p><a name="IDX386"></a>
 <a name="IDX387"></a>
 <a name="IDX388"></a>
@@ -203,6 +207,7 @@ the text and point up together as <kbd>C-l</kbd> might.  <kbd>C-v</kbd> with a
 negative argument shows you more lines at the top of the window.
 <kbd>Meta-v</kbd> (<code>scroll-down</code>) is like <kbd>C-v</kbd>, but moves in the
 opposite direction.
+
 </p><a name="IDX394"></a>
 <p>  To read the buffer a windowful at a time, use <kbd>C-v</kbd> with no
 argument.  <kbd>C-v</kbd> takes the last two lines at the bottom of the
@@ -212,6 +217,7 @@ if it was in the text scrolled off the top.  <kbd>M-v</kbd> with no argument
 moves backward with similar overlap.  The number of lines of overlap
 across a <kbd>C-v</kbd> or <kbd>M-v</kbd> is controlled by the variable
 <code>next-screen-context-lines</code>; by default, it is two.
+
 </p><p>  Another way to scroll is using <kbd>C-l</kbd> with a numeric argument.
 <kbd>C-l</kbd> does not clear the frame when given an argument; it only
 scrolls the selected window.  With a positive argument <var>n</var>, <kbd>C-l</kbd>
@@ -223,6 +229,7 @@ from the bottom of the window.  For example, <kbd>C-u - 1 C-l</kbd> puts
 point on the bottom line, and <kbd>C-u - 5 C-l</kbd> puts it five lines from
 the bottom.  Just <kbd>C-u</kbd> as argument, as in <kbd>C-u C-l</kbd>, scrolls
 point to the center of the frame.
+
 </p><a name="IDX395"></a>
 <p>  Scrolling happens automatically if point has moved out of the visible
 portion of the text when it is time to display.  Usually scrolling is
@@ -230,12 +237,14 @@ done  to put point vertically centered within the window.  However, if
 the variable <code>scroll-step</code> has a non-zero value, an attempt is made to
 scroll the buffer by that many lines; if that is enough to bring point back
 into visibility, that is what happens.
+
 </p><p>  Scrolling happens automatically if point has moved out of the visible
 portion of the text when it is time to display.  Usually scrolling is
 done  to put point vertically centered within the window.  However, if
 the variable <code>scroll-step</code> has a non-zero value, an attempt is made to
 scroll the buffer by that many lines; if that is enough to bring point back
 into visibility, that is what happens.
+
 </p><a name="IDX396"></a>
 <p>  If you set <code>scroll-step</code> to a small value because you want to use 
 arrow keys to scroll the screen without recentering, the redisplay
@@ -243,6 +252,7 @@ preemption will likely make XEmacs keep recentering the screen when
 scrolling fast, regardless of <code>scroll-step</code>.  To prevent this, set
 <code>scroll-conservatively</code> to a small value, which will have the
 result of overriding the redisplay preemption.
+
 </p><hr size="6">
 <a name="NOD100"></a>
 <a name="SEC112"></a>
@@ -287,6 +297,7 @@ window has been scrolled horizontally in this way, text lines are truncated
 rather than continued (see section <a href="xemacs_7.html#SEC56">Continuation Lines</a>), with a `<samp>$</samp>' appearing
 in the first column when there is text truncated to the left, and in the
 last column when there is text truncated to the right.
+
 </p><p>  The command <kbd>C-x &lt;</kbd> (<code>scroll-left</code>) scrolls the selected
 window to the left by <var>n</var> columns with argument <var>n</var>.  With no
 argument, it scrolls by almost the full width of the window (two columns
@@ -294,6 +305,7 @@ less, to be precise).  <kbd>C-x &gt;</kbd> (<code>scroll-right</code>) scrolls
 similarly to the right.  The window cannot be scrolled any farther to
 the right once it is displaying normally (with each line starting at the
 window's left margin); attempting to do so has no effect.
+
 </p><hr size="6">
 <a name="NOD101"></a>
 <a name="SEC113"></a>
@@ -318,21 +330,26 @@ window's left margin); attempting to do so has no effect.
 <p>  XEmacs can hide lines indented more than a certain number
 of columns (you specify how many columns).  This allows you  to get an
 overview of a part of a program.
+
 </p><p>  To hide lines, type <kbd>C-x $</kbd> (<code>set-selective-display</code>) with a
 numeric argument <var>n</var>.  (See section <a href="xemacs_7.html#SEC58">Numeric Arguments</a>, for information on giving
 the argument.)  Lines with at least <var>n</var> columns of indentation
 disappear from the screen.  The only indication of their presence are
 three dots (`<samp><small class="dots">...</small></samp>'), which appear at the end of each visible
 line that is followed by one or more invisible ones.
+
 </p><p>  The invisible lines are still present in the buffer, and most editing
 commands see them as usual, so it is very easy to put point in the middle
 of invisible text.  When this happens, the cursor appears at the end of the
 previous line, after the three dots.  If point is at the end of the visible
 line, before the newline that ends it, the cursor appears before the three
 dots.
+
 </p><p>  The commands <kbd>C-n</kbd> and <kbd>C-p</kbd> move across the invisible lines
 as if they were not there.
+
 </p><p>  To make everything visible again, type <kbd>C-x $</kbd> with no argument.
+
 </p><hr size="6">
 <a name="NOD102"></a>
 <a name="SEC114"></a>
@@ -356,6 +373,7 @@ as if they were not there.
 
 <p>  This section contains information for customization only.  Beginning
 users should skip it.
+
 </p><a name="IDX402"></a>
 <p>  When you reenter XEmacs after suspending, XEmacs normally clears the
 screen and redraws the entire display.  On some terminals with more than
@@ -366,15 +384,18 @@ as to use one page for XEmacs and another page for other output.  In that
 case, you might want to set the variable <code>no-redraw-on-reenter</code> to
 non-<code>nil</code> so that XEmacs will assume, when resumed, that the screen
 page it is using still contains what XEmacs last wrote there.
+
 </p><a name="IDX403"></a>
 <p>  The variable <code>echo-keystrokes</code> controls the echoing of multi-character
 keys; its value is the number of seconds of pause required to cause echoing
 to start, or zero, meaning don't echo at all.  See section <a href="xemacs_4.html#SEC9">The Echo Area</a>.
+
 </p><a name="IDX404"></a>
 <p>  If the variable <code>ctl-arrow</code> is <code>nil</code>, control characters in the
 buffer are displayed with octal escape sequences, all except newline and
 tab.  If its value is <code>t</code>, then control characters will be printed 
 with an up-arrow, for example <kbd>^A</kbd>.  
+
 </p><p>If its value is not <code>t</code> and not <code>nil</code>, then characters whose
 code is greater than 160 (that is, the space character (32) with its
 high bit set) will be assumed to be printable, and will be displayed
@@ -383,8 +404,10 @@ since XEmacs assumes an ISO/8859-1 character set (also known as
 &quot;Latin1&quot;).  The <code>ctl-arrow</code> variable may also be set to an
 integer, in which case all characters whose codes are greater than or
 equal to that value will be assumed to be printable.
+
 </p><p>Altering the value of <code>ctl-arrow</code> makes it local to the current
 buffer; until that time, the default value is in effect.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
+
 </p><a name="IDX405"></a>
 <p>  Normally, a tab character in the buffer is displayed as whitespace which
 extends to the next display tab stop position, and display tab stops come
@@ -393,11 +416,13 @@ controlled by the variable <code>tab-width</code>, which is made local by
 changing it, just like <code>ctl-arrow</code>.  Note that how the tab character
 in the buffer is displayed has nothing to do with the definition of
 <kbd>TAB</kbd> as a command.
+
 </p><a name="IDX406"></a>
 <p>  If you set the variable <code>selective-display-ellipses</code> to <code>nil</code>,
 the three dots at the end of a line that precedes invisible
 lines do not appear.  There is no visible indication of the invisible lines.
 This variable becomes local automatically when set.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

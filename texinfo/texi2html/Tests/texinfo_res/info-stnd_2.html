@@ -84,13 +84,13 @@ ul.toc {list-style: none}
 <p>GNU Info accepts several options to control the initial node being
 viewed, and to specify which directories to search for Info files.  Here
 is a template showing an invocation of GNU Info from the shell:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-info [<var>option</var>]... [<var>menu-item</var>...]
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">info [<var>option</var>]... [<var>menu-item</var>...]
 </pre></td></tr></table>
 <p>The program accepts the following options:
+
 </p><dl compact="compact">
-<dd>
-<p><a name="ANC1"></a>
+<dd><p><a name="ANC1"></a>
 </p></dd>
 <dt><code> --apropos=<var>string</var>
 </code></dt>
@@ -103,8 +103,10 @@ it can find, prints the results to standard output, and then exits.  If
 you are not sure which Info file explains certain issues, this option is
 your friend.  Note that if your system has a lot of Info files
 installed, searching all of them might take some time.
+
 </p><p>You can invoke the apropos command from inside Info; see
 <a href="info-stnd_6.html#SEC6">Searching an Info File</a>.
+
 </p><a name="IDX4"></a>
 </dd>
 <dt><code> --directory <var>directory-path</var>
@@ -124,6 +126,7 @@ built as the initial list of directories.  If the value of
 <code>INFOPATH</code> ends with a colon (or semicolon on MS-DOS/MS-Windows),
 the initial list of directories is constructed by appending the
 build-time default to the value of <code>INFOPATH</code>.
+
 </p><a name="IDX5"></a>
 <a name="IDX6"></a>
 </dd>
@@ -132,6 +135,7 @@ build-time default to the value of <code>INFOPATH</code>.
 <dd><p>Specify a file where all user keystrokes will be recorded.  This file
 can be used later to replay the same sequence of commands, see the
 `<samp>--restore</samp>' option below.
+
 </p></dd>
 <dt><code> --file <var>filename</var>
 </code></dt>
@@ -141,6 +145,7 @@ can be used later to replay the same sequence of commands, see the
 <p>Specify a particular Info file to visit.  By default, Info visits
 the file <code>dir</code>; if you use this option, Info will start with
 <code>(<var>filename</var>)Top</code> as the first file and node.
+
 </p><a name="IDX8"></a>
 <a name="IDX9"></a>
 <a name="IDX10"></a>
@@ -153,6 +158,7 @@ prefix, Info will only look for it in the directories specified in
 <code>INFOPATH</code>.  In other words, Info does <em>not</em> treat file names
 which lack `<tt>./</tt>' and `<tt>../</tt>' prefix as relative to the current
 directory.
+
 </p><a name="IDX11"></a>
 <a name="IDX12"></a>
 <a name="IDX13"></a>
@@ -166,12 +172,14 @@ accordingly, to decompress such files.  Compressed Info files are
 assumed to have `<tt>.z</tt>', `<tt>.gz</tt>', `<tt>.bz2</tt>', `<tt>.Z</tt>', or
 `<tt>.Y</tt>' extensions, possibly in addition to one of the known Info
 files extensions<a name="DOCF2" href="info-stnd_fot.html#FOOT2">(2)</a>.
+
 </p></dd>
 <dt><code> --help
 </code></dt>
 <dt><code> -h
 </code></dt>
 <dd><p>Produces a relatively brief description of the available Info options.
+
 </p></dd>
 <dt><code> --index-search <var>string</var>
 </code></dt>
@@ -186,7 +194,9 @@ entries found</samp>' and exit with nonzero status.  This can be used from
 another program as a way to provide online help, or as a quick way of
 starting to read an Info file at a certain node when you don't know the
 exact name of that node.
+
 </p><p>This command can also be invoked from inside Info; see <a href="info-stnd_6.html#SEC6">Searching an Info File</a>.
+
 </p></dd>
 <dt><code> --node <var>nodename</var>
 </code></dt>
@@ -199,6 +209,7 @@ loads.  This is especially useful in conjunction with
 an interactive Info, each <var>nodename</var> is visited in its own window,
 for a non-interactive Info (such as when <code>--output</code> is given) each
 <var>nodename</var> is processed sequentially.
+
 </p></dd>
 <dt><code> --output <var>filename</var>
 </code></dt>
@@ -210,6 +221,7 @@ for a non-interactive Info (such as when <code>--output</code> is given) each
 Each node that Info visits will be output to <var>filename</var> instead of
 interactively viewed.  A value of <code>-</code> for <var>filename</var> specifies
 the standard output.
+
 </p><a name="IDX19"></a>
 <a name="IDX20"></a>
 </dd>
@@ -224,6 +236,7 @@ colorized text.  By default, Info removes those escape sequences
 before it displays the man page.  If your terminal supports these
 escapes, use <code>--raw-escapes</code> to let the terminal handle them and
 display the man pages with those attributes.
+
 </p><a name="IDX21"></a>
 </dd>
 <dt><code> --restore=<var>dribble-file</var>
@@ -232,6 +245,7 @@ display the man pages with those attributes.
 previous Info session (see the description of the `<samp>--dribble</samp>'
 option above).  When the keystrokes in the files are all read, Info
 reverts its input to the usual interactive operation.
+
 </p><p><a name="ANC2"></a>
 <a name="IDX22"></a>
 <a name="IDX23"></a>
@@ -249,6 +263,7 @@ most important usage information in a manual without the need to wade
 through complex menu hierarchies.  The effect is similar to the
 <code>M-x goto-invocation</code> command (see <a href="info-stnd_5.html#ANC6">goto-invocation</a>) from inside
 Info.
+
 </p><a name="IDX24"></a>
 </dd>
 <dt><code> --speech-friendly
@@ -260,6 +275,7 @@ I/O functions for screen writes.  (By default, Info uses direct writes
 to the video memory on these systems, for faster operation and colored
 display support.)  This allows the speech synthesizers used by blind
 persons to catch the output and convert it to audible speech.
+
 </p></dd>
 <dt><code> --subnodes
 </code></dt>
@@ -269,11 +285,13 @@ persons to catch the output and convert it to audible speech.
 the menus of each node being output.  Menu items which resolve to
 external Info files are not output, and neither are menu items which are
 members of an index.  Each node is only output once.
+
 </p></dd>
 <dt><code> --version
 </code></dt>
 <dd><a name="IDX26"></a>
 <p>Prints the version information of Info and exits.
+
 </p><p><a name="ANC3"></a>
 <a name="IDX27"></a>
 <a name="IDX28"></a>
@@ -285,6 +303,7 @@ bindings of <code>vi</code> and Less.  The default key bindings are generally
 modeled after Emacs.
 (See section <a href="info-stnd_12.html#SEC17">Customizing Key Bindings and Variables</a>,
 for a more general way of altering GNU Info's key bindings.)
+
 </p></dd>
 <dt><code> <var>menu-item</var>
 </code></dt>
@@ -295,8 +314,8 @@ first argument is a menu item in the initial node visited (generally
 <code>dir</code>), the second argument is a menu item in the first argument's
 node, etc.  You can easily move to the node of your choice by specifying
 the menu names which describe the path to that node.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-info emacs buffers
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">info emacs buffers
 </pre></td></tr></table>
 
 <p>first selects the menu item `<samp>Emacs</samp>' in the node `<samp>(dir)Top</samp>',
@@ -307,12 +326,14 @@ and then selects the menu item `<samp>Buffers</samp>' in the node
 
 <p>To avoid searching the `<tt>dir</tt>' files and just show some arbitrary
 file, use `<samp>-f</samp>' and the filename, as in `<samp>info -f ./foo.info</samp>'.
+
 </p><p>The index search and the search for the node which describes program
 invocation and command-line options begins <em>after</em> processing all
 the command-line menu items.  Therefore, the Info file searched for the
 index or the invocation node is the file where Info finds itself after
 following all the menu items given on the command line.  This is so
 `<samp>info emacs --show-options</samp>' does what you'd expect.
+
 </p>
 
 <hr size="6">

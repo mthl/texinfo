@@ -83,8 +83,8 @@ ul.toc {list-style: none}
 except the title and copyright pages.  Some manuals also contain
 footings.  (Headings and footings have no meaning to Info, which is
 not paginated.)
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD275">* Headings Introduced</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conventions for using page headings.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC305">E.1 Standard Heading Formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Standard page heading formats.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC306">E.2 Specifying the Type of Heading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to specify the type of page heading.</td></tr>
@@ -99,10 +99,12 @@ not paginated.)
 printed on one side of each sheet of paper and for manuals that are
 printed on both sides of the paper.  Typically, you will use these
 formats, but you can specify your own format if you wish.
+
 </p><p>In addition, you can specify whether chapters should begin on a new
 page, or merely continue the same page as the previous chapter; and if
 chapters begin on new pages, you can specify whether they must be
 odd-numbered pages.
+
 </p><p>By convention, a book is printed on both sides of each sheet of paper.
 When you open a book, the right-hand page is odd-numbered, and
 chapters begin on right-hand pages--a preceding left-hand page is
@@ -111,10 +113,12 @@ one side of paper, and chapters begin on a fresh page immediately
 following the end of the preceding chapter.  In short or informal
 reports, chapters often do not begin on a new page at all, but are
 separated from the preceding text by a small amount of whitespace.
+
 </p><p>The <code>@setchapternewpage</code> command controls whether chapters begin
 on new pages, and whether one of the standard heading formats is used.
 In addition, Texinfo has several heading and footing commands that you
 can use to generate your own heading and footing formats.
+
 </p><p>In Texinfo, headings and footings are single lines at the tops and
 bottoms of pages; you cannot create multiline headings or footings.
 Each header or footer line is divided into three parts: a left part, a
@@ -122,6 +126,7 @@ middle part, and a right part.  Any part, or a whole line, may be left
 blank.  Text for the left part of a header or footer line is set
 flushleft; text for the middle part is centered; and, text for the
 right part is set flushright.
+
 </p><hr size="6">
 <a name="NOD276"></a>
 <a name="SEC305"></a>
@@ -146,15 +151,18 @@ right part is set flushright.
 <p>Texinfo provides two standard heading formats, one for manuals printed
 on one side of each sheet of paper, and the other for manuals printed
 on both sides of the paper.
+
 </p><p>By default, nothing is specified for the footing of a Texinfo file,
 so the footing remains blank.
+
 </p><p>The standard format for single-sided printing consists of a header
 line in which the left-hand part contains the name of the chapter, the
 central part is blank, and the right-hand part contains the page
 number.
+
 </p><p>A single-sided page looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-   _______________________
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">   _______________________
   |                       |
   | chapter   page number |
   |                       |
@@ -171,15 +179,17 @@ correct, but during double-sided printing, it is wise to check that
 pages will bind properly--sometimes a printer will produce output in
 which the even-numbered pages have a larger right-hand margin than the
 odd-numbered pages.)
+
 </p><p>In the standard double-sided format, the left part of the left-hand
 (even-numbered) page contains the page number, the central part is
 blank, and the right part contains the title (specified by the
 <code>@settitle</code> command).  The left part of the right-hand
 (odd-numbered) page contains the name of the chapter, the central part
 is blank, and the right part contains the page number.
+
 </p><p>Two pages, side by side as in an open book, look like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-   _______________________     _______________________
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">   _______________________     _______________________
   |                       |   |                       |
   | page number     title |   | chapter   page number |
   |                       |   |                       |
@@ -192,6 +202,7 @@ is blank, and the right part contains the page number.
 <p>The chapter name is preceded by the word &quot;Chapter&quot;, the chapter number
 and a colon.  This makes it easier to keep track of where you are in the
 manual.
+
 </p><hr size="6">
 <a name="NOD277"></a>
 <a name="SEC306"></a>
@@ -220,16 +231,20 @@ titlepage</code> command causes TeX to begin to generate page headings
 according to a standard format specified by the
 <code>@setchapternewpage</code> command that precedes the
 <code>@titlepage</code> section.
+
 </p><p>There are four possibilities:
+
 </p><dl compact="compact">
 <dt> No <code>@setchapternewpage</code> command
 </dt>
 <dd><p>Cause TeX to specify the single-sided heading format, with chapters
 on new pages. This is the same as <code>@setchapternewpage on</code>.
+
 </p></dd>
 <dt> <code>@setchapternewpage on</code>
 </dt>
 <dd><p>Specify the single-sided heading format, with chapters on new pages.
+
 </p></dd>
 <dt> <code>@setchapternewpage off</code>
 </dt>
@@ -238,6 +253,7 @@ the preceding chapter, after skipping some vertical whitespace.  Also
 cause TeX to typeset for single-sided printing.  (You can override
 the headers format with the <code>@headings double</code> command; see
 <a href="texinfo_4.html#SEC58">The <code>@headings</code> Command</a>.)
+
 </p></dd>
 <dt> <code>@setchapternewpage odd</code>
 </dt>
@@ -247,6 +263,7 @@ the headers format with the <code>@headings double</code> command; see
 
 
 <p>Texinfo lacks an <code>@setchapternewpage even</code> command.
+
 </p><hr size="6">
 <a name="NOD278"></a>
 <a name="SEC307"></a>
@@ -271,6 +288,7 @@ the headers format with the <code>@headings double</code> command; see
 <p>You can use the standard headings provided with Texinfo or specify
 your own.  By default, Texinfo has no footers, so if you specify them,
 the available page size for the main text will be slightly reduced.
+
 </p><p>Texinfo provides six commands for specifying headings and
 footings:
 </p><ul>
@@ -290,11 +308,12 @@ after the <code>@end titlepage</code> command.
 You must cancel the predefined heading commands with the
 <code>@headings off</code> command before defining your own
 specifications.
+
 </p><p>Here is how to tell TeX to place the chapter name at the left, the
 page number in the center, and the date at the right of every header
 for both even- and odd-numbered pages:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@headings off
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@headings off
 @everyheading @thischapter @| @thispage @| @today{}
 </pre></td></tr></table>
 
@@ -302,12 +321,15 @@ for both even- and odd-numbered pages:
 part from the right part by inserting `<samp>@|</samp>' between parts.
 Otherwise, the specification command will not be able to tell where
 the text for one part ends and the next part begins.
+
 </p><p>Each part can contain text or @-commands.  The text
 is printed as if the part were within an ordinary paragraph in the
 body of the page.  The @-commands replace
 themselves with the page number, date, chapter name, or
 whatever.
+
 </p><p>Here are the six heading and footing commands:
+
 </p><a name="IDX450"></a>
 <a name="IDX451"></a>
 <dl compact="compact">
@@ -320,6 +342,7 @@ whatever.
 pages.  These commands are for documents that are printed on one side
 of each sheet of paper, or for documents in which you want symmetrical
 headers or footers.
+
 </p><a name="IDX452"></a>
 <a name="IDX453"></a>
 <a name="IDX454"></a>
@@ -346,31 +369,36 @@ and sections and the page number.  You can use the
 `<samp>@this<small class="dots">...</small></samp>' commands in the left, center, or right portions
 of headers and footers, or anywhere else in a Texinfo file so long as
 they are between <code>@iftex</code> and <code>@end iftex</code> commands.
+
 </p><p>Here are the `<samp>@this<small class="dots">...</small></samp>' commands:
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX456"></a>
+<dd><a name="IDX456"></a>
 </dd>
 <dt><code> @thispage
 </code></dt>
 <dd><p>Expands to the current page number.
+
 </p><a name="IDX457"></a>
 </dd>
 <dt><code> @thischaptername
 </code></dt>
 <dd><p>Expands to the name of the current chapter.
+
 </p><a name="IDX458"></a>
 </dd>
 <dt><code> @thischapter
 </code></dt>
 <dd><p>Expands to the number and name of the current
 chapter, in the format `Chapter 1: Title'.
+
 </p><a name="IDX459"></a>
 </dd>
 <dt><code> @thistitle
 </code></dt>
 <dd><p>Expands to the name of the document, as specified by the
 <code>@settitle</code> command.
+
 </p><a name="IDX460"></a>
 </dd>
 <dt><code> @thisfile
@@ -388,16 +416,18 @@ information about <code>@include</code> files.)
 <p>You can also use the <code>@today{}</code> command, which expands to the
 current date, in `1 Jan 1900' format.
 <a name="IDX461"></a>
+
 </p><p>Other @-commands and text are printed in a header or footer just as
 if they were in the body of a page.  It is useful to incorporate text,
 particularly when you are writing drafts:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@headings off
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@headings off
 @everyheading @emph{Draft!} @| @thispage @| @thischapter
 @everyfooting @| @| Version: 0.27: @today{}
 </pre></td></tr></table>
 <p>Beware of overlong titles: they may overlap another part of the
 header or footer and blot it out.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

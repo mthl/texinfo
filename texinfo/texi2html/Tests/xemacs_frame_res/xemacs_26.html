@@ -64,6 +64,7 @@ different text.  Abbrevs are defined by the user to expand in specific
 ways.  For example, you might define `<samp>foo</samp>' as an abbrev expanding to
 `<samp>find outer otter</samp>'.  With this abbrev defined, you would be able to
 get `<samp>find outer otter </samp>' into the buffer by typing <kbd>f o o <kbd>SPC</kbd></kbd>.
+
 </p><a name="IDX1060"></a>
 <a name="IDX1061"></a>
 <p>  Abbrevs expand only when Abbrev mode (a minor mode) is enabled.
@@ -74,21 +75,24 @@ turns Abbrev mode on if the argument is positive, off otherwise.
 See section <a href="xemacs_30.html#SEC352">Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
 on when the variable is non-<code>nil</code>.  The variable <code>abbrev-mode</code>
 automatically becomes local to the current buffer when it is set.
+
 </p><p>  Abbrev definitions can be <em>mode-specific</em>--active only in one major
 mode.  Abbrevs can also have <em>global</em> definitions that are active in
 all major modes.  The same abbrev can have a global definition and various
 mode-specific definitions for different major modes.  A mode-specific
 definition for the current major mode overrides a global definition.
+
 </p><p> You can define Abbrevs interactively during an editing session.  You
 can also save lists of abbrev definitions in files and reload them in later
 sessions.  Some users keep extensive lists of abbrevs that they load in
 every session.
+
 </p><p>  A second kind of abbreviation facility is called the <em>dynamic
 expansion</em>.  Dynamic abbrev expansion happens only when you give an
 explicit command and the result of the expansion depends only on the
 current contents of the buffer.  See section <a href="#SEC290">Dynamic Abbrev Expansion</a>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC286">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining an abbrev, so it will expand when typed.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC287">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling expansion: prefixes, canceling expansion.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC288">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Viewing or editing the entire list of defined abbrevs.</td></tr>
@@ -153,8 +157,10 @@ before point.  Use a numeric argument to say how many words before point
 should be taken as the expansion.  For example, to define the abbrev
 `<samp>foo</samp>' as in the example above, insert the text `<samp>find outer
 otter</samp>', then type <br><kbd>C-u 3 C-x a g f o o <kbd>RET</kbd></kbd>.
+
 </p><p>  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
 region as the expansion of the abbrev being defined.
+
 </p><a name="IDX1064"></a>
 <a name="IDX1065"></a>
 <p>  The command <kbd>C-x a l</kbd> (<code>add-mode-abbrev</code>) is similar, but
@@ -162,6 +168,7 @@ defines a mode-specific abbrev.  Mode-specific abbrevs are active only in a
 particular major mode.  <kbd>C-x a l</kbd> defines an abbrev for the major mode
 in effect at the time <kbd>C-x a l</kbd> is typed.  The arguments work the
 same way they do for <kbd>C-x a g</kbd>.
+
 </p><a name="IDX1066"></a>
 <a name="IDX1067"></a>
 <a name="IDX1068"></a>
@@ -172,14 +179,17 @@ instead of <kbd>C-x a g</kbd>, or use <kbd>C-x a i l</kbd>
 (<code>inverse-add-mode-abbrev</code>) instead of <kbd>C-x a l</kbd>.  These commands
 are called &quot;inverse&quot; because they invert the meaning of the argument
 found in the buffer and the argument read using the minibuffer.
+
 </p><p>  To change the definition of an abbrev, just add the new definition.  You
 will be asked to confirm if the abbrev has a prior definition.  To remove
 an abbrev definition, give a negative argument to <kbd>C-x a g</kbd> or <kbd>C-x
 a l</kbd>.  You must choose the command to specify whether to kill a global
 definition or a mode-specific definition for the current mode, since those
 two definitions are independent for one abbrev.
+
 </p><a name="IDX1070"></a>
 <p>  <kbd>M-x kill-all-abbrevs</kbd> removes all existing abbrev definitions.
+
 </p><hr size="6">
 <a name="NOD261"></a>
 <a name="SEC287"></a>
@@ -205,13 +215,16 @@ two definitions are independent for one abbrev.
 type a self-inserting punctuation character (<kbd>SPC</kbd>, comma,
 etc.).  Most often an abbrev is used by inserting the abbrev followed
 by punctuation.
+
 </p><a name="IDX1071"></a>
 <p>  Abbrev expansion preserves case; thus, `<samp>foo</samp>' expands into `<samp>find
 outer otter</samp>', `<samp>Foo</samp>' into `<samp>Find outer otter</samp>', and `<samp>FOO</samp>' into
 `<samp>FIND OUTER OTTER</samp>' or `<samp>Find Outer Otter</samp>' according to the
 variable <code>abbrev-all-caps</code> (a non-<code>nil</code> value chooses the first
 of the two expansions).
+
 </p><p>   Two commands are available to control abbrev expansion:
+
 </p><dl compact="compact">
 <dt><kbd> M-'
 </kbd></dt>
@@ -248,14 +261,17 @@ now contains `<samp>re-cnst</samp>'.  Now insert a punctuation character to
 expand the abbrev `<samp>cnst</samp>' into `<samp>construction</samp>'.  The minus sign
 is deleted at this point by <kbd>M-'</kbd>.  The resulting text is the
 desired `<samp>reconstruction</samp>'.
+
 </p><p>  If you actually want the text of the abbrev in the buffer, rather than
 its expansion, insert the following punctuation with <kbd>C-q</kbd>.  Thus,
 <kbd>foo C-q -</kbd> leaves `<samp>foo-</samp>' in the buffer.
+
 </p><a name="IDX1075"></a>
 <p>  If you expand an abbrev by mistake, you can undo the expansion (replace
 the expansion by the original abbrev text) with <kbd>M-x unexpand-abbrev</kbd>.
 You can also use <kbd>C-_</kbd> (<code>undo</code>) to undo the expansion; but that
 will first undo the insertion of the punctuation character.
+
 </p><a name="IDX1076"></a>
 <p>  <kbd>M-x expand-region-abbrevs</kbd> searches through the region for defined
 abbrevs, and  offers to replace each one it finds with its expansion.
@@ -263,6 +279,7 @@ This command is useful if you have typed text using abbrevs but forgot
 to turn on Abbrev mode first.  It may also be useful together with a
 special set of abbrev definitions for making several global replacements at
 once.  The command is effective even if Abbrev mode is not enabled.
+
 </p><hr size="6">
 <a name="NOD262"></a>
 <a name="SEC288"></a>
@@ -297,8 +314,8 @@ once.  The command is effective even if Abbrev mode is not enabled.
 
 <a name="IDX1077"></a>
 <p>  The output from <kbd>M-x list-abbrevs</kbd> looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(lisp-mode-abbrev-table)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(lisp-mode-abbrev-table)
 &quot;dk&quot;           0    &quot;define-key&quot;
 (global-abbrev-table)
 &quot;dfn&quot;          0    &quot;definition&quot;
@@ -306,16 +323,19 @@ once.  The command is effective even if Abbrev mode is not enabled.
 
 <p>(Some blank lines of no semantic significance, and some other abbrev
 tables, have been omitted.)
+
 </p><p>  A line containing a name in parentheses is the header for abbrevs in a
 particular abbrev table; <code>global-abbrev-table</code> contains all the global
 abbrevs, and the other abbrev tables that are named after major modes
 contain the mode-specific abbrevs.
+
 </p><p>  Within each abbrev table, each non-blank line defines one abbrev.  The
 word at the beginning is the abbrev.  The number that appears is the number
 of times the abbrev has been expanded.  Emacs keeps track of this to help
 you see which abbrevs you actually use, in case you want to eliminate
 those that you don't use often.  The string at the end of the line is the
 expansion.
+
 </p><a name="IDX1078"></a>
 <a name="IDX1079"></a>
 <a name="IDX1080"></a>
@@ -327,9 +347,11 @@ key <kbd>C-c C-c</kbd> to install the abbrev definitions as specified in the
 buffer.  The  <code>edit-abbrevs-redefine</code> command does this.
 Any abbrevs not described in the buffer are eliminated when this is
 done.
+
 </p><p>  <code>edit-abbrevs</code> is actually the same as <code>list-abbrevs</code>, except
 that it selects the buffer `<samp>*Abbrevs*</samp>' whereas <code>list-abbrevs</code>
 merely displays it in another window.
+
 </p><hr size="6">
 <a name="NOD263"></a>
 <a name="SEC289"></a>
@@ -353,6 +375,7 @@ merely displays it in another window.
 
 <p>  These commands allow you to keep abbrev definitions between editing
 sessions.
+
 </p><dl compact="compact">
 <dt><kbd> M-x write-abbrev-file
 </kbd></dt>
@@ -382,6 +405,7 @@ a later session.  The command reads a file name using the minibuffer and
 writes a description of all current abbrev definitions into the
 specified file.  The text stored in the file looks like the output of
 <kbd>M-x list-abbrevs</kbd>.
+
 </p>
 <a name="IDX1082"></a>
 <a name="IDX1083"></a>
@@ -394,11 +418,13 @@ in the init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>
 either of these functions, the file name Emacs uses is the value of the
 variable <code>abbrev-file-name</code>, which is by default
 <code>&quot;~/.abbrev_defs&quot;</code>.
+
 </p><a name="IDX1085"></a>
 <p>  Emacs offers to save abbrevs automatically if you have changed any of
 them, whenever it offers to save all files (for <kbd>C-x s</kbd> or <kbd>C-x
 C-c</kbd>).  Set the variable <code>save-abbrevs</code> to <code>nil</code> to inhibit
 this feature.
+
 </p><a name="IDX1086"></a>
 <a name="IDX1087"></a>
 <p>  The commands <kbd>M-x insert-abbrevs</kbd> and <kbd>M-x define-abbrevs</kbd> are
@@ -406,6 +432,7 @@ similar to the previous commands but work on text in an Emacs buffer.
 <kbd>M-x insert-abbrevs</kbd> inserts text into the current buffer before point,
 describing all current abbrev definitions; <kbd>M-x define-abbrevs</kbd> parses
 the entire current buffer and defines abbrevs accordingly.
+
 </p><hr size="6">
 <a name="NOD264"></a>
 <a name="SEC290"></a>
@@ -432,6 +459,7 @@ text, but all abbrevs must be defined explicitly.  By contrast,
 <em>dynamic abbrevs</em> allow the meanings of abbrevs to be determined
 automatically from the contents of the buffer, but dynamic abbrev expansion
 happens only when you request it explicitly.
+
 </p><a name="IDX1088"></a>
 <a name="IDX1089"></a>
 <dl compact="compact">
@@ -450,9 +478,11 @@ last word in the buffer that starts with `<samp>fo</samp>'.  A numeric argument 
 looking backward from point.  Repeating <kbd>M-/</kbd> searches for an
 alternative expansion by looking farther back.  After the entire buffer
 before point has been considered, the buffer after point is searched.
+
 </p><p>  Dynamic abbrev expansion is completely independent of Abbrev mode; the
 expansion of a word with <kbd>M-/</kbd> is completely independent of whether it
 has a definition as an ordinary abbrev.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

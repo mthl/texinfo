@@ -82,14 +82,17 @@ ul.toc {list-style: none}
 
 <p>This section details the numerous Info commands which select a new node
 to view in the current window.
+
 </p><p>The most basic node commands are `<samp>n</samp>', `<samp>p</samp>', `<samp>u</samp>', and
 `<samp>l</samp>'.  Note that the commands to select nodes are mapped differently
 when `<samp>--vi-keys</samp>' is in effect; these keybindings are designated
 below as &quot;vi-like operation&quot;.
+
 </p><p>When you are viewing a node, the top line of the node contains some Info
 <em>pointers</em> which describe where the next, previous, and up nodes
 are.  Info uses this line to move about the node structure of the file
 when you use the following commands:
+
 </p><dl compact="compact">
 <dt> <kbd>n</kbd> (<code>next-node</code>)
 </dt>
@@ -102,9 +105,11 @@ when you use the following commands:
 <a name="IDX113"></a>
 <a name="IDX114"></a>
 <p>Select the `Next' node.
+
 </p><a name="IDX115"></a>
 <p>The <kbd>NEXT</kbd> key is known as the <kbd>PgDn</kbd> key on some
 keyboards.
+
 </p></dd>
 <dt> <kbd>p</kbd> (<code>prev-node</code>)
 </dt>
@@ -114,9 +119,11 @@ keyboards.
 <a name="IDX117"></a>
 <a name="IDX118"></a>
 <p>Select the `Prev' node.
+
 </p><a name="IDX119"></a>
 <p>The <kbd>PREVIOUS</kbd> key is known as the <kbd>PgUp</kbd> key on some
 keyboards.
+
 </p></dd>
 <dt> <kbd>u</kbd> (<code>up-node</code>)
 </dt>
@@ -138,9 +145,11 @@ actually moves backwards through the history of visited nodes for this
 window.  This is handy when you followed a reference to another node,
 possibly to read about a related issue, and would like then to resume
 reading at the same place where you started the excursion.
+
 </p><p>Each node where you press `<samp>l</samp>' is discarded from the history.  Thus,
 by the time you get to the first node you visited in a window, the
 entire history of that window is discarded.
+
 </p><dl compact="compact">
 <dt> <kbd>l</kbd> (<code>history-node</code>)
 </dt>
@@ -159,6 +168,7 @@ history.
 
 <p>Two additional commands make it easy to select the most commonly
 selected nodes; they are `<samp>t</samp>' and `<samp>d</samp>'.
+
 </p><dl compact="compact">
 <dt> <kbd>t</kbd> (<code>top-node</code>)
 </dt>
@@ -168,6 +178,7 @@ selected nodes; they are `<samp>t</samp>' and `<samp>d</samp>'.
 <a name="IDX129"></a>
 <a name="IDX130"></a>
 <p>Select the node `<samp>Top</samp>' in the current Info file.
+
 </p></dd>
 <dt> <kbd>d</kbd> (<code>dir-node</code>)
 </dt>
@@ -182,6 +193,7 @@ selected nodes; they are `<samp>t</samp>' and `<samp>d</samp>'.
 
 <p>Here are some other commands which immediately result in the selection
 of a different node in the current window:
+
 </p><dl compact="compact">
 <dt> <kbd>&lt;</kbd> (<code>first-node</code>)
 </dt>
@@ -194,6 +206,7 @@ of a different node in the current window:
 often `<samp>Top</samp>', but it does not have to be.  With a numeric argument
 <var>N</var>, select the <var>N</var>th node (the first node is node 1).  An
 argument of zero is the same as the argument of 1.
+
 </p></dd>
 <dt> <kbd>&gt;</kbd> (<code>last-node</code>)
 </dt>
@@ -206,6 +219,7 @@ argument of zero is the same as the argument of 1.
 <var>N</var>, select the <var>N</var>th node (the first node is node 1).  An
 argument of zero is the same as no argument, i.e., it selects the last
 node.
+
 </p></dd>
 <dt> <kbd>]</kbd> (<code>global-next-node</code>)
 </dt>
@@ -216,6 +230,7 @@ currently viewing has a `<samp>Next</samp>' pointer, that node is selected.
 Otherwise, if this node has a menu, the first menu item is selected.  If
 there is no `<samp>Next</samp>' and no menu, the same process is tried with the
 `<samp>Up</samp>' node of this node.
+
 </p></dd>
 <dt> <kbd>[</kbd> (<code>global-prev-node</code>)
 </dt>
@@ -232,9 +247,9 @@ and if it has a menu, the last item in the menu is selected.
 <code>global-prev-node</code> while simply scrolling through the file with
 <kbd>SPC</kbd> and <kbd>DEL</kbd>; See section <a href="info-stnd_11.html#SEC16"><code>scroll-behavior</code></a>, for
 more information.
+
 </p><dl compact="compact">
-<dd>
-<p><a name="ANC5"></a>
+<dd><p><a name="ANC5"></a>
 </p></dd>
 <dt> <kbd>g</kbd> (<code>goto-node</code>)
 </dt>
@@ -249,10 +264,11 @@ nodes which reside in one of the Info files that were loaded in the
 current Info session; if the desired node resides in some other file,
 you must type the node exactly as it appears in that Info file, and you
 must include the Info file of the other file.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-<code>g(emacs)Buffers</code>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><code>g(emacs)Buffers</code>
 </pre></td></tr></table>
 <p>finds the node `<samp>Buffers</samp>' in the Info file `<tt>emacs</tt>'.
+
 </p><p><a name="ANC6"></a>
 </p></dd>
 <dt> <kbd>O</kbd> (<code>goto-invocation</code>
@@ -270,6 +286,7 @@ current Info file.  This command does the same as the
 `<samp>--show-options</samp>' command-line option (see <a href="info-stnd_2.html#ANC2">--show-options</a>), but
 it also allows to specify the program name; this is important for those
 manuals which describe several programs.
+
 </p><p>If you need to find the Invocation node of a program that is documented
 in another Info file, you need to visit that file before invoking
 `<samp>I</samp>'.  For example, if you are reading the Emacs manual and want to
@@ -278,6 +295,7 @@ see the command-line options of the <code>makeinfo</code> program, type <kbd>g
 know what Info file documents the command, or if invoking `<samp>I</samp>'
 doesn't display the right node, go to the `<samp>(dir)</samp>' node (using the
 `<samp>d</samp>' command) and invoke `<samp>I</samp>' from there.
+
 </p></dd>
 <dt> <kbd>G</kbd> (<code>menu-sequence</code>)
 </dt>
@@ -295,16 +313,18 @@ In other words, you can specify a complete path which descends through
 the menu hierarchy of a particular Info file starting at the
 `<samp>(dir)</samp>' node.  This has the same effect as if you typed the menu
 item sequence on Info's command line, see <a href="info-stnd_2.html#ANC4">Info command-line arguments processing</a>.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
- <kbd>G Texinfo,Overview,Reporting Bugs <kbd>RET</kbd></kbd>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> <kbd>G Texinfo,Overview,Reporting Bugs <kbd>RET</kbd></kbd>
 </pre></td></tr></table>
 
 <p>displays the node `<samp>Reporting Bugs</samp>' in the Texinfo manual.  (You
 don't actually need to type the menu items in their full length, or in
 their exact letter-case.  However, if you do type the menu items
 exactly, Info will find it faster.)
+
 </p><p>If any of the menu items you type are not found, Info stops at the last
 entry it did find and reports an error.
+
 </p></dd>
 <dt> <kbd>C-x <kbd>k</kbd></kbd> (<code>kill-node</code>)
 </dt>
@@ -315,17 +335,16 @@ default of the current node.  <em>Killing</em> a node means that Info tries
 hard to forget about it, removing it from the list of history nodes kept
 for the window where that node is found.  Another node is selected in
 the window which contained the killed node.
+
 </p></dd>
 <dt> <kbd>C-x C-f</kbd> (<code>view-file</code>)
 </dt>
 <dd><a name="IDX156"></a>
 <a name="IDX157"></a>
 <p>Read the name of a file and selects the entire file.  The command
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-<code>C-x C-f <var>filename</var></code>
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><code>C-x C-f <var>filename</var></code>
 </pre></td></tr></table><p>is equivalent to typing
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-<code>g(<var>filename</var>)*</code>
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><code>g(<var>filename</var>)*</code>
 </pre></td></tr></table>
 </dd>
 <dt> <kbd>C-x C-b</kbd> (<code>list-visited-nodes</code>)
@@ -335,6 +354,7 @@ the window which contained the killed node.
 <p>Make a window containing a menu of all of the currently visited nodes.
 This window becomes the selected window, and you may use the standard
 Info commands within it.
+
 </p></dd>
 <dt> <kbd>C-x <kbd>b</kbd></kbd> (<code>select-visited-node</code>)
 </dt>

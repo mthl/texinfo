@@ -65,26 +65,31 @@ can be file names, buffer names, Lisp function names, XEmacs command
 names, Lisp expressions, and many other things, depending on the command
 reading the argument.  You can use the usual XEmacs editing commands in
 the minibuffer to edit the argument text.
+
 </p><a name="IDX210"></a>
 <p>  When the minibuffer is in use, it appears in the echo area, and the
 cursor moves there.  The beginning of the minibuffer line displays a
 <em>prompt</em> which says what kind of input you should supply and how it
 will be used.  Often this prompt is derived from the name of the command
 that the argument is for.  The prompt normally ends with a colon.
+
 </p><a name="IDX211"></a>
 <p>  Sometimes a <em>default argument</em> appears in parentheses after the
 colon; it, too, is part of the prompt.  The default is used as the
 argument value if you enter an empty argument (e.g., by just typing <kbd>RET</kbd>).
 For example, commands that read buffer names always show a default, which
 is the name of the buffer that will be used if you type just <kbd>RET</kbd>.
+
 </p><a name="IDX212"></a>
 <p>  The simplest way to enter a minibuffer argument is to type the text
 you want, terminated by <kbd>RET</kbd> which exits the minibuffer.  You can
 cancel the command that wants the argument, and get out of the
 minibuffer, by typing <kbd>C-g</kbd>.
+
 </p><p>  Since the minibuffer uses the screen space of the echo area, it can
 conflict with other ways XEmacs customarily uses the echo area.  Here is
 how XEmacs handles such conflicts:
+
 </p><ul>
 <li>
 <p>If a command gets an error while you are in the minibuffer, this does
@@ -92,18 +97,19 @@ not cancel the minibuffer.  However, the echo area is needed for the
 error message and therefore the minibuffer itself is hidden for a
 while.  It comes back after a few seconds, or as soon as you type
 anything.
+
 </p></li><li>
 <p>If in the minibuffer you use a command whose purpose is to print a
 message in the echo area, such as <kbd>C-x =</kbd>, the message is printed
 normally, and the minibuffer is hidden for a while.  It comes back
 after a few seconds, or as soon as you type anything.
+
 </p></li><li>
 <p>Echoing of keystrokes does not take place while the minibuffer is in
 use.
 </p></li></ul>
 
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC61">6.1 Minibuffers for File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Entering file names with the minibuffer.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC62">6.2 Editing in the Minibuffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit in the minibuffer.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC63">6.3 Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An abbreviation facility for minibuffer input.</td></tr>
@@ -137,9 +143,10 @@ you are supposed to give a file name, the minibuffer starts out containing
 the <em>default directory</em>, which ends with a slash.  This is to inform
 you which directory the file will be found in if you do not specify a
 directory.
+
 </p><p>  For example, the minibuffer might start out with these contents:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Find File: /u2/emacs/src/
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src/
 </pre></td></tr></table>
 
 <p>where `<samp>Find File: </samp>' is the prompt.  Typing <kbd>buffer.c</kbd>
@@ -148,14 +155,15 @@ nearby directories, use <kbd>..</kbd>; thus, if you type
 <kbd>../lisp/simple.el</kbd>, you will get the file named
 `<tt>/u2/emacs/lisp/simple.el</tt>'.  Alternatively, you can kill with
 <kbd>M-<kbd>DEL</kbd></kbd> the directory names you don't want (see section <a href="xemacs_23.html#SEC206">Words</a>).
+
 </p><p>  If you don't want any of the default, you can kill it with <kbd>C-a
 C-k</kbd>.  But you don't need to kill the default; you can simply ignore it.
 Insert an absolute file name, one starting with a slash or a tilde,
 after the default directory.  For example, to specify the file
 `<tt>/etc/termcap</tt>', just insert that name, giving these minibuffer
 contents:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Find File: /u2/emacs/src//etc/termcap
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Find File: /u2/emacs/src//etc/termcap
 </pre></td></tr></table>
 
 <a name="IDX213"></a>
@@ -165,11 +173,13 @@ Find File: /u2/emacs/src//etc/termcap
 a useful thing to write): it means, &quot;ignore everything before the
 second slash in the pair.&quot;  Thus, `<samp>/u2/emacs/src/</samp>' is ignored in
 the example above, and you get the file `<tt>/etc/termcap</tt>'.
+
 </p><a name="IDX216"></a>
 <p>If you set <code>insert-default-directory</code> to <code>nil</code>, the default
 directory is not inserted in the minibuffer.  This way, the minibuffer
 starts out empty.  But the name you type, if relative, is still
 interpreted with respect to the same default directory.
+
 </p><hr size="6">
 <a name="NOD54"></a>
 <a name="SEC62"></a>
@@ -194,10 +204,12 @@ interpreted with respect to the same default directory.
 <p>  The minibuffer is an XEmacs buffer (albeit a peculiar one), and the
 usual XEmacs commands are available for editing the text of an argument
 you are entering.
+
 </p><p>  Since <kbd>RET</kbd> in the minibuffer is defined to exit the minibuffer,
 you can't use it to insert a newline in the minibuffer.  To do that,
 type <kbd>C-o</kbd> or <kbd>C-q C-j</kbd>.  (Recall that a newline is really the
 character control-J.)
+
 </p><p>  The minibuffer has its own window which always has space on the screen
 but acts as if it were not there when the minibuffer is not in use.
 When the minibuffer is in use, its window is just like the others; you
@@ -206,6 +218,7 @@ windows and perhaps even visit more files, before returning to the
 minibuffer to submit the argument.  You can kill text in another window,
 return to the minibuffer window, and then yank the text to use it in the
 argument.  See section <a href="xemacs_19.html#SEC175">Multiple Windows</a>.
+
 </p><p>  There are some restrictions on the use of the minibuffer window,
 however.  You cannot switch buffers in it--the minibuffer and its
 window are permanently attached.  Also, you cannot split or kill the
@@ -214,21 +227,23 @@ minibuffer window. But you can make it taller in the normal fashion with
 minibuffer window expands vertically as necessary to hold the text that
 you put in the minibuffer.  Use <kbd>M-x resize-minibuffer-mode</kbd> to
 enable or disable this minor mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).
+
 </p><a name="IDX217"></a>
 <p>  If while in the minibuffer you issue a command that displays help text
 of any sort in another window, you can use the <kbd>C-M-v</kbd> command while
 in the minibuffer to scroll the help text.  This lasts until you exit
 the minibuffer.  This feature is especially useful if a completing
 minibuffer gives you a list of possible completions.  See section <a href="xemacs_19.html#SEC178">Using Other Windows</a>.
+
 </p><a name="IDX218"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is <code>t</code>, you
 are asked for confirmation if there is no known completion for the text
 you typed. For example, if you attempted to visit a non-existent file,
 the minibuffer might read:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-        Find File: chocolate_bar.c [no completions, confirm]
+</p><table><tr><td>&nbsp;</td><td><pre class="example">        Find File: chocolate_bar.c [no completions, confirm]
 </pre></td></tr></table><p>If you press <kbd>Return</kbd> again, that confirms the filename. Otherwise,
 you can continue editing it. 
+
 </p><p> XEmacs supports recursive use of the minibuffer.  However, it is easy
 to do this by accident (because of autorepeating keyboards, for example)
 and get confused.  Therefore, most XEmacs commands that use the
@@ -236,9 +251,11 @@ minibuffer refuse to operate if the minibuffer window is selected.  If
 the minibuffer is active but you have switched to a different window,
 recursive use of the minibuffer is allowed--if you know enough to try
 to do this, you probably will not get confused.
+
 </p><a name="IDX219"></a>
 <p>  If you set the variable <code>enable-recursive-minibuffers</code> to a
 non-<code>nil</code>, recursive use of the minibuffer is always allowed.
+
 </p><hr size="6">
 <a name="NOD55"></a>
 <a name="SEC63"></a>
@@ -264,12 +281,14 @@ non-<code>nil</code>, recursive use of the minibuffer is always allowed.
 the argument value.  Completion means that you type part of the
 argument, then XEmacs visibly fills in the rest, or as much as
 can be determined from the part you have typed.
+
 </p><p>  When completion is available, certain keys--<kbd>TAB</kbd>, <kbd>RET</kbd>, and
 <kbd>SPC</kbd>--are rebound to complete the text present in the
 minibuffer into a longer string that it stands for, by matching it
 against a set of <em>completion alternatives</em> provided by the command
 reading the argument.  <kbd>?</kbd> is defined to display a list of possible
 completions of what you have inserted.
+
 </p><p>  For example, when <kbd>M-x</kbd> uses the minibuffer to read the name of a
 command, it provides a list of all available XEmacs command names to
 complete against.  The completion keys match the text in the minibuffer
@@ -278,17 +297,19 @@ implied by the ones already present in the minibuffer, and add those
 characters to the ones you have given.  This is what makes it possible
 to type <kbd>M-x inse <kbd>SPC</kbd> b <kbd>RET</kbd></kbd> instead of <kbd>M-x
 insert-buffer <kbd>RET</kbd></kbd> (for example).
+
 </p><p>  Case is normally significant in completion because it is significant
 in most of the names that you can complete (buffer names, file names and
 command names).  Thus, `<samp>fo</samp>' does not complete to `<samp>Foo</samp>'.  When
 you are completing a name in which case does not matter, case may be
 ignored for completion's sake if specified by program.
+
 </p><p>When a completion list is displayed, the completions will highlight as
 you move the mouse over them.  Clicking the middle mouse button on any 
 highlighted completion will &quot;select&quot; it just as if you had typed it in
 and hit <kbd>RET</kbd>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC64">6.3.1 Completion Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC65">6.3.2 Completion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC66">6.3.3 Strict Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -322,10 +343,12 @@ start with `<samp>au</samp>'.  There are several, including
 <code>auto-fill-mode</code> and <code>auto-save-mode</code>--but they are all the
 same as far as <code>auto</code>, so the `<samp>au</samp>' in the minibuffer changes
 to `<samp>auto</samp>'.
+
 </p><p>  If you type <kbd>TAB</kbd> again immediately, there are multiple
 possibilities for the very next character--it could be any of
 `<samp>c-</samp>'--so no more characters are added; instead, <kbd>TAB</kbd>
 displays a list of all possible completions in another window.
+
 </p><p>  If you go on to type <kbd>-f <kbd>TAB</kbd></kbd>, this <kbd>TAB</kbd> sees
 `<samp>auto-f</samp>'.  The only command name starting this way is
 <code>auto-fill-mode</code>, so completion fills in the rest of that.  You now
@@ -333,6 +356,7 @@ have `<samp>auto-fill-mode</samp>' in the minibuffer after typing just <kbd>au
 <kbd>TAB</kbd> f <kbd>TAB</kbd></kbd>.  Note that <kbd>TAB</kbd> has this effect because in
 the minibuffer it is bound to the command <code>minibuffer-complete</code>
 when completion is available.
+
 </p><hr size="6">
 <a name="NOD57"></a>
 <a name="SEC65"></a>
@@ -356,6 +380,7 @@ when completion is available.
 
 <p>  Here is a list of the completion commands defined in the minibuffer
 when completion is available.
+
 </p><dl compact="compact">
 <dt><kbd> <kbd>TAB</kbd>
 </kbd></dt>
@@ -398,11 +423,12 @@ but it stops completing after `<samp>fill-</samp>'.  This gives
 way to `<samp>auto-fill-mode</samp>'.  <kbd>SPC</kbd> in the minibuffer when
 completion is available runs the command
 <code>minibuffer-complete-word</code>.
+
 </p><p>  Here are some commands you can use to choose a completion from a
 window that displays a list of completions:
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX222"></a>
+<dd><a name="IDX222"></a>
 </dd>
 <dt><kbd> button2up
 </kbd></dt>
@@ -410,6 +436,7 @@ window that displays a list of completions:
 completions chooses that completion (<code>mouse-choose-completion</code>).
 You normally use this command while point is in the minibuffer; but you
 must click in the list of completions, not in the minibuffer itself.
+
 </p><a name="IDX223"></a>
 </dd>
 <dt><kbd> <kbd>PRIOR</kbd>
@@ -421,6 +448,7 @@ window showing the completion list buffer
 (<code>switch-to-completions</code>).  This paves the way for using the
 commands below.  (Selecting that window in the usual ways has the same
 effect, but this way is more convenient.)
+
 </p><a name="IDX224"></a>
 </dd>
 <dt><kbd> <kbd>RET</kbd>
@@ -429,6 +457,7 @@ effect, but this way is more convenient.)
 completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
 the list of completions.
+
 </p><a name="IDX225"></a>
 </dd>
 <dt><kbd> <kbd>RIGHT</kbd>
@@ -440,6 +469,7 @@ the list of completions.
 <dd><p>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
+
 </p><a name="IDX226"></a>
 </dd>
 <dt><kbd> <kbd>LEFT</kbd>
@@ -475,6 +505,7 @@ to the previous completion (<code>previous-list-mode-item</code>).
 
 <p>  There are three different ways that <kbd>RET</kbd> can work in completing
 minibuffers, depending on how the argument will be used.
+
 </p><ul>
 <li>
 <p><em>Strict</em> completion is used when it is meaningless to give any
@@ -483,14 +514,17 @@ argument except one of the known alternatives.  For example, when
 give anything but the name of an existing buffer.  In strict
 completion, <kbd>RET</kbd> refuses to exit if the text in the minibuffer
 does not complete to an exact match.
+
 </p></li><li>
 <p><em>Cautious</em> completion is similar to strict completion, except that
 <kbd>RET</kbd> exits only if the text was an exact match already, not
 needing completion.  If the text is not an exact match, <kbd>RET</kbd> does
 not exit, but it does complete the text.  If it completes to an exact
 match, a second <kbd>RET</kbd> will exit.
+
 </p><p>Cautious completion is used for reading file names for files that must
 already exist.
+
 </p></li><li>
 <p><em>Permissive</em> completion is used when any string whatever is
 meaningful, and the list of completion alternatives is just a guide.
@@ -505,6 +539,7 @@ a window whenever there is more than one possibility for the very next
 character.  Also, typing <kbd>?</kbd> explicitly requests such a list.  If
 the list of completions is long, you can scroll it with <kbd>C-M-v</kbd>
 (see section <a href="xemacs_19.html#SEC178">Using Other Windows</a>).
+
 </p><hr size="6">
 <a name="NOD59"></a>
 <a name="SEC67"></a>
@@ -536,21 +571,25 @@ complete to `<samp>foo.c</samp>' even though `<samp>foo.o</samp>' exists as well
 However, if <em>all</em> the possible completions end in &quot;ignored&quot;
 strings, then they are not ignored.  Ignored extensions do not apply to
 lists of completions--those always mention all possible completions.
+
 </p><a name="IDX227"></a>
 <p>  If a completion command finds the next character is undetermined, it
 automatically displays a list of all possible completions.  If the variable
 <code>completion-auto-help</code> is set to <code>nil</code>, this does not happen,
 and you must type <kbd>?</kbd> to display the possible completions.
+
 </p><a name="IDX228"></a>
 <p>If the variable <code>minibuffer-confirm-incomplete</code> is set to <code>t</code>,
 then in contexts where <code>completing-read</code> allows answers that are
 not valid completions, an extra <kbd>RET</kbd> must be typed to confirm the
 response.  This is helpful for catching typos.
+
 </p><a name="IDX229"></a>
 <p>  Icomplete mode presents a constantly-updated display that tells you
 what completions are available for the text you've entered so far.  The
 command to enable or disable this minor mode is <kbd>M-x
 icomplete-mode</kbd>.
+
 </p><hr size="6">
 <a name="NOD60"></a>
 <a name="SEC68"></a>
@@ -577,6 +616,7 @@ icomplete-mode</kbd>.
 another argument.  Special commands load the text of an earlier argument
 in the minibuffer.  They discard the old minibuffer contents, so you can
 think of them as moving through the history of previous arguments.
+
 </p><dl compact="compact">
 <dt><kbd> <kbd>UP</kbd>
 </kbd></dt>
@@ -614,16 +654,19 @@ minibuffer, use <kbd>M-p</kbd> or up-arrow (<code>previous-history-element</code
 to &quot;move to&quot; the next earlier minibuffer input, and use <kbd>M-n</kbd> or
 down-arrow (<code>next-history-element</code>) to &quot;move to&quot; the next later
 input.
+
 </p><p>  The previous input that you fetch from the history entirely replaces
 the contents of the minibuffer.  To use it as the argument, exit the
 minibuffer as usual with <kbd>RET</kbd>.  You can also edit the text before
 you reuse it; this does not change the history element that you
 &quot;moved&quot; to, but your new argument does go at the end of the history
 list in its own right.
+
 </p><p>  For many minibuffer arguments there is a &quot;default&quot; value.  In some
 cases, the minibuffer history commands know the default value.  Then you
 can insert the default value into the minibuffer as text by using
 <kbd>M-n</kbd> to move &quot;into the future&quot; in the history.
+
 </p><a name="IDX234"></a>
 <a name="IDX235"></a>
 <a name="IDX236"></a>
@@ -638,15 +681,18 @@ use the minibuffer to read their arguments even though you are already
 in the minibuffer when you issue them.  As with incremental searching,
 an uppercase letter in the regular expression makes the search
 case-sensitive (see section <a href="xemacs_15.html#SEC122">Searching and Case</a>).
+
 </p><p>  All uses of the minibuffer record your input on a history list, but
 there are separate history lists for different kinds of arguments.  For
 example, there is a list for file names, used by all the commands that
 read file names.
+
 </p><p>  There are several other very specific history lists, including one for
 command names read by <kbd>M-x</kbd>, one for buffer names, one for arguments
 of commands like <code>query-replace</code>, and one for compilation commands
 read by <code>compile</code>.  Finally, there is one &quot;miscellaneous&quot; history
 list that most minibuffer arguments use.
+
 </p>
 <hr size="6">
 <a name="NOD61"></a>
@@ -674,6 +720,7 @@ special history list, together with the values of its arguments, so that
 you can repeat the entire command.  In particular, every use of
 <kbd>M-x</kbd> is recorded there, since <kbd>M-x</kbd> uses the minibuffer to read
 the command name.
+
 </p><a name="IDX238"></a>
 <dl compact="compact">
 <dt><kbd> C-x <kbd>ESC</kbd> <kbd>ESC</kbd>
@@ -703,6 +750,7 @@ recorded command (<code>next-history-element</code>).
 minibuffer-using command.  With no argument, it repeats the last such
 command.  A numeric argument specifies which command to repeat; one
 means the last one, and larger numbers specify earlier ones.
+
 </p><p>  <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> works by turning the previous command
 into a Lisp expression and then entering a minibuffer initialized with
 the text for that expression.  If you type just <kbd>RET</kbd>, the command
@@ -711,9 +759,11 @@ Lisp expression.  Whatever expression you finally submit is what will be
 executed.  The repeated command is added to the front of the command
 history unless it is identical to the most recently executed command
 already there.
+
 </p><p>  Even if you don't understand Lisp syntax, it will probably be obvious
 which command is displayed for repetition.  If you do not change the text,
 you can be sure the command will repeat exactly as before.
+
 </p><a name="IDX241"></a>
 <a name="IDX242"></a>
 <a name="IDX243"></a>
@@ -726,15 +776,18 @@ recorded command, and <kbd>M-n</kbd> replaces it with the next later command.
 After finding the desired previous command, you can edit its expression
 and then resubmit it by typing <kbd>RET</kbd>.  Any editing you have done on
 the command to be repeated is lost if you use <kbd>M-n</kbd> or <kbd>M-p</kbd>.
+
 </p><p><kbd>M-n</kbd> and <kbd>M-p</kbd> are specially defined within <kbd>C-x <kbd>ESC</kbd>
 <kbd>ESC</kbd></kbd> to run the commands <code>previous-history-element</code> and
 <code>next-history-element</code>.
+
 </p><a name="IDX245"></a>
 <p>  The list of previous commands using the minibuffer is stored as a Lisp
 list in the variable <code>command-history</code>.  Each element of the list
 is a Lisp expression which describes one command and its arguments.
 Lisp programs can reexecute a command by feeding the corresponding
 <code>command-history</code> element to <code>eval</code>.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

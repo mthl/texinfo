@@ -62,8 +62,8 @@ ul.toc {list-style: none}
 <p>  This chapter describes commands that are especially useful when you
 catch a mistake in your text just after you have made it, or when you 
 change your mind while composing text on line.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC130">13.1 Killing Your Mistakes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to kill a batch of recently entered text.</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC131">13.2 Transposing Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Exchanging two characters, words, lines, lists...</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC132">13.3 Case Conversion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Correcting case of last word entered.</td></tr>
@@ -111,6 +111,7 @@ change your mind while composing text on line.
 <p>  The <kbd>DEL</kbd> character (<code>delete-backward-char</code>) is the most
 important correction command.  When used among graphic (self-inserting)
 characters, it can be thought of as canceling the last character typed.
+
 </p><a name="IDX501"></a>
 <a name="IDX502"></a>
 <a name="IDX503"></a>
@@ -123,11 +124,13 @@ convenient to use <kbd>M-<kbd>DEL</kbd></kbd> or <kbd>C-x <kbd>DEL</kbd></kbd>.
 you type it, in case you change your mind about phrasing.
 <kbd>M-<kbd>DEL</kbd></kbd> and <kbd>C-x <kbd>DEL</kbd></kbd> save the killed text for
 <kbd>C-y</kbd> and <kbd>M-y</kbd> to retrieve.  See section <a href="xemacs_12.html#SEC91">Yanking</a>.
+
 </p><p>  <kbd>M-<kbd>DEL</kbd></kbd> is often useful even when you have typed only a few
 characters wrong, if you know you are confused in your typing and aren't
 sure exactly what you typed.  At such a time, you cannot correct with
 <kbd>DEL</kbd> except by looking at the screen to see what you did.  It requires
 less thought to kill the whole word and start over.
+
 </p><hr size="6">
 <a name="NOD118"></a>
 <a name="SEC131"></a>
@@ -183,6 +186,7 @@ the two transposed characters.  If you transposed a space with the last
 character of the word before it, the word motion commands are a good way
 of getting there.  Otherwise, a reverse search (<kbd>C-r</kbd>) is often the
 best way.  See section <a href="xemacs_15.html#SEC115">Searching and Replacement</a>.
+
 </p><a name="IDX508"></a>
 <a name="IDX509"></a>
 <a name="IDX510"></a>
@@ -194,10 +198,12 @@ with the word after point.  It moves point forward over a word, dragging
 the word preceding or containing point forward as well.  The punctuation
 characters between the words do not move.  For example, `<samp>FOO, BAR</samp>'
 transposes into `<samp>BAR, FOO</samp>' rather than `<samp>BAR FOO,</samp>'.
+
 </p><p>  <kbd>C-M-t</kbd> (<code>transpose-sexps</code>) is a similar command for transposing
 two expressions (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>), and <kbd>C-x C-t</kbd> (<code>transpose-lines</code>)
 exchanges lines.  It works like <kbd>M-t</kbd> but in determines the
 division of the text into syntactic units differently.
+
 </p><p>  A numeric argument to a transpose command serves as a repeat count: it
 tells the transpose command to move the character (word, sexp, line) before
 or containing point across several other characters (words, sexps, lines).
@@ -206,9 +212,11 @@ across three other characters.  This is equivalent to repeating <kbd>C-t</kbd>
 three times.  <kbd>C-u - 4 M-t</kbd> moves the word before point backward across
 four words.  <kbd>C-u - C-M-t</kbd> would cancel the effect of plain
 <kbd>C-M-t</kbd>.
+
 </p><p>  A numeric argument of zero transposes the character (word, sexp, line)
 ending after point with the one ending after the mark (otherwise a
 command with a repeat count of zero would do nothing).
+
 </p><hr size="6">
 <a name="NOD119"></a>
 <a name="SEC132"></a>
@@ -258,6 +266,7 @@ the word case-conversion commands <kbd>M-l</kbd>, <kbd>M-u</kbd>, and <kbd>M-c</
 not move the cursor when used with a negative argument.
 As soon as you see you have mistyped the last word, you can simply
 case-convert it and continue typing.  See section <a href="xemacs_23.html#SEC214">Case Conversion Commands</a>.
+
 </p><hr size="6">
 <a name="NOD120"></a>
 <a name="SEC133"></a>
@@ -307,20 +316,25 @@ word is correct English.  If it is not, it asks you to edit the word (in
 the minibuffer) into a corrected spelling, and then performs a
 <code>query-replace</code> to substitute the corrected spelling for the old
 one throughout the buffer.
+
 </p><p>  If you exit the minibuffer without altering the original spelling, it
 means you do not want to do anything to that word.  In that case, the
 <code>query-replace</code> is not done.
+
 </p><a name="IDX524"></a>
 <p>  <kbd>M-x spell-buffer</kbd> checks each word in the buffer the same way that
 <code>spell-word</code> does, doing a <code>query-replace</code> for
 every incorrect word if appropriate.
+
 </p><a name="IDX525"></a>
 <p>  <kbd>M-x spell-region</kbd> is similar to <code>spell-buffer</code> but operates
 only on the region, not the entire buffer.
+
 </p><a name="IDX526"></a>
 <p>  <kbd>M-x spell-string</kbd> reads a string as an argument and checks
 whether that is a correctly spelled English word.  It prints a message
 giving the answer in the echo area.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -83,6 +83,7 @@ ul.toc {list-style: none}
 <p>GNU Info allows you to search for a sequence of characters throughout an
 entire Info file, search through the indices of an Info file, or find
 areas within an Info file which discuss a particular topic.
+
 </p><dl compact="compact">
 <dt> <kbd>s</kbd> (<code>search</code>)
 </dt>
@@ -96,6 +97,7 @@ includes upper-case characters, the Info file is searched
 case-sensitively; otherwise Info ignores the letter case.  With a
 numeric argument of <var>N</var>, search for <var>N</var>th occurrence of the
 string.  Negative arguments search backwards.
+
 </p></dd>
 <dt> <kbd>?</kbd> (<code>search-backward</code>, vi-like operation)
 </dt>
@@ -106,6 +108,7 @@ for that string.  If the string includes upper-case characters, the Info
 file is searched case-sensitively; otherwise Info ignores the letter
 case.  With a numeric argument of <var>N</var>, search for <var>N</var>th
 occurrence of the string.  Negative arguments search forward.
+
 </p></dd>
 <dt> <kbd>S</kbd> (<code>search-case-sensitively</code>
 </dt>
@@ -117,6 +120,7 @@ occurrence of the string.  Negative arguments search forward.
 if the string includes only lower-case letters.  With a numeric argument
 of <var>N</var>, search for <var>N</var>th occurrence of the string.  Negative
 arguments search backwards.
+
 </p></dd>
 <dt> <kbd>C-x <kbd>n</kbd></kbd> (<code>search-next</code>)
 </dt>
@@ -129,6 +133,7 @@ arguments search backwards.
 <p>Search for the same string used in the last search command, in the same
 direction, and with the same case-sensitivity option.  With a numeric
 argument of <var>N</var>, search for <var>N</var>th next occurrence.
+
 </p></dd>
 <dt> <kbd>C-x <kbd>N</kbd></kbd> (<code>search-previous</code>)
 </dt>
@@ -140,6 +145,7 @@ argument of <var>N</var>, search for <var>N</var>th next occurrence.
 <p>Search for the same string used in the last search command, and with the
 same case-sensitivity option, but in the reverse direction.  With a
 numeric argument of <var>N</var>, search for <var>N</var>th previous occurrence.
+
 </p></dd>
 <dt> <kbd>C-s</kbd> (<code>isearch-forward</code>)
 </dt>
@@ -149,6 +155,7 @@ numeric argument of <var>N</var>, search for <var>N</var>th previous occurrence.
 <p>Interactively search forward through the Info file for a string as you
 type it.  If the string includes upper-case characters, the search is
 case-sensitive; otherwise Info ignores the letter case.
+
 </p></dd>
 <dt> <kbd>C-r</kbd> (<code>isearch-backward</code>)
 </dt>
@@ -157,6 +164,7 @@ case-sensitive; otherwise Info ignores the letter case.
 <p>Interactively search backward through the Info file for a string as
 you type it.  If the string includes upper-case characters, the search
 is case-sensitive; otherwise Info ignores the letter case.
+
 </p></dd>
 <dt> <kbd>i</kbd> (<code>index-search</code>)
 </dt>
@@ -166,6 +174,7 @@ is case-sensitive; otherwise Info ignores the letter case.
 <a name="IDX186"></a>
 <p>Look up a string in the indices for this Info file, and select a node
 where the found index entry points to.
+
 </p></dd>
 <dt> <kbd>,</kbd> (<code>next-index-match</code>)
 </dt>
@@ -173,6 +182,7 @@ where the found index entry points to.
 <a name="IDX188"></a>
 <p>Move to the node containing the next matching index item from the last
 `<samp>i</samp>' command.
+
 </p></dd>
 <dt> <kbd>M-x index-apropos</kbd>
 </dt>
@@ -192,9 +202,11 @@ string within `<samp>[</samp>' and `<samp>]</samp>'; pressing <kbd>RET</kbd> ins
 typing a new string will use the default search string.  Under
 `<samp>--vi-keys</samp>' (see <a href="info-stnd_2.html#ANC3">--vi-keys</a>), using the `<samp>n</samp>' or `<samp>N</samp>'
 commands is a faster way of searching for the same string.
+
 </p><p><em>Incremental searching</em> is similar to basic searching, but the
 string is looked up while you are typing it, instead of waiting until
 the entire search string has been specified.
+
 </p><a name="IDX190"></a>
 <a name="IDX191"></a>
 <p>Both incremental and non-incremental search by default ignore the case
@@ -205,6 +217,7 @@ even for a string that includes only lower-case letters, by using the
 `<samp>S</samp>' command (<code>search-case-sensitively</code>).  The `<samp>n</samp>' and
 `<samp>N</samp>' commands operate case-sensitively if the last search command
 was `<samp>S</samp>'.
+
 </p><p>The most efficient means of finding something quickly in a manual is
 the `<samp>i</samp>' command (<code>index-search</code>).  This command prompts for
 a string, and then looks for that string in all the indices of the
@@ -214,10 +227,12 @@ entry in the echo area.  You can press `<samp>,</samp>'
 (<code>next-index-match</code>) to find more matches.  A good Info manual
 has all of its important concepts indexed, so the `<samp>i</samp>' command
 lets you use a manual as a reference.
+
 </p><p>If you don't know what manual documents something, try the <kbd>M-x
 index-apropos</kbd>.  It prompts for a string and then looks up that string
 in all the indices of all the Info documents installed on your system.
 It can also be invoked from the command line; see <a href="info-stnd_2.html#ANC1">--apropos</a>.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
