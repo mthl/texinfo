@@ -1,5 +1,12 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/float.c:
+	* makeinfo/float.h: new files for float environment functions.
+
+	* makeinfo/Makefile.am: added new files to makeinfo_SOURCES.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_xref): xstrdup the result from
 	xml_get_assoc_for_id, as it gets freed later.
 
