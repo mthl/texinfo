@@ -1,3 +1,13 @@
+2003-02-21  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: added handling of overbar accent @= is transformed
+	in =
+	the handling of multi lines macro is done in a function, scan_line
+	which scans a line, keeping a record of the text allready ready,
+	the macro stack and a state which for now only contains 'verb' if in
+	@verb macro. The @verb macro is handled by this function (but since
+	things have allready been substituted, it cannot give the right 
+	result easily)
+
 2003-02-19  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: T2H_DEFAULT_button_icon_img behaves
 	better when it has some undef arguments

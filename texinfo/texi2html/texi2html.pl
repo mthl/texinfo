@@ -219,7 +219,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.28 2003-02-19 17:33:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.29 2003-02-21 12:53:19 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -408,6 +408,8 @@ $index_properties =
 	       "?", "?",
 	       ".", ".",
 	       "-", "",
+               # overbar accent
+               "=", "=",  
               );
 
 #
@@ -1003,7 +1005,6 @@ my %node2up = ();                # node to up
 my %bib2href = ();                 # bibliography reference to HREF
 my %gloss2href = ();               # glossary term to HREF
 my @sections = ();                 # list of sections
-my %tag2pro = ();                  # protected sections
 
 my $first_index_chapter;
 my $index;                         # ref on a hash for the indexes
@@ -2474,7 +2475,7 @@ sub pass1
             my ($max_column, $current_column);
             ($max_column, $current_column) = split /:/, $in_table;
 
-            next INPUT_LINE if (!$max_column);
+            next INPUT_LINE if (!$max_column); # table with 0 columns
             my $stored_text = "";
 
             while (! /^$/)
@@ -2522,7 +2523,7 @@ sub pass1
                         $current_column = 1;
                     }
                 }
-                else # no @tab nor @itemx
+                else # no @tab nor @item(x)
                 {
                     if (!$current_column)
                     { #first line
@@ -2859,6 +2860,8 @@ sub EnterIndexEntry($$$$$$)
         if $T2H_DEBUG & $DEBUG_INDEX;
 }
 
+# returns prefix of @?index command associated with 2 letters prefix name
+# for example returns 'c' for 'cp'
 sub IndexName2Prefix
 {
     my $name = shift;
@@ -2871,7 +2874,9 @@ sub IndexName2Prefix
     return undef;
 }
 
-sub GetIndexEntries
+# get all the entries (for all the prefixes) in the $normal and $code 
+# references, formatted with <code> if it is a $code entry.
+sub GetIndexEntries($$)
 {
     my $normal = shift;
     my $code = shift;
@@ -2901,6 +2906,8 @@ sub GetIndexEntries
     return $entries;
 }
 
+# sort according to cmp if both $a and $b are alphabetical or non alphabetical, 
+# otherwise the alphabetical is ranked first
 sub byAlpha
 {
     if ($a =~ /^[A-Za-z]/)
@@ -2924,13 +2931,22 @@ sub byAlpha
     }
 }
 
-sub GetIndexPages
+# returns an array of index entries pages splitted by letters
+# each page has the following members:
+# {First}            first letter on that page
+# {Last}             last letter on that page
+# {Letters}          ref on an array with all the letters for that page
+# {EntriesByLetter}  ref on a hash. Each key is a letter, with value
+#                    a ref on arrays of index entries begining with this letter
+sub GetIndexPages($)
 {
     my $entries = shift;
     my (@Letters);
     my ($EntriesByLetter, $Pages, $page) = ({}, [], {});
     my @keys = sort byAlpha keys %$entries;
 
+    # each index entry is placed according to its first letter in
+    # EntriesByLetter
     for my $key (@keys)
     {
         push @{$EntriesByLetter->{uc(substr($key,0, 1))}} , $entries->{$key};
@@ -3445,6 +3461,7 @@ sub pass3
     # split style substitutions
     #
     my @style_stack=();
+    my %state = ();
     my $in_index = 0;
     my $text = '';
 
@@ -3488,83 +3505,11 @@ sub pass3
         # split style substitutions
         #
 
-        while (1)
+        scan_line ($_, \$text, \@style_stack, \%state);
+        unless (@style_stack)
         {
-            if (s/^([^\{\}]*)\{//)
-            {
-                my $before_brace = $1;
-                $before_brace = '' unless (defined($before_brace));
-                my $before = '';
-                my $style = '';
-                if ($before_brace =~ /^([^\{\}]*)@(footnote[^\s]*?|\w+|,)$/)
-                {
-                    $before = $1;
-                    $before = '' unless (defined($before));
-                    $style = $2;
-                }
-                else
-                {
-                    $before = $before_brace . '{';
-                    warn "$ERROR '{' without macro near $before_brace";
-                    $before .= '<!-- brace without macro -->';
-                }
-                if (@style_stack)
-                {
-                    $style_stack[-1]->{'text'} .= $before;
-                }
-                else
-                {
-                    $text .= $before;
-                }
-                push (@style_stack, { 'style' => $style, 'text' => '' });
-            }
-            elsif (s/^([^\{\}]*)\}//)
-            {
-                my $before = $1;
-                $before = '' unless (defined($before));
-                if (@style_stack)
-                {
-                    my $style = pop @style_stack;
-                    my $result;
-                    if ($style->{'style'})
-                    {
-                        $result = apply_style($style->{'style'}, $style->{'text'} . $before);
-                        if (!defined($result))
-                        {
-                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . $before . '}';
-                        }
-                    }
-                    else
-                    {
-                        $result = $style->{'text'} . $before . '}';
-                    }
-                    if (@style_stack)
-                    {
-                         $style_stack[-1]->{'text'} .= $result;
-                    }
-                    else
-                    {
-                         $text .= $result;
-                    }
-                }
-                else
-                {
-                    $text .= $before . '}';
-                    warn "$ERROR '}' without opening '{' near $text";
-                }
-            }
-            elsif (@style_stack)
-            {
-                $style_stack[-1]->{'text'} .= $_;
-                last;
-            }
-            else
-            {
-                $text .= $_;
-                push (@lines3, $text);
-                $text = '';
-                last;
-            }
+            push (@lines3, $text);
+            $text = '';
         }
     }
     print "# end of pass 3\n" if $T2H_VERBOSE;
@@ -4699,6 +4644,176 @@ sub substitute_style($)
         $line = $done . $line;
     }
     return $line;
+}
+
+sub scan_line($$$$)
+{
+    my $line = shift;
+    my $text = shift;
+    my $stack = shift;
+    my $state = shift;
+
+    local $_ = $line;
+    
+    while(1)
+    {
+        my $prev = $text;
+        if (@$stack)
+        {
+	     $prev = $stack->[-1];
+        }
+        if (defined($state->{'verb'}))
+        {
+            my $char = quotemeta($state->{'verb'});
+	    sleep 1;
+	    
+            if (s/^(.*?)$char\}//)
+            {
+                 add_prev($prev, $1);
+                 $state->{'verb'} = undef;
+                 next;
+            }
+            else
+            {
+                 add_prev($prev, $_);
+                 last;
+            }
+        }
+        if (s/^([^{}@]*)\@(footnote[^\s]*?){//)
+        {
+            add_prev($prev, protect_htm($1));
+            push (@$stack, { 'style' => $2, 'text' => '' });
+            next;
+        }
+	if (s/^([^{}@]*)\@([a-zA-Z]\w*|["'@}{,.!?\s*-^`=])//)
+        {
+            add_prev($prev, protect_htm($1));
+            if ($simple_map{$2})
+            {
+                add_prev($prev, $simple_map{$2});
+                next;
+            }
+            my $macro = $2;
+            if (s/^{//)
+            {
+                if ($macro eq 'verb')
+                {
+                    if (/^$/)
+                    {
+                        warn "$ERROR verb at end of line";
+                    }
+                    else
+                    {
+                        s/^(.)//;
+                        $state->{'verb'} = $1;
+                        next;
+                    }
+                }
+                push (@$stack, { 'style' => $macro, 'text' => '' });
+                next;
+            }
+            if ($accent_map{$macro})
+            {
+                if (s/^([^\s])//)
+                {
+                    add_prev ($prev, do_accent ($macro, $1));
+                }
+                else
+                {
+                    add_prev ($prev, do_accent ($macro, ''));
+                }
+                next;
+            }
+            if ($things_map{$macro})
+            {
+                warn "$ERROR $macro requires {}";
+                add_prev ($prev, $things_map{$macro});
+                next;
+            }
+            warn "$WARN Unknown macro $macro";
+            add_prev ($prev, protect_htm("\@$macro"));
+            next;
+        }
+	elsif(s/^([^{}@]*)\@(.)//)
+	{
+            warn "$ERROR Unkown command: `$2'";
+            add_prev($prev, protect_htm("\@$2"));
+            next;
+        }
+        elsif (s/^([^{}]*)([{}])//)
+        {
+            add_prev($prev, protect_htm($1));
+            if ($2 eq '{')
+            {
+                add_prev($prev, '{<!-- brace without macro -->');
+                warn "$ERROR '{' without macro line: $line";
+            }
+            else
+            {
+                if (@$stack)
+                {
+                    my $style = pop @$stack;
+                    my $result;
+                    if ($style->{'style'})
+                    {
+                        $result = apply_style($style->{'style'}, $style->{'text'});
+                        if (!defined($result))
+                        {
+                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . '}';
+                        }
+                    }
+                    else
+                    {
+                        $result = $style->{'text'} . '}';
+                    }
+                    $prev = $text;
+                    if (@$stack)
+                    {
+	                $prev = $stack->[-1];
+                    }
+                    add_prev ($prev, $result);
+                    next;
+                }
+                else
+                {
+                    warn "$ERROR '}' without opening '{' line: $line";
+                }
+            }
+	}
+	else
+        {
+            add_prev($prev, $_);
+            last;
+        }
+    }
+}
+
+sub protect_htm($)
+{
+    my $text = shift;
+    return $text;
+}
+
+sub add_prev ($$)
+{
+    my $prev = shift;
+    my $text = shift;
+    return if (!defined($text));
+    if (ref($prev) eq "SCALAR")
+    {
+         if (!defined($prev))
+         {
+              $$prev = $text;
+         }
+    else
+         {
+             $$prev .= $text;
+         }
+    }
+    else
+    {
+         $prev->{'text'} .= $text;
+    }
 }
 
 sub t2h_anchor($$$;$$$)
