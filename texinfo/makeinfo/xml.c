@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.13 2002-11-11 17:14:44 feloy Exp $
+   $Id: xml.c,v 1.14 2002-11-12 18:34:07 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -913,7 +913,7 @@ xml_add_char (character)
 
   if (xml_element_list[xml_current_element()].contains_para
       && !xml_in_para && !only_macro_expansion && !xml_no_para
-      && !cr_or_whitespace (character))
+      && !cr_or_whitespace (character) && !in_fixed_width_font)
     {
       xml_indent ();
       insert_string ("<para>\n");
