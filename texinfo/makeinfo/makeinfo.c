@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.53 2003-11-21 16:03:24 dirt Exp $
+   $Id: makeinfo.c,v 1.54 2003-11-21 17:25:34 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3129,13 +3129,7 @@ cm_xref (arg)
               char *arg1_id = xml_id (arg1);
 
               if (!*arg2 && !*arg3)
-                {
-                  arg3 = xml_get_assoc_for_id (arg1_id);
-
-                  if (*arg3)
-                    warning (_("%cxref{%s} to ``%cunnumbered %s'' causes dubious references with Docbook"),
-                        COMMAND_PREFIX, arg1, COMMAND_PREFIX, arg3);
-                }
+                arg3 = xml_get_assoc_for_id (arg1_id);
 
               if (*arg2 || *arg3)
                 {

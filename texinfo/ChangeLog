@@ -1,5 +1,14 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.c (cm_xref): removed the warning about
+	@xrefs to @unnumbered sections, as there are many situations where
+	there is now way to fix them.
+
+	* makeinfo/insertion.c: removed lingering titlepage_cmd_present
+	declaration.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c (cm_titlepage, cm_titlepage_cmds): moved to ...
 	* makeinfo/insertion.c: here.
 

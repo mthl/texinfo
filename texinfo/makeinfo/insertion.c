@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.43 2003-11-21 17:10:17 dirt Exp $
+   $Id: insertion.c,v 1.44 2003-11-21 17:25:34 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1607,8 +1607,6 @@ cm_detailmenu ()
 }
 
 /* Title page commands. */
-
-int titlepage_cmd_present = 0;
 
 void
 cm_titlepage (arg)
