@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2002-10-28.09}
+\def\texinfoversion{2002-10-30.14}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
@@ -4706,11 +4706,14 @@ width0pt\relax} \fi
 \newskip\deflastargmargin \deflastargmargin=18pt
 
 \newcount\parencount
-% define \functionparens, which makes ( and ) and & do special things.
-% \functionparens affects the group it is contained in.
+
+% We want ()&[] to print specially on the defun line.
+% 
 \def\activeparens{%
-\catcode`\(=\active \catcode`\)=\active \catcode`\&=\active
-\catcode`\[=\active \catcode`\]=\active}
+  \catcode`\(=\active \catcode`\)=\active
+  \catcode`\&=\active
+  \catcode`\[=\active \catcode`\]=\active
+}
 
 % Make control sequences which act like normal parenthesis chars.
 \let\lparen = ( \let\rparen = )
@@ -4837,14 +4840,18 @@ width0pt\relax} \fi
   \spacesplit#3%
 }
 
-% #1, #2, #3 are the common arguments (see \defparsebody).
+% #1, #2, #3 are the common arguments (see \parsebodycommon above).
 % #4, delimited by the space, is the class name.
 %
 \def\defmethparsebody#1#2#3#4 {%
   \parsebodycommon{#1}{#2}{#3}%
   \def#2##1 {\begingroup\obeylines\activeparens\spacesplit{#3{##1}}}%
   \begingroup\obeylines\activeparens
-  \spacesplit{#3{#4}}%
+  % The \empty here prevents misinterpretation of a construct such as
+  %   @deffn {whatever} {Enharmonic comma}
+  % See comments at \deftpparsebody, although in our case we don't have
+  % to remove the \empty afterwards, since it is empty.
+  \spacesplit{#3{#4}}\empty
 }
 
 % Used for @deftypemethod and @deftypeivar.
@@ -4941,18 +4948,22 @@ width0pt\relax} \fi
   #1{\removeemptybraces#2\relax}{#3}%
 }%
 
-% Split up #2 at the first space token.
+% Split up #2 (the rest of the input line) at the first space token.
 % call #1 with two arguments:
 %  the first is all of #2 before the space token,
 %  the second is all of #2 after that space token.
 % If #2 contains no space token, all of it is passed as the first arg
 % and the second is passed as empty.
 %
-{\obeylines
-\gdef\spacesplit#1#2^^M{\endgroup\spacesplitfoo{#1}#2 \relax\spacesplitfoo}%
-\long\gdef\spacesplitfoo#1#2 #3#4\spacesplitfoo{%
-\ifx\relax #3%
-#1{#2}{}\else #1{#2}{#3#4}\fi}}
+{\obeylines %
+ \gdef\spacesplit#1#2^^M{\endgroup\spacesplitx{#1}#2 \relax\spacesplitx}%
+ \long\gdef\spacesplitx#1#2 #3#4\spacesplitx{%
+   \ifx\relax #3%
+     #1{#2}{}%
+   \else %
+     #1{#2}{#3#4}%
+   \fi}%
+}
 
 % Define @defun.
 
