@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.106 2004-02-11 09:13:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.107 2004-02-11 21:38:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -625,22 +625,6 @@ foreach my $special (keys(%special_style))
           unless (defined($style_map_texi{$special}));
 }
 
-our %cross_ref_texi_map = %texi_map;
-our %cross_ref_simple_map_texi = %simple_map_texi;
-our %cross_ref_style_map_texi = ();
-
-foreach my $command (keys(%style_map_texi))
-{
-    $cross_ref_style_map_texi{$command} = {}; 
-    foreach my $key (keys (%{$style_map_texi{$command}}))
-    {
-#print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
-         $cross_ref_style_map_texi{$command}->{$key} = 
-              $style_map_texi{$command}->{$key};
-    }
-}
-
-$cross_ref_simple_map_texi{"\n"} = ' ';
 
 sub t2h_utf8_accent($$)
 {
@@ -726,37 +710,6 @@ sub t2h_nounicode_cross_manual_accent($$)
 }
 
 
-foreach my $key (keys(%unicode_map))
-{
-    if ($unicode_map{$key} ne '')
-    {
-        if ($USE_UNICODE)
-        {
-             $cross_ref_texi_map{$key} = chr(hex($unicode_map{$key}));
-        }
-        else
-        {
-             $cross_ref_texi_map{$key} = '_' . lc($unicode_map{$key});
-        }
-    }
-}
-
-foreach my $key (keys(%cross_ref_style_map_texi))
-{
-    if (($unicode_accents{$key} or ($key eq 'tieaccent') or ($key eq 'dotless')) 
-        and (ref($cross_ref_style_map_texi{$key}) eq 'HASH'))
-    {
-        if ($USE_UNICODE)
-        {
-             $cross_ref_style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;
-        }
-        else
-        {
-             $cross_ref_style_map_texi{$key}->{'function'} = \&t2h_nounicode_cross_manual_accent;
-        }
-    }
-}
-
 $USE_UNICODE = '@USE_UNICODE@';
 if ($USE_UNICODE eq '@USE_UNICODE@')
 {
@@ -768,6 +721,7 @@ if ($USE_UNICODE eq '@USE_UNICODE@')
     };
     $USE_UNICODE = 0 if ($@);
 }
+
 }
 
 our %value;
@@ -1347,6 +1301,24 @@ sub set_encoding($)
     }
 }
 
+our %cross_ref_texi_map = %Texi2HTML::Config::texi_map;
+our %cross_ref_simple_map_texi = %Texi2HTML::Config::simple_map_texi;
+our %cross_ref_style_map_texi = ();
+
+foreach my $command (keys(%Texi2HTML::Config::style_map_texi))
+{
+    $cross_ref_style_map_texi{$command} = {}; 
+    foreach my $key (keys (%{$Texi2HTML::Config::style_map_texi{$command}}))
+    {
+#print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
+         $cross_ref_style_map_texi{$command}->{$key} = 
+              $Texi2HTML::Config::style_map_texi{$command}->{$key};
+    }
+}
+
+$cross_ref_simple_map_texi{"\n"} = ' ';
+
+
 # This function is used to construct a link name from a node name as 
 # described in the proposal I posted on texinfo-pretest.
 sub cross_manual_links($$)
@@ -1354,9 +1326,9 @@ sub cross_manual_links($$)
     my $nodes_hash = shift;
     my $cross_reference_hash = shift;
 
-    $simple_map_texi_ref = \%Texi2HTML::Config::cross_ref_simple_map_texi;
-    $style_map_texi_ref = \%Texi2HTML::Config::cross_ref_style_map_texi;
-    $texi_map_ref = \%Texi2HTML::Config::cross_ref_texi_map;
+    $simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $style_map_texi_ref = \%cross_ref_style_map_texi;
+    $texi_map_ref = \%cross_ref_texi_map;
     my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
 
@@ -1440,9 +1412,9 @@ sub unicode_to_protected($)
 sub cross_manual_line($)
 {
     my $text = shift;
-    $simple_map_texi_ref = \%Texi2HTML::Config::cross_ref_simple_map_texi;
-    $style_map_texi_ref = \%Texi2HTML::Config::cross_ref_style_map_texi;
-    $texi_map_ref = \%Texi2HTML::Config::cross_ref_texi_map;
+    $simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $style_map_texi_ref = \%cross_ref_style_map_texi;
+    $texi_map_ref = \%cross_ref_texi_map;
     my $normal_text_kept = $Texi2HTML::Config::normal_text;
     $Texi2HTML::Config::normal_text = \&Texi2HTML::Config::t2h_cross_manual_normal_text;
     
@@ -2267,6 +2239,40 @@ $Texi2HTML::Config::INVISIBLE_MARK = '<img src="invisible.xbm" alt="">' if $Texi
 
 $T2H_DEBUG |= $DEBUG_TEXI if ($Texi2HTML::Config::DUMP_TEXI);
 
+# Construct hashes used for cross references generation
+# Do it now as the user may have changed $USE_UNICODE
+
+foreach my $key (keys(%Texi2HTML::Config::unicode_map))
+{
+    if ($Texi2HTML::Config::unicode_map{$key} ne '')
+    {
+        if ($Texi2HTML::Config::USE_UNICODE)
+        {
+             $cross_ref_texi_map{$key} = chr(hex($Texi2HTML::Config::unicode_map{$key}));
+        }
+        else
+        {
+             $cross_ref_texi_map{$key} = '_' . lc($Texi2HTML::Config::unicode_map{$key});
+        }
+    }
+}
+
+foreach my $key (keys(%cross_ref_style_map_texi))
+{
+    if (($Texi2HTML::Config::unicode_accents{$key} or ($key eq 'tieaccent') or ($key eq 'dotless')) 
+        and (ref($cross_ref_style_map_texi{$key}) eq 'HASH'))
+    {
+        if ($Texi2HTML::Config::USE_UNICODE)
+        {
+             $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_utf8_accent;
+        }
+        else
+        {
+             $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_nounicode_cross_manual_accent;
+        }
+    }
+}
+
 #
 # file name buisness
 #
@@ -2342,7 +2348,18 @@ if ($Texi2HTML::Config::SPLIT and $Texi2HTML::Config::SUBDIR)
 die "output to STDOUT and split or frames incompatible\n" 
     if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and ($Texi2HTML::Config::OUT eq '-'));
 
+if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq ''))
+{
+    $Texi2HTML::Config::OUT = $docu_name;
+}
+
+if ($Texi2HTML::Config::SPLIT $and ($Texi2HTML::Config::OUT eq '.'))
+{# This is to avoid trouble with latex2html
+    $Texi2HTML::Config::OUT = '';
+}
+
 $docu_rdir = '';
+
 if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
     $Texi2HTML::Config::OUT =~ s|/*$||;
@@ -2358,6 +2375,7 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
             die "$ERROR can't create directory $Texi2HTML::Config::OUT\n";
         }
     }
+    print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
 }
 elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {

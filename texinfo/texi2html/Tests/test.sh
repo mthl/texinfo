@@ -33,6 +33,7 @@ fail=$1; shift
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
 [ -z $basename ] && basename=`basename $texi_file .$suffix`
+options="-test $options"
 stderr_file=$basename.2
 echo "making test: $dir/$texi_file $options"
 if [ ! -d $dir ]; then
@@ -49,14 +50,14 @@ export T2H_HOME=../..
 # generate a dump of the first pass
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file)
 #(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
-(cd $dir && perl -x -w ../../texi2html.pl -test $options -dump-texi $texi_file) > /dev/null 2>&1
+(cd $dir && perl -x -w ../../texi2html.pl $options -dump-texi $texi_file) > /dev/null 2>&1
 
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/inlinestyle.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
-(cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
+(cd $dir && perl -x -w ../../texi2html.pl $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -158,13 +159,13 @@ fi
 test_texi GermanNodeTest nodetest.texi "" 1
 test_texi GermanNodeTest nodetest_for_makeinfo.texi "" 9
 test_texi index_table
-test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init"
-test_texi index_table index_split.texi "-split chapter -init index_test.init"
-test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html"
-test_texi index_table no_node.texi "-init index_test.init -split chapter" 3
-test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -prefix nodes_more_before_top -top-file nodes_more_before_top.html" 0 texi nodes_more_before_top
-test_texi index_table more_before_top.texi "-init index_test.init -split chapter"
-test_texi index_table more_before_top_section.texi "-init index_test.init -split chapter"
+test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init -output ."
+test_texi index_table index_split.texi "-split chapter -output . -init index_test.init"
+test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top-file index_nodes.html -output ."
+test_texi index_table no_node.texi "-init index_test.init -split chapter -output ." 3
+test_texi index_table more_before_top.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -output . -prefix nodes_more_before_top -top-file nodes_more_before_top.html" 0 texi nodes_more_before_top
+test_texi index_table more_before_top.texi "-init index_test.init -output . -split chapter"
+test_texi index_table more_before_top_section.texi "-init index_test.init -output . -split chapter"
 test_texi index_table more_before_top_section.texi "-prefix monolithic_more_before_top_section" 0 texi monolithic_more_before_top_section
 test_texi macros
 test_texi macros simple_macro.texi "" 4
@@ -176,14 +177,13 @@ test_texi macros expansion_order.texi
 test_texi macros ifclear_in_macro.texi
 test_texi macros ifset_in_macro.texi
 test_texi sectionning
-test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top
-novalidate.html"
+test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top novalidate.html -output ."
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
 test_texi sectionning nodes_test.texi "" 5
 test_texi sectionning no_section.texi
 test_texi sectionning no_node.texi
-test_texi sectionning no_node.texi "-prefix chapter_split_no_node -split chapter" 0 texi chapter_split_no_node
+test_texi sectionning no_node.texi "-prefix chapter_split_no_node -split chapter -output ." 0 texi chapter_split_no_node
 test_texi sectionning no_section_no_top.texi
 test_texi sectionning one_section.texi
 test_texi sectionning one_node.texi
@@ -192,7 +192,7 @@ test_texi sectionning one_node_and_section.texi
 test_texi sectionning first_section_and_nodes.texi "" 1
 test_texi sectionning double_top.texi "" 3
 test_texi sectionning rec_nodes.texi
-test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html" 0 texi makeinfo_rec_nodes
+test_texi sectionning rec_nodes.texi "-init ../../examples/makeinfo.init -prefix makeinfo_rec_nodes -top-file makeinfo_rec_nodes.html  -output ." 0 texi makeinfo_rec_nodes
 test_texi sectionning ref_in_anchor.texi "" 1
 test_texi sectionning brace_not_closed.texi "" 1
 test_texi sectionning lower_subsub.texi
@@ -202,10 +202,10 @@ test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
-test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting" 0 texi exotic_formatting
+test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting
 test_texi formatting formatting.texi "-lang fr -prefix fr_formatting" 0 texi fr_formatting
 test_texi formatting simplest.texi "-css-include file.css"
-test_texi formatting nodetest.texi "-split chapter"
+test_texi formatting nodetest.texi "-split chapter -output ."
 test_texi formatting nodetest_latin1.texi 
 test_texi formatting nodetest_utf8.texi 
 test_texi formatting testkb.texi
@@ -227,17 +227,17 @@ test_texi formatting verbatim_not_closed.texi "" 1
 test_texi formatting copying_not_closed.texi "" 1
 test_texi formatting titlepage_not_closed.texi "" 1
 test_texi formatting test_refs.texi "-init cross_manual.init"
-test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter" 0 texi chapter_test_refs
-test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes" 0 texi node_test_refs
+test_texi formatting test_refs.texi "-init cross_manual.init -prefix chapter_test_refs -split chapter -output ." 0 texi chapter_test_refs
+test_texi formatting test_refs.texi "-init cross_manual.init -prefix node_test_refs -split node -node-files -use-nodes -output ." 0 texi node_test_refs
 test_texi texi2html 
 test_texi viper_monolithic viper.texi "-ifinfo"
-test_texi viper viper.texi "-split chapter -ifinfo"
-test_texi xemacs xemacs.texi "-split chapter -ifinfo"
-test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo"
-test_texi texinfo info-stnd.texi "-split chapter -node-files"
-test_texi texinfo texinfo.txi "-split chapter -ifinfo" 0 txi texinfo ignore_tags
-test_texi nodes_texinfo texinfo.txi "-split node -node-files -ifinfo" 0 txi texinfo ignore_tags
+test_texi viper viper.texi "-split chapter -ifinfo -output ."
+test_texi xemacs xemacs.texi "-split chapter -ifinfo -output ."
+test_texi xemacs_frame xemacs.texi "-split chapter -frames -ifinfo -output ."
+test_texi texinfo info-stnd.texi "-split chapter -node-files -output ."
+test_texi texinfo texinfo.txi "-split chapter -ifinfo -output ." 0 txi texinfo ignore_tags
+test_texi nodes_texinfo texinfo.txi "-split node -node-files -ifinfo -output ." 0 txi texinfo ignore_tags
 #test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
-test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
-test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose" 0 tex sing ignore_tags
+test_texi ccvs cvs.texinfo "-split chapter -output ." 0 texinfo
+test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -prefix sing -top-file index.htm -noVerbose -output ." 0 tex sing ignore_tags
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

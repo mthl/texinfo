@@ -5,6 +5,10 @@ This file records noteworthy changes.
 * COMPATIBILITY
   -------------
 
+* When the manual is split the default is to put resulting files in a 
+  directory with name the manual file basename (previously they were left in
+  the current directory). To avoid that, call texi2html with '-output .'.
+
 *  The main configuration files are now ./Config, ~/.texi2html/Config, 
   $sysconfdir/texi2html/Config and last $datadir/texi2html/Config. They are 
   sourced in that order.
