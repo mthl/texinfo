@@ -1,5 +1,5 @@
 /* signals.c -- install and maintain Info signal handlers.
-   $Id: signals.c,v 1.3 2003-01-27 14:07:09 karl Exp $
+   $Id: signals.c,v 1.4 2003-01-29 19:23:22 karl Exp $
 
    Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003 Free Software
    Foundation, Inc.
@@ -87,11 +87,7 @@ mask_termsig (set)
 static RETSIGTYPE info_signal_proc ();
 #if defined (HAVE_SIGACTION)
 typedef struct sigaction signal_info;
-signal_info info_signal_handler = {
-  info_signal_proc,
-  0, /* set later */
-  0
-};
+signal_info info_signal_handler;
 
 static void
 set_termsig (sig, old)
@@ -123,6 +119,8 @@ void
 initialize_info_signal_handler ()
 {
 #if defined (HAVE_SIGACTION)
+  info_signal_handler.sa_handler = info_signal_proc;
+  info_signal_handler.sa_flags = 0;
   mask_termsig (&info_signal_handler.sa_mask);
 #endif /* HAVE_SIGACTION */
 
