@@ -1,3 +1,10 @@
+2004-10-22  Stepan Kasal  <kasal@ucw.cz>
+
+	* info/Makefile.am (generated_sources): Add dependencies defining
+	  a total order on the files, to prevent race conditions with
+	  parallel make.
+	  Move the code about generated sources to the end of the file.
+
 2004-10-20  Stepan Kasal  <kasal@ucw.cz>
 
 	* info/Makefile.am (doc.c, key.c, funs.h): Don't distribute them.
