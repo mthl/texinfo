@@ -1,5 +1,11 @@
 2005-01-31  Derek Price  <derek@ximbiot.com>
 
+	* configure.in, NEWS: Update for development.
+	* configure.in: Rename to...
+	* configure.ac: ...this, to match current Autoconf standards.
+
+2005-01-31  Derek Price  <derek@ximbiot.com>
+
 	* configure.in, NEWS: Update for the 1.74 release.
 
 2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>

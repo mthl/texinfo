@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
-AC_INIT([texi2html], [1.74], [users@texi2html.cvshome.org])
+AC_INIT([texi2html], [1.75], [users@texi2html.cvshome.org])
 AM_INIT_AUTOMAKE([gnu 1.7 dist-bzip2])
 
 dnl Disable Autoconf, Automake, and some other maintainer tools without the
@@ -8,7 +8,7 @@ dnl --enable-maintainer-mode argument.
 AM_MAINTAINER_MODE
 
 dnl Misc variable settings
-PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.in`
+PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 INIT=$srcdir/texi2html.init
 AC_SUBST_FILE([INIT])
