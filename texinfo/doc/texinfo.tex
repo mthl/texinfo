@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-12.09}
+\def\texinfoversion{2003-01-12.11}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -140,6 +140,18 @@
 \ifx\putwordDeftypevar\undefined\gdef\putwordDeftypevar{Variable}\fi
 \ifx\putwordDeffunc\undefined   \gdef\putwordDeffunc{Function}\fi
 \ifx\putwordDeftypefun\undefined\gdef\putwordDeftypefun{Function}\fi
+
+% In some macros, we cannot use the `\? notation---the left quote is
+% in some cases the escape char.
+\chardef\colonChar = `\:
+\chardef\commaChar = `\,
+\chardef\dotChar   = `\.
+\chardef\equalChar = `\=
+\chardef\exclamChar= `\!
+\chardef\questChar = `\?
+\chardef\semiChar  = `\;
+\chardef\spaceChar = `\ %
+\chardef\underChar = `\_
 
 % Ignore a token.
 %
@@ -859,9 +871,9 @@ where each line of input produces a line of output.}
 % _ within @math be active (mathcode "8000), and distinguish by seeing
 % if the current family is \slfam, which is what @var uses.
 % 
-{\catcode95 = \active  % 95 = _
+{\catcode\underChar = \active
 \gdef\mathunderscore{%
-  \catcode95=\active
+  \catcode\underChar=\active
   \def_{\ifnum\fam=\slfam \_\else\sb\fi}%
 }}
 %
@@ -1396,6 +1408,17 @@ where each line of input produces a line of output.}
 %
 \def\nohyphenation{\hyphenchar\font = -1  \aftergroup\restorehyphenation}
 \def\restorehyphenation{\hyphenchar\font = `- }
+
+% Set sfcode to normal for the chars that usually have another value.
+% Can't use plain's \frenchspacing because it uses the `\x notation, and
+% sometimes \x has an active definition that messes things up.
+% 
+\catcode`@=11
+  \def\frenchspacing{%
+    \sfcode\dotChar  =\@m \sfcode\questChar=\@m \sfcode\exclamChar=\@m
+    \sfcode\colonChar=\@m \sfcode\semiChar =\@m \sfcode\commaChar =\@m
+  }
+\catcode`@=\other
 
 \def\t#1{%
   {\tt \rawbackslash \frenchspacing #1}%
@@ -2019,11 +2042,6 @@ where each line of input produces a line of output.}
 \def\itemcontents{#1}%
 \let\item=\itemizeitem}
 
-% Set sfcode to normal for the chars that usually have another value.
-% These are `.?!:;,'
-\def\frenchspacing{\sfcode46=1000 \sfcode63=1000 \sfcode33=1000
-  \sfcode58=1000 \sfcode59=1000 \sfcode44=1000 }
-
 % \splitoff TOKENS\endmark defines \first to be the first token in
 % TOKENS, and \rest to be the remainder.
 %
@@ -2532,7 +2550,7 @@ width0pt\relax} \fi
   \long\def\doignoretext##1@end #1{\enddoignore}%
   %
   % Make sure that spaces turn into tokens that match what \doignoretext wants.
-  \catcode32 = 10
+  \catcode\spaceChar = 10
   %
   % Ignore braces, too, so mismatched braces don't cause trouble.
   \catcode`\{ = 9
@@ -4946,7 +4964,7 @@ width0pt\relax} \fi
 \def\defparsebody#1#2#3{%
   \parsebodycommon{#1}{#2}{#3}%
   \def#2{\defxbodycommon \activeparens \spacesplit#3}%
-  \catcode61=\active % 61 is `='
+  \catcode\equalChar=\active
   \begingroup\obeylines\activeparens
   \spacesplit#3%
 }
@@ -5008,7 +5026,7 @@ width0pt\relax} \fi
 \def\defvarparsebody #1#2#3{%
   \parsebodycommon{#1}{#2}{#3}%
   \def#2{\defxbodycommon \spacesplit#3}%
-  \catcode61=\active %
+  \catcode\equalChar=\active
   \begingroup\obeylines
   \spacesplit#3%
 }
@@ -5112,7 +5130,7 @@ width0pt\relax} \fi
 
 \def\deffnheader #1#2#3{\doind {fn}{\code{#2}}%
 \begingroup\defname {#2}{#1}\defunargs{#3}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defun == @deffn Function
@@ -5122,7 +5140,7 @@ width0pt\relax} \fi
 \def\defunheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDeffunc}%
 \defunargs {#2}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @deftypefun int foobar (int @var{foo}, float @var{bar})
@@ -5136,7 +5154,7 @@ width0pt\relax} \fi
 \doind {fn}{\code{#2}}% Make entry in function index
 \begingroup\defname {\defheaderxcond#1\relax$.$#2}{\putwordDeftypefun}%
 \deftypefunargs {#3}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
@@ -5157,7 +5175,7 @@ width0pt\relax} \fi
 %               at least some C++ text from working
 \defname {\defheaderxcond#2\relax$.$#3}{#1}%
 \deftypefunargs {#4}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defmac == @deffn Macro
@@ -5167,7 +5185,7 @@ width0pt\relax} \fi
 \def\defmacheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDefmac}%
 \defunargs {#2}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defspec == @deffn Special Form
@@ -5177,7 +5195,7 @@ width0pt\relax} \fi
 \def\defspecheader #1#2{\doind {fn}{\code{#1}}% Make entry in function index
 \begingroup\defname {#1}{\putwordDefspec}%
 \defunargs {#2}\endgroup %
-\catcode 61=\other % Turn off change made in \defparsebody
+\catcode\equalChar=\other % Turn off change made in \defparsebody
 }
 
 % @defop CATEGORY CLASS OPERATION ARG...
@@ -6475,8 +6493,6 @@ should work if nowhere else does.}
 \def+{{\tt \char 43}}
 \catcode`\$=\active
 \def${\ifusingit{{\sl\$}}\normaldollar}%$ font-lock fix
-%\catcode 27=\active
-%\def^^[{$\diamondsuit$}
 
 % Set up an active definition for =, but don't enable it most of the time.
 {\catcode`\==\active
@@ -6505,7 +6521,6 @@ should work if nowhere else does.}
 % \normalbackslash outputs one backslash in fixed width font.
 \def\normalbackslash{{\tt\rawbackslashxx}}
 
-% \catcode 17=0   % Define control-q
 \catcode`\\=\active
 
 % Used sometimes to turn off (effectively) the active characters
