@@ -6,6 +6,7 @@
 	Right labels are put in special sections and files are omitted
 	when the href is on the same file.
 	change &#156; to &oelig; and &#140; to &OElig; (as tidy do)
+	* Tests/*/nodetest.texi: test for more simple special commands
 
 2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: formatting put in texi2html.init

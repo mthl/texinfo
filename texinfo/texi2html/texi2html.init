@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.23 2003-04-10 14:31:17 pertusus Exp $
+# $Id: texi2html.init,v 1.24 2003-04-10 15:41:17 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -1029,15 +1029,17 @@ EOT
            "*", "<br>",     # HTML+
            " ", "&nbsp;",
            "\t", "&nbsp;",
-           "-", "&#173;",	 # soft hyphen
            "\n", "&nbsp;",
-           "|", "",
+     # "&#173;" or "&shy;" could also be possible for @-, but it seems
+     # that some browser will consider this as an always visible hyphen mark
+     # which is not what we want (see http://www.cs.tut.fi/~jkorpela/shy.html)
+           "-", "",  # hyphenation hint
+           "|", "",  # used in formatting commands @evenfooting and friends
        # spacing commands
            ":", "",
            "!", "!",
            "?", "?",
            ".", ".",
-           "-", "",
            '@', '@',
            '}', '}',
            '{', '{',

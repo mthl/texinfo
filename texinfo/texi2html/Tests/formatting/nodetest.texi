@@ -341,5 +341,11 @@ Test dotaccent.
 
 	@pounds{}
 
+	@@- : @-
+	@@ followed by end of line: @
+	@@ followed by tab: @	
+	@@ followed by space @ 
+	@@*: @* and text followin @@*.
+
 @contents
 @bye
