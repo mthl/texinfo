@@ -344,7 +344,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.19 2003-01-30 17:55:05 pertusus Exp $
+# $Id: texi2html.pl,v 1.20 2003-01-31 16:29:30 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1058,7 +1058,6 @@ else
 }
 
 $docu_doc = "$docu_name.$docu_ext"; # document's contents
-$docu_doc_file = "$docu_rdir$docu_doc";
 if ($T2H_SPLIT)
 {
     $docu_toc   = $T2H_TOC_FILE || "${docu_name}_toc.$docu_ext"; # document's table of contents
@@ -1076,6 +1075,7 @@ else
     }
     $docu_toc = $docu_foot = $docu_stoc = $docu_about = $docu_top = $docu_doc;
 }
+$docu_doc_file = "$docu_rdir$docu_doc";
 
 $docu_toc_file  = "$docu_rdir$docu_toc";
 $docu_stoc_file = "$docu_rdir$docu_stoc";
