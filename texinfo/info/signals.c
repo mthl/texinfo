@@ -1,5 +1,5 @@
 /* signals.c -- install and maintain Info signal handlers.
-   $Id: signals.c,v 1.2 2003-01-27 13:52:46 karl Exp $
+   $Id: signals.c,v 1.3 2003-01-27 14:07:09 karl Exp $
 
    Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003 Free Software
    Foundation, Inc.
@@ -98,7 +98,7 @@ set_termsig (sig, old)
   int sig;
   signal_info *old;
 {
-  sigaction (sig, info_signal_handler, old);
+  sigaction (sig, &info_signal_handler, old);
 }
 
 static void
