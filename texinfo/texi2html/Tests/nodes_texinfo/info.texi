@@ -6,7 +6,7 @@
 @syncodeindex vr cp
 @syncodeindex ky cp
 @comment %**end of header
-@comment $Id: info.texi,v 1.1 2003-05-09 16:46:44 pertusus Exp $
+@comment $Id: info.texi,v 1.2 2003-05-19 17:34:46 pertusus Exp $
 
 @dircategory Texinfo documentation system
 @direntry
