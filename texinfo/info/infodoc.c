@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.2 2002-09-26 23:26:03 karl Exp $
+   $Id: infodoc.c,v 1.3 2002-09-28 21:08:10 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
    Foundation, Inc.
@@ -1108,7 +1108,15 @@ where_is_internal (map, cmd)
   return NULL;
 
 #else /* !INFOKEY */
-
+  /* There is a bug in that create_internal_info_help_node calls
+     where_is_internal without setting where_is_rep_index to zero.  This
+     was found by Mandrake and reported by Thierry Vignaud
+     <tvignaud@mandrakesoft.com> around April 24, 2002.
+     
+     I think the best fix is to make where_is_rep_index another
+     parameter to this recursively-called function, instead of a static
+     variable.  But this [!INFOKEY] branch of the code is not enabled
+     any more, so let's just skip the whole thing.  --karl, 28sep02.  */
   register int i;
 
   /* If the function is directly invokable in MAP, return the representation
