@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.8 2001-11-27 11:24:47 adrian Exp $
+# $Id: texi2html.init,v 1.9 2002-06-25 16:07:20 dprice Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -43,13 +43,21 @@ $T2H_OPTIONS -> {debug} =
 # [Definition:] The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-my $T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                      "http://www.w3.org/TR/html40/loose.dtd">';
+my $T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">';
 $T2H_OPTIONS -> {doctype} =
 {
  type => '=s',
  linkage => \$T2H_DOCTYPE,
  verbose => 'document type which is output in header of HTML files',
+ noHelp => 1
+};
+
+my $T2H_FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html401/frameset.dtd">';
+$T2H_OPTIONS -> {frameset_doctype} =
+{
+ type => '=s',
+ linkage => \$T2H_FRAMESET_DOCTYPE,
+ verbose => 'document type for HTML frameset documents',
  noHelp => 1
 };
 
@@ -445,14 +453,14 @@ my $T2H_HREF_DIR_INSTEAD_FILE = '';
 my $T2H_WORDS_EN =
 {
  # titles  of pages
- 'ToC_Title' => 'Table of Contents',
- 'Overview_Title' => 'Short Table of Contents',
- 'Index_Title' => 'Index',
- 'About_Title' => 'About this document',
+ 'ToC_Title'       => 'Table of Contents',
+ 'Overview_Title'  => 'Short Table of Contents',
+ 'Index_Title'     => 'Index',
+ 'About_Title'     => 'About This Document',
  'Footnotes_Title' => 'Footnotes',
- 'See' => 'See',
- 'see' => 'see',
- 'section' => 'section',
+ 'See'             => 'See',
+ 'see'             => 'see',
+ 'section'         => 'section',
  # If necessary, we could extend this as follows:
  #  # text for buttons
  #  'Top_Button' => 'Top',
@@ -473,74 +481,74 @@ my $T2H_WORDS_EN =
 
 my $T2H_WORDS_DE =
 {
- 'ToC_Title' => 'Inhaltsverzeichniss',
- 'Overview_Title' => 'Kurzes Inhaltsverzeichniss',
- 'Index_Title' => 'Index',
- 'About_Title' => '&Uuml;ber dieses Dokument',
+ 'ToC_Title'       => 'Inhaltsverzeichniss',
+ 'Overview_Title'  => 'Kurzes Inhaltsverzeichniss',
+ 'Index_Title'     => 'Index',
+ 'About_Title'     => '&Uuml;ber dieses Dokument',
  'Footnotes_Title' => 'Fu&szlig;noten',
- 'See' => 'Siehe',
- 'see' => 'siehe',
- 'section' => 'Abschnitt',
+ 'See'             => 'Siehe',
+ 'see'             => 'siehe',
+ 'section'         => 'Abschnitt',
 };
 
 my $T2H_WORDS_NL =
 {
- 'ToC_Title' => 'Inhoudsopgave',
- 'Overview_Title' => 'Korte inhoudsopgave',
- 'Index_Title' => 'Index',      #Not sure ;-)
- 'About_Title' => 'No translation available!', #No translation available!
+ 'ToC_Title'       => 'Inhoudsopgave',
+ 'Overview_Title'  => 'Korte inhoudsopgave',
+ 'Index_Title'     => 'Index',      #Not sure ;-)
+ 'About_Title'     => 'No translation available!', #No translation available!
  'Footnotes_Title' => 'No translation available!', #No translation available!
- 'See' => 'Zie',
- 'see' => 'zie',
- 'section' => 'sectie',
+ 'See'             => 'Zie',
+ 'see'             => 'zie',
+ 'section'         => 'sectie',
 };
 
 my $T2H_WORDS_ES =
 {
- 'ToC_Title' => '&iacute;ndice General',
- 'Overview_Title' => 'Resumen del Contenido',
- 'Index_Title' => 'Index',      #Not sure ;-)
- 'About_Title' => 'No translation available!', #No translation available!
+ 'ToC_Title'       => '&iacute;ndice General',
+ 'Overview_Title'  => 'Resumen del Contenido',
+ 'Index_Title'     => 'Index',      #Not sure ;-)
+ 'About_Title'     => 'No translation available!', #No translation available!
  'Footnotes_Title' => 'Fu&szlig;noten',
- 'See' => 'V&eacute;ase',
- 'see' => 'v&eacute;ase',
- 'section' => 'secci&oacute;n',
+ 'See'             => 'V&eacute;ase',
+ 'see'             => 'v&eacute;ase',
+ 'section'         => 'secci&oacute;n',
 };
 
 my $T2H_WORDS_NO =
 {
- 'ToC_Title' => 'Innholdsfortegnelse',
- 'Overview_Title' => 'Kort innholdsfortegnelse',
- 'Index_Title' => 'Indeks',     #Not sure ;-)
- 'About_Title' => 'No translation available!', #No translation available!
+ 'ToC_Title'       => 'Innholdsfortegnelse',
+ 'Overview_Title'  => 'Kort innholdsfortegnelse',
+ 'Index_Title'     => 'Indeks',     #Not sure ;-)
+ 'About_Title'     => 'No translation available!', #No translation available!
  'Footnotes_Title' => 'No translation available!',
- 'See' => 'Se',
- 'see' => 'se',
- 'section' => 'avsnitt',
+ 'See'             => 'Se',
+ 'see'             => 'se',
+ 'section'         => 'avsnitt',
 };
 
 my $T2H_WORDS_PT =
 {
- 'ToC_Title' => 'Sum&aacute;rio',
- 'Overview_Title' => 'Breve Sum&aacute;rio',
- 'Index_Title' => '&Iacute;ndice', #Not sure ;-)
- 'About_Title' => 'No translation available!', #No translation available!
+ 'ToC_Title'       => 'Sum&aacute;rio',
+ 'Overview_Title'  => 'Breve Sum&aacute;rio',
+ 'Index_Title'     => '&Iacute;ndice', #Not sure ;-)
+ 'About_Title'     => 'No translation available!', #No translation available!
  'Footnotes_Title' => 'No translation available!',
- 'See' => 'Veja',
- 'see' => 'veja',
- 'section' => 'Se&ccedil;&atilde;o',
+ 'See'             => 'Veja',
+ 'see'             => 'veja',
+ 'section'         => 'Se&ccedil;&atilde;o',
 };
 
 my $T2H_WORDS_FR =
 {
- 'ToC_Title' => 'Table des mati&egrav;res',
- 'Overview_Title' => 'R&eacute;sum&eacute;e du contenu',
- 'Index_Title' => 'Index',
- 'About_Title' => 'A propos de ce document',
+ 'ToC_Title'       => 'Table des mati&egrav;res',
+ 'Overview_Title'  => 'R&eacute;sum&eacute;e du contenu',
+ 'Index_Title'     => 'Index',
+ 'About_Title'     => 'A propos de ce document',
  'Footnotes_Title' => 'Notes de bas de page',
- 'See' => 'Voir',
- 'see' => 'voir',
- 'section' => 'section',
+ 'See'             => 'Voir',
+ 'see'             => 'voir',
+ 'section'         => 'section',
 };
 
 my $T2H_WORDS =
@@ -551,7 +559,7 @@ my $T2H_WORDS =
  'es' => $T2H_WORDS_ES,
  'no' => $T2H_WORDS_NO,
  'pt' => $T2H_WORDS_PT,
- 'fr' => $T2H_WORDS_FR
+ 'fr' => $T2H_WORDS_FR,
 };
 
 my @MONTH_NAMES_EN =
@@ -701,7 +709,7 @@ sub T2H_DEFAULT_print_section
     }
     else
     {
-        print $fh '<HR SIZE="6">' . "\n";
+        print $fh '<hr size="6">' . "\n";
     }
 }
 
@@ -737,7 +745,7 @@ sub T2H_DEFAULT_print_Top
     if ($T2H_THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
-        print $fh "<H1>$T2H_NAME{Top}</H1>\n"
+        print $fh "<h1>$T2H_NAME{Top}</h1>\n"
             unless ($T2H_HAS_TOP_HEADING);
         t2h_print_lines($fh, $T2H_THIS_SECTION)
     }
@@ -746,20 +754,21 @@ sub T2H_DEFAULT_print_Top
         # top-level node is fully enclosed in @ifnothtml
         # print fulltitle, subtitle, author, Overview
         print $fh
-            "<CENTER>\n<H1>" .
-                join("</H1>\n<H1>", split(/\n/,  $T2H_THISDOC{fulltitle})) .
-                    "</H1>\n";
-        print $fh "<H2>$T2H_THISDOC{subtitle}</H2>\n" if $T2H_THISDOC{subtitle};
+            "<div align=\"center\">\n<h1>",
+                join("</h1>\n<h1>", split(/\n/,  $T2H_THISDOC{fulltitle})),
+                    "</h1>\n";
+        print $fh "<h2>$T2H_THISDOC{subtitle}</h2>\n"
+          if $T2H_THISDOC{subtitle};
         print $fh "$T2H_THISDOC{author}\n" if $T2H_THISDOC{author};
         print $fh <<EOT;
-</CENTER>
-<HR>
-<P></P>
-<H2> Overview: </H2>
-<BLOCKQUOTE>
+</div>
+<hr>
+<p></p>
+<h2> Overview: </h2>
+<blockquote>
 EOT
         t2h_print_lines($fh, $T2H_OVERVIEW);
-        print $fh "</BLOCKQUOTE>\n";
+        print $fh "</blockquote>\n";
     }
     &$T2H_print_Top_footer($fh);
 }
@@ -803,7 +812,7 @@ sub T2H_DEFAULT_print_misc
     my $fh = shift;
     local $T2H_BUTTONS = \@T2H_MISC_BUTTONS;
     &$T2H_print_misc_header($fh);
-    print $fh "<H1>$T2H_NAME{This}</H1>\n";
+    print $fh "<h1>$T2H_NAME{This}</h1>\n";
     t2h_print_lines($fh);
     &$T2H_print_misc_footer($fh);
 }
@@ -832,7 +841,7 @@ sub T2H_DEFAULT_print_chapter_header
         my $fh = shift;
         local $T2H_BUTTONS = \@T2H_CHAPTER_BUTTONS;
         &$T2H_print_navigation($fh);
-        print $fh "\n<HR SIZE=2>\n";
+        print $fh "\n<hr size=\"2\">\n";
     }
 }
 
@@ -861,17 +870,17 @@ sub pretty_date {
 # output is generated.
 sub T2H_InitGlobals
 {
-    # Set the default body text, inserted between <BODY ... >
-    $T2H_BODYTEXT = 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000"';
-    # text inserted after <BODY ...>
+    # Set the default body text, inserted between <body ... >
+    $T2H_BODYTEXT = 'lang="' . $T2H_LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+    # text inserted after <body ...>
     $T2H_AFTER_BODY_OPEN = '';
-    #text inserted before </BODY>
+    # text inserted before </body>, this will be automatically inside <p></p>
     $T2H_PRE_BODY_CLOSE = '';
     # this is used in footer
-    $T2H_ADDRESS = "<I>$T2H_USER</I> " if $T2H_USER;
-    $T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
-    # this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
-    # can be used for <style> <script>, <meta> tags
+    $T2H_ADDRESS = "by <i>$T2H_USER</i> " if $T2H_USER;
+    $T2H_ADDRESS .= "on <i>$T2H_TODAY</i>";
+    # this is added inside <head></head> after <title> and some <meta name>
+    # stuff, it can be used for eg. <style>, <script>, <meta> etc. tags.
     $T2H_EXTRA_HEAD = '';
 }
 
@@ -882,23 +891,23 @@ sub T2H_DEFAULT_print_page_head
     $longtitle .= ": $T2H_NAME{This}" if exists $T2H_NAME{This};
     print $fh <<EOT;
 $T2H_DOCTYPE
-<HTML>
+<html>
 <!-- Created on $T2H_TODAY by $THISPROG -->
 <!--
 $T2H_AUTHORS
 -->
-<HEAD>
-<TITLE>$longtitle</TITLE>
+<head>
+<title>$longtitle</title>
 
-<META NAME="description" CONTENT="$longtitle">
-<META NAME="keywords" CONTENT="$longtitle">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="$THISPROG">
+<meta name="description" content="$longtitle">
+<meta name="keywords" content="$longtitle">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="$THISPROG">
 $T2H_EXTRA_HEAD
-</HEAD>
+</head>
 
-<BODY $T2H_BODYTEXT>
+<body $T2H_BODYTEXT>
 $T2H_AFTER_BODY_OPEN
 EOT
 }
@@ -907,15 +916,16 @@ sub T2H_DEFAULT_print_page_foot
 {
     my $fh = shift;
     print $fh <<EOT;
-<BR>
-<FONT SIZE="-1">
-This document was generated
-by $T2H_ADDRESS
-using <A HREF="$T2H_HOMEPAGE"><I>texi2html</I></A>
-</FONT>
+<p>
+ <font size="-1">
+  This document was generated $T2H_ADDRESS
+  using <a href="$T2H_HOMEPAGE"><i>$THISPROG</i></a>.
+ </font>
+ <br>
 $T2H_PRE_BODY_CLOSE
-</BODY>
-</HTML>
+</p>
+</body>
+</html>
 EOT
 }
 
@@ -930,23 +940,23 @@ sub T2H_DEFAULT_print_head_navigation
     if ($T2H_VERTICAL_HEAD_NAVIGATION)
     {
         print $fh <<EOT;
-<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
-<TR VALIGN="TOP">
-<TD ALIGN="LEFT">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
 EOT
     }
     &$T2H_print_navigation($fh, $T2H_VERTICAL_HEAD_NAVIGATION);
     if ($T2H_VERTICAL_HEAD_NAVIGATION)
     {
         print $fh <<EOT;
-</TD>
-<TD ALIGN="LEFT">
+</td>
+<td align="left">
 EOT
     }
     elsif (defined $T2H_SPLIT
            and ($T2H_SPLIT eq 'section'))
     {
-        print $fh "<HR SIZE=1>\n";
+        print $fh "<hr size=\"1\">\n";
     }
 }
 
@@ -961,12 +971,12 @@ sub T2H_DEFAULT_print_foot_navigation
     if ($T2H_VERTICAL_HEAD_NAVIGATION)
     {
         print $fh <<EOT;
-</TD>
-</TR>
-</TABLE>
+</td>
+</tr>
+</table>
 EOT
     }
-    print $fh "<HR SIZE=1>\n";
+    print $fh "<hr size=\"1\">\n";
     &$T2H_print_navigation($fh) if (defined $nwords
                                     and $nwords >= $T2H_WORDS_IN_PAGE)
 }
@@ -990,40 +1000,40 @@ EOT
 # Icons are used, if $T2H_ICONS and resp. value are set
 %T2H_ACTIVE_ICONS =
     (
-     'Top',      '',
-     'Contents', '',
-     'Overview', '',
-     'Index',    '',
-     'Back',     '',
-     'FastBack', '',
-     'Prev',     '',
-     'Up',       '',
-     'Next',     '',
-     'Forward',  '',
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'Back',        '',
+     'FastBack',    '',
+     'Prev',        '',
+     'Up',          '',
+     'Next',        '',
+     'Forward',     '',
      'FastForward', '',
-     'About' ,    '',
-     'First',    '',
-     'Last',     '',
-     ' ',        ''
+     'About' ,      '',
+     'First',       '',
+     'Last',        '',
+     ' ',           ''
     );
 
 # insert here name of icon images for these, if button is inactive
 %T2H_PASSIVE_ICONS =
     (
-     'Top',      '',
-     'Contents', '',
-     'Overview', '',
-     'Index',    '',
-     'Back',     '',
-     'FastBack', '',
-     'Prev',     '',
-     'Up',       '',
-     'Next',     '',
-     'Forward',  '',
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'Back',        '',
+     'FastBack',    '',
+     'Prev',        '',
+     'Up',          '',
+     'Next',        '',
+     'Forward',     '',
      'FastForward', '',
-     'About',     '',
-     'First',    '',
-     'Last',     '',
+     'About',       '',
+     'First',       '',
+     'Last',        '',
     );
 
 # how to create IMG tag
@@ -1032,27 +1042,27 @@ sub T2H_DEFAULT_button_icon_img
     my $button = shift;
     my $icon = shift;
     my $name = shift;
-    return qq{<IMG SRC="$icon" BORDER="0" ALT="$button: $name" ALIGN="MIDDLE">};
+    return qq{<img src="$icon" border="0" alt="$button: $name" align="middle">};
 }
 
 # Names of text as alternative for icons
 %T2H_NAVIGATION_TEXT =
     (
-     'Top',      'Top',
-     'Contents', 'Contents',
-     'Overview', 'Overview',
-     'Index',    'Index',
-     ' ',        ' &nbsp; ',
-     'Back',     ' &lt; ',
-     'FastBack', ' &lt;&lt; ',
-     'Prev',     'Prev',
-     'Up',       ' Up ',
-     'Next',     'Next',
-     'Forward',  ' &gt; ',
-     'FastForward',  ' &gt;&gt; ',
-     'About',     ' ? ',
-     'First',    ' |&lt; ',
-     'Last',     ' &gt;| '
+     'Top',         'Top',
+     'Contents',    'Contents',
+     'Overview',    'Overview',
+     'Index',       'Index',
+     ' ',           ' &nbsp; ',
+     'Back',        ' &lt; ',
+     'FastBack',    ' &lt;&lt; ',
+     'Prev',        'Prev',
+     'Up',          ' Up ',
+     'Next',        'Next',
+     'Forward',     ' &gt; ',
+     'FastForward', ' &gt;&gt; ',
+     'About',       ' ? ',
+     'First',       ' |&lt; ',
+     'Last',        ' &gt;| '
     );
 
 sub T2H_DEFAULT_print_navigation
@@ -1060,13 +1070,14 @@ sub T2H_DEFAULT_print_navigation
     my $fh = shift;
     my $vertical = shift;
     my $spacing = 1;
-    print $fh "<TABLE CELLPADDING=$spacing CELLSPACING=$spacing BORDER=0>\n";
+    print $fh '<table cellpadding="', $spacing, '" cellspacing="', $spacing,
+      "\" border=\"0\">\n";
 
-    print $fh "<TR>" unless $vertical;
+    print $fh "<tr>" unless $vertical;
     for $button (@$T2H_BUTTONS)
     {
-        print $fh qq{<TR VALIGN="TOP" ALIGN="LEFT">\n} if $vertical;
-        print $fh qq{<TD VALIGN="MIDDLE" ALIGN="LEFT">};
+        print $fh qq{<tr valign="top" align="left">\n} if $vertical;
+        print $fh qq{<td valign="middle" align="left">};
 
         if (ref($button) eq 'CODE')
         {
@@ -1082,16 +1093,32 @@ sub T2H_DEFAULT_print_navigation
         }
         elsif ($T2H_HREF{$button})
         {                       # button is active
-            print $fh
-                $T2H_ICONS && $T2H_ACTIVE_ICONS{$button} ? # use icon ?
-                    t2h_anchor('', $T2H_HREF{$button}, # yes
-                               &$T2H_button_icon_img($button,
-                                                     $T2H_ACTIVE_ICONS{$button},
-                                                     $T2H_NAME{$button}))
-                        :       # use text
-                            "[" .
-                                t2h_anchor('', $T2H_HREF{$button}, $T2H_NAVIGATION_TEXT{$button}) .
-                                    "]";
+            my $btitle = $T2H_BUTTONS_GOTO{$button} ?
+                'title="' . ucfirst($T2H_BUTTONS_GOTO{$button}) . '"' : '';
+            if ($T2H_ICONS && $T2H_ACTIVE_ICONS{$button})
+            {                   # use icon
+                print $fh
+                    &t2h_anchor('',
+                                $T2H_HREF{$button},
+                                &$T2H_button_icon_img($button,
+                                                    $T2H_ACTIVE_ICONS{$button},
+                                                      $T2H_NAME{$button}),
+                                0,
+                                $btitle
+                               );
+            }
+            else
+            {                   # use text
+                print $fh
+                    '[',
+                        &t2h_anchor('',
+                                    $T2H_HREF{$button},
+                                    $T2H_NAVIGATION_TEXT{$button},
+                                    0,
+                                    $btitle
+                                   ),
+                                       ']';
+            }
         }
         else
         {                       # button is passive
@@ -1103,11 +1130,11 @@ sub T2H_DEFAULT_print_navigation
 
                                               "[" . $T2H_NAVIGATION_TEXT{$button} . "]";
         }
-        print $fh "</TD>\n";
-        print $fh "</TR>\n" if $vertical;
+        print $fh "</td>\n";
+        print $fh "</tr>\n" if $vertical;
     }
-    print $fh "</TR>" unless $vertical;
-    print $fh "</TABLE>\n";
+    print $fh "</tr>" unless $vertical;
+    print $fh "</table>\n";
 }
 
 ######################################################################
@@ -1118,13 +1145,14 @@ sub T2H_DEFAULT_print_frame
 {
     my $fh = shift;
     print $fh <<EOT;
-<HTML>
-<HEAD><TITLE>$T2H_THISDOC{title}</TITLE></HEAD>
-<FRAMESET cols="140,*">
-  <FRAME name=toc  src="$docu_toc_frame_file">
-  <FRAME name=main src="$docu_doc">
-</FRAMESET>
-</HTML>
+$T2H_FRAMESET_DOCTYPE
+<html>
+<head><title>$T2H_THISDOC{title}</title></head>
+<frameset cols="140,*">
+  <frame name="toc" src="$docu_toc_frame_file">
+  <frame name="main" src="$docu_doc">
+</frameset>
+</html>
 EOT
 }
 
@@ -1133,145 +1161,145 @@ sub T2H_DEFAULT_print_toc_frame
     my $fh = shift;
     &$T2H_print_page_head($fh);
     print $fh <<EOT;
-<H2>Content</H2>
+<h2>Content</h2>
 EOT
-    print $fh map {s/HREF=/target=\"main\" HREF=/; $_;} @stoc_lines;
-    print $fh "</BODY></HTML>\n";
+    print $fh map {s/\bhref=/target="main" href=/; $_;} @stoc_lines;
+    print $fh "</body></html>\n";
 }
 
 ######################################################################
 # About page
 #
 
-# T2H_PRE_ABOUT might be a function
-my $T2H_PRE_ABOUT = <<EOT;
-This document was generated
-by $T2H_ADDRESS
-using <A HREF=\"$T2H_HOMEPAGE\"><I>texi2html</I></A>
-<P></P>
+# T2H_PRE_ABOUT can be a function reference or a scalar.
+# Note that if it is a scalar, T2H_InitGlobals has not been called,
+# and all global variables like $T2H_ADDRESS are not available.
+my $T2H_PRE_ABOUT = sub
+{
+    return <<EOT;
+  This document was generated $T2H_ADDRESS
+  using <a href="$T2H_HOMEPAGE"><i>$THISPROG</i></a>.
 EOT
+};
+
+# If customizing $T2H_AFTER_ABOUT, be sure to put the content inside <p></p>.
 my $T2H_AFTER_ABOUT = '';
 
 sub T2H_DEFAULT_about_body
 {
-    my $about;
+    my $about = "<p>\n";
     if (ref($T2H_PRE_ABOUT) eq 'CODE')
     {
-        $about = &$T2H_PRE_ABOUT();
+        $about .= &$T2H_PRE_ABOUT();
     }
     else
     {
-        $about = $T2H_PRE_ABOUT;
+        $about .= $T2H_PRE_ABOUT;
     }
     $about .= <<EOT;
-The buttons in the navigation panels have the following meaning:
-<P></P>
-<table border = "1">
-<TR>
-<TH> Button </TH>
-<TH> Name </TH>
-<TH> Go to </TH>
-<TH> From 1.2.3 go to</TH>
-</TR>
+</p>
+<p>
+  The buttons in the navigation panels have the following meaning:
+</p>
+<table border="1">
+  <tr>
+    <th> Button </th>
+    <th> Name </th>
+    <th> Go to </th>
+    <th> From 1.2.3 go to</th>
+  </tr>
 EOT
 
     for $button (@T2H_SECTION_BUTTONS)
     {
         next if $button eq ' ' || ref($button) eq 'CODE';
-        $about .= <<EOT;
-<TR>
-<TD ALIGN="CENTER">
-EOT
+        $about .= "  <tr>\n    <td align=\"center\">";
         $about .=
             ($T2H_ICONS && $T2H_ACTIVE_ICONS{$button} ?
              &$T2H_button_icon_img($button, $T2H_ACTIVE_ICONS{$button}) :
-             " [" . $T2H_NAVIGATION_TEXT{$button} . "] ");
+             ' [' . $T2H_NAVIGATION_TEXT{$button} . '] ');
+        $about .= "</td>\n";
         $about .= <<EOT;
-</TD>
-<TD ALIGN="CENTER">
-$button
-</TD>
-<TD>
-$T2H_BUTTONS_GOTO{$button}
-</TD>
-<TD>
-$T2H_BUTTONS_EXAMPLE{$button}
-</TD>
-</TR>
+    <td align="center">$button</td>
+    <td>$T2H_BUTTONS_GOTO{$button}</td>
+    <td>$T2H_BUTTONS_EXAMPLE{$button}</td>
+  </tr>
 EOT
     }
 
     $about .= <<EOT;
-</TABLE>
-    <P>
-      where the <STRONG> Example </STRONG> assumes that the current position
-      is at <STRONG> Subsubsection One-Two-Three </STRONG> of a document of
-      the following structure:</P>
-    <UL>
-      <LI> 1. Section One
-        <UL>
-          <LI>1.1 Subsection One-One
-            <UL>
-              <LI>...</LI>
-            </UL>
-          <LI>1.2 Subsection One-Two
-            <UL>
-              <LI>1.2.1 Subsubsection One-Two-One</LI>
-              <LI>1.2.2 Subsubsection One-Two-Two</LI>
-              <LI>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
-                <STRONG>&lt;== Current Position </STRONG></LI>
-              <LI>1.2.4 Subsubsection One-Two-Four</LI>
-            </UL>
-          </LI>
-          <LI>1.3 Subsection One-Three
-            <UL>
-              <LI>...</LI>
-            </UL>
-          </LI>
-          <LI>1.4 Subsection One-Four</LI>
-        </UL>
-      </LI>
-    </UL>
+</table>
+
+<p>
+  where the <strong> Example </strong> assumes that the current position
+  is at <strong> Subsubsection One-Two-Three </strong> of a document of
+  the following structure:
+</p>
+
+<ul>
+  <li> 1. Section One
+    <ul>
+      <li>1.1 Subsection One-One
+        <ul>
+          <li>...</li>
+        </ul>
+      <li>1.2 Subsection One-Two
+        <ul>
+          <li>1.2.1 Subsubsection One-Two-One</li>
+          <li>1.2.2 Subsubsection One-Two-Two</li>
+          <li>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
+            <strong>&lt;== Current Position </strong></li>
+          <li>1.2.4 Subsubsection One-Two-Four</li>
+        </ul>
+      </li>
+      <li>1.3 Subsection One-Three
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.4 Subsection One-Four</li>
+    </ul>
+  </li>
+</ul>
 $T2H_AFTER_ABOUT
 EOT
     return $about;
 }
 
-
 %T2H_BUTTONS_GOTO =
     (
-     'Top',      'cover (top) of document',
-     'Contents', 'table of contents',
-     'Overview', 'short table of contents',
-     'Index',    'concept index',
-     'Back',     'previous section in reading order',
-     'FastBack', 'beginning of this chapter or previous chapter',
-     'Prev',     'previous section same level',
-     'Up',       'up section',
-     'Next',     'next section same level',
-     'Forward',  'next section in reading order',
+     'Top',         'cover (top) of document',
+     'Contents',    'table of contents',
+     'Overview',    'short table of contents',
+     'Index',       'concept index',
+     'Back',        'previous section in reading order',
+     'FastBack',    'beginning of this chapter or previous chapter',
+     'Prev',        'previous section on same level',
+     'Up',          'up section',
+     'Next',        'next section on same level',
+     'Forward',     'next section in reading order',
      'FastForward', 'next chapter',
-     'About' ,    'this page',
-     'First',    'first section in reading order',
-     'Last',     'last section in reading order',
+     'About' ,      'about (this page)',
+     'First',       'first section in reading order',
+     'Last',        'last section in reading order',
     );
 
 %T2H_BUTTONS_EXAMPLE =
     (
-     'Top',      ' &nbsp; ',
-     'Contents', ' &nbsp; ',
-     'Overview', ' &nbsp; ',
-     'Index',    ' &nbsp; ',
-     'Back',     '1.2.2',
-     'FastBack', '1',
-     'Prev',     '1.2.2',
-     'Up',       '1.2',
-     'Next',     '1.2.4',
-     'Forward',  '1.2.4',
+     'Top',         ' &nbsp; ',
+     'Contents',    ' &nbsp; ',
+     'Overview',    ' &nbsp; ',
+     'Index',       ' &nbsp; ',
+     'Back',        '1.2.2',
+     'FastBack',    '1',
+     'Prev',        '1.2.2',
+     'Up',          '1.2',
+     'Next',        '1.2.4',
+     'Forward',     '1.2.4',
      'FastForward', '2',
-     'About',     ' &nbsp; ',
-     'First',    '1.',
-     'Last',     '1.2.4',
+     'About',       ' &nbsp; ',
+     'First',       '1.',
+     'Last',        '1.2.4',
     );
 
 

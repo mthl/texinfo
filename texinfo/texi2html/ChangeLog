@@ -1,3 +1,14 @@
+2002-06-25  Derek Price  <oberon@umich.edu>
+
+	* texi2html.init, texi2html.pl:
+	Miscellaneous HTML improvements, towards strictness and
+	easier transition to XHTML later; lowercase elements and
+	attributes, avoid using deprecated elements and attributes,
+	always quote attribute values, avoid use of minimized
+	attributes.  Internal cleanups.
+	(Patch from Ville Skyttä <ville.skytta@xemacs.org> through
+	Adrian Aichner <adrian@xemacs.org>.)
+
 2002-06-08  Derek Price  <oberon@umich.edu>
 
 	* configure: Update to a new development release number.
@@ -635,3 +646,5 @@
 
 	* texi2html.pl: center @image by default, can be overwritten by
 	T2H_CENTER_IMAGE (sunshine@sunshineco.com)
+
+# vim:tabstop=8:shiftwidth=8
