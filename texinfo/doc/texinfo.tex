@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-12.06}
+\def\texinfoversion{2003-01-12.08}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -777,12 +777,13 @@ where each line of input produces a line of output.}
 
 \def\thisfile{}
 
-% @center line   outputs that line, centered
-
-\def\center{\parsearg\centerzzz}
-\def\centerzzz #1{{\advance\hsize by -\leftskip
-\advance\hsize by -\rightskip
-\centerline{#1}}}
+% @center line
+% outputs that line, centered.
+%
+\def\center{\parsearg\docenter}
+\def\docenter#1{%
+  \line{\hfil \kern\leftskip \ignorespaces#1\unskip \hfil \kern\rightskip}%
+}
 
 % @sp n   outputs n lines of vertical space
 
