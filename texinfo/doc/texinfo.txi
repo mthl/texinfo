@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.76 2003-10-29 19:11:27 karl Exp $
+@c $Id: texinfo.txi,v 1.77 2003-10-29 19:24:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10968,8 +10968,12 @@ and follow it on the same line by the category of the entity, the name
 of the entity itself, and its arguments (if any).  Then write the body
 of the definition on succeeding lines.  (You may embed examples in the
 body.)  Finally, end the definition with an @code{@@end deffn} command
-written on a line of its own.  (The other definition commands follow
-the same format.)@refill
+written on a line of its own.
+
+The other definition commands follow the same format: a line with the
+@code{@@def@dots{}} command and whatever arguments are appropriate for
+that command; the body of the definition; and a corresponding
+@code{@@end} line.
 
 The template for a definition looks like this:
 
@@ -11018,66 +11022,31 @@ write braces around it.  For example:@refill
 
 @noindent
 Otherwise, the second word will be mistaken for the name of the
-entity.@refill
+entity.  As a general rule, when any of the arguments in the heading
+line @emph{except} the last one are more than one word, you need to
+enclose them in braces.
 
 Some of the definition commands are more general than others.  The
 @code{@@deffn} command, for example, is the general definition command
-for functions and the like---for entities that may take arguments.  When
-you use this command, you specify the category to which the entity
-belongs.  The @code{@@deffn} command possesses three predefined,
-specialized variations, @code{@@defun}, @code{@@defmac}, and
-@code{@@defspec}, that specify the category for you: ``Function'',
-``Macro'', and ``Special Form'' respectively.  (In Lisp, a special form
-is an entity much like a function.)  The @code{@@defvr} command also is
-accompanied by several predefined, specialized variations for describing
-particular kinds of variables.@refill
-
-The template for a specialized definition, such as @code{@@defun}, is
-similar to the template for a generalized definition, except that you
-do not need to specify the category:@refill
-
-@example
-@group
-@@defun @var{name} @var{arguments}@dots{}
-@var{body-of-definition}
-@@end defun
-@end group
-@end example
+for functions and the like---for entities that may take arguments.
+When you use this command, you specify the category to which the
+entity belongs.  Three predefined, specialized variations
+(@code{@@defun}, @code{@@defmac}, and @code{@@defspec}) specify the
+category for you: ``Function'', ``Macro'', and ``Special Form''
+respectively.  (In Lisp, a special form is an entity much like a
+function.)  Similarly, the general @code{@@defvr} command is
+accompanied by several specialized variations for describing
+particular kinds of variables.
 
 @noindent
-Thus,
-
-@example
-@group
-@@defun buffer-end flag
-This function returns @@code@{(point-min)@} if @@var@{flag@}
-is less than 1, @@code@{(point-max)@} otherwise.
-@dots{}
-@@end defun
-@end group
-@end example
-
-@noindent
-produces
-
-@quotation
-@defun buffer-end flag
-This function returns @code{(point-min)} if @var{flag} is less than 1,
-@code{(point-max)} otherwise.  @dots{}
-@end defun
-@end quotation
-
-@noindent
-@xref{Sample Function Definition, Sample Function Definition, A Sample
-Function Definition}, for a more detailed example of a function
-definition, including the use of @code{@@example} inside the
-definition.@refill
-
-The other specialized commands work like @code{@@defun}.@refill
+@xref{Sample Function Definition}, for a detailed example of a
+function definition, including the use of @code{@@example} inside the
+definition.
 
 @cindex Macros in definition commands
-Note that, due to implementation difficulties, macros are not expanded
+Unfortunately, due to implementation difficulties, macros are not expanded
 in @code{@@deffn} and all the other definition commands.
+
 
 @node Optional Arguments
 @section Optional and Repeated Arguments
@@ -17286,7 +17255,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.76 2003-10-29 19:11:27 karl Exp $
+$Id: texinfo.txi,v 1.77 2003-10-29 19:24:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17349,7 +17318,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.76 2003-10-29 19:11:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.77 2003-10-29 19:24:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
