@@ -486,9 +486,9 @@ uninstall-am: uninstall-info-am uninstall-texinfohtmlDATA
 
 
 texi2html.html: texi2html.texi $(srcdir)/version.texi \
-  $(top_builddir)/texi2html.pl $(top_builddir)/texi2html.init \
-  $(top_builddir)/MySimple.pm $(top_builddir)/T2h_i18n.pm \
-  $(top_builddir)/translations.pl
+  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
+  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm \
+  $(top_srcdir)/translations.pl
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
 
