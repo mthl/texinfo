@@ -24,12 +24,12 @@
 #-##############################################################################
 
 # This requires perl version 5 or higher
-require 5.0;
+#require 5.0;
 
+# for POSIX::setlocale and File::Spec
+require 5.00405;
 # Perl pragma to restrict unsafe constructs
 use strict;
-# for POSIX::setlocale
-require 5.004;
 # used in case of tests, to revert to "C" locale.
 use POSIX qw(setlocale LC_ALL LC_CTYPE);
 # used to find a relative path back to the current working directory
@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.124 2005-02-03 00:28:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.125 2005-02-03 23:04:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";

@@ -1,5 +1,10 @@
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: require perl 5.00405 for File::Spec (report from
+	Ezra peisach).
+
+2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: don't use open with three args, use binmode (for
 	old perl).
 	* doc/Makefile.am: rebuild the manual based on the sources, not 
