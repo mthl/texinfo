@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.45 2004-04-11 17:56:46 karl Exp $
+   $Id: cmds.c,v 1.46 2004-04-20 00:30:48 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -806,7 +806,19 @@ cm_code (int arg)
       if (STREQ (command, "code"))
         insert_html_tag (arg, "code");
       else
-        insert_html_tag_with_attribute (arg, "span", "class=\"%s\"", command);
+        { /* Use <samp> tag in general to get typewriter.  */
+          if (arg == START)
+            { /* If @samp specifically, add quotes a la TeX output.  */
+              if (STREQ (command, "samp")) add_char ('`');
+              add_word ("<samp>");
+            }
+          insert_html_tag_with_attribute (arg, "span", "class=\"%s\"",command);
+          if (arg == END)
+            {
+              add_word ("</samp>");
+              if (STREQ (command, "samp")) add_char ('\'');
+            }
+        }
     }
   else
     {
