@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.5 2002-11-08 00:11:04 karl Exp $
+   $Id: xml.c,v 1.6 2002-11-08 18:13:42 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -354,6 +354,8 @@ int xml_no_para = 0;
 char *xml_node_id = NULL;
 int xml_sort_index = 0;
 
+int xml_in_xref_token = 0;
+
 static int xml_after_table_term = 0;
 static int book_started = 0;
 static int first_section_opened = 0;
@@ -375,13 +377,14 @@ xml_id (id)
   char *tem = xmalloc (strlen (id) + 1);
   char *p = tem;
   strcpy (tem, id);
-  while (*p++)
+  while (*p)
     {
-      if (*p == ' ' || *p == '&' || *p == '/' || *p == '+')
+      if (strchr ("~ &/+^;?()%<>\"", *p))
         *p = '-';
+      p++;
     }
   p = tem;
-  while (*p == '-')
+  if (*p == '-')
     *p = 'i';
   return tem;
 }
@@ -830,7 +833,7 @@ xml_add_char (character)
       in_abstract = 1;
     }
 
-  if (xml_after_table_term && !xml_sort_index)
+  if (xml_after_table_term && !xml_sort_index && !xml_in_xref_token)
     {
       xml_after_table_term = 0;
       xml_insert_element (ITEM, START);

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.11 2002-11-05 19:31:57 karl Exp $
+   $Id: makeinfo.c,v 1.12 2002-11-08 18:13:42 feloy Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -2910,6 +2910,9 @@ get_xref_token (expand)
 {
   char *string;
 
+  if (docbook)
+    xml_in_xref_token = 1;
+
   if (expand)
     {
       int old_offset = input_text_offset;
@@ -2935,6 +2938,10 @@ get_xref_token (expand)
   if (curchar () == ',')
     input_text_offset++;
   fix_whitespace (string);
+
+  if (docbook)
+    xml_in_xref_token = 0;
+
   return string;
 }
 

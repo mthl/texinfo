@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.2 2002-10-14 21:25:11 karl Exp $
+   $Id: xml.h,v 1.3 2002-11-08 18:13:42 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -32,6 +32,8 @@ extern int xml_node_open;
 extern int xml_no_para;
 extern char *xml_node_id;
 extern int xml_last_section_output_position;
+
+extern int xml_in_xref_token;
 
 enum xml_element
 {
