@@ -1,10 +1,13 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.10 2004-01-17 16:04:21 karl Exp $
+# $Id: bootstrap,v 1.11 2004-04-12 19:07:41 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
-echo "Do not use Texinfo CVS from savannah, get it from berlios.de instead."
-echo "I am waiting until cvs commit email is working again. --karl"
-exit 1
+if test "x$1" = x-n; then
+  chicken=true
+  echo "Ok, playing chicken; not actually running any commands."
+else
+  chicken=
+fi
 
 echo "Bootstrapping CVS Texinfo with:"
 
@@ -14,15 +17,19 @@ echo "Bootstrapping CVS Texinfo with:"
 # developer to do this.
 #cmd="autoreconf --verbose --force --install --include=m4"
 
+: ${ACLOCAL=aclocal}
 : ${AUTOHEADER=autoheader}
 : ${AUTOMAKE=automake}
 : ${AUTOCONF=autoconf}
-: ${ACLOCAL=aclocal}
 
 # So instead:
-cmd="$AUTOHEADER && $ACLOCAL -I m4 && $AUTOMAKE && $AUTOCONF"
+cmd="$ACLOCAL -I m4 && $AUTOHEADER && $AUTOMAKE && $AUTOCONF"
 echo "  $cmd"
-eval $cmd || exit 1
+$chicken eval $cmd || exit 1
 
+echo
 echo "Now run configure with your desired options, for instance:"
 echo "  ./configure CFLAGS=-g --enable-maintainer-mode"
+echo
+echo "You MUST use --enable-maintainer-mode when building Texinfo"
+echo "from the CVS sources, or the build will fail."
