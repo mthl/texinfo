@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
+@c $Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5174,7 +5174,7 @@ redundantly specify node pointers.  However, Texinfo documents are not
 required to be organized hierarchically or in fact to contain
 sectioning commands at all (for example, if you never intend the
 document to be printed).  The special procedure for handling the short
-text before a menu described in @ref{Menu Location} also disables this
+text before a menu (@pxref{Menus}) also disables this
 feature, for that group of nodes.  In those cases, you will need to
 explicitly specify the pointers.
 
@@ -17186,7 +17186,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
+$Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17249,7 +17249,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.54 2003-07-16 22:27:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
