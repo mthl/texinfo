@@ -1,3 +1,12 @@
+2003-09-17  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: change 'about (this page)' to 
+	'about (help)' as this appears in the title= of the <a> element.
+	ignore @afourlatex, @afourwide, @firstparagraphindent, @exampleindent,
+	handle @definfoenclose, @kbdinputstyle, @novalidate, @centerchap (but 
+	without centering), @documentdescription.
+	add -novalidate option.
+
 2003-09-15  Patrice Dumas <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl: add &$Texi2HTML::Config::one_section

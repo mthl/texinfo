@@ -45,7 +45,7 @@ ul.toc {list-style: none}
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="SEC1"></a>
 <h3 class="subheading"> Comment like: </h3>
@@ -62,14 +62,26 @@ ul.toc {list-style: none}
 <p>The same but with oddfooting instead of comment:
 Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
 
-</p><p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections 
+</p><p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
+@afourpaper @afourlatex @afourwide 
+@definfoenclose phoo,//,\\  
+//bar\\
 
-</p><a name="SEC2"></a>
+</p><p>Makeinfo ignore @kbdinputstyle:
+
+</p>
+<p><code>truc</code>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example"><code>example</code>
+</pre></td></tr></table>
+<a name="SEC2"></a>
 <h3 class="subheading"> ignore arg </h3>
 
-<p>Commands doesn't accept anything after the arg on the line
 
-</p><p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @footnotestyle @footnotestyle 
+<p>Commands doesn't accept anything after a non numerical arg on the line
+and ignore things after a numerical arg
+
+</p><p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @footnotestyle @footnotestyle 
 
 </p><a name="SEC3"></a>
 <h3 class="subheading"> command removed </h3>
@@ -94,7 +106,7 @@ Line after finalout
 
 </p><p>After page on it's own line.
 
-</p><p>@page    @noindent     @refill    something 
+</p><p>@page    @noindent     @refill  @novalidate  something
 
 </p><p>@contents  something
 
@@ -122,6 +134,7 @@ a number after sp
 <tr><td align="left" valign="top"><a href="#SEC5">1. chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC7">2. bidule</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC8">3. last</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="undefined.html">* undefined</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="1">
@@ -141,7 +154,7 @@ a number after sp
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 1. chapter </h1>
 <table class="menu" border="0" cellspacing="0">
@@ -165,7 +178,7 @@ a number after sp
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.1 section </h2>
 
@@ -192,7 +205,7 @@ Third content on the following line on his own
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 2. bidule </h1>
 
@@ -217,18 +230,20 @@ Third content on the following line on his own
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"> 3. last </h1>
 
+<p><a href="machin.html">machin</a>
 
+</p>
 <hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
 <div class="contents">
@@ -248,7 +263,7 @@ Third content on the following line on his own
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>Short Table of Contents</h1>
 <div class="shortcontents">
@@ -264,7 +279,7 @@ Third content on the following line on his own
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>About This Document</h1>
 <p>
@@ -325,13 +340,13 @@ Third content on the following line on his own
   <tr>
     <td align="center"> [Index] </td>
     <td align="center">Index</td>
-    <td>concept index</td>
+    <td>index</td>
     <td> &nbsp; </td>
   </tr>
   <tr>
     <td align="center"> [ ? ] </td>
     <td align="center">About</td>
-    <td>about (this page)</td>
+    <td>about (help)</td>
     <td> &nbsp; </td>
   </tr>
 </table>

@@ -44,17 +44,39 @@ Text line after the text line followed by the comment.
 @@setchapternewpage @setchapternewpage on line following setchapternewpage
 @@raisesections @raisesections on line following raisesections
 @@lowersections @lowersections on line following lowersections
+@@kbdinputstyle code @kbdinputstyle code something
+@@afourpaper @afourpaper on line following afourpaper
+@@afourlatex @afourlatex on line following afourlatex
+@@afourwide @afourwide on line following afourwide
+@c @@kbdinputstyle @kbdinputstyle on line following kbdinputstyle
 
+@@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
+@phoo{bar}
+
+Makeinfo ignore @@kbdinputstyle:
+
+@kbdinputstyle code
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
 
 @subheading ignore arg
 
 @c @@pagesizes @pagesizes arg following @@pagesizes arg
-Commands doesn't accept anything after the arg on the line
+
+Commands doesn't accept anything after a non numerical arg on the line
+and ignore things after a numerical arg
 
 @@paragraphindent asis @paragraphindent asis
 @@paragraphindent 0 @paragraphindent 0
 @@paragraphindent none @paragraphindent none
 @@paragraphindent 4 @paragraphindent 4
+@@firstparagraphindent none @firstparagraphindent none
+@@exampleindent 6 @exampleindent 6 on line following exampleindent
 @@footnotestyle @footnotestyle end 
 @@footnotestyle @footnotestyle separate 
 
@@ -87,7 +109,7 @@ noindent on the preceding line
 @page
 After page on it's own line.
 
-@@page @page   @@noindent @noindent    @@refill @refill   something 
+@@page @page   @@noindent @noindent    @@refill @refill @@novalidate @novalidate something
 
 @@contents @contents something
 
@@ -119,6 +141,7 @@ Menu:
 * node::
 * bidule::
 * bidule2::
+* undefined::
 @end menu
 
 @node node
@@ -145,5 +168,8 @@ Line following contents
 
 @node bidule2
 @chapter last
+
+@c no ref ignored because of novalidate
+@ref{machin}
 
 @bye

@@ -172,6 +172,8 @@ test_texi macros glossary.texi
 test_texi macros imbricated_macros.texi
 test_texi macros expansion_order.texi
 test_texi sectionning
+test_texi sectionning novalidate.texi "-init ../../examples/makeinfo.init -top
+novalidate.html"
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
 test_texi sectionning nodes_test.texi "" 5
