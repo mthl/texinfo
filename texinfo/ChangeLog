@@ -1,3 +1,7 @@
+2004-12-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (ref): rewrite last two redundant paragraphs.
+
 2004-12-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro Details): document @c kludge in macro

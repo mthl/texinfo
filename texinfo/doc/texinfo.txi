@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
+@c $Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6300,16 +6300,13 @@ Sea surges are described in Section 6.7 [Hurricanes], page 72.
 Sea surges are described in *Note Hurricanes::.
 @end example
 
-@quotation Caution
-You should write a period or comma immediately after an @code{@@ref}
-command with two or more arguments.  Otherwise, Info will generate a
-(grammatically incorrect) period, just so the cross-reference doesn't
-fail completely.
-@end quotation
+As a general rule, you should write a period or comma immediately
+after an @code{@@ref} command with two or more arguments.
 
-As a general rule, you should write a period or comma after every
-@code{@@ref} command.  This works best in both the printed and the
-Info output.
+If there is no such following punctuation, @command{makeinfo} will
+generate a (grammatically incorrect) period in the Info output;
+otherwise, the cross-reference would fail completely, due to the
+current syntax of Info format.
 
 
 @node pxref
@@ -18459,7 +18456,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
+$Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18525,7 +18522,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.121 2004-12-07 22:53:09 karl Exp $
+@comment $Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
