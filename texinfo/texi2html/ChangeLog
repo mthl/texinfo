@@ -1,5 +1,11 @@
 2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* configure.in: add the lines asked for by Thomas Esser for addition
+	to teTeX.
+	* Makefile.in...: regenerate with automake 1.9.1.
+
+2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* Makefile.am: use $(PERL) and $(srcdir) in manage_i18n.pl rule
 	(idea of Karl Berry).
 
