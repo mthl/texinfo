@@ -1,3 +1,7 @@
+2003-03-25    <karl@gnu.org>
+
+	* util/srclist.txt (COPYING): get from gnulib/doc, not gnulib.
+
 2003-03-24    <karl@gnu.org>
 
 	* TODO: need to write real definition of Info format.

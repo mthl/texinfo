@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
+@c $Id: texinfo.txi,v 1.35 2003-03-25 14:07:37 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8243,9 +8243,9 @@ Write the text of the indented paragraphs themselves after the
 itemize}.@refill
 
 @findex item
-Before each paragraph for which a mark in the margin is desired, write a
-line that says just @code{@@item}.  It is ok to have text following the
-@code{@@item}.
+At the beginning of each paragraph for which a mark in the margin is
+desired, write a line that starts with @code{@@item}.  It is ok to
+have text following the @code{@@item}.
 
 Usually, you should put a blank line before an @code{@@item}.  This
 puts a blank line in the Info file. (@TeX{} inserts the proper
@@ -8345,10 +8345,10 @@ list with the number @samp{1}.  With a numeric argument, such as
 or lower case letter, such as @samp{a} or @samp{A}, the command starts
 the list with that letter.
 
-Write the text of the enumerated list in the same way you write an
-itemized list: put @code{@@item} on a line of its own before the start
-of each paragraph that you want enumerated.  Do not write any other text
-on the line beginning with @code{@@item}.
+Write the text of the enumerated list in the same way as an itemized
+list: write a line starting with @code{@@item} at the beginning of
+each paragraph that you want enumerated.  It is ok to have text
+following the @code{@@item}.
 
 You should put a blank line between entries in the list.
 This generally makes it easier to read the Info file.
@@ -16882,7 +16882,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
+$Id: texinfo.txi,v 1.35 2003-03-25 14:07:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16945,7 +16945,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.34 2003-03-19 00:38:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.35 2003-03-25 14:07:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
