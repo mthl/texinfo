@@ -1,3 +1,8 @@
+2004-11-18  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\ptexnewwrite): Save \newwrite.
+	(\newwrite): Call it.
+
 2004-11-11  Karl Berry  <karl@gnu.org>
 
 	* texinfo.dtd (metainformation): add documentdescription.
