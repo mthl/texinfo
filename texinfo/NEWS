@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.43 2003-04-03 11:47:30 karl Exp $
+$Id: NEWS,v 1.44 2003-04-05 23:09:26 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -25,6 +25,8 @@ convenience, here's a url to one of the relevant sections:
 * Language:
   . new command @/ specifies an allowable breakpoint within a line.
 * makeinfo:
+  . default --split-size (for Info output) now 300,000 bytes,
+    with a threshold of 500,000.  (Previous values were 50,000 and 70,000.)
   . search for image files in the include file search path.
   . --html output now uses <h3> at the smallest.
   . under --html, @cartouche now outputs a <table> with a border.

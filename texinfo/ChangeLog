@@ -1,3 +1,17 @@
+2003-04-05    <karl@gnu.org>
+
+	* Makefile.am (all of them): use $(VAR) instead of @VAR@, since
+	automake now emits definitions for all substituted variables.
+
+	* makeinfo/makeinfo.h (DEFAULT_SPLIT_SIZE): increase to 300,000.
+	(SPLIT_SIZE_THRESHOLD): increase to 500,000.
+	Implicit suggestion via Gerald Pfeifer <pfeifer@dbai.tuwien.ac.at>.
+
+2003-04-04    <karl@gnu.org>
+
+	* util/texi2dvi (replace_empty): new variable to do the empty path
+	element detection; don't hardwire path separator as :.
+
 2003-04-02    <karl@gnu.org>
 
 	* doc/txi-pl.tex: new file, from polak@gnu.org.
