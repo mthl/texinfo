@@ -1,3 +1,10 @@
+Thu Nov  6 06:36:51 2003  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/html.c (html_output_head): add <link> elements pointing to
+	top, up, next, prev nodes when splitting output, and to top when not
+	splitting.  Also provide a link to Texinfo homepage.
+	(add_link): use nodename as title attribute.
+
 2003-11-05  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/html.c (html_output_head): append node name to title if

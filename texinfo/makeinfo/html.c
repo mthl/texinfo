@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.21 2003-11-05 22:10:12 dirt Exp $
+   $Id: html.c,v 1.22 2003-11-06 05:13:23 dirt Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -22,6 +22,7 @@
 #include "html.h"
 #include "lang.h"
 #include "makeinfo.h"
+#include "node.h"
 #include "sectioning.h"
 
 HSTACK *htmlstack = NULL;
@@ -70,12 +71,38 @@ html_output_head ()
                  document_description);
   add_word_args ("<meta name=\"generator\" content=\"makeinfo %s\">\n",
                  VERSION);
-#if 0
-  /* let's not do this now, since it causes mozilla to put up a
-     navigation bar.  */
+
+  /* Navigation bar links.  */
+  if (!splitting)
+    add_word ("<link title=\"Top\" rel=\"top\" href=\"#Top\">\n");
+  else if (tag_table)
+    {
+      /* Always put a top link.  */
+      add_word ("<link title=\"Top\" rel=\"start\" href=\"index.html#Top\">\n");
+
+      /* We already have a top link, avoid duplication.  */
+      if (tag_table->up && !STREQ (tag_table->up, "Top"))
+        add_link (tag_table->up, "rel=\"up\"");
+
+      if (tag_table->prev)
+        add_link (tag_table->prev, "rel=\"prev\"");
+
+      if (tag_table->next)
+        add_link (tag_table->next, "rel=\"next\"");
+
+      /* fixxme: Look for a way to put links to various indices in the
+         document.  Also possible candidates to be added here are First and
+         Last links.  */
+    }
+  else
+    {
+      /* We are splitting, but we neither have a tag_table.  So this must be
+         index.html.  So put a link to Top. */
+      add_word ("<link title=\"Top\" rel=\"start\" href=\"#Top\">\n");
+    }
+
   add_word ("<link href=\"http://www.gnu.org/software/texinfo/\" \
-rel=\"generator-home\">\n");
-#endif
+rel=\"generator-home\" title=\"Texinfo Homepage\">\n");
 
   if (copying_text)
     { /* copying_text has already been fully expanded in
@@ -459,7 +486,7 @@ add_link (nodename, attributes)
       add_word_args ("%s", attributes);
       add_word_args (" href=\"");
       add_anchor_name (nodename, 1);
-      add_word ("\">\n");
+      add_word_args ("\" title=\"%s\">\n", nodename);
     }
 }
 
