@@ -11,7 +11,7 @@ TEXINFO_TEX = doc/texinfo.tex
 
 bin_SCRIPTS = texi2html
 man_MANS = texi2html.1
-#EXTRA_DIST =  INTRODUCTION autogen.sh texi2html.init \
+#EXTRA_DIST =  INTRODUCTION autogen.sh texi2html.init
 #              MySimple.pm MySimple.pod version.texi
 EXTRA_DIST =  INTRODUCTION autogen.sh texi2html.init \
               MySimple.pm MySimple.pod
@@ -21,14 +21,14 @@ EXTRA_DIST =  INTRODUCTION autogen.sh texi2html.init \
 
 TEXI2HTML = texi2html
 
-#MAINTAINERCLEANFILES = \
-#	INSTALL \
-#	Makefile.in \
-#	aclocal.m4 \
-#	configure \
-#	install-sh \
-#	missing \
-#       mkinstalldirs \
+#MAINTAINERCLEANFILES =
+#	INSTALL
+#	Makefile.in
+#	aclocal.m4
+#	configure
+#	install-sh
+#	missing
+#       mkinstalldirs
 #       mdate-sh
 # Don't remove INSTALL file!!!
 MAINTAINERCLEANFILES = \

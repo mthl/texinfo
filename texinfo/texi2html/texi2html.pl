@@ -299,6 +299,8 @@ use vars qw(
             %predefined_index
             %sec2level
             %sec2node
+            %sec2seccount
+            %seccount2sec
             %sec2number
             %seen
             %simple_map
@@ -341,7 +343,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.2 2001-05-01 14:43:48 dprice Exp $
+# $Id: texi2html.pl,v 1.3 2001-05-01 21:33:44 dprice Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = <<EOT;
@@ -359,13 +361,13 @@ Send bugs and suggestions to <texi2html\@mathematik.uni-kl.de>
 EOT
 
 # Address:
-my $T2H_ADDRESS = <<EOT;
+$T2H_ADDRESS = <<EOT;
 <a href=\"../index.html\">Olaf Bachmann</a>
 EOT
 
 # Version: set in configure.in
-my $THISVERSION = '@T2H_VERSION@';
-my $THISPROG = "texi2html $THISVERSION"; # program name and version
+$THISVERSION = '@T2H_VERSION@';
+$THISPROG = "texi2html $THISVERSION"; # program name and version
 
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
@@ -1100,9 +1102,12 @@ foreach ('_author', '_title', '_subtitle',
     $value{$_} = '';            # prevent -w warnings
 }
 %node2sec = ();                 # node to section name
-%sec2node = ();                 # section to node name
-my %sec2number = ();            # section to number
-my %number2sec = ();            # number to section
+%sec2node = ();			# section to node name
+%sec2seccount = ();		# section to section count
+%seccount2sec = ();		# section count to section
+%sec2number = ();		# section to number
+				# $number =~ ^[\dA-Z]+\.(\d+(\.\d+)*)?$
+%number2sec = ();		# number to section
 %idx2node = ();                 # index keys to node
 %node2href = ();                # node to HREF
 %node2next = ();                # node to next
@@ -2533,7 +2538,7 @@ sub pass1
                             unless (/^\@unnumbered/)
                             {
                                 my $number = &update_sec_num($tag, $level);
-                                $name = $number. ' ' . $name if $T2H_NUMBER_SECTIONS;
+                                $name = $number . ' ' . $name if $T2H_NUMBER_SECTIONS;
                                 $sec2number{$name} = $number;
                                 $number2sec{$number} = $name;
                             }
@@ -2578,6 +2583,8 @@ sub pass1
                         $section = $name;
                         $node2sec{$node} = $name;
                         $sec2node{$name} = $node;
+			$sec2seccount{$name} = $sec_num;
+			$seccount2sec{$sec_num} = $name;
                         $node2href{$node} = "$docu_doc#$docid";
                         $node2next{$node} = $node_next;
                         $node2prev{$node} = $node_prev;
@@ -2913,7 +2920,7 @@ sub GetIndexPages
         push @{$EntriesByLetter->{uc(substr($key,0, 1))}} , $entries->{$key};
     }
     @Letters = sort byAlpha keys %$EntriesByLetter;
-    $T2H_SPLIT_INDEX = 0 unless ($T2H_SPLIT);
+    $T2H_SPLIT_INDEX = 0 unless $T2H_SPLIT;
 
     unless ($T2H_SPLIT_INDEX)
     {
@@ -2929,25 +2936,28 @@ sub GetIndexPages
     {
         my $i = 0;
         my ($prev_letter, $letter);
-        $page->{First} = $Letters[0];
         for $letter (@Letters)
         {
             if ($i > $T2H_SPLIT_INDEX)
             {
                 $page->{Last} = $prev_letter;
-                push @$Pages, {%$page};
-                $page->{Letters} = [];
-                $page->{EntriesByLetter} = {};
-                $page->{First} = $letter;
+                push @$Pages, $page;
                 $i=0;
             }
+	    if ($i == 0)
+	    {
+		$page = {};
+		$page->{Letters} = [];
+		$page->{EntriesByLetter} = {};
+		$page->{First} = $letter;
+	    }
             push @{$page->{Letters}}, $letter;
             $page->{EntriesByLetter}->{$letter} = [@{$EntriesByLetter->{$letter}}];
             $i += scalar(@{$EntriesByLetter->{$letter}});
             $prev_letter = $letter;
         }
         $page->{Last} = $Letters[$#Letters];
-        push @$Pages, {%$page};
+        push @$Pages, $page;
     }
     return $Pages;
 }
@@ -3057,10 +3067,13 @@ sub PrintIndex
     my $page;
     my $first_page = shift @$Pages;
     my $sec_name = $section;
+
     # remove section number
     $sec_name =~ s/.*? // if $sec_name =~ /^([A-Z]|\d+)\./;
 
     ($first_page->{href} = sec_href($section)) =~ s/\#.*$//;
+    $node2prev{$section} = Sec2PrevNode($node2sec{$section});
+    $prev_node = $section;
     # Update tree structure of document
     if (@$Pages)
     {
@@ -3091,6 +3104,8 @@ sub PrintIndex
             }
             $prev_node = $node;
         }
+	# Full circle - Next on last index page goes to Top
+	$node2next{$prev_node} = "Top";
         push @sections, @after;
     }
 
@@ -3545,6 +3560,7 @@ sub pass5
     {
         for $section (keys %sec2number)
         {
+	    $node2href{$sec2node{$section}} =~ /SEC(\d+)$/;
             $node = $sec2node{$section};
             $node2up{$node} = Sec2UpNode($section) unless $node2up{$node};
             $node2prev{$node} = Sec2PrevNode($section) unless $node2prev{$node};
@@ -3750,49 +3766,22 @@ sub pass5
             $T2H_NODE{Up} = $node;
         }
 
-        $node = $T2H_NODE{This};
-        $node = $node2prev{$node};
+        $node = $node2prev{$T2H_NODE{This}};
         $T2H_NAME{Prev} = &clean_name($node);
         $T2H_HREF{Prev} = $node2href{$node};
         $T2H_NODE{Prev} = $node;
 
-        $node = $T2H_NODE{This};
-        if ($node2up{$node} && $node2up{$node} ne 'Top'&&
-            ($node2prev{$node} eq $T2H_NODE{Back} || ! $node2prev{$node}))
-        {
-            $node = $node2up{$node};
-            while ($node && $node ne $node2up{$node} && ! $node2prev{$node})
-            {
-                $node = $node2up{$node};
-            }
-            $node = $node2prev{$node}
-                unless $node2up{$node} eq 'Top' || ! $node2up{$node};
-        }
-        else
-        {
-            $node = $node2prev{$node};
-        }
+	$node = Node2FastBack($T2H_NODE{This});
         $T2H_NAME{FastBack} = &clean_name($node);
         $T2H_HREF{FastBack} = $node2href{$node};
         $T2H_NODE{FastBack} = $node;
 
-        $node = $T2H_NODE{This};
-        $node = $node2next{$node};
+        $node = $node2next{$T2H_NODE{This}};
         $T2H_NAME{Next} = &clean_name($node);
         $T2H_HREF{Next} = $node2href{$node};
         $T2H_NODE{Next} = $node;
 
-        $node = $T2H_NODE{This};
-        if ($node2up{$node} && $node2up{$node} ne 'Top'&&
-            ($node2next{$node} eq $T2H_NODE{Forward} || ! $node2next{$node}))
-        {
-            $node = $node2up{$node};
-            while ($node && $node ne $node2up{$node} && ! $node2next{$node})
-            {
-                $node = $node2up{$node};
-            }
-        }
-        $node = $node2next{$node};
+	$node = Node2FastForward($T2H_NODE{This});
         $T2H_NAME{FastForward} = &clean_name($node);
         $T2H_HREF{FastForward} = $node2href{$node};
         $T2H_NODE{FastForward} = $node;
@@ -3997,62 +3986,82 @@ sub Sec2UpNode
     return $sec2node{$number2sec{$num}};
 }
 
+# Return previous node or "Top"
 sub Sec2PrevNode
 {
     my $sec = shift;
-    my $num = $sec2number{$sec};
-    my ($i, $post);
-    if ($num =~ /(\w+)(\.?)$/)
-    {
-        $num = $`;
-        $i = $1;
-        $post = $2;
-        if ($i eq 'A')
-        {
-            $i = $normal_sec_num[0];
-        }
-        elsif ($i ne '1')
-        {
-            # unfortunately, -- operator is not magical
-            $i = chr(ord($i) - 1);
-        }
-        else
-        {
-            return '';
-        }
-        return $sec2node{$number2sec{$num . $i . $post}}
-    }
-    return '';
+    my $sec_num = $sec2seccount{$sec} - 1;
+    return "Top" if !$sec_num || $sec_num < 1;
+    return $sec2node{$seccount2sec{$sec_num}};
 }
 
+# Return next node or "Top"
 sub Sec2NextNode
 {
     my $sec = shift;
-    my $num = $sec2number{$sec};
-    my $i;
+    my $sec_num = $sec2seccount{$sec} + 1;
+    return "Top" unless exists $seccount2sec{$sec_num};
+    return $sec2node{$seccount2sec{$sec_num}};
+}
 
-    if ($num =~ /(\w+)(\.?)$/)
-    {
-        $num = $`;
-        $i = $1;
-        $post = $2;
-        if ($post eq '.' && $i eq $normal_sec_num[0])
-        {
-            $i = 'A';
-        }
-        else
-        {
-            $i++;
-        }
-    }
-    if (exists $number2sec{$num . $i . $post})
-    {
-        return $sec2node{$number2sec{$num . $i . $post}}
-    }
-    else
-    {
-        return '';
-    }
+#
+# sub Node2FastBack NODE
+#
+# INPUTS
+#    NODE	A node
+#
+# RETURNS
+#    The beginning of this chapter, or if already there, the beginning of the
+#    previous chapter.
+#
+sub Node2FastBack
+{
+    my $node = shift;
+    my $num = $sec2number{$node2sec{$node}};
+    my $n;
+
+    # Index Pages  have no section number and 1. should go back to Top
+    return $node2prev{$node} if !$num or $num eq "1.";
+
+    # Get the current chapter
+    $num =~ /^([A-Z\d]+)\./;
+    $n = $1;
+
+    # If the first section of this chapter, decrement chapter
+    $n = $n eq 'A' ? $normal_sec_num[0] : $n =~ /^\d+$/ ? --$n : chr(ord($n)-1)
+	if $n . '.' eq $num;
+
+    # Return node name for section number "$n."
+    return $sec2node{$number2sec{$n . '.'}} || $node2prev{$node};
+}
+
+#
+# sub Node2FastForward NODE
+#
+# INPUTS
+#    NODE	A node
+#
+# RETURNS
+#    The beginning of the next chapter.
+#
+sub Node2FastForward
+{
+    my $node = shift;
+    my $num = $sec2number{$node2sec{$node}};
+    my $n;
+
+    # Index pages
+    return $node2next{$node} if !$num;
+
+    # Get current chapter
+    $num =~ /^([A-Z\d]+)\./;
+    $n = $1;
+
+    # Increment chapter
+    $n = $n eq $normal_sec_num[0] ? 'A' : ++$n;
+
+    # Return node name
+    return $sec2node{$number2sec{$n . '.'}} || $node2next{$node};
 }
 
 sub check
