@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.3 2004-12-15 18:21:47 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.4 2004-12-19 15:08:55 karl Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -368,110 +368,111 @@
 <!ELEMENT footnote (para)>
 
 
+<!ELEMENT neos      EMPTY>
 
-<!ENTITY tex        "TeX">
-<!ENTITY latex      "LaTeX">
-<!ENTITY ellipsis   "">
-<!ENTITY lt         "">
-<!ENTITY gt         "">
-<!ENTITY bullet     "">
-<!ENTITY copyright  "">
-<!ENTITY registered "">
-<!ENTITY euro       "">
-<!ENTITY pounds     "">
-<!ENTITY minus      "">
-<!ENTITY linebreak  "">
-<!ENTITY space      "">
-<!ENTITY dots       "">
-<!ENTITY enddots    "">
-<!ENTITY amp        "">
-<!ENTITY ldquo      "">
-<!ENTITY rdquo      "">
-<!ENTITY mdash      "">
-<!ENTITY ndash      "">
-<!ENTITY period     "">
-<!ENTITY eosperiod  "">
-<!ENTITY quest      "">
-<!ENTITY eosquest   "">
-<!ENTITY excl       "">
-<!ENTITY eosexcl    "">
+<!ENTITY tex        "TeX">        <!-- Should become an element. -->
+<!ENTITY latex      "LaTeX">      <!-- Should become an element. -->
+<!ENTITY ellipsis   "&#x2026;">
+<!ENTITY lt         "&#x3c;">
+<!ENTITY gt         "&#x3e;">
+<!ENTITY bullet     "&#x2022;">
+<!ENTITY copyright  "&#xa9;">
+<!ENTITY registered "&#xae;">
+<!ENTITY euro       "&#x20ac;">
+<!ENTITY pounds     "&#xa3;">
+<!ENTITY minus      "&#x2212;">
+<!ENTITY linebreak  "&#xa;">      <!-- Should become an element. -->
+<!ENTITY space      " ">          <!-- Should become an element. -->
+<!ENTITY dots       "&#x2026;<neos/>">
+<!ENTITY enddots    "&#x2026;">
+<!ENTITY amp        "&#x26;">
+<!ENTITY ldquo      "&#x201c;">
+<!ENTITY rdquo      "&#x201d;">
+<!ENTITY mdash      "&#x2014;">
+<!ENTITY ndash      "&#x2013;">
+<!ENTITY period     ".<neos/>">
+<!ENTITY eosperiod  ".">
+<!ENTITY quest      "?<neos/>">
+<!ENTITY eosquest   "?">
+<!ENTITY excl       "!<neos/>">
+<!ENTITY eosexcl    "!">
 
-<!ENTITY auml "">
-<!ENTITY ouml "">
-<!ENTITY uuml "">
-<!ENTITY Auml "">
-<!ENTITY Ouml "">
-<!ENTITY Uuml "">
-<!ENTITY Euml "">
-<!ENTITY euml "">
-<!ENTITY Iuml "">
-<!ENTITY iuml "">
-<!ENTITY yuml "">
-<!ENTITY uml  "">
+<!ENTITY auml "&#xe4;">
+<!ENTITY ouml "&#xf6;">
+<!ENTITY uuml "&#xfc;">
+<!ENTITY Auml "&#xc4;">
+<!ENTITY Ouml "&#xd6;">
+<!ENTITY Uuml "&#xdc;">
+<!ENTITY Euml "&#xcb;">
+<!ENTITY euml "&#xeb;">
+<!ENTITY Iuml "&#xcf;">
+<!ENTITY iuml "&#xef;">
+<!ENTITY yuml "&#xff;">
+<!ENTITY uml  "&#xa8;">
 
-<!ENTITY Aacute "">
-<!ENTITY Eacute "">
-<!ENTITY Iacute "">
-<!ENTITY Oacute "">
-<!ENTITY Uacute "">
-<!ENTITY Yacute "">
-<!ENTITY aacute "">
-<!ENTITY eacute "">
-<!ENTITY iacute "">
-<!ENTITY oacute "">
-<!ENTITY uacute "">
-<!ENTITY yacute "">
+<!ENTITY Aacute "&#xc1;">
+<!ENTITY Eacute "&#xc9;">
+<!ENTITY Iacute "&#xcd;">
+<!ENTITY Oacute "&#xd3;">
+<!ENTITY Uacute "&#xda;">
+<!ENTITY Yacute "&#xdd;">
+<!ENTITY aacute "&#xe1;">
+<!ENTITY eacute "&#xe9;">
+<!ENTITY iacute "&#xed;">
+<!ENTITY oacute "&#xf3;">
+<!ENTITY uacute "&#xfa;">
+<!ENTITY yacute "&#xfd;">
 
-<!ENTITY ccedil "">
-<!ENTITY Ccedil "">
+<!ENTITY ccedil "&#xe7;">
+<!ENTITY Ccedil "&#xc7;">
 
-<!ENTITY Acirc "">
-<!ENTITY Ecirc "">
-<!ENTITY Icirc "">
-<!ENTITY Ocirc "">
-<!ENTITY Ucirc "">
-<!ENTITY acirc "">
-<!ENTITY ecirc "">
-<!ENTITY icirc "">
-<!ENTITY ocirc "">
-<!ENTITY ucirc "">
+<!ENTITY Acirc "&#xc2;">
+<!ENTITY Ecirc "&#xca;">
+<!ENTITY Icirc "&#xc3;">
+<!ENTITY Ocirc "&#xd4;">
+<!ENTITY Ucirc "&#xdb;">
+<!ENTITY acirc "&#xe2;">
+<!ENTITY ecirc "&#xea;">
+<!ENTITY icirc "&#xee;">
+<!ENTITY ocirc "&#xf4;">
+<!ENTITY ucirc "&#xfb;">
 
-<!ENTITY Agrave "">
-<!ENTITY Egrave "">
-<!ENTITY Igrave "">
-<!ENTITY Ograve "">
-<!ENTITY Ugrave "">
-<!ENTITY agrave "">
-<!ENTITY egrave "">
-<!ENTITY igrave "">
-<!ENTITY ograve "">
-<!ENTITY ugrave "">
+<!ENTITY Agrave "&#xc0;">
+<!ENTITY Egrave "&#xc8;">
+<!ENTITY Igrave "&#xcc;">
+<!ENTITY Ograve "&#xd2;">
+<!ENTITY Ugrave "&#xd9;">
+<!ENTITY agrave "&#xe0;">
+<!ENTITY egrave "&#xe8;">
+<!ENTITY igrave "&#xec;">
+<!ENTITY ograve "&#xf2;">
+<!ENTITY ugrave "&#xf9;">
 
-<!ENTITY Atilde "">
-<!ENTITY Ntilde "">
-<!ENTITY Otilde "">
-<!ENTITY atilde "">
-<!ENTITY ntilde "">
-<!ENTITY otilde "">
+<!ENTITY Atilde "&#xc3;">
+<!ENTITY Ntilde "&#xd1;">
+<!ENTITY Otilde "&#xd5;">
+<!ENTITY atilde "&#xe3;">
+<!ENTITY ntilde "&#xf1;">
+<!ENTITY otilde "&#xf5;">
 
-<!ENTITY oslash "">
-<!ENTITY Oslash "">
+<!ENTITY oslash "&#xf8;">
+<!ENTITY Oslash "&#xd8;">
 
-<!ENTITY ordm "">
-<!ENTITY ordf "">
+<!ENTITY ordm "&#xba;">
+<!ENTITY ordf "&#xaa;">
 
-<!ENTITY iexcl "">
-<!ENTITY pound "">
-<!ENTITY iquest "">
-<!ENTITY AElig "">
-<!ENTITY aelig "">
-<!ENTITY OElig "">
-<!ENTITY oelig "">
-<!ENTITY Aring "">
-<!ENTITY aring "">
-<!ENTITY szlig "">
+<!ENTITY iexcl "&#xa1;">
+<!ENTITY pound "&#xa3;">
+<!ENTITY iquest "&#xbf;">
+<!ENTITY AElig "&#xc6;">
+<!ENTITY aelig "&#xe6;">
+<!ENTITY OElig "&#x152;">
+<!ENTITY oelig "&#x153;">
+<!ENTITY Aring "&#xc5;">
+<!ENTITY aring "&#xe5;">
+<!ENTITY szlig "&#xdf;">
 
-<!ENTITY macr "">
+<!ENTITY macr "&#xaf;">
 
 
 <!-- fixxme: not yet classified -->
