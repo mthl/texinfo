@@ -43,5 +43,9 @@ Text and then index entries
 @node a node, another, ,second
 @cindex entry after printindex
 
+@printindex cp
+
 @findex a function
 @cindex a concept a node
+@printindex cp
+

@@ -22,6 +22,9 @@ node in first but not the first...
 This is the top node...
 
 @node node1
+
+@c Some text
+
 @unnumbered
 node1 text
 

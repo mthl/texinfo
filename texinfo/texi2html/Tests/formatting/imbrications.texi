@@ -71,7 +71,9 @@ an example
 
 @example
 @html
-<hr/>
+
+Some html <code>some code</code>.
+
 @end html
 after html in example
 

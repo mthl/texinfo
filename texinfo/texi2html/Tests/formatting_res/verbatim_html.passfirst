@@ -74,8 +74,8 @@ verbatim @samp{item}
 @end verbatim
 
 Now html  @html 
-<p>
-some html </p> 
+<b>
+some html </b> 
 @end html bidule ignored
 
 @@end html begins the line, and there must be exactly one space between @@end
@@ -83,27 +83,16 @@ and html and thing following @@end html are ignored in info. Strangely
 the empty line following @@end html is ignored but spaces are inserted.
 
 Now html valid for @TeX{}  @html 
-<p>
-some html </p> 
+<b>
+some html </b> 
 @end html
 Some text one the line following @@end html
 
 And html on it's own line
 
 @html
-<p> an htmp paragraph</p>
+<tt> an html tt</tt>
 @end html
-
-Now tex on the same line @tex_0 bidule
-Some text one the line following @@end tex
-
-Now tex on the following line, valid fot tex (with @@end tex on a line).
-@tex_1 
-
-Same that @@html (but empty following line not ignored).
-
-Test of @@math
-Here some @tex_2 .
 
 A sc: @sc{ieee}, and another one in example:
 @example

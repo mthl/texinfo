@@ -83,8 +83,8 @@ verbatim @samp{item}
 
 @ifnottex
 Now html  @html 
-<p>
-some html </p> 
+<b>
+some html </b> 
 @end html bidule ignored
 
 @@end html begins the line, and there must be exactly one space between @@end
@@ -93,39 +93,17 @@ the empty line following @@end html is ignored but spaces are inserted.
 @end ifnottex
 
 Now html valid for @TeX{}  @html 
-<p>
-some html </p> 
+<b>
+some html </b> 
 @end html 
 Some text one the line following @@end html
 
 And html on it's own line
 
 @html
-<p> an htmp paragraph</p>
+<tt> an html tt</tt>
 @end html
 
-@ifnottex
-Now tex on the same line @tex some
-
-$$ \chi^2 = \sum_{i=1}^N
-          \left(y_i - (a + b x_i)
-	  \over \sigma_i\right)^2 $$
-		    
-
-@end tex bidule
-Some text one the line following @@end tex
-@end ifnottex
-
-Now tex on the following line, valid fot tex (with @@end tex on a line).
-@tex some
-
-tex \TeX 
-@end tex
-
-Same that @@html (but empty following line not ignored).
-
-Test of @@math
-Here some @math{\frac{x^i}{\tan y}}.
 
 A sc: @sc{ieee}, and another one in example:
 @example
