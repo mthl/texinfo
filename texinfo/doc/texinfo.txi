@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
+@c $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -11820,8 +11820,8 @@ Substituting text for all formats, and testing if a flag is set or clear.
 @node Conditional Commands
 @section Conditional Commands
 
-Texinfo has a pair of commands for each output format, to allow
-conditional inclusion of text for a particular output format.
+Texinfo has an @code{@@if@dots{}} environment for each output format, to
+allow conditional inclusion of text for a particular output format.
 
 @findex ifinfo
 @code{@@ifinfo} begins segments of text that should be ignored by @TeX{}
@@ -11831,16 +11831,18 @@ output.  The @code{@@ifinfo} command should appear on a line by itself;
 end the Info-only text with a line containing @code{@@end ifinfo} by
 itself.
 
-@findex iftex
 @findex ifhtml
 @findex ifplaintext
+@findex iftex
+@findex ifxml
 The @code{@@iftex} and @code{@@end iftex} commands are analogous to the
 @code{@@ifinfo} and @code{@@end ifinfo} commands; they specify text that
 will appear in the printed manual but not in the Info file.  Likewise
 for @code{@@ifhtml} and @code{@@end ifhtml}, which specify text to
 appear only in HTML output.  And for @code{@@ifplaintext} and
 @code{@@end ifplaintext}, which specify text to appear only in plain
-text output.
+text output.  And for @code{@@ifxml} and
+@code{@@end ifxml}, for the XML output.
 
 For example,
 
@@ -11857,6 +11859,9 @@ And this text will only appear in HTML.
 @@ifplaintext
 Whereas this text will only appear in plain text.
 @@end ifplaintext
+@@ifxml
+And this will only appear in XML output.
+@@end ifxml
 @end example
 
 @noindent
@@ -11873,6 +11878,9 @@ And this text will only appear in HTML.
 @ifplaintext
 Whereas this text will only appear in plain text.
 @end ifplaintext
+@ifxml
+And this will only appear in XML output.
+@end ifxml
 
 @noindent
 Notice that you only see one of the input lines, depending on which
@@ -11885,6 +11893,7 @@ version of the manual you are reading.
 @findex ifnotinfo
 @findex ifnotplaintext
 @findex ifnottex
+@findex ifnotxml
 
 You can specify text to be included in any output format @emph{other}
 than some given one with the @code{@@ifnot@dots{}} commands:
@@ -11893,13 +11902,14 @@ than some given one with the @code{@@ifnot@dots{}} commands:
 @@ifnotinfo @dots{} @@end ifnotinfo
 @@ifnotplaintext @dots{} @@end ifnotplaintext
 @@ifnottex @dots{} @@end ifnottex
+@@ifnotxml @dots{} @@end ifnotxml
 @end example
 @noindent
-(The @code{@@ifnot@dots{}} command and the @code{@@end} command must
-appear on lines by themselves in your actual source file.)
+The @code{@@ifnot@dots{}} command and the @code{@@end} command must
+appear on lines by themselves in your actual source file.
 
-If the output file is @emph{not} being made for the given format, the
-region is included.  Otherwise, it is ignored.
+If the output file is being made in the given format, the
+region is @emph{ignored}.  Otherwise, it is included.
 
 With one exception (for historical compatibility): @code{@@ifnotinfo}
 text is omitted for both Info and plain text output, not just Info.  To
@@ -11920,13 +11930,12 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 
 @node Raw Formatter Commands
 @section Raw Formatter Commands
-@cindex @TeX{} commands, using ordinary
-@cindex HTML commands, using ordinary
 @cindex Raw formatter commands
+@cindex @TeX{} commands, using ordinary
 @cindex Ordinary @TeX{} commands, using
-@cindex Ordinary HTML commands, using
 @cindex Commands using raw @TeX{}
-@cindex Commands using raw HTML
+@cindex HTML, including raw
+@cindex XML, including raw
 @cindex plain @TeX{}
 
 Inside a region delineated by @code{@@iftex} and @code{@@end iftex}, you
@@ -11983,6 +11992,14 @@ $$ \chi^2 = \sum_{i=1}^N
 Analogously, you can use @code{@@ifhtml @dots{} @@end ifhtml} to delimit
 a region to be included in HTML output only, and @code{@@html @dots{}
 @@end html} for a region of raw HTML (again, except that @code{@@} is
+still the escape character, so the @code{@@end} command can be
+recognized.)
+
+@findex ifxml
+@findex xml
+Analogously, you can use @code{@@ifxml @dots{} @@end ifxml} to delimit
+a region to be included in XML output only, and @code{@@xml @dots{}
+@@end xml} for a region of raw XML (again, except that @code{@@} is
 still the escape character, so the @code{@@end} command can be
 recognized.)
 
@@ -14534,7 +14551,8 @@ Texinfo input marked up with the @code{@@ifhtml} command will produce
 output only with the @samp{--html} option supplied.  Input marked up
 with the @code{@@html} is passed literally to the output (suppressing
 the normal escaping of input @samp{<}, @samp{>} and @samp{&} characters
-which have special significance in HTML).
+which have special significance in HTML).  Similarly for the
+@option{--xml} option and @code{@@ifxml} and @code{@@xml} sections.
 
 The @samp{--footnote-style} option is currently ignored for HTML output;
 footnotes are linked to the end of the output file.
@@ -15559,13 +15577,13 @@ resp.@: @code{@@end ifinfo}.  @xref{Conditionals}.
 @itemx @@ifnotinfo
 @itemx @@ifnotplaintext
 @itemx @@ifnottex
+@itemx @@ifnotxml
 Begin a stretch of text that will be ignored in one output format but
 not the others.  The text appears in the formats not specified:
 @code{@@ifnothtml} text is omitted from html output, etc.  The exception
 is @code{@@ifnotinfo} text, which is omitted from plain text output as
-well as Info output.  Pair with @code{@@end ifnothtml} resp.@:
-@code{@@end ifnotinfo} resp.@: @code{@@end ifnotplaintext} resp.@:
-@code{@@end ifnottex}.  @xref{Conditionals}.
+well as Info output.  Pair with the corresponding @code{@@end
+ifnot@var{format}}.  @xref{Conditionals}.
 
 @item @@ifplaintext
 Begin a stretch of text that appears only in the plain text output.
@@ -15581,6 +15599,10 @@ command.
 Begin a stretch of text that will not appear in the Info file, but
 will be processed only by @TeX{}.  Pair with @code{@@end iftex}.
 @xref{Conditionals, , Conditionally Visible Text}.@refill
+
+@item @@ifxml
+Begin a stretch of text that appears only in the XML output.
+Pair with @code{@@end ifxml}.  @xref{Conditionals}.
 
 @item @@ignore
 Begin a stretch of text that will not appear in either the Info file
@@ -16644,14 +16666,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $ comment
+@cindex CVS $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $, in Texinfo
+@cindex RCS $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $, in Texinfo
+The @samp{$Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
+$Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16709,7 +16731,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
+@@comment $Id: texinfo.txi,v 1.4 2002-09-29 19:28:38 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
