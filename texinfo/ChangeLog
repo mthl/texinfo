@@ -1,3 +1,7 @@
+2002-12-02    <karl@gnu.org>
+
+	* doc/texinfo.txi (Line Breaks): fixes.
+
 2002-12-01    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.3a.
