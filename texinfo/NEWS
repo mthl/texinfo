@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.68 2003-11-08 01:00:42 dirt Exp $
+$Id: NEWS,v 1.69 2003-11-08 14:40:25 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -23,7 +23,9 @@ convenience, here's a url to one of the relevant sections:
 -------------------------------------------------------------------------------
 
 * Language:
-  . new commands @docbook, @ifdocbook, @ifnotdocbook, @registeredsymbol.
+  . new commands @docbook, @ifdocbook, @ifnotdocbook
+    for conditional Docbook text.
+  . new command @registeredsymbol for the r-in-a-circle symbol.
 * makeinfo:
   . improved XML, Docbook and HTML output.
 * texi2dvi:
