@@ -2763,28 +2763,13 @@ width0pt\relax} \fi
 \defineunmatchedend{ifnotinfo}
 \defineunmatchedend{ifnotplaintext}
 
-% We can't just want to start a group at @iftex (etc.) and end it at
-% @end iftex, since then @set commands inside the conditional have no
-% effect (they'd get reverted at the end of the group).  So we must
-% define \Eiftex to redefine itself to be its previous value.  (We can't
-% just define it to fail again with an ``unmatched end'' error, since
-% the @ifset might be nested.)
+% True conditional.  Since \set globally defines its variables, we can
+% just start and end a group (to keep the @end definition undefined at
+% the outer level).
 %
-\def\conditionalsucceed#1{%
-  \edef\temp{%
-    % Remember the current value of \E#1.
-    \let\nece{prevE#1} = \nece{E#1}%
-    %
-    % At the `@end #1', redefine \E#1 to be its previous value.
-    \def\nece{E#1}{\let\nece{E#1} = \nece{prevE#1}}%
-  }%
-  \temp
+\def\conditionalsucceed#1{\begingroup
+  \expandafter\def\csname E#1\endcsname{\endgroup}%
 }
-
-% We need to expand lots of \csname's, but we don't want to expand the
-% control sequences after we've constructed them.
-%
-\def\nece#1{\expandafter\noexpand\csname#1\endcsname}
 
 % @defininfoenclose.
 \let\definfoenclose=\comment
