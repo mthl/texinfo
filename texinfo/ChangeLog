@@ -1,5 +1,12 @@
 2004-12-08  Karl Berry  <karl@gnu.org>
 
+	* info/echo-area.c, info/infokey.c, info/session.c: omit useless
+	casts to intptr_t, since we're just casting to (void *) next.
+	intptr_t is not defined with gcc 3.04 on Tru64 Unix V5.1
+	(This whole vararg stuff needs to be redone correctly.)
+	Report from: Svend Tollak Munkejord (via te)
+        8 Dec 2004 17:15:17 +0100.	
+
 	* doc/texinfo.txi (ref): rewrite last two redundant paragraphs.
 
 2004-12-07  Karl Berry  <karl@gnu.org>
