@@ -1500,6 +1500,8 @@ INIT="$srcdir"/texi2html.init
 
 MYSIMPLE="$srcdir"/MySimple.pm
 
+T2H_I18N="$srcdir"/T2h_i18n.pm
+
 
 # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
@@ -2438,6 +2440,8 @@ s,@T2H_VERSION@,$T2H_VERSION,;t t
 s,@INIT@,,;t t
 /@MYSIMPLE@/r $MYSIMPLE
 s,@MYSIMPLE@,,;t t
+/@T2H_I18N@/r $T2H_I18N
+s,@T2H_I18N@,,;t t
 s,@PERL@,$PERL,;t t
 s,@INSTALL_INFO@,$INSTALL_INFO,;t t
 s,@TEXI2DVI@,$TEXI2DVI,;t t
