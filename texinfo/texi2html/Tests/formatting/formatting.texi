@@ -158,6 +158,8 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
 @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
 
+@sp
+@sp 2
 
 @quotation
 a q--uotation

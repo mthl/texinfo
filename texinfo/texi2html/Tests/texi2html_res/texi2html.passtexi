@@ -24,7 +24,7 @@ texi2html.texi(,24) @c    330, Boston, MA  02111-1307  USA
 texi2html.texi(,25) @c
 texi2html.texi(,26) @c
 texi2html.texi(,27) @c Revisions:
-texi2html.texi(,28) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+texi2html.texi(,28) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 texi2html.texi(,29) @c
 texi2html.texi(,30) @c Author:
 texi2html.texi(,31) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -277,7 +277,7 @@ texi2html.texi(,400) @node CustomizingPage, CustHTML, CustomizingExpand, Top
 ./custpage.texi(,24) @c
 ./custpage.texi(,25) @c
 ./custpage.texi(,26) @c Revisions:
-./custpage.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./custpage.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./custpage.texi(,28) @c
 ./custpage.texi(,29) @c Author:
 ./custpage.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -448,7 +448,7 @@ texi2html.texi(,403) @node CustHTML, InitFile, CustomizingPage, Top
 ./custhtml.texi(,24) @c
 ./custhtml.texi(,25) @c
 ./custhtml.texi(,26) @c Revisions:
-./custhtml.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./custhtml.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./custhtml.texi(,28) @c
 ./custhtml.texi(,29) @c Author:
 ./custhtml.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -601,7 +601,7 @@ texi2html.texi(,406) @node InitFile, IFOs, CustHTML, Top
 ./initfile.texi(,24) @c
 ./initfile.texi(,25) @c
 ./initfile.texi(,26) @c Revisions:
-./initfile.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./initfile.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./initfile.texi(,28) @c
 ./initfile.texi(,29) @c Author:
 ./initfile.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -703,7 +703,7 @@ texi2html.texi(,409) @node IFOs, Options, InitFile, Top
 ./ifo.texi(,24) @c
 ./ifo.texi(,25) @c
 ./ifo.texi(,26) @c Revisions:
-./ifo.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./ifo.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./ifo.texi(,28) @c
 ./ifo.texi(,29) @c Author:
 ./ifo.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -864,7 +864,7 @@ texi2html.texi(,414) @node Options, Reference, IFOs, Top
 ./options.texi(,24) @c
 ./options.texi(,25) @c
 ./options.texi(,26) @c Revisions:
-./options.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./options.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./options.texi(,28) @c
 ./options.texi(,29) @c Author:
 ./options.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>
@@ -1338,7 +1338,7 @@ texi2html.texi(,417) @node Reference, Indexop, Options, Top
 ./reference.texi(,24) @c
 ./reference.texi(,25) @c
 ./reference.texi(,26) @c Revisions:
-./reference.texi(,27) @c $Id: texi2html.passtexi,v 1.6 2003-12-01 23:54:51 pertusus Exp $
+./reference.texi(,27) @c $Id: texi2html.passtexi,v 1.7 2003-12-05 16:25:38 pertusus Exp $
 ./reference.texi(,28) @c
 ./reference.texi(,29) @c Author:
 ./reference.texi(,30) @c   Karl Heinz Marbaise <khmarbaise@gmx.de>

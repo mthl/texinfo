@@ -1,3 +1,11 @@
+2003-12-05  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: @sp without arg is considered to be @sp 1
+	* Tests/formatting/formatting.texi: add test for @sp
+	* TODO: begin a list of UTF8 characters corresponding with accented
+	texinfo letters, in order to implement cross manual references scheme
+	described on the bug-texinfo mailing list and maybe output utf8.
+
 2003-12-02  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't collect @copying lines in the first pass

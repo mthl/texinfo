@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.88 2003-12-01 23:50:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.89 2003-12-05 16:25:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -8528,16 +8528,18 @@ sub scan_line($$$$;$)
             }
             if ($macro eq 'sp')
             {
+                my ($space1, $sp_number, $space2);
                 if (s/^(\s+)(\d+)(\s*)//)
                 {
-                    next if ($state->{'remove_texi'});
-                    if ($state->{'keep_texi'})
-                    {
-                        add_prev($text, $stack, "\@$macro" . $1 . $2);
-                        next;
-                    }
-                    add_prev($text, $stack, &$Texi2HTML::Config::sp($2, $state->{'preformatted'}));
-                    next;
+                    $space1 = $1;
+                    $sp_number = $2;
+                    $space2 = $3;
+                }
+                elsif (s/(\s*)$//)
+                {
+                    $space1 = $1;
+                    $sp_number = '';
+                    $space2 = '';
                 }
                 else
                 {
@@ -8547,9 +8549,18 @@ sub scan_line($$$$;$)
                         add_prev($text, $stack, "\@$macro");
                         next;
                     }
-                    echo_error ("\@$macro needs a numeric arg", $line_nr);
+                    echo_error ("\@$macro needs a numeric arg or no arg", $line_nr);
                     next;
                 }
+                next if ($state->{'remove_texi'});
+                if ($state->{'keep_texi'})
+                {
+                    add_prev($text, $stack, "\@$macro" . $space1 . $sp_number . $space2);
+                    next;
+                }
+                $sp_number = 1 if ($sp_number eq '');
+                add_prev($text, $stack, &$Texi2HTML::Config::sp($sp_number, $state->{'preformatted'}));
+                next;
             }
             if ($macro eq 'verbatiminclude')
             {
