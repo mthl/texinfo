@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.20 2003-03-19 00:50:39 karl Exp $
+   $Id: insertion.c,v 1.21 2003-04-01 14:34:18 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -864,7 +864,7 @@ end_insertion (type)
 
     case menu:
       in_menu--;                /* No longer hacking menus. */
-      if (html)
+      if (html && !no_headers)
         add_word ("</ul>\n");
       else if (!no_headers)
         close_insertion_paragraph ();
