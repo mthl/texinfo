@@ -3130,8 +3130,8 @@ width0pt\relax} \fi
 
 % Workhorse for all \fooindexes.
 % #1 is name of index, #2 is stuff to put there, #3 is subentry --
-% \empty if called from \doind, as we usually are.  The main exception
-% is with some defuns, which call us directly.
+% empty if called from \doind, as we usually are (the main exception
+% is with most defuns, which call us directly).
 %
 \def\dosubind#1#2#3{%
   \iflinks
@@ -3207,9 +3207,23 @@ width0pt\relax} \fi
 %
 % Avoid page breaks due to these extra skips, too.
 %
+% But wait, there is a catch there:
+% We'll have to check whether \lastskip is zero skip.  \ifdim is not
+% sufficient for this purpose, as it ignores stretch and shring parts
+% of the skip.  The only way seems to be to check the textual
+% representation of the skip.
+%
+% The following is almost like \def\zeroskipmacro{0.0pt} except that
+% the ``p'' and ``t'' characters have catcode \other, not 11 (letter).
+%
+\edef\zeroskipmacro{\expandafter\the\csname z@skip\endcsname}
+%
+% ..., ready, GO:
+%
 \def\dosubindsanitize{%
   % \lastskip and \lastpenalty cannot both be nonzero simultaneously.
   \skip0 = \lastskip
+  \edef\lastskipmacro{\the\lastskip}%
   \count255 = \lastpenalty
   %
   % If \lastskip is nonzero, that means the last item was a
@@ -3217,11 +3231,14 @@ width0pt\relax} \fi
   % -\skip0 glue we're inserting is preceded by a
   % non-discardable item, therefore it is not a potential
   % breakpoint, therefore no \nobreak needed.
-  \ifdim\lastskip = 0pt \else \vskip-\skip0 \fi
+  \ifx\lastskipmacro\zeroskipmacro
+  \else
+    \vskip-\skip0
+  \fi
   %
   \dosubindwrite
   %
-  \ifdim\skip0 = 0pt
+  \ifx\lastskipmacro\zeroskipmacro
     % if \lastskip was zero, perhaps the last item was a
     % penalty, and perhaps it was >=10000, e.g., a \nobreak.
     % In that case, we want to re-insert the penalty; since we
