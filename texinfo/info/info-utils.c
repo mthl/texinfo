@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.2 2003-03-06 23:22:23 karl Exp $
+   $Id: info-utils.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1998, 2003 Free Software Foundation, Inc.
 
@@ -38,11 +38,11 @@ char *info_parsed_filename = (char *)NULL;
 char *info_parsed_nodename = (char *)NULL;
 
 /* Functions to remember a filename or nodename for later return. */
-static void save_filename (), saven_filename ();
-static void save_nodename (), saven_nodename ();
+static void save_filename (char *filename), saven_filename (char *filename, int len);
+static void save_nodename (char *nodename), saven_nodename (char *nodename, int len);
 
 /* How to get a reference (either menu or cross). */
-static REFERENCE **info_references_internal ();
+static REFERENCE **info_references_internal (char *label, SEARCH_BINDING *binding);
 
 /* Parse the filename and nodename out of STRING.  If STRING doesn't
    contain a filename (i.e., it is NOT (FILENAME)NODENAME) then set
@@ -50,9 +50,7 @@ static REFERENCE **info_references_internal ();
    non-zero, it says to allow the nodename specification to cross a
    newline boundary (i.e., only `,', `.', or `TAB' can end the spec). */
 void
-info_parse_node (string, newlines_okay)
-     char *string;
-     int newlines_okay;
+info_parse_node (char *string, int newlines_okay)
 {
   register int i = 0;
 
@@ -103,9 +101,7 @@ info_parse_node (string, newlines_okay)
    the global INFO_PARSED_NODENAME and INFO_PARSED_FILENAME contain
    the information. */
 void
-info_parse_label (label, node)
-     char *label;
-     NODE *node;
+info_parse_label (char *label, NODE *node)
 {
   register int i;
   char *nodeline;
@@ -135,8 +131,7 @@ info_parse_label (label, node)
 /* Return a NULL terminated array of REFERENCE * which represents the menu
    found in NODE.  If there is no menu in NODE, just return a NULL pointer. */
 REFERENCE **
-info_menu_of_node (node)
-     NODE *node;
+info_menu_of_node (NODE *node)
 {
   long position;
   SEARCH_BINDING search;
@@ -166,8 +161,7 @@ info_menu_of_node (node)
    refrences found in NODE.  If there are no cross references in NODE, just
    return a NULL pointer. */
 REFERENCE **
-info_xrefs_of_node (node)
-     NODE *node;
+info_xrefs_of_node (NODE *node)
 {
   SEARCH_BINDING search;
 
@@ -188,8 +182,7 @@ info_xrefs_of_node (node)
    have looked at the entire contents of BINDING.  Return an array
    of REFERENCE * that represents each menu item in this range. */
 REFERENCE **
-info_menu_items (binding)
-     SEARCH_BINDING *binding;
+info_menu_items (SEARCH_BINDING *binding)
 {
   return (info_references_internal (INFO_MENU_ENTRY_LABEL, binding));
 }
@@ -198,8 +191,7 @@ info_menu_items (binding)
    BINDING->end.  Return an array of REFERENCE * that represents each
    cross reference in this range. */
 REFERENCE **
-info_xrefs (binding)
-     SEARCH_BINDING *binding;
+info_xrefs (SEARCH_BINDING *binding)
 {
   return (info_references_internal (INFO_XREF_LABEL, binding));
 }
@@ -207,9 +199,7 @@ info_xrefs (binding)
 /* Glean cross references or menu items from BINDING.  Return an array
    of REFERENCE * that represents the items found. */
 static REFERENCE **
-info_references_internal (label, binding)
-     char *label;
-     SEARCH_BINDING *binding;
+info_references_internal (char *label, SEARCH_BINDING *binding)
 {
   SEARCH_BINDING search;
   REFERENCE **refs = (REFERENCE **)NULL;
@@ -301,9 +291,7 @@ info_references_internal (label, binding)
 /* Get the entry associated with LABEL in REFERENCES.  Return a pointer
    to the ENTRY if found, or NULL. */
 REFERENCE *
-info_get_labeled_reference (label, references)
-     char *label;
-     REFERENCE **references;
+info_get_labeled_reference (char *label, REFERENCE **references)
 {
   register int i;
   REFERENCE *entry;
@@ -320,8 +308,7 @@ info_get_labeled_reference (label, references)
    REFERENCE ** which is the concatenation of REF1 and REF2.  The REF1
    and REF2 arrays are freed, but their contents are not. */
 REFERENCE **
-info_concatenate_references (ref1, ref2)
-     REFERENCE **ref1, **ref2;
+info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2)
 {
   register int i, j;
   REFERENCE **result;
@@ -361,8 +348,7 @@ info_concatenate_references (ref1, ref2)
    every opportunity, we don't share any points, but copy everything into
    new memory.  */
 REFERENCE *
-info_copy_reference (src)
-    REFERENCE *src;
+info_copy_reference (REFERENCE *src)
 {
   REFERENCE *dest = xmalloc (sizeof (REFERENCE));
   dest->label = src->label ? xstrdup (src->label) : NULL;
@@ -378,8 +364,7 @@ info_copy_reference (src)
 
 /* Free the data associated with REFERENCES. */
 void
-info_free_references (references)
-     REFERENCE **references;
+info_free_references (REFERENCE **references)
 {
   register int i;
   REFERENCE *entry;
@@ -403,8 +388,7 @@ info_free_references (references)
    all such sequences with just a single space.  Remove whitespace from
    start and end of string. */
 void
-canonicalize_whitespace (string)
-     char *string;
+canonicalize_whitespace (char *string)
 {
   register int i, j;
   int len, whitespace_found, whitespace_loc;
@@ -458,9 +442,7 @@ static char the_rep[10];
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
 char *
-printed_representation (character, hpos)
-     unsigned char character;
-     int hpos;
+printed_representation (unsigned char character, int hpos)
 {
   register int i = 0;
   int printable_limit = ISO_Latin_p ? 255 : 127;
@@ -524,22 +506,19 @@ static int parsed_filename_size = 0;
 /* Amount of space allocated to INFO_PARSED_NODENAME via xmalloc (). */
 static int parsed_nodename_size = 0;
 
-static void save_string (), saven_string ();
+static void save_string (char *string, char **string_p, int *string_size_p), saven_string (char *string, int len, char **string_p, int *string_size_p);
 
 /* Remember FILENAME in PARSED_FILENAME.  An empty FILENAME is translated
    to a NULL pointer in PARSED_FILENAME. */
 static void
-save_filename (filename)
-     char *filename;
+save_filename (char *filename)
 {
   save_string (filename, &info_parsed_filename, &parsed_filename_size);
 }
 
 /* Just like save_filename (), but you pass the length of the string. */
 static void
-saven_filename (filename, len)
-     char *filename;
-     int len;
+saven_filename (char *filename, int len)
 {
   saven_string (filename, len,
                 &info_parsed_filename, &parsed_filename_size);
@@ -548,17 +527,14 @@ saven_filename (filename, len)
 /* Remember NODENAME in PARSED_NODENAME.  An empty NODENAME is translated
    to a NULL pointer in PARSED_NODENAME. */
 static void
-save_nodename (nodename)
-     char *nodename;
+save_nodename (char *nodename)
 {
   save_string (nodename, &info_parsed_nodename, &parsed_nodename_size);
 }
 
 /* Just like save_nodename (), but you pass the length of the string. */
 static void
-saven_nodename (nodename, len)
-     char *nodename;
-     int len;
+saven_nodename (char *nodename, int len)
 {
   saven_string (nodename, len,
                 &info_parsed_nodename, &parsed_nodename_size);
@@ -568,10 +544,7 @@ saven_nodename (nodename, len)
    bytes allocated to it.  An empty STRING is translated to a NULL pointer
    in STRING_P. */
 static void
-save_string (string, string_p, string_size_p)
-     char *string;
-     char **string_p;
-     int *string_size_p;
+save_string (char *string, char **string_p, int *string_size_p)
 {
   if (!string || !*string)
     {
@@ -593,11 +566,7 @@ save_string (string, string_p, string_size_p)
 
 /* Just like save_string (), but you also pass the length of STRING. */
 static void
-saven_string (string, len, string_p, string_size_p)
-     char *string;
-     int len;
-     char **string_p;
-     int *string_size_p;
+saven_string (char *string, int len, char **string_p, int *string_size_p)
 {
   if (!string)
     {
@@ -619,8 +588,7 @@ saven_string (string, len, string_p, string_size_p)
 
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 char *
-filename_non_directory (pathname)
-     char *pathname;
+filename_non_directory (char *pathname)
 {
   register char *filename = pathname + strlen (pathname);
 
@@ -635,8 +603,7 @@ filename_non_directory (pathname)
 
 /* Return non-zero if NODE is one especially created by Info. */
 int
-internal_info_node_p (node)
-     NODE *node;
+internal_info_node_p (NODE *node)
 {
 #if defined (NEVER)
   if (node &&
@@ -652,9 +619,7 @@ internal_info_node_p (node)
 
 /* Make NODE appear to be one especially created by Info. */
 void
-name_internal_node (node, name)
-     NODE *node;
-     char *name;
+name_internal_node (NODE *node, char *name)
 {
   if (!node)
     return;
@@ -668,8 +633,7 @@ name_internal_node (node, name)
 /* Return the window displaying NAME, the name of an internally created
    Info window. */
 WINDOW *
-get_internal_info_window (name)
-     char *name;
+get_internal_info_window (char *name)
 {
   WINDOW *win;
 
@@ -683,8 +647,7 @@ get_internal_info_window (name)
 
 /* Return a window displaying the node NODE. */
 WINDOW *
-get_window_of_node (node)
-     NODE *node;
+get_window_of_node (NODE *node)
 {
   WINDOW *win = (WINDOW *)NULL;
 

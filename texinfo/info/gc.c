@@ -34,8 +34,7 @@ static int gcable_pointers_slots = 0;
    is not actually garbage collected until no info window contains a node
    whose contents member is equal to the pointer. */
 void
-add_gcable_pointer (pointer)
-     char *pointer;
+add_gcable_pointer (char *pointer)
 {
   gc_pointers ();
   add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
@@ -45,7 +44,7 @@ add_gcable_pointer (pointer)
 /* Grovel the list of info windows and gc-able pointers finding those
    node->contents which are collectible, and free them. */
 void
-gc_pointers ()
+gc_pointers (void)
 {
   register int i, j, k;
   INFO_WINDOW *iw;

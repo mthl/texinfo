@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.2 2002-11-06 00:41:17 karl Exp $
+   $Id: footnotes.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002 Free Software Foundation, Inc.
 
@@ -31,7 +31,7 @@ static char *footnote_nodename = "*Footnotes*";
 
 /* Find the window currently showing footnotes. */
 static WINDOW *
-find_footnotes_window ()
+find_footnotes_window (void)
 {
   WINDOW *win;
 
@@ -48,8 +48,7 @@ find_footnotes_window ()
    return the manufactured node.  If NODE has no footnotes, return a 
    NULL pointer. */
 NODE *
-make_footnotes_node (node)
-     NODE *node;
+make_footnotes_node (NODE *node)
 {
   NODE *fn_node, *result = (NODE *)NULL;
   long fn_start;
@@ -160,8 +159,7 @@ make_footnotes_node (node)
    in WINDOW's node.  Returns FN_UNABLE if there were footnotes, but the
    window to show them couldn't be made. */
 int
-info_get_or_remove_footnotes (window)
-     WINDOW *window;
+info_get_or_remove_footnotes (WINDOW *window)
 {
   WINDOW *fn_win;
   NODE *new_footnotes;

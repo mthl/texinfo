@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.2 2003-05-13 16:37:54 karl Exp $
+    $Id: man.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003 Free Software
    Foundation, Inc.
@@ -53,22 +53,19 @@ static char const * const exec_extensions[] = {
 static char const * const exec_extensions[] = { "", NULL };
 #endif
 
-static char *read_from_fd ();
-static void clean_manpage ();
-static NODE *manpage_node_of_file_buffer ();
-static char *get_manpage_contents ();
+static char *read_from_fd (int fd);
+static void clean_manpage (char *manpage);
+static NODE *manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename);
+static char *get_manpage_contents (char *pagename);
 
 NODE *
-make_manpage_node (pagename)
-     char *pagename;
+make_manpage_node (char *pagename)
 {
   return (info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename));
 }
 
 NODE *
-get_manpage_node (file_buffer, pagename)
-     FILE_BUFFER *file_buffer;
-     char *pagename;
+get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
 {
   NODE *node;
 
@@ -151,7 +148,7 @@ get_manpage_node (file_buffer, pagename)
 }
 
 FILE_BUFFER *
-create_manpage_file_buffer ()
+create_manpage_file_buffer (void)
 {
   FILE_BUFFER *file_buffer = make_file_buffer ();
   file_buffer->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
@@ -168,8 +165,7 @@ create_manpage_file_buffer ()
    one that is an executable file, return it as a new string.  Otherwise,
    return a NULL pointer. */
 static char *
-executable_file_in_path (filename, path)
-     char *filename, *path;
+executable_file_in_path (char *filename, char *path)
 {
   struct stat finfo;
   char *temp_dirname;
@@ -223,7 +219,7 @@ executable_file_in_path (filename, path)
 
 /* Return the full pathname of the system man page formatter. */
 static char *
-find_man_formatter ()
+find_man_formatter (void)
 {
   return (executable_file_in_path ("man", (char *)getenv ("PATH")));
 }
@@ -232,8 +228,7 @@ static char *manpage_pagename = (char *)NULL;
 static char *manpage_section  = (char *)NULL;
 
 static void
-get_page_and_section (pagename)
-     char *pagename;
+get_page_and_section (char *pagename)
 {
   register int i;
 
@@ -268,16 +263,14 @@ get_page_and_section (pagename)
 
 #if PIPE_USE_FORK
 static void
-reap_children (sig)
-     int sig;
+reap_children (int sig)
 {
   wait (NULL);
 }
 #endif
 
 static char *
-get_manpage_contents (pagename)
-     char *pagename;
+get_manpage_contents (char *pagename)
 {
   static char *formatter_args[4] = { (char *)NULL };
   int pipes[2];
@@ -376,8 +369,7 @@ get_manpage_contents (pagename)
 }
 
 static void
-clean_manpage (manpage)
-     char *manpage;
+clean_manpage (char *manpage)
 {
   register int i, j;
   int newline_count = 0;
@@ -434,9 +426,7 @@ clean_manpage (manpage)
 }
 
 static NODE *
-manpage_node_of_file_buffer (file_buffer, pagename)
-     FILE_BUFFER *file_buffer;
-     char *pagename;
+manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
 {
   NODE *node = (NODE *)NULL;
   TAG *tag = (TAG *)NULL;
@@ -470,8 +460,7 @@ manpage_node_of_file_buffer (file_buffer, pagename)
 }
 
 static char *
-read_from_fd (fd)
-     int fd;
+read_from_fd (int fd)
 {
   struct timeval timeout;
   char *buffer = (char *)NULL;
@@ -551,8 +540,7 @@ static char *reference_section_starters[] =
 static SEARCH_BINDING frs_binding;
 
 static SEARCH_BINDING *
-find_reference_section (node)
-     NODE *node;
+find_reference_section (NODE *node)
 {
   register int i;
   long position = -1;
@@ -591,8 +579,7 @@ find_reference_section (node)
 }
 
 REFERENCE **
-xrefs_of_manpage (node)
-     NODE *node;
+xrefs_of_manpage (NODE *node)
 {
   SEARCH_BINDING *reference_section;
   REFERENCE **refs = (REFERENCE **)NULL;
@@ -660,10 +647,7 @@ xrefs_of_manpage (node)
 }
 
 long
-locate_manpage_xref (node, start, dir)
-     NODE *node;
-     long start;
-     int dir;
+locate_manpage_xref (NODE *node, long int start, int dir)
 {
   REFERENCE **refs;
   long position = -1;
@@ -710,9 +694,7 @@ locate_manpage_xref (node, start, dir)
    a START and END value of 0 -- strlen (window-line-containing-point).
    The BUFFER is a pointer to the start of that line. */
 REFERENCE **
-manpage_xrefs_in_binding (node, binding)
-     NODE *node;
-     SEARCH_BINDING *binding;
+manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
 {
   register int i;
   REFERENCE **all_refs = xrefs_of_manpage (node);

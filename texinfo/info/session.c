@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.10 2003-10-27 21:12:40 karl Exp $
+   $Id: session.c,v 1.11 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -38,8 +38,8 @@
 extern int strncasecmp (const char *, const char *, size_t);
 #endif
 
-static void info_clear_pending_input (), info_set_pending_input ();
-static void info_handle_pointer ();
+static void info_clear_pending_input (void), info_set_pending_input (unsigned char key);
+static void info_handle_pointer (char *label, WINDOW *window);
 
 /* **************************************************************** */
 /*                                                                  */
@@ -66,17 +66,15 @@ static int info_windows_index = 0;
 /* Number of slots allocated to `info_windows'. */
 static int info_windows_slots = 0;
 
-void remember_window_and_node (), forget_window_and_nodes ();
-void initialize_info_session (), info_session ();
-void display_startup_message_and_start ();
+void remember_window_and_node (WINDOW *window, NODE *node), forget_window_and_nodes (WINDOW *window);
+void initialize_info_session (NODE *node, int clear_screen), info_session (void);
+void display_startup_message_and_start (void);
 
 /* Begin an info session finding the nodes specified by FILENAME and NODENAMES.
    For each loaded node, create a new window.  Always split the largest of the
    available windows. */
 void
-begin_multiple_window_info_session (filename, nodenames)
-     char *filename;
-     char **nodenames;
+begin_multiple_window_info_session (char *filename, char **nodenames)
 {
   register int i;
   WINDOW *window = (WINDOW *)NULL;
@@ -141,28 +139,27 @@ begin_multiple_window_info_session (filename, nodenames)
 /* Start an info session with INITIAL_NODE, and an error message in the echo
    area made from FORMAT and ARG. */
 void
-begin_info_session_with_error (initial_node, format, arg1, arg2)
-     NODE *initial_node;
-     char *format;
-     void *arg1;
-     void *arg2;
+begin_info_session_with_error (NODE *initial_node, const char *format, ...)
 {
+  va_list args;
+
   initialize_info_session (initial_node, 1);
-  info_error (format, arg1, arg2);
+  va_start (args);
+  info_error (format, args);
+  va_end (args);
   info_session ();
 }
 
 /* Start an info session with INITIAL_NODE. */
 void
-begin_info_session (initial_node)
-     NODE *initial_node;
+begin_info_session (NODE *initial_node)
 {
   initialize_info_session (initial_node, 1);
   display_startup_message_and_start ();
 }
 
 void
-display_startup_message_and_start ()
+display_startup_message_and_start (void)
 {
   char *format;
 
@@ -175,7 +172,7 @@ display_startup_message_and_start ()
 
 /* Run an info session with an already initialized window and node. */
 void
-info_session ()
+info_session (void)
 {
   display_update_display (windows);
   info_last_executed_command = NULL;
@@ -192,7 +189,7 @@ info_session ()
 /* Here is a window-location dependent event loop.  Called from the
    functions info_session (), and from read_xxx_in_echo_area (). */
 void
-info_read_and_dispatch ()
+info_read_and_dispatch (void)
 {
   unsigned char key;
   int done;
@@ -258,14 +255,12 @@ info_read_and_dispatch ()
 }
 
 /* Found in signals.c */
-extern void initialize_info_signal_handler ();
+extern void initialize_info_signal_handler (void);
 
 /* Initialize the first info session by starting the terminal, window,
    and display systems.  If CLEAR_SCREEN is 0, don't clear the screen.  */
 void
-initialize_info_session (node, clear_screen)
-     NODE *node;
-     int clear_screen;
+initialize_info_session (NODE *node, int clear_screen)
 {
   char *term_name = getenv ("TERM");
   terminal_initialize_terminal (term_name);
@@ -308,8 +303,7 @@ initialize_info_session (node, clear_screen)
 
 /* Tell Info that input is coming from the file FILENAME. */
 void
-info_set_input_from_file (filename)
-     char *filename;
+info_set_input_from_file (char *filename)
 {
   FILE *stream;
 
@@ -331,8 +325,7 @@ info_set_input_from_file (filename)
 
 /* Return the INFO_WINDOW containing WINDOW, or NULL if there isn't one. */
 static INFO_WINDOW *
-get_info_window_of_window (window)
-     WINDOW *window;
+get_info_window_of_window (WINDOW *window)
 {
   register int i;
   INFO_WINDOW *info_win = (INFO_WINDOW *)NULL;
@@ -348,8 +341,7 @@ get_info_window_of_window (window)
    values if the window and node are the same as the current one being
    displayed. */
 void
-set_remembered_pagetop_and_point (window)
-     WINDOW *window;
+set_remembered_pagetop_and_point (WINDOW *window)
 {
   INFO_WINDOW *info_win;
 
@@ -367,9 +359,7 @@ set_remembered_pagetop_and_point (window)
 }
 
 void
-remember_window_and_node (window, node)
-     WINDOW *window;
-     NODE *node;
+remember_window_and_node (WINDOW *window, NODE *node)
 {
   /* See if we already have this window in our list. */
   INFO_WINDOW *info_win = get_info_window_of_window (window);
@@ -428,7 +418,7 @@ remember_window_and_node (window, node)
 #define DEBUG_FORGET_WINDOW_AND_NODES
 #if defined (DEBUG_FORGET_WINDOW_AND_NODES)
 static void
-consistency_check_info_windows ()
+consistency_check_info_windows (void)
 {
   register int i;
 
@@ -448,8 +438,7 @@ consistency_check_info_windows ()
 
 /* Remove WINDOW and its associated list of nodes from INFO_WINDOWS. */
 void
-forget_window_and_nodes (window)
-     WINDOW *window;
+forget_window_and_nodes (WINDOW *window)
 {
   register int i;
   INFO_WINDOW *info_win = (INFO_WINDOW *)NULL;
@@ -496,10 +485,7 @@ forget_window_and_nodes (window)
    the footnotes for this window.  If REMEMBER is nonzero, first call
    set_remembered_pagetop_and_point.  */
 void
-info_set_node_of_window (remember, window, node)
-     int remember;
-     WINDOW *window;
-     NODE *node;
+info_set_node_of_window (int remember, WINDOW *window, NODE *node)
 {
   if (remember)
     set_remembered_pagetop_and_point (window);
@@ -526,9 +512,7 @@ info_set_node_of_window (remember, window, node)
 /* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
    to do so. */
 void
-set_window_pagetop (window, desired_top)
-     WINDOW *window;
-     int desired_top;
+set_window_pagetop (WINDOW *window, int desired_top)
 {
   int point_line, old_pagetop;
 
@@ -591,8 +575,7 @@ set_window_pagetop (window, desired_top)
 /* Immediately make WINDOW->point visible on the screen, and move the
    terminal cursor there. */
 static void
-info_show_point (window)
-     WINDOW *window;
+info_show_point (WINDOW *window)
 {
   int old_pagetop;
 
@@ -615,9 +598,7 @@ info_show_point (window)
 
 /* Move WINDOW->point from OLD line index to NEW line index. */
 static void
-move_to_new_line (old, new, window)
-     int old, new;
-     WINDOW *window;
+move_to_new_line (int old, int new, WINDOW *window)
 {
   if (old == -1)
     {
@@ -869,9 +850,7 @@ int default_scroll_size = -1;	/* meaning half screen size */
 
 /* Move to 1st menu item, Next, Up/Next, or error in this window. */
 static void
-forward_move_node_structure (window, behaviour)
-     WINDOW *window;
-     int behaviour;
+forward_move_node_structure (WINDOW *window, int behaviour)
 {
   switch (behaviour)
     {
@@ -1018,9 +997,7 @@ forward_move_node_structure (window, behaviour)
 
 /* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
 static void
-backward_move_node_structure (window, behaviour)
-     WINDOW *window;
-     int behaviour;
+backward_move_node_structure (WINDOW *window, int behaviour)
 {
   switch (behaviour)
     {
@@ -1140,15 +1117,11 @@ DECLARE_INFO_COMMAND (info_global_prev_node,
     }
 }
 
-static void _scroll_forward();
-static void _scroll_backward();
+static void _scroll_forward(WINDOW *window, int count, unsigned char key, int behaviour);
+static void _scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour);
 
 static void
-_scroll_forward(window, count, key, behaviour)
-  WINDOW *window;
-  int count;
-  unsigned char key;
-  int behaviour;
+_scroll_forward(WINDOW *window, int count, unsigned char key, int behaviour)
 {
   if (count < 0)
     _scroll_backward (window, -count, key, behaviour);
@@ -1188,11 +1161,7 @@ _scroll_forward(window, count, key, behaviour)
 }
 
 static void
-_scroll_backward(window, count, key, behaviour)
-  WINDOW *window;
-  int count;
-  unsigned char key;
-  int behaviour;
+_scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour)
 {
   if (count < 0)
     _scroll_forward (window, -count, key, behaviour);
@@ -1591,8 +1560,7 @@ DECLARE_INFO_COMMAND (info_delete_window, _("Delete the current window"))
 /* Do the physical deletion of WINDOW, and forget this window and
    associated nodes. */
 void
-info_delete_window_internal (window)
-     WINDOW *window;
+info_delete_window_internal (WINDOW *window)
 {
   if (windows->next && ((window->flags & W_WindowIsPerm) == 0))
     {
@@ -1712,8 +1680,7 @@ DECLARE_INFO_COMMAND (info_toggle_wrap,
 /* Return (FILENAME)NODENAME for NODE, or just NODENAME if NODE's
    filename is not set. */
 char *
-node_printed_rep (node)
-     NODE *node;
+node_printed_rep (NODE *node)
 {
   char *rep;
 
@@ -1734,9 +1701,7 @@ node_printed_rep (node)
 /* Using WINDOW for various defaults, select the node referenced by ENTRY
    in it.  If the node is selected, the window and node are remembered. */
 void
-info_select_reference (window, entry)
-     WINDOW *window;
-     REFERENCE *entry;
+info_select_reference (WINDOW *window, REFERENCE *entry)
 {
   NODE *node;
   char *filename, *nodename, *file_system_error;
@@ -1798,9 +1763,7 @@ info_select_reference (window, entry)
    Select the parsed node in WINDOW and remember it, or error if the node
    couldn't be found. */
 static void
-info_parse_and_select (line, window)
-     char *line;
-     WINDOW *window;
+info_parse_and_select (char *line, WINDOW *window)
 {
   REFERENCE entry;
 
@@ -1818,9 +1781,7 @@ info_parse_and_select (line, window)
    WINDOW.  The node should have been pointed to by the LABEL pointer of
    WINDOW->node. */
 static void
-info_handle_pointer (label, window)
-     char *label;
-     WINDOW *window;
+info_handle_pointer (char *label, WINDOW *window)
 {
   if (info_parsed_filename || info_parsed_nodename)
     {
@@ -2026,9 +1987,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
    limit of 200 chars (in Emacs 21.2).  */
 
 static REFERENCE **
-nearest_xref (xref_list, pos)
-    REFERENCE **xref_list;
-    long pos;
+nearest_xref (REFERENCE **xref_list, long int pos)
 {
   int this_xref;
   int nearest = -1;
@@ -2081,12 +2040,7 @@ nearest_xref (xref_list, pos)
    to build the list of references.  ASK_P is non-zero if the user
    should be prompted, or zero to select the default item. */
 static void
-info_menu_or_ref_item (window, count, key, builder, ask_p)
-     WINDOW *window;
-     int count;
-     unsigned char key;
-     REFERENCE **(*builder) ();
-     int ask_p;
+info_menu_or_ref_item (WINDOW *window, int count, unsigned char key, REFERENCE **(*builder) (/* ??? */), int ask_p)
 {
   char *line;
   REFERENCE *entry;
@@ -2488,11 +2442,7 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
    will be NULL.  */
 
 NODE *
-info_follow_menus (initial_node, menus, errstr, errarg1, errarg2)
-     NODE *initial_node;
-     char **menus;
-     const char **errstr;
-     char **errarg1, **errarg2;
+info_follow_menus (NODE *initial_node, char **menus, const char **errstr, char **errarg1, char **errarg2)
 {
   NODE *node = NULL;
   *errstr = *errarg1 = *errarg2 = NULL;
@@ -2626,8 +2576,7 @@ info_follow_menus (initial_node, menus, errstr, errarg1, errarg2)
    Return array terminated with NULL.  */
 
 static char **
-split_list_of_nodenames (str)
-     char *str;
+split_list_of_nodenames (char *str)
 {
   unsigned len = 2;
   char **nodes = xmalloc (len * sizeof (char *));
@@ -2710,10 +2659,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
    or NULL if there's nothing in this menu seems to fit the bill.
    If EXACT is non-zero, allow only exact matches.  */
 static REFERENCE *
-entry_in_menu (arg, menu, exact)
-     char *arg;
-     REFERENCE **menu;
-     int exact;
+entry_in_menu (char *arg, REFERENCE **menu, int exact)
 {
   REFERENCE *entry;
 
@@ -2747,10 +2693,7 @@ entry_in_menu (arg, menu, exact)
    invocation info and its command-line options, by looking for menu
    items and chains of menu items with characteristic names.  */
 void
-info_intuit_options_node (window, initial_node, program)
-     WINDOW *window;
-     NODE *initial_node;
-     char *program;
+info_intuit_options_node (WINDOW *window, NODE *initial_node, char *program)
 {
   /* The list of node names typical for GNU manuals where the program
      usage and specifically the command-line arguments are described.
@@ -2832,8 +2775,7 @@ info_intuit_options_node (window, initial_node, program)
 /* Given a name of an Info file, find the name of the package it
    describes by removing the leading directories and extensions.  */
 char *
-program_name_from_file_name (file_name)
-     char *file_name;
+program_name_from_file_name (char *file_name)
 {
   int i;
   char *program_name = xstrdup (filename_non_directory (file_name));
@@ -2943,8 +2885,7 @@ DECLARE_INFO_COMMAND (info_dir_node, _("Select the node `(dir)'"))
 /* Read the name of a node to kill.  The list of available nodes comes
    from the nodes appearing in the current window configuration. */
 static char *
-read_nodename_to_kill (window)
-     WINDOW *window;
+read_nodename_to_kill (WINDOW *window)
 {
   int iw;
   char *nodename;
@@ -2984,9 +2925,7 @@ read_nodename_to_kill (window)
 /* Delete NODENAME from this window, showing the most
    recently selected node in this window. */
 static void
-kill_node (window, nodename)
-     WINDOW *window;
-     char *nodename;
+kill_node (WINDOW *window, char *nodename)
 {
   int iw, i;
   INFO_WINDOW *info_win;
@@ -3158,19 +3097,15 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
 /* **************************************************************** */
 
 #define VERBOSE_NODE_DUMPING
-static void write_node_to_stream ();
-static void dump_node_to_stream ();
-static void initialize_dumping ();
+static void write_node_to_stream (NODE *node, FILE *stream);
+static void dump_node_to_stream (char *filename, char *nodename, FILE *stream, int dump_subnodes);
+static void initialize_dumping (void);
 
 /* Dump the nodes specified by FILENAME and NODENAMES to the file named
    in OUTPUT_FILENAME.  If DUMP_SUBNODES is non-zero, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
-dump_nodes_to_file (filename, nodenames, output_filename, dump_subnodes)
-     char *filename;
-     char **nodenames;
-     char *output_filename;
-     int dump_subnodes;
+dump_nodes_to_file (char *filename, char **nodenames, char *output_filename, int dump_subnodes)
 {
   register int i;
   FILE *output_stream;
@@ -3207,7 +3142,7 @@ static int dumped_already_index = 0;
 static int dumped_already_slots = 0;
 
 static void
-initialize_dumping ()
+initialize_dumping (void)
 {
   dumped_already_index = 0;
 }
@@ -3216,10 +3151,7 @@ initialize_dumping ()
    If DUMP_SUBNODES is non-zero, recursively dump the nodes which appear
    in the menu of each node dumped. */
 static void
-dump_node_to_stream (filename, nodename, stream, dump_subnodes)
-     char *filename, *nodename;
-     FILE *stream;
-     int dump_subnodes;
+dump_node_to_stream (char *filename, char *nodename, FILE *stream, int dump_subnodes)
 {
   register int i;
   NODE *node;
@@ -3288,10 +3220,7 @@ dump_node_to_stream (filename, nodename, stream, dump_subnodes)
 /* Dump NODE to FILENAME.  If DUMP_SUBNODES is non-zero, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
-dump_node_to_file (node, filename, dump_subnodes)
-     NODE *node;
-     char *filename;
-     int dump_subnodes;
+dump_node_to_file (NODE *node, char *filename, int dump_subnodes)
 {
   FILE *output_stream;
   char *nodes_filename;
@@ -3338,8 +3267,7 @@ DECLARE_INFO_COMMAND (info_print_node,
 
 /* Print NODE on a printer piping it into INFO_PRINT_COMMAND. */
 void
-print_node (node)
-     NODE *node;
+print_node (NODE *node)
 {
   FILE *printer_pipe;
   char *print_command = getenv ("INFO_PRINT_COMMAND");
@@ -3388,9 +3316,7 @@ print_node (node)
 }
 
 static void
-write_node_to_stream (node, stream)
-     NODE *node;
-     FILE *stream;
+write_node_to_stream (NODE *node, FILE *stream)
 {
   fwrite (node->contents, 1, node->nodelen, stream);
 }
@@ -3407,8 +3333,8 @@ write_node_to_stream (node, stream)
    to gc even those file buffer contents which had to be uncompressed. */
 int gc_compressed_files = 0;
 
-static void info_gc_file_buffers ();
-static void info_search_1 ();
+static void info_gc_file_buffers (void);
+static void info_search_1 (WINDOW *window, int count, unsigned char key, int case_sensitive, int ask_for_string);
 
 static char *search_string = (char *)NULL;
 static int search_string_index = 0;
@@ -3420,8 +3346,7 @@ static int last_search_case_sensitive = 0;
 
 /* Return the file buffer which belongs to WINDOW's node. */
 FILE_BUFFER *
-file_buffer_of_window (window)
-     WINDOW *window;
+file_buffer_of_window (WINDOW *window)
 {
   /* If this window has no node, then it has no file buffer. */
   if (!window->node)
@@ -3443,12 +3368,7 @@ file_buffer_of_window (window)
    DIR says which direction to search in.  If it is positive, search
    forward, else backwards. */
 long
-info_search_in_node (string, node, start, window, dir, case_sensitive)
-     char *string;
-     NODE *node;
-     long start;
-     WINDOW *window;
-     int dir, case_sensitive;
+info_search_in_node (char *string, NODE *node, long int start, WINDOW *window, int dir, int case_sensitive)
 {
   SEARCH_BINDING binding;
   long offset;
@@ -3490,10 +3410,7 @@ info_search_in_node (string, node, start, window, dir, case_sensitive)
    search at START.  Return the absolute position of the match, or -1, if
    no part of the string could be found. */
 long
-info_target_search_node (node, string, start)
-     NODE *node;
-     char *string;
-     long start;
+info_target_search_node (NODE *node, char *string, long int start)
 {
   register int i;
   long offset;
@@ -3525,10 +3442,7 @@ info_target_search_node (node, string, start)
    If the search fails, return non-zero, else zero.  Side-effect window
    leaving the node and point where the string was found current. */
 static int
-info_search_internal (string, window, dir, case_sensitive)
-     char *string;
-     WINDOW *window;
-     int dir, case_sensitive;
+info_search_internal (char *string, WINDOW *window, int dir, int case_sensitive)
 {
   register int i;
   FILE_BUFFER *file_buffer;
@@ -3690,12 +3604,7 @@ DECLARE_INFO_COMMAND (info_search_backward,
 }
 
 static void
-info_search_1 (window, count, key, case_sensitive, ask_for_string)
-     WINDOW *window;
-     int count;
-     unsigned char key;
-     int case_sensitive;
-     int ask_for_string;
+info_search_1 (WINDOW *window, int count, unsigned char key, int case_sensitive, int ask_for_string)
 {
   char *line, *prompt;
   int result, old_pagetop;
@@ -3809,7 +3718,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
 /*                                                                  */
 /* **************************************************************** */
 
-static void incremental_search ();
+static void incremental_search (WINDOW *window, int count, unsigned char ignore);
 
 DECLARE_INFO_COMMAND (isearch_forward,
                       _("Search interactively for a string as you type it"))
@@ -3848,9 +3757,7 @@ static int isearch_states_slots = 0;
 
 /* Push the state of this search. */
 static void
-push_isearch (window, search_index, direction, failing)
-     WINDOW *window;
-     int search_index, direction, failing;
+push_isearch (WINDOW *window, int search_index, int direction, int failing)
 {
   SEARCH_STATE *state;
 
@@ -3866,9 +3773,7 @@ push_isearch (window, search_index, direction, failing)
 
 /* Pop the state of this search to WINDOW, SEARCH_INDEX, and DIRECTION. */
 static void
-pop_isearch (window, search_index, direction, failing)
-     WINDOW *window;
-     int *search_index, *direction, *failing;
+pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing)
 {
   SEARCH_STATE *state;
 
@@ -3888,7 +3793,7 @@ pop_isearch (window, search_index, direction, failing)
 
 /* Free the memory used by isearch_states. */
 static void
-free_isearch_states ()
+free_isearch_states (void)
 {
   register int i;
 
@@ -3902,10 +3807,7 @@ free_isearch_states ()
 
 /* Display the current search in the echo area. */
 static void
-show_isearch_prompt (dir, string, failing_p)
-     int dir;
-     unsigned char *string;
-     int failing_p;
+show_isearch_prompt (int dir, unsigned char *string, int failing_p)
 {
   register int i;
   const char *prefix;
@@ -3952,10 +3854,7 @@ show_isearch_prompt (dir, string, failing_p)
 }
 
 static void
-incremental_search (window, count, ignore)
-     WINDOW *window;
-     int count;
-     unsigned char ignore;
+incremental_search (WINDOW *window, int count, unsigned char ignore)
 {
   unsigned char key;
   int last_search_result, search_result, dir;
@@ -4234,7 +4133,7 @@ incremental_search (window, count, ignore)
    Garbage collecting a file buffer means to free the file buffers
    contents. */
 static void
-info_gc_file_buffers ()
+info_gc_file_buffers (void)
 {
   register int fb_index, iw_index, i;
   register FILE_BUFFER *fb;
@@ -4293,11 +4192,7 @@ info_gc_file_buffers ()
 
 /* Move to the next or previous cross reference in this node. */
 static void
-info_move_to_xref (window, count, key, dir)
-     WINDOW *window;
-     int count;
-     unsigned char key;
-     int dir;
+info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 {
   long firstmenu, firstxref;
   long nextmenu, nextxref;
@@ -4549,8 +4444,7 @@ DECLARE_INFO_COMMAND (info_do_lowercase_version,
 {}
 
 static void
-dispatch_error (keyseq)
-     char *keyseq;
+dispatch_error (char *keyseq)
 {
   char *rep;
 
@@ -4576,7 +4470,7 @@ static int info_keyseq_displayed_p = 0;
 
 /* Initialize the length of the current key sequence. */
 void
-initialize_keyseq ()
+initialize_keyseq (void)
 {
   info_keyseq_index = 0;
   info_keyseq_displayed_p = 0;
@@ -4584,8 +4478,7 @@ initialize_keyseq ()
 
 /* Add CHARACTER to the current key sequence. */
 void
-add_char_to_keyseq (character)
-     char character;
+add_char_to_keyseq (char character)
 {
   if (info_keyseq_index + 2 >= info_keyseq_size)
     info_keyseq = (char *)xrealloc (info_keyseq, info_keyseq_size += 10);
@@ -4598,8 +4491,7 @@ add_char_to_keyseq (character)
    non-zero, input is expected to be read after the key sequence is
    displayed, so add an additional prompting character to the sequence. */
 void
-display_info_keyseq (expecting_future_input)
-     int expecting_future_input;
+display_info_keyseq (int expecting_future_input)
 {
   char *rep;
 
@@ -4619,7 +4511,7 @@ display_info_keyseq (expecting_future_input)
 
 /* Called by interactive commands to read a keystroke. */
 unsigned char
-info_get_another_input_char ()
+info_get_another_input_char (void)
 {
   int ready = !info_keyseq_displayed_p; /* ready if new and pending key */
 
@@ -4656,9 +4548,7 @@ info_get_another_input_char ()
 /* Do the command associated with KEY in MAP.  If the associated command is
    really a keymap, then read another key, and dispatch into that map. */
 void
-info_dispatch_on_key (key, map)
-     unsigned char key;
-     Keymap map;
+info_dispatch_on_key (unsigned char key, Keymap map)
 {
 #if !defined(INFOKEY)
   if (Meta_p (key) && (!ISO_Latin_p || map[key].function != ea_insert))
@@ -4796,7 +4686,7 @@ DECLARE_INFO_COMMAND (info_universal_argument,
 
 /* Create a default argument. */
 void
-info_initialize_numeric_arg ()
+info_initialize_numeric_arg (void)
 {
   info_numeric_arg = info_numeric_arg_sign = 1;
   info_explicit_arg = 0;
@@ -4888,22 +4778,21 @@ static int pending_input_character = 0;
 
 /* How to make there be no pending input. */
 static void
-info_clear_pending_input ()
+info_clear_pending_input (void)
 {
   pending_input_character = 0;
 }
 
 /* How to set the pending input character. */
 static void
-info_set_pending_input (key)
-     unsigned char key;
+info_set_pending_input (unsigned char key)
 {
   pending_input_character = key;
 }
 
 /* How to see if there is any pending input. */
 unsigned char
-info_input_pending_p ()
+info_input_pending_p (void)
 {
   return (pending_input_character);
 }
@@ -4916,8 +4805,7 @@ static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
 
 /* Add KEY to the buffer of characters to be read. */
 static void
-info_push_typeahead (key)
-     unsigned char key;
+info_push_typeahead (unsigned char key)
 {
   /* Flush all pending input in the case of C-g pressed. */
   if (key == Control ('g'))
@@ -4935,7 +4823,7 @@ info_push_typeahead (key)
 
 /* Return the amount of space available in INFO_INPUT_BUFFER for new chars. */
 static int
-info_input_buffer_space_available ()
+info_input_buffer_space_available (void)
 {
   if (pop_index > push_index)
     return (pop_index - push_index);
@@ -4947,8 +4835,7 @@ info_input_buffer_space_available ()
    Return the key in KEY.
    Result is non-zero if there was a key, or 0 if there wasn't. */
 static int
-info_get_key_from_typeahead (key)
-     unsigned char *key;
+info_get_key_from_typeahead (unsigned char *key)
 {
   if (push_index == pop_index)
     return (0);
@@ -4962,7 +4849,7 @@ info_get_key_from_typeahead (key)
 }
 
 int
-info_any_buffered_input_p ()
+info_any_buffered_input_p (void)
 {
   info_gather_typeahead ();
   return (push_index != pop_index);
@@ -4971,7 +4858,7 @@ info_any_buffered_input_p ()
 /* If characters are available to be read, then read them and stuff them into
    info_input_buffer.  Otherwise, do nothing. */
 void
-info_gather_typeahead ()
+info_gather_typeahead (void)
 {
   register int i = 0;
   int tty, space_avail;
@@ -5045,7 +4932,7 @@ info_gather_typeahead ()
 
 /* How to read a single character. */
 unsigned char
-info_get_input_char ()
+info_get_input_char (void)
 {
   unsigned char keystroke;
 

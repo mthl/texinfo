@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: variables.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002 Free Software Foundation, Inc.
 
@@ -201,9 +201,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
 VARIABLE_ALIST *
-read_variable_name (prompt, window)
-     char *prompt;
-     WINDOW *window;
+read_variable_name (char *prompt, WINDOW *window)
 {
   register int i;
   char *line;
@@ -249,7 +247,7 @@ read_variable_name (prompt, window)
 /* Make an array of REFERENCE which actually contains the names of the
    variables available in Info. */
 REFERENCE **
-make_variable_completions_array ()
+make_variable_completions_array (void)
 {
   register int i;
   REFERENCE **array = (REFERENCE **)NULL;
@@ -274,9 +272,7 @@ make_variable_completions_array ()
 #if defined(INFOKEY)
 
 void
-set_variable_to_value(name, value)
-	char *name;
-	char *value;
+set_variable_to_value(char *name, char *value)
 {
 	register int i;
 

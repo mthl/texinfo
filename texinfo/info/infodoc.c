@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.6 2003-05-13 16:22:11 karl Exp $
+   $Id: infodoc.c,v 1.7 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -185,12 +185,10 @@ static char *info_help_keys_text[][2] = {
 
 #endif /* !INFOKEY */
 
-static char *where_is_internal ();
+static char *where_is_internal (Keymap map, InfoCommand *cmd);
 
 void
-dump_map_to_message_buffer (prefix, map)
-     char *prefix;
-     Keymap map;
+dump_map_to_message_buffer (char *prefix, Keymap map)
 {
   register int i;
   unsigned prefix_len = strlen (prefix);
@@ -269,8 +267,7 @@ dump_map_to_message_buffer (prefix, map)
    make q do the right thing in both cases.  */
 
 static void
-create_internal_info_help_node (help_is_only_window_p)
-     int help_is_only_window_p;
+create_internal_info_help_node (int help_is_only_window_p)
 {
   register int i;
   NODE *node;
@@ -351,7 +348,7 @@ create_internal_info_help_node (help_is_only_window_p)
                  function_doc_array[i].func_name,
                  replace_in_documentation (strlen (function_doc_array[i].doc)
                                            ? _(function_doc_array[i].doc)
-                                           : "")
+                                           : "", help_is_only_window_p)
                 );
 
             }
@@ -365,7 +362,8 @@ create_internal_info_help_node (help_is_only_window_p)
 
       printf_to_message_buffer
         ("%s", replace_in_documentation
-         (_("--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n")));
+            (_("--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n")),
+            help_is_only_window_p);
       node = message_buffer_to_node ();
       internal_info_help_node_contents = node->contents;
     }
@@ -404,7 +402,7 @@ create_internal_info_help_node (help_is_only_window_p)
 #define HELP_SPLIT_SIZE 24
 
 static WINDOW *
-info_find_or_create_help_window ()
+info_find_or_create_help_window (void)
 {
   int help_is_only_window_p;
   WINDOW *eligible = NULL;
@@ -559,8 +557,7 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
 
 /* Return the documentation associated with the Info command FUNCTION. */
 char *
-function_documentation (cmd)
-     InfoCommand *cmd;
+function_documentation (InfoCommand *cmd)
 {
   char *doc;
 
@@ -587,8 +584,7 @@ function_documentation (cmd)
 /* Return the user-visible name of the function associated with the
    Info command FUNCTION. */
 char *
-function_name (cmd)
-     InfoCommand *cmd;
+function_name (InfoCommand *cmd)
 {
 #if defined (INFOKEY)
 
@@ -609,8 +605,7 @@ function_name (cmd)
 
 /* Return a pointer to the info command for function NAME. */
 InfoCommand *
-named_function (name)
-     char *name;
+named_function (char *name)
 {
   register int i;
 
@@ -624,9 +619,7 @@ named_function (name)
 
 /* Return the documentation associated with KEY in MAP. */
 char *
-key_documentation (key, map)
-     char key;
-     Keymap map;
+key_documentation (char key, Keymap map)
 {
   InfoCommand *function = map[key].function;
 
@@ -734,8 +727,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
 /* Return the pretty printable name of a single character. */
 char *
-pretty_keyname (key)
-     unsigned char key;
+pretty_keyname (unsigned char key)
 {
   static char rep_buffer[30];
   char *rep;
@@ -785,11 +777,10 @@ pretty_keyname (key)
 
 /* Return the pretty printable string which represents KEYSEQ. */
 
-static void pretty_keyseq_internal ();
+static void pretty_keyseq_internal (char *keyseq, char *rep);
 
 char *
-pretty_keyseq (keyseq)
-     char *keyseq;
+pretty_keyseq (char *keyseq)
 {
   static char keyseq_rep[200];
 
@@ -800,8 +791,7 @@ pretty_keyseq (keyseq)
 }
 
 static void
-pretty_keyseq_internal (keyseq, rep)
-     char *keyseq, *rep;
+pretty_keyseq_internal (char *keyseq, char *rep)
 {
   if (term_kP && strncmp(keyseq, term_kP, strlen(term_kP)) == 0)
     {
@@ -869,8 +859,7 @@ pretty_keyseq_internal (keyseq, rep)
 
 /* Return a pointer to the last character in s that is found in f. */
 static char *
-strrpbrk (s, f)
-     const char *s, *f;
+strrpbrk (const char *s, const char *f)
 {
   register const char *e = s + strlen(s);
   register const char *t;
@@ -886,9 +875,7 @@ strrpbrk (s, f)
 
 /* Replace the names of functions with the key that invokes them. */
 char *
-replace_in_documentation (string, help_is_only_window_p)
-     char *string;
-     int help_is_only_window_p;
+replace_in_documentation (char *string, int help_is_only_window_p)
 {
   unsigned reslen = strlen (string);
   register int i, start, next;
@@ -1058,9 +1045,7 @@ static int where_is_rep_index = 0;
 static int where_is_rep_size = 0;
 
 char *
-where_is (map, cmd)
-     Keymap map;
-     InfoCommand *cmd;
+where_is (Keymap map, InfoCommand *cmd)
 {
   char *rep;
 
@@ -1093,9 +1078,7 @@ where_is (map, cmd)
 /* Return the printed rep of the keystrokes that invoke FUNCTION,
    as found in MAP, or NULL. */
 static char *
-where_is_internal (map, cmd)
-     Keymap map;
-     InfoCommand *cmd;
+where_is_internal (Keymap map, InfoCommand *cmd)
 {
 #if defined(INFOKEY)
 
@@ -1154,7 +1137,7 @@ where_is_internal (map, cmd)
 #endif /* INFOKEY */
 }
 
-extern char *read_function_name ();
+extern char *read_function_name (char *prompt, WINDOW *window);
 
 DECLARE_INFO_COMMAND (info_where_is,
    _("Show what to type to execute a given command"))

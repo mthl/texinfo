@@ -1,5 +1,5 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c,v 1.3 2003-05-13 16:37:54 karl Exp $
+   $Id: nodemenu.c,v 1.4 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2003 Free Software Foundation, Inc.
 
@@ -23,7 +23,7 @@
 
 /* Return a line describing the format of a node information line. */
 static const char *
-nodemenu_format_info ()
+nodemenu_format_info (void)
 {
   return (_("\n\
 * Menu:\n\
@@ -42,8 +42,7 @@ nodemenu_format_info ()
 * (dir)Top::                        40      589    /usr/gnu/info/dir
 */
 static char *
-format_node_info (node)
-     NODE *node;
+format_node_info (NODE *node)
 {
   register int i, len;
   char *parent, *containing_file;
@@ -109,8 +108,7 @@ format_node_info (node)
 
 /* Little string comparison routine for qsort (). */
 static int
-compare_strings (string1, string2)
-     char **string1, **string2;
+compare_strings (char **string1, char **string2)
 {
   return (strcasecmp (*string1, *string2));
 }
@@ -123,8 +121,7 @@ static char *nodemenu_nodename = "*Node Menu*";
    which nodes will appear in the listing.  FILTER_FUNC takes an argument
    of NODE, and returns non-zero if the node should appear in the listing. */
 NODE *
-get_visited_nodes (filter_func)
-     Function *filter_func;
+get_visited_nodes (Function (*filter_func))
 {
   register int i, iw_index;
   INFO_WINDOW *info_win;

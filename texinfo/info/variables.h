@@ -1,5 +1,5 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: variables.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -42,14 +42,14 @@ typedef struct {
 /* Read the name of an Info variable in the echo area and return the
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
-extern VARIABLE_ALIST *read_variable_name ();
+extern VARIABLE_ALIST *read_variable_name (char *prompt, WINDOW *window);
 
 /* Make an array of REFERENCE which actually contains the names of the
    variables available in Info. */
-extern REFERENCE **make_variable_completions_array ();
+extern REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
-extern void set_variable ();
+extern void set_variable (WINDOW *window, int count, unsigned char key);
 
 /* The list of user-visible variables. */
 extern int auto_footnotes_p;

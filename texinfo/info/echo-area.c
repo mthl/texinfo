@@ -1,7 +1,8 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: echo-area.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2003 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +21,7 @@
    Written by Brian Fox (bfox@ai.mit.edu). */
 
 #include "info.h"
+#include "window.h"
 
 #if defined (FD_SET)
 #  if defined (hpux)
@@ -36,7 +38,7 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-VFunction *ea_last_executed_command = (VFunction *)NULL;
+VFunction *ea_last_executed_command = NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
@@ -52,15 +54,15 @@ static NODE input_line_node = {
   (char *)NULL, (char *)NULL, (char *)NULL, input_line, EA_MAX_INPUT, 0
 };
 
-static void echo_area_initialize_node ();
-static void push_echo_area (), pop_echo_area ();
-static int echo_area_stack_contains_completions_p ();
+static void echo_area_initialize_node (void);
+static void push_echo_area (void), pop_echo_area (void);
+static int echo_area_stack_contains_completions_p (void);
 
-static void ea_kill_text ();
+static void ea_kill_text (int from, int to);
 
 /* Non-zero means we force the user to complete. */
 static int echo_area_must_complete_p = 0;
-static int completions_window_p ();
+static int completions_window_p (WINDOW *window);
 
 /* If non-null, this is a window which was specifically created to display
    possible completions output.  We remember it so we can delete it when
@@ -76,8 +78,7 @@ static long calling_window_pagetop = 0;
 
 /* Remember the node and pertinent variables of the calling window. */
 static void
-remember_calling_window (window)
-     WINDOW *window;
+remember_calling_window (WINDOW *window)
 {
   /* Only do this if the calling window is not the completions window, or,
      if it is the completions window and there is no other window. */
@@ -94,7 +95,7 @@ remember_calling_window (window)
 /* Restore the caller's window so that it shows the node that it was showing
    on entry to info_read_xxx_echo_area (). */
 static void
-restore_calling_window ()
+restore_calling_window (void)
 {
   register WINDOW *win, *compwin = (WINDOW *)NULL;
 
@@ -156,8 +157,7 @@ restore_calling_window ()
 
 /* Set up a new input line with PROMPT. */
 static void
-initialize_input_line (prompt)
-     char *prompt;
+initialize_input_line (char *prompt)
 {
   input_line_prompt = prompt;
   if (prompt)
@@ -169,7 +169,7 @@ initialize_input_line (prompt)
 }
 
 static char *
-echo_area_after_read ()
+echo_area_after_read (void)
 {
   char *return_value;
 
@@ -198,9 +198,7 @@ echo_area_after_read ()
    active window, so that we can restore it when we need to.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
 char *
-info_read_in_echo_area (window, prompt)
-     WINDOW *window;
-     char *prompt;
+info_read_in_echo_area (WINDOW *window, char *prompt)
 {
   char *line;
 
@@ -246,7 +244,7 @@ info_read_in_echo_area (window, prompt)
 
 /* (re) Initialize the echo area node. */
 static void
-echo_area_initialize_node ()
+echo_area_initialize_node (void)
 {
   register int i;
 
@@ -262,7 +260,7 @@ echo_area_initialize_node ()
    echo area node, but its primary purpose is to side effect the input
    line buffer contents. */
 void
-echo_area_prep_read ()
+echo_area_prep_read (void)
 {
   if (the_echo_area->node != &input_line_node)
     echo_area_initialize_node ();
@@ -576,9 +574,9 @@ DECLARE_INFO_COMMAND (ea_yank_pop, _("Yank back a previous kill"))
 {
   register int len;
 
-  if (((ea_last_executed_command != ea_yank) &&
-       (ea_last_executed_command != ea_yank_pop)) ||
-      (kill_ring_index == 0))
+  if (((ea_last_executed_command != (VFunction *) ea_yank)
+       && (ea_last_executed_command != (VFunction *) ea_yank_pop))
+      || (kill_ring_index == 0))
     return;
 
   len = strlen (kill_ring[kill_ring_loc]);
@@ -670,8 +668,7 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
    otherwise it is prepended.  If the last command was not a kill command,
    then a new slot is made for this kill. */
 static void
-ea_kill_text (from, to)
-     int from, to;
+ea_kill_text (int from, int to)
 {
   register int i, counter, distance;
   int killing_backwards, slot;
@@ -776,7 +773,7 @@ static int completions_found_slots = 0;
 static REFERENCE *LCD_completion;
 
 /* Internal functions used by the user calls. */
-static void build_completions (), completions_must_be_rebuilt ();
+static void build_completions (void), completions_must_be_rebuilt (void);
 
 /* Variable which holds the output of completions. */
 static NODE *possible_completions_output_node = (NODE *)NULL;
@@ -785,8 +782,7 @@ static char *compwin_name = "*Completions*";
 
 /* Return non-zero if WINDOW is a window used for completions output. */
 static int
-completions_window_p (window)
-     WINDOW *window;
+completions_window_p (WINDOW *window)
 {
   int result = 0;
 
@@ -800,11 +796,7 @@ completions_window_p (window)
 /* Workhorse for completion readers.  If FORCE is non-zero, the user cannot
    exit unless the line read completes, or is empty. */
 char *
-info_read_completing_internal (window, prompt, completions, force)
-     WINDOW *window;
-     char *prompt;
-     REFERENCE **completions;
-     int force;
+info_read_completing_internal (WINDOW *window, char *prompt, REFERENCE **completions, int force)
 {
   char *line;
 
@@ -897,10 +889,7 @@ info_read_completing_internal (window, prompt, completions, force)
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *
-info_read_completing_in_echo_area (window, prompt, completions)
-     WINDOW *window;
-     char *prompt;
-     REFERENCE **completions;
+info_read_completing_in_echo_area (WINDOW *window, char *prompt, REFERENCE **completions)
 {
   return (info_read_completing_internal (window, prompt, completions, 1));
 }
@@ -908,10 +897,7 @@ info_read_completing_in_echo_area (window, prompt, completions)
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
 char *
-info_read_maybe_completing (window, prompt, completions)
-     WINDOW *window;
-     char *prompt;
-     REFERENCE **completions;
+info_read_maybe_completing (WINDOW *window, char *prompt, REFERENCE **completions)
 {
   return (info_read_completing_internal (window, prompt, completions, 0));
 }
@@ -1105,7 +1091,7 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
       return;
     }
 
-  if (ea_last_executed_command == ea_complete)
+  if (ea_last_executed_command == (VFunction *) ea_complete)
     {
       /* If the keypress is a SPC character, and we have already tried
          completing once, and there are several completions, then check
@@ -1155,7 +1141,7 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 /* Utility REFERENCE used to store possible LCD. */
 static REFERENCE LCD_reference = { (char *)NULL, (char *)NULL, (char *)NULL };
 
-static void remove_completion_duplicates ();
+static void remove_completion_duplicates (void);
 
 /* Variables which remember the state of the most recent call
    to build_completions (). */
@@ -1164,7 +1150,7 @@ static REFERENCE **last_completion_items = (REFERENCE **)NULL;
 
 /* How to tell the completion builder to reset internal state. */
 static void
-completions_must_be_rebuilt ()
+completions_must_be_rebuilt (void)
 {
   maybe_free (last_completion_request);
   last_completion_request = (char *)NULL;
@@ -1174,7 +1160,7 @@ completions_must_be_rebuilt ()
 /* Build a list of possible completions from echo_area_completion_items,
    and the contents of input_line. */
 static void
-build_completions ()
+build_completions (void)
 {
   register int i, len;
   register REFERENCE *entry;
@@ -1291,15 +1277,16 @@ build_completions ()
 
 /* Function called by qsort. */
 static int
-compare_references (entry1, entry2)
-     REFERENCE **entry1, **entry2;
+compare_references (const void *p1, const void *p2)
 {
-  return (strcasecmp ((*entry1)->label, (*entry2)->label));
+  REFERENCE **entry1 = (REFERENCE **) p1;
+  REFERENCE **entry2 = (REFERENCE **) p2;
+  return strcasecmp ((*entry1)->label, (*entry2)->label);
 }
 
 /* Prune duplicate entries from COMPLETIONS_FOUND. */
 static void
-remove_completion_duplicates ()
+remove_completion_duplicates (void)
 {
   register int i, j;
   REFERENCE **temp;
@@ -1359,8 +1346,7 @@ DECLARE_INFO_COMMAND (ea_scroll_completions_window, _("Scroll the completions wi
 /* Function which gets called when an Info window is deleted while the
    echo area is active.  WINDOW is the window which has just been deleted. */
 void
-echo_area_inform_of_deleted_window (window)
-     WINDOW *window;
+echo_area_inform_of_deleted_window (WINDOW *window)
 {
   /* If this is the calling_window, forget what we remembered about it. */
   if (window == calling_window)
@@ -1400,7 +1386,7 @@ static int pushed_echo_areas_slots = 0;
 
 /* Pushing the echo_area has a side effect of zeroing the completion_items. */
 static void
-push_echo_area ()
+push_echo_area (void)
 {
   PUSHED_EA *pushed;
 
@@ -1422,7 +1408,7 @@ push_echo_area ()
 }
 
 static void
-pop_echo_area ()
+pop_echo_area (void)
 {
   PUSHED_EA *popped;
 
@@ -1460,7 +1446,7 @@ pop_echo_area ()
 /* Returns non-zero if any of the prior stacked calls to read in the echo
    area produced a completions window. */
 static int
-echo_area_stack_contains_completions_p ()
+echo_area_stack_contains_completions_p (void)
 {
   register int i;
 
@@ -1483,7 +1469,7 @@ echo_area_stack_contains_completions_p ()
 #endif /* HAVE_SYS_TIME_H */
 
 static void
-pause_or_input ()
+pause_or_input (void)
 {
 #ifdef FD_SET
   struct timeval timer;
@@ -1503,8 +1489,7 @@ pause_or_input ()
    for input or a couple of seconds, whichever comes first.  Then flush the
    informational message that was printed. */
 void
-inform_in_echo_area (message)
-     char *message;
+inform_in_echo_area (char *message)
 {
   register int i;
   char *text;

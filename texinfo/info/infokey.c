@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.4 2003-05-13 16:26:02 karl Exp $
+   $Id: infokey.c,v 1.5 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -69,9 +69,9 @@ struct sect
   };
 
 /* Some "forward" declarations. */
-static char *mkpath ();
-static int compile (), write_infokey_file ();
-static void syntax_error (), error_message (), suggest_help (), short_help ();
+static char *mkpath (const char *dir, const char *file);
+static int compile (FILE *fp, const char *filename, struct sect *sections), write_infokey_file (FILE *fp, struct sect *sections);
+static void syntax_error (const char *filename, unsigned int linenum, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4), error_message (int error_code, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4), suggest_help (void), short_help (void);
 
 
 /* **************************************************************** */
@@ -81,9 +81,7 @@ static void syntax_error (), error_message (), suggest_help (), short_help ();
 /* **************************************************************** */
 
 int
-main (argc, argv)
-     int argc;
-     char **argv;
+main (int argc, char **argv)
 {
   int getopt_long_index;	/* Index returned by getopt_long (). */
 
@@ -236,9 +234,7 @@ For more information about these matters, see the files named COPYING.\n"),
 }
 
 static char *
-mkpath (dir, file)
-     const char *dir;
-     const char *file;
+mkpath (const char *dir, const char *file)
 {
   char *p;
 
@@ -365,16 +361,13 @@ mkpath (dir, file)
 	following the '=' is not ignored.
  */
 
-static int add_to_section (), lookup_action ();
+static int add_to_section (struct sect *s, const char *str, unsigned int len), lookup_action (const char *actname);
 
 /* Compile the input file into its various sections.  Return true if no
    error was encountered.
  */
 static int
-compile (fp, filename, sections)
-     FILE *fp;
-     const char *filename;
-     struct sect sections[];
+compile (FILE *fp, const char *filename, struct sect *sections)
 {
   int error = 0;
   char rescan = 0;
@@ -753,10 +746,7 @@ compile (fp, filename, sections)
    characters fit, or false if the section's size limit was exceeded.
  */
 static int
-add_to_section (s, str, len)
-     struct sect *s;
-     const char *str;
-     unsigned int len;
+add_to_section (struct sect *s, const char *str, unsigned int len)
 {
   if (s->cur + len > sizeof s->data)
     return 0;
@@ -769,8 +759,7 @@ add_to_section (s, str, len)
    auto-generated array in key.c.
  */
 static int
-lookup_action (actname)
-     const char *actname;
+lookup_action (const char *actname)
 {
   int i;
 
@@ -787,9 +776,7 @@ lookup_action (actname)
    in radix INFOKEY_RADIX.
  */
 static int
-putint (i, fp)
-     int i;
-     FILE *fp;
+putint (int i, FILE *fp)
 {
   return fputc (i % INFOKEY_RADIX, fp) != EOF
     && fputc ((i / INFOKEY_RADIX) % INFOKEY_RADIX, fp) != EOF;
@@ -799,10 +786,7 @@ putint (i, fp)
    empty, simply omit it.
  */
 static int
-putsect (s, code, fp)
-     struct sect *s;
-     int code;
-     FILE *fp;
+putsect (struct sect *s, int code, FILE *fp)
 {
   if (s->cur == 0)
     return 1;
@@ -814,9 +798,7 @@ putsect (s, code, fp)
 /* Write an entire infokey file, given an array containing its sections.
  */
 static int
-write_infokey_file (fp, sections)
-     FILE *fp;
-     struct sect sections[];
+write_infokey_file (FILE *fp, struct sect *sections)
 {
   /* Get rid of sections with no effect. */
   if (sections[info].cur == 1 && sections[info].data[0] == 0)
@@ -848,10 +830,7 @@ write_infokey_file (fp, sections)
 	progname: "filename", line N: message
  */
 static void
-error_message (error_code, fmt, a1, a2, a3, a4)
-     int error_code;
-     const char *fmt;
-     const void *a1, *a2, *a3, *a4;
+error_message (int error_code, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4)
 {
   fprintf (stderr, "%s: ", program_name);
   fprintf (stderr, fmt, a1, a2, a3, a4);
@@ -864,11 +843,7 @@ error_message (error_code, fmt, a1, a2, a3, a4)
 	progname: message
  */
 static void
-syntax_error (filename, linenum, fmt, a1, a2, a3, a4)
-     const char *filename;
-     unsigned int linenum;
-     const char *fmt;
-     const void *a1, *a2, *a3, *a4;
+syntax_error (const char *filename, unsigned int linenum, const char *fmt, const void *a1, const void *a2, const void *a3, const void *a4)
 {
   fprintf (stderr, "%s: ", program_name);
   fprintf (stderr, _("\"%s\", line %u: "), filename, linenum);
@@ -878,14 +853,14 @@ syntax_error (filename, linenum, fmt, a1, a2, a3, a4)
 
 /* Produce a gentle rtfm. */
 static void
-suggest_help ()
+suggest_help (void)
 {
   fprintf (stderr, _("Try --help for more information.\n"));
 }
 
 /* Produce a scaled down description of the available options to Info. */
 static void
-short_help ()
+short_help (void)
 {
   printf (_("\
 Usage: %s [OPTION]... [INPUT-FILE]\n\

@@ -1,5 +1,5 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
-   $Id: makedoc.c,v 1.2 2003-05-13 16:16:47 karl Exp $
+   $Id: makedoc.c,v 1.3 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -28,7 +28,7 @@
 #include "info.h"
 #include "infokey.h"
 
-static void fatal_file_error ();
+static void fatal_file_error (char *filename);
 
 /* Name of the header file which receives the declarations of functions. */
 static char *funs_filename = "funs.h";
@@ -105,16 +105,14 @@ int emacs_tags_slots = 0;
 
 #define DECLARATION_STRING "\nDECLARE_INFO_COMMAND"
 
-static void process_one_file ();
-static void maybe_dump_tags ();
-static FILE *must_fopen ();
-static void init_func_key ();
-static unsigned int next_func_key ();
+static void process_one_file (char *filename, FILE *doc_stream, FILE *key_stream, FILE *funs_stream);
+static void maybe_dump_tags (FILE *stream);
+static FILE *must_fopen (char *filename, char *mode);
+static void init_func_key (unsigned int val);
+static unsigned int next_func_key (void);
 
 int
-main (argc, argv)
-     int argc;
-     char **argv;
+main (int argc, char **argv)
 {
   register int i;
   int tags_only = 0;
@@ -235,8 +233,7 @@ main (argc, argv)
 
 /* Dumping out the contents of an Emacs tags table. */
 static void
-maybe_dump_tags (stream)
-     FILE *stream;
+maybe_dump_tags (FILE *stream)
 {
   register int i;
 
@@ -284,8 +281,7 @@ maybe_dump_tags (stream)
 /* Keeping track of names, line numbers and character offsets of functions
    found in source files. */
 static EMACS_TAG_BLOCK *
-make_emacs_tag_block (filename)
-     char *filename;
+make_emacs_tag_block (char *filename)
 {
   EMACS_TAG_BLOCK *block;
 
@@ -299,11 +295,7 @@ make_emacs_tag_block (filename)
 }
 
 static void
-add_tag_to_block (block, name, line, char_offset)
-     EMACS_TAG_BLOCK *block;
-     char *name;
-     int line;
-     long char_offset;
+add_tag_to_block (EMACS_TAG_BLOCK *block, char *name, int line, long int char_offset)
 {
   EMACS_TAG *tag;
 
@@ -319,11 +311,7 @@ add_tag_to_block (block, name, line, char_offset)
    function declarations.  Output the declarations in various forms to the
    DOC_STREAM, KEY_STREAM, and FUNS_STREAM. */
 static void
-process_one_file (filename, doc_stream, key_stream, funs_stream)
-     char *filename;
-     FILE *doc_stream;
-     FILE *key_stream;
-     FILE *funs_stream;
+process_one_file (char *filename, FILE *doc_stream, FILE *key_stream, FILE *funs_stream)
 {
   int descriptor, decl_len;
   char *buffer, *decl_str;
@@ -548,16 +536,14 @@ process_one_file (filename, doc_stream, key_stream, funs_stream)
 }
 
 static void
-fatal_file_error (filename)
-     char *filename;
+fatal_file_error (char *filename)
 {
   fprintf (stderr, _("Couldn't manipulate the file %s.\n"), filename);
   xexit (2);
 }
 
 static FILE *
-must_fopen (filename, mode)
-     char *filename, *mode;
+must_fopen (char *filename, char *mode)
 {
   FILE *stream;
 
@@ -571,14 +557,13 @@ must_fopen (filename, mode)
 static unsigned int func_key;
 
 static void
-init_func_key(val)
-	unsigned int val;
+init_func_key(unsigned int val)
 {
 	func_key = val;
 }
 
 static unsigned int
-next_func_key()
+next_func_key(void)
 {
 	return func_key++;
 }

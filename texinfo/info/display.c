@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.5 2003-11-05 14:32:28 dirt Exp $
+   $Id: display.c,v 1.6 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 2003 Free Software Foundation, Inc.
 
@@ -22,10 +22,10 @@
 #include "info.h"
 #include "display.h"
 
-extern int info_any_buffered_input_p (); /* Found in session.c. */
+extern int info_any_buffered_input_p (void); /* Found in session.c. */
 
-static void free_display ();
-static DISPLAY_LINE **make_display ();
+static void free_display (DISPLAY_LINE **display);
+static DISPLAY_LINE **make_display (int width, int height);
 
 /* An array of display lines which tell us what is currently visible on
    the display.  */
@@ -36,8 +36,7 @@ int display_inhibited = 0;
 
 /* Initialize THE_DISPLAY to WIDTH and HEIGHT, with nothing in it. */
 void
-display_initialize_display (width, height)
-     int width, height;
+display_initialize_display (int width, int height)
 {
   free_display (the_display);
   the_display = make_display (width, height);
@@ -46,8 +45,7 @@ display_initialize_display (width, height)
 
 /* Clear all of the lines in DISPLAY making the screen blank. */
 void
-display_clear_display (display)
-     DISPLAY_LINE **display;
+display_clear_display (DISPLAY_LINE **display)
 {
   register int i;
   register DISPLAY_LINE *display_line;
@@ -66,8 +64,7 @@ int display_was_interrupted_p = 0;
 /* Update the windows pointed to by WINDOW in the_display.  This actually
    writes the text on the screen. */
 void
-display_update_display (window)
-     WINDOW *window;
+display_update_display (WINDOW *window)
 {
   register WINDOW *win;
 
@@ -92,24 +89,21 @@ display_update_display (window)
 }
 
 void
-handle_tag_start (tag)
-  char *tag;
+handle_tag_start (char *tag)
 {
   /* TODO really handle this tag.  */
   return;
 }
 
 void
-handle_tag_end (tag)
-  char *tag;
+handle_tag_end (char *tag)
 {
   /* TODO really handle this tag.  */
   return;
 }
 
 void
-handle_tag (tag)
-  char *tag;
+handle_tag (char *tag)
 {
     if (tag[0] == '/')
       {
@@ -123,8 +117,7 @@ handle_tag (tag)
 /* Display WIN on the_display.  Unlike display_update_display (), this
    function only does one window. */
 void
-display_update_one_window (win)
-     WINDOW *win;
+display_update_one_window (WINDOW *win)
 {
   register char *nodetext;      /* Current character to display. */
   register char *last_node_char; /* Position of the last character in node. */
@@ -452,8 +445,7 @@ display_update_one_window (win)
    for no scrolling to take place in the case that the terminal doesn't
    support it.  This doesn't matter to us. */
 void
-display_scroll_display (start, end, amount)
-     int start, end, amount;
+display_scroll_display (int start, int end, int amount)
 {
   register int i, last;
   DISPLAY_LINE *temp;
@@ -523,10 +515,7 @@ display_scroll_display (start, end, amount)
    starts that used to appear in this window.  OLD_COUNT is the number of lines
    that appear in the OLD_STARTS array. */
 void
-display_scroll_line_starts (window, old_pagetop, old_starts, old_count)
-     WINDOW *window;
-     int old_pagetop, old_count;
-     char **old_starts;
+display_scroll_line_starts (WINDOW *window, int old_pagetop, char **old_starts, int old_count)
 {
   register int i, old, new;     /* Indices into the line starts arrays. */
   int last_new, last_old;       /* Index of the last visible line. */
@@ -598,8 +587,7 @@ display_scroll_line_starts (window, old_pagetop, old_starts, old_count)
 
 /* Move the screen cursor to directly over the current character in WINDOW. */
 void
-display_cursor_at_point (window)
-     WINDOW *window;
+display_cursor_at_point (WINDOW *window)
 {
   int vpos, hpos;
 
@@ -617,8 +605,7 @@ display_cursor_at_point (window)
 
 /* Make a DISPLAY_LINE ** with width and height. */
 static DISPLAY_LINE **
-make_display (width, height)
-     int width, height;
+make_display (int width, int height)
 {
   register int i;
   DISPLAY_LINE **display;
@@ -638,8 +625,7 @@ make_display (width, height)
 
 /* Free the storage allocated to DISPLAY. */
 static void
-free_display (display)
-     DISPLAY_LINE **display;
+free_display (DISPLAY_LINE **display)
 {
   register int i;
   register DISPLAY_LINE *display_line;

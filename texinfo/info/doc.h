@@ -1,7 +1,7 @@
 /* doc.h -- Structures associating function pointers with documentation.
-   $Id: doc.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: doc.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
-   Copyright (C) 1993, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,15 +66,6 @@ typedef struct
 
 extern FUNCTION_DOC function_doc_array[];
 
-extern char *function_documentation ();
-extern char *key_documentation ();
-extern char *pretty_keyname ();
-extern char *pretty_keyseq ();
-extern char *where_is ();
-extern char *replace_in_documentation ();
-extern void info_document_key ();
-extern void dump_map_to_message_buffer ();
-
 /* Under the old key-binding system, an info command is specified by
    the pointer to its function.  Under the new INFOKEY binding system, 
    it is specified by a pointer to the command's FUNCTION_DOC structure,
@@ -92,8 +83,20 @@ typedef VFunction InfoCommand;
 #define DocInfoCmd(fd) ((fd)->func)
 #endif /* !INFOKEY */
 
+/* This is ugly, but infomap.h needs InfoCommand, and it seems even
+   worse to move InfoCommand (and thus FUNCTION_DOC) to info.h.  */
+#include "infomap.h"
+
+extern char *function_documentation (InfoCommand *);
+extern char *key_documentation (char key, Keymap);
+extern char *pretty_keyname (unsigned char key);
+extern char *pretty_keyseq (char *keyseq);
+extern char *where_is (Keymap, InfoCommand *);
+extern char *replace_in_documentation (char *, int help_is_only_window_p);
+extern void dump_map_to_message_buffer (char *prefix, Keymap);
+
 #if defined (NAMED_FUNCTIONS)
-extern char *function_name ();
-extern InfoCommand *named_function ();
+extern char *function_name (InfoCommand *);
+extern InfoCommand *named_function (char *name);
 #endif /* NAMED_FUNCTIONS */
 #endif /* !DOC_H */

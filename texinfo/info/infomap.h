@@ -1,5 +1,5 @@
 /* infomap.h -- description of a keymap in Info and related functions.
-   $Id: infomap.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: infomap.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 2001 Free Software Foundation, Inc.
 
@@ -67,15 +67,15 @@ extern Keymap echo_area_keymap;
 
 /* Return a new keymap which has all the uppercase letters mapped to run
    the function info_do_lowercase_version (). */
-extern Keymap keymap_make_keymap ();
+extern Keymap keymap_make_keymap (void);
 
 /* Return a new keymap which is a copy of MAP. */
-extern Keymap keymap_copy_keymap ();
+extern Keymap keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot);
 
 /* Free MAP and it's descendents. */
-extern void keymap_discard_keymap ();
+extern void keymap_discard_keymap (Keymap map, Keymap rootmap);
 
 /* Initialize the info keymaps. */
-extern void initialize_info_keymaps ();
+extern void initialize_info_keymaps (void);
 
 #endif /* not INFOMAP_H */

@@ -1,5 +1,5 @@
 /* man.h: Defines and external function declarations for man.c.
-   $Id: man.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: man.h,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
@@ -27,11 +27,11 @@
 
 #define MANPAGE_FILE_BUFFER_NAME "*manpages*"
 
-extern NODE *make_manpage_node (/* char *pagename */);
-extern NODE *get_manpage_node (/* FILE_BUFFER *file_buffer, char *pagename */);
-extern FILE_BUFFER *create_manpage_file_buffer (/* void */);
-extern long locate_manpage_xref (/* NODE *node, long start, int dir */);
-extern REFERENCE **xrefs_of_manpage (/* NODE *node */);
-extern REFERENCE **manpage_xrefs_in_binding (/* NODE *node, SEARCH_BINDING *binding */);
+extern NODE *make_manpage_node (char *pagename);
+extern NODE *get_manpage_node (FILE_BUFFER *file_buffer, char *pagename);
+extern FILE_BUFFER *create_manpage_file_buffer (void);
+extern long locate_manpage_xref (NODE *node, long int start, int dir);
+extern REFERENCE **xrefs_of_manpage (NODE *node);
+extern REFERENCE **manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding);
 
 #endif /* INFO_MAN_H */

@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.7 2003-05-13 16:27:04 karl Exp $
+   $Id: infomap.c,v 1.8 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -33,7 +33,7 @@
 /* Return a new keymap which has all the uppercase letters mapped to run
    the function info_do_lowercase_version (). */
 Keymap
-keymap_make_keymap ()
+keymap_make_keymap (void)
 {
   int i;
   Keymap keymap;
@@ -61,10 +61,7 @@ keymap_make_keymap ()
 
 #if defined(INFOKEY)
 static FUNCTION_KEYSEQ *
-find_function_keyseq (map, c, rootmap)
-  Keymap map;
-  int c;
-  Keymap rootmap;
+find_function_keyseq (Keymap map, int c, Keymap rootmap)
 {
   FUNCTION_KEYSEQ *k;
 
@@ -90,10 +87,7 @@ find_function_keyseq (map, c, rootmap)
 }
 
 static void
-add_function_keyseq (function, keyseq, rootmap)
-  InfoCommand *function;
-  const unsigned char *keyseq;
-  Keymap rootmap;
+add_function_keyseq (InfoCommand *function, const unsigned char *keyseq, Keymap rootmap)
 {
   FUNCTION_KEYSEQ *ks;
 
@@ -109,10 +103,7 @@ add_function_keyseq (function, keyseq, rootmap)
 }
 
 static void
-remove_function_keyseq (function, keyseq, rootmap)
-  InfoCommand *function;
-  const unsigned char *keyseq;
-  Keymap rootmap;
+remove_function_keyseq (InfoCommand *function, const unsigned char *keyseq, Keymap rootmap)
 {
 
   FUNCTION_KEYSEQ *k, *kp;
@@ -135,10 +126,7 @@ remove_function_keyseq (function, keyseq, rootmap)
 
 /* Return a new keymap which is a copy of MAP. */
 Keymap
-keymap_copy_keymap (map, rootmap, newroot)
-  Keymap map;
-  Keymap rootmap;
-  Keymap newroot;
+keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot)
 {
   int i;
   Keymap keymap;
@@ -174,9 +162,7 @@ keymap_copy_keymap (map, rootmap, newroot)
 
 /* Free the keymap and its descendants. */
 void
-keymap_discard_keymap (map, rootmap)
-  Keymap map;
-  Keymap rootmap;
+keymap_discard_keymap (Keymap map, Keymap rootmap)
 {
   int i;
 
@@ -211,10 +197,7 @@ keymap_discard_keymap (map, rootmap)
 
 /* Conditionally bind key sequence. */
 int
-keymap_bind_keyseq (map, keyseq, keyentry)
-     Keymap map;
-     const unsigned char *keyseq;
-     KEYMAP_ENTRY *keyentry;
+keymap_bind_keyseq (Keymap map, const unsigned char *keyseq, KEYMAP_ENTRY *keyentry)
 {
   Keymap m = map;
   const unsigned char *s = keyseq;
@@ -1432,8 +1415,7 @@ static unsigned int user_vars_len;
  * Return the size of a file, or 0 if the size can't be determined.
  */
 static unsigned long
-filesize(f)
-	int f;
+filesize(int f)
 {
 	long pos = lseek(f, 0L, SEEK_CUR);
 	long sz = -1L;
@@ -1449,8 +1431,7 @@ filesize(f)
    Integers are stored as two bytes, low order first, in radix INFOKEY_RADIX.
  */
 static int
-getint(sp)
-	unsigned char **sp;
+getint(unsigned char **sp)
 {
 	int n;
 
@@ -1465,7 +1446,7 @@ getint(sp)
 /* Fetch the contents of the standard infokey file "$HOME/.info".  Return
    true if ok, false if not.  */
 static int
-fetch_user_maps()
+fetch_user_maps(void)
 {
 	char *filename = NULL;
 	char *homedir;
@@ -1597,11 +1578,7 @@ fetch_user_maps()
    doesn't define.
  */
 static int
-decode_keys(src, slen, dst, dlen)
-	unsigned char *src;
-	unsigned int slen;
-	unsigned char *dst;
-	unsigned int dlen;
+decode_keys(unsigned char *src, unsigned int slen, unsigned char *dst, unsigned int dlen)
 {
 	unsigned char *s = src;
 	unsigned char *d = dst;
@@ -1658,10 +1635,7 @@ decode_keys(src, slen, dst, dlen)
 /* Convert an infokey file section to keymap bindings.  Return false if
    the default bindings are to be suppressed.  */
 static int
-section_to_keymaps(map, table, len)
-	Keymap map;
-	unsigned char *table;
-	unsigned int len;
+section_to_keymaps(Keymap map, unsigned char *table, unsigned int len)
 {
 	int stop;
 	unsigned char *p;
@@ -1726,9 +1700,7 @@ section_to_keymaps(map, table, len)
 /* Convert an infokey file section to variable settings.
  */
 static void
-section_to_vars(table, len)
-	unsigned char *table;
-	unsigned int len;
+section_to_vars(unsigned char *table, unsigned int len)
 {
 	enum { getvar, gotvar, getval, gotval } state = getvar;
 	unsigned char *var = NULL;
@@ -1774,7 +1746,7 @@ section_to_vars(table, len)
 }
 
 void
-initialize_info_keymaps ()
+initialize_info_keymaps (void)
 {
   int i;
   int suppress_info_default_bindings = 0;

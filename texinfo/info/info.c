@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.9 2003-11-01 15:37:12 karl Exp $
+   $Id: info.c,v 1.10 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -130,9 +130,9 @@ static char *short_options = "d:n:f:ho:ORs";
 int info_windows_initialized_p = 0;
 
 /* Some "forward" declarations. */
-static void info_short_help ();
-static void init_messages ();
-extern void add_file_directory_to_path ();
+static void info_short_help (void);
+static void init_messages (void);
+extern void add_file_directory_to_path (char *filename);
 
 
 /* **************************************************************** */
@@ -142,9 +142,7 @@ extern void add_file_directory_to_path ();
 /* **************************************************************** */
 
 int
-main (argc, argv)
-     int argc;
-     char **argv;
+main (int argc, char **argv)
 {
   int getopt_long_index;        /* Index returned by getopt_long (). */
   NODE *initial_node;           /* First node loaded by Info. */
@@ -379,7 +377,8 @@ For more information about these matters, see the files named COPYING.\n"),
      file name is either "dir", or the contents of user_filename if one
      was specified. */
   {
-    char *errstr, *errarg1, *errarg2;
+    const char *errstr;
+    char *errarg1, *errarg2;
     NODE *new_initial_node = info_follow_menus (initial_node, argv + optind,
                                                 &errstr, &errarg1, &errarg2);
 
@@ -484,8 +483,7 @@ For more information about these matters, see the files named COPYING.\n"),
 }
 
 void
-add_file_directory_to_path (filename)
-     char *filename;
+add_file_directory_to_path (char *filename)
 {
   char *directory_name = xstrdup (filename);
   char *temp = filename_non_directory (directory_name);
@@ -519,16 +517,18 @@ int info_error_rings_bell_p = 1;
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
 void
-info_error (format, arg1, arg2)
-     char *format;
-     void *arg1, *arg2;
+info_error (const char *format, ...)
 {
+  va_list args;
+  va_start (args, format);
+  
   info_error_was_printed = 1;
 
   if (!info_windows_initialized_p || display_inhibited)
     {
       fprintf (stderr, "%s: ", program_name);
-      fprintf (stderr, format, arg1, arg2);
+      fprintf (stderr, format, args);
+      va_end (args);
       fprintf (stderr, "\n");
       fflush (stderr);
     }
@@ -538,13 +538,13 @@ info_error (format, arg1, arg2)
         {
           if (info_error_rings_bell_p)
             terminal_ring_bell ();
-          window_message_in_echo_area (format, arg1, arg2);
+          window_message_in_echo_area (format, args);
         }
       else
         {
           NODE *temp;
 
-          temp = build_message_node (format, arg1, arg2);
+          temp = build_message_node (format, args);
           if (info_error_rings_bell_p)
             terminal_ring_bell ();
           inform_in_echo_area (temp->contents);
@@ -557,7 +557,7 @@ info_error (format, arg1, arg2)
 
 /* Produce a scaled down description of the available options to Info. */
 static void
-info_short_help ()
+info_short_help (void)
 {
 #ifdef __MSDOS__
   static const char speech_friendly_string[] = N_("\
@@ -636,7 +636,7 @@ const char *msg_win_too_small;
 const char *msg_cant_make_help;
 
 static void
-init_messages ()
+init_messages (void)
 {
   msg_cant_find_node   = _("Cannot find node `%s'.");
   msg_cant_file_node   = _("Cannot find node `(%s)%s'.");

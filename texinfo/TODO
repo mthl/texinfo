@@ -1,4 +1,4 @@
-$Id: TODO,v 1.21 2003-12-01 14:30:48 karl Exp $
+$Id: TODO,v 1.22 2003-12-24 15:12:47 uid65818 Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -31,8 +31,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Test for memory leaks, e.g., with valgrind:
     http://developer.kde.org/~sewardj/
   - Extend and improve the tests.
-  - Get Info declared as a MIME Content-Type.
-  - Support compressed image files.
+  - Get Info declared as a MIME Content-Type
+  - Get Info declared as a URL scheme - probably too late, as a big
+    consortium has made a draft for this.
   - Support reference card creation, perhaps by only paying attention to
     sectioning and @def... commands.
   - Allow @end (and other?) commands to be indented in the source.
@@ -122,6 +123,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 * install-info:
   - be able to copy the info file to compile-time $infodir, to
     simplify by-hand installation.
+  - also support installing HTML files, etc., along with subsidiary
+    @image (or other) files.
 
 * texindex:
   - read source file (specified by new option) for @documentlanguage

@@ -47,10 +47,10 @@ extern char **tilde_additional_prefixes;
 extern char **tilde_additional_suffixes;
 
 /* Return a new string which is the result of tilde expanding STRING. */
-extern char *tilde_expand ();
+extern char *tilde_expand (char *string);
 
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
    tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
-extern char *tilde_expand_word ();
+extern char *tilde_expand_word (char *filename);
 
 #endif /* not TILDE_H */

@@ -28,8 +28,7 @@ FILE *info_dribble_file = (FILE *)NULL;
 /* Open a dribble file named NAME, perhaps closing an already open one.
    This sets the global variable INFO_DRIBBLE_FILE to the open stream. */
 void
-open_dribble_file (name)
-     char *name;
+open_dribble_file (char *name)
 {
   /* Perhaps close existing dribble file. */
   close_dribble_file ();
@@ -49,7 +48,7 @@ open_dribble_file (name)
 
 /* If there is a dribble file already open, close it. */
 void
-close_dribble_file ()
+close_dribble_file (void)
 {
   if (info_dribble_file)
     {
@@ -61,8 +60,7 @@ close_dribble_file ()
 
 /* Write some output to our existing dribble file. */
 void
-dribble (byte)
-     unsigned char byte;
+dribble (unsigned char byte)
 {
   if (info_dribble_file)
     fwrite (&byte, sizeof (unsigned char), 1, info_dribble_file);

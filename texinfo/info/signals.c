@@ -1,5 +1,5 @@
 /* signals.c -- install and maintain Info signal handlers.
-   $Id: signals.c,v 1.5 2003-09-20 22:16:52 karl Exp $
+   $Id: signals.c,v 1.6 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1994, 1995, 1998, 2002, 2003 Free Software
    Foundation, Inc.
@@ -64,8 +64,7 @@ sigprocmask (operation, newset, oldset)
 #if defined (HAVE_SIGACTION) || defined (HAVE_SIGPROCMASK) ||\
   defined (HAVE_SIGSETMASK)
 static void
-mask_termsig (set)
-  sigset_t *set;
+mask_termsig (sigset_t *set)
 {
 # if defined (SIGTSTP)
   sigaddset (set, SIGTSTP);
@@ -87,23 +86,19 @@ mask_termsig (set)
 }
 #endif /* HAVE_SIGACTION || HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
 
-static RETSIGTYPE info_signal_proc ();
+static RETSIGTYPE info_signal_proc (int sig);
 #if defined (HAVE_SIGACTION)
 typedef struct sigaction signal_info;
 signal_info info_signal_handler;
 
 static void
-set_termsig (sig, old)
-  int sig;
-  signal_info *old;
+set_termsig (int sig, signal_info *old)
 {
   sigaction (sig, &info_signal_handler, old);
 }
 
 static void
-restore_termsig (sig, saved)
-  int sig;
-  const signal_info *saved;
+restore_termsig (int sig, const signal_info *saved)
 {
   sigaction (sig, saved, NULL);
 }
@@ -120,7 +115,7 @@ static signal_info old_WINCH, old_INT, old_USR1;
 static signal_info old_QUIT;
 
 void
-initialize_info_signal_handler ()
+initialize_info_signal_handler (void)
 {
 #if defined (HAVE_SIGACTION)
   info_signal_handler.sa_handler = info_signal_proc;
@@ -153,7 +148,7 @@ initialize_info_signal_handler ()
 }
 
 static void
-redisplay_after_signal ()
+redisplay_after_signal (void)
 {
   terminal_clear_screen ();
   display_clear_display (the_display);
@@ -164,7 +159,7 @@ redisplay_after_signal ()
 }
 
 static void
-reset_info_window_sizes ()
+reset_info_window_sizes (void)
 {
   terminal_goto_xy (0, 0);
   fflush (stdout);
@@ -177,8 +172,7 @@ reset_info_window_sizes ()
 }
 
 static RETSIGTYPE
-info_signal_proc (sig)
-     int sig;
+info_signal_proc (int sig)
 {
   signal_info *old_signal_handler;
 

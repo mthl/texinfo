@@ -1,5 +1,5 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: m-x.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002 Free Software Foundation, Inc.
 
@@ -32,9 +32,7 @@
    name.  A return value of NULL indicates that no function name could
    be read. */
 char *
-read_function_name (prompt, window)
-     char *prompt;
-     WINDOW *window;
+read_function_name (char *prompt, WINDOW *window)
 {
   register int i;
   char *line;

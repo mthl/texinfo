@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: dir.c,v 1.2 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998 Free Software Foundation, Inc.
 
@@ -28,7 +28,7 @@
    with the addition of the menus of every file named in the array
    dirs_to_add which are found in INFOPATH. */
 
-static void add_menu_to_file_buffer (), insert_text_into_fb_at_binding ();
+static void add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb), insert_text_into_fb_at_binding (FILE_BUFFER *fb, SEARCH_BINDING *binding, char *text, int textlen);
 
 static char *dirs_to_add[] = {
   "dir", "localdir", (char *)NULL
@@ -45,8 +45,7 @@ typedef struct
 } dir_file_list_entry_type;
 
 static int
-new_dir_file_p (test)
-    struct stat *test;
+new_dir_file_p (struct stat *test)
 {
   static unsigned dir_file_list_len = 0;
   static dir_file_list_entry_type *dir_file_list = NULL;
@@ -70,8 +69,7 @@ new_dir_file_p (test)
 
 
 void
-maybe_build_dir_node (dirname)
-     char *dirname;
+maybe_build_dir_node (char *dirname)
 {
   int path_index, update_tags;
   char *this_dir;
@@ -162,10 +160,7 @@ maybe_build_dir_node (dirname)
    to the menu found in FB->contents.  Second argument SIZE is the total
    size of CONTENTS. */
 static void
-add_menu_to_file_buffer (contents, size, fb)
-     char *contents;
-     long size;
-     FILE_BUFFER *fb;
+add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
 {
   SEARCH_BINDING contents_binding, fb_binding;
   long contents_offset, fb_offset;
@@ -271,11 +266,7 @@ add_menu_to_file_buffer (contents, size, fb)
 }
 
 static void
-insert_text_into_fb_at_binding (fb, binding, text, textlen)
-     FILE_BUFFER *fb;
-     SEARCH_BINDING *binding;
-     char *text;
-     int textlen;
+insert_text_into_fb_at_binding (FILE_BUFFER *fb, SEARCH_BINDING *binding, char *text, int textlen)
 {
   char *contents;
   long start, end;

@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.3 2003-08-13 13:52:32 karl Exp $
+   $Id: indices.c,v 1.4 2003-12-24 15:12:48 uid65818 Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003 Free Software
    Foundation, Inc.
@@ -55,9 +55,7 @@ static int index_nodenames_slots = 0;
 /* Add the name of NODE, and the range of the associated index elements
    (passed in ARRAY) to index_nodenames. */
 static void
-add_index_to_index_nodenames (array, node)
-     REFERENCE **array;
-     NODE *node;
+add_index_to_index_nodenames (REFERENCE **array, NODE *node)
 {
   register int i, last;
   INDEX_NAME_ASSOC *assoc;
@@ -88,8 +86,7 @@ add_index_to_index_nodenames (array, node)
    indices are concatenated and the result returned.  If WINDOW's info file
    doesn't have any indices, a NULL pointer is returned. */
 REFERENCE **
-info_indices_of_window (window)
-     WINDOW *window;
+info_indices_of_window (WINDOW *window)
 {
   FILE_BUFFER *fb;
 
@@ -99,8 +96,7 @@ info_indices_of_window (window)
 }
 
 REFERENCE **
-info_indices_of_file_buffer (file_buffer)
-     FILE_BUFFER *file_buffer;
+info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 {
   register int i;
   REFERENCE **result = (REFERENCE **)NULL;
@@ -181,10 +177,7 @@ DECLARE_INFO_COMMAND (info_index_search,
 /* Look up SEARCH_STRING in the index for this file.  If SEARCH_STRING
    is NULL, prompt user for input.  */ 
 void
-do_info_index_search (window, count, search_string)
-     WINDOW *window;
-     int count;
-     char *search_string;
+do_info_index_search (WINDOW *window, int count, char *search_string)
 {
   FILE_BUFFER *fb;
   char *line;
@@ -283,9 +276,7 @@ do_info_index_search (window, count, search_string)
 }
 
 int
-index_entry_exists (window, string)
-     WINDOW *window;
-     char *string;
+index_entry_exists (WINDOW *window, char *string)
 {
   register int i;
   FILE_BUFFER *fb;
@@ -424,11 +415,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       }
 
     {
-      char *format;
-
-      format = replace_in_documentation
-        (_("Found \"%s\" in %s. (`\\[next-index-match]' tries to find next.)"));
-
+      char *format = replace_in_documentation
+(_("Found \"%s\" in %s. (`\\[next-index-match]' tries to find next.)"), 0);
       window_message_in_echo_area (format, match, name);
     }
 
@@ -471,9 +459,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 /* For every menu item in DIR, search the indices of that file for
    SEARCH_STRING. */
 REFERENCE **
-apropos_in_all_indices (search_string, inform)
-     char *search_string;
-     int inform;
+apropos_in_all_indices (char *search_string, int inform)
 {
   register int i, dir_index;
   REFERENCE **all_indices = (REFERENCE **)NULL;
@@ -604,8 +590,7 @@ apropos_in_all_indices (search_string, inform)
    N_("No available info files have \"%s\" in their indices.")
 
 void
-info_apropos (string)
-     char *string;
+info_apropos (char *string)
 {
   REFERENCE **apropos_list;
 

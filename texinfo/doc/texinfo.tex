@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-12-01.17}
+\def\texinfoversion{2003-12-07.11}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -102,6 +102,15 @@
 % starts a new line in the output.
 \newlinechar = `^^J
 
+% Use TeX 3.0's \inputlineno to get the line number, for better error
+% messages, but if we're using an old version of TeX, don't do anything.
+%
+\ifx\inputlineno\thisisundefined
+  \let\linenumber = \empty % Pre-3.0.
+\else
+  \def\linenumber{l.\the\inputlineno:\space}
+\fi
+
 % Set up fixed words for English if not already set.
 \ifx\putwordAppendix\undefined  \gdef\putwordAppendix{Appendix}\fi
 \ifx\putwordChapter\undefined   \gdef\putwordChapter{Chapter}\fi
@@ -159,6 +168,19 @@
 
 % The following is used inside several \edef's.
 \def\makecsname#1{\expandafter\noexpand\csname#1\endcsname}
+
+% Make an outer definition into an inner one (due to Chris Thompson).
+% The arguments should be the control sequence to be defined, and the
+% new of the \outer control sequence, as characters; the control
+% sequence #1 is defined to be just the same as \csname#2\endcsname, but
+% not \outer.
+% 
+% For example, \innerdef\innernewcount{newcount} defines \innernewcount
+% to be a non-outer version of \newcount.
+%
+\def\innerdef#1#2{\edef#1{\expandafter\noexpand\csname #2\endcsname}}%
+%
+\innerdef\innernewcount{newcount}%
 
 % Hyphenation fixes.
 \hyphenation{ap-pen-dix}
@@ -3729,14 +3751,24 @@ width0pt\relax} \fi
   \suppressfirstparagraphindent
 }
 
-% @chapter, @appendix, @unnumbered.
-%
+% @chapter, @appendix, @unnumbered.  Increment top-level counter, reset
+% all lower-level sectioning counters to zero.
+% 
+% Also set \chaplevelprefix, which we prepend to @float sequence numbers
+% (e.g., figures), q.v.  By default (before any chapter), that is empty.
+\let\chaplevelprefix = \empty
+% 
 \outer\defparsearg\chapter{\numhead0{#1}} % normally numhead0 calls chapterzzz
 \def\chapterzzz#1{%
   % section resetting is \global in case the chapter is in a group, such
   % as an @include file.
   \global\secno=0 \global\subsecno=0 \global\subsubsecno=0
     \global\advance\chapno by 1
+  %
+  % Used for \float.
+  \gdef\chaplevelprefix{\the\chapno.}%
+  \resetallfloatnos
+  %
   \message{\putwordChapter\space \the\chapno}%
   %
   % Write the actual heading.
@@ -3752,9 +3784,14 @@ width0pt\relax} \fi
 \def\appendixzzz#1{%
   \global\secno=0 \global\subsecno=0 \global\subsubsecno=0
     \global\advance\appendixno by 1
+  \gdef\chaplevelprefix{\appendixletter.}%
+  \resetallfloatnos
+  %
   \def\appendixnum{\putwordAppendix\space \appendixletter}%
   \message{\appendixnum}%
+  %
   \chapmacro{#1}{Yappendix}{\appendixletter}%
+  %
   \global\let\section = \appendixsec
   \global\let\subsection = \appendixsubsec
   \global\let\subsubsection = \appendixsubsubsec
@@ -3768,6 +3805,10 @@ width0pt\relax} \fi
   \global\secno=0 \global\subsecno=0 \global\subsubsecno=0
     \global\advance\unnumberedno by 1
   %
+  % Since an unnumbered as no number, no prefix for figures.
+  \global\let\chaplevelprefix = \empty
+  \resetallfloatnos
+  %
   % This used to be simply \message{#1}, but TeX fully expands the
   % argument to \message.  Therefore, if #1 contained @-commands, TeX
   % expanded them.  For example, in `@unnumbered The @cite{Book}', TeX
@@ -3779,7 +3820,8 @@ width0pt\relax} \fi
   % \the<toks register> to achieve this: TeX expands \the<toks> only once,
   % simply yielding the contents of <toks register>.  (We also do this for
   % the toc entries.)
-  \toks0 = {#1}\message{(\the\toks0)}%
+  \toks0 = {#1}%
+  \message{(\the\toks0)}%
   %
   \chapmacro{#1}{Ynothing}{\the\unnumberedno}%
   %
@@ -4646,7 +4688,7 @@ width0pt\relax} \fi
 % @format: same as @display except don't narrow margins.
 %
 \def\format{\begingroup
-  \let\nonarrowing = t
+  \let\nonarrowing = t%
   \nonfillstart
   \let\Eformat = \nonfillfinish
   \gobble
@@ -4667,7 +4709,7 @@ width0pt\relax} \fi
 % @flushright.
 %
 \def\flushright{\begingroup
-  \let\nonarrowing = t
+  \let\nonarrowing = t%
   \nonfillstart
   \let\Eflushright = \nonfillfinish
   \advance\leftskip by 0pt plus 1fill
@@ -5654,12 +5696,19 @@ width0pt\relax} \fi
 %
 \gdef\savesf{\relax \ifhmode \savesfregister=\spacefactor \fi}
 \gdef\restoresf{\relax \ifhmode \spacefactor=\savesfregister \fi}
-\gdef\anchor#1{\savesf \setref{#1}{Ynothing}\restoresf \ignorespaces}
+\gdef\anchor#1{%
+  \savesf
+  \setref{#1}{Ynothing}%
+  \restoresf
+  \ignorespaces
+}
 
 % \setref{NAME}{SNT} defines a cross-reference point NAME (a node or an
-% anchor), namely NAME-title (the corresponding @chapter/etc. name),
-% NAME-pg (the page number), and NAME-snt (section number and type).
-% Called from \donoderef and \anchor.
+% anchor), which consists of three parts:
+% 1) NAME-title - the current sectioning name, taken from \thissection;
+% 2) NAME-snt   - section number and type, defined as the SNT arg;
+% 3) NAME-pg    - the page number.
+% This is called from \donoderef, \anchor, and \dofloat.
 % 
 % We take care not to fully expand the title, since it may contain
 % arbitrary macros.
@@ -5695,38 +5744,34 @@ width0pt\relax} \fi
 \def\xrefX[#1,#2,#3,#4,#5,#6]{\begingroup
   \unsepspaces
   \def\printedmanual{\ignorespaces #5}%
-  \def\printednodename{\ignorespaces #3}%
-  \setbox1=\hbox{\printedmanual}%
-  \setbox0=\hbox{\printednodename}%
+  \def\printedrefname{\ignorespaces #3}%
+  \setbox1=\hbox{\printedmanual\unskip}%
+  \setbox0=\hbox{\printedrefname\unskip}%
   \ifdim \wd0 = 0pt
     % No printed node name was explicitly given.
     \expandafter\ifx\csname SETxref-automatic-section-title\endcsname\relax
       % Use the node name inside the square brackets.
-      \def\printednodename{\ignorespaces #1}%
+      \def\printedrefname{\ignorespaces #1}%
     \else
       % Use the actual chapter/section title appear inside
       % the square brackets.  Use the real section title if we have it.
       \ifdim \wd1 > 0pt
         % It is in another manual, so we don't have it.
-        \def\printednodename{\ignorespaces #1}%
+        \def\printedrefname{\ignorespaces #1}%
       \else
         \ifhavexrefs
           % We know the real title if we have the xref values.
-          \def\printednodename{\refx{#1-title}{}}%
+          \def\printedrefname{\refx{#1-title}{}}%
         \else
           % Otherwise just copy the Info node name.
-          \def\printednodename{\ignorespaces #1}%
+          \def\printedrefname{\ignorespaces #1}%
         \fi%
       \fi
     \fi
   \fi
   %
-  % If we use \unhbox0 and \unhbox1 to print the node names, TeX does not
-  % insert empty discretionaries after hyphens, which means that it will
-  % not find a line break at a hyphen in a node names.  Since some manuals
-  % are best written with fairly long node names, containing hyphens, this
-  % is a loss.  Therefore, we give the text of the node name again, so it
-  % is as if TeX is seeing it for the first time.
+  % Make link in pdf output.
+  % 
   \ifpdf
     \leavevmode
     \getfilename{#4}%
@@ -5742,8 +5787,33 @@ width0pt\relax} \fi
     \linkcolor
   \fi
   %
+  % Float references are printed completely differently: "Figure 1.2"
+  % instead of "[somenode], p.3".  We distinguish them by the
+  % LABEL-title being set to a magic string.
+  \expandafter\ifx \csname X#1-title\endcsname \floatmagic
+    % If the user specified the print name (third arg) to the ref,
+    % print it instead of our usual "Figure 1.2".
+    \ifdim\wd0 = 0pt
+      \refx{#1-snt}%
+    \else
+      \printedrefname
+    \fi
+    %
+    % if the user also gave the printed manual name (fifth arg), append
+    % "in MANUALNAME". 
+    \ifdim \wd1 > 0pt
+      \space \putwordin{} \cite{\printedmanual}%
+    \fi
+  \else
+  %
+  % If we use \unhbox0 and \unhbox1 to print the node names, TeX does not
+  % insert empty discretionaries after hyphens, which means that it will
+  % not find a line break at a hyphen in a node names.  Since some manuals
+  % are best written with fairly long node names, containing hyphens, this
+  % is a loss.  Therefore, we give the text of the node name again, so it
+  % is as if TeX is seeing it for the first time.
   \ifdim \wd1 > 0pt
-    \putwordsection{} ``\printednodename'' \putwordin{} \cite{\printedmanual}%
+    \putwordsection{} ``\printedrefname'' \putwordin{} \cite{\printedmanual}%
   \else
     % _ (for example) has to be the character _ for the purposes of the
     % control sequence corresponding to the node, but it has to expand
@@ -5757,7 +5827,7 @@ width0pt\relax} \fi
      \ifdim \wd2 > 0pt \refx{#1-snt}\space\fi
     }%
     % output the `[mynode]' via a macro.
-    \xrefprintnodename\printednodename
+    \xrefprintnodename\printedrefname
     %
     % But we always want a comma and a space:
     ,\space
@@ -5766,11 +5836,12 @@ width0pt\relax} \fi
     \turnoffactive \otherbackslash \putwordpage\tie\refx{#1-pg}{}%
   \fi
   \endlink
+  \fi
 \endgroup}
 
 % This macro is called from \xrefX for the `[nodename]' part of xref
 % output.  It's a separate macro only so it can be changed more easily,
-% since not square brackets don't work in some documents.  Particularly
+% since square brackets don't work well in some documents.  Particularly
 % one that Bob is working on :).
 %
 \def\xrefprintnodename#1{[#1]}
@@ -5802,15 +5873,6 @@ width0pt\relax} \fi
       @char\the\appendixno.\the\secno.\the\subsecno.\the\subsubsecno
   \fi\fi\fi
 }
-
-% Use TeX 3.0's \inputlineno to get the line number, for better error
-% messages, but if we're using an old version of TeX, don't do anything.
-%
-\ifx\inputlineno\thisisundefined
-  \let\linenumber = \empty % Pre-3.0.
-\else
-  \def\linenumber{\the\inputlineno:\space}
-\fi
 
 % Define \refx{NAME}{SUFFIX} to reference a cross-reference string named NAME.
 % If its value is nonempty, SUFFIX is output afterward.
@@ -6156,13 +6218,26 @@ width0pt\relax} \fi
 % But it seemed the best name for the future.
 % 
 \def\float{\parsearg\parsefloat}
-\def\parsefloat#1{\dofloat #1,\finish}
+\def\parsefloat#1{\dofloat #1,,,\finish}
 
-% #1 is the text label for this float, typically "Figure", "Table",
-% "Example", etc.  #2 is optional and ignored; it will be for specifying
-% the positions allowed to float to (here, top, bottom).
+% #1 is the optional FLOATTYPE, the text label for this float, typically
+% "Figure", "Table", "Example", etc.  Can't contain commas.  If omitted,
+% this float will not be numbered and cannot be referred to.
 % 
-\def\dofloat#1,#2\finish{\vtop\bgroup
+% #2 is the optional xref label.  Also must be present for the float to
+% be referable.
+% 
+% #3 is the optional positioning argument; for now, it is ignored.  It
+% will somehow specify the positions allowed to float to (here, top, bottom).
+% 
+% We keep a separate counter for each FLOATTYPE, which we reset at each
+% chapter-level command.
+\let\resetallfloatnos=\empty
+%
+\def\dofloat#1,#2,#3,#4\finish{\vtop\bgroup
+  \def\floattype{#1}%
+  \def\floatlabel{#2}%
+  \def\floatloc{#3}% we do nothing with this yet.
   % xx should we indent the whole thing? center it?
   % 
   % allow @[short]caption now.
@@ -6172,15 +6247,81 @@ width0pt\relax} \fi
   \let\thisshortcaption=\empty
   \def\shortcaption##1{\def\thisshortcaption{##1}}%
   %
-  \def\Efloat{%
-    \ifx\thiscaption\empty \else
-      \vskip.5\parskip
-      \thiscaption
-      \vskip\parskip
+  \ifx\floattype\empty \else
+    % For now, assume the FLOATTYPE is entirely letters, so we just use it
+    % in a control sequence name literally.  We want each FLOATTYPE to be
+    % numbered separately (Figure 1, Table 1, Figure 2, ...).
+    \expandafter\let\expandafter\floatno\csname\floattype floatno\endcsname
+    \ifx\floatno\relax
+      % Haven't seen this figure type before, so need to define
+      % the counter for it, and then redefine \floatno.
+      \expandafter\innernewcount\csname\floattype floatno\endcsname
+      \expandafter\let\expandafter\floatno\csname\floattype floatno\endcsname
+      %
+      % Remember to reset this floatno at the next chap.
+      \toks0 = \expandafter{\resetallfloatnos}%
+      \xdef\resetallfloatnos{\the\toks0 \makecsname{\floattype floatno}=0 }%
     \fi
+    \global\advance\floatno by 1
+    %
+    \ifx\floatlabel\empty \else
+      {%
+        % This magic value for \thissection is output by \setref as the
+        % XREFLABEL-title value.  \xrefX uses it to distinguish float
+        % labels (which have a completely different output format) from
+        % nodes and xref labels.
+        % 
+        \let\thissection=\floatmagic
+        \setref{\floatlabel}{Yfloat}%
+      }%
+    \fi
+  \fi
+  %
+  \def\Efloat{%
+    % we have four possibilities:
+    % @float Foo & @caption{Cap}: Foo 1.1: Cap
+    % @float Foo & no caption:    Foo 1.1
+    % @float & @caption{cap}:     Cap
+    % @float & no caption:
+    %
+    \let\printedsomething = \empty
+    %
+    \ifx\floattype\empty \else
+      \vskip.5\parskip  % space above caption
+      %
+      % Print the float number preceded by the chapter-level number
+      % (empty in the case of unnumbered).  Although there are other
+      % styles of float numbering, we hardwire this one.
+      \floattype\space\chaplevelprefix\the\floatno
+      \let\printedsomething = t%
+    \fi
+    %
+    \ifx\thiscaption\empty \else
+      \ifx\printedsomething\empty
+        \vskip.5\parskip  % space above caption
+      \else
+        :\space  % had a number, so print a colon.
+      \fi
+      %
+      % Print caption text.
+      \thiscaption
+      \let\printedsomething = t%
+    \fi
+    %
+    % Space below caption, if we printed anything.
+    \ifx\printedsomething\empty \else \vskip\parskip \fi
+    %
     \egroup  % end of \vtop
   }%
 }
+
+% \setref calls this to get the XREFLABEL-snt value.  We want an @xref
+% to the FLOATLABEL to expand to "Figure 3.1".  We call \setref when we
+% first read the @float command.
+% 
+\def\Yfloat{\floattype @tie{}\chaplevelprefix\the\floatno}%
+
+\def\floatmagic{!!float!!}
 
 % @listoffloats FLOATTYPE - print a list of floats like a table of contents.
 \def\listoffloats{\parsearg\dolistoffloats}
