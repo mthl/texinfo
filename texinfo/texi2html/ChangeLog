@@ -1,5 +1,9 @@
 2003-10-17  Derek Price  <derek@ximbiot.com>
 
+	* doc/stamp-vti, doc/version.texi: Regenerated.
+
+2003-10-17  Derek Price  <derek@ximbiot.com>
+
 	* texi2html.pl (do_text): Compile-once flag is okay as long as the
 	pattern portion (left side) of a s/// statement is free of change.
 
