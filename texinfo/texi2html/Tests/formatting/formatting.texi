@@ -175,6 +175,10 @@ a q--uotation
 @item b--ullet
 @end itemize
 
+@itemize @minus
+@item minu--s
+@end itemize
+
 @itemize @emph
 @item e--mph item
 @end itemize

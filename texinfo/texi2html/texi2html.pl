@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.79 2003-11-04 23:57:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.80 2003-11-05 10:09:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -5645,16 +5645,19 @@ sub do_paragraph($$$)
 {
     my $text = shift;
     my $state = shift;
-    my $stack = shift;
+    my $paragraph_command = $state->{'paragraph'};
     delete $state->{'paragraph'};
+
     $state->{'paragraph_nr'}--;
     (print STDERR "Bug text undef in do_paragraph", return '') unless defined($text);
     my $align = '';
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
-    my $top_format = top_format($stack);
-    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and ($top_format->{'format'} eq 'itemize'))
-    { #FIXME if the command is @minus, there is no space after the minus
-        $text = do_simple($top_format->{'command'}, $text, $state);
+    
+#    my $top_format = top_format($stack);
+#    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and exists($style_map{$top_format->{'format'}}) and ($top_format->{'format'} eq 'itemize'))
+    if (exists($Texi2HTML::Config::style_map{$paragraph_command}))
+    { 
+        $text = do_simple($paragraph_command, $text, $state);
     }
     return &$Texi2HTML::Config::paragraph($text, $align);
 }
@@ -5665,15 +5668,18 @@ sub do_preformatted($$$)
     my $state = shift;
     my $stack = shift;
 
+    my $leading_command = $state->{'preformatted_leading_command'};
+    delete ($state->{'preformatted_leading_command'});
     my $pre_style = '';
     my $class = '';
     $pre_style = $state->{'preformatted_stack'}->[-1]->{'pre_style'} if ($state->{'preformatted_stack'}->[-1]->{'pre_style'});
     $class = $state->{'preformatted_stack'}->[-1]->{'class'};
     print STDERR "BUG: !state->{'preformatted_stack'}->[-1]->{'class'}\n" unless ($class);
-    my $top_format = top_format($stack);
-    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and ($top_format->{'format'} eq 'itemize'))
+#    my $top_format = top_format($stack);
+#    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and ($top_format->{'format'} eq 'itemize'))
+    if (defined ($leading_command) and exists($Texi2HTML::Config::style_map{$leading_command}))
     {
-        $text = do_simple($top_format->{'command'}, $text, $state);
+        $text = do_simple($leading_command, $text, $state);
     }
     return &$Texi2HTML::Config::preformatted($text, $pre_style, $class);
 }
@@ -5889,7 +5895,8 @@ sub begin_deff_item($$;$)
     push @$stack, { 'format' => 'deff_item', 'text' => '' };
     # there is no paragraph when a new deff just follows the deff we are
     # opening
-    push @$stack, { 'format' => 'preformatted', 'text' => '' } if ($state->{'preformatted'} and !$no_paragraph);
+    #push @$stack, { 'format' => 'preformatted', 'text' => '' } if ($state->{'preformatted'} and !$no_paragraph);
+    begin_paragraph($stack, $state) if ($state->{'preformatted'} and !$no_paragraph);
     delete($state->{'deff'});
     #dump_stack(undef, $stack, $state);
 }
@@ -5899,12 +5906,19 @@ sub begin_paragraph($$)
     my $stack = shift;
     my $state = shift;
 
+    my $command = 1;
+    my $top_format = top_format($stack);
+    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and ($top_format->{'format'} eq 'itemize'))
+    {
+        $command = $top_format->{'command'};
+    }
     if ($state->{'preformatted'})
     {
         push @$stack, {'format' => 'preformatted', 'text' => '' };
+        $state->{'preformatted_leading_command'} = $command if ($command ne '1');
         return;
     }
-    $state->{'paragraph'} = 1;
+    $state->{'paragraph'} = $command;
     $state->{'paragraph_nr'}++;
     push @$stack, {'format' => 'paragraph', 'text' => '' };
 }
@@ -8084,9 +8098,10 @@ sub scan_line($$$$;$)
             {
                 $state->{'menu_comment'}++;
                 push @$stack, {'format' => 'menu_comment', 'text' => ''};
-                push @$stack, {'format' => 'preformatted', 'text' => ''};# if ($state->{'preformatted'});
-                $state->{'preformatted'}++;
                 push @{$state->{'preformatted_stack'}}, {'pre_style' => $Texi2HTML::Config::MENU_PRE_STYLE, 'class' => 'menu-comment' };
+                $state->{'preformatted'}++;
+                begin_paragraph($stack, $state);
+                #push @$stack, {'format' => 'preformatted', 'text' => ''};# if ($state->{'preformatted'});
             }
 	    #dump_stack ($text, $stack, $state);
         }
@@ -8832,7 +8847,8 @@ sub scan_line($$$$;$)
                     my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'} };
                     push @{$state->{'preformatted_stack'}}, {'pre_style' =>$Texi2HTML::Config::complex_format_map->{$macro}->{'pre_style'}, 'class' => $macro };
                     push @$stack, $format;
-                    push @$stack, { 'format' => 'preformatted', 'text' => '' };
+                    begin_paragraph($stack, $state);
+                    #push @$stack, { 'format' => 'preformatted', 'text' => '' };
                 }
                 elsif ($Texi2HTML::Config::paragraph_style{$macro})
                 {
@@ -8918,7 +8934,8 @@ sub scan_line($$$$;$)
                 elsif (defined($Texi2HTML::Config::format_map{$macro}) or ($format_type{$macro} eq 'cartouche'))
                 {
                     push @$stack, { 'format' => $macro, 'text' => '' };
-                    push @$stack, { 'format' => 'preformatted', 'text' => ''} if ($state->{'preformatted'});
+                    #push @$stack, { 'format' => 'preformatted', 'text' => ''} if ($state->{'preformatted'});
+                    begin_paragraph($stack, $state) if ($state->{'preformatted'});
                 }
                 return if (/^\s*$/);
                 next;
@@ -9230,6 +9247,10 @@ sub add_item($$$$;$)
     # don't do an item if it is the first and it is empty
     if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
     {
+        if (defined($format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and (exists($Texi2HTML::Config::things_map{$format->{'command'}}) or exists($Texi2HTML::Config::simple_map{$format->{'command'}})))
+        {
+             $item->{'text'} = do_simple($format->{'command'}, $item->{'text'}, $state);
+        }
         add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}));
     } 
     if ($format->{'first'})

@@ -1,5 +1,11 @@
 2003-11-05  Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: don't add the leading command if it is a simple 
+	command to all the paragraphs in itemize and add it before the 
+	paragraph or preformatted section.
+
+2003-11-05  Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: in itemize, apply the command to the
 	inside of the paragraph or preformatted section.
 	titlefont don't open paragraphs.
