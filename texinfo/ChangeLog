@@ -1,5 +1,10 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.c (end_insertion): indent the first paragraph
+	after @float.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/cmds.c: new commands @float and @caption.
 
 	* makeinfo/insertion.h: new environment floatenv.

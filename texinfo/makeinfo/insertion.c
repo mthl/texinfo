@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.47 2003-11-23 23:38:13 dirt Exp $
+   $Id: insertion.c,v 1.48 2003-11-24 03:17:53 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1048,6 +1048,9 @@ end_insertion (type)
               current_float_type (), current_float_number ());
           if (strlen (current_float_title ()) > 0)
             execute_string (" - %s", current_float_title ());
+
+          /* Indent the following paragraph. */
+          inhibit_paragraph_indentation = 0;
 
           if (html)
             add_word ("</strong></p></div>\n");
