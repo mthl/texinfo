@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-07-28.08}
+\def\texinfoversion{2003-08-09.16}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -1104,16 +1104,22 @@ where each line of input produces a line of output.}
       \edef\mylbrace{\iftrue \string{\else}\fi}\let\{=\mylbrace
       \edef\myrbrace{\iffalse{\else\string}\fi}\let\}=\myrbrace
       %
+      % Read toc first time in order to get the counts of subentries for
+      % \pdfoutline.
       \def\chapentry ##1##2##3{}
       \def\secentry ##1##2##3##4{\advancenumber{chap##2}}
       \def\subsecentry ##1##2##3##4##5{\advancenumber{sec##2.##3}}
       \def\subsubsecentry ##1##2##3##4##5##6{\advancenumber{subsec##2.##3.##4}}
-      \let\appendixentry = \chapentry
-      \let\unnumbchapentry = \chapentry
-      \let\unnumbsecentry = \secentry
-      \let\unnumbsubsecentry = \subsecentry
-      \let\unnumbsubsubsecentry = \subsubsecentry
+      % use \def rather than \let here because we redefine \chapentry et
+      % al. a second time, below.
+      \def\appendixentry{\chapentry}
+      \def\unnumbchapentry{\chapentry}
+      \def\unnumbsecentry{\secentry}
+      \def\unnumbsubsecentry{\subsecentry}
+      \def\unnumbsubsubsecentry{\subsubsecentry}
       \input \jobname.toc
+      %
+      % Read toc second time, this time actually producing the outlines.
       \def\chapentry ##1##2##3{%
         \pdfoutline goto name{\pdfmkpgn{##3}}count-\expnumber{chap##2}{##1}}
       \def\secentry ##1##2##3##4{%
@@ -1122,14 +1128,8 @@ where each line of input produces a line of output.}
         \pdfoutline goto name{\pdfmkpgn{##5}}count-\expnumber{subsec##2.##3.##4}{##1}}
       \def\subsubsecentry ##1##2##3##4##5##6{%
         \pdfoutline goto name{\pdfmkpgn{##6}}{##1}}
-      \let\appendixentry = \chapentry
-      \let\unnumbchapentry = \chapentry
-      \let\unnumbsecentry = \secentry
-      \let\unnumbsubsecentry = \subsecentry
-      \let\unnumbsubsubsecentry = \subsubsecentry
       %
       % Make special characters normal for writing to the pdf file.
-      %
       \indexnofonts
       \let\tt=\relax
       \turnoffactive
