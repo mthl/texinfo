@@ -1,5 +1,5 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.6 2003-05-09 23:51:10 karl Exp $
+   $Id: defun.c,v 1.7 2003-06-20 17:29:08 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -245,9 +245,13 @@ process_defun_args (defun_args, auto_var_p)
         {
           /* Within @deffn and friends, texinfo.tex makes parentheses
              sans serif and brackets bold.  We use roman instead.  */
-          insert_html_tag (START, "");
+          if (html)
+            insert_html_tag (START, "");
+            
           add_char (defun_arg[0]);
-          insert_html_tag (END, "");
+          
+          if (html)
+            insert_html_tag (END, "");
         }
       else if (defun_arg[0] == '&')
         if (html)
