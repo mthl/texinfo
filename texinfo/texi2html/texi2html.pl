@@ -266,7 +266,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.38 2003-04-10 13:08:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.39 2003-04-10 14:00:43 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -3145,14 +3145,14 @@ sub pass_text()
     if ($T2H_SPLIT)
     {
         $T2H_HREF{'Contents'} = $docu_toc.'#SEC_Contents' if @T2H_TOC_LINES;
-        $T2H_HREF{'Overview'} = $docu_stoc.'#SEC_OVERVIEW' if @T2H_STOC_LINES;
+        $T2H_HREF{'Overview'} = $docu_stoc.'#SEC_Overview' if @T2H_STOC_LINES;
         $T2H_HREF{'Footnotes'} = $docu_foot. '#SEC_Foot';
         $T2H_HREF{'About'} = $docu_about . '#SEC_About' unless $one_section;
     }
     else
     {
         $T2H_HREF{'Contents'} = '#SEC_Contents' if @T2H_TOC_LINES;
-        $T2H_HREF{'Overview'} = '#SEC_OVERVIEW' if @T2H_STOC_LINES;
+        $T2H_HREF{'Overview'} = '#SEC_Overview' if @T2H_STOC_LINES;
         $T2H_HREF{'Footnotes'} = '#SEC_Foot';
         $T2H_HREF{'About'} = '#SEC_About' unless $one_section;
     }
@@ -3451,10 +3451,13 @@ sub pass_text()
         open (FILE, "> $docu_foot_file") || die "$ERROR: Can't open $docu_foot_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Footnotes};
+        $T2H_HREF{Footnotes} = '#' . $footnote_element->{'id'};
         $T2H_NAME{This} = $T2H_NAME{Footnotes};
         $T2H_THIS_SECTION = \@foot_lines;
+        $T2H_THIS_HEADER = [ &$t2h_anchor($footnote_element->{'id'}) . "\n" ];
         &$T2H_print_Footnotes(\*FILE);
         close(FILE) if $T2H_SPLIT;
+        $T2H_HREF{Footnotes} = $T2H_HREF{This};
     }
 
     if (@T2H_TOC_LINES)
@@ -3463,10 +3466,13 @@ sub pass_text()
         open (FILE, "> $docu_toc_file") || die "$ERROR: Can't open $docu_toc_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Contents};
+        $T2H_HREF{Contents} = "#SEC_Contents";
         $T2H_NAME{This} = $T2H_NAME{Contents};
         $T2H_THIS_SECTION = \@T2H_TOC_LINES;
+        $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_Contents") . "\n" ];
         &$T2H_print_Toc(\*FILE);
         close(FILE) if $T2H_SPLIT;
+        $T2H_HREF{Contents} = $T2H_HREF{This};
     }
 
     if (@T2H_STOC_LINES)
@@ -3475,10 +3481,13 @@ sub pass_text()
         open (FILE, "> $docu_stoc_file") || die "$ERROR: Can't open $docu_stoc_file for writing: $!\n"
             if $T2H_SPLIT;
         $T2H_HREF{This} = $T2H_HREF{Overview};
+        $T2H_HREF{Overview} = "#SEC_Overview";
         $T2H_NAME{This} = $T2H_NAME{Overview};
         $T2H_THIS_SECTION = \@T2H_STOC_LINES;
+        $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_Overview") . "\n" ];
         &$T2H_print_Overview(\*FILE);
         close(FILE) if $T2H_SPLIT;
+        $T2H_HREF{Overview} = $T2H_HREF{This};
     }
     my $about_body;
     if ($about_body = &$T2H_about_body())
@@ -3488,9 +3497,12 @@ sub pass_text()
             if $T2H_SPLIT;
 
         $T2H_HREF{This} = $T2H_HREF{About};
+        $T2H_HREF{About} = "#SEC_About";
         $T2H_NAME{This} = $T2H_NAME{About};
         $T2H_THIS_SECTION = [$about_body];
+        $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_About") . "\n" ];
         &$T2H_print_About(\*FILE);
+        $T2H_HREF{About} = $T2H_HREF{This};
         close(FILE) if $T2H_SPLIT;
     }
 
