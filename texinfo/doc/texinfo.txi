@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.13 2002-11-14 18:41:35 karl Exp $
+@c $Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1106,6 +1106,7 @@ This section describes the general conventions used in all Texinfo documents.
 
 @itemize @bullet
 @item
+@cindex Source files, characters used
 All printable @sc{ascii} characters except @samp{@@}, @samp{@{} and
 @samp{@}} can appear in a Texinfo file and stand for themselves.
 @samp{@@} is the escape character which introduces commands, while
@@ -1115,12 +1116,23 @@ an @samp{@@} character in front of it, like this: @samp{@@@@},
 @samp{@@@{}, and @samp{@@@}}.
 
 @item
-It is customary in @TeX{} to use doubled single-quote characters to
-begin and end quotations: @w{@t{`@w{}`@dots{}'@w{}'}}.  This
-convention should be followed in Texinfo files.  @TeX{} converts
-two single quotes to left- and right-hand doubled
-quotation marks, 
-@c this comes out as "like this" in Info, of course, which is just confusing.
+@cindex Paragraph separator
+@cindex Blank lines, as paragraph separator
+@cindex Newlines, as blank lines
+Separate paragraphs with one or more blank lines.  Currently Texinfo
+recognizes only newline characters as line endings, not the CRLF
+sequence used on some systems; so a @dfn{blank line} means exactly two
+consecutive newlines.  Sometimes blank lines are useful or convenient
+in other cases as well; you can use the @code{@@noindent} to inhibit
+paragraph indentation if necessary (@pxref{noindent,,@code{@@noindent}}).
+
+@item
+@cindex Quotation characters (`'), in source
+Use doubled single-quote characters to begin and end quotations:
+@w{@t{`@w{}`@dots{}'@w{}'}}.  (Texinfo takes this convention from
+@TeX{}.)  @TeX{} converts two single quotes to left- and right-hand
+doubled quotation marks,
+@c this comes out as "like this" in Info, which is just confusing.
 @iftex
 ``like this'', 
 @end iftex
@@ -1128,14 +1140,11 @@ and Info converts doubled single-quote characters to @sc{ascii}
 double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
 
 @item
+@cindex Dashes, in source
 Use three hyphens in a row, @samp{---}, for a dash---like this.  In
 @TeX{}, a single or double hyphen produces a printed dash that is
 shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
-
-@item
-To prevent a paragraph from being indented in the printed manual, precede
-the paragraph with the command @code{@@noindent}
 
 @item
 If you mark off a region of the Texinfo file with the @code{@@iftex}
@@ -1147,8 +1156,8 @@ appear in all output formats @emph{except} @TeX{}.
 
 Each of the other output formats (@code{html}, @code{info},
 @code{plaintext}) have an analogous pair of commands.  @xref{Conditionals}.
-@end itemize
 
+@item
 @cindex Tabs; don't use!
 @quotation
 @strong{Caution:} Do not use tab characters in a Texinfo file (except in
@@ -1167,6 +1176,7 @@ spaces when you press the @key{TAB} key.
 Also, you can run @code{untabify} in Emacs to convert tabs in a region
 to multiple spaces.
 @end quotation
+@end itemize
 
 
 @node Comments
@@ -16786,7 +16796,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.13 2002-11-14 18:41:35 karl Exp $
+$Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16851,7 +16861,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.13 2002-11-14 18:41:35 karl Exp $
+@@comment $Id: texinfo.txi,v 1.14 2002-11-21 18:49:27 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
