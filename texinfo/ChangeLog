@@ -1,5 +1,9 @@
 2004-08-27  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\Efloat): \vskip\parskip after printing the
+	caption; previous \printedsomething code to do this had become
+	obsolete.  Reported by Stepan.
+
 	* doc/texinfo.txi (caption shortcaption): show an example for
         @shortcaption, and remark that weird commands like @c and @verb
 	are not allowed.  Suggested by Stepan.

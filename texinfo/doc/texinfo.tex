@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2004-08-20.06}
+\def\texinfoversion{2004-08-27.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
@@ -6480,6 +6480,9 @@ width0pt\relax} \fi
     \ifx\captionline\empty \else
       \vskip.5\parskip
       \captionline
+      %
+      % Space below caption.
+      \vskip\parskip
     \fi
     %
     % If have an xref label, write the list of floats info.  Do this
@@ -6500,9 +6503,6 @@ width0pt\relax} \fi
         }}%
       }%
     \fi
-    %
-    % Space below caption, if we printed anything.
-    \ifx\printedsomething\empty \else \vskip\parskip \fi
   \egroup  % end of \vtop
   %
   % place the captured inserts
