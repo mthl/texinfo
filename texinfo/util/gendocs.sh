@@ -1,7 +1,7 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.2 2003-10-21 23:35:44 karl Exp $
+# $Id: gendocs.sh,v 1.3 2003-10-26 11:56:12 karl Exp $
 # 
 # Copyright (C) 2003 Free Software Foundation, Inc.
 #
@@ -21,6 +21,7 @@
 # Inc.; 59 Temple Place, Suite 330; Boston, MA 02111-1307, USA.
 #
 # Original author: Mohit Agarwal.
+# Send bug reports and any other correspondence to bug-texinfo@gnu.org.
 
 prog="`basename \"$0\"`"
 srcdir=`pwd`
@@ -57,7 +58,7 @@ Typical sequence:
   cd YOURPACKAGESOURCE/doc
   wget "$scripturl"
   wget "$templateurl"
-  $prog YOURMANUAL "YOURMANUAL - One-line description"
+  $prog YOURMANUAL "GNU YOURMANUAL - One-line description"
 
 Output will be in a new subdirectory "manual".  Move all the new files
 into your web CVS tree, as explained in the Web Pages node of maintain.texi:

@@ -1,24 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<!-- $Id: gendocs_template,v 1.1 2003-10-21 23:36:05 karl Exp $ -->
+<!-- $Id: gendocs_template,v 1.2 2003-10-26 11:56:12 karl Exp $ -->
 <HTML>
 <HEAD>
-<TITLE>%%TITLE%% - GNU Project - Free Software Foundation (FSF)</TITLE>
+<TITLE>%%TITLE%% manual - GNU Project - Free Software Foundation (FSF)</TITLE>
 <LINK REV="made" HREF="mailto:webmasters@www.gnu.org">
 </HEAD>
 <BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
-<H1>%%TITLE%% - Table of Contents</H1>
+<H1>%%TITLE%% manual</H1>
 <ADDRESS>Free Software Foundation</ADDRESS>
 <ADDRESS>last updated %%DATE%%</ADDRESS>
 <P>
 <A HREF="/graphics/gnu-head.jpg"><IMG SRC="/graphics/gnu-head-sm.jpg"
-   ALT=" [image of the Head of a GNU] "
+   ALT=" [image of the head of a GNU] "
    WIDTH="129" HEIGHT="122"></A>
 <A HREF="/philosophy/gif.html">(no gifs due to patent problems)</A>
-<P>
-<P>
-<P><HR><P>
-<P>
-This manual (for %%PACKAGE%%) is available in the following formats:
+<HR>
+
+<P>This manual (for %%PACKAGE%%) is available in the following formats:
+
 <P>
 <UL>
   <LI><A HREF="%%PACKAGE%%.html">HTML 
@@ -57,7 +56,7 @@ Return to <A HREF="/home.html">GNU's home page</A>.
 <A HREF="mailto:webmasters@www.gnu.org"><EM>webmasters@www.gnu.org</EM></A>,
 send other FSF &amp; GNU questions and inquiries to
 <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
-Other <A HREF="/home.html#ContactInfo">ways to contact the FSF</A>.
+<A HREF="/home.html#ContactInfo">Other ways to contact the FSF</A>.
 
 <P>Copyright (C) 2003 Free Software Foundation, Inc.,
 59 Temple Place - Suite 330, Boston, MA  02111,  USA

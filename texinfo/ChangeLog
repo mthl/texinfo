@@ -1,3 +1,11 @@
+2003-10-25  Karl Berry  <karl@gnu.org>
+
+	* info/info.c: --raw-escapes affects Info files, not just man
+	pages.
+
+	* doc/texinfo.tex: novalis doesn't like my clarification, so make
+	it a special exception instead.
+
 2003-10-24  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\defname): Cleanup of this macro.
