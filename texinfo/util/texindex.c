@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.2 2002-09-27 20:28:57 karl Exp $
+   $Id: texindex.c,v 1.3 2002-10-15 21:48:42 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002 Free Software Foundation, Inc.
@@ -160,6 +160,9 @@ main (argc, argv)
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 
+  /* In case we write to a redirected stdout that fails.  */
+  /* not ready atexit (close_stdout); */
+  
   /* Describe the kind of sorting to do. */
   /* The first keyfield uses the first braced field and folds case. */
   keyfields[0].braced = 1;
