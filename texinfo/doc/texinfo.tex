@@ -5515,29 +5515,30 @@ width0pt\relax} \fi
   \else \expandafter\parsemacbody
   \fi}
 
-\def\unmacro{\parsearg\unmacroxxx}
-\def\unmacroxxx#1{%
+\def\unmacro{\parsearg\dounmacro}
+\def\dounmacro#1{%
   \if1\csname ismacro.#1\endcsname
     \global\cslet{#1}{macsave.#1}%
     \global\expandafter\let \csname ismacro.#1\endcsname=0%
-    % Remove the macro name from \macrolist
+    % Remove the macro name from \macrolist:
     \begingroup
-      \edef\tempa{\expandafter\noexpand\csname#1\endcsname}%
-      \def\do##1{%
-        \def\tempb{##1}%
-        \ifx\tempa\tempb
-          % remove this
-        \else
-          \toks0 = \expandafter{\newmacrolist\do}%
-          \edef\newmacrolist{\the\toks0\expandafter\noexpand\tempa}%
-        \fi}%
-      \def\newmacrolist{}%
-      % Execute macro list to define \newmacrolist
-      \macrolist
-      \global\let\macrolist\newmacrolist
+      \expandafter\let\csname#1\endcsname \relax
+      \let\do\unmacrodo
+      \xdef\macrolist{\macrolist}%
     \endgroup
   \else
     \errmessage{Macro #1 not defined}%
+  \fi
+}
+
+% Called by \do from \dounmacro on each macro.  The idea is to omit any
+% macro definitions that have been changed to \relax.
+% 
+\def\unmacrodo#1{%
+  \ifx#1\relax
+    % remove this
+  \else
+    \noexpand\do \noexpand #1%
   \fi
 }
 
