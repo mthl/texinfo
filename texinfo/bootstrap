@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: bootstrap,v 1.7 2003-11-08 00:51:34 karl Exp $
+# $Id: bootstrap,v 1.8 2003-11-11 13:21:35 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 # (Thanks to Akim Demaille.)
 
@@ -13,7 +13,7 @@ echo "Bootstrapping CVS Texinfo with:"
 
 # So instead:
 cmd="autoheader && aclocal -I m4 && automake && autoconf"
-echo $cmd
+echo "  $cmd"
 eval $cmd || exit 1
 
 echo "Now run configure with your desired options, for instance:"
