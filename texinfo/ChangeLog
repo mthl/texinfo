@@ -1,6 +1,12 @@
 2002-10-15    <karl@gnu.org>
 
-	2002-10-14  Alexandre Duret-Lutz  <adl@gnu.org>
+	* makeinfo/cmds.c (cm_dots, cm_enddots): don't use small if
+	in_fixed_width_fonts; this violates the html specs, which don't
+	want you to change fonts within <pre>. (Argh.) 
+	Report from: Janis Johnson <janis187@us.ibm.com>,
+	14 Oct 2002 15:59:16 -0700.
+
+2002-10-14  Alexandre Duret-Lutz  <adl@gnu.org>
 	* util/texi2dvi (common, txincludes): Fix definitions so that
 	an empty $txincludes doesn't result in a empty path element
 	in TEXINPUTS.
