@@ -1,7 +1,8 @@
 /* defun.c -- @defun and friends.
-   $Id: defun.c,v 1.3 2002-11-11 00:57:49 feloy Exp $
+   $Id: defun.c,v 1.4 2003-02-11 16:39:06 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
+   Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -331,7 +332,8 @@ defun_internal (type, x_p)
 {
   enum insertion_type base_type;
   char **defun_args, **scan_args;
-  char *category, *defined_name, *type_name, *type_name2;
+  const char *category;
+  char *defined_name, *type_name, *type_name2;
 
   {
     char *line;

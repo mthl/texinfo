@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.17 2003-01-19 18:44:28 karl Exp $
+   $Id: makeinfo.c,v 1.18 2003-02-11 16:39:06 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -193,7 +193,7 @@ extern void add_link ();
 
 #if defined (VA_FPRINTF) && __STDC__
 /* Unfortunately we must use prototypes if we are to use <stdarg.h>.  */
-void add_word_args (char *, ...);
+void add_word_args (const char *, ...);
 void execute_string (char *, ...);
 #else
 void add_word_args ();
@@ -218,10 +218,10 @@ fs_error (filename)
 /* Print an error message, and return false. */
 void
 #if defined (VA_FPRINTF) && __STDC__
-error (char *format, ...)
+error (const char *format, ...)
 #else
 error (format, va_alist)
-     char *format;
+     const char *format;
      va_dcl
 #endif
 {
@@ -245,12 +245,12 @@ error (format, va_alist)
 /* Just like error (), but print the input file and line number as well. */
 void
 #if defined (VA_FPRINTF) && __STDC__
-file_line_error (char *infile, int lno, char *format, ...)
+file_line_error (char *infile, int lno, const char *format, ...)
 #else
 file_line_error (infile, lno, format, va_alist)
    char *infile;
    int lno;
-   char *format;
+   const char *format;
    va_dcl
 #endif
 {
@@ -276,10 +276,10 @@ file_line_error (infile, lno, format, va_alist)
    number from global variables. */
 void
 #if defined (VA_FPRINTF) && __STDC__
-line_error (char *format, ...)
+line_error (const char *format, ...)
 #else
 line_error (format, va_alist)
-   char *format;
+   const char *format;
    va_dcl
 #endif
 {
@@ -303,10 +303,10 @@ line_error (format, va_alist)
 
 void
 #if defined (VA_FPRINTF) && __STDC__
-warning (char *format, ...)
+warning (const char *format, ...)
 #else
 warning (format, va_alist)
-     char *format;
+     const char *format;
      va_dcl
 #endif
 {
@@ -1377,7 +1377,7 @@ insert_toplevel_subdirectory (output_filename)
       strcat (output_filename, basename);
       if (mkdir (output_filename, 0777) == -1)
         {
-          char *errmsg = strerror (errno);
+          const char *errmsg = strerror (errno);
 
           if ((errno == EEXIST
 #ifdef __MSDOS__
@@ -2161,7 +2161,7 @@ adjust_braces_following (here, amount)
 /* Return the string which invokes PROC; a pointer to a function.
    Always returns the first function in the command table if more than
    one matches PROC.  */
-static char *
+static const char *
 find_proc_name (proc)
      COMMAND_FUNCTION *proc;
 {
@@ -2187,7 +2187,7 @@ discard_braces ()
     {
       if (brace_stack->proc != misplaced_brace)
         {
-          char *proc_name;
+          const char *proc_name;
 
           proc_name = find_proc_name (brace_stack->proc);
           file_line_error (input_filename, brace_stack->line,
@@ -2241,10 +2241,10 @@ get_char_len (character)
 
 void
 #if defined (VA_FPRINTF) && __STDC__
-add_word_args (char *format, ...)
+add_word_args (const char *format, ...)
 #else
 add_word_args (format, va_alist)
-    char *format;
+    const char *format;
     va_dcl
 #endif
 {

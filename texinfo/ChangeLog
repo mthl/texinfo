@@ -1,3 +1,22 @@
+2003-02-11    <karl@gnu.org>
+
+	* Installed patch:
+	2003-02-10    Peter Breitenlohner <peb@mppmu.mpg.de>
+	* info/indices.c, info/info.c, info/info.h, info/nodemenu.c,
+	info/session.c, info/window.c, makeinfo/defun.c, makeinfo/html.c,
+	makeinfo/index.c, makeinfo/insertion.c, makeinfo/makeinfo.c,
+	makeinfo/makeinfo.h, makeinfo/node.c: declare all constant
+	strings as such in order to avoid lots of gcc warnings (for
+	--disable-nls and maybe without that as well).
+
+	* doc/texinfo.tex (\registeredsymbol): new command for Arnold.
+
+	* util/dir-example: dc to basics.
+
+	* doc/texinfo.txi (Defining Macros): document new requirements on
+	macro names.  Report from: Alper Ersoy
+	<dirt@gtk.org>, 11 Feb 2003 05:11:35 +0200.
+
 2003-02-07    <karl@gnu.org>
 
 	* makeinfo/insertion.c (begin_insertion): output a table with a border

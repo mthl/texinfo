@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.3 2003-02-05 18:06:27 karl Exp $
+   $Id: info.c,v 1.4 2003-02-11 16:39:06 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -614,22 +614,22 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"));
    use them that way.  This also has the advantage that there's only one
    copy of the strings.  */
 
-char *msg_cant_find_node;
-char *msg_cant_file_node;
-char *msg_cant_find_window;
-char *msg_cant_find_point;
-char *msg_cant_kill_last;
-char *msg_no_menu_node;
-char *msg_no_foot_node;
-char *msg_no_xref_node;
-char *msg_no_pointer;
-char *msg_unknown_command;
-char *msg_term_too_dumb;
-char *msg_at_node_bottom;
-char *msg_at_node_top;
-char *msg_one_window;
-char *msg_win_too_small;
-char *msg_cant_make_help;
+const char *msg_cant_find_node;
+const char *msg_cant_file_node;
+const char *msg_cant_find_window;
+const char *msg_cant_find_point;
+const char *msg_cant_kill_last;
+const char *msg_no_menu_node;
+const char *msg_no_foot_node;
+const char *msg_no_xref_node;
+const char *msg_no_pointer;
+const char *msg_unknown_command;
+const char *msg_term_too_dumb;
+const char *msg_at_node_bottom;
+const char *msg_at_node_top;
+const char *msg_one_window;
+const char *msg_win_too_small;
+const char *msg_cant_make_help;
 
 static void
 init_messages ()

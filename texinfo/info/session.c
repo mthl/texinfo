@@ -1,8 +1,8 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.4 2003-02-05 17:59:50 karl Exp $
+   $Id: session.c,v 1.5 2003-02-11 16:39:06 karl Exp $
 
-   Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
-   Software Foundation, Inc.
+   Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
+   Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2433,7 +2433,8 @@ NODE *
 info_follow_menus (initial_node, menus, errstr, errarg1, errarg2)
      NODE *initial_node;
      char **menus;
-     char **errstr, **errarg1, **errarg2;
+     const char **errstr;
+     char **errarg1, **errarg2;
 {
   NODE *node = NULL;
   *errstr = *errarg1 = *errarg2 = NULL;
@@ -2796,7 +2797,7 @@ program_name_from_file_name (file_name)
 DECLARE_INFO_COMMAND (info_goto_invocation_node,
 		      _("Find the node describing program invocation"))
 {
-  char *invocation_prompt = _("Find Invocation node of [%s]: ");
+  const char *invocation_prompt = _("Find Invocation node of [%s]: ");
   char *program_name, *line;
   char *default_program_name, *prompt, *file_name;
   NODE *top_node;
@@ -3848,7 +3849,8 @@ show_isearch_prompt (dir, string, failing_p)
      int failing_p;
 {
   register int i;
-  char *prefix, *prompt, *p_rep;
+  const char *prefix;
+  char *prompt, *p_rep;
   int prompt_len, p_rep_index, p_rep_size;
 
   if (dir < 0)

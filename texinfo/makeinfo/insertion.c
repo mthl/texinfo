@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.15 2003-02-07 19:03:50 karl Exp $
+   $Id: insertion.c,v 1.16 2003-02-11 16:39:06 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -191,7 +191,7 @@ pop_insertion ()
 
  /* Return a pointer to the print name of this
     enumerated type. */
-char *
+const char *
 insertion_type_pname (type)
      enum insertion_type type;
 {
@@ -992,7 +992,7 @@ discard_insertions (specials_ok)
         break;
       else
         {
-          char *offender = insertion_type_pname (insertion_stack->insertion);
+          const char *offender = insertion_type_pname (insertion_stack->insertion);
 
           file_line_error (insertion_stack->filename,
                            insertion_stack->line_number,

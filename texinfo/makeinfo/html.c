@@ -1,7 +1,7 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.8 2002-11-04 22:14:40 karl Exp $
+   $Id: html.c,v 1.9 2003-02-11 16:39:06 karl Exp $
 
-   Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ int html_title_written = 0;
 void
 html_output_head ()
 {
-  static char *html_title = NULL;
+  static const char *html_title = NULL;
 
   if (html_output_head_p)
     return;

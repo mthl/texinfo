@@ -1,7 +1,7 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.4 2002-11-26 22:54:31 karl Exp $
+   $Id: index.c,v 1.5 2003-02-11 16:39:06 karl Exp $
 
-   Copyright (C) 1998, 1999, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -696,7 +696,7 @@ cm_printindex ()
         {
           /* A pathological document might have an index entry outside of any
              node.  Don't crash; try using the section name instead.  */
-          char *index_node = index->node;
+          const char *index_node = index->node;
           
           line_number = index->defining_line;
           input_filename = index->defining_file;
@@ -741,12 +741,14 @@ cm_printindex ()
               if (index->node && *index->node)
                 {
                   /* Make sure any non-macros in the node name are expanded.  */
+                  char *expanded_index;
+                  
                   in_fixed_width_font++;
-                  index_node = expansion (index_node, 0);
+                  expanded_index = expansion (index_node, 0);
                   in_fixed_width_font--;
-                  add_anchor_name (index_node, 1);
-                  add_word_args ("\">%s</a>", index_node);
-                  free (index_node);
+                  add_anchor_name (expanded_index, 1);
+                  add_word_args ("\">%s</a>", expanded_index);
+                  free (expanded_index);
                 }
               else if (STREQ (index_node, _("(outside of any node)")))
                 {

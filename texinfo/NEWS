@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.35 2003-02-08 14:06:44 karl Exp $
+$Id: NEWS,v 1.36 2003-02-11 16:39:06 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -42,6 +42,7 @@ convenience, here's a url to one of the relevant sections:
   . @value constructs are now expanded in the filename arguments to
     @include and @verbatiminclude.
 * makeinfo:
+  . @macro names may no longer include ^ or _, for the sake of math mode.
   . bug fix: @copying text is now reflected in tag table positions;
     before, nodes may not have been found with a long-enough @copying.
   . bug fix: html @verb arg is quoted properly, and does not imply
