@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.7 2003-04-22 13:00:47 karl Exp $
+   $Id: makeinfo.h,v 1.8 2003-05-01 00:05:27 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -268,8 +268,7 @@ DECLARE (int, expensive_validation, 0);
 
 /* Stuff for splitting large files.  The numbers for Emacs
    texinfo-format-buffer are much smaller, but memory capacities have
-   increased so much, 50k info files seems a bit tiny these days.  */
-#define SPLIT_SIZE_THRESHOLD 500000
+   increased so much, 50k info files seem a bit tiny these days.  */
 #define DEFAULT_SPLIT_SIZE 300000
 DECLARE (int, splitting, 1);    /* Defaults to true for now. */
 
@@ -293,5 +292,8 @@ DECLARE (int, splitting, 1);    /* Defaults to true for now. */
    else zero. */
 #define looking_at(string) \
   (strncmp (input_text + input_text_offset, string, strlen (string)) == 0)
+
+/* Possibly return Local Variables: trailer for Info output.  */
+extern char *info_trailer ();
 
 #endif /* not MAKEINFO_H */

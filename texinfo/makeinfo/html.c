@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.11 2003-04-26 12:38:12 karl Exp $
+   $Id: html.c,v 1.12 2003-05-01 00:05:27 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -49,7 +49,7 @@ html_output_head ()
   add_word ("<meta http-equiv=\"Content-Type\" content=\"text/html");
   if (document_encoding_code != no_encoding)
     add_word_args ("; charset=%s",
-                   encoding_table[document_encoding_code].ecname);
+                   encoding_table[document_encoding_code].encname);
   add_word ("\">\n");
 
   if (!document_description)

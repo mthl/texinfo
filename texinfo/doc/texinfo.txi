@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.41 2003-04-26 14:47:14 karl Exp $
+@c $Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -152,11 +152,11 @@ the menu lists all the lower level nodes in the document.
 * Definition Commands::         How to describe functions and the like
                                   in a uniform manner.
 * Conditionals::                How to specify text for either @TeX{} or Info.
-* Internationalization::        
-* Defining New Texinfo Commands::  
+* Internationalization::
+* Defining New Texinfo Commands::
 * Hardcopy::                    How to convert a Texinfo file to a file
                                   for printing and how to print that file.
-* Creating and Installing Info Files::  
+* Creating and Installing Info Files::
 * Command List::                All the Texinfo @@-commands.
 * Tips::                        Hints on how to write a Texinfo document.
 * Sample Texinfo Files::        Complete examples, including full texts.
@@ -249,8 +249,8 @@ Title and Copyright Pages
 
 The `Top' Node and Master Menu
 
-* Top Node Example::            
-* Master Menu Parts::           
+* Top Node Example::
+* Master Menu Parts::
 
 Global Document Commands
 
@@ -272,13 +272,13 @@ Chapter Structuring
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
 * makeinfo top::                The @code{@@top} command, part of the `Top' node.
-* chapter::                     
-* unnumbered & appendix::       
-* majorheading & chapheading::  
-* section::                     
-* unnumberedsec appendixsec heading::  
-* subsection::                  
-* unnumberedsubsec appendixsubsec subheading::  
+* chapter::
+* unnumbered & appendix::
+* majorheading & chapheading::
+* section::
+* unnumberedsec appendixsec heading::
+* subsection::
+* unnumberedsubsec appendixsubsec subheading::
 * subsubsection::               Commands for the lowest level sections.
 * Raise/lower sections::        How to change commands' hierarchical level.
 
@@ -452,7 +452,7 @@ Inserting @TeX{} and the Copyright Symbol
 
 Glyphs for Examples
 
-* Glyphs Summary::              
+* Glyphs Summary::
 * result::                      How to show the result of expression.
 * expansion::                   How to indicate an expansion.
 * Print Glyph::                 How to indicate printed output.
@@ -494,7 +494,7 @@ Definition Commands
 * deffnx::                      How to group two or more `first' lines.
 * Def Cmds in Detail::          All the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
-* Sample Function Definition::  
+* Sample Function Definition::
 
 The Definition Commands
 
@@ -554,8 +554,8 @@ Formatting and Printing Hardcopy
 
 Creating and Installing Info Files
 
-* Creating an Info File::       
-* Installing an Info File::     
+* Creating an Info File::
+* Installing an Info File::
 
 Creating an Info File
 
@@ -584,10 +584,10 @@ Installing an Info File
 
 Sample Texinfo Files
 
-* Short Sample Texinfo File::   
-* GNU Sample Texts::            
-* Verbatim Copying License::            
-* All-permissive Copying License::            
+* Short Sample Texinfo File::
+* GNU Sample Texts::
+* Verbatim Copying License::
+* All-permissive Copying License::
 
 Include Files
 
@@ -911,7 +911,7 @@ of not having to document the same information in different ways for
 different output formats.  You might as well just write the man page
 directly.
 
-@pindex help2man 
+@pindex help2man
 @cindex O'Dea, Brendan
 Man pages still have their place, and if you wish to support them, you
 may find the program @command{help2man} to be useful; it generates a
@@ -1222,7 +1222,7 @@ Use doubled single-quote characters to begin and end quotations:
 doubled quotation marks,
 @c this comes out as "like this" in Info, which is just confusing.
 @iftex
-``like this'', 
+``like this'',
 @end iftex
 and Info converts doubled single-quote characters to @sc{ascii}
 double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
@@ -2673,7 +2673,7 @@ previously given (@pxref{Six Parts}).
 @node Sample Beginning
 @section Sample Texinfo File Beginning
 
-@cindex Example beginning of Texinfo file 
+@cindex Example beginning of Texinfo file
 
 The following sample shows what is needed.  The elements given here are
 explained in more detail in the following sections.  Other commands are
@@ -3553,8 +3553,8 @@ strictly speaking, you are not required to enclose these parts between
 so.  @xref{Conditionals, , Conditionally Visible Text}.)
 
 @menu
-* Top Node Example::            
-* Master Menu Parts::           
+* Top Node Example::
+* Master Menu Parts::
 @end menu
 
 
@@ -3637,7 +3637,7 @@ For example, the master menu for this manual looks like the following
 @end group
 @group
 * Command and Variable Index::
-* Concept Index::       
+* Concept Index::
 @end group
 
 @group
@@ -3712,7 +3712,7 @@ the document.
 
 
 @node setchapternewpage
-@subsection @code{@@setchapternewpage}: 
+@subsection @code{@@setchapternewpage}:
 @cindex Starting chapters
 @cindex Pages, starting odd
 @findex setchapternewpage
@@ -4181,13 +4181,13 @@ heading at the top of each node---but you don't need to.@refill
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
 * makeinfo top::                The @code{@@top} command, part of the `Top' node.
-* chapter::                     
-* unnumbered & appendix::       
-* majorheading & chapheading::  
-* section::                     
-* unnumberedsec appendixsec heading::  
-* subsection::                  
-* unnumberedsubsec appendixsubsec subheading::  
+* chapter::
+* unnumbered & appendix::
+* majorheading & chapheading::
+* section::
+* unnumberedsec appendixsec heading::
+* subsection::
+* unnumberedsubsec appendixsubsec subheading::
 * subsubsection::               Commands for the lowest level sections.
 * Raise/lower sections::        How to change commands' hierarchical level.
 @end menu
@@ -5072,7 +5072,7 @@ menu that leads to this file.  Specify the file name in parentheses.
 Usually, all Info files are installed in the same Info directory tree;
 in this case, use @samp{(dir)} as the parent of the Top node; this is
 short for @samp{(dir)top}, and specifies the Top node in the @file{dir}
-file, which contains the main menu for the Info system as a whole. 
+file, which contains the main menu for the Info system as a whole.
 
 @item
 @cindex Previous node of Top node
@@ -7012,7 +7012,7 @@ In English, the vowels are @samp{a}, @samp{e},
 @findex verb
 @cindex Verbatim in-line text
 
-@cindex Delimiter character, for verbatim 
+@cindex Delimiter character, for verbatim
 Use the @code{@@verb} command to print a verbatim sequence of
 characters.
 
@@ -7060,7 +7060,7 @@ is correct for them (see the next section).
 
 The effect of @code{@@var} in the Info file is to change the case of the
 argument to all upper case.  In the printed manual and HTML output, the
-argument is printed in slanted type.  
+argument is printed in slanted type.
 
 @need 700
 For example,
@@ -7592,10 +7592,10 @@ Illustrate code, commands, and the like. The text is printed
 in a fixed-width font, and indented but not filled.
 
 @item @@verbatim
-Mark a piece of text that is to be printed verbatim; no character 
+Mark a piece of text that is to be printed verbatim; no character
 substitutions are made and all commands are ignored, until the next
-@code{@@end verbatim}.  The text is printed in a fixed-width font, 
-and not indented or filled.  Extra spaces and blank lines are 
+@code{@@end verbatim}.  The text is printed in a fixed-width font,
+and not indented or filled.  Extra spaces and blank lines are
 significant, and tabs are expanded.
 
 @item @@smallexample
@@ -7792,7 +7792,7 @@ For example:
 @example
 @exdent @@verbatim
 @exdent @{
-@exdent <tab>@@command with strange characters: @@'e 
+@exdent <tab>@@command with strange characters: @@'e
 @exdent expand<tab>me
 @exdent @}
 @exdent @@end verbatim
@@ -7803,7 +7803,7 @@ produces
 
 @verbatim
 {
-       @command with strange characters: @'e 
+       @command with strange characters: @'e
 expand	me
 }
 @end verbatim
@@ -7914,7 +7914,7 @@ pages.
 
 As a general rule, a printed document looks much better if you use
 only one of (for instance) @code{@@example} or @code{@@smallexample}
-consistently within a chapter.  
+consistently within a chapter.
 
 
 @node display
@@ -9805,7 +9805,7 @@ literal @samp{\}.
 @cindex Displayed equations
 @cindex Equations, displayed
 For displayed equations, you must at present use @TeX{} directly
-(@pxref{Raw Formatter Commands}).  
+(@pxref{Raw Formatter Commands}).
 
 
 @node Glyphs
@@ -9827,7 +9827,7 @@ most often they are.  Every  glyph-insertion command is followed by a pair of
 left- and right-hand braces.@refill
 
 @menu
-* Glyphs Summary::              
+* Glyphs Summary::
 * result::                      How to show the result of expression.
 * expansion::                   How to indicate an expansion.
 * Print Glyph::                 How to indicate printed output.
@@ -10362,7 +10362,7 @@ You can insert an image given in an external file with the
 @code{@@image} command.
 
 @menu
-* Image Syntax:: 
+* Image Syntax::
 * Image Scaling::
 @end menu
 
@@ -10964,7 +10964,7 @@ a given name.  An appendix containing a summary should use
 * deffnx::                      How to group two or more `first' lines.
 * Def Cmds in Detail::          All the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
-* Sample Function Definition::  
+* Sample Function Definition::
 @end menu
 
 @node Def Cmd Template, Optional Arguments, Definition Commands, Definition Commands
@@ -12797,24 +12797,58 @@ Hereare the valid language codes, from ISO-639.
 @findex documentencoding
 @cindex Encoding, declaring
 @cindex Input encoding, declaring
+@cindex Character set, declaring
 @cindex Document input encoding
 
 The @code{@@documentencoding} command declares the input document
 encoding.  Write it on a line by itself, with a valid encoding
-specification following, such as @samp{ISO-8859-1}.
+specification following.
 
-@cindex http-equiv, and charset
-@cindex meta HTML tag, and charset
-At present, this is used only in HTML output from @code{makeinfo}.  If a
-document encoding @var{enc} is specified, it is used in a
-@samp{<meta>} tag included in the @samp{<head>} of the output:
+At present, Texinfo supports only three encodings:
+
+@table @code
+@item US-ASCII
+This has no particular effect, but it's included for completeness.
+@itemx ISO-8859-1
+@item ISO-8859-2
+These specify the standard encodings for Western European and
+Eastern European languages, respectively.  A full description of the
+encodings is beyond our scope here;
+@uref{http://czyborra.com/charsets/iso8859.html} is one of many useful
+references.
+@end table
+
+Specifying an encoding @var{enc} has the following effects:
+
+@opindex --enable-encoding
+@cindex Local Variables: section, for encoding
+@cindex Info output, and encoding
+In Info output, if the option @option{--enable-encoding} is also given
+to @command{makeinfo}, a so-called `Local Variables' section
+(@pxref{File Variables,,,emacs,The GNU Emacs Manual}) is output
+including @var{enc}.  This allows Info readers to set the encoding
+appropriately:
+
+@example
+Local Variables:
+coding: @var{enc}
+End:
+@end example
+
+@cindex HTML output, and encodings
+@cindex http-equiv, and charset specification
+@cindex meta HTML tag, and charset specification
+In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
+section of the HTML, that specifies @var{enc}.  Web servers and
+browsers cooperate to use this information so the correct encoding is
+used to display the page.
 
 @example
 <meta http-equiv="Content-Type" content="text/html;
      charset=@var{enc}">
 @end example
 
-Other Texinfo processors recognize but ignore the command.
+In all other cases, it is recognized but ignored.
 
 
 @node Defining New Texinfo Commands
@@ -13178,7 +13212,7 @@ formatting command that inserts `//' before and `\\' after the argument
 to @code{@@phoo}.  You can then write @code{@@phoo@{bar@}} wherever you
 want `//bar\\' highlighted in Info.
 
-Also, for @TeX{} formatting, you could write 
+Also, for @TeX{} formatting, you could write
 
 @example
 @@iftex
@@ -13441,7 +13475,7 @@ For a list of other options, run @samp{texi2dvi --help}.
 
 The precise command to print a DVI file depends on your system
 installation.  Two common ones are @samp{dvips foo.dvi -o} and @samp{lpr
--d foo.dvi}.  
+-d foo.dvi}.
 
 For example, the following commands will (perhaps) suffice to sort the
 indices, format, and print the @cite{Bison Manual}:
@@ -14126,8 +14160,8 @@ This chapter describes how to create and install Info files.  @xref{Info
 Files}, for general information about the file format itself.
 
 @menu
-* Creating an Info File::       
-* Installing an Info File::     
+* Creating an Info File::
+* Installing an Info File::
 @end menu
 
 
@@ -14254,7 +14288,7 @@ details.
 
 @item --docbook
 @opindex --docbook
-Generate DocBook output rather than Info.  
+Generate DocBook output rather than Info.
 
 @item --enable-encoding
 @opindex --enable-encoding
@@ -14492,7 +14526,7 @@ Print the version number, then exit successfully.
 
 @item --xml
 @opindex --xml
-Generate XML output rather than Info.  
+Generate XML output rather than Info.
 
 @end table
 
@@ -15187,7 +15221,7 @@ will not notice them.
 
 If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
-@code{@@direntry} commands will add to that category.  
+@code{@@direntry} commands will add to that category.
 
 @cindex Free Software Directory
 @cindex Dir categories, choosing
@@ -16895,10 +16929,10 @@ given here in its entirety, without commentary.  The second
 includes the full texts to be used in GNU manuals.
 
 @menu
-* Short Sample Texinfo File::   
-* GNU Sample Texts::            
-* Verbatim Copying License::            
-* All-permissive Copying License::            
+* Short Sample Texinfo File::
+* GNU Sample Texts::
+* Verbatim Copying License::
+* All-permissive Copying License::
 @end menu
 
 
@@ -17015,7 +17049,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.41 2003-04-26 14:47:14 karl Exp $
+$Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17078,7 +17112,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.41 2003-04-26 14:47:14 karl Exp $
+@comment $Id: texinfo.txi,v 1.42 2003-05-01 00:05:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -17109,7 +17143,7 @@ Software Foundation raise funds for GNU development.''
 
 @dircategory Texinfo documentation system
 @direntry
-* sample: (sample)Invoking sample.    
+* sample: (sample)Invoking sample.
 @end direntry
 
 @titlepage
@@ -17428,7 +17462,7 @@ examples of the rest of the frontmatter ...
 @group
 @@ifnottex
 @@node Top
-@@top Include Example 
+@@top Include Example
 @@end ifnottex
 @end group
 

@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.7 2003-04-01 01:54:30 karl Exp $
+   $Id: lang.c,v 1.8 2003-05-01 00:05:27 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -432,7 +432,7 @@ void
 cm_documentlanguage ()
 {
   language_code_type c;
-  char *lang_arg;  
+  char *lang_arg;
 
   /* Read the line with the language code on it.  */
   get_rest_of_line (0, &lang_arg);
@@ -487,13 +487,13 @@ cm_documentencoding ()
 {
   encoding_code_type enc;
   char *enc_arg;
-  
+
   get_rest_of_line (1, &enc_arg);
 
   /* See if we have this encoding.  */
   for (enc = no_encoding+1; enc != last_encoding_code; enc++)
     {
-      if (strcasecmp (enc_arg, encoding_table[enc].ecname) == 0)
+      if (strcasecmp (enc_arg, encoding_table[enc].encname) == 0)
         {
           document_encoding_code = enc;
           break;
@@ -502,7 +502,7 @@ cm_documentencoding ()
 
   /* If we didn't find this code, complain.  */
   if (enc == last_encoding_code)
-    warning (_("unrecogized encoding name `%s'"), enc_arg);
+    warning (_("unrecognized encoding name `%s'"), enc_arg);
 
   else if (encoding_table[document_encoding_code].isotab == NULL)
     warning (_("sorry, encoding `%s' not supported"), enc_arg);
@@ -556,7 +556,7 @@ cm_accent_generic_html (arg, start, end, html_supported, single,
      char *html_solo;
 {
   static int valid_html_accent; /* yikes */
-  
+
   if (arg == START)
     { /* If HTML has good support for this character, use it.  */
       if (strchr (html_supported, curchar ()))
@@ -569,7 +569,7 @@ cm_accent_generic_html (arg, start, end, html_supported, single,
 	  escape_html = saved_escape_html;
         }
       else
-        { 
+        {
           valid_html_accent = 0;
           if (html_solo_standalone)
             { /* No special HTML support, so produce standalone char.  */
@@ -614,7 +614,7 @@ cm_accent_generic_no_headers (arg, start, end, single, html_solo)
           buffer[0] = output_paragraph[end - 1];
           buffer[1] = 0;
           strcat (buffer, html_solo);
-          
+
           rc = cm_search_iso_map (buffer);
           if (rc >= 0)
             /* A little bit tricky ;-)
@@ -627,12 +627,12 @@ cm_accent_generic_no_headers (arg, start, end, single, html_solo)
           else
             { /* If we didn't find a translation for this character,
                  put the single instead. E.g., &Xuml; does not exist so X&uml;
-                 should be produced. */ 
+                 should be produced. */
               warning (_("%s is an invalid ISO code, using %c"),
                        buffer, single);
               add_char (single);
             }
-          
+
           free (buffer);
         }
     }
@@ -701,7 +701,7 @@ cm_accent_generic (arg, start, end, html_supported, single,
   else if (no_headers)
     cm_accent_generic_no_headers (arg, start, end, single, html_solo);
   else if (arg == END)
-    { 
+    {
       if (enable_encoding)
         /* use 8-bit if available */
         cm_accent_generic_no_headers (arg, start, end, single, html_solo);

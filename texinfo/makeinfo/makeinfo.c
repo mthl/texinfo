@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.27 2003-04-28 23:26:44 karl Exp $
+   $Id: makeinfo.c,v 1.28 2003-05-01 00:05:27 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -31,6 +31,7 @@
 #include "html.h"
 #include "index.h"
 #include "insertion.h"
+#include "lang.h"
 #include "macro.h"
 #include "node.h"
 #include "toc.h"
@@ -1163,6 +1164,8 @@ get_until_in_braces (match, string)
   input_text_offset = i;
   *string = temp;
 }
+
+
 
 /* Converting a file.  */
 
@@ -1623,7 +1626,18 @@ finished:
           close_paragraph ();
         }
 
+      /* maybe we want local variables: in info output.  */
+      {
+        char *trailer = info_trailer ();
+        if (trailer)
+          {
+            insert_string (trailer);
+            free (trailer);
+          }
+      }
+
       flush_output ();          /* in case there was no @bye */
+
       if (output_stream != stdout)
         fclose (output_stream);
 
@@ -1652,6 +1666,29 @@ finished:
   free (real_output_filename);
 }
 
+
+
+/* If enable_encoding and document_encoding are both set, return a Local
+   Variables: section (as a malloc-ed string) so that Emacs' locale
+   features can work.  Else return NULL.  */
+
+char *
+info_trailer ()
+{
+  if (!enable_encoding || document_encoding_code <= US_ASCII)
+    return NULL;
+
+  {
+#define LV_FMT "\n\037\nLocal Variables:\ncoding: %s\nEnd:\n"
+    char *enc_name = encoding_table[document_encoding_code].encname;
+    char *lv = xmalloc (sizeof (LV_FMT) + strlen (enc_name));
+    sprintf (lv, LV_FMT, enc_name);
+    return lv;
+  }
+}
+
+
+
 void
 free_and_clear (pointer)
      char **pointer;

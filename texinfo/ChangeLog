@@ -1,3 +1,21 @@
+2003-04-30    <karl@gnu.org>
+
+	* doc/texinfo.txi (documentencoding): Document new Info output feature.
+	makeinfo/lang.h (encoding_type): rename `ecname' member to `encname'.
+	makeinfo/html.c, lang.c: change usage.
+	makeinfo/lang.c (cm_documentencoding): fix typo in warning.
+	makeinfo/makeinfo.h (SPLIT_SIZE_THRESHOLD): remove.
+	(info_trailer): declare.
+	makeinfo/makeinfo.c (info_trailer): new fn to generate Local
+		Variables: section if --enable-encoding and
+		@documentencoding are given.
+	(convert_from_loaded_file): call it.
+	* makeinfo/node.c (split_file): write trailer into each split
+		file.  Also, simply split files if file size is less than
+		--split-size, removing SPLIT_SIZE_THRESHOLD.
+
+	* doc/texinfo.tex: remove trailing whitespace.
+
 2003-04-29    <karl@gnu.org>
 
 	* makeinfo/node.c (cm_anchor): normalize_node_name so that an

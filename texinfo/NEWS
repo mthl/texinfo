@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.50 2003-04-28 14:03:20 karl Exp $
+$Id: NEWS,v 1.51 2003-05-01 00:05:26 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -28,26 +28,26 @@ convenience, here's a url to one of the relevant sections:
     paragraph following a section heading is indented.  Default is to
     omit this indentation.
   . new command @indent for explicitly indenting a paragraph.
-  . makeinfo writes a new construct for @image to the info file, so that
-    graphical browsers (such as Emacs Info under X) can display an
-    actual image.  Thus, a .txt file substitute is no longer included if
-    a real image file is available.
+  . makeinfo writes a new construct for @image in Info output, so that
+    graphical Info browsers (such as Emacs Info under X) can display an
+    actual image.
 * makeinfo:
-  . default --split-size (for Info output) now 300,000 bytes,
-    with a threshold of 500,000.  (Previous values were 50,000 and 70,000.)
+  . default --split-size (for Info output) now 300,000 bytes, up from 50,000.
   . search for image files in the include file search path.
+  . with --enable-encoding and a given @documentencoding, output a Local
+    Variables: section specifying that encoding.
   . --html output now uses <h3> at the smallest.
   . under --html, @cartouche now outputs a <table> with a border.
   . warns if @value is used on an undefined variable.
 * texinfo.tex:
   . new Polish translation txi-pl.tex.
 * info:
-  . Ignore the new construct for @image, since we're running in a tty.
+  . ignore the new construct for @image, since we're running in a tty.
   . RET now goes to the nearest xref (rather like Emacs Info),
     instead of the next xref starting on the current line.
 * Distribution:
   . new Romanian (ro) translation.
-  . Variables now declared const where appropriate.
+  . variables now declared const where appropriate.
   . automake 1.7.3.
 
 
@@ -91,7 +91,7 @@ convenience, here's a url to one of the relevant sections:
   . getopt and other common library files updated from gnulib
     (http://savannah.gnu.org/projects/gnulib/).
   . autoconf 2.57, automake 1.7.2.
-  
+
 
 4.3 (14 November 2002)
 * Language:
@@ -152,7 +152,7 @@ convenience, here's a url to one of the relevant sections:
   . supports xml and docbook output.
   . supports HTML splitting by node, which is now the default.
   . new option --split-size to control maximum size of split info files.
-  . new option --enable-encoding to enable 
+  . new option --enable-encoding to enable
 * info:
   . user-specified key bindings supported.
   . ANSI escape sequences (as produced by groff) removed from man output

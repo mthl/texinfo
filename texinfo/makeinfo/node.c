@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.10 2003-04-29 23:05:48 karl Exp $
+   $Id: node.c,v 1.11 2003-05-01 00:05:27 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1634,8 +1634,8 @@ split_file (filename, size)
   if (size == 0)
     size = DEFAULT_SPLIT_SIZE;
 
-  if ((stat (filename, &fileinfo) != 0) ||
-      (((long) fileinfo.st_size) < SPLIT_SIZE_THRESHOLD))
+  if ((stat (filename, &fileinfo) != 0)
+      || (((long) fileinfo.st_size) < size))
     return;
   file_size = (long) fileinfo.st_size;
 
@@ -1661,6 +1661,10 @@ split_file (filename, size)
     int which_file = 1;
     TAG_ENTRY *tags = tag_table;
     char *indirect_info = NULL;
+
+    /* Maybe we want a Local Variables: section.  */
+    char *trailer = info_trailer ();
+    int trailer_len = trailer ? strlen (trailer) : 0;
 
     /* Remember the `header' of this file.  The first tag in the file is
        the bottom of the header; the top of the file is the start. */
@@ -1783,7 +1787,9 @@ split_file (filename, size)
                       || write (fd, the_header, header_size) != header_size
                       || write (fd, the_file + file_top, file_bot - file_top)
                          != (file_bot - file_top)
-                      || (close (fd)) < 0)
+                      || (trailer_len
+                          && write (fd, trailer, trailer_len) != trailer_len)
+                      || close (fd) < 0)
                     {
                       perror (split_filename);
                       if (fd != -1)
@@ -1828,7 +1834,16 @@ split_file (filename, size)
       /* Inhibit newlines. */
       paragraph_is_open = 0;
 
+      /* Write the indirect tag table.  */
       write_tag_table_indirect ();
+
+      /* preserve local variables: in info output.  */
+      if (trailer)
+        {
+          insert_string (trailer);
+          free (trailer);
+        }
+
       fclose (output_stream);
       free (the_header);
       free (the_file);
