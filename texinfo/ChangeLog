@@ -1,3 +1,8 @@
+2004-08-18  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\scantxt): " is another active char to be
+	  sanitized.
+
 2004-08-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (exampleindent): document that the default is
