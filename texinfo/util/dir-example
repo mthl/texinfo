@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.12 2003-01-28 17:54:55 karl Exp $
+$Id: dir-example,v 1.13 2003-01-31 16:26:23 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -415,6 +415,7 @@ Miscellaneous
 * Mmalloc: (mmalloc).		The GNU mapped-malloc package.
 * Stabs: (stabs).                 The "stabs" debugging information format.
 * Standards: (standards).        GNU coding standards.
+* grep: (grep).                   print lines matching a pattern.
 
 Programming & development tools.
 * Gdb: (gdb).                     The GNU debugger.
