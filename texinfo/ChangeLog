@@ -1,9 +1,17 @@
 2004-11-11  Karl Berry  <karl@gnu.org>
 
-	* makeinfo/makeinfo.c (expansion): save and restore xml_in_para,
-		so we don't get a spurious </para> after </dircategory>
-		(dircat test).
-	From: Vincent Lefevre, 20 Oct 2004 15:40:39 +0200.
+	* texinfo.dtd (metainformation): add documentdescription.
+	(documentdescription): define.
+	* xml.h (DOCUMENTDESCRIPTION): new value for xml_element.
+	* xml.c (texinfoml_element_list): define documentdescription.
+	(docbook_element_list): likewise, but don't know how to handle it.
+	* cmds.c (cm_documentdescription): insert opening xml tag.
+	* insertion.c (end_insertion): insert closing xml tag.
+
+	* makeinfo/makeinfo.c (insert_string): declare const char * arg.
+        * makeinfo/makeinfo.h: likewise.
+	Report from: Vincent Lefevre, 20 Oct 2004 15:40:39 +0200,
+	noting a spurious </para> after </dircategory>.
 
 2004-11-08  Karl Berry  <karl@gnu.org>
 

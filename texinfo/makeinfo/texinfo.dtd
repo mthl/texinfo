@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.9 2003-12-02 12:20:19 dirt Exp $
+<!-- $Id: texinfo.dtd,v 1.10 2004-11-11 18:34:28 karl Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -6,7 +6,7 @@
            Karl Eichwalder (keichwa@gmx.net)
 	   Alper Ersoy (dirt@gtk.org)
 
-   Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -17,7 +17,8 @@
 <!-- ENTITIES -->
 
 <!-- Meta-information -->
-<!ENTITY % metainformation "setfilename | settitle | dircategory">
+<!ENTITY % metainformation "setfilename | settitle | dircategory
+                            | documentdescription">
 <!ENTITY % variables "setvalue | clearvalue">
 
 <!-- Document language -->
@@ -186,6 +187,7 @@
 <!-- ************** -->
 
 <!ELEMENT quotation    (%block; | %Inline.phrase;)*>
+<!ELEMENT documentdescription (#PCDATA | %block; | %Inline.phrase;)*>
 <!ELEMENT example      (#PCDATA | %block; | %Inline.phrase;)*>
 <!ELEMENT smallexample (#PCDATA | %block; | %Inline.phrase;)*>
 <!ELEMENT lisp         (#PCDATA | %block; | %Inline.phrase;)*>

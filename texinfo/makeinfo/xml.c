@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.49 2004-07-31 18:49:51 karl Exp $
+   $Id: xml.c,v 1.50 2004-11-11 18:34:28 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
 
@@ -46,6 +46,7 @@ element texinfoml_element_list [] = {
   { "setfilename",         0, 0, 0 },
   { "titlefont",           0, 0, 0 },
   { "settitle",            0, 0, 0 },
+  { "documentdescription", 1, 0, 0 },
 
   { "node",                1, 0, 0 },
   { "nodenext",            0, 0, 0 },
@@ -256,6 +257,7 @@ element docbook_element_list [] = {
   { "",                    0, 0, 0 }, /* SETFILENAME */
   { "",                    0, 0, 0 }, /* TITLEINFO */
   { "title",               0, 0, 0 }, /* SETTITLE */
+  { "",                    1, 0, 0 }, /* DOCUMENTDESCRIPTION (?) */
 
   { "",                    1, 0, 0 }, /* NODE */
   { "",                    0, 0, 0 }, /* NODENEXT */

@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.15 2004-08-30 22:11:39 karl Exp $
+   $Id: makeinfo.h,v 1.16 2004-11-11 18:34:28 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free
    Software Foundation, Inc.
@@ -324,7 +324,7 @@ extern void free_and_clear (char **pointer),
   add_char (int character),
   add_meta_char (int character),
   close_single_paragraph (void),
-  insert_string (char *string),
+  insert_string (const char *),
   insert (int character),
   get_rest_of_line (int expand, char **string),
   add_html_block_elt (char *string),
