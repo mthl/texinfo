@@ -1,3 +1,9 @@
+2004-08-19  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\scanmacro): Make backslash active, not other,
+	  as this is the default when processing texinfo files. 
+	  Otherwise, a \ inside @copying will eventually print as ``.
+
 2004-08-18  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\scantxt): " is another active char to be
