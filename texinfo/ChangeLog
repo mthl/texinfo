@@ -1,3 +1,14 @@
+2004-04-19  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/cmds.c (cm_code): use <samp> for commands other than
+	@code, so we get typewriter output; and add `...'
+	for @samp.
+	Report from: John Blevin <blevin@lucent.com>, 
+	16 Apr 2004 11:40:01 -0400.
+
+	* makeinfo/html.c (html_output_head) [CSS_FONT_ROMAN,
+	CSS_FONT_SMALL_CAPS]: prettify.
+
 2004-04-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\Orb): define if undefined.
