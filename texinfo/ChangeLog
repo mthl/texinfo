@@ -1,3 +1,9 @@
+2003-07-02   Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi: Add thumbpdf support.
+	Use FD 6 instead of /dev/null so that when --debugging, the output
+	from auxiliary tools can be observed.
+
 2003-07-02    <karl@gnu.org>
 
 	* doc/texinfo.txi (kbd): document actual makeinfo behavior.

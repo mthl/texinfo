@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.23 2003-06-10 20:50:03 karl Exp $
+# $Id: texi2dvi,v 1.24 2003-07-02 14:23:28 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.23 $'
+rcs_revision='$Revision: 1.24 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.6) $rcs_version
@@ -68,10 +68,10 @@ TeX tuning:
   -t, --command=CMD    insert CMD in copy of input file;
    or --texinfo=CMD    multiple values accumulate
 
-The values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX, MAKEINFO, TEX
-(or PDFTEX), and TEXINDEX environment variables are used to run those
-commands, if they are set.  Any CMD strings are added after @setfilename
-for Texinfo input, in the first line for LaTeX input.
+The values of the BIBTEX, LATEX (or PDFLATEX), MAKEINDEX, MAKEINFO,
+TEX (or PDFTEX), TEXINDEX, and THUMBPDF environment variables are used
+to run those commands, if they are set.  Any CMD strings are added
+after @setfilename for Texinfo input, in the first line for LaTeX input.
 
 Email bug reports to <bug-texinfo@gnu.org>,
 general questions and discussion to <help-texinfo@gnu.org>.
@@ -307,7 +307,12 @@ else
 fi
 
 # Enable tracing
-test "$debug" = t && set -x
+if test "$debug" = t; then
+  exec 6>&1
+  set -x
+else
+  exec 6>/dev/null
+fi
 
 # 
 # TeXify files.
@@ -317,7 +322,7 @@ for command_line_filename in ${1+"$@"}; do
 
   # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
   # prepend `./' in order to avoid that the tools take it as an option.
-  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >/dev/null \
+  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
   || command_line_filename="./$command_line_filename"
 
   # See if the file exists.  If it doesn't we're in trouble since, even
@@ -423,7 +428,7 @@ for command_line_filename in ${1+"$@"}; do
   # Otherwise, guess from the file extension.
   if test -n "$set_language"; then
     language=$set_language
-  elif sed 1q "$command_line_filename" | grep 'input texinfo' >/dev/null; then
+  elif sed 1q "$command_line_filename" | grep 'input texinfo' >&6; then
     language=texinfo
   else
     language=
@@ -444,6 +449,7 @@ for command_line_filename in ${1+"$@"}; do
       else
         tex=${PDFLATEX:-pdflatex}
       fi
+      thumbpdf=${THUMBPDF:-thumbpdf}
       ;;
 
     *)
@@ -481,6 +487,7 @@ for command_line_filename in ${1+"$@"}; do
         # As long as we had to run TeX, offer the user this convenience:
         test "$txiformat" = Texinfo && escape=@
       fi
+      thumbpdf=${THUMBPDF:-thumbpdf}
       ;;
   esac
 
@@ -560,7 +567,7 @@ $textra" "$filename_input" >$filename_xtr
            && grep '^\\bibstyle[{]' "$filename_noext.aux" \
            && (grep 'Warning:.*Citation.*undefined' "$filename_noext.log" \
                || grep 'No file .*\.bbl\.' "$filename_noext.log")) \
-          >/dev/null 2>&1; \
+          >&6 2>&1; \
     then
       $verbose "Running $bibtex $filename_noext ..."
       if $bibtex "$filename_noext" >&5; then :; else
@@ -613,7 +620,7 @@ $textra" "$filename_input" >$filename_xtr
     # subdirs, since texi2dvi does not try to compare xref files in
     # subdirs.  Performing xref files test is still good since LaTeX
     # does not report changes in xref files.
-    if grep "Rerun to get" "$filename_noext.log" >/dev/null 2>&1; then
+    if grep "Rerun to get" "$filename_noext.log" >&6 2>&1; then
       finished=
     fi
 
@@ -646,7 +653,29 @@ $textra" "$filename_input" >$filename_xtr
 
     # If finished, exit the loop, else rerun the loop.
     test -n "$finished" && break
-  done
+  done # while :;
+
+  # If we were using thumbpdf and producing PDF, then run thumbpdf
+  # and TeX one last time.
+  if test $oformat = pdf \
+     && test -r "$filename_noext.log" \
+     && grep 'thumbpdf\.sty'  "$filename_noext.log" >&6 2>&1; \
+  then
+    $verbose "Running $thumbpdf $filename_noext ..."
+    if $thumbpdf "$filename_noext" >&5; then :; else
+      echo "$0: $thumbpdf exited with bad status, quitting." >&2
+      exit 1
+    fi
+    $verbose "Running $cmd ..."
+    if $cmd >&5; then :; else
+      echo "$0: $tex exited with bad status, quitting." >&2
+      echo "$0: see $filename_noext.log for errors." >&2
+      test "$clean" = t \
+	&& cp "$filename_noext.log" "$orig_pwd"
+      exit 1
+    fi
+  fi
+
 
   # If we were in clean mode, compilation was in a tmp directory.
   # Copy the DVI (or PDF) file into the directory where the compilation
