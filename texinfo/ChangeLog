@@ -1,5 +1,8 @@
 2004-08-14  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\cslet): equivalent-or-better, and shorter,
+	version from dak, 12 Aug 2004 19:17:27 +0200.
+
 	* doc/texinfo.txi (makeinfo options): use --no-number-sections
 		with non-hierarchical manuals.
 
