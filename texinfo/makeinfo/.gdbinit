@@ -186,3 +186,8 @@ set args -o - $ttests/index22.tex
 
 # seg fault
 set args -o /dev/null $ttests/lilypond-internals.nexi
+
+# no <html>
+set args -o $ttests/tbook.html --html --no-split $ttests/tbook.tex
+
+set args -o /tmp/x.html -I$tdoc --html --no-split $tdoc/texinfo.txi
