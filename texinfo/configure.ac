@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.35 2003-11-13 23:03:23 karl Exp $
+# $Id: configure.ac,v 1.36 2003-11-24 23:17:58 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -27,6 +27,7 @@ AC_PROG_GCC_TRADITIONAL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 AC_PROG_RANLIB
+AM_MISSING_PROG(HELP2MAN, help2man)
 
 AC_ISC_POSIX
 AC_MINIX
