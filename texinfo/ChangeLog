@@ -1,3 +1,9 @@
+2004-05-04  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (TEX): don't use the value when it ends in
+	"latex"; TEX is also used by mpost.  Report from
+	Yvon.Henel@wanadoo.fr.
+
 2004-04-29  Karl Berry  <karl@gnu.org>
 
 	* doc.texinfo.txi (Invoking makeinfo): mention --plaintext.
