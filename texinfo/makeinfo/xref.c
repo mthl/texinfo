@@ -1,5 +1,5 @@
 /* xref.c -- cross references for Texinfo.
-   $Id: xref.c,v 1.2 2004-07-05 22:23:25 karl Exp $
+   $Id: xref.c,v 1.3 2004-11-01 18:24:15 karl Exp $
 
    Copyright (C) 2004 Free Software Foundation, Inc.
 
@@ -271,7 +271,7 @@ cm_xref (int arg)
                   add_anchor_name (tem, 1);
                   free (tem);
                   add_word ("\">");
-                  execute_string ("%s (%s)",ref_name, *arg5 ? arg5 : file_arg);
+                  execute_string ("%s",ref_name);
                   add_word ("</a>");
                 }
               else

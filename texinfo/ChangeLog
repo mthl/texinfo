@@ -1,3 +1,12 @@
+2004-11-01  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/xref.c (cm_xref): don't include the external file name
+	in the HTML output, since it's pretty traditional not to
+	distinguish internal and external links in HTML, and it disturbs
+	the flow of reading.
+	From: Han-Wen Nienhuys <hanwen@xs4all.nl>, 31 Oct 2004 00:13:36 +0200.
+	(For lilypond.)
+
 2004-10-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\setmultitablespacing): just let \multistrut be
