@@ -167,3 +167,6 @@ set args -o - $ttests/math.tex
 
 # seg fault
 set args -o /dev/null /nonexistent.texinfo tests/html-min.txi
+
+# infinite error
+set args -o - tests/itemize-extra.txi

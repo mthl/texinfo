@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.19 2003-02-23 13:20:15 karl Exp $
+$Id: dir-example,v 1.20 2003-02-25 13:56:50 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -28,6 +28,7 @@ Basics
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * DC: (dc).                     Postfix desk calculator.
 * Finding files: (find).        Operating on files matching certain criteria.
+* Gcal: (gcal).                 GNU calendar program.
 
 * Common options: (coreutils)Common options.      Common options.
 * File permissions: (coreutils)File permissions.  Access modes.
@@ -35,7 +36,6 @@ Basics
 
 GNU Packages
 * File utilities: (fileutils).  GNU file utilities.
-* Gcal: (gcal).                 GNU calendar program.
 * Groff: (groff).               The GNU troff document formatting system.
 * Gzip: (gzip).                 General (de)compression.
 * Identifier DB: (id-utils).    Identifier database utilities.

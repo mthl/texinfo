@@ -1,3 +1,13 @@
+2003-02-24    <karl@gnu.org>
+
+	* makeinfo/insertion.c (get_item_function): check for @item in
+	argument to @itemize.  Report from: Dumas Patrice
+	<dumas@centre-cired.fr>, 24 Feb 2003 13:13:52 +0100.
+
+	* makeinfo/makeinfo.c (remember_brace): say `braces' instead of
+	`{...}', since often we don't actually expect text inside the
+	braces.
+
 2003-02-21    <karl@gnu.org>
 
 	* aclocal.m4: automake 1.7.3.
