@@ -1,8 +1,16 @@
 2004-12-19  Karl Berry  <karl@gnu.org>
 
+	* pretest version 4.7.93.
+
+	* automake 1.9.4.
+
 	* makeinfo/xml.c (try_docbook_image): new fn.
 	(xml_insert_docbook_image): call it, trying additional formats
 	pdf, svg, etc.
+	* makeinfo/makeinfo.c (cm_image): check for gif too.
+	http://www.gnu.org/philosophy/gif.html says:
+	"we can and will include support for displaying GIF files in GNU
+	 software."  Leaving it undocumented, though.
 	Based on patch from Jens Elkner, 18 Dec 2004 01:56:28 +0100.
 
 2004-12-19  Torsten Bronger  <bronger@physik.rwth-aachen.de>

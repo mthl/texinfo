@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.73 2004-12-14 00:15:36 karl Exp $
+   $Id: makeinfo.c,v 1.74 2004-12-19 17:15:42 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -3284,18 +3284,20 @@ cm_image (int arg)
       else
         {
           sprintf (fullname, "%s.png", name_arg);
-          if (access (fullname, R_OK) != 0)
-            {
-              pathname = get_file_info_in_path (fullname,
-                                               include_files_path, &file_info);
-              if (pathname == NULL)
-                {
-                  sprintf (fullname, "%s.jpg", name_arg);
-                  if (access (fullname, R_OK) != 0)
-                    pathname = get_file_info_in_path (fullname,
+          if (access (fullname, R_OK) != 0) {
+            pathname = get_file_info_in_path (fullname,
+                                              include_files_path, &file_info);
+            if (pathname == NULL) {
+              sprintf (fullname, "%s.jpg", name_arg);
+              if (access (fullname, R_OK) != 0) {
+                sprintf (fullname, "%s.gif", name_arg);
+                if (access (fullname, R_OK) != 0) {
+                  pathname = get_file_info_in_path (fullname,
                                                include_files_path, &file_info);
                 }
+              }
             }
+          }
         }
 
       if (html)
