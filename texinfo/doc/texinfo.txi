@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
+@c $Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1074,7 +1074,7 @@ marks text as being code.)@refill
 @item
 Write a command such as @code{@@example} on a line of its own; write the
 body-text on following lines; and write the matching @code{@@end}
-command, @code{@@end example} in this case, at the on a line of its own
+command, @code{@@end example} in this case, on a line of its own
 after the body-text. (@code{@@example} @dots{} @code{@@end example}
 indents and typesets body-text as an example.)  It's usually ok to
 indent environment commands like this, but in complicated and
@@ -11975,11 +11975,11 @@ text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 @code{@@ifnotplaintext}, like this:
 @example
-@ifinfo
-@ifnotplaintext
+@@ifinfo
+@@ifnotplaintext
 This will be in Info, but not plain text.
-@end ifnotplaintext
-@end ifinfo
+@@end ifnotplaintext
+@@end ifinfo
 @end example
 
 The regions delimited by these commands are ordinary Texinfo source as
@@ -16786,7 +16786,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
+$Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16851,7 +16851,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.18 2002-12-05 21:42:23 karl Exp $
+@@comment $Id: texinfo.txi,v 1.19 2002-12-11 13:42:39 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
