@@ -208,7 +208,7 @@ version of the manual which contains the bug, as given above.
 * Overview::
 * Obtaining @command{texi2html}::
                               Obtaining a copy of the @command{texi2html}
-			      source code distribution
+                              source code distribution
 * Installation::              Installing @command{texi2html}
 * Invoking texi2html::        Description of the command line options
 * Initialization files::      What kind of variables and subroutines appear

@@ -247,9 +247,9 @@ modify the default editing style.  See section <a href="#SEC25">Customization</a
 </p><p>In addition to the <em>point</em>, there is another distinguished buffer
 position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
-user, this simply means that in addition to the Vi textmarkers a--z, there
+user, this simply means that in addition to the Vi textmarkers a-z, there
 is another marker called <em>mark</em>.  This is similar to the unnamed Vi
-marker used by the jump commands <kbd>&quot;</kbd> and <kbd>&quot;</kbd>, which move the
+marker used by the jump commands <kbd>``</kbd> and <kbd>''</kbd>, which move the
 cursor to the position of the last absolute jump.  Viper provides access to
 the region in most text manipulation commands as <kbd>r</kbd> and <kbd>R</kbd> suffix
 to commands that operate on text regions, e.g., <kbd>dr</kbd> to delete region,
@@ -1572,7 +1572,7 @@ Facilities like this make Vi's <kbd>:ab</kbd> command obsolete.
 <h2 class="section"> 2.8 Movement and Markers </h2>
 
 
-<p>Viper can be set free from the line--limited movements in Vi, such as <kbd>l</kbd>
+<p>Viper can be set free from the line-limited movements in Vi, such as <kbd>l</kbd>
 refusing to move beyond the line, <kbd>ESC</kbd> moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your `<tt>.viper</tt>'
 contains
@@ -2358,7 +2358,7 @@ features provided by the major modes.
 <dt><code> viper-want-emacs-keys-in-vi
 </code></dt>
 <dd><p>This is set to <code>nil</code> for user
-level 1 and to <code>t</code> for user levels 2--4.
+level 1 and to <code>t</code> for user levels 2-4.
 At level 5, users are allowed to set this variable as they please (the
 default for this level is <code>t</code>).
 If set to <code>nil</code>, complete Vi compatibility is provided
@@ -4111,12 +4111,12 @@ inserts them automatically in front of the Ex command.
 </kbd></dt>
 <dd><p>Show contents of register.
 </p></dd>
-<dt><kbd>  &quot;
+<dt><kbd>  ``
 </kbd></dt>
 <dd><p>To the cursor position before the latest absolute
 jump (of which are examples <kbd>/</kbd> and <kbd>G</kbd>).
 </p></dd>
-<dt><kbd>  &quot;
+<dt><kbd>  ''
 </kbd></dt>
 <dd><p>To the first CHAR of the line on which the cursor
 was placed before the latest absolute jump.
@@ -4296,11 +4296,11 @@ it in a way that you didn't like.
 </kbd></dt>
 <dd><p>Same as <kbd>:mark</kbd>.
 </p></dd>
-<dt><kbd> &quot;
+<dt><kbd> ``
 </kbd></dt>
 <dd><p>Exchange point and mark.
 </p></dd>
-<dt><kbd> &quot;
+<dt><kbd> ''
 </kbd></dt>
 <dd><p>Exchange point and mark and go to the first CHAR on line.
 </p></dd>
@@ -5044,7 +5044,7 @@ At user levels 2 and higher, abort the current command.
 </p></dd>
 <dt><kbd> C-c g
 </kbd></dt>
-<dd><p>Give file name, status, current line number and relative position -- all
+<dd><p>Give file name, status, current line number and relative position - all
 user levels.
 </p></dd>
 <dt><kbd> C-l
@@ -5230,7 +5230,7 @@ switch to higher user levels as soon as possible.
 </p></dd>
 <dt><kbd> :pre
 </kbd></dt>
-<dd><p>Preserve the file -- autosave buffers.
+<dd><p>Preserve the file - autosave buffers.
 </p></dd>
 <dt><kbd> :rec
 </kbd></dt>
@@ -5597,7 +5597,7 @@ current).
 <dt><kbd> ai
 </kbd></dt>
 <dd><a name="IDX506"></a>
-<p>autoindent -- In append mode after a &lt;cr&gt; the
+<p>autoindent - In append mode after a &lt;cr&gt; the
 cursor will move directly below the first
 character on the previous line.
 This setting affects the current buffer only.
@@ -5625,7 +5625,7 @@ This setting affects the current buffer only.
 <dt><kbd> ic
 </kbd></dt>
 <dd><a name="IDX507"></a>
-<p>ignorecase -- No distinction between upper and lower cases when searching.
+<p>ignorecase - No distinction between upper and lower cases when searching.
 </p></dd>
 <dt><kbd> noignorecase
 </kbd></dt>
@@ -5651,7 +5651,7 @@ This setting affects the current buffer only.
 <dt><kbd> ro
 </kbd></dt>
 <dd><a name="IDX509"></a>
-<p>readonly -- The file is not to be changed.
+<p>readonly - The file is not to be changed.
 If the user attempts to write to this file, confirmation will be requested.
 </p></dd>
 <dt><kbd> noreadonly
@@ -5665,7 +5665,7 @@ If the user attempts to write to this file, confirmation will be requested.
 <dt><kbd> sh=&lt;string&gt;
 </kbd></dt>
 <dd><a name="IDX510"></a>
-<p>shell -- The program to be used for shell escapes
+<p>shell - The program to be used for shell escapes
 (default `<samp>$SHELL</samp>' (default `<tt>/bin/sh</tt>')).
 </p></dd>
 <dt><kbd> shiftwidth=&lt;count&gt;
@@ -5674,7 +5674,7 @@ If the user attempts to write to this file, confirmation will be requested.
 </kbd></dt>
 <dd><a name="IDX511"></a>
 <a name="IDX512"></a>
-<p>shiftwidth -- Gives the shiftwidth (default 8 positions).
+<p>shiftwidth - Gives the shiftwidth (default 8 positions).
 </p></dd>
 <dt><kbd> showmatch
 </kbd></dt>
@@ -5682,7 +5682,7 @@ If the user attempts to write to this file, confirmation will be requested.
 </kbd></dt>
 <dd><a name="IDX513"></a>
 <a name="IDX514"></a>
-<p>showmatch -- Whenever you append a <kbd>)</kbd>, Vi shows
+<p>showmatch - Whenever you append a <kbd>)</kbd>, Vi shows
 its match if it's on the same page; also with
 <kbd>{</kbd> and <kbd>}</kbd>.  If there's no match, Vi will beep.
 </p></dd>
@@ -5698,7 +5698,7 @@ its match if it's on the same page; also with
 </kbd></dt>
 <dd><a name="IDX515"></a>
 <a name="IDX516"></a>
-<p>tabstop -- The length of a &lt;ht&gt;; warning: this is
+<p>tabstop - The length of a &lt;ht&gt;; warning: this is
 only IN the editor, outside of it &lt;ht&gt;s have
 their normal length (default 8 positions).
 This setting affects the current buffer only.
@@ -5715,7 +5715,7 @@ This setting affects the current buffer only.
 </kbd></dt>
 <dd><a name="IDX517"></a>
 <a name="IDX518"></a>
-<p>wrapmargin -- In append mode Vi automatically
+<p>wrapmargin - In append mode Vi automatically
 puts a &lt;lf&gt; whenever there is a &lt;sp&gt; or &lt;ht&gt;
 within &lt;wm&gt; columns from the right margin.
 </p></dd>
@@ -5724,7 +5724,7 @@ within &lt;wm&gt; columns from the right margin.
 <dt><kbd> ws
 </kbd></dt>
 <dd><a name="IDX519"></a>
-<p>wrapscan -- When searching, the end is
+<p>wrapscan - When searching, the end is
 considered `<samp>stuck</samp>' to the begin of the file.
 </p></dd>
 <dt><kbd> nowrapscan
@@ -6170,8 +6170,8 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><td></td><td valign="top"><a href="#IDX391"><code><kbd>&amp;</kbd></code></a></td><td valign="top"><a href="#SEC40">4.2.7 Search and Replace</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC51_5">'</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX276"><code><kbd>&quot;</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX332"><code><kbd>&quot;</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX276"><code><kbd>''</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX332"><code><kbd>''</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX280"><code><kbd>'&lt;a-z&gt;</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX335"><code><kbd>'&lt;a-z&gt;</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
@@ -6270,8 +6270,8 @@ zapman@cc.gatech.edu (Jason Zapman II),
 <tr><th><a name="SEC51_25">`</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX281"><code><kbd>`&lt;a-z&gt;</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX334"><code><kbd>`&lt;a-z&gt;</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX277"><code><kbd>&quot;</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
-<tr><td></td><td valign="top"><a href="#IDX333"><code><kbd>&quot;</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX277"><code><kbd>``</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="#IDX333"><code><kbd>``</kbd></code></a></td><td valign="top"><a href="#SEC35">4.2.2 Marking</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC51_26">{</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#IDX286"><code><kbd>{</kbd></code></a></td><td valign="top"><a href="#SEC34">4.2.1 Move Commands</a></td></tr>

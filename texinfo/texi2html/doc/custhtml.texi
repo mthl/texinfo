@@ -23,7 +23,7 @@
 @c    by the Free Software Foundation.
 @c
 @c Revisions:
-@c $Id: custhtml.texi,v 1.4 2003-10-14 13:05:38 dprice Exp $
+@c $Id: custhtml.texi,v 1.5 2003-10-16 21:01:45 pertusus Exp $
 @c
 @c Author:
 @c   Dumas Patrice <dumas@centre-cired.fr>
@@ -358,51 +358,37 @@ The line following the command is skipped.
 @node References
 @section References
 
-The references are produced with five function references. 
-Three function references produce parts of the reference text, the other two
-format a whole reference.
+The references are produced with two function references, one for the reference
+to external manuals the other for refences within the manual. 
 
-@deftypefn {Function Reference} $text ref_beginning $command
-This function formats the beginning of a reference.
-The argument is the command name (@code{ref}, @code{xref} or
-@code{pxref}). The function should return the text appearing at
-the beginning of a reference. As the different commands corresponds
-with different contexts (in text, at sentence beginning or in parenthesis).
-@end deftypefn
-
-@deftypefn {Function Reference} $text info_ref $node_and_file $href $cross_ref_name
-This function formats a reference to another texinfo html manual.
+@deftypefn {Function Reference} $text external_ref $command $section $book $node_and_file $href $cross_ref_name
+This function formats a reference to an external texinfo manual.
+The @var{$command} is the ref command (@code{ref}, @code{xref} or 
+@code{pxref}, in text, at sentence beginning or in parenthesis).
+The optionnal @var{$section} argument is the section in the book and 
+ @var{book} is the book title.
 @var{$node_and_file} is the node and file name formatted according to the 
 convention used in info: @samp{(file)node}. @var{$href} it an hypertextual
 reference to the distant manual constructed using the same conventions
 than @command{makeinfo}. @var{$cross_ref_name} is an optionnal cross
 reference name appearing in the reference command. This function returns
 the text corresponding with the external html manual reference.
+This function returns the full formatted text of the external reference.
 @end deftypefn
-
-@deftypefn {Function Reference} $text book_ref $section $book
-This function formats a reference to a printed texinfo manual. The 
-optionnal @var{$section} argument is the section in the book and 
- @var{book} is the book title.
-@end deftypefn
-
-The following function references format whole references.
-
-@deftypefn {Function Reference} $text external_ref $command $info_ref $book_ref
-This function formats a whole reference to an external texinfo manual.
-The @var{$command} is the ref command. @var{info_ref} is optionnal, it
-is the text 
-of a reference to the html manual (produced with @variable{$info_ref}).
-@var{$book_ref} is optionnal, this is the text of a reference to the 
-printed manual (produced with @variable{$book_ref}). One of @var{info_ref} 
-and @var{$book_ref} should be present. This function returns the full 
-formatted text of the external reference.
-@end deftypefn
-
-@c FIXME utiliser sprintf + i18n thus change the API.
 
 @deftypefn {Function Reference} $text internal_ref $command $href $short_name $name $is_section
+This function formats a reference to a node in the current manual.
+The @var{$command} is the ref command (@code{ref}, @code{xref} or 
+@code{pxref}, in text, at sentence beginning or in parenthesis).
+@var{$href} it an hypertextual reference linking to the corresponding
+node or section. @var{$short_name} and @var{$name} hold the text for the 
+reference but @var{$short_name} can be the node name which is assumed to 
+be shorter than the section name.
+@var{$is_section} is a boolean true if the reference is a reference to a 
+section. This function returns the full formatted text of the internal 
+reference.
 @end deftypefn
+
 
 @c --------------------------------------------------------
 @node Alignement commands

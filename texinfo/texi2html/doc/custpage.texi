@@ -23,7 +23,7 @@
 @c    by the Free Software Foundation.
 @c
 @c Revisions:
-@c $Id: custpage.texi,v 1.5 2003-10-14 13:05:38 dprice Exp $
+@c $Id: custpage.texi,v 1.6 2003-10-16 21:01:45 pertusus Exp $
 @c
 @c Author:
 @c   Dumas Patrice <dumas@centre-cired.fr>
@@ -501,12 +501,21 @@ This function is called if the document is split at sections, after
 @node Customizing section
 @section Customizing the sections
 
-The function associated with the following function reference is used for the 
-formatting of sections:
+The functions associated with the following function references are used for 
+the formatting of sections:
 
-@deffn {Function Reference} print_section $filehandle
+@deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top
 @var{$filehandle} is the opened filehandle the function should write to.
+@var{$first_in_page} is true if this section is the first section in the page.
+@var{$previous_is_top} is true if this section is the section following the 
+Top section.
 This function should print the current section.
+@end deffn
+
+@deffn {Function Reference} end_section $filehandle $last_element_or_before_top
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$last_element_or_before_top} is true if this section precedes the top 
+element or is the last one in page, or before the special elements.
 @end deffn
 
 @c --------------------------------------------------------
@@ -516,6 +525,7 @@ This function should print the current section.
 It is possible to add text just before the @code{</body>} 
 element with the variable @variable{$PRE_BODY_CLOSE}.
 
+@ignore
 The footer text may be influenced by @variable{$ADDRESS} which should hold
 information about who created the document and how.
 If you want to define that variable
@@ -525,6 +535,7 @@ dynamically, you could redefine the following function reference:
 This function should return the address. @var{$user} is the user name
 of the user running @command{texi2html}, @var{$date} is the date of the day.
 @end deftypefn
+@end ignore
 
 The default functions call the function associated with 
 @variable{$print_foot_navigation} to format the navigation panel for the 
