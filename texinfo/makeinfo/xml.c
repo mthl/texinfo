@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.12 2002-11-11 12:37:34 feloy Exp $
+   $Id: xml.c,v 1.13 2002-11-11 17:14:44 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -730,6 +730,17 @@ xml_section *last_section = NULL;
 void
 xml_begin_node ()
 {
+  first_section_opened = 1;
+  if (xml_in_abstract)
+    {
+      xml_insert_element (ABSTRACT, END);
+      xml_in_abstract = 0;
+    }
+  if (xml_in_bookinfo)
+    {
+      xml_insert_element (BOOKINFO, END);
+      xml_in_bookinfo = 0;
+    }
   if (xml_node_open && ! docbook)
     {
       if (xml_node_level != -1)
@@ -864,7 +875,7 @@ xml_add_char (character)
     int character;
 {
   if (!book_started)
-    return;
+      return;
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
   
