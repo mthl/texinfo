@@ -1,3 +1,19 @@
+2003-12-2 Arnold Robbins  <arnold@skeeve.com>
+
+	* makeinfo/insertion.c (end_insertion): Change tests for docbook
+	and insertion to check current insertion type instead of if deep
+	inside a float insertion.
+	(cm_example, cm_smallexample, cm_lisp, cm_smalllisp, cm_cartouche)
+	(cm_caption): Same.
+
+	* xml.h (FLOATCARTOUCHE): New constant.
+	* xml.c (texinfoxml_element_list, docbook_element_list): Add "sidebar"
+	for FLOATCARTOUCHE.  For docbook, map @display, @smalldisplay to
+	"literallayout".
+	(replacement_elements): Add entry for CARTOUCHE -> FLOATCARTOUCHE.
+	(xml_begin_docbook_float): Special case for CARTOUCHE, sidebars don't
+	have labels.
+
 2003-12-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\float, \listoffloats): new macros for new

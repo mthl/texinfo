@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.19 2003-11-27 11:48:08 dirt Exp $
+   $Id: xml.h,v 1.20 2003-12-02 11:04:00 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -76,7 +76,7 @@ enum xml_element
   UREF, UREFURL, UREFDESC, UREFREPLACEMENT,
   EMAIL, EMAILADDRESS, EMAILNAME,
   GROUP, FLOAT, FLOATTYPE, CAPTION,
-  FLOATTABLE, FLOATFIGURE, FLOATEXAMPLE,
+  FLOATTABLE, FLOATFIGURE, FLOATEXAMPLE, FLOATCARTOUCHE,
   PRINTINDEX, LISTOFFLOATS,
   ANCHOR, 
   IMAGE,
