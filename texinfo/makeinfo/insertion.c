@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.18 2003-02-24 14:40:47 karl Exp $
+   $Id: insertion.c,v 1.19 2003-02-24 14:41:51 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -137,7 +137,7 @@ get_item_function ()
   /* If the document erroneously says
        @itemize @bullet @item foobar
      it's nicer to give an error up front than repeat `@bullet expected
-     braces' until we give up.  */
+     braces' until we get a segmentation fault.  */
   item_loc = strstr (item_function, "@item");
   if (item_loc)
     {
