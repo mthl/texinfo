@@ -183,3 +183,6 @@ set args -o /dev/null --xml $ttests/doclatin1.tex
 
 # seg fault printindex twice
 set args -o - $ttests/index22.tex
+
+# seg fault
+set args -o /dev/null $ttests/lilypond-internals.nexi
