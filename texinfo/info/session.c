@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.8 2003-03-22 17:41:16 karl Exp $
+   $Id: session.c,v 1.9 2003-09-15 15:49:07 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -2544,7 +2544,8 @@ info_follow_menus (initial_node, menus, errstr, errarg1, errarg2)
               if (strcasecmp (entry->label, arg) == 0)
                 break;
               else
-                if (strncasecmp (entry->label, arg, strlen (arg)) == 0)
+                if ((best_guess == -1)
+                    && (strncasecmp (entry->label, arg, strlen (arg)) == 0))
                   best_guess = i;
             }
 
