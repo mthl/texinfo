@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.12 2004-04-11 17:56:46 karl Exp $
+   $Id: session.c,v 1.13 2004-06-03 15:58:51 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004
    Free Software Foundation, Inc.
@@ -1944,7 +1944,7 @@ DECLARE_INFO_COMMAND (info_last_menu_item,
 DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 {
   register int i, item;
-  register REFERENCE *entry = NULL, **menu;
+  register REFERENCE **menu;
 
   menu = info_menu_of_node (window->node);
 
@@ -1962,7 +1962,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
     for (i = 0; menu[i + 1]; i++);
   else
     {
-      for (i = 0; (entry = menu[i]); i++)
+      for (i = 0; menu[i]; i++)
         if (i == item - 1)
           break;
     }
@@ -1970,8 +1970,8 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
   if (menu[i])
     {
       info_select_reference (window, menu[i]);
-      if (entry->line_number > 0)
-        info_next_line (window, entry->line_number - 1, key);
+      if (menu[i]->line_number > 0)
+        info_next_line (window, menu[i]->line_number - 1, key);
     }
   else
     info_error ((char *) _("There aren't %d items in this menu."),
