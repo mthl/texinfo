@@ -1,5 +1,10 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/xml.c:
+	* makeinfo/xml.h: new element listoffloats.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.h: number sections by default.
 
 2003-11-24  Alper Ersoy  <dirt@gtk.org>

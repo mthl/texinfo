@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.41 2003-11-23 23:38:13 dirt Exp $
+   $Id: xml.c,v 1.42 2003-11-24 14:34:45 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -177,6 +177,7 @@ element texinfoml_element_list [] = {
   { "",                    0, 0, 0 }, /* EXAMPLE (docbook) */
 
   { "printindex",          0, 0, 0 },
+  { "listoffloats",        0, 0, 0 },
   { "anchor",              0, 1, 0 },
   { "image",               0, 1, 0 },
   { "",                    0, 1, 0 }, /* PRIMARY (docbook) */
@@ -365,6 +366,7 @@ element docbook_element_list [] = {
   { "example",             1, 1, 0 },
 
   { "index",               0, 1, 0 }, /* PRINTINDEX */
+  { "",                    0, 1, 0 }, /* LISTOFFLOATS */
   { "",                    0, 1, 0 }, /* ANCHOR */
   { "",                    0, 1, 0 }, /* IMAGE */
   { "primary",             0, 1, 0 }, /* PRIMARY */

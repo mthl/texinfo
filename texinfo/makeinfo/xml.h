@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.17 2003-11-23 23:38:13 dirt Exp $
+   $Id: xml.h,v 1.18 2003-11-24 14:34:45 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -76,7 +76,7 @@ enum xml_element
   EMAIL, EMAILADDRESS, EMAILNAME,
   GROUP, FLOAT, FLOATTYPE, CAPTION,
   FLOATTABLE, FLOATFIGURE, FLOATEXAMPLE,
-  PRINTINDEX,
+  PRINTINDEX, LISTOFFLOATS,
   ANCHOR, 
   IMAGE,
   PRIMARY, SECONDARY, INFORMALFIGURE, MEDIAOBJECT, IMAGEOBJECT,
