@@ -1,3 +1,11 @@
+2003-09-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Macro Details): mention some makeinfo
+	limitations too, from recent bug reports by Patrice Dumas
+	<dumas@centre-cired.fr> and (16 Jul 2003 17:21:56 +0200) Jesper
+	Harder <harder@ifa.au.dk>.
+	* makeinfo/macro.c (define_macro): "end rmacro" is 10 chars long.
+
 2003-08-29 Reiner Steib <Reiner.Steib@gmx.de>
 	
 	* makeinfo/lang.c (encoding_table): Downcase coding system
