@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.4 2002-11-07 16:11:33 karl Exp $
+   $Id: lang.c,v 1.5 2002-11-12 18:48:52 feloy Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -399,8 +399,10 @@ add_encoded_char (html_str, info_str)
       char *html_str;
       char *info_str;
 {
-  if (html || xml)
+  if (html)
     add_word_args ("&%s;", html_str);
+  else if (xml)
+    xml_insert_entity (html_str);
   else if (enable_encoding)
     {
       /* Look for HTML_STR in the current translation table.  */
@@ -438,15 +440,21 @@ cm_accent_generic_html (arg, start, end, html_supported, single,
       if (strchr (html_supported, curchar ()))
         { /* Yes; start with an ampersand.  The character itself
              will be added later in read_command (makeinfo.c).  */
+	  int saved_escape_html = escape_html;
+	  escape_html = 0;
           valid_html_accent = 1;
           add_char ('&');
+	  escape_html = saved_escape_html;
         }
       else
         { 
           valid_html_accent = 0;
           if (html_solo_standalone)
             { /* No special HTML support, so produce standalone char.  */
-              add_word_args ("&%s;", html_solo);
+	      if (xml)
+		xml_insert_entity (html_solo);
+	      else
+		add_word_args ("&%s;", html_solo);
             }
           else
             /* If the html_solo does not exist as standalone character

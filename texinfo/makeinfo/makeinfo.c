@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.12 2002-11-08 18:13:42 feloy Exp $
+   $Id: makeinfo.c,v 1.13 2002-11-12 18:48:52 feloy Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -2307,7 +2307,10 @@ add_char (character)
     {
       if (html || docbook)
         { /* Seems cleaner to use &nbsp; than an 8-bit char.  */
+	  int saved_escape_html = escape_html;
+	  escape_html = 0;
           add_word ("&nbsp");
+	  escape_html = saved_escape_html;
           character = ';';
         }
       else
