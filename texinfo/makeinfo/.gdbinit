@@ -164,3 +164,6 @@ set args -o - $ttests/copyinglong.tex
 
 # @nabla^2 is taken as the macro name, including the ^2.
 set args -o - $ttests/math.tex
+
+# seg fault
+set args -o /dev/null /nonexistent.texinfo tests/html-min.txi

@@ -1,3 +1,13 @@
+2003-02-16    <karl@gnu.org>
+
+	* makeinfo/index.c (init_indices): don't try to free indexes that
+	undefindex already freed.  Report from: Arkadiusz
+	Miskiewicz <misiek@pld.ORG.PL>,
+	15 Feb 2003 13:22:49 +0100.
+
+	* configure.ac (curses): forgot to quote arg to AC_TRY_LINK.
+	From vojta and te, 16 Feb 2003 01:37:09 +0100.
+
 2003-02-13    <karl@gnu.org>
 
 	* makeinfo/insertion.c (begin_insertion): for html cartouche
