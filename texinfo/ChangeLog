@@ -1,3 +1,12 @@
+2005-02-22  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (absolute_filenames): Skip nonexistent directories.
+	Factor its invocations for TeX envvars.
+	(fd6): Document and use more extensively.
+	(get_xref_files): Accept bu[0-9]#.aux files from the bibunits
+	package.
+	Also adjust the bibtex invocation.
+
 2005-02-19  Karl Berry  <karl@gnu.org>
 
 	The main user-visible change of all this is to make
