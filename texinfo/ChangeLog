@@ -1,3 +1,9 @@
+2005-03-08  Keith Marshall  <keith.d.marshall@ntlworld.com>
+
+	* makeinfo/tests/no-headers: ($nulldev): new variable.
+	  set it to `/dev/null' normally, but to `nul' on Win32,
+	  so Cygwin doesn't fail this test, in `make check'.
+
 2005-03-08  Karl Berry  <karl@gnu.org>
 
 	* info/filesys.h (DEFAULT_INFOPATH): make . first in the path,

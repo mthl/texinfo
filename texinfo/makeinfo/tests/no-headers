@@ -2,8 +2,13 @@
 # Test that info.texi works with --no-headers (this includes node
 # pointer defaulting).
 
+# Test may fail on Cygwin, if we say `-o /dev/null',
+# but is ok if we substitute the Win32 native `nul' device,
+# (seen by `test -e', but not char-special in `test -c').
+test -e nul && nulldev=nul || nulldev=/dev/null
+
 unset TEXINFO_OUTPUT
 : ${srcdir=.}
 docdir=$srcdir/../../doc
 
-../makeinfo --no-headers -o /dev/null -I$docdir info.texi
+../makeinfo --no-headers -o $nulldev -I$docdir info.texi
