@@ -1,3 +1,8 @@
+2002-10-09    <karl@gnu.org>
+
+	* util/infosrch: new contrib script.
+	* util/Makefile.am (EXTRA_DIST): add infosrch.
+
 2002-10-04    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.2a.
