@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.63 2004-07-12 14:05:37 karl Exp $
+   $Id: makeinfo.c,v 1.64 2004-07-19 19:35:47 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -518,6 +518,19 @@ struct option long_options[] =
   {NULL, 0, NULL, 0}
 };
 
+/* We use handle_variable_internal for -D and -U, and it depends on
+   execute_string, which depends on input_filename, which is not defined
+   while we are handling options. :-\  So we save these defines in this
+   struct, and handle them later.  */
+typedef struct command_line_define
+{
+  struct command_line_define *next;
+  int action;
+  char *define;
+} COMMAND_LINE_DEFINE;
+
+static COMMAND_LINE_DEFINE *command_line_defines = NULL;
+
 /* For each file mentioned in the command line, process it, turning
    Texinfo commands into wonderfully formatted output text. */
 int
@@ -605,7 +618,16 @@ main (int argc, char **argv)
         case 'D':
         case 'U':
           /* User specified variable to set or clear. */
-          handle_variable_internal ((c == 'D') ? SET : CLEAR, optarg);
+          if (xml && !docbook)
+            {
+              COMMAND_LINE_DEFINE *new = xmalloc (sizeof (COMMAND_LINE_DEFINE));
+              new->action = (c == 'D') ? SET : CLEAR;
+              new->define = xstrdup (optarg);
+              new->next = command_line_defines;
+              command_line_defines = new;
+            }
+          else
+            handle_variable_internal ((c == 'D' ? SET : CLEAR), optarg);
           break;
 
         case 'd': /* --docbook */
@@ -1650,6 +1672,19 @@ convert_from_loaded_file (char *name)
                    output_filename, VERSION, input_filename);
 
   close_paragraph ();
+
+  if (xml && !docbook)
+    {
+      /* Just before the real main loop, let's handle the defines.  */
+      COMMAND_LINE_DEFINE *temp;
+
+      for (temp = command_line_defines; temp; temp = temp->next)
+        {
+          handle_variable_internal (temp->action, temp->define);
+          free(temp->define);
+        }
+    }
+
   reader_loop ();
   if (xml)
     xml_end_document ();
