@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.10 2003-05-13 16:37:54 karl Exp $
+   $Id: sectioning.c,v 1.11 2003-07-14 13:20:18 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -483,7 +483,7 @@ sectioning_html (level, cmd)
   if (outstanding_node)
     outstanding_node = 0;
 
-  add_word_args ("</h%d>", level + 2);
+  add_word_args ("</h%d>", MIN (3, level + 2));
   close_paragraph();
   filling_enabled = 1;
   no_indent = old_no_indent;
