@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.82 2003-11-08 01:00:42 dirt Exp $
+@c $Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8634,10 +8634,16 @@ See the example for @code{@@table} in the previous section.
 
 Use the @code{@@itemx} command inside a table when you have two or more
 first column entries for the same item, each of which should appear on a
-line of its own.  Use @code{@@itemx} for all but the first entry;
-@code{@@itemx} should always follow an @code{@@item} command.  The
-@code{@@itemx} command works exactly like @code{@@item} except that it
-does not generate extra vertical space above the first column text.
+line of its own.
+
+Use @code{@@item} for the first entry, and @code{@@itemx} for all
+subsequent entries; @code{@@itemx} must always follow an @code{@@item}
+command, with no blank line intervening.
+
+The @code{@@itemx} command works exactly like @code{@@item} except
+that it does not generate extra vertical space above the first column
+text.  If you have multiple consecutive @code{@@itemx} commands, do
+not insert any blank lines between them.
 
 For example,
 
@@ -17241,7 +17247,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.82 2003-11-08 01:00:42 dirt Exp $
+$Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17304,7 +17310,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.82 2003-11-08 01:00:42 dirt Exp $
+@comment $Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
