@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
+@c $Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9246,7 +9246,7 @@ emacs, The GNU Emacs Manual}).
 Do not put braces after any of these commands.
 
 
-@node Multiple Spaces, dmn, Ending a Sentence, Inserting Space
+@node Multiple Spaces
 @subsection Multiple Spaces
 
 @cindex Multiple spaces
@@ -9291,7 +9291,7 @@ Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
 
 Do not follow any of these commands with braces.
 
-To produce a non-breakable space, see @ref{w, non-breakable space}.
+To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
 
 
 @node dmn
@@ -16796,7 +16796,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
+$Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16861,7 +16861,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.15 2002-11-22 13:31:17 karl Exp $
+@@comment $Id: texinfo.txi,v 1.16 2002-11-25 01:21:36 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
