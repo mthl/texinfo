@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
+@c $Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9183,7 +9183,19 @@ The @code{@@shortcaption} command likewise may be used only within
 @code{@@float}, and takes a single argument in braces.  The short
 caption text is used instead of the caption text in a list of floats
 (see the next section).  Thus, you can write a long caption for the
-main document, and a short title to appear in the list of floats.
+main document, and a short title to appear in the list of floats.  For
+example:
+
+@example
+@@float
+... as above ...
+@@shortcaption{Text for list of floats.}
+@@end float
+@end example
+
+The text for @code{@@caption} and @code{@@shortcaption} may not
+contain comments (@code{@@c}), verbatim text (@text{@@verb}),
+environments such as @code{@@example}, or other complex constructs.
 
 
 @node listoffloats
@@ -18312,7 +18324,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
+$Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18378,7 +18390,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.108 2004-08-18 22:41:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.109 2004-08-27 13:53:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

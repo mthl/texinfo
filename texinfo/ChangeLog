@@ -1,3 +1,9 @@
+2004-08-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (caption shortcaption): show an example for
+        @shortcaption, and remark that weird commands like @c and @verb
+	are not allowed.  Suggested by Stepan.
+
 2004-08-27  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\initial): when breaking the column before the
