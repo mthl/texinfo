@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -330,7 +330,7 @@ msgstr ""
 "一般的な質問や議論は help-texinfo@gnu.org まで。\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 #, fuzzy
 msgid ""
 "\n"
@@ -2867,42 +2867,42 @@ msgstr "メニュー項目 `%s' は、`%s' に既に存在します"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' 項目が見つかりません -- 何も削除しませんでした"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "使い方を表示して終了します"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "処理の後にテンポラリファイルを残しておきます"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "処理のあとにテンポラリファイルを削除します (default)"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "出力を FILE に送ります"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "バージョン情報を表示して終了します"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "使い方: %s [オプション]... ファイル...\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "TeX の為のソート済インデックスファイルを生成します\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr ""
 "`foo.texi' 文書に対しては、通常はファイルとして `foo.%c%c' を指定します。\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2910,28 +2910,28 @@ msgstr ""
 "\n"
 "オプション:\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: texinfo のインデックスファイルではありません"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "%s の再オープンに失敗"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "%s にページ番号がありません"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s 項目に二つ目の項目名が続いています"
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s -- ファイル `%s'。\n"

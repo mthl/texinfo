@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -227,7 +227,7 @@ msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -319,7 +319,7 @@ msgstr ""
 "  info -f ./foo.info         显示文件 ./foo.info，而不是搜索目录\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2801,41 +2801,41 @@ msgstr "在文件“%2$s”中菜单项“%1$s”已存在"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到关于“%s”的条目；未删除"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "显示该求助信息并退出"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "在处理之后保留临时文件"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "在处理之后删除临时文件 (默认)"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "将输出送入 FILE"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "显示版本信息并退出"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "用法：%s [选项]... 文件...\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "为每个 TeX 输出文件生成排序的索引。\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2843,28 +2843,28 @@ msgstr ""
 "\n"
 "选项：\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s：不是 texinfo 索引文件"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "重新打开 %s 失败"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "%s 中没有页码"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "条目 %s 出现在具有次要名称的条目之后"
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s；文件“%s”。\n"

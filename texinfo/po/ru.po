@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-09-06 08:07+0400\n"
 "Last-Translator: Oleg S. Tihonov <tihonov@ffke-campus.mipt.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -231,7 +231,7 @@ msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -334,7 +334,7 @@ msgstr ""
 "  info -f ./foo.info         показать файл ./foo.info, не искать dir\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2896,43 +2896,43 @@ msgstr "пункт меню `%s' уже существует, для файла `%s'"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "не найдено вхождений для `%s'; ничего не удалено"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "показать эту справку и выйти"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "сохранять временные файлы после работы"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "не сохранять временные файлы (по умолчанию)"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "записать вывод в ФАЙЛ"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "показать информацию о версии и выйти"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Использование: %s [КЛЮЧ]... ФАЙЛ...\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr ""
 "Создает сортированный алфавитный указатель для\n"
 "каждого выходного TeX-файла.\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "ФАЙЛ... для документа `foo.texi' обычно задается как `foo.%c%c'.\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2940,28 +2940,28 @@ msgstr ""
 "\n"
 "Ключи:\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: не texinfo-файл с алфавитным указателем"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "ошибка повторного открытия %s"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "В %s нет номера страницы"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; для файла `%s'.\n"

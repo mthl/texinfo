@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "試試 --help 以取得更多的資訊.\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -320,7 +320,7 @@ msgstr ""
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 #, fuzzy
 msgid ""
 "\n"
@@ -2757,41 +2757,41 @@ msgstr "目錄項目 `%s' 已存在, 是給檔案 `%s' 的"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到 `%s' 的項目; 未刪除任何項目"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "顯示求助資訊, 然後離開"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "處理完畢後, 不移除暫存檔"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "處理完畢後, 移除暫存檔 (預設值)"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "將輸出送至 FILE"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "顯示版本資訊, 然後離開"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "用法: %s [OPTION]... FILE...\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "為每個 TeX 輸出 FILE 產生一個排序的索引.\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "通常文件 `foo.texi' 的 FILE... 引數會指定為 `foo.%c%c'.\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2799,28 +2799,28 @@ msgstr ""
 "\n"
 "選項:\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: 不是一個 texinfo 索引檔"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "重新開啟 %s 時發生錯誤"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "在 %s 中沒有頁碼"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr ""
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr ""

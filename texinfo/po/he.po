@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr ".רתוי בר עדימ תגצהל --help הסנ\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -325,7 +325,7 @@ msgstr ""
 "                   .help-texinfo@gnu.org-ל ןוידל םיאשונו תויללכ תולאשו\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2825,41 +2825,41 @@ msgstr "`%s' ףיעס ישארה טירפתב םייק רבכ `%s' ץבוקל"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "קחמנ אל םולכ ;`%s' רובע טירפת יפיעס ואצמנ אל"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "תינכתהמ אצו הז הרזע ךסמ גצה"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "דוביעה ךלהמב םירצונה םיינמז םיצבק קחמת לא"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "(ח\"מרב) דוביעה ךלהמב םירצונה םיינמז םיצבק קחמ"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "FILE ץבוקל טלפ הנפה"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "אצו תינכתה תסריג לע עדימ גצה"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "%s [OPTION]... FILE... :שומישה ןפוא\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr ".TeX י\"ע בתכנש FILE ץבוק לכל ןייוממ סקדניא ןכה\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr ".`foo.%c%c' םשב םיארקנ `foo.texi' ךמסמ רובע FILE יצבק ללכ ךרדב\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2867,28 +2867,28 @@ msgstr ""
 "\n"
 "                                                :םינייפאמ\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "texinfo לש סקדניא ץבוק וניא `%s'"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "%s לש תשדוחמ החיתפב הלקת"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "דומע רפסמ ןיא %s-ב"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr ".%s הלקת התרק `%s' ץבוקב\n"

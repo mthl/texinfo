@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1a\n"
-"POT-Creation-Date: 2002-10-15 15:02-0700\n"
+"POT-Creation-Date: 2002-10-23 15:59-0700\n"
 "PO-Revision-Date: 2002-03-13 10:05+06:00\n"
 "Last-Translator: Sergio Pokrovskij <pok@iis.nsk.su>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -226,7 +226,7 @@ msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion \"--help\".\n"
 
 #: info/info.c:279 info/infokey.c:139 makeinfo/makeinfo.c:693
-#: util/install-info.c:1250 util/texindex.c:341
+#: util/install-info.c:1250 util/texindex.c:336
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -324,7 +324,7 @@ msgstr ""
 " info -f ./um.info          eligu la dosieron ./um.info sen atenti \"dir\"\n"
 
 #: info/info.c:598 info/infokey.c:903 makeinfo/makeinfo.c:476
-#: util/install-info.c:428 util/texindex.c:289
+#: util/install-info.c:428 util/texindex.c:284
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2862,41 +2862,41 @@ msgstr "menuero \"%s\" jam ekzistas (por la dosiero \"%s\")"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "Trovigxis nenia informo Info-kataloga pri \"%s\"; nenio igxis forigita"
 
-#: util/texindex.c:248
+#: util/texindex.c:243
 msgid "display this help and exit"
 msgstr "eligu cxi tiun helpon kaj eliru"
 
-#: util/texindex.c:250
+#: util/texindex.c:245
 msgid "keep temporary files around after processing"
 msgstr "konservu la labordosierojn post la traktado"
 
-#: util/texindex.c:252
+#: util/texindex.c:247
 msgid "do not keep temporary files around after processing (default)"
 msgstr "ne konservu la labordosierojn post la traktado (defauxlto)"
 
-#: util/texindex.c:254
+#: util/texindex.c:249
 msgid "send output to FILE"
 msgstr "sendu la eligajxon en DOSIEROn"
 
-#: util/texindex.c:256
+#: util/texindex.c:251
 msgid "display version information and exit"
 msgstr "eligu la uzatan version kaj eliru"
 
-#: util/texindex.c:267
+#: util/texindex.c:262
 #, c-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Uzmaniero: %s [OPCIO]... DOSIERO...\n"
 
-#: util/texindex.c:268
+#: util/texindex.c:263
 msgid "Generate a sorted index for each TeX output FILE.\n"
 msgstr "Generu ordigitan indekson por cxiu TeX-a elig-DOSIERO.\n"
 
-#: util/texindex.c:271
+#: util/texindex.c:266
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
 msgstr "Kutime DOSIERO... estas \"umo.%c%c\" por dokumento \"umo.texi\".\n"
 
-#: util/texindex.c:273
+#: util/texindex.c:268
 msgid ""
 "\n"
 "Options:\n"
@@ -2904,28 +2904,28 @@ msgstr ""
 "\n"
 "Opcioj:\n"
 
-#: util/texindex.c:889 util/texindex.c:923 util/texindex.c:999
-#: util/texindex.c:1027
+#: util/texindex.c:900 util/texindex.c:934 util/texindex.c:1010
+#: util/texindex.c:1038
 #, c-format
 msgid "%s: not a texinfo index file"
 msgstr "%s: ne indeksa dosiero laux Texinfo"
 
-#: util/texindex.c:984
+#: util/texindex.c:995
 #, c-format
 msgid "failure reopening %s"
 msgstr "fiasko cxe remalfermo de %s"
 
-#: util/texindex.c:1226
+#: util/texindex.c:1237
 #, c-format
 msgid "No page number in %s"
 msgstr "Mankas pagxnumero en %s"
 
-#: util/texindex.c:1297
+#: util/texindex.c:1308
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "la artikolo %s sekvas artikolon kun kromnomo"
 
-#: util/texindex.c:1635
+#: util/texindex.c:1646
 #, c-format
 msgid "%s; for file `%s'.\n"
 msgstr "%s; por la dosiero \"%s\".\n"
