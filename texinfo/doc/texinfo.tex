@@ -4566,8 +4566,8 @@ width0pt\relax} \fi
 \newskip\lskip\newskip\rskip
 
 \def\cartouche{%
-\par  % can't be in the midst of a paragraph.
-\begingroup
+\begingroup\inENV
+  \ifhmode\par\fi  % can't be in the midst of a paragraph.
   \startsavinginserts
   \lskip=\leftskip \rskip=\rightskip
   \leftskip=0pt\rightskip=0pt % we want these *outside*.
@@ -4593,8 +4593,10 @@ width0pt\relax} \fi
 	      \lineskip=\normlskip
 	      \parskip=\normpskip
 	      \vskip -\parskip
+	      \comment % For explanation, see the end of \def\group.
 }
 \def\Ecartouche{%
+              \ifhmode\par\fi
 	      \kern3pt
 	  \egroup
 	  \kern3pt\vrule
