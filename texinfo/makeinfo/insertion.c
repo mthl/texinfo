@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.6 2002-10-09 16:32:40 karl Exp $
+   $Id: insertion.c,v 1.7 2002-10-14 21:02:33 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -581,7 +581,10 @@ begin_insertion (type)
       filling_enabled = indented_fill = 1;
 
       if (html)
-        enum_html ();
+        {
+          enum_html ();
+          in_paragraph = 0;
+        }
 
       if (xml)
         xml_begin_enumerate (enumeration_arg);
