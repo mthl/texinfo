@@ -1904,7 +1904,7 @@ where each line of input produces a line of output.}
 \newtoks\evenfootline    % footline on even pages
 \newtoks\oddfootline     % footline on odd pages
 
-% Now make Tex use those variables
+% Now make TeX use those variables
 \headline={{\textfonts\rm \ifodd\pageno \the\oddheadline
                             \else \the\evenheadline \fi}}
 \footline={{\textfonts\rm \ifodd\pageno \the\oddfootline
@@ -1926,24 +1926,22 @@ where each line of input produces a line of output.}
 \def\oddfooting{\parsearg\oddfootingxxx}
 \def\everyfooting{\parsearg\everyfootingxxx}
 
-{\catcode`\@=0 %
-
-\gdef\evenheadingxxx #1{\evenheadingyyy #1@|@|@|@|\finish}
-\gdef\evenheadingyyy #1@|#2@|#3@|#4\finish{%
+\def\evenheadingxxx #1{\evenheadingyyy #1\|\|\|\|\finish}
+\def\evenheadingyyy #1\|#2\|#3\|#4\finish{%
 \global\evenheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
-\gdef\oddheadingxxx #1{\oddheadingyyy #1@|@|@|@|\finish}
-\gdef\oddheadingyyy #1@|#2@|#3@|#4\finish{%
+\def\oddheadingxxx #1{\oddheadingyyy #1\|\|\|\|\finish}
+\def\oddheadingyyy #1\|#2\|#3\|#4\finish{%
 \global\oddheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
-\gdef\everyheadingxxx#1{\oddheadingxxx{#1}\evenheadingxxx{#1}}%
+\def\everyheadingxxx#1{\oddheadingxxx{#1}\evenheadingxxx{#1}}%
 
-\gdef\evenfootingxxx #1{\evenfootingyyy #1@|@|@|@|\finish}
-\gdef\evenfootingyyy #1@|#2@|#3@|#4\finish{%
+\def\evenfootingxxx #1{\evenfootingyyy #1\|\|\|\|\finish}
+\def\evenfootingyyy #1\|#2\|#3\|#4\finish{%
 \global\evenfootline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
 
-\gdef\oddfootingxxx #1{\oddfootingyyy #1@|@|@|@|\finish}
-\gdef\oddfootingyyy #1@|#2@|#3@|#4\finish{%
+\def\oddfootingxxx #1{\oddfootingyyy #1\|\|\|\|\finish}
+\def\oddfootingyyy #1\|#2\|#3\|#4\finish{%
   \global\oddfootline = {\rlap{\centerline{#2}}\line{#1\hfil#3}}%
   %
   % Leave some space for the footline.  Hopefully ok to assume
@@ -1952,9 +1950,8 @@ where each line of input produces a line of output.}
   \global\advance\vsize by -\baselineskip
 }
 
-\gdef\everyfootingxxx#1{\oddfootingxxx{#1}\evenfootingxxx{#1}}
-%
-}% unbind the catcode of @.
+\def\everyfootingxxx#1{\oddfootingxxx{#1}\evenfootingxxx{#1}}
+
 
 % @headings double      turns headings on for double-sided printing.
 % @headings single      turns headings on for single-sided printing.
