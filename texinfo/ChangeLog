@@ -1,3 +1,17 @@
+2003-09-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\sectionheading): make space below be half of
+	space above, and don't add \parskip to space above.  Suggestion
+	from Han-Wen Nienhuys <hanwen@cs.uu.nl>, implementation ideas from
+	Stepan Kasal <kasal@math.cas.cz>, 16 Sep 2003 11:30:43 +0200.
+
+2003-09-21  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\dosuppressfirstparagraphindent): change the
+	  redefinition of \indent and \noindent and factor out common
+	  parts of all redefinitions to ...
+	  (\restorefirstparagraphindent): ... a new macro.
+
 2003-09-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/macro.c (cm_alias): do not expand when calling
