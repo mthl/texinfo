@@ -10,14 +10,14 @@ i18ndir = $(pkgdatadir)/i18n
 TEXINFO_TEX = doc/texinfo.tex
 
 bin_SCRIPTS = texi2html
-texi2html_additionnal_scripts = \
+texi2html_additional_scripts = \
 	MySimple.pm \
 	T2h_i18n.pm \
 	texi2html.init \
 	translations.pl \
 	l2h.init
 
-texi2html_SOURCES = texi2html_configured.pl $(texi2html_additionnal_scripts)
+texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
 noinst_SCRIPTS = manage_i18n.pl
 
@@ -31,7 +31,7 @@ EXTRA_DIST = \
 	texi2html.spec \
 	texi2html.spec.in \
 	texi2html.pl \
-	$(texi2html_additionnal_scripts)
+	$(texi2html_additional_scripts)
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
@@ -120,7 +120,7 @@ dist_images_DATA = images/a_begin.gif \
 	images/xy_up.gif \
 	images/xy_up_gr.gif
 
-texi2html: $(texi2html_SOURCES)
+texi2html: $(texi2html_sources)
 	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
 	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
 	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
