@@ -1,3 +1,11 @@
+2004-10-04  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (cm_value): increment and restore
+		input_text_offset before execute_string on the value,
+		so cm_xref doesn't complain about missing punctuation.
+	From: Sergey Poznyakoff <gray@Mirddin.farlep.net>,
+	04 Oct 2004 15:04:33 +0300.
+
 2004-10-01  Karl Berry  <karl@gnu.org>
 
 	* lib/Makefile.am (libtxi_a_SOURCES): add getopt_.h.

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.66 2004-08-30 22:11:39 karl Exp $
+   $Id: makeinfo.c,v 1.67 2004-10-04 13:05:49 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -3652,7 +3652,14 @@ cm_value (int arg, int start_pos, int end_pos)
          among other things.  */
 
       if (value)
-        execute_string ("%s", value);
+	{
+	  /* We need to get past the closing brace since the value may
+	     expand to a context-sensitive macro (e.g. @xref) and produce
+	     spurious warnings */
+	  input_text_offset++; 
+	  execute_string ("%s", value);
+	  input_text_offset--;
+	}
       else
 	{
           warning (_("undefined flag: %s"), name);
