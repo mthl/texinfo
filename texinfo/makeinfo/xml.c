@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.43 2003-11-24 16:40:03 dirt Exp $
+   $Id: xml.c,v 1.44 2003-11-24 21:01:29 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1284,6 +1284,24 @@ xml_insert_quotation (type, arg)
     }
 }
 
+/* Starting generic docbook floats.  Just starts elt with correct label
+   and id attributes, and inserts title.  */
+void
+xml_begin_docbook_float (elt)
+    int elt;
+{
+  if (strlen (current_float_id ()) == 0)
+    xml_insert_element_with_attribute (elt, START, "label=\"\"");
+  else
+    xml_insert_element_with_attribute (elt, START,
+        "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
+        current_float_number ());
+
+  xml_insert_element (TITLE, START);
+  execute_string ("%s", current_float_title ());
+  xml_insert_element (TITLE, END);
+}
+
 /*
  * Lists and Tables
  */
@@ -1512,20 +1530,9 @@ xml_insert_docbook_image (name_arg)
     char *name_arg;
 {
   if (is_in_insertion_of_type (floatenv))
-    {
-      if (strlen (current_float_id ()) == 0)
-        xml_insert_element_with_attribute (INFORMALFIGURE, START, "label=\"\"");
-      else
-        xml_insert_element_with_attribute (INFORMALFIGURE, START,
-            "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
-            current_float_number ());
-
-      xml_insert_element (TITLE, START);
-      execute_string ("%s", current_float_title ());
-      xml_insert_element (TITLE, END);
-    }
+    xml_begin_docbook_float (INFORMALFIGURE);
   else
-  xml_insert_element (INFORMALFIGURE, START);
+    xml_insert_element (INFORMALFIGURE, START);
 
   xml_insert_element (MEDIAOBJECT, START);
 
@@ -1832,18 +1839,7 @@ xml_begin_multitable (ncolumns, column_widths)
   if (docbook)
     {
       if (is_in_insertion_of_type (floatenv))
-        {
-          if (strlen (current_float_id ()) == 0)
-            xml_insert_element_with_attribute (MULTITABLE, START, "label=\"\"");
-          else
-            xml_insert_element_with_attribute (MULTITABLE, START,
-                "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
-                current_float_number ());
-
-          xml_insert_element (TITLE, START);
-          execute_string ("%s", current_float_title ());
-          xml_insert_element (TITLE, END);
-        }
+        xml_begin_docbook_float (MULTITABLE);
       else
         xml_insert_element (MULTITABLE, START);
 

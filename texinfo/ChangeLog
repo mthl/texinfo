@@ -1,5 +1,15 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.c (cm_example):
+	* makeinfo/xml.c (xml_insert_docbook_image, xml_begin_multitable):
+	moved common floatenv handling to ...
+	(xml_begin_docbook_float): here.
+
+	* makeinfo/insertion.c (end_insertion, cm_smallexample, cm_lisp)
+	(cm_smalllisp): insert FLOATEXAMPLE for Docbook if inside @float.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/insertion.c (is_in_insertion_of_type): don't return the
 	level, as it is not useful.
 	(begin_insertion): instead of is_in_insertion_of_type, use
