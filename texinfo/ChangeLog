@@ -1,3 +1,40 @@
+2003-01-30    <karl@gnu.org>
+
+	* doc/texinfo.tex (\dosubind): need full expansion of the index
+		sort string.
+
+	* doc/texinfo.tex (\startcontents,\contents,\shortcontents):
+	assignments to \pageno must be \global; otherwise
+	if it's run inside a group, as in
+	@ifnothtml
+	@contents
+	@end ifnothtml
+	the rest of the pages in the document get roman numerals.
+	Reported by rlp.
+
+	* doc/texinfo.tex (\dosubind): need space between entry and
+	subentry in printed output.  Bug report from: Robin Lee Powell
+	<rlpowell@digitalkingdom.org>, 30 Jan 2003 15:13:48 -0800.
+	(\defophead, \defcvarhead, \defivarheader): show
+	method name in \code.
+
+	* doc/texinfo.tex (\dosubind): need to \vskip-\skip0, not
+	-\lastskip, since \lastskip gets cleared by the \nobreak.  Bug
+	report from: Werner LEMBERG <wl@gnu.org>, 29 Jan 2003 09:18:16
+	+0100.
+
+2003-01-29    <karl@gnu.org>
+
+	* info/signals.c (initialize_info_signal_handler): initialize the
+	sigaction struct here, not statically, since we can't rely on the
+	ordering of the elements; it's different on IRIX and FreeBSD, at
+	least.  Patch from: ezra peisach <epeisach@med-xtal.bu.edu>, 28
+	Jan 2003 13:09:18 -0500 (EST).
+
+2003-01-28    <karl@gnu.org>
+
+	* util/dir-example: bring emacs section up to date.
+
 2003-01-27    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.3d.
