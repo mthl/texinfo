@@ -5364,7 +5364,7 @@ width0pt\relax} \fi
 \def\defopheader#1#2#3{%
   \dosubind{fn}{\code{#2}}{\putwordon\ \code{#1}}% function index entry
   \begingroup
-    \defname{#2}{\defoptype\ \putwordon\ #1}%
+    \defname{#2}{\defoptype\ \putwordon\ \code{#1}}%
     \defunargs{#3}%
   \endgroup
 }
@@ -5435,7 +5435,7 @@ width0pt\relax} \fi
 \def\defcvarheader #1#2#3{%
   \dosubind{vr}{\code{#2}}{\putwordof\ \code{#1}}% variable index entry
   \begingroup
-    \defname{#2}{\defcvtype\ \putwordof\ #1}%
+    \defname{#2}{\defcvtype\ \putwordof\ \code{#1}}%
     \defvarargs{#3}%
   \endgroup
 }
@@ -5447,7 +5447,7 @@ width0pt\relax} \fi
 \def\defivarheader#1#2#3{%
   \dosubind{vr}{\code{#2}}{\putwordof\ \code{#1}}% entry in var index
   \begingroup
-    \defname{#2}{\putwordInstanceVariableof\ #1}%
+    \defname{#2}{\putwordInstanceVariableof\ \code{#1}}%
     \defvarargs{#3}%
   \endgroup
 }
