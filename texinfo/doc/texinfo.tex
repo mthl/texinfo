@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-10.06}
+\def\texinfoversion{2003-01-10.08}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
@@ -2867,99 +2867,99 @@ width0pt\relax} \fi
 % laboriously list every single command here.)
 % 
 \def\indexdummies{%
-\def\ { }%
-\def\@{@}% change to @@ when we switch to @ as escape char in aux files.
-% Need these in case \tex is in effect and \{ is a \delimiter again.
-% But can't use \lbracecmd and \rbracecmd because texindex assumes
-% braces and backslashes are used only as delimiters.  
-\let\{ = \mylbrace
-\let\} = \myrbrace
-\def\_{{\realbackslash _}}%
-\normalturnoffactive
-%
-% Take care of the plain tex accent commands.
-\def\,##1{\realbackslash ,{##1}}%
-\def\"{\realbackslash "}%
-\def\`{\realbackslash `}%
-\def\'{\realbackslash '}%
-\def\^{\realbackslash ^}%
-\def\~{\realbackslash ~}%
-\def\={\realbackslash =}%
-\def\b{\realbackslash b}%
-\def\c{\realbackslash c}%
-\def\d{\realbackslash d}%
-\def\u{\realbackslash u}%
-\def\v{\realbackslash v}%
-\def\H{\realbackslash H}%
-\def\dotless##1{\realbackslash dotless {##1}}%
-% Take care of the plain tex special European modified letters.
-\def\AA{\realbackslash AA}%
-\def\AE{\realbackslash AE}%
-\def\L{\realbackslash L}%
-\def\OE{\realbackslash OE}%
-\def\O{\realbackslash O}%
-\def\aa{\realbackslash aa}%
-\def\ae{\realbackslash ae}%
-\def\l{\realbackslash l}%
-\def\oe{\realbackslash oe}%
-\def\o{\realbackslash o}%
-\def\ss{\realbackslash ss}%
-%
-% Although these internals commands shouldn't show up, sometimes they do.
-\def\bf{\realbackslash bf }%
-\def\gtr{\realbackslash gtr}%
-\def\hat{\realbackslash hat}%
-\def\less{\realbackslash less}%
-%\def\rm{\realbackslash rm }%
-\def\sf{\realbackslash sf}%
-\def\sl{\realbackslash sl }%
-\def\tclose##1{\realbackslash tclose {##1}}%
-\def\tt{\realbackslash tt}%
-%
-\def\b##1{\realbackslash b {##1}}%
-\def\i##1{\realbackslash i {##1}}%
-\def\sc##1{\realbackslash sc {##1}}%
-\def\t##1{\realbackslash t {##1}}%
-\def\r##1{\realbackslash r {##1}}%
-%
-\def\TeX{\realbackslash TeX}%
-\def\acronym##1{\realbackslash acronym {##1}}%
-\def\cite##1{\realbackslash cite {##1}}%
-\def\code##1{\realbackslash code {##1}}%
-\def\command##1{\realbackslash command {##1}}%
-\def\dfn##1{\realbackslash dfn {##1}}%
-\def\dots{\realbackslash dots }%
-\def\emph##1{\realbackslash emph {##1}}%
-\def\env##1{\realbackslash env {##1}}%
-\def\file##1{\realbackslash file {##1}}%
-\def\kbd##1{\realbackslash kbd {##1}}%
-\def\key##1{\realbackslash key {##1}}%
-\def\math##1{\realbackslash math {##1}}%
-\def\option##1{\realbackslash option {##1}}%
-\def\samp##1{\realbackslash samp {##1}}%
-\def\strong##1{\realbackslash strong {##1}}%
-\def\uref##1{\realbackslash uref {##1}}%
-\def\url##1{\realbackslash url {##1}}%
-\def\var##1{\realbackslash var {##1}}%
-\def\w{\realbackslash w }%
-%
-% These math commands don't seem likely to be used in index entries.
-\def\copyright{\realbackslash copyright}%
-\def\equiv{\realbackslash equiv}%
-\def\error{\realbackslash error}%
-\def\expansion{\realbackslash expansion}%
-\def\point{\realbackslash point}%
-\def\print{\realbackslash print}%
-\def\result{\realbackslash result}%
-%
-% Handle some cases of @value -- where the variable name does not
-% contain - or _, and the value does not contain any
-% (non-fully-expandable) commands.
-\let\value = \expandablevalue
-%
-\unsepspaces
-% Turn off macro expansion
-\turnoffmacros
+  \def\ { }%
+  \def\@{@}% change to @@ when we switch to @ as escape char in aux files.
+  % Need these in case \tex is in effect and \{ is a \delimiter again.
+  % But can't use \lbracecmd and \rbracecmd because texindex assumes
+  % braces and backslashes are used only as delimiters.  
+  \let\{ = \mylbrace
+  \let\} = \myrbrace
+  \def\_{{\realbackslash _}}%
+  \normalturnoffactive
+  %
+  % Take care of the plain tex accent commands.
+  \def\,##1{\realbackslash ,{##1}}%
+  \def\"{\realbackslash "}%
+  \def\`{\realbackslash `}%
+  \def\'{\realbackslash '}%
+  \def\^{\realbackslash ^}%
+  \def\~{\realbackslash ~}%
+  \def\={\realbackslash =}%
+  \def\b{\realbackslash b}%
+  \def\c{\realbackslash c}%
+  \def\d{\realbackslash d}%
+  \def\u{\realbackslash u}%
+  \def\v{\realbackslash v}%
+  \def\H{\realbackslash H}%
+  \def\dotless##1{\realbackslash dotless {##1}}%
+  % Take care of the plain tex special European modified letters.
+  \def\AA{\realbackslash AA}%
+  \def\AE{\realbackslash AE}%
+  \def\L{\realbackslash L}%
+  \def\OE{\realbackslash OE}%
+  \def\O{\realbackslash O}%
+  \def\aa{\realbackslash aa}%
+  \def\ae{\realbackslash ae}%
+  \def\l{\realbackslash l}%
+  \def\oe{\realbackslash oe}%
+  \def\o{\realbackslash o}%
+  \def\ss{\realbackslash ss}%
+  %
+  % Although these internals commands shouldn't show up, sometimes they do.
+  \def\bf{\realbackslash bf }%
+  \def\gtr{\realbackslash gtr}%
+  \def\hat{\realbackslash hat}%
+  \def\less{\realbackslash less}%
+  %\def\rm{\realbackslash rm }%
+  \def\sf{\realbackslash sf}%
+  \def\sl{\realbackslash sl }%
+  \def\tclose##1{\realbackslash tclose {##1}}%
+  \def\tt{\realbackslash tt}%
+  %
+  \def\b##1{\realbackslash b {##1}}%
+  \def\i##1{\realbackslash i {##1}}%
+  \def\sc##1{\realbackslash sc {##1}}%
+  \def\t##1{\realbackslash t {##1}}%
+  \def\r##1{\realbackslash r {##1}}%
+  %
+  \def\TeX{\realbackslash TeX}%
+  \def\acronym##1{\realbackslash acronym {##1}}%
+  \def\cite##1{\realbackslash cite {##1}}%
+  \def\code##1{\realbackslash code {##1}}%
+  \def\command##1{\realbackslash command {##1}}%
+  \def\dfn##1{\realbackslash dfn {##1}}%
+  \def\dots{\realbackslash dots }%
+  \def\emph##1{\realbackslash emph {##1}}%
+  \def\env##1{\realbackslash env {##1}}%
+  \def\file##1{\realbackslash file {##1}}%
+  \def\kbd##1{\realbackslash kbd {##1}}%
+  \def\key##1{\realbackslash key {##1}}%
+  \def\math##1{\realbackslash math {##1}}%
+  \def\option##1{\realbackslash option {##1}}%
+  \def\samp##1{\realbackslash samp {##1}}%
+  \def\strong##1{\realbackslash strong {##1}}%
+  \def\uref##1{\realbackslash uref {##1}}%
+  \def\url##1{\realbackslash url {##1}}%
+  \def\var##1{\realbackslash var {##1}}%
+  \def\w{\realbackslash w }%
+  %
+  % These math commands don't seem likely to be used in index entries.
+  \def\copyright{\realbackslash copyright}%
+  \def\equiv{\realbackslash equiv}%
+  \def\error{\realbackslash error}%
+  \def\expansion{\realbackslash expansion}%
+  \def\point{\realbackslash point}%
+  \def\print{\realbackslash print}%
+  \def\result{\realbackslash result}%
+  %
+  % Handle some cases of @value -- where the variable name does not
+  % contain - or _, and the value does not contain any
+  % (non-fully-expandable) commands.
+  \let\value = \expandablevalue
+  %
+  \unsepspaces
+  % Turn off macro expansion
+  \turnoffmacros
 }
 
 % If an index command is used in an @example environment, any spaces
@@ -2975,68 +2975,68 @@ width0pt\relax} \fi
 \def\indexdummydots{...}
 
 \def\indexnofonts{%
-\def\@{@}%
-% how to handle braces?
-\def\_{\normalunderscore}%
-%
-\let\,=\indexdummyfont
-\let\"=\indexdummyfont
-\let\`=\indexdummyfont
-\let\'=\indexdummyfont
-\let\^=\indexdummyfont
-\let\~=\indexdummyfont
-\let\==\indexdummyfont
-\let\b=\indexdummyfont
-\let\c=\indexdummyfont
-\let\d=\indexdummyfont
-\let\u=\indexdummyfont
-\let\v=\indexdummyfont
-\let\H=\indexdummyfont
-\let\dotless=\indexdummyfont
-% Take care of the plain tex special European modified letters.
-\def\AA{AA}%
-\def\AE{AE}%
-\def\L{L}%
-\def\OE{OE}%
-\def\O{O}%
-\def\aa{aa}%
-\def\ae{ae}%
-\def\l{l}%
-\def\oe{oe}%
-\def\o{o}%
-\def\ss{ss}%
-%
-% Don't no-op \tt, since it isn't a user-level command
-% and is used in the definitions of the active chars like <, >, |, etc.
-% Likewise with the other plain tex font commands.
-%\let\tt=\indexdummyfont
-%
-\let\b=\indexdummyfont
-\let\i=\indexdummyfont
-\let\r=\indexdummyfont
-\let\sc=\indexdummyfont
-\let\t=\indexdummyfont
-%
-\let\TeX=\indexdummytex
-\let\acronym=\indexdummyfont
-\let\cite=\indexdummyfont
-\let\code=\indexdummyfont
-\let\command=\indexdummyfont
-\let\dfn=\indexdummyfont
-\let\dots=\indexdummydots
-\let\emph=\indexdummyfont
-\let\env=\indexdummyfont
-\let\file=\indexdummyfont
-\let\kbd=\indexdummyfont
-\let\key=\indexdummyfont
-\let\math=\indexdummyfont
-\let\option=\indexdummyfont
-\let\samp=\indexdummyfont
-\let\strong=\indexdummyfont
-\let\uref=\indexdummyfont
-\let\url=\indexdummyfont
-\let\var=\indexdummyfont
-\let\w=\indexdummyfont
+  \def\@{@}%
+  % how to handle braces?
+  \def\_{\normalunderscore}%
+  %
+  \let\,=\indexdummyfont
+  \let\"=\indexdummyfont
+  \let\`=\indexdummyfont
+  \let\'=\indexdummyfont
+  \let\^=\indexdummyfont
+  \let\~=\indexdummyfont
+  \let\==\indexdummyfont
+  \let\b=\indexdummyfont
+  \let\c=\indexdummyfont
+  \let\d=\indexdummyfont
+  \let\u=\indexdummyfont
+  \let\v=\indexdummyfont
+  \let\H=\indexdummyfont
+  \let\dotless=\indexdummyfont
+  % Take care of the plain tex special European modified letters.
+  \def\AA{AA}%
+  \def\AE{AE}%
+  \def\L{L}%
+  \def\OE{OE}%
+  \def\O{O}%
+  \def\aa{aa}%
+  \def\ae{ae}%
+  \def\l{l}%
+  \def\oe{oe}%
+  \def\o{o}%
+  \def\ss{ss}%
+  %
+  % Don't no-op \tt, since it isn't a user-level command
+  % and is used in the definitions of the active chars like <, >, |, etc.
+  % Likewise with the other plain tex font commands.
+  %\let\tt=\indexdummyfont
+  %
+  \let\b=\indexdummyfont
+  \let\i=\indexdummyfont
+  \let\r=\indexdummyfont
+  \let\sc=\indexdummyfont
+  \let\t=\indexdummyfont
+  %
+  \let\TeX=\indexdummytex
+  \let\acronym=\indexdummyfont
+  \let\cite=\indexdummyfont
+  \let\code=\indexdummyfont
+  \let\command=\indexdummyfont
+  \let\dfn=\indexdummyfont
+  \let\dots=\indexdummydots
+  \let\emph=\indexdummyfont
+  \let\env=\indexdummyfont
+  \let\file=\indexdummyfont
+  \let\kbd=\indexdummyfont
+  \let\key=\indexdummyfont
+  \let\math=\indexdummyfont
+  \let\option=\indexdummyfont
+  \let\samp=\indexdummyfont
+  \let\strong=\indexdummyfont
+  \let\uref=\indexdummyfont
+  \let\url=\indexdummyfont
+  \let\var=\indexdummyfont
+  \let\w=\indexdummyfont
 }
 
 % To define \realbackslash, we must make \ not be an escape.
