@@ -1,6 +1,16 @@
 2002-11-07    <karl@gnu.org>
 
-	* util/dir-example: sed
+	* configure.ac: pretest version 4.2e.
+
+	From: José Fonseca <j_r_fonseca@yahoo.co.uk>,
+              7 Nov 2002 00:31:28 +0000.
+	* makeinfo/index.c (cm_printindex): in docbook case, pass the
+	unexpanded index term.
+	* makeinfo/xml.c (xml_insert_indexterm): execute_string instead of
+		insert_string.
+	(Otherwise, <>& are not escaped in the docbook index output.)
+
+	* util/dir-example: sed.
 
 	* makeinfo/lang.c: copyright.
 	* makeinfo/lang.h: copyright.
