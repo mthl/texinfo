@@ -1,3 +1,12 @@
+2005-04-04  Torsten Bronger  <bronger@physik.rwth-aachen.de>  (tiny changes)
+
+	* doc/texinfo.txi: Fix several typos.
+
+2005-04-04  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/Makefile.am: Fix my previous patch, so that the rules work; and
+	  don't modify the path, it's simpler to give help2man the full path.
+
 2005-03-31  Per Bothner  <per@bothner.com>
 
 	* makeinfo/makeinfo.c (maybe_escaped_expansion): Don't start a new
@@ -243,13 +252,13 @@
 	* util/texi2dvi (findprog): make sure test -x isn't returning true
 	for a directory.  From Stepan and others, 20 Jan 2005 12:35:08 +0100.
 
-2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
+2005-01-16  Torsten Bronger  <bronger@physik.rwth-aachen.de>  (tiny change)
 
 	* makeinfo/insertion.c (handle_verbatim_environment): do HTML
 		conversions, to make ]]> work.
 	* makeinfo/xml.c (xml_add_char): also escape >.
 
-2005-01-16  Torsten Bronger <bronger@physik.rwth-aachen.de>
+2005-01-16  Torsten Bronger  <bronger@physik.rwth-aachen.de>  (tiny change)
 
 	* makeinfo/cmds.c (cm_tie): use &nbsp; for HTML, &#xa0; for
 		XML/Docbook.

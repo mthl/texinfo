@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.23 2005-03-25 13:55:14 kasal Exp $
+# $Id: Makefile.am,v 1.24 2005-04-04 11:08:27 kasal Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -65,33 +65,23 @@ install-tex:
 # The man pages depend on the --help strings and the version number.
 common_mandeps = $(top_srcdir)/configure.ac
 
-# Set up variables:
-man_rule_0 = echo "Updating man page $@" && \
+# Set up the variables:
+man_rule_0 = \
 	program=`expr '/$@' : '.*/\(.*\)\.1'` && \
 	case $$program in makeinfo) dir=makeinfo;; info*) dir=info;; \
 		*) dir=util;; esac && \
+	dir="$(top_builddir)/$(native_tools)/$$dir" && \
 	case $$program in info|install-info) program=g$$program;; \
 		esac
 
-# Update the binary:
-man_rule_1 = \
-	echo cd $(top_builddir)/$$dir '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
-	     cd $(top_builddir)/$$dir  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)
-
-# Generate the page:
-# Add $(top_srcdir)/util to the path, because texi2dvi is in source tree.
-man_rule_2 = \
-	PATH="$(top_srcdir)/util@PATH_SEPARATOR@$$PATH" && \
-	for dir in util info makeinfo; do \
-	  PATH="$(top_builddir)/$(native_tools)/$$dir@PATH_SEPARATOR@$$PATH"; \
-	done && \
-	echo PATH="$$PATH" $(HELP2MAN) --name=\"$$name\" $$program '>$@' && \
-	$(HELP2MAN) --name="$$name" $$program >$@
-
-# Update manpage for a binary program:
-man_rule_bin = $(man_rule_0) && $(man_rule_1) && $(man_rule_2)
-# Update manpage for a script:
-man_rule_scr = $(man_rule_0) && $(man_rule_2)
+# Update the manpage for a binary program; set up the variables,
+# make sure the binary is up-to-date and then generate the man page.
+man_rule_bin = echo "Updating man page $@" && \
+	$(man_rule_0) && \
+	echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
+	    (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) && \
+	echo $(HELP2MAN) --name=\""$$name"\" "$$dir/$$program" '>$@' && \
+	     $(HELP2MAN) --name="$$name"     "$$dir/$$program"  >$@
 
 $(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
@@ -105,7 +95,7 @@ $(srcdir)/texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 $(srcdir)/texi2dvi.1: $(top_srcdir)/util/texi2dvi $(common_mandeps)
-	@name="print Texinfo documents" && $(man_rule_scr)
+	$(HELP2MAN) --name="print Texinfo documents" $(top_srcdir)/util/texi2dvi >$@
 
 # Do not create info files for distribution.
 dist-info:
