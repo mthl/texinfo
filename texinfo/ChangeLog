@@ -1,3 +1,14 @@
+2004-10-07  Stepan Kasal  <kasal@ucw.cz>
+
+	@table command doesn't work inside environment @display.
+	There is no point in trying to fix it: just give up with a cry.
+
+	* doc/texinfo.tex (\table, \ftable, \vtable): Instead of calling
+	  \tablex directly, call ...
+	(\tablecheck): ... this new macro which checks for active newline;
+	  if it's found, it reports an error and uses \doignore to recover.
+	* doc/texinfo.txi (display): mention this.
+
 2004-10-06  Karl Berry  <karl@gnu.org>
 
 	* doc/*.texi: more consistent use of dashes.
