@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.16 2002-11-29 18:19:00 feloy Exp $
+   $Id: xml.c,v 1.17 2002-12-07 14:06:14 karl Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -405,7 +405,7 @@ xml_id (id)
   strcpy (tem, id);
   while (*p)
     {
-      if (strchr ("~ &/+^;?()%<>\"", *p))
+      if (strchr ("~ &/+^;?()%<>\"'$¿", *p))
         *p = '-';
       p++;
     }
@@ -1108,28 +1108,28 @@ xml_begin_enumerate (enum_arg)
       {
         if (enum_arg[0] == '1')
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"Arabic\"", NULL);
+                                             "numeration=\"arabic\"", NULL);
         else
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"Continues\" numeration=\"Arabic\"", NULL);
+                                             "continuation=\"continues\" numeration=\"arabic\"", NULL);
       }
       else if (isupper (*enum_arg))
         {
         if (enum_arg[0] == 'A')
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"Upperalpha\"", NULL);
+                                             "numeration=\"upperalpha\"", NULL);
         else
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"Continues\" numeration=\"Upperalpha\"", NULL);
+                                             "continuation=\"continues\" numeration=\"upperalpha\"", NULL);
       }
       else
         {
           if (enum_arg[0] == 'a')
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "numeration=\"Loweralpha\"", NULL);
+                                             "numeration=\"loweralpha\"", NULL);
         else
           xml_insert_element_with_attribute (ENUMERATE, START,
-                                             "continuation=\"Continues\" numeration=\"Loweralpha\"", NULL);
+                                             "continuation=\"continues\" numeration=\"loweralpha\"", NULL);
         }
     }
   xml_table_level ++;
