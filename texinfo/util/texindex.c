@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.1 2002-08-25 23:38:39 karl Exp $
+   $Id: texindex.c,v 1.2 2002-09-27 20:28:57 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002 Free Software Foundation, Inc.
@@ -219,7 +219,7 @@ main (argc, argv)
 
       if (ptr < MAX_IN_CORE_SORT)
         /* Sort a small amount of data. */
-        sort_in_core (infiles[i], ptr, outfile);
+        sort_in_core (infiles[i], (int)ptr, outfile);
       else
         sort_offline (infiles[i], ptr, outfile);
     }
@@ -861,9 +861,8 @@ readline (linebuffer, stream)
 /* Sort an input file too big to sort in core.  */
 
 void
-sort_offline (infile, nfiles, total, outfile)
+sort_offline (infile, total, outfile)
      char *infile;
-     int nfiles;
      off_t total;
      char *outfile;
 {
@@ -942,7 +941,7 @@ fail:
   for (i = 0; i < ntemps; i++)
     {
       char *newtemp = maketempname (++tempcount);
-      sort_in_core (&tempfiles[i], MAX_IN_CORE_SORT, newtemp);
+      sort_in_core (tempfiles[i], MAX_IN_CORE_SORT, newtemp);
       if (!keep_tempfiles)
         unlink (tempfiles[i]);
       tempfiles[i] = newtemp;
@@ -963,7 +962,7 @@ fail:
 void
 sort_in_core (infile, total, outfile)
      char *infile;
-     off_t total;
+     int total;
      char *outfile;
 {
   char **nextline;
