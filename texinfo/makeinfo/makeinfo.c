@@ -1,8 +1,8 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.15 2003-01-01 00:49:52 karl Exp $
+   $Id: makeinfo.c,v 1.16 2003-01-17 17:15:08 karl Exp $
 
-   Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-   2000, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
+   2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -784,7 +784,20 @@ For more information about these matters, see the files named COPYING.\n"),
 
 /* Hacking tokens and strings.  */
 
-/* Return the next token as a string pointer.  We cons the string. */
+/* Return the next token as a string pointer.  We cons the string.  This
+   `token' means simply a command name.  */
+
+/* = is so @alias works.  ^ and _ are so macros can be used in math mode
+   without a space following.  Possibly we should simply allow alpha, to
+   be compatible with TeX.  */
+#define COMMAND_CHAR(c) (!cr_or_whitespace(c) \
+                         && (c) != '{' \
+                         && (c) != '}' \
+                         && (c) != '=' \
+                         && (c) != '_' \
+                         && (c) != '^' \
+                         )
+
 char *
 read_token ()
 {
@@ -808,7 +821,7 @@ read_token ()
 
   for (i = 0; ((input_text_offset != input_text_length)
                && (character = curchar ())
-               && command_char (character));
+               && COMMAND_CHAR (character));
        i++, input_text_offset++);
   result = xmalloc (i + 1);
   memcpy (result, &input_text[input_text_offset - i], i);
