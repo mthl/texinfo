@@ -1,3 +1,15 @@
+2003-11-24  Akim Demaille  <akim@epita.fr>
+
+	* configure.ac (HELP2MAN): Look for it.
+	* doc/help2man: Remove.
+	* doc/Makefile.am (HELP2MAN, noinst_SCRIPT): Remove.
+	(common_mandeps): Don't depend on HELP2MAN which can be a complex
+	command such as "missing --run help2man.
+
+2003-11-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: doc/\global fixes.
+
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c: new command @listoffloats.
@@ -76,6 +88,9 @@
 	be uppercase.
 
 2003-11-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: doc fix for multitable.
+	* util/gendocs.sh: docbook support, from Simon Josefsson.
 
 	* doc/texinfo.tex (\defttsl): new font.
 	(\df): set ttsl too.
