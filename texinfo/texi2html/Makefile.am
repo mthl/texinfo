@@ -3,7 +3,7 @@
 # breaks with automake version < 1.4
 AUTOMAKE_OPTIONS = 1.5 gnu
 #
-SUBDIRS = doc
+SUBDIRS = doc Tests
 #
 # This is to prevent texinfo.tex from being included
 # in the top-level distribution directory.
