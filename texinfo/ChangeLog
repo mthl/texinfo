@@ -1,3 +1,7 @@
+2003-06-18    <karl@gnu.org>
+
+	* config.{guess,sub}, install-sh, lib/xalloc.h: update from gnulib.
+
 2003-06-10    <karl@gnu.org>
 
 	* version 4.6.
