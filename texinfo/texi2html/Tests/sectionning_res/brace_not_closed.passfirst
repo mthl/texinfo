@@ -1,4 +1,5 @@
 brace_not_closed.texi(,2) 
+brace_not_closed.texi(,3) @setfilename brace_not_closed
 brace_not_closed.texi(,4) 
 brace_not_closed.texi(,5) @node ToP
 brace_not_closed.texi(,6) Top node
@@ -10,3 +11,4 @@ brace_not_closed.texi(,11)
 brace_not_closed.texi(,12) Some text @|.
 brace_not_closed.texi(,13) More text
 brace_not_closed.texi(,14) 
+brace_not_closed.texi(,15) @bye

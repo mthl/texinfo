@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 1.8 What a Texinfo File Must Have</title>
+<title>GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have</title>
 
-<meta name="description" content="Texinfo: 1.8 What a Texinfo File Must Have">
-<meta name="keywords" content="Texinfo: 1.8 What a Texinfo File Must Have">
+<meta name="description" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
+<meta name="keywords" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,25 +86,25 @@ preference) one of the extensions `<tt>.texinfo</tt>', `<tt>.texi</tt>',
 they describe more clearly to a human reader the nature of the file.
 The shorter extensions are for operating systems that cannot handle long
 file names.
-
-</p><p>In order to be made into a printed manual and an Info file, a Texinfo
+</p>
+<p>In order to be made into a printed manual and an Info file, a Texinfo
 file <strong>must</strong> begin with lines like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
 
 <p>The contents of the file follow this beginning, and then you
 <strong>must</strong> end a Texinfo file with a line like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@bye
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@bye
 </pre></td></tr></table>
 <a name="IDX19"></a>
 
 <p>Here's an explanation:
-
-</p><ul>
+</p>
+<ul>
 <li>
 The `<samp>\input texinfo</samp>' line tells TeX to use the
 `<tt>texinfo.tex</tt>' file, which tells TeX how to translate the Texinfo
@@ -131,8 +131,8 @@ the formatters that the file is ended and to stop formatting.
 <p>Typically, you will not use quite such a spare format, but will include
 mode setting and start-of-header and end-of-header lines at the
 beginning of a Texinfo file, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
@@ -141,17 +141,17 @@ beginning of a Texinfo file, like this:
 
 <p>In the first line, `<samp>-*-texinfo-*-</samp>' causes Emacs to switch into
 Texinfo mode when you edit the file.
-
-</p><p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
+</p>
+<p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
 <code>@settitle</code> lines are optional, but you need them in order to
 run TeX or Info on just part of the file.  (See section <a href="Start-of-Header.html#SEC45">Start of Header</a>.)
-
-</p><p>Furthermore, you will usually provide a Texinfo file with a title page,
+</p>
+<p>Furthermore, you will usually provide a Texinfo file with a title page,
 indices, and the like, all of which are explained in this manual.  But
 the minimum, which can be useful for short documents, is just the three
 lines at the beginning and the one line at the end.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Comments.html#SEC9" title="Previous section in reading order"> &lt; </a>]</td>

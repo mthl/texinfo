@@ -1,6 +1,7 @@
 novalidate.texi(,2) 
+novalidate.texi(,3) @setfilename novalidate
 novalidate.texi(,4) 
-novalidate.texi(,5) 
+novalidate.texi(,5) @novalidate
 novalidate.texi(,6) 
 novalidate.texi(,7) @node first, Top, ,(dir)
 novalidate.texi(,8) 
@@ -30,3 +31,4 @@ novalidate.texi(,31) @chapter a chapter
 novalidate.texi(,32) 
 novalidate.texi(,33) second node
 novalidate.texi(,34) 
+novalidate.texi(,35) @bye

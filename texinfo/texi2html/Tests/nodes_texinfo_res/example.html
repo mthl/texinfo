@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 10.3 @example: Example Text</title>
+<title>GNU Texinfo 4.2: 10.3 @example: Example Text</title>
 
-<meta name="description" content="Texinfo: 10.3 @example: Example Text">
-<meta name="keywords" content="Texinfo: 10.3 @example: Example Text">
+<meta name="description" content="GNU Texinfo 4.2: 10.3 @example: Example Text">
+<meta name="keywords" content="GNU Texinfo 4.2: 10.3 @example: Example Text">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 
 <p>The <code>@example</code> command is used to indicate an example that is
 not part of the running text, such as computer input or output.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This is an example of text written between an
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is an example of text written between an
 <code>@example</code> command
 and an <code>@end example</code> command.
 The text is indented but not filled.
@@ -97,17 +97,17 @@ obtained by indenting each line with five spaces.
 Mark the end of the example
 with an <code>@end example</code> command, also written at the beginning of a
 line by itself.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@example
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
 mv foo bar
 @end example
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">mv foo bar
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">mv foo bar
 </pre></td></tr></table>
 <p>The lines containing <code>@example</code> and <code>@end example</code>
 will disappear from the output.
@@ -117,24 +117,25 @@ you should put a blank line before the
 Note that blank lines inside the beginning
 <code>@example</code> and the ending <code>@end example</code> will appear in
 the output.
-
-</p><blockquote><p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
+</p>
+<blockquote><p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
 else in Texinfo (except in verbatim environments)!  The TeX
 implementation of Texinfo treats tabs as single spaces, and that is not
 what they look like.  (If necessary, in Emacs, you can use <kbd>M-x
 untabify</kbd> to convert tabs in a region to multiple spaces.)
 </p></blockquote>
+
 <p>Examples are often, logically speaking, &quot;in the middle&quot; of a
 paragraph, and the text that continues after an example should not be
 indented.  The <code>@noindent</code> command prevents a piece of text from
 being indented as if it were a new paragraph.
 (See section <a href="noindent.html#SEC153"><code>@noindent</code>: Omitting Indentation</a>.)
-
-</p><p>(The <code>@code</code> command is used for examples of code that are
+</p>
+<p>(The <code>@code</code> command is used for examples of code that are
 embedded within sentences, not set off from preceding and following
 text.  See section <a href="code.html#SEC122"><code>@code</code></a>.)
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="quotation.html#SEC143" title="Previous section in reading order"> &lt; </a>]</td>

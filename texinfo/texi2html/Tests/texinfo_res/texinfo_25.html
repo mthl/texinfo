@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: D. Include Files</title>
+<title>GNU Texinfo 4.2: D. Include Files</title>
 
-<meta name="description" content="Texinfo: D. Include Files">
-<meta name="keywords" content="Texinfo: D. Include Files">
+<meta name="description" content="GNU Texinfo 4.2: D. Include Files">
+<meta name="keywords" content="GNU Texinfo 4.2: D. Include Files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,11 +84,11 @@ command in a Texinfo file, it processes the contents of the file named
 by the command and incorporates them into the DVI or Info file being
 created.  Index entries from the included file are incorporated into
 the indices of the output file.
-
-</p><p>Include files let you keep a single large document as a collection of
+</p>
+<p>Include files let you keep a single large document as a collection of
 conveniently small parts.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC298">D.1 How to Use Include Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to use the <code>@include</code> command.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC299">D.2 <code>texinfo-multiple-files-update</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to create and update nodes and
@@ -129,8 +129,8 @@ conveniently small parts.
 <code>@include</code> command at the beginning of a line and follow it on
 the same line by the name of a file to be included.  For
 example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@include buffers.texi
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@include buffers.texi
 </pre></td></tr></table>
 <p>An included file should simply be a segment of text that you expect to
 be included as is into the overall or <em>outer</em> Texinfo file; it
@@ -140,13 +140,13 @@ line saying `<samp>\input texinfo</samp>'; if you do, that phrase is inserted
 into the output file as is.  Likewise, you should not end an included
 file with an <code>@bye</code> command; nothing after <code>@bye</code> is
 formatted.
-
-</p><p>In the past, you were required to write an <code>@setfilename</code> line at the
+</p>
+<p>In the past, you were required to write an <code>@setfilename</code> line at the
 beginning of an included file, but no longer.  Now, it does not matter
 whether you write such a line.  If an <code>@setfilename</code> line exists
 in an included file, it is ignored.
-
-</p><p>Conventionally, an included file begins with an <code>@node</code> line that
+</p>
+<p>Conventionally, an included file begins with an <code>@node</code> line that
 is followed by an <code>@chapter</code> line.  Each included file is one
 chapter.  This makes it easy to use the regular node and menu creating
 and updating commands to create the node pointers and menus within the
@@ -159,8 +159,8 @@ whole file.  Either you must insert the menus and the `Next',
 `Previous', and `Up' pointers by hand, or you must use the GNU Emacs
 Texinfo mode command, <code>texinfo-multiple-files-update</code>, that is
 designed for <code>@include</code> files.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="texinfo_002dmultiple_002dfiles_002dupdate"></a>
 <a name="SEC299"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -188,12 +188,12 @@ Texinfo file, and it creates or updates a main menu in the outer file.
 Depending whether you call it with optional arguments, the command
 updates only the pointers in the first <code>@node</code> line of the
 included files or all of them:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called without any arguments:
-
-</p><ul class="toc">
+</p>
+<ul class="toc">
 <li>-
 Create or update the `Next', `Previous', and `Up' pointers of the
 first <code>@node</code> line in each file included in an outer or overall
@@ -210,8 +210,8 @@ Create or update a main menu in the outer file.
 </dd>
 <dt><kbd> C-u M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with <kbd>C-u</kbd> as a prefix argument:
-
-</p><ul class="toc">
+</p>
+<ul class="toc">
 <li>-
 Create or update pointers in the first <code>@node</code> line in each
 included file.
@@ -227,8 +227,8 @@ is made from all the menus in all the included files.
 </dd>
 <dt><kbd> C-u 8 M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with a numeric prefix argument, such as <kbd>C-u 8</kbd>:
-
-</p><ul class="toc">
+</p>
+<ul class="toc">
 <li>-
 Create or update <strong>all</strong> the `Next', `Previous', and `Up' pointers
 of all the included files.
@@ -255,8 +255,8 @@ prefix argument, just <kbd>C-u</kbd>, the
 with a numeric prefix argument, such as <kbd>C-u 8</kbd>, the command
 updates <strong>every</strong> pointer and menu in <strong>all</strong> the files and then inserts a
 master menu.
-
 </p>
+
 <hr size="6">
 <a name="Include-File-Requirements"></a>
 <a name="SEC300"></a>
@@ -284,8 +284,8 @@ contain nothing but the beginning and end parts of a Texinfo file, and
 a number of <code>@include</code> commands listing the included files.  It
 should not even include indices, which should be listed in an included
 file of their own.
-
-</p><p>Moreover, each of the included files must contain exactly one highest
+</p>
+<p>Moreover, each of the included files must contain exactly one highest
 level node (conventionally, <code>@chapter</code> or equivalent),
 and this node must be the first node in the included file.
 Furthermore, each of these highest level nodes in each included file
@@ -293,13 +293,13 @@ must be at the same hierarchical level in the file structure.
 Usually, each is an <code>@chapter</code>, an <code>@appendix</code>, or an
 <code>@unnumbered</code> node.  Thus, normally, each included file contains
 one, and only one, chapter or equivalent-level node.
-
-</p><p>The outer file should contain only <em>one</em> node, the `Top' node.  It
+</p>
+<p>The outer file should contain only <em>one</em> node, the `Top' node.  It
 should <em>not</em> contain any nodes besides the single `Top' node.  The
 <code>texinfo-multiple-files-update</code> command will not process
 them.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Sample-Include-File"></a>
 <a name="SEC301"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -323,8 +323,8 @@ them.
 <p>Here is an example of a complete outer Texinfo file with <code>@include</code> files
 within it before running <code>texinfo-multiple-files-update</code>, which
 would insert a main or master menu:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo @c -*-texinfo-*-
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo @c -*-texinfo-*-
 @setfilename  include-example.info
 @settitle Include Example
 
@@ -355,15 +355,15 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @bye
 </pre></td></tr></table>
 <p>An included file, such as `<tt>foo.texinfo</tt>', might look like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node First, Second, , Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node First, Second, , Top
 @chapter First Chapter
 
 Contents of first chapter &hellip;
 </pre></td></tr></table>
 <p>The full contents of `<tt>concept-index.texinfo</tt>' might be as simple as this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node Concept Index
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Concept Index
 @unnumbered Concept Index
 
 @printindex cp
@@ -372,8 +372,8 @@ Contents of first chapter &hellip;
 Manual</cite> is named `<tt>elisp.texi</tt>'.  This outer file contains a master
 menu with 417 entries and a list of 41 <code>@include</code>
 files.
-
 </p>
+
 <hr size="6">
 <a name="Include-Files-Evolution"></a>
 <a name="SEC302"></a>
@@ -402,11 +402,11 @@ make a large buffer to hold the whole of a large Info file when
 someone wanted information; instead, Emacs allocated just enough
 memory for the small Info file that contained the particular
 information sought.  This way, Emacs could avoid wasting memory.
-
-</p><p>References from one file to another were made by referring to the file
+</p>
+<p>References from one file to another were made by referring to the file
 name as well as the node name. (See section <a href="texinfo_8.html#SEC103">Referring to Other Info Files</a>.  Also, see <a href="texinfo_9.html#SEC113"><code>@xref</code> with Four and Five Arguments</a>.)
-
-</p><p>Include files were designed primarily as a way to create a single,
+</p>
+<p>Include files were designed primarily as a way to create a single,
 large printed manual out of several smaller Info files.  In a printed
 manual, all the references were within the same document, so TeX
 could automatically determine the references' page numbers.  The Info
@@ -414,22 +414,22 @@ formatting commands used include files only for creating joint
 indices; each of the individual Texinfo files had to be formatted for
 Info individually.  (Each, therefore, required its own
 <code>@setfilename</code> line.)
-
-</p><p>However, because large Info files are now split automatically, it is
+</p>
+<p>However, because large Info files are now split automatically, it is
 no longer necessary to keep them small.
-
-</p><p>Nowadays, multiple Texinfo files are used mostly for large documents,
+</p>
+<p>Nowadays, multiple Texinfo files are used mostly for large documents,
 such as <cite>The GNU Emacs Lisp Reference Manual</cite>, and for projects
 in which several different people write different sections of a
 document simultaneously.
-
-</p><p>In addition, the Info formatting commands have been extended to work
+</p>
+<p>In addition, the Info formatting commands have been extended to work
 with the <code>@include</code> command so as to create a single large Info
 file that is split into smaller files if necessary.  This means that
 you can write menus and cross references without naming the different
 Texinfo files.
-
 </p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC297" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

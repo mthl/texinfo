@@ -1,3 +1,4 @@
+formatting.texi(,2) @setfilename formatting.info
 formatting.texi(,3) @node Top
 formatting.texi(,4) @top Top section
 formatting.texi(,5) 
@@ -62,6 +63,7 @@ formatting.texi(mymacro,434) @code{@@#} @#
 formatting.texi(mymacro,434) 
 formatting.texi(mymacro,434) @@TeX @TeX{}
 formatting.texi(mymacro,434) @@LaTeX @LaTeX{}
+formatting.texi(mymacro,434) @c @br{}
 formatting.texi(mymacro,434) @@bullet @bullet{}
 formatting.texi(mymacro,434) @@copyright @copyright{}
 formatting.texi(mymacro,434) @@dots @dots{}
@@ -476,6 +478,7 @@ formatting.texi(mymacro,437) @code{@@#} @#
 formatting.texi(mymacro,437) 
 formatting.texi(mymacro,437) @@TeX @TeX{}
 formatting.texi(mymacro,437) @@LaTeX @LaTeX{}
+formatting.texi(mymacro,437) @c @br{}
 formatting.texi(mymacro,437) @@bullet @bullet{}
 formatting.texi(mymacro,437) @@copyright @copyright{}
 formatting.texi(mymacro,437) @@dots @dots{}
@@ -911,5 +914,5 @@ formatting.texi(,508)
 formatting.texi(,509) @printindex cp
 formatting.texi(,510) @printindex fn
 formatting.texi(,511) 
-formatting.texi(,512) 
-formatting.texi(,513) 
+formatting.texi(,512) @contents
+formatting.texi(,513) @shortcontents

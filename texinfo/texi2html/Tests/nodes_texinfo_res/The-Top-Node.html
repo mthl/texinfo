@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.5 The `Top' Node and Master Menu</title>
+<title>GNU Texinfo 4.2: 3.5 The `Top' Node and Master Menu</title>
 
-<meta name="description" content="Texinfo: 3.5 The `Top' Node and Master Menu">
-<meta name="keywords" content="Texinfo: 3.5 The `Top' Node and Master Menu">
+<meta name="description" content="GNU Texinfo 4.2: 3.5 The `Top' Node and Master Menu">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.5 The `Top' Node and Master Menu">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,21 +86,21 @@ such, it should begin with the <code>@insertcopying</code> command
 manual (including the version number) and copying permissions, and end
 with a master menu for the whole manual.  Of course you should include
 any other general information you feel a reader would find helpful.
-
-</p><a name="IDX85"></a>
+</p>
+<a name="IDX85"></a>
 <p>It is also conventional to write an <code>@top</code> sectioning command line
 containing the title of the document immediately after the <code>@node
 Top</code> line (see section <a href="makeinfo-top-command.html#SEC94">The <code>@top</code> Sectioning Command</a>).
-
-</p><p>The contents of the `Top' node should appear only in the online output;
+</p>
+<p>The contents of the `Top' node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
 <code>@ifnottex</code> and <code>@end ifnottex</code> commands.  (TeX does not
 print either an <code>@node</code> line or a menu; they appear only in Info;
 strictly speaking, you are not required to enclose these parts between
 <code>@ifnottex</code> and <code>@end ifnottext</code>, but it is simplest to do
 so.  See section <a href="Conditionals.html#SEC227">Conditionally Visible Text</a>.)
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="Top-Node-Example.html#SEC60">3.5.1 Top Node Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
 </td></tr>
 <tr><td align="left" valign="top"><a href="Master-Menu-Parts.html#SEC61">3.5.2 Parts of a Master Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           

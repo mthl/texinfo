@@ -13,3 +13,4 @@ tex.texi(,25)
 tex.texi(,26) Test of @@math
 tex.texi(,27) Here some @tex_2 .
 tex.texi(,28) 
+tex.texi(,29) @bye

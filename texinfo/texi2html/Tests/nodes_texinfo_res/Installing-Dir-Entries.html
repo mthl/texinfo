@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.2.4 Installing Info Directory Files</title>
+<title>GNU Texinfo 4.2: 20.2.4 Installing Info Directory Files</title>
 
-<meta name="description" content="Texinfo: 20.2.4 Installing Info Directory Files">
-<meta name="keywords" content="Texinfo: 20.2.4 Installing Info Directory Files">
+<meta name="description" content="GNU Texinfo 4.2: 20.2.4 Installing Info Directory Files">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.4 Installing Info Directory Files">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 <code>install-info</code> to update the Info directory file `<tt>dir</tt>'.
 Normally the makefile for the package runs <code>install-info</code>, just
 after copying the Info file into its proper installed location.
-
-</p><a name="IDX418"></a>
+</p>
+<a name="IDX418"></a>
 <a name="IDX419"></a>
 <p>In order for the Info file to work with <code>install-info</code>, you include
 the commands <code>@dircategory</code> and
@@ -94,8 +94,8 @@ file.  Use <code>@direntry</code> to specify the menu entries to add to the
 Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
 in this manual:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
@@ -103,8 +103,8 @@ in this manual:
 @end direntry
 </pre></td></tr></table>
 <p>Here's what this produces in the Info file:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
@@ -114,19 +114,19 @@ END-INFO-DIR-ENTRY
 
 <p>The <code>install-info</code> program sees these lines in the Info file, and
 that is how it knows what to do.
-
-</p><p>Always use the <code>@direntry</code> and <code>@dircategory</code> commands near
+</p>
+<p>Always use the <code>@direntry</code> and <code>@dircategory</code> commands near
 the beginning of the Texinfo input, before the first <code>@node</code>
 command.  If you use them later on in the input, <code>install-info</code>
 will not notice them.
-
-</p><p>If you use <code>@dircategory</code> more than once in the Texinfo source,
+</p>
+<p>If you use <code>@dircategory</code> more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
 <code>@direntry</code> commands will add to that category.  
-
-</p><p>Here are some recommended <code>@dircategory</code> categories:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="display">GNU packages
+</p>
+<p>Here are some recommended <code>@dircategory</code> categories:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="display">GNU packages
 GNU programming tools
 GNU programming documentation
 GNU Emacs Lisp
@@ -137,8 +137,8 @@ Individual utilities
 <p>The idea is to include the `Invoking' node for every program installed
 by a package under `Individual utilities', and an entry for the manual
 as a whole in the appropriate other category.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Other-Info-Directories.html#SEC274" title="Previous section in reading order"> &lt; </a>]</td>

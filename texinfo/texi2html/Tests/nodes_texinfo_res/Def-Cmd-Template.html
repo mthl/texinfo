@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 15.1 The Template for a Definition</title>
+<title>GNU Texinfo 4.2: 15.1 The Template for a Definition</title>
 
-<meta name="description" content="Texinfo: 15.1 The Template for a Definition">
-<meta name="keywords" content="Texinfo: 15.1 The Template for a Definition">
+<meta name="description" content="GNU Texinfo 4.2: 15.1 The Template for a Definition">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.1 The Template for a Definition">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -89,25 +89,25 @@ of the definition on succeeding lines.  (You may embed examples in the
 body.)  Finally, end the definition with an <code>@end deffn</code> command
 written on a line of its own.  (The other definition commands follow
 the same format.)
-
-</p><p>The template for a definition looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+</p>
+<p>The template for a definition looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
 
 <p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-word count
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-word count
 This command moves point forward @var{count} words
 (or backward if @var{count} is negative). &hellip;
 @end deffn
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><dl>
+</p>
+<blockquote><dl>
 <dt><u>Command:</u> <b>forward-word</b><i> count</i>
 <a name="IDX260"></a>
 </dt>
@@ -115,19 +115,20 @@ This command moves point forward @var{count} words
 (or backward if <var>count</var> is negative). &hellip;
 </p></dd></dl>
 </blockquote>
+
 <p>Capitalize the category name like a title.  If the name of the
 category contains spaces, as in the phrase `Interactive Command',
 write braces around it.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
 &hellip;
 @end deffn
 </pre></td></tr></table>
 
 <p>Otherwise, the second word will be mistaken for the name of the
 entity.
-
-</p><p>Some of the definition commands are more general than others.  The
+</p>
+<p>Some of the definition commands are more general than others.  The
 <code>@deffn</code> command, for example, is the general definition command
 for functions and the like--for entities that may take arguments.  When
 you use this command, you specify the category to which the entity
@@ -138,19 +139,19 @@ specialized variations, <code>@defun</code>, <code>@defmac</code>, and
 is an entity much like a function.)  The <code>@defvr</code> command also is
 accompanied by several predefined, specialized variations for describing
 particular kinds of variables.
-
-</p><p>The template for a specialized definition, such as <code>@defun</code>, is
+</p>
+<p>The template for a specialized definition, such as <code>@defun</code>, is
 similar to the template for a generalized definition, except that you
 do not need to specify the category:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
 </pre></td></tr></table>
 
 <p>Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun buffer-end flag
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defun buffer-end flag
 This function returns @code{(point-min)} if @var{flag}
 is less than 1, @code{(point-max)} otherwise.
 &hellip;
@@ -158,8 +159,8 @@ is less than 1, @code{(point-max)} otherwise.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><dl>
+</p>
+<blockquote><dl>
 <dt><u>Function:</u> <b>buffer-end</b><i> flag</i>
 <a name="IDX261"></a>
 </dt>
@@ -168,17 +169,18 @@ is less than 1, @code{(point-max)} otherwise.
 </p></dd></dl>
 </blockquote>
 
+
 <p>See section <a href="Sample-Function-Definition.html#SEC226">A Sample Function Definition</a>, for a more detailed example of a function
 definition, including the use of <code>@example</code> inside the
 definition.
-
-</p><p>The other specialized commands work like <code>@defun</code>.
-
-</p><a name="IDX262"></a>
+</p>
+<p>The other specialized commands work like <code>@defun</code>.
+</p>
+<a name="IDX262"></a>
 <p>Note that, due to implementation difficulties, macros are not expanded
 in <code>@deffn</code> and all the other definition commands.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Definition-Commands.html#SEC214" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Optional-Arguments.html#SEC216" title="Next section in reading order"> &gt; </a>]</td>

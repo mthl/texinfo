@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 16.4.3 @value Example</title>
+<title>GNU Texinfo 4.2: 16.4.3 @value Example</title>
 
-<meta name="description" content="Texinfo: 16.4.3 @value Example">
-<meta name="keywords" content="Texinfo: 16.4.3 @value Example">
+<meta name="description" content="GNU Texinfo 4.2: 16.4.3 @value Example">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.4.3 @value Example">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,21 +83,20 @@ ul.toc {list-style: none}
 <p>You can use the <code>@value</code> command to minimize the number of places
 you need to change when you record an update to a manual.  See section <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>, for an example of this same principle can work with
 Automake distributions, and full texts.
-
-</p><p>Here is an example adapted from <a href="../make/index.html#Top">(make)Top</a> section `Overview' in <cite>The GNU Make Manual</cite>):
-
-</p><ol>
+</p>
+<p>Here is an example adapted from <a href="../make/index.html#Top">(make)Top</a> section `Overview' in <cite>The GNU Make Manual</cite>):
+</p>
+<ol>
 <li>
 Set the flags:
-
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Write text for the <code>@copying</code> section (see section <a href="copying.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
-
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@copying
 This is Edition @value{EDITION},
@@ -109,9 +108,9 @@ Copyright &hellip;
 
 Permission is granted &hellip;
 @end copying
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Write text for the title page, for people reading the printed manual:
-
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 @title GNU Make
@@ -126,10 +125,9 @@ Write text for the title page, for people reading the printed manual:
 
 <p>(On a printed cover, a date listing the month and the year looks less
 fussy than a date listing the day as well as the month and year.)
-
-</p></li><li>
+</p>
+</li><li>
 Write text for the Top node, for people reading the Info file:
-
 
 <table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
 @node Top
@@ -141,15 +139,15 @@ Write text for the Top node, for people reading the Info file:
 </pre></td></tr></table>
 <p>After you format the manual, the <code>@value</code> constructs have been
 expanded, so the output contains text like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
 of `The GNU Make Manual', for `make', Version 3.63 Beta.
 </pre></td></tr></table></li></ol>
 
 <p>When you update the manual, you change only the values of the flags; you
 do not need to edit the three sections.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

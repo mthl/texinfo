@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 8.3.4 @xref with Four and Five Arguments</title>
+<title>GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments</title>
 
-<meta name="description" content="Texinfo: 8.3.4 @xref with Four and Five Arguments">
-<meta name="keywords" content="Texinfo: 8.3.4 @xref with Four and Five Arguments">
+<meta name="description" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,88 +83,91 @@ ul.toc {list-style: none}
 <p>In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
 a fifth argument specifies its title as a printed manual.
-
-</p><p>Remember that a comma or period must follow the closing brace of an
+</p>
+<p>Remember that a comma or period must follow the closing brace of an
 <code>@xref</code> command to terminate the cross reference.  In the
 following examples, a clause follows a terminating comma.
-
 </p>
-<p>The template is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
 </pre></td></tr></table>
 
 <p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, Lightning, Thunder and Lightning,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, Lightning, Thunder and Lightning,
 weather, An Introduction to Meteorology}, for details.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Lightning: (weather)Electrical Effects, for details.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Lightning: (weather)Electrical Effects, for details.
 </pre></td></tr></table>
 
 <p>The name of the Info file is enclosed in parentheses and precedes
 the name of the node.
-
 </p>
-<p>In a printed manual, the reference looks like this:
 
-</p><blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
+<p>In a printed manual, the reference looks like this:
+</p>
+<blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
+
 
 <p>The title of the printed manual is typeset in italics; and the
 reference lacks a page number since TeX cannot know to which page a
 reference refers when that reference is to another manual.
-
-</p><p>Often, you will leave out the second argument when you use the long
+</p>
+<p>Often, you will leave out the second argument when you use the long
 version of <code>@xref</code>.  In this case, the third argument, the topic
 description, will be used as the cross reference name in Info.
-
 </p>
-<p>The template looks like this:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
+<p>The template looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
 <var>printed-manual-title</var>}, for details.
 </pre></td></tr></table>
 
 <p>which produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>title-or-topic</var>: (<var>info-file-name</var>)<var>node-name</var>, for details.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>title-or-topic</var>: (<var>info-file-name</var>)<var>node-name</var>, for details.
 </pre></td></tr></table>
 
 <p>and
-
-</p><blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
+</p>
+<blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
 </p></blockquote>
 
-<p>For example,
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, , Thunder and Lightning,
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, , Thunder and Lightning,
 weather, An Introduction to Meteorology}, for details.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Thunder and Lightning: (weather)Electrical Effects,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Thunder and Lightning: (weather)Electrical Effects,
 for details.
 </pre></td></tr></table>
 
 <p>and
-
-</p><blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
+</p>
+<blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
+
 <p>On rare occasions, you may want to refer to another Info file that
 is within a single printed manual--when multiple Texinfo files are
 incorporated into the same TeX run but make separate Info files.
 In this case, you need to specify only the fourth argument, and not
 the fifth.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Three-Arguments.html#SEC112" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Top-Node-Naming.html#SEC114" title="Next section in reading order"> &gt; </a>]</td>

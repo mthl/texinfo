@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 6.4 Creating Pointers with makeinfo</title>
+<title>GNU Texinfo 4.2: 6.4 Creating Pointers with makeinfo</title>
 
-<meta name="description" content="Texinfo: 6.4 Creating Pointers with makeinfo">
-<meta name="keywords" content="Texinfo: 6.4 Creating Pointers with makeinfo">
+<meta name="description" content="GNU Texinfo 4.2: 6.4 Creating Pointers with makeinfo">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.4 Creating Pointers with makeinfo">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,32 +82,32 @@ ul.toc {list-style: none}
 
 <p>The <code>makeinfo</code> program has a feature for automatically defining
 node pointers for a hierarchically organized file.
-
-</p><p>When you take advantage of this feature, you do not need to write the
+</p>
+<p>When you take advantage of this feature, you do not need to write the
 `Next', `Previous', and `Up' pointers after the name of a node.
 However, you must write a sectioning command, such as <code>@chapter</code>
 or <code>@section</code>, on the line immediately following each truncated
 <code>@node</code> line (except that comment lines may intervene).
-
-</p><p>In addition, you must follow the `Top' <code>@node</code> line with a line
+</p>
+<p>In addition, you must follow the `Top' <code>@node</code> line with a line
 beginning with <code>@top</code> to mark the `Top' node in the
 file.  See section <a href="makeinfo-top.html#SEC75"><code>@top</code></a>.
-
-</p><p>Finally, you must write the name of each node (except for the `Top'
+</p>
+<p>Finally, you must write the name of each node (except for the `Top'
 node) in a menu that is one or more hierarchical levels above the
 node's hierarchical level.
-
-</p><p>This node pointer insertion feature in <code>makeinfo</code> relieves you from
+</p>
+<p>This node pointer insertion feature in <code>makeinfo</code> relieves you from
 the need to update menus and pointers manually or with Texinfo mode
 commands.  (See section <a href="Updating-Nodes-and-Menus.html#SEC26">Updating Nodes and Menus</a>.)
-
-</p><p>In most cases, you will want to take advantage of this feature and not
+</p>
+<p>In most cases, you will want to take advantage of this feature and not
 redundantly specify node pointers.  However, Texinfo documents are not
 required to be organized hierarchically or in fact contain sectioning
 commands at all.  For example, if you never intend the document to be
 printed.  In those cases, you will need to explicitly specify the pointers.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

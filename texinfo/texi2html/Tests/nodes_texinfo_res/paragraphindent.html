@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.6.3 Paragraph Indenting</title>
+<title>GNU Texinfo 4.2: 3.6.3 Paragraph Indenting</title>
 
-<meta name="description" content="Texinfo: 3.6.3 Paragraph Indenting">
-<meta name="keywords" content="Texinfo: 3.6.3 Paragraph Indenting">
+<meta name="description" content="GNU Texinfo 4.2: 3.6.3 Paragraph Indenting">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.6.3 Paragraph Indenting">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,41 +85,41 @@ first line of each paragraph, thereby indenting that paragraph.  You can
 use the <code>@paragraphindent</code> command to specify this indentation.
 Write an <code>@paragraphindent</code> command at the beginning of a line
 followed by either `<samp>asis</samp>' or a number:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
 </pre></td></tr></table>
 <p>The indentation is according to the value of <var>indent</var>:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> <code>asis</code></dt>
 <dd><p>Do not change the existing indentation (not implemented in TeX).
-
-</p></dd>
+</p>
+</dd>
 <dt> <code>none</code></dt>
 <dt> 0</dt>
 <dd><p>Omit all indentation.
-
-</p></dd>
+</p>
+</dd>
 <dt> <var>n</var></dt>
 <dd><p>Indent by <var>n</var> space characters in Info output, by <var>n</var> ems in
 TeX.
-
-</p></dd>
+</p>
+</dd>
 </dl>
 
 <p>The default value of <var>indent</var> is 3.  <code>@paragraphindent</code> is
 ignored for HTML output.
-
-</p><p>It is best to write the <code>@paragraphindent</code> command before the
+</p>
+<p>It is best to write the <code>@paragraphindent</code> command before the
 end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  See section <a href="Start-of-Header.html#SEC45">Start of Header</a>.
-
-</p><p>A peculiarity of the <code>texinfo-format-buffer</code> and
+</p>
+<p>A peculiarity of the <code>texinfo-format-buffer</code> and
 <code>texinfo-format-region</code> commands is that they do not indent (nor
 fill) paragraphs that contain <code>@w</code> or <code>@*</code> commands.
 See section <a href="Refilling-Paragraphs.html#SEC319">Refilling Paragraphs</a>, for further information.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

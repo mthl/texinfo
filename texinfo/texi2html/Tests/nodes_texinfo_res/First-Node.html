@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 6.3.5 The First Node</title>
+<title>GNU Texinfo 4.2: 6.3.5 The First Node</title>
 
-<meta name="description" content="Texinfo: 6.3.5 The First Node">
-<meta name="keywords" content="Texinfo: 6.3.5 The First Node">
+<meta name="description" content="GNU Texinfo 4.2: 6.3.5 The First Node">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3.5 The First Node">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,10 +83,10 @@ ul.toc {list-style: none}
 <p>The first node of a Texinfo file is the <em>Top</em> node, except in an
 included file (see section <a href="Include-Files.html#SEC297">Include Files</a>).  The Top node should contain a
 short summary, copying permissions, and a master menu.  See section <a href="The-Top-Node.html#SEC59">The `Top' Node and Master Menu</a>, for more information on the Top node contents and examples.
-
-</p><p>Here is a description of the node pointers to be used in the Top node:
-
-</p><ul>
+</p>
+<p>Here is a description of the node pointers to be used in the Top node:
+</p>
+<ul>
 <li>
 <a name="IDX106"></a>
 <a name="IDX107"></a>
@@ -94,13 +94,12 @@ The Top node (which must be named `<samp>top</samp>' or `<samp>Top</samp>') shou
 as its `Up' node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
-
 <p>Usually, all Info files are installed in the same Info directory tree;
 in this case, use `<samp>(dir)</samp>' as the parent of the Top node; this is
 short for `<samp>(dir)top</samp>', and specifies the Top node in the `<tt>dir</tt>'
 file, which contains the main menu for the Info system as a whole. 
-
-</p></li><li>
+</p>
+</li><li>
 <a name="IDX108"></a>
 On the other hand, do not define the `Previous' node of the Top node to
 be `<samp>(dir)</samp>', as it causes confusing behavior for users: if you are
@@ -117,14 +116,14 @@ document.
 
 <p>See section <a href="Installing-an-Info-File.html#SEC271">Installing an Info File</a>, for more information about installing
 an Info file in the `<tt>info</tt>' directory.
-
-</p><p>For concreteness, here is an example with explicit pointers (which you
+</p>
+<p>For concreteness, here is an example with explicit pointers (which you
 can maintain automatically with the texinfo mode commands):
-
-</p><p>Or you can leave the pointers off entirely and let the tools implicitly
+</p>
+<p>Or you can leave the pointers off entirely and let the tools implicitly
 define them.  This is recommended.  Thus:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 </pre></td></tr></table>
 
 <hr size="1">

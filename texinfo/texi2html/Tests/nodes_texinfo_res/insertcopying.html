@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.3.2 @insertcopying: Include permissions text</title>
+<title>GNU Texinfo 4.2: 3.3.2 @insertcopying: Include permissions text</title>
 
-<meta name="description" content="Texinfo: 3.3.2 @insertcopying: Include permissions text">
-<meta name="keywords" content="Texinfo: 3.3.2 @insertcopying: Include permissions text">
+<meta name="description" content="GNU Texinfo 4.2: 3.3.2 @insertcopying: Include permissions text">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.3.2 @insertcopying: Include permissions text">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,35 +82,35 @@ ul.toc {list-style: none}
 
 <p>The <code>@insertcopying</code> command is simply written on a line by
 itself, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 </pre></td></tr></table>
 <p>It inserts the text previously defined by <code>@copying</code>.  Legally, it
 must be used on the copyright page in the printed manual
 (see section <a href="Copyright.html#SEC56">Copyright Page</a>).
-
-</p><p>Although it's not a legal requirement, we also strongly recommend using
+</p>
+<p>Although it's not a legal requirement, we also strongly recommend using
 <code>@insertcopying</code> in the Top node of your manual (see section <a href="The-Top-Node.html#SEC59">The `Top' Node and Master Menu</a>).  Here's why:
-
-</p><p>The <code>@copying</code> command itself causes the permissions text to
+</p>
+<p>The <code>@copying</code> command itself causes the permissions text to
 appear in an Info file <em>before</em> the first node.  The text is also
 copied into the beginning of each split Info output file, as is legally
 necessary.  This location implies a human reading the manual using Info
 does <em>not</em> see this text (except when using the advanced Info
 command <kbd>g *</kbd>).  Therefore, an explicit <code>@insertcopying</code>
 in the Top node makes it apparent to readers that the manual is free.
-
-</p><p>Similarly, the <code>@copying</code> text is automatically included at the
+</p>
+<p>Similarly, the <code>@copying</code> text is automatically included at the
 beginning of each HTML output file, as an HTML comment.  Again, this
 text is not visible (unless the reader views the HTML source).  And
 therefore again, the <code>@insertcopying</code> in the Top node is valuable
 because it makes the copying permissions visible and thus promotes
 freedom.
-
-</p><p>The permissions text defined by <code>@copying</code> also appears
-automatically at the beginning of the XML output file.
-
 </p>
+<p>The permissions text defined by <code>@copying</code> also appears
+automatically at the beginning of the XML output file.
+</p>
+
 <hr size="1">
 <p>
  <font size="-1">

@@ -4,3 +4,4 @@ section_before_chapter.texi(,4) @section section
 section_before_chapter.texi(,5) 
 section_before_chapter.texi(,6) @chapter chapter
 section_before_chapter.texi(,7) 
+section_before_chapter.texi(,8) @bye

@@ -9,6 +9,8 @@ Text line followed by a comment on the same line and another below @c comment
 Text line after the comment followed by a comment @comment c
 Text line after the text line followed by the comment.
 
+Comment at the end of the line @c comment
+
 Example with comments 2 lines
 @example 
 line @c comment
@@ -40,7 +42,7 @@ Text line after the text line followed by the comment.
 @@evenheading @evenheading on line following evenheading
 @@evenfooting @evenfooting on line following evenfooting
 @@oddheading @oddheading on line following 
-@@need @need on line following
+@@need @need 0.1 on line following
 @@setchapternewpage @setchapternewpage on line following setchapternewpage
 @@raisesections @raisesections on line following raisesections
 @@lowersections @lowersections on line following lowersections

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.1.9 Generating HTML</title>
+<title>GNU Texinfo 4.2: 20.1.9 Generating HTML</title>
 
-<meta name="description" content="Texinfo: 20.1.9 Generating HTML">
-<meta name="keywords" content="Texinfo: 20.1.9 Generating HTML">
+<meta name="description" content="GNU Texinfo 4.2: 20.1.9 Generating HTML">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.1.9 Generating HTML">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 `<samp>--html</samp>' option to generate output in HTML format, for installation
 on a web site (for example).  By default, the HTML output is split at
 node level.
-
-</p><p>When splitting, the HTML output files are written into a subdirectory.
+</p>
+<p>When splitting, the HTML output files are written into a subdirectory.
 The subdirectory is named according to the name from
 <code>@setfilename</code> with any extension removed; for example, HTML
 output for <code>@setfilename emacs.info</code> would be written into a
@@ -96,29 +96,29 @@ is named without an extension, e.g., `<samp>texinfo</samp>').  If the
 `<samp><var>name</var>.html</samp>' directory can't be created either,
 <code>makeinfo</code> gives up.  In any case, the top-level output file within
 the directory is always named `<samp>index.html</samp>'.
-
-</p><p>Monolithic output (<code>--no-split</code>) is named according to
+</p>
+<p>Monolithic output (<code>--no-split</code>) is named according to
 <code>@setfilename</code> or <code>--outfile</code>.  Cross-document node
 references are not supported in monolithic HTML.
-
-</p><p>Texinfo input marked up with the <code>@ifhtml</code> command will produce
+</p>
+<p>Texinfo input marked up with the <code>@ifhtml</code> command will produce
 output only with the `<samp>--html</samp>' option supplied.  Input marked up
 with the <code>@html</code> is passed literally to the output (suppressing
 the normal escaping of input `<samp>&lt;</samp>', `<samp>&gt;</samp>' and `<samp>&amp;</samp>' characters
 which have special significance in HTML).
-
-</p><p>The `<samp>--footnote-style</samp>' option is currently ignored for HTML output;
+</p>
+<p>The `<samp>--footnote-style</samp>' option is currently ignored for HTML output;
 footnotes are linked to the end of the output file.
-
-</p><p>The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
+</p>
+<p>The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
 exception is that HTML 3.2 tables are generated from the
 <code>@multitable</code> command, but tagged to degrade as well as possible
 in browsers without table support.  The HTML 4 `<samp>lang</samp>' attribute on
 the `<samp>&lt;html&gt;</samp>' attribute is also used.  Please report output from an
 error-free run of <code>makeinfo</code> which has browser portability problems
 as a bug.
-
-</p><p>Navigation bars are inserted at the start of nodes, similarly to Info
+</p>
+<p>Navigation bars are inserted at the start of nodes, similarly to Info
 output.  The `<samp>--no-headers</samp>' option will suppress this if used with
 `<samp>--no-split</samp>'.  Header <code>&lt;link&gt;</code> elements in split output can
 support info-like navigation with browsers like Lynx and Emacs W3
@@ -126,8 +126,8 @@ which implement this HTML 1.0 feature.  `<samp>@xref</samp>' commands to
 other documents are generated assuming the other document is available
 in split HTML form, and installed in the same HTML documentation tree,
 at `<tt>../&lt;info-document&gt;/</tt>'.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Tag-and-Split-Files.html#SEC269" title="Previous section in reading order"> &lt; </a>]</td>

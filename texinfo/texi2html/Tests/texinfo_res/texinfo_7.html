@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 6. Nodes</title>
+<title>GNU Texinfo 4.2: 6. Nodes</title>
 
-<meta name="description" content="Texinfo: 6. Nodes">
-<meta name="keywords" content="Texinfo: 6. Nodes">
+<meta name="description" content="GNU Texinfo 4.2: 6. Nodes">
+<meta name="keywords" content="GNU Texinfo 4.2: 6. Nodes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -87,8 +87,8 @@ can carry you to a pointed-to node or to a node listed in a menu.  Node
 pointers and menus provide structure for Info files just as chapters,
 sections, subsections, and the like, provide structure for printed
 books.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC86">6.1 Two Paths</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Different commands to structure
                                   Info output and printed output.
 </td></tr>
@@ -126,8 +126,8 @@ books.
 
 <p>The node and menu commands and the chapter structuring commands are
 technically independent of each other:
-
-</p><ul>
+</p>
+<ul>
 <li>
 In Info, node and menu commands provide structure.  The chapter
 structuring commands generate headings with different kinds of
@@ -146,13 +146,13 @@ different structure than its printed output.  However, virtually all
 Texinfo files are written such that the structure for the Info output
 corresponds to the structure for the printed output.  It is neither
 convenient nor understandable to the reader to do otherwise.
-
-</p><p>Generally, printed output is structured in a tree-like hierarchy in
+</p>
+<p>Generally, printed output is structured in a tree-like hierarchy in
 which the chapters are the major limbs from which the sections branch
 out.  Similarly, node pointers and menus are organized to create a
 matching structure in the Info output.
-
 </p>
+
 <hr size="6">
 <a name="Node-Menu-Illustration"></a>
 <a name="SEC87"></a>
@@ -176,14 +176,14 @@ matching structure in the Info output.
 
 <p>Here is a copy of the diagram shown earlier that illustrates a Texinfo
 file with three chapters, each of which contains two sections.
-
-</p><p>The &quot;root&quot; is at the top of the diagram and the &quot;leaves&quot; are at the
+</p>
+<p>The &quot;root&quot; is at the top of the diagram and the &quot;leaves&quot; are at the
 bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
 called the `Top' node, and `Up' node pointers carry you closer to the
 root.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">                          Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">                          Top
                            |
          -------------------------------------
         |                  |                  |
@@ -195,8 +195,8 @@ root.
    1.1      1.2       2.1      2.2       3.1      3.2
 </pre></td></tr></table>
 <p>The fully-written command to start Chapter 2 would be this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
 </pre></td></tr></table>
 
@@ -206,8 +206,8 @@ root.
 &quot;Top&quot;.  You can omit writing out these node names if your document is
 hierarchically organized (see section <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>), but the
 pointer relationships still obtain.
-
-</p><blockquote><p><strong>Please Note:</strong> `Next' refers to the next node at the same
+</p>
+<blockquote><p><strong>Please Note:</strong> `Next' refers to the next node at the same
 hierarchical level in the manual, not necessarily to the next node
 within the Texinfo file.  In the Texinfo file, the subsequent node may
 be at a lower level--a section-level node most often follows a
@@ -217,18 +217,19 @@ exception to this rule.  Since the `Top' node is the only node at that
 level, `Next' refers to the first following node, which is almost always
 a chapter or chapter-level node.)
 </p></blockquote>
+
 <p>To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
 2.  (See section <a href="texinfo_8.html#SEC97">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">    @menu
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">    @menu
     * Sect. 2.1::    Description of this section.
     * Sect. 2.2::
     @end menu
 </pre></td></tr></table>
 <p>Write the node for Sect. 2.1 like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
 </pre></td></tr></table>
 <p>In Info format, the `Next' and `Previous' pointers of a node usually
@@ -238,17 +239,17 @@ up); an `Up' pointer usually leads to a node at the level above (closer
 to the `Top' node); and a `Menu' leads to nodes at a level below (closer
 to `leaves').  (A cross reference can point to a node at any level;
 see <a href="texinfo_9.html#SEC104">Cross References</a>.)
-
-</p><p>Usually, an <code>@node</code> command and a chapter structuring command are
+</p>
+<p>Usually, an <code>@node</code> command and a chapter structuring command are
 used in sequence, along with indexing commands.  (You may follow the
 <code>@node</code> line with a comment line that reminds you which pointer is
 which.)
-
-</p><p>Here is the beginning of the chapter in this manual called &quot;Ending a
+</p>
+<p>Here is the beginning of the chapter in this manual called &quot;Ending a
 Texinfo File&quot;.  This shows an <code>@node</code> line followed by a comment
 line, an <code>@chapter</code> line, and then by indexing lines.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
 @comment node-name,     next,        previous,         up
 @chapter Ending a Texinfo File
 @cindex Ending a Texinfo file
@@ -290,36 +291,37 @@ are used only for cross references, so a chapter or section may
 contain any number of nodes.  Indeed, a chapter usually contains
 several nodes, one for each section, subsection, and
 subsubsection.
-
-</p><p>To create a node, write an <code>@node</code> command at the beginning of a
+</p>
+<p>To create a node, write an <code>@node</code> command at the beginning of a
 line, and follow it with up to four arguments, separated by commas, on
 the rest of the same line.  The first argument is required; it is the
 name of this node.  The subsequent arguments are the names of the
 `Next', `Previous', and `Up' pointers, in that order, and may be omitted
 if your Texinfo document is hierarchically organized (see section <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>).
-
-</p><p>You may insert spaces before each name if you wish; the spaces are
+</p>
+<p>You may insert spaces before each name if you wish; the spaces are
 ignored.  You must write the name of the node and the names of the
 `Next', `Previous', and `Up' pointers all on the same line.  Otherwise,
 the formatters fail.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for more information
 about nodes in Info.)
-
-</p><p>Usually, you write one of the chapter-structuring command lines
+</p>
+<p>Usually, you write one of the chapter-structuring command lines
 immediately after an <code>@node</code> line--for example, an
 <code>@section</code> or <code>@subsection</code> line.  (See section <a href="texinfo_6.html#SEC74">Structuring Command Types</a>.)
-
-</p><blockquote><p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
+</p>
+<blockquote><p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
 only with Texinfo files in which <code>@node</code> lines are followed by chapter
 structuring lines.  See section <a href="texinfo_3.html#SEC28">Updating Requirements</a>.
 </p></blockquote>
+
 <p>TeX uses <code>@node</code> lines to identify the names to use for cross
 references.  For this reason, you must write <code>@node</code> lines in a
 Texinfo file that you intend to format for printing, even if you do not
 intend to format it for Info.  (Cross references, such as the one at the
 end of this sentence, are made with <code>@xref</code> and related commands;
 see <a href="texinfo_9.html#SEC104">Cross References</a>.)
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC89">6.3.1 Choosing Node and Pointer Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  How to choose node and pointer names.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC90">6.3.2 How to Write an <code>@node</code> Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to write an <code>@node</code> line.
@@ -358,30 +360,30 @@ see <a href="texinfo_9.html#SEC104">Cross References</a>.)
 
 <p>The name of a node identifies the node.  The pointers enable
 you to reach other nodes and consist of the names of those nodes.
-
-</p><p>Normally, a node's `Up' pointer contains the name of the node whose menu
+</p>
+<p>Normally, a node's `Up' pointer contains the name of the node whose menu
 mentions that node.  The node's `Next' pointer contains the name of the
 node that follows that node in that menu and its `Previous' pointer
 contains the name of the node that precedes it in that menu.  When a
 node's `Previous' node is the same as its `Up' node, both node pointers
 name the same node.
-
-</p><p>Usually, the first node of a Texinfo file is the `Top' node, and its
+</p>
+<p>Usually, the first node of a Texinfo file is the `Top' node, and its
 `Up' and `Previous' pointers point to the `<tt>dir</tt>' file, which
 contains the main menu for all of Info.
-
-</p><p>The `Top' node itself contains the main or master menu for the manual.
+</p>
+<p>The `Top' node itself contains the main or master menu for the manual.
 Also, it is helpful to include a brief description of the manual in the
 `Top' node.  See section <a href="#SEC93">The First Node</a>, for information on how to write the
 first node of a Texinfo file.
-
-</p><p>Even when you explicitly specify all pointers, that does not mean you
+</p>
+<p>Even when you explicitly specify all pointers, that does not mean you
 can write the nodes in the Texinfo source file in an arbitrary order!
 Because TeX processes the file sequentially, irrespective of node
 pointers, you must write the nodes in the order you wish them to appear
 in the printed output.
-
 </p>
+
 <hr size="6">
 <a name="Writing-a-Node"></a>
 <a name="SEC90"></a>
@@ -406,26 +408,26 @@ in the printed output.
 <p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
 at the beginning of a line and then the name of the node, like
 this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
 </pre></td></tr></table>
 <p>If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
 insert node pointers into the Info file it creates.  (See section <a href="texinfo_3.html#SEC21">Using Texinfo Mode</a>, and <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>.)
-
-</p><p>Alternatively, you can insert the `Next', `Previous', and `Up'
+</p>
+<p>Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
 Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
 `<samp>@node</samp>' and a comment line listing the names of the pointers in
 their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
 if you are not familiar with Texinfo.
-
-</p><p>The template for a fully-written-out node line with `Next', `Previous',
+</p>
+<p>The template for a fully-written-out node line with `Next', `Previous',
 and `Up' pointers looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first
 draft and then use the <code>texinfo-insert-node-lines</code> command to
@@ -434,15 +436,15 @@ practice.  It is better to name the node itself at the same time that
 you write a segment so you can easily make cross references.  A large
 number of cross references are an especially important feature of a good
 Info file.
-
-</p><p>After you have inserted an <code>@node</code> line, you should immediately
+</p>
+<p>After you have inserted an <code>@node</code> line, you should immediately
 write an @-command for the chapter or section and insert its name.
 Next (and this is important!), put in several index entries.  Usually,
 you will find at least two and often as many as four or five ways of
 referring to the node in the index.  Use them all.  This will make it
 much easier for people to find the node.
-
 </p>
+
 <hr size="6">
 <a name="Node-Line-Tips"></a>
 <a name="SEC91"></a>
@@ -465,17 +467,16 @@ much easier for people to find the node.
 <h3 class="subsection"> 6.3.3 <code>@node</code> Line Tips </h3>
 
 <p>Here are three suggestions:
-
-</p><ul>
+</p>
+<ul>
 <li>
 Try to pick node names that are informative but short.
-
 
 <p>In the Info file, the file name, node name, and pointer names are all
 inserted on one line, which may run into the right edge of the window.
 (This does not cause a problem with Info, but is ugly.)
-
-</p></li><li>
+</p>
+</li><li>
 Try to pick node names that differ from each other near the beginnings
 of their names.  This way, it is easy to use automatic name completion in
 Info.
@@ -509,12 +510,12 @@ capitalized; others are not.
 <h3 class="subsection"> 6.3.4 <code>@node</code> Line Requirements </h3>
 
 <p>Here are several requirements for <code>@node</code> lines:
-
-</p><ul>
+</p>
+<ul>
 <li><a name="IDX94"></a>
-<a name="IDX95"></a></li><li>
+<a name="IDX95"></a>
+</li><li>
 All the node names for a single Info file must be unique.
-
 
 <p>Duplicates confuse the Info movement commands.  This means, for
 example, that if you end every chapter with a summary, you must name
@@ -523,31 +524,31 @@ each summary node differently.  You cannot just call each one
 and the like.  Thus you can end each chapter in a book with a section
 called &quot;Summary&quot;, so long as the node names for those sections are all
 different.
-
-</p></li><li>
+</p>
+</li><li>
 A pointer name must be the name of a node.
-
 
 <p>The node to which a pointer points may come before or after the
 node containing the pointer.
-
-</p><a name="IDX96"></a>
-<a name="IDX97"></a></li><li>
+</p>
+<a name="IDX96"></a>
+<a name="IDX97"></a>
+</li><li>
 @-commands used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
 escaped with a `<samp>@</samp>', such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="texinfo_21.html#SEC265">Pointer Validation</a>.
 
-
 <p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 <a name="IDX98"></a>
 You cannot use parentheses in node names, because a node name such as
 `<samp>(foo)bar</samp>' is interpreted by the Info readers as a node
@@ -563,17 +564,17 @@ You cannot use parentheses in node names, because a node name such as
 Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
 
-
 <p>For example, the following is a section title:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
 
 <p>The corresponding node name is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
-<a name="IDX105"></a></li><li>
+<a name="IDX105"></a>
+</li><li>
 Case is significant.
 </li></ul>
 
@@ -602,10 +603,10 @@ Case is significant.
 <p>The first node of a Texinfo file is the <em>Top</em> node, except in an
 included file (see section <a href="texinfo_25.html#SEC297">Include Files</a>).  The Top node should contain a
 short summary, copying permissions, and a master menu.  See section <a href="texinfo_4.html#SEC59">The `Top' Node and Master Menu</a>, for more information on the Top node contents and examples.
-
-</p><p>Here is a description of the node pointers to be used in the Top node:
-
-</p><ul>
+</p>
+<p>Here is a description of the node pointers to be used in the Top node:
+</p>
+<ul>
 <li>
 <a name="IDX106"></a>
 <a name="IDX107"></a>
@@ -613,13 +614,12 @@ The Top node (which must be named `<samp>top</samp>' or `<samp>Top</samp>') shou
 as its `Up' node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
-
 <p>Usually, all Info files are installed in the same Info directory tree;
 in this case, use `<samp>(dir)</samp>' as the parent of the Top node; this is
 short for `<samp>(dir)top</samp>', and specifies the Top node in the `<tt>dir</tt>'
 file, which contains the main menu for the Info system as a whole. 
-
-</p></li><li>
+</p>
+</li><li>
 <a name="IDX108"></a>
 On the other hand, do not define the `Previous' node of the Top node to
 be `<samp>(dir)</samp>', as it causes confusing behavior for users: if you are
@@ -636,14 +636,14 @@ document.
 
 <p>See section <a href="texinfo_21.html#SEC271">Installing an Info File</a>, for more information about installing
 an Info file in the `<tt>info</tt>' directory.
-
-</p><p>For concreteness, here is an example with explicit pointers (which you
+</p>
+<p>For concreteness, here is an example with explicit pointers (which you
 can maintain automatically with the texinfo mode commands):
-
-</p><p>Or you can leave the pointers off entirely and let the tools implicitly
+</p>
+<p>Or you can leave the pointers off entirely and let the tools implicitly
 define them.  This is recommended.  Thus:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node Top
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 </pre></td></tr></table>
 
 <hr size="6">
@@ -674,12 +674,12 @@ the information that <code>makeinfo</code> needs to insert node pointers
 automatically.  Write the <code>@top</code> command at the beginning of the
 line immediately following the <code>@node Top</code> line.  Write the title
 on the remaining part of the same line as the <code>@top</code> command.
-
-</p><p>In Info, the <code>@top</code> sectioning command causes the title to appear
+</p>
+<p>In Info, the <code>@top</code> sectioning command causes the title to appear
 on a line by itself, with a line of asterisks inserted underneath, as
 other sectioning commands do.
-
-</p><p>In TeX and <code>texinfo-format-buffer</code>, the <code>@top</code>
+</p>
+<p>In TeX and <code>texinfo-format-buffer</code>, the <code>@top</code>
 sectioning command is merely a synonym for <code>@unnumbered</code>.
 Neither of these formatters require an <code>@top</code> command, and do
 nothing special with it.  You can use <code>@chapter</code> or
@@ -687,10 +687,10 @@ nothing special with it.  You can use <code>@chapter</code> or
 these formatters.  Also, you can use <code>@chapter</code> or
 <code>@unnumbered</code> when you use the Texinfo updating commands to
 create or update pointers and menus.
-
-</p><p>Thus, in practice, a Top node starts like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node Top
+</p>
+<p>Thus, in practice, a Top node starts like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 @top Your Manual Title
 </pre></td></tr></table>
 
@@ -717,32 +717,32 @@ create or update pointers and menus.
 
 <p>The <code>makeinfo</code> program has a feature for automatically defining
 node pointers for a hierarchically organized file.
-
-</p><p>When you take advantage of this feature, you do not need to write the
+</p>
+<p>When you take advantage of this feature, you do not need to write the
 `Next', `Previous', and `Up' pointers after the name of a node.
 However, you must write a sectioning command, such as <code>@chapter</code>
 or <code>@section</code>, on the line immediately following each truncated
 <code>@node</code> line (except that comment lines may intervene).
-
-</p><p>In addition, you must follow the `Top' <code>@node</code> line with a line
+</p>
+<p>In addition, you must follow the `Top' <code>@node</code> line with a line
 beginning with <code>@top</code> to mark the `Top' node in the
 file.  See section <a href="texinfo_6.html#SEC75"><code>@top</code></a>.
-
-</p><p>Finally, you must write the name of each node (except for the `Top'
+</p>
+<p>Finally, you must write the name of each node (except for the `Top'
 node) in a menu that is one or more hierarchical levels above the
 node's hierarchical level.
-
-</p><p>This node pointer insertion feature in <code>makeinfo</code> relieves you from
+</p>
+<p>This node pointer insertion feature in <code>makeinfo</code> relieves you from
 the need to update menus and pointers manually or with Texinfo mode
 commands.  (See section <a href="texinfo_3.html#SEC26">Updating Nodes and Menus</a>.)
-
-</p><p>In most cases, you will want to take advantage of this feature and not
+</p>
+<p>In most cases, you will want to take advantage of this feature and not
 redundantly specify node pointers.  However, Texinfo documents are not
 required to be organized hierarchically or in fact contain sectioning
 commands at all.  For example, if you never intend the document to be
 printed.  In those cases, you will need to explicitly specify the pointers.
-
 </p>
+
 <hr size="6">
 <a name="anchor"></a>
 <a name="SEC96"></a>
@@ -769,14 +769,14 @@ printed.  In those cases, you will need to explicitly specify the pointers.
 cross-references can refer to it, just as they can to nodes.  You create
 an anchor with the <code>@anchor</code> command, and give the label as a
 normal brace-delimited argument.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
 &hellip;
 @xref{x-spot,,the spot}.
 </pre></td></tr></table>
 <p>produces:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
 &hellip;
 See [the spot], page 1.
 </pre></td></tr></table>
@@ -785,19 +785,19 @@ This example defines an anchor `x-spot' just before the word `spot'.
 You can refer to it later with an <code>@xref</code> or other cross-reference
 command, as shown.  See section <a href="texinfo_9.html#SEC104">Cross References</a>, for details on the
 cross-reference commands.
-
-</p><p>It is best to put <code>@anchor</code> commands just before the position you
+</p>
+<p>It is best to put <code>@anchor</code> commands just before the position you
 wish to refer to; that way, the reader's eye is led on to the correct
 text when they jump to the anchor.  You can put the <code>@anchor</code>
 command on a line by itself if that helps readability of the source.
 Spaces are always ignored after <code>@anchor</code>.
-
-</p><p>Anchor names and node names may not conflict.  Anchors and nodes are
+</p>
+<p>Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the <code>goto-node</code>
 command in standalone Info takes either an anchor name or a node name as
 an argument.  (See <a href="../info-stnd/goto_002dnode.html#goto_002dnode">(info-stnd)goto-node</a> section `goto-node' in <cite>GNU Info</cite>.)
-
 </p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC85" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

@@ -1,11 +1,16 @@
 viper.texi(,3) 
+viper.texi(,4) @comment Using viper.info instead of viper in setfilename breaks DOS.
+viper.texi(,5) @comment @setfilename viper
+viper.texi(,6) @comment @setfilename viper.info
+viper.texi(,7) @setfilename viper
 viper.texi(,8) 
+viper.texi(,9) @dircategory Editors
 viper.texi(,15) 
 viper.texi(,19) 
 viper.texi(,32) 
 viper.texi(,33) @unnumbered Distribution
 viper.texi(,34) 
-viper.texi(,35) 
+viper.texi(,35) @noindent
 viper.texi(,36) Copyright @copyright{} 1995, 1996, 1997, 2001, 2002 Free Software Foundation, Inc.
 viper.texi(,37) 
 viper.texi(,38) Permission is granted to copy, distribute and/or modify this document
@@ -68,7 +73,7 @@ viper.texi(,95) be visited as needed.
 viper.texi(,96) 
 viper.texi(,97) Comments and bug reports are welcome.
 viper.texi(,98) @code{kifer@@cs.stonybrook.edu} is the current address for Viper bug reports.
-viper.texi(,99) Please use the Ex command @kbd{:submitReport} for this purpose.
+viper.texi(,99) Please use the Ex command @kbd{:submitReport} for this purpose.@refill
 viper.texi(,100) 
 viper.texi(,102) 
 viper.texi(,103) @menu
@@ -132,21 +137,21 @@ viper.texi(,204) Emacs can edit several files at once.  A file in Emacs is place
 viper.texi(,205) @dfn{buffer} that usually has the same name as the file.  Buffers are also used
 viper.texi(,206) for other purposes, such as shell interfaces, directory editing, etc.
 viper.texi(,207) @xref{Dired,,Directory Editor,emacs,The
-viper.texi(,208) Gnu Emacs Manual}, for an example.
+viper.texi(,208) Gnu Emacs Manual}, for an example.@refill
 viper.texi(,209) 
 viper.texi(,210) A buffer has a distinguished position called the @dfn{point}.
 viper.texi(,211) A @dfn{point} is always between 2 characters, and is @dfn{looking at}
 viper.texi(,212) the right hand character.  The cursor is positioned on the right hand
 viper.texi(,213) character.  Thus, when the @dfn{point} is looking at the end-of-line,
 viper.texi(,214) the cursor is on the end-of-line character, i.e.@: beyond the last
-viper.texi(,215) character on the line.  This is the default Emacs behavior.
+viper.texi(,215) character on the line.  This is the default Emacs behavior.@refill
 viper.texi(,216) 
 viper.texi(,217) The default settings of Viper try to mimic the behavior of Vi, preventing
 viper.texi(,218) the cursor from going beyond the last character on the line.  By using
 viper.texi(,219) Emacs commands directly (such as those bound to arrow keys), it is possible
 viper.texi(,220) to get the cursor beyond the end-of-line.  However, this won't (or
 viper.texi(,221) shouldn't) happen if you restrict yourself to standard Vi keys, unless you
-viper.texi(,222) modify the default editing style.  @xref{Customization}.
+viper.texi(,222) modify the default editing style.  @xref{Customization}.@refill
 viper.texi(,223) 
 viper.texi(,224) In addition to the @dfn{point}, there is another distinguished buffer
 viper.texi(,225) position called the @dfn{mark}.  @xref{Mark,,Mark,emacs,The GNU Emacs
@@ -167,7 +172,7 @@ viper.texi(,239) assuming that the current region starts at line 123 and ends at
 viper.texi(,240) 135.  There is no need to type the line numbers, since Viper inserts them
 viper.texi(,241) automatically in front of the Ex command.
 viper.texi(,242) 
-viper.texi(,243) @xref{Basics}, for more info.
+viper.texi(,243) @xref{Basics}, for more info.@refill
 viper.texi(,244) 
 viper.texi(,245) @cindex window
 viper.texi(,246) @cindex mode line
@@ -190,7 +195,7 @@ viper.texi(,262) show the buffer name and current major and minor modes (see bel
 viper.texi(,263) A special buffer called @dfn{Minibuffer} is displayed as the last line
 viper.texi(,264) in a Minibuffer window.  The Minibuffer window is used for command input
 viper.texi(,265) output.  Viper uses Minibuffer window for @kbd{/} and @kbd{:}
-viper.texi(,266) commands.
+viper.texi(,266) commands.@refill
 viper.texi(,267) 
 viper.texi(,268) @cindex mode
 viper.texi(,269) @cindex keymap
@@ -210,7 +215,7 @@ viper.texi(,282) keymap then that function will be executed when you type the ke
 viper.texi(,283) If no function is bound to a key in the
 viper.texi(,284) local map, however, the function bound to the key in the global map
 viper.texi(,285) will be executed.  @xref{Major Modes,Major Modes,Major Modes,emacs,The
-viper.texi(,286) GNU Emacs Manual}, for more information.
+viper.texi(,286) GNU Emacs Manual}, for more information.@refill
 viper.texi(,287) 
 viper.texi(,288) A buffer can also have a @dfn{minor mode}.  Minor modes are options that
 viper.texi(,289) you can use or not.  A buffer in @code{text-mode} can have
@@ -218,7 +223,7 @@ viper.texi(,290) @code{auto-fill-mode} as minor mode, which can be turned off or
 viper.texi(,291) any time.  In Emacs, a minor mode may have it own keymap,
 viper.texi(,292) which overrides the local keymap when the minor mode is turned on.  For
 viper.texi(,293) more information, @pxref{Minor Modes,Minor Modes,Minor Modes,emacs,The
-viper.texi(,294) GNU Emacs Manual} 
+viper.texi(,294) GNU Emacs Manual} @refill
 viper.texi(,295) 
 viper.texi(,296) @cindex Viper as minor mode
 viper.texi(,297) @cindex Control keys
@@ -228,7 +233,7 @@ viper.texi(,300) Viper is implemented as a collection of minor modes.  Different
 viper.texi(,301) are involved when Viper emulates Vi command mode, Vi insert mode, etc.
 viper.texi(,302) You can also turn Viper on and off at any time while in Vi command mode.
 viper.texi(,303) @xref{States in Viper}, for
-viper.texi(,304) more information.
+viper.texi(,304) more information.@refill
 viper.texi(,305) 
 viper.texi(,306) Emacs uses Control and Meta modifiers.  These are denoted as C and M,
 viper.texi(,307) e.g.@: @kbd{^Z} as @kbd{C-z} and @kbd{Meta-x} as @kbd{M-x}.  The Meta key is
@@ -238,7 +243,7 @@ viper.texi(,310) holding the Meta key down.  For keyboards that do not have a Me
 viper.texi(,311) @key{ESC} is used as Meta.  Thus @kbd{M-x} is typed as @kbd{@key{ESC}
 viper.texi(,312) x}.  Viper uses @key{ESC} to switch from Insert state to Vi state.  Therefore
 viper.texi(,313) Viper defines @kbd{C-\} as its Meta key in Vi state.  @xref{Vi State}, for
-viper.texi(,314) more info.
+viper.texi(,314) more info.@refill
 viper.texi(,315) 
 viper.texi(,316) Emacs is structured as a lisp interpreter around a C core.  Emacs keys
 viper.texi(,317) cause lisp functions to be called.  It is possible to call these
@@ -255,7 +260,7 @@ viper.texi(,327) (setq viper-mode t)
 viper.texi(,328) (require 'viper)
 viper.texi(,329) @end lisp
 viper.texi(,330) 
-viper.texi(,331) 
+viper.texi(,331) @noindent
 viper.texi(,332) in your @file{~/.emacs} file.  The @file{.emacs} file is placed in your
 viper.texi(,333) home directory and it is be executed every time you invoke Emacs.  This is
 viper.texi(,334) the place where all general Emacs customization takes place.  Beginning with
@@ -292,7 +297,7 @@ viper.texi(,364) @samp{Lisp Interaction} mode.  After you invoke Viper, you can 
 viper.texi(,365) editing files by using @kbd{:e}, @kbd{:vi}, or @kbd{v} commands.
 viper.texi(,366) (@xref{File and Buffer Handling}, for more information on @kbd{v} and other
 viper.texi(,367) new commands that, in many cases, are more convenient than @kbd{:e},
-viper.texi(,368) @kbd{:vi}, and similar old-style Vi commands.)
+viper.texi(,368) @kbd{:vi}, and similar old-style Vi commands.)@refill
 viper.texi(,369) 
 viper.texi(,370) Finally, if at some point you would want to de-Viperize your running
 viper.texi(,371) copy of Emacs after Viper has been loaded, the command @kbd{M-x
@@ -321,7 +326,7 @@ viper.texi(,393) This is the state plain vanilla Emacs is normally in.  After yo
 viper.texi(,394) Viper, @kbd{C-z} will normally take you to Vi command state.  Another
 viper.texi(,395) @kbd{C-z} will take you back to Emacs state.  This toggle key can be
 viper.texi(,396) changed, @pxref{Customization} You can also type @kbd{M-x viper-mode} to
-viper.texi(,397) change to Vi state.
+viper.texi(,397) change to Vi state.@refill
 viper.texi(,398) 
 viper.texi(,399) 
 viper.texi(,400) For users who chose to set their user level to 1 at Viper setup time,
@@ -359,7 +364,7 @@ viper.texi(,431) boundary of a replacement region (usually designated via a @sam
 viper.texi(,432) it will automatically change to Insert state.  You do not have to worry
 viper.texi(,433) about it.  The key bindings remain practically the same as in Insert
 viper.texi(,434) state.  If you type @key{ESC}, Viper will switch to Vi command mode, terminating the
-viper.texi(,435) replacement state.
+viper.texi(,435) replacement state.@refill
 viper.texi(,436) @end table
 viper.texi(,437) 
 viper.texi(,438) @cindex mode line
@@ -423,7 +428,7 @@ viper.texi(,495) for editing LaTeX documents, Dired for directory editing, etc. 
 viper.texi(,496) major modes, each with a different set of key-bindings.  Viper states are
 viper.texi(,497) orthogonal to these Emacs major modes.  The presence of these language
 viper.texi(,498) sensitive and other modes is a major win over Vi.  @xref{Improvements over
-viper.texi(,499) Vi}, for more.
+viper.texi(,499) Vi}, for more.@refill
 viper.texi(,500) 
 viper.texi(,501) The bindings for these modes can be made available in the Viper Insert state
 viper.texi(,502) as well as in Emacs state.  Unless you specify your user level as 1 (a
@@ -477,7 +482,7 @@ viper.texi(,549) @xref{Recursive Edit,Recursive
 viper.texi(,550) Edit,Recursive Edit,emacs,The GNU Emacs Manual}.
 viper.texi(,551) At user level 1, @kbd{C-g} is bound to @code{viper-info-on-file}
 viper.texi(,552) function instead.
-viper.texi(,553) 
+viper.texi(,553) @refill
 viper.texi(,554) @item C-\
 viper.texi(,555) @kindex @kbd{C-\}
 viper.texi(,556) @cindex Meta key
@@ -499,7 +504,7 @@ viper.texi(,571) binding.  However, it is still possible to switch the input met
 viper.texi(,572) @kbd{\ C-\} in the Vi command state and @kbd{C-z \ C-\} in the Insert state.
 viper.texi(,573) Or you can use the MULE menu in the menubar.
 viper.texi(,574) @end table
-viper.texi(,575) 
+viper.texi(,575) @noindent
 viper.texi(,576) Other differences are mostly improvements.  The ones you should know
 viper.texi(,577) about are:
 viper.texi(,578) 
@@ -517,6 +522,7 @@ viper.texi(,589)
 viper.texi(,590) @item Counts
 viper.texi(,591) Most commands, @kbd{~}, @kbd{[[}, @kbd{p}, @kbd{/}, @dots{}, etc., take counts.
 viper.texi(,592) 
+viper.texi(,593) @comment ]] Just to balance parens
 viper.texi(,594) @item Regexps
 viper.texi(,595) Viper uses Emacs Regular Expressions for searches.  These are a superset of
 viper.texi(,596) Vi regular
@@ -587,9 +593,9 @@ viper.texi(,660) In contrast to @kbd{:w!@: foo}, if the command were @kbd{:r foo
 viper.texi(,661) command will appear in the history list.  This is because having @kbd{:r}
 viper.texi(,662) alone as a default is meaningless, since this command requires a file
 viper.texi(,663) argument.
-viper.texi(,664) 
+viper.texi(,664) @refill
 viper.texi(,665) @end table
-viper.texi(,666) 
+viper.texi(,666) @noindent
 viper.texi(,667) As Vi, Viper's destructive commands can be re-executed by typing `@kbd{.}'.
 viper.texi(,668) However, in addition, Viper keeps track of the history of such commands.  This
 viper.texi(,669) history can be perused by typing @kbd{C-c M-p} and @kbd{C-c M-n}.
@@ -608,7 +614,7 @@ viper.texi(,681) Emacs major modes cannot be used in Insert state.
 viper.texi(,682) It is strongly recommended that as soon as you are comfortable, make the
 viper.texi(,683) Emacs state bindings visible (by changing your user level to 3 or higher).
 viper.texi(,684) @xref{Customization},
-viper.texi(,685) to see how to do this.
+viper.texi(,685) to see how to do this.@refill
 viper.texi(,686) 
 viper.texi(,687) Once this is done, it is possible to do quite a bit of editing in
 viper.texi(,688) Insert state.  For instance, Emacs has a @dfn{yank} command, @kbd{C-y},
@@ -753,13 +759,13 @@ viper.texi(,826) If you set marker @samp{a} in
 viper.texi(,827) file @file{foo}, start editing file @file{bar} and type @kbd{'a}, then
 viper.texi(,828) @emph{YOU WILL SWITCH TO FILE @file{foo}}.  You can see the contents of a
 viper.texi(,829) textmarker using the Viper command @kbd{[<a-z>} where <a-z> are the
-viper.texi(,830) textmarkers, e.g., @kbd{[a} to view marker @samp{a} .
+viper.texi(,830) textmarkers, e.g., @kbd{[a} to view marker @samp{a} .@refill
 viper.texi(,831) @item Repeated Commands
 viper.texi(,832) Command repetitions are common over files.  Typing @kbd{!!} will repeat the
 viper.texi(,833) last @kbd{!} command whichever file it was issued from.
 viper.texi(,834) Typing @kbd{.} will repeat the last command from any file, and
 viper.texi(,835) searches will repeat the last search.  Ex commands can be repeated by typing
-viper.texi(,836) @kbd{: @key{RET}}.
+viper.texi(,836) @kbd{: @key{RET}}.@refill
 viper.texi(,837) Note: in some rare cases, that @kbd{: @key{RET}} may do something dangerous.
 viper.texi(,838) However, usually its effect can be undone by typing @kbd{u}.
 viper.texi(,839) @item Registers
@@ -804,7 +810,7 @@ viper.texi(,877) filename argument in @samp{csh}, by default.  @xref{Customizati
 viper.texi(,878) want to change this.
 viper.texi(,879) @end table
 viper.texi(,880) 
-viper.texi(,881) 
+viper.texi(,881) @noindent
 viper.texi(,882) Currently undisplayed files can be listed using the @kbd{:ar} command.  The
 viper.texi(,883) command @kbd{:n} can be given counts from the @kbd{:ar} list to switch to
 viper.texi(,884) other files. For example, use `:n3' to move to the third file in that list.
@@ -827,9 +833,10 @@ viper.texi(,900) @kbd{:se list} requires modification of the display code for Em
 viper.texi(,901) it is not implemented.
 viper.texi(,902) A useful alternative is @code{cat -t -e file}.  Unfortunately, it cannot
 viper.texi(,903) be used directly inside Emacs, since Emacs will obdurately change @samp{^I}
-viper.texi(,904) back to normal tabs.
+viper.texi(,904) back to normal tabs.@refill
 viper.texi(,905) @end itemize
 viper.texi(,906) 
+viper.texi(,907) @comment  node-name,  next,  previous,  up
 viper.texi(,908) @node Improvements over Vi, Customization, Overview, Top
 viper.texi(,909) @chapter Improvements over Vi
 viper.texi(,910) 
@@ -858,7 +865,7 @@ viper.texi(,932) The Vi command set is based on the idea of combining motion com
 viper.texi(,933) with other commands.  The motion command is used as a text region
 viper.texi(,934) specifier for other commands.
 viper.texi(,935) We classify motion commands into @dfn{point commands} and
-viper.texi(,936) @dfn{line commands}.
+viper.texi(,936) @dfn{line commands}.@refill
 viper.texi(,937) 
 viper.texi(,938) @cindex point commands
 viper.texi(,939) 
@@ -885,7 +892,7 @@ viper.texi(,959) @cindex expanding (region)
 viper.texi(,960) @cindex describing regions
 viper.texi(,961) @cindex movement commands
 viper.texi(,962) 
-viper.texi(,963) 
+viper.texi(,963) @noindent
 viper.texi(,964) If a point command is given as an argument to a modifying command, the
 viper.texi(,965) region determined by the point command will be affected by the modifying
 viper.texi(,966) command.  On the other hand, if a line command is given as an argument to a
@@ -940,8 +947,9 @@ viper.texi(,1014)
 viper.texi(,1015) Since the undo size is limited, Viper can create backup files and
 viper.texi(,1016) auto-save files.  It will normally do this automatically.  It is possible
 viper.texi(,1017) to have numbered backups, etc.  For details, @pxref{Backup,,Backup and
-viper.texi(,1018) Auto-Save,emacs,The GNU Emacs Manual} 
+viper.texi(,1018) Auto-Save,emacs,The GNU Emacs Manual} @refill
 viper.texi(,1019) 
+viper.texi(,1020) @comment [ balance parens
 viper.texi(,1021) @cindex viewing registers and markers
 viper.texi(,1022) @cindex registers
 viper.texi(,1023) @cindex markers
@@ -955,6 +963,7 @@ viper.texi(,1030) The Viper command @kbd{] register} will display the contents o
 viper.texi(,1031) register, numeric or alphabetical.  The related command @kbd{[ textmarker}
 viper.texi(,1032) will show the text around the textmarker.  @samp{register} and @samp{textmarker}
 viper.texi(,1033) can be any letters from a through z.
+viper.texi(,1034) @comment ] balance parens
 viper.texi(,1035) 
 viper.texi(,1036) @node History,  Macros and Registers, Undo and Backups,Improvements over Vi
 viper.texi(,1037) @section History
@@ -1011,7 +1020,7 @@ viper.texi(,1087) where @samp{register} is any character from @samp{a} through @
 viper.texi(,1088) you can execute this macro using @kbd{@@register}.  It is, of course,
 viper.texi(,1089) possible to yank some text into a register and execute it using
 viper.texi(,1090) @kbd{@@register}.  Typing @kbd{@@@@}, @kbd{@@RET}, or @kbd{@@C-j} will
-viper.texi(,1091) execute the last macro that was executed using @kbd{@@register}.
+viper.texi(,1091) execute the last macro that was executed using @kbd{@@register}.@refill
 viper.texi(,1092) 
 viper.texi(,1093) Viper will automatically lowercase the register, so that pressing the
 viper.texi(,1094) @kbd{SHIFT} key for @kbd{@@} will not create problems.  This is for
@@ -1019,10 +1028,12 @@ viper.texi(,1095) @kbd{@@} macros and @kbd{"p} @emph{only}.  In the case of @kbd
 viper.texi(,1096) @kbd{"Ayy} will append to @emph{register a}.  For @kbd{[,],',`}, it
 viper.texi(,1097) is an error to use a Uppercase register name.
 viper.texi(,1098) 
+viper.texi(,1099) @comment [ balance parens
 viper.texi(,1100) @cindex viewing registers and markers
 viper.texi(,1101) 
 viper.texi(,1102) The contents of a register can be seen by @kbd{]register}.  (@kbd{[textmarker}
 viper.texi(,1103) will show the contents of a textmarker).
+viper.texi(,1104) @comment ] balance parens
 viper.texi(,1105) 
 viper.texi(,1106) @cindex last keyboard macro
 viper.texi(,1107) 
@@ -1031,7 +1042,7 @@ viper.texi(,1109) @kbd{*}, and it can be yanked into a register using @kbd{@@!re
 viper.texi(,1110) This is useful for Emacs style keyboard macros defined using @kbd{C-x(}
 viper.texi(,1111) and @kbd{C-x)}.  Emacs keyboard macros have more capabilities.
 viper.texi(,1112) @xref{Keyboard Macros,,Keyboard Macros,emacs, The GNU Emacs Manual}, for
-viper.texi(,1113) details.
+viper.texi(,1113) details.@refill
 viper.texi(,1114) 
 viper.texi(,1115) Keyboard Macros allow an interesting form of Query-Replace:
 viper.texi(,1116) @kbd{/pattern} or @kbd{n} to go to the next pattern (the query), followed by a
@@ -1064,13 +1075,13 @@ viper.texi(,1142) @example
 viper.texi(,1143) (viper-buffer-search-enable)
 viper.texi(,1144) @end example
 viper.texi(,1145) 
-viper.texi(,1146) 
+viper.texi(,1146) @noindent
 viper.texi(,1147) or by setting @code{viper-buffer-search-char} to, say, @kbd{f3}:
 viper.texi(,1148) @example
 viper.texi(,1149) (setq viper-buffer-search-char ?g)
 viper.texi(,1150) @end example
 viper.texi(,1151) 
-viper.texi(,1152) 
+viper.texi(,1152) @noindent
 viper.texi(,1153) If the user calls @code{viper-buffer-search-enable} explicitly (the first
 viper.texi(,1154) method), then @code{viper-buffer-search-char} will be set to @kbd{g}.
 viper.texi(,1155) Regardless of how this feature is enabled, the key
@@ -1087,7 +1098,7 @@ viper.texi(,1165) as you go along.  Incremental Search is normally bound to @kbd
 viper.texi(,1166) @kbd{C-r}.  @xref{Customization}, to find out how to change the bindings
 viper.texi(,1167) of @kbd{C-r or C-s}.
 viper.texi(,1168) For details, @pxref{Incremental Search,,Incremental
-viper.texi(,1169) Search,emacs,The GNU Emacs Manual} 
+viper.texi(,1169) Search,emacs,The GNU Emacs Manual} @refill
 viper.texi(,1170) 
 viper.texi(,1171) @cindex query replace
 viper.texi(,1172) 
@@ -1107,7 +1118,7 @@ viper.texi(,1185) @example
 viper.texi(,1186) (copy-face 'default 'viper-search-face)
 viper.texi(,1187) @end example
 viper.texi(,1188) @vindex @code{viper-search-face}
-viper.texi(,1189) 
+viper.texi(,1189) @noindent
 viper.texi(,1190) in @file{~/.viper}.  If you want to change how patterns are highlighted, you
 viper.texi(,1191) will have to change @code{viper-search-face} to your liking.  The easiest
 viper.texi(,1192) way to do this is to use Emacs customization widget, which is accessible
@@ -1158,7 +1169,7 @@ viper.texi(,1236) @example
 viper.texi(,1237) @code{(setq viper-ex-style-motion nil)}
 viper.texi(,1238) @end example
 viper.texi(,1239) 
-viper.texi(,1240) 
+viper.texi(,1240) @noindent
 viper.texi(,1241) the motion will be a true screen editor motion.  One thing you must then
 viper.texi(,1242) watch out for is that it is possible to be on the end-of-line character.
 viper.texi(,1243) The keys @kbd{x} and @kbd{%} will still work correctly, i.e., as if they
@@ -1234,7 +1245,7 @@ viper.texi(,1312) into 2.  Except for novice users, @kbd{C-c} is also set to exe
 viper.texi(,1313) command from the current major mode.  @key{ESC} will do the same, if you
 viper.texi(,1314) configure @key{ESC} as Meta by setting @code{viper-no-multiple-ESC} to nil
 viper.texi(,1315) in @file{.viper}.  @xref{Customization}.  @kbd{C-\} in Insert, Replace, or Vi
-viper.texi(,1316) states will make Emacs think @kbd{Meta} has been hit.
+viper.texi(,1316) states will make Emacs think @kbd{Meta} has been hit.@refill
 viper.texi(,1317) @item \
 viper.texi(,1318) @kindex @kbd{\}
 viper.texi(,1319) Escape to Emacs to execute a single Emacs command.  For instance,
@@ -1265,7 +1276,7 @@ viper.texi(,1343) argument is the region determined by the motion command that f
 viper.texi(,1344) (indicated as <move>).
 viper.texi(,1345) Currently, @var{ch} can be one of @kbd{c}, @kbd{C}, @kbd{g}, @kbd{q}, and
 viper.texi(,1346) @kbd{s}.  For instance, @kbd{#qr} will prompt you for a string and then
-viper.texi(,1347) prepend this string to each line in the buffer.
+viper.texi(,1347) prepend this string to each line in the buffer.@refill
 viper.texi(,1348) @item # c
 viper.texi(,1349) @kindex @kbd{#c<move>}
 viper.texi(,1350) @cindex changing case
@@ -1281,7 +1292,7 @@ viper.texi(,1359) Emacs command @kbd{M-u} does the same for words.
 viper.texi(,1360) @item # g
 viper.texi(,1361) @kindex @kbd{#g<move>}
 viper.texi(,1362) Execute last keyboard macro for each line in the region
-viper.texi(,1363) (@code{viper-global-execute}).
+viper.texi(,1363) (@code{viper-global-execute}).@refill
 viper.texi(,1364) @item # q
 viper.texi(,1365) @kindex @kbd{#q<move>}
 viper.texi(,1366) Insert specified string at the beginning of each line in the region
@@ -1327,7 +1338,7 @@ viper.texi(,1405) Go to end of heading.
 viper.texi(,1406) @item g <@emph{movement command}>
 viper.texi(,1407) Search buffer for text delimited by movement command.  The canonical
 viper.texi(,1408) example is @kbd{gw} to search for the word under the cursor.
-viper.texi(,1409) @xref{Improved Search}, for details.
+viper.texi(,1409) @xref{Improved Search}, for details.@refill
 viper.texi(,1410) @item C-g and C-]
 viper.texi(,1411) @kindex @kbd{C-g}
 viper.texi(,1412) @kindex @kbd{C-]}
@@ -1476,10 +1487,10 @@ viper.texi(,1554) @code{ediff.el} for finding differences between files and for 
 viper.texi(,1555) patches.
 viper.texi(,1556) @end table
 viper.texi(,1557) 
-viper.texi(,1558) 
+viper.texi(,1558) @noindent
 viper.texi(,1559) Emacs Lisp archives exist on
 viper.texi(,1560) @samp{archive.cis.ohio-state.edu}
-viper.texi(,1561) and @samp{wuarchive.wustl.edu}
+viper.texi(,1561) and @samp{wuarchive.wustl.edu}@refill
 viper.texi(,1562) 
 viper.texi(,1563) 
 viper.texi(,1564) @node Customization,Commands,Improvements over Vi,Top
@@ -1502,7 +1513,7 @@ viper.texi(,1580) Elisp code in your @file{.emacs} file before and after the @co
 viper.texi(,1581) 'viper)} line.  This method is @emph{not} recommended, unless you know what
 viper.texi(,1582) you are doing.  Only two variables, @code{viper-mode} and
 viper.texi(,1583) @code{viper-custom-file-name}, are supposed to be customized in @file{.emacs},
-viper.texi(,1584) prior to loading Viper (i.e., prior to @code{(require 'viper)} command.
+viper.texi(,1584) prior to loading Viper (i.e., prior to @code{(require 'viper)} command.@refill
 viper.texi(,1585) @item
 viper.texi(,1586) @cindex :customize
 viper.texi(,1587) By executing the @kbd{:customize} Ex command. This takes you to the Emacs
@@ -1844,7 +1855,7 @@ viper.texi(,1922) @item viper-load-hook nil
 viper.texi(,1923) List of (parameterless) functions called just after loading Viper.  This is
 viper.texi(,1924) the last chance to do customization before Viper is up and running.
 viper.texi(,1925) @end table
-viper.texi(,1926) 
+viper.texi(,1926) @noindent
 viper.texi(,1927) You can reset some of these constants in Viper with the Ex command @kbd{:set}
 viper.texi(,1928) (when so indicated in the table).  Or you
 viper.texi(,1929) can include a line like this in your @file{.viper} file:
@@ -1915,7 +1926,7 @@ viper.texi(,1993) (global-set-key [f11] 'calendar)                        ; L1, 
 viper.texi(,1994) (global-set-key [f14] 'undo)                            ; L4, Undo
 viper.texi(,1995) @end lisp
 viper.texi(,1996) 
-viper.texi(,1997) 
+viper.texi(,1997) @noindent
 viper.texi(,1998) to bind L1 (a key that exists on some SUN workstations) so it will invoke
 viper.texi(,1999) the Emacs Calendar and to bind L4 so it will undo changes.
 viper.texi(,2000) However, on a dumb terminal or in an Xterm window, even the standard arrow
@@ -1957,7 +1968,7 @@ viper.texi(,2035) explained below.  Each of these key maps affects the correspon
 viper.texi(,2036) The keymap @code{viper-insert-global-user-map} also affects Viper's Replace
 viper.texi(,2037) state. 
 viper.texi(,2038) 
-viper.texi(,2039) 
+viper.texi(,2039) @noindent
 viper.texi(,2040) If you want to
 viper.texi(,2041) bind a key, say @kbd{C-v}, to the function that scrolls
 viper.texi(,2042) page down and to make @kbd{0} display information on the current buffer,
@@ -1965,13 +1976,13 @@ viper.texi(,2043) putting this in @file{.viper} will do the trick in Vi state:
 viper.texi(,2044) @example
 viper.texi(,2045) (define-key viper-vi-global-user-map "\C-v" 'scroll-down)
 viper.texi(,2046) @end example
-viper.texi(,2047) 
+viper.texi(,2047) @noindent
 viper.texi(,2048) To set a key globally,
 viper.texi(,2049) @example
 viper.texi(,2050) (define-key viper-emacs-global-user-map "\C-c m" 'smail)
 viper.texi(,2051) (define-key viper-vi-global-user-map "0" 'viper-info-on-file)
 viper.texi(,2052) @end example
-viper.texi(,2053) 
+viper.texi(,2053) @noindent
 viper.texi(,2054) Note, however, that this binding may be overwritten by other keymaps, since
 viper.texi(,2055) the global keymap has the lowest priority.
 viper.texi(,2056) To make sure that nothing will override a binding in Emacs state, you
@@ -1979,12 +1990,12 @@ viper.texi(,2057) can write this:
 viper.texi(,2058) @example
 viper.texi(,2059) (define-key viper-emacs-global-user-map "\C-c m" 'smail)
 viper.texi(,2060) @end example
-viper.texi(,2061) 
+viper.texi(,2061) @noindent
 viper.texi(,2062) To customize the binding for @kbd{C-h} in Insert state:
 viper.texi(,2063) @example
 viper.texi(,2064) (define-key viper-insert-global-user-map "\C-h" 'my-del-backwards-function)
 viper.texi(,2065) @end example
-viper.texi(,2066) 
+viper.texi(,2066) @noindent
 viper.texi(,2067) 
 viper.texi(,2068) Each Emacs command key calls some lisp function.  If you have enabled the
 viper.texi(,2069) Help, (@pxref{Rudimentary Changes}) @kbd{C-h k} will show you the function
@@ -2008,7 +2019,7 @@ viper.texi(,2086) @example
 viper.texi(,2087) (viper-modify-major-mode 'dired-mode 'emacs-state my-fancy-map)
 viper.texi(,2088) @end example
 viper.texi(,2089) 
-viper.texi(,2090) 
+viper.texi(,2090) @noindent
 viper.texi(,2091) in @file{~/.viper}.  To do the same in Vi and Insert states, you should use
 viper.texi(,2092) @code{vi-state} and @code{insert-state}.  Changes in Insert state are also
 viper.texi(,2093) in effect in Replace state.  For instance, suppose that the user wants to
@@ -2074,7 +2085,7 @@ viper.texi(,2152) @lisp
 viper.texi(,2153) (viper-add-local-keys 'vi-state '(("ZZ" .@: TeX-command-master)
 viper.texi(,2154)                                  ("ZQ" .@: viper-save-kill-buffer)))
 viper.texi(,2155) @end lisp
-viper.texi(,2156) 
+viper.texi(,2156) @noindent
 viper.texi(,2157) redefines @kbd{ZZ} to invoke @code{TeX-command-master} in @code{vi-state}
 viper.texi(,2158) and @kbd{ZQ} to save-then-kill the current buffer.  These bindings take
 viper.texi(,2159) effect only in the buffer where this command is executed.  The typical use
@@ -2086,7 +2097,7 @@ viper.texi(,2164) @code{tex-mode-hook} as follows:
 viper.texi(,2165) @lisp
 viper.texi(,2166) (add-hook 'tex-mode-hook 'my-tex-init)
 viper.texi(,2167) @end lisp
-viper.texi(,2168) 
+viper.texi(,2168) @noindent
 viper.texi(,2169) When TeX mode starts, the hook is executed and the above Lisp expression is
 viper.texi(,2170) evaluated.  Then, the bindings for @kbd{ZZ} and @kbd{ZQ} are changed in Vi
 viper.texi(,2171) command mode for all buffers in TeX mode.
@@ -2219,7 +2230,7 @@ viper.texi(,2297) @file{.viper} should fix the problem:
 viper.texi(,2298) @lisp
 viper.texi(,2299) (viper-harness-minor-mode "nasty-mode")
 viper.texi(,2300) @end lisp
-viper.texi(,2301) 
+viper.texi(,2301) @noindent
 viper.texi(,2302) The argument to @code{viper-harness-minor-mode} is the name of the file for the
 viper.texi(,2303) offending minor mode with the suffixes @file{.el} and @file{.elc} removed.
 viper.texi(,2304) 
@@ -2230,7 +2241,7 @@ viper.texi(,2308) @code{nasty-mode-map}.  Then check if there is a statement of 
 viper.texi(,2309) @lisp
 viper.texi(,2310) (define-key nasty-mode-map key function)
 viper.texi(,2311) @end lisp
-viper.texi(,2312) 
+viper.texi(,2312) @noindent
 viper.texi(,2313) that binds the misbehaving
 viper.texi(,2314) keys.  If so, use the above line to harness @code{nasty-mode}.  If your
 viper.texi(,2315) suspicion is wrong, no harm is done if you harness a minor mode that
@@ -2459,7 +2470,7 @@ viper.texi(,2537) ;;; Local Variables:
 viper.texi(,2538) ;;; eval: (viper-setup-master-buffer "file1" "file2" "file3" "file4")
 viper.texi(,2539) ;;; End:
 viper.texi(,2540) @end lisp
-viper.texi(,2541) 
+viper.texi(,2541) @noindent
 viper.texi(,2542) where @code{file1} to @code{file4} are names of files related to the master
 viper.texi(,2543) file.  Next time, when the master file is visited, the command
 viper.texi(,2544) @code{viper-setup-master-buffer} will be evaluated and the above files will
@@ -2700,7 +2711,7 @@ viper.texi(,2778) macros) lets the user define keyboard macros that ask for conf
 viper.texi(,2779) even prompt the user for input and then continue.  To do this, one should
 viper.texi(,2780) type @kbd{C-x q} (for confirmation) or @kbd{C-u C-x q} (for prompt).
 viper.texi(,2781) For details, @pxref{Kbd Macro Query,,Customization,emacs,The GNU Emacs
-viper.texi(,2782) Manual} 
+viper.texi(,2782) Manual} @refill
 viper.texi(,2783) 
 viper.texi(,2784) When the user finishes defining a macro (which is done by typing @kbd{C-x)} ---
 viper.texi(,2785) a departure from Vi), you will be asked whether you want this
@@ -2718,7 +2729,7 @@ viper.texi(,2796)        [l up (meta x) n e x t - l i n e return]
 viper.texi(,2797)        "my-buf")
 viper.texi(,2798) @end example
 viper.texi(,2799) 
-viper.texi(,2800) 
+viper.texi(,2800) @noindent
 viper.texi(,2801) To do the same for Vi state and all buffers with the major mode
 viper.texi(,2802) @code{cc-mode}, use:
 viper.texi(,2803) 
@@ -2728,7 +2739,7 @@ viper.texi(,2806)        [l up (meta x) n e x t - l i n e return]
 viper.texi(,2807)        'cc-mode)
 viper.texi(,2808) @end example
 viper.texi(,2809) 
-viper.texi(,2810) 
+viper.texi(,2810) @noindent
 viper.texi(,2811) Both macro names and macro definitions are vectors of symbols that denote
 viper.texi(,2812) keys on the keyboard.  Some keys, like @kbd{\}, @kbd{ }, or digit-keys must
 viper.texi(,2813) be escaped with a backslash.  Modified keys are represented as lists.  For
@@ -2742,7 +2753,7 @@ viper.texi(,2820) @example
 viper.texi(,2821) (viper-record-kbd-macro "aa" 'vi-state  "aaa\e"  "my-buffer")
 viper.texi(,2822) @end example
 viper.texi(,2823) 
-viper.texi(,2824) 
+viper.texi(,2824) @noindent
 viper.texi(,2825) Thus, typing @kbd{aa} fast in Vi state will switch Viper to Insert state
 viper.texi(,2826) (due to the first @kbd{a}), insert @kbd{aa}, and then it will switch back to Vi
 viper.texi(,2827) state.  All this will take effect only in the buffer named @code{my-buffer}.
@@ -2769,7 +2780,7 @@ viper.texi(,2847) @findex @code{viper-unrecord-kbd-macro}
 viper.texi(,2848) @example
 viper.texi(,2849) (viper-unrecord-kbd-macro macro state)
 viper.texi(,2850) @end example
-viper.texi(,2851) 
+viper.texi(,2851) @noindent
 viper.texi(,2852) The second argument must be @code{vi-state}, @code{insert-state}, or
 viper.texi(,2853) @code{emacs-state}.  The first argument is a name of a macro.  To avoid
 viper.texi(,2854) mistakes in specifying names of existing macros, type @kbd{M-x
@@ -2805,7 +2816,7 @@ viper.texi(,2883) @example
 viper.texi(,2884) (global-set-key [f13] 'repeat-complex-command)
 viper.texi(,2885) @end example
 viper.texi(,2886) 
-viper.texi(,2887) 
+viper.texi(,2887) @noindent
 viper.texi(,2888) binds the key f13 to the Emacs function that repeats the last minibuffer
 viper.texi(,2889) command.  Under Viper, however, you may still use this key for additional
 viper.texi(,2890) purposes, if you bind, say, a double-hitting action for that key to some
@@ -2917,7 +2928,7 @@ viper.texi(,2995) @chapter Commands
 viper.texi(,2996) 
 viper.texi(,2997) This section is a semi-automatically bowdlerized version of the Vi
 viper.texi(,2998) reference created by @* @samp{maart@@cs.vu.nl} and others.  It can be
-viper.texi(,2999) found on the Vi archives.  This reference has been adapted for Viper.
+viper.texi(,2999) found on the Vi archives.  This reference has been adapted for Viper.@refill
 viper.texi(,3000) 
 viper.texi(,3001) @menu
 viper.texi(,3002) * Groundwork::			Textual Conventions and Viper basics
@@ -2932,13 +2943,14 @@ viper.texi(,3010) * Mouse-bound Commands::        Search and insertion of text
 viper.texi(,3011) @end menu
 viper.texi(,3012) 
 viper.texi(,3013) @node Groundwork, Text Handling, Commands, Commands
+viper.texi(,3014) @comment  node-name,  next,  previous,  up
 viper.texi(,3015) @section Groundwork
 viper.texi(,3016) 
 viper.texi(,3017) The VI command set is based on the idea of combining motion commands
 viper.texi(,3018) with other commands.  The motion command is used as a text region
 viper.texi(,3019) specifier for other commands.
 viper.texi(,3020) We classify motion commands into @dfn{point commands} and
-viper.texi(,3021) @dfn{line commands}.
+viper.texi(,3021) @dfn{line commands}.@refill
 viper.texi(,3022) 
 viper.texi(,3023) @cindex point commands
 viper.texi(,3024) 
@@ -2958,7 +2970,7 @@ viper.texi(,3037) @quotation
 viper.texi(,3038) @kbd{j}, @kbd{k}, @kbd{+}, @kbd{-}, @kbd{H}, @kbd{M}, @kbd{L}, @kbd{@{},
 viper.texi(,3039) @kbd{@}}, @kbd{G}, @kbd{'},  @kbd{[[}, @kbd{]]}, @kbd{[]}
 viper.texi(,3040) @end quotation
-viper.texi(,3041) 
+viper.texi(,3041) @noindent
 viper.texi(,3042) 
 viper.texi(,3043) Text Deletion Commands (@pxref{Deleting Text}), Change commands
 viper.texi(,3044) (@pxref{Changing Text}), even Shell Commands (@pxref{Shell Commands})
@@ -3030,11 +3042,11 @@ viper.texi(,3109) @kindex <args>
 viper.texi(,3110) @kindex <cmd>
 viper.texi(,3111) @cindex <args>
 viper.texi(,3112) @cindex <cmd>
-viper.texi(,3113) 
+viper.texi(,3113) @noindent
 viper.texi(,3114) Others like @samp{<args> -- arguments}, @samp{<cmd> -- command} etc.
 viper.texi(,3115) should be fairly obvious.
 viper.texi(,3116) 
-viper.texi(,3117) 
+viper.texi(,3117) @noindent
 viper.texi(,3118) Common characters referred to include:
 viper.texi(,3119) 
 viper.texi(,3120) @table @kbd
@@ -4105,7 +4117,7 @@ viper.texi(,4184) the whole file.
 viper.texi(,4185) @cindex @samp{#} (Previous file)
 viper.texi(,4186) Similarly, @samp{#} expands to the previous file.  The previous file is the
 viper.texi(,4187) first file in @kbd{:args} listing.  This defaults to the previous file in
-viper.texi(,4188) the VI sense if you have one window.
+viper.texi(,4188) the VI sense if you have one window.@refill
 viper.texi(,4189) 
 viper.texi(,4190) Symbols @samp{%} and @samp{#} are also used in the Ex commands @kbd{:e} and
 viper.texi(,4191) @kbd{:r <shell-cmd>}.  The commands @kbd{:w} and the regular @kbd{:r
@@ -4344,7 +4356,7 @@ viper.texi(,4423) a region under the mouse pointer.
 viper.texi(,4424) This command can take a prefix argument.  Note: Viper sets this
 viper.texi(,4425) binding only if this mouse action is not
 viper.texi(,4426) already bound to something else.
-viper.texi(,4427) @xref{Viper Specials}, for more information.
+viper.texi(,4427) @xref{Viper Specials}, for more information.@refill
 viper.texi(,4428) 
 viper.texi(,4429) @item S-Mouse-2 (Emacs)
 viper.texi(,4430) @item meta button2up (XEmacs)
@@ -4353,7 +4365,7 @@ viper.texi(,4432) insert a region surrounding the mouse pointer.
 viper.texi(,4433) This command can also take a prefix argument.
 viper.texi(,4434) Note: Viper sets this binding only if this mouse action is not
 viper.texi(,4435) already bound to something else.
-viper.texi(,4436) @xref{Viper Specials}, for more details.
+viper.texi(,4436) @xref{Viper Specials}, for more details.@refill
 viper.texi(,4437) @end table
 viper.texi(,4438) @kindex @kbd{S-Mouse-1}
 viper.texi(,4439) @kindex @kbd{S-Mouse-2}
@@ -4361,6 +4373,7 @@ viper.texi(,4440) @kindex @kbd{meta button1up}
 viper.texi(,4441) @kindex @kbd{meta button2up}
 viper.texi(,4442) 
 viper.texi(,4443) @node Acknowledgments,,,Top
+viper.texi(,4444) @comment  node-name,  next,  previous,  up
 viper.texi(,4445) @unnumbered Acknowledgments
 viper.texi(,4446) 
 viper.texi(,4447) Viper, formerly known as VIP-19, was written by Michael Kifer.  Viper is
@@ -4432,28 +4445,35 @@ viper.texi(,4512) @end example
 viper.texi(,4513) 
 viper.texi(,4514) 
 viper.texi(,4515) @node Key Index,Function Index,,Top
+viper.texi(,4516) @comment  node-name,  next,  previous,  up
 viper.texi(,4517) @unnumbered Key Index
 viper.texi(,4518) 
 viper.texi(,4519) @printindex ky
 viper.texi(,4520) 
 viper.texi(,4521) @node Function Index,Variable Index,Key Index,Top
+viper.texi(,4522) @comment  node-name,  next,  previous,  up
 viper.texi(,4523) @unnumbered Function Index
 viper.texi(,4524) 
 viper.texi(,4525) @printindex fn
 viper.texi(,4526) 
 viper.texi(,4527) @node Variable Index,Package Index,Function Index,Top
+viper.texi(,4528) @comment  node-name,  next,  previous,  up
 viper.texi(,4529) @unnumbered Variable Index
 viper.texi(,4530) 
 viper.texi(,4531) @printindex vr
 viper.texi(,4532) 
 viper.texi(,4533) @node Package Index,Concept Index,Variable Index,Top
+viper.texi(,4534) @comment  node-name,  next,  previous,  up
 viper.texi(,4535) @unnumbered Package Index
 viper.texi(,4536) 
 viper.texi(,4537) @printindex pg
 viper.texi(,4538) 
 viper.texi(,4539) @node Concept Index,,Package Index,Top
+viper.texi(,4540) @comment  node-name,  next,  previous,  up
 viper.texi(,4541) @unnumbered Concept Index
 viper.texi(,4542) 
 viper.texi(,4543) @printindex cp
 viper.texi(,4544) 
-viper.texi(,4546) 
+viper.texi(,4545) @setchapternewpage odd
+viper.texi(,4546) @contents
+viper.texi(,4547) @bye

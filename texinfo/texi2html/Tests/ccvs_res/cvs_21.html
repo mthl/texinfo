@@ -66,8 +66,8 @@ you are seeing, then you can look up the message
 alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC184">F.1 Partial list of error messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Partial list of CVS errors
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC185">F.2 Trouble making a connection to a CVS server</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -103,23 +103,23 @@ is capable of printing many, many error messages, often
 with parts of them supplied by the operating system,
 but the intention is to list the common and/or
 potentially confusing error messages.
-
-</p><p>The messages are alphabetical, but introductory text
+</p>
+<p>The messages are alphabetical, but introductory text
 such as `<samp>cvs update: </samp>' is not considered in
 ordering them.
-
-</p><p>In some cases the list includes messages printed by old
+</p>
+<p>In some cases the list includes messages printed by old
 versions of <small>CVS</small> (partly because users may not be
 sure which version of <small>CVS</small> they are using at any
 particular moment).
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> <var>file</var>:<var>line</var>: Assertion '<var>text</var>' failed</code></dt>
 <dd><p>The exact format of this message may vary depending on
 your system.  It indicates a bug in <small>CVS</small>, which can
 be handled as described in <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs <var>command</var>: authorization failed: server <var>host</var> rejected access</code></dt>
 <dd><p>This is a generic response when trying to connect to a
 pserver server which chooses not to provide a
@@ -127,8 +127,8 @@ specific reason for denying authorization.  Check that
 the username and password specified are correct and
 that the <code>CVSROOT</code> specified is allowed by `<samp>--allow-root</samp>'
 in `<tt>inetd.conf</tt>'.  See <a href="cvs_2.html#SEC29">Direct connection with password authentication</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs <var>command</var>: conflict: removed <var>file</var> was modified by second party</code></dt>
 <dd><p>This message indicates that you removed a file, and
 someone else modified it.  To resolve the conflict,
@@ -138,8 +138,8 @@ still want to remove it.  If you don't want to remove
 it, stop here.  If you do want to remove it, proceed
 with `<samp>cvs remove <var>file</var></samp>' and commit your
 removal.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cannot change permissions on temporary directory</code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="example">Operation not permitted
 </pre></td></tr></table><p>This message has been happening in a non-reproducible,
@@ -155,8 +155,8 @@ you have any information to add, please let us know as
 described in <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.  If you experience this error
 while using <small>CVS</small>, retrying the operation which
 produced it should work fine.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [server aborted]: Cannot check out files into the repository itself</code></dt>
 <dd><p>The obvious cause for this message (especially for
 non-client/server <small>CVS</small>) is that the <small>CVS</small> root
@@ -170,40 +170,40 @@ problem, set the temporary directory to somewhere else,
 for example `<tt>/var/tmp</tt>'; see <code>TMPDIR</code> in
 <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>, for how to set the
 temporary directory.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cannot commit files as 'root'</code></dt>
 <dd><p>See `<samp>'root' is not allowed to commit files</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cannot open CVS/Entries for reading: No such file or directory</code></dt>
 <dd><p>This generally indicates a <small>CVS</small> internal error, and
 can be handled as with other <small>CVS</small> bugs
 (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).  Usually there is a workaround--the
 exact nature of which would depend on the situation but
 which hopefully could be figured out.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [init aborted]: cannot open CVS/Root: No such file or directory</code></dt>
 <dd><p>This message is harmless.  Provided it is not
 accompanied by other errors, the operation has
 completed successfully.  This message should not occur
 with current versions of <small>CVS</small>, but it is documented
 here for the benefit of <small>CVS</small> 1.9 and older.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs server: cannot open /root/.cvsignore: Permission denied</code></dt>
 <dt><code> cvs [server aborted]: can't chdir(/root): Permission denied</code></dt>
 <dd><p>See <a href="#SEC185">Trouble making a connection to a CVS server</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [checkout aborted]: cannot rename file <var>file</var> to CVS/,,<var>file</var>: Invalid argument</code></dt>
 <dd><p>This message has been reported as intermittently
 happening with <small>CVS</small> 1.9 on Solaris 2.5.  The cause is
 unknown; if you know more about what causes it, let us
 know as described in <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [<var>command</var> aborted]: cannot start server via rcmd</code></dt>
 <dd><p>This, unfortunately, is a rather nonspecific error
 message which <small>CVS</small> 1.9 will print if you are
@@ -213,8 +213,8 @@ should print a much more specific error message.  If
 you get this message when you didn't mean to run the
 client at all, you probably forgot to specify
 <code>:local:</code>, as described in <a href="cvs_2.html#SEC9">The Repository</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> ci: <var>file</var>,v: bad diff output line: Binary files - and /tmp/T2a22651 differ</code></dt>
 <dd><p><small>CVS</small> 1.9 and older will print this message
 when trying to check in a binary file if
@@ -224,8 +224,8 @@ and the <small>INSTALL</small> file in the <small>CVS</small>
 distribution.  Alternately, upgrade to a current
 version of <small>CVS</small>, which checks in files itself
 rather than via <small>RCS</small>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs checkout: could not check out <var>file</var></code></dt>
 <dd><p>With <small>CVS</small> 1.9, this can mean that the <code>co</code> program
 (part of <small>RCS</small>) returned a failure.  It should be
@@ -235,23 +235,23 @@ not well-understood.  With the current version of <small>CVS</small>,
 which does not run <code>co</code>, if this message occurs
 without another error message, it is definitely a <small>CVS</small>
 bug (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [login aborted]: could not find out home directory</code></dt>
 <dd><p>This means that you need to set the environment
 variables that <small>CVS</small> uses to locate your home directory.
 See the discussion of <code>HOME</code>, <code>HOMEDRIVE</code>, and <code>HOMEPATH</code> in
 <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs update: could not merge revision <var>rev</var> of <var>file</var>: No such file or directory</code></dt>
 <dd><p><small>CVS</small> 1.9 and older will print this message if there was
 a problem finding the <code>rcsmerge</code> program.  Make
 sure that it is in your <code>PATH</code>, or upgrade to a
 current version of <small>CVS</small>, which does not require
 an external <code>rcsmerge</code> program.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [update aborted]: could not patch <var>file</var>: No such file or directory</code></dt>
 <dd><p>This means that there was a problem finding the
 <code>patch</code> program.  Make sure that it is in your
@@ -262,16 +262,16 @@ version of <small>CVS</small>, then there is no need for an
 external patch program and you should not see this
 message.  But if either client or server is running
 <small>CVS</small> 1.9, then you need <code>patch</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs update: could not patch <var>file</var>; will refetch</code></dt>
 <dd><p>This means that for whatever reason the client was
 unable to apply a patch that the server sent.  The
 message is nothing to be concerned about, because
 inability to apply the patch only slows things down and
 has no effect on what <small>CVS</small> does.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> dying gasps from <var>server</var> unexpected</code></dt>
 <dd><p>There is a known bug in the server for <small>CVS</small> 1.9.18
 and older which can cause this.  For me, this was
@@ -282,8 +282,8 @@ If you see the message,
 you probably can just retry the operation which failed,
 or if you have discovered information concerning its
 cause, please let us know as described in <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> end of file from server (consult above messages if any)</code></dt>
 <dd><p>The most common cause for this message is if you are
 using an external <code>rsh</code> program and it exited with
@@ -291,8 +291,8 @@ an error.  In this case the <code>rsh</code> program should
 have printed a message, which will appear before the
 above message.  For more information on setting up a
 <small>CVS</small> client and server, see <a href="cvs_2.html#SEC26">Remote repositories</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [update aborted]: EOF in key in RCS file <var>file</var>,v</code></dt>
 <dt><code> cvs [checkout aborted]: EOF while looking for end of string in RCS file <var>file</var>,v</code></dt>
 <dd><p>This means that there is a syntax error in the given
@@ -308,15 +308,15 @@ corrupting the file, by all means report it,
 There are quite a few variations of this error message,
 depending on exactly where in the <small>RCS</small> file <small>CVS</small>
 finds the syntax error.
-
-</p><a name="IDX316"></a>
+</p>
+<a name="IDX316"></a>
 </dd>
 <dt><code> cvs commit: Executing 'mkmodules'</code></dt>
 <dd><p>This means that your repository is set up for a version
 of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small>
 1.8 or later, the above message will be preceded by
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs commit: Rebuilding administrative file database
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
 <p>If you see both messages, the database is being rebuilt
 twice, which is unnecessary but harmless.  If you wish
@@ -325,16 +325,16 @@ to avoid the duplication, and you have no versions of
 every place it appears in your <code>modules</code>
 file.  For more information on the <code>modules</code> file,
 see <a href="cvs_18.html#SEC158">The modules file</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> missing author</code></dt>
 <dd><p>Typically this can happen if you created an RCS file
 with your username set to empty.  <small>CVS</small> will, bogusly,
 create an illegal RCS file with no value for the author
 field.  The solution is to make sure your username is
 set to a non-empty value and re-create the RCS file.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [checkout aborted]: no such tag <var>tag</var></code></dt>
 <dd><p>This message means that <small>CVS</small> isn't familiar with
 the tag <var>tag</var>.  Usually this means that you have
@@ -348,8 +348,8 @@ this once for a given tag; when a tag is listed in
 `<tt>val-tags</tt>', it stays there.  Note that using
 `<samp>-f</samp>' to not require tag matches does not override
 this check; see <a href="cvs_16.html#SEC119">Common command options</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> *PANIC* administration files missing</code></dt>
 <dd><p>This typically means that there is a directory named
 <small>CVS</small> but it does not contain the administrative files
@@ -358,8 +358,8 @@ that you created a CVS directory via some mechanism
 other than <small>CVS</small>, then the answer is simple, use a name
 other than <small>CVS</small>.  If not, it indicates a <small>CVS</small> bug
 (see section <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>).
-
-</p></dd>
+</p>
+</dd>
 <dt><code> rcs error: Unknown option: -x,v/</code></dt>
 <dd><p>This message will be followed by a usage message for
 <small>RCS</small>.  It means that you have an old version of
@@ -367,8 +367,8 @@ other than <small>CVS</small>.  If not, it indicates a <small>CVS</small> bug
 system), as well as an old version of <small>CVS</small>.
 <small>CVS</small> 1.9.18 and earlier only work with <small>RCS</small> version 5 and
 later; current versions of <small>CVS</small> do not run <small>RCS</small> programs.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [server aborted]: received broken pipe signal</code></dt>
 <dd><p>This message seems to be caused by a hard-to-track-down
 bug in <small>CVS</small> or the systems it runs on (we don't
@@ -377,8 +377,8 @@ happen only after a <small>CVS</small> command has completed, and
 you should be able to just ignore the message.
 However, if you have discovered information concerning its
 cause, please let us know as described in <a href="cvs_23.html#SEC188">Dealing with bugs in CVS or this manual</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> 'root' is not allowed to commit files</code></dt>
 <dd><p>When committing a permanent change, <small>CVS</small> makes a log entry of
 who committed the change.  If you are committing the change logged
@@ -389,8 +389,8 @@ logged in as &quot;root&quot;.  (You can disable this option by passing the
 <code>--enable-rootcommit</code> option to `<tt>configure</tt>' and recompiling <small>CVS</small>.
 On some systems this means editing the appropriate `<tt>config.h</tt>' file
 before building <small>CVS</small>.)
-
-</p></dd>
+</p>
+</dd>
 <dt><code> Too many arguments!</code></dt>
 <dd><p>This message is typically printed by the `<tt>log.pl</tt>'
 script which is in the `<tt>contrib</tt>' directory in the
@@ -406,12 +406,12 @@ older expects the logfile as an argument whereas the
 logfile to be specified with a `<samp>-f</samp>' option.  Of
 course, if you don't need `<tt>log.pl</tt>' you can just
 comment it out of `<tt>loginfo</tt>'.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [update aborted]: unexpected EOF reading <var>file</var>,v</code></dt>
 <dd><p>See `<samp>EOF in key in RCS file</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs [login aborted]: unrecognized auth response from <var>server</var></code></dt>
 <dd><p>This message typically means that the server is not set
 up properly.  For example, if `<tt>inetd.conf</tt>' points
@@ -420,8 +420,8 @@ find the log file which inetd writes
 (`<tt>/var/log/messages</tt>' or whatever inetd uses on
 your system).  For details, see <a href="#SEC185">Trouble making a connection to a CVS server</a>, and
 <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs commit: Up-to-date check failed for `<var>file</var>'</code></dt>
 <dd><p>This means that someone else has committed a change to
 that file since the last time that you did a <code>cvs
@@ -435,8 +435,8 @@ print a message saying so, will report `<samp>C <var>file</var></samp>',
 and you need to manually resolve the
 conflict.  For more details on this process see
 <a href="cvs_10.html#SEC86">Conflicts example</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> Usage:	diff3 [-exEX3 [-i | -m] [-L label1 -L label3]] file1 file2 file3</code></dt>
 <dd><table><tr><td>&nbsp;</td><td><pre class="example">Only one of [exEX3] allowed
 </pre></td></tr></table><p>This indicates a problem with the installation of
@@ -447,8 +447,8 @@ the message will vary depending on the system.  The
 simplest solution is to upgrade to a current version of
 <small>CVS</small>, which does not rely on external
 <code>rcsmerge</code> or <code>diff3</code> programs.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> warning: unrecognized response `<var>text</var>' from cvs server</code></dt>
 <dd><p>If <var>text</var> contains a valid response (such as
 `<samp>ok</samp>') followed by an extra carriage return
@@ -463,13 +463,13 @@ probably want to try `<samp>:server:</samp>' instead of
 may signify a problem with your <small>CVS</small> server.
 Double-check your installation against the instructions
 for setting up the <small>CVS</small> server.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs commit: [<var>time</var>] waiting for <var>user</var>'s lock in <var>directory</var></code></dt>
 <dd><p>This is a normal message, not an error.  See
 <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>, for more details.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> cvs commit: warning: editor session failed</code></dt>
 <dd><a name="IDX317"></a>
 <p>This means that the editor which <small>CVS</small> is using exits with a nonzero
@@ -477,8 +477,8 @@ exit status.  Some versions of vi will do this even when there was not
 a problem editing the file.  If so, point the
 <code>CVSEDITOR</code> environment variable to a small script
 such as:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
 vi $*
 exit 0
 </pre></td></tr></table>
@@ -514,12 +514,12 @@ running on Windows, first upgrade the client to
 earlier versions provided much less information about
 what the problem was.  If the client is non-Windows,
 <small>CVS</small> 1.9 should be fine.
-
-</p><p>If the error messages are not sufficient to track down
+</p>
+<p>If the error messages are not sufficient to track down
 the problem, the next steps depend largely on which
 access method you are using.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dd><a name="IDX318"></a>
 </dd>
 <dt><code> :ext:</code></dt>
@@ -527,16 +527,16 @@ access method you are using.
 example: &quot;rsh servername cvs -v&quot; should print <small>CVS</small>
 version information.  If this doesn't work, you need to
 fix it before you can worry about <small>CVS</small> problems.
-
-</p><a name="IDX319"></a>
+</p>
+<a name="IDX319"></a>
 </dd>
 <dt><code> :server:</code></dt>
 <dd><p>You don't need a command line rsh program to use this
 access method, but if you have an rsh program around,
 it may be useful as a debugging tool.  Follow the
 directions given for :ext:.
-
-</p><a name="IDX320"></a>
+</p>
+<a name="IDX320"></a>
 </dd>
 <dt><code> :pserver:</code></dt>
 <dd><p>Errors along the lines of &quot;connection refused&quot; typically indicate
@@ -553,27 +553,27 @@ line in `<tt>inetd.conf</tt>', typically an invalid option or forgetting
 to put the `<samp>pserver</samp>' command at the end of the line.
 Another less common problem is invisible control characters that
 your editor &quot;helpfully&quot; added without you noticing.
-
-</p><p>One good debugging tool is to &quot;telnet servername
+</p>
+<p>One good debugging tool is to &quot;telnet servername
 2401&quot;.  After connecting, send any text (for example
 &quot;foo&quot; followed by return).  If <small>CVS</small> is working
 correctly, it will respond with
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs [pserver aborted]: bad auth protocol start: foo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs [pserver aborted]: bad auth protocol start: foo
 </pre></td></tr></table>
 <p>If instead you get:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Usage: cvs [cvs-options] command [command-options-and-arguments]
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Usage: cvs [cvs-options] command [command-options-and-arguments]
 ...
 </pre></td></tr></table>
 
 <p>then you're missing the `<samp>pserver</samp>' command at the end of the
 line in `<tt>inetd.conf</tt>'; check to make sure that the entire command
 is on one line and that it's complete.
-
-</p><p>Likewise, if you get something like:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Unknown command: `pserved'
+</p>
+<p>Likewise, if you get something like:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Unknown command: `pserved'
 
 CVS commands are:
         add          Add a new file/directory to the repository
@@ -583,12 +583,12 @@ CVS commands are:
 <p>then you've misspelled `<samp>pserver</samp>' in some way.  If it isn't
 obvious, check for invisible control characters (particularly
 carriage returns) in `<tt>inetd.conf</tt>'.
-
-</p><p>If it fails to work at all, then make sure inetd is working
+</p>
+<p>If it fails to work at all, then make sure inetd is working
 right.  Change the invocation in `<tt>inetd.conf</tt>' to run the
 echo program instead of cvs.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">2401  stream  tcp  nowait  root /bin/echo echo hello
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">2401  stream  tcp  nowait  root /bin/echo echo hello
 </pre></td></tr></table>
 <p>After making that change and instructing inetd to
 re-read its configuration file, &quot;telnet servername
@@ -596,20 +596,20 @@ re-read its configuration file, &quot;telnet servername
 server should close the connection.  If this doesn't
 work, you need to fix it before you can worry about
 <small>CVS</small> problems.
-
-</p><p>On AIX systems, the system will often have its own
+</p>
+<p>On AIX systems, the system will often have its own
 program trying to use port 2401.  This is AIX's problem
 in the sense that port 2401 is registered for use with
 <small>CVS</small>.  I hear that there is an AIX patch available
 to address this problem.
-
-</p><p>Another good debugging tool is the `<samp>-d</samp>'
+</p>
+<p>Another good debugging tool is the `<samp>-d</samp>'
 (debugging) option to inetd.  Consult your system
 documentation for more information.
-
-</p><p>If you seem to be connecting but get errors like:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs server: cannot open /root/.cvsignore: Permission denied
+</p>
+<p>If you seem to be connecting but get errors like:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs server: cannot open /root/.cvsignore: Permission denied
 cvs [server aborted]: can't chdir(/root): Permission denied
 </pre></td></tr></table>
 
@@ -620,8 +620,8 @@ for programs being run by inetd.  In this case, you can either
 have inetd run a shell script that unsets <code>$HOME</code> and then runs
 <small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine
 environment.)
-
-</p><p>If you can connect successfully for a while but then can't,
+</p>
+<p>If you can connect successfully for a while but then can't,
 you've probably hit inetd's rate limit.
 (If inetd receives too many requests for the same service
 in a short period of time, it assumes that something is wrong
@@ -655,8 +655,8 @@ others allow you to set the limit for each service separately.)
 
 <p>Here is a list of problems which do not fit into the
 above categories.  They are in no particular order.
-
-</p><ul>
+</p>
+<ul>
 <li>
 On Windows, if there is a 30 second or so delay when
 you run a <small>CVS</small> command, it may mean that you have

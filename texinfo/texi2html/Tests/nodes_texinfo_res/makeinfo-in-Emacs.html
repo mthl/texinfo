@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.1.5 Running makeinfo inside Emacs</title>
+<title>GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs</title>
 
-<meta name="description" content="Texinfo: 20.1.5 Running makeinfo inside Emacs">
-<meta name="keywords" content="Texinfo: 20.1.5 Running makeinfo inside Emacs">
+<meta name="description" content="GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.1.5 Running makeinfo inside Emacs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,14 +84,14 @@ ul.toc {list-style: none}
 <code>makeinfo-region</code> or the <code>makeinfo-buffer</code> commands.  In
 Texinfo mode, the commands are bound to <kbd>C-c C-m C-r</kbd> and <kbd>C-c
 C-m C-b</kbd> by default.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-c C-m C-r</kbd></dt>
 <dt><kbd> M-x makeinfo-region</kbd></dt>
 <dd><p>Format the current region for Info.
 <a name="IDX403"></a>
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-m C-b</kbd></dt>
 <dt><kbd> M-x makeinfo-buffer</kbd></dt>
 <dd><p>Format the current buffer for Info.
@@ -104,13 +104,13 @@ C-m C-b</kbd> by default.
 name of the visited file as the default.  You can edit the default
 file name in the minibuffer if you wish, before pressing <kbd>RET</kbd> to
 start the <code>makeinfo</code> process.
-
-</p><p>The Emacs <code>makeinfo-region</code> and <code>makeinfo-buffer</code> commands
+</p>
+<p>The Emacs <code>makeinfo-region</code> and <code>makeinfo-buffer</code> commands
 run the <code>makeinfo</code> program in a temporary shell buffer.  If
 <code>makeinfo</code> finds any errors, Emacs displays the error messages in
 the temporary buffer.
-
-</p><a name="IDX405"></a>
+</p>
+<a name="IDX405"></a>
 <a name="IDX406"></a>
 <a name="IDX407"></a>
 <p>You can parse the error messages by typing <kbd>C-x `</kbd>
@@ -118,19 +118,19 @@ the temporary buffer.
 cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
 caused the error.  See <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
 information about using the <code>next-error</code> command.
-
-</p><p>In addition, you can kill the shell in which the <code>makeinfo</code>
+</p>
+<p>In addition, you can kill the shell in which the <code>makeinfo</code>
 command is running or make the shell buffer display its most recent
 output.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-c C-m C-k</kbd></dt>
 <dt><kbd> M-x makeinfo-kill-job</kbd></dt>
 <dd><a name="IDX408"></a>
 <p>Kill the current running <code>makeinfo</code> job
 (from <code>makeinfo-region</code> or <code>makeinfo-buffer</code>).
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-m C-l</kbd></dt>
 <dt><kbd> M-x makeinfo-recenter-output-buffer</kbd></dt>
 <dd><a name="IDX409"></a>
@@ -142,15 +142,15 @@ output.
 
 <p>(Note that the parallel commands for killing and recentering a TeX
 job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href="Texinfo-Mode-Printing.html#SEC250">Formatting and Printing in Texinfo Mode</a>.)
-
-</p><p>You can specify options for <code>makeinfo</code> by setting the
+</p>
+<p>You can specify options for <code>makeinfo</code> by setting the
 <code>makeinfo-options</code> variable with either the <kbd>M-x
 edit-options</kbd> or the <kbd>M-x set-variable</kbd> command, or by setting the
 variable in your `<tt>.emacs</tt>' initialization file.
-
-</p><p>For example, you could write the following in your `<tt>.emacs</tt>' file:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq makeinfo-options
+</p>
+<p>For example, you could write the following in your `<tt>.emacs</tt>' file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(setq makeinfo-options
       &quot;--paragraph-indent=0 --no-split
        --fill-column=70 --verbose&quot;)
 </pre></td></tr></table>
@@ -160,8 +160,8 @@ variable in your `<tt>.emacs</tt>' initialization file.
 <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
 <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
 <a href="makeinfo-options.html#SEC264">Options for <code>makeinfo</code></a>.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Pointer-Validation.html#SEC265" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_002dformat-commands.html#SEC267" title="Next section in reading order"> &gt; </a>]</td>

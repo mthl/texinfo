@@ -1,4 +1,5 @@
 quotation.texi(,2) 
+quotation.texi(,3) @setfilename quotation.info
 quotation.texi(,4) 
 quotation.texi(,5) @node Top
 quotation.texi(,6) @top Quotations
@@ -39,3 +40,4 @@ quotation.texi(,40) @quotation @@ at the end of line @
 quotation.texi(,41) A @@ at the end of the @@quotation line.
 quotation.texi(,42) @end quotation
 quotation.texi(,43) 
+quotation.texi(,44) @bye

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 8.8 @uref{url[, text][, replacement]}</title>
+<title>GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}</title>
 
-<meta name="description" content="Texinfo: 8.8 @uref{url[, text][, replacement]}">
-<meta name="keywords" content="Texinfo: 8.8 @uref{url[, text][, replacement]}">
+<meta name="description" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.8 @uref{url[, text][, replacement]}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,21 +84,21 @@ ul.toc {list-style: none}
 It takes one mandatory argument, the url, and two optional arguments
 which control the text that is displayed.  In HTML output, <code>@uref</code>
 produces a link you can follow.
-
-</p><p>The second argument, if specified, is the text to display (the default
+</p>
+<p>The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
 url is also output.
-
-</p><a name="IDX114"></a>
+</p>
+<a name="IDX114"></a>
 <p>The third argument, on the other hand, if specified is also the text to
 display, but the url is <em>not</em> output in any format.  This is useful
 when the text is already sufficiently referential, as in a man page.  If
 the third argument is given, the second argument is ignored.
-
-</p><p>The simple one argument form, where the url is both the target and the
+</p>
+<p>The simple one argument form, where the url is both the target and the
 text of the link:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
 </pre></td></tr></table>
 <p>produces:
 </p><table><tr><td>&nbsp;</td><td><pre class="display">The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
@@ -132,10 +132,10 @@ holds programs and texts.
 </pre></td></tr></table>
 <p>To merely indicate a url without creating a link people can follow, use
 <code>@url</code> (see section <a href="url.html#SEC135"><code>@url</code></a>).
-
-</p><p>Some people prefer to display url's in the unambiguous format:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="display">&lt;URL:http://<var>host</var>/<var>path</var>&gt;
+</p>
+<p>Some people prefer to display url's in the unambiguous format:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="display">&lt;URL:http://<var>host</var>/<var>path</var>&gt;
 </pre></td></tr></table>
 
 <a name="IDX115"></a>
@@ -143,8 +143,8 @@ holds programs and texts.
 necessary to clutter up the output with the extra `<samp>&lt;URL:</samp>' and
 `<samp>&gt;</samp>', since any software that tries to detect url's in text already
 has to detect them without the `<samp>&lt;URL:</samp>' to be useful.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="inforef.html#SEC117" title="Previous section in reading order"> &lt; </a>]</td>

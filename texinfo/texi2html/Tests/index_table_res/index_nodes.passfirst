@@ -1,4 +1,5 @@
 index_nodes.texi(,2) 
+index_nodes.texi(,3) @setfilename index_nodes
 index_nodes.texi(,4) 
 index_nodes.texi(,5) @node Top
 index_nodes.texi(,6) @cindex entry a
@@ -52,3 +53,4 @@ index_nodes.texi(,53) @cindex a concept a node
 index_nodes.texi(,54) 
 index_nodes.texi(,55) @printindex cp
 index_nodes.texi(,56) 
+index_nodes.texi(,57) @bye

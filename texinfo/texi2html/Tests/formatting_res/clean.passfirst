@@ -1,3 +1,4 @@
+clean.texi(,2) @setfilename clean.info
 clean.texi(,3) @node Top
 clean.texi(,4) @top Top section
 clean.texi(,5) 
@@ -57,6 +58,7 @@ clean.texi(,58)
 clean.texi(,59) 
 clean.texi(,60) @@TeX @TeX{}
 clean.texi(,61) @@LaTeX @LaTeX{}
+clean.texi(,62) @c @br{}
 clean.texi(,63) @@bullet @bullet{}
 clean.texi(,64) @@copyright @copyright{}
 clean.texi(,65) @@dots @dots{}
@@ -445,6 +447,7 @@ clean.texi(mymacro,774)
 clean.texi(mymacro,774) 
 clean.texi(mymacro,774) @@TeX @TeX{}
 clean.texi(mymacro,774) @@LaTeX @LaTeX{}
+clean.texi(mymacro,774) @c @br{}
 clean.texi(mymacro,774) @@bullet @bullet{}
 clean.texi(mymacro,774) @@copyright @copyright{}
 clean.texi(mymacro,774) @@dots @dots{}
@@ -812,6 +815,7 @@ clean.texi(mymacro,777)
 clean.texi(mymacro,777) 
 clean.texi(mymacro,777) @@TeX @TeX{}
 clean.texi(mymacro,777) @@LaTeX @LaTeX{}
+clean.texi(mymacro,777) @c @br{}
 clean.texi(mymacro,777) @@bullet @bullet{}
 clean.texi(mymacro,777) @@copyright @copyright{}
 clean.texi(mymacro,777) @@dots @dots{}
@@ -1207,8 +1211,9 @@ clean.texi(,852)
 clean.texi(,853) @printindex cp
 clean.texi(,854) @printindex fn
 clean.texi(,855) 
-clean.texi(,856) 
-clean.texi(,857) 
+clean.texi(,856) @contents
+clean.texi(,857) @shortcontents
 clean.texi(,858) 
 clean.texi(,859) @node node, , chapter2, Top
 clean.texi(,860) 
+clean.texi(,861) @bye

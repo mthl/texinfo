@@ -1,4 +1,5 @@
 no_node.texi(,2) 
+no_node.texi(,3) @setfilename no_node
 no_node.texi(,4) 
 no_node.texi(,5) Garbage
 no_node.texi(,6) 
@@ -23,3 +24,4 @@ no_node.texi(,24)
 no_node.texi(,25) 
 no_node.texi(,26) Text of chapter 2
 no_node.texi(,27) 
+no_node.texi(,28) @bye

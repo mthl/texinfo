@@ -1,4 +1,78 @@
-umlaut.texi(,88) 
+umlaut.texi(,2) @c
+umlaut.texi(,3) @c Created:
+umlaut.texi(,4) @c    Fri Jan 22 1999
+umlaut.texi(,5) @c
+umlaut.texi(,6) @c Revisions:
+umlaut.texi(,7) @c $Log: not supported by cvs2svn $
+umlaut.texi(,8) @c Revision 1.1  2003/09/01 15:08:15  pertusus
+umlaut.texi(,9) @c         * texi2html.init, texi2html.pl: hide m_cedilla.
+umlaut.texi(,10) @c         new handling of definition commands, with a specification of the
+umlaut.texi(,11) @c         definition line parsing.
+umlaut.texi(,12) @c         get HTML attributes from hash values of %format_map and %style_map.
+umlaut.texi(,13) @c         Simplify the handling of tables. The default is to use %format_map
+umlaut.texi(,14) @c         or otherwise a user defined function, $table_list.
+umlaut.texi(,15) @c         All the css commands are in %css_map. 'pre_style' in $complex_formats
+umlaut.texi(,16) @c         is taken from %css_map.
+umlaut.texi(,17) @c         handle @sp.
+umlaut.texi(,18) @c         Remove $Texi2HTML::STOC_LINES (use $Texi2HTML::OVERVIEW), remove
+umlaut.texi(,19) @c         $Texi2HTML::TOC (use $Texi2HTML::TOC_LINES), remove $T2H_TOP.
+umlaut.texi(,20) @c         use references on arrays everywhere (instead of arrays) for
+umlaut.texi(,21) @c         Texi2HTML::OVERVIEW and Texi2HTML::TOC_LINES.
+umlaut.texi(,22) @c         Use OVERVIEW consistently.
+umlaut.texi(,23) @c         use $docu_top when needed, instead of $docu_name.$docu_ext, which
+umlaut.texi(,24) @c         is wrong if -o is used.
+umlaut.texi(,25) @c         prepare index entries label text in main program.
+umlaut.texi(,26) @c         rewrite from scratch most of the function in .init files to put
+umlaut.texi(,27) @c         them in the public domain.
+umlaut.texi(,28) @c         expand macros in macro arguments.
+umlaut.texi(,29) @c         \ protects @end macro in macros body. This may be wrong.
+umlaut.texi(,30) @c         ignore space and newline following a region opening command.
+umlaut.texi(,31) @c         rename -css-file to -css-include.
+umlaut.texi(,32) @c         Add 'This' to the hashes for buttons, icons and so on.
+umlaut.texi(,33) @c         Add option -toc-links, create links from headings to toc entries
+umlaut.texi(,34) @c         with 9 lines from
+umlaut.texi(,35) @c         Martin Herbert Dietze <martin@the-little-red-haired-girl.org>
+umlaut.texi(,36) @c         macros are expanded in macro arguments, taking care of context (in
+umlaut.texi(,37) @c         @verbatim, @ignore, @comment...).
+umlaut.texi(,38) @c         Don't remove empty lines from output.
+umlaut.texi(,39) @c         Reenable handling of -idx-sum.
+umlaut.texi(,40) @c         * Tests/*: add tests for macros expansion in macro arguments, and
+umlaut.texi(,41) @c         for command line option style which are not default.
+umlaut.texi(,42) @c         * examples/*: use code in the public domain.
+umlaut.texi(,43) @c         In makeinfo.init use makeinfo style for index formatting.
+umlaut.texi(,44) @c
+umlaut.texi(,45) @c Revision 1.1.1.1  2001/04/29 07:23:19  dprice
+umlaut.texi(,46) @c Initial import of texi2html
+umlaut.texi(,47) @c
+umlaut.texi(,48) @c Revision 1.1  2000/08/14 18:10:24  texi2htm
+umlaut.texi(,49) @c - new command line switch (Testing purpose) -def_table
+umlaut.texi(,50) @c   to show new layout for @def commands.
+umlaut.texi(,51) @c - changes for new doc directory.
+umlaut.texi(,52) @c - much changes in documentation.
+umlaut.texi(,53) @c
+umlaut.texi(,54) @c Revision 1.3  1999/02/23 15:07:27  khm
+umlaut.texi(,55) @c - UPdated
+umlaut.texi(,56) @c
+umlaut.texi(,57) @c Revision 1.2  1999/02/10 21:54:51  khm
+umlaut.texi(,58) @c - Neuen Patch
+umlaut.texi(,59) @c
+umlaut.texi(,60) @c Revision 1.1  1999/02/04 17:16:23  khm
+umlaut.texi(,61) @c - txi-de.tex geaendert Of => of
+umlaut.texi(,62) @c
+umlaut.texi(,63) @c Revision 1.2  1999/02/03 13:47:54  khm
+umlaut.texi(,64) @c - ChangeLog upgedated.
+umlaut.texi(,65) @c
+umlaut.texi(,66) @c Revision 1.1  1999/02/03 12:59:00  khm
+umlaut.texi(,67) @c - Neue Version txi-de eingechecked wegen copyright usw.
+umlaut.texi(,68) @c
+umlaut.texi(,69) @c
+umlaut.texi(,70) @setfilename umlaut.info
+umlaut.texi(,71) @documentlanguage de
+umlaut.texi(,72) @c @documentlanguage zv
+umlaut.texi(,73) @settitle Test for Umlaute, accent etc.
+umlaut.texi(,74) @setchapternewpage on
+umlaut.texi(,75) @footnotestyle separate
+umlaut.texi(,88) @page
 umlaut.texi(,89) @chapter This is what you get
 umlaut.texi(,90) Copright Sign: @copyright{} @*
 umlaut.texi(,91) Pound Sign: @pounds{} @*
@@ -109,4 +183,6 @@ umlaut.texi(,195) @email{kama@@hippo.fido.de}
 umlaut.texi(,196) 
 umlaut.texi(,197) Email mit display:@*
 umlaut.texi(,198) @email{kama@@hippo.fido.de, Anzeige der email Adrese}
-umlaut.texi(,200) 
+umlaut.texi(,199) @c I don't need any contents.
+umlaut.texi(,200) @contents
+umlaut.texi(,201) @bye

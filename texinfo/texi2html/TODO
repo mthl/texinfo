@@ -63,6 +63,19 @@ text
 @printindex cp
 }
 
+* maybe some @-commands appearing on lines should stop paragraphs, namely
+@page. That's not sure. Maybe this should be up  to the writer to add
+a line.
+
+* handle better things like
+@itemize @bullet
+@cindex example
+@item
+In the example
+@end itemize
+
+* @m_cedilla appears in output with --macro-expand. That's a bug.
+
 * in chm.init (Jose Fonseca)
 
 [WINDOWS]

@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 
 @node Top,First node,(dir)
-@top
+@top pass0 macro
 @menu
 * First node::    node 1
 @end menu

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.2.3 @setfilename: Set the output file name</title>
+<title>GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name</title>
 
-<meta name="description" content="Texinfo: 3.2.3 @setfilename: Set the output file name">
-<meta name="keywords" content="Texinfo: 3.2.3 @setfilename: Set the output file name">
+<meta name="description" content="GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.2.3 @setfilename: Set the output file name">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,28 +82,28 @@ ul.toc {list-style: none}
 
 <p>In order to serve as the primary input file for either <code>makeinfo</code>
 or TeX, a Texinfo file must contain a line that looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@setfilename <var>info-file-name</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@setfilename <var>info-file-name</var>
 </pre></td></tr></table>
 <p>Write the <code>@setfilename</code> command at the beginning of a line and
 follow it on the same line by the Info file name.  Do not write anything
 else on the line; anything on the line after the command is considered
 part of the file name, including what would otherwise be a
 comment.
-
-</p><a name="IDX66"></a>
+</p>
+<a name="IDX66"></a>
 <a name="IDX67"></a>
 <p>The Info formatting commands ignore everything written before the
 <code>@setfilename</code> line, which is why the very first line of
 the file (the <code>\input</code> line) does not show up in the output.
-
-</p><p>The <code>@setfilename</code> line specifies the name of the output file to
+</p>
+<p>The <code>@setfilename</code> line specifies the name of the output file to
 be generated.  This name must be different from the name of the Texinfo
 file.  There are two conventions for choosing the name: you can either
 remove the extension (such as `<samp>.texi</samp>') entirely from the input file
 name, or, preferably, replace it with the `<samp>.info</samp>' extension.
-
-</p><a name="IDX68"></a>
+</p>
+<a name="IDX68"></a>
 <a name="IDX69"></a>
 <a name="IDX70"></a>
 <p>Although an explicit `<samp>.info</samp>' extension is preferable, some
@@ -120,19 +120,19 @@ is running on operating systems such as MS-DOS which impose severe
 limits on file names, it may remove some characters from the original
 file name to leave enough space for the subfile suffix, thus producing
 files named `<tt>texin-10</tt>', `<tt>gcc.i12</tt>', etc.
-
-</p><p>When producing HTML output, <code>makeinfo</code> will replace any extension
+</p>
+<p>When producing HTML output, <code>makeinfo</code> will replace any extension
 with `<samp>html</samp>', or add `<samp>.html</samp>' if the given name has no
 extension.
-
-</p><a name="IDX71"></a>
+</p>
+<a name="IDX71"></a>
 <p>The <code>@setfilename</code> line produces no output when you typeset a
 manual with TeX, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
 also reads `<tt>texinfo.cnf</tt>' if that file is present on your system
 (see section <a href="Preparing-for-TeX.html#SEC253">Preparing for TeX</a>).
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Start-of-Header.html#SEC45" title="Previous section in reading order"> &lt; </a>]</td>

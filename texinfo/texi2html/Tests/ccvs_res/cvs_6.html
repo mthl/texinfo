@@ -64,8 +64,8 @@ ul.toc {list-style: none}
 recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">      <code>$HOME</code>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">      <code>$HOME</code>
         |
         +--<tt>tc</tt>
         |   |
@@ -92,14 +92,14 @@ structure:
 
 <p>If `<tt>tc</tt>' is the current working directory, the
 following is true:
-
-</p><ul>
+</p>
+<ul>
 <li>
 `<samp>cvs update testing</samp>' is equivalent to
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">cvs update testing/testpgm.t testing/test2.t
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 `<samp>cvs update testing man</samp>' updates all files in the
 subdirectories
 
@@ -114,13 +114,13 @@ all its subdirectories.  In other words, `<tt>.</tt>' is a
 default argument to <code>update</code>.  This is also true
 for most of the <small>CVS</small> subcommands, not only the
 <code>update</code> command.
-
-</p><p>The recursive behavior of the <small>CVS</small> subcommands can be
+</p>
+<p>The recursive behavior of the <small>CVS</small> subcommands can be
 turned off with the `<samp>-l</samp>' option.
 Conversely, the `<samp>-R</samp>' option can be used to force recursion if
 `<samp>-l</samp>' is specified in `<tt>~/.cvsrc</tt>' (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -l         # Don't update files in subdirectories
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -l         # Don't update files in subdirectories
 </pre></td></tr></table>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

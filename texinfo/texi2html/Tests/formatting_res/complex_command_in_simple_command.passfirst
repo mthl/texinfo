@@ -1,4 +1,5 @@
 complex_command_in_simple_command.texi(,2) 
+complex_command_in_simple_command.texi(,3) @setfilename complex_command_in_simple_command.info
 complex_command_in_simple_command.texi(,4) 
 complex_command_in_simple_command.texi(,5) @node Top
 complex_command_in_simple_command.texi(,6) @top Complex commands in simple commands
@@ -281,3 +282,4 @@ complex_command_in_simple_command.texi(,282) }
 complex_command_in_simple_command.texi(,283) 
 complex_command_in_simple_command.texi(,284) After the tests.
 complex_command_in_simple_command.texi(,285) 
+complex_command_in_simple_command.texi(,286) @bye

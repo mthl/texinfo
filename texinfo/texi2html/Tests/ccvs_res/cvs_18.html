@@ -66,11 +66,11 @@ supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a li
 fashion without any of them, but if they are set up
 properly they can help make life easier.  For a
 discussion of how to edit them, see <a href="cvs_2.html#SEC20">The administrative files</a>.
-
-</p><p>The most important of these files is the `<tt>modules</tt>'
+</p>
+<p>The most important of these files is the `<tt>modules</tt>'
 file, which defines the modules inside the repository.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC158">C.1 The modules file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Defining modules
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC165">C.2 The cvswrappers file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Specify binary-ness based on file name
@@ -117,14 +117,14 @@ names for collections of source code.  <small>CVS</small> will
 use these definitions if you use <small>CVS</small> to update the
 modules file (use normal commands like <code>add</code>,
 <code>commit</code>, etc).
-
-</p><p>The `<tt>modules</tt>' file may contain blank lines and
+</p>
+<p>The `<tt>modules</tt>' file may contain blank lines and
 comments (lines beginning with `<samp>#</samp>') as well as
 module definitions.  Long lines can be continued on the
 next line by specifying a backslash (`<samp>\</samp>') as the
 last character on the line.
-
-</p><p>There are three basic types of modules: alias modules,
+</p>
+<p>There are three basic types of modules: alias modules,
 regular modules, and ampersand modules.  The difference
 between them is the way that they map files in the
 repository to files in the working directory.  In all
@@ -133,8 +133,8 @@ contains a directory called `<tt>first-dir</tt>', which
 contains two files, `<tt>file1</tt>' and `<tt>file2</tt>', and a
 directory `<tt>sdir</tt>'.  `<tt>first-dir/sdir</tt>' contains
 a file `<tt>sfile</tt>'.
-
 </p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC159">C.1.1 Alias modules</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             The simplest kind of module
 </td></tr>
@@ -173,8 +173,8 @@ a file `<tt>sfile</tt>'.
 <h3 class="appendixsubsec"> C.1.1 Alias modules </h3>
 
 <p>Alias modules are the simplest kind of module:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> <var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
 <dd><p>This represents the simplest way of defining a module
 <var>mname</var>.  The `<samp>-a</samp>' flags the definition as a
@@ -190,19 +190,19 @@ explicitly in the <small>CVS</small> arguments.
 </dl>
 
 <p>For example, if the modules file contains:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">amodule -a first-dir
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">amodule -a first-dir
 </pre></td></tr></table>
 
 <p>then the following two commands are equivalent:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co amodule
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co amodule
 $ cvs co first-dir
 </pre></td></tr></table>
 
 <p>and they each would provide output such as:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs checkout: Updating first-dir
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs checkout: Updating first-dir
 U first-dir/file1
 U first-dir/file2
 cvs checkout: Updating first-dir/sdir
@@ -245,13 +245,13 @@ levels.
 </dl>
 
 <p>For example, if a module is defined by:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">regmodule first-dir
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">regmodule first-dir
 </pre></td></tr></table>
 
 <p>then regmodule will contain the files from first-dir:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co regmodule
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co regmodule
 cvs checkout: Updating regmodule
 U regmodule/file1
 U regmodule/file2
@@ -263,8 +263,8 @@ $
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">regfiles first-dir/sdir sfile
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">regfiles first-dir/sdir sfile
 </pre></td></tr></table>
 
 <p>With this definition, getting the regfiles module
@@ -272,8 +272,8 @@ will create a single working directory
 `<tt>regfiles</tt>' containing the file listed, which
 comes from a directory deeper
 in the <small>CVS</small> source repository:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co regfiles
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co regfiles
 U regfiles/sfile
 $
 </pre></td></tr></table>
@@ -305,21 +305,21 @@ including `<samp>&amp;<var>module</var></samp>' in its definition.
 <p>Then getting the module creates a subdirectory for each such
 module, in the directory containing the module.  For
 example, if modules contains
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">ampermod &amp;first-dir
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ampermod &amp;first-dir
 </pre></td></tr></table>
 
 <p>then a checkout will create an <code>ampermod</code> directory
 which contains a directory called <code>first-dir</code>,
 which in turns contains all the directories and files
 which live there.  For example, the command
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co ampermod
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co ampermod
 </pre></td></tr></table>
 
 <p>will create the following files:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">ampermod/first-dir/file1
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ampermod/first-dir/file1
 ampermod/first-dir/file2
 ampermod/first-dir/sdir/sfile
 </pre></td></tr></table>
@@ -327,8 +327,8 @@ ampermod/first-dir/sdir/sfile
 prints omit the `<tt>ampermod</tt>', and thus do not
 correctly display the location to which it is checking
 out the files:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co ampermod
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs co ampermod
 cvs checkout: Updating first-dir
 U first-dir/file1
 U first-dir/file2
@@ -338,8 +338,8 @@ $
 </pre></td></tr></table>
 <p>Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
-
 </p>
+
 <hr size="6">
 <a name="Excluding-directories"></a>
 <a name="SEC162"></a>
@@ -364,17 +364,17 @@ a future release of <small>CVS</small>.
 <p>An alias module may exclude particular directories from
 other modules by using an exclamation mark (`<samp>!</samp>')
 before the name of each directory to be excluded.
-
-</p><p>For example, if the modules file contains:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">exmodule -a !first-dir/sdir first-dir
+</p>
+<p>For example, if the modules file contains:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">exmodule -a !first-dir/sdir first-dir
 </pre></td></tr></table>
 
 <p>then checking out the module `<samp>exmodule</samp>' will check
 out everything in `<samp>first-dir</samp>' except any files in
 the subdirectory `<samp>first-dir/sdir</samp>'.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Module-options"></a>
 <a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -398,23 +398,23 @@ the subdirectory `<samp>first-dir/sdir</samp>'.
 <p>Either regular modules or ampersand modules can contain
 options, which supply additional information concerning
 the module.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dd><a name="IDX251"></a>
 </dd>
 <dt><code> -d <var>name</var></code></dt>
 <dd><p>Name the working directory something other than the
 module name.
-
-</p><a name="IDX252"></a>
+</p>
+<a name="IDX252"></a>
 <a name="IDX253"></a>
 </dd>
 <dt><code> -e <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are exported.  <var>prog</var> runs with a single
 argument, the module name.
-
-</p><a name="IDX254"></a>
+</p>
+<a name="IDX254"></a>
 <a name="IDX255"></a>
 </dd>
 <dt><code> -o <var>prog</var></code></dt>
@@ -422,8 +422,8 @@ argument, the module name.
 module are checked out.  <var>prog</var> runs with a single
 argument, the module name.  See <a href="#SEC164">How the modules file &quot;program options&quot; programs are run</a> for
 information on how <var>prog</var> is called.
-
-</p><a name="IDX256"></a>
+</p>
+<a name="IDX256"></a>
 <a name="IDX257"></a>
 <a name="IDX258"></a>
 </dd>
@@ -435,8 +435,8 @@ secondarily according to the module name.  This option
 has no other meaning.  You can use this option for
 several things besides status: for instance, list the
 person that is responsible for this module.
-
-</p><a name="IDX259"></a>
+</p>
+<a name="IDX259"></a>
 <a name="IDX260"></a>
 </dd>
 <dt><code> -t <var>prog</var></code></dt>
@@ -451,8 +451,8 @@ that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-d
 
 <p>You should also see see section <a href="#SEC164">How the modules file &quot;program options&quot; programs are run</a> about how the
 &quot;program options&quot; programs are run.
-
 </p>
+
 <hr size="6">
 <a name="Module-program-options"></a>
 <a name="SEC164"></a>
@@ -477,20 +477,20 @@ that taginfo is a better solution (see section <a href="cvs_8.html#SEC78">User-d
 
 <p>For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
-
-</p><p>If using remote access methods (pserver, ext, etc.),
+</p>
+<p>If using remote access methods (pserver, ext, etc.),
 <small>CVS</small> will execute this program on the server from a temporary
 directory. The path is searched for this program.
-
-</p><p>If using &quot;local access&quot; (on a local or remote NFS file system, i.e.
+</p>
+<p>If using &quot;local access&quot; (on a local or remote NFS file system, i.e.
 repository set just to a path),
 the program will be executed from the newly checked-out tree, if
 found there, or alternatively searched for in the path if not.
-
-</p><p>The programs are all run after the operation has effectively
-completed.
-
 </p>
+<p>The programs are all run after the operation has effectively
+completed.
+</p>
+
 <hr size="6">
 <a name="Wrappers"></a>
 <a name="SEC165"></a>
@@ -518,8 +518,8 @@ control certain settings based on the name of the file
 which is being operated on.  The settings are `<samp>-k</samp>'
 for binary files, and `<samp>-m</samp>' for nonmergeable text
 files.
-
-</p><p>The `<samp>-m</samp>' option
+</p>
+<p>The `<samp>-m</samp>' option
 specifies the merge methodology that should be used when
 a non-binary file is updated.  <code>MERGE</code> means the usual
 <small>CVS</small> behavior: try to merge the files.  <code>COPY</code>
@@ -531,8 +531,8 @@ binary, there is no need to specify `<samp>-m 'COPY'</samp>').
 two versions of the files, and require the user using
 mechanisms outside <small>CVS</small>, to insert any necessary
 changes.
-
-</p><p><strong>WARNING: do not use <code>COPY</code> with
+</p>
+<p><strong>WARNING: do not use <code>COPY</code> with
 <small>CVS</small> 1.9 or earlier - such versions of <small>CVS</small> will
 copy one version of your file over the other, wiping
 out the previous contents.</strong>
@@ -540,10 +540,10 @@ The `<samp>-m</samp>' wrapper option only affects behavior when
 merging is done on update; it does not affect how files
 are stored.  See <a href="cvs_9.html#SEC80">Handling binary files</a>, for more on
 binary files.
-
-</p><p>The basic format of the file `<tt>cvswrappers</tt>' is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">wildcard     [option value][option value]...
+</p>
+<p>The basic format of the file `<tt>cvswrappers</tt>' is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">wildcard     [option value][option value]...
 
 where option is one of
 -m           update methodology      value: MERGE or COPY
@@ -555,8 +555,8 @@ and value is a single-quote delimited value.
 <p>For example, the following command imports a
 directory, treating files whose name ends in
 `<samp>.exe</samp>' as binary:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
 </pre></td></tr></table>
 
 <hr size="6">
@@ -585,36 +585,36 @@ used to run a certain program whenever files are
 committed (see section <a href="#SEC158">The modules file</a>).  The files described in
 this section provide other, more flexible, ways to run
 programs whenever something is committed.
-
-</p><p>There are three kind of programs that can be run on
+</p>
+<p>There are three kind of programs that can be run on
 commit.  They are specified in files in the repository,
 as described below.  The following table summarizes the
 file names and the purpose of the corresponding
 programs.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<tt> commitinfo</tt>'</dt>
 <dd><p>The program is responsible for checking that the commit
 is allowed.  If it exits with a non-zero exit status
 the commit will be aborted.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<tt> verifymsg</tt>'</dt>
 <dd><p>The specified program is used to evaluate the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 `<tt>rcsinfo</tt>' file, which can hold a log message
 template (see section <a href="#SEC175">Rcsinfo</a>).
-
-</p></dd>
+</p>
+</dd>
 <dt>`<tt> editinfo</tt>'</dt>
 <dd><p>The specified program is used to edit the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 `<tt>rcsinfo</tt>' file, which can hold a log message
 template (see section <a href="#SEC175">Rcsinfo</a>).  (obsolete)
-
-</p></dd>
+</p>
+</dd>
 <dt>`<tt> loginfo</tt>'</dt>
 <dd><p>The specified program is called when the commit is
 complete.  It receives the log message and some
@@ -665,8 +665,8 @@ imagination is the limit!
 all have a common format.  The purpose of the files are
 described later on.  The common syntax is described
 here.
-
-</p><a name="IDX261"></a>
+</p>
+<a name="IDX261"></a>
 <p>Each line contains the following:
 </p><ul>
 <li>
@@ -685,12 +685,12 @@ A file name or command-line template.
 character `<samp>#</samp>' are treated as comments.  Long lines
 unfortunately can <em>not</em> be broken in two parts in
 any way.
-
-</p><p>The first regular expression that matches the current
+</p>
+<p>The first regular expression that matches the current
 directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
-
 </p>
+
 <hr size="6">
 <a name="commitinfo"></a>
 <a name="SEC168"></a>
@@ -719,8 +719,8 @@ that the modified, added and removed files are really
 ready to be committed.  This could be used, for
 instance, to verify that the changed files conform to
 to your site's standards for coding practice.
-
-</p><p>As mentioned earlier, each line in the
+</p>
+<p>As mentioned earlier, each line in the
 `<tt>commitinfo</tt>' file consists of a regular expression
 and a command-line template.  The template can include
 a program name and any number of arguments you wish to
@@ -728,24 +728,24 @@ supply to it.  The full path to the current source
 repository is appended to the template, followed by the
 file names of any files involved in the commit (added,
 removed, and modified files).
-
-</p><a name="IDX262"></a>
+</p>
+<a name="IDX262"></a>
 <p>The first line with a regular expression matching the
 directory within the repository will be used.  If the
 command returns a non-zero exit status the commit will
 be aborted.
-
-</p><a name="IDX263"></a>
+</p>
+<a name="IDX263"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-
-</p><a name="IDX264"></a>
+</p>
+<a name="IDX264"></a>
 <p>All occurrences of the name `<samp>ALL</samp>' appearing as a
 regular expression are used in addition to the first
 matching regular expression or the name `<samp>DEFAULT</samp>'.
-
-</p><a name="IDX265"></a>
+</p>
+<a name="IDX265"></a>
 <a name="IDX266"></a>
 <p>The command will be run in the root of the workspace
 containing the new versions of any files the user would like
@@ -755,16 +755,16 @@ being removed, there will be no copy of the file under the
 current directory.  If a file is being added, there will be
 no corresponding archive file in the repository unless the
 file is being resurrected.
-
-</p><p>Note that both the repository directory and the corresponding
+</p>
+<p>Note that both the repository directory and the corresponding
 Attic (see section <a href="cvs_2.html#SEC15">The attic</a>) directory may need to be checked to
 locate the archive file corresponding to any given file being
 committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
 message, and command line options specified, is not available
 to the command.
-
 </p>
+
 <hr size="6">
 <a name="verifymsg"></a>
 <a name="SEC169"></a>
@@ -792,47 +792,47 @@ a bug ID.  Use the `<tt>verifymsg</tt>' file to
 specify a program that is used to verify the log message.
 This program could be a simple script that checks
 that the entered message contains the required fields.
-
-</p><p>The `<tt>verifymsg</tt>' file is often most useful together
+</p>
+<p>The `<tt>verifymsg</tt>' file is often most useful together
 with the `<tt>rcsinfo</tt>' file, which can be used to
 specify a log message template.
-
-</p><p>Each line in the `<tt>verifymsg</tt>' file consists of a
+</p>
+<p>Each line in the `<tt>verifymsg</tt>' file consists of a
 regular expression and a command-line template.  The
 template must include a program name, and can include
 any number of arguments.  The full path to the current
 log message template file is appended to the template.
-
-</p><p>One thing that should be noted is that the `<samp>ALL</samp>'
+</p>
+<p>One thing that should be noted is that the `<samp>ALL</samp>'
 keyword is not supported.  If more than one matching
 line is found, the first one is used.  This can be
 useful for specifying a default verification script in a
 directory, and then overriding it in a subdirectory.
-
-</p><a name="IDX267"></a>
+</p>
+<a name="IDX267"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-
-</p><a name="IDX268"></a>
+</p>
+<a name="IDX268"></a>
 <p>If the verification script exits with a non-zero exit status,
 the commit is aborted.
-
-</p><a name="IDX269"></a>
+</p>
+<a name="IDX269"></a>
 <p>In the default configuration, CVS allows the
 verification script to change the log message. This is
 controlled via the RereadLogAfterVerify CVSROOT/config
 option.
-
-</p><p>When `<samp>RereadLogAfterVerify=always</samp>' or
+</p>
+<p>When `<samp>RereadLogAfterVerify=always</samp>' or
 `<samp>RereadLogAfterVerify=stat</samp>', the log message will
 either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
-
-</p><p>See section <a href="#SEC180">The CVSROOT/config configuration file</a>, for more on CVSROOT/config options.
-
-</p><p>It is NOT a good idea for a `<tt>verifymsg</tt>' script to
+</p>
+<p>See section <a href="#SEC180">The CVSROOT/config configuration file</a>, for more on CVSROOT/config options.
+</p>
+<p>It is NOT a good idea for a `<tt>verifymsg</tt>' script to
 interact directly with the user in the various
 client/server methods. For the <code>pserver</code> method,
 there is no protocol support for communicating between
@@ -846,26 +846,26 @@ the `<tt>verifymsg</tt>' script runs, the CVS
 server has locks in place in the repository.  If control is
 returned to the user here then other users may be stuck waiting
 for access to the repository.
-
-</p><p>This option can be useful if you find yourself using an
+</p>
+<p>This option can be useful if you find yourself using an
 rcstemplate that needs to be modified to remove empty
 elements or to fill in default values.  It can also be
 useful if the rcstemplate has changed in the repository
 and the CVS/Template was not updated, but is able to be
 adapted to the new format by the verification script
 that is run by `<tt>verifymsg</tt>'.
-
-</p><p>An example of an update might be to change all
+</p>
+<p>An example of an update might be to change all
 occurrences of 'BugId:' to be 'DefectId:' (which can be
 useful if the rcstemplate has recently been changed and
 there are still checked-out user trees with cached
 copies in the CVS/Template file of the older version).
-
-</p><p>Another example of an update might be to delete a line
+</p>
+<p>Another example of an update might be to delete a line
 that contains 'BugID: none' from the log message after
 validation of that value as being allowed is made.
-
-</p><p>The following is a little silly example of a
+</p>
+<p>The following is a little silly example of a
 `<tt>verifymsg</tt>' file, together with the corresponding
 `<tt>rcsinfo</tt>' file, the log message template and an
 verification  script.  We begin with the log message template.
@@ -873,13 +873,13 @@ We want to always record a bug-id number on the first
 line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 `<tt>/usr/cvssupport/tc.template</tt>'.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">BugId:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">BugId:
 </pre></td></tr></table>
 <p>The script `<tt>/usr/cvssupport/bugid.verify</tt>' is used to
 evaluate the log message.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
 #
 #       bugid.verify filename
 #
@@ -900,16 +900,16 @@ else
 fi
 </pre></td></tr></table>
 <p>The `<tt>verifymsg</tt>' file contains this line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/bugid.verify
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/bugid.verify
 </pre></td></tr></table>
 <p>The `<tt>rcsinfo</tt>' file contains this line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/tc.template
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/tc.template
 </pre></td></tr></table>
 <p>The `<tt>config</tt>' file contains this line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">RereadLogAfterVerify=always
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">RereadLogAfterVerify=always
 </pre></td></tr></table>
 
 
@@ -941,53 +941,53 @@ messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variabl
 option (see section <a href="cvs_16.html#SEC118">Global options</a>).  See <a href="#SEC169">Verifying log messages</a>,
 for information on the use of the `<tt>verifymsg</tt>'
 feature for evaluating log messages.</strong>
-
-</p><p>If you want to make sure that all log messages look the
+</p>
+<p>If you want to make sure that all log messages look the
 same way, you can use the `<tt>editinfo</tt>' file to
 specify a program that is used to edit the log message.
 This program could be a custom-made editor that always
 enforces a certain style of the log message, or maybe a
 simple shell script that calls an editor, and checks
 that the entered message contains the required fields.
-
-</p><p>If no matching line is found in the `<tt>editinfo</tt>'
+</p>
+<p>If no matching line is found in the `<tt>editinfo</tt>'
 file, the editor specified in the environment variable
 <code>$CVSEDITOR</code> is used instead.  If that variable is
 not set, then the environment variable <code>$EDITOR</code>
 is used instead.  If that variable is not
 set a default will be used.  See <a href="cvs_1.html#SEC6">Committing your changes</a>.
-
-</p><p>The `<tt>editinfo</tt>' file is often most useful together
+</p>
+<p>The `<tt>editinfo</tt>' file is often most useful together
 with the `<tt>rcsinfo</tt>' file, which can be used to
 specify a log message template.
-
-</p><p>Each line in the `<tt>editinfo</tt>' file consists of a
+</p>
+<p>Each line in the `<tt>editinfo</tt>' file consists of a
 regular expression and a command-line template.  The
 template must include a program name, and can include
 any number of arguments.  The full path to the current
 log message template file is appended to the template.
-
-</p><p>One thing that should be noted is that the `<samp>ALL</samp>'
+</p>
+<p>One thing that should be noted is that the `<samp>ALL</samp>'
 keyword is not supported.  If more than one matching
 line is found, the first one is used.  This can be
 useful for specifying a default edit script in a
 module, and then overriding it in a subdirectory.
-
-</p><a name="IDX270"></a>
+</p>
+<a name="IDX270"></a>
 <p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-
-</p><p>If the edit script exits with a non-zero exit status,
+</p>
+<p>If the edit script exits with a non-zero exit status,
 the commit is aborted.
-
-</p><p>Note: when <small>CVS</small> is accessing a remote repository,
+</p>
+<p>Note: when <small>CVS</small> is accessing a remote repository,
 or when the `<samp>-m</samp>' or `<samp>-F</samp>' options to <code>cvs
 commit</code> are used, `<tt>editinfo</tt>' will not be consulted.
 There is no good workaround for this; use
 `<tt>verifymsg</tt>' instead.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC171">C.3.4.1 Editinfo example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
@@ -1020,13 +1020,13 @@ We want to always record a bug-id number on the first
 line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 `<tt>/usr/cvssupport/tc.template</tt>'.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">BugId:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">BugId:
 </pre></td></tr></table>
 <p>The script `<tt>/usr/cvssupport/bugid.edit</tt>' is used to
 edit the log message.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
 #
 #       bugid.edit filename
 #
@@ -1046,12 +1046,12 @@ do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
 done
 </pre></td></tr></table>
 <p>The `<tt>editinfo</tt>' file contains this line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/bugid.edit
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/bugid.edit
 </pre></td></tr></table>
 <p>The `<tt>rcsinfo</tt>' file contains this line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/tc.template
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">^tc     /usr/cvssupport/tc.template
 </pre></td></tr></table>
 <hr size="6">
 <a name="loginfo"></a>
@@ -1081,28 +1081,28 @@ against the directory that the change is being made to,
 relative to the <code>$CVSROOT</code>.  If a match is found, then
 the remainder of the line is a filter program that
 should expect log information on its standard input.
-
-</p><p>If the repository name does not match any of the
+</p>
+<p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-
-</p><p>All occurrences of the name `<samp>ALL</samp>' appearing as a
+</p>
+<p>All occurrences of the name `<samp>ALL</samp>' appearing as a
 regular expression are used in addition to the first
 matching regular expression or `<samp>DEFAULT</samp>'.
-
-</p><p>The first matching regular expression is used.
-
-</p><p>See section <a href="#SEC166">The commit support files</a>, for a description of the syntax of
+</p>
+<p>The first matching regular expression is used.
+</p>
+<p>See section <a href="#SEC166">The commit support files</a>, for a description of the syntax of
 the `<tt>loginfo</tt>' file.
-
-</p><p>The user may specify a format string as
+</p>
+<p>The user may specify a format string as
 part of the filter.  The string is composed of a
 `<samp>%</samp>' followed by a space, or followed by a single
 format character, or followed by a set of format
 characters surrounded by `<samp>{</samp>' and `<samp>}</samp>' as
 separators.  The format characters are:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><tt> s</tt></dt>
 <dd><p>file name
 </p></dd>
@@ -1117,11 +1117,11 @@ separators.  The format characters are:
 <p>All other characters that appear in a format string
 expand to an empty field (commas separating fields are
 still provided).
-
-</p><p>For example, some valid format strings are `<samp>%</samp>',
+</p>
+<p>For example, some valid format strings are `<samp>%</samp>',
 `<samp>%s</samp>', `<samp>%{s}</samp>', and `<samp>%{sVv}</samp>'.
-
-</p><p>The output will be a space separated string of tokens enclosed in
+</p>
+<p>The output will be a space separated string of tokens enclosed in
 quotation marks (<tt>&quot;</tt>).
 Any embedded dollar signs (<tt>$</tt>), backticks (<tt>`</tt>),
 backslashes (<tt>\</tt>), or quotation marks will be preceded
@@ -1135,17 +1135,17 @@ requested in the format string.  For example, if
 is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">&quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
 </pre></td></tr></table>
 <p>As another example, `<samp>%{}</samp>' means that only the
 name of the repository will be generated.
-
-</p><p>Note: when <small>CVS</small> is accessing a remote repository,
+</p>
+<p>Note: when <small>CVS</small> is accessing a remote repository,
 `<tt>loginfo</tt>' will be run on the <em>remote</em>
 (i.e., server) side, not the client side (see section <a href="cvs_2.html#SEC26">Remote repositories</a>).
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC173">C.3.5.1 Loginfo example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC174">C.3.5.2 Keeping a checked out copy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Updating a tree on every checkin
 </td></tr>
@@ -1179,15 +1179,15 @@ and any commits to the administrative files (inside
 the `<tt>CVSROOT</tt>' directory) are also logged in
 `<tt>/usr/adm/cvsroot-log</tt>'.
 Commits to the `<tt>prog1</tt>' directory are mailed to <tt>ceder</tt>.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
 ^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
 ^prog1          Mail -s %s ceder
 </pre></td></tr></table>
 <p>The shell-script `<tt>/usr/local/bin/cvs-log</tt>' looks
 like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
 (echo &quot;------------------------------------------------------&quot;;
  echo -n $2&quot;  &quot;;
  date;
@@ -1223,21 +1223,21 @@ want to refer to the latest sources without having to
 check them out, or you might be maintaining a web site
 with <small>CVS</small> and want every checkin to cause the files
 used by the web server to be updated.
-
-</p><p>The way to do this is by having loginfo invoke
+</p>
+<p>The way to do this is by having loginfo invoke
 <code>cvs update</code>.  Doing so in the naive way will
 cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
  cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
 </pre></td></tr></table>
 <p>This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked
 out tree in `<tt>/u/www/local-docs</tt>'.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="rcsinfo"></a>
 <a name="SEC175"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1266,25 +1266,25 @@ files.  See section <a href="#SEC167">The common syntax</a>.  Unlike the other f
 part is <em>not</em> a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
-
-</p><p>If the repository name does not match any of the
+</p>
+<p>If the repository name does not match any of the
 regular expressions in this file, the `<samp>DEFAULT</samp>'
 line is used, if it is specified.
-
-</p><p>All occurrences of the name `<samp>ALL</samp>' appearing as a
+</p>
+<p>All occurrences of the name `<samp>ALL</samp>' appearing as a
 regular expression are used in addition to the first
 matching regular expression or `<samp>DEFAULT</samp>'.
-
-</p><p>The log message template will be used as a default log
+</p>
+<p>The log message template will be used as a default log
 message.  If you specify a log message with `<samp>cvs
 commit -m <var>message</var></samp>' or `<samp>cvs commit -f
 <var>file</var></samp>' that log message will override the
 template.
-
-</p><p>See section <a href="#SEC169">Verifying log messages</a>, for an example `<tt>rcsinfo</tt>'
+</p>
+<p>See section <a href="#SEC169">Verifying log messages</a>, for an example `<tt>rcsinfo</tt>'
 file.
-
-</p><p>When <small>CVS</small> is accessing a remote repository,
+</p>
+<p>When <small>CVS</small> is accessing a remote repository,
 the contents of `<tt>rcsinfo</tt>' at the time a directory
 is first checked out will specify a template. This
 template will be updated on all `<samp>cvs update</samp>'
@@ -1295,8 +1295,8 @@ In versions of <small>CVS</small> prior to version 1.12, the
 <small>CVS</small> server is at version 1.12 or higher an older
 client may be used and the `<tt>CVS/Template</tt>' will
 be updated from the server.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="cvsignore"></a>
 <a name="SEC176"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1324,13 +1324,13 @@ files that you get while you compile your sources.
 Normally, when you run `<samp>cvs update</samp>', it prints a
 line for each file it encounters that it doesn't know
 about (see section <a href="cvs_16.html#SEC155">update output</a>).
-
-</p><p><small>CVS</small> has a list of files (or sh(1) file name patterns)
+</p>
+<p><small>CVS</small> has a list of files (or sh(1) file name patterns)
 that it should ignore while running <code>update</code>,
 <code>import</code> and <code>release</code>.
 This list is constructed in the following way.
-
-</p><ul>
+</p>
+<ul>
 <li>
 The list is initialized to include certain file name
 patterns: names associated with <small>CVS</small>
@@ -1340,7 +1340,6 @@ archive files, and editor backup files; and other names
 that are usually artifacts of assorted utilities.
 Currently, the default list of ignored file name
 patterns is:
-
 
 <a name="IDX271"></a>
 <a name="IDX272"></a>
@@ -1353,7 +1352,8 @@ patterns is:
     *.a     *.olb   *.o     *.obj   *.so    *.exe
     *.Z     *.elc   *.ln
     core
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 The per-repository list in
 `<tt>$CVSROOT/CVSROOT/cvsignore</tt>' is appended to
 the list, if that file exists.
@@ -1381,8 +1381,8 @@ any sub-directories.
 exclamation mark (`<samp>!</samp>') clears the ignore list.
 This can be used if you want to store any file which
 normally is ignored by <small>CVS</small>.
-
-</p><p>Specifying `<samp>-I !</samp>' to <code>cvs import</code> will import
+</p>
+<p>Specifying `<samp>-I !</samp>' to <code>cvs import</code> will import
 everything, which is generally what you want to do if
 you are importing files from a pristine distribution or
 any other source which is known to not contain any
@@ -1395,8 +1395,8 @@ remove the `<tt>.cvsignore</tt>' files in order to do the
 import.  Because this is awkward, in the future
 `<samp>-I !</samp>' might be modified to override
 `<tt>.cvsignore</tt>' files in each directory.
-
-</p><p>Note that the syntax of the ignore files consists of a
+</p>
+<p>Note that the syntax of the ignore files consists of a
 series of lines, each of which contains a space
 separated list of filenames.  This offers no clean way
 to specify filenames which contain spaces, but you can
@@ -1404,8 +1404,8 @@ use a workaround like `<tt>foo?bar</tt>' to match a file
 named `<tt>foo bar</tt>' (it also matches `<tt>fooxbar</tt>'
 and the like).  Also note that there is currently no
 way to specify comments.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="checkoutlist"></a>
 <a name="SEC177"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1431,39 +1431,39 @@ files in the `<tt>CVSROOT</tt>' directory.  For example,
 suppose that you have a script `<tt>logcommit.pl</tt>'
 which you run by including the following line in the
 `<tt>commitinfo</tt>' administrative file:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">ALL   $CVSROOT/CVSROOT/logcommit.pl
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ALL   $CVSROOT/CVSROOT/logcommit.pl
 </pre></td></tr></table>
 <p>To maintain `<tt>logcommit.pl</tt>' with <small>CVS</small> you would
 add the following line to the `<tt>checkoutlist</tt>'
 administrative file:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">logcommit.pl
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">logcommit.pl
 </pre></td></tr></table>
 <p>The format of `<tt>checkoutlist</tt>' is one line for each
 file that you want to maintain using <small>CVS</small>, giving
 the name of the file.
-
-</p><p>After setting up `<tt>checkoutlist</tt>' in this fashion,
+</p>
+<p>After setting up `<tt>checkoutlist</tt>' in this fashion,
 the files listed there will function just like
 <small>CVS</small>'s built-in administrative files.  For example,
 when checking in one of the files you should get a
 message such as:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs commit: Rebuilding administrative file database
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs commit: Rebuilding administrative file database
 </pre></td></tr></table>
 
 <p>and the checked out copy in the `<tt>CVSROOT</tt>'
 directory should be updated.
-
-</p><p>Note that listing `<tt>passwd</tt>' (see section <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>) in `<tt>checkoutlist</tt>' is not
+</p>
+<p>Note that listing `<tt>passwd</tt>' (see section <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>) in `<tt>checkoutlist</tt>' is not
 recommended for security reasons.
-
-</p><p>For information about keeping a checkout out copy in a
+</p>
+<p>For information about keeping a checkout out copy in a
 more general context than the one provided by
 `<tt>checkoutlist</tt>', see <a href="#SEC174">Keeping a checked out copy</a>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="history-file"></a>
 <a name="SEC178"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1490,14 +1490,14 @@ to log information for the <code>history</code> command
 on logging.  This is done automatically if the
 <code>cvs init</code> command is used to set up the
 repository (see section <a href="cvs_2.html#SEC23">Creating a repository</a>).
-
-</p><p>The file format of the `<tt>history</tt>' file is
+</p>
+<p>The file format of the `<tt>history</tt>' file is
 documented only in comments in the <small>CVS</small> source
 code, but generally programs should use the <code>cvs
 history</code> command to access it anyway, in case the
 format changes with future releases of <small>CVS</small>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Variables"></a>
 <a name="SEC179"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1522,8 +1522,8 @@ format changes with future releases of <small>CVS</small>.
 want the file to be able to know various things based
 on environment <small>CVS</small> is running in.  There are
 several mechanisms to do that.
-
-</p><p>To find the home directory of the user running <small>CVS</small>
+</p>
+<p>To find the home directory of the user running <small>CVS</small>
 (from the <code>HOME</code> environment variable), use
 `<samp>~</samp>' followed by `<samp>/</samp>' or the end of the line.
 Likewise for the home directory of <var>user</var>, use
@@ -1533,8 +1533,8 @@ expansion if pserver (see section <a href="cvs_2.html#SEC29">Direct connection w
 is in use; therefore user variables (see below) may be
 a better choice to customize behavior based on the user
 running <small>CVS</small>.
-
-</p><p>One may want to know about various pieces of
+</p>
+<p>One may want to know about various pieces of
 information internal to <small>CVS</small>.  A <small>CVS</small> internal
 variable has the syntax <code>${<var>variable</var>}</code>,
 where <var>variable</var> starts with a letter and consists
@@ -1543,8 +1543,8 @@ character following <var>variable</var> is a
 non-alphanumeric character other than `<samp>_</samp>', the
 `<samp>{</samp>' and `<samp>}</samp>' can be omitted.  The <small>CVS</small>
 internal variables are:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> CVSROOT</code></dt>
 <dd><a name="IDX273"></a>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
@@ -1552,8 +1552,8 @@ See section <a href="cvs_2.html#SEC9">The Repository</a>, for a description of t
 ways to specify this, but note that the internal
 variable contains just the directory and not any
 of the access method information.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> RCSBIN</code></dt>
 <dd><a name="IDX274"></a>
 <p>In <small>CVS</small> 1.9.18 and older, this specified the
@@ -1561,8 +1561,8 @@ directory where <small>CVS</small> was looking for <small>RCS</small>
 programs.  Because <small>CVS</small> no longer runs <small>RCS</small>
 programs, specifying this internal variable is now an
 error.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> CVSEDITOR</code></dt>
 <dd><a name="IDX275"></a>
 </dd>
@@ -1574,8 +1574,8 @@ error.
 <p>These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section <a href="cvs_16.html#SEC118">Global options</a>, for how
 to specify this.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> USER</code></dt>
 <dd><a name="IDX278"></a>
 <p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
@@ -1598,27 +1598,27 @@ specify the global option `<samp>-s</samp>' to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
 `<tt>.cvsrc</tt>' (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
-
-</p><p>For example, if you want the administrative file to
+</p>
+<p>For example, if you want the administrative file to
 refer to a test directory you might create a user
 variable <code>TESTDIR</code>.  Then if <small>CVS</small> is invoked
 as
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs -s TESTDIR=/work/local/tests
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">cvs -s TESTDIR=/work/local/tests
 </pre></td></tr></table>
 
 <p>and the
 administrative file contains <code>sh
 ${=TESTDIR}/runtests</code>, then that string is expanded
 to <code>sh /work/local/tests/runtests</code>.
-
-</p><p>All other strings containing `<samp>$</samp>' are reserved;
+</p>
+<p>All other strings containing `<samp>$</samp>' are reserved;
 there is no way to quote a `<samp>$</samp>' character so that
 `<samp>$</samp>' represents itself.
-
-</p><p>Environment variables passed to administrative files are:
-
-</p><dl compact="compact">
+</p>
+<p>Environment variables passed to administrative files are:
+</p>
+<dl compact="compact">
 <dd><a name="IDX280"></a>
 
 </dd>
@@ -1629,13 +1629,13 @@ can be provided (currently just for the pserver access
 method), and to the empty string otherwise.  (<code>CVS_USER</code>
 and <code>USER</code> may differ when `<tt>$CVSROOT/CVSROOT/passwd</tt>'
 is used to map <small>CVS</small> usernames to system usernames.)
-
-</p></dd>
+</p>
+</dd>
 <dt><code> LOGNAME</code></dt>
 <dd><a name="IDX282"></a>
 <p>The username of the system user.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> USER</code></dt>
 <dd><a name="IDX283"></a>
 <p>Same as <code>LOGNAME</code>.
@@ -1674,10 +1674,10 @@ considered comments.
 Other lines consist of a keyword, `<samp>=</samp>', and a
 value.  Note that this syntax is very strict.
 Extraneous spaces or tabs are not permitted.
-
-</p><p>Currently defined keywords are:
-
-</p><dl compact="compact">
+</p>
+<p>Currently defined keywords are:
+</p>
+<dl compact="compact">
 <dd><a name="IDX284"></a>
 </dd>
 <dt><code> RCSBIN=<var>bindir</var></code></dt>
@@ -1686,8 +1686,8 @@ Extraneous spaces or tabs are not permitted.
 <var>bindir</var> directory.  Current versions of <small>CVS</small>
 do not run <small>RCS</small> programs; for compatibility this
 setting is accepted, but it does nothing.
-
-</p><a name="IDX285"></a>
+</p>
+<a name="IDX285"></a>
 </dd>
 <dt><code> SystemAuth=<var>value</var></code></dt>
 <dd><p>If <var>value</var> is `<samp>yes</samp>', then pserver should check
@@ -1696,8 +1696,8 @@ for users in the system's user database if not found in
 pserver users must exist in `<tt>CVSROOT/passwd</tt>'.
 The default is `<samp>yes</samp>'.  For more on pserver, see
 <a href="cvs_2.html#SEC29">Direct connection with password authentication</a>.
-
 </p>
+
 <a name="IDX286"></a>
 </dd>
 <dt><code> TopLevelAdmin=<var>value</var></code></dt>
@@ -1706,16 +1706,16 @@ The default is `<samp>yes</samp>'.  For more on pserver, see
 working directory, in addition to `<samp>CVS</samp>'
 directories created within checked-out directories.
 The default value is `<samp>no</samp>'.
-
-</p><p>This option is useful if you find yourself performing
+</p>
+<p>This option is useful if you find yourself performing
 many commands at the top level of your working
 directory, rather than in one of the checked out
 subdirectories.  The `<tt>CVS</tt>' directory created there
 will mean you don't have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
 `<tt>CVS/Template</tt>' file (see section <a href="cvs_2.html#SEC19">How data is stored in the working directory</a>).
-
-</p><a name="IDX287"></a>
+</p>
+<a name="IDX287"></a>
 </dd>
 <dt><code> LockDir=<var>directory</var></code></dt>
 <dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
@@ -1730,8 +1730,8 @@ You need to create <var>directory</var>, but
 <small>CVS</small> will create subdirectories of <var>directory</var> as it
 needs them.  For information on <small>CVS</small> locks, see
 <a href="cvs_10.html#SEC88">Several developers simultaneously attempting to run CVS</a>.
-
-</p><p>Before enabling the LockDir option, make sure that you
+</p>
+<p>Before enabling the LockDir option, make sure that you
 have tracked down and removed any copies of <small>CVS</small> 1.9 or
 older.  Such versions neither support LockDir, nor will
 give an error indicating that they don't support it.
@@ -1741,8 +1741,8 @@ put them another place, and therefore the repository
 could become corrupted.  <small>CVS</small> 1.10 does not support
 LockDir but it will print a warning if run on a
 repository with LockDir enabled.
-
-</p><a name="IDX288"></a>
+</p>
+<a name="IDX288"></a>
 </dd>
 <dt><code> LogHistory=<var>value</var></code></dt>
 <dd><p>Control what is logged to the `<tt>CVSROOT/history</tt>' file (see section <a href="cvs_16.html#SEC137">history--Show status of files and users</a>).
@@ -1750,8 +1750,8 @@ Default of `<samp>TOEFWUCGMAR</samp>' (or simply `<samp>all</samp>') will log
 all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
 `<tt>*,v</tt>' files, use `<samp>LogHistory=TMAR</samp>'.)
-
-</p><a name="IDX289"></a>
+</p>
+<a name="IDX289"></a>
 <a name="IDX290"></a>
 </dd>
 <dt><code> RereadLogAfterVerify=<var>value</var></code></dt>
@@ -1764,15 +1764,15 @@ reread; or <var>value</var> may be `<samp>stat</samp>', indicating
 that the file should be checked with the filesystem
 `<samp>stat()</samp>' function to see if it has changed (see warning below)
 before rereading.  The default value is `<samp>always</samp>'.
-
-</p><p><strong>Note: the `stat' mode can cause CVS to pause for up to
+</p>
+<p><strong>Note: the `stat' mode can cause CVS to pause for up to
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</strong>
-
-</p><p>See section <a href="#SEC169">Verifying log messages</a>, for more information on how verifymsg
+</p>
+<p>See section <a href="#SEC169">Verifying log messages</a>, for more information on how verifymsg
 may be used.
-
-</p><a name="IDX291"></a>
+</p>
+<a name="IDX291"></a>
 </dd>
 <dt><code> UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
@@ -1782,17 +1782,17 @@ which should be allowed.  If a user who is not a member of the
 <code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
 option which is not listed they will will receive an error message
 reporting that the option is restricted.
-
-</p><p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
+</p>
+<p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
 ignore the <code>UserAdminOptions</code> keyword (see section <a href="cvs_16.html#SEC120">admin--Administration</a>).
-
-</p><p>When not specified, <code>UserAdminOptions</code> defaults to
+</p>
+<p>When not specified, <code>UserAdminOptions</code> defaults to
 `<samp>k</samp>'.  In other words, it defaults to allowing
 users outside of the <code>cvsadmin</code> group to use the
 <code>cvs admin</code> command only to change the default keyword
 expansion mode for files.
-
-</p><p>As an example, to restrict users not in the <code>cvsadmin</code>
+</p>
+<p>As an example, to restrict users not in the <code>cvsadmin</code>
 group to using <code>cvs admin</code> to change the default keyword
 substitution mode, lock revisions, unlock revisions, and
 replace the log message, use `<samp>UserAdminOptions=klum</samp>'.

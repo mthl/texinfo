@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.2.4 @settitle: Set the document title</title>
+<title>GNU Texinfo 4.2: 3.2.4 @settitle: Set the document title</title>
 
-<meta name="description" content="Texinfo: 3.2.4 @settitle: Set the document title">
-<meta name="keywords" content="Texinfo: 3.2.4 @settitle: Set the document title">
+<meta name="description" content="GNU Texinfo 4.2: 3.2.4 @settitle: Set the document title">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.2.4 @settitle: Set the document title">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,52 +82,52 @@ ul.toc {list-style: none}
 
 <p>In order to be made into a printed manual, a Texinfo file must contain
 a line that looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@settitle <var>title</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@settitle <var>title</var>
 </pre></td></tr></table>
 <p>Write the <code>@settitle</code> command at the beginning of a line and
 follow it on the same line by the title.  This tells TeX the title to
 use in a header or footer.  Do not write anything else on the line;
 anything on the line after the command is considered part of the title,
 including what would otherwise be a comment.
-
-</p><p>The <code>@settitle</code> command should precede everything that generates
+</p>
+<p>The <code>@settitle</code> command should precede everything that generates
 actual output in TeX.
-
-</p><a name="IDX72"></a>
+</p>
+<a name="IDX72"></a>
 <p>In the HTML file produced by <code>makeinfo</code>, <var>title</var> also serves
 as the document `<samp>&lt;title&gt;</samp>' and the default document description in
 the `<samp>&lt;head&gt;</samp>' part; see <a href="documentdescription.html#SEC63"><code>@documentdescription</code>: Summary text</a>, for how to change
 that.
-
-</p><p>The title in the <code>@settitle</code> command does not affect the title as
+</p>
+<p>The title in the <code>@settitle</code> command does not affect the title as
 it appears on the title page.  Thus, the two do not need not match
 exactly.  A practice we recommend is to include the version or edition
 number of the manual in the <code>@settitle</code> title; on the title page,
 the version number generally appears as a <code>@subtitle</code> so it would
 be omitted from the <code>@title</code>.  (See section <a href="titlepage.html#SEC53"><code>@titlepage</code></a>.)
-
-</p><p>Conventionally, when TeX formats a Texinfo file for double-sided
+</p>
+<p>Conventionally, when TeX formats a Texinfo file for double-sided
 output, the title is printed in the left-hand (even-numbered) page
 headings and the current chapter title is printed in the right-hand
 (odd-numbered) page headings.  (TeX learns the title of each chapter
 from each <code>@chapter</code> command.)  By default, no page footer is
 printed.
-
-</p><p>Even if you are printing in a single-sided style, TeX looks for an
+</p>
+<p>Even if you are printing in a single-sided style, TeX looks for an
 <code>@settitle</code> command line, in case you include the manual title
 in the heading.
-
-</p><p>TeX prints page headings only for that text that comes after the
+</p>
+<p>TeX prints page headings only for that text that comes after the
 <code>@end titlepage</code> command in the Texinfo file, or that comes
 after an <code>@headings</code> command that turns on headings.
 (See section <a href="headings-on-off.html#SEC58">The <code>@headings</code> Command</a>, for more
 information.)
-
-</p><p>You may, if you wish, create your own, customized headings and footings.
-See section <a href="Headings.html#SEC303">Page Headings</a>, for a detailed discussion of this.
-
 </p>
+<p>You may, if you wish, create your own, customized headings and footings.
+See section <a href="Headings.html#SEC303">Page Headings</a>, for a detailed discussion of this.
+</p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="setfilename.html#SEC46" title="Previous section in reading order"> &lt; </a>]</td>

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 7. Menus</title>
+<title>GNU Texinfo 4.2: 7. Menus</title>
 
-<meta name="description" content="Texinfo: 7. Menus">
-<meta name="keywords" content="Texinfo: 7. Menus">
+<meta name="description" content="GNU Texinfo 4.2: 7. Menus">
+<meta name="keywords" content="GNU Texinfo 4.2: 7. Menus">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,8 +83,8 @@ ul.toc {list-style: none}
 <p><em>Menus</em> contain pointers to subordinate nodes.<a name="DOCF6" href="texinfo_fot.html#FOOT6">(6)</a> In
 Info, you use menus to go to such nodes.  Menus have no effect in
 printed manuals and do not appear in them.
-
-</p><p>By convention, a menu is put at the end of a node since a reader who
+</p>
+<p>By convention, a menu is put at the end of a node since a reader who
 uses the menu may not see text that follows it.  Furthermore, a node
 that has a menu should not contain much text. If you have a lot of text
 and a menu, move most of the text into a new subnode--all but a few
@@ -92,8 +92,8 @@ lines.  Otherwise, a reader with a terminal that displays only a few
 lines may miss the menu and its associated text.  As a practical matter,
 you should locate a menu within 20 lines of the beginning of the
 node.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Menu-Location">&bull; Menu Location</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Put a menu in a short node.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Writing-a-Menu.html#SEC99">7.1 Writing a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              What is a menu?
@@ -119,11 +119,11 @@ follow the menu by an <code>@node</code> line, and then an <code>@heading</code>
 line located within <code>@ifinfo</code> and <code>@end ifinfo</code>.  This way,
 the menu, <code>@node</code> line, and title appear only in the Info file,
 not the printed document.
-
-</p><p>For example, the preceding two paragraphs follow an Info-only menu,
+</p>
+<p>For example, the preceding two paragraphs follow an Info-only menu,
 <code>@node</code> line, and heading, and look like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * Menu Location::             Put a menu in a short node.
 * Writing a Menu::            What is a menu?
 * Menu Parts::                A menu entry has three parts.
@@ -140,8 +140,8 @@ not the printed document.
 </pre></td></tr></table>
 <p>The Texinfo file for this document contains a number of
 examples of this procedure; one is at the beginning of this chapter.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="anchor.html#SEC96" title="Previous section in reading order"> &lt; </a>]</td>

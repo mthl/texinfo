@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 8.3 @xref</title>
+<title>GNU Texinfo 4.2: 8.3 @xref</title>
 
-<meta name="description" content="Texinfo: 8.3 @xref">
-<meta name="keywords" content="Texinfo: 8.3 @xref">
+<meta name="description" content="GNU Texinfo 4.2: 8.3 @xref">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.3 @xref">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,8 +86,8 @@ an Info cross reference, which the Info `<samp>f</samp>' command can use to
 bring you directly to another node.  The TeX typesetting commands
 convert it into a page reference, or a reference to another book or
 manual.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Reference-Syntax">&bull; Reference Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            What a reference looks like and requires.
 </td></tr>
 <tr><td align="left" valign="top"><a href="One-Argument.html#SEC110">8.3.1 <code>@xref</code> with One Argument</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                <code>@xref</code> with one argument.
@@ -105,49 +105,53 @@ manual.
 <h3 class="subheading"> What a Reference Looks Like and Requires </h3>
 
 <p>Most often, an Info cross reference looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>node-name</var>::.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>node-name</var>::.
 </pre></td></tr></table>
 
 <p>or like this
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>cross-reference-name</var>: <var>node-name</var>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>cross-reference-name</var>: <var>node-name</var>.
 </pre></td></tr></table>
 
 <p>In TeX, a cross reference looks like this:
-
-</p><blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
+</p>
+<blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
 </p></blockquote>
+
 
 <p>or like this
-
-</p><blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
+</p>
+<blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
 </p></blockquote>
+
 <p>The <code>@xref</code> command does not generate a period or comma to end
 the cross reference in either the Info file or the printed output.
 You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
 differently.  See section <a href="pxref.html#SEC116"><code>@pxref</code></a>.)
-
-</p><blockquote><p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
+</p>
+<blockquote><p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
 the Info file and in the printed manual.
 </p></blockquote>
+
 <p><code>@xref</code> must refer to an Info node by name.  Use <code>@node</code>
 to define the node (see section <a href="Writing-a-Node.html#SEC90">How to Write an <code>@node</code> Line</a>).
-
-</p><p><code>@xref</code> is followed by several arguments inside braces, separated by
+</p>
+<p><code>@xref</code> is followed by several arguments inside braces, separated by
 commas.  Whitespace before and after these commas is ignored.
-
-</p><p>A cross reference requires only the name of a node; but it may contain
+</p>
+<p>A cross reference requires only the name of a node; but it may contain
 up to four additional arguments.  Each of these variations produces a
 cross reference that looks somewhat different.
-
-</p><blockquote><p><strong>Please note:</strong> Commas separate arguments in a cross reference;
+</p>
+<blockquote><p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
 mistake them for separators.
 </p></blockquote>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Cross-Reference-Parts.html#SEC107" title="Previous section in reading order"> &lt; </a>]</td>

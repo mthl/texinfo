@@ -1,3 +1,5 @@
+nodetest_utf8.texi(,2) @setfilename nodetest_utf8.info
+nodetest_utf8.texi(,3) @documentencoding utf8
 nodetest_utf8.texi(,4) @node Top,Umlaut,(dir)
 nodetest_utf8.texi(,5) @top
 nodetest_utf8.texi(,6) @menu
@@ -14,6 +16,7 @@ nodetest_utf8.texi(,16) * tilde accent::         tilde accent.
 nodetest_utf8.texi(,17) * cedilla accent::       cedilla accent.
 nodetest_utf8.texi(,18) * rest::                 rest @@aa@{@} etc.
 nodetest_utf8.texi(,19) @end menu
+nodetest_utf8.texi(,20) @c
 nodetest_utf8.texi(,21) @node Umlaut,,Top,Top
 nodetest_utf8.texi(,22) @chapter Umlaut
 nodetest_utf8.texi(,23) @menu
@@ -31,6 +34,7 @@ nodetest_utf8.texi(,34) * Ü::    Ü.
 nodetest_utf8.texi(,35) * @ss{}::    @ss{}.
 nodetest_utf8.texi(,36) * no section::  Node without sectioning command.
 nodetest_utf8.texi(,37) @end menu
+nodetest_utf8.texi(,38) @c
 nodetest_utf8.texi(,39) @node ä,,,Umlaut
 nodetest_utf8.texi(,40) @section ä
 nodetest_utf8.texi(,41) ref to ç @ref{ç}.
@@ -75,6 +79,7 @@ nodetest_utf8.texi(,79) @node @ss{},,,Umlaut
 nodetest_utf8.texi(,80) @section @ss{}
 nodetest_utf8.texi(,81) @node no section,,,Umlaut
 nodetest_utf8.texi(,82) This is a node without sectioning command.
+nodetest_utf8.texi(,83) @c
 nodetest_utf8.texi(,84) @node acute accent,,Top,Top
 nodetest_utf8.texi(,85) @chapter acute accent
 nodetest_utf8.texi(,86) @menu
@@ -91,6 +96,7 @@ nodetest_utf8.texi(,96) * @'O::    @'O.
 nodetest_utf8.texi(,97) * @'U::    @'U.
 nodetest_utf8.texi(,98) * @'Y::    @'Y.
 nodetest_utf8.texi(,99) @end menu
+nodetest_utf8.texi(,100) @c
 nodetest_utf8.texi(,101) @node @'a,,,acute accent
 nodetest_utf8.texi(,102) @section @'a
 nodetest_utf8.texi(,103) With brace @'{a}. Testing ' " ` ^.
@@ -120,6 +126,7 @@ nodetest_utf8.texi(,126) This is a ref to ü (@pxref{ü, ,ü}).
 nodetest_utf8.texi(,127) Another one, with node only (@pxref{ü, ,}).
 nodetest_utf8.texi(,128) 
 nodetest_utf8.texi(,132) 
+nodetest_utf8.texi(,133) @c
 nodetest_utf8.texi(,134) @node grave accent,,Top,Top
 nodetest_utf8.texi(,135) @chapter grave accent
 nodetest_utf8.texi(,136) @menu
@@ -136,6 +143,7 @@ nodetest_utf8.texi(,146) * @`I::    @`I.
 nodetest_utf8.texi(,147) * @`O::    @`O.
 nodetest_utf8.texi(,148) * @`U::    @`U.
 nodetest_utf8.texi(,149) @end menu
+nodetest_utf8.texi(,150) @c
 nodetest_utf8.texi(,151) @node à,,,grave accent
 nodetest_utf8.texi(,152) @section à
 nodetest_utf8.texi(,153) @node è,,,grave accent
@@ -160,6 +168,7 @@ nodetest_utf8.texi(,171) @node @`O,,,grave accent
 nodetest_utf8.texi(,172) @section @`O
 nodetest_utf8.texi(,173) @node @`U,,,grave accent
 nodetest_utf8.texi(,174) @section @`U
+nodetest_utf8.texi(,175) @c
 nodetest_utf8.texi(,176) @node circumflex accent,,Top,Top
 nodetest_utf8.texi(,177) @chapter circumflex accent
 nodetest_utf8.texi(,178) @menu
@@ -174,6 +183,7 @@ nodetest_utf8.texi(,186) * Î::    Î.
 nodetest_utf8.texi(,187) * Ô::    Ô.
 nodetest_utf8.texi(,188) * Û::    Û.
 nodetest_utf8.texi(,189) @end menu
+nodetest_utf8.texi(,190) @c
 nodetest_utf8.texi(,191) @node â,,,circumflex accent
 nodetest_utf8.texi(,192) @section â
 nodetest_utf8.texi(,193) @node ê,,,circumflex accent
@@ -194,6 +204,7 @@ nodetest_utf8.texi(,207) @node Ô,,,circumflex accent
 nodetest_utf8.texi(,208) @section Ô
 nodetest_utf8.texi(,209) @node Û,,,circumflex accent
 nodetest_utf8.texi(,210) @section Û
+nodetest_utf8.texi(,211) @c
 nodetest_utf8.texi(,212) @node tilde accent,,Top,Top
 nodetest_utf8.texi(,213) @chapter tilde accent
 nodetest_utf8.texi(,214) @menu
@@ -203,6 +214,7 @@ nodetest_utf8.texi(,217) * @~o::    @~o.
 nodetest_utf8.texi(,218) * @~A::    @~A.
 nodetest_utf8.texi(,219) * @~O::    @~O.
 nodetest_utf8.texi(,220) @end menu
+nodetest_utf8.texi(,221) @c
 nodetest_utf8.texi(,222) @node @~a,,,tilde accent
 nodetest_utf8.texi(,223) @section @~a
 nodetest_utf8.texi(,224) @node @~n,,,tilde accent
@@ -215,16 +227,19 @@ nodetest_utf8.texi(,230) @node @~O,,,tilde accent
 nodetest_utf8.texi(,231) @section @~O
 nodetest_utf8.texi(,232) This marks the @anchor{x-spot}spot.
 nodetest_utf8.texi(,233) A second one with accented char @anchor{é-o}.
+nodetest_utf8.texi(,234) @c
 nodetest_utf8.texi(,235) @node cedilla accent,,Top,Top
 nodetest_utf8.texi(,236) @chapter cedilla accent
 nodetest_utf8.texi(,237) @menu
 nodetest_utf8.texi(,238) * ç::    ç.
 nodetest_utf8.texi(,239) * @m_cedilla{C}::    @m_cedilla{C}.
 nodetest_utf8.texi(,240) @end menu
+nodetest_utf8.texi(,241) @c
 nodetest_utf8.texi(,242) @node ç,,,cedilla accent
 nodetest_utf8.texi(,243) @section ç
 nodetest_utf8.texi(,244) @node @m_cedilla{C},,,cedilla accent
 nodetest_utf8.texi(,245) @section @m_cedilla{C}
+nodetest_utf8.texi(,246) @c
 nodetest_utf8.texi(,247) @node rest,,Top,Top
 nodetest_utf8.texi(,248) @chapter rest
 nodetest_utf8.texi(,249) @menu
@@ -249,6 +264,7 @@ nodetest_utf8.texi(,267) * @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
 nodetest_utf8.texi(,268) * @dotless{i}::  @dotless{i} dotless i.
 nodetest_utf8.texi(,269) * @dotless{j}::  @dotless{j} dotless j.
 nodetest_utf8.texi(,270) @end menu
+nodetest_utf8.texi(,271) @c
 nodetest_utf8.texi(,272) @node @aa{},,,rest
 nodetest_utf8.texi(,273) @section @aa{}
 nodetest_utf8.texi(,274) @node @ae{},,,rest
@@ -308,4 +324,5 @@ nodetest_utf8.texi(,327) 	@@ followed by tab: @
 nodetest_utf8.texi(,328) 	@@ followed by space @ 
 nodetest_utf8.texi(,329) 	@@*: @* and text followin @@*.
 nodetest_utf8.texi(,330) 
-nodetest_utf8.texi(,331) 
+nodetest_utf8.texi(,331) @contents
+nodetest_utf8.texi(,332) @bye

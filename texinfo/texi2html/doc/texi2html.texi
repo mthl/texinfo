@@ -187,7 +187,7 @@ of the @command{texi2html} Perl script which converts
 @c real URL link in HTML and working refs in
 @c info.
 @c
-@c pertusus: Some support for html cross manual now
+@c pertusus: support for html cross manual now
 @c exists in texi2html, but it implies having Texinfo's
 @c HTML manual at the right place, which isn't usually the case.
 @c The resulting ref is also less pretty in info.
@@ -288,10 +288,11 @@ files?  There are two programs you can use to do this.  The first is
 The second is @command{texi2html}.
 
 The design goal of @command{makeinfo}'s @acronym{HTML} output was to produce
-readable @acronym{HTML} output.  This is all it produces: basic, readable,
-@acronym{HTML} output, with little attention to attractive styling or
-configurability, although it is now possible to use @acronym{CSS} with
-@command{makeinfo}.
+readable @acronym{HTML} output. It is now possible to use @acronym{CSS}
+for @acronym{HTML} customization. Another possibility is to use intermediate 
+formats, like docbook or @command{mekeinfo} @acronym{XML} 
+and @acronym{XSL} stylesheets to customize the resulting document. Still the 
+output produced by @command{makeinfo} isn't customizable.
 
 The current development of @command{texi2html} tries to
 provide for producing the more interesting and sophisticated @acronym{HTML}
@@ -318,8 +319,14 @@ formatting, provides for splitting documents at various levels, and provides
 for using the @command{latex2html} program to convert @code{@@tex} sections of
 the Texinfo source.
 
+The focus on @acronym{HTML} is still present but with the help of the
+customization files it is now possible to use @command{texi2html} to
+produce other formats as well. @command{texi2html} may for example be
+turned into a texinfo to roff translator with the help of a customization file 
+provided with the distribution.
+
 @command{texi2html} should reasonably convert all Texinfo
-4.7 constructs.  If you find it does not, please send a bug report to the
+4.8 constructs.  If you find it does not, please send a bug report to the
 @email{users@@texi2html.cvshome.org} email list.
 
 @c ========================================================
@@ -1284,6 +1291,13 @@ The file name of the table of contents.
 The date.
 @end table
 
+It also holds the arg of the following commands, associated with the command 
+name: kbdinputstyle, paragraphindent, setchapternewpage, headings,
+footnotestyle,
+ exampleindent, firstparagraphindent, everyheading, everyfooting,
+ evenheading, evenfooting, oddheading, oddfooting.
+
+
 @subsubheading Flags
 Flags defined by @code{@@set} may be accessed through the 
 @variable{%main::value} hash. The key is the flag name, the value is the
@@ -1864,7 +1878,7 @@ be redefined.
 * Text::                         Some characters are processed specially
 * Strings::                      @command{texi2html} write some strings in the output
                                  different for each languages
-* Skipped commands::           
+@c * Skipped commands::           
 * References::
 * Alignement commands::           @code{@@center}, @code{@@flushleft}@dots{}
 * Paragraph and preformatted region::
@@ -1877,7 +1891,7 @@ be redefined.
 * Indices::
 * Floats and lists of floats::   @code{@@float} and @code{@@listoffloats}
 * Footnotes::
-* Other commands::               You can handle specifically other commands
+* Other and unknown commands::   You can handle specifically other commands
 
 @end menu
 
@@ -2300,29 +2314,6 @@ as @samp{%}.
 For more on internationalization, see @ref{Internationalization}.
 
 @c --------------------------------------------------------
-@node Skipped commands
-@section Customizing ignored commands and text
-
-@cindex skipped command
-
-The ignored commands are the keys of a hashe: @variable{%to_skip}
-The associated value determines how things following the ignored
-command are handled. There are four possibilities:
-
-@table @asis
-@item @code{1}
-only the command is ignored,
-@item @code{space}
-spaces (but no new line) following the command are skipped,
-@item @code{arg}
-an argument following the command is skipped,
-@item @code{line}
-The line following the command is skipped,
-@item @code{whitespace}
-spaces and new lines following the command are skipped.
-@end table
-
-@c --------------------------------------------------------
 @node References
 @section References
 @cindex reference
@@ -2403,9 +2394,27 @@ key of the @variable{%paragraph_style} hash.
 The value is used in the function doing the formatting of the paragraphs. 
 @xref{Paragraph and preformatted region}.
 
+A function references allows for a customization of the formatting of the text 
+appearing in the command block.
+
+@deftypefn {Function Reference} $result paragraph_style_command $command $text
+@var{$command} is the command name, @var{$text} is the text appearing within
+the command. This function returns a formatted text.
+The default is to return the text unmodified.
+@end deftypefn
+
 @c --------------------------------------------------------
 @node Paragraph and preformatted region
-@section Formatting a paragraph or a preformatted region
+@section Formatting or not a paragraph or a preformatted region
+
+
+@menu
+* Paragraph and preformatted formatting::
+* Avoiding paragraphs::
+@end menu
+
+@node Paragraph and preformatted formatting
+@subsection Paragraph and preformatted region formatting
 
 @cindex paragraph 
 @cindex preformatted region 
@@ -2473,6 +2482,15 @@ If the @var{$format} is an enumerate, @var{$item_number} is the number of
 the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 @var{$number} is the number or letter corresponding with this item. 
 @end deftypefn
+
+@node Avoiding paragraphs
+@subsection Avoiding paragraphs in formats
+
+@cindex Avoid paragraph opening
+
+It is possible to avoid that a format closes the previous paragraph or
+preformatted region and reopens one, by putting the format command in a 
+hash, @variable{%format_in_paragraph} with a true value.
 
 @c --------------------------------------------------------
 @node Complex formats
@@ -2633,6 +2651,8 @@ and the element closing.
 If the text is a word followed by some text, 
 the word and is interpreted as above, and the
 text is considered to be the attributes text of the element. 
+@item
+If the text is empty nothing is added to the text.
 @end itemize
 
 In case the @code{%format_map} isn't used, a function reference called
@@ -3199,14 +3219,82 @@ formatted as explained above. This function modifies the reference.
 
 @c --------------------------------------------------------
 
-@node Other commands
-@section Customizing other commands
+@node Other and unknown commands
+@section Customizing other commands, and unknown commands 
 
-Commands not specified above which don't appear in the hashes 
+@c --------------------------------------------------------
+@c @node Skipped commands
+@c @section Customizing ignored commands and text
+
+@cindex skipped command
+@cindex unknown command
+
+Many commands without braces are available in texinfo, sometimes with
+a specific syntax. For example we have @code{@@sp}, @code{@@noindent},
+@code{@@documentlanguage}, @code{@@oddheading}, @code{@@headings},
+@code{@@shortcontents}, @code{@@shorttitlepage} or @code{@@comment}. 
+@command{texi2html} interprets
+some of these commands and some functions or variables are used for
+their formatting or to access their information.
+In the default case, however, most of these constructs are ignored.
+
+It is possible to change how the things following these commands
+on the line are handled, what is considered to be an arg for those
+commands and it is also possible to keep them instead of discarding
+them such that it is possible to handle them specially, with the
+same function than the one used for unknown commands.
+
+Those special commands without braces are the key of a hash:
+@variable{%misc_command}. The associated value is a reference on a
+hash enabling to set the properties of these commands. The
+keys of this hash reference is the name of a property, the value
+is the value of the property. For example here we have @code{line}
+for the @code{arg} property for the @code{command} @@-command.
+
+@example
+$misc_command@{'command'@} = @{'arg' => 'line', 'skip' => 'space'@};
+@end example
+
+The properties and possible values are:
+
+@table @code
+@item skip
+This property enables to set what is skipped after the command arguments.
+Here are the possible values:
+@table @code
+@item line
+The remaining of the line is skipped.
+@item space 
+Spaces are skipped but not newline.
+@item whitespace 
+Spaces are skipped
+@item linewhitespace
+Spaces are skipped if there are only spaces remaining on the line.
+@item linespace
+Spaces are skipped, but not newline if
+there are only spaces remaining on the line
+@end table
+
+@item arg
+If the associated value is @code{line} the line is considered to be the
+argument. If it is a number it is the number of args (separated by spaces).
+@item texi
+If true the arguments are considered to real texinfo, therefore	
+ @code{@@value} and @code{@@macro} are expanded.
+@item keep
+If true the args and the macro are kept, otherwise they are discarded.
+The defaut is to have @code{keep} undef for all the commands.
+If @code{keep} is true for @code{@@verbatiminclude} the default
+action for this macro isn't done.
+@end table
+
+
+Commands which don't appear in the hashes 
 @c @variable{%things_map} @variable{%pre_map}
-@variable{%simple_map}, @variable{%simple_map_pre} or
-@variable{%simple_map_texi} are processed by the 
-following function reference
+@variable{%simple_map}, @variable{%simple_map_pre},
+@variable{%simple_map_texi} and @code{%misc_command}, or that appear in
+@code{%misc_command} but with @code{keep} true are processed by the 
+following function reference:
 
 @deftypefn {Function Reference} {($result_line, $result, $result_text, $message)} unknown $command $line
 @var{$command} is the @@-command, @var{$line} is the line following the 

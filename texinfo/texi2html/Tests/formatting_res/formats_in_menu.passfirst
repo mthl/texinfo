@@ -36,3 +36,4 @@ formats_in_menu.texi(,36)   description continue ?
 formats_in_menu.texi(,37) comment.
 formats_in_menu.texi(,38) @end table
 formats_in_menu.texi(,39) @end menu
+formats_in_menu.texi(,40) @bye

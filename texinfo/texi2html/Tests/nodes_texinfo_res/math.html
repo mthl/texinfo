@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13.8 @math: Inserting Mathematical Expressions</title>
+<title>GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions</title>
 
-<meta name="description" content="Texinfo: 13.8 @math: Inserting Mathematical Expressions">
-<meta name="keywords" content="Texinfo: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="description" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.8 @math: Inserting Mathematical Expressions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,16 +82,16 @@ ul.toc {list-style: none}
 
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
 </pre></td></tr></table>
 <p>This produces the following in Info:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
 </pre></td></tr></table>
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
-
-</p><p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
+</p>
+<p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It's
 conventional to use `<samp>\</samp>' instead of `<samp>@</samp>' for these commands.
@@ -107,14 +107,14 @@ As in:
 but you'll get the literal `<samp>\\</samp>' in Info).  <code>@\</code> is not
 defined outside of <code>@math</code>, since a `<samp>\</samp>' ordinarily produces a
 literal `<samp>\</samp>'.
-
 </p>
+
 <a name="IDX225"></a>
 <a name="IDX226"></a>
 <p>For displayed equations, you must at present use TeX directly
 (see section <a href="Raw-Formatter-Commands.html#SEC230">Raw Formatter Commands</a>).  
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

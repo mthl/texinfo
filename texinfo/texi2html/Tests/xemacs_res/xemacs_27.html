@@ -63,43 +63,43 @@ ul.toc {list-style: none}
 <p>  If you want to create a picture made out of text characters (for example,
 a picture of the division of a register into fields, as a comment in a
 program), use the command <code>edit-picture</code> to enter Picture mode.
-
-</p><p>  In Picture mode, editing is based on the <em>quarter-plane</em> model of
+</p>
+<p>  In Picture mode, editing is based on the <em>quarter-plane</em> model of
 text.  In this model, the text characters lie studded on an area that
 stretches infinitely far to the right and downward.  The concept of the end
 of a line does not exist in this model; the most you can say is where the
 last non-blank character on the line is found.
-
-</p><p>  Of course, Emacs really always considers text as a sequence of
+</p>
+<p>  Of course, Emacs really always considers text as a sequence of
 characters, and lines really do have ends.  But in Picture mode most
 frequently-used keys are rebound to commands that simulate the
 quarter-plane model of text.  They do this by inserting spaces or by
 converting tabs to spaces.
-
-</p><p>  Most of the basic editing commands of Emacs are redefined by Picture mode
+</p>
+<p>  Most of the basic editing commands of Emacs are redefined by Picture mode
 to do essentially the same thing but in a quarter-plane way.  In addition,
 Picture mode defines various keys starting with the <kbd>C-c</kbd> prefix to
 run special picture editing commands.
-
-</p><p>  One of these keys, <kbd>C-c C-c</kbd>, is pretty important.  Often a picture
+</p>
+<p>  One of these keys, <kbd>C-c C-c</kbd>, is pretty important.  Often a picture
 is part of a larger file that is usually edited in some other major mode.
 <kbd>M-x edit-picture</kbd> records the name of the previous major mode. 
 You can then use the <kbd>C-c C-c</kbd> command (<code>picture-mode-exit</code>) to
 restore that mode.  <kbd>C-c C-c</kbd> also deletes spaces from the ends of
 lines, unless you give it a numeric argument.
-
-</p><p>  The commands used in Picture mode all work in other modes (provided the
+</p>
+<p>  The commands used in Picture mode all work in other modes (provided the
 `<tt>picture</tt>' library is loaded), but are only  bound to keys in
 Picture mode.  Note that the descriptions below talk of moving &quot;one
 column&quot; and so on, but all the picture mode commands handle numeric
 arguments as their normal equivalents do.
-
-</p><a name="IDX1090"></a>
+</p>
+<a name="IDX1090"></a>
 <p>  Turning on Picture mode calls the value of the variable
 <code>picture-mode-hook</code> as a function, with no arguments, if that value
 exists and is non-<code>nil</code>.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC292">24.1 Basic Editing in Picture Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Basic concepts and simple commands of Picture Mode.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC293">24.2 Controlling Motion After Insert</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Controlling direction of cursor motion
@@ -145,16 +145,16 @@ that point stays in exactly the same column.  <kbd>C-e</kbd> runs
 <code>picture-end-of-line</code>, which moves to after the last non-blank
 character on the line.  There was no need to change <kbd>C-a</kbd>, as the choice
 of screen model does not affect beginnings of lines.
-
-</p><a name="IDX1091"></a>
+</p>
+<a name="IDX1091"></a>
 <p>  Insertion of text is adapted to the quarter-plane screen model through
 the use of Overwrite mode (see section <a href="xemacs_30.html#SEC352">Minor Modes</a>).  Self-inserting characters
 replace existing text, column by column, rather than pushing existing text
 to the right.  <kbd>RET</kbd> runs <code>picture-newline</code>, which just moves to
 the beginning of the following line so that new text will replace that
 line.
-
-</p><a name="IDX1092"></a>
+</p>
+<a name="IDX1092"></a>
 <a name="IDX1093"></a>
 <a name="IDX1094"></a>
 <p>  Text is erased instead of deleted and killed.  <kbd>DEL</kbd>
@@ -163,24 +163,24 @@ with a space rather than removing it.  <kbd>C-d</kbd>
 (<code>picture-clear-column</code>) does the same in a forward direction.
 <kbd>C-k</kbd> (<code>picture-clear-line</code>) really kills the contents of lines,
 but never removes the newlines from a buffer.
-
-</p><a name="IDX1095"></a>
+</p>
+<a name="IDX1095"></a>
 <p>  To do actual insertion, you must use special commands.  <kbd>C-o</kbd>
 (<code>picture-open-line</code>) creates a blank line, but does so after
 the current line; it never splits a line.  <kbd>C-M-o</kbd>, <code>split-line</code>,
 makes sense in Picture mode, so it remains unchanged.  <kbd>LFD</kbd>
 (<code>picture-duplicate-line</code>) inserts another line
 with the same contents below the current line.
-
-</p><a name="IDX1096"></a>
+</p>
+<a name="IDX1096"></a>
 <a name="IDX1097"></a>
  
 <p>  To actually delete parts of the picture, use <kbd>C-w</kbd>, or with
 <kbd>C-c C-d</kbd> (which is defined as <code>delete-char</code>, as <kbd>C-d</kbd> is
 in other modes), or with one of the picture rectangle commands
 (see section <a href="#SEC295">Picture Mode Rectangle Commands</a>).
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Insert-in-Picture"></a>
 <a name="SEC293"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -206,8 +206,8 @@ Picture mode, there is no essential restriction on how point should be
 moved.  Normally point moves right, but you can specify any of the eight
 orthogonal or diagonal directions for motion after a &quot;self-inserting&quot;
 character.  This is useful for drawing lines in the buffer.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-c &lt;</kbd></dt>
 <dd><p>Move left after insertion (<code>picture-movement-left</code>).
 </p></dd>
@@ -245,8 +245,8 @@ character.  This is useful for drawing lines in the buffer.
 direction.  The command <kbd>C-c C-f</kbd> (<code>picture-motion</code>) moves in the
 same direction as motion after &quot;insertion&quot; currently does, while <kbd>C-c
 C-b</kbd> (<code>picture-motion-reverse</code>) moves in the opposite direction.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Tabs-in-Picture"></a>
 <a name="SEC294"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -279,14 +279,14 @@ change the text; it only moves point.  &quot;Interesting&quot; characters are
 defined by the variable <code>picture-tab-chars</code>, which contains a string
 of characters considered interesting.  Its default value is
 <code>&quot;!-~&quot;</code>.
-
-</p><a name="IDX1102"></a>
+</p>
+<a name="IDX1102"></a>
 <p>  <kbd>TAB</kbd> itself runs <code>picture-tab</code>, which operates based on the
 current tab stop settings; it is the Picture mode equivalent of
 <code>tab-to-tab-stop</code>.  Without arguments it just moves point, but with
 a numeric argument it clears the text that it moves over.
-
-</p><a name="IDX1103"></a>
+</p>
+<a name="IDX1103"></a>
 <a name="IDX1104"></a>
 <p>  The context-based and tab-stop-based forms of tabbing are brought
 together by the command <kbd>C-c <kbd>TAB</kbd></kbd> (<code>picture-set-tab-stops</code>.)
@@ -294,8 +294,8 @@ This command sets the tab stops to the positions which <kbd>M-<kbd>TAB</kbd></kb
 would consider significant in the current line.  If you use this command
 with <kbd>TAB</kbd>, you can get the effect of context-based tabbing.  But
 <kbd>M-<kbd>TAB</kbd></kbd> is more convenient in the cases where it is sufficient.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Rectangles-in-Picture"></a>
 <a name="SEC295"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -319,8 +319,8 @@ with <kbd>TAB</kbd>, you can get the effect of context-based tabbing.  But
 <p>  Picture mode defines commands for working on rectangular pieces of the
 text in ways that fit with the quarter-plane model.  The standard rectangle
 commands may also be useful (see section <a href="xemacs_12.html#SEC101">Rectangles</a>).
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-c C-k</kbd></dt>
 <dd><p>Clear out the region-rectangle (<code>picture-clear-rectangle</code>).  With
 argument, kill it.
@@ -350,11 +350,11 @@ insert instead.
 rectangle commands in that they normally clear the rectangle instead of
 deleting it; this is analogous with the way <kbd>C-d</kbd> is changed in Picture
 mode.
-
-</p><p>  However, deletion of rectangles can be useful in Picture mode, so these
+</p>
+<p>  However, deletion of rectangles can be useful in Picture mode, so these
 commands delete the rectangle if given a numeric argument.
-
-</p><a name="IDX1109"></a>
+</p>
+<a name="IDX1109"></a>
 <a name="IDX1110"></a>
 <a name="IDX1111"></a>
 <a name="IDX1112"></a>
@@ -365,12 +365,12 @@ Picture mode insertion of other text is different from other modes.
 rectangle that was most recently killed, while <kbd>C-c C-x</kbd>
 (<code>picture-yank-rectangle-from-register</code>) does for the
 rectangle found in a specified register.
-
-</p><p>Since most region commands in Picture mode operate on rectangles, when you
+</p>
+<p>Since most region commands in Picture mode operate on rectangles, when you
 select a region of text with the mouse in Picture mode, it is highlighted
 as a rectangle.
-
 </p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC291" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

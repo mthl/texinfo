@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13. Special Insertions</title>
+<title>GNU Texinfo 4.2: 13. Special Insertions</title>
 
-<meta name="description" content="Texinfo: 13. Special Insertions">
-<meta name="keywords" content="Texinfo: 13. Special Insertions">
+<meta name="description" content="GNU Texinfo 4.2: 13. Special Insertions">
+<meta name="keywords" content="GNU Texinfo 4.2: 13. Special Insertions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 <p>Texinfo provides several commands for inserting characters that have
 special meaning in Texinfo, such as braces, and for other graphic
 elements that do not correspond to simple characters you can type.
-
 </p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC175">13.1 Inserting @ and Braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to insert braces, `<samp>@</samp>'.
 </td></tr>
@@ -138,11 +138,11 @@ elements that do not correspond to simple characters you can type.
 these characters so they appear in text, you must put an `<samp>@</samp>' in
 front of these characters to prevent Texinfo from misinterpreting
 them.
-
-</p><p>Do not put braces after any of these commands; they are not
+</p>
+<p>Do not put braces after any of these commands; they are not
 necessary.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC176">13.1.1 Inserting `<samp>@</samp>' with @@</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to insert `<samp>@</samp>'.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC177">13.1.2 Inserting `<samp>{</samp>' and `<samp>}</samp>'with @{ and @}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to insert `<samp>{</samp>' and `<samp>}</samp>'.
@@ -172,10 +172,10 @@ necessary.
 
 <p><code>@@</code> stands for a single `<samp>@</samp>' in either printed or Info
 output.
-
-</p><p>Do not put braces after an <code>@@</code> command.
-
 </p>
+<p>Do not put braces after an <code>@@</code> command.
+</p>
+
 <hr size="6">
 <a name="Inserting-Braces"></a>
 <a name="SEC177"></a>
@@ -199,14 +199,14 @@ output.
 
 <p><code>@{</code> stands for a single `<samp>{</samp>' in either printed or Info
 output.
-
-</p><p><code>@}</code> stands for a single `<samp>}</samp>' in either printed or Info
-output.
-
-</p><p>Do not put braces after either an <code>@{</code> or an <code>@}</code>
-command.
-
 </p>
+<p><code>@}</code> stands for a single `<samp>}</samp>' in either printed or Info
+output.
+</p>
+<p>Do not put braces after either an <code>@{</code> or an <code>@}</code>
+command.
+</p>
+
 <hr size="6">
 <a name="Inserting-Space"></a>
 <a name="SEC178"></a>
@@ -230,8 +230,8 @@ command.
 
 <p>The following sections describe commands that control spacing of various
 kinds within and after sentences.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC179">13.2.1 Not Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Sometimes a . doesn't end a sentence.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC180">13.2.2 Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Sometimes it does.
@@ -273,32 +273,33 @@ Usually, Texinfo can guess how to handle periods, so you do not need to
 use the special commands; you just enter a period as you would if you
 were using a typewriter, which means you put two spaces after the
 period, question mark, or exclamation mark that ends a sentence.
-
-</p><a name="IDX160"></a>
+</p>
+<a name="IDX160"></a>
 <p>Use the <code>@:</code> command after a period, question mark,
 exclamation mark, or colon that should not be followed by extra space.
 For example, use <code>@:</code> after periods that end abbreviations
 which are not at the ends of sentences.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts &hellip;
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts &hellip;
 The s.o.p. has three parts &hellip;
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><p>The s.o.p. has three parts &hellip;<br>
+</p>
+<blockquote><p>The s.o.p. has three parts &hellip;<br>
 The s.o.p. has three parts &hellip;
 </p></blockquote>
 
+
 <p>(Incidentally, `<samp>s.o.p.</samp>' is an abbreviation for &quot;Standard Operating
 Procedure&quot;.)
-
-</p><p><code>@:</code> has no effect on the Info output.  Do not put braces after
-<code>@:</code>.
-
 </p>
+<p><code>@:</code> has no effect on the Info output.  Do not put braces after
+<code>@:</code>.
+</p>
+
 <hr size="6">
 <a name="Ending-a-Sentence"></a>
 <a name="SEC180"></a>
@@ -326,25 +327,26 @@ exclamation point, and <code>@?</code> instead of a question mark at the end
 of a sentence that ends with a single capital letter.  Otherwise, TeX
 will think the letter is an abbreviation and will not insert the correct
 end-of-sentence spacing.  Here is an example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><p>Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.<br>
+</p>
+<blockquote><p>Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.<br>
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 </p></blockquote>
+
 <p>In the Info file output, <code>@.</code> is equivalent to a simple
 `<samp>.</samp>'; likewise for <code>@!</code> and <code>@?</code>.
-
-</p><p>The meanings of <code>@:</code> and <code>@.</code> in Texinfo are designed to
-work well with the Emacs sentence motion commands (see <a href="../emacs/Sentences.html#Sentences">(emacs)Sentences</a> section `Sentences' in <cite>The GNU Emacs Manual</cite>).
-
-</p><p>Do not put braces after any of these commands.
-
 </p>
+<p>The meanings of <code>@:</code> and <code>@.</code> in Texinfo are designed to
+work well with the Emacs sentence motion commands (see <a href="../emacs/Sentences.html#Sentences">(emacs)Sentences</a> section `Sentences' in <cite>The GNU Emacs Manual</cite>).
+</p>
+<p>Do not put braces after any of these commands.
+</p>
+
 <hr size="6">
 <a name="Multiple-Spaces"></a>
 <a name="SEC181"></a>
@@ -372,8 +374,8 @@ and newline) into a single space.  Info output, on the other hand,
 preserves whitespace as you type it, except for changing a newline into
 a space; this is why it is important to put two spaces at the end of
 sentences in Texinfo documents.
-
-</p><p>Occasionally, you may want to actually insert several consecutive
+</p>
+<p>Occasionally, you may want to actually insert several consecutive
 spaces, either for purposes of example (what your program does with
 multiple spaces as input), or merely for purposes of appearance in
 headings or lists.  Texinfo supports three commands:
@@ -383,23 +385,23 @@ which insert a single space into the output.  (Here,
 space, i.e., `<samp>@ </samp>', and <kbd>TAB</kbd> and <kbd>NL</kbd> represent the tab
 character and end-of-line, i.e., when `<samp>@</samp>' is the last character on
 a line.)
-
-</p><p>For example,
+</p>
+<p>For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey@ @ @ @
 example.
 </pre></td></tr></table>
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
 </pre></td></tr></table>
 <p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
 <code>@multitable</code> (see section <a href="texinfo_12.html#SEC163">Multi-column Tables</a>).
-
-</p><p>Do not follow any of these commands with braces.
-
-</p><p>To produce a non-breakable space, see <a href="texinfo_15.html#SEC209">non-breakable space</a>.
-
 </p>
+<p>Do not follow any of these commands with braces.
+</p>
+<p>To produce a non-breakable space, see <a href="texinfo_15.html#SEC209">non-breakable space</a>.
+</p>
+
 <hr size="6">
 <a name="dmn"></a>
 <a name="SEC182"></a>
@@ -427,18 +429,19 @@ abbreviation for the dimension.  You can use the <code>@dmn</code> command
 to do this.  On seeing the command, TeX inserts just enough space
 for proper typesetting; the Info formatting commands insert no space
 at all, since the Info file does not require it.
-
-</p><p>To use the <code>@dmn</code> command, write the number and then follow it
+</p>
+<p>To use the <code>@dmn</code> command, write the number and then follow it
 immediately, with no intervening space, by <code>@dmn</code>, and then by
 the dimension within braces.  For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">A4 paper is 8.27@dmn{in} wide.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">A4 paper is 8.27@dmn{in} wide.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><p>A4 paper is 8.27in wide.
+</p>
+<blockquote><p>A4 paper is 8.27in wide.
 </p></blockquote>
+
 <p>Not everyone uses this style.  Some people prefer `<samp>8.27 in.@:</samp>'
 or `<samp>8.27 inches</samp>' to `<samp>8.27@dmn{in}</samp>' in the Texinfo file.
 In these cases, however, the formatters may insert a line break between
@@ -446,8 +449,8 @@ the number and the dimension, so use <code>@w</code> (see section <a href="texin
 you write a period after an abbreviation within a sentence, you should
 write `<samp>@:</samp>' after the period to prevent TeX from inserting extra
 whitespace, as shown here.  See section <a href="#SEC179">Not Ending a Sentence</a>.
-
 </p>
+
 <hr size="6">
 <a name="Inserting-Accents"></a>
 <a name="SEC183"></a>
@@ -476,8 +479,8 @@ braces around their argument (which is taken to be the next character).
 (Exception: <code>@,</code> <em>does</em> take braces around its argument.)
 This is so as to make the source as convenient to type and read as
 possible, since accented characters are very common in some languages.
-
-</p><a name="IDX161"></a>
+</p>
+<a name="IDX161"></a>
 <a name="IDX162"></a>
 <a name="IDX163"></a>
 <a name="IDX164"></a>
@@ -544,8 +547,8 @@ possible, since accented characters are very common in some languages.
 
 <p>This table lists the Texinfo commands for inserting other characters
 commonly used in languages other than English.
-
-</p><a name="IDX191"></a>
+</p>
+<a name="IDX191"></a>
 <a name="IDX192"></a>
 <a name="IDX193"></a>
 <a name="IDX194"></a>
@@ -630,8 +633,8 @@ followed by a pair of braces, `<samp>{}</samp>', without any whitespace
 between the name of the command and the braces.  (You need to use braces
 with these commands because you can use them next to other text; without
 the braces, the formatters would be confused.  See section <a href="texinfo_29.html#SEC320">@-Command Syntax</a>, for further information.)
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC185">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">....</small>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to insert dots &hellip;
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC186">13.4.2 <code>@bullet</code>{} (&bull;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to insert a bullet.
@@ -665,11 +668,11 @@ three dots in a row, appropriately spaced, like this: `&hellip;'.  Do
 not simply write three periods in the input file; that would work for
 the Info file output, but would produce the wrong amount of space
 between the periods in the printed manual.
-
-</p><p>Similarly, the <code>@enddots{}</code> command generates an
-end-of-sentence ellipsis (four dots) <small class="enddots">....</small>
-
 </p>
+<p>Similarly, the <code>@enddots{}</code> command generates an
+end-of-sentence ellipsis (four dots) <small class="enddots">....</small>
+</p>
+
 
 <hr size="6">
 <a name="bullet"></a>
@@ -694,14 +697,14 @@ end-of-sentence ellipsis (four dots) <small class="enddots">....</small>
 
 <p>Use the <code>@bullet{}</code> command to generate a large round dot, or
 the closest possible thing to one.  In Info, an asterisk is used.
-
-</p><p>Here is a bullet: &bull;
-
-</p><p>When you use <code>@bullet</code> in <code>@itemize</code>, you do not need to
+</p>
+<p>Here is a bullet: &bull;
+</p>
+<p>When you use <code>@bullet</code> in <code>@itemize</code>, you do not need to
 type the braces, because <code>@itemize</code> supplies them.
 (See section <a href="texinfo_12.html#SEC157"><code>@itemize</code></a>.)
-
 </p>
+
 <hr size="6">
 <a name="TeX-and-copyright"></a>
 <a name="SEC187"></a>
@@ -728,8 +731,8 @@ type the braces, because <code>@itemize</code> supplies them.
 Each of these commands is followed by a pair of braces, `<samp>{}</samp>',
 without any whitespace between the name of the command and the
 braces.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC188">13.5.1 <code>@TeX</code>{} (TeX)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         How to insert the TeX logo.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC189">13.5.2 <code>@copyright</code>{} (&copy;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to use <code>@copyright</code>{}.
@@ -763,8 +766,8 @@ manual, this is a special logo that is different from three ordinary
 letters.  In Info, it just looks like `<samp>TeX</samp>'.  The
 <code>@TeX{}</code> command is unique among Texinfo commands in that the
 `<samp>T</samp>' and the `<samp>X</samp>' are in upper case.
-
 </p>
+
 <hr size="6">
 <a name="copyright-symbol"></a>
 <a name="SEC189"></a>
@@ -789,8 +792,8 @@ letters.  In Info, it just looks like `<samp>TeX</samp>'.  The
 <p>Use the <code>@copyright{}</code> command to generate `&copy;'.  In
 a printed manual, this is a `<samp>c</samp>' inside a circle, and in Info,
 this is `<samp>(C)</samp>'.
-
 </p>
+
 <hr size="6">
 <a name="pounds"></a>
 <a name="SEC190"></a>
@@ -816,8 +819,8 @@ this is `<samp>(C)</samp>'.
 printed manual, this is the symbol for the currency pounds sterling.
 In Info, it is a `<samp>#</samp>'.  Other currency symbols are unfortunately not
 available.
-
 </p>
+
 <hr size="6">
 <a name="minus"></a>
 <a name="SEC191"></a>
@@ -843,8 +846,8 @@ available.
 fixed-width font, this is a single hyphen, but in a proportional font,
 the symbol is the customary length for a minus sign--a little longer
 than a hyphen, shorter than an em-dash:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="display">`<samp>-</samp>' is a minus sign generated with `<samp>@minus{}</samp>',
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="display">`<samp>-</samp>' is a minus sign generated with `<samp>@minus{}</samp>',
 
 `-' is a hyphen generated with the character `<samp>-</samp>',
 
@@ -853,16 +856,16 @@ than a hyphen, shorter than an em-dash:
 
 <p>In the fixed-width font used by Info, <code>@minus{}</code> is the same
 as a hyphen.
-
-</p><p>You should not use <code>@minus{}</code> inside <code>@code</code> or
+</p>
+<p>You should not use <code>@minus{}</code> inside <code>@code</code> or
 <code>@example</code> because the width distinction is not made in the
 fixed-width font they use.
-
-</p><p>When you use <code>@minus</code> to specify the mark beginning each entry in
+</p>
+<p>When you use <code>@minus</code> to specify the mark beginning each entry in
 an itemized list, you do not need to type the braces
 (see section <a href="texinfo_12.html#SEC157"><code>@itemize</code></a>.)
-
 </p>
+
 <hr size="6">
 <a name="math"></a>
 <a name="SEC192"></a>
@@ -886,16 +889,16 @@ an itemized list, you do not need to type the braces
 
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
 </pre></td></tr></table>
 <p>This produces the following in Info:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
 </pre></td></tr></table>
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
-
-</p><p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
+</p>
+<p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
 write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It's
 conventional to use `<samp>\</samp>' instead of `<samp>@</samp>' for these commands.
@@ -911,14 +914,14 @@ As in:
 but you'll get the literal `<samp>\\</samp>' in Info).  <code>@\</code> is not
 defined outside of <code>@math</code>, since a `<samp>\</samp>' ordinarily produces a
 literal `<samp>\</samp>'.
-
 </p>
+
 <a name="IDX225"></a>
 <a name="IDX226"></a>
 <p>For displayed equations, you must at present use TeX directly
 (see section <a href="texinfo_17.html#SEC230">Raw Formatter Commands</a>).  
-
 </p>
+
 <hr size="6">
 <a name="Glyphs"></a>
 <a name="SEC193"></a>
@@ -948,12 +951,12 @@ evaluation or an expansion using `<samp>&rArr;</samp>' or
 to indicate
 printed output, error messages, equivalence of expressions, and the
 location of point.
-
-</p><p>The glyph-insertion commands do not need to be used within an example, but
+</p>
+<p>The glyph-insertion commands do not need to be used within an example, but
 most often they are.  Every  glyph-insertion command is followed by a pair of
 left- and right-hand braces.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC194">13.9.1 Glyphs Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC195">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to show the result of expression.
@@ -993,29 +996,29 @@ left- and right-hand braces.
 <h3 class="subsection"> 13.9.1 Glyphs Summary </h3>
 
 <p>Here are the different glyph commands:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> &rArr;</dt>
 <dd><p><code>@result{}</code> points to the result of an expression.
-
-</p></dd>
+</p>
+</dd>
 <dt> &rarr;</dt>
 <dd><p><code>@expansion{}</code> shows the results of a macro expansion.
-
-</p></dd>
+</p>
+</dd>
 <dt> -|</dt>
 <dd><p><code>@print{}</code> indicates printed output.
-
-</p></dd>
+</p>
+</dd>
 <dt> error--&gt;</dt>
 <dd><p><code>@error{}</code> indicates that the following text is an error
 message.
-
-</p></dd>
+</p>
+</dd>
 <dt> &equiv;</dt>
 <dd><p><code>@equiv{}</code> indicates the exact equivalence of two forms.
-
-</p></dd>
+</p>
+</dd>
 <dt> &lowast;</dt>
 <dd><p><code>@point{}</code> shows the location of point.
 </p></dd>
@@ -1060,19 +1063,19 @@ message.
 
 <p>Use the <code>@result{}</code> command to indicate the result of
 evaluating an expression.
-
-</p><p>The <code>@result{}</code> command is displayed as `<samp>&rArr;</samp>' in Info
+</p>
+<p>The <code>@result{}</code> command is displayed as `<samp>&rArr;</samp>' in Info
 and as a double stemmed arrow in the printed output.
-
-</p><p>Thus, the following,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(cdr '(1 2 3))
+</p>
+<p>Thus, the following,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(cdr '(1 2 3))
      &rArr; (2 3)
 </pre></td></tr></table>
 
 <p>may be read as &quot;<code>(cdr '(1 2 3))</code> evaluates to <code>(2 3)</code>&quot;.
-
 </p>
+
 <hr size="6">
 <a name="expansion"></a>
 <a name="SEC196"></a>
@@ -1097,13 +1100,13 @@ and as a double stemmed arrow in the printed output.
 <p>When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
 <code>@expansion{}</code> command.
-
-</p><p>The <code>@expansion{}</code> command is displayed as `<samp>&rarr;</samp>'
+</p>
+<p>The <code>@expansion{}</code> command is displayed as `<samp>&rarr;</samp>'
 in Info and as a long arrow with a flat base in the printed output.
-
-</p><p>For example, the following
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+</p>
+<p>For example, the following
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (third '(a b c))
      @expansion{} (car (cdr (cdr '(a b c))))
      @result{} c
@@ -1111,23 +1114,24 @@ in Info and as a long arrow with a flat base in the printed output.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
      &rarr; (car (cdr (cdr '(a b c))))
      &rArr; c
 </pre></td></tr></table>
 
 <p>which may be read as:
-
-</p><blockquote><p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
+</p>
+<blockquote><p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
 the result of evaluating the expression is <code>c</code>.
 </p></blockquote>
+
 
 <p>Often, as in this case, an example looks better if the
 <code>@expansion{}</code> and <code>@result{}</code> commands are indented
 five spaces.
-
 </p>
+
 <hr size="6">
 <a name="Print-Glyph"></a>
 <a name="SEC197"></a>
@@ -1151,24 +1155,24 @@ five spaces.
 
 <p>Sometimes an expression will print output during its execution.  You
 can indicate the printed output with the <code>@print{}</code> command.
-
-</p><p>The <code>@print{}</code> command is displayed as `<samp>-|</samp>' in Info
+</p>
+<p>The <code>@print{}</code> command is displayed as `<samp>-|</samp>' in Info
 and similarly, as a horizontal dash butting against a vertical bar, in
 the printed output.
-
-</p><p>In the following example, the printed text is indicated with
+</p>
+<p>In the following example, the printed text is indicated with
 `<samp>-|</samp>', and the value of the expression follows on the
 last line.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
      -| foo
      -| bar
      &rArr; bar
 </pre></td></tr></table>
 
 <p>In a Texinfo source file, this example is written as follows:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
 (progn (print 'foo) (print 'bar))
      @print{} foo
      @print{} bar
@@ -1199,32 +1203,32 @@ last line.
 
 <p>A piece of code may cause an error when you evaluate it.  You can
 designate the error message with the <code>@error{}</code> command.
-
-</p><p>The <code>@error{}</code> command is displayed as `<samp>error--&gt;</samp>' in Info
+</p>
+<p>The <code>@error{}</code> command is displayed as `<samp>error--&gt;</samp>' in Info
 and as the word `error' in a box in the printed output.
-
-</p><p>Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+</p>
+<p>Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (+ 23 'x)
 @error{} Wrong type argument: integer-or-marker-p, x
 @end lisp
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 23 'x)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 23 'x)
 error--&gt; Wrong type argument: integer-or-marker-p, x
 </pre></td></tr></table>
 
 <p>This indicates that the following error message is printed
 when you evaluate the expression:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">Wrong type argument: integer-or-marker-p, x
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">Wrong type argument: integer-or-marker-p, x
 </pre></td></tr></table>
 <p>`<samp>error--&gt;</samp>' itself is not part of the error message.
-
 </p>
+
 <hr size="6">
 <a name="Equivalence"></a>
 <a name="SEC199"></a>
@@ -1248,26 +1252,26 @@ when you evaluate the expression:
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
-
-</p><p>The <code>@equiv{}</code> command is displayed as `<samp>&equiv;</samp>' in Info
+</p>
+<p>The <code>@equiv{}</code> command is displayed as `<samp>&equiv;</samp>' in Info
 and as a three parallel horizontal lines in the printed output.
-
-</p><p>Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+</p>
+<p>Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
 </pre></td></tr></table>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
 identical results to evaluating <code>(list 'keymap)</code>.
-
 </p>
+
 <hr size="6">
 <a name="Point-Glyph"></a>
 <a name="SEC200"></a>
@@ -1293,19 +1297,19 @@ identical results to evaluating <code>(list 'keymap)</code>.
 such examples, the convention is to include the entire contents of the
 buffer in question between two lines of dashes containing the buffer
 name.
-
-</p><p>You can use the `<samp>@point{}</samp>' command to show the location of point
+</p>
+<p>You can use the `<samp>@point{}</samp>' command to show the location of point
 in the text in the buffer.  (The symbol for point, of course, is not
 part of the text in the buffer; it indicates the place <em>between</em>
 two characters where point is located.)
-
-</p><p>The <code>@point{}</code> command is displayed as `<samp>&lowast;</samp>' in Info
+</p>
+<p>The <code>@point{}</code> command is displayed as `<samp>&lowast;</samp>' in Info
 and as a small five pointed star in the printed output.
-
-</p><p>The following example shows the contents of buffer `<tt>foo</tt>' before
+</p>
+<p>The following example shows the contents of buffer `<tt>foo</tt>' before
 and after evaluating a Lisp command to insert the word <code>changed</code>.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
 This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
@@ -1318,8 +1322,8 @@ This is the changed &lowast;contents of foo.
 
 </pre></td></tr></table>
 <p>In a Texinfo source file, the example is written like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@example
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
 ---------- Buffer: foo ----------
 This is the @point{}contents of foo.
 ---------- Buffer: foo ----------
@@ -1355,8 +1359,8 @@ This is the changed @point{}contents of foo.
 
 <p>A <em>footnote</em> is for a reference that documents or elucidates the
 primary text.<a name="DOCF8" href="texinfo_fot.html#FOOT8">(8)</a>
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC202">13.10.1 Footnote Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to write a footnote in Texinfo.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC203">13.10.2 Footnote Styles</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Controlling how footnotes appear in Info.
@@ -1390,42 +1394,42 @@ This command is followed immediately by a left brace, then by the text
 of the footnote, and then by a terminating right brace.  Footnotes may
 be of any length (they will be broken across pages if necessary), but
 are usually short.  The template is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
 </pre></td></tr></table>
 <p>As shown here, the <code>@footnote</code> command should come right after the
 text being footnoted, with no intervening space; otherwise, the footnote
 marker might end up starting a line.
-
-</p><p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
+</p>
+<p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source&hellip;
 </pre></td></tr></table>
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, `<samp>.};</samp>' is the sequence.  This is normal (the
 first ends the footnote and the second belongs to the sentence being
 footnoted), so don't worry that it looks odd.
-
-</p><p>In a printed manual or book, the reference mark for a footnote is a
+</p>
+<p>In a printed manual or book, the reference mark for a footnote is a
 small, superscripted number; the text of the footnote appears at the
 bottom of the page, below a horizontal line.
-
-</p><p>In Info, the reference mark for a footnote is a pair of parentheses
+</p>
+<p>In Info, the reference mark for a footnote is a pair of parentheses
 with the footnote number between them, like this: `<samp>(1)</samp>'.  The
 reference mark is followed by a cross-reference link to the footnote's
 text.
-
-</p><p>In the HTML output, footnote references are marked with a small,
+</p>
+<p>In the HTML output, footnote references are marked with a small,
 superscripted number which is rendered as a hypertext link to the
 footnote text.
-
-</p><p>By the way, footnotes in the argument of an <code>@item</code> command for a
+</p>
+<p>By the way, footnotes in the argument of an <code>@item</code> command for a
 <code>@table</code> must be on the same line as the <code>@item</code>
 (as usual).  See section <a href="texinfo_12.html#SEC159">Making a Two-column Table</a>.
-
 </p>
+
 <hr size="6">
 <a name="Footnote-Styles"></a>
 <a name="SEC203"></a>
@@ -1449,9 +1453,10 @@ footnote text.
 
 <p>Info has two footnote styles, which determine where the text of the
 footnote is located:
-
-</p><ul>
-<li><a name="IDX227"></a></li><li>
+</p>
+<ul>
+<li><a name="IDX227"></a>
+</li><li>
 In the `End' node style, all the footnotes for a single node
 are placed at the end of that node.  The footnotes are separated from
 the rest of the node by a line of dashes with the word
@@ -1459,14 +1464,14 @@ the rest of the node by a line of dashes with the word
 `<samp>(<var>n</var>)</samp>' reference mark.
 
 
-
 <p>Here is an example of a single footnote in the end of node style:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 </pre></td></tr></table>
-<a name="IDX228"></a></li><li>
+<a name="IDX228"></a>
+</li><li>
 In the `Separate' node style, all the footnotes for a single
 node are placed in an automatically constructed node of
 their own.  In this style, a &quot;footnote reference&quot; follows
@@ -1474,19 +1479,18 @@ each `<samp>(<var>n</var>)</samp>' reference mark in the body of the
 node.  The footnote reference is actually a cross reference
 which you use to reach the footnote node.
 
-
 <p>The name of the node with the footnotes is constructed
 by appending `<samp>-Footnotes</samp>' to the name of the node
 that contains the footnotes. (Consequently, the footnotes'
 node for the `<tt>Footnotes</tt>' node is
 `<tt>Footnotes-Footnotes</tt>'!)  The footnotes' node has an
 `Up' node pointer that leads back to its parent node.
-
 </p>
+
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
@@ -1494,16 +1498,16 @@ formatted for Info in the separate node style:
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
 style.
-
-</p><a name="IDX229"></a>
+</p>
+<a name="IDX229"></a>
 <p>Use the <code>@footnotestyle</code> command to specify an Info file's
 footnote style.  Write this command at the beginning of a line followed
 by an argument, either `<samp>end</samp>' for the end node style or
 `<samp>separate</samp>' for the separate node style.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
 </pre></td></tr></table>
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
@@ -1513,15 +1517,15 @@ end-of-header line at the beginning of a Texinfo file.  (If you
 include the <code>@footnotestyle</code> command between the start-of-header
 and end-of-header lines, the region formatting commands will format
 footnotes as specified.)
-
-</p><p>If you do not specify a footnote style, the formatting commands use
+</p>
+<p>If you do not specify a footnote style, the formatting commands use
 their default style.  Currently, <code>texinfo-format-buffer</code> and
 <code>texinfo-format-region</code> use the `separate' style and
 <code>makeinfo</code> uses the `end' style.
-
-</p><p>This chapter contains two footnotes.
-
 </p>
+<p>This chapter contains two footnotes.
+</p>
+
 <hr size="6">
 <a name="Images"></a>
 <a name="SEC204"></a>
@@ -1546,8 +1550,8 @@ their default style.  Currently, <code>texinfo-format-buffer</code> and
 
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
 </pre></td></tr></table>
 <a name="IDX230"></a>
 <a name="IDX231"></a>
@@ -1568,14 +1572,13 @@ Info output (more or less as if it was an <code>@example</code>).
 uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
 
-
 <a name="IDX233"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
 </pre></td></tr></table>
 
 <p>will cause `<samp>makeinfo --html</samp>' to try `<tt>foo.xpm</tt>'.
-
-</p><a name="IDX234"></a>
+</p>
+<a name="IDX234"></a>
 <a name="IDX235"></a>
 <a name="IDX236"></a>
 <p>If you do not supply the optional fifth argument, `<samp>makeinfo
@@ -1595,12 +1598,12 @@ specified, the image is presented in its natural size (given in the
 file); if only one is specified, the other is scaled proportionately;
 and if both are specified, both are respected, thus possibly distorting
 the original image by changing its aspect ratio.
-
-</p><a name="IDX241"></a>
+</p>
+<a name="IDX241"></a>
 <p>The <var>width</var> and <var>height</var> may be specified using any valid TeX
 dimension, namely:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> pt</dt>
 <dd><a name="IDX242"></a>
 <p>point (72.27pt = 1in)
@@ -1642,8 +1645,8 @@ dimension, namely:
 <a name="IDX251"></a>
 <p>For example, the following will scale a file `<tt>ridt.eps</tt>' to one
 inch vertically, with the width scaled proportionately:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
 </pre></td></tr></table>
 <a name="IDX252"></a>
 <p>For <code>@image</code> to work with TeX, the file `<tt>epsf.tex</tt>' must be
@@ -1652,20 +1655,20 @@ installed somewhere that TeX can find it.  (The standard location is
 root of your TeX directory tree.)  This file is included in the
 Texinfo distribution and is also available from
 <a href="ftp://tug.org/tex/epsf.tex">ftp://tug.org/tex/epsf.tex</a>, among other places.
-
-</p><p><code>@image</code> can be used within a line as well as for displayed
+</p>
+<p><code>@image</code> can be used within a line as well as for displayed
 figures.  Therefore, if you intend it to be displayed, be sure to leave
 a blank line before the command, or the output will run into the
 preceding text.
-
-</p><a name="IDX253"></a>
+</p>
+<a name="IDX253"></a>
 <a name="IDX254"></a>
 <p>When producing html, <code>makeinfo</code> sets the <em>alt attribute</em> for
 inline images to the optional fourth argument to <code>@image</code>, if
 supplied.  If not supplied, <code>makeinfo</code> uses the full file name of
 the image being displayed.
-
 </p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC174" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

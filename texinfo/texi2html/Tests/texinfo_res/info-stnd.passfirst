@@ -1,12 +1,18 @@
+info-stnd.texi(,2) @comment $Id: info-stnd.passfirst,v 1.7 2005-01-15 23:46:03 pertusus Exp $
+info-stnd.texi(,3) @comment %**start of header
+info-stnd.texi(,4) @setfilename info-stnd.info
 ./version-stnd.texi(,1) 
-info-stnd.texi(,7) 
-info-stnd.texi(,8) 
-info-stnd.texi(,9) 
+info-stnd.texi(,6) @settitle GNU Info 4.2
+info-stnd.texi(,7) @syncodeindex vr cp
+info-stnd.texi(,8) @syncodeindex fn cp
+info-stnd.texi(,9) @syncodeindex ky cp
+info-stnd.texi(,10) @comment %**end of header
 info-stnd.texi(,11) 
 info-stnd.texi(,34) 
+info-stnd.texi(,35) @dircategory Texinfo documentation system
 info-stnd.texi(,40) 
 info-stnd.texi(,49) 
-info-stnd.texi(,50) 
+info-stnd.texi(,50) @contents
 info-stnd.texi(,51) 
 info-stnd.texi(,53) @node Top
 info-stnd.texi(,54) @top GNU Info
@@ -270,7 +276,7 @@ info-stnd.texi(,312) @example
 info-stnd.texi(,313) info emacs buffers
 info-stnd.texi(,314) @end example
 info-stnd.texi(,315) 
-info-stnd.texi(,316) 
+info-stnd.texi(,316) @noindent
 info-stnd.texi(,317) first selects the menu item @samp{Emacs} in the node @samp{(dir)Top},
 info-stnd.texi(,318) and then selects the menu item @samp{Buffers} in the node
 info-stnd.texi(,319) @samp{(emacs)Top}.
@@ -286,6 +292,7 @@ info-stnd.texi(,328) index or the invocation node is the file where Info finds i
 info-stnd.texi(,329) following all the menu items given on the command line.  This is so
 info-stnd.texi(,330) @samp{info emacs --show-options} does what you'd expect.
 info-stnd.texi(,331) 
+info-stnd.texi(,332) @c FIXME: the feature with lowercasing the file name isn't documented
 info-stnd.texi(,333) 
 info-stnd.texi(,334) 
 info-stnd.texi(,335) @node Cursor Commands
@@ -809,7 +816,7 @@ info-stnd.texi(,852) @example
 info-stnd.texi(,853)  @kbd{G Texinfo,Overview,Reporting Bugs @key{RET}}
 info-stnd.texi(,854) @end example
 info-stnd.texi(,855) 
-info-stnd.texi(,856) 
+info-stnd.texi(,856) @noindent
 info-stnd.texi(,857) displays the node @samp{Reporting Bugs} in the Texinfo manual.  (You
 info-stnd.texi(,858) don't actually need to type the menu items in their full length, or in
 info-stnd.texi(,859) their exact letter-case.  However, if you do type the menu items
@@ -1179,9 +1186,11 @@ info-stnd.texi(,1222) Here is a sample mode line for a window containing an unco
 info-stnd.texi(,1223) named @file{dir}, showing the node @samp{Top}.
 info-stnd.texi(,1224) 
 info-stnd.texi(,1225) @example
+info-stnd.texi(,1226) @group
 info-stnd.texi(,1227) -----Info: (dir)Top, 40 lines --Top-------------------------------------
 info-stnd.texi(,1228)             ^^   ^   ^^^        ^^
 info-stnd.texi(,1229)           (file)Node #lines    where
+info-stnd.texi(,1230) @end group
 info-stnd.texi(,1231) @end example
 info-stnd.texi(,1232) 
 info-stnd.texi(,1233) When a node comes from a file which is compressed on disk, this is
@@ -1490,24 +1499,28 @@ info-stnd.texi(,1535) Display a window containing a list of the possible complet
 info-stnd.texi(,1536) you have typed so far.  For example, if the available choices are:
 info-stnd.texi(,1537) 
 info-stnd.texi(,1538) @example
+info-stnd.texi(,1539) @group
 info-stnd.texi(,1540) bar
 info-stnd.texi(,1541) foliate
 info-stnd.texi(,1542) food
 info-stnd.texi(,1543) forget
+info-stnd.texi(,1544) @end group
 info-stnd.texi(,1545) @end example
 info-stnd.texi(,1546) 
-info-stnd.texi(,1547) 
+info-stnd.texi(,1547) @noindent
 info-stnd.texi(,1548) and you have typed an @samp{f}, followed by @samp{?}, Info will pop up a
 info-stnd.texi(,1549) window showing a node called @samp{*Completions*} which lists the
 info-stnd.texi(,1550) possible completions like this:
 info-stnd.texi(,1551) 
 info-stnd.texi(,1552) @example
+info-stnd.texi(,1553) @group
 info-stnd.texi(,1554) 3 completions:
 info-stnd.texi(,1555) foliate         food
 info-stnd.texi(,1556) forget
+info-stnd.texi(,1557) @end group
 info-stnd.texi(,1558) @end example
 info-stnd.texi(,1559) 
-info-stnd.texi(,1560) 
+info-stnd.texi(,1560) @noindent
 info-stnd.texi(,1561) i.e., all of the choices which begin with @samp{f}.  Pressing @key{SPC}
 info-stnd.texi(,1562) or @key{TAB} would result in @samp{fo} appearing in the echo area, since
 info-stnd.texi(,1563) all of the choices which begin with @samp{f} continue with @samp{o}.
@@ -1637,7 +1650,7 @@ info-stnd.texi(,1686) @example
 info-stnd.texi(,1687) @kbd{C-u 3 2 C-l}
 info-stnd.texi(,1688) @end example
 info-stnd.texi(,1689) 
-info-stnd.texi(,1690) 
+info-stnd.texi(,1690) @noindent
 info-stnd.texi(,1691) or
 info-stnd.texi(,1692) 
 info-stnd.texi(,1693) @example
@@ -2077,6 +2090,7 @@ info-stnd.texi(,2126) @code{get-help-window} command only displays the @emph{fir
 info-stnd.texi(,2127) is bound to each command.
 info-stnd.texi(,2128) 
 info-stnd.texi(,2129) 
+info-stnd.texi(,2130) @c the following is incomplete
 info-stnd.texi(,2175) 
 info-stnd.texi(,2176) 
 info-stnd.texi(,2177) @node Copying This Manual
@@ -2456,7 +2470,7 @@ info-stnd.texi(,2183)
 ./fdl.texi(,367) as a draft) by the Free Software Foundation.
 ./fdl.texi(,368) @end enumerate
 ./fdl.texi(,369) 
-./fdl.texi(,370) 
+./fdl.texi(,370) @page
 ./fdl.texi(,371) @appendixsubsec ADDENDUM: How to use this License for your documents
 ./fdl.texi(,372) 
 ./fdl.texi(,373) To use this License in a document you have written, include a copy of
@@ -2464,6 +2478,7 @@ info-stnd.texi(,2183)
 ./fdl.texi(,375) license notices just after the title page:
 ./fdl.texi(,376) 
 ./fdl.texi(,377) @smallexample
+./fdl.texi(,378) @group
 ./fdl.texi(,379)   Copyright (C)  @var{year}  @var{your name}.
 ./fdl.texi(,380)   Permission is granted to copy, distribute and/or modify this document
 ./fdl.texi(,381)   under the terms of the GNU Free Documentation License, Version 1.1
@@ -2472,6 +2487,7 @@ info-stnd.texi(,2183)
 ./fdl.texi(,384)   Front-Cover Texts being @var{list}, and with the Back-Cover Texts being @var{list}.
 ./fdl.texi(,385)   A copy of the license is included in the section entitled ``GNU
 ./fdl.texi(,386)   Free Documentation License''.
+./fdl.texi(,387) @end group
 ./fdl.texi(,388) @end smallexample
 ./fdl.texi(,389) 
 ./fdl.texi(,390) If you have no Invariant Sections, write ``with no Invariant Sections''
@@ -2484,6 +2500,9 @@ info-stnd.texi(,2183)
 ./fdl.texi(,397) free software license, such as the GNU General Public License,
 ./fdl.texi(,398) to permit their use in free software.
 ./fdl.texi(,399) 
+./fdl.texi(,400) @c Local Variables:
+./fdl.texi(,401) @c ispell-local-pdict: "ispell-dict"
+./fdl.texi(,402) @c End:
 ./fdl.texi(,403) 
 info-stnd.texi(,2185) 
 info-stnd.texi(,2186) 
@@ -2492,3 +2511,4 @@ info-stnd.texi(,2188) @appendix Index
 info-stnd.texi(,2189) 
 info-stnd.texi(,2190) @printindex cp
 info-stnd.texi(,2191) 
+info-stnd.texi(,2192) @bye

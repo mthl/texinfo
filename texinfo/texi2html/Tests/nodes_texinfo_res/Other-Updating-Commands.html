@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 2.4.2 Other Updating Commands</title>
+<title>GNU Texinfo 4.2: 2.4.2 Other Updating Commands</title>
 
-<meta name="description" content="Texinfo: 2.4.2 Other Updating Commands">
-<meta name="keywords" content="Texinfo: 2.4.2 Other Updating Commands">
+<meta name="description" content="GNU Texinfo 4.2: 2.4.2 Other Updating Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 2.4.2 Other Updating Commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,33 +82,33 @@ ul.toc {list-style: none}
 
 <p>In addition to the five major updating commands, Texinfo mode
 possesses several less frequently used updating commands:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> M-x texinfo-insert-node-lines</kbd></dt>
 <dd><a name="IDX57"></a>
 <p>Insert <code>@node</code> lines before the <code>@chapter</code>,
 <code>@section</code>, and other sectioning commands wherever they are
 missing throughout a region in a Texinfo file.
-
-</p><p>With an argument (<kbd>C-u</kbd> as prefix argument, if interactive), the
+</p>
+<p>With an argument (<kbd>C-u</kbd> as prefix argument, if interactive), the
 <code>texinfo-insert-node-lines</code> command not only inserts
 <code>@node</code> lines but also inserts the chapter or section titles as
 the names of the corresponding nodes.  In addition, it inserts the
 titles as node names in pre-existing <code>@node</code> lines that lack
 names.  Since node names should be more concise than section or
 chapter titles, you must manually edit node names so inserted.
-
-</p><p>For example, the following marks a whole buffer as a region and inserts
+</p>
+<p>For example, the following marks a whole buffer as a region and inserts
 <code>@node</code> lines and titles throughout:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">C-x h C-u M-x texinfo-insert-node-lines
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-x h C-u M-x texinfo-insert-node-lines
 </pre></td></tr></table>
 <p>This command inserts titles as node names in <code>@node</code> lines; the
 <code>texinfo-start-menu-description</code> command (see section <a href="Inserting.html#SEC24">Inserting Frequently Used Commands</a>) inserts titles as descriptions in
 menu entries, a different action.  However, in both cases, you need to
 edit the inserted text.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> M-x texinfo-multiple-files-update</kbd></dt>
 <dd><a name="IDX58"></a>
 <p>Update nodes and menus in a document built from several separate files.
@@ -119,8 +119,8 @@ of all the included files before creating and inserting a master menu in
 the outer file.  The <code>texinfo-multiple-files-update</code> command is
 described in the appendix on <code>@include</code> files.
 See section <a href="texinfo_002dmultiple_002dfiles_002dupdate.html#SEC299"><code>texinfo-multiple-files-update</code></a>.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> M-x texinfo-indent-menu-description</kbd></dt>
 <dd><a name="IDX59"></a>
 <p>Indent every description in the menu following point to the specified
@@ -130,8 +130,8 @@ interactive), the <code>texinfo-indent-menu-description</code> command indents
 every description in every menu in the region.  However, this command
 does not indent the second and subsequent lines of a multi-line
 description.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> M-x texinfo-sequential-node-update</kbd></dt>
 <dd><a name="IDX60"></a>
 <p>Insert the names of the nodes immediately following and preceding the

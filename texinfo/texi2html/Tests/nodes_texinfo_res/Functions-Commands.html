@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 15.4.1 Functions and Similar Entities</title>
+<title>GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities</title>
 
-<meta name="description" content="Texinfo: 15.4.1 Functions and Similar Entities">
-<meta name="keywords" content="Texinfo: 15.4.1 Functions and Similar Entities">
+<meta name="description" content="GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.4.1 Functions and Similar Entities">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 
 <p>This section describes the commands for describing functions and similar
 entities:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dd><a name="IDX266"></a>
 </dd>
 <dt><code> @deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
@@ -96,27 +96,27 @@ line and is followed on the same line by the category of entity being
 described, the name of this particular entity, and its arguments, if
 any.  Terminate the definition with <code>@end deffn</code> on a line of its
 own.
-
-</p><p>For example, here is a definition:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-char nchars
+</p>
+<p>For example, here is a definition:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
 @end deffn
 </pre></td></tr></table>
 
 <p>This shows a rather terse definition for a &quot;command&quot; named
 <code>forward-char</code> with one argument, <var>nchars</var>.
-
-</p><p><code>@deffn</code> prints argument names such as <var>nchars</var> in italics or
+</p>
+<p><code>@deffn</code> prints argument names such as <var>nchars</var> in italics or
 upper case, as if <code>@var</code> had been used, because we think of these
 names as metasyntactic variables--they stand for the actual argument
 values.  Within the text of the description, write an argument name
 explicitly with <code>@var</code> to refer to the value of the argument.  In
 the example above, we used `<samp>@var{nchars}</samp>' in this way.
-
-</p><p>The template for <code>@deffn</code> is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+</p>
+<p>The template for <code>@deffn</code> is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
 </pre></td></tr></table>
@@ -126,11 +126,11 @@ the example above, we used `<samp>@var{nchars}</samp>' in this way.
 <dd><p>The <code>@defun</code> command is the definition command for functions.
 <code>@defun</code> is equivalent to `<samp>@deffn Function
 &hellip;</samp>'.
-
 </p>
-<p>For example,
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun set symbol new-value
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defun set symbol new-value
 Change the value of the symbol @var{symbol}
 to @var{new-value}.
 @end defun
@@ -141,23 +141,23 @@ arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
 the <code>@defun</code> line automatically appear in italics or upper case as
 if they were enclosed in <code>@var</code>.  Terminate the definition with
 <code>@end defun</code> on a line of its own.
-
-</p><p>The template is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
+</p>
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
 </pre></td></tr></table>
 <p><code>@defun</code> creates an entry in the index of functions.
-
-</p><a name="IDX268"></a>
+</p>
+<a name="IDX268"></a>
 </dd>
 <dt><code> @defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defmac</code> command is the definition command for macros.
 <code>@defmac</code> is equivalent to `<samp>@deffn Macro &hellip;</samp>' and
 works like <code>@defun</code>.
-
-</p><a name="IDX269"></a>
+</p>
+<a name="IDX269"></a>
 </dd>
 <dt><code> @defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: B. Tips and Hints</title>
+<title>GNU Texinfo 4.2: B. Tips and Hints</title>
 
-<meta name="description" content="Texinfo: B. Tips and Hints">
-<meta name="keywords" content="Texinfo: B. Tips and Hints">
+<meta name="description" content="GNU Texinfo 4.2: B. Tips and Hints">
+<meta name="keywords" content="GNU Texinfo 4.2: B. Tips and Hints">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -80,8 +80,8 @@ ul.toc {list-style: none}
 <h1 class="appendix"> B. Tips and Hints </h1>
 
 <p>Here are some tips for writing Texinfo documentation:
-
-</p><a name="IDX443"></a>
+</p>
+<a name="IDX443"></a>
 <a name="IDX444"></a>
 <a name="IDX445"></a>
 <ul>
@@ -104,16 +104,16 @@ Include a copyright notice and copying permissions.
 
 <p>Write many index entries, in different ways.
 Readers like indices; they are helpful and convenient.
-
-</p><p>Although it is easiest to write index entries as you write the body of
+</p>
+<p>Although it is easiest to write index entries as you write the body of
 the text, some people prefer to write entries afterwards.  In either
 case, write an entry before the paragraph to which it applies.  This
 way, an index entry points to the first page of a paragraph that is
 split across pages.
-
-</p><p>Here are more hints we have found valuable:
-
-</p><ul>
+</p>
+<p>Here are more hints we have found valuable:
+</p>
+<ul>
 <li>
 Write each index entry differently, so each entry refers to a different
 place in the document.
@@ -142,11 +142,10 @@ Write the indexing commands that refer to a whole section immediately
 after the section command, and write the indexing commands that refer to
 a paragraph before that paragraph.
 
-
 <p>In the example that follows, a blank line comes after the index
 entry for &quot;Leaping&quot;:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@section The Dog and the Fox
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@section The Dog and the Fox
 @cindex Jumping, in general
 @cindex Leaping
 
@@ -178,10 +177,9 @@ Always insert a blank line before an <code>@table</code> command and after an
 <code>@end table</code> command; but never insert a blank line after an
 <code>@table</code> command or before an <code>@end table</code> command.
 
-
 <p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Types of fox:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Types of fox:
 
 @table @samp
 @item Quick
@@ -203,8 +201,8 @@ same way.
 <h4 class="subsubheading"> Complete Phrases </h4>
 
 <p>Complete phrases are easier to read than &hellip;
-
-</p><ul>
+</p>
+<ul>
 <li>
 Write entries in an itemized list as complete sentences; or at least, as
 complete phrases.  Incomplete expressions &hellip; awkward &hellip; like
@@ -224,19 +222,19 @@ a complete expression.  Do not write &quot;You can set:&quot;; instead, write
 legal copyright in the output files).  Then use <code>@insertcopying</code>
 in the <code>@titlepage</code> section (for people reading the printed
 output) and the Top node (for people reading the online output).
-
-</p><p>It is easiest to do this using <code>@set</code> and <code>@value</code>.
-See section <a href="texinfo_17.html#SEC234"><code>@value</code> Example</a>, and <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>.
-
 </p>
+<p>It is easiest to do this using <code>@set</code> and <code>@value</code>.
+See section <a href="texinfo_17.html#SEC234"><code>@value</code> Example</a>, and <a href="texinfo_24.html#SEC296">GNU Sample Texts</a>.
+</p>
+
 <a name="SEC283"></a>
 <h4 class="subsubheading"> Definition Commands </h4>
 
 <p>Definition commands are <code>@deffn</code>, <code>@defun</code>,
 <code>@defmac</code>, and the like, and enable you to write descriptions in
 a uniform format.
-
-</p><ul>
+</p>
+<ul>
 <li>
 Write just one definition command for each entity you define with a
 definition command.  The automatic indexing feature creates an index
@@ -271,10 +269,10 @@ TeX.
 
 <p>Do not use spaces to format a Texinfo file, except inside of
 <code>@example</code> &hellip; <code>@end example</code> and similar commands.
-
-</p><p>For example, TeX fills the following:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">    @kbd{C-x v}
+</p>
+<p>For example, TeX fills the following:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">    @kbd{C-x v}
     @kbd{M-x vc-next-action}
        Perform the next logical operation
        on the version-controlled file
@@ -282,15 +280,16 @@ TeX.
 </pre></td></tr></table>
 
 <p>so it looks like this:
-
-</p><blockquote><p>`C-x v' `M-x vc-next-action' Perform the next logical operation on the
+</p>
+<blockquote><p>`C-x v' `M-x vc-next-action' Perform the next logical operation on the
 version-controlled file corresponding to the current buffer.
 </p></blockquote>
 
+
 <p>In this case, the text should be formatted with
 <code>@table</code>, <code>@item</code>, and <code>@itemx</code>, to create a table.
-
-</p><a name="SEC286"></a>
+</p>
+<a name="SEC286"></a>
 <h4 class="subsubheading"> @code, @samp, @var, and `<samp>---</samp>' </h4>
 
 <ul>
@@ -298,9 +297,9 @@ version-controlled file corresponding to the current buffer.
 Use <code>@code</code> around Lisp symbols, including command names.
 For example,
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">The main function is @code{vc-next-action}, &hellip;
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Avoid putting letters such as `<samp>s</samp>' immediately after an
 `<samp>@code</samp>'.  Such letters look bad.
 
@@ -322,17 +321,17 @@ unless the punctuation is part of the quotation.  This practice goes
 against publishing conventions in the United States, but enables the
 reader to distinguish between the contents of the quotation and the
 whole passage.
-
-</p><p>For example, you should write the following sentence with the period
+</p>
+<p>For example, you should write the following sentence with the period
 outside the end quotation marks:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Evidently, `<samp>au</samp>' is an abbreviation for ``author''.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Evidently, `<samp>au</samp>' is an abbreviation for ``author''.
 </pre></td></tr></table>
 
 <p>since `<samp>au</samp>' does <em>not</em> serve as an  abbreviation for
 `<samp>author.</samp>' (with a period following the word).
-
-</p><a name="SEC288"></a>
+</p>
+<a name="SEC288"></a>
 <h4 class="subsubheading"> Introducing New Terms </h4>
 
 <ul>
@@ -340,15 +339,16 @@ outside the end quotation marks:
 Introduce new terms so that a reader who does not know them can
 understand them from context; or write a definition for the term.
 
-
 <p>For example, in the following, the terms &quot;check in&quot;, &quot;register&quot; and
 &quot;delta&quot; are all appearing for the first time; the example sentence should be
 rewritten so they are understandable.
-
-</p><blockquote><p>The major function assists you in checking in a file to your
+</p>
+<blockquote><p>The major function assists you in checking in a file to your
 version control system and registering successive sets of changes to
 it as deltas.
-</p></blockquote></li><li>
+</p></blockquote>
+
+</li><li>
 Use the <code>@dfn</code> command around a word being introduced, to indicate
 that the reader should not expect to know the meaning already, and
 should expect to learn the meaning from this passage.
@@ -363,36 +363,36 @@ following immediately after the closing brace.  One formatter
 automatically inserts closing punctuation and the other does not.  This
 means that the output looks right both in printed output and in an Info
 file, but only when the command is used inside parentheses.
-
-</p><a name="SEC290"></a>
+</p>
+<a name="SEC290"></a>
 <h4 class="subsubheading"> Invoking from a Shell </h4>
 
 <p>You can invoke programs such as Emacs, GCC, and <code>gawk</code> from a
 shell.  The documentation for each program should contain a section that
 describes this.  Unfortunately, if the node names and titles for these
 sections are all different, they are difficult for users to find.
-
-</p><p>So, there is a convention to name such sections with a phrase beginning
+</p>
+<p>So, there is a convention to name such sections with a phrase beginning
 with the word `Invoking', as in `Invoking Emacs'; this way, users can
 find the section easily.
-
 </p>
+
 <a name="SEC291"></a>
 <h4 class="subsubheading"> ANSI C Syntax </h4>
 
 <p>When you use <code>@example</code> to describe a C function's calling
 conventions, use the ANSI C syntax, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">void dld_init (char *@var{path});
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">void dld_init (char *@var{path});
 </pre></td></tr></table>
 
 <p>And in the subsequent discussion, refer to the argument values by
 writing the same argument names, again highlighted with
 <code>@var</code>.
-
-</p><p>Avoid the obsolete style that looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;dld.h&gt;
+</p>
+<p>Avoid the obsolete style that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;dld.h&gt;
 
 dld_init (path)
 char *path;
@@ -404,30 +404,33 @@ header file.  The practice may give the misimpression that the
 state explicitly which header file holds the declaration or, better
 yet, name the header file used for a group of functions at the
 beginning of the section that describes the functions.
-
-</p><a name="SEC292"></a>
+</p>
+<a name="SEC292"></a>
 <h4 class="subsubheading"> Bad Examples </h4>
 
 <p>Here are several examples of bad writing to avoid:
-
-</p><p>In this example, say, &quot; &hellip; you must <code>@dfn</code>{check
+</p>
+<p>In this example, say, &quot; &hellip; you must <code>@dfn</code>{check
 in} the new version.&quot;  That flows better.
-
-</p><blockquote><p>When you are done editing the file, you must perform a
+</p>
+<blockquote><p>When you are done editing the file, you must perform a
 <code>@dfn</code>{check in}.
 </p></blockquote>
+
 <p>In the following example, say, &quot;&hellip; makes a unified interface such as VC
 mode possible.&quot;
-
-</p><blockquote><p>SCCS, RCS and other version-control systems all perform similar
+</p>
+<blockquote><p>SCCS, RCS and other version-control systems all perform similar
 functions in broadly similar ways (it is this resemblance which makes
 a unified control mode like this possible).
 </p></blockquote>
-<p>And in this example, you should specify what `it' refers to:
 
-</p><blockquote><p>If you are working with other people, it assists in coordinating
+<p>And in this example, you should specify what `it' refers to:
+</p>
+<blockquote><p>If you are working with other people, it assists in coordinating
 everyone's changes so they do not step on each other.
 </p></blockquote>
+
 <a name="SEC293"></a>
 <h4 class="subsubheading"> And Finally &hellip; </h4>
 

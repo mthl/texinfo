@@ -1,6 +1,7 @@
 imbrications.texi(,2) 
+imbrications.texi(,3) @setfilename imbrications.info
 imbrications.texi(,4) 
-imbrications.texi(,5) 
+imbrications.texi(,5) @syncodeindex pg cp
 imbrications.texi(,6) 
 imbrications.texi(,7) @node Top,First node,(dir)
 imbrications.texi(,8) @top
@@ -8,6 +9,10 @@ imbrications.texi(,9) @menu
 imbrications.texi(,10) * First node::    node 1
 imbrications.texi(,11) * name:Second node.    node 2
 imbrications.texi(,12) @end menu
+imbrications.texi(,13) @c * node in table::
+imbrications.texi(,14) @c * node in example::
+imbrications.texi(,15) @c * node in flushright::
+imbrications.texi(,16) @c *node in defun -> bug
 imbrications.texi(,17) @node First node
 imbrications.texi(,18) @chapter first node chapter
 imbrications.texi(,19) 
@@ -28,6 +33,9 @@ imbrications.texi(,42)
 imbrications.texi(,43) @menu
 imbrications.texi(,44) * node within defun menu::
 imbrications.texi(,45) @end menu
+imbrications.texi(,46) @c makeinfo accepts the following but cannot properly close defun
+imbrications.texi(,47) @c @node node within defun menu
+imbrications.texi(,48) @c @section within menu
 imbrications.texi(,49) 
 imbrications.texi(,50) end of the function
 imbrications.texi(,51) @end deffn
@@ -67,9 +75,13 @@ imbrications.texi(,84)
 imbrications.texi(,85) 
 imbrications.texi(,86) @table @bullet
 imbrications.texi(,87) @item item
+imbrications.texi(,88) @c @node node in table
+imbrications.texi(,89) @c @chapter in table
 imbrications.texi(,90) @end table
 imbrications.texi(,91) 
 imbrications.texi(,92) @example
+imbrications.texi(,93) @c @node node in example
+imbrications.texi(,94) @c @chapter example
 imbrications.texi(,95) 
 imbrications.texi(,96) an example
 imbrications.texi(,97) @end example
@@ -91,7 +103,7 @@ imbrications.texi(,123) @cindex index in example
 imbrications.texi(,124) 
 imbrications.texi(,125) Now a content within example
 imbrications.texi(,126) 
-imbrications.texi(,127) 
+imbrications.texi(,127) @contents
 imbrications.texi(,128) 
 imbrications.texi(,129) @printindex cp
 imbrications.texi(,130) printindex  works but cannot be followed in info, in TeX
@@ -105,6 +117,8 @@ imbrications.texi(,137) @flushright
 imbrications.texi(,138) 
 imbrications.texi(,139) is the text
 imbrications.texi(,140) flushed right ?
+imbrications.texi(,141) @c @node node in flushright
+imbrications.texi(,142) @c @chapter flushright
 imbrications.texi(,143) 
 imbrications.texi(,144) 
 imbrications.texi(,145) @end flushright
@@ -229,4 +243,5 @@ imbrications.texi(,263) @node other node
 imbrications.texi(,264) @unnumberedsubsec
 imbrications.texi(,265) 
 imbrications.texi(,266) 
-imbrications.texi(,267) 
+imbrications.texi(,267) @contents
+imbrications.texi(,268) @bye

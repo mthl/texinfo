@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 11.2 @enumerate: Making a Numbered or Lettered List</title>
+<title>GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List</title>
 
-<meta name="description" content="Texinfo: 11.2 @enumerate: Making a Numbered or Lettered List">
-<meta name="keywords" content="Texinfo: 11.2 @enumerate: Making a Numbered or Lettered List">
+<meta name="description" content="GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List">
+<meta name="keywords" content="GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,26 +82,26 @@ ul.toc {list-style: none}
 
 <p><code>@enumerate</code> is like <code>@itemize</code> (see section <a href="itemize.html#SEC157"><code>@itemize</code></a>), except that the labels on the items are
 successive integers or letters instead of bullets.
-
-</p><p>Write the <code>@enumerate</code> command at the beginning of a line.  The
+</p>
+<p>Write the <code>@enumerate</code> command at the beginning of a line.  The
 command does not require an argument, but accepts either a number or a
 letter as an option.  Without an argument, <code>@enumerate</code> starts the
 list with the number `<samp>1</samp>'.  With a numeric argument, such as
 `<samp>3</samp>', the command starts the list with that number.  With an upper
 or lower case letter, such as `<samp>a</samp>' or `<samp>A</samp>', the command starts
 the list with that letter.
-
-</p><p>Write the text of the enumerated list in the same way you write an
+</p>
+<p>Write the text of the enumerated list in the same way you write an
 itemized list: put <code>@item</code> on a line of its own before the start
 of each paragraph that you want enumerated.  Do not write any other text
 on the line beginning with <code>@item</code>.
-
-</p><p>You should put a blank line between entries in the list.
+</p>
+<p>You should put a blank line between entries in the list.
 This generally makes it easier to read the Info file.
-
-</p><p>Here is an example of <code>@enumerate</code> without an argument:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@enumerate
+</p>
+<p>Here is an example of <code>@enumerate</code> without an argument:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@enumerate
 @item
 Underlying causes.
 
@@ -111,8 +111,8 @@ Proximate causes.
 </pre></td></tr></table>
 
 <p>This produces:
-
-</p><ol>
+</p>
+<ol>
 <li>
 Underlying causes.
 
@@ -135,8 +135,8 @@ Perpetuating causes.
 </pre></td></tr></table>
 
 <p>This produces:
-
-</p><ol>
+</p>
+<ol>
 <li>
 Predisposing causes.
 
@@ -154,29 +154,25 @@ using <code>@enumerate</code> with an argument of <kbd>a</kbd>.
 <li>
 <code>@enumerate</code>
 
-
 <p>Without an argument, produce a numbered list, starting with the number
 1.
-
-</p></li><li>
+</p>
+</li><li>
 <code>@enumerate <var>positive-integer</var></code>
-
 
 <p>With a (positive) numeric argument, start a numbered list with that
 number.  You can use this to continue a list that you interrupted with
 other text.
-
-</p></li><li>
+</p>
+</li><li>
 <code>@enumerate <var>upper-case-letter</var></code>
-
 
 <p>With an upper case letter as argument, start a list
 in which each item is marked
 by a letter, beginning with that upper case letter.
-
-</p></li><li>
+</p>
+</li><li>
 <code>@enumerate <var>lower-case-letter</var></code>
-
 
 <p>With a lower case letter as argument, start a list
 in which each item is marked by
@@ -184,8 +180,8 @@ a letter, beginning with that lower case letter.
 </p></li></ol>
 
 <p>You can also nest enumerated lists, as in an outline.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="itemize.html#SEC157" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Two_002dcolumn-Tables.html#SEC159" title="Next section in reading order"> &gt; </a>]</td>

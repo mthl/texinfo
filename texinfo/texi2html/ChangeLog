@@ -1,3 +1,9 @@
+2005-01-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: handle explicitely formats that don't
+	trigger paragraph opening. Handle all commands even those that aren't
+	used. End lines more correctly. 
+
 2004-12-29  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Date the 1.72 release.

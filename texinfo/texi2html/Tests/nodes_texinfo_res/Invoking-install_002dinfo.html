@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.2.5 Invoking install-info</title>
+<title>GNU Texinfo 4.2: 20.2.5 Invoking install-info</title>
 
-<meta name="description" content="Texinfo: 20.2.5 Invoking install-info">
-<meta name="keywords" content="Texinfo: 20.2.5 Invoking install-info">
+<meta name="description" content="GNU Texinfo 4.2: 20.2.5 Invoking install-info">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.5 Invoking install-info">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,44 +86,44 @@ top-level `<tt>dir</tt>' file in the Info system (see the previous sections
 for an explanation of how the `<tt>dir</tt>' file works).  It's most often
 run as part of software installation, or when constructing a `<tt>dir</tt>' file
 for all manuals on a system.  Synopsis:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
 </pre></td></tr></table>
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time
 defaults, and standard input is never used.  <code>install-info</code> can
 read only one Info file and write only one `<tt>dir</tt>' file per invocation.
-
-</p><a name="IDX420"></a>
+</p>
+<a name="IDX420"></a>
 <p>If <var>dir-file</var> (however specified) does not exist,
 <code>install-info</code> creates it if possible (with no entries).
-
-</p><a name="IDX421"></a>
+</p>
+<a name="IDX421"></a>
 <a name="IDX422"></a>
 <p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to
 open `<tt><var>dir-file</var>.gz</tt>'.
-
-</p><p>Options:
-
-</p><dl compact="compact">
+</p>
+<p>Options:
+</p>
+<dl compact="compact">
 <dt><code> --delete</code></dt>
 <dd><a name="IDX423"></a>
 <p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
 name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
 an optional `<samp>.info</samp>' in either one).  Don't insert any new entries.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --dir-file=<var>name</var></code></dt>
 <dt><code> -d <var>name</var></code></dt>
 <dd><a name="IDX424"></a>
 <a name="IDX425"></a>
 <p>Specify file name of the Info directory file.  This is equivalent to
 using the <var>dir-file</var> argument.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --entry=<var>text</var></code></dt>
 <dt><code> -e <var>text</var></code></dt>
 <dd><a name="IDX426"></a>
@@ -133,50 +133,50 @@ form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
 added.  If you don't specify any entries, they are determined from
 information in the Info file itself.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --help</code></dt>
 <dt><code> -h</code></dt>
 <dd><a name="IDX428"></a>
 <a name="IDX429"></a>
 <p>Display a usage message listing basic usage and all available options,
 then exit successfully.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --info-file=<var>file</var></code></dt>
 <dt><code> -i <var>file</var></code></dt>
 <dd><a name="IDX430"></a>
 <a name="IDX431"></a>
 <p>Specify Info file to install in the directory.
 Equivalent to using the <var>info-file</var> argument.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --info-dir=<var>dir</var></code></dt>
 <dt><code> -D <var>dir</var></code></dt>
 <dd><a name="IDX432"></a>
 <a name="IDX433"></a>
 <p>Specify the directory where `<tt>dir</tt>' resides.
 Equivalent to `<samp>--dir-file=<var>dir</var>/dir</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --item=<var>text</var></code></dt>
 <dd><a name="IDX434"></a>
 <p>Same as `<samp>--entry=<var>text</var></samp>'.  An Info directory entry is actually
 a menu item.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --quiet</code></dt>
 <dd><a name="IDX435"></a>
 <p>Suppress warnings.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --remove</code></dt>
 <dt><code> -r</code></dt>
 <dd><a name="IDX436"></a>
 <a name="IDX437"></a>
 <p>Same as `<samp>--delete</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --section=<var>sec</var></code></dt>
 <dt><code> -s <var>sec</var></code></dt>
 <dd><a name="IDX438"></a>
@@ -185,16 +185,16 @@ a menu item.
 specify more than one section, all the entries are added in each of the
 sections.  If you don't specify any sections, they are determined from
 information in the Info file itself.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> --version</code></dt>
 <dt><code> -V</code></dt>
 <dd><a name="IDX440"></a>
 <a name="IDX441"></a>
 <a name="IDX442"></a>
 <p>Display version information and exit successfully.
-
-</p></dd>
+</p>
+</dd>
 </dl>
 
 

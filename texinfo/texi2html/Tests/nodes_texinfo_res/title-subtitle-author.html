@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.4.3 @title, @subtitle, and @author</title>
+<title>GNU Texinfo 4.2: 3.4.3 @title, @subtitle, and @author</title>
 
-<meta name="description" content="Texinfo: 3.4.3 @title, @subtitle, and @author">
-<meta name="keywords" content="Texinfo: 3.4.3 @title, @subtitle, and @author">
+<meta name="description" content="GNU Texinfo 4.2: 3.4.3 @title, @subtitle, and @author">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.4.3 @title, @subtitle, and @author">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,48 +85,48 @@ commands to create a title page in which the vertical and horizontal
 spacing is done for you automatically.  This contrasts with the method
 described in the previous section, in which the <code>@sp</code> command is
 needed to adjust vertical spacing.
-
-</p><p>Write the <code>@title</code>, <code>@subtitle</code>, or <code>@author</code>
+</p>
+<p>Write the <code>@title</code>, <code>@subtitle</code>, or <code>@author</code>
 commands at the beginning of a line followed by the title, subtitle,
 or author.
-
-</p><p>The <code>@title</code> command produces a line in which the title is set
+</p>
+<p>The <code>@title</code> command produces a line in which the title is set
 flush to the left-hand side of the page in a larger than normal font.
 The title is underlined with a black rule.  Only a single line is
 allowed; the <code>@*</code> command may not be used to break the title into
 two lines.  To handle very long titles, you may find it profitable to
 use both <code>@title</code> and <code>@titlefont</code>; see the final example in
 this section.
-
-</p><p>The <code>@subtitle</code> command sets subtitles in a normal-sized font
+</p>
+<p>The <code>@subtitle</code> command sets subtitles in a normal-sized font
 flush to the right-hand side of the page.
-
-</p><p>The <code>@author</code> command sets the names of the author or authors in
+</p>
+<p>The <code>@author</code> command sets the names of the author or authors in
 a middle-sized font flush to the left-hand side of the page on a line
 near the bottom of the title page.  The names are underlined with a
 black rule that is thinner than the rule that underlines the title.
 (The black rule only occurs if the <code>@author</code> command line is
 followed by an <code>@page</code> command line.)
-
-</p><p>There are two ways to use the <code>@author</code> command: you can write
+</p>
+<p>There are two ways to use the <code>@author</code> command: you can write
 the name or names on the remaining part of the line that starts with
 an <code>@author</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@author by Jane Smith and John Doe
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@author by Jane Smith and John Doe
 </pre></td></tr></table>
 
 <p>or you can write the names one above each other by using two (or more)
 <code>@author</code> commands:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@author Jane Smith
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@author Jane Smith
 @author John Doe
 </pre></td></tr></table>
 
 <p>(Only the bottom name is underlined with a black rule.)
-
-</p><p>A template for this method looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+</p>
+<p>A template for this method looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 @title <var>name-of-manual-when-printed</var>
 @subtitle <var>subtitle-if-any</var>
 @subtitle <var>second-subtitle</var>
@@ -138,8 +138,8 @@ an <code>@author</code> command:
 <p>You may also combine the <code>@titlefont</code> method described in the
 previous section and <code>@title</code> method described in this one.  This
 may be useful if you have a very long title.  Here is a real-life example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 @titlefont{GNU Software}
 @sp 1
 @title for MS-Windows and MS-DOS
@@ -149,8 +149,8 @@ may be useful if you have a very long title.  Here is a real-life example:
 </pre></td></tr></table>
 
 <p>(The use of <code>@value</code> here is explained in <a href="value-Example.html#SEC234"><code>@value</code> Example</a>.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="titlefont-center-sp.html#SEC54" title="Previous section in reading order"> &lt; </a>]</td>

@@ -1,4 +1,5 @@
 double_top.texi(,2) 
+double_top.texi(,3) @setfilename double_top
 double_top.texi(,4) 
 double_top.texi(,5) @node ToP, top
 double_top.texi(,6) Top node
@@ -13,3 +14,4 @@ double_top.texi(,14) second node (@@node top,,ToP,Top).
 double_top.texi(,15) anchor@{TOP@} .
 double_top.texi(,16) ref to TOP: @ref{TOP}.
 double_top.texi(,17) 
+double_top.texi(,18) @bye

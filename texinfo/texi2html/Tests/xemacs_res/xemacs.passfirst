@@ -1,5 +1,8 @@
+xemacs.texi(,2) @setfilename ../../info/xemacs.info
+xemacs.texi(,3) @comment  node-name,  next,  previous,  up
 xemacs.texi(,4) 
 xemacs.texi(,5) 
+xemacs.texi(,7) @dircategory XEmacs Editor
 xemacs.texi(,11) 
 xemacs.texi(,12) This file documents the XEmacs editor.
 xemacs.texi(,13) 
@@ -24,7 +27,11 @@ xemacs.texi(,38) into another language, under the above conditions for modified 
 xemacs.texi(,39) except that the sections entitled ``The GNU Manifesto'',
 xemacs.texi(,40) ``Distribution'' and ``GNU General Public License'' may be included in a
 xemacs.texi(,41) translation approved by the author instead of in the original English.
-xemacs.texi(,90) 
+xemacs.texi(,43) @c
+xemacs.texi(,44) @setchapternewpage odd
+xemacs.texi(,45) @settitle XEmacs User's Manual
+xemacs.texi(,46) @c
+xemacs.texi(,90) @page
 xemacs.texi(,92) @node Top, License,, (dir)
 xemacs.texi(,93) @top The XEmacs Editor
 xemacs.texi(,94) 
@@ -542,6 +549,7 @@ xemacs.texi(,606)
 xemacs.texi(,607) @end menu
 xemacs.texi(,608) 
 xemacs.texi(,669) 
+xemacs.texi(,670) @comment  node-name,  next,  previous,  up
 xemacs.texi(,671) @node License, Distrib, Top, Top
 xemacs.texi(,672) @unnumbered GNU GENERAL PUBLIC LICENSE
 xemacs.texi(,673) @center Version 1, February 1989
@@ -713,7 +721,7 @@ xemacs.texi(,843) licensor to copy, distribute or modify the Program subject to 
 xemacs.texi(,844) terms and conditions.  You may not impose any further restrictions on the
 xemacs.texi(,845) recipients' exercise of the rights granted herein.
 xemacs.texi(,846) 
-xemacs.texi(,847) 
+xemacs.texi(,847) @page
 xemacs.texi(,848) @item
 xemacs.texi(,849) The Free Software Foundation may publish revised and/or new versions
 xemacs.texi(,850) of the General Public License from time to time.  Such new versions will
@@ -764,7 +772,7 @@ xemacs.texi(,899) @end enumerate
 xemacs.texi(,900) 
 xemacs.texi(,905) @center END OF TERMS AND CONDITIONS
 xemacs.texi(,907) 
-xemacs.texi(,908) 
+xemacs.texi(,908) @page
 xemacs.texi(,909) @unnumberedsec Appendix: How to Apply These Terms to Your New Programs
 xemacs.texi(,910) 
 xemacs.texi(,911)   If you develop a new program, and you want it to be of the greatest
@@ -814,7 +822,7 @@ xemacs.texi(,954) commands you use may be called something other than `show w' a
 xemacs.texi(,955) c'; they could even be mouse-clicks or menu items---whatever suits your
 xemacs.texi(,956) program.
 xemacs.texi(,957) 
-xemacs.texi(,958) 
+xemacs.texi(,958) @page
 xemacs.texi(,959) You should also get your employer (if you work as a programmer) or your
 xemacs.texi(,960) school, if any, to sign a ``copyright disclaimer'' for the program, if
 xemacs.texi(,961) necessary.  Here a sample; alter the names:
@@ -830,6 +838,7 @@ xemacs.texi(,970) @end example
 xemacs.texi(,971) 
 xemacs.texi(,972) That's all there is to it!
 xemacs.texi(,973) 
+xemacs.texi(,974) @comment  node-name,  next,  previous,  up
 xemacs.texi(,975) @node Distrib, Intro, License, Top
 xemacs.texi(,976) @unnumbered Distribution
 xemacs.texi(,977) 
@@ -920,6 +929,7 @@ xemacs.texi(,1061) can use it afterward.
 xemacs.texi(,1062) 
 ./frame.texi(,1) 
 ./frame.texi(,1) @node Frame, Keystrokes, Concept Index, Top
+./frame.texi(,2) @comment  node-name,  next,  previous,  up
 ./frame.texi(,3) @chapter The XEmacs Frame
 ./frame.texi(,4) @cindex frame
 ./frame.texi(,5) @cindex window
@@ -931,7 +941,7 @@ xemacs.texi(,1062)
 ./frame.texi(,11) literally takes up the whole screen.  If you are
 ./frame.texi(,12) running XEmacs in a multi-window system like the X Window System, the
 ./frame.texi(,13) XEmacs frame takes up one X window.  @xref{XEmacs under X}, for more
-./frame.texi(,14) information.
+./frame.texi(,14) information.@refill
 ./frame.texi(,15) 
 ./frame.texi(,16) @item Window
 ./frame.texi(,17) No matter what environment you are running in, XEmacs allows you to look
@@ -942,7 +952,7 @@ xemacs.texi(,1062)
 ./frame.texi(,22) @dfn{XEmacs windows} inside the X window that contains the XEmacs frame.
 ./frame.texi(,23) You can even have multiple frames in different X windows, each with
 ./frame.texi(,24) their own set of subwindows.
-./frame.texi(,25) 
+./frame.texi(,25) @refill
 ./frame.texi(,26) @end table
 ./frame.texi(,27) 
 ./frame.texi(,28) Each XEmacs frame displays a variety of information:
@@ -1009,6 +1019,7 @@ xemacs.texi(,1062)
 ./frame.texi(,89) @end menu
 ./frame.texi(,90) 
 ./frame.texi(,91) @node Point, Echo Area, Frame, Frame
+./frame.texi(,92) @comment  node-name,  next,  previous,  up
 ./frame.texi(,93) @section Point
 ./frame.texi(,94) @cindex point
 ./frame.texi(,95) @cindex cursor
@@ -1092,6 +1103,7 @@ xemacs.texi(,1062)
 ./frame.texi(,173) @end itemize
 ./frame.texi(,174) 
 ./frame.texi(,175) @node Mode Line, GUI Components, Echo Area, Frame
+./frame.texi(,176) @comment  node-name,  next,  previous,  up
 ./frame.texi(,177) @section The Mode Line
 ./frame.texi(,178) @cindex mode line
 ./frame.texi(,179) @cindex top level
@@ -1113,7 +1125,7 @@ xemacs.texi(,1062)
 ./frame.texi(,195) --@var{ch}-XEmacs: @var{buf}      (@var{major} @var{minor})----@var{pos}------
 ./frame.texi(,196) @end example
 ./frame.texi(,197) 
-./frame.texi(,198) 
+./frame.texi(,198) @noindent
 ./frame.texi(,199) This gives information about the buffer being displayed in the window: the
 ./frame.texi(,200) buffer's name, what major and minor modes are in use, whether the buffer's
 ./frame.texi(,201) text has been changed, and how far down the buffer you are currently
@@ -1136,13 +1148,13 @@ xemacs.texi(,1062)
 ./frame.texi(,218) @var{pos} is @samp{Top} if you are looking at the beginning of the file,
 ./frame.texi(,219) @samp{Bot} if you are looking at the end of the file, or
 ./frame.texi(,220) @samp{@var{nn}%}, where @var{nn} is the percentage of the file above the
-./frame.texi(,221) top of the screen.
+./frame.texi(,221) top of the screen.@refill
 ./frame.texi(,222) 
 ./frame.texi(,223)   @var{major} is the name of the @dfn{major mode} in effect in the buffer.  At
 ./frame.texi(,224) any time, each buffer is in one and only one major mode.
 ./frame.texi(,225) The available major modes include Fundamental mode (the least specialized),
 ./frame.texi(,226) Text mode, Lisp mode, and C mode.  @xref{Major Modes}, for details
-./frame.texi(,227) on how the modes differ and how you select one.
+./frame.texi(,227) on how the modes differ and how you select one.@refill
 ./frame.texi(,228) 
 ./frame.texi(,229)   @var{minor} is a list of some of the @dfn{minor modes} that are turned on
 ./frame.texi(,230) in the window's chosen buffer.  For example, @samp{Fill} means that Auto
@@ -1164,7 +1176,7 @@ xemacs.texi(,1062)
 ./frame.texi(,246) double square brackets appear, and so on.  Since information on
 ./frame.texi(,247) recursive editing applies to XEmacs in general and not to any one buffer,
 ./frame.texi(,248) the square brackets appear in every mode line on the screen or not in
-./frame.texi(,249) any of them.  @xref{Recursive Edit}.
+./frame.texi(,249) any of them.  @xref{Recursive Edit}.@refill
 ./frame.texi(,250) 
 ./frame.texi(,251) @findex display-time
 ./frame.texi(,252)   XEmacs can optionally display the time and system load in all mode lines.
@@ -1176,7 +1188,7 @@ xemacs.texi(,1062)
 ./frame.texi(,258) @var{hh}:@var{mm}pm @var{l.ll} [@var{d}]
 ./frame.texi(,259) @end example
 ./frame.texi(,260) 
-./frame.texi(,261) 
+./frame.texi(,261) @noindent
 ./frame.texi(,262) (Some fields may be missing if your operating system cannot support them.)
 ./frame.texi(,263) @var{hh} and @var{mm} are the hour and minute, followed always by @samp{am}
 ./frame.texi(,264) or @samp{pm}.  @var{l.ll} is the average number of running processes in the
@@ -1194,6 +1206,7 @@ xemacs.texi(,1062)
 ./frame.texi(,276) background colors appropriately.
 ./frame.texi(,277) 
 ./frame.texi(,278) @node GUI Components, XEmacs under X, Mode Line, Frame
+./frame.texi(,279) @comment  node-name,  next,  previous,  up
 ./frame.texi(,280) @section GUI Components
 ./frame.texi(,281) 
 ./frame.texi(,282) When executed in a graphical windowing environment such as the X Window
@@ -1219,6 +1232,7 @@ xemacs.texi(,1062)
 ./frame.texi(,302) @end menu
 ./frame.texi(,303) 
 ./frame.texi(,304) @node Menubar Basics, Scrollbar Basics, , GUI Components
+./frame.texi(,305) @comment  node-name,  next,  previous,  up
 ./frame.texi(,306) @section The XEmacs Menubar
 ./frame.texi(,307) 
 ./frame.texi(,308) The XEmacs menubar is intended to be conformant to the usual conventions
@@ -1234,6 +1248,7 @@ xemacs.texi(,1062)
 ./frame.texi(,318) cutting and pasting, searching, and keyboard macro definition and
 ./frame.texi(,319) execution.
 ./frame.texi(,320) 
+./frame.texi(,321) @c #### w3.el and VM should get cross-references here.
 ./frame.texi(,322) XEmacs provides a very dynamic environment, and the Lisp language makes
 ./frame.texi(,323) for highly flexible applications.  The menubar reflects this: many menus
 ./frame.texi(,324) (eg, the @samp{Buffers} menu, @pxref{Buffers Menu}) contain items
@@ -1253,6 +1268,7 @@ xemacs.texi(,1062)
 ./frame.texi(,338) XEmacsen, the @samp{Mule} menu will be moved under @samp{Options}.)
 ./frame.texi(,339) 
 ./frame.texi(,340) @node Scrollbar Basics, Mode Line Basics, Menubar Basics, GUI Components
+./frame.texi(,341) @comment  node-name,  next,  previous,  up
 ./frame.texi(,342) @section XEmacs Scrollbars
 ./frame.texi(,343) 
 ./frame.texi(,344) XEmacs scrollbars provide the usual interface.  Arrow buttons at either
@@ -1271,6 +1287,7 @@ xemacs.texi(,1062)
 ./frame.texi(,357) horizontal scrollbar.
 ./frame.texi(,358) 
 ./frame.texi(,359) @node Mode Line Basics, Toolbar Basics, Scrollbar Basics, GUI Components
+./frame.texi(,360) @comment  node-name,  next,  previous,  up
 ./frame.texi(,361) @section XEmacs Mode Lines
 ./frame.texi(,362) 
 ./frame.texi(,363) When used in a windowing system, the XEmacs modelines can be dragged
@@ -1288,6 +1305,7 @@ xemacs.texi(,1062)
 ./frame.texi(,375) the @samp{Options} menu.
 ./frame.texi(,376) 
 ./frame.texi(,377) @node Toolbar Basics, Gutter Basics, Mode Line Basics, GUI Components
+./frame.texi(,378) @comment  node-name,  next,  previous,  up
 ./frame.texi(,379) @section XEmacs Toolbars
 ./frame.texi(,380) 
 ./frame.texi(,381) XEmacs has a default toolbar which provides shortcuts for some of the
@@ -1301,6 +1319,7 @@ xemacs.texi(,1062)
 ./frame.texi(,389) mail-specific operations like sending, saving, and deleting messages.
 ./frame.texi(,390) 
 ./frame.texi(,391) @node Gutter Basics, Inhibiting, Toolbar Basics, GUI Components
+./frame.texi(,392) @comment  node-name,  next,  previous,  up
 ./frame.texi(,393) @section XEmacs Gutters
 ./frame.texi(,394) 
 ./frame.texi(,395) Gutters are the most flexible of the GUI components described in this
@@ -1337,6 +1356,7 @@ xemacs.texi(,1062)
 ./frame.texi(,426) same mode are displayed on tabs in the gutter.
 ./frame.texi(,427) 
 ./frame.texi(,428) @node Inhibiting, Customizing, Gutter Basics, GUI Components
+./frame.texi(,429) @comment  node-name,  next,  previous,  up
 ./frame.texi(,430) @section Inhibiting Display of GUI Components
 ./frame.texi(,431) 
 ./frame.texi(,432) Use of GUI facilities is a personal thing.  Almost everyone agrees that
@@ -1379,12 +1399,14 @@ xemacs.texi(,1062)
 ./frame.texi(,469) @code{left-toolbar-visible-p}.
 ./frame.texi(,470) 
 ./frame.texi(,471) @node Customizing, , Inhibiting, GUI Components
+./frame.texi(,472) @comment  node-name,  next,  previous,  up
 ./frame.texi(,473) @section Changing the Position, Orientation, and Appearance of GUI Components
 ./frame.texi(,474) 
 ./frame.texi(,475)   #### Not documented yet.
 ./frame.texi(,476) 
 ./frame.texi(,477) @node XEmacs under X, XEmacs under MS Windows, GUI Components, Frame
 ./frame.texi(,478) @section Using XEmacs Under the X Window System
+./frame.texi(,479) @comment  node-name,  next,  previous,  up
 ./frame.texi(,480) 
 ./frame.texi(,481) XEmacs can be used with the X Window System and a window manager like
 ./frame.texi(,482) MWM or TWM.  In that case, the X window manager opens, closes, and
@@ -1472,6 +1494,7 @@ xemacs.texi(,1062)
 ./frame.texi(,564) 
 ./frame.texi(,565) @node XEmacs under MS Windows, , XEmacs under X, Frame
 ./frame.texi(,566) @section Using XEmacs Under Microsoft Windows
+./frame.texi(,567) @comment  node-name,  next,  previous,  up
 ./frame.texi(,568) 
 ./frame.texi(,569) Use of XEmacs under MS Windows is not separately documented here, but
 ./frame.texi(,570) most operations available under the X Window System are also available
@@ -1509,7 +1532,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,49) assigned graphic symbols like @samp{a} and @samp{=}; the rest are
 ./keystrokes.texi(,50) control characters, such as @kbd{Control-a} (also called @kbd{C-a}).
 ./keystrokes.texi(,51) @kbd{C-a} means you hold down the @key{CTRL} key and then press
-./keystrokes.texi(,52) @kbd{a}.
+./keystrokes.texi(,52) @kbd{a}.@refill
 ./keystrokes.texi(,53) 
 ./keystrokes.texi(,54)    Keybindings in XEmacs are not restricted to the set of
 ./keystrokes.texi(,55) keystrokes that can be represented in ASCII.  XEmacs can tell the
@@ -1573,6 +1596,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,113) 
 ./keystrokes.texi(,114) 
 ./keystrokes.texi(,115) @node Representing Keystrokes, Key Sequences, Intro to Keystrokes, Keystrokes
+./keystrokes.texi(,116) @comment  node-name,  next,  previous,  up
 ./keystrokes.texi(,117) @subsection Representing Keystrokes
 ./keystrokes.texi(,118) @kindex hyper key
 ./keystrokes.texi(,119) @kindex super key
@@ -1632,9 +1656,9 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,173) Typing @kbd{C-c} followed by @kbd{C-a}
 ./keystrokes.texi(,174) @item [(control c) (control 65)]
 ./keystrokes.texi(,175) Typing @kbd{C-c} followed by @kbd{C-a}. (Using the ASCII code
-./keystrokes.texi(,176) for the character `a')
+./keystrokes.texi(,176) for the character `a')@refill
 ./keystrokes.texi(,177) @item [(control c) (break)]
-./keystrokes.texi(,178) Typing @kbd{C-c} followed by the @kbd{break} character.
+./keystrokes.texi(,178) Typing @kbd{C-c} followed by the @kbd{break} character.@refill
 ./keystrokes.texi(,179) @end table
 ./keystrokes.texi(,180) 
 ./keystrokes.texi(,181) @kindex C-c
@@ -1663,14 +1687,14 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,204) three-character keys, including @kbd{[(control x) (\4) (f)]},
 ./keystrokes.texi(,205) @kbd{[(control x) (\4) (b)]} and so on.  It would be possible to define
 ./keystrokes.texi(,206) one of those three-character sequences as a prefix, creating a series of
-./keystrokes.texi(,207) four-character keys, but we did not define any of them this way.
+./keystrokes.texi(,207) four-character keys, but we did not define any of them this way.@refill
 ./keystrokes.texi(,208) 
 ./keystrokes.texi(,209)   By contrast, the two-character sequence @kbd{[(control f) (control
 ./keystrokes.texi(,210) k)]} is not a key, because the @kbd{(control f)} is a complete key
 ./keystrokes.texi(,211) sequence in itself.  You cannot give @kbd{[(control f (control k)]} an
 ./keystrokes.texi(,212) independent meaning as a command while @kbd{(control f)} is a complete
 ./keystrokes.texi(,213) sequence, because Emacs would understand @key{C-f C-k} as two
-./keystrokes.texi(,214) commands.
+./keystrokes.texi(,214) commands.@refill
 ./keystrokes.texi(,215) 
 ./keystrokes.texi(,216)  The predefined prefix key sequences in Emacs are @kbd{(control c)},
 ./keystrokes.texi(,217) @kbd{(control x)}, @kbd{(control h)}, @kbd{[(control x) (\4)]}, and
@@ -1692,6 +1716,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,233) far less clear.
 ./keystrokes.texi(,234) 
 ./keystrokes.texi(,235) @node String Key Sequences, Meta Key, Key Sequences, Keystrokes
+./keystrokes.texi(,236) @comment  node-name,  next,  previous,  up
 ./keystrokes.texi(,237) @subsection  String Key Sequences
 ./keystrokes.texi(,238) For backward compatibility, you may also represent a key sequence using
 ./keystrokes.texi(,239) strings.  For example, we have the following equivalent representations:
@@ -1707,6 +1732,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,249) @kindex TAB
 ./keystrokes.texi(,250) 
 ./keystrokes.texi(,251) @node Meta Key, Super and Hyper Keys, String Key Sequences, Keystrokes
+./keystrokes.texi(,252) @comment  node-name,  next,  previous,  up
 ./keystrokes.texi(,253) @subsection Assignment of the @key{META} Key
 ./keystrokes.texi(,254)  
 ./keystrokes.texi(,255) @kindex META
@@ -1717,17 +1743,17 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,260) @key{META} and press @kbd{a}.  On those terminals, the @key{META} key
 ./keystrokes.texi(,261) works like the @key{SHIFT} key.  Such a key is not always labeled
 ./keystrokes.texi(,262) @key{META}, however, as this function is often a special option for a
-./keystrokes.texi(,263) key with some other primary purpose.
+./keystrokes.texi(,263) key with some other primary purpose.@refill
 ./keystrokes.texi(,264) 
 ./keystrokes.texi(,265)   If there is no @key{META} key, you can still type Meta characters
 ./keystrokes.texi(,266) using two-character sequences starting with @key{ESC}.  To enter
 ./keystrokes.texi(,267) @kbd{M-a}, you could type @kbd{@key{ESC} a}.  To enter @kbd{C-M-a}, you
 ./keystrokes.texi(,268) would type @kbd{ESC C-a}.  @key{ESC} is allowed on terminals with
-./keystrokes.texi(,269) Meta keys, too, in case you have formed a habit of using it.
+./keystrokes.texi(,269) Meta keys, too, in case you have formed a habit of using it.@refill
 ./keystrokes.texi(,270) 
 ./keystrokes.texi(,271) If you are running under X and do not have a @key{META} key, it 
 ./keystrokes.texi(,272) is possible to reconfigure some other key to be a @key{META} 
-./keystrokes.texi(,273) key.  @xref{Super and Hyper Keys}. 
+./keystrokes.texi(,273) key.  @xref{Super and Hyper Keys}. @refill
 ./keystrokes.texi(,274) 
 ./keystrokes.texi(,275) @vindex meta-flag
 ./keystrokes.texi(,276)   Emacs believes the terminal has a @key{META} key if the variable
@@ -1740,6 +1766,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,283) the @code{meta-flag} variable is irrelevant. 
 ./keystrokes.texi(,284) 
 ./keystrokes.texi(,285) @node Super and Hyper Keys, Character Representation, Meta Key, Keystrokes
+./keystrokes.texi(,286) @comment  node-name,  next,  previous,  up
 ./keystrokes.texi(,287) @subsection Assignment of the @key{SUPER} and @key{HYPER} Keys
 ./keystrokes.texi(,288) @kindex hyper key
 ./keystrokes.texi(,289) @kindex super key
@@ -1771,7 +1798,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,315) 
 ./keystrokes.texi(,316) Just after you start up X, execute the command @code{xmodmap /.xmodmap}.
 ./keystrokes.texi(,317) You can add this command to the appropriate initialization file to have
-./keystrokes.texi(,318) the command executed automatically.
+./keystrokes.texi(,318) the command executed automatically.@refill
 ./keystrokes.texi(,319) 
 ./keystrokes.texi(,320) If you have problems, see the documentation for the @code{xmodmap}
 ./keystrokes.texi(,321) program.  The X keyboard model is quite complicated, and explaining
@@ -1892,6 +1919,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,436) and some previously-unassigned modifier bit.
 ./keystrokes.texi(,437) 
 ./keystrokes.texi(,438) @node Character Representation, Commands, Super and Hyper Keys, Keystrokes
+./keystrokes.texi(,439) @comment  node-name,  next,  previous,  up
 ./keystrokes.texi(,440) @section Representation of Characters
 ./keystrokes.texi(,441) 
 ./keystrokes.texi(,442) This section briefly discusses how characters are represented in Emacs
@@ -1947,7 +1975,7 @@ xemacs.texi(,1062)
 ./keystrokes.texi(,492) has this effect @i{because} it is bound to that function.  If you rebind
 ./keystrokes.texi(,493) @kbd{C-n} to the function @code{forward-word} then @kbd{C-n} will move
 ./keystrokes.texi(,494) forward by words instead.  Rebinding keys is a common method of
-./keystrokes.texi(,495) customization.
+./keystrokes.texi(,495) customization.@refill
 ./keystrokes.texi(,496) 
 ./keystrokes.texi(,497)    The rest of this manual usually ignores this subtlety to keep
 ./keystrokes.texi(,498) things simple.  To give the customizer the information needed, we often
@@ -1972,6 +2000,7 @@ xemacs.texi(,1062)
 ./menus.texi(,1) 
 ./menus.texi(,1) 
 ./menus.texi(,2) @node Pull-down Menus, Entering Emacs, Keystrokes, Top
+./menus.texi(,3) @comment  node-name,  next,  previous,  up
 ./menus.texi(,4) @section XEmacs Pull-down Menus 
 ./menus.texi(,5) 
 ./menus.texi(,6) If you are running XEmacs under X, a menu bar on top of the
@@ -1992,6 +2021,8 @@ xemacs.texi(,1062)
 ./menus.texi(,21) cutting, copying, pasting, and killing selected text.
 ./menus.texi(,22) @cindex Edit menu
 ./menus.texi(,23) 
+./menus.texi(,24) @c #### The Mule menu needs to be documented, but this is not the place
+./menus.texi(,25) @c for it since Ben just moved it.
 ./menus.texi(,26) 
 ./menus.texi(,27) @item Apps
 ./menus.texi(,28) Access to sub-applications implemented within XEmacs, such as the mail
@@ -2101,28 +2132,28 @@ xemacs.texi(,1062)
 ./menus.texi(,132) new Emacs frame, that is, a new X window running under the same Emacs
 ./menus.texi(,133) process.  You can remove the frame using the @b{Delete Frame} menu
 ./menus.texi(,134) item.  When you remove the last frame, you exit Emacs and are prompted
-./menus.texi(,135) for confirmation. 
+./menus.texi(,135) for confirmation. @refill
 ./menus.texi(,136) 
 ./menus.texi(,137) @item Open File...
 ./menus.texi(,138) Prompts you for a filename and loads that file into a new buffer. 
 ./menus.texi(,139) @b{Open File...} is equivalent to the Emacs command @code{find-file} (@kbd{C-x
-./menus.texi(,140) C-f}). 
+./menus.texi(,140) C-f}).@refill 
 ./menus.texi(,141) 
 ./menus.texi(,142) @item Insert File...
 ./menus.texi(,143) Prompts you for a filename and inserts the contents of that file into
 ./menus.texi(,144) the current buffer.  The file associated with the current buffer is
 ./menus.texi(,145) not changed by this command.  This is equivalent to the Emacs command
-./menus.texi(,146) @code{insert-file} (@kbd{C-x i}). 
+./menus.texi(,146) @code{insert-file} (@kbd{C-x i}).@refill 
 ./menus.texi(,147) 
 ./menus.texi(,148) @item Save Buffer 
 ./menus.texi(,149) Writes and saves the current Emacs buffer as the latest
 ./menus.texi(,150) version of the current visited file.  @b{Save Buffer} is equivalent to the
-./menus.texi(,151) Emacs command @code{save-buffer} (@kbd{C-x C-s}).
+./menus.texi(,151) Emacs command @code{save-buffer} (@kbd{C-x C-s}).@refill
 ./menus.texi(,152) 
 ./menus.texi(,153) @item Save Buffer As... 
 ./menus.texi(,154) Writes and saves the current Emacs buffer to the filename you specify.
 ./menus.texi(,155) @b{Save Buffer As...} is equivalent to the Emacs command
-./menus.texi(,156) @code{write-file} (@kbd{C-x C-w}).
+./menus.texi(,156) @code{write-file} (@kbd{C-x C-w}).@refill
 ./menus.texi(,157) 
 ./menus.texi(,158) @item Revert Buffer
 ./menus.texi(,159) Restores the last saved version of the file to the current buffer.  When
@@ -2130,51 +2161,51 @@ xemacs.texi(,1062)
 ./menus.texi(,161) before your changes become effective.  Use @b{Revert Buffer} if you do
 ./menus.texi(,162) not want to keep the changes you have made in the buffer.  @b{Revert
 ./menus.texi(,163) Buffer} is equivalent to the Emacs command @code{revert-file} (@kbd{M-x
-./menus.texi(,164) revert-buffer}).
+./menus.texi(,164) revert-buffer}).@refill
 ./menus.texi(,165) 
 ./menus.texi(,166) @item Kill Buffer
 ./menus.texi(,167) Kills the current buffer, prompting you first if there are unsaved
 ./menus.texi(,168) changes.  This is roughly equivalent to the Emacs command 
 ./menus.texi(,169) @code{kill-buffer} (@kbd{C-x k}), except that @code{kill-buffer} 
-./menus.texi(,170) prompts for the name of a buffer to kill. 
+./menus.texi(,170) prompts for the name of a buffer to kill. @refill
 ./menus.texi(,171) 
 ./menus.texi(,172) @item Print Buffer
 ./menus.texi(,173) Prints a hardcopy of the current buffer.  Equivalent
-./menus.texi(,174) to the Emacs command @code{print-buffer} (@kbd{M-x print-buffer}).
+./menus.texi(,174) to the Emacs command @code{print-buffer} (@kbd{M-x print-buffer}).@refill
 ./menus.texi(,175) 
 ./menus.texi(,176) @item New Frame
 ./menus.texi(,177) Creates a new Emacs frame displaying the @code{*scratch*} buffer.  This
 ./menus.texi(,178) is like the @b{Open File, New Frame...} menu item, except that it does
-./menus.texi(,179) not prompt for or load a file.
+./menus.texi(,179) not prompt for or load a file.@refill
 ./menus.texi(,180) 
 ./menus.texi(,181) @item Delete Frame 
 ./menus.texi(,182) Allows you to close all but one of the frames created by @b{New Frame}.
 ./menus.texi(,183) If you created several Emacs frames belonging to the same Emacs
 ./menus.texi(,184) process, you can close all but one of them.  When you attempt to close the
 ./menus.texi(,185) last frame, Emacs informs you that you are attempting to delete the
-./menus.texi(,186) last frame.  You have to choose @b{Exit Emacs} for that.
+./menus.texi(,186) last frame.  You have to choose @b{Exit Emacs} for that.@refill
 ./menus.texi(,187) 
 ./menus.texi(,188) @item Split Frame
 ./menus.texi(,189) Divides the current window on the current frame into two equal-sized
 ./menus.texi(,190) windows, both displaying the same buffer.  Equivalent to the Emacs
-./menus.texi(,191) command @code{split-window-vertically} (@kbd{C-x 2}).
+./menus.texi(,191) command @code{split-window-vertically} (@kbd{C-x 2}).@refill
 ./menus.texi(,192) 
 ./menus.texi(,193) @item Un-split (Keep This)
 ./menus.texi(,194) If the frame is divided into multiple windows, this removes all windows
 ./menus.texi(,195) other than the selected one.  Equivalent to the Emacs command
-./menus.texi(,196) @code{delete-other-windows} (@kbd{C-x 1}).
+./menus.texi(,196) @code{delete-other-windows} (@kbd{C-x 1}).@refill
 ./menus.texi(,197) 
 ./menus.texi(,198) @item Un-split (Keep Others)
 ./menus.texi(,199) If the frame is divided into multiple windows, this removes the
 ./menus.texi(,200) selected window from the frame, giving the space back to one of the
 ./menus.texi(,201) other windows.  Equivalent to the Emacs command @code{delete-window}
-./menus.texi(,202) (@kbd{C-x 0}).
+./menus.texi(,202) (@kbd{C-x 0}).@refill
 ./menus.texi(,203) 
 ./menus.texi(,204) @item Exit Emacs
 ./menus.texi(,205) Shuts down (kills) the Emacs process.  Equivalent to the Emacs command
 ./menus.texi(,206) @code{save-buffers-kill-emacs} (@kbd{C-x C-c}).  Before killing the
 ./menus.texi(,207) Emacs process, the system asks which unsaved buffers to save by going through
-./menus.texi(,208) the list of all buffers in that Emacs process.
+./menus.texi(,208) the list of all buffers in that Emacs process.@refill
 ./menus.texi(,209) @end table
 ./menus.texi(,210) 
 ./menus.texi(,211) @node Edit Menu
@@ -2187,8 +2218,14 @@ xemacs.texi(,1062)
 ./menus.texi(,218) work on a block of text, the X selection.  They appear faded until you
 ./menus.texi(,219) select a block of text (activate a region) with the mouse.  @xref{Using
 ./menus.texi(,220) X Selections}, @pxref{Killing}, and @pxref{Yanking} for more
-./menus.texi(,221) information.
+./menus.texi(,221) information.@refill
 ./menus.texi(,222) 
+./menus.texi(,223) @c  **** zmacs-regions is on by default these days - jwz
+./menus.texi(,224) @c
+./menus.texi(,225) @c Note: By default, you can use the @b{Edit} menu items on the region between
+./menus.texi(,226) @c point and the mark as well as regions selected with the mouse. To change
+./menus.texi(,227) @c this behavior, set the variable @code{zmacs-regions} to
+./menus.texi(,228) @c @code{t}. @xref{Active Regions} for more information.
 ./menus.texi(,229) 
 ./menus.texi(,230) @cindex Undo menu item
 ./menus.texi(,231) @cindex Cut menu item
@@ -2201,18 +2238,18 @@ xemacs.texi(,1062)
 ./menus.texi(,238) @table @b
 ./menus.texi(,239) @item Undo 
 ./menus.texi(,240) Undoes the previous command.  @b{Undo} is equivalent to
-./menus.texi(,241) the Emacs command @code{undo} (@kbd{C-x u}).
+./menus.texi(,241) the Emacs command @code{undo} (@kbd{C-x u}).@refill
 ./menus.texi(,242) 
 ./menus.texi(,243) @item Cut
 ./menus.texi(,244) Removes the selected text block from the current buffer, makes it the X
 ./menus.texi(,245) clipboard selection, and places it in the kill ring.  Before executing
 ./menus.texi(,246) this command, you have to select a region using Emacs region selection
-./menus.texi(,247) commands or with the mouse. 
+./menus.texi(,247) commands or with the mouse.@refill 
 ./menus.texi(,248) 
 ./menus.texi(,249) @item Copy 
 ./menus.texi(,250) Makes a selected text block the X clipboard selection, and places it in
 ./menus.texi(,251) the kill ring.  You can select text using one of the Emacs region
-./menus.texi(,252) selection commands or by selecting a text region with the mouse.
+./menus.texi(,252) selection commands or by selecting a text region with the mouse.@refill
 ./menus.texi(,253) 
 ./menus.texi(,254) @item Paste 
 ./menus.texi(,255) Inserts the current value of the X clipboard selection in the current
@@ -2323,7 +2360,7 @@ xemacs.texi(,1062)
 ./menus.texi(,360) example, if @b{Less} is selected (which is the default setting) then you
 ./menus.texi(,361) might have all comments in green color.  Whereas, if @b{More} is
 ./menus.texi(,362) selected then a function name in the comments themselves might appear in
-./menus.texi(,363) a different Color or Font.
+./menus.texi(,363) a different Color or Font.@refill
 ./menus.texi(,364) 
 ./menus.texi(,365) @item Paren Highlighting
 ./menus.texi(,366) After selecting @b{Blink} from this item, if you place the cursor 
@@ -2331,7 +2368,7 @@ xemacs.texi(,1062)
 ./menus.texi(,368) @b{Highlight} and place the cursor on a parenthesis, the whole 
 ./menus.texi(,369) expression of the parenthesis under the cursor will be highlighted. 
 ./menus.texi(,370) Selecting @b{None} will turn off the options (regarding @b{Paren 
-./menus.texi(,371) Highlighting}) which you had selected earlier.
+./menus.texi(,371) Highlighting}) which you had selected earlier.@refill
 ./menus.texi(,372) 
 ./menus.texi(,373) @item Font
 ./menus.texi(,374) You can select any Font for your program by choosing from one of the 
@@ -2339,10 +2376,10 @@ xemacs.texi(,1062)
 ./menus.texi(,376) 
 ./menus.texi(,377) @item Size
 ./menus.texi(,378) You can select any size ranging from @b{2} to @b{24} by selecting the 
-./menus.texi(,379) appropriate option.
+./menus.texi(,379) appropriate option.@refill
 ./menus.texi(,380) 
 ./menus.texi(,381) @item Weight
-./menus.texi(,382) You can choose either @b{Bold} or @b{Medium} for the weight.
+./menus.texi(,382) You can choose either @b{Bold} or @b{Medium} for the weight.@refill
 ./menus.texi(,383) 
 ./menus.texi(,384) @item Buffers Menu Length...
 ./menus.texi(,385) Prompts you for the number of buffers to display. Then it will display 
@@ -2514,6 +2551,9 @@ xemacs.texi(,1062)
 ./menus.texi(,551) 
 ./menus.texi(,552) @var{new-name} is the string to which the menu item will be changed.
 ./entering.texi(,1) 
+./entering.texi(,1) @c This is part of the XEmacs manual.
+./entering.texi(,2) @c Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995 Free Software Foundation, Inc.
+./entering.texi(,3) @c See file xemacs.texi for copying conditions.
 ./entering.texi(,4) @node Entering Emacs, Exiting, Pull-down Menus, Top
 ./entering.texi(,5) @chapter Entering and Exiting Emacs
 ./entering.texi(,6) @cindex entering XEmacs
@@ -2662,6 +2702,7 @@ xemacs.texi(,1062)
 ./entering.texi(,149) information, such as which files are visited, when you kill it, so that
 ./entering.texi(,150) the next time you restart Emacs it will try to visit the same files and
 ./entering.texi(,151) so on.
+./entering.texi(,152) @c @xref{Saving Emacs Sessions}.
 ./entering.texi(,153) 
 ./entering.texi(,154)   The operating system usually listens for certain special characters
 ./entering.texi(,155) whose meaning is to kill or suspend the program you are running.
@@ -2879,7 +2920,7 @@ xemacs.texi(,1062)
 ./cmdargs.texi(,205) xemacs *.c
 ./cmdargs.texi(,206) @end example
 ./cmdargs.texi(,207) 
-./cmdargs.texi(,208) 
+./cmdargs.texi(,208) @noindent
 ./cmdargs.texi(,209) passes each @code{.c} file as a separate argument to Emacs, so that
 ./cmdargs.texi(,210) Emacs visits each file (@pxref{Visiting}).
 ./cmdargs.texi(,211) 
@@ -2891,7 +2932,7 @@ xemacs.texi(,1062)
 ./cmdargs.texi(,217) xemacs -batch foo.c -l hack-c-program -f save-buffer -kill > log
 ./cmdargs.texi(,218) @end example
 ./cmdargs.texi(,219) 
-./cmdargs.texi(,220) 
+./cmdargs.texi(,220) @noindent
 ./cmdargs.texi(,221) Here Emacs is told to visit @file{foo.c}, load @file{hack-c-program.el}
 ./cmdargs.texi(,222) (which makes changes in the visited file), save @file{foo.c} (note that
 ./cmdargs.texi(,223) @code{save-buffer} is the function that @kbd{C-x C-s} is bound to), and
@@ -2983,6 +3024,7 @@ xemacs.texi(,1062)
 ./cmdargs.texi(,309) @end table
 ./startup.texi(,1) 
 ./startup.texi(,1) @node Startup Paths, Packages, Command Switches, Top
+./startup.texi(,2) @comment  node-name,  next,  previous,  up
 ./startup.texi(,3) @section How XEmacs finds Directories and Files
 ./startup.texi(,4) 
 ./startup.texi(,5) @cindex startup paths
@@ -3177,6 +3219,9 @@ xemacs.texi(,1062)
 ./startup.texi(,194) 
 ./startup.texi(,195) 
 ./basic.texi(,1) 
+./basic.texi(,1) @c This is part of the XEmacs manual.
+./basic.texi(,2) @c Copyright (C) 1985, 86, 87, 93, 94, 95, 1997 Free Software Foundation, Inc.
+./basic.texi(,3) @c See file xemacs.texi for copying conditions.
 ./basic.texi(,4) @node Basic, Undo, Packages, Top
 ./basic.texi(,5) @chapter Basic Editing Commands
 ./basic.texi(,6) 
@@ -3209,6 +3254,7 @@ xemacs.texi(,1062)
 ./basic.texi(,33) * Continuation Lines::  Lines too wide for the screen.
 ./basic.texi(,34) * Position Info::       What page, line, row, or column is point on?
 ./basic.texi(,35) * Arguments::	        Numeric arguments for repeating a command.
+./basic.texi(,36) @c * Repeating::           A short-cut for repeating the previous command.
 ./basic.texi(,37) @end menu
 ./basic.texi(,38) 
 ./basic.texi(,39) @node Inserting Text, Moving Point, , Basic
@@ -3277,7 +3323,7 @@ xemacs.texi(,1062)
 ./basic.texi(,102) overwriting with it.)
 ./basic.texi(,103) @end itemize
 ./basic.texi(,104) 
-./basic.texi(,105) 
+./basic.texi(,105) @noindent
 ./basic.texi(,106) A numeric argument to @kbd{C-q} specifies how many copies of the quoted
 ./basic.texi(,107) character should be inserted (@pxref{Arguments}).
 ./basic.texi(,108) 
@@ -3401,7 +3447,7 @@ xemacs.texi(,1062)
 ./basic.texi(,226) @itemx C-HOME
 ./basic.texi(,227) Move to the top of the buffer (@code{beginning-of-buffer}).  With
 ./basic.texi(,228) numeric argument @var{n}, move to @var{n}/10 of the way from the top.
-./basic.texi(,229) @xref{Arguments}, for more information on numeric arguments.
+./basic.texi(,229) @xref{Arguments}, for more information on numeric arguments.@refill
 ./basic.texi(,230) @item M->
 ./basic.texi(,231) @itemx C-END
 ./basic.texi(,232) Move to the end of the buffer (@code{end-of-buffer}).
@@ -3411,6 +3457,7 @@ xemacs.texi(,1062)
 ./basic.texi(,236) @item M-g
 ./basic.texi(,237) Read a number @var{n} and move point to line number @var{n}
 ./basic.texi(,238) (@code{goto-line}).  Line 1 is the beginning of the buffer.
+./basic.texi(,239) @c @item C-x C-n
 ./basic.texi(,240) @item M-x set-goal-column
 ./basic.texi(,241) @findex set-goal-column
 ./basic.texi(,242) Use the current column of point as the @dfn{semi-permanent goal column} for
@@ -3418,6 +3465,7 @@ xemacs.texi(,1062)
 ./basic.texi(,244) commands always move to this column in each line moved into, or as
 ./basic.texi(,245) close as possible given the contents of the line.  This goal column remains
 ./basic.texi(,246) in effect until canceled.
+./basic.texi(,247) @c @item C-u C-x C-n
 ./basic.texi(,248) @item C-u M-x set-goal-column
 ./basic.texi(,249) Cancel the goal column.  Henceforth, @kbd{C-n} and @kbd{C-p} once
 ./basic.texi(,250) again try to avoid changing the horizontal position, as usual.
@@ -3489,7 +3537,7 @@ xemacs.texi(,1062)
 ./basic.texi(,316) C-x C-f /usr/rms/foo.c @key{RET}
 ./basic.texi(,317) @end example
 ./basic.texi(,318) 
-./basic.texi(,319) 
+./basic.texi(,319) @noindent
 ./basic.texi(,320) Here the file name is given as an @dfn{argument} to the command @kbd{C-x
 ./basic.texi(,321) C-f} (@code{find-file}).  That command uses the @dfn{minibuffer} to
 ./basic.texi(,322) read the argument, and you type @key{RET} to terminate the argument
@@ -3537,6 +3585,7 @@ xemacs.texi(,1062)
 ./basic.texi(,364)   Here are special commands and techniques for putting in and taking out
 ./basic.texi(,365) blank lines.
 ./basic.texi(,366) 
+./basic.texi(,367) @c widecommands
 ./basic.texi(,368) @table @kbd
 ./basic.texi(,369) @item C-o
 ./basic.texi(,370) Insert one or more blank lines after the cursor (@code{open-line}).
@@ -3671,7 +3720,7 @@ xemacs.texi(,1062)
 ./basic.texi(,499) Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
 ./basic.texi(,500) @end example
 ./basic.texi(,501) 
-./basic.texi(,502) 
+./basic.texi(,502) @noindent
 ./basic.texi(,503) (In fact, this is the output produced when point is before @samp{column
 ./basic.texi(,504) 53} in the example.)
 ./basic.texi(,505) 
@@ -3697,7 +3746,7 @@ xemacs.texi(,1062)
 ./basic.texi(,525) Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) <19591 - 19703>  column 69 
 ./basic.texi(,526) @end smallexample
 ./basic.texi(,527) 
-./basic.texi(,528) 
+./basic.texi(,528) @noindent
 ./basic.texi(,529) where the two extra numbers give the smallest and largest character position
 ./basic.texi(,530) that point is allowed to assume.  The characters between those two positions
 ./basic.texi(,531) are the visible ones.  @xref{Narrowing}.
@@ -3735,7 +3784,7 @@ xemacs.texi(,1062)
 ./basic.texi(,563) @example
 ./basic.texi(,564) M-5 C-n
 ./basic.texi(,565) @end example
-./basic.texi(,566) 
+./basic.texi(,566) @noindent
 ./basic.texi(,567) would move down five lines.  The characters @kbd{Meta-1}, @kbd{Meta-2},
 ./basic.texi(,568) and so on, as well as @kbd{Meta--}, do this because they are keys bound
 ./basic.texi(,569) to commands (@code{digit-argument} and @code{negative-argument}) that
@@ -3943,7 +3992,7 @@ xemacs.texi(,1062)
 ./mini.texi(,76) Find File: /u2/emacs/src/
 ./mini.texi(,77) @end example
 ./mini.texi(,78) 
-./mini.texi(,79) 
+./mini.texi(,79) @noindent
 ./mini.texi(,80) where @samp{Find File:@: } is the prompt.  Typing @kbd{buffer.c}
 ./mini.texi(,81) specifies the file @file{/u2/emacs/src/buffer.c}.  To find files in
 ./mini.texi(,82) nearby directories, use @kbd{..}; thus, if you type
@@ -3962,7 +4011,7 @@ xemacs.texi(,1062)
 ./mini.texi(,95) Find File: /u2/emacs/src//etc/termcap
 ./mini.texi(,96) @end example
 ./mini.texi(,97) 
-./mini.texi(,98) 
+./mini.texi(,98) @noindent
 ./mini.texi(,99) @cindex // in file name
 ./mini.texi(,100) @cindex double slash in file name
 ./mini.texi(,101) @cindex slashes repeated in file name
@@ -4337,6 +4386,7 @@ xemacs.texi(,1062)
 ./mini.texi(,470) read by @code{compile}.  Finally, there is one ``miscellaneous'' history
 ./mini.texi(,471) list that most minibuffer arguments use.
 ./mini.texi(,472) 
+./mini.texi(,473) @c Do wee need this?
 ./mini.texi(,482) 
 ./mini.texi(,483) @node Repetition,  , Minibuffer History, Minibuffer
 ./mini.texi(,484) @section Repeating Minibuffer Commands
@@ -4350,6 +4400,7 @@ xemacs.texi(,1062)
 ./mini.texi(,492) the command name.
 ./mini.texi(,493) 
 ./mini.texi(,494) @findex list-command-history
+./mini.texi(,495) @c widecommands
 ./mini.texi(,496) @table @kbd
 ./mini.texi(,497) @item C-x @key{ESC} @key{ESC}
 ./mini.texi(,498) Re-execute a recent minibuffer command (@code{repeat-complex-command}).
@@ -4448,7 +4499,7 @@ xemacs.texi(,1062)
 ./m-x.texi(,38) M-x fo @key{TAB} c @key{RET}
 ./m-x.texi(,39) @end example
 ./m-x.texi(,40) 
-./m-x.texi(,41) 
+./m-x.texi(,41) @noindent
 ./m-x.texi(,42) After you type in @code{M-x fo TAB} emacs will give you a possible list of 
 ./m-x.texi(,43) completions from which you can choose. Note that @code{forward-char} is the 
 ./m-x.texi(,44) same command that you invoke with the key @kbd{C-f}.  You can call any 
@@ -4581,7 +4632,7 @@ xemacs.texi(,1062)
 ./help.texi(,25) A B C F I K L M N P S T V W C-c C-d C-f C-i C-k C-n C-w;  ? for more help:
 ./help.texi(,26) @end smallexample
 ./help.texi(,27) 
-./help.texi(,28) 
+./help.texi(,28) @noindent
 ./help.texi(,29) You should type one of those characters.
 ./help.texi(,30) 
 ./help.texi(,31)   Typing a third @kbd{C-h} displays a description of what the options mean;
@@ -4714,7 +4765,7 @@ xemacs.texi(,1062)
 ./help.texi(,163) C-h f auto-fill-mode @key{RET}
 ./help.texi(,164) @end example
 ./help.texi(,165) 
-./help.texi(,166) 
+./help.texi(,166) @noindent
 ./help.texi(,167) displays the documentation for @code{auto-fill-mode}. Using @kbd{C-h f}
 ./help.texi(,168) is the only way to see the documentation of a command that is not bound
 ./help.texi(,169) to any key, that is, a command you would normally call using @kbd{M-x}.
@@ -4898,6 +4949,14 @@ xemacs.texi(,1062)
 ./help.texi(,347) @item @key{DEL}
 ./help.texi(,348) @itemx @key{BS}
 ./help.texi(,349) Scroll backward.
+./help.texi(,350) @c @item @key{RET}
+./help.texi(,351) @c Follow a cross reference at point.
+./help.texi(,352) @c @item @key{TAB}
+./help.texi(,353) @c Move point forward to the next cross reference.
+./help.texi(,354) @c @item S-@key{TAB}
+./help.texi(,355) @c Move point back to the previous cross reference.
+./help.texi(,356) @c @item Mouse-2
+./help.texi(,357) @c Follow a cross reference that you click on.
 ./help.texi(,358) @end table
 ./help.texi(,359) 
 ./help.texi(,360)   When a command name (@pxref{M-x,, Running Commands by Name}) or
@@ -5046,6 +5105,7 @@ xemacs.texi(,1062)
 ./mark.texi(,51) 
 ./mark.texi(,52)   Here are some commands for setting the mark:
 ./mark.texi(,53) 
+./mark.texi(,54) @c WideCommands
 ./mark.texi(,55) @table @kbd
 ./mark.texi(,56) @item C-@key{SPC}
 ./mark.texi(,57) Set the mark where point is (@code{set-mark-command}).
@@ -5235,6 +5295,7 @@ xemacs.texi(,1062)
 ./mouse.texi(,1) 
 ./mouse.texi(,1) 
 ./mouse.texi(,2) @node Mouse Selection, Additional Mouse Operations, Mark, Top
+./mouse.texi(,3) @comment  node-name,  next,  previous,  up
 ./mouse.texi(,4) @section Selecting Text with the Mouse
 ./mouse.texi(,5) @cindex mouse selection
 ./mouse.texi(,6) 
@@ -5425,7 +5486,7 @@ xemacs.texi(,1062)
 ./killing.texi(,45) (@code{delete-char}) and @key{DEL} (@code{delete-backward-char}), which
 ./killing.texi(,46) delete only one character at a time, and those commands that delete only
 ./killing.texi(,47) spaces or newlines.  Commands that can destroy significant amounts of
-./killing.texi(,48) nontrivial data usually kill.
+./killing.texi(,48) nontrivial data usually kill.@refill
 ./killing.texi(,49) 
 ./killing.texi(,50) @subsection Deletion
 ./killing.texi(,51) 
@@ -5526,6 +5587,7 @@ xemacs.texi(,1062)
 ./killing.texi(,146) @kindex M-k
 ./killing.texi(,147) @kindex C-w
 ./killing.texi(,148) 
+./killing.texi(,149) @c DoubleWideCommands
 ./killing.texi(,150) @table @kbd
 ./killing.texi(,151) @item C-w
 ./killing.texi(,152) Kill region (from point to the mark) (@code{kill-region}).
@@ -5563,7 +5625,7 @@ xemacs.texi(,1062)
 ./killing.texi(,184)   Other syntactic units can be killed: words, with @kbd{M-@key{DEL}} and
 ./killing.texi(,185) @kbd{M-d} (@pxref{Words}); sexps, with @kbd{C-M-k} (@pxref{Lists}); and
 ./killing.texi(,186) sentences, with @kbd{C-x @key{DEL}} and @kbd{M-k}
-./killing.texi(,187) (@pxref{Sentences}).
+./killing.texi(,187) (@pxref{Sentences}).@refill
 ./killing.texi(,188) 
 ./killing.texi(,189) @node Yanking, Using X Selections, Killing, Top
 ./killing.texi(,190) @section Yanking
@@ -5658,7 +5720,7 @@ xemacs.texi(,1062)
 ./killing.texi(,279) and here is the third.
 ./killing.texi(,280) @end example
 ./killing.texi(,281) 
-./killing.texi(,282) 
+./killing.texi(,282) @noindent
 ./killing.texi(,283) with point at the beginning of the second line.  If you type @kbd{C-k C-u 2
 ./killing.texi(,284) M-@key{DEL} C-k}, the first @kbd{C-k} kills the text @samp{line of sample
 ./killing.texi(,285) text}, @kbd{C-u 2 M-@key{DEL}} kills @samp{the first} with the newline that
@@ -5676,7 +5738,7 @@ xemacs.texi(,1062)
 ./killing.texi(,297) if it is a kill command, to append the text it kills to the last killed
 ./killing.texi(,298) text, instead of starting a new entry.  With @kbd{C-M-w}, you can kill
 ./killing.texi(,299) several separated pieces of text and accumulate them to be yanked back
-./killing.texi(,300) in one place.
+./killing.texi(,300) in one place.@refill
 ./killing.texi(,301) 
 ./killing.texi(,302) @node Earlier Kills,, Appending Kills, Yanking
 ./killing.texi(,303) @subsection Yanking Earlier Kills
@@ -5689,7 +5751,7 @@ xemacs.texi(,1062)
 ./killing.texi(,310) yanked and replaces it with the text from an earlier kill.  To recover
 ./killing.texi(,311) the text of the next-to-the-last kill, first use @kbd{C-y} to recover
 ./killing.texi(,312) the last kill, then @kbd{M-y} to replace it with the previous
-./killing.texi(,313) kill.
+./killing.texi(,313) kill.@refill
 ./killing.texi(,314) 
 ./killing.texi(,315)   You can think in terms of a ``last yank'' pointer which points at an item
 ./killing.texi(,316) in the kill ring.  Each time you kill, the ``last yank'' pointer moves to
@@ -5732,6 +5794,7 @@ xemacs.texi(,1062)
 ./killing.texi(,353) 
 ./killing.texi(,354) @node Using X Selections, Accumulating Text, Yanking, Top
 ./killing.texi(,355) @section Using X Selections
+./killing.texi(,356) @comment  node-name,  next,  previous,  up
 ./killing.texi(,357) 
 ./killing.texi(,358) In the X window system, mouse selections provide a simple mechanism for
 ./killing.texi(,359) text transfer between different applications.  In a typical X
@@ -5760,6 +5823,7 @@ xemacs.texi(,1062)
 ./killing.texi(,382) @end menu
 ./killing.texi(,383) 
 ./killing.texi(,384) @node X Clipboard Selection, X Selection Commands, Using X Selections, Using X Selections
+./killing.texi(,385) @comment  node-name,  next,  previous,  up
 ./killing.texi(,386) @subsection The Clipboard Selection
 ./killing.texi(,387) @cindex clipboard selections
 ./killing.texi(,388) 
@@ -5816,6 +5880,7 @@ xemacs.texi(,1062)
 ./killing.texi(,439) 
 ./killing.texi(,440) @node X Selection Commands, X Cut Buffers, X Clipboard Selection, Using X Selections
 ./killing.texi(,441) @subsection Miscellaneous X Selection Commands
+./killing.texi(,442) @comment  node-name,  next,  previous,  up
 ./killing.texi(,443) @cindex cut buffers
 ./killing.texi(,444) @cindex primary selections
 ./killing.texi(,445) 
@@ -5852,6 +5917,7 @@ xemacs.texi(,1062)
 ./killing.texi(,476) 
 ./killing.texi(,477) @node X Cut Buffers, Active Regions, X Selection Commands, Using X Selections
 ./killing.texi(,478) @subsection X Cut Buffers
+./killing.texi(,479) @comment  node-name,  next,  previous,  up
 ./killing.texi(,480) 
 ./killing.texi(,481) X cut buffers are a different, older way of transferring text between
 ./killing.texi(,482) applications.  XEmacs supports cut buffers for compatibility
@@ -5879,6 +5945,7 @@ xemacs.texi(,1062)
 ./killing.texi(,504) 
 ./killing.texi(,505) @node Active Regions, , X Cut Buffers, Using X Selections
 ./killing.texi(,506) @subsection Active Regions
+./killing.texi(,507) @comment  node-name,  next,  previous,  up
 ./killing.texi(,508) @cindex active regions
 ./killing.texi(,509) 
 ./killing.texi(,510)   By default, both the text you select in an Emacs buffer using the
@@ -6265,6 +6332,7 @@ xemacs.texi(,1062)
 ./regs.texi(,137) @findex window-configuration-to-register
 ./regs.texi(,138) @findex frame-configuration-to-register
 ./regs.texi(,139) @kindex C-x r w
+./regs.texi(,140) @c @kindex C-x r f
 ./regs.texi(,141)   You can save the window configuration of the selected frame in a
 ./regs.texi(,142) register, or even the configuration of all windows in all frames, and
 ./regs.texi(,143) restore the configuration later.
@@ -6273,6 +6341,7 @@ xemacs.texi(,1062)
 ./regs.texi(,146) @item C-x r w @var{r}
 ./regs.texi(,147) Save the state of the selected frame's windows in register @var{r}
 ./regs.texi(,148) (@code{window-configuration-to-register}).
+./regs.texi(,149) @c @item C-x r f @var{r}
 ./regs.texi(,150) @item M-x frame-configuration-to-register @key{RET} @var{r}
 ./regs.texi(,151) Save the state of all frames, including all their windows, in register
 ./regs.texi(,152) @var{r} (@code{frame-configuration-to-register}).
@@ -6319,14 +6388,15 @@ xemacs.texi(,1062)
 ./regs.texi(,193) (set-register ?@var{r} '(file . @var{name}))
 ./regs.texi(,194) @end smallexample
 ./regs.texi(,195) 
-./regs.texi(,197) 
+./regs.texi(,196) @need 3000
+./regs.texi(,197) @noindent
 ./regs.texi(,198) For example,
 ./regs.texi(,199) 
 ./regs.texi(,200) @smallexample
 ./regs.texi(,201) (set-register ?z '(file . "/usr/src/xemacs/src/ChangeLog"))
 ./regs.texi(,202) @end smallexample
 ./regs.texi(,203) 
-./regs.texi(,204) 
+./regs.texi(,204) @noindent
 ./regs.texi(,205) puts the file name shown in register @samp{z}.
 ./regs.texi(,206) 
 ./regs.texi(,207)   To visit the file whose name is in register @var{r}, type @kbd{C-x r j
@@ -6534,7 +6604,7 @@ xemacs.texi(,1062)
 ./display.texi(,99) the text and point up together as @kbd{C-l} might.  @kbd{C-v} with a
 ./display.texi(,100) negative argument shows you more lines at the top of the window.
 ./display.texi(,101) @kbd{Meta-v} (@code{scroll-down}) is like @kbd{C-v}, but moves in the
-./display.texi(,102) opposite direction.
+./display.texi(,102) opposite direction.@refill
 ./display.texi(,103) 
 ./display.texi(,104) @vindex next-screen-context-lines
 ./display.texi(,105)   To read the buffer a windowful at a time, use @kbd{C-v} with no
@@ -6626,7 +6696,7 @@ xemacs.texi(,1062)
 ./display.texi(,193) the argument.)  Lines with at least @var{n} columns of indentation
 ./display.texi(,194) disappear from the screen.  The only indication of their presence are
 ./display.texi(,195) three dots (@samp{@dots{}}), which appear at the end of each visible
-./display.texi(,196) line that is followed by one or more invisible ones.
+./display.texi(,196) line that is followed by one or more invisible ones.@refill
 ./display.texi(,197) 
 ./display.texi(,198)   The invisible lines are still present in the buffer, and most editing
 ./display.texi(,199) commands see them as usual, so it is very easy to put point in the middle
@@ -6732,6 +6802,7 @@ xemacs.texi(,1062)
 ./search.texi(,35) can stop.  Depending on what you do next, you may or may not need to
 ./search.texi(,36) terminate the search explicitly with a @key{RET}.
 ./search.texi(,37) 
+./search.texi(,38) @c WideCommands
 ./search.texi(,39) @table @kbd
 ./search.texi(,40) @item C-s
 ./search.texi(,41) Incremental search forward (@code{isearch-forward}).
@@ -6750,7 +6821,7 @@ xemacs.texi(,1062)
 ./search.texi(,54) the cursor move to after the first @samp{FO}.  After another @kbd{O}, the
 ./search.texi(,55) cursor is after the first @samp{FOO} after the place where you started the
 ./search.texi(,56) search.  Meanwhile, the search string @samp{FOO} has been echoed in the
-./search.texi(,57) echo area.
+./search.texi(,57) echo area.@refill
 ./search.texi(,58) 
 ./search.texi(,59)   The echo area display ends with three dots when actual searching is going
 ./search.texi(,60) on.  When search is waiting for more input, the three dots are removed.
@@ -6761,7 +6832,7 @@ xemacs.texi(,1062)
 ./search.texi(,65) search string.  This does not happen until Emacs is ready to read another
 ./search.texi(,66) input character; first it must either find, or fail to find, the character
 ./search.texi(,67) you want to erase.  If you do not want to wait for this to happen, use
-./search.texi(,68) @kbd{C-g} as described below.
+./search.texi(,68) @kbd{C-g} as described below.@refill
 ./search.texi(,69) 
 ./search.texi(,70)   When you are satisfied with the place you have reached, you can type
 ./search.texi(,71) @key{RET} (or @key{C-m}), which stops searching, leaving the cursor where 
@@ -7089,25 +7160,26 @@ xemacs.texi(,1062)
 ./search.texi(,395) therefore @samp{f} is a regular expression that matches the string
 ./search.texi(,396) @samp{f} and no other string.  (It does @emph{not} match the string
 ./search.texi(,397) @samp{ff}.)  Likewise, @samp{o} is a regular expression that matches
-./search.texi(,398) only @samp{o}.
+./search.texi(,398) only @samp{o}.@refill
 ./search.texi(,399) 
 ./search.texi(,400) Any two regular expressions @var{a} and @var{b} can be concatenated.  The
 ./search.texi(,401) result is a regular expression that matches a string if @var{a} matches
 ./search.texi(,402) some amount of the beginning of that string and @var{b} matches the rest of
-./search.texi(,403) the string.
+./search.texi(,403) the string.@refill
 ./search.texi(,404) 
 ./search.texi(,405) As a simple example, we can concatenate the regular expressions @samp{f}
 ./search.texi(,406) and @samp{o} to get the regular expression @samp{fo}, which matches only
 ./search.texi(,407) the string @samp{fo}.  Still trivial.  To do something more powerful, you
 ./search.texi(,408) need to use one of the special characters.  Here is a list of them:
 ./search.texi(,409) 
+./search.texi(,410) @need 1200
 ./search.texi(,411) @table @kbd
 ./search.texi(,412) @item .@: @r{(Period)}
 ./search.texi(,413) @cindex @samp{.} in regexp
 ./search.texi(,414) is a special character that matches any single character except a newline.
 ./search.texi(,415) Using concatenation, we can make regular expressions like @samp{a.b}, which
 ./search.texi(,416) matches any three-character string that begins with @samp{a} and ends with
-./search.texi(,417) @samp{b}.
+./search.texi(,417) @samp{b}.@refill
 ./search.texi(,418) 
 ./search.texi(,419) @item *
 ./search.texi(,420) @cindex @samp{*} in regexp
@@ -7116,11 +7188,11 @@ xemacs.texi(,1062)
 ./search.texi(,423) possible.  In @samp{fo*}, the @samp{*} applies to the @samp{o}, so
 ./search.texi(,424) @samp{fo*} matches one @samp{f} followed by any number of @samp{o}s.
 ./search.texi(,425) The case of zero @samp{o}s is allowed: @samp{fo*} does match
-./search.texi(,426) @samp{f}.
+./search.texi(,426) @samp{f}.@refill
 ./search.texi(,427) 
 ./search.texi(,428) @samp{*} always applies to the @emph{smallest} possible preceding
 ./search.texi(,429) expression.  Thus, @samp{fo*} has a repeating @samp{o}, not a
-./search.texi(,430) repeating @samp{fo}.
+./search.texi(,430) repeating @samp{fo}.@refill
 ./search.texi(,431) 
 ./search.texi(,432) The matcher processes a @samp{*} construct by matching, immediately, as
 ./search.texi(,433) many repetitions as can be found; it is "greedy".  Then it continues
@@ -7132,7 +7204,7 @@ xemacs.texi(,1062)
 ./search.texi(,439) pattern is @samp{ar} and there is only @samp{r} left to match, so this
 ./search.texi(,440) try fails.  The next alternative is for @samp{a*} to match only two
 ./search.texi(,441) @samp{a}s.  With this choice, the rest of the regexp matches
-./search.texi(,442) successfully.
+./search.texi(,442) successfully.@refill
 ./search.texi(,443) 
 ./search.texi(,444) Nested repetition operators can be extremely slow if they specify
 ./search.texi(,445) backtracking loops.  For example, it could take hours for the regular
@@ -7162,6 +7234,7 @@ xemacs.texi(,1062)
 ./search.texi(,469) works just like @samp{*}, except that rather than matching the longest
 ./search.texi(,470) match, it matches the shortest match.  @samp{*?} is known as a
 ./search.texi(,471) @dfn{non-greedy} quantifier, a regexp construct borrowed from Perl.
+./search.texi(,472) @c Did perl get this from somewhere?  What's the real history of *? ?
 ./search.texi(,473) 
 ./search.texi(,474) This construct is very useful for when you want to match the text inside
 ./search.texi(,475) a pair of delimiters.  For instance, @samp{/\*.*?\*/} will match C
@@ -7180,6 +7253,7 @@ xemacs.texi(,1062)
 ./search.texi(,488) is the non-greedy version of @samp{?}.
 ./search.texi(,489) 
 ./search.texi(,490) @item \@{n,m\@}
+./search.texi(,491) @c Note the spacing after the close brace is deliberate.
 ./search.texi(,492) @cindex @samp{\@{n,m\@} }in regexp
 ./search.texi(,493) serves as an interval quantifier, analogous to @samp{*} or @samp{+}, but
 ./search.texi(,494) specifies that the expression must match at least @var{n} times, but no
@@ -7199,17 +7273,17 @@ xemacs.texi(,1062)
 ./search.texi(,508) @samp{d}, and @samp{[ad]*} matches any string composed of just @samp{a}s
 ./search.texi(,509) and @samp{d}s (including the empty string), from which it follows that
 ./search.texi(,510) @samp{c[ad]*r} matches @samp{cr}, @samp{car}, @samp{cdr},
-./search.texi(,511) @samp{caddaar}, etc.
+./search.texi(,511) @samp{caddaar}, etc.@refill
 ./search.texi(,512) 
 ./search.texi(,513) The usual regular expression special characters are not special inside a
 ./search.texi(,514) character set.  A completely different set of special characters exists
-./search.texi(,515) inside character sets: @samp{]}, @samp{-} and @samp{^}.
+./search.texi(,515) inside character sets: @samp{]}, @samp{-} and @samp{^}.@refill
 ./search.texi(,516) 
 ./search.texi(,517) @samp{-} is used for ranges of characters.  To write a range, write two
 ./search.texi(,518) characters with a @samp{-} between them.  Thus, @samp{[a-z]} matches any
 ./search.texi(,519) lower case letter.  Ranges may be intermixed freely with individual
 ./search.texi(,520) characters, as in @samp{[a-z$%.]}, which matches any lower case letter
-./search.texi(,521) or @samp{$}, @samp{%}, or a period.
+./search.texi(,521) or @samp{$}, @samp{%}, or a period.@refill
 ./search.texi(,522) 
 ./search.texi(,523) To include a @samp{]} in a character set, make it the first character.
 ./search.texi(,524) For example, @samp{[]a]} matches @samp{]} or @samp{a}.  To include a
@@ -7226,7 +7300,7 @@ xemacs.texi(,1062)
 ./search.texi(,535) @cindex @samp{^} in regexp
 ./search.texi(,536) @samp{[^} begins a @dfn{complement character set}, which matches any
 ./search.texi(,537) character except the ones specified.  Thus, @samp{[^a-z0-9A-Z]}
-./search.texi(,538) matches all characters @emph{except} letters and digits.
+./search.texi(,538) matches all characters @emph{except} letters and digits.@refill
 ./search.texi(,539) 
 ./search.texi(,540) @samp{^} is not special in a character set unless it is the first
 ./search.texi(,541) character.  The character following the @samp{^} is treated as if it
@@ -7263,6 +7337,8 @@ xemacs.texi(,1062)
 ./search.texi(,572) expression that matches only @samp{$}, and @samp{\[} is a regular
 ./search.texi(,573) expression that matches only @samp{[}, and so on.
 ./search.texi(,574) 
+./search.texi(,575) @c Removed a paragraph here in lispref about doubling backslashes inside
+./search.texi(,576) @c of Lisp strings.
 ./search.texi(,577) 
 ./search.texi(,578) @end table
 ./search.texi(,579) 
@@ -7271,7 +7347,7 @@ xemacs.texi(,1062)
 ./search.texi(,582) meanings make no sense.  For example, @samp{*foo} treats @samp{*} as
 ./search.texi(,583) ordinary since there is no preceding expression on which the @samp{*}
 ./search.texi(,584) can act.  It is poor practice to depend on this behavior; quote the
-./search.texi(,585) special character anyway, regardless of where it appears.
+./search.texi(,585) special character anyway, regardless of where it appears.@refill
 ./search.texi(,586) 
 ./search.texi(,587) For the most part, @samp{\} followed by any character matches only
 ./search.texi(,588) that character.  However, there are several exceptions: characters
@@ -7286,14 +7362,14 @@ xemacs.texi(,1062)
 ./search.texi(,597) specifies an alternative.
 ./search.texi(,598) Two regular expressions @var{a} and @var{b} with @samp{\|} in
 ./search.texi(,599) between form an expression that matches anything that either @var{a} or
-./search.texi(,600) @var{b} matches.
+./search.texi(,600) @var{b} matches.@refill
 ./search.texi(,601) 
 ./search.texi(,602) Thus, @samp{foo\|bar} matches either @samp{foo} or @samp{bar}
-./search.texi(,603) but no other string.
+./search.texi(,603) but no other string.@refill
 ./search.texi(,604) 
 ./search.texi(,605) @samp{\|} applies to the largest possible surrounding expressions.  Only a
 ./search.texi(,606) surrounding @samp{\( @dots{} \)} grouping can limit the grouping power of
-./search.texi(,607) @samp{\|}.
+./search.texi(,607) @samp{\|}.@refill
 ./search.texi(,608) 
 ./search.texi(,609) Full backtracking capability exists to handle multiple uses of @samp{\|}.
 ./search.texi(,610) 
@@ -7311,7 +7387,7 @@ xemacs.texi(,1062)
 ./search.texi(,622) @item
 ./search.texi(,623) To enclose an expression for a suffix operator such as @samp{*} to act
 ./search.texi(,624) on.  Thus, @samp{ba\(na\)*} matches @samp{bananana}, etc., with any
-./search.texi(,625) (zero or more) number of @samp{na} strings.
+./search.texi(,625) (zero or more) number of @samp{na} strings.@refill
 ./search.texi(,626) 
 ./search.texi(,627) @item
 ./search.texi(,628) To record a matched substring for future reference.
@@ -7362,6 +7438,8 @@ xemacs.texi(,1062)
 ./search.texi(,673) engine, as well as the amount of memory allocation and string copying it
 ./search.texi(,674) must do.  The actual performance gain to be observed has not been
 ./search.texi(,675) measured or quantified as of this writing.
+./search.texi(,676) @c This is used to good advantage by the font-locking code, and by
+./search.texi(,677) @c `regexp-opt.el'.
 ./search.texi(,678) 
 ./search.texi(,679) The shy grouping operator has been borrowed from Perl, and has not been
 ./search.texi(,680) available prior to XEmacs 20.3, nor is it available in FSF Emacs.
@@ -7413,7 +7491,7 @@ xemacs.texi(,1062)
 ./search.texi(,726) matches the empty string, but only at the beginning or
 ./search.texi(,727) end of a word.  Thus, @samp{\bfoo\b} matches any occurrence of
 ./search.texi(,728) @samp{foo} as a separate word.  @samp{\bballs?\b} matches
-./search.texi(,729) @samp{ball} or @samp{balls} as a separate word.
+./search.texi(,729) @samp{ball} or @samp{balls} as a separate word.@refill
 ./search.texi(,730) 
 ./search.texi(,731) @item \B
 ./search.texi(,732) @cindex @samp{\B} in regexp
@@ -7441,7 +7519,7 @@ xemacs.texi(,1062)
 ./search.texi(,754) "[.?!][]\"')]*\\($\\|\t\\|  \\)[ \t\n]*"
 ./search.texi(,755) @end example
 ./search.texi(,756) 
-./search.texi(,757) 
+./search.texi(,757) @noindent
 ./search.texi(,758) This regexp contains four parts: a character set matching
 ./search.texi(,759) period, @samp{?} or @samp{!}; a character set matching close-brackets,
 ./search.texi(,760) quotes or parentheses, repeated any number of times; an alternative in
@@ -7457,7 +7535,7 @@ xemacs.texi(,1062)
 ./search.texi(,770) are searching through; if you specify searching for @samp{FOO},
 ./search.texi(,771) @samp{Foo} and @samp{foo} are also considered a match.  Regexps, and in
 ./search.texi(,772) particular character sets, are included: @samp{[aB]} matches @samp{a}
-./search.texi(,773) or @samp{A} or @samp{b} or @samp{B}.
+./search.texi(,773) or @samp{A} or @samp{b} or @samp{B}.@refill
 ./search.texi(,774) 
 ./search.texi(,775)   If you want a case-sensitive search, set the variable
 ./search.texi(,776) @code{case-fold-search} to @code{nil}.  Then all letters must match
@@ -7531,13 +7609,13 @@ xemacs.texi(,1062)
 ./search.texi(,844) in @var{newstring} stands for the entire text being replaced.
 ./search.texi(,845) @samp{\@var{d}} in @var{newstring}, where @var{d} is a digit, stands for
 ./search.texi(,846) whatever matched the @var{d}'th parenthesized grouping in @var{regexp}.
-./search.texi(,847) For example,
+./search.texi(,847) For example,@refill
 ./search.texi(,848) 
 ./search.texi(,849) @example
 ./search.texi(,850) M-x replace-regexp @key{RET} c[ad]+r @key{RET} \&-safe @key{RET}
 ./search.texi(,851) @end example
 ./search.texi(,852) 
-./search.texi(,853) 
+./search.texi(,853) @noindent
 ./search.texi(,854) would replace (for example) @samp{cadr} with @samp{cadr-safe} and @samp{cddr}
 ./search.texi(,855) with @samp{cddr-safe}.
 ./search.texi(,856) 
@@ -7545,7 +7623,7 @@ xemacs.texi(,1062)
 ./search.texi(,858) M-x replace-regexp @key{RET} \(c[ad]+r\)-safe @key{RET} \1 @key{RET}
 ./search.texi(,859) @end example
 ./search.texi(,860) 
-./search.texi(,861) 
+./search.texi(,861) @noindent
 ./search.texi(,862) would perform exactly the opposite replacements.  To include a @samp{\}
 ./search.texi(,863) in the text to replace with, you must give @samp{\\}.
 ./search.texi(,864) 
@@ -7561,7 +7639,7 @@ xemacs.texi(,1062)
 ./search.texi(,874) M-x replace-string @key{RET} foo @key{RET} bar @key{RET}
 ./search.texi(,875) @end example
 ./search.texi(,876) 
-./search.texi(,877) 
+./search.texi(,877) @noindent
 ./search.texi(,878) replaces a lower-case @samp{foo} with a lower case @samp{bar}, @samp{FOO}
 ./search.texi(,879) with @samp{BAR}, and @samp{Foo} with @samp{Bar}.  If upper-case letters are
 ./search.texi(,880) used in the second argument, they remain upper-case every time that
@@ -7592,12 +7670,12 @@ xemacs.texi(,1062)
 ./search.texi(,905) @kbd{M-%}.  This command finds occurrences of @samp{foo} one by one,
 ./search.texi(,906) displays each occurrence, and asks you whether to replace it.  A numeric
 ./search.texi(,907) argument to @code{query-replace} tells it to consider only occurrences
-./search.texi(,908) that are bounded by word-delimiter characters.
+./search.texi(,908) that are bounded by word-delimiter characters.@refill
 ./search.texi(,909) 
 ./search.texi(,910) @findex query-replace-regexp
 ./search.texi(,911)   Aside from querying, @code{query-replace} works just like
 ./search.texi(,912) @code{replace-string}, and @code{query-replace-regexp} works
-./search.texi(,913) just like @code{replace-regexp}.
+./search.texi(,913) just like @code{replace-regexp}.@refill
 ./search.texi(,914) 
 ./search.texi(,915)   The things you can type when you are shown an occurrence of @var{string}
 ./search.texi(,916) or a match for @var{regexp} are:
@@ -7613,11 +7691,12 @@ xemacs.texi(,1062)
 ./search.texi(,926) @kindex C-w (query-replace)
 ./search.texi(,927) @kindex C-l (query-replace)
 ./search.texi(,928) 
+./search.texi(,929) @c WideCommands
 ./search.texi(,930) @table @kbd
 ./search.texi(,931) @item @key{SPC}
 ./search.texi(,932) to replace the occurrence with @var{newstring}.  This preserves case, just
 ./search.texi(,933) like @code{replace-string}, provided @code{case-replace} is non-@code{nil},
-./search.texi(,934) as it normally is.
+./search.texi(,934) as it normally is.@refill
 ./search.texi(,935) 
 ./search.texi(,936) @item @key{DEL}
 ./search.texi(,937) to skip to the next occurrence without replacing this one.
@@ -7683,6 +7762,7 @@ xemacs.texi(,1062)
 ./search.texi(,997) @findex count-matches
 ./search.texi(,998) @findex delete-non-matching-lines
 ./search.texi(,999) @findex delete-matching-lines
+./search.texi(,1000) @c grosscommands
 ./search.texi(,1001) @table @kbd
 ./search.texi(,1002) @item M-x occur
 ./search.texi(,1003) Print each line that follows point and contains a match for the
@@ -7758,7 +7838,7 @@ xemacs.texi(,1062)
 ./fixit.texi(,44) @key{DEL}} is particularly useful when you are thinking of what to write as
 ./fixit.texi(,45) you type it, in case you change your mind about phrasing.
 ./fixit.texi(,46) @kbd{M-@key{DEL}} and @kbd{C-x @key{DEL}} save the killed text for
-./fixit.texi(,47) @kbd{C-y} and @kbd{M-y} to retrieve.  @xref{Yanking}.
+./fixit.texi(,47) @kbd{C-y} and @kbd{M-y} to retrieve.  @xref{Yanking}.@refill
 ./fixit.texi(,48) 
 ./fixit.texi(,49)   @kbd{M-@key{DEL}} is often useful even when you have typed only a few
 ./fixit.texi(,50) characters wrong, if you know you are confused in your typing and aren't
@@ -7820,7 +7900,7 @@ xemacs.texi(,1062)
 ./fixit.texi(,106) across three other characters.  This is equivalent to repeating @kbd{C-t}
 ./fixit.texi(,107) three times.  @kbd{C-u - 4 M-t} moves the word before point backward across
 ./fixit.texi(,108) four words.  @kbd{C-u - C-M-t} would cancel the effect of plain
-./fixit.texi(,109) @kbd{C-M-t}.
+./fixit.texi(,109) @kbd{C-M-t}.@refill
 ./fixit.texi(,110) 
 ./fixit.texi(,111)   A numeric argument of zero transposes the character (word, sexp, line)
 ./fixit.texi(,112) ending after point with the one ending after the mark (otherwise a
@@ -7850,12 +7930,13 @@ xemacs.texi(,1062)
 ./fixit.texi(,136) the word case-conversion commands @kbd{M-l}, @kbd{M-u}, and @kbd{M-c} do
 ./fixit.texi(,137) not move the cursor when used with a negative argument.
 ./fixit.texi(,138) As soon as you see you have mistyped the last word, you can simply
-./fixit.texi(,139) case-convert it and continue typing.  @xref{Case}.
+./fixit.texi(,139) case-convert it and continue typing.  @xref{Case}.@refill
 ./fixit.texi(,140) 
 ./fixit.texi(,141) @node Spelling,, Fixing Case, Fixit
 ./fixit.texi(,142) @section Checking and Correcting Spelling
 ./fixit.texi(,143) @cindex spelling
 ./fixit.texi(,144) 
+./fixit.texi(,145) @c doublewidecommands
 ./fixit.texi(,146) @table @kbd
 ./fixit.texi(,147) @item M-$
 ./fixit.texi(,148) Check and correct spelling of word (@code{spell-word}).
@@ -7884,7 +7965,7 @@ xemacs.texi(,1062)
 ./fixit.texi(,171) @findex spell-buffer
 ./fixit.texi(,172)   @kbd{M-x spell-buffer} checks each word in the buffer the same way that
 ./fixit.texi(,173) @code{spell-word} does, doing a @code{query-replace} for
-./fixit.texi(,174) every incorrect word if appropriate.
+./fixit.texi(,174) every incorrect word if appropriate.@refill
 ./fixit.texi(,175) 
 ./fixit.texi(,176) @findex spell-region
 ./fixit.texi(,177)   @kbd{M-x spell-region} is similar to @code{spell-buffer} but operates
@@ -8044,6 +8125,7 @@ xemacs.texi(,1062)
 ./files.texi(,147) @section Visiting Files
 ./files.texi(,148) @cindex visiting files
 ./files.texi(,149) 
+./files.texi(,150) @c WideCommands
 ./files.texi(,151) @table @kbd
 ./files.texi(,152) @item C-x C-f
 ./files.texi(,153) Visit a file (@code{find-file}).
@@ -8228,7 +8310,7 @@ xemacs.texi(,1062)
 ./files.texi(,332) Wrote /u/rms/gnu/gnu.tasks
 ./files.texi(,333) @end example
 ./files.texi(,334) 
-./files.texi(,335) 
+./files.texi(,335) @noindent
 ./files.texi(,336) If the selected buffer is not modified (no changes have been made in it
 ./files.texi(,337) since the buffer was created or last saved), Emacs does not save it
 ./files.texi(,338) because it would have no effect.  Instead, @kbd{C-x C-s} prints a message
@@ -8381,7 +8463,7 @@ xemacs.texi(,1062)
 ./files.texi(,485) Never make numbered backups; always make single backups.
 ./files.texi(,486) @end table
 ./files.texi(,487) 
-./files.texi(,488) 
+./files.texi(,488) @noindent
 ./files.texi(,489) @code{version-control} may be set locally in an individual buffer to
 ./files.texi(,490) control the making of backups for that buffer's file.  For example,
 ./files.texi(,491) Rmail mode locally sets @code{version-control} to @code{never} to make sure
@@ -8444,7 +8526,7 @@ xemacs.texi(,1062)
 ./files.texi(,548) done for files that have multiple names, but renaming may still be done when
 ./files.texi(,549) the file being edited has only one name.  If the variable
 ./files.texi(,550) @code{backup-by-copying-when-mismatch} is non-@code{nil}, copying is
-./files.texi(,551) done if renaming would cause the file's owner or group to change.  
+./files.texi(,551) done if renaming would cause the file's owner or group to change.  @refill
 ./files.texi(,552) 
 ./files.texi(,553) @node Interlocking,  , Backup, Saving
 ./files.texi(,554) @subsection Protection Against Simultaneous Editing
@@ -8512,7 +8594,7 @@ xemacs.texi(,1062)
 ./files.texi(,616) author.  You should attempt to contact that person and ask him not to
 ./files.texi(,617) continue editing.  Often the next step is to save the contents of your
 ./files.texi(,618) Emacs buffer under a different name, and use @code{diff} to compare the
-./files.texi(,619) two files.
+./files.texi(,619) two files.@refill
 ./files.texi(,620) 
 ./files.texi(,621)   Simultaneous editing checks are also made when you visit a file that
 ./files.texi(,622) is already visited with @kbd{C-x C-f} and when you start to modify a
@@ -8679,7 +8761,7 @@ xemacs.texi(,1062)
 ./files.texi(,783) restores the contents from the auto-save file @file{#@var{file}#}.  You
 ./files.texi(,784) can then save the file with @kbd{C-x C-s} to put the recovered text into
 ./files.texi(,785) @var{file} itself.  For example, to recover file @file{foo.c} from its
-./files.texi(,786) auto-save file @file{#foo.c#}, do:
+./files.texi(,786) auto-save file @file{#foo.c#}, do:@refill
 ./files.texi(,787) 
 ./files.texi(,788) @example
 ./files.texi(,789) M-x recover-file @key{RET} foo.c @key{RET}
@@ -8805,7 +8887,7 @@ xemacs.texi(,1062)
 ./files.texi(,909) Register the visited file in version control.
 ./files.texi(,910) @end table
 ./files.texi(,911) 
-./files.texi(,912) 
+./files.texi(,912) @noindent
 ./files.texi(,913) (@kbd{C-x v} is the prefix key for version control commands; all of these
 ./files.texi(,914) commands except for @kbd{C-x C-q} start with @kbd{C-x v}.)
 ./files.texi(,915) 
@@ -8907,6 +8989,7 @@ xemacs.texi(,1062)
 ./files.texi(,1011) 
 ./files.texi(,1012) @node Variables for Check-in/out, Log Entries, Editing with VC, Version Control
 ./files.texi(,1013) @subsection Variables Affecting Check-in and Check-out
+./files.texi(,1014) @c There is no need to tell users about vc-master-templates.
 ./files.texi(,1015) 
 ./files.texi(,1016) @vindex vc-suppress-confirm
 ./files.texi(,1017)   If @code{vc-suppress-confirm} is non-@code{nil}, then @kbd{C-x C-q}
@@ -9001,12 +9084,14 @@ xemacs.texi(,1062)
 ./files.texi(,1106) @file{ChangeLog} and inserts text like this:
 ./files.texi(,1107) 
 ./files.texi(,1108) @smallexample
+./files.texi(,1109) @group
 ./files.texi(,1110) Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@@apn.org)
 ./files.texi(,1111) 
 ./files.texi(,1112)         * rcs2log: Ignore log messages that start with `#'.
+./files.texi(,1113) @end group
 ./files.texi(,1114) @end smallexample
 ./files.texi(,1115) 
-./files.texi(,1116) 
+./files.texi(,1116) @noindent
 ./files.texi(,1117) You can then edit the new change log entry further as you wish.
 ./files.texi(,1118) 
 ./files.texi(,1119)   Normally, the log entry for file @file{foo} is displayed as @samp{*
@@ -9017,9 +9102,11 @@ xemacs.texi(,1062)
 ./files.texi(,1124) @file{ChangeLog} looks like this:
 ./files.texi(,1125) 
 ./files.texi(,1126) @smallexample
+./files.texi(,1127) @group
 ./files.texi(,1128) Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@@apn.org)
 ./files.texi(,1129) 
 ./files.texi(,1130)         * vc.el (vc-do-command): Check call-process status.
+./files.texi(,1131) @end group
 ./files.texi(,1132) @end smallexample
 ./files.texi(,1133) 
 ./files.texi(,1134)   When @kbd{C-x v a} adds several change log entries at once, it groups
@@ -9030,22 +9117,24 @@ xemacs.texi(,1062)
 ./files.texi(,1139) entries:
 ./files.texi(,1140) 
 ./files.texi(,1141) @example
-./files.texi(,1142) For @file{vc.texinfo}:
+./files.texi(,1142) @exdent For @file{vc.texinfo}:
 ./files.texi(,1143) Fix expansion typos.
-./files.texi(,1144) For @file{vc.el}:
+./files.texi(,1144) @exdent For @file{vc.el}:
 ./files.texi(,1145) Don't call expand-file-name.
-./files.texi(,1146) For @file{vc-hooks.el}:
+./files.texi(,1146) @exdent For @file{vc-hooks.el}:
 ./files.texi(,1147) Don't call expand-file-name.
 ./files.texi(,1148) @end example
 ./files.texi(,1149) 
 ./files.texi(,1150)   They appear like this in @file{ChangeLog}:
 ./files.texi(,1151) 
 ./files.texi(,1152) @smallexample
+./files.texi(,1153) @group
 ./files.texi(,1154) Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@@apn.org)
 ./files.texi(,1155) 
 ./files.texi(,1156)         * vc.texinfo: Fix expansion typos.
 ./files.texi(,1157) 
 ./files.texi(,1158)         * vc.el, vc-hooks.el: Don't call expand-file-name.
+./files.texi(,1159) @end group
 ./files.texi(,1160) @end smallexample
 ./files.texi(,1161) 
 ./files.texi(,1162)   Normally, @kbd{C-x v a} separates log entries by a blank line, but you
@@ -9056,22 +9145,24 @@ xemacs.texi(,1062)
 ./files.texi(,1167) entries are:
 ./files.texi(,1168) 
 ./files.texi(,1169) @example
-./files.texi(,1170) For @file{vc.texinfo}:
+./files.texi(,1170) @exdent For @file{vc.texinfo}:
 ./files.texi(,1171) @{expand@} Fix expansion typos.
-./files.texi(,1172) For @file{vc.el}:
+./files.texi(,1172) @exdent For @file{vc.el}:
 ./files.texi(,1173) @{expand@} Don't call expand-file-name.
-./files.texi(,1174) For @file{vc-hooks.el}:
+./files.texi(,1174) @exdent For @file{vc-hooks.el}:
 ./files.texi(,1175) @{expand@} Don't call expand-file-name.
 ./files.texi(,1176) @end example
 ./files.texi(,1177) 
-./files.texi(,1178) 
+./files.texi(,1178) @noindent
 ./files.texi(,1179) Then the text in @file{ChangeLog} looks like this:
 ./files.texi(,1180) 
 ./files.texi(,1181) @smallexample
+./files.texi(,1182) @group
 ./files.texi(,1183) Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@@apn.org)
 ./files.texi(,1184) 
 ./files.texi(,1185)         * vc.texinfo: Fix expansion typos.
 ./files.texi(,1186)         * vc.el, vc-hooks.el: Don't call expand-file-name.
+./files.texi(,1187) @end group
 ./files.texi(,1188) @end smallexample
 ./files.texi(,1189) 
 ./files.texi(,1190)   A log entry whose text begins with @samp{#} is not copied to
@@ -9238,6 +9329,7 @@ xemacs.texi(,1062)
 ./files.texi(,1351) support.  They use RCS's native facilities for this, so under VC
 ./files.texi(,1352) snapshots made using RCS are visible even when you bypass VC.
 ./files.texi(,1353) 
+./files.texi(,1354) @c worded verbosely to avoid overfull hbox.
 ./files.texi(,1355)   For SCCS, VC implements snapshots itself.  The files it uses contain
 ./files.texi(,1356) name/file/version-number triples.  These snapshots are visible only
 ./files.texi(,1357) through VC.
@@ -9324,19 +9416,23 @@ xemacs.texi(,1062)
 ./files.texi(,1438) element.  The default value for @code{vc-static-header-alist} is:
 ./files.texi(,1439) 
 ./files.texi(,1440) @example
+./files.texi(,1441) @group
 ./files.texi(,1442) (("\\.c$" .
 ./files.texi(,1443)   "\n#ifndef lint\nstatic char vcid[] = \"\%s\";\n\
 ./files.texi(,1444) #endif /* lint */\n"))
+./files.texi(,1445) @end group
 ./files.texi(,1446) @end example
 ./files.texi(,1447) 
-./files.texi(,1448) 
+./files.texi(,1448) @noindent
 ./files.texi(,1449) which specifies insertion of a string of this form:
 ./files.texi(,1450) 
 ./files.texi(,1451) @example
+./files.texi(,1452) @group
 ./files.texi(,1453) 
 ./files.texi(,1454) #ifndef lint
 ./files.texi(,1455) static char vcid[] = "@var{string}";
 ./files.texi(,1456) #endif /* lint */
+./files.texi(,1457) @end group
 ./files.texi(,1458) @end example
 ./files.texi(,1459) 
 ./files.texi(,1460) @node ListDir, Comparing Files, Version Control, Files
@@ -9367,7 +9463,7 @@ xemacs.texi(,1062)
 ./files.texi(,1485) C-x C-d /u2/emacs/etc @key{RET}
 ./files.texi(,1486) @end example
 ./files.texi(,1487) 
-./files.texi(,1488) 
+./files.texi(,1488) @noindent
 ./files.texi(,1489) lists all the files in directory @file{/u2/emacs/etc}.  An example of
 ./files.texi(,1490) specifying a file name pattern is:
 ./files.texi(,1491) 
@@ -9502,7 +9598,7 @@ xemacs.texi(,1062)
 ./files.texi(,1620)   For extra convenience, @key{SPC} and @kbd{n} in Dired are equivalent to
 ./files.texi(,1621) @kbd{C-n}.  @kbd{p} is equivalent to @kbd{C-p}.  Moving by lines is done so
 ./files.texi(,1622) often in Dired that it deserves to be easy to type.  @key{DEL} (move up and
-./files.texi(,1623) unflag) is often useful simply for moving up.
+./files.texi(,1623) unflag) is often useful simply for moving up.@refill
 ./files.texi(,1624) 
 ./files.texi(,1625)   The @kbd{g} command in Dired runs @code{revert-buffer} to reinitialize
 ./files.texi(,1626) the buffer from the actual disk directory and show any changes made in the
@@ -9558,7 +9654,7 @@ xemacs.texi(,1062)
 ./files.texi(,1676)   The @kbd{#}, @kbd{~}, and @kbd{.} commands flag many files for
 ./files.texi(,1677) deletion, based on their names.  These commands are useful precisely
 ./files.texi(,1678) because they do not actually delete any files; you can remove the
-./files.texi(,1679) deletion flags from any flagged files that you really wish to keep.
+./files.texi(,1679) deletion flags from any flagged files that you really wish to keep.@refill
 ./files.texi(,1680) 
 ./files.texi(,1681)   @kbd{#} flags for deletion all files that appear to have been made by
 ./files.texi(,1682) auto-saving (that is, files whose names begin and end with @samp{#}).
@@ -9577,7 +9673,7 @@ xemacs.texi(,1062)
 ./files.texi(,1695) number of newest versions to keep, overriding @code{dired-kept-versions}.
 ./files.texi(,1696) A negative numeric argument overrides @code{kept-old-versions}, using minus
 ./files.texi(,1697) the value of the argument to specify the number of oldest versions of each
-./files.texi(,1698) file to keep.
+./files.texi(,1698) file to keep.@refill
 ./files.texi(,1699) 
 ./files.texi(,1700) @node Dired Immed,  , Dired Deletion, Dired
 ./files.texi(,1701) @subsection Immediate File Operations in Dired
@@ -9606,7 +9702,7 @@ xemacs.texi(,1062)
 ./files.texi(,1724) file is like visiting it, but is slanted toward moving around in the file
 ./files.texi(,1725) conveniently and does not allow changing the file.  @xref{Misc File
 ./files.texi(,1726) Ops,View File}.  Viewing a file that is a directory runs Dired on that
-./files.texi(,1727) directory.
+./files.texi(,1727) directory.@refill
 ./files.texi(,1728) @end table
 ./files.texi(,1729) 
 ./files.texi(,1730) @node Misc File Ops,  , Dired, Files
@@ -9744,7 +9840,7 @@ xemacs.texi(,1062)
 ./buffers.texi(,71) @var{bufname}.  You can use completion on an abbreviation for the buffer
 ./buffers.texi(,72) name you want (@pxref{Completion}).  An empty argument to @kbd{C-x b}
 ./buffers.texi(,73) specifies the most recently selected buffer that is not displayed in any
-./buffers.texi(,74) window.
+./buffers.texi(,74) window.@refill
 ./buffers.texi(,75) 
 ./buffers.texi(,76)   Most buffers are created when you visit files, or use Emacs commands
 ./buffers.texi(,77) that display text.  You can also create a buffer explicitly by typing
@@ -9784,7 +9880,7 @@ xemacs.texi(,1062)
 ./buffers.texi(,111) ``modified''.  If several buffers are modified, it may be time to save
 ./buffers.texi(,112) some with @kbd{C-x s} (@pxref{Saving}).  A @samp{%} indicates a read-only
 ./buffers.texi(,113) buffer.  A @samp{.} marks the selected buffer.  Here is an example of a
-./buffers.texi(,114) buffer list:
+./buffers.texi(,114) buffer list:@refill
 ./buffers.texi(,115) 
 ./buffers.texi(,116) @smallexample
 ./buffers.texi(,117)  MR Buffer         Size  Mode           File
@@ -9800,7 +9896,7 @@ xemacs.texi(,1062)
 ./buffers.texi(,127)     *scratch*      0     Lisp Interaction
 ./buffers.texi(,128) @end smallexample
 ./buffers.texi(,129) 
-./buffers.texi(,130) 
+./buffers.texi(,130) @noindent
 ./buffers.texi(,131) Note that the buffer @samp{*Help*} was made by a help request; it is not
 ./buffers.texi(,132) visiting any file.  The buffer @code{man} was made by Dired on the
 ./buffers.texi(,133) directory @file{/u2/emacs/man/}.
@@ -9853,7 +9949,7 @@ xemacs.texi(,1062)
 ./buffers.texi(,180) 
 ./buffers.texi(,181) To copy text from one buffer to another, use the commands @kbd{M-x
 ./buffers.texi(,182) append-to-buffer} and @kbd{M-x insert-buffer}.  @xref{Accumulating
-./buffers.texi(,183) Text}.
+./buffers.texi(,183) Text}.@refill
 ./buffers.texi(,184) 
 ./buffers.texi(,185) @node Kill Buffer, Several Buffers, Misc Buffer, Buffers
 ./buffers.texi(,186) @section Killing Buffers
@@ -9862,6 +9958,7 @@ xemacs.texi(,1062)
 ./buffers.texi(,189) buffers and may want to eliminate the ones you no
 ./buffers.texi(,190) longer need.  There are several commands for doing this.
 ./buffers.texi(,191) 
+./buffers.texi(,192) @c WideCommands
 ./buffers.texi(,193) @table @kbd
 ./buffers.texi(,194) @item C-x k
 ./buffers.texi(,195) Kill a buffer, specified by name (@code{kill-buffer}).
@@ -10074,7 +10171,7 @@ xemacs.texi(,1062)
 ./windows.texi(,90) variable @code{truncate-partial-width-windows} to non-@code{nil} to
 ./windows.texi(,91) force truncation in all windows less than the full width of the frame,
 ./windows.texi(,92) independent of the buffer and its value for @code{truncate-lines}.
-./windows.texi(,93) @xref{Continuation Lines}.
+./windows.texi(,93) @xref{Continuation Lines}.@refill
 ./windows.texi(,94) 
 ./windows.texi(,95)   Horizontal scrolling is often used in side-by-side windows.
 ./windows.texi(,96) @xref{Display}.
@@ -10270,6 +10367,9 @@ xemacs.texi(,1062)
 ./windows.texi(,286) roughly the same number of lines.
 ./windows.texi(,287) @end table
 ./mule.texi(,1) 
+./mule.texi(,1) @c This is part of the Emacs manual.
+./mule.texi(,2) @c Copyright (C) 1997 Free Software Foundation, Inc.
+./mule.texi(,3) @c See file emacs.texi for copying conditions.
 ./mule.texi(,4) @node Mule, Major Modes, Windows, Top
 ./mule.texi(,5) @chapter World Scripts Support
 ./mule.texi(,6) @cindex MULE
@@ -10612,6 +10712,7 @@ xemacs.texi(,1062)
 ./mule.texi(,345) That's what @samp{set-charset-ccl-program} function is used for.  There
 ./mule.texi(,346) are quite a few various CCL programs defined within XEmacs, and there is
 ./mule.texi(,347) no comprehensive list of them, so you currently have to consult sources.
+./mule.texi(,348) @c FIXME: there must be a list of CCL programs
 ./mule.texi(,349) 
 ./mule.texi(,350) We know that there is a CCL program called @samp{ccl-encode-koi8-r-font}
 ./mule.texi(,351) that is used exactly for needed purpose: to convert characters between
@@ -10731,12 +10832,40 @@ xemacs.texi(,1062)
 ./mule.texi(,465) @node Recognize Coding, Specify Coding, Coding Systems, Mule
 ./mule.texi(,466) @section Recognizing Coding Systems
 ./mule.texi(,467) 
+./mule.texi(,468) @c #### This section is out of date.  The following set-*-coding-system
+./mule.texi(,469) @c functions are known:
 ./mule.texi(,470) 
+./mule.texi(,471) @c set-buffer-file-coding-system 
+./mule.texi(,472) @c set-buffer-file-coding-system-for-read
+./mule.texi(,473) @c set-buffer-process-coding-system
+./mule.texi(,474) @c set-console-tty-coding-system 
+./mule.texi(,475) @c set-console-tty-input-coding-system
+./mule.texi(,476) @c set-console-tty-output-coding-system
+./mule.texi(,477) @c set-default-buffer-file-coding-system
+./mule.texi(,478) @c set-default-coding-systems    
+./mule.texi(,479) @c set-default-file-coding-system
+./mule.texi(,480) @c set-file-coding-system        
+./mule.texi(,481) @c set-file-coding-system-for-read
+./mule.texi(,482) @c set-keyboard-coding-system    
+./mule.texi(,483) @c set-pathname-coding-system    
+./mule.texi(,484) @c set-process-coding-system     
+./mule.texi(,485) @c set-process-input-coding-system
+./mule.texi(,486) @c set-process-output-coding-system
+./mule.texi(,487) @c set-terminal-coding-system    
 ./mule.texi(,488) 
+./mule.texi(,489) @c Some are marked as broken.  Agenda: (1) Update this section using
+./mule.texi(,490) @c docstrings.  Note that they may be inaccurate.  (2) Correct the
+./mule.texi(,491) @c documentation here, updating docstrings at the same time.
 ./mule.texi(,492) 
+./mule.texi(,493) @c Document this.
 ./mule.texi(,494) 
+./mule.texi(,495) @c set-language-environment-coding-systems
 ./mule.texi(,496) 
+./mule.texi(,497) @c What are these?
 ./mule.texi(,498) 
+./mule.texi(,499) @c dontusethis-set-value-file-name-coding-system-handler
+./mule.texi(,500) @c dontusethis-set-value-keyboard-coding-system-handler
+./mule.texi(,501) @c dontusethis-set-value-terminal-coding-system-handler
 ./mule.texi(,502) 
 ./mule.texi(,503)   Most of the time, XEmacs can recognize which coding system to use for
 ./mule.texi(,504) any given file--once you have specified your preferences.
@@ -10780,7 +10909,7 @@ xemacs.texi(,1062)
 ./mule.texi(,542) (modify-coding-system-alist 'file "\\.txt\\'" 'china-iso-8bit)
 ./mule.texi(,543) @end smallexample
 ./mule.texi(,544) 
-./mule.texi(,545) 
+./mule.texi(,545) @noindent
 ./mule.texi(,546) The first argument should be @code{file}, the second argument should be
 ./mule.texi(,547) a regular expression that determines which files this applies to, and
 ./mule.texi(,548) the third argument says which coding system to use for these files.
@@ -11000,7 +11129,7 @@ xemacs.texi(,1062)
 ./major.texi(,69) (@var{regexp} . @var{mode-function})
 ./major.texi(,70) @end example
 ./major.texi(,71) 
-./major.texi(,72) 
+./major.texi(,72) @noindent
 ./major.texi(,73) For example, one element normally found in the list has the form
 ./major.texi(,74) @code{(@t{"\\.c$"} . c-mode)}. It is responsible for selecting C mode
 ./major.texi(,75) for files whose names end in @file{.c}.  (Note that @samp{\\} is needed in
@@ -11017,7 +11146,7 @@ xemacs.texi(,1062)
 ./major.texi(,86) ;-*-Lisp-*-
 ./major.texi(,87) @end example
 ./major.texi(,88) 
-./major.texi(,89) 
+./major.texi(,89) @noindent
 ./major.texi(,90) tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
 ./major.texi(,91) treat this line as a comment.  Such an explicit specification overrides any
 ./major.texi(,92) default mode based on the file name.
@@ -11028,7 +11157,7 @@ xemacs.texi(,1062)
 ./major.texi(,97) -*-Mode: @var{modename};-*-
 ./major.texi(,98) @end example
 ./major.texi(,99) 
-./major.texi(,100) 
+./major.texi(,100) @noindent
 ./major.texi(,101) which allows other things besides the major mode name to be specified.
 ./major.texi(,102) However, Emacs does not look for anything except the mode name.
 ./major.texi(,103) 
@@ -11048,6 +11177,7 @@ xemacs.texi(,1062)
 ./indent.texi(,3) @chapter Indentation
 ./indent.texi(,4) @cindex indentation
 ./indent.texi(,5) 
+./indent.texi(,6) @c WideCommands
 ./indent.texi(,7) @table @kbd
 ./indent.texi(,8) @item @key{TAB}
 ./indent.texi(,9) Indent current line ``appropriately'' in a mode-dependent fashion.
@@ -11101,6 +11231,7 @@ xemacs.texi(,1062)
 ./indent.texi(,57) 
 ./indent.texi(,58) @node Indentation Commands, Tab Stops, Indentation, Indentation
 ./indent.texi(,59) @section Indentation Commands and Techniques
+./indent.texi(,60) @c ??? Explain what Emacs has instead of space-indent-flag.
 ./indent.texi(,61) 
 ./indent.texi(,62)   If you just want to insert a tab character in the buffer, you can type
 ./indent.texi(,63) @kbd{C-q @key{TAB}}.
@@ -11149,7 +11280,7 @@ xemacs.texi(,1062)
 ./indent.texi(,106) character appears in that column.  @kbd{C-x @key{TAB}}
 ./indent.texi(,107) (@code{indent-rigidly}) moves all the lines in the region right by its
 ./indent.texi(,108) argument (left, for negative arguments).  The whole group of lines moves
-./indent.texi(,109) rigidly sideways, which is how the command gets its name.
+./indent.texi(,109) rigidly sideways, which is how the command gets its name.@refill
 ./indent.texi(,110) 
 ./indent.texi(,111) @findex indent-relative
 ./indent.texi(,112)   @kbd{M-x indent-relative} indents at point based on the previous line
@@ -11381,7 +11512,7 @@ xemacs.texi(,1062)
 ./text.texi(,150) 
 ./text.texi(,151)   @TeX{} is a powerful text formatter written by Donald Knuth; like GNU
 ./text.texi(,152) Emacs, it is free.  La@TeX{} is a simplified input format for @TeX{},
-./text.texi(,153) implemented by @TeX{} macros.  It is part of @TeX{}.
+./text.texi(,153) implemented by @TeX{} macros.  It is part of @TeX{}.@refill
 ./text.texi(,154) 
 ./text.texi(,155)   Emacs has a special @TeX{} mode for editing @TeX{} input files.
 ./text.texi(,156) It provides facilities for checking the balance of delimiters and for
@@ -11398,7 +11529,7 @@ xemacs.texi(,1062)
 ./text.texi(,167) 
 ./text.texi(,168)   The commands @kbd{M-x plain-tex-mode} and @kbd{M-x latex-mode}
 ./text.texi(,169) explicitly select one of the variants of @TeX{} mode.  Use these
-./text.texi(,170) commands when @kbd{M-x tex-mode} does not guess right.
+./text.texi(,170) commands when @kbd{M-x tex-mode} does not guess right.@refill
 ./text.texi(,171) 
 ./text.texi(,172) @menu
 ./text.texi(,173) * Editing: TeX Editing.   Special commands for editing in TeX mode.
@@ -11420,7 +11551,7 @@ xemacs.texi(,1062)
 ./text.texi(,189) Seattle, Washington 98195
 ./text.texi(,190) @end display
 ./text.texi(,191) 
-./text.texi(,192) 
+./text.texi(,192) @noindent
 ./text.texi(,193) Purchase orders are acceptable, but there is an extra charge of
 ./text.texi(,194) $10.00 to pay for processing charges. (The total cost comes to $150 
 ./text.texi(,195) for domestic sites, $175 for foreign sites).
@@ -11511,7 +11642,7 @@ xemacs.texi(,1062)
 ./text.texi(,280) After you insert a @samp{\begin}, use @kbd{C-c C-f}
 ./text.texi(,281) (@code{tex-close-latex-block}) to insert automatically a matching
 ./text.texi(,282) @samp{\end} (on a new line following the @samp{\begin}).  A blank line is
-./text.texi(,283) inserted between the two, and point is left there.
+./text.texi(,283) inserted between the two, and point is left there.@refill
 ./text.texi(,284) 
 ./text.texi(,285) @node TeX Print,,TeX Editing,TeX Mode
 ./text.texi(,286) @subsubsection @TeX{} Printing Commands
@@ -11563,7 +11694,7 @@ xemacs.texi(,1062)
 ./text.texi(,332) 
 ./text.texi(,333)   Type @kbd{C-c C-k} (@code{tex-kill-job}) to kill the @TeX{} process if
 ./text.texi(,334) you see that its output is no longer useful.  Using @kbd{C-c C-b} or
-./text.texi(,335) @kbd{C-c C-r} also kills any @TeX{} process still running.
+./text.texi(,335) @kbd{C-c C-r} also kills any @TeX{} process still running.@refill
 ./text.texi(,336) 
 ./text.texi(,337) @findex tex-region
 ./text.texi(,338) @kindex C-c C-r (TeX mode)
@@ -11735,7 +11866,7 @@ xemacs.texi(,1062)
 ./text.texi(,504) similarly backward.  Both accept numeric arguments as repeat counts.  The
 ./text.texi(,505) names emphasize that invisible headings are skipped, but this is not really
 ./text.texi(,506) a special feature.  All editing commands that look for lines ignore the
-./text.texi(,507) invisible lines automatically.
+./text.texi(,507) invisible lines automatically.@refill
 ./text.texi(,508) 
 ./text.texi(,509) @findex outline-up-heading
 ./text.texi(,510) @findex outline-forward-same-level
@@ -11802,7 +11933,7 @@ xemacs.texi(,1062)
 ./text.texi(,571) @dfn{subtree}: its body, all its subheadings, both direct and indirect, and
 ./text.texi(,572) all of their bodies.  In other words, the subtree contains everything
 ./text.texi(,573) following this heading line, up to and not including the next heading of
-./text.texi(,574) the same or higher rank.
+./text.texi(,574) the same or higher rank.@refill
 ./text.texi(,575) 
 ./text.texi(,576) @findex hide-leaves
 ./text.texi(,577) @findex show-branches
@@ -11817,7 +11948,7 @@ xemacs.texi(,1062)
 ./text.texi(,586)   A little weaker than @code{show-branches} is @kbd{C-c C-i}
 ./text.texi(,587) (@code{show-children}).  It makes just the direct subheadings
 ./text.texi(,588) visible---those one level down.  Deeper subheadings remain
-./text.texi(,589) invisible.
+./text.texi(,589) invisible.@refill
 ./text.texi(,590) 
 ./text.texi(,591) @findex hide-body
 ./text.texi(,592) @findex show-all
@@ -11840,6 +11971,7 @@ xemacs.texi(,1062)
 ./text.texi(,609)   Emacs has commands for moving over or operating on words.  By convention,
 ./text.texi(,610) the keys for them are all @kbd{Meta-} characters.
 ./text.texi(,611) 
+./text.texi(,612) @c widecommands
 ./text.texi(,613) @table @kbd
 ./text.texi(,614) @item M-f
 ./text.texi(,615) Move forward over a word (@code{forward-word}).
@@ -11859,7 +11991,7 @@ xemacs.texi(,1062)
 ./text.texi(,629)   Notice how these keys form a series that parallels the
 ./text.texi(,630) character-based @kbd{C-f}, @kbd{C-b}, @kbd{C-d}, @kbd{C-t} and
 ./text.texi(,631) @key{DEL}.  @kbd{M-@@} is related to @kbd{C-@@}, which is an alias for
-./text.texi(,632) @kbd{C-@key{SPC}}.
+./text.texi(,632) @kbd{C-@key{SPC}}.@refill
 ./text.texi(,633) 
 ./text.texi(,634) @kindex M-f
 ./text.texi(,635) @kindex M-b
@@ -11872,7 +12004,7 @@ xemacs.texi(,1062)
 ./text.texi(,642) @kbd{Meta-b} move several words if given an argument.  @kbd{Meta-f} with a
 ./text.texi(,643) negative argument moves backward, and @kbd{Meta-b} with a negative argument
 ./text.texi(,644) moves forward.  Forward motion stops after the last letter of the
-./text.texi(,645) word, while backward motion stops before the first letter.
+./text.texi(,645) word, while backward motion stops before the first letter.@refill
 ./text.texi(,646) 
 ./text.texi(,647) @kindex M-d
 ./text.texi(,648) @findex kill-word
@@ -11948,7 +12080,7 @@ xemacs.texi(,1062)
 ./text.texi(,718) end wherever there is a @samp{.}, @samp{?}, or @samp{!} followed by the
 ./text.texi(,719) end of a line or two spaces, with any number of @samp{)}, @samp{]},
 ./text.texi(,720) @samp{'}, or @samp{"} characters allowed in between.  A sentence also
-./text.texi(,721) begins or ends wherever a paragraph begins or ends.
+./text.texi(,721) begins or ends wherever a paragraph begins or ends.@refill
 ./text.texi(,722) 
 ./text.texi(,723)   Neither @kbd{M-a} nor @kbd{M-e} moves past the newline or spaces beyond
 ./text.texi(,724) the sentence edge at which it is stopping.
@@ -11961,12 +12093,12 @@ xemacs.texi(,1062)
 ./text.texi(,731) @kbd{C-a} and @kbd{C-e} have @kbd{C-k}.  The command is  @kbd{M-k}
 ./text.texi(,732) (@code{kill-sentence}) which kills from point to the end of the
 ./text.texi(,733) sentence.  With minus one as an argument it kills back to the beginning
-./text.texi(,734) of the sentence.  Larger arguments serve as repeat counts.
+./text.texi(,734) of the sentence.  Larger arguments serve as repeat counts.@refill
 ./text.texi(,735) 
 ./text.texi(,736)   There is a special command, @kbd{C-x @key{DEL}}
 ./text.texi(,737) (@code{backward-kill-sentence}), for killing back to the beginning of a
 ./text.texi(,738) sentence, which is useful when you change your mind in the middle of
-./text.texi(,739) composing text.
+./text.texi(,739) composing text.@refill
 ./text.texi(,740) 
 ./text.texi(,741) @vindex sentence-end
 ./text.texi(,742)   The variable @code{sentence-end} controls recognition of the end of a
@@ -11978,7 +12110,7 @@ xemacs.texi(,1062)
 ./text.texi(,748) "[.?!][]\"')]*\\($\\|\t\\|  \\)[ \t\n]*"
 ./text.texi(,749) @end example
 ./text.texi(,750) 
-./text.texi(,751) 
+./text.texi(,751) @noindent
 ./text.texi(,752) This example is explained in the section on regexps.  @xref{Regexps}.
 ./text.texi(,753) 
 ./text.texi(,754) @node Paragraphs, Pages, Sentences, Text
@@ -12034,7 +12166,7 @@ xemacs.texi(,1062)
 ./text.texi(,804) that separate paragraphs without being part of any paragraph.  Lines that
 ./text.texi(,805) start a new paragraph and are contained in it must match both regexps.  For
 ./text.texi(,806) example, normally @code{paragraph-start} is @code{"^[ @t{\}t@t{\}n@t{\}f]"}
-./text.texi(,807) and @code{paragraph-separate} is @code{"^[ @t{\}t@t{\}f]*$"}.
+./text.texi(,807) and @code{paragraph-separate} is @code{"^[ @t{\}t@t{\}f]*$"}.@refill
 ./text.texi(,808) 
 ./text.texi(,809)   Normally it is desirable for page boundaries to separate paragraphs.
 ./text.texi(,810) The default values of these variables recognize the usual separator for
@@ -12055,6 +12187,7 @@ xemacs.texi(,1062)
 ./text.texi(,825) divisions of the file, commands are provided to move over them and
 ./text.texi(,826) operate on them.
 ./text.texi(,827) 
+./text.texi(,828) @c WideCommands
 ./text.texi(,829) @table @kbd
 ./text.texi(,830) @item C-x [
 ./text.texi(,831) Move point to previous page boundary (@code{backward-page}).
@@ -12102,7 +12235,7 @@ xemacs.texi(,1062)
 ./text.texi(,873) Page has 96 (72+25) lines
 ./text.texi(,874) @end example
 ./text.texi(,875) 
-./text.texi(,876) 
+./text.texi(,876) @noindent
 ./text.texi(,877)   Notice that the sum is off by one; this is correct if point is not at the
 ./text.texi(,878) beginning of a line.
 ./text.texi(,879) 
@@ -12199,7 +12332,7 @@ xemacs.texi(,1062)
 ./text.texi(,970) (@code{fill-paragraph}).  It causes the paragraph containing point, or
 ./text.texi(,971) the one after point if point is between paragraphs, to be refilled.  All
 ./text.texi(,972) line breaks are removed, and new ones are inserted where necessary.
-./text.texi(,973) @kbd{M-q} can be undone with @kbd{C-_}.  @xref{Undo}.
+./text.texi(,973) @kbd{M-q} can be undone with @kbd{C-_}.  @xref{Undo}.@refill
 ./text.texi(,974) 
 ./text.texi(,975) @kindex M-g
 ./text.texi(,976) @findex fill-region
@@ -12211,13 +12344,13 @@ xemacs.texi(,1062)
 ./text.texi(,982) finding paragraph boundaries (@pxref{Paragraphs}).  For more control, you
 ./text.texi(,983) can use @kbd{M-x fill-region-as-paragraph}, which refills everything
 ./text.texi(,984) between point and mark.  This command recognizes only blank lines as
-./text.texi(,985) paragraph separators.
+./text.texi(,985) paragraph separators.@refill
 ./text.texi(,986) 
 ./text.texi(,987) @cindex justification
 ./text.texi(,988)   A numeric argument to @kbd{M-g} or @kbd{M-q} causes it to
 ./text.texi(,989) @dfn{justify} the text as well as filling it.  Extra spaces are inserted
 ./text.texi(,990) to make the right margin line up exactly at the fill column.  To remove
-./text.texi(,991) the extra spaces, use @kbd{M-q} or @kbd{M-g} with no argument.
+./text.texi(,991) the extra spaces, use @kbd{M-q} or @kbd{M-g} with no argument.@refill
 ./text.texi(,992) 
 ./text.texi(,993) @vindex auto-fill-inhibit-regexp
 ./text.texi(,994) The variable @code{auto-fill-inhibit-regexp} takes as a value a regexp to
@@ -12269,7 +12402,7 @@ xemacs.texi(,1062)
 ./text.texi(,1040) prefix, put point at the end of the prefix, and give the command
 ./text.texi(,1041) @w{@kbd{C-x .}}@: (@code{set-fill-prefix}).  That's a period after the
 ./text.texi(,1042) @kbd{C-x}.  To turn off the fill prefix, specify an empty prefix: type
-./text.texi(,1043) @w{@kbd{C-x .}}@: with point at the beginning of a line.
+./text.texi(,1043) @w{@kbd{C-x .}}@: with point at the beginning of a line.@refill
 ./text.texi(,1044) 
 ./text.texi(,1045)   When a fill prefix is in effect, the fill commands remove the fill
 ./text.texi(,1046) prefix from each line before filling and insert it on each line after
@@ -12301,6 +12434,7 @@ xemacs.texi(,1062)
 ./text.texi(,1072)   Emacs has commands for converting either a single word or any arbitrary
 ./text.texi(,1073) range of text to upper case or to lower case.
 ./text.texi(,1074) 
+./text.texi(,1075) @c WideCommands
 ./text.texi(,1076) @table @kbd
 ./text.texi(,1077) @item M-l
 ./text.texi(,1078) Convert following word to lower case (@code{downcase-word}).
@@ -12351,7 +12485,7 @@ xemacs.texi(,1062)
 ./text.texi(,1123)   The other case conversion commands are @kbd{C-x C-u}
 ./text.texi(,1124) (@code{upcase-region}) and @kbd{C-x C-l} (@code{downcase-region}), which
 ./text.texi(,1125) convert everything between point and mark to the specified case.  Point and
-./text.texi(,1126) mark do not move.
+./text.texi(,1126) mark do not move.@refill
 ./programs.texi(,1) 
 ./programs.texi(,1) 
 ./programs.texi(,2) @node Programs, Running, Text, Top
@@ -12463,7 +12597,7 @@ xemacs.texi(,1062)
 ./programs.texi(,108) programming language modes include @code{lisp-mode-hook},
 ./programs.texi(,109) @code{emacs-lisp-mode-hook}, @code{lisp-interaction-mode-hook},
 ./programs.texi(,110) @code{scheme-mode-hook}, and @code{muddle-mode-hook}.  The mode hook
-./programs.texi(,111) function receives no arguments.
+./programs.texi(,111) function receives no arguments.@refill
 ./programs.texi(,112) 
 ./programs.texi(,113) @node Lists, Defuns, Program Modes, Programs
 ./programs.texi(,114) @section Lists and Sexps
@@ -12507,6 +12641,7 @@ xemacs.texi(,1062)
 ./programs.texi(,152)   Some languages have obscure forms of syntax for expressions that nobody
 ./programs.texi(,153) has bothered to make Emacs understand properly.
 ./programs.texi(,154) 
+./programs.texi(,155) @c doublewidecommands
 ./programs.texi(,156) @table @kbd
 ./programs.texi(,157) @item C-M-f
 ./programs.texi(,158) Move forward over an sexp (@code{forward-sexp}).
@@ -12540,7 +12675,7 @@ xemacs.texi(,1062)
 ./programs.texi(,186) after point is a closing delimiter, @kbd{C-M-f} just moves past it.  (This
 ./programs.texi(,187) last is not really moving across an sexp; it is an exception which is
 ./programs.texi(,188) included in the definition of @kbd{C-M-f} because it is as useful a
-./programs.texi(,189) behavior as anyone can think of for that situation.)
+./programs.texi(,189) behavior as anyone can think of for that situation.)@refill
 ./programs.texi(,190) 
 ./programs.texi(,191)   The command @kbd{C-M-b} (@code{backward-sexp}) moves backward over a
 ./programs.texi(,192) sexp.  The detailed rules are like those above for @kbd{C-M-f}, but with
@@ -12573,7 +12708,7 @@ xemacs.texi(,1062)
 ./programs.texi(,219) commands but skip over any number of other kinds of sexps (symbols,
 ./programs.texi(,220) strings, etc).  In some situations, these commands are useful because
 ./programs.texi(,221) they usually ignore comments, since the comments usually do not contain
-./programs.texi(,222) any lists.
+./programs.texi(,222) any lists.@refill
 ./programs.texi(,223) 
 ./programs.texi(,224) @kindex C-M-u
 ./programs.texi(,225) @kindex C-M-d
@@ -12585,7 +12720,7 @@ xemacs.texi(,1062)
 ./programs.texi(,231) @kbd{C-M-u} moves backward up past one unmatched opening delimiter.  A
 ./programs.texi(,232) positive argument serves as a repeat count; a negative argument reverses
 ./programs.texi(,233) direction of motion and also requests repetition, so it moves forward and
-./programs.texi(,234) up one or more levels.
+./programs.texi(,234) up one or more levels.@refill
 ./programs.texi(,235) 
 ./programs.texi(,236)   To move @i{down} in list structure, use @kbd{C-M-d}
 ./programs.texi(,237) (@code{down-list}).  In Lisp mode, where @samp{(} is the only opening
@@ -12626,6 +12761,7 @@ xemacs.texi(,1062)
 ./programs.texi(,272) the programming language.  For example, in C, the body of a
 ./programs.texi(,273) function definition is a defun.
 ./programs.texi(,274) 
+./programs.texi(,275) @c doublewidecommands
 ./programs.texi(,276) @table @kbd
 ./programs.texi(,277) @item C-M-a
 ./programs.texi(,278) Move to beginning of current or preceding defun
@@ -12697,6 +12833,7 @@ xemacs.texi(,1062)
 ./programs.texi(,344) @node Basic Indent, Multi-line Indent, Grinding, Grinding
 ./programs.texi(,345) @subsection Basic Program Indentation Commands
 ./programs.texi(,346) 
+./programs.texi(,347) @c WideCommands
 ./programs.texi(,348) @table @kbd
 ./programs.texi(,349) @item @key{TAB}
 ./programs.texi(,350) Adjust indentation of current line.
@@ -12848,7 +12985,7 @@ xemacs.texi(,1062)
 ./programs.texi(,496) @item @var{pos}
 ./programs.texi(,497) The position at which the line being indented begins.
 ./programs.texi(,498) @end table
-./programs.texi(,499) 
+./programs.texi(,499) @noindent
 ./programs.texi(,500) It should return either a number, which is the number of columns of
 ./programs.texi(,501) indentation for that line, or a list whose first element is such a
 ./programs.texi(,502) number.  The difference between returning a number and returning a list
@@ -12913,7 +13050,7 @@ xemacs.texi(,1062)
 ./programs.texi(,561)       foo ();
 ./programs.texi(,562) @end example
 ./programs.texi(,563) 
-./programs.texi(,564) 
+./programs.texi(,564) @noindent
 ./programs.texi(,565) the difference in indentation between the lines is @code{c-indent-level}.
 ./programs.texi(,566) Its standard value is 2.
 ./programs.texi(,567) 
@@ -12926,7 +13063,7 @@ xemacs.texi(,1062)
 ./programs.texi(,574)   do_this ();
 ./programs.texi(,575) @end example
 ./programs.texi(,576) 
-./programs.texi(,577) 
+./programs.texi(,577) @noindent
 ./programs.texi(,578) One popular indentation style is that which results from setting
 ./programs.texi(,579) @code{c-indent-level} to 8 and putting open-braces at the end of a line
 ./programs.texi(,580) in this way.  Another popular style prefers to put the open-brace on a
@@ -12966,7 +13103,7 @@ xemacs.texi(,1062)
 ./programs.texi(,614)   do_it ();
 ./programs.texi(,615) @end example
 ./programs.texi(,616) 
-./programs.texi(,617) 
+./programs.texi(,617) @noindent
 ./programs.texi(,618) The default value for @code{c-continued-statement-offset} is 2.  Some
 ./programs.texi(,619) popular indentation styles correspond to a value of zero for
 ./programs.texi(,620) @code{c-continued-statement-offset}.
@@ -12981,7 +13118,7 @@ xemacs.texi(,1062)
 ./programs.texi(,629)   @{
 ./programs.texi(,630) @end example
 ./programs.texi(,631) 
-./programs.texi(,632) 
+./programs.texi(,632) @noindent
 ./programs.texi(,633) with:
 ./programs.texi(,634) 
 ./programs.texi(,635) @example
@@ -12989,7 +13126,7 @@ xemacs.texi(,1062)
 ./programs.texi(,637)   do_it ();
 ./programs.texi(,638) @end example
 ./programs.texi(,639) 
-./programs.texi(,640) 
+./programs.texi(,640) @noindent
 ./programs.texi(,641) If you set @code{c-brace-offset} to 4, the first example becomes:
 ./programs.texi(,642) 
 ./programs.texi(,643) @example
@@ -13021,7 +13158,7 @@ xemacs.texi(,1062)
 ./programs.texi(,669)   case 'x':
 ./programs.texi(,670) @end example
 ./programs.texi(,671) 
-./programs.texi(,672) 
+./programs.texi(,672) @noindent
 ./programs.texi(,673) If @code{c-label-offset} were zero, the same code would be indented as:
 ./programs.texi(,674) 
 ./programs.texi(,675) @example
@@ -13030,7 +13167,7 @@ xemacs.texi(,1062)
 ./programs.texi(,678)     case 'x':
 ./programs.texi(,679) @end example
 ./programs.texi(,680) 
-./programs.texi(,681) 
+./programs.texi(,681) @noindent
 ./programs.texi(,682) This example assumes that the other variables above also have their
 ./programs.texi(,683) default values. 
 ./programs.texi(,684) 
@@ -13081,6 +13218,7 @@ xemacs.texi(,1062)
 ./programs.texi(,729) 
 ./programs.texi(,730)   The comment commands insert, kill and align comments.
 ./programs.texi(,731) 
+./programs.texi(,732) @c WideCommands
 ./programs.texi(,733) @table @kbd
 ./programs.texi(,734) @item M-;
 ./programs.texi(,735) Insert or align comment (@code{indent-for-comment}).
@@ -13432,7 +13570,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1081) @code{\section}, @code{\subsection}, @code{\subsubsection},
 ./programs.texi(,1082) @code{\eqno}, @code{\label}, @code{\ref}, @code{\cite}, @code{\bibitem},
 ./programs.texi(,1083) @code{\part}, @code{\appendix}, @code{\entry}, or @code{\index}, is a
-./programs.texi(,1084) tag.
+./programs.texi(,1084) tag.@refill
 ./programs.texi(,1085) 
 ./programs.texi(,1086) Other commands can make tags as well, if you specify them in the
 ./programs.texi(,1087) environment variable @code{TEXTAGS} before invoking @code{etags}.  The
@@ -13444,7 +13582,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1093) export TEXTAGS
 ./programs.texi(,1094) @end example
 ./programs.texi(,1095) 
-./programs.texi(,1096) 
+./programs.texi(,1096) @noindent
 ./programs.texi(,1097) specifies (using Bourne shell syntax) that the commands @samp{\def},
 ./programs.texi(,1098) @samp{\newcommand} and @samp{\newenvironment} also define tags.
 ./programs.texi(,1099) 
@@ -13558,7 +13696,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1212) etags @var{inputfiles}@dots{}
 ./programs.texi(,1213) @end example
 ./programs.texi(,1214) 
-./programs.texi(,1215) 
+./programs.texi(,1215) @noindent
 ./programs.texi(,1216) The @code{etags} program reads the specified files, and writes a tags
 ./programs.texi(,1217) table named @file{TAGS} in the current working directory.  You can
 ./programs.texi(,1218) intermix compressed and plain text source file names.  @code{etags}
@@ -13645,7 +13783,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1299) --regex=/@var{tagregexp}[/@var{nameregexp}]/
 ./programs.texi(,1300) @end smallexample
 ./programs.texi(,1301) 
-./programs.texi(,1302) 
+./programs.texi(,1302) @noindent
 ./programs.texi(,1303) where @var{tagregexp} is used to match the lines to tag.  It is always
 ./programs.texi(,1304) anchored, that is, it behaves as if preceded by @samp{^}.  If you want
 ./programs.texi(,1305) to account for indentation, just match any initial number of blanks by
@@ -13683,7 +13821,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1337)     bar.ber -R --lang=lisp los.er
 ./programs.texi(,1338) @end smallexample
 ./programs.texi(,1339) 
-./programs.texi(,1340) 
+./programs.texi(,1340) @noindent
 ./programs.texi(,1341) Here @code{etags} chooses the parsing language for @file{voo.doo} and
 ./programs.texi(,1342) @file{bar.ber} according to their contents.  @code{etags} also uses
 ./programs.texi(,1343) @var{reg1} to recognize additional tags in @file{voo.doo}, and both
@@ -13702,7 +13840,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1356) --regex='@{c@}/[ \t]*DEFVAR_[A-Z_ \t(]+"\([^"]+\)"/'
 ./programs.texi(,1357) @end smallexample
 ./programs.texi(,1358) 
-./programs.texi(,1359) 
+./programs.texi(,1359) @noindent
 ./programs.texi(,1360) This feature is particularly useful when storing a list of regular
 ./programs.texi(,1361) expressions in a file.  The following option syntax instructs
 ./programs.texi(,1362) @code{etags} to read two files of regular expressions.  The regular
@@ -13713,7 +13851,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1367) --regex=@@first-file --ignore-case-regex=@@second-file
 ./programs.texi(,1368) @end smallexample
 ./programs.texi(,1369) 
-./programs.texi(,1370) 
+./programs.texi(,1370) @noindent
 ./programs.texi(,1371) A regex file contains one regular expressions per line.  Empty lines,
 ./programs.texi(,1372) and lines beginning with space or tab are ignored.  When the first
 ./programs.texi(,1373) character in a line is @samp{@@}, @code{etags} assumes that the rest of
@@ -13728,7 +13866,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1382) @{c@}/[ \t]*DEFVAR_[A-Z_ \t(]+"\([^"]+\)"/\1/
 ./programs.texi(,1383) @end smallexample
 ./programs.texi(,1384) 
-./programs.texi(,1385) 
+./programs.texi(,1385) @noindent
 ./programs.texi(,1386) and then use it like this:
 ./programs.texi(,1387) 
 ./programs.texi(,1388) @smallexample
@@ -13751,7 +13889,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1405)       *.m
 ./programs.texi(,1406) @end smallexample
 ./programs.texi(,1407) 
-./programs.texi(,1408) 
+./programs.texi(,1408) @noindent
 ./programs.texi(,1409) Note that tags are not generated for scripts so that you have to add a
 ./programs.texi(,1410) line by yourself of the form `###key <script-name>' if you want to jump
 ./programs.texi(,1411) to it.
@@ -13978,7 +14116,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1632)   Having found one match, you probably want to find all the rest.  To find
 ./programs.texi(,1633) one more match, type @kbd{M-,} (@code{tags-loop-continue}) to resume the
 ./programs.texi(,1634) @code{tags-search}.  This searches the rest of the current buffer, followed
-./programs.texi(,1635) by the remaining files of the tags table.
+./programs.texi(,1635) by the remaining files of the tags table.@refill
 ./programs.texi(,1636) 
 ./programs.texi(,1637) @findex tags-query-replace
 ./programs.texi(,1638)   @kbd{M-x tags-query-replace} performs a single
@@ -14205,7 +14343,7 @@ xemacs.texi(,1062)
 ./programs.texi(,1859) By default, this character is @samp{$}.
 ./programs.texi(,1860) @end itemize
 ./programs.texi(,1861) 
-./programs.texi(,1862) 
+./programs.texi(,1862) @noindent
 ./programs.texi(,1863) If you fail to follow these conventions, the indentation commands may
 ./programs.texi(,1864) indent some lines unaesthetically.  However, a correct Fortran program will
 ./programs.texi(,1865) retain its meaning when reindented even if the conventions are not
@@ -14383,7 +14521,7 @@ xemacs.texi(,1062)
 ./programs.texi(,2037)   For example, one built-in Fortran abbrev is @samp{;c} for
 ./programs.texi(,2038) @samp{continue}.  If you insert @samp{;c} and then insert a punctuation
 ./programs.texi(,2039) character such as a space or a newline, the @samp{;c} changes
-./programs.texi(,2040) automatically to @samp{continue}, provided Abbrev mode is enabled.
+./programs.texi(,2040) automatically to @samp{continue}, provided Abbrev mode is enabled.@refill
 ./programs.texi(,2041) 
 ./programs.texi(,2042)   Type @samp{;?} or @samp{;C-h} to display a list of all built-in
 ./programs.texi(,2043) Fortran abbrevs and what they stand for.
@@ -14488,7 +14626,7 @@ xemacs.texi(,1062)
 ./building.texi(,76) instead of @samp{run}.  Starting a new compilation also kills any
 ./building.texi(,77) running compilation, as only one can occur at any time.  Starting a new
 ./building.texi(,78) compilation prompts for confirmation before actually killing a
-./building.texi(,79) compilation that is running.
+./building.texi(,79) compilation that is running.@refill
 ./building.texi(,80) 
 ./building.texi(,81) @kindex C-x `
 ./building.texi(,82) @findex next-error
@@ -14856,7 +14994,7 @@ xemacs.texi(,1062)
 ./building.texi(,444) However, if you set @code{debug-on-quit} to be non-@code{nil}, @kbd{C-g} will
 ./building.texi(,445) invoke the debugger.  This can be useful for debugging an infinite loop;
 ./building.texi(,446) type @kbd{C-g} once the loop has had time to reach its steady state.
-./building.texi(,447) @code{debug-on-quit} has no effect on errors.
+./building.texi(,447) @code{debug-on-quit} has no effect on errors.@refill
 ./building.texi(,448) 
 ./building.texi(,449) @findex debug-on-entry
 ./building.texi(,450) @findex cancel-debug-on-entry
@@ -14869,7 +15007,7 @@ xemacs.texi(,1062)
 ./building.texi(,457) debugger when called.  (Redefining the function also does this.)  To enter
 ./building.texi(,458) the debugger from some other place in Lisp code, you must insert the
 ./building.texi(,459) expression @code{(debug)} there and install the changed code with
-./building.texi(,460) @kbd{C-M-x}.  @xref{Lisp Eval}.
+./building.texi(,460) @kbd{C-M-x}.  @xref{Lisp Eval}.@refill
 ./building.texi(,461) 
 ./building.texi(,462)   When the debugger is entered, it displays the previously selected buffer
 ./building.texi(,463) in one window and a buffer named @samp{*Backtrace*} in another window.  The
@@ -15016,7 +15154,11 @@ xemacs.texi(,1062)
 ./building.texi(,604) different according to where the relevant Lisp environment is found.
 ./building.texi(,605) @xref{Lisp Modes}.
 ./packages.texi(,1) 
+./packages.texi(,1) @c This is part of the XEmacs manual.
+./packages.texi(,2) @c Copyright (C) 1985, 86, 87, 93, 94, 95, 1997 Free Software Foundation, Inc.
+./packages.texi(,3) @c See file xemacs.texi for copying conditions.
 ./packages.texi(,4) @node Packages, Basic, Startup Paths, Top
+./packages.texi(,5) @comment  node-name,  next,  previous,  up
 ./packages.texi(,6) 
 ./packages.texi(,7) @section Packages
 ./packages.texi(,8) @cindex packages
@@ -15039,6 +15181,7 @@ xemacs.texi(,1062)
 ./packages.texi(,25) @end menu
 ./packages.texi(,26) 
 ./packages.texi(,27) @node Package Terminology, Installing Packages, , Packages
+./packages.texi(,28) @comment  node-name,  next,  previous,  up
 ./packages.texi(,29) @heading Package Terminology:
 ./packages.texi(,30) @subsection Package Flavors
 ./packages.texi(,31) 
@@ -15084,6 +15227,7 @@ xemacs.texi(,1062)
 ./packages.texi(,71) Currently, source packages are only available via CVS.  See
 ./packages.texi(,72) @url{http://cvs.xemacs.org/} for details.
 ./packages.texi(,73) @node Installing Packages, Building Packages, Package Terminology, Packages
+./packages.texi(,74) @comment  node-name,  next,  previous,  up
 ./packages.texi(,75) @cindex installing packages
 ./packages.texi(,76) @cindex install
 ./packages.texi(,77) @heading Installing Packages:
@@ -15159,6 +15303,7 @@ xemacs.texi(,1062)
 ./packages.texi(,147) be used by XEmacs after a restart.
 ./packages.texi(,148) 
 ./packages.texi(,149) @node Sumo, Manually, ,Installing Packages
+./packages.texi(,150) @comment  node-name,  next,  previous,  up
 ./packages.texi(,151) @cindex sumo package install
 ./packages.texi(,152) @heading Installing the Sumo Packages:
 ./packages.texi(,153) Those with little time, cheap connections and plenty of disk space can
@@ -15183,6 +15328,7 @@ xemacs.texi(,1062)
 ./packages.texi(,172) afterwards to pick up any recent updates.
 ./packages.texi(,173) 
 ./packages.texi(,174) @node Manually, Automatically, Sumo, Installing Packages
+./packages.texi(,175) @comment  node-name,  next,  previous,  up
 ./packages.texi(,176) @cindex manual package install
 ./packages.texi(,177) @heading Manual Package Installation:
 ./packages.texi(,178) Fetch the packages from the FTP site, CD-ROM whatever. The filenames
@@ -15220,6 +15366,7 @@ xemacs.texi(,1062)
 ./packages.texi(,210) @end example
 ./packages.texi(,211) 
 ./packages.texi(,212) @node Automatically, Which Packages ,Manually, Installing Packages
+./packages.texi(,213) @comment  node-name,  next,  previous,  up
 ./packages.texi(,214) @cindex automatic package install
 ./packages.texi(,215) @cindex package tools
 ./packages.texi(,216) @heading Automatic Package Installation:
@@ -15353,6 +15500,7 @@ xemacs.texi(,1062)
 ./packages.texi(,344) it depends upon.
 ./packages.texi(,345) 
 ./packages.texi(,346) @node Which Packages, Removing Packages, Automatically, Installing Packages
+./packages.texi(,347) @comment  node-name,  next,  previous,  up
 ./packages.texi(,348) @cindex which packages
 ./packages.texi(,349) @cindex choosing packages
 ./packages.texi(,350) @heading Which Packages to Install:
@@ -15375,6 +15523,7 @@ xemacs.texi(,1062)
 ./packages.texi(,367) packages.
 ./packages.texi(,368) 
 ./packages.texi(,369) @node Removing Packages, ,Which Packages, Installing Packages
+./packages.texi(,370) @comment  node-name,  next,  previous,  up
 ./packages.texi(,371) @cindex removing packages
 ./packages.texi(,372) @cindex deleting packages
 ./packages.texi(,373) @heading Removing Packages:
@@ -15392,6 +15541,7 @@ xemacs.texi(,1062)
 ./packages.texi(,385) this for you.
 ./packages.texi(,386) 
 ./packages.texi(,387) @node Building Packages, Local.rules File, Installing Packages, Packages
+./packages.texi(,388) @comment  node-name,  next,  previous,  up
 ./packages.texi(,389) @cindex building packages
 ./packages.texi(,390) @cindex package building
 ./packages.texi(,391) @heading Building Packages:
@@ -15470,6 +15620,7 @@ xemacs.texi(,1062)
 ./packages.texi(,464) @end table
 ./packages.texi(,465) 
 ./packages.texi(,466) @node Local.rules File, Creating Packages, Building Packages, Packages
+./packages.texi(,467) @comment  node-name,  next,  previous,  up
 ./packages.texi(,468) @cindex local.rules
 ./packages.texi(,469) @heading The Local.rules File:
 ./packages.texi(,470) This file is used when building and installing packages from source.  In
@@ -15536,6 +15687,7 @@ xemacs.texi(,1062)
 ./packages.texi(,531) 
 ./packages.texi(,532) 
 ./packages.texi(,533) @node Creating Packages, Available Packages, Local.rules File, Packages
+./packages.texi(,534) @comment  node-name,  next,  previous,  up
 ./packages.texi(,535) @cindex creating packages
 ./packages.texi(,536) @heading Creating Packages:
 ./packages.texi(,537) Creating a package from an existing Lisp library is not very difficult.
@@ -15659,6 +15811,7 @@ xemacs.texi(,1062)
 ./packages.texi(,655) or a future revision of this manual for details.
 ./packages.texi(,656) 
 ./packages.texi(,657) @node Available Packages,  , Creating Packages, Packages
+./packages.texi(,658) @comment  node-name,  next,  previous,  up
 ./packages.texi(,659) @cindex available packages
 ./packages.texi(,660) @cindex packages
 ./packages.texi(,661) @heading Available Packages:
@@ -16133,7 +16286,7 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,95) instead of @kbd{C-x a g}, or use @kbd{C-x a i l}
 ./abbrevs.texi(,96) (@code{inverse-add-mode-abbrev}) instead of @kbd{C-x a l}.  These commands
 ./abbrevs.texi(,97) are called ``inverse'' because they invert the meaning of the argument
-./abbrevs.texi(,98) found in the buffer and the argument read using the minibuffer.
+./abbrevs.texi(,98) found in the buffer and the argument read using the minibuffer.@refill
 ./abbrevs.texi(,99) 
 ./abbrevs.texi(,100)   To change the definition of an abbrev, just add the new definition.  You
 ./abbrevs.texi(,101) will be asked to confirm if the abbrev has a prior definition.  To remove
@@ -16158,7 +16311,7 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,120) outer otter}, @samp{Foo} into @samp{Find outer otter}, and @samp{FOO} into
 ./abbrevs.texi(,121) @samp{FIND OUTER OTTER} or @samp{Find Outer Otter} according to the
 ./abbrevs.texi(,122) variable @code{abbrev-all-caps} (a non-@code{nil} value chooses the first
-./abbrevs.texi(,123) of the two expansions).
+./abbrevs.texi(,123) of the two expansions).@refill
 ./abbrevs.texi(,124) 
 ./abbrevs.texi(,125)    Two commands are available to control abbrev expansion:
 ./abbrevs.texi(,126) 
@@ -16189,7 +16342,7 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,151) now contains @samp{re-cnst}.  Now insert a punctuation character to
 ./abbrevs.texi(,152) expand the abbrev @samp{cnst} into @samp{construction}.  The minus sign
 ./abbrevs.texi(,153) is deleted at this point by @kbd{M-'}.  The resulting text is the
-./abbrevs.texi(,154) desired @samp{reconstruction}.
+./abbrevs.texi(,154) desired @samp{reconstruction}.@refill
 ./abbrevs.texi(,155) 
 ./abbrevs.texi(,156)   If you actually want the text of the abbrev in the buffer, rather than
 ./abbrevs.texi(,157) its expansion, insert the following punctuation with @kbd{C-q}.  Thus,
@@ -16229,7 +16382,7 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,191) "dfn"          0    "definition"
 ./abbrevs.texi(,192) @end example
 ./abbrevs.texi(,193) 
-./abbrevs.texi(,194) 
+./abbrevs.texi(,194) @noindent
 ./abbrevs.texi(,195) (Some blank lines of no semantic significance, and some other abbrev
 ./abbrevs.texi(,196) tables, have been omitted.)
 ./abbrevs.texi(,197) 
@@ -16312,7 +16465,7 @@ xemacs.texi(,1062)
 ./abbrevs.texi(,274) similar to the previous commands but work on text in an Emacs buffer.
 ./abbrevs.texi(,275) @kbd{M-x insert-abbrevs} inserts text into the current buffer before point,
 ./abbrevs.texi(,276) describing all current abbrev definitions; @kbd{M-x define-abbrevs} parses
-./abbrevs.texi(,277) the entire current buffer and defines abbrevs accordingly.
+./abbrevs.texi(,277) the entire current buffer and defines abbrevs accordingly.@refill
 ./abbrevs.texi(,278) 
 ./abbrevs.texi(,279) @node Dynamic Abbrevs,, Saving Abbrevs, Abbrevs
 ./abbrevs.texi(,280) @section Dynamic Abbrev Expansion
@@ -16416,7 +16569,7 @@ xemacs.texi(,1062)
 ./picture.texi(,70) that point stays in exactly the same column.  @kbd{C-e} runs
 ./picture.texi(,71) @code{picture-end-of-line}, which moves to after the last non-blank
 ./picture.texi(,72) character on the line.  There was no need to change @kbd{C-a}, as the choice
-./picture.texi(,73) of screen model does not affect beginnings of lines.
+./picture.texi(,73) of screen model does not affect beginnings of lines.@refill
 ./picture.texi(,74) 
 ./picture.texi(,75) @findex picture-newline
 ./picture.texi(,76)   Insertion of text is adapted to the quarter-plane screen model through
@@ -16434,7 +16587,7 @@ xemacs.texi(,1062)
 ./picture.texi(,88) with a space rather than removing it.  @kbd{C-d}
 ./picture.texi(,89) (@code{picture-clear-column}) does the same in a forward direction.
 ./picture.texi(,90) @kbd{C-k} (@code{picture-clear-line}) really kills the contents of lines,
-./picture.texi(,91) but never removes the newlines from a buffer.
+./picture.texi(,91) but never removes the newlines from a buffer.@refill
 ./picture.texi(,92) 
 ./picture.texi(,93) @findex picture-open-line
 ./picture.texi(,94)   To do actual insertion, you must use special commands.  @kbd{C-o}
@@ -16442,7 +16595,7 @@ xemacs.texi(,1062)
 ./picture.texi(,96) the current line; it never splits a line.  @kbd{C-M-o}, @code{split-line},
 ./picture.texi(,97) makes sense in Picture mode, so it remains unchanged.  @key{LFD}
 ./picture.texi(,98) (@code{picture-duplicate-line}) inserts another line
-./picture.texi(,99) with the same contents below the current line.
+./picture.texi(,99) with the same contents below the current line.@refill
 ./picture.texi(,100) 
 ./picture.texi(,101) @kindex C-c C-d (Picture mode)
 ./picture.texi(,102) @findex delete-char
@@ -16525,7 +16678,7 @@ xemacs.texi(,1062)
 ./picture.texi(,179) change the text; it only moves point.  ``Interesting'' characters are
 ./picture.texi(,180) defined by the variable @code{picture-tab-chars}, which contains a string
 ./picture.texi(,181) of characters considered interesting.  Its default value is
-./picture.texi(,182) @code{"!-~"}.
+./picture.texi(,182) @code{"!-~"}.@refill
 ./picture.texi(,183) 
 ./picture.texi(,184) @findex picture-tab
 ./picture.texi(,185)   @key{TAB} itself runs @code{picture-tab}, which operates based on the
@@ -16575,7 +16728,7 @@ xemacs.texi(,1062)
 ./picture.texi(,229) (@code{picture-clear-rectangle-to-register}) differ from the standard
 ./picture.texi(,230) rectangle commands in that they normally clear the rectangle instead of
 ./picture.texi(,231) deleting it; this is analogous with the way @kbd{C-d} is changed in Picture
-./picture.texi(,232) mode.
+./picture.texi(,232) mode.@refill
 ./picture.texi(,233) 
 ./picture.texi(,234)   However, deletion of rectangles can be useful in Picture mode, so these
 ./picture.texi(,235) commands delete the rectangle if given a numeric argument.
@@ -16625,7 +16778,7 @@ xemacs.texi(,1062)
 ./sending.texi(,27)   The command @kbd{C-x m} (@code{mail}) selects a buffer named
 ./sending.texi(,28) @samp{*mail*} and initializes it with the skeleton of an outgoing message.
 ./sending.texi(,29) @kbd{C-x 4 m} (@code{mail-other-window}) selects the @samp{*mail*} buffer
-./sending.texi(,30) in a different window, leaving the previous current buffer visible.
+./sending.texi(,30) in a different window, leaving the previous current buffer visible.@refill
 ./sending.texi(,31) 
 ./sending.texi(,32)   Because the buffer for mail composition is an ordinary Emacs buffer, you can
 ./sending.texi(,33) switch to other buffers while in the middle of composing mail, and switch
@@ -16664,7 +16817,7 @@ xemacs.texi(,1062)
 ./sending.texi(,66) @end example
 ./sending.texi(,67) 
 ./sending.texi(,68) @vindex mail-header-separator
-./sending.texi(,69) 
+./sending.texi(,69) @noindent
 ./sending.texi(,70) is a special delimiter that separates the headers you have specified from
 ./sending.texi(,71) the text.  Whatever follows this line is the text of the message; the
 ./sending.texi(,72) headers precede it.  The delimiter line itself does not appear in the
@@ -16737,22 +16890,22 @@ xemacs.texi(,1062)
 ./sending.texi(,139) to think about it.
 ./sending.texi(,140) @end table
 ./sending.texi(,141) 
-./sending.texi(,142) 
+./sending.texi(,142) @noindent
 ./sending.texi(,143) The @samp{To}, @samp{CC}, @samp{BCC} and @samp{FCC} fields can appear
 ./sending.texi(,144) any number of times, to specify many places to send the message.
 ./sending.texi(,145) 
-./sending.texi(,146) 
+./sending.texi(,146) @noindent
 ./sending.texi(,147) The @samp{To}, @samp{CC}, and @samp{BCC}, fields can have continuation
 ./sending.texi(,148) lines.  All the lines starting with whitespace, following the line on
 ./sending.texi(,149) which the field starts, are considered part of the field.  For
-./sending.texi(,150) example,
+./sending.texi(,150) example,@refill
 ./sending.texi(,151) 
 ./sending.texi(,152) @example
 ./sending.texi(,153) To: foo@@here, this@@there,
 ./sending.texi(,154)   me@@gnu.cambridge.mass.usa.earth.spiral3281
 ./sending.texi(,155) @end example
 ./sending.texi(,156) 
-./sending.texi(,157) 
+./sending.texi(,157) @noindent
 ./sending.texi(,158) @vindex mail-abbrev-mailrc-file
 ./sending.texi(,159) If you have a @file{~/.mailrc} file, Emacs scans it for mail aliases the
 ./sending.texi(,160) first time you try to send mail in an Emacs session.  Emacs expands
@@ -16929,7 +17082,7 @@ xemacs.texi(,1062)
 ./sending.texi(,331) anything.  @kbd{C-c C-y} always uses the current message from the
 ./sending.texi(,332) @samp{RMAIL} buffer, so you can insert several old messages by selecting
 ./sending.texi(,333) one in @samp{RMAIL}, switching to @samp{*mail*} and yanking it, then
-./sending.texi(,334) switching back to @samp{RMAIL} to select another.
+./sending.texi(,334) switching back to @samp{RMAIL} to select another.@refill
 ./sending.texi(,335) 
 ./sending.texi(,336) @kindex C-c C-q (Mail mode)
 ./sending.texi(,337) @findex mail-fill-yanked-message
@@ -17524,7 +17677,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,542) (setq calendar-location-name "Urbana, IL")
 ./calendar.texi(,543) @end example
 ./calendar.texi(,544) 
-./calendar.texi(,545) 
+./calendar.texi(,545) @noindent
 ./calendar.texi(,546) Use one decimal place in the values of @code{calendar-latitude} and
 ./calendar.texi(,547) @code{calendar-longitude}.
 ./calendar.texi(,548) 
@@ -17542,7 +17695,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,560) (setq calendar-daylight-time-zone-name "CDT")
 ./calendar.texi(,561) @end example
 ./calendar.texi(,562) 
-./calendar.texi(,563) 
+./calendar.texi(,563) @noindent
 ./calendar.texi(,564) The value of @code{calendar-time-zone} is the number of minutes
 ./calendar.texi(,565) difference between your local standard time and Coordinated Universal
 ./calendar.texi(,566) Time (Greenwich time).  The values of
@@ -17865,7 +18018,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,883) 
 ./calendar.texi(,884) @kindex g m l @r{(Calendar mode)}
 ./calendar.texi(,885) @findex calendar-goto-mayan-long-count-date
-./calendar.texi(,886) 
+./calendar.texi(,886) @noindent
 ./calendar.texi(,887) Thus, the long count date 12.16.11.16.6 means 12 baktun, 16 katun, 11
 ./calendar.texi(,888) tun, 16 uinal, and 6 kin.  The Emacs calendar can handle Mayan long
 ./calendar.texi(,889) count dates as early as 7.17.18.13.1, but no earlier.  When you use the
@@ -17895,6 +18048,8 @@ xemacs.texi(,1062)
 ./calendar.texi(,913) Similarly, type @kbd{g m n h} to go to the next occurrence of a haab
 ./calendar.texi(,914) date.
 ./calendar.texi(,915) 
+./calendar.texi(,916) @c This is omitted because it is too long for smallbook format.
+./calendar.texi(,917) @c @findex calendar-previous-calendar-round-date
 ./calendar.texi(,918) @findex calendar-next-calendar-round-date
 ./calendar.texi(,919) @cindex Mayan calendar round
 ./calendar.texi(,920)   The Maya also used the combination of the tzolkin date and the haab
@@ -17938,7 +18093,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,958) &* 15 time cards due.
 ./calendar.texi(,959) @end example
 ./calendar.texi(,960) 
-./calendar.texi(,961) 
+./calendar.texi(,961) @noindent
 ./calendar.texi(,962) This example uses extra spaces to align the event descriptions of most
 ./calendar.texi(,963) of the entries.  Such formatting is purely a matter of taste.
 ./calendar.texi(,964) 
@@ -18087,7 +18242,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1107)       8:00-10:00pm concert
 ./calendar.texi(,1108) @end example
 ./calendar.texi(,1109) 
-./calendar.texi(,1110) 
+./calendar.texi(,1110) @noindent
 ./calendar.texi(,1111) appears in the diary window without the date line at the beginning.
 ./calendar.texi(,1112) This style of entry looks neater when you display just a single day's
 ./calendar.texi(,1113) entries, but can cause confusion if you ask for more than one day's
@@ -18252,7 +18407,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1272) %%(diary-anniversary 10 31 1948) Arthur's birthday
 ./calendar.texi(,1273) @end example
 ./calendar.texi(,1274) 
-./calendar.texi(,1275) 
+./calendar.texi(,1275) @noindent
 ./calendar.texi(,1276) This entry applies to October 31 in any year after 1948; @samp{10 31
 ./calendar.texi(,1277) 1948} specifies the date.  (If you are using the European calendar
 ./calendar.texi(,1278) style, the month and day are interchanged.)  The reason this expression
@@ -18268,7 +18423,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1288) %%(diary-block 6 24 1990 7 10 1990) Vacation
 ./calendar.texi(,1289) @end example
 ./calendar.texi(,1290) 
-./calendar.texi(,1291) 
+./calendar.texi(,1291) @noindent
 ./calendar.texi(,1292) The @samp{6 24 1990} indicates the starting date and the @samp{7 10 1990}
 ./calendar.texi(,1293) indicates the stopping date.  (Again, if you are using the European calendar
 ./calendar.texi(,1294) style, the month and day are interchanged.)
@@ -18292,7 +18447,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1312) %%(diary-cyclic 50 3 1 1990) Renew medication
 ./calendar.texi(,1313) @end example
 ./calendar.texi(,1314) 
-./calendar.texi(,1315) 
+./calendar.texi(,1315) @noindent
 ./calendar.texi(,1316) This entry applies to March 1, 1990 and every 50th day following;
 ./calendar.texi(,1317) @samp{3 1 1990} specifies the starting date.  (If you are using the
 ./calendar.texi(,1318) European calendar style, the month and day are interchanged.)
@@ -18317,7 +18472,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1337) &%%(diary-float 11 4 -1) American Thanksgiving
 ./calendar.texi(,1338) @end example
 ./calendar.texi(,1339) 
-./calendar.texi(,1340) 
+./calendar.texi(,1340) @noindent
 ./calendar.texi(,1341) The 11 specifies November (the eleventh month), the 4 specifies Thursday
 ./calendar.texi(,1342) (the fourth day of the week, where Sunday is numbered zero), and the
 ./calendar.texi(,1343) @minus{}1 specifies ``last'' (1 would mean ``first'', 2 would mean
@@ -18325,7 +18480,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1345) month can be a single month or a list of months.  Thus you could change
 ./calendar.texi(,1346) the 11 above to @samp{'(1 2 3)} and have the entry apply to the last
 ./calendar.texi(,1347) Thursday of January, February, and March.  If the month is @code{t}, the
-./calendar.texi(,1348) entry applies to all months of the year.
+./calendar.texi(,1348) entry applies to all months of the year.@refill
 ./calendar.texi(,1349) 
 ./calendar.texi(,1350)   The sexp feature of the diary allows you to specify diary entries
 ./calendar.texi(,1351) based on any Emacs Lisp expression.  You can use the library of built-in
@@ -18346,7 +18501,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1366)          ) Pay check deposited
 ./calendar.texi(,1367) @end example
 ./calendar.texi(,1368) 
-./calendar.texi(,1369) 
+./calendar.texi(,1369) @noindent
 ./calendar.texi(,1370) to just those dates.  This example illustrates how the sexp can depend
 ./calendar.texi(,1371) on the variable @code{date}; this variable is a list (@var{month}
 ./calendar.texi(,1372) @var{day} @var{year}) that gives the Gregorian date for which the diary
@@ -18383,14 +18538,14 @@ xemacs.texi(,1062)
 ./calendar.texi(,1403) @code{t}, calling up the calendar automatically displays the diary
 ./calendar.texi(,1404) entries for the current date as well.  The diary dates appear only if
 ./calendar.texi(,1405) the current date is visible.  If you add both of the following lines to
-./calendar.texi(,1406) your init file:
+./calendar.texi(,1406) your init file:@refill
 ./calendar.texi(,1407) 
 ./calendar.texi(,1408) @example
 ./calendar.texi(,1409) (setq view-diary-entries-initially t)
 ./calendar.texi(,1410) (calendar)
 ./calendar.texi(,1411) @end example
 ./calendar.texi(,1412) 
-./calendar.texi(,1413) 
+./calendar.texi(,1413) @noindent
 ./calendar.texi(,1414) this displays both the calendar and diary windows whenever you start
 ./calendar.texi(,1415) Emacs.  @xref{Init File}.
 ./calendar.texi(,1416) 
@@ -18434,7 +18589,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1454)   Starting the calendar runs the normal hook
 ./calendar.texi(,1455) @code{initial-calendar-window-hook}.  Recomputation of the calendar
 ./calendar.texi(,1456) display does not run this hook.  But if you leave the calendar with the
-./calendar.texi(,1457) @kbd{q} command and reenter it, the hook runs again.
+./calendar.texi(,1457) @kbd{q} command and reenter it, the hook runs again.@refill
 ./calendar.texi(,1458) 
 ./calendar.texi(,1459) @vindex today-visible-calendar-hook
 ./calendar.texi(,1460)   The variable @code{today-visible-calendar-hook} is a normal hook run
@@ -18448,7 +18603,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1468) (add-hook 'today-visible-calendar-hook 'calendar-star-date)
 ./calendar.texi(,1469) @end example
 ./calendar.texi(,1470) 
-./calendar.texi(,1471) 
+./calendar.texi(,1471) @noindent
 ./calendar.texi(,1472) Another standard hook function marks the current date, either by
 ./calendar.texi(,1473) changing its face or by adding an asterisk.  Here's how to use it:
 ./calendar.texi(,1474) 
@@ -18457,7 +18612,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1477) (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 ./calendar.texi(,1478) @end example
 ./calendar.texi(,1479) 
-./calendar.texi(,1480) 
+./calendar.texi(,1480) @noindent
 ./calendar.texi(,1481) @vindex calendar-today-marker
 ./calendar.texi(,1482) The variable @code{calendar-today-marker} specifies how to mark today's
 ./calendar.texi(,1483) date.  Its value should be a character to insert next to the date or a
@@ -18467,7 +18622,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1487) terminal.
 ./calendar.texi(,1488) 
 ./calendar.texi(,1489) @vindex today-invisible-calendar-hook
-./calendar.texi(,1490) 
+./calendar.texi(,1490) @noindent
 ./calendar.texi(,1491)   A similar normal hook, @code{today-invisible-calendar-hook} is run if
 ./calendar.texi(,1492) the current date is @emph{not} visible in the window.
 ./calendar.texi(,1493) 
@@ -18508,7 +18663,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1528) @code{all-islamic-calendar-holidays} to @code{t}.  If you want to
 ./calendar.texi(,1529) eliminate the religious holidays, set any or all of the corresponding
 ./calendar.texi(,1530) variables @code{christian-holidays}, @code{hebrew-holidays}, and
-./calendar.texi(,1531) @code{islamic-holidays} to @code{nil}.
+./calendar.texi(,1531) @code{islamic-holidays} to @code{nil}.@refill
 ./calendar.texi(,1532) 
 ./calendar.texi(,1533) @vindex other-holidays
 ./calendar.texi(,1534)   You can set the variable @code{other-holidays} to any list of
@@ -18574,7 +18729,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1594) 
 ./calendar.texi(,1595) @xref{Init File}.
 ./calendar.texi(,1596) 
-./calendar.texi(,1597) 
+./calendar.texi(,1597) @noindent
 ./calendar.texi(,1598) The holiday form @code{(holiday-fixed 7 14 "Bastille Day")} specifies the
 ./calendar.texi(,1599) fourteenth day of the seventh month (July).
 ./calendar.texi(,1600) 
@@ -18586,7 +18741,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1606) (holiday-float 8 1 4 "Hurricane Supplication Day")
 ./calendar.texi(,1607) @end smallexample
 ./calendar.texi(,1608) 
-./calendar.texi(,1609) 
+./calendar.texi(,1609) @noindent
 ./calendar.texi(,1610) Here the 8 specifies August, the 1 specifies Monday (Sunday is 0,
 ./calendar.texi(,1611) Tuesday is 2, and so on), and the 4 specifies the fourth occurrence in
 ./calendar.texi(,1612) the month (1 specifies the first occurrence, 2 the second occurrence,
@@ -18603,7 +18758,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1623)         (holiday-julian 4 2 "Jefferson's Birthday")))
 ./calendar.texi(,1624) @end smallexample
 ./calendar.texi(,1625) 
-./calendar.texi(,1626) 
+./calendar.texi(,1626) @noindent
 ./calendar.texi(,1627) adds the last day of Hanukkah (since the Hebrew months are numbered with
 ./calendar.texi(,1628) 1 starting from Nisan), the Islamic feast celebrating Mohammed's
 ./calendar.texi(,1629) birthday (since the Islamic months are numbered from 1 starting with
@@ -18624,7 +18779,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1644)               "US Presidential Election"))
 ./calendar.texi(,1645) @end smallexample
 ./calendar.texi(,1646) 
-./calendar.texi(,1647) 
+./calendar.texi(,1647) @noindent
 ./calendar.texi(,1648) or
 ./calendar.texi(,1649) 
 ./calendar.texi(,1650) @smallexample
@@ -18666,21 +18821,21 @@ xemacs.texi(,1062)
 ./calendar.texi(,1686) ((if dayname (concat dayname ", ")) monthname " " day ", " year)
 ./calendar.texi(,1687) @end smallexample
 ./calendar.texi(,1688) 
-./calendar.texi(,1689) 
+./calendar.texi(,1689) @noindent
 ./calendar.texi(,1690) while in the European style this value is the default:
 ./calendar.texi(,1691) 
 ./calendar.texi(,1692) @smallexample
 ./calendar.texi(,1693) ((if dayname (concat dayname ", ")) day " " monthname " " year)
 ./calendar.texi(,1694) @end smallexample
 ./calendar.texi(,1695) 
-./calendar.texi(,1696) +
+./calendar.texi(,1696) +@noindent
 ./calendar.texi(,1697) The ISO standard date representation is this:
 ./calendar.texi(,1698) 
 ./calendar.texi(,1699) @smallexample
 ./calendar.texi(,1700) (year "-" month "-" day)
 ./calendar.texi(,1701) @end smallexample
 ./calendar.texi(,1702) 
-./calendar.texi(,1703) 
+./calendar.texi(,1703) @noindent
 ./calendar.texi(,1704) This specifies a typical American format:
 ./calendar.texi(,1705) 
 ./calendar.texi(,1706) @smallexample
@@ -18707,7 +18862,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1727)           (if time-zone " (") time-zone (if time-zone ")"))
 ./calendar.texi(,1728) @end smallexample
 ./calendar.texi(,1729) 
-./calendar.texi(,1730) 
+./calendar.texi(,1730) @noindent
 ./calendar.texi(,1731) Here is a value that provides European style times:
 ./calendar.texi(,1732) 
 ./calendar.texi(,1733) @smallexample
@@ -18715,7 +18870,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1735)           (if time-zone " (") time-zone (if time-zone ")"))
 ./calendar.texi(,1736) @end smallexample
 ./calendar.texi(,1737) 
-./calendar.texi(,1738) 
+./calendar.texi(,1738) @noindent
 ./calendar.texi(,1739) gives military-style times like @samp{21:07 (UT)} if time zone names are
 ./calendar.texi(,1740) defined, and times like @samp{21:07} if they are not.
 ./calendar.texi(,1741) 
@@ -18756,11 +18911,13 @@ xemacs.texi(,1062)
 ./calendar.texi(,1776)   The values for Cambridge, Massachusetts are as follows:
 ./calendar.texi(,1777) 
 ./calendar.texi(,1778) @example
+./calendar.texi(,1779) @group
 ./calendar.texi(,1780) (calendar-nth-named-day 1 0 4 year)
 ./calendar.texi(,1781) (calendar-nth-named-day -1 0 10 year)
+./calendar.texi(,1782) @end group
 ./calendar.texi(,1783) @end example
 ./calendar.texi(,1784) 
-./calendar.texi(,1785) 
+./calendar.texi(,1785) @noindent
 ./calendar.texi(,1786) That is, the first 0th day (Sunday) of the fourth month (April) in
 ./calendar.texi(,1787) the year specified by @code{year}, and the last Sunday of the tenth month
 ./calendar.texi(,1788) (October) of that year.  If daylight savings time were
@@ -18781,7 +18938,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1803)     (list 1 1 (+ year 3760))))
 ./calendar.texi(,1804) @end example
 ./calendar.texi(,1805) 
-./calendar.texi(,1806) 
+./calendar.texi(,1806) @noindent
 ./calendar.texi(,1807) because Nisan is the first month in the Hebrew calendar and the Hebrew
 ./calendar.texi(,1808) year differs from the Gregorian year by 3760 at Nisan.
 ./calendar.texi(,1809) 
@@ -18794,6 +18951,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1816) difference between daylight savings time and standard time, measured in
 ./calendar.texi(,1817) minutes.  The value for Cambridge, Massachusetts is 60.
 ./calendar.texi(,1818) 
+./calendar.texi(,1819) @c @vindex calendar-daylight-savings-starts-time  too long!
 ./calendar.texi(,1820) @vindex calendar-daylight-savings-ends-time
 ./calendar.texi(,1821)   The two variables @code{calendar-daylight-savings-starts-time} and
 ./calendar.texi(,1822) @code{calendar-daylight-savings-ends-time} specify the number of minutes
@@ -18811,7 +18969,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1834) information delays the display of the diary buffer noticeably.  If you'd
 ./calendar.texi(,1835) prefer to have a faster display of the diary buffer but without the
 ./calendar.texi(,1836) holiday information, set the variable @code{holidays-in-diary-buffer} to
-./calendar.texi(,1837) @code{nil}.
+./calendar.texi(,1837) @code{nil}.@refill
 ./calendar.texi(,1838) 
 ./calendar.texi(,1839) @vindex number-of-diary-entries
 ./calendar.texi(,1840)   The variable @code{number-of-diary-entries} controls the number of
@@ -18873,11 +19031,11 @@ xemacs.texi(,1062)
 ./calendar.texi(,1896)  (dayname "\\W"))
 ./calendar.texi(,1897) @end example
 ./calendar.texi(,1898) 
-./calendar.texi(,1899) 
+./calendar.texi(,1899) @noindent
 ./calendar.texi(,1900) Emacs matches of the diary entries with the date forms is done with the
 ./calendar.texi(,1901) standard syntax table from Fundamental mode
 ./calendar.texi(,1902) (@pxref{Syntax Tables,,,lispref,XEmacs Lisp Reference Manual}),
-./calendar.texi(,1903) but with the @samp{*} changed so that it is a word constituent.
+./calendar.texi(,1903) but with the @samp{*} changed so that it is a word constituent.@refill
 ./calendar.texi(,1904) 
 ./calendar.texi(,1905)   The date patterns in the list must be @emph{mutually exclusive} and
 ./calendar.texi(,1906) must not match any portion of the diary entry itself, just the date and
@@ -18899,7 +19057,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1922)  (dayname "\\W"))
 ./calendar.texi(,1923) @end example
 ./calendar.texi(,1924) 
-./calendar.texi(,1925) 
+./calendar.texi(,1925) @noindent
 ./calendar.texi(,1926) Notice the use of @code{backup} in the third pattern, because it needs
 ./calendar.texi(,1927) to match part of a word beyond the date itself to distinguish it from
 ./calendar.texi(,1928) the fourth pattern.
@@ -18923,7 +19081,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1946) (add-hook 'nongregorian-diary-marking-hook 'mark-hebrew-diary-entries)
 ./calendar.texi(,1947) @end smallexample
 ./calendar.texi(,1948) 
-./calendar.texi(,1949) 
+./calendar.texi(,1949) @noindent
 ./calendar.texi(,1950) If you want Islamic-date entries, do this:
 ./calendar.texi(,1951) 
 ./calendar.texi(,1952) @findex list-islamic-diary-entries
@@ -18944,7 +19102,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1967) HHeshvan 25 Happy Hebrew birthday!
 ./calendar.texi(,1968) @end smallexample
 ./calendar.texi(,1969) 
-./calendar.texi(,1970) 
+./calendar.texi(,1970) @noindent
 ./calendar.texi(,1971) and would appear in the diary for any date that corresponds to Heshvan 25
 ./calendar.texi(,1972) on the Hebrew calendar.  And here is  Islamic-date diary entry  that matches
 ./calendar.texi(,1973) Dhu al-Qada 25:
@@ -18953,7 +19111,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,1976) IDhu al-Qada 25 Happy Islamic birthday!
 ./calendar.texi(,1977) @end smallexample
 ./calendar.texi(,1978) 
-./calendar.texi(,1979) 
+./calendar.texi(,1979) @noindent
 ./calendar.texi(,1980) and would appear in the diary for any date that corresponds to Dhu al-Qada 25
 ./calendar.texi(,1981) on the Islamic calendar.
 ./calendar.texi(,1982) 
@@ -19017,7 +19175,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2040) (add-hook 'diary-display-hook 'fancy-diary-display)
 ./calendar.texi(,2041) @end example
 ./calendar.texi(,2042) 
-./calendar.texi(,2043) 
+./calendar.texi(,2043) @noindent
 ./calendar.texi(,2044) this enables fancy diary display.  It displays diary entries and
 ./calendar.texi(,2045) holidays by copying them into a special buffer that exists only for the
 ./calendar.texi(,2046) sake of display.  Copying to a separate buffer provides an opportunity
@@ -19036,7 +19194,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2059)   Ordinarily, the fancy diary buffer does not show days for which there are
 ./calendar.texi(,2060) no diary entries, even if that day is a holiday.  If you want such days to be
 ./calendar.texi(,2061) shown in the fancy diary buffer, set the variable
-./calendar.texi(,2062) @code{diary-list-include-blanks} to @code{t}.
+./calendar.texi(,2062) @code{diary-list-include-blanks} to @code{t}.@refill
 ./calendar.texi(,2063) 
 ./calendar.texi(,2064) @cindex sorting diary entries
 ./calendar.texi(,2065)   If you use the fancy diary display, you can use the normal hook
@@ -19050,7 +19208,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2073) 
 ./calendar.texi(,2074) @xref{Init File}.
 ./calendar.texi(,2075) 
-./calendar.texi(,2076) 
+./calendar.texi(,2076) @noindent
 ./calendar.texi(,2077) For each day, this sorts diary entries that begin with a recognizable
 ./calendar.texi(,2078) time of day according to their times.  Diary entries without times come
 ./calendar.texi(,2079) first within each day.
@@ -19066,7 +19224,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2089) #include "@var{filename}"
 ./calendar.texi(,2090) @end smallexample
 ./calendar.texi(,2091) 
-./calendar.texi(,2092) 
+./calendar.texi(,2092) @noindent
 ./calendar.texi(,2093) includes the diary entries from the file @var{filename} in the fancy
 ./calendar.texi(,2094) diary buffer.  The include mechanism is recursive, so that included files
 ./calendar.texi(,2095) can include other files, and so on; you must be careful not to have a
@@ -19101,7 +19259,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2124) %%(diary-anniversary 10 31 1948) Arthur's birthday (%d years old)
 ./calendar.texi(,2125) @end smallexample
 ./calendar.texi(,2126) 
-./calendar.texi(,2127) 
+./calendar.texi(,2127) @noindent
 ./calendar.texi(,2128) gets replaced by the age, so on October 31, 1990 the entry appears in
 ./calendar.texi(,2129) the fancy diary buffer like this:
 ./calendar.texi(,2130) 
@@ -19109,14 +19267,14 @@ xemacs.texi(,1062)
 ./calendar.texi(,2132) Arthur's birthday (42 years old)
 ./calendar.texi(,2133) @end smallexample
 ./calendar.texi(,2134) 
-./calendar.texi(,2135) 
+./calendar.texi(,2135) @noindent
 ./calendar.texi(,2136) If the diary file instead contains this entry:
 ./calendar.texi(,2137) 
 ./calendar.texi(,2138) @smallexample
 ./calendar.texi(,2139) %%(diary-anniversary 10 31 1948) Arthur's %d%s birthday
 ./calendar.texi(,2140) @end smallexample
 ./calendar.texi(,2141) 
-./calendar.texi(,2142) 
+./calendar.texi(,2142) @noindent
 ./calendar.texi(,2143) the entry in the fancy diary buffer for October 31, 1990 appears like this:
 ./calendar.texi(,2144) 
 ./calendar.texi(,2145) @smallexample
@@ -19131,14 +19289,14 @@ xemacs.texi(,1062)
 ./calendar.texi(,2154) %%(diary-cyclic 50 1 1 1990) Renew medication (%d%s time)
 ./calendar.texi(,2155) @end smallexample
 ./calendar.texi(,2156) 
-./calendar.texi(,2157) 
+./calendar.texi(,2157) @noindent
 ./calendar.texi(,2158) looks like this:
 ./calendar.texi(,2159) 
 ./calendar.texi(,2160) @smallexample
 ./calendar.texi(,2161) Renew medication (5th time)
 ./calendar.texi(,2162) @end smallexample
 ./calendar.texi(,2163) 
-./calendar.texi(,2164) 
+./calendar.texi(,2164) @noindent
 ./calendar.texi(,2165) in the fancy diary display on September 8, 1990.
 ./calendar.texi(,2166) 
 ./calendar.texi(,2167)   The generality of sexp diary entries lets you specify any diary entry
@@ -19161,7 +19319,7 @@ xemacs.texi(,1062)
 ./calendar.texi(,2184)          ) Pay check deposited
 ./calendar.texi(,2185) @end smallexample
 ./calendar.texi(,2186) 
-./calendar.texi(,2187) 
+./calendar.texi(,2187) @noindent
 ./calendar.texi(,2188) applies to just those dates.  This example illustrates how the sexp can
 ./calendar.texi(,2189) depend on the variable @code{date}; this variable is a list (@var{month}
 ./calendar.texi(,2190) @var{day} @var{year}) that gives the Gregorian date for which the diary
@@ -19207,14 +19365,14 @@ xemacs.texi(,1062)
 ./calendar.texi(,2230) Make a diary entry with today's equivalent date on the Mayan calendar.
 ./calendar.texi(,2231) @end table
 ./calendar.texi(,2232) 
-./calendar.texi(,2233) 
+./calendar.texi(,2233) @noindent
 ./calendar.texi(,2234) Thus including the diary entry
 ./calendar.texi(,2235) 
 ./calendar.texi(,2236) @smallexample
 ./calendar.texi(,2237) &%%(diary-hebrew-date)
 ./calendar.texi(,2238) @end smallexample
 ./calendar.texi(,2239) 
-./calendar.texi(,2240) 
+./calendar.texi(,2240) @noindent
 ./calendar.texi(,2241) causes every day's diary display to contain the equivalent date on the
 ./calendar.texi(,2242) Hebrew calendar, if you are using the fancy diary display.  (With simple
 ./calendar.texi(,2243) diary display, the line @samp{&%%(diary-hebrew-date)} appears in the
@@ -19362,7 +19520,7 @@ xemacs.texi(,1062)
 ./misc.texi(,81) the buffer.
 ./misc.texi(,82) @end smallexample
 ./misc.texi(,83) 
-./misc.texi(,84) 
+./misc.texi(,84) @noindent
 ./misc.texi(,85) then if you apply @kbd{M-x sort-lines} to the entire buffer you get:
 ./misc.texi(,86) 
 ./misc.texi(,87) @smallexample
@@ -19373,7 +19531,7 @@ xemacs.texi(,1062)
 ./misc.texi(,92) whether the file has changed on disk since it was last visited or
 ./misc.texi(,93) @end smallexample
 ./misc.texi(,94) 
-./misc.texi(,95) 
+./misc.texi(,95) @noindent
 ./misc.texi(,96) where the upper case `O' comes before all lower case letters.  If you apply
 ./misc.texi(,97) instead @kbd{C-u 2 M-x sort-fields} you get:
 ./misc.texi(,98) 
@@ -19385,9 +19543,9 @@ xemacs.texi(,1062)
 ./misc.texi(,104) whether the file has changed on disk since it was last visited or
 ./misc.texi(,105) @end smallexample
 ./misc.texi(,106) 
-./misc.texi(,107) 
+./misc.texi(,107) @noindent
 ./misc.texi(,108) where the sort keys were @samp{If}, @samp{XEmacs}, @samp{buffer},
-./misc.texi(,109) @samp{systems}, and @samp{the}.
+./misc.texi(,109) @samp{systems}, and @samp{the}.@refill
 ./misc.texi(,110) 
 ./misc.texi(,111) @findex sort-columns
 ./misc.texi(,112)   @kbd{M-x sort-columns} requires more explanation.  You specify the
@@ -19463,7 +19621,7 @@ xemacs.texi(,1062)
 ./misc.texi(,182) the contents of the region as input to the shell command, instead of no
 ./misc.texi(,183) input.  If a numeric argument is used to direct  output to the current
 ./misc.texi(,184) buffer, then the old region is deleted first and the output replaces it as
-./misc.texi(,185) the contents of the region.
+./misc.texi(,185) the contents of the region.@refill
 ./misc.texi(,186) 
 ./misc.texi(,187) @vindex shell-file-name
 ./misc.texi(,188) @cindex environment
@@ -19473,7 +19631,7 @@ xemacs.texi(,1062)
 ./misc.texi(,192) specify a directory, the directories in the list @code{exec-path} are
 ./misc.texi(,193) searched; this list is initialized based on the @code{PATH} environment
 ./misc.texi(,194) variable when you start XEmacs.  You can override either or both of these
-./misc.texi(,195) default initializations in your init file. @xref{Init File}.
+./misc.texi(,195) default initializations in your init file. @xref{Init File}.@refill
 ./misc.texi(,196) 
 ./misc.texi(,197)   When you use @kbd{M-!} and @kbd{M-|}, XEmacs has to wait until the
 ./misc.texi(,198) shell command completes.  You can quit with @kbd{C-g}; that terminates
@@ -19509,13 +19667,13 @@ xemacs.texi(,1062)
 ./misc.texi(,228) environment variable @code{ESHELL} is used, or the environment variable
 ./misc.texi(,229) @code{SHELL} if there is no @code{ESHELL}.  If the file name specified
 ./misc.texi(,230) is relative, the directories in the list @code{exec-path} are searched
-./misc.texi(,231) (@pxref{Single Shell,Single Shell Commands}).
+./misc.texi(,231) (@pxref{Single Shell,Single Shell Commands}).@refill
 ./misc.texi(,232) 
 ./misc.texi(,233)   As soon as the subshell is started, it is sent as input the contents of
 ./misc.texi(,234) the file @file{~/.emacs_@var{shellname}}, if that file exists, where
 ./misc.texi(,235) @var{shellname} is the name of the file that the shell was loaded from.
 ./misc.texi(,236) For example, if you use @code{csh}, the file sent to it is
-./misc.texi(,237) @file{~/.emacs_csh}.
+./misc.texi(,237) @file{~/.emacs_csh}.@refill
 ./misc.texi(,238) 
 ./misc.texi(,239) @vindex shell-pushd-regexp
 ./misc.texi(,240) @vindex shell-popd-regexp
@@ -19530,7 +19688,7 @@ xemacs.texi(,1062)
 ./misc.texi(,249) that line is regarded as a @code{pushd} command.  Change this variable when
 ./misc.texi(,250) you add aliases for @samp{pushd}.  Likewise, @code{shell-popd-regexp} and
 ./misc.texi(,251) @code{shell-cd-regexp} are used to recognize commands with the meaning of
-./misc.texi(,252) @samp{popd} and @samp{cd}.
+./misc.texi(,252) @samp{popd} and @samp{cd}.@refill
 ./misc.texi(,253) 
 ./misc.texi(,254) @kbd{M-x shell-resync-dirs} queries the shell and resynchronizes XEmacs'
 ./misc.texi(,255) idea of what the current directory stack is.  @kbd{M-x
@@ -19754,6 +19912,7 @@ xemacs.texi(,1062)
 ./misc.texi(,473) The amount of narrowing in effect in a buffer at any time is called the
 ./misc.texi(,474) buffer's @dfn{restriction}.
 ./misc.texi(,475) 
+./misc.texi(,476) @c WideCommands
 ./misc.texi(,477) @table @kbd
 ./misc.texi(,478) @item C-x n n
 ./misc.texi(,479) Narrow down to between point and mark (@code{narrow-to-region}).
@@ -19993,6 +20152,7 @@ xemacs.texi(,1062)
 ./misc.texi(,713)   When you are feeling strange, type @kbd{M-x yow}.
 ./misc.texi(,714) 
 ./misc.texi(,715) @node Emulation, Customization, Amusements, Top
+./misc.texi(,716) @comment  node-name,  next,  previous,  up
 ./misc.texi(,717) @section Emulation
 ./misc.texi(,718) @cindex other editors
 ./misc.texi(,719) @cindex vi
@@ -20119,7 +20279,7 @@ xemacs.texi(,1062)
 ./custom.texi(,67)   Overwrite mode causes ordinary printing characters to replace existing
 ./custom.texi(,68) text instead of moving it to the right.  For example, if point is in
 ./custom.texi(,69) front of the @samp{B} in @samp{FOOBAR}, and you type a @kbd{G} in Overwrite
-./custom.texi(,70) mode, it changes to @samp{FOOGAR}, instead of @samp{FOOGBAR}.
+./custom.texi(,70) mode, it changes to @samp{FOOGAR}, instead of @samp{FOOGBAR}.@refill
 ./custom.texi(,71) 
 ./custom.texi(,72) @cindex Abbrev mode
 ./custom.texi(,73) @findex abbrev-mode
@@ -20191,7 +20351,7 @@ xemacs.texi(,1062)
 ./custom.texi(,139) C-h v fill-column @key{RET}
 ./custom.texi(,140) @end example
 ./custom.texi(,141) 
-./custom.texi(,142) 
+./custom.texi(,142) @noindent
 ./custom.texi(,143) prints something like:
 ./custom.texi(,144) 
 ./custom.texi(,145) @smallexample
@@ -20203,7 +20363,7 @@ xemacs.texi(,1062)
 ./custom.texi(,151) @end smallexample
 ./custom.texi(,152) 
 ./custom.texi(,153) @cindex option
-./custom.texi(,154) 
+./custom.texi(,154) @noindent
 ./custom.texi(,155) The star at the beginning of the documentation indicates that this variable
 ./custom.texi(,156) is an option.  @kbd{C-h v} is not restricted to options; it allows any
 ./custom.texi(,157) variable name.
@@ -20218,7 +20378,7 @@ xemacs.texi(,1062)
 ./custom.texi(,166) M-x set-variable @key{RET} fill-column @key{RET} 75 @key{RET}
 ./custom.texi(,167) @end example
 ./custom.texi(,168) 
-./custom.texi(,169) 
+./custom.texi(,169) @noindent
 ./custom.texi(,170) sets @code{fill-column} to 75, as if you had executed the Lisp expression
 ./custom.texi(,171) @code{(setq fill-column 75)}.
 ./custom.texi(,172) 
@@ -20278,7 +20438,7 @@ xemacs.texi(,1062)
 ./custom.texi(,226) 
 ./custom.texi(,227) @end smallexample
 ./custom.texi(,228) 
-./custom.texi(,229) 
+./custom.texi(,229) @noindent
 ./custom.texi(,230) This says that the buffer displays the contents of the @code{Emacs}
 ./custom.texi(,231) group.  The other groups are listed because they are its contents.  But
 ./custom.texi(,232) they are listed differently, without indentation and dashes, because
@@ -20407,7 +20567,7 @@ xemacs.texi(,1062)
 ./custom.texi(,355) List of directories to search for files to load....
 ./custom.texi(,356) @end smallexample
 ./custom.texi(,357) 
-./custom.texi(,358) 
+./custom.texi(,358) @noindent
 ./custom.texi(,359) Each directory in the list appears on a separate line, and each line has
 ./custom.texi(,360) several editable or active fields.
 ./custom.texi(,361) 
@@ -20477,7 +20637,7 @@ xemacs.texi(,1062)
 ./custom.texi(,425)  [Set] [Save] [Reset]  [Done]
 ./custom.texi(,426) @end smallexample
 ./custom.texi(,427) 
-./custom.texi(,428) 
+./custom.texi(,428) @noindent
 ./custom.texi(,429) Invoking @samp{[Done]} buries this customization buffer.  Each of the
 ./custom.texi(,430) other fields performs an operation---set, save or reset---on each of the
 ./custom.texi(,431) items in the buffer that could meaningfully be set, saved or reset.
@@ -20520,6 +20680,12 @@ xemacs.texi(,1062)
 ./custom.texi(,468) @xref{Faces}, for description of how @code{face-frob-from-locale-first}
 ./custom.texi(,469) variable affects changing @samp{Bold} and @samp{Italic} attributes.
 ./custom.texi(,470) 
+./custom.texi(,471) @c Is this true for XEmacs?
+./custom.texi(,472) @c  On a black-and-white display, the colors you can use for the
+./custom.texi(,473) @c background are @samp{black}, @samp{white}, @samp{gray}, @samp{gray1},
+./custom.texi(,474) @c and @samp{gray3}.  Emacs supports these shades of gray by using
+./custom.texi(,475) @c background stipple patterns instead of a color.
+./custom.texi(,476) @c 
 ./custom.texi(,477)   Setting, saving and resetting a face work like the same operations for
 ./custom.texi(,478) options (@pxref{Changing an Option}).
 ./custom.texi(,479) 
@@ -20529,6 +20695,14 @@ xemacs.texi(,1062)
 ./custom.texi(,483) appearances for a face, select @samp{Show Display Types} in the menu you
 ./custom.texi(,484) get from invoking @samp{[State]}.
 ./custom.texi(,485) 
+./custom.texi(,486) @c It would be cool to implement this
+./custom.texi(,487) @c @findex modify-face
+./custom.texi(,488) @c   Another more basic way to set the attributes of a specific face is
+./custom.texi(,489) @c with @kbd{M-x modify-face}.  This command reads the name of a face, then
+./custom.texi(,490) @c reads the attributes one by one.  For the color and stipple attributes,
+./custom.texi(,491) @c the attribute's current value is the default---type just @key{RET} if
+./custom.texi(,492) @c you don't want to change that attribute.  Type @samp{none} if you want
+./custom.texi(,493) @c to clear out the attribute.
 ./custom.texi(,494) 
 ./custom.texi(,495) @node Specific Customization
 ./custom.texi(,496) @subsubsection Customizing Specific Items
@@ -20689,7 +20863,7 @@ xemacs.texi(,1062)
 ./custom.texi(,651) @code{selective-display-ellipses}, @*@code{selective-display},
 ./custom.texi(,652) @code{tab-width}, and @code{truncate-lines}.  Some other variables are
 ./custom.texi(,653) always local in every buffer, but they are used for internal
-./custom.texi(,654) purposes.
+./custom.texi(,654) purposes.@refill
 ./custom.texi(,655) 
 ./custom.texi(,656) Note: the variable @code{auto-fill-function} was formerly named
 ./custom.texi(,657) @code{auto-fill-hook}.
@@ -20713,7 +20887,7 @@ xemacs.texi(,1062)
 ./custom.texi(,675) (setq-default fill-column 75)
 ./custom.texi(,676) @end example
 ./custom.texi(,677) 
-./custom.texi(,678) 
+./custom.texi(,678) @noindent
 ./custom.texi(,679) @code{setq-default} is the only way to set the global value of a variable
 ./custom.texi(,680) that has been marked with @code{make-variable-buffer-local}.
 ./custom.texi(,681) 
@@ -20753,7 +20927,7 @@ xemacs.texi(,1062)
 ./custom.texi(,715) The prefix and suffix are included to disguise the local variables list
 ./custom.texi(,716) as a comment so the compiler or text formatter  will ignore it.
 ./custom.texi(,717) If you do not need to disguise the local variables list as a comment in
-./custom.texi(,718) this way, there is no need to include a prefix or a suffix.
+./custom.texi(,718) this way, there is no need to include a prefix or a suffix.@refill
 ./custom.texi(,719) 
 ./custom.texi(,720)   Two ``variable'' names are special in a local variables list: a value
 ./custom.texi(,721) for the variable @code{mode} sets the major mode, and a value for the
@@ -20835,6 +21009,7 @@ xemacs.texi(,1062)
 ./custom.texi(,797) @kbd{C-n C-d} forty times, you can speed your work by defining a keyboard
 ./custom.texi(,798) macro to invoke @kbd{C-n C-d} and calling it with a repeat count of forty.
 ./custom.texi(,799) 
+./custom.texi(,800) @c widecommands
 ./custom.texi(,801) @table @kbd
 ./custom.texi(,802) @item C-x (
 ./custom.texi(,803) Start defining a keyboard macro (@code{start-kbd-macro}).
@@ -20897,7 +21072,7 @@ xemacs.texi(,1062)
 ./custom.texi(,860) C-x ( M-f foo C-x )
 ./custom.texi(,861) @end example
 ./custom.texi(,862) 
-./custom.texi(,863) 
+./custom.texi(,863) @noindent
 ./custom.texi(,864) defines a macro to move forward a word and then insert @samp{foo}.
 ./custom.texi(,865) 
 ./custom.texi(,866) You can give @kbd{C-x )} a repeat count as an argument, in which case it
@@ -20946,7 +21121,7 @@ xemacs.texi(,1062)
 ./custom.texi(,909) M-x insert-kbd-macro @key{RET} @var{macroname} @key{RET}
 ./custom.texi(,910) @end example
 ./custom.texi(,911) 
-./custom.texi(,912) 
+./custom.texi(,912) @noindent
 ./custom.texi(,913) This inserts some Lisp code that, when executed later, will define the same
 ./custom.texi(,914) macro with the same definition it has now.  You need not understand Lisp
 ./custom.texi(,915) code to do this, because @code{insert-kbd-macro} writes the Lisp code for you.
@@ -20986,7 +21161,7 @@ xemacs.texi(,1062)
 ./custom.texi(,949) you are asked again how to continue with the keyboard macro.  If you
 ./custom.texi(,950) type a @key{SPC} at this time, the rest of the macro definition is
 ./custom.texi(,951) executed.  It is up to you to leave point and the text in a state such
-./custom.texi(,952) that the rest of the macro will do what you want.
+./custom.texi(,952) that the rest of the macro will do what you want.@refill
 ./custom.texi(,953) 
 ./custom.texi(,954)   @kbd{C-u C-x q}, which is @kbd{C-x q} with a numeric argument, performs a
 ./custom.texi(,955) different function.  It enters a recursive edit reading input from the
@@ -21102,14 +21277,14 @@ xemacs.texi(,1062)
 ./custom.texi(,1065) you can use as a description of what the prefix key is for.  Thus the
 ./custom.texi(,1066) binding of @kbd{C-x} is the symbol @code{Ctl-X-Prefix}, whose function
 ./custom.texi(,1067) definition is the keymap for @kbd{C-x} commands, the value of
-./custom.texi(,1068) @code{ctl-x-map}.
+./custom.texi(,1068) @code{ctl-x-map}.@refill
 ./custom.texi(,1069) 
 ./custom.texi(,1070)   Prefix key definitions can appear in either the global
 ./custom.texi(,1071) map or a local map.  The definitions of @kbd{C-c}, @kbd{C-x}, @kbd{C-h},
 ./custom.texi(,1072) and @key{ESC} as prefix keys appear in the global map, so these prefix
 ./custom.texi(,1073) keys are always available.  Major modes can locally redefine a key as a
 ./custom.texi(,1074) prefix by putting a prefix key definition for it in the local
-./custom.texi(,1075) map.
+./custom.texi(,1075) map.@refill
 ./custom.texi(,1076) 
 ./custom.texi(,1077)   A mode can also put a prefix definition of a global prefix character such
 ./custom.texi(,1078) as @kbd{C-x} into its local map.  This is how major modes override the
@@ -21121,7 +21296,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1084) @kbd{C-x} is looked up in both the major mode's own keymap for redefined
 ./custom.texi(,1085) @kbd{C-x} commands and in @code{ctl-x-map}.  If the major mode's own keymap
 ./custom.texi(,1086) for @kbd{C-x} commands contains @code{nil}, the definition from the global
-./custom.texi(,1087) keymap for @kbd{C-x} commands is used.
+./custom.texi(,1087) keymap for @kbd{C-x} commands is used.@refill
 ./custom.texi(,1088) 
 ./custom.texi(,1089) @node Rebinding
 ./custom.texi(,1090) @subsection Changing Key Bindings
@@ -21171,7 +21346,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1134) M-x global-set-key @key{RET} C-f next-line @key{RET}
 ./custom.texi(,1135) @end example
 ./custom.texi(,1136) 
-./custom.texi(,1137) 
+./custom.texi(,1137) @noindent
 ./custom.texi(,1138) redefines @kbd{C-f} to move down a line.  The fact that @var{cmd} is
 ./custom.texi(,1139) read second makes it serve as a kind of confirmation for @var{key}.
 ./custom.texi(,1140) 
@@ -21182,13 +21357,13 @@ xemacs.texi(,1062)
 ./custom.texi(,1145) Thus, if you type @kbd{C-f} for @var{key}, Emacs enters
 ./custom.texi(,1146) the minibuffer immediately to read @var{cmd}.  But if you type
 ./custom.texi(,1147) @kbd{C-x}, another character is read; if that character is @kbd{4},
-./custom.texi(,1148) another character is read, and so on.  For example,
+./custom.texi(,1148) another character is read, and so on.  For example,@refill
 ./custom.texi(,1149) 
 ./custom.texi(,1150) @example
 ./custom.texi(,1151) M-x global-set-key @key{RET} C-x 4 $ spell-other-window @key{RET}
 ./custom.texi(,1152) @end example
 ./custom.texi(,1153) 
-./custom.texi(,1154) 
+./custom.texi(,1154) @noindent
 ./custom.texi(,1155) redefines @kbd{C-x 4 $} to run the (fictitious) command
 ./custom.texi(,1156) @code{spell-other-window}.
 ./custom.texi(,1157) 
@@ -21291,6 +21466,16 @@ xemacs.texi(,1062)
 ./custom.texi(,1254) 
 ./custom.texi(,1255) @end example
 ./custom.texi(,1256) 
+./custom.texi(,1257) @comment ;; note that these next four lines are not synonymous:
+./custom.texi(,1258) @comment ;;
+./custom.texi(,1259) @comment (global-set-key '(meta control delete) 'my-command)
+./custom.texi(,1260) @comment (global-set-key '(meta control backspace) 'my-command)
+./custom.texi(,1261) @comment (global-set-key '(meta control h) 'my-command)
+./custom.texi(,1262) @comment (global-set-key '(meta control H) 'my-command)
+./custom.texi(,1263) @comment 
+./custom.texi(,1264) @comment ;; note that this binds two key sequences: ``control-j'' and ``linefeed''.
+./custom.texi(,1265) @comment ;;
+./custom.texi(,1266) @comment (global-set-key "\^J" 'my-command)
 ./custom.texi(,1267) 
 ./custom.texi(,1268) @node Key Bindings Using Strings
 ./custom.texi(,1269) @subsubsection Using Strings for Changing Key Bindings 
@@ -21639,7 +21824,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1612) You can use @samp{\C-} as a prefix for a control character, as in
 ./custom.texi(,1613) @samp{\C-s} for ASCII Control-S, and @samp{\M-} as a prefix for
 ./custom.texi(,1614) a Meta character, as in @samp{\M-a} for Meta-A or @samp{\M-\C-a} for
-./custom.texi(,1615) Control-Meta-A.
+./custom.texi(,1615) Control-Meta-A.@refill
 ./custom.texi(,1616) 
 ./custom.texi(,1617) @item Characters
 ./custom.texi(,1618) Lisp character constant syntax consists of a @samp{?} followed by
@@ -21830,18 +22015,18 @@ xemacs.texi(,1062)
 ./custom.texi(,1803) found by searching the directories @code{load-path} as usual and trying the
 ./custom.texi(,1804) suffixes @samp{.elc} and @samp{.el}.  Normally it appears in the
 ./custom.texi(,1805) subdirectory @file{term} of the directory where most Emacs libraries are
-./custom.texi(,1806) kept.
+./custom.texi(,1806) kept.@refill
 ./custom.texi(,1807) 
 ./custom.texi(,1808)   The usual purpose of the terminal-specific library is to define the
 ./custom.texi(,1809) escape sequences used by the terminal's function keys using the library
 ./custom.texi(,1810) @file{keypad.el}.  See the file
-./custom.texi(,1811) @file{term/vt100.el} for an example of how this is done.
+./custom.texi(,1811) @file{term/vt100.el} for an example of how this is done.@refill
 ./custom.texi(,1812) 
 ./custom.texi(,1813)   When the terminal type contains a hyphen, only the part of the name
 ./custom.texi(,1814) before the first hyphen is significant in choosing the library name.
 ./custom.texi(,1815) Thus, terminal types @samp{aaa-48} and @samp{aaa-30-rv} both use
 ./custom.texi(,1816) the library @file{term/aaa}.  The code in the library can use
-./custom.texi(,1817) @code{(getenv "TERM")} to find the full terminal type name.
+./custom.texi(,1817) @code{(getenv "TERM")} to find the full terminal type name.@refill
 ./custom.texi(,1818) 
 ./custom.texi(,1819) @vindex term-file-prefix
 ./custom.texi(,1820)   The library's name is constructed by concatenating the value of the
@@ -21855,7 +22040,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1828) after both your init file and any terminal-specific library have been
 ./custom.texi(,1829) read.  @xref{Init File}.  You can set the value in the init file to
 ./custom.texi(,1830) override part of any of the terminal-specific libraries and to define
-./custom.texi(,1831) initializations for terminals that do not have a library.
+./custom.texi(,1831) initializations for terminals that do not have a library.@refill
 ./custom.texi(,1832) 
 ./custom.texi(,1833) @node Audible Bell
 ./custom.texi(,1834) @section Changing the Bell Sound
@@ -21875,7 +22060,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1848) machine with audio hardware. To listen to a sound of the provided type,
 ./custom.texi(,1849) call the function @code{play-sound} with the argument @var{sound}. You
 ./custom.texi(,1850) can also set the volume of the sound with the optional argument 
-./custom.texi(,1851) @var{volume}.
+./custom.texi(,1851) @var{volume}.@refill
 ./custom.texi(,1852) @cindex ding
 ./custom.texi(,1853) 
 ./custom.texi(,1854) Each element of @code{sound-alist} is a list describing a sound.
@@ -21965,6 +22150,7 @@ xemacs.texi(,1062)
 ./custom.texi(,1938) You type something other than @code{yes} or @code{no}
 ./custom.texi(,1939) @end table
 ./custom.texi(,1940) 
+./custom.texi(,1941) @comment  node-name,  next,  previous,  up
 ./custom.texi(,1942) @node Faces
 ./custom.texi(,1943) @section Faces
 ./custom.texi(,1944) 
@@ -22146,21 +22332,21 @@ xemacs.texi(,1062)
 ./custom.texi(,2120) @example
 ./custom.texi(,2121) Emacs*parameter: value
 ./custom.texi(,2122) @end example
-./custom.texi(,2123) 
+./custom.texi(,2123) @noindent
 ./custom.texi(,2124) 
 ./custom.texi(,2125) or
 ./custom.texi(,2126) 
 ./custom.texi(,2127) @example
 ./custom.texi(,2128) Emacs*EmacsFrame.parameter:value
 ./custom.texi(,2129) @end example
-./custom.texi(,2130) 
+./custom.texi(,2130) @noindent
 ./custom.texi(,2131) 
 ./custom.texi(,2132) You can specify resources for a particular frame with the syntax:
 ./custom.texi(,2133) 
 ./custom.texi(,2134) @example
 ./custom.texi(,2135) Emacs*FRAME-NAME.parameter: value
 ./custom.texi(,2136) @end example
-./custom.texi(,2137) 
+./custom.texi(,2137) @noindent
 ./custom.texi(,2138) 
 ./custom.texi(,2139) @menu
 ./custom.texi(,2140) * Geometry Resources::     Controlling the size and position of frames.
@@ -22180,21 +22366,21 @@ xemacs.texi(,1062)
 ./custom.texi(,2154) @example
 ./custom.texi(,2155) Emacs*EmacsFrame.geometry: 80x55
 ./custom.texi(,2156) @end example
-./custom.texi(,2157) 
+./custom.texi(,2157) @noindent
 ./custom.texi(,2158) 
 ./custom.texi(,2159) To set the geometry of a particular frame named @samp{fred}, do this:
 ./custom.texi(,2160) 
 ./custom.texi(,2161) @example
 ./custom.texi(,2162) Emacs*fred.geometry: 80x55
 ./custom.texi(,2163) @end example
-./custom.texi(,2164) 
+./custom.texi(,2164) @noindent
 ./custom.texi(,2165) 
 ./custom.texi(,2166) Important! Do not use the following syntax:
 ./custom.texi(,2167) 
 ./custom.texi(,2168) @example
 ./custom.texi(,2169) Emacs*geometry: 80x55
 ./custom.texi(,2170) @end example
-./custom.texi(,2171) 
+./custom.texi(,2171) @noindent
 ./custom.texi(,2172) 
 ./custom.texi(,2173) You should never use @code{*geometry} with any X application. It does
 ./custom.texi(,2174) not say "make the geometry of Emacs be 80 columns by 55 lines."  It
@@ -22209,7 +22395,7 @@ xemacs.texi(,1062)
 ./custom.texi(,2183) @example
 ./custom.texi(,2184) Emacs.geometry: 80x55
 ./custom.texi(,2185) @end example
-./custom.texi(,2186) 
+./custom.texi(,2186) @noindent
 ./custom.texi(,2187) 
 ./custom.texi(,2188) since that is the syntax used with most other applications (since most
 ./custom.texi(,2189) other applications have only one top-level window, unlike Emacs).  In
@@ -22405,14 +22591,14 @@ xemacs.texi(,1062)
 ./custom.texi(,2379) @example
 ./custom.texi(,2380) Emacs.FACE_NAME.parameter: value
 ./custom.texi(,2381) @end example
-./custom.texi(,2382) 
+./custom.texi(,2382) @noindent
 ./custom.texi(,2383) 
 ./custom.texi(,2384) or
 ./custom.texi(,2385) 
 ./custom.texi(,2386) @example
 ./custom.texi(,2387) Emacs*FRAME_NAME.FACE_NAME.parameter: value
 ./custom.texi(,2388) @end example
-./custom.texi(,2389) 
+./custom.texi(,2389) @noindent
 ./custom.texi(,2390) 
 ./custom.texi(,2391) Faces accept the following resources:
 ./custom.texi(,2392) 
@@ -22502,7 +22688,7 @@ xemacs.texi(,1062)
 ./custom.texi(,2476) @example
 ./custom.texi(,2477) *-courier-medium-r-*-*-*-120-*-*-*-*-*-*
 ./custom.texi(,2478) @end example
-./custom.texi(,2479) 
+./custom.texi(,2479) @noindent
 ./custom.texi(,2480) 
 ./custom.texi(,2481) If you use any of the other, less strict font name formats, some of which
 ./custom.texi(,2482) look like
@@ -22746,7 +22932,7 @@ xemacs.texi(,1062)
 ./trouble.texi(,172) Abort (and dump core)? (y or n)
 ./trouble.texi(,173) @end example
 ./trouble.texi(,174) 
-./trouble.texi(,175) 
+./trouble.texi(,175) @noindent
 ./trouble.texi(,176) Answer each one with @kbd{y} or @kbd{n} followed by @key{RET}.
 ./trouble.texi(,177) 
 ./trouble.texi(,178)   Saying @kbd{y} to @samp{Auto-save?} causes immediate auto-saving of all
@@ -22888,7 +23074,7 @@ xemacs.texi(,1062)
 ./trouble.texi(,314) you @i{know} that it makes no difference which visiting command is used.
 ./trouble.texi(,315) Similarly, rather than saying ``if I have three characters on the line,''
 ./trouble.texi(,316) say ``after I type @kbd{@key{RET} A B C @key{RET} C-p},'' if that is
-./trouble.texi(,317) the way you entered the text.
+./trouble.texi(,317) the way you entered the text.@refill
 ./trouble.texi(,318) 
 ./trouble.texi(,319)   If you are not in Fundamental mode when the problem occurs, you should
 ./trouble.texi(,320) say what mode you are in.
@@ -22936,7 +23122,7 @@ xemacs.texi(,1062)
 ./trouble.texi(,362) (open-dribble-file "~/dribble")
 ./trouble.texi(,363) @end example
 ./trouble.texi(,364) 
-./trouble.texi(,365) 
+./trouble.texi(,365) @noindent
 ./trouble.texi(,366) using @kbd{Meta-@key{ESC}} or from the @samp{*scratch*} buffer just after starting
 ./trouble.texi(,367) Emacs.  From then on, all Emacs input will be written in the specified
 ./trouble.texi(,368) dribble file until the Emacs process is killed.
@@ -22953,7 +23139,7 @@ xemacs.texi(,1062)
 ./trouble.texi(,379) (open-termscript "~/termscript")
 ./trouble.texi(,380) @end example
 ./trouble.texi(,381) 
-./trouble.texi(,382) using @kbd{Meta-@key{ESC}} or from the @samp{*scratch*} buffer
+./trouble.texi(,382) @noindent using @kbd{Meta-@key{ESC}} or from the @samp{*scratch*} buffer
 ./trouble.texi(,383) just after starting Emacs.  From then on, all output from Emacs to the
 ./trouble.texi(,384) terminal will be written in the specified termscript file as well, until
 ./trouble.texi(,385) the Emacs process is killed.  If the problem happens when Emacs starts
@@ -22961,7 +23147,7 @@ xemacs.texi(,1062)
 ./trouble.texi(,387) will be open when Emacs displays the screen for the first time.
 ./trouble.texi(,388) @xref{Init File}. Be warned: it is often difficult, and sometimes
 ./trouble.texi(,389) impossible, to fix a terminal-dependent bug without access to a terminal
-./trouble.texi(,390) of the type that stimulates the bug.
+./trouble.texi(,390) of the type that stimulates the bug.@refill
 ./trouble.texi(,391) 
 ./trouble.texi(,392) The newsgroup @samp{comp.emacs.xemacs} may be used for bug reports,
 ./trouble.texi(,393) other discussions and requests for assistance.  
@@ -23102,7 +23288,7 @@ xemacs.texi(,1099)
 ./glossary.texi(,117) minibuffer (q.v.@:) arguments when the set of possible valid inputs is
 ./glossary.texi(,118) known; for example, on command names, buffer names, and file names.
 ./glossary.texi(,119) Completion occurs when you type @key{TAB}, @key{SPC}, or @key{RET}.
-./glossary.texi(,120) @xref{Completion}.
+./glossary.texi(,120) @xref{Completion}.@refill
 ./glossary.texi(,121) 
 ./glossary.texi(,122) @item Continuation Line
 ./glossary.texi(,123) When a line of text is longer than the width of the frame, it
@@ -23117,7 +23303,7 @@ xemacs.texi(,1099)
 ./glossary.texi(,132) characters.  Any control character can be typed by holding down the
 ./glossary.texi(,133) @key{CTRL} key and typing some other character; some have special keys
 ./glossary.texi(,134) on the keyboard.  @key{RET}, @key{TAB}, @key{ESC}, @key{LFD}, and
-./glossary.texi(,135) @key{DEL} are all control characters.  @xref{Keystrokes}.
+./glossary.texi(,135) @key{DEL} are all control characters.  @xref{Keystrokes}.@refill
 ./glossary.texi(,136) 
 ./glossary.texi(,137) @item Copyleft
 ./glossary.texi(,138) A copyleft is a notice giving the public legal permission to redistribute
@@ -23792,7 +23978,7 @@ xemacs.texi(,1099)
 ./gnu.texi(,41) To avoid horrible confusion, please pronounce the `G' in the word `GNU'
 ./gnu.texi(,42) when it is the name of this project.
 ./gnu.texi(,43) 
-./gnu.texi(,44) 
+./gnu.texi(,44) @page
 ./gnu.texi(,45) @unnumberedsec Why I Must Write GNU
 ./gnu.texi(,46) 
 ./gnu.texi(,47) I consider that the golden rule requires that if I like a program I must
@@ -23976,7 +24162,7 @@ xemacs.texi(,1099)
 ./gnu.texi(,225) companies don't succeed, this will show that advertising was not really
 ./gnu.texi(,226) necessary to spread GNU.  Why is it that free market advocates don't want
 ./gnu.texi(,227) to let the free market decide this?
-./gnu.texi(,228) 
+./gnu.texi(,228) @page
 ./gnu.texi(,229) @quotation
 ./gnu.texi(,230) ``My company needs a proprietary operating system
 ./gnu.texi(,231) to get a competitive edge.''
@@ -24138,7 +24324,7 @@ xemacs.texi(,1099)
 ./gnu.texi(,387) Artificial Intelligence Lab for far less money than they could have had
 ./gnu.texi(,388) anywhere else.  They got many kinds of non-monetary rewards: fame and
 ./gnu.texi(,389) appreciation, for example.  And creativity is also fun, a reward in itself.
-./gnu.texi(,390) 
+./gnu.texi(,390) @page
 ./gnu.texi(,391) Then most of them left when offered a chance to do the same interesting
 ./gnu.texi(,392) work for a lot of money.
 ./gnu.texi(,393) 
@@ -24191,7 +24377,7 @@ xemacs.texi(,1099)
 ./gnu.texi(,440) himself, he can take a credit against the tax.  He can donate to
 ./gnu.texi(,441) the project of his own choosing---often, chosen because he hopes to
 ./gnu.texi(,442) use the results when
-./gnu.texi(,443)  
+./gnu.texi(,443) @page 
 ./gnu.texi(,444) it is done.  He can take a credit for any amount
 ./gnu.texi(,445) of donation up to the total tax he had to pay.
 ./gnu.texi(,446) 
@@ -24244,5 +24430,6 @@ xemacs.texi(,1116) @node Concept Index, Frame, Variable Index, Top
 xemacs.texi(,1117) @unnumbered Concept Index
 xemacs.texi(,1118) @printindex cp
 xemacs.texi(,1119) 
-xemacs.texi(,1120) 
-xemacs.texi(,1121) 
+xemacs.texi(,1120) @summarycontents
+xemacs.texi(,1121) @contents
+xemacs.texi(,1122) @bye

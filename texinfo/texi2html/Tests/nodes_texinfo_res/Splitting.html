@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: F.5.4 Splitting a File Manually</title>
+<title>GNU Texinfo 4.2: F.5.4 Splitting a File Manually</title>
 
-<meta name="description" content="Texinfo: F.5.4 Splitting a File Manually">
-<meta name="keywords" content="Texinfo: F.5.4 Splitting a File Manually">
+<meta name="description" content="GNU Texinfo 4.2: F.5.4 Splitting a File Manually">
+<meta name="keywords" content="GNU Texinfo 4.2: F.5.4 Splitting a File Manually">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,40 +84,40 @@ ul.toc {list-style: none}
 <code>texinfo-format-buffer</code> or <code>makeinfo-buffer</code> command do it
 for you automatically.  (Generally you will let one of the formatting
 commands do this job for you.  See section <a href="Creating-an-Info-File.html#SEC261">Creating an Info File</a>.)
-
-</p><p>The split-off files are called the indirect subfiles.
-
-</p><p>Info files are split to save memory.  With smaller files, Emacs does not
+</p>
+<p>The split-off files are called the indirect subfiles.
+</p>
+<p>Info files are split to save memory.  With smaller files, Emacs does not
 have make such a large buffer to hold the information.
-
-</p><p>If an Info file has more than 30 nodes, you should also make a tag
+</p>
+<p>If an Info file has more than 30 nodes, you should also make a tag
 table for it. See section <a href="Using-Info_002dvalidate.html#SEC315">Running <code>Info-validate</code></a>, for information
 about creating a tag table.  (Again, tag tables are usually created
 automatically by the formatting command; you only need to create a tag
 table yourself if you are doing the job manually.  Most likely, you
 will do this for a large, unsplit file on which you have run
 <code>Info-validate</code>.)
-
 </p>
+
 <p>Visit the Info file you wish to tagify and split and type the two
 commands:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
 M-x Info-split
 </pre></td></tr></table>
 
 <p>(Note that the `<samp>I</samp>' in `<samp>Info</samp>' is upper case.)
-
-</p><p>When you use the <code>Info-split</code> command, the buffer is modified into a
+</p>
+<p>When you use the <code>Info-split</code> command, the buffer is modified into a
 (small) Info file which lists the indirect subfiles.  This file should be
 saved in place of the original visited file.  The indirect subfiles are
 written in the same directory the original file is in, with names generated
 by appending `<samp>-</samp>' and a number to the original file name.
-
-</p><p>The primary file still functions as an Info file, but it contains just
-the tag table and a directory of subfiles.
-
 </p>
+<p>The primary file still functions as an Info file, but it contains just
+the tag table and a directory of subfiles.
+</p>
+
 <hr size="1">
 <p>
  <font size="-1">

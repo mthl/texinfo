@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 16.4 @set, @clear, and @value</title>
+<title>GNU Texinfo 4.2: 16.4 @set, @clear, and @value</title>
 
-<meta name="description" content="Texinfo: 16.4 @set, @clear, and @value">
-<meta name="keywords" content="Texinfo: 16.4 @set, @clear, and @value">
+<meta name="description" content="GNU Texinfo 4.2: 16.4 @set, @clear, and @value">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.4 @set, @clear, and @value">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,24 +83,24 @@ ul.toc {list-style: none}
 <p>You can direct the Texinfo formatting commands to format or ignore parts
 of a Texinfo file with the <code>@set</code>, <code>@clear</code>, <code>@ifset</code>,
 and <code>@ifclear</code> commands.
-
-</p><p>Brief descriptions:
-
-</p><dl compact="compact">
+</p>
+<p>Brief descriptions:
+</p>
+<dl compact="compact">
 <dt><code> @set <var>flag</var> [<var>value</var>]</code></dt>
 <dd><p>Set the variable <var>flag</var>, to the optional <var>value</var> if specifed.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @clear <var>flag</var></code></dt>
 <dd><p>Undefine the variable <var>flag</var>, whether or not it was previously defined.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @ifset <var>flag</var></code></dt>
 <dd><p>If <var>flag</var> is set, text through the next <code>@end ifset</code> command
 is formatted.  If <var>flag</var> is clear, text through the following
 <code>@end ifset</code> command is ignored.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @ifclear <var>flag</var></code></dt>
 <dd><p>If <var>flag</var> is set, text through the next <code>@end ifclear</code> command
 is ignored.  If <var>flag</var> is clear, text through the following

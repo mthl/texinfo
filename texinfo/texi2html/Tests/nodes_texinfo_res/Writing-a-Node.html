@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 6.3.2 How to Write an @node Line</title>
+<title>GNU Texinfo 4.2: 6.3.2 How to Write an @node Line</title>
 
-<meta name="description" content="Texinfo: 6.3.2 How to Write an @node Line">
-<meta name="keywords" content="Texinfo: 6.3.2 How to Write an @node Line">
+<meta name="description" content="GNU Texinfo 4.2: 6.3.2 How to Write an @node Line">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3.2 How to Write an @node Line">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,26 +83,26 @@ ul.toc {list-style: none}
 <p>The easiest way to write an <code>@node</code> line is to write <code>@node</code>
 at the beginning of a line and then the name of the node, like
 this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
 </pre></td></tr></table>
 <p>If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
 can leave the pointers out of the Texinfo file and let <code>makeinfo</code>
 insert node pointers into the Info file it creates.  (See section <a href="Texinfo-Mode.html#SEC21">Using Texinfo Mode</a>, and <a href="makeinfo-Pointer-Creation.html#SEC95">Creating Pointers with <code>makeinfo</code></a>.)
-
-</p><p>Alternatively, you can insert the `Next', `Previous', and `Up'
+</p>
+<p>Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
 Texinfo mode keyboard command <kbd>C-c C-c n</kbd>.  This command inserts
 `<samp>@node</samp>' and a comment line listing the names of the pointers in
 their proper order.  The comment line helps you keep track of which
 arguments are for which pointers.  This comment line is especially useful
 if you are not familiar with Texinfo.
-
-</p><p>The template for a fully-written-out node line with `Next', `Previous',
+</p>
+<p>The template for a fully-written-out node line with `Next', `Previous',
 and `Up' pointers looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
 </pre></td></tr></table>
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first
 draft and then use the <code>texinfo-insert-node-lines</code> command to
@@ -111,15 +111,15 @@ practice.  It is better to name the node itself at the same time that
 you write a segment so you can easily make cross references.  A large
 number of cross references are an especially important feature of a good
 Info file.
-
-</p><p>After you have inserted an <code>@node</code> line, you should immediately
+</p>
+<p>After you have inserted an <code>@node</code> line, you should immediately
 write an @-command for the chapter or section and insert its name.
 Next (and this is important!), put in several index entries.  Usually,
 you will find at least two and often as many as four or five ways of
 referring to the node in the index.  Use them all.  This will make it
 much easier for people to find the node.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Node-Names.html#SEC89" title="Previous section in reading order"> &lt; </a>]</td>

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.6.2 @setchapternewpage:</title>
+<title>GNU Texinfo 4.2: 3.6.2 @setchapternewpage:</title>
 
-<meta name="description" content="Texinfo: 3.6.2 @setchapternewpage:">
-<meta name="keywords" content="Texinfo: 3.6.2 @setchapternewpage:">
+<meta name="description" content="GNU Texinfo 4.2: 3.6.2 @setchapternewpage:">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.6.2 @setchapternewpage:">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,36 +86,36 @@ odd numbers.  But in short reports, text often is printed only on one
 side of the paper.  Also in short reports, chapters sometimes do not
 start on new pages, but are printed on the same page as the end of the
 preceding chapter, after a small amount of vertical whitespace.
-
-</p><p>You can use the <code>@setchapternewpage</code> command with various
+</p>
+<p>You can use the <code>@setchapternewpage</code> command with various
 arguments to specify how TeX should start chapters and whether it
 should format headers for printing on one or both sides of the paper
 (single-sided or double-sided printing).
-
-</p><p>Write the <code>@setchapternewpage</code> command at the beginning of a
+</p>
+<p>Write the <code>@setchapternewpage</code> command at the beginning of a
 line followed by its argument.
-
-</p><p>For example, you would write the following to cause each chapter to
+</p>
+<p>For example, you would write the following to cause each chapter to
 start on a fresh odd-numbered page:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
 </pre></td></tr></table>
 <p>You can specify one of three alternatives with the
 <code>@setchapternewpage</code> command:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> <code>@setchapternewpage off</code></dt>
 <dd><p>Cause TeX to typeset a new chapter on the same page as the last
 chapter, after skipping some vertical whitespace.  Also, cause TeX to
 format page headers for single-sided printing.
-
-</p></dd>
+</p>
+</dd>
 <dt> <code>@setchapternewpage on</code></dt>
 <dd><p>Cause TeX to start new chapters on new pages and to format page
 headers for single-sided printing.  This is the form most often used for
 short reports or personal printing. This is the default.
-
-</p></dd>
+</p>
+</dd>
 <dt> <code>@setchapternewpage odd</code></dt>
 <dd><p>Cause TeX to start new chapters on new, odd-numbered pages
 (right-handed pages) and to typeset for double-sided printing.  This is
@@ -126,27 +126,27 @@ the form most often used for books and manuals.
 <p>Texinfo does not have an <code>@setchapternewpage even</code> command,
 because there is no printing tradition of starting chapters or books on
 an even-numbered page.
-
-</p><p>If you don't like the default headers that <code>@setchapternewpage</code>
+</p>
+<p>If you don't like the default headers that <code>@setchapternewpage</code>
 sets, you can explicit control them with the <code>@headings</code> command.
 See section <a href="headings-on-off.html#SEC58">The <code>@headings</code> Command</a>.
-
-</p><p>At the beginning of a manual or book, pages are not numbered--for
+</p>
+<p>At the beginning of a manual or book, pages are not numbered--for
 example, the title and copyright pages of a book are not numbered.  By
 convention, table of contents and frontmatter pages are numbered with
 roman numerals and not in sequence with the rest of the document.
-
-</p><p>Since an Info file does not have pages, the <code>@setchapternewpage</code>
+</p>
+<p>Since an Info file does not have pages, the <code>@setchapternewpage</code>
 command has no effect on it.
-
-</p><p>We recommend not including any <code>@setchapternewpage</code> command in
+</p>
+<p>We recommend not including any <code>@setchapternewpage</code> command in
 your manual sources at all, since the desired output is not intrinsic to
 the document.  For a particular hard copy run, if you don't want the
 default option (no blank pages, same headers on all pages) use the
 `<samp>--texinfo</samp>' option to <code>texi2dvi</code> to specify the output
 you want.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="documentdescription.html#SEC63" title="Previous section in reading order"> &lt; </a>]</td>

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.78 2004-12-12 23:40:26 pertusus Exp $
+# $Id: texi2html.init,v 1.79 2005-01-15 23:45:30 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -630,6 +630,11 @@ $EXTERNAL_CROSSREF_SPLIT = undef;
 # $Texi2HTML::THISDOC{destination_directory}
                                  #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script
+# other $Texi2HTML::THISDOC keys corresponds with texinfo commands, the value
+# being the command arg, for the following commands:
+# kbdinputstyle, paragraphindent, setchapternewpage, headings, footnotestyle,
+# exampleindent, firstparagraphindent, everyheading, everyfooting,
+# evenheading, evenfooting, oddheading, oddfooting
 #
 # and pointer to arrays of lines which need to be printed by main::print_lines
 # $Texi2HTML::THIS_SECTION  -- lines of 'This' section
@@ -893,7 +898,7 @@ sub T2H_DEFAULT_print_section_header
 sub T2H_DEFAULT_print_page_head($)
 {
     my $fh = shift;
-    my $longtitle = "$Texi2HTML::THISDOC{'unformatted_title'}";
+    my $longtitle = "$Texi2HTML::THISDOC{'title_unformatted'}";
     $longtitle .= ": $Texi2HTML::UNFORMATTED{'This'}" if exists $Texi2HTML::UNFORMATTED{'This'};
     #my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
     #$longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $Texi2HTML::NO_TEXI{'This'};
@@ -2566,6 +2571,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
        'table'       =>  'dl compact="compact"',
        'vtable'      =>  'dl compact="compact"',
        'ftable'      =>  'dl compact="compact"',
+       'group'       =>  '',
        );
 
 %special_list_commands = (
@@ -2587,6 +2593,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 # an eval of these $complex_format_map->{what}->{'begin'} yields beginning
 # an eval of these $complex_format_map->{what}->{'end'} yields end
 # $EXAMPLE_INDENT_CELL and SMALL_EXAMPLE_INDENT_CELL can be usefull here
+# FIXME add \n at the end ?
 $complex_format_map =
 {
  'example' =>
@@ -2651,68 +2658,175 @@ foreach my $key (keys(%def_map))
 }
 
 #
-# things to skip
+# miscalleneous commands
 #
-# Depending on the value, things following the macro may be skipped:
+# Depending on the value, the command arg or spaces following the command
+#     are handled differently:
 # 
-# if the value is 'line' then the remaining of the line is skipped
-# if the value is 'arg' then an argument is skipped
-# if the value is 'space' space but no newline following the macro is skipped
-# if the value is 'whitespace' space following the macro is skipped
-# otherwise only the macro, or @end macro is skipped
-# 
-%to_skip = (
+# the value is a reference on a hash.
+# the hash keys are
+#    'arg'  if the value is 'line' then the remaining of the line is the arg
+#           if it is a number it is the number of args (separated by spaces)
+#    'skip' if the value is 'line' then the remaining of the line is skipped
+#           if the value is 'space' space but no newline is skipped
+#           if the value is 'whitespace' space is skipped
+#           if the value is 'linewhitespace' space is skipped if there are 
+#                 only spaces remaining on the line
+#           if the value is 'linespace' space but no newline is skipped if 
+#                 there are only spaces remaining on the line
+#    'texi' if true it is some texinfo code and @value and @macros are expanded
+#    'keep' if true the args and the macro are kept, otherwise the macro 
+#          args and skipped stuffs are removed
+%misc_command = (
         # not needed for formatting
-        'raisesections', 'line',
-        'lowersections', 'line',
-        'contents', 1,
-        'shortcontents', 1,
-        'summarycontents', 1,
-        'detailmenu', 'whitespace',
-        'end detailmenu', 1,
-        'novalidate', 1,
-        'bye', 'line',
+        'raisesections' => {'skip' => 'line'},  # no arg
+        'lowersections' => {'skip' => 'line'}, # no arg
+        'contents' => {}, # no arg
+        'shortcontents' => {}, # no arg
+        'summarycontents'=> {}, # no arg
+        'detailmenu' => {'skip' => 'whitespace'}, # no arg
+        'end detailmenu' => {'skip' => 'space'}, # no arg
+        #'end detailmenu', 1, # no arg
+        'bye' => {'skip' => 'line'}, # no arg
+        # comments
+        'comment' => {'arg' => 'line'},
+        'c' => {'arg' => 'line'},
+        #'c'=> {'arg' => 'line', 'keep' => 1},
+        # in preamble
+        'novalidate' => {}, # no arg
+        'dircategory'=> {'skip' => 'line'}, # line. Position with regard 
+                         # with direntry is significant
+        'pagesizes' => {'skip' => 'line', 'arg' => 2}, # can have 2 args 
+        'finalout' => {}, # no arg
+        'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
+                             # or a number and forbids anything else on the line
+        'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
+        'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
+        'footnotestyle'=> {'skip' => 'line', 'arg' => 1}, # end and separate
+                                 # and nothing else on the line
+        'afourpaper' => {'skip' => 'line'}, # no arg
+        'afourlatex' => {'skip' => 'line'}, # no arg
+        'afourwide' => {'skip' => 'line'}, # no arg
+        'headings'=> {'skip' => 'line', 'arg' => 1}, 
+                    #off on single double singleafter doubleafter
+                    # interacts with setchapternewpage
+        'setchapternewpage' => {'skip' => 'line', 'arg' => 1}, # off on odd
+        'everyheading' => {'arg' => 'line'},
+        'everyfooting' => {'arg' => 'line'},
+        'evenheading' => {'arg' => 'line'},
+        'evenfooting' => {'arg' => 'line'},
+        'oddheading' => {'arg' => 'line'},
+        'oddfooting' => {'arg' => 'line'},
+        'smallbook' => {'skip' => 'line'}, # no arg
+        'setfilename' => {'arg' => 'line'},
+        'shorttitle' => {'arg' => 'line', 'texi' => 1},
+        'shorttitlepage' => {'arg' => 'line', 'texi' => 1},
+        'settitle' => {'arg' => 'line', 'texi' => 1},
+        'author' => {'arg' => 'line', 'texi' => 1},
+        'subtitle' => {'arg' => 'line', 'texi' => 1},
+        'title' => {'arg' => 'line', 'texi' => 1},
+        'syncodeindex' => {'skip' => 'linespace', 'arg' => 2}, 
+                          # args are index identifiers
+        'synindex' => {'skip' => 'linespace', 'arg' => 2},
+        'defindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
+        'defcodeindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
+        'documentlanguage' => {'skip' => 'whitespace', 'arg' => 1}, 
+                                                       # language code arg
+        'kbdinputstyle' => {'skip' => 'whitespace', 'arg' => 1}, # code 
+                                                        #example distinct
+        'sp' => {'skip' => 'whitespace', 'arg' => 1}, # no arg 
+                                    # at the end of line or a numerical arg
+        # formatting
+        'page' => {}, # no arg (pagebreak)
+        'refill' => {}, # no arg (obsolete, to be ignored)
+        'noindent' => {'skip' => 'space'}, # no arg
+        'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
+        'exdent' => {'skip' => 'space'},  
+        # not valid for info (should be in @iftex)
+        'vskip' => {'arg' => 'line'}, # arg line in TeX
+        'cropmarks' => {}, # no arg
+        # miscalleneous
+        'verbatiminclude'=> {'skip' => 'line'},
+        'noindent' => {'skip' => 'space'},
+        'documentencoding' => {'arg' => 1},
+        # ???
+        'filbreak' => {},
+     );
+my %misc_command_old = (
+        # not needed for formatting
+        'raisesections', 'line',  # no arg
+        'lowersections', 'line', # no arg
+        'contents', 1, # no arg
+        'shortcontents', 1, # no arg
+        'summarycontents', 1, # no arg
+        'detailmenu', 'whitespace', # no arg
+        'end detailmenu', 'space', # no arg
+        #'end detailmenu', 1, # no arg
+        'novalidate', 1, # no arg
+        'bye', 'line', # no arg
         # comments
         'comment', 'line',
         'c', 'line',
-        # unsupported commands (formatting)
-        # ???
-        'dircategory', 'line',
-        'pagesizes', 'line', # can have 2 args 
-        'finalout', 1,
-        'page', 1,
-        'refill', 1,
-        'noindent', 'space',
-        'need', 'line',
-        'paragraphindent', 'line', # in fact accepts only none asis 
+        # in preamble
+        'dircategory', 'line', # line. Position with regard with direntry is 
+                               # significant
+        'pagesizes', 'line arg2', # can have 2 args 
+        'finalout', 1, # no arg
+        'paragraphindent', 'line arg1', # in fact accepts only none asis 
                              # or a number and forbids anything else on the line
-        'firstparagraphindent', 'line', # in fact accepts only none insert
-        'exampleindent', 'line', # in fact accepts only asis or a number
-        'footnotestyle', 'line', # in fact accepts only end and separate
+        'firstparagraphindent', 'line arg1', # in fact accepts only none insert
+        'exampleindent', 'line arg1', # in fact accepts only asis or a number
+        'footnotestyle', 'line arg1', # in fact accepts only end and separate
                                  # and nothing else on the line
-        'afourpaper', 'line',
-        'afourlatex', 'line',
-        'afourwide', 'line',
-        'headings', 'line',
-        'setchapternewpage', 'line',
+        'afourpaper', 'line', # no arg
+        'afourlatex', 'line', # no arg
+        'afourwide', 'line',  # no arg
+        'headings', 'line', # one arg, possibilities are 
+                    #off on single double singleafter doubleafter
+                    # interacts with setchapternewpage
+        'setchapternewpage', 'line', # no arg
         'everyheading', 'line',
         'everyfooting', 'line',
         'evenheading', 'line',
         'evenfooting', 'line',
         'oddheading', 'line',
         'oddfooting', 'line',
-        'smallbook', 'line',
+        'smallbook', 'line', # no arg
+        'setfilename', 'line',
+        'shorttitle', 'linetexi',
+        'shorttitlepage', 'linetexi',
+        'settitle', 'linetexi',
+        'author', 'linetexi',
+        'subtitle', 'linetexi',
+        'title','linetexi',
+        'syncodeindex','linespace arg2', # args are 
+        'synindex','linespace arg2',
+        'defindex', 'line arg1', # one identifier arg
+        'defcodeindex', 'line arg1', # one identifier arg
+        'documentlanguage', 'whitespace arg1', # one language code arg
+        'kbdinputstyle', 'whitespace arg1', # one arg within 
+                                 #code example distnct
+        'sp', 'whitespace arg1', # no arg at the en of line or a numerical arg
+        # formatting
+        'page', 1, # no arg (pagebreak)
+        'refill', 1, # no arg (obsolete, to be ignored))
+        'noindent', 'space', # no arg
+        'need', 'line arg1', # one numerical/real arg
+        'exdent', 'space',  
         # not valid for info (should be in @iftex)
-        'vskip', 'line',
-        'cropmarks', 1,
+        'vskip', 'line', # arg line in TeX
+        'cropmarks', 1, # no arg
+        # miscalleneous
+        'verbatiminclude', 'line',
+        'documentencoding', 'arg1',
         # ???
         'filbreak', 1,
-        # unsupported formats/features
-        'group', 'whitespace',
-        'end group', 1,
-        'exdent', 'space',  
      );
 
+%format_in_paragraph = (
+        'group' => 1,
+        'html'  => 1,
+);
 # map mapping css specification to style
 
 %css_map = 
@@ -2789,6 +2903,7 @@ $listoffloats_style       = \&t2h_default_listoffloats_style;
 $acronym_like             = \&t2h_default_acronym_like;
 $quotation                = \&t2h_default_quotation;
 $quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
+$paragraph_style_command  = \&t2h_default_paragraph_style_command;
 
 # This function is called whenever a complex format is processed
 #
@@ -3640,7 +3755,8 @@ sub t2h_default_paragraph($$$$$$$$$)
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;
-         return $text . "\n" if (($format eq 'itemize' or $format eq 'enumerate') and
+         #return $text . "\n" if (($format eq 'itemize' or $format eq 'enumerate') and
+         return $text  if (($format eq 'itemize' or $format eq 'enumerate') and
             ($$paragraph_number == 1));
     }
     my $open = '<p>';
@@ -4017,7 +4133,19 @@ sub t2h_default_quotation($$$$)
 #         return '<blockquote>' . &$I('%{style}:%{quotation}',
 #          {'style' => $argument_text, 'quotation' => $text}) . '</blockquote>' ;
 #    }
-    return '<blockquote>' . $text . '</blockquote>';
+    return '<blockquote>' . $text . "</blockquote>\n";
+}
+
+# format the text within a paragraph style format,
+#
+# argument:
+# format name
+# text within the format
+sub t2h_default_paragraph_style_command($$)
+{
+    my $format = shift;
+    my $text = shift;
+    return $text;
 }
 
 # format a whole index
@@ -4032,7 +4160,7 @@ sub t2h_default_print_index($$)
     return "<table border=\"0\" class=\"index-$name\">\n" .
     "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
-    '</table>';
+    "</table>\n";
 }
 
 # format a letter entry in an index page. The letter entry contains
@@ -4120,7 +4248,7 @@ sub t2h_default_index_summary($$)
        $alpha_text = join("\n &nbsp; \n", @$alpha) . "\n &nbsp; \n";
     }
     return "<table><tr><th valign=\"top\">" . &$I('Jump to') .": &nbsp; </th><td>" .
-    $nonalpha_text . $join . $alpha_text . '</td></tr></table>';
+    $nonalpha_text . $join . $alpha_text . "</td></tr></table>\n";
 }
 
 1;

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 14. Making and Preventing Breaks</title>
+<title>GNU Texinfo 4.2: 14. Making and Preventing Breaks</title>
 
-<meta name="description" content="Texinfo: 14. Making and Preventing Breaks">
-<meta name="keywords" content="Texinfo: 14. Making and Preventing Breaks">
+<meta name="description" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
+<meta name="keywords" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ Info formatting commands.  Line, paragraph, or page breaks sometimes
 occur in the `wrong' place in one or other form of output.  You must
 ensure that text looks right both in the printed manual and in the
 Info file.
-
-</p><a name="IDX255"></a>
+</p>
+<a name="IDX255"></a>
 <a name="IDX256"></a>
 <p>For example, in a printed manual, page breaks may occur awkwardly in
 the middle of an example; to prevent this, you can hold text together
@@ -94,8 +94,8 @@ two pages.  Conversely, you may want to force a page break where none
 would occur normally.  Fortunately, problems like these do not often
 arise.  When they do, use the break, break prevention, or pagination
 commands.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Break-Commands">&bull; Break Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Cause and prevent splits.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC207">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to force a single line to use two lines.
@@ -120,20 +120,20 @@ commands.
 <h2 class="heading"> Break Commands </h2>
 
 <p>The break commands create or allow line and paragraph breaks:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @*</code></dt>
 <dd><p>Force a line break.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @sp <var>n</var></code></dt>
 <dd><p>Skip <var>n</var> blank lines.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @-</code></dt>
 <dd><p>Insert a discretionary hyphen.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Define hyphen points in <var>hy-phen-a-ted words</var>.
 </p></dd>
@@ -141,8 +141,8 @@ commands.
 
 <p>The line-break-prevention command holds text together all on one
 line:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @w{<var>text</var>}</code></dt>
 <dd><p>Prevent <var>text</var> from being split and hyphenated across two lines.
 </p></dd>
@@ -150,16 +150,16 @@ line:
 
 <p>The pagination commands apply only to printed output, since Info
 files do not have pages.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @page</code></dt>
 <dd><p>Start a new page in the printed manual.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @group</code></dt>
 <dd><p>Hold text together that must appear on one printed page.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @need <var>mils</var></code></dt>
 <dd><p>Start a new printed page if not enough space on this one.
 </p></dd>
@@ -188,39 +188,40 @@ files do not have pages.
 
 <p>The <code>@*</code> command forces a line break in both the printed manual and
 in Info.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This line
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line
  is broken
 in two places.
 </pre></td></tr></table>
 
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
-
-</p><p>The <code>@*</code> command is often used in a file's copyright page:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
+</p>
+<p>The <code>@*</code> command is often used in a file's copyright page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
 and is for &hellip;
 </pre></td></tr></table>
 
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.
-
-</p><blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
+</p>
+<blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
 they are not needed.
-
-</p><p>Do not write an <code>@refill</code> command at the end of a paragraph
+</p>
+<p>Do not write an <code>@refill</code> command at the end of a paragraph
 containing an <code>@*</code> command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
 break.
 </p></blockquote>
+
 
 <hr size="6">
 <a name="g_t_002d-and-hyphenation"></a>
@@ -249,15 +250,15 @@ does miss useful hyphenation points from time to time.  (Or, far more
 rarely, insert an incorrect hyphenation.)  So, for documents with an
 unusual vocabulary or when fine-tuning for a printed edition, you may
 wish to help TeX out.  Texinfo supports two commands for this:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @-</code></dt>
 <dd><p>Insert a discretionary hyphen, i.e., a place where TeX can (but does
 not have to) hyphenate.  This is especially useful when you notice an
 overfull hbox is due to TeX missing a hyphenation (see section <a href="texinfo_20.html#SEC254">Overfull &quot;hboxes&quot;</a>).  TeX will not insert any hyphenation points itself into a
 word containing <code>@-</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
 put a `<samp>-</samp>' at each hyphenation point.  For example:
@@ -268,8 +269,8 @@ words match exactly, so give all necessary variants.
 </dl>
 
 <p>Info output is not hyphenated, so these commands have no effect there.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="w"></a>
 <a name="SEC209"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -292,24 +293,25 @@ words match exactly, so give all necessary variants.
 
 <p><code>@w{<var>text</var>}</code> outputs <var>text</var> and prohibits line breaks
 within <var>text</var>.
-
-</p><p>You can use the <code>@w</code> command to prevent TeX from automatically
+</p>
+<p>You can use the <code>@w</code> command to prevent TeX from automatically
 hyphenating a long name or phrase that happens to fall near the end of a
 line.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">You can copy GNU software from @w{@samp{ftp.gnu.org}}.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">You can copy GNU software from @w{@samp{ftp.gnu.org}}.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><blockquote><p>You can copy GNU software from `<samp>ftp.gnu.org</samp>'.
+</p>
+<blockquote><p>You can copy GNU software from `<samp>ftp.gnu.org</samp>'.
 </p></blockquote>
+
 <a name="IDX257"></a>
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 <p>You can also use <code>@w</code> to produce a non-breakable space:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">None of the formatters will break at this@w{ }space.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">None of the formatters will break at this@w{ }space.
 </pre></td></tr></table>
 
 <hr size="6">
@@ -337,15 +339,15 @@ line.  For example:
 generates <var>n</var> blank lines of space in both the printed manual and
 the Info file.  <code>@sp</code> also forces a paragraph break.  For
 example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
 </pre></td></tr></table>
 
 <p>generates two blank lines.
-
-</p><p>The <code>@sp</code> command is most often used in the title page.
-
 </p>
+<p>The <code>@sp</code> command is most often used in the title page.
+</p>
+
 
 <hr size="6">
 <a name="page"></a>
@@ -372,8 +374,8 @@ example,
 manual.  The command has no effect on Info files since they are not
 paginated.  An <code>@page</code> command is often used in the <code>@titlepage</code>
 section of a Texinfo file to start the copyright page.
-
 </p>
+
 <hr size="6">
 <a name="group"></a>
 <a name="SEC212"></a>
@@ -401,8 +403,8 @@ group, which will appear entirely on one page in the printed output.
 The group is terminated by a line containing only <code>@end group</code>.
 These two lines produce no output of their own, and in the Info file
 output they have no effect at all.
-
-</p><p>Although <code>@group</code> would make sense conceptually in a wide
+</p>
+<p>Although <code>@group</code> would make sense conceptually in a wide
 variety of contexts, its current implementation works reliably only
 within <code>@example</code> and variants, and within <code>@display</code>,
 <code>@format</code>, <code>@flushleft</code> and <code>@flushright</code>.
@@ -410,10 +412,10 @@ See section <a href="texinfo_11.html#SEC141">Quotations and Examples</a>.  (What
 common is that each line of input produces a line of output.)  In
 other contexts, <code>@group</code> can cause anomalous vertical
 spacing.
-
-</p><p>This formatting requirement means that you should write:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@example
+</p>
+<p>This formatting requirement means that you should write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@example
 @group
 &hellip;
 @end group
@@ -422,21 +424,21 @@ spacing.
 
 <p>with the <code>@group</code> and <code>@end group</code> commands inside the
 <code>@example</code> and <code>@end example</code> commands.
-
-</p><p>The <code>@group</code> command is most often used to hold an example
+</p>
+<p>The <code>@group</code> command is most often used to hold an example
 together on one page.  In this Texinfo manual, more than 100 examples
 contain text that is enclosed between <code>@group</code> and <code>@end
 group</code>.
-
-</p><p>If you forget to end a group, you may get strange and unfathomable
+</p>
+<p>If you forget to end a group, you may get strange and unfathomable
 error messages when you run TeX.  This is because TeX keeps
 trying to put the rest of the Texinfo file onto the one page and does
 not start to generate error messages until it has processed
 considerable text.  It is a good rule of thumb to look for a missing
 <code>@end group</code> if you get incomprehensible error messages in
 TeX.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="need"></a>
 <a name="SEC213"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -462,18 +464,18 @@ a new page in a printed manual if fewer than <var>n</var> mils (thousandths
 of an inch) remain on the current page.  Do not use
 braces around the argument <var>n</var>.  The <code>@need</code> command has no
 effect on Info files since they are not paginated.
-
-</p><p>This paragraph is preceded by an <code>@need</code> command that tells
+</p>
+<p>This paragraph is preceded by an <code>@need</code> command that tells
 TeX to start a new page if fewer than 800 mils (eight-tenths
 inch) remain on the page.  It looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@need 800
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@need 800
 This paragraph is preceded by &hellip;
 </pre></td></tr></table>
 <p>The <code>@need</code> command is useful for preventing orphans (single
 lines at the bottoms of printed pages).
-
 </p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC205" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

@@ -1,4 +1,5 @@
 index_split.texi(,2) 
+index_split.texi(,3) @setfilename index_split
 index_split.texi(,4) 
 index_split.texi(,5) @node Top
 index_split.texi(,6) @top split indices
@@ -116,3 +117,4 @@ index_split.texi(,117) @chapter Second chapter
 index_split.texi(,118) 
 index_split.texi(,119) Second chapter
 index_split.texi(,120) 
+index_split.texi(,121) @bye

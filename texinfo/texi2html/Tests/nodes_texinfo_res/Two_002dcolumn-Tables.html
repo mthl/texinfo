@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 11.3 Making a Two-column Table</title>
+<title>GNU Texinfo 4.2: 11.3 Making a Two-column Table</title>
 
-<meta name="description" content="Texinfo: 11.3 Making a Two-column Table">
-<meta name="keywords" content="Texinfo: 11.3 Making a Two-column Table">
+<meta name="description" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
+<meta name="keywords" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 each item.  The <code>@table</code> command is used to produce two-column
 tables, and is especially useful for glossaries, explanatory
 exhibits, and command-line option summaries.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#table">&bull; table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to construct a two-column table.
 </td></tr>
 <tr><td align="left" valign="top"><a href="ftable-vtable.html#SEC161">11.3.1 <code>@ftable</code> and <code>@vtable</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Automatic indexing for two-column tables.
@@ -99,8 +99,8 @@ exhibits, and command-line option summaries.
 <h3 class="subheading"> Using the <code>@table</code> Command </h3>
 
 <p>Use the <code>@table</code> command to produce two-column tables.
-
-</p><p>Write the <code>@table</code> command at the beginning of a line and follow
+</p>
+<p>Write the <code>@table</code> command at the beginning of a line and follow
 it on the same line with an argument that is a Texinfo &quot;indicating&quot;
 command such as <code>@code</code>, <code>@samp</code>, <code>@var</code>, or
 <code>@kbd</code> (see section <a href="Indicating.html#SEC120">Indicating Definitions, Commands, etc.</a>).  Although these commands are usually
@@ -111,19 +111,19 @@ of each item and determines how it will be highlighted.  For example,
 <code>@code</code> will cause the text in the first column to be highlighted
 with an <code>@code</code> command.  (We recommend <code>@code</code> for
 <code>@table</code>'s of command-line options.)
-
-</p><a name="IDX138"></a>
+</p>
+<a name="IDX138"></a>
 <p>You may also choose to use the <code>@asis</code> command as an argument to
 <code>@table</code>.  <code>@asis</code> is a command that does nothing; if you
 use this command after <code>@table</code>, TeX and the Info formatting
 commands output the first column entries without added highlighting
 (&quot;as is&quot;).
-
-</p><p>(The <code>@table</code> command may work with other commands besides those
+</p>
+<p>(The <code>@table</code> command may work with other commands besides those
 listed here.  However, you can only use commands that normally take
 arguments in braces.)
-
-</p><a name="IDX139"></a>
+</p>
+<a name="IDX139"></a>
 <p>Begin each table entry with an <code>@item</code> command at the beginning
 of a line.  Write the first column text on the same line as the
 <code>@item</code> command.  Write the second column text on the line
@@ -132,15 +132,15 @@ need to type anything for an empty second column entry.)  You may
 write as many lines of supporting text as you wish, even several
 paragraphs.  But only text on the same line as the <code>@item</code> will
 be placed in the first column, including any footnote.
-
-</p><p>Normally, you should put a blank line before an <code>@item</code> line.
+</p>
+<p>Normally, you should put a blank line before an <code>@item</code> line.
 This puts a blank like in the Info file.  Except when the entries are
 very brief, a blank line looks better.
-
-</p><p>The following table, for example, highlights the text in the first
+</p>
+<p>The following table, for example, highlights the text in the first
 column with an <code>@samp</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@table @samp
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@table @samp
 @item foo
 This is the text for
 @samp{foo}.
@@ -151,8 +151,8 @@ Text for @samp{bar}.
 </pre></td></tr></table>
 
 <p>This produces:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<samp> foo</samp>'</dt>
 <dd><p>This is the text for
 `<samp>foo</samp>'.
@@ -164,8 +164,8 @@ Text for @samp{bar}.
 
 <p>If you want to list two or more named items with a single block of
 text, use the <code>@itemx</code> command.  (See section <a href="itemx.html#SEC162"><code>@itemx</code></a>.)
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="enumerate.html#SEC158" title="Previous section in reading order"> &lt; </a>]</td>

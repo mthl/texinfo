@@ -1,4 +1,5 @@
 float.texi(,2) 
+float.texi(,3) @setfilename float.info
 float.texi(,4) 
 float.texi(,5) @node Top
 float.texi(,6) @top Test floats
@@ -260,3 +261,4 @@ float.texi(,261) @listoffloats th@'eor@`eme
 float.texi(,262) 
 float.texi(,263) @printindex cp
 float.texi(,264) 
+float.texi(,265) @bye

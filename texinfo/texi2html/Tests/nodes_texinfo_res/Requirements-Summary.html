@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 19.8 TeX Formatting Requirements Summary</title>
+<title>GNU Texinfo 4.2: 19.8 TeX Formatting Requirements Summary</title>
 
-<meta name="description" content="Texinfo: 19.8 TeX Formatting Requirements Summary">
-<meta name="keywords" content="Texinfo: 19.8 TeX Formatting Requirements Summary">
+<meta name="description" content="GNU Texinfo 4.2: 19.8 TeX Formatting Requirements Summary">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.8 TeX Formatting Requirements Summary">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,29 +82,29 @@ ul.toc {list-style: none}
 
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
 </pre></td></tr></table>
 
 <p>The first command instructs TeX to load the macros it needs to
 process a Texinfo file and the second command opens auxiliary files.
-
-</p><p>Every Texinfo file must end with a line that terminates TeX's
+</p>
+<p>Every Texinfo file must end with a line that terminates TeX's
 processing and forces out unfinished pages:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@bye
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@bye
 </pre></td></tr></table>
 <p>Strictly speaking, these lines are all a Texinfo file needs to be
 processed successfully by TeX.
-
-</p><p>Usually, however, the beginning includes an <code>@settitle</code> command to
+</p>
+<p>Usually, however, the beginning includes an <code>@settitle</code> command to
 define the title of the printed manual, an <code>@setchapternewpage</code>
 command, a title page, a copyright page, and permissions.  Besides an
 <code>@bye</code>, the end of a file usually includes indices and a table of
 contents.  (And of course most manuals contain a body of text as well.)
-
-</p><p>For more information, see:
+</p>
+<p>For more information, see:
 </p><ul>
 <li> <a href="settitle.html#SEC47"><code>@settitle</code></a>
 </li><li> <a href="setchapternewpage.html#SEC64"><code>@setchapternewpage</code></a>

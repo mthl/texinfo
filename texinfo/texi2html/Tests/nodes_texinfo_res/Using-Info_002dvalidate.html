@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: F.5.1 Running Info-validate</title>
+<title>GNU Texinfo 4.2: F.5.1 Running Info-validate</title>
 
-<meta name="description" content="Texinfo: F.5.1 Running Info-validate">
-<meta name="keywords" content="Texinfo: F.5.1 Running Info-validate">
+<meta name="description" content="GNU Texinfo 4.2: F.5.1 Running Info-validate">
+<meta name="keywords" content="GNU Texinfo 4.2: F.5.1 Running Info-validate">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,50 +82,50 @@ ul.toc {list-style: none}
 
 <p>To use <code>Info-validate</code>, visit the Info file you wish to check and
 type:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
 </pre></td></tr></table>
 
 <p>Note that the <code>Info-validate</code> command requires an upper case
 `I'.  You may also need to create a tag table before running
 <code>Info-validate</code>.  See section <a href="Tagifying.html#SEC317">Tagifying a File</a>.
-
-</p><p>If your file is valid, you will receive a message that says &quot;File appears
+</p>
+<p>If your file is valid, you will receive a message that says &quot;File appears
 valid&quot;.  However, if you have a pointer that does not point to a node,
 error messages will be displayed in a buffer called `<samp>*problems in
 info file*</samp>'.
-
-</p><p>For example, <code>Info-validate</code> was run on a test file that contained
+</p>
+<p>For example, <code>Info-validate</code> was run on a test file that contained
 only the first node of this manual.  One of the messages said:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
 </pre></td></tr></table>
 
 <p>This meant that the node called `<samp>Overview</samp>' had a `Next' pointer that
 did not point to anything (which was true in this case, since the test file
 had only one node in it).
-
-</p><p>Now suppose we add a node named `<samp>Texinfo Mode</samp>' to our test case
+</p>
+<p>Now suppose we add a node named `<samp>Texinfo Mode</samp>' to our test case
 but we do not specify a `Previous' for this node.  Then we will get
 the following error message:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
 </pre></td></tr></table>
 
 <p>This is because every `Next' pointer should be matched by a
 `Previous' (in the node where the `Next' points) which points back.
-
-</p><p><code>Info-validate</code> also checks that all menu entries and cross references
+</p>
+<p><code>Info-validate</code> also checks that all menu entries and cross references
 point to actual nodes.
-
-</p><p><code>Info-validate</code> requires a tag table and does not work with files
+</p>
+<p><code>Info-validate</code> requires a tag table and does not work with files
 that have been split.  (The <code>texinfo-format-buffer</code> command
 automatically splits large files.)  In order to use <code>Info-validate</code>
 on a large file, you must run <code>texinfo-format-buffer</code> with an
 argument so that it does not split the Info file; and you must create a
 tag table for the unsplit file.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Running-Info_002dValidate.html#SEC314" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Unsplit.html#SEC316" title="Next section in reading order"> &gt; </a>]</td>

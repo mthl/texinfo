@@ -1,4 +1,5 @@
 more_before_top_section.texi(,2) 
+more_before_top_section.texi(,3) @setfilename index_nodes
 more_before_top_section.texi(,4) 
 more_before_top_section.texi(,5) 
 more_before_top_section.texi(,6) @node first before top, Top, ,(dir)
@@ -77,4 +78,7 @@ more_before_top_section.texi(,78) @cindex a concept a node
 more_before_top_section.texi(,79) 
 more_before_top_section.texi(,80) @printindex cp
 more_before_top_section.texi(,81) 
+more_before_top_section.texi(,82) @c @node unnumberedsec, , ,(dir)
+more_before_top_section.texi(,83) @c @unnumberedsec a section to avoid a document without splitting
 more_before_top_section.texi(,84) 
+more_before_top_section.texi(,85) @bye

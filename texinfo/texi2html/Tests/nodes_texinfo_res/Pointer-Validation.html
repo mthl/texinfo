@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.1.4 Pointer Validation</title>
+<title>GNU Texinfo 4.2: 20.1.4 Pointer Validation</title>
 
-<meta name="description" content="Texinfo: 20.1.4 Pointer Validation">
-<meta name="keywords" content="Texinfo: 20.1.4 Pointer Validation">
+<meta name="description" content="GNU Texinfo 4.2: 20.1.4 Pointer Validation">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.1.4 Pointer Validation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 option or the <code>@novalidate</code> command in the source file (see section <a href="Use-TeX.html#SEC245">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
 Info file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
-
-</p><ol>
+</p>
+<ol>
 <li>
 If a `Next', `Previous', or `Up' node reference is a reference to a
 node in the current file and is not an external reference such as to
@@ -122,8 +122,8 @@ cross-reference.
 they use commands like <code>@value</code> and <code>@definfoenclose</code> in
 node definitions and cross-references inconsistently.  Consider the
 following example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@set nodename Node 1
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@set nodename Node 1
 
 @node @value{nodename}, Node 2, Top, Top
 
@@ -136,8 +136,8 @@ This is node 2.
 
 <p>Here, the node &quot;Node 1&quot; was referenced both verbatim and through
 <code>@value</code>.
-
-</p><p>By default, <code>makeinfo</code> fails such cases, because node names are not
+</p>
+<p>By default, <code>makeinfo</code> fails such cases, because node names are not
 fully expanded until they are written to the output file.  You should
 always try to reference nodes consistently; e.g., in the above example,
 the second <code>@node</code> line should have also used <code>@value</code>.
@@ -148,18 +148,18 @@ to perform the expensive expansion of all node names it finds in the
 document.  This might considerably slow down the program, though;
 twofold increase in conversion time was measured for large documents
 such as the Jargon file.
-
-</p><a name="IDX402"></a>
+</p>
+<a name="IDX402"></a>
 <p>The support for <code>@</code>-commands in <code>@node</code> directives is not
 general enough to be freely used.  For example, if the example above
 redefined <code>nodename</code> somewhere in the document, <code>makeinfo</code>
 will fail to convert it, even if invoked with the
 `<samp>--commands-in-node-names</samp>' option.
-
-</p><p>`<samp>--commands-in-node-names</samp>' has no effect if the `<samp>--no-validate</samp>'
-option is given.
-
 </p>
+<p>`<samp>--commands-in-node-names</samp>' has no effect if the `<samp>--no-validate</samp>'
+option is given.
+</p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="makeinfo-options.html#SEC264" title="Previous section in reading order"> &lt; </a>]</td>

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 4.1 Printing Indices and Menus</title>
+<title>GNU Texinfo 4.2: 4.1 Printing Indices and Menus</title>
 
-<meta name="description" content="Texinfo: 4.1 Printing Indices and Menus">
-<meta name="keywords" content="Texinfo: 4.1 Printing Indices and Menus">
+<meta name="description" content="GNU Texinfo 4.2: 4.1 Printing Indices and Menus">
+<meta name="keywords" content="GNU Texinfo 4.2: 4.1 Printing Indices and Menus">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -90,16 +90,16 @@ process of creating a printed manual, you must run a program called
 <code>texindex</code> (see section <a href="Hardcopy.html#SEC244">Formatting and Printing Hardcopy</a>) to sort the raw data to produce a
 sorted index file.  The sorted index file is what is actually used to
 print the index.
-
-</p><p>Texinfo offers six separate types of predefined index, each with a
+</p>
+<p>Texinfo offers six separate types of predefined index, each with a
 two-letter abbreviation, as illustrated in the following table.
 However, you may merge indices (see section <a href="Combining-Indices.html#SEC170">Combining Indices</a>) or define
 your own indices (see section <a href="New-Indices.html#SEC173">Defining New Indices</a>).
-
-</p><p>Here are the predefined indices, their abbreviations, and the
+</p>
+<p>Here are the predefined indices, their abbreviations, and the
 corresponding index entry commands:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<samp> cp</samp>'</dt>
 <dd><p>concept index (<code>@cindex</code>)
 </p></dd>
@@ -123,17 +123,17 @@ corresponding index entry commands:
 <p>The <code>@printindex</code> command takes a two-letter index abbreviation,
 reads the corresponding sorted index file and formats it appropriately
 into an index.
-
-</p><p>The <code>@printindex</code> command does not generate a chapter heading for
+</p>
+<p>The <code>@printindex</code> command does not generate a chapter heading for
 the index.  Consequently, you should precede the <code>@printindex</code>
 command with a suitable section or chapter command (usually
 <code>@appendix</code> or <code>@unnumbered</code>) to supply the chapter heading
 and put the index into the table of contents.  Precede the
 <code>@unnumbered</code> command with an <code>@node</code> line.
-
-</p><p>For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@node Variable Index
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node Variable Index
 @unnumbered Variable Index
 
 @printindex vr
@@ -148,8 +148,8 @@ and put the index into the table of contents.  Precede the
 <p>We recommend placing the concept index last, since that makes it easiest
 to find.  We also recommend having a single index whenever possible,
 since then readers have only one place to look (see section <a href="Combining-Indices.html#SEC170">Combining Indices</a>).
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Ending-a-File.html#SEC68" title="Previous section in reading order"> &lt; </a>]</td>

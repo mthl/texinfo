@@ -64,19 +64,19 @@ ul.toc {list-style: none}
 the shell.  XEmacs clears the screen and then displays an initial
 advisory message and copyright notice.  You can begin typing XEmacs
 commands immediately afterward.
-
-</p><p>  Some operating systems insist on discarding all type-ahead when XEmacs
+</p>
+<p>  Some operating systems insist on discarding all type-ahead when XEmacs
 starts up; they give XEmacs no way to prevent this.  Therefore, it is
 advisable to wait until XEmacs clears the screen before typing your first
 editing command.
-
-</p><p>  If you run XEmacs from a shell window under the X Window System, run it
+</p>
+<p>  If you run XEmacs from a shell window under the X Window System, run it
 in the background with `<samp>xemacs&amp;</samp>'.  This way, XEmacs does not tie up
 the shell window, so you can use that to run other shell commands while
 XEmacs operates its own X windows.  You can begin typing XEmacs commands
 as soon as you direct your keyboard input to the XEmacs frame.
-
-</p><a name="IDX101"></a>
+</p>
+<a name="IDX101"></a>
 <p>  Before Emacs reads the first command, you have not had a chance to
 give a command to specify a file to edit.  Since Emacs must always have
 a current buffer for editing, it presents a buffer, by default, a buffer
@@ -85,35 +85,35 @@ use it to type Lisp expressions and evaluate them, or you can ignore
 that capability and simply doodle.  (You can specify a different major
 mode for this buffer by setting the variable <code>initial-major-mode</code>
 in your init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.)
-
-</p><p>  It is possible to specify files to be visited, Lisp files to be
+</p>
+<p>  It is possible to specify files to be visited, Lisp files to be
 loaded, and functions to be called, by giving Emacs arguments in the
 shell command line.  See section <a href="#SEC41">Command Line Switches and Arguments</a>.  But we don't recommend
 doing this.  The feature exists mainly for compatibility with other
 editors.
-
-</p><p>  Many other editors are designed to be started afresh each time you
+</p>
+<p>  Many other editors are designed to be started afresh each time you
 want to edit.  You edit one file and then exit the editor.  The next
 time you want to edit either another file or the same one, you must run
 the editor again.  With these editors, it makes sense to use a
 command-line argument to say which file to edit.
-
-</p><p>  But starting a new Emacs each time you want to edit a different file
+</p>
+<p>  But starting a new Emacs each time you want to edit a different file
 does not make sense.  For one thing, this would be annoyingly slow.  For
 another, this would fail to take advantage of Emacs's ability to visit
 more than one file in a single editing session.  And it would lose the
 other accumulated context, such as registers, undo history, and the mark
 ring.
-
-</p><p>  The recommended way to use XEmacs is to start it only once, just
+</p>
+<p>  The recommended way to use XEmacs is to start it only once, just
 after you log in, and do all your editing in the same Emacs session.
 Each time you want to edit a different file, you visit it with the
 existing Emacs, which eventually comes to have many files in it ready
 for editing.  Usually you do not kill the Emacs until you are about to
 log out.  See section <a href="xemacs_17.html#SEC134">File Handling</a>, for more information on visiting more than one
 file.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Exiting"></a>
 <a name="SEC40"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -136,17 +136,17 @@ file.
 
 <p>  There are two commands for exiting Emacs because there are two kinds
 of exiting: <em>suspending</em> Emacs and <em>killing</em> Emacs.
-
-</p><p>  <em>Suspending</em> means stopping Emacs temporarily and returning
+</p>
+<p>  <em>Suspending</em> means stopping Emacs temporarily and returning
 control to its parent process (usually a shell), allowing you to resume
 editing later in the same Emacs job, with the same buffers, same kill
 ring, same undo history, and so on.  This is the usual way to exit.
-
-</p><p>  <em>Killing</em> Emacs means destroying the Emacs job.  You can run Emacs
+</p>
+<p>  <em>Killing</em> Emacs means destroying the Emacs job.  You can run Emacs
 again later, but you will get a fresh Emacs; there is no way to resume
 the same editing session after it has been killed.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-z</kbd></dt>
 <dd><p>Suspend Emacs or iconify a frame
 (<code>suspend-emacs-or-iconify-frame</code>).  If used under the X window
@@ -163,62 +163,62 @@ the X window containing the Emacs frame to an icon.  The Emacs process
 is stopped temporarily, and control is returned to the window manager.
 If more than one frame is associated with the Emacs process, only the
 frame from which you used <kbd>C-z</kbd> is iconified.
-
-</p><p>To activate the &quot;suspended&quot; Emacs, use the appropriate window manager
+</p>
+<p>To activate the &quot;suspended&quot; Emacs, use the appropriate window manager
 mouse gestures.  Usually left-clicking on the icon reactivates and
 reopens the X window containing the Emacs frame, but the window manager
 you use determines what exactly happens.  To actually kill the Emacs
 process, use <kbd>C-x C-c</kbd> or the <b>Exit XEmacs</b> item on the <b>File</b>
 menu.
-
-</p><a name="IDX102"></a>
+</p>
+<a name="IDX102"></a>
 <a name="IDX103"></a>
 <p>  To suspend Emacs, type <kbd>C-z</kbd> (<code>suspend-emacs</code>).  This takes
 you back to the shell from which you invoked Emacs.  You can resume
 Emacs with the shell command `<samp>%xemacs</samp>' in most common shells.
-
-</p><p>  On systems that do not support suspending programs, <kbd>C-z</kbd> starts
+</p>
+<p>  On systems that do not support suspending programs, <kbd>C-z</kbd> starts
 an inferior shell that communicates directly with the terminal.
 Emacs waits until you exit the subshell.  (The way to do that is
 probably with <kbd>C-d</kbd> or `<samp>exit</samp>', but it depends on which shell
 you use.)  The only way on these systems to get back to the shell from
 which Emacs was run (to log out, for example) is to kill Emacs.
-
-</p><p>  Suspending also fails if you run Emacs under a shell that doesn't
+</p>
+<p>  Suspending also fails if you run Emacs under a shell that doesn't
 support suspending programs, even if the system itself does support it.
 In such a case, you can set the variable <code>cannot-suspend</code> to a
 non-<code>nil</code> value to force <kbd>C-z</kbd> to start an inferior shell.
 (One might also describe Emacs's parent shell as &quot;inferior&quot; for
 failing to support job control properly, but that is a matter of taste.)
-
-</p><p>  When Emacs communicates directly with an X server and creates its own
+</p>
+<p>  When Emacs communicates directly with an X server and creates its own
 dedicated X windows, <kbd>C-z</kbd> has a different meaning.  Suspending an
 applications that uses its own X windows is not meaningful or useful.
 Instead, <kbd>C-z</kbd> runs the command <code>iconify-or-deiconify-frame</code>,
 which temporarily closes up the selected Emacs frame.
 The way to get back to a shell window is with the window manager.
-
-</p><a name="IDX104"></a>
+</p>
+<a name="IDX104"></a>
 <a name="IDX105"></a>
 <p>  To kill Emacs, type <kbd>C-x C-c</kbd> (<code>save-buffers-kill-emacs</code>).  A
 two-character key is used for this to make it harder to type.  Selecting
 the <b>Exit XEmacs</b> option of the <b>File</b> menu is an alternate way of
 issuing the command.
-
-</p><p>Unless a numeric argument is used, this command first offers to save any
+</p>
+<p>Unless a numeric argument is used, this command first offers to save any
 modified file-visiting buffers.  If you do not save all buffers, you are
 asked for reconfirmation with <kbd>yes</kbd> before killing Emacs, since any
 changes not saved will be lost forever.  If any subprocesses are still
 running, <kbd>C-x C-c</kbd> asks you to confirm killing them, since killing
 Emacs will kill the subprocesses immediately.
-
-</p><p>  There is no way to restart an Emacs session once you have killed it.
+</p>
+<p>  There is no way to restart an Emacs session once you have killed it.
 You can, however, arrange for Emacs to record certain session
 information, such as which files are visited, when you kill it, so that
 the next time you restart Emacs it will try to visit the same files and
 so on.
-
-</p><p>  The operating system usually listens for certain special characters
+</p>
+<p>  The operating system usually listens for certain special characters
 whose meaning is to kill or suspend the program you are running.
 <b>This operating system feature is turned off while you are in Emacs.</b>
 The meanings of <kbd>C-z</kbd> and <kbd>C-x C-c</kbd> as keys in Emacs were
@@ -226,8 +226,8 @@ inspired by the use of <kbd>C-z</kbd> and <kbd>C-c</kbd> on several operating
 systems as the characters for stopping or killing a program, but that is
 their only relationship with the operating system.  You can customize
 these keys to run any commands of your choice (see section <a href="xemacs_30.html#SEC368">Keymaps</a>).
-
 </p>
+
 <hr size="6">
 <a name="Command-Switches"></a>
 <a name="SEC41"></a>
@@ -255,14 +255,14 @@ with other editors and for sophisticated activities.  If you are using
 XEmacs under the X window system, you can also use a number of
 standard Xt command line arguments. Command line arguments are not usually
 needed for editing with Emacs; new users can skip this section.
-
-</p><p>  Many editors are designed to be started afresh each time you want to
+</p>
+<p>  Many editors are designed to be started afresh each time you want to
 edit.  You start the editor to edit one file; then exit the editor.  The
 next time you want to edit either another file or the same one, you
 start the editor again.  Under these circumstances, it makes sense to use a
 command line argument to say which file to edit.
-
-</p><p>  The recommended way to use XEmacs is to start it only once, just
+</p>
+<p>  The recommended way to use XEmacs is to start it only once, just
 after you log in, and do all your editing in the same Emacs process.
 Each time you want to edit a file, you visit it using the existing
 Emacs.  Emacs creates a new buffer for each file, and (unless you kill
@@ -271,18 +271,18 @@ editing.  Usually you do not kill the Emacs process until you are about
 to log out.  Since you usually read files by typing commands to Emacs,
 command line arguments for specifying a file when Emacs is started are seldom
 needed.
-
-</p><p>  Emacs accepts command-line arguments that specify files to visit,
+</p>
+<p>  Emacs accepts command-line arguments that specify files to visit,
 functions to call, and other activities and operating modes.  If you
 are running XEmacs under the X window system, a number of standard Xt
 command line arguments are available, as well as a few X parameters
 that are XEmacs-specific.
-
-</p><p>  Options with long names with a single initial hyphen are also
+</p>
+<p>  Options with long names with a single initial hyphen are also
 recognized with the GNU double initial hyphen syntax.  (The reverse
 is not true.)
-
-</p><p>The following subsections list:
+</p>
+<p>The following subsections list:
 </p><ul>
 <li> 
 Command line arguments that you can always use
@@ -316,51 +316,51 @@ under X
 <p> Command line arguments are processed in the order they appear on the
 command line; however, certain arguments (the ones in the
 second table) must be at the front of the list if they are used.
-
-</p><p>  Here are the arguments allowed:
-
-</p><dl compact="compact">
+</p>
+<p>  Here are the arguments allowed:
+</p>
+<dl compact="compact">
 <dt>`<samp> <var>file</var></samp>'</dt>
 <dd><p>Visit <var>file</var> using <code>find-file</code>.  See section <a href="xemacs_17.html#SEC136">Visiting Files</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> +<var>linenum</var> <var>file</var></samp>'</dt>
 <dd><p>Visit <var>file</var> using <code>find-file</code>, then go to line number
 <var>linenum</var> in it.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -load <var>file</var></samp>'</dt>
 <dt>`<samp> -l <var>file</var></samp>'</dt>
 <dd><p>Load a file <var>file</var> of Lisp code with the function <code>load</code>.
 See section <a href="xemacs_25.html#SEC254">Libraries of Lisp Code for Emacs</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -funcall <var>function</var></samp>'</dt>
 <dt>`<samp> -f <var>function</var></samp>'</dt>
 <dd><p>Call Lisp function <var>function</var> with no arguments.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -eval <var>function</var></samp>'</dt>
 <dd><p>Interpret the next argument as a Lisp expression, and evaluate it.
 You must be very careful of the shell quoting here.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -insert <var>file</var></samp>'</dt>
 <dt>`<samp> -i <var>file</var></samp>'</dt>
 <dd><p>Insert the contents of <var>file</var> into the current buffer.  This is like
 what <kbd>M-x insert-buffer</kbd> does; See section <a href="xemacs_17.html#SEC168">Miscellaneous File Operations</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -kill</samp>'</dt>
 <dd><p>Exit from Emacs without asking for confirmation.  Always the last
 argument processed, no matter where it appears in the command line.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -version</samp>'</dt>
 <dt>`<samp> -V</samp>'</dt>
 <dd><p>Prints version information.  This implies `<samp>-batch</samp>'.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">% xemacs -version
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">% xemacs -version
 XEmacs 19.13 of Mon Aug 21 1995 on willow (usg-unix-v) [formerly Lucid Emacs]
 </pre></td></tr></table>
 </dd>
@@ -391,27 +391,27 @@ XEmacs 19.13 of Mon Aug 21 1995 on willow (usg-unix-v) [formerly Lucid Emacs]
 <p>  The following arguments are recognized only at the beginning of the
 command line.  If more than one of them appears, they must appear in the
 order in which they appear in this table.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<samp> --show-dump-id</samp>'</dt>
 <dt>`<samp> -sd</samp>'</dt>
 <dd><p>Print the ID for the new portable dumper's dump file on the terminal and
 exit.  (Prints an error message and exits if XEmacs was not configured
 `<samp>--pdump</samp>'.)
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> --no-dump-file</samp>'</dt>
 <dt>`<samp> -nd</samp>'</dt>
 <dd><p>Don't load the dump file.  Roughly equivalent to old temacs.  (Ignored if
 XEmacs was not configured `<samp>--pdump</samp>'.)
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> --terminal <var>file</var></samp>'</dt>
 <dt>`<samp> -t <var>file</var></samp>'</dt>
 <dd><p>Use <var>file</var> instead of the terminal for input and output.  This
 implies the `<samp>-nw</samp>' option, documented below.
-
-</p><a name="IDX106"></a>
+</p>
+<a name="IDX106"></a>
 </dd>
 <dt>`<samp> -batch</samp>'</dt>
 <dd><p>Run Emacs in <em>batch mode</em>, which means that the text being edited is
@@ -419,80 +419,80 @@ not displayed and the standard Unix interrupt characters such as
 <kbd>C-z</kbd> and <kbd>C-c</kbd> continue to have their normal effect.  Emacs in
 batch mode outputs to <code>stderr</code> only what would normally be printed
 in the echo area under program control.
-
-</p><p>Batch mode is used for running programs written in Emacs Lisp from shell
+</p>
+<p>Batch mode is used for running programs written in Emacs Lisp from shell
 scripts, makefiles, and so on.  Normally the `<samp>-l</samp>' switch or
 `<samp>-f</samp>' switch will be used as well, to invoke a Lisp program to do
 the batch processing.
-
-</p><p>`<samp>-batch</samp>' implies `<samp>-q</samp>' (do not load an init file).  It also
+</p>
+<p>`<samp>-batch</samp>' implies `<samp>-q</samp>' (do not load an init file).  It also
 causes Emacs to kill itself after all command switches have been
 processed.  In addition, auto-saving is not done except in buffers for
 which it has been explicitly requested.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> --no-windows</samp>'</dt>
 <dt>`<samp> -nw</samp>'</dt>
 <dd><p>Start up XEmacs in TTY mode (using the TTY XEmacs was started from),
 rather than trying to connect to an X display.  Note that this happens
 automatically if the `<samp>DISPLAY</samp>' environment variable is not set.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -debug-init</samp>'</dt>
 <dd><p>Enter the debugger if an error in the init file occurs.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -debug-paths</samp>'</dt>
 <dd><p>Displays information on how XEmacs constructs the various paths into its
 hierarchy on startup.  (See also see section <a href="#SEC45">How XEmacs finds Directories and Files</a>.)
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -unmapped</samp>'</dt>
 <dd><p>Do not map the initial frame.  This is useful if you want to start up
 XEmacs as a server (e.g. for gnuserv screens or external client widgets).
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -no-init-file</samp>'</dt>
 <dt>`<samp> -q</samp>'</dt>
 <dd><p>Do not load your Emacs init file.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -no-site-file</samp>'</dt>
 <dd><p>Do not load the site-specific init file `<tt>lisp/site-start.el</tt>'.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -no-autoloads</samp>'</dt>
 <dd><p>Do not load global symbol files (`<tt>auto-autoloads</tt>') at startup.
 This implies `<samp>-vanilla</samp>'. 
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -no-early-packages</samp>'</dt>
 <dd><p>Do not process early packages.  (For more information on startup issues
 concerning the package system, See section <a href="#SEC45">How XEmacs finds Directories and Files</a>.)
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -vanilla</samp>'</dt>
 <dd><p>This is equivalent to `<samp>-q -no-site-file -no-early-packages</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -user-init-file <var>file</var></samp>'</dt>
 <dd><p>Load <var>file</var> as your Emacs init file instead of
 `<tt>~/.xemacs/init.el</tt>'/`<tt>~/.emacs</tt>'.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -user-init-directory <var>directory</var></samp>'</dt>
 <dd><p>Use <var>directory</var> as the location of your early package hierarchies
 and the various user-specific initialization files.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -user <var>user</var></samp>'</dt>
 <dt>`<samp> -u <var>user</var></samp>'</dt>
 <dd><p>Equivalent to `<samp>-user-init-file ~<var>user</var>/.xemacs/init.el
 -user-init-directory ~<var>user</var>/.xemacs</samp>', or `<samp>-user-init-file
 ~<var>user</var>/.emacs -user-init-directory ~<var>user</var>/.xemacs</samp>', whichever
 init file comes first.  See section <a href="xemacs_30.html#SEC377">The Init File</a>.
-
-</p></dd>
+</p>
+</dd>
 </dl>
 
 <a name="IDX107"></a>
@@ -502,20 +502,20 @@ values as the elements of a list in the variable
 already have been processed and will not be in the list.)  The init file
 can override the normal processing of the other arguments by setting
 this variable.
-
-</p><p>  One way to use command switches is to visit many files automatically:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">xemacs *.c
+</p>
+<p>  One way to use command switches is to visit many files automatically:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">xemacs *.c
 </pre></td></tr></table>
 
 <p>passes each <code>.c</code> file as a separate argument to Emacs, so that
 Emacs visits each file (see section <a href="xemacs_17.html#SEC136">Visiting Files</a>).
-
-</p><p>  Here is an advanced example that assumes you have a Lisp program file
+</p>
+<p>  Here is an advanced example that assumes you have a Lisp program file
 called `<tt>hack-c-program.el</tt>' which, when loaded, performs some useful
 operation on the current buffer, expected to be a C program.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">xemacs -batch foo.c -l hack-c-program -f save-buffer -kill &gt; log
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">xemacs -batch foo.c -l hack-c-program -f save-buffer -kill &gt; log
 </pre></td></tr></table>
 
 <p>Here Emacs is told to visit `<tt>foo.c</tt>', load `<tt>hack-c-program.el</tt>'
@@ -525,8 +525,8 @@ then exit to the shell from which the command was executed.  `<samp>-batch</samp
 guarantees there will be no problem redirecting output to `<tt>log</tt>',
 because Emacs will not assume that it has a display terminal to work
 with.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC44"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC43" title="Previous section in reading order"> &lt; </a>]</td>
@@ -547,8 +547,8 @@ with.
 <h3 class="subsection"> 3.2.3 Command Line Arguments (for XEmacs Under X) </h3>
 <p>If you are running XEmacs under X, a number of options are
 available to control color, border, and window title and icon name:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<samp> -title <var>title</var></samp>'</dt>
 <dt>`<samp> -wn <var>title</var></samp>'</dt>
 <dt>`<samp> -T <var>title</var></samp>'</dt>
@@ -556,23 +556,23 @@ available to control color, border, and window title and icon name:
 <code>frame-title-format</code> variable, which controls the title of the X
 window corresponding to the selected frame.  This is the same format as
 <code>mode-line-format</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -iconname <var>title</var></samp>'</dt>
 <dt>`<samp> -in <var>title</var></samp>'</dt>
 <dd><p>Use <var>title</var> as the icon name. This sets the
 <code>frame-icon-title-format</code> variable, which controls the title of
 the icon corresponding to the selected frame.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -mc <var>color</var></samp>'</dt>
 <dd><p>Use <var>color</var> as the mouse color.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -cr <var>color</var></samp>'</dt>
 <dd><p>Use <var>color</var> as the text-cursor foreground color.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -private</samp>'</dt>
 <dd><p>Install a private colormap for XEmacs.
 </p></dd>
@@ -580,63 +580,63 @@ the icon corresponding to the selected frame.
 
 <p>In addition, XEmacs allows you to use a number of standard Xt
 command line arguments. 
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt>`<samp> -background <var>color</var></samp>'</dt>
 <dt>`<samp> -bg <var>color</var></samp>'</dt>
 <dd><p>Use <var>color</var> as the background color.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -bordercolor <var>color</var></samp>'</dt>
 <dt>`<samp> -bd <var>color</var></samp>'</dt>
 <dd><p>Use <var>color</var> as the border color.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -borderwidth <var>width</var></samp>'</dt>
 <dt>`<samp> -bw <var>width</var></samp>'</dt>
 <dd><p>Use <var>width</var> as the border width.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -display <var>display</var></samp>'</dt>
 <dt>`<samp> -d <var>display</var></samp>'</dt>
 <dd><p>When running under the X window system, create the window containing the
 Emacs frame on the display named <var>display</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -foreground <var>color</var></samp>'</dt>
 <dt>`<samp> -fg <var>color</var></samp>'</dt>
 <dd><p>Use <var>color</var> as the foreground color.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -font <var>name</var></samp>'</dt>
 <dt>`<samp> -fn <var>name</var></samp>'</dt>
 <dd><p>Use <var>name</var> as the default font.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -geometry <var>spec</var></samp>'</dt>
 <dt>`<samp> -geom <var>spec</var></samp>'</dt>
 <dt>`<samp> -g <var>spec</var></samp>'</dt>
 <dd><p>Use the geometry (window size and/or position) specified by <var>spec</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -iconic</samp>'</dt>
 <dd><p>Start up iconified.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -rv</samp>'</dt>
 <dd><p>Bring up Emacs in reverse video.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -name <var>name</var></samp>'</dt>
 <dd><p>Use the resource manager resources specified by <var>name</var>.
 The default is to use the name of the program (<code>argv[0]</code>) as
 the resource manager name.
-
-</p></dd>
+</p>
+</dd>
 <dt>`<samp> -xrm</samp>'</dt>
 <dd><p>Read something into the resource database for this invocation of Emacs only.
-
-</p></dd>
+</p>
+</dd>
 </dl>
 
 <hr size="6">
@@ -668,8 +668,8 @@ paths.  (A <em>path</em>,
 <a name="IDX108"></a>
 for the purposes of this section, is simply a list of directories which
 XEmacs searches successively in order to locate a file.)
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC46"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC45" title="Previous section in reading order"> &lt; </a>]</td>
@@ -698,8 +698,8 @@ may subsequently be moved to a different place.  (This last case is not
 as uncommon as it sounds.  Binary kits work this way.)  Consequently,
 XEmacs has quite complex procedures in place to find directories, no
 matter where they may be hidden.
-
-</p><p>XEmacs will always respect directory options passed to <code>configure</code>.
+</p>
+<p>XEmacs will always respect directory options passed to <code>configure</code>.
 However, if it cannot locate a directory at the configured place, it
 will initiate a search for the directory in any of a number of
 <em>hierarchies</em> rooted under a directory which XEmacs assumes contain
@@ -715,8 +715,8 @@ hierarchies XEmacs was able to scrounge up.  In a
 running XEmacs, the hierarchy roots are stored in the variable
 <code>emacs-roots</code>.
 <a name="IDX110"></a>
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC47"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC46" title="Previous section in reading order"> &lt; </a>]</td>
@@ -740,8 +740,8 @@ running XEmacs, the hierarchy roots are stored in the variable
 the core installation.  They are part of any of the many packages
 usually installed on top of an XEmacs installation.  (See section <a href="xemacs_25.html#SEC262">Packages</a>.)
 Hence, they play a prominent role in the various paths XEmacs sets up.
-
-</p><p>XEmacs locates packages in any of a number of package hierarchies.
+</p>
+<p>XEmacs locates packages in any of a number of package hierarchies.
 Package hierarchies fall into three groups: <em>early</em>, <em>late</em>,
 and <em>last</em>,
 <a name="IDX111"></a>
@@ -751,26 +751,26 @@ according to the relative location at which they show
 up in the various XEmacs paths.  Early package hierarchies are at the
 very front, late ones somewhere in the middle, and last hierarchies are
 (you guessed it) last.
-
-</p><p>By default, XEmacs expects an early package hierarchy in the
+</p>
+<p>By default, XEmacs expects an early package hierarchy in the
 subdirectory `<tt>.xemacs/xemacs-packages</tt>' of the user's home
 directory.
-
-</p><p>Moreover, XEmacs expects late hierarchies in the subdirectories
+</p>
+<p>Moreover, XEmacs expects late hierarchies in the subdirectories
 `<tt>site-packages</tt>', `<tt>mule-packages</tt>', and `<tt>xemacs-packages</tt>'
 (in that order) of the `<tt>&lt;root&gt;/lib/xemacs</tt>' subdirectory of one of
 the installation hierarchies.  (If you run in-place, these are direct
 subdirectories of the build directory.)  Furthermore, XEmacs will also
 search these subdirectories in the `<tt>&lt;root&gt;/lib/xemacs-&lt;VERSION&gt;</tt>'
 subdirectory and prefer directories found there.
-
-</p><p>By default, XEmacs does not have a pre-configured last package
+</p>
+<p>By default, XEmacs does not have a pre-configured last package
 hierarchy.  Last hierarchies are primarily for using package hierarchies
 of outdated versions of XEmacs as a fallback option.  For example, it is
 possible to run XEmacs 21 with the 20.4 package hierarchy as a last
 hierarchy.
-
-</p><p>It is possible to specify at configure-time the location of the various
+</p>
+<p>It is possible to specify at configure-time the location of the various
 package hierarchies with the <code>--package-path</code> option to configure.
 <a name="IDX114"></a>
 The early, late, and last components of the package path are separated
@@ -780,15 +780,15 @@ respectively.  If two components are present, they locate the early and
 late hierarchies.  If only one component is present, it locates the
 late hierarchy.  At run time, the package path may also be specified via
 the <code>EMACSPACKAGEPATH</code> environment variable.
-
-</p><p>An XEmacs package is laid out just like a normal installed XEmacs lisp
+</p>
+<p>An XEmacs package is laid out just like a normal installed XEmacs lisp
 directory.  It may have `<tt>lisp</tt>', `<tt>etc</tt>', `<tt>info</tt>', and
 `<tt>lib-src</tt>' subdirectories.  XEmacs adds these at appropriate places
 within the various system-wide paths.
-
-</p><p>There may be any number of package hierarchy directories.
-
-</p><hr size="6">
+</p>
+<p>There may be any number of package hierarchy directories.
+</p>
+<hr size="6">
 <a name="SEC48"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC47" title="Previous section in reading order"> &lt; </a>]</td>
@@ -812,8 +812,8 @@ within the various system-wide paths.
 locate during startup.  XEmacs distinguishes between directories and
 paths specific to <em>version</em>, <em>site</em>, and <em>architecture</em>
 when looking for them.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> version-specific</code></dt>
 <dd><a name="IDX115"></a>
 <p>directories are specific to the version of XEmacs they belong to and
@@ -834,18 +834,18 @@ architecture it runs on and typically reside under
 
 <p>During installation, all of these directories may also reside directly
 under `<tt>&lt;root&gt;</tt>', because that is where they are in the XEmacs tarball.
-
-</p><p>If XEmacs runs with the <code>-debug-paths</code> option (see section <a href="#SEC41">Command Line Switches and Arguments</a>), it will print the values of these variables, hopefully
+</p>
+<p>If XEmacs runs with the <code>-debug-paths</code> option (see section <a href="#SEC41">Command Line Switches and Arguments</a>), it will print the values of these variables, hopefully
 aiding in debugging any problems which come up.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> lisp-directory</code></dt>
 <dd><a name="IDX118"></a>
 <p>Contains the version-specific location of the Lisp files that come with
 the core distribution of XEmacs.  XEmacs will search it recursively to a
 depth of 1 when setting up <code>load-path</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> load-path</code></dt>
 <dd><a name="IDX119"></a>
 <p>Is where XEmacs searches for XEmacs Lisp files with commands like
@@ -856,8 +856,8 @@ version-specific core Lisp directories.  If the environment variable
 <code>EMACSLOADPATH</code> is set at startup, its directories are prepended to
 <code>load-path</code>.
 <a name="IDX121"></a>
-
-</p></dd>
+</p>
+</dd>
 <dt><code> Info-directory-list</code></dt>
 <dd><a name="IDX122"></a>
 <p>Contains the location of info files.  (See <a href="../info/index.html#Top">(info)</a>.)  It contains
@@ -867,14 +867,14 @@ documentation.  Moreover, XEmacs will add `<tt>/usr/info</tt>',
 variable <code>INFOPATH</code>
 <a name="IDX123"></a>
 to <code>Info-directory-list</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> exec-directory</code></dt>
 <dd><a name="IDX124"></a>
 <p>Is the directory of architecture-dependent files that come with XEmacs,
 especially executable programs intended for XEmacs to invoke.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> exec-path</code></dt>
 <dd><a name="IDX125"></a>
 <p>Is the path for executables which XEmacs may want to start.  It contains
@@ -883,28 +883,28 @@ directories of the environment variables <code>PATH</code>
 <a name="IDX126"></a>
 and <code>EMACSPATH</code>.
 <a name="IDX127"></a>
-
-</p></dd>
+</p>
+</dd>
 <dt><code> doc-directory</code></dt>
 <dd><a name="IDX128"></a>
 <p>Is the directory containing the architecture-specific `<tt>DOC</tt>' file
 that contains documentation for XEmacs' commands.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> data-directory</code></dt>
 <dd><a name="IDX129"></a>
 <p>Is the version-specific directory that contains core data files XEmacs uses.
 It may be initialized from the <code>EMACSDATA</code>
 <a name="IDX130"></a>
 environment variable.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> data-directory-list</code></dt>
 <dd><a name="IDX131"></a>
 <p>Is the path where XEmacs looks for data files.  It contains package data
 directories as well as <code>data-directory</code>.
-
-</p></dd>
+</p>
+</dd>
 </dl>
 
 

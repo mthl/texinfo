@@ -68,8 +68,8 @@ irreversible change you want <small>CVS</small> to record the
 fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC67">7.1 Adding files to a directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Adding files
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC68">7.2 Removing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -100,8 +100,8 @@ this in <small>CVS</small> vary depending on the situation.
 <h2 class="section"> 7.1 Adding files to a directory </h2>
 
 <p>To add a new file to a directory, follow these steps.
-
-</p><ul>
+</p>
+<ul>
 <li>
 You must have a working copy of the directory.
 See section <a href="cvs_1.html#SEC5">Getting the source</a>.
@@ -122,12 +122,12 @@ cannot see the file until you perform this step.
 
 <p>You can also use the <code>add</code> command to add a new
 directory.
-
-</p><p>Unlike most other commands, the <code>add</code> command is
+</p>
+<p>Unlike most other commands, the <code>add</code> command is
 not recursive.  You cannot even type `<samp>cvs add
 foo/bar</samp>'!  Instead, you have to
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd foo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd foo
 $ cvs add bar
 </pre></td></tr></table>
 <a name="IDX129"></a>
@@ -141,20 +141,20 @@ already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
 the <code>import</code> command instead.  See section <a href="cvs_16.html#SEC139">import--Import sources into CVS, using vendor branches</a>.
-
-</p><p>The added files are not placed in the source repository
+</p>
+<p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
 command intervened.  See section <a href="#SEC68">Removing files</a>, for an
 example.
-
-</p><p>The `<samp>-k</samp>' option specifies the default way that
+</p>
+<p>The `<samp>-k</samp>' option specifies the default way that
 this file will be checked out; for more information see
 <a href="cvs_12.html#SEC102">Substitution modes</a>.
-
-</p><p>The `<samp>-m</samp>' option specifies a description for the
+</p>
+<p>The `<samp>-m</samp>' option specifies a description for the
 file.  This description appears in the history log (if
 it is enabled, see section <a href="cvs_18.html#SEC178">The history file</a>).  It will also be
 saved in the version history inside the repository when
@@ -167,16 +167,16 @@ be used.  You will not be prompted for a description.
 
 <p>For example, the following commands add the file
 `<tt>backend.c</tt>' to the repository:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs add backend.c
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs add backend.c
 $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </pre></td></tr></table>
 <p>When you add a file it is added only on the branch
 which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
 later merge the additions to another branch if you want
 (see section <a href="cvs_5.html#SEC63">Merging can add or remove files</a>).
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Removing-files"></a>
 <a name="SEC68"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -200,11 +200,11 @@ later merge the additions to another branch if you want
 <p>Directories change.  New files are added, and old files
 disappear.  Still, you want to be able to retrieve an
 exact copy of old releases.
-
-</p><p>Here is what you can do to remove a file,
+</p>
+<p>Here is what you can do to remove a file,
 but remain able to retrieve old revisions:
-
-</p><ul>
+</p>
+<ul>
 <li>
 Make sure that you have not made any uncommitted
 modifications to the file.  See section <a href="cvs_1.html#SEC8">Viewing differences</a>,
@@ -234,8 +234,8 @@ not on others, or to re-add another file with the same
 name later.  <small>CVS</small> will correctly create or not create
 the file, based on the `<samp>-r</samp>' and `<samp>-D</samp>' options
 specified to <code>checkout</code> or <code>update</code>.
-
-</p><a name="IDX131"></a>
+</p>
+<a name="IDX131"></a>
 <dl>
 <dt><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i>
 <a name="IDX132"></a>
@@ -249,8 +249,8 @@ options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd test
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd test
 $ rm *.c
 $ cvs remove
 cvs remove: Removing .
@@ -265,8 +265,8 @@ cvs commit: Committing .
 remove</code> it in one step, by specifying the `<samp>-f</samp>'
 option.  For example, the above example could also be
 done like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd test
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd test
 $ cvs remove -f *.c
 cvs remove: scheduling a.c for removal
 cvs remove: scheduling b.c for removal
@@ -278,8 +278,8 @@ cvs commit: Committing .
 <p>If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
-
 </p>
+
 <table><tr><td>&nbsp;</td><td><pre class="example">$ ls
 CVS   ja.h  oj.c
 $ rm oj.c
@@ -293,8 +293,8 @@ cvs add: oj.c, version 1.1.1.1, resurrected
 <p>If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ rm oj.c
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ rm oj.c
 $ cvs update oj.c
 cvs update: warning: oj.c was lost
 U oj.c
@@ -303,8 +303,8 @@ U oj.c
 which you are working on (see section <a href="cvs_5.html#SEC54">Branching and merging</a>).  You can
 later merge the removals to another branch if you want
 (see section <a href="cvs_5.html#SEC63">Merging can add or remove files</a>).
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Removing-directories"></a>
 <a name="SEC69"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -330,8 +330,8 @@ removing files--you want the directory to not exist in
 your current working directories, but you also want to
 be able to retrieve old releases in which the directory
 existed.
-
-</p><p>The way that you remove a directory is to remove all
+</p>
+<p>The way that you remove a directory is to remove all
 the files in it.  You don't remove the directory
 itself; there is no way to do that.
 Instead you specify the `<samp>-P</samp>' option to
@@ -344,14 +344,14 @@ best way to do this is to always specify `<samp>-P</samp>'; if
 you want an empty directory then put a dummy file (for
 example `<tt>.keepme</tt>') in it to prevent `<samp>-P</samp>' from
 removing it.
-
-</p><p>Note that `<samp>-P</samp>' is implied by the `<samp>-r</samp>' or `<samp>-D</samp>'
+</p>
+<p>Note that `<samp>-P</samp>' is implied by the `<samp>-r</samp>' or `<samp>-D</samp>'
 options of <code>checkout</code>.  This way
 <small>CVS</small> will be able to correctly create the directory
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Moving-files"></a>
 <a name="SEC70"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -376,11 +376,11 @@ are checking out contains any files in that directory.
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
 directory is even harder.  See section <a href="#SEC74">Moving and renaming directories</a>.).
-
-</p><p>The examples below assume that the file <var>old</var> is renamed to
+</p>
+<p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC71">7.4.1 The Normal way to Rename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     The normal way to Rename
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC72">7.4.2 Moving the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      A tricky, alternative way
@@ -415,8 +415,8 @@ directory is even harder.  See section <a href="#SEC74">Moving and renaming dire
 <var>new</var>, and then issue the normal <small>CVS</small> commands
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ mv <var>old</var> <var>new</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ mv <var>old</var> <var>new</var>
 $ cvs remove <var>old</var>
 $ cvs add <var>new</var>
 $ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
@@ -428,13 +428,13 @@ must specify the old or the new name, depending on what
 portion of the history you are accessing.  For example,
 <code>cvs log <var>old</var></code> will give the log up until the
 time of the rename.
-
-</p><p>When <var>new</var> is committed its revision numbers will
+</p>
+<p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
 use the `<samp>-r rev</samp>' option to commit.  For more
 information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Inside"></a>
 <a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -458,14 +458,14 @@ information see <a href="cvs_4.html#SEC47">Assigning revisions</a>.
 <p>This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>dir</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>dir</var>
 $ mv <var>old</var>,v <var>new</var>,v
 </pre></td></tr></table>
 
 <p>Advantages:
-
-</p><ul>
+</p>
+<ul>
 <li>
 The log of changes is maintained intact.
 
@@ -475,8 +475,8 @@ The revision numbers are not affected.
 
 
 <p>Disadvantages:
-
-</p><ul>
+</p>
+<ul>
 <li>
 Old releases cannot easily be fetched from the
 repository.  (The file will show up as <var>new</var> even
@@ -514,8 +514,8 @@ commands while you move it.
 
 <p>This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example"># Copy the RCS file inside the repository
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"># Copy the RCS file inside the repository
 $ cd $CVSROOT/<var>dir</var>
 $ cp <var>old</var>,v <var>new</var>,v
 # Remove the old file
@@ -532,11 +532,11 @@ $ cvs tag -d <var>tag2</var> <var>new</var>
 </pre></td></tr></table>
 <p>By removing the tags you will be able to check out old
 revisions.
-
 </p>
-<p>Advantages:
 
-</p><ul>
+<p>Advantages:
+</p>
+<ul>
 <li>
 Checking out old revisions works correctly, as long as
 you use `<samp>-r<var>tag</var></samp>' and not `<samp>-D<var>date</var></samp>'
@@ -551,8 +551,8 @@ The revision numbers are not affected.
 
 
 <p>Disadvantages:
-
-</p><ul>
+</p>
+<ul>
 <li>
 You cannot easily see the history of the file across the rename.
 
@@ -583,12 +583,12 @@ You cannot easily see the history of the file across the rename.
 rename or move each file within it as described in
 <a href="#SEC71">The Normal way to Rename</a>.  Then check out with the `<samp>-P</samp>'
 option, as described in <a href="#SEC69">Removing directories</a>.
-
-</p><p>If you really want to hack the repository to rename or
+</p>
+<p>If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
 like this:
-
-</p><ol>
+</p>
+<ol>
 <li>
 Inform everyone who has a checked out copy of the directory that the
 directory will be renamed.  They should commit all
@@ -598,10 +598,10 @@ before you take the steps below.
 </li><li>
 Rename the directory inside the repository.
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd $CVSROOT/<var>parent-dir</var>
 $ mv <var>old-dir</var> <var>new-dir</var>
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Fix the <small>CVS</small> administrative files, if necessary (for
 instance if you renamed an entire module).
 
@@ -614,14 +614,14 @@ working.
 <p>If someone had a working copy the <small>CVS</small> commands will
 cease to work for him, until he removes the directory
 that disappeared inside the repository.
-
-</p><p>It is almost always better to move the files in the
+</p>
+<p>It is almost always better to move the files in the
 directory instead of moving the directory.  If you move the
 directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC66" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="cvs_8.html#SEC75" title="Next chapter"> &gt;&gt; </a>]</td>

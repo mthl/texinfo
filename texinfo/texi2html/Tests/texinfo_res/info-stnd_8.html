@@ -31,10 +31,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>GNU Info: 8. Manipulating Multiple Windows</title>
+<title>GNU Info 4.2: 8. Manipulating Multiple Windows</title>
 
-<meta name="description" content="GNU Info: 8. Manipulating Multiple Windows">
-<meta name="keywords" content="GNU Info: 8. Manipulating Multiple Windows">
+<meta name="description" content="GNU Info 4.2: 8. Manipulating Multiple Windows">
+<meta name="keywords" content="GNU Info 4.2: 8. Manipulating Multiple Windows">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,15 +83,15 @@ ul.toc {list-style: none}
 <p>A <em>window</em> is a place to show the text of a node.  Windows have a
 view area where the text of the node is displayed, and an associated
 <em>mode line</em>, which briefly describes the node being viewed.
-
-</p><p>GNU Info supports multiple windows appearing in a single screen; each
+</p>
+<p>GNU Info supports multiple windows appearing in a single screen; each
 window is separated from the next by its modeline.  At any time, there
 is only one <em>active</em> window, that is, the window in which the cursor
 appears.  There are commands available for creating windows, changing
 the size of windows, selecting which window is active, and for deleting
 windows.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC11">8.1 The Mode Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               What appears in the mode line?
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC12">8.2 Window Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Manipulating windows in Info.
@@ -129,11 +129,11 @@ and the percentage of text that is above the top of the window.  It can
 also tell you if the indirect tags table for this Info file needs to be
 updated, and whether or not the Info file was compressed when stored on
 disk.
-
-</p><p>Here is a sample mode line for a window containing an uncompressed file
+</p>
+<p>Here is a sample mode line for a window containing an uncompressed file
 named `<tt>dir</tt>', showing the node `<samp>Top</samp>'.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">-----Info: (dir)Top, 40 lines --Top-------------------------------------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">-----Info: (dir)Top, 40 lines --Top-------------------------------------
             ^^   ^   ^^^        ^^
           (file)Node #lines    where
 </pre></td></tr></table>
@@ -141,22 +141,22 @@ named `<tt>dir</tt>', showing the node `<samp>Top</samp>'.
 indicated in the mode line with two small `<samp>z</samp>''s.  In addition, if
 the Info file containing the node has been split into subfiles, the name
 of the subfile containing the node appears in the modeline as well:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">--zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">--zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
 </pre></td></tr></table>
 <p>Truncation of long lines (as opposed to wrapping them to the next
 display line, see section <a href="info-stnd_4.html#SEC4">toggle-wrap</a>) is indicated by a
 `<samp>$</samp>' at the left edge of the mode line:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
 </pre></td></tr></table>
 <p>When Info makes a node internally, such that there is no corresponding
 info file on disk, the name of the node is surrounded by asterisks
 (`<samp>*</samp>').  The name itself tells you what the contents of the window
 are; the sample mode line below shows an internally constructed node
 showing possible completions:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">-----Info: *Completions*, 7 lines --All---------------------------------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">-----Info: *Completions*, 7 lines --All---------------------------------
 </pre></td></tr></table>
 <hr size="6">
 <a name="Basic-Windows"></a>
@@ -183,8 +183,8 @@ showing possible completions:
 this, Info can display more than one <em>window</em>.  Each window has its
 own mode line (see section <a href="#SEC11">The Mode Line</a>) and history of nodes viewed in that
 window (see section <a href="info-stnd_5.html#SEC5"><code>history-node</code></a>).
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> <kbd>C-x <kbd>o</kbd></kbd> (<code>next-window</code>)</dt>
 <dd><a name="IDX217"></a>
 <a name="IDX218"></a>
@@ -196,14 +196,14 @@ the screen, or if you are already within the last window, into the first
 window on the screen.  Given a numeric argument, `<samp>C-x o</samp>' moves over
 that many windows.  A negative argument causes `<samp>C-x o</samp>' to select
 the previous window on the screen.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-x prev-window</kbd></dt>
 <dd><a name="IDX220"></a>
 <p>Select the previous window on the screen.  This is identical to
 `<samp>C-x o</samp>' with a negative argument.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>2</kbd></kbd> (<code>split-window</code>)</dt>
 <dd><a name="IDX221"></a>
 <a name="IDX222"></a>
@@ -214,8 +214,8 @@ remains in the original window.  The variable <code>automatic-tiling</code>
 can cause all of the windows on the screen to be resized for you
 automatically, please see section <a href="info-stnd_11.html#SEC16">automatic-tiling</a> for more
 information.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>0</kbd></kbd> (<code>delete-window</code>)</dt>
 <dd><a name="IDX224"></a>
 <a name="IDX225"></a>
@@ -223,30 +223,30 @@ information.
 <p>Delete the current window from the screen.  If you have made too many
 windows and your screen appears cluttered, this is the way to get rid of
 some of them.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>1</kbd></kbd> (<code>keep-one-window</code>)</dt>
 <dd><a name="IDX227"></a>
 <a name="IDX228"></a>
 <p>Delete all of the windows excepting the current one.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>ESC <kbd>C-v</kbd></kbd> (<code>scroll-other-window</code>)</dt>
 <dd><a name="IDX229"></a>
 <a name="IDX230"></a>
 <p>Scroll the other window, in the same fashion that `<samp>C-v</samp>' might
 scroll the current window.  Given a negative argument, scroll the
 &quot;other&quot; window backward.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>^</kbd></kbd> (<code>grow-window</code>)</dt>
 <dd><a name="IDX231"></a>
 <a name="IDX232"></a>
 <p>Grow (or shrink) the current window.  Given a numeric argument, grow
 the current window that many lines; with a negative numeric argument,
 shrink the window instead.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>t</kbd></kbd> (<code>tile-windows</code>)</dt>
 <dd><a name="IDX233"></a>
 <a name="IDX234"></a>
@@ -288,8 +288,8 @@ counterparts, so please refer to that documentation for greater depth of
 discussion on the concepts of editing a line of text.  The following
 table briefly lists the commands that are available while input is being
 read in the echo area:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> <kbd>C-f</kbd> (<code>echo-area-forward</code>)</dt>
 <dt> <kbd>RIGHT</kbd> (an arrow key)</dt>
 <dt> <kbd>M-h</kbd>, vi-like operation</dt>
@@ -298,8 +298,8 @@ read in the echo area:
 <a name="IDX238"></a>
 <a name="IDX239"></a>
 <p>Move forward a character.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-b</kbd> (<code>echo-area-backward</code>)</dt>
 <dt> <kbd>LEFT</kbd> (an arrow key)</dt>
 <dt> <kbd>M-l</kbd>, vi-like operation</dt>
@@ -308,24 +308,24 @@ read in the echo area:
 <a name="IDX242"></a>
 <a name="IDX243"></a>
 <p>Move backward a character.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-a</kbd> (<code>echo-area-beg-of-line</code>)</dt>
 <dt> <kbd>M-0</kbd>, vi-like operation</dt>
 <dd><a name="IDX244"></a>
 <a name="IDX245"></a>
 <a name="IDX246"></a>
 <p>Move to the start of the input line.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-e</kbd> (<code>echo-area-end-of-line</code>)</dt>
 <dt> <kbd>M-$</kbd>, vi-like operation</dt>
 <dd><a name="IDX247"></a>
 <a name="IDX248"></a>
 <a name="IDX249"></a>
 <p>Move to the end of the input line.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-f</kbd> (<code>echo-area-forward-word</code>)</dt>
 <dt> <kbd>C-<kbd>RIGHT</kbd></kbd> (DOS/Windows only)</dt>
 <dt> <kbd>M-w</kbd>, vi-like operation</dt>
@@ -333,39 +333,39 @@ read in the echo area:
 <a name="IDX251"></a>
 <a name="IDX252"></a>
 <p>Move forward a word.
-
-</p><a name="IDX253"></a>
+</p>
+<a name="IDX253"></a>
 <p>On DOS/Windows, <kbd>C-<kbd>RIGHT</kbd></kbd> moves forward by words.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-b</kbd> (<code>echo-area-backward-word</code>)</dt>
 <dt> <kbd>C-<kbd>LEFT</kbd></kbd> (DOS/Windows only)</dt>
 <dd><a name="IDX254"></a>
 <a name="IDX255"></a>
 <p>Move backward a word.
-
-</p><a name="IDX256"></a>
+</p>
+<a name="IDX256"></a>
 <p>On DOS/Windows, <kbd>C-<kbd>LEFT</kbd></kbd> moves backward by words.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-d</kbd> (<code>echo-area-delete</code>)</dt>
 <dt> <kbd>M-x</kbd>, vi-like operation</dt>
 <dd><a name="IDX257"></a>
 <a name="IDX258"></a>
 <a name="IDX259"></a>
 <p>Delete the character under the cursor.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>DEL</kbd> (<code>echo-area-rubout</code>)</dt>
 <dd><a name="IDX260"></a>
 <a name="IDX261"></a>
 <p>Delete the character behind the cursor.
-
-</p><p>On some keyboards, this key is designated <kbd>BS</kbd>, for
+</p>
+<p>On some keyboards, this key is designated <kbd>BS</kbd>, for
 `<samp>BackSpace</samp>'.  Those keyboards will usually bind <kbd>DEL</kbd> in the
 echo area to <code>echo-area-delete</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-g</kbd> (<code>echo-area-abort</code>)</dt>
 <dt> <kbd>C-u</kbd>, vi-like operation</dt>
 <dd><a name="IDX262"></a>
@@ -374,14 +374,14 @@ echo area to <code>echo-area-delete</code>.
 <p>Cancel or quit the current operation.  If completion is being read, this
 command discards the text of the input line which does not match any
 completion.  If the input line is empty, it aborts the calling function.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>RET</kbd> (<code>echo-area-newline</code>)</dt>
 <dd><a name="IDX265"></a>
 <a name="IDX266"></a>
 <p>Accept (or forces completion of) the current input line.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-q</kbd> (<code>echo-area-quoted-insert</code>)</dt>
 <dt> <kbd>C-v</kbd>, vi-like operation</dt>
 <dd><a name="IDX267"></a>
@@ -390,29 +390,29 @@ completion.  If the input line is empty, it aborts the calling function.
 <p>Insert the next character verbatim.  This is how you can insert control
 characters into a search string, for example, or the `<samp>?</samp>' character
 when Info prompts with completion.
-
-</p></dd>
+</p>
+</dd>
 <dt> <var>printing character</var> (<code>echo-area-insert</code>)</dt>
 <dd><a name="IDX270"></a>
 <a name="IDX271"></a>
 <p>Insert the character.  Characters that have their 8th bit set, and not
 bound to `<samp>M-</samp>' commands, are also inserted verbatim; this is useful
 for terminals which support Latin scripts.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-TAB</kbd> (<code>echo-area-tab-insert</code>)</dt>
 <dt> <kbd>Shift-<kbd>TAB</kbd></kbd> (on DOS/Windows only)</dt>
 <dd><a name="IDX272"></a>
 <a name="IDX273"></a>
 <a name="IDX274"></a>
 <p>Insert a TAB character.
-
-</p><a name="IDX275"></a>
+</p>
+<a name="IDX275"></a>
 <a name="IDX276"></a>
 <p>On DOS/Windows only, the <kbd>Shift-<kbd>TAB</kbd></kbd> key is an alias for
 <kbd>M-<kbd>TAB</kbd></kbd>.  This key is sometimes called `<samp>BackTab</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-t</kbd> (<code>echo-area-transpose-chars</code>)</dt>
 <dd><a name="IDX277"></a>
 <a name="IDX278"></a>
@@ -423,46 +423,46 @@ for terminals which support Latin scripts.
 <p>The next group of commands deal with <em>killing</em>, and <em>yanking</em>
 text<a name="DOCF6" href="info-stnd_fot.html#FOOT6">(6)</a>.   For an in depth discussion of killing and
 yanking, see <a href="../emacs/Killing.html#Killing">(emacs)Killing</a> section `Killing and Deleting' in <cite>the GNU Emacs Manual</cite>
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt> <kbd>M-d</kbd> (<code>echo-area-kill-word</code>)</dt>
 <dt> <kbd>M-X</kbd>, vi-like operation</dt>
 <dd><a name="IDX279"></a>
 <a name="IDX280"></a>
 <a name="IDX281"></a>
 <p>Kill the word following the cursor.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-DEL</kbd> (<code>echo-area-backward-kill-word</code>)</dt>
 <dt> <kbd>M-<kbd>BS</kbd></kbd></dt>
 <dd><a name="IDX282"></a>
 <a name="IDX283"></a>
 <p>Kill the word preceding the cursor.
-
-</p><a name="IDX284"></a>
+</p>
+<a name="IDX284"></a>
 <p>On some keyboards, the <code>Backspace</code> key is used instead of
 <code>DEL</code>, so <code>M-<kbd>Backspace</kbd></code> has the same effect as
 <code>M-<kbd>DEL</kbd></code>.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-k</kbd> (<code>echo-area-kill-line</code>)</dt>
 <dd><a name="IDX285"></a>
 <a name="IDX286"></a>
 <p>Kill the text from the cursor to the end of the line.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-x <kbd>DEL</kbd></kbd> (<code>echo-area-backward-kill-line</code>)</dt>
 <dd><a name="IDX287"></a>
 <a name="IDX288"></a>
 <p>Kill the text from the cursor to the beginning of the line.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>C-y</kbd> (<code>echo-area-yank</code>)</dt>
 <dd><a name="IDX289"></a>
 <a name="IDX290"></a>
 <p>Yank back the contents of the last kill.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>M-y</kbd> (<code>echo-area-yank-pop</code>)</dt>
 <dd><a name="IDX291"></a>
 <a name="IDX292"></a>
@@ -479,25 +479,25 @@ Info allows you to abbreviate what you type, only typing as much of the
 response as is necessary to uniquely identify it.  In addition, you can
 request Info to fill in as much of the response as is possible; this
 is called <em>completion</em>.
-
-</p><p>The following commands are available when completing in the echo area:
-
-</p><dl compact="compact">
+</p>
+<p>The following commands are available when completing in the echo area:
+</p>
+<dl compact="compact">
 <dt> <kbd>TAB</kbd> (<code>echo-area-complete</code>)</dt>
 <dt> <kbd>SPC</kbd></dt>
 <dd><a name="IDX294"></a>
 <a name="IDX295"></a>
 <a name="IDX296"></a>
 <p>Insert as much of a completion as is possible.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>?</kbd> (<code>echo-area-possible-completions</code>)</dt>
 <dd><a name="IDX297"></a>
 <a name="IDX298"></a>
 <p>Display a window containing a list of the possible completions of what
 you have typed so far.  For example, if the available choices are:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">bar
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">bar
 foliate
 food
 forget
@@ -506,8 +506,8 @@ forget
 <p>and you have typed an `<samp>f</samp>', followed by `<samp>?</samp>', Info will pop up a
 window showing a node called `<samp>*Completions*</samp>' which lists the
 possible completions like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">3 completions:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">3 completions:
 foliate         food
 forget
 </pre></td></tr></table>
@@ -518,8 +518,8 @@ all of the choices which begin with `<samp>f</samp>' continue with `<samp>o</sam
 Now, typing `<samp>l</samp>' followed by `<samp>TAB</samp>' results in `<samp>foliate</samp>'
 appearing in the echo area, since that is the only choice which begins
 with `<samp>fol</samp>'.
-
-</p></dd>
+</p>
+</dd>
 <dt> <kbd>ESC C-v</kbd> (<code>echo-area-scroll-completions-window</code>)</dt>
 <dd><a name="IDX299"></a>
 <a name="IDX300"></a>

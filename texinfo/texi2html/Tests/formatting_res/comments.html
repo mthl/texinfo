@@ -52,8 +52,9 @@ ul.toc {list-style: none}
 <h3 class="subheading"> Comment like: </h3>
 
 <p>Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
-
-</p><p>Example with comments 2 lines
+</p>
+<p>Comment at the end of the line </p>
+<p>Example with comments 2 lines
 </p><table><tr><td>&nbsp;</td><td><pre class="example">line second line </pre></td></tr></table>
 <p>Example with comments 1 line
 </p><table><tr><td>&nbsp;</td><td><pre class="example">line </pre></td></tr></table>
@@ -62,18 +63,18 @@ ul.toc {list-style: none}
 </pre></td></tr></table>
 <p>The same but with oddfooting instead of comment:
 Text line followed by a comment on the same line and another below Text line after the comment followed by a comment Text line after the text line followed by the comment.
-
-</p><p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
-@afourpaper @afourlatex @afourwide 
-@definfoenclose phoo,//,\\  
-//bar\\
-
-</p><p>Makeinfo ignore @kbdinputstyle:
-
 </p>
-<p><code>truc</code>
+<p>@afourpaper @smallbook @headings @oddfooting @everyheading @everyfooting @evenheading @evenfooting @oddheading @need @setchapternewpage @raisesections @lowersections @kbdinputstyle code something
+@afourpaper @afourlatex @afourwide </p>
+<p>@definfoenclose phoo,//,\\  
+//bar\\
+</p>
+<p>Makeinfo ignore @kbdinputstyle:
+</p>
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><code>example</code>
+<p><code>truc</code>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"><code>example</code>
 </pre></td></tr></table>
 <a name="SEC2"></a>
 <h3 class="subheading"> ignore arg </h3>
@@ -81,46 +82,46 @@ Text line followed by a comment on the same line and another below Text line aft
 
 <p>Commands doesn't accept anything after a non numerical arg on the line
 and ignore things after a numerical arg
+</p>
+<p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @footnotestyle @footnotestyle </p>
 
-</p><p>@paragraphindent asis @paragraphindent 0 @paragraphindent none @paragraphindent 4 @firstparagraphindent none @exampleindent 6 @footnotestyle @footnotestyle 
-
-</p><a name="SEC3"></a>
+<a name="SEC3"></a>
 <h3 class="subheading"> command removed </h3>
 
 <p>And now finalout:
 Text line followed by finalout on the same line and another below 
 
-</p><p>Text line after the finalout followed by a fianlout 
+Text line after the finalout followed by a fianlout 
 Text line after the text line followed by the finalout.
-
-</p><p>Test text after finalout
+</p>
+<p>Test text after finalout
  a word after finalout
 Line after finalout
+</p>
+<p>@page  @noindent @refill  something
+</p>
+<p>noindent at beginning of line
 
-</p><p>@page  @noindent @refill  something
-
-</p><p>noindent at beginning of line
-
-</p><p>noindent on the preceding line
+noindent on the preceding line
   noindent after space at beginning of line
          page at beginning of line
 
-</p><p>After page on it's own line.
-
-</p><p>@page    @noindent @refill  @novalidate  something
-
-</p><p>@contents  something
-
+After page on it's own line.
 </p>
+<p>@page    @noindent @refill  @novalidate  something
+</p>
+<p>@contents  something
+</p>
+
 <a name="SEC4"></a>
 <h3 class="subheading"> special </h3>
 
 <p>Only valid between iftex:
 Unknown ???
-
-</p><p>@exdent line after exdent
-
-</p><p>And now sp:
+</p>
+<p>@exdent line after exdent
+</p>
+<p>And now sp:
 Text line followed by a comment on the same line and another below <br>
 <br>
 <br>
@@ -129,8 +130,8 @@ Text line after the text line followed by the comment.
 <br>
 <br>
 a number after sp
-
-</p><p>Menu:
+</p>
+<p>Menu:
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC5">1. chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -191,10 +192,9 @@ a number after sp
 <p>first @contents  line following first content
 second @contents  line following second content
 Third content on the following line on his own
-
-</p><p>Line following contents
-
-</p><hr size="6">
+Line following contents
+</p>
+<hr size="6">
 <a name="bidule"></a>
 <a name="SEC7"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -218,8 +218,8 @@ Third content on the following line on his own
 <p>@shortcontents  eol
 @shortcontents  eol
 @summarycontents  line following summarycontents
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="bidule2"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -241,8 +241,8 @@ Third content on the following line on his own
 <h1 class="chapter"> 3. last </h1>
 
 <p><a href="comments.html#machin">machin</a>
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>

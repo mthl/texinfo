@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo to HTML Converter: Texi2html</title>
+<title>Texinfo to HTML: Texi2html</title>
 
-<meta name="description" content="Texinfo to HTML Converter: Texi2html">
-<meta name="keywords" content="Texinfo to HTML Converter: Texi2html">
+<meta name="description" content="Texinfo to HTML: Texi2html">
+<meta name="keywords" content="Texinfo to HTML: Texi2html">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -55,14 +55,14 @@ ul.toc {list-style: none}
 script which converters
 <a href="http://www.texinfo.org">Texinfo</a>
 into <acronym>HTML</acronym>.
-
 </p>
+
 <p>Please send bug reports about this manual to Karl Heinz
 Marbaise <a href="mailto:khmarbaise@gmx.de">khmarbaise@gmx.de</a>. Please state exact
 version/edition of the manual (can be found at start of
 Texinfo source file; use the entry Id under Revisions).
-
-</p><p>Please note:
+</p>
+<p>Please note:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">This manual is currently under
 construction and of course incomplete ;-)
 </pre></td></tr></table>
@@ -90,21 +90,21 @@ construction and of course incomplete ;-)
 documentation format of the <a href="http://www.gnu.org">GNU</a>
 project. It uses a single source file to produce both
 online information and printed output.
-
-</p><p>It is often proposed to have a way to produce
+</p>
+<p>It is often proposed to have a way to produce
 <acronym>HTML</acronym> from Texinfo sources, like the GNU-Info
 format. It is much simpler to create one converter instead
 of writing all documentation new in <acronym>HTML</acronym>, cause
 there is so much documentation in Texinfo all over
 the world.
-
-</p><p>A few time ago <code>makeinfo</code> wasn't able to produce
+</p>
+<p>A few time ago <code>makeinfo</code> wasn't able to produce
 <acronym>HTML</acronym> output format, but there are needth to have
 <acronym>HTML</acronym>. This was the borning hour for
 <code>texi2html</code>. The basic purpose of `<tt>texi2html</tt>'
 is to convert Texinfo documents into HTML.
-
 </p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC2">1.1 Ways to get HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Ways to get HTML files.
 </td></tr>
@@ -136,8 +136,8 @@ files? There exist two ways which you can go.
 This first is to use <code>makeinfo</code> itself to produce
 <acronym>HTML</acronym> output. The second is to use
 <code>texi2html</code>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="whytexi2html"></a>
 <a name="SEC3"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -160,17 +160,17 @@ This first is to use <code>makeinfo</code> itself to produce
 <p>The basic idea of <code>makeinfo</code>'s <acronym>HTML</acronym>
 output was to get an readable <acronym>HTML</acronym> output.
 Nothing sophisticated nor good styling just readable.
-
-</p><p>The current development of texi2html is going into
+</p>
+<p>The current development of texi2html is going into
 different direction.
-
-</p><p>The main purpose is to get better styling, better design
+</p>
+<p>The main purpose is to get better styling, better design
 etc. of the created <acronym>HTML</acronym> pages. This way is
 supported using differnt command line options and of course
 possible changings of the initialization file to fit your
 own needs.
-
-</p><p>The main disadvantage of <acronym>makeinfo</acronym>'s
+</p>
+<p>The main disadvantage of <acronym>makeinfo</acronym>'s
 <acronym>HTML</acronym> output is your getting only one big file.
 This is of course readable but not very usable. The problem
 of this is, while you like to have splitted chapters or
@@ -178,8 +178,8 @@ nodes the Texinfo source has to be read at minimum twice
 times. This makes it impossible to implement this in
 <code>makeinfo</code>. This would result in complete new
 implementation of <code>makeinfo</code>'s source.
-
-</p><p>In contrast to the HTML produced by <code>makeinfo
+</p>
+<p>In contrast to the HTML produced by <code>makeinfo
 --html</code> (the <code>makeinfo</code> program is part of the
 Texinfo distribution), the HTML output of `<tt>texi2html</tt>'
 is highly configurable. Among other differences, with
@@ -187,12 +187,12 @@ is highly configurable. Among other differences, with
 page layout (like headers, footers, style sheets, etc),
 split documents at various levels, and use
 <code>latex2html</code> to convert <code>@tex</code> sections.
-
-</p><p><code>texi2html</code> should reasonably convert all Texinfo
+</p>
+<p><code>texi2html</code> should reasonably convert all Texinfo
 4.0 constructs. If not, please send a bug report to
 <a href="mailto:texi2html@mathematik.uni-kl.de">texi2html@mathematik.uni-kl.de</a>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Installation"></a>
 <a name="SEC4"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -215,8 +215,8 @@ split documents at various levels, and use
 <p>description of the installation process.
 What do you need?
 How?
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Customizing"></a>
 <a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -237,12 +237,12 @@ How?
 </tr></table>
 <h1 class="chapter"> 3. Customizing files </h1>
 <p>Result based on using `<samp>-frames</samp>'
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
 </pre></td></tr></table><p>Explanation of the output differences against default,
 whatever this is ;-)
-
 </p>
+
 <hr size="6">
 <a name="CustomizingExpand"></a>
 <a name="SEC6"></a>
@@ -264,12 +264,12 @@ whatever this is ;-)
 </tr></table>
 <h1 class="chapter"> 4. Customizing what gets expanded </h1>
 <p>Test starting.
-
-</p><p>`<samp>-expand info</samp>'
+</p>
+<p>`<samp>-expand info</samp>'
 `<samp>-expand tex</samp>'
 Take a look at optionexpand.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="CustomizingPage"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
@@ -293,14 +293,14 @@ Take a look at optionexpand.
 <p>This chapter is designed to help you to change the
 complete layout of the <acronym>HTML</acronym> output if you like to
 do so.
-
 </p>
+
 <p>a) General: Philosophy, and how it works<br>
 aa) Navigation panels<br>
 b) Top page<br>
 c) Section pages<br>
-
 </p>
+
 
 
 <table class="menu" border="0" cellspacing="0">
@@ -340,8 +340,8 @@ c) Section pages<br>
 
 <p>Here you can find information how you should work to pick
 up a new design with <code>texi2html</code>.
-
 </p>
+
 <hr size="6">
 <a name="CustPagePhil"></a>
 <a name="SEC9"></a>
@@ -388,8 +388,8 @@ up a new design with <code>texi2html</code>.
 <h3 class="subsection"> 5.2.1 Navigation panels </h3>
 
 <p>Head and foot Navigation panels.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="CustPageTopPage"></a>
 <a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -453,11 +453,11 @@ up a new design with <code>texi2html</code>.
 <em>ToC</em> (<i>Table Of content</i>), About--Page
 etc. and specialy how to change them to get your own
 design.
-
-</p><p><acronym>ToC</acronym> <code>T2H_DEFAULT_print_toc_frame</code> in
+</p>
+<p><acronym>ToC</acronym> <code>T2H_DEFAULT_print_toc_frame</code> in
 `<tt>texi2html.init</tt>'
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC14">5.5.1 Table Of Contents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> .
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC15">5.5.2 Page header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    .
@@ -489,8 +489,8 @@ design.
 
 <p>The following code is the original code out of the
 initialization file (see section <a href="#SEC23">Initialization file</a>).
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_toc_frame
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_toc_frame
 {
   my $fh = shift;
   &amp;$T2H_print_page_head($fh);
@@ -504,8 +504,8 @@ EOT
 <p>As you can see it is very simple Perl Code, which can
 be changed more or less simple to fit you requirements
 (see section <a href="#SEC15">T2H_DEFAULT_print_page_head</a>).
-
 </p>
+
 <hr size="6">
 <a name="CustPagePageHead"></a>
 <a name="SEC15"></a>
@@ -527,8 +527,8 @@ be changed more or less simple to fit you requirements
 </tr></table>
 <h3 class="subsection"> 5.5.2 Page header </h3>
 <p>Page Head <code>T2H_DEFAULT_print_page_head</code>
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_page_head
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_page_head
 {
   my $fh = shift; 
   my $longtitle = &quot;$T2H_THISDOC{title}: $T2H_NAME{This}&quot;;
@@ -601,19 +601,19 @@ EOT
 <p>If you like to read the following section, it is assumed
 you are famillar with <acronym>HTML</acronym>. If not, you shouldn't
 read this, cause you don't know what we are talking about.
-
-</p><p>Here you can find information how to change the
+</p>
+<p>Here you can find information how to change the
 <acronym>HTML</acronym> parts of a document. These are the
 header, body etc.
-
-</p><p>These are the defaults which are
-part of the distribution as `<tt>texi2html.init</tt>'.
-
 </p>
+<p>These are the defaults which are
+part of the distribution as `<tt>texi2html.init</tt>'.
+</p>
+
 <p>How to do changes of the customization...
 needed steps.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC18">6.1 Body</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Customizing BODY Text.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC22">6.2 Head</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Customizing Head.
@@ -682,8 +682,8 @@ needed steps.
 </pre></td></tr></table>
 <p>If you like to change the basic color combination, you can
 change the entry <var>T2H_BODYTEXT</var>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="CustHTMLPreBodyText"></a>
 <a name="SEC20"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -742,15 +742,15 @@ $T2H_EXTRA_HEAD = '';
 </pre></td></tr></table>
 <p>The default output into the <acronym>HTML</acronym> file.
 See section <a href="#SEC41">DocType</a>.
-
 </p>
+
 <p>The following code is produced by
 <code>T2H_DEFAULT_print_page_head</code>.
-
-</p><p>Detailed information can be found at
+</p>
+<p>Detailed information can be found at
 <a href="#SEC15">Page header</a>.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">
 &lt;HTML&gt;
 $T2H_DOCTYPE
 &lt;!-- Created on $T2H_TODAY by $THISPROG --&gt;
@@ -813,8 +813,8 @@ $T2H_AFTER_BODY_OPEN
 <a name="SEC23"></a>
 <h1 class="chapter"> 7. Initialization file </h1>
 <p>`<tt>texi2html.init</tt>'
-
 </p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC24">7.1 The basics about init files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     The basics about
                          initialization files.
@@ -852,24 +852,24 @@ changeable with the `<samp>--sysconfdir=dir</samp>' option to the
 `<tt>$HOME/.texi2htmlrc</tt>', then any command-line options
 including `<samp>-init_file</samp>' option; with later settings
 overriding earlier ones.
-
-</p><p>The default initialization options are defined in the
+</p>
+<p>The default initialization options are defined in the
 `<tt>texi2html.init</tt>' file contained in the <b>Texi2html</b>
 distribution (which gets included near the beginning of the
 <code>texi2html</code> script that gets installed).
-
-</p><p>To customize `<tt>texi2html</tt>' it is best if you copy the
+</p>
+<p>To customize `<tt>texi2html</tt>' it is best if you copy the
 appropriate sections from the `<tt>texi2html.init</tt>'
 contents into an appropriate local initialization file,
 make the necessary changes there, and then have
 <code>texi2html</code> read this initialization file by one of
 the means described above.
-
-</p><p>For an example on what you can produces with
+</p>
+<p>For an example on what you can produces with
 <code>texi2html</code> have a look at the following sites:
 <a href="http://www.singular.uni-kl.de/Manual/html/">http://www.singular.uni-kl.de/Manual/html/</a>
-
 </p>
+
 <hr size="6">
 <a name="InitFileGlobal"></a>
 <a name="SEC25"></a>
@@ -931,8 +931,8 @@ the means described above.
 </tr></table>
 <h2 class="section"> 7.4 Loadable initialization file </h2>
 <p>`<samp>-init_file</samp>'
-
 </p>
+
 <hr size="6">
 <a name="IFOs"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -961,8 +961,8 @@ This means the only way to change those
 options is first to copy the original `<tt>texi2html.init</tt>'
 to e.g. `<tt>texi2html.init.myown</tt>' and make changes to fit
 your needs.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC29">7.5.1 Number sections.</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Number sectioning.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC30">7.5.2 Avoid menu redundancy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1000,10 +1000,10 @@ your needs.
 <h3 class="subsection"> 7.5.1 Number sections. </h3>
 <p>if set, and <var>$T2H_NUMBER_SECTIONS</var> is set, then use node
 names in menu entries, instead of section names
-
-</p><p><var>$T2H_NODE_NAME_IN_MENU</var> = 0;
-
-</p><hr size="6">
+</p>
+<p><var>$T2H_NODE_NAME_IN_MENU</var> = 0;
+</p>
+<hr size="6">
 <a name="IFOmenu"></a>
 <a name="SEC30"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1027,8 +1027,8 @@ names in menu entries, instead of section names
 menu description.  Likewise, if node name equals entry name, do
 not print entry name.
 <var>$T2H_AVOID_MENU_REDUNDANCY</var> = 1;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOCenterImage"></a>
 <a name="SEC31"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1051,8 +1051,8 @@ not print entry name.
 <p>if set, center @image by default
 otherwise, do not center by default
 <var>$T2H_CENTER_IMAGE</var> = 1;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOExampleIndentCell"></a>
 <a name="SEC32"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1076,8 +1076,8 @@ otherwise, do not center by default
 <code>@example</code>, etc If not empty, must be enclosed in
 <code>&lt;td&gt;&lt;/td&gt;</code>
 <var>$T2H_EXAMPLE_INDENT_CELL</var> = '&lt;td&gt;&amp;nbsp;&lt;/td&gt;';
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOSampleIndentCell"></a>
 <a name="SEC33"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1099,8 +1099,8 @@ otherwise, do not center by default
 <h3 class="subsection"> 7.5.5 Small Example Indent </h3>
 <p>same as above, only for <code>@small</code>
 $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOSmallFontSize"></a>
 <a name="SEC34"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1122,8 +1122,8 @@ $T2H_SMALL_EXAMPLE_INDENT_CELL = &quot;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&quot;;
 <h3 class="subsection"> 7.5.6 Small Font Size </h3>
 <p># font size for @small
 $T2H_SMALL_FONT_SIZE = &quot;-1&quot;;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOTopHeading"></a>
 <a name="SEC35"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1148,8 +1148,8 @@ node, then use this as header for top node/section,
 otherwise use value of  <code>@settitle</code> or
 <code>@shorttitle</code> (in that order)
 $T2H_TOP_HEADING = &quot;&quot;;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOIndexChapter"></a>
 <a name="SEC36"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1172,8 +1172,8 @@ $T2H_TOP_HEADING = &quot;&quot;;
 <p>if set, use this chapter for <strong>Index</strong> button, else
 use first chapter whose name matches <strong>index</strong> (case insensitive)
 $T2H_INDEX_CHAPTER = &quot;&quot;;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="IFOSplitIndex"></a>
 <a name="SEC37"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1196,10 +1196,10 @@ $T2H_INDEX_CHAPTER = &quot;&quot;;
 <p>if set and <var>$T2H_SPLIT</var> is set, then split index pages
 at the next letter after they have more than that many
 entries
-
-</p><p>$T2H_SPLIT_INDEX = 100;
-
-</p><hr size="6">
+</p>
+<p>$T2H_SPLIT_INDEX = 100;
+</p>
+<hr size="6">
 <a name="IFOhrefDirInsteadFile"></a>
 <a name="SEC38"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1221,8 +1221,8 @@ entries
 <h3 class="subsection"> 7.5.10 HREF Dir Instead File. </h3>
 <p>if set (e.g., to `<tt>index.html</tt>') replace <strong>HREF</strong>'s
 to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
-
-</p><p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
+</p>
+<p>$T2H_HREF_DIR_INSTEAD_FILE = &quot;&quot;;
 </p><hr size="6">
 <a name="Options"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1307,11 +1307,11 @@ to this file  (i.e., to `<tt>index.html</tt>') by `<tt>./</tt>'
 <h2 class="section"> 8.1 Debugging </h2>
 
 <p>`<samp>-debug</samp>'
-
-</p><p>debugging: 0 -- no debugging; other values; see beginning
+</p>
+<p>debugging: 0 -- no debugging; other values; see beginning
 of texi2html
-
-</p><p><var>$DEBUG_TOC</var>   =  1;
+</p>
+<p><var>$DEBUG_TOC</var>   =  1;
 <var>$DEBUG_INDEX</var> =  2;
 <var>$DEBUG_BIB</var>   =  4;
 <var>$DEBUG_GLOSS</var> =  8;
@@ -1319,8 +1319,8 @@ of texi2html
 <var>$DEBUG_HTML</var>  = 32;
 <var>$DEBUG_USER</var>  = 64;
 <var>$DEBUG_L2H</var>   = 128;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionDocType"></a>
 <a name="SEC41"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1341,8 +1341,8 @@ of texi2html
 </tr></table>
 <h2 class="section"> 8.2 DocType </h2>
 <p>`<samp>-doctype</samp>'
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
 </pre></td></tr></table>
 <hr size="6">
 <a name="OptionCheck"></a>
@@ -1367,8 +1367,8 @@ of texi2html
 <p>`<samp>-check</samp>'
 if set, only check files and give the list of all things
 that look like untranslated Texinfo commands
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionExpand"></a>
 <a name="SEC43"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1393,8 +1393,8 @@ if set to <strong>tex</strong> (or, <strong>info</strong>) expand
 <code>@iftex</code> and <code>@tex</code> (or, <code>@ifinfo</code>)
 sections else, neither expand <code>@iftex</code>, <code>@tex</code>,
 nor <code>@ifinfo</code> sections
-
 </p>
+
 <hr size="6">
 <a name="OptionGlossary"></a>
 <a name="SEC44"></a>
@@ -1417,8 +1417,8 @@ nor <code>@ifinfo</code> sections
 <h2 class="section"> 8.5 Glossary </h2>
 <p>`<samp>-glossary</samp>'
 if set, uses section named <strong>Footnotes</strong> for glossary
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionInvisible"></a>
 <a name="SEC45"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1447,8 +1447,8 @@ this program). This is a workaround for a known bug of many
 works fine without it -- on the contrary: if there, it
 inserts space between headers and start of text (obachman
 3/99)
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$T2H_INVISIBLE_MARK = &quot;&quot;;
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$T2H_INVISIBLE_MARK = &quot;&quot;;
 # $T2H_INVISIBLE_MARK = '&amp;#160;';
 </pre></td></tr></table>
 <hr size="6">
@@ -1472,13 +1472,13 @@ inserts space between headers and start of text (obachman
 </tr></table>
 <h2 class="section"> 8.7 Iso </h2>
 <p>`<samp>-iso</samp>'
-
-</p><p>if set, ISO8859 characters are used for special symbols
+</p>
+<p>if set, ISO8859 characters are used for special symbols
 (like Copyright <code>&copy;</code>, etc)
-
-</p><p>$T2H_USE_ISO = 0;
-
-</p><hr size="6">
+</p>
+<p>$T2H_USE_ISO = 0;
+</p>
+<hr size="6">
 <a name="OptionInclude"></a>
 <a name="SEC47"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1499,14 +1499,14 @@ inserts space between headers and start of text (obachman
 </tr></table>
 <h2 class="section"> 8.8 Include Directory </h2>
 <p>`<samp>-I</samp>'
-
-</p><p>list directories where <code>@include</code> files are searched for
+</p>
+<p>list directories where <code>@include</code> files are searched for
 (besides the directory of the doc file) additional
 `<samp>-I</samp>' args are add to this list.
-
-</p><p>@T2H_INCLUDE_DIRS = (&quot;.&quot;);
-
-</p><hr size="6">
+</p>
+<p>@T2H_INCLUDE_DIRS = (&quot;.&quot;);
+</p>
+<hr size="6">
 <a name="OptionTopFile"></a>
 <a name="SEC48"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1531,10 +1531,10 @@ uses file of this name for top-level file
 extension is manipulated appropriately, if necessary.
 If empty, `<tt>&lt;basename of document&gt;.html</tt>' is used.
 Typically, you would set this to `<tt>index.html</tt>'.
-
-</p><p>$T2H_TOP_FILE = &quot;&quot;;
-
-</p><hr size="6">
+</p>
+<p>$T2H_TOP_FILE = &quot;&quot;;
+</p>
+<hr size="6">
 <a name="OptionTocFile"></a>
 <a name="SEC49"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1558,10 +1558,10 @@ Typically, you would set this to `<tt>index.html</tt>'.
 uses file of this name for table of contents.  File extension
 is manipulated appropriately, if necessary. If empty,
 `<tt>&lt;basename of document&gt;_toc.html</tt>' is used.
-
-</p><p>$T2H_TOC_FILE = &quot;&quot;;
-
-</p><hr size="6">
+</p>
+<p>$T2H_TOC_FILE = &quot;&quot;;
+</p>
+<hr size="6">
 <a name="OptionFrames"></a>
 <a name="SEC50"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1584,10 +1584,10 @@ is manipulated appropriately, if necessary. If empty,
 <p>`<samp>-frames</samp>'
 if set, output two additional files which use HTML 4.0
 <b>frames</b>.
-
-</p><p>$T2H_FRAMES = 0;
-
-</p><hr size="6">
+</p>
+<p>$T2H_FRAMES = 0;
+</p>
+<hr size="6">
 <a name="OptionMenu"></a>
 <a name="SEC51"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1609,10 +1609,10 @@ if set, output two additional files which use HTML 4.0
 <h2 class="section"> 8.12 Menus </h2>
 <p>`<samp>-menu</samp>' or `<samp>-nomenu</samp>' if set, show the Texinfo
 menus
-
-</p><p>$T2H_SHOW_MENU = 1;
-
-</p><hr size="6">
+</p>
+<p>$T2H_SHOW_MENU = 1;
+</p>
+<hr size="6">
 <a name="OptionNumber"></a>
 <a name="SEC52"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1635,8 +1635,8 @@ menus
 <p>`<samp>-number</samp>' `<samp>-nonumber</samp>'
 if set, number sections and show section names and numbers
 in references and menus
-
 </p>
+
 <hr size="6">
 <a name="OptionSplit"></a>
 <a name="SEC53"></a>
@@ -1663,11 +1663,11 @@ if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
 separate pages for Top, ToC, Overview, Index, Glossary,
 About.  Otherwise, create a monolithic <acronym>HTML</acronym> file that
 contains the whole document.
-
-</p><p>#$T2H_SPLIT = 'section';
+</p>
+<p>#$T2H_SPLIT = 'section';
 $T2H_SPLIT = undef;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionSectionNavigation"></a>
 <a name="SEC54"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1689,15 +1689,15 @@ $T2H_SPLIT = undef;
 <h2 class="section"> 8.15 Section navigation </h2>
 <p>`<samp>-section_navigation</samp>'|
 `<samp>-no-section_navigation</samp>'
-
-</p><p>if set, then navigation panels are printed at the beginning
+</p>
+<p>if set, then navigation panels are printed at the beginning
 of each section and, possibly at the end (depending on
 whether or not there were more than 
 <var>$T2H_WORDS_IN_PAGE</var> words on page). This is most useful
 if you do not want to have section navigation on
 `<samp>-split chapter</samp>'
-
 </p>
+
 <hr size="6">
 <a name="OptionSubDir"></a>
 <a name="SEC55"></a>
@@ -1721,10 +1721,10 @@ if you do not want to have section navigation on
 <p>`<samp>-subdir</samp>'
 If set, then put result files in the specified directory.
 If not set, then result files are put into the current directory.
-
-</p><p><var>$T2H_SUBDIR</var> = undef;
-
-</p><hr size="6">
+</p>
+<p><var>$T2H_SUBDIR</var> = undef;
+</p>
+<hr size="6">
 <a name="OptionShortExt"></a>
 <a name="SEC56"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1749,8 +1749,8 @@ If this is set, then all <acronym>HTML</acronym> files will have extension
 `<tt>.htm</tt>' instead of `<tt>.html</tt>'. This is helpful when
 shipping the document to DOS-based systems.
 <var>$T2H_SHORTEXTN</var> = 0;
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionPrefix"></a>
 <a name="SEC57"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1774,10 +1774,10 @@ shipping the document to DOS-based systems.
 Set the output file prefix, prepended to all `<tt>.html</tt>',
 `<tt>.gif</tt>' and `<tt>.pl</tt>' files.
 By default, this is the basename of the document
-
-</p><p><var>$T2H_PREFIX</var> = &quot;&quot;;
-
-</p><hr size="6">
+</p>
+<p><var>$T2H_PREFIX</var> = &quot;&quot;;
+</p>
+<hr size="6">
 <a name="OptionOutput"></a>
 <a name="SEC58"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1801,8 +1801,8 @@ By default, this is the basename of the document
 <p>`<samp>-o filename</samp>'|`<samp>-out_file</samp>'
 If set, generate monolithic document output <acronym>HTML</acronym>
 into `<tt>filename</tt>'.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionShortRef"></a>
 <a name="SEC59"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1824,8 +1824,8 @@ into `<tt>filename</tt>'.
 <h2 class="section"> 8.20 Short Cross References </h2>
 <p>`<samp>-short_ref</samp>'
 if set cross-references are given without section numbers
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionIndexSummary"></a>
 <a name="SEC60"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1850,8 +1850,8 @@ If value is set, then for each <code>@prinindex $what</code>
 `<tt>$docu_name_$what.idx</tt>' is created which contains lines of the
 form <strong>$key\t$ref</strong> sorted alphabetically (case
 matters).
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionVerbose"></a>
 <a name="SEC61"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1873,8 +1873,8 @@ matters).
 <h2 class="section"> 8.22 Verbose output </h2>
 <p>`<samp>-verbose</samp>'
 if set, chatter about what we are doing.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionLanguage"></a>
 <a name="SEC62"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1900,8 +1900,8 @@ For page titles, use
 a new language, supply list of titles (see <var>$T2H_WORDS</var>),
 and use ISO 639 language codes (see e.g. perl module
 `<tt>Locale-Codes-1.02.tar.gz</tt>' for definitions).
-
-</p><p>If you don't give a `<samp>-lang</samp>' then we got it from the
+</p>
+<p>If you don't give a `<samp>-lang</samp>' then we got it from the
 Texinfo source file (@documentlanguage
 see <a href="Texinfo.html#documentlanguage">(Texinfo)documentlanguage</a>). If there is no
 <code>@documentlanguage</code> we use the default <code>en</code> for
@@ -1929,8 +1929,8 @@ the language.
 <p>`<samp>-l2h</samp>'
 if set, uses <code>latex2html</code> for generation of math
 content.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC64">8.24.1 Where to find <code>latex2html</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Where to find LaTeX2HTML.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC65">8.24.2 Skip calling LaTeX2HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -1959,8 +1959,8 @@ content.
 <h3 class="subsection"> 8.24.1 Where to find <code>latex2html</code> </h3>
 <p>`<samp>-l2h_l2h</samp>'
 name/location of <code>latex2html</code> program.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionL2HSkip"></a>
 <a name="SEC65"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1983,8 +1983,8 @@ name/location of <code>latex2html</code> program.
 <p>`<samp>-l2h_skip</samp>'
 If set, skips actual call to <code>latex2html</code>: tries to
 reuse previously generated content, instead.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="OptionL2Htmp"></a>
 <a name="SEC66"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2163,7 +2163,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC71_13" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0" class="index-op">
+</td></tr></table>
+<table border="0" class="index-op">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC71_0">C</a></th><td></td><td></td></tr>
@@ -2228,7 +2229,8 @@ What does it do? Which parameters it needs etc.
 <tr><th><a name="SEC71_13">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61"><code>verbose</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" class="summary-letter"><b>C</b></a>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC71_0" class="summary-letter"><b>C</b></a>
  &nbsp; 
 <a href="#SEC71_1" class="summary-letter"><b>D</b></a>
  &nbsp; 
@@ -2256,7 +2258,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC71_13" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><hr size="6">
+</td></tr></table>
+<hr size="6">
 <a name="Indexvr"></a>
 <a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2287,7 +2290,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC72_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
-</td></tr></table><table border="0" class="index-vr">
+</td></tr></table>
+<table border="0" class="index-vr">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC72_0">$</a></th><td></td><td></td></tr>
@@ -2353,7 +2357,8 @@ What does it do? Which parameters it needs etc.
 <tr><td></td><td valign="top"><a href="#SEC46"><code>T2H_USE_ISO</code></a></td><td valign="top"><a href="#SEC46">8.7 Iso</a></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61"><code>T2H_VERBOSE</code></a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" class="summary-letter"><b>$</b></a>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC72_0" class="summary-letter"><b>$</b></a>
  &nbsp; 
 <br>
 <a href="#SEC72_1" class="summary-letter"><b>D</b></a>
@@ -2364,7 +2369,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC72_4" class="summary-letter"><b>T</b></a>
  &nbsp; 
-</td></tr></table><hr size="6">
+</td></tr></table>
+<hr size="6">
 <a name="Indexcp"></a>
 <a name="SEC73"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -2417,7 +2423,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC73_15" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><table border="0" class="index-cp">
+</td></tr></table>
+<table border="0" class="index-cp">
 <tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
 <tr><td colspan="3"> <hr></td></tr>
 <tr><th><a name="SEC73_0">.</a></th><td></td><td></td></tr>
@@ -2511,7 +2518,8 @@ What does it do? Which parameters it needs etc.
 <tr><th><a name="SEC73_15">V</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#SEC61">Verbose output</a></td><td valign="top"><a href="#SEC61">8.22 Verbose output</a></td></tr>
 <tr><td colspan="3"> <hr></td></tr>
-</table><table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" class="summary-letter"><b>.</b></a>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC73_0" class="summary-letter"><b>.</b></a>
  &nbsp; 
 <a href="#SEC73_1" class="summary-letter"><b>@</b></a>
  &nbsp; 
@@ -2544,7 +2552,8 @@ What does it do? Which parameters it needs etc.
  &nbsp; 
 <a href="#SEC73_15" class="summary-letter"><b>V</b></a>
  &nbsp; 
-</td></tr></table><hr size="6">
+</td></tr></table>
+<hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>

@@ -40,7 +40,7 @@ coucou \arg\ after arg
 @macro3{@verb{% @macro2 %}
 @c @macro4
 @pagesizes 4 @macro4
-@headings @macro4
+@headings doubleafter @macro4
 @verbatim
 @macro2
 @end verbatim
@@ -81,3 +81,4 @@ Call macro7
 @c @v2
 @c @end verbatim
 
+@bye

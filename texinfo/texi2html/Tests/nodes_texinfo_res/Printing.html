@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 2.6 Formatting and Printing</title>
+<title>GNU Texinfo 4.2: 2.6 Formatting and Printing</title>
 
-<meta name="description" content="Texinfo: 2.6 Formatting and Printing">
-<meta name="keywords" content="Texinfo: 2.6 Formatting and Printing">
+<meta name="description" content="GNU Texinfo 4.2: 2.6 Formatting and Printing">
+<meta name="keywords" content="GNU Texinfo 4.2: 2.6 Formatting and Printing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -87,28 +87,28 @@ you must run the <code>texindex</code> command after first running the
 <code>tex</code> typesetting command; and then you must run the <code>tex</code>
 command again.  Or else run the <code>texi2dvi</code> command which
 automatically creates indices as needed (see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>).
-
-</p><p>Often, when you are writing a document, you want to typeset and print
+</p>
+<p>Often, when you are writing a document, you want to typeset and print
 only part of a file to see what it will look like.  You can use the
 <code>texinfo-tex-region</code> and related commands for this purpose.  Use
 the <code>texinfo-tex-buffer</code> command to format all of a
 buffer.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd>  C-c C-t C-b</kbd></dt>
 <dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
 <dd><a name="IDX63"></a>
 <p>Run <code>texi2dvi</code> on the buffer.  In addition to running TeX on the
 buffer, this command automatically creates or updates indices as
 needed.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd>  C-c C-t C-r</kbd></dt>
 <dt><kbd> M-x texinfo-tex-region</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Run TeX on the region.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-i</kbd></dt>
 <dt><kbd> M-x texinfo-texindex</kbd></dt>
 <dd><p>Run <code>texindex</code> to sort the indices of a Texinfo file formatted with
@@ -119,8 +119,8 @@ a second time after sorting the raw index files with the <code>texindex</code>
 command.  (Usually, you do not format an index when you format a region,
 only when you format a buffer.  Now that the <code>texi2dvi</code> command
 exists, there is little or no need for this command.)
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-p</kbd></dt>
 <dt><kbd> M-x texinfo-tex-print</kbd></dt>
 <dd><a name="IDX65"></a>
@@ -135,11 +135,11 @@ include an <code>@settitle</code> line.  The file must end with <code>@bye</code
 on a line by itself.  (When you use <code>texinfo-tex-region</code>, you must
 surround the <code>@settitle</code> line with start-of-header and
 end-of-header lines.)
-
-</p><p>See section <a href="Hardcopy.html#SEC244">Formatting and Printing Hardcopy</a>, for a description of the other TeX related
+</p>
+<p>See section <a href="Hardcopy.html#SEC244">Formatting and Printing Hardcopy</a>, for a description of the other TeX related
 commands, such as <code>tex-show-print-queue</code>.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Info-Formatting.html#SEC30" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Texinfo-Mode-Summary.html#SEC32" title="Next section in reading order"> &gt; </a>]</td>

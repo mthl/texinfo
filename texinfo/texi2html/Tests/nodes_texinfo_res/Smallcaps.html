@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 9.2.2 @sc{text}: The Small Caps Font</title>
+<title>GNU Texinfo 4.2: 9.2.2 @sc{text}: The Small Caps Font</title>
 
-<meta name="description" content="Texinfo: 9.2.2 @sc{text}: The Small Caps Font">
-<meta name="keywords" content="Texinfo: 9.2.2 @sc{text}: The Small Caps Font">
+<meta name="description" content="GNU Texinfo 4.2: 9.2.2 @sc{text}: The Small Caps Font">
+<meta name="keywords" content="GNU Texinfo 4.2: 9.2.2 @sc{text}: The Small Caps Font">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,13 +84,13 @@ ul.toc {list-style: none}
 output in <small>A SMALL CAPS FONT</small> and set text in the Info file in upper
 case letters.  Write the text you want to be in small caps (where
 possible) between braces in lower case, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">The @sc{acm} and @sc{ieee} are technical societies.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">The @sc{acm} and @sc{ieee} are technical societies.
 </pre></td></tr></table>
 
 <p>This produces:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="display">The ACM and IEEE are technical societies.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="display">The ACM and IEEE are technical societies.
 </pre></td></tr></table>
 <p>TeX typesets the small caps font in a manner that prevents the
 letters from `jumping out at you on the page'.  This makes small caps
@@ -98,23 +98,23 @@ text easier to read than text in all upper case--but it's usually
 better to use regular mixed case anyway.  The Info formatting commands
 set all small caps text in upper case.  In HTML, the text is upper-cased
 and a smaller font is used to render it.
-
-</p><p>If the text between the braces of an <code>@sc</code> command is uppercase,
+</p>
+<p>If the text between the braces of an <code>@sc</code> command is uppercase,
 TeX typesets in FULL-SIZE CAPITALS.  Use full-size capitals
 sparingly, if ever, and since it's redundant to mark all-uppercase text
 with <code>@sc</code>, <code>makeinfo</code> warns about such usage.
-
-</p><p>You may also use the small caps font for a jargon word such as
+</p>
+<p>You may also use the small caps font for a jargon word such as
 <small>ATO</small> (a <small>NASA</small> word meaning `abort to orbit').
-
-</p><p>There are subtleties to using the small caps font with a jargon word
+</p>
+<p>There are subtleties to using the small caps font with a jargon word
 such as <small>CDR</small>, a word used in Lisp programming.  In this case, you
 should use the small caps font when the word refers to the second and
 subsequent elements of a list (the <small>CDR</small> of the list), but you
 should use `<samp>@code</samp>' when the word refers to the Lisp function of
 the same spelling.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

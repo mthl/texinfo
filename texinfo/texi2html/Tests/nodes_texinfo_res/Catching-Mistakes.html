@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: F. Formatting Mistakes</title>
+<title>GNU Texinfo 4.2: F. Formatting Mistakes</title>
 
-<meta name="description" content="Texinfo: F. Formatting Mistakes">
-<meta name="keywords" content="Texinfo: F. Formatting Mistakes">
+<meta name="description" content="GNU Texinfo 4.2: F. Formatting Mistakes">
+<meta name="keywords" content="GNU Texinfo 4.2: F. Formatting Mistakes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,19 +84,19 @@ ul.toc {list-style: none}
 kinds of mistake you can make with Texinfo: you can make mistakes with
 @-commands, and you can make mistakes with the structure of the nodes
 and chapters.
-
-</p><p>Emacs has two tools for catching the @-command mistakes and two for
+</p>
+<p>Emacs has two tools for catching the @-command mistakes and two for
 catching structuring mistakes.
-
-</p><p>For finding problems with @-commands, you can run TeX or a region
+</p>
+<p>For finding problems with @-commands, you can run TeX or a region
 formatting command on the region that has a problem; indeed, you can
 run these commands on each region as you write it.
-
-</p><p>For finding problems with the structure of nodes and chapters, you can use
+</p>
+<p>For finding problems with the structure of nodes and chapters, you can use
 <kbd>C-c C-s</kbd> (<code>texinfo-show-structure</code>) and the related <code>occur</code>
 command and you can use the <kbd>M-x Info-validate</kbd> command.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#makeinfo-Preferred">&bull; makeinfo Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          <code>makeinfo</code> finds errors.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Debugging-with-Info.html#SEC310">F.1 Catching Errors with Info Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to catch errors with Info formatting.
@@ -120,16 +120,16 @@ and reporting them--far better than <code>texinfo-format-region</code> or
 <code>texinfo-format-buffer</code>.  In addition, the various functions for
 automatically creating and updating node pointers and menus remove
 many opportunities for human error.
-
-</p><p>If you can, use the updating commands to create and insert pointers
+</p>
+<p>If you can, use the updating commands to create and insert pointers
 and menus.  These prevent many errors.  Then use <code>makeinfo</code> (or
 its Texinfo mode manifestations, <code>makeinfo-region</code> and
 <code>makeinfo-buffer</code>) to format your file and check for other
 errors.  This is the best way to work with Texinfo.  But if you
 cannot use <code>makeinfo</code>, or your problem is very puzzling, then you
 may want to use the tools described in this appendix.
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Custom-Headings.html#SEC307" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Debugging-with-Info.html#SEC310" title="Next section in reading order"> &gt; </a>]</td>

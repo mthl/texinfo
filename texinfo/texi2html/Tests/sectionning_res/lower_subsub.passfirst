@@ -31,6 +31,7 @@ lower_subsub.texi(,31)
 lower_subsub.texi(,32) @node Subsubsection
 lower_subsub.texi(,33) @subsubsection Subsubsection
 lower_subsub.texi(,34) 
+lower_subsub.texi(,35) @lowersections
 lower_subsub.texi(,36) @node Lowered subsec
 lower_subsub.texi(,37) @subsection Lowered subsec
 lower_subsub.texi(,38) 
@@ -40,5 +41,7 @@ lower_subsub.texi(,41) @end menu
 lower_subsub.texi(,42) 
 lower_subsub.texi(,43) @node Lowered subsubsection
 lower_subsub.texi(,44) @subsubsection Lowered subsubsection
+lower_subsub.texi(,45) @raisesections
 lower_subsub.texi(,46) 
-lower_subsub.texi(,47) 
+lower_subsub.texi(,47) @contents
+lower_subsub.texi(,48) @bye

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 15.4.2 Variables and Similar Entities</title>
+<title>GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities</title>
 
-<meta name="description" content="Texinfo: 15.4.2 Variables and Similar Entities">
-<meta name="keywords" content="Texinfo: 15.4.2 Variables and Similar Entities">
+<meta name="description" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,8 +82,8 @@ ul.toc {list-style: none}
 
 <p>Here are the commands for defining variables and similar
 entities:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dd><a name="IDX270"></a>
 </dd>
 <dt><code> @defvr <var>category</var> <var>name</var></code></dt>
@@ -94,13 +94,13 @@ example, &quot;Variable&quot; could be used if the entity is a variable.
 Write the <code>@defvr</code> command at the beginning of a line and
 follow it on the same line by the category of the entity and the
 name of the entity.
-
-</p><p>Capitalize the category name like a title.  If the name of the category
+</p>
+<p>Capitalize the category name like a title.  If the name of the category
 contains spaces, as in the name &quot;User Option&quot;, enclose it in braces.
 Otherwise, the second word will be mistaken for the name of the entity.
 For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defvr {User Option} fill-column
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvr {User Option} fill-column
 This buffer-local variable specifies
 the maximum width of filled lines.
 &hellip;
@@ -108,38 +108,38 @@ the maximum width of filled lines.
 </pre></td></tr></table>
 <p>Terminate the definition with <code>@end defvr</code> on a line of its
 own.
-
-</p><p>The template is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defvr <var>category</var> <var>name</var>
+</p>
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvr <var>category</var> <var>name</var>
 <var>body-of-definition</var>
 @end defvr
 </pre></td></tr></table>
 <p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
-
-</p><a name="IDX271"></a>
+</p>
+<a name="IDX271"></a>
 </dd>
 <dt><code> @defvar <var>name</var></code></dt>
 <dd><p>The <code>@defvar</code> command is the definition command for variables.
 <code>@defvar</code> is equivalent to `<samp>@defvr Variable
 &hellip;</samp>'.
-
-</p><p>For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defvar kill-ring
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvar kill-ring
 &hellip;
 @end defvar
 </pre></td></tr></table>
 <p>The template is:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defvar <var>name</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvar <var>name</var>
 <var>body-of-definition</var>
 @end defvar
 </pre></td></tr></table>
 <p><code>@defvar</code> creates an entry in the index of variables for
 <var>name</var>.
-
-</p><a name="IDX272"></a>
+</p>
+<a name="IDX272"></a>
 </dd>
 <dt><code> @defopt <var>name</var></code></dt>
 <dd><a name="IDX273"></a>

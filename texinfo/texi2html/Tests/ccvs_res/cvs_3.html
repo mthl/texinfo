@@ -68,10 +68,10 @@ to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
 directories.  See section <a href="cvs_7.html#SEC70">Moving and renaming files</a>.
-
-</p><p>What to do next depends on the situation at hand.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<p>What to do next depends on the situation at hand.
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC39">3.1 Setting up the files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Getting the files into the repository
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC43">3.2 Defining the module</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to make a module of the files
@@ -101,8 +101,8 @@ directories.  See section <a href="cvs_7.html#SEC70">Moving and renaming files</
 
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC40">3.1.1 Creating a directory tree from a number of files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  This method is useful with old projects
                                 where files already exists.
 </td></tr>
@@ -140,8 +140,8 @@ put under <small>CVS</small> control.  In these cases the easiest way is to use 
 explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in `<tt><var>wdir</var></tt>', and you want them to appear in the
 repository as `<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>', you can do this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd <var>wdir</var>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd <var>wdir</var>
 $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </pre></td></tr></table>
 <p>Unless you supply a log message with the `<samp>-m</samp>'
@@ -151,11 +151,11 @@ and `<samp>start</samp>' is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
 them they must be present.  See section <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, for
 more information about them.
-
-</p><p>You can now verify that it worked, and remove your
+</p>
+<p>You can now verify that it worked, and remove your
 original source directory.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
 $ cvs checkout yoyodyne/<var>rdir</var>       # Explanation below
 $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
 $ rm -r <var>wdir</var>
@@ -165,22 +165,22 @@ $ rm -r <var>wdir</var>
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
 Of course, it would be wise to make sure that you have
 a backup of the sources before you remove them.
-
-</p><p>The <code>checkout</code> command can either take a module
+</p>
+<p>The <code>checkout</code> command can either take a module
 name as argument (as it has done in all previous
 examples) or a path name relative to <code>$CVSROOT</code>,
 as it did in the example above.
-
-</p><p>It is a good idea to check that the permissions
+</p>
+<p>It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
 groups.  See section <a href="cvs_2.html#SEC13">File permissions</a>.
-
-</p><p>If some of the files you want to import are binary, you
+</p>
+<p>If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
 files are binary and which are not.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="From-other-version-control-systems"></a>
 <a name="SEC41"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -206,8 +206,8 @@ another version control system, such as <small>RCS</small>, you
 may wish to put the files from that project into
 <small>CVS</small>, and preserve the revision history of the
 files.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dd><a name="IDX90"></a>
 </dd>
 <dt> From RCS</dt>
@@ -226,26 +226,26 @@ few times when it is a good idea to access the <small>CVS</small>
 repository directly, rather than using <small>CVS</small>
 commands.  Then you are ready to check out a new
 working directory.
-
-</p><p>The <small>RCS</small> file should not be locked when you move it
+</p>
+<p>The <small>RCS</small> file should not be locked when you move it
 into <small>CVS</small>; if it is, <small>CVS</small> will have trouble
 letting you operate on it.
-
-</p></dd>
+</p>
+</dd>
 <dt> From another version control system</dt>
 <dd><p>Many version control systems have the ability to export
 <small>RCS</small> files in the standard format.  If yours does,
 export the <small>RCS</small> files and then follow the above
 instructions.
-
-</p><p>Failing that, probably your best bet is to write a
+</p>
+<p>Failing that, probably your best bet is to write a
 script that will check out the files one revision at a
 time using the command line interface to the other
 system, and then check the revisions into <small>CVS</small>.
 The `<tt>sccs2rcs</tt>' script mentioned below may be a
 useful example to follow.
-
-</p><a name="IDX91"></a>
+</p>
+<a name="IDX91"></a>
 </dd>
 <dt> From SCCS</dt>
 <dd><p>There is a script in the `<tt>contrib</tt>' directory of
@@ -255,8 +255,8 @@ Note: you must run it on a machine which has both
 <small>SCCS</small> and <small>RCS</small> installed, and like everything
 else in contrib it is unsupported (your mileage may
 vary).
-
-</p><a name="IDX92"></a>
+</p>
+<a name="IDX92"></a>
 </dd>
 <dt> From PVCS</dt>
 <dd><p>There is a script in the `<tt>contrib</tt>' directory of
@@ -292,25 +292,25 @@ vary).  See the comments in the script for details.
 
 <p>For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ mkdir tc
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ mkdir tc
 $ mkdir tc/man
 $ mkdir tc/testing
 </pre></td></tr></table>
 <p>After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
 $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
 </pre></td></tr></table>
 <p>Then, use <code>add</code> to add files (and new directories)
 as they appear.
-
-</p><p>Check that the permissions <small>CVS</small> sets on the
+</p>
+<p>Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Defining-the-module"></a>
 <a name="SEC43"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -335,31 +335,30 @@ directories inside <code>$CVSROOT</code> are reasonable.
 `<tt>modules</tt>' file.  This is not strictly necessary,
 but modules can be convenient in grouping together
 related files and directories.
-
-</p><p>In simple cases these steps are sufficient to define a module.
-
-</p><ol>
+</p>
+<p>In simple cases these steps are sufficient to define a module.
+</p>
+<ol>
 <li>
 Get a working copy of the modules file.
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout CVSROOT/modules
 $ cd CVSROOT
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
 following line to define the module `<samp>tc</samp>':
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">tc   yoyodyne/tc
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Commit your changes to the modules file.
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added the tc module.&quot; modules
-</pre></td></tr></table></li><li>
+</pre></td></tr></table>
+</li><li>
 Release the modules module.
-
 
 <table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
 $ cvs release -d CVSROOT

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 1.2 Using Texinfo</title>
+<title>GNU Texinfo 4.2: 1.2 Using Texinfo</title>
 
-<meta name="description" content="Texinfo: 1.2 Using Texinfo">
-<meta name="keywords" content="Texinfo: 1.2 Using Texinfo">
+<meta name="description" content="GNU Texinfo 4.2: 1.2 Using Texinfo">
+<meta name="keywords" content="GNU Texinfo 4.2: 1.2 Using Texinfo">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -88,29 +88,29 @@ menu-driven, online Info file with nodes, menus, cross references, and
 indices.  You can also create from that same source file an HTML output
 file suitable for use with a web browser, or an XML file.  <cite>The GNU
 Emacs Manual</cite> is a good example of a Texinfo file, as is this manual.
-
-</p><p>To make a printed document, you process a Texinfo source file with the
+</p>
+<p>To make a printed document, you process a Texinfo source file with the
 TeX typesetting program (but the Texinfo language is very different
 and much stricter than TeX's usual language, plain TeX).  This
 creates a DVI file that you can typeset and print as a book or report
 (see section <a href="Hardcopy.html#SEC244">Formatting and Printing Hardcopy</a>).
-
-</p><a name="IDX3"></a>
+</p>
+<a name="IDX3"></a>
 <p>To output an Info file, process your Texinfo source with the
 <code>makeinfo</code> utility or Emacs's <code>texinfo-format-buffer</code> command.
 You can install the result in your Info tree (see section <a href="Installing-an-Info-File.html#SEC271">Installing an Info File</a>).
-
-</p><p>To output an HTML file, run <code>makeinfo --html</code> on your Texinfo
+</p>
+<p>To output an HTML file, run <code>makeinfo --html</code> on your Texinfo
 source.  You can (for example) install the result on your web site.
-
-</p><a name="IDX4"></a>
+</p>
+<a name="IDX4"></a>
 <a name="IDX5"></a>
 <p>To output an XML file, run <code>makeinfo --xml</code> on your Texinfo source.
 To output DocBook (a particular form of XML), run <code>makeinfo
 --docbook</code>.  If you want to convert from Docbook <em>to</em> Texinfo,
 please see <a href="http://docbook2X.sourceforge.net/">http://docbook2X.sourceforge.net/</a>.
-
-</p><a name="IDX6"></a>
+</p>
+<a name="IDX6"></a>
 <a name="IDX7"></a>
 <p>If you are a programmer and would like to contribute to the GNU project
 by implementing additional output formats for Texinfo, that would be
@@ -120,29 +120,29 @@ extra work in subsequent maintenance, since the Texinfo language is
 continually being enhanced and updated.  Instead, the best approach is
 modify <code>makeinfo</code> to generate the new format, as it does now for
 Info, plain text, HTML, XML, and DocBook.
-
-</p><p>TeX works with virtually all printers; Info works with virtually all
+</p>
+<p>TeX works with virtually all printers; Info works with virtually all
 computer terminals; the HTML output works with virtually all web
 browsers.  Thus Texinfo can be used by almost any computer user.
-
-</p><a name="IDX8"></a>
+</p>
+<a name="IDX8"></a>
 <p>A Texinfo source file is a plain <small>ASCII</small> file containing text and
 <em>@-commands</em> (words preceded by an `<samp>@</samp>') that tell the
 typesetting and formatting programs what to do.  You may edit a Texinfo
 file with any text editor; but it is especially convenient to use GNU
 Emacs since that editor has a special mode, called Texinfo mode, that
 provides various Texinfo-related features.  (See section <a href="Texinfo-Mode.html#SEC21">Using Texinfo Mode</a>.)
-
-</p><p>Before writing a Texinfo source file, you should learn about nodes,
+</p>
+<p>Before writing a Texinfo source file, you should learn about nodes,
 menus, cross references, and the rest, for example by reading this
 manual.
-
-</p><p>You can use Texinfo to create both online help and printed manuals;
+</p>
+<p>You can use Texinfo to create both online help and printed manuals;
 moreover, Texinfo is freely redistributable.  For these reasons, Texinfo
 is the official documentation format of the GNU project.  More
 information is available at the <a href="http://www.gnu.org/doc/">GNU documentation web page</a>.
-
-</p><a name="IDX9"></a>
+</p>
+<a name="IDX9"></a>
 <p>From time to time, proposals are made to generate traditional Unix man
 pages from Texinfo source.  This is not likely to ever be supported,
 because man pages have a very strict conventional format.  Merely
@@ -153,8 +153,8 @@ writing a good user tutorial or a good reference manual.  This makes
 generating man pages incompatible with the Texinfo design goal of not
 having to document the same information in different ways for different
 output formats.  You might as well just write the man page directly.
-
-</p><a name="IDX10"></a>
+</p>
+<a name="IDX10"></a>
 <a name="IDX11"></a>
 <p>Man pages still have their place, and if you wish to support them, the
 program <code>help2man</code> may be useful; it generates a traditional man
@@ -162,8 +162,8 @@ page from the `<samp>--help</samp>' output of a program.  In fact, this is
 currently used to generate man pages for the Texinfo programs
 themselves.  It is GNU software written by Brendan O'Dea, available from
 <a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Reporting-Bugs.html#SEC3" title="Previous section in reading order"> &lt; </a>]</td>

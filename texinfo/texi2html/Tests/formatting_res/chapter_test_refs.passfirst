@@ -1,4 +1,5 @@
 test_refs.texi(,2) 
+test_refs.texi(,3) @setfilename test_refs.info
 test_refs.texi(,4) @node Top
 test_refs.texi(,5) @top Test refs
 test_refs.texi(,6) 
@@ -78,3 +79,4 @@ test_refs.texi(,79) @example
 test_refs.texi(,80) id: local-node
 test_refs.texi(,81) @end example
 test_refs.texi(,82) 
+test_refs.texi(,83) @bye

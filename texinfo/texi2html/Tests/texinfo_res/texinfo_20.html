@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 19. Formatting and Printing Hardcopy</title>
+<title>GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy</title>
 
-<meta name="description" content="Texinfo: 19. Formatting and Printing Hardcopy">
-<meta name="keywords" content="Texinfo: 19. Formatting and Printing Hardcopy">
+<meta name="description" content="GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy">
+<meta name="keywords" content="GNU Texinfo 4.2: 19. Formatting and Printing Hardcopy">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,14 +85,14 @@ printed, a second for sorting indices, and a third for printing the
 formatted document.  When you use the shell commands, you can either
 work directly in the operating system shell or work within a shell
 inside GNU Emacs.
-
-</p><p>If you are using GNU Emacs, you can use commands provided by Texinfo
+</p>
+<p>If you are using GNU Emacs, you can use commands provided by Texinfo
 mode instead of shell commands.  In addition to the three commands to
 format a file, sort the indices, and print the result, Texinfo mode
 offers key bindings for commands to recenter the output buffer, show the
 print queue, and delete a job from the print queue.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC245">19.1 Use TeX</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Use TeX to format for hardcopy.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC246">19.2 Format with <code>tex</code> and <code>texindex</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How to format with explicit shell commands.
@@ -150,13 +150,13 @@ print queue, and delete a job from the print queue.
 <p>The typesetting program called TeX is used for formatting a Texinfo
 file.  TeX is a very powerful typesetting program and, if used correctly,
 does an exceptionally good job.  (See section <a href="texinfo_30.html#SEC321">How to Obtain TeX</a>, for information on how to obtain TeX.)
-
-</p><p>The standalone <code>makeinfo</code> program and Emacs functions
+</p>
+<p>The standalone <code>makeinfo</code> program and Emacs functions
 <code>texinfo-format-region</code> and <code>texinfo-format-buffer</code> commands
 read the very same @-commands in the Texinfo file as does TeX, but
 process them differently to make an Info file (see section <a href="texinfo_21.html#SEC261">Creating an Info File</a>).
-
 </p>
+
 <hr size="6">
 <a name="Format-with-tex_002ftexindex"></a>
 <a name="SEC246"></a>
@@ -180,15 +180,15 @@ process them differently to make an Info file (see section <a href="texinfo_21.h
 
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">tex foo.texi
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">tex foo.texi
 </pre></td></tr></table>
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
 files containing information for indices, cross references, etc.  The
 DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
 any device (see the following sections).
-
-</p><a name="IDX320"></a>
+</p>
+<a name="IDX320"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
 command automatically generates indices; see section <a href="#SEC247">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
@@ -196,8 +196,8 @@ running the <code>tex</code> command, you first need a sorted index to work
 from.  The <code>texindex</code> command sorts indices.  (The source file
 `<tt>texindex.c</tt>' comes as part of the standard Texinfo distribution,
 among other places.)
-
-</p><a name="IDX321"></a>
+</p>
+<a name="IDX321"></a>
 <a name="IDX322"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
@@ -206,14 +206,14 @@ For example, the raw index output files for the input file
 `<tt>foo.texinfo</tt>' would be `<tt>foo.cp</tt>', `<tt>foo.vr</tt>', `<tt>foo.fn</tt>',
 `<tt>foo.tp</tt>', `<tt>foo.pg</tt>' and `<tt>foo.ky</tt>'.  Those are exactly the
 arguments to give to <code>texindex</code>.
-
-</p><a name="IDX323"></a>
+</p>
+<a name="IDX323"></a>
 <a name="IDX324"></a>
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use `<samp>??</samp>' as shell wildcards and give the command in this
 form:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">texindex foo.??
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">texindex foo.??
 </pre></td></tr></table>
 
 <p>This command will run <code>texindex</code> on all the unsorted index files,
@@ -222,23 +222,23 @@ or <code>@defcodeindex</code>.  (You may execute `<samp>texindex foo.??</samp>'
 even if there are similarly named files with two letter extensions
 that are not index files, such as `<samp>foo.el</samp>'.  The <code>texindex</code>
 command reports but otherwise ignores such files.)
-
-</p><p>For each file specified, <code>texindex</code> generates a sorted index file
+</p>
+<p>For each file specified, <code>texindex</code> generates a sorted index file
 whose name is made by appending `<samp>s</samp>' to the input file name.  The
 <code>@printindex</code> command looks for a file with that name
 (see section <a href="texinfo_5.html#SEC69">Printing Indices and Menus</a>).  <code>texindex</code> does not alter the
 raw index output file.
-
-</p><p>After you have sorted the indices, you need to rerun the <code>tex</code>
+</p>
+<p>After you have sorted the indices, you need to rerun the <code>tex</code>
 formatting command on the Texinfo file.  This regenerates the DVI file,
 this time with up-to-date index entries.
-
-</p><p>Finally, you may need to run <code>tex</code> one more time, to get the page
+</p>
+<p>Finally, you may need to run <code>tex</code> one more time, to get the page
 numbers in the cross-references correct.
-
-</p><p>To summarize, this is a five step process:
-
-</p><ol>
+</p>
+<p>To summarize, this is a five step process:
+</p>
+<ol>
 <li>
 Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
 undefined cross-references and no indices), and the raw index files
@@ -264,13 +264,13 @@ written for the cross-references.
 <a name="IDX325"></a>
 <p>Alternatively, it's a one-step process: run <code>texi2dvi</code>
 (see section <a href="#SEC247">Format with <code>texi2dvi</code></a>).
-
-</p><p>You need not run <code>texindex</code> each time after you run <code>tex</code>.  If
+</p>
+<p>You need not run <code>texindex</code> each time after you run <code>tex</code>.  If
 you do not, on the next run, the <code>tex</code> formatting command will use
 whatever sorted index files happen to exist from the previous use of
 <code>texindex</code>.  This is usually ok while you are debugging.
-
-</p><a name="IDX326"></a>
+</p>
+<a name="IDX326"></a>
 <a name="IDX327"></a>
 <a name="IDX328"></a>
 <a name="IDX329"></a>
@@ -282,8 +282,8 @@ avoid them with the <code>@novalidate</code> command, which you must give
 <em>before</em> the <code>@setfilename</code> command
 (see section <a href="texinfo_4.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @novalidate
 @setfilename myfile.info
 &hellip;
@@ -291,8 +291,8 @@ your file would look approximately like this:
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option
 (see section <a href="texinfo_21.html#SEC265">Pointer Validation</a>).
-
 </p>
+
 <hr size="6">
 <a name="Format-with-texi2dvi"></a>
 <a name="SEC247"></a>
@@ -319,19 +319,19 @@ your file would look approximately like this:
 sorted indices and all cross-references resolved.  It simplifies the
 <code>tex</code>--<code>texindex</code>--<code>tex</code>--<code>tex</code> sequence
 described in the previous section.
-
-</p><p>To run <code>texi2dvi</code> on an input file `<tt>foo.texi</tt>', do this (where
+</p>
+<p>To run <code>texi2dvi</code> on an input file `<tt>foo.texi</tt>', do this (where
 `<samp>prompt$ </samp>' is your shell prompt):
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
 </pre></td></tr></table>
 <p>As shown in this example, the input filenames to <code>texi2dvi</code> must
 include any extension (`<samp>.texi</samp>', `<samp>.texinfo</samp>', etc.).  Under
 MS-DOS and perhaps in other circumstances, you may need to run `<samp>sh
 texi2dvi foo.texi</samp>' instead of relying on the operating system to invoke
 the shell on the `<samp>texi2dvi</samp>' script.
-
-</p><p>Perhaps the most useful option to <code>texi2dvi</code> is
+</p>
+<p>Perhaps the most useful option to <code>texi2dvi</code> is
 `<samp>--texinfo=<var>cmd</var></samp>'.  This inserts <var>cmd</var> on a line by itself
 after the <code>@setfilename</code> in a temporary copy of the input file
 before running TeX.  With this, you can specify different printing
@@ -340,10 +340,10 @@ formats, such as <code>@smallbook</code> (see section <a href="#SEC255">Printing
 (see section <a href="#SEC257"><code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a>), without actually changing the document source.
 (You can also do this on a site-wide basis with `<tt>texinfo.cnf</tt>';
 see section <a href="#SEC253">Preparing for TeX</a>).
-
-</p><p>For a list of other options, run `<samp>texi2dvi --help</samp>'.
-
 </p>
+<p>For a list of other options, run `<samp>texi2dvi --help</samp>'.
+</p>
+
 <hr size="6">
 <a name="Print-with-lpr"></a>
 <a name="SEC248"></a>
@@ -368,11 +368,11 @@ see section <a href="#SEC253">Preparing for TeX</a>).
 <p>The precise command to print a DVI file depends on your system
 installation.  Two common ones are `<samp>dvips foo.dvi -o</samp>' and `<samp>lpr
 -d foo.dvi</samp>'.  
-
-</p><p>For example, the following commands will (perhaps) suffice to sort the
+</p>
+<p>For example, the following commands will (perhaps) suffice to sort the
 indices, format, and print the <cite>Bison Manual</cite>:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">tex bison.texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">tex bison.texinfo
 texindex bison.??
 tex bison.texinfo
 lpr -d bison.dvi
@@ -380,10 +380,10 @@ lpr -d bison.dvi
 
 <p>(Remember that the shell commands may be different at your site; but
 these are commonly used versions.)
-
-</p><p>Using the <code>texi2dvi</code> shell script (see the previous section):
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi bison.texinfo
+</p>
+<p>Using the <code>texi2dvi</code> shell script (see the previous section):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi bison.texinfo
 lpr -d bison.dvi
 # or perhaps dvips bison.dvi -o
 </pre></td></tr></table>
@@ -396,8 +396,8 @@ program named <code>lpr</code>, but these are usually limited to sending files
 to a print server over the network, and generally don't support the
 `<samp>-d</samp>' option.  If you are unfortunate enough to work on one of these
 systems, you have several alternative ways of printing DVI files:
-
-</p><ul>
+</p>
+<ul>
 <li> Find and install a Unix-like <code>lpr</code> program, or its clone.
 If you can do that, you will be able to print DVI files just like
 described above.
@@ -409,9 +409,9 @@ queue.  In some cases, the version of <code>lpr</code> which comes with your
 network software will have a special option to send a file to specific
 queues, like this:
 
-
 <table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
-</pre></td></tr></table></li><li> Convert the DVI file to a Postscript or PCL file and send it to your
+</pre></td></tr></table>
+</li><li> Convert the DVI file to a Postscript or PCL file and send it to your
 local printer.  See <a href="../dvips/dvips-invocation.html#dvips-invocation">(dvips)dvips invocation</a> section `dvips invocation' in <cite>Dvips</cite>, and the man
 pages for <code>dvilj</code>, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
@@ -443,22 +443,22 @@ directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
 <p>You can give formatting and printing commands from a shell within GNU
 Emacs.  To create a shell within Emacs, type <kbd>M-x shell</kbd>.  In this
 shell, you can format and print the document.  See section <a href="#SEC244">Format and Print Hardcopy</a>, for details.
-
-</p><p>You can switch to and from the shell buffer while <code>tex</code> is
+</p>
+<p>You can switch to and from the shell buffer while <code>tex</code> is
 running and do other editing.  If you are formatting a long document
 on a slow machine, this can be very convenient.
-
-</p><p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
+</p>
+<p>You can also use <code>texi2dvi</code> from an Emacs shell.  For example,
 here is how to use <code>texi2dvi</code> to format and print <cite>Using and
 Porting GNU CC</cite> from a shell within Emacs:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi gcc.texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi gcc.texinfo
 lpr -d gcc.dvi
 </pre></td></tr></table>
 <p>See section <a href="#SEC250">Formatting and Printing in Texinfo Mode</a>, for more information about formatting
 and printing in Texinfo mode.
-
 </p>
+
 <hr size="6">
 <a name="Texinfo-Mode-Printing"></a>
 <a name="SEC250"></a>
@@ -485,56 +485,56 @@ formatting and printing.  These include commands for sorting indices,
 looking at the printer queue, killing the formatting job, and
 recentering the display of the buffer in which the operations
 occur.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-c C-t C-b</kbd></dt>
 <dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
 <dd><p>Run <code>texi2dvi</code> on the current buffer.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-r</kbd></dt>
 <dt><kbd> M-x texinfo-tex-region</kbd></dt>
 <dd><p>Run TeX on the current region.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-i</kbd></dt>
 <dt><kbd> M-x texinfo-texindex</kbd></dt>
 <dd><p>Sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-p</kbd></dt>
 <dt><kbd> M-x texinfo-tex-print</kbd></dt>
 <dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
 <code>texinfo-tex-buffer</code>.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-q</kbd></dt>
 <dt><kbd> M-x tex-show-print-queue</kbd></dt>
 <dd><p>Show the print queue.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-d</kbd></dt>
 <dt><kbd> M-x texinfo-delete-from-print-queue</kbd></dt>
 <dd><p>Delete a job from the print queue; you will be prompted for the job
 number shown by a preceding <kbd>C-c C-t C-q</kbd> command
 (<code>texinfo-show-tex-print-queue</code>).
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-k</kbd></dt>
 <dt><kbd> M-x tex-kill-job</kbd></dt>
 <dd><p>Kill the currently running TeX job started by either
 <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
 process running in the Texinfo shell buffer.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-x</kbd></dt>
 <dt><kbd> M-x texinfo-quit-job</kbd></dt>
 <dd><p>Quit a TeX formatting job that has stopped because of an error by
 sending an <kbd>x</kbd> to it.  When you do this, TeX preserves a record
 of what it did in a `<tt>.log</tt>' file.
-
-</p></dd>
+</p>
+</dd>
 <dt><kbd> C-c C-t C-l</kbd></dt>
 <dt><kbd> M-x tex-recenter-output-buffer</kbd></dt>
 <dd><p>Redisplay the shell buffer in which the TeX printing and formatting
@@ -544,8 +544,8 @@ commands are run to show its most recent output.
 
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
 </pre></td></tr></table>
@@ -553,15 +553,15 @@ C-c C-t C-q             Display the printer queue.
 called the `<tt>*tex-shell*</tt>'.  The <code>texinfo-tex-command</code>,
 <code>texinfo-texindex-command</code>, and <code>tex-dvi-print-command</code>
 commands are all run in this shell.
-
-</p><p>You can watch the commands operate in the `<samp>*tex-shell*</samp>' buffer,
+</p>
+<p>You can watch the commands operate in the `<samp>*tex-shell*</samp>' buffer,
 and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
 as you would any other shell buffer.
-
-</p><p>The formatting and print commands depend on the values of several variables.
+</p>
+<p>The formatting and print commands depend on the values of several variables.
 The default values are:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">     Variable                              Default value
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">     Variable                              Default value
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
 texinfo-tex-command                       &quot;tex&quot;
@@ -577,15 +577,15 @@ tex-show-queue-command                    &quot;lpq&quot;
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
 (see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
 (see <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
-
-</p><a name="IDX333"></a>
+</p>
+<a name="IDX333"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html#Easy-Customization">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
 be found in the `<samp>Development/Docs/Texinfo</samp>' group, once you invoke
 the <kbd>M-x customize</kbd> command.
-
 </p>
+
 <hr size="6">
 <a name="Compile_002dCommand"></a>
 <a name="SEC251"></a>
@@ -615,16 +615,16 @@ commands as a <code>compile-command</code> and have Emacs run it by typing
 `<tt>*compilation*</tt>' buffer in which Emacs runs the compile command.
 For example, at the end of the `<tt>gdb.texinfo</tt>' file, after the
 <code>@bye</code>, you could put the following:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Local Variables:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
 </pre></td></tr></table>
 
 <p>This technique is most often used by programmers who also compile programs
 this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.
-
 </p>
+
 <hr size="6">
 <a name="Requirements-Summary"></a>
 <a name="SEC252"></a>
@@ -648,29 +648,29 @@ this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation
 
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
 </pre></td></tr></table>
 
 <p>The first command instructs TeX to load the macros it needs to
 process a Texinfo file and the second command opens auxiliary files.
-
-</p><p>Every Texinfo file must end with a line that terminates TeX's
+</p>
+<p>Every Texinfo file must end with a line that terminates TeX's
 processing and forces out unfinished pages:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@bye
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@bye
 </pre></td></tr></table>
 <p>Strictly speaking, these lines are all a Texinfo file needs to be
 processed successfully by TeX.
-
-</p><p>Usually, however, the beginning includes an <code>@settitle</code> command to
+</p>
+<p>Usually, however, the beginning includes an <code>@settitle</code> command to
 define the title of the printed manual, an <code>@setchapternewpage</code>
 command, a title page, a copyright page, and permissions.  Besides an
 <code>@bye</code>, the end of a file usually includes indices and a table of
 contents.  (And of course most manuals contain a body of text as well.)
-
-</p><p>For more information, see:
+</p>
+<p>For more information, see:
 </p><ul>
 <li> <a href="texinfo_4.html#SEC47"><code>@settitle</code></a>
 </li><li> <a href="texinfo_4.html#SEC64"><code>@setchapternewpage</code></a>
@@ -706,8 +706,8 @@ contents.  (And of course most manuals contain a body of text as well.)
 `<samp>\input texinfo</samp>' command on the first line reads.  The
 `<tt>texinfo.tex</tt>' file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
-
-</p><a name="IDX334"></a>
+</p>
+<a name="IDX334"></a>
 
 <p>Usually, the installer has put the `<tt>texinfo.tex</tt>' file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
@@ -715,17 +715,17 @@ other GNU software is installed.  In this case, TeX will find the
 file and you do not need to do anything special.  If this has not been
 done, you can put `<tt>texinfo.tex</tt>' in the current directory when you
 run TeX, and TeX will find it there.
-
-</p><a name="IDX335"></a>
+</p>
+<a name="IDX335"></a>
 <p>Also, you should install `<tt>epsf.tex</tt>', if it is not already installed
 from another distribution.  More details are at the end of the description
 of the <code>@image</code> command (see section <a href="texinfo_14.html#SEC204">Inserting Images</a>).
-
-</p><a name="IDX336"></a>
+</p>
+<a name="IDX336"></a>
 <p>Likewise for `<tt>pdfcolor.tex</tt>', if it is not already installed and you
 use pdftex.
-
-</p><a name="IDX337"></a>
+</p>
+<a name="IDX337"></a>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
 <p>Optionally, you may create an additional `<tt>texinfo.cnf</tt>', and install
@@ -737,8 +737,8 @@ example, if `<tt>texinfo.cnf</tt>' contains the line `<samp>@afourpaper</samp>'
 (see section <a href="#SEC256">Printing on A4 Paper</a>), then all Texinfo documents will be processed with
 that page size in effect.  If you have nothing to put in
 `<tt>texinfo.cnf</tt>', you do not need to create it.
-
-</p><a name="IDX340"></a>
+</p>
+<a name="IDX340"></a>
 <p>If neither of the above locations for these system files suffice for
 you, you can specify the directories explicitly.  For
 `<tt>texinfo.tex</tt>', you can do this by writing the complete path for the
@@ -746,52 +746,52 @@ file after the <code>\input</code> command.  Another way, that works for both
 `<tt>texinfo.tex</tt>' and `<tt>texinfo.cnf</tt>' (and any other file TeX
 might read), is to set the <code>TEXINPUTS</code> environment variable in your
 `<tt>.cshrc</tt>' or `<tt>.profile</tt>' file.
-
-</p><p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
+</p>
+<p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
 whether you use a Bourne shell-compatible (<code>sh</code>, <code>bash</code>,
 <code>ksh</code>, &hellip;) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
 command interpreter.  The latter read the `<tt>.cshrc</tt>' file for
 initialization information, and the former read `<tt>.profile</tt>'.
-
-</p><p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
+</p>
+<p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
 sequence:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>In a `<tt>.profile</tt>' file, you could use the following <code>sh</code> command
 sequence:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
 </pre></td></tr></table>
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
 
 <p>It is customary for DOS/Windows users to put such commands in the
 `<tt>autoexec.bat</tt>' file, or in the Windows Registry.
-
 </p>
+
 <p>These settings would cause TeX to look for `<tt>\input</tt>' file first
 in the current directory, indicated by the `<samp>.</samp>', then in a
 hypothetical user's `<tt>me/mylib</tt>' directory, and finally in a system
 directory `<tt>/usr/lib/tex/macros</tt>'.
-
-</p><a name="IDX341"></a>
+</p>
+<a name="IDX341"></a>
 <a name="IDX342"></a>
 <p>Finally, you may wish to dump a `<tt>.fmt</tt>' file (see <a href="../web2c/Memory-dumps.html#Memory-dumps">(web2c)Memory dumps</a> section `Memory dumps' in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating `<tt>texinfo.tex</tt>' requires
 redumping.)  You can do this by running this command, assuming
 `<tt>epsf.tex</tt>' is findable by TeX:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
 </pre></td></tr></table>
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to
 wherever your <code>.fmt</code> files are found; typically, this will be in the
 subdirectory `<tt>web2c</tt>' of your TeX installation.
-
 </p>
+
 <hr size="6">
 <a name="Overfull-hboxes"></a>
 <a name="SEC254"></a>
@@ -818,31 +818,31 @@ the right margin.  This can occur when TeX comes upon what it
 interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 <a name="IDX343"></a>
 
 <p>(In TeX, lines are in &quot;horizontal boxes&quot;, hence the term, &quot;hbox&quot;.
 `<samp>@hbox</samp>' is a TeX primitive not needed in the Texinfo language.)
-
-</p><p>TeX also provides the line number in the Texinfo source file and
+</p>
+<p>TeX also provides the line number in the Texinfo source file and
 the text of the offending line, which is marked at all the places that
 TeX considered hyphenation.
 See section <a href="texinfo_27.html#SEC311">Catching Errors with TeX Formatting</a>,
 for more information about typesetting errors.
-
-</p><p>If the Texinfo file has an overfull hbox, you can rewrite the sentence
+</p>
+<p>If the Texinfo file has an overfull hbox, you can rewrite the sentence
 so the overfull hbox does not occur, or you can decide to leave it.  A
 small excursion into the right margin often does not matter and may not
 even be noticeable.
-
-</p><p>If you have many overfull boxes and/or an antipathy to rewriting, you
+</p>
+<p>If you have many overfull boxes and/or an antipathy to rewriting, you
 can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you're lucky) avoiding many of the bad line breaks,
 like this:
-
-</p><a name="IDX344"></a>
+</p>
+<a name="IDX344"></a>
 <table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
@@ -853,8 +853,8 @@ like this:
 output would generally be of noticeably lower quality; the default
 is `<samp>.15\hsize</samp>'.  <code>\hsize</code> is the TeX dimension
 containing the current line width.
-
-</p><a name="IDX345"></a>
+</p>
+<a name="IDX345"></a>
 <a name="IDX346"></a>
 <a name="IDX347"></a>
 <a name="IDX348"></a>
@@ -862,13 +862,13 @@ containing the current line width.
 ugly, black rectangle beside the line that contains the overfull hbox
 unless told otherwise.  This is so you will notice the location of the
 problem if you are correcting a draft.
-
-</p><a name="IDX349"></a>
+</p>
+<a name="IDX349"></a>
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@finalout
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@finalout
 </pre></td></tr></table>
 
 <hr size="6">
@@ -897,26 +897,26 @@ format.  However, you can direct TeX to typeset a document in a 7 by
 9.25 inch format that is suitable for bound books by inserting the
 following command on a line by itself at the beginning of the Texinfo
 file, before the title page:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@smallbook
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@smallbook
 </pre></td></tr></table>
 
 <p>(Since many books are about 7 by 9.25 inches, this command might better
 have been called the <code>@regularbooksize</code> command, but it came to be
 called the <code>@smallbook</code> command by comparison to the 8.5 by 11 inch format.)
-
-</p><p>If you write the <code>@smallbook</code> command between the
+</p>
+<p>If you write the <code>@smallbook</code> command between the
 start-of-header and end-of-header lines, the Texinfo mode TeX
 region formatting command, <code>texinfo-tex-region</code>, will format the
 region in &quot;small&quot; book size (see section <a href="texinfo_4.html#SEC45">Start of Header</a>).
-
-</p><p>See section <a href="texinfo_11.html#SEC148"><code>@small&hellip;</code> Block Commands</a>, for information about
-commands that make it easier to produce examples for a smaller manual.
-
-</p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format with <code>@smallbook</code> that do not
-require changing the source file.
-
 </p>
+<p>See section <a href="texinfo_11.html#SEC148"><code>@small&hellip;</code> Block Commands</a>, for information about
+commands that make it easier to produce examples for a smaller manual.
+</p>
+<p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format with <code>@smallbook</code> that do not
+require changing the source file.
+</p>
+
 <hr size="6">
 <a name="A4-Paper"></a>
 <a name="SEC256"></a>
@@ -943,8 +943,8 @@ A4 paper (or A5) with the <code>@afourpaper</code> (or <code>@afivepaper</code>)
 command.  Write the command on a line by itself near the beginning of
 the Texinfo file, before the title page.  For example, this is how you
 would write the header for this manual:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
 @c %**start of header
 @setfilename texinfo
 @settitle Texinfo
@@ -953,14 +953,14 @@ would write the header for this manual:
 </pre></td></tr></table>
 <p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to format for different paper sizes that do not
 require changing the source file.
-
-</p><a name="IDX350"></a>
+</p>
+<a name="IDX350"></a>
 <a name="IDX351"></a>
 <p>You may or may not prefer the formatting that results from the command
 <code>@afourlatex</code>.  There's also <code>@afourwide</code> for A4 paper in
 wide format.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="pagesizes"></a>
 <a name="SEC257"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -986,8 +986,8 @@ text area on the page with the <code>@pagesizes</code> command.  Write this
 on a line by itself near the beginning of the Texinfo file, before the
 title page.  The height comes first, then the width if desired,
 separated by a comma.  Examples:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 200mm,150mm  </pre></td></tr></table><p>and
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 200mm,150mm  </pre></td></tr></table><p>and
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 11.5in      </pre></td></tr></table>
 <a name="IDX352"></a>
 <a name="IDX353"></a>
@@ -995,18 +995,18 @@ separated by a comma.  Examples:
 this command specifies the size of the <em>text area</em>, not the size of
 the paper (which is 250mm by 177mm for B5, 14in by
 8.5in for legal).
-
-</p><a name="IDX354"></a>
+</p>
+<a name="IDX354"></a>
 <p>To make more elaborate changes, such as changing any of the page
 margins, you must define a new command in `<tt>texinfo.tex</tt>' (or
 `<tt>texinfo.cnf</tt>', see section <a href="#SEC253">Preparing for TeX</a>).
-
-</p><p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to specify <code>@pagesizes</code> that do not
-require changing the source file.
-
-</p><p><code>@pagesizes</code> is ignored by <code>makeinfo</code>.
-
 </p>
+<p>See section <a href="#SEC247">Format with <code>texi2dvi</code></a>, and <a href="#SEC253">Preparing for TeX</a>, for other ways to specify <code>@pagesizes</code> that do not
+require changing the source file.
+</p>
+<p><code>@pagesizes</code> is ignored by <code>makeinfo</code>.
+</p>
+
 <hr size="6">
 <a name="Cropmarks-and-Magnification"></a>
 <a name="SEC258"></a>
@@ -1032,8 +1032,8 @@ pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</cod
 command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
 @cropmarks
 @end iftex
 </pre></td></tr></table>
@@ -1045,8 +1045,8 @@ printed on regular sized paper.)  Since different printing machines work
 in different ways, you should explore the use of this command with a
 spirit of adventure.  You may have to redefine the command in
 `<tt>texinfo.tex</tt>'.
-
-</p><a name="IDX355"></a>
+</p>
+<a name="IDX355"></a>
 <a name="IDX356"></a>
 <a name="IDX357"></a>
 <p>You can attempt to direct TeX to typeset pages larger or smaller than
@@ -1056,13 +1056,13 @@ is scaled proportionally larger or smaller.  (<code>\mag</code> stands for
 plain TeX command that is prefixed with a backslash.  You have to
 write this command between <code>@tex</code> and <code>@end tex</code>
 (see section <a href="texinfo_17.html#SEC230">Raw Formatter Commands</a>).
-
-</p><p>Follow the <code>\mag</code> command with an `<samp>=</samp>' and then a number that
+</p>
+<p>Follow the <code>\mag</code> command with an `<samp>=</samp>' and then a number that
 is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@tex
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \mag=1200
 @end tex
 </pre></td></tr></table>
@@ -1070,12 +1070,12 @@ Texinfo file, before the title page:
 look better than usual by giving a larger-than-normal master to your
 print shop.  They do the reduction, thus effectively increasing the
 resolution.
-
-</p><p>Depending on your system, DVI files prepared with a
+</p>
+<p>Depending on your system, DVI files prepared with a
 nonstandard-<code>\mag</code> may not print or may print only with certain
 magnifications.  Be prepared to experiment.
-
 </p>
+
 <hr size="6">
 <a name="PDF-Output"></a>
 <a name="SEC259"></a>
@@ -1101,25 +1101,25 @@ magnifications.  Be prepared to experiment.
 <code>pdftex</code> program to process your file instead of plain
 <code>tex</code>.  Just run `<samp>pdftex foo.texi</samp>' instead of `<samp>tex
 foo.texi</samp>', or give the `<samp>--pdf</samp>' option to <code>texi2dvi</code>.
-
-</p><p><em>PDF</em> stands for `Portable Document Format'. It was invented by
+</p>
+<p><em>PDF</em> stands for `Portable Document Format'. It was invented by
 Adobe Systems some years ago for document interchange, based on their
 PostScript language.  A <a href="http://www.foolabs.com/xpdf/">PDF reader</a>
 for the X window system is freely available, as is the
 <a href="http://partners.adobe.com/asn/developer/technotes/">definition of the file format</a>.  Since PDF is a binary format, there are no
 `<samp>@ifpdf</samp>' or `<samp>@pdf</samp>' commands as with the other output
 formats.
-
-</p><p>Despite the `portable' in the name, PDF files are nowhere near as
+</p>
+<p>Despite the `portable' in the name, PDF files are nowhere near as
 portable in practice as the plain ASCII formats (Info, HTML) that
 Texinfo supports (DVI portability is arguable).  They also tend to be
 much larger and do not support the bitmap fonts used by TeX (by
 default) very well.  Nevertheless, a PDF file does preserve an actual
 printed document on a screen as faithfully as possible, so it has its place.
-
-</p><p>PDF support in Texinfo is fairly rudimentary.
-
 </p>
+<p>PDF support in Texinfo is fairly rudimentary.
+</p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

@@ -1,4 +1,5 @@
 top_without_node.texi(,2) 
+top_without_node.texi(,3) @setfilename top_without_node
 top_without_node.texi(,4) 
 top_without_node.texi(,5) Garbage
 top_without_node.texi(,6) 
@@ -26,3 +27,4 @@ top_without_node.texi(,27)
 top_without_node.texi(,28) 
 top_without_node.texi(,29) Text of chapter 2
 top_without_node.texi(,30) 
+top_without_node.texi(,31) @bye

@@ -62,8 +62,8 @@ ul.toc {list-style: none}
 
 <p>  Many Emacs commands operate on an arbitrary contiguous
 part of the current buffer. You can select text in two ways:
-
-</p><ul>
+</p>
+<ul>
 <li>
 You use special keys to select text by defining a region between point
 and the mark. 
@@ -97,23 +97,23 @@ between point and the mark is called <em>the region</em>.  You can move
 point or the mark to adjust the boundaries of the region.  It doesn't
 matter which one is set first chronologically, or which one comes
 earlier in the text.
-  
-</p><p>  Once the mark has been set, it remains until it is set again at
+</p>  
+<p>  Once the mark has been set, it remains until it is set again at
 another place.  The mark remains fixed with respect to the preceding
 character if text is inserted or deleted in a buffer.  Each Emacs
 buffer has its own mark; when you return to a buffer that had been
 selected previously, it has the same mark it had before.
-
-</p><p>  Many commands that insert text, such as <kbd>C-y</kbd> (<code>yank</code>) and
+</p>
+<p>  Many commands that insert text, such as <kbd>C-y</kbd> (<code>yank</code>) and
 <kbd>M-x insert-buffer</kbd>, position the mark at one end of the inserted
 text--the opposite end from where point is positioned, so that the region
 contains the text just inserted.
-
-</p><p>  Aside from delimiting the region, the mark is useful for marking
+</p>
+<p>  Aside from delimiting the region, the mark is useful for marking
 a spot that you may want to go back to.  To make this feature more useful,
 Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC81">9.1.1 Setting the Mark</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Commands to set the mark.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC82">9.1.2 Operating on the Region</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Summary of ways to operate on contents of the region.
@@ -146,8 +146,8 @@ Emacs remembers 16 previous locations of the mark in the <code>mark ring</code>.
 <h3 class="subsection"> 9.1.1 Setting the Mark </h3>
 
 <p>  Here are some commands for setting the mark:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-<kbd>SPC</kbd></kbd></dt>
 <dd><p>Set the mark where point is (<code>set-mark-command</code>).
 </p></dd>
@@ -174,8 +174,8 @@ capitalize the selected region.  You can also set the mark at the end of the
 text, move to the beginning, and then type <kbd>C-x C-u</kbd>.  Most commands
 that operate on the text in the region have the word <code>region</code> in
 their names.
-
-</p><a name="IDX284"></a>
+</p>
+<a name="IDX284"></a>
 <a name="IDX285"></a>
 <p>  The most common way to set the mark is with the <kbd>C-<kbd>SPC</kbd></kbd>
 command (<code>set-mark-command</code>).  This command sets the mark where
@@ -187,8 +187,8 @@ character is actually bound to <code>set-mark-command</code>.  But unless you ar
 unlucky enough to have a terminal where typing <kbd>C-<kbd>SPC</kbd></kbd> does
 not produce <kbd>C-@</kbd>, you should think of this character as
 <kbd>C-<kbd>SPC</kbd></kbd>.
-
-</p><a name="IDX286"></a>
+</p>
+<a name="IDX286"></a>
 <a name="IDX287"></a>
 <p>  Since terminals have only one cursor, Emacs cannot show you where the
 mark is located. Most people use the mark soon after they set it, before
@@ -197,8 +197,8 @@ command <kbd>C-x C-x</kbd> (<code>exchange-point-and-mark</code>) which puts the
 mark where point was and point where the mark was.  The extent of the
 region is unchanged, but the cursor and point are now at the previous
 location of the mark. 
-
-</p><a name="IDX288"></a>
+</p>
+<a name="IDX288"></a>
 <a name="IDX289"></a>
 <a name="IDX290"></a>
 <a name="IDX291"></a>
@@ -210,19 +210,19 @@ also set the mark at the end of a buffer with <kbd>C-&gt;</kbd>
 (<code>mark-end-of-buffer</code>). It pushes the mark to the end of the buffer, 
 leaving point alone. Supplying an argument to the command pushes the mark
 <var>n</var>/10 of the way from the true end of the buffer.
-
-</p><p>If you are using XEmacs under the X window system, you can set
+</p>
+<p>If you are using XEmacs under the X window system, you can set
 the variable <code>zmacs-regions</code> to <code>t</code>. This makes the current
 region (defined by point and mark) highlight and makes it available as
 the X clipboard selection, which means you can use the menu bar items on
 it.  See section <a href="#SEC99">Active Regions</a>, for more information.
- 
-</p><p>  <kbd>C-x C-x</kbd> is also useful when you are satisfied with the location of
+</p> 
+<p>  <kbd>C-x C-x</kbd> is also useful when you are satisfied with the location of
 point but want to move the mark; do <kbd>C-x C-x</kbd> to put point there and
 then you can move it.  A second use of <kbd>C-x C-x</kbd>, if necessary, puts
 the mark at the new location with point back at its original location.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Using-Region"></a>
 <a name="SEC82"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -287,8 +287,8 @@ Indent it with <kbd>C-x <kbd>TAB</kbd></kbd> or <kbd>C-M-\</kbd> (see section <a
 
 <p>  There are commands for placing point and the mark around a textual
 object such as a word, list, paragraph or page.
- 
-</p><dl compact="compact">
+</p> 
+<dl compact="compact">
 <dt><kbd> M-@</kbd></dt>
 <dd><p>Set mark after end of next word (<code>mark-word</code>).  This command and
 the following one do not move point.
@@ -317,8 +317,8 @@ the following one do not move point.
 <p><kbd>M-@</kbd> (<code>mark-word</code>) puts the mark at the end of the next word,
 while <kbd>C-M-@</kbd> (<code>mark-sexp</code>) puts it at the end of the next Lisp
 expression. These characters sometimes save you some typing.
-
-</p><a name="IDX296"></a>
+</p>
+<a name="IDX296"></a>
 <a name="IDX297"></a>
 <a name="IDX298"></a>
 <a name="IDX299"></a>
@@ -340,8 +340,8 @@ terminating page delimiter (to include it), while point goes after the
 preceding page delimiter (to exclude it).  Finally, <kbd>C-x h</kbd>
 (<code>mark-whole-buffer</code>) sets up the entire buffer as the region by
 putting point at the beginning and the mark at the end.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Mark-Ring"></a>
 <a name="SEC84"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -372,31 +372,31 @@ numeric argument.  The command moves point to where the mark was, and
 restores the mark from the ring of former marks. Repeated use of this
 command moves point to all the old marks on the ring, one by one.
 The marks you have seen go to the end of the ring, so no marks are lost.
-
-</p><p>  Each buffer has its own mark ring.  All editing commands use the current
+</p>
+<p>  Each buffer has its own mark ring.  All editing commands use the current
 buffer's mark ring.  In particular, <kbd>C-u C-<kbd>SPC</kbd></kbd> always stays in
 the same buffer.
-
-</p><p>  Many commands that can move long distances, such as <kbd>M-&lt;</kbd>
+</p>
+<p>  Many commands that can move long distances, such as <kbd>M-&lt;</kbd>
 (<code>beginning-of-buffer</code>), start by setting the mark and saving the
 old mark on the mark ring.  This makes it easier for you to move back
 later.  Searches set the mark, unless they do not actually move point.
 When a command sets the mark, `<samp>Mark Set</samp>' is printed in the
 echo area.
-
-</p><a name="IDX304"></a>
+</p>
+<a name="IDX304"></a>
 <p>  The variable <code>mark-ring-max</code> is the maximum number of entries to
 keep in the mark ring.  If that many entries exist and another entry is
 added, the last entry in the list is discarded.  Repeating <kbd>C-u
 C-<kbd>SPC</kbd></kbd> circulates through the entries that are currently in the
 ring.
-
-</p><a name="IDX305"></a>
+</p>
+<a name="IDX305"></a>
 <p>  The variable <code>mark-ring</code> holds the mark ring itself, as a list of
 marker objects in the order most recent first.  This variable is local
 in every buffer.
-
 </p>
+
 <hr size="6">
 <a name="Mouse-Selection"></a>
 <a name="SEC85"></a>
@@ -421,8 +421,8 @@ in every buffer.
 <p>  If you are using XEmacs under X, you can use the mouse pointer
 to select text. (The normal mouse pointer is an I-beam, the same
 pointer that <code>xterm</code> uses.)
-
-</p><a name="IDX306"></a>
+</p>
+<a name="IDX306"></a>
 <a name="IDX307"></a>
 <a name="IDX308"></a>
 <p>The glyph variable <code>text-pointer-glyph</code> controls the shape of
@@ -432,23 +432,23 @@ and the shape of the mouse pointer when over the modeline using
 <code>modeline-pointer-glyph</code>. (Remember, you should use
 <code>set-glyph-image</code>, not <code>setq</code>, to set one of these
 variables.)
-
-</p><a name="IDX309"></a>
+</p>
+<a name="IDX309"></a>
 <p>If you want to get fancy, you can set the foreground and background
 colors of the mouse pointer by setting the <code>pointer</code> face.
-
-</p><p>There are two ways to select a region of text with the mouse:
-
-</p><p>  To select a word in text, double-click with the left mouse button
+</p>
+<p>There are two ways to select a region of text with the mouse:
+</p>
+<p>  To select a word in text, double-click with the left mouse button
 while the mouse cursor is over the word.  The word is highlighted when
 selected. On monochrome monitors, a stippled background indicates that a
 region of text has been highlighted. On color monitors, a color
 background indicates highlighted text. You can triple-click to select
 whole lines. 
-
-</p><p>To select an arbitrary region of text:
-
-</p><ol>
+</p>
+<p>To select an arbitrary region of text:
+</p>
+<ol>
 <li>
 Move the mouse cursor over the character at the beginning of the region of
 text you want to select.
@@ -461,14 +461,14 @@ character at the end of the region of text you want to select.
 Release the left mouse button.
 </li></ol>
 <p>The selected region of text is highlighted.
-
-</p><p>  Once a region of text is selected, it becomes the primary X selection
+</p>
+<p>  Once a region of text is selected, it becomes the primary X selection
 (see section <a href="#SEC95">Using X Selections</a>) as well as the Emacs selected region. You
 can paste it into other X applications and use the options from the
 <b>Edit</b> pull-down menu on it.  Since it is also the Emacs region, you
 can use Emacs region commands on it.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Additional-Mouse-Operations"></a>
 <a name="SEC86"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -495,8 +495,8 @@ customization pleasure.  For example, if you wanted <kbd>shift-left</kbd>
 (that is, holding down the <kbd>Shift</kbd> key and clicking the left mouse
 button) to delete the character at which you are pointing, then you
 could do this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key '(shift button1) 'mouse-del-char)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key '(shift button1) 'mouse-del-char)
 </pre></td></tr></table>
 <a name="IDX310"></a>
 <a name="IDX311"></a>
@@ -575,41 +575,41 @@ This is the default binding of <kbd>control-button1</kbd>.
 you click-and-drag, the selection is set to the region between the
 point of the initial click and the point at which you release the
 button.  These positions do not need to be ordered. 
-
-</p><p>If you click-and-release without moving the mouse, the point is moved,
+</p>
+<p>If you click-and-release without moving the mouse, the point is moved,
 and the selection is disowned (there will be no selection owner.)  The
 mark will be set to the previous position of point.
-
-</p><p>If you double-click, the selection will extend by symbols instead of by
+</p>
+<p>If you double-click, the selection will extend by symbols instead of by
 characters.  If you triple-click, the selection will extend by lines.
-
-</p><p>If you drag the mouse off the top or bottom of the window, you can
+</p>
+<p>If you drag the mouse off the top or bottom of the window, you can
 select pieces of text that are larger than the visible part of the
 buffer; the buffer will scroll as necessary.
-
-</p><p>The selected text becomes the current X selection, and is also copied to
+</p>
+<p>The selected text becomes the current X selection, and is also copied to
 the top of the kill ring.  Point will be left at the position at
 which you released the button and the mark will be left at the initial
 click position.  Bind a mouse click to
 <kbd>mouse-track-and-copy-to-cutbuffer</kbd> to copy selections to the cut buffer.
 (See also the <code>mouse-track-adjust</code> command, on <kbd>Shift-button1</kbd>.)
-
-</p><p>The <kbd>M-x mouse-track-adjust</kbd> command should be bound to a mouse
+</p>
+<p>The <kbd>M-x mouse-track-adjust</kbd> command should be bound to a mouse
 button.  The selection will be enlarged or shrunk so that the point of
 the mouse click is one of its endpoints.  This is only meaningful
 after the <code>mouse-track</code> command (<kbd>button1</kbd>) has been executed.
-
-</p><p>The <kbd>M-x mouse-track-delete-and-insert</kbd> command is exactly the same
+</p>
+<p>The <kbd>M-x mouse-track-delete-and-insert</kbd> command is exactly the same
 as the <code>mouse-track</code> command on <kbd>button1</kbd>, except that point is
 not moved; the selected text is immediately inserted after being
 selected; and the text of the selection is deleted.
-
-</p><p>The <kbd>M-x mouse-track-insert</kbd> command is exactly the same as the
+</p>
+<p>The <kbd>M-x mouse-track-insert</kbd> command is exactly the same as the
 <code>mouse-track</code> command on <kbd>button1</kbd>, except that point is not moved;
 the selected text is immediately inserted after being selected; and the
 selection is immediately disowned afterwards.
-
 </p>
+
 
 <hr size="6">
 <a name="Killing"></a>
@@ -638,8 +638,8 @@ other parts of the buffer.  Commands which erase text and save it in the
 kill ring are known as <em>kill</em> commands.  Some other commands erase
 text but do not save it; they are known as <em>delete</em> commands.  (This
 distinction is made only for erasing text in the buffer.)
-
-</p><p>The commands' names and individual descriptions use the words
+</p>
+<p>The commands' names and individual descriptions use the words
 `<samp>kill</samp>' and `<samp>delete</samp>' to indicate what they do.  If you perform
 a kill or delete command by mistake, use the <kbd>C-x u</kbd> (<code>undo</code>)
 command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a>). The delete commands include <kbd>C-d</kbd>
@@ -647,8 +647,8 @@ command to undo it (see section <a href="xemacs_8.html#SEC59">Undoing Changes</a
 delete only one character at a time, and those commands that delete only
 spaces or newlines.  Commands that can destroy significant amounts of
 nontrivial data usually kill.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC88"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC87" title="Previous section in reading order"> &lt; </a>]</td>
@@ -700,8 +700,8 @@ the buffer; deleting a newline joins two lines.  Actually, <kbd>C-d</kbd> and
 <kbd>DEL</kbd> aren't always delete commands; if you give them an argument,
 they kill instead, since they can erase more than one character this
 way.
-
-</p><a name="IDX324"></a>
+</p>
+<a name="IDX324"></a>
 <a name="IDX325"></a>
 <a name="IDX326"></a>
 <a name="IDX327"></a>
@@ -715,16 +715,16 @@ all spaces and tab characters before and after point.
 <kbd>M-<kbd>SPC</kbd></kbd> (<code>just-one-space</code>) does the same but leaves a
 single space after point, regardless of the number of spaces that
 existed previously (even zero).
-
-</p><p>  <kbd>C-x C-o</kbd> (<code>delete-blank-lines</code>) deletes all blank lines after
+</p>
+<p>  <kbd>C-x C-o</kbd> (<code>delete-blank-lines</code>) deletes all blank lines after
 the current line. If the current line is blank, it deletes all blank lines
 preceding the current line as well as leaving one blank line, the current
 line.  <kbd>M-^</kbd> (<code>delete-indentation</code>) joins the current line and
 the previous line, or, if given an argument, joins the current line and 
 the next line by deleting a newline and all surrounding spaces, possibly
 leaving a single space.  See section <a href="xemacs_22.html#SEC192">M-^</a>.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC89"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC88" title="Previous section in reading order"> &lt; </a>]</td>
@@ -757,26 +757,26 @@ a line, it kills all the text on the line, leaving the line blank.  If
 given on a blank line, the blank line disappears.  As a consequence, a
 line disappears completely if you go to the front of a non-blank line
 and type <kbd>C-k</kbd> twice.
-
-</p><p>  More generally, <kbd>C-k</kbd> kills from point up to the end of the line,
+</p>
+<p>  More generally, <kbd>C-k</kbd> kills from point up to the end of the line,
 unless it is at the end of a line.  In that case, it kills the newline
 following the line, thus merging the next line into the current one.
 Emacs ignores invisible spaces and tabs at the end of the line when deciding
 which case applies: if point appears to be at the end of the line, you
 can be sure the newline will be killed.
-
-</p><p>  If you give <kbd>C-k</kbd> a positive argument, it kills that many lines
+</p>
+<p>  If you give <kbd>C-k</kbd> a positive argument, it kills that many lines
 and the newlines that follow them (however, text on the current line
 before point is not killed).  With a negative argument, <kbd>C-k</kbd> kills
 back to a number of line beginnings.  An argument of -2 means
 kill back to the second line beginning.  If point is at the beginning of
 a line, that line beginning doesn't count, so <kbd>C-u - 2 C-k</kbd> with
 point at the front of a line kills the two previous lines.
-
-</p><p>  <kbd>C-k</kbd> with an argument of zero kills all the text before point on the
+</p>
+<p>  <kbd>C-k</kbd> with an argument of zero kills all the text before point on the
 current line.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="SEC90"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC89" title="Previous section in reading order"> &lt; </a>]</td>
@@ -827,8 +827,8 @@ kills everything between point and the mark. You can use this command to
 kill any contiguous sequence of characters by first setting the mark at
 one end of a sequence of characters, then going to the other end and
 typing <kbd>C-w</kbd>.
-
-</p><a name="IDX334"></a>
+</p>
+<a name="IDX334"></a>
 <a name="IDX335"></a>
 <p>  A convenient way of killing is combined with searching: <kbd>M-z</kbd>
 (<code>zap-to-char</code>) reads a character and kills from point up to (but not
@@ -836,13 +836,13 @@ including) the next occurrence of that character in the buffer.  If there
 is no next occurrence, killing goes to the end of the buffer.  A numeric
 argument acts as a repeat count.  A negative argument means to search
 backward and kill text before point.
-
-</p><p>  Other syntactic units can be killed: words, with <kbd>M-<kbd>DEL</kbd></kbd> and
+</p>
+<p>  Other syntactic units can be killed: words, with <kbd>M-<kbd>DEL</kbd></kbd> and
 <kbd>M-d</kbd> (see section <a href="xemacs_23.html#SEC206">Words</a>); sexps, with <kbd>C-M-k</kbd> (see section <a href="xemacs_24.html#SEC217">Lists and Sexps</a>); and
 sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
 (see section <a href="xemacs_23.html#SEC207">Sentences</a>).
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Yanking"></a>
 <a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -866,8 +866,8 @@ sentences, with <kbd>C-x <kbd>DEL</kbd></kbd> and <kbd>M-k</kbd>
 <p>  <em>Yanking</em> means getting back text which was killed. Some systems
 call this &quot;pasting&quot;.  The usual way to move or copy text is to kill it
 and then yank it one or more times.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> C-y</kbd></dt>
 <dd><p>Yank last killed text (<code>yank</code>).
 </p></dd>
@@ -919,34 +919,34 @@ text that have been killed.  There is only one kill ring, used in all
 buffers, so you can kill text in one buffer and yank it in another buffer.
 This is the usual way to move text from one file to another.
 (See section <a href="#SEC100">Accumulating Text</a>, for some other ways.)
-
-</p><p>  If you have two separate Emacs processes, you cannot use the kill ring
+</p>
+<p>  If you have two separate Emacs processes, you cannot use the kill ring
 to move text. If you are using XEmacs under X, however, you can
 use the X selection mechanism to move text from one to another.
-
-</p><p>If you are using XEmacs under X and have one Emacs process with
+</p>
+<p>If you are using XEmacs under X and have one Emacs process with
 multiple frames, they do share the same kill ring.  You can kill or
 copy text in one Emacs frame, then yank it in the other frame
 belonging to the same process.
-
-</p><p>  The command <kbd>C-y</kbd> (<code>yank</code>) reinserts the text of the most recent
+</p>
+<p>  The command <kbd>C-y</kbd> (<code>yank</code>) reinserts the text of the most recent
 kill.  It leaves the cursor at the end of the text and sets the mark at
 the beginning of the text.  See section <a href="#SEC79">Selecting Text</a>.
-
-</p><p>  <kbd>C-u C-y</kbd> yanks the text, leaves the cursor in front of the text,
+</p>
+<p>  <kbd>C-u C-y</kbd> yanks the text, leaves the cursor in front of the text,
 and sets the mark after it, if the argument is with just a <kbd>C-u</kbd>.
 Any other argument, including <kbd>C-u</kbd> and digits, has different
 results, described below, under &quot;Yanking Earlier Kills&quot;.
-
-</p><a name="IDX336"></a>
+</p>
+<a name="IDX336"></a>
 <a name="IDX337"></a>
 <p> To copy a block of text, you can also use <kbd>M-w</kbd>
 (<code>copy-region-as-kill</code>), which copies the region into the kill ring
 without removing it from the buffer. <kbd>M-w</kbd> is similar to <kbd>C-w</kbd>
 followed by <kbd>C-y</kbd> but does not mark the buffer as &quot;modified&quot; and
 does not actually cut anything.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Appending-Kills"></a>
 <a name="SEC93"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -974,15 +974,15 @@ you don't have to kill all the text you want to yank in one command; you
 can kill line after line, or word after word, until you have killed what
 you want, then get it all back at once using <kbd>C-y</kbd>. (Thus we join
 television in leading people to kill thoughtlessly.)
-
-</p><p>  Commands that kill forward from point add onto the end of the previous
+</p>
+<p>  Commands that kill forward from point add onto the end of the previous
 killed text.  Commands that kill backward from point add onto the
 beginning.  This way, any sequence of mixed forward and backward kill
 commands puts all the killed text into one entry without rearrangement.
 Numeric arguments do not break the sequence of appending kills.  For
 example, suppose the buffer contains:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This is the first
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is the first
 line of sample text
 and here is the third.
 </pre></td></tr></table>
@@ -994,8 +994,8 @@ followed it, and the second <kbd>C-k</kbd> kills the newline after the second
 line.  The result is that the buffer contains `<samp>This is and here is the
 third.</samp>' and a single kill entry contains `<samp>the first<kbd>RET</kbd>line of
 sample text<kbd>RET</kbd></samp>'--all the killed text, in its original order.
-
-</p><a name="IDX338"></a>
+</p>
+<a name="IDX338"></a>
 <a name="IDX339"></a>
 <p>  If a kill command is separated from the last kill command by other
 commands (not just numeric arguments), it starts a new entry on the kill
@@ -1005,8 +1005,8 @@ if it is a kill command, to append the text it kills to the last killed
 text, instead of starting a new entry.  With <kbd>C-M-w</kbd>, you can kill
 several separated pieces of text and accumulate them to be yanked back
 in one place.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Earlier-Kills"></a>
 <a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1034,8 +1034,8 @@ yanked and replaces it with the text from an earlier kill.  To recover
 the text of the next-to-the-last kill, first use <kbd>C-y</kbd> to recover
 the last kill, then <kbd>M-y</kbd> to replace it with the previous
 kill.
-
-</p><p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
+</p>
+<p>  You can think in terms of a &quot;last yank&quot; pointer which points at an item
 in the kill ring.  Each time you kill, the &quot;last yank&quot; pointer moves to
 the new item at the front of the ring.  <kbd>C-y</kbd> yanks the item
 which the &quot;last yank&quot; pointer points to.  <kbd>M-y</kbd> moves the &quot;last
@@ -1044,24 +1044,24 @@ match.  Enough <kbd>M-y</kbd> commands can move the pointer to any item in the
 ring, so you can get any item into the buffer.  Eventually the pointer
 reaches the end of the ring; the next <kbd>M-y</kbd> moves it to the first item
 again.
-
-</p><p>  Yanking moves the &quot;last yank&quot; pointer around the ring, but does not
+</p>
+<p>  Yanking moves the &quot;last yank&quot; pointer around the ring, but does not
 change the order of the entries in the ring, which always runs from the
 most recent kill at the front to the oldest one still remembered.
-
-</p><p>  Use <kbd>M-y</kbd> with a numeric argument to advance the &quot;last
+</p>
+<p>  Use <kbd>M-y</kbd> with a numeric argument to advance the &quot;last
 yank&quot; pointer by the specified number of items.  A negative argument
 moves the pointer toward the front of the ring; from the front of the
 ring, it moves to the last entry and starts moving forward from there.
-
-</p><p>  Once the text you are looking for is brought into the buffer, you can
+</p>
+<p>  Once the text you are looking for is brought into the buffer, you can
 stop doing <kbd>M-y</kbd> commands and the text will stay there. Since the
 text is just a copy of the kill ring item, editing it in the buffer does
 not change what's in the ring.  As long you don't kill additional text,
 the &quot;last yank&quot; pointer remains at the same place in the kill ring:
 repeating <kbd>C-y</kbd> will yank another copy of the same old kill.
-
-</p><p>  If you know how many <kbd>M-y</kbd> commands it would take to find the
+</p>
+<p>  If you know how many <kbd>M-y</kbd> commands it would take to find the
 text you want, you can yank that text in one step using <kbd>C-y</kbd> with
 a numeric argument.  <kbd>C-y</kbd> with an argument greater than one
 restores the text the specified number of entries back in the kill
@@ -1069,12 +1069,12 @@ ring.  Thus, <kbd>C-u 2 C-y</kbd> gets the next to the last block of killed
 text.  It is equivalent to <kbd>C-y M-y</kbd>.  <kbd>C-y</kbd> with a numeric
 argument starts counting from the &quot;last yank&quot; pointer, and sets the
 &quot;last yank&quot; pointer to the entry that it yanks.
-
-</p><a name="IDX340"></a>
+</p>
+<a name="IDX340"></a>
 <p>  The variable <code>kill-ring-max</code> controls the length of the kill
 ring; no more than that many blocks of killed text are saved.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Using-X-Selections"></a>
 <a name="SEC95"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1101,8 +1101,8 @@ application, you can select text by pressing the left mouse button and
 dragging the cursor over the text you want to copy.  The text becomes the
 primary X selection and is highlighted.  The highlighted region is also
 the Emacs selected region.
-
-</p><ul>
+</p>
+<ul>
 <li>
 Since the region is the primary X selection, you can go to a different X
 application and click the middle mouse button: the text that you selected in
@@ -1151,24 +1151,24 @@ common one is the <b>Clipboard</b> selection.  Some applications prefer to
 transfer data using this selection in preference to the <b>Primary</b>.
 One can transfer text from the <b>Primary</b> selection to the  <b>Clipboard</b>
 selection with the <b>Copy</b> command under the <b>Edit</b> menu in the menubar.
-
-</p><p>Usually, the clipboard selection is not visible.  However, if you run the
+</p>
+<p>Usually, the clipboard selection is not visible.  However, if you run the
 `<tt>xclipboard</tt>' application, the text most recently copied to the clipboard
 (with the <b>Copy</b> command) is displayed in a window.  Any time new text is
 thus copied, the `<tt>xclipboard</tt>' application makes a copy of it and displays
 it in its window.  The value of the clipboard can survive the lifetime of the
 running Emacs process.  The <code>xclipboard</code> man page provides more details.
-
-</p><p>Warning: If you use the `<tt>xclipboard</tt>' application, remember that it
+</p>
+<p>Warning: If you use the `<tt>xclipboard</tt>' application, remember that it
 maintains a list of all things that have been pasted to the clipboard (that
 is, copied with the <b>Copy</b> command).  If you don't manually delete elements
 from this list by clicking on the <b>Delete</b> button in the <code>xclipboard</code>
 window, the clipboard will eventually consume a lot of memory.
-
-</p><p>In summary, some X applications (such as `<tt>xterm</tt>') allow one to paste
+</p>
+<p>In summary, some X applications (such as `<tt>xterm</tt>') allow one to paste
 text in them from XEmacs in the following way:
-
-</p><ul>
+</p>
+<ul>
 <li>
 Drag out a region of text in Emacs with the left mouse button,
 making that text be the <b>Primary</b> selection.
@@ -1180,8 +1180,8 @@ selection.
 
 <p>With some other applications (notably, the OpenWindows and Motif tools) you
 must use this method instead:
-
-</p><ul>
+</p>
+<ul>
 <li>
 Drag out a region of text in Emacs with the left mouse button,
 making that text be the <b>Primary</b> selection.
@@ -1274,8 +1274,8 @@ cut buffer.
 applications.  XEmacs supports cut buffers for compatibility
 with older programs, even though selections are now the preferred way of
 transferring text.
-
-</p><p>X has a concept of applications &quot;owning&quot; selections.  When you select
+</p>
+<p>X has a concept of applications &quot;owning&quot; selections.  When you select
 text by clicking and dragging inside an application, the application
 tells the X server that it owns the selection.  When another
 application asks the X server for the value of the selection, the X
@@ -1285,16 +1285,16 @@ someone wants it; the act of making a selection doesn't transfer data.
 Cut buffers are different: when you &quot;own&quot; a cut buffer, the data is
 actually transferred to the X server immediately, and survives the
 lifetime of the application.
-
-</p><p>Any time a region of text becomes the primary selection in Emacs,
+</p>
+<p>Any time a region of text becomes the primary selection in Emacs,
 Emacs also copies that text to the cut buffer.  This makes it possible
 to copy text from an XEmacs buffer and paste it into an older,
 non-selection-based application (such as Emacs 18).
-
-</p><p>Note: Older versions of Emacs could not access the X selections, only
+</p>
+<p>Note: Older versions of Emacs could not access the X selections, only
 the X cut buffers.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Active-Regions"></a>
 <a name="SEC99"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1320,12 +1320,12 @@ click-and-drag mechanism and text you select by setting point and the
 mark is highlighted. You can use Emacs region commands as well as the
 <b>Cut</b> and <b>Copy</b> commands on the highlighted region you selected
 with the mouse.
-
-</p><p>If you prefer, you can make a distinction between text selected with the
+</p>
+<p>If you prefer, you can make a distinction between text selected with the
 mouse and text selected with point and the mark by setting the variable
 <code>zmacs-regions</code> to <code>nil</code>.  In that case:
-
-</p><ul>
+</p>
+<ul>
 <li>
 The text selected with the mouse becomes both the X selection and the
 Emacs selected region. You can use menu-bar commands as well as Emacs
@@ -1339,8 +1339,8 @@ only use Emacs region commands on it, not the menu-bar items.
 The idea behind them is that commands can only operate on a region when
 the region is in an &quot;active&quot; state.  Put simply, you can only operate on
 a region that is highlighted.
-
-</p><a name="IDX341"></a>
+</p>
+<a name="IDX341"></a>
 <p>The variable <code>zmacs-regions</code> checks whether LISPM-style active
 regions should be used.  This means that commands that operate on the
 region (the area between point and the mark) only work while
@@ -1348,8 +1348,8 @@ the region is in the active state, which is indicated by highlighting.
 Most commands causes the region to not be in the active state;
 for example, <kbd>C-w</kbd> only works immediately after activating the
 region.
-
-</p><p>More specifically:
+</p>
+<p>More specifically:
 </p><ul>
 <li>
 Commands that operate on the region only work if the region is active.
@@ -1367,57 +1367,57 @@ region.  Moving the cursor with normal motion commands (<kbd>C-n</kbd>,
 <kbd>C-p</kbd>, etc.) will cause the region between point and the
 recently-pushed mark to be highlighted.  It will remain highlighted
 until some non-motion command is executed.
-
-</p><p><code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>) activates the region.
+</p>
+<p><code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>) activates the region.
 So if you mark a region and execute a command that operates on it, you
 can reactivate the same region with <kbd>C-x C-x</kbd> (or perhaps <kbd>C-x
 C-x C-x C-x</kbd>) to operate on it again.
-
-</p><p>Generally, commands that push marks as a means of navigation, such as
+</p>
+<p>Generally, commands that push marks as a means of navigation, such as
 <code>beginning-of-buffer</code> (<kbd>M-&lt;</kbd>) and <code>end-of-buffer</code>
 (<kbd>M-&gt;</kbd>), do not activate the region.  However, commands that push
 marks as a means of marking an area of text, such as <code>mark-defun</code>
 (<kbd>M-C-h</kbd>), <code>mark-word</code> (<kbd>M-@</kbd>), and <code>mark-whole-buffer</code>
 (<kbd>C-x h</kbd>), do activate the region.
-
-</p><p>When <code>zmacs-regions</code> is <code>t</code>, there is no distinction between
+</p>
+<p>When <code>zmacs-regions</code> is <code>t</code>, there is no distinction between
 the primary X selection and the active region selected by point and the
 mark.  To see this, set the mark (<kbd>C-SPC</kbd>) and move the cursor
 with any cursor-motion command: the region between point and mark is
 highlighted, and you can watch it grow and shrink as you move the
 cursor.
-
-</p><p>Any other commands besides cursor-motion commands (such as inserting or
+</p>
+<p>Any other commands besides cursor-motion commands (such as inserting or
 deleting text) will cause the region to no longer be active; it will no
 longer be highlighted, and will no longer be the primary selection.
 Region can be explicitly deactivated with <kbd>C-g</kbd>.
-
-</p><p>Commands that require a region (such as <kbd>C-w</kbd>) signal an error if
+</p>
+<p>Commands that require a region (such as <kbd>C-w</kbd>) signal an error if
 the region is not active.  Certain commands cause the region to be in
 its active state.  The most common ones are <code>push-mark</code>
 (<kbd>C-SPC</kbd>) and <code>exchange-point-and-mark</code> (<kbd>C-x C-x</kbd>).
-
-</p><a name="IDX342"></a>
+</p>
+<a name="IDX342"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can be non-intrusive
 on the state of the region by setting the variable <code>zmacs-region-stays</code>
 to a non-<code>nil</code> value.  If you are writing a new Emacs command that
 is conceptually a &quot;motion&quot; command and should not interfere with the
 current highlightedness of the region, then you may set this variable.
 It is reset to <code>nil</code> after each user command is executed.
-
-</p><a name="IDX343"></a>
+</p>
+<a name="IDX343"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can make the region between
 point and mark go into the active (highlighted) state by using the
 function <code>zmacs-activate-region</code>. Only a small number of commands
 should ever do this. 
-
-</p><a name="IDX344"></a>
+</p>
+<a name="IDX344"></a>
 <p>When <code>zmacs-regions</code> is <code>t</code>, programs can deactivate the region
 between point and the mark by using <code>zmacs-deactivate-region</code>.
 Note: you should not have to call this function; the command loop calls
 it when appropriate. 
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Accumulating-Text"></a>
 <a name="SEC100"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1441,13 +1441,13 @@ it when appropriate.
 <p>  Usually you copy or move text by killing it and yanking it, but there are
 other ways that are useful for copying one block of text in many places, or
 for copying many scattered blocks of text into one place.
-
-</p><p>  If you like, you can accumulate blocks of text from scattered
+</p>
+<p>  If you like, you can accumulate blocks of text from scattered
 locations either into a buffer or into a file.  The relevant commands
 are described here.  You can also use Emacs registers for storing and
 accumulating text.  See section <a href="xemacs_13.html#SEC102">Registers</a>.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> M-x append-to-buffer</kbd></dt>
 <dd><p>Append region to contents of specified buffer (<code>append-to-buffer</code>).
 </p></dd>
@@ -1469,8 +1469,8 @@ accumulating text.  See section <a href="xemacs_13.html#SEC102">Registers</a>.
 append-to-buffer</kbd>, which inserts a copy of the region into the buffer
 <var>buffername</var>, at the location of point in that buffer.  If there is
 no buffer with the given name, one is created.
-
-</p><p>  If you append text to a buffer that has been used for editing, the
+</p>
+<p>  If you append text to a buffer that has been used for editing, the
 copied text goes to the place where point is.  Point in that buffer is
 left at the end of the copied text, so successive uses of
 <code>append-to-buffer</code> accumulate the text in the specified buffer in
@@ -1478,21 +1478,21 @@ the same order as they were copied.  Strictly speaking, this command does
 not always append to the text already in the buffer; but if this command
 is the only command used to alter a buffer, it does always append to the
 existing text because point is always at the end.
-
-</p><p>  <kbd>M-x prepend-to-buffer</kbd> is similar to <code>append-to-buffer</code>, but
+</p>
+<p>  <kbd>M-x prepend-to-buffer</kbd> is similar to <code>append-to-buffer</code>, but
 point in the other buffer is left before the copied text, so successive
 prependings add text in reverse order.  <kbd>M-x copy-to-buffer</kbd> is
 similar, except that any existing text in the other buffer is deleted,
 so the buffer is left containing just the text newly copied into it.
-
-</p><p>  You can retrieve the accumulated text from that buffer with <kbd>M-x
+</p>
+<p>  You can retrieve the accumulated text from that buffer with <kbd>M-x
 insert-buffer</kbd>, which takes <var>buffername</var> as an argument.  It inserts
 a copy of the text in buffer <var>buffername</var> into the selected buffer.
 You could alternatively select the other buffer for editing, perhaps moving
 text from it by killing or with <code>append-to-buffer</code>.  See section <a href="xemacs_18.html#SEC169">Using Multiple Buffers</a>, for
 background information on buffers.
-
-</p><p>  Instead of accumulating text within Emacs in a buffer, you can append
+</p>
+<p>  Instead of accumulating text within Emacs in a buffer, you can append
 text directly into a file with <kbd>M-x append-to-file</kbd>, which takes
 <var>file-name</var> as an argument.  It adds the text of the region to the
 end of the specified file.  The file is changed immediately on disk.
@@ -1500,8 +1500,8 @@ This command is normally used with files that are <i>not</i> being visited
 in Emacs.  Using it on a file that Emacs is visiting can produce
 confusing results, because the file's text inside Emacs does not change
 while the file itself changes.
-
-</p><hr size="6">
+</p>
+<hr size="6">
 <a name="Rectangles"></a>
 <a name="SEC101"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1528,16 +1528,16 @@ Commands are provided to kill rectangles, yank killed rectangles, clear
 them out, or delete them.  Rectangle commands are useful with text in
 multicolumnar formats, like code with comments at the right,
 or for changing text into or out of such formats.
-
-</p><p>  To specify the rectangle a command should work on, put the mark at one
+</p>
+<p>  To specify the rectangle a command should work on, put the mark at one
 corner and point at the opposite corner.  The specified rectangle is
 called the <em>region-rectangle</em> because it is controlled about the
 same way the region is controlled.  Remember that a given
 combination of point and mark values can be interpreted either as
 specifying a region or as specifying a rectangle; it is up to the
 command that uses them to choose the interpretation.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><kbd> M-x delete-rectangle</kbd></dt>
 <dd><p>Delete the text of the region-rectangle, moving any following text on
 each line leftward to the left edge of the region-rectangle.
@@ -1560,8 +1560,8 @@ The previous contents of the region-rectangle are pushed rightward.
 
 <p>  The rectangle operations fall into two classes: commands deleting and
 moving rectangles, and commands for blank rectangles.
-
-</p><a name="IDX345"></a>
+</p>
+<a name="IDX345"></a>
 <a name="IDX346"></a>
 <p>  There are two ways to get rid of the text in a rectangle: you can discard
 the text (delete it) or save it as the &quot;last killed&quot; rectangle.  The
@@ -1569,38 +1569,38 @@ commands for these two ways are <kbd>M-x delete-rectangle</kbd> and <kbd>M-x
 kill-rectangle</kbd>.  In either case, the portion of each line that falls inside
 the rectangle's boundaries is deleted, causing following text (if any) on
 the line to move left.
-
-</p><p>  Note that &quot;killing&quot; a rectangle is not killing in the usual sense; the
+</p>
+<p>  Note that &quot;killing&quot; a rectangle is not killing in the usual sense; the
 rectangle is not stored in the kill ring, but in a special place that
 only records the most recently killed rectangle (that is, does not
 append to a killed rectangle).  Different yank commands
 have to be used and only one rectangle is stored, because yanking
 a rectangle is quite different from yanking linear text and yank-popping
 commands are difficult to make sense of.
-
-</p><p>  Inserting a rectangle is the opposite of deleting one.  You specify
+</p>
+<p>  Inserting a rectangle is the opposite of deleting one.  You specify
 where to put the upper left corner by putting point there.  The
 rectangle's first line is inserted at point, the rectangle's second line
 is inserted at a point one line vertically down, and so on.  The number
 of lines affected is determined by the height of the saved rectangle.
-
-</p><a name="IDX347"></a>
+</p>
+<a name="IDX347"></a>
 <p>  To insert the last killed rectangle, type <kbd>M-x yank-rectangle</kbd>.
 This can be used to convert single-column lists into double-column
 lists; kill the second half of the list as a rectangle and then
 yank it beside the first line of the list.
-
-</p><a name="IDX348"></a>
+</p>
+<a name="IDX348"></a>
 <a name="IDX349"></a>
 <p>  There are two commands for working with blank rectangles: <kbd>M-x
 clear-rectangle</kbd> erases existing text, and <kbd>M-x open-rectangle</kbd>
 inserts a blank rectangle.  Clearing a rectangle is equivalent to
 deleting it and then inserting a blank rectangle of the same size.
-
-</p><p>  Rectangles can also be copied into and out of registers.
-See section <a href="xemacs_13.html#SEC105">Rectangle Registers</a>.
-
 </p>
+<p>  Rectangles can also be copied into and out of registers.
+See section <a href="xemacs_13.html#SEC105">Rectangle Registers</a>.
+</p>
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC79" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

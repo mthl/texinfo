@@ -1,4 +1,5 @@
 more_before_top.texi(,2) 
+more_before_top.texi(,3) @setfilename index_nodes
 more_before_top.texi(,4) 
 more_before_top.texi(,5) 
 more_before_top.texi(,6) @node first before top, Top, ,(dir)
@@ -69,3 +70,4 @@ more_before_top.texi(,70) @cindex a concept a node
 more_before_top.texi(,71) 
 more_before_top.texi(,72) @printindex cp
 more_before_top.texi(,73) 
+more_before_top.texi(,74) @bye

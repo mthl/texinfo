@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence</title>
+<title>GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence</title>
 
-<meta name="description" content="Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence">
-<meta name="keywords" content="Texinfo: 13.9.6 @equiv{} (==): Indicating Equivalence">
+<meta name="description" content="GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.9.6 @equiv{} (==): Indicating Equivalence">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,26 +82,26 @@ ul.toc {list-style: none}
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
-
-</p><p>The <code>@equiv{}</code> command is displayed as `<samp>&equiv;</samp>' in Info
+</p>
+<p>The <code>@equiv{}</code> command is displayed as `<samp>&equiv;</samp>' in Info
 and as a three parallel horizontal lines in the printed output.
-
-</p><p>Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+</p>
+<p>Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
 </pre></td></tr></table>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
 identical results to evaluating <code>(list 'keymap)</code>.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

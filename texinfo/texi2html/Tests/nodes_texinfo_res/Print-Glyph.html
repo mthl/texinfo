@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13.9.4 @print{} (-|): Indicating Printed Output</title>
+<title>GNU Texinfo 4.2: 13.9.4 @print{} (-|): Indicating Printed Output</title>
 
-<meta name="description" content="Texinfo: 13.9.4 @print{} (-|): Indicating Printed Output">
-<meta name="keywords" content="Texinfo: 13.9.4 @print{} (-|): Indicating Printed Output">
+<meta name="description" content="GNU Texinfo 4.2: 13.9.4 @print{} (-|): Indicating Printed Output">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.9.4 @print{} (-|): Indicating Printed Output">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,24 +82,24 @@ ul.toc {list-style: none}
 
 <p>Sometimes an expression will print output during its execution.  You
 can indicate the printed output with the <code>@print{}</code> command.
-
-</p><p>The <code>@print{}</code> command is displayed as `<samp>-|</samp>' in Info
+</p>
+<p>The <code>@print{}</code> command is displayed as `<samp>-|</samp>' in Info
 and similarly, as a horizontal dash butting against a vertical bar, in
 the printed output.
-
-</p><p>In the following example, the printed text is indicated with
+</p>
+<p>In the following example, the printed text is indicated with
 `<samp>-|</samp>', and the value of the expression follows on the
 last line.
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
      -| foo
      -| bar
      &rArr; bar
 </pre></td></tr></table>
 
 <p>In a Texinfo source file, this example is written as follows:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
 (progn (print 'foo) (print 'bar))
      @print{} foo
      @print{} bar

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 14. Making and Preventing Breaks</title>
+<title>GNU Texinfo 4.2: 14. Making and Preventing Breaks</title>
 
-<meta name="description" content="Texinfo: 14. Making and Preventing Breaks">
-<meta name="keywords" content="Texinfo: 14. Making and Preventing Breaks">
+<meta name="description" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
+<meta name="keywords" content="GNU Texinfo 4.2: 14. Making and Preventing Breaks">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,8 +85,8 @@ Info formatting commands.  Line, paragraph, or page breaks sometimes
 occur in the `wrong' place in one or other form of output.  You must
 ensure that text looks right both in the printed manual and in the
 Info file.
-
-</p><a name="IDX255"></a>
+</p>
+<a name="IDX255"></a>
 <a name="IDX256"></a>
 <p>For example, in a printed manual, page breaks may occur awkwardly in
 the middle of an example; to prevent this, you can hold text together
@@ -95,8 +95,8 @@ two pages.  Conversely, you may want to force a page break where none
 would occur normally.  Fortunately, problems like these do not often
 arise.  When they do, use the break, break prevention, or pagination
 commands.
-
-</p><table class="menu" border="0" cellspacing="0">
+</p>
+<table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Break-Commands">&bull; Break Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Cause and prevent splits.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Line-Breaks.html#SEC207">14.1 <code>@*</code>: Generate Line Breaks</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to force a single line to use two lines.
@@ -121,20 +121,20 @@ commands.
 <h2 class="heading"> Break Commands </h2>
 
 <p>The break commands create or allow line and paragraph breaks:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @*</code></dt>
 <dd><p>Force a line break.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @sp <var>n</var></code></dt>
 <dd><p>Skip <var>n</var> blank lines.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @-</code></dt>
 <dd><p>Insert a discretionary hyphen.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Define hyphen points in <var>hy-phen-a-ted words</var>.
 </p></dd>
@@ -142,8 +142,8 @@ commands.
 
 <p>The line-break-prevention command holds text together all on one
 line:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @w{<var>text</var>}</code></dt>
 <dd><p>Prevent <var>text</var> from being split and hyphenated across two lines.
 </p></dd>
@@ -151,16 +151,16 @@ line:
 
 <p>The pagination commands apply only to printed output, since Info
 files do not have pages.
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @page</code></dt>
 <dd><p>Start a new page in the printed manual.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @group</code></dt>
 <dd><p>Hold text together that must appear on one printed page.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @need <var>mils</var></code></dt>
 <dd><p>Start a new printed page if not enough space on this one.
 </p></dd>

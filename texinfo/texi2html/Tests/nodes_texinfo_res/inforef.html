@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 8.7 @inforef</title>
+<title>GNU Texinfo 4.2: 8.7 @inforef</title>
 
-<meta name="description" content="Texinfo: 8.7 @inforef">
-<meta name="keywords" content="Texinfo: 8.7 @inforef">
+<meta name="description" content="GNU Texinfo 4.2: 8.7 @inforef">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.7 @inforef">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,11 +84,11 @@ ul.toc {list-style: none}
 there are no printed manuals.  Even in a printed manual,
 <code>@inforef</code> generates a reference directing the user to look in
 an Info file.
-
-</p><p>The command takes either two or three arguments, in the following
+</p>
+<p>The command takes either two or three arguments, in the following
 order:
-
-</p><ol>
+</p>
+<ol>
 <li>
 The node name.
 
@@ -103,48 +103,50 @@ The Info file name.
 <p>Separate the arguments with commas, as with <code>@xref</code>.  Also, you
 must terminate the reference with a comma or period after the
 `<samp>}</samp>', as you do with <code>@xref</code>.
-
 </p>
-<p>The template is:
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@inforef{<var>node-name</var>, <var>cross-reference-name</var>, <var>info-file-name</var>},
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@inforef{<var>node-name</var>, <var>cross-reference-name</var>, <var>info-file-name</var>},
 </pre></td></tr></table>
 
 <p>Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@inforef{Expert, Advanced Info commands, info},
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@inforef{Expert, Advanced Info commands, info},
 for more information.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Advanced Info commands: (info)Expert,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Advanced Info commands: (info)Expert,
 for more information.
 </pre></td></tr></table>
 
 <p>and
-
-</p><blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+</p>
+<blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
 </p></blockquote>
+
 
 <p>Similarly,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@inforef{Expert, , info}, for more information.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@inforef{Expert, , info}, for more information.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note (info)Expert::, for more information.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note (info)Expert::, for more information.
 </pre></td></tr></table>
 
 <p>and
-
-</p><blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+</p>
+<blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
 </p></blockquote>
+
 <p>The converse of <code>@inforef</code> is <code>@cite</code>, which is used to
 refer to printed works for which no Info form exists.  See section <a href="cite.html#SEC133"><code>@cite</code></a>.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

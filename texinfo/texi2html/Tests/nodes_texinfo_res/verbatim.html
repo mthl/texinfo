@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 10.4 @verbatim: Literal Text</title>
+<title>GNU Texinfo 4.2: 10.4 @verbatim: Literal Text</title>
 
-<meta name="description" content="Texinfo: 10.4 @verbatim: Literal Text">
-<meta name="keywords" content="Texinfo: 10.4 @verbatim: Literal Text">
+<meta name="description" content="GNU Texinfo 4.2: 10.4 @verbatim: Literal Text">
+<meta name="keywords" content="GNU Texinfo 4.2: 10.4 @verbatim: Literal Text">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -87,8 +87,8 @@ as regular Texinfo commands).  This is especially useful for including
 automatically generated output in a Texinfo manual.  Here is an example;
 the output you see is just the same as the input, with a line
 <code>@verbatim</code> before and a line <code>@end verbatim</code> after.
-
-</p><pre class="verbatim">This is an example of text written in a @verbatim
+</p>
+<pre class="verbatim">This is an example of text written in a @verbatim
 block.  No character substitutions are made.  All commands
 are ignored, until `&lt;at&gt;end verbatim'.
 
@@ -101,10 +101,10 @@ This line will disappear from the output.  Mark the end of the verbatim
 block with a <code>@end verbatim</code> command, also written at the
 beginning of a line by itself.  The <code>@end verbatim</code> will also
 disappear from the output.
-
-</p><p>For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@verbatim
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@verbatim
 {
 &lt;tab&gt;@command with strange characters: @'e 
 expand&lt;tab&gt;me
@@ -113,8 +113,8 @@ expand&lt;tab&gt;me
 </pre></td></tr></table>
 
 <p>produces
-
-</p><pre class="verbatim">{
+</p>
+<pre class="verbatim">{
 	@command with strange characters: @'e 
 expand	me
 }
@@ -124,8 +124,8 @@ produce no output, tyically you should put a blank line before the
 <code>@verbatim</code> and another blank line after the <code>@end
 verbatim</code>.  Blank lines between the beginning <code>@verbatim</code> and the
 ending <code>@end verbatim</code> will appear in the output.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

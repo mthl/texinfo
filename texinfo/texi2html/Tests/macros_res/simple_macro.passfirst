@@ -216,4 +216,5 @@ simple_macro.texi(,233) result: @emph{macro_arg1} the \the thearg \thearg with v
 simple_macro.texi(,234) 
 simple_macro.texi(,235) ==================================
 simple_macro.texi(,236) 
-simple_macro.texi(,237) 
+simple_macro.texi(,237) @contents
+simple_macro.texi(,238) @bye

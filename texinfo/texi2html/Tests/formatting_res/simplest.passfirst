@@ -1,4 +1,5 @@
 simplest.texi(,2) 
+simplest.texi(,3) @setfilename simplest
 simplest.texi(,4) 
 simplest.texi(,5) @node Top
 simplest.texi(,6) 

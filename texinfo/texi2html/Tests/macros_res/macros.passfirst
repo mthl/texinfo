@@ -8,7 +8,11 @@ macros.texi(,8)
 macros.texi(,9) @node First node,,Top,Top
 macros.texi(,10) @chapter first node chapter
 macros.texi(,11) 
+macros.texi(,12) @c makeinfo doesn't like:
+macros.texi(,13) @c a new macro: @@<: @< !!!
 macros.texi(,14) 
+macros.texi(,15) @c makeinfo doesn't like:
+macros.texi(,16) @c @@aa without brace @aa
 macros.texi(,17) 
 macros.texi(,18) 
 macros.texi(,19)      a lone @@ at the end     @
@@ -49,4 +53,5 @@ macros.texi(macro3,59)
 macros.texi(macro3,59) /arg/
 macros.texi(macro3,59) @end example
 macros.texi(,60) 
-macros.texi(,61) 
+macros.texi(,61) @contents
+macros.texi(,62) @bye

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 14.1 @*: Generate Line Breaks</title>
+<title>GNU Texinfo 4.2: 14.1 @*: Generate Line Breaks</title>
 
-<meta name="description" content="Texinfo: 14.1 @*: Generate Line Breaks">
-<meta name="keywords" content="Texinfo: 14.1 @*: Generate Line Breaks">
+<meta name="description" content="GNU Texinfo 4.2: 14.1 @*: Generate Line Breaks">
+<meta name="keywords" content="GNU Texinfo 4.2: 14.1 @*: Generate Line Breaks">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,39 +82,40 @@ ul.toc {list-style: none}
 
 <p>The <code>@*</code> command forces a line break in both the printed manual and
 in Info.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
 </pre></td></tr></table>
 
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This line
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This line
  is broken
 in two places.
 </pre></td></tr></table>
 
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
-
-</p><p>The <code>@*</code> command is often used in a file's copyright page:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
+</p>
+<p>The <code>@*</code> command is often used in a file's copyright page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
 and is for &hellip;
 </pre></td></tr></table>
 
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.
-
-</p><blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
+</p>
+<blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
 they are not needed.
-
-</p><p>Do not write an <code>@refill</code> command at the end of a paragraph
+</p>
+<p>Do not write an <code>@refill</code> command at the end of a paragraph
 containing an <code>@*</code> command; it will cause the paragraph to be
 refilled after the line break occurs, negating the effect of the line
 break.
 </p></blockquote>
+
 
 <hr size="1">
 <p>

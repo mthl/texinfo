@@ -1,3 +1,10 @@
+nodetest.texi(,2) @c
+nodetest.texi(,3) @c It is not possible to test for @,{c} in 
+nodetest.texi(,4) @c nodename cause makeinfo can not
+nodetest.texi(,5) @c handle cedilla's in node names. A cedilla
+nodetest.texi(,6) @c has a comma which was recognized a as
+nodetest.texi(,7) @c delimiter between node parts (next,previous etc.)
+nodetest.texi(,8) @setfilename nodetest.info
 nodetest.texi(,9) @node Top,Umlaut,(dir)
 nodetest.texi(,10) @top
 nodetest.texi(,11) @menu
@@ -14,6 +21,7 @@ nodetest.texi(,21) * tilde accent::         tilde accent.
 nodetest.texi(,22) * cedilla accent::       cedilla accent.
 nodetest.texi(,23) * rest::                 rest @@aa@{@} etc.
 nodetest.texi(,24) @end menu
+nodetest.texi(,25) @c
 nodetest.texi(,26) @node Umlaut,,Top,Top
 nodetest.texi(,27) @chapter Umlaut
 nodetest.texi(,28) @menu
@@ -33,6 +41,7 @@ nodetest.texi(,41) * @"U::    @"U.
 nodetest.texi(,42) * @ss{}::    @ss{}.
 nodetest.texi(,43) * no section::  Node without sectioning command.
 nodetest.texi(,44) @end menu
+nodetest.texi(,45) @c
 nodetest.texi(,46) @node @"a,,,Umlaut
 nodetest.texi(,47) @section @"a
 nodetest.texi(,48) ref to @m_cedilla{c} @ref{@m_cedilla{c}}.
@@ -81,6 +90,7 @@ nodetest.texi(,90) @node @ss{},,,Umlaut
 nodetest.texi(,91) @section @ss{}
 nodetest.texi(,92) @node no section,,,Umlaut
 nodetest.texi(,93) This is a node without sectioning command.
+nodetest.texi(,94) @c
 nodetest.texi(,95) @node acute accent,,Top,Top
 nodetest.texi(,96) @chapter acute accent
 nodetest.texi(,97) @menu
@@ -97,6 +107,7 @@ nodetest.texi(,107) * @'O::    @'O.
 nodetest.texi(,108) * @'U::    @'U.
 nodetest.texi(,109) * @'Y::    @'Y.
 nodetest.texi(,110) @end menu
+nodetest.texi(,111) @c
 nodetest.texi(,112) @node @'a,,,acute accent
 nodetest.texi(,113) @section @'a
 nodetest.texi(,114) With brace @'{a}. Testing ' " ` ^.
@@ -126,6 +137,7 @@ nodetest.texi(,137) This is a ref to @"u (@pxref{@"u, ,@"u}).
 nodetest.texi(,138) Another one, with node only (@pxref{@"a, ,}).
 nodetest.texi(,139) 
 nodetest.texi(,143) 
+nodetest.texi(,144) @c
 nodetest.texi(,145) @node grave accent,,Top,Top
 nodetest.texi(,146) @chapter grave accent
 nodetest.texi(,147) @menu
@@ -142,6 +154,7 @@ nodetest.texi(,157) * @`I::    @`I.
 nodetest.texi(,158) * @`O::    @`O.
 nodetest.texi(,159) * @`U::    @`U.
 nodetest.texi(,160) @end menu
+nodetest.texi(,161) @c
 nodetest.texi(,162) @node @`a,,,grave accent
 nodetest.texi(,163) @section @`a
 nodetest.texi(,164) @node @`e,,,grave accent
@@ -166,6 +179,7 @@ nodetest.texi(,182) @node @`O,,,grave accent
 nodetest.texi(,183) @section @`O
 nodetest.texi(,184) @node @`U,,,grave accent
 nodetest.texi(,185) @section @`U
+nodetest.texi(,186) @c
 nodetest.texi(,187) @node circumflex accent,,Top,Top
 nodetest.texi(,188) @chapter circumflex accent
 nodetest.texi(,189) @menu
@@ -182,6 +196,7 @@ nodetest.texi(,199) * @^I::    @^I.
 nodetest.texi(,200) * @^O::    @^O.
 nodetest.texi(,201) * @^U::    @^U.
 nodetest.texi(,202) @end menu
+nodetest.texi(,203) @c
 nodetest.texi(,204) @node @^a,,,circumflex accent
 nodetest.texi(,205) @section @^a
 nodetest.texi(,206) @node @^e,,,circumflex accent
@@ -208,6 +223,7 @@ nodetest.texi(,226) @node @^O,,,circumflex accent
 nodetest.texi(,227) @section @^O
 nodetest.texi(,228) @node @^U,,,circumflex accent
 nodetest.texi(,229) @section @^U
+nodetest.texi(,230) @c
 nodetest.texi(,231) @node tilde accent,,Top,Top
 nodetest.texi(,232) @chapter tilde accent
 nodetest.texi(,233) @menu
@@ -217,6 +233,7 @@ nodetest.texi(,236) * @~o::    @~o.
 nodetest.texi(,237) * @~A::    @~A.
 nodetest.texi(,238) * @~O::    @~O.
 nodetest.texi(,239) @end menu
+nodetest.texi(,240) @c
 nodetest.texi(,241) @node @~a,,,tilde accent
 nodetest.texi(,242) @section @~a
 nodetest.texi(,243) @node @~n,,,tilde accent
@@ -229,16 +246,19 @@ nodetest.texi(,249) @node @~O,,,tilde accent
 nodetest.texi(,250) @section @~O
 nodetest.texi(,251) This marks the @anchor{x-spot}spot.
 nodetest.texi(,252) A second one with accented char @anchor{@'o-o}.
+nodetest.texi(,253) @c
 nodetest.texi(,254) @node cedilla accent,,Top,Top
 nodetest.texi(,255) @chapter cedilla accent
 nodetest.texi(,256) @menu
 nodetest.texi(,257) * @m_cedilla{c}::    @m_cedilla{c}.
 nodetest.texi(,258) * @m_cedilla{C}::    @m_cedilla{C}.
 nodetest.texi(,259) @end menu
+nodetest.texi(,260) @c
 nodetest.texi(,261) @node @m_cedilla{c},,,cedilla accent
 nodetest.texi(,262) @section @m_cedilla{c}
 nodetest.texi(,263) @node @m_cedilla{C},,,cedilla accent
 nodetest.texi(,264) @section @m_cedilla{C}
+nodetest.texi(,265) @c
 nodetest.texi(,266) @node rest,,Top,Top
 nodetest.texi(,267) @chapter rest
 nodetest.texi(,268) @menu
@@ -264,6 +284,7 @@ nodetest.texi(,287) * @dotless{i}::  @dotless{i} dotless i.
 nodetest.texi(,288) * @dotless{j}::  @dotless{j} dotless j.
 nodetest.texi(,289) * @comma{}::     @comma{} comma
 nodetest.texi(,290) @end menu
+nodetest.texi(,291) @c
 nodetest.texi(,292) @node @aa{},,,rest
 nodetest.texi(,293) @section @aa{}
 nodetest.texi(,294) @node @ae{},,,rest
@@ -325,4 +346,5 @@ nodetest.texi(,349) 	@@*: @* and text followin @@*.
 nodetest.texi(,350) 
 nodetest.texi(,351) @node @comma{},,,rest
 nodetest.texi(,352) @section @comma{}
-nodetest.texi(,353) 
+nodetest.texi(,353) @contents
+nodetest.texi(,354) @bye

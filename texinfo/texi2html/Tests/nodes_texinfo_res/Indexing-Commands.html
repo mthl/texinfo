@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 12.3 Defining the Entries of an Index</title>
+<title>GNU Texinfo 4.2: 12.3 Defining the Entries of an Index</title>
 
-<meta name="description" content="Texinfo: 12.3 Defining the Entries of an Index">
-<meta name="keywords" content="Texinfo: 12.3 Defining the Entries of an Index">
+<meta name="description" content="GNU Texinfo 4.2: 12.3 Defining the Entries of an Index">
+<meta name="keywords" content="GNU Texinfo 4.2: 12.3 Defining the Entries of an Index">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,14 +84,14 @@ ul.toc {list-style: none}
 scattered throughout the Texinfo source file.  Each command says to add
 one entry to a particular index; after formatting, the index will give
 the current page number or node name as the reference.
-
-</p><p>An index entry consists of an indexing command at the beginning of a
+</p>
+<p>An index entry consists of an indexing command at the beginning of a
 line followed, on the rest of the line, by the entry.
-
-</p><p>For example, this section begins with the following five entries for
+</p>
+<p>For example, this section begins with the following five entries for
 the concept index:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@cindex Defining indexing entries
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@cindex Defining indexing entries
 @cindex Index entries
 @cindex Entries for an index
 @cindex Specifying index entries
@@ -100,8 +100,8 @@ the concept index:
 <p>Each predefined index has its own indexing command--<code>@cindex</code>
 for the concept index, <code>@findex</code> for the function index, and so
 on.
-
-</p><a name="IDX143"></a>
+</p>
+<a name="IDX143"></a>
 <a name="IDX144"></a>
 <p>Concept index entries consist of text.  The best way to write an index
 is to choose entries that are terse yet clear.  If you can do this,
@@ -110,57 +110,57 @@ written just as they would appear in the middle of a sentence.
 (Capitalize proper names and acronyms that always call for upper case
 letters.)  This is the case convention we use in most GNU manuals'
 indices.
-
-</p><p>If you don't see how to make an entry terse yet clear, make it longer
+</p>
+<p>If you don't see how to make an entry terse yet clear, make it longer
 and clear--not terse and confusing.  If many of the entries are several
 words long, the index may look better if you use a different convention:
 to capitalize the first word of each entry.  But do not capitalize a
 case-sensitive name such as a C or Lisp function name or a shell
 command; that would be a spelling error.
-
-</p><p>Whichever case convention you use, please use it consistently!
-
-</p><p>Entries in indices other than the concept index are symbol names in
+</p>
+<p>Whichever case convention you use, please use it consistently!
+</p>
+<p>Entries in indices other than the concept index are symbol names in
 programming languages, or program names; these names are usually
 case-sensitive, so use upper and lower case as required for them.
-
-</p><p>By default, entries for a concept index are printed in a small roman
+</p>
+<p>By default, entries for a concept index are printed in a small roman
 font and entries for the other indices are printed in a small
 <code>@code</code> font.  You may change the way part of an entry is
 printed with the usual Texinfo commands, such as <code>@file</code> for
 file names and <code>@emph</code> for emphasis (see section <a href="Marking-Text.html#SEC119">Marking Words and Phrases</a>).
 <a name="IDX145"></a>
-
-</p><a name="IDX146"></a>
+</p>
+<a name="IDX146"></a>
 <a name="IDX147"></a>
 <p>The six indexing commands for predefined indices are:
-
-</p><dl compact="compact">
+</p>
+<dl compact="compact">
 <dt><code> @cindex <var>concept</var></code></dt>
 <dd><a name="IDX148"></a>
 <p>Make an entry in the concept index for <var>concept</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @findex <var>function</var></code></dt>
 <dd><a name="IDX149"></a>
 <p>Make an entry in the function index for <var>function</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @vindex <var>variable</var></code></dt>
 <dd><a name="IDX150"></a>
 <p>Make an entry in the variable index for <var>variable</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @kindex <var>keystroke</var></code></dt>
 <dd><a name="IDX151"></a>
 <p>Make an entry in the key index for <var>keystroke</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @pindex <var>program</var></code></dt>
 <dd><a name="IDX152"></a>
 <p>Make an entry in the program index for <var>program</var>.
-
-</p></dd>
+</p>
+</dd>
 <dt><code> @tindex <var>data type</var></code></dt>
 <dd><a name="IDX153"></a>
 <p>Make an entry in the data type index for <var>data type</var>.
@@ -171,6 +171,7 @@ file names and <code>@emph</code> for emphasis (see section <a href="Marking-Tex
 colon separates the menu entry name from the node name, so a colon in
 the entry itself confuses Info.  See section <a href="Menu-Parts.html#SEC100">The Parts of a Menu</a>, for more information about the structure of a menu entry.
 </p></blockquote>
+
 <p>You are not actually required to use the predefined indices for their
 canonical purposes.  For example, suppose you wish to index some C
 preprocessor macros.  You could put them in the function index along
@@ -181,8 +182,8 @@ all will be consistent for the reader.  Or you could put the macros in
 with the data types by writing <code>@tindex</code> commands for them, and
 give that index a suitable title so the reader will understand.
 (See section <a href="Printing-Indices-_0026-Menus.html#SEC69">Printing Indices and Menus</a>.)
-
-</p><hr size="1">
+</p>
+<hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Predefined-Indices.html#SEC168" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Combining-Indices.html#SEC170" title="Next section in reading order"> &gt; </a>]</td>

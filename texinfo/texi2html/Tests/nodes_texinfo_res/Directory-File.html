@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 20.2.1 The Directory File dir</title>
+<title>GNU Texinfo 4.2: 20.2.1 The Directory File dir</title>
 
-<meta name="description" content="Texinfo: 20.2.1 The Directory File dir">
-<meta name="keywords" content="Texinfo: 20.2.1 The Directory File dir">
+<meta name="description" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,12 +85,12 @@ serves as a top level directory for the Info system.  By convention,
 this file is called `<tt>dir</tt>'.  (You can find the location of this file
 within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
 <kbd>C-x C-f</kbd> to see the pathname to the `<tt>info</tt>' directory.)
-
-</p><p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
+</p>
+<p>The `<tt>dir</tt>' file is itself an Info file.  It contains the top level
 menu for all the Info files in the system.  The menu looks like
 this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">* Menu:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">* Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
                        text editor.
@@ -103,23 +103,23 @@ this:
 that is named in parentheses.  (The menu entry does not need to
 specify the `Top' node, since Info goes to the `Top' node if no node
 name is mentioned.  See section <a href="Other-Info-Files.html#SEC103">Nodes in Other Info Files</a>.)
-
-</p><p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
+</p>
+<p>Thus, the `<samp>Info</samp>' entry points to the `Top' node of the
 `<tt>info</tt>' file and the `<samp>Emacs</samp>' entry points to the `Top' node
 of the `<tt>emacs</tt>' file.
-
-</p><p>In each of the Info files, the `Up' pointer of the `Top' node refers
+</p>
+<p>In each of the Info files, the `Up' pointer of the `Top' node refers
 back to the <code>dir</code> file.  For example, the line for the `Top'
 node of the Emacs manual looks like this in Info:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
 </pre></td></tr></table>
 
 <p>In this case, the `<tt>dir</tt>' file name is written in upper case
 letters--it can be written in either upper or lower case.  This is not
 true in general, it is a special case for `<tt>dir</tt>'.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

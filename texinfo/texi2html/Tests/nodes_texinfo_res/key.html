@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 9.1.3 @key{key-name}</title>
+<title>GNU Texinfo 4.2: 9.1.3 @key{key-name}</title>
 
-<meta name="description" content="Texinfo: 9.1.3 @key{key-name}">
-<meta name="keywords" content="Texinfo: 9.1.3 @key{key-name}">
+<meta name="description" content="GNU Texinfo 4.2: 9.1.3 @key{key-name}">
+<meta name="keywords" content="GNU Texinfo 4.2: 9.1.3 @key{key-name}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,24 +82,24 @@ ul.toc {list-style: none}
 
 <p>Use the <code>@key</code> command for the conventional name for a key on a
 keyboard, as in:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@key{RET}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@key{RET}
 </pre></td></tr></table>
 <p>You can use the <code>@key</code> command within the argument of an
 <code>@kbd</code> command when the sequence of characters to be typed
 includes one or more keys that are described by name.
-
-</p><p>For example, to produce <kbd>C-x <kbd>ESC</kbd></kbd> you would type:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@kbd{C-x @key{ESC}}
+</p>
+<p>For example, to produce <kbd>C-x <kbd>ESC</kbd></kbd> you would type:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@kbd{C-x @key{ESC}}
 </pre></td></tr></table>
 <p>Here is a list of the recommended names for keys:
 <a name="IDX126"></a>
 <a name="IDX127"></a>
 <a name="IDX128"></a>
 <a name="IDX129"></a>
-
-</p><blockquote><dl compact="compact">
+</p>
+<blockquote><dl compact="compact">
 <dt><tt> SPC</tt></dt>
 <dd><p>Space
 </p></dd>
@@ -133,6 +133,7 @@ it might be better to call this character <kbd>C-j</kbd>.
 </p></dd>
 </dl>
 </blockquote>
+
 <a name="IDX130"></a>
 <p>There are subtleties to handling words like `meta' or `ctrl' that are
 names of modifier keys.  When mentioning a character in which the
@@ -141,8 +142,8 @@ alone; do not use the <code>@key</code> command; but when you are referring
 to the modifier key in isolation, use the <code>@key</code> command.  For
 example, write `<samp>@kbd{Meta-a}</samp>' to produce <kbd>Meta-a</kbd> and
 `<samp>@key{META}</samp>' to produce <kbd>META</kbd>.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

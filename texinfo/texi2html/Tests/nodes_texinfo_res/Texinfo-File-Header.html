@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.2 Texinfo File Header</title>
+<title>GNU Texinfo 4.2: 3.2 Texinfo File Header</title>
 
-<meta name="description" content="Texinfo: 3.2 Texinfo File Header">
-<meta name="keywords" content="Texinfo: 3.2 Texinfo File Header">
+<meta name="description" content="GNU Texinfo 4.2: 3.2 Texinfo File Header">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.2 Texinfo File Header">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,20 +83,20 @@ ul.toc {list-style: none}
 <p>Texinfo files start with at least three lines that provide Info and
 TeX with necessary information.  These are the <code>\input texinfo</code>
 line, the <code>@settitle</code> line, and the <code>@setfilename</code> line.
-
-</p><p>Also, if you want to format just part of the Texinfo file, you must
+</p>
+<p>Also, if you want to format just part of the Texinfo file, you must
 write the <code>@settitle</code> and <code>@setfilename</code> lines between
 start-of-header and end-of-header lines.  The start- and end-of-header
 lines are optional, but they do no harm, so you might as well always
 include them.
-
-</p><p>Any command that affects document formatting as a whole makes sense to
+</p>
+<p>Any command that affects document formatting as a whole makes sense to
 include in the header.  <code>@synindex</code> (see section <a href="synindex.html#SEC172"><code>@synindex</code></a>), for
 instance, is another command often included in the header.  See section <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>, for complete sample texts.
-
-</p><p>Thus, the beginning of a Texinfo file generally looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+</p>
+<p>Thus, the beginning of a Texinfo file generally looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename sample.info
 @settitle Sample Manual 1.0

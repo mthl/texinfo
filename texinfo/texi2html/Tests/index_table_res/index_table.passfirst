@@ -172,6 +172,8 @@ index_table.texi(,172) @cindex concept
 index_table.texi(,173) @cindex concept
 index_table.texi(,174) @cindex concept
 index_table.texi(,175) @cindex concept
+index_table.texi(,176) @c @printindex fn
+index_table.texi(,177) @c @printindex vr
 index_table.texi(,178) 
 index_table.texi(,179) @printindex cp
 index_table.texi(,180) 
@@ -180,4 +182,5 @@ index_table.texi(,182) @section node
 index_table.texi(,183) 
 index_table.texi(,184) A section following the indices.
 index_table.texi(,185) 
-index_table.texi(,186) 
+index_table.texi(,186) @contents
+index_table.texi(,187) @bye

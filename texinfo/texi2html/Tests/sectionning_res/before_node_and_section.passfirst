@@ -1,4 +1,5 @@
 before_node_and_section.texi(,2) 
+before_node_and_section.texi(,3) @setfilename before_node_and_section
 before_node_and_section.texi(,4) 
 before_node_and_section.texi(,5) Garbage
 before_node_and_section.texi(,6) ref to Top @ref{Top}.
@@ -24,3 +25,4 @@ before_node_and_section.texi(,25) @chapter node1 chapter
 before_node_and_section.texi(,26) 
 before_node_and_section.texi(,27) @printindex cp
 before_node_and_section.texi(,28) 
+before_node_and_section.texi(,29) @bye

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 19.9 Preparing for TeX</title>
+<title>GNU Texinfo 4.2: 19.9 Preparing for TeX</title>
 
-<meta name="description" content="Texinfo: 19.9 Preparing for TeX">
-<meta name="keywords" content="Texinfo: 19.9 Preparing for TeX">
+<meta name="description" content="GNU Texinfo 4.2: 19.9 Preparing for TeX">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.9 Preparing for TeX">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -84,8 +84,8 @@ ul.toc {list-style: none}
 `<samp>\input texinfo</samp>' command on the first line reads.  The
 `<tt>texinfo.tex</tt>' file tells TeX how to handle @-commands; it is
 included in all standard GNU distributions.
-
-</p><a name="IDX334"></a>
+</p>
+<a name="IDX334"></a>
 
 <p>Usually, the installer has put the `<tt>texinfo.tex</tt>' file in the
 default directory that contains TeX macros when GNU Texinfo, Emacs or
@@ -93,17 +93,17 @@ other GNU software is installed.  In this case, TeX will find the
 file and you do not need to do anything special.  If this has not been
 done, you can put `<tt>texinfo.tex</tt>' in the current directory when you
 run TeX, and TeX will find it there.
-
-</p><a name="IDX335"></a>
+</p>
+<a name="IDX335"></a>
 <p>Also, you should install `<tt>epsf.tex</tt>', if it is not already installed
 from another distribution.  More details are at the end of the description
 of the <code>@image</code> command (see section <a href="Images.html#SEC204">Inserting Images</a>).
-
-</p><a name="IDX336"></a>
+</p>
+<a name="IDX336"></a>
 <p>Likewise for `<tt>pdfcolor.tex</tt>', if it is not already installed and you
 use pdftex.
-
-</p><a name="IDX337"></a>
+</p>
+<a name="IDX337"></a>
 <a name="IDX338"></a>
 <a name="IDX339"></a>
 <p>Optionally, you may create an additional `<tt>texinfo.cnf</tt>', and install
@@ -115,8 +115,8 @@ example, if `<tt>texinfo.cnf</tt>' contains the line `<samp>@afourpaper</samp>'
 (see section <a href="A4-Paper.html#SEC256">Printing on A4 Paper</a>), then all Texinfo documents will be processed with
 that page size in effect.  If you have nothing to put in
 `<tt>texinfo.cnf</tt>', you do not need to create it.
-
-</p><a name="IDX340"></a>
+</p>
+<a name="IDX340"></a>
 <p>If neither of the above locations for these system files suffice for
 you, you can specify the directories explicitly.  For
 `<tt>texinfo.tex</tt>', you can do this by writing the complete path for the
@@ -124,52 +124,52 @@ file after the <code>\input</code> command.  Another way, that works for both
 `<tt>texinfo.tex</tt>' and `<tt>texinfo.cnf</tt>' (and any other file TeX
 might read), is to set the <code>TEXINPUTS</code> environment variable in your
 `<tt>.cshrc</tt>' or `<tt>.profile</tt>' file.
-
-</p><p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
+</p>
+<p>Which you use of `<tt>.cshrc</tt>' or `<tt>.profile</tt>' depends on
 whether you use a Bourne shell-compatible (<code>sh</code>, <code>bash</code>,
 <code>ksh</code>, &hellip;) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
 command interpreter.  The latter read the `<tt>.cshrc</tt>' file for
 initialization information, and the former read `<tt>.profile</tt>'.
-
-</p><p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
+</p>
+<p>In a `<tt>.cshrc</tt>' file, you could use the following <code>csh</code> command
 sequence:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
 </pre></td></tr></table>
 <p>In a `<tt>.profile</tt>' file, you could use the following <code>sh</code> command
 sequence:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
 </pre></td></tr></table>
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
 </pre></td></tr></table>
 
 <p>It is customary for DOS/Windows users to put such commands in the
 `<tt>autoexec.bat</tt>' file, or in the Windows Registry.
-
 </p>
+
 <p>These settings would cause TeX to look for `<tt>\input</tt>' file first
 in the current directory, indicated by the `<samp>.</samp>', then in a
 hypothetical user's `<tt>me/mylib</tt>' directory, and finally in a system
 directory `<tt>/usr/lib/tex/macros</tt>'.
-
-</p><a name="IDX341"></a>
+</p>
+<a name="IDX341"></a>
 <a name="IDX342"></a>
 <p>Finally, you may wish to dump a `<tt>.fmt</tt>' file (see <a href="../web2c/Memory-dumps.html#Memory-dumps">(web2c)Memory dumps</a> section `Memory dumps' in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating `<tt>texinfo.tex</tt>' requires
 redumping.)  You can do this by running this command, assuming
 `<tt>epsf.tex</tt>' is findable by TeX:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
 </pre></td></tr></table>
 <p>(<code>dump</code> is a TeX primitive.)  Then, move `<tt>texinfo.fmt</tt>' to
 wherever your <code>.fmt</code> files are found; typically, this will be in the
 subdirectory `<tt>web2c</tt>' of your TeX installation.
-
 </p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Requirements-Summary.html#SEC252" title="Previous section in reading order"> &lt; </a>]</td>

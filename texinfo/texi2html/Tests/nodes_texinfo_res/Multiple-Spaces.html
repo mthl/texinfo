@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13.2.3 Multiple Spaces</title>
+<title>GNU Texinfo 4.2: 13.2.3 Multiple Spaces</title>
 
-<meta name="description" content="Texinfo: 13.2.3 Multiple Spaces">
-<meta name="keywords" content="Texinfo: 13.2.3 Multiple Spaces">
+<meta name="description" content="GNU Texinfo 4.2: 13.2.3 Multiple Spaces">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.2.3 Multiple Spaces">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -86,8 +86,8 @@ and newline) into a single space.  Info output, on the other hand,
 preserves whitespace as you type it, except for changing a newline into
 a space; this is why it is important to put two spaces at the end of
 sentences in Texinfo documents.
-
-</p><p>Occasionally, you may want to actually insert several consecutive
+</p>
+<p>Occasionally, you may want to actually insert several consecutive
 spaces, either for purposes of example (what your program does with
 multiple spaces as input), or merely for purposes of appearance in
 headings or lists.  Texinfo supports three commands:
@@ -97,23 +97,23 @@ which insert a single space into the output.  (Here,
 space, i.e., `<samp>@ </samp>', and <kbd>TAB</kbd> and <kbd>NL</kbd> represent the tab
 character and end-of-line, i.e., when `<samp>@</samp>' is the last character on
 a line.)
-
-</p><p>For example,
+</p>
+<p>For example,
 </p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey@ @ @ @
 example.
 </pre></td></tr></table>
 <p>produces
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
 </pre></td></tr></table>
 <p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
 <code>@multitable</code> (see section <a href="Multi_002dcolumn-Tables.html#SEC163">Multi-column Tables</a>).
-
-</p><p>Do not follow any of these commands with braces.
-
-</p><p>To produce a non-breakable space, see <a href="w.html#SEC209">non-breakable space</a>.
-
 </p>
+<p>Do not follow any of these commands with braces.
+</p>
+<p>To produce a non-breakable space, see <a href="w.html#SEC209">non-breakable space</a>.
+</p>
+
 <hr size="1">
 <p>
  <font size="-1">

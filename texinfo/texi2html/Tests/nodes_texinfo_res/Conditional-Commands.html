@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 16.1 Conditional Commands</title>
+<title>GNU Texinfo 4.2: 16.1 Conditional Commands</title>
 
-<meta name="description" content="Texinfo: 16.1 Conditional Commands">
-<meta name="keywords" content="Texinfo: 16.1 Conditional Commands">
+<meta name="description" content="GNU Texinfo 4.2: 16.1 Conditional Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.1 Conditional Commands">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,16 +82,16 @@ ul.toc {list-style: none}
 
 <p>Texinfo has a pair of commands for each output format, to allow
 conditional inclusion of text for a particular output format.
-
-</p><a name="IDX287"></a>
+</p>
+<a name="IDX287"></a>
 <p><code>@ifinfo</code> begins segments of text that should be ignored by TeX
 when it typesets the printed manual.  The segment of text appears only
 in the Info file and (for historical compatibility) the plain text
 output.  The <code>@ifinfo</code> command should appear on a line by itself;
 end the Info-only text with a line containing <code>@end ifinfo</code> by
 itself.
-
-</p><a name="IDX288"></a>
+</p>
+<a name="IDX288"></a>
 <a name="IDX289"></a>
 <a name="IDX290"></a>
 <p>The <code>@iftex</code> and <code>@end iftex</code> commands are analogous to the
@@ -101,10 +101,10 @@ for <code>@ifhtml</code> and <code>@end ifhtml</code>, which specify text to
 appear only in HTML output.  And for <code>@ifplaintext</code> and
 <code>@end ifplaintext</code>, which specify text to appear only in plain
 text output.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
 This text will appear only in the printed manual.
 @end iftex
 @ifinfo
@@ -121,12 +121,12 @@ Whereas this text will only appear in plain text.
 <p>The preceding example produces the following line:
 However, this text will appear only in Info (or plain text).
 And this text will only appear in HTML.
-
 </p>
+
 <p>Notice that you only see one of the input lines, depending on which
 version of the manual you are reading.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

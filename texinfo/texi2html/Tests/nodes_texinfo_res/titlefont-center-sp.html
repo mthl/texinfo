@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 3.4.2 @titlefont, @center, and @sp</title>
+<title>GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp</title>
 
-<meta name="description" content="Texinfo: 3.4.2 @titlefont, @center, and @sp">
-<meta name="keywords" content="Texinfo: 3.4.2 @titlefont, @center, and @sp">
+<meta name="description" content="GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.4.2 @titlefont, @center, and @sp">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -83,35 +83,35 @@ ul.toc {list-style: none}
 <p>You can use the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code>
 commands to create a title page for a printed document.  (This is the
 first of the two methods for creating a title page in Texinfo.)
-
-</p><p>Use the <code>@titlefont</code> command to select a large font suitable for
+</p>
+<p>Use the <code>@titlefont</code> command to select a large font suitable for
 the title itself.  You can use <code>@titlefont</code> more than once if you
 have an especially long title.
-
-</p><p>For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlefont{Texinfo}
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlefont{Texinfo}
 </pre></td></tr></table>
 <p>Use the <code>@center</code> command at the beginning of a line to center
 the remaining text on that line.  Thus,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@center @titlefont{Texinfo}
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@center @titlefont{Texinfo}
 </pre></td></tr></table>
 
 <p>centers the title, which in this example is &quot;Texinfo&quot; printed
 in the title font.
-
-</p><p>Use the <code>@sp</code> command to insert vertical space.  For example:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
+</p>
+<p>Use the <code>@sp</code> command to insert vertical space.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
 </pre></td></tr></table>
 
 <p>This inserts two blank lines on the printed page.  (See section <a href="sp.html#SEC210"><code>@sp</code></a>, for more information about the <code>@sp</code>
 command.)
-
-</p><p>A template for this method looks like this:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+</p>
+<p>A template for this method looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 @sp 10
 @center @titlefont{<var>name-of-manual-when-printed</var>}
 @sp 2
@@ -122,8 +122,8 @@ command.)
 @end titlepage
 </pre></td></tr></table>
 <p>The spacing of the example fits an 8.5 by 11 inch manual.
-
 </p>
+
 <hr size="1">
 <p>
  <font size="-1">

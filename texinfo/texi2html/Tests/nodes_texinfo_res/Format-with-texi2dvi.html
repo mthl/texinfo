@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 19.3 Format with texi2dvi</title>
+<title>GNU Texinfo 4.2: 19.3 Format with texi2dvi</title>
 
-<meta name="description" content="Texinfo: 19.3 Format with texi2dvi">
-<meta name="keywords" content="Texinfo: 19.3 Format with texi2dvi">
+<meta name="description" content="GNU Texinfo 4.2: 19.3 Format with texi2dvi">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.3 Format with texi2dvi">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -85,19 +85,19 @@ ul.toc {list-style: none}
 sorted indices and all cross-references resolved.  It simplifies the
 <code>tex</code>--<code>texindex</code>--<code>tex</code>--<code>tex</code> sequence
 described in the previous section.
-
-</p><p>To run <code>texi2dvi</code> on an input file `<tt>foo.texi</tt>', do this (where
+</p>
+<p>To run <code>texi2dvi</code> on an input file `<tt>foo.texi</tt>', do this (where
 `<samp>prompt$ </samp>' is your shell prompt):
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
 </pre></td></tr></table>
 <p>As shown in this example, the input filenames to <code>texi2dvi</code> must
 include any extension (`<samp>.texi</samp>', `<samp>.texinfo</samp>', etc.).  Under
 MS-DOS and perhaps in other circumstances, you may need to run `<samp>sh
 texi2dvi foo.texi</samp>' instead of relying on the operating system to invoke
 the shell on the `<samp>texi2dvi</samp>' script.
-
-</p><p>Perhaps the most useful option to <code>texi2dvi</code> is
+</p>
+<p>Perhaps the most useful option to <code>texi2dvi</code> is
 `<samp>--texinfo=<var>cmd</var></samp>'.  This inserts <var>cmd</var> on a line by itself
 after the <code>@setfilename</code> in a temporary copy of the input file
 before running TeX.  With this, you can specify different printing
@@ -106,10 +106,10 @@ formats, such as <code>@smallbook</code> (see section <a href="smallbook.html#SE
 (see section <a href="pagesizes.html#SEC257"><code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a>), without actually changing the document source.
 (You can also do this on a site-wide basis with `<tt>texinfo.cnf</tt>';
 see section <a href="Preparing-for-TeX.html#SEC253">Preparing for TeX</a>).
-
-</p><p>For a list of other options, run `<samp>texi2dvi --help</samp>'.
-
 </p>
+<p>For a list of other options, run `<samp>texi2dvi --help</samp>'.
+</p>
+
 <hr size="1">
 <p>
  <font size="-1">

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 13.10.2 Footnote Styles</title>
+<title>GNU Texinfo 4.2: 13.10.2 Footnote Styles</title>
 
-<meta name="description" content="Texinfo: 13.10.2 Footnote Styles">
-<meta name="keywords" content="Texinfo: 13.10.2 Footnote Styles">
+<meta name="description" content="GNU Texinfo 4.2: 13.10.2 Footnote Styles">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.10.2 Footnote Styles">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -82,9 +82,10 @@ ul.toc {list-style: none}
 
 <p>Info has two footnote styles, which determine where the text of the
 footnote is located:
-
-</p><ul>
-<li><a name="IDX227"></a></li><li>
+</p>
+<ul>
+<li><a name="IDX227"></a>
+</li><li>
 In the `End' node style, all the footnotes for a single node
 are placed at the end of that node.  The footnotes are separated from
 the rest of the node by a line of dashes with the word
@@ -92,14 +93,14 @@ the rest of the node by a line of dashes with the word
 `<samp>(<var>n</var>)</samp>' reference mark.
 
 
-
 <p>Here is an example of a single footnote in the end of node style:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 </pre></td></tr></table>
-<a name="IDX228"></a></li><li>
+<a name="IDX228"></a>
+</li><li>
 In the `Separate' node style, all the footnotes for a single
 node are placed in an automatically constructed node of
 their own.  In this style, a &quot;footnote reference&quot; follows
@@ -107,19 +108,18 @@ each `<samp>(<var>n</var>)</samp>' reference mark in the body of the
 node.  The footnote reference is actually a cross reference
 which you use to reach the footnote node.
 
-
 <p>The name of the node with the footnotes is constructed
 by appending `<samp>-Footnotes</samp>' to the name of the node
 that contains the footnotes. (Consequently, the footnotes'
 node for the `<tt>Footnotes</tt>' node is
 `<tt>Footnotes-Footnotes</tt>'!)  The footnotes' node has an
 `Up' node pointer that leads back to its parent node.
-
 </p>
+
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
@@ -127,16 +127,16 @@ formatted for Info in the separate node style:
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
 style.
-
-</p><a name="IDX229"></a>
+</p>
+<a name="IDX229"></a>
 <p>Use the <code>@footnotestyle</code> command to specify an Info file's
 footnote style.  Write this command at the beginning of a line followed
 by an argument, either `<samp>end</samp>' for the end node style or
 `<samp>separate</samp>' for the separate node style.
-
-</p><p>For example,
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
 </pre></td></tr></table>
 <p>or
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
@@ -146,15 +146,15 @@ end-of-header line at the beginning of a Texinfo file.  (If you
 include the <code>@footnotestyle</code> command between the start-of-header
 and end-of-header lines, the region formatting commands will format
 footnotes as specified.)
-
-</p><p>If you do not specify a footnote style, the formatting commands use
+</p>
+<p>If you do not specify a footnote style, the formatting commands use
 their default style.  Currently, <code>texinfo-format-buffer</code> and
 <code>texinfo-format-region</code> use the `separate' style and
 <code>makeinfo</code> uses the `end' style.
-
-</p><p>This chapter contains two footnotes.
-
 </p>
+<p>This chapter contains two footnotes.
+</p>
+
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Footnote-Commands.html#SEC202" title="Previous section in reading order"> &lt; </a>]</td>

@@ -1,6 +1,6 @@
 pass0_macros.texi(,2) 
 pass0_macros.texi(,3) @node Top,First node,(dir)
-pass0_macros.texi(,4) @top
+pass0_macros.texi(,4) @top pass0 macro
 pass0_macros.texi(,5) @menu
 pass0_macros.texi(,6) * First node::    node 1
 pass0_macros.texi(,7) @end menu

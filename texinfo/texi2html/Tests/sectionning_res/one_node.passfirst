@@ -1,4 +1,5 @@
 one_node.texi(,2) 
+one_node.texi(,3) @setfilename one_node
 one_node.texi(,4) 
 one_node.texi(,5) Garbage
 one_node.texi(,6) 
@@ -16,3 +17,4 @@ one_node.texi(,17) ref to ref @ref{ref}.
 one_node.texi(,18) 
 one_node.texi(,19) Some text.
 one_node.texi(,20) 
+one_node.texi(,21) @bye
