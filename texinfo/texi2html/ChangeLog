@@ -1,3 +1,8 @@
+2003-09-23  Patrice Dumas <dumas@centre-cired.fr>
+
+	* NEWS: Note more changes.
+	* Tests/*: Test for novalidate.
+
 2003-09-22  Derek Price  <derek@ximbiot.com>
 
 	* NEWS: Reorganize.  Note some more changes.

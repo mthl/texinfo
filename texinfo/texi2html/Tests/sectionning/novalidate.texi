@@ -1,0 +1,35 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename novalidate
+
+@novalidate
+
+@node first, Top, ,(dir)
+
+@xref{it doesn't exists}
+in first node
+@menu
+* node in menu before top::
+* other node in menu before top::
+@end menu
+
+@node node in menu before top,,,first
+
+node in menu before top text
+
+@node other node in menu before top, node not existing,,,first
+
+@node Top,,first
+@top top section 
+Top node
+@menu
+* second node::
+* other node not existing::
+@end menu
+
+@node second node
+@chapter a chapter
+
+second node
+
+@bye

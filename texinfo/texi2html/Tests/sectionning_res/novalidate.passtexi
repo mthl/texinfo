@@ -1,0 +1,34 @@
+novalidate.texi(,2) 
+novalidate.texi(,3) @setfilename novalidate
+novalidate.texi(,4) 
+novalidate.texi(,5) @novalidate
+novalidate.texi(,6) 
+novalidate.texi(,7) @node first, Top, ,(dir)
+novalidate.texi(,8) 
+novalidate.texi(,9) @xref{it doesn't exists}
+novalidate.texi(,10) in first node
+novalidate.texi(,11) @menu
+novalidate.texi(,12) * node in menu before top::
+novalidate.texi(,13) * other node in menu before top::
+novalidate.texi(,14) @end menu
+novalidate.texi(,15) 
+novalidate.texi(,16) @node node in menu before top,,,first
+novalidate.texi(,17) 
+novalidate.texi(,18) node in menu before top text
+novalidate.texi(,19) 
+novalidate.texi(,20) @node other node in menu before top, node not existing,,,first
+novalidate.texi(,21) 
+novalidate.texi(,22) @node Top,,first
+novalidate.texi(,23) @top top section 
+novalidate.texi(,24) Top node
+novalidate.texi(,25) @menu
+novalidate.texi(,26) * second node::
+novalidate.texi(,27) * other node not existing::
+novalidate.texi(,28) @end menu
+novalidate.texi(,29) 
+novalidate.texi(,30) @node second node
+novalidate.texi(,31) @chapter a chapter
+novalidate.texi(,32) 
+novalidate.texi(,33) second node
+novalidate.texi(,34) 
+novalidate.texi(,35) 

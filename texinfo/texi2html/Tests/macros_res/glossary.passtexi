@@ -1,0 +1,30 @@
+glossary.texi(,2) 
+glossary.texi(,3) @setfilename glossary
+glossary.texi(,4) 
+glossary.texi(,8) 
+glossary.texi(,14) 
+glossary.texi(,33) 
+glossary.texi(,34) @node Top
+glossary.texi(,35) @top Top
+glossary.texi(,36) 
+glossary.texi(,37) @menu 
+glossary.texi(,38) * glossary::
+glossary.texi(,39) @end menu
+glossary.texi(,40) 
+glossary.texi(gentry,41) The glossary.texi(gentry,41) @ref{id1,name1}
+glossary.texi(gentry,41)  is used in many cases while
+glossary.texi(gentry,42) @ref{id2,name2}
+glossary.texi(gentry,42)  is quite specific
+glossary.texi(,43) 
+glossary.texi(,44) @node glossary
+glossary.texi(,45) @chapter glossary
+glossary.texi(glossary,46) @table @asis
+glossary.texi(glossary,46) 
+glossary.texi(glossary,46) @item name1 @anchor{id1}
+glossary.texi(glossary,46) text1, arg1 
+glossary.texi(glossary,46) 
+glossary.texi(glossary,46) @item name2 @anchor{id2}
+glossary.texi(glossary,46) text2glossary.texi(glossary,46) 
+glossary.texi(glossary,46) @end table
+glossary.texi(glossary,46) 
+glossary.texi(,47) 

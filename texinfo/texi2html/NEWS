@@ -3,38 +3,202 @@ This file records noteworthy changes.
 1.68 ()
 
 * COMPATIBILITY
+  -------------
 
-* The main configuration files are now `/etc/texi2html/Config' and
-  `~/.texi2html/Config'.  `/etc/texi2htmlrc' and `~/.texi2htmlrc' will no
-  longer be sourced and any existing site or user configuration must be moved
-  to the new locations if you wish it to be used by the new version of
-  Texi2HTML.
+*  The main configuration files are now ./Config, ~/.texi2html/Config, 
+  $sysconfdir/texi2html and last $datadir/texi2html. They are sourced in that
+  order.
+  In the future `/etc/texi2htmlrc' and `~/.texi2htmlrc' will no longer be 
+  sourced and any existing site or user configuration should be moved to the 
+  new locations if you wish it to be used by newer versions of Texi2HTML.
 
-* Translation files are now stored in TEXI2HTMLLIB/i18n/*,
-  /etc/texi2html/i18n/*, ~/texi2html/i18n/*, and sourced in that order.  The
-  old T2H_LANGUAGES hash is now ignored.  Please see the documentation for the
-  format of the new translation files.
+* Translation files are now stored in $datadir/texi2html/i18n/*, 
+  $sysconfdir/texi2html/i18n/*, ~/texi2html/i18n/*, and sourced in that order. 
+  The translated strings are now associated with the english strings.
+  Please see the documentation for the format of the new translation files.
+
+* First index page is the first page with a non empty index (with @printindex).
+
+* The glossary and bibliography terms aren't searched anymore. You should use 
+  @macro to simulate these features.
 
 * We've standardized on GNU-style `--' prefixed long options, rather than the
   old single-dash prefixed long options in the help, but the single-dash style
-  is still accepted on the command line for the time being.
+  is still accepted on the command line for the time being. 
+  We also changed `_' to `-' in option names.
 
+* @setref handling is removed as the right corresponding @-command is @anchor.
+
+* leading T2H_ is stripped from variable, hashes and array names. You should 
+  change your variable names for the new release. Global variables (%THISDOC,
+  $THIS_SECTION...) are now in the Texi2HTML namespace. Thus you should use
+  $Texi2HTML::THISDOC{'fulltitle'} for example.
+  functions from the main program should now be qualified in the main
+  namespace. t2h_ is stripped from the function name too.
+
+* Changes in the function reference used for the page layout. 
+  print_section: this function don't do the end of page anymore (except when 
+  split at node), end_section does this now.
+  the print_*_header, print_*_footer... functions take a ref on the buttons 
+  array as argument, instead of using the $T2H_BUTTONS global variable.
+
+* T2H_InitGlobals is not used anymore. Use set_body_text and 
+  %Texi2HTML::THISDOC values in print_page_foot and about_body.
+  toc file and main file are arguments for print_frame.
+  overview lines are arguments for print_toc_frame.
+
+* variables for latex2html are not in texi2html init file anymore but in 
+  l2h.init.
+
+* $THISPROG, $T2H_HOMEPAGE, $T2H_AUTHORS, $T2H_TODAY, $T2H_USER are now 
+  values associated with the following keys in %Texi2HTML::THISDOC: 
+  `program', `program_homepage', `today', `user'.
+  Don't use $T2H_ADDRESS anymore.
+
+* don't expand @ifinfo regions by default.
+
+* option --output obsoletes -out_file and -subdir. It is the same than 
+  --out_file when output is not split, and the same than --subdir when it is
+  split.
+
+* Don't use T2H_CENTER_IMAGE, @center should be used.
+
+* the set_buttons_text function redefines dynamically %NAVIGATION_TEXT and
+  %BUTTONS_GOTO. You should redefine the hash values in that function. If you 
+  want to reuse the values of the default values set by set_buttons_text,
+  you could do something like:
+
+  my $default_set_buttons = $set_buttons_text;
+  $set_buttons_text = \&makeinfo_like_set_buttons_text;
+  sub makeinfo_like_set_buttons_text() 
+  {
+     &$default_set_buttons();
+     $NAVIGATION_TEXT{'Following'} = ' &gt; ';
+  }
 
 * NEW FEATURES
+  ------------
 
 * Many changes towards output of stricter HTML.
 
-* The test suite is much more comprehensive.
+* initialization files for html 3.2, xhtml, html 4.0 with inline style,
+  makeinfo style. Initialization files are searched in ./, ~/.texi2html, 
+  $sysconfdir/texi2html and last $datadir/texi2html. The file names are
+  html32.init, xhtml.init, inlinestyle.init and makeinfo.init.
 
-* @ifhtml works!
+* The test suite is much more comprehensive and uses validate and tidy to
+  assess the correctness of the HTML.
 
+* Handling of @html, @verbatim, @verb, @sp, @=, @copying, @insertcopying,
+  @cartouche, @titlefont, @dircategory, @direntry, @shorttitlepage, @\,
+  @afourlatex, @afourwide, @firstparagraphindent, @exampleindent, @novalidate,
+  @definfoenclose, @kbdinputstyle, @centerchap, @documentdescription,
+  @documentencoding, @contents, @shortcontents.
+
+* With --no-validate node cross-reference validation is suppressed (like
+  @novalidate).
+
+* --expand may be specified more than once such that more than one additional
+  region could be expanded. --noexpand does the reverse. --iftex, --ifinfo...
+  and --no-ifinfo... can be used instead.
+
+* add http-equiv="Content-Type" tag for the charset declaration.
+
+* HTML formatting is isolated in customizable functions located in the 
+  initialization files. 
+
+* menu comments are in a preformatted context.
+
+* Any combination of caps for `top' leads to the top node.
+
+* @ref{(perl)Top} leads to a ref to the info manual. 
+
+* References to external manual in @ref and menus are links to the html 
+  pages (with the same convention than makeinfo --html used).
+  --html-xref-prefix is the base dir for external manual references.
+
+* With --node-files do a file per node which can be used as a target for
+  cross references from other manuals (including manuals generated with 
+  makeinfo --html).
+
+* With --use-nodes nodes are sectionning commands whe they are not associated
+  with a structuring command.
+
+* With --toc-links create links from headings to toc entries.
+
+* distinct directions (next, prev...) for nodes and sections, more directions.
+
+* split at chapter, section or for every node.
+
+* new possibilities for buttons. If this is a ref to a scalar, the text 
+  appears in navigation. If it is an array, the first element is a direction 
+  used for the href, the second element is a scalar ref for the text.
+
+* With --noseparated-footnotes the footnotes are in the same page than the
+  text.
+
+* %NO_TEXI hash similar with %HREF but without texinfo commands,
+  %THISDOC{'title_no_texi'}
+
+* "-U value" does the same than "@clear value".
+
+* -P option prepends directory for include files before the document directory.
+
+* pass $L2H_HTML_VERSION for the html version to latex2html.
+
+* support for css. The --css-include option does the same than in makeinfo 
+  (parse the file, and echo the @import part before the texi2html css rules, 
+  the rules part after the texi2html css rules).
+  The texi2html css commands may be customized too.
+
+* Text before the first @node or sectionning command is part of the first
+  section unless -noignore-preamble-text is set.
+
+* if `-' is given to the -output option, output on STDOUT.
+
+* Add images from the Singular project.
+
+* All the strings appearing in the HTML are internationalized.
+
+* centering and flushing is really handled.
 
 * BUG FIXES
+  ---------
 
-* Many miscellaneous bug fixes.
+* @multitable size determination, out of bounds columns ignored.
 
+* In @table and @itemize, @item is replaced by the @-command argument.
+
+* nested @-commands are better handled. 
+
+* in index keys @-commands are replaced by the right symbols.
+
+* files are omitted in hrefs when they points to the same file.
+
+* $value{_title}... are expanded during HTML generation.
+
+* @H{a} leads to a'' and not &aacute; 
+
+* cedilla are accepted in node names.
+
+* Any characters are accepted in menu comments.
+
+* frame target is the top file, and not the toc file.
+
+* rewriting of the @macro code completely. This likely fixed some bugs but 
+  this hasn't been verified by running the new, more complex test cases 
+  against the old code.
+
+* rewriting of the document structure resolution.
+  unnumbered regions are at the right level and splitted indices don't break
+  the document structure anymore.
+  index entries and footnotes are more precisely located.
+
+* @-commands ignored are ignored with the line, the arg or following spaces
+  like makeinfo does.
 
 * FOR DEVELOPERS
+  --------------
 
 * Standardized on Autoconf 2.57 & Automake 1.7.5.
 
@@ -44,7 +208,10 @@ This file records noteworthy changes.
   files (configure, aclocal, Makefile.in, etc) when configure.in or other
   dependencies are changed.
 
-
+* The config is in the Texi2HTML::Config namespace. The latex2html related
+  functions are in the Texi2HTML::LaTeX2HTML namespace. The 
+  internationalization functions are in the Texi2HTML::I18n namespace in 
+  T2h_i18n.pm.
 
 1.66 (June 8 2002)
 * Many bug fixes.
