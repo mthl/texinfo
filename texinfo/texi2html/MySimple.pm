@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.2 2001-05-01 14:43:48 dprice Exp $
+# $Id: MySimple.pm,v 1.3 2003-08-29 16:29:53 dprice Exp $
 
 # use strict;
 # no strict 'refs';
@@ -158,7 +158,7 @@ sub helpOptions
           #$line = " -$_" . ' ' x ($optwidth - (2 + length) ) .
           #      	"${$self->{'default'} }{$_}{'type'} ".
           #      	' ' x ($typewidth - (1+length(${$self -> {'default'} }{$_}{'type'}) ));
-		$line = " -$_" . "${$self->{'default'} }{$_}{'type'}".
+		$line = " --$_" . "${$self->{'default'} }{$_}{'type'}".
 			' ' x ($typewidth - (1+length(${$self -> {'default'} }{$_}{'type'}) ));
 
                  $val = ${$self->{'default'} }{$_}{'linkage'};

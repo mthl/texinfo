@@ -1,5 +1,9 @@
 2003-08-29  Derek Price  <derek@ximbiot.com>
 
+	* MySimple.pm (helpOptions): Prepend a second `-' before options.
+
+2003-08-29  Derek Price  <derek@ximbiot.com>
+
 	* doc/stamp-vti, doc/version.texi: Regenerated.
 
 2003-08-11  Patrice Dumas <dumas@centre-cired.fr>
