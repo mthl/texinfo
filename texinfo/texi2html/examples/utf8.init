@@ -1,5 +1,10 @@
+# -*-perl-*-
 $USE_ISO = 0;
 $ENCODING = 'utf-8';
+
+# if the encoding isn't utf-8, we should convert to utf-8 characters.
+
+use Encode;
 
 foreach my $key(%utf8_accents)
 {
@@ -20,20 +25,25 @@ sub t2h_utf8_accent($$)
     my $accent = shift;
     return  chr(hex($Texi2HTML::Config::utf8_accents{$accent}->{$text}))
         if (defined($Texi2HTML::Config::utf8_accents{$accent}->{$text}));
-    return $text . $accent if (defined($Texi2HTML::Config::accent_map{$accent}));
-    return $text . "''" if ($accent eq 'H');
-    return $text . '.' if ($accent eq 'dotaccent');
-    return $text . '*' if ($accent eq 'ringaccent');
-    return $text . '[' if ($accent eq 'tieaccent');
-    return $text . '(' if ($accent eq 'u');
-    return $text . '_' if ($accent eq 'ubaraccent');
-    return '.' . $text  if ($accent eq 'udotaccent');
-    return $text . '<' if ($accent eq 'v');
-    return $text . ',' if ($accent eq ','); 
+    return ascii_accents($text, $accent);
 }
 
-
+$init_out          = \&t2h_utf8_init_out;
 $normal_text       = \&t2h_utf8_normal_text;
+
+my $source_encoding;
+
+sub t2h_utf8_init_out()
+{
+    if (! Encode::resolve_alias($ENCODING))
+    {
+         main::echo_warn("Encoding $ENCODING unknown");
+    }
+    elsif (Encode::resolve_alias($ENCODING) ne Encode::resolve_alias('utf8'))
+    {
+         $source_encoding = $ENCODING;
+    }
+}
 
 sub t2h_utf8_normal_text($)
 {

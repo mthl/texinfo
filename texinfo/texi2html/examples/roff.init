@@ -272,20 +272,22 @@ sub roff_accent($$)
     }
     return $text if ($accent eq 'dotless');
     return "\\($accent_map{$accent}${text}" if (defined($accent_map{$accent}) and defined($special_accents{$accent}) and ($text =~ /^[$special_accents{$accent}]$/));
+    return "\\(o${text}"  if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return "\\(v${text}" if (($accent eq 'v') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
+    return "\\(,${text}"  if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
 #FIXME maybe we should protect the symbols such that they look like strings and
 # not ponctuation marks ? Like it is done in texi2roff ? 
+# otherwise we should use
+#    return ascii_accents($text, $accent);
     return $text . $accent if (defined($accent_map{$accent}));
     return $text . "''" if ($accent eq 'H');
     return $text . '\\&.' if ($accent eq 'dotaccent');
-    return "\\(o${text}"  if (($accent eq 'ringaccent') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '*' if ($accent eq 'ringaccent');
     return $text . '[' if ($accent eq 'tieaccent');
     return $text . '(' if ($accent eq 'u');
     return $text . '_' if ($accent eq 'ubaraccent');
     return '\\&.' . $text  if ($accent eq 'udotaccent');
-    return "\\(v${text}" if (($accent eq 'v') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . '<' if ($accent eq 'v');
-    return "\\(,${text}"  if (($accent eq ',') and (defined($special_accents{$accent})) and ($text =~ /^[$special_accents{$accent}]$/));
     return $text . ',' if ($accent eq ','); 
 }
 
@@ -768,12 +770,12 @@ sub t2h_roff_paragraph($$$$$$$$$)
     my $close = '';
     if ($align)
     {
-        if ($align eq 'left')
+        if ($align eq 'flushleft')
         {
             $open .= ".ad l\n";
             $close .= ".ad b\n";
         }
-        elsif ($align eq 'right')
+        elsif ($align eq 'flushright')
         {
             $open .= ".ad r\n";
             $close .= ".ad b\n";

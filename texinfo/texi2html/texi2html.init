@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.59 2003-12-15 22:59:19 pertusus Exp $
+# $Id: texi2html.init,v 1.60 2004-01-04 20:52:31 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -444,10 +444,11 @@ $ICONS = 0;
     );
 
 
-$set_buttons_text    = \&t2h_default_set_buttons_text;
+$init_out    = \&t2h_default_init_out;
 
-# We have to do this dynamically because of internationalization
-sub t2h_default_set_buttons_text()
+# We have to do this dynamically because of internationalization and because
+# in body $LANG could be used.
+sub t2h_default_init_out()
 {
 # Names of text as alternative for icons
     %NAVIGATION_TEXT =
@@ -496,6 +497,8 @@ sub t2h_default_set_buttons_text()
      'First',       &$I('first section in reading order'),
      'Last',        &$I('last section in reading order'),
     );
+    # Set the default body text, inserted between <body ... >
+    $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
 };
 #######################################################################
 #
@@ -503,15 +506,7 @@ sub t2h_default_set_buttons_text()
 #
 #######################################################################
 
-# Set the default body text, inserted between <body ... >
 $BODYTEXT = undef;
-
-$set_body_text    = \&t2h_default_set_body_text;
-# Set the default body text, inserted between <body ... >
-sub t2h_default_set_body_text()
-{
-    $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
-}
 
 ########################################################################
 # Control of Page layout:
@@ -2022,7 +2017,6 @@ sub ascii_accents($$)
     my $text = shift;
     my $accent = shift;
     return $text if ($accent eq 'dotless');
-    #return $text . '=' if ($accent eq '=');
     return $text . $accent if (defined($accent_map{$accent}));
     return $text . "''" if ($accent eq 'H');
     return $text . '.' if ($accent eq 'dotaccent');
@@ -2874,7 +2868,7 @@ sub t2h_default_paragraph($$$$$$$$$)
     my $open = '<p>';
     if ($align)
     {
-        $open = "<p align=\"$align\">";
+        $open = "<p align=\"$paragraph_style{$align}\">";
     }
     return $open. "$text</p>";
 }

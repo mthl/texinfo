@@ -55,11 +55,12 @@ This file records noteworthy changes.
   array as argument, instead of using the $T2H_BUTTONS global variable.
   Have a look at the texi2html.init file to update your configuration files.
 
-* T2H_InitGlobals is not used anymore. Use set_body_text to define
-  $BODYTEXT dynamically and %Texi2HTML::THISDOC values in print_page_foot 
-  and about_body to recreate the address instead of the $T2H_ADDRESS.
-  You can have a look at program_string in texi2html.init which does that.
-  $T2H_ADDRESS isn't used anymore.
+* T2H_InitGlobals is not used anymore. Use the function reference init_out 
+  to define $BODYTEXT dynamically and %Texi2HTML::THISDOC values in 
+  print_page_foot and about_body to recreate the address instead of the 
+  $T2H_ADDRESS.
+  You can have a look at program_string in texi2html.init which recreates 
+  the address. $T2H_ADDRESS isn't used anymore.
 
 * variables for latex2html are not in texi2html init file anymore but in 
   l2h.init.
@@ -77,16 +78,16 @@ This file records noteworthy changes.
 
 * Don't use T2H_CENTER_IMAGE, @center should be used.
 
-* the set_buttons_text function redefines dynamically %NAVIGATION_TEXT and
-  %BUTTONS_GOTO. You should redefine the hash values in that function. If you 
-  want to reuse the values of the default values set by set_buttons_text,
+* the init_out function redefines dynamically %NAVIGATION_TEXT, %BUTTONS_GOTO
+  and $BODYTEXT. You should redefine the hash values in that function. If you 
+  want to reuse the values of the default values set by init_out,
   you could do something like:
 
-  my $default_set_buttons = $set_buttons_text;
-  $set_buttons_text = \&makeinfo_like_set_buttons_text;
-  sub makeinfo_like_set_buttons_text() 
+  my $default_init_out = $set_init_out;
+  $set_init_out = \&makeinfo_like_init_out;
+  sub makeinfo_like_init_out() 
   {
-     &$default_set_buttons();
+     &$default_init_out();
      $NAVIGATION_TEXT{'Following'} = ' &gt; ';
   }
 

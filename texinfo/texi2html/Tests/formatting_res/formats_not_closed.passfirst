@@ -44,3 +44,11 @@ formats_not_closed.texi(,44) @deffn truc bidule machin
 formats_not_closed.texi(,45) @deffnx truc chose args
 formats_not_closed.texi(,46) @defvar type1 var bidule
 formats_not_closed.texi(,47) 
+formats_not_closed.texi(,48) @section a section 
+formats_not_closed.texi(,49) 
+formats_not_closed.texi(,50) flushright not closed
+formats_not_closed.texi(,51) 
+formats_not_closed.texi(,52) @flushright
+formats_not_closed.texi(,53) 
+formats_not_closed.texi(,54) text flushed right
+formats_not_closed.texi(,55) 

@@ -45,4 +45,12 @@ Multitable not closed
 @deffnx truc chose args
 @defvar type1 var bidule
 
+@section a section 
+
+flushright not closed
+
+@flushright
+
+text flushed right
+
 @bye

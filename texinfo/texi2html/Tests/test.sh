@@ -197,6 +197,7 @@ test_texi sectionning lower_subsub.texi
 test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
+test_texi sectionning section_before_chapter.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting" 0 texi exotic_formatting

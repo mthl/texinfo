@@ -936,6 +936,8 @@ initialization files.
 * Navigation panel::          How to change the navigation panel.
 * Program variables::         The available main program variables and some 
                               usefull functions from the main program.
+* Output initialization::     Setting variables before the document
+                              production but after the texinfo parsing
 * css::                       Customizing css lines.
 * Customizing header::
 * Customizing section::
@@ -1174,7 +1176,10 @@ If icons are not used, the button is a link to the corresponding
 element which text is defined by the value associated with the 
 element label in the @variable{%NAVIGATION_TEXT} hash, surrounded
 by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
-no @samp{[} and @samp{]}.
+no @samp{[} and @samp{]}. 
+The element of the @code{%NAVIGATION_TEXT} hash are defined 
+dynamically, you should in the @code{init_out} function reference
+(@pxref{Output initialization}).
 
 If icons are used, the button is an image with file determined by
 the value associated with the element label in the @variable{%ACTIVE_ICONS}
@@ -1312,6 +1317,42 @@ split at nodes and @variable{$WORDS_IN_PAGE} is defined.
 @end deftypefun
 
 @c --------------------------------------------------------
+@node Output initialization
+@section Preparing the output
+
+After the texinfo file has been parsed, some information is available
+which can be used to modify some variables and prepare the outputting.
+For example the document language, the document encoding, 
+values set with @code{@@set} or @code{@@setfilename} and other similar 
+@@-commands are not known before the texinfo parsing. 
+
+The following function reference may be redefined to be called after 
+texinfo processing and before document generation:
+
+@deffn {Function Reference} init_out
+This function perform the initialization of variables and any other
+task before document outputting. 
+@end deffn
+
+In the default case the @variable{$BODYTEXT} (@pxref{Customizing header}) 
+and the hashes @variable{%NAVIGATION_TEXT} (@pxref{Button specifications}) and  
+@variable{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
+
+To perform the default initializations and also add more code, you could
+do as in the following example (save the default function reference and call 
+it in your own function) :
+
+@example
+my $default_init_out = $set_init_out;
+$set_init_out = \&makeinfo_like_init_out;
+sub makeinfo_like_init_out() 
+@{
+   &$default_init_out();
+   $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
+@}
+@end example
+
+@c --------------------------------------------------------
 @node css
 @section Customizing the @command{texi2html} css lines
 
@@ -1355,11 +1396,8 @@ a @samp{iso-8859-1} encoding.
 
 The @code{<body>} element attributes may be set by defining the
 variable @variable{$BODYTEXT}. If you want to define that variable
-dynamically, you could redefine the following function reference:
-
-@deffn {Function Reference} set_body_text
-This function should set @variable{$BODYTEXT}.
-@end deffn
+dynamically, you should use the @code{init_out} function reference
+(@pxref{Output initialization}).
 
 The default functions call the function associated with 
 @variable{$print_head_navigation} to format the navigation panel for the 
@@ -1604,6 +1642,10 @@ used. The text is added before or after the main about text.
 
 The keys of this hash are element labels (@pxref{Element labels}). The value
 is the text associated with the element label in the about text.
+The element of the hash are defined 
+dynamically, you should in the @code{init_out} function reference
+(@pxref{Output initialization}).
+
 
 @item %BUTTONS_EXAMPLE
 
@@ -2105,11 +2147,9 @@ reference.
 
 When a command controlling the alignement of text is used (@code{@@center},
 @code{@@flushleft} and @code{@@flushright}), the main program takes
-care of opening and closing paragraphs. The only thing which can be
-controlled is an argument given to the function doing the formatting of 
-paragraphs. This is achieved by the mean of a hash, @variable{%paragraph_style}.
-The keys are the names of the Texinfo commands, the value is the argument
-passed down to the function doing the formatting of the paragraphs. 
+care of opening and closing paragraphs. The alignement commands are the
+key of the @variable{%paragraph_style} hash. 
+The value is used in the function doing the formatting of the paragraphs. 
 @xref{Paragraph and preformatted region}.
 
 @c --------------------------------------------------------
@@ -2124,7 +2164,8 @@ by function references:
 
 @deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number
 This function formats a paragraph. @var{$text} is the text of the paragraph,
-@var{$alignement} is a specifier for the alignement of the paragraph.
+@var{$alignement} is the empty string when no alignement command has
+been seen, otherwise it is the current alignement command name.
 @xref{Alignement commands}.
 
 The remaining arguments are usefull when the paragraph appears within a

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.94 2003-12-16 14:18:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.95 2004-01-04 20:52:31 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -274,9 +274,8 @@ our $toc_body;
 our $titlepage;
 our $css_lines;
 our $print_redirection_page;
+our $init_out;
 
-our $set_body_text;
-our $set_buttons_text;
 our $protect_text;
 our $anchor;
 our $def_item;
@@ -3507,7 +3506,7 @@ sub rearrange_elements()
 
         unless ($section->{'tag'} =~ /unnumbered/)
         { 
-	    my $level = $section->{'level'};
+            my $level = $section->{'level'};
             while ($level > $toplevel)
             {
                 my $number = $previous_numbers[$level];
@@ -3542,13 +3541,20 @@ sub rearrange_elements()
         else
         {
             my $level = $section->{'level'} - 1;
-            while (!defined($previous_sections[$level]))
+            while (!defined($previous_sections[$level]) and ($level >= 0))
             {
                  $level--;
             }
-            $section->{'up'} = $previous_sections[$level];
-            # 'child' is the first child
-            $section->{'up'}->{'child'} = $section unless ($section->{'section_prev'});
+            if ($level >= 0)
+            {
+                $section->{'up'} = $previous_sections[$level];
+                # 'child' is the first child
+                $section->{'up'}->{'child'} = $section unless ($section->{'section_prev'});
+            }
+            else
+            {
+                 $section->{'up'} = undef;
+            }
         }
         $previous_sections[$section->{'level'}] = $section;
         # element_up is used for reparenting in case an index page 
@@ -4669,16 +4675,7 @@ sub Texi2HTML::Config::cross_manual_accent($$)
     my $accent = shift;
     return '_' . lc($Texi2HTML::Config::utf8_accents{$accent}->{$text})
         if (defined($Texi2HTML::Config::utf8_accents{$accent}->{$text}));
-    return $text . $accent if (defined($Texi2HTML::Config::accent_map{$accent}));
-    return $text . "''" if ($accent eq 'H');
-    return $text . '.' if ($accent eq 'dotaccent');
-    return $text . '*' if ($accent eq 'ringaccent');
-    return $text . '[' if ($accent eq 'tieaccent');
-    return $text . '(' if ($accent eq 'u');
-    return $text . '_' if ($accent eq 'ubaraccent');
-    return '.' . $text  if ($accent eq 'udotaccent');
-    return $text . '<' if ($accent eq 'v');
-    return $text . ',' if ($accent eq ','); 
+    return Texi2HTML::Config::ascii_accent($text, $accent);
 }
 
 sub Texi2HTML::Config::cross_manual_sc
@@ -4728,7 +4725,8 @@ sub cross_manual_protect_text($)
              if (exists($Texi2HTML::Config::ascii_character_map{$1}))
              {
                   $result .= '_' . lc($Texi2HTML::Config::ascii_character_map{$1});
-             }
+             }# else if the encoding is not utf8 convert to utf8
+             #else
         }
         else
         {
@@ -4756,8 +4754,10 @@ sub get_top($)
        $up = $up->{'element_up'};
        if (!defined($up))
        {
-           # If there is no section, it is normal not to have toplevel element
-           print STDERR "$WARN no toplevel for $element->{'texi'}\n" if (@sections_list);
+           # If there is no section, it is normal not to have toplevel element,
+           # and it is also the case if there is a low level element before
+           # a top level element
+           print STDERR "$WARN no toplevel for $element->{'texi'} (could be normal)\n" if (@sections_list);
            return undef;
        }
    }
@@ -5099,7 +5099,6 @@ sub pass_text()
          $value{'_titlefont'} = $element_top->{'titlefont'};
     }
     
-    &$Texi2HTML::Config::set_buttons_text();
     # prepare %Texi2HTML::THISDOC
     # FIXME 0 should be valid
     $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_shorttitlepage'}) || substitute_line($value{'_titlefont'});
@@ -5203,6 +5202,8 @@ sub pass_text()
     $Texi2HTML::TITLEPAGE = substitute_text({}, @{$region_lines{'titlepage'}})
         if (@{$region_lines{'titlepage'}});
     &$Texi2HTML::Config::titlepage();
+
+    &$Texi2HTML::Config::init_out();
 
     ############################################################################
     # print frame and frame toc file
@@ -5739,8 +5740,11 @@ sub open_file($$)
     my $name = shift;
     my $line_number = shift;
     local *FH;
+# we should use a discipline based on the @documentencoding with
+# default utf8 (?)
     if (open(*FH, $name))
     { 
+        
         my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 
                               'macro' => '' },
@@ -6346,33 +6350,6 @@ sub parse_multitable($$)
     return ($table_width);
 }
 
-sub end_paragraph_style($$$$$)
-{
-    my $text = shift;
-    my $stack = shift;
-    my $state = shift;
-    my $end_tag = shift;
-    my $line_nr = shift;
-    #print STDERR "PARAGRAPH_STYLE $end_tag\n";
-    return 0 if ($format_type{$end_tag} ne 'paragraph_style');
-    if ($state->{'paragraph_style'}->[-1] ne $Texi2HTML::Config::paragraph_style{$end_tag})
-    {
-        echo_error ("close $end_tag without corresponding opening element", $line_nr);
-        #warn "$WARN close $end_tag without corresponding opening element\n";
-        if ($end_tag eq 'center')
-        {
-            dump_stack ($text, $stack, $state);
-            exit (1);
-        }
-        add_prev($text, $stack, "\@end $end_tag");
-    }
-    else
-    {
-        pop @{$state->{'paragraph_style'}};
-    }
-    return 1;
-}
-
 sub end_format($$$$$)
 {
     my $text = shift;
@@ -6472,6 +6449,16 @@ sub end_format($$$$$)
             add_prev($text, $stack, &$Texi2HTML::Config::table_list($format_ref->{'format'}, $format_ref->{'text'}, $format_ref->{'command'}));
         }
     } 
+    elsif ($format_type{$format} eq 'paragraph_style')
+    {
+        if ($state->{'paragraph_style'}->[-1] eq $format)
+        {
+            pop @{$state->{'paragraph_style'}};
+        }
+        # FIXME we should call a function which just returns the text in the 
+        # default case
+        add_prev($text, $stack, $format_ref->{'text'});
+    }
     elsif (exists($Texi2HTML::Config::format_map{$format}))
     {
         if ($format_ref->{'format'} ne $format)
@@ -8116,6 +8103,8 @@ sub scan_structure($$$$;$)
                 if (s/\s+([0-9\w\-]+)//)
                 {
                     $Texi2HTML::Config::ENCODING = $1;
+                    # we should set the encoding such that opened handles
+                    # are set to the right encoding with binmode
                 }
                 return if (/^\s*$/);
                 s/^\s*//;
@@ -8583,7 +8572,6 @@ sub scan_line($$$$;$)
             if (!$top_stack)
             {
                 # paragraph style have a separate stack and can be closed too
-                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 echo_error ("\@end $end_tag without corresponding opening element", $line_nr);
                 #warn "$ERROR \@end $end_tag without corresponding opening element\n";
                 add_prev($text, $stack, "\@end $end_tag");
@@ -8609,19 +8597,17 @@ sub scan_line($$$$;$)
             $top_stack = top_stack($stack);
             if (!$top_stack)
             {
-                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 echo_error ("ended $end_tag without corresponding opening element", $line_nr);
                 #warn "$ERROR ended $end_tag without corresponding opening element\n";
                 add_prev($text, $stack, "\@end $end_tag");
                 next;
             }
-            # if the previous format is a paragraph it is ended and @end end_tag 
-            # is reinjected
+            # if the previous format is a paragraph it is ended and 
+            # @end end_tag is reinjected
             if ($top_stack->{'format'} eq 'paragraph')
             {
                 my $paragraph = pop @$stack;
                 add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
-                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 $_ = "\@end $end_tag " . $_;
                 next;
             }
@@ -8631,13 +8617,10 @@ sub scan_line($$$$;$)
             {
                 my $paragraph = pop @$stack;
                 add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
-                next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
                 $_ = "\@end $end_tag " . $_;
                 next;
             }
             
-            # a paragraph style is possibly closed here
-            next if end_paragraph_style($text, $stack, $state, $end_tag, $line_nr);
             # Warn if the format on top of stack is not compatible with the 
             # end tag, and find the end tag.
             unless (
@@ -9068,7 +9051,6 @@ sub scan_line($$$$;$)
                 else
                 {
                     push @$stack, {'format' => 'cell', 'text' => ''};
-		    #begin_paragraph($stack, $state);
                 }
                 begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));			
                 next;
@@ -9076,10 +9058,7 @@ sub scan_line($$$$;$)
             # Macro opening a format (table, list, deff, example...)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
-                # if this is a paragraph style, we close allready opened 
-                # paragraph and start a new paragraph if not in preformatted 
-                # environment 
-                if (! ($state->{'preformatted'} and ($format_type{$macro} eq 'paragraph_style')) and close_paragraph($text, $stack, $state, $line_nr))
+                if (close_paragraph($text, $stack, $state, $line_nr))
                 {
                     $_ = "\@$macro " . $_;
                     next;
@@ -9150,15 +9129,15 @@ sub scan_line($$$$;$)
                 }
                 elsif ($Texi2HTML::Config::paragraph_style{$macro})
                 {
-                    if (/^\s*$/)
-                    {
-                        next if ($macro eq 'center');
-                    }
-                    else
-                    {
-                        begin_paragraph($stack, $state);			
-                    }
-                    push @{$state->{'paragraph_style'}}, $Texi2HTML::Config::paragraph_style{$macro};
+                    # if there are only spaces after the @center, then the end 
+                    # of line has allready been removed and the code triggered
+                    # by end of line for @center closing won't be called.
+                    # thus we don't open it (opening @center means pushing it
+                    # on the paragraph_style stack)
+                    next if (($macro eq 'center') and /^\s*$/); 
+                    push @{$state->{'paragraph_style'}}, $macro;
+                    push (@$stack, { 'format' => $macro, 'text' => '' }) unless ($macro eq 'center');
+                    begin_paragraph($stack, $state) unless (!$state->{'preformatted'} and no_line($_));
                 }
                 elsif (($format_type{$macro} eq 'list') or ($format_type{$macro} eq 'table'))
                 {
@@ -9363,9 +9342,28 @@ sub scan_line($$$$;$)
 
             # @item line is closed by end of line
             add_term($text, $stack, $state, $line_nr);
+            # FIXME test @center @item and @item @center 
             if ($state->{'paragraph_style'}->[-1] eq 'center')
             {
-                $_ = "\@end center\n";
+                close_stack($text, $stack, $state, $line_nr, '');
+                my $top_stack = top_stack($stack);
+
+                if (defined($top_stack))
+                {
+                    if ($top_stack->{'format'} eq 'paragraph')
+                    {
+                        my $paragraph = pop @$stack;
+                        add_prev($text, $stack, do_paragraph($paragraph->{'text'}, $state));
+                    }
+                    elsif ($top_stack->{'format'} eq 'preformatted')
+                    {
+                        my $paragraph = pop @$stack;
+                        add_prev($text, $stack, do_preformatted($paragraph->{'text'}, $state));
+                    }
+                }
+                pop @{$state->{'paragraph_style'}};
+                #$_ = $/ if (chomp($_));
+                $_ = '';
                 next;
             }
             last;
@@ -10314,13 +10312,6 @@ else
     # implemented there.
     $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
-# Set the body text
-&$Texi2HTML::Config::set_body_text();
-# this was used in footer
-#unless (defined($Texi2HTML::Config::ADDRESS))
-#{
-#    $Texi2HTML::Config::ADDRESS = &$Texi2HTML::Config::address($T2H_USER, $T2H_TODAY);
-#}
 
 open_file($docu, $texi_line_number);
 Texi2HTML::LaTeX2HTML::init($docu_name, $docu_rdir, $T2H_DEBUG & $DEBUG_L2H)
