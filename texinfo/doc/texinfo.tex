@@ -775,8 +775,19 @@ where each line of input produces a line of output.}
 }
 
 % @include file    insert text of that file as input.
-% Allow normal characters that  we make active in the argument (a file name).
-\def\include{\begingroup
+%
+\def\include{\parseargusing\filenamecatcodes\includezzz}
+\def\includezzz#1{%
+  \pushthisfilestack
+  \def\thisfile{#1}%
+  {%
+    \makevalueexpandable
+    \def\temp{\input #1 }%
+    \expandafter
+  }\temp
+  \popthisfilestack
+}
+\def\filenamecatcodes{%
   \catcode`\\=\other
   \catcode`~=\other
   \catcode`^=\other
@@ -785,14 +796,22 @@ where each line of input produces a line of output.}
   \catcode`<=\other
   \catcode`>=\other
   \catcode`+=\other
-  \parsearg\includezzz}
-% Restore active chars for included file.
-\def\includezzz#1{\endgroup\begingroup
-  % Read the included file in a group so nested @include's work.
-  \def\thisfile{#1}%
-  \let\value=\expandablevalue
-  \input\thisfile
-\endgroup}
+  \catcode`-=\other
+}
+
+\def\pushthisfilestack{%
+  \expandafter\pushthisfilestackX\popthisfilestack\StackTerm
+}
+\def\pushthisfilestackX{%
+  \expandafter\pushthisfilestackY\thisfile\StackTerm
+}
+\def\pushthisfilestackY #1\StackTerm #2\StackTerm {%
+  \gdef\popthisfilestack{\gdef\thisfile{#1}\gdef\popthisfilestack{#2}}%
+}
+
+\def\popthisfilestack{\errthisfilestackempty}
+\def\errthisfilestackempty{\errmessage{Internal error:
+  the stack of filenames is empty.}}
 
 \def\thisfile{}
 
@@ -4853,36 +4872,19 @@ width0pt\relax} \fi
 
 % @verbatiminclude FILE - insert text of file in verbatim environment.
 %
-% Allow normal characters that we make active in the argument (a file name).
-\def\verbatiminclude{%
-  \begingroup
-    \catcode`\\=\other
-    \catcode`~=\other
-    \catcode`^=\other
-    \catcode`_=\other
-    \catcode`|=\other
-    \catcode`<=\other
-    \catcode`>=\other
-    \catcode`+=\other
-    \parsearg\doverbatiminclude
-}
+\def\verbatiminclude{\parseargusing\filenamecatcodes\doverbatiminclude}
 \def\setupverbatiminclude{%
-  \begingroup
-    \nonfillstart
-    \advance\leftskip by -\defbodyindent
-    \begingroup\setupverbatim
+  \nonfillstart
+  \advance\leftskip by -\defbodyindent
+  \setupverbatim
 }
 %
 \def\doverbatiminclude#1{%
-     % Restore active chars for included file.
-  \endgroup
   \begingroup
-    \let\value=\expandablevalue
-    \def\thisfile{#1}%
-    \expandafter\expandafter\setupverbatiminclude\input\thisfile
-  \endgroup
-  \nonfillfinish
-  \endgroup
+    \makevalueexpandable
+    \setupverbatiminclude
+    \input\thisfile\space
+  \nonfillfinish % contains \endgroup
 }
 
 % @copying ... @end copying.
