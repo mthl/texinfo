@@ -1900,7 +1900,7 @@ msgstr "på"
 #: makeinfo/defun.c:731
 #, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "Måste vara i \"@%s\"-miljö för att använda \"@%s\""
+msgstr "Måste vara i \"@%s\"-omgivning för att använda \"@%s\""
 
 #: makeinfo/files.c:447
 #, c-format
@@ -1936,12 +1936,12 @@ msgstr "Namnlös"
 #: makeinfo/html.c:190
 #, c-format
 msgid "%s: could not open --css-file: %s"
-msgstr "%s: kunde inte öppna --css-file: %s"
+msgstr "%s: kunde inte öppna --css-fil: %s"
 
 #: makeinfo/html.c:265
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d: --css-file slutade med kommentar"
+msgstr "%s:%d: --css-fil slutade med kommentar"
 
 # to pop?
 #: makeinfo/html.c:360
