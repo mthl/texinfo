@@ -314,25 +314,21 @@ and <code>@ifclear</code> commands.
 </p><p>Brief descriptions:
 
 </p><dl compact="compact">
-<dt><code> @set <var>flag</var> [<var>value</var>]
-</code></dt>
+<dt><code> @set <var>flag</var> [<var>value</var>]</code></dt>
 <dd><p>Set the variable <var>flag</var>, to the optional <var>value</var> if specifed.
 
 </p></dd>
-<dt><code> @clear <var>flag</var>
-</code></dt>
+<dt><code> @clear <var>flag</var></code></dt>
 <dd><p>Undefine the variable <var>flag</var>, whether or not it was previously defined.
 
 </p></dd>
-<dt><code> @ifset <var>flag</var>
-</code></dt>
+<dt><code> @ifset <var>flag</var></code></dt>
 <dd><p>If <var>flag</var> is set, text through the next <code>@end ifset</code> command
 is formatted.  If <var>flag</var> is clear, text through the following
 <code>@end ifset</code> command is ignored.
 
 </p></dd>
-<dt><code> @ifclear <var>flag</var>
-</code></dt>
+<dt><code> @ifclear <var>flag</var></code></dt>
 <dd><p>If <var>flag</var> is set, text through the next <code>@end ifclear</code> command
 is ignored.  If <var>flag</var> is clear, text through the following
 <code>@end ifclear</code> command is formatted.
@@ -542,8 +538,7 @@ Automake distributions, and full texts.
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Write text for the <code>@copying</code> section (see section <a href="texinfo_4.html#SEC50"><code>@copying</code>: Declare copying permissions</a>):
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@copying
@@ -556,8 +551,7 @@ Copyright &hellip;
 
 Permission is granted &hellip;
 @end copying
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Write text for the title page, for people reading the printed manual:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage

@@ -160,8 +160,7 @@ a file `<tt>sfile</tt>'.
 <p>Alias modules are the simplest kind of module:
 
 </p><dl compact="compact">
-<dt><code> <var>mname</var> -a <var>aliases</var>&hellip;
-</code></dt>
+<dt><code> <var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
 <dd><p>This represents the simplest way of defining a module
 <var>mname</var>.  The `<samp>-a</samp>' flags the definition as a
 simple alias: <small>CVS</small> will treat any use of <var>mname</var> (as
@@ -216,8 +215,7 @@ U first-dir/sdir/sfile
 <h3 class="appendixsubsec"> C.1.2 Regular modules </h3>
 
 <dl compact="compact">
-<dt><code> <var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]
-</code></dt>
+<dt><code> <var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
 <dd><p>In the simplest case, this form of module definition
 reduces to `<samp><var>mname</var> <var>dir</var></samp>'.  This defines
 all the files in directory <var>dir</var> as module mname.
@@ -389,16 +387,14 @@ the module.
 </p><dl compact="compact">
 <dd><a name="IDX251"></a>
 </dd>
-<dt><code> -d <var>name</var>
-</code></dt>
+<dt><code> -d <var>name</var></code></dt>
 <dd><p>Name the working directory something other than the
 module name.
 
 </p><a name="IDX252"></a>
 <a name="IDX253"></a>
 </dd>
-<dt><code> -e <var>prog</var>
-</code></dt>
+<dt><code> -e <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are exported.  <var>prog</var> runs with a single
 argument, the module name.
@@ -406,8 +402,7 @@ argument, the module name.
 </p><a name="IDX254"></a>
 <a name="IDX255"></a>
 </dd>
-<dt><code> -o <var>prog</var>
-</code></dt>
+<dt><code> -o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
 argument, the module name.  See <a href="#SEC164">How the modules file &quot;program options&quot; programs are run</a> for
@@ -417,8 +412,7 @@ information on how <var>prog</var> is called.
 <a name="IDX257"></a>
 <a name="IDX258"></a>
 </dd>
-<dt><code> -s <var>status</var>
-</code></dt>
+<dt><code> -s <var>status</var></code></dt>
 <dd><p>Assign a status to the module.  When the module file is
 printed with `<samp>cvs checkout -s</samp>' the modules are
 sorted according to primarily module status, and
@@ -430,8 +424,7 @@ person that is responsible for this module.
 </p><a name="IDX259"></a>
 <a name="IDX260"></a>
 </dd>
-<dt><code> -t <var>prog</var>
-</code></dt>
+<dt><code> -t <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are tagged with <code>rtag</code>.  <var>prog</var> runs
 with two arguments: the module name and the symbolic
@@ -585,15 +578,13 @@ file names and the purpose of the corresponding
 programs.
 
 </p><dl compact="compact">
-<dt>`<tt> commitinfo
-</tt>'</dt>
+<dt>`<tt> commitinfo</tt>'</dt>
 <dd><p>The program is responsible for checking that the commit
 is allowed.  If it exits with a non-zero exit status
 the commit will be aborted.
 
 </p></dd>
-<dt>`<tt> verifymsg
-</tt>'</dt>
+<dt>`<tt> verifymsg</tt>'</dt>
 <dd><p>The specified program is used to evaluate the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
@@ -601,8 +592,7 @@ fields.  This is most useful in combination with the
 template (see section <a href="#SEC175">Rcsinfo</a>).
 
 </p></dd>
-<dt>`<tt> editinfo
-</tt>'</dt>
+<dt>`<tt> editinfo</tt>'</dt>
 <dd><p>The specified program is used to edit the log message,
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
@@ -610,8 +600,7 @@ fields.  This is most useful in combination with the
 template (see section <a href="#SEC175">Rcsinfo</a>).  (obsolete)
 
 </p></dd>
-<dt>`<tt> loginfo
-</tt>'</dt>
+<dt>`<tt> loginfo</tt>'</dt>
 <dd><p>The specified program is called when the commit is
 complete.  It receives the log message and some
 additional information and can store the log message in
@@ -1095,16 +1084,13 @@ characters surrounded by `<samp>{</samp>' and `<samp>}</samp>' as
 separators.  The format characters are:
 
 </p><dl compact="compact">
-<dt><tt> s
-</tt></dt>
+<dt><tt> s</tt></dt>
 <dd><p>file name
 </p></dd>
-<dt><tt> V
-</tt></dt>
+<dt><tt> V</tt></dt>
 <dd><p>old version number (pre-checkin)
 </p></dd>
-<dt><tt> v
-</tt></dt>
+<dt><tt> v</tt></dt>
 <dd><p>new version number (post-checkin)
 </p></dd>
 </dl>
@@ -1346,8 +1332,7 @@ patterns is:
     *.a     *.olb   *.o     *.obj   *.so    *.exe
     *.Z     *.elc   *.ln
     core
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>The per-repository list in
 `<tt>$CVSROOT/CVSROOT/cvsignore</tt>' is appended to
 the list, if that file exists.
@@ -1539,8 +1524,7 @@ non-alphanumeric character other than `<samp>_</samp>', the
 internal variables are:
 
 </p><dl compact="compact">
-<dt><code> CVSROOT
-</code></dt>
+<dt><code> CVSROOT</code></dt>
 <dd><a name="IDX273"></a>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
 See section <a href="cvs_2.html#SEC9">The Repository</a>, for a description of the various
@@ -1549,8 +1533,7 @@ variable contains just the directory and not any
 of the access method information.
 
 </p></dd>
-<dt><code> RCSBIN
-</code></dt>
+<dt><code> RCSBIN</code></dt>
 <dd><a name="IDX274"></a>
 <p>In <small>CVS</small> 1.9.18 and older, this specified the
 directory where <small>CVS</small> was looking for <small>RCS</small>
@@ -1559,24 +1542,20 @@ programs, specifying this internal variable is now an
 error.
 
 </p></dd>
-<dt><code> CVSEDITOR
-</code></dt>
+<dt><code> CVSEDITOR</code></dt>
 <dd><a name="IDX275"></a>
 </dd>
-<dt><code> EDITOR
-</code></dt>
+<dt><code> EDITOR</code></dt>
 <dd><a name="IDX276"></a>
 </dd>
-<dt><code> VISUAL
-</code></dt>
+<dt><code> VISUAL</code></dt>
 <dd><a name="IDX277"></a>
 <p>These all expand to the same value, which is the editor
 that <small>CVS</small> is using.  See section <a href="cvs_16.html#SEC118">Global options</a>, for how
 to specify this.
 
 </p></dd>
-<dt><code> USER
-</code></dt>
+<dt><code> USER</code></dt>
 <dd><a name="IDX278"></a>
 <p>Username of the user running <small>CVS</small> (on the <small>CVS</small>
 server machine).
@@ -1622,8 +1601,7 @@ there is no way to quote a `<samp>$</samp>' character so that
 <dd><a name="IDX280"></a>
 
 </dd>
-<dt><code> CVS_USER
-</code></dt>
+<dt><code> CVS_USER</code></dt>
 <dd><a name="IDX281"></a>
 <p>The <small>CVS</small>-specific username provided by the user, if it
 can be provided (currently just for the pserver access
@@ -1632,14 +1610,12 @@ and <code>USER</code> may differ when `<tt>$CVSROOT/CVSROOT/passwd</tt>'
 is used to map <small>CVS</small> usernames to system usernames.)
 
 </p></dd>
-<dt><code> LOGNAME
-</code></dt>
+<dt><code> LOGNAME</code></dt>
 <dd><a name="IDX282"></a>
 <p>The username of the system user.
 
 </p></dd>
-<dt><code> USER
-</code></dt>
+<dt><code> USER</code></dt>
 <dd><a name="IDX283"></a>
 <p>Same as <code>LOGNAME</code>.
 Do not confuse this with the internal variable of the same name.
@@ -1683,8 +1659,7 @@ Extraneous spaces or tabs are not permitted.
 </p><dl compact="compact">
 <dd><a name="IDX284"></a>
 </dd>
-<dt><code> RCSBIN=<var>bindir</var>
-</code></dt>
+<dt><code> RCSBIN=<var>bindir</var></code></dt>
 <dd><p>For <small>CVS</small> 1.9.12 through 1.9.18, this setting told
 <small>CVS</small> to look for <small>RCS</small> programs in the
 <var>bindir</var> directory.  Current versions of <small>CVS</small>
@@ -1693,8 +1668,7 @@ setting is accepted, but it does nothing.
 
 </p><a name="IDX285"></a>
 </dd>
-<dt><code> SystemAuth=<var>value</var>
-</code></dt>
+<dt><code> SystemAuth=<var>value</var></code></dt>
 <dd><p>If <var>value</var> is `<samp>yes</samp>', then pserver should check
 for users in the system's user database if not found in
 `<tt>CVSROOT/passwd</tt>'.  If it is `<samp>no</samp>', then all
@@ -1705,8 +1679,7 @@ The default is `<samp>yes</samp>'.  For more on pserver, see
 </p>
 <a name="IDX286"></a>
 </dd>
-<dt><code> TopLevelAdmin=<var>value</var>
-</code></dt>
+<dt><code> TopLevelAdmin=<var>value</var></code></dt>
 <dd><p>Modify the `<samp>checkout</samp>' command to create a
 `<samp>CVS</samp>' directory at the top level of the new
 working directory, in addition to `<samp>CVS</samp>'
@@ -1723,8 +1696,7 @@ each command.  It also provides a place for the
 
 </p><a name="IDX287"></a>
 </dd>
-<dt><code> LockDir=<var>directory</var>
-</code></dt>
+<dt><code> LockDir=<var>directory</var></code></dt>
 <dd><p>Put <small>CVS</small> lock files in <var>directory</var> rather than
 directly in the repository.  This is useful if you want
 to let users read from the repository while giving them
@@ -1751,8 +1723,7 @@ repository with LockDir enabled.
 
 </p><a name="IDX288"></a>
 </dd>
-<dt><code> LogHistory=<var>value</var>
-</code></dt>
+<dt><code> LogHistory=<var>value</var></code></dt>
 <dd><p>Control what is logged to the `<tt>CVSROOT/history</tt>' file (see section <a href="cvs_16.html#SEC137">history--Show status of files and users</a>).
 Default of `<samp>TOEFWUCGMAR</samp>' (or simply `<samp>all</samp>') will log
 all transactions.  Any subset of the default is
@@ -1762,8 +1733,7 @@ legal.  (For example, to only log transactions that modify the
 </p><a name="IDX289"></a>
 <a name="IDX290"></a>
 </dd>
-<dt><code> RereadLogAfterVerify=<var>value</var>
-</code></dt>
+<dt><code> RereadLogAfterVerify=<var>value</var></code></dt>
 <dd><p>Modify the `<samp>commit</samp>' command such that CVS will reread the
 log message after running the program specified by `<tt>verifymsg</tt>'.
 <var>value</var> may be one of `<samp>yes</samp>' or `<samp>always</samp>', indicating that
@@ -1783,8 +1753,7 @@ may be used.
 
 </p><a name="IDX291"></a>
 </dd>
-<dt><code> UserAdminOptions=<var>value</var>
-</code></dt>
+<dt><code> UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
 command (see section <a href="cvs_16.html#SEC120">admin--Administration</a>) for users not in the <code>cvsadmin</code> group.
 The <var>value</var> string is a list of single character options

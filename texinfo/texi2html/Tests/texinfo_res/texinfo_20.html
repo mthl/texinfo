@@ -395,8 +395,7 @@ network software will have a special option to send a file to specific
 queues, like this:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
-</pre></td></tr></table>
-</li><li><p> Convert the DVI file to a Postscript or PCL file and send it to your
+</pre></td></tr></table></li><li><p> Convert the DVI file to a Postscript or PCL file and send it to your
 local printer.  See <a href="../dvips/dvips-invocation.html">(dvips)dvips invocation</a> section `dvips invocation' in <cite>Dvips</cite>, and the man
 pages for <code>dvilj</code>, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
@@ -472,74 +471,56 @@ recentering the display of the buffer in which the operations
 occur.
 
 </p><dl compact="compact">
-<dt><kbd> C-c C-t C-b
-</kbd></dt>
-<dt><kbd> M-x texinfo-tex-buffer
-</kbd></dt>
+<dt><kbd> C-c C-t C-b</kbd></dt>
+<dt><kbd> M-x texinfo-tex-buffer</kbd></dt>
 <dd><p>Run <code>texi2dvi</code> on the current buffer.
 
 </p></dd>
-<dt><kbd> C-c C-t C-r
-</kbd></dt>
-<dt><kbd> M-x texinfo-tex-region
-</kbd></dt>
+<dt><kbd> C-c C-t C-r</kbd></dt>
+<dt><kbd> M-x texinfo-tex-region</kbd></dt>
 <dd><p>Run TeX on the current region.
 
 </p></dd>
-<dt><kbd> C-c C-t C-i
-</kbd></dt>
-<dt><kbd> M-x texinfo-texindex
-</kbd></dt>
+<dt><kbd> C-c C-t C-i</kbd></dt>
+<dt><kbd> M-x texinfo-texindex</kbd></dt>
 <dd><p>Sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.
 
 </p></dd>
-<dt><kbd> C-c C-t C-p
-</kbd></dt>
-<dt><kbd> M-x texinfo-tex-print
-</kbd></dt>
+<dt><kbd> C-c C-t C-p</kbd></dt>
+<dt><kbd> M-x texinfo-tex-print</kbd></dt>
 <dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
 <code>texinfo-tex-buffer</code>.
 
 </p></dd>
-<dt><kbd> C-c C-t C-q
-</kbd></dt>
-<dt><kbd> M-x tex-show-print-queue
-</kbd></dt>
+<dt><kbd> C-c C-t C-q</kbd></dt>
+<dt><kbd> M-x tex-show-print-queue</kbd></dt>
 <dd><p>Show the print queue.
 
 </p></dd>
-<dt><kbd> C-c C-t C-d
-</kbd></dt>
-<dt><kbd> M-x texinfo-delete-from-print-queue
-</kbd></dt>
+<dt><kbd> C-c C-t C-d</kbd></dt>
+<dt><kbd> M-x texinfo-delete-from-print-queue</kbd></dt>
 <dd><p>Delete a job from the print queue; you will be prompted for the job
 number shown by a preceding <kbd>C-c C-t C-q</kbd> command
 (<code>texinfo-show-tex-print-queue</code>).
 
 </p></dd>
-<dt><kbd> C-c C-t C-k
-</kbd></dt>
-<dt><kbd> M-x tex-kill-job
-</kbd></dt>
+<dt><kbd> C-c C-t C-k</kbd></dt>
+<dt><kbd> M-x tex-kill-job</kbd></dt>
 <dd><p>Kill the currently running TeX job started by either
 <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
 process running in the Texinfo shell buffer.
 
 </p></dd>
-<dt><kbd> C-c C-t C-x
-</kbd></dt>
-<dt><kbd> M-x texinfo-quit-job
-</kbd></dt>
+<dt><kbd> C-c C-t C-x</kbd></dt>
+<dt><kbd> M-x texinfo-quit-job</kbd></dt>
 <dd><p>Quit a TeX formatting job that has stopped because of an error by
 sending an <kbd>x</kbd> to it.  When you do this, TeX preserves a record
 of what it did in a `<tt>.log</tt>' file.
 
 </p></dd>
-<dt><kbd> C-c C-t C-l
-</kbd></dt>
-<dt><kbd> M-x tex-recenter-output-buffer
-</kbd></dt>
+<dt><kbd> C-c C-t C-l</kbd></dt>
+<dt><kbd> M-x tex-recenter-output-buffer</kbd></dt>
 <dd><p>Redisplay the shell buffer in which the TeX printing and formatting
 commands are run to show its most recent output.
 </p></dd>

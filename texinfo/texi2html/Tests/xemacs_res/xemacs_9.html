@@ -382,28 +382,23 @@ when completion is available.
 when completion is available.
 
 </p><dl compact="compact">
-<dt><kbd> <kbd>TAB</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>TAB</kbd></kbd></dt>
 <dd><p>Complete the text in the minibuffer as much as possible
 (<code>minibuffer-complete</code>).
 </p></dd>
-<dt><kbd> <kbd>SPC</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>SPC</kbd></kbd></dt>
 <dd><p>Complete the minibuffer text, but don't go beyond one word
 (<code>minibuffer-complete-word</code>).
 </p></dd>
-<dt><kbd> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>RET</kbd></kbd></dt>
 <dd><p>Submit the text in the minibuffer as the argument, possibly completing
 first as described below (<code>minibuffer-complete-and-exit</code>).
 </p></dd>
-<dt><kbd> ?
-</kbd></dt>
+<dt><kbd> ?</kbd></dt>
 <dd><p>Print a list of all possible completions of the text in the minibuffer
 (<code>minibuffer-list-completions</code>).
 </p></dd>
-<dt><kbd> <kbd>button2</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>button2</kbd></kbd></dt>
 <dd><p>Select the highlighted text under the mouse as a minibuffer response.
 When the minibuffer is being used to prompt the user for a completion,
 any valid completions which are visible on the screen will be highlighted
@@ -430,8 +425,7 @@ window that displays a list of completions:
 </p><dl compact="compact">
 <dd><a name="IDX222"></a>
 </dd>
-<dt><kbd> button2up
-</kbd></dt>
+<dt><kbd> button2up</kbd></dt>
 <dd><p>Clicking mouse button 2 on a completion in the list of possible
 completions chooses that completion (<code>mouse-choose-completion</code>).
 You normally use this command while point is in the minibuffer; but you
@@ -439,10 +433,8 @@ must click in the list of completions, not in the minibuffer itself.
 
 </p><a name="IDX223"></a>
 </dd>
-<dt><kbd> <kbd>PRIOR</kbd>
-</kbd></dt>
-<dt><kbd> M-v
-</kbd></dt>
+<dt><kbd> <kbd>PRIOR</kbd></kbd></dt>
+<dt><kbd> M-v</kbd></dt>
 <dd><p>Typing <kbd>PRIOR</kbd> or <kbd>M-v</kbd>, while in the minibuffer, selects the
 window showing the completion list buffer
 (<code>switch-to-completions</code>).  This paves the way for using the
@@ -451,8 +443,7 @@ effect, but this way is more convenient.)
 
 </p><a name="IDX224"></a>
 </dd>
-<dt><kbd> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>RET</kbd></kbd></dt>
 <dd><p>Typing <kbd>RET</kbd> <em>in the completion list buffer</em> chooses the
 completion that point is in or next to (<code>choose-completion</code>).  To
 use this command, you must first switch windows to the window that shows
@@ -460,22 +451,17 @@ the list of completions.
 
 </p><a name="IDX225"></a>
 </dd>
-<dt><kbd> <kbd>RIGHT</kbd>
-</kbd></dt>
-<dt><kbd> <kbd>TAB</kbd>
-</kbd></dt>
-<dt><kbd> C-f
-</kbd></dt>
+<dt><kbd> <kbd>RIGHT</kbd></kbd></dt>
+<dt><kbd> <kbd>TAB</kbd></kbd></dt>
+<dt><kbd> C-f</kbd></dt>
 <dd><p>Typing the right-arrow key <kbd>RIGHT</kbd>, <kbd>TAB</kbd> or <kbd>C-f</kbd> <em>in
 the completion list buffer</em> moves point to the following completion
 (<code>next-list-mode-item</code>).
 
 </p><a name="IDX226"></a>
 </dd>
-<dt><kbd> <kbd>LEFT</kbd>
-</kbd></dt>
-<dt><kbd> C-b
-</kbd></dt>
+<dt><kbd> <kbd>LEFT</kbd></kbd></dt>
+<dt><kbd> C-b</kbd></dt>
 <dd><p>Typing the left-arrow key <kbd>LEFT</kbd> or <kbd>C-b</kbd> <em>in the
 completion list buffer</em> moves point toward the beginning of the buffer,
 to the previous completion (<code>previous-list-mode-item</code>).
@@ -618,27 +604,21 @@ in the minibuffer.  They discard the old minibuffer contents, so you can
 think of them as moving through the history of previous arguments.
 
 </p><dl compact="compact">
-<dt><kbd> <kbd>UP</kbd>
-</kbd></dt>
-<dt><kbd> M-p
-</kbd></dt>
+<dt><kbd> <kbd>UP</kbd></kbd></dt>
+<dt><kbd> M-p</kbd></dt>
 <dd><p>Move to the next earlier argument string saved in the minibuffer history
 (<code>previous-history-element</code>).
 </p></dd>
-<dt><kbd> <kbd>DOWN</kbd>
-</kbd></dt>
-<dt><kbd> M-n
-</kbd></dt>
+<dt><kbd> <kbd>DOWN</kbd></kbd></dt>
+<dt><kbd> M-n</kbd></dt>
 <dd><p>Move to the next later argument string saved in the minibuffer history
 (<code>next-history-element</code>).
 </p></dd>
-<dt><kbd> M-r <var>regexp</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-r <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Move to an earlier saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>previous-matching-history-element</code>).
 </p></dd>
-<dt><kbd> M-s <var>regexp</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-s <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Move to a later saved argument in the minibuffer history that has a
 match for <var>regexp</var> (<code>next-matching-history-element</code>).
 </p></dd>
@@ -723,22 +703,18 @@ the command name.
 
 </p><a name="IDX238"></a>
 <dl compact="compact">
-<dt><kbd> C-x <kbd>ESC</kbd> <kbd>ESC</kbd>
-</kbd></dt>
+<dt><kbd> C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd></dt>
 <dd><p>Re-execute a recent minibuffer command (<code>repeat-complex-command</code>).
 </p></dd>
-<dt><kbd> M-p
-</kbd></dt>
+<dt><kbd> M-p</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to previous recorded command
 (<code>previous-history-element</code>).
 </p></dd>
-<dt><kbd> M-n
-</kbd></dt>
+<dt><kbd> M-n</kbd></dt>
 <dd><p>Within <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd>, move to the next (more recent)
 recorded command (<code>next-history-element</code>).
 </p></dd>
-<dt><kbd> M-x list-command-history
-</kbd></dt>
+<dt><kbd> M-x list-command-history</kbd></dt>
 <dd><p>Display the entire command history, showing all the commands
 <kbd>C-x <kbd>ESC</kbd> <kbd>ESC</kbd></kbd> can repeat, most recent first.
 </p></dd>

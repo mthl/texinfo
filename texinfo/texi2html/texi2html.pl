@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.83 2003-11-11 22:13:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.84 2003-11-18 15:37:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -269,7 +269,7 @@ our $print_redirection_page;
 
 our $set_body_text;
 our $set_buttons_text;
-our $protect_html;
+our $protect_text;
 our $anchor;
 our $def_item;
 our $def;
@@ -313,6 +313,10 @@ our $table_list;
 our $index_summary_file_entry;
 our $style;
 our $format;
+our $normal_text;
+our $empty_line;
+our $unknown;
+our $unknown_style;
 
 our $PRE_ABOUT;
 our $AFTER_ABOUT;
@@ -340,6 +344,7 @@ our %special_accents;
 $toc_body                 = \&T2H_GPL_toc_body;
 $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
+$normal_text              = \&t2h_gpl_normal_text;
 
 sub T2H_GPL_toc_body($$$)
 {
@@ -446,22 +451,8 @@ sub T2H_GPL_style($$$$$)
     }
     if ($do_quotes)
     {
-        if (!$no_close and !$no_open)
-        {
-            $text = "\`$text\'";
-        }
-        elsif ($no_close and $no_open)
-        {
-            $text = "$text";
-        }
-        elsif ($no_close)
-        {
-            $text = "\`$text";
-        }
-        elsif ($no_open)
-        {
-            $text = "$text\'";
-        }
+        $text = "\`$text" if (!$no_open);
+        $text .= "'" if (!$no_close);
     }
     return $text;
 }
@@ -481,7 +472,14 @@ sub T2H_GPL_format($$$)
     return "<${element}$attribute_text>\n" . $text. "</$element>\n";
 }
 
-
+sub t2h_gpl_normal_text($)
+{
+    my $text = shift;
+    $text =~ s/``/"/go;
+    $text =~ s/''/"/go;
+    $text =~ s/-(--?)/$1/go;
+    return $text;
+}
 # @INIT@
 
 require "$ENV{T2H_HOME}/texi2html.init"
@@ -4544,7 +4542,7 @@ sub do_names()
         next if ($nodes{$node}->{'index_page'}); # some nodes are index pages.
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
-        $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($nodes{$node}->{'texi'}));
+        $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($nodes{$node}->{'texi'}));
         if ($nodes{$node}->{'external_node'} and !$nodes{$node}->{'seen'})
         {
             $nodes{$node}->{'file'} = do_external_ref($node);
@@ -4556,7 +4554,7 @@ sub do_names()
         $section->{'name'} = substitute_line ($section->{'texi'});
         $section->{'text'} = $section->{'number'} . " " . $section->{'name'};
         $section->{'text'} =~ s/^\s*//;
-        $section->{'no_texi'} = &$Texi2HTML::Config::protect_html($section->{'number'} . " " .remove_texi($section->{'texi'}));
+        $section->{'no_texi'} = &$Texi2HTML::Config::protect_text($section->{'number'} . " " .remove_texi($section->{'texi'}));
         $section->{'no_texi'} =~ s/^\s*//;
     }
     my $tocnr = 1;
@@ -4578,7 +4576,7 @@ sub do_names()
             $sec_name = $element->{'element_ref'}->{'no_texi'};
 	    #$sec_name = $element->{'element_ref'}->{'number'} . " " .$sec_name if (defined($element->{'element_ref'}->{'number'}));
 	    #$sec_name =~ s/^\s*//;
-            $element->{'no_texi'} = &$Texi2HTML::Config::protect_html($page->{First} ne $page->{Last} ?
+            $element->{'no_texi'} = &$Texi2HTML::Config::protect_text($page->{First} ne $page->{Last} ?
                 "$sec_name: $page->{First} -- $page->{Last}" :
                 "$sec_name: $page->{First}");
         }
@@ -4877,8 +4875,8 @@ sub pass_text()
     $Texi2HTML::THISDOC{'titlefont'} = substitute_line($value{'_titlefont'});
     $Texi2HTML::THISDOC{'subtitle'} = substitute_line($value{'_subtitle'});
     
-    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_titlefont'}));
-    $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_html(remove_texi($value{'_shorttitle'}));
+    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_text(remove_texi($value{'_titlefont'}));
+    $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_text(remove_texi($value{'_shorttitle'}));
 
     my $top_no_texi = '';
     if ($element_top and $element_top->{'no_texi'}  and (!$node_top or ($element_top ne $node_top)))
@@ -5720,14 +5718,31 @@ sub do_anchor_label($)
     return &$Texi2HTML::Config::anchor($nodes{$anchor}->{'id'});
 }
 
+sub get_format_command($)
+{
+    my $format = shift;
+    my $command = '';
+    my $format_name = '';
+    my $term = 0;
+    my $paragraph_number;
+    if (defined($format) and ref($format) eq "HASH")
+    {
+         $command = $format->{'command'};
+         $command = '' if (!defined($command));
+         $paragraph_number = \$format->{'paragraph_number'};
+         $format_name =  $format->{'format'};
+         $term = 1 if ($format->{'term'}); #This should never happen
+    }
+    return ($format_name, $command, $paragraph_number, $term);
+}
 
 sub do_paragraph($$)
 {
     my $text = shift;
     my $state = shift;
-    my $paragraph_command = $state->{'paragraph'};
+    my ($format, $paragraph_command, $paragraph_number, $term) = get_format_command ($state->{'paragraph'});
     delete $state->{'paragraph'};
-
+    my $paragraph_command_formatted;
     $state->{'paragraph_nr'}--;
     (print STDERR "Bug text undef in do_paragraph", return '') unless defined($text);
     my $align = '';
@@ -5735,30 +5750,46 @@ sub do_paragraph($$)
     
 #    my $top_format = top_format($stack);
 #    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and exists($style_map{$top_format->{'format'}}) and ($top_format->{'format'} eq 'itemize'))
-    if (exists($Texi2HTML::Config::style_map{$paragraph_command}))
+    if (exists($Texi2HTML::Config::style_map{$paragraph_command}) and
+       !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}))
     { 
-        $text = do_simple($paragraph_command, $text, $state);
+        if ($format eq 'itemize')
+        {
+            chomp ($text);
+            $text = do_simple($paragraph_command, $text, $state);
+            $text = $text . "\n";
+        }
     }
-    return &$Texi2HTML::Config::paragraph($text, $align);
+    elsif (exists($Texi2HTML::Config::things_map{$paragraph_command}))
+    {
+        $paragraph_command_formatted = do_simple($paragraph_command, '', $state);
+    }
+    return &$Texi2HTML::Config::paragraph($text, $align, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $term);
 }
 
 sub do_preformatted($$)
 {
     my $text = shift;
     my $state = shift;
-
-    my $leading_command = $state->{'preformatted_leading_command'};
-    delete ($state->{'preformatted_leading_command'});
+    my ($format, $leading_command, $preformatted_number, $term) =
+        get_format_command($state->{'preformatted_format'}); 
+    delete ($state->{'preformatted_format'});
+    my $leading_command_formatted;
     my $pre_style = '';
     my $class = '';
     $pre_style = $state->{'preformatted_stack'}->[-1]->{'pre_style'} if ($state->{'preformatted_stack'}->[-1]->{'pre_style'});
     $class = $state->{'preformatted_stack'}->[-1]->{'class'};
     print STDERR "BUG: !state->{'preformatted_stack'}->[-1]->{'class'}\n" unless ($class);
-    if (defined ($leading_command) and exists($Texi2HTML::Config::style_map{$leading_command}))
+    if (exists($Texi2HTML::Config::style_map{$leading_command}) and
+       !exists($Texi2HTML::Config::special_list_commands{$format}->{$leading_command}))
     {
-        $text = do_simple($leading_command, $text, $state);
+        $text = do_simple($leading_command, $text, $state) if ($format eq 'itemize');
     }
-    return &$Texi2HTML::Config::preformatted($text, $pre_style, $class);
+    elsif (exists($Texi2HTML::Config::things_map{$leading_command}))
+    {
+        $leading_command_formatted = do_simple($leading_command, '', $state);
+    }
+    return &$Texi2HTML::Config::preformatted($text, $pre_style, $class, $leading_command, $leading_command_formatted, $preformatted_number, $format, $term);
 }
 
 sub do_external_ref($)
@@ -5984,14 +6015,14 @@ sub begin_paragraph($$)
 
     my $command = 1;
     my $top_format = top_format($stack);
-    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and ($top_format->{'format'} eq 'itemize'))
+    if (defined($top_format) and defined($top_format->{'command'}) or (defined($top_format->{'format'}) and ($top_format->{'format'} eq 'multitable')))
     {
-        $command = $top_format->{'command'};
+        $command = $top_format;
     }
     if ($state->{'preformatted'})
     {
         push @$stack, {'format' => 'preformatted', 'text' => '' };
-        $state->{'preformatted_leading_command'} = $command if ($command ne '1');
+        $state->{'preformatted_format'} = $command if ($command ne '1');
         return;
     }
     $state->{'paragraph'} = $command;
@@ -6170,7 +6201,11 @@ sub end_format($$$$$)
             print STDERR "Bug undef $format_ref->{'format'}" . "->{'begin'} (for $format...)\n";
             dump_stack ($text, $stack, $state);
         }
+        #print STDERR "!!! before $format\n";
+        #dump_stack ($text, $stack, $state);
         add_prev($text, $stack, &$Texi2HTML::Config::complex_format($format_ref->{'format'}, $format_ref->{'text'}));
+        #print STDERR "!!! after $format\n";
+        #dump_stack ($text, $stack, $state);
     }
     elsif (($format_type{$format} eq 'table') or ($format_type{$format} eq 'list'))
     {
@@ -6217,15 +6252,13 @@ sub do_text($;$)
         # in normal text `` and '' serve as quotes, --- is for a long dash 
         # and -- for a medium dash.
         # (see texinfo.txi, @node Conventions)
-        $text =~ s/``/"/go;
-        $text =~ s/''/"/go;
-        $text =~ s/-(--?)/$1/go;
+        $text = &$Texi2HTML::Config::normal_text($text);
     }
     if ($state->{'remove_texi'})
     {
         return $text;
     }
-    return &$Texi2HTML::Config::protect_html($text);
+    return &$Texi2HTML::Config::protect_text($text);
 }
 
 sub end_simple_format($$)
@@ -6583,15 +6616,29 @@ sub do_image($$$$)
     $args[4] = '' if (!defined($args[4]));
     $args[3] = '' if (!defined($args[3]));
     my $image;
+    my $file_name;
     $image = locate_include_file("$base.$args[4]") if (defined($args[4]) and ($args[4] ne ''));
-    if (defined($image)){}
-    elsif ($image = locate_include_file("$base.png")){}
-    elsif ($image = locate_include_file("$base.jpg")){}
-    elsif ($image = locate_include_file("$base.gif")){}
+    if (defined($image))
+    {
+         $file_name = "$base.$args[4]";
+    }
+    elsif ($image = locate_include_file("$base.png"))
+    {
+         $file_name = "$base.png";
+    }
+    elsif ($image = locate_include_file("$base.jpg"))
+    {
+         $file_name = "$base.jpg";
+    }
+    elsif ($image = locate_include_file("$base.gif"))
+    {
+         $file_name = "$base.gif";
+    }
     else 
     {
         $image = "$base.jpg";
         $image = "$base.$args[4]" if (defined($args[4]) and ($args[4] ne ''));
+        $file_name = $image;
         echo_error ("no image file for $base, (using $image)", $line_nr); 
         #warn "$ERROR no image file for $base, (using $image) : $text\n"; 
     } # FIXME use full file name for alt instead of base when there is no
@@ -6602,7 +6649,7 @@ sub do_image($$$$)
         $args[3] = do_text($args[3]);
         $base = $args[3] if ($args[3] =~ /\S/);
     }
-    return &$Texi2HTML::Config::image(&$Texi2HTML::Config::protect_html($image), &$Texi2HTML::Config::protect_html($base), $state->{'preformatted'});
+    return &$Texi2HTML::Config::image(&$Texi2HTML::Config::protect_text($image), &$Texi2HTML::Config::protect_text($base), $state->{'preformatted'}, $file_name);
 }
 
 sub apply_style($$;$$$)
@@ -6624,10 +6671,6 @@ sub apply_style($$;$$$)
     if (defined($style))
     {                           # known style
         $text = &$Texi2HTML::Config::style ($style, $texi_style, $text, $no_close, $no_open);
-    }
-    else
-    {                           # unknown style
-        $text = undef;
     }
     return($text);
 }
@@ -8157,7 +8200,7 @@ sub scan_line($$$$;$)
             if ($state->{'paragraph'})
             { # An empty line ends a paragraph
                 my $new_stack;
-                add_prev($text, $stack, $_);
+                add_prev($text, $stack, &$Texi2HTML::Config::empty_line($_));
                 #print STDERR "empty line ends a paragraph\n";
 		#dump_stack ($text, $stack, $state);
                 # We close the stack, duplicating commands still opened
@@ -8176,6 +8219,11 @@ sub scan_line($$$$;$)
                 # which were open before paragraph end
                 $state->{'paragraph_macros'} = $new_stack;
                 return;
+            }
+            else
+            {
+                $_ =  &$Texi2HTML::Config::empty_line($_);
+                #print STDERR "no paragraph, but newline\n";
             }
         }
         else
@@ -8488,7 +8536,7 @@ sub scan_line($$$$;$)
             }
             if ($macro eq 'sp')
             {
-                if (s/^(\s+)(\d+)\s*//)
+                if (s/^(\s+)(\d+)(\s*)//)
                 {
                     next if ($state->{'remove_texi'});
                     if ($state->{'keep_texi'})
@@ -8740,7 +8788,7 @@ sub scan_line($$$$;$)
                     { 
                         $_ = $format->{'appended'} . ' ' . $_ if ($format->{'appended'} ne '');
                     }
-                    if (defined($format->{'command'}) and $code_style_map{$format->{'command'}} and !$state->{'keep_texi'} and  !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
+                    if (defined($format->{'command'}) and $code_style_map{$format->{'command'}} and !$state->{'keep_texi'})
                     {
                          $state->{'code_style'}++;
                     }
@@ -8915,6 +8963,7 @@ sub scan_line($$$$;$)
                         $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'cell' => 1 };
                     }
                     $format->{'first'} = 1;
+                    $format->{'paragraph_number'} = 0;
                     push @$stack, $format;
                     push @{$state->{'format_stack'}}, $format;
                     if ($macro =~ /^(|v|f)table$/)
@@ -8960,14 +9009,17 @@ sub scan_line($$$$;$)
                 next;
             }
             #warn "$WARN Unknown macro `$macro' (left as is)\n";
-            echo_warn ("Unknown macro `$macro' (left as is)", $line_nr);
-            add_prev ($text, $stack, do_text("\@$macro"));
+            $_ = do_unknown ($macro, $_, $text, $stack, $state, $line_nr);
+            #echo_warn ("Unknown macro `$macro' (left as is)", $line_nr);
+            #add_prev ($text, $stack, do_text("\@$macro"));
             next;
         }
         elsif(s/^([^{}@]*)\@([^\s\}\{\@]*)//o)
         { # A macro with a character which shouldn't appear in macro name
-            echo_error ("Unknown command: `\@$2'", $line_nr);
-            add_prev($text, $stack, do_text($1 ."\@$2", $state));
+            add_prev($text, $stack, do_text($1, $state));
+            $_ = do_unknown ($2, $_, $text, $stack, $state, $line_nr);
+            #echo_error ("Unknown command: `\@$2'", $line_nr);
+            #add_prev($text, $stack, do_text($1 ."\@$2", $state));
             next;
         }
         elsif (s/^([^{}]*)([{}])//o)
@@ -9110,11 +9162,7 @@ sub add_term($$$$;$)
     # we set 'term' = 0 early such that if we encounter an end of line
     # during close_stack we don't try to do the term once more
     $state->{'format_stack'}->[-1]->{'term'} = 0;
-    #if ($format->{'command'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq $format->{'command'}))
-    #{
-    #    my $style = pop @$stack;
-    #    add_prev($text, $stack, do_simple($style->{'style'}, $style->{'text'}, $state));
-    #}
+    $format->{'paragraph_number'} = 0;
     # no <pre> allowed in <dt>, thus it is possible there is a @t added
     # to have teletype in preformatted.
     if ($state->{'preformatted'} and $stack->[-1]->{'style'} and ($stack->[-1]->{'style'} eq 't'))
@@ -9126,9 +9174,16 @@ sub add_term($$$$;$)
     #dump_stack($text, $stack, $state);
     close_stack($text, $stack, $state, $line_nr, undef, 'term');
     my $term = pop @$stack;
-    unless (exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
+    my $command_formatted;
+    chomp ($term->{'text'});
+    if (exists($Texi2HTML::Config::style_map{$format->{'command'}}) and 
+       !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
     {
          $term->{'text'} = do_simple($format->{'command'}, $term->{'text'}, $state); 
+    }
+    elsif (exists($Texi2HTML::Config::things_map{$format->{'command'}}))
+    {
+        $command_formatted = do_simple($format->{'command'}, '', $state);
     }
     my $index_label;
     if ($format->{'format'} =~ /^(f|v)/)
@@ -9136,7 +9191,7 @@ sub add_term($$$$;$)
         $index_label = do_index_entry_label($state);
         print STDERR "Bug: no index entry for $text" unless defined($index_label);
     }
-    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}));
+    add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $command_formatted));
     #add_prev($text, $stack, &$Texi2HTML::Config::table_item($term->{'text'}, $index_entry, $state));
     unless ($end)
     {
@@ -9217,6 +9272,7 @@ sub add_line($$$$;$)
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
     close_stack($text, $stack, $state, $line_nr, undef, 'line');
     my $line = pop @$stack;
+    $format->{'paragraph_number'} = 0;
     my $first = 0;
     $first = 1 if ($format->{'first'});
     if ($first)
@@ -9258,6 +9314,7 @@ sub add_item($$$$;$)
     # preformatted, close_stack doesn't do that.
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
     close_stack($text, $stack, $state, $line_nr, undef, 'item');
+    $format->{'paragraph_number'} = 0;
     #dump_stack ($text, $stack, $state);
     my $item = pop @$stack;
     # the element following ol or ul must be li. Thus even though there
@@ -9266,11 +9323,13 @@ sub add_item($$$$;$)
     # don't do an item if it is the first and it is empty
     if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
     {
-        if (defined($format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}) and (exists($Texi2HTML::Config::things_map{$format->{'command'}}) or exists($Texi2HTML::Config::simple_map{$format->{'command'}})))
+        my $formatted_command;
+        if (defined($format->{'command'}) and exists($Texi2HTML::Config::things_map{$format->{'command'}}))
         {
-             $item->{'text'} = do_simple($format->{'command'}, $item->{'text'}, $state);
+             $formatted_command = do_simple($format->{'command'}, '', $state);
         }
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}));
+        chomp($item->{'text'});
+        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command));
     } 
     if ($format->{'first'})
     {
@@ -9360,16 +9419,50 @@ sub do_simple($$$;$$$)
     }
     # Unknown macro
     $result = '';
-    unless ($no_open)
-    { # we warn only if no_open is true, i.e. it is the first time we close 
-      # the macro for a multiline macro
-        echo_warn ("Unknown macro $macro", $line_nr);
-        #warn "$WARN Unknown macro $macro\n";
-        $result = "\@$macro" . '{' ;
+    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text);
+    if ($done)
+    {
+         echo_warn($message, $line_nr) if (defined($message));
+         if (defined($result_text))
+         {
+             $result = $result_text;
+         }
     }
-    $result .= $text;
-    $result .= '}' unless ($no_close); 
+    else 
+    { 
+        unless ($no_open)
+        { # we warn only if no_open is true, i.e. it is the first time we 
+          # close the macro for a multiline macro
+             echo_warn ("Unknown command with braces `\@$macro'", $line_nr);
+             $result = do_text("\@$macro") . "{";
+        }
+        $result .= $text;
+        $result .= '}' unless ($no_close);
+    }
     return $result;
+}
+
+sub do_unknown($$$$$$)
+{
+    my $macro = shift;
+    my $line = shift;
+    my $text = shift;
+    my $stack = shift;
+    my $state = shift;
+    my $line_nr = shift;
+    my ($result_line, $result, $result_text, $message) = &$Texi2HTML::Config::unknown($macro, $line);
+    if ($result)
+    {
+         add_prev ($text, $stack, $result_text) if (defined($result_text));
+         echo_warn($message, $line_nr) if (defined($message));
+         return $result_line;
+    }
+    else
+    {
+         echo_warn ("Unknown command `\@$macro' (left as is)", $line_nr);
+         add_prev ($text, $stack, do_text("\@$macro"));
+         return $line;
+    }
 }
 
 sub add_text($@)

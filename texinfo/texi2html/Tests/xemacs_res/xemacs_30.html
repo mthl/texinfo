@@ -225,15 +225,12 @@ the left margin) to be used by the fill commands (see section <a href="xemacs_23
 <h3 class="subsection"> 27.2.1 Examining and Setting Variables </h3>
 
 <dl compact="compact">
-<dt><kbd> C-h v
-</kbd></dt>
-<dt><kbd> M-x describe-variable
-</kbd></dt>
+<dt><kbd> C-h v</kbd></dt>
+<dt><kbd> M-x describe-variable</kbd></dt>
 <dd><p>Print the value and documentation of a variable.
 <a name="IDX1472"></a>
 </p></dd>
-<dt><kbd> M-x set-variable
-</kbd></dt>
+<dt><kbd> M-x set-variable</kbd></dt>
 <dd><p>Change the value of a variable.
 </p></dd>
 </dl>
@@ -541,21 +538,18 @@ Sessions</samp>' operation.
 actually three reset operations:
 
 </p><dl compact="compact">
-<dt>`<samp> Reset to Current
-</samp>'</dt>
+<dt>`<samp> Reset to Current</samp>'</dt>
 <dd><p>If you have made some modifications and not yet set the option,
 this restores the text in the customization buffer to match
 the actual value.
 
 </p></dd>
-<dt>`<samp> Reset to Saved
-</samp>'</dt>
+<dt>`<samp> Reset to Saved</samp>'</dt>
 <dd><p>This restores the value of the option to the last saved value,
 and updates the text accordingly.
 
 </p></dd>
-<dt>`<samp> Reset to Standard Settings
-</samp>'</dt>
+<dt>`<samp> Reset to Standard Settings</samp>'</dt>
 <dd><p>This sets the option to its standard value, and updates the text
 accordingly.  This also eliminates any saved value for the option,
 so that you will get the standard value in future Emacs sessions.
@@ -664,30 +658,24 @@ through the structure of groups, you can specify the particular option,
 face or group that you want to customize.
 
 </p><dl compact="compact">
-<dt><kbd> M-x customize-option <kbd>RET</kbd> <var>option</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x customize-option <kbd>RET</kbd> <var>option</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one option, <var>option</var>.
 </p></dd>
-<dt><kbd> M-x customize-face <kbd>RET</kbd> <var>face</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x customize-face <kbd>RET</kbd> <var>face</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one face, <var>face</var>.
 </p></dd>
-<dt><kbd> M-x customize-group <kbd>RET</kbd> <var>group</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x customize-group <kbd>RET</kbd> <var>group</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with just one group, <var>group</var>.
 </p></dd>
-<dt><kbd> M-x customize-apropos <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x customize-apropos <kbd>RET</kbd> <var>regexp</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Set up a customization buffer with all the options, faces and groups
 that match <var>regexp</var>.
 </p></dd>
-<dt><kbd> M-x customize-saved 
-</kbd></dt>
+<dt><kbd> M-x customize-saved </kbd></dt>
 <dd><p>Set up a customization buffer containing all options and faces that you
 have saved with customization buffers.
 </p></dd>
-<dt><kbd> M-x customize-customized
-</kbd></dt>
+<dt><kbd> M-x customize-customized</kbd></dt>
 <dd><p>Set up a customization buffer containing all options and faces that you
 have customized but not saved.
 </p></dd>
@@ -750,12 +738,10 @@ faces that you have set but not saved.
 <h3 class="subsection"> 27.2.3 Editing Variable Values </h3>
 
 <dl compact="compact">
-<dt><kbd> M-x list-options
-</kbd></dt>
+<dt><kbd> M-x list-options</kbd></dt>
 <dd><p>Display a buffer listing names, values, and documentation of all options.
 </p></dd>
-<dt><kbd> M-x edit-options
-</kbd></dt>
+<dt><kbd> M-x edit-options</kbd></dt>
 <dd><p>Change option values by editing a list of options.
 </p></dd>
 </dl>
@@ -785,28 +771,22 @@ which provides commands that allow you to point at an option and change its
 value:
 
 </p><dl compact="compact">
-<dt><kbd> s
-</kbd></dt>
+<dt><kbd> s</kbd></dt>
 <dd><p>Set the variable point is in or near to a new value read using the
 minibuffer.
 </p></dd>
-<dt><kbd> x
-</kbd></dt>
+<dt><kbd> x</kbd></dt>
 <dd><p>Toggle the variable point is in or near: if the value was <code>nil</code>,
 it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 </p></dd>
-<dt><kbd> 1
-</kbd></dt>
+<dt><kbd> 1</kbd></dt>
 <dd><p>Set the variable point is in or near to <code>t</code>.
 </p></dd>
-<dt><kbd> 0
-</kbd></dt>
+<dt><kbd> 0</kbd></dt>
 <dd><p>Set the variable point is in or near to <code>nil</code>.
 </p></dd>
-<dt><kbd> n
-</kbd></dt>
-<dt><kbd> p
-</kbd></dt>
+<dt><kbd> n</kbd></dt>
+<dt><kbd> p</kbd></dt>
 <dd><p>Move to the next or previous variable.
 </p></dd>
 </dl>
@@ -833,16 +813,13 @@ it becomes <code>t</code>; otherwise it becomes <code>nil</code>.
 <h3 class="subsection"> 27.2.4 Local Variables </h3>
 
 <dl compact="compact">
-<dt><kbd> M-x make-local-variable
-</kbd></dt>
+<dt><kbd> M-x make-local-variable</kbd></dt>
 <dd><p>Make a variable have a local value in the current buffer.
 </p></dd>
-<dt><kbd> M-x kill-local-variable
-</kbd></dt>
+<dt><kbd> M-x kill-local-variable</kbd></dt>
 <dd><p>Make a variable use its global value in the current buffer.
 </p></dd>
-<dt><kbd> M-x make-variable-buffer-local
-</kbd></dt>
+<dt><kbd> M-x make-variable-buffer-local</kbd></dt>
 <dd><p>Mark a variable so that setting it will make it local to the
 buffer that is current at that time.
 </p></dd>
@@ -1053,34 +1030,27 @@ sequence of keys.  For example, if you discover that you are about to type
 macro to invoke <kbd>C-n C-d</kbd> and calling it with a repeat count of forty.
 
 </p><dl compact="compact">
-<dt><kbd> C-x (
-</kbd></dt>
+<dt><kbd> C-x (</kbd></dt>
 <dd><p>Start defining a keyboard macro (<code>start-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-x )
-</kbd></dt>
+<dt><kbd> C-x )</kbd></dt>
 <dd><p>End the definition of a keyboard macro (<code>end-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-x e
-</kbd></dt>
+<dt><kbd> C-x e</kbd></dt>
 <dd><p>Execute the most recent keyboard macro (<code>call-last-kbd-macro</code>).
 </p></dd>
-<dt><kbd> C-u C-x (
-</kbd></dt>
+<dt><kbd> C-u C-x (</kbd></dt>
 <dd><p>Re-execute last keyboard macro, then add more keys to its definition.
 </p></dd>
-<dt><kbd> C-x q
-</kbd></dt>
+<dt><kbd> C-x q</kbd></dt>
 <dd><p>When this point is reached during macro execution, ask for confirmation
 (<code>kbd-macro-query</code>).
 </p></dd>
-<dt><kbd> M-x name-last-kbd-macro
-</kbd></dt>
+<dt><kbd> M-x name-last-kbd-macro</kbd></dt>
 <dd><p>Give a command name (for the duration of the session) to the most
 recently defined keyboard macro.
 </p></dd>
-<dt><kbd> M-x insert-kbd-macro
-</kbd></dt>
+<dt><kbd> M-x insert-kbd-macro</kbd></dt>
 <dd><p>Insert in the buffer a keyboard macro's definition, as Lisp code.
 </p></dd>
 </dl>
@@ -1483,17 +1453,14 @@ local map, which affects all buffers using the same major mode.
 <h4 class="subsubsection"> 27.4.2.1 Changing Key Bindings Interactively </h4>
 
 <dl compact="compact">
-<dt><kbd> M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x global-set-key <kbd>RET</kbd> <var>key</var> <var>cmd</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Defines <var>key</var> globally to run <var>cmd</var>.
 </p></dd>
-<dt><kbd> M-x local-set-key <kbd>RET</kbd> <var>keys</var> <var>cmd</var> <kbd>RET</kbd> 
-</kbd></dt>
+<dt><kbd> M-x local-set-key <kbd>RET</kbd> <var>keys</var> <var>cmd</var> <kbd>RET</kbd> </kbd></dt>
 <dd><p>Defines <var>key</var> locally (in the major mode now in effect) to run
 <var>cmd</var>.
 </p></dd>
-<dt><kbd> M-x local-unset-key <kbd>RET</kbd> <var>keys</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> M-x local-unset-key <kbd>RET</kbd> <var>keys</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Removes the local binding of <var>key</var>.
 </p></dd>
 </dl>
@@ -1569,12 +1536,10 @@ to rebind keys under program control.
 <a name="IDX1524"></a>
 
 <dl compact="compact">
-<dt><kbd>  <code>(global-set-key <var>keys</var> <var>cmd</var>)</code>
-</kbd></dt>
+<dt><kbd>  <code>(global-set-key <var>keys</var> <var>cmd</var>)</code></kbd></dt>
 <dd><p>Defines <var>keys</var> globally to run <var>cmd</var>.
 </p></dd>
-<dt><kbd> <code>(define-key <var>keymap</var> <var>keys</var> <var>def</var>)</code>
-</kbd></dt>
+<dt><kbd> <code>(define-key <var>keymap</var> <var>keys</var> <var>def</var>)</code></kbd></dt>
 <dd><p>Defines <var>keys</var> to run <var>def</var> in the keymap <var>keymap</var>.
 </p></dd>
 </dl>
@@ -1860,51 +1825,42 @@ is used to specify the syntactic class of opening delimiters.  Here is a
 table of syntactic classes, with the characters that specify them.
 
 </p><dl compact="compact">
-<dt>`<samp> -
-</samp>'</dt>
+<dt>`<samp> -</samp>'</dt>
 <dd><p>The class of whitespace characters.  Please don't use the formerly
 advertised  , which is not supported by GNU Emacs.
 </p></dd>
-<dt>`<samp> w
-</samp>'</dt>
+<dt>`<samp> w</samp>'</dt>
 <dd><p>The class of word-constituent characters.
 </p></dd>
-<dt>`<samp> _
-</samp>'</dt>
+<dt>`<samp> _</samp>'</dt>
 <dd><p>The class of characters that are part of symbol names but not words.
 This class is represented by `<samp>_</samp>' because the character `<samp>_</samp>'
 has this class in both C and Lisp.
 </p></dd>
-<dt>`<samp> .
-</samp>'</dt>
+<dt>`<samp> .</samp>'</dt>
 <dd><p>The class of punctuation characters that do not fit into any other
 special class.
 </p></dd>
-<dt>`<samp> (
-</samp>'</dt>
+<dt>`<samp> (</samp>'</dt>
 <dd><p>The class of opening delimiters.
 </p></dd>
-<dt>`<samp> )
-</samp>'</dt>
+<dt>`<samp> )</samp>'</dt>
 <dd><p>The class of closing delimiters.
 </p></dd>
-<dt>`<samp> '
-</samp>'</dt>
+<dt>`<samp> '</samp>'</dt>
 <dd><p>The class of expression-adhering characters.  These characters are
 part of a symbol if found within or adjacent to one, and are part
 of a following expression if immediately preceding one, but are like
 whitespace if surrounded by whitespace.
 </p></dd>
-<dt>`<samp> &quot;
-</samp>'</dt>
+<dt>`<samp> &quot;</samp>'</dt>
 <dd><p>The class of string-quote characters.  They match each other in pairs,
 and the characters within the pair all lose their syntactic
 significance except for the `<samp>\</samp>' and `<samp>/</samp>' classes of escape
 characters, which can be used to include a string-quote inside the
 string.
 </p></dd>
-<dt>`<samp> $
-</samp>'</dt>
+<dt>`<samp> $</samp>'</dt>
 <dd><p>The class of self-matching delimiters.  This is intended for TeX's
 `<samp>$</samp>', which is used both to enter and leave math mode.  Thus,
 a pair of matching `<samp>$</samp>' characters surround each piece of math mode
@@ -1912,27 +1868,23 @@ TeX input.  A pair of adjacent `<samp>$</samp>' characters act like a single
 one for purposes of matching.
 
 </p></dd>
-<dt>`<samp> /
-</samp>'</dt>
+<dt>`<samp> /</samp>'</dt>
 <dd><p>The class of escape characters that always just deny the following
 character its special syntactic significance.  The character after one
 of these escapes is always treated as alphabetic.
 </p></dd>
-<dt>`<samp> \
-</samp>'</dt>
+<dt>`<samp> \</samp>'</dt>
 <dd><p>The class of C-style escape characters.  In practice, these are
 treated just like `<samp>/</samp>'-class characters, because the extra
 possibilities for C escapes (such as being followed by digits) have no
 effect on where the containing expression ends.
 </p></dd>
-<dt>`<samp> &lt;
-</samp>'</dt>
+<dt>`<samp> &lt;</samp>'</dt>
 <dd><p>The class of comment-starting characters.  Only single-character
 comment starters (such as `<samp>;</samp>' in Lisp mode) are represented this
 way.
 </p></dd>
-<dt>`<samp> &gt;
-</samp>'</dt>
+<dt>`<samp> &gt;</samp>'</dt>
 <dd><p>The class of comment-ending characters.  Newline has this syntax in
 Lisp mode.
 </p></dd>
@@ -2003,24 +1955,19 @@ be omitted if no following characters are needed.
 <p>The remaining characters are flags.  The flag characters allowed are:
 
 </p><dl compact="compact">
-<dt>`<samp> 1
-</samp>'</dt>
+<dt>`<samp> 1</samp>'</dt>
 <dd><p>Flag this character as the first of a two-character comment starting sequence.
 </p></dd>
-<dt>`<samp> 2
-</samp>'</dt>
+<dt>`<samp> 2</samp>'</dt>
 <dd><p>Flag this character as the second of a two-character comment starting sequence.
 </p></dd>
-<dt>`<samp> 3
-</samp>'</dt>
+<dt>`<samp> 3</samp>'</dt>
 <dd><p>Flag this character as the first of a two-character comment ending sequence.
 </p></dd>
-<dt>`<samp> 4
-</samp>'</dt>
+<dt>`<samp> 4</samp>'</dt>
 <dd><p>Flag this character as the second of a two-character comment ending sequence.
 </p></dd>
-</dl>
-</li></ol>
+</dl></li></ol>
 
 <a name="IDX1530"></a>
 <a name="IDX1531"></a>
@@ -2112,8 +2059,7 @@ expression.  In the init file, constants are used most of the time.
 They can be:
 
 </p><dl compact="compact">
-<dt> Numbers
-</dt>
+<dt> Numbers</dt>
 <dd><p>Integers are written in decimal, with an optional initial minus sign.
 
 </p><p>If a sequence of digits is followed by a period and another sequence
@@ -2123,8 +2069,7 @@ of digits, it is interpreted as a floating point number.
 represent numbers in binary, octal, and hexadecimal notation (or radix).
 
 </p></dd>
-<dt> Strings
-</dt>
+<dt> Strings</dt>
 <dd><p>Lisp string syntax is the same as C string syntax with a few extra
 features.  Use a double-quote character to begin and end a string constant.
 
@@ -2142,8 +2087,7 @@ a Meta character, as in `<samp>\M-a</samp>' for Meta-A or `<samp>\M-\C-a</samp>'
 Control-Meta-A.
 
 </p></dd>
-<dt> Characters
-</dt>
+<dt> Characters</dt>
 <dd><p>Lisp character constant syntax consists of a `<samp>?</samp>' followed by
 either a character or an escape sequence starting with `<samp>\</samp>'.
 Examples: <code>?x</code>, <code>?\n</code>, <code>?\&quot;</code>, <code>?\)</code>.  Note that
@@ -2151,18 +2095,15 @@ strings and characters are not interchangeable in Lisp; some contexts
 require one and some contexts require the other.
 
 </p></dd>
-<dt> True
-</dt>
+<dt> True</dt>
 <dd><p><code>t</code> stands for `true'.
 
 </p></dd>
-<dt> False
-</dt>
+<dt> False</dt>
 <dd><p><code>nil</code> stands for `false'.
 
 </p></dd>
-<dt> Other Lisp objects
-</dt>
+<dt> Other Lisp objects</dt>
 <dd><p>Write a single-quote (') followed by the Lisp object you want.
 </p></dd>
 </dl>
@@ -2275,26 +2216,22 @@ with `<samp>/</samp>' or `<samp>~</samp>', <code>load</code> searches the direct
 <p>Do the same thing for C mode only.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map &quot;\C-xl&quot; 'make-symbolic-link)
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Bind the function key <kbd>F1</kbd> to a command in C mode.
 Note that the names of function keys must be lower case.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map 'f1 'make-symbolic-link)
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Bind the shifted version of <kbd>F1</kbd> to a command.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(define-key c-mode-map '(shift f1) 'make-symbolic-link)
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Redefine all keys which now run <code>next-line</code> in Fundamental mode
 to run <code>forward-line</code> instead.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(substitute-key-definition 'next-line 'forward-line
                            global-map)
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Make <kbd>C-x C-v</kbd> undefined.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(global-unset-key &quot;\C-x\C-v&quot;)
@@ -2309,8 +2246,7 @@ first.
 Note the use of a character constant for `<samp>$</samp>'.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(modify-syntax-entry ?\$ &quot;.&quot; text-mode-syntax-table)
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Enable the use of the command <code>eval-expression</code> without confirmation.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">(put 'eval-expression 'disabled nil)
@@ -2409,24 +2345,20 @@ The first element of the list is the name of the sound being defined.
 Subsequent elements of the list are alternating keyword/value pairs:
 
 </p><dl compact="compact">
-<dt><code> sound
-</code></dt>
+<dt><code> sound</code></dt>
 <dd><p>A string of raw sound data, or the name of another sound to play.   
 The symbol <code>t</code> here means use the default X beep.
 
 </p></dd>
-<dt><code> volume
-</code></dt>
+<dt><code> volume</code></dt>
 <dd><p>An integer from 0-100, defaulting to <code>bell-volume</code>.
 
 </p></dd>
-<dt><code> pitch
-</code></dt>
+<dt><code> pitch</code></dt>
 <dd><p>If using the default X beep, the pitch (Hz) to generate.
 
 </p></dd>
-<dt><code> duration
-</code></dt>
+<dt><code> duration</code></dt>
 <dd><p>If using the default X beep, the duration (milliseconds).
 </p></dd>
 </dl>
@@ -2475,38 +2407,31 @@ packages may use other beep types, but these are the ones that the C
 kernel of Emacs uses.
 
 </p><dl compact="compact">
-<dt><code> auto-save-error
-</code></dt>
+<dt><code> auto-save-error</code></dt>
 <dd><p>An auto-save does not succeed
 
 </p></dd>
-<dt><code> command-error
-</code></dt>
+<dt><code> command-error</code></dt>
 <dd><p>The Emacs command loop catches an error
 
 </p></dd>
-<dt><code> undefined-key
-</code></dt>
+<dt><code> undefined-key</code></dt>
 <dd><p>You type a key that is undefined
 
 </p></dd>
-<dt><code> undefined-click
-</code></dt>
+<dt><code> undefined-click</code></dt>
 <dd><p>You use an undefined mouse-click combination
 
 </p></dd>
-<dt><code> no-completion
-</code></dt>
+<dt><code> no-completion</code></dt>
 <dd><p>Completion was not possible
 
 </p></dd>
-<dt><code> y-or-n-p
-</code></dt>
+<dt><code> y-or-n-p</code></dt>
 <dd><p>You type something other than the required <code>y</code> or <code>n</code>
 
 </p></dd>
-<dt><code> yes-or-no-p       
-</code></dt>
+<dt><code> yes-or-no-p       </code></dt>
 <dd><p>You type something other than <code>yes</code> or <code>no</code>
 </p></dd>
 </dl>
@@ -2568,63 +2493,50 @@ this section.  All the functions prompt for a <var>face</var> as an
 argument; use completion for a list of possible values.
 
 </p><dl compact="compact">
-<dt><kbd> M-x invert-face
-</kbd></dt>
+<dt><kbd> M-x invert-face</kbd></dt>
 <dd><p>Swap the foreground and background colors of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x make-face-bold
-</kbd></dt>
+<dt><kbd> M-x make-face-bold</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> bold.  When called from a
 program, returns <code>nil</code> if this is not possible.
 </p></dd>
-<dt><kbd> M-x make-face-bold-italic
-</kbd></dt>
+<dt><kbd> M-x make-face-bold-italic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> bold italic.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-italic
-</kbd></dt>
+<dt><kbd> M-x make-face-italic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> italic.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-unbold
-</kbd></dt>
+<dt><kbd> M-x make-face-unbold</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> non-bold.  
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-unitalic
-</kbd></dt>
+<dt><kbd> M-x make-face-unitalic</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> non-italic.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-larger
-</kbd></dt>
+<dt><kbd> M-x make-face-larger</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> a little larger.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x make-face-smaller
-</kbd></dt>
+<dt><kbd> M-x make-face-smaller</kbd></dt>
 <dd><p>Make the font of the given <var>face</var> a little smaller.
 When called from a program, returns <code>nil</code> if not possible.
 </p></dd>
-<dt><kbd> M-x set-face-background 
-</kbd></dt>
+<dt><kbd> M-x set-face-background </kbd></dt>
 <dd><p>Change the background color of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-background-pixmap
-</kbd></dt>
+<dt><kbd> M-x set-face-background-pixmap</kbd></dt>
 <dd><p>Change the background pixmap of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-font 
-</kbd></dt>
+<dt><kbd> M-x set-face-font </kbd></dt>
 <dd><p>Change the font of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-foreground
-</kbd></dt>
+<dt><kbd> M-x set-face-foreground</kbd></dt>
 <dd><p>Change the foreground color of the given <var>face</var>.
 </p></dd>
-<dt><kbd> M-x set-face-underline-p
-</kbd></dt>
+<dt><kbd> M-x set-face-underline-p</kbd></dt>
 <dd><p>Change whether the given <var>face</var> is underlined.
 </p></dd>
 </dl>
@@ -2948,54 +2860,45 @@ name) by using the <code>Emacs*FRAME-NAME.iconic</code> resource.
 <p>Emacs frames accept the following resources:
 
 </p><dl compact="compact">
-<dt> <code>geometry</code> (class <code>Geometry</code>): string
-</dt>
+<dt> <code>geometry</code> (class <code>Geometry</code>): string</dt>
 <dd><p>Initial geometry for the frame.  See section <a href="#SEC386">Geometry Resources</a>, for a
 complete discussion of how this works.
 
 </p></dd>
-<dt> <code>iconic</code> (class <code>Iconic</code>): boolean
-</dt>
+<dt> <code>iconic</code> (class <code>Iconic</code>): boolean</dt>
 <dd><p>Whether this frame should appear in the iconified state.
 
 </p></dd>
-<dt> <code>internalBorderWidth</code> (class <code>InternalBorderWidth</code>): int
-</dt>
+<dt> <code>internalBorderWidth</code> (class <code>InternalBorderWidth</code>): int</dt>
 <dd><p>How many blank pixels to leave between the text and the edge of the 
 window.
 
 </p></dd>
-<dt> <code>interline</code> (class <code>Interline</code>): int
-</dt>
+<dt> <code>interline</code> (class <code>Interline</code>): int</dt>
 <dd><p>How many pixels to leave between each line (may not be implemented).
 
 </p></dd>
-<dt> <code>menubar</code> (class <code>Menubar</code>): boolean
-</dt>
+<dt> <code>menubar</code> (class <code>Menubar</code>): boolean</dt>
 <dd><p>Whether newly-created frames should initially have a menubar.  Set to
 true by default.
 
 </p></dd>
-<dt> <code>initiallyUnmapped</code> (class <code>InitiallyUnmapped</code>): boolean
-</dt>
+<dt> <code>initiallyUnmapped</code> (class <code>InitiallyUnmapped</code>): boolean</dt>
 <dd><p>Whether XEmacs should leave the initial frame unmapped when it starts
 up.  This is useful if you are starting XEmacs as a server (e.g. in
 conjunction with gnuserv or the external client widget).  You can also
 control this with the <code>-unmapped</code> command-line option.
 
 </p></dd>
-<dt> <code>barCursor</code> (class <code>BarColor</code>): boolean
-</dt>
+<dt> <code>barCursor</code> (class <code>BarColor</code>): boolean</dt>
 <dd><p>Whether the cursor should be displayed as a bar, or the traditional box.
 
 </p></dd>
-<dt> <code>cursorColor</code> (class <code>CursorColor</code>): color-name
-</dt>
+<dt> <code>cursorColor</code> (class <code>CursorColor</code>): color-name</dt>
 <dd><p>The color of the text cursor.
 
 </p></dd>
-<dt> <code>scrollBarWidth</code> (class <code>ScrollBarWidth</code>): integer
-</dt>
+<dt> <code>scrollBarWidth</code> (class <code>ScrollBarWidth</code>): integer</dt>
 <dd><p>How wide the vertical scrollbars should be, in pixels; 0 means no
 vertical scrollbars.  You can also use a resource specification of the
 form <code>*scrollbar.width</code>, or the usual toolkit scrollbar resources:
@@ -3005,8 +2908,7 @@ use the toolkit resources, though, because they're dependent on how
 exactly your particular build of XEmacs was configured.
 
 </p></dd>
-<dt> <code>scrollBarHeight</code> (class <code>ScrollBarHeight</code>): integer
-</dt>
+<dt> <code>scrollBarHeight</code> (class <code>ScrollBarHeight</code>): integer</dt>
 <dd><p>How high the horizontal scrollbars should be, in pixels; 0 means no
 horizontal scrollbars.  You can also use a resource specification of the
 form <code>*scrollbar.height</code>, or the usual toolkit scrollbar resources:
@@ -3016,8 +2918,7 @@ the toolkit resources, though, because they're dependent on how exactly
 your particular build of XEmacs was configured.
 
 </p></dd>
-<dt> <code>scrollBarPlacement</code> (class <code>ScrollBarPlacement</code>): string
-</dt>
+<dt> <code>scrollBarPlacement</code> (class <code>ScrollBarPlacement</code>): string</dt>
 <dd><p>Where the horizontal and vertical scrollbars should be positioned.  This
 should be one of the four strings `<samp>BOTTOM_LEFT</samp>',
 `<samp>BOTTOM_RIGHT</samp>', `<samp>TOP_LEFT</samp>', and `<samp>TOP_RIGHT</samp>'.  Default is
@@ -3025,31 +2926,23 @@ should be one of the four strings `<samp>BOTTOM_LEFT</samp>',
 `<samp>BOTTOM_LEFT</samp>' for the Athena scrollbars.
 
 </p></dd>
-<dt> <code>topToolBarHeight</code> (class <code>TopToolBarHeight</code>): integer
-</dt>
-<dt> <code>bottomToolBarHeight</code> (class <code>BottomToolBarHeight</code>): integer
-</dt>
-<dt> <code>leftToolBarWidth</code> (class <code>LeftToolBarWidth</code>): integer
-</dt>
-<dt> <code>rightToolBarWidth</code> (class <code>RightToolBarWidth</code>): integer
-</dt>
+<dt> <code>topToolBarHeight</code> (class <code>TopToolBarHeight</code>): integer</dt>
+<dt> <code>bottomToolBarHeight</code> (class <code>BottomToolBarHeight</code>): integer</dt>
+<dt> <code>leftToolBarWidth</code> (class <code>LeftToolBarWidth</code>): integer</dt>
+<dt> <code>rightToolBarWidth</code> (class <code>RightToolBarWidth</code>): integer</dt>
 <dd><p>Height and width of the four possible toolbars.
 
 </p></dd>
-<dt> <code>topToolBarShadowColor</code> (class <code>TopToolBarShadowColor</code>): color-name
-</dt>
-<dt> <code>bottomToolBarShadowColor</code> (class <code>BottomToolBarShadowColor</code>): color-name
-</dt>
+<dt> <code>topToolBarShadowColor</code> (class <code>TopToolBarShadowColor</code>): color-name</dt>
+<dt> <code>bottomToolBarShadowColor</code> (class <code>BottomToolBarShadowColor</code>): color-name</dt>
 <dd><p>Color of the top and bottom shadows for the toolbars.  NOTE: These resources
 do <em>not</em> have anything to do with the top and bottom toolbars (i.e. the
 toolbars at the top and bottom of the frame)!  Rather, they affect the top
 and bottom shadows around the edges of all four kinds of toolbars.
 
 </p></dd>
-<dt> <code>topToolBarShadowPixmap</code> (class <code>TopToolBarShadowPixmap</code>): pixmap-name
-</dt>
-<dt> <code>bottomToolBarShadowPixmap</code> (class <code>BottomToolBarShadowPixmap</code>): pixmap-name
-</dt>
+<dt> <code>topToolBarShadowPixmap</code> (class <code>TopToolBarShadowPixmap</code>): pixmap-name</dt>
+<dt> <code>bottomToolBarShadowPixmap</code> (class <code>BottomToolBarShadowPixmap</code>): pixmap-name</dt>
 <dd><p>Pixmap of the top and bottom shadows for the toolbars.  If set, these
 resources override the corresponding color resources. NOTE: These
 resources do <em>not</em> have anything to do with the top and bottom
@@ -3058,23 +2951,19 @@ Rather, they affect the top and bottom shadows around the edges of all
 four kinds of toolbars.
 
 </p></dd>
-<dt> <code>toolBarShadowThickness</code> (class <code>ToolBarShadowThickness</code>): integer
-</dt>
+<dt> <code>toolBarShadowThickness</code> (class <code>ToolBarShadowThickness</code>): integer</dt>
 <dd><p>Thickness of the shadows around the toolbars, in pixels.
 
 </p></dd>
-<dt> <code>visualBell</code> (class <code>VisualBell</code>): boolean
-</dt>
+<dt> <code>visualBell</code> (class <code>VisualBell</code>): boolean</dt>
 <dd><p>Whether XEmacs should flash the screen rather than making an audible beep.
 
 </p></dd>
-<dt> <code>bellVolume</code> (class <code>BellVolume</code>): integer
-</dt>
+<dt> <code>bellVolume</code> (class <code>BellVolume</code>): integer</dt>
 <dd><p>Volume of the audible beep.
 
 </p></dd>
-<dt> <code>useBackingStore</code> (class <code>UseBackingStore</code>): boolean
-</dt>
+<dt> <code>useBackingStore</code> (class <code>UseBackingStore</code>): boolean</dt>
 <dd><p>Whether XEmacs should set the backing-store attribute of the X windows
 it creates.  This increases the memory usage of the X server but decreases
 the amount of X traffic necessary to update the screen, and is useful
@@ -3086,49 +2975,41 @@ such as a modem connection.
 <p>Emacs devices accept the following resources:
 
 </p><dl compact="compact">
-<dt> <code>textPointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>textPointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over text.  This resource is used to
 initialize the variable <code>x-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>selectionPointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>selectionPointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over a selectable text region (an
 extent with the `<samp>highlight</samp>' property; for example, an Info
 cross-reference).  This resource is used to initialize the variable
 <code>x-selection-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>spacePointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>spacePointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over a blank space in a buffer (that
 is, after the end of a line or after the end-of-file).  This resource is
 used to initialize the variable <code>x-nontext-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>modeLinePointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>modeLinePointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over a modeline.  This resource is
 used to initialize the variable <code>x-mode-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>gcPointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>gcPointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to display when a garbage-collection is in progress.  This
 resource is used to initialize the variable <code>x-gc-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>scrollbarPointer</code> (class <code>Cursor</code>): cursor-name
-</dt>
+<dt> <code>scrollbarPointer</code> (class <code>Cursor</code>): cursor-name</dt>
 <dd><p>The cursor to use when the mouse is over the scrollbar.  This resource
 is used to initialize the variable <code>x-scrollbar-pointer-shape</code>.
 
 </p></dd>
-<dt> <code>pointerColor</code> (class <code>Foreground</code>): color-name
-</dt>
-<dt> <code>pointerBackground</code> (class <code>Background</code>): color-name
-</dt>
+<dt> <code>pointerColor</code> (class <code>Foreground</code>): color-name</dt>
+<dt> <code>pointerBackground</code> (class <code>Background</code>): color-name</dt>
 <dd><p>The foreground and background colors of the mouse cursor.  These
 resources are used to initialize the variables
 <code>x-pointer-foreground-color</code> and <code>x-pointer-background-color</code>.
@@ -3169,26 +3050,21 @@ resources are used to initialize the variables
 <p>Faces accept the following resources:
 
 </p><dl compact="compact">
-<dt> <code>attributeFont</code> (class <code>AttributeFont</code>): font-name
-</dt>
+<dt> <code>attributeFont</code> (class <code>AttributeFont</code>): font-name</dt>
 <dd><p>The font of this face.
 
 </p></dd>
-<dt> <code>attributeForeground</code> (class <code>AttributeForeground</code>): color-name
-</dt>
-<dt> <code>attributeBackground</code> (class <code>AttributeBackground</code>): color-name
-</dt>
+<dt> <code>attributeForeground</code> (class <code>AttributeForeground</code>): color-name</dt>
+<dt> <code>attributeBackground</code> (class <code>AttributeBackground</code>): color-name</dt>
 <dd><p>The foreground and background colors of this face.
 
 </p></dd>
-<dt> <code>attributeBackgroundPixmap</code> (class <code>AttributeBackgroundPixmap</code>): file-name
-</dt>
+<dt> <code>attributeBackgroundPixmap</code> (class <code>AttributeBackgroundPixmap</code>): file-name</dt>
 <dd><p>The name of an <small>XBM</small> file (or <small>XPM</small> file, if your version of Emacs
 supports <small>XPM</small>), to use as a background stipple.
 
 </p></dd>
-<dt> <code>attributeUnderline</code> (class <code>AttributeUnderline</code>): boolean
-</dt>
+<dt> <code>attributeUnderline</code> (class <code>AttributeUnderline</code>): boolean</dt>
 <dd><p>Whether text in this face should be underlined.
 </p></dd>
 </dl>
@@ -3201,70 +3077,58 @@ supports <small>XPM</small>), to use as a background stipple.
 </p><p>These are the names of the predefined faces:
 
 </p><dl compact="compact">
-<dt><code> default
-</code></dt>
+<dt><code> default</code></dt>
 <dd><p>Everything inherits from this.
 
 </p></dd>
-<dt><code> bold
-</code></dt>
+<dt><code> bold</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find a
 bold version of the font of the default face.
 
 </p></dd>
-<dt><code> italic
-</code></dt>
+<dt><code> italic</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find
 an italic version of the font of the default face.
 
 </p></dd>
-<dt><code> bold-italic
-</code></dt>
+<dt><code> bold-italic</code></dt>
 <dd><p>If this is not specified in the resource database, Emacs tries to find a
 bold-italic version of the font of the default face.
 
 </p></dd>
-<dt><code> modeline
-</code></dt>
+<dt><code> modeline</code></dt>
 <dd><p>This is the face that the modeline is displayed in.  If not specified in
 the resource database, it is determined from the default face by
 reversing the foreground and background colors.
 
 </p></dd>
-<dt><code> highlight
-</code></dt>
+<dt><code> highlight</code></dt>
 <dd><p>This is the face that highlighted extents (for example, Info
 cross-references and possible completions, when the mouse passes over
 them) are displayed in.
 
 </p></dd>
-<dt><code> left-margin
-</code></dt>
-<dt><code> right-margin
-</code></dt>
+<dt><code> left-margin</code></dt>
+<dt><code> right-margin</code></dt>
 <dd><p>These are the faces that the left and right annotation margins are
 displayed in.
 
 </p></dd>
-<dt><code> zmacs-region
-</code></dt>
+<dt><code> zmacs-region</code></dt>
 <dd><p>This is the face that mouse selections are displayed in.
  
 </p></dd>
-<dt><code> isearch
-</code></dt>
+<dt><code> isearch</code></dt>
 <dd><p>This is the face that the matched text being searched for is displayed
 in.
 
 </p></dd>
-<dt><code> info-node
-</code></dt>
+<dt><code> info-node</code></dt>
 <dd><p>This is the face of info menu items.  If unspecified, it is copied from
 <code>bold-italic</code>.
 
 </p></dd>
-<dt><code> info-xref
-</code></dt>
+<dt><code> info-xref</code></dt>
 <dd><p>This is the face of info cross-references.  If unspecified, it is copied
 from <code>bold</code>. (Note that, when the mouse passes over a
 cross-reference, the cross-reference's face is determined from a
@@ -3412,21 +3276,17 @@ appropriate for the toolkit in use.
 <h2 class="section"> 27.11 Quitting and Aborting </h2>
 
 <dl compact="compact">
-<dt><kbd> C-g
-</kbd></dt>
+<dt><kbd> C-g</kbd></dt>
 <dd><p>Quit.  Cancel running or partially typed command.
 </p></dd>
-<dt><kbd> C-]
-</kbd></dt>
+<dt><kbd> C-]</kbd></dt>
 <dd><p>Abort innermost recursive editing level and cancel the command which
 invoked it (<code>abort-recursive-edit</code>).
 </p></dd>
-<dt><kbd> M-x top-level
-</kbd></dt>
+<dt><kbd> M-x top-level</kbd></dt>
 <dd><p>Abort all recursive editing levels that are currently executing.
 </p></dd>
-<dt><kbd> C-x u
-</kbd></dt>
+<dt><kbd> C-x u</kbd></dt>
 <dd><p>Cancel an already-executed command, usually (<code>undo</code>).
 </p></dd>
 </dl>

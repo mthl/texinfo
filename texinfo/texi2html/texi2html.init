@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.53 2003-11-11 22:13:33 pertusus Exp $
+# $Id: texi2html.init,v 1.54 2003-11-18 15:37:10 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1830,12 +1830,15 @@ $summary_letter    = \&t2h_default_summary_letter;
 $index_entry       = \&t2h_default_index_entry;
 $index_letter      = \&t2h_default_index_letter;
 $print_index       = \&t2h_default_print_index;
-$protect_html      = \&t2h_default_protect_html;
-$complex_format = \&t2h_default_complex_format;
+$protect_text      = \&t2h_default_protect_text;
+$complex_format    = \&t2h_default_complex_format;
 $cartouche         = \&t2h_default_cartouche;
 $sp                = \&t2h_default_sp;
-$definition_category = \&t2h_default_definition_category;
+$definition_category      = \&t2h_default_definition_category;
 $index_summary_file_entry = \&t2h_default_index_summary_file_entry;
+$empty_line               = \&t2h_default_empty_line;
+$unknown                  = \&t2h_default_unknown;
+$unknown_style            = \&t2h_default_unknown_style;
 
 # This function is called whenever a complex format is processed
 #
@@ -1869,12 +1872,36 @@ sub t2h_default_complex_format($$)
     return $beginning . $text . $end;	
 }
 
+sub t2h_default_empty_line($)
+{
+    my $text = shift;
+    return $text;
+}
+
+sub t2h_default_unknown($$)
+{
+    my $macro = shift;
+    my $line = shift;
+    
+    my ($result_line, $result, $result_text, $message);
+    return ($line, 0, undef, undef);
+}
+
+sub t2h_default_unknown_style($$)
+{
+    my $command = shift;
+    my $text = shift;
+    
+    my ($result, $result_text, $message);
+    return (0, undef, undef);
+}
+
 # This function is used to protect characters which are special in html 
 # in inline text:  &, ", <, and >. 
 #
 # argument:
 # text to be protected
-sub t2h_default_protect_html($)
+sub t2h_default_protect_text($)
 {
    my $text = shift;
    $text =~ s/&/&amp;/g;
@@ -2218,14 +2245,17 @@ sub t2h_default_internal_ref($$$$$)
 }
 
 # text after @item in table, vtable and ftable
-sub t2h_default_table_item($$$$)
+sub t2h_default_table_item($$$$$)
 {
     my $text = shift;
     my $index_label = shift;
     my $format = shift;
     my $command = shift;
-    $text .= $index_label  if (defined($index_label));
-    return '<dt>' . $text . '</dt>' . "\n";
+    my $formatted_command = shift;
+    $formatted_command = '' if (!defined($formatted_command) or 
+          exists($special_list_commands{$format}->{$command}));
+    $text .= "\n" . $index_label  if (defined($index_label));
+    return '<dt>' . $formatted_command . $text . '</dt>' . "\n";
 }
 
 # format text on the line following @item (in table, vtable and ftable)
@@ -2263,14 +2293,20 @@ sub t2h_default_cell($)
 #
 # argument:
 # text of the item
-sub t2h_default_list_item($$$)
+# format of the list (itemize or enumerate)
+# command passed as argument to the format
+# formatted_command leading command formatted, if it is a thing command
+sub t2h_default_list_item($$$$)
 {
     my $text = shift;
     my $format = shift;
     my $command = shift;
+    my $formatted_command = shift;
+    $formatted_command = '' if (!defined($formatted_command) or 
+          exists($special_list_commands{$format}->{$command}));
     if ($text =~ /\S/)
     {
-        return '<li>' . $text . '</li>';
+        return '<li>' . $formatted_command . $text . '</li>';
     }
     return '';
 }
@@ -2280,6 +2316,9 @@ sub t2h_default_table_list($$$)
     my $format = shift;
     my $text = shift;
     my $command = shift;
+    my $formatted_command = shift;
+    $formatted_command = '' if (!defined($formatted_command) or 
+          exists($special_list_commands{$format}->{$command}));
     if ($format eq 'itemize')
     {
         return "<ul>\n" . $text . "</ul>\n" if ($command eq 'bullet');
@@ -2295,11 +2334,31 @@ sub t2h_default_comment($)
 }
 
 # a paragraph
-sub t2h_default_paragraph($$)
+# arguments:
+# $text of the paragraph
+# $align for the alignement
+# The following is usefull if the paragraph is in an itemize.
+# $paragraph_command is the leading formatting command (like @minus)
+# $paragraph_command_formatted is the leading formatting command formatted
+# $paragraph_number is a reference on the number of paragraphs appearing
+#    in the format. The value should be increased if a paragraph is done
+# $format is the format name (@itemize)
+sub t2h_default_paragraph($$$$$$)
 {
     my $text = shift;
     my $align = shift;
+    my $paragraph_command = shift;
+    my $paragraph_command_formatted = shift;
+    my $paragraph_number = shift;
+    my $format = shift;
+    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
+          exists($special_list_commands{$format}->{$paragraph_command}));
+    #my $in_term = shift;
     return '' if ($text =~ /^\s*$/);
+    if (defined($paragraph_number) and defined($$paragraph_number))
+    {
+         $$paragraph_number++;
+    }
     my $open = '<p>';
     if ($align)
     {
@@ -2309,13 +2368,33 @@ sub t2h_default_paragraph($$)
 }
 
 # a preformatted region
-sub t2h_default_preformatted($$$)
+# arguments:
+# $text of the preformatted region
+# $pre_style css style
+# $class identifier for the preformatted region (example, menu-comment)
+# The following is usefull if the preformatted is in an itemize.
+# $leading_command is the leading formatting command (like @minus)
+# $leading_command_formatted is the leading formatting command formatted
+# $preformatted_number is a reference on the number of preformatteds appearing
+#    in the format. The value should be increased if a preformatted is done
+sub t2h_default_preformatted($$$$$$$)
 {
     my $text = shift;
     my $pre_style = shift;
     my $class = shift;
+    my $leading_command = shift;
+    my $leading_command_formatted = shift;
+    my $preformatted_number = shift;
+    my $format = shift;
+    #my $in_term = shift;
 
     return '' if ($text eq '');
+    $leading_command_formatted = '' if (!defined($leading_command_formatted) or 
+          exists($special_list_commands{$format}->{$leading_command}));
+    if (defined($preformatted_number) and defined($$preformatted_number))
+    {
+        $$preformatted_number++;
+    }
     return "<pre class=\"$class\">$text</pre>";
 }
 
@@ -2366,7 +2445,7 @@ sub t2h_default_raw($$)
     my $text = shift;
     if ($style eq 'verbatim' or $style eq 'tex')
     {
-        return "<pre class=\"$style\">" . &$protect_html($text) . '</pre>';
+        return "<pre class=\"$style\">" . &$protect_text($text) . '</pre>';
     }
     elsif ($style eq 'html')
     {
@@ -2375,7 +2454,7 @@ sub t2h_default_raw($$)
     else
     {
         warn "$WARN (bug) unknown style $style\n";
-        return &$protect_html($text);
+        return &$protect_text($text);
     }
 }
 
@@ -2434,14 +2513,16 @@ sub t2h_default_foot_section($)
 # format an image
 #
 # arguments:
-# image file name
-# image basename
+# image file name with path
+# image basename or alt text
 # a boolean true if we are in a preformatted format
-sub t2h_default_image($$$)
+# image file name without path
+sub t2h_default_image($$$$)
 {
    my $file = shift;
    my $base = shift;
    my $preformatted = shift;
+   my $file_name = shift;
    return "[ $base ]" if ($preformatted);
    return "<img src=\"$file\" alt=\"$base\">";
 }
@@ -2608,7 +2689,7 @@ sub t2h_default_index_letter($$$)
      my $letter = shift;
      my $id = shift;
      my $text = shift;
-     return '<tr><th>' . &$anchor($id,'',&$protect_html($letter)) . 
+     return '<tr><th>' . &$anchor($id,'',&$protect_text($letter)) . 
      "</th><td></td><td></td></tr>\n" . $text . 
      "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n";
 }
@@ -2646,7 +2727,7 @@ sub t2h_default_summary_letter($$$)
    my $letter = shift;
    my $file = shift;
    my $identifier = shift;
-   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_html($letter) . '</b>', 'class="summary-letter"');
+   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>', 'class="summary-letter"');
 }
 
 # format an index summary. This is a list of letters linking to the letter

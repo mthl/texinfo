@@ -90,8 +90,7 @@ the <code>set-variable</code> command described below, or in the <code>#var</cod
 section of the <code>.infokey</code> file.  See section <a href="info-stnd_12.html#SEC17">Customizing Key Bindings and Variables</a>.
 
 </p><dl compact="compact">
-<dt> <kbd>M-x set-variable</kbd>
-</dt>
+<dt> <kbd>M-x set-variable</kbd></dt>
 <dd><a name="IDX345"></a>
 <a name="IDX346"></a>
 <p>Read the name of a variable, and the value for it, in the echo area and
@@ -102,8 +101,7 @@ but that depends on the variable itself.  If a variable does <em>not</em>
 supply multiple choices to complete over, it expects a numeric value.
 
 </p></dd>
-<dt> <kbd>M-x describe-variable</kbd>
-</dt>
+<dt> <kbd>M-x describe-variable</kbd></dt>
 <dd><a name="IDX347"></a>
 <a name="IDX348"></a>
 <p>Read the name of a variable in the echo area and then display a brief
@@ -114,8 +112,7 @@ description of what the variable affects.
 <p>Here is a list of the variables that you can set in Info.
 
 </p><dl compact="compact">
-<dt><code> automatic-footnotes
-</code></dt>
+<dt><code> automatic-footnotes</code></dt>
 <dd><a name="IDX349"></a>
 <p>When set to <code>On</code>, footnotes appear and disappear automatically.
 This variable is <code>On</code> by default.  When a node is selected, a
@@ -128,8 +125,7 @@ Footnote windows created in this fashion are not automatically tiled so
 that they can use as little of the display as is possible.
 
 </p></dd>
-<dt><code> automatic-tiling
-</code></dt>
+<dt><code> automatic-tiling</code></dt>
 <dd><a name="IDX350"></a>
 <p>When set to <code>On</code>, creating or deleting a window resizes other
 windows.  This variable is <code>Off</code> by default.  Normally, typing
@@ -141,15 +137,13 @@ windows `<samp>*Completions*</samp>' and `<samp>*Footnotes*</samp>' are <em>not<
 resized through automatic tiling; they remain their original size.
 
 </p></dd>
-<dt><code> errors-ring-bell
-</code></dt>
+<dt><code> errors-ring-bell</code></dt>
 <dd><a name="IDX351"></a>
 <p>When set to <code>On</code>, errors cause the bell to ring.  The default
 setting of this variable is <code>On</code>.
 
 </p></dd>
-<dt><code> gc-compressed-files
-</code></dt>
+<dt><code> gc-compressed-files</code></dt>
 <dd><a name="IDX352"></a>
 <p>When set to <code>On</code>, Info garbage collects files which had to be
 uncompressed.  The default value of this variable is <code>Off</code>.
@@ -165,8 +159,7 @@ consuming operation, and so Info tries hard not to do it twice.
 text of the nodes of a file which was compressed on disk.
 
 </p></dd>
-<dt><code> ISO-Latin
-</code></dt>
+<dt><code> ISO-Latin</code></dt>
 <dd><a name="IDX353"></a>
 <a name="IDX354"></a>
 <p>When set to <code>On</code>, Info accepts and displays ISO Latin characters.
@@ -176,8 +169,7 @@ character set is in use, and allows you to input such characters to
 Info, as well as display them.
 
 </p></dd>
-<dt><code> scroll-behavior
-</code></dt>
+<dt><code> scroll-behavior</code></dt>
 <dd><a name="IDX355"></a>
 <p>Control what happens when forward scrolling is requested at the end of
 a node, or when backward scrolling is requested at the beginning of a
@@ -185,8 +177,7 @@ node.  The default value for this variable is <code>Continuous</code>.  There
 are three possible values for this variable:
 
 </p><dl compact="compact">
-<dt><code> Continuous
-</code></dt>
+<dt><code> Continuous</code></dt>
 <dd><p>Try to get the first item in this node's menu, or failing that, the
 `<samp>Next</samp>' node, or failing that, the `<samp>Next</samp>' of the `<samp>Up</samp>'.
 This behavior is identical to using the `<samp>]</samp>'
@@ -194,13 +185,11 @@ This behavior is identical to using the `<samp>]</samp>'
 commands.
 
 </p></dd>
-<dt><code> Next Only
-</code></dt>
+<dt><code> Next Only</code></dt>
 <dd><p>Only try to get the `<samp>Next</samp>' node.
 
 </p></dd>
-<dt><code> Page Only
-</code></dt>
+<dt><code> Page Only</code></dt>
 <dd><p>Simply give up, changing nothing.  If <code>scroll-behavior</code> is
 <code>Page Only</code>, no scrolling command can change the node that is being
 viewed.
@@ -208,8 +197,7 @@ viewed.
 </dl>
 
 </dd>
-<dt><code> scroll-step
-</code></dt>
+<dt><code> scroll-step</code></dt>
 <dd><a name="IDX356"></a>
 <p>The number of lines to scroll when the cursor moves out of the window.
 Scrolling happens automatically if the cursor has moved out of the
@@ -224,8 +212,7 @@ Setting this variable to 1 causes a kind of &quot;smooth scrolling&quot; which
 some people prefer.
 
 </p></dd>
-<dt><code> show-index-match
-</code></dt>
+<dt><code> show-index-match</code></dt>
 <dd><a name="IDX357"></a>
 <p>When set to <code>On</code>, the portion of the matched search string is
 highlighted in the message which explains where the matched search
@@ -236,8 +223,7 @@ string that you had typed is highlighted by displaying it in the inverse
 case from its surrounding characters.
 
 </p></dd>
-<dt><code> visible-bell
-</code></dt>
+<dt><code> visible-bell</code></dt>
 <dd><a name="IDX358"></a>
 <p>When set to <code>On</code>, GNU Info attempts to flash the screen instead of
 ringing the bell.  This variable is <code>Off</code> by default.  Of course,

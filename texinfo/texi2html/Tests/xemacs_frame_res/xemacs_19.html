@@ -144,22 +144,18 @@ line.
 <h2 class="section"> 16.2 Splitting Windows </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x 2
-</kbd></dt>
+<dt><kbd> C-x 2</kbd></dt>
 <dd><p>Split the selected window into two windows, one above the other
 (<code>split-window-vertically</code>).
 </p></dd>
-<dt><kbd> C-x 3
-</kbd></dt>
+<dt><kbd> C-x 3</kbd></dt>
 <dd><p>Split the selected window into two windows positioned side by side
 (<code>split-window-horizontally</code>).
 </p></dd>
-<dt><kbd> C-x 6
-</kbd></dt>
+<dt><kbd> C-x 6</kbd></dt>
 <dd><p>Save the current window configuration in register <var>reg</var> (a letter).
 </p></dd>
-<dt><kbd> C-x 7
-</kbd></dt>
+<dt><kbd> C-x 7</kbd></dt>
 <dd><p>Restore (make current) the window configuration in register
 <var>reg</var> (a letter).  Use with a register previously set with <kbd>C-x 6</kbd>.
 </p></dd>
@@ -225,21 +221,17 @@ supplying a <var>register</var> argument to <code>window-configuration-to-regist
 <h2 class="section"> 16.3 Using Other Windows </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x o
-</kbd></dt>
+<dt><kbd> C-x o</kbd></dt>
 <dd><p>Select another window (<code>other-window</code>).  That is the letter `o', not zero.
 </p></dd>
-<dt><kbd> M-C-v
-</kbd></dt>
+<dt><kbd> M-C-v</kbd></dt>
 <dd><p>Scroll the next window (<code>scroll-other-window</code>).
 </p></dd>
-<dt><kbd> M-x compare-windows
-</kbd></dt>
+<dt><kbd> M-x compare-windows</kbd></dt>
 <dd><p>Find the next place where the text in the selected window does not match
 the text in the next window.
 </p></dd>
-<dt><kbd> M-x other-window-any-frame <var>n</var>
-</kbd></dt>
+<dt><kbd> M-x other-window-any-frame <var>n</var></kbd></dt>
 <dd><p>Select the <var>n</var>th different window on any frame.
 </p></dd>
 </dl>
@@ -320,29 +312,24 @@ buffer to select.
 <a name="IDX682"></a>
 <a name="IDX683"></a>
 <dl compact="compact">
-<dt><kbd> C-x 4 b <var>bufname</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> C-x 4 b <var>bufname</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Select buffer <var>bufname</var> in another window.  This runs
 <code>switch-to-buffer-other-window</code>.
 </p></dd>
-<dt><kbd> C-x 4 f <var>filename</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> C-x 4 f <var>filename</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Visit file <var>filename</var> and select its buffer in another window.  This
 runs <code>find-file-other-window</code>.  See section <a href="xemacs_17.html#SEC136">Visiting Files</a>.
 </p></dd>
-<dt><kbd> C-x 4 d <var>directory</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> C-x 4 d <var>directory</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Select a Dired buffer for directory <var>directory</var> in another window.
 This runs <code>dired-other-window</code>.  See section <a href="xemacs_17.html#SEC163">Dired, the Directory Editor</a>.
 </p></dd>
-<dt><kbd> C-x 4 m
-</kbd></dt>
+<dt><kbd> C-x 4 m</kbd></dt>
 <dd><p>Start composing a mail message in another window.  This runs
 <code>mail-other-window</code>, and its same-window version is <kbd>C-x m</kbd>
 (see section <a href="xemacs_28.html#SEC296">Sending Mail</a>).
 </p></dd>
-<dt><kbd> C-x 4 .
-</kbd></dt>
+<dt><kbd> C-x 4 .</kbd></dt>
 <dd><p>Find a tag in the current tag table in another window.  This runs
 <code>find-tag-other-window</code>, the multiple-window variant of <kbd>M-.</kbd>
 (see section <a href="xemacs_24.html#SEC232">Tags Tables</a>).
@@ -379,25 +366,21 @@ work using this function.
 <h2 class="section"> 16.5 Deleting and Rearranging Windows </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x 0
-</kbd></dt>
+<dt><kbd> C-x 0</kbd></dt>
 <dd><p>Get rid of the selected window (<code>delete-window</code>).  That is a zero.
 If there is more than one Emacs frame, deleting the sole remaining
 window on that frame deletes the frame as well. If the current frame
 is the only frame, it is not deleted.
 </p></dd>
-<dt><kbd> C-x 1
-</kbd></dt>
+<dt><kbd> C-x 1</kbd></dt>
 <dd><p>Get rid of all windows except the selected one
 (<code>delete-other-windows</code>).
 </p></dd>
-<dt><kbd> C-x ^
-</kbd></dt>
+<dt><kbd> C-x ^</kbd></dt>
 <dd><p>Make the selected window taller, at the expense of the other(s)
 <br>(<code>enlarge-window</code>).
 </p></dd>
-<dt><kbd> C-x }
-</kbd></dt>
+<dt><kbd> C-x }</kbd></dt>
 <dd><p>Make the selected window wider (<code>enlarge-window-horizontally</code>).
 </p></dd>
 </dl>
@@ -447,29 +430,24 @@ manager operations.  This menu contains the following options:
 <a name="IDX696"></a>
 <a name="IDX697"></a>
 <dl compact="compact">
-<dt><b> Delete Window
-</b></dt>
+<dt><b> Delete Window</b></dt>
 <dd><p>Remove the window above this modeline from the frame.
 
 </p></dd>
-<dt><b> Delete Other Windows
-</b></dt>
+<dt><b> Delete Other Windows</b></dt>
 <dd><p>Delete all windows on the frame except for the one above this modeline.
 
 </p></dd>
-<dt><b> Split Window
-</b></dt>
+<dt><b> Split Window</b></dt>
 <dd><p>Split the window above the mode line in half, creating another window.
 
 </p></dd>
-<dt><b> Split Window Horizontally
-</b></dt>
+<dt><b> Split Window Horizontally</b></dt>
 <dd><p>Split the window above the mode line in half horizontally, so that there
 will be two windows side-by-side.
 
 </p></dd>
-<dt><b> Balance Windows
-</b></dt>
+<dt><b> Balance Windows</b></dt>
 <dd><p>Readjust the sizes of all windows on the frame until all windows have
 roughly the same number of lines.
 </p></dd>

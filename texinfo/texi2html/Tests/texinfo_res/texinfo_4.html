@@ -1096,36 +1096,29 @@ immediately after the <code>@end titlepage</code> command.
 </p><p>You can use <code>@headings</code> as follows:
 
 </p><dl compact="compact">
-<dt><code> @headings off
-</code></dt>
+<dt><code> @headings off</code></dt>
 <dd><p>Turn off printing of page headings.
 
 </p></dd>
-<dt><code> @headings single
-</code></dt>
+<dt><code> @headings single</code></dt>
 <dd><p>Turn on page headings appropriate for single-sided printing.
 
 </p>
 </dd>
-<dt><code> @headings double
-</code></dt>
-<dt><code> @headings on
-</code></dt>
+<dt><code> @headings double</code></dt>
+<dt><code> @headings on</code></dt>
 <dd><p>Turn on page headings appropriate for double-sided printing.  The two
 commands, <code>@headings on</code> and <code>@headings double</code>, are
 synonymous.
 
 </p></dd>
-<dt><code> @headings singleafter
-</code></dt>
-<dt><code> @headings doubleafter
-</code></dt>
+<dt><code> @headings singleafter</code></dt>
+<dt><code> @headings doubleafter</code></dt>
 <dd><p>Turn on <code>single</code> or <code>double</code> headings, respectively, after the
 current page is output.
 
 </p></dd>
-<dt><code> @headings on
-</code></dt>
+<dt><code> @headings on</code></dt>
 <dd><p>Turn on page headings: <code>single</code> if `<samp>@setchapternewpage
 on</samp>', <code>double</code> otherwise.
 </p></dd>
@@ -1439,22 +1432,19 @@ start on a fresh odd-numbered page:
 <code>@setchapternewpage</code> command:
 
 </p><dl compact="compact">
-<dt> <code>@setchapternewpage off</code>
-</dt>
+<dt> <code>@setchapternewpage off</code></dt>
 <dd><p>Cause TeX to typeset a new chapter on the same page as the last
 chapter, after skipping some vertical whitespace.  Also, cause TeX to
 format page headers for single-sided printing.
 
 </p></dd>
-<dt> <code>@setchapternewpage on</code>
-</dt>
+<dt> <code>@setchapternewpage on</code></dt>
 <dd><p>Cause TeX to start new chapters on new pages and to format page
 headers for single-sided printing.  This is the form most often used for
 short reports or personal printing. This is the default.
 
 </p></dd>
-<dt> <code>@setchapternewpage odd</code>
-</dt>
+<dt> <code>@setchapternewpage odd</code></dt>
 <dd><p>Cause TeX to start new chapters on new, odd-numbered pages
 (right-handed pages) and to typeset for double-sided printing.  This is
 the form most often used for books and manuals.
@@ -1517,20 +1507,16 @@ followed by either `<samp>asis</samp>' or a number:
 <p>The indentation is according to the value of <var>indent</var>:
 
 </p><dl compact="compact">
-<dt> <code>asis</code>
-</dt>
+<dt> <code>asis</code></dt>
 <dd><p>Do not change the existing indentation (not implemented in TeX).
 
 </p></dd>
-<dt> <code>none</code>
-</dt>
-<dt> 0
-</dt>
+<dt> <code>none</code></dt>
+<dt> 0</dt>
 <dd><p>Omit all indentation.
 
 </p></dd>
-<dt> <var>n</var>
-</dt>
+<dt> <var>n</var></dt>
 <dd><p>Indent by <var>n</var> space characters in Info output, by <var>n</var> ems in
 TeX.
 
@@ -1581,18 +1567,15 @@ beginning of a line followed by either `<samp>asis</samp>' or a number:
 <p>The indentation is according to the value of <var>indent</var>:
 
 </p><dl compact="compact">
-<dt> <code>asis</code>
-</dt>
+<dt> <code>asis</code></dt>
 <dd><p>Do not change the existing indentation (not implemented in TeX).
 
 </p></dd>
-<dt> 0
-</dt>
+<dt> 0</dt>
 <dd><p>Omit all indentation.
 
 </p></dd>
-<dt> <var>n</var>
-</dt>
+<dt> <var>n</var></dt>
 <dd><p>Indent environments by <var>n</var> space characters in Info output, by
 <var>n</var> ems in TeX.
 

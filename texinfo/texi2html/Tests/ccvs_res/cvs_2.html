@@ -600,14 +600,12 @@ special meaning by <small>CVS</small>; other <var>attrname</var>s are for user-d
 </p><p>Builtin attributes:
 
 </p><dl compact="compact">
-<dt><code> _watched
-</code></dt>
+<dt><code> _watched</code></dt>
 <dd><p>Present means the file is watched and should be checked out
 read-only.
 
 </p></dd>
-<dt><code> _watchers
-</code></dt>
+<dt><code> _watchers</code></dt>
 <dd><p>Users with watches for this file.  Value is
 <var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> }
 where <var>watcher</var> is a username, and <var>type</var>
@@ -615,8 +613,7 @@ is zero or more of edit,unedit,commit separated by
 `<samp>+</samp>' (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
 
 </p></dd>
-<dt><code> _editors
-</code></dt>
+<dt><code> _editors</code></dt>
 <dd><p>Users editing this file.  Value is
 <var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> }
 where <var>editor</var> is a username, and <var>val</var> is
@@ -853,16 +850,14 @@ managed by <small>CVS</small> probably will not be portable between
 such systems either.
 
 </p><dl compact="compact">
-<dt>`<tt> Root
-</tt>'</dt>
+<dt>`<tt> Root</tt>'</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
 described in <a href="#SEC10">Telling CVS where your repository is</a>.
 
 </p><a name="IDX33"></a>
 <a name="IDX34"></a>
 </dd>
-<dt>`<tt> Repository
-</tt>'</dt>
+<dt>`<tt> Repository</tt>'</dt>
 <dd><p>This file contains the directory within the repository
 which the current directory corresponds with.  It can
 be either an absolute pathname or a relative pathname;
@@ -899,8 +894,7 @@ should contain `<tt>CVSROOT/Emptydir</tt>'.
 </p><a name="IDX37"></a>
 <a name="IDX38"></a>
 </dd>
-<dt>`<tt> Entries
-</tt>'</dt>
+<dt>`<tt> Entries</tt>'</dt>
 <dd><p>This file lists the files and directories in the
 working directory.
 The first character of each line indicates what sort of
@@ -980,8 +974,7 @@ for future expansion.  Programs which modify
 </p><a name="IDX39"></a>
 <a name="IDX40"></a>
 </dd>
-<dt>`<tt> Entries.Log
-</tt>'</dt>
+<dt>`<tt> Entries.Log</tt>'</dt>
 <dd><p>This file does not record any information beyond that
 in `<tt>Entries</tt>', but it does provide a way to update
 the information without having to rewrite the entire
@@ -1013,8 +1006,7 @@ safely ignore `<tt>Entries.Log</tt>' if they so choose.
 </p><a name="IDX41"></a>
 <a name="IDX42"></a>
 </dd>
-<dt>`<tt> Entries.Backup
-</tt>'</dt>
+<dt>`<tt> Entries.Backup</tt>'</dt>
 <dd><p>This is a temporary file.  Recommended usage is to
 write a new entries file to `<tt>Entries.Backup</tt>', and
 then to rename it (atomically, where possible) to `<tt>Entries</tt>'.
@@ -1022,8 +1014,7 @@ then to rename it (atomically, where possible) to `<tt>Entries</tt>'.
 </p><a name="IDX43"></a>
 <a name="IDX44"></a>
 </dd>
-<dt>`<tt> Entries.Static
-</tt>'</dt>
+<dt>`<tt> Entries.Static</tt>'</dt>
 <dd><p>The only relevant thing about this file is whether it
 exists or not.  If it exists, then it means that only
 part of a directory was gotten and <small>CVS</small> will
@@ -1037,8 +1028,7 @@ and remove `<tt>Entries.Static</tt>'.
 <a name="IDX47"></a>
 <a name="IDX48"></a>
 </dd>
-<dt>`<tt> Tag
-</tt>'</dt>
+<dt>`<tt> Tag</tt>'</dt>
 <dd><p>This file contains per-directory sticky tags or dates.
 The first character is `<samp>T</samp>' for a branch tag,
 `<samp>N</samp>' for a non-branch tag, or `<samp>D</samp>' for a date,
@@ -1054,8 +1044,7 @@ tags and dates, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 </p><a name="IDX49"></a>
 <a name="IDX50"></a>
 </dd>
-<dt>`<tt> Notify
-</tt>'</dt>
+<dt>`<tt> Notify</tt>'</dt>
 <dd><p>This file stores notifications (for example, for
 <code>edit</code> or <code>unedit</code>) which have not yet been
 sent to the server.  Its format is not yet documented
@@ -1064,8 +1053,7 @@ here.
 </p><a name="IDX51"></a>
 <a name="IDX52"></a>
 </dd>
-<dt>`<tt> Notify.tmp
-</tt>'</dt>
+<dt>`<tt> Notify.tmp</tt>'</dt>
 <dd><p>This file is to `<tt>Notify</tt>' as `<tt>Entries.Backup</tt>'
 is to `<tt>Entries</tt>'.  That is, to write `<tt>Notify</tt>',
 first write the new contents to `<tt>Notify.tmp</tt>' and
@@ -1075,8 +1063,7 @@ then (atomically where possible), rename it to
 </p><a name="IDX53"></a>
 <a name="IDX54"></a>
 </dd>
-<dt>`<tt> Base
-</tt>'</dt>
+<dt>`<tt> Base</tt>'</dt>
 <dd><p>If watches are in use, then an <code>edit</code> command
 stores the original copy of the file in the `<tt>Base</tt>'
 directory.  This allows the <code>unedit</code> command to
@@ -1086,8 +1073,7 @@ server.
 </p><a name="IDX55"></a>
 <a name="IDX56"></a>
 </dd>
-<dt>`<tt> Baserev
-</tt>'</dt>
+<dt>`<tt> Baserev</tt>'</dt>
 <dd><p>The file lists the revision for each of the files in
 the `<tt>Base</tt>' directory.  The format is:
 
@@ -1100,8 +1086,7 @@ future expansion.
 </p><a name="IDX57"></a>
 <a name="IDX58"></a>
 </dd>
-<dt>`<tt> Baserev.tmp
-</tt>'</dt>
+<dt>`<tt> Baserev.tmp</tt>'</dt>
 <dd><p>This file is to `<tt>Baserev</tt>' as `<tt>Entries.Backup</tt>'
 is to `<tt>Entries</tt>'.  That is, to write `<tt>Baserev</tt>',
 first write the new contents to `<tt>Baserev.tmp</tt>' and
@@ -1111,8 +1096,7 @@ then (atomically where possible), rename it to
 </p><a name="IDX59"></a>
 <a name="IDX60"></a>
 </dd>
-<dt>`<tt> Template
-</tt>'</dt>
+<dt>`<tt> Template</tt>'</dt>
 <dd><p>This file contains the template specified by the
 `<tt>rcsinfo</tt>' file (see section <a href="cvs_18.html#SEC175">Rcsinfo</a>).  It is only used
 by the client; the non-client/server <small>CVS</small> consults

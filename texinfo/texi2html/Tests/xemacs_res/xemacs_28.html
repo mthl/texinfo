@@ -65,17 +65,14 @@ and headers of the message in the mail buffer, and type the command
 (<kbd>C-c C-c</kbd>) to send the message.
 
 </p><dl compact="compact">
-<dt><kbd> C-x m
-</kbd></dt>
+<dt><kbd> C-x m</kbd></dt>
 <dd><p>Begin composing a message to send (<code>mail</code>).
 </p></dd>
-<dt><kbd> C-x 4 m
-</kbd></dt>
+<dt><kbd> C-x 4 m</kbd></dt>
 <dd><p>Likewise, but display the message in another window
 (<code>mail-other-window</code>).
 </p></dd>
-<dt><kbd> C-c C-c
-</kbd></dt>
+<dt><kbd> C-c C-c</kbd></dt>
 <dd><p>In Mail mode, send the message and switch to another buffer
 (<code>mail-send-and-exit</code>).
 </p></dd>
@@ -187,58 +184,50 @@ case in the field name.  After the colon and optional whitespace comes the
 contents of the field.
 
 </p><dl compact="compact">
-<dt>`<samp> To
-</samp>'</dt>
+<dt>`<samp> To</samp>'</dt>
 <dd><p>This field contains the mailing addresses of the message.
 
 </p></dd>
-<dt>`<samp> Subject
-</samp>'</dt>
+<dt>`<samp> Subject</samp>'</dt>
 <dd><p>The contents of the `<samp>Subject</samp>' field should be a piece of text that
 says what the message is about.  Subject fields are useful because most
 mail-reading programs can provide a summary of messages, listing the
 subject of each message but not its text.
 
 </p></dd>
-<dt>`<samp> CC
-</samp>'</dt>
+<dt>`<samp> CC</samp>'</dt>
 <dd><p>This field contains additional mailing addresses to send the message
 to, but whose readers should not regard the message as addressed to
 them.
 
 </p></dd>
-<dt>`<samp> BCC
-</samp>'</dt>
+<dt>`<samp> BCC</samp>'</dt>
 <dd><p>This field contains additional mailing addresses to send the message
 to, but which should not appear in the header of the message actually
 sent.
 
 </p></dd>
-<dt>`<samp> FCC
-</samp>'</dt>
+<dt>`<samp> FCC</samp>'</dt>
 <dd><p>This field contains the name of one file (in Unix mail file format) to
 which a copy of the message should be appended when the message is
 sent.
 
 </p></dd>
-<dt>`<samp> From
-</samp>'</dt>
+<dt>`<samp> From</samp>'</dt>
 <dd><p>Use the `<samp>From</samp>' field to say who you are, when the account you are
 using to send the mail is not your own.  The contents of the
 `<samp>From</samp>' field should be a valid mailing address, since replies
 will normally go there.
 
 </p></dd>
-<dt>`<samp> Reply-To
-</samp>'</dt>
+<dt>`<samp> Reply-To</samp>'</dt>
 <dd><p>Use the `<samp>Reply-To</samp>' field to direct replies to a different
 address, not your own. `<samp>From</samp>' and
 `<samp>Reply-To</samp>' have the same effect on where replies go, but they convey a
 different meaning to the person who reads the message.
 
 </p></dd>
-<dt>`<samp> In-Reply-To
-</samp>'</dt>
+<dt>`<samp> In-Reply-To</samp>'</dt>
 <dd><p>This field contains a piece of text describing a message you are
 replying to.  Some mail systems can use the information to correlate
 related pieces of mail.  This field is normally filled in by your mail
@@ -375,46 +364,37 @@ the <kbd>C-c</kbd> prefix.  These commands all deal specifically with
 editing or sending the message.
 
 </p><dl compact="compact">
-<dt><kbd> C-c C-s
-</kbd></dt>
+<dt><kbd> C-c C-s</kbd></dt>
 <dd><p>Send the message, and leave the `<samp>*mail*</samp>' buffer selected
 (<code>mail-send</code>).
 </p></dd>
-<dt><kbd> C-c C-c
-</kbd></dt>
+<dt><kbd> C-c C-c</kbd></dt>
 <dd><p>Send the message, and select some other buffer (<code>mail-send-and-exit</code>).
 </p></dd>
-<dt><kbd> C-c C-f C-t
-</kbd></dt>
+<dt><kbd> C-c C-f C-t</kbd></dt>
 <dd><p>Move to the `<samp>To</samp>' header field, creating one if there is none
 (<code>mail-to</code>).
 </p></dd>
-<dt><kbd> C-c C-f C-s
-</kbd></dt>
+<dt><kbd> C-c C-f C-s</kbd></dt>
 <dd><p>Move to the `<samp>Subject</samp>' header field, creating one if there is
 none (<code>mail-subject</code>).
 </p></dd>
-<dt><kbd> C-c C-f C-c
-</kbd></dt>
+<dt><kbd> C-c C-f C-c</kbd></dt>
 <dd><p>Move to the `<samp>CC</samp>' header field, creating one if there is none
 (<code>mail-cc</code>).
 </p></dd>
-<dt><kbd> C-c C-w
-</kbd></dt>
+<dt><kbd> C-c C-w</kbd></dt>
 <dd><p>Insert the file `<tt>~/.signature</tt>' at the end of the message text
 (<code>mail-signature</code>).
 </p></dd>
-<dt><kbd> C-c C-y
-</kbd></dt>
+<dt><kbd> C-c C-y</kbd></dt>
 <dd><p>Yank the selected message (<code>mail-yank-original</code>).
 </p></dd>
-<dt><kbd> C-c C-q
-</kbd></dt>
+<dt><kbd> C-c C-q</kbd></dt>
 <dd><p>Fill all paragraphs of yanked old messages, each individually
 (<code>mail-fill-yanked-message</code>).
 </p></dd>
-<dt><kbd> <kbd>button3</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>button3</kbd></kbd></dt>
 <dd><p>Pops up a menu of useful mail-mode commands.
 </p></dd>
 </dl>

@@ -205,8 +205,7 @@ files.
 </p><dl compact="compact">
 <dd><a name="IDX90"></a>
 </dd>
-<dt> From RCS
-</dt>
+<dt> From RCS</dt>
 <dd><p>If you have been using <small>RCS</small>, find the <small>RCS</small>
 files--usually a file named `<tt>foo.c</tt>' will have its
 <small>RCS</small> file in `<tt>RCS/foo.c,v</tt>' (but it could be
@@ -228,8 +227,7 @@ into <small>CVS</small>; if it is, <small>CVS</small> will have trouble
 letting you operate on it.
 
 </p></dd>
-<dt> From another version control system
-</dt>
+<dt> From another version control system</dt>
 <dd><p>Many version control systems have the ability to export
 <small>RCS</small> files in the standard format.  If yours does,
 export the <small>RCS</small> files and then follow the above
@@ -244,8 +242,7 @@ useful example to follow.
 
 </p><a name="IDX91"></a>
 </dd>
-<dt> From SCCS
-</dt>
+<dt> From SCCS</dt>
 <dd><p>There is a script in the `<tt>contrib</tt>' directory of
 the <small>CVS</small> source distribution called `<tt>sccs2rcs</tt>'
 which converts <small>SCCS</small> files to <small>RCS</small> files.
@@ -256,8 +253,7 @@ vary).
 
 </p><a name="IDX92"></a>
 </dd>
-<dt> From PVCS
-</dt>
+<dt> From PVCS</dt>
 <dd><p>There is a script in the `<tt>contrib</tt>' directory of
 the <small>CVS</small> source distribution called `<tt>pvcs_to_rcs</tt>'
 which converts <small>PVCS</small> archives to <small>RCS</small> files.
@@ -343,20 +339,17 @@ related files and directories.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout CVSROOT/modules
 $ cd CVSROOT
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Edit the file and insert a line that defines the module.  See section <a href="cvs_2.html#SEC20">The administrative files</a>, for an introduction.  See section <a href="cvs_18.html#SEC158">The modules file</a>, for a full
 description of the modules file.  You can use the
 following line to define the module `<samp>tc</samp>':
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">tc   yoyodyne/tc
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Commit your changes to the modules file.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added the tc module.&quot; modules
-</pre></td></tr></table>
-</li><li>
+</pre></td></tr></table></li><li>
 <p>Release the modules module.
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..

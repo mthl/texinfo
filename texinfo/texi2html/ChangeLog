@@ -1,3 +1,22 @@
+2003-11-18  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: change protect_html to protect_text.
+	More arguments given to paragraph, preformatted region, list item,
+	table item formatting functions, usefull when the paragraph or
+	preformatted region is within a table or list to give more possibility
+	for use of the formatting command appearing with the table or
+	itemize command.
+	Handle better new lines.
+	new formatting function, normal_text, used to process ---, --, '' and
+	``.
+	new formatting function, empty_line used to format an empty line,
+	leave the empty line as is by default.
+	2 new formatting functions are used when the macro isn't handled
+	by the normal functions: unknown and unknown_style.
+	give the file name to the image.
+
+	* doc/texi2html.texi, Tests/*: sync with code.
+
 2003-11-11  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: the format is applied by a customizable function.

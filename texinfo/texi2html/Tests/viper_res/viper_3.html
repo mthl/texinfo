@@ -247,18 +247,15 @@ or pieces of text that need to be inserted frequently.
 At the <kbd>:</kbd> or <kbd>/</kbd> prompts in the Minibuffer, you can do the following:
 
 </p><dl compact="compact">
-<dt><kbd> M-p and M-n
-</kbd></dt>
+<dt><kbd> M-p and M-n</kbd></dt>
 <dd><p>To move to previous and next history items.  This causes the history
 items to appear on the command line, where you can edit them, or
 simply type Return to execute.
 </p></dd>
-<dt><kbd> M-r and M-s
-</kbd></dt>
+<dt><kbd> M-r and M-s</kbd></dt>
 <dd><p>To search backward and forward through the history.
 </p></dd>
-<dt><kbd> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>RET</kbd></kbd></dt>
 <dd><p>Type <kbd>RET</kbd> to accept a default (which is displayed in the prompt).
 </p></dd>
 </dl>
@@ -594,8 +591,7 @@ by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</
 <p>These commands have no Vi analogs.
 
 </p><dl compact="compact">
-<dt><kbd> C-x, C-c
-</kbd></dt>
+<dt><kbd> C-x, C-c</kbd></dt>
 <dd><a name="IDX62"></a>
 <a name="IDX63"></a>
 <p>These two keys invoke many important Emacs functions.  For example, if you
@@ -606,14 +602,12 @@ configure <kbd>ESC</kbd> as Meta by setting <code>viper-no-multiple-ESC</code> t
 in `<tt>.viper</tt>'.  See section <a href="viper_4.html#SEC25">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
 states will make Emacs think <kbd>Meta</kbd> has been hit.
 </p></dd>
-<dt><kbd> \
-</kbd></dt>
+<dt><kbd> \</kbd></dt>
 <dd><a name="IDX64"></a>
 <p>Escape to Emacs to execute a single Emacs command.  For instance,
 <kbd>\ <kbd>ESC</kbd></kbd> will act like a Meta key.
 </p></dd>
-<dt><kbd> Q
-</kbd></dt>
+<dt><kbd> Q</kbd></dt>
 <dd><a name="IDX65"></a>
 <a name="IDX66"></a>
 <p><kbd>Q</kbd> is for query replace.  By default,
@@ -622,12 +616,9 @@ each string to be replaced is treated as a regular expression.  You can use
 turn this off.  (For normal searches, <kbd>:se nomagic</kbd> will work.  Note
 that <kbd>:se nomagic</kbd> turns Regexps off completely, unlike Vi).
 </p></dd>
-<dt><kbd> v
-</kbd></dt>
-<dt><kbd> V
-</kbd></dt>
-<dt><kbd> C-v
-</kbd></dt>
+<dt><kbd> v</kbd></dt>
+<dt><kbd> V</kbd></dt>
+<dt><kbd> C-v</kbd></dt>
 <dd><a name="IDX67"></a>
 <a name="IDX68"></a>
 <a name="IDX69"></a>
@@ -637,8 +628,7 @@ similar, but will use a window different from the current window.
 <kbd>C-v</kbd> is like <kbd>V</kbd>, except that a new frame (X window) will be used
 instead of a new Emacs window.
 </p></dd>
-<dt><kbd> #
-</kbd></dt>
+<dt><kbd> #</kbd></dt>
 <dd><a name="IDX70"></a>
 <p>If followed by a certain character <var>ch</var>, it becomes an operator whose
 argument is the region determined by the motion command that follows
@@ -647,78 +637,63 @@ Currently, <var>ch</var> can be one of <kbd>c</kbd>, <kbd>C</kbd>, <kbd>g</kbd>,
 <kbd>s</kbd>.  For instance, <kbd>#qr</kbd> will prompt you for a string and then
 prepend this string to each line in the buffer.
 </p></dd>
-<dt><kbd> # c
-</kbd></dt>
+<dt><kbd> # c</kbd></dt>
 <dd><a name="IDX71"></a>
 <a name="IDX72"></a>
 <p>Change upper-case characters in the region to lower-case
 (<code>downcase-region</code>).
 Emacs command <kbd>M-l</kbd> does the same for words.
 </p></dd>
-<dt><kbd> # C
-</kbd></dt>
+<dt><kbd> # C</kbd></dt>
 <dd><a name="IDX73"></a>
 <p>Change lower-case characters in the region to upper-case.  For instance,
 <kbd># C 3 w</kbd> will capitalize 3 words from the current point
 (<code>upcase-region</code>).
 Emacs command <kbd>M-u</kbd> does the same for words.
 </p></dd>
-<dt><kbd> # g
-</kbd></dt>
+<dt><kbd> # g</kbd></dt>
 <dd><a name="IDX74"></a>
 <p>Execute last keyboard macro for each line in the region
 (<code>viper-global-execute</code>).
 </p></dd>
-<dt><kbd> # q
-</kbd></dt>
+<dt><kbd> # q</kbd></dt>
 <dd><a name="IDX75"></a>
 <p>Insert specified string at the beginning of each line in the region
 (<code>viper-quote-region</code>).  The default string is composed of the comment
 character(s) appropriate for the current major mode.
 </p></dd>
-<dt><kbd> # s
-</kbd></dt>
+<dt><kbd> # s</kbd></dt>
 <dd><a name="IDX76"></a>
 <p>Check spelling of words in the region (<code>spell-region</code>).
 The function used for spelling is determined from the variable
 <code>viper-spell-function</code>.
 <a name="IDX77"></a>
 </p></dd>
-<dt><kbd> *
-</kbd></dt>
+<dt><kbd> *</kbd></dt>
 <dd><a name="IDX78"></a>
 <p>Call last keyboard macro.
 </p></dd>
-<dt><kbd> m .
-</kbd></dt>
+<dt><kbd> m .</kbd></dt>
 <dd><p>Set mark at point and push old mark off the ring
 </p></dd>
-<dt><kbd> m&lt;
-</kbd></dt>
-<dt><kbd> m&gt;
-</kbd></dt>
+<dt><kbd> m&lt;</kbd></dt>
+<dt><kbd> m&gt;</kbd></dt>
 <dd><p>Set mark at beginning and end of buffer, respectively.
 </p></dd>
-<dt><kbd> m,
-</kbd></dt>
+<dt><kbd> m,</kbd></dt>
 <dd><p>Jump to mark and pop mark off the ring.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs Manual</cite>, for more info.
 </p></dd>
-<dt><kbd> ] register
-</kbd></dt>
+<dt><kbd> ] register</kbd></dt>
 <dd><a name="IDX79"></a>
 <p>View contents of register
 </p></dd>
-<dt><kbd> [ textmarker
-</kbd></dt>
+<dt><kbd> [ textmarker</kbd></dt>
 <dd><a name="IDX80"></a>
 <p>View filename and position of textmarker
 </p></dd>
-<dt><kbd> @#
-</kbd></dt>
-<dt><kbd> @register
-</kbd></dt>
-<dt><kbd> @!
-</kbd></dt>
+<dt><kbd> @#</kbd></dt>
+<dt><kbd> @register</kbd></dt>
+<dt><kbd> @!</kbd></dt>
 <dd><a name="IDX81"></a>
 <a name="IDX82"></a>
 <a name="IDX83"></a>
@@ -728,33 +703,28 @@ The function used for spelling is determined from the variable
 <p>Begin/end keyboard macro.  @register has a different meaning when used after
 a <kbd>@#</kbd>.  See section <a href="#SEC18">Macros and Registers</a>, for details
 </p></dd>
-<dt><kbd> []
-</kbd></dt>
+<dt><kbd> []</kbd></dt>
 <dd><a name="IDX86"></a>
 <p>Go to end of heading.
 </p></dd>
-<dt><kbd> g &lt;<em>movement command</em>&gt;
-</kbd></dt>
+<dt><kbd> g &lt;<em>movement command</em>&gt;</kbd></dt>
 <dd><p>Search buffer for text delimited by movement command.  The canonical
 example is <kbd>gw</kbd> to search for the word under the cursor.
 See section <a href="#SEC20">Improved Search</a>, for details.
 </p></dd>
-<dt><kbd> C-g and C-]
-</kbd></dt>
+<dt><kbd> C-g and C-]</kbd></dt>
 <dd><a name="IDX87"></a>
 <a name="IDX88"></a>
 <p>Quit and Abort Recursive edit.  These may be necessary on occasion.
 See section <a href="viper_2.html#SEC8">Vi State</a>, for a reason.
 </p></dd>
-<dt><kbd> C-c C-g
-</kbd></dt>
+<dt><kbd> C-c C-g</kbd></dt>
 <dd><a name="IDX89"></a>
 <p>Hitting <kbd>C-c</kbd> followed by <kbd>C-g</kbd> will display the information on the
 current buffer.  This is the same as hitting <kbd>C-g</kbd> in Vi, but, as
 explained above, <kbd>C-g</kbd> is needed for other purposes in Emacs.
 </p></dd>
-<dt><kbd> C-c /
-</kbd></dt>
+<dt><kbd> C-c /</kbd></dt>
 <dd><a name="IDX90"></a>
 <p>Without a prefix argument, this command toggles
 case-sensitive/case-insensitive search modes and plain vanilla/regular
@@ -768,16 +738,14 @@ this function.
 <a name="IDX93"></a>
 
 </p></dd>
-<dt><kbd> M-p and M-n
-</kbd></dt>
+<dt><kbd> M-p and M-n</kbd></dt>
 <dd><a name="IDX94"></a>
 <a name="IDX95"></a>
 <p>In the Minibuffer, these commands navigate through the minibuffer
 histories, such as the history of search strings, Ex commands, etc.
 
 </p></dd>
-<dt><kbd> C-c M-p and C-c M-n
-</kbd></dt>
+<dt><kbd> C-c M-p and C-c M-n</kbd></dt>
 <dd><a name="IDX96"></a>
 <a name="IDX97"></a>
 <a name="IDX98"></a>
@@ -802,8 +770,7 @@ appropriate function to a function key on the keyboard and use that key.
 See section <a href="viper_4.html#SEC29">Viper Specials</a>, for details.
 
 </p></dd>
-<dt><kbd> Ex commands
-</kbd></dt>
+<dt><kbd> Ex commands</kbd></dt>
 <dd><a name="IDX102"></a>
 <a name="IDX103"></a>
 <a name="IDX104"></a>
@@ -855,30 +822,26 @@ Manual.
 </p><p>The features first.  For details, look up the Emacs Manual.
 
 </p><dl compact="compact">
-<dt>`<samp> Make
-</samp>'</dt>
+<dt>`<samp> Make</samp>'</dt>
 <dd><a name="IDX108"></a>
 <a name="IDX109"></a>
 
 <p>Makes and Compiles can be done from the editor.  Error messages will be
 parsed and you can move to the error lines.
 </p></dd>
-<dt>`<samp> Shell
-</samp>'</dt>
+<dt>`<samp> Shell</samp>'</dt>
 <dd><a name="IDX110"></a>
 <a name="IDX111"></a>
 <p>You can talk to Shells from inside the editor.  Your entire shell session
 can be treated as a file.
 </p></dd>
-<dt>`<samp> Mail
-</samp>'</dt>
+<dt>`<samp> Mail</samp>'</dt>
 <dd><a name="IDX112"></a>
 <a name="IDX113"></a>
 <p>Mail can be read from and sent within the editor.  Several sophisticated
 packages exist.
 </p></dd>
-<dt>`<samp> Language Sensitive Editing
-</samp>'</dt>
+<dt>`<samp> Language Sensitive Editing</samp>'</dt>
 <dd><p>Editing modes are written for most computer languages in existence.  By
 controlling indentation, they catch punctuation errors.
 </p></dd>
@@ -888,48 +851,41 @@ controlling indentation, they catch punctuation errors.
 packages that come with standard distribution of Emacs.
 
 </p><dl compact="compact">
-<dt>`<samp> Transparent FTP
-</samp>'</dt>
+<dt>`<samp> Transparent FTP</samp>'</dt>
 <dd><a name="IDX114"></a>
 <a name="IDX115"></a>
 <p><code>ange-ftp.el</code> can ftp from the editor to files on other machines
 transparent to the user.
 </p></dd>
-<dt>`<samp> RCS Interfaces
-</samp>'</dt>
+<dt>`<samp> RCS Interfaces</samp>'</dt>
 <dd><a name="IDX116"></a>
 <a name="IDX117"></a>
 <a name="IDX118"></a>
 <p><code>vc.el</code> for doing RCS commands from inside the editor
 </p></dd>
-<dt>`<samp> Directory Editor
-</samp>'</dt>
+<dt>`<samp> Directory Editor</samp>'</dt>
 <dd><a name="IDX119"></a>
 <a name="IDX120"></a>
 <p><code>dired.el</code> for editing contents of directories and for navigating in
 the file system.
 </p></dd>
-<dt>`<samp> Syntactic Highlighting
-</samp>'</dt>
+<dt>`<samp> Syntactic Highlighting</samp>'</dt>
 <dd><a name="IDX121"></a>
 <a name="IDX122"></a>
 <p><code>font-lock.el</code> for automatic highlighting various parts of a buffer
 using different fonts and colors.
 </p></dd>
-<dt>`<samp> Saving Emacs Configuration
-</samp>'</dt>
+<dt>`<samp> Saving Emacs Configuration</samp>'</dt>
 <dd><a name="IDX123"></a>
 <a name="IDX124"></a>
 <p><code>desktop.el</code> for saving/restoring configuration on Emacs exit/startup.
 </p></dd>
-<dt>`<samp> Spell Checker
-</samp>'</dt>
+<dt>`<samp> Spell Checker</samp>'</dt>
 <dd><a name="IDX125"></a>
 <a name="IDX126"></a>
 <p><code>ispell.el</code> for spell checking the buffer, words, regions, etc.
 </p></dd>
-<dt>`<samp> File and Buffer Comparison
-</samp>'</dt>
+<dt>`<samp> File and Buffer Comparison</samp>'</dt>
 <dd><a name="IDX127"></a>
 <a name="IDX128"></a>
 <p><code>ediff.el</code> for finding differences between files and for applying

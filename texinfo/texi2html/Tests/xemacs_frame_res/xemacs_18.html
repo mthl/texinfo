@@ -123,17 +123,14 @@ the value in other buffers.  See section <a href="xemacs_30.html#SEC361">Local V
 <h2 class="section"> 15.1 Creating and Selecting Buffers </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x b <var>buffer</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> C-x b <var>buffer</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Select or create a buffer named <var>buffer</var> (<code>switch-to-buffer</code>).
 </p></dd>
-<dt><kbd> C-x 4 b <var>buffer</var> <kbd>RET</kbd>
-</kbd></dt>
+<dt><kbd> C-x 4 b <var>buffer</var> <kbd>RET</kbd></kbd></dt>
 <dd><p>Similar, but select a buffer named <var>buffer</var> in another window
 (<code>switch-to-buffer-other-window</code>).
 </p></dd>
-<dt><kbd> M-x switch-to-other-buffer <var>n</var>
-</kbd></dt>
+<dt><kbd> M-x switch-to-other-buffer <var>n</var></kbd></dt>
 <dd><p>Switch to the previous buffer.
 </p></dd>
 </dl>
@@ -195,8 +192,7 @@ visiting a file to switch buffers.  See section <a href="xemacs_17.html#SEC136">
 <h2 class="section"> 15.2 Listing Existing Buffers </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x C-b
-</kbd></dt>
+<dt><kbd> C-x C-b</kbd></dt>
 <dd><p>List the existing buffers (<code>list-buffers</code>).
 </p></dd>
 </dl>
@@ -256,16 +252,13 @@ commands which are bound to keys in the `<samp>*Buffer List*</samp>' buffer.
 <h2 class="section"> 15.3 Miscellaneous Buffer Operations </h2>
 
 <dl compact="compact">
-<dt><kbd> C-x C-q
-</kbd></dt>
+<dt><kbd> C-x C-q</kbd></dt>
 <dd><p>Toggle read-only status of buffer (<code>toggle-read-only</code>).
 </p></dd>
-<dt><kbd> M-x rename-buffer
-</kbd></dt>
+<dt><kbd> M-x rename-buffer</kbd></dt>
 <dd><p>Change the name of the current buffer.
 </p></dd>
-<dt><kbd> M-x view-buffer
-</kbd></dt>
+<dt><kbd> M-x view-buffer</kbd></dt>
 <dd><p>Scroll through a buffer.
 </p></dd>
 </dl>
@@ -326,12 +319,10 @@ buffers and may want to eliminate the ones you no
 longer need.  There are several commands for doing this.
 
 </p><dl compact="compact">
-<dt><kbd> C-x k
-</kbd></dt>
+<dt><kbd> C-x k</kbd></dt>
 <dd><p>Kill a buffer, specified by name (<code>kill-buffer</code>).
 </p></dd>
-<dt><kbd> M-x kill-some-buffers
-</kbd></dt>
+<dt><kbd> M-x kill-some-buffers</kbd></dt>
 <dd><p>Offer to kill each buffer, one by one.
 </p></dd>
 </dl>
@@ -381,8 +372,7 @@ buffer containing a list of them.  You can save buffers, kill them
 them.
 
 </p><dl compact="compact">
-<dt><kbd> M-x buffer-menu
-</kbd></dt>
+<dt><kbd> M-x buffer-menu</kbd></dt>
 <dd><p>Begin editing a buffer listing all Emacs buffers.
 </p></dd>
 </dl>
@@ -397,42 +387,34 @@ characters.  You can use  Emacs cursor motion commands in the
 buffer, the following  special commands apply to that buffer:
 
 </p><dl compact="compact">
-<dt><kbd> d
-</kbd></dt>
+<dt><kbd> d</kbd></dt>
 <dd><p>Request to delete (kill) the buffer, then move down.  A `<samp>D</samp>' before
 the buffer name on a line indicates a deletion request.  Requested
 deletions actually take place when you use the <kbd>x</kbd> command.
 </p></dd>
-<dt><kbd> k
-</kbd></dt>
+<dt><kbd> k</kbd></dt>
 <dd><p>Synonym for <kbd>d</kbd>.
 </p></dd>
-<dt><kbd> C-d
-</kbd></dt>
+<dt><kbd> C-d</kbd></dt>
 <dd><p>Like <kbd>d</kbd> but move up afterwards instead of down.
 </p></dd>
-<dt><kbd> s
-</kbd></dt>
+<dt><kbd> s</kbd></dt>
 <dd><p>Request to save the buffer.  An `<samp>S</samp>' before the buffer name on a line
 indicates the request.  Requested saves actually take place when you use
 the <kbd>x</kbd> command.  You can request both saving and deletion for the
 same buffer.
 </p></dd>
-<dt><kbd> ~
-</kbd></dt>
+<dt><kbd> ~</kbd></dt>
 <dd><p>Mark buffer &quot;unmodified&quot;.  The command <kbd>~</kbd> does this
 immediately when typed.
 </p></dd>
-<dt><kbd> x
-</kbd></dt>
+<dt><kbd> x</kbd></dt>
 <dd><p>Perform previously requested deletions and saves.
 </p></dd>
-<dt><kbd> u
-</kbd></dt>
+<dt><kbd> u</kbd></dt>
 <dd><p>Remove any request made for the current line, and move down.
 </p></dd>
-<dt><kbd> <kbd>DEL</kbd>
-</kbd></dt>
+<dt><kbd> <kbd>DEL</kbd></kbd></dt>
 <dd><p>Move to previous line and remove any request made for that line.
 </p></dd>
 </dl>
@@ -446,33 +428,27 @@ buffer, and to specify one or more other buffers for display in additional
 windows.
 
 </p><dl compact="compact">
-<dt><kbd> 1
-</kbd></dt>
+<dt><kbd> 1</kbd></dt>
 <dd><p>Select the buffer in a full-frame window.  This command takes effect
 immediately.
 </p></dd>
-<dt><kbd> 2
-</kbd></dt>
+<dt><kbd> 2</kbd></dt>
 <dd><p>Immediately set up two windows, with this buffer in one and the
 buffer selected before `<samp>*Buffer List*</samp>' in the other.
 </p></dd>
-<dt><kbd> f
-</kbd></dt>
+<dt><kbd> f</kbd></dt>
 <dd><p>Immediately select the buffer in place of the `<samp>*Buffer List*</samp>' buffer.
 </p></dd>
-<dt><kbd> o
-</kbd></dt>
+<dt><kbd> o</kbd></dt>
 <dd><p>Immediately select the buffer in another window as if by <kbd>C-x 4 b</kbd>,
 leaving `<samp>*Buffer List*</samp>' visible.
 </p></dd>
-<dt><kbd> q
-</kbd></dt>
+<dt><kbd> q</kbd></dt>
 <dd><p>Immediately select this buffer, and display any buffers previously
 flagged with the <kbd>m</kbd> command in other windows.  If there are no 
 buffers flagged with <kbd>m</kbd>, this command is equivalent to <kbd>1</kbd>.
 </p></dd>
-<dt><kbd> m
-</kbd></dt>
+<dt><kbd> m</kbd></dt>
 <dd><p>Flag this buffer to be displayed in another window if the <kbd>q</kbd>
 command is used.  The request shows as a `<samp>&gt;</samp>' at the beginning of
 the line.  The same buffer may not have both a delete request and a
