@@ -23,7 +23,7 @@
 # This requires perl version 5 or higher
 require 5.0;
 
-package T2h_i18n;
+package Texi2HTML::I18n;
 
 use strict;
 
@@ -31,14 +31,16 @@ our (@ISA, @EXPORT);
 
 use Exporter;
 @ISA = qw(Exporter);
-@EXPORT = qw($T2H_WORDS pretty_date);
+@EXPORT = qw(pretty_date);
 use vars qw(
            $T2H_LANGUAGES
 );
 
+our $WORDS;
+
 ########################################################################
 # Language dependencies:
-# To add a new language extend T2H_WORDS hash and create $T2H_<...>_WORDS hash
+# To add a new language extend the WORDS hash and create $T2H_<...>_WORDS hash
 # To redefine one word, simply do:
 # $T2h_i18n::T2H_LANGUAGES->{<language>}->{<word>} = 'whatever' in your personal init file.
 #
@@ -159,11 +161,12 @@ sub set_language($)
     my $lang = shift;
     if (defined($lang) && exists($T2H_LANGUAGES->{$lang}) && defined($T2H_LANGUAGES->{$lang}))
     {
-        return $T2H_LANGUAGES->{$lang};
+        $WORDS = $T2H_LANGUAGES->{$lang};
+        return 1;
     }
     else
     {
-         return undef;
+         return 0;
     }
 }
 

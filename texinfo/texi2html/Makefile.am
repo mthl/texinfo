@@ -17,6 +17,11 @@ EXTRA_DIST = \
 	autogen.sh \
 	texi2html.init
 
+dist_pkgdata_DATA = l2h.init \
+	examples/makeinfo.init \
+	examples/xhtml.init \
+	examples/html32.init
+
 texi2html: \
 	$(srcdir)/MySimple.pm \
 	$(srcdir)/T2h_i18n.pm \

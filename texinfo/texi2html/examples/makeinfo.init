@@ -1,39 +1,39 @@
 # -*-perl-*-
-$T2H_TOP_FILE = 'index.html';
+$TOP_FILE = 'index.html';
 
-$T2H_SHOW_MENU = 1;
+$SHOW_MENU = 1;
 
-$T2H_USE_NODES = 1;
+$USE_NODES = 1;
 
-$T2H_SPLIT = 'node';
+$SPLIT = 'node';
 
-$T2H_SECTION_NAVIGATION = 1;
+$SECTION_NAVIGATION = 1;
 
-$T2H_SHORT_REF = 1;
+$SHORT_REF = 1;
 
-$T2H_NODE_NAME_IN_MENU = 1;
+$NODE_NAME_IN_MENU = 1;
 
-$T2H_AVOID_MENU_REDUNDANCY = 0;
+$AVOID_MENU_REDUNDANCY = 0;
 
-$T2H_SPLIT_INDEX = 0;
+$SPLIT_INDEX = 0;
 
-$T2H_MENU_SYMBOL = '*';
+$MENU_SYMBOL = '*';
 
-$T2H_WORDS_IN_PAGE = 200;
+$WORDS_IN_PAGE = 200;
 
-$T2H_SEPARATED_FOOTNOTES = 0;
+$SEPARATED_FOOTNOTES = 0;
 
-@T2H_SECTION_BUTTONS =
+@SECTION_BUTTONS =
     (
-     \"node: ", \$T2H_NODE{This}, [ 'Next', \$T2H_NODE{Next} ] , \",", [ 'Prev', \$T2H_NODE{Prev} ], \",", [ 'NodeUp', \$T2H_NODE{NodeUp} ], 'Following'
+     \"node: ", \$Texi2HTML::NODE{This}, [ 'Next', \$Texi2HTML::NODE{Next} ] , \",", [ 'Prev', \$Texi2HTML::NODE{Prev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
 
-$T2H_NAVIGATION_TEXT{Following} = ' &gt; ';
+$NAVIGATION_TEXT{Following} = ' &gt; ';
 
-@T2H_MISC_BUTTONS = @T2H_SECTION_BUTTONS;
+@MISC_BUTTONS = @SECTION_BUTTONS;
 
-$t2h_foot_line_and_ref = \&makeinfo_like_foot_line_and_ref;
-$t2h_foot_lines        = \&makeinfo_like_foot_lines;
+$foot_line_and_ref = \&makeinfo_like_foot_line_and_ref;
+$foot_lines        = \&makeinfo_like_foot_lines;
 
 sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 {
@@ -46,8 +46,8 @@ sub makeinfo_like_foot_line_and_ref($$$$$$$$)
     my $lines = shift;
     my $state = shift;
     
-    my $foot_anchor = "<sup>" . &$t2h_anchor($docid, "$footnote_file#$footid", $relative_num) . "</sup>";
-    $foot_anchor = &$t2h_anchor($docid, "$footnote_file#$footid", "($relative_num)") if ($state->{'preformatted'});
+    my $foot_anchor = "<sup>" . &$anchor($docid, "$footnote_file#$footid", $relative_num) . "</sup>";
+    $foot_anchor = &$anchor($docid, "$footnote_file#$footid", "($relative_num)") if ($state->{'preformatted'});
     unshift @$lines, "<li>";
     push @$lines, "</li>\n";
     return ($lines, $foot_anchor);
@@ -56,7 +56,7 @@ sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 sub makeinfo_like_foot_lines($)
 {
     my $lines = shift;
-    unshift @$lines, "<hr>\n<h4>$T2H_WORDS->{'Footnotes_Title'}</h4>\n<ol type=\"1\">\n";
+    unshift @$lines, "<hr>\n<h4>$Texi2HTML::I18n::WORDS->{'Footnotes_Title'}</h4>\n<ol type=\"1\">\n";
     push @$lines, "</ol>";
     return $lines;
 }

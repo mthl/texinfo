@@ -4,41 +4,41 @@
 # [Definition:] The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-$T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/xhtml1-transitional.dtd">';
+$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/xhtml1-transitional.dtd">';
 
-$T2H_FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/xhtml1-frameset.dtd">';
+$FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/xhtml1-frameset.dtd">';
 
 # -iso
 # if set, ISO8859 characters are used for special symbols (like copyright, etc)
-$T2H_USE_ISO = 1;
+$USE_ISO = 1;
 
 # horizontal rules
-$T2H_SMALL_RULE = '<hr size="1"/>';
-$T2H_DEFAULT_RULE = '<hr/>';
-$T2H_MIDDLE_RULE = '<hr size="2"/>';
-$T2H_BIG_RULE = '<hr size="6"/>';
+$SMALL_RULE = '<hr size="1"/>';
+$DEFAULT_RULE = '<hr/>';
+$MIDDLE_RULE = '<hr size="2"/>';
+$BIG_RULE = '<hr size="6"/>';
 
 # this is added inside <head></head> after <title> and some <meta name>
 # stuff, it can be used for eg. <style>, <script>, <meta> etc. tags.
-$T2H_EXTRA_HEAD = '';
+$EXTRA_HEAD = '';
 
-$T2H_print_page_head	      = \&T2H_XHTML_print_page_head;
-$T2H_print_page_foot	      = \&T2H_XHTML_print_page_foot;
-$T2H_print_frame              = \&T2H_XHTML_print_frame;
-$T2H_button_icon_img	      = \&T2H_XHTML_button_icon_img;
+$print_page_head	      = \&T2H_XHTML_print_page_head;
+$print_page_foot	      = \&T2H_XHTML_print_page_foot;
+$print_frame              = \&T2H_XHTML_print_frame;
+$button_icon_img	      = \&T2H_XHTML_button_icon_img;
 
 sub T2H_XHTML_print_page_head
 {
     my $fh = shift;
-    my $longtitle = "$T2H_THISDOC{'title_no_texi'}";
-    $longtitle .= ": $T2H_NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
+    my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
+    $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
     print $fh <<EOT;
 <?xml version="1.0" encoding="iso-8859-1"?>
 $T2H_DOCTYPE
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$T2H_LANG" lang="$T2H_LANG">
-$T2H_THISDOC{'copying'}<!-- Created on $T2H_THISDOC{today} by $T2H_THISDOC{program} -->
+$T2H_THISDOC{'copying'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program} -->
 <!--
-$T2H_THISDOC{program_authors}
+$Texi2HTML::THISDOC{program_authors}
 -->
 <head>
 <title>$longtitle</title>
@@ -48,11 +48,11 @@ $T2H_THISDOC{program_authors}
 <meta name="resource-type" content="document"/>
 <meta name="distribution" content="global"/>
 <meta name="Generator" content="$T2H_THISDOC{program}"/>
-$T2H_EXTRA_HEAD
+$EXTRA_HEAD
 </head>
 
 <body $T2H_BODYTEXT>
-$T2H_AFTER_BODY_OPEN
+$AFTER_BODY_OPEN
 EOT
 }
 
@@ -63,11 +63,11 @@ sub T2H_XHTML_print_page_foot
     print $fh <<EOT;
 <p>
  <span style="font-size: smaller">
-  This document was generated $T2H_ADDRESS
-  using <a href="$T2H_THISDOC{program_homepage}"><i>$T2H_THISDOC{program}</i></a>.
+  This document was generated $ADDRESS
+  using <a href="$T2H_THISDOC{program_homepage}"><i>$Texi2HTML::THISDOC{program}</i></a>.
  </span>
  <br/>
-$T2H_PRE_BODY_CLOSE
+$PRE_BODY_CLOSE
 </p>
 </body>
 </html>
@@ -80,9 +80,9 @@ sub T2H_XHTML_print_frame
     my $toc_file = shift;
     my $main_file = shift;
     print $fh <<EOT;
-$T2H_FRAMESET_DOCTYPE
+$FRAMESET_DOCTYPE
 <html>
-<head><title>$T2H_THISDOC{title}</title></head>
+<head><title>$Texi2HTML::THISDOC{title}</title></head>
 <frameset cols="140,*">
   <frame name="toc" src="$toc_file"/>
   <frame name="main" src="$main_file"/>
@@ -116,9 +116,9 @@ $things_map{'br'} = '<br/>';
 
 # formatting functions
 
-$t2h_def_line	       = \&t2h_xhtml_def_line;
-$t2h_index_summary     = \&t2h_xhtml_index_summary;
-$t2h_image             = \&t2h_xhtml_image;
+$def_line	       = \&t2h_xhtml_def_line;
+$index_summary     = \&t2h_xhtml_index_summary;
+$image             = \&t2h_xhtml_image;
 
 # need / in <img>
 sub t2h_xhtml_image($$$)
@@ -132,7 +132,7 @@ sub t2h_xhtml_image($$$)
     }
     else
     {
-        return ($T2H_CENTER_IMAGE ?
+        return ($CENTER_IMAGE ?
           "<div align=\"center\"><img src=\"$image\" alt=\"$base\"/></div>" :
           "<img src=\"$image\" alt=\"$base\"/>");
     }
@@ -158,7 +158,7 @@ sub t2h_xhtml_def_line($$$)
     }
     
     my ($type, $name, $ftype);
-    ($line, $type, $name, $ftype) = parse_def($tag, $line);
+    ($line, $type, $name, $ftype) = main::parse_def($tag, $line);
     #print STDERR "Def $tag $name, $type\n";
     my $result = '';
     unless ($type)
@@ -166,22 +166,22 @@ sub t2h_xhtml_def_line($$$)
         warn "$ERROR bad $state->{'deff'}, no type\n";
         return '';
     }
-    $type = substitute_line($type);
+    $type = main::substitute_line($type);
     $type .= ':' if (!$T2H_DEF_TABLE); # it's nicer like this
     unless ($name)
     {
         warn "$ERROR bad $state->{'deff'} nothing after the type\n";
         return '';
     }
-    $name = substitute_line($name);
+    $name = main::substitute_line($name);
     $line = '' if (!$line);
-    $result = $T2H_DEF_TABLE ? '' : '<dt>';
+    $result = $DEF_TABLE ? '' : '<dt>';
     if ($tag eq 'deffn' || $tag eq 'defvr' || $tag eq 'deftp')
     {
-        if ($T2H_DEF_TABLE)
+        if ($DEF_TABLE)
         {
             $result .= "<tr>\n<td align=\"left\"><b>$name</b>\n";
-            $result .= substitute_line($line);
+            $result .= main::substitute_line($line);
             $result .= "</td>\n";
             $result .= "<td align=\"right\">";
             $result .= "$type</td>\n</tr>\n";
@@ -189,18 +189,18 @@ sub t2h_xhtml_def_line($$$)
         else
         {
             $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
-            $result .= substitute_line($line);
+            $result .= main::substitute_line($line);
         }
     }
     elsif ($tag eq 'deftypefn' || $tag eq 'deftypevr'
         || $tag eq 'deftypeop' || $tag eq 'defcv'
         || $tag eq 'defop')
     {
-        $ftype = substitute_line($ftype);
-        if ($T2H_DEF_TABLE)
+        $ftype = main::substitute_line($ftype);
+        if ($DEF_TABLE)
         {
             $result .= "<tr>\n<td align=\"left\"><b>$name</b>";
-            $result .= substitute_line($line);
+            $result .= main::substitute_line($line);
             $result .= "</td>\n";
             $result .= "<td align=\"right\">";
             $result .= "$type of $ftype</td>\n</tr>\n";
@@ -208,17 +208,17 @@ sub t2h_xhtml_def_line($$$)
         else
         {
             $result .= "<span style=\"text-decoration: underline\">$type</span> $ftype <b>$name</b>";
-            $result .= substitute_line($line);
+            $result .= main::substitute_line($line);
         }
     }
     else
     {
         warn "$ERROR Unknown definition type: $tag\n";
         $result .= "<span style=\"text-decoration: underline\">$type</span> <b>$name</b>";
-        $result .= substitute_line($line);
+        $result .= main::substitute_line($line);
     }
-    $result .= do_index_entry_label($state);
-    $result .= "</dt>\n" if (!$T2H_DEF_TABLE);
+    $result .= main::do_index_entry_label($state);
+    $result .= "</dt>\n" if (!$DEF_TABLE);
     return $result;
 }
 

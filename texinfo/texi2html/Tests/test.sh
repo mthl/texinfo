@@ -48,6 +48,7 @@ export T2H_HOME=../..
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
 (cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
 if [ $ret = 0 -a $fail = 'fail' ]; then echo "    !!! no failing";
@@ -57,6 +58,7 @@ fi
 
 # generate a dump of the first pass
 (cd $dir && perl -x -w ../../texi2html.pl -test $options -dump_texi $texi_file) > /dev/null 2>&1
+#(cd $dir && ../../texi2html -test $options -dump_texi $texi_file) > /dev/null 2>&1
 
 if [ $wc != 'no' ]; then
 	echo "  stderr line count:"

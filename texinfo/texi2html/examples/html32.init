@@ -3,15 +3,15 @@
 # [Definition:] The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-$T2H_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
+$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
 
-$T2H_FRAMESET_DOCTYPE = $T2H_DOCTYPE;
+$FRAMESET_DOCTYPE = $DOCTYPE;
 
-$T2H_BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+$BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
 # this controls the pre style for menus
-$T2H_MENU_PRE_STYLE = '';
+$MENU_PRE_STYLE = '';
 
-$T2H_TOC_LIST_STYLE ='';
+$TOC_LIST_STYLE ='';
 
 $things_map{'oe'} = '&#156;';
 $things_map{'OE'} = '&#140;';
@@ -55,8 +55,8 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
 
 # formatting functions
 
-$t2h_summary_letter    = \&t2h_html32_summary_letter;
-$t2h_protect_html      = \&t2h_html32_protect_html;
+$summary_letter    = \&t2h_html32_summary_letter;
+$protect_html      = \&t2h_html32_protect_html;
 
 # &quot; is not in html 3.2
 sub t2h_html32_protect_html($)
@@ -82,7 +82,7 @@ sub t2h_html32_summary_letter($$$)
     my $index = shift;
     my $id = shift;
 
-    return &$t2h_anchor('', "$file#${id}_" . $index,
-         "<b>" . &$t2h_protect_html($letter) . "</b>",
+    return &$anchor('', "$file#${id}_" . $index,
+         "<b>" . &$protect_html($letter) . "</b>",
          '');
 }
