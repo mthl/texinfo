@@ -1597,10 +1597,6 @@ where each line of input produces a line of output.}
     \catcode`\_=\active \let_\codeunder
     \codex
   }
-  %
-  % If we end up with any active - characters when handling the index,
-  % just treat them as a normal -.
-  \global\def\indexbreaks{\catcode`\-=\active \let-\realdash}
 }
 
 \def\realdash{-}
@@ -3298,7 +3294,6 @@ width0pt\relax} \fi
   \smallfonts \rm
   \tolerance = 9500
   \everypar = {}% don't want the \kern\-parindent from indentation suppression.
-  \indexbreaks
   %
   % See if the index file exists and is nonempty.
   % Change catcode of @ here so that if the index file contains
@@ -3363,74 +3358,94 @@ width0pt\relax} \fi
   \nobreak
 }}
 
-% This typesets a paragraph consisting of #1, dot leaders, and then #2
-% flush to the right margin.  It is used for index and table of contents
-% entries.  The paragraph is indented by \leftskip.
+% \entry typesets a paragraph consisting of the text (#1), dot leaders, and
+% then page number (#2) flushed to the right margin.  It is used for index
+% and table of contents entries.  The paragraph is indented by \leftskip.
 %
-\def\entry#1#2{\begingroup
-  %
-  % Start a new paragraph if necessary, so our assignments below can't
-  % affect previous text.
-  \par
-  %
-  % Do not fill out the last line with white space.
-  \parfillskip = 0in
-  %
-  % No extra space above this paragraph.
-  \parskip = 0in
-  %
-  % Do not prefer a separate line ending with a hyphen to fewer lines.
-  \finalhyphendemerits = 0
-  %
-  % \hangindent is only relevant when the entry text and page number
-  % don't both fit on one line.  In that case, bob suggests starting the
-  % dots pretty far over on the line.  Unfortunately, a large
-  % indentation looks wrong when the entry text itself is broken across
-  % lines.  So we use a small indentation and put up with long leaders.
-  %
-  % \hangafter is reset to 1 (which is the value we want) at the start
-  % of each paragraph, so we need not do anything with that.
-  \hangindent = 2em
-  %
-  % When the entry text needs to be broken, just fill out the first line
-  % with blank space.
-  \rightskip = 0pt plus1fil
-  %
-  % A bit of stretch before each entry for the benefit of balancing columns.
-  \vskip 0pt plus1pt
-  %
-  % Start a ``paragraph'' for the index entry so the line breaking
-  % parameters we've set above will have an effect.
-  \noindent
-  %
-  % Insert the text of the index entry.  TeX will do line-breaking on it.
-  #1%
-  % The following is kludged to not output a line of dots in the index if
-  % there are no page numbers.  The next person who breaks this will be
-  % cursed by a Unix daemon.
-  \def\tempa{{\rm }}%
-  \def\tempb{#2}%
-  \edef\tempc{\tempa}%
-  \edef\tempd{\tempb}%
-  \ifx\tempc\tempd\ \else%
+% A straigtforward implementation would start like this:
+%	\def\entry#1#2{...
+% But this frozes the catcodes in the argument, and can cause problems to
+% @code, which set's active ``-''.  This problem was fixed by a kludge---
+% ``-'' was active throughout whole index, but this isn't what we really
+% want.
+% The right solution is to prevent \entry from swallowing the whole text.
+%                                 --kasal, 21nov03
+\def\entry{%
+  \begingroup
     %
-    % If we must, put the page number on a line of its own, and fill out
-    % this line with blank space.  (The \hfil is overwhelmed with the
-    % fill leaders glue in \indexdotfill if the page number does fit.)
-    \hfil\penalty50
-    \null\nobreak\indexdotfill % Have leaders before the page number.
+    % Start a new paragraph if necessary, so our assignments below can't
+    % affect previous text.
+    \par
     %
-    % The `\ ' here is removed by the implicit \unskip that TeX does as
-    % part of (the primitive) \par.  Without it, a spurious underfull
-    % \hbox ensues.
-    \ifpdf
-      \pdfgettoks#2.\ \the\toksA % The page number ends the paragraph.
+    % Do not fill out the last line with white space.
+    \parfillskip = 0in
+    %
+    % No extra space above this paragraph.
+    \parskip = 0in
+    %
+    % Do not prefer a separate line ending with a hyphen to fewer lines.
+    \finalhyphendemerits = 0
+    %
+    % \hangindent is only relevant when the entry text and page number
+    % don't both fit on one line.  In that case, bob suggests starting the
+    % dots pretty far over on the line.  Unfortunately, a large
+    % indentation looks wrong when the entry text itself is broken across
+    % lines.  So we use a small indentation and put up with long leaders.
+    %
+    % \hangafter is reset to 1 (which is the value we want) at the start
+    % of each paragraph, so we need not do anything with that.
+    \hangindent = 2em
+    %
+    % When the entry text needs to be broken, just fill out the first line
+    % with blank space.
+    \rightskip = 0pt plus1fil
+    %
+    % A bit of stretch before each entry for the benefit of balancing
+    % columns.
+    \vskip 0pt plus1pt
+    %
+    % Swallow the left brace of the text (first parameter):
+    \afterassignment\doentry
+    \let\temp =
+}
+\def\doentry{%
+    \bgroup % Instead of the swallowed brace.
+      \noindent
+      \aftergroup\finishentry
+      % And now comes the text of the entry.
+}
+\def\finishentry#1{%
+    % #1 is the page number.
+    %
+    % The following is kludged to not output a line of dots in the index if
+    % there are no page numbers.  The next person who breaks this will be
+    % cursed by a Unix daemon.
+    \def\tempa{{\rm }}%
+    \def\tempb{#1}%
+    \edef\tempc{\tempa}%
+    \edef\tempd{\tempb}%
+    \ifx\tempc\tempd
+      \ %
     \else
-      \ #2% The page number ends the paragraph.
+      %
+      % If we must, put the page number on a line of its own, and fill out
+      % this line with blank space.  (The \hfil is overwhelmed with the
+      % fill leaders glue in \indexdotfill if the page number does fit.)
+      \hfil\penalty50
+      \null\nobreak\indexdotfill % Have leaders before the page number.
+      %
+      % The `\ ' here is removed by the implicit \unskip that TeX does as
+      % part of (the primitive) \par.  Without it, a spurious underfull
+      % \hbox ensues.
+      \ifpdf
+	\pdfgettoks#1.\ \the\toksA
+      \else
+	\ #1%
+      \fi
     \fi
-  \fi%
-  \par
-\endgroup}
+    \par
+  \endgroup
+}
 
 % Like \dotfill except takes at least 1 em.
 \def\indexdotfill{\cleaders
@@ -4379,17 +4394,14 @@ width0pt\relax} \fi
   \tocentry{#1}{\dopageno\bgroup#2\egroup}%
 \endgroup}
 
-% Final typesetting of a toc entry; we use the same \entry macro as for
-% the index entries, but we want to suppress hyphenation here.  (We
-% can't do that in the \entry macro, since index entries might consist
-% of hyphenated-identifiers-that-do-not-fit-on-a-line-and-nothing-else.)
-\def\tocentry#1#2{\begingroup
-  \vskip 0pt plus1pt % allow a little stretch for the sake of nice page breaks
-  % Do not use \turnoffactive in these arguments.  Since the toc is
-  % typeset in cmr, characters such as _ would come out wrong; we
-  % have to do the usual translation tricks.
-  \entry{#1}{#2}%
-\endgroup}
+% We use the same \entry macro as for the index entries.
+\def\tocentry{%
+  % The following vskip is not necessary, as \entry contains another one.
+  % But it doesn't hurt, so why should we alter the appearance of all the
+  % manuals?
+  \vskip 0pt plus1pt
+  \entry
+}
 
 % Space between chapter (or whatever) number and the title.
 \def\labelspace{\hskip1em \relax}
