@@ -487,7 +487,7 @@
 \let\udotaccent = \d
 
 % Other special characters: @questiondown @exclamdown
-% Plain TeX defines: @AA @AE @O @OE @L (and lowercase versions) @ss.
+% Plain TeX defines: @AA @AE @O @OE @L (plus lowercase versions) @ss.
 \def\questiondown{?`}
 \def\exclamdown{!`}
 
@@ -2877,7 +2877,7 @@ width0pt\relax} \fi
   \def\_{{\realbackslash _}}%
   \normalturnoffactive
   %
-  % Take care of the plain tex accent commands.
+  % Accents.
   \def\,##1{\realbackslash ,{##1}}%
   \def\"{\realbackslash "}%
   \def\`{\realbackslash `}%
@@ -2891,8 +2891,13 @@ width0pt\relax} \fi
   \def\u{\realbackslash u}%
   \def\v{\realbackslash v}%
   \def\H{\realbackslash H}%
+  \def\dotaccent##1{\realbackslash dotaccent {##1}}%
+  \def\ringaccent##1{\realbackslash ringaccent {##1}}%
+  \def\tieaccent##1{\realbackslash tieaccent {##1}}%
+  \def\ubaraccent##1{\realbackslash ubaraccent {##1}}%
+  \def\udotaccent##1{\realbackslash udotaccent {##1}}%
   \def\dotless##1{\realbackslash dotless {##1}}%
-  % Take care of the plain tex special European modified letters.
+  % Other non-English letters.
   \def\AA{\realbackslash AA}%
   \def\AE{\realbackslash AE}%
   \def\L{\realbackslash L}%
@@ -2918,9 +2923,9 @@ width0pt\relax} \fi
   %
   \def\b##1{\realbackslash b {##1}}%
   \def\i##1{\realbackslash i {##1}}%
+  \def\r##1{\realbackslash r {##1}}%
   \def\sc##1{\realbackslash sc {##1}}%
   \def\t##1{\realbackslash t {##1}}%
-  \def\r##1{\realbackslash r {##1}}%
   %
   \def\TeX{\realbackslash TeX}%
   \def\acronym##1{\realbackslash acronym {##1}}%
@@ -2970,29 +2975,34 @@ width0pt\relax} \fi
 
 % \indexnofonts no-ops all font-change commands.
 % This is used when outputting the strings to sort the index by.
-\def\indexdummyfont#1{#1}
 \def\indexdummytex{TeX}
 \def\indexdummydots{...}
 
 \def\indexnofonts{%
+  \def\ { }%
   \def\@{@}%
   % how to handle braces?
   \def\_{\normalunderscore}%
   %
-  \let\,=\indexdummyfont
-  \let\"=\indexdummyfont
-  \let\`=\indexdummyfont
-  \let\'=\indexdummyfont
-  \let\^=\indexdummyfont
-  \let\~=\indexdummyfont
-  \let\==\indexdummyfont
-  \let\b=\indexdummyfont
-  \let\c=\indexdummyfont
-  \let\d=\indexdummyfont
-  \let\u=\indexdummyfont
-  \let\v=\indexdummyfont
-  \let\H=\indexdummyfont
-  \let\dotless=\indexdummyfont
+  \let\,=\asis
+  \let\"=\asis
+  \let\`=\asis
+  \let\'=\asis
+  \let\^=\asis
+  \let\~=\asis
+  \let\==\asis
+  \let\b=\asis
+  \let\c=\asis
+  \let\d=\asis
+  \let\u=\asis
+  \let\v=\asis
+  \let\H=\asis
+  \let\dotaccent=\asis
+  \let\ringaccent=\asis
+  \let\tieaccent=\asis
+  \let\ubaraccent=\asis
+  \let\udotaccent=\asis
+  \let\dotless=\asis
   % Take care of the plain tex special European modified letters.
   \def\AA{AA}%
   \def\AE{AE}%
@@ -3009,34 +3019,34 @@ width0pt\relax} \fi
   % Don't no-op \tt, since it isn't a user-level command
   % and is used in the definitions of the active chars like <, >, |, etc.
   % Likewise with the other plain tex font commands.
-  %\let\tt=\indexdummyfont
+  %\let\tt=\asis
   %
-  \let\b=\indexdummyfont
-  \let\i=\indexdummyfont
-  \let\r=\indexdummyfont
-  \let\sc=\indexdummyfont
-  \let\t=\indexdummyfont
+  \let\b=\asis
+  \let\i=\asis
+  \let\r=\asis
+  \let\sc=\asis
+  \let\t=\asis
   %
   \let\TeX=\indexdummytex
-  \let\acronym=\indexdummyfont
-  \let\cite=\indexdummyfont
-  \let\code=\indexdummyfont
-  \let\command=\indexdummyfont
-  \let\dfn=\indexdummyfont
+  \let\acronym=\asis
+  \let\cite=\asis
+  \let\code=\asis
+  \let\command=\asis
+  \let\dfn=\asis
   \let\dots=\indexdummydots
-  \let\emph=\indexdummyfont
-  \let\env=\indexdummyfont
-  \let\file=\indexdummyfont
-  \let\kbd=\indexdummyfont
-  \let\key=\indexdummyfont
-  \let\math=\indexdummyfont
-  \let\option=\indexdummyfont
-  \let\samp=\indexdummyfont
-  \let\strong=\indexdummyfont
-  \let\uref=\indexdummyfont
-  \let\url=\indexdummyfont
-  \let\var=\indexdummyfont
-  \let\w=\indexdummyfont
+  \let\emph=\asis
+  \let\env=\asis
+  \let\file=\asis
+  \let\kbd=\asis
+  \let\key=\asis
+  \let\math=\asis
+  \let\option=\asis
+  \let\samp=\asis
+  \let\strong=\asis
+  \let\uref=\asis
+  \let\url=\asis
+  \let\var=\asis
+  \let\w=\asis
 }
 
 % To define \realbackslash, we must make \ not be an escape.
