@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.76 2003-11-18 22:20:11 karl Exp $
+$Id: NEWS,v 1.77 2003-11-20 00:33:16 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -31,14 +31,17 @@ convenience, here's a url to one of the relevant sections:
   . @quotation now accepts an optional parameter for labelling the text
       as a `Note', `Tip', etc.
 * makeinfo:
-  . HTML output: include node name in <title> with split output;
-      @multicolumn fractions become percentages;
-      entities used for bullets, quotes, dashes, and others;
-      accented dotless i supported.
+  . HTML output:
+    - include node name in <title> with split output.
+    - @multicolumn fractions become percentages.
+    - entities used for bullets, quotes, dashes, and others.
+    - <h4> and <h5> used for @sub and @subsubsections again.
+    - accented dotless i supported.
   . XML output: new tags to preserve more source features.
-  . Docbook output: upgraded DTD to Docbook XML 4.2, no longer using SGML.
-      improved translation in general; for instance,
-      line annotations and marked quotations.
+  . Docbook output:
+    - upgraded DTD to Docbook XML 4.2, no longer using SGML.
+    - improved translation in general; for instance.
+    - line annotations and marked quotations.
 * texi2dvi:
   . if the input file includes thumbpdf.sty (for LaTeX), then run thumbpdf.
   . more output if --debug.
