@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.56 2003-07-26 12:47:52 karl Exp $
+@c $Id: texinfo.txi,v 1.57 2003-07-28 18:42:32 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -512,12 +512,11 @@ The Definition Commands
 
 Conditionally Visible Text
 
-* Conditional Commands::        Specifying text for HTML, Info, or @TeX{}.
-* Conditional Not Commands::    Specifying text for not HTML, Info, or @TeX{}.
-* Raw Formatter Commands::      Using raw @TeX{} or HTML commands.
-* set clear value::             Designating which text to format (for
-                                 all output formats); and how to set a
-                                 flag to a string that you can insert.
+* Conditional Commands::        Text for a given format.
+* Conditional Not Commands::    Text for any format other than a given one.
+* Raw Formatter Commands::      Using raw formatter commands.
+* set clear value::             Variable tests and substitutions.
+* Conditional Nesting::         Using conditionals inside conditionals.
 
 @code{@@set}, @code{@@clear}, and @code{@@value}
 
@@ -4630,7 +4629,10 @@ usually in external files as shown above.
 Repeated use of the commands continue to raise or lower the
 hierarchical level a step at a time.  An attempt to raise above
 `chapter' reproduces chapter commands; an attempt to lower below
-`subsubsection' reproduces subsubsection commands.
+`subsubsection' reproduces subsubsection commands.  Also, lowered
+subsubsections and raised chapters will not work with
+@command{makeinfo}'s feature of implicitly determining node pointers,
+since the menu structure won't be correct.
 
 Write each @code{@@raisesections} and @code{@@lowersections} command
 on a line of its own.
@@ -12045,67 +12047,85 @@ that for functions except that variables do not take arguments.
 @cindex Visibility of conditional text
 @cindex If text conditionally visible
 
-Sometimes it is good to use different text for different output formats.
-For example, you can use the @dfn{conditional commands} to specify
-different text for the printed manual and the Info output.
-
-Conditional commands may not be nested.
+The @dfn{conditional commands} allow you to use different text for
+different output formats, or for general conditions that you define.
+For example, you can use them to specify different text for the
+printed manual and the Info output.
 
 The conditional commands comprise the following categories.
 
 @itemize @bullet
-@item Commands for HTML, Info, or @TeX{}.
-@item Commands for not HTML, Info, or @TeX{}.
-@item Raw @TeX{} or HTML commands.
 @item
-Substituting text for all formats, and testing if a flag is set or clear.
+Commands specific to an output format (Info, @TeX{}, HTML, @dots{}).
+
+@item
+Commands specific to any output format @emph{other} than a given
+one (not Info, not @TeX{}, @dots{}).
+
+@item
+`Raw' formatter text for any output format, passed straight
+through with no interpretation of @@-commands.
+
+@item
+Format-independent variable substitutions, and testing if a variable
+is set or clear.
+
 @end itemize
 
 @menu
-* Conditional Commands::        Specifying text for HTML, Info, or @TeX{}.
-* Conditional Not Commands::    Specifying text for not HTML, Info, or @TeX{}.
-* Raw Formatter Commands::      Using raw @TeX{} or HTML commands.
-* set clear value::             Designating which text to format (for
-                                 all output formats); and how to set a
-                                 flag to a string that you can insert.
+* Conditional Commands::        Text for a given format.
+* Conditional Not Commands::    Text for any format other than a given one.
+* Raw Formatter Commands::      Using raw formatter commands.
+* set clear value::             Variable tests and substitutions.
+* Conditional Nesting::         Using conditionals inside conditionals.
 @end menu
 
 
 @node Conditional Commands
 @section Conditional Commands
 
-Texinfo has an @code{@@if@dots{}} environment for each output format, to
-allow conditional inclusion of text for a particular output format.
+Texinfo has an @code{@@if@var{format}} environment for each output
+format, to allow conditional inclusion of text for a particular output
+format.
 
 @findex ifinfo
-@code{@@ifinfo} begins segments of text that should be ignored by @TeX{}
-when it typesets the printed manual.  The segment of text appears only
-in the Info file and (for historical compatibility) the plain text
-output.  The @code{@@ifinfo} command should appear on a line by itself;
-end the Info-only text with a line containing @code{@@end ifinfo} by
-itself.
+@code{@@ifinfo} begins segments of text that should be ignored by
+@TeX{} when it typesets the printed manual, and by @command{makeinfo}
+when not producing Info output.  The segment of text appears only in
+the Info file and, for historical compatibility, the plain text
+output.
 
 @findex ifhtml
 @findex ifplaintext
 @findex iftex
 @findex ifxml
-The @code{@@iftex} and @code{@@end iftex} commands are analogous to the
-@code{@@ifinfo} and @code{@@end ifinfo} commands; they specify text that
-will appear in the printed manual but not in the Info file.  Likewise
-for @code{@@ifhtml} and @code{@@end ifhtml}, which specify text to
-appear only in HTML output.  And for @code{@@ifplaintext} and
-@code{@@end ifplaintext}, which specify text to appear only in plain
-text output.  And for @code{@@ifxml} and
-@code{@@end ifxml}, for the XML output.
+The environments for the other formats are analogous:
 
-For example,
+@table @code
+@item @@ifhtml @dots{} @@end ifhtml
+Text to appear only in the HTML output.
+
+@item @@ifplaintext @dots{} @@end ifplaintext
+Text to appear only in the plain text output.
+
+@item @@iftex @dots{} @@end iftex
+Text to appear only in the printed manual.
+
+@item @@ifxml @dots{} @@end ifxml
+Text to appear only in the XML output.
+@end table
+
+The @code{@@if@dots{}} and @code{@@end if@dots{}} commands must appear
+on lines by themselves in your source file.
+
+Here is an example showing all these conditionals:
 
 @example
 @@iftex
 This text will appear only in the printed manual.
 @@end iftex
 @@ifinfo
-However, this text will appear only in Info (or plain text).
+However, this text will appear only in Info and plain text.
 @@end ifinfo
 @@ifhtml
 And this text will only appear in HTML.
@@ -12114,17 +12134,18 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @@end ifplaintext
 @@ifxml
-And this will only appear in XML output.
+Notwithstanding that this will only appear in XML output.
 @@end ifxml
 @end example
 
 @noindent
 The preceding example produces the following line:
+
 @iftex
 This text will appear only in the printed manual.
 @end iftex
 @ifinfo
-However, this text will appear only in Info (or plain text).
+However, this text will appear only in Info and plain text.
 @end ifinfo
 @ifhtml
 And this text will only appear in HTML.
@@ -12133,7 +12154,7 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @end ifplaintext
 @ifxml
-And this will only appear in XML output.
+Notwithstanding that this will only appear in XML output.
 @end ifxml
 
 @noindent
@@ -12150,7 +12171,8 @@ version of the manual you are reading.
 @findex ifnotxml
 
 You can specify text to be included in any output format @emph{other}
-than some given one with the @code{@@ifnot@dots{}} commands:
+than a given one with the @code{@@ifnot@dots{}} environments:
+
 @example
 @@ifnothtml @dots{} @@end ifnothtml
 @@ifnotinfo @dots{} @@end ifnotinfo
@@ -12158,6 +12180,7 @@ than some given one with the @code{@@ifnot@dots{}} commands:
 @@ifnottex @dots{} @@end ifnottex
 @@ifnotxml @dots{} @@end ifnotxml
 @end example
+
 @noindent
 The @code{@@ifnot@dots{}} command and the @code{@@end} command must
 appear on lines by themselves in your actual source file.
@@ -12169,6 +12192,7 @@ With one exception (for historical compatibility): @code{@@ifnotinfo}
 text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 @code{@@ifnotplaintext}, like this:
+
 @example
 @@ifinfo
 @@ifnotplaintext
@@ -12270,9 +12294,10 @@ recognized.)
 
 You can direct the Texinfo formatting commands to format or ignore parts
 of a Texinfo file with the @code{@@set}, @code{@@clear}, @code{@@ifset},
-and @code{@@ifclear} commands.@refill
+and @code{@@ifclear} commands.
 
-Brief descriptions:
+Here are brief descriptions of these commands, see the following
+sections for more details:
 
 @table @code
 @item @@set @var{flag} [@var{value}]
@@ -12303,12 +12328,13 @@ is ignored.  If @var{flag} is clear, text through the following
 @subsection @code{@@set} and @code{@@value}
 @findex value
 
-You use the @code{@@set} command to specify a value for a flag, which is
-later expanded by the @code{@@value} command.
+You use the @code{@@set} command to specify a value for a flag, which
+is later expanded by the @code{@@value} command.
 
-A @dfn{flag} is an identifier.  In general, it is best to use only
-letters and numerals in a flag name, not @samp{-} or @samp{_}---they
-will work in some contexts, but not all, due to limitations in @TeX{}.
+A @dfn{flag} (aka @dfn{variable}) is an identifier.  It is best to use
+only letters and numerals in a flag name, not @samp{-} or
+@samp{_}---they will work in some contexts, but not all, due to
+limitations in @TeX{}.
 
 The value is the remainder of the input line, and can contain anything.
 
@@ -12348,10 +12374,10 @@ without specifying a string, the value of @code{foo} is the empty string.
 If you clear a previously set flag with @code{@@clear @var{flag}}, a
 subsequent @code{@@value@{flag@}} command will report an error.
 
-For example, if you set @code{foo} as follows:@refill
+For example, if you set @code{foo} as follows:
 
 @example
-@@set how-much very, very, very
+@@set howmuch very, very, very
 @end example
 
 @noindent
@@ -12359,7 +12385,7 @@ then the formatters transform
 
 @example
 @group
-It is a @@value@{how-much@} wet day.
+It is a @@value@{howmuch@} wet day.
 @exdent @r{into}
 It is a very, very, very wet day.
 @end group
@@ -12368,7 +12394,7 @@ It is a very, very, very wet day.
 If you write
 
 @example
-@@clear how-much
+@@clear howmuch
 @end example
 
 @noindent
@@ -12376,9 +12402,9 @@ then the formatters transform
 
 @example
 @group
-It is a @@value@{how-much@} wet day.
+It is a @@value@{howmuch@} wet day.
 @exdent @r{into}
-It is a @{No value for "how-much"@} wet day.
+It is a @{No value for "howmuch"@} wet day.
 @end group
 @end example
 
@@ -12457,10 +12483,10 @@ command looks like this:
 @node value Example
 @subsection @code{@@value} Example
 
-You can use the @code{@@value} command to minimize the number of places
-you need to change when you record an update to a manual.  @xref{GNU
-Sample Texts}, for an example of this same principle can work with
-Automake distributions, and full texts.
+You can use the @code{@@value} command to minimize the number of
+places you need to change when you record an update to a manual.
+@xref{GNU Sample Texts}, for the full text of an example of using this
+to work with Automake distributions.
 
 Here is an example adapted from @ref{Top,, Overview, make, The GNU Make
 Manual}):
@@ -12545,6 +12571,53 @@ of `The GNU Make Manual', for `make', Version 3.63 Beta.
 
 When you update the manual, you change only the values of the flags; you
 do not need to edit the three sections.
+
+
+@node Conditional Nesting
+@section Conditional Nesting
+@cindex Conditionals, nested
+@cindex Nesting conditionals
+
+Conditionals can be nested; however, the details are a little tricky.
+The difficulty comes with failing conditionals, such as
+@code{@@ifhtml} when HTML is not being produced, where the included
+text is to be ignored.  However, it is not to be @emph{completely}
+ignored, since it is useful to have one @code{@@ifset} inside another,
+for example---that is a way to include text only if two conditions are
+met.  Here's an example:
+
+@example
+@@ifset somevar
+@@ifset anothervar
+Both somevar and anothervar are set.
+@@end ifset
+@@ifclear anothervar
+Somevar is set, anothervar is not.
+@@end ifclear
+@@end ifset
+@end example
+
+Technically, Texinfo requires that for a failing conditional, the
+ignored text must be properly nested with respect to that failing
+conditional.  Unfortunately, it's not always feasible to check that
+@emph{all} conditionals are properly nested, because then the
+processors could have to fully interpret the ignored text, which
+defeats the purpose of the command.  Here's an example illustrating
+these rules:
+
+@example
+@@ifset a
+@@ifset b
+@@ifclear ok  - ok, ignored
+@@end junky   - ok, ignored
+@@end ifset
+@@c WRONG - missing @@end ifset.
+@end example
+
+Finally, as mentioned above, all conditional commands must be on lines
+by themselves, with no text (even spaces) before or after.  Otherwise,
+the processors cannot reliably determine which commands to consider
+for nesting purposes.
 
 
 @node Internationalization
@@ -17163,7 +17236,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.56 2003-07-26 12:47:52 karl Exp $
+$Id: texinfo.txi,v 1.57 2003-07-28 18:42:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17226,7 +17299,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.56 2003-07-26 12:47:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.57 2003-07-28 18:42:32 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
