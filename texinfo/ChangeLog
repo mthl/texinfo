@@ -1,3 +1,20 @@
+2002-09-28    <karl@gnu.org>
+
+	* info/infodoc.c: document the bug regarding where_is_rep_index,
+	but don't fix it since it's in the [!INFOKEY] code.
+
+	These patches from: Thierry Vignaud <tvignaud@mandrakesoft.com>,
+	24 Apr 2002 20:52:37 +0200.
+
+	* makeinfo/insertion.c: doc fix.
+
+	* info/infomap.c: had h and l functions reversed in vi mode.
+
+	* util/install-info.c: bzip2 support.
+
+	* util/texi2dvi: don't allow whitespace as one of the ?'s around
+	the o in foo.?o?, that could lead to misparsing.
+
 2002-09-27    <karl@gnu.org>
 
 	* doc/Makefile.am (*.1): call the binary, not the source file.
