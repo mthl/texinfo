@@ -22,6 +22,8 @@
 
 2004-07-26  Karl Berry  <karl@gnu.org>
 
+        Avoid using the path for output files, since this led to problems
+        when incompatible files created by previous versions were found.
 	* makeinfo/files.c (find_and_load): introduce second parameter
 		use_path, set to 0 from the call in handle_delayed_writes,
 		1 in all cases.
