@@ -1,7 +1,7 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.6 2002-11-08 02:21:07 karl Exp $
+   $Id: sectioning.c,v 1.7 2003-03-22 17:39:12 karl Exp $
 
-   Copyright (C) 1999, 2001, 2002 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -397,6 +397,13 @@ insert_and_underscore (level, with_char, cmd)
 /* Insert the text following input_text_offset up to the end of the
    line as an HTML heading element of the appropriate `level' and
    tagged as an anchor for the current node.. */
+
+/* We don't need anything fancy.  */
+#ifdef MIN
+#undef MIN
+#endif
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+
 void
 sectioning_html (level, cmd)
      int level;
@@ -413,8 +420,10 @@ sectioning_html (level, cmd)
   old_no_indent = no_indent;
   no_indent = 1;
 
-  /* level 0 (chapter) is <h2> */
-  add_word_args ("<h%d class=\"%s\">", level + 2, cmd);
+  /* level 0 (chapter) is <h2>, everything else is <h3>.  We don't want
+     to go lower than that because browsers then start rendering the
+     headings smaller than the text.  */
+  add_word_args ("<h%d class=\"%s\">", MIN (3, level + 2), cmd);
 
   /* If we are outside of any node, produce an anchor that
      the TOC could refer to.  */
