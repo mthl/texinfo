@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.12 2003-07-25 00:02:24 karl Exp $
+   $Id: sectioning.c,v 1.13 2003-09-10 22:54:22 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -34,6 +34,7 @@ section_alist_type section_alist[] = {
   { "unnumberedsubsec",    4, ENUM_SECT_NO,  TOC_YES },
   { "unnumberedsec",       3, ENUM_SECT_NO,  TOC_YES },
   { "unnumbered",          2, ENUM_SECT_NO,  TOC_YES },
+  { "centerchap",          2, ENUM_SECT_NO,  TOC_YES },
 
   { "appendixsubsubsec",   5, ENUM_SECT_APP, TOC_YES },  /* numbered like A.X.X.X */
   { "appendixsubsec",      4, ENUM_SECT_APP, TOC_YES },
