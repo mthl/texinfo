@@ -1,3 +1,8 @@
+2002-11-30    <karl@gnu.org>
+
+	* doc/Makefile.am (texinfo): restore rule since this won't quite
+	be fixed until automake 1.7.2 or later.
+
 2002-11-29 19:19  feloy
 
 	* makeinfo/xml.c: Fix the <para>&lt; bug in XML, reported by K.
