@@ -1,5 +1,11 @@
 2004-06-06  Karl Berry  <karl@gnu.org>
 
+	* makeinfo/index.c (index_add_arg): ensure all elements are always
+	initialized, including output_file, section, and section_name.
+	(cm_printindex): don't pass index->output_file to
+	add_html_block_elt_args if it is null.  Also do
+	not pass spurious extra index_name argument.
+
 	* makeinfo/makeinfo.c (add_char): don't call html_output_head if
 	only_macro_expansion (e.g., a macro call in the
 	Top menu).  From: Yuri D'Elia <wavexx@yuv.info>,
