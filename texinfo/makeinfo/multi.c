@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.8 2004-04-11 17:56:47 karl Exp $
+   $Id: multi.c,v 1.9 2005-04-05 21:04:16 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004 Free Software
    Foundation, Inc.
@@ -54,7 +54,7 @@
 
 /* contents of an output environment */
 /* some more vars may end up being needed here later @@ */
-struct env
+static struct env
 {
   unsigned char *output_paragraph;
   int output_paragraph_offset;

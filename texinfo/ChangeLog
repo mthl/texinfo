@@ -1,3 +1,12 @@
+2005-04-05  Matthias Kilian  <kili@outback.escape.de>  (tiny changes)
+
+	* makeinfo/html.c (rollback_empty_tag): be sure to avoid negative
+	array indexing.
+	* makeinfo/multi.c (env): make static.
+	* makeinfo/tests/cond, html-extrali, include-value: use grep -c,
+	instead of piping to wc -l, since that avoids the output files
+	being treated as binary on BSD.
+
 2005-04-04  Stepan Kasal  <kasal@ucw.cz>
 
 	* makeinfo/makeinfo.c (usage): Add indentation to the examples and
@@ -6,7 +15,6 @@
 	* doc/Makefile.am (makeinfo.1): Add a sed command to postprocess
 	  the generated manpage.
 	* doc/makefile.1: Refresh.
-
 	Thanks to Jim Razmus for the bug report.
 
 2005-04-04  Torsten Bronger  <bronger@physik.rwth-aachen.de>  (tiny changes)
