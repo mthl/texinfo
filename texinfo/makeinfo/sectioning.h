@@ -1,7 +1,7 @@
 /* sectioning.h -- all related stuff @chapter, @section... @contents
-   $Id: sectioning.h,v 1.1 2002-08-25 23:38:39 karl Exp $
+   $Id: sectioning.h,v 1.2 2003-07-25 00:01:56 karl Exp $
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2003 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,17 +30,12 @@ extern void
   cm_subsubsection (), cm_unnumberedsubsubsec (), cm_appendixsubsubsec (),
   cm_heading (), cm_chapheading (), cm_subheading (), cm_subsubheading (),
   cm_majorheading (), cm_raisesections (), cm_lowersections (),
-
   cm_ideprecated ();
 
 extern void
   sectioning_underscore (), insert_and_underscore ();
 
-extern int what_section ();
-
-
-
-/* is needed in node.c */
+/* needed in node.c */
 extern int set_top_section_level ();
 
 extern void sectioning_html ();
