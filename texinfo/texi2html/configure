@@ -1725,16 +1725,6 @@ fi
 
 PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
 
-#INIT=$srcdir/texi2html.init
-#AC_SUBST_FILE([INIT])
-#MYSIMPLE=$srcdir/MySimple.pm
-#AC_SUBST_FILE([MYSIMPLE])
-#T2H_I18N=$srcdir/T2h_i18n.pm
-#AC_SUBST_FILE([T2H_I18N])
-#T2H_L2H_INIT=$srcdir/l2h.init
-#AC_SUBST_FILE([T2H_L2H_INIT])
-#T2H_TRANSLATIONS_FILE=$srcdir/translations.pl
-#AC_SUBST_FILE([T2H_TRANSLATIONS_FILE])
 
 # Check whether --with-encode or --without-encode was given.
 if test "${with_encode+set}" = set; then
@@ -1951,7 +1941,7 @@ test "x$enable_multiplatform" = xyes \
           ac_config_files="$ac_config_files check_texinfo.pl"
 
 
-                                                  ac_config_files="$ac_config_files Makefile Tests/Makefile doc/Makefile texi2html.1 texi2html.spec"
+                              ac_config_files="$ac_config_files Makefile Tests/Makefile doc/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -2516,8 +2506,6 @@ do
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
   "Tests/Makefile" ) CONFIG_FILES="$CONFIG_FILES Tests/Makefile" ;;
   "doc/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
-  "texi2html.1" ) CONFIG_FILES="$CONFIG_FILES texi2html.1" ;;
-  "texi2html.spec" ) CONFIG_FILES="$CONFIG_FILES texi2html.spec" ;;
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;

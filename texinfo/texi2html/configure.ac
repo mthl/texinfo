@@ -10,16 +10,6 @@ AM_MAINTAINER_MODE
 dnl Misc variable settings
 PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
-#INIT=$srcdir/texi2html.init
-#AC_SUBST_FILE([INIT])
-#MYSIMPLE=$srcdir/MySimple.pm
-#AC_SUBST_FILE([MYSIMPLE])
-#T2H_I18N=$srcdir/T2h_i18n.pm
-#AC_SUBST_FILE([T2H_I18N])
-#T2H_L2H_INIT=$srcdir/l2h.init
-#AC_SUBST_FILE([T2H_L2H_INIT])
-#T2H_TRANSLATIONS_FILE=$srcdir/translations.pl
-#AC_SUBST_FILE([T2H_TRANSLATIONS_FILE])
 AC_ARG_WITH([encode],
            AC_HELP_STRING([--with-encode],
                            [use encode (default: detected)]),
@@ -68,7 +58,5 @@ AC_CONFIG_FILES([\
                  Makefile \
                  Tests/Makefile \
                  doc/Makefile \
-                 texi2html.1 \
-                 texi2html.spec \
                  ])
 AC_OUTPUT

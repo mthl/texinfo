@@ -12,7 +12,13 @@ texinfohtml_DATA    = texi2html.html
 # an old one which is installed on the client.
 TEXI2HTML = $(top_builddir)/texi2html
 
-EXTRA_DIST = texi2html.html
+man_MANS = texi2html.1
+
+EXTRA_DIST = \
+	texi2html.1.in \
+	texi2html.html
+
+CLEANFILES = texi2html.1
 
 texi2html.html: texi2html.texi $(srcdir)/version.texi \
   $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
@@ -20,6 +26,13 @@ texi2html.html: texi2html.texi $(srcdir)/version.texi \
   $(top_srcdir)/translations.pl
 	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
 	  $(SHELL) $(top_srcdir)/missing-texi2html --run $(TEXI2HTML) -V $<
+
+texi2html.1: texi2html.1.in ../config.status
+	@echo Generating $@...
+	@sed -e "s/@PACKAGE_VERSION@/$(PACKAGE_VERSION)/" \
+	     -e "s/@PACKAGE_DATE@/$(PACKAGE_DATE)/" \
+	     -e "s#@sysconfdir@#$(sysconfdir)#" $< >texi2html.tmp
+	@mv texi2html.tmp $@
 
 txt: texi2html.txt
 

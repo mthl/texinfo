@@ -15,13 +15,12 @@ texi2html_additionnal_scripts = \
 	T2h_i18n.pm \
 	texi2html.init \
 	translations.pl \
-    l2h.init
+	l2h.init
 
 texi2html_SOURCES = $(texi2html_additionnal_scripts) \
 	texi2html.pl 
 
 noinst_SCRIPTS = manage_i18n.pl
-man_MANS = texi2html.1
 
 EXTRA_DIST = \
 	INTRODUCTION \
@@ -29,8 +28,9 @@ EXTRA_DIST = \
 	autogen.sh \
 	manage_i18n.pl \
 	missing-texi2html \
-	texi2html.spec \
 	texi2html.pl \
+	texi2html.spec \
+	texi2html.spec.in \
 	$(texi2html_SOURCES)
 
 dist_pkgdata_DATA = l2h.init \
@@ -122,10 +122,18 @@ dist_images_DATA = images/a_begin.gif \
 
 texi2html: texi2html_configured.pl $(texi2html_additional_scripts)
 	sed -e "/@MYSIMPLE@/r $(srcdir)/MySimple.pm" \
-       -e "/@INIT@/r $(srcdir)/texi2html.init" \
-       -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
-       -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
-       -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" $< > $@
+	    -e "/@INIT@/r $(srcdir)/texi2html.init" \
+	    -e "/@T2H_TRANSLATIONS_FILE@/r $(srcdir)/translations.pl" \
+	    -e "/@T2H_L2H_INIT@/r $(srcdir)/l2h.init" \
+	    -e "/@T2H_I18N@/r $(srcdir)/T2h_i18n.pm" $< >$@
+	chmod a+x $@
+
+texi2html.spec: texi2html.spec.in configure
+	@echo Generating $@...
+	@sed -e "s/@PACKAGE_VERSION@/$(PACKAGE_VERSION)/" \
+	     -e "s/@PACKAGE_TARNAME@/$(PACKAGE_TARNAME)/" $< >texi2html.tmp
+	@cp texi2html.tmp $(srcdir)/$@
+	-@rm texi2html.tmp
 
 translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
                  examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no \

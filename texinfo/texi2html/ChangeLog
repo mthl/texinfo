@@ -1,3 +1,18 @@
+2005-02-05  Derek Price  <derek@ximbiot.com>
+
+	* .cvsignore: Remove texi2html.1 and add texi2html_configure.pl.
+	* Makefile.am: Some reformatting.
+	(EXTRA_DIST): Add texi2html.spec.in.
+	(texi2html): Make target executable.
+	(texi2html.spec): New target.
+	(man_MANS): Move to...
+	* doc/Makefile.am (man_MANS): ...here.
+	* configure.ac: Don't generate texi2html.1 or texi2html.spec.  Remove
+	old comments.
+	* texi2html.1.in: Move to...
+	* doc/texi2html.1.in: ...here.
+	* doc/.cvsignore: Add texi2html.1.
+
 2005-02-05  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* Makefile.am,configure.ac: don't rely on configure to build the
@@ -31,7 +46,7 @@
 	old perl. Report from Sven de Vries.
 	* T2h_i18n.pm: remove useless use that prevented to run on IRIX. 
 	Report from ezra peisach.
-	* Tests/*: remove some $Id: ChangeLog,v 1.184 2005-02-05 11:01:10 pertusus Exp $ rcs tags
+	* Tests/*: remove some $Id: ChangeLog,v 1.185 2005-02-05 17:34:40 dprice Exp $ rcs tags
 
 2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
 
