@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.61 2003-09-01 15:08:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.62 2003-09-01 17:48:05 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -7088,7 +7088,7 @@ sub expand_macro($$$$$)
             {
                 $result .= '\\';
             }
-            elsif ($macrobody =~ s/^(\@end\sr?macro)$// or $macrobody =~ s/^(\@end\sr?macro\s)//)
+            elsif ($macrobody =~ s/^(\@end\sr?macro)$// or $macrobody =~ s/^(\@end\sr?macro\s)// or $macrobody =~ s/^(\@r?macro\s+\w+\s*.*)//)
             { # \ protect @end macro
                 $result .= $1;
             }
@@ -7382,15 +7382,23 @@ sub scan_texi($$$$;$)
                       $state->{'macro'}->{'Body'} .= '\\';
                       next;
                  }
-                 elsif (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s)//o)
+                 elsif (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s)//o
+                      or s/^(\@r?macro\s+\w+\s*.*)//o) 
                  {
                       $state->{'macro'}->{'Body'} .= $1;
                       next;
                  }
             }
-            if (s/^(.*?)\@end\sr?macro$//o or s/^(.*?)\@end\sr?macro\s+//o)
+            #if (s/^(.*?)\@end\sr?macro$//o or s/^(.*?)\@end\sr?macro\s+//o)
+            if (s/^(\@end\sr?macro)$//o or s/^(\@end\sr?macro\s+)//o)
             {
-                 $state->{'macro'}->{'Body'} .= $1 if defined($1) ;
+                 $state->{'macro_inside'}--;
+                 if ($state->{'macro_inside'})
+                 {
+                     $state->{'macro'}->{'Body'} .= $1;
+                     next;
+                 }
+                 #$state->{'macro'}->{'Body'} .= $1 if defined($1) ;
                  chomp $state->{'macro'}->{'Body'};
                  print STDERR "# end macro def. Body:\n$state->{'macro'}->{'Body'}"
                      if ($T2H_DEBUG & $DEBUG_MACROS);
@@ -7398,10 +7406,34 @@ sub scan_texi($$$$;$)
                  return if (/^\s*$/);
                  next;
             }
+            elsif(/^(\@r?macro\s+\w+\s*.*)/)
+            {
+                 $state->{'macro'}->{'Body'} .= $_;
+                 $state->{'macro_inside'}++;
+                 return;
+            }
+            elsif (s/^\@(.)//)
+            {
+                 $state->{'macro'}->{'Body'} .= '@' . $1;
+                 next;
+            }
+            elsif (s/^\@//)
+            {
+                 $state->{'macro'}->{'Body'} .= '@';
+                 next;
+            }
             else
             {
-                 $state->{'macro'}->{'Body'} .= $_ if defined($_) ;
-                 return;
+                 s/([^\@\\]*)//;
+                 $state->{'macro'}->{'Body'} .= $1 if (defined($1));
+                 if (/^$/)
+                 {
+                      $state->{'macro'}->{'Body'} .= $_;
+                      return;
+                 }
+                 next;
+                 #$state->{'macro'}->{'Body'} .= $_ if defined($_) ;
+                 #return;
             }
         }
         # in macro arguments parsing/expansion
@@ -7597,9 +7629,9 @@ sub scan_texi($$$$;$)
             {
                 if ($state->{'arg_expansion'})
                 {
-                    my $line = $1.$2.$3;
+                    my $line = "\@$macro" . $1.$2.$3;
                     $line .= $4 if (defined($4));
-                    add_prev($text, $state, $line); 
+                    add_prev($text, $stack, $line); 
                     next;
                 }
                 $value{$2} = $4;
@@ -7608,7 +7640,8 @@ sub scan_texi($$$$;$)
             {
                 if ($state->{'arg_expansion'})
                 {
-                    add_prev($text, $state, $1 . $2); 
+                    add_prev($text, $stack, "\@$macro" . $1 . $2);
+                    next; 
                 }
                 delete $value{$2};
             }
@@ -7632,6 +7665,7 @@ sub scan_texi($$$$;$)
                          echo_warn ("macro `$name' allready defined " . 
                              format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
                     }
+                    $state->{'macro_inside'} = 1;
                     my @args = ();
                     @args = split(/\s*,\s*/ , $1)
                        if ($2 =~ /^\s*{\s*(.*?)\s*}\s*/);

@@ -1,5 +1,9 @@
 2003-08-29  Patrice Dumas <dumas@centre-cired.fr>
 
+	* texi2html.pl: support nested macro definitions.
+
+2003-08-29  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.init, texi2html.pl: hide m_cedilla.
 	new handling of definition commands, with a specification of the
 	definition line parsing.
