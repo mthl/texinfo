@@ -1,3 +1,8 @@
+2003-11-06  Karl Berry  <karl@gnu.org>
+
+	* bootstrap: no --force, everything is considered obsolete then
+	(thanks Alper).
+
 Thu Nov  6 06:36:51 2003  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/html.c (html_output_head): add <link> elements pointing to
