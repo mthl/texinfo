@@ -1,6 +1,8 @@
 
 Garbage
 
+@titlefont{Titlefont before top node}
+
 @node ToP
 Top node
 

@@ -1,6 +1,8 @@
 
 Garbage
 
+@titlefont{Example with a section before the top node and another node}
+
 @unnumbered before nodes
 
 in unnumbered
@@ -8,7 +10,12 @@ in unnumbered
 @node Top
 Top node
 
+@titlefont{   }
+@titlefont{This is the top node}
+@titlefont{second titlefont}
+
 @node second node,,,(dir)
 
+@titlefont{This is the second node}
 second node
 

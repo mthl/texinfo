@@ -1,8 +1,4 @@
 
-@dircategory Texinfo documentation system
-* info standalone: (info-stnd).            Read Info documents without Emacs.
-* infokey: (info-stnd)Invoking infokey.    Compile Info customizations.
-
 
 
 @node Top

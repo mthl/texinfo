@@ -1,0 +1,40 @@
+
+@node Top
+@top
+@menu
+* Chapter::
+* Second chapter::
+@end menu
+
+@node Chapter
+@chapter Chapter
+
+@menu
+* Chapter in included file::
+@end menu
+
+\input texinfo 
+@node Chapter in included file
+@chapter Chapter in included file
+
+@menu
+* Section::
+@end menu
+
+@node Section
+@section Section
+
+@menu
+* Subsection::
+@end menu
+
+@node Subsection
+@subsection Subsection
+
+@node Second chapter
+@chapter Second chapter
+
+Second chapter
+
+
+

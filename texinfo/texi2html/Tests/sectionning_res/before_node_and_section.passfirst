@@ -1,0 +1,25 @@
+
+Garbage
+ref to Top @ref{Top}.
+@cindex index entry before anything 
+Hey@footnote{a footnote}.
+An anchor @anchor{anchor1}.
+
+@menu
+* node1::
+@end menu
+
+@node Top
+@top top @@top section
+Node top
+
+ref to anchor1@footnote{another footnote}, which is before @@node Top: @ref{anchor1}.
+@menu
+* node1::
+@end menu
+
+@node node1
+@chapter node1 chapter
+
+@printindex cp
+

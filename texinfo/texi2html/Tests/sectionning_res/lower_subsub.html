@@ -11,10 +11,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Untitled Document: Tests</title>
+<title>Untitled Document: </title>
 
-<meta name="description" content="Untitled Document: Tests">
-<meta name="keywords" content="Untitled Document: Tests">
+<meta name="description" content="Untitled Document: ">
+<meta name="keywords" content="Untitled Document: ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -47,19 +47,11 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1 class="settitle">Tests</h1>
+<h1 class="settitle">Top</h1>
+
 <table class="menu" border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC1">1. first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node 1</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC2">2. node 'a with braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node with braces</td></tr>
-<tr><td align="left" valign="top"><a href="../manual/A-node.html">* node: (manual)A node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node in another manual</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-a verbatim in menu comment </pre><pre class="verbatim">  verbatim on same line than @verbatim
-
-bidule
-
-</pre><pre class="menu-comment">
-</pre></th></tr><tr><td align="left" valign="top"><a href="#SEC3">3. node 'a without braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">node without braces</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC1">1. Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="1">
@@ -71,192 +63,6 @@ bidule
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[ &lt;&lt; ]</td>
 <td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC2" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h1 class="chapter"> 1. first node chapter </h1>
-
-<p>ref to a non existing node@ref{bidule}.
-</p><p>a 2 paragraphs sample `<samp>in first paragraph
-</samp> </p><p><samp>in second</samp>'.
-</p><p>a 3 paragraphs sample `<samp>in first paragraph
-</samp> </p><p><samp>in second
-</samp> </p><p><samp>in third</samp>'.
-</p><p>Unknown macro @unknown{ first paragraph
- </p><p>second paragraph}
-</p><p>@unknown2{ first paragraph
- </p><p>second paragraph
- </p><p>third}
-</p><p>Unknown thing @thing{}
-</p><p>A list with bullet
-Before itemize, in that case @bullet isn'right, one needs @bullet{} (in info) </p><ul>
-<li><p> on the same line than item
-some text
-</p></li><li><p>
-more text </p></li></ul>
-
-<p>A list with text before first @item:
-</p><ul>
-<li><p>
-text </p></li><li><p> more
-text
-</p></li></ul>
-
-<p>a verbatim, not first on the line </p><pre class="verbatim">  text following @verbatim
-
-text
-
-
-@@@@ @ text before @end  verbatim </pre>Text following end verbatim, must be exactly one space 
-<p>between end and verbatim. @end verbatim doesn't need to begin at beginning 
-of line.
-</p><p>In tex, @end verbatim must be on its own on a line.
-</p><p>A verbatim with begin and end on its own line
-</p><pre class="verbatim">verbatim @samp{item}
-
-</pre>
-<p>Now html  <b>
-some html </b> 
-bidule ignored
-</p><p>@end html begins the line, and there must be exactly one space between @end
-and html and thing following @end html are ignored in info. Strangely
-the empty line following @end html is ignored but spaces are inserted.
-</p><p>Now html valid for TeX  <b>
-some html </b> 
-Some text one the line following @end html
-</p><p>And html on it's own line
-</p><tt> an html tt</tt>
-
-<p>A sc: <small>IEEE</small>, and another one in example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-AEEI
-</pre></td></tr></table>
-<p>ignore bidule ignore
-</p><p>Ignore is the same than @html.
-</p><p>Now ifnothtml on same line </p><p>@end ifnothtml doesn't need to begin the line, and there can be more
-than one space between @end and ifnothtml, but nothing more
-on the line.
-</p><p>Text on the line before ifnothtml with text following,
-Text on the line following ifnothtml.
-</p><p>Text on the line before ifnothtml without text following,
-Text on the line following ifnothtml.
-</p><p>Text on the line before ifnothtml,
-Text on the line following empty ifnothtml
-</p><p>TeX has problems with the ftable.
-</p><p>an ftable on same line </p><dl compact="compact">
-<dt>* fun1
-<a name="IDX1"></a>
-</dt>
-<dt>* fun2
-<a name="IDX2"></a>
-</dt>
-<dd><p>fun1 et fun2 </p></dd>
-<dt>* more fun
-<a name="IDX3"></a>
-</dt>
-<dd><p>text on the same line than end   </p></dd>
-</dl>
-<p>works like @ifnothtml
-</p> outside format.
-
-<p> outside format.
-</p><table>
-<tr><td><p>truc before table beginning </p></td></tr>
-<tr><td><p> first cell </p></td></tr>
-<tr><td><p> second row
-</p></td></tr>
-</table>
-
-<p>before bad  multitable </p>
-<p>right multitable
-</p><table>
-<tr><td><p> 1-1 </p></td><td><p> 1-2 </p></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><p> 3-1 </p></td><td><p> 3-2 </p></td></tr>
-</table>
-
-<p>multitable beginning with @tab
-</p><table>
-<tr><td></td><td><p> after first tab 
-</p></td></tr>
-<tr><td><p> new line
-</p></td></tr>
-</table>
-
-<p>A flushright
-</p><p align="right">  some text flushed right
-</p>
-<p>A center </p><p align="center">  Centered line
-</p><p>And a center after empty line
-</p><p align="center"> centered line after empty line
-</p>
-<p>And a center at end of line </p> 
-<p>And an empty center </p>    
-
-<p>An empty flushright </p> 
-
-
-<p>A verb follows:
-</p><p><tt> a little
-</tt> </p><p><tt>very little
-verb </tt>
-</p><p>another with space as delimiter
-</p><p><tt>what@@</tt>
-</p><p>@verb followed by end of line seems incorrect.
-Now verb delimited with *, with an empty line, a comment and @samp:
-</p><p><tt>with
-verb @c comment
-</tt> </p><p><tt>and samp @samp{text }
-</tt>
-</p><hr size="6">
-<a name="NOD3"></a>
-<a name="SEC2"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC3" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC3" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[Index]</td>
-<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
-</tr></table>
-<h1 class="chapter"> 2. node 'a with braces </h1>
-<p>In the node with braces
-</p><p>A footnote with an empty line within.
-<a name="DOCF1" href="#FOOT1">(1)</a> 
-</p><p>Now a ref with a footnote within, there aren't 2 paragraphes in the footnote
-in that case in info. tex doesn't like the paragraph break in the ref
-<a href="#SEC1">within ref a footnote <a name="DOCF2" href="#FOOT2">(2)</a></a>.
-</p><p>Conversely, a ref in a footnote
-<a name="DOCF3" href="#FOOT3">(3)</a>
-</p><p>A footnote with an example
-<a name="DOCF4" href="#FOOT4">(4)</a>
-</p><p>Some @verbatim, @verb and @ignore within an xref, very hard for TeX:
-See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within an xref </pre>and now verb delimited with * with an empty line a comment and @samp <tt>with verb @c comment and samp @samp{text } next line </tt> last ignored sentence </a>.
-</p><p>See section <a href="#SEC1">no verb</a>.
-</p><hr size="6">
-<a name="NOD4"></a>
-<a name="SEC3"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC_Top" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -267,10 +73,64 @@ See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within 
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 3. node 'a without braces </h1>
+<h1 class="chapter"> 1. Chapter </h1>
+
 <table class="menu" border="0" cellspacing="0">
 
-<tr><td align="left" valign="top"><a href="#SEC4">3.1 node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC2">1.1 Section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD3"></a>
+<a name="SEC2"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h2 class="section"> 1.1 Section </h2>
+
+<table class="menu" border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC3">1.1.1 Subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD4"></a>
+<a name="SEC3"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection"> 1.1.1 Subsection </h3>
+
+<table class="menu" border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC4">1.1.1.1 Subsubsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#SEC5">1.1.1.2 Lowered subsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
 <hr size="6">
@@ -278,9 +138,9 @@ See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within 
 <a name="SEC4"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left">[<a href="#SEC5" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC3" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -292,40 +152,58 @@ See section <a href="#SEC1"><pre class="verbatim"> some verbatim @@ text within 
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 3.1 node </h2>
-
-<p>A node with gggggggg
-before example </p><table><tr><td>&nbsp;</td><td><pre class="example">  after example
-
-the example
-before end example  </pre></td></tr></table>
-<p>after end example
-</p>
+<h4 class="subsubsection"> 1.1.1.1 Subsubsection </h4>
 
 <hr size="6">
-<a name="SEC_Foot"></a>
+<a name="NOD6"></a>
+<a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC3" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
 </tr></table>
-<h1>Footnotes</h1>
-<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
-<p>with empty line
-</p><p>before before
-</p><h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
-<p>with empty line before before
-</p><h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
-<p> This is a ref <a href="#SEC1">first node chapter</a> 
-</p><h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<h4 class="subsection"> 1.1.1.2 Lowered subsec </h4>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<table class="menu" border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="#SEC6">1.1.1.3 Lowered subsubsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr size="6">
+<a name="NOD7"></a>
+<a name="SEC6"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC3" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection"> 1.1.1.3 Lowered subsubsection </h4>
 
 
-An example
 
-</pre></td></tr></table><hr size="1">
+<hr size="6">
 <a name="SEC_Contents"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Top" title="Cover (top) of document">Top</a>]</td>
@@ -337,11 +215,19 @@ An example
 <div class="contents">
 
 <ul class="toc">
-  <li><a name="TOC1" href="#SEC1">1. first node chapter</a></li>
-  <li><a name="TOC2" href="#SEC2">2. node 'a with braces</a></li>
-  <li><a name="TOC3" href="#SEC3">3. node 'a without braces</a>
+  <li><a name="TOC1" href="#SEC1">1. Chapter</a>
   <ul class="toc">
-    <li><a name="TOC4" href="#SEC4">3.1 node</a></li>
+    <li><a name="TOC2" href="#SEC2">1.1 Section</a>
+    <ul class="toc">
+      <li><a name="TOC3" href="#SEC3">1.1.1 Subsection</a>
+      <ul class="toc">
+        <li><a name="TOC4" href="#SEC4">1.1.1.1 Subsubsection</a></li>
+        <li><a name="TOC5" href="#SEC5">1.1.1.2 Lowered subsec</a></li>
+        <li><a name="TOC6" href="#SEC6">1.1.1.3 Lowered subsubsection</a></li>
+      </ul>
+</li>
+    </ul>
+</li>
   </ul>
 </li>
 </ul>

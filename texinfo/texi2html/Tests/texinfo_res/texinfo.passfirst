@@ -1,13 +1,4 @@
 
-@dircategory Texinfo documentation system
-* Texinfo: (texinfo).           The GNU documentation format.
-* install-info: (texinfo)Invoking install-info. Update info/dir entries.
-* texi2dvi: (texinfo)Format with texi2dvi.      Print Texinfo documents.
-* texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
-* makeinfo: (texinfo)Invoking makeinfo.         Translate Texinfo source.
-
-@shorttitlepage Texinfo
-
 
 
 
@@ -15071,14 +15062,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $ comment
-@cindex CVS $Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $, in Texinfo
-@cindex RCS $Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $, in Texinfo
-The @samp{$Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $ comment
+@cindex CVS $Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $, in Texinfo
+@cindex RCS $Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $, in Texinfo
+The @samp{$Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $
+$Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -15125,7 +15116,7 @@ Here is the sample document:
 
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.passfirst,v 1.13 2003-07-29 14:25:05 pertusus Exp $
+@@comment $Id: texinfo.passfirst,v 1.14 2003-07-31 15:39:57 pertusus Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi

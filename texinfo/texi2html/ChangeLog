@@ -1,3 +1,17 @@
+2003-07-31  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: A new option -no-expand which does 
+	the reverse of -expand.
+	Text before the first @node or sectionning command is 
+	outputted as part of the first section. A new option enables the 
+	reverse: if -ignore-preamble-text is set (variable 
+	$IGNORE_PREAMBLE_TEXT) this text is ignored.
+	Handle macros appearing in that part of texinfo files (@direntry
+	and @dircategory ignored, @shorttitlepage handled).
+	Ignore everything at the beginning of the file until \input or an
+	@-command preceded by optionnal spaces.
+	better handling of @titlefont.
+
 2003-07-29  Patrice Dumas <dumas@centre-cired.fr>
 	
 	* texi2html.pl, texi2html.init: if split, top and misc elements (about,
@@ -7,7 +21,6 @@
 	The top name is Top when there is no name nor title (previously was
 	"Untitled Document").
 	bugfix: top element handled as top even when it is the last element.
-	
 
 2003-07-22  Patrice Dumas <dumas@centre-cired.fr>
 

@@ -188,6 +188,7 @@ test_texi sectionning brace_not_closed.texi "" 1
 test_texi sectionning lower_subsub.texi
 test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
+test_texi sectionning before_node_and_section.texi "" 2
 test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting imbrications.texi "" 2
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
@@ -213,6 +214,7 @@ test_texi xemacs_frame xemacs.texi "-split chapter -frames"
 test_texi texinfo info-stnd.texi "-split chapter -node-files"
 test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
 test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
-test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
+#test_texi ccvs cvs.texinfo "-split chapter -no-expand info" 0 texinfo
+test_texi ccvs cvs.texinfo "-split chapter -ignore-preamble-text" 0 texinfo
 #test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -l2h -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing
 test_texi singular ../singular_texi/singular.tex "-init-file ../singular_texi/t2h_singular.init -short-ext -Verbose -prefix sing -top-file index.htm" 0 tex sing

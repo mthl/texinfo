@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.34 2003-07-29 12:50:45 pertusus Exp $
+# $Id: texi2html.init,v 1.35 2003-07-31 15:40:02 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -169,6 +169,10 @@ $VERBOSE = '';
 # for  definitions)
 # Default's to 'en' if not set or no @documentlanguage is specified
 $LANG = 'en';
+
+#-ignore-preamble-text'
+# If set, ignore text before @node and sectionning commands
+$IGNORE_PREAMBLE_TEXT = 0;
 
 # -html-xref-prefix
 # base directory for external manuals
@@ -609,7 +613,8 @@ sub T2H_DEFAULT_print_Top
     if ($Texi2HTML::THIS_SECTION)
     {
         # if top-level node has content, then print it with extra header
-        print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
+        #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
+        print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
             unless ($has_top_heading);
         $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION)
     }
@@ -1355,6 +1360,7 @@ $pre_map{'br'} = "\n";
       'url',        '&do_url',    # insert a clickable URL
       'var',        'var',
       'verb',       'tt',
+      'titlefont',  '&do_titlefont',
       'w',          '',           # unsupported
       'H',          '&do_accent',
       'dotaccent',  '&do_accent',
@@ -1492,7 +1498,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
 # otherwise only the macro, or @end macro is skipped
 # 
 %to_skip = (
-        # not needed after pass_texi
+        # not needed after pass_structure
         'raisesections', 'line',
         'lowersections', 'line',
         'contents', 1,
@@ -1511,6 +1517,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
         # unsupported commands (formatting)
         'sp', 'arg',
         # ???
+        'dircategory', 'line',
         'pagesizes', 'arg', 
         'finalout', 1,
         'page', 1,
@@ -1537,8 +1544,6 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
         # ???
         'filbreak', 1,
         # unsupported formats/features
-        'direntry', 'space',
-        'end direntry', 1,
         'group', 'space',
         'end group', 1,
         'exdent', 1,  
@@ -1593,6 +1598,12 @@ sub do_uref($;$)
 }
 
 sub do_url($;$) { return &$anchor('', $_[0], $_[0]); }
+
+sub do_titlefont($;$) 
+{ 
+    return '' unless ($_[0] =~ /\S/);
+    return '<h1 class="titlefont">' . $_[0] . '</h1>';
+}
 
 sub do_accent($$)
 {

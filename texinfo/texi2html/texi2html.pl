@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.54 2003-07-29 12:50:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.55 2003-07-31 15:40:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -178,6 +178,7 @@ our $L2H_FILE;
 our $L2H_HTML_VERSION;
 our $EXTERNAL_DIR;
 our @INCLUDE_DIRS ;
+our $IGNORE_PREAMBLE_TEXT;
 
 # customization variables
 our $MENU_PRE_STYLE;
@@ -617,6 +618,7 @@ my %text_macros = (
      'ifnottex' => 1, 
      'ifnotplaintext' => 1, 
      'ifnotinfo' => 1, 
+     'direntry' => 0,
      'verbatim' => 'raw', 
      'ifclear' => 'value', 
      'ifset' => 'value' 
@@ -640,9 +642,11 @@ my %no_line_macros = (
     'title' => 1,
     'subtitle' => 1,
     'shorttitle' => 1,
+    'shorttitlepage' => 1,
     'include' => 1,
     'copying' => 1,
     'end copying' => 1,
+    'dircategory' => 1,
 );
 
 foreach my $key (keys(%Texi2HTML::Config::to_skip))
@@ -774,6 +778,15 @@ $T2H_OPTIONS -> {'expand'} =
  linkage => \@Texi2HTML::Config::EXPAND,
  verbose => 'Expand info|tex|none section of texinfo source',
 };
+
+$T2H_OPTIONS -> {'no-expand'} =
+{
+ type => '=s',
+ linkage => \@Texi2HTML::Config::EXPAND,
+ linkage => sub {@Texi2HTML::Config::EXPAND = grep {$_ ne $_[1]} @Texi2HTML::Config::EXPAND;},
+ verbose => 'Don\'t expand the given section of texinfo source',
+};
+
 
 $T2H_OPTIONS -> {'glossary'} =
 {
@@ -942,6 +955,14 @@ $T2H_OPTIONS -> {'lang'} =
  type => '=s',
  linkage => sub {set_document_language($_[1])},
  verbose => 'use $s as document language (ISO 639 encoding)',
+};
+
+$T2H_OPTIONS -> {'ignore-preamble-text'} =
+{
+  type => '!',
+  linkage => \$Texi2HTML::Config::IGNORE_PREAMBLE_TEXT,
+  verbose => 'if set, ignore the text before @node and sectionning commands',
+  noHelp => 1,
 };
 
 $T2H_OPTIONS -> {'html-xref-prefix'} =
@@ -1483,7 +1504,7 @@ my $docu_toc_frame_file = "$docu_rdir${docu_name}_toc_frame.$docu_ext";
 #
 # _foo: internal variables to track @foo
 #
-foreach my $key ('_author', '_title', '_subtitle',
+foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
 	 '_settitle', '_setfilename', '_shorttitle', '_titlefont')
 {
     $value{$key} = '';            # prevent -w warnings
@@ -2093,7 +2114,7 @@ sub initialise_state_texi($)
 
 sub pass_texi()
 {
-    my $first_line = 1;         # is it the first line
+    my $first_lines = 1;        # is it the first lines
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
@@ -2104,12 +2125,23 @@ sub pass_texi()
  INPUT_LINE: while ($_ = next_line())
     {
         #
-        # remove \input on the first lines only
-        #
-        if ($first_line)
+        # remove the lines preceding \input or an @-command
+        # 
+        if ($first_lines)
         {
-            next if /^\\input/;
-            $first_line = 0;
+            if (/^\\input/)
+            {
+                $first_lines = 0;
+                next;
+            }
+            if (/^\s*\@/)
+            {
+                $first_lines = 0;
+            }
+	    else
+            {
+                next;
+            }
         }
 	#print STDERR "PASS_TEXI: $_";
         scan_texi ($_, \$text, \@stack, $state);
@@ -2183,6 +2215,15 @@ sub skip_texi($$$)
 #                                                                             #
 #---###########################################################################
 
+# This is a virtual element for things appearing before @node and 
+# sectionning commands
+my $element_before_anything =
+{ 
+    'before_anything' => 1,
+    'place' => [],
+    'texi' => 'VIRTUAL ELEMENT BEFORE ANYTHING',
+};
+
 sub initialise_state_structure($)
 {
     my $state = shift;
@@ -2234,11 +2275,12 @@ my $do_scontents;           # do short table of contents if true
 
 sub pass_structure()
 {
-    my $first_line = 1;         # is it the first line
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
     initialise_state_structure($state);
+    $state->{'element'} = $element_before_anything;
+    $state->{'place'} = $element_before_anything->{'place'};
     my @stack;
     my $text;
 
@@ -2259,7 +2301,7 @@ sub pass_structure()
             #
             if ($tag and $tag eq 'node' or defined($sec2level{$tag}) or $tag eq 'printindex')
             {
-                $_ = substitute_texi_line($_);
+                $_ = substitute_texi_line($_); #usefull if there is an anchor ???
                 delete $state->{'empty_line'};
                 if (@stack and $tag eq 'node' or defined($sec2level{$tag}))
                 {
@@ -2285,7 +2327,7 @@ sub pass_structure()
                             next;
                         }
                         elsif (exists($nodes{$node}) and defined($nodes{$node}))
-                        {
+                        { # node appeared in a menu
                              $node_ref = $nodes{$node};
                         }
                         else
@@ -2303,6 +2345,7 @@ sub pass_structure()
                         $node_ref->{'automatic_directions'} = $auto_directions;
                         $node_ref->{'place'} = [];
                         $node_ref->{'current_place'} = [];
+                        merge_element_before_anything($node_ref);
                         $node_ref->{'index_names'} = [];
                         $state->{'place'} = $node_ref->{'current_place'};
                         $state->{'element'} = $node_ref;
@@ -2392,10 +2435,12 @@ sub pass_structure()
                                 $element_top = $section_ref;
                             }
                             $sections{$num} = $section_ref;
+                            merge_element_before_anything($section_ref);
                             if ($state->{'node_ref'} and !exists($state->{'node_ref'}->{'with_section'}))
                             {
                                 my $node_ref = $state->{'node_ref'};
                                 $section_ref->{'node_ref'} = $node_ref;
+                                $section_ref->{'titlefont'} = $node_ref->{'titlefont'};
                                 $node_ref->{'with_section'} = $section_ref;
                                 $node_ref->{'top'} = 1 if ($tag eq 'top');
                             }
@@ -2549,6 +2594,24 @@ sub skip($$$)
     } 
     return $line if ($line);
     return undef;
+}
+
+# merge the things appearing before the first @node or sectionning command
+# (held by element_before_anything) with the current element if not allready 
+# done 
+sub merge_element_before_anything($)
+{
+    my $element = shift;
+    if (exists($element_before_anything->{'place'}))
+    {
+        $element->{'current_place'} = $element_before_anything->{'place'};
+        $element->{'titlefont'} = $element_before_anything->{'titlefont'};
+        delete $element_before_anything->{'place'};
+        foreach my $placed_thing (@{$element->{'current_place'}})
+        {
+            $placed_thing->{'element'} = $element if (exists($placed_thing->{'element'}));
+        }
+    }
 }
 
 # find menu_prev, menu_up... for a node in menu
@@ -3842,10 +3905,10 @@ sub enter_index_entry($$$$$$)
         warn "$ERROR Undefined index command: ${prefix}index\n";
         return 0;
     }
-    unless (defined($element))
+    if (!exists($element->{'tag'}) and !$element->{'footnote'})
     {
         warn "$WARN Index entry before document: \@${prefix}index $key\n"; 
-        return 0; 
+	#return 0; 
     }
     $key =~ s/\s+$//;
     $key =~ s/^\s*//;
@@ -4049,6 +4112,8 @@ sub initialise_state($)
     $state->{'paragraph_style'} = [ '' ] unless exists($state->{'paragraph_style'}); 
     $state->{'preformatted_stack'} = [ '' ] unless exists($state->{'preformatted_stack'}); 
     $state->{'menu'} = 0 unless exists($state->{'menu'}); 
+    # if there is no $state->{'element'} the first element is used
+    $state->{'element'} = $elements_list[0] unless (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'});
 }
 
 sub pass_text()
@@ -4073,8 +4138,15 @@ sub pass_text()
         exit (0);
     }
 
+    # We set titlefont only if the titlefont appeared in the top element
+    if (defined($element_top->{'titlefont'}))
+    {
+         $element_top->{'has_heading'} = 1;
+         $value{'_titlefont'} = $element_top->{'titlefont'};
+    }
+    
     # prepare %Texi2HTML::THISDOC
-    $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_titlefont'});
+    $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_shorttitlepage'}) || substitute_line($value{'_titlefont'});
     $Texi2HTML::THISDOC{'title'} = substitute_line($value{'_settitle'}) || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'shorttitle'} =  substitute_line($value{'_shorttitle'});
 
@@ -4091,10 +4163,10 @@ sub pass_text()
     $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || "Untitled Document" ;
     $Texi2HTML::THISDOC{'title'} = $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
-    $Texi2HTML::THISDOC{'titlefont'} =  substitute_line($value{'_titlefont'});
-    $Texi2HTML::THISDOC{'subtitle'} =  substitute_line($value{'_subtitle'});
+    $Texi2HTML::THISDOC{'titlefont'} = substitute_line($value{'_titlefont'});
+    $Texi2HTML::THISDOC{'subtitle'} = substitute_line($value{'_subtitle'});
     
-    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_titlefont'}));
+    $Texi2HTML::THISDOC{'title_no_texi'} = &$Texi2HTML::Config::protect_html(remove_texi($value{'_title'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_settitle'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_shorttitlepage'})) || &$Texi2HTML::Config::protect_html(remove_texi($value{'_titlefont'}));
     $Texi2HTML::THISDOC{'shorttitle_no_texi'} =  &$Texi2HTML::Config::protect_html(remove_texi($value{'_shorttitle'}));
 
     my $top_no_texi = '';
@@ -4198,17 +4270,6 @@ sub pass_text()
     {
         $_ = shift @text_lines unless $index_pages;
 	#print STDERR "PASS_TEXT: $_";
-        unless ($in_doc)
-        {
-            if (/^\@(\w+)/)
-            { 
-                if (defined($sec2level{$1}) or ($1 eq 'node'))
-                {
-                    $in_doc = 1;
-                }
-            }
-            next unless ($in_doc);
-        }
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
@@ -4301,9 +4362,25 @@ sub pass_text()
                     $Texi2HTML::THIS_SECTION = \@section_lines;
                     $Texi2HTML::THIS_HEADER = \@head_lines;
 		    #print STDERR "LINES: @section_lines";
-                    $FH = do_element($FH, $element, $new_element) if ($element);
+		    #$FH = finish_element($FH, $element, $new_element) if ($element);
+                    if ($element)
+                    {
+                        $FH = finish_element($FH, $element, $new_element);
+                        @section_lines = ();
+                        @head_lines = ();
+                    } 
+                    else
+                    {
+                        print STDERR "# Writing elements:" if ($T2H_VERBOSE);
+                        if ($Texi2HTML::Config::IGNORE_PREAMBLE_TEXT)
+                        {
+                             @section_lines = ();
+                             @head_lines = ();
+                        }
+                        # remove empty line at the beginning of @section_lines
+                        shift @section_lines while (@section_lines and ($section_lines[0] =~ /^\s*$/));
+                    }
                     # begin new element
-                    print STDERR "# Writing elements:" if (! defined($element) and $T2H_VERBOSE);
                     $element = $new_element;
                     $state{'element'} = $element;
 		    #print STDERR "Doing hrefs for $element->{'texi'} First ";
@@ -4361,8 +4438,6 @@ sub pass_text()
                     }
                     print STDERR "." if ($T2H_VERBOSE);
                     print STDERR "\n" if ($T2H_DEBUG);
-                    @section_lines = ();
-                    @head_lines = ();
                 }
                 my $label = &$Texi2HTML::Config::anchor($current_element->{'id'}) . "\n";
                 if (@section_lines)
@@ -4459,7 +4534,7 @@ sub pass_text()
         close($FH);
         return;
     }
-    do_element ($FH, $element, undef);
+    finish_element ($FH, $element, undef);
 
     ############################################################################
     # Print ToC, Overview, Footnotes
@@ -4548,7 +4623,7 @@ sub pass_text()
     }
 }
 
-sub do_element($$$)
+sub finish_element($$$)
 {
     my $FH = shift;
     my $element = shift;
@@ -5342,7 +5417,7 @@ sub menu_entry($;$)
             $element = $element->{'with_section'};
         }
     
-	#print STDERR "href in menu for $element->{'texi'}\n";
+	#print STDERR "SUBHREF in menu for $element->{'texi'}\n";
         $href = href($element, $file);
         if ($Texi2HTML::Config::NUMBER_SECTIONS && !$Texi2HTML::Config::NODE_NAME_IN_MENU)
         {
@@ -5494,7 +5569,6 @@ sub do_xref($$$)
             {
                 $element = $element->{'with_section'};
             }
-	    #print STDERR "href in ref `$node_texi': $_";
             my $file = '';
             if (defined($state->{'element'}))
             {
@@ -5508,6 +5582,7 @@ sub do_xref($$$)
                 # won't be the file name
                 $file = $element->{'file'} unless ($Texi2HTML::Config::SPLIT);
             }
+	    #print STDERR "SUBHREF in ref `$node_texi': $_";
             my $href = href($element, $file);
             my $section = $args[2] || $args[1];
             $result = &$Texi2HTML::Config::internal_ref ($macro, $href, $section || $args[0], $section || $element->{'name'}, $element->{'section'});
@@ -5817,6 +5892,7 @@ sub do_index_entries($$$)
                    $origin_href .= '#' . $entry->{'id'} ;
                }
            }
+	   #print STDERR "SUBHREF in index for $entry_element->{'texi'}\n";
            $entries .= &$Texi2HTML::Config::index_entry ($origin_href, 
                      substitute_line($entry->{entry}),
                      href($entry_element, $element->{'file'}),
@@ -6537,6 +6613,10 @@ sub scan_structure($$$$)
             {
                 $value{'_shorttitle'} = substitute_texi_line($1);
             }
+            if ($macro eq 'shorttitlepage' and s/^\s+(.*)$//)
+            {
+                $value{'_shorttitlepage'} = substitute_texi_line($1);
+            }
             elsif($macro eq 'setfilename' and s/^\s+(.*)$//)
             {
                 $value{'_setfilename'} = substitute_texi_line($1);
@@ -6791,9 +6871,9 @@ sub scan_structure($$$$)
                         add_prev ($text, $stack, do_math($style->{'text'}));
                         next;
                     }
-                    elsif ($style->{'style'} eq 'titlefont')
+                    if (($style->{'style'} eq 'titlefont') and ($style->{'text'} =~ /\S/))
                     {
-                        $value{'_titlefont'} = $style->{'text'};
+                        $state->{'element'}->{'titlefont'} = $style->{'text'} unless ($state->{'titlepage'} or defined($state->{'element'}->{'titlefont'})) ;
                     }
                     if ($style->{'style'})
                     {

@@ -6,6 +6,8 @@ in first node
 * node in menu before top::
 @end menu
 
+@titlefont{A titlefont in a node}
+
 @node node in menu before top,,,first
 
 node in menu before top text

@@ -1,6 +1,4 @@
 
-@dircategory Texinfo documentation system
-* Texi2html: (texi2html).  Texinfo to HTML Converter.
 This file documents the texi2html script which converts
 Texinfo into HTML.
 
