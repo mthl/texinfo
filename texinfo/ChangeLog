@@ -1,3 +1,13 @@
+2003-06-03    <karl@gnu.org>
+
+	* mkinstalldirs: update from gnulib.
+
+2003-06-02 Akim Demaille <akim@epita.fr>
+
+	* util/texi2dvi (tex_envvars): New.
+	Use it to forward -I directories to BIBINPUTS and BSTINPUTS, in
+	addition of INDEXSTYLE and TEXINPUTS.
+
 2003-06-02    <karl@gnu.org>
 
 	* makeinfo/html.c (html_output_head): don't output the <link>, to
