@@ -1,3 +1,11 @@
+2002-12-26    <karl@gnu.org>
+
+	* doc/texinfo.tex (\insertcopying): ignore @c, @comment, and
+	@ignore...@end ignore as best we can.  Report from
+	"Joseph S. Myers" <jsm28@cam.ac.uk>, 24 Dec 2002
+	18:08:10 +0000 (GMT), for the gcc manual, which
+	uses these constructs for automatic man page generation.
+
 2002-12-23    <karl@gnu.org>
 
 	* doc/texinfo.txi (example): note that Texinfo commands are
