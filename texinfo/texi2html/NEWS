@@ -13,14 +13,15 @@ This file records noteworthy changes.
   new locations if you wish it to be used by newer versions of Texi2HTML.
 
 * Translation files are now stored in $datadir/texi2html/i18n/*, 
-  $sysconfdir/texi2html/i18n/*, ~/texi2html/i18n/*, and sourced in that order. 
+  $sysconfdir/texi2html/i18n/*, ~/.texi2html/i18n/*, and sourced in that order. 
   The translated strings are now associated with the english strings.
   Please see the documentation for the format of the new translation files.
 
 * First index page is the first page with a non empty index (with @printindex).
 
 * The glossary and bibliography terms aren't searched anymore. You should use 
-  @macro to simulate these features.
+  @macro to simulate these features (look at Tests/macros/glossary.texi for
+  an example).
 
 * We've standardized on GNU-style `--' prefixed long options, rather than the
   old single-dash prefixed long options in the help, but the single-dash style
@@ -29,31 +30,39 @@ This file records noteworthy changes.
 
 * @setref handling is removed as the right corresponding @-command is @anchor.
 
-* leading T2H_ is stripped from variable, hashes and array names. You should 
-  change your variable names for the new release. Global variables (%THISDOC,
-  $THIS_SECTION...) are now in the Texi2HTML namespace. Thus you should use
-  $Texi2HTML::THISDOC{'fulltitle'} for example.
+* No more global variables outside of namespaces.
+  Global variables are now in the Texi2HTML namespace.
+  leading T2H_ is stripped from variable, hashes and array names. You should 
+  change your variable names for the new release. As the global variables 
+  (%THISDOC, $THIS_SECTION...) are in the Texi2HTML namespace you should use
+  $Texi2HTML::THISDOC{'fulltitle'} now.
   functions from the main program should now be qualified in the main
-  namespace. t2h_ is stripped from the function name too.
-
-* Changes in the function reference used for the page layout. 
-  print_section: this function don't do the end of page anymore (except when 
-  split at node), end_section does this now.
-  the print_*_header, print_*_footer... functions take a ref on the buttons 
-  array as argument, instead of using the $T2H_BUTTONS global variable.
-
-* T2H_InitGlobals is not used anymore. Use set_body_text and 
-  %Texi2HTML::THISDOC values in print_page_foot and about_body.
-  toc file and main file are arguments for print_frame.
-  overview lines are arguments for print_toc_frame.
-
-* variables for latex2html are not in texi2html init file anymore but in 
-  l2h.init.
+  namespace. t2h_ is stripped from the function names too.
+  t2h_anchor is now a function reference in init file, and thus should 
+  be called like &$anchor(...).
+  toc file and main file are arguments for print_frame, overview lines are 
+  arguments for print_toc_frame (instead of global variables).
 
 * $THISPROG, $T2H_HOMEPAGE, $T2H_AUTHORS, $T2H_TODAY, $T2H_USER are now 
   values associated with the following keys in %Texi2HTML::THISDOC: 
   `program', `program_homepage', `today', `user'.
-  Don't use $T2H_ADDRESS anymore.
+
+* Changes in the function reference used for the page layout: 
+  print_section don't do the end of page or section anymore (except when 
+  split at node), end_section does the end of a section, and print_*_footer 
+  does the end of page.
+  the print_*_header, print_*_footer... functions take a ref on the buttons
+  array as argument, instead of using the $T2H_BUTTONS global variable.
+  Have a look at the texi2html.init file to update your configuration files.
+
+* T2H_InitGlobals is not used anymore. Use set_body_text to define
+  $BODYTEXT dynamically and %Texi2HTML::THISDOC values in print_page_foot 
+  and about_body to recreate the address instead of the $T2H_ADDRESS.
+  You can have a look at program_string in texi2html.init which does that.
+  $T2H_ADDRESS isn't used anymore.
+
+* variables for latex2html are not in texi2html init file anymore but in 
+  l2h.init.
 
 * don't expand @ifinfo regions by default.
 
