@@ -1,3 +1,10 @@
+2004-04-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\emptyusermacros, \identity): new macros.
+	(\indexdummiesnofonts): call it.
+	This is to semi-support macro calls in the arg to @deffn.
+	Report from: Akim Demaille <akim@epita.fr>, 20 Apr 2004 17:48:28 +0200.
+
 2004-04-21  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (gl_FUNC_MKSTEMP): rename from UTILS_FUNC_MKSTEMP,
@@ -1087,8 +1094,7 @@
 
 	* makeinfo/defun.c: --- (which gets reduced to --)
 	instead of -- (which gets reduced to -).
-	Report from Akim Demaille <akim@epita.fr>,
-	09 Feb 2004 18:06:29 +0100.
+	Report from Akim Demaille <akim@epita.fr>, 09 Feb 2004 18:06:29 +0100.
 
 2004-02-09  Karl Berry  <karl@gnu.org>
 
@@ -1122,8 +1128,7 @@
 
 	* doc/texinfo.tex (\indexnofonts): define \bullet .. \result, so
 	they can be used in @?index commands.
-	Report from: Akim Demaille <akim@epita.fr>,
-	06 Feb 2004 13:34:15 +0100.
+	Report from: Akim Demaille <akim@epita.fr>, 06 Feb 2004 13:34:15 +0100.
 
 2004-02-05  Karl Berry  <karl@gnu.org>
 
