@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.16 2003-05-13 21:07:55 karl Exp $
+   $Id: html.c,v 1.17 2003-05-18 13:14:29 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -153,16 +153,14 @@ append_char (buf, c)
     buffer_type *buf;
     int c;
 {
-  char str[2] = { 0, 0 };
-  str[0] = c;  /* appease SGI compiler */
-
-  if (buf->length + 1 >= buf->size)
+  buf->length++;
+  if (buf->length >= buf->size)
     {
       buf->size += 100;
       buf->buffer = xrealloc (buf->buffer, buf->size);
-      buf->buffer[buf->length] = 0;  /* in case it was the first alloc */
     }
-  strcat (buf->buffer, str);
+  buf->buffer[buf->length - 1] = c;
+  buf->buffer[buf->length] = 0;
 }
 
 
