@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.24 2003-04-09 12:29:26 karl Exp $
+$Id: dir-example,v 1.25 2003-04-26 13:06:59 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -67,6 +67,9 @@ Archiving
 Compression
 * bzip2: (bzip2).               General (de)compression of files (blocksort).
 * Gzip: (gzip).                 General (de)compression of files (lzw).
+
+Email
+* Anubis: (anubis).             The GNU outgoing mail processor.
 
 Typesetting
 * Groff: (groff).               The GNU troff document formatting system.
