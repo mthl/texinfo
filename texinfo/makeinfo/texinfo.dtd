@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.4 2003-10-29 18:36:57 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.5 2003-11-08 01:00:43 dirt Exp $
    Document Type Definition for Texinfo.
 
    Author: Philippe Martin (feloy@free.fr)
@@ -214,6 +214,8 @@
 <!ATTLIST verbatim     xml:space (preserve) #FIXED 'preserve'>
 
 <!ELEMENT para         (#PCDATA | %Inline.phrase; | footnote | %lang;)*>
+<!ATTLIST para
+	  role CDATA #IMPLIED>
 
 <!ELEMENT menu ((menuentry | para)*)>
 <!ELEMENT menuentry (menunode?, menutitle?, menucomment?)>
@@ -327,18 +329,23 @@
 
 
 
-<!ENTITY tex       "TeX">
-<!ENTITY ellipsis  "">
-<!ENTITY lt        "">
-<!ENTITY gt        "">
-<!ENTITY bullet    "">
-<!ENTITY copyright "">
-<!ENTITY minus     "">
-<!ENTITY linebreak "">
-<!ENTITY space     "">
-<!ENTITY dots      "">
-<!ENTITY enddots   "">
-<!ENTITY amp       "">
+<!ENTITY tex        "TeX">
+<!ENTITY ellipsis   "">
+<!ENTITY lt         "">
+<!ENTITY gt         "">
+<!ENTITY bullet     "">
+<!ENTITY copyright  "">
+<!ENTITY registered "">
+<!ENTITY minus      "">
+<!ENTITY linebreak  "">
+<!ENTITY space      "">
+<!ENTITY dots       "">
+<!ENTITY enddots    "">
+<!ENTITY amp        "">
+<!ENTITY ldquo      "">
+<!ENTITY rdquo      "">
+<!ENTITY mdash      "">
+<!ENTITY ndash      "">
 
 <!ENTITY auml "">
 <!ENTITY ouml "">

@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.22 2003-11-05 14:32:31 dirt Exp $
+   $Id: xml.c,v 1.23 2003-11-08 01:00:43 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -262,22 +262,22 @@ element docbook_element_list [] = {
 
   { "acronym",             0, 1, 0 },
   { "wordasword",          0, 1, 0 }, /* TT */
-  { "command",             0, 1, 0 }, /* CODE */
+  { "literal",             0, 1, 0 }, /* CODE */
   { "command",             0, 1, 0 }, /* COMMAND */
-  { "command",             0, 1, 0 }, /* ENV */
-  { "command",             0, 1, 0 }, /* FILE */
-  { "command",             0, 1, 0 }, /* OPTION */
-  { "command",             0, 1, 0 }, /* SAMP */
+  { "envar",               0, 1, 0 }, /* ENV */
+  { "filename",            0, 1, 0 }, /* FILE */
+  { "option",              0, 1, 0 }, /* OPTION */
+  { "literal",             0, 1, 0 }, /* SAMP */
   { "userinput",           0, 1, 0 }, /* KBD */
   { "wordasword",          0, 1, 0 }, /* URL */
   { "keycap",              0, 1, 0 }, /* KEY */
-  { "varname",             0, 1, 0 }, /* VAR */
+  { "replaceable",         0, 1, 0 }, /* VAR */
   { "",                    0, 1, 0 }, /* SC */
   { "firstterm",           0, 1, 0 }, /* DFN */
   { "emphasis",            0, 1, 0 }, /* EMPH */
   { "emphasis",            0, 1, 0 }, /* STRONG */
   { "citation",            0, 1, 0 }, /* CITE */
-  { "",                    0, 1, 0 },  /* NOTFIXEDWIDTH */
+  { "",                    0, 1, 0 }, /* NOTFIXEDWIDTH */
   { "wordasword",          0, 1, 0 }, /* I */
   { "wordasword",          0, 1, 0 }, /* B */
   { "",                    0, 1, 0 }, /* R */
@@ -433,6 +433,8 @@ int xml_in_para = 0;
 int xml_just_after_element = 0;
 int xml_keep_space = 0;
 
+int xml_no_indent = 0;
+
 int xml_no_para = 0;
 char *xml_node_id = NULL;
 int xml_sort_index = 0;
@@ -586,6 +588,32 @@ xml_indent_end_para ()
 }
 
 void
+xml_start_para ()
+{
+  if (xml_in_para)
+    return;
+  if (docbook)
+    xml_indent ();
+  insert_string ("<para");
+  if (xml_no_indent)
+    insert_string (" role=\"continues\"");
+  insert_string (">");
+  xml_no_indent = 0;
+  xml_in_para = 1;
+}
+
+void
+xml_end_para ()
+{
+  if (!xml_in_para)
+    return;
+  if (docbook)
+    xml_indent_end_para ();
+  insert_string ("</para>");
+  xml_in_para = 0;
+}
+
+void
 xml_end_document ()
 {
   if (xml_node_open)
@@ -691,30 +719,15 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
 
   if (arg == START && !xml_in_para && !xml_no_para
       && xml_element_list[elt].contained_in_para
-      && xml_element_list[xml_current_element()].contains_para )
-    {
-      if (docbook)
-	xml_indent ();
-      insert_string ("<para>");
-      xml_in_para = 1;
-    }
+      && xml_element_list[xml_current_element()].contains_para)
+    xml_start_para ();
 
 
   if (arg == START && xml_in_para && !xml_element_list[elt].contained_in_para)
-    {
-      if (docbook)
-	xml_indent_end_para ();
-      insert_string ("</para>");
-      xml_in_para = 0;
-    }
+    xml_end_para ();
 
   if (arg == END && xml_in_para && !xml_element_list[elt].contained_in_para)
-    {
-      if (docbook)
-	xml_indent_end_para ();
-      insert_string ("</para>");
-      xml_in_para = 0;
-    }
+    xml_end_para ();
 
   if (arg == START && docbook && !xml_in_para && !xml_element_list[elt].contained_in_para)
     xml_indent ();
@@ -804,10 +817,8 @@ xml_insert_entity (char *entity_name)
   if (!xml_in_para && !xml_no_para && !only_macro_expansion
       && xml_element_list[xml_current_element ()].contains_para
       && !in_fixed_width_font)
-    {
-      insert_string ("<para>");
-      xml_in_para = 1;
-    }
+    xml_start_para ();
+
   escape_html = 0;
   insert ('&');
   escape_html = saved_escape_html;
@@ -1020,16 +1031,7 @@ xml_add_char (character)
   if (xml_element_list[xml_current_element()].contains_para
       && !xml_in_para && !only_macro_expansion && !xml_no_para
       && !cr_or_whitespace (character) && !in_fixed_width_font)
-    {
-      if (docbook)
-	{
-	  xml_indent ();
-	  insert_string ("<para>\n");
-	}
-      else
-	insert_string ("<para>");
-      xml_in_para = 1;
-    }
+    xml_start_para ();
 
   if (xml_in_para)
     {
@@ -1038,10 +1040,7 @@ xml_add_char (character)
           if (xml_last_character == '\n' && !only_macro_expansion && !xml_no_para
               && xml_element_list[xml_current_element()].contains_para )
             {
-	      if (docbook)
-		xml_indent_end_para ();
-              insert_string ("</para>");
-              xml_in_para = 0;
+              xml_end_para ();
               xml_just_after_element = 1;
 	      xml_skip_newline = 1;
               if (xml_in_menu_entry_comment)

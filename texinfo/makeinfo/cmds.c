@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.24 2003-11-05 14:32:28 dirt Exp $
+   $Id: cmds.c,v 1.25 2003-11-08 01:00:42 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -47,7 +47,7 @@ void
   cm_code (), cm_copyright (), cm_ctrl (), cm_dfn (), cm_dircategory (),
   cm_direntry (), cm_dmn (), cm_dots (), cm_emph (), cm_enddots (), cm_i (),
   cm_image (), cm_kbd (), cm_key (), cm_no_op (), 
-  cm_novalidate (), cm_not_fixed_width (), cm_r (),
+  cm_novalidate (), cm_not_fixed_width (), cm_r (), cm_registeredsymbol (),
   cm_strong (), cm_var (), cm_sc (), cm_w (), cm_email (), cm_url (),
   cm_verb (), cm_copying (), cm_insert_copying (),
   cm_documentdescription ();
@@ -303,6 +303,7 @@ COMMAND command_table[] = {
   { "raisesections", cm_raisesections, NO_BRACE_ARGS },
   { "ref", cm_ref, BRACE_ARGS },
   { "refill", cm_no_op, NO_BRACE_ARGS },
+  { "registeredsymbol", cm_registeredsymbol, BRACE_ARGS },
   { "result", cm_result, BRACE_ARGS },
   { "ringaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "rmacro", cm_rmacro, NO_BRACE_ARGS },
@@ -535,6 +536,24 @@ cm_copyright (arg)
     }
 }
 
+/* Registered symbol.  */
+void
+cm_registeredsymbol (arg)
+  int arg;
+{
+  if (arg == START)
+    {
+      if (html)
+        add_word ("&reg;");
+      else if (docbook)
+        xml_insert_entity ("reg");
+      else if (xml && !docbook)
+        xml_insert_entity ("registered");
+      else
+        add_word ("(R)");
+    }
+}
+
 void
 cm_today (arg)
      int arg;
@@ -577,6 +596,9 @@ void
 cm_code (arg)
      int arg;
 {
+  if (arg == START)
+    in_fixed_width_font++;
+
   if (xml)
     {
       if (STREQ (command, "command"))
@@ -598,8 +620,6 @@ cm_code (arg)
 
       if (arg == START)
         {
-          in_fixed_width_font++;
-
           if (html)
             insert_html_tag (arg, "code");
           else if (!printing_index)
@@ -1068,6 +1088,8 @@ cm_noindent ()
 {
   if (!inhibit_paragraph_indentation)
     inhibit_paragraph_indentation = -1;
+  else
+    xml_no_indent = 1;
 }
 
 /* Force indentation of the next paragraph. */
@@ -1075,6 +1097,7 @@ void
 cm_indent ()
 {
   inhibit_paragraph_indentation = 0;
+  xml_no_indent = 0;
 }
 
 /* I don't know exactly what to do with this.  Should I allow

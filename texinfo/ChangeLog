@@ -1,3 +1,36 @@
+2003-11-08  Alper Ersoy  <dirt@gtk.org>
+
+	* doc/texinfo.txi (Custom Headings): removed a newline that broke
+	Docbook output.
+
+	* NEWS:
+	* makeinfo/cmds.c: new command @registeredsymbol
+
+	* makeinfo/cmds.c (cm_registeredsymbol): new function.
+	(cm_code): fixed in_fixed_width_font adjustment for XML and Docbook
+	outputs.
+	(cm_noindent, cm_indent): set xml_no_indent as well.
+
+	* makeinfo/makeinfo.c (reader_loop): use entities for double quotes
+	and dashes in HTML, XML and Docbook outputs.
+
+	* makeinfo/multi.c (setup_multitable_parameters): convert
+	@columnfractions to integer percentages (original code from Arnold
+	Robbins <arnold@skeeve.com>.)
+	(multitable_item, cm_tab): add width attribute to <td> element if
+	@columnfractions is used.
+
+	* makeinfo/texinfo.dtd: added an optional role attribute to para
+	element (used for @noindent.)  New attributes ldquo, rdquo, ndash,
+	mdash, registered.
+
+	* makeinfo/xml.c: replaced repeated command element with more
+	appropriate Docbook elements in docbook_element_list.
+	(xml_start_para, xml_end_para): new functions to centralize paragraph
+	handling.
+
+	* makeinfo/xml.h: new variable xml_no_indent.
+
 2003-11-07  Karl Berry  <karl@gnu.org>
 
 	* bootstrap: run the various auto* tools we need instead of
@@ -25,7 +58,7 @@
 	* bootstrap: no --force, everything is considered obsolete then
 	(thanks Alper).
 
-Thu Nov  6 06:36:51 2003  Alper Ersoy  <dirt@gtk.org>
+2003-11-06  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/html.c (html_output_head): add <link> elements pointing to
 	top, up, next, prev nodes when splitting output, and to top when not
@@ -92,7 +125,7 @@ Thu Nov  6 06:36:51 2003  Alper Ersoy  <dirt@gtk.org>
 
 	* util/dir-example (VM): add.
 
-Sat Nov  1 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
+2003-11-01  Alper Ersoy  <dirt@gtk.org>
 
 	* doc/texinfo.txi (Conditional Commands): Docbook text should
 		really use @ifdocbook.
@@ -101,9 +134,10 @@ Sat Nov  1 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
 	(long_options): new option no-raw-escapes.
 	* doc/info-stnd.texi (Invoking Info): document it.
 
-Fri Oct 31 14:57:46 2003  Alper Ersoy  <dirt@gtk.org>
+2003-10-31  Alper Ersoy  <dirt@gtk.org>
 
-	* makeinfo/xml.[ch]:
+	* makeinfo/xml.c:
+	* makeinfo/xml.h:
 	* makeinfo/insertion.c (handle_verbatim_environment): use
 	<![[CDATA...]]> for @verbatim in docbook output too.
 

@@ -1,5 +1,5 @@
 /* multi.c -- multiple-column tables (@multitable) for makeinfo.
-   $Id: multi.c,v 1.4 2002-11-04 21:28:10 karl Exp $
+   $Id: multi.c,v 1.5 2003-11-08 01:00:43 dirt Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -65,6 +65,13 @@ struct env
 
 /* index in environment table of currently selected environment */
 static int current_env_no;
+
+/* current column number */
+static int current_column_no;
+
+/* We need to make a difference between template based widths and
+   @columnfractions for HTML tables' sake.  Sigh.  */
+static int seen_column_fractions;
 
 /* column number of last column in current multitable */
 static int last_column;
@@ -259,6 +266,9 @@ setup_multitable_parameters ()
      but TeX doesn't either.  */
   hsep = vsep = 0;
 
+  /* Assume no @columnfractions per default.  */
+  seen_column_fractions = 0;
+
   while (*params) {
     while (whitespace (*params))
       params++;
@@ -272,6 +282,7 @@ setup_multitable_parameters ()
       else if (strcmp (command, "@vsep") == 0)
         vsep++;
       else if (strcmp (command, "@columnfractions") == 0) {
+        seen_column_fractions = 1;
         /* Clobber old environments and create new ones, starting at #1.
            Environment #0 is the normal output, so don't mess with it. */
         for ( ; i <= MAXCOLS; i++) {
@@ -287,14 +298,19 @@ setup_multitable_parameters ()
           while (*params && *params != ' ' && *params != '\t'
                  && *params != '\n' && *params != '@')
             params++;
-          setup_output_environment (i,
-                     (int) (columnfrac * (fill_column - current_indent) + .5));
+          /* For html/xml/docbook environments, translate fractions into integer
+             percentages.  Add .005 to avoid rounding problems.  */
+          if (xml || html)
+            setup_output_environment (i, (int) ((columnfrac + .005) * 100));
+          else
+            setup_output_environment (i,
+                (int) (columnfrac * (fill_column - current_indent) + .5));
         }
       }
 
     } else if (*params == '{') {
       unsigned template_width = find_template_width (&params);
-      
+
       /* This gives us two spaces between columns.  Seems reasonable.
          How to take into account current_indent here?  */
       setup_output_environment (i++, template_width + 2);
@@ -401,11 +417,17 @@ multitable_item ()
     xexit (1);
   }
 
+  current_column_no = 1;
+
   if (html)
     {
       if (!first_row)
 	add_word ("<br></td></tr>");	/* <br> for non-tables browsers. */
-      add_word ("<tr align=\"left\"><td valign=\"top\">");
+      if (seen_column_fractions)
+        add_word_args ("<tr align=\"left\"><td valign=\"top\" width=\"%d%%\">",
+            envs[current_column_no].fill_column);
+      else
+        add_word ("<tr align=\"left\"><td valign=\"top\">");
       first_row = 0;
       return 0;
     }
@@ -529,9 +551,17 @@ cm_tab ()
 {
   if (!multitable_active)
     error (_("ignoring @tab outside of multitable"));
+
+  current_column_no++;
   
   if (html)
-    add_word ("</td><td valign=\"top\">");
+    {
+      if (seen_column_fractions)
+        add_word_args ("</td><td valign=\"top\" width=\"%d%%\">",
+            envs[current_column_no].fill_column);
+      else
+        add_word ("</td><td valign=\"top\">");
+    }
   /*  else if (docbook)*/ /* 05-08 */
   else if (xml)
     xml_end_multitable_column ();

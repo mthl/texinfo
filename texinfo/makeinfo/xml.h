@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.9 2003-10-31 18:03:19 karl Exp $
+   $Id: xml.h,v 1.10 2003-11-08 01:00:43 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -27,6 +27,8 @@
 /* Separate index entries into divisions for each letters. */
 extern int xml_index_divisions;
 extern int xml_sort_index;
+
+extern int xml_no_indent;
 
 extern int xml_node_open;
 extern int xml_no_para;
