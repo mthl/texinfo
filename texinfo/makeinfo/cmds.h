@@ -1,5 +1,5 @@
 /* cmds.h -- declarations for cmds.c.
-   $Id: cmds.h,v 1.6 2004-07-16 19:22:36 wl Exp $
+   $Id: cmds.h,v 1.7 2004-07-25 00:17:21 wl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -122,8 +122,8 @@ extern void cm_acronym (int arg),
   cm_math (int arg),
   cm_not_fixed_width (int arg, int start, int end),
   cm_r (int arg),
-  cm_s (int arg),
   cm_sc (int arg, int start_pos, int end_pos),
+  cm_slanted (int arg),
   cm_strong (int arg, int start_pos, int end_pos),
   cm_tt (int arg),
   cm_indicate_url (int arg, int start, int end),
