@@ -1,3 +1,8 @@
+2003-08-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (titlefont): discuss html output a bit.
+	Suggestion from Patrice.
+
 2003-07-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\doignorecount): no need to initialize.
