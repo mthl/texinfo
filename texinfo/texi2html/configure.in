@@ -47,4 +47,4 @@ eval "mandir=$mandir"
 
 extrasub='s%@BANGPERL@%! @PERL@%'
 
-AC_OUTPUT(Makefile texi2html.1 texi2html:texi2html.pl doc/Makefile)
+AC_OUTPUT(Makefile texi2html.1 texi2html:texi2html.pl doc/Makefile Tests/Makefile)
