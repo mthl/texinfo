@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
+@c $Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12824,13 +12824,16 @@ Twice: a,b & a,b.
 @cindex Macro details
 @cindex Details of macro usage
 
-Due to unavoidable disparities in the @TeX{} and @command{makeinfo}
-implementations, Texinfo macros have the following limitations.
+Due to unavoidable limitations, certain macro-related constructs cause
+problems with @TeX{}.  If you get macro-related errors when producing
+the printed version of a manual, try expanding the macros with
+@command{makeinfo} by invoking @command{texi2dvi} with the @samp{-E}
+option (@ref{Format with texi2dvi}).
 
 @itemize @bullet
 @item
 All macros are expanded inside at least one @TeX{} group.  This means
-that @code{@@set} and other such commands will have no effect inside a
+that @code{@@set} and other such commands have no effect inside a
 macro.
 
 @item
@@ -12842,9 +12845,14 @@ Commas in macro arguments, even if escaped by a backslash, don't
 always work.
 
 @item
-The @TeX{} implementation cannot construct macros that define macros in
-the natural way.  To do this, you must use conditionals and raw @TeX{}.
-For example:
+It is best to avoid comments inside macro definitions.
+
+@item
+Macro arguments cannot cross lines.
+
+@item
+Macros cannot define macros in the natural way.  To do this, you must
+use conditionals and raw @TeX{}.  For example:
 
 @example
 @@ifnottex
@@ -12860,15 +12868,8 @@ something involving \arg\ somehow
 @@end tex
 @end example
 
-@item
-It is best to avoid comments inside macro definitions.
-
 @end itemize
 
-If some macro feature causes errors when producing the printed version
-of a manual, try expanding the macros with @command{makeinfo} by
-invoking @command{texi2dvi} with the @samp{-E} option; see @ref{Format
-with texi2dvi}.
 
 @node alias
 @section @samp{@@alias @var{new}=@var{existing}}
@@ -16780,7 +16781,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
+$Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16845,7 +16846,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.23 2003-01-07 00:12:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.24 2003-01-10 14:10:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
