@@ -1,3 +1,19 @@
+2003-10-06  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\dosubind, \doind): Cleanup, move code ...
+	  (\dosubindwrite, \dosubindsanitize): ... to new macros,
+	  (\emptymacro): and nuke this one.
+
+	* doc/texinfo.tex (\Ypagenumber): Add `\noexpand,' so that ...
+	  (\dosetq): ... doesn't have to redefine \folio.  Move \iflinks ...
+	  (\setref): ... here.
+
+2003-10-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\setdeffont): remove; this used DEF instead of
+	def, and thus had no effect for some years, so
+	clearly no one has been using it.  Noticed by Stepan.
+
 2003-10-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: document hyphen -> dash suppression in literal

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.70 2003-10-05 00:01:17 karl Exp $
+@c $Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9555,8 +9555,8 @@ commonly used in languages other than English.
 @findex AE
 @cindex @AE{}
 @findex dotless
-@cindex @dotless{i}
-@cindex @dotless{j}
+@cindex @dotless{i} (dotless i)
+@cindex @dotless{j} (dotless j)
 @cindex Dotless i, j
 @findex l
 @cindex @l{}
@@ -13135,6 +13135,11 @@ option (@ref{Format with texi2dvi}).
 As mentioned earlier, macro names must consist entirely of letters.
 
 @item
+It is not advisable to redefine any @TeX{} primitive, plain, or
+Texinfo command name as a macro. Unfortunately this is a very large
+set of names, and the possible resulting errors are completely random.
+
+@item
 All macros are expanded inside at least one @TeX{} group.  This means
 that @code{@@set} and other such commands have no effect inside a
 macro.
@@ -13229,11 +13234,17 @@ You'd do this as follows:
 @@alias moviecite = cite
 @end example
 
-Macros do not always have the same effect due to vagaries of argument
-parsing.  Also, aliases are much simpler to define than macros.  So the
-command is not redundant.  (It was also heavily used in the Jargon File!)
+Macros do not always have the same effect as aliases, due to vagaries
+of argument parsing.  Also, aliases are much simpler to define than
+macros.  So the command is not redundant.  (It was also heavily used
+in the Jargon File!)
 
 Aliases must not be recursive, directly or indirectly.
+
+It is not advisable to redefine any @TeX{} primitive, plain, or
+Texinfo command name as an alias.  Unfortunately this is a very large
+set of names, and the possible resulting errors are completely random.
+
 
 @node definfoenclose
 @section @samp{definfoenclose}: Customized Highlighting
@@ -17239,7 +17250,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.70 2003-10-05 00:01:17 karl Exp $
+$Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17302,7 +17313,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.70 2003-10-05 00:01:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.71 2003-10-07 12:56:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
