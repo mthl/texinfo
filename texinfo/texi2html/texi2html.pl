@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.75 2003-10-28 12:03:47 pertusus Exp $
+# $Id: texi2html.pl,v 1.76 2003-10-28 22:56:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1838,8 +1838,8 @@ if ($Texi2HTML::Config::SPLIT)
     # FIXME if Texi2HTML::Config::NODE_FILES is true and a node is called ${docu_name}_toc
     # ${docu_name}_ovr... there is trouble. This is fixable, but is it worth
     # fixing it ?
-    $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc.$docu_ext"; 
-    $docu_stoc  = "${docu_name}_ovr.$docu_ext"; 
+    $docu_toc   = $Texi2HTML::Config::TOC_FILE || "${docu_name}_toc.$docu_ext";
+    $docu_stoc  = "${docu_name}_ovr.$docu_ext";
     $docu_foot  = "${docu_name}_fot.$docu_ext";
     $docu_about = "${docu_name}_abt.$docu_ext";
     $docu_top   = $Texi2HTML::Config::TOP_FILE || $docu_doc;
@@ -3416,7 +3416,8 @@ sub rearrange_elements()
                     else
                     {
                         # FIXME if {'seen'} this is a node appearing in the
-                        # document. What to do in that case ?
+                        # document and a node like `(file)node'. What to 
+                        # do now ?
                         my $node_ref = { 'texi' => $node->{$direction},
                             'external_node' => 1 };
                         $nodes{$node->{$direction}} = $node_ref;
@@ -4532,7 +4533,7 @@ sub enter_index_entry($$$$$$)
     my $entry = $key;
     # The $key is only usefull for alphabetical sorting
     # FIXME if the index is a code index we should have $state->{'code_style'}=1
-    # or add @code{} to the $key.
+    # or add @code{} to the $key, otherwise --- will be changed to --.
     $key = remove_texi($key);
     return if ($key =~ /^\s*$/);
     while (exists $index->{$prefix}->{$key})
@@ -7157,7 +7158,7 @@ sub scan_texi($$$$;$)
 	    
             if ($macro =~ /^r?macro$/)
             { #FIXME what to do if 'arg_expansion' is true (ie within another
-              # macro call arguments
+              # macro call arguments ?
                 if (/^\s+(\w+)\s*(.*)/)
                 {
                     my $name = $1;

@@ -224,6 +224,7 @@ version of the manual which contains the bug, as given above.
 * Changing the page layout::  Fine tuning of the page layout
 * Customizing HTML::          Fine tuning of the @acronym{HTML} elements
                               associated with the texinfo constructs
+* Internationalization::      Help translating !
 * Indexop::                   Command Line Option Index
 * Indexvr::                   Variable Index
 * Indexcp::                   Concept Index
@@ -2678,6 +2679,75 @@ formatted as explained above. This function modifies the reference.
 @c ========================================================
 @c ========================================================
 
+@node Internationalization
+@appendix Internationalization
+
+The strings written in the document are selected based on the
+document language. This can be used to customize the strings, 
+as described in @ref{Strings}. This also enables translation of the
+strings. 
+
+@menu
+* Translating strings::
+* Adding new strings::
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Translating strings
+@appendixsec Translating strings
+
+@cindex Translation
+@cindex i18n
+@vindex $LANGUAGES
+@vindex $T2H_OBSOLETE_STRINGS
+
+If the language is allready supported, then there will be a file 
+in the @file{i18n} directory with name the two-letter 
+ISO-639 language code. In that case you can enhance the translations by 
+editing this file. There is a @code{$LANGUAGES->@{'@var{language}'@}}
+hash in that file. The keys are the english strings, in @code{''}, the 
+values (in @code{''} after @code{=>}) are the translations.
+When a string contains a @samp{%} followed by @samp{@{} @var{name} @samp{@}}
+it means that the string will be expanded by @command{texi2html}. For
+an example, see @ref{Strings}.
+
+If the language isn't currently supported, copy the @file{en} file in 
+@file{i18n} to the two-letter ISO-639 language code of your language
+ and then add your translations to the strings. You could also add your 
+two-letter language code in the @file{manage_i18n.pl} in the
+@code{@@known_languages} array.
+
+Obsoleted strings are not removed from the files, they are still present
+in the @code{$T2H_OBSOLETE_STRINGS->@{'@var{language}'@}} hash in case
+the string is reused later.
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node Adding new strings
+@appendixsec Adding new strings written to document
+
+@cindex internationalized strings
+@cindex @command{manage_i18n.pl}
+
+If you need to write strings, for example the new string @var{a string} 
+to the resulting document, call @code{&$I('a string')}. Use simple quotes.
+If you want to substitute a value in the string put 
+@code{%@{@var{string_value}@}}, in the string, and give a second argument 
+to @code{&$I}, a hash reference with key @var{string_value} and value 
+the what you want to substitute.
+Here is an example:
+
+@example
+return &$I('%@{name@} of %@{class@}', @{ 'name' => $name, 'class' => $class @});
+@end example
+
+In that case @code{%@{name@}} is substituted by @code{$name} in the translated
+string.
+
+After that you should run the command @command{./manage_i18n.pl} in the top
+directory, it should add your new strings to all the files in the @file{i18n}
+directory. 
+
+@c --------------------------------------------------------
 @c commandline option index.
 @node Indexop
 @appendix Command Line Option Index
