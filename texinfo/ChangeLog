@@ -1,3 +1,9 @@
+2003-08-13  Karl Berry  <karl@gnu.org>
+
+	* info/indices.c (info_index_apropos): correct typo, whoses ->
+	whose.  From: Jesper Harder <harder@ifa.au.dk>, 13 Aug 2003
+	14:49:26 +0200.
+
 2003-08-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex: excise spurious spaces, etc.
