@@ -1,9 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_PREREQ(2.13)
+AC_PREREQ(2.53)
 AC_INIT()
 AM_INIT_AUTOMAKE(texi2html, 1.66)
 dnl Misc variable settings
-T2H_DATE=2000-04-18
+T2H_DATE=2002-06-08
 T2H_VERSION=${VERSION}
 
 AC_SUBST(T2H_DATE)

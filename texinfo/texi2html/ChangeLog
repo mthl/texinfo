@@ -1,3 +1,16 @@
+2002-06-08  Derek Price  <oberon@umich.edu>
+
+	* configure.in: Update Texi2HTML date.
+	* NEWS: Update for new release.
+	* .cvsignore: Add autom4te.cache for new version of Autoconf.
+
+	* Makefile.in: Regenerated.
+	* aclocal.m4: Ditto.
+	* configure: Ditto.
+	* doc/Makefile.in: Ditto.
+	* doc/stamp-vti: Ditto.
+	* doc/version.texi: Ditto.
+
 2001-11-27  Adrian Aichner  <adrian@xemacs.org>
 
 	* texi2html.pl (pass5): Improve wording to say "# writing X

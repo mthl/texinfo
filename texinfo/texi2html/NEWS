@@ -1,6 +1,10 @@
 This file records noteworthy changes.
 
-1.65 ()
+1.66 (June 8 2002)
+
+* Many bug fixes.
+
+1.65 (August 26 2001)
 * Many bug fixes.
 * The operation of the previously broken << (FastBack) and >> (FastForward)
   buttons has changed slightly.  FastBack now returns to the beginning of the
