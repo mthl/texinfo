@@ -67,7 +67,6 @@ my $template_strings =
 
 # Handle per language files
 our $T2H_OBSOLETE_STRINGS = {};
-$Data::Dumper::Purity = 1;
 $Data::Dumper::Sortkeys = 1;
 
 if (@ARGV < 1)
@@ -299,7 +298,8 @@ sub update_template (@)
                             {
                                  if (s/^(.)//)
                                  {
-                                      $string .= '\\' . $1;
+                                      #$string .= '\\' . $1;
+                                      $string .= $1;
                                  }
                                  else
                                  {

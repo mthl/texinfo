@@ -1,5 +1,11 @@
 2003-09-12  Patrice Dumas <dumas@centre-cired.fr>
 
+	* manage_i18n.pl: remove \ from strings when finding out strings
+	to translate.
+	* i18n/fr: translate strings related with references.
+
+2003-09-12  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, texi2html.init: 0 is accepted as a value for
 	the reference arguments.
 	rewrite from scratch the functions handling references in .init 
