@@ -1,5 +1,5 @@
 /* lang.c -- language-dependent support.
-   $Id: lang.c,v 1.2 2002-10-14 21:23:43 karl Exp $
+   $Id: lang.c,v 1.3 2002-11-07 16:11:10 karl Exp $
 
    Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
 
@@ -30,6 +30,8 @@ encoding_code_type document_encoding_code = no_encoding;
 
 /* Current language code; default is English.  */
 language_code_type language_code = en;
+
+iso_map_type us_ascii_map [] = {{NULL, 0, 0}}; /* ASCII map is trivial */
 
 /* Translation table between HTML and ISO Codes.  The last item is
    hopefully the Unicode. It might be possible that those Unicodes are
@@ -131,16 +133,13 @@ iso_map_type iso8859_1_map [] = {
   { "uuml",   0xFC, 0x00FC },
   { "yacute", 0xFD, 0x00FD },
   { "thorn",  0xFE, 0x00FE },
-  { "yuml",   0xFF, 0x00FF }
+  { "yuml",   0xFF, 0x00FF },
+  { NULL, 0, 0 }
 };
-
-/* This might be put into structure below and NOT coded via define,
-   because some translation tables could contain different numbers of
-   characters, but for now it suffices.  */
-#define ISO_MAP_SIZE (sizeof (iso8859_1_map) / sizeof (iso8859_1_map[0]))
 
 encoding_type encoding_table[] = {
   { no_encoding, "(no encoding)", NULL },
+  { US_ASCII,    "US-ASCII",    us_ascii_map },
   { ISO_8859_1,  "ISO-8859-1",  (iso_map_type *) iso8859_1_map },
   { ISO_8859_2,  "ISO-8859-2",  NULL },
   { ISO_8859_3,  "ISO-8859-3",  NULL },
@@ -349,7 +348,7 @@ cm_search_iso_map (html)
   if (!iso)
     return -1;
 
-  for (i = 0; i < ISO_MAP_SIZE; i++)
+  for (i = 0; iso[i].html; i++)
     {
       if (strcmp (html, iso[i].html) == 0)
         return i;
@@ -370,7 +369,7 @@ cm_documentencoding ()
   get_rest_of_line (1, &enc_arg);
 
   /* See if we have this encoding.  */
-  for (enc = ISO_8859_1; enc != last_encoding_code; enc++)
+  for (enc = no_encoding+1; enc != last_encoding_code; enc++)
     {
       if (strcasecmp (enc_arg, encoding_table[enc].ecname) == 0)
         {
