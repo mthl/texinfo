@@ -1,3 +1,13 @@
+2003-01-22    <karl@gnu.org>
+
+	* doc/texinfo.tex: doc fix.
+	* doc/texinfo.tex (\dofootnote): rename from \footnotezzz.
+
+        Wed Jan 22 14:23:51 CET 2003  Stepan Kasal  <kasal@math.cas.cz>
+	* doc/texinfo.tex (\cartouche, \footnotezzz): removed \long, it
+	  has no effect for macros without a parameter;
+        (\fo@t, \f@@t, \f@t, \@foot): removed, local \def has no efect.
+
 2003-01-21    <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Formats): new section.
