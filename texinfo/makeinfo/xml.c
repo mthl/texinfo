@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.6 2002-11-08 18:13:42 feloy Exp $
+   $Id: xml.c,v 1.7 2002-11-08 19:24:59 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -207,7 +207,7 @@ element docbook_element_list [] = {
   { "chapter",             1, 0 }, /* CHAPHEADING */
   { "sect1",               1, 0 }, /* HEADING */
   { "sect2",               1, 0 }, /* SUBHEADING */
-  { "sect3",               1, 0 }, /* SUBSUBHEADING */
+  { "simplesect",               1, 0 }, /* SUBSUBHEADING */
 
   { "",                    1, 0 }, /* MENU */
   { "",                    1, 0 }, /* MENUENTRY */
@@ -339,6 +339,7 @@ replace_element replace_elements [] = {
   { CODE, DFN, -1 },
   { CODE, VAR, -1 },
   { EMPH, CODE, REPLACEABLE },
+  { VAR, VAR, -1},
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
