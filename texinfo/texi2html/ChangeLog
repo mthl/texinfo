@@ -264,7 +264,7 @@
 
 	* implemented @documentlanguage:
 	  - sets language of document, unless overwritten by -lang, or 
-	    explicitely set $T2H_LANG
+	    explicitly set $T2H_LANG
 
 	* introduced T2H_OBSOLETE_OPTIONS to prevent obsolete options to 
 	  ambiguate current options
@@ -429,12 +429,12 @@
 	* fixed atuomatic pointer creation for appendix chapters
 	* fixed handling of menu entries with description going into the
 	  next line, use numbered section names, if $T2H_NUMBER_SECTIONS
-	* texi2html.init: $T2H_TOP_HEADING for explicitely specifying
+	* texi2html.init: $T2H_TOP_HEADING for explicitly specifying
 	  heading of top node
 	* fixed handling of headings (no new page on -split section)
 	* fixed bug in index (generation of section names)
 	* stoc in _ovr.html within BLOCKQUOTES
-	* get rid of bulletts in ToC, if $T2H_NUMBER_SECTIONS
+	* get rid of bullets in ToC, if $T2H_NUMBER_SECTIONS
 
 2000-04-06  Olaf Bachmann  <obachman@mathematik.uni-kl.de>
 
