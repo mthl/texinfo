@@ -79,7 +79,7 @@ $GNULIBSRC/doc/fdl.texi		doc
 #
 $GNULIBSRC/lib/alloca.c		lib
 $GNULIBSRC/lib/getopt.c		lib
-$GNULIBSRC/lib/getopt.h		lib
+$GNULIBSRC/lib/getopt_.h	lib
 $GNULIBSRC/lib/getopt1.c	lib
 $GNULIBSRC/lib/gettext.h	lib
 $GNULIBSRC/lib/memcpy.c		lib
