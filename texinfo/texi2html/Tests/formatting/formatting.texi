@@ -379,6 +379,7 @@ l--ine
 l--ine
 @end ftable
 
+@verbatiminclude simplest.texi
 
 @end macro
 

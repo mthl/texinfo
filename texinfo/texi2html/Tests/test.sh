@@ -49,6 +49,7 @@ export T2H_HOME=../..
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && perl -x -w ../../texi2html.pl -test $options -init ../../examples/inlinestyle.init $texi_file) 2>$dir/$stderr_file > /dev/null
 #(cd $dir && ../../texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && texi2html -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 (cd $dir && perl -x -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"

@@ -406,7 +406,7 @@ ul.toc {list-style: none}
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top">* chapter2: description</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2</td></tr>
+</pre></th></tr><tr><td align="left" valign="top">&bull; chapter2: description</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2</td></tr>
 </table>
 
 
@@ -470,7 +470,7 @@ error--&gt;
 &lowast;
 -|
 &rArr;
-October, 19 2003
+October, 26 2003
 &aring;
 &Aring;
 &aelig;
@@ -889,7 +889,14 @@ See <a href="../file name/">cross ref name: (file name)</a>
 </p></dd>
 </dl>
 
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest
+
+@node Top
+
+This is a very simple texi manual.
+</pre>
 
 <table><tr><td>&nbsp;</td><td><pre class="example">
 &lt;
@@ -952,7 +959,7 @@ error--&gt;
 &lowast;
 -|
 &rArr;
-October, 19 2003
+October, 26 2003
 &aring;
 &Aring;
 &aelig;
@@ -1349,7 +1356,14 @@ See <a href="../file name/">cross ref name: (file name)</a>
 </pre></dd>
 </dl>
 <pre class="example">
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest
+
+@node Top
+
+This is a very simple texi manual.
+</pre>
 </pre></td></tr></table>
 <a name="IDX53"></a>
 <a name="IDX54"></a>
