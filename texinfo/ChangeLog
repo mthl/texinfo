@@ -1,3 +1,14 @@
+2003-07-23  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\heading, \subheading, \subsubheading): Call
+	  \suppressfirstparagraphindent after setting the heading.
+	  (\headingyyy, \subheadingyyy, \subsubheadingyyy): New macros.
+	  (\chapheadingzzz): Call \suppressfirstparagraphindent at the end
+	  and move \chapbreak ...
+	  (\chapheading): ... here.
+	  (\majorheading): Do a modified \chapbreak, then call \chapheadingzzz.
+	  (\majorheadingzzz): Deleted.
+
 2003-07-16    <karl@gnu.org>
 
 	* doc/texinfo.txi (makeinfo Pointer Creation): must pxref Menus,
