@@ -44,9 +44,10 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Test T2h_nounicode.
   Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
-  implement the cross references stuff discussed on the texinfo list to 
-  generate targets.
 
+* look in texinfo/htmlxref.cnf for cross refs.
+
+* add a configure switch --with-encode
 
 * handle right things like
 -> error with @item on same line than @table
@@ -60,3 +61,15 @@ text
 @code{
 @printindex cp
 }
+
+* in chm.init (Jose Fonseca)
+
+[WINDOWS]
+ 
+Default=,"ug.hhc","ug.hhk","ug.html","ug.html",,,,,0x22520,,0x384e,,,,,,,,0
+
+The numbers are a bitmask of the enabled buttons. The ones here are
+IMO a good default. In the future you may also add that as an
+option, as the Docbook XSL stylesheets do (see in
+http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
+all the CHM related parameters one can change).

@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.3 2003-08-29 16:29:53 dprice Exp $
+# $Id: MySimple.pm,v 1.4 2004-02-10 00:12:42 pertusus Exp $
 
 # use strict;
 # no strict 'refs';
@@ -94,7 +94,7 @@ sub getOptions
 	  { 
 	   type => ':i', 
 	   default => '',
-	   linkage => sub {$self->helpOptions($_[1]); exit (0) if $helpThenExit;},
+	   linkage => sub {$self->helpOptions($_[1]); sleep 5;exit (0) if $helpThenExit;},
 	   verbose => "print help and exit"
 	  };
 	}

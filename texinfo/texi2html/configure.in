@@ -20,12 +20,22 @@ T2H_L2H_FILE=$srcdir/l2h.init
 AC_SUBST_FILE([T2H_L2H_FILE])
 T2H_TRANSLATIONS_FILE=$srcdir/translations.pl
 AC_SUBST_FILE([T2H_TRANSLATIONS_FILE])
-if perl -e "use Encode" > /dev/null 2>&1; then
-T2H_UNICODE_FILE=$srcdir/T2h_unicode.pm
-else
-T2H_UNICODE_FILE=$srcdir/T2h_nounicode.pm
-fi
-AC_SUBST_FILE([T2H_UNICODE_FILE])
+AC_ARG_WITH([encode],
+           AC_HELP_STRING([--with-encode],
+                           [use encode (default: detected)]),
+            [if test $withval = 'no'; then
+              USE_UNICODE=0
+             else
+              USE_UNICODE=1
+             fi],
+            [
+            if perl -e "use Encode; use Unicode::Normalize;" > /dev/null 2>&1; 
+              then USE_UNICODE=1
+            else
+              USE_UNICODE=0
+            fi
+            ])
+AC_SUBST([USE_UNICODE])
 
 dnl Checks for programs.
 AC_PATH_PROG(PERL, perl, /usr/bin/env perl, /opt/perl5/bin:"$PATH")
@@ -56,6 +66,6 @@ AC_CONFIG_FILES([\
                  Makefile \
                  Tests/Makefile \
                  doc/Makefile \
-		 texi2html.1 \
+                 texi2html.1 \
                  ])
 AC_OUTPUT

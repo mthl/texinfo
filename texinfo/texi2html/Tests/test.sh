@@ -155,8 +155,8 @@ if [ ! -z $1 ]; then
 	exit
 fi
 
-test_texi GermanNodeTest nodetest.texi
-test_texi GermanNodeTest nodetest_for_makeinfo.texi "" 5
+test_texi GermanNodeTest nodetest.texi "" 1
+test_texi GermanNodeTest nodetest_for_makeinfo.texi "" 9
 test_texi index_table
 test_texi index_table split_chapter_index.texi "-split chapter -init index_test.init"
 test_texi index_table index_split.texi "-split chapter -init index_test.init"

@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.104 2004-02-06 23:37:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.105 2004-02-10 00:12:42 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -185,6 +185,7 @@ our $FRAMES;
 our $SHOW_MENU;
 our $NUMBER_SECTIONS;
 our $USE_NODES;
+our $USE_UNICODE;
 our $NODE_FILES;
 our $NODE_NAME_IN_MENU;
 our $AVOID_MENU_REDUNDANCY;
@@ -623,22 +624,288 @@ foreach my $special (keys(%special_style))
         'function' => \&t2h_remove_command }
           unless (defined($style_map_texi{$special}));
 }
-# @T2H_UNICODE_FILE@
 
-if ($0 =~ /\.pl$/)
+our %cross_ref_texi_map = %texi_map;
+our %cross_ref_simple_map_texi = %simple_map_texi;
+our %cross_ref_style_map_texi = ();
+
+foreach my $command (keys(%style_map_texi))
 {
-    if ($] >= 5.008)
+    $cross_ref_style_map_texi{$command} = {}; 
+    foreach my $key (keys (%{$style_map_texi{$command}}))
     {
-        require "$ENV{T2H_HOME}/T2h_unicode.pm" 
-           if (-e "$ENV{T2H_HOME}/T2h_unicode.pm" && -r "$ENV{T2H_HOME}/T2h_unicode.pm");
+#print STDERR "$command, $key, $style_map_texi{$command}->{$key}\n";
+         $cross_ref_style_map_texi{$command}->{$key} = 
+              $style_map_texi{$command}->{$key};
+    }
+}
+
+$cross_ref_simple_map_texi{"\n"} = ' ';
+
+sub t2h_utf8_accent($$)
+{
+    my $accent = shift;
+    my $args = shift;
+                                                                                
+    my $text = $args->[0];
+
+    if ($accent eq 'dotless')
+    {
+        return "\x{0131}" if ($text eq 'i');
+        #return "\x{}" if ($text eq 'j'); # not found !
+        return $text;
+    }
+        
+    return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritical{$accent}))) 
+        if (defined($unicode_diacritical{$accent}));
+    return ascii_accents($text, $accent);
+}
+
+sub t2h_utf8_normal_text($)
+{
+    my $text = shift;
+    $text =~ s/---/\x{2014}/g;
+    $text =~ s/--/\x{2013}/g;
+    $text =~ s/``/\x{201C}/g;
+    $text =~ s/''/\x{201D}/g;
+    return $text;
+}
+
+sub t2h_cross_manual_normal_text($)
+{
+   my $text = shift;
+   $text = main::normalise_space($text);
+   my $result = '';
+   while ($text ne '')
+   {
+        if ($text =~ s/^([A-Za-z0-9]+)//o)
+        {
+             $result .= $1;
+        }
+        elsif ($text =~ s/^ //o)
+        {
+             $result .= '-';
+        }
+        elsif ($text =~ s/^(.)//o)
+        {
+             if (exists($ascii_character_map{$1}))
+             {
+                  $result .= '_' . lc($ascii_character_map{$1});
+             }
+             elsif ($USE_UNICODE)
+             {
+                  $result .= $1;
+             }
+             else
+             {
+                  $result .= '_' . '00' . lc(sprintf("%02x",ord($1)));
+             }
+        }
+        else
+        {
+             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
+             sleep 1;
+        }    
+   }
+   
+   return $result;
+}
+
+sub t2h_nounicode_cross_manual_accent($$)
+{
+    my $accent = shift;
+    my $args = shift;
+                                                                                
+    my $text = $args->[0];
+
+    return '_' . lc($unicode_accents{$accent}->{$text})
+        if (defined($unicode_accents{$accent}->{$text}));
+    return ($text . '_' . lc($unicode_diacritical{$accent})) 
+        if (defined($unicode_diacritical{$accent}));
+    return ascii_accents($text, $accent);
+}
+
+sub t2h_unicode_to_protected($)
+{
+   my $text = shift;
+   my $result = '';
+   while ($text ne '')
+   {
+        if ($text =~ s/^([A-Za-z0-9_\-]+)//o)
+        {
+             $result .= $1;
+        }
+        elsif ($text =~ s/^(.)//o)
+        {
+             $result .= '_' . lc(sprintf("%04x",ord($1)));
+        }
+        else
+        {
+             print STDERR "Bug: unknown character in node (likely in infinite loop)\n";
+             sleep 1;
+        }    
+   }
+   
+   return $result;
+}
+
+sub t2h_cross_manual_line($)
+{
+    my $text = shift;
+    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $main::texi_map_ref = \%cross_ref_texi_map;
+    my $normal_text_kept = $normal_text;
+    $normal_text = \&t2h_cross_manual_normal_text;
+    
+    my $cross_ref;
+    if ($USE_UNICODE)
+    {
+         $cross_ref = t2h_unicode_to_protected(Unicode::Normalize::NFC(main::remove_texi($text)));
     }
     else
     {
-        require "$ENV{T2H_HOME}/T2h_nounicode.pm" 
-           if (-e "$ENV{T2H_HOME}/T2h_nounicode.pm" && -r "$ENV{T2H_HOME}/T2h_nounicode.pm");
+         $cross_ref = main::remove_texi($text);
+    }
+
+    $normal_text = $normal_text_kept;
+    $main::simple_map_texi_ref = \%simple_map_texi;
+    $main::style_map_texi_ref = \%style_map_texi;
+    $main::texi_map_ref = \%texi_map;
+    return $cross_ref;
+}
+
+sub set_encoding($)
+{
+    my $encoding = shift;
+    if ($USE_UNICODE)
+    {
+         if (! Encode::resolve_alias($encoding))
+         {
+              main::echo_warn("Encoding $DOCUMENT_ENCODING unknown");
+              return undef;
+         }
+         print STDERR "# Using encoding " . Encode::resolve_alias($encoding) . "\n"
+             if ($VERBOSE);
+         return Encode::resolve_alias($encoding); 
+    }
+    else
+    {
+         main::echo_warn("Nothing specific done for encodings (due to the perl version)");
+         return undef;
     }
 }
+
+foreach my $key (keys(%unicode_map))
+{
+    if ($unicode_map{$key} ne '')
+    {
+        if ($USE_UNICODE)
+        {
+             $cross_ref_texi_map{$key} = chr(hex($unicode_map{$key}));
+        }
+        else
+        {
+             $cross_ref_texi_map{$key} = '_' . lc($unicode_map{$key});
+        }
+    }
 }
+
+foreach my $key (keys(%cross_ref_style_map_texi))
+{
+    if (($unicode_accents{$key} or ($key eq 'tieaccent') or ($key eq 'dotless')) 
+        and (ref($cross_ref_style_map_texi{$key}) eq 'HASH'))
+    {
+        if ($USE_UNICODE)
+        {
+             $cross_ref_style_map_texi{$key}->{'function'} = \&t2h_utf8_accent;
+        }
+        else
+        {
+             $cross_ref_style_map_texi{$key}->{'function'} = \&t2h_nounicode_cross_manual_accent;
+        }
+    }
+}
+
+# This function is used to construct a link name from a node name as 
+# described in the proposal I posted on texinfo-pretest.
+sub t2h_cross_manual_links($$)
+{
+    my $nodes_hash = shift;
+    my $cross_reference_hash = shift;
+
+    $main::simple_map_texi_ref = \%cross_ref_simple_map_texi;
+    $main::style_map_texi_ref = \%cross_ref_style_map_texi;
+    $main::texi_map_ref = \%cross_ref_texi_map;
+    my $normal_text_kept = $normal_text;
+    $normal_text = \&t2h_cross_manual_normal_text;
+
+    foreach my $key (keys(%$nodes_hash))
+    {
+        my $node = $nodes_hash->{$key};
+        next if ($node->{'index_page'});
+        if (!defined($node->{'texi'}))
+        {
+            # begin debug section 
+            foreach my $key (keys(%$node))
+            {
+                #print STDERR "$key:$node->{$key}!!!\n";
+            }
+            # end debug section 
+        }
+        else 
+        {
+            if ($USE_UNICODE)
+            {
+                 my $text = $node->{'texi'};
+#print STDERR "CROSS_MANUAL $node->{'texi'}\n";
+                 if (defined($DOCUMENT_ENCODING) and 
+                      Encode::resolve_alias($DOCUMENT_ENCODING) and
+                      (Encode::resolve_alias($DOCUMENT_ENCODING) ne 'utf8'))
+                 {
+                      $text = Encode::decode($DOCUMENT_ENCODING, $text);
+                 }
+                 $node->{'cross_manual_target'} = t2h_unicode_to_protected(Unicode::Normalize::NFC(main::remove_texi($text)));
+            }
+            else
+            {
+                 $node->{'cross_manual_target'} = main::remove_texi($node->{'texi'});
+            }
+#print STDERR "CROSS_MANUAL_TARGET $node->{'cross_manual_target'}\n";
+            unless ($node->{'external_node'})
+            {
+                if (defined($cross_reference_hash->{$node->{'cross_manual_target'}}))
+                {
+                    main::echo_error("Node equivalent with `$node->{'texi'}' allready used `$cross_reference_hash->{$node->{'cross_manual_target'}}'");
+                }
+                else 
+                {
+                    $cross_reference_hash->{$node->{'cross_manual_target'}} = $node->{'texi'};
+                }
+            }
+            #print STDERR "$node->{'texi'}: $node->{'cross_manual_target'}\n";
+        }
+    }
+
+    $normal_text = $normal_text_kept;
+    $main::simple_map_texi_ref = \%simple_map_texi;
+    $main::style_map_texi_ref = \%style_map_texi;
+    $main::texi_map_ref = \%texi_map;
+}
+
+$USE_UNICODE = '@USE_UNICODE@';
+if ($USE_UNICODE eq '@USE_UNICODE@')
+{
+    $USE_UNICODE = 1;
+    eval {
+        require Encode;
+        require Unicode::Normalize; 
+        Encode->import('encode');
+    };
+    $USE_UNICODE = 0 if ($@);
+}
+}
+
 our %value;
 our %user_sub;
 
@@ -1307,45 +1574,45 @@ $T2H_OPTIONS -> {'ifplaintext'} =
  verbose => "expand ifplaintext sections",
 };
 
-$T2H_OPTIONS -> {'no-ifhtml'} =
-{
- type => '!',
- linkage => sub { set_expansion('html', (! $_[1])); },
- verbose => "don't expand ifhtml and html sections",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-ifhtml'} =
+#{
+# type => '!',
+# linkage => sub { set_expansion('html', (! $_[1])); },
+# verbose => "don't expand ifhtml and html sections",
+# noHelp => 1,
+#};
 
-$T2H_OPTIONS -> {'no-ifinfo'} =
-{
- type => '!',
- linkage => sub { set_expansion('info', (! $_[1])); },
- verbose => "don't expand ifinfo",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-ifinfo'} =
+#{
+# type => '!',
+# linkage => sub { set_expansion('info', (! $_[1])); },
+# verbose => "don't expand ifinfo",
+# noHelp => 1,
+#};
 
-$T2H_OPTIONS -> {'no-ifxml'} =
-{
- type => '!',
- linkage => sub { set_expansion('xml', (! $_[1])); },
- verbose => "don't expand ifxml and xml sections",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-ifxml'} =
+#{
+# type => '!',
+# linkage => sub { set_expansion('xml', (! $_[1])); },
+# verbose => "don't expand ifxml and xml sections",
+# noHelp => 1,
+#};
 
-$T2H_OPTIONS -> {'no-iftex'} =
-{
- type => '!',
- linkage => sub { set_expansion('tex', (! $_[1])); },
- verbose => "don't expand iftex and tex sections",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-iftex'} =
+#{
+# type => '!',
+# linkage => sub { set_expansion('tex', (! $_[1])); },
+# verbose => "don't expand iftex and tex sections",
+# noHelp => 1,
+#};
 
-$T2H_OPTIONS -> {'no-ifplaintext'} =
-{
- type => '!',
- linkage => sub { set_expansion('plaintext', (! $_[1])); },
- verbose => "don't expand ifplaintext sections",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-ifplaintext'} =
+#{
+# type => '!',
+# linkage => sub { set_expansion('plaintext', (! $_[1])); },
+# verbose => "don't expand ifplaintext sections",
+# noHelp => 1,
+#};
 
 $T2H_OPTIONS -> {'invisible'} =
 {
@@ -1407,13 +1674,13 @@ $T2H_OPTIONS -> {'menu'} =
  verbose => 'output Texinfo menus',
 };
 
-$T2H_OPTIONS -> {'no-menu'} =
-{
- type => '!',
- linkage => sub { $Texi2HTML::Config::SHOW_MENU = (! $_[1]);},
- verbose => "don't output Texinfo menus",
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-menu'} =
+#{
+# type => '!',
+# linkage => sub { $Texi2HTML::Config::SHOW_MENU = (! $_[1]);},
+# verbose => "don't output Texinfo menus",
+# noHelp => 1,
+#};
 
 $T2H_OPTIONS -> {'number'} =
 {
@@ -1422,13 +1689,13 @@ $T2H_OPTIONS -> {'number'} =
  verbose => 'use numbered sections',
 };
 
-$T2H_OPTIONS -> {'no-number'} =
-{
- type => '!',
- linkage => sub { $Texi2HTML::Config::NUMBER_SECTIONS = (! $_[1]);}, 
- verbose => 'sections not numbered',
- noHelp => 1,
-};
+#$T2H_OPTIONS -> {'no-number'} =
+#{
+# type => '!',
+# linkage => sub { $Texi2HTML::Config::NUMBER_SECTIONS = (! $_[1]);}, 
+# verbose => 'sections not numbered',
+# noHelp => 1,
+#};
 
 $T2H_OPTIONS -> {'use-nodes'} =
 {
@@ -4485,7 +4752,7 @@ sub rearrange_elements()
     }
 
     # Find cross manual links as explained on the texinfo mailing list
-    Texi2HTML::Config::cross_manual_links(\%nodes, \%cross_reference_nodes);
+    Texi2HTML::Config::t2h_cross_manual_links(\%nodes, \%cross_reference_nodes);
 
     # Find node file names
     if ($Texi2HTML::Config::NODE_FILES)
@@ -8249,7 +8516,7 @@ sub scan_structure($$$$;$)
                     $index_properties->{$name}->{'code'} = 1 if $macro eq 'defcodeindex';
                 }
                 else
-                {
+                {# FIXME makeinfo don't warn ?
                     echo_error ("Bad $macro line: $_", $line_nr);
                 }
                 return;
