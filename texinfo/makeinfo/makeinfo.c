@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.68 2004-11-07 13:57:22 karl Exp $
+   $Id: makeinfo.c,v 1.69 2004-11-11 17:48:43 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
@@ -4015,6 +4015,7 @@ char *
 maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
 {
   char *result;
+  extern int xml_in_para;
 
   /* Inhibit indentation and filling, so that extra newlines
      are not added to the expansion.  (This is undesirable if
@@ -4023,6 +4024,10 @@ maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
   int saved_indented_fill = indented_fill;
   int saved_no_indent = no_indent;
   int saved_escape_html = escape_html;
+  int saved_xml_in_para;
+
+  if (xml)
+    saved_xml_in_para = xml_in_para;
 
   filling_enabled = 0;
   indented_fill = 0;
@@ -4035,6 +4040,9 @@ maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
   indented_fill = saved_indented_fill;
   no_indent = saved_no_indent;
   escape_html = saved_escape_html;
+
+  if (xml)
+    xml_in_para = saved_xml_in_para;
 
   return result;
 }

@@ -1,3 +1,10 @@
+2004-11-11  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/makeinfo.c (expansion): save and restore xml_in_para,
+		so we don't get a spurious </para> after </dircategory>
+		(dircat test).
+	From: Vincent Lefevre, 20 Oct 2004 15:40:39 +0200.
+
 2004-11-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\pdfmakeoutlines): in the first run through the
