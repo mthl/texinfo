@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.41 2003-11-28 04:57:49 dirt Exp $
+   $Id: cmds.c,v 1.42 2003-11-28 05:04:15 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -585,7 +585,7 @@ cm_comment ()
   if (html || xml)
     {
       char *line;
-      get_rest_of_line (1, &line);
+      get_rest_of_line (0, &line);
 
       if (strlen (line) > 0)
         {
