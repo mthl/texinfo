@@ -1,5 +1,10 @@
 2003-11-09  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.c (main): fixed a segfault with --html
+	--no-header.
+
+2003-11-09  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/html.c (html_output_head): output node name in title first.
 
 2003-11-09  Alper Ersoy  <dirt@gtk.org>

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.39 2003-11-08 01:00:42 dirt Exp $
+   $Id: makeinfo.c,v 1.40 2003-11-09 16:26:18 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -755,6 +755,10 @@ For more information about these matters, see the files named COPYING.\n"),
 
   if (no_headers)
     {
+      /* If the user did not specify an output file, use stdout. */
+      if (!command_output_filename)
+        command_output_filename = xstrdup ("-");
+
       if (html && splitting && !STREQ (command_output_filename, "-"))
         { /* --no-headers --no-split --html indicates confusion. */
           fprintf (stderr,
@@ -765,10 +769,6 @@ For more information about these matters, see the files named COPYING.\n"),
 
       /* --no-headers implies --no-split.  */
       splitting = 0;
-
-      /* If the user did not specify an output file, use stdout. */
-      if (!command_output_filename)
-        command_output_filename = xstrdup ("-");
     }
 
   if (process_info == -1)
