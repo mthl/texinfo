@@ -1,3 +1,12 @@
+2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't use open with three args, use binmode (for
+	old perl).
+	* doc/Makefile.am: rebuild the manual based on the sources, not 
+	on the script, as it is remade by ./configure. Use the rebuild
+	of the manual as a check target (ideas from Derek).
+	* Tests/*: test for results with USE_UNICODE set to 0.
+
 2005-02-01  Derek Price  <derek@ximbiot.com>
 
 	* configure.ac: Revert most of the PERL change.

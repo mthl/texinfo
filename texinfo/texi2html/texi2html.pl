@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.123 2005-01-31 00:44:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.124 2005-02-03 00:28:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -6744,9 +6744,13 @@ sub open_file($$)
     my $line_number = shift;
     local *FH;
     #if ((defined($from_encoding) and open(*FH, ":encoding($from_encoding)", $name)) or  open(*FH, $name))
-    if ((defined($from_encoding) and open(*FH, "<:$from_encoding", $name)) or  open(*FH, $name))
+    #if ((defined($from_encoding) and open(*FH, "<:$from_encoding", $name)) or  open(*FH, $name))
+    if (open(*FH, "<$name"))
     { 
-        binmode (*FH, ":encoding($from_encoding)") if (defined($from_encoding));
+        if (defined($from_encoding))
+        {
+            binmode(*FH, ":encoding($from_encoding)");
+        }
         my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 
                               'macro' => '' },
@@ -6772,13 +6776,30 @@ sub open_out($)
         return \*STDOUT;
     }
     #unless ((defined($to_encoding) and open(FILE, ">:encoding($to_encoding)", $file)) or open(FILE, "> $file"))
-    my $open_style = 'bytes';
-    $open_style = 'utf8' if (defined($to_encoding) and $to_encoding eq 'utf8');
-    unless ((defined($to_encoding) and open(FILE, ">:$open_style", $file)) or open(FILE, "> $file"))
+    #my $open_style = 'bytes';
+    #$open_style = 'utf8' if (defined($to_encoding) and $to_encoding eq 'utf8');
+    #if (defined($to_encoding) and $to_encoding eq 'utf8')
+    #{
+    #     $open_style = 'utf8'; 
+    #     print STDERR "$open_style\n";
+    #}
+    #unless ((defined($to_encoding) and open(FILE, ">:$open_style", $file)) or open(FILE, "> $file"))
+    unless (open(FILE, ">$file"))
     {
         die "$ERROR Can't open $file for writing: $!\n";
     }
-    binmode(FILE, ":encoding($to_encoding)") if (defined($to_encoding));
+    if (defined($to_encoding))
+    {
+        if ($to_encoding eq 'utf8')
+        {
+            binmode(FILE, ':utf8');
+        }
+	else
+        {
+            binmode(FILE, ':bytes');
+        }
+        binmode(FILE, ":encoding($to_encoding)");
+    }
     return \*FILE;
 }
 

@@ -211,6 +211,9 @@ test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting nodetest.texi "-split chapter -output ."
 test_texi formatting nodetest_latin1.texi 
 test_texi formatting nodetest_utf8.texi 
+test_texi formatting nodetest_utf8.texi "-init no_unicode.init -prefix no_unicode_nodetest_utf8" 0 texi no_unicode_nodetest_utf8
+test_texi formatting nodetest_latin1.texi "-init no_unicode.init -prefix no_unicode_nodetest_latin1" 0 texi no_unicode_nodetest_latin1
+test_texi formatting nodetest.texi "-init no_unicode.init -prefix no_unicode_nodetest" 0 texi no_unicode_nodetest
 test_texi formatting testkb.texi
 test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
