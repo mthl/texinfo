@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.8 2002-12-05 21:42:24 karl Exp $
+$Id: dir-example,v 1.9 2002-12-13 17:35:19 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -56,6 +56,7 @@ GNU Packages
 Text creation and manipulation
 * sed: (sed).                   Stream EDitor.
 
+
 Texinfo documentation system
 * Info: (info).                 Documentation browsing system.
 * Texinfo: (texinfo).           The GNU documentation format.
@@ -91,7 +92,6 @@ GNU programming tools
 * g77: (g77).                   GNU Fortran 77 compiler.
 * gcc: (gcc).                   The GNU Compiler Collection.
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
-* GDB: (gdb).                   Source-level debugger for C and C++.
 * Gasp: (gasp).                 GNU Assembler preprocessor.
 * Gperf: (gperf).               Perfect hash function generator.
 * Gprof: (gprof).               Profiler.
@@ -141,7 +141,6 @@ GNU programming support
 
 GNU libraries
 * Annotate: (annotate).         High-level GDB to GUI's.
-* BFD: (bfd).                   Binary file descriptors for object file IO.
 * CVS protocol: (cvsclient).    CVS client/server protocol specification.
 * GDB library: (libgdb).        Application programming interface to GDB.
 * GDBM: (gdbm).                 Hashed databases.
@@ -151,17 +150,14 @@ GNU libraries
 * Iostream: (iostream).         C++ input/output.
 * Libc: (libc).                 C library.
 * Libg++: (libg++).             C++ classes.
-* Mmalloc: (mmalloc).           Memory-mapped malloc.
 * Readline: (readline).         General command-line interface.
 * Regex: (regex).               Regular expressions.
 * Termcap: (termcap).           All about /etc/termcap.
 
 GNU programming documentation
-* GDB internals: (gdbint).      Debugger internals.
 * Ld internals: (ldint).        GNU linker internals.
 * Maintaining: (maintain).      Maintaining GNU software.
 * Source config: (cfg-paper).   Some theory on configuring source packages.
-* Stabs: (stabs).               Symbol table debugging information format.
 
 GNU organization
 * Maintain: (maintain).		GNU maintainer guidelines.
@@ -403,4 +399,11 @@ Individual utilities
 * zsh: (zsh).                                   An enhanced Bourne shell.
 
 Miscellaneous
+* Bfd: (bfd).                   The Binary File Descriptor library.
+* Mmalloc: (mmalloc).		The GNU mapped-malloc package.
+* Stabs: (stabs).                 The "stabs" debugging information format.
 * Standards: (standards).        GNU coding standards.
+
+Programming & development tools.
+* Gdb: (gdb).                     The GNU debugger.
+* Gdb-Internals: (gdbint).	The GNU debugger's internals.
