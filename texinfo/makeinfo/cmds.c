@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.34 2003-11-18 22:20:45 karl Exp $
+   $Id: cmds.c,v 1.35 2003-11-21 17:10:17 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1001,50 +1001,6 @@ cm_titlefont (arg)
 	    add_word ("</h1>\n");
 	}
    }
-}
-
-/* Title page commands. */
-
-int titlepage_cmd_present = 0;
-
-void
-cm_titlepage (arg)
-     int arg;
-{
-  titlepage_cmd_present = 1;
-  if (xml && !docbook)
-    begin_insertion (titlepage);
-  else
-    command_name_condition ();
-}
-
-void
-cm_titlepage_cmds ()
-{
-  char *rest;
-
-  if (!inside_titlepage_cmd)
-    line_error (_("Must be in `%ctitlepage' environment to use `%c%s'"), COMMAND_PREFIX, COMMAND_PREFIX, command);
-
-  if (xml && !docbook)
-    {
-      int elt;
-
-      if (strcmp (command, "author") == 0)
-	elt = AUTHOR;
-      else if (strcmp (command, "title") == 0)
-	elt = BOOKTITLE;
-      else if (strcmp (command, "subtitle") == 0)
-	elt = BOOKSUBTITLE;
-
-      get_rest_of_line (1, &rest);
-      xml_insert_element (elt, START);
-      add_word (rest);
-      xml_insert_element (elt, END);
-      free (rest);
-    }
-  else
-    cm_ignore_line ();
 }
 
 /* Various commands are no-op's. */

@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.11 2003-10-29 18:32:16 karl Exp $
+   $Id: makeinfo.h,v 1.12 2003-11-21 17:10:17 dirt Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -154,8 +154,8 @@ DECLARE (char *, current_node, NULL);
 /* Command name in the process of being hacked. */
 DECLARE (char *, command, NULL);
 
-/* Nonzero if we are inside an @titlepage block.  */
-DECLARE (int, inside_titlepage_cmd, 0);
+/* Nonzero if we have seen an @titlepage command.  */
+DECLARE (int, titlepage_cmd_present, 0);
 
 /* @copying ... @end copying. */
 DECLARE (char *, copying_text, NULL);

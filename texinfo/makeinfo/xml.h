@@ -1,5 +1,5 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.15 2003-11-21 15:25:28 dirt Exp $
+   $Id: xml.h,v 1.16 2003-11-21 17:10:17 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -39,7 +39,6 @@ extern int xml_in_xref_token;
 extern int xml_in_bookinfo;
 extern int xml_in_book_title;
 extern int xml_in_abstract;
-extern int xml_in_copying;
 
 enum xml_element
 {

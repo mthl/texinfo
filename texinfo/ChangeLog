@@ -1,5 +1,22 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c (cm_titlepage, cm_titlepage_cmds): moved to ...
+	* makeinfo/insertion.c: here.
+
+	* makeinfo/cmds.h (titlepage_cmd_present): moved to ...
+	* makeinfo/makeinfo.h: here.
+
+	* makeinfo/insertion.c (is_in_insertion_of_type): new function to
+	query insertion_stack to see if we are inside a given insertion type.
+
+	* makeinfo/makeinfo.h:
+	* makeinfo/insertion.c (begin_insertion, end_insertion):
+	* makeinfo/xml.c (xml_add_char):
+	* makeinfo/xml.h: removed xml_in_copying and inside_titlepage_cmd
+	global variables in favor of the new query function.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (discard_until, execute_string): reworded
 	multiline related error messages.
 	(discard_until): rollback input_text_offset only if not dealing with a

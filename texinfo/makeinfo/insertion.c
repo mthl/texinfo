@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.42 2003-11-21 07:30:52 dirt Exp $
+   $Id: insertion.c,v 1.43 2003-11-21 17:10:17 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -252,6 +252,25 @@ find_type_from_name (name)
   return bad_type;
 }
 
+/* Simple function to query insertion_stack to see if we are inside a given
+   insertion type. */
+int
+is_in_insertion_of_type (type)
+  int type;
+{
+  INSERTION_ELT *temp = insertion_stack;
+
+  if (!insertion_level)
+    return 0;
+
+  while (temp = temp->next)
+    if (temp->insertion == type)
+      return 1;
+
+  return 1;
+}
+
+
 int
 defun_insertion (type)
      enum insertion_type type;
@@ -480,8 +499,6 @@ begin_insertion (type)
         int start_of_end;
 	int save_paragraph_indentation;
 
-        xml_in_copying = 1;
-
         discard_until ("\n"); /* ignore remainder of @copying line */
         start_of_end = get_until ("\n@end copying", &text);
 
@@ -496,8 +513,6 @@ begin_insertion (type)
 
 	if (docbook)
 	  inhibit_paragraph_indentation = save_paragraph_indentation;
-
-        xml_in_copying = 0;
 
         input_text_offset = start_of_end; /* go back to the @end to match */
       }
@@ -756,7 +771,6 @@ begin_insertion (type)
 
     case titlepage:
       xml_insert_element (TITLEPAGE, START);
-      inside_titlepage_cmd = 1;
       break;
 
     default:
@@ -875,10 +889,7 @@ end_insertion (type)
     case iftex:
     case ifxml:
     case rawtex:
-      break;
-
     case titlepage:
-      inside_titlepage_cmd = 0;
       break;
 
     case rawdocbook:
@@ -1593,6 +1604,51 @@ cm_detailmenu ()
       execute_string ("@node top\n@top Top\n");
     }
   begin_insertion (detailmenu);
+}
+
+/* Title page commands. */
+
+int titlepage_cmd_present = 0;
+
+void
+cm_titlepage (arg)
+     int arg;
+{
+  titlepage_cmd_present = 1;
+  if (xml && !docbook)
+    begin_insertion (titlepage);
+  else
+    command_name_condition ();
+}
+
+void
+cm_titlepage_cmds ()
+{
+  char *rest;
+
+  get_rest_of_line (1, &rest);
+
+  if  (!is_in_insertion_of_type (titlepage))
+    line_error (_("%c%s not meaningful outside `%ctitlepage' environment"),
+        COMMAND_PREFIX, command, COMMAND_PREFIX);
+
+  if (xml && !docbook)
+    {
+      int elt;
+
+      if (strcmp (command, "author") == 0)
+        elt = AUTHOR;
+      else if (strcmp (command, "title") == 0)
+        elt = BOOKTITLE;
+      else if (strcmp (command, "subtitle") == 0)
+        elt = BOOKSUBTITLE;
+
+      xml_insert_element (elt, START);
+      add_word (rest);
+      xml_insert_element (elt, END);
+    }
+
+    free (rest);
 }
 
 /* End existing insertion block. */
