@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.37 2003-10-29 18:32:16 karl Exp $
+   $Id: makeinfo.c,v 1.38 2003-10-29 18:42:27 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -18,7 +18,7 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-   Makeinfo was authored by Brian Fox (bfox@ai.mit.edu). */
+   Original author of makeinfo: Brian Fox (bfox@ai.mit.edu).  */
 
 #include "system.h"
 #include "getopt.h"
@@ -394,7 +394,7 @@ General options:\n\
      /* xgettext: no-wrap */
     puts (_("\
 Output format selection (default is to produce Info):\n\
-      --docbook             output DocBook XML rather than Info.\n\
+      --docbook             output Docbook XML rather than Info.\n\
       --html                output HTML rather than Info.\n\
       --xml                 output Texinfo XML rather than Info.\n\
 "));
@@ -447,7 +447,8 @@ Input file options:\n\
 
     puts (_("\
 Conditional processing in input:\n\
-  --ifdocbook       process @ifdocbook and @docbook even if not generating Docbook.\n\
+  --ifdocbook       process @ifdocbook and @docbook even if\n\
+                      not generating Docbook.\n\
   --ifhtml          process @ifhtml and @html even if not generating HTML.\n\
   --ifinfo          process @ifinfo even if not generating Info.\n\
   --ifplaintext     process @ifplaintext even if not generating plain text.\n\
