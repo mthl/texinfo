@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.13 2003-11-08 00:14:47 karl Exp $
+# $Id: Makefile.am,v 1.14 2003-11-08 21:18:06 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -16,7 +16,7 @@ DISTCLEANFILES = texinfo texinfo-* info*.info*
 
 man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 \
            info.5 texinfo.5
-HELP2MAN = help2man
+HELP2MAN = $(srcdir)/help2man
 noinst_SCRIPTS = $(HELP2MAN)
 
 # Use the programs built in our distribution.
