@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.47 2004-04-26 13:56:12 karl Exp $
+   $Id: cmds.c,v 1.48 2004-07-16 19:20:43 wl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
    Foundation, Inc.
@@ -280,6 +280,7 @@ COMMAND command_table[] = {
   { "ringaccent", cm_accent, MAYBE_BRACE_ARGS },
   { "rmacro", cm_rmacro, NO_BRACE_ARGS },
   { "samp", cm_code, BRACE_ARGS },
+  { "s", cm_s, BRACE_ARGS },
   { "sc", cm_sc, BRACE_ARGS },
   { "section", cm_section, NO_BRACE_ARGS },
   { "set", cm_set, NO_BRACE_ARGS },
@@ -1122,6 +1123,22 @@ cm_not_fixed_width (int arg, int start, int end)
 
 void
 cm_i (int arg)
+{
+  /* Make use of <lineannotation> of Docbook, if we are
+     inside an @example or similar.  */
+  extern int printing_index;
+  if (docbook && !filling_enabled && !printing_index)
+    xml_insert_element (LINEANNOTATION, arg);
+  else if (xml)
+    xml_insert_element (I, arg);
+  else if (html)
+    insert_html_tag (arg, "i");
+  else
+    not_fixed_width (arg);
+}
+
+void
+cm_s (int arg)
 {
   /* Make use of <lineannotation> of Docbook, if we are
      inside an @example or similar.  */
