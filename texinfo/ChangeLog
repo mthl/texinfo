@@ -1,5 +1,7 @@
 2002-11-12    <karl@gnu.org>
 
+	* configure.ac: pretest version 4.2f.
+
 	* makeinfo/Makefile.am (makeinfo_SOURCES): remove docbook.[ch],
 	per feloy the docbook stuff is in xml.[ch] now.
 
