@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
+@c $Id: texinfo.txi,v 1.123 2004-12-12 21:37:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15163,18 +15163,15 @@ For HTML output, each file contains one node (@pxref{Generating HTML}).
 @opindex --no-pointer-validate
 @opindex --no-validate
 @cindex Pointer validation, suppressing
-Suppress the pointer-validation phase of @code{makeinfo}.  This can also
-be done with the @code{@@novalidate} command (@pxref{Use TeX,,Use
-@TeX{}}).  Normally, after a Texinfo file is processed, some consistency
-checks are made to ensure that cross references can be resolved, etc.
-@xref{Pointer Validation}.
+Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
+thing to do.  This can also be done with the @code{@@novalidate}
+command (@pxref{Use TeX,,Use @TeX{}}).  Normally, after a Texinfo file
+is processed, some consistency checks are made to ensure that cross
+references can be resolved, etc.  @xref{Pointer Validation}.
 
 @item --no-warn
 @opindex --no-warn
-Suppress warning messages (but @emph{not} error messages).  You might
-want this if the file you are creating has examples of Texinfo cross
-references within it, and the nodes that are referenced do not actually
-exist.
+Suppress warning messages (but @emph{not} error messages).
 
 @item --number-sections
 @opindex --number-sections
@@ -15313,7 +15310,8 @@ cross-reference.@refill
 @cindex @@-commands in @@node, limited support
 Some Texinfo documents might fail during the validation phase because
 they use commands like @code{@@value} and @code{@@definfoenclose} in
-node definitions and cross-references inconsistently.  Consider the
+node definitions and cross-references inconsistently.  (Your best bet
+is to avoid using @@-commands in node names.)  Consider the
 following example:
 
 @example
@@ -18456,7 +18454,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
+$Id: texinfo.txi,v 1.123 2004-12-12 21:37:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18522,7 +18520,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.122 2004-12-08 14:34:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.123 2004-12-12 21:37:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

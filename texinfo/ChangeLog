@@ -1,3 +1,9 @@
+2004-12-12  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo options): don't be so suggestive about
+	skipping xref validation.
+	emacs-devel mail from: Luc Teirlinck, 12 Dec 2004 13:02:11 -0600.
+
 2004-12-08  Karl Berry  <karl@gnu.org>
 
 	* pretest version 4.7.91.
