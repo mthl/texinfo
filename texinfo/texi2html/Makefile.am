@@ -18,7 +18,11 @@ EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
 	manage_i18n.pl \
-	translations.pl
+	translations.pl \
+	T2h_i18n.pm \
+	texi2html.init \
+	MySimple.pm \
+    l2h.init
 
 dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
@@ -111,5 +115,4 @@ texi2html: \
 	$(srcdir)/MySimple.pm \
 	$(srcdir)/T2h_i18n.pm \
 	$(srcdir)/texi2html.init \
-	$(srcdir)/texi2html.pl \
 	$(srcdir)/texi2html.pl 

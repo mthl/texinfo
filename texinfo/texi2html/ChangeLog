@@ -1,5 +1,10 @@
 2004-02-11  Patrice Dumas  <dumas@centre-cired.fr> 
 
+	* Makefile.am: add T2h_i18n.pm texi2html.init MySimple.pm and l2h.init
+	to the distribution.
+
+2004-02-11  Patrice Dumas  <dumas@centre-cired.fr> 
+
 	* texi2html.pl: use the manual name (file basename) as default output
 	directory when split.
 	* NEWS, Tests/test.sh: update.
