@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
+@c $Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7481,23 +7481,41 @@ the same spelling.
 @findex i @r{(italic font)}
 @findex b @r{(bold font)}
 @findex t @r{(typewriter font)}
-@findex r @r{(Roman font)}
+@findex r @r{(roman font)}
 
 Texinfo provides four font commands that specify font changes in the
-printed manual but have no effect in the Info file.  @code{@@i}
-requests @i{italic} font (in some versions of @TeX{}, a slanted font
-is used), @code{@@b} requests @b{bold} face, @code{@@t} requests the
-@t{fixed-width}, typewriter-style font used by @code{@@code}, and @code{@@r} requests a
-@r{roman} font, which is the usual font in which text is printed.  All
-four commands apply to an argument that follows, surrounded by
-braces.@refill
+printed manual and (where possible) in the HTML output, but have no
+effect in the Info file.  All four commands apply to an argument that
+follows, surrounded by braces.
 
-Only the @code{@@r} command has much use: in example programs, you
-can use the @code{@@r} command to convert code comments from the
-fixed-width font to a roman font.  This looks better in printed
-output.@refill
+@table @code
+@item @@i
+@cindex Italic font
+selects an @i{italic} font;
 
-@need 700
+@item @@b
+@cindex Bold font
+selects @b{bold} face;
+
+@item @@t
+@cindex Monospace font
+@cindex Fixed-width font
+@cindex Typewriter font
+selects the @t{fixed-width}, typewriter-style font used by @code{@@code};
+
+@item @@r
+@cindex Roman font
+selects a @r{roman} font, which is the usual font in which text is printed.
+
+@end table
+
+@cindex lineannotation, Docbook tag
+Only the @code{@@r} command has much use: in example-like
+environments, you can use the @code{@@r} command to write comments in
+the standard roman font instead of the fixed-width font.  This looks
+better in printed output, and produces a @code{<lineannotation>} tag
+in Docbook output.
+
 For example,
 
 @example
@@ -7515,7 +7533,7 @@ produces
 (+ 2 2)    ; @r{Add two plus two.}
 @end lisp
 
-If possible, you should avoid using the other three font commands.  If
+In general, you should avoid using the other three font commands.  If
 you need to use one, it probably indicates a gap in the Texinfo
 language.
 
@@ -17247,7 +17265,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
+$Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17310,7 +17328,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.83 2003-11-08 13:47:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.84 2003-11-08 14:03:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
