@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: system.h,v 1.2 2002-09-03 15:51:40 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -44,7 +44,10 @@
 #endif
 
 /* For gettext (NLS).  */
+#define const
 #include "gettext.h"
+#undef const
+
 #define _(String) gettext (String)
 #define N_(String) (String)
 

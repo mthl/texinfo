@@ -1,0 +1,96 @@
+# $Id$
+# Files for which we are not the source.
+
+$EMACSSRC/man/info.texi			doc
+$GNUBIN/help2man			doc
+$TEXMF/tex/generic/dvips/epsf.tex	doc
+$TEXMF/pdftex/plain/misc/pdfcolor.tex	doc
+
+
+$GETTEXT/ABOUT-NLS		.
+$GETTEXT/intl/ChangeLog		intl
+$GETTEXT/intl/Makefile.in	intl
+$GETTEXT/intl/VERSION		intl
+$GETTEXT/intl/bindtextdom.c	intl
+$GETTEXT/intl/config.charset	intl
+$GETTEXT/intl/dcgettext.c	intl
+$GETTEXT/intl/dcigettext.c	intl
+$GETTEXT/intl/dcngettext.c	intl
+$GETTEXT/intl/dgettext.c	intl
+$GETTEXT/intl/dngettext.c	intl
+$GETTEXT/intl/eval-plural.h	intl
+$GETTEXT/intl/explodename.c	intl
+$GETTEXT/intl/finddomain.c	intl
+$GETTEXT/intl/gettext.c		intl
+$GETTEXT/intl/gettextP.h	intl
+$GETTEXT/intl/gmo.h		intl
+$GETTEXT/intl/hash-string.h	intl
+$GETTEXT/intl/intl-compat.c	intl
+$GETTEXT/intl/l10nflist.c	intl
+$GETTEXT/intl/libgnuintl.h	intl
+$GETTEXT/intl/loadinfo.h	intl
+$GETTEXT/intl/loadmsgcat.c	intl
+$GETTEXT/intl/localcharset.c	intl
+$GETTEXT/intl/locale.alias	intl
+$GETTEXT/intl/localealias.c	intl
+$GETTEXT/intl/localename.c	intl
+$GETTEXT/intl/ngettext.c	intl
+$GETTEXT/intl/os2compat.c	intl
+$GETTEXT/intl/os2compat.h	intl
+$GETTEXT/intl/osdep.c		intl
+$GETTEXT/intl/plural-exp.c	intl
+$GETTEXT/intl/plural-exp.h	intl
+$GETTEXT/intl/plural.y		intl
+$GETTEXT/intl/ref-add.sin	intl
+$GETTEXT/intl/ref-del.sin	intl
+$GETTEXT/intl/textdomain.c	intl
+#
+$GETTEXT/po/Makefile.in.in	po
+$GETTEXT/po/Makevars		po
+$GETTEXT/po/Rules-quot		po
+$GETTEXT/po/boldquot.sed	po
+$GETTEXT/po/en@boldquot.header	po
+$GETTEXT/po/en@quot.header	po
+$GETTEXT/po/insert-header.sin	po
+$GETTEXT/po/quot.sed		po
+$GETTEXT/po/remove-potcdate.sin	po
+
+
+$GNULIBSRC/COPYING		.
+#
+$GNULIBSRC/config/config.guess	.
+$GNULIBSRC/config/config.rpath	.
+$GNULIBSRC/config/config.sub	.
+$GNULIBSRC/config/depcomp	.
+$GNULIBSRC/config/install-sh	.
+$GNULIBSRC/config/mdate-sh	doc
+$GNULIBSRC/config/missing	.
+$GNULIBSRC/config/mkinstalldirs	.
+#
+$GNULIBSRC/doc/COPYING.DOC	.
+$GNULIBSRC/doc/INSTALL		.
+$GNULIBSRC/doc/fdl.texi		doc
+#
+$GNULIBSRC/lib/alloca.c		lib
+$GNULIBSRC/lib/getopt.c		lib
+$GNULIBSRC/lib/getopt.h		lib
+$GNULIBSRC/lib/getopt1.c	lib
+$GNULIBSRC/lib/gettext.h	lib
+$GNULIBSRC/lib/memcpy.c		lib
+$GNULIBSRC/lib/memmove.c	lib
+$GNULIBSRC/lib/strcasecmp.c	lib
+$GNULIBSRC/lib/strdup.c		lib
+$GNULIBSRC/lib/strerror.c	lib
+$GNULIBSRC/lib/strncasecmp.c	lib
+$GNULIBSRC/lib/xstrdup.c	lib
+#
+$GNULIBSRC/m4/codeset.m4	m4
+$GNULIBSRC/m4/gettext.m4	m4
+$GNULIBSRC/m4/glibc21.m4	m4
+$GNULIBSRC/m4/iconv.m4		m4
+$GNULIBSRC/m4/isc-posix.m4	m4
+$GNULIBSRC/m4/lcmessage.m4	m4
+$GNULIBSRC/m4/lib-ld.m4		m4
+$GNULIBSRC/m4/lib-link.m4	m4
+$GNULIBSRC/m4/lib-prefix.m4	m4
+$GNULIBSRC/m4/progtest.m4	m4

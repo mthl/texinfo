@@ -1,0 +1,41 @@
+#!/bin/sh
+# $Id: srclist-update,v 1.1 2002-09-03 15:51:40 karl Exp $
+
+destdir=${1-/u/texinfo/src}
+cd $destdir || exit 1
+
+quiet=true
+#chicken="echo (would)"
+
+: ${EMACSSRC=$HOME/gnu/src/emacs}
+: ${GETTEXT=/usr/local/gnu/share/gettext}
+: ${GNULIBSRC=$HOME/gnu/src/gnulib}
+: ${GNUBIN=/usr/local/gnu/bin}
+: ${TEXMF=/usr/local/texmf/texmf}
+
+cat | while read src dst; do
+  test -z "$dst" && continue  # skip lines without second element
+  echo "$src $dst" | sed 's/#.*$//' | egrep '^\s*$' >/dev/null \
+  && continue  # skip whitespace and comment-only lines
+  
+  src=`eval echo $src`
+  if test ! -r $src; then
+    echo "$0: cannot read $src" >&2
+    continue
+  fi
+  
+  # If given src/foo.c dst, copy to dst/foo.c.
+  dst=`eval echo $dst`
+  test -d $dst && dst=$dst/`basename $src`
+  
+  $quiet || printf "$src -> $dst "
+  if test ! -e $dst; then
+    $quiet || echo "(new)"
+    $chicken cp -p $src $dst
+  elif cmp -s $src $dst; then
+    $quiet || echo "(unchanged)"
+  else
+    $quiet || echo "(changes)"
+    diff -c2 $src $dst
+  fi
+done

@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.1 2002-08-25 23:38:38 karl Exp $
+$Id: dir-example,v 1.2 2002-09-03 15:51:40 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -25,6 +25,7 @@ Not all of the topics shown below may be available on this system.
 GNU Packages
 * accounting: (psacct).         GNU process accounting suite.
 * Bash: (bash).                 Bourne-Again SHell.
+* Coreutils: (coreutils).	Core (file, text, shell) utilities.
 * Cpio: (cpio).                 Copy-in-copy-out archiver.
 * DC: (dc).                     Postfix desk calculator.
 * Diff: (diff).                 Comparing and merging programs.
@@ -35,6 +36,7 @@ GNU Packages
 * Font utilities: (fontu).      Programs for font manipulation.
 * Gawk: (gawk.info).            A text scanning and processing language.
 * Gcal: (gcal).                 GNU calendar program.
+* Groff: (groff).               The GNU troff document formatting system.
 * Gzip: (gzip).                 General (de)compression.
 * Identifier DB: (id-utils).    Identifier database utilities.
 * Ispell: (ispell).             Interactive spelling corrector.
@@ -54,21 +56,24 @@ GNU programming tools
 * As: (as).                     Assembler.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
 * Bison: (bison).               LALR(1) parser generator.
-* CPP: (cpp).                   C preprocessor.
 * CVS: (cvs).                   Concurrent versions system for source control.
+* Cpp: (cpp).		        The GNU C preprocessor.
+* Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
 * egcs: (egcs).                 Experimental GNU C compiler.
-* g77: (g77).                   GNU Fortran 77 compiler.
 * Flex: (flex).                 A fast scanner generator.
-* Gasp: (gasp).                 GNU Assembler preprocessor.
-* Libtool: (libtool).           Generic library support script.
-* GCC: (gcc).                   C compiler.
+* g77: (g77).                   GNU Fortran 77 compiler.
+* gcc: (gcc).                   The GNU Compiler Collection.
+* gccint: (gccint).             Internals of the GNU Compiler Collection.
 * GDB: (gdb).                   Source-level debugger for C and C++.
+* Gasp: (gasp).                 GNU Assembler preprocessor.
 * Gettext Utilities: (gettext). GNU gettext utilities.
 * Gperf: (gperf).               Perfect hash function generator.
 * Gprof: (gprof).               Profiler.
+* Guile Reference: (guile).     The Guile reference manual.
 * Indent: (indent).             Prettyprinter for programs.
 * Ld: (ld).                     Linker.
+* Libtool: (libtool).           Generic library support script.
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
 
 Texinfo documentation system
@@ -151,6 +156,18 @@ GNU organization
 * Maintain: (maintain).		GNU maintainer guidelines.
 * Standards: (standards).       GNU coding standards.
 * Tasks: (tasks).               GNU task list.
+
+GNU music project
+* LilyPond: (lilypond).                        The GNU music typesetter.
+* LilyPond internals: (lilypond-internals).    LilyPond internals.
+* ly2dvi: (lilypond)Invoking ly2dvi::          Titling LilyPond scores.
+* convert-ly: (lilypond)Invoking convert-ly::  Older LilyPond versions.
+* midi2ly: (lilypond)Invoking midi2ly::        Importing MIDI.
+* etf2ly: (lilypond)Invoking etf2ly::          Importing Finale.
+* abc2ly: (lilypond)Invoking abc2ly::          Importing ABC.
+* pmx2ly: (lilypond)Invoking pmx2ly::          Importing PMX.
+* musedata2ly: (lilypond)Invoking musedata2ly::Importing Musedata.
+* mup2ly: (lilypond)Invoking mup2ly::          Importing MUP.
 
 Linux
 * dosemu: (dosemu).             Linux DOS emulator.
@@ -239,7 +256,6 @@ Individual utilities
 * find: (find)Invoking find.                    Finding and acting on files.
 * fmt: (textutils)fmt invocation.               Reformat paragraph text.
 * fold: (textutils)fold invocation.             Wrap long input lines.
-* g++: (gcc)Invoking G++.                       The GNU C++ compiler.
 * gcal2txt: (gcal)Invoking gcal2txt.            Calendar resource to text file.
 * gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
