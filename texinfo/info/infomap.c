@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.1 2002-08-25 23:38:38 karl Exp $
+   $Id: infomap.c,v 1.2 2002-09-28 20:46:16 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002 Free Software
    Foundation, Inc.
@@ -506,8 +506,8 @@ initialize_vi_like_keymaps ()
   map['b'].function = ea_backward_word;
   map['d'].function = ea_kill_word;
   map['f'].function = ea_forward_word;
-  map['h'].function = ea_forward;
-  map['l'].function = ea_backward;
+  map['h'].function = ea_backward;
+  map['l'].function = ea_forward;
   map['w'].function = ea_forward_word;
   map['x'].function = ea_delete;
   map['X'].function = ea_kill_word;
