@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
+@c $Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5236,12 +5236,13 @@ Conventionally, cross references are used to refer to other nodes.} In
 online output, you use menus to go to such nodes.  Menus have no effect in
 printed manuals and do not appear in them.
 
-A menu must be located at the end of a node, without any text
-following it (and there may be at most one menu in a node).  This is a
-useful restriction, since a reader who uses the menu could easily miss
-any such text.  (Technically, it is necessary because in Info format,
-there is no marker for the end of a menu, so Info readers would have
-no way to know when the menu ends and normal text resumes.)
+A menu must be located at the end of a node, without any regular text
+or additional commands between the @code{@@end menu} and the beginning
+of the next node.  (Also, there may be at most one menu in a node.)
+This is a useful restriction, since a reader who uses the menu could
+easily miss any such text.  Technically, it is necessary because in
+Info format, there is no marker for the end of a menu, so Info readers
+would have no way to know when the menu ends and normal text resumes.
 
 Furthermore, a node that has a menu should not contain much text. If
 you have a lot of text and a menu, move most of the text into a new
@@ -10719,26 +10720,11 @@ Info output is not hyphenated, so these commands have no effect there.
 @cindex Hyphenation, preventing
 
 @code{@@w@{@var{text}@}} outputs @var{text} and prohibits line breaks
-within @var{text}.
-
-You can use the @code{@@w} command to prevent @TeX{} from automatically
-hyphenating a long name or phrase that happens to fall near the end of a
-line.  For example:
-
-@example
-You can copy GNU software from @@w@{@@samp@{ftp.gnu.org@}@}.
-@end example
-
-@noindent
-produces
-
-@quotation
-You can copy GNU software from @w{@samp{ftp.gnu.org}}.
-@end quotation
+within @var{text}, for both @TeX{} and @command{makeinfo}.
 
 @cindex Non-breakable space, fixed
 @cindex Unbreakable space, fixed
-You can also use @code{@@w} to produce a non-breakable space, fixed at
+Thus, you can use @code{@@w} to produce a non-breakable space, fixed at
 the width of a normal interword space:
 
 @example
@@ -10751,11 +10737,16 @@ the width of a normal interword space:
 @w{ } @w{ } @w{ } indentation.
 @end display
 
-The space from @code{@@w@{@w{ }@}}, as well as being non-breakable, also
-will not stretch or shrink.  Sometimes that is what you want, for
-instance if you're doing some manual indenting.  However, usually you
-want a normal interword space that does stretch and shrink (in the
-printed output); see the @code{@@tie} command in the next section.
+The space from @code{@@w@{@w{ }@}}, as well as being non-breakable,
+also will not stretch or shrink.  Sometimes that is what you want, for
+instance if you're doing indenting manual.  However, usually you want
+a normal interword space that does stretch and shrink (in the printed
+output); see the @code{@@tie} command in the next section.
+
+You can also use the @code{@@w} command to prevent @TeX{} from
+automatically hyphenating a long name or phrase that happens to fall
+near the end of a line.  @command{makeinfo} does not ever hyphenate
+words.
 
 
 @node tie
@@ -17195,7 +17186,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
+$Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17258,7 +17249,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.52 2003-07-02 12:11:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.53 2003-07-04 12:02:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
