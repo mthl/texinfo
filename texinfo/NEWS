@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.102 2004-12-19 17:02:22 karl Exp $
+$Id: NEWS,v 1.103 2004-12-24 16:43:58 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -29,6 +29,8 @@ convenience, here's a url to one of the relevant sections:
   . new command @slanted to typeset text in a slanted font,
     and @sansserif to typeset in a sans serif font.
 * makeinfo:
+  . An empty first argument to cross-reference commands, such as @xref,
+    causes an error.  This change was made in 4.1, but not mentioned in NEWS.
   . HTML output:
     - <a name="..."> constructs are added for the old-style
       conversion of node names to HTML names, so that external references
