@@ -58,7 +58,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.133 2005-03-09 14:14:21 dprice Exp $
+# $Id: texi2html.pl,v 1.134 2005-03-21 20:36:59 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1674,6 +1674,13 @@ $T2H_OPTIONS -> {'I'} =
  verbose => 'append $s to the @include search path',
 };
 
+$T2H_OPTIONS -> {'conf-dir'} =
+{
+ type => '=s',
+ linkage => \@Texi2HTML::Config::CONF_DIRS,
+ verbose => 'append $s to the init file directories',
+};
+
 $T2H_OPTIONS -> {'P'} =
 {
  type => '=s',
@@ -2264,6 +2271,7 @@ $T2H_VERBOSE = $Texi2HTML::Config::VERBOSE;
 # retro compatibility for $Texi2HTML::Config::EXPAND
 push (@Texi2HTML::Config::EXPAND, $Texi2HTML::Config::EXPAND) if ($Texi2HTML::Config::EXPAND);
 
+unshift @texi2html_config_dirs, @Texi2HTML::Config::CONF_DIRS;
 # correct %text_macros and @special_regions based on command line and init
 # variables
 $text_macros{'menu'} = 1 if ($Texi2HTML::Config::SHOW_MENU);

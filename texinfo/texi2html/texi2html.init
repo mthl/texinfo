@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.83 2005-02-27 20:35:07 pertusus Exp $
+# $Id: texi2html.init,v 1.84 2005-03-21 20:36:59 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -88,6 +88,10 @@ $USE_ISO = 1;
 # searched for before the directory of the file. additional '-P' 
 # args are prepended to this list.
 @PREPEND_DIRS = ();
+
+# --conf-dir
+# append to the files searched for init files.
+@CONF_DIRS = ();
 
 # -top-file
 # This file name is used for the top-level file.

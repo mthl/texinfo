@@ -1,3 +1,8 @@
+2005-03-21  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init,texi2html.pl: new option --conf-dir to specify
+	directory for config and init files.
+
 2005-03-09  Derek Price  <derek@ximbiot.com>
 
 	* texi2html: Use the Cwd module for cross-platform portability.
