@@ -82,19 +82,20 @@ ul.toc {list-style: none}
 
 <p>Info has two footnote styles, which determine where the text of the
 footnote is located:
+
 </p><ul>
-<li>
-<a name="IDX227"></a>
+<li><a name="IDX227"></a>
 </li><li>
 <p>In the `End' node style, all the footnotes for a single node
 are placed at the end of that node.  The footnotes are separated from
 the rest of the node by a line of dashes with the word
 `<samp>Footnotes</samp>' within it.  Each footnote begins with an
 `<samp>(<var>n</var>)</samp>' reference mark.
+
 </p>
 <p>Here is an example of a single footnote in the end of node style:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
- --------- Footnotes ---------
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
 </pre></td></tr></table>
@@ -106,17 +107,19 @@ their own.  In this style, a &quot;footnote reference&quot; follows
 each `<samp>(<var>n</var>)</samp>' reference mark in the body of the
 node.  The footnote reference is actually a cross reference
 which you use to reach the footnote node.
+
 </p><p>The name of the node with the footnotes is constructed
 by appending `<samp>-Footnotes</samp>' to the name of the node
 that contains the footnotes. (Consequently, the footnotes'
 node for the `<tt>Footnotes</tt>' node is
 `<tt>Footnotes-Footnotes</tt>'!)  The footnotes' node has an
 `Up' node pointer that leads back to its parent node.
+
 </p>
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. ...
@@ -124,29 +127,33 @@ File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
 style.
+
 </p><a name="IDX229"></a>
 <p>Use the <code>@footnotestyle</code> command to specify an Info file's
 footnote style.  Write this command at the beginning of a line followed
 by an argument, either `<samp>end</samp>' for the end node style or
 `<samp>separate</samp>' for the separate node style.
+
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@footnotestyle end
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
 </pre></td></tr></table>
 <p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-@footnotestyle separate
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
 </pre></td></tr></table>
 <p>Write an <code>@footnotestyle</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  (If you
 include the <code>@footnotestyle</code> command between the start-of-header
 and end-of-header lines, the region formatting commands will format
 footnotes as specified.)
+
 </p><p>If you do not specify a footnote style, the formatting commands use
 their default style.  Currently, <code>texinfo-format-buffer</code> and
 <code>texinfo-format-region</code> use the `separate' style and
 <code>makeinfo</code> uses the `end' style.
+
 </p><p>This chapter contains two footnotes.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

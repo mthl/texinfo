@@ -86,6 +86,7 @@ does miss useful hyphenation points from time to time.  (Or, far more
 rarely, insert an incorrect hyphenation.)  So, for documents with an
 unusual vocabulary or when fine-tuning for a printed edition, you may
 wish to help TeX out.  Texinfo supports two commands for this:
+
 </p><dl compact="compact">
 <dt><code> @-
 </code></dt>
@@ -93,19 +94,20 @@ wish to help TeX out.  Texinfo supports two commands for this:
 not have to) hyphenate.  This is especially useful when you notice an
 overfull hbox is due to TeX missing a hyphenation (see section <a href="Overfull-hboxes.html#SEC254">Overfull &quot;hboxes&quot;</a>).  TeX will not insert any hyphenation points itself into a
 word containing <code>@-</code>.
+
 </p></dd>
 <dt><code> @hyphenation{<var>hy-phen-a-ted words</var>}
 </code></dt>
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
 put a `<samp>-</samp>' at each hyphenation point.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-@hyphenation{man-u-script man-u-scripts}
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@hyphenation{man-u-script man-u-scripts}
 </pre></td></tr></table><p>TeX only uses the specified hyphenation points when the
 words match exactly, so give all necessary variants.
 </p></dd>
 </dl>
 
 <p>Info output is not hyphenated, so these commands have no effect there.
+
 </p><hr size="1">
 <p>
  <font size="-1">

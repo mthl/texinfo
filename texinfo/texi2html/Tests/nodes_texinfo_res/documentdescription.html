@@ -86,18 +86,19 @@ content of the document.  By default, this <em>description</em> is the title
 of the document, taken from the <code>@settitle</code> command
 (see section <a href="settitle.html#SEC47"><code>@settitle</code>: Set the document title</a>).  To change this, use the <code>@documentdescription</code>
 environment, as in:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@documentdescription
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@documentdescription
 descriptive text.
 @end documentdescription
 </pre></td></tr></table>
 
 <p>This will produce the following output in the `<samp>&lt;head&gt;</samp>' of the HTML:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
 </pre></td></tr></table>
 <p><code>@documentdescription</code> must be specified before the first node of
 the document.
+
 </p>
 <hr size="1">
 <p>

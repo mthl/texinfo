@@ -85,6 +85,7 @@ lower the hierarchical level of chapters, sections, subsections and the
 like.  The <code>@raisesections</code> command changes sections to chapters,
 subsections to sections, and so on.  The <code>@lowersections</code> command
 changes chapters to sections, sections to subsections, and so on.
+
 </p><a name="IDX93"></a>
 <p>An <code>@lowersections</code> command is useful if you wish to include text
 that is written as an outer or standalone Texinfo file in another
@@ -93,10 +94,11 @@ the beginning of the file, all your <code>@chapter</code> commands are
 formatted as if they were <code>@section</code> commands, all your
 <code>@section</code> command are formatted as if they were
 <code>@subsection</code> commands, and so on.
+
 </p><p><code>@raisesections</code> raises a command one level in the chapter
 structuring hierarchy:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-  Change           To
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  Change           To
 
 @subsection     @section,
 @section        @chapter,
@@ -105,8 +107,8 @@ structuring hierarchy:
 </pre></td></tr></table>
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-  Change           To
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  Change           To
 
 @chapter        @section,
 @subsection     @subsubsection,
@@ -117,20 +119,24 @@ structuring hierarchy:
 those structuring commands that follow the command in the Texinfo file.
 Write an <code>@raisesections</code> or <code>@lowersections</code> command on a
 line of its own.
+
 </p><p>An <code>@lowersections</code> command cancels an <code>@raisesections</code>
 command, and vice versa.  Typically, the commands are used like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@lowersections
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@lowersections
 @include somefile.texi
 @raisesections
 </pre></td></tr></table>
 <p>Without the <code>@raisesections</code>, all the subsequent sections in your
 document will be lowered.
+
 </p><p>Repeated use of the commands continue to raise or lower the hierarchical
 level a step at a time.
+
 </p><p>An attempt to raise above `chapters' reproduces chapter commands; an
 attempt to lower below `subsubsections' reproduces subsubsection
 commands.
+
 </p><hr size="1">
 <p>
  <font size="-1">

@@ -85,9 +85,9 @@ functions in typed languages.  See section <a href="Typed-Functions.html#SEC221"
 definition command <code>@deftypevr</code> corresponds to
 <code>@deftypefn</code> and the specialized definition command
 <code>@deftypevar</code> corresponds to <code>@deftypefun</code>.
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX276"></a>
+<dd><a name="IDX276"></a>
 </dd>
 <dt><code> @deftypevr <var>category</var> <var>data-type</var> <var>name</var>
 </code></dt>
@@ -96,31 +96,34 @@ something like a variable in a typed language--an entity that records
 a value.  You must choose a term to describe the category of the
 entity being defined; for example, &quot;Variable&quot; could be used if the
 entity is a variable.
+
 </p><p>The <code>@deftypevr</code> command is written at the beginning of a line
 and is followed on the same line by the category of the entity
 being described, the data type, and the name of this particular
 entity.
+
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypevr {Global Flag} int enable
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr {Global Flag} int enable
 ...
 @end deftypevr
 </pre></td></tr></table>
 
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
--- Global Flag: int enable
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">-- Global Flag: int enable
 ...
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevr
 </pre></td></tr></table>
 <p><code>@deftypevr</code> creates an entry in the index of variables for
 <var>name</var>.
+
 </p><a name="IDX277"></a>
 </dd>
 <dt><code> @deftypevar <var>data-type</var> <var>name</var>
@@ -128,23 +131,24 @@ entity.
 <dd><p>The <code>@deftypevar</code> command is the specialized definition command
 for variables in typed languages.  <code>@deftypevar</code> is equivalent
 to `<samp>@deftypevr Variable <small class="dots">...</small></samp>'.
+
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypevar int fubar
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypevar int fubar
 ...
 @end deftypevar
 </pre></td></tr></table>
 
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
--- Variable: int fubar
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">-- Variable: int fubar
 ...
 </pre></td></tr></table>
 
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypevar <var>data-type</var> <var>name</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypevar <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevar
 </pre></td></tr></table>

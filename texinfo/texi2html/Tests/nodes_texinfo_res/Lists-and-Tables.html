@@ -83,8 +83,8 @@ ul.toc {list-style: none}
 <p>Texinfo has several ways of making lists and tables.  Lists can be
 bulleted or numbered; two-column tables can highlight the items in
 the first column; multi-column tables are also supported.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD142">* Introducing Lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Texinfo formats lists for you.</td></tr>
 <tr><td align="left" valign="top"><a href="itemize.html#SEC157">11.1 <code>@itemize</code>: Making an Itemized List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a simple list.</td></tr>
 <tr><td align="left" valign="top"><a href="enumerate.html#SEC158">11.2 <code>@enumerate</code>: Making a Numbered or Lettered List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to construct a numbered list.</td></tr>
@@ -99,55 +99,68 @@ the first column; multi-column tables are also supported.
 <p>Texinfo automatically indents the text in lists or tables, and numbers
 an enumerated list.  This last feature is useful if you modify the
 list, since you do not need to renumber it yourself.
+
 </p><p>Numbered lists and tables begin with the appropriate @-command at the
 beginning of a line, and end with the corresponding <code>@end</code>
 command on a line by itself.  The table and itemized-list commands
 also require that you write formatting information on the same line as
 the beginning @-command.
+
 </p><p>Begin an enumerated list, for example, with an <code>@enumerate</code>
 command and end the list with an <code>@end enumerate</code> command.
 Begin an itemized list with an <code>@itemize</code> command, followed on
 the same line by a formatting command such as <code>@bullet</code>, and end
 the list with an <code>@end itemize</code> command.
 <a name="IDX135"></a>
+
 </p><p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
 command.
-</p>
+
+</p><br>
 
 <p>Here is an itemized list of the different kinds of table and lists:
+
 </p><ul>
 <li>
 <p>Itemized lists with and without bullets.
+
 </p></li><li>
 <p>Enumerated lists, using numbers or letters.
+
 </p></li><li>
 <p>Two-column tables with highlighting.
 </p></li></ul>
 
-
+<br>
 
 <p>Here is an enumerated list with the same items:
+
 </p><ol>
 <li>
 <p>Itemized lists with and without bullets.
+
 </p></li><li>
 <p>Enumerated lists, using numbers or letters.
+
 </p></li><li>
 <p>Two-column tables with highlighting.
 </p></li></ol>
 
-
+<br>
 
 <p>And here is a two-column table with the same items and their
 @-commands:
+
 </p><dl compact="compact">
 <dt><code> @itemize
 </code></dt>
 <dd><p>Itemized lists with and without bullets.
+
 </p></dd>
 <dt><code> @enumerate
 </code></dt>
 <dd><p>Enumerated lists, using numbers or letters.
+
 </p></dd>
 <dt><code> @table
 </code></dt>

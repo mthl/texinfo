@@ -81,20 +81,23 @@ ul.toc {list-style: none}
 <h3 class="subsection"> 3.2.2 Start of Header </h3>
 
 <p>A start-of-header line is a Texinfo comment that looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@c %**start of header
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@c %**start of header
 </pre></td></tr></table>
 <p>Write the start-of-header line on the second line of a Texinfo file.
 Follow the start-of-header line with <code>@setfilename</code> and
 <code>@settitle</code> lines and, optionally, with other commands that
 globally affect the document formatting, such as <code>@synindex</code> or
 <code>@footnotestyle</code>; and then by an end-of-header line (see section <a href="End-of-Header.html#SEC48">End of Header</a>).
+
 </p><p>The start- and end-of-header lines allow you to format only part of a
 Texinfo file for Info or printing.  See section <a href="texinfo-format-commands.html#SEC267">The <code>texinfo-format<small class="dots">...</small></code> Commands</a>.
+
 </p><p>The odd string of characters, `<samp>%**</samp>', is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
 change it if you wish by setting the <code>tex-start-of-header</code> and/or
 <code>tex-end-of-header</code> Emacs variables.  See section <a href="Texinfo-Mode-Printing.html#SEC250">Formatting and Printing in Texinfo Mode</a>.
+
 </p>
 <hr size="1">
 <p>

@@ -64,8 +64,8 @@ ul.toc {list-style: none}
 history--what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC76">8.1 Log messages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC77">8.2 The history database</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC78">8.3 User-defined logging</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -94,9 +94,11 @@ through the history.
 <h2 class="section"> 8.1 Log messages </h2>
 
 <p>Whenever you commit a file you specify a log message.
+
 </p><p>To look through the log messages which have been
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see section <a href="cvs_16.html#SEC143">log--Print out log information for files</a>).
+
 </p><hr size="6">
 <a name="NOD77"></a>
 <a name="SEC77"></a>
@@ -122,9 +124,11 @@ use the <code>cvs log</code> command (see section <a href="cvs_16.html#SEC143">l
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
 history</code> command (see section <a href="cvs_16.html#SEC137">history--Show status of files and users</a>).
+
 </p><p>Note: you can control what is logged to this file by using the
 `<samp>LogHistory</samp>' keyword in the `<tt>CVSROOT/config</tt>' file
 (see section <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a>).
+
 </p>
 <hr size="6">
 <a name="NOD78"></a>
@@ -163,6 +167,7 @@ notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
 the <code>cvs watch add</code> command (see section <a href="cvs_10.html#SEC91">Telling CVS to notify you</a>); this command is useful even if you are not
 using <code>cvs watch on</code>.
+
 </p><a name="IDX133"></a>
 <a name="IDX134"></a>
 <p>The `<tt>taginfo</tt>' file defines programs to execute
@@ -177,16 +182,17 @@ to the command are, in order, the <var>tagname</var>,
 pairs of <var>filename</var> <var>revision</var>.  A non-zero
 exit of the filter program will cause the tag to be
 aborted.
+
 </p><p>Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-ALL /usr/local/cvsroot/CVSROOT/loggit
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">ALL /usr/local/cvsroot/CVSROOT/loggit
 </pre></td></tr></table>
 
 <p>Where `<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>' contains the
 following script:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#!/bin/sh
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#!/bin/sh
 echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </pre></td></tr></table>
 <hr size="6">
@@ -211,14 +217,14 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <h2 class="section"> 8.4 Annotate command </h2>
 
 <dl>
-<dt><u>Command:</u> <b>cvs annotate</b> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files <small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files <small class="dots">...</small></i>
 <a name="IDX135"></a>
 </dt>
 <dd><p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last
 modification for each line.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs annotate ssfile
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs annotate ssfile
 Annotations for ssfile
 ***************
 1.1          (mary     27-Mar-96): ssfile line 1
@@ -232,12 +238,14 @@ the <code>ssfile line 1</code> line.  This report doesn't
 tell you anything about lines which have been deleted
 or replaced; you need to use <code>cvs diff</code> for that
 (see section <a href="cvs_16.html#SEC130">diff--Show differences between revisions</a>).
+
 </p></dd></dl>
 
 <p>The options to <code>cvs annotate</code> are listed in
 <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, and can be used to select the files
 and revisions to annotate.  The options are described
 in more detail there and in <a href="cvs_16.html#SEC119">Common command options</a>.
+
 </p>
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">

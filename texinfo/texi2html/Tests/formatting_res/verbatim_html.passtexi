@@ -50,7 +50,7 @@ verbatim_html.texi(,50) A list with bullet
 verbatim_html.texi(,52) Before itemize, in that case @@bullet isn'right, one needs @@bullet@{@} (in info) @itemize @bullet{} verbatim_html.texi(,52) @item on the same line than item
 verbatim_html.texi(,53) some text
 verbatim_html.texi(,54) @item
-verbatim_html.texi(,55) more text @end itemize
+verbatim_html.texi(,55) more text @end  itemize
 verbatim_html.texi(,56) 
 verbatim_html.texi(,57) A list with text before first @@item:
 verbatim_html.texi(,58) 
@@ -64,7 +64,7 @@ verbatim_html.texi(,66)
 verbatim_html.texi(,67) text
 verbatim_html.texi(,68) 
 verbatim_html.texi(,69) 
-verbatim_html.texi(,70) @@@@ @ text before @end  verbatim @end verbatim Text following end verbatim, must be exactly one space 
+verbatim_html.texi(,70) @@@@ @ text before @end  verbatim @end verbatim  Text following end verbatim, must be exactly one space 
 verbatim_html.texi(,71) between end and verbatim. @@end verbatim doesn't need to begin at beginning 
 verbatim_html.texi(,72) of line.
 verbatim_html.texi(,74) 
@@ -80,7 +80,7 @@ verbatim_html.texi(,83)
 verbatim_html.texi(,85) Now html  @html 
 verbatim_html.texi(,86) <b>
 verbatim_html.texi(,87) some html </b> 
-verbatim_html.texi(,88) @end html bidule ignored
+verbatim_html.texi(,88) @end html  bidule ignored
 verbatim_html.texi(,89) 
 verbatim_html.texi(,90) @@end html begins the line, and there must be exactly one space between @@end
 verbatim_html.texi(,91) and html and thing following @@end html are ignored in info. Strangely
@@ -89,7 +89,7 @@ verbatim_html.texi(,94)
 verbatim_html.texi(,95) Now html valid for @TeX{}  @html 
 verbatim_html.texi(,96) <b>
 verbatim_html.texi(,97) some html </b> 
-verbatim_html.texi(,98) @end html
+verbatim_html.texi(,98) @end html 
 verbatim_html.texi(,99) Some text one the line following @@end html
 verbatim_html.texi(,100) 
 verbatim_html.texi(,101) And html on it's own line
@@ -129,7 +129,7 @@ verbatim_html.texi(,150) an ftable on same line @ftable @bullet
 verbatim_html.texi(,151) @item fun1
 verbatim_html.texi(,152) @itemx fun2
 verbatim_html.texi(,153) fun1 et fun2 @item more fun
-verbatim_html.texi(,154) text on the same line than end   @end ftable
+verbatim_html.texi(,154) text on the same line than end   @end  ftable
 verbatim_html.texi(,155) works like @@ifnothtml
 verbatim_html.texi(,157) 
 verbatim_html.texi(,158) @item outside format.
@@ -262,7 +262,7 @@ verbatim_html.texi(,291) A node with gggggggg
 verbatim_html.texi(,292) before example @example after example
 verbatim_html.texi(,293) 
 verbatim_html.texi(,294) the example
-verbatim_html.texi(,295) before end example  @end example 
+verbatim_html.texi(,295) before end example  @end  example 
 verbatim_html.texi(,296) after end example
 verbatim_html.texi(,297) 
 verbatim_html.texi(,298) 

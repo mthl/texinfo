@@ -10,4 +10,4 @@ html_not_closed.texi(,10) <address> my address </address>
 html_not_closed.texi(,11) 
 html_not_closed.texi(,12) 
 html_not_closed.texi(,13) 
-(,) @end html
+(,) @end html 

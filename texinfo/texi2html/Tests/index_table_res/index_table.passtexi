@@ -30,7 +30,7 @@ index_table.texi(,30) an ftable @ftable @bullet
 index_table.texi(,31) @item fun1
 index_table.texi(,32) @itemx fun2
 index_table.texi(,33) fun1 et fun2 @item more fun
-index_table.texi(,34) and even more   @end ftable
+index_table.texi(,34) and even more   @end  ftable
 index_table.texi(,35) 
 index_table.texi(,36) @node node with printindex
 index_table.texi(,37) @chapter node with printindex

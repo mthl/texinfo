@@ -2,7 +2,7 @@ tex.texi(,2)
 tex.texi(,3) @node Top
 tex.texi(,4) @top Tests
 tex.texi(,5) 
-tex.texi(,14) Now tex on the same line @tex_0 bidule
+tex.texi(,14) Now tex on the same line @tex_0  bidule
 tex.texi(,15) Some text one the line following @@end tex
 tex.texi(,17) 
 tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).

@@ -86,13 +86,14 @@ notice is on the back of the title page, that page is customarily not
 numbered.  Therefore, in Texinfo, the information on the copyright page
 should be within <code>@titlepage</code> and <code>@end titlepage</code>
 commands.
+
 </p><a name="IDX83"></a>
 <a name="IDX84"></a>
 <p>Use the <code>@page</code> command to cause a page break.  To push the
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@vskip 0pt plus 1filll
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@vskip 0pt plus 1filll
 </pre></td></tr></table>
 
 <p>This is a TeX command that is not supported by the Info formatting
@@ -101,16 +102,18 @@ plus 1filll</samp>' means to put in zero points of mandatory whitespace, and as
 much optional whitespace as needed to push the following text to the
 bottom of the page.  Note the use of three `<samp>l</samp>'s in the word
 `<samp>filll</samp>'; this is correct.
+
 </p><p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see section <a href="Document-Permissions.html#SEC49">Document Permissions</a>):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@insertcopying
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
 </pre></td></tr></table>
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
+
 </p><p>Here is an example putting all this together:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@titlepage
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
 ...
 @page
 @vskip 0pt plus 1filll

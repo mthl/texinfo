@@ -83,13 +83,13 @@ ul.toc {list-style: none}
 <p>Use the <code>@kbd</code> command for characters of input to be typed by
 users.  For example, to refer to the characters <kbd>M-a</kbd>,
 write
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@kbd{M-a}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@kbd{M-a}
 </pre></td></tr></table>
 
 <p>and to refer to the characters <kbd>M-x shell</kbd>, write
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@kbd{M-x shell}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@kbd{M-x shell}
 </pre></td></tr></table>
 <a name="IDX120"></a>
 <a name="IDX121"></a>
@@ -97,6 +97,7 @@ write
 but by default produces a different font (slanted typewriter instead of
 normal typewriter) in the printed manual, so users can distinguish the
 characters they are supposed to type from those the computer outputs.
+
 </p><a name="IDX122"></a>
 <p>Since the usage of <code>@kbd</code> varies from manual to manual, you can
 control the font switching with the <code>@kbdinputstyle</code> command.
@@ -126,21 +127,22 @@ and similar environments.
 command.  Here, for example, is the way to describe a command that
 would be described more verbosely as &quot;press an `<samp>r</samp>' and then
 press the <kbd>RET</kbd> key&quot;:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@kbd{r @key{RET}}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@kbd{r @key{RET}}
 </pre></td></tr></table>
 
 <p>This produces: <kbd>r <kbd>RET</kbd></kbd>
+
 </p><p>You also use the <code>@kbd</code> command if you are spelling out the letters
 you type; for example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-To give the @code{logout} command,
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">To give the @code{logout} command,
 type the characters @kbd{l o g o u t @key{RET}}.
 </pre></td></tr></table>
 
 <p>This produces:
-</p><blockquote>
 
+</p><blockquote>
 <p>To give the <code>logout</code> command,
 type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
 </p></blockquote>
@@ -148,6 +150,7 @@ type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
 <p>(Also, this example shows that you can add spaces for clarity.  If you
 really want to mention a space character as one of the characters of
 input, write <kbd>@key{SPC}</kbd> for it.)
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -82,22 +82,25 @@ ul.toc {list-style: none}
 
 <p>Sometimes two expressions produce identical results.  You can indicate the
 exact equivalence of two forms with the <code>@equiv{}</code> command.
+
 </p><p>The <code>@equiv{}</code> command is displayed as `<samp>==</samp>' in Info
 and as a three parallel horizontal lines in the printed output.
+
 </p><p>Thus,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@lisp
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
-(make-sparse-keymap) == (list 'keymap)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) == (list 'keymap)
 </pre></td></tr></table>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
 identical results to evaluating <code>(list 'keymap)</code>.
+
 </p>
 <hr size="1">
 <p>

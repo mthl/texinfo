@@ -64,7 +64,7 @@ verbatim_html.texi(,66)
 verbatim_html.texi(,67) text
 verbatim_html.texi(,68) 
 verbatim_html.texi(,69) 
-verbatim_html.texi(,70) @@@@ @ text before @end  verbatim @end verbatim Text following end verbatim, must be exactly one space 
+verbatim_html.texi(,70) @@@@ @ text before @end  verbatim @end verbatim  Text following end verbatim, must be exactly one space 
 verbatim_html.texi(,71) between end and verbatim. @@end verbatim doesn't need to begin at beginning 
 verbatim_html.texi(,72) of line.
 verbatim_html.texi(,74) 
@@ -80,7 +80,7 @@ verbatim_html.texi(,83)
 verbatim_html.texi(,85) Now html  @html 
 verbatim_html.texi(,86) <b>
 verbatim_html.texi(,87) some html </b> 
-verbatim_html.texi(,88) @end html bidule ignored
+verbatim_html.texi(,88) @end html  bidule ignored
 verbatim_html.texi(,89) 
 verbatim_html.texi(,90) @@end html begins the line, and there must be exactly one space between @@end
 verbatim_html.texi(,91) and html and thing following @@end html are ignored in info. Strangely

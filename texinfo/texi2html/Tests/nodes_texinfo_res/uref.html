@@ -84,62 +84,58 @@ ul.toc {list-style: none}
 It takes one mandatory argument, the url, and two optional arguments
 which control the text that is displayed.  In HTML output, <code>@uref</code>
 produces a link you can follow.
+
 </p><p>The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
 url is also output.
+
 </p><a name="IDX114"></a>
 <p>The third argument, on the other hand, if specified is also the text to
 display, but the url is <em>not</em> output in any format.  This is useful
 when the text is already sufficiently referential, as in a man page.  If
 the third argument is given, the second argument is ignored.
+
 </p><p>The simple one argument form, where the url is both the target and the
 text of the link:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
-The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
+</p><table><tr><td>&nbsp;</td><td><pre class="display">The official GNU ftp site is <a href="ftp://ftp.gnu.org/gnu">ftp://ftp.gnu.org/gnu</a>.
 </pre></td></tr></table>
 
 <p>An example of the two-argument form:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
-The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
+</p><table><tr><td>&nbsp;</td><td><pre class="display">The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 </pre></td></tr></table>
 <p>that is, the Info output is this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-The official GNU ftp site (ftp://ftp.gnu.org/gnu)
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The official GNU ftp site (ftp://ftp.gnu.org/gnu)
 holds programs and texts.
 </pre></td></tr></table>
 <p>and the HTML output is this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The official &lt;a href=&quot;ftp://ftp.gnu.org/gnu&quot;&gt;GNU ftp site&lt;/a&gt;
 holds programs and texts.
 </pre></td></tr></table>
 
 <p>An example of the three-argument form:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-The @uref{/man.cgi/1/ls,,ls(1)} program ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The @uref{/man.cgi/1/ls,,ls(1)} program ...
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
-The <a href="/man.cgi/1/ls">ls(1)</a> program ...
+</p><table><tr><td>&nbsp;</td><td><pre class="display">The <a href="/man.cgi/1/ls">ls(1)</a> program ...
 </pre></td></tr></table>
 <p>but with HTML:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program ...
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program ...
 </pre></td></tr></table>
 <p>To merely indicate a url without creating a link people can follow, use
 <code>@url</code> (see section <a href="url.html#SEC135"><code>@url</code></a>).
+
 </p><p>Some people prefer to display url's in the unambiguous format:
-</p><table><tr><td>&nbsp;</td><td><pre class="display">
-&lt;URL:http://<var>host</var>/<var>path</var>&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="display">&lt;URL:http://<var>host</var>/<var>path</var>&gt;
 </pre></td></tr></table>
 
 <a name="IDX115"></a>
@@ -147,6 +143,7 @@ The &lt;a href=&quot;/man.cgi/1/ls&quot;&gt;ls(1)&lt;/a&gt; program ...
 necessary to clutter up the output with the extra `<samp>&lt;URL:</samp>' and
 `<samp>&gt;</samp>', since any software that tries to detect url's in text already
 has to detect them without the `<samp>&lt;URL:</samp>' to be useful.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

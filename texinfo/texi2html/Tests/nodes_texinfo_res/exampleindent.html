@@ -84,31 +84,37 @@ ul.toc {list-style: none}
 environments.  You can use the <code>@exampleindent</code> command to specify
 this indentation.  Write an <code>@exampleindent</code> command at the
 beginning of a line followed by either `<samp>asis</samp>' or a number:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@exampleindent <var>indent</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@exampleindent <var>indent</var>
 </pre></td></tr></table>
 <p>The indentation is according to the value of <var>indent</var>:
+
 </p><dl compact="compact">
 <dt> <code>asis</code>
 </dt>
 <dd><p>Do not change the existing indentation (not implemented in TeX).
+
 </p></dd>
 <dt> 0
 </dt>
 <dd><p>Omit all indentation.
+
 </p></dd>
 <dt> <var>n</var>
 </dt>
 <dd><p>Indent environments by <var>n</var> space characters in Info output, by
 <var>n</var> ems in TeX.
+
 </p></dd>
 </dl>
 
 <p>The default value of <var>indent</var> is 5.  <code>@exampleindent</code> is
 ignored for HTML output.
+
 </p><p>It is best to write the <code>@exampleindent</code> command before the
 end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  See section <a href="Start-of-Header.html#SEC45">Start of Header</a>.
+
 </p>
 <hr size="1">
 <p>

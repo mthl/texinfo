@@ -83,11 +83,13 @@ ul.toc {list-style: none}
 <p>When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
 <code>@expansion{}</code> command.
+
 </p><p>The <code>@expansion{}</code> command is displayed as `<samp>==&gt;</samp>'
 in Info and as a long arrow with a flat base in the printed output.
+
 </p><p>For example, the following
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@lisp
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@lisp
 (third '(a b c))
      @expansion{} (car (cdr (cdr '(a b c))))
      @result{} c
@@ -95,15 +97,15 @@ in Info and as a long arrow with a flat base in the printed output.
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="lisp">
-(third '(a b c))
+
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
      ==&gt; (car (cdr (cdr '(a b c))))
      =&gt; c
 </pre></td></tr></table>
 
 <p>which may be read as:
-</p><blockquote>
 
+</p><blockquote>
 <p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
 the result of evaluating the expression is <code>c</code>.
 </p></blockquote>
@@ -112,6 +114,7 @@ the result of evaluating the expression is <code>c</code>.
 <p>Often, as in this case, an example looks better if the
 <code>@expansion{}</code> and <code>@result{}</code> commands are indented
 five spaces.
+
 </p>
 <hr size="1">
 <p>

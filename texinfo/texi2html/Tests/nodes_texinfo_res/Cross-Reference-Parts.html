@@ -87,81 +87,91 @@ arguments, you can provide a cross reference name for Info, a topic
 description or section title for the printed output, the name of a
 different Info file, and the name of a different printed
 manual.
+
 </p><p>Here is a simple cross reference example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{Node name}.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Node name}.
 </pre></td></tr></table>
 
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-*Note Node name::.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Node name::.
 </pre></td></tr></table>
 
 <p>and
-</p><blockquote>
 
+</p><blockquote>
 <p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
 </p></blockquote>
 
 <p>Here is an example of a full five-part cross reference:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{Node name, Cross Reference Name, Particular Topic,
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Node name, Cross Reference Name, Particular Topic,
 info-file-name, A Printed Manual}, for details.
 </pre></td></tr></table>
 
 <p>which produces
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-*Note Cross Reference Name: (info-file-name)Node name,
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Cross Reference Name: (info-file-name)Node name,
 for details.
 </pre></td></tr></table>
 
 <p>in Info and
-</p><blockquote>
 
+</p><blockquote>
 <p>See section &quot;Particular Topic&quot; in <i>A Printed Manual</i>, for details.
 </p></blockquote>
 
 
 <p>in a printed book.
+
 </p><p>The five possible arguments for a cross reference are:
+
 </p><ol>
 <li>
 <p>The node or anchor name (required).  This is the location to which the
 cross reference takes you.  In a printed document, the location of the
 node provides the page reference only for references within the same
 document.
+
 </p></li><li>
 <p>The cross reference name for the Info reference, if it is to be different
 from the node name.  If you include this argument, it becomes
 the first part of the cross reference.  It is usually omitted.
+
 </p></li><li>
 <p>A topic description or section name.  Often, this is the title of the
 section.  This is used as the name of the reference in the printed
 manual.  If omitted, the node name is used.
+
 </p></li><li>
 <p>The name of the Info file in which the reference is located, if it is
 different from the current file.  You need not include any `<samp>.info</samp>'
 suffix on the file name, since Info readers try appending it
 automatically.
+
 </p></li><li>
 <p>The name of a printed manual from a different Texinfo file.
 </p></li></ol>
 
 <p>The template for a full five argument cross reference looks like
 this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
 </pre></td></tr></table>
 <p>Cross references with one, two, three, four, and five arguments are
 described separately following the description of <code>@xref</code>.
+
 </p><p>Write a node name in a cross reference in exactly the same way as in
 the <code>@node</code> line, including the same capitalization; otherwise, the
 formatters may not find the reference.
+
 </p><p>You can write cross reference commands within a paragraph, but note
 how Info and TeX format the output of each of the various commands:
 write <code>@xref</code> at the beginning of a sentence; write
 <code>@pxref</code> only within parentheses, and so on.
+
 </p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Cross-Reference-Commands.html#SEC106" title="Previous section in reading order"> &lt; </a>]</td>

@@ -84,11 +84,12 @@ ul.toc {list-style: none}
 commands.  The name of the function follows immediately after the
 <code>@defun</code> command and it is followed, on the same line, by the
 parameter list.
-</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
-</p><blockquote>
 
+</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
+
+</p><blockquote>
 <dl>
-<dt><u>Function:</u> <b>apply</b> function &amp;rest arguments
+<dt><u>Function:</u> <b>apply</b><i> function &amp;rest arguments</i>
 <a name="IDX286"></a>
 </dt>
 <dd><p><code>apply</code> calls <var>function</var> with <var>arguments</var>, just
@@ -96,12 +97,13 @@ like <code>funcall</code> but with one difference: the last of
 <var>arguments</var> is a list of arguments to give to
 <var>function</var>, rather than a single argument.  We also say
 that this list is <em>appended</em> to the other arguments.
+
 </p><p><code>apply</code> returns the result of calling <var>function</var>.
 As with <code>funcall</code>, <var>function</var> must either be a Lisp
 function or a primitive function; special forms and macros
 do not make sense in <code>apply</code>.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(setq f 'list)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq f 'list)
      =&gt; list
 (apply f 'x 'y 'z)
 error--&gt; Wrong type argument: listp, z
@@ -119,8 +121,8 @@ of <code>mapcar</code>.
 </blockquote>
 
 <p>In the Texinfo source file, this example looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@defun apply function &amp;rest arguments
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defun apply function &amp;rest arguments
 @code{apply} calls @var{function} with
 @var{arguments}, just like @code{funcall} but with one
 difference: the last of @var{arguments} is a list of
@@ -155,8 +157,10 @@ in the description of @code{mapcar}.
 
 <p>In this manual, this function is listed in the Command and Variable
 Index under <code>apply</code>.
+
 </p><p>Ordinary variables and user options are described using a format like
 that for functions except that variables do not take arguments.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -87,15 +87,19 @@ controlled by the <code>@setchapternewpage</code> command.  You need the
 does not do what you want, or if you want to turn off pre-defined page
 headings prior to defining your own.  Write an <code>@headings</code> command
 immediately after the <code>@end titlepage</code> command.
+
 </p><p>You can use <code>@headings</code> as follows:
+
 </p><dl compact="compact">
 <dt><code> @headings off
 </code></dt>
 <dd><p>Turn off printing of page headings.
+
 </p></dd>
 <dt><code> @headings single
 </code></dt>
 <dd><p>Turn on page headings appropriate for single-sided printing.
+
 </p>
 </dd>
 <dt><code> @headings double
@@ -105,6 +109,7 @@ immediately after the <code>@end titlepage</code> command.
 <dd><p>Turn on page headings appropriate for double-sided printing.  The two
 commands, <code>@headings on</code> and <code>@headings double</code>, are
 synonymous.
+
 </p></dd>
 <dt><code> @headings singleafter
 </code></dt>
@@ -112,6 +117,7 @@ synonymous.
 </code></dt>
 <dd><p>Turn on <code>single</code> or <code>double</code> headings, respectively, after the
 current page is output.
+
 </p></dd>
 <dt><code> @headings on
 </code></dt>
@@ -126,19 +132,22 @@ same page as the end of the last chapter.  This command also causes
 TeX to typeset page headers for single-sided printing.  To cause
 TeX to typeset for double sided printing, write <code>@headings
 double</code> after the <code>@end titlepage</code> command.
+
 </p><p>You can stop TeX from generating any page headings at all by
 writing <code>@headings off</code> on a line of its own immediately after the
 line containing the <code>@end titlepage</code> command, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@end titlepage
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@end titlepage
 @headings off
 </pre></td></tr></table>
 
 <p>The <code>@headings off</code> command overrides the <code>@end titlepage</code>
 command, which would otherwise cause TeX to print page
 headings.
+
 </p><p>You can also specify your own style of page heading and footing.
 See section <a href="Headings.html#SEC303">Page Headings</a>, for more information.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

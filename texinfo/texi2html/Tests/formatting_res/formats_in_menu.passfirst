@@ -21,7 +21,19 @@ formats_in_menu.texi(,21) * (manual2):: $@html
 formats_in_menu.texi(,22) <i></i>
 formats_in_menu.texi(,23) @end html
 formats_in_menu.texi(,24) Log$
-formats_in_menu.texi(,25) @end menu
-formats_in_menu.texi(,26) After menu
-formats_in_menu.texi(,27) 
-formats_in_menu.texi(,28) 
+formats_in_menu.texi(,25) * (truc):: @acronym{description
+formats_in_menu.texi(,26) acronym}
+formats_in_menu.texi(,27) @end menu
+formats_in_menu.texi(,28) After menu
+formats_in_menu.texi(,29) 
+formats_in_menu.texi(,30) @menu
+formats_in_menu.texi(,31) * (manual):: @table @asis
+formats_in_menu.texi(,32) @item item
+formats_in_menu.texi(,33) * (node)::
+formats_in_menu.texi(,34) menu comment ?
+formats_in_menu.texi(,35) * (node2):: description ?
+formats_in_menu.texi(,36)   description continue ?
+formats_in_menu.texi(,37) comment.
+formats_in_menu.texi(,38) @end table
+formats_in_menu.texi(,39) @end menu
+formats_in_menu.texi(,40) 

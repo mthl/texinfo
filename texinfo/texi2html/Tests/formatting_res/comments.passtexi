@@ -66,11 +66,11 @@ comments.texi(,107)
 comments.texi(,108) @@exdent  line after exdent
 comments.texi(,109) 
 comments.texi(,110) And now sp:
-comments.texi(,111) Text line followed by a comment on the same line and another below 
-comments.texi(,112) 
-comments.texi(,113) Text line after the comment followed by a comment 
+comments.texi(,111) Text line followed by a comment on the same line and another below @sp 1
+comments.texi(,112) @sp 2
+comments.texi(,113) Text line after the comment followed by a comment @sp 1
 comments.texi(,114) Text line after the text line followed by the comment.
-comments.texi(,115)  a number after sp
+comments.texi(,115) @sp 2 a number after sp
 comments.texi(,116) 
 comments.texi(,117) Menu:
 comments.texi(,118) @menu

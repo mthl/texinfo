@@ -9,7 +9,7 @@ tex.texi(,10)           \left(y_i - (a + b x_i)
 tex.texi(,11) 	  \over \sigma_i\right)^2 $$
 tex.texi(,12) 		    
 tex.texi(,13) 
-tex.texi(,14) @end tex bidule
+tex.texi(,14) @end tex  bidule
 tex.texi(,15) Some text one the line following @@end tex
 tex.texi(,17) 
 tex.texi(,18) Now tex on the following line, valid fot tex (with @@end tex on a line).

@@ -83,22 +83,26 @@ ul.toc {list-style: none}
 <p>The <code>@end titlepage</code> command must be written on a line by itself.
 It not only marks the end of the title and copyright pages, but also
 causes TeX to start generating page headings and page numbers.
+
 </p><p>To repeat what is said elsewhere,  Texinfo has two standard page heading
 formats, one for documents which are printed on one side of each sheet of paper
 (single-sided printing), and the other for documents which are printed on both
 sides of each sheet (double-sided printing).
 You can specify these formats in different ways:
+
 </p><ul>
 <li>
 <p>The conventional way is to write an <code>@setchapternewpage</code> command
 before the title page commands, and then have the <code>@end
 titlepage</code> command start generating page headings in the manner desired.
 (See section <a href="setchapternewpage.html#SEC64"><code>@setchapternewpage</code>:</a>.)
+
 </p></li><li>
 <p>Alternatively, you can use the <code>@headings</code> command to prevent page
 headings from being generated or to start them for either single or
 double-sided printing.  (Write an <code>@headings</code> command immediately
 after the <code>@end titlepage</code> command.  See section <a href="headings-on-off.html#SEC58">The <code>@headings</code> Command</a>, for more information.)
+
 </p></li><li>
 <p>Or, you may specify your own page heading and footing format.
 See section <a href="Headings.html#SEC303">Page Headings</a>, for detailed
@@ -109,6 +113,7 @@ information about page headings and footings.
 double-sided format, using <code>@setchapternewpage odd</code> for
 double-sided printing and no <code>@setchapternewpage</code> command for
 single-sided printing.
+
 </p>
 <hr size="1">
 <p>

@@ -82,19 +82,23 @@ ul.toc {list-style: none}
 
 <p>If an Info file is not in the `<tt>info</tt>' directory, there are three
 ways to specify its location:
+
 </p><ol>
 <li>
 <p>Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
+
 </p></li><li>
 <p>If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
 file, in its directory; and then add the name of that directory to the
 <code>Info-directory-list</code> variable in your personal or site
 initialization file.
+
 </p><p>This variable tells Emacs where to look for `<tt>dir</tt>' files (the files
 must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
 each of the listed directories.  (In Emacs version 18, you can set the
 <code>Info-directory</code> variable to the name of only one
 directory.)
+
 </p></li><li>
 <p>Specify the Info directory name in the <code>INFOPATH</code> environment
 variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
@@ -105,16 +109,17 @@ find Info files whose location is specified this way.)
 <p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
 directory, you could add an entry like this to the menu in the
 standard `<tt>dir</tt>' file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-* Test: (/home/bob/info/info-test).  Bob's own test file.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
 </pre></td></tr></table>
 
 <p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
 written as the second part of the menu entry.
+
 </p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
+
 </p><a name="IDX413"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-(require 'info)
+<table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
@@ -127,6 +132,7 @@ file in `<tt>/home/bob/info</tt>'.  Thus, Info will list the
 <code>Info-directory-list</code> in an Emacs session where you've already run
 <code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
 to recompose the `<tt>dir</tt>' file.
+
 </p><a name="IDX414"></a>
 <p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
 environment variable in your shell startup file, such as `<tt>.cshrc</tt>',
@@ -138,25 +144,26 @@ interpreter, you set the <code>INFOPATH</code> environment variable in the
 file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
 your `<tt>autoexec.bat</tt>' file or in the Registry.  Each type of shell
 uses a different syntax.
+
 </p><ul>
 <li>
 <p>In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
 variable as follows:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-setenv INFOPATH .:~/info:/usr/local/emacs/info
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
 </pre></td></tr></table>
 </li><li>
 <p>In a `<tt>.profile</tt>' file, you would achieve the same effect by
 writing:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-INFOPATH=.:$HOME/info:/usr/local/emacs/info
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
 </pre></td></tr></table>
 </li><li>
 <a name="IDX415"></a>
 <p>In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 </pre></td></tr></table></li></ul>
 
 
@@ -166,25 +173,28 @@ own <code>Info-directory-list</code> variable.  The stand-alone Info reader
 merges any files named `<tt>dir</tt>' in any directory listed in the
 <code>INFOPATH</code> variable into a single menu presented to you in the node
 called `<samp>(dir)Top</samp>'.
+
 </p><a name="IDX416"></a>
 <p>However you set <code>INFOPATH</code>, if its last character is a
 colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
 is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using <code>sh</code> syntax):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-INFOPATH=/local/info:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">INFOPATH=/local/info:
 export INFOPATH
 </pre></td></tr></table>
 
 <p>will search `<tt>/local/info</tt>' first, then the standard directories.
 Leading or doubled colons are not treated specially.
+
 </p><a name="IDX417"></a>
 <p>When you create your own `<tt>dir</tt>' file for use with
 <code>Info-directory-list</code> or <code>INFOPATH</code>, it's easiest to start by
 copying an existing `<tt>dir</tt>' file and replace all the text after the
 `<samp>* Menu:</samp>' with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

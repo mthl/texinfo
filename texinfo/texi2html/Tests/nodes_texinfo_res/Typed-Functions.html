@@ -83,9 +83,9 @@ ul.toc {list-style: none}
 <p>The <code>@deftypefn</code> command and its variations are for describing
 functions in languages in which you must declare types of variables and
 functions, such as C and C++.
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX274"></a>
+<dd><a name="IDX274"></a>
 </dd>
 <dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
@@ -95,10 +95,11 @@ typed.  The <code>@deftypefn</code> command is written at the beginning of
 a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
 particular entity, and its arguments, if any.
+
 </p>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypefn {Library Function} int foobar
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
 ...
 @end deftypefn
@@ -107,36 +108,40 @@ particular entity, and its arguments, if any.
 <p>(where the text before the &quot;<small class="dots">...</small>&quot;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
--- Library Function: int foobar (int FOO, float BAR)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 ...
 </pre></td></tr></table>
 <p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
 <var>bar</var> (a <code>float</code>).
+
 </p><p>The argument names that you write in <code>@deftypefn</code> are not subject
 to an implicit <code>@var</code>--since the actual names of the arguments in
 <code>@deftypefn</code> are typically scattered among data type names and
 keywords, Texinfo cannot find them without help.  Instead, you must write
 <code>@var</code> explicitly around the argument names.  In the example
 above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.
+
 </p><p>The template for <code>@deftypefn</code> is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
 <var>body-of-description</var>
 @end deftypefn
 </pre></td></tr></table>
 
 <p>Note that if the <var>category</var> or <var>data type</var> is more than one
 word then it must be enclosed in braces to make it a single argument.
+
 </p><p>If you are describing a procedure in a language that has packages,
 such as Ada, you might consider using <code>@deftypefn</code> in a manner
 somewhat contrary to the convention described in the preceding
 paragraphs.
+
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypefn stacks private push
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn stacks private push
         (@var{s}:in out stack;
         @var{n}:in integer)
 ...
@@ -145,12 +150,15 @@ paragraphs.
 
 <p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
 would be a single line in a real Texinfo file.)
+
 </p><p>In this instance, the procedure is classified as belonging to the
 package <code>stacks</code> rather than classified as a `procedure' and its
 data type is described as <code>private</code>.  (The name of the procedure
 is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
+
 </p><p><code>@deftypefn</code> creates an entry in the index of functions for
 <var>name</var>.
+
 </p></dd>
 <dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small class="dots">...</small>
 </code></dt>
@@ -158,27 +166,29 @@ is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
 <p>The <code>@deftypefun</code> command is the specialized definition command
 for functions in typed languages.  The command is equivalent to
 `<samp>@deftypefn Function <small class="dots">...</small></samp>'.
+
 </p>
 <p>Thus,
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-@deftypefun int foobar (int @var{foo}, float @var{bar})
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
 ...
 @end deftypefun
 </pre></td></tr></table>
 
 <p>produces the following in Info:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
--- Function: int foobar (int FOO, float BAR)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">-- Function: int foobar (int FOO, float BAR)
 ...
 </pre></td></tr></table>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@deftypefun <var>type</var> <var>name</var> <var>arguments</var>...
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>...
 <var>body-of-description</var>
 @end deftypefun
 </pre></td></tr></table>
 <p><code>@deftypefun</code> creates an entry in the index of functions for
 <var>name</var>.
+
 </p></dd>
 </dl>
 

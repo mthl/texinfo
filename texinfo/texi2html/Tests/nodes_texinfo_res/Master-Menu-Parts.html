@@ -82,15 +82,20 @@ ul.toc {list-style: none}
 
 <p>A <em>master menu</em> is a detailed main menu listing all the nodes in a
 file.
+
 </p><p>A master menu is enclosed in <code>@menu</code> and <code>@end menu</code>
 commands and does not appear in the printed document.
+
 </p><p>Generally, a master menu is divided into parts.
+
 </p><ul>
 <li>
 <p>The first part contains the major nodes in the Texinfo file: the nodes
 for the chapters, chapter-like sections, and the appendices.
+
 </p></li><li>
 <p>The second part contains nodes for the indices.
+
 </p></li><li>
 <p>The third and subsequent parts contain a listing of the other, lower
 level nodes, often ordered by chapter.  This way, rather than go
@@ -106,10 +111,11 @@ first one, and <code>@end detailmenu</code> after the last; otherwise,
 long as the line does not begin with an asterisk, it will not be
 treated as a menu entry.  (See section <a href="Writing-a-Menu.html#SEC99">Writing a Menu</a>, for more
 information.)
+
 </p><p>For example, the master menu for this manual looks like the following
 (but has many more entries):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@menu
 * Copying Conditions::  Your rights.
 * Overview::            Texinfo in brief.
 ...

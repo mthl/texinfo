@@ -85,14 +85,14 @@ ul.toc {list-style: none}
 cross-references can refer to it, just as they can to nodes.  You create
 an anchor with the <code>@anchor</code> command, and give the label as a
 normal brace-delimited argument.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-This marks the @anchor{x-spot}spot.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
 ...
 @xref{x-spot,,the spot}.
 </pre></td></tr></table>
 <p>produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-This marks the spot.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
 ...
 See [the spot], page 1.
 </pre></td></tr></table>
@@ -101,15 +101,18 @@ This example defines an anchor `x-spot' just before the word `spot'.
 You can refer to it later with an <code>@xref</code> or other cross-reference
 command, as shown.  See section <a href="Cross-References.html#SEC104">Cross References</a>, for details on the
 cross-reference commands.
+
 </p><p>It is best to put <code>@anchor</code> commands just before the position you
 wish to refer to; that way, the reader's eye is led on to the correct
 text when they jump to the anchor.  You can put the <code>@anchor</code>
 command on a line by itself if that helps readability of the source.
 Spaces are always ignored after <code>@anchor</code>.
+
 </p><p>Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the <code>goto-node</code>
 command in standalone Info takes either an anchor name or a node name as
 an argument.  (See <a href="../info-stnd/goto-node.html">(info-stnd)goto-node</a> section `goto-node' in <cite>GNU Info</cite>.)
+
 </p>
 <hr size="1">
 <p>

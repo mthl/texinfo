@@ -1368,7 +1368,7 @@ texinfo.txi(,1504) @subheading Some Results
 texinfo.txi(,1505) 
 texinfo.txi(,1506) Here is what the contents of the first chapter of the sample look like:
 texinfo.txi(,1507) 
-texinfo.txi(,1508) 
+texinfo.txi(,1508) @sp 1
 texinfo.txi(,1510) @quotation
 texinfo.txi(,1511) This is the first chapter.
 texinfo.txi(,1512) 
@@ -7564,7 +7564,7 @@ texinfo.txi(,8090)
 texinfo.txi(,8091) Precede each element of a list with an @code{@@item} or @code{@@itemx}
 texinfo.txi(,8092) command.
 texinfo.txi(,8093) 
-texinfo.txi(,8094) 
+texinfo.txi(,8094) @sp 1
 texinfo.txi(,8095) 
 texinfo.txi(,8096) Here is an itemized list of the different kinds of table and lists:
 texinfo.txi(,8097) 
@@ -7579,7 +7579,7 @@ texinfo.txi(,8105) @item
 texinfo.txi(,8106) Two-column tables with highlighting.
 texinfo.txi(,8107) @end itemize
 texinfo.txi(,8108) 
-texinfo.txi(,8109) 
+texinfo.txi(,8109) @sp 1
 texinfo.txi(,8110) 
 texinfo.txi(,8111) Here is an enumerated list with the same items:
 texinfo.txi(,8112) 
@@ -7594,7 +7594,7 @@ texinfo.txi(,8120) @item
 texinfo.txi(,8121) Two-column tables with highlighting.
 texinfo.txi(,8122) @end enumerate
 texinfo.txi(,8123) 
-texinfo.txi(,8124) 
+texinfo.txi(,8124) @sp 1
 texinfo.txi(,8125) 
 texinfo.txi(,8126) And here is a two-column table with the same items and their
 texinfo.txi(,8127) @w{@@-commands}:
@@ -7767,9 +7767,9 @@ texinfo.txi(,8300)
 texinfo.txi(,8301) @item
 texinfo.txi(,8302) Proximate causes.
 texinfo.txi(,8303) @end enumerate
-texinfo.txi(,8304) 
+texinfo.txi(,8304) @sp 1
 texinfo.txi(,8305) Here is an example with an argument of @kbd{3}:
-texinfo.txi(,8306) 
+texinfo.txi(,8306) @sp 1
 texinfo.txi(,8307) @example
 texinfo.txi(,8309) @@enumerate 3
 texinfo.txi(,8310) @@item
@@ -7796,10 +7796,10 @@ texinfo.txi(,8331)
 texinfo.txi(,8332) @item
 texinfo.txi(,8333) Perpetuating causes.
 texinfo.txi(,8334) @end enumerate
-texinfo.txi(,8335) 
+texinfo.txi(,8335) @sp 1
 texinfo.txi(,8336) Here is a brief summary of the alternatives.  The summary is constructed
 texinfo.txi(,8337) using @code{@@enumerate} with an argument of @kbd{a}.
-texinfo.txi(,8338) 
+texinfo.txi(,8338) @sp 1
 texinfo.txi(,8339) @enumerate a
 texinfo.txi(,8340) @item
 texinfo.txi(,8341) @code{@@enumerate}
@@ -13962,7 +13962,7 @@ texinfo.txi(,14991) Here is an alphabetical list of the @@-commands in Texinfo. 
 texinfo.txi(,14992) brackets, @t{[}@w{ }@t{]}, indicate optional arguments; an ellipsis,
 texinfo.txi(,14993) @samp{@dots{}}, indicates repeated text.
 texinfo.txi(,14994) 
-texinfo.txi(,14995) 
+texinfo.txi(,14995) @sp 1
 texinfo.txi(,14996) @table @code
 texinfo.txi(,14997) @item @@@var{whitespace}
 texinfo.txi(,14998) An @code{@@} followed by a space, tab, or newline produces a normal,
@@ -15475,7 +15475,7 @@ texinfo.txi(,16552) source file such as this into an Info file or HTML; and @TeX
 texinfo.txi(,16553) it for a printed manual.
 texinfo.txi(,16554) 
 texinfo.txi(,16555) 
-texinfo.txi(,16556) 
+texinfo.txi(,16556) @sp 1
 texinfo.txi(,16557) @example
 texinfo.txi(,16558) \input texinfo   @@c -*-texinfo-*-
 texinfo.txi(,16559) @@c %**start of header
@@ -15565,14 +15565,14 @@ texinfo.txi(,16642) Here are some notes on the example:
 texinfo.txi(,16643) 
 texinfo.txi(,16644) @itemize @bullet
 texinfo.txi(,16645) @item
-texinfo.txi(,16646) @cindex $Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $ comment
-texinfo.txi(,16647) @cindex CVS $Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $, in Texinfo
-texinfo.txi(,16648) @cindex RCS $Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $, in Texinfo
-texinfo.txi(,16649) The @samp{$Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+texinfo.txi(,16646) @cindex $Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $ comment
+texinfo.txi(,16647) @cindex CVS $Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $, in Texinfo
+texinfo.txi(,16648) @cindex RCS $Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $, in Texinfo
+texinfo.txi(,16649) The @samp{$Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 texinfo.txi(,16650) Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 texinfo.txi(,16651) systems, which expand it into a string such as:
 texinfo.txi(,16652) @example
-texinfo.txi(,16653) $Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $
+texinfo.txi(,16653) $Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $
 texinfo.txi(,16654) @end example
 texinfo.txi(,16655) (This is useful in all sources that use version control, not just manuals.)
 texinfo.txi(,16656) 
@@ -15619,7 +15619,7 @@ texinfo.txi(,16696) Here is the sample document:
 texinfo.txi(,16697) 
 texinfo.txi(,16700) @example
 texinfo.txi(,16701) \input texinfo    @@c -*-texinfo-*-
-texinfo.txi(,16702) @@comment $Id: texinfo.passfirst,v 1.12 2003-08-12 09:08:01 pertusus Exp $
+texinfo.txi(,16702) @@comment $Id: texinfo.passfirst,v 1.13 2003-09-01 15:08:20 pertusus Exp $
 texinfo.txi(,16703) @@comment %**start of header
 texinfo.txi(,16704) @@setfilename sample.info
 texinfo.txi(,16705) @@include version.texi

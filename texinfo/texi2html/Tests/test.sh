@@ -168,6 +168,9 @@ test_texi macros
 test_texi macros simple_macro.texi "" 4
 test_texi macros pass0_macros.texi
 test_texi macros truc_machin.texi
+test_texi macros glossary.texi
+test_texi macros imbricated_macros.texi
+test_texi macros expansion_order.texi
 test_texi sectionning
 test_texi sectionning first_section_no_node.texi "" 1
 test_texi sectionning nodes_before_top.texi
@@ -191,7 +194,8 @@ test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi formatting formatting.texi
-test_texi formatting simplest.texi "-css-file file.css"
+test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting" 0 texi exotic_formatting
+test_texi formatting simplest.texi "-css-include file.css"
 test_texi formatting nodetest.texi "-split chapter"
 test_texi formatting testkb.texi
 test_texi formatting umlaut.texi

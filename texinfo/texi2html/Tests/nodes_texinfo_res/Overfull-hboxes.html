@@ -85,29 +85,32 @@ the right margin.  This can occur when TeX comes upon what it
 interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Overfull @hbox (20.76302pt too wide)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
 </pre></td></tr></table>
 <a name="IDX343"></a>
 
 <p>(In TeX, lines are in &quot;horizontal boxes&quot;, hence the term, &quot;hbox&quot;.
 `<samp>@hbox</samp>' is a TeX primitive not needed in the Texinfo language.)
+
 </p><p>TeX also provides the line number in the Texinfo source file and
 the text of the offending line, which is marked at all the places that
 TeX considered hyphenation.
 See section <a href="Debugging-with-TeX.html#SEC311">Catching Errors with TeX Formatting</a>,
 for more information about typesetting errors.
+
 </p><p>If the Texinfo file has an overfull hbox, you can rewrite the sentence
 so the overfull hbox does not occur, or you can decide to leave it.  A
 small excursion into the right margin often does not matter and may not
 even be noticeable.
+
 </p><p>If you have many overfull boxes and/or an antipathy to rewriting, you
 can coerce TeX into greatly increasing the allowable interword
 spacing, thus (if you're lucky) avoiding many of the bad line breaks,
 like this:
+
 </p><a name="IDX344"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-@tex
+<table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
 </pre></td></tr></table>
@@ -117,6 +120,7 @@ like this:
 output would generally be of noticeably lower quality; the default
 is `<samp>.15\hsize</samp>'.  <code>\hsize</code> is the TeX dimension
 containing the current line width.
+
 </p><a name="IDX345"></a>
 <a name="IDX346"></a>
 <a name="IDX347"></a>
@@ -125,12 +129,13 @@ containing the current line width.
 ugly, black rectangle beside the line that contains the overfull hbox
 unless told otherwise.  This is so you will notice the location of the
 problem if you are correcting a draft.
+
 </p><a name="IDX349"></a>
 <p>To prevent such a monstrosity from marring your final printout, write
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@finalout
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@finalout
 </pre></td></tr></table>
 
 <hr size="1">

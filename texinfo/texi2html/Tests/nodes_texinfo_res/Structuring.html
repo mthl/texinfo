@@ -84,6 +84,7 @@ ul.toc {list-style: none}
 chapters, sections, subsections, and subsubsections.  These commands
 generate large headings; they also provide information for the table
 of contents of a printed manual (see section <a href="Contents.html#SEC70">Generating a Table of Contents</a>).
+
 </p><p>The chapter structuring commands do not create an Info node structure,
 so normally you should put an <code>@node</code> command immediately before
 each chapter structuring command (see section <a href="Nodes.html#SEC85">Nodes</a>).  The only time you
@@ -91,12 +92,13 @@ are likely to use the chapter structuring commands without using the
 node structuring commands is if you are writing a document that
 contains no cross references and will never be transformed into Info
 format.
+
 </p><p>It is unlikely that you will ever write a Texinfo file that is
 intended only as an Info file and not as a printable document.  If you
 do, you might still use chapter structuring commands to create a
 heading at the top of each node--but you don't need to.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="Tree-Structuring.html#SEC73">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A manual is like an upside down tree <small class="dots">...</small></td></tr>
 <tr><td align="left" valign="top"><a href="Structuring-Command-Types.html#SEC74">5.2 Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to divide a manual into parts.</td></tr>
 <tr><td align="left" valign="top"><a href="makeinfo-top.html#SEC75">5.3 <code>@top</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The <code>@top</code> command, part of the `Top' node.</td></tr>

@@ -85,23 +85,26 @@ text area on the page with the <code>@pagesizes</code> command.  Write this
 on a line by itself near the beginning of the Texinfo file, before the
 title page.  The height comes first, then the width if desired,
 separated by a comma.  Examples:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@pagesizes 200mm,150mm  </pre></td></tr></table><p>and
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-@pagesizes 11.5in      </pre></td></tr></table>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 200mm,150mm  </pre></td></tr></table><p>and
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 11.5in      </pre></td></tr></table>
 <a name="IDX352"></a>
 <a name="IDX353"></a>
 <p>This would be reasonable for printing on B5-size paper.  To emphasize,
 this command specifies the size of the <em>text area</em>, not the size of
 the paper (which is 250mm by 177mm for B5, 14in by
 8.5in for legal).
+
 </p><a name="IDX354"></a>
 <p>To make more elaborate changes, such as changing any of the page
 margins, you must define a new command in `<tt>texinfo.tex</tt>' (or
 `<tt>texinfo.cnf</tt>', see section <a href="Preparing-for-TeX.html#SEC253">Preparing for TeX</a>).
+
 </p><p>See section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>, and <a href="Preparing-for-TeX.html#SEC253">Preparing for TeX</a>, for other ways to specify <code>@pagesizes</code> that do not
 require changing the source file.
+
 </p><p><code>@pagesizes</code> is ignored by <code>makeinfo</code>.
+
 </p>
 <hr size="1">
 <p>

@@ -23,7 +23,7 @@ simple_macro.texi(,25) the @@macro1 @{ @@samp@{f\irst arg@}, second arg @} after
 simple_macro.texi(,26) @end example
 simple_macro.texi(,27) ==================================
 simple_macro.texi(,28) 
-simple_macro.texi(,29) the result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg } after macro
+simple_macro.texi(macro1,29) the simple_macro.texi(macro1,29) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg }simple_macro.texi(macro1,29)  after macro
 simple_macro.texi(,30) 
 simple_macro.texi(,31) -----------------------------------
 simple_macro.texi(,32) 
@@ -37,7 +37,7 @@ simple_macro.texi(,39) @@macro1 @{ @@samp@{f\irst arg@}@}
 simple_macro.texi(,40) @end example
 simple_macro.texi(,41) ==================================
 simple_macro.texi(,42) 
-simple_macro.texi(,43) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{}
+simple_macro.texi(macro1,43) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{}simple_macro.texi(macro1,43) 
 simple_macro.texi(,44) 
 simple_macro.texi(,45) -----------------------------------
 simple_macro.texi(,46) 
@@ -51,7 +51,7 @@ simple_macro.texi(,53) @@macro1 @@samp@{f\irst arg@}, second arg
 simple_macro.texi(,54) @end example
 simple_macro.texi(,55) ==================================
 simple_macro.texi(,56) 
-simple_macro.texi(,57) result: @emph{} protected \ -> \arg1\ @emph{} @samp{f\irst arg}, second arg
+simple_macro.texi(macro1,57) result: @emph{} protected \ -> \arg1\ @emph{}simple_macro.texi(macro1,57)  @samp{f\irst arg}, second arg
 simple_macro.texi(,58) 
 simple_macro.texi(,59) -----------------------------------
 simple_macro.texi(,60) 
@@ -65,7 +65,7 @@ simple_macro.texi(,68) @@macro1 @{ @@samp@{f\irst arg@}, second arg, third arg@}
 simple_macro.texi(,69) @end example
 simple_macro.texi(,70) ==================================
 simple_macro.texi(,71) 
-simple_macro.texi(,72) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg}
+simple_macro.texi(macro1,72) result: @emph{@samp{first arg}} protected \ -> \arg1\ @emph{second arg}simple_macro.texi(macro1,72) 
 simple_macro.texi(,73) 
 simple_macro.texi(,74) -----------------------------------
 simple_macro.texi(,75) 
@@ -90,10 +90,10 @@ simple_macro.texi(,100) @@macro2 @{ arg, comma \, @}
 simple_macro.texi(,101) @end example
 simple_macro.texi(,102) ==================================
 simple_macro.texi(,103) 
-simple_macro.texi(,104) we get arg, comma ,  and another arg, comma , 
+simple_macro.texi(macro2,104) we get arg, comma ,  and another arg, comma , 
 simple_macro.texi(macro2,104) and another one on another line arg, comma , 
 simple_macro.texi(macro2,104) 
-simple_macro.texi(macro2,104) and a last in another paragraph
+simple_macro.texi(macro2,104) and a last in another paragraphsimple_macro.texi(macro2,104) 
 simple_macro.texi(,105) 
 simple_macro.texi(,106) -----------------------------------
 simple_macro.texi(,107) 
@@ -110,10 +110,10 @@ simple_macro.texi(,117) @@macro2  arg,  comma \,
 simple_macro.texi(,118) @end example
 simple_macro.texi(,119) ==================================
 simple_macro.texi(,120) 
-simple_macro.texi(,121) we get   arg,  comma \, and another   arg,  comma \,
+simple_macro.texi(macro2,121) we get   arg,  comma \, and another   arg,  comma \,
 simple_macro.texi(macro2,121) and another one on another line   arg,  comma \,
 simple_macro.texi(macro2,121) 
-simple_macro.texi(macro2,121) and a last in another paragraph
+simple_macro.texi(macro2,121) and a last in another paragraphsimple_macro.texi(macro2,121) 
 simple_macro.texi(,122) 
 simple_macro.texi(,123) -----------------------------------
 simple_macro.texi(,124) 
@@ -134,9 +134,9 @@ simple_macro.texi(,145) the values:
 simple_macro.texi(,146) 
 simple_macro.texi(,147) ======================================
 simple_macro.texi(,148) 
-simple_macro.texi(,149) flagab: a
+simple_macro.texi(ab,149) flagab: simple_macro.texi(ab,149) a
 simple_macro.texi(ab,149) 
-simple_macro.texi(ab,149) b
+simple_macro.texi(ab,149) bsimple_macro.texi(ab,149) 
 simple_macro.texi(,150) 
 simple_macro.texi(,151) --------------------------------------
 simple_macro.texi(,152) 
@@ -157,7 +157,7 @@ simple_macro.texi(,166) @@macro1 @{ arg1 @@value@{comma@} arg2 @}
 simple_macro.texi(,167) @end example
 simple_macro.texi(,168) =======================================
 simple_macro.texi(,169) 
-simple_macro.texi(,170) result: @emph{arg1 , arg2 } protected \ -> \arg1\ @emph{}
+simple_macro.texi(macro1,170) result: @emph{arg1 , arg2 } protected \ -> \arg1\ @emph{}simple_macro.texi(macro1,170) 
 simple_macro.texi(,171) 
 simple_macro.texi(,172) ---------------------------------------
 simple_macro.texi(,173) 
@@ -185,7 +185,7 @@ simple_macro.texi(,196)
 simple_macro.texi(,200) 
 simple_macro.texi(,201) ==================================
 simple_macro.texi(,202) 
-simple_macro.texi(,203) result: @emph{\\arg\   }
+simple_macro.texi(testvaluebody,203) result: @emph{\\arg\   }simple_macro.texi(testvaluebody,203) 
 simple_macro.texi(,204) 
 simple_macro.texi(,205) ----------------------------------
 simple_macro.texi(,206) 
@@ -206,7 +206,7 @@ simple_macro.texi(,220)
 simple_macro.texi(,224) 
 simple_macro.texi(,225) ==================================
 simple_macro.texi(,226) 
-simple_macro.texi(,227) result: @emph{macro_arg1} the \the thearg \thearg with value \thearg 
+simple_macro.texi(testvalue,227) result: @emph{macro_arg1} the \the thearg \thearg with value \thearg simple_macro.texi(testvalue,227) 
 simple_macro.texi(,228) 
 simple_macro.texi(,229) ----------------------------------
 simple_macro.texi(,230) 

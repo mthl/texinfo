@@ -86,10 +86,11 @@ because their most frequent use is for updating a Texinfo file after you
 have worked on it; but you can use them to insert the `Next',
 `Previous', and `Up' pointers into an <code>@node</code> line that has none
 and to create menus in a file that has none.
+
 </p><p>If you do not use the updating commands, you need to write menus and
 node pointers by hand, which is a tedious task.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#NOD21">* Updating Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Five major updating commands.</td></tr>
 <tr><td align="left" valign="top"><a href="Updating-Requirements.html#SEC28">2.4.1 Updating Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to structure a Texinfo file for
                                   using the updating command.</td></tr>
@@ -103,30 +104,36 @@ node pointers by hand, which is a tedious task.
 <h3 class="subheading"> The Updating Commands </h3>
 
 <p>You can use the updating commands to:
+
 </p><ul>
 <li>
 <p>insert or update the `Next', `Previous', and `Up' pointers of a
 node,
+
 </p></li><li>
 <p>insert or update the menu for a section, and
+
 </p></li><li>
 <p>create a master menu for a Texinfo source file.
 </p></li></ul>
 
 <p>You can also use the commands to update all the nodes and menus in a
 region or in a whole Texinfo file.
+
 </p><p>The updating commands work only with conventional Texinfo files, which
 are structured hierarchically like books.  In such files, a structuring
 command line must follow closely after each <code>@node</code> line, except
 for the `Top' <code>@node</code> line.  (A <em>structuring command line</em> is
 a line beginning with <code>@chapter</code>, <code>@section</code>, or other
 similar command.)
+
 </p><p>You can write the structuring command line on the line that follows
 immediately after an <code>@node</code> line or else on the line that
 follows after a single <code>@comment</code> line or a single
 <code>@ifinfo</code> line.  You cannot interpose more than one line between
 the <code>@node</code> line and the structuring command line; and you may
 interpose only an <code>@comment</code> line or an <code>@ifinfo</code> line.
+
 </p><p>Commands which work on a whole buffer require that the `Top' node be
 followed by a node with an <code>@chapter</code> or equivalent-level command.
 The menu updating commands will not create a main or master menu for a
@@ -134,18 +141,22 @@ Texinfo file that has only <code>@chapter</code>-level nodes!  The menu
 updating commands only create menus <em>within</em> nodes for lower level
 nodes.  To create a menu of chapters, you must provide a `Top'
 node.
+
 </p><p>The menu updating commands remove menu entries that refer to other Info
 files since they do not refer to nodes within the current buffer.  This
 is a deficiency.  Rather than use menu entries, you can use cross
 references to refer to other Info files.  None of the updating commands
 affect cross references.
+
 </p><p>Texinfo mode has five updating commands that are used most often: two
 are for updating the node pointers or menu of a single node (or a
 region); two are for updating every node pointer and menu in a file;
 and one, the <code>texinfo-master-menu</code> command, is for creating a
 master menu for a complete file, and optionally, for updating every
 node and menu in the whole Texinfo file.
+
 </p><p>The <code>texinfo-master-menu</code> command is the primary command:
+
 </p><dl compact="compact">
 <dt><kbd> C-c C-u m
 </kbd></dt>
@@ -155,14 +166,17 @@ node and menu in the whole Texinfo file.
 <p>Create or update a master menu that includes all the other menus
 (incorporating the descriptions from pre-existing menus, if
 any).
+
 </p><p>With an argument (prefix argument, <kbd>C-u,</kbd> if interactive), first create or
 update all the nodes and all the regular menus in the buffer before
 constructing the master menu.  (See section <a href="The-Top-Node.html#SEC59">The Top Node and Master Menu</a>, for more about a master menu.)
+
 </p><p>For <code>texinfo-master-menu</code> to work, the Texinfo file must have a
 `Top' node and at least one subsequent node.
+
 </p><p>After extensively editing a Texinfo file, you can type the following:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-C-u M-x texinfo-master-menu
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-master-menu
 or
 C-u C-c C-u m
 </pre></td></tr></table>
@@ -174,7 +188,9 @@ C-u C-c C-u m
 <p>The other major updating commands do smaller jobs and are designed for
 the person who updates nodes and menus as he or she writes a Texinfo
 file.
+
 </p><p>The commands are:
+
 </p><dl compact="compact">
 <dt><kbd> C-c C-u C-n
 </kbd></dt>
@@ -188,6 +204,7 @@ pointers in it, the old pointers are removed and new ones inserted.
 With an argument (prefix argument, <kbd>C-u</kbd>, if interactive), this command
 updates all <code>@node</code> lines in the region (which is the text
 between point and mark).
+
 </p></dd>
 <dt><kbd> C-c C-u C-m
 </kbd></dt>
@@ -199,11 +216,13 @@ With an argument (<kbd>C-u</kbd> as prefix argument, if
 interactive), the command makes or updates menus for the
 nodes which are either within or a part of the
 region.
+
 </p><p>Whenever <code>texinfo-make-menu</code> updates an existing menu, the
 descriptions from that menu are incorporated into the new menu.  This
 is done by copying descriptions from the existing menu to the entries
 in the new menu that have the same node names.  If the node names are
 different, the descriptions are not copied to the new menu.
+
 </p></dd>
 <dt><kbd> C-c C-u C-e
 </kbd></dt>
@@ -212,6 +231,7 @@ different, the descriptions are not copied to the new menu.
 <dd><a name="IDX55"></a>
 <p>Insert or update the `Next', `Previous', and `Up' pointers for every
 node in the buffer.
+
 </p></dd>
 <dt><kbd> C-c C-u C-a
 </kbd></dt>
@@ -222,14 +242,16 @@ node in the buffer.
 (<kbd>C-u</kbd> as prefix argument, if interactive), first insert
 or update all the node
 pointers before working on the menus.
+
 </p><p>If a master menu exists, the <code>texinfo-all-menus-update</code> command
 updates it; but the command does not create a new master menu if none
 already exists.  (Use the <code>texinfo-master-menu</code> command for
 that.)
+
 </p><p>When working on a document that does not merit a master menu, you can
 type the following:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-C-u C-c C-u C-a
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">C-u C-c C-u C-a
 or
 C-u M-x texinfo-all-menus-update
 </pre></td></tr></table>
@@ -243,10 +265,12 @@ column to which menu descriptions are indented.  By default, the value
 is 32 although it is often useful to reduce it to as low as 24.  You
 can set the variable with the <kbd>M-x edit-options</kbd> command
 (see <a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>) or with the <kbd>M-x set-variable</kbd> command (see <a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>).
+
 </p><p>Also, the <code>texinfo-indent-menu-description</code> command may be used to
 indent existing menu descriptions to a specified column.  Finally, if
 you wish, you can use the <code>texinfo-insert-node-lines</code> command to
 insert missing <code>@node</code> lines into a file.  (See section <a href="Other-Updating-Commands.html#SEC29">Other Updating Commands</a>, for more information.)
+
 </p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Showing-the-Structure.html#SEC25" title="Previous section in reading order"> &lt; </a>]</td>

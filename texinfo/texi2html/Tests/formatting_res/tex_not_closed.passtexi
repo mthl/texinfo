@@ -7,4 +7,4 @@ tex_not_closed.texi(,7) @tex
 tex_not_closed.texi(,8) 
 tex_not_closed.texi(,9) This is some \LaTeX{}
 tex_not_closed.texi(,10) 
-(,) @end tex
+(,) @end tex 

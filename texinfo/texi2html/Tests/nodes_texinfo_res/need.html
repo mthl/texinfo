@@ -85,15 +85,17 @@ a new page in a printed manual if fewer than <var>n</var> mils (thousandths
 of an inch) remain on the current page.  Do not use
 braces around the argument <var>n</var>.  The <code>@need</code> command has no
 effect on Info files since they are not paginated.
+
 </p><p>This paragraph is preceded by an <code>@need</code> command that tells
 TeX to start a new page if fewer than 800 mils (eight-tenths
 inch) remain on the page.  It looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@need 800
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@need 800
 This paragraph is preceded by ...
 </pre></td></tr></table>
 <p>The <code>@need</code> command is useful for preventing orphans (single
 lines at the bottoms of printed pages).
+
 </p>
 <hr size="1">
 <p>

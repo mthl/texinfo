@@ -75,6 +75,7 @@ It also may be possible to use the watches
 features described below, together with suitable
 procedures (not enforced by software), to avoid having
 two people edit at the same time.
+
 </p><p>The default model with <small>CVS</small> is known as
 <em>unreserved checkouts</em>.  In this model, developers
 can edit their own <em>working copy</em> of a file
@@ -85,15 +86,17 @@ message when they try to commit the file.  They must
 then use <small>CVS</small> commands to bring their working copy
 up to date with the repository revision.  This process
 is almost automatic.
+
 </p><p><small>CVS</small> also supports mechanisms which facilitate
 various kinds of communication, without actually
 enforcing rules like reserved checkouts do.
+
 </p><p>The rest of this chapter describes how these various
 models work, and some of the issues involved in
 choosing between them.
+
 </p>
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC84">10.1 File status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A file can be in several states</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC85">10.2 Bringing a file up to date</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC86">10.3 Conflicts example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An informative example</td></tr>
@@ -129,31 +132,35 @@ checked out file, and what operations others have
 performed to that file in the repository, one can
 classify a file in a number of states.  The states, as
 reported by the <code>status</code> command, are:
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX136"></a>
+<dd><a name="IDX136"></a>
 </dd>
 <dt> Up-to-date
 </dt>
 <dd><p>The file is identical with the latest revision in the
 repository for the branch in use.
+
 </p></dd>
 <dt> Locally Modified
 </dt>
 <dd><a name="IDX137"></a>
 <p>You have edited the file, and not yet committed your changes.
+
 </p></dd>
 <dt> Locally Added
 </dt>
 <dd><a name="IDX138"></a>
 <p>You have added the file with <code>add</code>, and not yet
 committed your changes.
+
 </p></dd>
 <dt> Locally Removed
 </dt>
 <dd><a name="IDX139"></a>
 <p>You have removed the file with <code>remove</code>, and not yet
 committed your changes.
+
 </p></dd>
 <dt> Needs Checkout
 </dt>
@@ -162,6 +169,7 @@ committed your changes.
 repository.  The name is slightly misleading; you will
 ordinarily use <code>update</code> rather than
 <code>checkout</code> to get that newer revision.
+
 </p></dd>
 <dt> Needs Patch
 </dt>
@@ -169,12 +177,14 @@ ordinarily use <code>update</code> rather than
 <p>Like Needs Checkout, but the <small>CVS</small> server will send
 a patch rather than the entire file.  Sending a patch or
 sending an entire file accomplishes the same thing.
+
 </p></dd>
 <dt> Needs Merge
 </dt>
 <dd><a name="IDX142"></a>
 <p>Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
+
 </p></dd>
 <dt> Unresolved Conflict
 </dt>
@@ -182,6 +192,7 @@ have also made modifications to the file.
 <p>A file with the same name as this new file has been added to the repository
 from a second workspace.  This file will need to be moved out of the way
 to allow an <code>update</code> to complete.
+
 </p></dd>
 <dt> File had conflicts on merge
 </dt>
@@ -190,6 +201,7 @@ to allow an <code>update</code> to complete.
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
 resolve the conflict as described in <a href="#SEC86">Conflicts example</a>.
+
 </p></dd>
 <dt> Unknown
 </dt>
@@ -197,6 +209,7 @@ resolve the conflict as described in <a href="#SEC86">Conflicts example</a>.
 <p><small>CVS</small> doesn't know anything about this file.  For
 example, you have created a new file and have not run
 <code>add</code>.
+
 </p></dd>
 </dl>
 
@@ -206,11 +219,13 @@ revision that the file in the working directory derives
 from, and the <code>Repository revision</code> which is the
 latest revision in the repository for the branch in
 use.
+
 </p><p>The options to <code>status</code> are listed in
 <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.  For information on its <code>Sticky tag</code>
 and <code>Sticky date</code> output, see <a href="cvs_4.html#SEC53">Sticky tags</a>.
 For information on its <code>Sticky options</code> output,
 see the `<samp>-k</samp>' option in <a href="cvs_16.html#SEC154">update options</a>.
+
 </p><p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
 <code>update</code> to bring your files up to date, and you
@@ -220,15 +235,16 @@ repository might change before you actually run
 <code>update</code>).  In fact, if you want a command to
 display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
+
 </p><a name="IDX146"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs -n -q update
+<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs -n -q update
 </pre></td></tr></table>
 <p>The `<samp>-n</samp>' option means to not actually do the
 update, but merely to display statuses; the `<samp>-q</samp>'
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>.
+
 </p><hr size="6">
 <a name="NOD85"></a>
 <a name="SEC85"></a>
@@ -254,16 +270,19 @@ these options, see <a href="cvs_17.html#SEC156">Quick reference to CVS commands<
 command.  For files that are not up to date this is roughly equivalent
 to a <code>checkout</code> command: the newest revision of the file is
 extracted from the repository and put in your working directory.
+
 </p><p>Your modifications to a file are never lost when you
 use <code>update</code>.  If no newer revision exists,
 running <code>update</code> has no effect.  If you have
 edited the file, and a newer revision is available,
 <small>CVS</small> will merge all changes into your working copy.
+
 </p><p>For instance, imagine that you checked out revision 1.4 and started
 editing it.  In the meantime someone else committed revision 1.5, and
 shortly after that revision 1.6.  If you run <code>update</code> on the file
 now, <small>CVS</small> will incorporate all changes between revision 1.4 and 1.6 into
 your file.
+
 </p><a name="IDX147"></a>
 <p>If any of the changes between 1.4 and 1.6 were made too
 close to any of the changes you have made, an
@@ -273,6 +292,7 @@ versions of the lines that overlap, delimited by
 special markers.
 See section <a href="cvs_16.html#SEC153">update--Bring work tree in sync with repository</a>, for a complete description of the
 <code>update</code> command.
+
 </p><hr size="6">
 <a name="NOD86"></a>
 <a name="SEC86"></a>
@@ -295,8 +315,8 @@ See section <a href="cvs_16.html#SEC153">update--Bring work tree in sync with re
 <h2 class="section"> 10.3 Conflicts example </h2>
 
 <p>Suppose revision 1.4 of `<tt>driver.c</tt>' contains this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#include &lt;stdio.h&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdio.h&gt;
 
 void main()
 {
@@ -310,8 +330,8 @@ void main()
 </pre></td></tr></table>
 
 <p>Revision 1.6 of `<tt>driver.c</tt>' contains this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#include &lt;stdio.h&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdio.h&gt;
 
 int main(int argc,
          char **argv)
@@ -332,8 +352,8 @@ int main(int argc,
 
 <p>Your working copy of `<tt>driver.c</tt>', based on revision
 1.4, contains this before you run `<samp>cvs update</samp>':
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#include &lt;stdlib.h&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 
 void main()
@@ -349,8 +369,8 @@ void main()
 </pre></td></tr></table>
 
 <p>You run `<samp>cvs update</samp>':
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs update driver.c
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update driver.c
 RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
 retrieving revision 1.4
 retrieving revision 1.6
@@ -365,8 +385,8 @@ C driver.c
 Your original working file is saved unmodified in
 `<tt>.#driver.c.1.4</tt>'.  The new version of
 `<tt>driver.c</tt>' contains this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-#include &lt;stdlib.h&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 
 int main(int argc,
@@ -400,12 +420,12 @@ int main(int argc,
 <p>Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
 `<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>', `<samp>=======</samp>' and `<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>'.
+
 </p><a name="IDX154"></a>
 <a name="IDX155"></a>
 <p>You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-#include &lt;stdlib.h&gt;
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 
 int main(int argc,
@@ -427,8 +447,8 @@ int main(int argc,
 </pre></td></tr></table>
 
 <p>You can now go ahead and commit this as revision 1.7.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
 Checking in driver.c;
 /usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
 new revision: 1.7; previous revision: 1.6
@@ -446,11 +466,13 @@ is, occurrences of `<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>' at the start of 
 line that don't mark a conflict), the current
 version of <small>CVS</small> will print a warning and proceed to
 check in the file.
+
 </p><a name="IDX156"></a>
 <p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
 Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
+
 </p><hr size="6">
 <a name="NOD87"></a>
 <a name="SEC87"></a>
@@ -480,6 +502,7 @@ See section <a href="cvs_18.html#SEC172">Loginfo</a>.  You can use these feature
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
+
 </p><hr size="6">
 <a name="NOD88"></a>
 <a name="SEC88"></a>
@@ -503,8 +526,8 @@ newsgroup.
 
 <p>If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
 </pre></td></tr></table>
 <a name="IDX157"></a>
 <a name="IDX158"></a>
@@ -519,19 +542,22 @@ command, look in the repository directory mentioned in
 the message and remove files which they own whose names
 start with `<tt>#cvs.rfl</tt>',
 `<tt>#cvs.wfl</tt>', or `<tt>#cvs.lock</tt>'.
+
 </p><p>Note that these locks are to protect <small>CVS</small>'s
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>--which refers to reserved checkouts
 (see section <a href="#SEC83">Multiple developers</a>).
+
 </p><p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
 the locks prevent other people from reading or writing.
+
 </p><a name="IDX160"></a>
 <a name="IDX161"></a>
 <p>One might hope for the following property:
-</p><blockquote>
 
+</p><blockquote>
 <p>If someone commits some changes in one cvs command,
 then an update by someone else will either get all the
 changes, or none of them.
@@ -540,22 +566,23 @@ changes, or none of them.
 
 <p>but <small>CVS</small> does <em>not</em> have this property.  For
 example, given the files
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-a/one.c
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a/one.c
 a/two.c
 b/three.c
 b/four.c
 </pre></td></tr></table>
 
 <p>if someone runs
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs ci a/two.c b/three.c
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs ci a/two.c b/three.c
 </pre></td></tr></table>
 
 <p>and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
 the change to `<tt>b/three.c</tt>' and not the change to
 `<tt>a/two.c</tt>'.
+
 </p><hr size="6">
 <a name="NOD89"></a>
 <a name="SEC89"></a>
@@ -589,14 +616,15 @@ surprised at check in time.  The features in this
 section allow such coordination, while retaining the
 ability of two developers to edit the same file at the
 same time.
+
 </p><p>For maximum benefit developers should use <code>cvs
 edit</code> (not <code>chmod</code>) to make files read-write to
 edit them, and <code>cvs release</code> (not <code>rm</code>) to
 discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
+
 </p>
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC90">10.6.1 Telling CVS to watch certain files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC91">10.6.2 Telling CVS to notify you</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC92">10.6.3 How to edit a file which is being watched</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -627,9 +655,10 @@ but <small>CVS</small> is not able to enforce this behavior.
 
 <p>To enable the watch features, you first specify that
 certain files are to be watched.
+
 </p><a name="IDX162"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs watch on</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX163"></a>
 </dt>
 <dd><a name="IDX164"></a>
@@ -638,6 +667,7 @@ before editing <var>files</var>.  <small>CVS</small> will create working
 copies of <var>files</var> read-only, to remind developers
 to run the <code>cvs edit</code> command before working on
 them.
+
 </p><p>If <var>files</var> includes the name of a directory, <small>CVS</small>
 arranges to watch all files added to the corresponding
 repository directory, and sets a default for files
@@ -647,19 +677,23 @@ contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
 option is set in `<tt>~/.cvsrc</tt>' (see section <a href="cvs_16.html#SEC117">Default options and the ~/.cvsrc file</a>).
+
 </p><p>If <var>files</var> is omitted, it defaults to the current directory.
+
 </p><a name="IDX165"></a>
 </dd></dl>
 
 <dl>
-<dt><u>Command:</u> <b>cvs watch off</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX166"></a>
 </dt>
 <dd><p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
 and <code>cvs unedit</code>.
+
 </p><p>The <var>files</var> and options are processed as for <code>cvs
 watch on</code>.
+
 </p></dd></dl>
 
 <hr size="6">
@@ -689,66 +723,80 @@ You can do this without using <code>cvs watch on</code> for
 the file, but generally you will want to use <code>cvs
 watch on</code>, to remind developers to use the <code>cvs edit</code>
 command.
+
 </p><a name="IDX167"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs watch add</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX168"></a>
 </dt>
 <dd><p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
+
 </p><p>The <code>-a</code> option specifies what kinds of events <small>CVS</small> should notify
 the user about.  <var>action</var> is one of the following:
+
 </p><dl compact="compact">
 <dt><code> edit
 </code></dt>
 <dd><p>Another user has applied the <code>cvs edit</code> command (described
 below) to a watched file.
+
 </p></dd>
 <dt><code> commit
 </code></dt>
 <dd><p>Another user has committed changes to one of the named <var>files</var>.
+
 </p></dd>
 <dt><code> unedit
 </code></dt>
 <dd><p>Another user has abandoned editing a file (other than by committing changes).
 They can do this in several ways, by:
+
 </p><ul>
 <li>
 <p>applying the <code>cvs unedit</code> command (described below) to the file
+
 </p></li><li>
 <p>applying the <code>cvs release</code> command (see section <a href="cvs_16.html#SEC149">release--Indicate that a Module is no longer in use</a>) to the file's parent directory
 (or recursively to a directory more than one level up)
+
 </p></li><li>
 <p>deleting the file and allowing <code>cvs update</code> to recreate it
+
 </p></li></ul>
 
 </dd>
 <dt><code> all
 </code></dt>
 <dd><p>All of the above.
+
 </p></dd>
 <dt><code> none
 </code></dt>
 <dd><p>None of the above.  (This is useful with <code>cvs edit</code>,
 described below.)
+
 </p></dd>
 </dl>
 
 <p>The <code>-a</code> option may appear more than once, or not at all.  If
 omitted, the action defaults to <code>all</code>.
+
 </p><p>The <var>files</var> and options are processed as for
 <code>cvs watch on</code>.
+
 </p></dd></dl>
 
 
 <a name="IDX169"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs watch remove</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX170"></a>
 </dt>
 <dd><p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
 watches for the specified actions are removed.
+
 </p></dd></dl>
 
 <a name="IDX171"></a>
@@ -765,11 +813,12 @@ of the information regarding the notification will be
 supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-ALL mail %s -s &quot;CVS notification&quot;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">ALL mail %s -s &quot;CVS notification&quot;
 </pre></td></tr></table>
 
 <p>This causes users to be notified by electronic mail.
+
 </p><a name="IDX172"></a>
 <p>Note that if you set this up in the straightforward
 way, users receive notifications on the server machine.
@@ -782,6 +831,7 @@ user in the format <var>user</var>:<var>value</var>.  Then
 instead of passing the name of the user to be notified
 to `<tt>notify</tt>', <small>CVS</small> will pass the <var>value</var>
 (normally an email address on some other machine).
+
 </p><p><small>CVS</small> does not notify you for your own changes.
 Currently this check is done based on whether the user
 name of the person taking the action which triggers
@@ -791,6 +841,7 @@ features only track one edit by each user.  It probably
 would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
+
 </p><hr size="6">
 <a name="NOD92"></a>
 <a name="SEC92"></a>
@@ -819,21 +870,25 @@ edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
 for obtaining a copy of the sources (see section <a href="cvs_1.html#SEC5">Getting the source</a>), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
+
 </p><a name="IDX173"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs edit</b> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]<small class="dots">...</small> [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX174"></a>
 </dt>
 <dd><p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
 <code>edit</code> notification for any of <var>files</var>.
+
 </p><p>The <code>cvs edit</code> command accepts the same options as the
 <code>cvs watch add</code> command, and establishes a temporary watch for the
 user on <var>files</var>; <small>CVS</small> will remove the watch when <var>files</var> are
 <code>unedit</code>ed or <code>commit</code>ted.  If the user does not wish to
 receive notifications, she should specify <code>-a none</code>.
+
 </p><p>The <var>files</var> and the options are processed as for the <code>cvs
 watch</code> commands.
+
 </p>
 </dd></dl>
 
@@ -843,11 +898,12 @@ changes and returns the watched files to their usual
 read-only state.  But if you instead decide to abandon
 your changes, or not to make any changes, you can use
 the <code>cvs unedit</code> command.
+
 </p><a name="IDX175"></a>
 <a name="IDX176"></a>
 <a name="IDX177"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs unedit</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX178"></a>
 </dt>
 <dd><p>Abandon work on the working files <var>files</var>, and revert them to the
@@ -855,8 +911,10 @@ repository versions on which they are based.  <small>CVS</small> makes those
 <var>files</var> read-only for which users have requested notification using
 <code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code>
 notification for any of <var>files</var>.
+
 </p><p>The <var>files</var> and options are processed as for the
 <code>cvs watch</code> commands.
+
 </p><p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
@@ -872,6 +930,7 @@ repository since the last time you updated.
 <small>CVS</small> is unable to successfully communicate with the
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
+
 </p><hr size="6">
 <a name="NOD93"></a>
 <a name="SEC93"></a>
@@ -894,27 +953,31 @@ successful <small>CVS</small> command.
 <h3 class="subsection"> 10.6.4 Information about who is watching and editing </h3>
 
 <dl>
-<dt><u>Command:</u> <b>cvs watchers</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX179"></a>
 </dt>
 <dd><p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
+
 </p><p>The <var>files</var> and options are processed as for the
 <code>cvs watch</code> commands.
+
 </p></dd></dl>
 
 
 <a name="IDX180"></a>
 <dl>
-<dt><u>Command:</u> <b>cvs editors</b> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small>
+<dt><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]<small class="dots">...</small></i>
 <a name="IDX181"></a>
 </dt>
 <dd><p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
 working with the file, and the host and path of the working directory
 containing the file.
+
 </p><p>The <var>files</var> and options are processed as for the
 <code>cvs watch</code> commands.
+
 </p></dd></dl>
 
 <hr size="6">
@@ -944,8 +1007,8 @@ stores the information about watches in that directory.
 If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the
 following (all on one line):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs update: cannot open CVS/Entries for reading:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs update: cannot open CVS/Entries for reading:
 No such file or directory
 </pre></td></tr></table>
 
@@ -956,6 +1019,7 @@ you cannot upgrade, use the <code>watch off</code> and
 <code>watch remove</code> commands to remove all watches, and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
+
 </p><hr size="6">
 <a name="NOD95"></a>
 <a name="SEC95"></a>
@@ -985,18 +1049,21 @@ issues.  There are many ways to organize a team of
 developers.  <small>CVS</small> does not try to enforce a certain
 organization.  It is a tool that can be used in several
 ways.
+
 </p><p>Reserved checkouts can be very counter-productive.  If
 two persons want to edit different parts of a file,
 there may be no reason to prevent either of them from
 doing so.  Also, it is common for someone to take out a
 lock on a file, because they are planning to edit it,
 but then forget to release the lock.
+
 </p><p>People, especially people who are familiar with
 reserved checkouts, often wonder how often conflicts
 occur if unreserved checkouts are used, and how
 difficult they are to resolve.  The experience with
 many groups is that they occur rarely and usually are
 relatively straightforward to resolve.
+
 </p><p>The rarity of serious conflicts may be surprising, until one realizes
 that they occur only when two developers disagree on the proper design
 for a given section of code; such a disagreement suggests that the
@@ -1004,6 +1071,7 @@ team has not been communicating properly in the first place.  In order
 to collaborate under <em>any</em> source management regimen, developers
 must agree on the general design of the system; given this agreement,
 overlapping changes are usually straightforward to merge.
+
 </p><p>In some cases unreserved checkouts are clearly
 inappropriate.  If no merge tool exists for the kind of
 file you are managing (for example word processor files
@@ -1013,6 +1081,7 @@ mergeable data format, then resolving conflicts is
 going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
+
 </p><p>The watches features described above in <a href="#SEC89">Mechanisms to track who is editing files</a>
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
@@ -1024,6 +1093,7 @@ whether it is a problem in that particular case or not.
 Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
+
 </p><hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC83" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>

@@ -85,9 +85,10 @@ The command is written at the beginning of a line and applies only to
 the text that follows the command that is on the same line.  Do not use
 braces around the text.  In a printed manual, the text on an
 <code>@exdent</code> line is printed in the roman font.
+
 </p><p><code>@exdent</code> is usually used within examples.  Thus,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@example
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@example
 This line follows an @@example command.
 @exdent This line is exdented.
 This line follows the exdented line.
@@ -96,8 +97,8 @@ The @@end example comes on the next line.
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-This line follows an @example command.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">This line follows an @example command.
 This line is exdented.
 This line follows the exdented line.
 The @end example comes on the next line.
@@ -105,6 +106,7 @@ The @end example comes on the next line.
 <p>In practice, the <code>@exdent</code> command is rarely used.
 Usually, you un-indent text by ending the example and
 returning the page to its normal width.
+
 </p>
 <hr size="1">
 <p>

@@ -1,0 +1,199 @@
+testkb.texi(,2) @setfilename testkb.info
+testkb.texi(,3) @documentlanguage de
+testkb.texi(,4) @documentencoding ASCII
+testkb.texi(,11) @titlepage
+testkb.texi(,12) @title Test for @@def stuff
+testkb.texi(,13) @end titlepage
+testkb.texi(,15) @node Top,Overview,,(dir)
+testkb.texi(,16) @chapter Test 1
+testkb.texi(,17) Hier kann eine Erkl@"arung zum Thema stehen oder auch nicht.
+testkb.texi(,18) Noch mehr erkl@"arungen zu dem Thema.
+testkb.texi(,19) @menu
+testkb.texi(,20) * Overview::.       Methode four.
+testkb.texi(,21) @end menu
+testkb.texi(,23) @node Overview,,Top,Top
+testkb.texi(,24) @chapter Class
+testkb.texi(,25) Here you can read many things I need for this documentation.
+testkb.texi(,26) But more and more of this exploration can be done here.
+testkb.texi(,27) @section Overview
+testkb.texi(,28) Das ist ein Test @r{Roman Text in einer Umgebung}
+testkb.texi(,29) 
+testkb.texi(,30) Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+testkb.texi(,31) Sondern eher ein normaler umbruch. Somit kann es hier wieder
+testkb.texi(,32) weitergehen. Oder sehe ich da was falsch.
+testkb.texi(,33) Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+testkb.texi(,34) Sondern eher ein normaler umbruch. Somit kann es hier wieder
+testkb.texi(,35) weitergehen. Oder sehe ich da was falsch.
+testkb.texi(,36) Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+testkb.texi(,37) Sondern eher ein normaler umbruch. Somit kann es hier wieder
+testkb.texi(,38) weitergehen. Oder sehe ich da was falsch.
+testkb.texi(,39) Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+testkb.texi(,40) Sondern eher ein normaler umbruch. Somit kann es hier wieder
+testkb.texi(,41) weitergehen. Oder sehe ich da was falsch.
+testkb.texi(,42) 
+testkb.texi(,43) @defcv dcvKat dcvClass dcvName
+testkb.texi(,44) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,45) Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,46) werden. Hier ist das ok. Beschreibung zu defcv.
+testkb.texi(,47) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,48) Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,49) werden. Hier ist das ok. Beschreibung zu defcv.
+testkb.texi(,50) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,51) Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,52) werden. Hier ist das ok. Beschreibung zu defcv.
+testkb.texi(,53) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,54) Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,55) werden. Hier ist das ok. Beschreibung zu defcv.
+testkb.texi(,56) @end defcv
+testkb.texi(,57) 
+testkb.texi(,58) @deffn {dfnKat} dfnName (dfnArgumente)
+testkb.texi(,59) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,60) Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,61) werden. Hier ist das ok. Beschreibung zu deffn.
+testkb.texi(,62) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,63) Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,64) werden. Hier ist das ok. Beschreibung zu deffn.
+testkb.texi(,65) @itemize
+testkb.texi(,66) @item Erstens
+testkb.texi(,67) @item Zweitens
+testkb.texi(,68) @item Drittens
+testkb.texi(,69) @end itemize
+testkb.texi(,70) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,71) Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,72) werden. Hier ist das ok. Beschreibung zu deffn.
+testkb.texi(,73) @sp 2
+testkb.texi(,74) @example
+testkb.texi(,75) Das ist ein Beispiel in HTML
+testkb.texi(,76) Das ist ein Beispiel in HTML
+testkb.texi(,77) Das ist ein Beispiel in HTML
+testkb.texi(,78) Das ist ein Beispiel in HTML
+testkb.texi(,79) @end example
+testkb.texi(,80) @*
+testkb.texi(,81) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,82) Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,83) werden. Hier ist das ok. Beschreibung zu deffn.
+testkb.texi(,84) @end deffn
+testkb.texi(,85) 
+testkb.texi(,86) @deffn {dfnKat1} dfnName1 (dfnArgumente11)
+testkb.texi(,87) @deffnx {dfnKat2} dfnName2 (dfnArgumente12)
+testkb.texi(,88) @deffnx {dfnKat3} dfnName3 (dfnArgumente13)
+testkb.texi(,89) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,90) Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,91) werden. Hier ist das ok. Beschreibung zu deffn.
+testkb.texi(,92) @end deffn
+testkb.texi(,93) 
+testkb.texi(,94) @defivar {divClass} {divExemplarVar}
+testkb.texi(,95) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,96) Beschreibung zu defivar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,97) werden. Hier ist das ok. Beschreibung zu defivar.
+testkb.texi(,98) @end defivar
+testkb.texi(,99) 
+testkb.texi(,100) @defmac dmcName (dmcArgumente)
+testkb.texi(,101) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,102) Beschreibung zu defmac. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,103) werden. Hier ist das ok. Beschreibung zu defmac.
+testkb.texi(,104) @end defmac
+testkb.texi(,105) 
+testkb.texi(,106) @defmethod {dmeClass} dmName (dmArguments)
+testkb.texi(,107) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,108) Beschreibung zu defmethod. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,109) werden. Hier ist das ok. Beschreibung zu defmethod.
+testkb.texi(,110) @end defmethod
+testkb.texi(,111) 
+testkb.texi(,112) @defop {dopKat} {dopClass} dopName (dopArgumente)
+testkb.texi(,113) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,114) Beschreibung zu defop. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,115) werden. Hier ist das ok. Beschreibung zu defop.
+testkb.texi(,116) @end defop
+testkb.texi(,117) 
+testkb.texi(,118) @defopt {dptName}
+testkb.texi(,119) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,120) Beschreibung zu defopt. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,121) werden. Hier ist das ok. Beschreibung zu defopt.
+testkb.texi(,122) @end defopt
+testkb.texi(,123) 
+testkb.texi(,124) @defspec dspName (dspArgument)
+testkb.texi(,125) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,126) Beschreibung zu defspec. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,127) werden. Hier ist das ok. Beschreibung zu defspec.
+testkb.texi(,128) @end defspec
+testkb.texi(,129) 
+testkb.texi(,130) @deftp {dtpKat} dtpType (dtpA1 dtpA2)
+testkb.texi(,131) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,132) Beschreibung zu deftp. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,133) werden. Hier ist das ok. Beschreibung zu deftp.
+testkb.texi(,134) @end deftp
+testkb.texi(,135) 
+testkb.texi(,136) @deftypefn {PUBLIC} int EditLine (int col, int row)
+testkb.texi(,137) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,138) Beschreibung zu deftypefn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,139) werden. Hier ist das ok. Beschreibung zu deftypefn.
+testkb.texi(,140) @end deftypefn
+testkb.texi(,141) 
+testkb.texi(,142) @deftypefun int FunktionEins (int col, int row)
+testkb.texi(,143) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,144) Beschreibung zu deftypefun. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,145) werden. Hier ist das ok. Beschreibung zu deftypefun.
+testkb.texi(,146) @end deftypefun
+testkb.texi(,147) 
+testkb.texi(,148) @deftypemethod {dtmClass} int dtmName (int col, int row)
+testkb.texi(,149) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,150) Beschreibung zu deftypemethod. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,151) werden. Hier ist das ok. Beschreibung zu deftypemethod.
+testkb.texi(,152) @end deftypemethod
+testkb.texi(,153) 
+testkb.texi(,154) @deftypevar DataType VarName
+testkb.texi(,155) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,156) Beschreibung zu deftypevar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,157) werden. Hier ist das ok. Beschreibung zu deftypevar.
+testkb.texi(,158) @end deftypevar
+testkb.texi(,159) 
+testkb.texi(,160) @deftypeivar {dtiv} DataType VarName
+testkb.texi(,161) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,162) Beschreibung zu deftypeivar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,163) werden. Hier ist das ok. Beschreibung zu deftypeivar.
+testkb.texi(,164) @end deftypeivar
+testkb.texi(,165) 
+testkb.texi(,166) @deftypevr {dtv} DataType VarName
+testkb.texi(,167) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,168) Beschreibung zu deftypevr. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,169) werden. Hier ist das ok. Beschreibung zu deftypevr.
+testkb.texi(,170) @end deftypevr
+testkb.texi(,171) 
+testkb.texi(,172) @defun FuntionName (Argumente)
+testkb.texi(,173) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,174) Beschreibung zu defun. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,175) werden. Hier ist das ok. Beschreibung zu defun.
+testkb.texi(,176) @end defun
+testkb.texi(,177) 
+testkb.texi(,178) @defvar VariablenName
+testkb.texi(,179) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,180) Beschreibung zu defvar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,181) werden. Hier ist das ok. Beschreibung zu defvar.
+testkb.texi(,182) @end defvar
+testkb.texi(,183) 
+testkb.texi(,184) @defvr {dvrKat} dvrName
+testkb.texi(,185) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,186) Beschreibung zu defvr. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,187) werden. Hier ist das ok. Beschreibung zu defvr.
+testkb.texi(,188) @end defvr
+testkb.texi(,189) 
+testkb.texi(,190) @deftypeop {dtypeopCat} deftypeopClass deftypeopType deftypeopName deftypeopArgs
+testkb.texi(,191) Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+testkb.texi(,192) Beschreibung zu deftypeop. Hier mu@ss{} in HTML eine Tabelle erzeugt
+testkb.texi(,193) werden. Hier ist das ok. Beschreibung zu deftypeop.
+testkb.texi(,194) @end deftypeop
+testkb.texi(,195) 
+testkb.texi(,196) @appendix Indizes
+testkb.texi(,197) @appendixsec Konzept Index
+testkb.texi(,198) @printindex cp
+testkb.texi(,199) @appendixsec Funktionen Index
+testkb.texi(,200) @printindex fn
+testkb.texi(,201) @appendixsec Programme Index
+testkb.texi(,202) @printindex pg
+testkb.texi(,203) @appendixsec Tasten Index
+testkb.texi(,204) @printindex ky
+testkb.texi(,205) @appendixsec Var Index
+testkb.texi(,206) @printindex vr
+testkb.texi(,207) @contents
+testkb.texi(,208) 

@@ -83,17 +83,17 @@ ul.toc {list-style: none}
 <p>Use the <code>@email</code> command to indicate an electronic mail address.
 It takes one mandatory argument, the address, and one optional argument, the
 text to display (the default is the address itself).
+
 </p><a name="IDX131"></a>
 <p>In Info and TeX, the address is shown in angle brackets, preceded by
 the text to display if any.  In HTML output, <code>@email</code> produces a
 `<samp>mailto</samp>' link that usually brings up a mail composition window.
 For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Send bug reports to @email{bug-texinfo@@gnu.org},
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Send bug reports to @email{bug-texinfo@@gnu.org},
 suggestions to the @email{bug-texinfo@@gnu.org, same place}.
 </pre></td></tr></table><p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="display"> 
-Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
+</p><table><tr><td>&nbsp;</td><td><pre class="display">Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
 suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
 </pre></td></tr></table>
 

@@ -90,8 +90,10 @@ Texinfo file, you can use the TeX command <code>@vskip</code> to format
 the copyright page.  (The <code>@titlepage</code> command causes Info to
 ignore the region automatically, as it does with the <code>@iftex</code>
 command.)
+
 </p><p>However, many features of plain TeX will not work, as they are
 overridden by Texinfo features.
+
 </p><a name="IDX291"></a>
 <p>You can enter plain TeX completely, and use `<samp>\</samp>' in the TeX
 commands, by delineating a region with the <code>@tex</code> and <code>@end
@@ -99,11 +101,12 @@ tex</code> commands.  (The <code>@tex</code> command also causes Info to ignore 
 region, like the <code>@iftex</code> command.)  The sole exception is that the
 <code>@</code> character still introduces a command, so that <code>@end tex</code>
 can be recognized properly.
+
 </p><a name="IDX292"></a>
 <p>For example, here is a mathematical expression written in
 plain TeX:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@tex
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@tex
 $$ \chi^2 = \sum_{i=1}^N
           \left (y_i - (a + b x_i)
           \over \sigma_i\right)^2 $$
@@ -113,6 +116,7 @@ $$ \chi^2 = \sum_{i=1}^N
 <p>The output of this example will appear only in a printed manual.  If
 you are reading this in Info, you will not see the equation that appears
 in the printed manual.
+
 </p>
 <a name="IDX293"></a>
 <a name="IDX294"></a>
@@ -121,6 +125,7 @@ a region to be included in HTML output only, and <code>@html <small class="dots"
 @end html</code> for a region of raw HTML (again, except that <code>@</code> is
 still the escape character, so the <code>@end</code> command can be
 recognized.)
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

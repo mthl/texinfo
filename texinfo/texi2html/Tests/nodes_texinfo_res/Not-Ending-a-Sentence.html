@@ -89,20 +89,22 @@ Usually, Texinfo can guess how to handle periods, so you do not need to
 use the special commands; you just enter a period as you would if you
 were using a typewriter, which means you put two spaces after the
 period, question mark, or exclamation mark that ends a sentence.
+
 </p><a name="IDX160"></a>
 <p>Use the <code>@:</code> command after a period, question mark,
 exclamation mark, or colon that should not be followed by extra space.
 For example, use <code>@:</code> after periods that end abbreviations
 which are not at the ends of sentences.
+
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-The s.o.p.@: has three parts ...
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts ...
 The s.o.p. has three parts ...
 </pre></td></tr></table>
 
 <p>produces
-</p><blockquote>
 
+</p><blockquote>
 <p>The s.o.p. has three parts <small class="dots">...</small><br>
 The s.o.p. has three parts <small class="dots">...</small>
 </p></blockquote>
@@ -110,8 +112,10 @@ The s.o.p. has three parts <small class="dots">...</small>
 
 <p>(Incidentally, `<samp>s.o.p.</samp>' is an abbreviation for &quot;Standard Operating
 Procedure&quot;.)
+
 </p><p><code>@:</code> has no effect on the Info output.  Do not put braces after
 <code>@:</code>.
+
 </p>
 <hr size="1">
 <p>

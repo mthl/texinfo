@@ -86,55 +86,58 @@ else state the topic discussed by that section.  Often, you will want to
 use initial upper case letters so it will be easier to read when the
 reference is printed.  Use a third argument when the node name is
 unsuitable because of syntax or meaning.
+
 </p><p>Remember to avoid placing a comma within the title or topic section of
 a cross reference, or within any other section.  The formatters divide
 cross references into arguments according to the commas; a comma
 within a title or other section will divide it into two arguments.  In
 a reference, you need to write a title such as &quot;Clouds, Mist, and
 Fog&quot; without the commas.
+
 </p><p>Also, remember to write a comma or period after the closing brace of an
 <code>@xref</code> to terminate the cross reference.  In the following
 examples, a clause follows a terminating comma.
+
 </p>
 
 <p>The template is like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>}.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>}.
 </pre></td></tr></table>
 
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{Electrical Effects, Lightning, Thunder and Lightning},
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, Lightning, Thunder and Lightning},
 for details.
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-*Note Lightning: Electrical Effects, for details.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Lightning: Electrical Effects, for details.
 </pre></td></tr></table>
 
 <p>and
-</p><blockquote>
 
+</p><blockquote>
 <p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
 
 <p>If a third argument is given and the second one is empty, then the
 third argument serves both.  (Note how two commas, side by side, mark
 the empty second argument.)
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@xref{Electrical Effects, , Thunder and Lightning},
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, , Thunder and Lightning},
 for details.
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-*Note Thunder and Lightning: Electrical Effects, for details.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">*Note Thunder and Lightning: Electrical Effects, for details.
 </pre></td></tr></table>
 
 <p>and
-</p><blockquote>
 
+</p><blockquote>
 <p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
 
@@ -142,9 +145,10 @@ for details.
 just the first argument if the node name and the section title are the
 same, and with the first and third arguments if the node name and title
 are different.
+
 </p><p>Here are several examples from <cite>The GNU Awk User's Guide</cite>:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-@xref{Sample Program}.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@xref{Sample Program}.
 @xref{Glossary}.
 @xref{Case-sensitivity, ,Case-sensitivity in Matching}.
 @xref{Close Output, , Closing Output Files and Pipes},

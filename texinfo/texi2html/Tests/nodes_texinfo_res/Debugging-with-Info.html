@@ -83,10 +83,12 @@ ul.toc {list-style: none}
 <p>After you have written part of a Texinfo file, you can use the
 <code>texinfo-format-region</code> or the <code>makeinfo-region</code> command to
 see whether the region formats properly.
+
 </p><p>Most likely, however, you are reading this section because for some
 reason you cannot use the <code>makeinfo-region</code> command; therefore, the
 rest of this section presumes that you are using
 <code>texinfo-format-region</code>.
+
 </p><p>If you have made a mistake with an @-command,
 <code>texinfo-format-region</code> will stop processing at or after the
 error and display an error message.  To see where in the buffer the
@@ -94,17 +96,18 @@ error occurred, switch to the `<samp>*Info Region*</samp>' buffer; the cursor
 will be in a position that is after the location of the error.  Also,
 the text will not be formatted after the place where the error
 occurred (or more precisely, where it was detected).
+
 </p><p>For example, if you accidentally end a menu with the command <code>@end
 menus</code> with an `s' on the end, instead of with <code>@end menu</code>, you
 will see an error message that says:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@end menus is not handled by texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@end menus is not handled by texinfo
 </pre></td></tr></table>
 
 <p>The cursor will stop at the point in the buffer where the error
 occurs, or not long after it.  The buffer will look like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
----------- Buffer: *Info Region* ----------
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *Info Region* ----------
 * Menu:
 
 * Using texinfo-show-structure::  How to use
@@ -118,8 +121,8 @@ occurs, or not long after it.  The buffer will look like this:
 </pre></td></tr></table>
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
 odd error messages.  For example, the following cross reference fails to format:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(@xref{Catching Mistakes, for more info.)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes, for more info.)
 </pre></td></tr></table>
 
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
@@ -127,27 +130,27 @@ brace but displays a message that says `<samp>Unbalanced parentheses</samp>'
 rather than `<samp>Unbalanced braces</samp>'.  This is because the formatting
 command looks for mismatches between braces as if they were
 parentheses.
+
 </p><p>Sometimes <code>texinfo-format-region</code> fails to detect mistakes.  For
 example, in the following, the closing brace is swapped with the
 closing parenthesis:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(@xref{Catching Mistakes), for more info.}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes), for more info.}
 </pre></td></tr></table>
 
 <p>Formatting produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-(*Note for more info.: Catching Mistakes)
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note for more info.: Catching Mistakes)
 </pre></td></tr></table>
 <p>The only way for you to detect this error is to realize that the
 reference should have looked like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(*Note Catching Mistakes::, for more info.)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note Catching Mistakes::, for more info.)
 </pre></td></tr></table>
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
 <kbd>RET</kbd></kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-No such node: &quot;Catching Mistakes) The only way ...
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">No such node: &quot;Catching Mistakes) The only way ...
 </pre></td></tr></table>
 
 <p>This is because Info perceives the example of the error as the first
@@ -158,6 +161,7 @@ will complete the node name of the correctly written example and take
 you to the `Catching Mistakes' node.  (If you try this, you can return
 from the `Catching Mistakes' node by typing <kbd>l</kbd>
 (<code>Info-last</code>).)
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

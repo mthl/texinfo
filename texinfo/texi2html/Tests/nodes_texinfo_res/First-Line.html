@@ -82,11 +82,12 @@ ul.toc {list-style: none}
 
 <p>Every Texinfo file that is to be the top-level input to TeX must begin
 with a line that looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo   @c -*-texinfo-*-
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
 </pre></td></tr></table>
 
 <p>This line serves two functions:
+
 </p><ol>
 <li>
 <p>When the file is processed by TeX, the `<samp>\input texinfo</samp>' command
@@ -98,6 +99,7 @@ a command, exactly as Texinfo uses `<samp>@</samp>'.  The `<tt>texinfo.tex</tt>'
 file causes the switch from `<samp>\</samp>' to `<samp>@</samp>'; before the switch
 occurs, TeX requires `<samp>\</samp>', which is why it appears at the
 beginning of the file.
+
 </p></li><li>
 <p>When the file is edited in GNU Emacs, the `<samp>-*-texinfo-*-</samp>' mode
 specification tells Emacs to use Texinfo mode.

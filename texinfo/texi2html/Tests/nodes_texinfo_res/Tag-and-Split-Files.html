@@ -85,6 +85,7 @@ ul.toc {list-style: none}
 for its Info file;  <code>makeinfo</code> always creates a tag table.  With
 a <em>tag table</em>, Info can jump to new nodes more quickly than it can
 otherwise.
+
 </p><a name="IDX412"></a>
 <p>In addition, if the Texinfo file contains more than about 70,000
 bytes, <code>texinfo-format-buffer</code> and <code>makeinfo</code> split the
@@ -99,18 +100,21 @@ a way to create a single, large printed manual out of the smaller Info
 files.  See section <a href="Include-Files.html#SEC297">Include Files</a>, for more information.  Include files are
 still used for very large documents, such as <cite>The Emacs Lisp
 Reference Manual</cite>, in which each chapter is a separate file.)
+
 </p><p>When a file is split, Info itself makes use of a shortened version of
 the original file that contains just the tag table and references to
 the files that were split off.  The split-off files are called
 <em>indirect</em> files.
+
 </p><p>The split-off files have names that are created by appending `<samp>-1</samp>',
 `<samp>-2</samp>', `<samp>-3</samp>' and so on to the file name specified by the
 <code>@setfilename</code> command.  The shortened version of the original file
 continues to have the name specified by <code>@setfilename</code>.
+
 </p><p>At one stage in writing this document, for example, the Info file was saved
 as the file `<tt>test-texinfo</tt>' and that file looked like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Info file: test-texinfo,    -*-Text-*-
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Info file: test-texinfo,    -*-Text-*-
 produced by texinfo-format-buffer
 from file: new-texinfo-manual.texinfo
 
@@ -134,12 +138,14 @@ the split-off, indirect files, `<tt>test-texinfo-1</tt>',
 `<tt>test-texinfo-2</tt>', and `<tt>test-texinfo-3</tt>', is listed in this file
 after the line that says `<samp>Indirect:</samp>'.  The tag table is listed after
 the line that says `<samp>Tag table:</samp>'. 
+
 </p><p>In the list of indirect files, the number following the file name
 records the cumulative number of bytes in the preceding indirect files,
 not counting the file list itself, the tag table, or the permissions
 text in each file.  In the tag table, the number following the node name
 records the location of the beginning of the node, in bytes from the
 beginning of the (unsplit) output.
+
 </p><p>If you are using <code>texinfo-format-buffer</code> to create Info files,
 you may want to run the <code>Info-validate</code> command.  (The
 <code>makeinfo</code> command does such a good job on its own, you do not
@@ -147,6 +153,7 @@ need <code>Info-validate</code>.)  However, you cannot run the <kbd>M-x
 Info-validate</kbd> node-checking command on indirect files.  For
 information on how to prevent files from being split and how to
 validate the structure of the nodes, see <a href="Using-Info-validate.html#SEC315">Running <code>Info-validate</code></a>.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

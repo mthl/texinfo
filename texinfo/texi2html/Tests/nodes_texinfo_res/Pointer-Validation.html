@@ -84,27 +84,33 @@ ul.toc {list-style: none}
 option or the <code>@novalidate</code> command in the source file (see section <a href="Use-TeX.html#SEC245">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
 Info file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
+
 </p><ol>
 <li>
 <p>If a `Next', `Previous', or `Up' node reference is a reference to a
 node in the current file and is not an external reference such as to
 `<tt>(dir)</tt>', then the referenced node must exist.
+
 </p></li><li>
 <p>In every node, if the `Previous' node is different from the `Up' node,
 then the node pointed to by the `Previous' field must have a `Next'
 field which points back to this node.
+
 </p></li><li>
 <p>Every node except the `Top' node must have an `Up' pointer.
+
 </p></li><li>
 <p>The node referenced by an `Up' pointer must itself reference the current
 node through a menu item, unless the node referenced by `Up'
 has the form `(<var>file</var>)'.
+
 </p></li><li>
 <p>If the `Next' reference of a node is not the same as the `Next' reference
 of the `Up' reference, then the node referenced by the `Next' pointer
 must have a `Previous' pointer that points back to the current node.
 This rule allows the last node in a section to point to the first node
 of the next chapter.
+
 </p></li><li>
 <p>Every node except `Top' should be referenced by at least one other node,
 either via the `Previous' or `Next' links, or via a menu or a
@@ -116,8 +122,8 @@ cross-reference.
 they use commands like <code>@value</code> and <code>@definfoenclose</code> in
 node definitions and cross-references inconsistently.  Consider the
 following example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@set nodename Node 1
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@set nodename Node 1
 
 @node @value{nodename}, Node 2, Top, Top
 
@@ -130,6 +136,7 @@ This is node 2.
 
 <p>Here, the node &quot;Node 1&quot; was referenced both verbatim and through
 <code>@value</code>.
+
 </p><p>By default, <code>makeinfo</code> fails such cases, because node names are not
 fully expanded until they are written to the output file.  You should
 always try to reference nodes consistently; e.g., in the above example,
@@ -141,14 +148,17 @@ to perform the expensive expansion of all node names it finds in the
 document.  This might considerably slow down the program, though;
 twofold increase in conversion time was measured for large documents
 such as the Jargon file.
+
 </p><a name="IDX402"></a>
 <p>The support for <code>@</code>-commands in <code>@node</code> directives is not
 general enough to be freely used.  For example, if the example above
 redefined <code>nodename</code> somewhere in the document, <code>makeinfo</code>
 will fail to convert it, even if invoked with the
 `<samp>--commands-in-node-names</samp>' option.
+
 </p><p>`<samp>--commands-in-node-names</samp>' has no effect if the `<samp>--no-validate</samp>'
 option is given.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

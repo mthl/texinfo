@@ -84,8 +84,8 @@ pages with the <code>@cropmarks</code> command.  Write the <code>@cropmarks</cod
 command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@iftex
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@iftex
 @cropmarks
 @end iftex
 </pre></td></tr></table>
@@ -97,6 +97,7 @@ printed on regular sized paper.)  Since different printing machines work
 in different ways, you should explore the use of this command with a
 spirit of adventure.  You may have to redefine the command in
 `<tt>texinfo.tex</tt>'.
+
 </p><a name="IDX355"></a>
 <a name="IDX356"></a>
 <a name="IDX357"></a>
@@ -107,12 +108,13 @@ is scaled proportionally larger or smaller.  (<code>\mag</code> stands for
 plain TeX command that is prefixed with a backslash.  You have to
 write this command between <code>@tex</code> and <code>@end tex</code>
 (see section <a href="Raw-Formatter-Commands.html#SEC230">Raw Formatter Commands</a>).
+
 </p><p>Follow the <code>\mag</code> command with an `<samp>=</samp>' and then a number that
 is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@tex
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@tex
 \mag=1200
 @end tex
 </pre></td></tr></table>
@@ -120,9 +122,11 @@ Texinfo file, before the title page:
 look better than usual by giving a larger-than-normal master to your
 print shop.  They do the reduction, thus effectively increasing the
 resolution.
+
 </p><p>Depending on your system, DVI files prepared with a
 nonstandard-<code>\mag</code> may not print or may print only with certain
 magnifications.  Be prepared to experiment.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

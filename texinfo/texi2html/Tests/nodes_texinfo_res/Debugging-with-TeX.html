@@ -81,14 +81,16 @@ ul.toc {list-style: none}
 <h2 class="section"> F.2 Catching Errors with TeX Formatting </h2>
 
 <p>You can also catch mistakes when you format a file with TeX.
+
 </p><p>Usually, you will want to do this after you have run
 <code>texinfo-format-buffer</code> (or, better, <code>makeinfo-buffer</code>) on
 the same file, because <code>texinfo-format-buffer</code> sometimes displays
 error messages that make more sense than TeX.  (See section <a href="Debugging-with-Info.html#SEC310">Catching Errors with Info Formatting</a>, for more information.)
+
 </p><p>For example, TeX was run on a Texinfo file, part of which is shown
 here:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
----------- Buffer: texinfo.texi ----------
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: texinfo.texi ----------
 name of the Texinfo file as an extension.  The
 @samp{??} are `wildcards' that cause the shell to
 substitute all the raw index files.  (@xref{sorting
@@ -99,8 +101,8 @@ indices.)@refill
 
 <p>(The cross reference lacks a closing brace.)
 TeX produced the following output, after which it stopped:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
----------- Buffer: *tex-shell* ----------
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *tex-shell* ----------
 Runaway argument?
 {sorting indices, for more information about sorting
 indices.) @refill @ETC.
@@ -114,30 +116,36 @@ l.27
 </pre></td></tr></table>
 <p>In this case, TeX produced an accurate and
 understandable error message:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-Paragraph ended before @xref was complete.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">Paragraph ended before @xref was complete.
 </pre></td></tr></table>
 
 <p>`<samp>@par</samp>' is an internal TeX command of no relevance to Texinfo.
 `<samp>l.27</samp>' means that TeX detected the problem on line 27 of the
 Texinfo file.  The `<samp>?</samp>' is the prompt TeX uses in this
 circumstance.
+
 </p><p>Unfortunately, TeX is not always so helpful, and sometimes you must
 truly be a Sherlock Holmes to discover what went wrong.
+
 </p><p>In any case, if you run into a problem like this, you can do one of three
 things.
+
 </p><ol>
 <li>
 <p>You can tell TeX to continue running and ignore just this error by
 typing <kbd>RET</kbd> at the `<samp>?</samp>' prompt.
+
 </p></li><li>
 <p>You can tell TeX to continue running and to ignore all errors as best
 it can by typing <kbd>r <kbd>RET</kbd></kbd> at the `<samp>?</samp>' prompt.
+
 </p><p>This is often the best thing to do.  However, beware: the one error
 may produce a cascade of additional error messages as its consequences
 are felt through the rest of the file.  To stop TeX when it is
 producing such an avalanche of error messages, type <kbd>C-c</kbd> (or
 <kbd>C-c C-c</kbd>, if you are running a shell inside Emacs).
+
 </p></li><li>
 <p>You can tell TeX to stop this run by typing <kbd>x <kbd>RET</kbd></kbd>
 at the `<samp>?</samp>' prompt.
@@ -145,14 +153,15 @@ at the `<samp>?</samp>' prompt.
 
 <p>If you are running TeX inside Emacs, you need to switch to the shell
 buffer and line at which TeX offers the `<samp>?</samp>' prompt.
+
 </p><p>Sometimes TeX will format a file without producing error messages even
 though there is a problem.  This usually occurs if a command is not ended
 but TeX is able to continue processing anyhow.  For example, if you fail
 to end an itemized list with the <code>@end itemize</code> command, TeX will
 write a DVI file that you can print out.  The only error message that
 TeX will give you is the somewhat mysterious comment that
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-(@end occurred inside a group at level 1)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">(@end occurred inside a group at level 1)
 </pre></td></tr></table>
 
 <p>However, if you print the DVI file, you will find that the text
@@ -161,16 +170,18 @@ it were part of the last item in the itemized list.  The error message
 is the way TeX says that it expected to find an <code>@end</code>
 command somewhere in the file; but that it could not determine where
 it was needed.
+
 </p><p>Another source of notoriously hard-to-find errors is a missing
 <code>@end group</code> command.  If you ever are stumped by
 incomprehensible errors, look for a missing <code>@end group</code> command
 first.
+
 </p><p>If the Texinfo file lacks header lines,
 TeX may stop in the
 beginning of its run and display output that looks like the following.
 The `<samp>*</samp>' indicates that TeX is waiting for input.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-This is TeX, Version 3.14159 (Web2c 7.0)
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
 *
 </pre></td></tr></table>
@@ -180,6 +191,7 @@ write the header lines in the Texinfo file and run the TeX command
 again. (Note the use of the backslash, `<samp>\</samp>'.  TeX uses `<samp>\</samp>'
 instead of `<samp>@</samp>'; and in this circumstance, you are working
 directly with TeX, not with Texinfo.)
+
 </p><hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Debugging-with-Info.html#SEC310" title="Previous section in reading order"> &lt; </a>]</td>

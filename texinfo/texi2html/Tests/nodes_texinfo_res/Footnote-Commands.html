@@ -85,35 +85,41 @@ This command is followed immediately by a left brace, then by the text
 of the footnote, and then by a terminating right brace.  Footnotes may
 be of any length (they will be broken across pages if necessary), but
 are usually short.  The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-ordinary text@footnote{<var>text of footnote</var>}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
 </pre></td></tr></table>
 <p>As shown here, the <code>@footnote</code> command should come right after the
 text being footnoted, with no intervening space; otherwise, the footnote
 marker might end up starting a line.
+
 </p><p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-...a sample footnote@footnote{Here is the sample
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">...a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source...
 </pre></td></tr></table>
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, `<samp>.};</samp>' is the sequence.  This is normal (the
 first ends the footnote and the second belongs to the sentence being
 footnoted), so don't worry that it looks odd.
+
 </p><p>In a printed manual or book, the reference mark for a footnote is a
 small, superscripted number; the text of the footnote appears at the
 bottom of the page, below a horizontal line.
+
 </p><p>In Info, the reference mark for a footnote is a pair of parentheses
 with the footnote number between them, like this: `<samp>(1)</samp>'.  The
 reference mark is followed by a cross-reference link to the footnote's
 text.
+
 </p><p>In the HTML output, footnote references are marked with a small,
 superscripted number which is rendered as a hypertext link to the
 footnote text.
+
 </p><p>By the way, footnotes in the argument of an <code>@item</code> command for a
 <code>@table</code> must be on the same line as the <code>@item</code>
 (as usual).  See section <a href="Two-column-Tables.html#SEC159">Making a Two-column Table</a>.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

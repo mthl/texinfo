@@ -10,4 +10,4 @@ verbatim_not_closed.texi(,10)
 verbatim_not_closed.texi(,11) @macro
 verbatim_not_closed.texi(,12) 
 verbatim_not_closed.texi(,13) 
-(,) @end verbatim
+(,) @end verbatim 

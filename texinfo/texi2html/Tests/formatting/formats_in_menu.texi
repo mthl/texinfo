@@ -22,7 +22,19 @@ some @ verb{' atim
 <i></i>
 @end html
 Log$
+* (truc):: @acronym{description
+acronym}
 @end menu
 After menu
 
+@menu
+* (manual):: @table @asis
+@item item
+* (node)::
+menu comment ?
+* (node2):: description ?
+  description continue ?
+comment.
+@end table
+@end menu
 @bye

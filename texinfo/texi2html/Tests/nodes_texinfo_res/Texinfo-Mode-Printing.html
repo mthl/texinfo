@@ -85,18 +85,21 @@ formatting and printing.  These include commands for sorting indices,
 looking at the printer queue, killing the formatting job, and
 recentering the display of the buffer in which the operations
 occur.
+
 </p><dl compact="compact">
 <dt><kbd> C-c C-t C-b
 </kbd></dt>
 <dt><kbd> M-x texinfo-tex-buffer
 </kbd></dt>
 <dd><p>Run <code>texi2dvi</code> on the current buffer.
+
 </p></dd>
 <dt><kbd> C-c C-t C-r
 </kbd></dt>
 <dt><kbd> M-x texinfo-tex-region
 </kbd></dt>
 <dd><p>Run TeX on the current region.
+
 </p></dd>
 <dt><kbd> C-c C-t C-i
 </kbd></dt>
@@ -104,6 +107,7 @@ occur.
 </kbd></dt>
 <dd><p>Sort the indices of a Texinfo file formatted with
 <code>texinfo-tex-region</code>.
+
 </p></dd>
 <dt><kbd> C-c C-t C-p
 </kbd></dt>
@@ -111,12 +115,14 @@ occur.
 </kbd></dt>
 <dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
 <code>texinfo-tex-buffer</code>.
+
 </p></dd>
 <dt><kbd> C-c C-t C-q
 </kbd></dt>
 <dt><kbd> M-x tex-show-print-queue
 </kbd></dt>
 <dd><p>Show the print queue.
+
 </p></dd>
 <dt><kbd> C-c C-t C-d
 </kbd></dt>
@@ -125,6 +131,7 @@ occur.
 <dd><p>Delete a job from the print queue; you will be prompted for the job
 number shown by a preceding <kbd>C-c C-t C-q</kbd> command
 (<code>texinfo-show-tex-print-queue</code>).
+
 </p></dd>
 <dt><kbd> C-c C-t C-k
 </kbd></dt>
@@ -133,6 +140,7 @@ number shown by a preceding <kbd>C-c C-t C-q</kbd> command
 <dd><p>Kill the currently running TeX job started by either
 <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
 process running in the Texinfo shell buffer.
+
 </p></dd>
 <dt><kbd> C-c C-t C-x
 </kbd></dt>
@@ -141,6 +149,7 @@ process running in the Texinfo shell buffer.
 <dd><p>Quit a TeX formatting job that has stopped because of an error by
 sending an <kbd>x</kbd> to it.  When you do this, TeX preserves a record
 of what it did in a `<tt>.log</tt>' file.
+
 </p></dd>
 <dt><kbd> C-c C-t C-l
 </kbd></dt>
@@ -153,8 +162,8 @@ commands are run to show its most recent output.
 
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             Run <code>texi2dvi</code> on the buffer.
 C-c C-t C-p             Print the DVI file.
 C-c C-t C-q             Display the printer queue.
 </pre></td></tr></table>
@@ -162,13 +171,15 @@ C-c C-t C-q             Display the printer queue.
 called the `<tt>*tex-shell*</tt>'.  The <code>texinfo-tex-command</code>,
 <code>texinfo-texindex-command</code>, and <code>tex-dvi-print-command</code>
 commands are all run in this shell.
+
 </p><p>You can watch the commands operate in the `<samp>*tex-shell*</samp>' buffer,
 and you can switch to and from and use the `<samp>*tex-shell*</samp>' buffer
 as you would any other shell buffer.
+
 </p><p>The formatting and print commands depend on the values of several variables.
 The default values are:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-     Variable                              Default value
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">     Variable                              Default value
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
 texinfo-tex-command                       &quot;tex&quot;
@@ -184,12 +195,14 @@ tex-show-queue-command                    &quot;lpq&quot;
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
 (see <a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
 (see <a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
+
 </p><a name="IDX333"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
 See <a href="../emacs/Easy-Customization.html">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
 be found in the `<samp>Development/Docs/Texinfo</samp>' group, once you invoke
 the <kbd>M-x customize</kbd> command.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

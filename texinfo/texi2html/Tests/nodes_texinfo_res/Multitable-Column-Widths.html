@@ -84,6 +84,7 @@ ul.toc {list-style: none}
 fractions of the line length; or with a prototype row.  Mixing the two
 methods is not supported.  In either case, the widths are defined
 entirely on the same line as the <code>@multitable</code> command.
+
 </p><ol>
 <li>
 <a name="IDX140"></a>
@@ -91,26 +92,30 @@ entirely on the same line as the <code>@multitable</code> command.
 <p>To specify column widths as fractions of the line length, write
 <code>@columnfractions</code> and the decimal numbers (presumably less than
 1) after the <code>@multitable</code> command, as in:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@multitable @columnfractions .33 .33 .33
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .33 .33 .33
 </pre></td></tr></table>
 <p>The fractions need not add up exactly to 1.0, as these do
 not.  This allows you to produce tables that do not need the full line
 length.  You can use a leading zero if you wish.
+
 </p></li><li>
 <a name="IDX142"></a>
 <p>To specify a prototype row, write the longest entry for each column
 enclosed in braces after the <code>@multitable</code> command.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@multitable {some text for column one} {for column two}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@multitable {some text for column one} {for column two}
 </pre></td></tr></table>
 
 <p>The first column will then have the width of the typeset `some text for
 column one', and the second column the width of `for column two'.
+
 </p><p>The prototype entries need not appear in the table itself.
+
 </p><p>Although we used simple text in this example, the prototype entries can
 contain Texinfo commands; markup commands such as <code>@code</code> are
 particularly likely to be useful.
+
 </p></li></ol>
 
 

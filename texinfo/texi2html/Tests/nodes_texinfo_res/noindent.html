@@ -85,9 +85,10 @@ Ordinarily, the formatters indent text that follows an example as a new
 paragraph.  However, you can prevent this by writing <code>@noindent</code>
 at the beginning of a line by itself preceding the continuation
 text.
+
 </p><p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@example
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@example
 This is an example
 @end example
 
@@ -99,9 +100,8 @@ that follows after it.  (This whole example is between
 </pre></td></tr></table>
 
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="display">
-</pre><table><tr><td>&nbsp;</td><td><pre class="example"> 
-This is an example
+
+</p><table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><pre class="example">This is an example
 </pre></td></tr></table><pre class="display">
 
 This line is not indented.  As you can see, the
@@ -112,11 +112,14 @@ that follows after it.  (This whole example is between
 <p>To adjust the number of blank lines properly in the Info file output,
 remember that the line containing <code>@noindent</code> does not generate a
 blank line, and neither does the <code>@end example</code> line.
+
 </p><p>In the Texinfo source file for this manual, each line that says
 `produces' is preceded by a line containing <code>@noindent</code>.
+
 </p><p>Do not put braces after an <code>@noindent</code> command; they are not
 necessary, since <code>@noindent</code> is a command used outside of
 paragraphs (see section <a href="Command-Syntax.html#SEC320">@-Command Syntax</a>).
+
 </p>
 <hr size="1">
 <p>

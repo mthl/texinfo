@@ -82,16 +82,19 @@ ul.toc {list-style: none}
 
 <p>Here are commands for quotations and examples, explained further in the
 following sections:
+
 </p><dl compact="compact">
 <dt><code> @quotation
 </code></dt>
 <dd><p>Indicate text that is quoted. The text is filled, indented, and
 printed in a roman font by default.
+
 </p></dd>
 <dt><code> @example
 </code></dt>
 <dd><p>Illustrate code, commands, and the like. The text is printed
 in a fixed-width font, and indented but not filled.
+
 </p></dd>
 <dt><code> @verbatim
 </code></dt>
@@ -100,34 +103,41 @@ substitutions are made and all commands are ignored, until the next
 <code>@end verbatim</code>.  The text is printed in a fixed-width font, 
 and not indented or filled.  Extra spaces and blank lines are 
 significant, and tabs are expanded.
+
 </p></dd>
 <dt><code> @smallexample
 </code></dt>
 <dd><p>Same as <code>@example</code>, except that in TeX this command typesets
 text in a smaller font.
+
 </p></dd>
 <dt><code> @lisp
 </code></dt>
 <dd><p>Like <code>@example</code>, but specifically for illustrating Lisp code. The
 text is printed in a fixed-width font, and indented but not filled.
+
 </p></dd>
 <dt><code> @smalllisp
 </code></dt>
 <dd><p>Is to <code>@lisp</code> as <code>@smallexample</code> is to <code>@example</code>.
+
 </p></dd>
 <dt><code> @display
 </code></dt>
 <dd><p>Display illustrative text.  The text is indented but not filled, and
 no font is selected (so, by default, the font is roman).
+
 </p></dd>
 <dt><code> @smalldisplay
 </code></dt>
 <dd><p>Is to <code>@display</code> as <code>@smallexample</code> is to <code>@example</code>.
+
 </p></dd>
 <dt><code> @format
 </code></dt>
 <dd><p>Like <code>@display</code> (the text is not filled and no font is selected),
 but the text is not indented.
+
 </p></dd>
 <dt><code> @smallformat
 </code></dt>
@@ -137,14 +147,18 @@ but the text is not indented.
 
 <p>The <code>@exdent</code> command is used within the above constructs to
 undo the indentation of a line.
+
 </p><p>The <code>@flushleft</code> and <code>@flushright</code> commands are used to line
 up the left or right margins of unfilled text.
+
 </p><p>The <code>@noindent</code> command may be used after one of the above
 constructs to prevent the following text from being indented as a new
 paragraph.
+
 </p><p>You can use the <code>@cartouche</code> command within one of the above
 constructs to highlight the example or quotation by drawing a box with
 rounded corners around it.  See section <a href="cartouche.html#SEC154">Drawing Cartouches Around Examples</a>.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -23,31 +23,31 @@ macros.texi(,25) The file included:
 macros.texi(,27) File has been included.
 macros.texi(,28) 
 macros.texi(,34) 
-macros.texi(,37) Right. macros.texi(,37) result of a macro with @samp{first arg
+macros.texi(macro1,37) Right. macros.texi(macro1,37) result of a macro with @samp{first arg
 macros.texi(macro1,37) 
 macros.texi(macro1,37) no ?} and 
 ./file.texi(macro1,1) 
 ./file.texi(,1) content of included file with arg2: \arg2\
-macros.texi(macro1,37) second arg
+macros.texi(macro1,37) second argmacros.texi(macro1,37) 
 macros.texi(,38) Now define macro2
 macros.texi(,43) Call macro2
-macros.texi(,46) With a doubles arg a simple @code{
+macros.texi(macro2,46) With a doubles arg a simple @code{
 macros.texi(macro2,46) arg}
 macros.texi(macro2,46)  and re a simple @code{
 macros.texi(macro2,46) arg}
 macros.texi(macro2,46) 
 macros.texi(macro2,46) 
 macros.texi(,47) Call macro2 with 2 args
-macros.texi(,48) With a doubles arg arg with comma , here  and re arg with comma , here 
+macros.texi(macro2,48) With a doubles arg arg with comma , here  and re arg with comma , here 
 macros.texi(macro2,48) 
 macros.texi(,49) Define macro3
 macros.texi(,58) Call macro3
-macros.texi(,59) @example 
+macros.texi(macro3,59) @example 
 macros.texi(macro3,59) /arg/
 macros.texi(macro3,59) 
 macros.texi(macro3,59) 
 macros.texi(macro3,59) /arg/
-macros.texi(macro3,59) @end example
+macros.texi(macro3,59) @end examplemacros.texi(macro3,59) 
 macros.texi(,60) 
 macros.texi(,61) @contents
 macros.texi(,62) 

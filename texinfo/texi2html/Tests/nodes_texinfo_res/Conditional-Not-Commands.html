@@ -82,26 +82,27 @@ ul.toc {list-style: none}
 
 <p>You can specify text to be included in any output format <em>other</em>
 than some given one with the <code>@ifnot<small class="dots">...</small></code> commands:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-@ifnothtml ... @end ifnothtml
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifnothtml ... @end ifnothtml
 @ifnotinfo ... @end ifnotinfo
 @ifnotplaintext ... @end ifnotplaintext
 @ifnottex ... @end ifnottex
 </pre></td></tr></table>
 <p>(The <code>@ifnot<small class="dots">...</small></code> command and the <code>@end</code> command must
 appear on lines by themselves in your actual source file.)
+
 </p><p>If the output file is <em>not</em> being made for the given format, the
 region is included.  Otherwise, it is ignored.
+
 </p><p>With one exception (for historical compatibility): <code>@ifnotinfo</code>
 text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 <code>@ifnotplaintext</code>, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-This will be in Info, but not plain text.
+</p><table><tr><td>&nbsp;</td><td><pre class="example">This will be in Info, but not plain text.
 </pre></td></tr></table>
 <p>The regions delimited by these commands are ordinary Texinfo source as
 with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>
 (see section <a href="Raw-Formatter-Commands.html#SEC230">Raw Formatter Commands</a>).
+
 </p>
 <hr size="1">
 <p>

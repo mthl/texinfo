@@ -81,6 +81,7 @@ ul.toc {list-style: none}
 <h2 class="section"> 1.6 General Syntactic Conventions </h2>
 
 <p>This section describes the general conventions used in all Texinfo documents.
+
 </p><ul>
 <li>
 <p>All printable <small>ASCII</small> characters except `<samp>@</samp>', `<samp>{</samp>' and
@@ -90,6 +91,7 @@ ul.toc {list-style: none}
 commands.  To put one of these special characters into the document, put
 an `<samp>@</samp>' character in front of it, like this: `<samp>@@</samp>',
 `<samp>@{</samp>', and `<samp>@}</samp>'.
+
 </p></li><li>
 <p>It is customary in TeX to use doubled single-quote characters to
 begin and end quotations: <tt>``<small class="dots">...</small>''</tt>.  This
@@ -98,15 +100,18 @@ two single quotes to left- and right-hand doubled
 quotation marks, 
 and Info converts doubled single-quote characters to <small>ASCII</small>
 double-quotes: <tt>``<small class="dots">...</small>''</tt> becomes <tt>&quot;<small class="dots">...</small>&quot;</tt>.
+
 </p></li><li>
 <p>Use three hyphens in a row, `<samp>--</samp>', for a dash--like this.  In
 TeX, a single or double hyphen produces a printed dash that is
 shorter than the usual typeset dash. Info reduces three hyphens to two
 for display on the screen.
+
 </p></li><li>
 <p>To prevent a paragraph from being indented in the printed manual, put
 the command <code>@noindent</code> on a line by itself before the
 paragraph.
+
 </p></li><li>
 <p>If you mark off a region of the Texinfo file with the <code>@iftex</code>
 and <code>@end iftex</code> commands, that region will appear only in
@@ -114,13 +119,13 @@ the printed copy; in that region, you can use certain commands
 borrowed from plain TeX that you cannot use in Info.  Conversely,
 text surrounded by <code>@ifnottex</code> and <code>@end ifnottex</code> will
 appear in all output formats <em>except</em> TeX.
+
 </p><p>Each of the other output formats (<code>html</code>, <code>info</code>,
 <code>plaintext</code>) have an analogous pair of commands.  See section <a href="Conditionals.html#SEC227">Conditionally Visible Text</a>.
 </p></li></ul>
 
 <a name="IDX15"></a>
 <blockquote>
-
 <p><strong>Caution:</strong> Do not use tab characters in a Texinfo file (except in
 verbatim modes)!  TeX uses variable-width fonts, which means that it
 is impractical at best to define a tab to work in all circumstances.
@@ -128,9 +133,11 @@ Consequently, TeX treats tabs like single spaces, and that is not
 what they look like.  Furthermore, <code>makeinfo</code> does nothing special
 with tabs, and thus a tab character in your input file may appear
 differently in the output, for example, in indented text.
+
 </p>
 <p>To avoid this problem, Texinfo mode causes GNU Emacs to insert multiple
 spaces when you press the <kbd>TAB</kbd> key.
+
 </p>
 <p>Also, you can run <code>untabify</code> in Emacs to convert tabs in a region
 to multiple spaces.

@@ -85,18 +85,19 @@ between subsequent pairs of <code>@ifset <var>flag</var></code> and <code>@end
 ifset</code> commands.  When the <var>flag</var> is cleared, the Texinfo formatting
 commands do <em>not</em> format the text.  <code>@ifclear</code> operates
 analogously.
+
 </p><p>Write the conditionally formatted text between <code>@ifset <var>flag</var></code>
 and <code>@end ifset</code> commands, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@ifset <var>flag</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifset <var>flag</var>
 <var>conditional-text</var>
 @end ifset
 </pre></td></tr></table>
 <p>For example, you can create one document that has two variants, such as
 a manual for a `large' and `small' model:
+
 </p><a name="IDX295"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-You can use this machine to dig up shrubs
+<table><tr><td>&nbsp;</td><td><pre class="example">You can use this machine to dig up shrubs
 without hurting them.
 
 @set large
@@ -111,10 +112,12 @@ Remember to replant promptly ...
 <p>In the example, the formatting commands will format the text between
 <code>@ifset large</code> and <code>@end ifset</code> because the <code>large</code>
 flag is set.
+
 </p><p>When <var>flag</var> is cleared, the Texinfo formatting commands do
 <em>not</em> format the text between <code>@ifset <var>flag</var></code> and
 <code>@end ifset</code>; that text is ignored and does not appear in either
 printed or Info output.
+
 </p><p>For example, if you clear the flag of the preceding example by writing
 an <code>@clear large</code> command after the <code>@set large</code> command
 (but before the conditional text), then the Texinfo formatting commands
@@ -123,6 +126,7 @@ commands.  In the formatted output, that text does not appear; in both
 printed and Info output, you see only the lines that say, &quot;You can use
 this machine to dig up shrubs without hurting them.  Remember to replant
 promptly <small class="dots">...</small>&quot;.
+
 </p><a name="IDX296"></a>
 <p>If a flag is cleared with an <code>@clear <var>flag</var></code> command, then
 the formatting commands format text between subsequent pairs of
@@ -131,8 +135,8 @@ is set with <code>@set <var>flag</var></code>, then the formatting commands do
 <em>not</em> format text between an <code>@ifclear</code> and an <code>@end
 ifclear</code> command; rather, they ignore that text.  An <code>@ifclear</code>
 command looks like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@ifclear <var>flag</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifclear <var>flag</var>
 </pre></td></tr></table>
 
 <hr size="1">

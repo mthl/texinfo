@@ -31,8 +31,11 @@ Menu comment
 @dotless{i}
 
 @*
+@@ followed by a space
 @ 
+@@ followed by a tab
 @	
+@@ followed by a new line
 @
 @-
 @|
@@ -64,6 +67,8 @@ Menu comment
 @AA{}
 @ae{}
 @oe{}
+@AE{}
+@OE{}
 @o{}
 @O{}
 @ss{}
@@ -133,123 +138,123 @@ a quotation
 @end quotation
 
 @itemize
-@item truc
+@item itemize
 @end itemize
 
 @enumerate
-@item truc
+@item enumerate
 @end enumerate
 
 @multitable @columnfractions 6 7
-@item a @tab b
+@item multitable item @tab multitable tab
 @end multitable
 
 @example
-a
+example
 @end example
 
 @smallexample
-a
+smallexample
 @end smallexample
 
 @display 
-a
+display
 @end display
 
 @smalldisplay
-a
+smalldisplay
 @end smalldisplay
 
 @lisp
-a
+lisp
 @end lisp
 
 @smalllisp
-a
+smalllisp
 @end smalllisp
 
 @format
-a
+format
 @end format
 
 @smallformat
-a
+smallformat
 @end smallformat
 
-@deffn category name arguments...
-a
+@deffn category deffn_name arguments...
+deffn
 @end deffn
 
-@defvr category name
-a
+@defvr category defvr_name
+defvr
 @end defvr
 
-@deftypefn category type name arguments...
-a
+@deftypefn category type deftypefn_name arguments...
+deftypefn
 @end deftypefn
 
-@deftypeop category class type name arguments...
-a
+@deftypeop category class type deftypeop_name arguments...
+deftypeop
 @end deftypeop
 
-@deftypevr category type name
-a
+@deftypevr category type deftypevr_name
+deftypevr
 @end deftypevr
 
-@defcv category class name
-a
+@defcv category class defcv_name
+defcv
 @end defcv
 
-@defop category class name arguments...
-a
+@defop category class defop_name arguments...
+defop
 @end defop
 
-@deftp category name attributes...
-a
+@deftp category deftp_name attributes...
+deftp
 @end deftp
 
-@defun name arguments...
-a
+@defun defun_name arguments...
+defun
 @end defun
 
-@defmac name arguments...
-a
+@defmac defmac_name arguments...
+defmac
 @end defmac
 
-@defspec name arguments...
-a
+@defspec defspec_name arguments...
+defspec
 @end defspec
 
-@defvar name
-a
+@defvar defvar_name
+defvar
 @end defvar
 
-@defopt name
-a
+@defopt defopt_name
+defopt
 @end defopt
 
-@deftypefun type name arguments...
-a
+@deftypefun type deftypefun_name arguments...
+deftypefun
 @end deftypefun
 
-@deftypevar type name
-a
+@deftypevar type deftypevar_name
+deftypevar
 @end deftypevar
 
-@defivar class name
-a
+@defivar class defivar_name
+defivar
 @end defivar
 
-@deftypeivar class type name
-a
+@deftypeivar class type deftypeivar_name
+deftypeivar
 @end deftypeivar
 
-@defmethod class name arguments...
-a
+@defmethod class defmethod_name arguments...
+defmethod
 @end defmethod
 
-@deftypemethod class type name arguments...
-a
+@deftypemethod class type deftypemethod_name arguments...
+deftypemethod
 @end deftypemethod
 
 @xref{chapter, cross ref name, title, file name, manual}
@@ -338,6 +343,38 @@ line
 @mymacro{}
 @end example
 
+@cindex truc
+@cindex Truc
+@cindex .
+@cindex ?
+@cindex a
+@findex truc
+@findex Truc
+@findex .
+@findex ?
+@findex a
+
+
+cp
+@printindex cp
+
+fn
+@printindex fn
+
+vr
+@printindex vr
+
+ky
+@printindex ky
+
+pg
+@printindex pg
+
+tp
+@printindex tp
+
+
+
 @node chapter
 @chapter chapter
 
@@ -365,17 +402,6 @@ Menu comment
 @menu
 * subsubsection::
 @end menu
-
-@cindex truc
-@cindex Truc
-@cindex .
-@cindex ?
-@cindex a
-@findex truc
-@findex Truc
-@findex .
-@findex ?
-@findex a
 
 @anchor{anchor}
 

@@ -85,26 +85,30 @@ options are used to set the value of the fill column and specify the
 footnote style.  Each command line option is a word preceded by
 `<samp>--</samp>' or a letter preceded by `<samp>-</samp>'.  You can use abbreviations
 for the long option names as long as they are unique.
+
 </p><p>For example, you could use the following shell command to create an Info
 file for `<tt>bison.texinfo</tt>' in which each line is filled to only 68
 columns:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-makeinfo --fill-column=68 bison.texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --fill-column=68 bison.texinfo
 </pre></td></tr></table>
 <p>You can write two or more options in sequence, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-makeinfo --no-split --fill-column=70 ...
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --no-split --fill-column=70 ...
 </pre></td></tr></table>
 
 <p>This would keep the Info file together as one possibly very long
 file and would also set the fill column to 70.
+
 </p><p>The options are:
+
 </p><dl compact="compact">
 <dt><code> -D <var>var</var>
 </code></dt>
 <dd><a name="IDX358"></a>
 <p>Cause the variable <var>var</var> to be defined.  This is equivalent to
 <code>@set <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+
 </p></dd>
 <dt><code> --commands-in-node-names
 </code></dt>
@@ -114,11 +118,13 @@ can probably never be implemented in TeX.  It also makes
 <code>makeinfo</code> much slower.  Also, this option is ignored when
 `<samp>--no-validate</samp>' is used.  See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>, for more
 details.
+
 </p></dd>
 <dt><code> --docbook
 </code></dt>
 <dd><a name="IDX360"></a>
 <p>Generate DocBook output rather than Info.  
+
 </p></dd>
 <dt><code> --error-limit=<var>limit</var>
 </code></dt>
@@ -129,6 +135,7 @@ details.
 <p>Set the maximum number of errors that <code>makeinfo</code> will report
 before exiting (on the assumption that continuing would be useless);
 default 100.
+
 </p></dd>
 <dt><code> --fill-column=<var>width</var>
 </code></dt>
@@ -142,6 +149,7 @@ width.  (Filling is the process of breaking up and connecting lines so
 that lines are the same length as or shorter than the number specified
 as the fill column.  Lines are broken between words.) The default value
 is 72.  Ignored with `<samp>--html</samp>'.
+
 </p></dd>
 <dt><code> --footnote-style=<var>style</var>
 </code></dt>
@@ -157,6 +165,7 @@ footnote style is `<samp>separate</samp>', <code>makeinfo</code> makes a new nod
 containing the footnotes found in the current node.  When the footnote
 style is `<samp>end</samp>', <code>makeinfo</code> places the footnote references at
 the end of the current node.  Ignored with `<samp>--html</samp>'.
+
 </p></dd>
 <dt><code> --force
 </code></dt>
@@ -166,6 +175,7 @@ the end of the current node.  Ignored with `<samp>--html</samp>'.
 <a name="IDX368"></a>
 <p>Ordinarily, if the input file has errors, the output files are not
 created.  With this option, they are preserved.
+
 </p></dd>
 <dt><code> --help
 </code></dt>
@@ -174,6 +184,7 @@ created.  With this option, they are preserved.
 <dd><a name="IDX369"></a>
 <a name="IDX370"></a>
 <p>Print a usage message listing all available options, then exit successfully.
+
 </p></dd>
 <dt><code> --html
 </code></dt>
@@ -182,6 +193,7 @@ created.  With this option, they are preserved.
 default, the HTML output is split into one output file per source node,
 and the split output is written into a subdirectory with the name of the
 top-level info file.
+
 </p></dd>
 <dt><code> -I <var>dir</var>
 </code></dt>
@@ -193,6 +205,7 @@ not given, the current directory `<tt>.</tt>' is appended.  Note that
 <var>dir</var> can actually be a list of several directories separated by the
 usual path separator character (`<samp>:</samp>' on Unix, `<samp>;</samp>' on
 MS-DOS/MS-Windows).
+
 </p></dd>
 <dt><code> --macro-expand=<var>file</var>
 </code></dt>
@@ -203,6 +216,7 @@ file.  Normally, the results of macro expansion are used internally by
 <code>makeinfo</code> and then discarded.  This option is used by
 <code>texi2dvi</code> if you are using an old version of `<tt>texinfo.tex</tt>'
 that does not support <code>@macro</code>.
+
 </p></dd>
 <dt><code> --no-headers
 </code></dt>
@@ -217,13 +231,16 @@ that does not support <code>@macro</code>.
 output.  This results in a simple plain text file that you can (for
 example) send in email without complications, or include in a
 distribution (as in an `<tt>INSTALL</tt>' file).
+
 </p><a name="IDX380"></a>
 <p>For HTML output, likewise omit menus.  And if `<samp>--no-split</samp>' is also
 specified, do not include a navigation links at the top of each node
 (these are never included in the default case of split output).
 See section <a href="makeinfo-html.html#SEC270">Generating HTML</a>.
+
 </p><p>In both cases, write to standard output by default (can still be
 overridden by `<samp>-o</samp>').
+
 </p></dd>
 <dt><code> --no-split
 </code></dt>
@@ -234,6 +251,7 @@ overridden by `<samp>-o</samp>').
 output files (where the size is greater than 70k bytes) are split into
 smaller subfiles.  For Info output, each one is approximately 50k bytes.
 For HTML output, each file contains one node (see section <a href="makeinfo-html.html#SEC270">Generating HTML</a>).
+
 </p></dd>
 <dt><code> --no-pointer-validate
 </code></dt>
@@ -246,6 +264,7 @@ For HTML output, each file contains one node (see section <a href="makeinfo-html
 be done with the <code>@novalidate</code> command (see section <a href="Use-TeX.html#SEC245">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
 checks are made to ensure that cross references can be resolved, etc.
 See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
+
 </p></dd>
 <dt><code> --no-warn
 </code></dt>
@@ -254,11 +273,13 @@ See section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
 want this if the file you are creating has examples of Texinfo cross
 references within it, and the nodes that are referenced do not actually
 exist.
+
 </p></dd>
 <dt><code> --number-sections
 </code></dt>
 <dd><a name="IDX388"></a>
 <p>Output chapter, section, and appendix numbers as in printed manuals.
+
 </p></dd>
 <dt><code> --no-number-footnotes
 </code></dt>
@@ -266,6 +287,7 @@ exist.
 <p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
 numbers each footnote sequentially in a single node, resetting the
 current footnote number to 1 at the start of each node.
+
 </p></dd>
 <dt><code> --output=<var>file</var>
 </code></dt>
@@ -279,6 +301,7 @@ Texinfo source (see section <a href="setfilename.html#SEC46"><code>@setfilename<
 goes to standard output and `<samp>--no-split</samp>' is implied.  For split
 HTML output, <var>file</var> is the name for the directory into which all
 HTML nodes are written (see section <a href="makeinfo-html.html#SEC270">Generating HTML</a>).
+
 </p></dd>
 <dt><code> -P <var>dir</var>
 </code></dt>
@@ -286,6 +309,7 @@ HTML nodes are written (see section <a href="makeinfo-html.html#SEC270">Generati
 <p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
 If <var>dir</var> is not given, the current directory `<tt>.</tt>' is prepended.
 See `<samp>-I</samp>' for more details.
+
 </p></dd>
 <dt><code> --paragraph-indent=<var>indent</var>
 </code></dt>
@@ -297,14 +321,17 @@ See `<samp>-I</samp>' for more details.
 this option overrides the value set in a Texinfo file by an
 <code>@paragraphindent</code> command (see section <a href="paragraphindent.html#SEC65">Paragraph Indenting</a>).  The value
 of <var>indent</var> is interpreted as follows:
+
 </p><dl compact="compact">
 <dt> `<samp>asis</samp>'
 </dt>
 <dd><p>Preserve any existing indentation at the starts of paragraphs.
+
 </p></dd>
 <dt> `<samp>0</samp>' or `<samp>none</samp>'
 </dt>
 <dd><p>Delete any existing indentation.
+
 </p></dd>
 <dt> <var>num</var>
 </dt>
@@ -323,11 +350,13 @@ of <var>indent</var> is interpreted as follows:
 <code>makeinfo</code> will make without reporting a warning.  If a node has more
 than this number of references in it, <code>makeinfo</code> will make the
 references but also report a warning.  The default is 1000.
+
 </p></dd>
 <dt><code> -U <var>var</var>
 </code></dt>
 <dd><p>Cause <var>var</var> to be undefined.  This is equivalent to
 <code>@clear <var>var</var></code> in the Texinfo file (see section <a href="set-clear-value.html#SEC231"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+
 </p></dd>
 <dt><code> --verbose
 </code></dt>
@@ -335,6 +364,7 @@ references but also report a warning.  The default is 1000.
 <p>Cause <code>makeinfo</code> to display messages saying what it is doing.
 Normally, <code>makeinfo</code> only outputs messages if there are errors or
 warnings.
+
 </p></dd>
 <dt><code> --version
 </code></dt>
@@ -343,11 +373,13 @@ warnings.
 <dd><a name="IDX398"></a>
 <a name="IDX399"></a>
 <p>Print the version number, then exit successfully.
+
 </p></dd>
 <dt><code> --xml
 </code></dt>
 <dd><a name="IDX400"></a>
 <p>Generate XML output rather than Info.  
+
 </p></dd>
 </dl>
 

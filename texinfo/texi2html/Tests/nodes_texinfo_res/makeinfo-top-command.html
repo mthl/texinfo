@@ -87,9 +87,11 @@ the information that <code>makeinfo</code> needs to insert node pointers
 automatically.  Write the <code>@top</code> command at the beginning of the
 line immediately following the <code>@node Top</code> line.  Write the title
 on the remaining part of the same line as the <code>@top</code> command.
+
 </p><p>In Info, the <code>@top</code> sectioning command causes the title to appear
 on a line by itself, with a line of asterisks inserted underneath, as
 other sectioning commands do.
+
 </p><p>In TeX and <code>texinfo-format-buffer</code>, the <code>@top</code>
 sectioning command is merely a synonym for <code>@unnumbered</code>.
 Neither of these formatters require an <code>@top</code> command, and do
@@ -98,9 +100,10 @@ nothing special with it.  You can use <code>@chapter</code> or
 these formatters.  Also, you can use <code>@chapter</code> or
 <code>@unnumbered</code> when you use the Texinfo updating commands to
 create or update pointers and menus.
+
 </p><p>Thus, in practice, a Top node starts like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@node Top
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@node Top
 @top Your Manual Title
 </pre></td></tr></table>
 

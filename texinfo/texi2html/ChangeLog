@@ -1,3 +1,41 @@
+2003-08-29  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: hide m_cedilla.
+	new handling of definition commands, with a specification of the
+	definition line parsing.
+	get HTML attributes from hash values of %format_map and %style_map.
+	Simplify the handling of tables. The default is to use %format_map
+	or otherwise a user defined function, $table_list.
+	All the css commands are in %css_map. 'pre_style' in $complex_formats
+	is taken from %css_map.
+	handle @sp.
+	Remove $Texi2HTML::STOC_LINES (use $Texi2HTML::OVERVIEW), remove
+	$Texi2HTML::TOC (use $Texi2HTML::TOC_LINES), remove $T2H_TOP.
+	use references on arrays everywhere (instead of arrays) for
+	Texi2HTML::OVERVIEW and Texi2HTML::TOC_LINES.
+	Use OVERVIEW consistently.
+	use $docu_top when needed, instead of $docu_name.$docu_ext, which
+	is wrong if -o is used.
+	prepare index entries label text in main program.
+	rewrite from scratch most of the function in .init files to put 
+	them in the public domain.
+	expand macros in macro arguments.
+	\ protects @end macro in macros body. This may be wrong.
+	ignore space and newline following a region opening command.
+	rename -css-file to -css-include.
+	Add 'This' to the hashes for buttons, icons and so on.
+	Add option -toc-links, create links from headings to toc entries
+	with 9 lines from 
+	Martin Herbert Dietze <martin@the-little-red-haired-girl.org>
+	macros are expanded in macro arguments, taking care of context (in
+	@verbatim, @ignore, @comment...).
+	Don't remove empty lines from output.
+	Reenable handling of -idx-sum.
+	* Tests/*: add tests for macros expansion in macro arguments, and
+	for command line option style which are not default.
+	* examples/*: use code in the public domain.
+	In makeinfo.init use makeinfo style for index formatting.
+
 2003-08-29  Derek Price  <derek@ximbiot.com>
 
 	* MySimple.pm (helpOptions): Prepend a second `-' before options.

@@ -84,13 +84,16 @@ ul.toc {list-style: none}
 reading program can operate on it.  (<code>makeinfo</code>
 and <code>texinfo-format-buffer</code> are two commands that convert a Texinfo file
 into an Info file.)
+
 </p><p>Info files are divided into pieces called <em>nodes</em>, each of which
 contains the discussion of one topic.  Each node has a name, and
 contains both text for the user to read and pointers to other nodes,
 which are identified by their names.  The Info program displays one node
 at a time, and provides commands with which the user can move to other
 related nodes.
+
 </p><p>See <a href="../info/index.html">info: (info)Top</a>, for more information about using Info.
+
 </p><p>Each node of an Info file may have any number of child nodes that
 describe subtopics of the node's topic.  The names of child
 nodes are listed in a <em>menu</em> within the parent node; this
@@ -99,6 +102,7 @@ nodes.  Generally, an Info file is organized like a book.  If a node
 is at the logical level of a chapter, its child nodes are at the level
 of sections; likewise, the child nodes of sections are at the level
 of subsections.
+
 </p><p>All the children of any one parent are linked together in a
 bidirectional chain of `Next' and `Previous' pointers.  The `Next'
 pointer provides a link to the next section, and the `Previous' pointer
@@ -109,6 +113,7 @@ children in the parent's menu.  Each child node records the parent node
 name as its `Up' pointer.  The last child has no `Next' pointer, and the
 first child has the parent both as its `Previous' and as its `Up'
 pointer.<a name="DOCF2" href="texinfo_fot.html#FOOT2">(2)</a>
+
 </p><p>The book-like structuring of an Info file into nodes that correspond
 to chapters, sections, and the like is a matter of convention, not a
 requirement.  The `Up', `Previous', and `Next' pointers of a node can
@@ -116,16 +121,19 @@ point to any other nodes, and a menu can contain any other nodes.
 Thus, the node structure can be any directed graph.  But it is usually
 more comprehensible to follow a structure that corresponds to the
 structure of chapters and sections in a printed book or report.
+
 </p><p>In addition to menus and to `Next', `Previous', and `Up' pointers, Info
 provides pointers of another kind, called references, that can be
 sprinkled throughout the text.  This is usually the best way to
 represent links that do not fit a hierarchical structure.
+
 </p><p>Usually, you will design a document so that its nodes match the
 structure of chapters and sections in the printed output.  But
 occasionally there are times when this is not right for the material
 being discussed.  Therefore, Texinfo uses separate commands to specify
 the node structure for the Info file and the section structure for the
 printed output.
+
 </p><p>Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
 file's purpose, and a large menu through which the rest of the file is
@@ -135,22 +143,25 @@ node listed in the main menu, or you can search the index menus and then
 go directly to the node that has the information you want.  Alternatively,
 with the standalone Info program, you can specify specific menu items on
 the command line (see <a href="../info/index.html">(info)Top</a> section `Top' in <cite>Info</cite>).
+
 </p><p>If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit <kbd>SPC</kbd> repeatedly, or you get the whole
 file with the advanced Info command <kbd>g *</kbd>.  (See <a href="../info/Expert.html">Advanced Info commands: (info)Expert</a>.)
+
 </p><p>The `<tt>dir</tt>' file in the `<tt>info</tt>' directory serves as the
 departure point for the whole Info system.  From it, you can reach the
 `Top' nodes of each of the documents in a complete Info system.
+
 </p><a name="IDX12"></a>
 <p>If you wish to refer to an Info file in a URI, you can use the
 (unofficial) syntax exemplified in the following.  This works with
 Emacs/W3, for example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> 
-info:///usr/info/emacs#Dissociated%20Press
+</p><table><tr><td>&nbsp;</td><td><pre class="example">info:///usr/info/emacs#Dissociated%20Press
 info:emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
 </pre></td></tr></table>
 <p>The <code>info</code> program itself does not follow URI's of any kind.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

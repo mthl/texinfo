@@ -82,13 +82,14 @@ ul.toc {list-style: none}
 
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-tex foo.texi
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">tex foo.texi
 </pre></td></tr></table>
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
 files containing information for indices, cross references, etc.  The
 DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
 any device (see the following sections).
+
 </p><a name="IDX320"></a>
 <p>The <code>tex</code> formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  (The <code>texi2dvi</code>
@@ -97,6 +98,7 @@ running the <code>tex</code> command, you first need a sorted index to work
 from.  The <code>texindex</code> command sorts indices.  (The source file
 `<tt>texindex.c</tt>' comes as part of the standard Texinfo distribution,
 among other places.)
+
 </p><a name="IDX321"></a>
 <a name="IDX322"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
@@ -106,13 +108,14 @@ For example, the raw index output files for the input file
 `<tt>foo.texinfo</tt>' would be `<tt>foo.cp</tt>', `<tt>foo.vr</tt>', `<tt>foo.fn</tt>',
 `<tt>foo.tp</tt>', `<tt>foo.pg</tt>' and `<tt>foo.ky</tt>'.  Those are exactly the
 arguments to give to <code>texindex</code>.
+
 </p><a name="IDX323"></a>
 <a name="IDX324"></a>
 <p>Instead of specifying all the unsorted index file names explicitly, you
 can use `<samp>??</samp>' as shell wildcards and give the command in this
 form:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-texindex foo.??
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">texindex foo.??
 </pre></td></tr></table>
 
 <p>This command will run <code>texindex</code> on all the unsorted index files,
@@ -121,31 +124,40 @@ or <code>@defcodeindex</code>.  (You may execute `<samp>texindex foo.??</samp>'
 even if there are similarly named files with two letter extensions
 that are not index files, such as `<samp>foo.el</samp>'.  The <code>texindex</code>
 command reports but otherwise ignores such files.)
+
 </p><p>For each file specified, <code>texindex</code> generates a sorted index file
 whose name is made by appending `<samp>s</samp>' to the input file name.  The
 <code>@printindex</code> command looks for a file with that name
 (see section <a href="Printing-Indices---Menus.html#SEC69">Printing Indices and Menus</a>).  <code>texindex</code> does not alter the
 raw index output file.
+
 </p><p>After you have sorted the indices, you need to rerun the <code>tex</code>
 formatting command on the Texinfo file.  This regenerates the DVI file,
 this time with up-to-date index entries.
+
 </p><p>Finally, you may need to run <code>tex</code> one more time, to get the page
 numbers in the cross-references correct.
+
 </p><p>To summarize, this is a five step process:
+
 </p><ol>
 <li>
 <p>Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
 undefined cross-references and no indices), and the raw index files
 (with two letter extensions).
+
 </p></li><li>
 <p>Run <code>texindex</code> on the raw index files.  This creates the
 corresponding sorted index files (with three letter extensions).
+
 </p></li><li>
 <p>Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
 file, this time with indices and defined cross-references, but with page
 numbers for the cross-references from last time, generally incorrect.
+
 </p></li><li>
 <p>Sort the indices again, with <code>texindex</code>.
+
 </p></li><li>
 <p>Run <code>tex</code> one last time.  This time the correct page numbers are
 written for the cross-references.
@@ -154,10 +166,12 @@ written for the cross-references.
 <a name="IDX325"></a>
 <p>Alternatively, it's a one-step process: run <code>texi2dvi</code>
 (see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>).
+
 </p><p>You need not run <code>texindex</code> each time after you run <code>tex</code>.  If
 you do not, on the next run, the <code>tex</code> formatting command will use
 whatever sorted index files happen to exist from the previous use of
 <code>texindex</code>.  This is usually ok while you are debugging.
+
 </p><a name="IDX326"></a>
 <a name="IDX327"></a>
 <a name="IDX328"></a>
@@ -170,8 +184,8 @@ avoid them with the <code>@novalidate</code> command, which you must give
 <em>before</em> the <code>@setfilename</code> command
 (see section <a href="setfilename.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @novalidate
 @setfilename myfile.info
 ...
@@ -179,6 +193,7 @@ your file would look approximately like this:
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option
 (see section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>).
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

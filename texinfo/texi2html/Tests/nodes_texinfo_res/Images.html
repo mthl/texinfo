@@ -83,8 +83,8 @@ ul.toc {list-style: none}
 
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, [<var>width</var>], [<var>height</var>], [<var>alttext</var>], [<var>extension</var>]}
 </pre></td></tr></table>
 <a name="IDX230"></a>
 <a name="IDX231"></a>
@@ -104,12 +104,13 @@ Info output (more or less as if it was an <code>@example</code>).
 <p><code>makeinfo</code>
 uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
+
 </p><a name="IDX233"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">
-@image{foo,,,,xpm}
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
 </pre></td></tr></table>
 
 <p>will cause `<samp>makeinfo --html</samp>' to try `<tt>foo.xpm</tt>'.
+
 </p><a name="IDX234"></a>
 <a name="IDX235"></a>
 <a name="IDX236"></a>
@@ -130,9 +131,11 @@ specified, the image is presented in its natural size (given in the
 file); if only one is specified, the other is scaled proportionately;
 and if both are specified, both are respected, thus possibly distorting
 the original image by changing its aspect ratio.
+
 </p><a name="IDX241"></a>
 <p>The <var>width</var> and <var>height</var> may be specified using any valid TeX
 dimension, namely:
+
 </p><dl compact="compact">
 <dt> pt
 </dt>
@@ -184,8 +187,8 @@ dimension, namely:
 <a name="IDX251"></a>
 <p>For example, the following will scale a file `<tt>ridt.eps</tt>' to one
 inch vertically, with the width scaled proportionately:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-@image{ridt,,1in}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
 </pre></td></tr></table>
 <a name="IDX252"></a>
 <p>For <code>@image</code> to work with TeX, the file `<tt>epsf.tex</tt>' must be
@@ -194,16 +197,19 @@ installed somewhere that TeX can find it.  (The standard location is
 root of your TeX directory tree.)  This file is included in the
 Texinfo distribution and is also available from
 <a href="ftp://tug.org/tex/epsf.tex">ftp://tug.org/tex/epsf.tex</a>, among other places.
+
 </p><p><code>@image</code> can be used within a line as well as for displayed
 figures.  Therefore, if you intend it to be displayed, be sure to leave
 a blank line before the command, or the output will run into the
 preceding text.
+
 </p><a name="IDX253"></a>
 <a name="IDX254"></a>
 <p>When producing html, <code>makeinfo</code> sets the <em>alt attribute</em> for
 inline images to the optional fourth argument to <code>@image</code>, if
 supplied.  If not supplied, <code>makeinfo</code> uses the full file name of
 the image being displayed.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

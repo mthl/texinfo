@@ -81,12 +81,13 @@ ul.toc {list-style: none}
 <h3 class="subsection"> 6.3.4 <code>@node</code> Line Requirements </h3>
 
 <p>Here are several requirements for <code>@node</code> lines:
+
 </p><ul>
-<li>
-<a name="IDX94"></a>
+<li><a name="IDX94"></a>
 <a name="IDX95"></a>
 </li><li>
 <p>All the node names for a single Info file must be unique.
+
 </p><p>Duplicates confuse the Info movement commands.  This means, for
 example, that if you end every chapter with a summary, you must name
 each summary node differently.  You cannot just call each one
@@ -94,10 +95,13 @@ each summary node differently.  You cannot just call each one
 and the like.  Thus you can end each chapter in a book with a section
 called &quot;Summary&quot;, so long as the node names for those sections are all
 different.
+
 </p></li><li>
 <p>A pointer name must be the name of a node.
+
 </p><p>The node to which a pointer points may come before or after the
 node containing the pointer.
+
 </p><a name="IDX96"></a>
 <a name="IDX97"></a>
 </li><li>
@@ -106,10 +110,11 @@ should avoid them.  This includes punctuation characters that are
 escaped with a `<samp>@</samp>', such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
 @-commands in node names; see <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>.
+
 </p><p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
@@ -119,6 +124,7 @@ this:
 <p>You cannot use parentheses in node names, because a node name such as
 `<samp>(foo)bar</samp>' is interpreted by the Info readers as a node
 `<samp>bar</samp>' in an Info file `<tt>foo</tt>'.
+
 </p></li><li>
 <a name="IDX99"></a>
 <a name="IDX100"></a>
@@ -128,14 +134,15 @@ this:
 <a name="IDX104"></a>
 <p>Unfortunately, you cannot use periods, commas, colons or apostrophes
 within a node name; these confuse TeX or the Info formatters.
+
 </p><p>For example, the following is a section title:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 </pre></td></tr></table>
 
 <p>The corresponding node name is:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">
-unnumberedsec appendixsec heading
+
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
 </pre></td></tr></table>
 <a name="IDX105"></a>
 </li><li>

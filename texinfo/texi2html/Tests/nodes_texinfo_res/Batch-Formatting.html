@@ -83,22 +83,26 @@ ul.toc {list-style: none}
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
 including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
+
 </p><p>Here is a shell command to format all the files that end in
 `<tt>.texinfo</tt>' in the current directory:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-emacs -batch -funcall batch-texinfo-format *.texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
 </pre></td></tr></table>
 
 <p>Emacs processes all the files listed on the command line, even if an
 error occurs while attempting to format some of them.
+
 </p><p>Run <code>batch-texinfo-format</code> only with Emacs in Batch mode as shown;
 it is not interactive.  It kills the Batch mode Emacs on completion.
+
 </p><p><code>batch-texinfo-format</code> is convenient if you lack <code>makeinfo</code>
 and want to format several Texinfo files at once.  When you use Batch
 mode, you create a new Emacs process.  This frees your current Emacs, so
 you can continue working in it.  (When you run
 <code>texinfo-format-region</code> or <code>texinfo-format-buffer</code>, you cannot
 use that Emacs for anything else until the command finishes.)
+
 </p><hr size="1">
 <p>
  <font size="-1">

@@ -83,16 +83,19 @@ ul.toc {list-style: none}
 <p>Use the <code>@code</code> command to indicate text that is a piece of a
 program and which consists of entire syntactic tokens.  Enclose the
 text in braces.
+
 </p><a name="IDX116"></a>
 <a name="IDX117"></a>
 <a name="IDX118"></a>
 <p>Thus, you should use <code>@code</code> for an expression in a program, for
 the name of a variable or function used in a program, or for a
 keyword in a programming language.
+
 </p><p>Use <code>@code</code> for command names in languages that resemble
 programming languages, such as Texinfo.  For example, <code>@code</code> and
 <code>@samp</code> are produced by writing `<samp>@code{@@code}</samp>' and
 `<samp>@code{@@samp}</samp>' in the Texinfo source, respectively.
+
 </p><a name="IDX119"></a>
 <p>It is incorrect to alter the case of a word inside an <code>@code</code>
 command when it appears at the beginning of a sentence.  Most computer
@@ -103,39 +106,47 @@ is confusing to a human reader to see identifiers spelled in different
 ways.  Pick one spelling and always use that.  If you do not want to
 start a sentence with a command name written all in lower case, you
 should rearrange the sentence.
+
 </p><p>In the printed manual, <code>@code</code> causes TeX to typeset the
 argument in a typewriter face.  In the Info file, it causes the Info
 formatting commands to use single quotation marks around the text.
+
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-The function returns @code{nil}.
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">The function returns @code{nil}.
 </pre></td></tr></table>
 
 <p>produces this in the printed manual:
-</p><blockquote>
 
+</p><blockquote>
 <p>The function returns <code>nil</code>.
 </p></blockquote>
 
 
 <p>Here are some cases for which it is preferable not to use <code>@code</code>:
+
 </p><ul>
 <li>
 <p>For shell command names such as <code>ls</code> (use <code>@command</code>).
+
 </p></li><li>
 <p>For shell options such as `<samp>-c</samp>' when such options stand alone (use
 <code>@option</code>).
+
 </p></li><li>
 <p>Also, an entire shell command often looks better if written using
 <code>@samp</code> rather than <code>@code</code>.  In this case, the rule is to
 choose the more pleasing format.
+
 </p></li><li>
 <p>For environment variable such as <code>TEXINPUTS</code> (use <code>@env</code>).
+
 </p></li><li>
 <p>For a string of characters shorter than a syntactic token.  For example,
 if you are writing about `<samp>goto-ch</samp>', which is just a part of the
 name for the <code>goto-char</code> Emacs Lisp function, you should use
 <code>@samp</code>.
+
 </p></li><li>
 <p>In general, when writing about the characters used in a token; for
 example, do not use <code>@code</code> when you are explaining what letters
@@ -146,6 +157,7 @@ language that is like a programming language.  For example, you should
 not use <code>@code</code> for the keystroke commands of GNU Emacs (use
 <code>@kbd</code> instead) although you may use <code>@code</code> for the names
 of the Emacs Lisp functions that the keystroke commands invoke.
+
 </p></li></ul>
 
 <p>Since <code>@command</code>, <code>@option</code>, and <code>@env</code> were
@@ -154,6 +166,7 @@ introduced relatively recently, it is acceptable to use <code>@code</code> or
 The new commands allow you to express the markup more precisely, but
 there is no real harm in using the older commands, and of course the
 long-standing manuals do so.
+
 </p>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">

@@ -85,56 +85,62 @@ ul.toc {list-style: none}
 text.  For example, you should use a metasyntactic variable in the
 documentation of a function to describe the arguments that are passed
 to that function.
+
 </p><p>Do not use <code>@var</code> for the names of particular variables in
 programming languages.  These are specific names from a program, so
 <code>@code</code> is correct for them (see section <a href="code.html#SEC122"><code>@code</code>{<var>sample-code</var>}</a>).  For example, the
 Emacs Lisp variable <code>texinfo-tex-command</code> is not a metasyntactic
 variable; it is properly formatted using <code>@code</code>.
+
 </p><p>Do not use <code>@var</code> for environment variables either; <code>@env</code>
 is correct for them (see the next section).
+
 </p><p>The effect of <code>@var</code> in the Info file is to change the case of the
 argument to all upper case.  In the printed manual and HTML output, the
 argument is printed in slanted type.  
+
 </p><p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-To delete file @var{filename},
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">To delete file @var{filename},
 type @samp{rm @var{filename}}.
 </pre></td></tr></table>
 
 <p>produces
-</p><blockquote>
 
+</p><blockquote>
 <p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
 </p></blockquote>
 
 
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
 <code>@samp</code>, <code>@file</code>, etc.)
+
 </p><p>Write a metasyntactic variable all in lower case without spaces, and
 use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
 this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
 </pre></td></tr></table>
 
 <p>This produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-\input texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 </pre></td></tr></table>
 <p>In some documentation styles, metasyntactic variables are shown with
 angle brackets, for example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-..., type rm &lt;filename&gt;
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">..., type rm &lt;filename&gt;
 </pre></td></tr></table>
 
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to `<tt>texinfo.tex</tt>' and the Info formatting commands
 to output the <code>&lt;<small class="dots">...</small>&gt;</code> format if you wish.)
+
 </p>
 <hr size="1">
 <p>

@@ -88,12 +88,14 @@ Such comments are for the person who revises the Texinfo file.  All the
 text on a line that follows either <code>@comment</code> or <code>@c</code> is a
 comment; the rest of the line does not appear in either the Info file
 or the printed manual.
+
 </p><p>Often, you can write the <code>@comment</code> or <code>@c</code> in the middle of
 a line, and only the text that follows after the <code>@comment</code> or
 <code>@c</code> command does not appear; but some commands, such as
 <code>@settitle</code> and <code>@setfilename</code>, work on a whole line.  You
 cannot use <code>@comment</code> or <code>@c</code> in a line beginning with such
 a command.
+
 </p><a name="IDX16"></a>
 <a name="IDX17"></a>
 <a name="IDX18"></a>
@@ -104,12 +106,14 @@ of its own, starting each command at the beginning of the line.  Text
 between these two commands does not appear in the processed output.
 You can use <code>@ignore</code> and <code>@end ignore</code> for writing
 comments.
+
 </p><p>Text enclosed by <code>@ignore</code> or by failing <code>@ifset</code> or
 <code>@ifclear</code> conditions is ignored in the sense that it will not
 contribute to the formatted output.  However, TeX and makeinfo must
 still parse the ignored text, in order to understand when to <em>stop</em>
 ignoring text from the source file; that means that you may still get
 error messages if you have invalid Texinfo commands within ignored text.
+
 </p>
 <hr size="1">
 <p>

@@ -63,8 +63,8 @@ ul.toc {list-style: none}
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>).
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC115">A.1 Overall structure of CVS commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC116">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS's success or failure</td></tr>
 <tr><td align="left" valign="top"><a href="#SEC117">A.3 Default options and the ~/.cvsrc file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Default options with the ~/.csvrc file</td></tr>
@@ -105,18 +105,20 @@ reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC15
 <h2 class="appendixsec"> A.1 Overall structure of CVS commands </h2>
 
 <p>The overall format of all <small>CVS</small> commands is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
 </pre></td></tr></table>
 <dl compact="compact">
 <dt><code> cvs
 </code></dt>
 <dd><p>The name of the <small>CVS</small> program.
+
 </p></dd>
 <dt><code> cvs_options
 </code></dt>
 <dd><p>Some options that affect all sub-commands of <small>CVS</small>.  These are
 described below.
+
 </p></dd>
 <dt><code> cvs_command
 </code></dt>
@@ -126,10 +128,12 @@ reference manual for that command.  There are only two situations
 where you may omit `<samp>cvs_command</samp>': `<samp>cvs -H</samp>' elicits a
 list of available commands, and `<samp>cvs -v</samp>' displays version
 information on <small>CVS</small> itself.
+
 </p></dd>
 <dt><code> command_options
 </code></dt>
 <dd><p>Options that are specific for the command.
+
 </p></dd>
 <dt><code> command_args
 </code></dt>
@@ -145,6 +149,7 @@ affects some of the commands.  When it is given as a
 is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
+
 </p><hr size="6">
 <a name="NOD116"></a>
 <a name="SEC116"></a>
@@ -173,6 +178,7 @@ one operating system to another.  For example in a unix
 shell script the `<samp>$?</samp>' variable will be 0 if the
 last command returned a successful exit status, or
 greater than 0 if the exit status indicated failure.
+
 </p><p>If <small>CVS</small> is successful, it returns a successful status;
 if there is an error, it prints an error message and
 returns a failure status.  The one exception to this is
@@ -183,6 +189,7 @@ was an error.  Because this behavior provides no good
 way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
+
 </p><hr size="6">
 <a name="NOD117"></a>
 <a name="SEC117"></a>
@@ -212,9 +219,11 @@ example (the one that drove the implementation of the
 default output of the `<samp>diff</samp>' command to be very
 hard to read, and that either context diffs or unidiffs
 are much easier to understand.
+
 </p><p>The `<tt>~/.cvsrc</tt>' file is a way that you can add
 default options to <code>cvs_commands</code> within cvs,
 instead of relying on aliases or other shell scripts.
+
 </p><p>The format of the `<tt>~/.cvsrc</tt>' file is simple.  The
 file is searched for a line that begins with the same
 name as the <code>cvs_command</code> being executed.  If a
@@ -222,13 +231,14 @@ match is found, then the remainder of the line is split
 up (at whitespace characters) into separate options and
 added to the command arguments <em>before</em> any
 options from the command line.
+
 </p><p>If a command has two names (e.g., <code>checkout</code> and
 <code>co</code>), the official name, not necessarily the one
 used on the command line, will be used to match against
 the file.  So if this is the contents of the user's
 `<tt>~/.cvsrc</tt>' file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-log -N
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">log -N
 diff -uN
 rdiff -u
 update -Pd
@@ -239,6 +249,7 @@ release -d
 <p>the command `<samp>cvs checkout foo</samp>' would have the
 `<samp>-P</samp>' option added to the arguments, as well as
 `<samp>cvs co foo</samp>'.
+
 </p><p>With the example file above, the output from `<samp>cvs
 diff foobar</samp>' will be in unidiff format.  `<samp>cvs diff
 -c foobar</samp>' will provide context diffs, as usual.
@@ -246,14 +257,16 @@ Getting &quot;old&quot; format diffs would be slightly more
 complicated, because <code>diff</code> doesn't have an option
 to specify use of the &quot;old&quot; format, so you would need
 `<samp>cvs -f diff foobar</samp>'.
+
 </p><p>In place of the command name you can use <code>cvs</code> to
 specify global options (see section <a href="#SEC118">Global options</a>).  For
 example the following line in `<tt>.cvsrc</tt>'
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs -z6
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs -z6
 </pre></td></tr></table>
 
 <p>causes <small>CVS</small> to use compression level 6.
+
 </p><hr size="6">
 <a name="NOD118"></a>
 <a name="SEC118"></a>
@@ -277,11 +290,13 @@ cvs -z6
 
 <p>The available `<samp>cvs_options</samp>' (that are given to the
 left of `<samp>cvs_command</samp>') are:
+
 </p><dl compact="compact">
 <dt><code> --allow-root=<var>rootdir</var>
 </code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
 <a href="cvs_2.html#SEC30">Setting up the server for password authentication</a>.
+
 </p><a name="IDX202"></a>
 <a name="IDX203"></a>
 </dd>
@@ -294,6 +309,7 @@ a GSSAPI connection (see section <a href="cvs_2.html#SEC33">Direct connection wi
 Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
+
 </p><a name="IDX204"></a>
 <a name="IDX205"></a>
 </dd>
@@ -304,6 +320,7 @@ Enabling authentication does not enable encryption.
 Current versions of <small>CVS</small> do not run <small>RCS</small>
 programs; for compatibility this option is accepted,
 but it does nothing.
+
 </p><a name="IDX206"></a>
 <a name="IDX207"></a>
 </dd>
@@ -316,6 +333,7 @@ specified as an absolute pathname.
 (When running client/server, `<samp>-T</samp>' affects only the local process;
 specifying `<samp>-T</samp>' for the client has no effect on the server and
 vice versa.)
+
 </p><a name="IDX208"></a>
 <a name="IDX209"></a>
 </dd>
@@ -324,6 +342,7 @@ vice versa.)
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
 the <code>$CVSROOT</code> environment variable.  See section <a href="cvs_2.html#SEC9">The Repository</a>.
+
 </p><a name="IDX210"></a>
 <a name="IDX211"></a>
 </dd>
@@ -333,6 +352,7 @@ the <code>$CVSROOT</code> environment variable.  See section <a href="cvs_2.html
 setting of the <code>$CVSEDITOR</code> and <code>$EDITOR</code>
 environment variables.  For more information, see
 <a href="cvs_1.html#SEC6">Committing your changes</a>.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
@@ -344,6 +364,7 @@ display of tag names) does not have a corresponding
 option to turn the display on.  So if you have
 `<samp>-N</samp>' in the `<tt>~/.cvsrc</tt>' entry for `<samp>log</samp>',
 you may need to use `<samp>-f</samp>' to show the tag names.
+
 </p></dd>
 <dt><code> -H
 </code></dt>
@@ -353,11 +374,13 @@ you may need to use `<samp>-f</samp>' to show the tag names.
 (but do not actually execute the command).  If you don't specify
 a command name, `<samp>cvs -H</samp>' displays overall help for
 <small>CVS</small>, including a list of other help options.
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Do not log the `<samp>cvs_command</samp>' in the command history (but execute it
 anyway).  See section <a href="#SEC137">history--Show status of files and users</a>, for information on command history.
+
 </p><a name="IDX212"></a>
 </dd>
 <dt><code> -R
@@ -365,9 +388,11 @@ anyway).  See section <a href="#SEC137">history--Show status of files and users<
 <dd><p>Turns on read-only repository mode.  This allows one to check out from a
 read-only repository, such as within an anoncvs server, or from a CDROM
 repository.
+
 </p><p>Same effect as if the <code>CVSREADONLYFS</code> environment
 variable is set. Using `<samp>-R</samp>' can also considerably
 speed up checkout's over NFS.
+
 </p><a name="IDX213"></a>
 </dd>
 <dt><code> -n
@@ -375,22 +400,26 @@ speed up checkout's over NFS.
 <dd><p>Do not change any files.  Attempt to execute the
 `<samp>cvs_command</samp>', but only to issue reports; do not remove,
 update, or merge any existing files, or create any new files.
+
 </p><p>Note that <small>CVS</small> will not necessarily produce exactly
 the same output as without `<samp>-n</samp>'.  In some cases
 the output will be the same, but in other cases
 <small>CVS</small> will skip some of the processing that would
 have been required to produce the exact same output.
+
 </p></dd>
 <dt><code> -Q
 </code></dt>
 <dd><p>Cause the command to be really quiet; the command will only
 generate output for serious problems.
+
 </p></dd>
 <dt><code> -q
 </code></dt>
 <dd><p>Cause the command to be somewhat quiet; informational messages,
 such as reports of recursion through subdirectories, are
 suppressed.
+
 </p><a name="IDX214"></a>
 </dd>
 <dt><code> -r
@@ -400,10 +429,12 @@ as if the <code>$CVSREAD</code> environment variable is set
 (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>).  The default is to
 make working files writable, unless watches are on
 (see section <a href="cvs_10.html#SEC89">Mechanisms to track who is editing files</a>).
+
 </p></dd>
 <dt><code> -s <var>variable</var>=<var>value</var>
 </code></dt>
 <dd><p>Set a user variable (see section <a href="cvs_18.html#SEC179">Expansions in administrative files</a>).
+
 </p><a name="IDX215"></a>
 </dd>
 <dt><code> -t
@@ -411,12 +442,14 @@ make working files writable, unless watches are on
 <dd><p>Trace program execution; display messages showing the steps of
 <small>CVS</small> activity.  Particularly useful with `<samp>-n</samp>' to explore the
 potential impact of an unfamiliar command.
+
 </p></dd>
 <dt><code> -v
 </code></dt>
 <dt><code> --version
 </code></dt>
 <dd><p>Display version and copyright information for <small>CVS</small>.
+
 </p><a name="IDX216"></a>
 <a name="IDX217"></a>
 </dd>
@@ -426,6 +459,7 @@ potential impact of an unfamiliar command.
 setting of the <code>$CVSREAD</code> environment variable.
 Files are created read-write by default, unless <code>$CVSREAD</code> is
 set or `<samp>-r</samp>' is given.
+
 </p></dd>
 <dt><code> -x
 </code></dt>
@@ -440,6 +474,7 @@ also authenticated.  Encryption support is not
 available by default; it must be enabled using a
 special configure option, `<tt>--enable-encryption</tt>',
 when you build <small>CVS</small>.
+
 </p></dd>
 <dt><code> -z <var>gzip-level</var>
 </code></dt>
@@ -450,6 +485,7 @@ Valid levels are 1 (high speed, low compression) to
 9 (low speed, high compression), or 0 to disable
 compression (the default).
 Only has an effect on the <small>CVS</small> client.
+
 </p></dd>
 </dl>
 
@@ -485,11 +521,12 @@ can almost always count on the same behavior of the
 option as in other commands.  (Other command options,
 which are listed with the individual commands, may have
 different behavior from one <small>CVS</small> command to the other).
+
 </p><p><strong>Note: the `<samp>history</samp>' command is an exception; it supports
 many options that conflict even with these standard options.</strong>
+
 </p><dl compact="compact">
-<dd>
-<a name="IDX221"></a>
+<dd><a name="IDX221"></a>
 <a name="IDX222"></a>
 <a name="IDX223"></a>
 </dd>
@@ -498,16 +535,19 @@ many options that conflict even with these standard options.</strong>
 <dd><p>Use the most recent revision no later than <var>date_spec</var>.
 <var>date_spec</var> is a single argument, a date description
 specifying a date in the past.
+
 </p><p>The specification is <em>sticky</em> when you use it to make a
 private copy of a source file; that is, when you get a working
 file using `<samp>-D</samp>', <small>CVS</small> records the date you specified, so that
 further updates in the same directory will use the same date
 (for more information on sticky tags/dates, see section <a href="cvs_4.html#SEC53">Sticky tags</a>).
+
 </p><p>`<samp>-D</samp>' is available with the <code>annotate</code>, <code>checkout</code>,
 <code>diff</code>, <code>export</code>, <code>history</code>,
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
 slightly different way; see section <a href="#SEC138">history options</a>).
+
 </p>
 <a name="IDX224"></a>
 <a name="IDX225"></a>
@@ -516,42 +556,47 @@ slightly different way; see section <a href="#SEC138">history options</a>).
 International Standards Organization) and the Internet
 e-mail standard (specified in RFC822 as amended by
 RFC1123).
+
 </p><p>ISO8601 dates have many variants but a few examples
 are:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-1972-09-24
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">1972-09-24
 1972-09-24 20:05
 </pre></td></tr></table>
 <p>There are a lot more ISO8601 date formats, and <small>CVS</small>
 accepts many of them, but you probably don't want to
 hear the <em>whole</em> long story :-).
+
 </p>
 <p>In addition to the dates allowed in Internet e-mail
 itself, <small>CVS</small> also allows some of the fields to be
 omitted.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-24 Sep 1972 20:05
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">24 Sep 1972 20:05
 24 Sep
 </pre></td></tr></table>
 <p>The date is interpreted as being in the
 local timezone, unless a specific timezone is
 specified.
+
 </p><p>These two date formats are preferred.  However,
 <small>CVS</small> currently accepts a wide variety of other date
 formats.  They are intentionally not documented here in
 any detail, and future versions of <small>CVS</small> might not
 accept all of them.
+
 </p><p>One such format is
 <code><var>month</var>/<var>day</var>/<var>year</var></code>.  This may
 confuse people who are accustomed to having the month
 and day in the other order; `<samp>1/4/96</samp>' is January 4,
 not April 1.
+
 </p><p>Remember to quote the argument to the `<samp>-D</samp>'
 flag so that your shell doesn't interpret spaces as
 argument separators.  A command using the `<samp>-D</samp>'
 flag can look like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </pre></td></tr></table>
 <a name="IDX226"></a>
 </dd>
@@ -563,18 +608,22 @@ exist prior to the date) that you specified.  Use the `<samp>-f</samp>' option
 if you want files retrieved even when there is no match for the
 tag or date.  (The most recent revision of the file
 will be used).
+
 </p><p>Note that even with `<samp>-f</samp>', a tag that you specify
 must exist (that is, in some file, not necessary in
 every file).  This is so that <small>CVS</small> will continue to
 give an error if you mistype a tag name.
+
 </p><p>`<samp>-f</samp>' is available with these commands:
 <code>annotate</code>, <code>checkout</code>, <code>export</code>,
 <code>rdiff</code>, <code>rtag</code>, and <code>update</code>.
+
 </p><p><strong>WARNING:  The <code>commit</code> and <code>remove</code>
 commands also have a
 `<samp>-f</samp>' option, but it has a different behavior for
 those commands.  See <a href="#SEC126">commit options</a>, and
 <a href="cvs_7.html#SEC68">Removing files</a>.</strong>
+
 </p></dd>
 <dt><code> -k <var>kflag</var>
 </code></dt>
@@ -587,23 +636,28 @@ with a <code>checkout</code> or <code>update</code> command,
 <small>CVS</small> associates your selected <var>kflag</var> with any files
 it operates on, and continues to use that <var>kflag</var> with future
 commands on the same files until you specify otherwise.
+
 </p><p>The `<samp>-k</samp>' option is available with the <code>add</code>,
 <code>checkout</code>, <code>diff</code>, <code>export</code>, <code>import</code> and
 <code>update</code> commands.
+
 </p><p><strong>WARNING: Prior to CVS version 1.12.2, the `<samp>-k</samp>' flag
 overrode the `<samp>-kb</samp>' indication for a binary file.  This could
 sometimes corrupt binary files.  See section <a href="cvs_5.html#SEC64">Merging and keywords</a>, for
 more.</strong>
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory, rather than
 recursing through subdirectories.
+
 </p><p>Available with the following commands: <code>annotate</code>, <code>checkout</code>,
 <code>commit</code>, <code>diff</code>, <code>edit</code>, <code>editors</code>, <code>export</code>,
 <code>log</code>, <code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
 <code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
 and <code>watchers</code>.
+
 </p><a name="IDX227"></a>
 <a name="IDX228"></a>
 </dd>
@@ -611,37 +665,46 @@ and <code>watchers</code>.
 </code></dt>
 <dd><p>Use <var>message</var> as log information, instead of
 invoking an editor.
+
 </p><p>Available with the following commands: <code>add</code>,
 <code>commit</code> and <code>import</code>.
+
 </p></dd>
 <dt><code> -n
 </code></dt>
 <dd><p>Do not run any tag program.  (A program can be
 specified to run in the modules
 database (see section <a href="cvs_18.html#SEC158">The modules file</a>); this option bypasses it).
+
 </p><p><strong>Note: this is not the same as the `<samp>cvs -n</samp>'
 program option, which you can specify to the left of a cvs command!</strong>
+
 </p><p>Available with the <code>checkout</code>, <code>commit</code>, <code>export</code>,
 and <code>rtag</code> commands.
+
 </p></dd>
 <dt><code> -P
 </code></dt>
 <dd><p>Prune empty directories.  See <a href="cvs_7.html#SEC69">Removing directories</a>.
+
 </p></dd>
 <dt><code> -p
 </code></dt>
 <dd><p>Pipe the files retrieved from the repository to standard output,
 rather than writing them in the current directory.  Available
 with the <code>checkout</code> and <code>update</code> commands.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Process directories recursively.  This is on by default.
+
 </p><p>Available with the following commands: <code>annotate</code>, <code>checkout</code>,
 <code>commit</code>, <code>diff</code>, <code>edit</code>, <code>editors</code>, <code>export</code>,
 <code>rdiff</code>, <code>remove</code>, <code>rtag</code>,
 <code>status</code>, <code>tag</code>, <code>unedit</code>, <code>update</code>, <code>watch</code>,
 and <code>watchers</code>.
+
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
@@ -653,24 +716,30 @@ with the <code>tag</code> or <code>rtag</code> command, two special tags are
 always available: `<samp>HEAD</samp>' refers to the most recent version
 available in the repository, and `<samp>BASE</samp>' refers to the
 revision you last checked out into the current working directory.
+
 </p>
 <p>The tag specification is sticky when you use this
 with <code>checkout</code> or <code>update</code> to make your own
 copy of a file: <small>CVS</small> remembers the tag and continues to use it on
 future update commands, until you specify otherwise (for more information
 on sticky tags/dates, see section <a href="cvs_4.html#SEC53">Sticky tags</a>).
+
 </p><p>The tag can be either a symbolic or numeric tag, as
 described in <a href="cvs_4.html#SEC48">Tags--Symbolic revisions</a>, or the name of a branch, as
 described in <a href="cvs_5.html#SEC54">Branching and merging</a>.
+
 </p><p>Specifying the `<samp>-q</samp>' global option along with the
 `<samp>-r</samp>' command option is often useful, to suppress
 the warning messages when the <small>RCS</small> file
 does not contain the specified tag.
+
 </p><p><strong>Note: this is not the same as the overall `<samp>cvs -r</samp>' option,
 which you can specify to the left of a <small>CVS</small> command!</strong>
+
 </p><p>`<samp>-r</samp>' is available with the <code>checkout</code>, <code>commit</code>,
 <code>diff</code>, <code>history</code>, <code>export</code>, <code>rdiff</code>,
 <code>rtag</code>, and <code>update</code> commands.
+
 </p></dd>
 <dt><code> -W
 </code></dt>
@@ -680,6 +749,7 @@ name pattern of the same type that you can specify in
 the `<tt>.cvswrappers</tt>' file.
 Available with the following commands: <code>import</code>,
 and <code>update</code>.
+
 </p></dd>
 </dl>
 
@@ -720,6 +790,7 @@ historical purposes.  Some of the questionable options
 are likely to disappear in the future.  This command
 <em>does</em> work recursively, so extreme care should be
 used.
+
 </p><a name="IDX231"></a>
 <a name="IDX232"></a>
 <p>On unix, if there is a group named <code>cvsadmin</code>,
@@ -729,14 +800,15 @@ commands, except for those specified using the
 `<tt>CVSROOT/config</tt>' file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
 <a href="cvs_18.html#SEC180">The CVSROOT/config configuration file</a> for more on <code>UserAdminOptions</code>.
+
 </p><p>The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.
 To disallow <code>cvs admin</code> for all users, create a
 group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC121">A.6.1 admin options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
@@ -765,18 +837,21 @@ can run <code>cvs admin</code>.
 <small>CVS</small> but exist for historical purposes.  Some even
 make it impossible to use <small>CVS</small> until you undo the
 effect!
+
 </p><dl compact="compact">
 <dt><code> -A<var>oldfile</var>
 </code></dt>
 <dd><p>Might not work together with <small>CVS</small>.  Append the
 access list of <var>oldfile</var> to the access list of the
 <small>RCS</small> file.
+
 </p></dd>
 <dt><code> -a<var>logins</var>
 </code></dt>
 <dd><p>Might not work together with <small>CVS</small>.  Append the
 login names appearing in the comma-separated list
 <var>logins</var> to the access list of the <small>RCS</small> file.
+
 </p></dd>
 <dt><code> -b[<var>rev</var>]
 </code></dt>
@@ -787,6 +862,7 @@ which branch you want to work on.  There is one reason
 to run <code>cvs admin -b</code>: to revert to the vendor's
 version when using vendor branches (see section <a href="cvs_13.html#SEC108">Reverting to the latest vendor release</a>).
 There can be no space between `<samp>-b</samp>' and its argument.
+
 </p><a name="IDX233"></a>
 </dd>
 <dt><code> -c<var>string</var>
@@ -795,6 +871,7 @@ There can be no space between `<samp>-b</samp>' and its argument.
 leader is not used by current versions of <small>CVS</small> or
 <small>RCS</small> 5.7.  Therefore, you can almost surely not
 worry about it.  See section <a href="cvs_12.html#SEC98">Keyword substitution</a>.
+
 </p></dd>
 <dt><code> -e[<var>logins</var>]
 </code></dt>
@@ -803,6 +880,7 @@ names appearing in the comma-separated list
 <var>logins</var> from the access list of the RCS file.  If
 <var>logins</var> is omitted, erase the entire access list.
 There can be no space between `<samp>-e</samp>' and its argument.
+
 </p></dd>
 <dt><code> -I
 </code></dt>
@@ -810,6 +888,7 @@ There can be no space between `<samp>-e</samp>' and its argument.
 terminal.  This option does not work with the
 client/server <small>CVS</small> and is likely to disappear in
 a future release of <small>CVS</small>.
+
 </p></dd>
 <dt><code> -i
 </code></dt>
@@ -817,6 +896,7 @@ a future release of <small>CVS</small>.
 new <small>RCS</small> file, without depositing a revision.  With
 <small>CVS</small>, add files with the <code>cvs add</code> command
 (see section <a href="cvs_7.html#SEC67">Adding files to a directory</a>).
+
 </p></dd>
 <dt><code> -k<var>subst</var>
 </code></dt>
@@ -824,6 +904,7 @@ new <small>RCS</small> file, without depositing a revision.  With
 substitution to <var>subst</var>.  See section <a href="cvs_12.html#SEC98">Keyword substitution</a>.  Giving an explicit `<samp>-k</samp>' option to
 <code>cvs update</code>, <code>cvs export</code>, or <code>cvs
 checkout</code> overrides this default.
+
 </p></dd>
 <dt><code> -l[<var>rev</var>]
 </code></dt>
@@ -832,6 +913,7 @@ is given, lock the latest revision on that branch.  If
 <var>rev</var> is omitted, lock the latest revision on the
 default branch.  There can be no space between
 `<samp>-l</samp>' and its argument.
+
 </p><p>This can be used in conjunction with the
 `<tt>rcslock.pl</tt>' script in the `<tt>contrib</tt>'
 directory of the <small>CVS</small> source distribution to
@@ -841,6 +923,7 @@ that file for details (and see the `<tt>README</tt>' file
 in that directory for disclaimers about the unsupported
 nature of contrib).  According to comments in that
 file, locking must set to strict (which is the default).
+
 </p></dd>
 <dt><code> -L
 </code></dt>
@@ -848,6 +931,7 @@ file, locking must set to strict (which is the default).
 owner of an RCS file is not exempt from locking for
 checkin.  For use with <small>CVS</small>, strict locking must be
 set; see the discussion under the `<samp>-l</samp>' option above.
+
 </p><a name="IDX234"></a>
 <a name="IDX235"></a>
 <a name="IDX236"></a>
@@ -858,6 +942,7 @@ set; see the discussion under the `<samp>-l</samp>' option above.
 </code></dt>
 <dd><p>Replace the log message of revision <var>rev</var> with
 <var>msg</var>.
+
 </p>
 </dd>
 <dt><code> -N<var>name</var>[:[<var>rev</var>]]
@@ -865,6 +950,7 @@ set; see the discussion under the `<samp>-l</samp>' option above.
 <dd><p>Act like `<samp>-n</samp>', except override any previous
 assignment of <var>name</var>.  For use with magic branches,
 see <a href="cvs_5.html#SEC59">Magic branch numbers</a>.
+
 </p></dd>
 <dt><code> -n<var>name</var>[:[<var>rev</var>]]
 </code></dt>
@@ -886,6 +972,7 @@ this contrasts with `<samp>cvs admin -n<var>name</var>:$</samp>' which
 associates <var>name</var> with the revision numbers
 extracted from keyword strings in the corresponding
 working files.
+
 </p><a name="IDX239"></a>
 <a name="IDX240"></a>
 <a name="IDX241"></a>
@@ -894,10 +981,12 @@ working files.
 </code></dt>
 <dd><p>Deletes (<em>outdates</em>) the revisions given by
 <var>range</var>.
+
 </p><p>Note that this command can be quite dangerous unless
 you know <em>exactly</em> what you are doing (for example
 see the warnings below about how the
 <var>rev1</var>:<var>rev2</var> syntax is confusing).
+
 </p><p>If you are short on disc this option might help you.
 But think twice before using it--there is no way short
 of restoring the latest backup to undo this command!
@@ -907,7 +996,9 @@ bug, there is no opportunity to correct the error
 before the revisions are deleted.  It probably would be
 a good idea to experiment on a copy of the repository
 first.
+
 </p><p>Specify <var>range</var> in one of the following ways:
+
 </p><dl compact="compact">
 <dt><code> <var>rev1</var>::<var>rev2</var>
 </code></dt>
@@ -921,6 +1012,7 @@ differences between 1.3 and 1.4.  Other examples:
 `<samp>-o 1.3::1.4</samp>' and `<samp>-o 1.3::1.3</samp>' have no
 effect, because there are no intermediate revisions to
 remove.
+
 </p></dd>
 <dt><code> ::<var>rev</var>
 </code></dt>
@@ -930,17 +1022,20 @@ branchpoint and <var>rev</var> are left intact.  For
 example, `<samp>-o ::1.3.2.6</samp>' deletes revision 1.3.2.1,
 revision 1.3.2.5, and everything in between, but leaves
 1.3 and 1.3.2.6 intact.
+
 </p></dd>
 <dt><code> <var>rev</var>::
 </code></dt>
 <dd><p>Collapse revisions between <var>rev</var> and the end of the
 branch containing <var>rev</var>.  Revision <var>rev</var> is
 left intact but the head revision is deleted.
+
 </p></dd>
 <dt><code> <var>rev</var>
 </code></dt>
 <dd><p>Delete the revision <var>rev</var>.  For example, `<samp>-o
 1.3</samp>' is equivalent to `<samp>-o 1.2::1.4</samp>'.
+
 </p></dd>
 <dt><code> <var>rev1</var>:<var>rev2</var>
 </code></dt>
@@ -957,12 +1052,14 @@ the tags R_1_02 and R_1_03.  So not only will it be
 impossible to retrieve R_1_02; R_1_03 will also have to
 be restored from the tapes!  In most cases you want to
 specify <var>rev1</var>::<var>rev2</var> instead.
+
 </p></dd>
 <dt><code> :<var>rev</var>
 </code></dt>
 <dd><p>Delete revisions from the beginning of the
 branch containing <var>rev</var> up to and including
 <var>rev</var>.
+
 </p></dd>
 <dt><code> <var>rev</var>:
 </code></dt>
@@ -974,6 +1071,7 @@ branch containing <var>rev</var> up to and including
 
 <p>None of the revisions to be deleted may have
 branches or locks.
+
 </p><p>If any of the revisions to be deleted have symbolic
 names, and one specifies one of the `<samp>::</samp>' syntaxes,
 then <small>CVS</small> will give an error and not delete any
@@ -987,19 +1085,23 @@ nonexistent revisions.  This behavior is preserved for
 compatibility with previous versions of <small>CVS</small>, but
 because it isn't very useful, in the future it may
 change to be like the `<samp>::</samp>' case.
+
 </p><p>Due to the way <small>CVS</small> handles branches <var>rev</var>
 cannot be specified symbolically if it is a branch.
 See section <a href="cvs_5.html#SEC59">Magic branch numbers</a>, for an explanation.
+
 </p><p>Make sure that no-one has checked out a copy of the
 revision you outdate.  Strange things will happen if he
 starts to edit it and tries to check it back in.  For
 this reason, this option is not a good way to take back
 a bogus commit; commit a new revision undoing the bogus
 change instead (see section <a href="cvs_5.html#SEC62">Merging differences between any two revisions</a>).
+
 </p></dd>
 <dt><code> -q
 </code></dt>
 <dd><p>Run quietly; do not print diagnostics.
+
 </p></dd>
 <dt><code> -s<var>state</var>[:<var>rev</var>]
 </code></dt>
@@ -1020,6 +1122,7 @@ uses the <code>dead</code> state for its own purposes; to
 take a file to or from the <code>dead</code> state use
 commands like <code>cvs remove</code> and <code>cvs add</code>, not
 <code>cvs admin -s</code>.
+
 </p></dd>
 <dt><code> -t[<var>file</var>]
 </code></dt>
@@ -1029,11 +1132,13 @@ deleting the existing text.  The <var>file</var> pathname
 may not begin with `<samp>-</samp>'.  The descriptive text can be seen in the
 output from `<samp>cvs log</samp>' (see section <a href="#SEC143">log--Print out log information for files</a>).
 There can be no space between `<samp>-t</samp>' and its argument.
+
 </p><p>If <var>file</var> is omitted,
 obtain the text from standard input, terminated by
 end-of-file or by a line containing `<samp>.</samp>' by itself.
 Prompt for the text if interaction is possible; see
 `<samp>-I</samp>'.
+
 </p></dd>
 <dt><code> -t-<var>string</var>
 </code></dt>
@@ -1041,6 +1146,7 @@ Prompt for the text if interaction is possible; see
 from the <var>string</var> into the <small>RCS</small> file, deleting
 the existing text.
 There can be no space between `<samp>-t</samp>' and its argument.
+
 </p>
 </dd>
 <dt><code> -U
@@ -1050,6 +1156,7 @@ that the owner of a file need not lock a revision for
 checkin.  For use with <small>CVS</small>, strict locking must be
 set; see the discussion under the `<samp>-l</samp>' option
 above.
+
 </p></dd>
 <dt><code> -u[<var>rev</var>]
 </code></dt>
@@ -1063,6 +1170,7 @@ somebody else unlocking a revision breaks the lock.
 This causes the original locker to be sent a <code>commit</code>
 notification (see section <a href="cvs_10.html#SEC91">Telling CVS to notify you</a>).
 There can be no space between `<samp>-u</samp>' and its argument.
+
 </p></dd>
 <dt><code> -V<var>n</var>
 </code></dt>
@@ -1070,6 +1178,7 @@ There can be no space between `<samp>-u</samp>' and its argument.
 write an <small>RCS</small> file which would be acceptable to
 <small>RCS</small> version <var>n</var>, but it is now obsolete and
 specifying it will produce an error.
+
 </p></dd>
 <dt><code> -x<var>suffixes</var>
 </code></dt>
@@ -1078,6 +1187,7 @@ as a way of specifying the names of the <small>RCS</small>
 files.  However, <small>CVS</small> has always required that the
 <small>RCS</small> files used by <small>CVS</small> end in `<samp>,v</samp>', so
 this option has never done anything useful.
+
 </p></dd>
 </dl>
 
@@ -1119,12 +1229,14 @@ source files specified by <var>modules</var>.  You must execute
 <code>checkout</code> before using most of the other <small>CVS</small>
 commands, since most of them operate on your working
 directory.
+
 </p><p>The <var>modules</var> are either
 symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the `<samp>modules</samp>' file.
 See section <a href="cvs_18.html#SEC158">The modules file</a>.
+
 </p><p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
 the appropriate source files.  You can then edit these
@@ -1133,6 +1245,7 @@ software developers are editing their own copies of the
 sources); update them to include new changes applied by
 others to the source repository; or commit your work as
 a permanent change to the source repository.
+
 </p><p>Note that <code>checkout</code> is used to create
 directories.  The top-level directory created is always
 added to the directory where <code>checkout</code> is
@@ -1143,12 +1256,14 @@ sure that it will be a sub-directory, and that
 <code>checkout</code> will show the relative path leading to
 each file as it is extracted into your private work
 area (unless you specify the `<samp>-Q</samp>' global option).
+
 </p><p>The files created by <code>checkout</code> are created
 read-write, unless the `<samp>-r</samp>' option to <small>CVS</small>
 (see section <a href="#SEC118">Global options</a>) is specified, the
 <code>CVSREAD</code> environment variable is specified
 (see section <a href="cvs_19.html#SEC181">All environment variables which affect CVS</a>), or a watch is in
 effect for that file (see section <a href="cvs_10.html#SEC89">Mechanisms to track who is editing files</a>).
+
 </p><p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.
 This is similar to specifying the `<samp>-d</samp>' option
@@ -1163,10 +1278,11 @@ top level directory (where you originally ran
 <code>checkout</code> to update an existing directory, don't
 forget to change your directory to the top level
 directory.
+
 </p><p>For the output produced by the <code>checkout</code> command
 see <a href="#SEC155">update output</a>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC123">A.7.1 checkout options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC124">A.7.2 checkout examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -1195,12 +1311,14 @@ see <a href="#SEC155">update output</a>.
 <p>These standard options are supported by <code>checkout</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
 </code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 This option is sticky, and implies `<samp>-P</samp>'.  See
 <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky tags/dates.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
@@ -1208,6 +1326,7 @@ This option is sticky, and implies `<samp>-P</samp>'.  See
 <var>tag</var></samp>' flags.  If no matching revision is found,
 retrieve the most recent revision (instead of ignoring
 the file).
+
 </p></dd>
 <dt><code> -k <var>kflag</var>
 </code></dt>
@@ -1218,28 +1337,34 @@ this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
 to see the sticky options.  See <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, for
 more information on the <code>status</code> command.
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.
+
 </p></dd>
 <dt><code> -n
 </code></dt>
 <dd><p>Do not run any checkout program (as specified
 with the `<samp>-o</samp>' option in the modules file;
 see section <a href="cvs_18.html#SEC158">The modules file</a>).
+
 </p></dd>
 <dt><code> -P
 </code></dt>
 <dd><p>Prune empty directories.  See <a href="cvs_7.html#SEC74">Moving and renaming directories</a>.
+
 </p></dd>
 <dt><code> -p
 </code></dt>
 <dd><p>Pipe files to the standard output.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Checkout directories recursively.  This option is on by default.
+
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
@@ -1250,17 +1375,20 @@ See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky t
 
 <p>In addition to those, you can use these special command
 options with <code>checkout</code>:
+
 </p><dl compact="compact">
 <dt><code> -A
 </code></dt>
 <dd><p>Reset any sticky tags, dates, or `<samp>-k</samp>' options.
 See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky tags/dates.
+
 </p></dd>
 <dt><code> -c
 </code></dt>
 <dd><p>Copy the module file, sorted, to the standard output,
 instead of creating or modifying any files or
 directories in your working directory.
+
 </p></dd>
 <dt><code> -d <var>dir</var>
 </code></dt>
@@ -1269,12 +1397,14 @@ files, instead of using the module name.  In general,
 using this flag is equivalent to using `<samp>mkdir
 <var>dir</var>; cd <var>dir</var></samp>' followed by the checkout
 command without the `<samp>-d</samp>' flag.
+
 </p><p>There is an important exception, however.  It is very
 convenient when checking out a single item to have the
 output appear in a directory that doesn't contain empty
 intermediate directories.  In this case <em>only</em>,
 <small>CVS</small> tries to &quot;shorten&quot; pathnames to avoid those empty
 directories.
+
 </p><p>For example, given a module `<samp>foo</samp>' that contains
 the file `<samp>bar.c</samp>', the command `<samp>cvs co -d dir
 foo</samp>' will create directory `<samp>dir</samp>' and place
@@ -1283,12 +1413,14 @@ foo</samp>' will create directory `<samp>dir</samp>' and place
 there is a file `<samp>quux.c</samp>', the command `<samp>cvs co
 -d dir bar/baz</samp>' will create directory `<samp>dir</samp>' and
 place `<samp>quux.c</samp>' inside.
+
 </p><p>Using the `<samp>-N</samp>' flag will defeat this behavior.
 Given the same module definitions above, `<samp>cvs co
 -N -d dir foo</samp>' will create directories `<samp>dir/foo</samp>'
 and place `<samp>bar.c</samp>' inside, while `<samp>cvs co -N -d
 dir bar/baz</samp>' will create directories `<samp>dir/bar/baz</samp>'
 and place `<samp>quux.c</samp>' inside.
+
 </p></dd>
 <dt><code> -j <var>tag</var>
 </code></dt>
@@ -1296,19 +1428,23 @@ and place `<samp>quux.c</samp>' inside.
 revision specified with the first `<samp>-j</samp>' option to
 the revision specified with the second `<samp>j</samp>' option,
 into the working directory.
+
 </p><p>With one `<samp>-j</samp>' option, merge changes from the
 ancestor revision to the revision specified with the
 `<samp>-j</samp>' option, into the working directory.  The
 ancestor revision is the common ancestor of the
 revision which the working directory is based on, and
 the revision specified in the `<samp>-j</samp>' option.
+
 </p><p>In addition, each -j option can contain an optional
 date specification which, when used with branches, can
 limit the chosen revision to one within a specific
 date.  An optional date is specified by adding a colon
 (:) to the tag:
 `<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>'.
+
 </p><p>See section <a href="cvs_5.html#SEC54">Branching and merging</a>.
+
 </p></dd>
 <dt><code> -N
 </code></dt>
@@ -1317,6 +1453,7 @@ this option, <small>CVS</small> will not &quot;shorten&quot; module paths
 in your working directory when you check out a single
 module.  See the `<samp>-d</samp>' flag for examples and a
 discussion.
+
 </p></dd>
 <dt><code> -s
 </code></dt>
@@ -1349,13 +1486,13 @@ modules file to set the module status.
 <h3 class="appendixsubsec"> A.7.2 checkout examples </h3>
 
 <p>Get a copy of the module `<samp>tc</samp>':
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs checkout tc
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout tc
 </pre></td></tr></table>
 <p>Get a copy of the module `<samp>tc</samp>' as it looked one day
 ago:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs checkout -D yesterday tc
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -D yesterday tc
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD125"></a>
@@ -1393,6 +1530,7 @@ $ cvs checkout -D yesterday tc
 <p>Use <code>commit</code> when you want to incorporate changes
 from your working source files into the source
 repository.
+
 </p><p>If you don't specify particular files to commit, all of
 the files in your working current directory are
 examined.  <code>commit</code> is careful to change in the
@@ -1402,6 +1540,7 @@ changed.  By default (or if you explicitly specify the
 examined and committed if they have changed; you can
 use the `<samp>-l</samp>' option to limit <code>commit</code> to the
 current directory only.
+
 </p><p><code>commit</code> verifies that the selected files are up
 to date with the current revisions in the source
 repository; it will notify you, and exit without
@@ -1410,6 +1549,7 @@ current first with <code>update</code> (see section <a href="#SEC153">update--Br
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
+
 </p><p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
 logging programs (see section <a href="cvs_18.html#SEC158">The modules file</a>, and see section <a href="cvs_18.html#SEC172">Loginfo</a>)
@@ -1420,8 +1560,8 @@ log message on the command line with the `<samp>-m
 <var>message</var></samp>' option, and thus avoid the editor invocation,
 or use the `<samp>-F <var>file</var></samp>' option to specify
 that the argument file contains the log message.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC126">A.8.1 commit options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC127">A.8.2 commit examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -1450,14 +1590,17 @@ that the argument file contains the log message.
 <p>These standard options are supported by <code>commit</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Commit directories recursively.  This is on by default.
+
 </p></dd>
 <dt><code> -r <var>revision</var>
 </code></dt>
@@ -1470,28 +1613,32 @@ cannot commit to a specific revision on a branch.
 </dl>
 
 <p><code>commit</code> also supports these options:
+
 </p><dl compact="compact">
 <dt><code> -F <var>file</var>
 </code></dt>
 <dd><p>Read the log message from <var>file</var>, instead
 of invoking an editor.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
 <dd><p>Note that this is not the standard behavior of
 the `<samp>-f</samp>' option as defined in <a href="#SEC119">Common command options</a>.
+
 </p><p>Force <small>CVS</small> to commit a new revision even if you haven't
 made any changes to the file.  If the current revision
 of <var>file</var> is 1.7, then the following two commands
 are equivalent:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs commit -f <var>file</var>
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -f <var>file</var>
 $ cvs commit -r 1.8 <var>file</var>
 </pre></td></tr></table>
 <p>The `<samp>-f</samp>' option disables recursion (i.e., it
 implies `<samp>-l</samp>').  To force <small>CVS</small> to commit a new
 revision for all files in all subdirectories, you must
 use `<samp>-f -R</samp>'.
+
 </p></dd>
 <dt><code> -m <var>message</var>
 </code></dt>
@@ -1555,8 +1702,8 @@ thereby not disturbing main-line development in any
 way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
 $ cvs checkout -r FCS1_2_Patch product_module
 $ cd product_module
 [[ hack away ]]
@@ -1565,6 +1712,7 @@ $ cvs commit
 
 <p>This works automatically since the `<samp>-r</samp>' option is
 sticky.
+
 </p><hr size="6">
 <a name="SEC129"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -1594,8 +1742,8 @@ commit your change to a new branch.  Others can then
 checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-[[ hacked sources are present ]]
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">[[ hacked sources are present ]]
 $ cvs tag -b EXPR1
 $ cvs update -r EXPR1
 $ cvs commit
@@ -1606,8 +1754,8 @@ changes to the files will never be removed by the
 <code>update</code> command.  The <code>commit</code> will
 automatically commit to the correct branch, because the
 `<samp>-r</samp>' is sticky.  You could also do like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-[[ hacked sources are present ]]
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">[[ hacked sources are present ]]
 $ cvs tag -b EXPR1
 $ cvs commit -r EXPR1
 </pre></td></tr></table>
@@ -1617,10 +1765,11 @@ will have the `<samp>-r EXPR1</samp>' sticky flag.  If you hack
 away, and commit without specifying the `<samp>-r EXPR1</samp>'
 flag, some files may accidentally end up on the main
 trunk.
+
 </p><p>To work with you on the experimental change, others
 would simply do
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs checkout -r EXPR1 whatever_module
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -r EXPR1 whatever_module
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD128"></a>
@@ -1656,13 +1805,15 @@ $ cvs checkout -r EXPR1 whatever_module
 revisions of files.  The default action is to compare
 your working files with the revisions they were based
 on, and report any differences that are found.
+
 </p><p>If any file names are given, only those files are
 compared.  If any directories are given, all files
 under them will be compared.
+
 </p><p>The exit status for diff is different than for other
 <small>CVS</small> commands; for details <a href="#SEC116">CVS's exit status</a>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC131">A.9.1 diff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC134">A.9.2 diff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -1691,25 +1842,30 @@ under them will be compared.
 <p>These standard options are supported by <code>diff</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
 </code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 See `<samp>-r</samp>' for how this affects the comparison.
+
 </p></dd>
 <dt><code> -k <var>kflag</var>
 </code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
 <a href="cvs_12.html#SEC98">Keyword substitution</a>.
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Examine directories recursively.  This option is on by
 default.
+
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
@@ -1721,6 +1877,7 @@ revision will be compared to your current working file.
 With two `<samp>-r</samp>' options those two revisions will be
 compared (and your working file will not affect the
 outcome in any way).
+
 </p><p>One or both `<samp>-r</samp>' options can be replaced by a
 `<samp>-D <var>date</var></samp>' option, described above.
 </p></dd>
@@ -1731,6 +1888,7 @@ output.  They have the same meaning as in GNU diff.
 Most options have two equivalent names, one of which is a single letter
 preceded by `<samp>-</samp>', and the other of which is a long name preceded by
 `<samp>--</samp>'.
+
 </p><dl compact="compact">
 <dt>`<samp> -<var>lines</var>
 </samp>'</dt>
@@ -1738,33 +1896,40 @@ preceded by `<samp>-</samp>', and the other of which is a long name preceded by
 specify an output format by itself; it has no effect unless it is
 combined with `<samp>-c</samp>' or `<samp>-u</samp>'.  This option is obsolete.  For proper
 operation, <code>patch</code> typically needs at least two lines of context.
+
 </p></dd>
 <dt>`<samp> -a
 </samp>'</dt>
 <dd><p>Treat all files as text and compare them line-by-line, even if they
 do not seem to be text.
+
 </p></dd>
 <dt>`<samp> -b
 </samp>'</dt>
 <dd><p>Ignore trailing white space and consider all other sequences of one or
 more white space characters to be equivalent.
+
 </p></dd>
 <dt>`<samp> -B
 </samp>'</dt>
 <dd><p>Ignore changes that just insert or delete blank lines.
+
 </p></dd>
 <dt>`<samp> --binary
 </samp>'</dt>
 <dd><p>Read and write data in binary mode.
+
 </p></dd>
 <dt>`<samp> --brief
 </samp>'</dt>
 <dd><p>Report only whether the files differ, not the details of the
 differences.
+
 </p></dd>
 <dt>`<samp> -c
 </samp>'</dt>
 <dd><p>Use the context output format.
+
 </p></dd>
 <dt>`<samp> -C <var>lines</var>
 </samp>'</dt>
@@ -1774,121 +1939,146 @@ differences.
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
 context.
+
 </p></dd>
 <dt>`<samp> --changed-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line group containing differing lines from
 both files in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
+
 </p></dd>
 <dt>`<samp> -d
 </samp>'</dt>
 <dd><p>Change the algorithm to perhaps find a smaller set of changes.  This makes
 <code>diff</code> slower (sometimes much slower).
+
 </p></dd>
 <dt>`<samp> -e
 </samp>'</dt>
 <dt>`<samp> --ed
 </samp>'</dt>
 <dd><p>Make output that is a valid <code>ed</code> script.
+
 </p></dd>
 <dt>`<samp> --expand-tabs
 </samp>'</dt>
 <dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
 in the input files.
+
 </p></dd>
 <dt>`<samp> -f
 </samp>'</dt>
 <dd><p>Make output that looks vaguely like an <code>ed</code> script but has changes
 in the order they appear in the file.
+
 </p></dd>
 <dt>`<samp> -F <var>regexp</var>
 </samp>'</dt>
 <dd><p>In context and unified format, for each hunk of differences, show some
 of the last preceding line that matches <var>regexp</var>.
+
 </p></dd>
 <dt>`<samp> --forward-ed
 </samp>'</dt>
 <dd><p>Make output that looks vaguely like an <code>ed</code> script but has changes
 in the order they appear in the file.
+
 </p></dd>
 <dt>`<samp> -H
 </samp>'</dt>
 <dd><p>Use heuristics to speed handling of large files that have numerous
 scattered small changes.
+
 </p></dd>
 <dt>`<samp> --horizon-lines=<var>lines</var>
 </samp>'</dt>
 <dd><p>Do not discard the last <var>lines</var> lines of the common prefix
 and the first <var>lines</var> lines of the common suffix.
+
 </p></dd>
 <dt>`<samp> -i
 </samp>'</dt>
 <dd><p>Ignore changes in case; consider upper- and lower-case letters
 equivalent.
+
 </p></dd>
 <dt>`<samp> -I <var>regexp</var>
 </samp>'</dt>
 <dd><p>Ignore changes that just insert or delete lines that match <var>regexp</var>.
+
 </p></dd>
 <dt>`<samp> --ifdef=<var>name</var>
 </samp>'</dt>
 <dd><p>Make merged if-then-else output using <var>name</var>.
+
 </p></dd>
 <dt>`<samp> --ignore-all-space
 </samp>'</dt>
 <dd><p>Ignore white space when comparing lines.
+
 </p></dd>
 <dt>`<samp> --ignore-blank-lines
 </samp>'</dt>
 <dd><p>Ignore changes that just insert or delete blank lines.
+
 </p></dd>
 <dt>`<samp> --ignore-case
 </samp>'</dt>
 <dd><p>Ignore changes in case; consider upper- and lower-case to be the same.
+
 </p></dd>
 <dt>`<samp> --ignore-matching-lines=<var>regexp</var>
 </samp>'</dt>
 <dd><p>Ignore changes that just insert or delete lines that match <var>regexp</var>.
+
 </p></dd>
 <dt>`<samp> --ignore-space-change
 </samp>'</dt>
 <dd><p>Ignore trailing white space and consider all other sequences of one or
 more white space characters to be equivalent.
+
 </p></dd>
 <dt>`<samp> --initial-tab
 </samp>'</dt>
 <dd><p>Output a tab rather than a space before the text of a line in normal or
 context format.  This causes the alignment of tabs in the line to look
 normal.
+
 </p></dd>
 <dt>`<samp> -L <var>label</var>
 </samp>'</dt>
 <dd><p>Use <var>label</var> instead of the file name in the context format
 and unified format headers.
+
 </p></dd>
 <dt>`<samp> --label=<var>label</var>
 </samp>'</dt>
 <dd><p>Use <var>label</var> instead of the file name in the context format
 and unified format headers.
+
 </p></dd>
 <dt>`<samp> --left-column
 </samp>'</dt>
 <dd><p>Print only the left column of two common lines in side by side format.
+
 </p></dd>
 <dt>`<samp> --line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output all input lines in if-then-else format.
 See section <a href="#SEC133">Line formats</a>.
+
 </p></dd>
 <dt>`<samp> --minimal
 </samp>'</dt>
 <dd><p>Change the algorithm to perhaps find a smaller set of changes.  This
 makes <code>diff</code> slower (sometimes much slower).
+
 </p></dd>
 <dt>`<samp> -n
 </samp>'</dt>
 <dd><p>Output RCS-format diffs; like `<samp>-f</samp>' except that each command
 specifies the number of lines affected.
+
 </p></dd>
 <dt>`<samp> -N
 </samp>'</dt>
@@ -1896,93 +2086,112 @@ specifies the number of lines affected.
 </samp>'</dt>
 <dd><p>In directory comparison, if a file is found in only one directory,
 treat it as present but empty in the other directory.
+
 </p></dd>
 <dt>`<samp> --new-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the second
 file in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
+
 </p></dd>
 <dt>`<samp> --new-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the second file in
 if-then-else format.  See section <a href="#SEC133">Line formats</a>.
+
 </p></dd>
 <dt>`<samp> --old-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the first
 file in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
+
 </p></dd>
 <dt>`<samp> --old-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the first file in
 if-then-else format.  See section <a href="#SEC133">Line formats</a>.
+
 </p></dd>
 <dt>`<samp> -p
 </samp>'</dt>
 <dd><p>Show which C function each change is in.
+
 </p></dd>
 <dt>`<samp> --rcs
 </samp>'</dt>
 <dd><p>Output RCS-format diffs; like `<samp>-f</samp>' except that each command
 specifies the number of lines affected.
+
 </p></dd>
 <dt>`<samp> --report-identical-files
 </samp>'</dt>
 <dt>`<samp> -s
 </samp>'</dt>
 <dd><p>Report when two files are the same.
+
 </p></dd>
 <dt>`<samp> --show-c-function
 </samp>'</dt>
 <dd><p>Show which C function each change is in.
+
 </p></dd>
 <dt>`<samp> --show-function-line=<var>regexp</var>
 </samp>'</dt>
 <dd><p>In context and unified format, for each hunk of differences, show some
 of the last preceding line that matches <var>regexp</var>.
+
 </p></dd>
 <dt>`<samp> --side-by-side
 </samp>'</dt>
 <dd><p>Use the side by side output format.
+
 </p></dd>
 <dt>`<samp> --speed-large-files
 </samp>'</dt>
 <dd><p>Use heuristics to speed handling of large files that have numerous
 scattered small changes.
+
 </p></dd>
 <dt>`<samp> --suppress-common-lines
 </samp>'</dt>
 <dd><p>Do not print common lines in side by side format.
+
 </p></dd>
 <dt>`<samp> -t
 </samp>'</dt>
 <dd><p>Expand tabs to spaces in the output, to preserve the alignment of tabs
 in the input files.
+
 </p></dd>
 <dt>`<samp> -T
 </samp>'</dt>
 <dd><p>Output a tab rather than a space before the text of a line in normal or
 context format.  This causes the alignment of tabs in the line to look
 normal.
+
 </p></dd>
 <dt>`<samp> --text
 </samp>'</dt>
 <dd><p>Treat all files as text and compare them line-by-line, even if they
 do not appear to be text.
+
 </p></dd>
 <dt>`<samp> -u
 </samp>'</dt>
 <dd><p>Use the unified output format.
+
 </p></dd>
 <dt>`<samp> --unchanged-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a group of common lines taken from both files
 in if-then-else format.  See section <a href="#SEC132">Line group formats</a>.
+
 </p></dd>
 <dt>`<samp> --unchanged-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>Use <var>format</var> to output a line common to both files in if-then-else
 format.  See section <a href="#SEC133">Line formats</a>.
+
 </p></dd>
 <dt>`<samp> -U <var>lines</var>
 </samp>'</dt>
@@ -1992,16 +2201,19 @@ format.  See section <a href="#SEC133">Line formats</a>.
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
 context.
+
 </p></dd>
 <dt>`<samp> -w
 </samp>'</dt>
 <dd><p>Ignore white space when comparing lines.
+
 </p></dd>
 <dt>`<samp> -W <var>columns</var>
 </samp>'</dt>
 <dt>`<samp> --width=<var>columns</var>
 </samp>'</dt>
 <dd><p>Use an output width of <var>columns</var> in side by side format.
+
 </p></dd>
 <dt>`<samp> -y
 </samp>'</dt>
@@ -2010,7 +2222,6 @@ context.
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-
 <tr><td align="left" valign="top"><a href="#SEC132">A.9.1.1 Line group formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC133">A.9.1.2 Line formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -2040,13 +2251,14 @@ context.
 applications that allow if-then-else input, including programming
 languages and text formatting languages.  A line group format specifies
 the output format for a contiguous group of similar lines.
+
 </p><p>For example, the following command compares the TeX file `<tt>myfile</tt>'
 with the original version from the repository,
 and outputs a merged file in which old regions are
 surrounded by `<samp>\begin{em}</samp>'-`<samp>\end{em}</samp>' lines, and new
 regions are surrounded by `<samp>\begin{bf}</samp>'-`<samp>\end{bf}</samp>' lines.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs diff \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs diff \
    --old-group-format='\begin{em}
 %&lt;\end{em}
 ' \
@@ -2057,8 +2269,8 @@ cvs diff \
 </pre></td></tr></table>
 <p>The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs diff \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs diff \
    --old-group-format='\begin{em}
 %&lt;\end{em}
 ' \
@@ -2075,8 +2287,8 @@ cvs diff \
 </pre></td></tr></table>
 <p>Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &quot;plain English&quot; style.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs diff \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs diff \
    --unchanged-group-format='' \
    --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
 %&lt;' \
@@ -2091,12 +2303,14 @@ cvs diff \
 listed below.  You can specify up to four line group formats, one for
 each kind of line group.  You should quote <var>format</var>, because it
 typically contains shell metacharacters.
+
 </p><dl compact="compact">
 <dt>`<samp> --old-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>These line groups are hunks containing only lines from the first file.
 The default old group format is the same as the changed group format if
 it is specified; otherwise it is a format that outputs the line group as-is.
+
 </p></dd>
 <dt>`<samp> --new-group-format=<var>format</var>
 </samp>'</dt>
@@ -2104,12 +2318,14 @@ it is specified; otherwise it is a format that outputs the line group as-is.
 file.  The default new group format is same as the changed group
 format if it is specified; otherwise it is a format that outputs the
 line group as-is.
+
 </p></dd>
 <dt>`<samp> --changed-group-format=<var>format</var>
 </samp>'</dt>
 <dd><p>These line groups are hunks containing lines from both files.  The
 default changed group format is the concatenation of the old and new
 group formats.
+
 </p></dd>
 <dt>`<samp> --unchanged-group-format=<var>format</var>
 </samp>'</dt>
@@ -2121,25 +2337,30 @@ unchanged group format is a format that outputs the line group as-is.
 <p>In a line group format, ordinary characters represent themselves;
 conversion specifications start with `<samp>%</samp>' and have one of the
 following forms.
+
 </p><dl compact="compact">
 <dt>`<samp> %&lt;
 </samp>'</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
 Each line is formatted according to the old line format (see section <a href="#SEC133">Line formats</a>).
+
 </p></dd>
 <dt>`<samp> %&gt;
 </samp>'</dt>
 <dd><p>stands for the lines from the second file, including the trailing newline.
 Each line is formatted according to the new line format.
+
 </p></dd>
 <dt>`<samp> %=
 </samp>'</dt>
 <dd><p>stands for the lines common to both files, including the trailing newline.
 Each line is formatted according to the unchanged line format.
+
 </p></dd>
 <dt>`<samp> %%
 </samp>'</dt>
 <dd><p>stands for `<samp>%</samp>'.
+
 </p></dd>
 <dt>`<samp> %c'<var>C</var>'
 </samp>'</dt>
@@ -2148,43 +2369,52 @@ Each line is formatted according to the unchanged line format.
 For example, `<samp>%c':'</samp>' stands for a colon, even inside
 the then-part of an if-then-else format, which a colon would
 normally terminate.
+
 </p></dd>
 <dt>`<samp> %c'\<var>O</var>'
 </samp>'</dt>
 <dd><p>where <var>O</var> is a string of 1, 2, or 3 octal digits,
 stands for the character with octal code <var>O</var>.
 For example, `<samp>%c'\0'</samp>' stands for a null character.
+
 </p></dd>
 <dt>`<samp> <var>F</var><var>n</var>
 </samp>'</dt>
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification and <var>n</var> is one
 of the following letters, stands for <var>n</var>'s value formatted with <var>F</var>.
+
 </p><dl compact="compact">
 <dt>`<samp> e
 </samp>'</dt>
 <dd><p>The line number of the line just before the group in the old file.
+
 </p></dd>
 <dt>`<samp> f
 </samp>'</dt>
 <dd><p>The line number of the first line in the group in the old file;
 equals <var>e</var> + 1.
+
 </p></dd>
 <dt>`<samp> l
 </samp>'</dt>
 <dd><p>The line number of the last line in the group in the old file.
+
 </p></dd>
 <dt>`<samp> m
 </samp>'</dt>
 <dd><p>The line number of the line just after the group in the old file;
 equals <var>l</var> + 1.
+
 </p></dd>
 <dt>`<samp> n
 </samp>'</dt>
 <dd><p>The number of lines in the group in the old file; equals <var>l</var> - <var>f</var> + 1.
+
 </p></dd>
 <dt>`<samp> E, F, L, M, N
 </samp>'</dt>
 <dd><p>Likewise, for lines in the new file.
+
 </p></dd>
 </dl>
 
@@ -2197,6 +2427,7 @@ specifying the minimum field width; and a period followed by an
 optional integer specifying the minimum number of digits.
 For example, `<samp>%5dN</samp>' prints the number of new lines in the group
 in a field of width 5 characters, using the <code>printf</code> format <code>&quot;%5d&quot;</code>.
+
 </p></dd>
 <dt>`<samp> (<var>A</var>=<var>B</var>?<var>T</var>:<var>E</var>)
 </samp>'</dt>
@@ -2205,6 +2436,7 @@ in a field of width 5 characters, using the <code>printf</code> format <code>&qu
 or a single letter interpreted as above.
 This format spec is equivalent to <var>T</var> if
 <var>A</var>'s value equals <var>B</var>'s; otherwise it is equivalent to <var>E</var>.
+
 </p><p>For example, `<samp>%(N=0?no:%dN) line%(N=1?:s)</samp>' is equivalent to
 `<samp>no lines</samp>' if <var>N</var> (the number of lines in the group in the
 new file) is 0, to `<samp>1 line</samp>' if <var>N</var> is 1, and to `<samp>%dN lines</samp>'
@@ -2235,13 +2467,14 @@ otherwise.
 
 <p>Line formats control how each line taken from an input file is
 output as part of a line group in if-then-else format.
+
 </p><p>For example, the following command outputs text with a one-column
 change indicator to the left of the text.  The first column of output
 is `<samp>-</samp>' for deleted lines, `<samp>|</samp>' for added lines, and a space
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs diff \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs diff \
    --old-line-format='-%l
 ' \
    --new-line-format='|%l
@@ -2252,18 +2485,22 @@ cvs diff \
 </pre></td></tr></table>
 <p>To specify a line format, use one of the following options.  You should
 quote <var>format</var>, since it often contains shell metacharacters.
+
 </p><dl compact="compact">
 <dt>`<samp> --old-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>formats lines just from the first file.
+
 </p></dd>
 <dt>`<samp> --new-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>formats lines just from the second file.
+
 </p></dd>
 <dt>`<samp> --unchanged-line-format=<var>format</var>
 </samp>'</dt>
 <dd><p>formats lines common to both files.
+
 </p></dd>
 <dt>`<samp> --line-format=<var>format</var>
 </samp>'</dt>
@@ -2274,33 +2511,39 @@ quote <var>format</var>, since it often contains shell metacharacters.
 <p>In a line format, ordinary characters represent themselves;
 conversion specifications start with `<samp>%</samp>' and have one of the
 following forms.
+
 </p><dl compact="compact">
 <dt>`<samp> %l
 </samp>'</dt>
 <dd><p>stands for the contents of the line, not counting its trailing
 newline (if any).  This format ignores whether the line is incomplete.
+
 </p></dd>
 <dt>`<samp> %L
 </samp>'</dt>
 <dd><p>stands for the contents of the line, including its trailing newline
 (if any).  If a line is incomplete, this format preserves its
 incompleteness.
+
 </p></dd>
 <dt>`<samp> %%
 </samp>'</dt>
 <dd><p>stands for `<samp>%</samp>'.
+
 </p></dd>
 <dt>`<samp> %c'<var>C</var>'
 </samp>'</dt>
 <dd><p>where <var>C</var> is a single character, stands for <var>C</var>.
 <var>C</var> may not be a backslash or an apostrophe.
 For example, `<samp>%c':'</samp>' stands for a colon.
+
 </p></dd>
 <dt>`<samp> %c'\<var>O</var>'
 </samp>'</dt>
 <dd><p>where <var>O</var> is a string of 1, 2, or 3 octal digits,
 stands for the character with octal code <var>O</var>.
 For example, `<samp>%c'\0'</samp>' stands for a null character.
+
 </p></dd>
 <dt>`<samp> <var>F</var>n
 </samp>'</dt>
@@ -2309,21 +2552,24 @@ stands for the line number formatted with <var>F</var>.
 For example, `<samp>%.5dn</samp>' prints the line number using the
 <code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section <a href="#SEC132">Line group formats</a>, for
 more about printf conversion specifications.
+
 </p></dd>
 </dl>
 
 <p>The default line format is `<samp>%l</samp>' followed by a newline character.
+
 </p><p>If the input contains tab characters and it is important that they line
 up on output, you should ensure that `<samp>%l</samp>' or `<samp>%L</samp>' in a line
 format is just after a tab stop (e.g. by preceding `<samp>%l</samp>' or
 `<samp>%L</samp>' with a tab character), or you should use the `<samp>-t</samp>' or
 `<samp>--expand-tabs</samp>' option.
+
 </p><p>Taken together, the line and line group formats let you specify many
 different formats.  For example, the following command uses a format
 similar to <code>diff</code>'s normal format.  You can tailor this command
 to get fine control over <code>diff</code>'s output.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-cvs diff \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">cvs diff \
    --old-line-format='&lt; %l
 ' \
    --new-line-format='&gt; %l
@@ -2364,26 +2610,26 @@ between revision 1.14 and 1.19 of
 `<tt>backend.c</tt>'.  Due to the `<samp>-kk</samp>' flag no
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
 </pre></td></tr></table>
 <p>Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs diff -r RELEASE_1_0 -r EXPR1
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs diff -r RELEASE_1_0 -r EXPR1
 </pre></td></tr></table>
 <p>A command like this can be used to produce a context
 diff between two releases:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
 </pre></td></tr></table>
 <p>If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs diff -u | less
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs diff -u | less
 </pre></td></tr></table>
 <hr size="6">
 <a name="NOD133"></a>
@@ -2423,6 +2669,7 @@ off-site.  This command requires that you specify a
 date or tag (with `<samp>-D</samp>' or `<samp>-r</samp>'), so that you
 can count on reproducing the source you ship to others
 (and thus it always prunes empty directories).
+
 </p><p>One often would like to use `<samp>-kv</samp>' with <code>cvs
 export</code>.  This causes any keywords to be
 expanded such that an import done at some other site
@@ -2434,8 +2681,8 @@ command (which is part of the <small>RCS</small> suite--see
 ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use `<samp>-kv</samp>'.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC136">A.10.1 export options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
@@ -2463,27 +2710,33 @@ use `<samp>-kv</samp>'.
 <p>These standard options are supported by <code>export</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
 </code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
 <dd><p>If no matching revision is found, retrieve the most
 recent revision (instead of ignoring the file).
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.
+
 </p></dd>
 <dt><code> -n
 </code></dt>
 <dd><p>Do not run any checkout program.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Export directories recursively.  This is on by default.
+
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
@@ -2493,6 +2746,7 @@ recent revision (instead of ignoring the file).
 
 <p>In addition, these options (that are common to
 <code>checkout</code> and <code>export</code>) are also supported:
+
 </p><dl compact="compact">
 <dt><code> -d <var>dir</var>
 </code></dt>
@@ -2500,10 +2754,12 @@ recent revision (instead of ignoring the file).
 files, instead of using the module name.
 See section <a href="#SEC123">checkout options</a>, for complete details on how
 <small>CVS</small> handles this flag.
+
 </p></dd>
 <dt><code> -k <var>subst</var>
 </code></dt>
 <dd><p>Set keyword expansion mode (see section <a href="cvs_12.html#SEC102">Substitution modes</a>).
+
 </p></dd>
 <dt><code> -N
 </code></dt>
@@ -2549,13 +2805,15 @@ See section <a href="#SEC123">checkout options</a>, for complete details on how
 <code>update</code>, and <code>release</code> commands.  You can
 use <code>history</code> to display this information in
 various formats.
+
 </p><p>Logging must be enabled by creating the file
 `<tt>$CVSROOT/CVSROOT/history</tt>'.
+
 </p><p><strong>Note: <code>history</code> uses `<samp>-f</samp>', `<samp>-l</samp>',
 `<samp>-n</samp>', and `<samp>-p</samp>' in ways that conflict with the
 normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).</strong>
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC138">A.11.1 history options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
 
@@ -2582,11 +2840,13 @@ normal use inside <small>CVS</small> (see section <a href="#SEC119">Common comma
 
 <p>Several options (shown above as `<samp>-report</samp>')  control  what
 kind of report is generated:
+
 </p><dl compact="compact">
 <dt><code> -c
 </code></dt>
 <dd><p>Report on each time commit was used (i.e., each time
 the repository was modified).
+
 </p></dd>
 <dt><code> -e
 </code></dt>
@@ -2596,26 +2856,32 @@ specifying `<samp>-x</samp>' with all record types.  Of course,
 added in a future version of <small>CVS</small>; if you are
 writing a script which can only handle certain record
 types, you'll want to specify `<samp>-x</samp>'.
+
 </p></dd>
 <dt><code> -m <var>module</var>
 </code></dt>
 <dd><p>Report on a particular module.  (You can meaningfully
 use `<samp>-m</samp>' more than once on the command line.)
+
 </p></dd>
 <dt><code> -o
 </code></dt>
 <dd><p>Report on checked-out modules.  This is the default report type.
+
 </p></dd>
 <dt><code> -T
 </code></dt>
 <dd><p>Report on all tags.
+
 </p></dd>
 <dt><code> -x <var>type</var>
 </code></dt>
 <dd><p>Extract a particular set of record types <var>type</var> from the <small>CVS</small>
 history.  The types are indicated by single letters,
 which you may specify in combination.
+
 </p><p>Certain commands have a single record type:
+
 </p><dl compact="compact">
 <dt><code> F
 </code></dt>
@@ -2637,6 +2903,7 @@ which you may specify in combination.
 
 
 <p>One of four record types may result from an update:
+
 </p><dl compact="compact">
 <dt><code> C
 </code></dt>
@@ -2660,6 +2927,7 @@ update (because it was gone from the repository).
 
 
 <p>One of three record types results from commit:
+
 </p><dl compact="compact">
 <dt><code> A
 </code></dt>
@@ -2679,15 +2947,18 @@ update (because it was gone from the repository).
 
 <p>The options shown as `<samp>-flags</samp>' constrain or expand
 the report without requiring option arguments:
+
 </p><dl compact="compact">
 <dt><code> -a
 </code></dt>
 <dd><p>Show data for all users (the default is to show data
 only for the user executing <code>history</code>).
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Show last modification only.
+
 </p></dd>
 <dt><code> -w
 </code></dt>
@@ -2699,35 +2970,41 @@ executing.
 
 <p>The options shown as `<samp>-options <var>args</var></samp>' constrain the report
 based on an argument:
+
 </p><dl compact="compact">
 <dt><code> -b <var>str</var>
 </code></dt>
 <dd><p>Show data back to a record containing  the  string
 <var>str</var>  in  either the module name, the file name, or
 the repository path.
+
 </p></dd>
 <dt><code> -D <var>date</var>
 </code></dt>
 <dd><p>Show data since <var>date</var>.  This is slightly different
 from the normal use of `<samp>-D <var>date</var></samp>', which
 selects the newest revision older than <var>date</var>.
+
 </p></dd>
 <dt><code> -f <var>file</var>
 </code></dt>
 <dd><p>Show data for a particular file
 (you can specify several `<samp>-f</samp>' options on the same command line).
 This is equivalent to specifying the file on the command line.
+
 </p></dd>
 <dt><code> -n <var>module</var>
 </code></dt>
 <dd><p>Show data for a particular module
 (you can specify several `<samp>-n</samp>' options on the same command line).
+
 </p></dd>
 <dt><code> -p <var>repository</var>
 </code></dt>
 <dd><p>Show data for a particular source repository  (you
 can specify several `<samp>-p</samp>' options on the same command
 line).
+
 </p></dd>
 <dt><code> -r <var>rev</var>
 </code></dt>
@@ -2735,6 +3012,7 @@ line).
 or tag named <var>rev</var> appears in individual <small>RCS</small>
 files.  Each <small>RCS</small> file is searched for the revision or
 tag.
+
 </p></dd>
 <dt><code> -t <var>tag</var>
 </code></dt>
@@ -2742,10 +3020,12 @@ tag.
 history file.  This differs from the `<samp>-r</samp>' flag
 above in that it reads only the history file, not the
 <small>RCS</small> files, and is much faster.
+
 </p></dd>
 <dt><code> -u <var>name</var>
 </code></dt>
 <dd><p>Show records for user <var>name</var>.
+
 </p></dd>
 <dt><code> -z <var>timezone</var>
 </code></dt>
@@ -2793,45 +3073,52 @@ use this command both for initial creation of a
 repository, and for wholesale updates to the module
 from the outside source.  See section <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, for
 a discussion on this subject.
+
 </p><p>The <var>repository</var> argument gives a directory name
 (or a path to a directory) under the <small>CVS</small> root directory
 for repositories; if the directory did not exist,
 import creates it.
+
 </p><p>When you use import for updates to source that has been
 modified in your source repository (since a prior
 import), it will notify you of any files that conflict
 in the two branches of development; use `<samp>checkout
 -j</samp>' to reconcile the differences, as import instructs
 you to do.
+
 </p><p>If <small>CVS</small> decides a file should be ignored
 (see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>), it does not import it and prints
 `<samp>I </samp>' followed by the filename (see section <a href="#SEC141">import output</a>, for a
 complete description of the output).
+
 </p><p>If the file `<tt>$CVSROOT/CVSROOT/cvswrappers</tt>' exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
 before being imported.  See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
+
 </p><p>The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
 branch; for example, files from the first imported
 collection of source will be revision 1.1.1.1, then
 files from the first imported update will be revision
 1.1.1.2, and so on.
+
 </p><p>At least three arguments are required.
 <var>repository</var> is needed to identify the collection
 of source.  <var>vendortag</var> is a tag for the entire
 branch (e.g., for 1.1.1).  You must also specify at
 least one <var>releasetag</var> to identify the files at
 the leaves created each time you execute <code>import</code>.
+
 </p><p>Note that <code>import</code> does <em>not</em> change the
 directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC140">A.12.1 import options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC141">A.12.2 import output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC142">A.12.3 import examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -2860,6 +3147,7 @@ directory (see section <a href="cvs_1.html#SEC5">Getting the source</a>).
 
 <p>This standard option is supported by <code>import</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description):
+
 </p><dl compact="compact">
 <dt><code> -m <var>message</var>
 </code></dt>
@@ -2869,10 +3157,12 @@ invoking an editor.
 </dl>
 
 <p>There are the following additional special options.
+
 </p><dl compact="compact">
 <dt><code> -b <var>branch</var>
 </code></dt>
 <dd><p>See <a href="cvs_13.html#SEC111">Multiple vendor branches</a>.
+
 </p></dd>
 <dt><code> -k <var>subst</var>
 </code></dt>
@@ -2881,6 +3171,7 @@ setting will apply to all files created during the
 import, but not to any files that previously existed in
 the repository.  See <a href="cvs_12.html#SEC102">Substitution modes</a>, for a
 list of valid `<samp>-k</samp>' settings.
+
 </p></dd>
 <dt><code> -I <var>name</var>
 </code></dt>
@@ -2888,14 +3179,17 @@ list of valid `<samp>-k</samp>' settings.
 import.  You can use this option repeatedly.  To avoid
 ignoring any files at all (even those ignored by
 default), specify `-I !'.
+
 </p><p><var>name</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvsignore</tt>' file.
 See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>.
+
 </p></dd>
 <dt><code> -W <var>spec</var>
 </code></dt>
 <dd><p>Specify file names that should be filtered during
 import.  You can use this option repeatedly.
+
 </p><p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvswrappers</tt>'
 file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
@@ -2925,24 +3219,29 @@ file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 
 <p><code>import</code> keeps you informed of its progress by printing a line
 for each file, preceded by one character indicating the status of the file:
+
 </p><dl compact="compact">
 <dt><code> U <var>file</var>
 </code></dt>
 <dd><p>The file already exists in the repository and has not been locally
 modified; a new revision has been created (if necessary).
+
 </p></dd>
 <dt><code> N <var>file</var>
 </code></dt>
 <dd><p>The file is a new file which has been added to the repository.
+
 </p></dd>
 <dt><code> C <var>file</var>
 </code></dt>
 <dd><p>The file already exists in the repository but has been locally modified;
 you will have to merge the changes.
+
 </p></dd>
 <dt><code> I <var>file</var>
 </code></dt>
 <dd><p>The file is being ignored (see section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>).
+
 </p><a name="IDX242"></a>
 <a name="IDX243"></a>
 </dd>
@@ -2980,6 +3279,7 @@ see section <a href="cvs_18.html#SEC158">The modules file</a>.)
 <h3 class="appendixsubsec"> A.12.3 import examples </h3>
 
 <p>See <a href="cvs_13.html#SEC105">Tracking third-party sources</a>, and <a href="cvs_3.html#SEC40">Creating a directory tree from a number of files</a>.
+
 </p><hr size="6">
 <a name="NOD141"></a>
 <a name="SEC143"></a>
@@ -3016,6 +3316,7 @@ is no longer true in the current sources, this history
 determines the format of the output and the options,
 which are not quite in the style of the other <small>CVS</small>
 commands.
+
 </p><a name="IDX244"></a>
 <a name="IDX245"></a>
 <p>The output includes the location of the <small>RCS</small> file,
@@ -3026,10 +3327,11 @@ author, the number of lines added/deleted and the log
 message are printed.  All times are displayed in
 Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
+
 </p><p><strong>Note: <code>log</code> uses `<samp>-R</samp>' in a way that conflicts
 with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Common command options</a>).</strong>
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC144">A.13.1 log options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC145">A.13.2 log examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -3057,11 +3359,13 @@ with the normal use inside <small>CVS</small> (see section <a href="#SEC119">Com
 
 <p>By default, <code>log</code> prints all information that is
 available.  All other options restrict the output.
+
 </p><dl compact="compact">
 <dt><code> -b
 </code></dt>
 <dd><p>Print information about the revisions on the default
 branch, normally the highest branch on the trunk.
+
 </p></dd>
 <dt><code> -d <var>dates</var>
 </code></dt>
@@ -3071,6 +3375,7 @@ semicolon-separated list of dates.  The date formats
 accepted are those accepted by the `<samp>-D</samp>' option to
 many other <small>CVS</small> commands (see section <a href="#SEC119">Common command options</a>).
 Dates can be combined into ranges as follows:
+
 </p><dl compact="compact">
 <dt><code> <var>d1</var>&lt;<var>d2</var>
 </code></dt>
@@ -3078,18 +3383,21 @@ Dates can be combined into ranges as follows:
 </code></dt>
 <dd><p>Select the revisions that were deposited between
 <var>d1</var> and <var>d2</var>.
+
 </p></dd>
 <dt><code> &lt;<var>d</var>
 </code></dt>
 <dt><code> <var>d</var>&gt;
 </code></dt>
 <dd><p>Select all revisions dated <var>d</var> or earlier.
+
 </p></dd>
 <dt><code> <var>d</var>&lt;
 </code></dt>
 <dt><code> &gt;<var>d</var>
 </code></dt>
 <dd><p>Select all revisions dated <var>d</var> or later.
+
 </p></dd>
 <dt><code> <var>d</var>
 </code></dt>
@@ -3101,7 +3409,9 @@ earlier.
 <p>The `<samp>&gt;</samp>' or `<samp>&lt;</samp>' characters may be followed by
 `<samp>=</samp>' to indicate an inclusive range rather than an
 exclusive one.
+
 </p><p>Note that the separator is a semicolon (;).
+
 </p></dd>
 <dt><code> -h
 </code></dt>
@@ -3109,11 +3419,13 @@ exclusive one.
 of the file in the working directory, head,
 default branch, access list, locks, symbolic names, and
 suffix.
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.  (Default
 is to run recursively).
+
 </p></dd>
 <dt><code> -N
 </code></dt>
@@ -3122,10 +3434,12 @@ option can be very useful when your site uses a lot of
 tags, so rather than &quot;more&quot;'ing over 3 pages of tag
 information, the log information is presented without
 tags at all.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Print only the name of the <small>RCS</small> file.
+
 </p></dd>
 <dt><code> -r<var>revisions</var>
 </code></dt>
@@ -3133,15 +3447,18 @@ tags at all.
 comma-separated list <var>revisions</var> of revisions and
 ranges.  The following table explains the available
 range formats:
+
 </p><dl compact="compact">
 <dt><code> <var>rev1</var>:<var>rev2</var>
 </code></dt>
 <dd><p>Revisions <var>rev1</var> to <var>rev2</var> (which must be on
 the same branch).
+
 </p></dd>
 <dt><code> <var>rev1</var>::<var>rev2</var>
 </code></dt>
 <dd><p>The same, but excluding <var>rev1</var>.
+
 </p></dd>
 <dt><code> :<var>rev</var>
 </code></dt>
@@ -3149,21 +3466,25 @@ the same branch).
 </code></dt>
 <dd><p>Revisions from the beginning of the branch up to
 and including <var>rev</var>.
+
 </p></dd>
 <dt><code> <var>rev</var>:
 </code></dt>
 <dd><p>Revisions starting with <var>rev</var> to the end of the
 branch containing <var>rev</var>.
+
 </p></dd>
 <dt><code> <var>rev</var>::
 </code></dt>
 <dd><p>Revisions starting just after <var>rev</var> to the end of the
 branch containing <var>rev</var>.
+
 </p></dd>
 <dt><code> <var>branch</var>
 </code></dt>
 <dd><p>An argument that is a branch means all revisions on
 that branch.
+
 </p></dd>
 <dt><code> <var>branch1</var>:<var>branch2</var>
 </code></dt>
@@ -3171,6 +3492,7 @@ that branch.
 </code></dt>
 <dd><p>A range of branches means all revisions
 on the branches in that range.
+
 </p></dd>
 <dt><code> <var>branch</var>.
 </code></dt>
@@ -3182,20 +3504,24 @@ on the branches in that range.
 revision on the default branch, normally the trunk.
 There can be no space between the `<samp>-r</samp>' option and
 its argument.
+
 </p></dd>
 <dt><code> -S
 </code></dt>
 <dd><p>Suppress the header if no revisions are selected.
+
 </p></dd>
 <dt><code> -s <var>states</var>
 </code></dt>
 <dd><p>Print information about revisions whose state
 attributes match one of the states given in the
 comma-separated list <var>states</var>.
+
 </p></dd>
 <dt><code> -t
 </code></dt>
 <dd><p>Print the same as `<samp>-h</samp>', plus the descriptive text.
+
 </p></dd>
 <dt><code> -w<var>logins</var>
 </code></dt>
@@ -3211,6 +3537,7 @@ login is assumed.  There can be no space between the
 selected with the options `<samp>-d</samp>', `<samp>-s</samp>', and
 `<samp>-w</samp>', intersected with the union of the revisions
 selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
+
 </p><hr size="6">
 <a name="NOD143"></a>
 <a name="SEC145"></a>
@@ -3233,6 +3560,7 @@ selected by `<samp>-b</samp>' and `<samp>-r</samp>'.
 <h3 class="appendixsubsec"> A.13.2 log examples </h3>
 
 <p>Contributed examples are gratefully accepted.
+
 </p><hr size="6">
 <a name="NOD144"></a>
 <a name="SEC146"></a>
@@ -3272,19 +3600,21 @@ release.  (This is one of the few <small>CVS</small> commands that
 operates directly from the repository, and doesn't
 require a prior checkout.) The diff output is sent to
 the standard output device.
+
 </p><p>You can specify (using the standard `<samp>-r</samp>' and
 `<samp>-D</samp>' options) any combination of one or two
 revisions or dates.  If only one revision or date is
 specified, the patch file reflects differences between
 that revision or date and the current head revisions in
 the <small>RCS</small> file.
+
 </p><p>Note that if the software release affected is contained
 in more than one directory, then it may be necessary to
 specify the `<samp>-p</samp>' option to the <code>patch</code> command when
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC147">A.14.1 rdiff options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC148">A.14.2 rdiff examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -3313,23 +3643,28 @@ the files that are located in other directories.
 <p>These standard options are supported by <code>rdiff</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -D <var>date</var>
 </code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
 <dd><p>If no matching revision is found, retrieve the most
 recent revision (instead of ignoring the file).
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; don't descend subdirectories.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Examine directories recursively.  This option is on by default.
+
 </p></dd>
 <dt><code> -r <var>tag</var>
 </code></dt>
@@ -3338,10 +3673,12 @@ recent revision (instead of ignoring the file).
 </dl>
 
 <p>In addition to the above, these options are available:
+
 </p><dl compact="compact">
 <dt><code> -c
 </code></dt>
 <dd><p>Use the context diff format.  This is the default format.
+
 </p></dd>
 <dt><code> -s
 </code></dt>
@@ -3351,12 +3688,14 @@ changed or added between the releases.  It is sent to
 the standard output device.  This is useful for finding
 out, for example, which files have changed between two
 dates or revisions.
+
 </p></dd>
 <dt><code> -t
 </code></dt>
 <dd><p>A diff of the top two revisions is sent to the standard
 output device.  This is most useful for seeing what the
 last change to a file was.
+
 </p></dd>
 <dt><code> -u
 </code></dt>
@@ -3365,6 +3704,7 @@ Remember that old versions
 of the <code>patch</code> program can't handle the unidiff
 format, so if you plan to post this patch to the net
 you should probably not use `<samp>-u</samp>'.
+
 </p></dd>
 <dt><code> -V <var>vn</var>
 </code></dt>
@@ -3401,8 +3741,8 @@ way that <small>RCS</small> version 5 does.
 update from release 1.2 to 1.4 of the tc compiler.  You
 have no such patches on hand, but with <small>CVS</small> that can
 easily be fixed with a command such as this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
 $$ Mail -s 'The patches you asked for' foo@example.net
 </pre></td></tr></table>
 <p>Suppose you have made release 1.3, and forked a branch
@@ -3410,8 +3750,8 @@ called `<samp>R_1_3fix</samp>' for bugfixes.  `<samp>R_1_3_1</samp>'
 corresponds to release 1.3.1, which was made some time
 ago.  Now, you want to see how much development has been
 done on the branch.  This command can be used:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
 cvs rdiff: Diffing module-name
 File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
 File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
@@ -3455,18 +3795,20 @@ like; but you risk losing changes you may have
 forgotten, and you leave no trace in the <small>CVS</small> history
 file (see section <a href="cvs_18.html#SEC178">The history file</a>) that you've abandoned your
 checkout.
+
 </p><p>Use `<samp>cvs release</samp>' to avoid these problems.  This
 command checks that no uncommitted changes are
 present; that you are executing it from immediately
 above a <small>CVS</small> working directory; and that the repository
 recorded for your files is the same as the repository
 defined in the module database.
+
 </p><p>If all these conditions are true, `<samp>cvs release</samp>'
 leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC150">A.15.1 release options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC151">A.15.2 release output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC152">A.15.3 release examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -3494,12 +3836,14 @@ history log.
 <h3 class="appendixsubsec"> A.15.1 release options </h3>
 
 <p>The <code>release</code> command supports one command option:
+
 </p><dl compact="compact">
 <dt><code> -d
 </code></dt>
 <dd><p>Delete your working copy of the file if the release
 succeeds.  If this flag is not given your files will
 remain in your working directory.
+
 </p><p><strong>WARNING:  The <code>release</code> command deletes
 all directories and files recursively.  This
 has the very serious side-effect that any directory
@@ -3534,6 +3878,7 @@ if it is non-empty!</strong>
 <p>Before <code>release</code> releases your sources it will
 print a one-line message for any file that is not
 up-to-date.
+
 </p><dl compact="compact">
 <dt><code> U <var>file</var>
 </code></dt>
@@ -3542,6 +3887,7 @@ up-to-date.
 <dd><p>There exists a newer revision of this file in the
 repository, and you have not modified your local copy
 of the file (`<samp>U</samp>' and `<samp>P</samp>' mean the same thing).
+
 </p></dd>
 <dt><code> A <var>file</var>
 </code></dt>
@@ -3549,6 +3895,7 @@ of the file (`<samp>U</samp>' and `<samp>P</samp>' mean the same thing).
 sources, but has not yet been committed to the
 repository.  If you delete your copy of the sources
 this file will be lost.
+
 </p></dd>
 <dt><code> R <var>file</var>
 </code></dt>
@@ -3556,11 +3903,13 @@ this file will be lost.
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
 removal.  See section <a href="#SEC125">commit--Check files into the repository</a>.
+
 </p></dd>
 <dt><code> M <var>file</var>
 </code></dt>
 <dd><p>The file is modified in your working directory.  There
 might also be a newer revision inside the repository.
+
 </p></dd>
 <dt><code> ? <var>file</var>
 </code></dt>
@@ -3596,8 +3945,8 @@ sources, this file will be lost.
 
 <p>Release the `<tt>tc</tt>' directory, and delete your local working copy
 of the files.
-</p><table><tr><td>&nbsp;</td><td><pre class="example">
-$ cd ..         # You must stand immediately above the
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..         # You must stand immediately above the
                 # sources when you issue `<samp>cvs release</samp>'.
 $ cvs release -d tc
 You have [0] altered files in this repository.
@@ -3646,8 +3995,8 @@ option, <code>update</code> will also merge any differences
 between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
-</p><table class="menu" border="0" cellspacing="0">
 
+</p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC154">A.16.1 update options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 <tr><td align="left" valign="top"><a href="#SEC155">A.16.2 update output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
@@ -3676,12 +4025,14 @@ into any destination revisions specified with <code>-r</code>,
 <p>These standard options are available with <code>update</code>
 (see section <a href="#SEC119">Common command options</a>, for a complete description of
 them):
+
 </p><dl compact="compact">
 <dt><code> -D date
 </code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 This option is sticky, and implies `<samp>-P</samp>'.
 See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky tags/dates.
+
 </p></dd>
 <dt><code> -f
 </code></dt>
@@ -3689,6 +4040,7 @@ See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky t
 <var>tag</var></samp>' flags.  If no matching revision is found,
 retrieve the most recent revision (instead of ignoring
 the file).
+
 </p></dd>
 <dt><code> -k <var>kflag</var>
 </code></dt>
@@ -3699,22 +4051,27 @@ this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
 to see the sticky options.  See <a href="cvs_17.html#SEC156">Quick reference to CVS commands</a>, for
 more information on the <code>status</code> command.
+
 </p></dd>
 <dt><code> -l
 </code></dt>
 <dd><p>Local; run only in current working directory.  See section <a href="cvs_6.html#SEC65">Recursive behavior</a>.
+
 </p></dd>
 <dt><code> -P
 </code></dt>
 <dd><p>Prune empty directories.  See <a href="cvs_7.html#SEC74">Moving and renaming directories</a>.
+
 </p></dd>
 <dt><code> -p
 </code></dt>
 <dd><p>Pipe files to the standard output.
+
 </p></dd>
 <dt><code> -R
 </code></dt>
 <dd><p>Update directories recursively (default).  See section <a href="cvs_6.html#SEC65">Recursive behavior</a>.
+
 </p></dd>
 <dt><code> -r rev
 </code></dt>
@@ -3726,17 +4083,20 @@ See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky t
 
 <p>These special options are also available with
 <code>update</code>.
+
 </p><dl compact="compact">
 <dt><code> -A
 </code></dt>
 <dd><p>Reset any sticky tags, dates, or `<samp>-k</samp>' options.
 See <a href="cvs_4.html#SEC53">Sticky tags</a>, for more information on sticky tags/dates.
+
 </p></dd>
 <dt><code> -C
 </code></dt>
 <dd><p>Overwrite locally modified files with clean copies from
 the repository (the modified file is saved in
 `<tt>.#<var>file</var>.<var>revision</var></tt>', however).
+
 </p></dd>
 <dt><code> -d
 </code></dt>
@@ -3744,6 +4104,7 @@ the repository (the modified file is saved in
 they're missing from the working directory.  Normally,
 <code>update</code> acts only on directories and files that
 were already enrolled in your working directory.
+
 </p><p>This is useful for updating directories that were
 created in the repository since the initial checkout;
 but it has an unfortunate side effect.  If you
@@ -3753,6 +4114,7 @@ repository when you created your working directory
 explicitly the files and directories you wanted on the
 command line), then updating with `<samp>-d</samp>' will create
 those directories, which may not be what you want.
+
 </p></dd>
 <dt><code> -I <var>name</var>
 </code></dt>
@@ -3762,14 +4124,17 @@ working directory) during the update.  You can specify
 several files to ignore.  Use `<samp>-I !</samp>' to avoid
 ignoring any files at all.  See section <a href="cvs_18.html#SEC176">Ignoring files via cvsignore</a>, for other
 ways to make <small>CVS</small> ignore some files.
+
 </p></dd>
 <dt><code> -W<var>spec</var>
 </code></dt>
 <dd><p>Specify file names that should be filtered during
 update.  You can use this option repeatedly.
+
 </p><p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the `<tt>.cvswrappers</tt>'
 file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
+
 </p></dd>
 <dt><code> -j<var>revision</var>
 </code></dt>
@@ -3777,23 +4142,28 @@ file. See section <a href="cvs_18.html#SEC165">The cvswrappers file</a>.
 revision specified with the first `<samp>-j</samp>' option to
 the revision specified with the second `<samp>j</samp>' option,
 into the working directory.
+
 </p><p>With one `<samp>-j</samp>' option, merge changes from the
 ancestor revision to the revision specified with the
 `<samp>-j</samp>' option, into the working directory.  The
 ancestor revision is the common ancestor of the
 revision which the working directory is based on, and
 the revision specified in the `<samp>-j</samp>' option.
+
 </p><p>Note that using a single `<samp>-j <var>tagname</var></samp>' option rather than
 `<samp>-j <var>branchname</var></samp>' to merge changes from a branch will
 often not remove files which were removed on the branch.
 See section <a href="cvs_5.html#SEC63">Merging can add or remove files</a>, for more.
+
 </p><p>In addition, each `<samp>-j</samp>' option can contain an optional
 date specification which, when used with branches, can
 limit the chosen revision to one within a specific
 date.  An optional date is specified by adding a colon
 (:) to the tag:
 `<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>'.
+
 </p><p>See section <a href="cvs_5.html#SEC54">Branching and merging</a>.
+
 </p></dd>
 </dl>
 
@@ -3821,6 +4191,7 @@ date.  An optional date is specified by adding a colon
 <p><code>update</code> and <code>checkout</code> keep you informed of
 their progress by printing a line for each file, preceded
 by one character indicating the status of the file:
+
 </p><dl compact="compact">
 <dt><code> U <var>file</var>
 </code></dt>
@@ -3829,11 +4200,13 @@ repository.  This is done for any file that exists in
 the repository but not in your source, and for files
 that you haven't changed but are not the most recent
 versions available in the repository.
+
 </p></dd>
 <dt><code> P <var>file</var>
 </code></dt>
 <dd><p>Like `<samp>U</samp>', but the <small>CVS</small> server sends a patch instead of an entire
 file.  This accomplishes the same thing as `<samp>U</samp>' using less bandwidth.
+
 </p></dd>
 <dt><code> A <var>file</var>
 </code></dt>
@@ -3841,6 +4214,7 @@ file.  This accomplishes the same thing as `<samp>U</samp>' using less bandwidth
 sources, and will be added to the source repository
 when you run <code>commit</code> on the file.  This is a
 reminder to you that the file needs to be committed.
+
 </p></dd>
 <dt><code> R <var>file</var>
 </code></dt>
@@ -3848,10 +4222,12 @@ reminder to you that the file needs to be committed.
 sources, and will be removed from the source repository
 when you run <code>commit</code> on the file.  This is a
 reminder to you that the file needs to be committed.
+
 </p></dd>
 <dt><code> M <var>file</var>
 </code></dt>
 <dd><p>The file is modified in  your  working  directory.
+
 </p><p>`<samp>M</samp>' can indicate one of two states for a file
 you're working on: either there were no modifications
 to the same file in the repository, so that your file
@@ -3859,10 +4235,12 @@ remains as you last saw it; or there were modifications
 in the repository as well as in your copy, but they
 were merged successfully, without conflict, in your
 working directory.
+
 </p><p><small>CVS</small> will print some messages if it merges your work,
 and a backup copy of your working file (as it looked
 before you ran <code>update</code>) will be made.  The exact
 name of that file is printed while <code>update</code> runs.
+
 </p></dd>
 <dt><code> C <var>file</var>
 </code></dt>
@@ -3884,6 +4262,7 @@ accessed for a few days.  If you intend to keep a copy
 of your original file, it is a very good idea to rename
 it.)  Under <small>VMS</small>, the file name starts with
 `<tt>__</tt>' rather than `<tt>.#</tt>'.
+
 </p></dd>
 <dt><code> ? <var>file</var>
 </code></dt>
