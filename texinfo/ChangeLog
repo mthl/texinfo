@@ -1,3 +1,9 @@
+2004-11-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Quotations and Examples, end titlepage): state
+	that there must be only one space between the @end and its
+	argument.  Report from: christoph.sobotka, 26 Oct 2004 22:04:03 +0200.
+
 2004-11-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (euro): new node, documenting new command,

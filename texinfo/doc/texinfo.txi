@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
+@c $Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3467,9 +3467,11 @@ Cover art by @dots{}
 @cindex Titlepage end starts headings
 @cindex End titlepage starts headings
 
-The @code{@@end titlepage} command must be written on a line by itself.
-It not only marks the end of the title and copyright pages, but also
-causes @TeX{} to start generating page headings and page numbers.
+Like all @code{@@end} commands (@pxref{Quotations and Examples}), the @code{@@end titlepage} command
+must be written at the beginning of a line by itself, with only one
+space between the @code{@@end} and the @code{titlepage}.  It not only
+marks the end of the title and copyright pages, but also causes @TeX{}
+to start generating page headings and page numbers.
 
 To repeat what is said elsewhere,  Texinfo has two standard page heading
 formats, one for documents which are printed on one side of each sheet of paper
@@ -7667,42 +7669,53 @@ We recommend using regular mixed case wherever possible.
 @node Fonts
 @subsection Fonts for Printing, Not Info
 @cindex Fonts for printing, not Info
-@findex i @r{(italic font)}
-@findex b @r{(bold font)}
-@findex t @r{(typewriter font)}
-@findex r @r{(roman font)}
-@findex slanted @r{(slanted font)}
 
-Texinfo provides five font commands that specify font changes in the
-printed manual and (where possible) in the HTML output, but have no
-effect in the Info file.  All five commands apply to an argument that
-follows, surrounded by braces.
+Texinfo provides a number of font commands that specify font changes
+in the printed manual and (where possible) in the HTML output, but
+have no effect in the Info file.  All the commands apply to an
+argument that follows, surrounded by braces.
 
 @table @code
-@item @@i
-@cindex Italic font
-selects an @i{italic} font;
-
-@item @@slanted
-@cindex Slanted font
-selects a @slanted{slanted} font (this command name is longer than the
-other font-change commands because it was invented much later);
-
 @item @@b
+@findex b @r{(bold font)}
 @cindex Bold font
 selects @b{bold} face;
 
+@item @@i
+@findex i @r{(italic font)}
+@cindex Italic font
+selects an @i{italic} font;
+
+@item @@r
+@findex r @r{(roman font)}
+@cindex Roman font
+@cindex Default font
+selects a @r{roman} font, which is the usual font in which text is
+printed.  It may or may not be seriffed.
+
+@item @@sansserif
+@findex sansserif @r{(sans serif font)}
+@cindex Sans serif font
+selects a @sansserif{sans serif} font;
+
+@item @@slanted
+@findex slanted @r{(slanted font)}
+@cindex Slanted font
+@cindex Oblique font
+rselects a @slanted{slanted} font;
+
 @item @@t
+@findex t @r{(typewriter font)}
 @cindex Monospace font
 @cindex Fixed-width font
 @cindex Typewriter font
 selects the @t{fixed-width}, typewriter-style font used by @code{@@code};
 
-@item @@r
-@cindex Roman font
-selects a @r{roman} font, which is the usual font in which text is printed.
-
 @end table
+
+(The commands with longer names were invented much later than the
+others, when it did not seem desirable to use very short names for
+such an infrequently needed feature.)
 
 @cindex <lineannotation> Docbook tag
 Only the @code{@@r} command has much use: in example-like
@@ -7728,9 +7741,9 @@ produces
 (+ 2 2)    ; @r{Add two plus two.}
 @end lisp
 
-In general, you should avoid using the other three font commands.  If
-you need to use one, it probably indicates a gap in the Texinfo
-language.
+In general, you should avoid using the other font commands.  Some of
+them are only useful when documenting functionality with specific font
+effects, such as in \TeX\ and related packages.
 
 
 @node Quotations and Examples
@@ -7738,16 +7751,17 @@ language.
 
 Quotations and examples are blocks of text consisting of one or more
 whole paragraphs that are set off from the bulk of the text and
-treated differently.  They are usually indented.@refill
+treated differently.  They are usually indented in the output.
 
+@findex end
 In Texinfo, you always begin a quotation or example by writing an
 @@-command at the beginning of a line by itself, and end it by writing
 an @code{@@end} command that is also at the beginning of a line by
 itself.  For instance, you begin an example by writing @code{@@example}
 by itself at the beginning of a line and end the example by writing
 @code{@@end example} on a line by itself, at the beginning of that
-line.
-@findex end
+line, and with only one space between the @code{@@end} and the
+@code{example}.
 
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
@@ -10547,9 +10561,9 @@ it.  Therefore, in many cases it is preferable to use the word
 @cindex Latin 9
 In order to get the Euro symbol in encoded Info output, for example,
 it is necessary to specify @code{@@documentencoding ISO-8859-15}.
-(@xref{documentencoding}.)  The Euro symbol is in ISO 8859-15 (aka
-Latin@tie{}9), and is @emph{not} in the more widely-used and supported
-ISO 8859-1 (Latin@tie{}1).
+(@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
+is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
+widely-used and supported ISO 8859-1 (Latin@tie{}1).
 
 
 @node pounds
@@ -17463,14 +17477,14 @@ glyph: @samp{@result{}}.  @xref{result, , @code{@@result}}.@refill
 Generate a ring accent over the next character, as in @ringaccent{o}.
 @xref{Inserting Accents}.
 
-@item @@slanted@{@var{text}@}
-Print @var{text} in @slanted{slanted} font.  No effect in Info.
-@xref{Fonts}.
-
 @item @@samp@{@var{text}@}
 Highlight @var{text} that is a literal example of a sequence of
 characters.  Used for single characters, for statements, and often for
 entire shell commands.  @xref{samp, , @code{@@samp}}.@refill
+
+@item @@sansserif@@var{text}@}
+Print @var{text} in a @sansserif{sans serif} font if possible.  No
+effect in Info.  @xref{Fonts}.
 
 @item @@sc@{@var{text}@}
 Set @var{text} in a printed output in @sc{the small caps font} and
@@ -17525,6 +17539,10 @@ Contents}.@refill
 
 @item @@shorttitlepage @var{title}
 Generate a minimal title page.  @xref{titlepage,,@code{@@titlepage}}.
+
+@item @@slanted@{@var{text}@}
+Print @var{text} in a @slanted{slanted} font if possible.  No effect
+in Info.  @xref{Fonts}.
 
 @item @@smallbook
 Cause @TeX{} to produce a printed manual in a 7 by 9.25 inch format
@@ -18392,7 +18410,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
+$Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18458,7 +18476,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.116 2004-11-22 23:57:32 karl Exp $
+@comment $Id: texinfo.txi,v 1.117 2004-11-26 00:39:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
