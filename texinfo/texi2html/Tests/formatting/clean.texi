@@ -58,6 +58,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 
 
 @@TeX @TeX{}
+@@LaTeX @LaTeX{}
 @c @br{}
 @@bullet @bullet{}
 @@copyright @copyright{}
@@ -85,6 +86,10 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@exclamdown @exclamdown{}
 @@questiondown @questiondown{}
 @@pounds @pounds{}
+@@registeredsymbol @registeredsymbol{}
+@@ordf @ordf{}
+@@ordm @ordm{}
+@@comma @comma{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@asis@{--a@}} @asis{--a}
@@ -112,6 +117,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
+@code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}
 @code{@@uref@{--a@}} @uref{--a}
 @code{@@uref@{,--b@}} @uref{,--b}
@@ -418,6 +424,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 
 
 @@TeX @TeX{}
+@@LaTeX @LaTeX{}
 @c @br{}
 @@bullet @bullet{}
 @@copyright @copyright{}
@@ -445,6 +452,10 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@exclamdown @exclamdown{}
 @@questiondown @questiondown{}
 @@pounds @pounds{}
+@@registeredsymbol @registeredsymbol{}
+@@ordf @ordf{}
+@@ordm @ordm{}
+@@comma @comma{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
 @code{@@asis@{--a@}} @asis{--a}
@@ -472,6 +483,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
+@code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}
 @code{@@uref@{--a@}} @uref{--a}
 @code{@@uref@{,--b@}} @uref{,--b}

@@ -46,6 +46,7 @@ kbd: ``simple-double--three---four----''
 @# @#
 
 @TeX TeX
+@LaTeX LaTeX
 @bullet *
 @copyright C
 @dots ...
@@ -72,7 +73,12 @@ kbd: ``simple-double--three---four----''
 @exclamdown ! upside-down
 @questiondown ? upside-down
 @pounds pound sterling
+@registeredsymbol R
+@ordf a
+@ordm o
+@comma ,
 
+@acronym{--a,an accronym @comma{} @enddots{}} -a
 @acronym{--a} -a
 @asis{--a} -a
 @b{--a} -a
@@ -99,11 +105,12 @@ kbd: ``simple-double--three---four----''
 @strong{--a} -a
 @t{--a} -a
 @titlefont{--a} -a
+@indicateurl{--a} --a
 @uref{--a,--b} --a,-b
 @uref{--a} --a
 @uref{,--b} ,-b
-@url{--a,--b} -a,-b
-@url{--a,} -a,
+@url{--a,--b} --a,-b
+@url{--a,} --a,
 @url{,--b} ,-b
 @var{--a} -a
 @verb{:--a:} --a
@@ -143,7 +150,6 @@ kbd: ``simple-double--three---four----''
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} @file{f--ile}@@@.
 
 
-
 a q-uotation
 
 
@@ -172,6 +178,7 @@ a q-uotation
  e-numerate
 
 
+ mu-ltitable headitem  another tab
  mu-ltitable item  multitable tab
 
 
@@ -212,7 +219,8 @@ s-mallformat
 d-effn
 
 
- de-ffn_name ar-guments...    cate-gory
+ de-ffn_name ar-guments     cate-gory
+   more args  even more so
 def-fn
 
 
@@ -349,6 +357,12 @@ d-eftypemethod
 @inforef{,cross ref name } 
 @inforef{,,file name} 
 @inforef{,cross ref name, file name} 
+
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+
+
+@ref{s--ect@comma{}ion} 
 
  a
 l-ine

@@ -7,7 +7,6 @@ printed manual from a single source.
 Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
 Free Software Foundation, Inc.
 
-
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
@@ -233,10 +232,8 @@ manual.
 
 <p>and
 
-</p><blockquote>
-<p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
+</p><blockquote><p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
 </p></blockquote>
-
 <p>Here is an example of a full five-part cross reference:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">@xref{Node name, Cross Reference Name, Particular Topic,
@@ -251,10 +248,8 @@ for details.
 
 <p>in Info and
 
-</p><blockquote>
-<p>See section &quot;Particular Topic&quot; in <i>A Printed Manual</i>, for details.
+</p><blockquote><p>See section &quot;Particular Topic&quot; in <i>A Printed Manual</i>, for details.
 </p></blockquote>
-
 
 <p>in a printed book.
 
@@ -362,30 +357,24 @@ manual.
 
 <p>In TeX, a cross reference looks like this:
 
-</p><blockquote>
-<p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
+</p><blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
 </p></blockquote>
-
 
 <p>or like this
 
-</p><blockquote>
-<p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
+</p><blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
 </p></blockquote>
-
 <p>The <code>@xref</code> command does not generate a period or comma to end
 the cross reference in either the Info file or the printed output.
 You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
 differently.  See section <a href="#SEC116"><code>@pxref</code></a>.)
 
-</p><blockquote>
-<p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
+</p><blockquote><p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
 the Info file and in the printed manual.
 </p></blockquote>
-
 <p><code>@xref</code> must refer to an Info node by name.  Use <code>@node</code>
 to define the node (see section <a href="texinfo_7.html#SEC90">How to Write an <code>@node</code> Line</a>).
 
@@ -396,12 +385,10 @@ commas.  Whitespace before and after these commas is ignored.
 up to four additional arguments.  Each of these variations produces a
 cross reference that looks somewhat different.
 
-</p><blockquote>
-<p><strong>Please note:</strong> Commas separate arguments in a cross reference;
+</p><blockquote><p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
 mistake them for separators.
 </p></blockquote>
-
 <hr size="6">
 <a name="NOD96"></a>
 <a name="SEC110"></a>
@@ -441,10 +428,8 @@ produces output that specifies the page and section number for you.
 
 <p>and
 
-</p><blockquote>
-<p>See Section 3.1 [Tropical Storms], page 24.
+</p><blockquote><p>See Section 3.1 [Tropical Storms], page 24.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 period.)
@@ -461,10 +446,8 @@ period.)
 
 <p>and
 
-</p><blockquote>
-<p>See Section 3.1 [Tropical Storms], page 24, for more info.
+</p><blockquote><p>See Section 3.1 [Tropical Storms], page 24, for more info.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)
@@ -512,10 +495,8 @@ cross reference points.
 
 <p>and
 
-</p><blockquote>
-<p>See Section 5.2 [Electrical Effects], page 57.
+</p><blockquote><p>See Section 5.2 [Electrical Effects], page 57.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 period; and that the node name is printed, not the cross reference name.)
@@ -531,10 +512,8 @@ period; and that the node name is printed, not the cross reference name.)
 
 <p>and
 
-</p><blockquote>
-<p>See Section 5.2 [Electrical Effects], page 57, for more info.
+</p><blockquote><p>See Section 5.2 [Electrical Effects], page 57, for more info.
 </p></blockquote>
-
 
 <p>(Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)
@@ -598,10 +577,8 @@ for details.
 
 <p>and
 
-</p><blockquote>
-<p>See Section 5.2 [Thunder and Lightning], page 57, for details.
+</p><blockquote><p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
-
 <p>If a third argument is given and the second one is empty, then the
 third argument serves both.  (Note how two commas, side by side, mark
 the empty second argument.)
@@ -617,10 +594,8 @@ for details.
 
 <p>and
 
-</p><blockquote>
-<p>See Section 5.2 [Thunder and Lightning], page 57, for details.
+</p><blockquote><p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
-
 <p>As a practical matter, it is often best to write cross references with
 just the first argument if the node name and the section title are the
 same, and with the first and third arguments if the node name and title
@@ -688,11 +663,9 @@ the name of the node.
 </p>
 <p>In a printed manual, the reference looks like this:
 
-</p><blockquote>
-<p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
+</p><blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
-
 
 <p>The title of the printed manual is typeset in italics; and the
 reference lacks a page number since TeX cannot know to which page a
@@ -716,10 +689,8 @@ description, will be used as the cross reference name in Info.
 
 <p>and
 
-</p><blockquote>
-<p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
+</p><blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
 </p></blockquote>
-
 
 <p>For example,
 
@@ -735,11 +706,9 @@ for details.
 
 <p>and
 
-</p><blockquote>
-<p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
+</p><blockquote><p>See section &quot;Thunder and Lightning&quot; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
-
 <p>On rare occasions, you may want to refer to another Info file that
 is within a single printed manual--when multiple Texinfo files are
 incorporated into the same TeX run but make separate Info files.
@@ -790,10 +759,8 @@ write:
 
 <p>and
 
-</p><blockquote>
-<p>See section &quot;Overview&quot; in <i>The GNU Make Manual</i>.
+</p><blockquote><p>See section &quot;Overview&quot; in <i>The GNU Make Manual</i>.
 </p></blockquote>
-
 
 <p>In this example, `<samp>Top</samp>' is the name of the first node, and
 `<samp>Overview</samp>' is the name of the first section of the manual.
@@ -836,10 +803,8 @@ This makes it useful as the last part of a sentence.
 
 <p>and
 
-</p><blockquote>
-<p>For more information, see Section 8.2 [Hurricanes], page 123.
+</p><blockquote><p>For more information, see Section 8.2 [Hurricanes], page 123.
 </p></blockquote>
-
 <p>The <code>@ref</code> command sometimes leads writers to express themselves
 in a manner that is suitable for a printed manual but looks awkward
 in the Info format.  Bear in mind that your audience will be using
@@ -854,17 +819,14 @@ both the printed and the Info format.
 
 <p>produces
 
-</p><blockquote>
-<p>Sea surges are described in Section 6.7 [Hurricanes], page 72.
+</p><blockquote><p>Sea surges are described in Section 6.7 [Hurricanes], page 72.
 </p></blockquote>
-
 
 <p>in a printed document, and the following in Info:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">Sea surges are described in *Note Hurricanes::.
 </pre></td></tr></table>
-<blockquote>
-<p><strong>Caution:</strong> You <em>must</em> write a period, comma, or right
+<blockquote><p><strong>Caution:</strong> You <em>must</em> write a period, comma, or right
 parenthesis immediately after an <code>@ref</code> command with two or more
 arguments.  Otherwise, Info will not find the end of the cross reference
 entry and its attempt to follow the cross reference will fail.  As a
@@ -872,7 +834,6 @@ general rule, you should write a period or comma after every
 <code>@ref</code> command.  This looks best in both the printed and the Info
 output.
 </p></blockquote>
-
 <hr size="6">
 <a name="NOD102"></a>
 <a name="SEC116"></a>
@@ -940,10 +901,8 @@ this:
 
 <p>and
 
-</p><blockquote>
-<p>&hellip; storms cause flooding (see Section 6.7 [Hurricanes], page 72) &hellip;
+</p><blockquote><p>&hellip; storms cause flooding (see Section 6.7 [Hurricanes], page 72) &hellip;
 </p></blockquote>
-
 <p>With two arguments, a parenthetical cross reference has this
 template:
 
@@ -957,15 +916,12 @@ template:
 
 <p>and
 
-</p><blockquote>
-<p>&hellip; (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) &hellip;
+</p><blockquote><p>&hellip; (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) &hellip;
 </p></blockquote>
-
 <p><code>@pxref</code> can be used with up to five arguments just like
 <code>@xref</code> (see section <a href="#SEC108"><code>@xref</code></a>).
 
-</p><blockquote>
-<p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
+</p><blockquote><p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
 reference.  Do not try to use <code>@pxref</code> as a clause in a sentence.
 It will look bad in either the Info file, the printed output, or
 both.
@@ -974,7 +930,6 @@ both.
 Although you may write them in the middle of a sentence, that location
 breaks up the flow of text.
 </p></blockquote>
-
 <hr size="6">
 <a name="NOD103"></a>
 <a name="SEC117"></a>
@@ -1040,10 +995,8 @@ for more information.
 
 <p>and
 
-</p><blockquote>
-<p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+</p><blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
 </p></blockquote>
-
 
 <p>Similarly,
 
@@ -1057,10 +1010,8 @@ for more information.
 
 <p>and
 
-</p><blockquote>
-<p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
+</p><blockquote><p>See Info file `<tt>info</tt>', node `<samp>Expert</samp>', for more information.
 </p></blockquote>
-
 <p>The converse of <code>@inforef</code> is <code>@cite</code>, which is used to
 refer to printed works for which no Info form exists.  See section <a href="texinfo_10.html#SEC133"><code>@cite</code></a>.
 

@@ -41,13 +41,15 @@ sub makeinfo_like_init_out()
 
 @MISC_BUTTONS = @SECTION_BUTTONS;
 
-$foot_line_and_ref = \&makeinfo_like_foot_line_and_ref;
-$foot_lines        = \&makeinfo_like_foot_lines;
-$index_summary     = \&makeinfo_like_index_summary;
-$summary_letter    = \&makeinfo_like_summary_letter;
-$index_entry       = \&makeinfo_like_index_entry;
-$index_letter      = \&makeinfo_like_index_letter;
-$print_index       = \&makeinfo_like_print_index;
+$foot_line_and_ref  = \&makeinfo_like_foot_line_and_ref;
+$foot_lines         = \&makeinfo_like_foot_lines;
+$index_summary      = \&makeinfo_like_index_summary;
+$summary_letter     = \&makeinfo_like_summary_letter;
+$index_entry        = \&makeinfo_like_index_entry;
+$index_letter       = \&makeinfo_like_index_letter;
+$print_index        = \&makeinfo_like_print_index;
+$listoffloats       = \&makeinfo_like_listoffloats;
+$listoffloats_entry = \&makeinfo_like_listoffloats_entry;
 
 sub makeinfo_like_foot_line_and_ref($$$$$$$$)
 {
@@ -112,3 +114,34 @@ sub makeinfo_like_print_index($$)
     return "<ul class=\"index-$name\" compact>\n" . $text . "</ul>\n";
 }
 
+sub makeinfo_like_listoffloats_entry($$$$)
+{
+    my $style_texi = shift;
+    my $float = shift;
+    my $float_style = shift;
+    my $caption = shift;
+    my $href = shift;
+
+    if ($caption ne '')
+    {
+        return '<li>' . &$I('%{href}: %{caption}', { 'href' => &$anchor('', $href, $float_style), 'caption' => $caption }) . "</li>\n";
+    }
+    else
+    {
+        return '<li>' . &$anchor('', $href, $float_style) . "</li>\n";
+    }
+}
+
+sub makeinfo_like_listoffloats($$$)
+{
+    my $style_texi = shift;
+    my $style = shift;
+    my $float_entries = shift;
+
+    my $result = "<ul class=\"listoffloats\">\n" ;
+    foreach my $float_entry (@$float_entries)
+    {
+         $result .= $float_entry;
+    }
+    return $result . "</ul>\n";
+}

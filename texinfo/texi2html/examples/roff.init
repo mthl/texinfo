@@ -165,8 +165,10 @@ sub T2H_ROFF_titlepage ()
 #
 %things_map = (
                'TeX'          => 'TeX',
+               'LaTeX'        => 'LaTeX',
                'bullet'       => '\(bu',
                'copyright'    => '\(co',
+               'registeredsymbol' => '\(rg',
                'dots'         => '\&...',
                'enddots'      => '\&....',
                'equiv'        => '\(==',
@@ -192,7 +194,9 @@ sub T2H_ROFF_titlepage ()
                'L'            => '\(/L',
                'exclamdown'   => '\(r!',
                'questiondown' => '\(r?',
-               'pounds'       => '\(Po'
+               'pounds'       => '\(Po',
+               'ordm'         => '\(Om',
+               'ordf'         => '\(Of',
              );
 
 # This map is used in preformatted environments
@@ -290,6 +294,9 @@ $style_map{'r'}->{'begin'} = '\r';
 #$style_map{'r'}->{'end'} = '';
 
 $style_map{'sc'} = '&roff_sc';
+
+$style_map{'indicateurl'}->{'begin'} = '<';
+$style_map{'indicateurl'}->{'end'} = '>';
 
 foreach my $command (keys(%style_map))
 {
@@ -498,6 +505,9 @@ $sp                = \&t2h_roff_sp;
 $normal_text       = \&t2h_roff_normal_text;
 $empty_line        = \&t2h_roff_empty_line;
 $unknown           = \&t2h_roff_unknown;
+$float             = \&t2h_roff_float;
+$listoffloats      = \&t2h_roff_listoffloats;
+$listoffloats_entry = \&t2h_roff_listoffloats_entry;
 
 # This function is used to protect characters which are special in html 
 # in inline text:  &, ", <, and >. 
@@ -1098,6 +1108,57 @@ sub t2h_roff_empty_line($)
 {
     my $text = shift;
     return '';
+}
+
+sub t2h_roff_listoffloats_entry($$$$)
+{
+    my $style_texi = shift;
+    my $float = shift;
+    my $float_style = shift;
+    my $caption = shift;
+    my $href = shift;
+	chomp ($caption);
+
+    return '.ip ' . protect_spaces($float_style) . "\n" . $caption . "\n";
+}
+
+sub t2h_roff_listoffloats($$$)
+{
+    my $style_texi = shift;
+    my $style = shift;
+    my $float_entries = shift;
+
+    my $result = ".(l L F\n.ba +5\n";
+    foreach my $float_entry (@$float_entries)
+    {
+         $result .= $float_entry;
+    }
+    return $result . ".ba -5\n.)l\n";
+} 
+
+sub t2h_roff_float($$$$$)
+{
+    my $text = shift;
+    my $float = shift;
+    my $caption = shift;
+    my $shortcaption = shift;
+    
+    my $caption_text = '';
+    
+    if (defined($float->{'caption_texi'}))
+    {
+         $caption_text = $caption;
+    }
+    elsif (defined($float->{'shortcaption_texi'}))
+    {
+         $caption_text = $shortcaption;
+    }
+    elsif (defined($caption))
+    {
+         $caption_text = $caption;
+    }
+    chomp ($caption_text);
+    return  ".(b L F\n" . $text . $caption_text . "\n.b)\n";
 }
 
 1;

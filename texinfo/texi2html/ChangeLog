@@ -1,3 +1,20 @@
+2004-06-13  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl: split close_stack in 2, one for the last pass the other
+	for the previous passes.
+	Simplification of the code handling paragraph closing.
+	More macros don't begin paragraphs.
+	Pass opened commands through @tab and @item.
+	Every @def* is considered to have arguments.
+	continue the @def* line if there is a @ at the end line.
+	* texi2html.pl, texi2html.init: Handle @float, @listoffloats, 
+	@caption, @shortcaption,
+	@ordf, @ordm, @registeredsymbol, @deftypecv, @LaTeX, @indicateurl,
+	@docbook, @ifdocbook, @ifnotdocbook,
+	@comma, @headitem, @quotation second arg, @acronym second arg.
+	@url is now a synonym for @uref.
+	* doc/texi2html.texi: bring up-to-date.
+
 2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* T2h_i18n.pl, texi2html.pl: pass the state to the internationalized

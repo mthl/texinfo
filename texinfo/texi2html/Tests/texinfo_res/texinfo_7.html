@@ -7,7 +7,6 @@ printed manual from a single source.
 Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
 Free Software Foundation, Inc.
 
-
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
@@ -207,8 +206,7 @@ root.
 hierarchically organized (see section <a href="#SEC95">Creating Pointers with <code>makeinfo</code></a>), but the
 pointer relationships still obtain.
 
-</p><blockquote>
-<p><strong>Please Note:</strong> `Next' refers to the next node at the same
+</p><blockquote><p><strong>Please Note:</strong> `Next' refers to the next node at the same
 hierarchical level in the manual, not necessarily to the next node
 within the Texinfo file.  In the Texinfo file, the subsequent node may
 be at a lower level--a section-level node most often follows a
@@ -218,7 +216,6 @@ exception to this rule.  Since the `Top' node is the only node at that
 level, `Next' refers to the first following node, which is almost always
 a chapter or chapter-level node.)
 </p></blockquote>
-
 <p>To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
 2.  (See section <a href="texinfo_8.html#SEC97">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
@@ -310,12 +307,10 @@ about nodes in Info.)
 immediately after an <code>@node</code> line--for example, an
 <code>@section</code> or <code>@subsection</code> line.  (See section <a href="texinfo_6.html#SEC74">Structuring Command Types</a>.)
 
-</p><blockquote>
-<p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
+</p><blockquote><p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
 only with Texinfo files in which <code>@node</code> lines are followed by chapter
 structuring lines.  See section <a href="texinfo_3.html#SEC28">Updating Requirements</a>.
 </p></blockquote>
-
 <p>TeX uses <code>@node</code> lines to identify the names to use for cross
 references.  For this reason, you must write <code>@node</code> lines in a
 Texinfo file that you intend to format for printing, even if you do not

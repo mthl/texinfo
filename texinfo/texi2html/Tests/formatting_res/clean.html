@@ -43,6 +43,7 @@ kbd: ``simple-double--three---four----''
 
 
 @TeX TeX
+@LaTeX LaTeX
 @bullet *
 @copyright C
 @dots ...
@@ -69,6 +70,10 @@ kbd: ``simple-double--three---four----''
 @exclamdown ! upside-down
 @questiondown ? upside-down
 @pounds pound sterling
+@registeredsymbol R
+@ordf a
+@ordm o
+@comma ,
 
 @acronym{--a} -a
 @asis{--a} -a
@@ -96,11 +101,12 @@ kbd: ``simple-double--three---four----''
 @strong{--a} -a
 @t{--a} -a
 @titlefont{--a} -a
+@indicateurl{--a} --a
 @uref{--a,--b} --a,-b
 @uref{--a} --a
 @uref{,--b} ,-b
-@url{--a,--b} -a,-b
-@url{--a,} -a,
+@url{--a,--b} --a,-b
+@url{--a,} --a,
 @url{,--b} ,-b
 @var{--a} -a
 @verb{:--a:} --a
@@ -131,7 +137,6 @@ kbd: ``simple-double--three---four----''
 @image{f--ile,,,a--lt} f--ile
 @image{f--ile,,,,e--xt} f--ile
 @image{f--ile,az,er,alt,e--xt} f--ile
-
 
 
 a q-uotation
@@ -447,6 +452,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 
 </p>
 <p>@TeX TeX
+@LaTeX LaTeX
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
@@ -473,8 +479,12 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
 
-</p><p><code>@acronym{--a}</code> -a
+</p><p><code>@acronym{--a}</code> <acronym>-a</acronym>
 <code>@asis{--a}</code> -a
 <code>@b{--a}</code> <b>-a</b>
 <code>@cite{--a}</code> <cite>-a</cite>
@@ -500,12 +510,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@strong{--a}</code> <strong>-a</strong>
 <code>@t{--a}</code> <tt>-a</tt>
 <code>@titlefont{--a}</code> <h1 class="titlefont">-a</h1>
+<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">-b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> -b
-<code>@url{--a,--b}</code> <a href="-a,-b">-a,-b</a>
-<code>@url{--a,}</code> <a href="-a,">-a,</a>
-<code>@url{,--b}</code> <a href=",-b">,-b</a>
+<code>@url{--a,--b}</code> <a href="--a">-b</a>
+<code>@url{--a,}</code> <a href="--a">--a</a>
+<code>@url{,--b}</code> -b
 <code>@var{--a}</code> <var>-a</var>
 <code>@verb{:--a:}</code> <tt>--a</tt>
 <code>@w{--a}</code> -a
@@ -536,10 +547,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@image{f--ile,,,,e--xt}</code> <img src="./f--ile.e--xt" alt="f--ile">
 <code>@image{f--ile,az,er,alt,e--xt}</code> <img src="./f--ile.e--xt" alt="alt">
 
-</p><blockquote>
-<p>a q-uotation
+</p><blockquote><p>a q-uotation
 </p></blockquote>
-
 <ul class="toc">
 <li> i-temize
 </li></ul>
@@ -860,6 +869,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 
 </p>
 <p>@TeX TeX
+@LaTeX LaTeX
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
@@ -886,8 +896,12 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
 
-</p><p><code>@acronym{--a}</code> -a
+</p><p><code>@acronym{--a}</code> <acronym>-a</acronym>
 <code>@asis{--a}</code> -a
 <code>@b{--a}</code> <b>-a</b>
 <code>@cite{--a}</code> <cite>-a</cite>
@@ -913,12 +927,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@strong{--a}</code> <strong>-a</strong>
 <code>@t{--a}</code> <tt>-a</tt>
 <code>@titlefont{--a}</code> <h1 class="titlefont">-a</h1>
+<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">-b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> -b
-<code>@url{--a,--b}</code> <a href="-a,-b">-a,-b</a>
-<code>@url{--a,}</code> <a href="-a,">-a,</a>
-<code>@url{,--b}</code> <a href=",-b">,-b</a>
+<code>@url{--a,--b}</code> <a href="--a">-b</a>
+<code>@url{--a,}</code> <a href="--a">--a</a>
+<code>@url{,--b}</code> -b
 <code>@var{--a}</code> <var>-a</var>
 <code>@verb{:--a:}</code> <tt>--a</tt>
 <code>@w{--a}</code> -a
@@ -950,10 +965,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@image{f--ile,az,er,alt,e--xt}</code> <img src="./f--ile.e--xt" alt="alt">
 
 </p>
-<blockquote>
-<p>a q-uotation
+<blockquote><p>a q-uotation
 </p></blockquote>
-
 <ul class="toc">
 <li> i-temize
 </li></ul>
@@ -1275,6 +1288,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 
 
 @TeX TeX
+@LaTeX LaTeX
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
@@ -1301,8 +1315,12 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
 
-<code>@acronym{--a}</code> --a
+<code>@acronym{--a}</code> <acronym>--a</acronym>
 <code>@asis{--a}</code> --a
 <code>@b{--a}</code> <b>--a</b>
 <code>@cite{--a}</code> <cite>--a</cite>
@@ -1328,12 +1346,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 <code>@strong{--a}</code> <strong>--a</strong>
 <code>@t{--a}</code> <tt>--a</tt>
 <code>@titlefont{--a}</code> --a
+<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">--b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> --b
-<code>@url{--a,--b}</code> <a href="--a,--b">--a,--b</a>
-<code>@url{--a,}</code> <a href="--a,">--a,</a>
-<code>@url{,--b}</code> <a href=",--b">,--b</a>
+<code>@url{--a,--b}</code> <a href="--a">--b</a>
+<code>@url{--a,}</code> <a href="--a">--a</a>
+<code>@url{,--b}</code> --b
 <code>@var{--a}</code> <var>--a</var>
 <code>@verb{:--a:}</code> <tt>--a</tt>
 <code>@w{--a}</code> --a
@@ -1365,10 +1384,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 <code>@image{f--ile,az,er,alt,e--xt}</code> [ alt ]
 
 
-</pre><blockquote>
-<pre class="example">a q--uotation
-</pre></blockquote>
-<pre class="example">
+</pre><blockquote><pre class="example">a q--uotation
+</pre></blockquote><pre class="example">
 </pre><ul class="toc">
 <li><pre class="example"> i--temize
 </pre></li></ul>

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.74 2004-04-28 01:05:32 pertusus Exp $
+# $Id: texi2html.init,v 1.75 2004-06-21 22:04:24 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1491,11 +1491,13 @@ $simple_map_pre{'*'} = "\n";
 #
 %things_map = (
                'TeX'          => 'TeX',
+               'LaTeX'          => 'LaTeX',
 # pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
 #               'br', '<br>',     # paragraph break
                'bullet'       => '*',
 #               #'copyright' => '(C)',
                'copyright'    => '&copy;',
+               'registeredsymbol'   => '&reg;',
                'dots'         => '<small class="dots">...</small>',
                'enddots'      => '<small class="enddots">....</small>',
                'equiv'        => '==',
@@ -1522,7 +1524,10 @@ $simple_map_pre{'*'} = "\n";
                'L'            => '/L',
                'exclamdown'   => '&iexcl;',
                'questiondown' => '&iquest;',
-               'pounds'       => '&pound;'
+               'pounds'       => '&pound;',
+               'ordf'         => '&ordf;',
+               'ordm'         => '&ordm;',
+               'comma'        => ',',
              );
 
 # This map is used in preformatted environments
@@ -1551,8 +1556,10 @@ $pre_map{'enddots'} = '....';
 
 %ascii_things_map = (
                'TeX'          => 'TeX',
+               'LaTeX'          => 'LaTeX',
                'bullet'       => '*',
                'copyright' => '(C)',
+               'registeredsymbol'   => '(R)',
                'dots'         => '...',
                'enddots'      => '....',
                'equiv'        => '==',
@@ -1577,7 +1584,10 @@ $pre_map{'enddots'} = '....';
                'L'            => '/L',
                'exclamdown'   => '?',
                'questiondown' => '!',
-               'pounds'       => '#'
+               'pounds'       => '#',
+               'ordf'         => 'a',
+               'ordm'         => 'o',
+               'comma'        => ',',
 );
 
 #
@@ -1606,8 +1616,10 @@ $pre_map{'enddots'} = '....';
 # produced 
 %texi_map = (
                'TeX', 'TeX',
+               'LaTeX', 'LaTeX',
                'bullet', '*',
                'copyright', 'C',
+               'registeredsymbol', 'R',
                'dots', '...',
                'enddots', '....',
                'equiv', '==',
@@ -1633,8 +1645,11 @@ $pre_map{'enddots'} = '....';
                #'exclamdown', '&iexcl;',
                'questiondown', '? upside-down',
                #'questiondown', '&iquest;',
-               'pounds', 'pound sterling'
+               'pounds', 'pound sterling',
                #'pounds', '&pound;'
+               'ordf'         => 'a',
+               'ordm'         => 'o',
+               'comma'        => ',',
             );
 
 # taken from
@@ -1650,6 +1665,7 @@ $pre_map{'enddots'} = '....';
 %unicode_map = (
                'bullet'       => '2022',
                'copyright'    => '00A9',
+               'registeredsymbol'   => '00AE',
                'dots'         => '2026',
                'enddots'      => '',
                'equiv'        => '2261',
@@ -1674,7 +1690,10 @@ $pre_map{'enddots'} = '....';
                'L'            => '0141',
                'exclamdown'   => '00A1',
                'questiondown' => '00BF',
-               'pounds'       => '00A3'
+               'pounds'       => '00A3',
+               'ordf'         => '00AA',
+               'ordm'         => '00BA',
+               'comma'        => '002C',
              );
 
 %ascii_character_map = (
@@ -1768,7 +1787,6 @@ our %old_style_map = (
 
 # default is {'args' => ['normal'], 'attribute' => ''},   
 %style_map = (
-      'acronym',    {},
       'asis',       {},
       'b',          {'attribute' => 'b'},
       'cite',       {'attribute' => 'cite'},
@@ -1798,7 +1816,9 @@ our %old_style_map = (
                       'args' => ['code', 'normal', 'normal']},
       #'uref',       {'function' => \&t2h_default_uref, 
       #                'args' => ['normal', 'normal', 'normal']},
-      'url',        {'function' => \&t2h_default_url},
+      'url',        {'function' => \&t2h_default_uref, 
+                      'args' => ['code', 'normal', 'normal']},
+      'indicateurl', {'args' => ['code'], 'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
       'var',        {'attribute' => 'var'},
       'verb',       {'args' => ['code'], 'attribute' => 'tt'},
       'titlefont',  {'function' => \&t2h_default_titlefont},
@@ -2378,6 +2398,14 @@ sub t2h_default_no_texi_image($$$$)
     return $args[0];
 }
 
+sub t2h_default_no_texi_acronym($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $acronym_texi = $args->[0];
+    return (main::remove_texi($acronym_texi)); 
+}
+
 sub t2h_remove_command($$$$)
 {
     return '';
@@ -2422,6 +2450,9 @@ my %special_style = (
            'image'        => { 'args' => ['keep'], 'function' => \&main::do_image },
            'anchor'       => { 'args' => ['keep'], 'function' => \&main::do_anchor_label },
            'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
+           'shortcaption' => { 'args' => ['keep'], 'function' => \&main::do_caption_shortcaption },
+           'caption' => { 'args' => ['keep'], 'function' => \&main::do_caption_shortcaption },
+           'acronym',    {'args' => ['keep','keep'], 'function' => \&main::do_acronym},
 );
 
 # FIXME the unless defined(.... are now unusefull because the user can
@@ -2431,6 +2462,9 @@ my %special_style = (
 $style_map_texi{'image'} = { 'args' => ['keep'],
        'function' => \&t2h_default_no_texi_image }
     unless (defined($style_map_texi{'image'}));
+
+$style_map_texi{'acronym'} = { 'args' => ['keep','keep'],
+       'function' => \&t2h_default_no_texi_acronym };
 
 foreach my $special (keys(%special_style))
 {
@@ -2481,7 +2515,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 }
 
 %format_map = (
-       'quotation'   =>  'blockquote',
+#       'quotation'   =>  'blockquote',
        # lists
 #       'itemize'     =>  'ul',
        'enumerate'   =>  'ol',
@@ -2549,7 +2583,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'deftypeop', [ 'f', '{category', '{class' , '{type', '{name', 'arg' ],
     'deftypevr', [ 'v', '{category', '{type', '{name' ],
     'defcv', [ 'v', '{category', '{class' , '{name' ],
-    'deftypecv_command', [ 'v', '{category', '{class' , '{type', '{name' ],
+    'deftypecv', [ 'v', '{category', '{class' , '{type', '{name' ],
     'defop', [ 'f', '{category', '{class' , '{name', 'arg' ],
     'deftp', [ 't', '{category', '{name', 'arg' ],
     # basic x commands
@@ -2563,7 +2597,7 @@ $complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
     'deftypefun', 'deftypefn {Function}',
     'deftypevar', 'deftypevr Variable',
     'defivar', 'defcv {Instance Variable}',
-    'deftypeivar', 'deftypecv_command {Instance Variable}',
+    'deftypeivar', 'deftypecv {Instance Variable}',
     'defmethod', 'defop Method',
     'deftypemethod', 'deftypeop Method',
          );
@@ -2700,6 +2734,16 @@ $index_summary_file_begin = \&t2h_default_index_summary_file_begin;
 $empty_line               = \&t2h_default_empty_line;
 $unknown                  = \&t2h_default_unknown;
 $unknown_style            = \&t2h_default_unknown_style;
+$caption_shortcaption     = \&t2h_caption_shortcaption;
+$float                     = \&t2h_default_float;
+$listoffloats             = \&t2h_default_listoffloats;
+$listoffloats_entry       = \&t2h_default_listoffloats_entry;
+$listoffloats_caption     = \&t2h_default_listoffloats_caption;
+$listoffloats_float_style = \&t2h_default_listoffloats_float_style;
+$listoffloats_style       = \&t2h_default_listoffloats_style;
+$acronym                  = \&t2h_default_acronym;
+$quotation                = \&t2h_default_quotation;
+$quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
 
 # This function is called whenever a complex format is processed
 #
@@ -2756,6 +2800,159 @@ sub t2h_default_unknown_style($$)
     my ($result, $result_text, $message);
     return (0, undef, undef);
 }
+
+sub t2h_caption_shortcaption($)
+{
+    my $float = shift;
+    my $caption_lines;
+    my $shortcaption_lines;
+    my $style = $float->{'style_texi'};
+    if (defined($float->{'nr'}))
+    {
+         my $nr = $float->{'nr'};
+         if ($style ne '')
+         {
+              $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+         }
+         else 
+         {
+              $style = $nr;
+         }
+    }
+    
+    if (defined($float->{'caption_texi'}))
+    {
+         @$caption_lines = @{$float->{'caption_texi'}};
+         if (defined($style))
+         {
+              $caption_lines->[0] = '@strong{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
+         }
+         else
+         {
+              $caption_lines->[0] = '@strong{' .  $caption_lines->[0];
+         }
+         push @$caption_lines, "}\n";
+    }
+    elsif (defined($style))
+    {
+         $caption_lines->[0] = '@strong{' . $style . '}' . "\n";
+    }
+    if (defined($float->{'shortcaption_texi'}))
+    {
+         @$shortcaption_lines = @{$float->{'shortcaption_texi'}};
+         if (defined($style))
+         {
+              $shortcaption_lines->[0] = '@strong{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
+         }
+         else
+         {
+              $shortcaption_lines->[0] = '@strong{' .  $shortcaption_lines->[0];
+         }
+         push @$shortcaption_lines, "}\n";
+    }
+    elsif (defined($style))
+    {
+         $shortcaption_lines->[0] = '@strong{' . $style . '}' . "\n";
+    }
+    return ($caption_lines, $shortcaption_lines);
+}
+
+sub t2h_default_float($$$$$)
+{
+    my $text = shift;
+    my $float = shift;
+    my $caption = shift;
+    my $shortcaption = shift;
+    
+    my $label = '';
+    if (exists($float->{'id'}))
+    {
+        $label = &$anchor($float->{'id'});
+    }
+    my $caption_text = '';
+    
+    if (defined($float->{'caption_texi'}))
+    {
+         $caption_text = $caption;
+    }
+    elsif (defined($float->{'shortcaption_texi'}))
+    {
+         $caption_text = $shortcaption;
+    }
+    elsif (defined($caption))
+    {
+         $caption_text = $caption;
+    }
+    
+    return '<div class="float">' . "$label\n" . $text . '</div>' . $caption_text;
+}
+
+sub t2h_default_listoffloats_style($)
+{
+    my $style_texi = shift;
+    return ($style_texi);
+}
+
+sub t2h_default_listoffloats_float_style($$)
+{
+    my $style_texi = shift;
+    my $float = shift;
+    
+    my $style = $float->{'style_texi'};
+    if (defined($float->{'nr'}))
+    {
+         my $nr = $float->{'nr'};
+         if ($style ne '')
+         {
+              $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+         }
+         else 
+         {
+              $style = $nr;
+         }
+    }
+    return $style;
+}
+
+sub t2h_default_listoffloats_caption($)
+{
+    my $float = shift;
+    if (defined($float->{'shortcaption_texi'}))
+    {
+         return [ @{$float->{'shortcaption_texi'}} ];
+    }
+    elsif (defined($float->{'caption_texi'}))
+    {
+         return [ @{$float->{'caption_texi'}} ];
+    }
+    return [ ];
+}
+
+sub t2h_default_listoffloats_entry($$$$)
+{
+    my $style_texi = shift;
+    my $float = shift;
+    my $float_style = shift;
+    my $caption = shift;
+    my $href = shift;
+
+    return '<dt>' . &$anchor('', $href, $float_style) . '</dt><dd>' . $caption
+. '</dd>' . "\n";
+}
+
+sub t2h_default_listoffloats($$$)
+{
+    my $style_texi = shift;
+    my $style = shift;
+    my $float_entries = shift;
+
+    my $result = "<dl class=\"listoffloats\">\n" ;
+    foreach my $float_entry (@$float_entries)
+    {
+         $result .= $float_entry;
+    }
+    return $result . "</dl>\n";
+} 
 
 # This function is used to protect characters which are special in html 
 # in inline text:  &, ", <, and >. 
@@ -3151,21 +3348,32 @@ sub t2h_default_table_line($)
 }
 
 # row in multitable
-sub t2h_default_row($)
+sub t2h_default_row($$)
 {
     my $text = shift;
+    my $macro = shift;
 
     if ($text =~ /\S/)
     {
+         if ($macro eq 'headitem')
+         {
+              return '<thead><tr>' . $text . '</tr></thead>' . "\n";
+         }
          return '<tr>' . $text . '</tr>' . "\n";
     }
     return '';
 }
 
 # cell in multitable
-sub t2h_default_cell($)
+sub t2h_default_cell($$)
 {
     my $text = shift;
+    my $row_macro = shift;
+
+    if ($row_macro eq 'headitem')
+    {
+        return '<th>' . $text . '</th>';
+    }
     return '<td>' . $text . '</td>';
 }
 
@@ -3583,6 +3791,52 @@ sub t2h_default_sp($$)
    my $preformatted = shift;
    return "<br>\n" x $number if (!$preformatted);
    return "\n" x $number;
+}
+
+sub t2h_default_acronym($$$$$$)
+{
+    my $acronym_texi = shift;
+    my $acronym_text = shift;
+    my $with_explanation = shift;
+    my $explanation_lines = shift;
+    my $explanation_text = shift;
+    my $explanation_unformatted = shift;
+    
+    my $opening = '<acronym>';
+    if (defined($explanation_unformatted)) 
+    {
+        $opening = "<acronym title=\"$explanation_unformatted\">";
+    }
+    if ($with_explanation)
+    {
+        return &$I('%{acronym} (%{explanation})', {'acronym' => $opening . $acronym_text . '</acronym>', 'explanation' => $explanation_text})
+    }
+    else
+    {
+        return  $opening . $acronym_text . '</acronym>';
+    }
+}
+
+sub t2h_default_quotation_prepend_text($$)
+{
+    my $style = shift;
+    my $text = shift;
+    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1}) if (defined($text));
+    return undef;
+}
+
+sub t2h_default_quotation($$$$)
+{
+    my $text = shift;
+    my $argument_text = shift;
+    my $argument_style_texi = shift;
+    my $argument_style_id = shift;
+#    if (defined($argument_text))
+#    {
+#         return '<blockquote>' . &$I('%{style}:%{quotation}',
+#          {'style' => $argument_text, 'quotation' => $text}) . '</blockquote>' ;
+#    }
+    return '<blockquote>' . $text . '</blockquote>';
 }
 
 # format a whole index

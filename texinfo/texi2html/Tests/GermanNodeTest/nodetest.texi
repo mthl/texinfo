@@ -286,6 +286,7 @@ A second one with accented char @anchor{@'o-o}.
 * @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
 * @dotless{i}::  @dotless{i} dotless i.
 * @dotless{j}::  @dotless{j} dotless j.
+* @comma{}::     @comma{} comma
 @end menu
 @c
 @node @aa{},,,rest
@@ -347,5 +348,7 @@ Test dotaccent.
 	@@ followed by space @ 
 	@@*: @* and text followin @@*.
 
+@node @comma{},,,rest
+@section @comma{}
 @contents
 @bye

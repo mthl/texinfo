@@ -7,7 +7,6 @@ printed manual from a single source.
 Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
 Free Software Foundation, Inc.
 
-
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
@@ -302,10 +301,8 @@ formatting commands to use single quotation marks around the text.
 
 <p>produces this in the printed manual:
 
-</p><blockquote>
-<p>The function returns <code>nil</code>.
+</p><blockquote><p>The function returns <code>nil</code>.
 </p></blockquote>
-
 
 <p>Here are some cases for which it is preferable not to use <code>@code</code>:
 
@@ -432,11 +429,9 @@ type the characters @kbd{l o g o u t @key{RET}}.
 
 <p>This produces:
 
-</p><blockquote>
-<p>To give the <code>logout</code> command,
+</p><blockquote><p>To give the <code>logout</code> command,
 type the characters <kbd>l o g o u t <kbd>RET</kbd></kbd>.
 </p></blockquote>
-
 <p>(Also, this example shows that you can add spaces for clarity.  If you
 really want to mention a space character as one of the characters of
 input, write <kbd>@key{SPC}</kbd> for it.)
@@ -482,8 +477,7 @@ includes one or more keys that are described by name.
 <a name="IDX128"></a>
 <a name="IDX129"></a>
 
-</p><blockquote>
-<dl compact="compact">
+</p><blockquote><dl compact="compact">
 <dt><tt> SPC</tt></dt>
 <dd><p>Space
 </p></dd>
@@ -517,7 +511,6 @@ it might be better to call this character <kbd>C-j</kbd>.
 </p></dd>
 </dl>
 </blockquote>
-
 <a name="IDX130"></a>
 <p>There are subtleties to handling words like `meta' or `ctrl' that are
 names of modifier keys.  When mentioning a character in which the
@@ -561,11 +554,9 @@ use the regexp @samp{foo$}.
 
 <p>produces
 
-</p><blockquote>
-<p>To match `<samp>foo</samp>' at the end of the line, use the regexp
+</p><blockquote><p>To match `<samp>foo</samp>' at the end of the line, use the regexp
 `<samp>foo$</samp>'.
 </p></blockquote>
-
 <p>Any time you are referring to single characters, you should use
 <code>@samp</code> unless <code>@kbd</code> or <code>@key</code> is more appropriate.
 Also, you may use <code>@samp</code> for entire statements in C and for entire
@@ -586,12 +577,10 @@ period are outside of the braces:
 
 <p>This produces:
 
-</p><blockquote>
-<p>In English, the vowels are `<samp>a</samp>', `<samp>e</samp>',
+</p><blockquote><p>In English, the vowels are `<samp>a</samp>', `<samp>e</samp>',
 `<samp>i</samp>', `<samp>o</samp>', `<samp>u</samp>',  and sometimes
 `<samp>y</samp>'.
 </p></blockquote>
-
 
 <hr size="6">
 <a name="NOD112"></a>
@@ -684,10 +673,8 @@ type @samp{rm @var{filename}}.
 
 <p>produces
 
-</p><blockquote>
-<p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
+</p><blockquote><p>To delete file <var>filename</var>, type `<samp>rm <var>filename</var></samp>'.
 </p></blockquote>
-
 
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
 <code>@samp</code>, <code>@file</code>, etc.)
@@ -750,10 +737,8 @@ For example:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The @env{PATH} environment variable &hellip;
 </pre></td></tr></table><p>produces
-</p><blockquote>
-<p>The <code>PATH</code> environment variable &hellip;
+</p><blockquote><p>The <code>PATH</code> environment variable &hellip;
 </p></blockquote>
-
 
 <hr size="6">
 <a name="NOD115"></a>
@@ -790,11 +775,9 @@ the @file{/usr/local/emacs/lisp} directory.
 
 <p>produces
 
-</p><blockquote>
-<p>The `<tt>.el</tt>' files are in
+</p><blockquote><p>The `<tt>.el</tt>' files are in
 the `<tt>/usr/local/emacs/lisp</tt>' directory.
 </p></blockquote>
-
 
 <hr size="6">
 <a name="NOD116"></a>
@@ -825,10 +808,8 @@ For example:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The command @command{ls} lists directory contents.
 </pre></td></tr></table><p>produces
-</p><blockquote>
-<p>The command <code>ls</code> lists directory contents.
+</p><blockquote><p>The command <code>ls</code> lists directory contents.
 </p></blockquote>
-
 <p>You should write the name of a program in the ordinary text font, rather
 than using <code>@command</code>, if you regard it as a new English word,
 such as `Emacs' or `Bison'.
@@ -867,10 +848,8 @@ For example:
 
 </p><table><tr><td>&nbsp;</td><td><pre class="example">The option @option{-l} produces a long listing.
 </pre></td></tr></table><p>produces
-</p><blockquote>
-<p>The option `<samp>-l</samp>' produces a long listing.
+</p><blockquote><p>The option `<samp>-l</samp>' produces a long listing.
 </p></blockquote>
-
 <p>In tables, putting options inside <code>@code</code> produces a
 more pleasing effect.
 
@@ -908,10 +887,8 @@ example:
 
 <p>produces
 
-</p><blockquote>
-<p>Getting rid of a file is called <em>deleting</em> it.
+</p><blockquote><p>Getting rid of a file is called <em>deleting</em> it.
 </p></blockquote>
-
 <p>As a general rule, a sentence containing the defining occurrence of a
 term should be a definition of the term.  The sentence does not need
 to say explicitly that it is a definition, but it should contain the
@@ -971,7 +948,7 @@ See section <a href="texinfo_9.html#SEC108"><code>@xref</code></a>.
 <h3 class="subsection"> 9.1.13 <code>@acronym</code>{<var>acronym</var>} </h3>
 
 <p>Use the <code>@acronym</code> command for abbreviations written in all
-capital letters, such as `NASA'.  The abbreviation is given as
+capital letters, such as `<acronym>NASA</acronym>'.  The abbreviation is given as
 the single argument in braces, as in `<samp>@acronym{NASA}</samp>'.  As
 a matter of style, or for particular abbreviations, you may prefer to
 use periods, as in `<samp>@acronym{F.B.I.}</samp>'.
@@ -1137,12 +1114,10 @@ preceding example.
 </p><p>In the Info output, <code>@emph</code> surrounds the text with underscores
 (`<samp>_</samp>'), and <code>@strong</code> puts asterisks around the text.
 
-</p><blockquote>
-<p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
+</p><blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
 Info will mistake the combination for a cross reference.  Use a phrase
 such as <strong>Please note</strong> or <strong>Caution</strong> instead.
 </p></blockquote>
-
 
 <hr size="6">
 <a name="NOD125"></a>

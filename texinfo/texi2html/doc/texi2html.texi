@@ -1856,7 +1856,7 @@ be redefined.
                                  strings.
 * Commands without argument:: 
 * Style and accent commands::    
-* Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image} and @code{@@sp}
+* Anchors images and spaces::    Formatting of @code{@@anchor}, @code{@@image}, @code{@@sp}, @code{@@acronym}
 * Text::                         Some characters are processed specially
 * Strings::                      @command{texi2html} write some strings in the output
                                  different for each languages
@@ -1865,12 +1865,13 @@ be redefined.
 * Alignement commands::           @code{@@center}, @code{@@flushleft}@dots{}
 * Paragraph and preformatted region::
 * Complex formats::              @code{@@example}, @code{@@display}@dots{}
-* Lists tables and quotation::
+* Lists tables::
 * Definitions::
 * Headings::
-* Special regions::              @code{@@verbatim}, @code{@@cartouche}
+* Special regions::              @code{@@verbatim}, @code{@@cartouche}, @code{@@quotation}
 * Menus::                    
 * Indices::
+* Floats and lists of floats::   @code{@@float} and @code{@@listoffloats}
 * Footnotes::
 * Other commands::               You can handle specifically other commands
 
@@ -1889,90 +1890,6 @@ menu comments (@pxref{Menus}). The preformatted regions are usually
 rendered in @code{<pre>} elements in @acronym{HTML}.
 The string context occurs when rendering strings without formatting elements,
 in comments or titles for example.
-
-Some @acronym{HTML} elements are not allowed in preformatted context.
-This is the case for @code{<table>}, for example.
-Thus, sometime, a function doing some formatting have to reopen and 
-reclose the preformatted context around the newly generated text.
-
-For example, we suppose we have @acronym{HTML} resulting from command 
-@example
-@@foo
-@@item an item
-@@end foo
-@end example
-looking like:
-@example
-<table><tr><td>an item</td></tr></table>
-@end example
-with @code{foo_item} the function formating the @code{@@foo} @code{@@item} 
-line.
-
-And the @acronym{HTML} resulting from:
-@example
-@@example
-some text
-@@end example
-@end example
-looks like 
-@example
-<pre>
-some text
-</pre>
-@end example
-
-Suppose that we want to handle the construct:
-@example
-@@example
-@@foo                                                                           
-@@item an item
-@@end foo
-@@end example
-@end example
-This could lead to the invalid @acronym{HTML}:
-@example
-<pre>
-<table><tr><td>an item</td></tr></table>
-</pre>
-@end example
-To avoid that, @code{@@foo} will close the preformatted context
-opened by @code{@@example}, and the function @code{foo_item} will have to
-reopen it, leading to
-@example
-<table><tr><td><pre>an item
-</pre></td></tr></table>
-@end example
-which is valid.
-
-All such function should allready have an hash reference passed as one of their
-arguments, the @dfn{state}. The only entry of interest in the corresponding
-hash is @code{'preformatted'} which is true if the function was called
-in a preformatted context.
-Opening and closing the preformatted context should then be done by calling 
-a function from the main program, @code{main::do_preformatted} with the 
-text and the state as arguments.
-
-Here is an example:
-
-@example
-sub foo_item
-@{
-my $arg1 = shift;
-my $arg2 = shift;
-my $state = shift;
-
-if ($state->@{'preformatted'@})
-@{
-    my $text;
-    # add some text to $text, 
-    # possibly using $arg1 and $arg2.
-    return '<td>' . main::do_preformatted($text, $state) . '</td>';
-@}
-else
-@{
-    .....
-@}
-@end example
 
 @c --------------------------------------------------------
 @node Commands without argument
@@ -2248,7 +2165,7 @@ the @@-command being formatted.
 
 The formatting of special simple commands is controlled by functions. To
 customize the output, the corresponding function references should be
-redefined.
+redefined. All these functions return a formatted text.
 
 The formatting of anchors is controlled by @variable{$anchor}, but the function
 associated with the function reference does more, it is usefull
@@ -2280,6 +2197,23 @@ The formatting of @code{@@sp} is controlled by:
 @deftypefn {Function Reference} $sp sp $number $preformatted
 @var{$number} is the numeric argument of @code{@@sp}.
 @var{$preformatted} is true if the @code{@@sp} appears in preformatted text.
+@end deftypefn
+
+The formatting of @code{@@acronym} is controlled by:
+@deftypefn {Function Reference} $acronym acronym $acronym_texi $acronym_text $with_explanation \@@explanation_lines $explanation_text $explanation_simply_formatted
+@var{$acronym_texi} is the acronym argument with texinfo @-commands, 
+@var{$acronym_text} is formatted. 
+
+The other arguments are related with
+the explanation, the second arg of the acronym. @var{$with_explanation} is 
+true if the second argument of the acronym command is present. If an
+explanation exists, coming from previous @code{@@acronym} or as an arg of this
+command, the other args are defined: @var{\@@explanation_lines} is a 
+reference on an array containing the unformatted explanation lines, 
+@var{$explanation_text} is the explanation text formatted,
+@var{$explanation_simply_formatted} is the explanation with a light formatting,
+unabling in @acronym{HTML} (or @acronym{XML}) the explanation to be in an 
+attribute.
 @end deftypefn
 
 @c --------------------------------------------------------
@@ -2544,20 +2478,20 @@ This function returns the whole complex format.
 @end deftypefn
 
 @c --------------------------------------------------------
-@node Lists tables and quotation
-@section Customizing the formatting of lists, tables and quotations
+@node Lists tables
+@section Customizing the formatting of lists and tables
 
 The formatting of lists and tables is done at two levels:
 @itemize
 @item 
-At the level of the whole region (table, list or quotation),
+At the level of the whole region (table or list),
 @item
 At the level of the individual items, rows or cells of the list or table.
 @end itemize
 
 @menu
 * Table and list items::
-* Whole table list and quotation::
+* Whole table list::
 @end menu
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -2640,16 +2574,18 @@ following a @code{@@item} or a @code{@@tab}.
 @var{$text} is the corresponding text. 
 @end deftypefn
 
-@deftypefn {Function Reference} $multitable_row row $text
+@deftypefn {Function Reference} $multitable_row row $text $item_command
 This function is used to format a multitable row. @var{$text} is
 the row text, with cells allready formatted with the @variable{$cell}
-function reference.
+function reference. @var{$item_command} is the command used to introduce 
+the row, such that it is possible to distinguish between @code{@@item} and
+@code{@@headitem}.
 @end deftypefn
 @end table
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node Whole table list and quotation
-@subsection Formatting of a whole table, list or quotation
+@node Whole table list
+@subsection Formatting of a whole table or list
 
 If the Texinfo command is a key of the @variable{%format_map}, the associated
 value is used to specify the formatting of the construct, otherwise a function 
@@ -2814,7 +2750,7 @@ the sectioning element name, with @code{@@raisesections} and
 
 @c --------------------------------------------------------
 @node Special regions
-@section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche})
+@section Formatting of special regions (@code{@@verbatim}, @code{@@cartouche}, @code{@@quotation})
 
 Regions corresponding with raw text, like @code{@@verbatim}, @code{@@html}
 or @code{@@tex} are formatted according to the following function reference:
@@ -2832,6 +2768,30 @@ function reference:
 @deftypefn {Function Reference} $cartouche cartouche $text
 @var{$text} is the text appearing within the cartouche.
 @end deftypefn
+
+The formatting of @code{@@quotation} is controlled by two function references.
+The first one is usefull in case the @code{@@quotation} has an argument, as
+it allows to prepend a string to the quotation text:
+
+@deftypefn {Function Reference} $prepended_string quotation_prepend_text $style $text
+@var{$style} is the first argument of the @code{@@quotation} if there are
+two arguments. @var{$text} is the second argument or the first if there is
+one argument. There are still @@-commands in these strings. This function
+can return a string which will be prepended to the quotation text.
+@end deftypefn
+
+The whole quotation is formatted by:
+
+@deftypefn {Function Reference} $quotation quotation $quotation_text $argument_text $argument_style_texi $argument_style_id
+@var{$quotation_text} is the quotation text, formatted, with the text 
+prepended by the function above. @var{$argument_text} is the second argument 
+of the @code{@@quotation} or the first if there is one argument, formatted.
+The other arguments are defiend if there are two arguments for the 
+@code{@@quotation}, @var{$argument_style_texi} is this argument, with 
+@@-commands, and  @var{$argument_style_id} is this argument transformed in 
+an identifier which can be used as an @acronym{XML} identifier.
+@end deftypefn
+
 
 @c --------------------------------------------------------
 @node Menus
@@ -3040,6 +3000,123 @@ appearing in that page formatted as above. @var{index_name} is the name of
 the index, the argument of @code{@@printindex}.
 @end deftypefn
 @end table
+
+@c --------------------------------------------------------
+@node Floats and lists of floats
+@section Floats and lists of floats
+
+Floats appear in the @code{@@float} environment, optionaly with a style
+and a label, and with optionnal @code{@@caption} and @code{@@shortcaption}. 
+Their list appear after a @code{@@listoffloats}. 
+
+A hash reference is associated with each float, it is available in some
+formatting functions. The keys are:
+@table @code
+@item caption_texi
+@itemx shortcaption_texi
+A reference on an array containing the caption or shortcaption lines,
+unformatted.
+@item style_texi
+The style with texi @@-commands.
+@item style_id
+The unique identifier associated with the style.
+@item nr
+The number with the same conventions than makeinfo (use the chapter number a 
+dot and then the number of the float of that style in the chapter, or an
+absolute number if in unnumbered).
+@item chapter_nr
+The number of the chapter containing the float.
+@item nr_in_chapter
+The number of the float in the chapter.
+@item absolut_nr
+The number of the float in the document.
+@item texi
+The label with @@-commands.
+@item id
+The unique identifier associated with the label. Usefull to make an anchor
+or a reference.
+@item element
+A reference on a structure representing the element the float appear in.
+@end table
+
+@menu
+* Floats::                           Formatting of floats
+* Lists of floats::                  Formatting the lists of floats 
+@end menu
+
+@node Floats
+@subsection Formatting a float
+
+First there is an occasion to construct a texinfo text for the caption, using
+the caption texinfo lines and the informations in the float structure.
+The returned lines will be formatted in the main program. A function reference
+is used here:
+
+@deftypefn {Function Reference} {(\@@caption_lines_returned, \@@shortcaption_lines_returned)} caption_shortcaption \%float \@@caption_lines \@@shortcaption_lines
+@var{\%float} is the structure defined above. @var{\@@caption_lines} and 
+@var{\@@shortcaption_lines} are references on arrays containing the 
+texinfo lines for caption and short caption. @var{\@@caption_lines_returned}
+and @var{\@@shortcaption_lines_returned} are references on an array 
+containing the texinfo lines for the caption and shortcaption.
+@end deftypefn
+
+Then the float is formatted with the following function reference:
+
+@deftypefn {Function Reference} $text float $float_text \%float $caption_text $shortcaption_text
+@var{$float_text} is the text appearing within the @code{@@float}, formatted.
+@var{\%float} is still the structure defined above. @var{$caption_text} and
+@var{$shortcaption_text} are the caption and short caption build with the
+above function and formatted.
+@end deftypefn
+
+@node Lists of floats
+@subsection Formatting lists of floats
+
+A list of floats is introduced by @code{@@listoffloats}. The argument of
+@code{@@listoffloats} is the @dfn{style}. First the style texinfo can be 
+modified with the following function reference:
+
+@deftypefn {Function Reference} $style_texi_returned listoffloats_style $style_texi
+@var{$style_texi} is the @code{@@listoffloats} argument with texinfo 
+@@-commands kept. It is possible to make changes to the @var{$style_texi} and
+return a modified string, still with @@-commands. The modified string
+is formatted in the main program.
+@end deftypefn
+
+After that, for each of the floats with that style, first there is a 
+possibility to modify the float style and the float caption before they 
+are formatted in the main program, with the following function references:
+
+@deftypefn {Function Reference} $float_style_texi_returned listoffloats_float_style $style_texi \%float
+@var{$style_texi} is the style, and @var{\%float} is the structure described 
+above. This function reference returns a style to be formatted in the
+main program.
+@end deftypefn
+
+@deftypefn {Function Reference} $caption_texi_returned listoffloats_caption \%float
+@var{\%float} is the structure described 
+above. This function reference returns a caption to be formatted in the
+main program.
+@end deftypefn
+
+Each entry is formatted by:
+
+@deftypefn {Function Reference} $listoffloats_entry listoffloats_entry $style_texi \%float $float_style $caption $href
+@var{$style_texi} is the style with @@-commands, @var{$float_style} is the
+style returned by the above function and formatted. @var{$caption} is the
+caption returned by the above function formatted. @var{\%float} is the 
+structure corresponding with the float, and @var{$href} is an href pointing to
+the float location.
+@end deftypefn
+
+Lastly, the whole @code{@@listoffloats} is formatted by:
+
+@deftypefn {Function Reference} $listoffloats listoffloats $style_texi $style \@@listoffloats_entries
+@var{$style_texi} is the style with @@-commands, @var{$style} is the
+style returned by the above function and formatted. The array reference 
+@var{\@@listoffloats_entries} holds the entries formatted by the above
+function.
+@end deftypefn
 
 @c --------------------------------------------------------
 @node Footnotes

@@ -2,6 +2,13 @@ This file records noteworthy changes.
 
 1.72 ()
 
+* Handle texinfo 4.7 constructs:
+  @caption, @shortcaption, @ordf, @ordm, @registeredsymbol, @deftypecv, 
+  @LaTeX, @indicateurl, @docbook, @ifdocbook, @ifnotdocbook, @comma, 
+  @headitem, @quotation second arg, @acronym second arg.
+  @url is now a synonym for @uref. @ at the end of a @def* line continues the
+  line.
+
 1.70 (March 24 2004)
 
 * BUG FIXES

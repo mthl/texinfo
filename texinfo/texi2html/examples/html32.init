@@ -46,6 +46,8 @@ $raw               = \&t2h_html32_raw;
 $menu              = \&t2h_html32_menu;
 $foot_section      = \&t2h_html32_foot_section;
 $cartouche         = \&t2h_html32_cartouche;
+$listoffloats      = \&t2h_html32_listoffloats;
+$float             = \&t2h_html32_float;
 
 # &quot; is not in html 3.2
 sub t2h_html32_protect_text($)
@@ -153,3 +155,49 @@ sub t2h_html32_summary_letter($$$)
    my $identifier = shift;
    return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>');
 }
+
+sub t2h_html32_float($$$$$)
+{
+    my $text = shift;
+    my $float = shift;
+    my $caption = shift;
+    my $shortcaption = shift;
+    
+    my $label = '';
+    if (exists($float->{'id'}))
+    {
+        $label = &$anchor($float->{'id'});
+    }
+    my $caption_text = '';
+    
+    if (defined($float->{'caption_texi'}))
+    {
+         $caption_text = $caption;
+    }
+    elsif (defined($float->{'shortcaption_texi'}))
+    {
+         $caption_text = $shortcaption;
+    }
+    elsif (defined($caption))
+    {
+         $caption_text = $caption;
+    }
+    
+    return "$label\n" . $text . $caption_text;
+}
+
+sub t2h_html32_listoffloats($$$)
+{
+    my $style_texi = shift;
+    my $style = shift;
+    my $float_entries = shift;
+
+    my $result = "<dl>\n" ;
+    foreach my $float_entry (@$float_entries)
+    {
+         $result .= $float_entry;
+    }
+    return $result . "</dl>\n";
+} 
+
+

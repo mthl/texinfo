@@ -7,7 +7,6 @@ printed manual from a single source.
 Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
 Free Software Foundation, Inc.
 
-
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
@@ -116,30 +115,24 @@ manual.
 
 <p>In TeX, a cross reference looks like this:
 
-</p><blockquote>
-<p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
+</p><blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
 </p></blockquote>
-
 
 <p>or like this
 
-</p><blockquote>
-<p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
+</p><blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
 </p></blockquote>
-
 <p>The <code>@xref</code> command does not generate a period or comma to end
 the cross reference in either the Info file or the printed output.
 You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
 differently.  See section <a href="pxref.html#SEC116"><code>@pxref</code></a>.)
 
-</p><blockquote>
-<p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
+</p><blockquote><p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
 the Info file and in the printed manual.
 </p></blockquote>
-
 <p><code>@xref</code> must refer to an Info node by name.  Use <code>@node</code>
 to define the node (see section <a href="Writing-a-Node.html#SEC90">How to Write an <code>@node</code> Line</a>).
 
@@ -150,12 +143,10 @@ commas.  Whitespace before and after these commas is ignored.
 up to four additional arguments.  Each of these variations produces a
 cross reference that looks somewhat different.
 
-</p><blockquote>
-<p><strong>Please note:</strong> Commas separate arguments in a cross reference;
+</p><blockquote><p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
 mistake them for separators.
 </p></blockquote>
-
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Cross-Reference-Parts.html#SEC107" title="Previous section in reading order"> &lt; </a>]</td>

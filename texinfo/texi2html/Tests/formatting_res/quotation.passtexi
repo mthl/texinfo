@@ -1,0 +1,43 @@
+quotation.texi(,2) 
+quotation.texi(,3) @setfilename quotation.info
+quotation.texi(,4) 
+quotation.texi(,5) @node Top
+quotation.texi(,6) @top Quotations
+quotation.texi(,7) 
+quotation.texi(,8) @quotation 
+quotation.texi(,9) A quot---ation
+quotation.texi(,10) @end quotation
+quotation.texi(,11) 
+quotation.texi(,12) @quotation Note
+quotation.texi(,13) A Note
+quotation.texi(,14) @end quotation
+quotation.texi(,15) 
+quotation.texi(,16) @quotation note
+quotation.texi(,17) A note
+quotation.texi(,18) @end quotation
+quotation.texi(,19) 
+quotation.texi(,20) @quotation Caution
+quotation.texi(,21) Caution
+quotation.texi(,22) @end quotation
+quotation.texi(,23) 
+quotation.texi(,24) @quotation Important
+quotation.texi(,25) Important
+quotation.texi(,26) @end quotation
+quotation.texi(,27) 
+quotation.texi(,28) @quotation Tip
+quotation.texi(,29) a Tip
+quotation.texi(,30) @end quotation
+quotation.texi(,31) 
+quotation.texi(,32) @quotation Warning
+quotation.texi(,33) a Warning.
+quotation.texi(,34) @end quotation
+quotation.texi(,35) 
+quotation.texi(,36) @quotation something @'e @TeX{}
+quotation.texi(,37) The something @'e @TeX{} is here.
+quotation.texi(,38) @end quotation
+quotation.texi(,39) 
+quotation.texi(,40) @quotation @@ at the end of line @
+quotation.texi(,41) A @@ at the end of the @@quotation line.
+quotation.texi(,42) @end quotation
+quotation.texi(,43) 
+quotation.texi(,44) @bye

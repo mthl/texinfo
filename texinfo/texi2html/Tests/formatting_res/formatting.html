@@ -46,6 +46,7 @@ kbd: ``simple-double--three---four----''
 @# @#
 
 @TeX TeX
+@LaTeX LaTeX
 @bullet *
 @copyright C
 @dots ...
@@ -72,7 +73,12 @@ kbd: ``simple-double--three---four----''
 @exclamdown ! upside-down
 @questiondown ? upside-down
 @pounds pound sterling
+@registeredsymbol R
+@ordf a
+@ordm o
+@comma ,
 
+@acronym{--a,an accronym @comma{} @enddots{}} -a
 @acronym{--a} -a
 @asis{--a} -a
 @b{--a} -a
@@ -99,11 +105,12 @@ kbd: ``simple-double--three---four----''
 @strong{--a} -a
 @t{--a} -a
 @titlefont{--a} -a
+@indicateurl{--a} --a
 @uref{--a,--b} --a,-b
 @uref{--a} --a
 @uref{,--b} ,-b
-@url{--a,--b} -a,-b
-@url{--a,} -a,
+@url{--a,--b} --a,-b
+@url{--a,} --a,
 @url{,--b} ,-b
 @var{--a} -a
 @verb{:--a:} --a
@@ -143,7 +150,6 @@ kbd: ``simple-double--three---four----''
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} @file{f--ile}@@@.
 
 
-
 a q-uotation
 
 
@@ -172,6 +178,7 @@ a q-uotation
  e-numerate
 
 
+ mu-ltitable headitem  another tab
  mu-ltitable item  multitable tab
 
 
@@ -212,7 +219,8 @@ c-ategory: d-effn_name a-rguments...
 d-effn
 
 
-cate-gory: de-ffn_name ar-guments...
+cate-gory: de-ffn_name ar-guments 
+   more args  even more so
 def-fn
 
 
@@ -350,6 +358,12 @@ d-eftypemethod
 @inforef{,,file name} 
 @inforef{,cross ref name, file name} 
 
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+
+
+@ref{s--ect@comma{}ion} 
+
  a
 l-ine
 
@@ -482,6 +496,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@#</code> @#
 
 </p><p>@TeX TeX
+@LaTeX LaTeX
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
@@ -508,8 +523,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
 
-</p><p><code>@acronym{--a}</code> -a
+</p><p><code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ....">-a</acronym> (an accronym , <small class="enddots">....</small>)
+<code>@acronym{--a}</code> <acronym title="an accronym , ....">-a</acronym>
 <code>@asis{--a}</code> -a
 <code>@b{--a}</code> <b>-a</b>
 <code>@cite{--a}</code> <cite>-a</cite>
@@ -535,12 +555,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@strong{--a}</code> <strong>-a</strong>
 <code>@t{--a}</code> <tt>-a</tt>
 <code>@titlefont{--a}</code> <h1 class="titlefont">-a</h1>
+<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">-b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> -b
-<code>@url{--a,--b}</code> <a href="-a,-b">-a,-b</a>
-<code>@url{--a,}</code> <a href="-a,">-a,</a>
-<code>@url{,--b}</code> <a href=",-b">,-b</a>
+<code>@url{--a,--b}</code> <a href="--a">-b</a>
+<code>@url{--a,}</code> <a href="--a">--a</a>
+<code>@url{,--b}</code> -b
 <code>@var{--a}</code> <var>-a</var>
 <code>@verb{:--a:}</code> <tt>--a</tt>
 <code>@w{--a}</code> -a
@@ -582,10 +603,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <br>
 <br>
 
-<blockquote>
-<p>a q-uotation
+<blockquote><p>a q-uotation
 </p></blockquote>
-
 <ul class="toc">
 <li> i-temize
 </li></ul>
@@ -620,6 +639,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 </li></ol>
 
 <table>
+<thead><tr><th><p> mu-ltitable headitem </p></th><th><p> another tab
+</p></th></tr></thead>
 <tr><td><p> mu-ltitable item </p></td><td><p> multitable tab
 </p></td></tr>
 </table>
@@ -649,7 +670,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 </p></dd></dl>
 
 <dl>
-<dt><u>cate-gory:</u> <b>de-ffn_name</b><i> ar-guments...</i>
+<dt><u>cate-gory:</u> <b>de-ffn_name</b><i> ar-guments &nbsp;   more args <br> even more so</i>
 <a name="IDX6"></a>
 </dt>
 <dd><p>def-fn
@@ -843,6 +864,12 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <code>@inforef{,,file name}</code> 
 <code>@inforef{,cross ref name, file name}</code> 
 
+</p><p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<a href="../a comma@comma{} in file/s-ect-ion.html">a , in cross ref: (a comma, in file)s-ect,ion</a> section `a comma, in title' in <cite>a , in manual name</cite>
+
+</p><p><code>@ref{s--ect@comma{}ion}</code> <a href="#SEC2">A section</a>
+
 </p><dl compact="compact">
 <dt>&bull; a</dt>
 <dd><p>l-ine
@@ -931,6 +958,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 <code>@#</code> @#
 
 @TeX TeX
+@LaTeX LaTeX
 @bullet &bull;
 @copyright &copy;
 @dots &hellip;
@@ -957,8 +985,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
 
-<code>@acronym{--a}</code> --a
+<code>@acronym{--a,an accronym @comma{} @enddots{}}</code> <acronym title="an accronym , ....">--a</acronym> (an accronym , ....)
+<code>@acronym{--a}</code> <acronym title="an accronym , ....">--a</acronym>
 <code>@asis{--a}</code> --a
 <code>@b{--a}</code> <b>--a</b>
 <code>@cite{--a}</code> <cite>--a</cite>
@@ -984,12 +1017,13 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 <code>@strong{--a}</code> <strong>--a</strong>
 <code>@t{--a}</code> <tt>--a</tt>
 <code>@titlefont{--a}</code> --a
+<code>@indicateurl{--a}</code> &lt;<code>--a</code>&gt;
 <code>@uref{--a,--b}</code> <a href="--a">--b</a>
 <code>@uref{--a}</code> <a href="--a">--a</a>
 <code>@uref{,--b}</code> --b
-<code>@url{--a,--b}</code> <a href="--a,--b">--a,--b</a>
-<code>@url{--a,}</code> <a href="--a,">--a,</a>
-<code>@url{,--b}</code> <a href=",--b">,--b</a>
+<code>@url{--a,--b}</code> <a href="--a">--b</a>
+<code>@url{--a,}</code> <a href="--a">--a</a>
+<code>@url{,--b}</code> --b
 <code>@var{--a}</code> <var>--a</var>
 <code>@verb{:--a:}</code> <tt>--a</tt>
 <code>@w{--a}</code> --a
@@ -1031,10 +1065,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 
 
 
-</pre><blockquote>
-<pre class="example">a q--uotation
-</pre></blockquote>
-<pre class="example">
+</pre><blockquote><pre class="example">a q--uotation
+</pre></blockquote><pre class="example">
 </pre><ul class="toc">
 <li><pre class="example"> i--temize
 </pre></li></ul>
@@ -1069,6 +1101,8 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 </pre></li></ol>
 <pre class="example">
 </pre><table>
+<thead><tr><th><pre class="example"> mu--ltitable headitem </pre></th><th><pre class="example"> another tab
+</pre></th></tr></thead>
 <tr><td><pre class="example"> mu--ltitable item </pre></td><td><pre class="example"> multitable tab
 </pre></td></tr>
 </table>
@@ -1097,7 +1131,7 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 </pre></dd></dl>
 <pre class="example">
 </pre><dl>
-<dt><u>cate-gory:</u> <b>de-ffn_name</b><i> ar-guments...</i>
+<dt><u>cate-gory:</u> <b>de-ffn_name</b><i> ar-guments &nbsp;   more args <br> even more so</i>
 <a name="IDX32"></a></dt>
 <dd><pre class="example">def--fn
 </pre></dd></dl>
@@ -1271,6 +1305,12 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 <code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 
 <code>@inforef{,cross ref name, file name}</code> 
+
+<code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+<a href="../a comma@comma{} in file/s-ect-ion.html">a , in cross ref: (a comma, in file)s--ect,ion</a> section `a comma, in title' in <cite>a , in manual name</cite>
+
+<code>@ref{s--ect@comma{}ion}</code> <a href="#SEC2">A section</a>
 
 </pre><dl compact="compact">
 <dt>&bull;<tt> a
@@ -1560,7 +1600,7 @@ This is a very simple texi manual.
 <p><a name="DOCF5" href="#FOOT5">(5)</a>
 
 </p><table><tr><td>&nbsp;</td><td><table class="menu" border="0" cellspacing="0">
-<tr><td><pre class="menu-preformatted"><a href="#SEC2">&bull; s--ection</a>::</pre><pre class="menu-preformatted"> s--ection
+<tr><td><pre class="menu-preformatted"><a href="#SEC2">&bull; s--ect,ion</a>::</pre><pre class="menu-preformatted"> s--ect,ion
 </pre></td></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Menu comment
 ``simple-double--three---four----''

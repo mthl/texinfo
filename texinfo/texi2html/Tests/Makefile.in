@@ -108,7 +108,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIR_TESTS = GermanNodeTest xemacs texinfo sectionning ccvs viper \
      viper_monolithic texi2html xemacs_frame index_table formatting macros \
-     nodes_texinfo singular
+     nodes_texinfo singular floats
 
 all: all-am
 

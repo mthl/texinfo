@@ -53,7 +53,7 @@ ul.toc {list-style: none}
 14. August 2000) describes the <code>texi2html</code> Perl
 script which converters
 <a href="http://www.texinfo.org">Texinfo</a>
-into HTML.
+into <acronym>HTML</acronym>.
 
 </p>
 <p>Please send bug reports about this manual to Karl Heinz
@@ -91,15 +91,15 @@ project. It uses a single source file to produce both
 online information and printed output.
 
 </p><p>It is often proposed to have a way to produce
-HTML from Texinfo sources, like the GNU-Info
+<acronym>HTML</acronym> from Texinfo sources, like the GNU-Info
 format. It is much simpler to create one converter instead
-of writing all documentation new in HTML, cause
+of writing all documentation new in <acronym>HTML</acronym>, cause
 there is so much documentation in Texinfo all over
 the world.
 
 </p><p>A few time ago <code>makeinfo</code> wasn't able to produce
-HTML output format, but there are needth to have
-HTML. This was the borning hour for
+<acronym>HTML</acronym> output format, but there are needth to have
+<acronym>HTML</acronym>. This was the borning hour for
 <code>texi2html</code>. The basic purpose of `<tt>texi2html</tt>'
 is to convert Texinfo documents into HTML.
 
@@ -130,10 +130,10 @@ is to convert Texinfo documents into HTML.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.1 Ways to get HTML </h2>
-<p>You would like to HTML files out of your Texinfo
+<p>You would like to <acronym>HTML</acronym> files out of your Texinfo
 files? There exist two ways which you can go.
 This first is to use <code>makeinfo</code> itself to produce
-HTML output. The second is to use
+<acronym>HTML</acronym> output. The second is to use
 <code>texi2html</code>.
 
 </p><hr size="6">
@@ -156,21 +156,21 @@ HTML output. The second is to use
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section"> 1.2 Why `<tt>texi2html</tt>' and not `<tt>makeinfo</tt>'? </h2>
-<p>The basic idea of <code>makeinfo</code>'s HTML
-output was to get an readable HTML output.
+<p>The basic idea of <code>makeinfo</code>'s <acronym>HTML</acronym>
+output was to get an readable <acronym>HTML</acronym> output.
 Nothing sophisticated nor good styling just readable.
 
 </p><p>The current development of texi2html is going into
 different direction.
 
 </p><p>The main purpose is to get better styling, better design
-etc. of the created HTML pages. This way is
+etc. of the created <acronym>HTML</acronym> pages. This way is
 supported using differnt command line options and of course
 possible changings of the initialization file to fit your
 own needs.
 
-</p><p>The main disadvantage of makeinfo's
-HTML output is your getting only one big file.
+</p><p>The main disadvantage of <acronym>makeinfo</acronym>'s
+<acronym>HTML</acronym> output is your getting only one big file.
 This is of course readable but not very usable. The problem
 of this is, while you like to have splitted chapters or
 nodes the Texinfo source has to be read at minimum twice
@@ -290,7 +290,7 @@ Take a look at optionexpand.
 <a name="SEC7"></a>
 <h1 class="chapter"> 5. Customizing page layout </h1>
 <p>This chapter is designed to help you to change the
-complete layout of the HTML output if you like to
+complete layout of the <acronym>HTML</acronym> output if you like to
 do so.
 
 </p>
@@ -453,7 +453,7 @@ up a new design with <code>texi2html</code>.
 etc. and specialy how to change them to get your own
 design.
 
-</p><p>ToC <code>T2H_DEFAULT_print_toc_frame</code> in
+</p><p><acronym>ToC</acronym> <code>T2H_DEFAULT_print_toc_frame</code> in
 `<tt>texi2html.init</tt>'
 
 </p><table class="menu" border="0" cellspacing="0">
@@ -598,11 +598,11 @@ EOT
 <a name="SEC17"></a>
 <h1 class="chapter"> 6. Customizing HTML </h1>
 <p>If you like to read the following section, it is assumed
-you are famillar with HTML. If not, you shouldn't
+you are famillar with <acronym>HTML</acronym>. If not, you shouldn't
 read this, cause you don't know what we are talking about.
 
 </p><p>Here you can find information how to change the
-HTML parts of a document. These are the
+<acronym>HTML</acronym> parts of a document. These are the
 header, body etc.
 
 </p><p>These are the defaults which are
@@ -739,7 +739,7 @@ $T2H_ADDRESS .= &quot;on &lt;I&gt;$T2H_TODAY&lt;/I&gt;&quot;;
 # can be used for &lt;style&gt; &lt;script&gt;, &lt;meta&gt; tags
 $T2H_EXTRA_HEAD = '';
 </pre></td></tr></table>
-<p>The default output into the HTML file.
+<p>The default output into the <acronym>HTML</acronym> file.
 See section <a href="#SEC41">DocType</a>.
 
 </p>
@@ -1442,7 +1442,7 @@ if set, uses section named <strong>Footnotes</strong> for glossary
 invisible destination anchors for index links (you can for
 instance use the `<tt>invisible.xbm</tt>' file shipped with
 this program). This is a workaround for a known bug of many
-WWW browsers, including Netscape. For me, it
+<acronym>WWW</acronym> browsers, including Netscape. For me, it
 works fine without it -- on the contrary: if there, it
 inserts space between headers and start of text (obachman
 3/99)
@@ -1658,9 +1658,9 @@ in references and menus
 <h2 class="section"> 8.14 Split </h2>
 <p>`<samp>-split section|chapter|none</samp>'
 if set to <strong>section</strong> (resp. <strong>chapter</strong>) create one
-HTML file per (sub)section (resp. chapter) and
+<acronym>HTML</acronym> file per (sub)section (resp. chapter) and
 separate pages for Top, ToC, Overview, Index, Glossary,
-About.  Otherwise, create a monolithic HTML file that
+About.  Otherwise, create a monolithic <acronym>HTML</acronym> file that
 contains the whole document.
 
 </p><p>#$T2H_SPLIT = 'section';
@@ -1744,7 +1744,7 @@ If not set, then result files are put into the current directory.
 </tr></table>
 <h2 class="section"> 8.17 Short extension </h2>
 <p>`<samp>-short_extn</samp>'
-If this is set, then all HTML files will have extension
+If this is set, then all <acronym>HTML</acronym> files will have extension
 `<tt>.htm</tt>' instead of `<tt>.html</tt>'. This is helpful when
 shipping the document to DOS-based systems.
 <var>$T2H_SHORTEXTN</var> = 0;
@@ -1798,7 +1798,7 @@ By default, this is the basename of the document
 <h2 class="section"> 8.19 Output filename </h2>
 
 <p>`<samp>-o filename</samp>'|`<samp>-out_file</samp>'
-If set, generate monolithic document output HTML
+If set, generate monolithic document output <acronym>HTML</acronym>
 into `<tt>filename</tt>'.
 
 </p><hr size="6">

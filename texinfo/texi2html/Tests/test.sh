@@ -200,6 +200,7 @@ test_texi sectionning raiselowersections.texi
 test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
+test_texi floats float.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting
@@ -209,8 +210,10 @@ test_texi formatting nodetest.texi "-split chapter -output ."
 test_texi formatting nodetest_latin1.texi 
 test_texi formatting nodetest_utf8.texi 
 test_texi formatting testkb.texi
+test_texi formatting quotation.texi
 test_texi formatting umlaut.texi
 test_texi formatting imbrications.texi "" 2
+test_texi formatting complex_command_in_simple_command.texi
 test_texi formatting verbatim_html.texi "-l2h -expand tex" 16
 test_texi formatting tex.texi "-l2h -expand tex" "no"
 test_texi formatting formats_in_menu.texi

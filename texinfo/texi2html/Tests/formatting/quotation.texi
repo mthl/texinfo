@@ -1,0 +1,44 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename quotation.info
+
+@node Top
+@top Quotations
+
+@quotation 
+A quot---ation
+@end quotation
+
+@quotation Note
+A Note
+@end quotation
+
+@quotation note
+A note
+@end quotation
+
+@quotation Caution
+Caution
+@end quotation
+
+@quotation Important
+Important
+@end quotation
+
+@quotation Tip
+a Tip
+@end quotation
+
+@quotation Warning
+a Warning.
+@end quotation
+
+@quotation something @'e @TeX{}
+The something @'e @TeX{} is here.
+@end quotation
+
+@quotation @@ at the end of line @
+A @@ at the end of the @@quotation line.
+@end quotation
+
+@bye

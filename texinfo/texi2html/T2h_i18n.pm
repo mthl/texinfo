@@ -338,7 +338,14 @@ sub get_string($;$$)
             elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
             {
                  $string =~ s/^\{(\w+)\}//;
-                 $result .= "\@\{$1\@\}";
+                 if (!$state->{'keep_texi'})
+                 {
+                      $result .= "\@\{$1\@\}";
+                 }
+                 else
+                 {
+                      $result .= "\{$1\}";
+                 }
             }
             else
             {
@@ -352,7 +359,14 @@ sub get_string($;$$)
             last;
         }
     }
-    $string = main::substitute_line($result, $state);
+    if (!$state->{'keep_texi'})
+    {
+         $string = main::substitute_line($result, $state);
+    }
+    else
+    {
+         $string = $result;
+    }
     $result = '';
     while ($string)
     {
