@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.18 2002-11-14 21:51:39 karl Exp $
+$Id: NEWS,v 1.19 2002-11-14 22:19:37 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -41,7 +41,7 @@ convenience, here's a url to one of the relevant sections:
     the Debian install-info.
   . support for bzip2-compressed files.
 * texindex:
-  . omit initial if the entire index is under one characters.
+  . omit initial if the entire index is under one character.
 * Distribution:
  . development sources now available under CVS, see
    http://savannah.gnu.org/projects/texinfo/
