@@ -301,6 +301,7 @@ use vars qw(
             %sec2seccount
             %seccount2sec
             %sec2number
+            %sec2index
             %seen
             %simple_map
             %style_map
@@ -343,7 +344,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.18 2003-01-28 13:59:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.19 2003-01-30 17:55:05 pertusus Exp $
 
 # Homepage:
 $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1102,6 +1103,7 @@ foreach ('_author', '_title', '_subtitle',
 %seccount2sec = ();		# section count to section
 %sec2number = ();		# section to number
 				# $number =~ ^[\dA-Z]+\.(\d+(\.\d+)*)?$
+%sec2index = ();                # 1 if section in index
 %number2sec = ();		# number to section
 %idx2node = ();                 # index keys to node
 %node2href = ();                # node to HREF
@@ -3228,6 +3230,7 @@ sub PrintIndex
     my $page;
     my $first_page = shift @$Pages;
     my $sec_name = $section;
+    $sec2index{$section} = 1;
 
     # remove section number
     $sec_name =~ s/.*? // if $sec_name =~ /^([A-Z]|\d+)\./;
@@ -3258,6 +3261,7 @@ sub PrintIndex
             push @sections, $node;
             $node2sec{$node} = $node;
             $sec2node{$node} = $node;
+            $sec2index{$node} = 1;
             $node2up{$node} = $section;
             $page->{href} = next_doc();
             $page->{name} = $node;
@@ -3579,63 +3583,117 @@ sub pass3
     #
     # split style substitutions
     #
-    my $text;
+    my @style_stack=();
+    my $in_index = 0;
+    my $text = '';
+
     while (@lines2)
     {
         $_ = shift(@lines2);
+
+        if (/<!--docid::SEC(\d+)::-->/)
+        {
+            if ($sec2index{$seccount2sec{$1}})
+            {
+                $in_index = 1;
+            }
+            else 
+            {
+                $in_index = 0;
+            }
+        }
+
         #
         # special case (protected sections)
         #
-        if (/^$PROTECTTAG/o)
+        if (/^$PROTECTTAG/o || $in_index)
         {
             push(@lines3, $_);
             next;
         }
+        &protect_texi ;
         #
         # split style substitutions
         #
-        $old = '';
-        while ($old ne $_)
+
+        while (1)
         {
-            $old = $_;
-            if (/\@(\w+)\{/)
+            if (s/^([^\{\}]*)\{//)
             {
-                ($before, $style, $after) = ($`, $1, $');
-                if (defined($style_map{$style}))
+                my $before_brace = $1;
+                $before_brace = '' unless (defined($before_brace));
+                my $before = '';
+                my $style = '';
+                if ($before_brace =~ /^([^\{\}]*)@(footnote[^\s]*?|\w+|,)$/)
                 {
-                    $_ = $after;
-                    $text = '';
-                    $after = '';
-                    $failed = 1;
-                    while (@lines2)
+                    $before = $1;
+                    $before = '' unless (defined($before));
+                    $style = $2;
+                }
+                else
+                {
+                    $before = $before_brace . '{';
+                    warn "$ERROR '{' without macro near $before_brace";
+                    $before .= '<!-- brace without macro --!>';
+                }
+                if (@style_stack)
+                {
+                    $style_stack[-1]->{'text'} .= $before;
+                }
+                else
+                {
+                    $text .= $before;
+                }
+                push (@style_stack, { 'style' => $style, 'text' => '' });
+            }
+            elsif (s/^([^\{\}]*)\}//)
+            {
+                my $before = $1;
+                $before = '' unless (defined($before));
+                if (@style_stack)
+                {
+                    my $style = pop @style_stack;
+                    my $result;
+                    if ($style->{'style'})
                     {
-                        if (/\}/)
+                        $result = &apply_style($style->{'style'}, $style->{'text'} . $before);
+                        if (!defined($result))
                         {
-                            $text .= $`;
-                            $after = $';
-                            $failed = 0;
-                            last;
+                            $result = '@' . $style->{'style'} . '{' . $style->{'text'} . $before . '}';
                         }
-                        else
-                        {
-                            $text .= $_;
-                            $_ = shift(@lines2);
-                        }
-                    }
-                    if ($failed)
-                    {
-                        die "* Bad syntax (\@$style) after: $before\n";
                     }
                     else
                     {
-                        $text = &apply_style($style, $text);
-                        $_ = "$before$text$after";
+                        $result = $style->{'text'} . $before . '}';
+                    }
+                    if (@style_stack)
+                    {
+                         $style_stack[-1]->{'text'} .= $result;
+                    }
+                    else
+                    {
+                         $text .= $result;
                     }
                 }
+                else
+                {
+                    $text .= $before . '}';
+                    warn "$ERROR '}' without opening '{' near $text";
+                }
+            }
+            elsif (@style_stack)
+            {
+                $style_stack[-1]->{'text'} .= $_;
+                last;
+            }
+            else
+            {
+                $text .= $_;
+                push (@lines3, $text);
+                $text = '';
+                last;
             }
         }
-        # otherwise
-        push(@lines3, $_);
     }
     print "# end of pass 3\n" if $T2H_VERBOSE;
 }
@@ -3727,6 +3785,7 @@ sub pass4
     print "# end of pass 4\n" if $T2H_VERBOSE;
 }
 
+
 #+++############################################################################
 #                                                                              #
 # Pass 5: print things                                                         #
@@ -3799,6 +3858,11 @@ sub pass5
         while (1)
         {
             $_ = shift @doc_lines;
+            unless (defined($_))
+            {
+                print STDERR "Bug, line undef\n";
+                $_ = "<!-- line of doc_lines undef --!>\n";
+            }
             last if /$TOPEND/;
             push @$T2H_TOP, $_;
         }
@@ -4606,7 +4670,7 @@ sub do_uref
     # e.g. texinfo.texi 4.0 has this, which would lead to a broken
     # link:
     # @section @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
-    return if $url =~ /[<>]/;
+    #return if $url =~ /[<>]/;
     $text = $only_text if $only_text;
     $text = $url unless $text;
     &t2h_anchor('', $url, $text);
