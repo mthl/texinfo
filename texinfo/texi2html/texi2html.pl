@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.74 2003-10-27 21:04:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.75 2003-10-28 12:03:47 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -1767,7 +1767,8 @@ $docu_rdir = '';
 if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
     $Texi2HTML::Config::OUT =~ s|/*$||;
-    unless (-d $Texi2HTML::Config::OUT && -w $Texi2HTML::Config::OUT)
+    $docu_rdir = "$Texi2HTML::Config::OUT/"; 
+    unless (-d $Texi2HTML::Config::OUT)
     {
         if ( mkdir($Texi2HTML::Config::OUT, oct(755)))
         {
@@ -1775,23 +1776,50 @@ if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
         }
         else
         {
-            warn "$ERROR can't create directory $Texi2HTML::Config::OUT Put results into current directory\n";
-            $Texi2HTML::Config::OUT = '';
+            die "$ERROR can't create directory $Texi2HTML::Config::OUT\n";
+            #warn "$ERROR can't create directory $Texi2HTML::Config::OUT Put results into current directory\n";
+            #$Texi2HTML::Config::OUT = '';
+            #$docu_rdir = './';
         }
     }
-    $docu_rdir = "$Texi2HTML::Config::OUT/"; 
 }
 elsif (! $Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT ne ''))
 {
     if ($Texi2HTML::Config::OUT =~ m|(.*)/|)
     {
         $docu_rdir = "$1/";
+        unless (-d $docu_rdir)
+        {
+            if ( mkdir($docu_rdir, oct(755)))
+            {
+                 print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
+            }
+            else
+            {
+                die "$ERROR can't create directory $docu_rdir\n";
+                #warn "$ERROR can't create directory $docu_rdir Put results into current directory\n";
+                #$Texi2HTML::Config::OUT = '';
+                #$docu_rdir = './';
+            }
+        }
         print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
     }
     else
     {
         print STDERR "# putting result files into current directory \n" if ($T2H_VERBOSE);
+        $docu_rdir = '';
     }
+}
+
+# We don't use "./" as $docu_rdir when $docu_rdir is the current directory
+# because it is problematic for matex2html. To test with -w, however we need 
+# a real directory.
+my $result_rdir = $docu_rdir;
+$result_rdir = "." if ($docu_rdir eq '');
+unless (-w $result_rdir)
+{
+    $docu_rdir = 'current directory' if ($docu_rdir eq '');
+    die "$ERROR $docu_rdir not writable\n";
 }
 
 # extension
@@ -5255,7 +5283,7 @@ sub finish_element($$$$)
         {
             my $top_file = $docu_rdir . $element->{'file'};
             open(FILE, "> $top_file")
-              || die "$ERROR: Can't open $top_file for writing: $!\n";
+              || die "$ERROR Can't open $top_file for writing: $!\n";
             $FH = \*FILE;
         }
         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
@@ -5328,7 +5356,7 @@ sub do_node_files()
         $Texi2HTML::NO_TEXI{'This'} = $node->{'no_texi'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
         $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
-        open (NODEFILE, "> $file") || die "$ERROR: Can't open $file for writing: $!\n";
+        open (NODEFILE, "> $file") || die "$ERROR Can't open $file for writing: $!\n";
         &$Texi2HTML::Config::print_redirection_page (\*NODEFILE);
         close NODEFILE || die "$ERROR: Can't close $file: $!\n";
     }
@@ -5386,7 +5414,7 @@ sub open_out($)
         return \*STDOUT;
     }
     open(FILE, "> $file")
-            || die "$ERROR: Can't open $file for writing: $!\n";
+            || die "$ERROR Can't open $file for writing: $!\n";
     return \*FILE;
 }
 

@@ -70,6 +70,11 @@ This file records noteworthy changes.
   --out_file when output is not split, and the same than --subdir when it is
   split.
 
+* If not split, the resulting file has a leading directory, and the directory 
+  doesn't exist it is created.
+
+* If a directory creation fails the program aborts.
+
 * Don't use T2H_CENTER_IMAGE, @center should be used.
 
 * the set_buttons_text function redefines dynamically %NAVIGATION_TEXT and

@@ -301,18 +301,18 @@ my $error_no_en = 0;
 sub get_string($;$)
 {
     my $string = shift;
-	my $arguments = shift;
+    my $arguments = shift;
     my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;
-	if (! exists($T2H_LANGUAGES->{'en'}))
-	{
+    if (! exists($T2H_LANGUAGES->{'en'}))
+    {
         unless($error_no_en)
         {
-	        print STDERR "i18n: no LANGUAGES->{'en'} hash\n";
+            print STDERR "i18n: no LANGUAGES->{'en'} hash\n";
             $error_no_en = 1;
         }
     }
-	else
-	{
+    else
+    {
         print STDERR "i18n: missing string $string\n" unless (exists ($T2H_LANGUAGES->{'en'}->{$string}));
         if (defined ($T2H_LANGUAGES->{$language}->{$string}) and
            ($T2H_LANGUAGES->{$language}->{$string} ne ''))
@@ -326,9 +326,9 @@ sub get_string($;$)
         }
     }
     return $string unless (defined($arguments));
-	my $result = '';
-	while ($string)
-	{
+    my $result = '';
+    while ($string)
+    {
         if ($string =~ s/^([^%]*)%//)
         {
             $result .= $1 if (defined($1));
@@ -337,7 +337,7 @@ sub get_string($;$)
                  $result .= '%';
             }
             elsif ($string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
-			{
+            {
                  $string =~ s/^\{(\w+)\}//;
                  $result .= $arguments->{$1};
             }
@@ -353,7 +353,7 @@ sub get_string($;$)
             last;
         }
     }
-	return $result;
+    return $result;
 }
 
 1;
