@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.85 2004-07-11 01:02:35 karl Exp $
+$Id: NEWS,v 1.86 2004-07-16 19:24:19 wl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -21,6 +21,8 @@ convenience, here's a url to one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* Language:
+  . new command @s to typeset text with a slanted font.
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
   . automake 1.8.5.
