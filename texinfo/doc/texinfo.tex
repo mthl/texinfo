@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-11-22.16}
+\def\texinfoversion{2003-11-23.06}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -1372,7 +1372,7 @@ where each line of input produces a line of output.}
 \font\texti=cmmi10 scaled \mainmagstep
 \font\textsy=cmsy10 scaled \mainmagstep
 
-% A few fonts for @defun, etc.
+% A few fonts for @defun names.
 \setfont\defbf\bfshape{10}{\magstep1}
 \setfont\deftt\ttshape{10}{\magstep1}
 \def\df{\let\tentt=\deftt \let\tenbf = \defbf \bf}
@@ -1952,7 +1952,7 @@ where each line of input produces a line of output.}
 
 \def\headings #1 {\csname HEADINGS#1\endcsname}
 
-\def\HEADINGSoff{
+\def\HEADINGSoff{%
 \global\evenheadline={\hfil} \global\evenfootline={\hfil}
 \global\oddheadline={\hfil} \global\oddfootline={\hfil}}
 \HEADINGSoff
@@ -1961,7 +1961,7 @@ where each line of input produces a line of output.}
 % chapter name on inside top of right hand pages, document
 % title on inside top of left hand pages, and page numbers on outside top
 % edge of all pages.
-\def\HEADINGSdouble{
+\def\HEADINGSdouble{%
 \global\pageno=1
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
@@ -1973,7 +1973,7 @@ where each line of input produces a line of output.}
 
 % For single-sided printing, chapter title goes across top left of page,
 % page number on top right.
-\def\HEADINGSsingle{
+\def\HEADINGSsingle{%
 \global\pageno=1
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
@@ -4419,7 +4419,7 @@ width0pt\relax} \fi
 \global\setbox\errorbox=\hbox to \dimen0{\hfil
    \hsize = \dimen0 \advance\hsize by -5.8pt % Space to left+right.
    \advance\hsize by -2\dimen2 % Rules.
-   \vbox{
+   \vbox{%
       \hrule height\dimen2
       \hbox{\vrule width\dimen2 \kern3pt          % Space to left of text.
          \vtop{\kern2.4pt \box0 \kern2.4pt}% Space above/below.
@@ -4971,7 +4971,7 @@ width0pt\relax} \fi
   \def\defunlinemacro{#1}% store \deffnheader (initially)
   \parsedefunlineX
 }
-\def\parsedefunlineX{
+\def\parsedefunlineX{%
   \parseargusing\activeparens\parsedefunlineY
 }
 \def\parsedefunlineY#1{%
@@ -5203,7 +5203,7 @@ width0pt\relax} \fi
   \tolerance=10000 \hbadness=10000
   \exdentamount=\defbodyindent
   {%
-    \df
+    \df   % defun fonts
     \def\temp{#2}% return value type
     \ifx\temp\empty\else \tclose{\temp} \fi
     #3% output function name
@@ -5239,7 +5239,7 @@ width0pt\relax} \fi
 % Be sure that we always have a definition for `(', etc.  For example,
 % if the fn name has parens in it, \boldbrax will not be in effect yet,
 % so TeX would otherwise complain about undefined control sequence.
-{
+{%
   \activeparens
   \global\let(=\lparen \global\let)=\rparen
   \global\let[=\lbrack \global\let]=\rbrack
