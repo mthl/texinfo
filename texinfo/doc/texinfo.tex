@@ -3609,19 +3609,19 @@ width0pt\relax} \fi
 \outer\def\chapter{\parsearg\chapteryyy}
 \def\chapteryyy #1{\numhead0{#1}} % normally numhead0 calls chapterzzz
 \def\chapterzzz #1{%
-\secno=0 \subsecno=0 \subsubsecno=0
-\global\advance \chapno by 1 \message{\putwordChapter\space \the\chapno}%
-\chapmacro {#1}{\the\chapno}%
-\gdef\thissection{#1}%
-\gdef\thischaptername{#1}%
-% We don't substitute the actual chapter name into \thischapter
-% because we don't want its macros evaluated now.
-\xdef\thischapter{\putwordChapter{} \the\chapno: \noexpand\thischaptername}%
-\writetocentry{chap}{#1}{{\the\chapno}}
-\donoderef
-\global\let\section = \numberedsec
-\global\let\subsection = \numberedsubsec
-\global\let\subsubsection = \numberedsubsubsec
+  \secno=0 \subsecno=0 \subsubsecno=0
+  \global\advance \chapno by 1 \message{\putwordChapter\space \the\chapno}%
+  \chapmacro {#1}{\the\chapno}%
+  \gdef\thissection{#1}%
+  \gdef\thischaptername{#1}%
+  % We don't substitute the actual chapter name into \thischapter
+  % because we don't want its macros evaluated now.
+  \xdef\thischapter{\putwordChapter{} \the\chapno: \noexpand\thischaptername}%
+  \writetocentry{chap}{#1}{{\the\chapno}}
+  \donoderef
+  \global\let\section = \numberedsec
+  \global\let\subsection = \numberedsubsec
+  \global\let\subsubsection = \numberedsubsubsec
 }
 
 % we use \chapno to avoid indenting back
@@ -3632,18 +3632,18 @@ width0pt\relax} \fi
 \outer\def\appendix{\parsearg\appendixyyy}
 \def\appendixyyy #1{\apphead0{#1}} % normally apphead0 calls appendixzzz
 \def\appendixzzz #1{%
-\secno=0 \subsecno=0 \subsubsecno=0
-\global\advance \appendixno by 1
-\message{\putwordAppendix\space \appendixletter}%
-\chapmacro {#1}{\appendixbox{\putwordAppendix{} \appendixletter}}%
-\gdef\thissection{#1}%
-\gdef\thischaptername{#1}%
-\xdef\thischapter{\putwordAppendix{} \appendixletter: \noexpand\thischaptername}%
-\writetocentry{appendix}{#1}{{\appendixletter}}
-\appendixnoderef
-\global\let\section = \appendixsec
-\global\let\subsection = \appendixsubsec
-\global\let\subsubsection = \appendixsubsubsec
+  \secno=0 \subsecno=0 \subsubsecno=0
+  \global\advance \appendixno by 1
+  \message{\putwordAppendix\space \appendixletter}%
+  \chapmacro {#1}{\appendixbox{\putwordAppendix{} \appendixletter}}%
+  \gdef\thissection{#1}%
+  \gdef\thischaptername{#1}%
+  \xdef\thischapter{\putwordAppendix{} \appendixletter: \noexpand\thischaptername}%
+  \writetocentry{appendix}{#1}{{\appendixletter}}
+  \appendixnoderef
+  \global\let\section = \appendixsec
+  \global\let\subsection = \appendixsubsec
+  \global\let\subsubsection = \appendixsubsubsec
 }
 
 % @centerchap is like @unnumbered, but the heading is centered.
@@ -3656,121 +3656,121 @@ width0pt\relax} \fi
 \outer\def\unnumbered{\parsearg\unnumberedyyy}
 \def\unnumberedyyy #1{\unnmhead0{#1}} % normally unnmhead0 calls unnumberedzzz
 \def\unnumberedzzz #1{%
-\secno=0 \subsecno=0 \subsubsecno=0
-%
-% This used to be simply \message{#1}, but TeX fully expands the
-% argument to \message.  Therefore, if #1 contained @-commands, TeX
-% expanded them.  For example, in `@unnumbered The @cite{Book}', TeX
-% expanded @cite (which turns out to cause errors because \cite is meant
-% to be executed, not expanded).
-%
-% Anyway, we don't want the fully-expanded definition of @cite to appear
-% as a result of the \message, we just want `@cite' itself.  We use
-% \the<toks register> to achieve this: TeX expands \the<toks> only once,
-% simply yielding the contents of <toks register>.  (We also do this for
-% the toc entries.)
-\toks0 = {#1}\message{(\the\toks0)}%
-%
-\unnumbchapmacro {#1}%
-\gdef\thischapter{#1}\gdef\thissection{#1}%
-\writetocentry{unnumbchap}{#1}{{\the\chapno}}
-\unnumbnoderef
-\global\let\section = \unnumberedsec
-\global\let\subsection = \unnumberedsubsec
-\global\let\subsubsection = \unnumberedsubsubsec
+  \secno=0 \subsecno=0 \subsubsecno=0
+  %
+  % This used to be simply \message{#1}, but TeX fully expands the
+  % argument to \message.  Therefore, if #1 contained @-commands, TeX
+  % expanded them.  For example, in `@unnumbered The @cite{Book}', TeX
+  % expanded @cite (which turns out to cause errors because \cite is meant
+  % to be executed, not expanded).
+  %
+  % Anyway, we don't want the fully-expanded definition of @cite to appear
+  % as a result of the \message, we just want `@cite' itself.  We use
+  % \the<toks register> to achieve this: TeX expands \the<toks> only once,
+  % simply yielding the contents of <toks register>.  (We also do this for
+  % the toc entries.)
+  \toks0 = {#1}\message{(\the\toks0)}%
+  %
+  \unnumbchapmacro {#1}%
+  \gdef\thischapter{#1}\gdef\thissection{#1}%
+  \writetocentry{unnumbchap}{#1}{{\the\chapno}}
+  \unnumbnoderef
+  \global\let\section = \unnumberedsec
+  \global\let\subsection = \unnumberedsubsec
+  \global\let\subsubsection = \unnumberedsubsubsec
 }
 
 % Sections.
 \outer\def\numberedsec{\parsearg\secyyy}
 \def\secyyy #1{\numhead1{#1}} % normally calls seczzz
 \def\seczzz #1{%
-\subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
-\gdef\thissection{#1}\secheading {#1}{\the\chapno}{\the\secno}%
-\writetocentry{sec}{#1}{{\the\chapno}{\the\secno}}
-\donoderef
-\nobreak
+  \subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
+  \gdef\thissection{#1}\secheading {#1}{\the\chapno}{\the\secno}%
+  \writetocentry{sec}{#1}{{\the\chapno}{\the\secno}}
+  \donoderef
+  \nobreak
 }
 
 \outer\def\appendixsection{\parsearg\appendixsecyyy}
 \outer\def\appendixsec{\parsearg\appendixsecyyy}
 \def\appendixsecyyy #1{\apphead1{#1}} % normally calls appendixsectionzzz
 \def\appendixsectionzzz #1{%
-\subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
-\gdef\thissection{#1}\secheading {#1}{\appendixletter}{\the\secno}%
-\writetocentry{sec}{#1}{{\appendixletter}{\the\secno}}
-\appendixnoderef
-\nobreak
+  \subsecno=0 \subsubsecno=0 \global\advance \secno by 1 %
+  \gdef\thissection{#1}\secheading {#1}{\appendixletter}{\the\secno}%
+  \writetocentry{sec}{#1}{{\appendixletter}{\the\secno}}
+  \appendixnoderef
+  \nobreak
 }
 
 \outer\def\unnumberedsec{\parsearg\unnumberedsecyyy}
 \def\unnumberedsecyyy #1{\unnmhead1{#1}} % normally calls unnumberedseczzz
 \def\unnumberedseczzz #1{%
-\plainsecheading {#1}\gdef\thissection{#1}%
-\writetocentry{unnumbsec}{#1}{{\the\chapno}{\the\secno}}
-\unnumbnoderef
-\nobreak
+  \plainsecheading {#1}\gdef\thissection{#1}%
+  \writetocentry{unnumbsec}{#1}{{\the\chapno}{\the\secno}}
+  \unnumbnoderef
+  \nobreak
 }
 
 % Subsections.
 \outer\def\numberedsubsec{\parsearg\numberedsubsecyyy}
 \def\numberedsubsecyyy #1{\numhead2{#1}} % normally calls numberedsubseczzz
 \def\numberedsubseczzz #1{%
-\gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
-\subsecheading {#1}{\the\chapno}{\the\secno}{\the\subsecno}%
-\writetocentry{subsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
-\donoderef
-\nobreak
+  \gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
+  \subsecheading {#1}{\the\chapno}{\the\secno}{\the\subsecno}%
+  \writetocentry{subsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
+  \donoderef
+  \nobreak
 }
 
 \outer\def\appendixsubsec{\parsearg\appendixsubsecyyy}
 \def\appendixsubsecyyy #1{\apphead2{#1}} % normally calls appendixsubseczzz
 \def\appendixsubseczzz #1{%
-\gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
-\subsecheading {#1}{\appendixletter}{\the\secno}{\the\subsecno}%
-\writetocentry{subsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}}
-\appendixnoderef
-\nobreak
+  \gdef\thissection{#1}\subsubsecno=0 \global\advance \subsecno by 1 %
+  \subsecheading {#1}{\appendixletter}{\the\secno}{\the\subsecno}%
+  \writetocentry{subsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}}
+  \appendixnoderef
+  \nobreak
 }
 
 \outer\def\unnumberedsubsec{\parsearg\unnumberedsubsecyyy}
 \def\unnumberedsubsecyyy #1{\unnmhead2{#1}} %normally calls unnumberedsubseczzz
 \def\unnumberedsubseczzz #1{%
-\plainsubsecheading {#1}\gdef\thissection{#1}%
-\writetocentry{unnumbsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
-\unnumbnoderef
-\nobreak
+  \plainsubsecheading {#1}\gdef\thissection{#1}%
+  \writetocentry{unnumbsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}}
+  \unnumbnoderef
+  \nobreak
 }
 
 % Subsubsections.
 \outer\def\numberedsubsubsec{\parsearg\numberedsubsubsecyyy}
 \def\numberedsubsubsecyyy #1{\numhead3{#1}} % normally numberedsubsubseczzz
 \def\numberedsubsubseczzz #1{%
-\gdef\thissection{#1}\global\advance \subsubsecno by 1 %
-\subsubsecheading {#1}
-  {\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
-\writetocentry{subsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
-\donoderef
-\nobreak
+  \gdef\thissection{#1}\global\advance \subsubsecno by 1 %
+  \subsubsecheading {#1}
+    {\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
+  \writetocentry{subsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
+  \donoderef
+  \nobreak
 }
 
 \outer\def\appendixsubsubsec{\parsearg\appendixsubsubsecyyy}
 \def\appendixsubsubsecyyy #1{\apphead3{#1}} % normally appendixsubsubseczzz
 \def\appendixsubsubseczzz #1{%
-\gdef\thissection{#1}\global\advance \subsubsecno by 1 %
-\subsubsecheading {#1}
-  {\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
-\writetocentry{subsubsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
-\appendixnoderef
-\nobreak
+  \gdef\thissection{#1}\global\advance \subsubsecno by 1 %
+  \subsubsecheading {#1}
+    {\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}%
+  \writetocentry{subsubsec}{#1}{{\appendixletter}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
+  \appendixnoderef
+  \nobreak
 }
 
 \outer\def\unnumberedsubsubsec{\parsearg\unnumberedsubsubsecyyy}
 \def\unnumberedsubsubsecyyy #1{\unnmhead3{#1}} %normally unnumberedsubsubseczzz
 \def\unnumberedsubsubseczzz #1{%
-\plainsubsubsecheading {#1}\gdef\thissection{#1}%
-\writetocentry{unnumbsubsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
-\unnumbnoderef
-\nobreak
+  \plainsubsubsecheading {#1}\gdef\thissection{#1}%
+  \writetocentry{unnumbsubsubsec}{#1}{{\the\chapno}{\the\secno}{\the\subsecno}{\the\subsubsecno}}
+  \unnumbnoderef
+  \nobreak
 }
 
 % These are variants which are not "outer", so they can appear in @ifinfo.
@@ -3811,16 +3811,16 @@ width0pt\relax} \fi
 
 \def\majorheading{\parsearg\majorheadingzzz}
 \def\majorheadingzzz #1{%
-{\advance\chapheadingskip by 10pt \chapbreak }%
-{\chapfonts \vbox{\hyphenpenalty=10000\tolerance=5000
-                  \parindent=0pt\raggedright
-                  \rm #1\hfill}}\bigskip \par\penalty 200}
+  {\advance\chapheadingskip by 10pt \chapbreak }%
+  {\chapfonts \vbox{\hyphenpenalty=10000\tolerance=5000
+                    \parindent=0pt\raggedright
+                    \rm #1\hfill}}\bigskip \par\penalty 200}
 
 \def\chapheading{\parsearg\chapheadingzzz}
 \def\chapheadingzzz #1{\chapbreak %
-{\chapfonts \vbox{\hyphenpenalty=10000\tolerance=5000
-                  \parindent=0pt\raggedright
-                  \rm #1\hfill}}\bigskip \par\penalty 200}
+  {\chapfonts \vbox{\hyphenpenalty=10000\tolerance=5000
+                    \parindent=0pt\raggedright
+                    \rm #1\hfill}}\bigskip \par\penalty 200}
 
 % @heading, @subheading, @subsubheading.
 \def\heading{\parsearg\plainsecheading}
