@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.91 2003-11-18 13:47:00 karl Exp $
+@c $Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1261,7 +1261,6 @@ hyphens in the source remain as they are in literal contexts, such as
 @vskip -@baselineskip
 @end iftex
 @cindex Tabs; don't use!
-@quotation
 @strong{Caution:} Last and most important, do not use tab characters
 in a Texinfo file (except in verbatim modes)!  @TeX{} uses
 variable-width fonts, which means that it is impractical at best to
@@ -1278,7 +1277,6 @@ spaces when you press the @key{TAB} key.
 @noindent
 Also, you can run @code{untabify} in Emacs to convert tabs in a region
 to multiple spaces, or use the @code{unexpand} command from the shell.
-@end quotation
 
 @end itemize
 
@@ -6239,14 +6237,13 @@ in a printed document, and the following in Info:
 Sea surges are described in *Note Hurricanes::.
 @end example
 
-@quotation
-@strong{Caution:} You @emph{must} write a period, comma, or right
-parenthesis immediately after an @code{@@ref} command with two or more
-arguments.  Otherwise, Info will not find the end of the cross reference
-entry and its attempt to follow the cross reference will fail.  As a
-general rule, you should write a period or comma after every
-@code{@@ref} command.  This looks best in both the printed and the Info
-output.@refill
+@quotation Caution
+You @emph{must} write a period, comma, or right parenthesis
+immediately after an @code{@@ref} command with two or more arguments.
+Otherwise, Info will not find the end of the cross reference entry and
+its attempt to follow the cross reference will fail.  As a general
+rule, you should write a period or comma after every @code{@@ref}
+command.  This looks best in both the printed and the Info output.
 @end quotation
 
 @node pxref
@@ -7387,34 +7384,26 @@ The @code{@@emph} and @code{@@strong} commands are for emphasis;
 @code{@@strong} is stronger.  In printed output, @code{@@emph} produces
 @emph{italics} and @code{@@strong} produces @strong{bold}.
 
-@need 800
 For example,
 
 @example
 @group
-@@quotation
-@@strong@{Caution:@} @@samp@{rm * .[^.]*@} removes @@emph@{all@}
-files in the directory.
+@@strong@{Caution:@} @@samp@{rm * .[^.]*@}
+removes @@emph@{all@} files in the directory.
 @@end quotation
 @end group
 @end example
 
-@ifnotinfo
 @noindent
 produces the following in printed output and HTML:
 
 @quotation
-@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
-files in the directory.
+@strong{Caution:} @samp{rm * .[^.]*}
+removes @emph{all} files in the directory.
 @end quotation
 
 @noindent
 and the following in Info:
-@end ifnotinfo
-@ifinfo
-@noindent
-produces (in Info output):
-@end ifinfo
 
 @example
 *Caution:* `rm * .[^.]*' removes _all_
@@ -7428,11 +7417,11 @@ preceding example.
 In the Info output, @code{@@emph} surrounds the text with underscores
 (@samp{_}), and @code{@@strong} puts asterisks around the text.
 
-@quotation
-@strong{Caution:} Do not use @code{@@strong} with the word
-@samp{Note}; Info will mistake the combination for a cross reference.
-(It's usually redundant, anyway.)  Use a phrase such as @strong{Please
-notice} or @strong{Caution} instead.
+@quotation Caution
+Do not use @code{@@strong} with the word @samp{Note}; Info will
+mistake the combination for a cross reference.  (It's usually
+redundant, anyway.)  Use a phrase such as @strong{Please notice} or
+@strong{Caution} instead, or the optional argument to @code{@@quotation}.
 @end quotation
 
 
@@ -7466,23 +7455,13 @@ and a smaller font is used to render it.
 
 If the text between the braces of an @code{@@sc} command is uppercase,
 @TeX{} typesets in FULL-SIZE CAPITALS.  Use full-size capitals
-sparingly, if ever, and since it's redundant to mark all-uppercase text
+sparingly.  Since it's redundant to mark all-uppercase text
 with @code{@@sc}, @command{makeinfo} warns about such usage.
-
-You may also use the small caps font for a jargon word such as
-@sc{ato} (a @sc{nasa} word meaning `abort to orbit').
-
-There are subtleties to using the small caps font with a jargon word
-such as @sc{cdr}, a word used in Lisp programming.  In this case, you
-should use the small caps font when the word refers to the second and
-subsequent elements of a list (the @sc{cdr} of the list), but you
-should use @samp{@@code} when the word refers to the Lisp function of
-the same spelling.
 
 
 @node Fonts
 @subsection Fonts for Printing, Not Info
-@cindex Fonts for printing, not for Info
+@cindex Fonts for printing, not Info
 @findex i @r{(italic font)}
 @findex b @r{(bold font)}
 @findex t @r{(typewriter font)}
@@ -7755,12 +7734,11 @@ after the @code{@@end example}.  Blank lines inside the beginning
 @code{@@example} and the ending @code{@@end example}, on the other
 hand, do appear in the output.
 
-@quotation
-@strong{Caution:} Do not use tabs in the lines of an example!  (Or
-anywhere else in Texinfo, except in verbatim environments.)  @TeX{}
-treats tabs as single spaces, and that is not what they look like.  In
-Emacs, you can use @kbd{M-x untabify} to convert tabs in a region to
-multiple spaces.
+@quotation Caution
+Do not use tabs in the lines of an example!  (Or anywhere else in
+Texinfo, except in verbatim environments.)  @TeX{} treats tabs as
+single spaces, and that is not what they look like.  In Emacs, you can
+use @kbd{M-x untabify} to convert tabs in a region to multiple spaces.
 @end quotation
 
 Examples are often, logically speaking, ``in the middle'' of a
@@ -7810,12 +7788,12 @@ For example:
 @c oops, got to trick this a bit: can't use @end verbatim inside @verbatim
 
 @example
-@exdent @@verbatim
-@exdent @{
-@exdent <tab>@@command with strange characters: @@'e
-@exdent expand<tab>me
-@exdent @}
-@exdent @@end verbatim
+@exdent @t{@@verbatim}
+@exdent @t{@{}
+@exdent @key{TAB}@t{@@command with strange characters: @@'e}
+@exdent @t{expand@key{TAB}me}
+@exdent @t{@}}
+@exdent @t{@@end verbatim}
 @end example
 
 @noindent
@@ -7823,16 +7801,16 @@ produces
 
 @verbatim
 {
-       @command with strange characters: @'e
+        @command with strange characters: @'e
 expand	me
 }
 @end verbatim
 
 Since the lines containing @code{@@verbatim} and @code{@@end verbatim}
-produce no output, tyically you should put a blank line before the
+produce no output, typically you should put a blank line before the
 @code{@@verbatim} and another blank line after the @code{@@end
-verbatim}.  Blank lines between the beginning @code{@@verbatim} and the
-ending @code{@@end verbatim} will appear in the output.
+verbatim}.  Blank lines between the beginning @code{@@verbatim} and
+the ending @code{@@end verbatim} will appear in the output.
 
 It is not reliable to use @code{@@verbatim} inside other Texinfo constructs.
 
@@ -8220,7 +8198,7 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @cartouche
 @example
 % pwd
-/usr/local/lib/emacs/info
+/usr/local/info
 @end example
 @end cartouche
 
@@ -9027,11 +9005,11 @@ Make an entry in the program index for @var{program}.@refill
 Make an entry in the data type index for @var{data type}.@refill
 @end table
 
-@quotation
-@strong{Caution:} Do not use a colon in an index entry.  In Info, a
-colon separates the menu entry name from the node name, so a colon in
-the entry itself confuses Info.  @xref{Menu Parts, , The Parts of a
-Menu}, for more information about the structure of a menu entry.
+@quotation Caution
+Do not use a colon in an index entry.  In Info, a colon separates the
+menu entry name from the node name, so a colon in the entry itself
+confuses Info.  @xref{Menu Parts, , The Parts of a Menu}, for more
+information about the structure of a menu entry.
 @end quotation
 
 You are not actually required to use the predefined indices for their
@@ -17312,7 +17290,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.91 2003-11-18 13:47:00 karl Exp $
+$Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17375,7 +17353,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.91 2003-11-18 13:47:00 karl Exp $
+@comment $Id: texinfo.txi,v 1.92 2003-11-23 00:28:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
