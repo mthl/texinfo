@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
+@c $Id: texinfo.txi,v 1.63 2003-08-10 00:46:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -301,7 +301,7 @@ The @code{@@node} Command
 
 Menus
 
-* Menu Location::               Put a menu in a short node.
+* Menu Location::               Menus go at the ends of short nodes.
 * Writing a Menu::              What is a menu?
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
@@ -1724,14 +1724,11 @@ chapters which describe the Texinfo formatting language in detail.
 * Texinfo Mode Summary::        Summary of all the Texinfo mode commands.
 @end menu
 
-@node Texinfo Mode Overview, Emacs Editing, Texinfo Mode, Texinfo Mode
-@ifinfo
-@heading Texinfo Mode Overview
-@end ifinfo
+@node Texinfo Mode Overview
+@section Texinfo Mode Overview
 
-Texinfo mode provides special features for working with Texinfo
-files.
-You can:@refill
+Texinfo mode provides special features for working with Texinfo files.
+You can:
 
 @itemize @bullet
 @item
@@ -1763,7 +1760,7 @@ Typeset and print part or all of a file.@refill
 Perhaps the two most helpful features are those for inserting frequently
 used @@-commands and for creating node pointers and menus.@refill
 
-@node Emacs Editing, Inserting, Texinfo Mode Overview, Texinfo Mode
+@node Emacs Editing
 @section The Usual GNU Emacs Editing Commands
 
 In most cases, the usual Text mode commands work the same in Texinfo
@@ -1804,7 +1801,7 @@ mode as you wish.  In particular, the keybindings are very easy to
 change.  The keybindings described here are the default or standard
 ones.@refill
 
-@node Inserting, Showing the Structure, Emacs Editing, Texinfo Mode
+@node Inserting
 @comment  node-name,  next,  previous,  up
 @section Inserting Frequently Used Commands
 @cindex Inserting frequently used commands
@@ -1946,7 +1943,7 @@ whole job.  You must edit the inserted text since a title tends to use
 the same words as a node name but a useful description uses different
 words.@refill
 
-@node Showing the Structure, Updating Nodes and Menus, Inserting, Texinfo Mode
+@node Showing the Structure
 @comment  node-name,  next,  previous,  up
 @section Showing the Section Structure of a File
 @cindex Showing the section structure of a file
@@ -2009,7 +2006,7 @@ commands to move forward and backward by chapter, and to use the
 @xref{Pages, , , emacs, The GNU Emacs Manual}, for more information
 about the page commands.@refill
 
-@node Updating Nodes and Menus, Info Formatting, Showing the Structure, Texinfo Mode
+@node Updating Nodes and Menus
 @comment  node-name,  next,  previous,  up
 @section Updating Nodes and Menus
 @cindex Updating nodes and menus
@@ -2036,10 +2033,8 @@ node pointers by hand, which is a tedious task.@refill
                                   nodes in sequence.
 @end menu
 
-@node Updating Commands, Updating Requirements, Updating Nodes and Menus, Updating Nodes and Menus
-@ifinfo
-@subheading The Updating Commands
-@end ifinfo
+@node Updating Commands
+@subsection The Updating Commands
 
 You can use the updating commands to:@refill
 
@@ -2344,7 +2339,7 @@ interactive), the @code{texinfo-sequential-node-update} command
 sequentially updates all the nodes in the region.@refill
 @end table
 
-@node Info Formatting, Printing, Updating Nodes and Menus, Texinfo Mode
+@node Info Formatting
 @comment  node-name,  next,  previous,  up
 @section Formatting for Info
 @cindex Formatting for Info
@@ -2403,7 +2398,7 @@ include a line that has @code{@@setfilename} in its header.
 
 @xref{Creating an Info File}, for details about Info formatting.@refill
 
-@node Printing, Texinfo Mode Summary, Info Formatting, Texinfo Mode
+@node Printing
 @comment node-name,  next,  previous,  up
 @section Printing
 @cindex Formatting for printing
@@ -2467,7 +2462,7 @@ end-of-header lines.)@refill
 @xref{Hardcopy}, for a description of the other @TeX{} related
 commands, such as @code{tex-show-print-queue}.@refill
 
-@node Texinfo Mode Summary,  , Printing, Texinfo Mode
+@node Texinfo Mode Summary
 @comment  node-name,  next,  previous,  up
 @section Texinfo Mode Summary
 
@@ -4333,7 +4328,7 @@ an @code{@@ifnottex} conditional so that it will appear only in Info and
 HTML output, not @TeX{}.
 
 
-@node chapter, unnumbered & appendix, makeinfo top, Structuring
+@node chapter
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
@@ -4390,7 +4385,7 @@ line and follow it on the same line by the title, as you would if you
 were creating a chapter.@refill
 
 
-@node majorheading & chapheading, section, unnumbered & appendix, Structuring
+@node majorheading & chapheading
 @section @code{@@majorheading}, @code{@@chapheading}
 @findex majorheading
 @findex chapheading
@@ -4412,7 +4407,7 @@ the @code{@@majorheading} and
 @code{@@chapter}: the title is printed on a line by itself with a line
 of asterisks underneath.  (@xref{chapter, , @code{@@chapter}}.)@refill
 
-@node section, unnumberedsec appendixsec heading, majorheading & chapheading, Structuring
+@node section
 @comment  node-name,  next,  previous,  up
 @section @code{@@section}
 @findex section
@@ -4452,7 +4447,7 @@ This is a section
 @noindent
 in Info.
 
-@node unnumberedsec appendixsec heading, subsection, section, Structuring
+@node unnumberedsec appendixsec heading
 @comment  node-name,  next,  previous,  up
 @section @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 @findex unnumberedsec
@@ -4484,7 +4479,7 @@ You may use the @code{@@heading} command anywhere you wish for a
 section-style heading that will not appear in the table of contents.@refill
 @end table
 
-@node subsection, unnumberedsubsec appendixsubsec subheading, unnumberedsec appendixsec heading, Structuring
+@node subsection
 @comment  node-name,  next,  previous,  up
 @section The @code{@@subsection} Command
 @findex subsection
@@ -4510,7 +4505,7 @@ This is a subsection
 In a printed manual, subsections are listed in the table of contents
 and are numbered three levels deep.@refill
 
-@node unnumberedsubsec appendixsubsec subheading, subsubsection, subsection, Structuring
+@node unnumberedsubsec appendixsubsec subheading
 @comment  node-name,  next,  previous,  up
 @section The @code{@@subsection}-like Commands
 @cindex Subsection-like commands
@@ -5151,9 +5146,9 @@ Finally, you must write the name of each node (except for the `Top'
 node) in a menu that is one or more hierarchical levels above the
 node's hierarchical level.
 
-This node pointer insertion feature in @code{makeinfo} relieves you from
-the need to update menus and pointers manually or with Texinfo mode
-commands.  (@xref{Updating Nodes and Menus}.)
+This implicit node pointer insertion feature in @code{makeinfo}
+relieves you from the need to update menus and pointers manually or
+with Texinfo mode commands.  (@xref{Updating Nodes and Menus}.)
 
 In most cases, you will want to take advantage of this feature and not
 redundantly specify node pointers.  However, Texinfo documents are not
@@ -5163,6 +5158,7 @@ document to be printed).  The special procedure for handling the short
 text before a menu (@pxref{Menus}) also disables this
 feature, for that group of nodes.  In those cases, you will need to
 explicitly specify the pointers.
+
 
 @node anchor
 @section @code{@@anchor}: Defining Arbitrary Cross-reference Targets
@@ -5214,31 +5210,19 @@ an argument.  (@xref{goto-node,,,info-stnd,GNU Info}.)
 @cindex Menus
 @findex menu
 
-@dfn{Menus} contain pointers to subordinate nodes.@footnote{Menus can
-carry you to any node, regardless of the hierarchical structure; even to
-nodes in a different Info file.  However, the GNU Emacs Texinfo mode
-updating commands work only to create menus of subordinate nodes.
-Conventionally, cross references are used to refer to other nodes.} In
-online output, you use menus to go to such nodes.  Menus have no effect in
-printed manuals and do not appear in them.
+@dfn{Menus} contain pointers to subordinate nodes.  In online output,
+you use menus to go to such nodes.  Menus have no effect in printed
+manuals and do not appear in them.
 
-A menu must be located at the end of a node, without any regular text
-or additional commands between the @code{@@end menu} and the beginning
-of the next node.  (Also, there may be at most one menu in a node.)
-This is a useful restriction, since a reader who uses the menu could
-easily miss any such text.  Technically, it is necessary because in
-Info format, there is no marker for the end of a menu, so Info readers
-would have no way to know when the menu ends and normal text resumes.
-
-Furthermore, a node that has a menu should not contain much text. If
-you have a lot of text and a menu, move most of the text into a new
-subnode---all but a few lines.  Otherwise, a reader with a terminal
-that displays only a few lines may miss the menu and its associated
-text.  As a practical matter, you should locate a menu within 20 lines
-of the beginning of the node.
+A node with a menu should not contain much text.  If you find yourself
+writing a lot of before a menu, we generally recommend moving most of
+the text into a new subnode---all but a paragraph or two.  Otherwise,
+a reader with a terminal that displays only a few lines may miss the
+menu and its associated text.  As a practical matter, it is best to
+locate a menu within 20 or so lines of the beginning of the node.
 
 @menu
-* Menu Location::               Put a menu in a short node.
+* Menu Location::               Menus go at the ends of short nodes.
 * Writing a Menu::              What is a menu?
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
@@ -5247,62 +5231,53 @@ of the beginning of the node.
 @end menu
 
 
-@node Menu Location, Writing a Menu, Menus, Menus
-@ifinfo
-@heading Menus Need Short Nodes
-@end ifinfo
+@node Menu Location
+@section Menu Location
 @cindex Menu location
 @cindex Location of menus
-@cindex Nodes for menus are short
-@cindex Short nodes for menus
 
-The short text before a menu may look awkward in a printed manual.  To
-avoid this, you can write a menu near the beginning of its node and
-follow the menu by an @code{@@node} line, and then an @code{@@heading}
-line located within @code{@@ifinfo} and @code{@@end ifinfo}.  This way,
-the menu, @code{@@node} line, and title appear only in the Info file,
-not the printed document.
+A menu must be located at the end of a node, without any regular text
+or additional commands between the @code{@@end menu} and the beginning
+of the next node.  (As a consequence, there may be at most one menu in
+a node.)
 
-This has the disadvantage that @command{makeinfo} cannot determine the
-node 
+@cindex Info format, and menus
+This is actually a useful restriction, since a reader who uses the
+menu could easily miss any such text.  Technically, it is necessary
+because in Info format, there is no marker for the end of a menu, so
+Info-reading programs would have no way to know when the menu ends and
+normal text resumes.
 
-For example, the preceding two paragraphs follow an Info-only menu,
-@code{@@node} line, and heading, and look like this:
+@cindex Hierarchical documents, and menus
+Technically, menus can carry you to any node, regardless of the
+structure of the document; even to nodes in a different Info file.
+However, we do not recommend ever making use of this, because the
+@command{makeinfo} implicit pointer creation feature (@pxref{makeinfo
+Pointer Creation}) and GNU Emacs Texinfo mode updating commands work
+only to create menus of subordinate nodes in a hierarchically
+structured document.  Instead, use cross references to refer to
+arbitrary nodes.
 
-@example
-@group
-@@menu
-* Menu Location::             Put a menu in a short node.
-* Writing a Menu::            What is a menu?
-* Menu Parts::                A menu entry has three parts.
-* Less Cluttered Menu Entry:: Two part menu entry.
-* Menu Example::              Two and three part entries.
-* Other Info Files::          How to refer to a different
-                               Info file.
-@@end menu
-
-@@node Menu Location, Writing a Menu, , Menus
-@@ifinfo
-@@heading Menus Need Short Nodes
-@@end ifinfo
-@end group
-@end example
-
-The Texinfo file for this document contains a number of
-examples of this procedure; one is at the beginning of this chapter.
+In the past, we recommended using a @samp{@@heading} command within an
+@code{@@ifinfo} conditional instead of the normal sectioning commands
+after a very short node with a menu.  This had the advantage of making
+the printed output look better, because there was no very short text
+between two headings on the page.  But aside from not working with
+@command{makeinfo}'s implicit pointer creation, it also makes the XML
+output incorrect, since it does not reflect the true document
+structure.  So, unfortunately we can no longer recommend this.
 
 
-@node Writing a Menu, Menu Parts, Menu Location, Menus
+@node Writing a Menu
 @section Writing a Menu
 @cindex Writing a menu
 @cindex Menu writing
 
-A menu consists of an @code{@@menu} command on a line by
-itself followed by menu entry lines or menu comment lines
-and then by an @code{@@end menu} command on a line by
-itself.@refill
+A menu consists of an @code{@@menu} command on a line by itself
+followed by menu entry lines or menu comment lines and then by an
+@code{@@end menu} command on a line by itself.
 
-A menu looks like this:@refill
+A menu looks like this:
 
 @example
 @group
@@ -5327,7 +5302,7 @@ entries.  Space characters in a menu are preserved as-is; this allows
 you to format the menu as you wish.
 
 
-@node Menu Parts, Less Cluttered Menu Entry, Writing a Menu, Menus
+@node Menu Parts
 @section The Parts of a Menu
 @cindex Parts of a menu
 @cindex Menu parts
@@ -5368,7 +5343,7 @@ authors prefer to indent the second line while others prefer to align it
 with the first (and all others).  It's up to you.
 
 
-@node Less Cluttered Menu Entry, Menu Example, Menu Parts, Menus
+@node Less Cluttered Menu Entry
 @comment  node-name,  next,  previous,  up
 @section Less Cluttered Menu Entry
 @cindex Two part menu entry
@@ -5399,7 +5374,7 @@ instead of
 You should use the node name for the menu entry name whenever possible,
 since it reduces visual clutter in the menu.@refill
 
-@node Menu Example, Other Info Files, Less Cluttered Menu Entry, Menus
+@node Menu Example
 @comment  node-name,  next,  previous,  up
 @section A Menu Example
 @cindex Menu example
@@ -5469,7 +5444,7 @@ Since no file name is specified with either @samp{Files} or
 @samp{Buffers}, they must be the names of nodes in the same Info file
 (@pxref{Other Info Files, , Referring to Other Info Files}).@refill
 
-@node Other Info Files,  , Menu Example, Menus
+@node Other Info Files
 @comment  node-name,  next,  previous,  up
 @section Referring to Other Info Files
 @cindex Referring to other Info files
@@ -5561,10 +5536,8 @@ places to which cross references can refer.
 * uref::                        How to refer to a uniform resource locator.
 @end menu
 
-@node References, Cross Reference Commands, Cross References, Cross References
-@ifinfo
-@heading What References Are For
-@end ifinfo
+@node References
+@section What References Are For
 
 Often, but not always, a printed document should be designed so that
 it can be read sequentially.  People tire of flipping back and forth
@@ -5600,7 +5573,7 @@ printed, and will not be used online, you must nonetheless write
 references.@refill
 
 @need 800
-@node Cross Reference Commands, Cross Reference Parts, References, Cross References
+@node Cross Reference Commands
 @comment  node-name,  next,  previous,  up
 @section Different Cross Reference Commands
 @cindex Different cross reference commands
@@ -5632,7 +5605,7 @@ manual.@refill
 manuals for which there is no corresponding Info file and, therefore,
 no node to which to point.   @xref{cite, , @code{@@cite}}.)@refill
 
-@node Cross Reference Parts, xref, Cross Reference Commands, Cross References
+@node Cross Reference Parts
 @comment  node-name,  next,  previous,  up
 @section Parts of a Cross Reference
 @cindex Cross reference parts
@@ -5745,7 +5718,7 @@ how Info and @TeX{} format the output of each of the various commands:
 write @code{@@xref} at the beginning of a sentence; write
 @code{@@pxref} only within parentheses, and so on.@refill
 
-@node xref, Top Node Naming, Cross Reference Parts, Cross References
+@node xref
 @comment  node-name,  next,  previous,  up
 @section @code{@@xref}
 @findex xref
@@ -5767,10 +5740,8 @@ manual.@refill
 * Four and Five Arguments::     @code{@@xref} with four and five arguments.
 @end menu
 
-@node Reference Syntax, One Argument, xref, xref
-@ifinfo
-@subheading What a Reference Looks Like and Requires
-@end ifinfo
+@node Reference Syntax
+@subsection What a Reference Looks Like and Requires
 
 Most often, an Info cross reference looks like this:@refill
 
@@ -5828,7 +5799,7 @@ avoid including them in the title or other part lest the formatters
 mistake them for separators.@refill
 @end quotation
 
-@node One Argument, Two Arguments, Reference Syntax, xref
+@node One Argument
 @subsection @code{@@xref} with One Argument
 
 The simplest form of @code{@@xref} takes one argument, the name of
@@ -5886,7 +5857,7 @@ See Section 3.1 [Tropical Storms], page 24, for more info.
 (Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)@refill
 
-@node Two Arguments, Three Arguments, One Argument, xref
+@node Two Arguments
 @subsection @code{@@xref} with Two Arguments
 
 With two arguments, the second is used as the name of the Info cross
@@ -5950,7 +5921,7 @@ See Section 5.2 [Electrical Effects], page 57, for more info.
 (Note that in the preceding example the closing brace is followed by a
 comma, and then by the clause, which is followed by a period.)@refill
 
-@node Three Arguments, Four and Five Arguments, Two Arguments, xref
+@node Three Arguments
 @subsection @code{@@xref} with Three Arguments
 
 A third argument replaces the node name in the @TeX{} output.  The third
@@ -6048,7 +6019,7 @@ Here are several examples from @cite{The GNU Awk User's Guide}:@refill
 @@xref@{Regexp, , Regular Expressions as Patterns@}.
 @end smallexample
 
-@node Four and Five Arguments,  , Three Arguments, xref
+@node Four and Five Arguments
 @subsection @code{@@xref} with Four and Five Arguments
 
 In a cross reference, a fourth argument specifies the name of another
@@ -6162,7 +6133,7 @@ incorporated into the same @TeX{} run but make separate Info files.
 In this case, you need to specify only the fourth argument, and not
 the fifth.@refill
 
-@node Top Node Naming, ref, xref, Cross References
+@node Top Node Naming
 @section Naming a `Top' Node
 @cindex Naming a `Top' Node in references
 @cindex @samp{@r{Top}} node naming for references
@@ -6202,7 +6173,7 @@ See section ``Overview'' in @i{The GNU Make Manual}.
 @noindent
 In this example, @samp{Top} is the name of the first node, and
 @samp{Overview} is the name of the first section of the manual.@refill
-@node ref, pxref, Top Node Naming, Cross References
+@node ref
 @comment  node-name,  next,  previous,  up
 @section @code{@@ref}
 @cindex Cross references using @code{@@ref}
@@ -6278,7 +6249,7 @@ general rule, you should write a period or comma after every
 output.@refill
 @end quotation
 
-@node pxref, inforef, ref, Cross References
+@node pxref
 @comment  node-name,  next,  previous,  up
 @section @code{@@pxref}
 @cindex Cross references using @code{@@pxref}
@@ -6378,7 +6349,7 @@ Although you may write them in the middle of a sentence, that location
 breaks up the flow of text.@refill
 @end quotation
 
-@node inforef, uref, pxref, Cross References
+@node inforef
 @section @code{@@inforef}
 @cindex Cross references using @code{@@inforef}
 @cindex References using @code{@@inforef}
@@ -6595,7 +6566,7 @@ program.  Also, you can emphasize text, in several different ways.
 @end menu
 
 
-@node Indicating, Emphasis, Marking Text, Marking Text
+@node Indicating
 @section Indicating Definitions, Commands, etc.
 @cindex Highlighting text
 @cindex Indicating commands, definitions, etc.
@@ -6638,10 +6609,8 @@ not something else that should not be changed.@refill
 @end menu
 
 
-@node Useful Highlighting, code, Indicating, Indicating
-@ifinfo
-@subheading Highlighting Commands are Useful
-@end ifinfo
+@node Useful Highlighting
+@subsection Highlighting Commands are Useful
 
 The highlighting commands can be used to extract useful information
 from the file, such as lists of functions or file names.  It is
@@ -8235,10 +8204,8 @@ the first column; multi-column tables are also supported.
 * Multi-column Tables::         How to construct generalized tables.
 @end menu
 
-@node Introducing Lists, itemize, Lists and Tables, Lists and Tables
-@ifinfo
-@heading Introducing Lists
-@end ifinfo
+@node Introducing Lists
+@section Introducing Lists
 
 Texinfo automatically indents the text in lists or tables, and numbers
 an enumerated list.  This last feature is useful if you modify the
@@ -8701,7 +8668,7 @@ case) character or string.@refill
 a two-column table.)@refill
 
 
-@node Multi-column Tables,  , Two-column Tables, Lists and Tables
+@node Multi-column Tables
 @section Multi-column Tables
 @cindex Tables, making multi-column
 @findex multitable
@@ -8768,7 +8735,7 @@ particularly likely to be useful.
 @end enumerate
 
 
-@node Multitable Rows,  , Multitable Column Widths, Multi-column Tables
+@node Multitable Rows
 @subsection Multitable Rows
 @cindex Multitable rows
 @cindex Rows, of a multitable
@@ -8822,7 +8789,7 @@ split that window.
 @end multitable
 
 
-@node Indices, Insertions, Lists and Tables, Top
+@node Indices
 @comment node-name,  next,  previous,  up
 @chapter Indices
 @cindex Indices
@@ -8848,7 +8815,7 @@ canonical purpose.  If you wish, you can define your own indices.@refill
 * New Indices::                 How to define your own indices.
 @end menu
 
-@node Index Entries, Predefined Indices, Indices, Indices
+@node Index Entries
 @comment  node-name,  next,  previous,  up
 @section Making Index Entries
 @cindex Index entries, making
@@ -8873,7 +8840,7 @@ need to do it yourself.@refill
 @xref{Printing Indices & Menus}, for information about printing an index
 at the end of a book or creating an index menu in an Info file.@refill
 
-@node Predefined Indices, Indexing Commands, Index Entries, Indices
+@node Predefined Indices
 @comment  node-name,  next,  previous,  up
 @section Predefined Indices
 
@@ -8910,7 +8877,7 @@ index but is called a command index in the chapter heading).  Two or
 more indices can be combined into one using the @code{@@synindex} or
 @code{@@syncodeindex} commands.  @xref{Combining Indices}.@refill
 
-@node Indexing Commands, Combining Indices, Predefined Indices, Indices
+@node Indexing Commands
 @comment  node-name,  next,  previous,  up
 @section Defining the Entries of an Index
 @cindex Defining indexing entries
@@ -9021,7 +8988,7 @@ with the data types by writing @code{@@tindex} commands for them, and
 give that index a suitable title so the reader will understand.
 (@xref{Printing Indices & Menus}.)@refill
 
-@node Combining Indices, New Indices, Indexing Commands, Indices
+@node Combining Indices
 @comment node-name,  next,  previous,  up
 @section Combining Indices
 @cindex Combining indices
@@ -9121,7 +9088,7 @@ now directed.  This way, if you direct function names from a function
 index into a concept index, all the function names are printed in the
 @code{@@code} font as you would expect.@refill
 
-@node synindex,  , syncodeindex, Combining Indices
+@node synindex
 @subsection @code{@@synindex}
 @findex synindex
 
@@ -9134,7 +9101,7 @@ merge a concept index into a function index.@refill
 @xref{Printing Indices & Menus}, for information about printing an index
 at the end of a book or creating an index menu in an Info file.@refill
 
-@node New Indices,  , Combining Indices, Indices
+@node New Indices
 @section Defining New Indices
 @cindex Defining new indices
 @cindex Indices, defining new
@@ -9247,7 +9214,7 @@ These are:
 @end menu
 
 
-@node Braces Atsigns, Inserting Space, Insertions, Insertions
+@node Braces Atsigns
 @section Inserting @@ and Braces
 @cindex Inserting @@, braces
 @cindex Braces, inserting
@@ -9267,7 +9234,7 @@ necessary.
 * Inserting Braces::            How to insert @samp{@{} and @samp{@}}.
 @end menu
 
-@node Inserting An Atsign, Inserting Braces, Braces Atsigns, Braces Atsigns
+@node Inserting An Atsign
 @subsection Inserting @samp{@@} with @@@@
 @findex @@ @r{(literal @samp{@@})}
 
@@ -9360,7 +9327,7 @@ Procedure''.)
 @code{@@:}.
 
 
-@node Ending a Sentence, Multiple Spaces, Not Ending a Sentence, Inserting Space
+@node Ending a Sentence
 @subsection Ending a Sentence
 
 @cindex Ending a Sentence
@@ -9672,7 +9639,7 @@ type the braces, because @code{@@itemize} supplies them.
 (@xref{itemize, , @code{@@itemize}}.)@refill
 
 
-@node TeX and copyright, pounds, Dots Bullets, Insertions
+@node TeX and copyright
 @section Inserting @TeX{} and the Copyright Symbol
 
 The logo `@TeX{}' is typeset in a special fashion and it needs an
@@ -9707,7 +9674,7 @@ a printed manual, this is a @samp{c} inside a circle, and in Info,
 this is @samp{(C)}.
 
 
-@node pounds, minus, TeX and copyright, Insertions
+@node pounds
 @section @code{@@pounds}@{@} (@pounds{}): Pounds Sterling
 @findex pounds
 
@@ -9717,7 +9684,7 @@ In Info, it is a @samp{#}.  Other currency symbols are unfortunately not
 available.
 
 
-@node minus, math, pounds, Insertions
+@node minus
 @section @code{@@minus}@{@} (@minus{}): Inserting a Minus Sign
 @findex minus
 
@@ -10018,7 +9985,7 @@ In a Texinfo source file, this example is written as follows:
 @end lisp
 
 
-@node Error Glyph, Equivalence, Print Glyph, Glyphs
+@node Error Glyph
 @subsection @code{@@error@{@}} (@error{}): Indicating an Error Message
 @cindex Error message, indicating
 @findex error
@@ -10064,7 +10031,7 @@ Wrong type argument: integer-or-marker-p, x
 @samp{@error{}} itself is not part of the error message.
 
 
-@node Equivalence, Point Glyph, Error Glyph, Glyphs
+@node Equivalence
 @subsection @code{@@equiv@{@}} (@equiv{}): Indicating Equivalence
 @cindex Equivalence, indicating
 @findex equiv
@@ -10851,7 +10818,7 @@ paginated.  An @code{@@page} command is often used in the @code{@@titlepage}
 section of a Texinfo file to start the copyright page.
 
 
-@node group, need, page, Breaks
+@node group
 @comment  node-name,  next,  previous,  up
 @section @code{@@group}: Prevent Page Breaks
 @cindex Group (hold text together vertically)
@@ -10908,7 +10875,7 @@ considerable text.  It is a good rule of thumb to look for a missing
 @code{@@end group} if you get incomprehensible error messages in
 @TeX{}.@refill
 
-@node need,  , group, Breaks
+@node need
 @comment  node-name,  next,  previous,  up
 @section @code{@@need @var{mils}}: Prevent Page Breaks
 @cindex Need space at page bottom
@@ -10971,7 +10938,7 @@ a given name.  An appendix containing a summary should use
 * Sample Function Definition::
 @end menu
 
-@node Def Cmd Template, Optional Arguments, Definition Commands, Definition Commands
+@node Def Cmd Template
 @section The Template for a Definition
 @cindex Definition template
 @cindex Template for a definition
@@ -11094,7 +11061,7 @@ The other specialized commands work like @code{@@defun}.@refill
 Note that, due to implementation difficulties, macros are not expanded
 in @code{@@deffn} and all the other definition commands.
 
-@node Optional Arguments, deffnx, Def Cmd Template, Definition Commands
+@node Optional Arguments
 @section Optional and Repeated Arguments
 @cindex Optional and repeated arguments
 @cindex Repeated and optional arguments
@@ -11152,7 +11119,7 @@ example).@refill
 The function is listed in the Command and Variable Index under
 @samp{foobar}.@refill
 
-@node deffnx, Def Cmds in Detail, Optional Arguments, Definition Commands
+@node deffnx
 @section Two or More `First' Lines
 @cindex Two `First' Lines for @code{@@deffn}
 @cindex Grouping two definitions together
@@ -11190,7 +11157,7 @@ Each definition command has an `x' form: @code{@@defunx},
 
 The `x' forms work just like @code{@@itemx}; see @ref{itemx, , @code{@@itemx}}.
 
-@node Def Cmds in Detail, Def Cmd Conventions, deffnx, Definition Commands
+@node Def Cmds in Detail
 @section The Definition Commands
 
 Texinfo provides more than a dozen definition commands, all of which
@@ -11214,7 +11181,7 @@ can be used for other programming languages.@refill
 * Data Types::                  The definition command for data types.
 @end menu
 
-@node Functions Commands, Variables Commands, Def Cmds in Detail, Def Cmds in Detail
+@node Functions Commands
 @subsection Functions and Similar Entities
 
 This section describes the commands for describing functions and similar
@@ -11318,7 +11285,7 @@ forms.  (In Lisp, a special form is an entity much like a function,
 @dots{}} and works like @code{@@defun}.@refill
 @end table
 
-@node Variables Commands, Typed Functions, Functions Commands, Def Cmds in Detail
+@node Variables Commands
 @subsection Variables and Similar Entities
 
 Here are the commands for defining variables and similar
@@ -11406,7 +11373,7 @@ Option@} @dots{}} and works like @code{@@defvar}.@refill
 @end table
 
 
-@node Typed Functions, Typed Variables, Variables Commands, Def Cmds in Detail
+@node Typed Functions
 @subsection Functions in Typed Languages
 
 The @code{@@deftypefn} command and its variations are for describing
@@ -11572,7 +11539,7 @@ The template is:
 @end table
 
 
-@node Typed Variables, Abstract Objects, Typed Functions, Def Cmds in Detail
+@node Typed Variables
 @subsection Variables in Typed Languages
 
 Variables in typed languages are handled in a manner similar to
@@ -11925,7 +11892,7 @@ The template is:
 @code{@@deftp} creates an entry in the index of data types.
 @end table
 
-@node Def Cmd Conventions, Sample Function Definition, Def Cmds in Detail, Definition Commands
+@node Def Cmd Conventions
 @section Conventions for Writing Definitions
 @cindex Definition conventions
 @cindex Conventions for writing definitions
@@ -11937,7 +11904,7 @@ to the @code{forward-word} function.  Also, if the name of an argument
 contains the name of a type, such as @var{integer}, take care that the
 argument actually is of that type.@refill
 
-@node Sample Function Definition,  , Def Cmd Conventions, Definition Commands
+@node Sample Function Definition
 @section A Sample Function Definition
 @cindex Function definitions
 @cindex Command definitions
@@ -17228,7 +17195,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
+$Id: texinfo.txi,v 1.63 2003-08-10 00:46:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17291,7 +17258,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.62 2003-08-09 19:39:46 karl Exp $
+@comment $Id: texinfo.txi,v 1.63 2003-08-10 00:46:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -17741,10 +17708,8 @@ not paginated.)@refill
 * Custom Headings::             How to create your own headings and footings.
 @end menu
 
-@node Headings Introduced, Heading Format, Headings, Headings
-@ifinfo
-@heading Headings Introduced
-@end ifinfo
+@node Headings Introduced
+@section Headings Introduced
 
 Texinfo provides standard page heading formats for manuals that are
 printed on one side of each sheet of paper and for manuals that are
@@ -17778,7 +17743,7 @@ blank.  Text for the left part of a header or footer line is set
 flushleft; text for the middle part is centered; and, text for the
 right part is set flushright.@refill
 
-@node Heading Format, Heading Choice, Headings Introduced, Headings
+@node Heading Format
 @comment  node-name,  next,  previous,  up
 @section Standard Heading Formats
 
@@ -17847,7 +17812,7 @@ The chapter name is preceded by the word ``Chapter'', the chapter number
 and a colon.  This makes it easier to keep track of where you are in the
 manual.@refill
 
-@node Heading Choice, Custom Headings, Heading Format, Headings
+@node Heading Choice
 @comment  node-name,  next,  previous,  up
 @section Specifying the Type of Heading
 
@@ -17884,7 +17849,7 @@ Specify the double-sided heading format, with chapters on new pages.@refill
 @noindent
 Texinfo lacks an @code{@@setchapternewpage even} command.@refill
 
-@node Custom Headings,  , Heading Choice, Headings
+@node Custom Headings
 @comment  node-name,  next,  previous,  up
 @section How to Make Your Own Headings
 
@@ -18065,10 +18030,9 @@ command and you can use the @kbd{M-x Info-validate} command.@refill
 * Running Info-Validate::       How to find badly referenced nodes.
 @end menu
 
-@node makeinfo Preferred, Debugging with Info, Catching Mistakes, Catching Mistakes
-@ifinfo
-@heading @code{makeinfo} Find Errors
-@end ifinfo
+
+@node makeinfo Preferred
+@section @code{makeinfo} Find Errors
 
 The @code{makeinfo} program does an excellent job of catching errors
 and reporting them---far better than @code{texinfo-format-region} or
@@ -18084,7 +18048,7 @@ errors.  This is the best way to work with Texinfo.  But if you
 cannot use @code{makeinfo}, or your problem is very puzzling, then you
 may want to use the tools described in this appendix.@refill
 
-@node Debugging with Info, Debugging with TeX, makeinfo Preferred, Catching Mistakes
+@node Debugging with Info
 @comment  node-name,  next,  previous,  up
 @section Catching Errors with Info Formatting
 @cindex Catching errors with Info formatting
@@ -18271,7 +18235,7 @@ not find the missing right-hand brace.@refill
 Manual}, for more information.@refill
 @end ignore
 
-@node Debugging with TeX, Using texinfo-show-structure, Debugging with Info, Catching Mistakes
+@node Debugging with TeX
 @comment  node-name,  next,  previous,  up
 @section Catching Errors with @TeX{} Formatting
 @cindex Catching errors with @TeX{} formatting
@@ -18400,7 +18364,7 @@ again. (Note the use of the backslash, @samp{\}.  @TeX{} uses @samp{\}
 instead of @samp{@@}; and in this circumstance, you are working
 directly with @TeX{}, not with Texinfo.)@refill
 
-@node Using texinfo-show-structure, Using occur, Debugging with TeX, Catching Mistakes
+@node Using texinfo-show-structure
 @comment  node-name,  next,  previous,  up
 @section Using @code{texinfo-show-structure}
 @cindex Showing the structure of a file
@@ -18472,7 +18436,7 @@ You can remind yourself of the structure of a Texinfo file by looking at
 the list in the @samp{*Occur*} window; and if you have mis-named a node
 or left out a section, you can correct the mistake.@refill
 
-@node Using occur, Running Info-Validate, Using texinfo-show-structure, Catching Mistakes
+@node Using occur
 @comment  node-name,  next,  previous,  up
 @section Using @code{occur}
 @cindex Occurrences, listing with @code{@@occur}
@@ -18512,7 +18476,7 @@ therefore have the same `Up' pointer.@refill
 @xref{Other Repeating Search, , Using Occur, emacs , The GNU Emacs Manual},
 for more information.@refill
 
-@node Running Info-Validate,  , Using occur, Catching Mistakes
+@node Running Info-Validate
 @comment  node-name,  next,  previous,  up
 @section Finding Badly Referenced Nodes
 @findex Info-validate
@@ -18542,7 +18506,7 @@ if you write an Info file from scratch.@refill
 * Splitting::                   How to split a file manually.
 @end menu
 
-@node Using Info-validate, Unsplit, Running Info-Validate, Running Info-Validate
+@node Using Info-validate
 @subsection Running @code{Info-validate}
 @cindex Running @code{Info-validate}
 @cindex Info validating a large file
@@ -18599,7 +18563,7 @@ on a large file, you must run @code{texinfo-format-buffer} with an
 argument so that it does not split the Info file; and you must create a
 tag table for the unsplit file.
 
-@node Unsplit, Tagifying, Using Info-validate, Running Info-Validate
+@node Unsplit
 @comment  node-name,  next,  previous,  up
 @subsection Creating an Unsplit File
 @cindex Creating an unsplit file
@@ -18637,7 +18601,7 @@ a tag table for it. @refill
 @cindex Making a tag table manually
 @cindex Tag table, making manually
 
-@node Tagifying, Splitting, Unsplit, Running Info-Validate
+@node Tagifying
 @subsection Tagifying a File
 
 After creating an unsplit Info file, you must create a tag table for
@@ -18674,7 +18638,7 @@ After you have validated the node structure, you can rerun
 tag table and split the file automatically, or you can make the tag
 table and split the file manually.@refill
 
-@node Splitting,  , Tagifying, Running Info-Validate
+@node Splitting
 @comment  node-name,  next,  previous,  up
 @subsection Splitting a File Manually
 @cindex Splitting an Info file manually
