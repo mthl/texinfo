@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
+@c $Id: texinfo.txi,v 1.114 2004-10-06 21:29:48 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1275,13 +1275,13 @@ Unicode.
 @cindex En dash, producing
 Use three hyphens in a row, @samp{---}, to produce a long dash---like
 this (called an @dfn{em dash}), used for punctuation in sentences.
-Use two hyphens, @samp{--}, to produce a medium dash--like this
-(called an @dfn{en dash}), used to separate numeric ranges.  Use a
-single hyphen, @samp{-}, to produce a standard hyphen used in compound
-words.  For display on the screen, Info reduces three hyphens to two
-and two hyphens to one (not transitively!).  Of course, any number of
-hyphens in the source remain as they are in literal contexts, such as
-@code{@@code} and @code{@@example}.
+Use two hyphens, @samp{--}, to produce a medium dash (called an
+@dfn{en dash}), used primarily for numeric ranges, as in ``June
+25--26''.  Use a single hyphen, @samp{-}, to produce a standard hyphen
+used in compound words.  For display on the screen, Info reduces three
+hyphens to two and two hyphens to one (not transitively!).  Of course,
+any number of hyphens in the source remain as they are in literal
+contexts, such as @code{@@code} and @code{@@example}.
 
 @item
 @cindex Tabs; don't use!
@@ -18351,7 +18351,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
+$Id: texinfo.txi,v 1.114 2004-10-06 21:29:48 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18417,7 +18417,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
+@comment $Id: texinfo.txi,v 1.114 2004-10-06 21:29:48 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
