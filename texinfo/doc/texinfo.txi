@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.111 2004-08-28 13:10:30 karl Exp $
+@c $Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9300,6 +9300,13 @@ will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
 The @var{width} and @var{height} arguments are described in the next
 section.
 
+For @TeX{} output, if an image is the first thing in a paragraph, for
+example if you want two images side-by-side, you must precede it with
+@code{@@noindent} (@pxref{noindent,,@code{@@noindent}}).  Otherwise it
+will be displayed on a line by itself.  If you want it centered, 
+use @code{@@center} (@pxref{titlefont center sp,,@code{@@titlefont
+@@center @@sp}}).
+
 @cindex Alt attribute for images
 @cindex Images, alternate text for
 When producing html, @code{makeinfo} sets the @dfn{alt attribute} for
@@ -18343,7 +18350,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.111 2004-08-28 13:10:30 karl Exp $
+$Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18409,7 +18416,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.111 2004-08-28 13:10:30 karl Exp $
+@comment $Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,7 @@
+2004-09-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Image Syntax): mention @noindent, @center.
+
 2004-09-06  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.tex (\Efloat): Take care to run \scantokens on
