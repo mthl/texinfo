@@ -266,7 +266,7 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.40 2003-04-22 17:05:23 pertusus Exp $
+# $Id: texi2html.pl,v 1.41 2003-04-23 16:20:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -2161,6 +2161,9 @@ sub rearrange_elements()
                 }
                 else 
                 {
+                # FIXME ignoring the first node up and prev because there is 
+                # (dir) for the prev node. Maybe it would be better to ignore 
+                # nodes with () which aren't found in the document
                      warn "$WARN $direction $node->{$direction} for $node->{'texi'} not found\n" if (!$node->{'first'} or ($direction eq 'node_next'));
                      delete $node->{$direction};
                 }
@@ -2170,8 +2173,11 @@ sub rearrange_elements()
     #
     foreach my $node (@nodes_list)
     {
+        # complete only if there is a @top command
         last unless ($has_top);
         # use values deduced from menus to complete missing up, next, prev
+        # FIXME we should better begin with up, next, prev given by sectionning
+        # commands
         if (!$node->{'first'} and !$node->{'top'} and !$node->{'menu_up'} and $T2H_SHOW_MENU)
         {
             warn "$WARN `$node->{'texi'}' doesn't appear in menus\n";
@@ -2295,7 +2301,22 @@ sub rearrange_elements()
         my $level;
         if ($element->{'node'})
         {
-             $level = $element->{'menu_level'} + $element->{'level_modifier'};
+            # FIXME drop menu_level ? and use only sections level ?
+             if (!defined($element->{'menu_level'}))
+             {
+                 if (defined($element->{'section_ref'}))
+                 {
+                     $level = $element->{'section_ref'}->{'level'};
+                 }
+                 else
+                 {
+                     $element->{'menu_level'} = 0;
+                 }
+             }
+             else
+             {
+                 $level = $element->{'menu_level'} + $element->{'level_modifier'};
+             }
         }
         else
         {
@@ -2315,7 +2336,8 @@ sub rearrange_elements()
         }
         $element->{'toc_level'} = $element->{'level'};
         $element->{'toc_level'} = $MIN_LEVEL if ($element->{'level'} < $MIN_LEVEL);
-        $toplevel = $element->{'level'} if ($element->{'level'} < $toplevel) and ($element->{'level'} > 0 and ($element->{'tag'} !~ /heading/) and !$element->{'node'});
+        $toplevel = $element->{'level'} if ($element->{'level'} < $toplevel) and ($element->{'level'} > 0 and !$element->{'node'} and ($element->{'tag'} !~ /heading/));
+        print STDERR "# $element->{'texi'}: level $level\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     }
     my $in_appendix = 0;
     # 
@@ -2403,6 +2425,17 @@ sub rearrange_elements()
             $element->{'element'} = 1;
             $element->{'up'} = $element->{'section_up'};
         }
+        # if there is no section we use nodes...
+        if (!@elements_list)
+        {
+            print STDERR "# no section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            @elements_list = @all_elements;
+            #foreach my $element (@elements_list)
+            #{
+            #    $element->{'element'} = 1;
+            #    $element->{'up'} = $elements_list[0];
+            #}
+        }
     }
     else
     {
@@ -2462,6 +2495,8 @@ sub rearrange_elements()
     # with indices taken into account ?
     $element_first = $elements_list[0];
     $element_top = $element_first unless (defined($element_top));
+    # If there is no @top section the first node is the top element
+    $element_top->{'top'} = 1 if ($element_top->{'node'});
     $element_last = $elements_list[-1];
     # find forward and back, find top_elements
     # element_up is the up element except when the up element is the top element
@@ -2506,7 +2541,9 @@ sub rearrange_elements()
     }
 
     my @new_elements = ();
-    #print STDERR "Preparing indices\n";
+   
+    print STDERR "# preparing indices\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+
     while(@elements_list)
     {
         my $element = shift @elements_list;
@@ -2626,8 +2663,8 @@ sub rearrange_elements()
         }
     }
     @elements_list = @new_elements;
-    # complete missing prev and next 
-    # find fastback and fastforward
+    print STDERR "# complete prev and next, find fastback and fastforward\n" 
+       if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
     {
         next if ($element->{'top'});
@@ -2762,7 +2799,7 @@ sub rearrange_elements()
     }
     foreach my $element ((@elements_list, $footnote_element))
     {
-	    last unless ($T2H_DEBUG & $DEBUG_ELEMENTS);
+        last unless ($T2H_DEBUG & $DEBUG_ELEMENTS);
         print STDERR "$element ";
         if ($element->{'node'})
         {
@@ -2827,6 +2864,7 @@ sub get_element($)
     return undef;
 }
 
+# find parent element which is a top element, or a node within the top section
 sub get_top($)
 {
    my $element = shift;
@@ -2834,6 +2872,11 @@ sub get_top($)
    while (!$up->{'top_element'} and !$up->{'top'})
    {
        $up = $up->{'element_up'};
+       if (!defined($up))
+       {
+           print STDERR "$WARN no top for $element->{'texi'}\n";
+           return undef;
+       }
    }
    return $up;
 }

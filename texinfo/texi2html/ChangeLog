@@ -1,6 +1,8 @@
 2003-04-23  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl: when there is no section nodes are used instead
 	* .cvsignore: add autom4te-2.53.cache and check_texinfo.pl
 	* Tests/.cvsignore: create .cvsignore for Tests
+	* Tests/ccvs: update to latest cvs manual
 
 2003-04-22  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl: constants declared early as they are used in 

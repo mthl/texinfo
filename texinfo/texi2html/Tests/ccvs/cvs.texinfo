@@ -237,7 +237,7 @@ the work when each developer is done.
 @sc{cvs} started out as a bunch of shell scripts written by
 Dick Grune, posted to the newsgroup
 @code{comp.sources.unix} in the volume 6
-release of December, 1986.  While no actual code from
+release of July, 1986.  While no actual code from
 these shell scripts is present in the current version
 of @sc{cvs} much of the @sc{cvs} conflict resolution algorithms
 come from them.
@@ -528,8 +528,6 @@ you want to edit.  @xref{Multiple developers}, for an explanation.
 @subsection Committing your changes
 @cindex Committing changes to files
 @cindex Log message entry
-@cindex CVSEDITOR, environment variable
-@cindex EDITOR, environment variable
 
 When you have checked that the compiler is still compilable you decide
 to make a new version of @file{backend.c}.  This will
@@ -546,6 +544,8 @@ $ cvs commit backend.c
 message.  You type in ``Added an optimization pass.'',
 save the temporary file, and exit the editor.
 
+@cindex CVSEDITOR, environment variable
+@cindex EDITOR, environment variable
 The environment variable @code{$CVSEDITOR} determines
 which editor is started.  If @code{$CVSEDITOR} is not
 set, then if the environment variable @code{$EDITOR} is
@@ -1668,15 +1668,22 @@ tags and dates, see @ref{Sticky tags}.
 @c someplace which discusses, per-directory sticky
 @c tags and the distinction with per-file sticky tags.
 
+@c FIXCVS THEN FIXME:
+@c This should be removed when the funcitonality is removed
+@c from CVS.
+@cindex Checkin program
+@cindex -i, in modules file
 @cindex Checkin.prog file, in CVS directory
 @cindex CVS/Checkin.prog file
+@cindex Update program
+@cindex -u, in modules file
 @cindex Update.prog file, in CVS directory
 @cindex CVS/Update.prog file
 @item Checkin.prog
 @itemx Update.prog
 These files store the programs specified by the
 @samp{-i} and @samp{-u} options in the modules file,
-respectively.
+respectively.  See @ref{Module options} for more.
 
 @cindex Notify file, in CVS directory
 @cindex CVS/Notify file
@@ -2029,7 +2036,7 @@ repository is just like using a local one, except that
 the format of the repository name is:
 
 @example
-:@var{method}:[[@var{user}][:@var{password}]@@]@var{hostname}[:[@var{port}]]/path/to/repository
+[:@var{method}:][[@var{user}][:@var{password}]@@]@var{hostname}[:[@var{port}]]/path/to/repository
 @end example
 
 Specifying a password in the repository name is not recommended during
@@ -2167,7 +2174,9 @@ For information on disk space requirements, see
 @sc{cvs} uses the @samp{rsh} protocol to perform these
 operations, so the remote user host needs to have a
 @file{.rhosts} file which grants access to the local
-user.
+user. Note that the program that @sc{cvs} uses for this
+purpose may be specified using the @file{--with-rsh}
+flag to configure.
 
 For example, suppose you are the user @samp{mozart} on
 the local machine @samp{toe.example.com}, and the
@@ -2214,7 +2223,8 @@ There are two access methods that you use in @code{CVSROOT}
 for rsh.  @code{:server:} specifies an internal rsh
 client, which is supported only by some @sc{cvs} ports.
 @code{:ext:} specifies an external rsh program.  By
-default this is @code{rsh} but you may set the
+default this is @code{rsh} (unless otherwise specified
+by the @file{--with-rsh} flag to configure) but you may set the
 @code{CVS_RSH} environment variable to invoke another
 program which can access the remote server (for
 example, @code{remsh} on HP-UX 9 because @code{rsh} is
@@ -2762,7 +2772,8 @@ You need to edit @file{inetd.conf} on the server
 machine to run @code{cvs kserver}.  The client uses
 port 1999 by default; if you want to use another port
 specify it in the @code{CVSROOT} (@pxref{Remote repositories})
-or the @code{CVS_CLIENT_PORT} environment variable on the client.
+or the @code{CVS_CLIENT_PORT} environment variable
+(@pxref{Environment variables}) on the client.
 
 @cindex kinit
 When you want to use @sc{cvs}, get a ticket in the
@@ -2917,11 +2928,11 @@ cvs-serv@var{pid}
 
 @noindent
 where @var{pid} is the process identification number of
-the server.  They are located in the directory
-specified by the @code{TMPDIR} environment variable
-(@pxref{Environment variables}), the @samp{-T} global
-option (@pxref{Global options}), or failing that
-@file{/tmp}.
+the server.
+They are located in the directory specified by 
+the @samp{-T} global option (@pxref{Global options}), 
+the @code{TMPDIR} environment variable (@pxref{Environment variables}), 
+or, failing that, @file{/tmp}.
 
 In most cases the server will remove the temporary
 directory when it is done, whether it finishes normally
@@ -3386,8 +3397,8 @@ rcsmap.c        5.2
 rcsutil.c       5.10
 @end example
 
-@cindex tag, command, introduction
-@cindex Tag, symbolic name
+@cindex tag (subcommand), introduction
+@cindex Tags, symbolic name
 @cindex Symbolic name (tag)
 @cindex Name, symbolic (tag)
 @cindex HEAD, as reserved tag name
@@ -3438,7 +3449,7 @@ taginfo file (@pxref{user-defined logging}).
 @c issues which arise.
 
 @cindex Adding a tag
-@cindex Tag, example
+@cindex Tags, example
 The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
@@ -3487,7 +3498,7 @@ operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  @xref{Recursive behavior}.)
 
 @cindex Retrieving an old revision using tags
-@cindex Tag, retrieving old revisions
+@cindex Tags, retrieving old revisions
 The @code{checkout} command has a flag, @samp{-r}, that lets you check out
 a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module @samp{tc} at
@@ -3806,9 +3817,10 @@ File: driver.c          Status: Up-to-date
 @cindex Deleting sticky tags
 The sticky tags will remain on your working files until
 you delete them with @samp{cvs update -A}.  The
-@samp{-A} option retrieves the version of the file from
-the head of the trunk, and forgets any sticky tags,
-dates, or options.
+@samp{-A} option merges local changes into the version of the
+file from the head of the trunk, removing any sticky tags,
+dates, or options.  See @ref{update} for more on the operation
+of @code{cvs update}.
 
 @cindex Sticky date
 The most common use of sticky tags is to identify which
@@ -3925,8 +3937,8 @@ the main trunk, or leave them on the branch.
 @section Creating a branch
 @cindex Creating a branch
 @cindex Branch, creating a
-@cindex tag, creating a branch using
-@cindex rtag, creating a branch using
+@cindex tag (subcommand), creating a branch using
+@cindex rtag (subcommand), creating a branch using
 
 You can create a branch with @code{tag -b}; for
 example, assuming you're in a working copy:
@@ -4243,8 +4255,9 @@ no way to see how the tag was assigned yesterday).
 You can merge changes made on a branch into your working copy by giving
 the @samp{-j @var{branchname}} flag to the @code{update} subcommand.  With one
 @samp{-j @var{branchname}} option it merges the changes made between the
-point where the branch forked and newest revision on that branch (into
-your working copy).
+greatest common ancestor (GCA) of the branch and the destination revision (in
+the simple case below the GCA is the point where the branch forked) and the
+newest revision on that branch into your working copy.
 
 @cindex Join
 The @samp{-j} stands for ``join''.
@@ -5894,6 +5907,16 @@ sending an entire file accomplishes the same thing.
 Someone else has committed a newer revision to the repository, and you
 have also made modifications to the file.
 
+@item Unresolved Conflict
+@cindex Unresolved Conflict
+@c FIXCVS - This file status needs to be changed to some more informative
+@c text that distinguishes it more clearly from each of the Locally Added,
+@c File had conflicts on merge, and Unknown status types, but an exact and
+@c succinct wording escapes me at the moment.
+A file with the same name as this new file has been added to the repository
+from a second workspace.  This file will need to be moved out of the way
+to allow an @code{update} to complete.
+
 @item File had conflicts on merge
 @cindex File had conflicts on merge
 @c is it worth saying that this message was "Unresolved
@@ -6367,7 +6390,7 @@ To enable the watch features, you first specify that
 certain files are to be watched.
 
 @cindex watch on (subcommand)
-@deffn Command {cvs watch on} [@code{-lR}] files @dots{}
+@deffn Command {cvs watch on} [@code{-lR}] [@var{files}]@dots{}
 
 @cindex Read-only files, and watches
 Specify that developers should run @code{cvs edit}
@@ -6391,7 +6414,7 @@ If @var{files} is omitted, it defaults to the current directory.
 @cindex watch off (subcommand)
 @end deffn
 
-@deffn Command {cvs watch off} [@code{-lR}] files @dots{}
+@deffn Command {cvs watch off} [@code{-lR}] [@var{files}]@dots{}
 
 Do not create @var{files} read-only on checkout; thus,
 developers will not be reminded to use @code{cvs edit}
@@ -6420,7 +6443,7 @@ watch on}, to remind developers to use the @code{cvs edit}
 command.
 
 @cindex watch add (subcommand)
-@deffn Command {cvs watch add} [@code{-a} action] [@code{-lR}] files @dots{}
+@deffn Command {cvs watch add} [@code{-lR}] [@code{-a} @var{action}]@dots{} [@var{files}]@dots{}
 
 Add the current user to the list of people to receive notification of
 work done on @var{files}.
@@ -6474,7 +6497,7 @@ The @var{files} and options are processed as for
 
 
 @cindex watch remove (subcommand)
-@deffn Command {cvs watch remove} [@code{-a} action] [@code{-lR}] files @dots{}
+@deffn Command {cvs watch remove} [@code{-lR}] [@code{-a} @var{action}]@dots{} [@var{files}]@dots{}
 
 Remove a notification request established using @code{cvs watch add};
 the arguments are the same.  If the @code{-a} option is present, only
@@ -6568,19 +6591,19 @@ source}), an operation which those systems call a
 @c a technical meaning for).
 
 @cindex edit (subcommand)
-@deffn Command {cvs edit} [options] files @dots{}
+@deffn Command {cvs edit} [@code{-lR}] [@code{-a} @var{action}]@dots{} [@var{files}]@dots{}
 
 Prepare to edit the working files @var{files}.  @sc{cvs} makes the
 @var{files} read-write, and notifies users who have requested
 @code{edit} notification for any of @var{files}.
 
-The @code{cvs edit} command accepts the same @var{options} as the
+The @code{cvs edit} command accepts the same options as the
 @code{cvs watch add} command, and establishes a temporary watch for the
 user on @var{files}; @sc{cvs} will remove the watch when @var{files} are
 @code{unedit}ed or @code{commit}ted.  If the user does not wish to
 receive notifications, she should specify @code{-a none}.
 
-The @var{files} and options are processed as for the @code{cvs
+The @var{files} and the options are processed as for the @code{cvs
 watch} commands.
 
 @ignore
@@ -6605,7 +6628,7 @@ the @code{cvs unedit} command.
 @cindex unedit (subcommand)
 @cindex Abandoning work
 @cindex Reverting to repository version
-@deffn Command {cvs unedit} [@code{-lR}] files @dots{}
+@deffn Command {cvs unedit} [@code{-lR}] [@var{files}]@dots{}
 
 Abandon work on the working files @var{files}, and revert them to the
 repository versions on which they are based.  @sc{cvs} makes those
@@ -6638,7 +6661,7 @@ successful @sc{cvs} command.
 @subsection Information about who is watching and editing
 
 @cindex watchers (subcommand)
-@deffn Command {cvs watchers} [@code{-lR}] files @dots{}
+@deffn Command {cvs watchers} [@code{-lR}] [@var{files}]@dots{}
 
 List the users currently watching changes to @var{files}.  The report
 includes the files being watched, and the mail address of each watcher.
@@ -6650,7 +6673,7 @@ The @var{files} and options are processed as for the
 
 
 @cindex editors (subcommand)
-@deffn Command {cvs editors} [@code{-lR}] files @dots{}
+@deffn Command {cvs editors} [@code{-lR}] [@var{files}]@dots{}
 
 List the users currently working on @var{files}.  The report
 includes the mail address of each user, the time when the user began
@@ -7860,6 +7883,16 @@ a command name, @samp{cvs -H} displays overall help for
 Do not log the @samp{cvs_command} in the command history (but execute it
 anyway).  @xref{history}, for information on command history.
 
+@cindex Read-only repository mode
+@item -R
+Turns on read-only repository mode.  This allows one to check out from a
+read-only repository, such as within an anoncvs server, or from a CDROM
+repository.
+
+Same effect as if the @code{CVSREADONLYFS} environment
+variable is set. Using @samp{-R} can also considerably
+speed up checkout's over NFS.
+
 @cindex Read-only mode
 @item -n
 Do not change any files.  Attempt to execute the
@@ -7978,7 +8011,7 @@ further updates in the same directory will use the same date
 
 @samp{-D} is available with the @code{annotate}, @code{checkout},
 @code{diff}, @code{export}, @code{history},
-@code{rdiff}, @code{rtag}, and @code{update} commands.
+@code{rdiff}, @code{rtag}, @code{tag}, and @code{update} commands.
 (The @code{history} command uses this option in a
 slightly different way; @pxref{history options}).
 
@@ -8323,14 +8356,20 @@ are likely to disappear in the future.  This command
 used.
 
 @cindex cvsadmin
+@cindex UserAdminOptions, in CVSROOT/config
 On unix, if there is a group named @code{cvsadmin},
 only members of that group can run @code{cvs admin}
-(except for the @code{cvs admin -k} command, which can
-be run by anybody).  This group should exist on the
-server, or any system running the non-client/server
-@sc{cvs}.  To disallow @code{cvs admin} for all users,
-create a group with no users in it.  On NT, the
-@code{cvsadmin} feature does not exist and all users
+commands, except for those specified using the
+@code{UserAdminOptions} configuration option in the
+@file{CVSROOT/config} file.  Options specified using
+@code{UserAdminOptions} can be run by any user.  See
+@ref{config} for more on @code{UserAdminOptions}.
+
+The @code{cvsadmin} group should exist on the server,
+or any system running the non-client/server @sc{cvs}.
+To disallow @code{cvs admin} for all users, create a
+group with no users in it.  On NT, the @code{cvsadmin}
+feature does not exist and all users
 can run @code{cvs admin}.
 
 @menu
@@ -10159,7 +10198,7 @@ The file is being ignored (@pxref{cvsignore}).
 The file is a symbolic link; @code{cvs import} ignores symbolic links.
 People periodically suggest that this behavior should
 be changed, but if there is a consensus on what it
-should be changed to, it doesn't seem to be apparent.
+should be changed to, it is not apparent.
 (Various options in the @file{modules} file can be used
 to recreate symbolic links on checkout, update, etc.;
 @pxref{modules}.)
@@ -10661,7 +10700,11 @@ to time, when it is convenient in your development
 process, you can use the @code{update} command from
 within your working directory to reconcile your work
 with any revisions applied to the source repository
-since your last checkout or update.
+since your last checkout or update.  Without the @code{-C}
+option, @code{update} will also merge any differences
+between the local copy of files and their base revisions
+into any destination revisions specified with @code{-r},
+@code{-D}, or @code{-A}.
 
 @menu
 * update options::              update options
@@ -12112,15 +12155,16 @@ module are committed.  @var{prog} runs with a single
 argument, the full pathname of the affected directory
 in a source repository.  The @file{commitinfo},
 @file{loginfo}, and @file{verifymsg} files provide other
-ways to call a program on commit.
-@c FIXME: Is it run on server? client?
+ways to call a program on commit.  See @ref{Module program options} for
+information on how @var{prog} is called.
 
 @cindex Checkout program
 @cindex -o, in modules file
 @item -o @var{prog}
 Specify a program @var{prog} to run whenever files in a
 module are checked out.  @var{prog} runs with a single
-argument, the module name.
+argument, the module name.  See @ref{Module program options} for
+information on how @var{prog} is called.
 @c FIXME: Is it run on server? client?
 
 @cindex Status of a module
@@ -12158,8 +12202,8 @@ Specify a program @var{prog} to run whenever @samp{cvs
 update} is executed from the top-level directory of the
 checked-out module.  @var{prog} runs with a single
 argument, the full path to the source repository for
-this module.
-@c FIXME: Is it run on server? client?
+this module.  See @ref{Module program options} for
+information on how @var{prog} is called.
 @c One drawback of -u and -i are that CVS/Update.prog
 @c and CVS/Checkin.prog only get updated on initial
 @c checkout, and don't get updated if the modules file
@@ -12175,10 +12219,8 @@ You should also see @pxref{Module program options} about how the
 @node Module program options
 @appendixsubsec How the modules file ``program options'' programs are run
 @cindex Modules file program options
-@cindex -u, in modules file
 @cindex -t, in modules file
 @cindex -o, in modules file
-@cindex -i, in modules file
 @cindex -e, in modules file
 
 @noindent
@@ -12194,16 +12236,27 @@ repository set just to a path),
 the program will be executed from the newly checked-out tree, if
 found there, or alternatively searched for in the path if not.
 
+@cindex Checkout program
+@cindex -i, in modules file
+@cindex Checkin.prog file, in CVS directory
+@cindex CVS/Checkin.prog file
+@cindex Update program
+@cindex -u, in modules file
+@cindex Update.prog file, in CVS directory
+@cindex CVS/Update.prog file
 @noindent
 The commit and update programs are locally-based, and are run as
 follows:-
 
-The program is always run locally. One must
+The program is run locally in local mode and in a copy of the sandbox in on
+the server in client/server mode.  One must
 re-checkout the tree one is using if these options are updated in the
 modules administrative file. The file CVS/Checkin.prog contains the
 value of the option `-i' set in the modules file, and similarly for
-the file CVS/Update.prog and `-u'. The program is always executed from
-the top level of the checked-out copy on the client. Again, the program
+the file CVS/Update.prog and `-u' (@pxref{Module options}). The program is
+executed from
+the current working directory on the client and the top level of
+the copy of the sandbox created on the server.  Again, the program
 is first searched for in the checked-out copy and then using the path.
 
 The programs are all run after the operation has effectively
@@ -13067,14 +13120,15 @@ file.
 
 When @sc{cvs} is accessing a remote repository,
 the contents of @file{rcsinfo} at the time a directory
-is first checked out will specify a template which does
-not then change.  If you edit @file{rcsinfo} or its
-templates, you may need to check out a new working
-directory.
-@c Would be nice to fix CVS so this isn't needed.  For
-@c example, a mechanism analogous to CVS/Entries, where
-@c the client keeps track of what version of the template
-@c it has.
+is first checked out will specify a template. This
+template will be updated on all @samp{cvs update}
+commands. It will also be added to new directories
+added with a @samp{cvs add new-directry} command.
+In versions of @sc{cvs} prior to version 1.12, the
+@file{CVS/Template} file was not updated. If the
+@sc{cvs} server is at version 1.12 or higher an older
+client may be used and the @file{CVS/Template} will
+be updated from the server.
 
 @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 @node cvsignore
@@ -13299,10 +13353,10 @@ error.
 
 @item CVSEDITOR
 @cindex CVSEDITOR, internal variable
-@itemx VISUAL
-@cindex VISUAL, internal variable
 @itemx EDITOR
 @cindex EDITOR, internal variable
+@itemx VISUAL
+@cindex VISUAL, internal variable
 These all expand to the same value, which is the editor
 that @sc{cvs} is using.  @xref{Global options}, for how
 to specify this.
@@ -13492,6 +13546,30 @@ CPU intensive but is not recommended for use with large repositories}
 
 @xref{verifymsg}, for more information on how verifymsg
 may be used.
+
+@cindex UserAdminOptions, in CVSROOT/config
+@item UserAdminOptions=@var{value}
+Control what options will be allowed with the @code{cvs admin}
+command (@pxref{admin}) for users not in the @code{cvsadmin} group.
+The @var{value} string is a list of single character options
+which should be allowed.  If a user who is not a member of the
+@code{cvsadmin} group tries to execute any @code{cvs admin}
+option which is not listed they will will receive an error message
+reporting that the option is restricted.
+
+If no @code{cvsadmin} group exists on the server, @sc{cvs} will
+ignore the @code{UserAdminOptions} keyword (@pxref{admin}).
+
+When not specified, @code{UserAdminOptions} defaults to
+@samp{k}.  In other words, it defaults to allowing
+users outside of the @code{cvsadmin} group to use the
+@code{cvs admin} command only to change the default keyword
+expansion mode for files.
+
+As an example, to restrict users not in the @code{cvsadmin}
+group to using @code{cvs admin} to change the default keyword
+substitution mode, lock revisions, unlock revisions, and
+replace the log message, use @samp{UserAdminOptions=klum}.
 @end table
 
 @c ---------------------------------------------------------------------
@@ -13522,6 +13600,16 @@ try hard to make the files in your working directory
 read-only.  When this is not set, the default behavior
 is to permit modification of your working files.
 
+@cindex CVSREADONLYFS, environment variable
+@item $CVSREADONLYFS
+Turns on read-only repository mode. This allows one to
+check out from a read-only repository, such as within
+an anoncvs server, or from a CDROM repository.
+
+It has the same effect as if the @samp{-R} command-line
+option is used. This can also allow the use of
+read-only NFS repositories.
+
 @item $CVSUMASK
 Controls permissions of files in the repository.  See
 @ref{File permissions}.
@@ -13539,12 +13627,18 @@ the file @file{CVS/Root}), so normally you only need to
 worry about this when initially checking out a working
 directory.
 
-@item $EDITOR
-@itemx $CVSEDITOR
+@item $CVSEDITOR
+@cindex CVSEDITOR, environment variable
+@itemx $EDITOR
+@cindex EDITOR, environment variable
 @itemx $VISUAL
+@cindex VISUAL, environment variable
 Specifies the program to use for recording log messages
 during commit.  @code{$CVSEDITOR} overrides
-@code{$EDITOR}.  See @ref{Committing your changes}.
+@code{$EDITOR}, which overrides @code{$VISUAL}.
+See @ref{Committing your changes} for more or
+@ref{Global options} for alternative ways of specifying a
+log editor.
 
 @cindex PATH, environment variable
 @item $PATH
@@ -13589,9 +13683,9 @@ login server}.  Default value is @file{$HOME/.cvspass}.
 @pxref{Password authentication client}
 
 @item $CVS_CLIENT_PORT
-Used in client-server mode when accessing the server
-via Kerberos, GSSAPI, or @sc{cvs}'s password authentication if the port is not
-specified in $CVSROOT.
+Used in client-server mode to set the port to use when accessing the server
+via Kerberos, GSSAPI, or @sc{cvs}'s password authentication protocol
+if the port is not specified in the CVSROOT.
 @pxref{Remote repositories}
 
 @cindex CVS_RCMD_PORT, environment variable
@@ -13623,6 +13717,16 @@ file when the @samp{-d} global option is specified.
 Later versions of @sc{cvs} do not rewrite
 @file{CVS/Root}, so @code{CVS_IGNORE_REMOTE_ROOT} has no
 effect.
+
+@cindex CVS_LOCAL_BRANCH_NUM, environment variable
+@item $CVS_LOCAL_BRANCH_NUM
+Setting this variable allows some control over the
+branch number that is assigned. This is specifically to
+support the local commit feature of CVSup. If one sets
+@code{CVS_LOCAL_BRANCH_NUM} to (say) 1000 then branches
+the local repository, the revision numbers will look
+like 1.66.1000.xx. There is almost a dead-set certainty
+that there will be no conflicts with version numbers.
 
 @cindex COMSPEC, environment variable
 @item $COMSPEC
@@ -13658,6 +13762,14 @@ client uses @code{TMPDIR}, and if it is not set, uses
 if your server and client are both running @sc{cvs}
 1.9.10 or later, @sc{cvs} will not invoke an external
 @code{patch} program.
+
+@cindex CVS_PID, environment variable
+@item $CVS_PID
+This is the process identification (aka pid) number of
+the @sc{cvs} process. It is often useful in the
+programs and/or scripts specified by the
+@file{commitinfo}, @file{verifymsg}, @file{loginfo}
+files.
 @end table
 
 @node Compatibility
@@ -14214,10 +14326,12 @@ directions given for :ext:.
 Errors along the lines of "connection refused" typically indicate
 that inetd isn't even listening for connections on port 2401
 whereas errors like "connection reset by peer",
-"received broken pipe signal", or "recv() from server: EOF"
+"received broken pipe signal", "recv() from server: EOF",
+or "end of file from server"
 typically indicate that inetd is listening for
 connections but is unable to start @sc{cvs} (this is frequently
-caused by having an incorrect path in @file{inetd.conf}).
+caused by having an incorrect path in @file{inetd.conf}
+or by firewall software rejecting the connection).
 "unrecognized auth response" errors are caused by a bad command
 line in @file{inetd.conf}, typically an invalid option or forgetting
 to put the @samp{pserver} command at the end of the line.
