@@ -1,3 +1,9 @@
+2002-12-14    <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo in Emacs): does not prompt for
+	filename.
+	From: Kevin Ryde <user42@zip.com.au>.
+
 2002-12-13    <karl@gnu.org>
 
 	* doc/texinfo.txi: short sample needs @top (from jas), gnu sample
