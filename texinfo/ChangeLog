@@ -5,6 +5,8 @@
 
 2002-10-24    <karl@gnu.org>
 
+	* doc/info-stnd.texi: missing period.
+
 	* m4/{check-decl.m4,mkstemp.m4,prereq.m4}: new files from gnulib.
 	* lib/mkstemp.c, lib/tempname.c: likewise.
 	* aclocal.m4, configure.ac: support for mkstemp instead of mktemp.
