@@ -1,3 +1,9 @@
+2003-08-26  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/node.c (cm_node): add <LINK> tags. This will produce a
+	navigation bar in Mozilla 1.4 (and perhaps earlier).  Original
+	code from Han-Wen Nienhuys <hanwen@cs.uu.nl>.
+
 2003-08-23  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: Run tex --help in $tmpdir, to avoid leaving
