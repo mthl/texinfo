@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.44 2003-11-21 17:25:34 dirt Exp $
+   $Id: insertion.c,v 1.45 2003-11-21 18:34:52 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -267,7 +267,7 @@ is_in_insertion_of_type (type)
     if (temp->insertion == type)
       return 1;
 
-  return 1;
+  return 0;
 }
 
 
