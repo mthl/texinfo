@@ -83,6 +83,8 @@ am__quote = @am__quote@
 install_sh = @install_sh@
 
 SUBDIRS = doc Tests
+imagesdir = $(pkgdatadir)/images
+
 #
 # This is to prevent texinfo.tex from being included
 # in the top-level distribution directory.
@@ -105,6 +107,75 @@ dist_pkgdata_DATA = l2h.init \
 	examples/xhtml.init \
 	examples/html32.init
 
+
+dist_images_DATA = images/a_begin.gif \
+	images/a_begin_na.gif \
+	images/a_document.gif \
+	images/a_document_na.gif \
+	images/a_empty.gif \
+	images/a_end.gif \
+	images/a_end_na.gif \
+	images/a_help.gif \
+	images/a_help_na.gif \
+	images/a_index.gif \
+	images/a_index_na.gif \
+	images/a_leftdouble.gif \
+	images/a_leftdouble_na.gif \
+	images/a_left.gif \
+	images/a_left_na.gif \
+	images/a_page.gif \
+	images/a_page_na.gif \
+	images/a_rightdouble.gif \
+	images/a_rightdouble_na.gif \
+	images/a_right.gif \
+	images/a_right_na.gif \
+	images/a_searchdoc.gif \
+	images/a_searchdoc_na.gif \
+	images/a_search.gif \
+	images/a_search_na.gif \
+	images/a_tableofcon.gif \
+	images/a_tableofcon_na.gif \
+	images/a_top.gif \
+	images/a_top_na.gif \
+	images/a_up.gif \
+	images/a_up_na.gif \
+	images/bg.jpg \
+	images/bg_left.gif \
+	images/bg_right.gif \
+	images/blue_dir.gif \
+	images/blue_down.gif \
+	images/blue_grab.gif \
+	images/blue_help.gif \
+	images/blue_next.gif \
+	images/blue_nnext.gif \
+	images/blue_pprev.gif \
+	images/blue_prev.gif \
+	images/blue_readme.gif \
+	images/blue_top.gif \
+	images/blue_up.gif \
+	images/blue_uup.gif \
+	images/contents_motif.gif \
+	images/COPYING \
+	images/index_motif.gif \
+	images/Mybg.gif \
+	images/next_motif.gif \
+	images/next_motif_gr.gif \
+	images/previous_motif.gif \
+	images/previous_motif_gr.gif \
+	images/spacer3.gif \
+	images/xy_contents.gif \
+	images/xy_foot.gif \
+	images/xy_next.gif \
+	images/xy_next_gr.gif \
+	images/xy_nextsection.gif \
+	images/xy_nextsection_gr.gif \
+	images/xy_previous.gif \
+	images/xy_previous_gr.gif \
+	images/xy_previoussection.gif \
+	images/xy_previoussection_gr.gif \
+	images/xy_up.gif \
+	images/xy_up_gr.gif
+
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -115,17 +186,18 @@ DIST_SOURCES =
 
 NROFF = nroff
 MANS = $(man_MANS)
-DATA = $(dist_pkgdata_DATA)
+DATA = $(dist_images_DATA) $(dist_pkgdata_DATA)
 
 
 RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 	uninstall-info-recursive all-recursive install-data-recursive \
 	install-exec-recursive installdirs-recursive install-recursive \
 	uninstall-recursive check-recursive installcheck-recursive
-DIST_COMMON = README $(dist_pkgdata_DATA) AUTHORS COPYING ChangeLog \
-	INSTALL Makefile.am Makefile.in NEWS TODO aclocal.m4 \
-	check_texinfo.pl.in configure configure.in install-sh mdate-sh \
-	missing mkinstalldirs texi2html.1.in texi2html.pl
+DIST_COMMON = README $(dist_images_DATA) $(dist_pkgdata_DATA) AUTHORS \
+	COPYING ChangeLog INSTALL Makefile.am Makefile.in NEWS TODO \
+	aclocal.m4 check_texinfo.pl.in configure configure.in \
+	install-sh mdate-sh missing mkinstalldirs texi2html.1.in \
+	texi2html.pl
 DIST_SUBDIRS = $(SUBDIRS)
 all: all-recursive
 
@@ -215,6 +287,24 @@ uninstall-man1:
 	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
 	  echo " rm -f $(DESTDIR)$(man1dir)/$$inst"; \
 	  rm -f $(DESTDIR)$(man1dir)/$$inst; \
+	done
+dist_imagesDATA_INSTALL = $(INSTALL_DATA)
+install-dist_imagesDATA: $(dist_images_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(imagesdir)
+	@list='$(dist_images_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(dist_imagesDATA_INSTALL) $$d$$p $(DESTDIR)$(imagesdir)/$$f"; \
+	  $(dist_imagesDATA_INSTALL) $$d$$p $(DESTDIR)$(imagesdir)/$$f; \
+	done
+
+uninstall-dist_imagesDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(dist_images_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(imagesdir)/$$f"; \
+	  rm -f $(DESTDIR)$(imagesdir)/$$f; \
 	done
 dist_pkgdataDATA_INSTALL = $(INSTALL_DATA)
 install-dist_pkgdataDATA: $(dist_pkgdata_DATA)
@@ -346,7 +436,7 @@ distcleancheck_listfiles = find . -type f -print
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkinstalldirs) $(distdir)/. $(distdir)/examples
+	$(mkinstalldirs) $(distdir)/. $(distdir)/examples $(distdir)/images
 	@list='$(DISTFILES)'; for file in $$list; do \
 	  if test -f $$file || test -d $$file; then d=.; else d=$(srcdir); fi; \
 	  dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
@@ -442,7 +532,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(MANS) $(DATA)
 installdirs: installdirs-recursive
 installdirs-am:
-	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) $(DESTDIR)$(pkgdatadir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) $(DESTDIR)$(imagesdir) $(DESTDIR)$(pkgdatadir)
 
 install: install-recursive
 install-exec: install-exec-recursive
@@ -484,7 +574,8 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-dist_pkgdataDATA install-man
+install-data-am: install-dist_imagesDATA install-dist_pkgdataDATA \
+	install-man
 
 install-exec-am: install-binSCRIPTS
 
@@ -503,8 +594,8 @@ mostlyclean: mostlyclean-recursive
 
 mostlyclean-am: mostlyclean-generic
 
-uninstall-am: uninstall-binSCRIPTS uninstall-dist_pkgdataDATA \
-	uninstall-info-am uninstall-man
+uninstall-am: uninstall-binSCRIPTS uninstall-dist_imagesDATA \
+	uninstall-dist_pkgdataDATA uninstall-info-am uninstall-man
 
 uninstall-info: uninstall-info-recursive
 
@@ -516,17 +607,19 @@ uninstall-man: uninstall-man1
 	distclean-recursive distclean-tags distcleancheck distdir dvi \
 	dvi-am dvi-recursive info info-am info-recursive install \
 	install-am install-binSCRIPTS install-data install-data-am \
-	install-data-recursive install-dist_pkgdataDATA install-exec \
-	install-exec-am install-exec-recursive install-info \
-	install-info-am install-info-recursive install-man install-man1 \
+	install-data-recursive install-dist_imagesDATA \
+	install-dist_pkgdataDATA install-exec install-exec-am \
+	install-exec-recursive install-info install-info-am \
+	install-info-recursive install-man install-man1 \
 	install-recursive install-strip installcheck installcheck-am \
 	installdirs installdirs-am installdirs-recursive \
 	maintainer-clean maintainer-clean-generic \
 	maintainer-clean-recursive mostlyclean mostlyclean-generic \
 	mostlyclean-recursive tags tags-recursive uninstall \
-	uninstall-am uninstall-binSCRIPTS uninstall-dist_pkgdataDATA \
-	uninstall-info-am uninstall-info-recursive uninstall-man \
-	uninstall-man1 uninstall-recursive
+	uninstall-am uninstall-binSCRIPTS uninstall-dist_imagesDATA \
+	uninstall-dist_pkgdataDATA uninstall-info-am \
+	uninstall-info-recursive uninstall-man uninstall-man1 \
+	uninstall-recursive
 
 
 texi2html: \

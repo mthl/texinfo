@@ -1,5 +1,9 @@
 2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
 
+	* images, AUTHORS: add images from the Singular project.
+
+2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
+
 	* texi2html.pl, T2h_i18n.pm, texi2html.init: new handling of 
 	languages in documents.
 	instead of using the hash reference $Texi2HTML::I18n::WORDS for
