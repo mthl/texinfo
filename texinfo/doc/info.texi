@@ -1030,7 +1030,7 @@ you typed @emph{as a substring}.  For each match, Info shows in the
 echo area the full index entry it found.  Often, the text of the full
 index entry already gives you enough information to decide whether it
 is relevant to what you are looking for, so we recommend that you read
-what Emacs shows in the echo are before looking at the node it
+what Emacs shows in the echo area before looking at the node it
 displays.
 
   Since @kbd{i} looks for a substring, you can search for subjects even
