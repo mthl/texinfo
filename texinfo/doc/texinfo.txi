@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
+@c $Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6741,7 +6741,7 @@ Indicate an acronym.
 @item @@indicateurl@{@var{uniform-resource-locator}@}
 Indicate an example (nonfunctional) uniform resource locator.
 @xref{indicateurl,,@code{@@indicateurl}}.  (Use @code{@@url}
-(@pxref{url,,@code{url}}) for live url's.)
+(@pxref{uref,,@code{@@url}}) for live url's.)
 
 @item @@email@{@var{email-address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -18205,7 +18205,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
+$Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18271,7 +18271,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.101 2004-07-12 14:05:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.102 2004-07-15 11:14:39 wl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
