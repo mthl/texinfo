@@ -1,3 +1,15 @@
+2003-07-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\doignorecount): no need to initialize.
+	(\doignoreyyy): doc fix.
+	From Stepan.
+
+2003-07-29  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\doignorecount): No need to initialize the
+	  count while reading texinfo.tex.
+	  (\doignoreyyy): Tiny comment change.
+
 2003-07-28  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/html.c (process_css_file): @c (for @charset) should
