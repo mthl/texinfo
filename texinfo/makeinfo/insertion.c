@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.16 2003-02-11 16:39:06 karl Exp $
+   $Id: insertion.c,v 1.17 2003-02-13 16:09:38 karl Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -645,7 +645,7 @@ begin_insertion (type)
 
     case cartouche:
       if (html)
-	add_word ("<table border=1><tr><td>\n");
+	add_word ("<table class=\"cartouche\" border=1><tr><td>\n");
       if (in_menu)
         no_discard++;
       break;
