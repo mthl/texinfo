@@ -1,5 +1,5 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.8 2003-03-22 17:40:54 karl Exp $
+   $Id: sectioning.c,v 1.9 2003-04-21 01:02:39 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -215,6 +215,11 @@ void
 sectioning_underscore (cmd)
      char *cmd;
 {
+  /* If we're not indenting the first paragraph, we shall make it behave
+     like @noindent is called directly after the section heading. */
+  if (! do_first_par_indent)
+    cm_noindent ();
+
   if (xml)
     {
       char *temp;

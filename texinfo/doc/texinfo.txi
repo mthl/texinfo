@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
+@c $Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -257,6 +257,7 @@ Global Document Commands
 * documentdescription::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
 * paragraphindent::             Specify paragraph indentation.
+* firstparagraphindent::        Suppress indentation of the first paragraph.
 * exampleindent::               Specify environment indentation.
 
 Ending a Texinfo File
@@ -372,6 +373,7 @@ Quotations and Examples
 * exdent::                      Undo indentation on a line.
 * flushleft & flushright::      Pushing text flush left or flush right.
 * noindent::                    Preventing paragraph indentation.
+* indent::                      Forcing paragraph indentation.
 * cartouche::                   Drawing rounded rectangles around examples.
 
 Lists and Tables
@@ -1245,6 +1247,9 @@ Each of the other output formats (@code{html}, @code{info},
 @xref{Conditionals}.
 
 @item
+@iftex
+@vskip-@baselineskip
+@end iftex
 @cindex Tabs; don't use!
 @quotation
 @strong{Caution:} Do not use tab characters in a Texinfo file (except in
@@ -3668,6 +3673,7 @@ generally all given before the Top node, if they are given at all.
 * documentdescription::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
 * paragraphindent::             Specify paragraph indentation.
+* firstparagraphindent::        Suppress indentation of the first paragraph.
 * exampleindent::               Specify environment indentation.
 @end menu
 
@@ -3779,7 +3785,7 @@ you want.
 
 
 @node paragraphindent
-@subsection Paragraph Indenting
+@subsection @code{@@paragraphindent}: Paragraph Indenting
 @cindex Indenting paragraphs, control of
 @cindex Paragraph indentation control
 @findex paragraphindent
@@ -3822,6 +3828,50 @@ A peculiarity of the @code{texinfo-format-buffer} and
 @code{texinfo-format-region} commands is that they do not indent (nor
 fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
 @xref{Refilling Paragraphs}, for further information.
+
+
+@node firstparagraphindent
+@subsection @code{@@firstparagraphindent}: Indentation After Headings
+@cindex First paragraph, suppressing indentation of
+@cindex Suppressing first paragraph indentation
+@cindex Preventing first paragraph indentation
+@cindex Indenting, suppressing of first paragraph
+@cindex Headings, indentation after
+@findex firstparagraphindent
+
+As you can see in the present manual, the first paragraph in any
+section is not indented by default.  Typographically, indentation is a
+paragraph separator, which means that it is unnecessary when a new
+section begins.  This indentation is controlled with the
+@code{@@firstparagraphindent} command:
+
+@example
+@@firstparagraphindent @var{word}
+@end example
+
+The first paragraph after a heading is indented according to the value
+of @var{word}:
+
+@table @asis
+@item @code{none}
+Prevents the first paragraph from being indented (default for @TeX{}).
+This option is ignored if @code{@@paragraphindent asis} is in effect.
+
+@item @code{insert}
+Include normal paragraph indentation (default for @code{makeinfo}).
+This respects the paragraph indentation set by a
+@code{@@paragraphindent} command (@pxref{paragraphindent}).
+@end table
+
+An explicit specification of @code{@@firstparagraphindent} is obeyed
+by all Texinfo processors, even though the defaults are different.
+Except that for HTML and XML output, the @code{@@firstparagraphindent}
+setting is ignored.
+
+It is best to write the @code{@@paragraphindent} command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  @xref{Start of
+Header}.
 
 
 @node exampleindent
@@ -7522,6 +7572,7 @@ line.
 * exdent::                      Undo indentation on a line.
 * flushleft & flushright::      Pushing text flush left or flush right.
 * noindent::                    Preventing paragraph indentation.
+* indent::                      Forcing paragraph indentation.
 * cartouche::                   Drawing rounded rectangles around examples.
 @end menu
 
@@ -8019,6 +8070,9 @@ left end ragged.
 
 @node noindent
 @section @code{@@noindent}: Omitting Indentation
+@cindex Omitting indentation
+@cindex Suppressing indentation
+@cindex Indentation, omitting
 @findex noindent
 
 An example or other inclusion can break a paragraph into segments.
@@ -8075,6 +8129,34 @@ In the Texinfo source file for this manual, each line that says
 
 Do not put braces after an @code{@@noindent} command; they are not
 necessary, since @code{@@noindent} is a command used outside of
+paragraphs (@pxref{Command Syntax}).
+
+
+@node indent
+@section @code{@@indent}: Forcing Indentation
+@cindex Forcing indentation
+@cindex Inserting indentation
+@cindex Indentation, forcing
+@findex indent
+
+@indent
+To complement the @code{@@noindent} command (see the previous
+section), Texinfo provides the @code{@@indent} command that forces a
+paragraph to be indented.  This paragraph, for instance, is indented
+using an @code{@@indent} command.  The first paragraph of a section is
+the most likely place to use @code{@@indent}, to override the normal
+behavior of no indentation there (@pxref{paragraphindent}).
+
+It is best to write @code{@@indent} on a line by itself, since in most
+environments, spaces following the command will not be ignored.  The
+@code{@@indent} line will not generate a blank line in the Info output
+within an environment.
+
+However, it is ok to use it at the beginning of a line, with text
+following, outside of any environment.
+
+Do not put braces after an @code{@@indent} command; they are not
+necessary, since @code{@@indent} is a command used outside of
 paragraphs (@pxref{Command Syntax}).
 
 
@@ -16934,7 +17016,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
+$Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16997,7 +17079,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.38 2003-04-20 23:46:44 karl Exp $
+@comment $Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

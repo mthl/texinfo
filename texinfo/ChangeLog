@@ -1,6 +1,41 @@
 2003-04-20    <karl@gnu.org>
 
-	* Installed changes from Jan:
+	* Installed changes from Simon for suppressing indentation on the
+	first paragraph after section headings, and for new @indent command:
+
+	2003-04-12  Simon Law  <sfllaw@engmail.uwaterloo.ca>
+        * doc/texinfo.tex (\firstparagraphindent): implement suppression
+        of the indentation of the first paragraph.
+        (\dofirstparagraphindent): for parsing arguments.
+        (\suppressfirstparagraphindent): suppress, or don't suppress.
+        (\dosuppressfirstparagraphindent): the actual gobbling of indentation.
+        (\footnote): Compensate for the hanging-indent side-effect.
+        (\numhead, \apphead, \unnmhead): call \dosuppress...
+        * makeinfo/cmds.c (command_table): add "firstparagraphindent"
+        (as cm_firstparagraphindent)
+        (set_firstparagraphindent, cm_firstparagraphindent): implement
+        @firstparagraphindent parsing of options.
+        * makeinfo/makeinfo.h: declare "do_first_par_indent".
+        * makeinfo/sectioning.c (sectioning_underscore): suppress
+        indentation if requested.
+        * doc/texinfo.txi: document it.
+
+        * doc/texinfo.tex (\indent): override \indent primitive to
+        clear \everypar.
+        (\ptexindent): for saving/restoring \indent in @tex.
+        (\footnote): Neutralise the effect of @indent
+        within a footnote.
+        * makeinfo/cmds.c (command_table): add "indent" (as cm_indent).
+        (cm_indent): un-inhibit_paragraph_indentation.
+        * doc/texinfo.txi: document it.
+
+        * doc/texinfo.txi (Conventions): remove spurious extra vertical space
+        from bulleted itemize which starts with a quote.
+
+        * makeinfo/cmds.c (command_table): fix @novalidate definition.
+
+
+	* Installed changes from Jan for @image support in Info format:
 
 	2003-04-14  Jan Nieuwenhuizen  <janneke@gnu.org>
 	* info/display.c (display_update_one_window): Skip new style
