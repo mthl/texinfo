@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
+@c $Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1359,7 +1359,7 @@ error messages if you have invalid Texinfo commands within ignored text.
 @cindex Required in Texinfo file
 @cindex Texinfo file minimum
 
-By convention, the namea of a Texinfo file ends with (in order of
+By convention, the name of a Texinfo file ends with (in order of
 preference) one of the extensions @file{.texinfo}, @file{.texi},
 @file{.txi}, or @file{.tex}.  The longer extensions are preferred since
 they describe more clearly to a human reader the nature of the file.
@@ -6704,7 +6704,7 @@ Indicate a metasyntactic variable.
 
 @item @@env@{@var{environment-variable}@}
 Indicate an environment variable.
-@xref{env,,@code{@@kenv}}.
+@xref{env,,@code{@@env}}.
 
 @item @@file@{@var{file-name}@}
 Indicate the name of a file.
@@ -9327,7 +9327,7 @@ Texinfo text, so special characters such as @samp{"} and @samp{<} and
 
 @cindex GIF images, unsupported due to patents
 @cindex PNG image format
-@cindex JPG image format
+@cindex JPEG image format
 If you do not supply the optional @var{extension} (fifth) argument,
 @code{makeinfo} first tries @file{@var{filename}.png}; if that does
 not exist, it tries @file{@var{filename}.jpg}.  If that does not exist
@@ -10065,7 +10065,7 @@ macros (@pxref{Defining Macros}), can take more than one argument.  In
 these cases, the comma character is used to separate arguments.
 
 Since a comma character would confuse Texinfo's parsing for these
-commands, you must use the command @samp{@comma{}} instead if you want
+commands, you must use the command @samp{@@comma@{@}} instead if you want
 to pass an actual comma.  Here are some examples:
 
 @example
@@ -10268,7 +10268,7 @@ Here is an example:
 This is text. Two sentences. Three sentences. French spacing.
 
 @@frenchspacing off
-This is text. Two sentences. Three sentences. Non-french spacing.
+This is text. Two sentences. Three sentences. Non-French spacing.
 @end example
 
 @noindent produces (there will be no difference in Info):
@@ -10277,7 +10277,7 @@ This is text. Two sentences. Three sentences. Non-french spacing.
 This is text. Two sentences. Three sentences. French spacing.
 
 @frenchspacing off
-This is text. Two sentences. Three sentences. Non-french spacing.
+This is text. Two sentences. Three sentences. Non-French spacing.
 
 @code{@@frenchspacing} mainly affects the printed output, including
 the output after @code{@@.}, @code{@@!}, and @code{@@?} (@pxref{Ending
@@ -13409,7 +13409,7 @@ Hereare the valid language codes, from ISO-639.
 @item
 @code{sa} @tab Sanskrit @tab
 @code{sd} @tab Sindhi @tab
-@code{sg} @tab Sangro
+@code{sg} @tab Sango
 @item
 @code{sh} @tab Serbo-Croatian @tab
 @code{si} @tab Sinhalese @tab
@@ -18582,7 +18582,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
+$Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18648,7 +18648,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.137 2005-03-22 01:29:05 karl Exp $
+@comment $Id: texinfo.txi,v 1.138 2005-04-04 11:08:08 kasal Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
