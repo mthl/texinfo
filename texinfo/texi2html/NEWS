@@ -1,6 +1,27 @@
 This file records noteworthy changes.
 
-1.70 ()
+1.70 (March 24 2004)
+
+* BUG FIXES
+  ---------
+
+* use i18n files even when translations.pl is not included. Include
+  translations.pl.
+
+* COMPATIBILITY
+  -------------
+
+* install html manual in $datadir/texinfo/html.
+
+* NEW FEATURES
+  ------------
+
+* Add a spec file, usefull to build a rpm.
+
+* FOR DEVELOPERS
+  --------------
+
+* Standardized on Autoconf 2.59 & Automake 1.8.3
 
 1.68 (March 20 2004)
 

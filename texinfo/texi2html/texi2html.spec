@@ -1,5 +1,5 @@
 Name: texi2html
-Version: 1.69
+Version: 1.70
 Release: 0.fdr.1
 Epoch: 0
 Summary: A highly customizable texinfo to HTML and other formats translator

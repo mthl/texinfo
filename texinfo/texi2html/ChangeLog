@@ -1,3 +1,9 @@
+2004-03-24  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* NEWS: fill 1.70 section.
+	* configure.in, texi2html.spec: update version.
+	* Makefile.in: regenerate, now it doesn't want config.guess.
+
 2004-03-23  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* Makefile.am, texi2html.spec: add a spec file usefull to build 
