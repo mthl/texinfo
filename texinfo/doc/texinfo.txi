@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
+@c $Id: texinfo.txi,v 1.40 2003-04-22 13:00:46 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3854,19 +3854,18 @@ of @var{word}:
 
 @table @asis
 @item @code{none}
-Prevents the first paragraph from being indented (default for @TeX{}).
-This option is ignored if @code{@@paragraphindent asis} is in effect.
+Prevents the first paragraph from being indented (default).
+This option is ignored by @command{makeinfo} if
+@code{@@paragraphindent asis} is in effect.
 
 @item @code{insert}
-Include normal paragraph indentation (default for @code{makeinfo}).
-This respects the paragraph indentation set by a
-@code{@@paragraphindent} command (@pxref{paragraphindent}).
+Include normal paragraph indentation.  This respects the paragraph
+indentation set by a @code{@@paragraphindent} command
+(@pxref{paragraphindent}).
 @end table
 
-An explicit specification of @code{@@firstparagraphindent} is obeyed
-by all Texinfo processors, even though the defaults are different.
-Except that for HTML and XML output, the @code{@@firstparagraphindent}
-setting is ignored.
+For HTML and XML output, the @code{@@firstparagraphindent} setting is
+ignored.
 
 It is best to write the @code{@@paragraphindent} command before the
 end-of-header line at the beginning of a Texinfo file, so the region
@@ -17016,7 +17015,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
+$Id: texinfo.txi,v 1.40 2003-04-22 13:00:46 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17079,7 +17078,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.39 2003-04-21 01:02:38 karl Exp $
+@comment $Id: texinfo.txi,v 1.40 2003-04-22 13:00:46 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

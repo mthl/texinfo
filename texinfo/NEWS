@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.48 2003-04-21 01:02:38 karl Exp $
+$Id: NEWS,v 1.49 2003-04-22 13:00:46 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -25,8 +25,8 @@ convenience, here's a url to one of the relevant sections:
 * Language:
   . new command @/ specifies an allowable breakpoint within a line.
   . new command @dofirstparagraphindent to control whether the first
-    paragraph following a section heading is indented.  Default is no
-    indentation for TeX, but do indentation in Info.
+    paragraph following a section heading is indented.  Default is to
+    omit this indentation.
   . new command @indent for explicitly indenting a paragraph.
   . makeinfo writes a new construct for @image to the info file, so that
     graphical browsers (such as Emacs Info under X) can display an

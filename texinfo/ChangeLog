@@ -1,3 +1,10 @@
+2003-04-21    <karl@gnu.org>
+
+	* doc/texinfo.tex (\dofirstparagraphindent): forgot to rename the
+	        \...word's.
+	(\suppressfirstparagraphindent): forgot to rename
+	to \dosuppress...  Reported by Simon.
+
 2003-04-20    <karl@gnu.org>
 
 	* Installed changes from Simon for suppressing indentation on the

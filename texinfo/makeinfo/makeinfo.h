@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.6 2003-04-21 01:02:39 karl Exp $
+   $Id: makeinfo.h,v 1.7 2003-04-22 13:00:47 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -93,7 +93,7 @@ DECLARE (int, current_indent, 0);
 
 /* Nonzero means that we suppress the indentation of the first paragraph
    following any section heading.  */
-DECLARE (int, do_first_par_indent, 1);
+DECLARE (int, do_first_par_indent, 0);
 
 /* Amount by which @example indentation increases/decreases. */
 DECLARE (int, default_indentation_increment, 5);
