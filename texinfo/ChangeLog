@@ -1,3 +1,12 @@
+2003-05-19    <karl@gnu.org>
+
+	* lib/xexit.c: translate fflush error messages, add newlines
+	(report from Jim Meyering).
+	* util/{texindex.c,install-info.c},
+	* makeinfo/makeinfo.c,
+	* info/info.c: use xexit again, with redundant return to avoid
+	warnings.
+
 2003-05-18    <karl@gnu.org>
 
 	* lib/xexit.c (xexit): fputs not fprintf, so we get newline;

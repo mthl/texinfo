@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.8 2003-05-13 16:37:54 karl Exp $
+   $Id: install-info.c,v 1.9 2003-05-19 13:10:59 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -165,33 +165,6 @@ fatal (s1, s2, s3)
   xexit (1);
 }
 
-/* Memory allocation and string operations.  */
-
-/* Like malloc but get fatal error if memory is exhausted.  */
-void *
-xmalloc (size)
-     unsigned int size;
-{
-  extern void *malloc ();
-  void *result = malloc (size);
-  if (result == NULL)
-    fatal (_("virtual memory exhausted"), 0, 0);
-  return result;
-}
-
-/* Like realloc but get fatal error if memory is exhausted.  */
-void *
-xrealloc (obj, size)
-     void *obj;
-     unsigned int size;
-{
-  extern void *realloc ();
-  void *result = realloc (obj, size);
-  if (result == NULL)
-    fatal (_("virtual memory exhausted"), 0, 0);
-  return result;
-}
-
 /* Return a newly-allocated string
    whose contents concatenate those of S1, S2, S3.  */
 char *
@@ -1441,7 +1414,8 @@ For more information about these matters, see the files named COPYING.\n"),
   output_dirfile (opened_dirfilename, dir_nlines, dir_lines, n_entries_to_add,
                   entries_to_add, input_sections, compression_program);
 
-  return 0;
+  xexit (0);
+  return 0; /* Avoid bogus warnings.  */
 }
 
 /* Divide the text at DATA (of SIZE bytes) into lines.

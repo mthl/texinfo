@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.6 2003-05-13 16:22:52 karl Exp $
+   $Id: info.c,v 1.7 2003-05-19 13:10:59 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003
    Free Software Foundation, Inc.
@@ -166,7 +166,7 @@ main (argc, argv)
       option_character = getopt_long
         (argc, argv, short_options, long_options, &getopt_long_index);
 
-      /* getopt_long () returns EOF when there are no more long options. */
+      /* getopt_long returns EOF when there are no more long options. */
       if (option_character == EOF)
         break;
 
@@ -476,8 +476,10 @@ For more information about these matters, see the files named COPYING.\n"),
           begin_info_session (initial_node);
       }
 
-    return 0;
+    xexit (0);
   }
+
+  return 0; /* Avoid bogus warnings.  */
 }
 
 void

@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.8 2003-02-18 14:47:01 karl Exp $
+   $Id: texindex.c,v 1.9 2003-05-19 13:10:59 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003 Free Software Foundation, Inc.
@@ -166,7 +166,7 @@ main (argc, argv)
 
   /* In case we write to a redirected stdout that fails.  */
   /* not ready atexit (close_stdout); */
-  
+
   /* Describe the kind of sorting to do. */
   /* The first keyfield uses the first braced field and folds case. */
   keyfields[0].braced = 1;
@@ -232,7 +232,6 @@ main (argc, argv)
 
   flush_tempfiles (tempcount);
   xexit (0);
-
   return 0; /* Avoid bogus warnings.  */
 }
 
@@ -402,7 +401,7 @@ maketempname (count)
       tempbase = concat (tempdir, "txidxXXXXXX");
 
       fd = mkstemp (tempbase);
-      if (fd == -1) 
+      if (fd == -1)
         pfatal_with_name (tempbase);
     }
 
@@ -1135,7 +1134,7 @@ parsefile (filename, nextline, data, size)
         }
       else
         first_initial = toupper (*p);
-      
+
       while (*p && *p != '\n')
         p++;
       if (p != end)
