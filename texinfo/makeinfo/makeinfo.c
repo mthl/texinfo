@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.34 2003-06-02 12:32:29 karl Exp $
+   $Id: makeinfo.c,v 1.35 2003-10-20 22:28:55 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -2804,9 +2804,7 @@ close_paragraph ()
 
   if (paragraph_is_open && !must_start_paragraph)
     {
-      int tindex, c;
-
-      tindex = output_paragraph_offset;
+      int tindex = output_paragraph_offset;
 
       /* Back up to last non-newline/space character, forcing all such
          subsequent characters to be newlines.  This isn't strictly
@@ -2814,7 +2812,7 @@ close_paragraph ()
          to make decisions. */
       for (tindex = output_paragraph_offset - 1; tindex >= 0; --tindex)
         {
-          c = output_paragraph[tindex];
+          int c = output_paragraph[tindex];
 
           if (c == ' '|| c == '\n')
             output_paragraph[tindex] = '\n';
