@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: srclist-update,v 1.2 2002-09-03 23:44:58 karl Exp $
+# $Id: srclist-update,v 1.3 2002-09-06 13:25:31 karl Exp $
 
 destdir=${1-/u/texinfo/src}
 cd $destdir || exit 1
@@ -31,9 +31,9 @@ cat | while read src dst; do
   dst=`eval echo $dst`
   test -d $dst && dst=$dst/`basename $src`
   
-  # $Id: srclist-update,v 1.2 2002-09-03 23:44:58 karl Exp $ lines will differ.
-  fgrep -v '$Id: srclist-update,v 1.2 2002-09-03 23:44:58 karl Exp $src >$srctmp
-  test -r $dst && fgrep -v '$Id: srclist-update,v 1.2 2002-09-03 23:44:58 karl Exp $dst >$dsttmp
+  # $ Id: lines will differ.
+  fgrep -v '$'"Id:" $src >$srctmp
+  test -r $dst && fgrep -v '$'"Id:" $dst >$dsttmp
 
   if test ! -e $dst; then
     echo "$src -> $dst (new)"
