@@ -2,6 +2,8 @@
 
 	* texi2html.pl: avoid using $_ in functions, as it is a global
 	variable, use my variables instead
+	* Tests/test.sh: if called with arguments, the test specified by 
+	the arguments is the only one done
 
 2003-02-12  Patrice Dumas <dumas@centre-cired.fr>
 

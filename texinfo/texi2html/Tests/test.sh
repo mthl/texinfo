@@ -106,6 +106,11 @@ fi
 	
 }
 
+if [ ! -z $1 ]; then
+	test_texi "$@"
+	exit
+fi
+
 test_texi GermanNodeTest nodetest.texi
 test_texi sectionning
 test_texi texi2html
