@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: F.5 Finding Badly Referenced Nodes</title>
+<title>Texinfo: 9.2.1 @emph{text} and @strong{text}</title>
 
-<meta name="description" content="Texinfo: F.5 Finding Badly Referenced Nodes">
-<meta name="keywords" content="Texinfo: F.5 Finding Badly Referenced Nodes">
+<meta name="description" content="Texinfo: 9.2.1 @emph{text} and @strong{text}">
+<meta name="keywords" content="Texinfo: 9.2.1 @emph{text} and @strong{text}">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -58,15 +58,15 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD285"></a>
-<a name="SEC314"></a>
+<a name="emph-_0026-strong"></a>
+<a name="SEC138"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Using-occur.html#SEC313" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Using-Info-validate.html#SEC315" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Emphasis.html#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Smallcaps.html#SEC139" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Catching-Mistakes.html#SEC308" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Catching-Mistakes.html#SEC308" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Refilling-Paragraphs.html#SEC319" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Emphasis.html#SEC137" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Quotations-and-Examples.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -77,31 +77,36 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h2 class="section"> F.5 Finding Badly Referenced Nodes </h2>
+<h3 class="subsection"> 9.2.1 <code>@emph</code>{<var>text</var>} and <code>@strong</code>{<var>text</var>} </h3>
 
-<p>You can use the <code>Info-validate</code> command to check whether any of
-the `Next', `Previous', `Up' or other node pointers fail to point to a
-node.  This command checks that every node pointer points to an
-existing node.  The <code>Info-validate</code> command works only on Info
-files, not on Texinfo files.
+<p>The <code>@emph</code> and <code>@strong</code> commands are for emphasis;
+<code>@strong</code> is stronger.  In printed output, <code>@emph</code> produces
+<em>italics</em> and <code>@strong</code> produces <strong>bold</strong>.
 
-</p><p>The <code>makeinfo</code> program validates pointers automatically, so you
-do not need to use the <code>Info-validate</code> command if you are using
-<code>makeinfo</code>.  You only may need to use <code>Info-validate</code> if you
-are unable to run <code>makeinfo</code> and instead must create an Info file
-using <code>texinfo-format-region</code> or <code>texinfo-format-buffer</code>, or
-if you write an Info file from scratch.
+</p><p>For example,
 
-</p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="Using-Info-validate.html#SEC315">F.5.1 Running <code>Info-validate</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to run <code>Info-validate</code>.
-</td></tr>
-<tr><td align="left" valign="top"><a href="Unsplit.html#SEC316">F.5.2 Creating an Unsplit File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     How to create an unsplit file.
-</td></tr>
-<tr><td align="left" valign="top"><a href="Tagifying.html#SEC317">F.5.3 Tagifying a File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to tagify a file.
-</td></tr>
-<tr><td align="left" valign="top"><a href="Splitting.html#SEC318">F.5.4 Splitting a File Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to split a file manually.
-</td></tr>
-</table>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@quotation
+@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
+files in the directory.
+@end quotation
+</pre></td></tr></table>
+
+<p>produces:
+
+</p><table><tr><td>&nbsp;</td><td><pre class="example">     *Caution*: `rm * .[^.]*' removes _all_
+     files in the directory.
+</pre></td></tr></table>
+<p>The <code>@strong</code> command is seldom used except to mark what is, in
+effect, a typographical element, such as the word `Caution' in the
+preceding example.
+
+</p><p>In the Info output, <code>@emph</code> surrounds the text with underscores
+(`<samp>_</samp>'), and <code>@strong</code> puts asterisks around the text.
+
+</p><blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
+Info will mistake the combination for a cross reference.  Use a phrase
+such as <strong>Please note</strong> or <strong>Caution</strong> instead.
+</p></blockquote>
 
 <hr size="1">
 <p>

@@ -2340,11 +2340,12 @@ The references are produced with two function references, one for the
 hypertextual reference construction, the other for the full reference to 
 external manual. 
 
-@deftypefn {Function Reference} $href external_href $node $node_identifier $manual_file_name
+@deftypefn {Function Reference} $href external_href $node $node_identifier $xml_node_identifier $manual_file_name
 @var{$node} is the node name, with @@-commands. @var{$node_identifer} is the
-node name mapped to an identifier acceptable as an @acronym{HTML} identifier
-and file name. This identifier is built as explained in 
-@ref{HTML Xref,,,texinfo},
+node name mapped to an identifier acceptable as a file name. 
+@var{$xml_node_identifier} is the
+node name mapped to an identifier acceptable as an @acronym{XML} identifier.
+Those identifiers are built as explained in @ref{HTML Xref,,,texinfo},
 thus allowing for cross references to external manuals. @var{$file} is the
 manual or file name of the external reference. This function should return an
 href leading to the external manual.

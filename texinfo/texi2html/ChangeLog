@@ -1,3 +1,10 @@
+2004-12-11  Patrice Dumas  <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: internal targets and targets of 
+	cross refs are valid as XML identifiers. This is compatible with the
+	updated specification presented in the texinfo manual in the node 
+	HTML Xref.
+	* doc,Tests: sync.
+
 2004-11-22  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: handle right deff arguments with braces appearing

@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.119 2004-11-22 13:53:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.120 2004-12-12 19:10:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -5003,7 +5003,7 @@ sub rearrange_elements()
         {
             my $node = $nodes{$key};
             next if ($node->{'external_node'} or $node->{'index_page'});
-            $node->{'id'} = $node->{'cross_manual_target'};
+            $node->{'id'} = node_to_id($node->{'cross_manual_target'});
         }
     }
 
@@ -6739,26 +6739,37 @@ sub do_preformatted($$)
 
 sub do_external_href($)
 {
-    my $node = shift;
+    my $texi_node = shift;
     my $file = '';
     my $node_id = '';
-    if ($node =~ s/^\((.+?)\)//)
+    my $node_xhtml_id = '';
+    if ($texi_node =~ s/^\((.+?)\)//)
     {
          $file = $1;
     }
-    $node = normalise_node($node);
-    if ($node ne '')
+    $texi_node = normalise_node($texi_node);
+    if ($texi_node ne '')
     {
-         if (exists($nodes{$node}) and ($nodes{$node}->{'cross_manual_target'})) 
+         if (exists($nodes{$texi_node}) and ($nodes{$texi_node}->{'cross_manual_target'})) 
          {
-               $node_id = $nodes{$node}->{'cross_manual_target'};
+               $node_id = $nodes{$texi_node}->{'cross_manual_target'};
          }
          else 
          {
-               $node_id = cross_manual_line($node);
+               $node_id = cross_manual_line($texi_node);
          }
+         $node_xhtml_id = node_to_id($node_id);
     }
-    return &$Texi2HTML::Config::external_href($node, $node_id, $file);
+    return &$Texi2HTML::Config::external_href($texi_node, $node_id, 
+        $node_xhtml_id, $file);
+}
+
+# transform node for cross ref name to id suitable for xhtml.
+sub node_to_id($)
+{
+    my $cross_ref_node_name = shift;
+    $cross_ref_node_name =~ s/^([0-9_])/g_t$1/;
+    return $cross_ref_node_name;
 }
 
 # return 1 if the following tag shouldn't begin a line

@@ -30,10 +30,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>Texinfo: 9.2.1 @emph{text} and @strong{text}</title>
+<title>Texinfo: 5.5 @unnumbered and @appendix</title>
 
-<meta name="description" content="Texinfo: 9.2.1 @emph{text} and @strong{text}">
-<meta name="keywords" content="Texinfo: 9.2.1 @emph{text} and @strong{text}">
+<meta name="description" content="Texinfo: 5.5 @unnumbered and @appendix">
+<meta name="keywords" content="Texinfo: 5.5 @unnumbered and @appendix">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -58,15 +58,15 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD124"></a>
-<a name="SEC138"></a>
+<a name="unnumbered-_0026-appendix"></a>
+<a name="SEC77"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Emphasis.html#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Smallcaps.html#SEC139" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="chapter.html#SEC76" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="majorheading-_0026-chapheading.html#SEC78" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="Marking-Text.html#SEC119" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Emphasis.html#SEC137" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="Quotations-and-Examples.html#SEC141" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Structuring.html#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Structuring.html#SEC72" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Nodes.html#SEC85" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -77,37 +77,23 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <hr size="1">
-<h3 class="subsection"> 9.2.1 <code>@emph</code>{<var>text</var>} and <code>@strong</code>{<var>text</var>} </h3>
+<h2 class="section"> 5.5 <code>@unnumbered</code> and <code>@appendix</code> </h2>
 
-<p>The <code>@emph</code> and <code>@strong</code> commands are for emphasis;
-<code>@strong</code> is stronger.  In printed output, <code>@emph</code> produces
-<em>italics</em> and <code>@strong</code> produces <strong>bold</strong>.
+<p>Use the <code>@unnumbered</code> command to create a chapter that appears
+in a printed manual without chapter numbers of any kind.  Use the
+<code>@appendix</code> command to create an appendix in a printed manual
+that is labelled by letter instead of by number.
 
-</p><p>For example,
+</p><p>For Info file output, the <code>@unnumbered</code> and <code>@appendix</code>
+commands are equivalent to <code>@chapter</code>: the title is printed on a
+line by itself with a line of asterisks underneath.  (See section <a href="chapter.html#SEC76"><code>@chapter</code></a>.)
 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@quotation
-@strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
-files in the directory.
-@end quotation
-</pre></td></tr></table>
+</p><p>To create an appendix or an unnumbered chapter, write an
+<code>@appendix</code> or <code>@unnumbered</code> command at the beginning of a
+line and follow it on the same line by the title, as you would if you
+were creating a chapter.
 
-<p>produces:
-
-</p><table><tr><td>&nbsp;</td><td><pre class="example">     *Caution*: `rm * .[^.]*' removes _all_
-     files in the directory.
-</pre></td></tr></table>
-<p>The <code>@strong</code> command is seldom used except to mark what is, in
-effect, a typographical element, such as the word `Caution' in the
-preceding example.
-
-</p><p>In the Info output, <code>@emph</code> surrounds the text with underscores
-(`<samp>_</samp>'), and <code>@strong</code> puts asterisks around the text.
-
-</p><blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word `<samp>Note</samp>';
-Info will mistake the combination for a cross reference.  Use a phrase
-such as <strong>Please note</strong> or <strong>Caution</strong> instead.
-</p></blockquote>
-
+</p>
 <hr size="1">
 <p>
  <font size="-1">
