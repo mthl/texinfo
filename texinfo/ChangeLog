@@ -1,3 +1,7 @@
+2004-04-11  Karl Berry  <karl@gnu.org>
+
+	* Version 4.7.
+
 2004-04-09  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (execute_string): do not free the temporary copy
