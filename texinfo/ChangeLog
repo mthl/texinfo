@@ -1,3 +1,10 @@
+2003-11-15  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (fatal): New function. Use it.
+	(txiversion): Be robust to broken texinfo.tex.
+
+	* doc/texinfo.txi (example): mention use of @r for annotations.
+
 2003-11-15  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c: new command @headitem.
