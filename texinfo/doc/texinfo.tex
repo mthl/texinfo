@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2003-01-30.17}
+\def\texinfoversion{2003-01-31.11}
 %
 % Copyright (C) 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -5157,9 +5157,18 @@ width0pt\relax} \fi
 
 % Define @defun.
 
-% First, define the processing that is wanted for arguments of \defun
-% Use this to expand the args and terminate the paragraph they make up
+% This is called to end the arguments processing for all the @def... commands.
+%
+\def\defargscommonending{%
+  \interlinepenalty = 10000
+  \advance\rightskip by 0pt plus 1fil
+  \endgraf
+  \nobreak\vskip -\parskip
+  \nobreak
+}
 
+% This expands the args and terminates the paragraph they comprise.
+% 
 \def\defunargs#1{\functionparens \sl
 % Expand, preventing hyphenation at `-' chars.
 % Note that groups don't affect changes in \hyphenchar.
@@ -5168,9 +5177,7 @@ width0pt\relax} \fi
 #1%
 {\tensl\hyphenchar\font=45}%
 \ifnum\parencount=0 \else \errmessage{Unbalanced parentheses in @def}\fi%
-\interlinepenalty=10000
-\advance\rightskip by 0pt plus 1fil
-\endgraf\nobreak\vskip -\parskip\nobreak
+  \defargscommonending
 }
 
 \def\deftypefunargs #1{%
@@ -5179,9 +5186,7 @@ width0pt\relax} \fi
 % Use \boldbraxnoamp, not \functionparens, so that & is not special.
 \boldbraxnoamp
 \tclose{#1}% avoid \code because of side effects on active chars
-\interlinepenalty=10000
-\advance\rightskip by 0pt plus 1fil
-\endgraf\nobreak\vskip -\parskip\nobreak
+  \defargscommonending
 }
 
 % Do complete processing of one @defun or @defunx line already parsed.
@@ -5361,8 +5366,8 @@ width0pt\relax} \fi
 % This is actually simple: just print them in roman.
 % This must expand the args and terminate the paragraph they make up
 \def\defvarargs #1{\normalparens #1%
-\interlinepenalty=10000
-\endgraf\nobreak\vskip -\parskip\nobreak}
+  \defargscommonending
+}
 
 % @defvr Counter foo-count
 
@@ -5398,8 +5403,7 @@ width0pt\relax} \fi
 \def\deftypevarheader #1#2{%
 \dovarind#2 \relax% Make entry in variables index
 \begingroup\defname {\defheaderxcond#1\relax$.$#2}{\putwordDeftypevar}%
-\interlinepenalty=10000
-\endgraf\nobreak\vskip -\parskip\nobreak
+  \defargscommonending
 \endgroup}
 \def\dovarind#1 #2\relax{\doind{vr}{\code{#1}}}
 
@@ -5409,8 +5413,7 @@ width0pt\relax} \fi
 
 \def\deftypevrheader #1#2#3{\dovarind#3 \relax%
 \begingroup\defname {\defheaderxcond#2\relax$.$#3}{#1}
-\interlinepenalty=10000
-\endgraf\nobreak\vskip -\parskip\nobreak
+  \defargscommonending
 \endgroup}
 
 % Now define @deftp
