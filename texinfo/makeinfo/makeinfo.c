@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.6 2002-10-26 23:12:28 karl Exp $
+   $Id: makeinfo.c,v 1.7 2002-10-31 17:15:41 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002 Free Software Foundation, Inc.
@@ -1824,6 +1824,13 @@ read_command ()
            of this macro during the life of its execution. */
         if (!(def->flags & ME_RECURSE))
           def->inhibited = 1;
+
+        /* If we're expanding a macro, we better get the HTML output
+           started, in case the macro produces something.  The normal
+           condition in add_char doesn't apply because macro expansion
+           sets executing_string.  */
+        if (html && !html_output_head_p)
+          html_output_head ();        
 
         execute_macro (def);
 
