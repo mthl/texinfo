@@ -1,5 +1,9 @@
 2002-11-18    <karl@gnu.org>
 
+	* po/.cvsignore: exclude *.gmo instead of listing each individually.
+	From: Frédéric L. W. Meunier <0@pervalidus.net>,
+	15 Nov 2002 20:16:09 -0200 (BRST).
+
 	* configure.ac (--enable-multiplatform): new option for teTeX and
 	TeX Live.  From te.
 
