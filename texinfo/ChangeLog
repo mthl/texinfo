@@ -1,6 +1,7 @@
 2003-11-16  Karl Berry  <karl@gnu.org>
 
 	* util/install-info.c: protoize.
+	* util/texindex.c: protoize.
 	* util/dir-example (protoize,unprotoize): add.
 
 	* doc/texinfo.tex (\everytab): new \toks.
