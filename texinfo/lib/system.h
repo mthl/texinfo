@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.3 2002-09-26 23:47:36 karl Exp $
+   $Id: system.h,v 1.4 2002-10-31 13:44:06 karl Exp $
 
    Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002 Free Software
    Foundation, Inc.
@@ -29,8 +29,9 @@
 #include <gnu-miktex.h>
 #define S_ISDIR(x) ((x)&_S_IFDIR) 
 #else
-/* Annoyingly, substring is defined in a Microsoft DLL, so it has its
-   own __declspec declaration.  */
+/* MiKTeX defines substring() in a separate DLL, where it has its
+   own __declspec declaration.  We don't want to try to duplicate 
+   this Microsoft-ism here.  */
 extern char *substring ();
 #endif
 
