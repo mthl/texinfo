@@ -121,4 +121,4 @@ texi2html: $(texi2html_SOURCES)
 
 translations.pl: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
  examples/noheaders.init i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr
-	./manage_i18n.pl all
+	$(PERL) $(srcdir)/manage_i18n.pl all

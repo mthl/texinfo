@@ -55,7 +55,7 @@ use File::Spec;
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.116 2004-06-27 13:43:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.117 2004-10-05 22:59:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -78,6 +78,8 @@ my $THISPROG = "texi2html $THISVERSION"; # program name and version
 my $prefix = '@prefix@';
 my $sysconfdir;
 my $pkgdatadir;
+my $datadir;
+
 # We need to eval as $prefix has to be expanded. However when we haven't
 # run configure @sysconfdir will be expanded as an array, thus we verify
 # whether configure was run or not
@@ -89,13 +91,16 @@ else
 {
     $sysconfdir = "/usr/local/etc";
 }
+
 if ('@datadir@' ne '@' . 'datadir@')
 {
     $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+    $datadir = eval '"@datadir@"';
 }
 else
 {
     $pkgdatadir = "/usr/local/share/texi2html";
+    $datadir = "/usr/local/share";
 }
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
@@ -126,6 +131,19 @@ my $MIN_LEVEL = 1;
 
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 my $conf_file_name = 'Config' ;
+my $texinfo_htmlxref = 'htmlxref.cnf';
+
+# directories for texi2html init files
+my @texi2html_config_dirs = ('./');
+push @texi2html_config_dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
+push @texi2html_config_dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
+push @texi2html_config_dirs, "$pkgdatadir" if (defined($pkgdatadir));
+
+# directories for texinfo configuration files
+my @texinfo_config_dirs = ('./.texinfo/');
+push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
+push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
+push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
 
 #+++############################################################################
 #                                                                              #
@@ -265,6 +283,7 @@ use vars qw(
 $BODYTEXT
 $CSS_LINES
 $DOCUMENT_DESCRIPTION
+$EXTERNAL_CROSSREF_SPLIT
 );
 
 # I18n
@@ -322,6 +341,7 @@ $simple_menu_link
 $ref_beginning
 $info_ref
 $book_ref
+$external_href
 $external_ref
 $internal_ref
 $table_item
@@ -368,7 +388,7 @@ $listoffloats_entry
 $listoffloats_caption
 $listoffloats_float_style
 $listoffloats_style
-$acronym
+$acronym_like
 $quotation
 $quotation_prepend_text
 
@@ -624,12 +644,16 @@ sub t2h_utf8_accent($$)
 {
     my $accent = shift;
     my $args = shift;
-                                                                                
+    my $style_stack = shift;
+  
     my $text = $args->[0];
 
     if ($accent eq 'dotless')
-    {
-        return "\x{0131}" if ($text eq 'i');
+    { # \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
+        if (($text eq 'i') and (!defined($style_stack->[-2]) or (!defined($unicode_accents{$style_stack->[-2]})) or ($style_stack->[-2] eq 'tieaccent')))
+        {
+             return "\x{0131}";
+        }
         #return "\x{}" if ($text eq 'j'); # not found !
         return $text;
     }
@@ -1203,15 +1227,22 @@ my $documentdescription; # text in @documentdescription
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
 
+sub echo_warn($;$);
 #print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
-# file:      file name to locate. It can be a file path.
-# all_files: if true collect all the files with that name, otherwise stop
-#            at first match.
-sub locate_init_file($;$)
+# file:        file name to locate. It can be a file path.
+# all_files:   if true collect all the files with that name, otherwise stop
+#              at first match.
+# directories: a reference on a array containing a list of directories to
+#              search the file in. default is \@texi2html_config_dirs.
+sub locate_init_file($;$$)
 {
     my $file = shift;
     my $all_files = shift;
+    my $directories = shift;
+
+    $directories = \@texi2html_config_dirs if !defined($directories);
+
     if ($file =~ /^\//)
     {
          return $file if (-e $file and -r $file);
@@ -1219,11 +1250,7 @@ sub locate_init_file($;$)
     else
     {
          my @files;
-         my @dirs = ('./');
-         push @dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
-         push @dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
-         push @dirs, "$pkgdatadir" if (defined($pkgdatadir));
-         foreach my $dir (@dirs)
+         foreach my $dir (@$directories)
          {
               next unless (-d "$dir");
               if ($all_files)
@@ -1240,7 +1267,6 @@ sub locate_init_file($;$)
     return undef;
 }
 
-#
 # called on -init-file
 sub load_init_file
 {
@@ -2171,15 +2197,15 @@ foreach my $file (locate_init_file($conf_file_name, 1))
 	print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
     Texi2HTML::Config::load($file);
 }
-    
+
 #
 # %value hold texinfo variables, see also -D, -U, @set and @clear.
 # we predefine html (the output format) and texi2html (the translator)
 %value = 
-      ( 
+      (
           'html' => 1,
           'texi2html' => $THISVERSION,
-      );                       
+      );
 
 #+++############################################################################
 #                                                                              #
@@ -2757,6 +2783,60 @@ if ($progdir && ($progdir ne './'))
     {
 	print STDERR "# reading extensions from $extensions\n" if $T2H_VERBOSE;
 	require($extensions);
+    }
+}
+
+# parse texinfo cnf file for external manual specifications.
+my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
+foreach my $file (@texinfo_htmlxref_files)
+{
+    open (HTMLXREF, $file);
+    while (<HTMLXREF>)
+    {
+        my $line = $_;
+        s/[#]\s.*//;
+        s/^\s*//;
+        next if /^\s*$/;
+        my @htmlxref = split /\s+/;
+        my $manual = shift @htmlxref;
+        next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}));
+        my $split_or_mono = shift @htmlxref;
+        if (!defined($split_or_mono) or ($split_or_mono ne 'split' and $split_or_mono ne 'mono'))
+        {
+            echo_warn("Bad line in $file: $line");
+            next;
+        }
+        my $href = shift @htmlxref;
+        if ($split_or_mono eq 'split')
+        {
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'} = 1;
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'mono'} = 0;
+        }
+        else
+        {
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'} = 0;
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'mono'} = 1;
+        }
+        if (defined($href))
+        {
+            if ($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'})
+            {
+                $href =~ s/\/*$//;
+            }
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'} = $href;
+        }
+    }
+    close (HTMLXREF);
+}
+
+if ($T2H_DEBUG)
+{
+    foreach my $manual (keys(%{$Texi2HTML::THISDOC{'htmlxref'}}))
+    {
+         my $href = 'NO';
+         $href = $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'} if
+            defined($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'href'});
+         print STDERR "$manual: split $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{'split'}, href: $href\n";
     }
 }
 
@@ -3654,6 +3734,7 @@ $tag eq 'float')
                                'sec_num' => $num,
                                'section' => 1, 
                                'id' => $docid,
+                               'seen' => 1,
                                'index_names' => [],
                                'current_place' => [],
                                'place' => []
@@ -3933,9 +4014,10 @@ sub menu_entry_texi($$$)
     {
         $nodes{$node} = $node_menu_ref;
         $node_menu_ref->{'texi'} = $node;
-        $node_menu_ref->{'external_node'} = 1 if ($node =~ /\(.+\)/ or $novalidate);
+        $node_menu_ref->{'external_node'} = 1 if ($node =~ /\(.+\)/);
+# or $novalidate);
     }
-    $node_menu_ref->{'menu_node'} = 1;
+    #$node_menu_ref->{'menu_node'} = 1;
     if ($state->{'node_ref'})
     {
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
@@ -4140,9 +4222,11 @@ sub rearrange_elements()
                     {
                         # FIXME if {'seen'} this is a node appearing in the
                         # document and a node like `(file)node'. What to 
-                        # do now ?
-                        my $node_ref = { 'texi' => $node->{$direction},
-                            'external_node' => 1 };
+                        # do then ?
+                        my $node_ref = { 'texi' => $node->{$direction} };
+                        $node_ref->{'external_node'} = 1 if ($node->{$direction} =~ /^\(.*\)/);
+                        #my $node_ref = { 'texi' => $node->{$direction},
+                        #    'external_node' => 1 };
                         $nodes{$node->{$direction}} = $node_ref;
                         $node->{$direction} = $node_ref;
                     }
@@ -4708,6 +4792,8 @@ sub rearrange_elements()
                             $checked_element->{'toplevel'} = $element->{'toplevel'};
                             $checked_element->{'up'} = $element->{'up'};
                             $checked_element->{'element_added'} = 1;
+                            print STDERR "Bug: checked element wasn't seen" if 
+                                 (!$checked_element->{'seen'});
                             delete $checked_element->{'with_section'};
                             if ($checked_element->{'toplevel'})
                             {
@@ -4754,6 +4840,7 @@ sub rearrange_elements()
                              'nodenext' => $current_element->{'nodenext'},
                              'nodeprev' => $back,
                              'place' => [],
+                             'seen' => 1,
                              'page' => $page
                             };
                             $index_page->{'node'} = 1 if ($element->{'node'});
@@ -4898,6 +4985,16 @@ sub rearrange_elements()
               $float->{'nr'} = $float->{'absolute_nr'};
          }
     }
+    
+    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+    { # FIXME allready done for floats?
+        foreach my $key (keys(%nodes))
+        {
+            my $node = $nodes{$key};
+            next if ($node->{'external_node'} or $node->{'index_page'});
+            $node->{'id'} = $node->{'cross_manual_target'};
+        }
+    }
 
     # Find node file names
     if ($Texi2HTML::Config::NODE_FILES)
@@ -4924,21 +5021,25 @@ sub rearrange_elements()
         foreach my $key (keys(%nodes))
         {
             my $node = $nodes{$key};
-            next if ($node->{'external_node'} or $node->{'index_page'});
-            if (defined($Texi2HTML::Config::node_file_name))
-            {
-                 ($node->{'file'}, $node->{'node_file'}) =
-                      &$Texi2HTML::Config::node_file_name ($node);
-            }
-            else
-            {
-                 next if (defined($node->{'file'}));
-                 my $name = remove_texi($node->{'texi'});
-                 $name =~ s/[^\w\.\-]/-/g;
-                 my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
-                 $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
-                 $node->{'node_file'} = $file;
-            }
+            my ($file, $node_file);
+            ($file, $node_file) = &$Texi2HTML::Config::node_file_name ($node);
+            $node->{'file'} = $file if (defined($file));
+            $node->{'node_file'} = $node_file if (defined($node_file));
+#            next if ($node->{'external_node'} or $node->{'index_page'});
+#            if (defined($Texi2HTML::Config::node_file_name))
+#            {
+#                 ($node->{'file'}, $node->{'node_file'}) =
+#                      &$Texi2HTML::Config::node_file_name ($node);
+#            }
+#            else
+#            {
+#                 next if (defined($node->{'file'}));
+#                 my $name = remove_texi($node->{'texi'});
+#                 $name =~ s/[^\w\.\-]/-/g;
+#                 my $file = "${name}.$Texi2HTML::Config::NODE_FILE_EXTENSION";
+#                 $node->{'file'} = $file if (($Texi2HTML::Config::SPLIT eq 'node') and ($Texi2HTML::Config::USE_NODES or $node->{'with_section'}));
+#                 $node->{'node_file'} = $file;
+#            }
         }
     }
     # find document nr and document file for sections and nodes. 
@@ -5250,10 +5351,8 @@ sub do_names()
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
         $nodes{$node}->{'no_texi'} = &$Texi2HTML::Config::protect_text(remove_texi($nodes{$node}->{'texi'}));
         $nodes{$node}->{'unformatted'} = unformatted_text (undef, $nodes{$node}->{'texi'});
-        if ($nodes{$node}->{'external_node'} and !$nodes{$node}->{'seen'})
-        {
-            $nodes{$node}->{'file'} = do_external_ref($node);
-        }
+        # FIXME : what to do if $nodes{$node}->{'external_node'} and
+        # $nodes{$node}->{'seen'}
     }
     foreach my $number (keys(%sections))
     {
@@ -5520,7 +5619,10 @@ my $copying_comment = '';      # comment constructed from text between
                                # @copying and @end copying with licence
 my $from_encoding;             # texinfo file encoding
 my $to_encoding;               # out file encoding
-my %acronyms = ();             # acronyms associated texts
+my %acronyms_like = ();        # acronyms or similar commands associated texts
+                               # the key are the commands, the values are
+                               # hash references associating shorthands to
+                               # texts.
 
 sub initialise_state($)
 {
@@ -5882,7 +5984,7 @@ sub pass_text()
                         $Texi2HTML::HREF{$direction} = undef;
                         next unless (defined($elem));
                         #print STDERR "$direction ";
-                        if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'})
+                        if ($elem->{'node'} or $elem->{'external_node'} or $elem->{'index_page'} or !$elem->{'seen'})
                         {
                             $Texi2HTML::NODE{$direction} = $elem->{'text'};
                         }
@@ -5890,13 +5992,9 @@ sub pass_text()
                         {
                             $Texi2HTML::NODE{$direction} = $elem->{'node_ref'}->{'text'};
                         }
-                        if ($elem->{'menu_node'} and ! $elem->{'seen'})
+                        if (!$elem->{'seen'})
                         {
-                            $Texi2HTML::HREF{$direction} = '';
-                        }
-                        elsif ($elem->{'external_node'})
-                        {
-                            $Texi2HTML::HREF{$direction} = $elem->{'file'};
+                            $Texi2HTML::HREF{$direction} = do_external_href($elem->{'texi'});
                         }
                         else
                         {
@@ -5905,6 +6003,7 @@ sub pass_text()
                         $Texi2HTML::NAME{$direction} = $elem->{'text'};
                         $Texi2HTML::NO_TEXI{$direction} = $elem->{'no_texi'};
                         $Texi2HTML::UNFORMATTED{$direction} = $elem->{'unformatted'};
+                        #print STDERR "$direction ($element->{'texi'}): \n  NO_TEXI: $Texi2HTML::NO_TEXI{$direction}\n  NAME $Texi2HTML::NAME{$direction}\n  NODE $Texi2HTML::NODE{$direction}\n  HREF $Texi2HTML::HREF{$direction}\n\n";
                     }
                     #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     $files{$element->{'file'}}->{'counter'}--;
@@ -6233,7 +6332,7 @@ sub do_node_files()
         $redirection_file = $node->{'file'} if ($Texi2HTML::Config::SPLIT);
         if (!$redirection_file)
         {
-             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n";
+             print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" unless ($novalidate);
              next;
         }
         next if ($redirection_file eq $node->{'node_file'});
@@ -6491,6 +6590,11 @@ sub href($$)
     my $href = '';
     print STDERR "Bug: $element->{'texi'}, id undef\n" if (!defined($element->{'id'}));
     print STDERR "Bug: $element->{'texi'}, file undef\n" if (!defined($element->{'file'}));
+#foreach my $key (keys(%{$element}))
+#{
+#   my $value = 'UNDEF'; $value =  $element->{$key} if defined($element->{$key});
+#   print STDERR "$key: $value\n";
+#}print STDERR "\n";
     $href .= $element->{'file'} if (defined($element->{'file'}) and $file ne $element->{'file'});
     $href .= "#$element->{'id'}" if (defined($element->{'id'}));
     return $href;
@@ -6617,79 +6721,28 @@ sub do_preformatted($$)
     return &$Texi2HTML::Config::preformatted($text, $pre_style, $class, $leading_command, $leading_command_formatted, $preformatted_number, $format, $item_nr, $enumerate_type, $number);
 }
 
-sub do_external_ref($)
+sub do_external_href($)
 {
     my $node = shift;
     my $file = '';
+    my $node_id = '';
     if ($node =~ s/^\((.+?)\)//)
     {
          $file = $1;
-         if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
-         {
-             $file =~ s/\.[^\.]*$//;
-             $file =~ s/^.*\///;
-             $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if (defined($Texi2HTML::Config::EXTERNAL_DIR));
-             if ($Texi2HTML::Config::SPLIT)
-             {
-                 $file .= '/';
-             }
-             else
-             {
-                 $file .= '.' . $Texi2HTML::Config::NODE_FILE_EXTENSION;
-             }
-         }
-         else
-         {
-             $file .= "/";
-             $file = $Texi2HTML::Config::EXTERNAL_DIR . $file if (defined($Texi2HTML::Config::EXTERNAL_DIR));
-         }
-    }
-    if ($node eq '')
-    {
-         if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
-         {
-             return $file . '#Top';
-         }
-         else
-         {
-             return $file;
-         }
     }
     $node = normalise_node($node);
-#print STDERR "NEW_CROSSREF_STYLE $Texi2HTML::Config::NEW_CROSSREF_STYLE $nodes{$node}, $nodes{$node}->{'cross_manual_target'}\n";
-    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
+    if ($node ne '')
     {
          if (exists($nodes{$node}) and ($nodes{$node}->{'cross_manual_target'})) 
          {
-              $node = $nodes{$node}->{'cross_manual_target'};
+               $node_id = $nodes{$node}->{'cross_manual_target'};
          }
          else 
          {
-              $node = cross_manual_line($node);
+               $node_id = cross_manual_line($node);
          }
     }
-    else
-    {
-         $node = remove_texi($node);
-         $node =~ s/[^\w\.\-]/-/g;
-    }
-    my $target = $node;
-    $node = $Texi2HTML::Config::TOP_NODE_FILE if ($node =~ /^top$/i);
-    if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
-    {
-        if ($Texi2HTML::Config::SPLIT)
-        {
-            return $file . $node . ".$Texi2HTML::Config::NODE_FILE_EXTENSION" . '#' . $target;
-        }
-        else
-        {
-            return $file . '#' . $target;
-        }
-    }
-    else
-    {
-        return $file . $node . ".$Texi2HTML::Config::NODE_FILE_EXTENSION";
-    }
+    return &$Texi2HTML::Config::external_href($node, $node_id, $file);
 }
 
 # return 1 if the following tag shouldn't begin a line
@@ -7182,7 +7235,8 @@ sub close_menu($$$$)
     }
 }
 
-sub menu_link($$;$)
+# Format menu link, the  
+sub do_menu_link($$;$)
 {
     my $state = shift;
     my $line_nr = shift;
@@ -7220,10 +7274,11 @@ sub menu_link($$;$)
             $entry = "$Texi2HTML::Config::MENU_SYMBOL $entry" if (($entry ne '') and (!defined($element->{'number'}) or ($element->{'number'} =~ /^\s*$/)) and $Texi2HTML::Config::UNNUMBERED_SYMBOL_IN_MENU);
         }
     }
-    elsif (($menu_entry->{'node'} =~ /^\s*\(.*\)/) or $novalidate)
-    {
+    elsif ($menu_entry->{'node'} =~ /^\s*\(.*\)/ or $novalidate)
+    {#FIXME this is wrong for $novalidate
         # menu entry points to another info manual
-        $href = $nodes{$node_name}->{'file'};
+        #$href = $nodes{$node_name}->{'file'};
+        $href = do_external_href($node_name);
     }
     else
     {
@@ -7339,7 +7394,7 @@ sub do_xref($$$$)
         my $node_file = '';
         if ($args[3] ne '')
         {
-            $href = do_external_ref($node_texi);
+            $href = do_external_href($node_texi);
             $node_file = "($args[3])$args[0]";
         }
         my $section = '';
@@ -7403,14 +7458,14 @@ sub do_xref($$$$)
            }
            else
            {
-               $result = &$Texi2HTML::Config::external_ref($macro, '', '', $args[0], do_external_ref($node_texi), $args[1]);
+               $result = &$Texi2HTML::Config::external_ref($macro, '', '', $args[0], do_external_href($node_texi), $args[1]);
            }
         }
     }
     return $result;
 }
 
-sub do_acronym($$$$$)
+sub do_acronym_like($$$$$)
 {
     my $command = shift;
     my $args = shift;
@@ -7440,11 +7495,11 @@ sub do_acronym($$$$$)
     if (defined($explanation))
     {
         $with_explanation = 1;
-        $acronyms{$normalized_text} = $explanation;
+        $acronyms_like{$command}->{$normalized_text} = $explanation;
     }
-    elsif (exists($acronyms{$normalized_text}))
+    elsif (exists($acronyms_like{$command}->{$normalized_text}))
     {
-        $explanation = $acronyms{$normalized_text};
+        $explanation = $acronyms_like{$command}->{$normalized_text};
     }
 
     if (defined($explanation))
@@ -7462,7 +7517,7 @@ sub do_acronym($$$$$)
          $explanation_unformatted = substitute_line($text, $unformatted_state);
          $explanation_text = substitute_line($text, duplicate_state($state));
     }
-    return &$Texi2HTML::Config::acronym($acronym_texi, substitute_line ($acronym_texi, duplicate_state($state)), 
+    return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line ($acronym_texi, duplicate_state($state)), 
        $with_explanation, $explanation_lines, $explanation_text, $explanation_unformatted);
 }
 
@@ -9190,7 +9245,7 @@ sub scan_line($$$$;$)
                 $new_menu_entry = 1;
                 $state->{'menu_entry'} = { 'name' => $name, 'node' => $node,
                    'ending' => $ending };
-                add_prev ($text, $stack, menu_link($state, $line_nr));
+                add_prev ($text, $stack, do_menu_link($state, $line_nr));
                 print STDERR "# New menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 push @$stack, {'format' => 'menu_description', 'text' => ''};
             }
@@ -9199,8 +9254,9 @@ sub scan_line($$$$;$)
               # a simplified formatting of menu which should be right whatever
               # the context
                 my $menu_entry = $state->{'menu_entry'};
-                $state->{'menu_entry'} = { 'name' => $name, 'node' => $node };
-                add_prev ($text, $stack, menu_link($state, $line_nr, 1));
+                $state->{'menu_entry'} = { 'name' => $name, 'node' => $node,
+                   'ending' => $ending };
+                add_prev ($text, $stack, do_menu_link($state, $line_nr, 1));
                 $state->{'menu_entry'} = $menu_entry;
             }
         }

@@ -38,14 +38,17 @@ http://www.w3.org/TR/REC-html40/struct/links.html#h-12.3.3)
 
 * Document Texi2HTML::THIS_ELEMENT
 
+* Document $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT,
+  $Texi2HTML::THISDOC{'htmlxref'}
+
 * Test the back path stuff for images.
 
 * Test refs with no unicode support.
   Test for @ commands in refs, and refs in ascii 8 bit/utf8 manuals. 
 
-* look in texinfo/htmlxref.cnf for cross refs.
-
 * add a configure switch --with-encode
+
+* don't double in title when the @top and @settitle are the same
 
 * handle right things like
 -> error with @item on same line than @table

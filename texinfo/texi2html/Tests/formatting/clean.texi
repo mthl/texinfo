@@ -92,6 +92,25 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @@comma @comma{}
 
 @code{@@acronym@{--a@}} @acronym{--a}
+@code{@@acronym@{--a, a--n @@b@{acronym@}@}} @acronym{--a, a--n @b{acronym}}
+@code{@@acronym@{--a@}} @acronym{--a}
+@code{@@acronym@{--a, another @@comma@{@} acronym@}} @acronym{--a,another @comma{} acronym}
+@code{@@acronym@{--a@}} @acronym{--a}
+@code{@@acronym@{ATB, A @@TeX@{@} Bad@}} @acronym{ATB, A @TeX{} Bad}.
+@code{@@acronym@{ACT, A @@strong@{Cold@} Thing@}} @acronym{ACT, A @strong{Cold} Thing}.
+@code{@@acronym@{AC, A @@strong@{Cold@}@}} @acronym{AC, A @strong{Cold}}.
+@code{@@acronym@{AT, A @@TeX@{@}@}} @acronym{AT, A @TeX{}}.
+@code{@@acronym@{ATB@}} @acronym{ATB}.
+@code{@@acronym@{ACT@}} @acronym{ACT}.
+@code{@@acronym@{AC@}} @acronym{AC}.
+@code{@@acronym@{AT@}} @acronym{AT}.
+@code{@@acronym@{@@'E@@comma@{@}A, @@'Etude@@comma@{@} Autonome @}} @acronym{@'E@comma{}A, @'Etude@comma{} Autonome}
+@code{@@acronym@{@@'E@@comma@{@}A@}} @acronym{@'E@comma{}A}
+@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
+@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+@code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
+@code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+
 @code{@@asis@{--a@}} @asis{--a}
 @code{@@b@{--a@}} @b{--a}
 @code{@@cite@{--a@}} @cite{--a}
@@ -116,6 +135,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@sc@{--a@}} @sc{--a}
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
+@code{@@slanted@{--a@}} @slanted{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
 @code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}
@@ -152,7 +172,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{f--ile@}} @image{f--ile}
 @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
 @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-@code{@@image@{f--ile,az,er,alt,e--xt@}} @image{f--ile,az,er,alt,e--xt}
+@code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
 
 @quotation
 a q--uotation
@@ -518,7 +538,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@image@{f--ile@}} @image{f--ile}
 @code{@@image@{f--ile,,,a--lt@}} @image{f--ile,,,a--lt}
 @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
-@code{@@image@{f--ile,az,er,alt,e--xt@}} @image{f--ile,az,er,alt,e--xt}
+@code{@@image@{f--ile,2cm,4cm,alt,e--xt@}} @image{f--ile,2cm,4cm,alt,e--xt}
 
 
 @quotation

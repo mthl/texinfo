@@ -39,7 +39,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD236"></a>
+<a name="Running"></a>
 <a name="SEC251"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_24.html#SEC250" title="Previous section in reading order"> &lt; </a>]</td>
@@ -83,7 +83,7 @@ in the larger process of developing and maintaining programs.
 </table>
 
 <hr size="6">
-<a name="NOD237"></a>
+<a name="Compilation"></a>
 <a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
@@ -207,7 +207,7 @@ a prompt.  Here's how to do it in <code>csh</code>:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">if ($?prompt) set prompt = ...
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD238"></a>
+<a name="Lisp-Modes"></a>
 <a name="SEC253"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
@@ -261,7 +261,7 @@ This mode combines the special features of Lisp mode and Shell mode
 </dl>
 
 <hr size="6">
-<a name="NOD239"></a>
+<a name="Lisp-Libraries"></a>
 <a name="SEC254"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC253" title="Previous section in reading order"> &lt; </a>]</td>
@@ -295,7 +295,7 @@ Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 </table>
 
 <hr size="6">
-<a name="NOD240"></a>
+<a name="Loading"></a>
 <a name="SEC255"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
@@ -412,7 +412,7 @@ is normally called.  An error in <code>forms</code> does not undo the load, but
 it does prevent execution of the rest of the <code>forms</code>.
 
 </p><hr size="6">
-<a name="NOD241"></a>
+<a name="Compiling-Libraries"></a>
 <a name="SEC256"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC255" title="Previous section in reading order"> &lt; </a>]</td>
@@ -505,7 +505,7 @@ window in symbolic form, one instruction per line.  If the instruction
 refers to a variable or constant, that is shown, too.
 
 </p><hr size="6">
-<a name="NOD242"></a>
+<a name="Mocklisp"></a>
 <a name="SEC257"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC256" title="Previous section in reading order"> &lt; </a>]</td>
@@ -536,7 +536,7 @@ to deal with Mocklisp's incompatible ideas of how arguments are evaluated
 and which values signify &quot;true&quot; or &quot;false&quot;.
 
 </p><hr size="6">
-<a name="NOD243"></a>
+<a name="Lisp-Eval"></a>
 <a name="SEC258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC257" title="Previous section in reading order"> &lt; </a>]</td>
@@ -632,7 +632,7 @@ bug, use <kbd>C-M-x</kbd> on each function that you change, to keep the Lisp
 world in step with the source file.
 
 </p><hr size="6">
-<a name="NOD244"></a>
+<a name="Lisp-Debug"></a>
 <a name="SEC259"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC258" title="Previous section in reading order"> &lt; </a>]</td>
@@ -762,7 +762,7 @@ the debugger's return value is returned as the value of <code>signal</code>.
 </dl>
 
 <hr size="6">
-<a name="NOD245"></a>
+<a name="Lisp-Interaction"></a>
 <a name="SEC260"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
@@ -807,7 +807,7 @@ to do.  <kbd>M-x lisp-interaction-mode</kbd> will put any buffer in Lisp
 Interaction mode.
 
 </p><hr size="6">
-<a name="NOD246"></a>
+<a name="External-Lisp"></a>
 <a name="SEC261"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC260" title="Previous section in reading order"> &lt; </a>]</td>
@@ -867,7 +867,7 @@ different according to where the relevant Lisp environment is found.
 See section <a href="#SEC253">Major Modes for Lisp</a>.
 
 </p><hr size="6">
-<a name="NOD247"></a>
+<a name="Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC261" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC264" title="Next section in reading order"> &gt; </a>]</td>
@@ -903,16 +903,16 @@ local needs with safe removal of unnecessary code.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC278">22.8.8 Prerequisites for Building Source Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Building packages from CVS sources.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD256">&bull; Local.rules File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    This is an important file that you must create.
+<tr><td align="left" valign="top"><a href="#Local_002erules-File">&bull; Local.rules File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    This is an important file that you must create.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD257">&bull; Creating Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The basics.
+<tr><td align="left" valign="top"><a href="#Creating-Packages">&bull; Creating Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The basics.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC283">22.8.10 Normal Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  A brief directory of packaged LISP.
 </td></tr>
 </table>
 
 <hr size="6">
-<a name="NOD248"></a>
+<a name="Package-Terminology"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC262" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC265" title="Next section in reading order"> &gt; </a>]</td>
@@ -1027,7 +1027,7 @@ savings).
 </p><p>Currently, source packages are only available via CVS.  See
 <a href="http://cvs.xemacs.org/">http://cvs.xemacs.org/</a> for details.
 </p><hr size="6">
-<a name="NOD249"></a>
+<a name="Installing-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC270" title="Next section in reading order"> &gt; </a>]</td>
@@ -1084,7 +1084,7 @@ where you grabbed the core distribution from, and are located in the
 subdirectory `<tt>packages</tt>'.  Package file names follow
 the naming convention `<tt>&lt;package-name&gt;-&lt;version&gt;-pkg.tar.gz</tt>'.
 
-</p><p>If you have <a href="../EFS/">(EFS)</a>, packages can be installed over the network.
+</p><p>If you have <a href="../EFS/index.html#Top">(EFS)</a>, packages can be installed over the network.
 Alternatively, if you have copies of the packages locally, you can
 install packages from a local disk or CDROM.
 
@@ -1137,22 +1137,22 @@ one of the methods above for installing the package you want.
 <p>There are three main ways to install packages:
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#NOD250">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              All at once, using the 'Sumo Tarball'.
+<tr><td align="left" valign="top"><a href="#Sumo">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              All at once, using the 'Sumo Tarball'.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD251">&bull; Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using individual package tarballs.
+<tr><td align="left" valign="top"><a href="#Manually">&bull; Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using individual package tarballs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD252">&bull; Automatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Using the package tools from XEmacs.
+<tr><td align="left" valign="top"><a href="#Automatically">&bull; Automatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Using the package tools from XEmacs.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD253">&bull; Which Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Which packages to install.
+<tr><td align="left" valign="top"><a href="#Which-Packages">&bull; Which Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Which packages to install.
 </td></tr>
-<tr><td align="left" valign="top"><a href="#NOD254">&bull; Removing Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Removing packages.
+<tr><td align="left" valign="top"><a href="#Removing-Packages">&bull; Removing Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Removing packages.
 </td></tr>
 </table>
 
 <p>But regardless of the method you use to install packages, they can only
 be used by XEmacs after a restart.
 
-</p><a name="NOD250"></a>
+</p><a name="Sumo"></a>
 <a name="SEC272"></a>
 <h2 class="heading"> Installing the Sumo Packages: </h2>
 <p>Those with little time, cheap connections and plenty of disk space can
@@ -1176,7 +1176,7 @@ currently about 19MB and 4.5MB (gzipped) respectively.
 packages, it is recommended that you use the automatic package tools
 afterwards to pick up any recent updates.
 
-</p><a name="NOD251"></a>
+</p><a name="Manually"></a>
 <a name="SEC273"></a>
 <h2 class="heading"> Manual Package Installation: </h2>
 <p>Fetch the packages from the FTP site, CD-ROM whatever. The filenames
@@ -1185,7 +1185,7 @@ a fresh install it is sufficient to untar the file at the top of the
 package hierarchy. 
 
 </p><p>Note: If you are upgrading packages already installed, it's best to
-remove the old package first <a href="#NOD254">Removing Packages</a>.
+remove the old package first <a href="#Removing-Packages">Removing Packages</a>.
 
 </p><p>For example if we are installing the `<tt>xemacs-base</tt>'
 package (version 1.48):
@@ -1209,7 +1209,7 @@ Or if you have GNU tar, the last step can be:
 
    tar zxvf /path/to/mule-base-1.37-pkg.tar.gz RET
 </pre></td></tr></table>
-<a name="NOD252"></a>
+<a name="Automatically"></a>
 <a name="SEC274"></a>
 <h2 class="heading"> Automatic Package Installation: </h2>
 <p>XEmacs comes with some tools to make the periodic updating and
@@ -1349,7 +1349,7 @@ keyb: <kbd>x</kbd>
 will search for the latest version and install it and any packages that
 it depends upon.
 
-</p><a name="NOD253"></a>
+</p><a name="Which-Packages"></a>
 <a name="SEC275"></a>
 <h2 class="heading"> Which Packages to Install: </h2>
 <p>This is difficult to say. When in doubt install a package. If you
@@ -1370,7 +1370,7 @@ install need.
 </p><p>See also <a href="#SEC283">Normal Packages</a> for further descriptions of the individual
 packages.
 
-</p><a name="NOD254"></a>
+</p><a name="Removing-Packages"></a>
 <a name="SEC276"></a>
 <h2 class="heading"> Removing Packages: </h2>
 <p>Because the exact files and their locations contained in a package may
@@ -1387,7 +1387,7 @@ to the package.
 this for you.
 
 </p><hr size="6">
-<a name="NOD255"></a>
+<a name="Building-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC271" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC279" title="Next section in reading order"> &gt; </a>]</td>
@@ -1431,7 +1431,7 @@ this for you.
 <dd><p>(or equivalent).
 </p></dd>
 <dt><code> A properly configured `<tt>Local.rules</tt>' file.</code></dt>
-<dd><p><a href="#NOD256">Local.rules File</a>.
+<dd><p><a href="#Local_002erules-File">Local.rules File</a>.
 </p></dd>
 </dl>
 <p>And of course, XEmacs 21.0 or higher.
@@ -1513,7 +1513,7 @@ primarily of use by XEmacs maintainers producing files for distribution.
 </p></dd>
 </dl>
 
-<a name="NOD256"></a>
+<a name="Local_002erules-File"></a>
 <a name="SEC280"></a>
 <h2 class="heading"> The Local.rules File: </h2>
 <p>This file is used when building and installing packages from source.  In
@@ -1588,7 +1588,7 @@ to.  Note:  'make bindist' does not use this variable.
 </dl>
 
 
-<a name="NOD257"></a>
+<a name="Creating-Packages"></a>
 <a name="SEC281"></a>
 <h2 class="heading"> Creating Packages: </h2>
 <p>Creating a package from an existing Lisp library is not very difficult.
@@ -1708,7 +1708,7 @@ packages have needs beyond the basic templates.  See `<tt>XEmacs.rules</tt>'
 or a future revision of this manual for details.
 
 </p><hr size="6">
-<a name="NOD258"></a>
+<a name="Available-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC279" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC284" title="Next section in reading order"> &gt; </a>]</td>

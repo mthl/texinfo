@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.75 2004-06-21 22:04:24 pertusus Exp $
+# $Id: texi2html.init,v 1.76 2004-10-05 22:59:34 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -218,7 +218,8 @@ $IGNORE_PREAMBLE_TEXT = 0;
 
 # -html-xref-prefix
 # base directory for external manuals.
-$EXTERNAL_DIR = '../';
+#$EXTERNAL_DIR = '../';
+$EXTERNAL_DIR = undef;
 
 # -l2h
 # if this is set, latex2html is used for generation of math content.
@@ -274,7 +275,7 @@ $DO_SCONTENTS = 0;
 $NODE_NAME_IN_MENU = 0;
 
 # new style for crossrefs
-$NEW_CROSSREF_STYLE = 0;
+$NEW_CROSSREF_STYLE = 1;
 
 # if set and menu entry equals menu description, then do not print 
 # menu description.
@@ -519,19 +520,16 @@ sub t2h_default_init_out()
     );
     # Set the default body text, inserted between <body ... >
     $BODYTEXT = 'lang="' . $LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($BODYTEXT));
-    if (!defined($EXTERNAL_DIR))
+    if (!defined($EXTERNAL_CROSSREF_SPLIT))
     {
-         if ($NEW_CROSSREF_STYLE)
-         {
-             if ($SPLIT) 
-             {
-                 $EXTERNAL_DIR = '../';
-             }
-             else
-             {
-                 $EXTERNAL_DIR = '';
-             }
-         }
+        if ($SPLIT) 
+        {
+            $EXTERNAL_CROSSREF_SPLIT = 1;
+        }
+        else
+        {
+            $EXTERNAL_CROSSREF_SPLIT = 0;
+        }
     }
     $ENCODING = $DOCUMENT_ENCODING if (!defined($ENCODING));
     my $to_encoding;
@@ -578,6 +576,9 @@ $ENCODING = undef;
 # if undef set to @documentdescription. If there is no @documentdescription,
 # set in page_head
 $DOCUMENT_DESCRIPTION = undef;
+
+# if undef set 1 if SPLIT, to 0 otherwise
+$EXTERNAL_CROSSREF_SPLIT = undef;
 
 ########################################################################
 # Control of Page layout:
@@ -672,7 +673,8 @@ $print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
 #$toc_body                 = \&T2H_DEFAULT_toc_body;
 $titlepage                 = \&T2H_DEFAULT_titlepage;
 $css_lines                 = \&T2H_DEFAULT_css_lines;
-$print_redirection_page   = \&T2H_DEFAULT_print_redirection_page;
+$print_redirection_page    = \&T2H_DEFAULT_print_redirection_page;
+$node_file_name            = \&T2H_DEFAULT_node_file_name;
 
 ########################################################################
 # Layout for html for every sections
@@ -1424,6 +1426,38 @@ $AFTER_BODY_OPEN
 EOT
 }
 
+sub T2H_DEFAULT_node_file_name($)
+{
+    my $node = shift;
+    return (undef, undef) if ($node->{'external_node'} or $node->{'index_page'});
+    my $file;
+    my $node_file;
+    
+    if ($NEW_CROSSREF_STYLE)
+    {
+         if (defined($node->{'file'}))
+         {
+              $file = $node->{'file'};
+              $node_file = $node->{'node_file'};
+         }
+         else
+         {
+              $node_file = $node->{'cross_manual_target'} . ".$NODE_FILE_EXTENSION";
+              $file =  $node_file if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
+         }
+    }
+    else
+    {
+         return (undef, undef) if (defined($node->{'file'}));
+         my $name = main::remove_texi($node->{'texi'});
+         $name =~ s/[^\w\.\-]/-/g;
+         $name = "${name}.$NODE_FILE_EXTENSION";
+         $file = $name if (($SPLIT eq 'node') and ($USE_NODES or $node->{'with_section'}));
+         $node_file = $name;
+    }
+    return ($file, $node_file);
+}
+
 ########################################################################
 # Control of formatting:
 # 1.) For some changes, it is often enough to change the value of
@@ -1803,6 +1837,7 @@ our %old_style_map = (
       'env',        {'args' => ['code'], 'attribute' => 'code'},
       'file',       {'args' => ['code'], 'attribute' => 'tt', 'quote' => '"'},
       'i',          {'attribute' => 'i'},
+      'slanted',    {'attribute' => 'i'},
       'kbd',        {'args' => ['code'], 'attribute' => 'kbd'},
       'key',        {'attribute' => 'kbd'},
       'math',       {'attribute' => 'em'},
@@ -2398,7 +2433,7 @@ sub t2h_default_no_texi_image($$$$)
     return $args[0];
 }
 
-sub t2h_default_no_texi_acronym($$)
+sub t2h_default_no_texi_acronym_like($$)
 {
     my $command = shift;
     my $args = shift;
@@ -2452,7 +2487,8 @@ my %special_style = (
            'footnote'     => { 'args' => ['keep'], 'function' => \&main::do_footnote },
            'shortcaption' => { 'args' => ['keep'], 'function' => \&main::do_caption_shortcaption },
            'caption' => { 'args' => ['keep'], 'function' => \&main::do_caption_shortcaption },
-           'acronym',    {'args' => ['keep','keep'], 'function' => \&main::do_acronym},
+           'acronym',    {'args' => ['keep','keep'], 'function' => \&main::do_acronym_like},
+           'abbr',    {'args' => ['keep','keep'], 'function' => \&main::do_acronym_like},
 );
 
 # FIXME the unless defined(.... are now unusefull because the user can
@@ -2464,7 +2500,9 @@ $style_map_texi{'image'} = { 'args' => ['keep'],
     unless (defined($style_map_texi{'image'}));
 
 $style_map_texi{'acronym'} = { 'args' => ['keep','keep'],
-       'function' => \&t2h_default_no_texi_acronym };
+       'function' => \&t2h_default_no_texi_acronym_like };
+$style_map_texi{'abbr'} = { 'args' => ['keep','keep'],
+       'function' => \&t2h_default_no_texi_acronym_like };
 
 foreach my $special (keys(%special_style))
 {
@@ -2698,6 +2736,7 @@ $menu_comment      = \&t2h_default_menu_comment;
 $menu_description  = \&t2h_default_menu_description;
 $simple_menu_link  = \&t2h_default_simple_menu_link;
 $external_ref      = \&t2h_default_external_ref;
+$external_href     = \&t2h_default_external_href;
 $internal_ref      = \&t2h_default_internal_ref;
 $table_item        = \&t2h_default_table_item;
 $table_line        = \&t2h_default_table_line;
@@ -2741,7 +2780,7 @@ $listoffloats_entry       = \&t2h_default_listoffloats_entry;
 $listoffloats_caption     = \&t2h_default_listoffloats_caption;
 $listoffloats_float_style = \&t2h_default_listoffloats_float_style;
 $listoffloats_style       = \&t2h_default_listoffloats_style;
-$acronym                  = \&t2h_default_acronym;
+$acronym_like             = \&t2h_default_acronym_like;
 $quotation                = \&t2h_default_quotation;
 $quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
 
@@ -3183,6 +3222,139 @@ sub t2h_default_menu_comment($)
    return '';
 }
 
+# Construct a href to an external source of information.
+# node is the node with texinfo @-commands
+# node_id is the node transformed such that it is unique and can be used to 
+#     make an html cross ref as explained in the texinfo manual
+# file is the file in '(file)node'
+sub t2h_default_external_href($$$)
+{
+    my $node = shift;
+    my $node_id = shift;
+    my $file = shift;
+    $file = '' if (!defined($file));
+    my $target_split = $EXTERNAL_CROSSREF_SPLIT;
+    if ($file ne '')
+    {
+         if ($NEW_CROSSREF_STYLE)
+         {
+             $file =~ s/\.[^\.]*$//;
+             $file =~ s/^.*\///;
+             my $href;
+             if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}))
+             {
+                  $target_split = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'};
+                  $href = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'href'};
+             }
+             if ($target_split)
+             {
+                  if (defined($href))
+                  {
+                       $file = "$href";
+                  }
+                  elsif (defined($EXTERNAL_DIR))
+                  {
+                       $file = "$EXTERNAL_DIR/$file";
+                  }
+                  elsif ($SPLIT)
+                  {
+                       $file = "../$file";
+                  }
+                  $file .= "/";
+             }
+             else
+             {# target not split
+                  if (defined($href))
+                  {
+                       $file = "$href";
+                  }
+                  else
+                  {
+                       if (defined($EXTERNAL_DIR))
+                       {
+                            $file = "$EXTERNAL_DIR/$file";
+                       }
+                       elsif ($SPLIT)
+                       {
+                           $file = "../$file";
+                       }
+                       $file .= "." . $NODE_FILE_EXTENSION;
+                  }
+             }
+         }
+         else
+         {
+             $file .= "/";
+             if (defined($EXTERNAL_DIR))
+             {
+                 $file = $EXTERNAL_DIR . $file;
+             }
+             else
+             {
+                 $file = '../' . $file;
+             } 
+         }
+    }
+    else
+    { # here we necessarily have a ref to a node in the document, but the
+      # node is invalid
+         if ($NEW_CROSSREF_STYLE)
+         {
+              if (!$SPLIT)
+              {
+                   $file = $TOP_FILE;
+              }
+         }
+    }
+    if ($node eq '')
+    {
+         if ($NEW_CROSSREF_STYLE)
+         {
+             if ($SPLIT)
+             {
+                 return $file . $TOP_NODE_FILE . '.' . $NODE_FILE_EXTENSION . '#Top';
+                 # or ?
+                 #return $file . '#Top';
+             }
+             else
+             {
+                  return $file . '#Top';
+             }
+         }
+         else
+         {
+             return $file;
+         }
+    }
+    my $target;
+    if ($NEW_CROSSREF_STYLE)
+    {
+         $node = $node_id;
+         $target = $node;
+    }
+    else
+    {
+         $node = main::remove_texi($node);
+         $node =~ s/[^\w\.\-]/-/g;
+    }
+    my $file_basename = $node;
+    $file_basename = $TOP_NODE_FILE if ($node =~ /^top$/i);
+    if ($NEW_CROSSREF_STYLE)
+    {
+        if ($SPLIT)
+        {
+            return $file . $file_basename . ".$NODE_FILE_EXTENSION" . '#' . $target;
+        }
+        else
+        {
+            return $file . '#' . $target;
+        }
+    }
+    else
+    {
+        return $file . $file_basename . ".$NODE_FILE_EXTENSION";
+    }
+}
 # format a reference external to the generated manual. This produces a full 
 # reference with introductive words and the reference itself.
 #
@@ -3793,8 +3965,9 @@ sub t2h_default_sp($$)
    return "\n" x $number;
 }
 
-sub t2h_default_acronym($$$$$$)
+sub t2h_default_acronym_like($$$$$$)
 {
+    my $command = shift;
     my $acronym_texi = shift;
     my $acronym_text = shift;
     my $with_explanation = shift;
@@ -3802,18 +3975,19 @@ sub t2h_default_acronym($$$$$$)
     my $explanation_text = shift;
     my $explanation_unformatted = shift;
     
-    my $opening = '<acronym>';
+    my $attribute = $command;
+    my $opening = "<$attribute>";
     if (defined($explanation_unformatted)) 
     {
-        $opening = "<acronym title=\"$explanation_unformatted\">";
+        $opening = "<$attribute title=\"$explanation_unformatted\">";
     }
     if ($with_explanation)
     {
-        return &$I('%{acronym} (%{explanation})', {'acronym' => $opening . $acronym_text . '</acronym>', 'explanation' => $explanation_text})
+        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $opening . $acronym_text . "</$attribute>", 'explanation' => $explanation_text})
     }
     else
     {
-        return  $opening . $acronym_text . '</acronym>';
+        return  $opening . $acronym_text . "</$attribute>";
     }
 }
 

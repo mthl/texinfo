@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD200"></a>
+<a name="Definition-Commands"></a>
 <a name="SEC214"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="texinfo_15.html#SEC213" title="Previous section in reading order"> &lt; </a>]</td>
@@ -116,7 +116,7 @@ a given name.  An appendix containing a summary should use
 </table>
 
 <hr size="6">
-<a name="NOD201"></a>
+<a name="Def-Cmd-Template"></a>
 <a name="SEC215"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC214" title="Previous section in reading order"> &lt; </a>]</td>
@@ -235,7 +235,7 @@ definition.
 in <code>@deffn</code> and all the other definition commands.
 
 </p><hr size="6">
-<a name="NOD202"></a>
+<a name="Optional-Arguments"></a>
 <a name="SEC216"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC215" title="Previous section in reading order"> &lt; </a>]</td>
@@ -298,7 +298,7 @@ example).
 `<samp>foobar</samp>'.
 
 </p><hr size="6">
-<a name="NOD203"></a>
+<a name="deffnx"></a>
 <a name="SEC217"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC216" title="Previous section in reading order"> &lt; </a>]</td>
@@ -350,7 +350,7 @@ These two search commands are similar except &hellip;
 </p><p>The `x' forms work just like <code>@itemx</code>; see <a href="texinfo_12.html#SEC162"><code>@itemx</code></a>.
 
 </p><hr size="6">
-<a name="NOD204"></a>
+<a name="Def-Cmds-in-Detail"></a>
 <a name="SEC218"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC217" title="Previous section in reading order"> &lt; </a>]</td>
@@ -398,7 +398,7 @@ can be used for other programming languages.
 </table>
 
 <hr size="6">
-<a name="NOD205"></a>
+<a name="Functions-Commands"></a>
 <a name="SEC219"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC218" title="Previous section in reading order"> &lt; </a>]</td>
@@ -500,14 +500,14 @@ works like <code>@defun</code>.
 <dt><code> @defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
 <dd><p>The <code>@defspec</code> command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
-see <a href="../elisp/Special-Forms.html">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
+see <a href="../elisp/Special-Forms.html#Special-Forms">(elisp)Special Forms</a> section `Special Forms' in <cite>GNU Emacs Lisp Reference Manual</cite>.)
 <code>@defspec</code> is equivalent to `<samp>@deffn {Special Form}
 &hellip;</samp>' and works like <code>@defun</code>.
 </p></dd>
 </dl>
 
 <hr size="6">
-<a name="NOD206"></a>
+<a name="Variables-Commands"></a>
 <a name="SEC220"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC219" title="Previous section in reading order"> &lt; </a>]</td>
@@ -592,14 +592,14 @@ own.
 <dd><a name="IDX273"></a>
 <p>The <code>@defopt</code> command is the definition command for <em>user
 options</em>, i.e., variables intended for users to change according to
-taste; Emacs has many such (see <a href="../emacs/Variables.html">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to `<samp>@defvr {User
+taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section `Variables' in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to `<samp>@defvr {User
 Option} &hellip;</samp>' and works like <code>@defvar</code>.
 </p></dd>
 </dl>
 
 
 <hr size="6">
-<a name="NOD207"></a>
+<a name="Typed-Functions"></a>
 <a name="SEC221"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC220" title="Previous section in reading order"> &lt; </a>]</td>
@@ -731,7 +731,7 @@ for functions in typed languages.  The command is equivalent to
 
 
 <hr size="6">
-<a name="NOD208"></a>
+<a name="Typed-Variables"></a>
 <a name="SEC222"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC221" title="Previous section in reading order"> &lt; </a>]</td>
@@ -827,7 +827,7 @@ to `<samp>@deftypevr Variable &hellip;</samp>'.
 </dl>
 
 <hr size="6">
-<a name="NOD209"></a>
+<a name="Abstract-Objects"></a>
 <a name="SEC223"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC222" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1005,7 +1005,7 @@ to the <code>@defmethod</code> command with the addition of the
 
 
 <hr size="6">
-<a name="NOD210"></a>
+<a name="Data-Types"></a>
 <a name="SEC224"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC223" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1061,7 +1061,7 @@ of a definition of <code>pair</code>.
 </dl>
 
 <hr size="6">
-<a name="NOD211"></a>
+<a name="Def-Cmd-Conventions"></a>
 <a name="SEC225"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC224" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1089,7 +1089,7 @@ contains the name of a type, such as <var>integer</var>, take care that the
 argument actually is of that type.
 
 </p><hr size="6">
-<a name="NOD212"></a>
+<a name="Sample-Function-Definition"></a>
 <a name="SEC226"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC225" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1114,7 +1114,7 @@ commands.  The name of the function follows immediately after the
 <code>@defun</code> command and it is followed, on the same line, by the
 parameter list.
 
-</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
+</p><p>Here is a definition from <a href="../elisp/Calling-Functions.html#Calling-Functions">(elisp)Calling Functions</a> section `Calling Functions' in <cite>The GNU Emacs Lisp Reference Manual</cite>.
 
 </p><blockquote><dl>
 <dt><u>Function:</u> <b>apply</b><i> function &amp;rest arguments</i>

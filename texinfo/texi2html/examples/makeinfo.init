@@ -25,7 +25,7 @@ $SEPARATED_FOOTNOTES = 0;
 
 @SECTION_BUTTONS =
     (
-     \"node: ", \$Texi2HTML::NODE{This}, [ 'Next', \$Texi2HTML::NODE{Next} ] , \",", [ 'Prev', \$Texi2HTML::NODE{Prev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
+     \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{Next} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{Prev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
 
 my $default_init_out = $init_out;

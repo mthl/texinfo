@@ -245,7 +245,7 @@ sub T2H_ROFF_titlepage ()
 #     );
 
 my @bold_commands = ('strong', 'b', 'email');
-my @italic_commands = ('cite', 'dfn', 'emph', 'i', 'var');
+my @italic_commands = ('cite', 'dfn', 'emph', 'i', 'var', 'slanted');
 my @fixed_command = ('code', 'command', 'ctrl', 'env', 'file', 'kbd', 'key',
    'math', 'option', 'samp', 't', 'verb');
 

@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD246"></a>
+<a name="Creating-and-Installing-Info-Files"></a>
 <a name="SEC260"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="texinfo_20.html#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
@@ -89,7 +89,7 @@ ul.toc {list-style: none}
 
 
 <hr size="6">
-<a name="NOD247"></a>
+<a name="Creating-an-Info-File"></a>
 <a name="SEC261"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC260" title="Previous section in reading order"> &lt; </a>]</td>
@@ -143,7 +143,7 @@ see section <a href="#SEC271">Installing an Info File</a>.
 
 
 <hr size="6">
-<a name="NOD248"></a>
+<a name="makeinfo-advantages"></a>
 <a name="SEC262"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC261" title="Previous section in reading order"> &lt; </a>]</td>
@@ -180,7 +180,7 @@ circumstances, they format short regions or buffers more quickly than
 <code>makeinfo</code>.
 
 </p><hr size="6">
-<a name="NOD249"></a>
+<a name="Invoking-makeinfo"></a>
 <a name="SEC263"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC262" title="Previous section in reading order"> &lt; </a>]</td>
@@ -218,7 +218,7 @@ type:
 
 </p>
 <hr size="6">
-<a name="NOD250"></a>
+<a name="makeinfo-options"></a>
 <a name="SEC264"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC263" title="Previous section in reading order"> &lt; </a>]</td>
@@ -504,7 +504,7 @@ warnings.
 
 
 <hr size="6">
-<a name="NOD251"></a>
+<a name="Pointer-Validation"></a>
 <a name="SEC265"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC264" title="Previous section in reading order"> &lt; </a>]</td>
@@ -605,7 +605,7 @@ option is given.
 
 </p>
 <hr size="6">
-<a name="NOD252"></a>
+<a name="makeinfo-in-Emacs"></a>
 <a name="SEC266"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC265" title="Previous section in reading order"> &lt; </a>]</td>
@@ -661,7 +661,7 @@ the temporary buffer.
 <p>You can parse the error messages by typing <kbd>C-x `</kbd>
 (<code>next-error</code>).  This causes Emacs to go to and position the
 cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
-caused the error.  See <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
+caused the error.  See <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section `Running <code>make</code> or Compilers Generally' in <cite>The GNU Emacs Manual</cite>, for more
 information about using the <code>next-error</code> command.
 
 </p><p>In addition, you can kill the shell in which the <code>makeinfo</code>
@@ -701,13 +701,13 @@ variable in your `<tt>.emacs</tt>' initialization file.
 </pre></td></tr></table>
 
 <p>For more information, see<br>
-<a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
+<a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>, and<br>
 <a href="#SEC264">Options for <code>makeinfo</code></a>.
 
 </p><hr size="6">
-<a name="NOD253"></a>
+<a name="texinfo_002dformat-commands"></a>
 <a name="SEC267"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC266" title="Previous section in reading order"> &lt; </a>]</td>
@@ -761,7 +761,7 @@ However, the <code>makeinfo</code> program is often faster and
 provides better error checking (see section <a href="#SEC266">Running <code>makeinfo</code> inside Emacs</a>).
 
 </p><hr size="6">
-<a name="NOD254"></a>
+<a name="Batch-Formatting"></a>
 <a name="SEC268"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
@@ -783,7 +783,7 @@ provides better error checking (see section <a href="#SEC266">Running <code>make
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
+including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">(emacs)Command Switches</a> section `Command Line Switches and Arguments' in <cite>The GNU Emacs Manual</cite>.)
 
 </p><p>Here is a shell command to format all the files that end in
 `<tt>.texinfo</tt>' in the current directory:
@@ -805,7 +805,7 @@ you can continue working in it.  (When you run
 use that Emacs for anything else until the command finishes.)
 
 </p><hr size="6">
-<a name="NOD255"></a>
+<a name="Tag-and-Split-Files"></a>
 <a name="SEC269"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC268" title="Previous section in reading order"> &lt; </a>]</td>
@@ -901,7 +901,7 @@ validate the structure of the nodes, see <a href="texinfo_27.html#SEC315">Runnin
 
 </p>
 <hr size="6">
-<a name="NOD256"></a>
+<a name="makeinfo-html"></a>
 <a name="SEC270"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC269" title="Previous section in reading order"> &lt; </a>]</td>
@@ -970,7 +970,7 @@ at `<tt>../&lt;info-document&gt;/</tt>'.
 
 </p>
 <hr size="6">
-<a name="NOD257"></a>
+<a name="Installing-an-Info-File"></a>
 <a name="SEC271"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC270" title="Previous section in reading order"> &lt; </a>]</td>
@@ -992,7 +992,7 @@ at `<tt>../&lt;info-document&gt;/</tt>'.
 
 <p>Info files are usually kept in the `<tt>info</tt>' directory.  You can read
 Info files using the standalone Info program or the Info reader built
-into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an introduction to Info.)
+into Emacs.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for an introduction to Info.)
 
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC272">20.2.1 The Directory File `<tt>dir</tt>'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              The top level menu for all Info files.
@@ -1011,7 +1011,7 @@ into Emacs.  (See <a href="../info/index.html">info: (info)Top</a>, for an intro
 
 
 <hr size="6">
-<a name="NOD258"></a>
+<a name="Directory-File"></a>
 <a name="SEC272"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC271" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1072,7 +1072,7 @@ true in general, it is a special case for `<tt>dir</tt>'.
 
 </p>
 <hr size="6">
-<a name="NOD259"></a>
+<a name="New-Info-File"></a>
 <a name="SEC273"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC272" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1114,7 +1114,7 @@ name, not `<samp>gdb.info</samp>'.
 
 </p>
 <hr size="6">
-<a name="NOD260"></a>
+<a name="Other-Info-Directories"></a>
 <a name="SEC274"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1253,7 +1253,7 @@ special CTRL-_ characters that Info needs will be present.
 
 </p>
 <hr size="6">
-<a name="NOD261"></a>
+<a name="Installing-Dir-Entries"></a>
 <a name="SEC275"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC274" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1333,7 +1333,7 @@ as a whole in the appropriate other category.
 
 </p>
 <hr size="6">
-<a name="NOD262"></a>
+<a name="Invoking-install_002dinfo"></a>
 <a name="SEC276"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC275" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1373,7 +1373,7 @@ read only one Info file and write only one `<tt>dir</tt>' file per invocation.
 
 </p><a name="IDX421"></a>
 <a name="IDX422"></a>
-<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html">(gzip)Invoking gzip</a> section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
+<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section `Invoking gzip' in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to

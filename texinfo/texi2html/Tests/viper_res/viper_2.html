@@ -39,20 +39,20 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD2"></a>
+<a name="Overview"></a>
 <a name="SEC3"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="viper.html#SEC2" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC4" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="viper.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="viper_3.html#SEC14" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -93,7 +93,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 </table>
 
 <hr size="6">
-<a name="NOD3"></a>
+<a name="Emacs-Preliminaries"></a>
 <a name="SEC4"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC3" title="Previous section in reading order"> &lt; </a>]</td>
@@ -106,7 +106,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -117,7 +117,7 @@ included in your `<tt>~/.viper</tt>' file and are found at the following URL:
 <p>Emacs can edit several files at once.  A file in Emacs is placed in a
 <em>buffer</em> that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See <a href="../emacs/Dired.html">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.
+See <a href="../emacs/Dired.html#Dired">(emacs)Dired</a> section `Directory Editor' in <cite>The Gnu Emacs Manual</cite>, for an example.
 
 </p><p>A buffer has a distinguished position called the <em>point</em>.
 A <em>point</em> is always between 2 characters, and is <em>looking at</em>
@@ -134,7 +134,7 @@ shouldn't) happen if you restrict yourself to standard Vi keys, unless you
 modify the default editing style.  See section <a href="viper_4.html#SEC25">Customization</a>.
 
 </p><p>In addition to the <em>point</em>, there is another distinguished buffer
-position called the <em>mark</em>.  See <a href="../emacs/Mark.html">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
+position called the <em>mark</em>.  See <a href="../emacs/Mark.html#Mark">(emacs)Mark</a> section `Mark' in <cite>The GNU Emacs manual</cite>, for more info on the mark.  The text between the <em>point</em> and
 the <em>mark</em> is called the <em>region</em> of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a-z, there
 is another marker called <em>mark</em>.  This is similar to the unnamed Vi
@@ -193,14 +193,14 @@ buffers.  Additionally, each buffer has its <em>local keymap</em> that determine
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See <a href="../emacs/Major-Modes.html">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.
+will be executed.  See <a href="../emacs/Major-Modes.html#Major-Modes">Major Modes: (emacs)Major Modes</a> section `Major Modes' in <cite>The GNU Emacs Manual</cite>, for more information.
 
 </p><p>A buffer can also have a <em>minor mode</em>.  Minor modes are options that
 you can use or not.  A buffer in <code>text-mode</code> can have
 <code>auto-fill-mode</code> as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see <a href="../emacs/Minor-Modes.html">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> 
+more information, see <a href="../emacs/Minor-Modes.html#Minor-Modes">Minor Modes: (emacs)Minor Modes</a> section `Minor Modes' in <cite>The GNU Emacs Manual</cite> 
 
 </p><a name="IDX13"></a>
 <a name="IDX14"></a>
@@ -227,7 +227,7 @@ cause lisp functions to be called.  It is possible to call these
 functions directly, by typing <kbd>M-x function-name</kbd>.
 
 </p><hr size="6">
-<a name="NOD4"></a>
+<a name="Loading-Viper"></a>
 <a name="SEC5"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
@@ -240,7 +240,7 @@ functions directly, by typing <kbd>M-x function-name</kbd>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -296,7 +296,7 @@ viper-go-away</kbd> will do it for you.  The function <code>toggle-viper-mode</c
 toggles Viperization of Emacs on and off.
 
 </p><hr size="6">
-<a name="NOD5"></a>
+<a name="States-in-Viper"></a>
 <a name="SEC6"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC5" title="Previous section in reading order"> &lt; </a>]</td>
@@ -309,7 +309,7 @@ toggles Viperization of Emacs on and off.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -418,7 +418,7 @@ to allow Emacs keys in Insert state.
 </table>
 
 <hr size="6">
-<a name="NOD6"></a>
+<a name="Emacs-State"></a>
 <a name="SEC7"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC6" title="Previous section in reading order"> &lt; </a>]</td>
@@ -431,7 +431,7 @@ to allow Emacs keys in Insert state.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -466,7 +466,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 
 </p>
 <hr size="6">
-<a name="NOD7"></a>
+<a name="Vi-State"></a>
 <a name="SEC8"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC7" title="Previous section in reading order"> &lt; </a>]</td>
@@ -479,7 +479,7 @@ In Insert state, the same can also be achieved by typing <kbd>C-z</kbd>.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -519,7 +519,7 @@ use <kbd>C-g</kbd> to quit.  Similarly, <kbd>C-]</kbd> is used to exit
 `<samp>Recursive Edits</samp>' in Emacs for which there is no comparable Vi
 functionality and no key-binding.  Recursive edits are indicated by
 `<samp>[]</samp>' brackets framing the modes on the mode line.
-See <a href="../emacs/Recursive-Edit.html">Recursive Edit: (emacs)Recursive Edit</a> section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
+See <a href="../emacs/Recursive-Edit.html#Recursive-Edit">Recursive Edit: (emacs)Recursive Edit</a> section `Recursive Edit' in <cite>The GNU Emacs Manual</cite>.
 At user level 1, <kbd>C-g</kbd> is bound to <code>viper-info-on-file</code>
 function instead.
 
@@ -570,7 +570,7 @@ important.  Therefore, <kbd>U</kbd> also calls <code>viper-undo</code>.
 <dd><p>Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `<samp>\u</samp>', `<samp>\L</samp>',
-&hellip;, etc.  See <a href="../emacs/Regular-Expressions.html">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
+&hellip;, etc.  See <a href="../emacs/Regular-Expressions.html#Regular-Expressions">(emacs)Regular Expressions</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>, for details.
 Files specified to <kbd>:e</kbd> use <code>csh</code> regular expressions
 (globbing, wildcards, what have you).
 However, the function <code>viper-toggle-search-style</code>, bound to <kbd>C-c /</kbd>,
@@ -648,7 +648,7 @@ Having found the appropriate command, it can be then executed by typing
 See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more information.
 
 </p><hr size="6">
-<a name="NOD8"></a>
+<a name="Insert-State"></a>
 <a name="SEC9"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
@@ -661,7 +661,7 @@ See section <a href="viper_3.html#SEC14">Improvements over Vi</a>, for more info
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -725,7 +725,7 @@ the Insert state.
 </p><p>When Viper is in Insert state, you will see &lt;I&gt; in the mode line.
 
 </p><hr size="6">
-<a name="NOD9"></a>
+<a name="Replace-State"></a>
 <a name="SEC10"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
@@ -738,7 +738,7 @@ the Insert state.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -774,7 +774,7 @@ would delete text between this position and the end of the replacement
 region.
 
 </p><hr size="6">
-<a name="NOD10"></a>
+<a name="The-Minibuffer"></a>
 <a name="SEC11"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC10" title="Previous section in reading order"> &lt; </a>]</td>
@@ -787,7 +787,7 @@ region.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -843,7 +843,7 @@ The appearance of the text in the Minibuffer can be changed.
 See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more details.
 
 </p><hr size="6">
-<a name="NOD11"></a>
+<a name="Multiple-Files-in-Viper"></a>
 <a name="SEC12"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
@@ -856,7 +856,7 @@ See section <a href="viper_4.html#SEC29">Viper Specials</a>, for more details.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -938,7 +938,7 @@ command <kbd>:n</kbd> can be given counts from the <kbd>:ar</kbd> list to switch
 other files. For example, use `:n3' to move to the third file in that list.
 
 </p><hr size="6">
-<a name="NOD12"></a>
+<a name="Unimplemented-Features"></a>
 <a name="SEC13"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC12" title="Previous section in reading order"> &lt; </a>]</td>
@@ -951,7 +951,7 @@ other files. For example, use `:n3' to move to the third file in that list.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
@@ -985,7 +985,7 @@ back to normal tabs.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="viper.html#NOD1" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="viper_7.html#SEC51" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>

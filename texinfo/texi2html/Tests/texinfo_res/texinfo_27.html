@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD279"></a>
+<a name="Catching-Mistakes"></a>
 <a name="SEC308"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="texinfo_26.html#SEC307" title="Previous section in reading order"> &lt; </a>]</td>
@@ -95,7 +95,7 @@ run these commands on each region as you write it.
 command and you can use the <kbd>M-x Info-validate</kbd> command.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#NOD280">&bull; makeinfo Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          <code>makeinfo</code> finds errors.
+<tr><td align="left" valign="top"><a href="#makeinfo-Preferred">&bull; makeinfo Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          <code>makeinfo</code> finds errors.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#SEC310">F.1 Catching Errors with Info Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to catch errors with Info formatting.
 </td></tr>
@@ -109,7 +109,7 @@ command and you can use the <kbd>M-x Info-validate</kbd> command.
 </td></tr>
 </table>
 
-<a name="NOD280"></a>
+<a name="makeinfo-Preferred"></a>
 <a name="SEC309"></a>
 <h2 class="heading"> <code>makeinfo</code> Find Errors </h2>
 
@@ -128,7 +128,7 @@ cannot use <code>makeinfo</code>, or your problem is very puzzling, then you
 may want to use the tools described in this appendix.
 
 </p><hr size="6">
-<a name="NOD281"></a>
+<a name="Debugging-with-Info"></a>
 <a name="SEC310"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC308" title="Previous section in reading order"> &lt; </a>]</td>
@@ -232,7 +232,7 @@ from the `Catching Mistakes' node by typing <kbd>l</kbd>
 
 </p>
 <hr size="6">
-<a name="NOD282"></a>
+<a name="Debugging-with-TeX"></a>
 <a name="SEC311"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC310" title="Previous section in reading order"> &lt; </a>]</td>
@@ -366,7 +366,7 @@ instead of `<samp>@</samp>'; and in this circumstance, you are working
 directly with TeX, not with Texinfo.)
 
 </p><hr size="6">
-<a name="NOD283"></a>
+<a name="Using-texinfo_002dshow_002dstructure"></a>
 <a name="SEC312"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC311" title="Previous section in reading order"> &lt; </a>]</td>
@@ -421,20 +421,20 @@ with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection<
 commands respectively.  If you move your cursor into the `<samp>*Occur*</samp>'
 window, you can position the cursor over one of the lines and use the
 <kbd>C-c C-c</kbd> command (<code>occur-mode-goto-occurrence</code>), to jump to
-the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>, for more
+the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>, for more
 information about <code>occur-mode-goto-occurrence</code>.
 
 </p><p>The first line in the `<samp>*Occur*</samp>' window describes the <em>regular
 expression</em> specified by <var>texinfo-heading-pattern</var>.  This regular
 expression is the pattern that <code>texinfo-show-structure</code> looks for.
-See <a href="../emacs/Regexps.html">(emacs)Regexps</a> section `Using Regular Expressions' in <cite>The GNU Emacs Manual</cite>,
+See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section `Using Regular Expressions' in <cite>The GNU Emacs Manual</cite>,
 for more information.
 
 </p><p>When you invoke the <code>texinfo-show-structure</code> command, Emacs will
 display the structure of the whole buffer.  If you want to see the
 structure of just a part of the buffer, of one chapter, for example,
 use the <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command to mark the
-region.  (See <a href="../emacs/Narrowing.html">(emacs)Narrowing</a> section `Narrowing' in <cite>The GNU Emacs Manual</cite>.)  This is
+region.  (See <a href="../emacs/Narrowing.html#Narrowing">(emacs)Narrowing</a> section `Narrowing' in <cite>The GNU Emacs Manual</cite>.)  This is
 how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 
@@ -448,7 +448,7 @@ the list in the `<samp>*Occur*</samp>' window; and if you have mis-named a node
 or left out a section, you can correct the mistake.
 
 </p><hr size="6">
-<a name="NOD284"></a>
+<a name="Using-occur"></a>
 <a name="SEC313"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC312" title="Previous section in reading order"> &lt; </a>]</td>
@@ -478,7 +478,7 @@ command directly.  To do this, type
 </pre></td></tr></table>
 
 <p>and then, when prompted, type a <em>regexp</em>, a regular expression for
-the pattern you want to match.  (See <a href="../emacs/Regexps.html">(emacs)Regexps</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
+the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
 the current location of the cursor in the buffer to the end of the
 buffer.  If you want to run <code>occur</code> on the whole buffer, place
 the cursor at the beginning of the buffer.
@@ -496,11 +496,11 @@ or phrase, end the last word with a `<samp>$</samp>'; for example,
 all the nodes that are part of the same chapter or section and
 therefore have the same `Up' pointer.
 
-</p><p>See <a href="../emacs/Other-Repeating-Search.html">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>,
+</p><p>See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>,
 for more information.
 
 </p><hr size="6">
-<a name="NOD285"></a>
+<a name="Running-Info_002dValidate"></a>
 <a name="SEC314"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC313" title="Previous section in reading order"> &lt; </a>]</td>
@@ -545,7 +545,7 @@ if you write an Info file from scratch.
 </table>
 
 <hr size="6">
-<a name="NOD286"></a>
+<a name="Using-Info_002dvalidate"></a>
 <a name="SEC315"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC314" title="Previous section in reading order"> &lt; </a>]</td>
@@ -611,7 +611,7 @@ argument so that it does not split the Info file; and you must create a
 tag table for the unsplit file.
 
 </p><hr size="6">
-<a name="NOD287"></a>
+<a name="Unsplit"></a>
 <a name="SEC316"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC315" title="Previous section in reading order"> &lt; </a>]</td>
@@ -660,7 +660,7 @@ a tag table for it.
 <a name="IDX463"></a>
 
 </p><hr size="6">
-<a name="NOD288"></a>
+<a name="Tagifying"></a>
 <a name="SEC317"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC316" title="Previous section in reading order"> &lt; </a>]</td>
@@ -707,7 +707,7 @@ tag table and split the file automatically, or you can make the tag
 table and split the file manually.
 
 </p><hr size="6">
-<a name="NOD289"></a>
+<a name="Splitting"></a>
 <a name="SEC318"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC317" title="Previous section in reading order"> &lt; </a>]</td>

@@ -201,6 +201,8 @@ test_texi sectionning top_without_node.texi
 test_texi sectionning before_node_and_section.texi "" 2
 test_texi sectionning section_before_chapter.texi
 test_texi floats float.texi
+#test_texi floats float.texi "-split chapter -node-files -top-file index.html" 0  texi float_node_files 
+test_texi floats float_with_at_commands.texi
 test_texi formatting clean.texi
 test_texi formatting formatting.texi
 test_texi formatting formatting.texi "-split section -nosec-nav -nonumber -toc-links -def-table -short-ref -prefix exotic_formatting -output ." 0 texi exotic_formatting

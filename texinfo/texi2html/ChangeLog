@@ -1,3 +1,21 @@
+2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* Makefile.am: use $(PERL) and $(srcdir) in manage_i18n.pl rule
+	(idea of Karl Berry).
+
+2004-08-13  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl, texi2html.init: Cross refs are done according to the 
+	specification presented in the texinfo manual in the node HTML Xref.
+	The "external source of information" is also used although it isn't
+	formally part of the specification.
+	Handle novalidate better.
+	* Tests: sync.
+
+2004-08-07  Patrice Dumas  <dumas@centre-cired.fr> 
+
+	* texi2html.pl, texi2html.init: handle @slanted and @abbr.
+
 2004-06-27  Patrice Dumas  <dumas@centre-cired.fr> 
 
 	* texi2html.pl, T2h_i18n.pm, manage_i18n.pl: Re enable compatibility 

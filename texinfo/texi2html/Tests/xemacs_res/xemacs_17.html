@@ -39,7 +39,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD121"></a>
+<a name="Files"></a>
 <a name="SEC134"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="xemacs_16.html#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
@@ -73,9 +73,9 @@ other hosts.  Not only is Emacs somewhat aware of the special issues
 involved with network file systems, but it can also use FTP and ssh (or
 rsh) to make local copies of the files, and refresh them on the remote
 host automatically when you save the buffer.  The FTP interface is
-provided by the standard `<samp>efs</samp>' package <a href="../efs/index.html">EFS: (efs)Top</a>.  The
+provided by the standard `<samp>efs</samp>' package <a href="../efs/index.html#Top">EFS: (efs)Top</a>.  The
 ssh/rsh interface is provided by the optional `<samp>tramp</samp>' package
-<a href="../tramp/index.html">TRAMP: (tramp)Top</a>.  These packages attempt to implement all of
+<a href="../tramp/index.html#Top">TRAMP: (tramp)Top</a>.  These packages attempt to implement all of
 the operations described below, making remote file use transparent
 (except for unavoidable network delays).
 
@@ -107,7 +107,7 @@ and append to files, and operate on file directories.
 </table>
 
 <hr size="6">
-<a name="NOD122"></a>
+<a name="File-Names"></a>
 <a name="SEC135"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
@@ -227,7 +227,7 @@ substitution is called <code>substitute-in-file-name</code>.  The substitution
 is performed only on filenames read as such using the minibuffer.
 
 </p><hr size="6">
-<a name="NOD123"></a>
+<a name="Visiting"></a>
 <a name="SEC136"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
@@ -406,7 +406,7 @@ the functions receive no arguments.  Visiting a nonexistent file
 runs the <code>find-file-not-found-hooks</code> first.
 
 </p><hr size="6">
-<a name="NOD124"></a>
+<a name="Saving"></a>
 <a name="SEC137"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
@@ -547,7 +547,7 @@ all the functions to be called after writing out a buffer to a file.
 </table>
 
 <hr size="6">
-<a name="NOD125"></a>
+<a name="Backup"></a>
 <a name="SEC138"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
@@ -596,7 +596,7 @@ the file again, a new backup file is made by the next save.
 </table>
 
 <hr size="6">
-<a name="NOD126"></a>
+<a name="Backup-Names"></a>
 <a name="SEC139"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
@@ -656,7 +656,7 @@ Rmail mode locally sets <code>version-control</code> to <code>never</code> to ma
 that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#SEC361">Local Variables</a>.
 
 </p><hr size="6">
-<a name="NOD127"></a>
+<a name="Backup-Deletion"></a>
 <a name="SEC140"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
@@ -697,7 +697,7 @@ really be deleted.
 See section <a href="#SEC163">Dired, the Directory Editor</a>.
 
 </p><hr size="6">
-<a name="NOD128"></a>
+<a name="Backup-Copying"></a>
 <a name="SEC141"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
@@ -749,7 +749,7 @@ the file being edited has only one name.  If the variable
 done if renaming would cause the file's owner or group to change.  
 
 </p><hr size="6">
-<a name="NOD129"></a>
+<a name="Interlocking"></a>
 <a name="SEC142"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
@@ -850,7 +850,7 @@ executable permissions for the file. Use the function
 mode for new files.
 
 </p><hr size="6">
-<a name="NOD130"></a>
+<a name="Reverting"></a>
 <a name="SEC143"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
@@ -907,7 +907,7 @@ randomly with <kbd>C-x b</kbd> cannot be reverted; <code>revert-buffer</code>
 reports an error when asked to do so.
 
 </p><hr size="6">
-<a name="NOD131"></a>
+<a name="Auto-Save"></a>
 <a name="SEC144"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
@@ -950,7 +950,7 @@ typing.
 </table>
 
 <hr size="6">
-<a name="NOD132"></a>
+<a name="Auto-Save-Files"></a>
 <a name="SEC145"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC144" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1004,7 +1004,7 @@ name with <kbd>C-x C-w</kbd> or <code>set-visited-file-name</code> renames any
 auto-save file to correspond to the new visited name.
 
 </p><hr size="6">
-<a name="NOD133"></a>
+<a name="Auto-Save-Control"></a>
 <a name="SEC146"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC145" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1060,7 +1060,7 @@ buffer.
 </p><p>For this variable to have any effect, you must do <code>(require 'timer)</code>.
 
 </p><hr size="6">
-<a name="NOD134"></a>
+<a name="Recover"></a>
 <a name="SEC147"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC146" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1103,7 +1103,7 @@ then go on to make new changes, turn auto-saving back on
 with <kbd>M-x auto-save-mode</kbd>.
 
 </p><hr size="6">
-<a name="NOD135"></a>
+<a name="Version-Control"></a>
 <a name="SEC148"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC147" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1169,7 +1169,7 @@ using.
 </table>
 
 <hr size="6">
-<a name="NOD136"></a>
+<a name="Concepts-of-VC"></a>
 <a name="SEC149"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1222,7 +1222,7 @@ can do both of them with a single Emacs command: <kbd>C-x C-q</kbd>
 files that make up a program.  See section <a href="#SEC157">Snapshots</a>.
 
 </p><hr size="6">
-<a name="NOD137"></a>
+<a name="Editing-with-VC"></a>
 <a name="SEC150"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC149" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1373,7 +1373,7 @@ file uses version control.  When used for checkin, and given a prefix
 argument, it reads the version number with the minibuffer.
 
 </p><hr size="6">
-<a name="NOD138"></a>
+<a name="Variables-for-Check_002din_002fout"></a>
 <a name="SEC151"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1431,7 +1431,7 @@ are searched before the usual search path.  The proper result usually
 happens automatically.
 
 </p><hr size="6">
-<a name="NOD139"></a>
+<a name="Log-Entries"></a>
 <a name="SEC152"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC151" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1480,7 +1480,7 @@ mode, which involves running two hooks: <code>text-mode-hook</code> and
 <code>vc-log-mode-hook</code>.
 
 </p><hr size="6">
-<a name="NOD140"></a>
+<a name="Change-Logs-and-VC"></a>
 <a name="SEC153"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1590,7 +1590,7 @@ comments, you can log the change with an entry beginning with `<samp>#</samp>'
 to avoid putting such trivia into `<tt>ChangeLog</tt>'.
 
 </p><hr size="6">
-<a name="NOD141"></a>
+<a name="Old-Versions"></a>
 <a name="SEC154"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC153" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1662,7 +1662,7 @@ exist as files.  They exist only in the records of the master file.
 See section <a href="#SEC162">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
 
 </p><hr size="6">
-<a name="NOD142"></a>
+<a name="VC-Status"></a>
 <a name="SEC155"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC154" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1714,7 +1714,7 @@ registering or checking in several files at once, as part of the same
 change.
 
 </p><hr size="6">
-<a name="NOD143"></a>
+<a name="Renaming-and-VC"></a>
 <a name="SEC156"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC155" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1745,7 +1745,7 @@ snapshot thus modified may not completely work (see section <a href="#SEC159">Sn
 someone else.
 
 </p><hr size="6">
-<a name="NOD144"></a>
+<a name="Snapshots"></a>
 <a name="SEC157"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC156" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1778,7 +1778,7 @@ system that is ready for distribution to users.
 </table>
 
 <hr size="6">
-<a name="NOD145"></a>
+<a name="Making-Snapshots"></a>
 <a name="SEC158"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC157" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1834,7 +1834,7 @@ snapshot against the current files, or two snapshots against each other,
 or a snapshot against a named version.
 
 </p><hr size="6">
-<a name="NOD146"></a>
+<a name="Snapshot-Caveats"></a>
 <a name="SEC159"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC158" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1887,7 +1887,7 @@ name, which is not the name that the makefile expects.  So the program
 won't really work as retrieved.
 
 </p><hr size="6">
-<a name="NOD147"></a>
+<a name="Version-Headers"></a>
 <a name="SEC160"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC159" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1975,7 +1975,7 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 #endif /* lint */
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD148"></a>
+<a name="ListDir"></a>
 <a name="SEC161"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC160" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2049,7 +2049,7 @@ via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <code>FROM</code> the name it is linked to.
 
 </p><hr size="6">
-<a name="NOD149"></a>
+<a name="Comparing-Files"></a>
 <a name="SEC162"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC161" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2103,7 +2103,7 @@ whitespace.  If the variable <code>compare-ignore-case</code> is
 non-<code>nil</code>, it ignores differences in case as well.
 
 </p><hr size="6">
-<a name="NOD150"></a>
+<a name="Dired"></a>
 <a name="SEC163"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC162" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2140,7 +2140,7 @@ buffer and special Dired commands to operate on the files.
 </table>
 
 <hr size="6">
-<a name="NOD151"></a>
+<a name="Dired-Enter"></a>
 <a name="SEC164"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC163" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2176,7 +2176,7 @@ used as an argument to <code>ls</code> in making the directory; this string
 window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd>C-x d</kbd>.
 
 </p><hr size="6">
-<a name="NOD152"></a>
+<a name="Dired-Edit"></a>
 <a name="SEC165"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC164" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2227,7 +2227,7 @@ directory by programs other than Dired.  All deletion flags in the Dired
 buffer are lost when this is done.
 
 </p><hr size="6">
-<a name="NOD153"></a>
+<a name="Dired-Deletion"></a>
 <a name="SEC166"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC165" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2322,7 +2322,7 @@ the value of the argument to specify the number of oldest versions of each
 file to keep.
 
 </p><hr size="6">
-<a name="NOD154"></a>
+<a name="Dired-Immed"></a>
 <a name="SEC167"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC166" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2374,7 +2374,7 @@ directory.
 </dl>
 
 <hr size="6">
-<a name="NOD155"></a>
+<a name="Misc-File-Ops"></a>
 <a name="SEC168"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC167" title="Previous section in reading order"> &lt; </a>]</td>

@@ -1,9 +1,9 @@
-$EXTERNAL_DIR = undef;
 $NEW_CROSSREF_STYLE = 1;
+$NEW_TARGET_STYLE = 1;
 #$USE_NODES = 1;
 #$NODE_FILES = 1;
 
-$node_file_name = \&cross_ref_node_file_name;
+#$node_file_name = \&cross_ref_node_file_name;
 
 sub cross_ref_node_file_name($)
 {

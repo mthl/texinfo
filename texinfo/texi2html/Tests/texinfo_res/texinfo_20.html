@@ -58,7 +58,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD230"></a>
+<a name="Hardcopy"></a>
 <a name="SEC244"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="texinfo_19.html#SEC243" title="Previous section in reading order"> &lt; </a>]</td>
@@ -126,7 +126,7 @@ print queue, and delete a job from the print queue.
 </table>
 
 <hr size="6">
-<a name="NOD231"></a>
+<a name="Use-TeX"></a>
 <a name="SEC245"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC244" title="Previous section in reading order"> &lt; </a>]</td>
@@ -157,7 +157,7 @@ process them differently to make an Info file (see section <a href="texinfo_21.h
 
 </p>
 <hr size="6">
-<a name="NOD232"></a>
+<a name="Format-with-tex_002ftexindex"></a>
 <a name="SEC246"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC245" title="Previous section in reading order"> &lt; </a>]</td>
@@ -200,7 +200,7 @@ among other places.)
 <a name="IDX322"></a>
 <p>The <code>tex</code> formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
-with any `<samp>.tex</samp>' (or similar, see <a href="../web2c/tex-invocation.html">(web2c)tex invocation</a> section `tex invocation' in <cite>Web2c</cite>) extension removed, followed by the two letter names of indices.
+with any `<samp>.tex</samp>' (or similar, see <a href="../web2c/tex-invocation.html#tex-invocation">(web2c)tex invocation</a> section `tex invocation' in <cite>Web2c</cite>) extension removed, followed by the two letter names of indices.
 For example, the raw index output files for the input file
 `<tt>foo.texinfo</tt>' would be `<tt>foo.cp</tt>', `<tt>foo.vr</tt>', `<tt>foo.fn</tt>',
 `<tt>foo.tp</tt>', `<tt>foo.pg</tt>' and `<tt>foo.ky</tt>'.  Those are exactly the
@@ -293,7 +293,7 @@ your file would look approximately like this:
 
 </p>
 <hr size="6">
-<a name="NOD233"></a>
+<a name="Format-with-texi2dvi"></a>
 <a name="SEC247"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC246" title="Previous section in reading order"> &lt; </a>]</td>
@@ -344,7 +344,7 @@ see section <a href="#SEC253">Preparing for TeX</a>).
 
 </p>
 <hr size="6">
-<a name="NOD234"></a>
+<a name="Print-with-lpr"></a>
 <a name="SEC248"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC247" title="Previous section in reading order"> &lt; </a>]</td>
@@ -411,7 +411,7 @@ queues, like this:
 
 <table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
 </pre></td></tr></table></li><li> Convert the DVI file to a Postscript or PCL file and send it to your
-local printer.  See <a href="../dvips/dvips-invocation.html">(dvips)dvips invocation</a> section `dvips invocation' in <cite>Dvips</cite>, and the man
+local printer.  See <a href="../dvips/dvips-invocation.html#dvips-invocation">(dvips)dvips invocation</a> section `dvips invocation' in <cite>Dvips</cite>, and the man
 pages for <code>dvilj</code>, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
 directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
@@ -419,7 +419,7 @@ directly, just send it to the appropriate port, usually `<samp>PRN</samp>'.
 
 
 <hr size="6">
-<a name="NOD235"></a>
+<a name="Within-Emacs"></a>
 <a name="SEC249"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC248" title="Previous section in reading order"> &lt; </a>]</td>
@@ -459,7 +459,7 @@ and printing in Texinfo mode.
 
 </p>
 <hr size="6">
-<a name="NOD236"></a>
+<a name="Texinfo-Mode-Printing"></a>
 <a name="SEC250"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC249" title="Previous section in reading order"> &lt; </a>]</td>
@@ -573,20 +573,20 @@ tex-dvi-print-command                     &quot;lpr -d&quot;
 tex-show-queue-command                    &quot;lpq&quot;
 </pre></td></tr></table>
 <p>You can change the values of these variables with the <kbd>M-x
-edit-options</kbd> command (see <a href="../emacs/Edit-Options.html">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
-(see <a href="../emacs/Examining.html">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
-(see <a href="../emacs/Init-File.html">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
+edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section `Editing Variable Values' in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
+(see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section `Examining and Setting Variables' in <cite>The GNU Emacs Manual</cite>), or with your `<tt>.emacs</tt>' initialization file
+(see <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section `Init File' in <cite>The GNU Emacs Manual</cite>).
 
 </p><a name="IDX333"></a>
 <p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called <em>Customize</em>, for changing values of user-definable variables.
-See <a href="../emacs/Easy-Customization.html">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
+See <a href="../emacs/Easy-Customization.html#Easy-Customization">(emacs)Easy Customization</a> section `Easy Customization Interface' in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
 be found in the `<samp>Development/Docs/Texinfo</samp>' group, once you invoke
 the <kbd>M-x customize</kbd> command.
 
 </p>
 <hr size="6">
-<a name="NOD237"></a>
+<a name="Compile_002dCommand"></a>
 <a name="SEC251"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC250" title="Previous section in reading order"> &lt; </a>]</td>
@@ -621,11 +621,11 @@ End:
 </pre></td></tr></table>
 
 <p>This technique is most often used by programmers who also compile programs
-this way; see <a href="../emacs/Compilation.html">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.
+this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section `Compilation' in <cite>The GNU Emacs Manual</cite>.
 
 </p>
 <hr size="6">
-<a name="NOD238"></a>
+<a name="Requirements-Summary"></a>
 <a name="SEC252"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
@@ -681,7 +681,7 @@ contents.  (And of course most manuals contain a body of text as well.)
 
 
 <hr size="6">
-<a name="NOD239"></a>
+<a name="Preparing-for-TeX"></a>
 <a name="SEC253"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
@@ -779,7 +779,7 @@ directory `<tt>/usr/lib/tex/macros</tt>'.
 
 </p><a name="IDX341"></a>
 <a name="IDX342"></a>
-<p>Finally, you may wish to dump a `<tt>.fmt</tt>' file (see <a href="../web2c/Memory-dumps.html">(web2c)Memory dumps</a> section `Memory dumps' in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
+<p>Finally, you may wish to dump a `<tt>.fmt</tt>' file (see <a href="../web2c/Memory-dumps.html#Memory-dumps">(web2c)Memory dumps</a> section `Memory dumps' in <cite>Web2c</cite>) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating `<tt>texinfo.tex</tt>' requires
 redumping.)  You can do this by running this command, assuming
 `<tt>epsf.tex</tt>' is findable by TeX:
@@ -792,7 +792,7 @@ subdirectory `<tt>web2c</tt>' of your TeX installation.
 
 </p>
 <hr size="6">
-<a name="NOD240"></a>
+<a name="Overfull-hboxes"></a>
 <a name="SEC254"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC253" title="Previous section in reading order"> &lt; </a>]</td>
@@ -871,7 +871,7 @@ before the <code>@titlepage</code> command:
 </pre></td></tr></table>
 
 <hr size="6">
-<a name="NOD241"></a>
+<a name="smallbook"></a>
 <a name="SEC255"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
@@ -917,7 +917,7 @@ require changing the source file.
 
 </p>
 <hr size="6">
-<a name="NOD242"></a>
+<a name="A4-Paper"></a>
 <a name="SEC256"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC255" title="Previous section in reading order"> &lt; </a>]</td>
@@ -960,7 +960,7 @@ require changing the source file.
 wide format.
 
 </p><hr size="6">
-<a name="NOD243"></a>
+<a name="pagesizes"></a>
 <a name="SEC257"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC256" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1007,7 +1007,7 @@ require changing the source file.
 
 </p>
 <hr size="6">
-<a name="NOD244"></a>
+<a name="Cropmarks-and-Magnification"></a>
 <a name="SEC258"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC257" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1076,7 +1076,7 @@ magnifications.  Be prepared to experiment.
 
 </p>
 <hr size="6">
-<a name="NOD245"></a>
+<a name="PDF-Output"></a>
 <a name="SEC259"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC258" title="Previous section in reading order"> &lt; </a>]</td>

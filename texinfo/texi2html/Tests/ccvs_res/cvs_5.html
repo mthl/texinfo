@@ -39,7 +39,7 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="NOD54"></a>
+<a name="Branching-and-merging"></a>
 <a name="SEC54"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="cvs_4.html#SEC53" title="Previous section in reading order"> &lt; </a>]</td>
@@ -90,7 +90,7 @@ copy the changes onto another branch.
 </table>
 
 <hr size="6">
-<a name="NOD55"></a>
+<a name="Branches-motivation"></a>
 <a name="SEC55"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC54" title="Previous section in reading order"> &lt; </a>]</td>
@@ -127,7 +127,7 @@ modifications are finished you can elect to either incorporate them on
 the main trunk, or leave them on the branch.
 
 </p><hr size="6">
-<a name="NOD56"></a>
+<a name="Creating-a-branch"></a>
 <a name="SEC56"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC55" title="Previous section in reading order"> &lt; </a>]</td>
@@ -189,7 +189,7 @@ branch - named `<samp>rel-1-0-patches</samp>' - in module
 by `<samp>rel-1-0</samp>'.
 
 </p><hr size="6">
-<a name="NOD57"></a>
+<a name="Accessing-branches"></a>
 <a name="SEC57"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC56" title="Previous section in reading order"> &lt; </a>]</td>
@@ -293,7 +293,7 @@ that `<samp>driver.c</samp>' had been through more changes than
 branch numbers are constructed.
 
 </p><hr size="6">
-<a name="NOD58"></a>
+<a name="Branches-and-revisions"></a>
 <a name="SEC58"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC57" title="Previous section in reading order"> &lt; </a>]</td>
@@ -372,7 +372,7 @@ numbered 6.4.2.  All branch numbers ending in a zero
 special meaning.  See section <a href="cvs_13.html#SEC105">Tracking third-party sources</a>.
 
 </p><hr size="6">
-<a name="NOD59"></a>
+<a name="Magic-branch-numbers"></a>
 <a name="SEC59"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC58" title="Previous section in reading order"> &lt; </a>]</td>
@@ -436,7 +436,7 @@ do not assign the tag to the wrong number.  (There is
 no way to see how the tag was assigned yesterday).
 
 </p><hr size="6">
-<a name="NOD60"></a>
+<a name="Merging-a-branch"></a>
 <a name="SEC60"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC59" title="Previous section in reading order"> &lt; </a>]</td>
@@ -512,7 +512,7 @@ $ cvs commit -m &quot;Included R1fix&quot;
 not produce the desired result.  See section <a href="#SEC63">Merging can add or remove files</a>, for more.
 
 </p><hr size="6">
-<a name="NOD61"></a>
+<a name="Merging-more-than-once"></a>
 <a name="SEC61"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC60" title="Previous section in reading order"> &lt; </a>]</td>
@@ -590,7 +590,7 @@ the trunk, and then use that tag for subsequent merges:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD62"></a>
+<a name="Merging-two-revisions"></a>
 <a name="SEC62"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC61" title="Previous section in reading order"> &lt; </a>]</td>
@@ -649,7 +649,7 @@ done
 $
 </pre></td></tr></table>
 <hr size="6">
-<a name="NOD63"></a>
+<a name="Merging-adds-and-removals"></a>
 <a name="SEC63"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC62" title="Previous section in reading order"> &lt; </a>]</td>
@@ -698,7 +698,7 @@ to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
 
 </p><hr size="6">
-<a name="NOD64"></a>
+<a name="Merging-and-keywords"></a>
 <a name="SEC64"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC63" title="Previous section in reading order"> &lt; </a>]</td>
