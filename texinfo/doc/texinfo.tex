@@ -1206,7 +1206,7 @@ where each line of input produces a line of output.}
   \def\pdfurl#1{%
     \begingroup
       \normalturnoffactive\def\@{@}%
-      \let\value=\expandablevalue
+      \makevalueexpandable
       \leavevmode\Red
       \startlink attr{/Border [0 0 0]}%
         user{/Subtype /Link /A << /S /URI /URI (#1) >>}%
@@ -2714,28 +2714,29 @@ width0pt\relax} \fi
 \def\clearxxx#1{\global\expandafter\let\csname SET#1\endcsname=\relax}
 
 % @value{foo} gets the text saved in variable foo.
-{
-  \catcode`\_ = \active
-  %
-  % We might end up with active _ or - characters in the argument if
-  % we're called from @code, as @code{@value{foo-bar_}}.  So \let any
-  % such active characters to their normal equivalents.
-  \gdef\value{\begingroup
-    \catcode`\-=\other \catcode`\_=\other
-    \indexbreaks \let_\normalunderscore
-    \valuexxx}
-}
+\def\value{\begingroup\makevalueexpandable\valuexxx}
 \def\valuexxx#1{\expandablevalue{#1}\endgroup}
+{
+  \catcode`\- = \active \catcode`\_ = \active
+  %
+  \gdef\makevalueexpandable{%
+    \let\value = \expandablevalue
+    % We don't want these characters active, ...
+    \catcode`\-=\other \catcode`\_=\other
+    % ..., but we might end up with active ones in the argument if
+    % we're called from @code, as @code{@value{foo-bar_}}, though.
+    % So \let them to their normal equivalents.
+    \let-\realdash \let_\normalunderscore
+  }
+}
 
 % We have this subroutine so that we can handle at least some @value's
-% properly in indexes (we \let\value to this in \indexdummies).  Ones
-% whose names contain - or _ still won't work, but we can't do anything
-% about that.  The command has to be fully expandable (if the variable
-% is set), since the result winds up in the index file.  This means that
-% if the variable's value contains other Texinfo commands, it's almost
-% certain it will fail (although perhaps we could fix that with
-% sufficient work to do a one-level expansion on the result, instead of
-% complete).
+% properly in indexes (we call \makevalueexpandable in \indexdummies).
+% The command has to be fully expandable (if the variable is set), since
+% the result winds up in the index file.  This means that if the
+% variable's value contains other Texinfo commands, it's almost certain
+% it will fail (although perhaps we could fix that with sufficient work
+% to do a one-level expansion on the result, instead of complete).
 %
 \def\expandablevalue#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
@@ -3042,10 +3043,9 @@ width0pt\relax} \fi
   \definedummyword{print}%
   \definedummyword{result}%
   %
-  % Handle some cases of @value -- where the variable name does not
-  % contain - or _, and the value does not contain any
+  % Handle some cases of @value -- where it does not contain any
   % (non-fully-expandable) commands.
-  \let\value = \expandablevalue
+  \makevalueexpandable
   %
   % Normal spaces, not active ones.
   \unsepspaces
