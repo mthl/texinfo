@@ -1,5 +1,10 @@
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/insertion.c (cm_insert_copying): remove blockquote from
+	copying_text when inside bookinfo and the output format is Docbook.
+
+2003-11-19  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/makeinfo.c (cm_value): return immediately instead of
 	just suppressing bogus warnings.
 
