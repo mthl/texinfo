@@ -1,5 +1,11 @@
 2003-03-31    <karl@gnu.org>
 
+	* makeinfo/lang.c (iso8859_2_map): new encoding map.
+	(encoding_table): enable it.
+
+	* info/pcterm.c (pc_up_line): use MAX instead of max (no longer
+	defined).  Reported by Richard Dawes.
+
 	* doc/texinfo.txi (documentencoding): mention that all processors
 	recognize the command.
 
