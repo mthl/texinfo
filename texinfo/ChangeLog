@@ -1,5 +1,14 @@
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/index.c: new section and section_name properties in
+	index_elt struct.
+
+	* makeinfo/index.c (index_add_arg): save current section number and
+	title for plain text output.
+	(cm_printindex): simplified printing with no_headers output.
+
+2003-11-28  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/float.h: new section and section_name properties in
 	float_elt struct.
 

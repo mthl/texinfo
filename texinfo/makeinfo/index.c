@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.12 2003-11-24 23:26:07 dirt Exp $
+   $Id: index.c,v 1.13 2003-11-28 04:19:13 dirt Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003 Free Software Foundation, Inc.
 
@@ -21,6 +21,7 @@
 #include "index.h"
 #include "lang.h"
 #include "macro.h"
+#include "sectioning.h"
 #include "toc.h"
 #include "xml.h"
 
@@ -31,6 +32,8 @@ typedef struct index_elt
   char *entry;                  /* The index entry itself, after expansion. */
   char *entry_text;             /* The original, non-expanded entry text. */
   char *node;                   /* The node from whence it came. */
+  char *section;                /* Current section number we are in, */
+  char *section_name;           /* ... and its title.  */
   int code;                     /* Nonzero means add `@code{...}' when
                                    printing this element. */
   int defining_line;            /* Line number where this entry was written. */
@@ -220,6 +223,14 @@ index_add_arg (name)
       new->entry_text = index_entry;
       new->entry = NULL;
       new->node = current_node ? current_node : xstrdup ("");
+      if (!html && !xml && no_headers)
+        {
+          new->section = current_sectioning_number ();
+          if (strlen (new->section) == 0)
+            new->section_name = current_sectioning_name ();
+          else
+            new->section_name = "";
+        }
       new->code = tem->code;
       new->defining_line = line_number - 1;
       /* We need to make a copy since input_filename may point to
@@ -819,45 +830,25 @@ cm_printindex ()
                      there's little sense in referring to them in the
                      index.  Instead, output the number or name of the
                      section that corresponds to that node.  */
-                  char *section_name = toc_find_section_of_node (index_node);
-
                   sprintf (line, "%-*s ", number_sections ? 50 : 1, index->entry);
                   line[strlen (index->entry)] = ':';
                   insert_string (line);
-                  if (section_name)
-                    {
-                      int idx = 0;
-                      unsigned ref_len = strlen (section_name) + 30;
 
-                      if (ref_len > line_length)
-                        {
-                          line_length = ref_len;
-                          line = xrealloc (line, line_length);
-                        }
-
-                      if (number_sections)
-                        {
-                          char *trans = (char *) _("Appendix");
-                          if (strncmp (section_name, trans, strlen (trans)) == 0)
-                            idx = strlen (trans) + 2;
-                          else
-                            while (section_name[idx]
-                                && (isdigit (section_name[idx])
-                                  || (!idx && isupper(section_name[idx]))
-                                  || (idx && section_name[idx] == '.')))
-                              idx++;
-                        }
-                      if (idx)
-                        sprintf (line, " See %.*s.\n", idx, section_name);
-                      else
-                        sprintf (line, "\n          See ``%s''.\n", section_name);
-                      insert_string (line);
+                  if (strlen (index->section) > 0)
+                    { /* We got your number.  */
+                      insert_string (_("See "));
+                      insert_string (index->section);
                     }
                   else
-                    {
-                      insert_string (" "); /* force a blank */
-                      execute_string ("See node %s.\n", index_node);
+                    { /* Sigh, @float in an @unnumbered. :-\  */
+                      insert_string ("\n          ");
+                      insert_string (_("See "));
+                      insert_string ("``");
+                      insert_string (expansion (index->section_name, 0));
+                      insert_string ("''");
                     }
+
+                  insert_string (".\n");
                 }
             }
 
