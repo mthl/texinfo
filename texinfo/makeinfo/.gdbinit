@@ -172,10 +172,10 @@ set args -o /dev/null /nonexistent.texinfo tests/html-min.txi
 # infinite error
 set args -o - tests/itemize-extra.txi
 
-# local variables: with split files
+# local variables with split files
 set args --no-warn --enable-encoding --split-size=150000 $ttests/xe.tex
 
-# local variables: with encoding info
+# local variables with encoding info
 set args -o - --enable-encoding $ttests/doclatin1.tex
 
 # --xml?
