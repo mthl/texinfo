@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.40 2003-11-23 22:58:26 dirt Exp $
+   $Id: xml.c,v 1.41 2003-11-23 23:38:13 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -22,6 +22,7 @@
 #include "system.h"
 #include "makeinfo.h"
 #include "insertion.h"
+#include "float.h"
 #include "macro.h"
 #include "cmds.h"
 #include "lang.h"
@@ -167,6 +168,13 @@ element texinfoml_element_list [] = {
   { "emailname",           0, 1, 0 },
 
   { "group",               0, 0, 0 },
+  { "float",               0, 0, 0 },
+  { "floattype",           0, 0, 0 },
+  { "caption",             0, 0, 0 },
+
+  { "",                    0, 0, 0 }, /* TABLE (docbook) */
+  { "",                    0, 0, 0 }, /* FIGURE (docbook) */
+  { "",                    0, 0, 0 }, /* EXAMPLE (docbook) */
 
   { "printindex",          0, 0, 0 },
   { "anchor",              0, 1, 0 },
@@ -348,6 +356,13 @@ element docbook_element_list [] = {
   { "",                    0, 1, 0 }, /* EMAILNAME */
 
   { "",                    0, 0, 0 }, /* GROUP */
+  { "",                    0, 0, 0 }, /* FLOAT */
+  { "",                    0, 0, 0 }, /* FLOATTYPE */
+  { "",                    0, 0, 0 }, /* CAPTION */
+
+  { "table",               0, 1, 0 },
+  { "figure",              0, 1, 0 },
+  { "example",             1, 1, 0 },
 
   { "index",               0, 1, 0 }, /* PRINTINDEX */
   { "",                    0, 1, 0 }, /* ANCHOR */
@@ -441,6 +456,9 @@ replace_element replace_elements [] = {
   { LINEANNOTATION, LINEANNOTATION, -1 },
   { LEGALNOTICE, ABSTRACT, -1 },
   { QUOTATION, QUOTATION, -1 },
+  /* Formal versions of table and image elements.  */
+  { MULTITABLE, FLOAT, FLOATTABLE },
+  { INFORMALFIGURE, FLOAT, FLOATFIGURE },
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
@@ -746,6 +764,18 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
 
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
+
+  /* We are special-casing FIGURE element for docbook.  It does appear in
+     the tag stack, but not in the output.  This is to make element replacement
+     work beautifully.  */
+  if (docbook && elt == FLOAT)
+    {
+      if (arg == START)
+        xml_push_current_element (elt);
+      else
+        xml_pop_current_element ();
+      return;
+    }
 
   if (!xml_element_list[elt].name || !strlen (xml_element_list[elt].name))
     {
@@ -1479,7 +1509,23 @@ void
 xml_insert_docbook_image (name_arg)
     char *name_arg;
 {
+  if (is_in_insertion_of_type (floatenv))
+    {
+      if (strlen (current_float_id ()) == 0)
+        xml_insert_element_with_attribute (INFORMALFIGURE, START,
+            "label=\"%s\"", current_float_number ());
+      else
+        xml_insert_element_with_attribute (INFORMALFIGURE, START,
+            "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
+            current_float_number ());
+
+      xml_insert_element (TITLE, START);
+      execute_string ("%s", current_float_title ());
+      xml_insert_element (TITLE, END);
+    }
+  else
   xml_insert_element (INFORMALFIGURE, START);
+
   xml_insert_element (MEDIAOBJECT, START);
 
   xml_insert_element (IMAGEOBJECT, START);
@@ -1784,7 +1830,23 @@ xml_begin_multitable (ncolumns, column_widths)
   int i;
   if (docbook)
     {
+      if (is_in_insertion_of_type (floatenv))
+        {
+          if (strlen (current_float_id ()) == 0)
+            xml_insert_element_with_attribute (MULTITABLE, START,
+                "label=\"%s\"", current_float_number ());
+          else
+            xml_insert_element_with_attribute (MULTITABLE, START,
+                "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
+                current_float_number ());
+
+          xml_insert_element (TITLE, START);
+          execute_string ("%s", current_float_title ());
+          xml_insert_element (TITLE, END);
+        }
+      else
       xml_insert_element (MULTITABLE, START);
+
       xml_insert_element_with_attribute (TGROUP, START, "cols=\"%d\"", ncolumns);
       for (i=0; i<ncolumns; i++)
         {

@@ -1,5 +1,28 @@
 2003-11-24  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/cmds.c: new commands @float and @caption.
+
+	* makeinfo/insertion.h: new environment floatenv.
+
+	* makeinfo/insertion.c (cm_float, cm_caption): new functions.
+	(begin_insertion, end_insertion): handle floatenv.
+
+	* makeinfo/xml.c:
+	* makeinfo/xml.h: new elements float, floattype, caption, floattable,
+	floatfigure, floatexample.
+
+	* makeinfo/insertion.c (cm_example):
+	* makeinfo/xml.c (xml_insert_docbook_image, xml_begin_multitable):
+	insert label and id attributes, title element for docbook if used
+	inside @float.
+
+	* makeinfo/xml.c: replacements for multitable and informalfigure.
+	(xml_insert_element_with_attribute): special-cased float element for
+	docbook to make it appear in element stack and thus enable element
+	replacements inside floatenv.
+
+2003-11-24  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/float.c:
 	* makeinfo/float.h: new files for float environment functions.
 

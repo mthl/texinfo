@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.46 2003-11-23 10:53:34 dirt Exp $
+   $Id: insertion.c,v 1.47 2003-11-23 23:38:13 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -21,6 +21,7 @@
 #include "system.h"
 #include "cmds.h"
 #include "defun.h"
+#include "float.h"
 #include "insertion.h"
 #include "macro.h"
 #include "makeinfo.h"
@@ -34,13 +35,13 @@ static char *insertion_type_names[] =
   "deftypefn", "deftypefun", "deftypeivar", "deftypemethod",
   "deftypeop", "deftypevar", "deftypevr", "defun", "defvar", "defvr",
   "detailmenu", "direntry", "display", "documentdescription",
-  "enumerate", "example", "flushleft", "flushright", "format", "ftable",
-  "group", "ifclear", "ifdocbook", "ifhtml", "ifinfo", "ifnotdocbook",
-  "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex", "ifnotxml",
-  "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp", "menu",
-  "multitable", "quotation", "rawdocbook", "rawhtml", "rawtex","rawxml", 
-  "smalldisplay", "smallexample", "smallformat", "smalllisp", "verbatim",
-  "table", "tex", "vtable", "titlepage", "bad_type"
+  "enumerate", "example", "float", "flushleft", "flushright", "format",
+  "ftable", "group", "ifclear", "ifdocbook", "ifhtml", "ifinfo",
+  "ifnotdocbook", "ifnothtml", "ifnotinfo", "ifnotplaintext", "ifnottex",
+  "ifnotxml", "ifplaintext", "ifset", "iftex", "ifxml", "itemize", "lisp",
+  "menu", "multitable", "quotation", "rawdocbook", "rawhtml", "rawtex",
+  "rawxml", "smalldisplay", "smallexample", "smallformat", "smalllisp",
+  "verbatim", "table", "tex", "vtable", "titlepage", "bad_type"
 };
 
 /* All nested environments.  */
@@ -703,6 +704,81 @@ begin_insertion (type)
         no_discard++;
       break;
 
+    case floatenv:
+      /* Cannot nest floats, so complain.  */
+      if (is_in_insertion_of_type(floatenv) < insertion_level)
+        {
+          line_error (_("%cfloat environments cannot be nested"), COMMAND_PREFIX);
+          break;
+        }
+
+      { /* Collect data about this float.  */
+        char *text;
+        char *anchor;
+        char *caption;
+        int start_of_end;
+        int save_line_number = line_number;
+        int save_input_text_offset = input_text_offset;
+        int i;
+
+        /* Skip leading whitespace.  */
+        while (curchar () == '\n')
+          input_text_offset++;
+
+        start_of_end = get_until ("\n@end float", &text);
+
+        /* Get the @anchor before the end of @float.  */
+        i = search_forward_until_pos ("@anchor{",
+            save_input_text_offset, start_of_end);
+        if (i > -1)
+          {
+            input_text_offset = i + 8;
+            get_until_in_braces ("\n@end float", &anchor);
+            input_text_offset = save_input_text_offset;
+          }
+        else
+          anchor = "";
+
+        /* Get also the @caption.  */
+        i = search_forward_until_pos ("@caption{",
+            save_input_text_offset, start_of_end);
+        if (i > -1)
+          {
+            input_text_offset = i + 9;
+            get_until_in_braces ("\n@end float", &caption);
+            input_text_offset = save_input_text_offset;
+          }
+        else
+          caption = "";
+
+        /* We default to Figure type.  */
+        if (strlen (insertion_stack->item_function) == 0)
+          insertion_stack->item_function = "Figure";
+
+        add_new_float (xstrdup (anchor), xstrdup (caption),
+            xstrdup (insertion_stack->item_function));
+
+        /* Move to the start of the @float so the contents get processed as
+           usual.  */
+        input_text_offset = save_input_text_offset;
+        line_number = save_line_number;
+      }
+
+      if (html)
+          add_word ("<div class=\"float\">\n");
+      else if (xml)
+        {
+          xml_insert_element (FLOAT, START);
+          xml_insert_element (FLOATTYPE, START);
+          if (!docbook)
+            execute_string ("%s", insertion_stack->item_function);
+          xml_insert_element (FLOATTYPE, END);
+        }
+      else
+        { /* Info */
+        }
+      break;
+
       /* Insertions that are no-ops in info, but do something in TeX. */
     case ifclear:
     case ifdocbook:
@@ -826,6 +902,8 @@ end_insertion (type)
           break;
         case example:
           xml_insert_element (EXAMPLE, END);
+          if (docbook && is_in_insertion_of_type (floatenv))
+            xml_insert_element (FLOATEXAMPLE, END);
           break;
         case smallexample:
           xml_insert_element (SMALLEXAMPLE, END);
@@ -951,6 +1029,31 @@ end_insertion (type)
 
     case group:
       close_insertion_paragraph ();
+      break;
+
+    case floatenv:
+      if (xml)
+        xml_insert_element (FLOAT, END);
+      else
+        {
+          if (html)
+            add_word ("<p><strong class=\"float-caption\">");
+          else
+            close_paragraph ();
+
+          no_indent = 1;
+
+          /* Figure 1.1 - Title */
+          execute_string ("%s %s",
+              current_float_type (), current_float_number ());
+          if (strlen (current_float_title ()) > 0)
+            execute_string (" - %s", current_float_title ());
+
+          if (html)
+            add_word ("</strong></p></div>\n");
+          else
+            close_paragraph ();
+        }
       break;
 
     case format:
@@ -1096,6 +1199,20 @@ cm_quotation ()
 void
 cm_example ()
 {
+  if (docbook && is_in_insertion_of_type (floatenv))
+    {
+      if (strlen (current_float_id ()) == 0)
+        xml_insert_element_with_attribute (FLOATEXAMPLE, START,
+            "label=\"%s\"", current_float_number ());
+      else
+        xml_insert_element_with_attribute (FLOATEXAMPLE, START,
+            "id=\"%s\" label=\"%s\"", xml_id (current_float_id ()),
+            current_float_number ());
+
+      xml_insert_element (TITLE, START);
+      execute_string ("%s", current_float_title ());
+      xml_insert_element (TITLE, END);
+    }
   if (xml)
     xml_insert_element (EXAMPLE, START);
   begin_insertion (example);
@@ -1572,6 +1689,45 @@ cm_ifnotxml ()
 }
 
 
+/* Generic xrefable block with a caption.  */
+void
+cm_float ()
+{
+  begin_insertion (floatenv);
+}
+
+void
+cm_caption (arg)
+    int arg;
+{
+  char *temp;
+
+  /* This is a no_op command for most formats, as we handle it during @float
+     insertion.  For XML though, we handle it here to keep document structure
+     as close as possible, to the Texinfo source.  */
+
+  /* Everything is already handled at START.  */
+  if (arg == END)
+    return;
+
+  /* Check if it's mislocated.  */
+  if (!is_in_insertion_of_type (floatenv))
+    line_error (_("%c%s not meaningful outside `%cfloat' environment"),
+        COMMAND_PREFIX, command, COMMAND_PREFIX);
+
+  get_until_in_braces ("\n@end float", &temp);
+
+  if (xml)
+    {
+      xml_insert_element (CAPTION, START);
+      if (!docbook)
+        execute_string ("%s", temp);
+      xml_insert_element (CAPTION, END);
+    }
+
+  free (temp);
+}
+
 /* Begin an insertion where the lines are not filled or indented. */
 void
 cm_flushleft ()

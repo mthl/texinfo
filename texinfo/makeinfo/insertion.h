@@ -1,5 +1,5 @@
 /* insertion.h -- declarations for insertion.c.
-   $Id: insertion.h,v 1.8 2003-11-21 07:30:52 dirt Exp $
+   $Id: insertion.h,v 1.9 2003-11-23 23:38:13 dirt Exp $
 
    Copyright (C) 1998, 1999, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -27,8 +27,8 @@ enum insertion_type
   defopt, defspec, deftp, deftypecv, deftypefn, deftypefun, deftypeivar,
   deftypemethod, deftypeop, deftypevar, deftypevr, defun, defvar, defvr,
   detailmenu, direntry, display, documentdescription, enumerate,
-  example, flushleft, flushright, format, ftable, group, ifclear,
-  ifdocbook, ifhtml, ifinfo, ifnotdocbook, ifnothtml, ifnotinfo,
+  example, floatenv, flushleft, flushright, format, ftable, group,
+  ifclear, ifdocbook, ifhtml, ifinfo, ifnotdocbook, ifnothtml, ifnotinfo,
   ifnotplaintext, ifnottex, ifnotxml, ifplaintext, ifset, iftex, ifxml,
   itemize, lisp, menu, multitable, quotation, rawdocbook, rawhtml, rawtex,
   rawxml, smalldisplay, smallexample, smallformat, smalllisp, verbatim,

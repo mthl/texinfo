@@ -1,5 +1,5 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.35 2003-11-21 17:10:17 dirt Exp $
+   $Id: cmds.c,v 1.36 2003-11-23 23:38:13 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -70,6 +70,7 @@ void
   cm_multitable (), cm_settitle (), cm_titlefont (), cm_titlepage (), 
   cm_titlepage_cmds (),
   cm_tie (), cm_tt (),
+  cm_float (), cm_caption (),
   cm_verbatim (), cm_verbatiminclude ();
 
 /* Conditionals. */
@@ -139,6 +140,7 @@ COMMAND command_table[] = {
   { "bullet", cm_bullet, BRACE_ARGS },
   { "bye", cm_bye, NO_BRACE_ARGS },
   { "c", cm_ignore_line, NO_BRACE_ARGS },
+  { "caption", cm_caption, BRACE_ARGS },
   { "cartouche", cm_cartouche, NO_BRACE_ARGS },
   { "center", cm_center, NO_BRACE_ARGS },
   { "centerchap", cm_unnumbered, NO_BRACE_ARGS },
@@ -231,6 +233,7 @@ COMMAND command_table[] = {
   { "finalout", cm_no_op, NO_BRACE_ARGS },
   { "findex", cm_findex, NO_BRACE_ARGS },
   { "firstparagraphindent", cm_firstparagraphindent, NO_BRACE_ARGS },
+  { "float", cm_float, NO_BRACE_ARGS },
   { "flushleft", cm_flushleft, NO_BRACE_ARGS },
   { "flushright", cm_flushright, NO_BRACE_ARGS },
   { "footnote", cm_footnote, NO_BRACE_ARGS}, /* self-arg eater */
