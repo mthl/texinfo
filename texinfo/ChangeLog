@@ -1,3 +1,8 @@
+2003-12-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Not Ending a Sentence): mention special
+	entities output for @: in Docbook and XML.
+
 2003-12-02  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/cmds.c (cm_punct): new function to handle @., @! and @?

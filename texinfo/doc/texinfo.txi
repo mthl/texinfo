@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.95 2003-11-29 00:45:07 karl Exp $
+@c $Id: texinfo.txi,v 1.96 2003-12-03 14:33:05 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1182,9 +1182,9 @@ they do not need braces.@refill
 
 As you gain experience with Texinfo, you will rapidly learn how to
 write the different commands: the different ways to write commands
-make it easier to write and read Texinfo files than if all commands
-followed exactly the same syntax.  (For details about @@-command
-syntax, see @ref{Command Syntax, , @@-Command Syntax}.)@refill
+actually make it easier to write and read Texinfo files than if all
+commands followed exactly the same syntax.  @xref{Command Syntax, ,
+@@-Command Syntax}, for all the details.
 
 
 @node Conventions
@@ -9359,8 +9359,13 @@ The s.o.p. has three parts @dots{}
 (Incidentally, @samp{s.o.p.} is an abbreviation for ``Standard Operating
 Procedure''.)
 
-@code{@@:} has no effect on the Info output.  Do not put braces after
-@code{@@:}.
+@code{@@:} has no effect on the Info and HTML output.  In Docbook and
+XML, the previous punctuation character (.?!:) is output as an entity
+instead of as the normal character: @samp{&period; &quest; &excl;
+&colon;}.  This gives further processors a chance to notice and not
+add the usual extra space.
+
+Do not put braces after @code{@@:} (or any non-alphabetic command).
 
 
 @node Ending a Sentence
@@ -17349,7 +17354,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.95 2003-11-29 00:45:07 karl Exp $
+$Id: texinfo.txi,v 1.96 2003-12-03 14:33:05 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17412,7 +17417,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.95 2003-11-29 00:45:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.96 2003-12-03 14:33:05 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
