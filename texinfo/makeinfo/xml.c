@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.11 2002-11-11 00:57:49 feloy Exp $
+   $Id: xml.c,v 1.12 2002-11-11 12:37:34 feloy Exp $
 
    Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
@@ -175,6 +175,7 @@ element texinfoml_element_list [] = {
   { "",                    0, 0 }, /* ENVAR (docbook) */
   { "",                    0, 0 }, /* COMMENT (docbook) */
   { "",                    0, 0 }, /* FUNCTION (docbook) */
+  { "",                    0, 0 }, /* LEGALNOTICE (docbook) */
 
   { "para",                0, 0 } /* Must be last */
   /* name / contains para / contained in para */
@@ -314,7 +315,8 @@ element docbook_element_list [] = {
   { "envar",               0, 1 },
   { "comment",             0, 0 },
   { "function",            0, 1 },
-
+  { "legalnotice",         1, 0 },
+  
   { "para",                0, 0 } /* Must be last */
   /* name / contains para / contained in para */
 };
@@ -350,6 +352,8 @@ replace_element replace_elements [] = {
   { VAR, B, EMPH},
   { B, CODE, ENVAR},
   { CODE, I, EMPH},
+  { FORMAT, BOOKINFO, ABSTRACT },
+  { QUOTATION, ABSTRACT, -1},
   /* Add your elements to replace here */
   {-1, 0, 0}
 };
@@ -366,11 +370,13 @@ char *xml_node_id = NULL;
 int xml_sort_index = 0;
 
 int xml_in_xref_token = 0;
+int xml_in_bookinfo = 0;
+int xml_in_book_title = 0;
+int xml_in_abstract = 0;
 
 static int xml_after_table_term = 0;
 static int book_started = 0;
 static int first_section_opened = 0;
-static int in_abstract = 0;
 
 static int xml_in_item[256];
 static int xml_table_level = 0;
@@ -552,7 +558,7 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
 {
   /* Look at the replace_elements table to see if we have to change the element */
   if (xml_sort_index)
-    return;
+      return;
   if (docbook)
     {
       replace_element *element_list = replace_elements;
@@ -584,7 +590,7 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
     }
 
   if (!book_started)
-    return;
+      return;
 
   if (xml_after_table_term && elt != TABLETERM)
     {
@@ -594,10 +600,10 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
 
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
-
+    
   if (!xml_element_list[elt].name || !strlen (xml_element_list[elt].name))
     {
-      /* printf ("Warning: Inserting empty element %d\n", elt);*/
+      /*printf ("Warning: Inserting empty element %d\n", elt);*/
       return;
     }
 
@@ -741,12 +747,21 @@ void
 xml_close_sections (level)
     int level;
 {
-  if (!first_section_opened && in_abstract)
+  if (!first_section_opened)
     {
-      xml_insert_element (ABSTRACT, END);
-      xml_insert_element (BOOKINFO, END);
+      if (xml_in_abstract)
+	{
+	  xml_insert_element (ABSTRACT, END);
+	  xml_in_abstract = 0;
+	}
+      if (xml_in_bookinfo)
+	{
+	  xml_insert_element (BOOKINFO, END);
+	  xml_in_bookinfo = 0;
+	}
       first_section_opened = 1;
     }
+
   while (last_section && last_section->level >= level)
     {
       xml_section *temp = last_section;
@@ -852,7 +867,7 @@ xml_add_char (character)
     return;
   if (docbook && !only_macro_expansion && (in_menu || in_detailmenu))
     return;
-
+  
   if (docbook && xml_table_level && !xml_in_item[xml_table_level] && !in_table_title 
       && !cr_or_whitespace (character) && !in_indexterm)
     {
@@ -860,13 +875,16 @@ xml_add_char (character)
       xml_insert_element (TITLE, START);
     }
 
-  if (!executing_string && !first_section_opened && !in_abstract
-      && xml_current_element () == TEXINFO
+  if (!first_section_opened && !xml_in_abstract && !xml_in_book_title
       && !xml_no_para && character != '\r' && character != '\n' && character != ' ')
     {
-      xml_insert_element (BOOKINFO, START);
+      if (!xml_in_bookinfo)
+	{
+	  xml_insert_element (BOOKINFO, START);
+	  xml_in_bookinfo = 1;
+	}
       xml_insert_element (ABSTRACT, START);
-      in_abstract = 1;
+      xml_in_abstract = 1;
     }
 
   if (xml_after_table_term && !xml_sort_index && !xml_in_xref_token)
@@ -883,7 +901,8 @@ xml_add_char (character)
     }
 
   if (xml_element_list[xml_current_element()].contains_para
-      && !xml_in_para && !only_macro_expansion && !xml_no_para)
+      && !xml_in_para && !only_macro_expansion && !xml_no_para
+      && !cr_or_whitespace (character))
     {
       xml_indent ();
       insert_string ("<para>\n");
@@ -1014,6 +1033,12 @@ xml_end_table (type)
           xml_insert_element (ITEM, END);
           xml_in_item[xml_table_level] = 0;
         }
+      /* gnat-style manual contains an itemized list without items! */
+      if (in_table_title)
+	{
+	  xml_insert_element (TITLE, END);
+	  in_table_title = 0;
+	}
       xml_insert_element (ITEMIZE, END);
       xml_table_level --;
       break;

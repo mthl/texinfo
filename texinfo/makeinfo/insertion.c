@@ -1,5 +1,5 @@
 /* insertion.c -- insertions for Texinfo.
-   $Id: insertion.c,v 1.11 2002-11-10 22:31:04 feloy Exp $
+   $Id: insertion.c,v 1.12 2002-11-11 12:37:34 feloy Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002 Free Software Foundation, Inc.
 
@@ -475,11 +475,25 @@ begin_insertion (type)
          For plain text, there's no way to hide it, so the author must
           use @insertcopying in the desired location.  */
       if (docbook)
-	insert_string ("<!--\n");
+	{
+	  if (!xml_in_bookinfo)
+	    {
+	      xml_insert_element (BOOKINFO, START);
+	      xml_in_bookinfo = 1;
+	    }
+	  if (!xml_in_abstract)
+	    {
+	      xml_insert_element (ABSTRACT, START);
+	      xml_in_abstract = 1;
+	    }
+	}
       if (!html && !no_headers)
         cm_insert_copying ();
-      if (docbook)
-	insert_string ("-->");
+      if (docbook && xml_in_abstract)
+	{
+	  xml_insert_element (ABSTRACT, END);
+	  xml_in_abstract = 0;
+	}
       break;
       
     case quotation:
@@ -759,7 +773,13 @@ end_insertion (type)
           xml_insert_element (CARTOUCHE, END);
           break;
         case format:
-          xml_insert_element (FORMAT, END);
+	  if (docbook && xml_in_bookinfo && xml_in_abstract)
+	    {
+	      xml_insert_element (ABSTRACT, END);
+	      xml_in_abstract = 0;
+	    }
+	  else
+	    xml_insert_element (FORMAT, END);
           break;
         case smallformat:
           xml_insert_element (SMALLFORMAT, END);
@@ -1036,12 +1056,8 @@ cm_insert_copying ()
   if (copying_text)
     { /* insert_string rather than add_word because we've already done
          full expansion on copying_text when we saved it.  */
-      if (docbook)
-	xml_insert_element (PARA, START);
       insert_string (copying_text);
       insert ('\n');
-      if (docbook)
-	xml_insert_element (PARA, END);
     }
 }
 
@@ -1049,7 +1065,15 @@ void
 cm_format ()
 {
   if (xml)
-    xml_insert_element (FORMAT, START);
+    {
+      if (docbook && xml_in_bookinfo)
+	{
+	  xml_insert_element (ABSTRACT, START);
+	  xml_in_abstract = 1;
+	}
+      else
+	xml_insert_element (FORMAT, START);
+    }
   begin_insertion (format);
 }
 
