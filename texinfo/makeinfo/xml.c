@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.35 2003-11-19 00:27:34 dirt Exp $
+   $Id: xml.c,v 1.36 2003-11-19 00:49:57 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -1555,9 +1555,12 @@ xml_begin_index ()
   while (*p != ' ')
     p++;
   /* ... and its label attribute.  */
-  p++;
-  while (*p != ' ')
-    p++;
+  if (strncmp (p, " label=", 7) == 0)
+    {
+      p++;
+      while (*p != ' ')
+        p++;
+    }
 
   output_paragraph_offset = xml_last_section_output_position;
   xml_last_section_output_position = 0;

@@ -1,5 +1,10 @@
 2003-11-19  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/xml.c (xml_begin_index): make sure we are removing the
+	label attribute and not something else.
+
+2003-11-19  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/sectioning.c (get_sectioning_number): do not append space
 	with Docbook.
 	(sectioning_underscore): insert label attribute to make
