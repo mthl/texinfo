@@ -1,3 +1,36 @@
+2003-05-13    <karl@gnu.org>
+
+	* info/nodes.c: parenthesize assignment used as truth value.
+	* info/nodemenu.c (format_node_info): strcpy instead of sprintf,
+		since there's no format.
+	* makeinfo/makeinfo.c (isolate_nodename): remove spurious decl.
+	* makeinfo/xml.c (xml_insert_indexterm): declare as void.
+	* info/key.c: initialize with 0,0 at end.
+	* info/infokey.c (main): return instead of xexit, and remove
+	unused variable.
+	* makeinfo/html.c (init_buffer): forgot to return buf.
+	* info/info.c (remember_info_program_name): remove spurious
+	declaration.
+
+	* makeinfo/sectioning.c,
+	* info/infomap.c: remove unused variables.
+
+	* makeinfo/makeinfo.c (insert_toplevel_subdirectory),
+	* info/man.c,
+	* info/infodoc.c (info_find_or_create_help_window): parenthesize
+	&& within ||.
+	* info/display.c (display_update_one_window): initialize rep to
+	NULL, parenthesize && within ||.
+
+	* util/install-info.c,
+	* info/info.c (main),
+	* info/makedoc.c (main): return instead of xexit.
+
+2003-05-13  Akim Demaille  <akim@epita.fr>
+
+	* util/texi2dvi (get_xref_files): Pass --file-line-error-style
+	to TeX when supported.
+
 2003-05-12    <karl@gnu.org>
 
 	* configure.ac: pretest version 4.5.90.

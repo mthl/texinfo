@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.7 2003-01-19 18:46:51 karl Exp $
+   $Id: install-info.c,v 1.8 2003-05-13 16:37:54 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -1397,7 +1397,7 @@ For more information about these matters, see the files named COPYING.\n"),
                       }
                     if (!spec || spec == entry->entry_sections_tail)
                       continue;
-                    
+
                     /* Subtract one because dir_lines is zero-based,
                        but the `end_line' and `start_line' members are
                        one-based.  */
@@ -1441,7 +1441,7 @@ For more information about these matters, see the files named COPYING.\n"),
   output_dirfile (opened_dirfilename, dir_nlines, dir_lines, n_entries_to_add,
                   entries_to_add, input_sections, compression_program);
 
-  xexit (0);
+  return 0;
 }
 
 /* Divide the text at DATA (of SIZE bytes) into lines.

@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.30 2003-05-12 13:12:32 karl Exp $
+   $Id: makeinfo.c,v 1.31 2003-05-13 16:37:54 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -168,7 +168,6 @@ char **get_brace_args ();
 int array_len ();
 void free_array ();
 static int end_of_sentence_p ();
-static void isolate_nodename ();
 void reader_loop ();
 void remember_brace (), remember_brace_1 ();
 void pop_and_call_brace (), discard_braces ();
@@ -1377,7 +1376,7 @@ insert_toplevel_subdirectory (output_filename)
   if (strlen (dir))
     strcat (output_filename, "/");
   strcat (output_filename, subdir);
-  if (mkdir (output_filename, 0777) == -1 && errno != EEXIST
+  if ((mkdir (output_filename, 0777) == -1 && errno != EEXIST)
       /* output_filename might exist, but be a non-directory.  */
       || (stat (output_filename, &st) == 0 && !S_ISDIR (st.st_mode)))
     { /* that failed, try subdir name with .html */
@@ -3578,7 +3577,7 @@ cm_image (arg)
               add_word ("\010[image");
 
               if (access (fullname, R_OK) == 0
-                  || pathname != NULL && access (pathname, R_OK) == 0)
+                  || (pathname != NULL && access (pathname, R_OK) == 0))
                 add_word_args (" src=%s", fullname);
 
               if (*alt_arg)
