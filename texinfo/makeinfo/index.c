@@ -1,5 +1,5 @@
 /* index.c -- indexing for Texinfo.
-   $Id: index.c,v 1.16 2004-08-30 22:11:39 karl Exp $
+   $Id: index.c,v 1.17 2004-11-30 02:03:23 karl Exp $
 
    Copyright (C) 1998, 1999, 2002, 2003, 2004 Free Software Foundation,
    Inc.
@@ -247,7 +247,7 @@ index_add_arg (char *name)
             removed_empty_elt = 2;
 
           add_word ("<a name=\"index-");
-          add_escaped_anchor_name (index_entry);
+          add_escaped_anchor_name (index_entry, 0);
           add_word_args ("-%d\"></a>", index_counter);
 
           if (removed_empty_elt == 1)
@@ -836,7 +836,7 @@ cm_printindex (void)
 
               add_html_block_elt_args ("\n<li><a href=\"%s#index-",
                   (splitting && index->output_file) ? index->output_file : "");
-              add_escaped_anchor_name (index->entry_text);
+              add_escaped_anchor_name (index->entry_text, 0);
               add_word_args ("-%d\">%s</a>: ", index->entry_number,
                   html_entry);
               free (html_entry);

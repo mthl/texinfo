@@ -1,3 +1,18 @@
+2004-11-29  Karl Berry  <karl@gnu.org>
+
+	Support for writing <a name="..."> using the old-style node name
+		to HTML name conversion, to keep the gcc folks happy.
+	* makeinfo/node.c (add_html_names): new routine, factoring out
+	common code (plus new code) from cm_node.
+	(cm_node) <html>: call it.
+	* makeinfo/makeinfo.h (OLD_HTML_SAFE, OLD_URL_SAFE_CHAR):
+	(re)define these.
+	* makeinfo/html.c (add_escaped_anchor_name): take new argument to
+	optionally output the old-style conversion.
+	(add_anchor_name): change call.
+	* index.c: change calls.
+	* makeinfo/html.h (add_escaped_anchor_name): change decl.
+
 2004-11-26  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/makeinfo.c (reader_loop): allow <wbr> after &mdash;

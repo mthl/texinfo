@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.97 2004-11-26 00:48:35 karl Exp $
+$Id: NEWS,v 1.98 2004-11-30 02:03:23 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -27,6 +27,10 @@ convenience, here's a url to one of the relevant sections:
   . new command @abbr for general abbreviations.
   . new command @slanted to typeset text in a slanted font,
     and @sansserif to typeset in a sans serif font.
+* makeinfo:
+  . HTML output: <a name="..."> constructs are added for the old-style
+    conversion of node names to HTML names, so that external references
+    to them can continue to work.
 * texi2dvi:
   . calls recode if installed and @documentencoding is specified.
 * Distribution:
