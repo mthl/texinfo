@@ -1,5 +1,5 @@
-Name: @PACKAGE_TARNAME@
-Version: @PACKAGE_VERSION@
+Name: texi2html
+Version: 1.77
 Release: 1
 Epoch: 0
 License: GPL

@@ -1,3 +1,13 @@
+2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* INTRODUCTION: remove and merge content in...
+	* README: ...merge with INTRODUCTION content and update.
+	* Makefile.am,doc/Makefile.am: protect @ in sed one-liners
+	such that configure doesn't replace the variables in the
+	Makefile.
+	* doc/texi2html.1.in: update and add explanation for more 
+	command line options.
+
 2005-02-12  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: handle def command with x (like @deffnx) within

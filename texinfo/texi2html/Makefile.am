@@ -130,8 +130,8 @@ texi2html: $(texi2html_sources)
 
 texi2html.spec: texi2html.spec.in configure
 	@echo Generating $@...
-	@sed -e "s/@PACKAGE_VERSION@/$(PACKAGE_VERSION)/" \
-	     -e "s/@PACKAGE_TARNAME@/$(PACKAGE_TARNAME)/" $< >texi2html.tmp
+	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
+	     -e "s/[@]PACKAGE_TARNAME[@]/$(PACKAGE_TARNAME)/" $< >texi2html.tmp
 	@cp texi2html.tmp $(srcdir)/$@
 	-@rm texi2html.tmp
 

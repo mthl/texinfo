@@ -34,9 +34,10 @@ $(TEXI2HTML):
 
 texi2html.1: texi2html.1.in ../config.status
 	@echo Generating $@...
-	@sed -e "s/@PACKAGE_VERSION@/$(PACKAGE_VERSION)/" \
-	     -e "s/@PACKAGE_DATE@/$(PACKAGE_DATE)/" \
-	     -e "s#@sysconfdir@#$(sysconfdir)#" $< >texi2html.tmp
+	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
+	     -e "s/[@]PACKAGE_DATE[@]/$(PACKAGE_DATE)/" \
+	     -e "s#[@]sysconfdir[@]#$(sysconfdir)#" \
+	     -e "s#[@]pkgdatadir[@]#$(pkgdatadir)#" $< >texi2html.tmp
 	@mv texi2html.tmp $@
 
 txt: texi2html.txt
