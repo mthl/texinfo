@@ -1,5 +1,7 @@
 2003-05-26    <karl@gnu.org>
 
+	* util/texi2dvi: spurious \ in tex_args assignment.
+
 	* doc/texinfo.txi (Contents): trim excess words.
 
 2003-05-25    <karl@gnu.org>
