@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.3c\n"
-"POT-Creation-Date: 2003-05-18 08:36-0700\n"
-"PO-Revision-Date: 2003-01-25 02:15+0100\n"
+"Project-Id-Version: texinfo 4.5.91\n"
+"POT-Creation-Date: 2003-05-17 09:28-0700\n"
+"PO-Revision-Date: 2003-05-18 23:12+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -163,11 +163,8 @@ msgid "Index entry: "
 msgstr "Indexpost: "
 
 #: info/indices.c:333
-msgid ""
-"Go to the next matching index item from the last `\\[index-search]' command"
-msgstr ""
-"Gå till nästa matchande indexpost från det senaste \"\\[index-search]\"-"
-"kommandot"
+msgid "Go to the next matching index item from the last `\\[index-search]' command"
+msgstr "Gå till nästa matchande indexpost från det senaste \"\\[index-search]\"-kommandot"
 
 #: info/indices.c:343
 msgid "No previous index search string."
@@ -265,8 +262,7 @@ msgid ""
 "Read documentation in Info format.\n"
 "\n"
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"      --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit.\n"
@@ -413,8 +409,7 @@ msgstr "Resulterande fönstret skulle bli för litet."
 
 #: info/info.c:652
 msgid "Not enough room for a help window, please delete a window."
-msgstr ""
-"Inte tillräckligt med utrymme för ett hjälpfönster, ta bort ett fönster."
+msgstr "Inte tillräckligt med utrymme för ett hjälpfönster, ta bort ett fönster."
 
 #: info/infodoc.c:46 info/infodoc.c:95
 msgid ""
@@ -465,46 +460,32 @@ msgstr ""
 "              Att välja en menypost gör att en annan nod väljs.\n"
 
 #: info/infodoc.c:60
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  Följ en korsreferens. Läser namnet på en referens.\n"
+msgid "\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+msgstr "\\%-10[xref-item]  Följ en korsreferens. Läser namnet på en referens.\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
 msgstr "\\%-10[history-node]  Gå till den sista noden i detta fönster.\n"
 
 #: info/infodoc.c:62
-msgid ""
-"\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Hoppa till nästa hypertextlänk i denna nod.\n"
+msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link within this node.\n"
+msgstr "\\%-10[move-to-next-xref]  Hoppa till nästa hypertextlänk i denna nod.\n"
 
 #: info/infodoc.c:63
-msgid ""
-"\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
-"node.\n"
-msgstr ""
-"\\%-10[move-to-prev-xref]  Hoppa till nästa hypertextlänk i denna nod.\n"
+msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link within this node.\n"
+msgstr "\\%-10[move-to-prev-xref]  Hoppa till nästa hypertextlänk i denna nod.\n"
 
 #: info/infodoc.c:64
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Följ hypertextlänken under markören.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  Följ hypertextlänken under markören.\n"
 
 #: info/infodoc.c:65
-msgid ""
-"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-"node] (DIR)'.\n"
-msgstr ""
-"\\%-10[dir-node]  Gå till \"directory\"-noden. Likvärdigt med \"g (DIR)\".\n"
+msgid "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-node] (DIR)'.\n"
+msgstr "\\%-10[dir-node]  Gå till \"directory\"-noden. Likvärdigt med \"g (DIR)\".\n"
 
 #: info/infodoc.c:66
-msgid ""
-"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr ""
-"\\%-10[top-node]  Gå till den översta noden. Likvärdigt med \"g Top\".\n"
+msgid "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
+msgstr "\\%-10[top-node]  Gå till den översta noden. Likvärdigt med \"g Top\".\n"
 
 #: info/infodoc.c:68 info/infodoc.c:116
 msgid ""
@@ -556,10 +537,8 @@ msgstr "\\%-10[last-menu-item]  Välj det sista objektet i nodens meny.\n"
 
 #: info/infodoc.c:81
 msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of "
-"this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
+"\\%-10[index-search]  Search for a specified string in the index entries of this Info\n"
+"              file, and select the node referenced by the first entry found.\n"
 msgstr ""
 "\\%-10[index-search]  Sök efter en angiven sträng i indexposterna i denna\n"
 "              Info-fil, och välj noden som refereras av den första posten\n"
@@ -585,8 +564,7 @@ msgstr ""
 #: info/infodoc.c:87
 msgid ""
 "\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
+"              and select the node in which the previous occurrence is found.\n"
 msgstr ""
 "\\%-10[search-backward]  Sök bakåt efter en angiven sträng\n"
 "              och välj den nod i vilken nästa förekomst hittas.\n"
@@ -716,14 +694,11 @@ msgstr "  %-10s  Välj det sista objektet i nodens meny.\n"
 #
 #: info/infodoc.c:129
 #, c-format
-msgid ""
-"  %-10s  Search for a specified string in the index entries of this Info\n"
+msgid "  %-10s  Search for a specified string in the index entries of this Info\n"
 msgstr "  %-10s  Sök efter en angiven sträng i indexposterna i denna\n"
 
 #: info/infodoc.c:130
-msgid ""
-"              file, and select the node referenced by the first entry "
-"found.\n"
+msgid "              file, and select the node referenced by the first entry found.\n"
 msgstr ""
 "              Info-fil, och välj noden som refereras av den första posten\n"
 "              som hittas.\n"
@@ -734,8 +709,7 @@ msgid "  %-10s  Move to node specified by name.\n"
 msgstr "  %-10s  Gå till den nod som anges.\n"
 
 #: info/infodoc.c:132
-msgid ""
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
+msgid "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "              Du kan även inkludera ett filnamn, som exempelvis\n"
 "              (FILNAMN)NODNAMN.\n"
@@ -760,8 +734,7 @@ msgid "  %-10s  Search forward for a specified string,\n"
 msgstr "  %-10s  Sök framåt efter en angiven sträng,\n"
 
 #: info/infodoc.c:134 info/infodoc.c:136
-msgid ""
-"              and select the node in which the next occurrence is found.\n"
+msgid "              and select the node in which the next occurrence is found.\n"
 msgstr "              och välj den nod i vilken nästa förekomst hittas.\n"
 
 # This is broken
@@ -822,8 +795,7 @@ msgstr ""
 
 #: info/infodoc.c:368
 msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr ""
-"--- Använd \"\\[history-node]\" eller \"\\[kill-node]\" för att avsluta ---\n"
+msgstr "--- Använd \"\\[history-node]\" eller \"\\[kill-node]\" för att avsluta ---\n"
 
 #: info/infodoc.c:478
 msgid "Display help message"
@@ -1010,8 +982,7 @@ msgstr "Fel vid läsning av infonyckelfilen \"%s\" - kort läsning"
 
 #: info/infomap.c:1546
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
 msgstr ""
 "Ogiltig infonyckelfil \"%s\" (felaktiga magiska nummer) -- kör infokey för\n"
 "att uppdatera den"
@@ -1019,21 +990,18 @@ msgstr ""
 #: info/infomap.c:1552
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr ""
-"Din infonyckelfil \"%s\" är för gammal -- kör infokey för att uppdatera den"
+msgstr "Din infonyckelfil \"%s\" är för gammal -- kör infokey för att uppdatera den"
 
 #: info/infomap.c:1565
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
 msgstr ""
 "Ogiltig infonyckelfil \"%s\" (felaktig asvnittslängd) -- kör infokey för\n"
 "att uppdatera den"
 
 #: info/infomap.c:1585
 #, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
 msgstr ""
 "ogiltig infonyckelfil \"%s\" (felaktig avsnittskod) -- kör infokey för att\n"
 "uppdatera den"
@@ -1102,13 +1070,11 @@ msgid ""
 "Select one from this menu, or use `\\[history-node]' in another window.\n"
 msgstr ""
 "Här är menyn med de noder som du har besökt nyligen.\n"
-"Välj en från denna meny eller använd\"\\[history-node]\" i ett annat "
-"fönster.\n"
+"Välj en från denna meny eller använd\"\\[history-node]\" i ett annat fönster.\n"
 
 #: info/nodemenu.c:219
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr ""
-"Skapa ett fönster som innehåller en meny med alla nyligen besökta noder"
+msgstr "Skapa ett fönster som innehåller en meny med alla nyligen besökta noder"
 
 #: info/nodemenu.c:299
 msgid "Select a node which has been previously visited in a visible window"
@@ -1125,12 +1091,8 @@ msgstr "Referensen försvann! (%s)."
 
 #: info/session.c:170
 #, c-format
-msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item."
-msgstr ""
-"Välkommen till Info version %s. Skriv in \\[get-help-window] för hjälp, "
-"\\[menu-item] för menypost."
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgstr "Välkommen till Info version %s. Skriv in \\[get-help-window] för hjälp, \\[menu-item] för menypost."
 
 #: info/session.c:643
 msgid "Move down to the next line"
@@ -1215,11 +1177,8 @@ msgid "Scroll forward in this window staying within node"
 msgstr "Rulla framåt i detta fönster och stanna inom noden"
 
 #: info/session.c:1253
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
-msgstr ""
-"Rulla framåt i detta fönster och stanna inom noden och ställ in "
-"standardfönsterstorleken"
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "Rulla framåt i detta fönster och stanna inom noden och ställ in standardfönsterstorleken"
 
 #: info/session.c:1261
 msgid "Scroll backward in this window"
@@ -1234,12 +1193,8 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Rulla bakåt i detta fönster och stanna inom noden"
 
 #: info/session.c:1286
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
-msgstr ""
-"Rulla bakåt i detta fönster och stanna inom noden och ställ in "
-"standardfönsterstorleken"
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "Rulla bakåt i detta fönster och stanna inom noden och ställ in standardfönsterstorleken"
 
 #: info/session.c:1294
 msgid "Move to the start of this node"
@@ -1666,8 +1621,7 @@ msgstr ""
 
 #: info/variables.c:45
 msgid "When \"On\", flash the screen instead of ringing the bell"
-msgstr ""
-"När detta är \"On\" blinkar skärmen till istället för att klockan ringer"
+msgstr "När detta är \"On\" blinkar skärmen till istället för att klockan ringer"
 
 #: info/variables.c:49
 msgid "When \"On\", errors cause the bell to ring"
@@ -1857,8 +1811,7 @@ msgstr "osannolikt tecken %c i @var"
 
 #: makeinfo/cmds.c:718
 msgid "@sc argument all uppercase, thus no effect"
-msgstr ""
-"@sc-argumentet är enbart med stora bokstäver, därför har det ingen effekt"
+msgstr "@sc-argumentet är enbart med stora bokstäver, därför har det ingen effekt"
 
 #: makeinfo/cmds.c:776
 #, c-format
@@ -1890,17 +1843,17 @@ msgstr "@sp kräver ett positivt numeriskt argument, inte \"%s\""
 msgid "Bad argument to %c%s"
 msgstr "Felaktigt argument till %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4292
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4271
 msgid "asis"
 msgstr "oförändrad"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4294
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4273
 msgid "none"
 msgstr "ingen"
 
 #: makeinfo/cmds.c:1454
 msgid "insert"
-msgstr ""
+msgstr "infoga"
 
 #: makeinfo/defun.c:88
 msgid "Missing `}' in @def arg"
@@ -1945,9 +1898,9 @@ msgid "on"
 msgstr "på"
 
 #: makeinfo/defun.c:731
-#, fuzzy, c-format
+#, c-format
 msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "Måste vara i \"%s\"-insättningen för att använda \"%sx\""
+msgstr "Måste vara i \"@%s\"-miljö för att använda \"@%s\""
 
 #: makeinfo/files.c:447
 #, c-format
@@ -1980,22 +1933,22 @@ msgstr "Fotnoter"
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: makeinfo/html.c:188
+#: makeinfo/html.c:190
 #, c-format
 msgid "%s: could not open --css-file: %s"
-msgstr ""
+msgstr "%s: kunde inte öppna --css-file: %s"
 
-#: makeinfo/html.c:263
+#: makeinfo/html.c:265
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
-msgstr ""
+msgstr "%s:%d: --css-file slutade med kommentar"
 
 # to pop?
-#: makeinfo/html.c:358
+#: makeinfo/html.c:360
 msgid "[unexpected] no html tag to pop"
 msgstr "[oväntat] ingen html-tagg att poppa"
 
-#: makeinfo/html.c:566
+#: makeinfo/html.c:568
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[oväntat] ogiltigt nodnamn: \"%s\""
@@ -2036,7 +1989,7 @@ msgstr "(utanför alla noder)"
 
 #: makeinfo/insertion.c:144
 msgid "@item not allowed in argument to @itemize"
-msgstr ""
+msgstr "@item är inte tillåtet i argument till @itemize"
 
 #: makeinfo/insertion.c:214
 msgid "Broken-Type in insertion_type_pname"
@@ -2080,8 +2033,7 @@ msgid "@menu seen before first @node, creating `Top' node"
 msgstr "@menu sågs innan första @node, skapar \"Top\"-nod"
 
 #: makeinfo/insertion.c:1437
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "din @top-nod ska kanske packas i @ifnottex istället för @ifinfo?"
 
 #: makeinfo/insertion.c:1449
@@ -2124,9 +2076,9 @@ msgid "%s is not a valid ISO 639 language code"
 msgstr "%s är inte en giltig landskod enligt ISO 639"
 
 #: makeinfo/lang.c:505
-#, fuzzy, c-format
+#, c-format
 msgid "unrecognized encoding name `%s'"
-msgstr "okänd kodningsnamn \"%s\""
+msgstr "okänt kodningsnamn \"%s\""
 
 #: makeinfo/lang.c:508
 #, c-format
@@ -2166,8 +2118,7 @@ msgstr "här är den tidigare definitionen av \"%s\""
 #: makeinfo/macro.c:355
 #, c-format
 msgid "\\ in macro expansion followed by `%s' instead of \\ or parameter name"
-msgstr ""
-"\\ i makroutökning följdes av \"%s\" istället för \\ eller parameternamn"
+msgstr "\\ i makroutökning följdes av \"%s\" istället för \\ eller parameternamn"
 
 #: makeinfo/macro.c:403
 #, c-format
@@ -2229,8 +2180,7 @@ msgid ""
 "      --help                  display this help and exit.\n"
 "      --no-validate           suppress node cross-reference validation.\n"
 "      --no-warn               suppress warnings (but not errors).\n"
-"      --reference-limit=NUM   warn about at most NUM references (default %"
-"d).\n"
+"      --reference-limit=NUM   warn about at most NUM references (default %d).\n"
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
@@ -2263,8 +2213,7 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
 "                            ignoring any @setfilename.\n"
-"      --no-headers          suppress node separators, Node: lines, and "
-"menus\n"
+"      --no-headers          suppress node separators, Node: lines, and menus\n"
 "                              from Info output (thus producing plain text)\n"
 "                              or from HTML (thus producing shorter output);\n"
 "                              also, write to standard output by default.\n"
@@ -2292,14 +2241,12 @@ msgid ""
 "Options for Info and plain text:\n"
 "      --enable-encoding       output accented and special characters in\n"
 "                                Info output based on @documentencoding.\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
 "                                `end' to put them at the end of the node\n"
 "                                  in which they are defined (default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
@@ -2329,9 +2276,11 @@ msgid ""
 "      --css-include=FILE        include FILE in HTML <style> output;\n"
 "                                  read stdin if FILE is -.\n"
 msgstr ""
+"Flaggor för HTML:\n"
+"      --css-include=FIL          inkludera FIL i HTML <style>-utdata;\n"
+"                                   läs standard in om FIL är -.\n"
 
 #: makeinfo/makeinfo.c:441
-#, fuzzy
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2342,13 +2291,10 @@ msgid ""
 msgstr ""
 "Flaggor för indatafil:\n"
 "      --commands-in-node-names   tillåt @-kommandon i nodnamn.\n"
-"  -D VARIABEL                    definiera variabeln VARIABEL, som med "
-"@set.\n"
+"  -D VARIABEL                    definiera variabeln VARIABEL, som med @set.\n"
 "  -I KATALOG                     lägg till KATALOG till @include-sökvägen.\n"
-"  -P KATALOG                     lägg till KATALOG först i @include-"
-"sökvägen.\n"
-"  -U VARIABEL                    odefiniera variabeln VARIABEL, som med "
-"@clear.\n"
+"  -P KATALOG                     lägg till KATALOG först i @include-sökvägen.\n"
+"  -U VARIABEL                    odefiniera variabeln VARIABEL, som med @clear.\n"
 
 #: makeinfo/makeinfo.c:450
 msgid ""
@@ -2378,7 +2324,6 @@ msgstr ""
 "  --no-ifxml        behandla inte @ifxml- och @xml-text.\n"
 
 #: makeinfo/makeinfo.c:464
-#, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2389,7 +2334,8 @@ msgstr ""
 "  Standardvärdena för @if...-villkoren beror på utdataformatet:\n"
 "  om HTML genereras är --ifhtml på och de andra av;\n"
 "  om Info genereras är --ifinfo på och de andra av;\n"
-"  om vanlig text genereras är --ifplaintext på och de andra av.\n"
+"  om vanlig text genereras är --ifplaintext på och de andra av;\n"
+"  om XML genereras är --ifxml på och de andra av.\n"
 
 #: makeinfo/makeinfo.c:472
 msgid ""
@@ -2400,8 +2346,7 @@ msgid ""
 "  makeinfo --docbook foo.texi           write DocBook XML to @setfilename\n"
 "  makeinfo --no-headers foo.texi        write plain text to standard output\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi   write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi          write one Info file however big\n"
 msgstr ""
@@ -2413,8 +2358,7 @@ msgstr ""
 "  makeinfo --no-headers apa.texi        skriv vanlig text till standard ut\n"
 "  makeinfo --html --no-headers apa.texi skriv html utan nodrader och menyer\n"
 "  makeinfo --number-sections apa.texi   skriv Info med numrerade avsnitt\n"
-"  makeinfo --no-split apa.texi          skriv en Info-fil hur stor den än "
-"är\n"
+"  makeinfo --no-split apa.texi          skriv en Info-fil hur stor den än är\n"
 
 #: makeinfo/makeinfo.c:590 makeinfo/makeinfo.c:613 makeinfo/makeinfo.c:675
 #: makeinfo/makeinfo.c:696
@@ -2434,16 +2378,12 @@ msgstr "Kan inte ange mer än en makroexpansionsutdata"
 #: makeinfo/makeinfo.c:644
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
-"inte \"%s\".\n"
+msgstr "%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", inte \"%s\".\n"
 
 #: makeinfo/makeinfo.c:685
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
-"\"%s\".\n"
+msgstr "%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte \"%s\".\n"
 
 #: makeinfo/makeinfo.c:744
 #, c-format
@@ -2472,9 +2412,7 @@ msgstr "Inget \"%s\" hittades i \"%s\""
 #: makeinfo/makeinfo.c:1528
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr ""
-"%s: Hoppar över makroexpansionen till standard ut eftersom Info-utdatan går "
-"dit.\n"
+msgstr "%s: Hoppar över makroexpansionen till standard ut eftersom Info-utdatan går dit.\n"
 
 # printf (_("Making %s file `%s' from `%s'.\n"),
 #         no_headers ? "text" : (html ? "HTML" : "info"),
@@ -2492,18 +2430,13 @@ msgstr "Detta är %s, skapad av makeinfo version %s från %s.\n"
 
 #: makeinfo/makeinfo.c:1615
 #, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Tar bort makroutdatafilen \"%s\" på grund av fel; använd --force för att "
-"bevara.\n"
+msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: Tar bort makroutdatafilen \"%s\" på grund av fel; använd --force för att bevara.\n"
 
 #: makeinfo/makeinfo.c:1670
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Tar bort utdatafilen \"%s\" på grund av fel; använd --force för att "
-"bevara.\n"
+msgstr "%s: Tar bort utdatafilen \"%s\" på grund av fel; använd --force för att bevara.\n"
 
 #: makeinfo/makeinfo.c:1921
 #, c-format
@@ -2516,9 +2449,9 @@ msgid "Use braces to give a command as an argument to @%s"
 msgstr "Använd klamrar för att ge ett komamndo som ett argument till @%s"
 
 #: makeinfo/makeinfo.c:2136
-#, fuzzy, c-format
+#, c-format
 msgid "%c%s expected braces"
-msgstr "%c%s förväntades \"{...}\""
+msgstr "%c%s förväntade klamrar"
 
 #: makeinfo/makeinfo.c:2166
 msgid "Unmatched }"
@@ -2533,67 +2466,67 @@ msgstr "INGET_NAMN!"
 msgid "%c%s missing close brace"
 msgstr "%c%s saknar avslutande klammer"
 
-#: makeinfo/makeinfo.c:3055
+#: makeinfo/makeinfo.c:3034
 msgid "First argument to cross-reference may not be empty"
 msgstr "Första argumentet till korsreferens kan inte vara tomt"
 
-#: makeinfo/makeinfo.c:3115 makeinfo/makeinfo.c:3333 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3094 makeinfo/makeinfo.c:3312 makeinfo/xml.c:1423
 msgid "see "
 msgstr "se "
 
-#: makeinfo/makeinfo.c:3115
+#: makeinfo/makeinfo.c:3094
 msgid "See "
 msgstr "Se "
 
-#: makeinfo/makeinfo.c:3261
+#: makeinfo/makeinfo.c:3240
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "\".\" eller \",\" måste följa på korsreferens, inte %c"
 
-#: makeinfo/makeinfo.c:3309
+#: makeinfo/makeinfo.c:3288
 msgid "First argument to @inforef may not be empty"
 msgstr "Första argumentet till @inforef kan inte vara tomt"
 
-#: makeinfo/makeinfo.c:3541
+#: makeinfo/makeinfo.c:3520
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image-filen \"%s\" (för HTML) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3547
-#, fuzzy, c-format
+#: makeinfo/makeinfo.c:3526
+#, c-format
 msgid "No such file `%s'"
-msgstr "Inget \"%s\" hittades i \"%s\""
+msgstr "Det finns ingen sådan fil \"%s\""
 
-#: makeinfo/makeinfo.c:3633
+#: makeinfo/makeinfo.c:3612
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image-filen \"%s\" (för text) är oläslig: %s"
 
-#: makeinfo/makeinfo.c:3642
+#: makeinfo/makeinfo.c:3621
 msgid "@image missing filename argument"
 msgstr "@image saknar filnamnsargument"
 
-#: makeinfo/makeinfo.c:3840
+#: makeinfo/makeinfo.c:3819
 #, c-format
 msgid "undefined flag: %s"
-msgstr ""
+msgstr "odefinierad flagga: %s"
 
-#: makeinfo/makeinfo.c:3841
+#: makeinfo/makeinfo.c:3820
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Inget värde för \"%s\"}"
 
-#: makeinfo/makeinfo.c:3896
+#: makeinfo/makeinfo.c:3875
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s kräver ett namn"
 
-#: makeinfo/makeinfo.c:4002
+#: makeinfo/makeinfo.c:3981
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Nådde filslut innan matchande @end %s"
 
-#: makeinfo/makeinfo.c:4233
+#: makeinfo/makeinfo.c:4212
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" är för lång för expansion; inte expanderad"
@@ -2657,8 +2590,7 @@ msgstr "Ankaret \"%s\" och noden \"%s\" mappas till samma filnamn"
 
 #: makeinfo/node.c:865
 msgid "This @anchor command ignored; references to it will not work"
-msgstr ""
-"Detta @anchor-kommando ignoreras; referenser till det kommer inte att fungera"
+msgstr "Detta @anchor-kommando ignoreras; referenser till det kommer inte att fungera"
 
 #: makeinfo/node.c:867 makeinfo/node.c:1092
 msgid "Rename this anchor or use the `--no-split' option"
@@ -2693,15 +2625,12 @@ msgstr "Ankarna \"%s\" och \"%s\" mappas till samma filnamn"
 
 #: makeinfo/node.c:1091
 msgid "@anchor command ignored; references to it will not work"
-msgstr ""
-"@anchor-kommandot ignoreras; referenser till det kommer inte att fungera"
+msgstr "@anchor-kommandot ignoreras; referenser till det kommer inte att fungera"
 
 #: makeinfo/node.c:1291
 #, c-format
 msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%s-referens till ickeexisterande noden \"%s\" (kanske felaktig "
-"avsnittsindelning?)"
+msgstr "%s-referens till ickeexisterande noden \"%s\" (kanske felaktig avsnittsindelning?)"
 
 #: makeinfo/node.c:1308
 msgid "Menu"
@@ -2714,9 +2643,7 @@ msgstr "Kors"
 #: makeinfo/node.c:1394
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr ""
-"Nästa fält i noden \"%s\" pekas inte till (kanske felaktig "
-"avsnittsindelning?)"
+msgstr "Nästa fält i noden \"%s\" pekas inte till (kanske felaktig avsnittsindelning?)"
 
 #: makeinfo/node.c:1397
 #, c-format
@@ -2845,10 +2772,8 @@ msgid ""
 "                     This is equivalent to using the DIR-FILE argument.\n"
 " --entry=TEXT      insert TEXT as an Info directory entry.\n"
 "                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
+"                     plus zero or more extra lines starting with whitespace.\n"
+"                     If you specify more than one entry, they are all added.\n"
 "                     If you don't specify any entries, they are determined\n"
 "                     from information in the Info file itself.\n"
 " --help            display this help and exit.\n"
@@ -3020,8 +2945,7 @@ msgstr "Generera ett sorterat index för varje TeX-utdataFIL.\n"
 #: util/texindex.c:274
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr ""
-"Vanligtvis anges FIL... som \"apa.%c%c\" för ett dokument \"apa.texi\".\n"
+msgstr "Vanligtvis anges FIL... som \"apa.%c%c\" för ett dokument \"apa.texi\".\n"
 
 #: util/texindex.c:276
 msgid ""
@@ -3091,23 +3015,18 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ "--docbook                  output DocBook rather than Info format.\n"
 #~ " -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
 #~ " --error-limit=NUM         quit after NUM errors (default %d).\n"
-#~ " --fill-column=NUM         break Info lines at NUM characters (default %"
-#~ "d).\n"
+#~ " --fill-column=NUM         break Info lines at NUM characters (default %d).\n"
 #~ " --footnote-style=STYLE    output footnotes according to STYLE:\n"
-#~ "                            `separate' to place footnotes in their own "
-#~ "node,\n"
-#~ "                            `end' to place the footnotes at the end of "
-#~ "the\n"
-#~ "                             node in which they are defined (the "
-#~ "default).\n"
+#~ "                            `separate' to place footnotes in their own node,\n"
+#~ "                            `end' to place the footnotes at the end of the\n"
+#~ "                             node in which they are defined (the default).\n"
 #~ " --force                   preserve output even if errors.\n"
 #~ " --help                    display this help and exit.\n"
 #~ " --html                    output HTML rather than Info format.\n"
 #~ " -I DIR                    append DIR to the @include search path.\n"
 #~ " --ifhtml                  process @ifhtml and @html text even when not\n"
 #~ "                            generating HTML.\n"
-#~ " --ifinfo                  process @ifinfo text even when generating "
-#~ "HTML.\n"
+#~ " --ifinfo                  process @ifinfo text even when generating HTML.\n"
 #~ " --iftex                   process @iftex and @tex text.\n"
 #~ "                            implies --no-split.\n"
 #~ msgstr ""
@@ -3124,8 +3043,7 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ "--docbook                  generera DocBook istället för Info-format.\n"
 #~ " -E, --macro-expand FIL    generera makroexpanderad källkod till FIL.\n"
 #~ " --error-limit=ANTAL       avsluta efter ANTAL fel (standard %d).\n"
-#~ " --fill-column=ANTAL       radbryt Info-rader vid ANTAL tecken (standard %"
-#~ "d).\n"
+#~ " --fill-column=ANTAL       radbryt Info-rader vid ANTAL tecken (standard %d).\n"
 #~ " --footnote-style=STIL     generera fotnoter enligt STIL:\n"
 #~ "                            \"separate\" för att placera fotnoter i sin\n"
 #~ "                            egen nod,\n"
@@ -3142,8 +3060,7 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ "                            medför --no-split.\n"
 
 #~ msgid ""
-#~ " --no-headers              suppress Info node separators and Node: "
-#~ "lines;\n"
+#~ " --no-headers              suppress Info node separators and Node: lines;\n"
 #~ "                            write to standard output without --output.\n"
 #~ " --no-ifhtml               do not process @ifhtml and @html text.\n"
 #~ " --no-ifinfo               do not process @ifinfo text.\n"
@@ -3152,46 +3069,37 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ "                            generate only one output file.\n"
 #~ " --no-validate             suppress node cross-reference validation.\n"
 #~ " --no-warn                 suppress warnings (but not errors).\n"
-#~ " --number-sections         include chapter, section, etc. numbers in "
-#~ "output.\n"
+#~ " --number-sections         include chapter, section, etc. numbers in output.\n"
 #~ " -o, --output=FILE         output to FILE (directory if split HTML),\n"
 #~ "                            ignoring any @setfilename.\n"
 #~ " -P DIR                    prepend DIR to the @include search path.\n"
-#~ " --paragraph-indent=VAL    indent Info paragraphs by VAL spaces (default %"
-#~ "d).\n"
+#~ " --paragraph-indent=VAL    indent Info paragraphs by VAL spaces (default %d).\n"
 #~ "                            if VAL is `none', do not indent;\n"
-#~ "                            if VAL is `asis', preserve existing "
-#~ "indentation.\n"
-#~ " --reference-limit=NUM     warn about at most NUM references (default %"
-#~ "d).\n"
+#~ "                            if VAL is `asis', preserve existing indentation.\n"
+#~ " --reference-limit=NUM     warn about at most NUM references (default %d).\n"
 #~ " --split-size=NUM          split into files at NUM size. (default %d).\n"
 #~ " -U VAR                    undefine a variable, as with @clear.\n"
 #~ " -v, --verbose             explain what is being done.\n"
 #~ " --version                 display version information and exit.\n"
-#~ " --xml                     output XML (TexinfoML) rather than Info "
-#~ "format.\n"
+#~ " --xml                     output XML (TexinfoML) rather than Info format.\n"
 #~ msgstr ""
-#~ " --no-headers              undertryck Info-nodavskiljare och \"Node:\"-"
-#~ "rader,\n"
+#~ " --no-headers              undertryck Info-nodavskiljare och \"Node:\"-rader,\n"
 #~ "                            skriv till standard ut utan --output.\n"
 #~ " --no-ifhtml               behandla inte @ifhtml- och @html-text.\n"
 #~ " --no-ifinfo               behandla inte @ifinfo-text.\n"
 #~ " --no-iftex                behandla inte @iftex- och @tex-text.\n"
-#~ " --no-split                undertryck delning av Info- eller HTML-"
-#~ "utdata,\n"
+#~ " --no-split                undertryck delning av Info- eller HTML-utdata,\n"
 #~ "                            skapa endast en utdatafil.\n"
 #~ " --no-validate             undertryck nod-korsreferensvalidering.\n"
 #~ " --no-warn                 undertryck varningar (men inte fel).\n"
-#~ " --number-sections         inkludera kapitel-, sektionsnummer osv i "
-#~ "utdata.\n"
+#~ " --number-sections         inkludera kapitel-, sektionsnummer osv i utdata.\n"
 #~ " -o, --output=FIL          skriv till FIL (katalog om delad HTML),\n"
 #~ "                            ignorerar alla @setfilename.\n"
 #~ " -P KATALOG                lägg till KATALOG till @include-sökvägen.\n"
 #~ " --paragraph-indent=VÄRDE  gör indrag i Info-stycken med VÄRDE blanksteg\n"
 #~ "                            (standardvärde %d).\n"
 #~ "                            om VÄRDE är \"none\" görs inget indrag;\n"
-#~ "                            om VÄRDE är \"asis\" bevaras befintlig "
-#~ "indragning.\n"
+#~ "                            om VÄRDE är \"asis\" bevaras befintlig indragning.\n"
 #~ " --reference-limit=ANTAL   varna om högst ANTAL referenser\n"
 #~ "                            (standardvärde %d).\n"
 #~ " --split-size=ANTAL        dela i filer vid storleken ANTAL\n"
@@ -3199,5 +3107,4 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ " -U VARIABEL               odefiniera en variabel, som med @clear.\n"
 #~ " -v, --verbose             förklara vad som görs.\n"
 #~ " --version                 visa versionsinformation och avsluta.\n"
-#~ " --xml                     generera XML (TexinfoML) istället för Info-"
-#~ "format.\n"
+#~ " --xml                     generera XML (TexinfoML) istället för Info-format.\n"
