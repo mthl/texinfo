@@ -132,7 +132,10 @@ Lionel.Cons@cern.ch.  Over time, many other people around the net
 contributed to this program.  Its current maintainer is Olaf Bachmann,
 obachman@mathematik.uni-kl.de.
 .SH AVAILABILITY
-http://texi2html.cvshome.org/
+The latest version of this program, as well as support in the form of mailing
+lists with archives, bug tracking, documentation, and other tools can be found
+at:
+	 http://texi2html.cvshome.org/
 .SH COPYRIGHT
 Copyright \(co 1999, 2000  Free Software Foundation, Inc.
 There is NO warranty.  You may redistribute this software
