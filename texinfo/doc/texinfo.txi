@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
+@c $Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16280,10 +16280,11 @@ in.  @xref{HTML Xref Mismatch}.
 
 As mentioned in the previous section, the key part of the HTML
 cross-reference algorithm is the conversion of node names in the
-Texinfo source into strings suitable for HTML identifiers and
+Texinfo source into strings suitable for XHTML identifiers and
 filenames.  The restrictions are similar for each: plain ASCII
 letters, numbers, and the @samp{-} and @samp{_} characters are all
-that can be used.
+that can be used.  (Although HTML anchors can contain most characters,
+XHTML is more restrictive.)
 
 Cross-references in Texinfo can actually refer either to nodes or
 anchors (@pxref{anchor}), but anchors are treated identically to nodes
@@ -18350,7 +18351,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
+$Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18416,7 +18417,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.112 2004-09-09 17:50:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.113 2004-09-16 13:09:03 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
