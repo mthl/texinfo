@@ -1,8 +1,8 @@
-$Id: README,v 1.13 2002-12-29 17:47:20 karl Exp $
+$Id: README,v 1.14 2003-01-03 20:17:37 karl Exp $
 This is the README file for the GNU Texinfo distribution.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002 Free Software Foundation, Inc.
+  2001, 2002, 2003 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -15,6 +15,7 @@ Primary distribution point: ftp://ftp.gnu.org/gnu/texinfo/
 
 Home page: http://www.gnu.org/software/texinfo/
   (list of mirrors at: http://www.gnu.org/server/list-mirrors.html)
+  This page includes links to other Texinfo-related programs.
 
 Mailing lists and archives:
 - bug-texinfo@gnu.org for bug reports or enhancement suggestions,
@@ -52,7 +53,6 @@ cases, checking the documentation against the implementation, etc.
 This distribution includes the following files, among others:
     README                      This file.
     README.dev                  Texinfo developer information.
-    README.links                Links to Texinfo-related free software.
 
     INSTALL                     Texinfo-specific installation notes.
     NEWS                        Summary of new features by release.
