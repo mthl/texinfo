@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.19 2004-10-08 22:01:14 karl Exp $
+# $Id: Makefile.am,v 1.20 2004-11-18 01:10:59 karl Exp $
 # Makefile.am for texinfo/doc.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -30,9 +30,12 @@ EXTRA_DIST = epsf.tex pdfcolor.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE)
 
+if INSTALL_WARNINGS
 install-data-local:
 	@echo
-	@echo "WARNING: You must install texinfo.tex and txi-??.tex manually,"
+	@echo "WARNING: If your texmf tree does not already contain"
+	@echo "         up-to-date versions, you must install"
+	@echo "             texinfo.tex and txi-??.tex manually,"
 	@echo "         perhaps in TEXMF/tex/texinfo/,"
 	@echo "         where TEXMF is a root of your TeX tree."
 	@echo "         See doc/README for some considerations."
@@ -42,6 +45,7 @@ install-data-local:
 	@echo "         use pdftex) pdfcolor.tex in TEXMF/tex/generic/dvips"
 	@echo "         and TEXMF/pdftex/plain/misc/pdfcolor.tex respectively,"
 	@echo "         if your TeX installation did not include them."
+endif
 
 texmf_texinfo = $(TEXMF)/tex/texinfo
 texmf_dvips = $(TEXMF)/tex/generic/dvips

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.94 2004-11-02 13:29:27 karl Exp $
+$Id: NEWS,v 1.95 2004-11-18 01:10:59 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -29,6 +29,8 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . new convenience script texi2pdf, equivalent to texi2dvi --pdf (from tetex).
   . some cross-compiling support in configure && make.
+  . new configure option --disable-install-warnings, for TeX
+    distributions which do have the files installed.
   . automake 1.9.3.
 
 4.7 (9 April 2004)
