@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.37 2005-01-20 22:45:52 karl Exp $
+# $Id: texi2dvi,v 1.38 2005-01-24 00:33:06 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -27,7 +27,7 @@
 # the `--debug' option when making a bug report.
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.37 $'
+rcs_revision='$Revision: 1.38 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -102,8 +102,8 @@ verbose=false   # echo for verbose mode
 orig_pwd=`pwd`
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS.
-if test -n "$COMSPEC$ComSpec"; then
+# directories in TEXINPUTS -- except for Cygwin, where it might be inherited.
+if test -n "$COMSPEC$ComSpec" && uname | grep -iv cygwin >/dev/null; then
   path_sep=";"
 else
   path_sep=":"
@@ -120,7 +120,10 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 findprog ()
 {
   foundprog=false
-  for dir in `echo $PATH | tr "$path_sep" " "`; do
+
+  saveIFS=$IFS
+  IFS=$path_sep  # break path components at the path separator
+  for dir in $PATH; do
     # use test -x rather than test -f for DJGPP, where test -x checks
     # for .exe.  But test -x will also return true for directories, so
     # explicitly ignore those.
@@ -129,6 +132,7 @@ findprog ()
       break
     fi
   done
+  IFS=$saveIFS
   $foundprog
 }
 

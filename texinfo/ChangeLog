@@ -1,5 +1,9 @@
 2005-01-23  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi (findprog): split $PATH at $path_sep, not spaces.
+	(path_sep): don't let ComSpec fool us under cygwin.
+	Report from: Eric Blake <ebb9@byu.net>, 19 Jan 2005 05:36:26 -0700.
+
 	* doc/texinfo.txi (euro): mention the font we use for the Euro
 	symbol and where to get it.  help-texinfo report from:
 	christoph.sobotka@utanet.at, 19 Jan 2005 21:29:20 +0100.
