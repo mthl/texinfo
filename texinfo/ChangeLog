@@ -1,3 +1,12 @@
+2003-08-20  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/defun.c (cm_defun): skip @ifset/@ifclear insertions
+	when looking for the @defun going with this @defunx.  Report from:
+	Akim Demaille <akim@epita.fr>, 14 Aug 2003 12:10:37 +0200.
+
+	* makeinfo/insertion.c (cm_end): rewrite error message for
+	clarity.
+
 2003-08-13  Karl Berry  <karl@gnu.org>
 
 	* info/indices.c (info_index_apropos): correct typo, whoses ->

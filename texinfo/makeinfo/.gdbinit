@@ -202,3 +202,6 @@ set args -o /dev/null $ttests/env.tex
 
 # css class wrong for lowered sections.
 set args --force -o /tmp/h --html --no-split $ttests/loweraise.tex
+
+# deffnx fails when after conditional.
+set args -o - tests/defxcond.txi
