@@ -1,3 +1,12 @@
+2002-11-12 19:48  feloy
+
+	* makeinfo/: lang.c, makeinfo.c: (docbook) Entities for accented
+	characters are written correctly
+
+2002-11-12 19:34  feloy
+
+	* makeinfo/xml.c: (docbook) Do not expand @set contents
+
 2002-11-11 18:14  feloy
 
 	* makeinfo/xml.c: Better <bookinfo> support
