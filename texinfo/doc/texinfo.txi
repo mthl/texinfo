@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.32 2003-03-08 19:07:53 karl Exp $
+@c $Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13600,7 +13600,8 @@ For more information, see:
 @TeX{} needs to know where to find the @file{texinfo.tex} file that the
 @samp{\input texinfo} command on the first line reads.  The
 @file{texinfo.tex} file tells @TeX{} how to handle @@-commands; it is
-included in all standard GNU distributions.
+included in all standard GNU distributions.  The latest version is
+always available at @uref{ftp://ftp.gnu.org/gnu/texinfo/texinfo.tex}.
 
 @pindex texinfo.tex@r{, installing}
 
@@ -13652,7 +13653,7 @@ In a @file{.cshrc} file, you could use the following @code{csh} command
 sequence:
 
 @example
-setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+setenv TEXINPUTS .:/home/me/mylib:
 @end example
 
 @need 1000
@@ -13661,7 +13662,7 @@ sequence:
 
 @example
 @group
-TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+TEXINPUTS=.:/home/me/mylib:
 export TEXINPUTS
 @end group
 @end example
@@ -13672,19 +13673,20 @@ on these systems.}:
 
 @example
 @group
-set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+set TEXINPUTS=.;d:/home/me/mylib;c:
 @end group
 @end example
 
 @noindent
 It is customary for DOS/Windows users to put such commands in the
-@file{autoexec.bat} file, or in the Windows Registry.@refill
+@file{autoexec.bat} file, or in the Windows Registry.
 
 @noindent
 These settings would cause @TeX{} to look for @file{\input} file first
 in the current directory, indicated by the @samp{.}, then in a
-hypothetical user's @file{me/mylib} directory, and finally in a system
-directory @file{/usr/lib/tex/macros}.
+hypothetical user @samp{me}'s @file{mylib} directory, and finally in
+the system directories.  (A leading, trailing, or doubled @samp{:}
+indicates searching the system directories at that point.)
 
 @cindex Dumping a .fmt file
 @cindex Format file, dumping
@@ -16873,7 +16875,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.32 2003-03-08 19:07:53 karl Exp $
+$Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16936,7 +16938,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.32 2003-03-08 19:07:53 karl Exp $
+@comment $Id: texinfo.txi,v 1.33 2003-03-13 00:25:21 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
