@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.91 2004-09-20 12:58:50 karl Exp $
+$Id: NEWS,v 1.92 2004-09-23 13:18:08 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -94,7 +94,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
   . new script gendocs.sh (not installed), for use by GNU maintainers in
     getting their manuals on the GNU web site.  Documented in
-    maintain.texi (http://www.gnu.org/prep/maintain_toc.html).
+    maintain.texi (http://www.gnu.org/prep/maintain/).
   . Most code uses ANSI C prototypes, to some extent.
   . New translation: nb.
   . automake 1.8.3, autoconf 2.59, gettext 0.14.1.
