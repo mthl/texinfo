@@ -1,3 +1,8 @@
+2002-10-25  Alexandre Duret-Lutz  <adl@gnu.org>
+
+	* util/texi2dvi: Preserve empty components when expansing
+	TEXINPUTS and INDEXSTYLE.
+
 2002-10-24    <karl@gnu.org>
 
 	* m4/{check-decl.m4,mkstemp.m4,prereq.m4}: new files from gnulib.
@@ -49,7 +54,7 @@
 
 	* makeinfo/cmds.c (cm_dots, cm_enddots): don't use small if
 	in_fixed_width_fonts; this violates the html specs, which don't
-	want you to change fonts within <pre>. (Argh.) 
+	want you to change fonts within <pre>. (Argh.)
 	Report from: Janis Johnson <janis187@us.ibm.com>,
 	14 Oct 2002 15:59:16 -0700.
 
@@ -96,7 +101,7 @@
 	* makeinfo/{cmds,footnote,html,insertion,makeinfo,multi,node}.c:
 	use <br /> instead of plain <br>, for the sake of XHTML.  Likewise
         with <hr /> and <meta />, and quote all <meta> values.
-        Suggestion (and assurance of compatibility) from 
+        Suggestion (and assurance of compatibility) from
         Janis Johnson <janis187@us.ibm.com>
         and Gerald Pfeifer <pfeifer@dbai.tuwien.ac.at>
         (the gcc web page maintainers).
@@ -122,7 +127,7 @@
 	(\copying,\insertcopying): new implementation to save the uninterpreted
 	tokens instead of typesetting a box, so that the page size, fonts,
 	etc., don't have to be defined before @copying is run.
-	
+
 	These changes from Werner Lemberg <wl@gnu.org>:
 	(\internalpagesizes): take two new arguments for the physical paper
 	height and width.
@@ -235,7 +240,7 @@
 	From: Stephen Gildea <gildea@stop.mail-abuse.org>,
 	08 May 2002 18:12:58 -0400.
 
-	* doc/texinfo.tex: spurious \let when setting \mainmagstep.  
+	* doc/texinfo.tex: spurious \let when setting \mainmagstep.
 	From: Stephen Gildea <gildea@stop.mail-abuse.org>,
 	08 May 2002 08:38:39 -0400.
 
@@ -382,7 +387,7 @@
 	* info/search.c (skip_non_whitespace): Don't go beyond the
 	terminating null character.
 
-	* info/filesys.c (filesys_read_info_file) 
+	* info/filesys.c (filesys_read_info_file)
 	(filesys_read_compressed): Null-terminate the contents of the file
 	we've read, so it could be used as a C string.
 
@@ -691,7 +696,7 @@
 
 	* info/info.c (add_file_directory_to_path): New function, code
 	moved from `main'.
-	(main): Use add_file_directory_to_path.  
+	(main): Use add_file_directory_to_path.
 
 	* info/session.c (info_follow_menus): If the first menu entry
 	couldn't be found as an item in DIR's menu, try it as a file name.
@@ -806,7 +811,7 @@
 	* makeinfo/html.c (nodename_to_filename): Call
 	nodename_to_filename_1 with the last argument 1, not 0.
 
-	* makeinfo/toc.c (shortcontents_update_html) 
+	* makeinfo/toc.c (shortcontents_update_html)
 	(contents_update_html): Don't omit the entry for the Top node.
 
 	* 2002-01-30  Eli Zaretskii  <eliz@is.elta.co.il>
@@ -876,8 +881,8 @@
 	<gildea@stop.mail-abuse.org>.
 
 	2002-01-26  Eli Zaretskii  <eliz@is.elta.co.il>
-	* info/infomap.c (default_emacs_like_info_keys) 
-	(default_emacs_like_ea_keys, default_vi_like_info_keys) 
+	* info/infomap.c (default_emacs_like_info_keys)
+	(default_emacs_like_ea_keys, default_vi_like_info_keys)
 	(default_vi_like_ea_keys): Fix default keybindings to be
 	consistent with non-INFOKEY branch.  Add bindings for Home, End,
 	and Delete keys.
@@ -1045,7 +1050,7 @@
 
 	* makeinfo/html.c (add_link): Ditto.
 
-	* makeinfo/footnote.c (cm_footnote): Ditto. 
+	* makeinfo/footnote.c (cm_footnote): Ditto.
 
 	* makeinfo/defun.c (defun_internal): Ditto.
 
@@ -1208,7 +1213,7 @@
 
 2001-12-18  Eli Zaretskii  <eliz@is.elta.co.il>
 
-	* makeinfo/xml.c (xml_insert_element_with_attribute) 
+	* makeinfo/xml.c (xml_insert_element_with_attribute)
 	(xml_insert_element): Rename the argument `element' to `elt'.
 
 	* info/infokey.c (compile): Use \033 instead of (non-standard) \e.
@@ -1222,8 +1227,8 @@
 	(DJGPP_keytab): Map Home, End, and Insert to escape sequences, not
 	to C-a, C-e, etc.
 
-	* info/infomap.c (default_emacs_like_info_keys) 
-	(default_emacs_like_ea_keys, default_vi_like_info_keys) 
+	* info/infomap.c (default_emacs_like_info_keys)
+	(default_emacs_like_ea_keys, default_vi_like_info_keys)
 	(default_vi_like_ea_keys): Add the leading suppress-default flag,
 	to be consistent with the table which comes from a file.
 
@@ -1509,7 +1514,7 @@
 	(sectioning_html): use <h2> for chapter instead of <h1>, etc.
 	* makeinfo/node.c (cm_node): do not include code to output the
 	HTML <head>, we do that elsewhere now.
-	
+
 	1999-11-26 W. L. Estes <will@fumblers.org>
 	* makeinfo/insertion.c (begin_insertion): add an explicit <br>
 	before beginning a <pre> block. for flushleft and flushright, use
@@ -1535,7 +1540,7 @@
 
 2001-06-13    <karl@gnu.org>
 
-	* texinfo.tex (\pdfmkdest): \normalturnoffactive, so refs and 
+	* texinfo.tex (\pdfmkdest): \normalturnoffactive, so refs and
 	defs match.
 	(\xrefX): pdf link defs no longer use @, so link refs shouldn't use @
 	either. (All xrefs in pdf were failing.)
@@ -1543,7 +1548,7 @@
 
 	* texinfo.tex (\smallerfonts): new font size.
 	(\smallexample, et al.): use it, in all cases, not just @smallbook.
-	
+
 	1999-11-30 Andreas Schwab <schwab@suse.de>
 	* doc/texinfo.tex (\xrefX): Turn off active characters when writing
 	out the link name for pdf.
@@ -1651,7 +1656,7 @@
 	* makeinfo/cmds.c (cm_sp): ...and here...
 	* makeinfo/toc.c (cm_contents, cm_shortcontents): ...and here...
 	* makeinfo/node.c (cm_anchor): ...and here.
-	
+
 	* makeinfo/html.c (html_output_head): `free' html_title if
 	expanded.  Make <head> and <body> stand out.
 
@@ -1790,7 +1795,7 @@
 	    option, added node Installing HTML info.
 
 	    * util/install-info-html.in: new script.  The bare minimum
-	    required for generating HTML index.  
+	    required for generating HTML index.
 
 	    * lib/system.h:	compilation fix.
 
@@ -1805,8 +1810,8 @@
 
     2000-11-07  Jan Nieuwenhuizen  <janneke@gnu.org>
 
-	    * toc.c (toc_add_entry): 
-	    (contents_update_html): 
+	    * toc.c (toc_add_entry):
+	    (contents_update_html):
 	    (shortcontents_update_html): [SPLIT_JCN]: use hrefs for nodename based
 	    html files.
 
@@ -1853,7 +1858,7 @@
 
     1999-08-31    <janneke@gnu.org>
 
-	    * makeinfo/cmds.c: 
+	    * makeinfo/cmds.c:
 	    * makeinfo/insertion.{c,h},
 	    * makeinfo/makeinfo.{c,h}: redo of @verbatim, @verb{<char>..<char>}
 	    * doc/texinfo.tex: fixed @verb{<char>..<char>}
@@ -1881,7 +1886,7 @@
 	  (suggestion from Akim).
 
   Installed some patches:
-  
+
   2000-08-04  Paul Eggert  <eggert@twinsun.com>
 	  * makeinfo/multi.c (find_template_width):
 	  Don't access before start of *PARAMS.
@@ -2021,7 +2026,7 @@
 	* doc/texinfo.txi: Document that @anchor ignores spaces.
 
 	* makeinfo/cmds.c (cm_shyph): remove, &shy; is not supported in
-		browsers. 
+		browsers.
 	From: Thomas Esken <esken@nmlab.informatik.fh-dortmund.de>
 
 	* makeinfo/makeinfo.c: Don't crash if current_indent = 0.
@@ -2245,7 +2250,7 @@ Mon Jul 12 08:01:19 1999  Karl Berry  <karl@gnu.org>
 	* doc/texinfo.txi: document this.
 	* makeinfo/macro.c (apply): warn if \ in macro body is not
 		followed by a parameter name or \, instead of silently
-		accepting it, for compatibility with TeX. 
+		accepting it, for compatibility with TeX.
 
 	* makeinfo/macro.c: Doc fix.
 
@@ -2373,7 +2378,7 @@ Fri Jul  2 14:26:22 1999  Karl Berry  <karl@gnu.org>
 
 	From gildea:
 	* info/terminal.c (TIOCGETC) [M_XENIX && TIOCGETC]: #undef.
-	* info/session.c (strncasecmp) [M_XENIX]: declare.  
+	* info/session.c (strncasecmp) [M_XENIX]: declare.
 
 Thu Jul  1 19:25:12 1999  Karl Berry  <karl@gnu.org>
 
@@ -2406,7 +2411,7 @@ Sat May  1 16:01:36 1999  Karl Berry  <karl@gnu.org>
 
 1999-04-29  Yoshiki Hayashi  <g740685@komaba.ecc.u-tokyo.ac.jp>
 
-	* makeinfo/makeinfo.c (cm_xref): Don't collapse --- to -- etc., 
+	* makeinfo/makeinfo.c (cm_xref): Don't collapse --- to -- etc.,
 	in references.
 
 Mon Apr 26 16:41:55 1999  Karl Berry  <karl@gnu.org>
@@ -2434,7 +2439,7 @@ Sun Apr 25 16:08:27 1999  Karl Berry  <karl@gnu.org>
 
 1999-04-23  Yoshiki Hayashi <g740685@komaba.ecc.u-tokyo.ac.jp>
 
-	* makeinfo/cmds.c (cm_center): Recover the previous state when 
+	* makeinfo/cmds.c (cm_center): Recover the previous state when
 	called with --html.
 
 1999-04-24  Eli Zaretskii  <eliz@is.elta.co.il>
@@ -2963,7 +2968,7 @@ Mon Mar 15 17:06:15 1999  Karl Berry  <karl@gnu.org>
 		hopes they then won't be distributed.  Report from Andreas.
 
 	* makeinfo/cmds.c (cm_sp): close paragraph and disable filling to
-		produce blank lines in info. 
+		produce blank lines in info.
 	Report from: Michael Vanier <mvanier@bbb.caltech.edu>.
 
 	* doc/texinfo.txi: Attempt to get Edition info on one line.
@@ -3091,8 +3096,8 @@ Fri Mar  5 14:31:42 1999  Karl Berry  <karl@gnu.org>
 	  * makeinfo/makeinfo.c (handle_menu_entry): Ditto.
 
 	  * makeinfo/insertion.c (begin_insertion),
-	  * makeinfo/makeinfo.c (handle_menu_entry): If commentary 
-	  precedes first menu item, put them outside of <ul>. 
+	  * makeinfo/makeinfo.c (handle_menu_entry): If commentary
+	  precedes first menu item, put them outside of <ul>.
 	  Put <p> and </p> correctly.
 
   1999-02-27  Eli Zaretskii  <eliz@is.elta.co.il>
@@ -3174,14 +3179,14 @@ Wed Mar  3 17:20:07 1999  Karl Berry  <karl@gnu.org>
 
 	* info/echo-area.c: Don't pause for an additional 75 microseconds.
 	Noted by Eli.
-	
+
 	* configure.in: Bump to 3.12f.
 
 	* doc/texinfo.txi: findex enddots.  From Eli.
 
 1999-03-01  Yoshiki Hayashi  <g740685@komaba.ecc.u-tokyo.ac.jp>
 
-	* makeinfo/makeinfo.c (insert_html_tag): Add <p> when 
+	* makeinfo/makeinfo.c (insert_html_tag): Add <p> when
 	paragraph is not opened.
 	(sectioning_html): Call close_paragraph so that paragraph
 	will be started.
@@ -3346,7 +3351,7 @@ Wed Feb 17 11:50:46 1999  Karl Berry  <karl@gnu.org>
 		Sony NEWS-OS 4.0C lossage.  From Akim.
 
 	* info/infodoc.c: Translate where is doc string, underline lines
- 		in help.  
+ 		in help.
 	From: Trond Endrestol <trond@agamemnon.gtf.ol.no>
 
 	* makeinfo/cmds.c (cm_dots, cm_enddots): go back to ... and ....,
@@ -3448,7 +3453,7 @@ Wed Feb 10 22:00:00 1999  Karl Heinz Marbaise <kama@hippo.fido.de>
     * makeinfo/insertion.c:
             - some minor changes made to support the @def...
               things in HTML.
-    
+
     * makeinfo/lang.c: (cm_accent_generic)
             - bug fixed. Using umlaut (accent ...)
               would produce &A only if an umlaut follows
@@ -8740,7 +8745,7 @@ Sun Jun 26 18:46:16 1988  Richard Stallman  (rms at sugar-bombs.ai.mit.edu)
 
 	* texinfo.tex (\anchor): rewrite to always \ignorespaces.
 	Bug from esken.
-	
+
 	* texinfo.tex (\indexnofonts): dummy up \acronym.
 	From: Thomas Esken <esken@nmlab.informatik.fh-dortmund.de>
 
@@ -8763,7 +8768,7 @@ Mon Aug  9 16:31:55 1999  Karl Berry  <karl@gnu.org>
 
 Fri Aug  6 13:48:22 1999  Karl Berry  <karl@gnu.org>
 
-	* texinfo.tex (\charcode): remove unused counter. 
+	* texinfo.tex (\charcode): remove unused counter.
 	From: Akira KAKUTO <kakuto@fsci.fuk.kindai.ac.jp>.
 
 Thu Jul 22 19:08:19 1999  Karl Berry  <karl@gnu.org>
