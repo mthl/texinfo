@@ -2,7 +2,9 @@
 
 #set -x
 do_tidy='no'
+do_validate='yes'
 which tidy 2>&1 > /dev/null && do_tidy='yes'
+which validate 2>&1 > /dev/null && do_validate='yes'
 
 LANG=C
 export LANG
@@ -17,6 +19,7 @@ wc=$1; shift
 suffix=$1; shift
 basename=$1; shift
 ignore_tags=$1; shift
+validate=$1; shift
 test_tidy=$1;shift
 fail=$1; shift
 [ -z $fail ] && fail='success'
@@ -24,6 +27,8 @@ fail=$1; shift
 [ -z $suffix ] && suffix=texi
 [ -z $texi_file ] && texi_file=$dir.$suffix
 [ -z $ignore_tags ] && ignore_tags=no
+[ -z $validate ] && validate=yes
+[ $validate = validate ] && validate=yes
 [ -z $test_tidy ] && test_tidy=yes
 [ $test_tidy = test_tidy -o $test_tidy = tidy ] && test_tidy=yes
 [ $ignore_tags = 'yes' -o $ignore_tags = 'ignore_tags' ] && ignore_tags=yes
@@ -41,6 +46,7 @@ fi
 (cd $dir && rm $basename.html ${basename}_???.html ${basename}_??.html ${basename}_?.html ${basename}_frame.html ${basename}_toc_frame.html $basename*.htm $basename*.png $basename.passfirst $basename.2) > /dev/null 2>&1
 export T2H_HOME=../..
 #(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/xhtml.init $texi_file) 2>$dir/$stderr_file > /dev/null
+#(cd $dir && perl -w ../../texi2html.pl -test $options -init ../../examples/html32.init $texi_file) 2>$dir/$stderr_file > /dev/null
 (cd $dir && perl -w ../../texi2html.pl -test $options $texi_file) 2>$dir/$stderr_file > /dev/null
 ret=$?
 echo "  status:"
@@ -121,10 +127,18 @@ done
 if [ "$previous_good" = yes ]; then echo; fi
 
 if [ $test_tidy = 'yes' -a $do_tidy = 'yes' ]; then
-	echo "  test validity with tidy:"
-	if tidy -q -e -f /dev/null $dir/*.html; then
-		 echo "    passed"
+	echo "  test with tidy:"
+	if tidy -q -e -f /dev/null $dir/$basename*.html; then
+		echo "    passed"
 	else echo "    !!! tidy failed"
+	fi
+fi
+	
+if [ $validate = 'yes' -a $do_validate = 'yes' ]; then
+	echo "  test validity:"
+	if validate $dir/$basename*.html > /dev/null; then
+		echo "    passed"
+	else echo "    !!! not valid $? errors"
 	fi
 fi
 	
@@ -136,6 +150,7 @@ if [ ! -z $1 ]; then
 fi
 
 test_texi GermanNodeTest nodetest.texi
+test_texi GermanNodeTest nodetest_for_makeinfo.texi
 test_texi index_table
 test_texi index_table index_split.texi "-split chapter -init index_test.init"
 test_texi index_table index_nodes.texi "-init ../../examples/makeinfo.init -init index_test.init -split node -top_file index_nodes.html"
@@ -173,8 +188,9 @@ test_texi viper_monolithic viper.texi
 test_texi viper viper.texi "-split chapter"
 test_texi xemacs xemacs.texi "-split chapter"
 test_texi xemacs_frame xemacs.texi "-split chapter -frames"
-test_texi texinfo info-stnd.texi "-split chapter"
+test_texi texinfo info-stnd.texi "-split chapter -node-files"
 test_texi texinfo texinfo.txi "-split chapter" 0 txi texinfo ignore_tags
+test_texi nodes_texinfo texinfo.txi "-split node -node-files" 0 txi texinfo ignore_tags
 test_texi ccvs cvs.texinfo "-split chapter" 0 texinfo
 
 exit

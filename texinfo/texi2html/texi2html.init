@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.28 2003-05-02 18:20:30 pertusus Exp $
+# $Id: texi2html.init,v 1.29 2003-05-09 16:46:39 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -97,6 +97,10 @@ $T2H_NUMBER_SECTIONS = 1;
 # if set the nodes are used as sectionning elements
 $T2H_USE_NODES = 0;
 
+# -node-files
+# if set produce one file per node for cross manual references
+$T2H_NODE_FILES = 0;
+
 # -split section|chapter|node|none
 # if set to 'section' (resp. 'chapter') create one html file per section
 # (resp. chapter), if set to 'node' create one html file per per node or 
@@ -113,6 +117,10 @@ $T2H_SPLIT = '';
 # This is most useful if you do not want to have section navigation
 # on -split chapter
 $T2H_SECTION_NAVIGATION = 1;
+
+# -separated-footnotes
+# if set footnotes are in a separated page
+$T2H_SEPARATED_FOOTNOTES = 1;
 
 # -subdir
 # If set, then put result files into the specified directory.
@@ -162,6 +170,10 @@ $T2H_VERBOSE = '';
 # Default's to 'en' if not set or no @documentlanguage is specified
 $T2H_LANG = 'en';
 
+# -html-xref-prefix
+# base directory for external manuals
+$T2H_EXTERNAL_DIR = '../';
+
 # -l2h
 # if set, uses latex2html for generation of math content
 $T2H_L2H = '';
@@ -210,10 +222,18 @@ $T2H_CENTER_IMAGE = 1;
 # used as identation for block enclosing command @example, etc
 # If not empty, must be enclosed in <td></td>
 $T2H_EXAMPLE_INDENT_CELL = '<td>&nbsp;</td>';
+
 # same as above, only for @small
 $T2H_SMALL_EXAMPLE_INDENT_CELL = '<td>&nbsp;</td>';
+
 # font size for @small
 $T2H_SMALL_FONT_SIZE = '-1';
+
+# horizontal rules
+$T2H_SMALL_RULE = '<hr size="1">';
+$T2H_DEFAULT_RULE = '<hr>';
+$T2H_MIDDLE_RULE = '<hr size="2">';
+$T2H_BIG_RULE = '<hr size="6">';
 
 # if non-empty, and no @..heading appeared in Top node, then
 # use this as header for top node/section, otherwise use value of
@@ -232,11 +252,20 @@ $T2H_SPLIT_INDEX = 100;
 # unnumbered in menus, see next variable)
 $T2H_MENU_SYMBOL = '*';
 
+# extension for nodes files when T2H_NODE_FILES is true
+$T2H_NODE_FILE_EXTENSION = "html";	    
+
+# file used for Top node when T2H_NODE_FILES is true
+$T2H_TOP_NODE_FILE = "index";
+
 # if true put a $T2H_MENU_SYMBOL before unnumbered in menus
 $T2H_UNNUMBERED_SYMBOL_IN_MENU = 0;
 
 # this controls the pre style for menus
 $T2H_MENU_PRE_STYLE = 'style="font-family: serif"';
+
+# This controls the ul style for toc
+$T2H_TOC_LIST_STYLE =' style="list-style: none"';
 
 # if set (e.g., to index.html) replace hrefs to this file
 # (i.e., to index.html) by ./
@@ -384,9 +413,16 @@ $T2H_ICONS = 0;
 # this is used in footer
 $T2H_ADDRESS = undef;
 
+
 # Set the default body text, inserted between <body ... >
 $T2H_BODYTEXT = undef;
 
+$t2h_set_body_text    = \&t2h_default_set_body_text;
+# Set the default body text, inserted between <body ... >
+sub t2h_default_set_body_text()
+{
+    $T2H_BODYTEXT = 'lang="' . $T2H_LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($T2H_BODYTEXT));
+}
 
 ########################################################################
 # Control of Page layout:
@@ -397,8 +433,8 @@ $T2H_BODYTEXT = undef;
 #     give them another name, and assign them to the respective
 #     $T2H_<fnc> variable.
 
-# As a general interface, the hashes T2H_HREF, T2H_NAME, T2H_NODE hold
-# href, html-name, node-name of
+# As a general interface, the hashes T2H_HREF, T2H_NAME, T2H_NODE, T2H_NO_TEXI hold
+# href, html-name, node-name, name after removal of texi commands of
 # This     -- current section (resp. html page)
 # Top      -- top page ($T2H_TOP_FILE)
 # Contents -- Table of contents
@@ -422,6 +458,7 @@ $T2H_BODYTEXT = undef;
 #
 # Furthermore, the following global variabels are set:
 # $T2H_THISDOC{title}          -- title as set by @setttile
+# $T2H_THISDOC{title_no_texi}  -- title without texi (without html elements)
 # $T2H_THISDOC{fulltitle}      -- full title as set by @title...
 # $T2H_THISDOC{subtitle}       -- subtitle as set by @subtitle
 # $T2H_THISDOC{author}         -- author as set by @author
@@ -466,6 +503,7 @@ $T2H_about_body		      = \&T2H_DEFAULT_about_body;
 $T2H_print_frame              = \&T2H_DEFAULT_print_frame;
 $T2H_print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
 $T2H_toc_body                 = \&T2H_DEFAULT_toc_body;
+$T2H_print_redirection_page   = \&T2H_DEFAULT_print_redirection_page;
 
 ########################################################################
 # Layout for html for every sections
@@ -490,7 +528,7 @@ sub T2H_DEFAULT_print_section
     }
     else
     {
-        print $fh '<hr size="6">' . "\n";
+        print $fh "$T2H_BIG_RULE\n";
     }
 }
 
@@ -545,7 +583,7 @@ sub T2H_DEFAULT_print_Top
         print $fh "$T2H_THISDOC{author}\n" if $T2H_THISDOC{author};
         print $fh <<EOT;
 </div>
-<hr>
+$T2H_DEFAULT_RULE
 <p></p>
 <h2> Overview: </h2>
 <blockquote>
@@ -631,7 +669,7 @@ sub T2H_DEFAULT_print_chapter_header
         my $fh = shift;
         my $buttons = \@T2H_CHAPTER_BUTTONS;
         &$T2H_print_navigation($fh, $buttons);
-        print $fh "\n<hr size=\"2\">\n";
+        print $fh "\n$T2H_MIDDLE_RULE\n";
     }
 }
 
@@ -649,8 +687,8 @@ sub T2H_DEFAULT_print_chapter_footer
 sub T2H_DEFAULT_print_page_head
 {
     my $fh = shift;
-    my $longtitle = "$T2H_THISDOC{title}";
-    $longtitle .= ": $T2H_NAME{This}" if exists $T2H_NAME{This};
+    my $longtitle = "$T2H_THISDOC{'title_no_texi'}";
+    $longtitle .= ": $T2H_NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
     print $fh <<EOT;
 $T2H_DOCTYPE
 <html>
@@ -719,7 +757,7 @@ EOT
     elsif (defined $T2H_SPLIT
            and ($T2H_SPLIT eq 'node'))
     {
-        print $fh "<hr size=\"1\">\n";
+        print $fh "$T2H_SMALL_RULE\n";
     }
 }
 
@@ -736,7 +774,7 @@ sub T2H_DEFAULT_print_foot_navigation
 </table>
 EOT
     }
-    print $fh "<hr size=\"1\">\n";
+    print $fh "$T2H_SMALL_RULE\n";
     &$T2H_print_navigation($fh, $buttons) if (defined $nwords
                                     and $nwords >= $T2H_WORDS_IN_PAGE)
 }
@@ -814,7 +852,7 @@ sub T2H_DEFAULT_print_navigation
                 $T2H_ICONS && $T2H_ACTIVE_ICONS{' '} ?
                     &$T2H_button_icon_img($button, $T2H_ACTIVE_ICONS{' '}) :
                         $T2H_NAVIGATION_TEXT{' '};
-            next;
+            #next;
         }
         elsif ($T2H_HREF{$button})
         {                       # button is active
@@ -902,7 +940,7 @@ sub T2H_DEFAULT_toc_body($$$)
     return unless ($do_contents or $do_scontents or $T2H_FRAMES);
     my $current_level = 0;
     my $toc_nr = 0;
-    my $ul_style = $T2H_NUMBER_SECTIONS ? ' style="list-style: none"' : ''; 
+    my $ul_style = $T2H_NUMBER_SECTIONS ? $T2H_TOC_LIST_STYLE : ''; 
     foreach my $element (@$elements_list)
     {
         next if ($element->{'top'} or $element->{'index_page'});
@@ -925,7 +963,10 @@ sub T2H_DEFAULT_toc_body($$$)
             {
                 $current_level--;
                 $ind = '  ' x $current_level;
-                push(@T2H_TOC_LINES, "</li>\n$ind</ul></li>\n");
+                my $line = "</li>\n$ind</ul>";
+                $line .=  "</li>" if ($level == $current_level);
+                push(@T2H_TOC_LINES, "$line\n");
+                
             }
         }
         else
@@ -971,7 +1012,7 @@ EOT
 # If customizing $T2H_AFTER_ABOUT, be sure to put the content inside <p></p>.
 $T2H_AFTER_ABOUT = '';
 
-my %T2H_BUTTONS_EXAMPLE =
+%T2H_BUTTONS_EXAMPLE =
     (
      'Top',         ' &nbsp; ',
      'Contents',    ' &nbsp; ',
@@ -1049,6 +1090,7 @@ EOT
         <ul>
           <li>...</li>
         </ul>
+      </li>
       <li>1.2 Subsection One-Two
         <ul>
           <li>1.2.1 Subsubsection One-Two-One</li>
@@ -1070,6 +1112,39 @@ EOT
 $T2H_AFTER_ABOUT
 EOT
     return $about;
+}
+
+sub T2H_DEFAULT_print_redirection_page($)
+{
+    my $fh = shift;
+    my $longtitle = "$T2H_THISDOC{'title_no_texi'}";
+    $longtitle .= ": $T2H_NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
+    my $href = &$t2h_anchor('', $T2H_HREF{'This'}, $T2H_NAME{'This'}); 
+    print $fh <<EOT;
+$T2H_DOCTYPE
+<html>
+<!-- Created on $T2H_THISDOC{'today'} by $T2H_THISDOC{'program'} -->
+<!--
+$T2H_THISDOC{'program_authors'}
+-->
+<head>
+<title>$longtitle</title>
+
+<meta name="description" content="$longtitle">
+<meta name="keywords" content="$longtitle">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="$T2H_THISDOC{program}">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Refresh" content="0; url=$T2H_HREF{'This'}">
+$T2H_EXTRA_HEAD
+</head>
+
+<body $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+<p>The node you are looking for is at $href.</p>
+</body>
+EOT
 }
 
 ########################################################################
@@ -1148,9 +1223,9 @@ $simple_map_pre{'*'} = "\n";
                'aa', '&aring;',
                'AA', '&Aring;',
                'ae', '&aelig;',
-               'oe', '&oelig;', #pertusus: also &#156; which one is better ?
+               'oe', '&oelig;', #pertusus: also &#156;. &oelig; not in html 3.2
                'AE', '&AElig;',
-               'OE', '&OElig;', #pertusus: also &#140; which one is better ?
+               'OE', '&OElig;', #pertusus: also &#140;. &OElig; not in html 3.2
                'o',  '&oslash;',
                'O',  '&Oslash;',
                'ss', '&szlig;',
@@ -1455,6 +1530,7 @@ $t2h_menu_comment      = \&t2h_default_menu_comment;
 $t2h_ref_beginning     = \&t2h_default_ref_beginning;
 $t2h_info_ref          = \&t2h_default_info_ref;
 $t2h_book_ref          = \&t2h_default_book_ref;
+$t2h_external_ref      = \&t2h_default_external_ref;
 $t2h_internal_ref      = \&t2h_default_internal_ref;
 $t2h_table_item        = \&t2h_default_table_item;
 $t2h_table_line        = \&t2h_default_table_line;
@@ -1469,10 +1545,31 @@ $t2h_paragraph         = \&t2h_default_paragraph;
 $t2h_preformatted      = \&t2h_default_preformatted;
 $t2h_table             = \&t2h_default_table;
 $t2h_foot_line_and_ref = \&t2h_default_foot_line_and_ref;
+$t2h_foot_section      = \&t2h_default_foot_section;
 $t2h_image             = \&t2h_default_image;
+$t2h_address           = \&t2h_default_address;
 $t2h_index_entry_label = \&t2h_default_index_entry_label;
-$t2h_index_entries     = \&t2h_default_index_entries;
 $t2h_index_summary     = \&t2h_default_index_summary;
+$t2h_summary_letter    = \&t2h_default_summary_letter;
+$t2h_index_entry       = \&t2h_default_index_entry;
+$t2h_index_letter      = \&t2h_default_index_letter;
+$t2h_index             = \&t2h_default_index;
+$t2h_protect_html      = \&t2h_default_protect_html;
+
+sub t2h_default_protect_html($)
+{
+    my $what = shift;
+    # protect &, ", <, and >.
+    # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
+    # We may consider using that instead.
+    # If raw HTML is used outside @ifhtml or @html it's an error
+    # anyway.
+    $what =~ s/\&/\&amp;/go;
+    $what =~ s/\"/\&quot;/go;
+    $what =~ s/\</\&lt;/go;
+    $what =~ s/\>/\&gt;/go;
+    return($what);
+}
 
 # $name           :   anchor name
 # $href           :   anchor href
@@ -1583,26 +1680,35 @@ sub t2h_default_ref_beginning($)
 # ref to an info file
 sub t2h_default_info_ref($$$)
 {
-    my $type = shift;
     my $node = shift;
     my $file = shift;
-    if ($node)
-    { #i18n
-        return &$t2h_ref_beginning($type) .  "Info `$file', node `$node'";
-    }
-    else 
-    {
-        return  &$t2h_ref_beginning($type) . "`$file'";
-    }
+    my $name = shift;
+    $name = '' unless (defined($name));
+    $node = "$name: " . $node if ($name);
+    return &$t2h_anchor('', $file, $node);
 }
 
 # ref to a book
 sub t2h_default_book_ref($$$)
 {
-    my $type = shift;
     my $section = shift;
     my $book = shift;
-    return &$t2h_ref_beginning($type) . "$T2H_WORDS->{'section'} `$section' in " . apply_style ('cite', $book);
+    $book = apply_style ('cite', $book);
+    return $book unless ($section);
+    return "$T2H_WORDS->{'section'} `$section' in " . $book;
+}
+
+sub t2h_default_external_ref($$$)
+{
+    my $type = shift;
+    my $info = shift;
+    my $book = shift;
+
+    my $ref = &$t2h_ref_beginning($type);
+    $ref .= $info if ($info);
+    $ref .= " " if ($info and $book);
+    $ref .= $book if ($book);
+    return $ref;
 }
 
 # ref to a node or section in the document
@@ -1642,7 +1748,7 @@ sub t2h_default_table_item($$$)
     return '<dt>' . $text . '</dt>' . "\n";
 }
 
-# text on the lineq following @item in table, vtable and ftable
+# format text on the line following @item (in table, vtable and ftable)
 sub t2h_default_table_line($)
 {
     my $text = shift;
@@ -1729,7 +1835,7 @@ sub t2h_default_preformatted($$)
     return $open . "$text</pre>";
 }
 
-# a heading of an element
+# a heading for an element
 sub t2h_default_heading($)
 {
     my $element = shift;
@@ -1752,7 +1858,7 @@ sub t2h_default_raw($$)
     my $text = shift;
     if ($style eq 'verbatim' or $style eq 'tex')
     {
-        return '<pre>' . protect_html($text) . '</pre>';
+        return '<pre>' . &$t2h_protect_html($text) . '</pre>';
     }
     elsif ($style eq 'html')
     {
@@ -1761,23 +1867,33 @@ sub t2h_default_raw($$)
     else
     {
         warn "$WARN (bug) unknown style $style\n";
-        return protect_html($text);
+        return &$t2h_protect_html($text);
     }
 }
 
-# do footnote header for the footnotes file, and ref to the footnote file
+# do header for the footnotes text, and ref to the footnote file
 # for the text where the footnote is
-sub t2h_default_foot_line_and_ref($$$$$)
+sub t2h_default_foot_line_and_ref($$$$$$$)
 {
     my $foot_num = shift;
+    my $relative_num = shift;
     my $footid = shift;
     my $docid = shift;
     my $from_file = shift;
     my $footnote_file = shift;
+    my $lines = shift;
+    my $state = shift;
     
     my $foot = "($foot_num)";
-    return ("<h3>" . &$t2h_anchor($footid, "$from_file#$docid", $foot) . "</h3>\n", 
-         &$t2h_anchor($docid, "$footnote_file#$footid", $foot));
+    unshift @$lines, "<h3>" . &$t2h_anchor($footid, "$from_file#$docid", $foot) . "</h3>\n";
+    return ($lines, &$t2h_anchor($docid, "$footnote_file#$footid", $foot));
+}
+
+sub t2h_default_foot_section($)
+{
+    my $lines = shift;
+    unshift @$lines, "$T2H_DEFAULT_RULE\n<h3>$T2H_WORDS->{'Footnotes_Title'}</h3>\n";
+    return $lines;
 }
 
 sub t2h_default_image($$$)
@@ -1795,6 +1911,17 @@ sub t2h_default_image($$$)
           "<div align=\"center\"><img src=\"$image\" alt=\"$base\"></div>" :
           "<img src=\"$image\" alt=\"$base\">");
     }
+}
+
+# address put in footer describing when was generated and who did the manual
+sub t2h_default_address($$)
+{
+   my $user = shift;
+   my $date = shift;
+   my $text = '';
+   $text .= "by <i>$user</i> " if $user;
+   $text .= "on <i>$date</i>" if $date;
+   return $text;
 }
 
 # label for an index entry, target of the link from the index page
@@ -1892,100 +2019,70 @@ sub t2h_default_def_line($$$)
     return $result;
 }
 
-sub t2h_default_index_entries($$)
+# a whole index
+sub t2h_default_index($)
 {
-    my $element = shift;
-    my $page = shift;
- 
+    my $text = shift;
     #FIXME i18n
-    my $result = '<table border="0">' . "\n" .
+    return '<table border="0">' . "\n" .
 "<tr><td></td><th align=\"left\">Index Entry</th><th align=\"left\"> Section</th></tr>\n" .
-"<tr><td colspan=\"3\"> <hr></td></tr>\n";
+"<tr><td colspan=\"3\"> $T2H_DEFAULT_RULE</td></tr>\n" . $text . "</table>";
+}
 
-    for my $letter (@{$page->{Letters}})
-    {
-       $result .= '<tr><th>' .
-            &$t2h_anchor("$element->{'id'}_" . protect_html($letter), '', protect_html($letter)) .
-                "</th><td></td><td></td></tr>\n";
-       for my $entry (@{$page->{EntriesByLetter}->{$letter}})
-       {
-           my $label = $entry->{'element'};
-           my $entry_element = $label;
-           # notice that we use the section associated with a node even when 
-           # there is no with_section, i.e. when there is another node preceding
-           # the sectionning command
-           $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'node'} and $entry_element->{'section_ref'});
-           my $origin_href = '';
-           $origin_href = $entry->{'file'} if ($T2H_SPLIT and $entry->{'file'} ne $element->{'file'});
-	   #print STDERR "$entry $entry->{'entry'}, real elem $label->{'texi'}, section $entry_element->{'texi'}, real $label->{'file'}, entry file $entry->{'file'}\n";
-           if ($entry->{'label'})
-           { 
-               $origin_href .= '#' . $entry->{'label'};
-           }
-	   else
-           {
-               # If the $label element and the $index entry are on the same
-               # file the label is prefered. If they aren't on the same file
-               # the entry id is choosed as it means that the label element
-               # and the index entry are separated by a printindex.
-               print STDERR "id undef ($entry) entry: $entry->{'entry'}, label: $label->{'text'}\n"  if (!defined($entry->{'id'}));
-               if ($entry->{'file'} eq $label->{'file'})
-               {
-                   $origin_href .= '#' . $label->{'id'};
-               }
-               else
-               {
-                   $origin_href .= '#' . $entry->{'id'} ;
-               }
-           }
-           $result .=
-                "<tr><td></td><td valign=\"top\">" .
-                &$t2h_anchor('', $origin_href, $entry->{entry}) .
-                "</td><td valign=\"top\">" .
-                &$t2h_anchor('', href($entry_element, $element->{'file'}), $entry_element->{'text'}) .
-                "</td></tr>\n";
-        }
-        $result .= "<tr><td colspan=\"3\"> <hr></td></tr>\n";
-    }
-    $result .= "</table>";
-    return $result;
+# format an letter entry in index
+sub t2h_default_index_letter($$$)
+{
+    my $letter = shift;
+    my $index = shift;
+    my $id = shift;
+    my $entries = shift;
+    
+    return '<tr><th>' .
+      &$t2h_anchor("${id}_" . $index, '', &$t2h_protect_html($letter)) .
+       "</th><td></td><td></td></tr>\n" . $entries .
+    "<tr><td colspan=\"3\"> $T2H_DEFAULT_RULE</td></tr>\n";
+}
+
+# format an index entry (in a letter entry)
+sub t2h_default_index_entry($$$$)
+{
+    my $origin_href = shift;
+    my $entry = shift;
+    my $element_href= shift;
+    my $element_text = shift;
+    return "<tr><td></td><td valign=\"top\">" .
+      &$t2h_anchor('', $origin_href, $entry) .
+      "</td><td valign=\"top\">" .
+      &$t2h_anchor('', $element_href, $element_text) . "</td></tr>\n";
+}
+
+sub t2h_default_summary_letter($$$)
+{
+    my $letter = shift;
+    my $file = shift;
+    my $index = shift;
+    my $id = shift;
+
+    return &$t2h_anchor('', "$file#${id}_" . $index,
+         "<b>" . &$t2h_protect_html($letter) . "</b>",
+         'style="text-decoration: none"');
 }
 
 sub t2h_default_index_summary($$)
 {
-    my $element = shift;
-    my $index_elements = shift;
-    my ($summary, $l1, $l2);
+    my $alphabetical_letters = shift;
+    my $non_alphabeticals = shift;
 
+    my $alphabetical_line = '';
+    $alphabetical_line = join ("\n &nbsp; \n", @$alphabetical_letters) . "\n &nbsp; \n" if (@$alphabetical_letters);
+    my $non_alphabetical_line = '';
+    $non_alphabetical_line = join ("\n &nbsp; \n", @$non_alphabeticals) . "\n &nbsp; \n" if (@$non_alphabeticals);
+
+    $non_alphabetical_line .= "<br>\n" if ($non_alphabetical_line);
     #FIXME i18n
-    $summary = '<table><tr><th valign="top">Jump to: &nbsp; </th><td>';
-    for my $index_element_item (@$index_elements)
-    {
-        my $index_element = $index_element_item->{'element'};
-        my $file = '';
-        $file .= $index_element->{'file'} if ($index_element->{'file'} ne $element->{'file'});
-        for my $letter (@{$index_element_item->{'page'}->{Letters}})
-        {
-            my $l = &$t2h_anchor('', "$file#$index_element->{'id'}_" . protect_html($letter),
-                            "<b>" . protect_html($letter) . "</b>",
-                            'style="text-decoration: none"')
-                . "\n &nbsp; \n";
-            if ($letter =~ /^[A-Za-z]/)
-            {
-                $l2 .= $l;
-            }
-            else
-            {
-                $l1 .= $l;
-            }
-        }
-    }
-    $summary .= $l1 . "<br>\n" if ($l1);
-    $summary .= $l2 if ($l2);
-    $summary .= '</td></tr></table>';
-    return $summary;
+    return '<table><tr><th valign="top">Jump to: &nbsp; </th><td>' .
+       $non_alphabetical_line . $alphabetical_line . '</td></tr></table>';
 }
-
 
 ######################################################################
 # from here on, its l2h init stuff

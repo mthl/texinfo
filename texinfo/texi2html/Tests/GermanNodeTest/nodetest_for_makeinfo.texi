@@ -1,0 +1,361 @@
+\input texinfo @c -*-texinfo-*-
+@c
+@c It is not possible to test for @,{c} in 
+@c nodename cause makeinfo can not
+@c handle cedilla's in node names. A cedilla
+@c has a comma which was recognized a as
+@c delimiter between node parts (next,previous etc.)
+@setfilename nodetest_for_makeinfo.info
+@node Top,Umlaut,(dir)
+@top
+@menu
+* Umlaut::               Umlaut.
+
+
+Another Heading
+
+
+* acute accent::         acute accent.
+* grave accent::         grave accent.
+* circumflex accent::    circumflex accent.
+* tilde accent::         tilde accent.
+* cedilla accent::       cedilla accent.
+* rest::                 rest @@aa@{@} etc.
+@end menu
+@c
+@node Umlaut,,Top,Top
+@chapter Umlaut
+@menu
+* @"a::    @"a.
+* @"e::    @"e.
+* @"i::    @"i.
+* with brace @"{i}::    @"{i}.
+* with dotless @"{@dotless{i}}::   @"{@dotless{i}}.
+* @"o::    @"o.
+* @"u::    @"u.
+* @"y::    @"y.
+* @"A::    @"A.
+* @"E::    @"E.
+* @"I::    @"I.
+* @"O::    @"O.
+* @"U::    @"U.
+* @ss{}::    @ss{}.
+* no section::  Node without sectioning command.
+@end menu
+@c
+@node @"a,,,Umlaut
+@section @"a
+ref to @,{c} @ref{cedilla}.
+@node @"e,,,Umlaut
+@section @"e
+@node @"i,,,Umlaut 
+@section @"i
+@node with brace @"{i},,,Umlaut
+@section With brace @"{i}
+@node with dotless @"{@dotless{i}},,,Umlaut
+@section With dotless @"{@dotless{i}}
+
+before footnote @xref{footanchor}.
+
+@footnote{@anchor{footanchor}}
+
+after footnote @xref{footanchor}.
+
+@node @"o,,,Umlaut
+@section @"o
+Ref to an anchor at the end of the doc 
+(@pxref{@'o-o, , there is an o-@'o could there be an @^{@dotless{i}}}).
+@node @"u,,,Umlaut
+@section @"u
+Another ref to an anchor (@pxref{x-spot, ,}).
+@node @"y,,,Umlaut
+@section @"y
+This is a ref to a node (@pxref{@'U, ,@'U}).
+
+@node @"A,,,Umlaut
+@section @"A
+
+Now a ref to a node without sectionning command, 
+no text (@pxref{no section, , }).
+With text (@pxref{no section, ,but a text }).
+
+@node @"E,,,Umlaut
+@section @"E
+@node @"I,,,Umlaut
+@section @"I
+@node @"O,,,Umlaut
+@section @"O
+@node @"U,,,Umlaut
+@section @"U
+@node @ss{},,,Umlaut
+@section @ss{}
+@node no section,,,Umlaut
+This is a node without sectioning command.
+@c
+@node acute accent,,Top,Top
+@chapter acute accent
+@menu
+* @'a::    @'a.
+* @'e::    @'e.
+* @'i::    @'i.
+* @'o::    @'o.
+* @'u::    @'u.
+* @'y::    @'y.
+* @'A::    @'A.
+* @'E::    @'E.
+* @'I::    @'I.
+* @'O::    @'O.
+* @'U::    @'U.
+* @'Y::    @'Y.
+@end menu
+@c
+@node @'a,,,acute accent
+@section @'a
+With brace @'{a}. Testing ' " ` ^.
+@node @'e,,,acute accent
+@section @'e
+@node @'i,,,acute accent
+@section @'i
+@node @'o,,,acute accent
+@section @'o
+@node @'u,,,acute accent
+@section @'u
+@node @'y,,,acute accent
+@section @'y
+@node @'A,,,acute accent
+@section @'A
+@node @'E,,,acute accent
+@section @'E
+@node @'I,,,acute accent
+@section @'I
+@node @'O,,,acute accent
+@section @'O
+@node @'U,,,acute accent
+@section @'U
+@node @'Y,,,acute accent
+@section @'Y
+This is a ref to @"u (@pxref{@"u, ,@"u}).
+Another one, with node only (@pxref{@"a, ,}).
+
+@ignore
+An ignored sentence.
+@end ignore 
+
+@c
+@node grave accent,,Top,Top
+@chapter grave accent
+@menu
+* @`a::    @`a.
+* @`e::    @`e.
+* @`i::    @`i.
+* with brace @`{i}::    @`{i}.
+* with dotless @`{@dotless{i}}::   @`{@dotless{i}}.
+* @`o::    @`o.
+* @`u::    @`u.
+* @`A::    @`A.
+* @`E::    @`E.
+* @`I::    @`I.
+* @`O::    @`O.
+* @`U::    @`U.
+@end menu
+@c
+@node @`a,,,grave accent
+@section @`a
+@node @`e,,,grave accent
+@section @`e
+@node @`i,,,grave accent
+@section @`i
+@node with brace @`{i},,,grave accent
+@section @`{i}
+@node with dotless @`{@dotless{i}},,,grave accent
+@section @`{@dotless{i}}
+@node @`o,,,grave accent
+@section @`o
+@node @`u,,,grave accent
+@section @`u
+@node @`A,,,grave accent
+@section @`A
+@node @`E,,,grave accent
+@section @`E
+@node @`I,,,grave accent
+@section @`I
+@node @`O,,,grave accent
+@section @`O
+@node @`U,,,grave accent
+@section @`U
+@c
+@node circumflex accent,,Top,Top
+@chapter circumflex accent
+@menu
+* @^a::    @^a.
+* @^e::    @^e.
+* @^i::    @^i.
+* with brace @^{i}::    @^{i}.
+* with dotless @^{@dotless{i}}::   @^{@dotless{i}}.
+* @^o::    @^o.
+* @^u::    @^u.
+* @^A::    @^A.
+* @^E::    @^E.
+* @^I::    @^I.
+* @^O::    @^O.
+* @^U::    @^U.
+@end menu
+@c
+@node @^a,,,circumflex accent
+@section @^a
+@node @^e,,,circumflex accent
+@section @^e
+@node @^i,,,circumflex accent
+@section @^i
+@node with brace @^{i},,,circumflex accent
+@section @^{i}
+Test @@^@{i@}.
+@node with dotless @^{@dotless{i}},,,circumflex accent
+@section @^{@dotless{i}}
+Test @@^@{@@dotless@{i@}@}.
+@node @^o,,,circumflex accent
+@section @^o
+@node @^u,,,circumflex accent
+@section @^u
+@node @^A,,,circumflex accent
+@section @^A
+@node @^E,,,circumflex accent
+@section @^E
+@node @^I,,,circumflex accent
+@section @^I
+@node @^O,,,circumflex accent
+@section @^O
+@node @^U,,,circumflex accent
+@section @^U
+@c
+@node tilde accent,,Top,Top
+@chapter tilde accent
+@menu
+* @~a::    @~a.
+* @~n::    @~n.
+* @~o::    @~o.
+* @~A::    @~A.
+* @~O::    @~O.
+@end menu
+@c
+@node @~a,,,tilde accent
+@section @~a
+@node @~n,,,tilde accent
+@section @~n
+@node @~o,,,tilde accent
+@section @~o
+@node @~A,,,tilde accent
+@section @~A
+@node @~O,,,tilde accent
+@section @~O
+This marks the @anchor{x-spot}spot.
+A second one with accented char @anchor{@'o-o}.
+@c
+@node cedilla accent,,Top,Top
+@chapter cedilla accent
+@menu
+* cedilla ::    @,{c}.
+* Cedilla ::    @,{C}.
+@end menu
+@c
+@node cedilla,,,cedilla accent
+@section @,{c}
+@node Cedilla ,,,cedilla accent
+@section @,{C}
+@c
+@node rest,,Top,Top
+@chapter rest
+@menu
+* @aa{}::  @aa{}.
+* @ae{}::  @ae{}.
+* @oe{}::  @oe{}.
+* @AA{}::  @AA{}.
+* @AE{}::  @AE{}.
+* @OE{}::  @OE{}.
+* @l{}::  @l{}.
+* @o{}::  @o{}.
+* @L{}::  @L{}.
+* @O{}::  @O{}.
+* @H{a}::  @H{a}.
+* @u{a}::  @u{a}.
+* @v{a}::  @v{a}.
+* @udotaccent{a}::  @udotaccent{a} udotaccent.
+* @dotaccent{a}::  @dotaccent{a} dotaccent.
+* @ringaccent{a}::  @ringaccent{a} ringaccent.
+* @tieaccent{a}::  @tieaccent{a} tieaccent.
+* @ubaraccent{a}::  @ubaraccent{a} ubaraccent.
+* @dotless{i}::  @dotless{i} dotless i.
+* i:: i
+* @dotless{j}::  @dotless{j} dotless j.
+@end menu
+@c
+@node @aa{},,,rest
+@section @aa{}
+@node @ae{},,,rest
+@section @ae{}
+@node @oe{},,,rest
+@section @oe{}
+@node @AA{},,,rest
+@section @AA{}
+@node @AE{},,,rest
+@section @AE{}
+@node @OE{},,,rest
+@section @OE{}
+@node @l{},,,rest
+@section @l{}
+@node @o{},,,rest
+@section @o{}
+@node @L{},,,rest
+@section @L{}
+@node @O{},,,rest
+@section @O{}
+@node @H{a},,,rest
+@section @H{a}
+@node @u{a},,,rest
+@section @u{a}
+@node @v{a},,,rest
+@section @v{a}
+@node @udotaccent{a},,,rest
+@section @udotaccent{a}
+Test udotaccent.
+@node @dotaccent{a},,,rest
+@section @dotaccent{a}
+Test dotaccent.
+@node @ringaccent{a},,,rest
+@section @ringaccent{a}
+@node @tieaccent{a},,,rest
+@section @tieaccent{a}
+@node @ubaraccent{a},,,rest
+@section @ubaraccent{a}
+@node @dotless{i},,,rest
+@section @dotless{i}
+@node i,,,rest
+@section i
+@node @dotless{j},,,rest
+@section @dotless{j}
+        
+        @dots{}
+
+	@enddots{}
+
+	@exclamdown{}
+
+	@questiondown{}
+
+	@pounds{}
+
+	@@- : @-
+	@@ followed by end of line: @
+	@@ followed by tab: @	
+	@@ followed by space @ 
+	@@*: @* and text followin @@*.
+
+@node &~"#)'@{([-|`_\^@@]=+@}*$%!:;.?/<>§_@pounds{}_@questiondown{}_@exclamdown{}_@enddots{}_@dots{},,,(dir)
+
+@node @code{node},,,(dir)
+@node @asis{node},,,(dir)
+@node node,,,(dir)
+@node @^{E},,,(dor)
+
+@contents
+@bye

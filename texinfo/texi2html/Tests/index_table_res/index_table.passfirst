@@ -11,12 +11,11 @@ node comment with a ref @samp{@ref{node}}.
 @end menu
 
 @node node with ftable and vtable
+@chapter first node chapter, with ftable and vtable
 
 @cindex index entry in node
 Some text
 @cindex an second index entry in node
-
-@chapter first node chapter, with ftable and vtable
 
 @vtable @bullet
 @item var1

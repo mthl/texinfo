@@ -126,6 +126,7 @@ use vars qw(
             $T2H_SHOW_MENU
             $T2H_NUMBER_SECTIONS
             $T2H_USE_NODES
+            $T2H_NODE_FILES
             $T2H_NODE_NAME_IN_MENU
             $T2H_AVOID_MENU_REDUNDANCY
             $T2H_SECTION_NAVIGATION
@@ -133,18 +134,24 @@ use vars qw(
             $T2H_OUT 
             $T2H_DEF_TABLE 
             $T2H_LANG 
+            $T2H_SEPARATED_FOOTNOTES
             $T2H_L2H 
             $T2H_L2H_L2H 
             $T2H_L2H_SKIP 
             $T2H_L2H_TMP 
             $T2H_L2H_CLEAN 
-            $T2H_MENU_PRE_STYLE
+            $T2H_EXTERNAL_DIR
             @T2H_INCLUDE_DIRS 
 
+            $T2H_MENU_PRE_STYLE
             $T2H_CENTER_IMAGE
             $T2H_EXAMPLE_INDENT_CELL
             $T2H_SMALL_EXAMPLE_INDENT_CELL
             $T2H_SMALL_FONT_SIZE
+            $T2H_SMALL_RULE
+            $T2H_DEFAULT_RULE
+            $T2H_MIDDLE_RULE
+            $T2H_BIG_RULE
             $T2H_TOP_HEADING
             $T2H_INDEX_CHAPTER
             $T2H_SPLIT_INDEX
@@ -157,10 +164,14 @@ use vars qw(
             $T2H_ICONS
             $T2H_UNNUMBERED_SYMBOL_IN_MENU
             $T2H_MENU_SYMBOL
+            $T2H_TOC_LIST_STYLE
+            $T2H_TOP_NODE_FILE
+            $T2H_NODE_FILE_EXTENSION
             %T2H_ACTIVE_ICONS
             %T2H_NAVIGATION_TEXT
             %T2H_PASSIVE_ICONS
             %T2H_BUTTONS_GOTO
+            %T2H_BUTTONS_EXAMPLE
             @T2H_CHAPTER_BUTTONS
             @T2H_MISC_BUTTONS
             @T2H_SECTION_BUTTONS
@@ -193,6 +204,9 @@ use vars qw(
             $T2H_print_frame
             $T2H_print_toc_frame
             $T2H_toc_body
+            $T2H_print_redirection_page
+            $t2h_set_body_text
+            $t2h_protect_html
             $t2h_anchor
             $t2h_def_item
             $t2h_def
@@ -202,6 +216,7 @@ use vars qw(
             $t2h_ref_beginning
             $t2h_info_ref
             $t2h_book_ref
+            $t2h_external_ref
             $t2h_internal_ref
             $t2h_table_item
             $t2h_table_line
@@ -216,10 +231,15 @@ use vars qw(
             $t2h_preformatted
             $t2h_table
             $t2h_foot_line_and_ref
+            $t2h_foot_section
+            $t2h_address
             $t2h_image
             $t2h_index_entry_label
-            $t2h_index_entries
+            $t2h_index_entry
+            $t2h_index_letter
+            $t2h_index
             $t2h_index_summary
+            $t2h_summary_letter
             $T2H_PRE_ABOUT
             $T2H_AFTER_ABOUT
 
@@ -230,6 +250,7 @@ use vars qw(
             %T2H_HREF
             %T2H_NAME
             %T2H_NODE
+            %T2H_NO_TEXI
             %T2H_THISDOC
             @T2H_TOC_LINES
             @T2H_STOC_LINES
@@ -269,12 +290,12 @@ use vars qw(
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.45 2003-05-02 18:20:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.46 2003-05-09 16:46:39 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
 
-# Authors:
+# Authors (appears in comments):
 my $T2H_AUTHORS = <<EOT;
 Written by: Lionel Cons <Lionel.Cons\@cern.ch> (original author)
             Karl Berry  <karl\@freefriends.org>
@@ -477,9 +498,12 @@ $index_properties =
                'ss', 'ss',
                'l', 'l',
                'L', 'L',
-               'exclamdown', '&iexcl;',
-               'questiondown', '&iquest;',
-               'pounds', '&pound;'
+               'exclamdown', '! upside-down',
+	       #'exclamdown', '&iexcl;',
+               'questiondown', '? upside-down',
+	       #'questiondown', '&iquest;',
+               'pounds', 'pound sterling'
+	       #'pounds', '&pound;'
               );
 
 
@@ -627,7 +651,7 @@ sub SetDocumentLanguage
     }
     else
     {
-        warn "$ERROR: Language specs for '$lang' do not exists. Reverting to '$T2H_LANG'\n";
+        warn "$ERROR Language specs for '$lang' do not exists. Reverting to '$T2H_LANG'\n";
     }
 }
 
@@ -761,6 +785,20 @@ $T2H_OPTIONS -> {'use-nodes'} =
  verbose => 'use nodes for sectionning'
 };
 
+$T2H_OPTIONS -> {'node-files'} =
+{
+ type => '!',
+ linkage => \$T2H_NODE_FILES,
+ verbose => 'produce one file per node for cross references'
+};
+
+$T2H_OPTIONS -> {'separated-footnotes'} =
+{
+ type => '!',
+ linkage => \$T2H_SEPARATED_FOOTNOTES,
+ verbose => 'footnotes on a separated page'
+};
+
 $T2H_OPTIONS -> {split} =
 {
  type => '=s',
@@ -838,6 +876,13 @@ $T2H_OPTIONS -> {lang} =
  type => '=s',
  linkage => sub {SetDocumentLanguage($_[1])},
  verbose => 'use $s as document language (ISO 639 encoding)',
+};
+
+$T2H_OPTIONS -> {'html-xref-prefix'} =
+{
+ type => '=s',
+ linkage => \$T2H_EXTERNAL_DIR,
+ verbose => '$s is the base dir for external manual references',
 };
 
 $T2H_OPTIONS -> {l2h} =
@@ -1041,7 +1086,7 @@ if (@ARGV > 1)
 #                                                                              #
 #---############################################################################
 
-# retro compatibility
+# retro compatibility for $T2H_EXPAND
 push (@T2H_EXPAND, $T2H_EXPAND) if ($T2H_EXPAND);
 
 $text_macros{'menu'} = 1 if ($T2H_SHOW_MENU);
@@ -1065,6 +1110,8 @@ foreach my $expanded (@T2H_EXPAND)
     }
 }
 
+# This is kept in that file although it is html formatting as it seems to 
+# be rather obsolete
 $T2H_INVISIBLE_MARK = '<img src="invisible.xbm" alt="">' if $T2H_INVISIBLE_MARK eq 'xbm';
 
 $T2H_DEBUG |= $DEBUG_TEXI if ($T2H_DUMP_TEXI);
@@ -1169,6 +1216,9 @@ else
 $docu_doc = "$docu_name.$docu_ext"; # document's contents
 if ($T2H_SPLIT)
 {
+    # FIXME if T2H_NODE_FILES is true and a node is called ${docu_name}_toc
+    # ${docu_name}_ovr... there is trouble. This is fixable, but is it worth
+    # fixing it ?
     $docu_toc   = $T2H_TOC_FILE || "${docu_name}_toc.$docu_ext"; 
     $docu_stoc  = "${docu_name}_ovr.$docu_ext"; 
     $docu_foot  = "${docu_name}_fot.$docu_ext";
@@ -1217,6 +1267,7 @@ my @index_labels = ();             # array corresponding with @?index commands
 # initial counters
 #
 my $foot_num = 0;
+my $relative_foot_num = 0;
 my $idx_num = 0;
 my $sec_num = 0;
 my $anchor_num = 0;
@@ -1751,6 +1802,7 @@ my @copying_lines = ();     # lines between @copying and @end copying
 my $macros;                 # macros. reference on a hash
 my $element_top;            # Top element
 my $node_top;               # Top node
+my $node_first;             # First node
 my $element_index;          # element with first index
 my $element_chapter_index;  # chapter with first index
 my $element_first;          # first element
@@ -1764,7 +1816,7 @@ my $footnote_element =
     'footnote' => 1,
     'element' => 1,
     'place' => [],
-};    
+};
 
 
 my $do_contents;            # do table of contents if true
@@ -1773,9 +1825,9 @@ my $do_scontents;           # do short table of contents if true
 sub initialise_state_texi($)
 {
     my $state = shift;
-    $state->{'texi'} = 1;           # for substitute_text and close_stack 
+    $state->{'texi'} = 1;           # for substitute_text and close_stack: 
                                     # 1 if pass_texi/scan_texi is to be used
-    $state->{'menu'} = 0;           # number of opened menus      
+    $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'titlepage'} = 0;      # number of opened titlepages
     $state->{'level'} = 0;          # current sectionning level
@@ -1787,7 +1839,7 @@ sub initialise_state_texi($)
 sub pass_texi()
 {
     my $first_line = 1;         # is it the first line
-    my $state = {}; 
+    my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
     initialise_state_texi($state);
@@ -1834,7 +1886,9 @@ sub pass_texi()
                 }
                 if ($tag eq 'node')
                 {
-                    warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODERE$/o;
+                    # The following line flags out nodes with : which are valid
+                    # but cannot appear easily in menus
+		    #warn "$ERROR Bad node line: $_" unless $_ =~ /^\@node\s$NODERE$/o;
                     my $node_ref;
                     my $auto_directions;
                     $auto_directions = 1 unless (/,/o);
@@ -1855,7 +1909,10 @@ sub pass_texi()
                         }
                         else
                         {
+                             my $first;
+                             $first = 1 if (!defined($node_ref));
                              $node_ref = {};
+                             $node_first = $node_ref if ($first);
                              $nodes{$node} = $node_ref;
                         }     
                         $node_ref->{'node'} = 1;
@@ -2006,7 +2063,7 @@ sub pass_texi()
                     # number is right
                     unless (@elements_list)
                     {
-                        warn "$WARN \@printindex before document begining\n";
+                        warn "$WARN Printindex command before document beginning: \@printindex $1\n";
                         next;
                     }
                     # $element_index is the first element with index
@@ -2163,6 +2220,7 @@ sub menu_entry_texi($$)
     {
         $nodes{$node} = $node_menu_ref;
         $node_menu_ref->{'texi'} = $node;
+        $node_menu_ref->{'external_node'} = 1 if ($node =~ /\(.+\)/);
     }
     $node_menu_ref->{'menu_node'} = 1;
     if ($state->{'node_ref'})
@@ -2172,7 +2230,7 @@ sub menu_entry_texi($$)
     }
     else
     {
-        warn "$WARN menu without previous node";
+        warn "$WARN menu without previous node\n" unless $node =~ /\(.+\)/;
     }
     return if ($state->{'detailmenu'});
     if ($state->{'prev_menu_node'})
@@ -2186,6 +2244,9 @@ sub menu_entry_texi($$)
     }
     $state->{'prev_menu_node'} = $node_menu_ref;
 }
+
+my %files = ();   #keys are files. This is used to avoid reusing an allready
+                  # used file name
 
 # find next, prev, up, back, forward, fastback, fastforward
 # find element id and file
@@ -2314,7 +2375,7 @@ sub rearrange_elements()
         my $up = "NO_UP";
         $up = $section->{'up'} if (defined($section->{'up'}));
         print STDERR "# numbering section ($section->{'level'}): $section->{'number'}: (up: $up) $section->{'texi'}\n"
-            if ($T2H_DEBUG and $DEBUG_ELEMENTS);
+            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     }
 
     my @node_directions = ('node_prev', 'node_next', 'node_up');
@@ -2339,6 +2400,8 @@ sub rearrange_elements()
                     }
                     else
                     {
+                        # FIXME if {'seen'} this is a node appearing in the
+                        # document. What to do in that case ?
                         my $node_ref = { 'texi' => $node->{$direction},
                             'external_node' => 1 };
                         $nodes{$node->{$direction}} = $node_ref;
@@ -2600,18 +2663,15 @@ sub rearrange_elements()
     $element_top->{'top'} = 1 if ($element_top->{'node'});
     $element_last = $elements_list[-1];
     print STDERR "# find forward and back\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-    # FIXME et nodes ?
-    # element_up is the up element except when the up element is the top element
     my $prev;
     foreach my $element (@elements_list)
     {
-        if ($element->{'toplevel'} and !defined($element->{'up'}))
+        if ($element->{'toplevel'} and !defined($element->{'up'}) and $element ne $element_top)
         {
             $element->{'up'} = $element_top;
         }
         # FIXME up or element_up ? It is only used for reparenting with indices
-	# surement element_up sinon ca fait n'importe quoi avec les nodes
-        push @{$element->{'up'}->{'childs'}}, $element if (defined($element->{'up'}));
+        push @{$element->{'element_up'}->{'childs'}}, $element if (defined($element->{'element_up'}));
         if ($prev)
         {
             $element->{'back'} = $prev;
@@ -2698,6 +2758,7 @@ sub rearrange_elements()
                     push @checked_elements, $element if (defined($element->{'node_ref'}) and ($node eq $element->{'node_ref'}));
                 }
                 push @checked_elements, $element if (!defined($element->{'node_ref'}));
+                $element->{'nodes'} = [];
             }
             else
             {
@@ -2707,6 +2768,7 @@ sub rearrange_elements()
                     $element_index = $element if ($element_index and ($element->{'node_ref'} eq $element_index));
                 }
                 push @checked_elements, $element;
+                $element->{'nodes'} = [];
             }
         }
         else
@@ -2714,13 +2776,15 @@ sub rearrange_elements()
             push @checked_elements, $element;
         }
         #print STDERR "Add index pages for ($element) $element->{'texi'} (@checked_elements)\n";
-        my $element_at_top = get_top($element);
         my $current_element = { 'holder' => 1, 'texi' => 'HOLDER', 
             'place' => [], 'indices' => [] }; # current_element is the 
                                         # last element holding text
         my $back = $element->{'back'} if defined($element->{'back'}); # used to find back and forward
         my $forward = $element->{'forward'}; #used to find forward of the last inserted element
+        my $element_next = $element->{'element_next'};
         my $index_num = 0;
+        my @waiting_elements = (); # elements (nodes) not used for sectionning 
+                                 # waiting to be associated with an element
         foreach my $checked_element(@checked_elements)
         {
 	    if ($checked_element->{'element'})
@@ -2734,7 +2798,7 @@ sub rearrange_elements()
                         push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
                     }
                 }
-		else
+                else
                 {  
                     if ($checked_element->{'toplevel'})
                     # there was an index_page added, this index_page is toplevel.
@@ -2752,11 +2816,27 @@ sub rearrange_elements()
                 $checked_element->{'back'} = $back;
                 $back->{'forward'} = $checked_element if (defined($back));
                 $back = $checked_element;
+                push @{$checked_element->{'nodes'}}, @waiting_elements;
+                my $waiting_element;
+                while (@waiting_elements)
+                {
+                    $waiting_element = shift @waiting_elements;
+                    $waiting_element->{'section_ref'} = $checked_element;
+                }
+            }
+            elsif ($current_element->{'holder'})
+            {
+                push @waiting_elements, $checked_element;
+            }
+	    else
+            {
+                push @{$current_element->{'nodes'}}, $checked_element;
+                $checked_element->{'section_ref'} = $current_element;
             }
             push @{$current_element->{'place'}}, @{$checked_element->{'current_place'}};
             foreach my $index (@{$checked_element->{'index_names'}})
             {
-                print STDERR "# Index in `$checked_element->{'texi'}': $index->{'name'}\n"
+                print STDERR "# Index in `$checked_element->{'texi'}': $index->{'name'}. Current is `$current_element->{'texi'}'\n"
                     if ($T2H_DEBUG & $DEBUG_INDEX);
                 my ($Pages, $Entries) = GetIndex($index->{'name'});
                 if (defined($Pages))
@@ -2764,40 +2844,44 @@ sub rearrange_elements()
                     my @pages = @$Pages;
                     my $first_page = shift @pages;
                     # debug
-		    my $next_texi = 'NO_NEXT';
-		    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top) and  defined($element_at_top->{'element_next'}));
                     my $back_texi = 'NO_BACK';
                     $back_texi = $back->{'texi'} if (defined($back));
-                    my $top = 'NO_TOP';
-                    $top = $element_at_top->{'texi'} if defined($element_at_top);
-		    print STDERR "# New index first page (top $top, back $back_texi, current $current_element->{'texi'}, next $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
+		    print STDERR "# New index first page (back `$back_texi', current `$current_element->{'texi'}')\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                     push @{$current_element->{'indices'}}, [ {'element' => $current_element, 'page' => $first_page} ];
                     if (@pages)
                     {
                         if ($current_element->{'holder'})
                         { # the current element isn't a real element. 
                           # We add the real element 
-                            push @new_elements, $checked_element;
                           # we are in a node of a section but the element
                           # is splitted by the index, thus we must add 
                           # a new element which will contain the text 
                           # between the beginning of the element and the index
+                            push @new_elements, $checked_element;
+                            print STDERR "# Add element `$element->{'texi'}' before index page\n" 
+                                if ($T2H_DEBUG & $DEBUG_INDEX);
                             $checked_element->{'element'} = 1;
                             $checked_element->{'level'} = $element->{'level'};
                             $checked_element->{'toc_level'} = $element->{'toc_level'};
                             $checked_element->{'toplevel'} = $element->{'toplevel'};
                             $checked_element->{'up'} = $element->{'up'};
                             $checked_element->{'element_added'} = 1;
+                            delete $checked_element->{'with_section'};
                             if ($checked_element->{'toplevel'})
                             {
                                 $element->{'element_prev'}->{'element_next'} = $checked_element if (exists($element->{'element_prev'}));
-                                $element_at_top = $checked_element;
                             }
-                            $checked_element->{'element_next'} = $element_at_top->{'element_next'};
                             push @{$checked_element->{'place'}}, @{$current_element->{'place'}};
                             foreach my $index(@{$current_element->{'indices'}})
                             {
                                 push @{$checked_element->{'indices'}}, [ { 'element' => $checked_element, 'page' => $index->[0]->{'page'} } ] ;
+                            }
+                            push @{$checked_element->{'nodes'}}, @waiting_elements;
+                            my $waiting_element;
+                            while (@waiting_elements)
+                            {
+                                $waiting_element = shift @waiting_elements;
+                                $waiting_element->{'section_ref'} = $checked_element;
                             }
                             $checked_element->{'back'} = $back;
                             $back->{'forward'} = $checked_element if (defined($back));
@@ -2808,28 +2892,26 @@ sub rearrange_elements()
                         while(@pages)
                         {
                             # debug
-                            my $next_texi = 'NO_NEXT';
-			    $next_texi = $element_at_top->{'element_next'}->{'texi'} if (defined($element_at_top) and defined($element_at_top->{'element_next'}));
-                            my $top = 'NO_TOP';
-                            $top = $element_at_top->{'texi'} if defined($element_at_top);
-			    print STDERR "# New page (top $top, back $back->{'texi'}, current $current_element->{'texi'}, next  $next_texi)\n" if ($T2H_DEBUG & $DEBUG_INDEX);
+			    print STDERR "# New page (back `$back->{'texi'}', current `$current_element->{'texi'}')\n" if ($T2H_DEBUG & $DEBUG_INDEX);
                             $index_num++;
                             my $page = shift @pages;
                             $index_page = { 'index_page' => 1,
-                             'texi' => "$element->{'texi'} index page $index_num",
-                             'level' => $toplevel,
-                             'toplevel' => 1,
-                             'up' => $element_top,
+                             'texi' => "$element->{'texi'} index $index->{'name'} page $index_num",
+                             'level' => $element->{'level'},
+                             'toplevel' => $element->{'toplevel'},
+                             'up' => $element->{'up'},
+                             'element_up' => $element->{'element_up'},
+                             'element_next' => $element_next,
                              'element_ref' => $element,
-                             'element_next' => $element_at_top->{'element_next'},
                              'back' => $back,
                              'prev' => $back,
                              'next' => $current_element->{'next'},
                              'following' => $current_element->{'following'},
                              'nodeup' => $current_element->{'nodeup'},
                              'place' => [],
-                             'page' => $page 
+                             'page' => $page
                             };
+                            $index_page->{'node'} = 1 if ($element->{'node'});
                             while ($nodes{$index_page->{'texi'}})
                             {
                                 $nodes{$index_page->{'texi'}} .= ' ';
@@ -2839,10 +2921,10 @@ sub rearrange_elements()
                             push @new_elements, $index_page;
                             $back->{'forward'} = $index_page;
                             $back->{'next'} = $index_page;
+                            $back->{'element_next'} = $index_page unless ($back->{'top'});
                             $back->{'following'} = $index_page;
                             $back = $index_page;
-                            $element_at_top->{'element_next'} = $index_page unless ($element_at_top->{'top'});
-                            $element_at_top = $index_page;
+                            $index_page->{'toplevel'} = 1 if ($element->{'top'});
                         }
                         $current_element = $index_page;
                     }
@@ -2855,27 +2937,16 @@ sub rearrange_elements()
             $current_element->{'forward'} = $forward;
             $forward->{'back'} = $current_element;
         }
-        next unless ($current_element ne $element);
+        next if ($current_element eq $element or !$current_element->{'toplevel'});
         # reparent the elements below $element, following element
         # and following parent of element to the last index page
-	print STDERR "# Reparent `$element->{'texi'}':\n"
-                    if ($T2H_DEBUG & $DEBUG_INDEX);
+	print STDERR "# Reparent `$element->{'texi'}':\n" if ($T2H_DEBUG & $DEBUG_INDEX);
         my @reparented_elements = ();
         @reparented_elements = (@{$element->{'childs'}}) if (defined($element->{'childs'}));
-        my $up = $element;
-        while ($up and !$up->{'toplevel'})
-        {
-           my $next = $up->{'element_next'};
-           while (defined($next))
-           {
-               push @reparented_elements, $next;
-               $next = $next->{'element_next'};
-           }
-           $up = $up->{'element_up'};
-        }
+        push @reparented_elements, $element->{'element_next'} if (defined($element->{'element_next'}));
         foreach my $reparented(@reparented_elements)
         {
-            next if ($reparented->{'toplevel'}); # happens for an index in @top
+            next if ($reparented->{'toplevel'});
             $reparented->{'element_up'} = $current_element;
 	    print STDERR "   reparented: $reparented->{'texi'}\n"
                     if ($T2H_DEBUG & $DEBUG_INDEX);
@@ -2931,8 +3002,62 @@ sub rearrange_elements()
     {
         $node->{'id'} = 'NOD' . $node_nr;
         $node_nr++;
+        # debug check
+        print STDERR "Bug: level defined for node `$node->{'texi'}'\n" if (defined($node->{'level'}) and !$node->{'element_added'});
     }
-    
+
+    # Find node file names
+    if ($T2H_NODE_FILES)
+    {
+        my $top;
+        if ($node_top)
+        {
+            $top = $node_top;
+        }
+        elsif ($element_top->{'node_ref'})
+        {
+            $top = $element_top->{'node_ref'};
+        }
+        else
+        {
+            $top = $node_first;
+        }
+        if ($top)
+        {
+            my $file = "$T2H_TOP_NODE_FILE.$T2H_NODE_FILE_EXTENSION";
+            $top->{'file'} = $file if ($T2H_SPLIT eq 'node');
+            $top->{'node_file'} = $file;
+            $files{$file} = "node";
+        }
+        foreach my $key (keys(%nodes))
+        {
+            my $node = $nodes{$key};
+            next if ($node->{'external_node'} or $node->{'index_page'} or defined($node->{'file'}));
+            my $name = remove_texi($node->{'texi'});
+            $name =~ s/[^\w\.\-]/-/g;
+            my $file = "${name}.$T2H_NODE_FILE_EXTENSION";
+            my $index = 0;
+            while ($files{$file})
+            {
+                $index++;
+                $file = "${name}_${index}.$T2H_NODE_FILE_EXTENSION";
+            }
+            $node->{'file'} = $file if ($T2H_SPLIT eq 'node');
+            $node->{'node_file'} = $file;
+            if ($node->{'node'})
+            {
+                $files{$file} = "node";
+            }
+            elsif ($node->{'anchor'})
+            {
+                $files{$file} = "anchor";
+            }
+	    else
+            {
+                print STDERR "Bug: $node->{'texi'} not a node nor an anchor nor an index_page\n";
+            }
+        }
+    }
     # find document nr and document file for sections and nodes. 
     # Split according to T2H_SPLIT.
     # find file and id for placed elements (anchors, index entries, headings)
@@ -2940,11 +3065,12 @@ sub rearrange_elements()
     {
         my $cut_section = $toplevel;
         my $doc_nr = -1;
-        my @indices_list = ();
         if ($T2H_SPLIT eq 'section')
         {
-           $cut_section = 2 if ($toplevel <= 2);
+            $cut_section = 2 if ($toplevel <= 2);
         }
+        my $top_doc_nr;
+        my $prev_nr;
         foreach my $element (@elements_list)
         {
             print STDERR "# Splitting ($T2H_SPLIT) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -2953,34 +3079,83 @@ sub rearrange_elements()
                (
                  (!$element->{'node'} or $element->{'element_added'}) and ($element->{'level'} <= $cut_section)
                )
-               or $element->{'index_page'});
+              );
+            $doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
             $element->{'doc_nr'} = $doc_nr;
-            $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
-            $element->{'file'} = "$docu_name.$docu_ext" if ($doc_nr == 0);
-            $element->{'file'} = "$docu_top" if ($element->{'top'} or $element->{'in_top'});
+            if ($T2H_NODE_FILES and $T2H_SPLIT eq 'node')
+            {
+                my $node = get_node($element);
+                if ($node and $node->{'file'})
+                {
+                    $element->{'file'} = $node->{'file'};
+                }
+                unless ($element->{'file'})
+                {
+                    my $file = "${docu_name}_$doc_nr.$docu_ext";
+                    while ($files{$file})
+                    {
+                        $doc_nr++;
+                        $file = "${docu_name}_$doc_nr.$docu_ext";
+                    }
+                    $element->{'file'} = $file;
+                    $element->{'doc_nr'} = $doc_nr;
+                }
+            }
+            else
+            {
+                $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                if (defined($top_doc_nr))
+                {
+                    if ($doc_nr eq $top_doc_nr)
+                    {
+                        $element->{'file'} = "$docu_top";
+                        if ($element->{'level'} # this is an element below @top. It
+                                               # starts a new file.
+                          or ($element->{'node'} and ($element ne $node_top) and (!defined($element->{'section_ref'}) or $element->{'section_ref'} ne $element_top))
+                          )# this is a node not associated with top
+                        {
+                            $doc_nr++;
+                            my $file = "${docu_name}_$doc_nr.$docu_ext";
+                            while ($files{$file})
+                            {
+                                $doc_nr++;
+                                $file = "${docu_name}_$doc_nr.$docu_ext";
+                            }
+                            $element->{'doc_nr'} = $doc_nr;
+                            $element->{'file'} = "${docu_name}_$doc_nr.$docu_ext";
+                        }
+                    }
+                }
+                elsif ($element eq $element_top or (defined($element->{'section_ref'}) and $element->{'section_ref'} eq $element_top) or (defined($element->{'node_ref'}) and !$element->{'node_ref'}->{'element_added'} and $element->{'node_ref'} eq $element_top))
+                {
+                    $element->{'file'} = "$docu_top";
+                    # if there is a previous element, we force it to be in 
+                    # an other file than top
+                    $doc_nr++ if (defined($prev_nr) and $doc_nr == $prev_nr);
+                    $top_doc_nr = $doc_nr;
+                    $element->{'doc_nr'} = $doc_nr;
+                }
+            }
+            $prev_nr = $doc_nr;
+#            $element->{'file'} = "$docu_name.$docu_ext" if ($doc_nr == 0);
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = $element->{'file'};
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
-            #FIXME this may be wrong, and we should care as for hrefs the
-            # file might be wrong. FIXED by element_added ?
-            #(it is wrong when the nodes follow the section and there 
-            #is an index inbetween)
-            unless ($element->{'node'})
+            if (!$element->{'node'} and (!$T2H_NODE_FILES or ($T2H_SPLIT ne 'node')))
             { 
                 if (!$T2H_USE_NODES and $element->{'nodes'})
                 {
                     foreach my $node (@{$element->{'nodes'}})
                     {
-                        next if ($node->{'element_added'});
-                        $node->{'doc_nr'} = $doc_nr;
+                        $node->{'doc_nr'} = $element->{'doc_nr'};
                         $node->{'file'} = $element->{'file'};
                     }
                 }
-                elsif ($element->{'node_ref'} and !$element->{'element_added'})
+                elsif ($element->{'node_ref'} and !$element->{'node_ref'}->{'element_added'})
                 {
-                    $element->{'node_ref'}->{'doc_nr'} = $doc_nr ;
+                    $element->{'node_ref'}->{'doc_nr'} = $element->{'doc_nr'} ;
                     $element->{'node_ref'}->{'file'} = $element->{'file'};
                 }
             }
@@ -2990,14 +3165,14 @@ sub rearrange_elements()
     {
         foreach my $element(@elements_list)
         {
-            $element->{'file'} =  "$docu_name.$docu_ext"; 
+            die "$ERROR monolithic file and a node have the same file name $docu_name.$docu_ext\n" if ($T2H_NODE_FILES and $files{$docu_name.$docu_ext});
+            $element->{'file'} =  "$docu_name.$docu_ext";
             $element->{'doc_nr'} = 0;
             foreach my $place(@{$element->{'place'}})
             {
                 $place->{'file'} = "$element->{'file'}";
                 $place->{'id'} = $element->{'id'} unless defined($place->{'id'});
             }
- 
         }
         foreach my $node(@nodes_list)
         {
@@ -3008,8 +3183,8 @@ sub rearrange_elements()
     # correct the id and file for the things placed in footnotes
     foreach my $place(@{$footnote_element->{'place'}})
     {
-       $place->{'file'} = $footnote_element->{'file'};
-       $place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
+        $place->{'file'} = $footnote_element->{'file'};
+        $place->{'id'} = $footnote_element->{'id'} unless defined($place->{'id'});
     }
     foreach my $element ((@elements_list, $footnote_element))
     {
@@ -3017,13 +3192,16 @@ sub rearrange_elements()
         my $is_toplevel = 'not top';
         $is_toplevel = 'top' if ($element->{'toplevel'});
         print STDERR "$element ";
-        if ($element->{'node'})
+        if ($element->{'index_page'})
         {
-            print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+            print STDERR "index($element->{'id'}, $is_toplevel, doc_nr $element->{'doc_nr'}($element->{'file'})): $element->{'texi'}\n";
         }
-        elsif ($element->{'index_page'})
+        elsif ($element->{'node'})
         {
-            print STDERR "index($element->{'id'}, doc_nr $element->{'doc_nr'}): $element->{'texi'}\n";
+            my $added = '';
+            $added = 'added, ' if ($element->{'element_added'});
+            print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, ${added}doc_nr $element->{'doc_nr'}($element->{'file'})) $element->{'texi'}:\n";
+            print STDERR "  section_ref: $element->{'section_ref'}->{'texi'}\n" if (defined($element->{'section_ref'}));
         }
         elsif ($element->{'footnote'})
         {
@@ -3033,7 +3211,8 @@ sub rearrange_elements()
         {
             my $number = "UNNUMBERED";
             $number = $element->{'number'} if ($element->{'number'});
-            print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}) $element->{'texi'}:\n";
+            print STDERR "$number ($element->{'id'}, $is_toplevel, level $element->{'level'}-$element->{'toc_level'}, doc_nr $element->{'doc_nr'}($element->{'file'})) $element->{'texi'}:\n";
+            print STDERR "  node_ref: $element->{'node_ref'}->{'texi'}\n" if (defined($element->{'node_ref'}));
         }
         print STDERR "  TOP($toplevel) " if ($element->{'top'});
         print STDERR "  u: $element->{'up'}->{'texi'}\n" if (defined($element->{'up'}));
@@ -3085,7 +3264,20 @@ sub rearrange_elements()
             {
                 print STDERR "    heading: $place->{'texi'}\n";
             }
-        } 
+        }
+        if ($element->{'indices'})
+        {
+            print STDERR "  indices: $element->{'indices'}\n";
+            foreach my $index(@{$element->{'indices'}})
+            {
+                print STDERR "    $index: ";
+                foreach my $page (@$index)
+                {
+                    print "'$page->{'element'}->{'texi'}': $page->{'page'} ";
+                }
+                print STDERR "\n";
+            }
+        }
     }
 }
 
@@ -3111,18 +3303,25 @@ sub get_node($)
     my $element = shift;
     return undef if (!defined($element));
     return $element if ($element->{'node'});
-    return $element->{'node_ref'} if ($element->{'node_ref'});
+    return $element->{'node_ref'} if ($element->{'node_ref'} and !$element->{'node_ref'}->{'element_added'});
     return $element;
 }
 # get the html names from the texi for all elements
 sub do_names()
 {
+    # for nodes and anchors we haven't any state defined
+    # This seems right, however, as we don't want @refs or @footnotes
+    # or @anchors within nodes, section commands or anchors.
     foreach my $node (%nodes)
     {
-        # FIXME for nodes and anchors we haven't the state defined
         next if ($nodes{$node}->{'index_page'}); # some nodes are index pages.
         $nodes{$node}->{'text'} = substitute_line ($nodes{$node}->{'texi'});
         $nodes{$node}->{'name'} = $nodes{$node}->{'text'};
+        $nodes{$node}->{'no_texi'} = &$t2h_protect_html(remove_texi($nodes{$node}->{'texi'}));
+	if ($nodes{$node}->{'external_node'})
+        {
+            $nodes{$node}->{'file'} = do_external_ref($node);
+        }
     }
     foreach my $number (keys(%sections))
     {
@@ -3130,6 +3329,8 @@ sub do_names()
         $section->{'name'} = substitute_line ($section->{'texi'});
         $section->{'text'} = $section->{'number'} . " " . $section->{'name'};
         $section->{'text'} =~ s/^\s*//;
+        $section->{'no_texi'} = &$t2h_protect_html($section->{'number'} . " " .remove_texi($section->{'texi'}));
+        $section->{'no_texi'} =~ s/^\s*//;
     }
     foreach my $element (@elements_list)
     {
@@ -3139,6 +3340,12 @@ sub do_names()
             my $page = $element->{'page'};
             my $sec_name = $element->{'element_ref'}->{'text'};
             $element->{'text'} = ($page->{First} ne $page->{Last} ?
+                "$sec_name: $page->{First} -- $page->{Last}" :
+                "$sec_name: $page->{First}");
+            $sec_name = $element->{'element_ref'}->{'no_texi'};
+	    #$sec_name = $element->{'element_ref'}->{'number'} . " " .$sec_name if (defined($element->{'element_ref'}->{'number'}));
+	    #$sec_name =~ s/^\s*//;
+            $element->{'no_texi'} = &$t2h_protect_html($page->{First} ne $page->{Last} ?
                 "$sec_name: $page->{First} -- $page->{Last}" :
                 "$sec_name: $page->{First}");
         }
@@ -3164,36 +3371,39 @@ sub enter_index_entry($$$$$$)
     my $element = shift;
     my $use_section_id = shift;
     my $in_pre = shift;
-
-    warn "$ERROR Undefined index command: ${prefix}index", return
-        unless (exists ($index_properties->{$prefix}));
+    unless (exists ($index_properties->{$prefix}))
+    {
+        warn "$ERROR Undefined index command: ${prefix}index\n";
+        return 0;
+    }
+    unless (defined($element))
+    {
+        warn "$WARN Index entry before document: \@${prefix}index $key\n"; 
+        return 0; 
+    }
     $key =~ s/\s+$//;
     $key =~ s/^\s*//;
-    # FIXME do it later, with the context
-    my $entry = substitute_line($key);
+    # done later, during index writing.
+    #my $entry = substitute_line($key);
+    my $entry = $key;
     # The $key is only usefull for alphabetical sorting
     $key = remove_texi($key);
-    warn "$WARN Index entry before document\n", return 
-       unless defined($element);
     return if ($key =~ /^\s*$/);
     while (exists $index->{$prefix}->{$key})
     {
         $key .= ' ';
     }
-
     my $id = '';
     unless ($use_section_id)
     {
         $id = 'IDX' . ++$idx_num;
-	#push(@$lines, &$t2h_anchor($id, '', $T2H_INVISIBLE_MARK, !$in_pre));
     }
     $index->{$prefix}->{$key}->{'entry'} = $entry;
     $index->{$prefix}->{$key}->{'element'} = $element;
     $index->{$prefix}->{$key}->{'label'} = $id;
-    #print STDERR "Enter $index->{$prefix}->{$key} $key\n"; 
     push @$place, $index->{$prefix}->{$key};
     print STDERR "# enter ${prefix}index '$key' with id $id ($index->{$prefix}->{$key})\n"
-        if $T2H_DEBUG & $DEBUG_INDEX;
+        if ($T2H_DEBUG & $DEBUG_INDEX);
     push @index_labels, $index->{$prefix}->{$key};
     return $index->{$prefix}->{$key};
 }
@@ -3213,36 +3423,31 @@ sub IndexName2Prefix
 }
 
 # get all the entries (for all the prefixes) in the $normal and $code 
-# references, formatted with <code> if it is a $code entry.
+# references, formatted with @code{code } if it is a $code entry.
 sub GetIndexEntries($$)
 {
     my $normal = shift;
     my $code = shift;
     my $entries = {};
-    #$index = $index;
-    for my $prefix (keys %$normal)
+    foreach my $prefix (keys %$normal)
     {
         for my $key (keys %{$index->{$prefix}})
         {
             $entries->{$key} = $index->{$prefix}->{$key};
-            # FIXME we don't copy the hash, but use it instead.
-            # This is needed because the ref is in 'place' 
-            # Is it problematic ?
-	    #$entries->{$key} = {%{$index->{$prefix}->{$key}}};
         }
     }
 
     if (defined($code))
     {
-        for my $prefix (keys %$code)
+        foreach my $prefix (keys %$code)
         {
             unless (exists $normal->{$prefix})
             {
-                for my $key (keys %{$index->{$prefix}})
+                foreach my $key (keys %{$index->{$prefix}})
                 {
                     $entries->{$key} = $index->{$prefix}->{$key};
-                    # FIXME should be done later during index pages generation
-                    $entries->{$key}->{entry} = "<code>$entries->{$key}->{entry}</code>";
+		    # use @code for code style index entry
+                    $entries->{$key}->{entry} = "\@code{$entries->{$key}->{entry}}";
                 }
             }
         }
@@ -3298,17 +3503,7 @@ sub GetIndexPages($)
     @Letters = sort byAlpha keys %$EntriesByLetter;
     $T2H_SPLIT_INDEX = 0 unless $T2H_SPLIT;
 
-    unless ($T2H_SPLIT_INDEX)
-    {
-        $page->{First} = $Letters[0];
-        $page->{Last} = $Letters[$#Letters];
-        $page->{Letters} = \@Letters;
-        $page->{EntriesByLetter} = $EntriesByLetter;
-        push @$Pages, $page;
-        return $Pages;
-    }
-
-    if ($T2H_SPLIT_INDEX =~ /^\d+$/)
+    if ($T2H_SPLIT_INDEX and $T2H_SPLIT_INDEX =~ /^\d+$/)
     {
         my $i = 0;
         my ($prev_letter);
@@ -3335,6 +3530,16 @@ sub GetIndexPages($)
         $page->{Last} = $Letters[$#Letters];
         push @$Pages, $page;
     }
+    else
+    {
+        warn "$WARN Bad T2H_SPLIT_INDEX: $T2H_SPLIT_INDEX\n" if ($T2H_SPLIT_INDEX);
+        $page->{First} = $Letters[0];
+        $page->{Last} = $Letters[$#Letters];
+        $page->{Letters} = \@Letters;
+        $page->{EntriesByLetter} = $EntriesByLetter;
+        push @$Pages, $page;
+        return $Pages;
+    }
     return $Pages;
 }
 
@@ -3343,8 +3548,11 @@ sub GetIndex($)
     my $name = shift;
     return (@{$indices{$name}}) if ($indices{$name});
     my $prefix = IndexName2Prefix($name);
-    warn ("$ERROR bad index name: $name"), return
-        unless $prefix;
+    unless ($prefix)
+    {
+        warn "$ERROR Bad index name: $name\n";
+        return;
+    }
     if ($index_properties->{$prefix}->{code})
     {
         $index_properties->{$prefix}->{from_code}->{$prefix} = 1;
@@ -3400,21 +3608,22 @@ sub pass_text()
     }
 
     # prepare %T2H_THISDOC
-    $T2H_THISDOC{fulltitle} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || "Untitled Document";
-    $T2H_THISDOC{title} = substitute_line($value{'_settitle'}) || $T2H_THISDOC{fulltitle};
-    $T2H_THISDOC{author} = substitute_line($value{'_author'});
-    $T2H_THISDOC{subtitle} =  substitute_line($value{'_subtitle'});
-    $T2H_THISDOC{shorttitle} =  substitute_line($value{'_shorttitle'});
-
+    $T2H_THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || "Untitled Document";
+    $T2H_THISDOC{'title'} = substitute_line($value{'_settitle'}) || $T2H_THISDOC{'fulltitle'};
+    $T2H_THISDOC{'author'} = substitute_line($value{'_author'});
+    $T2H_THISDOC{'subtitle'} =  substitute_line($value{'_subtitle'});
+    $T2H_THISDOC{'shorttitle'} =  substitute_line($value{'_shorttitle'});
+    $T2H_THISDOC{'title_no_texi'} = &$t2h_protect_html(remove_texi($value{'_settitle'})) || &$t2h_protect_html(remove_texi($value{'_title'})) || "Untitled Document";
+    $T2H_THISDOC{'shorttitle_no_texi'} =  &$t2h_protect_html(remove_texi($value{'_shorttitle'}));
     for my $key (keys %T2H_THISDOC)
     {
         $T2H_THISDOC{$key} =~ s/\s*$//;
     }
-    $T2H_THISDOC{program} = $THISPROG;
-    $T2H_THISDOC{program_homepage} = $T2H_HOMEPAGE;
-    $T2H_THISDOC{program_authors} = $T2H_AUTHORS;
-    $T2H_THISDOC{today} = $T2H_TODAY;
-    $T2H_THISDOC{copying} = $copying_comment;
+    $T2H_THISDOC{'program'} = $THISPROG;
+    $T2H_THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
+    $T2H_THISDOC{'program_authors'} = $T2H_AUTHORS;
+    $T2H_THISDOC{'today'} = $T2H_TODAY;
+    $T2H_THISDOC{'copying'} = $copying_comment;
     
     # prepare TOC, OVERVIEW
     $T2H_TOC = \@T2H_TOC_LINES;
@@ -3450,6 +3659,23 @@ sub pass_text()
          'Footnotes', $T2H_WORDS->{'Footnotes_Title'},
         );
     $T2H_NAME{'Index'} = $element_chapter_index->{'text'} if (defined($element_chapter_index));
+    
+    my $top_no_texi = '';
+    if ($element_top and $element_top->{'no_texi'})
+    {
+        $top_text = $element_top->{'no_texi'};
+    }
+    %T2H_NO_TEXI =
+        (
+         'First',   $element_first->{'no_texi'},
+         'Last',    $element_last->{'no_texi'},
+         'About',    $T2H_WORDS->{'About_Title'},
+         'Contents', $T2H_WORDS->{'ToC_Title'},
+         'Overview', $T2H_WORDS->{'Overview_Title'},
+         'Top',      $T2H_TOP_HEADING || $top_no_texi || $T2H_THISDOC{'title_no_texi'} || $T2H_THISDOC{'shorttitle_no_texi'},
+         'Footnotes', $T2H_WORDS->{'Footnotes_Title'},
+        );
+    $T2H_NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
 
     ############################################################################
     # print frame and frame toc file
@@ -3528,14 +3754,14 @@ sub pass_text()
                     $current_element = shift (@all_elements);
                     if ($current_element->{'node'})
                     {
-			    #print STDERR 'NODE ' . $current_element->{'texi'};
-			    #print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'});
+		         print STDERR 'NODE ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+			 print STDERR "($current_element->{'section_ref'}->{'texi'})" if ($current_element->{'section_ref'} and $T2H_DEBUG & $DEBUG_ELEMENTS);;
                     }
                     else
                     {
-			    #print STDERR 'SECTION ' . $current_element->{'texi'};
+			 print STDERR 'SECTION ' . $current_element->{'texi'} if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     }
-		    #print STDERR ": $_";
+		    print STDERR ": $_" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     if (!$element 
                       or ($current_element->{'element'} and ($current_element ne $element))
                       or ($current_element->{'section_ref'} and ($current_element->{'section_ref'} ne $element)))
@@ -3553,7 +3779,8 @@ sub pass_text()
                 else
                 {
                     $new_element = $index_pages->[$index_pages_nr]->{'element'};
-		    #print STDERR "New index page index_page_nr $index_pages_nr\n";
+                    $current_element = $index_pages->[$index_pages_nr]->{'element'};
+		    print STDERR "New index page '$new_element->{'texi'}' nr: $index_pages_nr\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                     my $list_element = shift @elements_list;
                     die "element in index_pages $new_element->{'texi'} and in list $list_element->{'texi'} differs\n" unless ($list_element eq $new_element);
                 }
@@ -3562,16 +3789,25 @@ sub pass_text()
                     $index_nr = 0;
                     my $old = 'NO_OLD';
                     $old = $element->{'texi'} if (defined($element));
-		    #print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n";
+		    print STDERR "NEW: $new_element->{'texi'}, OLD: $old\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+                    if ($element and ($new_element->{'doc_nr'} != $element->{'doc_nr'}) and @foot_lines and !$T2H_SEPARATED_FOOTNOTES)
+                    { # note that this can only happen if $T2H_SPLIT
+                        &$t2h_foot_section (\@foot_lines);
+                        push @section_lines, @foot_lines;
+                        @foot_lines = ();
+                        $relative_foot_num = 0;
+                    }
                     # print the element that just finished
                     $T2H_THIS_SECTION = \@section_lines;
                     $T2H_THIS_HEADER = \@head_lines;
                     if ($element and $element->{'top'})
                     {
+                        my $top_file = $docu_top_file;
                         if ($T2H_SPLIT)
                         {
-                            open(FILE, "> $docu_top_file")
-                                || die "$ERROR: Can't open $docu_top_file for writing: $!\n";
+                            my $top_file = $docu_rdir . $element->{'file'};
+                            open(FILE, "> $top_file")
+                                || die "$ERROR: Can't open $top_file for writing: $!\n";
                             $FH = \*FILE;
                         }
                         #print STDERR "TOP $element->{'texi'}, @section_lines\n";
@@ -3579,12 +3815,11 @@ sub pass_text()
                         $T2H_HREF{'Top'} = href($element_top, $element->{'file'});
                         &$T2H_print_Top($FH, $element->{'has_heading'});
 
-                        if ($T2H_SPLIT or $one_section)
+                        if ($T2H_SPLIT)
                         {
                             close($FH)
-                                || die "$ERROR: Error occurred when closing $docu_top_file: $!\n";
+                                || die "$ERROR: Error occurred when closing $top_file: $!\n";
                             undef $FH;
-                            return if ($one_section);
                         }
                     }
                     elsif ($element)
@@ -3628,15 +3863,20 @@ sub pass_text()
                         {
                             $T2H_NODE{$direction} = $elem->{'node_ref'}->{'text'};
                         }
-                        if ($elem->{'external_node'} or ($elem->{'menu_node'} and ! $elem->{'seen'}))
+                        if ($elem->{'menu_node'} and ! $elem->{'seen'})
                         {
                             $T2H_HREF{$direction} = '';
+                        }
+                        elsif ($elem->{'external_node'})
+                        {
+                            $T2H_HREF{$direction} = $elem->{'file'};
                         }
                         else
                         {
                             $T2H_HREF{$direction} = href($elem, $element->{'file'});
                         }
                         $T2H_NAME{$direction} = $elem->{'text'};
+                        $T2H_NO_TEXI{$direction} = $elem->{'no_texi'};
                     }   
 		    #print STDERR "\nDone hrefs for $element->{'texi'}\n";
                     if (! defined($FH))
@@ -3645,14 +3885,25 @@ sub pass_text()
 			#print STDERR "Open file for $element->{'texi'}\n";
                         open(FILE, "> $docu_rdir$file") ||
                         die "$ERROR: Can't open $docu_rdir$file for writing: $!\n";
-                        print STDERR "\n# Writing to $docu_rdir$file " if $T2H_VERBOSE;
+                        print "\n" if ($T2H_VERBOSE and !$T2H_DEBUG);
+                        print STDERR "# Writing to $docu_rdir$file " if $T2H_VERBOSE;
                         $FH = \*FILE;
                         &$T2H_print_page_head($FH);
                         &$T2H_print_chapter_header($FH) if $T2H_SPLIT eq 'chapter';
                     }
                     print STDERR "." if ($T2H_VERBOSE);
+                    print STDERR "\n" if ($T2H_DEBUG);
                     @section_lines = ();
                     @head_lines = ();
+                }
+                my $label = &$t2h_anchor($current_element->{'id'}) . "\n";
+                if (@section_lines)
+                {
+                    push (@section_lines, $label);
+                }
+                else
+                {
+                    push @head_lines, $label;
                 }
                 if ($index_pages)
                 {
@@ -3670,15 +3921,6 @@ sub pass_text()
                     }
                     next;
                 }
-                my $label = &$t2h_anchor($current_element->{'id'}) . "\n";
-                if (@section_lines)
-                {
-                    push (@section_lines, $label);
-                }
-                else
-                {
-                    push @head_lines, $label;
-                }
                 push @section_lines, &$t2h_heading($current_element) if ($current_element->{'element'} and !$current_element->{'top'});
                 next;
             }
@@ -3686,14 +3928,14 @@ sub pass_text()
             {
                 s/\s+(\w+)\s*//;
                 my $name = $1;
-		#print STDERR "print index $name($index_nr) in `$element->{'texi'}', element->{'indices'}: $element->{'indices'},\n";
-		#print STDERR "element->{'indices'}->[index_nr]: $element->{'indices'}->[$index_nr] (@{$element->{'indices'}->[$index_nr]})\n";
+		print STDERR "print index $name($index_nr) in `$element->{'texi'}', element->{'indices'}: $element->{'indices'},\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
+		print STDERR "element->{'indices'}->[index_nr]: $element->{'indices'}->[$index_nr] (@{$element->{'indices'}->[$index_nr]})\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS or $T2H_DEBUG & $DEBUG_INDEX);
                 close_stack(\$text, \@stack, \%state, '');
                 close_paragraph (\$text, \@stack, \%state, '');
+                next unless (IndexName2Prefix($name));
                 $index_pages = $element->{'indices'}->[$index_nr] if (@{$element->{'indices'}->[$index_nr]} > 1);
                 $index_pages_nr = 0;
                 add_prev(\$text, \@stack, do_index_page($element->{'indices'}->[$index_nr], 0));  
-		#push @section_lines, do_index_page($element->{'indices'}->[$index_nr], 0);
                 $index_pages_nr++;
 		#print STDERR "index_pages $index_pages\n" if defined($index_pages);
                 $index_nr++;
@@ -3718,14 +3960,31 @@ sub pass_text()
     # if no sections, then simply print document as is
     if ($one_section)
     {
-        print STDERR "# Write the section\n" if ($T2H_VERBOSE);
+        if (@foot_lines)
+        {
+            &$t2h_foot_section (\@foot_lines);
+            push @section_lines, @foot_lines;
+        }
+        $T2H_THIS_HEADER = \@head_lines;
+        if ($element->{'top'})
+        {
+            print STDERR "Bug: `$element->{'texi'}' level undef\n" if (!$element->{'node'} and !defined($element->{'level'}));
+            $element->{'level'} = 1 if (!defined($element->{'level'}));
+            $element->{'node'} = 0; # otherwise t2h_heading may uses the node level
+            $element->{'text'} = $T2H_NAME{'Top'};
+            print STDERR "[Top]" if ($T2H_VERBOSE);
+            unless ($element->{'has_heading'})
+            {
+                unshift @section_lines, &$t2h_heading($element);
+            }
+        }
+        print STDERR "# Write the section $element->{'texi'}\n" if ($T2H_VERBOSE);
         t2h_print_lines($FH);
         &$T2H_print_foot_navigation($FH);
         &$T2H_print_page_foot($FH);
         close($FH);
         return;
     }
-
     &$T2H_print_section($FH);
     if ($T2H_SPLIT)
     {
@@ -3743,6 +4002,7 @@ sub pass_text()
         # it is better to undef in case the refs are used, as if deleted, the
         # refs are still on the old element (we could do both)
         $T2H_NAME{$direction} = undef;
+        $T2H_NO_TEXI{$direction} = undef;
         $T2H_NODE{$direction} = undef;
     }
     if (@foot_lines)
@@ -3753,6 +4013,7 @@ sub pass_text()
         $T2H_HREF{This} = $T2H_HREF{Footnotes};
         $T2H_HREF{Footnotes} = '#' . $footnote_element->{'id'};
         $T2H_NAME{This} = $T2H_NAME{Footnotes};
+        $T2H_NO_TEXI{This} = $T2H_NO_TEXI{Footnotes};
         $T2H_THIS_SECTION = \@foot_lines;
         $T2H_THIS_HEADER = [ &$t2h_anchor($footnote_element->{'id'}) . "\n" ];
         &$T2H_print_Footnotes(\*FILE);
@@ -3768,6 +4029,7 @@ sub pass_text()
         $T2H_HREF{This} = $T2H_HREF{Contents};
         $T2H_HREF{Contents} = "#SEC_Contents";
         $T2H_NAME{This} = $T2H_NAME{Contents};
+        $T2H_NO_TEXI{This} = $T2H_NO_TEXI{Contents};
         $T2H_THIS_SECTION = \@T2H_TOC_LINES;
         $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_Contents") . "\n" ];
         &$T2H_print_Toc(\*FILE);
@@ -3783,6 +4045,7 @@ sub pass_text()
         $T2H_HREF{This} = $T2H_HREF{Overview};
         $T2H_HREF{Overview} = "#SEC_Overview";
         $T2H_NAME{This} = $T2H_NAME{Overview};
+        $T2H_NO_TEXI{This} = $T2H_NO_TEXI{Overview};
         $T2H_THIS_SECTION = \@T2H_STOC_LINES;
         $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_Overview") . "\n" ];
         &$T2H_print_Overview(\*FILE);
@@ -3799,6 +4062,7 @@ sub pass_text()
         $T2H_HREF{This} = $T2H_HREF{About};
         $T2H_HREF{About} = "#SEC_About";
         $T2H_NAME{This} = $T2H_NAME{About};
+        $T2H_NO_TEXI{This} = $T2H_NO_TEXI{About};
         $T2H_THIS_SECTION = [$about_body];
         $T2H_THIS_HEADER = [ &$t2h_anchor("SEC_About") . "\n" ];
         &$T2H_print_About(\*FILE);
@@ -3810,6 +4074,27 @@ sub pass_text()
     {
         &$T2H_print_page_foot(\*FILE);
         close (FILE);
+    }
+}
+
+# write to files with name the node name for cross manual references.
+sub do_node_files()
+{
+    foreach my $key (keys(%nodes))
+    {
+        my $node = $nodes{$key};
+        next unless ($node->{'node_file'});
+        my $file = "${docu_rdir}$node->{'node_file'}";
+        $T2H_NODE{'This'} = $node->{'text'};
+        $T2H_NO_TEXI{'This'} = $node->{'no_texi'};
+        $T2H_NAME{'This'} = $node->{'text'};
+        my $redirection_file = $docu_doc;
+        $redirection_file = $node->{'file'} if ($T2H_SPLIT);
+        print STDERR "Bug: file for redirection for `$node->{'texi'}' don't exist\n" if (!$redirection_file);
+        $T2H_HREF{'This'} = "$node->{'file'}#$node->{'id'}";
+        open (NODEFILE, "> $file") || die "$ERROR: Can't open $file for writing: $!\n";
+        &$T2H_print_redirection_page (\*NODEFILE);
+        close NODEFILE || die "$ERROR: Can't close $file: $!\n";
     }
 }
 
@@ -4017,6 +4302,20 @@ sub do_preformatted($$)
     my $pre_style = '';
     $pre_style = $state->{'preformatted_stack'}->[-1] if ($state->{'preformatted_stack'}->[-1]);
     return &$t2h_preformatted($text, $pre_style);
+}
+
+sub do_external_ref($)
+{
+    my $node = shift;
+    $node =~ s/^\((.+?)\)//;
+    my $file = $1 . "/";
+    $file = $T2H_EXTERNAL_DIR . $file if ($T2H_EXTERNAL_DIR);
+    return $file unless ($node);
+    $node = normalise_node($node);
+    $node = remove_texi($node);
+    $node =~ s/[^\w\.\-]/-/g;
+    $node = $T2H_TOP_NODE_FILE if ($node eq 'Top');
+    return $file . $node . ".$T2H_NODE_FILE_EXTENSION";
 }
 
 # return 1 if the following tag shouldn't begin a line
@@ -4437,7 +4736,7 @@ sub do_text($;$)
         $text =~ s/''/"/go;
         $text =~ s/---/--/go;
     }
-    return protect_html($text);
+    return &$t2h_protect_html($text);
 }
 
 sub end_simple_format($$)
@@ -4491,11 +4790,6 @@ sub menu_entry($)
 
     my $entry;
     my $element = $nodes{$node_texi};
-    #if (($node_texi =~ /^top$/i) and defined($node_top))
-    #{
-    #    $nodes{$node_texi} = $node_top;
-    #    $element = $node_top;
-    #}
     if ($element->{'seen'})
     {
         if ($element->{'with_section'})
@@ -4537,7 +4831,7 @@ sub menu_entry($)
         }
         return &$t2h_menu_entry($entry, $descr, $state, $href);
     }
-    elsif ($node =~ /^\(.*\)/)
+    elsif ($node_texi =~ /^\(.*\)/)
     {
         # menu entry points to another info manual
 	if ($state->{'preformatted'})
@@ -4549,7 +4843,7 @@ sub menu_entry($)
             $entry = ($name && ($name ne $node || ! $T2H_AVOID_MENU_REDUNDANCY)
                       ? "$T2H_MENU_SYMBOL ${name}: $node" : "$T2H_MENU_SYMBOL $node");
         }
-        return &$t2h_menu_entry($entry, $descr, $state);
+        return &$t2h_menu_entry($entry, $descr, $state, $nodes{$node_texi}->{'file'});
     }
     else
     {
@@ -4571,9 +4865,26 @@ sub do_xref($$$)
     $args[0] = normalise_space($args[0]);
     my $node_texi = normalise_node($args[0]);
     # a ref to a node in an info manual
-    if (($macro ne 'inforef') and $args[0] =~ s/^\(([^\s\(\)]+)\)\s*//)
+    if ($args[0] =~ s/^\(([^\)]+)\)\s*//)
     {
-         $args[3] = $1 unless ($args[3] or $args[4]);
+        if ($macro eq 'inforef')
+        {
+            $args[2] = $1 unless ($args[2]);
+        }
+        else
+        {
+            $args[3] = $1 unless ($args[3]);
+        }
+    }
+    if (($macro ne 'inforef') and $args[3])
+    {
+        $node_texi = "($args[3])" . normalise_node($args[0]);
+    }
+
+    if ($macro eq 'inforef')
+    {
+        warn "$ERROR Wrong number of arguments: \@$macro" ."$text" unless (@args == 3);
+        $node_texi = "($args[2])$args[0]";
     }
     
     my $i;
@@ -4585,21 +4896,26 @@ sub do_xref($$$)
            $args[$i]);
     }
     #print STDERR "(@args)\n";
-    if ($macro eq 'inforef')
-    {# inforef 
-        warn "$ERROR Wrong number of arguments: \@$macro" ."$text" unless @args == 3;
-        $result = &$t2h_info_ref('xref', $args[0], $args[2]);
+    
+    if (($macro eq 'inforef') or ($args[3]) or $args[4])
+    {# inforef
+        if ($macro eq 'inforef')
+        {
+            $macro = 'xref';
+            $args[3] = $args[2];
+        }
+        my $info_ref;
+        $info_ref = &$t2h_info_ref("($args[3])$args[0]", do_external_ref($node_texi), $args[1]) if ($args[3]);
+        my $book_ref;
+        $book_ref = &$t2h_book_ref($args[2] || $args[0], $args[4]) if ($args[4]);
+        $result = &$t2h_external_ref($macro, $info_ref, $book_ref);
     }
-    elsif (@args == 5)
-    {                   # reference to another manual
-         my $sec = $args[2] || $args[0];
-         my $man = $args[4] || $args[3];
-         $result = &$t2h_book_ref($macro, $sec, $man);
-    }
-    elsif (@args == 4)
-    {# ref to info file        
-        $result = &$t2h_info_ref($macro, $args[0], $args[3]);
-    }
+    #elsif (@args == 5)
+    #{                   # reference to another manual
+    #     my $sec = $args[2] || $args[0];
+    #     my $man = $args[4];
+    #     $result = &$t2h_book_ref($macro, $sec, $man);
+    #}
     else
     {
         my $element = $nodes{$node_texi};
@@ -4644,24 +4960,32 @@ sub do_footnote($$$)
 
     $text .= "\n";
     $foot_num++;
+    $relative_foot_num++;
     my $docid  = "DOCF$foot_num";
     my $footid = "FOOT$foot_num";
     my $from_file = '';
-    if ($state->{'element'} and $T2H_SPLIT)
+    if ($state->{'element'} and $T2H_SPLIT and $T2H_SEPARATED_FOOTNOTES)
     { 
         $from_file = $state->{'element'}->{'file'};
     }
     my %state;
-    initialise_state (\%state);
-    $state{'element'} = $footnote_element;
+    initialise_state (\%state); 
+    if ($T2H_SEPARATED_FOOTNOTES)
+    {
+        $state{'element'} = $footnote_element;
+    }
+    else
+    {
+        $state{'element'} = $state->{'element'};
+    }
     my $file = '';
-    $file = $docu_foot if ($T2H_SPLIT);
+    $file = $docu_foot if ($T2H_SPLIT and $T2H_SEPARATED_FOOTNOTES);
     
-    my ($head_foot_line, $foot_label) = &$t2h_foot_line_and_ref ($foot_num,
-         $footid, $docid, $from_file, $file);
-    push(@foot_lines, $head_foot_line);
     # FIXME use split_lines ? It seems to work like it is now ?
-    push(@foot_lines, substitute_text(\%state, map {$_ = $_."\n"} split (/\n/, $text)));
+    my @lines = substitute_text(\%state, map {$_ = $_."\n"} split (/\n/, $text));
+    my ($foot_lines, $foot_label) = &$t2h_foot_line_and_ref ($foot_num,
+         $relative_foot_num, $footid, $docid, $from_file, $file, \@lines, $state);
+    push(@foot_lines, @{$foot_lines});
     return $foot_label;
 }
 
@@ -4759,7 +5083,7 @@ sub expand_macro($$;$)
     for ($i=0; $i<=$#$formal_args; $i++)
     {
         $args->[$i] = "" unless (defined($args->[$i]));
-        print STDERR "# arg($i): $args->[$i]\n" if ($T2H_DEBUG and $DEBUG_MACROS);
+        print STDERR "# arg($i): $args->[$i]\n" if ($T2H_DEBUG & $DEBUG_MACROS);
     }
     warn "$ERROR too much arguments for macro $name" if (defined($args->[$i + 1]));
     my $result = '';
@@ -4788,7 +5112,6 @@ sub expand_macro($$;$)
             next;
         }
         $result .= $macrobody;
-        print STDERR "# macro expansion result:\n$result" if ($T2H_DEBUG & $DEBUG_MACROS);
         last;
     } 
     my $end_of_line = chomp($result);
@@ -4815,6 +5138,15 @@ sub expand_macro($$;$)
     push @result, $last_line;
     push @result, $end_line if (defined($end_line) and $end_of_line);
     unshift @input_spool, @result;
+    if ($T2H_DEBUG & $DEBUG_MACROS)
+    {
+        print STDERR "# macro expansion result:\n";
+        print STDERR "$first_line";
+        foreach my $line (@result)
+        {
+            print STDERR "$line";
+        }
+    }
     return $first_line;
 }
 
@@ -4842,11 +5174,96 @@ sub do_index_page($$;$)
     my $nr = shift;
     my $page = shift;
     my $index_element = $index_elements->[$nr];
-    my $summary = &$t2h_index_summary($index_element->{'element'}, $index_elements);
-    my $entries = &$t2h_index_entries($index_element->{'element'}, $index_element->{'page'});
+    my $summary = do_index_summary($index_element->{'element'}, $index_elements);
+    my $entries = do_index_entries($index_element->{'element'}, $index_element->{'page'});
     return $summary . $entries . $summary;
 }
 
+sub do_index_summary($$)
+{
+    my $element = shift;
+    my $index_elements = shift;
+
+    my @letters;
+    my @symbols;
+
+    for my $index_element_item (@$index_elements)
+    {
+        my $index_element = $index_element_item->{'element'};
+        my $file = '';
+        $file .= $index_element->{'file'} if ($index_element->{'file'} ne $element->{'file'});
+        my $index = 0;
+        for my $letter (@{$index_element_item->{'page'}->{Letters}})
+        {
+            if ($letter =~ /^[A-Za-z]/)
+            {
+                push @letters, &$t2h_summary_letter($letter, $file, $index, $index_element->{'id'});
+            }
+            else
+            {
+                push @symbols, &$t2h_summary_letter($letter, $file, $index, $index_element->{'id'});
+            }
+            $index++;
+        }
+    }
+    return &$t2h_index_summary(\@letters, \@symbols);
+}
+
+sub do_index_entries($$)
+{
+    my $element = shift;
+    my $page = shift;
+ 
+    my $letters = '';
+    my $index = 0;
+    for my $letter (@{$page->{Letters}})
+    {
+       my $entries = '';
+       for my $entry (@{$page->{EntriesByLetter}->{$letter}})
+       {
+           my $label = $entry->{'element'};
+           my $entry_element = $label;
+           # notice that we use the section associated with a node even when 
+           # there is no with_section, i.e. when there is another node preceding
+           # the sectionning command
+           $entry_element = $entry_element->{'section_ref'} if ($entry_element->{'node'} and $entry_element->{'section_ref'});
+           my $origin_href = '';
+           $origin_href = $entry->{'file'} if ($T2H_SPLIT and $entry->{'file'} ne $element->{'file'});
+	   #print STDERR "$entry $entry->{'entry'}, real elem $label->{'texi'}, section $entry_element->{'texi'}, real $label->{'file'}, entry file $entry->{'file'}\n";
+           if ($entry->{'label'})
+           { 
+               $origin_href .= '#' . $entry->{'label'};
+           }
+	   else
+           {
+               # If the $label element and the $index entry are on the same
+               # file the label is prefered. If they aren't on the same file
+               # the entry id is choosed as it means that the label element
+               # and the index entry are separated by a printindex.
+               print STDERR "id undef ($entry) entry: $entry->{'entry'}, label: $label->{'text'}\n"  if (!defined($entry->{'id'}));
+               if ($entry->{'file'} eq $label->{'file'})
+               {
+                   $origin_href .= '#' . $label->{'id'};
+               }
+               else
+               {
+                   $origin_href .= '#' . $entry->{'id'} ;
+               }
+           }
+           $entries .= &$t2h_index_entry ($origin_href, 
+                     substitute_line($entry->{entry}),
+                     href($entry_element, $element->{'file'}),
+                     $entry_element->{'text'});
+        }
+        $letters .= &$t2h_index_letter ($letter, $index, $element->{'id'}, $entries);
+        $index++;
+    }
+    return &$t2h_index($letters);
+}
+
+# remove texi commands, replacing with what seems adequate. see simple_map_texi
+# and texi_map.
+# Doesn't protect html
 sub remove_texi(@)
 {
     return substitute_text ({ 'remove_texi' => 1 }, @_);
@@ -5072,6 +5489,7 @@ sub scan_texi($$$$)
             if (! @$stack or ($stack->[-1]->{'style'} ne $tag))
             {
                 print STDERR "Bug: raw or special: $tag but not on top of stack\n";
+                print STDERR "line: $_";
                 dump_stack($text, $stack, $state);
                 exit 1;
             }
@@ -5255,15 +5673,16 @@ sub scan_texi($$$$)
                 my $index_prefix = $1;
                 if (/^\s+(.*)/)
                 {
+                    my $key = $1;
                     $_ = substitute_texi_line($_);
-                    my $index_entry = enter_index_entry($index_prefix, $1, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $state->{'preformatted'});
+                    my $index_entry = enter_index_entry($index_prefix, $key, $state->{'place'}, $state->{'element'}, $state->{'after_element'}, $state->{'preformatted'});
                     if ($index_entry)
                     {
                         add_prev ($text, $stack, "\@$macro" .  $_);
                     }
-                    else
+                    elsif (!defined($index_entry))
                     {
-                        warn "$WARN Bad index entry $_\n";
+                        warn "$WARN Bad index entry: $_";
                     }
                 }
                 else
@@ -5487,7 +5906,7 @@ sub scan_texi($$$$)
                         $state->{'verb'} = $1;
                     }
                 } 
-                elsif ($macro eq 'footnote')
+                elsif ($macro eq 'footnote' and $T2H_SEPARATED_FOOTNOTES)
                 {
                     $state->{'footnote_element'} = $state->{'element'};
                     $state->{'footnote_place'} = $state->{'place'};
@@ -5538,8 +5957,11 @@ sub scan_texi($$$$)
                     }
                     elsif ($style->{'style'} eq 'footnote')
                     {
-                         $state->{'element'} = $state->{'footnote_element'};
-                         $state->{'place'} = $state->{'footnote_place'};
+                        if ($T2H_SEPARATED_FOOTNOTES)
+                        {
+                            $state->{'element'} = $state->{'footnote_element'};
+                            $state->{'place'} = $state->{'footnote_place'};
+                        }
                     }
                     elsif ($style->{'style'} eq 'math' and $T2H_L2H)
                     {
@@ -6741,8 +7163,8 @@ sub close_stack($$$;$$)
     {
         scan_line ($string, $text, $stack, $state) if ($string);
     }
-    $state->{'no_close'} = 0;
-    $state->{'close_stack'} = 0;
+    delete $state->{'no_close'};
+    delete $state->{'close_stack'};
     $state->{'verb'} = $verb if ($verb);
     return ($text, $stack, $state, $new_stack);
 }
@@ -6949,21 +7371,6 @@ sub t2h_print_lines($;$)
     return $cnt;
 }
 
-sub protect_html($)
-{
-    my $what = shift;
-    # protect &, ", <, and >.
-    # APA: Keep it simple.  This is what perl's CGI::espaceHTML does.
-    # We may consider using that instead.
-    # If raw HTML is used outside @ifhtml or @html it's an error
-    # anyway.
-    $what =~ s/\&/\&amp;/go;
-    $what =~ s/\"/\&quot;/go;
-    $what =~ s/\</\&lt;/go;
-    $what =~ s/\>/\&gt;/go;
-    return($what);
-}
-
 sub do_index_entry_label($)
 {
     my $state = shift;
@@ -6974,7 +7381,7 @@ sub do_index_entry_label($)
         return '';
     }
     
-    print STDERR "[(index) $entry->{'entry'} $entry->{'label'}]"
+    print STDERR "[(index) $entry->{'entry'} $entry->{'label'}]\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
     return &$t2h_index_entry_label ($entry->{'label'}, $state->{'preformatted'});
 }
@@ -7003,14 +7410,12 @@ else
     # implemented there.
     $T2H_USER = $ENV{'USERNAME'} unless defined $T2H_USER;
 }
-# Set the default body text, inserted between <body ... >
-$T2H_BODYTEXT = 'lang="' . $T2H_LANG . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"' unless (defined($T2H_BODYTEXT));
-
+# Set the body text
+&$t2h_set_body_text();
 # this is used in footer
 unless (defined($T2H_ADDRESS))
 {
-    $T2H_ADDRESS = "by <i>$T2H_USER</i> " if $T2H_USER;
-    $T2H_ADDRESS .= "on <i>$T2H_TODAY</i>";
+    $T2H_ADDRESS = &$t2h_address($T2H_USER, $T2H_TODAY);
 }
 
 open_file($docu);
@@ -7025,7 +7430,8 @@ $sec_num = 0;
 $T2H_L2H = l2h_FinishToLatex() if ($T2H_L2H);
 $T2H_L2H = l2h_ToHtml()        if ($T2H_L2H);
 $T2H_L2H = l2h_InitFromHtml()  if ($T2H_L2H);
-pass_text(); 
+pass_text();
+do_node_files() if ($T2H_SPLIT ne 'node' and $T2H_NODE_FILES);
 l2h_FinishFromHtml() if ($T2H_L2H);
 l2h_Finish() if($T2H_L2H);
 print STDERR "# that's all folks\n" if $T2H_VERBOSE;

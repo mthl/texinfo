@@ -1,0 +1,29 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+@ifnottex
+Now tex on the same line @tex some
+
+$$ \chi^2 = \sum_{i=1}^N
+          \left(y_i - (a + b x_i)
+	  \over \sigma_i\right)^2 $$
+		    
+
+@end tex bidule
+Some text one the line following @@end tex
+@end ifnottex
+
+Now tex on the following line, valid fot tex (with @@end tex on a line).
+@tex some
+
+tex \TeX 
+@end tex
+
+Same that @@html (but empty following line not ignored).
+
+Test of @@math
+Here some @math{\frac{x^i}{\tan y}}.
+
+@bye

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: F.4 Using occur</title>
+
+<meta name="description" content="GNU Texinfo 4.2: F.4 Using occur">
+<meta name="keywords" content="GNU Texinfo 4.2: F.4 Using occur">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD284"></a>
+<a name="SEC313"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Using-texinfo-show-structure.html#SEC312" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Running-Info-Validate.html#SEC314" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Catching-Mistakes.html#SEC308" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Catching-Mistakes.html#SEC308" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Refilling-Paragraphs.html#SEC319" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> F.4 Using <code>occur</code> </h2>
+
+<p>Sometimes the <code>texinfo-show-structure</code> command produces too much
+information.  Perhaps you want to remind yourself of the overall structure
+of a Texinfo file, and are overwhelmed by the detailed list produced by
+<code>texinfo-show-structure</code>.  In this case, you can use the <code>occur</code>
+command directly.  To do this, type</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+<kbd>M-x occur</kbd>
+</pre></td></tr></table>
+<p>and then, when prompted, type a <em>regexp</em>, a regular expression for
+the pattern you want to match.  (See <a href="../emacs/Regexps.html">(emacs)Regexps</a> section `Regular Expressions' in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
+the current location of the cursor in the buffer to the end of the
+buffer.  If you want to run <code>occur</code> on the whole buffer, place
+the cursor at the beginning of the buffer.</p><p>For example, to see all the lines that contain the word
+`<samp>@chapter</samp>' in them, just type `<samp>@chapter</samp>'.  This will
+produce a list of the chapters.  It will also list all the sentences
+with `<samp>@chapter</samp>' in the middle of the line.</p><p>If you want to see only those lines that start with the word
+`<samp>@chapter</samp>', type `<samp>^@chapter</samp>' when prompted by
+<code>occur</code>.  If you want to see all the lines that end with a word
+or phrase, end the last word with a `<samp>$</samp>'; for example,
+`<samp>catching mistakes$</samp>'.  This can be helpful when you want to see
+all the nodes that are part of the same chapter or section and
+therefore have the same `Up' pointer.</p><p>See <a href="../emacs/Other-Repeating-Search.html">(emacs)Other Repeating Search</a> section `Using Occur' in <cite>The GNU Emacs Manual</cite>,
+for more information.</p><hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

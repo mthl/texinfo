@@ -1,3 +1,45 @@
+2003-05-09  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: refs to other manuals conforms to 
+	makeinfo with separated files for nodes.
+	If  $T2H_NODE_FILES (-node-files) is true one file per node is created
+	which redirects to the real file or is the node file (if T2H_SPLIT
+	at node), to allow for cross manual references.
+	Add a T2H_NO_TEXI hash similar with T2H_HREF, T2H_NODES...
+	and T2H_THISDOC{title_no_texi} to have a texi free and thus html free
+	text for nodes/sections/title to be used in the <title> which element
+	which cannot contain other html elements. Also usefull for files with
+	node names generation.
+	t2h_set_body_text and t2h_protect_html put in texi2html.init to be
+	able to make changes more easily.
+	$T2H_TOC_LIST_STYLE is used for style in toc. Makes customisation
+	easier too.
+	* examples/html32.init: init file for html 3.2 generation
+	* Tests/test.sh: add validation
+	* Tests/*: tests for files with node names generation
+
+2003-05-07  Patrice Dumas <dumas@centre-cired.fr>
+	* texi2html.pl, texi2html.init: put a label in splitted index.
+	splitted indices which are not at the level of splitting are kept
+	in the same file but in different sections.
+	different horizontal rules are global variables.
+	functions formatting index summary and index entry split between 
+	a function in texi2html.pl and smaller functions doing the real
+	formatting in texi2html.init.
+	no formatting is done in texi2html.init.
+	heading appears in documents with only one section.
+	if $T2H_SEPARATED_FOOTNOTES is false (-noseparated_footnotes)
+	the footnotes are on the page they appear. More possibility
+	of customization of footnotes (insert things before and after each
+	footnotes and all footnotes).
+	use top file for the top element even when there is no @top section.
+	when there is a top element and splitting, no other element than
+	the top element appear in the top file.
+	* examples/makeinfo.init: format footnotes like makeinfo
+	* examples/xhtml.init: init file for xhtml
+	* Tests/test.sh: little fixes
+	* Tests/*: all tex stuff taken from verbatim_html and put in tex.texi.
+	tests for index entries in top and before top.
+	tests for documents with only one section or node or no node.
 2003-05-02  Patrice Dumas <dumas@centre-cired.fr>
 	* texi2html.pl, texi2html.init: 3 split commands: split at
 	chapter, section or for every node (previously node and section 

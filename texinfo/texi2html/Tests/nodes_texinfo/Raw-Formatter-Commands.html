@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 16.3 Raw Formatter Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 16.3 Raw Formatter Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.3 Raw Formatter Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD216"></a>
+<a name="SEC230"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Conditional-Not-Commands.html#SEC229" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="set-clear-value.html#SEC231" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Internationalization.html#SEC235" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 16.3 Raw Formatter Commands </h2>
+
+<p>Inside a region delineated by <code>@iftex</code> and <code>@end iftex</code>, you
+can embed some raw TeX commands.  Info will ignore these commands
+since they are only in that part of the file which is seen by TeX.
+You can write the TeX commands as you would write them in a normal
+TeX file, except that you must replace the `<samp>\</samp>' used by TeX
+with an `<samp>@</samp>'.  For example, in the <code>@titlepage</code> section of a
+Texinfo file, you can use the TeX command <code>@vskip</code> to format
+the copyright page.  (The <code>@titlepage</code> command causes Info to
+ignore the region automatically, as it does with the <code>@iftex</code>
+command.)
+</p><p>However, many features of plain TeX will not work, as they are
+overridden by Texinfo features.
+</p><a name="IDX291"></a>
+<p>You can enter plain TeX completely, and use `<samp>\</samp>' in the TeX
+commands, by delineating a region with the <code>@tex</code> and <code>@end
+tex</code> commands.  (The <code>@tex</code> command also causes Info to ignore the
+region, like the <code>@iftex</code> command.)  The sole exception is that the
+<code>@</code> character still introduces a command, so that <code>@end tex</code>
+can be recognized properly.
+</p><a name="IDX292"></a>
+<p>For example, here is a mathematical expression written in
+plain TeX:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@tex
+$$ \chi^2 = \sum_{i=1}^N
+          \left (y_i - (a + b x_i)
+          \over \sigma_i\right)^2 $$
+@end tex
+</pre></td></tr></table>
+<p>The output of this example will appear only in a printed manual.  If
+you are reading this in Info, you will not see the equation that appears
+in the printed manual.
+</p><a name="IDX293"></a>
+<a name="IDX294"></a>
+<p>Analogously, you can use <code>@ifhtml <small>...</small> @end ifhtml</code> to delimit
+a region to be included in HTML output only, and <code>@html <small>...</small>
+@end html</code> for a region of raw HTML (again, except that <code>@</code> is
+still the escape character, so the <code>@end</code> command can be
+recognized.)
+</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Conditional-Not-Commands.html#SEC229" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="set-clear-value.html#SEC231" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Internationalization.html#SEC235" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

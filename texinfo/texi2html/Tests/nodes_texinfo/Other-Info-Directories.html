@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD260"></a>
+<a name="SEC274"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="New-Info-File.html#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Installing-Dir-Entries.html#SEC275" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Installing-an-Info-File.html#SEC271" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h3> 20.2.3 Info Files in Other Directories </h3>
+
+<p>If an Info file is not in the `<tt>info</tt>' directory, there are three
+ways to specify its location:</p><ol>
+<li><p>
+Write the pathname in the `<tt>dir</tt>' file as the second part of the menu.
+</p></li><li><p>
+If you are using Emacs, list the name of the file in a second `<tt>dir</tt>'
+file, in its directory; and then add the name of that directory to the
+<code>Info-directory-list</code> variable in your personal or site
+initialization file.
+</p><p>This variable tells Emacs where to look for `<tt>dir</tt>' files (the files
+must be named `<tt>dir</tt>').  Emacs merges the files named `<tt>dir</tt>' from
+each of the listed directories.  (In Emacs version 18, you can set the
+<code>Info-directory</code> variable to the name of only one
+directory.)</p></li><li><p>
+Specify the Info directory name in the <code>INFOPATH</code> environment
+variable in your `<tt>.profile</tt>' or `<tt>.cshrc</tt>' initialization file.
+(Only you and others who set this environment variable will be able to
+find Info files whose location is specified this way.)
+</p></li></ol>
+
+<p>For example, to reach a test file in the `<tt>/home/bob/info</tt>'
+directory, you could add an entry like this to the menu in the
+standard `<tt>dir</tt>' file:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+* Test: (/home/bob/info/info-test).  Bob's own test file.
+</pre></td></tr></table>
+<p>In this case, the absolute file name of the `<tt>info-test</tt>' file is
+written as the second part of the menu entry.</p><p>Alternatively, you could write the following in your `<tt>.emacs</tt>' file:
+</p><a name="IDX413"></a>
+<table><tr><td>&nbsp;</td><td class="example"><pre>
+(require 'info)
+(setq Info-directory-list
+  (cons (expand-file-name &quot;/home/bob/info&quot;)
+        Info-directory-list))
+</pre></td></tr></table>
+<p>This tells Emacs to merge the system `<tt>dir</tt>' file with the `<tt>dir</tt>'
+file in `<tt>/home/bob/info</tt>'.  Thus, Info will list the
+`<tt>/home/bob/info/info-test</tt>' file as a menu entry in the
+`<tt>/home/bob/info/dir</tt>' file.  Emacs does the merging only when
+<kbd>M-x info</kbd> is first run, so if you want to set
+<code>Info-directory-list</code> in an Emacs session where you've already run
+<code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
+to recompose the `<tt>dir</tt>' file.
+</p><a name="IDX414"></a>
+<p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
+environment variable in your shell startup file, such as `<tt>.cshrc</tt>',
+`<tt>.profile</tt>' or `<tt>autoexec.bat</tt>'.  If you use a Bourne-compatible
+shell such as <code>sh</code> or <code>bash</code> for your shell command
+interpreter, you set the <code>INFOPATH</code> environment variable in the
+`<tt>.profile</tt>' initialization file; but if you use <code>csh</code> or
+<code>tcsh</code>, you set the variable in the `<tt>.cshrc</tt>' initialization
+file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
+your `<tt>autoexec.bat</tt>' file or in the Registry.  Each type of shell
+uses a different syntax.
+</p><ul>
+<li><p>
+In a `<tt>.cshrc</tt>' file, you could set the <code>INFOPATH</code>
+variable as follows:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+setenv INFOPATH .:~/info:/usr/local/emacs/info
+</pre></font></td></tr></table>
+</li><li><p>
+In a `<tt>.profile</tt>' file, you would achieve the same effect by
+writing:</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+INFOPATH=.:$HOME/info:/usr/local/emacs/info
+export INFOPATH
+</pre></font></td></tr></table>
+</li><li><p>
+<a name="IDX415"></a>
+In a `<tt>autoexec.bat</tt>' file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+</pre></font></td></tr></table></li></ul>
+
+<p>The `<samp>.</samp>' indicates the current directory as usual.  Emacs uses the
+<code>INFOPATH</code> environment variable to initialize the value of Emacs's
+own <code>Info-directory-list</code> variable.  The stand-alone Info reader
+merges any files named `<tt>dir</tt>' in any directory listed in the
+<code>INFOPATH</code> variable into a single menu presented to you in the node
+called `<samp>(dir)Top</samp>'.
+</p><a name="IDX416"></a>
+<p>However you set <code>INFOPATH</code>, if its last character is a
+colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
+is replaced by the default (compiled-in) path.  This gives you a way to
+augment the default path with new directories without having to list all
+the standard places.  For example (using <code>sh</code> syntax):
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+INFOPATH=/local/info:
+export INFOPATH
+</pre></td></tr></table>
+<p>will search `<tt>/local/info</tt>' first, then the standard directories.
+Leading or doubled colons are not treated specially.
+</p><a name="IDX417"></a>
+<p>When you create your own `<tt>dir</tt>' file for use with
+<code>Info-directory-list</code> or <code>INFOPATH</code>, it's easiest to start by
+copying an existing `<tt>dir</tt>' file and replace all the text after the
+`<samp>* Menu:</samp>' with your desired entries.  That way, the punctuation and
+special CTRL-_ characters that Info needs will be present.
+</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="New-Info-File.html#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Installing-Dir-Entries.html#SEC275" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Installing-an-Info-File.html#SEC271" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#SEC277" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

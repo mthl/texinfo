@@ -15,3 +15,5 @@ This file contains a list of things yet to be done (see also in doc/IDEAS):
   can be loaded in at run-time
 
 * Fix `make distcheck'
+
+* Tests/Makefile.am: make clean rm *.pl *.pm *.tex *.css *.js *.png

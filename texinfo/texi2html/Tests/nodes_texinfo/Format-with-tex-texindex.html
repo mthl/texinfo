@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 19.2 Format with tex and texindex</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 19.2 Format with tex and texindex">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.2 Format with tex and texindex">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD232"></a>
+<a name="SEC246"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC245" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC247" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 19.2 Format with <code>tex</code> and <code>texindex</code> </h2>
+
+<p>Format the Texinfo file with the shell command <code>tex</code> followed by
+the name of the Texinfo file.  For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+tex foo.texi
+</pre></td></tr></table>
+<p>TeX will produce a <em>DVI file</em> as well as several auxiliary
+files containing information for indices, cross references, etc.  The
+DVI file (for <em>DeVice Independent</em> file) can be printed on virtually
+any device (see the following sections).
+</p><a name="IDX320"></a>
+<p>The <code>tex</code> formatting command itself does not sort the indices; it
+writes an output file of unsorted index data.  (The <code>texi2dvi</code>
+command automatically generates indices; see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>.)  To generate a printed index after
+running the <code>tex</code> command, you first need a sorted index to work
+from.  The <code>texindex</code> command sorts indices.  (The source file
+`<tt>texindex.c</tt>' comes as part of the standard Texinfo distribution,
+among other places.)</p><a name="IDX321"></a>
+<a name="IDX322"></a>
+<p>The <code>tex</code> formatting command outputs unsorted index files under
+names that obey a standard convention: the name of your main input file
+with any `<samp>.tex</samp>' (or similar, see <a href="../web2c/tex-invocation.html">(web2c)tex invocation</a> section `tex invocation' in <cite>Web2c</cite>) extension removed, followed by the two letter names of indices.
+For example, the raw index output files for the input file
+`<tt>foo.texinfo</tt>' would be `<tt>foo.cp</tt>', `<tt>foo.vr</tt>', `<tt>foo.fn</tt>',
+`<tt>foo.tp</tt>', `<tt>foo.pg</tt>' and `<tt>foo.ky</tt>'.  Those are exactly the
+arguments to give to <code>texindex</code>.
+</p><a name="IDX323"></a>
+<a name="IDX324"></a>
+<p>Instead of specifying all the unsorted index file names explicitly, you
+can use `<samp>??</samp>' as shell wildcards and give the command in this
+form:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+texindex foo.??
+</pre></td></tr></table>
+<p>This command will run <code>texindex</code> on all the unsorted index files,
+including any that you have defined yourself using <code>@defindex</code>
+or <code>@defcodeindex</code>.  (You may execute `<samp>texindex foo.??</samp>'
+even if there are similarly named files with two letter extensions
+that are not index files, such as `<samp>foo.el</samp>'.  The <code>texindex</code>
+command reports but otherwise ignores such files.)
+</p><p>For each file specified, <code>texindex</code> generates a sorted index file
+whose name is made by appending `<samp>s</samp>' to the input file name.  The
+<code>@printindex</code> command looks for a file with that name
+(see section <a href="Printing-Indices---Menus.html#SEC69">Printing Indices and Menus</a>).  <code>texindex</code> does not alter the
+raw index output file.
+</p><p>After you have sorted the indices, you need to rerun the <code>tex</code>
+formatting command on the Texinfo file.  This regenerates the DVI file,
+this time with up-to-date index entries.
+</p><p>Finally, you may need to run <code>tex</code> one more time, to get the page
+numbers in the cross-references correct.
+</p><p>To summarize, this is a five step process:
+</p><ol>
+<li><p>
+Run <code>tex</code> on your Texinfo file.  This generates a DVI file (with
+undefined cross-references and no indices), and the raw index files
+(with two letter extensions).
+</p></li><li><p>
+Run <code>texindex</code> on the raw index files.  This creates the
+corresponding sorted index files (with three letter extensions).
+</p></li><li><p>
+Run <code>tex</code> again on your Texinfo file.  This regenerates the DVI
+file, this time with indices and defined cross-references, but with page
+numbers for the cross-references from last time, generally incorrect.
+</p></li><li><p>
+Sort the indices again, with <code>texindex</code>.
+</p></li><li><p>
+Run <code>tex</code> one last time.  This time the correct page numbers are
+written for the cross-references.
+</p></li></ol>
+
+<a name="IDX325"></a>
+<p>Alternatively, it's a one-step process: run <code>texi2dvi</code>
+(see section <a href="Format-with-texi2dvi.html#SEC247">Format with <code>texi2dvi</code></a>).
+</p><p>You need not run <code>texindex</code> each time after you run <code>tex</code>.  If
+you do not, on the next run, the <code>tex</code> formatting command will use
+whatever sorted index files happen to exist from the previous use of
+<code>texindex</code>.  This is usually ok while you are debugging.
+</p><a name="IDX326"></a>
+<a name="IDX327"></a>
+<a name="IDX328"></a>
+<a name="IDX329"></a>
+<p>Sometimes you may wish to print a document while you know it is
+incomplete, or to print just one chapter of a document.  In that case,
+the usual auxiliary files that TeX creates and warnings TeX gives
+when cross-references are not satisfied are just nuisances.  You can
+avoid them with the <code>@novalidate</code> command, which you must give
+<em>before</em> the <code>@setfilename</code> command
+(see section <a href="setfilename.html#SEC46"><code>@setfilename</code></a>).  Thus, the beginning of
+your file would look approximately like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo
+@novalidate
+@setfilename myfile.info
+...
+</pre></td></tr></table>
+<p><code>@novalidate</code> also turns off validation in
+<code>makeinfo</code>, just like its <code>--no-validate</code> option
+(see section <a href="Pointer-Validation.html#SEC265">Pointer Validation</a>).
+</p><hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Use-TeX.html#SEC245" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Format-with-texi2dvi.html#SEC247" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#SEC244" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Creating-and-Installing-Info-Files.html#SEC260" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

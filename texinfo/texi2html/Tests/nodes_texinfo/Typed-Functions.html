@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.4.3 Functions in Typed Languages">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD207"></a>
+<a name="SEC221"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Variables-Commands.html#SEC220" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Typed-Variables.html#SEC222" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Definition-Commands.html#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Def-Cmds-in-Detail.html#SEC218" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h3> 15.4.3 Functions in Typed Languages </h3>
+
+<p>The <code>@deftypefn</code> command and its variations are for describing
+functions in languages in which you must declare types of variables and
+functions, such as C and C++.
+</p><dl compact="compact">
+<dd><p>
+<a name="IDX274"></a>
+</p></dd>
+<dt><code> @deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+</code></dt>
+<dd><p>The <code>@deftypefn</code> command is the general definition command for
+functions and similar entities that may take arguments and that are
+typed.  The <code>@deftypefn</code> command is written at the beginning of
+a line and is followed on the same line by the category of entity
+being described, the type of the returned value, the name of this
+particular entity, and its arguments, if any.</p><p>For example,
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@deftypefn {Library Function} int foobar
+   (int @var{foo}, float @var{bar})
+...
+@end deftypefn
+</pre></td></tr></table>
+<p>(where the text before the &quot;<small>...</small>&quot;, shown above as two lines, would
+actually be a single line in a real Texinfo file) produces the following
+in Info:
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+-- Library Function: int foobar (int FOO, float BAR)
+...
+</pre></font></td></tr></table>
+<p>This means that <code>foobar</code> is a &quot;library function&quot; that returns an
+<code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
+<var>bar</var> (a <code>float</code>).</p><p>The argument names that you write in <code>@deftypefn</code> are not subject
+to an implicit <code>@var</code>--since the actual names of the arguments in
+<code>@deftypefn</code> are typically scattered among data type names and
+keywords, Texinfo cannot find them without help.  Instead, you must write
+<code>@var</code> explicitly around the argument names.  In the example
+above, the argument names are `<samp>foo</samp>' and `<samp>bar</samp>'.</p><p>The template for <code>@deftypefn</code> is:</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> ...
+<var>body-of-description</var>
+@end deftypefn
+</pre></td></tr></table>
+<p>Note that if the <var>category</var> or <var>data type</var> is more than one
+word then it must be enclosed in braces to make it a single argument.</p><p>If you are describing a procedure in a language that has packages,
+such as Ada, you might consider using <code>@deftypefn</code> in a manner
+somewhat contrary to the convention described in the preceding
+paragraphs.</p><p>For example:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@deftypefn stacks private push
+        (@var{s}:in out stack;
+        @var{n}:in integer)
+...
+@end deftypefn
+</pre></td></tr></table>
+<p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
+would be a single line in a real Texinfo file.)
+</p><p>In this instance, the procedure is classified as belonging to the
+package <code>stacks</code> rather than classified as a `procedure' and its
+data type is described as <code>private</code>.  (The name of the procedure
+is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)</p><p><code>@deftypefn</code> creates an entry in the index of functions for
+<var>name</var>.</p></dd>
+<dt><code> @deftypefun <var>data-type</var> <var>name</var> <var>arguments</var><small>...</small>
+</code></dt>
+<dd><p><a name="IDX275"></a>
+The <code>@deftypefun</code> command is the specialized definition command
+for functions in typed languages.  The command is equivalent to
+`<samp>@deftypefn Function <small>...</small></samp>'.</p><p>Thus,
+</p><table><tr><td>&nbsp;</td><td class="smallexample"><font size="-1"><pre>
+@deftypefun int foobar (int @var{foo}, float @var{bar})
+...
+@end deftypefun
+</pre></font></td></tr></table>
+<p>produces the following in Info:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+-- Function: int foobar (int FOO, float BAR)
+...
+</pre></td></tr></table>
+<p>The template is:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+@deftypefun <var>type</var> <var>name</var> <var>arguments</var>...
+<var>body-of-description</var>
+@end deftypefun
+</pre></td></tr></table>
+<p><code>@deftypefun</code> creates an entry in the index of functions for
+<var>name</var>.</p></dd>
+</dl>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Variables-Commands.html#SEC220" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Typed-Variables.html#SEC222" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Definition-Commands.html#SEC214" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Def-Cmds-in-Detail.html#SEC218" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#SEC227" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

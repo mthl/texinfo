@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+
+-->
+<!-- Created on a sunny day by texi2html -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.2 Texinfo File Header</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.2 Texinfo File Header">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.2 Texinfo File Header">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NOD29"></a>
+<a name="SEC43"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Sample-Beginning.html#SEC42" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="First-Line.html#SEC44" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="Beginning-a-File.html#SEC41" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Beginning-a-File.html#SEC41" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Ending-a-File.html#SEC68" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#SEC325" title="Concept index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (this page)"> ? </a>]</td>
+</tr></table>
+<hr size="1">
+<h2> 3.2 Texinfo File Header </h2>
+
+<p>Texinfo files start with at least three lines that provide Info and
+TeX with necessary information.  These are the <code>\input texinfo</code>
+line, the <code>@settitle</code> line, and the <code>@setfilename</code> line.
+</p><p>Also, if you want to format just part of the Texinfo file, you must
+write the <code>@settitle</code> and <code>@setfilename</code> lines between
+start-of-header and end-of-header lines.  The start- and end-of-header
+lines are optional, but they do no harm, so you might as well always
+include them.
+</p><p>Any command that affects document formatting as a whole makes sense to
+include in the header.  <code>@synindex</code> (see section <a href="synindex.html#SEC172"><code>@synindex</code></a>), for
+instance, is another command often included in the header.  See section <a href="GNU-Sample-Texts.html#SEC296">GNU Sample Texts</a>, for complete sample texts.
+</p><p>Thus, the beginning of a Texinfo file generally looks like this:
+</p><table><tr><td>&nbsp;</td><td class="example"><pre>
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename sample.info
+@settitle Sample Manual 1.0
+@c %**end of header
+</pre></td></tr></table>
+<table border="0" cellspacing="0">
+
+<tr><td align="left" valign="top"><a href="First-Line.html#SEC44">3.2.1 The First Line of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The first line of a Texinfo file.</td></tr>
+<tr><td align="left" valign="top"><a href="Start-of-Header.html#SEC45">3.2.2 Start of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Formatting a region requires this.</td></tr>
+<tr><td align="left" valign="top"><a href="setfilename.html#SEC46">3.2.3 <code>@setfilename</code>: Set the output file name</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tell Info the name of the Info file.</td></tr>
+<tr><td align="left" valign="top"><a href="settitle.html#SEC47">3.2.4 <code>@settitle</code>: Set the document title</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Create a title for the printed work.</td></tr>
+<tr><td align="left" valign="top"><a href="End-of-Header.html#SEC48">3.2.5 End of Header</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Formatting a region requires this.</td></tr>
+</table>
+
+<hr size="1">
+<p>
+ <font size="-1">
+  This document was generated by <i>a tester</i> on <i>a sunny day</i>
+  using <a href="http://texi2html.cvshome.org/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
