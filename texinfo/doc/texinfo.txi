@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.58 2003-07-29 12:47:05 karl Exp $
+@c $Id: texinfo.txi,v 1.59 2003-08-04 23:41:24 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2947,10 +2947,10 @@ The @code{@@settitle} command should precede everything that generates
 actual output in @TeX{}.
 
 @cindex <title> HTML tag
-In the HTML file produced by @command{makeinfo}, @var{title} also serves
-as the document @samp{<title>} and the default document description in
-the @samp{<head>} part; see @ref{documentdescription}, for how to change
-that.
+In the HTML file produced by @command{makeinfo}, @var{title} serves as
+the document @samp{<title>}.  It also becomes default document
+description in the @samp{<head>} part; see @ref{documentdescription},
+for how to change that.
 
 The title in the @code{@@settitle} command does not affect the title as
 it appears on the title page.  Thus, the two do not need not match
@@ -3238,6 +3238,10 @@ Use the @code{@@titlefont} command to select a large font suitable for
 the title itself.  You can use @code{@@titlefont} more than once if you
 have an especially long title.
 
+For HTML output, each @code{@@titlefont} command produces an
+@code{<h1>} heading, but the HTML document @code{<title>} is not
+affected.  For that, you have to use @code{@@settitle} (@pxref{settitle})
+
 @need 700
 For example:
 
@@ -3285,6 +3289,9 @@ A template for this method looks like this:
 
 The spacing of the example fits an 8.5 by 11 inch manual.
 
+You can in fact use these commands anywhere, not just on a title page,
+but since they are not logical markup commands, we don't recommend
+them.
 
 @node title subtitle author
 @subsection @code{@@title}, @code{@@subtitle}, and @code{@@author}
@@ -17240,7 +17247,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.58 2003-07-29 12:47:05 karl Exp $
+$Id: texinfo.txi,v 1.59 2003-08-04 23:41:24 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17303,7 +17310,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.58 2003-07-29 12:47:05 karl Exp $
+@comment $Id: texinfo.txi,v 1.59 2003-08-04 23:41:24 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
