@@ -1,3 +1,29 @@
+2002-10-30    <karl@gnu.org>
+
+        (Following reported by Bob Wilson.)
+
+	* doc/texinfo.tex (\sectionheading): add either
+	\normalbaselineskip or \parskip after the heading, whichever is
+	larger, instead of hardwiring 10pt.
+
+	* doc/texinfo.tex (\defxbodycommon): new defn, including a
+	potential breakpoint if we have multiple consecutive @def...x commands.
+	(\def*parsebody): use it.
+
+	* doc/texinfo.tex (\singlespace): remove, since we fixed the
+        regular line spacing a long time ago to not be double-spaced.
+        In @smallbook mode, it ironically caused excessive line spacing.
+	(\nonfillstart, \quotation): don't call it.
+        
+	* doc/texinfo.tex (\smartslanted, \smartitalic): use \ttsl if in
+	typewriter.
+	From: Bob Wilson <bwilson@tensilica.com>.
+
+	* doc/texinfo.tex (\defmethparsebody): pass \empty to \smallsplit
+	to keep a brace-delimited argument to @deffn from having the braces
+	stripped.
+	(Report from: Han-Wen Nienhuys <hanwen@cs.uu.nl>.)
+
 2002-10-28    <karl@gnu.org>
 
 	* doc/texinfo.tex (\loggingall): rewrite to minimize log file
