@@ -1,7 +1,7 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.2 2002-09-29 19:15:20 karl Exp $
+   $Id: xml.c,v 1.3 2002-10-14 21:25:11 karl Exp $
 
-   Copyright (C) 2001, 02 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

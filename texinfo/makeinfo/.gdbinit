@@ -153,5 +153,4 @@ set args -I../doc --no-headers $ttests/contents.tex -o /tmp/xyz
 # --xml complains about @sp.
 #set args -o - --xml $ttests/sp.tex
 
-# @tie{} producing two spaces.
-set args -o - $ttests/tie.tex
+set args --html -o - $ttests/enump.tex

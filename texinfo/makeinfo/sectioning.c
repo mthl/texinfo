@@ -1,7 +1,7 @@
-/* sectioning.c -- all related stuff @chapter, @section... @contents
-   $Id: sectioning.c,v 1.1 2002-08-25 23:38:39 karl Exp $
+/* sectioning.c -- for @chapter, @section, ..., @contents ...
+   $Id: sectioning.c,v 1.2 2002-10-14 21:25:11 karl Exp $
 
-   Copyright (C) 1999, 2001, 02 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2001, 2002 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
