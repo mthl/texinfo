@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.27 2003-05-06 22:56:34 karl Exp $
+$Id: dir-example,v 1.28 2003-05-08 12:21:20 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -251,50 +251,50 @@ Individual utilities
 * autoupdate: (autoconf)autoupdate Invocation.
                                 Automatic update of `configure.ac'
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
-* basename: (sh-utils)basename invocation.      Strip directory and suffix.
+* basename: (coreutils)basename invocation.     Strip directory and suffix.
 * bibtex: (web2c)BibTeX invocation.             Maintaining bibliographies.
 * c++filt: (binutils)c++filt.                   Demangle C++ symbols.
-* cat: (textutils)cat invocation.               Concatenate and write files.
-* chgrp: (fileutils)chgrp invocation.           Change file groups.
-* chmod: (fileutils)chmod invocation.           Change file permissions.
-* chown: (fileutils)chown invocation.           Change file owners/groups.
-* chroot: (sh-utils)chroot invocation.          Specify the root directory.
-* cksum: (textutils)cksum invocation.           Print POSIX CRC checksum.
+* cat: (coreutils)cat invocation.               Concatenate and write files.
+* chgrp: (coreutils)chgrp invocation.           Change file groups.
+* chmod: (coreutils)chmod invocation.           Change file permissions.
+* chown: (coreutils)chown invocation.           Change file owners/groups.
+* chroot: (coreutils)chroot invocation.         Specify the root directory.
+* cksum: (coreutils)cksum invocation.           Print POSIX CRC checksum.
 * cmp: (diff)Invoking cmp.                      Character-by-character diff.
-* comm: (textutils)comm invocation.             Compare sorted files by line.
+* comm: (coreutils)comm invocation.             Compare sorted files by line.
 * comsatd: (mailutils)comsatd.                  Comsat daemon.
 * config.status: (autoconf)config.status Invocation. Recreating configurations.
 * configure: (autoconf)configure Invocation.    Configuring a package.
-* cp: (fileutils)cp invocation.                 Copy files.
-* csplit: (textutils)csplit invocation.         Split by context.
-* cut: (textutils)cut invocation.               Print selected parts of lines.
-* date: (sh-utils)date invocation.              Print/set system date and time.
-* dd: (fileutils)dd invocation.                 Copy and convert a file.
-* df: (fileutils)df invocation.                 Report filesystem disk usage.
+* cp: (coreutils)cp invocation.                 Copy files.
+* csplit: (coreutils)csplit invocation.         Split by context.
+* cut: (coreutils)cut invocation.               Print selected parts of lines.
+* date: (coreutils)date invocation.             Print/set system date and time.
+* dd: (coreutils)dd invocation.                 Copy and convert a file.
+* df: (coreutils)df invocation.                 Report filesystem disk usage.
 * diff3: (diff)Invoking diff3.                  Three-way diff.
-* dir: (fileutils)dir invocation.               List directories briefly.
-* dircolors: (fileutils)dircolors invocation.   Color setup for ls.
-* dirname: (sh-utils)dirname invocation.        Strip non-directory suffix.
+* dir: (coreutils)dir invocation.               List directories briefly.
+* dircolors: (coreutils)dircolors invocation.   Color setup for ls.
+* dirname: (coreutils)dirname invocation.       Strip non-directory suffix.
 * dmp: (web2c)Dmp invocation.                   Troff->MPX (MetaPost pictures).
-* du: (fileutils)du invocation.                 Report on disk usage.
+* du: (coreutils)du invocation.                 Report on disk usage.
 * dvicopy: (web2c)DVIcopy invocation.           Virtual font expansion
 * dvitomp: (web2c)DVItoMP invocation.           DVI to MPX (MetaPost pictures).
 * dvitype: (web2c)DVItype invocation.           DVI to human-readable text.
-* echo: (sh-utils)echo invocation.              Print a line of text.
+* echo: (coreutils)echo invocation.             Print a line of text.
 * edit-pr: (gnats)Invoking edit-pr.             Changing bugs.
 * egrep: (grep)Invoking.                        grep -E.
 * eid: (id-utils)eid invocation.                Invoking an editor on matches.
-* env: (sh-utils)env invocation.                Modify the environment.
-* expand: (textutils)expand invocation.         Convert tabs to spaces.
-* expr: (sh-utils)expr invocation.              Evaluate expressions.
-* factor: (sh-utils)factor invocation.          Print prime factors
-* false: (sh-utils)false invocation.            Do nothing, unsuccessfully.
+* env: (coreutils)env invocation.               Modify the environment.
+* expand: (coreutils)expand invocation.         Convert tabs to spaces.
+* expr: (coreutils)expr invocation.             Evaluate expressions.
+* factor: (coreutils)factor invocation.         Print prime factors
+* false: (coreutils)false invocation.           Do nothing, unsuccessfully.
 * fgrep: (fgrep)Invoking.                       grep -F.
 * fid: (id-utils)fid invocation.                Listing a file's identifiers.
 * file-pr: (gnats)file-pr.                      Processing incoming traffic.
 * find: (find)Invoking find.                    Finding and acting on files.
-* fmt: (textutils)fmt invocation.               Reformat paragraph text.
-* fold: (textutils)fold invocation.             Wrap long input lines.
+* fmt: (coreutils)fmt invocation.               Reformat paragraph text.
+* fold: (coreutils)fold invocation.             Wrap long input lines.
 * frm: (mailutils)frm.                          List headers from a mailbox.
 * gcal2txt: (gcal)Invoking gcal2txt.            Calendar resource to text file.
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
@@ -302,13 +302,13 @@ Individual utilities
 * gftype: (web2c)GFtype invocation.             GF to human-readable text.
 * gid: (id-utils)gid invocation.                Listing all matching lines.
 * git: (git).                                   GNU interactive tools.
-* groups: (sh-utils)groups invocation.          Print group names a user is in.
+* groups: (coreutils)groups invocation.         Print group names a user is in.
 * guimb: (mailutils)guimb.                      Mailbox processing language.
 * gunzip: (gzip)Overview.                       Decompression.
 * gzexe: (gzip)Overview.			Compress executables.
-* head: (textutils)head invocation.             Output the first part of files.
-* hostname: (sh-utils)hostname invocation.      Print or set system name.
-* id: (sh-utils)id invocation.                  Print real/effective uid/gid.
+* head: (coreutils)head invocation.             Output the first part of files.
+* hostname: (coreutils)hostname invocation.     Print or set system name.
+* id: (coreutils)id invocation.                 Print real/effective uid/gid.
 * idx: (id-utils)idx invocation.                Testing mkid scanners.
 * ifnames: (autoconf)ifnames Invocation.        Listing conditionals in source.
 * iid: (id-utils)iid invocation.                Interactive complex queries.
@@ -316,15 +316,15 @@ Individual utilities
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
 * initex: (web2c)initex invocation.             Initial TeX.
-* install: (fileutils)install invocation.       Copy and change attributes.
-* join: (textutils)join invocation.             Join lines on a common field.
+* install: (coreutils)install invocation.       Copy and change attributes.
+* join: (coreutils)join invocation.             Join lines on a common field.
 * kpsewhich: (kpathsea)Invoking kpsewhich.      TeX file searching.
 * libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
 * lid: (id-utils)lid invocation.                Matching identifier patterns.
-* ln: (fileutils)ln invocation.                 Make links between files.
+* ln: (coreutils)ln invocation.                 Make links between files.
 * locate: (find)Invoking locate.                Finding files in a database.
-* logname: (sh-utils)logname invocation.        Print current login name.
-* ls: (fileutils)ls invocation.                 List directory contents.
+* logname: (coreutils)logname invocation.       Print current login name.
+* ls: (coreutils)ls invocation.                 List directory contents.
 * mail-files: (sharutils)mail-files invocation. Send files to remote site.
 * mail.local: (mailutils)mail.local.            Deliver mail to local mailbox.
 * mail: (mailutils)mail.                        Send and receive mail.
@@ -334,31 +334,31 @@ Individual utilities
 * maketexpk: (kpathsea)MakeTeX scripts.         PK bitmap generation.
 * maketextex: (kpathsea)MakeTeX scripts.        TeX source generation.
 * maketextfm: (kpathsea)MakeTeX scripts.        TeX font metric generation.
-* md5sum: (textutils)md5sum invocation.         Print or check message-digests.
+* md5sum: (coreutils)md5sum invocation.         Print or check message-digests.
 * messages: (mailutils)messages.                Count messages in mailbox.
 * mf: (web2c)mf invocation.                     Creating typeface families.
 * mft: (web2c)MFT invocation.                   Prettyprinting Metafont source.
 * mgetty: (mgetty).                             Faxes, voicemail and more.
-* mkdir: (fileutils)mkdir invocation.           Create directories.
-* mkfifo: (fileutils)mkfifo invocation.         Create FIFOs: (named pipes).
+* mkdir: (coreutils)mkdir invocation.           Create directories.
+* mkfifo: (coreutils)mkfifo invocation.         Create FIFOs: (named pipes).
 * mkid: (id-utils)mkid invocation.              Creating an ID database.
-* mknod: (fileutils)mknod invocation.           Create special files.
+* mknod: (coreutils)mknod invocation.           Create special files.
 * mp: (web2c)mp invocation.                     Creating technical diagrams.
 * mpto: (web2c)MPto invocation.                 MetaPost label extraction.
-* mv: (fileutils)mv invocation.                 Rename files.
+* mv: (coreutils)mv invocation.                 Rename files.
 * newer: (web2c)Newer invocation.               Compare modification times.
-* nice: (sh-utils)nice invocation.              Modify scheduling priority.
-* nl: (textutils)nl invocation.                 Number lines and write files.
+* nice: (coreutils)nice invocation.             Modify scheduling priority.
+* nl: (coreutils)nl invocation.                 Number lines and write files.
 * nlmconv: (binutils)nlmconv.                   Convert object to NetWare LM.
 * nm: (binutils)nm.                             List symbols in object files.
-* nohup: (sh-utils)nohup invocation.            Immunize to hangups.
+* nohup: (coreutils)nohup invocation.           Immunize to hangups.
 * objcopy: (binutils)objcopy.                   Copy/translate object files.
 * objdump: (binutils)objdump.                   Display info from object files.
-* od: (textutils)od invocation.                 Dump files in octal, etc.
-* paste: (textutils)paste invocation.           Merge lines of files.
+* od: (coreutils)od invocation.                 Dump files in octal, etc.
+* paste: (coreutils)paste invocation.           Merge lines of files.
 * patch: (diff)Invoking patch.                  Automatically applying diffs.
 * patgen: (web2c)Patgen invocation.             Creating hyphenation patterns.
-* pathchk: (sh-utils)pathchk invocation.        Check file name portability.
+* pathchk: (coreutils)pathchk invocation.       Check file name portability.
 * pid: (id-utils)pid invocation.                Looking up filenames.
 * pktogf: (web2c)PKtoGF invocation.             Packed to generic fonts.
 * pktype: (web2c)PKtype invocation.             PK to human-readable text.
@@ -367,67 +367,67 @@ Individual utilities
 * pop3d: (mailutils)pop3d.                      POP3 daemon.
 * pr-addr: (gnats)pr-addr.                      Bug report address retrieval.
 * pr-edit: (gnats)pr-edit.                      The edit-pr driver.
-* pr: (textutils)pr invocation.                 Paginate or columnate files.
-* printenv: (sh-utils)printenv invocation.      Print environment variables.
-* printf: (sh-utils)printf invocation.          Format and print data.
-* pwd: (sh-utils)pwd invocation.                Print working directory.
+* pr: (coreutils)pr invocation.                 Paginate or columnate files.
+* printenv: (coreutils)printenv invocation.     Print environment variables.
+* printf: (coreutils)printf invocation.         Format and print data.
+* pwd: (coreutils)pwd invocation.               Print working directory.
 * query-pr: (gnats)Invoking query-pr.           Bug searching/reporting.
 * queue-pr: (gnats)queue-pr.                    Handling incoming traffic.
 * ranlib: (binutils)ranlib.                     Index archive file contents.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
-* rm: (fileutils)rm invocation.                 Remove files.
-* rmdir: (fileutils)rmdir invocation.           Remove empty directories.
+* rm: (coreutils)rm invocation.                 Remove files.
+* rmdir: (coreutils)rmdir invocation.           Remove empty directories.
 * sdiff: (diff)Invoking sdiff.                  Interactively merge files.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
-* seq: (sh-utils)seq invocation.                Print numeric sequences
+* seq: (coreutils)seq invocation.               Print numeric sequences
 * shar: (sharutils)shar invocation.             Create shell archive.
 * sieve: (mailutils)sieve.                      Mail filtering utility.
 * size: (binutils)size.                         List object file section sizes.
-* sleep: (sh-utils)sleep invocation.            Delay for a specified time.
-* sort: (textutils)sort invocation.             Sort text files.
-* split: (textutils)split invocation.           Split into fixed-size pieces.
+* sleep: (coreutils)sleep invocation.           Delay for a specified time.
+* sort: (coreutils)sort invocation.             Sort text files.
+* split: (coreutils)split invocation.           Split into fixed-size pieces.
 * strings: (binutils)strings.                   List printable strings.
 * strip: (binutils)strip.                       Discard symbols.
-* stty: (sh-utils)stty invocation.              Print/change terminal settings.
-* su: (sh-utils)su invocation.                  Modify user and group id.
-* sum: (textutils)sum invocation.               Print traditional checksum.
-* sync: (fileutils)sync invocation.             Synchronize memory and disk.
+* stty: (coreutils)stty invocation.             Print/change terminal settings.
+* su: (coreutils)su invocation.                 Modify user and group id.
+* sum: (coreutils)sum invocation.               Print traditional checksum.
+* sync: (coreutils)sync invocation.             Synchronize memory and disk.
 * tabs: (tput)Invoking tabs.                    Tab settings.
-* tac: (textutils)tac invocation.               Reverse files.
-* tail: (textutils)tail invocation.             Output the last part of files.
+* tac: (coreutils)tac invocation.               Reverse files.
+* tail: (coreutils)tail invocation.             Output the last part of files.
 * tangle: (web2c)Tangle invocation.             WEB to Pascal.
 * tcal: (gcal)Invoking tcal.                    Run Gcal with tomorrow's date.
-* tee: (sh-utils)tee invocation.                Redirect to multiple files.
-* test: (sh-utils)test invocation.              File/string tests.
+* tee: (coreutils)tee invocation.               Redirect to multiple files.
+* test: (coreutils)test invocation.             File/string tests.
 * testsuite: (autoconf)testsuite Invocation.    Running an Autotest test suite.
 * tex: (web2c)tex invocation.                   Typesetting.
 * tftopl: (web2c)TFtoPL invocation.             TFM -> property list.
-* touch: (fileutils)touch invocation.           Change file timestamps.
+* touch: (coreutils)touch invocation.           Change file timestamps.
 * tput: (tput)Invoking tput.                    Termcap in shell scripts.
-* tr: (textutils)tr invocation.                 Translate characters.
-* true: (sh-utils)true invocation.              Do nothing, successfully.
-* tty: (sh-utils)tty invocation.                Print terminal name.
+* tr: (coreutils)tr invocation.                 Translate characters.
+* true: (coreutils)true invocation.             Do nothing, successfully.
+* tty: (coreutils)tty invocation.               Print terminal name.
 * txt2gcal: (gcal)Invoking txt2gcal.            Calendar text to resource file.
 * umb-scheme: (umb-scheme).                     UMB Scheme Interpreter.
-* uname: (sh-utils)uname invocation.            Print system information.
-* unexpand: (textutils)unexpand invocation.     Convert spaces to tabs.
-* uniq: (textutils)uniq invocation.             Uniqify files.
+* uname: (coreutils)uname invocation.           Print system information.
+* unexpand: (coreutils)unexpand invocation.     Convert spaces to tabs.
+* uniq: (coreutils)uniq invocation.             Uniqify files.
 * unshar: (sharutils)unshar invocation.         Extract from shell archive.
 * updatedb: (find)Invoking updatedb.            Building the locate database.
-* users: (sh-utils)users invocation.            Print current user names.
-* vdir: (fileutils)vdir invocation.             List directories verbosely.
+* users: (coreutils)users invocation.           Print current user names.
+* vdir: (coreutils)vdir invocation.             List directories verbosely.
 * vftovp: (web2c)VFtoVP invocation.             Virtual font -> virtual pl.
 * view-pr: (gnats)Invoking view-pr.             Showing bug reports.
 * virmf: (web2c)virmf invocation.               Virgin Metafont.
 * virmp: (web2c)virmp invocation.               Virgin MetaPost.
 * virtex: (web2c)virtex invocation.             Virgin TeX.
 * vptovf: (web2c)VPtoVF invocation.             Virtual pl -> virtual font.
-* wc: (textutils)wc invocation.                 Byte, word, and line counts.
+* wc: (coreutils)wc invocation.                 Byte, word, and line counts.
 * weave: (web2c)Weave invocation.               WEB to TeX.
-* who: (sh-utils)who invocation.                Print who is logged in.
-* whoami: (sh-utils)whoami invocation.          Print effective user id.
+* who: (coreutils)who invocation.               Print who is logged in.
+* whoami: (coreutils)whoami invocation.         Print effective user id.
 * xargs: (find)Invoking xargs.                  Operating on many files.
-* yes: (sh-utils)yes invocation.                Print a string indefinitely.
+* yes: (coreutils)yes invocation.               Print a string indefinitely.
 * zcat: (gzip)Overview.                         Decompression to stdout.
 * zdiff: (gzip)Overview.                        Compare compressed files.
 * zforce: (gzip)Overview.                       Force .gz extension on files.
