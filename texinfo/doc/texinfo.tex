@@ -981,23 +981,18 @@ where each line of input produces a line of output.}
 \def\asis#1{#1}
 
 % @math outputs its argument in math mode.
-% We don't use $'s directly in the definition of \math because we need
-% to set catcodes according to plain TeX first, to allow for subscripts,
-% superscripts, special math chars, etc.
-%
-\let\implicitmath = $%$ font-lock fix
 %
 % One complication: _ usually means subscripts, but it could also mean
 % an actual _ character, as in @math{@var{some_variable} + 1}.  So make
-% _ within @math be active (mathcode "8000), and distinguish by seeing
-% if the current family is \slfam, which is what @var uses.
-%
-{\catcode\underChar = \active
-\gdef\mathunderscore{%
-  \catcode\underChar=\active
-  \def_{\ifnum\fam=\slfam \_\else\sb\fi}%
-}}
-%
+% _ active, and distinguish by seeing if the current family is \slfam,
+% which is what @var uses.
+{
+  \catcode\underChar = \active
+  \gdef\mathunderscore{%
+    \catcode\underChar=\active
+    \def_{\ifnum\fam=\slfam \_\else\sb\fi}%
+  }
+}
 % Another complication: we want \\ (and @\) to output a \ character.
 % FYI, plain.tex uses \\ as a temporary control sequence (why?), but
 % this is not advertised and we don't care.  Texinfo does not
@@ -1008,15 +1003,16 @@ where each line of input produces a line of output.}
 %
 \def\math{%
   \tex
-  \mathcode`\_="8000 \mathunderscore
+  \mathunderscore
   \let\\ = \mathbackslash
   \mathactive
-  \implicitmath\finishmath}
-\def\finishmath#1{#1\implicitmath\Etex}
+  $\finishmath
+}
+\def\finishmath#1{#1$\Etex}
 
 % Some active characters (such as <) are spaced differently in math.
-% We have to reset their definitions in case the @math was an
-% argument to a command which set the catcodes (such as @item or @section).
+% We have to reset their definitions in case the @math was an argument
+% to a command which sets the catcodes (such as @item or @section).
 %
 {
   \catcode`^ = \active
@@ -1032,8 +1028,8 @@ where each line of input produces a line of output.}
 }
 
 % @bullet and @minus need the same treatment as @math, just above.
-\def\bullet{\implicitmath\ptexbullet\implicitmath}
-\def\minus{\implicitmath-\implicitmath}
+\def\bullet{$\ptexbullet$}
+\def\minus{$-$}
 
 % @refill is a no-op.
 \let\refill=\relax
