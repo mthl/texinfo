@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
+@c $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -443,7 +443,7 @@ Inserting Ellipsis and Bullets
 Inserting @TeX{} and the Copyright Symbol
 
 * tex::                         How to insert the @TeX{} logo.
-* copyright symbol::            How to use @code{@@copyright}@{@}.
+* copyright symbol::            How to use @code{@@copyright@{@}}.
 
 Glyphs for Examples
 
@@ -9505,7 +9505,7 @@ braces.@refill
 
 @menu
 * tex::                         How to insert the @TeX{} logo.
-* copyright symbol::            How to use @code{@@copyright}@{@}.
+* copyright symbol::            How to use @code{@@copyright@{@}}.
 @end menu
 
 
@@ -9521,12 +9521,12 @@ letters.  In Info, it just looks like @samp{TeX}.  The
 
 
 @node copyright symbol
-@subsection @code{@@copyright}@{@} (@copyright{})
+@subsection @code{@@copyright@{@}} (@copyright{})
 @findex copyright
 
 Use the @code{@@copyright@{@}} command to generate `@copyright{}'.  In
 a printed manual, this is a @samp{c} inside a circle, and in Info,
-this is @samp{(C)}.@refill
+this is @samp{(C)}.
 
 
 @node pounds, minus, TeX and copyright, Insertions
@@ -15210,8 +15210,7 @@ menus instead.  @xref{Contents, , Generating a Table of
 Contents}.@refill
 
 @item @@copyright@{@}
-Generate a copyright symbol.  @xref{copyright symbol, ,
-@code{@@copyright}}.@refill
+Generate a copyright symbol.  @xref{copyright symbol,, @code{@@copyright@{@}}}.
 
 @ignore
 @item @@ctrl@{@var{ctrl-char}@}
@@ -16645,14 +16644,14 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $ comment
-@cindex CVS $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $, in Texinfo
-@cindex RCS $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $, in Texinfo
-The @samp{$Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
+@cindex $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $ comment
+@cindex CVS $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $, in Texinfo
+@cindex RCS $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $, in Texinfo
+The @samp{$Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $} comment is for CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
+$Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 
@@ -16710,7 +16709,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.2 2002-09-11 16:32:09 karl Exp $
+@@comment $Id: texinfo.txi,v 1.3 2002-09-26 23:31:41 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
