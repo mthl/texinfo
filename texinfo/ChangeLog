@@ -1,3 +1,8 @@
+2005-02-05  Per Bothner  <per@bothner.com>
+
+	* makeinfo/xref.c (cm_uref): Ulink urls in Docbook need to be
+		html-escaped.  bug-texinfo mail, 05 Feb 2005 00:57:55 -0800.
+
 2005-01-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\chapmacro) <Ynothingkeyword>: failed to
