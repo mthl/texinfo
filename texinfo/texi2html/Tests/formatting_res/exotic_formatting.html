@@ -13,127 +13,133 @@ strong: "simple-double-three--four---"
 kbd: ``simple-double--three---four----'' 
 
 
-u 
-U 
-n
-a
-e
-o
-i
-i 
+@"u u 
+@"{U} U 
+@~n n
+@^a a
+@'e e
+@=o o
+@`i i
+@'{@dotless{i}} i 
+@dotless{i} i
+@dotless{ij} ij
 
-truc
-i
+@dotless{truc} truc
 
-
+@* 
 @ followed by a space
  
 @ followed by a tab
  
 @ followed by a new line
 
-
-@|
-
-!
-?
-.
-@
-}
-{
-
-
-
-TeX
-*
-C
-...
-....
-==
-error->
-==>
--
--!-
--|
-=>
-
-aa
-AA
-ae
-oe
-AE
-OE
-o
-O
-ss
-l
-L
-! upside-down
-? upside-down
-pound sterling
-
--a
--a
--a
--a
---a
---a
--a
--a
--a
--a,-b
-,-b
--a
--a
---a
---a
--a
---a
--a
--a
---a
--a
---a
--a
--a
--a
--a
--a,-b
--a
-,-b
--a,-b
--a,
-,-b
--a
---a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-c
--c
--a
-a
+@- 
+@| @|
+@: 
+@! !
+@? ?
+@. .
+@@ @
+@} }
+@{ {
+@/ 
 
 
+@TeX TeX
+@bullet *
+@copyright C
+@dots ...
+@enddots ....
+@equiv ==
+@error error->
+@expansion ==>
+@minus -
+@point -!-
+@print -|
+@result =>
+@today 
+@aa aa
+@AA AA
+@ae ae
+@oe oe
+@AE AE
+@OE OE
+@o o
+@O O
+@ss ss
+@l l
+@L L
+@exclamdown ! upside-down
+@questiondown ? upside-down
+@pounds pound sterling
 
-f-ile,,e-xt
-f-ile
-,,e-xt
-,,,e-xt
+@acronym{--a} -a
+@asis{--a} -a
+@b{--a} -a
+@cite{--a} -a
+@code{--a} --a
+@command{--a} --a
+@ctrl{--a} -a
+@dfn{--a} -a
+@dmn{--a} -a
+@email{--a,--b} -a,-b
+@email{,--b} ,-b
+@email{--a} -a
+@emph{--a} -a
+@env{--a} --a
+@file{--a} --a
+@i{--a} -a
+@kbd{--a} --a
+@key{--a} -a
+@math{--a} -a
+@option{--a} --a
+@r{--a} -a
+@samp{--a} --a
+@sc{--a} -a
+@strong{--a} -a
+@t{--a} -a
+@titlefont{--a} -a
+@uref{--a,--b} -a,-b
+@uref{--a} -a
+@uref{,--b} ,-b
+@url{--a,--b} -a,-b
+@url{--a,} -a,
+@url{,--b} ,-b
+@var{--a} -a
+@verb{:--a:} --a
+@w{--a} -a
+@H{a} a
+@H{--a} -a
+@dotaccent{a} a
+@dotaccent{--a} -a
+@ringaccent{a} a
+@ringaccent{--a} -a
+@tieaccent{a} a
+@tieaccent{--a} -a
+@u{a} a
+@u{--a} -a
+@ubaraccent{a} a
+@ubaraccent{--a} -a
+@udotaccent{a} a
+@udotaccent{--a} -a
+@v{a} a
+@v{--a} -a
+@,{c} c
+@,{--c} -c
+@dotless{--a} -a
+@dotless{a} a
+@footnote{in footnote} 
+@footnote{in footnote2} 
+
+@image{f--ile,,e--xt} f--ile,,e--xt
+@image{f--ile,,,,e--xt} f--ile,,,,e--xt
+@image{f--ile,,,alt} f--ile,,,alt
+@image{f--ile,aze,az,alt,e--xt} f--ile,aze,az,alt,e--xt
+@image{f-ile,aze,,a--lt} f-ile,aze,,a--lt
+@image{f--ile} f--ile
+@image{,,e--xt} ,,e--xt
+@image{,,,e--xt} ,,,e--xt
+@image{file@verb{:jk _ %@:},,,alt@verb{:jk _ %@:}} filejk _ %@,,,altjk _ %@
 
 
 
@@ -277,67 +283,67 @@ d-efmethod
 d-eftypemethod
 
 
+@xref{chapter, cross ref name, title, file name, manual} 
+@ref{chapter, cross ref name, title, file name, manual} 
+@pxref{chapter, cross ref name, title, file name, manual} 
+@inforef{chapter, cross ref name, file name} 
 
+@ref{chapter} 
+@ref{node} 
+@ref{,cross ref name} 
+@ref{,,title} 
+@ref{,,,file name} 
+@ref{,,,,manual} 
+@ref{chapter,cross ref name} 
+@ref{chapter,,title} 
+@ref{chapter,,,file name} 
+@ref{chapter,,,,manual} 
+@ref{node,cross ref name} 
+@ref{node,,title} 
+@ref{node,,,file name} 
+@ref{node,,,,manual} 
+@ref{chapter,cross ref name,title,} 
+@ref{chapter,cross ref name,,file name} 
+@ref{chapter,cross ref name,,,manual} 
+@ref{node,cross ref name,title,} 
+@ref{node,cross ref name,,file name} 
+@ref{node,cross ref name,,,manual} 
+@ref{chapter,cross ref name,title,file name} 
+@ref{chapter,cross ref name,title,,manual} 
+@ref{node,cross ref name,title,file name} 
+@ref{node,cross ref name,title,,manual} 
+@ref{chapter,cross ref name,title, file name, manual} 
+@ref{node,cross ref name,title, file name, manual} 
+@ref{chapter,,title,file name} 
+@ref{chapter,,title,,manual} 
+@ref{node,,title,file name} 
+@ref{node,,title,,manual} 
+@ref{chapter,,title, file name, manual} 
+@ref{node,,title, file name, manual} 
+@ref{chapter,,,file name,manual} 
+@ref{node,,,file name,manual} 
+@ref{,cross ref name,title,} 
+@ref{,cross ref name,,file name} 
+@ref{,cross ref name,,,manual} 
+@ref{,cross ref name,title,file name} 
+@ref{,cross ref name,title,,manual} 
+@ref{,cross ref name,title, file name, manual} 
+@ref{,,title,file name} 
+@ref{,,title,,manual} 
+@ref{,,title, file name, manual} 
+@ref{,,,file name,manual} 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@inforef{chapter, cross ref name, file name} 
+@inforef{chapter} 
+@inforef{chapter, cross ref name} 
+@inforef{chapter,,file name} 
+@inforef{node, cross ref name, file name} 
+@inforef{node} 
+@inforef{node, cross ref name} 
+@inforef{node,,file name} 
+@inforef{,cross ref name } 
+@inforef{,,file name} 
+@inforef{,cross ref name, file name} 
 
  a
 l-ine
@@ -428,126 +434,132 @@ kbd: <kbd>``simple-double--three---four----''</kbd> <br>
 <a name="IDX3"></a>
 <a name="IDX4"></a>
 
-<p>&uuml; 
-&Uuml; 
-&ntilde;
-&acirc;
-&eacute;
-o=
-&igrave;
-&iacute; 
+<p>@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o=
+@`i &igrave;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{ij} ij
 
-</p><p>truc
-i
+</p><p>@dotless{truc} truc
 
-</p><br>
-<p>@ followed by a space
+</p><p>@* <br>
+@ followed by a space
 &nbsp;
 @ followed by a tab
 &nbsp;
 @ followed by a new line
-&nbsp;
-@|
-
-!
-?
-.
-@
-}
-{
-
+&nbsp;<code>@-</code> 
+<code>@|</code> @|
+<code>@:</code> 
+<code>@!</code> !
+<code>@?</code> ?
+<code>@.</code> .
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
 
 </p>
-<p>TeX
-&bull;
-&copy;
-&hellip;
-<small class="enddots">....</small>
-&equiv;
-error--&gt;
-&rarr;
--
-&lowast;
--|
-&rArr;
-October, 26 2003
-&aring;
-&Aring;
-&aelig;
-&oelig;
-&AElig;
-&OElig;
-&oslash;
-&Oslash;
-&szlig;
-/l
-/L
-&iexcl;
-&iquest;
-&pound;
+<p>@TeX TeX
+@bullet &bull;
+@copyright &copy;
+@dots &hellip;
+@enddots <small class="enddots">....</small>
+@equiv &equiv;
+@error error--&gt;
+@expansion &rarr;
+@minus -
+@point &lowast;
+@print -|
+@result &rArr;
+@today November, 2 2003
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
 
-</p><p>-a
--a
-<b>-a</b>
-<cite>-a</cite>
-<code>--a</code>
-<code>--a</code>
-^-a
-<em>-a</em>
--a
-<a href="mailto:-a">-b</a>
--b
-<a href="mailto:-a">-a</a>
-<em>-a</em>
-<code>--a</code>
-`<tt>--a</tt>'
-<i>-a</i>
-<kbd>--a</kbd>
-<kbd>-a</kbd>
-<em>-a</em>
-`<samp>--a</samp>'
--a
-`<samp>--a</samp>'
-<small>-A</small>
-<strong>-a</strong>
-<tt>-a</tt>
-<h1 class="titlefont">-a</h1>
-<a href="-a">-b</a>
-<a href="-a">-a</a>
--b
-<a href="-a,-b">-a,-b</a>
-<a href="-a,">-a,</a>
-<a href=",-b">,-b</a>
-<var>-a</var>
-<tt>--a</tt>
--a
-a''
--a''
-a.
--a.
-a*
--a*
-a[
--a[
-a(
--a(
-a_
--a_
-.a
-.-a
-a&lt;
--a&lt;
-&ccedil;
-&-ccedil;
--a
-a
-<a name="DOCF1" href="exotic_formatting_fot.html#FOOT1">(1)</a>
-<a name="DOCF2" href="exotic_formatting_fot.html#FOOT2">(2)</a>
+</p><p><code>@acronym{--a}</code> -a
+<code>@asis{--a}</code> -a
+<code>@b{--a}</code> <b>-a</b>
+<code>@cite{--a}</code> <cite>-a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <code>--a</code>
+<code>@ctrl{--a}</code> ^-a
+<code>@dfn{--a}</code> <em>-a</em>
+<code>@dmn{--a}</code> -a
+<code>@email{--a,--b}</code> <a href="mailto:-a">-b</a>
+<code>@email{,--b}</code> -b
+<code>@email{--a}</code> <a href="mailto:-a">-a</a>
+<code>@emph{--a}</code> <em>-a</em>
+<code>@env{--a}</code> <code>--a</code>
+<code>@file{--a}</code> `<tt>--a</tt>'
+<code>@i{--a}</code> <i>-a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <kbd>-a</kbd>
+<code>@math{--a}</code> <em>-a</em>
+<code>@option{--a}</code> `<samp>--a</samp>'
+<code>@r{--a}</code> -a
+<code>@samp{--a}</code> `<samp>--a</samp>'
+<code>@sc{--a}</code> <small>-A</small>
+<code>@strong{--a}</code> <strong>-a</strong>
+<code>@t{--a}</code> <tt>-a</tt>
+<code>@titlefont{--a}</code> <h1 class="titlefont">-a</h1>
+<code>@uref{--a,--b}</code> <a href="-a">-b</a>
+<code>@uref{--a}</code> <a href="-a">-a</a>
+<code>@uref{,--b}</code> -b
+<code>@url{--a,--b}</code> <a href="-a,-b">-a,-b</a>
+<code>@url{--a,}</code> <a href="-a,">-a,</a>
+<code>@url{,--b}</code> <a href=",-b">,-b</a>
+<code>@var{--a}</code> <var>-a</var>
+<code>@verb{:--a:}</code> <tt>--a</tt>
+<code>@w{--a}</code> -a
+<code>@H{a}</code> a''
+<code>@H{--a}</code> -a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> -a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> -a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> -a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> -a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> -a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .-a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> -a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &-ccedil;
+<code>@dotless{--a}</code> -a
+<code>@dotless{a}</code> a
+<code>@footnote{in footnote}</code> <a name="DOCF1" href="exotic_formatting_fot.html#FOOT1">(1)</a>
+<code>@footnote{in footnote2}</code> <a name="DOCF2" href="exotic_formatting_fot.html#FOOT2">(2)</a>
 
-</p><p><img src="f-ile.jpg" alt="f-ile">
-<img src="f-ile.jpg" alt="f-ile">
-
-
+</p><p><code>@image{f--ile,,e--xt}</code> <img src="./f--ile.jpg" alt="f--ile">
+<code>@image{f--ile,,,,e--xt}</code> <img src="./f--ile.e--xt" alt="f--ile">
+<code>@image{f--ile,,,alt}</code> <img src="./f--ile.jpg" alt="alt">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="./f--ile.e--xt" alt="alt">
+<code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a-lt">
+<code>@image{f--ile}</code> <img src="./f--ile.jpg" alt="f--ile">
+<code>@image{,,e--xt}</code> 
+<code>@image{,,,e--xt}</code> 
+<code>@image{file@verb{:jk _ %@:},,,alt@verb{:jk _ %@:}}</code> <img src="file<tt>jk _ %@</tt>.jpg" alt="alt&lt;tt&gt;jk _ %@&lt;/tt&gt;">
 
 </p>
 <blockquote>
@@ -804,67 +816,67 @@ a
 <tr><td colspan="2"><p>d-eftypemethod
 </p></td></tr></table>
 
-<p>See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-see <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<p><code>@xref{chapter, cross ref name, title, file name, manual}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
 
-</p><p><a href="exotic_formatting_1.html#SEC1">chapter</a>
-@ref{node}
-@ref{,cross ref name}
-@ref{,,title}
-<a href="../file name/">(file name)</a>
-<cite>manual</cite>
-<a href="exotic_formatting_1.html#SEC1">cross ref name</a>
-<a href="exotic_formatting_1.html#SEC1">title</a>
-<a href="../file name/chapter.html">(file name)chapter</a>
-section `chapter' in <cite>manual</cite>
-@ref{node,cross ref name}
-@ref{node,,title}
-<a href="../file name/node.html">(file name)node</a>
-section `node' in <cite>manual</cite>
-<a href="exotic_formatting_1.html#SEC1">title</a>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-section `chapter' in <cite>manual</cite>
-@ref{node,cross ref name,title,}
-<a href="../file name/node.html">cross ref name: (file name)node</a>
-section `node' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/node.html">cross ref name: (file name)node</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/node.html">cross ref name: (file name)node</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a> section `chapter' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a> section `node' in <cite>manual</cite>
-@ref{,cross ref name,title,}
-<a href="../file name/">cross ref name: (file name)</a>
-<cite>manual</cite>
-<a href="../file name/">cross ref name: (file name)</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/">cross ref name: (file name)</a> section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a> section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a> <cite>manual</cite>
+</p><p><code>@ref{chapter}</code> <a href="exotic_formatting_1.html#SEC1">chapter</a>
+<code>@ref{node}</code> @ref{node}
+<code>@ref{,cross ref name}</code> @ref{,cross ref name}
+<code>@ref{,,title}</code> @ref{,,title}
+<code>@ref{,,,file name}</code> <a href="../file name/">(file name)</a>
+<code>@ref{,,,,manual}</code> <cite>manual</cite>
+<code>@ref{chapter,cross ref name}</code> <a href="exotic_formatting_1.html#SEC1">cross ref name</a>
+<code>@ref{chapter,,title}</code> <a href="exotic_formatting_1.html#SEC1">title</a>
+<code>@ref{chapter,,,file name}</code> <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@ref{chapter,,,,manual}</code> section `chapter' in <cite>manual</cite>
+<code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
+<code>@ref{node,,title}</code> @ref{node,,title}
+<code>@ref{node,,,file name}</code> <a href="../file name/node.html">(file name)node</a>
+<code>@ref{node,,,,manual}</code> section `node' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,}</code> <a href="exotic_formatting_1.html#SEC1">title</a>
+<code>@ref{chapter,cross ref name,,file name}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@ref{chapter,cross ref name,,,manual}</code> section `chapter' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
+<code>@ref{node,cross ref name,,file name}</code> <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@ref{node,cross ref name,,,manual}</code> section `node' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@ref{chapter,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@ref{node,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="../file name/node.html">cross ref name: (file name)node</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@ref{chapter,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a href="../file name/node.html">(file name)node</a>
+<code>@ref{node,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html">(file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="../file name/node.html">(file name)node</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="../file name/chapter.html">(file name)chapter</a> section `chapter' in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="../file name/node.html">(file name)node</a> section `node' in <cite>manual</cite>
+<code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
+<code>@ref{,cross ref name,,file name}</code> <a href="../file name/">cross ref name: (file name)</a>
+<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> <a href="../file name/">cross ref name: (file name)</a>
+<code>@ref{,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="../file name/">cross ref name: (file name)</a> section `title' in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a href="../file name/">(file name)</a>
+<code>@ref{,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="../file name/">(file name)</a> section `title' in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <a href="../file name/">(file name)</a> <cite>manual</cite>
 
-</p><p>See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-
-
-See <a href="../file name/chapter.html">(file name)chapter</a>
-See <a href="../file name/node.html">cross ref name: (file name)node</a>
-
-
-See <a href="../file name/node.html">(file name)node</a>
-
-See <a href="../file name/">(file name)</a>
-See <a href="../file name/">cross ref name: (file name)</a>
+</p><p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@inforef{chapter}</code> 
+<code>@inforef{chapter, cross ref name}</code> 
+<code>@inforef{chapter,,file name}</code> See <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@inforef{node, cross ref name, file name}</code> See <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@inforef{node}</code> 
+<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node,,file name}</code> See <a href="../file name/node.html">(file name)node</a>
+<code>@inforef{,cross ref name }</code> 
+<code>@inforef{,,file name}</code> 
+<code>@inforef{,cross ref name, file name}</code> 
 
 </p><dl compact="compact">
 <dt>&bull; a
@@ -916,127 +928,133 @@ kbd: <kbd>``simple-double--three---four----''</kbd>
 
 
 <a name="IDX27"></a><a name="IDX28"></a><a name="IDX29"></a><a name="IDX30"></a>
-&uuml; 
-&Uuml; 
-&ntilde;
-&acirc;
-&eacute;
-o=
-&igrave;
-&iacute; 
+@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@'e &eacute;
+@=o o=
+@`i &igrave;
+@'{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{ij} ij
 
-truc
-i
+@dotless{truc} truc
 
-
+@* 
 
 @ followed by a space
 &nbsp;
 @ followed by a tab
 &nbsp;
 @ followed by a new line
-&nbsp;
-@|
-
-!
-?
-.
-@
-}
-{
-
-
-
-TeX
-&bull;
-&copy;
-&hellip;
-....
-&equiv;
-error--&gt;
-&rarr;
--
-&lowast;
--|
-&rArr;
-October, 26 2003
-&aring;
-&Aring;
-&aelig;
-&oelig;
-&AElig;
-&OElig;
-&oslash;
-&Oslash;
-&szlig;
-/l
-/L
-&iexcl;
-&iquest;
-&pound;
-
---a
---a
-<b>--a</b>
-<cite>--a</cite>
-<code>--a</code>
-<code>--a</code>
-^--a
-<em>--a</em>
---a
-<a href="mailto:--a">--b</a>
---b
-<a href="mailto:--a">--a</a>
-<em>--a</em>
-<code>--a</code>
-`<tt>--a</tt>'
-<i>--a</i>
-<kbd>--a</kbd>
-<kbd>--a</kbd>
-<em>--a</em>
-`<samp>--a</samp>'
---a
-`<samp>--a</samp>'
---A
-<strong>--a</strong>
-<tt>--a</tt>
---a
-<a href="--a">--b</a>
-<a href="--a">--a</a>
---b
-<a href="--a,--b">--a,--b</a>
-<a href="--a,">--a,</a>
-<a href=",--b">,--b</a>
-<var>--a</var>
-<tt>--a</tt>
---a
-a''
---a''
-a.
---a.
-a*
---a*
-a[
---a[
-a(
---a(
-a_
---a_
-.a
-.--a
-a&lt;
---a&lt;
-&ccedil;
-&--ccedil;
---a
-a
-<a name="DOCF3" href="exotic_formatting_fot.html#FOOT3">(3)</a>
-<a name="DOCF4" href="exotic_formatting_fot.html#FOOT4">(4)</a>
-
-[ f--ile ]
-[ f--ile ]
+&nbsp;<code>@-</code> 
+<code>@|</code> @|
+<code>@:</code> 
+<code>@!</code> !
+<code>@?</code> ?
+<code>@.</code> .
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
 
 
+@TeX TeX
+@bullet &bull;
+@copyright &copy;
+@dots &hellip;
+@enddots ....
+@equiv &equiv;
+@error error--&gt;
+@expansion &rarr;
+@minus -
+@point &lowast;
+@print -|
+@result &rArr;
+@today November, 2 2003
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l /l
+@L /L
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+
+<code>@acronym{--a}</code> --a
+<code>@asis{--a}</code> --a
+<code>@b{--a}</code> <b>--a</b>
+<code>@cite{--a}</code> <cite>--a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <code>--a</code>
+<code>@ctrl{--a}</code> ^--a
+<code>@dfn{--a}</code> <em>--a</em>
+<code>@dmn{--a}</code> --a
+<code>@email{--a,--b}</code> <a href="mailto:--a">--b</a>
+<code>@email{,--b}</code> --b
+<code>@email{--a}</code> <a href="mailto:--a">--a</a>
+<code>@emph{--a}</code> <em>--a</em>
+<code>@env{--a}</code> <code>--a</code>
+<code>@file{--a}</code> `<tt>--a</tt>'
+<code>@i{--a}</code> <i>--a</i>
+<code>@kbd{--a}</code> <kbd>--a</kbd>
+<code>@key{--a}</code> <kbd>--a</kbd>
+<code>@math{--a}</code> <em>--a</em>
+<code>@option{--a}</code> `<samp>--a</samp>'
+<code>@r{--a}</code> --a
+<code>@samp{--a}</code> `<samp>--a</samp>'
+<code>@sc{--a}</code> --A
+<code>@strong{--a}</code> <strong>--a</strong>
+<code>@t{--a}</code> <tt>--a</tt>
+<code>@titlefont{--a}</code> --a
+<code>@uref{--a,--b}</code> <a href="--a">--b</a>
+<code>@uref{--a}</code> <a href="--a">--a</a>
+<code>@uref{,--b}</code> --b
+<code>@url{--a,--b}</code> <a href="--a,--b">--a,--b</a>
+<code>@url{--a,}</code> <a href="--a,">--a,</a>
+<code>@url{,--b}</code> <a href=",--b">,--b</a>
+<code>@var{--a}</code> <var>--a</var>
+<code>@verb{:--a:}</code> <tt>--a</tt>
+<code>@w{--a}</code> --a
+<code>@H{a}</code> a''
+<code>@H{--a}</code> --a''
+<code>@dotaccent{a}</code> a.
+<code>@dotaccent{--a}</code> --a.
+<code>@ringaccent{a}</code> a*
+<code>@ringaccent{--a}</code> --a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> --a[
+<code>@u{a}</code> a(
+<code>@u{--a}</code> --a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> --a_
+<code>@udotaccent{a}</code> .a
+<code>@udotaccent{--a}</code> .--a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> --a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &--ccedil;
+<code>@dotless{--a}</code> --a
+<code>@dotless{a}</code> a
+<code>@footnote{in footnote}</code> <a name="DOCF3" href="exotic_formatting_fot.html#FOOT3">(3)</a>
+<code>@footnote{in footnote2}</code> <a name="DOCF4" href="exotic_formatting_fot.html#FOOT4">(4)</a>
+
+<code>@image{f--ile,,e--xt}</code> [ f--ile ]
+<code>@image{f--ile,,,,e--xt}</code> [ f--ile ]
+<code>@image{f--ile,,,alt}</code> [ alt ]
+<code>@image{f--ile,aze,az,alt,e--xt}</code> [ alt ]
+<code>@image{f-ile,aze,,a--lt}</code> [ a-lt ]
+<code>@image{f--ile}</code> [ f--ile ]
+<code>@image{,,e--xt}</code> 
+<code>@image{,,,e--xt}</code> 
+<code>@image{file@verb{:jk _ %@:},,,alt@verb{:jk _ %@:}}</code> [ alt&lt;tt&gt;jk _ %@&lt;/tt&gt; ]
 
 
 </pre><blockquote>
@@ -1273,67 +1291,67 @@ a
 <tr><td colspan="2"><pre class="example">d--eftypemethod
 </pre></td></tr></table>
 <pre class="example">
-See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-see <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@xref{chapter, cross ref name, title, file name, manual}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
 
-<a href="exotic_formatting_1.html#SEC1">chapter</a>
-@ref{node}
-@ref{,cross ref name}
-@ref{,,title}
-<a href="../file name/">(file name)</a>
-<cite>manual</cite>
-<a href="exotic_formatting_1.html#SEC1">cross ref name</a>
-<a href="exotic_formatting_1.html#SEC1">title</a>
-<a href="../file name/chapter.html">(file name)chapter</a>
-section `chapter' in <cite>manual</cite>
-@ref{node,cross ref name}
-@ref{node,,title}
-<a href="../file name/node.html">(file name)node</a>
-section `node' in <cite>manual</cite>
-<a href="exotic_formatting_1.html#SEC1">title</a>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-section `chapter' in <cite>manual</cite>
-@ref{node,cross ref name,title,}
-<a href="../file name/node.html">cross ref name: (file name)node</a>
-section `node' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/node.html">cross ref name: (file name)node</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/node.html">cross ref name: (file name)node</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a> section `title' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a> section `title' in <cite>manual</cite>
-<a href="../file name/chapter.html">(file name)chapter</a> section `chapter' in <cite>manual</cite>
-<a href="../file name/node.html">(file name)node</a> section `node' in <cite>manual</cite>
-@ref{,cross ref name,title,}
-<a href="../file name/">cross ref name: (file name)</a>
-<cite>manual</cite>
-<a href="../file name/">cross ref name: (file name)</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/">cross ref name: (file name)</a> section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a>
-section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a> section `title' in <cite>manual</cite>
-<a href="../file name/">(file name)</a> <cite>manual</cite>
+<code>@ref{chapter}</code> <a href="exotic_formatting_1.html#SEC1">chapter</a>
+<code>@ref{node}</code> @ref{node}
+<code>@ref{,cross ref name}</code> @ref{,cross ref name}
+<code>@ref{,,title}</code> @ref{,,title}
+<code>@ref{,,,file name}</code> <a href="../file name/">(file name)</a>
+<code>@ref{,,,,manual}</code> <cite>manual</cite>
+<code>@ref{chapter,cross ref name}</code> <a href="exotic_formatting_1.html#SEC1">cross ref name</a>
+<code>@ref{chapter,,title}</code> <a href="exotic_formatting_1.html#SEC1">title</a>
+<code>@ref{chapter,,,file name}</code> <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@ref{chapter,,,,manual}</code> section `chapter' in <cite>manual</cite>
+<code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
+<code>@ref{node,,title}</code> @ref{node,,title}
+<code>@ref{node,,,file name}</code> <a href="../file name/node.html">(file name)node</a>
+<code>@ref{node,,,,manual}</code> section `node' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,}</code> <a href="exotic_formatting_1.html#SEC1">title</a>
+<code>@ref{chapter,cross ref name,,file name}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@ref{chapter,cross ref name,,,manual}</code> section `chapter' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
+<code>@ref{node,cross ref name,,file name}</code> <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@ref{node,cross ref name,,,manual}</code> section `node' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@ref{chapter,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@ref{node,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="../file name/chapter.html">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="../file name/node.html">cross ref name: (file name)node</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@ref{chapter,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a href="../file name/node.html">(file name)node</a>
+<code>@ref{node,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html">(file name)chapter</a> section `title' in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="../file name/node.html">(file name)node</a> section `title' in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="../file name/chapter.html">(file name)chapter</a> section `chapter' in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="../file name/node.html">(file name)node</a> section `node' in <cite>manual</cite>
+<code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
+<code>@ref{,cross ref name,,file name}</code> <a href="../file name/">cross ref name: (file name)</a>
+<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> <a href="../file name/">cross ref name: (file name)</a>
+<code>@ref{,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="../file name/">cross ref name: (file name)</a> section `title' in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a href="../file name/">(file name)</a>
+<code>@ref{,,title,,manual}</code> section `title' in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="../file name/">(file name)</a> section `title' in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <a href="../file name/">(file name)</a> <cite>manual</cite>
 
-See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
-
-
-See <a href="../file name/chapter.html">(file name)chapter</a>
-See <a href="../file name/node.html">cross ref name: (file name)node</a>
-
-
-See <a href="../file name/node.html">(file name)node</a>
-
-See <a href="../file name/">(file name)</a>
-See <a href="../file name/">cross ref name: (file name)</a>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html">cross ref name: (file name)chapter</a>
+<code>@inforef{chapter}</code> 
+<code>@inforef{chapter, cross ref name}</code> 
+<code>@inforef{chapter,,file name}</code> See <a href="../file name/chapter.html">(file name)chapter</a>
+<code>@inforef{node, cross ref name, file name}</code> See <a href="../file name/node.html">cross ref name: (file name)node</a>
+<code>@inforef{node}</code> 
+<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node,,file name}</code> See <a href="../file name/node.html">(file name)node</a>
+<code>@inforef{,cross ref name }</code> 
+<code>@inforef{,,file name}</code> 
+<code>@inforef{,cross ref name, file name}</code> 
 
 </pre><dl compact="compact">
 <dt>&bull;<tt> a

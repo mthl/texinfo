@@ -13,127 +13,133 @@ strong: "simple-double-three--four---"
 kbd: ``simple-double--three---four----'' 
 
 
-u 
-U 
-n
-a
-e
-o
-i
-i 
+@"u u 
+@"{U} U 
+@~n n
+@^a a
+@'e e
+@=o o
+@`i i
+@'{@dotless{i}} i 
+@dotless{i} i
+@dotless{ij} ij
 
-truc
-i
+@dotless{truc} truc
 
-
+@* 
 @ followed by a space
  
 @ followed by a tab
  
 @ followed by a new line
 
-
-@|
-
-!
-?
-.
-@
-}
-{
-
-
-
-TeX
-*
-C
-...
-....
-==
-error->
-==>
--
--!-
--|
-=>
-
-aa
-AA
-ae
-oe
-AE
-OE
-o
-O
-ss
-l
-L
-! upside-down
-? upside-down
-pound sterling
-
--a
--a
--a
--a
---a
---a
--a
--a
--a
--a,-b
-,-b
--a
--a
---a
---a
--a
---a
--a
--a
---a
--a
---a
--a
--a
--a
--a
--a,-b
--a
-,-b
--a,-b
--a,
-,-b
--a
---a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-a
--a
-c
--c
--a
-a
+@- 
+@| @|
+@: 
+@! !
+@? ?
+@. .
+@@ @
+@} }
+@{ {
+@/ 
 
 
+@TeX TeX
+@bullet *
+@copyright C
+@dots ...
+@enddots ....
+@equiv ==
+@error error->
+@expansion ==>
+@minus -
+@point -!-
+@print -|
+@result =>
+@today 
+@aa aa
+@AA AA
+@ae ae
+@oe oe
+@AE AE
+@OE OE
+@o o
+@O O
+@ss ss
+@l l
+@L L
+@exclamdown ! upside-down
+@questiondown ? upside-down
+@pounds pound sterling
 
-f-ile,,e-xt
-f-ile
-,,e-xt
-,,,e-xt
+@acronym{--a} -a
+@asis{--a} -a
+@b{--a} -a
+@cite{--a} -a
+@code{--a} --a
+@command{--a} --a
+@ctrl{--a} -a
+@dfn{--a} -a
+@dmn{--a} -a
+@email{--a,--b} -a,-b
+@email{,--b} ,-b
+@email{--a} -a
+@emph{--a} -a
+@env{--a} --a
+@file{--a} --a
+@i{--a} -a
+@kbd{--a} --a
+@key{--a} -a
+@math{--a} -a
+@option{--a} --a
+@r{--a} -a
+@samp{--a} --a
+@sc{--a} -a
+@strong{--a} -a
+@t{--a} -a
+@titlefont{--a} -a
+@uref{--a,--b} -a,-b
+@uref{--a} -a
+@uref{,--b} ,-b
+@url{--a,--b} -a,-b
+@url{--a,} -a,
+@url{,--b} ,-b
+@var{--a} -a
+@verb{:--a:} --a
+@w{--a} -a
+@H{a} a
+@H{--a} -a
+@dotaccent{a} a
+@dotaccent{--a} -a
+@ringaccent{a} a
+@ringaccent{--a} -a
+@tieaccent{a} a
+@tieaccent{--a} -a
+@u{a} a
+@u{--a} -a
+@ubaraccent{a} a
+@ubaraccent{--a} -a
+@udotaccent{a} a
+@udotaccent{--a} -a
+@v{a} a
+@v{--a} -a
+@,{c} c
+@,{--c} -c
+@dotless{--a} -a
+@dotless{a} a
+@footnote{in footnote} 
+@footnote{in footnote2} 
+
+@image{f--ile,,e--xt} f--ile,,e--xt
+@image{f--ile,,,,e--xt} f--ile,,,,e--xt
+@image{f--ile,,,alt} f--ile,,,alt
+@image{f--ile,aze,az,alt,e--xt} f--ile,aze,az,alt,e--xt
+@image{f-ile,aze,,a--lt} f-ile,aze,,a--lt
+@image{f--ile} f--ile
+@image{,,e--xt} ,,e--xt
+@image{,,,e--xt} ,,,e--xt
+@image{file@verb{:jk _ %@:},,,alt@verb{:jk _ %@:}} filejk _ %@,,,altjk _ %@
 
 
 
@@ -277,67 +283,67 @@ d-efmethod
 d-eftypemethod
 
 
+@xref{chapter, cross ref name, title, file name, manual} 
+@ref{chapter, cross ref name, title, file name, manual} 
+@pxref{chapter, cross ref name, title, file name, manual} 
+@inforef{chapter, cross ref name, file name} 
 
+@ref{chapter} 
+@ref{node} 
+@ref{,cross ref name} 
+@ref{,,title} 
+@ref{,,,file name} 
+@ref{,,,,manual} 
+@ref{chapter,cross ref name} 
+@ref{chapter,,title} 
+@ref{chapter,,,file name} 
+@ref{chapter,,,,manual} 
+@ref{node,cross ref name} 
+@ref{node,,title} 
+@ref{node,,,file name} 
+@ref{node,,,,manual} 
+@ref{chapter,cross ref name,title,} 
+@ref{chapter,cross ref name,,file name} 
+@ref{chapter,cross ref name,,,manual} 
+@ref{node,cross ref name,title,} 
+@ref{node,cross ref name,,file name} 
+@ref{node,cross ref name,,,manual} 
+@ref{chapter,cross ref name,title,file name} 
+@ref{chapter,cross ref name,title,,manual} 
+@ref{node,cross ref name,title,file name} 
+@ref{node,cross ref name,title,,manual} 
+@ref{chapter,cross ref name,title, file name, manual} 
+@ref{node,cross ref name,title, file name, manual} 
+@ref{chapter,,title,file name} 
+@ref{chapter,,title,,manual} 
+@ref{node,,title,file name} 
+@ref{node,,title,,manual} 
+@ref{chapter,,title, file name, manual} 
+@ref{node,,title, file name, manual} 
+@ref{chapter,,,file name,manual} 
+@ref{node,,,file name,manual} 
+@ref{,cross ref name,title,} 
+@ref{,cross ref name,,file name} 
+@ref{,cross ref name,,,manual} 
+@ref{,cross ref name,title,file name} 
+@ref{,cross ref name,title,,manual} 
+@ref{,cross ref name,title, file name, manual} 
+@ref{,,title,file name} 
+@ref{,,title,,manual} 
+@ref{,,title, file name, manual} 
+@ref{,,,file name,manual} 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@inforef{chapter, cross ref name, file name} 
+@inforef{chapter} 
+@inforef{chapter, cross ref name} 
+@inforef{chapter,,file name} 
+@inforef{node, cross ref name, file name} 
+@inforef{node} 
+@inforef{node, cross ref name} 
+@inforef{node,,file name} 
+@inforef{,cross ref name } 
+@inforef{,,file name} 
+@inforef{,cross ref name, file name} 
 
  a
 l-ine

@@ -29,128 +29,134 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @findex ``
 @findex --foption
 
-@"u 
-@"{U} 
-@~n
-@^a
-@'e
-@=o
-@`i
-@'{@dotless{i}} 
+@@"u @"u 
+@@"@{U@} @"{U} 
+@@~n @~n
+@@^a @^a
+@@'e @'e
+@@=o @=o
+@@`i @`i
+@@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+@@dotless@{i@} @dotless{i}
+@@dotless@{ij@} @dotless{ij}
 
-@dotless{truc}
-@dotless{i}
+@@dotless@{truc@} @dotless{truc}
 
-@*
+@@* @*
 @@ followed by a space
 @ 
 @@ followed by a tab
 @	
 @@ followed by a new line
 @
-@-
-@|
-@:
-@!
-@?
-@.
-@@
-@}
-@{
-@/
+@code{@@-} @-
+@code{@@|} @|
+@code{@@:} @:
+@code{@@!} @!
+@code{@@?} @?
+@code{@@.} @.
+@code{@@@@} @@
+@code{@@@}} @}
+@code{@@@{} @{
+@code{@@/} @/
 
 
-@TeX{}
+@@TeX @TeX{}
 @c @br{}
-@bullet{}
-@copyright{}
-@dots{}
-@enddots{}
-@equiv{}
-@error{}
-@expansion{}
-@minus{}
-@point{}
-@print{}
-@result{}
-@today{}
-@aa{}
-@AA{}
-@ae{}
-@oe{}
-@AE{}
-@OE{}
-@o{}
-@O{}
-@ss{}
-@l{}
-@L{}
-@exclamdown{}
-@questiondown{}
-@pounds{}
+@@bullet @bullet{}
+@@copyright @copyright{}
+@@dots @dots{}
+@@enddots @enddots{}
+@@equiv @equiv{}
+@@error @error{}
+@@expansion @expansion{}
+@@minus @minus{}
+@@point @point{}
+@@print @print{}
+@@result @result{}
+@@today @today{}
+@@aa @aa{}
+@@AA @AA{}
+@@ae @ae{}
+@@oe @oe{}
+@@AE @AE{}
+@@OE @OE{}
+@@o @o{}
+@@O @O{}
+@@ss @ss{}
+@@l @l{}
+@@L @L{}
+@@exclamdown @exclamdown{}
+@@questiondown @questiondown{}
+@@pounds @pounds{}
 
-@acronym{--a}
-@asis{--a}
-@b{--a}
-@cite{--a}
-@code{--a}
-@command{--a}
-@ctrl{--a}
-@dfn{--a}
-@dmn{--a}
-@email{--a,--b}
-@email{,--b}
-@email{--a}
-@emph{--a}
-@env{--a}
-@file{--a}
-@i{--a}
-@kbd{--a}
-@key{--a}
-@math{--a}
-@option{--a}
-@r{--a}
-@samp{--a}
-@sc{--a}
-@strong{--a}
-@t{--a}
-@titlefont{--a}
-@uref{--a,--b}
-@uref{--a}
-@uref{,--b}
-@url{--a,--b}
-@url{--a,}
-@url{,--b}
-@var{--a}
-@verb{:--a:}
-@w{--a}
-@H{a}
-@H{--a}
-@dotaccent{a}
-@dotaccent{--a}
-@ringaccent{a}
-@ringaccent{--a}
-@tieaccent{a}
-@tieaccent{--a}
-@u{a}
-@u{--a}
-@ubaraccent{a}
-@ubaraccent{--a}
-@udotaccent{a}
-@udotaccent{--a}
-@v{a}
-@v{--a}
-@,{c}
-@,{--c}
-@dotless{--a}
-@dotless{a}
-@footnote{in footnote}
-@footnote{in footnote2}
+@code{@@acronym@{--a@}} @acronym{--a}
+@code{@@asis@{--a@}} @asis{--a}
+@code{@@b@{--a@}} @b{--a}
+@code{@@cite@{--a@}} @cite{--a}
+@code{@@code@{--a@}} @code{--a}
+@code{@@command@{--a@}} @command{--a}
+@code{@@ctrl@{--a@}} @ctrl{--a}
+@code{@@dfn@{--a@}} @dfn{--a}
+@code{@@dmn@{--a@}} @dmn{--a}
+@code{@@email@{--a,--b@}} @email{--a,--b}
+@code{@@email@{,--b@}} @email{,--b}
+@code{@@email@{--a@}} @email{--a}
+@code{@@emph@{--a@}} @emph{--a}
+@code{@@env@{--a@}} @env{--a}
+@code{@@file@{--a@}} @file{--a}
+@code{@@i@{--a@}} @i{--a}
+@code{@@kbd@{--a@}} @kbd{--a}
+@code{@@key@{--a@}} @key{--a}
+@code{@@math@{--a@}} @math{--a}
+@code{@@option@{--a@}} @option{--a}
+@code{@@r@{--a@}} @r{--a}
+@code{@@samp@{--a@}} @samp{--a}
+@code{@@sc@{--a@}} @sc{--a}
+@code{@@strong@{--a@}} @strong{--a}
+@code{@@t@{--a@}} @t{--a}
+@code{@@titlefont@{--a@}} @titlefont{--a}
+@code{@@uref@{--a,--b@}} @uref{--a,--b}
+@code{@@uref@{--a@}} @uref{--a}
+@code{@@uref@{,--b@}} @uref{,--b}
+@code{@@url@{--a,--b@}} @url{--a,--b}
+@code{@@url@{--a,@}} @url{--a,}
+@code{@@url@{,--b@}} @url{,--b}
+@code{@@var@{--a@}} @var{--a}
+@code{@@verb@{:--a:@}} @verb{:--a:}
+@code{@@w@{--a@}} @w{--a}
+@code{@@H@{a@}} @H{a}
+@code{@@H@{--a@}} @H{--a}
+@code{@@dotaccent@{a@}} @dotaccent{a}
+@code{@@dotaccent@{--a@}} @dotaccent{--a}
+@code{@@ringaccent@{a@}} @ringaccent{a}
+@code{@@ringaccent@{--a@}} @ringaccent{--a}
+@code{@@tieaccent@{a@}} @tieaccent{a}
+@code{@@tieaccent@{--a@}} @tieaccent{--a}
+@code{@@u@{a@}} @u{a}
+@code{@@u@{--a@}} @u{--a}
+@code{@@ubaraccent@{a@}} @ubaraccent{a}
+@code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+@code{@@udotaccent@{a@}} @udotaccent{a}
+@code{@@udotaccent@{--a@}} @udotaccent{--a}
+@code{@@v@{a@}} @v{a}
+@code{@@v@{--a@}} @v{--a}
+@code{@@,@{c@}} @,{c}
+@code{@@,@{--c@}} @,{--c}
+@code{@@dotless@{--a@}} @dotless{--a}
+@code{@@dotless@{a@}} @dotless{a}
+@code{@@footnote@{in footnote@}} @footnote{in footnote}
+@code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
-@image{f--ile,,e--xt}
-@image{f--ile}
-@image{,,e--xt}
-@image{,,,e--xt}
+@code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
+@code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{,,e--xt@}} @image{,,e--xt}
+@code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+@code{@@image@{file@@verb@{:jk _ %@@:@},,,alt@@verb@{:jk _ %@@:@}@}} @image{file@verb{:jk _ %@:},,,alt@verb{:jk _ %@:}}
 
 
 @quotation
@@ -302,67 +308,67 @@ d--efmethod
 d--eftypemethod
 @end deftypemethod
 
-@xref{chapter, cross ref name, title, file name, manual}
-@ref{chapter, cross ref name, title, file name, manual}
-@pxref{chapter, cross ref name, title, file name, manual}
-@inforef{chapter, cross ref name, file name}
+@code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+@code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+@code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+@code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
 
-@ref{chapter}
-@ref{node}
-@ref{,cross ref name}
-@ref{,,title}
-@ref{,,,file name}
-@ref{,,,,manual}
-@ref{chapter,cross ref name}
-@ref{chapter,,title}
-@ref{chapter,,,file name}
-@ref{chapter,,,,manual}
-@ref{node,cross ref name}
-@ref{node,,title}
-@ref{node,,,file name}
-@ref{node,,,,manual}
-@ref{chapter,cross ref name,title,}
-@ref{chapter,cross ref name,,file name}
-@ref{chapter,cross ref name,,,manual}
-@ref{node,cross ref name,title,}
-@ref{node,cross ref name,,file name}
-@ref{node,cross ref name,,,manual}
-@ref{chapter,cross ref name,title,file name}
-@ref{chapter,cross ref name,title,,manual}
-@ref{node,cross ref name,title,file name}
-@ref{node,cross ref name,title,,manual}
-@ref{chapter,cross ref name,title, file name, manual}
-@ref{node,cross ref name,title, file name, manual}
-@ref{chapter,,title,file name}
-@ref{chapter,,title,,manual}
-@ref{node,,title,file name}
-@ref{node,,title,,manual}
-@ref{chapter,,title, file name, manual}
-@ref{node,,title, file name, manual}
-@ref{chapter,,,file name,manual}
-@ref{node,,,file name,manual}
-@ref{,cross ref name,title,}
-@ref{,cross ref name,,file name}
-@ref{,cross ref name,,,manual}
-@ref{,cross ref name,title,file name}
-@ref{,cross ref name,title,,manual}
-@ref{,cross ref name,title, file name, manual}
-@ref{,,title,file name}
-@ref{,,title,,manual}
-@ref{,,title, file name, manual}
-@ref{,,,file name,manual}
+@code{@@ref@{chapter@}} @ref{chapter}
+@code{@@ref@{node@}} @ref{node}
+@code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+@code{@@ref@{,,title@}} @ref{,,title}
+@code{@@ref@{,,,file name@}} @ref{,,,file name}
+@code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+@code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+@code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+@code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+@code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+@code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+@code{@@ref@{node,,title@}} @ref{node,,title}
+@code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+@code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+@code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+@code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+@code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+@code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+@code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+@code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+@code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+@code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+@code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+@code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+@code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+@code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+@code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+@code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+@code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+@code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+@code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+@code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+@code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+@code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+@code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+@code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+@code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+@code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+@code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+@code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+@code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+@code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+@code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+@code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
 
-@inforef{chapter, cross ref name, file name}
-@inforef{chapter}
-@inforef{chapter, cross ref name}
-@inforef{chapter,,file name}
-@inforef{node, cross ref name, file name}
-@inforef{node}
-@inforef{node, cross ref name}
-@inforef{node,,file name}
-@inforef{,cross ref name }
-@inforef{,,file name}
-@inforef{,cross ref name, file name}
+@code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+@code{@@inforef@{chapter@}} @inforef{chapter}
+@code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+@code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+@code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+@code{@@inforef@{node@}} @inforef{node}
+@code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+@code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+@code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+@code{@@inforef@{,,file name@}} @inforef{,,file name}
+@code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
 
 @table @bullet
 @item a

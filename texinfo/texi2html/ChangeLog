@@ -1,3 +1,11 @@
+2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: -- and so on are kept as is in @image except
+	for alt text. Use alt text. File for image is really used, too.
+	handle better @inforef.
+	* doc/clean.texi: add formatting/clean.texi, a test for code 
+	acceptable by makeinfo without error.
+
 2003-10-28  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* doc/texi2html.texi: add informations about internationalization

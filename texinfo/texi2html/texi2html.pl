@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.76 2003-10-28 22:56:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.77 2003-11-02 22:18:52 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -579,6 +579,7 @@ $index_properties =
            'option'  => 1,
            'samp'    => 1,
            'verb'    => 1,
+           'image'   => 1,
 );
             
 
@@ -6310,13 +6311,19 @@ sub do_xref($$$$)
 
     if ($macro eq 'inforef')
     {
-        if (@args != 3)
+        if ((@args < 1) or ($args[0] eq ''))
         {
-            echo_error ("\@$macro needs 3 arguments", $line_nr);
+            #echo_error ("\@$macro needs 3 arguments", $line_nr);
+            echo_error ("Need a node name for \@$macro", $line_nr);
             #warn "$ERROR Wrong number of arguments: \@$macro" . "{$text}\n";
-            $args[2] = '';
-            return '' if ($args[0] eq '');
+            return '';
         }
+        if (@args > 3)
+        {
+            echo_warn ("Too much arguments for \@$macro", $line_nr);
+        }
+        $args[2] = '' if (!defined($args[2]));
+        $args[1] = '' if (!defined($args[1]));
         $node_texi = "($args[2])$args[0]";
     }
     
@@ -6468,18 +6475,28 @@ sub do_image($$$$)
          #warn "$ERROR no file argument for \@image\n";
          return '';
     }
-    my $image =
-         locate_include_file("$base.$args[4]") if (defined($args[4]) and ($args[4] ne '')) ||
-         locate_include_file("$base.png") ||
-         locate_include_file("$base.jpg") ||
-         locate_include_file("$base.gif");
-    unless (defined($image) && ($image ne '') && -e $image)
+    $args[4] = '' if (!defined($args[4]));
+    $args[3] = '' if (!defined($args[3]));
+    my $image;
+    $image = locate_include_file("$base.$args[4]") if (defined($args[4]) and ($args[4] ne ''));
+    if (defined($image)){}
+    elsif ($image = locate_include_file("$base.png")){}
+    elsif ($image = locate_include_file("$base.jpg")){}
+    elsif ($image = locate_include_file("$base.gif")){}
+    else 
     {
         $image = "$base.jpg";
         $image = "$base.$args[4]" if (defined($args[4]) and ($args[4] ne ''));
         echo_error ("no image file for $base, (using $image)", $line_nr); 
         #warn "$ERROR no image file for $base, (using $image) : $text\n"; 
-    } # FIXME use $args[3], ALTTEXT for alt + else use full file name for alt
+    } # FIXME use full file name for alt instead of base ?
+    # FIXME the texinfo should be kept for @image.
+    if ($args[3] =~ /\S/)
+    {
+        # FIXME makeinfo don't do that.
+        $args[3] = substitute_line($args[3]);
+        $base = $args[3] if ($args[3] =~ /\S/);
+    }
     return &$Texi2HTML::Config::image($image, $base, $state->{'preformatted'});
 }
 
@@ -8966,6 +8983,7 @@ sub scan_line($$$$;$)
                         elsif ($macro eq 'image')
                         {
                             $result = do_image($macro, $style->{'text'}, $state, $line_nr);
+                            $state->{'code_style'}--;
                         }
                         else
                         {
@@ -9189,6 +9207,8 @@ sub add_item($$$$;$)
     # don't do an item if it is the first and it is empty
     if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
     {
+        #FIXME a parapgraph may be opened before we apply the command,
+        # resulting in invalid html, like <li><em><p> .... or <li><em><pre>
         # apply the command to the item if it is not in special_list_commands
         unless (!defined($format->{'command'}) or exists($Texi2HTML::Config::special_list_commands{$format->{'format'}}->{$format->{'command'}}))
         {
