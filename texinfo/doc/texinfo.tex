@@ -986,9 +986,6 @@ where each line of input produces a line of output.}
     \openin 1 \jobname.toc
     \ifeof 1\else\begingroup
       \closein 1 
-      \indexnofonts
-      \def\tt{}
-      \let\_ = \normalunderscore
       % Thanh's hack / proper braces in bookmarks  
       \edef\mylbrace{\iftrue \string{\else}\fi}\let\{=\mylbrace
       \edef\myrbrace{\iffalse{\else\string}\fi}\let\}=\myrbrace
@@ -1016,6 +1013,12 @@ where each line of input produces a line of output.}
       \let\unnumbsecentry = \secentry
       \let\unnumbsubsecentry = \subsecentry
       \let\unnumbsubsubsecentry = \subsubsecentry
+      %
+      % Make special characters normal for writing to the pdf file.
+      % 
+      \indexnofonts
+      \let\tt=\relax
+      \turnoffactive
       \input \jobname.toc
     \endgroup\fi
   }}
@@ -6291,16 +6294,8 @@ should work if nowhere else does.}
 @let+=@normalplus
 @let$=@normaldollar}%$ font-lock fix
 
-@def@normalturnoffactive{@let"=@normaldoublequote
-@let\=@normalbackslash
-@let~=@normaltilde
-@let^=@normalcaret
-@let_=@normalunderscore
-@let|=@normalverticalbar
-@let<=@normalless
-@let>=@normalgreater
-@let+=@normalplus
-@let$=@normaldollar}%$ font-lock fix
+% Same as @turnoffactive except for \.
+@def@normalturnoffactive{@turnoffactive @let\=@normalbackslash}
 
 % Make _ and + \other characters, temporarily.
 % This is canceled by @fixbackslash.
