@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.20 2003-07-28 23:00:18 karl Exp $
+   $Id: html.c,v 1.21 2003-11-05 22:10:12 dirt Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -44,10 +44,18 @@ html_output_head ()
 
   /* The <title> should not have markup, so use text_expansion.  */
   if (!html_title)
-    html_title = title ? text_expansion (title) : _("Untitled");
+    html_title = escape_string (title ? text_expansion (title) : _("Untitled"));
 
-  add_word_args ("<html lang=\"%s\">\n<head>\n<title>%s</title>\n",
-                 language_table[language_code].abbrev, html_title);
+  add_word_args ("<html lang=\"%s\">\n<head>\n",
+      language_table[language_code].abbrev);
+
+  /* When splitting, add current node's name to title if it's available and not
+     Top.  */
+  if (splitting && current_node && !STREQ (current_node, "Top"))
+    add_word_args ("<title>%s - %s</title>\n", html_title,
+        escape_string (xstrdup (current_node)));
+  else
+    add_word_args ("<title>%s</title>\n",  html_title);
 
   add_word ("<meta http-equiv=\"Content-Type\" content=\"text/html");
   if (document_encoding_code != no_encoding)

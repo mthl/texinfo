@@ -1,5 +1,13 @@
 2003-11-05  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/html.c (html_output_head): append node name to title if
+	splitting.  Escape special chars in title.
+
+	* makeinfo/node.c (cm_node): removed <link> elements from HTML node
+	navigation <div> as they are only allowed in <head>.
+
+2003-11-05  Alper Ersoy  <dirt@gtk.org>
+
 	* doc/texinfo.txi (Installing Dir Entries): fixed @uref for Free
 	Software Directory.
 	(Command List): Escaped @/.

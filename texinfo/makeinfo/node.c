@@ -1,5 +1,5 @@
 /* node.c -- nodes for Texinfo.
-   $Id: node.c,v 1.17 2003-11-05 14:32:30 dirt Exp $
+   $Id: node.c,v 1.18 2003-11-05 22:10:12 dirt Exp $
 
    Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003 Free Software
    Foundation, Inc.
@@ -943,11 +943,6 @@ cm_node ()
               tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
 	      
-	      /* <link> produces a navigation bar in mozilla.  */
-	      add_word ("<link rel=\"next\" accesskey=\"n\" href=\"");
-	      add_anchor_name (tem, 1);
-	      add_word_args ("\">%s</link>", tem);
-	      
               free (tem);
             }
           if (prev)
@@ -960,9 +955,6 @@ cm_node ()
 	      add_anchor_name (tem, 1);
               tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
-	      add_word ("<link rel=\"prev\" accesskey=\"p\" href=\"");
-	      add_anchor_name (tem, 1);
-	      add_word_args ("\">%s</link>", tem);
               free (tem);
             }
           if (up)
@@ -975,9 +967,6 @@ cm_node ()
 	      add_anchor_name (tem, 1);
               tem = escape_string (tem);
 	      add_word_args ("\">%s</a>", tem);
-	      add_word ("<link rel=\"up\" accesskey=\"u\" href=\"");
-	      add_anchor_name (tem, 1);
-	      add_word_args ("\">%s</link>", tem);
               free (tem);
             }
           /* html fixxme: we want a `top' or `contents' link here.  */
