@@ -1,3 +1,28 @@
+2002-11-07    <karl@gnu.org>
+
+	* util/dir-example: sed
+
+	* makeinfo/lang.c: copyright.
+	* makeinfo/lang.h: copyright.
+
+2002-11-07  Stephen Gildea
+
+	* makeinfo/sectioning.c (sectioning_html): have A tag enclose
+          section name rather than preceding it.
+
+	* makeinfo/toc.c (contents_update_html): put name attribute into
+          existing A tag rather than making a separate tag for it.
+
+2002-11-07  Stephen Gildea
+
+	* makeinfo/lang.c: support @documentencoding US-ASCII:
+	Put NULL at end of map tables so they can be of varying lengths.
+	(us_ascii_map): new iso_map_type table.
+	(encoding_table): add US_ASCII.
+	(cm_search_iso_map): don't assume all maps are the same length.
+	(cm_documentencoding): don't assume ISO_8859_1 is first table entry.
+	* makeinfo/lang.h (encoding_code_type): add US_ASCII.
+
 2002-11-05    <karl@gnu.org>
 
 	* doc/info-stnd.texi: untabify.
