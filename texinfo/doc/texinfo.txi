@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
+@c $Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -177,6 +177,7 @@ Overview of Texinfo
 
 * Reporting Bugs::              Submitting effective bug reports.
 * Using Texinfo::               Create printed or online output.
+* Output Formats::              Overview of the supported output formats.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
 * Formatting Commands::         @@-commands are used for formatting.
@@ -699,6 +700,7 @@ that one document.
 @menu
 * Reporting Bugs::              Submitting effective bug reports.
 * Using Texinfo::               Create printed or online output.
+* Output Formats::              Overview of the supported output formats.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
 * Formatting Commands::         @@-commands are used for formatting.
@@ -768,18 +770,17 @@ Emacs Manual} is a good example of a Texinfo file, as is this manual.
 
 To make a printed document, you process a Texinfo source file with the
 @TeX{} typesetting program (but the Texinfo language is very different
-and much stricter than @TeX{}'s usual language, plain @TeX{}).  This
-creates a DVI file that you can typeset and print as a book or report
-(@pxref{Hardcopy}).
+from and much stricter than @TeX{}'s usual languages, plain @TeX{} and
+La@TeX{}).  This creates a DVI file that you can typeset and print as
+a book or report (@pxref{Hardcopy}).
 
 @pindex makeinfo
 To output an Info file, process your Texinfo source with the
-@code{makeinfo} utility or Emacs's @code{texinfo-format-buffer} command.
-You can install the result in your Info tree (@pxref{Installing an Info
-File}).
+@code{makeinfo} utility.  You can install the result in your Info tree
+(@pxref{Installing an Info File}).
 
 To output an HTML file, run @code{makeinfo --html} on your Texinfo
-source.  You can (for example) install the result on your web site.
+source.  You can (for example) install the result on a web site.
 
 @cindex Docbook, converting to Texinfo
 @cindex Conversion, from Docbook to Texinfo
@@ -788,28 +789,18 @@ To output DocBook (a particular form of XML), run @code{makeinfo
 --docbook}.  If you want to convert from Docbook @emph{to} Texinfo,
 please see @uref{http://docbook2X.sourceforge.net/}.
 
-@cindex Output formats, supporting more
-@cindex SGML-tools output format
-If you are a programmer and would like to contribute to the GNU project
-by implementing additional output formats for Texinfo, that would be
-excellent.  But please do not write a separate translator texi2foo for
-your favorite format foo!  That is the hard way to do the job, and makes
-extra work in subsequent maintenance, since the Texinfo language is
-continually being enhanced and updated.  Instead, the best approach is
-modify @code{makeinfo} to generate the new format, as it does now for
-Info, plain text, HTML, XML, and DocBook.
-
 @TeX{} works with virtually all printers; Info works with virtually all
 computer terminals; the HTML output works with virtually all web
 browsers.  Thus Texinfo can be used by almost any computer user.
 
-@cindex Source file
-A Texinfo source file is a plain @sc{ascii} file containing text and
-@dfn{@@-commands} (words preceded by an @samp{@@}) that tell the
-typesetting and formatting programs what to do.  You may edit a Texinfo
-file with any text editor; but it is especially convenient to use GNU
-Emacs since that editor has a special mode, called Texinfo mode, that
-provides various Texinfo-related features.  (@xref{Texinfo Mode}.)
+@cindex Source file format
+A Texinfo source file is a plain @sc{ascii} file containing text
+interspersed with @dfn{@@-commands} (words preceded by an @samp{@@})
+that tell the typesetting and formatting programs what to do.  You may
+edit a Texinfo file with any text editor; but it is especially
+convenient to use GNU Emacs since that editor has a special mode,
+called Texinfo mode, that provides various Texinfo-related features.
+(@xref{Texinfo Mode}.)
 
 Before writing a Texinfo source file, you should learn about nodes,
 menus, cross references, and the rest, for example by reading this
@@ -821,26 +812,118 @@ is the official documentation format of the GNU project.  More
 information is available at the @uref{http://www.gnu.org/doc/, GNU
 documentation web page}.
 
+
+@node Output Formats
+@section Output Formats
+@cindex Output formats
+@cindex Back-end output formats
+
+Here is a brief overview of the output formats currently supported by
+Texinfo.
+
+@table @strong
+@item Info
+@cindex Info output
+(Generated via @command{makeinfo}.)  This format is a plain text
+transliteration of the Texinfo source.  It uses control characters to
+separate nodes and provide other navigational information.  See the
+next section (@pxref{Info Files}) for more details on this format.
+The Emacs Info subsystem (@pxref{Top,,Getting Started,info, Info}),
+and the standalone @command{info} program (@pxref{info
+standalone,,,info-stnd, GNU Info}), among others, can read these
+files.
+
+@item Plain text
+@cindex Plain text output
+(Generated via @command{makeinfo --no-headers}.)  This is almost the
+same as Info output, except the navigational control characters are
+omitted.
+
+@item HTML
+@cindex HTML output
+@cindex W3 consortium
+@cindex Mozilla
+@cindex Lynx
+@cindex Emacs-W3
+(Generated via @command{makeinfo --html}.)  This is the Hyper Text
+Markup Language that has become the most commonly used language for
+writing documents on the World Wide Web.  Web browsers, such as
+Mozilla, Lynx, and Emacs-W3, can render this language online.  There
+are many versions of HTML; @command{makeinfo} tries to use a subset
+of the language that can be interpreted by any common browser.  For
+details of the HTML language and much related information, see
+@uref{http://www.w3.org/MarkUp/}.
+
+@item DVI
+@cindex DVI output
+@cindex Dvips
+@cindex Xdvi
+(Generated via @command{texi2dvi}.)  This DeVice Independent binary
+format is output by the @TeX{} typesetting program
+(@uref{http://tug.org}).  It is then read by a DVI `driver', which
+writes the actual device-specific commands that can be viewed or
+printed, notably Dvips for translation to PostScript (@pxref{dvips
+invocation,,, dvips, Dvips}) and Xdvi for viewing on an X display
+(http://sourceforge.net/projects/xdvi/).
+
+@item PDF
+@cindex PDF output
+(Generated via @command{texi2dvi --pdf}.)  This is a format developed
+by Adobe which is intended to be platform-independent and easily
+viewable, among other design goals; for a discussion, see
+@uref{http://tug.org/tugboat/Articles/tb22-3/beebeI.pdf}.  Texinfo
+uses the @command{pdftex} program to output pdf; see
+@uref{http://tug.org/applications/pdftex}.
+
+@item XML
+@cindex XML output
+@cindex DTD, for Texinfo XML
+(Generated via @command{makeinfo --xml}.)  XML is a generic syntax
+specification usable for any sort of content (see, for example,
+@uref{http://www.w3.org/XML/}).  The @command{makeinfo} xml output,
+unlike all the formats above, interprets very little of the  Texinfo
+source.  Rather, it merely translates the Texinfo markup commands into
+XML syntax, for processing by further XML tools.  The particular
+syntax output is defined in the file @file{texinfo.dtd} included in
+the Texinfo source distribution.
+
+@item DocBook
+@cindex DocBook output
+(Generated via @command{makeinfo --docbook}.)  This is an XML format
+of long standing used primarily for technical documentation.  See
+@uref{http://www.docbook.org/}.
+
+@end table
+
 @cindex Man page output, not supported
 From time to time, proposals are made to generate traditional Unix man
-pages from Texinfo source.  This is not likely to ever be supported,
-because man pages have a very strict conventional format.  Merely
-enhancing @command{makeinfo} to output troff format would be
-insufficient.  Generating a good man page therefore requires a
+pages from Texinfo source.  However, because man pages have a very
+strict conventional format, generating a good man page requires a
 completely different source than the typical Texinfo applications of
-writing a good user tutorial or a good reference manual.  This makes
-generating man pages incompatible with the Texinfo design goal of not
-having to document the same information in different ways for different
-output formats.  You might as well just write the man page directly.
+writing a good user tutorial and/or a good reference manual.  This
+makes generating man pages incompatible with the Texinfo design goal
+of not having to document the same information in different ways for
+different output formats.  You might as well just write the man page
+directly.
 
 @pindex help2man 
 @cindex O'Dea, Brendan
-Man pages still have their place, and if you wish to support them, the
-program @command{help2man} may be useful; it generates a traditional man
-page from the @samp{--help} output of a program.  In fact, this is
-currently used to generate man pages for the Texinfo programs
-themselves.  It is GNU software written by Brendan O'Dea, available from
-@uref{ftp://ftp.gnu.org/gnu/help2man/}.
+Man pages still have their place, and if you wish to support them, you
+may find the program @command{help2man} to be useful; it generates a
+traditional man page from the @samp{--help} output of a program.  In
+fact, this is currently used to generate man pages for the programs in
+the Texinfo distribution.  It is GNU software written by Brendan
+O'Dea, available from @uref{ftp://ftp.gnu.org/gnu/help2man/}.
+
+@cindex Output formats, supporting more
+@cindex SGML-tools output format
+If you are a programmer and would like to contribute to the GNU project
+by implementing additional output formats for Texinfo, that would be
+excellent.  But please do not write a separate translator texi2foo for
+your favorite format foo!  That is the hard way to do the job, and makes
+extra work in subsequent maintenance, since the Texinfo language is
+continually being enhanced and updated.  Instead, the best approach is
+modify @code{makeinfo} to generate the new format.
 
 
 @node Info Files
@@ -16793,7 +16876,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
+$Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16858,7 +16941,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.25 2003-01-12 15:14:55 karl Exp $
+@comment $Id: texinfo.txi,v 1.26 2003-01-21 22:42:06 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
