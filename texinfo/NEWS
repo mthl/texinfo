@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.105 2005-02-14 00:20:27 karl Exp $
+$Id: NEWS,v 1.106 2005-02-20 00:00:43 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -24,6 +24,9 @@ convenience, here's a url to one of the relevant sections:
 -------------------------------------------------------------------------------
 * Language:
   . new command @frenchspacing to control spacing after sentences.
+* texinfo.tex:
+  . section names with \ characters work properly in pdf outlines.
+  . .toc files use @ as the escape character, instead of \.
 * Distribution:
   . automake 1.9.5.
 

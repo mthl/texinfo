@@ -1,5 +1,29 @@
 2005-02-19  Karl Berry  <karl@gnu.org>
 
+	The main user-visible change of all this is to make
+	section names with \ characters work in pdf outlines.  As a side
+	effect, .toc files now use @ instead of \ for the escape char.
+	* doc/texinfo.tex (\backChar, \plusChar): new \chardef's.
+	(\activebackslash): debugging macro.
+	(\activebackslashdouble): new macro.
+	(\HyPsdSubst): replace tokens.
+	(\HyReturnAfterFi): helper.
+	(\backslashparens): new macro, change () to \( and \) resp.
+	(\backslashlparen, \backslashrparen): new macros.
+	(\pdfmkdest): double backslashes, backslashparens, and @ for escape.
+	(\dopdfoutline): similarly.
+	(\pdfmakeoutlines): \readdatafile on the .toc the first time,
+	 instead of straight \input.
+	(\makelinks, \picknum, \pn, \ppn, \ppnn, \pdfmklink): rm.
+	(\writetocentry): now we use @ for escape in the .toc instead of \.
+	(\activecatcodes, \readtocfile): new macros.
+	(\startcontents): don't swap \ and @ catcodes from Texinfo.
+	(\setref, \dofloat): no need to call \otherbackslash.
+	(\xrefX): no need to call \otherbackslash, also double backslashes
+	and backslash parens for pdf output.
+	(\readauxfile): generalize and rename to \readdatafile.
+	(\doublebackslash): new macro.
+
 	* util/texi2dvi: do not have -o (used by Autoconf/make) imply
 	--clean.  That results in TeX always running at least twice, since
 	the aux files are stuck (and removed) in the temp directory for clean.
