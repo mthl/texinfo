@@ -1,3 +1,23 @@
+2005-03-12  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gettext.m4: Upgrade to gettext-0.14.2.
+	* glibc2.m4: New file, from gettext-0.14.2.
+	* intdiv0.m4: Upgrade to gettext-0.14.2.
+	* intmax.m4: Upgrade to gettext-0.14.2.
+	* inttypes.m4: Upgrade to gettext-0.14.2.
+	* inttypes-pri.m4: Upgrade to gettext-0.14.2.
+	* isc-posix.m4: Upgrade to gettext-0.14.2.
+	* lcmessage.m4: Upgrade to gettext-0.14.2.
+	* lib-link.m4: Upgrade to gettext-0.14.2.
+	* lib-prefix.m4: Upgrade to gettext-0.14.2.
+	* nls.m4: Upgrade to gettext-0.14.2.
+	* po.m4: Upgrade to gettext-0.14.2.
+	* printf-posix.m4: Upgrade to gettext-0.14.2.
+	* progtest.m4: Upgrade to gettext-0.14.2.
+	* size_max.m4: Upgrade to gettext-0.14.2.
+	* xsize.m4: Upgrade to gettext-0.14.2.
+	* Makefile.am (EXTRA_DIST): Add the new files.
+
 2004-02-05  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* po.m4: Upgrade to gettext-0.14.1.
