@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.80 2003-11-05 10:09:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.81 2003-11-05 23:05:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -311,6 +311,7 @@ our $sp;
 our $definition_category;
 our $table_list;
 our $index_summary_file_entry;
+our $style;
 
 our $PRE_ABOUT;
 our $AFTER_ABOUT;
@@ -334,6 +335,8 @@ our %css_map;
 our %special_list_commands;
 
 $toc_body                 = \&T2H_GPL_toc_body;
+$style                    = \&T2H_GPL_style;
+
 sub T2H_GPL_toc_body($$$)
 {
     my $elements_list = shift;
@@ -402,6 +405,61 @@ sub T2H_GPL_toc_body($$$)
         unshift @{$Texi2HTML::OVERVIEW}, $BEFORE_OVERVIEW;
         push @{$Texi2HTML::OVERVIEW}, $AFTER_OVERVIEW;
     }
+}
+
+sub T2H_GPL_style($$$$$)
+{                           # known style
+    my $style = shift;
+    my $texi_style = shift;
+    my $text = shift;
+    my $no_close = shift;
+    my $no_open = shift;
+
+    my $do_quotes = 0;
+    if ($style =~ s/^\"//)
+    {                       # add quotes
+        $do_quotes = 1;
+    }
+    if ($style =~ s/^\&//)
+    {                       # custom
+        no strict "refs";
+        $style = 'Texi2HTML::Config::' . $style;
+        $text = &$style($text, $texi_style);
+        use strict "refs";
+    }
+    elsif ($style ne '')
+    {                       # good style
+        my $attribute_text = '';
+        if ($style =~ /^(\w+)(\s+.*)/)
+        {
+            $style = $1;
+            $attribute_text = $2;
+        }
+        $text = "<${style}$attribute_text>$text</$style>";
+    }
+    else
+    {                       # no style
+    }
+    if ($do_quotes)
+    {
+        if (!$no_close and !$no_open)
+        {
+            $text = "\`$text\'";
+        }
+        elsif ($no_close and $no_open)
+        {
+            $text = "$text";
+        }
+        elsif ($no_close)
+        {
+            $text = "\`$text";
+        }
+        elsif ($no_open)
+        {
+            $text = "$text\'";
+        }
+    }
+    return $text;
 }
 
 # @INIT@
@@ -4321,7 +4379,8 @@ sub rearrange_elements()
         }
         foreach my $node(@nodes_list)
         {
-            $node->{'file'} =  "$docu_name.$docu_ext";
+            #$node->{'file'} =  "$docu_name.$docu_ext";
+            $node->{'file'} =  "$docu_doc";
             $node->{'doc_nr'} = 0;
         }
     }
@@ -4407,7 +4466,7 @@ sub rearrange_elements()
             {
                 print STDERR "    anchor: $place->{'texi'}\n";
             }
-	    else
+            else
             {
                 print STDERR "    heading: $place->{'texi'}\n";
             }
@@ -6556,50 +6615,7 @@ sub apply_style($$;$$$)
     }
     if (defined($style))
     {                           # known style
-        my $do_quotes = 0;
-        if ($style =~ s/^\"//)
-        {                       # add quotes
-            $do_quotes = 1;
-        }
-        if ($style =~ s/^\&//)
-        {                       # custom
-            no strict "refs";
-            $style = 'Texi2HTML::Config::' . $style;
-            $text = &$style($text, $texi_style);
-            use strict "refs";
-        }
-        elsif ($style)
-        {                       # good style
-            my $attribute_text = '';
-            if ($style =~ /^(\w+)(\s+.*)/)
-            {
-                $style = $1;
-                $attribute_text = $2;
-            }
-            $text = "<${style}$attribute_text>$text</$style>";
-        }
-        else
-        {                       # no style
-        }
-        if ($do_quotes)
-        {
-            if (!$no_close and !$no_open)
-            {
-                $text = "\`$text\'";
-            }
-            elsif ($no_close and $no_open)
-            {
-                $text = "$text";
-            }
-            elsif ($no_close)
-            {
-                $text = "\`$text";
-            }
-            elsif ($no_open)
-            {
-                $text = "$text\'";
-            }
-        }
+        $text = &$Texi2HTML::Config::style ($style, $texi_style, $text, $no_close, $no_open);
     }
     else
     {                           # unknown style
