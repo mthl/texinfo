@@ -1,9 +1,9 @@
 #!/bin/sh
 # gendocs.sh -- generate a GNU manual in many formats.  This script is
 #   mentioned in maintain.texi.  See the help message below for usage details.
-# $Id: gendocs.sh,v 1.13 2004-09-01 11:40:20 karl Exp $
+# $Id: gendocs.sh,v 1.14 2005-01-11 22:06:56 karl Exp $
 # 
-# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/util/gendoc
 : ${GENDOCS_TEMPLATE_DIR="."}
 unset CDPATH
 
-rcs_revision='$Revision: 1.13 $'
+rcs_revision='$Revision: 1.14 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="gendocs.sh $rcs_version
@@ -148,7 +148,7 @@ echo Generating output formats for $srcfile
 
 cmd="${MAKEINFO} -o $PACKAGE.info $srcfile"
 echo "Generating info files... ($cmd)"
-$cmd
+eval $cmd
 mkdir -p $outdir/
 tar czf $outdir/$PACKAGE.info.tar.gz $PACKAGE.info*
 info_tgz_size="`calcsize $outdir/$PACKAGE.info.tar.gz`"
@@ -157,7 +157,7 @@ info_tgz_size="`calcsize $outdir/$PACKAGE.info.tar.gz`"
 
 cmd="${TEXI2DVI} $srcfile"
 echo "Generating dvi ... ($cmd)"
-$cmd
+eval $cmd
 
 # now, before we compress dvi:
 echo Generating postscript...
@@ -173,13 +173,13 @@ mv $PACKAGE.dvi.gz $outdir/
 
 cmd="${TEXI2DVI} --pdf $srcfile"
 echo "Generating pdf ... ($cmd)"
-$cmd
+eval $cmd
 pdf_size="`calcsize $PACKAGE.pdf`"
 mv $PACKAGE.pdf $outdir/
 
 cmd="${MAKEINFO} -o $PACKAGE.txt --no-split --no-headers $srcfile"
 echo "Generating ASCII... ($cmd)"
-$cmd
+eval $cmd
 ascii_size="`calcsize $PACKAGE.txt`"
 gzip -f -9 -c $PACKAGE.txt >$outdir/$PACKAGE.txt.gz
 ascii_gz_size="`calcsize $outdir/$PACKAGE.txt.gz`"
@@ -188,7 +188,7 @@ mv $PACKAGE.txt $outdir/
 cmd="${MAKEINFO} --no-split --html -o $PACKAGE.html $html $srcfile"
 echo "Generating monolithic html... ($cmd)"
 rm -rf $PACKAGE.html  # in case a directory is left over
-$cmd
+eval $cmd
 html_mono_size="`calcsize $PACKAGE.html`"
 gzip -f -9 -c $PACKAGE.html >$outdir/$PACKAGE.html.gz
 html_mono_gz_size="`calcsize $outdir/$PACKAGE.html.gz`"
@@ -196,7 +196,7 @@ mv $PACKAGE.html $outdir/
 
 cmd="${MAKEINFO} --html -o $PACKAGE.html $html $srcfile"
 echo "Generating html by node... ($cmd)"
-$cmd
+eval $cmd
 split_html_dir=$PACKAGE.html
 (
   cd ${split_html_dir} || exit 1
@@ -224,7 +224,7 @@ if test -n "$docbook"; then
 
   cmd="${DOCBOOK2HTML} -o $split_html_db_dir ${outdir}/$PACKAGE-db.xml"
   echo "Generating docbook HTML... ($cmd)"
-  $cmd
+  eval $cmd
   split_html_db_dir=html_node_db
   (
     cd ${split_html_db_dir} || exit 1
@@ -238,20 +238,20 @@ if test -n "$docbook"; then
 
   cmd="${DOCBOOK2TXT} ${outdir}/$PACKAGE-db.xml"
   echo "Generating docbook ASCII... ($cmd)"
-  $cmd
+  eval $cmd
   docbook_ascii_size="`calcsize $PACKAGE-db.txt`"
   mv $PACKAGE-db.txt $outdir/
 
   cmd="${DOCBOOK2PS} ${outdir}/$PACKAGE-db.xml"
   echo "Generating docbook PS... $(cmd)"
-  $cmd
+  eval $cmd
   gzip -f -9 -c $PACKAGE-db.ps >$outdir/$PACKAGE-db.ps.gz
   docbook_ps_gz_size="`calcsize $outdir/$PACKAGE-db.ps.gz`"
   mv $PACKAGE-db.ps $outdir/
 
   cmd="${DOCBOOK2PDF} ${outdir}/$PACKAGE-db.xml"
   echo "Generating docbook PDF... ($cmd)"
-  $cmd
+  eval $cmd
   docbook_pdf_size="`calcsize $PACKAGE-db.pdf`"
   mv $PACKAGE-db.pdf $outdir/
 fi
