@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.14 2003-05-13 16:25:14 karl Exp $
+   $Id: html.c,v 1.15 2003-05-13 17:05:45 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -383,7 +383,7 @@ insert_html_tag (start_or_end, tag)
     }
 
   if (start_or_end != START)
-    pop_tag (tag);
+    pop_tag ();
 
   if (htmlstack)
     old_tag = htmlstack->tag;
