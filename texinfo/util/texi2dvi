@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or LaTeX) sources.
-# $Id: texi2dvi,v 1.42 2005-02-11 13:35:14 karl Exp $
+# $Id: texi2dvi,v 1.43 2005-02-18 17:35:35 karl Exp $
 #
 # Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001,
 # 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ test -f /bin/ksh && test -z "$RUNNING_KSH" \
 unset RUNNING_KSH
 
 # This string is expanded by rcs automatically when this file is checked out.
-rcs_revision='$Revision: 1.42 $'
+rcs_revision='$Revision: 1.43 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 version="texi2dvi (GNU Texinfo 4.8) $rcs_version
@@ -537,6 +537,10 @@ for command_line_filename in ${1+"$@"}; do
   # directory (e.g., in --clean mode, or during the macro-support detection.)
   TEXINPUTS=`absolute_filenames "$TEXINPUTS"`
   verbose "TEXINPUTS: $TEXINPUTS"
+  BIBINPUTS=`absolute_filenames "$BIBINPUTS"`
+  verbose "BIBINPUTS: $BIBINPUTS"
+  BSTINPUTS=`absolute_filenames "$BSTINPUTS"`
+  verbose "BSTINPUTS: $BSTINPUTS"
   INDEXSTYLE=`absolute_filenames "$INDEXSTYLE"`
   verbose "INDEXSTYLE: $INDEXSTYLE"
 

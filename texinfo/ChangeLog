@@ -1,3 +1,8 @@
+2005-02-18  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: call absolute_filenames on BIBINPUTS and
+	BSTINPUTS, too.  te, 17 Feb 2005 20:10:23 +0100.
+
 2005-02-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (frenchspacing): new code.
