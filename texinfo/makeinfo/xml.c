@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.55 2005-02-14 00:20:27 karl Exp $
+   $Id: xml.c,v 1.56 2005-04-01 21:30:40 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -32,6 +32,11 @@
 
 /* Options */
 int xml_index_divisions = 1;
+
+#if !__OPTIMIZE__
+/* To make enum names available to debugger. */
+static enum xml_element xml_element_dummy;
+#endif
 
 typedef struct _element
 {

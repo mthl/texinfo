@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.75 2005-02-14 00:20:27 karl Exp $
+   $Id: makeinfo.c,v 1.76 2005-04-01 21:30:40 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -4038,6 +4038,7 @@ maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
   indented_fill = 0;
   no_indent = 1;
   escape_html = do_html_escape;
+  xml_no_para++;
 
   result = full_expansion (str, implicit_code);
 
@@ -4045,6 +4046,7 @@ maybe_escaped_expansion (char *str, int implicit_code, int do_html_escape)
   indented_fill = saved_indented_fill;
   no_indent = saved_no_indent;
   escape_html = saved_escape_html;
+  xml_no_para--;
 
   return result;
 }

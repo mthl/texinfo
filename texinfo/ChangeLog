@@ -1,3 +1,11 @@
+2005-03-31  Per Bothner  <per@bothner.com>
+
+	* makeinfo/makeinfo.c (maybe_escaped_expansion): Don't start a new
+	para during string expansion.
+
+	* makeinfo/xml.c (xml_element_dummy): Dummy variable so that enum
+	names get emitted in debug symbols, which helps debugging.
+
 2005-03-31  ezra peisach <epeisach@med-xtal.bu.edu>  (tiny change)
 
 	(bug-texinfo mail 30 Mar 2005 16:40:24 -0500.)
