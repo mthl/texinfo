@@ -10,7 +10,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.35 2003-07-17 13:11:25 karl Exp $
+$Id: dir-example,v 1.36 2003-07-27 11:52:53 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -91,8 +91,8 @@ Printing Tools
 Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
-* Automake: (automake).		Making Makefile.in's.
 * Binutils: (binutils).         ar/copy/objdump/nm/size/strip/ranlib.
+* automake: (automake).		Making Makefile.in's.
 * bison: (bison).               GNU parser generator (Yacc replacement).
 * Cpp: (cpp).		        The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
