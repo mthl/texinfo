@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.5 2005-02-13 23:02:13 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.6 2005-02-14 00:20:27 karl Exp $
    Document Type Definition for Texinfo (makeinfo --xml).
 
   Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -91,6 +91,9 @@
                                     | %lang; | %variables;
                                     | %headings;)*">
 
+<!-- Options (many missing) -->
+<!ENTITY % onoff "on|off">
+<!ENTITY % option.cmds "frenchspacing">
 
 <!-- Inline -->
 <!ENTITY % Inline.emphasize "strong | emph">
@@ -103,9 +106,9 @@
 <!ENTITY % Inline.smallcaps "sc">
 
 <!ENTITY % Inline.phrase
-           "%Inline.emphasize; | %Inline.smallcaps; | %Inline.fonts;
-            | %Inline.markup; | %Inline.math; | %Inline.reference;
-            | %Inline.footnote; ">
+           "%Inline.emphasize;  | %Inline.smallcaps; | %Inline.fonts;
+            | %Inline.markup;   | %Inline.math; | %Inline.reference;
+            | %Inline.footnote; | %option.cmds; ">
 
 
 <!--  * ELEMENTS * -->
@@ -282,9 +285,12 @@
 <!ELEMENT defoperation (#PCDATA | %Inline.phrase; | footnote)*>
 
 <!-- INLINE Elements -->
-<!-- *************** -->
 
-<!-- Emphasize -->
+<!-- options -->
+<!ELEMENT frenchspacing (#PCDATA)> <!-- must be on or off -->
+<!ATTLIST frenchspacing val (%onoff;) 'off'>
+
+<!-- emphasize -->
 <!ELEMENT strong (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT emph   (#PCDATA | %Inline.phrase;)*>
 
@@ -292,12 +298,13 @@
 <!ELEMENT sc (#PCDATA | %Inline.phrase;)*>
 
 <!-- fonts -->
-<!ELEMENT i  (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT b  (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT tt (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT i  (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT r  (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT notfixedwidth (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT sansserif   (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT slanted     (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT titlefont   (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT tt (#PCDATA | %Inline.phrase;)*>
 
 <!-- markup -->
 <!ELEMENT code    (#PCDATA | %Inline.phrase;)*>

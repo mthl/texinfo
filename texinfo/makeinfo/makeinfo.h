@@ -1,8 +1,8 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.17 2004-11-30 02:03:23 karl Exp $
+   $Id: makeinfo.h,v 1.18 2005-02-14 00:20:27 karl Exp $
 
-   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free
-   Software Foundation, Inc.
+   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+   2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -108,6 +108,9 @@ DECLARE (int, force_flush_right, 0);
 
 /* The column at which long lines are broken. */
 DECLARE (int, fill_column, 72);
+
+/* Nonzero means we're doing one space after sentences (@frenchspacing).  */
+DECLARE (int, french_spacing, 0);
 
 /* Nonzero means that words are not to be split, even in long lines.  This
    gets changed for cm_w (). */

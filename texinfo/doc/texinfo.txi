@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.134 2005-01-26 14:07:42 karl Exp $
+@c $Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -460,6 +460,7 @@ Inserting Space
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
 * Multiple Spaces::             Inserting multiple spaces.
+* frenchspacing::               Specifying end-of-sentence spacing.
 * dmn::                         How to format a dimension.
 
 Inserting Ellipsis and Bullets
@@ -10057,9 +10058,9 @@ context: some commands, such as @code{@@acronym} (@pxref{acronym}) and
 macros (@pxref{Defining Macros}), can take more than one argument.  In
 these cases, the comma character is used to separate arguments.
 
-Since a comma chacter would confuse Texinfo's parsing for these
+Since a comma character would confuse Texinfo's parsing for these
 commands, you must use the command @samp{@comma{}} instead if you want
-to have an actual comma in the output.  Here are some examples:
+to pass an actual comma.  Here are some examples:
 
 @example
 @@acronym@{ABC, A Bizarre @@comma@{@}@}
@@ -10067,7 +10068,7 @@ to have an actual comma in the output.  Here are some examples:
 @@mymac@{One argument@@comma@{@} containing a comma@}
 @end example
 
-Although @comma{} can be used anywhere, there is no need for it
+Although @comma{} can be used nearly anywhere, there is no need for it
 anywhere except in this unusual case.
 
 
@@ -10083,6 +10084,7 @@ kinds within and after sentences.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
 * Multiple Spaces::             Inserting multiple spaces.
+* frenchspacing::               Specifying end-of-sentence spacing.
 * dmn::                         How to format a dimension.
 @end menu
 
@@ -10235,6 +10237,74 @@ Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
 Do not follow any of these commands with braces.
 
 To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
+
+
+@node frenchspacing
+@subsection @code{@@frenchspacing} @var{val}: Control sentence spacing
+@findex frenchspacing
+@cindex French spacing
+@cindex Sentences, spacing after
+@cindex Space, after sentences
+
+In American typography, it is traditional and correct to put extra
+space at the end of a sentence, after a semi-colon, and so on.  This
+is the default in Texinfo.  In French typography (and many others),
+this extra space is wrong; all spaces are uniform.
+
+Therefore Texinfo provides the @code{@@frenchspacing} command to
+control the spacing after punctuation.  It reads the rest of the line
+as its argument, which must be the single word @samp{on} or @samp{off}
+(always these words, regardless of the language) of the document.
+Here is an example:
+
+@example
+@@frenchspacing on
+This is text. Two sentences. Three sentences. French spacing.
+
+@@frenchspacing off
+This is text. Two sentences. Three sentences. Non-french spacing.
+@end example
+
+@noindent produces (there will be no difference in Info):
+
+@frenchspacing on
+This is text. Two sentences. Three sentences. French spacing.
+
+@frenchspacing off
+This is text. Two sentences. Three sentences. Non-french spacing.
+
+@code{@@frenchspacing} mainly affects the printed output, including
+the output after @code{@@.}, @code{@@!}, and @code{@@?} (@pxref{Ending
+a Sentence}).
+
+In Info, usually space characters in the input are written unaltered
+to the output, and @code{@@frenchspacing} does not change this.  It
+does change the one case where @command{makeinfo} outputs a space on
+its own: when a sentence ends at a newline in the source.  Here's an
+example:
+
+@example
+Some sentence.
+Next sentence.
+@end example
+
+@noindent produces in Info output, with @code{@@frenchspacing off}
+(the default), two spaces between the sentences:
+
+@example
+Some sentence.  Next sentence.
+@end example
+
+@noindent With @code{@@frenchspacing on}, @command{makeinfo} outputs
+only a single space:
+
+@example
+Some sentence. Next sentence.
+@end example
+
+@code{@@frenchspacing} has no effect on the HTML or Docbook output;
+for XML, it outputs a transliteration of itself (@pxref{Output
+Formats}).
 
 
 @node dmn
@@ -18464,7 +18534,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.134 2005-01-26 14:07:42 karl Exp $
+$Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -18530,7 +18600,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.134 2005-01-26 14:07:42 karl Exp $
+@comment $Id: texinfo.txi,v 1.135 2005-02-14 00:20:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,8 +1,8 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.74 2004-12-19 17:15:42 karl Exp $
+   $Id: makeinfo.c,v 1.75 2005-02-14 00:20:27 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-   2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+   2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2609,8 +2609,10 @@ add_char (int character)
             indent (output_column = current_indent);
           break;
         }
-      else if (end_of_sentence_p ())
-        /* CHARACTER is newline, and filling is enabled. */
+      else if (end_of_sentence_p () && !french_spacing)
+        /* CHARACTER is newline, filling is enabled, and we're at the
+           end of a sentence.  Insert an extra space, unless
+           @frenchspacing is in effect.  */
         {
           insert (' ');
           output_column++;

@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.54 2005-02-05 17:44:01 karl Exp $
+   $Id: xml.c,v 1.55 2005-02-14 00:20:27 karl Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
@@ -249,6 +249,7 @@ element texinfoml_element_list [] = {
   { "defclass",            0, 0, 0 },
   { "defclassvar",         0, 0, 0 },
   { "defoperation",        0, 0, 0 },
+  { "frenchspacing",       0, 0, 0 },
 
   { "para",                0, 0, 0 } /* Must be last */
   /* name / contains para / contained in para / preserve space */
@@ -462,6 +463,7 @@ element docbook_element_list [] = {
   { "classname",           0, 0, 0 }, /* DEFCLASS */
   { "property",            0, 0, 0 }, /* DEFCLASSVAR */
   { "methodname",          0, 0, 0 }, /* DEFOPERATION */
+  { "",                    0, 0, 0 }, /* FRENCHSPACING */
 
   { "para",                0, 0, 0 } /* Must be last */
   /* name / contains para / contained in para / preserve space */

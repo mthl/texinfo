@@ -1,8 +1,8 @@
 /* cmds.c -- Texinfo commands.
-   $Id: cmds.c,v 1.56 2005-01-17 00:20:22 karl Exp $
+   $Id: cmds.c,v 1.57 2005-02-14 00:20:27 karl Exp $
 
-   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004 Free Software
-   Foundation, Inc.
+   Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005 Free
+   Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,11 +39,12 @@
 #include <time.h>
 #endif
 
-/* Options. */
+/* Simple commands defined and only called here. */
 static void cm_exampleindent (void),
      cm_firstparagraphindent (void),
-     cm_paragraphindent (void),
-     cm_novalidate (void);
+     cm_frenchspacing (void),
+     cm_novalidate (void),
+     cm_paragraphindent (void);
 
 /* Internals. */
 static void cm_obsolete (int arg, int start, int end),
@@ -203,6 +204,7 @@ COMMAND command_table[] = {
   { "footnote", cm_footnote, NO_BRACE_ARGS}, /* self-arg eater */
   { "footnotestyle", cm_footnotestyle, NO_BRACE_ARGS },
   { "format", cm_format, NO_BRACE_ARGS },
+  { "frenchspacing", cm_frenchspacing, NO_BRACE_ARGS },
   { "ftable", cm_ftable, NO_BRACE_ARGS },
   { "group", cm_group, NO_BRACE_ARGS },
   { "heading", cm_heading, NO_BRACE_ARGS },
@@ -1822,7 +1824,7 @@ cm_firstparagraphindent (void)
 
   get_rest_of_line (1, &arg);
   if (set_firstparagraphindent (arg) != 0)
-    line_error (_("Bad argument to %c%s"), COMMAND_PREFIX, command);
+    line_error (_("Bad argument to @%s: %s"), command, arg);
 
   free (arg);
 }
@@ -1886,4 +1888,29 @@ cm_punct (int arg)
     {
       insert_self (arg);
     }
+}
+
+/* If @frenchspacing is in effect, avoid outputting extra spaces after
+   sentence-ending periods.  Actually, we explicitly do this only in one
+   tiny case (see add_char in makeinfo.c).  Usually we just output
+   whatever the user gives us.  */
+void
+cm_frenchspacing (void)
+{
+  char *val;
+  get_rest_of_line (1, &val);
+
+  if (STREQ (val, "on")) {
+    french_spacing = 1;
+  } else if (STREQ (val, "off")) {
+    french_spacing = 0;
+  } else {
+    line_error (_("Expected @%s on or off, not `%s'"), command, val);
+  }
+  
+  if (xml && !docbook) {
+    xml_insert_element_with_attribute (FRENCHSPACING, START,
+                                       "val=\"%s\"", val);
+    xml_insert_element (FRENCHSPACING, END);
+  }
 }

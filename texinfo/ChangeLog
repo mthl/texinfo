@@ -1,3 +1,20 @@
+2005-02-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (frenchspacing): new code.
+	* makeinfo/cmds.c (command_table): add frenchspacing.
+	(cm_frenchspacing): new fn.
+	* util/texinfo.dtd (frenchspacing): new element.
+	(option.cmds): new entity; use in Inline.phrase, I guess.
+	* makeinfo/xml.h (xml_element): add FRENCHSPACING.
+	* makeinfo/xml.c (docbook_element_list, texinfoml_element_list): same.
+	* doc/texinfo.tex (\frenchspacing): new macro for new command.
+	(\onword, \offword): args to that command.
+	(\plainfrenchspacing, \plainnonfrenchspacing): the commands which
+		really do the work; change calls.
+	(\endofsentencespacefactor): set in \plain...frenchspacing to 3000
+		or 1000 as appropriate.
+	(\., \!, \?): use here, instead of hardwiring 3000.
+
 2005-02-10  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (findprog): also check for foo.exe, for Cygwin.

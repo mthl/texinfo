@@ -1,7 +1,7 @@
 /* xml.h -- xml output declarations.
-   $Id: xml.h,v 1.24 2004-11-26 00:48:35 karl Exp $
+   $Id: xml.h,v 1.25 2005-02-14 00:20:27 karl Exp $
 
-   Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -100,6 +100,7 @@ enum xml_element
   DEFINITION, DEFINITIONTERM, DEFINITIONITEM,
   DEFCATEGORY, DEFFUNCTION, DEFVARIABLE, DEFPARAM, DEFDELIMITER, DEFTYPE,
   DEFPARAMTYPE, DEFDATATYPE, DEFCLASS, DEFCLASSVAR, DEFOPERATION,
+  FRENCHSPACING,
   PARA
 };
 

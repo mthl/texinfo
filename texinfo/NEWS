@@ -1,9 +1,9 @@
-$Id: NEWS,v 1.104 2004-12-31 21:43:12 karl Exp $
+$Id: NEWS,v 1.105 2005-02-14 00:20:27 karl Exp $
 This file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+  2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -22,6 +22,11 @@ convenience, here's a url to one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* Language:
+  . new command @frenchspacing to control spacing after sentences.
+* Distribution:
+  . automake 1.9.5.
+
 
 4.8 (31 December 2004)
 * Language:
