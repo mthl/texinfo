@@ -11,7 +11,7 @@
 # Copy this file and make changes to it, if you like.
 # Afterwards, either, load it with command-line option -init_file <your_init_file>
 #
-# $Id: texi2html.init,v 1.9 2002-06-25 16:07:20 dprice Exp $
+# $Id: texi2html.init,v 1.10 2003-01-08 18:25:14 pertusus Exp $
 
 ######################################################################
 # stuff which can also be set by command-line options
@@ -541,7 +541,7 @@ my $T2H_WORDS_PT =
 
 my $T2H_WORDS_FR =
 {
- 'ToC_Title'       => 'Table des mati&egrav;res',
+ 'ToC_Title'       => 'Table des mati&egrave;res',
  'Overview_Title'  => 'R&eacute;sum&eacute;e du contenu',
  'Index_Title'     => 'Index',
  'About_Title'     => 'A propos de ce document',
