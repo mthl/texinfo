@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
+@c $Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14031,6 +14031,11 @@ details.
 @opindex --docbook
 Generate DocBook output rather than Info.  
 
+@item --enable-encoding
+@opindex --enable-encoding
+Output accented and special characters in Info or plain text output
+based on @samp{@@documentencoding}.
+
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
 @opindex --error-limit=@var{limit}
@@ -14093,6 +14098,22 @@ not given, the current directory @file{.} is appended.  Note that
 usual path separator character (@samp{:} on Unix, @samp{;} on
 MS-DOS/MS-Windows).
 
+@item --ifhtml
+@itemx --ifinfo
+@itemx --ifplaintext
+@itemx --iftex
+@itemx --ifxml
+@opindex --ifhtml
+@opindex --ifinfo
+@opindex --ifplaintext
+@opindex --iftex
+@opindex --ifxml
+For the specified format, process @samp{@@if@var{format}} and
+@samp{@@@var{format}} commands even if not generating the given output
+format.  For instance, if @option{--iftex} is specified, then
+@samp{@@iftex} and @samp{@@tex} blocks will be read.  This can be useful
+when postprocessing the output.
+
 @item --macro-expand=@var{file}
 @itemx -E @var{file}
 @opindex --macro-expand=@var{file}
@@ -14124,6 +14145,21 @@ specified, do not include a navigation links at the top of each node
 
 In both cases, write to standard output by default (can still be
 overridden by @option{-o}).
+
+@item --no-ifhtml
+@itemx --no-ifinfo
+@itemx --no-ifplaintext
+@itemx --no-iftex
+@itemx --no-ifxml
+@opindex --no-ifhtml
+@opindex --no-ifinfo
+@opindex --no-ifplaintext
+@opindex --no-iftex
+@opindex --no-ifxml
+Do not process @samp{@@if@var{format}} and @samp{@@@var{format}}
+commands even if generating the given format.  For instance, if
+@option{--no-ifhtml} is specified, then @samp{@@ifhtml} and
+@samp{@@html} blocks will not be read.
 
 @item --no-split
 @opindex --no-split
@@ -14207,6 +14243,10 @@ Set the value of the number of references to a node that
 @code{makeinfo} will make without reporting a warning.  If a node has more
 than this number of references in it, @code{makeinfo} will make the
 references but also report a warning.  The default is 1000.
+
+@item --split-size=@var{num}
+@opindex --split-size=@var{num}
+Keep Info files to at most @var{num} characters; default is 50,000.
 
 @item -U @var{var}
 Cause @var{var} to be undefined.  This is equivalent to
@@ -16744,7 +16784,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
+$Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16809,7 +16849,7 @@ Here is the sample document:
 @c because the literal @setfilename and @include confuse Automake.  Argh.
 @example
 \input texinfo    @@c -*-texinfo-*-
-@@comment $Id: texinfo.txi,v 1.9 2002-10-10 21:47:20 karl Exp $
+@@comment $Id: texinfo.txi,v 1.10 2002-10-13 16:15:24 karl Exp $
 @@comment %**start of header
 @@setfilename sample.info
 @@include version.texi
