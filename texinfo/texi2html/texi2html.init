@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.44 2003-09-12 13:27:00 pertusus Exp $
+# $Id: texi2html.init,v 1.45 2003-09-13 17:52:41 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -441,24 +441,30 @@ $ICONS = 0;
      'Last',        '',
     );
 
+
+$set_buttons_text    = \&t2h_default_set_buttons_text;
+
+# We have to do this dynamically because of internationalization
+sub t2h_default_set_buttons_text()
+{
 # Names of text as alternative for icons
-%NAVIGATION_TEXT =
+    %NAVIGATION_TEXT =
     (
-     'Top',         'Top',
-     'Contents',    'Contents',
-     'Overview',    'Overview',
-     'Index',       'Index',
+     'Top',         &$I('Top'),
+     'Contents',    &$I('Contents'),
+     'Overview',    &$I('Overview'),
+     'Index',       &$I('Index'),
      ' ',           ' &nbsp; ',
-     'This',        'current',
+     'This',        &$I('current'),
      'Back',        ' &lt; ',
      'FastBack',    ' &lt;&lt; ',
-     'Prev',        'Prev',
-     'Up',          ' Up ',
-     'Next',        'Next',
-     'NodeUp',      'node up',
-     'NodeNext',    'next node',
-     'NodePrev',    'previous node',
-     'Following',   'following node',
+     'Prev',        &$I('Prev'),
+     'Up',          &$I(' Up '),
+     'Next',        &$I('Next'),
+     'NodeUp',      &$I('node up'),
+     'NodeNext',    &$I('next node'),
+     'NodePrev',    &$I('previous node'),
+     'Following',   &$I('following node'),
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',
@@ -466,29 +472,29 @@ $ICONS = 0;
      'Last',        ' &gt;| '
     );
 
-%BUTTONS_GOTO =
+    %BUTTONS_GOTO =
     (
-     'Top',         'cover (top) of document',
-     'Contents',    'table of contents',
-     'Overview',    'short table of contents',
-     'Index',       'concept index',
-     'This',        'current section',
-     'Back',        'previous section in reading order',
-     'FastBack',    'beginning of this chapter or previous chapter',
-     'Prev',        'previous section on same level',
-     'Up',          'up section',
-     'Next',        'next section on same level',
-     'NodeUp',      'up node',
-     'NodeNext',    'next node',
-     'NodePrev',    'previous node',
-     'Following',   'node following in node reading order',
-     'Forward',     'next section in reading order',
-     'FastForward', 'next chapter',
-     'About' ,      'about (this page)',
-     'First',       'first section in reading order',
-     'Last',        'last section in reading order',
+     'Top',         &$I('cover (top) of document'),
+     'Contents',    &$I('table of contents'),
+     'Overview',    &$I('short table of contents'),
+     'Index',       &$I('concept index'),
+     'This',        &$I('current section'),
+     'Back',        &$I('previous section in reading order'),
+     'FastBack',    &$I('beginning of this chapter or previous chapter'),
+     'Prev',        &$I('previous section on same level'),
+     'Up',          &$I('up section'),
+     'Next',        &$I('next section on same level'),
+     'NodeUp',      &$I('up node'),
+     'NodeNext',    &$I('next node'),
+     'NodePrev',    &$I('previous node'),
+     'Following',   &$I('node following in node reading order'),
+     'Forward',     &$I('next section in reading order'),
+     'FastForward', &$I('next chapter'),
+     'About' ,      &$I('about (this page)'),
+     'First',       &$I('first section in reading order'),
+     'Last',        &$I('last section in reading order'),
     );
-
+};
 #######################################################################
 #
 # Values guessed if not set here
@@ -680,14 +686,13 @@ sub T2H_DEFAULT_print_Top
         print $fh "<h2>$Texi2HTML::THISDOC{subtitle}</h2>\n"
           if $Texi2HTML::THISDOC{subtitle};
         print $fh "$Texi2HTML::THISDOC{author}\n" if $Texi2HTML::THISDOC{author};
-#I18n for Overview:
         print $fh <<EOT;
 </div>
 $DEFAULT_RULE
 <p></p>
-<h2> Overview: </h2>
-<blockquote>
 EOT
+        print $fh '<h2> ' . &$I('Overview') . ": </h2>\n"
+             . "<blockquote>\n";
         $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
         print $fh "</blockquote>\n";
     }
@@ -835,11 +840,13 @@ EOT
 sub T2H_DEFAULT_print_page_foot
 {
     my $fh = shift;
+    print $fh "<p>\n" .
+" <font size=\"-1\">\n" .
+&$I('  This document was generated %{who_and_when_generated} using %{program_homepage_href}.',
+  { 'who_and_when_generated' => $ADDRESS,
+    'program_homepage_href' => "<a href=\"$Texi2HTML::THISDOC{program_homepage}\"><i>$Texi2HTML::THISDOC{program}</i></a>"
+  }) . "\n";
     print $fh <<EOT;
-<p>
- <font size="-1">
-  This document was generated $ADDRESS
-  using <a href="$Texi2HTML::THISDOC{program_homepage}"><i>$Texi2HTML::THISDOC{program}</i></a>.
  </font>
  <br>
 $PRE_BODY_CLOSE
@@ -1117,10 +1124,10 @@ sub T2H_DEFAULT_css_lines ($$)
 # and all global variables like $ADDRESS are not available.
 $PRE_ABOUT = sub
 {
-    return <<EOT;
-  This document was generated $ADDRESS
-  using <a href="$Texi2HTML::THISDOC{program_homepage}"><i>$Texi2HTML::THISDOC{program}</i></a>.
-EOT
+    return &$I('  This document was generated %{who_and_when_generated} using %{program_homepage_href}.',
+  { 'who_and_when_generated' => $ADDRESS,
+    'program_homepage_href' => "<a href=\"$Texi2HTML::THISDOC{program_homepage}\"><i>$Texi2HTML::THISDOC{program}</i></a>"
+  }) . "\n";
 };
 
 # If customizing $AFTER_ABOUT, be sure to put the content inside <p></p>.
@@ -1163,16 +1170,17 @@ sub T2H_DEFAULT_about_body
     $about .= <<EOT;
 </p>
 <p>
-  The buttons in the navigation panels have the following meaning:
+EOT
+    $about .= &$I('  The buttons in the navigation panels have the following meaning:') . "\n";
+    $about .= <<EOT;
 </p>
 <table border="1">
   <tr>
-    <th> Button </th>
-    <th> Name </th>
-    <th> Go to </th>
-    <th> From 1.2.3 go to</th>
-  </tr>
 EOT
+    $about .= '    <th> ' . &$I('Button') . " </th>\n" .
+'    <th> ' . &$I('Name') . " </th>\n" .
+'    <th> ' . &$I('Go to') . " </th>\n" .
+'    <th> ' . &$I('From 1.2.3 go to') . "</th>\n" . "  </tr>\n";
 
     for my $button (@SECTION_BUTTONS)
     {
@@ -1195,34 +1203,45 @@ EOT
 </table>
 
 <p>
-  where the <strong> Example </strong> assumes that the current position
-  is at <strong> Subsubsection One-Two-Three </strong> of a document of
-  the following structure:
+EOT
+    $about .= &$I('  where the <strong> Example </strong> assumes that the current position is at <strong> Subsubsection One-Two-Three </strong> of a document of the following structure:') . "\n";
+
+#  where the <strong> Example </strong> assumes that the current position
+#  is at <strong> Subsubsection One-Two-Three </strong> of a document of
+#  the following structure:
+    $about .= <<EOT;
 </p>
 
 <ul>
-  <li> 1. Section One
-    <ul>
-      <li>1.1 Subsection One-One
+EOT
+    $about .= '  <li> 1. ' . &$I('Section One') . "\n" .
+"    <ul>\n" .
+'      <li>1.1 ' . &$I('Subsection One-One') . "\n";
+    $about .= <<EOT;
         <ul>
           <li>...</li>
         </ul>
       </li>
-      <li>1.2 Subsection One-Two
-        <ul>
-          <li>1.2.1 Subsubsection One-Two-One</li>
-          <li>1.2.2 Subsubsection One-Two-Two</li>
-          <li>1.2.3 Subsubsection One-Two-Three &nbsp; &nbsp;
-            <strong>&lt;== Current Position </strong></li>
-          <li>1.2.4 Subsubsection One-Two-Four</li>
-        </ul>
-      </li>
-      <li>1.3 Subsection One-Three
+EOT
+    $about .= '      <li>1.2 ' . &$I('Subsection One-Two') . "\n" .
+"        <ul>\n" .
+'          <li>1.2.1 ' . &$I('Subsubsection One-Two-One') . "</li>\n" .
+'          <li>1.2.2 ' . &$I('Subsubsection One-Two-Two') . "</li>\n" .
+'          <li>1.2.3 ' . &$I('Subsubsection One-Two-Three') . " &nbsp; &nbsp;\n"
+.
+'            <strong>&lt;== ' . &$I('Current Position') . " </strong></li>\n" .
+'          <li>1.2.4 ' . &$I('Subsubsection One-Two-Four') . "</li>\n" .
+"        </ul>\n" .
+"      </li>\n" .
+'      <li>1.3 ' . &$I('Subsection One-Three') . "\n";
+    $about .= <<EOT;
         <ul>
           <li>...</li>
         </ul>
       </li>
-      <li>1.4 Subsection One-Four</li>
+EOT
+    $about .= '      <li>1.4 ' . &$I('Subsection One-Four') . "</li>\n";
+    $about .= <<EOT;
     </ul>
   </li>
 </ul>
@@ -1231,6 +1250,7 @@ EOT
     return $about;
 }
 
+# i18n
 sub T2H_DEFAULT_print_redirection_page($)
 {
     my $fh = shift;
@@ -1339,6 +1359,7 @@ $simple_map_pre{'*'} = "\n";
                'dots'         => '<small class="dots">...</small>',
                'enddots'      => '<small class="enddots">....</small>',
                'equiv'        => '==',
+# i18n
                'error'        => 'error--&gt;',
                'expansion'    => '==&gt;',
                'minus'        => '-',
@@ -1839,11 +1860,11 @@ sub t2h_default_definition_category($$$)
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
-        return "$name on $class";
+        return &$I('%{name} on %{class}', { 'name' => $name, 'class' => $class });
     }
     elsif ($style eq 'v')
     {
-        return "$name of $class";
+        return &$I('%{name} of %{class}', { 'name' => $name, 'class' => $class });
     }
     else
     {
@@ -2367,10 +2388,22 @@ sub t2h_default_address($$)
 {
     my $user = shift;
     my $date = shift;
-    my $text = '';
-    $text .= "by <i>$user</i> " if $user;
-    $text .= "on <i>$date</i>" if $date;
-    return $text;
+    $user = '' if (!defined($user));
+    $date = '' if (!defined($date));
+    if (($user ne '') and ($date ne ''))
+    {
+        return &$I('by <i>%{user}</i> on <i>%{date}</i>', { 'user' => $user,
+            'date' => $date });
+    }
+    elsif ($user ne '')
+    {
+        return &$I('by <i>%{user}</i>', { 'user' => $user });
+    }
+    elsif ($date ne '')
+    {
+        return &$I('on <i>%{date}</i>', { 'date' => $date });
+    }
+    return '';
 }
 
 # format a target in the main document for an index entry.
@@ -2463,7 +2496,7 @@ sub t2h_default_print_index($$)
     my $text = shift;
     my $name = shift;
     return "<table border=\"0\" class=\"index-$name\">\n" .
-    "<tr><td></td><th align=\"left\">Index Entry</th><th align=\"left\"> Section</th></tr>\n"
+    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
     '</table>';
 }
@@ -2545,8 +2578,7 @@ sub t2h_default_index_summary($$)
     {
        $alpha_text = join("\n &nbsp; \n", @$alpha) . "\n &nbsp; \n";
     }
-    #I18n
-    return "<table><tr><th valign=\"top\">Jump to: &nbsp; </th><td>" .
+    return "<table><tr><th valign=\"top\">" . &$I('Jump to') .": &nbsp; </th><td>" .
     $nonalpha_text . $join . $alpha_text . '</td></tr></table>';
 }
 

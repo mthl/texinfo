@@ -35,11 +35,10 @@ our (@ISA, @EXPORT);
 use Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(pretty_date);
-use vars qw(
-           $T2H_LANGUAGES
-);
+#use vars qw(
+#           $T2H_LANGUAGES
+#);
 
-our $WORDS;
 my $language;
 my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 my $translation_file = 'translations.pl'; # file containing all the translations
@@ -260,15 +259,10 @@ my $T2H_WORDS_FR =
 # 'fr' => $T2H_WORDS_FR,
 #};
 
-
-require "$ENV{T2H_HOME}/$translation_file"
-    if ($0 =~ /\.pl$/ &&
-        -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
-
 sub set_language($)
 {
     my $lang = shift;
-    if (defined($lang) && exists($T2H_LANGUAGES->{$lang}) && defined($T2H_LANGUAGES->{$lang}))
+    if (defined($lang) && exists($Texi2HTML::Config::LANGUAGES->{$lang}) && defined($Texi2HTML::Config::LANGUAGES->{$lang}))
     {
          $language = $lang;
          return 1;
@@ -299,7 +293,6 @@ sub pretty_date($)
     # obachman: Let's do it as the Americans do
     #return($MONTH_NAMES->{$lang}[$mon] . ", " . $mday . " " . $year);
 	#return(sprintf(&$I('T2H_today'), (get_string($MONTH_NAMES[$mon]), $mday, $year)));
-	# s, d d
 	return &$I('%{month}, %{day} %{year}', { 'month' => get_string($MONTH_NAMES[$mon]),
           'day' => $mday, 'year' => $year });
 }
@@ -309,6 +302,7 @@ sub get_string($;$)
 {
     my $string = shift;
 	my $arguments = shift;
+    my $T2H_LANGUAGES = $Texi2HTML::Config::LANGUAGES;
 	if (! exists($T2H_LANGUAGES->{'en'}))
 	{
         unless($error_no_en)

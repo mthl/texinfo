@@ -2,6 +2,7 @@
 
 SUBDIRS = doc Tests
 imagesdir = $(pkgdatadir)/images
+i18ndir = $(pkgdatadir)/i18n
 
 #
 # This is to prevent texinfo.tex from being included
@@ -23,6 +24,15 @@ dist_pkgdata_DATA = l2h.init \
 	examples/makeinfo.init \
 	examples/xhtml.init \
 	examples/html32.init
+
+dist_i18n_DATA = i18n/template \
+    i18n/de \
+    i18n/es \
+    i18n/fr \
+    i18n/nl \
+    i18n/no \
+    i18n/pt \
+
 
 dist_images_DATA = images/a_begin.gif \
 	images/a_begin_na.gif \

@@ -25,9 +25,9 @@
 require 5.0;
 
 use strict;
-use vars qw(
-           $T2H_LANGUAGES
-);
+#use vars qw(
+#           $T2H_LANGUAGES
+#);
 
 use File::Copy;
 use Data::Dumper;
@@ -45,7 +45,8 @@ my @known_languages = ('de', 'nl', 'es', 'no', 'pt', 'fr'); # The supported
 my $template = 'template';
 my $template_file = "$i18n_dir/$template";
 my @source_files = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm');
-#my $T2H_LANGUAGES;
+
+our $LANGUAGES; 
 
 # Strings not in code
 my $template_strings =
@@ -153,9 +154,9 @@ sub update_language_hash($$$)
             warn "Error copying $file to $file.old\n";
             return;
         }
-        if (!defined($T2H_LANGUAGES->{$lang}))
+        if (!defined($LANGUAGES->{$lang}))
         {
-            warn "T2H_LANGUAGES->{$lang} not defined in $file\n";
+            warn "LANGUAGES->{$lang} not defined in $file\n";
             return;
         }
     }
@@ -163,18 +164,18 @@ sub update_language_hash($$$)
     {
         $T2H_OBSOLETE_STRINGS->{$lang} = {};
     }
-    if (!defined($T2H_LANGUAGES->{$lang}))
+    if (!defined($LANGUAGES->{$lang}))
     {
-        $T2H_LANGUAGES->{$lang} = {};
+        $LANGUAGES->{$lang} = {};
     }
 	
-	foreach my $string (keys %{$T2H_LANGUAGES->{$lang}})
+	foreach my $string (keys %{$LANGUAGES->{$lang}})
 	{
-        $T2H_OBSOLETE_STRINGS->{$lang}->{$string} = $T2H_LANGUAGES->{$lang}->{$string}
-            if (defined($T2H_LANGUAGES->{$lang}->{$string}) and ($T2H_LANGUAGES->{$lang}->{$string} ne ''));
+        $T2H_OBSOLETE_STRINGS->{$lang}->{$string} = $LANGUAGES->{$lang}->{$string}
+            if (defined($LANGUAGES->{$lang}->{$string}) and ($LANGUAGES->{$lang}->{$string} ne ''));
     }
 	
-    $T2H_LANGUAGES->{$lang} = {};
+    $LANGUAGES->{$lang} = {};
     
     foreach my $string (keys (%{$reference}))
     {
@@ -182,12 +183,12 @@ sub update_language_hash($$$)
             defined($T2H_OBSOLETE_STRINGS->{$lang}->{$string}) and
             ($T2H_OBSOLETE_STRINGS->{$lang}->{$string} ne ''))
         {
-             $T2H_LANGUAGES->{$lang}->{$string} = $T2H_OBSOLETE_STRINGS->{$lang}->{$string};
+             $LANGUAGES->{$lang}->{$string} = $T2H_OBSOLETE_STRINGS->{$lang}->{$string};
              delete $T2H_OBSOLETE_STRINGS->{$lang}->{$string};
         }
         else
         {
-             $T2H_LANGUAGES->{$lang}->{$string} = '';
+             $LANGUAGES->{$lang}->{$string} = '';
         }
     }
 	return 1;
@@ -221,11 +222,11 @@ sub update_i18n_files
     {
         die "require $template_file failed: $@\n";
     }
-    die "T2H_LANGUAGE->{'en'} undef after require $template_file\n" unless
-         (defined($T2H_LANGUAGES) and defined($T2H_LANGUAGES->{'en'}));
+    die "LANGUAGE->{'en'} undef after require $template_file\n" unless
+         (defined($LANGUAGES) and defined($LANGUAGES->{'en'}));
     foreach my $string (keys(%$template_strings))
     {
-        die "template string $string undef" unless (defined($T2H_LANGUAGES->{'en'}->{$string}));
+        die "template string $string undef" unless (defined($LANGUAGES->{'en'}->{$string}));
     }
     foreach my $lang (@languages)
     {
@@ -244,7 +245,7 @@ sub update_language_file($)
     }
     my $file = "$i18n_dir/$lang";
 
-    return unless (update_language_hash($file, $lang, $T2H_LANGUAGES->{'en'}));
+    return unless (update_language_hash($file, $lang, $LANGUAGES->{'en'}));
 	
     unless (open (FILE, ">$file"))
     {
@@ -253,7 +254,7 @@ sub update_language_file($)
     }
 
 	
-    print FILE "" . Data::Dumper->Dump([$T2H_LANGUAGES->{$lang}], [ "T2H_LANGUAGES->{'$lang'}" ]);
+    print FILE "" . Data::Dumper->Dump([$LANGUAGES->{$lang}], [ "LANGUAGES->{'$lang'}" ]);
     print FILE "\n";
     print FILE Data::Dumper->Dump([$T2H_OBSOLETE_STRINGS->{$lang}], [ "T2H_OBSOLETE_STRINGS->{'$lang'}"]);
     print FILE "\n";
@@ -335,13 +336,13 @@ sub update_template (@)
     die unless(update_language_hash($template_file, 'en', $source_strings));
 	foreach my $string (keys(%$template_strings))
 	{ # use values in template_srings if it exists
-        $T2H_LANGUAGES->{'en'}->{$string} = $template_strings->{$string} if ($T2H_LANGUAGES->{'en'}->{$string} eq '');
+        $LANGUAGES->{'en'}->{$string} = $template_strings->{$string} if ($LANGUAGES->{'en'}->{$string} eq '');
     }
     unless (open (TEMPLATE, ">$template_file"))
     {
         die "open $template_file failed: $!\n";
     }
-    print TEMPLATE "" . Data::Dumper->Dump([$T2H_LANGUAGES->{'en'}], [ "T2H_LANGUAGES->{'en'}" ]);
+    print TEMPLATE "" . Data::Dumper->Dump([$LANGUAGES->{'en'}], [ "LANGUAGES->{'en'}" ]);
     print TEMPLATE "\n";
 	if (keys(%{$T2H_OBSOLETE_STRINGS->{'en'}}))
 	{

@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.66 2003-09-12 13:27:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.67 2003-09-13 17:52:41 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -113,6 +113,8 @@ my $NODERE = '[^:]+';             # RE for node names
 
 my $MAX_LEVEL = 4;
 my $MIN_LEVEL = 1;
+
+my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 
 #+++############################################################################
 #                                                                              #
@@ -231,6 +233,9 @@ our $ADDRESS;
 our $BODYTEXT;
 our $CSS_LINES;
 
+# I18n
+our $LANGUAGES;
+
 # customizable subroutines references
 our $print_section;
 our $print_Top_header;
@@ -261,6 +266,7 @@ our $css_lines;
 our $print_redirection_page;
 
 our $set_body_text;
+our $set_buttons_text;
 our $protect_html;
 our $anchor;
 our $def_item;
@@ -483,6 +489,15 @@ require "$ENV{T2H_HOME}/texi2html.init"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/texi2html.init" && -r "$ENV{T2H_HOME}/texi2html.init");
 
+
+my $translation_file = 'translations.pl'; # file containing all the translations
+my $T2H_OBSOLETE_STRINGS;
+require "$ENV{T2H_HOME}/$translation_file"
+    if ($0 =~ /\.pl$/ &&
+        -e "$ENV{T2H_HOME}/$translation_file" && -r "$ENV{T2H_HOME}/$translation_file");
+
+# @T2H_TRANSLATIONS_FILE@
+
 }
 
 our %value;
@@ -534,8 +549,6 @@ require "$ENV{T2H_HOME}/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$ENV{T2H_HOME}/T2h_i18n.pm" && -r "$ENV{T2H_HOME}/T2h_i18n.pm");
 
-my $T2H_OBSOLETE_STRINGS;
-# @T2H_TRANSLATIONS_FILE@
 
 {
 package Texi2HTML::LaTeX2HTML::Config;
@@ -907,15 +920,17 @@ my $I = \&Texi2HTML::I18n::get_string;
 
 #print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
-sub locate_init_file($)
+sub locate_init_file($;$)
 {
     my $file = shift;
-    if ($file =~ /\//)
+    my $all_files = shift;
+    if ($file =~ /^\//)
     {
          return $file if (-e $file and -r $file);
     }
     else
     {
+         my @files;
          my @dirs = ('./');
          push @dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
          push @dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
@@ -923,8 +938,16 @@ sub locate_init_file($)
          foreach my $dir (@dirs)
          {
               next unless (-d "$dir");
-              return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
+              if ($all_files)
+              {
+                  push (@files, "$dir/$file") if (-e "$dir/$file" and -r "$dir/$file");
+              }
+              else
+              {
+                  return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
+              }
          }
+         return @files if ($all_files);
     }
     return undef;
 }
@@ -951,19 +974,27 @@ sub load_init_file
     }
 }
 
-my $lang_set = 0; # set to 1 if lang was succesfully set by the command line
+my $cmd_line_lang = 0; # 1 if lang was succesfully set by the command line 
+my $lang_set = 0; # 1 if lang was set
 
 #
 # called on -lang
-sub set_document_language ($;$)
+sub set_document_language ($;$$)
 {
     my $lang = shift;
+    my $from_command_line = shift;
     my $line_nr = shift;
     if (Texi2HTML::I18n::set_language($lang))
     {
         print STDERR "# using '$lang' as document language\n" if ($T2H_VERBOSE);
         $Texi2HTML::Config::LANG = $lang;
         $lang_set = 1;
+        $cmd_line_lang = 1 if ($from_command_line);
+        my @files = locate_init_file("$i18n_dir/$lang", 1);
+        foreach  my $file (@files)
+        {
+            Texi2HTML::Config::load($file);
+        }
     }
     else
     {
@@ -1269,7 +1300,7 @@ $T2H_OPTIONS -> {'Verbose'} =
 $T2H_OPTIONS -> {'lang'} =
 {
  type => '=s',
- linkage => sub {set_document_language($_[1])},
+ linkage => sub {set_document_language($_[1], 1)},
  verbose => 'use $s as document language (ISO 639 encoding)',
 };
 
@@ -4726,6 +4757,7 @@ sub pass_text()
          $value{'_titlefont'} = $element_top->{'titlefont'};
     }
     
+    &$Texi2HTML::Config::set_buttons_text();
     # prepare %Texi2HTML::THISDOC
     # FIXME 0 should be valid
     $Texi2HTML::THISDOC{'fulltitle'} = substitute_line($value{'_title'}) || substitute_line($value{'_settitle'}) || substitute_line($value{'_shorttitlepage'}) || substitute_line($value{'_titlefont'});
@@ -4738,10 +4770,8 @@ sub pass_text()
     {
         $element_top_text = $element_top->{'text'};
     }
-    # I18n for 'Top'
     my $top_name = $Texi2HTML::Config::TOP_HEADING || $element_top_text || $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'shorttitle'} || &$I('Top');
 
-    # I18n Untitled Document
     $Texi2HTML::THISDOC{'fulltitle'} = $Texi2HTML::THISDOC{'fulltitle'} || &$I('Untitled Document') ;
     $Texi2HTML::THISDOC{'title'} = $Texi2HTML::THISDOC{'settitle'} || $Texi2HTML::THISDOC{'fulltitle'};
     $Texi2HTML::THISDOC{'author'} = substitute_line($value{'_author'});
@@ -4757,9 +4787,7 @@ sub pass_text()
         $top_no_texi = $element_top->{'no_texi'};
     }
 
-    # I18n for 'Top'
     $top_no_texi = $Texi2HTML::Config::TOP_HEADING || $top_no_texi || $Texi2HTML::THISDOC{'title_no_texi'} || $Texi2HTML::THISDOC{'shorttitle_no_texi'} || &$I('Top');
-    # I18n Untitled Document
     $Texi2HTML::THISDOC{'title_no_texi'} = $Texi2HTML::THISDOC{'title_no_texi'} || &$I('Untitled Document');
 
     for my $key (keys %Texi2HTML::THISDOC)
@@ -7682,7 +7710,7 @@ sub scan_structure($$$$;$)
                 if (s/\s+(\w+)//)
                 {
                     my $lang = $1;
-                    set_document_language($lang, $line_nr) if (!$lang_set && $lang);
+                    set_document_language($lang, 0, $line_nr) if (!$cmd_line_lang && $lang);
                 }
                 return if (/^\s*$/);
                 s/^\s*//;

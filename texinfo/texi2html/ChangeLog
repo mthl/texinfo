@@ -1,3 +1,13 @@
+2003-09-13  Patrice Dumas <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl: mark strings of buttons, about, 
+	definitions and footers for internationalization.
+	new function reference $set_buttons_text used to generate the
+	button text hashes dynamically (for internationalization).
+	require all files in i18n/* for languages.
+	* i18n/fr: translate strings related with buttons, about,
+	definitions and footers in french. 
+
 2003-09-12  Patrice Dumas <dumas@centre-cired.fr>
 
 	* manage_i18n.pl: remove \ from strings when finding out strings
