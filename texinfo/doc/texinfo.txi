@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.47 2003-05-27 12:16:36 karl Exp $
+@c $Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3577,10 +3577,12 @@ table of contents in addition to the full table of contents.
 
 @end table
 
-Both contents commands should be written on a line by themselves.
-The contents commands automatically generate a chapter-like heading at
-the top of the first table of contents page, so don't include any
-sectioning command such as @code{@@unnumbered} before them.
+Both contents commands should be written on a line by themselves, and
+are best placed near the beginning of the file, after the @code{@@end
+titlepage} (@pxref{titlepage}).  The contents commands automatically
+generate a chapter-like heading at the top of the first table of
+contents page, so don't include any sectioning command such as
+@code{@@unnumbered} before them.
 
 Since an Info file uses menus instead of tables of contents, the Info
 formatting commands ignore the contents commands.  But the contents are
@@ -3593,15 +3595,6 @@ html output, the links in the short table of contents point to
 corresponding entries in the full table of contents rather than the text
 of the document. The links in the full table of contents point to the
 main text of the document.
-
-The contents commands are best placed near the beginning of the file,
-after the @code{@@end titlepage} (@pxref{titlepage}).  That way, the
-contents are printed in the proper place, so that you do not need to
-rearrange the DVI file (with @command{dviselect}, for example), or
-shuffle paper.  You may need to run @TeX{} twice to get the proper
-printed output, but generally multiple runs are necessary anyway to
-resolve cross-references.  @command{texi2dvi} (@pxref{Format with
-texi2dvi}) will run @TeX{} as many times as needed to get the output right.
 
 In the past, the contents commands were sometimes placed at the end of
 the file, after any indices and just before the @code{@@bye}, but we
@@ -17186,7 +17179,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.47 2003-05-27 12:16:36 karl Exp $
+$Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17249,7 +17242,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.47 2003-05-27 12:16:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,21 @@
+2003-06-02    <karl@gnu.org>
+
+	* makeinfo/html.c (html_output_head): don't output the <link>, to
+		avoid having mozilla put up a document navigation bar when
+		we don't have anything else to support it yet.  Report from:
+		Per Bothner.
+	* makeinfo/makeinfo.c: no need to declare add_link or
+		add_escaped_anchor_name, since they are not used.
+
+	* doc/texinfo.txi (Contents): recommend @contents at the beginning
+		more strongly.  Suggestions from Kevin Ryde.
+
+2003-06-01    <karl@gnu.org>
+
+	* makeinfo/macro.c (apply): make \\ expand to \ even if the macro
+	has no arguments.  Report from: Jesper Harder <harder@ifa.au.dk>,
+	31 May 2003 02:56:20 +0200.
+
 2003-05-31    <karl@gnu.org>
 
 	* util/dir-example (C++ libraries): new category, suggested by Bruno.
