@@ -2610,37 +2610,34 @@ width0pt\relax} \fi
 \newcount\doignorecount
 
 \def\doignore#1{\begingroup
-  % Don't complain about control sequences we have declared \outer.
-  \ignoresections
+  % Scan in ``verbatim'' mode:
+  \catcode`\@ = \other
+  \catcode`\{ = \other
+  \catcode`\} = \other
   %
   % Make sure that spaces turn into tokens that match what \doignoretext wants.
   \catcode\spaceChar = 10
-  %
-  % Ignore braces, so mismatched braces don't cause trouble.
-  \catcode`\{ = 9
-  \catcode`\} = 9
   %
   % Count number of #1's that we've seen.
   \doignorecount = 0
   %
   % Swallow text until we reach the matching `@end #1'.
-  \expandafter \dodoignore \csname#1\endcsname {#1}%
+  \dodoignore {#1}%
 }
 
-{ \catcode`@=11 % We want to use \ST@P which cannot appear in texinfo source.
+{ \catcode`_=11 % We want to use \_STOP_ which cannot appear in texinfo source.
   \obeylines %
   %
-  \gdef\dodoignore#1#2{%
-    % #1 contains, e.g., \ifinfo, a.k.a. @ifinfo.
-    % #2 contains the string `ifinfo'.
+  \gdef\dodoignore#1{%
+    % #1 contains the string `ifinfo'.
     %
-    % Define a command to find the next `@end #2', which must be on a line
+    % Define a command to find the next `@end #1', which must be on a line
     % by itself.
-    \long\def\doignoretext##1^^M\end #2{\doignoretextyyy##1^^M#1\ST@P}%
+    \long\def\doignoretext##1^^M@end #1{\doignoretextyyy##1^^M@#1\_STOP_}%
     % And this command to find another #1 command, at the beginning of a
     % line.  (Otherwise, we would consider a line `@c @ifset', for
     % example, to count as an @ifset for nesting.)
-    \long\def\doignoretextyyy##1^^M#1##2\ST@P{\doignoreyyy{##2}\ST@P}%
+    \long\def\doignoretextyyy##1^^M@#1##2\_STOP_{\doignoreyyy{##2}\_STOP_}%
     %
     % And now expand that command.
     \obeylines %
@@ -2657,10 +2654,10 @@ width0pt\relax} \fi
     \let\next\doignoretextyyy		% ..., look for another.
     % If we're here, #1 ends with ^^M\ifinfo (for example).
   \fi
-  \next #1% the token \ST@P is present just after this macro.
+  \next #1% the token \_STOP_ is present just after this macro.
 }
 
-% We have to swallow the remaining "\ST@P".
+% We have to swallow the remaining "\_STOP_".
 % 
 \def\doignoretextzzz#1{%
   \ifnum\doignorecount = 0	% We have just found the outermost @end.
