@@ -1,3 +1,7 @@
+2003-11-10  Alper Ersoy  <dirt@gtk.org>
+
+	* doc/texinfo.tex (\commondummies): added registeredsymbol.
+
 2003-11-09  Alper Ersoy  <dirt@gtk.org>
 
 	* makeinfo/makeinfo.c (main): fixed a segfault with --html
