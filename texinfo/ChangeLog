@@ -1,5 +1,14 @@
 2003-05-12    <karl@gnu.org>
 
+	* makeinfo/makeinfo.c (main): new option --css-include.
+	(usage): add to --help message.
+	* makeinfo/makeinfo.h (css_include): new global.
+	* makeinfo/html.c (append_char, process_css_file): new fns
+	implementing it.
+	(html_output_head): call it.
+	* doc/texinfo.txi (HTML CSS): new node describing it.
+	Also split up the Generating HTML node into subnodes.
+
 	* config.{guess,sub}: update from gnulib.
 
 2003-05-10    <karl@gnu.org>

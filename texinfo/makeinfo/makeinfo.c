@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.29 2003-05-01 00:30:07 karl Exp $
+   $Id: makeinfo.c,v 1.30 2003-05-12 13:12:32 karl Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -431,16 +431,21 @@ Options for Info and plain text:\n\
       --split-size=NUM        split Info files at size NUM (default %d).\n"),
              fill_column, paragraph_start_indent,
              DEFAULT_SPLIT_SIZE);
-
     puts ("\n");
 
     puts (_("\
+Options for HTML:\n\
+      --css-include=FILE        include FILE in HTML <style> output;\n\
+                                  read stdin if FILE is -.\n\
+"));
+
+    puts (_("\
 Input file options:\n\
-      --commands-in-node-names   allow @ commands in node names.\n\
-  -D VAR                         define the variable VAR, as with @set.\n\
-  -I DIR                         append DIR to the @include search path.\n\
-  -P DIR                         prepend DIR to the @include search path.\n\
-  -U VAR                         undefine the variable VAR, as with @clear.\n\
+      --commands-in-node-names  allow @ commands in node names.\n\
+  -D VAR                        define the variable VAR, as with @set.\n\
+  -I DIR                        append DIR to the @include search path.\n\
+  -P DIR                        prepend DIR to the @include search path.\n\
+  -U VAR                        undefine the variable VAR, as with @clear.\n\
 "));
 
     puts (_("\
@@ -462,6 +467,7 @@ Conditional processing in input:\n\
   if generating HTML, --ifhtml is on and the others are off;\n\
   if generating Info, --ifinfo is on and the others are off;\n\
   if generating plain text, --ifplaintext is on and the others are off;\n\
+  if generating XML, --ifxml is on and the others are off.\n\
 "));
 
     fputs (_("\
@@ -490,6 +496,7 @@ Texinfo home page: http://www.gnu.org/software/texinfo/"));
 struct option long_options[] =
 {
   { "commands-in-node-names", 0, &expensive_validation, 1 },
+  { "css-include", 1, 0, 'C' },
   { "docbook", 0, 0, 'd' },
   { "enable-encoding", 0, &enable_encoding, 1 },
   { "error-limit", 1, 0, 'e' },
@@ -561,6 +568,10 @@ main (argc, argv)
 
       switch (c)
         {
+        case 'C':  /* --css-include */
+          css_include = xstrdup (optarg);
+          break;
+
         case 'D':
         case 'U':
           /* User specified variable to set or clear. */

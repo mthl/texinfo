@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.9 2003-05-01 00:30:07 karl Exp $
+   $Id: makeinfo.h,v 1.10 2003-05-12 13:12:32 karl Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003 Free
    Software Foundation, Inc.
@@ -179,6 +179,9 @@ DECLARE (char *, include_files_path, NULL);
 /* The filename of the current input file.  This is never freed. */
 DECLARE (char *, node_filename, NULL);
 
+/* Name of CSS file to include, if any.  (--css-include).  */
+DECLARE (char *, css_include, NULL);
+
 /* Nonzero means do not output "Node: Foo" for node separations, that
    is, generate plain text.  (--no-headers) */
 DECLARE (int, no_headers, 0);

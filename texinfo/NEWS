@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.52 2003-05-08 12:22:26 karl Exp $
+$Id: NEWS,v 1.53 2003-05-12 13:12:32 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003,
@@ -26,26 +26,32 @@ convenience, here's a url to one of the relevant sections:
   . new command @/ specifies an allowable breakpoint within a line.
   . new command @dofirstparagraphindent to control whether the first
     paragraph following a section heading is indented.  Default is to
-    omit this indentation.
+    omit this indentation, unlike the output up to now.
   . new command @indent for explicitly indenting a paragraph.
   . makeinfo writes a new construct for @image in Info output, so that
     graphical Info browsers (such as Emacs Info under X) can display an
-    actual image.
+    actual image.  (Standalone Info ignores this, since it runs in a tty.)
 * makeinfo:
-  . default --split-size (for Info output) now 300,000 bytes, up from 50,000.
-  . search for image files in the include file search path.
-  . with --enable-encoding and a given @documentencoding, output a Local
-    Variables: section specifying that encoding.
-  . --html output now uses <h3> at the smallest.
-  . under --html, @cartouche now outputs a <table> with a border.
-  . warns if @value is used on an undefined variable.
+  . Common:
+    - search for image files in the include file search path.
+    - warns if @value is used on an undefined variable.
+  . Info output:
+    - default --split-size now 300,000 bytes, up from 50,000.
+    - with --enable-encoding and a given @documentencoding,
+      output a Local Variables: section specifying that encoding, for use
+      with Emacs.
+  . HTML output:
+    - uses <h3> at the smallest.
+    - a few css <style> definitions are included to better
+      implement @format, @display, @small..., etc.
+    - new option --css-include=FILE includes FILE in the <style>.
+    - @cartouche now outputs a <table> with a border.
 * texinfo.tex:
   . new Polish translation txi-pl.tex.
 * texi2dvi:
   . --command=CMD replaces --texinfo=CMD; it inserts CMD at the first
     line of LaTeX files now, or after the @setfilename for Texinfo files.
 * info:
-  . ignore the new construct for @image, since we're running in a tty.
   . RET now goes to the nearest xref (rather like Emacs Info),
     instead of the next xref starting on the current line.
 * Distribution:

@@ -1,6 +1,6 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
-@c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
+@c $Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
+@c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
 @c Everything between the start/end of header lines will be passed by
@@ -10,7 +10,7 @@
 
 @c makeinfo and texinfo.tex ignore all text before @setfilename.
 @c
-@c Ordinarily the setfilename argument ends with .info.  But
+@c Ordinarily, the setfilename argument ends with .info.  But
 @c texinfo.info-13 is too long for 14-character filesystems.
 @setfilename texinfo
 
@@ -474,6 +474,11 @@ Footnotes
 * Footnote Commands::           How to write a footnote in Texinfo.
 * Footnote Styles::             Controlling how footnotes appear in Info.
 
+Inserting Images
+
+* Image Syntax::
+* Image Scaling::
+
 Making and Preventing Breaks
 
 * Break Commands::              Summary of break-related commands.
@@ -549,7 +554,7 @@ Formatting and Printing Hardcopy
 * A4 Paper::                    How to print on A4 or A5 paper.
 * pagesizes::                   How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
-                                  of pages and how to print scaled up output.
+                                 of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 
 Creating and Installing Info Files
@@ -572,6 +577,12 @@ Creating an Info File
                                  to run better.
 * Generating HTML::             Generating HTML output with makeinfo.
 
+Generating HTML
+
+* HTML Translation::         Details of the HTML output.
+* HTML Splitting::           How HTML output is split.
+* HTML CSS::                 HTML output and Cascading Style Sheets.
+
 Installing an Info File
 
 * Directory File::              The top level menu for all Info files.
@@ -588,6 +599,10 @@ Sample Texinfo Files
 * GNU Sample Texts::
 * Verbatim Copying License::
 * All-permissive Copying License::
+
+Copying This Manual
+
+* GNU Free Documentation License::  License for copying this manual.
 
 Include Files
 
@@ -14291,6 +14306,13 @@ can probably never be implemented in @TeX{}.  It also makes
 @samp{--no-validate} is used.  @xref{Pointer Validation}, for more
 details.
 
+@item --css-include=@var{file}
+@opindex --css-include
+Include the contents of @var{file}, which should contain cascading
+style sheets specifications, in the @samp{<style>} block of the HTML
+output.  @xref{HTML CSS}.  If @var{file} is @samp{-}, read standard
+input.
+
 @item --docbook
 @opindex --docbook
 Generate DocBook output rather than Info.
@@ -14349,9 +14371,9 @@ Print a usage message listing all available options, then exit successfully.
 @item --html
 @opindex --html
 Generate HTML output rather than Info.  @xref{Generating HTML}.  By
-default, the HTML output is split into one output file per source node,
-and the split output is written into a subdirectory with the name of the
-top-level info file.
+default, the HTML output is split into one output file per Texinfo
+source node, and the split output is written into a subdirectory with
+the name of the top-level info file.
 
 @item -I @var{dir}
 @opindex -I @var{dir}
@@ -14511,7 +14533,7 @@ references but also report a warning.  The default is 1000.
 
 @item --split-size=@var{num}
 @opindex --split-size=@var{num}
-Keep Info files to at most @var{num} characters; default is 50,000.
+Keep Info files to at most @var{num} characters; default is 300,000.
 
 @item -U @var{var}
 Cause @var{var} to be undefined.  This is equivalent to
@@ -14805,9 +14827,9 @@ a @dfn{tag table}, Info can jump to new nodes more quickly than it can
 otherwise.@refill
 
 @cindex Indirect subfiles
-In addition, if the Texinfo file contains more than about 70,000
+In addition, if the Texinfo file contains more than about 300,000
 bytes, @code{texinfo-format-buffer} and @code{makeinfo} split the
-large Info file into shorter @dfn{indirect} subfiles of about 50,000
+large Info file into shorter @dfn{indirect} subfiles of about 300,000
 bytes each.  Big files are split into smaller files so that Emacs does
 not need to make a large buffer to hold the whole of a large Info
 file; instead, Emacs allocates just enough memory for the small, split-off
@@ -14884,12 +14906,58 @@ Info-validate}.@refill
 
 @node Generating HTML
 @subsection Generating HTML
-@cindex HTML
+@cindex HTML, generating
 
 Besides generating output in the Info format, you can use the
-@samp{--html} option to generate output in HTML format, for installation
-on a web site (for example).  By default, the HTML output is split at
-node level.
+@samp{--html} option to @command{makeinfo} to generate output in HTML
+format, for use by web browsers (for example).
+
+@menu
+* HTML Translation::         Details of the HTML output.
+* HTML Splitting::           How HTML output is split.
+* HTML CSS::                 HTML output and Cascading Style Sheets.
+@end menu
+
+@node HTML Translation
+@subsubsection HTML Translation
+
+@command{makeinfo} will include segments of Texinfo source between
+@code{@@ifhtml} and @code{@@end ifhtml} in the HTML output (but not
+any of the other conditionals, by default).  Source between
+@code{@@html} and @code{@@end html} is passed without change to the
+output (i.e., suppressing the normal escaping of input @samp{<},
+@samp{>} and @samp{&} characters which have special significance in
+HTML).  @xref{Conditional Commands}.
+
+@opindex --footnote-style@r{, ignored in HTML output}
+The @option{--footnote-style} option is currently ignored for HTML output;
+footnotes are always linked to the end of the output file.
+
+@cindex Navigation bar, in HTML output
+By default, a navigation bar is inserted at the start of each node,
+analogous to Info output.  The @samp{--no-headers} option suppresses
+this if used with @samp{--no-split}.  Header @code{<link>} elements in
+split output can support info-like navigation with browsers like Lynx
+and @w{Emacs W3} which implement this HTML@tie{}1.0 feature.
+
+@cindex HTML output, browser compatibility of
+The HTML generated is mostly standard (i.e., HTML@tie{}2.0, RFC-1866).
+The exception is that HTML 3.2 tables are generated from the
+@code{@@multitable} command, but tagged to degrade as well as possible
+in browsers without table support.  The HTML@tie{}4 @samp{lang}
+attribute on the @samp{<html>} attribute is also used.  (Please report
+output from an error-free run of @code{makeinfo} which has browser
+portability problems as a bug.)
+
+
+@node HTML Splitting
+@subsubsection HTML Splitting
+
+@cindex Split HTML output
+@cindex HTML output, split
+
+By default, @command{makeinfo} splits HTML output into one output file
+per Texinfo source node.
 
 When splitting, the HTML output files are written into a subdirectory.
 The subdirectory is named according to the name from
@@ -14904,35 +14972,94 @@ is named without an extension, e.g., @samp{texinfo}).  If the
 the directory is always named @samp{index.html}.
 
 Monolithic output (@code{--no-split}) is named according to
-@code{@@setfilename} or @code{--outfile}.  Cross-document node
-references are not supported in monolithic HTML.
+@code{@@setfilename} or @code{--outfile}.
 
-Texinfo input marked up with the @code{@@ifhtml} command will produce
-output only with the @samp{--html} option supplied.  Input marked up
-with the @code{@@html} is passed literally to the output (suppressing
-the normal escaping of input @samp{<}, @samp{>} and @samp{&} characters
-which have special significance in HTML).  Similarly for the
-@option{--xml} option and @code{@@ifxml} and @code{@@xml} sections.
+@samp{@@xref} commands to other documents are generated assuming the
+other document is available in split HTML form, and installed in the
+same HTML documentation tree, at @file{../<info-document>/}.
+Cross-document node references are not supported in monolithic HTML.
 
-The @samp{--footnote-style} option is currently ignored for HTML output;
-footnotes are linked to the end of the output file.
 
-The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
-exception is that HTML 3.2 tables are generated from the
-@code{@@multitable} command, but tagged to degrade as well as possible
-in browsers without table support.  The HTML 4 @samp{lang} attribute on
-the @samp{<html>} attribute is also used.  Please report output from an
-error-free run of @code{makeinfo} which has browser portability problems
-as a bug.
+@node HTML CSS
+@subsubsection HTML CSS
+@cindex HTML, and CSS
+@cindex CSS, and HTML output
+@cindex Cascading Style Sheets, and HTML output
 
-Navigation bars are inserted at the start of nodes, similarly to Info
-output.  The @samp{--no-headers} option will suppress this if used with
-@samp{--no-split}.  Header @code{<link>} elements in split output can
-support info-like navigation with browsers like Lynx and @w{Emacs W3}
-which implement this @w{HTML 1.0} feature.  @samp{@@xref} commands to
-other documents are generated assuming the other document is available
-in split HTML form, and installed in the same HTML documentation tree,
-at @file{../<info-document>/}.
+Cascading Style Sheets (CSS for short) is a network standard for
+influencing the display of HTML documents:
+@uref{http://www.w3.org/Style/CSS/}.
+
+By default, @command{makeinfo} includes a few simple CSS commands to
+better implement the appearance of some of the environments.  Here is
+a couple of them:
+
+@example
+pre.display @{ font-family:inherit @}
+pre.smalldisplay @{ font-family:inherit; font-size:smaller @}
+@end example
+
+A full explanation of CSS is (far) beyond this manual; please see the
+references above.  In brief, however, this specification tells the web
+browser to use a `smaller' font size for @code{@@smalldisplay} text,
+and to use the `inherited' font (generally a regular roman typeface)
+for both @code{@@smalldisplay} and @code{@@display}.  By default, the
+HTML @samp{<pre>} command uses a monospaced font.
+
+You can influence the CSS in the HTML output with the
+@option{--css-include=@var{file}} option to @command{makeinfo}.  This
+includes the contents @var{file} in the HTML output, as you might
+expect.  However, the details are somewhat tricky, to provide maximum
+flexibility.
+
+@cindex Comments, in CSS files
+The CSS file may begin with so-called @samp{@@import} specifications,
+which link to external CSS specifications for browsers to use when
+interpreting the document.  Again, a full description is beyond our
+scope here, but we'll describe how they work syntactically, so we can
+explain how @command{makeinfo} handles them.
+
+There can be more than one @samp{@@import}, but they have to come first
+in the file, with only whitespace and comments interspersed, no normal
+definitions.  (Comments in CSS files are delimited by @samp{/*
+... */}, as in C.)  An @samp{@@import} specification must be in one of
+these two forms:
+
+@example
+@@import url(http://example.org/foo.css);
+@@import "http://example.net/bar.css";
+@end example
+
+As far as @command{makeinfo} is concerned, the crucial character is
+the semicolon terminating the declaration.  When reading the CSS file,
+it considers everything between an @samp{@@} and a @samp{;} to be an
+@samp{@@import}, and processes the file as follows:
+
+@itemize
+@item If @var{file} contains only normal CSS specifications, it is
+included after @command{makeinfo}'s default CSS, thus overriding it.
+
+@item If @var{file} begins with @samp{@@import} specifications (see
+below), then the @samp{import}'s are included first (they have to come
+first, according to the standard), and then @command{makeinfo}'s
+default CSS is included.  If you really want to override
+@command{makeinfo}'s defaults from an @samp{@@import}, you can do so
+with the @samp{! important} CSS construct, as in:
+@example
+pre.smallexample @{ font-size: inherit ! important @}
+@end example
+
+@item If @var{file} contains both @samp{@@import} and inline CSS
+specifications, the @samp{@@import}'s are included first, then
+@command{makeinfo}'s defaults, and lastly the inline CSS from
+@var{file}.
+@end itemize
+
+If the CSS file is malformed or erroneous, @command{makeinfo}'s output
+is unspecified.  @command{makeinfo} does not try to interpret the CSS
+declarations in any way; it just looks for the special @samp{@@} and
+@samp{;} characters and blindly copies the text into the output.  CSS
+comments may or may not be included in the output.
 
 
 @node Installing an Info File
@@ -17054,7 +17181,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
+$Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17117,7 +17244,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.43 2003-05-08 12:22:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.44 2003-05-12 13:12:32 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -18434,7 +18561,7 @@ tag table for the unsplit file.
 You can run @code{Info-validate} only on a single Info file that has a
 tag table.  The command will not work on the indirect subfiles that
 are generated when a master file is split.  If you have a large file
-(longer than 70,000 bytes or so), you need to run the
+(longer than 300,000 bytes or so), you need to run the
 @code{texinfo-format-buffer} or @code{makeinfo-buffer} command in such
 a way that it does not create indirect subfiles.  You will also need
 to create a tag table for the Info file.  After you have done this,

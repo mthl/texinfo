@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.12 2003-05-01 00:05:27 karl Exp $
+   $Id: html.c,v 1.13 2003-05-12 13:12:32 karl Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -26,9 +26,12 @@
 
 HSTACK *htmlstack = NULL;
 
+static char *process_css_file (/* char * */);
+
 /* See html.h.  */
 int html_output_head_p = 0;
 int html_title_written = 0;
+
 
 void
 html_output_head ()
@@ -77,19 +80,39 @@ rel=\"generator-home\">\n");
      that don't support <style>.  */
   add_word ("<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n");
   add_word ("<style type=\"text/css\"><!--\n");
-  /* This seems cleaner than adding <br>'s at the end of each line.
-     It's not exactly the end of the world if the browser doesn't do
-     <style>s, either; they'll just come out in typewriter.  */
-  add_word ("  pre.display { font-family:inherit }\n");
-  add_word ("  pre.format  { font-family:inherit }\n");
 
-  /* Alternatively, we could do <font size=-1> in insertion.c, but this
-     way makes it easier to override.  */
-  add_word ("  pre.smalldisplay { font-family:inherit; font-size:smaller }\n");
-  add_word ("  pre.smallformat  { font-family:inherit; font-size:smaller }\n");
-  add_word ("  pre.smallexample { font-size:smaller }\n");
-  add_word ("  pre.smalllisp    { font-size:smaller }\n");
-  add_word ("--></style>\n");
+  {
+    char *css_inline = NULL;
+
+    if (css_include)
+      /* This writes out any @import commands from the --css-file,
+         and returns any actual css code following the imports.  */
+      css_inline = process_css_file (css_include);
+
+    /* This seems cleaner than adding <br>'s at the end of each line for
+       these "roman" displays.  It's hardly the end of the world if the
+       browser doesn't do <style>s, in any case; they'll just come out in
+       typewriter.  */
+#define CSS_FONT_INHERIT "font-family:inherit"
+    add_word_args ("  pre.display { %s }\n", CSS_FONT_INHERIT);
+    add_word_args ("  pre.format  { %s }\n", CSS_FONT_INHERIT);
+
+    /* Alternatively, we could do <font size=-1> in insertion.c, but this
+       way makes it easier to override.  */
+#define CSS_FONT_SMALLER "font-size:smaller"
+    add_word_args ("  pre.smalldisplay { %s; %s }\n", CSS_FONT_INHERIT,
+                   CSS_FONT_SMALLER);
+    add_word_args ("  pre.smallformat  { %s; %s }\n", CSS_FONT_INHERIT,
+                   CSS_FONT_SMALLER);
+    add_word_args ("  pre.smallexample { %s }\n", CSS_FONT_SMALLER);
+    add_word_args ("  pre.smalllisp    { %s }\n", CSS_FONT_SMALLER);
+
+    /* Write out any css code from the user's --css-file.  */
+    if (css_inline)
+      add_word (css_inline);
+
+    add_word ("--></style>\n");
+  }
 
   add_word ("</head>\n<body>\n");
 
@@ -99,6 +122,157 @@ rel=\"generator-home\">\n");
       html_title_written = 1;
     }
 }
+
+
+
+/* Append CHAR to BUFFER, (re)allocating as necessary.  We don't handle
+   null characters.  */
+
+typedef struct
+{
+  unsigned size;    /* allocated */
+  unsigned length;  /* used */
+  char *buffer;
+} buffer_type;
+
+
+static buffer_type *
+init_buffer ()
+{
+  buffer_type *buf = xmalloc (sizeof (buffer_type));
+  buf->length = 0;
+  buf->size = 0;
+  buf->buffer = NULL;
+}
+
+
+static void
+append_char (buf, c)
+    buffer_type *buf;
+    int c;
+{
+  char str[2] = { c, 0 };
+
+  if (buf->length + 1 >= buf->size)
+    {
+      buf->size += 100;
+      buf->buffer = xrealloc (buf->buffer, buf->size);
+      buf->buffer[buf->length] = 0;  /* in case it was the first alloc */
+    }
+  strcat (buf->buffer, str);
+}
+
+
+/* Read the cascading style-sheet file FILENAME.  Write out any @import
+   commands, which must come first, by the definition of css.  If the
+   file contains any actual css code following the @imports, return it;
+   else return NULL.  */
+
+static char *
+process_css_file (filename)
+    char *filename;
+{
+  int c, lastchar;
+  FILE *f;
+  buffer_type *import_text = init_buffer ();
+  buffer_type *inline_text = init_buffer ();
+  unsigned lineno = 1;
+  enum { null_state, comment_state, import_state, inline_state } state
+    = null_state, prev_state;
+
+  /* read from stdin if `-' is the filename.  */
+  f = STREQ (filename, "-") ? stdin : fopen (filename, "r");
+  if (!f)
+    {
+      error (_("%s: could not open --css-file: %s"), progname, filename);
+      return NULL;
+    }
+
+  /* Read the file.  The @import statements must come at the beginning,
+     with only whitespace and comments allowed before any inline css code.  */
+  while ((c = getc (f)) >= 0)
+    {
+      if (c == '\n')
+        lineno++;
+
+      switch (state)
+        {
+        case null_state: /* between things */
+          if (c == '@')
+            {
+              /* If there's some other @command, just call it an
+                 import, it's all the same to us.  So don't bother
+                 looking for the `import'.  */
+              append_char (import_text, c);
+              state = import_state;
+            }
+          else if (c == '/')
+            { /* possible start of a comment */
+              int nextchar = getc (f);
+              if (nextchar == '*')
+                state = comment_state;
+              else
+                {
+                  ungetc (nextchar, f); /* wasn't a comment */
+                  state = inline_state;
+                }
+            }
+          else if (isspace (c))
+            ; /* skip whitespace; maybe should use c_isspace?  */
+
+          else
+            /* not an @import, not a comment, not whitespace: we must
+               have started the inline text.  */
+            state = inline_state;
+
+          if (state == inline_state)
+            append_char (inline_text, c);
+
+          if (state != null_state)
+            prev_state = null_state;
+          break;
+
+        case comment_state:
+          if (c == '/' && lastchar == '*')
+            state = prev_state;  /* end of comment */
+          break;  /* else ignore this comment char */
+
+        case import_state:
+          append_char (import_text, c);  /* include this import char */
+          if (c == ';')
+            { /* done with @import */
+              append_char (import_text, '\n');  /* make the output nice */
+              state = null_state;
+              prev_state = import_state;
+            }
+          break;
+
+        case inline_state:
+          /* No harm in writing out comments, so don't bother parsing
+             them out, just append everything.  */
+          append_char (inline_text, c);
+          break;
+        }
+
+      lastchar = c;
+    }
+
+  /* Reached the end of the file.  We should not be still in a comment.  */
+  if (state == comment_state)
+    warning (_("%s:%d: --css-file ended in comment"), filename, lineno);
+
+  /* Write the @import text, if any.  */
+  if (import_text->buffer)
+    {
+      add_word (import_text->buffer);
+      free (import_text->buffer);
+      free (import_text);
+    }
+
+  /* We're wasting the buffer struct memory, but so what.  */
+  return inline_text->buffer;
+}
+
 
 
 /* Escape HTML special characters in the string if necessary,
@@ -157,6 +331,8 @@ escape_string (string)
   free (string);
   return newstring - newlen;
 }
+
+
 
 /* Save current tag.  */
 void
@@ -246,6 +422,8 @@ insert_html_tag (start_or_end, tag)
     }
 }
 
+
+
 /* Output an HTML <link> to the filename for NODE, including the
    other string as extra attributes. */
 void
