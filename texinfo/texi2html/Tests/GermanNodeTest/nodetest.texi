@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c
-@c This test file produces error messages using
-@c makeinfo. That's cause makeinfo can not
+@c It is not possible to test for @,{c} in 
+@c nodename cause makeinfo can not
 @c handle cedilla's in node names. A cedilla
 @c has a comma which was recognized a as
 @c delimiter between node parts (next,previous etc.)
@@ -29,6 +29,8 @@ Another Heading
 * @"a::    @"a.
 * @"e::    @"e.
 * @"i::    @"i.
+* with brace @"{i}::    @"{i}.
+* with dotless @"{@dotless{i}}::   @"{@dotless{i}}.
 * @"o::    @"o.
 * @"u::    @"u.
 * @"y::    @"y.
@@ -38,22 +40,41 @@ Another Heading
 * @"O::    @"O.
 * @"U::    @"U.
 * @ss{}::    @ss{}.
+* no section::  Node without sectioning command.
 @end menu
 @c
 @node @"a,,,Umlaut
 @section @"a
+ref to @,{c} @ref{@,{c}}.
 @node @"e,,,Umlaut
 @section @"e
 @node @"i,,,Umlaut 
 @section @"i
+@node with brace @"{i},,,Umlaut
+@section With brace @"{i}
+@node with dotless @"{@dotless{i}},,,Umlaut
+@section With dotless @"{@dotless{i}}
+@iftex
+ref to setref @ref{ref}.
+@end iftex
 @node @"o,,,Umlaut
 @section @"o
+Ref to an anchor at the end of the doc 
+(@pxref{@'o-o, , there is an o-@'o could there be an @^{@dotless{i}}}).
 @node @"u,,,Umlaut
 @section @"u
+Another ref to an anchor (@pxref{x-spot, ,}).
 @node @"y,,,Umlaut
 @section @"y
+This is a ref to a node (@pxref{@'U, ,@'U}).
+
 @node @"A,,,Umlaut
 @section @"A
+
+Now a ref to a node without sectionning command, 
+no text (@pxref{no section, , }).
+With text (@pxref{no section, ,but a text }).
+
 @node @"E,,,Umlaut
 @section @"E
 @node @"I,,,Umlaut
@@ -64,6 +85,8 @@ Another Heading
 @section @"U
 @node @ss{},,,Umlaut
 @section @ss{}
+@node no section,,,Umlaut
+This is a node without sectioning command.
 @c
 @node acute accent,,Top,Top
 @chapter acute accent
@@ -84,6 +107,7 @@ Another Heading
 @c
 @node @'a,,,acute accent
 @section @'a
+With brace @'{a}. Testing ' " ` ^.
 @node @'e,,,acute accent
 @section @'e
 @node @'i,,,acute accent
@@ -106,6 +130,13 @@ Another Heading
 @section @'U
 @node @'Y,,,acute accent
 @section @'Y
+This is a ref to @"u (@pxref{@"u, ,@"u}).
+Another one, with node only (@pxref{@"a, ,}).
+
+@ignore
+An ignored sentence.
+@end ignore 
+
 @c
 @node grave accent,,Top,Top
 @chapter grave accent
@@ -113,6 +144,8 @@ Another Heading
 * @`a::    @`a.
 * @`e::    @`e.
 * @`i::    @`i.
+* with brace @`{i}::    @`{i}.
+* with dotless @`{@dotless{i}}::   @`{@dotless{i}}.
 * @`o::    @`o.
 * @`u::    @`u.
 * @`A::    @`A.
@@ -128,6 +161,10 @@ Another Heading
 @section @`e
 @node @`i,,,grave accent
 @section @`i
+@node with brace @`{i},,,grave accent
+@section @`{i}
+@node with dotless @`{@dotless{i}},,,grave accent
+@section @`{@dotless{i}}
 @node @`o,,,grave accent
 @section @`o
 @node @`u,,,grave accent
@@ -149,6 +186,8 @@ Another Heading
 * @^a::    @^a.
 * @^e::    @^e.
 * @^i::    @^i.
+* with brace @^{i}::    @^{i}.
+* with dotless @^{@dotless{i}}::   @^{@dotless{i}}.
 * @^o::    @^o.
 * @^u::    @^u.
 * @^A::    @^A.
@@ -164,6 +203,12 @@ Another Heading
 @section @^e
 @node @^i,,,circumflex accent
 @section @^i
+@node with brace @^{i},,,circumflex accent
+@section @^{i}
+Test @@^@{i@}.
+@node with dotless @^{@dotless{i}},,,circumflex accent
+@section @^{@dotless{i}}
+Test @@^@{@@dotless@{i@}@}.
 @node @^o,,,circumflex accent
 @section @^o
 @node @^u,,,circumflex accent
@@ -199,17 +244,19 @@ Another Heading
 @section @~A
 @node @~O,,,tilde accent
 @section @~O
+This marks the @anchor{x-spot}spot.
+A second one with accented char @anchor{@'o-o}.
 @c
 @node cedilla accent,,Top,Top
 @chapter cedilla accent
 @menu
-* Fran@,{c}oise::    @,{c}.
-* Fran@,{C}oise::    @,{C}.
+* @,{c}::    @,{c}.
+* @,{C}::    @,{C}.
 @end menu
 @c
-@node Fran@,{c}oise,,,cedilla accent
+@node @,{c},,,cedilla accent
 @section @,{c}
-@node Fran@,{C}oise,,,cedilla accent
+@node @,{C},,,cedilla accent
 @section @,{C}
 @c
 @node rest,,Top,Top
