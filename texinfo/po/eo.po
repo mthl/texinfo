@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.3c\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2003-05-29 15:37-0700\n"
+"POT-Creation-Date: 2003-06-10 13:52-0700\n"
 "PO-Revision-Date: 2003-01-25 11:47+06:00\n"
 "Last-Translator: Sergio Pokrovskij <pok@iis.nsk.su>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -226,7 +226,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion \"--help\".\n"
 
-#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
+#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:707
 #: util/install-info.c:1225 util/texindex.c:343
 #, c-format
 msgid ""
@@ -324,7 +324,7 @@ msgstr ""
 " info --show-options emacs  komencu per la Emaksaj komandliniaj opcioj\n"
 " info -f ./um.info          eligu la dosieron ./um.info sen atenti \"dir\"\n"
 
-#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:485
+#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:483
 #: util/install-info.c:401 util/texindex.c:291
 msgid ""
 "\n"
@@ -1815,11 +1815,11 @@ msgstr "@sp bezonas ne \"%s\" sed pozitivan argumenton nombran"
 msgid "Bad argument to %c%s"
 msgstr "Misa argumento por %c%s"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4293
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4291
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4295
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4293
 msgid "none"
 msgstr "none"
 
@@ -1905,21 +1905,21 @@ msgstr "Piednotoj"
 msgid "Untitled"
 msgstr "Sen titolo"
 
-#: makeinfo/html.c:188
+#: makeinfo/html.c:192
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:263
+#: makeinfo/html.c:267
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:358
+#: makeinfo/html.c:362
 msgid "[unexpected] no html tag to pop"
 msgstr "[neatendite] mankas HTML-etikedo por elstakigo"
 
-#: makeinfo/html.c:566
+#: makeinfo/html.c:570
 #, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[neatendite] misa nodnomo: \"%s\""
@@ -2087,56 +2087,56 @@ msgstr "makroo \"%s\" jam difinita antauxe"
 msgid "here is the previous definition of `%s'"
 msgstr "cxi tie estas la antauxa difino de \"%s\""
 
-#: makeinfo/macro.c:355
-#, c-format
-msgid "\\ in macro expansion followed by `%s' instead of \\ or parameter name"
+#: makeinfo/macro.c:364
+#, fuzzy, c-format
+msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgstr ""
 "en makroo, \\ sekvata de \"%s\" (anstataux de \\ aux nomo de parametro)"
 
-#: makeinfo/macro.c:403
+#: makeinfo/macro.c:411
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "Makroo \"%s\" en la linio %d havas troan argumenton"
 
-#: makeinfo/macro.c:594
+#: makeinfo/macro.c:602
 #, c-format
 msgid "%cend macro not found"
 msgstr "makroo %cend ne trovigxis"
 
-#: makeinfo/macro.c:632
+#: makeinfo/macro.c:640
 msgid "@quote-arg only useful for single-argument macros"
 msgstr "@quote-arg utilas nur en sol-argumentaj makrooj"
 
-#: makeinfo/macro.c:668
+#: makeinfo/macro.c:676
 #, c-format
 msgid "mismatched @end %s with @%s"
 msgstr "misa @end %s por @%s"
 
-#: makeinfo/makeinfo.c:319
+#: makeinfo/makeinfo.c:317
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s:%d: averto: "
 
-#: makeinfo/makeinfo.c:342
+#: makeinfo/makeinfo.c:340
 msgid "Too many errors!  Gave up.\n"
 msgstr "Tro multe da eraroj!  Halt'.\n"
 
-#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2095
+#: makeinfo/makeinfo.c:351 makeinfo/makeinfo.c:2093
 #, c-format
 msgid "Misplaced %c"
 msgstr "Misloka %c"
 
-#: makeinfo/makeinfo.c:373
+#: makeinfo/makeinfo.c:371
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Por pluaj detaloj tajpu \"%s --help\".\n"
 
-#: makeinfo/makeinfo.c:376
+#: makeinfo/makeinfo.c:374
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Uzmaniero: %s [OPCIO]... TEXINFO-DOSIERO...\n"
 
-#: makeinfo/makeinfo.c:379
+#: makeinfo/makeinfo.c:377
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2146,7 +2146,7 @@ msgstr ""
 "Info-dosierojn tauxgajn por dialoga legado per Emakso aux per auxtonoma GNU-"
 "Info.\n"
 
-#: makeinfo/makeinfo.c:383
+#: makeinfo/makeinfo.c:381
 #, c-format
 msgid ""
 "General options:\n"
@@ -2173,7 +2173,7 @@ msgstr ""
 "      --version               Eligu la nomon, la version de la programo kaj "
 "eliru.\n"
 
-#: makeinfo/makeinfo.c:397
+#: makeinfo/makeinfo.c:395
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2186,7 +2186,7 @@ msgstr ""
 "      --html                Generu en HTML anstataux en Info.\n"
 "      --xml                 Generu en XML (TexinfoML) anstataux en Info.\n"
 
-#: makeinfo/makeinfo.c:404
+#: makeinfo/makeinfo.c:402
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
@@ -2216,7 +2216,7 @@ msgstr ""
 "  -o, --output=DOSIER        Skribu en DOSIERon (DOSIERujon, por fenda "
 "HTML).\n"
 
-#: makeinfo/makeinfo.c:418
+#: makeinfo/makeinfo.c:416
 #, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2252,14 +2252,14 @@ msgstr ""
 "ensxovon.\n"
 "      --split-size=N          Fendu en dosierojn po  N  (defauxlte %d).\n"
 
-#: makeinfo/makeinfo.c:435
+#: makeinfo/makeinfo.c:433
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE        include FILE in HTML <style> output;\n"
 "                                  read stdin if FILE is -.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:441
+#: makeinfo/makeinfo.c:439
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2279,7 +2279,7 @@ msgstr ""
 "  -U VAR                      Maldifinu la variablon  VAR,  kiel per "
 "@clear.\n"
 
-#: makeinfo/makeinfo.c:450
+#: makeinfo/makeinfo.c:448
 msgid ""
 "Conditional processing in input:\n"
 "  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
@@ -2308,7 +2308,7 @@ msgstr ""
 "  --no-iftex       Ne traktu la pecojn sub @iftex kaj @tex\n"
 "  --no-ifxml       Ne traktu la pecojn sub @ifxml kaj @xml\n"
 
-#: makeinfo/makeinfo.c:464
+#: makeinfo/makeinfo.c:462
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -2323,7 +2323,7 @@ msgstr ""
 "se plata teksto estas generata, --ifplaintext  sxaltigxas kaj la ceteraj,\n"
 "malsxaltigxas.\n"
 
-#: makeinfo/makeinfo.c:472
+#: makeinfo/makeinfo.c:470
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                     write Info to foo's @setfilename\n"
@@ -2352,76 +2352,76 @@ msgstr ""
 " makeinfo --no-split UM.texi          faru unu Info-dosieron, kiom ajn "
 "grandan\n"
 
-#: makeinfo/makeinfo.c:590 makeinfo/makeinfo.c:613 makeinfo/makeinfo.c:675
-#: makeinfo/makeinfo.c:696
+#: makeinfo/makeinfo.c:588 makeinfo/makeinfo.c:611 makeinfo/makeinfo.c:673
+#: makeinfo/makeinfo.c:694
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s: la argumento %s devas esti nombra, ne \"%s\".\n"
 
-#: makeinfo/makeinfo.c:603
+#: makeinfo/makeinfo.c:601
 #, c-format
 msgid "Couldn't open macro expansion output `%s'"
 msgstr "Fiaskis malfermo de makrotraktada eligdosiero \"%s\""
 
-#: makeinfo/makeinfo.c:606
+#: makeinfo/makeinfo.c:604
 msgid "Cannot specify more than one macro expansion output"
 msgstr "Ne povas esti pli ol unu makrotraktada eligdosiero"
 
-#: makeinfo/makeinfo.c:644
+#: makeinfo/makeinfo.c:642
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argumento de la opcio --paragraph-indent estu nombra, \"none\" aux\n"
 "\"asis\", ne \"%s\".\n"
 
-#: makeinfo/makeinfo.c:685
+#: makeinfo/makeinfo.c:683
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argumento de la opcio --footnote-style estu \"separate\" aux\n"
 "\"end\", ne \"%s\".\n"
 
-#: makeinfo/makeinfo.c:744
+#: makeinfo/makeinfo.c:742
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: mankas dosiera argumento.\n"
 
-#: makeinfo/makeinfo.c:933
+#: makeinfo/makeinfo.c:931
 #, c-format
 msgid "Expected `%s'"
 msgstr "\"%s\" atendatas"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1396
 msgid "File exists, but is not a directory"
 msgstr "La dosiero ekzistas, sed gxi ne estas dosierujo"
 
-#: makeinfo/makeinfo.c:1399
+#: makeinfo/makeinfo.c:1397
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "Provo krei dosierujon \"%s\" malsukcesis: %s"
 
-#: makeinfo/makeinfo.c:1447
+#: makeinfo/makeinfo.c:1445
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "Neniu \"%s\" trovita en \"%s\""
 
-#: makeinfo/makeinfo.c:1529
+#: makeinfo/makeinfo.c:1527
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 "%s: Makrotraktitajxo ne trafos en la cxefeligujon cxar Info iras tien.\n"
 
-#: makeinfo/makeinfo.c:1559
+#: makeinfo/makeinfo.c:1557
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "%s-dosiero \"%s\" estas generata el \"%s\".\n"
 
-#: makeinfo/makeinfo.c:1594
+#: makeinfo/makeinfo.c:1592
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "Cxi tiun dosieron %s generis Makeinfo-%s el %s.\n"
 
-#: makeinfo/makeinfo.c:1616
+#: makeinfo/makeinfo.c:1614
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
@@ -2429,102 +2429,102 @@ msgstr ""
 "%s: La eligdosiero \"%s\" por makrotraktitajxo forigitas cxar estis eraroj;\n"
 "uzu la opcion --force por gxin reteni.\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1669
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: La eligdosiero \"%s\" forigitas cxar estis eraroj;\n"
 "uzu la opcion --force por gxin reteni.\n"
 
-#: makeinfo/makeinfo.c:1922
+#: makeinfo/makeinfo.c:1920
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "Nekonata komando \"%s\"."
 
-#: makeinfo/makeinfo.c:1944
+#: makeinfo/makeinfo.c:1942
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Uzu vinkulojn por pasigi al \"@%s\" komandan argumenton"
 
-#: makeinfo/makeinfo.c:2137
+#: makeinfo/makeinfo.c:2135
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s postulas vinkulojn \"{...}\""
 
-#: makeinfo/makeinfo.c:2167
+#: makeinfo/makeinfo.c:2165
 msgid "Unmatched }"
 msgstr "Senpara \"}\""
 
-#: makeinfo/makeinfo.c:2217
+#: makeinfo/makeinfo.c:2215
 msgid "NO_NAME!"
 msgstr "SEN_NOMO!"
 
-#: makeinfo/makeinfo.c:2238
+#: makeinfo/makeinfo.c:2236
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s sen \"}\""
 
-#: makeinfo/makeinfo.c:3056
+#: makeinfo/makeinfo.c:3054
 msgid "First argument to cross-reference may not be empty"
 msgstr "La unua argumento de internoda referenco ne vaku"
 
-#: makeinfo/makeinfo.c:3116 makeinfo/makeinfo.c:3334 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3114 makeinfo/makeinfo.c:3332 makeinfo/xml.c:1423
 msgid "see "
 msgstr "vidu "
 
-#: makeinfo/makeinfo.c:3116
+#: makeinfo/makeinfo.c:3114
 msgid "See "
 msgstr "Vidu "
 
-#: makeinfo/makeinfo.c:3262
+#: makeinfo/makeinfo.c:3260
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "Referencon devas sekvi punkto aux komo, ne %c"
 
-#: makeinfo/makeinfo.c:3310
+#: makeinfo/makeinfo.c:3308
 msgid "First argument to @inforef may not be empty"
 msgstr "La unua argumento de @inforef ne vaku"
 
-#: makeinfo/makeinfo.c:3542
+#: makeinfo/makeinfo.c:3540
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "por HTML, la dosiero \"%s\" en la komando @image estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3548
+#: makeinfo/makeinfo.c:3546
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "Neniu \"%s\" trovita en \"%s\""
 
-#: makeinfo/makeinfo.c:3634
+#: makeinfo/makeinfo.c:3632
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "bilddosiero \"%s\" (por teksto) estas nelegebla: %s"
 
-#: makeinfo/makeinfo.c:3643
+#: makeinfo/makeinfo.c:3641
 msgid "@image missing filename argument"
 msgstr "mankas dosiera argumento en la komando @image"
 
-#: makeinfo/makeinfo.c:3841
+#: makeinfo/makeinfo.c:3839
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3842
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{Mankas Valoro Por \"%s\"}"
 
-#: makeinfo/makeinfo.c:3897
+#: makeinfo/makeinfo.c:3895
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s bezonas nomon"
 
-#: makeinfo/makeinfo.c:4003
+#: makeinfo/makeinfo.c:4001
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "Pli frue ol la para @end %s renkontigxis dosierfino"
 
-#: makeinfo/makeinfo.c:4234
+#: makeinfo/makeinfo.c:4232
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "\"%.40s...\" tro longas por malvolvo; malvolvo ne okazos"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2003-05-29 15:37-0700\n"
+"POT-Creation-Date: 2003-06-10 13:52-0700\n"
 "PO-Revision-Date: 2002-05-06 16:10+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: Chinese (simplified) <i18n-translation@lists.linux.net.cn>\n"
@@ -227,7 +227,7 @@ msgstr ""
 msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
-#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:709
+#: info/info.c:284 info/infokey.c:138 makeinfo/makeinfo.c:707
 #: util/install-info.c:1225 util/texindex.c:343
 #, c-format
 msgid ""
@@ -319,7 +319,7 @@ msgstr ""
 "  info --show-options emacs  从 emacs 的命令行选项节点开始\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是搜索目录\n"
 
-#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:485
+#: info/info.c:605 info/infokey.c:902 makeinfo/makeinfo.c:483
 #: util/install-info.c:401 util/texindex.c:291
 msgid ""
 "\n"
@@ -1780,11 +1780,11 @@ msgstr "@sp 需要正数参数，而不是“%s”"
 msgid "Bad argument to %c%s"
 msgstr "%c%s 的错误参数"
 
-#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4293
+#: makeinfo/cmds.c:1426 makeinfo/makeinfo.c:4291
 msgid "asis"
 msgstr "asis"
 
-#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4295
+#: makeinfo/cmds.c:1428 makeinfo/cmds.c:1456 makeinfo/makeinfo.c:4293
 msgid "none"
 msgstr "none"
 
@@ -1870,21 +1870,21 @@ msgstr "脚注"
 msgid "Untitled"
 msgstr "无标题"
 
-#: makeinfo/html.c:188
+#: makeinfo/html.c:192
 #, c-format
 msgid "%s: could not open --css-file: %s"
 msgstr ""
 
-#: makeinfo/html.c:263
+#: makeinfo/html.c:267
 #, c-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: makeinfo/html.c:358
+#: makeinfo/html.c:362
 msgid "[unexpected] no html tag to pop"
 msgstr ""
 
-#: makeinfo/html.c:566
+#: makeinfo/html.c:570
 #, fuzzy, c-format
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "无效的脚注名：“%s”"
@@ -2052,55 +2052,55 @@ msgstr "宏“%s”已在前面定义"
 msgid "here is the previous definition of `%s'"
 msgstr "这里是“%s”前面的定义"
 
-#: makeinfo/macro.c:355
+#: makeinfo/macro.c:364
 #, c-format
-msgid "\\ in macro expansion followed by `%s' instead of \\ or parameter name"
+msgid "\\ in macro expansion followed by `%s' instead of parameter name"
 msgstr ""
 
-#: makeinfo/macro.c:403
+#: makeinfo/macro.c:411
 #, c-format
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "在第 %2$d 行中以过多的参数调用宏“%1$s”"
 
-#: makeinfo/macro.c:594
+#: makeinfo/macro.c:602
 #, c-format
 msgid "%cend macro not found"
 msgstr "找不到宏 %cend"
 
-#: makeinfo/macro.c:632
+#: makeinfo/macro.c:640
 msgid "@quote-arg only useful for single-argument macros"
 msgstr "@quote-arg 只对单参数宏有用"
 
-#: makeinfo/macro.c:668
+#: makeinfo/macro.c:676
 #, c-format
 msgid "mismatched @end %s with @%s"
 msgstr "@end %s 和 @%s 不匹配"
 
-#: makeinfo/makeinfo.c:319
+#: makeinfo/makeinfo.c:317
 #, c-format
 msgid "%s:%d: warning: "
 msgstr "%s：%d：警告："
 
-#: makeinfo/makeinfo.c:342
+#: makeinfo/makeinfo.c:340
 msgid "Too many errors!  Gave up.\n"
 msgstr "过多的错误！放弃。\n"
 
-#: makeinfo/makeinfo.c:353 makeinfo/makeinfo.c:2095
+#: makeinfo/makeinfo.c:351 makeinfo/makeinfo.c:2093
 #, c-format
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
 
-#: makeinfo/makeinfo.c:373
+#: makeinfo/makeinfo.c:371
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "试用“%s --help”以获取更多信息。\n"
 
-#: makeinfo/makeinfo.c:376
+#: makeinfo/makeinfo.c:374
 #, c-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法：%s [选项]... TEXINFO-文件...\n"
 
-#: makeinfo/makeinfo.c:379
+#: makeinfo/makeinfo.c:377
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2108,7 +2108,7 @@ msgstr ""
 "将 Texinfo 源文件转换为其它各种格式，默认转换为适于\n"
 "由 Emacs 或独立 GNU Info 在线浏览的 Info 文件。\n"
 
-#: makeinfo/makeinfo.c:383
+#: makeinfo/makeinfo.c:381
 #, c-format
 msgid ""
 "General options:\n"
@@ -2132,7 +2132,7 @@ msgstr ""
 "  -v, --verbose               解释都做了些什么。\n"
 "      --version               显示版本信息并退出。\n"
 
-#: makeinfo/makeinfo.c:397
+#: makeinfo/makeinfo.c:395
 #, fuzzy, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2145,7 +2145,7 @@ msgstr ""
 "      --html                输出 HTML 而不是 Info。\n"
 "      --xml                 输出 XML (TexinfoML) 而不是 Info。\n"
 
-#: makeinfo/makeinfo.c:404
+#: makeinfo/makeinfo.c:402
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
@@ -2172,7 +2172,7 @@ msgstr ""
 "      --number-sections     输出章节编号。\n"
 "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目录)，\n"
 
-#: makeinfo/makeinfo.c:418
+#: makeinfo/makeinfo.c:416
 #, c-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2202,14 +2202,14 @@ msgstr ""
 "                                “asis”，保留现有的对齐。\n"
 "      --split-size=NUM        在大小 NUM 的时候拆分 Info 文件 (默认为 %d)。\n"
 
-#: makeinfo/makeinfo.c:435
+#: makeinfo/makeinfo.c:433
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE        include FILE in HTML <style> output;\n"
 "                                  read stdin if FILE is -.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:441
+#: makeinfo/makeinfo.c:439
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2226,7 +2226,7 @@ msgstr ""
 "  -P DIR                         将 DIR 追加到 @include 搜索路径之前。\n"
 "  -U VAR                         取消变量 VAR 的定义，就象 @clear。\n"
 
-#: makeinfo/makeinfo.c:450
+#: makeinfo/makeinfo.c:448
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2251,7 +2251,7 @@ msgstr ""
 "  --no-ifplaintext  不要处理 @ifplaintext 文本。\n"
 "  --no-iftex        不要处理 @iftex 和 @tex 文本。\n"
 
-#: makeinfo/makeinfo.c:464
+#: makeinfo/makeinfo.c:462
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -2265,7 +2265,7 @@ msgstr ""
 "  如果生成 Info，则 --ifinfo 默认开启而其它的默认关闭；\n"
 "  如果生成普通文本，则 --ifplaintext 默认开启而其它默认关闭；\n"
 
-#: makeinfo/makeinfo.c:472
+#: makeinfo/makeinfo.c:470
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2291,172 +2291,172 @@ msgstr ""
 "  makeinfo --number-sections foo.texi   输出带有编号的节的 Info\n"
 "  makeinfo --no-split foo.texi          输出单个 Info 文件而不论大小\n"
 
-#: makeinfo/makeinfo.c:590 makeinfo/makeinfo.c:613 makeinfo/makeinfo.c:675
-#: makeinfo/makeinfo.c:696
+#: makeinfo/makeinfo.c:588 makeinfo/makeinfo.c:611 makeinfo/makeinfo.c:673
+#: makeinfo/makeinfo.c:694
 #, c-format
 msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgstr "%s：%s 参数必须为数值，而不是“%s”。\n"
 
-#: makeinfo/makeinfo.c:603
+#: makeinfo/makeinfo.c:601
 #, c-format
 msgid "Couldn't open macro expansion output `%s'"
 msgstr "无法打开宏扩展输出“%s”"
 
-#: makeinfo/makeinfo.c:606
+#: makeinfo/makeinfo.c:604
 msgid "Cannot specify more than one macro expansion output"
 msgstr "无法指定多个宏扩展输出"
 
-#: makeinfo/makeinfo.c:644
+#: makeinfo/makeinfo.c:642
 #, c-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: makeinfo/makeinfo.c:685
+#: makeinfo/makeinfo.c:683
 #, c-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: makeinfo/makeinfo.c:744
+#: makeinfo/makeinfo.c:742
 #, c-format
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: makeinfo/makeinfo.c:933
+#: makeinfo/makeinfo.c:931
 #, c-format
 msgid "Expected `%s'"
 msgstr "应为“%s”"
 
-#: makeinfo/makeinfo.c:1398
+#: makeinfo/makeinfo.c:1396
 msgid "File exists, but is not a directory"
 msgstr "文件存在，但不是目录"
 
-#: makeinfo/makeinfo.c:1399
+#: makeinfo/makeinfo.c:1397
 #, c-format
 msgid "Can't create directory `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: makeinfo/makeinfo.c:1447
+#: makeinfo/makeinfo.c:1445
 #, c-format
 msgid "No `%s' found in `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:1529
+#: makeinfo/makeinfo.c:1527
 #, c-format
 msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
 msgstr ""
 
-#: makeinfo/makeinfo.c:1559
+#: makeinfo/makeinfo.c:1557
 #, c-format
 msgid "Making %s file `%s' from `%s'.\n"
 msgstr "从“%3$s”创建 %1$s 文件“%2$s”。\n"
 
-#: makeinfo/makeinfo.c:1594
+#: makeinfo/makeinfo.c:1592
 #, c-format
 msgid "This is %s, produced by makeinfo version %s from %s.\n"
 msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
 
-#: makeinfo/makeinfo.c:1616
+#: makeinfo/makeinfo.c:1614
 #, c-format
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1671
+#: makeinfo/makeinfo.c:1669
 #, c-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: makeinfo/makeinfo.c:1922
+#: makeinfo/makeinfo.c:1920
 #, c-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: makeinfo/makeinfo.c:1944
+#: makeinfo/makeinfo.c:1942
 #, c-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: makeinfo/makeinfo.c:2137
+#: makeinfo/makeinfo.c:2135
 #, fuzzy, c-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要“{...}”"
 
-#: makeinfo/makeinfo.c:2167
+#: makeinfo/makeinfo.c:2165
 msgid "Unmatched }"
 msgstr "不匹配的 }"
 
-#: makeinfo/makeinfo.c:2217
+#: makeinfo/makeinfo.c:2215
 msgid "NO_NAME!"
 msgstr "无名字！"
 
-#: makeinfo/makeinfo.c:2238
+#: makeinfo/makeinfo.c:2236
 #, c-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: makeinfo/makeinfo.c:3056
+#: makeinfo/makeinfo.c:3054
 msgid "First argument to cross-reference may not be empty"
 msgstr "交叉引用的第一个参数不能为空"
 
-#: makeinfo/makeinfo.c:3116 makeinfo/makeinfo.c:3334 makeinfo/xml.c:1423
+#: makeinfo/makeinfo.c:3114 makeinfo/makeinfo.c:3332 makeinfo/xml.c:1423
 msgid "see "
 msgstr "参阅 "
 
-#: makeinfo/makeinfo.c:3116
+#: makeinfo/makeinfo.c:3114
 msgid "See "
 msgstr "参阅 "
 
-#: makeinfo/makeinfo.c:3262
+#: makeinfo/makeinfo.c:3260
 #, c-format
 msgid "`.' or `,' must follow cross reference, not %c"
 msgstr "“.”或“,”之后必须为交叉引用，而不是 %c"
 
-#: makeinfo/makeinfo.c:3310
+#: makeinfo/makeinfo.c:3308
 msgid "First argument to @inforef may not be empty"
 msgstr "@inforef 的第一个参数不能为空"
 
-#: makeinfo/makeinfo.c:3542
+#: makeinfo/makeinfo.c:3540
 #, c-format
 msgid "@image file `%s' (for HTML) not readable: %s"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: makeinfo/makeinfo.c:3548
+#: makeinfo/makeinfo.c:3546
 #, fuzzy, c-format
 msgid "No such file `%s'"
 msgstr "在“%2$s”中找不到“%1$s”"
 
-#: makeinfo/makeinfo.c:3634
+#: makeinfo/makeinfo.c:3632
 #, c-format
 msgid "@image file `%s' (for text) unreadable: %s"
 msgstr "@image 文件“%s”(对文本)不可读：%s"
 
-#: makeinfo/makeinfo.c:3643
+#: makeinfo/makeinfo.c:3641
 msgid "@image missing filename argument"
 msgstr "@image 遗漏文件名参数"
 
-#: makeinfo/makeinfo.c:3841
+#: makeinfo/makeinfo.c:3839
 #, c-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: makeinfo/makeinfo.c:3842
+#: makeinfo/makeinfo.c:3840
 #, c-format
 msgid "{No value for `%s'}"
 msgstr "{没有“%s”的值}"
 
-#: makeinfo/makeinfo.c:3897
+#: makeinfo/makeinfo.c:3895
 #, c-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: makeinfo/makeinfo.c:4003
+#: makeinfo/makeinfo.c:4001
 #, c-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: makeinfo/makeinfo.c:4234
+#: makeinfo/makeinfo.c:4232
 #, c-format
 msgid "`%.40s...' is too long for expansion; not expanded"
 msgstr "“%.40s...”扩展起来太长；未扩展"
