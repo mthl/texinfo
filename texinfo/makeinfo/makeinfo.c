@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.52 2003-11-21 15:25:27 dirt Exp $
+   $Id: makeinfo.c,v 1.53 2003-11-21 16:03:24 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -933,18 +933,20 @@ discard_until (string)
 
   if (temp < 0)
     {
-      input_text_offset = input_text_length - strlen (string);
-
       if (strcmp (string, "\n") != 0)
         { /* Give a more descriptive feedback, if we are looking for ``@end ''
              during macro execution.  That means someone used a multiline
              command as an argument to, say, @section ... style commands.  */
-          char *end_block = xmalloc (7);
+          char *end_block = xmalloc (8);
           sprintf (end_block, "\n%cend ", COMMAND_PREFIX);
           if (executing_string && strstr (string, end_block))
-            line_error (_("No multiline commands allowed here"));
+            line_error (_("Multiline command %c%s used improperly"), 
+                COMMAND_PREFIX, command);
           else
-            line_error (_("Expected `%s'"), string);
+            {
+              line_error (_("Expected `%s'"), string);
+              input_text_offset = input_text_length - strlen (string);
+            }
           free (end_block);
           return;
         }
@@ -4286,7 +4288,9 @@ execute_string (format, va_alist)
      command is used inside braces or @section ... kind of commands.  */
   if (insertion_level_at_start != insertion_level)
     {
-      line_error (_("No multiline commands allowed here"));
+      line_error (_("Multiline command %c%s used improperly"),
+          COMMAND_PREFIX,
+          command);
       /* We also need to keep insertion_level intact to make sure warnings are
          issued for @end ... command.  */
       while (insertion_level > insertion_level_at_start)

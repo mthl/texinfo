@@ -1,5 +1,12 @@
 2003-11-21  Alper Ersoy  <dirt@gtk.org>
 
+	* makeinfo/makeinfo.c (discard_until, execute_string): reworded
+	multiline related error messages.
+	(discard_until): rollback input_text_offset only if not dealing with a
+	multiline error, otherwise the same block gets in the way repeatedly.
+
+2003-11-21  Alper Ersoy  <dirt@gtk.org>
+
 	* makeinfo/xml.h:
 	* makeinfo/xml.c (xml_get_assoc_for_id, xml_associate_title_with_id):
 	new functions.
