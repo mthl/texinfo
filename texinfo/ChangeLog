@@ -1,3 +1,9 @@
+2003-08-23  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: Run tex --help in $tmpdir, to avoid leaving
+	texput.log for old TeX versions.  Report from Patrick Welche
+	<prlw1@newn.cam.ac.uk>, patch from Akim.
+
 2003-08-20  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/defun.c (cm_defun): skip @ifset/@ifclear insertions
