@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
+@c $Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7708,10 +7708,9 @@ An @code{@@example} environment has the following characteristics:
 the source text is not filled as it normally is.
 @item Extra spaces and blank lines are significant.
 @item The output is indented.
-@item The output uses a fixed-width font (for formats where this is
-possible and meaningful).
-@item Texinfo commands @emph{are} expanded; if you want the input to
-be the output verbatim, use the @code{@@verbatim} environment instead
+@item The output uses a fixed-width font.
+@item Texinfo commands @emph{are} expanded; if you want the output to
+be the input verbatim, use the @code{@@verbatim} environment instead
 (@pxref{verbatim,,@code{@@verbatim}}).
 @end itemize
 
@@ -7756,6 +7755,9 @@ paragraph (@pxref{noindent,,@code{@@noindent}}.
 If you want to embed code fragments within sentences, instead of
 displaying them, use the @code{@@code} command or its relatives
 (@pxref{code,,@code{@@code}}).
+
+If you wish to write a ``comment'' on a line of an example in the
+normal roman font, you can use the @code{@@r} command (@pxref{Fonts}).
 
 
 @node verbatim
@@ -17286,7 +17288,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
+$Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17349,7 +17351,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.87 2003-11-10 14:50:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.88 2003-11-15 01:12:50 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
