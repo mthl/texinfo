@@ -1,3 +1,55 @@
+2002-10-01    <karl@gnu.org>
+
+	* doc/texinfo.tex (\xml,\ifxml): more \doignore's.
+	(\copying,\insertcopying): new implementation to save the uninterpreted
+	tokens instead of typesetting a box, so that the page size, fonts,
+	etc., don't have to be defined before @copying is run.
+	
+	These changes from Werner Lemberg <wl@gnu.org>:
+	(\internalpagesizes): take two new arguments for the physical paper
+	height and width.
+	(\smallbook,\afourpaper,\afivepaper,\letterpaper,\afourwide,
+ 	 \pagesizes): pass them.
+
+2002-09-30    <karl@gnu.org>
+
+	* util/texi2dvi: doc fixes.
+
+	* README: mention autoreconf.
+
+2002-09-29    <karl@gnu.org>
+
+	* doc/texinfo.tex (\pdfmakeoutlines): call \turnoffactive to handle all special characters
+	except \{}.
+	(\normalturnoffactive): call \turnoffactive instead of repeating all the
+	redefinitions.
+
+	* doc/texinfo.tex (\afourpaper, \afourlatex, \afourwide): new
+		formatting values.
+	From: Eric.Belpaire@equant.com, 30 Aug 2002 19:03:30 +0200.
+
+	* aclocal.m4: $Id now omitted.
+
+	* doc/texinfo.txi: document @xml and @ifxml.
+
+	* makeinfo/makeinfo.c (usage): mention the new options.
+	* info/Makefile.am (BUILT_SOURCES): define this unconditionally,
+		no more TEXINFO_MAINT.  We handle it in the top-level
+		Makefile.am by defining distcleancheck_listfiles.
+
+	* acinclude.m4: can't have $Id: ChangeLog,v 1.13 2002-10-02 17:34:22 karl Exp $, then it gets propagated to
+		aclocal.m4.
+
+    From: Philippe Martin <feloy@free.fr>, 11 Aug 2002 20:17:44 +0200.
+	* makeinfo/cmds.c: new commands @ifnotxml, @ifxml, @xml.
+	* insertion.c: likewise.
+	(cm_ifxml, cm_ifnotxml): new functions.
+	* insertion.h: likewise.
+	* makeinfo.c: new options --ifxml, --no-ifxml.
+	(cm_image): better xml output.
+        * makeinfo.h (process_xml): new global.
+        * xml.c: call xml_close_sections.
+
 2002-09-28    <karl@gnu.org>
 
 	* makeinfo/insertion.c (begin_insertion): only do <pre>, not
