@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- $Id: gendocs_template,v 1.4 2004-04-11 17:56:47 karl Exp $ -->
+<!-- $Id: gendocs_template,v 1.5 2004-05-17 12:57:58 karl Exp $ -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
@@ -43,10 +43,10 @@
   <li><a href="%%PACKAGE%%.html.gz">HTML compressed
       (%%HTML_MONO_GZ_SIZE%%K gzipped characters)</a> - entirely on 
       one web page.</li>
-  <li><a href="%%PACKAGE%%_html_node.tar.gz">HTML compressed
+  <li><a href="%%PACKAGE%%.html_node.tar.gz">HTML compressed
       (%%HTML_NODE_TGZ_SIZE%%K gzipped tar file)</a> -
       with one web page per node.</li>
-  <li><a href="%%PACKAGE%%-info.tar.gz">Info document
+  <li><a href="%%PACKAGE%%.info.tar.gz">Info document
       (%%INFO_TGZ_SIZE%%K characters gzipped tar file)</a>.</li>
   <li><a href="%%PACKAGE%%.txt">ASCII text
       (%%ASCII_SIZE%%K characters)</a>.</li>
@@ -92,7 +92,7 @@ permitted in any medium, provided this notice is preserved.
 <p>
 Updated:
 <!-- timestamp start -->
-$Date: 2004-04-11 17:56:47 $ $Author: karl $
+$Date: 2004-05-17 12:57:58 $ $Author: karl $
 <!-- timestamp end -->
 </p>
 </div>
