@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
+@c $Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2196,11 +2196,10 @@ This updates all the nodes and menus.@refill
 The @code{texinfo-column-for-description} variable specifies the
 column to which menu descriptions are indented.  By default, the value
 is 32 although it is often useful to reduce it to as low as 24.  You
-can set the variable with the @kbd{M-x edit-options} command
-(@pxref{Edit Options, , Editing Variable Values, emacs, The GNU Emacs
-Manual}) or with the @kbd{M-x set-variable} command (@pxref{Examining,
-, Examining and Setting Variables, emacs, The GNU Emacs
-Manual}).@refill
+can set the variable via customization (@pxref{Changing an Option,,,
+emacs, The GNU Emacs Manual}) or with the @kbd{M-x set-variable}
+command (@pxref{Examining, , Examining and Setting Variables, emacs,
+The GNU Emacs Manual}).
 
 Also, the @code{texinfo-indent-menu-description} command may be used to
 indent existing menu descriptions to a specified column.  Finally, if
@@ -17179,7 +17178,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
+$Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -17242,7 +17241,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.48 2003-06-02 12:32:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.49 2003-06-20 13:37:23 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
