@@ -1,3 +1,8 @@
+2003-11-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Conventions): finally, get rid of @vskip
+	-@baselineskip kludge, we handle index entries after @item's now.
+
 2003-11-22  Stepan Kasal  <kasal@ucw.cz>
 
 	* doc/texinfo.txi: use new @quotation feature.
