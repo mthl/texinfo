@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
+@c $Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
 @c Ordinarily Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16846,7 +16846,7 @@ The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
 Concurrent Versions System}) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
+$Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -16907,11 +16907,9 @@ copying, rather than the FDL.  @xref{Verbatim Copying License}.
 
 Here is the sample document:
 
-@c We do the first part of this with @example instead of @verbatim
-@c because the literal @setfilename and @include confuse Automake.  Argh.
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.28 2003-01-27 17:00:01 karl Exp $
+@comment $Id: texinfo.txi,v 1.29 2003-02-04 15:17:21 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
