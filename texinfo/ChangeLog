@@ -1,5 +1,10 @@
 2003-11-28  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\cite): redefine to always use \sl, never \ttsl.
+	* doc/texinfo.tex (\ttslanted): new macro.
+	(\normaldefunargs): use it for @var; go back to
+	\sl by default.
+
 	* doc/texinfo.txi: document @deftypecv.
 
 2003-11-28  Alper Ersoy  <dirt@gtk.org>
