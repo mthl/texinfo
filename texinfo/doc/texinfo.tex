@@ -1559,11 +1559,18 @@ where each line of input produces a line of output.}
 \def\smartslanted#1{{\ifusingtt\ttsl\sl #1}\futurelet\next\smartitalicx}
 \def\smartitalic#1{{\ifusingtt\ttsl\it #1}\futurelet\next\smartitalicx}
 
+% like \smartslanted except unconditionally uses \ttsl.
+% @var is set to this for defun arguments.
+\def\ttslanted#1{{\ttsl #1}\futurelet\next\smartitalicx}
+
+% like \smartslanted except unconditionally use \sl.  We never want
+% ttsl for book titles, do we?
+\def\cite#1{{\sl #1}\futurelet\next\smartitalicx}
+
 \let\i=\smartitalic
 \let\var=\smartslanted
 \let\dfn=\smartslanted
 \let\emph=\smartitalic
-\let\cite=\smartslanted
 
 \def\b#1{{\bf #1}}
 \let\strong=\b
@@ -5233,8 +5240,6 @@ width0pt\relax} \fi
   #1%
   \sl\hyphenchar\font=45
 }
-% like \smartslanted except unconditionally uses \ttsl.
-\def\ttslanted#1{{\ttsl #1}\futurelet\next\smartitalicx}
 
 % We want ()&[] to print specially on the defun line.
 %
