@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.7 2003-04-05 23:09:26 karl Exp $
+# $Id: Makefile.am,v 1.8 2003-10-21 23:34:12 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -34,5 +34,6 @@ LDADD = ../lib/libtxi.a $(LIBINTL)
 # fail.  (These bugs have been reported [several times] to bug-automake.)
 # 
 EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
-  fixref.gawk gen-dir-node infosrch install-info-html outline.gawk \
+  fixref.gawk gen-dir-node gendocs.sh gendocs_template infosrch \
+  install-info-html outline.gawk \ 
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi txitextest
