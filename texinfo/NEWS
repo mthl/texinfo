@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.14 2002-11-05 03:14:51 karl Exp $
+$Id: NEWS,v 1.15 2002-11-05 03:15:39 karl Exp $
 This file records noteworthy changes.
 
   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
@@ -42,6 +42,7 @@ convenience, here's a url to one of the relevant sections:
 * Distribution:
  . development sources now available under CVS, see
    http://savannah.gnu.org/projects/texinfo/
+ . Turkish message translation.
  . gettext 0.11.5, autoconf 2.54, automake 1.7.1.
 
 
