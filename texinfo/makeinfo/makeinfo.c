@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.41 2003-11-14 03:55:54 dirt Exp $
+   $Id: makeinfo.c,v 1.42 2003-11-17 03:00:13 dirt Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003 Free Software Foundation, Inc.
@@ -3438,7 +3438,19 @@ cm_uref (arg)
       char *desc = get_xref_token (0);
       char *replacement = get_xref_token (0);
 
-      if (xml)
+      if (docbook)
+        {
+          xml_insert_element_with_attribute (UREF, START, "url=\"%s\"",
+              text_expansion (url));
+          if (*replacement)
+            execute_string (replacement);
+          else if (*desc)
+            execute_string (desc);
+          else
+            execute_string (url);
+          xml_insert_element (UREF, END);
+        }
+      else if (xml)
         {
           xml_insert_element (UREF, START);
           xml_insert_element (UREFURL, START);

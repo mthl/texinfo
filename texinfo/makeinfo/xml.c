@@ -1,5 +1,5 @@
 /* xml.c -- xml output.
-   $Id: xml.c,v 1.28 2003-11-15 02:13:59 dirt Exp $
+   $Id: xml.c,v 1.29 2003-11-17 03:00:14 dirt Exp $
 
    Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
 
@@ -338,7 +338,7 @@ element docbook_element_list [] = {
   { "",                    0, 1, 0 }, /* INFOREFREFNAME */
   { "",                    0, 1, 0 }, /* INFOREFINFONAME */
 
-  { "",                    0, 1, 0 }, /* UREF */
+  { "ulink",               0, 1, 0 }, /* UREF */
   { "",                    0, 1, 0 }, /* UREFURL */
   { "",                    0, 1, 0 }, /* UREFDESC */
   { "",                    0, 1, 0 }, /* UREFREPLACEMENT */

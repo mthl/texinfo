@@ -1,3 +1,8 @@
+2003-11-17  Alper Ersoy  <dirt@gtk.org>
+
+	* makeinfo/makeinfo.c (cm_uref):
+	* makeinfo/xml.c: use ulink for @uref with Docbook.
+
 2003-11-16  Karl Berry  <karl@gnu.org>
 
 	* util/install-info.c: protoize.
