@@ -1,3 +1,17 @@
+2003-10-24  Stepan Kasal  <kasal@ucw.cz>
+
+	* doc/texinfo.tex (\defname): Cleanup of this macro.
+	  (\boldbraxnoamp): Nuked, it's equivalent to \boldbrax;
+	  the caller changed.
+	  Other minor cleanups around active paretheses.
+	  (\defunargs): After reporting the "Unbalanced paretheses" error,
+	  reset the count.
+
+2003-10-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (makeinfo advantages): mention that plain text
+	--no-headers does --enable-encoding.
+
 2003-10-23  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/macro.c (define_macro): write the macro definition
