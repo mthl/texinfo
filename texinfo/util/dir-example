@@ -6,7 +6,7 @@ This particular dir file is merely made available for your hacking
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.11 2003-01-03 13:55:10 karl Exp $
+$Id: dir-example,v 1.12 2003-01-28 17:54:55 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -100,29 +100,42 @@ GNU programming tools
 * Libtool: (libtool).           Generic library support script.
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
 
-GNU Emacs
+Emacs
 * Elisp: (elisp).               GNU Emacs Lisp reference manual.
 * Intro Elisp: (emacs-lisp-intro). Introduction to Elisp programming.
 
 * AUC TeX: (auctex).            Editing (La)TeX files.
-* Calc: (calc).                 Calculator and more.
-* CC mode: (ccmode).            Editing C, C++, Objective C, and Java.
-* Common Lisp: (cl).            Partial Common Lisp support for Emacs Lisp.
-* Dired-x: (dired-x).           Extra directory editor features.
-* Edebug: (edebug).             Source-level debugger for Emacs Lisp.
-* Ediff: (ediff).               Comprehensive visual interface to diff & patch.
-* EDB: (edb).                   Database for Emacs.
-* Forms: (forms).               Fill-in-the-form data entry.
-* Gmhist: (gmhist).             Generic minibuffer history.
-* GNUS: (gnus).                 Netnews reading and posting.
-* Mailcrypt: (mailcrypt).       Use PGP in Emacs.
-* MH-E: (mh-e).                 Emacs interface to the MH mail system.
-* PCL-CVS: (pcl-cvs).           Emacs front end to CVS.
-* Supercite: (sc).              Supercite for including other people's words.
-* VIP: (vip).                   vi emulation.
-* VIPER: (viper).               The new VI-emulation mode in Emacs-19.29.
-* VM: (vm).                     Mail reader.
-* W3: (w3).                     WWW browser.
+* Ada mode: (ada-mode). The GNU Emacs mode for editing Ada.
+* Autotype: (autotype). Convenient features for text that you enter frequently
+                          in Emacs.
+* CC Mode: (ccmode).   Emacs mode for editing C, C++, Objective-C,
+                          Java, Pike, and IDL code.
+* CL: (cl).		Partial Common Lisp support for Emacs Lisp.
+* Dired-X: (dired-x).   Dired Extra Features.
+* Ebrowse: (ebrowse).   A C++ class browser for Emacs.
+* Ediff: (ediff).       A visual interface for comparing and merging programs.
+* Emacs FAQ: (efaq).	Frequently Asked Questions about Emacs.
+* Emacs MIME: (emacs-mime).   The MIME de/composition library.
+* Eshell: (eshell).     A command shell implemented in Emacs Lisp.
+* EUDC: (eudc).   A client for directory servers (LDAP, PH)
+* Forms: (forms).	Emacs package for editing data bases
+			  by filling in forms.
+* Gnus: (gnus).         The newsreader Gnus.
+* IDLWAVE: (idlwave).	Major mode and shell for IDL and WAVE/CL files.
+* Message: (message).   Mail and news composition mode that goes with Gnus.
+* MH-E: (mh-e).		Emacs interface to the MH mail system.
+* PCL-CVS: (pcl-cvs).	Emacs front-end to CVS.
+* RefTeX: (reftex).	Emacs support for LaTeX cross-references and citations.
+* SC: (sc).		Supercite lets you cite parts of messages you're
+			  replying to, in flexible ways.
+* Speedbar: (speedbar).        File/Tag summarizing utility.
+* VIP: (vip).		An older VI-emulation for Emacs.
+* VIPER: (viper).       The newest Emacs VI-emulation mode.
+                          (also, A VI Plan for Emacs Rescue
+                           or the VI PERil.)
+* Widget: (widget).      Documenting the "widget" package used by the
+                           Emacs Custom facility.
+* WoMan: (woman).       Browse UN*X Manual Pages `Wo (without) Man'.
 
 GNU Gettext Utilities
 * Gettext: (gettext).                           GNU gettext utilities.
