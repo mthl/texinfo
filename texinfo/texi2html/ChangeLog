@@ -1,3 +1,15 @@
+2003-11-20  Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: Echoes error messages when loading
+	init files.
+	Keep spaces in menu entries and menu descriptions.
+	Clean menu entries code.
+	When handling menu entries, give the formatted node, the name and 
+	the remaining of the line to the formatting functions.
+	In enumerate give the style of the enumerate, the item number and 
+	a prepared number or letter to the formatting functions.
+	Don't keep the enumerate style in the text.
+
 2003-11-18  Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: change protect_html to protect_text.

@@ -2124,7 +2124,7 @@ passed down to the function doing the formatting of the paragraphs.
 The formatting of a paragraph region or a preformatted region, is controlled
 by function references:
 
-@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $formatting_command $formatting_command_formatted \$paragraph_number $format
+@deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number
 This function formats a paragraph. @var{$text} is the text of the paragraph,
 @var{$alignement} is a specifier for the alignement of the paragraph.
 @xref{Alignement commands}.
@@ -2144,9 +2144,13 @@ which should be leading the first paragraph.
 paragraphs in that format command. The corresponding variable should be 
 increased when a paragraph is added. @var{$format} is the format command. 
 @xref{Table and list items}.
+
+If the @var{$format} is an enumerate, @var{$item_number} is the number of 
+the item in the list, @var{$enumerate_style} is the argument of the enumerate,
+@var{$number} is the number or letter corresponding with this item. 
 @end deftypefn
 
-@deftypefn {Function Reference} $preformatted_text preformatted $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format
+@deftypefn {Function Reference} $preformatted_text preformatted $text $style $region_name $formatting_command $formatting_command_formatted \$preformatted_number $format $item_number $enumerate_style $number
 This function formats a preformatted region. @var{$text} is the text of the
 preformatted region, @var{$style} is the css style associated with that
 preformatted region (@xref{css}). @var{$region_name} is the 
@@ -2174,6 +2178,10 @@ preformatted regions in that format command. The corresponding variable
 should be increased when a preformatted region is added. @var{$format} is the 
 format command. 
 @xref{Table and list items}.
+
+If the @var{$format} is an enumerate, @var{$item_number} is the number of 
+the item in the list, @var{$enumerate_style} is the argument of the enumerate,
+@var{$number} is the number or letter corresponding with this item. 
 @end deftypefn
 
 @c --------------------------------------------------------
@@ -2261,12 +2269,16 @@ then @code{@@bullet} will not be applied to @code{an item}.
 @table @emph
 @item lists
 The items of lists are formatted using the following function reference:
-@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command
+@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command $item_number $enumerate_style $number
 This function formats the text between @code{@@item} commands. @var{$text} 
 is the text corresponding with the item. @var{$format} is the type of format,
 @samp{itemize} or @samp{enumerate}. @var{$command} is the formatting command
 given in argument to @code{@@itemize}, @var{$formatted_command} is this command
 formatted if it is a leading command, like @code{@@minus}.
+
+If the @var{$format} is an enumerate, @var{$item_number} is the number of 
+the item in the list, @var{$enumerate_style} is the argument of the enumerate,
+@var{$number} is the number or letter corresponding with this item. 
 @end deftypefn
 
 @item two column tables
@@ -2552,11 +2564,6 @@ because we are in @@emph}.
 @node Menu formatting
 @subsection The formatting of the different menu components
 
-Some processing of the menu entry is done in the main program without
-a possibility of total control. 
-However this process may be influenced
-by some variable values. 
-
 In the default case, the name of the section corresponding with the 
 node is used instead of the node name. If @variable{$NODE_NAME_IN_MENU} is 
 true, however, node names are used. If @variable{$AVOID_MENU_REDUNDANCY}
@@ -2575,19 +2582,16 @@ associated with this preformatted text is determined by
 @variable{$MENU_PRE_STYLE}. Default is @samp{font-family: serif}.
 The css class associated with menu comments is @code{menu-comments}.
 
-Although the main program controls the text of the different components,
-control over the formatting of the components themselves is achieved
-through the call of 5 functions. The corresponding function references 
-should be redefined to change the default formatting.
-
 Three function references are associated with the formatting of the 
 different parts of a menu:
-@deftypefn {Function Reference} $link menu_link $link_text \%state $href
-@var{$link_text} is the text corresponding with the link name, @var{$href}
+@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending
+@var{$section} is the section name corresponding with the link, @var{$href}
 is the link hypertextual reference. @var{$href} may be absent. @var{\%state}
 holds informations about the current context. The only key which could be
 of interest is @code{preformatted}, true if the context is a preformatted
-context. @xref{Two contexts}.
+context. @xref{Two contexts}. 
+@var{$node} is the node name, @var{$name} is the
+name of the node, and @var{$ending} is the text ending the link entry.
 @end deftypefn
 
 @deftypefn {Function Reference} $description menu_description $description_text \%state
@@ -2612,9 +2616,11 @@ is used when a menu entry appears within another block command, to
 avoid the possibilities of invalid @acronym{HTML} production.
 In that case the menu description and menu comments are not formatted 
 specially, but treated like normal text.
-@deftypefn {Function Reference} $link simple_menu_link $link_text $href
+@deftypefn {Function Reference} $link simple_menu_link $link_text $href $node $name $ending
 @var{$link_text} is the text corresponding with the link name, @var{$href}
 is the link hypertextual reference.
+@var{$node} is the node name, @var{$name} is the
+name of the node, and @var{$ending} is the text ending the link entry.
 @end deftypefn
 
 @c --------------------------------------------------------

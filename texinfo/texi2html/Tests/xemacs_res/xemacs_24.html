@@ -93,22 +93,35 @@ only the lines that are indented less than a specified amount to appear
 on the screen.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC216">21.1 Major Modes for Programming Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Major modes for editing programs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC217">21.2 Lists and Sexps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expressions with balanced parentheses.
-                         There are editing commands to operate on them.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC218">21.3 Defuns</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Each program is made up of separate functions.
-                         There are editing commands to operate on them.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC219">21.4 Indentation for Programs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Adjusting indentation to show the nesting.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC224">21.5 Automatic Display of Matching Parentheses</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Insertion of a close-delimiter flashes matching open.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC225">21.6 Manipulating Comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting, filling and aligning comments.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC228">21.7 Editing Without Unbalanced Parentheses</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting two matching parentheses at once, etc.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC229">21.8 Completion for Lisp Symbols</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Completion on symbol names in Lisp code.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC230">21.9 Documentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Getting documentation of functions you plan to call.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC231">21.10 Change Logs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Maintaining a change history for your program.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC232">21.11 Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Go direct to any function in your program in one
-                         command.  Tags remembers which file it is in.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC240">21.12 Fortran Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Fortran mode and its special features.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC250">21.13 Asm Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Asm mode and its special features.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC216">21.1 Major Modes for Programming Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Major modes for editing programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC217">21.2 Lists and Sexps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Expressions with balanced parentheses.
+                         There are editing commands to operate on them.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC218">21.3 Defuns</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Each program is made up of separate functions.
+                         There are editing commands to operate on them.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC219">21.4 Indentation for Programs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Adjusting indentation to show the nesting.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC224">21.5 Automatic Display of Matching Parentheses</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Insertion of a close-delimiter flashes matching open.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC225">21.6 Manipulating Comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Inserting, filling and aligning comments.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC228">21.7 Editing Without Unbalanced Parentheses</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Inserting two matching parentheses at once, etc.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC229">21.8 Completion for Lisp Symbols</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Completion on symbol names in Lisp code.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC230">21.9 Documentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Getting documentation of functions you plan to call.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC231">21.10 Change Logs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Maintaining a change history for your program.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC232">21.11 Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Go direct to any function in your program in one
+                         command.  Tags remembers which file it is in.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC240">21.12 Fortran Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Fortran mode and its special features.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC250">21.13 Asm Mode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Asm mode and its special features.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -465,10 +478,14 @@ to indent properly either a single line, a specified number of lines, or
 all of the lines inside a single parenthetical grouping.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC220">21.4.1 Basic Program Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC221">21.4.2 Indenting Several Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to reindent many lines at once.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC222">21.4.3 Customizing Lisp Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying how each Lisp function should be indented.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC223">21.4.4 Customizing C Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Choosing an indentation style for C code.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC220">21.4.1 Basic Program Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC221">21.4.2 Indenting Several Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Commands to reindent many lines at once.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC222">21.4.3 Customizing Lisp Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Specifying how each Lisp function should be indented.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC223">21.4.4 Customizing C Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Choosing an indentation style for C code.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1375,13 +1392,20 @@ recorded is called a <em>tag</em>.
 class browser.  See <a href="../ebrowse/index.html">(ebrowse)Top</a> section `Top' in <cite>Ebrowse User's Manual</cite>.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC233">21.11.1 Source File Tag Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Tag syntax for various types of code and text files.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC234">21.11.2 Creating Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Creating a tags table with <code>etags</code>.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC235">21.11.3 Etags Regexps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Create arbitrary tags using regular expressions.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC236">21.11.4 Selecting a Tags Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to visit a tags table.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC237">21.11.5 Finding a Tag</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to find the definition of a specific tag.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC238">21.11.6 Searching and Replacing with Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using a tags table for searching and replacing.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC239">21.11.7 Tags Table Inquiries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Listing and finding tags defined in a file.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC233">21.11.1 Source File Tag Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Tag syntax for various types of code and text files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC234">21.11.2 Creating Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Creating a tags table with <code>etags</code>.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC235">21.11.3 Etags Regexps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Create arbitrary tags using regular expressions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC236">21.11.4 Selecting a Tags Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	How to visit a tags table.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC237">21.11.5 Finding a Tag</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Commands to find the definition of a specific tag.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC238">21.11.6 Searching and Replacing with Tags Tables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Using a tags table for searching and replacing.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC239">21.11.7 Tags Table Inquiries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Listing and finding tags defined in a file.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -2191,11 +2215,16 @@ the value of <code>fortran-mode-hook</code> as a function of no arguments if
 that variable has a non-<code>nil</code> value.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC241">21.12.1 Motion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Moving point by statements or subprograms.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC242">21.12.2 Fortran Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indentation commands for Fortran.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC247">21.12.3 Comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting and aligning comments.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC248">21.12.4 Columns</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Measuring columns for valid Fortran.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC249">21.12.5 Fortran Keyword Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Built-in abbrevs for Fortran keywords.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC241">21.12.1 Motion Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Moving point by statements or subprograms.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC242">21.12.2 Fortran Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Indentation commands for Fortran.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC247">21.12.3 Comments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Inserting and aligning comments.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC248">21.12.4 Columns</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Measuring columns for valid Fortran.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC249">21.12.5 Fortran Keyword Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Built-in abbrevs for Fortran keywords.
+</td></tr>
 </table>
 
 <p>  Fortran mode was contributed by Michael Prange.
@@ -2285,10 +2314,14 @@ indicators, and continuation line flags) appear in the columns that are
 required for standard Fortran.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC243">21.12.2.1 Fortran Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for indenting Fortran.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC244">21.12.2.2 Line Numbers and Continuation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How line numbers auto-indent.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC245">21.12.2.3 Syntactic Conventions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Conventions you must obey to avoid trouble.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC246">21.12.2.4 Variables for Fortran Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Variables controlling Fortran indent style.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC243">21.12.2.1 Fortran Indentation Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Commands for indenting Fortran.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC244">21.12.2.2 Line Numbers and Continuation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How line numbers auto-indent.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC245">21.12.2.3 Syntactic Conventions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Conventions you must obey to avoid trouble.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC246">21.12.2.4 Variables for Fortran Indentation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Variables controlling Fortran indent style.
+</td></tr>
 </table>
 
 <hr size="6">

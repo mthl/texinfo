@@ -53,7 +53,7 @@ use POSIX qw(setlocale LC_ALL LC_CTYPE);
 #--##############################################################################
 
 # CVS version:
-# $Id: texi2html.pl,v 1.84 2003-11-18 15:37:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.85 2003-11-22 21:21:41 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://texi2html.cvshome.org/";
@@ -135,6 +135,12 @@ sub load($)
 {
     my $file = shift;
     eval { require($file) ;};
+    if ($@ ne '')
+    {
+        print STDERR "error loading $file: $@\n";
+        return 0;
+    }
+    return 1;
 }
 
 # customization options variables
@@ -1001,12 +1007,12 @@ sub load_init_file
     {
         print STDERR "# reading initialization file from $file\n"
             if ($T2H_VERBOSE);
-        Texi2HTML::Config::load($file);
+        return (Texi2HTML::Config::load($file));
     }
     else
     {
         print STDERR "$ERROR Error: can't read init file $init_file\n";
-        $init_file = '';
+        return 0;
     }
 }
 
@@ -1663,7 +1669,7 @@ foreach my $i (@rc_files)
 {
     if (-e $i and -r $i)
     {
-	print STDERR "# reading initialization file from $i\n"
+        print STDERR "# reading initialization file from $i\n"
 	    if ($T2H_VERBOSE);
         print STDERR "Reading config from $i is obsolete, use texi2html/$conf_file_name instead\n";
         Texi2HTML::Config::load($i);
@@ -5724,7 +5730,11 @@ sub get_format_command($)
     my $command = '';
     my $format_name = '';
     my $term = 0;
+    my $item_nr;
     my $paragraph_number;
+    my $enumerate_type;
+    my $number;
+    
     if (defined($format) and ref($format) eq "HASH")
     {
          $command = $format->{'command'};
@@ -5732,15 +5742,20 @@ sub get_format_command($)
          $paragraph_number = \$format->{'paragraph_number'};
          $format_name =  $format->{'format'};
          $term = 1 if ($format->{'term'}); #This should never happen
+         $item_nr = $format->{'item_nr'};
+         $enumerate_type =  $format->{'spec'};
+         $number = $format->{'number'};
     }
-    return ($format_name, $command, $paragraph_number, $term);
+    return ($format_name, $command, $paragraph_number, $term, $item_nr, 
+        $enumerate_type, $number);
 }
 
 sub do_paragraph($$)
 {
     my $text = shift;
     my $state = shift;
-    my ($format, $paragraph_command, $paragraph_number, $term) = get_format_command ($state->{'paragraph'});
+    my ($format, $paragraph_command, $paragraph_number, $term, $item_nr, 
+        $enumerate_type, $number) = get_format_command ($state->{'paragraph'});
     delete $state->{'paragraph'};
     my $paragraph_command_formatted;
     $state->{'paragraph_nr'}--;
@@ -5748,8 +5763,6 @@ sub do_paragraph($$)
     my $align = '';
     $align = $state->{'paragraph_style'}->[-1] if ($state->{'paragraph_style'}->[-1]);
     
-#    my $top_format = top_format($stack);
-#    if (defined($top_format) and defined($top_format->{'command'}) and !exists($Texi2HTML::Config::special_list_commands{$top_format->{'format'}}->{$top_format->{'command'}}) and exists($style_map{$top_format->{'format'}}) and ($top_format->{'format'} eq 'itemize'))
     if (exists($Texi2HTML::Config::style_map{$paragraph_command}) and
        !exists($Texi2HTML::Config::special_list_commands{$format}->{$paragraph_command}))
     { 
@@ -5764,15 +5777,15 @@ sub do_paragraph($$)
     {
         $paragraph_command_formatted = do_simple($paragraph_command, '', $state);
     }
-    return &$Texi2HTML::Config::paragraph($text, $align, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $term);
+    return &$Texi2HTML::Config::paragraph($text, $align, $paragraph_command, $paragraph_command_formatted, $paragraph_number, $format, $item_nr, $enumerate_type, $number);
 }
 
 sub do_preformatted($$)
 {
     my $text = shift;
     my $state = shift;
-    my ($format, $leading_command, $preformatted_number, $term) =
-        get_format_command($state->{'preformatted_format'}); 
+    my ($format, $leading_command, $preformatted_number, $term, $item_nr, $enumerate_type, 
+         $number) = get_format_command($state->{'preformatted_format'});
     delete ($state->{'preformatted_format'});
     my $leading_command_formatted;
     my $pre_style = '';
@@ -5789,7 +5802,7 @@ sub do_preformatted($$)
     {
         $leading_command_formatted = do_simple($leading_command, '', $state);
     }
-    return &$Texi2HTML::Config::preformatted($text, $pre_style, $class, $leading_command, $leading_command_formatted, $preformatted_number, $format, $term);
+    return &$Texi2HTML::Config::preformatted($text, $pre_style, $class, $leading_command, $leading_command_formatted, $preformatted_number, $format, $item_nr, $enumerate_type, $number);
 }
 
 sub do_external_ref($)
@@ -5893,7 +5906,7 @@ sub save_line_state($$)
     $state->{"$tag" . '_line_state'} = $saved_state;
 }
 
-sub retrieve_line_state ($$)
+sub retrieve_line_state($$)
 {
     my $state = shift;
     my $tag = shift;
@@ -6015,7 +6028,7 @@ sub begin_paragraph($$)
 
     my $command = 1;
     my $top_format = top_format($stack);
-    if (defined($top_format) and defined($top_format->{'command'}) or (defined($top_format->{'format'}) and ($top_format->{'format'} eq 'multitable')))
+    if (defined($top_format))
     {
         $command = $top_format;
     }
@@ -6053,7 +6066,7 @@ sub parse_enumerate($)
     if ($line =~ /^\s*(\w)\b/ and ($1 ne '_'))
     {
         $spec = $1;
-        $line =~ s/^\s*\@(\w)\s*//;
+        $line =~ s/^\s*(\w)\s*//;
     }
     return ($line, $spec);
 }
@@ -6201,10 +6214,10 @@ sub end_format($$$$$)
             print STDERR "Bug undef $format_ref->{'format'}" . "->{'begin'} (for $format...)\n";
             dump_stack ($text, $stack, $state);
         }
-        #print STDERR "!!! before $format\n";
+        #print STDERR "before $format\n";
         #dump_stack ($text, $stack, $state);
         add_prev($text, $stack, &$Texi2HTML::Config::complex_format($format_ref->{'format'}, $format_ref->{'text'}));
-        #print STDERR "!!! after $format\n";
+        #print STDERR "after $format\n";
         #dump_stack ($text, $stack, $state);
     }
     elsif (($format_type{$format} eq 'table') or ($format_type{$format} eq 'list'))
@@ -6314,8 +6327,7 @@ sub menu_link($$;$)
     my $simple = shift;
     my $menu_entry = $state->{'menu_entry'};
     my $file = $state->{'element'}->{'file'};
-    my $node_texi = normalise_node($menu_entry->{'node'});
-    $menu_entry->{'node'} = $node_texi;
+    my $node_name = normalise_node($menu_entry->{'node'});
     
     my $substitution_state = { 'no_paragraph' => 1, 'element' => $state->{'element'}, 
        'preformatted' => $state->{'preformatted'}, 
@@ -6323,11 +6335,17 @@ sub menu_link($$;$)
        'preformatted_stack' => $state->{'preformatted_stack'} };
          
     my $name = substitute_text($substitution_state, $menu_entry->{'name'});
-    my $node = substitute_text($substitution_state, $node_texi);
+    my $node = substitute_text($substitution_state, $menu_entry->{'node'});
 
-    my $entry;
+    if (($name ne '') and !$state->{'preformatted'} and $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
+    {
+        $name = '' unless (clean_text(remove_texi($menu_entry->{'name'}))
+            ne clean_text(remove_texi($menu_entry->{'node'})))
+    }
+
+    my $entry = '';
     my $href;
-    my $element = $nodes{$node_texi};
+    my $element = $nodes{$node_name};
     if ($element->{'seen'})
     {
         if ($element->{'with_section'})
@@ -6335,49 +6353,26 @@ sub menu_link($$;$)
             $element = $element->{'with_section'};
         }
     
-	#print STDERR "SUBHREF in menu for $element->{'texi'}\n";
+        #print STDERR "SUBHREF in menu for $element->{'texi'}\n";
         $href = href($element, $file);
-        if (!$Texi2HTML::Config::NODE_NAME_IN_MENU)
+        if (! $element->{'node'})
         {
-            $entry = $element->{'text'};
+            $entry = $element->{'text'}; # this is the section name without number
             $entry = $element->{'name'} if (!$Texi2HTML::Config::NUMBER_SECTIONS);
-            $entry = "$Texi2HTML::Config::MENU_SYMBOL $entry" if ($entry and ($element->{'node'}) or ((!defined($element->{'number'}) or ($element->{'number'} =~ /^\s*$/)) and $Texi2HTML::Config::UNNUMBERED_SYMBOL_IN_MENU));
-            # If there is no section name
-            $entry = "$Texi2HTML::Config::MENU_SYMBOL $node" unless ($entry);
-            $name = '';
-        }
-        elsif ($state->{'preformatted'})
-        {
-            $entry = ($name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node" );
-        }
-        else
-        {
-            $entry = ($name && (($name ne $node) || ! $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
-                      ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node");
+            $entry = "$Texi2HTML::Config::MENU_SYMBOL $entry" if (($entry ne '') and (!defined($element->{'number'}) or ($element->{'number'} =~ /^\s*$/)) and $Texi2HTML::Config::UNNUMBERED_SYMBOL_IN_MENU);
         }
     }
-    elsif ($node_texi =~ /^\(.*\)/ or $novalidate)
+    elsif (($menu_entry->{'node'} =~ /^\s*\(.*\)/) or $novalidate)
     {
         # menu entry points to another info manual
-        if ($state->{'preformatted'})
-        {
-            $entry = ( $name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node" );
-        }
-        else
-        {
-            $entry = ($name && (($name ne $node) || ! $Texi2HTML::Config::AVOID_MENU_REDUNDANCY)
-                     ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node");
-        }
-        $href = $nodes{$node_texi}->{'file'};
+        $href = $nodes{$node_name}->{'file'};
     }
     else
     {
-        echo_error ("Unknown node in menu entry `$node_texi'", $line_nr);
-        #warn "$ERROR Unknown node in menu entry `$node_texi'\n";
-        $entry = $name ? "$Texi2HTML::Config::MENU_SYMBOL ${name}: $node" : "$Texi2HTML::Config::MENU_SYMBOL $node";
+        echo_error ("Unknown node in menu entry `$node_name'", $line_nr);
     }
-    return &$Texi2HTML::Config::menu_link($entry, $state, $href) unless ($simple);
-    return &$Texi2HTML::Config::simple_menu_link($entry, $href);
+    return &$Texi2HTML::Config::menu_link($entry, $state, $href, $node, $name, $menu_entry->{'ending'}) unless ($simple);
+    return &$Texi2HTML::Config::simple_menu_link($entry, $state->{'preformatted'}, $href, $node, $name, $menu_entry->{'ending'});
 }
 
 sub menu_description($$)
@@ -6385,35 +6380,28 @@ sub menu_description($$)
     my $descr = shift;
     my $state = shift;
     my $menu_entry = $state->{'menu_entry'};
-    my $node_texi = $menu_entry->{'node'};
+    my $node_name = normalise_node($menu_entry->{'node'});
 
-    unless ($state->{'preformatted'})
-    { 
-        $descr =~ s/^\s+//;
-        $descr =~ s/\s*$//;
-    }
-    my $element = $nodes{$node_texi};
+    my $element = $nodes{$node_name};
     if ($element->{'seen'})
     {
         if ($element->{'with_section'})
         {
             $element = $element->{'with_section'};
         }
-        if ($Texi2HTML::Config::AVOID_MENU_REDUNDANCY && $descr && !$state->{'preformatted'})
+        if ($Texi2HTML::Config::AVOID_MENU_REDUNDANCY && ($descr ne '') && !$state->{'preformatted'})
         {
-            my $clean_entry = $element->{'name'};
-            $clean_entry =~ s/[^\w]//g;
-            my $clean_descr = $descr;
-            $clean_descr =~ s/[^\w]//g;
-            $descr = '' if ($clean_entry eq $clean_descr);
+            $descr = '' if (clean_text($element->{'name'}) eq clean_text($descr));
         }
-        return &$Texi2HTML::Config::menu_description($descr, $state);
     }
-    else
-    {
-        # menu entry points to another info manual or not found
-        return &$Texi2HTML::Config::menu_description($descr, $state);
-    }
+    return &$Texi2HTML::Config::menu_description($descr, $state);
+}
+
+sub clean_text($)
+{
+    my $text = shift;
+    $text =~ s/[^\w]//g;
+    return $text;
 }
 
 sub do_xref($$$$)
@@ -8098,15 +8086,17 @@ sub scan_line($$$$;$)
                                 # but in another format section (@table....)
     if (!$state->{'raw'} and !$state->{'verb'} and $state->{'menu'})
     { # new menu entry
-        my ($node, $name);
-        if (s/^\*\s+($NODERE):://o)
+        my ($node, $name, $ending);
+        if (s/^\*(\s+$NODERE)(::)//o)
         {
             $node = $1;
+            $ending = $2;
         }
-        elsif (s/^\*\s+([^:]+):\s*([^\t,\.\n]+)[\t,\.\n]//o)
+        elsif (s/^\*(\s+[^:]+):(\s*[^\t,\.\n]+)([\t,\.\n])//o)
         {
             $name = $1;
             $node = $2;
+            $ending = $3;
         }
         if ($node)
         {
@@ -8123,7 +8113,8 @@ sub scan_line($$$$;$)
             { # we are in a normal menu state.
                 close_menu($text, $stack, $state, $line_nr);
                 $new_menu_entry = 1;
-                $state->{'menu_entry'} = { 'name' => $name, 'node' => $node };
+                $state->{'menu_entry'} = { 'name' => $name, 'node' => $node,
+                   'ending' => $ending };
                 add_prev ($text, $stack, menu_link($state, $line_nr));
                 print STDERR "# New menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 push @$stack, {'format' => 'menu_description', 'text' => ''};
@@ -8949,7 +8940,8 @@ sub scan_line($$$$;$)
                     {
                         my $spec;
                         ($_, $spec) = parse_enumerate ($_);
-                        $format = { 'format' => $macro, 'text' => '', 'spec' => $spec };
+                        $spec = 1 if (!defined($spec)); 
+                        $format = { 'format' => $macro, 'text' => '', 'spec' => $spec, 'item_nr' => 0 };
                     }
                     elsif ($macro eq 'multitable')
                     {
@@ -9315,13 +9307,37 @@ sub add_item($$$$;$)
     abort_empty_preformatted($stack, $state) if ($format->{'first'});
     close_stack($text, $stack, $state, $line_nr, undef, 'item');
     $format->{'paragraph_number'} = 0;
+    if ($format->{'format'} eq 'enumerate')
+    {
+         $format->{'number'} = '';
+         my $spec = $format->{'spec'};
+         $format->{'item_nr'}++;
+         if ($spec =~ /^[0-9]$/)
+         {
+              $format->{'number'} = $spec + $format->{'item_nr'} - 1;
+         }
+         else
+         {
+              my $base_letter = ord('a');
+              $base_letter = ord('A') if (ucfirst($spec) eq $spec);
+
+              my @letter_ords = decompose(ord($spec) - $base_letter + $format->{'item_nr'} - 1, 26);
+              foreach my $ord (@letter_ords)
+              {#FIXME we go directly to 'ba' after 'z', and not 'aa'
+               #because 'ba' is 1,0 and 'aa' is 0,0.
+                   $format->{'number'} = chr($base_letter + $ord) . $format->{'number'};
+              }
+              #print STDERR "number " . (ord($spec) - $base_letter + $format->{'item_nr'} - 1) . " spec $spec ". ord($spec).", base_letter $base_letter letter_ords (@letter_ords) !!$format->{'number'}\n";
+         }
+    }
+    
     #dump_stack ($text, $stack, $state);
     my $item = pop @$stack;
     # the element following ol or ul must be li. Thus even though there
     # is no @item we put a normal item.
 
     # don't do an item if it is the first and it is empty
-    if (!$format->{'first'} or $item->{'text'} =~ /\S/o)
+    if (!$format->{'first'} or ($item->{'text'} =~ /\S/o))
     {
         my $formatted_command;
         if (defined($format->{'command'}) and exists($Texi2HTML::Config::things_map{$format->{'command'}}))
@@ -9329,7 +9345,7 @@ sub add_item($$$$;$)
              $formatted_command = do_simple($format->{'command'}, '', $state);
         }
         chomp($item->{'text'});
-        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command));
+        add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}));
     } 
     if ($format->{'first'})
     {
@@ -9956,6 +9972,29 @@ sub do_index_entry_label($)
         if ($T2H_DEBUG & $DEBUG_INDEX);
     return &$Texi2HTML::Config::index_entry_label ($entry->{'label'}, $state->{'preformatted'}, substitute_line($entry->{'entry'}), $index_properties->{$entry->{'prefix'}}->{'name'}); 
     return '';
+}
+
+# decompose a decimal number on a given base. The algorithm looks like
+# the division with growing powers (division suivant les puissances
+# croissantes) ?
+sub decompose ($$)
+{  
+    my $number = shift;
+    my $base = shift;
+    my @result = ();
+
+    return (0) if ($number == 0);
+    my $power = 1;
+    my $remaining = $number;
+
+    while ($remaining)
+    {
+         my $factor = $remaining % ($base ** $power);
+         $remaining -= $factor;
+         push (@result, $factor / ($base ** ($power - 1)));
+         $power++;
+    }
+    return @result;
 }
 
 # main processing is called here

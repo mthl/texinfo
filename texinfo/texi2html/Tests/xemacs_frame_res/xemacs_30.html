@@ -71,24 +71,34 @@ by writing a file; in particular, the only way to make a customization
 file to do the customization in each session.  See section <a href="#SEC377">The Init File</a>.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC352">27.1 Minor Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Each minor mode is one feature you can turn on
-                     independently of any others.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC353">27.2 Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Many Emacs commands examine Emacs variables
+<tr><td align="left" valign="top"><a href="#SEC352">27.1 Minor Modes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Each minor mode is one feature you can turn on
+                     independently of any others.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC353">27.2 Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Many Emacs commands examine Emacs variables
                      to decide what to do; by setting variables,
-                     you can control their functioning.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC363">27.3 Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A keyboard macro records a sequence of keystrokes
-                     to be replayed with a single command.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC367">27.4 Customizing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The keymaps say what command each key runs.
-                     By changing them, you can &quot;redefine keys&quot;.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC374">27.5 The Syntax Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The syntax table controls how words and expressions
-                     are parsed.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC377">27.6 The Init File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to write common customizations in the init file.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC381">27.7 Changing the Bell Sound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Changing how Emacs sounds the bell.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC382">27.8 Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Changing the fonts and colors of a region of text.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC384">27.9 Frame Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling the presence and positions of the
-                     menubar, toolbars, and gutters.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC385">27.10 X Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">X resources controlling various aspects of the
-                     behavior of XEmacs.</td></tr>
+                     you can control their functioning.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC363">27.3 Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> A keyboard macro records a sequence of keystrokes
+                     to be replayed with a single command.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC367">27.4 Customizing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    The keymaps say what command each key runs.
+                     By changing them, you can &quot;redefine keys&quot;.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC374">27.5 The Syntax Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          The syntax table controls how words and expressions
+                     are parsed.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC377">27.6 The Init File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to write common customizations in the init file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC381">27.7 Changing the Bell Sound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Changing how Emacs sounds the bell.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC382">27.8 Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Changing the fonts and colors of a region of text.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC384">27.9 Frame Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Controlling the presence and positions of the
+                     menubar, toolbars, and gutters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC385">27.10 X Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     X resources controlling various aspects of the
+                     behavior of XEmacs.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -196,11 +206,16 @@ specifies the position of the right margin (as a number of characters from
 the left margin) to be used by the fill commands (see section <a href="xemacs_23.html#SEC210">Filling Text</a>).
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC354">27.2.1 Examining and Setting Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examining or setting one variable's value.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC355">27.2.2 Easy Customization Interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Convenient and easy customization of variables.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC360">27.2.3 Editing Variable Values</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examining or editing list of all variables' values.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC361">27.2.4 Local Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Per-buffer values of variables.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC362">27.2.5 Local Variables in Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How files can specify variable values.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC354">27.2.1 Examining and Setting Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Examining or setting one variable's value.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC355">27.2.2 Easy Customization Interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Convenient and easy customization of variables.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC360">27.2.3 Editing Variable Values</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Examining or editing list of all variables' values.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC361">27.2.4 Local Variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Per-buffer values of variables.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC362">27.2.5 Local Variables in Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How files can specify variable values.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -305,11 +320,16 @@ settings permanently.  (Not all Emacs user options are included in this
 structure as of yet, but we are adding the rest.)
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC356">27.2.2.1 Customization Groups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How options are classified in a structure.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC357">27.2.2.2 Changing an Option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit a value and set an option.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC358">27.2.2.3 Customizing Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to edit the attributes of a face.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC359">27.2.2.4 Customizing Specific Items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Making a customization buffer for specific
-                                options, faces, or groups.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC356">27.2.2.1 Customization Groups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+                             How options are classified in a structure.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC357">27.2.2.2 Changing an Option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit a value and set an option.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC358">27.2.2.3 Customizing Faces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to edit the attributes of a face.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC359">27.2.2.4 Customizing Specific Items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Making a customization buffer for specific
+                                options, faces, or groups.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1071,9 +1091,12 @@ defined and also has been executed once.  You can then execute the same
 set of commands again by invoking the macro.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC364">27.3.1 Basic Use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining and running keyboard macros.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC365">27.3.2 Naming and Saving Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Giving keyboard macros names; saving them in files.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC366">27.3.3 Executing Macros With Variations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Keyboard macros that do different things each use.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC364">27.3.1 Basic Use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Defining and running keyboard macros.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC365">27.3.2 Naming and Saving Keyboard Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Giving keyboard macros names; saving them in files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC366">27.3.3 Executing Macros With Variations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Keyboard macros that do different things each use.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1271,12 +1294,15 @@ a Lisp symbol whose name usually consists of lower case letters and
 hyphens.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC368">27.4.1 Keymaps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Definition of the keymap data structure.
-               Names of Emacs's standard keymaps.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC369">27.4.2 Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to redefine one key's meaning conveniently.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC373">27.4.3 Disabling Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Disabling a command means confirmation is required
+<tr><td align="left" valign="top"><a href="#SEC368">27.4.1 Keymaps</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Definition of the keymap data structure.
+               Names of Emacs's standard keymaps.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC369">27.4.2 Changing Key Bindings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to redefine one key's meaning conveniently.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC373">27.4.3 Disabling Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Disabling a command means confirmation is required
                 before it can be executed.  This is done to protect
-                beginners from surprises.</td></tr>
+                beginners from surprises.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1771,8 +1797,10 @@ call it &quot;the&quot; syntax table.  A syntax table is a Lisp object, a vector
 length 256 whose elements are numbers.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC375">27.5.1 Information About Each Character</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What the syntax table records for each character.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC376">27.5.2 Altering Syntax Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to change the information.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC375">27.5.1 Information About Each Character</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    What the syntax table records for each character.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC376">27.5.2 Altering Syntax Information</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  How to change the information.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -2021,9 +2049,12 @@ first; if it sets <code>inhibit-default-init</code> non-<code>nil</code>, then
 byte-compile it to `<tt>~/.xemacs/init.elc</tt>' or `<tt>~/.emacs.elc</tt>'.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC378">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Syntax of constants in Emacs Lisp.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC379">27.6.2 Init File Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to do some things with an init file.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC380">27.6.3 Terminal-Specific Initialization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Each terminal type can have an init file.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC378">27.6.1 Init File Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Syntax of constants in Emacs Lisp.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC379">27.6.2 Init File Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to do some things with an init file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC380">27.6.3 Terminal-Specific Initialization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Each terminal type can have an init file.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -2711,12 +2742,18 @@ its own name or the same name as another, depending on the name passed to the
 </pre></td></tr></table>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC386">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling the size and position of frames.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC387">27.10.2 Iconic Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling whether frames come up iconic.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC388">27.10.3 Resource List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">List of resources settable on a frame or device.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC389">27.10.4 Face Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Controlling faces using resources.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC390">27.10.5 Widgets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The widget hierarchy for XEmacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC391">27.10.6 Menubar Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Specifying resources for the menubar.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC386">27.10.1 Geometry Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Controlling the size and position of frames.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC387">27.10.2 Iconic Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Controlling whether frames come up iconic.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC388">27.10.3 Resource List</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          List of resources settable on a frame or device.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC389">27.10.4 Face Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Controlling faces using resources.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC390">27.10.5 Widgets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The widget hierarchy for XEmacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC391">27.10.6 Menubar Resources</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Specifying resources for the menubar.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -3370,13 +3407,19 @@ executing.  See section <a href="xemacs_8.html#SEC59">Undoing Changes</a>.
 and how to recognize them and correct them.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC394">27.12.1 Recursive Editing Levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">`[...]' in mode line around the parentheses.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC395">27.12.2 Garbage on the Screen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Garbage on the screen.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC396">27.12.3 Garbage in the Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Garbage in the text.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC397">27.12.4 Spontaneous Entry to Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Spontaneous entry to incremental search.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC398">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Emergency escape--
-                        What to do if Emacs stops responding.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC399">27.12.6 Help for Total Frustration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">When you are at your wits' end.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC394">27.12.1 Recursive Editing Levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    `[...]' in mode line around the parentheses.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC395">27.12.2 Garbage on the Screen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Garbage on the screen.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC396">27.12.3 Garbage in the Text</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Garbage in the text.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC397">27.12.4 Spontaneous Entry to Incremental Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Spontaneous entry to incremental search.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC398">27.12.5 Emergency Escape</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Emergency escape--
+                        What to do if Emacs stops responding.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC399">27.12.6 Help for Total Frustration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  When you are at your wits' end.
+</td></tr>
 </table>
 
 <hr size="6">

@@ -66,21 +66,36 @@ reference to <small>CVS</small> commands, see section <a href="cvs_17.html#SEC15
 
 </p><table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#SEC115">A.1 Overall structure of CVS commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC116">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicating CVS's success or failure</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC117">A.3 Default options and the ~/.cvsrc file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Default options with the ~/.csvrc file</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC118">A.4 Global options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the left of cvs_command</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC119">A.5 Common command options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Options you give to the right of cvs_command</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC120">A.6 admin--Administration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Administration</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC122">A.7 checkout--Check out sources for editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Checkout sources for editing</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC125">A.8 commit--Check files into the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Check files into the repository</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC130">A.9 diff--Show differences between revisions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show differences between revisions</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC135">A.10 export--Export sources from CVS, similar to checkout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Export sources from CVS, similar to checkout</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC137">A.11 history--Show status of files and users</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show status of files and users</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC139">A.12 import--Import sources into CVS, using vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Import sources into CVS, using vendor branches</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC143">A.13 log--Print out log information for files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Show log messages for files</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC146">A.14 rdiff--'patch' format diffs between releases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">'patch' format diffs between releases</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC149">A.15 release--Indicate that a Module is no longer in use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Indicate that a directory is no longer in use</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC153">A.16 update--Bring work tree in sync with repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Bring work tree in sync with repository</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC116">A.2 CVS's exit status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Indicating CVS's success or failure
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC117">A.3 Default options and the ~/.cvsrc file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Default options with the ~/.csvrc file
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC118">A.4 Global options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Options you give to the left of cvs_command
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC119">A.5 Common command options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Options you give to the right of cvs_command
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC120">A.6 admin--Administration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Administration
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC122">A.7 checkout--Check out sources for editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    Checkout sources for editing
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC125">A.8 commit--Check files into the repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Check files into the repository
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC130">A.9 diff--Show differences between revisions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Show differences between revisions
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC135">A.10 export--Export sources from CVS, similar to checkout</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Export sources from CVS, similar to checkout
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC137">A.11 history--Show status of files and users</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Show status of files and users
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC139">A.12 import--Import sources into CVS, using vendor branches</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Import sources into CVS, using vendor branches
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC143">A.13 log--Print out log information for files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Show log messages for files
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC146">A.14 rdiff--'patch' format diffs between releases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       'patch' format diffs between releases
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC149">A.15 release--Indicate that a Module is no longer in use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Indicate that a directory is no longer in use
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC153">A.16 update--Bring work tree in sync with repository</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Bring work tree in sync with repository
+</td></tr>
 </table>
 
 <hr size="6">

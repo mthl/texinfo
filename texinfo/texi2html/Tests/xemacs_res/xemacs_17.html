@@ -83,17 +83,27 @@ the operations described below, making remote file use transparent
 and append to files, and operate on file directories.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC135">14.1 File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to type and edit file name arguments.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC136">14.2 Visiting Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Visiting a file prepares Emacs to edit the file.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC137">14.3 Saving Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Saving makes your changes permanent.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC143">14.4 Reverting a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Reverting cancels all the changes not saved.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC144">14.5 Auto-Saving: Protection Against Disasters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Auto Save periodically protects against loss of data.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC148">14.6 Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Version control systems (RCS and SCCS).</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC161">14.7 Listing a File Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Listing the contents of a file directory.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC162">14.8 Comparing Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Finding where two files differ.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC163">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">&quot;Editing&quot; a directory to delete, rename, etc.
-                     the files in it.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC168">14.10 Miscellaneous File Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Other things you can do on files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC135">14.1 File Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to type and edit file name arguments.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC136">14.2 Visiting Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Visiting a file prepares Emacs to edit the file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC137">14.3 Saving Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Saving makes your changes permanent.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC143">14.4 Reverting a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Reverting cancels all the changes not saved.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC144">14.5 Auto-Saving: Protection Against Disasters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Auto Save periodically protects against loss of data.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC148">14.6 Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Version control systems (RCS and SCCS).
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC161">14.7 Listing a File Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Listing the contents of a file directory.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC162">14.8 Comparing Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Finding where two files differ.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC163">14.9 Dired, the Directory Editor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &quot;Editing&quot; a directory to delete, rename, etc.
+                     the files in it.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC168">14.10 Miscellaneous File Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Other things you can do on files.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -529,9 +539,11 @@ not done. Use the hook variable <code>after-save-hook</code> to list
 all the functions to be called after writing out a buffer to a file.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC138">14.3.1 Backup Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How Emacs saves the old version of your file.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC142">14.3.2 Protection Against Simultaneous Editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How Emacs protects against simultaneous editing
-                  of one file by two users.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC138">14.3.1 Backup Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How Emacs saves the old version of your file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC142">14.3.2 Protection Against Simultaneous Editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How Emacs protects against simultaneous editing
+                  of one file by two users.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -574,10 +586,13 @@ the current editing session; however, if you kill the buffer and then visit
 the file again, a new backup file is made by the next save.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC139">14.3.1.1 Single or Numbered Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How backup files are named;
-				Choosing single or numbered backup files.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC140">14.3.1.2 Automatic Deletion of Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Emacs deletes excess numbered backups.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC141">14.3.1.3 Copying vs. Renaming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Backups can be made by copying or renaming.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC139">14.3.1.1 Single or Numbered Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		How backup files are named;
+				Choosing single or numbered backup files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC140">14.3.1.2 Automatic Deletion of Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Emacs deletes excess numbered backups.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC141">14.3.1.3 Copying vs. Renaming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	Backups can be made by copying or renaming.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -926,9 +941,12 @@ so that they do not interfere with the execution of commands you have been
 typing.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC145">14.5.1 Auto-Save Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC146">14.5.2 Controlling Auto-Saving</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top"><a href="#SEC147">14.5.3 Recovering Data from Auto-Saves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Recovering text from auto-save files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC145">14.5.1 Auto-Save Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC146">14.5.2 Controlling Auto-Saving</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC147">14.5.3 Recovering Data from Auto-Saves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Recovering text from auto-save files.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1120,24 +1138,34 @@ RCS or SCCS, so you hardly have to know which one of them you are
 using.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC149">14.6.1 Concepts of Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Basic version control information;
-                                  checking files in and out.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC150">14.6.2 Editing with Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for editing a file maintained
-                                  with version control.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC151">14.6.3 Variables Affecting Check-in and Check-out</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Variables that affect the commands used
-                                  to check files in or out.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC152">14.6.4 Log Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Logging your changes.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC153">14.6.5 Change Logs and VC</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Generating a change log file from log
-                                  entries.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC154">14.6.6 Examining And Comparing Old Versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examining and comparing old versions.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC155">14.6.7 VC Status Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands to view the VC status of files and
-                                  look at log entries.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC156">14.6.8 Renaming VC Work Files and Master Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A command to rename both the source and
-                                  master file correctly.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC157">14.6.9 Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to make and use snapshots, a set of
-                                  file versions that can be treated as a unit.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC160">14.6.10 Inserting Version Control Headers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Inserting version control headers into
-                                  working files.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC149">14.6.1 Concepts of Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Basic version control information;
+                                  checking files in and out.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC150">14.6.2 Editing with Version Control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for editing a file maintained
+                                  with version control.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC151">14.6.3 Variables Affecting Check-in and Check-out</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Variables that affect the commands used
+                                  to check files in or out.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC152">14.6.4 Log Entries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 Logging your changes.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC153">14.6.5 Change Logs and VC</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Generating a change log file from log
+                                  entries. 
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC154">14.6.6 Examining And Comparing Old Versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Examining and comparing old versions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC155">14.6.7 VC Status Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Commands to view the VC status of files and
+                                  look at log entries.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC156">14.6.8 Renaming VC Work Files and Master Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             A command to rename both the source and
+                                  master file correctly.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC157">14.6.9 Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to make and use snapshots, a set of
+                                  file versions that can be treated as a unit.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC160">14.6.10 Inserting Version Control Headers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Inserting version control headers into
+                                  working files.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1743,8 +1771,10 @@ snapshot is a <em>release</em>, a (theoretically) stable version of the
 system that is ready for distribution to users.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC158">14.6.9.1 Making and Using Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The snapshot facilities.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC159">14.6.9.2 Snapshot Caveats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Things to be careful of when using snapshots.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC158">14.6.9.1 Making and Using Snapshots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		The snapshot facilities.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC159">14.6.9.2 Snapshot Caveats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Things to be careful of when using snapshots.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -2099,10 +2129,14 @@ directory.  You can use the normal Emacs commands to move around in this
 buffer and special Dired commands to operate on the files.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC164">14.9.1 Entering Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to invoke Dired.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC165">14.9.2 Editing in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Editing the Dired buffer.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC166">14.9.3 Deleting Files With Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Deleting files with Dired.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC167">14.9.4 Immediate File Operations in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Other file operations through Dired.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC164">14.9.1 Entering Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to invoke Dired.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC165">14.9.2 Editing in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Editing the Dired buffer.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC166">14.9.3 Deleting Files With Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Deleting files with Dired.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC167">14.9.4 Immediate File Operations in Dired</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Other file operations through Dired.
+</td></tr>
 </table>
 
 <hr size="6">

@@ -64,15 +64,22 @@ making changes in programs.  This chapter deals with commands that assist
 in the larger process of developing and maintaining programs.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC252">22.1 Running &quot;make&quot;, or Compilers Generally</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Compiling programs in languages other than Lisp
-                        (C, Pascal, etc.)</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC253">22.2 Major Modes for Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Various modes for editing Lisp programs, with
-                       different facilities for running the Lisp programs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC254">22.3 Libraries of Lisp Code for Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Creating Lisp programs to run in Emacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC258">22.4 Evaluating Emacs-Lisp Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Executing a single Lisp expression in Emacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC259">22.5 The Emacs-Lisp Debugger</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Debugging Lisp programs running in Emacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC260">22.6 Lisp Interaction Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Executing Lisp in an Emacs buffer.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC261">22.7 Running an External Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Communicating through Emacs with a separate Lisp.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC252">22.1 Running &quot;make&quot;, or Compilers Generally</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Compiling programs in languages other than Lisp
+                        (C, Pascal, etc.)
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC253">22.2 Major Modes for Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Various modes for editing Lisp programs, with
+                       different facilities for running the Lisp programs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC254">22.3 Libraries of Lisp Code for Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Creating Lisp programs to run in Emacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC258">22.4 Evaluating Emacs-Lisp Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Executing a single Lisp expression in Emacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC259">22.5 The Emacs-Lisp Debugger</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Debugging Lisp programs running in Emacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC260">22.6 Lisp Interaction Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Executing Lisp in an Emacs buffer.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC261">22.7 Running an External Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Communicating through Emacs with a separate Lisp.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -279,9 +286,12 @@ conventionally end in `<tt>.el</tt>'.  This ending tells Emacs to edit them in
 Emacs-Lisp mode (see section <a href="#SEC253">Major Modes for Lisp</a>).
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC255">22.3.1 Loading Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Loading libraries of Lisp code into Emacs for use.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC256">22.3.2 Compiling Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Compiling a library makes it load and run faster.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC257">22.3.3 Converting Mocklisp to Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Converting Mocklisp to Lisp so XEmacs can run it.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC255">22.3.1 Loading Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Loading libraries of Lisp code into Emacs for use.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC256">22.3.2 Compiling Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Compiling a library makes it load and run faster.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC257">22.3.3 Converting Mocklisp to Lisp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">		Converting Mocklisp to Lisp so XEmacs can run it.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -887,12 +897,18 @@ This gives an installer the ability to tailor an XEmacs installation for
 local needs with safe removal of unnecessary code.
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#SEC264">22.8.1 Package Flavors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding different kinds of packages.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC269">22.8.5 Getting Started</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to install packages.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC278">22.8.8 Prerequisites for Building Source Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Building packages from CVS sources.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD256">&bull; Local.rules File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">This is an important file that you must create.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD257">&bull; Creating Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The basics.</td></tr>
-<tr><td align="left" valign="top"><a href="#SEC283">22.8.10 Normal Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A brief directory of packaged LISP.</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC264">22.8.1 Package Flavors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Understanding different kinds of packages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC269">22.8.5 Getting Started</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to install packages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC278">22.8.8 Prerequisites for Building Source Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Building packages from CVS sources.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD256">&bull; Local.rules File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    This is an important file that you must create.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD257">&bull; Creating Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   The basics.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#SEC283">22.8.10 Normal Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  A brief directory of packaged LISP.
+</td></tr>
 </table>
 
 <hr size="6">
@@ -1121,11 +1137,16 @@ one of the methods above for installing the package you want.
 <p>There are three main ways to install packages:
 
 </p><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#NOD250">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">All at once, using the 'Sumo Tarball'.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD251">&bull; Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using individual package tarballs.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD252">&bull; Automatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using the package tools from XEmacs.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD253">&bull; Which Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Which packages to install.</td></tr>
-<tr><td align="left" valign="top"><a href="#NOD254">&bull; Removing Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Removing packages.</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD250">&bull; Sumo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              All at once, using the 'Sumo Tarball'.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD251">&bull; Manually</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Using individual package tarballs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD252">&bull; Automatically</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Using the package tools from XEmacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD253">&bull; Which Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Which packages to install.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NOD254">&bull; Removing Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Removing packages.
+</td></tr>
 </table>
 
 <p>But regardless of the method you use to install packages, they can only
@@ -1211,8 +1232,7 @@ and optionally:
 steps.
 
 </p><ol>
-<li><p> 1
-</p></li><li>
+<li>
 <p>Choose a download site.
 via menu: Tools -&gt; Packages -&gt; Add Download Site 
 via keyb: <code>M-x customize-variable RET package-get-remote RET</code>
